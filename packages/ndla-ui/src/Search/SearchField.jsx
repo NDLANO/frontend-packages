@@ -30,14 +30,13 @@ const SearchField = ({
   onFocus,
   onBlur,
   loading,
-  autofocus,
   onFilterRemove,
+  inputRef,
 }) => {
-  const inputRef = useRef(null);
-
   const handleOnFilterRemove = (value, filterName) => {
     onFilterRemove(value, filterName);
     inputRef.current.focus();
+    onFocus();
   };
 
   return (
@@ -58,7 +57,6 @@ const SearchField = ({
         onBlur={onBlur}
         onFocus={onFocus}
         onClick={onClick}
-        autofocus={autofocus}
       />
       {filters && filters.length > 0 && (
         <div {...classes('filters')}>
@@ -75,6 +73,7 @@ const SearchField = ({
           onClick={() => {
             onChange('');
             inputRef.current.focus();
+            onFocus();
           }}>
           {t('welcomePage.resetSearch')}
         </button>
@@ -107,7 +106,6 @@ SearchField.propTypes = {
   onNavigate: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  autofocus: PropTypes.bool,
   onClick: PropTypes.func,
   loading: PropTypes.bool,
 };

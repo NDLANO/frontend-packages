@@ -62,7 +62,7 @@ class MastheadWithTopicMenu extends Component {
       expandedSubtopicsId: [],
       filterMenuValues: ['Medieuttrykk'],
     };
-    this.searchFieldRef = React.createRef();
+    this.inputRef = React.createRef();
     this.closeAllModals = [null, null];
   }
 
@@ -72,17 +72,12 @@ class MastheadWithTopicMenu extends Component {
       <form
         {...classes('', modifiers)}
         onSubmit={e => {
-          /* eslint-disable no-console */
-          console.log(
-            'search for:',
-            e.target.getElementsByTagName('input')[0].value,
-          );
           e.preventDefault();
         }}>
         <SearchField
+          inputRef={this.inputRef}
           placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
           value={this.state.value}
-          autofocus
           onChange={value => {
             this.setState({
               value,
@@ -155,7 +150,7 @@ class MastheadWithTopicMenu extends Component {
                 className={`c-search-field__overlay-top${this
                   .closeAllModals[0] && ` with-backdrop`}`}
               />
-              <div ref={this.searchFieldRef} {...searchFieldClasses('header')}>
+              <div {...searchFieldClasses('header')}>
                 <div {...searchFieldClasses('header-container')}>
                   {this.renderSearchField()}
                   <Button stripped onClick={onClose}>

@@ -7,7 +7,6 @@
  */
 
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { Link, LinkProps } from 'react-router-dom';
 import { LocationDescriptor } from 'history';
 import isString from 'lodash/isString';

@@ -12,7 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
-import { colors, spacing, mq, breakpoints } from '@ndla/core';
+import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
 
 import ActiveFilters from './ActiveFilters';
 import LoadingWrapper from './LoadingWrapper';
@@ -26,7 +26,7 @@ const inputStyle = css`
   height: 48px;
   line-height: 48px;
   border: 1px solid ${colors.brand.greyLight};
-  border-radius: $border-radius;
+  border-radius: ${misc.borderRadius};
   padding-right: ${spacing.large};
   padding-left: ${spacing.normal};
   flex-grow: 1;
@@ -39,7 +39,7 @@ const inputStyle = css`
   ${mq.range({ from: breakpoints.tablet })} {
     height: 58px;
     line-height: 58px;
-    @include font-size(18px, 24px);
+    ${fonts.sizes(18, 24)};
   }
 `;
 
@@ -93,7 +93,7 @@ const SearchField = ({
         type="search"
         css={css`
           ${inputStyle};
-          ${hasFilters && filterStyle}
+          ${hasFilters && filterStyle};
         `}
         aria-autocomplete="list"
         autoComplete="off"

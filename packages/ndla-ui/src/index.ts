@@ -44,3 +44,5 @@ export {
 export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 export { SearchFieldForm } from './Search/SearchFieldForm';
+
+export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';

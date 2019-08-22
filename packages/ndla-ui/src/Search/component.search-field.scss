@@ -182,19 +182,6 @@ $overlay-height: 136px;
   }
 
   /** Header adjustments... */
-  &__header {
-    @include mq(tablet) {
-      width: $inuit-wrapper-width;
-      max-width: calc(100vw - 100px);
-      padding-right: $spacing;
-    }
-    @include mq(desktop) {
-      width: $inuit-wrapper-width;
-      max-width: calc(100vw - 156px);
-    }
-    padding: 0;
-    margin: 0 auto;
-  }
   &__button--close {
     right: $spacing--large;
     @include mq(tablet) {
@@ -206,50 +193,6 @@ $overlay-height: 136px;
     &:hover,
     &:focus {
       color: $brand-color;
-    }
-  }
-  &__header-container {
-    display: flex;
-    padding-top: $spacing--small;
-    @include mq(tablet) {
-      padding-top: $spacing;
-    }
-    @include mq(desktop) {
-      padding-top: $spacing + $spacing--small;
-    }
-    > .c-search-field {
-      width: 100%;
-      margin-right: -$spacing--large;
-      @include mq($until: tablet) {
-        .c-search-field__button--close {
-          right: $spacing--large + $spacing--medium;
-          top: 16px;
-        }
-        .c-search-field__button--searchIcon {
-          right: $spacing--large;
-          top: $spacing--small;
-        }
-      }
-    }
-    > button {
-      width: $spacing--large;
-      height: 48px;
-      @include mq(tablet) {
-        transform: translate($spacing--large, 0);
-        width: $spacing--large;
-        height: 56px;
-        &:hover,
-        &:focus {
-          transform: translate($spacing--large + 1, 1px);
-        }
-      }
-      @include mq(wide) {
-        transform: translate($spacing--large * 2, 0);
-        &:hover,
-        &:focus {
-          transform: translate(($spacing--large * 2) + 1, 1px);
-        }
-      }
     }
   }
 }

@@ -8,7 +8,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { injectT } from '@ndla/i18n';
 
 import {
@@ -21,14 +20,11 @@ import {
   SearchField,
   SearchResultSleeve,
   SafeLink,
-  ToggleSearchButton,
+  MastheadSearchModal,
   TopicMenuButton,
   SearchFieldForm,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
-import Button from '@ndla/button';
-
-import { Cross } from '@ndla/icons/action';
 
 import {
   topicMenu,
@@ -46,11 +42,6 @@ export const MastheadWithLogo = ({ skipToMainContentId }) => (
     </MastheadItem>
   </Masthead>
 );
-
-const searchFieldClasses = BEMHelper({
-  prefix: 'c-',
-  name: 'search-field',
-});
 
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
@@ -119,43 +110,13 @@ class MastheadWithTopicMenu extends Component {
       return null;
     }
     return (
-      <Modal
-        backgroundColor="grey"
-        animation="slide-down"
-        animationDuration={200}
-        size="custom"
+      <MastheadSearchModal
         onClose={() => {
           this.setState({ value: '' });
           this.closeAllModals[1] = null;
-        }}
-        className="c-search-field__overlay-content"
-        activateButton={
-          <ToggleSearchButton
-            hideOnNarrowScreen={hideOnNarrowScreen}
-            ndlaFilm={this.props.ndlaFilm}>
-            Søk
-          </ToggleSearchButton>
-        }>
-        {onClose => {
-          this.closeAllModals[1] = onClose;
-          return (
-            <>
-              <div
-                className={`c-search-field__overlay-top${this
-                  .closeAllModals[0] && ` with-backdrop`}`}
-              />
-              <div {...searchFieldClasses('header')}>
-                <div {...searchFieldClasses('header-container')}>
-                  {this.renderSearchField()}
-                  <Button stripped onClick={onClose}>
-                    <Cross className="c-icon--medium" />
-                  </Button>
-                </div>
-              </div>
-            </>
-          );
-        }}
-      </Modal>
+        }}>
+        {this.renderSearchField()}
+      </MastheadSearchModal>
     );
   };
 
@@ -165,7 +126,6 @@ class MastheadWithTopicMenu extends Component {
         fixed
         skipToMainContentId={this.props.skipToMainContentId}
         ndlaFilm={this.props.ndlaFilm}
-        hideOnNarrowScreen={this.props.hideOnNarrowScreen}
         infoContent={this.props.beta && this.props.betaInfoContent}>
         <MastheadItem left>
           <Modal

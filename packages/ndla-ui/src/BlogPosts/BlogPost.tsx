@@ -94,11 +94,11 @@ const StyledBlog = styled.div<StyledBlogProps>`
 
 const StyledTag = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
-    background: #fff;
-    padding: ${spacing.spacingUnit / 6}px ${spacing.xsmall};
+    background: ${colors.brand.greyLightest};
+    padding: 0 ${spacing.spacingUnit / 6}px;
     color: ${colors.text.primary};
     border-radius: ${misc.borderRadius};
-    ${fonts.sizes(14, 1.2)};
+    ${fonts.sizes(12, '20px')};
     font-weight: ${fonts.weight.semibold};
     transition: all 200ms ease;
   }

@@ -11,13 +11,14 @@ import PropTypes from 'prop-types';
 import { Back, ChevronRight } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
 import { Switch } from '@ndla/switch';
+import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { mq, breakpoints } from '@ndla/core';
+import { mq, breakpoints, fonts, spacing } from '@ndla/core';
 
 import SafeLink from '../common/SafeLink';
 import { TopicShape } from '../shapes';
 
-import { ContentTypeResult } from '../Search';
+import ContentTypeResult from '../Search/ContentTypeResult';
 import { renderAdditionalIcon } from './TopicMenu';
 
 const switchLarge = css`
@@ -35,6 +36,25 @@ const switchSmall = css`
   ${mq.range({ from: breakpoints.mobileWide })} {
     display: none !important;
   }
+`;
+
+const StyledHeader = styled.h1`
+  ${fonts.sizes('16px', '26px')};
+  margin: 0;
+  text-transform: uppercase;
+  padding-right: ${spacing.normal};
+`;
+
+const StyledAside = styled.aside`
+  padding: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.small};
+    width: 600px;
+  }
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
 `;
 
 const SubtopicLink = ({
@@ -83,6 +103,7 @@ class SubtopicLinkList extends Component {
     super(props);
     this.state = {
       showAdditionalResources: false,
+      animateUL: 0,
     };
     this.toggleAdditionalResources = this.toggleAdditionalResources.bind(this);
     this.containerRef = null;
@@ -105,6 +126,7 @@ class SubtopicLinkList extends Component {
   toggleAdditionalResources() {
     this.setState(prevState => ({
       showAdditionalResources: !prevState.showAdditionalResources,
+      animateUL: prevState.animateUL + 1,
     }));
   }
 
@@ -121,22 +143,17 @@ class SubtopicLinkList extends Component {
       backLabel,
       resourceToLinkProps,
       competenceButton,
-      defaultCount,
       lastOpen,
       t,
     } = this.props;
 
-    const { showAdditionalResources } = this.state;
+    const { showAdditionalResources, animateUL } = this.state;
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
     const hasContentTypeResults =
       lastOpen &&
       topic.contentTypeResults &&
       topic.contentTypeResults.length > 0;
-
-    const hasContentTypeInfo =
-      hasContentTypeResults &&
-      topic.contentTypeResults.some(result => result.contentType);
 
     const someResourcesAreAdditional =
       hasContentTypeResults &&
@@ -183,13 +200,11 @@ class SubtopicLinkList extends Component {
           </ul>
         )}
         {hasContentTypeResults && (
-          <aside
-            {...classes('content-type-results', [
-              hasContentTypeInfo ? 'with-content-badges' : '',
-              this.state.showAdditionalResources ? 'show-all' : '',
-            ])}>
-            <div>
-              <h1>{t('masthead.menu.learningResourcesHeading')}</h1>
+          <StyledAside>
+            <HeaderWrapper>
+              <StyledHeader>
+                {t('masthead.menu.learningResourcesHeading')}
+              </StyledHeader>
               {someResourcesAreAdditional && (
                 <Switch
                   id="showAdditionalId"
@@ -199,33 +214,23 @@ class SubtopicLinkList extends Component {
                   css={switchLarge}
                 />
               )}
-            </div>
+            </HeaderWrapper>
             {topic.contentTypeResults.map(result => (
               <ContentTypeResult
+                animateUL={animateUL}
                 resourceToLinkProps={resourceToLinkProps}
                 onNavigate={closeMenu}
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  allResultLabel: t(
-                    `masthead.menu.contentTypeResultsShowMore.${
-                      result.contentType
-                    }`,
-                  ),
-                  showLessResultLabel: t(
-                    `masthead.menu.contentTypeResultsShowLess.${
-                      result.contentType
-                    }`,
-                  ),
                   noHit: t(
                     `masthead.menu.contentTypeResultsNoHit.${
                       result.contentType
                     }`,
                   ),
                 }}
-                defaultCount={defaultCount}
-                iconOnRight
                 showAdditionalResources={showAdditionalResources}
+                inMenu
               />
             ))}
             {someResourcesAreAdditional && (
@@ -237,7 +242,7 @@ class SubtopicLinkList extends Component {
                 css={switchSmall}
               />
             )}
-          </aside>
+          </StyledAside>
         )}
         {competenceButton}
       </div>

@@ -17,13 +17,9 @@ import SvgLogo from '../Logo/SvgLogo';
 const StyledLinkWrapper = styled.nav`
   display: none;
   justify-content: flex-end;
-  margin-bottom: ${spacing.large};
   align-items: center;
   ${mq.range({ from: breakpoints.tablet })} {
     display: flex;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    margin-bottom: ${spacing.large};
   }
 `;
 
@@ -40,13 +36,13 @@ const StyledHeader = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  max-width: 1150px;
+  max-width: 1024px;
   ${mq.range({ until: breakpoints.tablet })} {
     align-items: flex-end;
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 4}px ${spacing.large};
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px ${spacing.large};
   }
   ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
     padding: ${spacing.normal} ${spacing.normal}

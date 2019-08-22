@@ -5,6 +5,8 @@ import { colors, spacing, mq, breakpoints } from '@ndla/core';
 
 interface Props {
   children: React.ReactNode;
+  inputHasFocus?: boolean;
+  onSubmit?: (event: {}) => void;
 }
 
 type StyledProps = {

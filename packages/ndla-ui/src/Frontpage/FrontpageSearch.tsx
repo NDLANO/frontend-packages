@@ -7,7 +7,8 @@ import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
 import { noScroll } from '@ndla/util';
 // @ts-ignore
-import { SearchField, SearchFieldForm } from '../Search';
+import { SearchField } from '../Search';
+import { SearchFieldForm } from '../Search/SearchFieldForm';
 // @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';

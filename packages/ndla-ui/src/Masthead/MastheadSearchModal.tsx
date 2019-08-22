@@ -10,7 +10,7 @@ import { Cross } from '@ndla/icons/action';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
-import { ToggleSearchButton } from '../Search/ToggleSearchButton';
+import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;

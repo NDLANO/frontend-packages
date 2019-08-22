@@ -11,6 +11,8 @@ import { Spinner } from '@ndla/editor';
 import { Search } from '@ndla/icons/common';
 import { Input, FormPill } from '@ndla/forms';
 
+const isObject = maybeAnObject => typeof maybeAnObject === 'object';
+
 const DropdownInput = ({
   multiSelect,
   testid,
@@ -20,10 +22,10 @@ const DropdownInput = ({
   removeItem,
   idField,
   labelField,
-  ...props
+  ...rest
 }) => (
   <Input
-    {...props}
+    {...rest}
     iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
     tags={
       multiSelect &&
@@ -43,10 +45,14 @@ const DropdownInput = ({
 
 DropdownInput.propTypes = {
   multiSelect: PropTypes.bool,
-  getInputProps: PropTypes.func,
+  removeItem: PropTypes.func.isRequired,
   idField: PropTypes.string,
   labelField: PropTypes.string,
   name: PropTypes.string,
+  loading: PropTypes.bool,
+  values: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  ),
   inputProps: PropTypes.shape({
     value: PropTypes.string,
     ref: PropTypes.func,
@@ -54,6 +60,11 @@ DropdownInput.propTypes = {
     onKeyDown: PropTypes.func,
     onFocus: PropTypes.func,
   }),
+};
+
+DropdownInput.defaultProps = {
+  values: [],
+  loading: false,
 };
 
 export default DropdownInput;

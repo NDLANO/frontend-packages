@@ -41,8 +41,8 @@ export {
   LearningPathLastStepNavigation,
 } from './LearningPaths';
 
-export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
+export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';

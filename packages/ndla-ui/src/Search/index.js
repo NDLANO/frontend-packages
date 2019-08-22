@@ -7,7 +7,6 @@
  */
 
 import SearchField from './SearchField';
-import { SearchFieldForm } from './SearchFieldForm';
 import SearchOverlay from './SearchOverlay';
 import SearchPage from './SearchPage';
 
@@ -36,5 +35,4 @@ export {
   SearchPopoverFilter,
   SearchResultAuthor,
   ActiveFilters,
-  SearchFieldForm,
 };

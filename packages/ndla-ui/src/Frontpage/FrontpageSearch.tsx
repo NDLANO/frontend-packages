@@ -1,15 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import BEMHelper from 'react-bem-helper';
-// @ts-ignore
-import Tooltip from '@ndla/tooltip';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
-import { Cross } from '@ndla/icons/action';
 import { noScroll } from '@ndla/util';
 // @ts-ignore
 import { SearchField, SearchFieldForm } from '../Search';

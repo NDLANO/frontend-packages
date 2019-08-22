@@ -123,9 +123,26 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
   }
 `;
 
+type ie11Props = {
+  isIE11: boolean;
+};
+
+const StyledContainerWrapper = styled.div<ie11Props>`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  align-items: center;
+  ${props => props.isIE11 ? ``:
+    css`
+      transform: translate(-50vw, 0);
+    `
+  }
+`;
+
 interface StyledContainerProps {
   animationDirection: 'in' | 'out';
-  isIE11: boolean;
 }
 
 const StyledContainer = styled.div<StyledContainerProps>`
@@ -133,20 +150,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
   flex-direction: column;
   max-width: 980px;
   max-width: 100%;
-  ${props => props.isIE11 ?
-    css`
-      align-items: center;
-    ` :
-    css`
-      transform: translate(-50vw, 0);
-      align-items: flex-end;
-    `
-  }
 `;
-
-type ie11Props = {
-  isIE11: boolean;
-};
 
 const ScrollableContent = styled.div<ie11Props>`
   padding: ${spacing.normal} ${spacing.large} ${spacing.large};
@@ -156,8 +160,6 @@ const ScrollableContent = styled.div<ie11Props>`
   width: 100%;
   max-width: 980px;
   height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   ${props => props.isIE11 && 
@@ -234,18 +236,20 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
             onDeactivate: onClose,
             escapeDeactivates: true,
           }}>
-          <StyledContainer animationDirection={animationDirection} isIE11={isIE11}>
-            <ScrollableContent isIE11={isIE11}>
-              <StyledButton
-                isIE11={isIE11}
-                type="button"
-                aria-label={t('masthead.menu.close')}
-                onClick={onClose}>
-                <Cross />
-              </StyledButton>
-              <div>{children}</div>
-            </ScrollableContent>
-          </StyledContainer>
+          <StyledContainerWrapper isIE11={isIE11}>
+            <StyledContainer animationDirection={animationDirection}>
+              <ScrollableContent isIE11={isIE11}>
+                <StyledButton
+                  isIE11={isIE11}
+                  type="button"
+                  aria-label={t('masthead.menu.close')}
+                  onClick={onClose}>
+                  <Cross />
+                </StyledButton>
+                <div>{children}</div>
+              </ScrollableContent>
+            </StyledContainer>
+          </StyledContainerWrapper>
         </FocusTrapReact>
       </StyledModalWrapper>
       <Backdrop

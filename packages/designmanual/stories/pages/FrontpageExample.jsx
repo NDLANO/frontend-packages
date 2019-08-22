@@ -9,7 +9,6 @@ import {
   FrontpageFilm,
   FrontpageCircularSubjectsSection,
   InfoWidget,
-  SafeLink,
   SubjectSectionTitle,
   BlogPost,
   BlogPostWrapper,
@@ -244,10 +243,7 @@ class FrontpageExample extends Component {
           />
         </FrontpageHeader>
         <main>
-          <FrontpageCircularSubjectsSection
-            categories={categories}
-            linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
-          />
+          <FrontpageCircularSubjectsSection categories={categories} />
           <OneColumn extraPadding>
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>

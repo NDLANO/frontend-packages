@@ -22,11 +22,3 @@ exports[`SafeLink renderers Link correctly if router context is present 1`] = `
   ,
 </div>
 `;
-
-exports[`SafeLink renderers normal link correctly when router context is not present 1`] = `
-<a
-  href="/my/path"
->
-  No router context
-</a>
-`;

@@ -56,10 +56,10 @@ const Image = ({
   crop,
   focalPoint,
   contentType,
+  sizes,
   ...rest
 }) => {
   const srcSet = defined(rest.srcSet, getSrcSet(src, crop, focalPoint));
-  const sizes = defined(rest.sizes, '(min-width: 1024px) 1024px, 100vw'); // min-width === inuit-wrapper-width
   const fallbackWidth = defined(rest.fallbackWidth, 1024);
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
 
@@ -80,13 +80,10 @@ const Image = ({
   }
 
   return (
-    <img
-      alt={alt}
-      srcSet={srcSet}
-      sizes={sizes}
-      src={`${src}?${queryString}`}
-      {...rest}
-    />
+    <picture>
+      <source type={contentType} srcSet={srcSet} sizes={sizes} />
+      <img alt={alt} src={`${src}?${queryString}`} {...rest} />
+    </picture>
   );
 };
 
@@ -109,6 +106,10 @@ Image.propTypes = {
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
   }),
+};
+
+Image.defaultProps = {
+  sizes: '(min-width: 1024px) 1024px, 100vw',
 };
 
 export default Image;

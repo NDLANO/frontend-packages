@@ -103,14 +103,15 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   loading,
   t,
 }) => {
-  const inputRef = useRef(null);
-  const SearchFieldRef = React.createRef<HTMLDivElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const searchFieldRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const onKeyEsc = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
         onInputBlur();
-        if (inputRef) {
-          inputRef.current.blur();
+        if (inputRef && inputRef.current) {
+          inputRef.current!.blur();
         }
       }
     };
@@ -119,10 +120,11 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       window.removeEventListener('keydown', onKeyEsc);
     };
   }, []);
+
   useEffect(() => {
-    if (inputHasFocus && SearchFieldRef.current) {
+    if (inputHasFocus && searchFieldRef && searchFieldRef.current) {
       const yCoordinate =
-        SearchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
+        searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
       const isIE11 = isIE && parseInt(browserVersion) < 12;
       if (isIE11) {
         // insta move on IE
@@ -139,16 +141,17 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
     }
     return () => noScroll(false, 'preventPageScroll');
   }, [inputHasFocus]);
+
   return (
-    <div ref={SearchFieldRef}>
+    <div ref={searchFieldRef}>
       <StyledWrapper inputHasFocus={inputHasFocus}>
         {inputHasFocus && (
           <StyledSearchBackdrop
             role="button"
             onClick={() => {
               onInputBlur();
-              if (inputRef) {
-                inputRef.current.blur();
+              if (inputRef && inputRef.current) {
+                inputRef.current!.blur();
               }
             }}
           />

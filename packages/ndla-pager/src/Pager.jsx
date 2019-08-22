@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import elementType from 'react-prop-types/lib/elementType';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import rgba from 'polished/lib/color/rgba';

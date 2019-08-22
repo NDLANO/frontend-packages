@@ -13,14 +13,6 @@ import renderer from 'react-test-renderer';
 import { StaticRouter } from 'react-router';
 import Safelink, { isOldNdlaLink } from '../SafeLink';
 
-test('SafeLink renderers normal link correctly when router context is not present', () => {
-  const component = renderer.create(
-    <Safelink to="/my/path">No router context</Safelink>,
-  );
-
-  expect(component.toJSON()).toMatchSnapshot();
-});
-
 test('SafeLink renderers Link correctly if router context is present', () => {
   const component = renderer.create(
     <StaticRouter location="foo" context={{}}>

@@ -440,6 +440,7 @@ const messages = {
     es: 'Spanish',
     zh: 'Chinese',
     unknown: 'Unknown',
+    prefixChangeLanguage: 'Choose language',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',

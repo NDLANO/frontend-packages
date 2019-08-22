@@ -6,11 +6,11 @@ import Modal from '@ndla/modal';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
-import { ToggleSearchButton } from '@ndla/ui';
-// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints } from '@ndla/core';
+// @ts-ignore
+import { ToggleSearchButton } from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;

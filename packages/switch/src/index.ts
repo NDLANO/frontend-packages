@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2018-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import Footer from './Footer';
+import Switch from './Switch';
 
-export default Footer;
+export { Switch };

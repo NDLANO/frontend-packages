@@ -19,12 +19,16 @@ export { BlogPost, BlogPostWrapper } from './BlogPosts';
 export {
   FrontpageInfo,
   FrontpageFilm,
-  FrontpageHeaderNew,
+  FrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
+  FrontpageSearch,
 } from './Frontpage';
 
+export { Footer, EditorName, FooterText } from './Footer';
+
+export { LanguageSelector } from './LanguageSelector';
 export { default as SafeLinkButton } from './common/SafeLinkButton';
 
 export {
@@ -36,3 +40,9 @@ export {
   LearningPathStickySibling,
   LearningPathLastStepNavigation,
 } from './LearningPaths';
+
+export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
+export { default as ContentTypeResult } from './Search/ContentTypeResult';
+export { SearchFieldForm } from './Search/SearchFieldForm';
+
+export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';

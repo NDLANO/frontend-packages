@@ -21,9 +21,10 @@ type StyledImageProps = {
 
 const StyledImage = styled.div<StyledImageProps>`
   background: ${colors.ndlaFilm.filmColorDark};
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: ${spacing.small} center;
+  background-size: 110px;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -38,6 +39,7 @@ const StyledImage = styled.div<StyledImageProps>`
     `}
 
   ${mq.range({ from: breakpoints.mobileWide })} {
+    background-size: contain;
     min-height: 120px;
     background-position: ${spacing.medium} center;
   }
@@ -64,10 +66,10 @@ const StyledText = styled.span<StyledTextProps>`
     width: 66.6%;
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
-    display: ${(props: StyledTextProps) => props.narrow ? 'none' : 'flex'}
+    display: ${(props: StyledTextProps) => (props.narrow ? 'none' : 'flex')};
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
-    display: ${(props: StyledTextProps) => !props.narrow ? 'none' : 'flex'}
+    display: ${(props: StyledTextProps) => (!props.narrow ? 'none' : 'flex')};
   }
 `;
 
@@ -77,16 +79,16 @@ type Props = {
   imageUrl: string;
 };
 
-const FrontpageFilm: React.FunctionComponent<Props> = ({ url, imageUrl, t }) => (
+const FrontpageFilm: React.FunctionComponent<Props> = ({
+  url,
+  imageUrl,
+  t,
+}) => (
   <StyledSection>
     <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
     <StyledImage imageUrl={imageUrl}>
-      <StyledText>
-        {t('welcomePage.film.text')}
-      </StyledText>
-      <StyledText narrow>
-        {t('welcomePage.film.textShort')}
-      </StyledText>
+      <StyledText>{t('welcomePage.film.text')}</StyledText>
+      <StyledText narrow>{t('welcomePage.film.textShort')}</StyledText>
     </StyledImage>
     <div className="o-text-link__wrapper o-text-link__wrapper--right">
       <SafeLink className="o-text-link" to={url}>

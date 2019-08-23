@@ -218,6 +218,17 @@ export const stories = {
     lead:
       'For at en ressurs skal bli tilgjengelig i meny må den tilknyttes et (eller flere) emne.',
   },
+  TaxonomyTopicConnections: {
+    title: 'Emneplassering',
+    lead: 'Her kan du velge hvor emnet skal ligge i taksonomi.',
+    body: [
+      {
+        type: 'text',
+        content:
+          'OBS! Dersom du endrer plassering i taksonomi, vil ikke det gamle emnet slettes om det har underemner eller ressurser knyttet til seg.',
+      },
+    ],
+  },
   TaxonomySubjectFilters: {
     title: 'Fagfilter',
     lead:

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { noScroll } from '@ndla/util';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
@@ -8,8 +10,9 @@ import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllust
 import FrontpageCircularSubject from './FrontpageCircularSubject';
 import FrontpageMenuPortal from './FrontpageMenuPortal';
 import FrontpageSubjectsInPortal from './FrontpageSubjectsInPortal';
-import { category as categoryProp, elementRectType } from './types';
+import { category as categoryProp, elementRectType } from '../types';
 import { calculateScaling } from './util';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 
 const StyledMobileSubjectLink = styled.div`
   display: flex;
@@ -50,6 +53,8 @@ const StyledLinkedText = styled.span`
   ${fonts.sizes('20px', '32px')};
   font-weight: ${fonts.weight.bold};
   position: absolute;
+  left: 0px;
+  right: 0px;
   bottom: ${spacing.medium};
   color: ${colors.subject.dark};
 
@@ -72,6 +77,14 @@ const StyledButton = styled.button`
   background: none;
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
   &:before {
     content: '';
     display: block;
@@ -103,9 +116,20 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledIllustrationContainer = styled.div`
+type StyledIllustrationContainerProps = {
+  isIE11: boolean;
+};
+
+const StyledIllustrationContainer = styled.div<
+  StyledIllustrationContainerProps
+>`
   width: 100%;
   pointer-events: none;
+  ${props =>
+    props.isIE11 &&
+    css`
+      transform: scale(1.2);
+    `}
   ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     width: calc(100vw - ${spacing.spacingUnit * 6}px);
   }
@@ -128,7 +152,7 @@ const StyledNavContainer = styled.nav`
 `;
 
 interface StateObject {
-  animationDirection?: 'in' | 'out';
+  animationDirection: 'in' | 'out';
   menuIsOpen: boolean;
   categoryIndex?: number;
   menuOpenedCounter: number;
@@ -137,8 +161,6 @@ interface StateObject {
 
 type Props = {
   categories: categoryProp[];
-  linkToAbout: React.ReactNode;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const initialState: StateObject = {
@@ -151,11 +173,9 @@ const initialState: StateObject = {
   },
 };
 
-const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
-  categories,
-  linkToAbout,
-  t,
-}) => {
+const FrontpageCombinedSubjects: React.FunctionComponent<
+  WithInjectedTProps<Props>
+> = ({ categories, t }) => {
   const [currentState, setState] = useState(initialState);
   const {
     elementRect,
@@ -166,10 +186,13 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   } = currentState;
 
   const closeMenu = () => {
-    setState(prevState => {
-      return { ...prevState, animationDirection: 'out', menuIsOpen: false };
-    });
-    noScroll(false, 'frontpagePortal');
+    if (isIE) {
+      closedMenu();
+    } else {
+      setState(prevState => {
+        return { ...prevState, animationDirection: 'out' };
+      });
+    }
   };
 
   const closedMenu = () => {
@@ -197,6 +220,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     noScroll(true, 'frontpagePortal');
   };
 
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   return (
     <>
       {menuIsOpen && (
@@ -207,10 +231,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           animationDirection={animationDirection}
           elementRect={elementRect}>
           {categoryIndex !== undefined && (
-            <FrontpageSubjectsInPortal
-              linkToAbout={linkToAbout}
-              category={categories[categoryIndex]}
-            />
+            <FrontpageSubjectsInPortal category={categories[categoryIndex]} />
           )}
         </FrontpageMenuPortal>
       )}
@@ -238,7 +259,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
             </StyledButton>
           ))}
         </StyledLinkContainer>
-        <StyledIllustrationContainer>
+        <StyledIllustrationContainer isIE11={isIE11}>
           <FrontpageSubjectIllustration />
         </StyledIllustrationContainer>
       </StyledNavContainer>

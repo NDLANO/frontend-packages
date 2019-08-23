@@ -6,278 +6,159 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
-import { StyledButton } from '@ndla/button';
 import { css } from '@emotion/core';
-
-import SafeLink from '../common/SafeLink';
+import { injectT } from '@ndla/i18n';
+import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
 
 import ActiveFilters from './ActiveFilters';
-import ContentTypeResult from './ContentTypeResult';
+import LoadingWrapper from './LoadingWrapper';
 
 import { ContentTypeResultShape } from '../shapes';
 
 const classes = new BEMHelper('c-search-field');
 
-const messagesShape = PropTypes.shape({
-  // required if search result
-  searchResultHeading: PropTypes.string,
-  contentTypeResultShowMoreLabel: PropTypes.string,
-  contentTypeResultShowLessLabel: PropTypes.string,
-  contentTypeResultNoHit: PropTypes.string,
-});
+const inputStyle = css`
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid ${colors.brand.greyLight};
+  border-radius: ${misc.borderRadius};
+  padding-right: ${spacing.large};
+  padding-left: ${spacing.normal};
+  flex-grow: 1;
+  outline: 0;
 
-const AnchorButton = StyledButton.withComponent(SafeLink);
+  &:focus {
+    border-color: ${colors.brand.primary};
+  }
 
-const SearchResult = ({
-  result,
-  allResultUrl,
-  resourceToLinkProps,
-  onNavigate,
-  hideSleeveHeader,
-  singleColumn,
-  infoText,
-  ignoreContentTypeBadge,
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 58px;
+    line-height: 58px;
+    ${fonts.sizes(18, 24)};
+  }
+`;
+
+const filterStyle = css`
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding-left: ${spacing.normal};
+  }
+  padding-left: 0;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  &:focus {
+    border: 1px solid ${colors.brand.primary};
+    border-left: 0;
+
+    & + .c-search-field__filters {
+      border: 1px solid ${colors.brand.primary};
+      border-right: 0;
+    }
+  }
+`;
+
+const SearchField = ({
+  placeholder,
+  value,
+  onChange,
+  filters,
+  small,
+  onClick,
   t,
-}) => (
-  <section {...classes('search-result')}>
-    {!hideSleeveHeader && (
-      <h1 {...classes('search-result-heading')}>
-        {t('searchPage.searchField.searchResultHeading')}
-      </h1>
-    )}
-    {infoText && (
-      <aside {...classes('search-result-infotext')}>{infoText}</aside>
-    )}
-    <div
-      {...classes(
-        'search-result-content',
-        singleColumn ? '' : 'multiple-columned',
-      )}>
-      {result.map(contentTypeResult => (
-        <ContentTypeResult
-          ignoreContentTypeBadge={ignoreContentTypeBadge}
-          onNavigate={onNavigate}
-          contentTypeResult={contentTypeResult}
-          resourceToLinkProps={resourceToLinkProps}
-          defaultCount={window.innerWidth > 980 ? 7 : 3}
-          key={contentTypeResult.title}
-          messages={{
-            allResultLabel: t(
-              'searchPage.searchField.contentTypeResultShowMoreLabel',
-            ),
-            showLessResultLabel: t(
-              'searchPage.searchField.contentTypeResultShowLessLabel',
-            ),
-            noHit: t('searchPage.searchField.contentTypeResultNoHit'),
-          }}
-        />
-      ))}
-    </div>
-    <div {...classes('go-to-search')}>
-      <AnchorButton
-        to={allResultUrl}
+  onFocus = () => {},
+  onBlur = () => {},
+  loading,
+  onFilterRemove,
+  inputRef,
+}) => {
+  const handleOnFilterRemove = (value, filterName) => {
+    onFilterRemove(value, filterName);
+    if (inputRef) {
+      inputRef.current.focus();
+    }
+    onFocus();
+  };
+  const hasFilters = filters && filters.length > 0;
+  return (
+    <div {...classes('input-wrapper')}>
+      {loading && <LoadingWrapper value={value} />}
+      <input
+        ref={inputRef}
+        type="search"
         css={css`
-          box-shadow: none;
-        `}>
-        {t('searchPage.searchField.allResultButtonText')}
-      </AnchorButton>
-    </div>
-  </section>
-);
-
-SearchResult.propTypes = {
-  result: PropTypes.arrayOf(ContentTypeResultShape),
-  resourceToLinkProps: PropTypes.func.isRequired,
-  allResultUrl: PropTypes.string.isRequired,
-  onNavigate: PropTypes.func,
-  hideSleeveHeader: PropTypes.bool,
-  singleColumn: PropTypes.bool,
-  infoText: PropTypes.node,
-  ignoreContentTypeBadge: PropTypes.bool,
-  t: PropTypes.func.isRequired,
-};
-
-class SearchField extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputHasFocus: false,
-    };
-    this.inputRef = React.createRef();
-    this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
-    this.onInputBlur = this.onInputBlur.bind(this);
-    this.onInputFocus = this.onInputFocus.bind(this);
-  }
-
-  onInputBlur() {
-    this.setState({
-      inputHasFocus: false,
-    });
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    }
-  }
-
-  onInputFocus() {
-    this.setState({
-      inputHasFocus: true,
-    });
-    if (this.props.onFocus) {
-      this.props.onFocus();
-    }
-  }
-
-  handleOnFilterRemove(value, filterName) {
-    this.props.onFilterRemove(value, filterName);
-    this.inputRef.current.focus();
-  }
-
-  render() {
-    const {
-      placeholder,
-      value,
-      onChange,
-      filters,
-      searchResult,
-      messages,
-      allResultUrl,
-      onSearch,
-      resourceToLinkProps,
-      small,
-      autofocus,
-      onNavigate,
-      modifiers: modifiersProp,
-      hideSleeveHeader,
-      singleColumn,
-      infoText,
-      ignoreContentTypeBadge,
-      onClick,
-      t,
-    } = this.props;
-
-    const hasSearchResult = searchResult && searchResult.length > 0;
-
-    let searchResultView = null;
-
-    const modifiers = [...modifiersProp];
-
-    if (hasSearchResult) {
-      modifiers.push('has-search-result');
-
-      searchResultView = (
-        <SearchResult
-          ignoreContentTypeBadge={ignoreContentTypeBadge}
-          result={searchResult}
-          searchString={value}
-          allResultUrl={allResultUrl}
-          resourceToLinkProps={resourceToLinkProps}
-          autofocus={autofocus}
-          hideSleeveHeader={hideSleeveHeader}
-          onNavigate={onNavigate}
-          singleColumn={singleColumn}
-          infoText={infoText}
-          t={t}
-        />
-      );
-    }
-
-    if (filters && filters.length > 0) {
-      modifiers.push('has-filter');
-    }
-
-    if (this.state.inputHasFocus) {
-      modifiers.push('input-has-focus');
-    }
-    return (
-      <form action="/search/" {...classes('', modifiers)} onSubmit={onSearch}>
-        <div {...classes('input-wrapper')}>
-          <input
-            ref={this.inputRef}
-            title={messages.searchFieldTitle}
-            type="search"
-            {...classes('input', { small })}
-            aria-autocomplete="list"
-            autoComplete="off"
-            id="search"
-            name="search"
-            placeholder={placeholder}
-            aria-label={placeholder}
-            value={value}
-            onChange={e => onChange(e.target.value)}
-            onBlur={this.onInputBlur}
-            onFocus={this.onInputFocus}
-            onClick={onClick}
+          ${inputStyle};
+          ${hasFilters && filterStyle};
+        `}
+        aria-autocomplete="list"
+        autoComplete="off"
+        id="search"
+        name="search"
+        placeholder={placeholder}
+        aria-label={placeholder}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onClick={onClick}
+      />
+      {hasFilters && (
+        <div {...classes('filters')}>
+          <ActiveFilters
+            filters={filters}
+            onFilterRemove={handleOnFilterRemove}
           />
-          {filters && filters.length > 0 && (
-            <div {...classes('filters')}>
-              <ActiveFilters
-                filters={filters}
-                onFilterRemove={this.handleOnFilterRemove}
-              />
-            </div>
-          )}
-          {value !== '' && (
-            <button
-              {...classes('button', 'close')}
-              type="button"
-              onClick={() => {
-                onChange('');
-                this.inputRef.current.focus();
-              }}>
-              {t('welcomePage.resetSearch')}
-            </button>
-          )}
-          <button
-            tabIndex="-1"
-            {...classes('button')}
-            type="submit"
-            value="Search">
-            <SearchIcon />
-          </button>
         </div>
-        {searchResultView}
-      </form>
-    );
-  }
-}
+      )}
+      {value !== '' && (
+        <button
+          {...classes('button', 'close')}
+          type="button"
+          onClick={() => {
+            onChange('');
+            onFocus();
+            if (inputRef) {
+              inputRef.current.focus();
+            }
+          }}>
+          {t('welcomePage.resetSearch')}
+        </button>
+      )}
+      <button
+        tabIndex="-1"
+        {...classes('button', 'searchIcon')}
+        type="submit"
+        value="Search">
+        <SearchIcon />
+      </button>
+    </div>
+  );
+};
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
     }),
   ),
-  messages: messagesShape,
   searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
-  resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
   small: PropTypes.bool,
-  autofocus: PropTypes.bool,
   onNavigate: PropTypes.func,
-  t: PropTypes.func.isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  modifiers: PropTypes.arrayOf(PropTypes.string),
-  hideSleeveHeader: PropTypes.bool,
-  singleColumn: PropTypes.bool,
-  infoText: PropTypes.node,
-  ignoreContentTypeBadge: PropTypes.bool,
   onClick: PropTypes.func,
-};
-
-SearchField.defaultProps = {
-  modifiers: [],
+  loading: PropTypes.bool,
 };
 
 export default injectT(SearchField);

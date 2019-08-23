@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { spacing, colors, fonts, breakpoints } from '@ndla/core';
 import { SafeLink } from '@ndla/ui';
 import styled from '@emotion/styled';
+// @ts-ignore
+import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
 
 const FilmContentCard = ({
@@ -29,7 +31,9 @@ const FilmContentCard = ({
           columnWidth={columnWidth}
           aria-label={(metaImage && metaImage.alt) || ''}
           style={{
-            backgroundImage: `url(${backgroundImage})`,
+            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(
+              600,
+            )})`,
           }}>
           {movieResourceTypes && !hideTags && (
             <FilmContentCardTags

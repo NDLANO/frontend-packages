@@ -73,7 +73,7 @@ const messages = {
       contentTypeResultShowLessLabel: 'Se færre resultater',
       allResultButtonText: 'Vis alle søketreff',
       searchResultHeading: 'Forslag:',
-      contentTypeResultNoHit: 'Ingen treff',
+      contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
@@ -100,6 +100,7 @@ const messages = {
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
+      removeFilter: 'Fjern filter {filterName}',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
     },
@@ -150,11 +151,12 @@ const messages = {
   },
   welcomePage: {
     search: 'Søk',
+    searchDisclaimer:
+      'Vi jobber stadig med å forbedre oss! Har du kommentarer til søket, blir vi glad om du legger dem inn i «spør NDLA» nede i høyre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
+    searchAllInfo: 'Se treff alle på søk',
     topicsConjunction: 'og',
-    topicsNotAvailableFromSearch:
-      'er ikke flyttet over til nye NDLA.no og vil ikke gi treff i dette søket.',
     highlighted: 'Aktuelt',
     heading: {
       heading: 'Nasjonal digital læringsarena',
@@ -179,7 +181,7 @@ const messages = {
     aboutNDLA: {
       heading: 'Om NDLA',
       description:
-        'NDLAs visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
+        'NDLA sin visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
       mainLink: {
         name: 'Mer om NDLA',
       },
@@ -221,7 +223,7 @@ const messages = {
       closeFilter: 'Lukk filter',
       learningResourcesHeading: 'Læringsressurser',
       back: 'Tilbake',
-      additionalFilterLabel: 'Vis tilleggsressurser',
+      additionalFilterLabel: 'Tilleggsressurser',
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mer fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
@@ -262,7 +264,7 @@ const messages = {
     noCoreResourcesAvailableUnspecific:
       'Det er ikke noe kjernestoff tilgjengelig.',
     noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {name}.',
-    activateAdditionalResources: 'Vis tilleggsstoff',
+    activateAdditionalResources: 'Tilleggsstoff',
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
     shortcutButtonText: 'Lærestoff',
@@ -417,9 +419,23 @@ const messages = {
   footer: {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Velg språk (language): ',
+    vision:
+      'NDLA sin visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
+    footerLinksHeader: 'Andre NDLA nettsteder',
     footerInfo: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
     footerEditiorInChief: 'Ansvarlig redaktør: ',
     footerManagingEditor: 'Utgaveansvarlig: ',
+    footerPrivacyLink: 'Personvernerklæring',
+    socialMediaLinks: {
+      facebook: 'NDLA på Facebook',
+      facebookAria: 'Besøk NDLA på Facebook',
+      newsletter: 'Meld deg på vårt nyhetsbrev',
+      newsletterAria: 'Meld deg på vårt nyhetsbrev',
+      twitter: 'NDLA på Twitter',
+      twitterAria: 'Besøk NDLA på Twitter',
+      sharePage: 'Del denne siden',
+      sharePageAria: 'Del denne siden',
+    },
   },
   contentTypes: {
     all: 'Alle',
@@ -445,6 +461,7 @@ const messages = {
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
+    prefixChangeLanguage: 'Velg målform',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',
@@ -532,7 +549,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag. De er valgt ut av NDLAs redaksjoner i samarbeid med Norgesfilm AS og Norsk filminstitutt.',
+        'Filmene i filmtjenesten er hentet fra norsk og internasjonal filmarv og kobles mot læreplaner i flere fag. De er valgt ut av NDLAs redaksjoner i samarbeid med Norgesfilm AS.',
       secondParagraph:
         'Du kan se filmene om du er koblet til Internett via datamaskinen, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du trenger å gjøre, er å trykke play.',
       thirdParagraph:
@@ -575,6 +592,24 @@ const messages = {
     searching: 'Søker...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+  },
+  blogPosts: {
+    blog1: {
+      text: 'Hvordan lage gode grupper med elever',
+      externalLink:
+        'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
+    blog2: {
+      text: 'Prosjektarbeid på tvers av fag',
+      externalLink:
+        'https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
   },
 };
 

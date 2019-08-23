@@ -1,6 +1,8 @@
 import { addDecorator } from '@storybook/react';
 import { LanguageWrapper } from './LanguageWrapper';
+import RouterWrapper from './RouterWrapper';
 
+addDecorator(RouterWrapper);
 addDecorator(LanguageWrapper);
 
 require('./welcome');
@@ -14,3 +16,4 @@ require('./licenses');
 require('./produksjonssystem');
 require('./experimental');
 require('./messages');
+require('./ndla-urls');

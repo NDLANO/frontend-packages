@@ -208,10 +208,6 @@
     flex-wrap: wrap;
     align-items: center;
 
-    .c-content-type-badge {
-      margin: 0 $spacing--small / 2 0 0;
-    }
-
     > * {
       margin: 0 $spacing--small $spacing--small 0;
     }
@@ -262,7 +258,7 @@
     align-items: center;
     flex-wrap: wrap;
     color: $text-light-color;
-    margin-bottom: $spacing--small;
+    margin-bottom: $spacing;
 
     @include font-size(14px, 18px);
 

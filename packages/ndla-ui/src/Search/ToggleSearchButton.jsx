@@ -29,6 +29,7 @@ const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
     `}
 
   align-items: center;
+  margin-left: ${spacing.normal};
 
   .c-icon {
     height: 24px;

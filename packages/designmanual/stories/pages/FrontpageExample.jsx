@@ -1,41 +1,23 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectT } from '@ndla/i18n';
 import {
-  FrontpageHeaderNew,
+  FrontpageHeader,
+  FrontpageSearch,
   OneColumn,
   FrontpageInfo,
   FrontpageFilm,
   FrontpageCircularSubjectsSection,
   InfoWidget,
-  SafeLink,
   SubjectSectionTitle,
   BlogPost,
   BlogPostWrapper,
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
-import { categories } from '../../dummydata/index';
-import BlogExampleImage1 from '../../images/blog/ExampleImage1.jpg';
-import BlogExampleImage2 from '../../images/blog/ExampleImage2.jpg';
+import { categories, dummyLanguageOptions } from '../../dummydata/index';
+import BlogExampleImage1 from '../../images/blog/elev-samarbeid.jpg';
+import BlogExampleImage2 from '../../images/blog/student-grupper.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
-
-const dummyBlogImages = [
-  {
-    url: BlogExampleImage1,
-    alt: 'Alt-tekst eksempel til Blogg-bilde..',
-  },
-  {
-    url: BlogExampleImage2,
-    alt: 'Alt-tekst eksempel til Blogg-bilde..',
-  },
-];
-
-const exampleTopicsNotInNDLA = [
-  'Kokk og servitørfag Vg2',
-  'Biologi 1',
-  'Sosiologi og sosialantropologi',
-  'Transport og logistikk Vg2',
-];
 
 class FrontpageExample extends Component {
   constructor(props) {
@@ -43,10 +25,12 @@ class FrontpageExample extends Component {
     this.state = {
       searchFieldValue: '',
       inputHasFocus: false,
+      loading: false,
     };
     this.searchFieldValue = this.searchFieldValue.bind(this);
     this.onSearchInputFocus = this.onSearchInputFocus.bind(this);
     this.onSearchDeactiveFocusTrap = this.onSearchDeactiveFocusTrap.bind(this);
+    this.timeoutLoading = null;
   }
 
   onSearchInputFocus() {
@@ -63,237 +47,228 @@ class FrontpageExample extends Component {
   }
 
   searchFieldValue(searchFieldValue) {
-    this.setState(prevState => ({
-      searchFieldValue,
-      inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
-    }));
-  }
-
-  renderInfoText() {
-    const { t } = this.props;
-    return (
-      <span>
-        {exampleTopicsNotInNDLA.map((topic, index) => {
-          const isLastTopic = index === exampleTopicsNotInNDLA.length - 1;
-          return (
-            <Fragment key={topic}>
-              {isLastTopic && `${t('welcomePage.topicsConjunction')} `}
-              <strong key={topic}>
-                {topic}
-                {index < exampleTopicsNotInNDLA.length - 2 && ','}{' '}
-              </strong>
-            </Fragment>
-          );
-        })}
-        {t('welcomePage.topicsNotAvailableFromSearch')}
-      </span>
+    clearInterval(this.timeoutLoading);
+    this.setState(
+      prevState => ({
+        searchFieldValue,
+        inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
+        loading: true,
+      }),
+      () => {
+        this.timeoutLoading = setTimeout(() => {
+          this.setState({
+            loading: false,
+          });
+        }, 400);
+      },
     );
   }
 
   render() {
     const { t } = this.props;
-    const { searchFieldValue, inputHasFocus } = this.state;
-    const needInfoTextInSearchSuggestions = exampleTopicsNotInNDLA.length > 0;
+    const { searchFieldValue, inputHasFocus, loading } = this.state;
 
     return (
       <>
-        <FrontpageHeaderNew
-          locale="nb"
-          searchFieldValue={searchFieldValue}
-          logoTo="home"
-          hideSearch={false}
-          onSearchFieldChange={this.searchFieldValue}
-          onSearch={e => {
-            e.preventDefault();
-          }}
-          allResultUrl={`search?query=${searchFieldValue}`}
-          onSearchInputFocus={this.onSearchInputFocus}
-          onSearchDeactiveFocusTrap={this.onSearchDeactiveFocusTrap}
-          searchFieldPlaceholder={t(
-            'welcomePage.heading.searchFieldPlaceholder',
-          )}
-          infoText={needInfoTextInSearchSuggestions && this.renderInfoText()}
-          inputHasFocus={inputHasFocus}
-          searchResult={
-            searchFieldValue.length > 2
-              ? [
-                  {
-                    title: 'Fag:',
-                    contentType: 'results-frontpage',
-                    resources: [
-                      {
-                        path: '#f1',
-                        boldName: 'Yrkesfag:',
-                        name: 'Design og håndverk',
-                        subName: 'Vg3',
-                      },
-                      {
-                        path: '#f2',
-                        boldName: 'Yrkesfag:',
-                        name: 'Helsearbeiderfag',
-                        subName: 'Vg1',
-                      },
-                      {
-                        path: '#f3',
-                        boldName: 'Fellesfag:',
-                        name: 'Samfunnsfag',
-                      },
-                    ],
-                  },
-                  {
-                    title: 'Emner:',
-                    contentType: 'results-frontpage',
-                    resources: [
-                      {
-                        path: '#e1',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Politikk og demokrati',
-                      },
-                      {
-                        path: '#e2',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Internasjonale forhold',
-                      },
-                      {
-                        path: '#e3',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Arbeidsliv- og næring',
-                      },
-                    ],
-                  },
-                  {
-                    title: 'Læringsressurser:',
-                    contentType: 'results-frontpage',
-                    resources: [
-                      {
-                        path: '#1',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Samfunnskontrakten: Å bli voksen',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#2',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Ulike metoder',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#3',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Dette er NAV',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#4',
-                        boldName: 'Samfunnsfag:',
-                        name: 'Oppsummeringsoppgave, tema, Urfolk',
-                        subName: 'Oppgaver og aktiviteter',
-                      },
-                      {
-                        path: '#5',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Utvilking av ny design',
-                        subName: 'Fagstoff',
-                      },
-                      {
-                        path: '#6',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Presentasjonsteknikk - demonstrasjon',
-                        subName: 'Oppgaver og aktiviteter',
-                      },
-                      {
-                        path: '#7',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#8',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#9',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#10',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                      {
-                        path: '#11',
-                        boldName: 'Design og håndverk Vg1:',
-                        name: 'Form og funksjon',
-                        subName: 'Læringssti',
-                      },
-                    ],
-                  },
-                ]
-              : []
-          }
-          messages={{
-            searchFieldTitle: t(
-              'welcomePage.heading.messages.searchFieldTitle',
-            ),
-            closeSearchLabel: t('welcomePage.closeSearch'),
-            menuButton: t('welcomePage.heading.messages.menuButton'),
-          }}
-          links={[
-            {
-              to: '#1',
-              text: 'Om NDLA',
-            },
-            {
-              to: '#2',
-              text: 'NDLA i sosiale medier',
-            },
-            {
-              to: '#3',
-              text: 'Nyhetsbrev',
-            },
-          ]}
-          languageOptions={{
-            nb: {
-              name: 'Bokmål',
-              url: '#',
-            },
-            nn: {
-              name: 'Nynorsk',
-              url: '#',
-            },
-            en: {
-              name: 'English',
-              url: '#',
-            },
-          }}
-        />
-        <main>
-          <FrontpageCircularSubjectsSection
-            categories={categories}
-            linkToAbout={<SafeLink to="#">om.ndla.no</SafeLink>}
+        <FrontpageHeader locale="nb" languageOptions={dummyLanguageOptions}>
+          <FrontpageSearch
+            locale="nb"
+            searchFieldValue={searchFieldValue}
+            logoTo="home"
+            hideSearch={false}
+            onSearchFieldChange={this.searchFieldValue}
+            onSearch={e => {
+              e.preventDefault();
+            }}
+            resourceToLinkProps={res => ({ to: res.path })}
+            allResultUrl={`search?query=${searchFieldValue}`}
+            onSearchInputFocus={this.onSearchInputFocus}
+            onInputBlur={this.onSearchDeactiveFocusTrap}
+            searchFieldPlaceholder={t(
+              'welcomePage.heading.searchFieldPlaceholder',
+            )}
+            inputHasFocus={inputHasFocus}
+            loading={loading}
+            searchResult={
+              searchFieldValue.length > 2 && [
+                {
+                  title: 'Fag:',
+                  contentType: 'results-frontpage',
+                  resources: [
+                    {
+                      path: '#f1',
+                      subject: 'Yrkesfag',
+                      name: 'Design og håndverk',
+                    },
+                    {
+                      path: '#f2',
+                      subject: 'Yrkesfag',
+                      name: 'Helsearbeiderfag',
+                    },
+                    {
+                      path: '#f3',
+                      subject: 'Fellesfag',
+                      name: 'Samfunnsfag',
+                    },
+                    {
+                      path: '#f4',
+                      subject: 'Fellesfag',
+                      name: 'Historie',
+                    },
+                  ],
+                },
+                {
+                  title: 'Emner:',
+                  contentType: 'results-frontpage',
+                  resources: [
+                    {
+                      path: '#e1',
+                      subject: 'Samfunnsfag',
+                      name: 'Politikk og demokrati',
+                      resourceTypes: [
+                        {
+                          name: 'Kildematerial',
+                        },
+                        {
+                          name: 'Kortfilm',
+                        },
+                      ],
+                    },
+                    {
+                      path: '#e2',
+                      subject: 'Samfunnsfag',
+                      name: 'Internasjonale forhold',
+                    },
+                    {
+                      path: '#e3',
+                      subject: 'Samfunnsfag',
+                      name: 'Arbeidsliv- og næring',
+                    },
+                  ],
+                },
+                {
+                  title: 'Oppgaver:',
+                  contentType: 'results-frontpage',
+                  resources: [],
+                },
+                {
+                  title: 'Læringsressurser:',
+                  contentType: 'results-frontpage',
+                  resources: [
+                    {
+                      path: '#1',
+                      subject: 'Samfunnsfag',
+                      name: 'Samfunnskontrakten: Å bli voksen',
+                    },
+                    {
+                      path: '#2',
+                      subject: 'Samfunnsfag',
+                      name: 'Ulike metoder',
+                      resourceTypes: [
+                        {
+                          name: 'Fagstoff',
+                        },
+                      ],
+                    },
+                    {
+                      path: '#3',
+                      subject: 'Samfunnsfag',
+                      name: 'Dette er NAV',
+                      resourceTypes: [
+                        {
+                          name: 'Oppgaver og aktiviteter',
+                        },
+                      ],
+                    },
+                    {
+                      path: '#4',
+                      subject: 'Samfunnsfag',
+                      name: 'Oppsummeringsoppgave, tema, Urfolk',
+                      resourceTypes: [
+                        {
+                          name: 'Oppgaver og aktiviteter',
+                        },
+                      ],
+                      additional: true,
+                    },
+                    {
+                      path: '#5',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Utvilking av ny design',
+                    },
+                    {
+                      path: '#6',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Presentasjonsteknikk - demonstrasjon',
+                    },
+                    {
+                      path: '#7',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Form og funksjon',
+                      additional: true,
+                    },
+                    {
+                      path: '#8',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Form og funksjon',
+                    },
+                    {
+                      path: '#9',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Form og funksjon',
+                    },
+                    {
+                      path: '#10',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Form og funksjon',
+                      additional: true,
+                    },
+                    {
+                      path: '#11',
+                      subject: 'Design og håndverk Vg1',
+                      name: 'Form og funksjon',
+                    },
+                  ],
+                },
+              ]
+            }
+            messages={{
+              searchFieldTitle: t(
+                'welcomePage.heading.messages.searchFieldTitle',
+              ),
+              closeSearchLabel: t('welcomePage.closeSearch'),
+              menuButton: t('welcomePage.heading.messages.menuButton'),
+            }}
+            languageOptions={dummyLanguageOptions}
           />
-          <OneColumn wide extraPadding>
+        </FrontpageHeader>
+        <main>
+          <FrontpageCircularSubjectsSection categories={categories} />
+          <OneColumn extraPadding>
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
                 <BlogPost
-                  text="Hjelp til deg som skal opp i norsk"
-                  image={dummyBlogImages[0]}
-                  externalLink="#"
-                  linkText="Besøk vår elevblogg"
-                  linkTextShort="Elevblogg"
+                  text={t('blogPosts.blog1.text')}
+                  image={{
+                    url: BlogExampleImage1,
+                  }}
+                  externalLink={t('blogPosts.blog1.externalLink')}
+                  linkText={t('blogPosts.blog1.linkText')}
+                  license={t('blogPosts.blog1.license')}
+                  licenseAuthor={t('blogPosts.blog1.licenseAuthor')}
+                  locale="nb"
                 />
                 <BlogPost
-                  text="Hjelp til deg som skal opp i norsk"
-                  image={dummyBlogImages[1]}
-                  externalLink="#"
-                  linkText="Besøk vår fagblogg"
-                  linkTextShort="Fagblogg"
+                  text={t('blogPosts.blog2.text')}
+                  image={{
+                    url: BlogExampleImage2,
+                  }}
+                  externalLink={t('blogPosts.blog2.externalLink')}
+                  linkText={t('blogPosts.blog2.linkText')}
+                  license={t('blogPosts.blog2.license')}
+                  licenseAuthor={t('blogPosts.blog2.licenseAuthor')}
+                  locale="nb"
                 />
               </BlogPostWrapper>
             </section>

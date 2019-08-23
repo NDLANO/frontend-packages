@@ -7,8 +7,7 @@
  */
 
 import Masthead, { MastheadItem } from './Masthead';
-import MastheadLanguageSelector from './MastheadLanguageSelector';
 
-export { MastheadItem, MastheadLanguageSelector };
+export { MastheadItem };
 
 export default Masthead;

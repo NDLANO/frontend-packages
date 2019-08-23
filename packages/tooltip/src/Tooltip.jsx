@@ -70,13 +70,26 @@ class Tooltip extends Component {
     this.tooltipRef = React.createRef();
   }
 
+  getElementPosition() {
+    if (this.focusableChild) {
+      return {
+        widthRef: this.focusableChild.offsetWidth,
+        heightRef: this.focusableChild.offsetHeight,
+        elementRect: this.focusableChild.getBoundingClientRect(),
+      };
+    }
+    return {
+      widthRef: this.contentRef.current.offsetWidth,
+      heightRef: this.contentRef.current.offsetHeight,
+      elementRect: this.contentRef.current.getBoundingClientRect(),
+    };
+  }
+
   getPosition() {
     const currentStyles = {};
     const { align } = this.props;
     if (this.state.showTooltip) {
-      const widthRef = this.focusableChild.offsetWidth;
-      const heightRef = this.focusableChild.offsetHeight;
-      const elementRect = this.focusableChild.getBoundingClientRect();
+      const { widthRef, heightRef, elementRect } = this.getElementPosition();
       const leftRef = elementRect.left;
       const tooltipWidth = this.tooltipRef.current.offsetWidth;
 
@@ -117,7 +130,6 @@ class Tooltip extends Component {
           2}px))`;
       }
     }
-
     return currentStyles;
   }
 
@@ -159,18 +171,19 @@ class Tooltip extends Component {
       delay,
       tooltip,
       children,
+      rest,
     } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
-        <div className={tooltipContainerClass}>
+        <div className={tooltipContainerClass} ref={this.contentRef} {...rest}>
           <span className={className}>{children}</span>
         </div>
       );
     }
 
     return (
-      <TooltipWrapper className={tooltipContainerClass}>
+      <TooltipWrapper className={tooltipContainerClass} {...rest}>
         <Fade animateIn={this.state.showTooltip} delay={delay}>
           <span
             role="tooltip"

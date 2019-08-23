@@ -141,22 +141,64 @@ export const appearances = {
   `,
   ghostPillInverted: css`
     ${strippedStyle};
-
     ${pillStyle};
     color: ${colors.brand.lightest};
-    box-shadow: 0 1px 0 ${colors.brand.lightest};
-
-    &:hover {
+    > span {
+      box-shadow: none;
+    }
+    &:hover,
+    &:focus {
       background-color: ${colors.brand.light};
       box-shadow: none;
+      > span {
+        box-shadow: none;
+      }
     }
   `,
   ghostPill: css`
     ${strippedStyle};
     ${pillStyle};
-
-    &:hover {
+    > span {
+      box-shadow: none;
+    }
+    &:hover,
+    &:focus {
       background-color: ${colors.brand.light};
+    }
+  `,
+  ghostPillOutline: css`
+    ${strippedStyle};
+    ${pillStyle};
+    border: 2px solid ${colors.brand.primary};
+    transition: ${misc.transition.default};
+    > span {
+      box-shadow: none;
+    }
+    &:hover,
+    &:focus {
+      background-color: ${colors.brand.light};
+      border: 2px solid transparent;
+      > span {
+        box-shadow: none;
+      }
+    }
+  `,
+  ghostPillOutlineInverted: css`
+    ${strippedStyle};
+    ${pillStyle};
+    border: 2px solid #fff;
+    transition: ${misc.transition.default};
+    color: ${colors.brand.lightest};
+    > span {
+      box-shadow: none;
+    }
+    &:hover,
+    &:focus {
+      background-color: ${colors.brand.light};
+      border: 2px solid transparent;
+      > span {
+        box-shadow: none;
+      }
     }
   `,
 };
@@ -223,6 +265,8 @@ export const Button = ({
   safelink,
   ghostPill,
   ghostPillInverted,
+  ghostPillOutline,
+  ghostPillOutlineInverted,
   ...rest
 }) => {
   const modifiers = {
@@ -234,6 +278,8 @@ export const Button = ({
     invertedOutline,
     ghostPill,
     ghostPillInverted,
+    ghostPillOutline,
+    ghostPillOutlineInverted,
   };
 
   const styledAppearance = appearance || modifierToApperance(modifiers);
@@ -276,6 +322,7 @@ Button.propTypes = {
     'invertedOutline',
     'ghostPill',
     'ghostPillInverted',
+    'ghostPillOutline',
   ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type

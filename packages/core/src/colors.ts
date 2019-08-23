@@ -25,6 +25,7 @@ export default {
      * NDLA Grays
      */
     grey: '#777777',
+    greyMedium: '#9b9b9b',
     greyLight: brandGreyLight,
     greyLighter: '#eff0f2',
     greyLightest: brandGreyLightest,

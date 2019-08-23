@@ -121,7 +121,7 @@ class Resources extends Component {
           <ResourcesTopicTitle
             messages={{
               label: 'Læringsressurser',
-              additionalFilterLabel: 'Vis tilleggsressurser',
+              additionalFilterLabel: 'Tilleggsressurser',
               dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
               dialogHeading: 'Kjernestoff og tilleggsstoff',
               dialogTexts: [
@@ -150,7 +150,7 @@ class Resources extends Component {
             icon={<ContentTypeBadge type={group.contentType} />}
             messages={{
               noContentBoxLabel: group.noContentLabel,
-              noContentBoxButtonText: 'Vis tilleggsstoff',
+              noContentBoxButtonText: 'Tilleggsstoff',
               toggleFilterLabel: 'Tilleggsressurser',
               coreTooltip: 'Kjernestoff er fagstoff som er på pensum',
               additionalTooltip: 'Tilleggsstoff er ikke på pensum',

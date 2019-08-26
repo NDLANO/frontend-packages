@@ -129,7 +129,6 @@ class Modal extends React.Component {
       wrapperFunctionForButton,
       onClose,
       onOpen,
-      containerComponent: Component,
       onClick: onClickEvent,
       animationDuration,
       animation,
@@ -163,13 +162,16 @@ class Modal extends React.Component {
         ? wrapperFunctionForButton(clonedComponent)
         : clonedComponent);
 
+    console.log(isOpen);
+
     return (
-      <Component {...rest}>
+      <>
         {modalButton}
         <StyledDialogOverlay
           isOpen={isOpen || !!propsIsOpen}
           animateIn={animateIn}
-          onDismiss={this.closeModal}>
+          onDismiss={this.closeModal}
+          {...rest}>
           <DialogContent
             css={css`
               animation-duration: ${animationDuration}ms;
@@ -182,14 +184,13 @@ class Modal extends React.Component {
             {children(this.closeModal)}
           </DialogContent>
         </StyledDialogOverlay>
-      </Component>
+      </>
     );
   }
 }
 
 Modal.propTypes = {
   children: PropTypes.func.isRequired,
-  containerComponent: PropTypes.string,
   onClick: PropTypes.func,
   onClose: PropTypes.func,
   animation: PropTypes.oneOf(['slide-up', 'slide-down', 'zoom-in', 'subtle']),
@@ -226,7 +227,6 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  containerComponent: 'div',
   animation: 'zoom-in',
   size: 'regular',
   backgroundColor: 'blue',

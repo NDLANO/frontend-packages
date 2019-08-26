@@ -1,16 +1,16 @@
 /**
- * Copyright (c) 2016-present, NDLA.
+ * Copyright (c) 2019-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import * as React from 'react';
+import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { LocationDescriptor } from 'history';
 import isString from 'lodash/isString';
-import SafeLinkContext from './SafeLinkContext';
+import MissingRouterContext from './MissingRouterContext';
 
 const isExternalLink = (to?: LocationDescriptor) =>
   to &&
@@ -24,8 +24,8 @@ export const isOldNdlaLink = (to?: LocationDescriptor) =>
 const SafeLink: React.FunctionComponent<
   LinkProps & React.HTMLAttributes<HTMLElement>
 > = ({ to, replace, children, ...rest }) => {
-  const isSafeLinkContext = React.useContext(SafeLinkContext);
-  if (!isSafeLinkContext || isExternalLink(to) || isOldNdlaLink(to)) {
+  const isMissingRouterContext = React.useContext(MissingRouterContext);
+  if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
     const href = typeof to === 'string' ? to : '#';
     return (
       <a href={href} {...rest}>

@@ -6,102 +6,139 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
+import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
+import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
 
 import ActiveFilters from './ActiveFilters';
+import LoadingWrapper from './LoadingWrapper';
 
 import { ContentTypeResultShape } from '../shapes';
 
 const classes = new BEMHelper('c-search-field');
 
-const messagesShape = PropTypes.shape({
-  // required if search result
-  searchResultHeading: PropTypes.string,
-  contentTypeResultShowMoreLabel: PropTypes.string,
-  contentTypeResultShowLessLabel: PropTypes.string,
-  contentTypeResultNoHit: PropTypes.string,
-});
+const inputStyle = css`
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid ${colors.brand.greyLight};
+  border-radius: ${misc.borderRadius};
+  padding-right: ${spacing.large};
+  padding-left: ${spacing.normal};
+  flex-grow: 1;
+  outline: 0;
 
-class SearchField extends Component {
-  constructor(props) {
-    super(props);
-
-    this.inputRef = React.createRef();
-    this.handleOnFilterRemove = this.handleOnFilterRemove.bind(this);
+  &:focus {
+    border-color: ${colors.brand.primary};
   }
 
-  handleOnFilterRemove(value, filterName) {
-    this.props.onFilterRemove(value, filterName);
-    this.inputRef.current.focus();
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 58px;
+    line-height: 58px;
+    ${fonts.sizes(18, 24)};
   }
+`;
 
-  render() {
-    const {
-      placeholder,
-      value,
-      onChange,
-      filters,
-      messages,
-      small,
-      onClick,
-      t,
-      onFocus,
-      onBlur,
-    } = this.props;
+const filterStyle = css`
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding-left: ${spacing.normal};
+  }
+  padding-left: 0;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 
-    return (
-      <div {...classes('input-wrapper')}>
-        <input
-          ref={this.inputRef}
-          title={messages.searchFieldTitle}
-          type="search"
-          {...classes('input', { small })}
-          aria-autocomplete="list"
-          autoComplete="off"
-          id="search"
-          name="search"
-          placeholder={placeholder}
-          aria-label={placeholder}
-          value={value}
-          onChange={e => onChange(e.target.value)}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onClick={onClick}
-        />
-        {filters && filters.length > 0 && (
-          <div {...classes('filters')}>
-            <ActiveFilters
-              filters={filters}
-              onFilterRemove={this.handleOnFilterRemove}
-            />
-          </div>
-        )}
-        {value !== '' && (
-          <button
-            {...classes('button', 'close')}
-            type="button"
-            onClick={() => {
-              onChange('');
-              this.inputRef.current.focus();
-            }}>
-            {t('welcomePage.resetSearch')}
-          </button>
-        )}
+  &:focus {
+    border: 1px solid ${colors.brand.primary};
+    border-left: 0;
+
+    & + .c-search-field__filters {
+      border: 1px solid ${colors.brand.primary};
+      border-right: 0;
+    }
+  }
+`;
+
+const SearchField = ({
+  placeholder,
+  value,
+  onChange,
+  filters,
+  small,
+  onClick,
+  t,
+  onFocus = () => {},
+  onBlur = () => {},
+  loading,
+  onFilterRemove,
+  inputRef,
+}) => {
+  const handleOnFilterRemove = (value, filterName) => {
+    onFilterRemove(value, filterName);
+    if (inputRef) {
+      inputRef.current.focus();
+    }
+    onFocus();
+  };
+  const hasFilters = filters && filters.length > 0;
+  return (
+    <div {...classes('input-wrapper')}>
+      {loading && <LoadingWrapper value={value} />}
+      <input
+        ref={inputRef}
+        type="search"
+        css={css`
+          ${inputStyle};
+          ${hasFilters && filterStyle};
+        `}
+        aria-autocomplete="list"
+        autoComplete="off"
+        id="search"
+        name="search"
+        placeholder={placeholder}
+        aria-label={placeholder}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onClick={onClick}
+      />
+      {hasFilters && (
+        <div {...classes('filters')}>
+          <ActiveFilters
+            filters={filters}
+            onFilterRemove={handleOnFilterRemove}
+          />
+        </div>
+      )}
+      {value !== '' && (
         <button
-          tabIndex="-1"
-          {...classes('button', 'searchIcon')}
-          type="submit"
-          value="Search">
-          <SearchIcon />
+          {...classes('button', 'close')}
+          type="button"
+          onClick={() => {
+            onChange('');
+            onFocus();
+            if (inputRef) {
+              inputRef.current.focus();
+            }
+          }}>
+          {t('welcomePage.resetSearch')}
         </button>
-      </div>
-    );
-  }
-}
+      )}
+      <button
+        tabIndex="-1"
+        {...classes('button', 'searchIcon')}
+        type="submit"
+        value="Search">
+        <SearchIcon />
+      </button>
+    </div>
+  );
+};
 
 SearchField.propTypes = {
   value: PropTypes.string.isRequired,
@@ -113,21 +150,15 @@ SearchField.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ),
-  messages: messagesShape,
   searchResult: PropTypes.arrayOf(ContentTypeResultShape),
   allResultUrl: PropTypes.string,
-  resourceToLinkProps: PropTypes.func,
   onFilterRemove: PropTypes.func,
   small: PropTypes.bool,
-  autofocus: PropTypes.bool,
   onNavigate: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  hideSleeveHeader: PropTypes.bool,
-  singleColumn: PropTypes.bool,
-  infoText: PropTypes.node,
-  ignoreContentTypeBadge: PropTypes.bool,
   onClick: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 export default injectT(SearchField);

@@ -44,8 +44,7 @@ const StyledHeader = styled.h1`
     margin-bottom: -${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-top: ${spacing.normal};
-    margin-bottom: -${spacing.spacingUnit * 4}px;
+    margin-bottom: -${spacing.spacingUnit * 3}px;
   }
 `;
 

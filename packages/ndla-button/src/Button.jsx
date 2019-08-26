@@ -139,6 +139,17 @@ export const appearances = {
       box-shadow: ${colors.linkHover};
     }
   `,
+  boldLink: css`
+    ${strippedStyle};
+    color: ${colors.brand.primary};
+    text-decoration: underline;
+    font-weight: ${fonts.weight.bold};
+    font-size: inherit;
+    line-height: inherit;
+    &:focus, &:hover {
+      text-decoration: none;
+    }
+  `,
   ghostPillInverted: css`
     ${strippedStyle};
     ${pillStyle};
@@ -254,6 +265,7 @@ export const Button = ({
   outline,
   stripped,
   link,
+  boldLink,
   lighter,
   submit,
   loading,
@@ -271,6 +283,7 @@ export const Button = ({
 }) => {
   const modifiers = {
     link,
+    boldLink,
     outline,
     lighter,
     stripped,
@@ -306,6 +319,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
   link: PropTypes.bool,
+  boldLink: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
   ghostPill: PropTypes.bool,
@@ -316,6 +330,7 @@ Button.propTypes = {
   appearance: PropTypes.oneOf([
     'outline',
     'link',
+    'boldLink',
     'stripped',
     'lighter',
     'inverted',

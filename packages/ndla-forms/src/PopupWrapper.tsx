@@ -6,16 +6,17 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, ReactChild, ReactChildren } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { CSSPropertiesWithMultiValues } from '@emotion/serialize';
 import FocusTrapReact from 'focus-trap-react';
 // @ts-ignore
-import Button from '@ndla/button';
-// @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
+// @ts-ignore
+import { Cross } from '@ndla/icons/action';
 
-import { spacing, misc, animations } from '@ndla/core';
+import { spacing, misc, animations, colors } from '@ndla/core';
 
 type StyledIconProps = {
   rotate: number;
@@ -31,6 +32,7 @@ type StyledOptionWrapperAnimationProps = {
   offsetY?: number | string;
   offsetX?: number | string;
   background?: string;
+  withCloseButton?: boolean;
 };
 
 const StyledWrapper = styled.div`
@@ -68,6 +70,9 @@ const StyledOptionWrapperAnimation = styled.div<StyledOptionWrapperAnimationProp
 
 const StyledOptionContent = styled.div`
   opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   animation-delay: 100ms;
   animation-fill-mode: forwards;
   ${animations.fadeIn()}
@@ -78,32 +83,63 @@ const StyledOptionWrapper = styled.div<StyledOptionWrapperAnimationProps>`
   border-radius: ${misc.borderRadius};
   display: flex;
   flex-direction: column;
-  animation-duration: 400ms;
+  animation-duration: 200ms;
   animation-name: wrapperAnimation;
   animation-timing-function: cubic-bezier(0.46, 0.01, 0.19, 1);
   animation-fill-mode: forwards;
   @keyframes wrapperAnimation {
     0% {
-      padding-top: ${spacing.spacingUnit + 3}px;
-      padding-right: ${spacing.spacingUnit + 3}px;
       clip-path: inset(99% 99% 0 0 round 1%);
     }
-    50% {
-      padding-top: ${spacing.spacingUnit + 3}px;
-      padding-right: ${spacing.spacingUnit + 3}px;
-      clip-path: inset(0 0 0 0 round 1%);
-    }
     100% {
-      padding-top: ${spacing.normal};
-      padding-right: ${spacing.normal};
       clip-path: inset(0 0 0 0 round 0%);
     }
   }
 `;
 
+const StyledCloseButton = styled.button`
+  width: ${spacing.medium};
+  height: ${spacing.medium};
+  padding: ${spacing.xsmall};
+  margin: ${spacing.small} ${spacing.small} 0 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: ${spacing.medium};
+    height: ${spacing.medium};
+    border-radius: 100%;
+    background: ${colors.brand.light};
+    transform: scale(0);
+    opacity: 0;
+    transition: all 200ms ease;
+  }
+  &:hover, &:focus {
+    &:before {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  svg {
+    fill: ${colors.brand.primary};
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+  }
+`;
+
 interface Props extends StyledOptionWrapperAnimationProps {
-  children: React.ReactNode | React.ReactNodeArray;
+  children: (arg: Function) => ReactChild | ReactChildren;
   label: string;
+  buttonStyle: CSSPropertiesWithMultiValues;
+  onOpen?: () => void;
+  onClose?: () => void;
 };
 
 const PopupWrapper: React.FC<Props> = ({
@@ -114,24 +150,34 @@ const PopupWrapper: React.FC<Props> = ({
   offsetX,
   offsetY,
   background,
+  withCloseButton,
+  onOpen,
+  onClose,
+  buttonStyle,
 }) => {
   const [isOpen, toggleIsOpen] = useState(false);
-  console.log(offsetY);
-  console.log('verticalPosition', typeof offsetY === 'string' ? offsetY : `${offsetY}px`);
+  const setPopupState = (newState?: boolean) => {
+    toggleIsOpen(newState === true);
+    if (newState === true && onOpen) {
+      onOpen();
+    } else if (newState === false && onClose) {
+      onClose();
+    }
+  }
   return (
     <StyledWrapper>
       <FocusTrapReact
         active={isOpen}
         focusTrapOptions={{
-          onDeactivate: () => toggleIsOpen(false),
+          onDeactivate: () => setPopupState(false),
           clickOutsideDeactivates: true,
           escapeDeactivates: true,
         }}
       >
         <div>
-          <Button onClick={() => toggleIsOpen(!isOpen)}>
-            {label} <StyledIcon rotate={isOpen ? 0 : 180} />
-          </Button>
+          <button type="button" css={buttonStyle} onClick={() => setPopupState(!isOpen)}>
+            {label} <StyledIcon rotate={isOpen ? 180 : 0} />
+          </button>
           {isOpen && (
             <StyledOptionWrapperAnimation
               offsetX={typeof offsetX === 'string' ? offsetX : `${offsetX}px`}
@@ -141,7 +187,12 @@ const PopupWrapper: React.FC<Props> = ({
             >
               <StyledOptionWrapper background={background}>
                 <StyledOptionContent>
-                  {children}
+                  {withCloseButton && (
+                    <StyledCloseButton type="button" onClick={() => setPopupState(false)}>
+                      <Cross />
+                    </StyledCloseButton>
+                  )}
+                  {children(setPopupState)}
                 </StyledOptionContent>
               </StyledOptionWrapper>
             </StyledOptionWrapperAnimation>
@@ -158,6 +209,7 @@ PopupWrapper.defaultProps = {
   offsetX: 0,
   offsetY: 0,
   background: '#fff',
+  withCloseButton: false,
 };
 
 export default PopupWrapper;

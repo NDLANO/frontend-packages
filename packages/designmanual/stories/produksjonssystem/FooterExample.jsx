@@ -21,7 +21,7 @@ const optionsQualityInsurance = [
   {
     name: 'Valider',
     onClick: () => {},
-  }
+  },
 ];
 
 const optionsFooterStatus = [
@@ -45,7 +45,7 @@ const optionsFooterStatus = [
   {
     name: 'Kvalitetssikret',
     id: '#5',
-  }
+  },
 ];
 
 const StyledLine = styled.hr`
@@ -86,7 +86,12 @@ const FooterExample = () => (
         }}
       />
       <StyledLine />
-      <Button link css={buttonStyle} onClick={() => { console.log('clicked..'); }}>
+      <Button
+        link
+        css={buttonStyle}
+        onClick={() => {
+          console.log('clicked..');
+        }}>
         Tilbakestill endringer
       </Button>
     </div>
@@ -107,7 +112,11 @@ const FooterExample = () => (
           statusLabel: 'Status:',
         }}
       />
-      <Button css={largerButtonStyle} onClick={() => { console.log('save resource'); }}>
+      <Button
+        css={largerButtonStyle}
+        onClick={() => {
+          console.log('save resource');
+        }}>
         Lagre
       </Button>
     </div>

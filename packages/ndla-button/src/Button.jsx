@@ -146,7 +146,8 @@ export const appearances = {
     font-weight: ${fonts.weight.bold};
     font-size: inherit;
     line-height: inherit;
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       text-decoration: none;
     }
   `,

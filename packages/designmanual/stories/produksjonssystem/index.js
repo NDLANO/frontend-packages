@@ -33,8 +33,7 @@ import FooterExample from './FooterExample';
 storiesOf('Produksjonssystem', module)
   .add('Footer for produksjonssystem', () => (
     <div>
-      <StoryIntro title="Footer for produksjonssystemet">
-      </StoryIntro>
+      <StoryIntro title="Footer for produksjonssystemet" />
       <FooterExample />
     </div>
   ))

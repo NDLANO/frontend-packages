@@ -10,8 +10,7 @@ import PropTypes from 'prop-types';
 import { Spinner } from '@ndla/editor';
 import { Search } from '@ndla/icons/common';
 import { Input, FormPill } from '@ndla/forms';
-
-const isObject = maybeAnObject => typeof maybeAnObject === 'object';
+import { getFieldValue } from './dropdownHelper';
 
 const DropdownInput = ({
   multiSelect,
@@ -31,9 +30,9 @@ const DropdownInput = ({
       multiSelect &&
       values.map(value => (
         <FormPill
-          label={labelField ? value[labelField] : value}
-          key={idField ? value[idField] : value}
-          id={idField ? value[idField] : value}
+          label={getFieldValue(value, labelField)}
+          key={getFieldValue(value, idField)}
+          id={getFieldValue(value, idField)}
           onClick={removeItem}
         />
       ))

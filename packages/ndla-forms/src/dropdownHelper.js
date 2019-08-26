@@ -31,3 +31,10 @@ export const checkIfItemIsSelected = (
   }
   return false;
 };
+
+export const getFieldValue = (value, field = undefined) => {
+  if (!field) {
+    return value;
+  }
+  return value && value[field] ? value[field] : '';
+};

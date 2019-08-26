@@ -6,7 +6,7 @@
  *
  */
 
-import { checkIfItemIsSelected } from '../checkIfItemIsSelected';
+import { checkIfItemIsSelected, getFieldValue } from '../dropdownHelper';
 
 const dropdownItem = {
   anIdField: '1',
@@ -108,4 +108,18 @@ test('checkIfItemIsSelected is false with strings & multiselect false', () => {
       undefined,
     ),
   ).toBe(false);
+});
+
+test('getFieldValue with field undefined', () => {
+  expect(getFieldValue('test')).toMatchSnapshot();
+  expect(getFieldValue({ test: 'test' })).toMatchSnapshot();
+});
+
+test('getFieldValue with field assigned', () => {
+  expect(
+    getFieldValue(
+      { testfield: 'test', someotherfield: 'other test value' },
+      'testfield',
+    ),
+  ).toMatchSnapshot();
 });

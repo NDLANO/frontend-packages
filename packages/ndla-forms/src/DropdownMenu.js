@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import DropdownMenuItem from './DropdownMenuItem';
-import { checkIfItemIsSelected } from './checkIfItemIsSelected';
+import { getFieldValue, checkIfItemIsSelected } from './dropdownHelper';
 
 const StyledDropDownContainer = styled.div`
   font-family: ${fonts.sans};
@@ -91,12 +91,12 @@ const DropdownMenu = ({
               ),
             })}
             disableSelected={disableSelected}
-            item={
-              idField && labelField
-                ? { ...item, title: item[labelField], id: item[idField] }
-                : { title: item, id: item }
-            }
-            key={`${labelField ? item[labelField] : item}${index}`}
+            item={{
+              ...item,
+              title: getFieldValue(item, labelField),
+              id: getFieldValue(item, idField),
+            }}
+            key={`${getFieldValue(item, labelField)}${index}`}
           />
         ))}
       </StyledResultList>

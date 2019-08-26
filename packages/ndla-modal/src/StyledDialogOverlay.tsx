@@ -13,6 +13,7 @@ const dialogStyles = css`
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: 100;
   background: rgba(1, 1, 1, 0.3);
   display: flex;
   align-items: center;

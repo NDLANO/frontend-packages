@@ -6,188 +6,100 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import em from 'polished/lib/helpers/em';
-import { noScroll, uuid } from '@ndla/util';
 
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import { DialogContent } from '@reach/dialog';
 import css from '@emotion/css';
 import { StyledDialogOverlay } from './StyledDialogOverlay';
 
-const uuidList = [];
+const Modal = ({
+  activateButton,
+  wrapperFunctionForButton,
+  onClose,
+  onClick: onClickEvent,
+  animationDuration,
+  animation,
+  size,
+  minHeight,
+  backgroundColor,
+  children,
+  narrow,
+  controllable,
+  isOpen: propsIsOpen,
+  ...rest
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [animateIn, setAnimateIn] = useState(!!controllable);
 
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-    const autoOpen = props.controllable && props.isOpen;
-    this.state = {
-      isOpen: !!autoOpen,
-      animateIn: !!props.controllable,
-    };
-    this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.onAnimationEnd = this.onAnimationEnd.bind(this);
-    this.containerRef = React.createRef();
-    this.scrollPosition = null;
-    this.el = null;
-    this.uuid = uuid();
-  }
-
-  componentDidMount() {
-    this.manuallyUpdateUuid();
-  }
-
-  componentDidUpdate() {
-    if (this.scrollPosition && this.el) {
-      this.el.scrollTop = this.scrollPosition;
-    } else if (
-      this.props.controllable &&
-      !this.props.isOpen &&
-      uuidList.indexOf(this.uuid) !== -1
-    ) {
-      this.removeScroll();
+  const onAnimationEnd = () => {
+    if (!animateIn && isOpen) {
+      console.log('animated Out');
+      setIsOpen(false);
+      if (onClose) onClose();
     }
-  }
+  };
 
-  componentWillUnmount() {
-    if (this.state.isOpen) {
-      this.removedModal();
+  const closeModal = () => {
+    if (isOpen) {
+      setAnimateIn(false);
     }
-  }
+  };
 
-  onAnimationEnd() {
-    this.manuallyUpdateUuid();
-    if (!this.state.animateIn && this.state.isOpen) {
-      this.setState(
-        {
-          isOpen: false,
-        },
-        this.removedModal,
-      );
-    } else if (this.state.animateIn && this.state.isOpen) {
-      this.el = document.body.querySelector(`[data-modal='${this.uuid}']`);
-      if (this.props.onOpen) {
-        this.props.onOpen();
-      }
+  const openModal = () => {
+    if (!isOpen) {
+      setAnimateIn(true);
+      setIsOpen(true);
     }
+  };
+
+  const showDialog = controllable ? propsIsOpen : isOpen;
+
+  let clonedComponent;
+  if (activateButton) {
+    clonedComponent = React.cloneElement(activateButton, {
+      onClick: () => {
+        openModal();
+        if (onClickEvent) {
+          onClickEvent();
+        }
+      },
+    });
   }
 
-  manuallyUpdateUuid() {
-    if (
-      uuidList.indexOf(this.uuid) === -1 &&
-      this.props.controllable &&
-      this.props.isOpen
-    ) {
-      noScroll(true, this.uuid);
-      uuidList.push(this.uuid);
-    }
-  }
+  const modalButton =
+    activateButton &&
+    (wrapperFunctionForButton
+      ? wrapperFunctionForButton(clonedComponent)
+      : clonedComponent);
 
-  removeScroll() {
-    noScroll(false, this.uuid);
-    uuidList.splice(uuidList.indexOf(this.uuid), 1);
-    if (this.props.onClose) {
-      this.props.onClose();
-    }
-  }
 
-  closeModal() {
-    if (this.state.isOpen) {
-      this.setState({
-        animateIn: false,
-      });
-    } else if (this.props.controllable && this.props.isOpen) {
-      this.props.onClose && this.props.onClose();
-    }
-  }
-
-  openModal() {
-    if (!this.state.isOpen) {
-      if (uuidList.indexOf(this.uuid) === -1) {
-        noScroll(true, this.uuid);
-        uuidList.push(this.uuid);
-      }
-      this.setState({
-        isOpen: true,
-        animateIn: true,
-      });
-    }
-  }
-
-  removedModal() {
-    this.scrollPosition = 0;
-    if (uuidList.indexOf(this.uuid) !== -1) {
-      this.removeScroll();
-    }
-  }
-
-  render() {
-    const {
-      activateButton,
-      wrapperFunctionForButton,
-      onClose,
-      onOpen,
-      onClick: onClickEvent,
-      animationDuration,
-      animation,
-      size,
-      minHeight,
-      backgroundColor,
-      children,
-      narrow,
-      controllable,
-      isOpen: propsIsOpen,
-      ...rest
-    } = this.props;
-
-    const { isOpen, animateIn } = this.state;
-
-    let clonedComponent;
-    if (!controllable) {
-      clonedComponent = React.cloneElement(activateButton, {
-        onClick: () => {
-          this.openModal();
-          if (onClickEvent) {
-            onClickEvent();
-          }
-        },
-      });
-    }
-
-    const modalButton =
-      !controllable &&
-      (wrapperFunctionForButton
-        ? wrapperFunctionForButton(clonedComponent)
-        : clonedComponent);
-
-    console.log(isOpen);
-
-    return (
-      <>
-        {modalButton}
-        <StyledDialogOverlay
-          isOpen={isOpen || !!propsIsOpen}
-          animateIn={animateIn}
-          onDismiss={this.closeModal}
-          {...rest}>
-          <DialogContent
-            css={css`
-              animation-duration: ${animationDuration}ms;
-              minheight: ${minHeight};
-              ${dialogStyles} ${narrow && narrowStyle};
-            `}
-            onAnimationEnd={this.onAnimationEnd}
-            className={`animation-container ${animation} ${animateIn &&
-              'animateIn'} ${size} ${backgroundColor}`}>
-            {children(this.closeModal)}
-          </DialogContent>
-        </StyledDialogOverlay>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {modalButton}
+      <StyledDialogOverlay
+        isOpen={showDialog}
+        animateIn={animateIn}
+        onDismiss={closeModal}
+        {...rest}>
+        <DialogContent
+          css={css`
+            animation-duration: ${animationDuration}ms;
+            minheight: ${minHeight};
+            ${dialogStyles};
+            ${narrow && narrowStyle};
+          `}
+          onAnimationEnd={onAnimationEnd}
+          className={`animation-container ${animation} ${animateIn &&
+            'animateIn'} ${size} ${backgroundColor}`}>
+          {children(closeModal)}
+        </DialogContent>
+      </StyledDialogOverlay>
+    </>
+  );
+};
 
 Modal.propTypes = {
   children: PropTypes.func.isRequired,
@@ -219,7 +131,6 @@ Modal.propTypes = {
   },
   wrapperFunctionForButton: PropTypes.func,
   className: PropTypes.string,
-  onOpen: PropTypes.func,
   narrow: PropTypes.bool,
   controllable: PropTypes.bool,
   minHeight: PropTypes.string,

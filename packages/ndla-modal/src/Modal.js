@@ -36,7 +36,6 @@ const Modal = ({
 
   const onAnimationEnd = () => {
     if (!animateIn && isOpen) {
-      console.log('animated Out');
       setIsOpen(false);
       if (onClose) onClose();
     }

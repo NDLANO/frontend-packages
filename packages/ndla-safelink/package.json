@@ -1,0 +1,33 @@
+{
+    "name": "@ndla/safelink",
+    "version": "0.0.1",
+    "description": "SafeLink component for NDLA",
+    "license": "GPL-3.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "sideEffects": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    },
+    "keywords": [
+      "ndla"
+    ],
+    "author": "ndla@knowit.no",
+    "files": [
+      "scss",
+      "lib",
+      "es"
+    ],
+    "peerDependencies": {
+      "@emotion/core": "^10.0.9",
+      "@emotion/styled": "^10.0.9",
+      "react": "^16.8.0",
+      "react-bem-helper": "^1.4.1",
+      "react-router-dom": "5.0.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    }
+  }
+  

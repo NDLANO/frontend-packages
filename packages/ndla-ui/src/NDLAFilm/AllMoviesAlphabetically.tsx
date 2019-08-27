@@ -23,7 +23,7 @@ import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
 import { movieType } from './types';
-
+import { isLetter } from './isLetter';
 const IMAGE_WIDTH = 143;
 
 const StyledNewLetter = styled.h2`
@@ -163,12 +163,6 @@ const StyledSafeLink = styled(SafeLink)<isIEProps>`
     }
   }
 `;
-
-export const isLetter = (title: string): boolean => {
-  const regTest: RegExp = /^[A-Za-zÅØÆåøæ]+$/;
-  const firstLetter = title.substr(0, 1);
-  return !(firstLetter.match(regTest) === null);
-};
 
 interface Props {
   movies: movieType[];

@@ -8,7 +8,7 @@
 
 /* eslint-env jest */
 
-import { isLetter } from '../AllMoviesAlphabetically';
+import { isLetter } from '../isLetter';
 
 test('Check is letter', () => {
   expect(isLetter('A')).toBe(true);

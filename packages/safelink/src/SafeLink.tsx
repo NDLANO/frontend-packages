@@ -25,6 +25,7 @@ const SafeLink: React.FunctionComponent<
   LinkProps & React.HTMLAttributes<HTMLElement>
 > = ({ to, replace, children, ...rest }) => {
   const isMissingRouterContext = React.useContext(MissingRouterContext);
+
   if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
     const href = typeof to === 'string' ? to : '#';
     return (

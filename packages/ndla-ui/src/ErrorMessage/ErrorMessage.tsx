@@ -9,7 +9,7 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, mq } from '@ndla/core';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 const StyledErrorMessage = styled.article`
   text-align: center;

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import {
   Forward,
   Launch,
@@ -9,7 +10,6 @@ import {
 } from '@ndla/icons/common';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import SafeLink from '../common/SafeLink';
 
 const StyledLinksWrapper = styled.div`
   display: flex;

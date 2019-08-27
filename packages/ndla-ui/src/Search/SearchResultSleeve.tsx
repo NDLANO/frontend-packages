@@ -6,14 +6,21 @@
  *
  */
 
- import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, misc, fonts, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-// @ts-ignore
-import { Search as SearchIcon, Wrench, Esc, KeyboardReturn, ChevronUp, ChevronDown } from '@ndla/icons/common';
-import SafeLink from '../common/SafeLink';
+import {
+  Search as SearchIcon,
+  Wrench,
+  Esc,
+  KeyboardReturn,
+  ChevronUp,
+  ChevronDown,
+  // @ts-ignore
+} from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
 import { highlightStyle } from './ContentTypeResultStyles';
@@ -32,7 +39,8 @@ const StyledAside = styled.aside`
   align-items: flex-start;
   margin: 0;
   color: ${colors.text.primary};
-  padding: ${spacing.normal} ${spacing.large} ${spacing.normal} ${spacing.normal};
+  padding: ${spacing.normal} ${spacing.large} ${spacing.normal}
+    ${spacing.normal};
   background: ${colors.support.yellowLight};
   border-radius: ${misc.borderRadius};
   span {
@@ -81,12 +89,12 @@ const StyledSearchAll = styled(SafeLink)`
 
 type WrapperProps = {
   frontpage?: boolean;
-}
+};
 
 const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   background: #fff;
   width: 100%;
-  position: ${props => props.frontpage ? 'absolute' : 'static'};
+  position: ${props => (props.frontpage ? 'absolute' : 'static')};
   left: 0;
   right: 0;
   top: 58px;
@@ -103,14 +111,15 @@ const StyledSearchResultsWrapper = styled.section<WrapperProps>`
 
 type StyledScrollableContentProps = {
   extendHeight: number;
-}
+};
 
 const StyledScrollableContent = styled.div<StyledScrollableContentProps>`
   max-height: calc(100vh - ${props => 260 - props.extendHeight}px);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  padding: ${props => props.extendHeight ? spacing.normal : spacing.large} ${spacing.large} ${spacing.large} ${spacing.large};
+  padding: ${props => (props.extendHeight ? spacing.normal : spacing.large)}
+    ${spacing.large} ${spacing.large} ${spacing.large};
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
     max-height: calc(100vh - ${props => 200 - props.extendHeight});
   }
@@ -148,30 +157,43 @@ const StyledInstructions = styled.div`
   span {
     display: inline-flex;
     ${fonts.sizes(14, 1.1)};
-    margin: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} ${spacing.xsmall};
+    margin: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} ${
+  spacing.xsmall
+};
   }
 `;
 
 const findPathForKeyboardNavigation = (
-  result: Array<ContentTypeResultType>, current: string, contentRef: HTMLDivElement | null, direction: 1 | -1 | null
+  result: Array<ContentTypeResultType>,
+  current: string,
+  contentRef: HTMLDivElement | null,
+  direction: 1 | -1 | null,
 ): string => {
-  const resultsContainingPaths = result.map(resultBlock => (resultBlock.resources.length > 0 ? resultBlock.resources[0].path : ''));
+  const resultsContainingPaths = result.map(resultBlock =>
+    resultBlock.resources.length > 0 ? resultBlock.resources[0].path : '',
+  );
   if (!resultsContainingPaths.some(result => result !== '')) {
     return '';
   } else if (direction === null) {
     return current;
   }
-  let highlightPath:string = '';
+  let highlightPath: string = '';
   if (current !== '' && current !== GO_TO_SEARCHPAGE) {
     result.forEach((resultBlock, blockIndex) => {
       resultBlock.resources.forEach((resource, resourceIndex) => {
         if (resource.path === current) {
           if (direction === 1) {
             if (
-              (resourceIndex < resultBlock.resources.length - 1) &&
-              contentRef && contentRef.querySelectorAll(`[href="${result[blockIndex].resources[resourceIndex + 1].path}"]`)[0]
+              resourceIndex < resultBlock.resources.length - 1 &&
+              contentRef &&
+              contentRef.querySelectorAll(
+                `[href="${
+                  result[blockIndex].resources[resourceIndex + 1].path
+                }"]`,
+              )[0]
             ) {
-              highlightPath = result[blockIndex].resources[resourceIndex + 1].path;
+              highlightPath =
+                result[blockIndex].resources[resourceIndex + 1].path;
             } else {
               let currentBlock = blockIndex;
               while (highlightPath === '') {
@@ -188,7 +210,8 @@ const findPathForKeyboardNavigation = (
             }
           } else {
             if (resourceIndex > 0) {
-              highlightPath = result[blockIndex].resources[resourceIndex - 1].path;
+              highlightPath =
+                result[blockIndex].resources[resourceIndex - 1].path;
             } else {
               let currentBlock = blockIndex;
               while (highlightPath === '') {
@@ -201,10 +224,18 @@ const findPathForKeyboardNavigation = (
                 if (resultsContainingPaths[currentBlock] !== '') {
                   // Get last visible LI with an A tag.
                   const currentAnchor =
-                    contentRef && contentRef.querySelector(`[href="${resultsContainingPaths[currentBlock]}"]`);
-                  const currentUL = currentAnchor && currentAnchor.closest('ul');
-                  const anchorNodes = currentUL && currentUL.querySelectorAll('a');
-                  highlightPath = anchorNodes ? result[currentBlock].resources[anchorNodes.length - 1].path : '';
+                    contentRef &&
+                    contentRef.querySelector(
+                      `[href="${resultsContainingPaths[currentBlock]}"]`,
+                    );
+                  const currentUL =
+                    currentAnchor && currentAnchor.closest('ul');
+                  const anchorNodes =
+                    currentUL && currentUL.querySelectorAll('a');
+                  highlightPath = anchorNodes
+                    ? result[currentBlock].resources[anchorNodes.length - 1]
+                        .path
+                    : '';
                 }
               }
             }
@@ -220,7 +251,8 @@ const findPathForKeyboardNavigation = (
     }
   } else {
     // go to last link..
-    highlightPath = resultsContainingPaths.reverse().find(path => path !== '') || '';
+    highlightPath =
+      resultsContainingPaths.reverse().find(path => path !== '') || '';
   }
   return highlightPath;
 };
@@ -256,7 +288,10 @@ const SearchResultSleeve: React.FC<Props> = ({
   const pathFromFocus = (): string | null => {
     // Check if has focus on an element
     const focusedElementType = document.activeElement;
-    if (focusedElementType && focusedElementType.getAttribute('data-highlighted')) {
+    if (
+      focusedElementType &&
+      focusedElementType.getAttribute('data-highlighted')
+    ) {
       // Use path form focused element.
       if (focusedElementType instanceof HTMLElement) {
         focusedElementType.blur();
@@ -264,20 +299,30 @@ const SearchResultSleeve: React.FC<Props> = ({
       return focusedElementType.getAttribute('href');
     }
     return null;
-  }
+  };
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
       if (e.code === 'ArrowDown') {
         const focusPath = pathFromFocus();
         setKeyNavigation(keyboardPathNavigation => {
-          return findPathForKeyboardNavigation(result, focusPath ? focusPath : keyboardPathNavigation, contentRef.current, 1);
+          return findPathForKeyboardNavigation(
+            result,
+            focusPath ? focusPath : keyboardPathNavigation,
+            contentRef.current,
+            1,
+          );
         });
         e.stopPropagation();
         e.preventDefault();
       } else if (e.code === 'ArrowUp') {
         const focusPath = pathFromFocus();
         setKeyNavigation(keyboardPathNavigation => {
-          return findPathForKeyboardNavigation(result, focusPath ? focusPath : keyboardPathNavigation, contentRef.current, -1);
+          return findPathForKeyboardNavigation(
+            result,
+            focusPath ? focusPath : keyboardPathNavigation,
+            contentRef.current,
+            -1,
+          );
         });
         e.stopPropagation();
         e.preventDefault();
@@ -293,16 +338,23 @@ const SearchResultSleeve: React.FC<Props> = ({
     };
     window.addEventListener('keydown', onKeyDownEvent);
     setKeyNavigation(keyboardPathNavigation => {
-      return findPathForKeyboardNavigation(result, keyboardPathNavigation, contentRef.current, null);
+      return findPathForKeyboardNavigation(
+        result,
+        keyboardPathNavigation,
+        contentRef.current,
+        null,
+      );
     });
     return () => {
       window.removeEventListener('keydown', onKeyDownEvent);
     };
   }, [result, contentRef]);
   useEffect(() => {
-    const highlightedElement = keyboardPathNavigation === GO_TO_SEARCHPAGE ?
-      searchAllRef.current :
-      contentRef.current && contentRef.current.querySelector('[data-highlighted="true"]');
+    const highlightedElement =
+      keyboardPathNavigation === GO_TO_SEARCHPAGE
+        ? searchAllRef.current
+        : contentRef.current &&
+          contentRef.current.querySelector('[data-highlighted="true"]');
 
     if (highlightedElement) {
       highlightedElement.scrollIntoView({
@@ -321,14 +373,12 @@ const SearchResultSleeve: React.FC<Props> = ({
           </StyledAside>
         )}
         <div>
-          <StyledSearchAll css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle} to={allResultUrl}>
+          <StyledSearchAll
+            css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle}
+            to={allResultUrl}>
             <SearchIcon className="c-icon--22" />
-            <strong ref={searchAllRef}>
-              {searchString}
-            </strong>
-            <small>
-              {t('welcomePage.searchAllInfo')}
-            </small>
+            <strong ref={searchAllRef}>{searchString}</strong>
+            <small>{t('welcomePage.searchAllInfo')}</small>
           </StyledSearchAll>
           {result.map((contentTypeResult: ContentTypeResultType) => (
             <ContentTypeResult
@@ -351,11 +401,11 @@ const SearchResultSleeve: React.FC<Props> = ({
               }}
             />
           ))}
-          {result.length === 0 && !loading &&
+          {result.length === 0 && !loading && (
             <StyledNoHits>
               {t('searchPage.searchField.contentTypeResultNoHit')}
             </StyledNoHits>
-          }
+          )}
         </div>
       </StyledScrollableContent>
       <StyledFooter>
@@ -371,6 +421,6 @@ const SearchResultSleeve: React.FC<Props> = ({
       </StyledFooter>
     </StyledSearchResultsWrapper>
   );
-}
+};
 
 export default injectT(SearchResultSleeve);

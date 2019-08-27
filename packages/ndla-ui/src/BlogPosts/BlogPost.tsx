@@ -14,12 +14,11 @@ import { spacing, colors, fonts, breakpoints, mq, misc } from '@ndla/core';
 import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 // @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
-// @ts-ignore
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 type StyledBlogProps = {
   backgroundImage: string;
-}
+};
 
 const StyledLicense = styled.span`
   color: #fff;
@@ -60,7 +59,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
   &:before {
     background-image: url(${props => props.backgroundImage});
     background-size: cover;
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
@@ -73,7 +72,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
   height: 100%;
   &:after {
     background: #000;
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
@@ -132,7 +131,8 @@ const StyledSafeLink = styled(SafeLink)<LinkProps>`
   span {
     text-decoration: none;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     text-shadow: none;
     span {
       text-decoration: underline;
@@ -150,7 +150,7 @@ type Props = {
   image: {
     url: string;
   };
-}
+};
 
 export const BlogPost: React.FunctionComponent<Props> = ({
   text,
@@ -167,11 +167,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
       <div>
         <StyledBlog backgroundImage={image.url}>
           <StyledTag>{linkText}</StyledTag>
-          <StyledSafeLink
-            to={externalLink}
-            target="_blank"
-            aria-label={text}
-          >
+          <StyledSafeLink to={externalLink} target="_blank" aria-label={text}>
             <span>
               {text}
               <LaunchIcon />
@@ -188,7 +184,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
         </StyledBlog>
       </div>
     </>
-  )
+  );
 };
 
 export default BlogPost;

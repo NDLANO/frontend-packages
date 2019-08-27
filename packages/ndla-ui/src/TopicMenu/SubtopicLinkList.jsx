@@ -14,10 +14,8 @@ import { Switch } from '@ndla/switch';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { mq, breakpoints, fonts, spacing } from '@ndla/core';
-
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import { TopicShape } from '../shapes';
-
 import ContentTypeResult from '../Search/ContentTypeResult';
 import { renderAdditionalIcon } from './TopicMenu';
 

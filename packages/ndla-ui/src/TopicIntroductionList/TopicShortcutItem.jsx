@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Trans } from '@ndla/i18n';
 import Tooltip from '@ndla/tooltip';
-
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import ContentTypeBadge from '../ContentTypeBadge';
 
 import { ShortcutShape } from '../shapes';

@@ -75,7 +75,7 @@ class MultiSelectDropdownExample extends Component {
 
   onChange(selected) {
     this.setState(prevState => ({
-      addedData: [...prevState.addedData, selected.title],
+      addedData: [...prevState.addedData, selected],
       value: '',
     }));
   }
@@ -95,7 +95,7 @@ class MultiSelectDropdownExample extends Component {
   removeItem(item) {
     console.log(item);
     this.setState(prevState => ({
-      addedData: prevState.addedData.filter(it => it !== item),
+      addedData: prevState.addedData.filter(it => it.title !== item),
     }));
   }
 
@@ -198,6 +198,8 @@ class MultiSelectDropdownExample extends Component {
                   multiSelect={useTags === '1'}
                   {...getInputProps(inputProps)}
                   data-testid={'dropdownInput'}
+                  idField="title"
+                  labelField="title"
                   iconRight={
                     loading ? <Spinner size="normal" margin="0" /> : <Search />
                   }
@@ -208,6 +210,8 @@ class MultiSelectDropdownExample extends Component {
                   getMenuProps={getMenuProps}
                   getItemProps={getItemProps}
                   isOpen={isOpen}
+                  idField="title"
+                  labelField="title"
                   multiSelect
                   selectedItems={addedData}
                   items={dataFormatted}

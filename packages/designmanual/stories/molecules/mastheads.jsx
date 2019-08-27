@@ -19,13 +19,12 @@ import {
   DisplayOnPageYOffset,
   SearchField,
   SearchResultSleeve,
-  SafeLink,
   MastheadSearchModal,
   TopicMenuButton,
   SearchFieldForm,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
-
+import SafeLink from '@ndla/safelink';
 import {
   topicMenu,
   contentTypeResults,

@@ -22,7 +22,7 @@ export const highlightStyle = css`
 type inMenuProps = {
   inMenu?: boolean;
   animateList?: number;
-}
+};
 
 export const StyledNoHit = styled.p<inMenuProps>`
   color: ${colors.text.light};
@@ -71,10 +71,12 @@ export const StyledHeader = styled.header`
 
 type StyledListItemProps = {
   delayAnimation?: boolean;
-}
+};
 
 export const StyledListItem = styled.li<StyledListItemProps>`
-  ${props => props.delayAnimation && css`
+  ${props =>
+    props.delayAnimation &&
+    css`
     ${animations.fadeInLeftFromZero()}
     animation-delay: ${animations.durations.normal};
   `}
@@ -87,7 +89,10 @@ export const StyledList = styled.ul<inMenuProps>`
   margin: 0;
   ${props => {
     if (props.animateList && props.animateList > 0) {
-      return animations.toggledContentWithSwitchAnimation(animations.durations.normal, `contentTypeResultAnimation${props.animateList % 2 ? '1' : '2'}`);
+      return animations.toggledContentWithSwitchAnimation(
+        animations.durations.normal,
+        `contentTypeResultAnimation${props.animateList % 2 ? '1' : '2'}`,
+      );
     }
   }}
   li {

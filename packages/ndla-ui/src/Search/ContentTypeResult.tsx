@@ -126,12 +126,11 @@ const ContentTypeResult: React.FC<Props> = ({
               </>
             );
             const delayAnimation =
-              animateList &&
-              additional === true &&
+              !!animateList &&
+              !!additional &&
               animateList > 0 &&
-              showAdditionalResources === true
-                ? true
-                : false;
+              !!showAdditionalResources;
+
             return (
               <StyledListItem key={path} delayAnimation={delayAnimation}>
                 <SafeLink

@@ -2,8 +2,7 @@ import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { Play } from '@ndla/icons/common';
-
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 const classes = BEMHelper('c-content-card');
 

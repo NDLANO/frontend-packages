@@ -1,14 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {
-  colors,
-  spacing,
-  mq,
-  breakpoints,
-  fonts,
-} from '@ndla/core';
-
-import SafeLink from '../common/SafeLink';
+import { colors, spacing, mq, breakpoints, fonts } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import { LanguageSelector } from '../LanguageSelector';
 
 // @ts-ignore
@@ -42,11 +35,12 @@ const StyledHeader = styled.div`
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px ${spacing.large};
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 3}px
+      ${spacing.large};
   }
   ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-    padding: ${spacing.normal} ${spacing.normal}
-      ${spacing.spacingUnit * 5}px ${spacing.spacingUnit * 3}px;
+    padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 5}px
+      ${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.wide })} {
     padding: ${spacing.normal} ${spacing.normal} ${spacing.spacingUnit * 5}px;

@@ -7,7 +7,7 @@ import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 // @ts-ignore
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultType, Resource } from '../types';
@@ -23,7 +23,10 @@ import {
   StyledTag,
 } from './ContentTypeResultStyles';
 
-const renderAdditionalIcon = (label: string, isAdditional?: boolean) : React.ReactElement | null => {
+const renderAdditionalIcon = (
+  label: string,
+  isAdditional?: boolean,
+): React.ReactElement | null => {
   if (isAdditional && label) {
     return (
       <Tooltip tooltip={label} align="top" css={tooltipStyle}>
@@ -40,8 +43,10 @@ const renderAdditionalIcon = (label: string, isAdditional?: boolean) : React.Rea
 type Props = {
   contentTypeResult: ContentTypeResultType;
   onNavigate: VoidFunction;
-  defaultCount?: number,
-  resourceToLinkProps: (resource: Resource) => {
+  defaultCount?: number;
+  resourceToLinkProps: (
+    resource: Resource,
+  ) => {
     to: string;
   };
   showAdditionalResources?: boolean;
@@ -49,13 +54,13 @@ type Props = {
     allResultLabel?: string;
     showLessResultLabel?: string;
     noHit: string;
-  },
+  };
   ignoreContentTypeBadge: boolean;
   keyboardPathNavigation: string;
-  inMenu?: boolean,
-  animateList?: number,
+  inMenu?: boolean;
+  animateList?: number;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-}
+};
 
 const ContentTypeResult: React.FC<Props> = ({
   contentTypeResult,
@@ -74,13 +79,12 @@ const ContentTypeResult: React.FC<Props> = ({
   const showAllRef = useRef<HTMLLIElement>(null);
 
   const results =
-    (showAdditionalResources || !contentTypeResult.resources)
+    showAdditionalResources || !contentTypeResult.resources
       ? contentTypeResult.resources
       : contentTypeResult.resources.filter(items => !items.additional);
 
-  const resources = (showAll || !defaultCount)
-    ? results
-    : results.slice(0, defaultCount);
+  const resources =
+    showAll || !defaultCount ? results : results.slice(0, defaultCount);
 
   useEffect(() => {
     if (showAll && showAllRef.current) {
@@ -121,7 +125,13 @@ const ContentTypeResult: React.FC<Props> = ({
                   ))}
               </>
             );
-            const delayAnimation = (animateList && additional === true && animateList > 0 && showAdditionalResources === true) ? true : false;
+            const delayAnimation =
+              animateList &&
+              additional === true &&
+              animateList > 0 &&
+              showAdditionalResources === true
+                ? true
+                : false;
             return (
               <StyledListItem key={path} delayAnimation={delayAnimation}>
                 <SafeLink

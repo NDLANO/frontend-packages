@@ -7,7 +7,7 @@ import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
 import { FilterTabs } from '@ndla/tabs';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import Spinner from '../../lib/Spinner';
 
 const resultClasses = BEMHelper('c-search-result');

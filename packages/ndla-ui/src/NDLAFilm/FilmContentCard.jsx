@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { spacing, colors, fonts, breakpoints } from '@ndla/core';
-import { SafeLink } from '@ndla/ui';
+import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';

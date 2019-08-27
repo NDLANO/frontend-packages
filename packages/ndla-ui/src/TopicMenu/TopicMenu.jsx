@@ -21,10 +21,10 @@ import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { ModalHeader } from '@ndla/modal';
 import Button from '@ndla/button';
+import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
-import SafeLink from '../common/SafeLink';
 
 import Logo from '../Logo';
 import { FilterListPhone } from '../Filter';

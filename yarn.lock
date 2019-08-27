@@ -2852,6 +2852,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
+"@types/reach__dialog@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@types/reach__dialog/-/reach__dialog-0.1.0.tgz#64db9b1634eebe2fce395c07a7b0dd68aec5a994"
+  integrity sha512-nHP7sj5st9RTIOWmXlghev1+b/Mv5TtNvyDGPhJ+OW8ESklQSs7CvaHt+pLjjFzDqCsoL4qbVQ3Edlx6zIyfaQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^16.8.2":
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.2.tgz#9bd7d33f908b243ff0692846ef36c81d4941ad12"

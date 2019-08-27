@@ -74,7 +74,6 @@ const Modal = ({
       ? wrapperFunctionForButton(clonedComponent)
       : clonedComponent);
 
-
   return (
     <>
       {modalButton}

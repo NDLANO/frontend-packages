@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-ignore
 import { DialogOverlay } from '@reach/dialog';
 import { css } from '@emotion/core';
 interface Props {

@@ -32,5 +32,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@types/reach__dialog": "^0.1.0"
   }
 }

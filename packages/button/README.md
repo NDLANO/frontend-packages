@@ -18,7 +18,7 @@ $ npm install @ndla/button --save
 
 ```scss
 /* Your project's main .scss import file */
-@import '~ndla-button/scss/button'; // with webpack and sass-loader
+@import '~@ndla/button/scss/button'; // with webpack and sass-loader
 @import '../path/to/node_modules/@ndla/button/scss/button'; // direct reference
 ```
 

@@ -8,8 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-
-import { spacing } from '@ndla/core';
+import { spacing, colors } from '@ndla/core';
 
 const StyledFooter = styled.footer`
   position: fixed;
@@ -32,6 +31,15 @@ const StyledContentWrapper = styled.div`
   > div {
     display: flex;
     align-items: center;
+    > hr {
+      width: 1px;
+      height: ${spacing.medium};
+      background: ${colors.brand.greyLight};
+      margin: 0 ${spacing.normal} 0 ${spacing.small};
+      &:before {
+        content: none;
+      }
+    }
   }
 `;
 

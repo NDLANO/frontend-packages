@@ -130,13 +130,22 @@ export const appearances = {
     line-height: inherit;
     color: ${colors.brand.primary};
     box-shadow: ${colors.link};
-
-    &:hover {
-      box-shadow: ${colors.linkHover};
-    }
-
+    &:hover,
     &:focus {
       box-shadow: ${colors.linkHover};
+    }
+  `,
+  smallLink: css`
+    ${strippedStyle};
+    ${fonts.sizes(16, 1.25)};
+    height: ${spacing.large};
+    color: ${colors.brand.primary};
+    font-weight: ${fonts.weight.semibold};
+    box-shadow: none;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
     }
   `,
   boldLink: css`
@@ -213,6 +222,11 @@ export const appearances = {
       }
     }
   `,
+  large: css`
+    height: ${spacing.large};
+    padding: 0 ${spacing.normal};
+    ${fonts.sizes(18, 1.25)};
+  `,
 };
 
 export const buttonStyle = css`
@@ -267,6 +281,8 @@ export const Button = ({
   stripped,
   link,
   boldLink,
+  smallLink,
+  large,
   lighter,
   submit,
   loading,
@@ -285,6 +301,8 @@ export const Button = ({
   const modifiers = {
     link,
     boldLink,
+    smallLink,
+    large,
     outline,
     lighter,
     stripped,
@@ -321,6 +339,8 @@ Button.propTypes = {
   outline: PropTypes.bool,
   link: PropTypes.bool,
   boldLink: PropTypes.bool,
+  smallLink: PropTypes.bool,
+  large: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
   ghostPill: PropTypes.bool,
@@ -332,6 +352,7 @@ Button.propTypes = {
     'outline',
     'link',
     'boldLink',
+    'smallLink',
     'stripped',
     'lighter',
     'inverted',
@@ -339,6 +360,7 @@ Button.propTypes = {
     'ghostPill',
     'ghostPillInverted',
     'ghostPillOutline',
+    'large',
   ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type

@@ -23,6 +23,7 @@ type StyledIconProps = {
 }
 
 const StyledIcon = styled(ChevronDown)<StyledIconProps>`
+  transition: transform 200ms ease;
   transform: rotate(${props => props.rotate}deg)
 `;
 

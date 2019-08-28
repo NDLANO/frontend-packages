@@ -48,33 +48,6 @@ const optionsFooterStatus = [
   },
 ];
 
-const StyledLine = styled.hr`
-  width: 1px;
-  height: ${spacing.medium};
-  background: ${colors.brand.greyLight};
-  margin: 0 ${spacing.normal} 0 ${spacing.small};
-  &:before {
-    content: none;
-  }
-`;
-
-const buttonStyle = css`
-  ${fonts.sizes(16, 1.25)};
-  height: ${spacing.large};
-  font-weight: ${fonts.weight.semibold};
-  box-shadow: none;
-  text-decoration: none:
-  &:hover, &:focus {
-    text-decoration: underline;
-  }
-`;
-
-const largerButtonStyle = css`
-  height: ${spacing.large};
-  padding: 0 ${spacing.normal};
-  ${fonts.sizes(18, 1.25)};
-`;
-
 const FooterExample = () => (
   <Footer>
     <div>
@@ -85,10 +58,9 @@ const FooterExample = () => (
           heading: 'Kvalitetssikring:',
         }}
       />
-      <StyledLine />
+      <hr />
       <Button
-        link
-        css={buttonStyle}
+        smallLink
         onClick={() => {
           console.log('clicked..');
         }}>
@@ -110,10 +82,11 @@ const FooterExample = () => (
           warningSavedWithoutComment: 'Merknad mangler',
           newStatusPrefix: 'Ny status:',
           statusLabel: 'Status:',
+          commentPlaceholder: 'Skriv inn merknad',
         }}
       />
       <Button
-        css={largerButtonStyle}
+        large
         onClick={() => {
           console.log('save resource');
         }}>

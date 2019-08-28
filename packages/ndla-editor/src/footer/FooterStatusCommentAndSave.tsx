@@ -72,6 +72,7 @@ type Props = {
     warningSavedWithoutComment: string;
     cancelLabel: string;
     saveLabel: string;
+    commentPlaceholder: string;
   }
   changeStatusTo: {
     id: string;
@@ -108,7 +109,7 @@ const FooterStatusCommentAndSave: React.FC<Props> = ({
         container="div"
         type="text"
         focusOnMount
-        placeholder="Skriv navn"
+        placeholder={messages.commentPlaceholder}
         value={comment}
         onChange={onChangeComment}
       />

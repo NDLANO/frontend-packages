@@ -7,30 +7,73 @@
  */
 
 import React, { useReducer } from 'react';
-import { spacing, typography } from '@ndla/core';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { spacing, typography, colors, misc, fonts } from '@ndla/core';
 // @ts-ignore
-import { Check } from '@ndla/icons/editor';
-// @ts-ignore
-import { Back } from '@ndla/icons/common';
-// @ts-ignore
-import Button from '@ndla/button';
-// @ts-ignore
-import { PopUpWrapper, FieldHeader, Input } from '@ndla/forms'; 
-import {
-  StyledWrapper,
-  StyledList,
-  StyledListItem,
-  StyledSelectedItemSpan,
-  StyledButton,
-  StyledButtonWrapper,
-  StyledInputWrapper,
-  StyledBackButton,
-  buttonStyle,
-  changeStatusStyle,
-} from './FooterStyles';
+import { PopUpWrapper } from '@ndla/forms';
+import FooterStatusSelect from './FooterStatusSelect';
+import FooterStatusCommentAndSave from './FooterStatusCommentAndSave';
 
+type StyledWrapperProp = {
+  extended: boolean;
+};
 
-type optionProps = {
+const StyledWrapper = styled.section<StyledWrapperProp>`
+  padding-bottom: ${spacing.normal};
+  margin-top: -${spacing.small};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  ${props => props.extended && css`
+    min-width: 500px;
+    padding: 0 ${spacing.medium} ${spacing.large} ${spacing.medium};
+  `}
+`;
+
+const buttonStyle = css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  min-width: 200px;
+  font-weight: ${fonts.weight.semibold};
+  color: ${colors.brand.primary};
+  border: 0;
+  ${fonts.sizes(18, 1.25)};
+  padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.spacingUnit * 0.75}px;
+  margin-right: ${spacing.normal};
+  border-radius: ${misc.borderRadius};
+  transition: background-color 200ms ease;
+  background: ${colors.brand.lighter};
+  svg {
+    margin-left: ${spacing.normal};
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+  }
+  &:hover, &:focus {
+    background-color: ${colors.brand.light};
+    transform: translate(1px, 1px);
+  }
+`;
+
+export const checkItemStyle = css`
+  white-space: nowrap;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  color: ${colors.text.primary};
+  ${fonts.sizes('18px', '22px')};
+  font-weight: ${fonts.weight.semibold};
+  svg {
+    width: ${spacing.normal};
+    height: ${spacing.normal};
+    fill: ${colors.support.green};
+    margin-right: ${spacing.xsmall};
+  }
+`;
+
+export type optionProps = {
   name: string;
   id: string;
   active?: boolean;
@@ -118,69 +161,36 @@ const FooterStatus: React.FC<Props> = ({
         {(onClosePopup: () => void) => (
           <StyledWrapper extended={changeStatusTo !== undefined}>
           {changeStatusTo === undefined && 
-            <>
-              <h1
-                css={changeStatusStyle}
-              >{messages.changeStatus}</h1>
-              <StyledList>
-                {options.map(option => (
-                  <StyledListItem>
-                    <StyledButton disabled={option.active} onClick={() => dispatch({ type: 'changeStatus', payload: option })}>
-                      <Check />{option.name}
-                    </StyledButton>
-                  </StyledListItem>
-                ))}
-              </StyledList>
-            </>
+            <FooterStatusSelect
+              options={options}
+              onSelectStatus={(payload: optionProps) => dispatch({ type: 'changeStatus', payload })}
+              heading={messages.changeStatus}
+            />
           }
           {changeStatusTo !== undefined && 
-            <>
-              <StyledBackButton onClick={() => dispatch({ type: 'reset' })}>
-                <Back /><span>{messages.back}</span>
-              </StyledBackButton>
-              <StyledSelectedItemSpan>
-                <Check />{messages.newStatusPrefix} {changeStatusTo.name}
-              </StyledSelectedItemSpan>
-              <FieldHeader title={messages.inputHeader} subTitle={messages.inputHelperText} />
-              <StyledInputWrapper>
-                <Input
-                  warningText={
-                    warn ? messages.warningSavedWithoutComment : null
-                  }
-                  autoExpand
-                  container="div"
-                  type="text"
-                  focusOnMount
-                  placeholder="Skriv navn"
-                  value={comment}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    dispatch({ type: 'comment', payload: e.target.value });
-                  }}
-                />
-              </StyledInputWrapper>
-              <StyledButtonWrapper>
-                <Button
-                  outline
-                  onClick={() => {
-                    dispatch({ type: 'reset' });
-                    onClosePopup();
-                  }}>
-                  {messages.cancelLabel}
-                </Button>
-                <Button
-                  onClick={() => {
-                    if (comment !== '') {
-                      onSave(comment, changeStatusTo.id);
-                      dispatch({ type: 'reset' });
-                      onClosePopup();
-                    } else {
-                      dispatch({ type: 'warn' });
-                    }
-                  }}>
-                  {messages.saveLabel}
-                </Button>
-              </StyledButtonWrapper>
-            </>
+            <FooterStatusCommentAndSave
+              goBack={() => dispatch({ type: 'reset' })}
+              onCancel={() => {
+                dispatch({ type: 'reset' });
+                onClosePopup();
+              }}
+              onSave={() => {
+                if (comment !== '') {
+                  onSave(comment, changeStatusTo.id);
+                  dispatch({ type: 'reset' });
+                  onClosePopup();
+                } else {
+                  dispatch({ type: 'warn' });
+                }
+              }}
+              onChangeComment={(e: React.ChangeEvent<HTMLInputElement>) => {
+                dispatch({ type: 'comment', payload: e.target.value });
+              }}
+              changeStatusTo={changeStatusTo}
+              comment={comment}
+              messages={messages}
+              warn={warn}
+            />
           }
         </StyledWrapper>
         )}

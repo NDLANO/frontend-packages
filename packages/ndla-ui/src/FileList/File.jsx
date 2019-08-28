@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Download } from '@ndla/icons/common';
-
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 const classes = BEMHelper('c-file-list');
 

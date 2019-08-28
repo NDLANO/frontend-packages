@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { ChevronRight, Additional } from '@ndla/icons/common';
+import { ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
-import Tooltip from '@ndla/tooltip';
 import { FilterTabs } from '@ndla/tabs';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import Spinner from '../../lib/Spinner';
 
 const resultClasses = BEMHelper('c-search-result');
@@ -167,45 +166,22 @@ export const SearchResultItem = ({
         </h1>
         <div {...searchResultItemClasses('content-type-wrapper')}>
           {item.contentTypeIcon}
-          <span {...searchResultItemClasses('content-type-label')}>
-            {item.contentTypeLabel}
-          </span>
         </div>
+        {item.contentTypeLabel && (
+          <div {...searchResultItemClasses('pills')}>
+            {item.contentTypeLabel}
+          </div>
+        )}
         {item.type && (
           <div {...searchResultItemClasses('pills')}>{item.type}</div>
         )}
-        {item.additional &&
-          (additionalContentToolip ? (
-            <Tooltip
-              id={`search-additional-tooltip-${item.id}`}
-              tooltip={additionalContentToolip}
-              {...searchResultItemClasses('additional')}>
-              <Additional className="c-icon--20" />
-            </Tooltip>
-          ) : (
-            <span {...searchResultItemClasses('additional')}>
-              <Additional className="c-icon--20" />
-            </span>
-          ))}
+        {item.additional && (
+          <div {...searchResultItemClasses('pills')}>
+            {additionalContentToolip}
+          </div>
+        )}
         {children}
       </header>
-      {item.breadcrumb && item.breadcrumb.length > 0 && (
-        <div {...searchResultItemClasses('breadcrumb')}>
-          {item.breadcrumb.map((breadcrumbItem, index) => {
-            let icon = null;
-
-            if (index !== item.breadcrumb.length - 1) {
-              icon = <ChevronRight />;
-            }
-            return (
-              <Fragment key={uuid()}>
-                <span>{breadcrumbItem}</span>
-                {icon}
-              </Fragment>
-            );
-          })}
-        </div>
-      )}
       <div {...searchResultItemClasses('content')}>
         <p
           {...searchResultItemClasses('ingress')}
@@ -213,6 +189,25 @@ export const SearchResultItem = ({
         />
         {item.image}
       </div>
+      {(!item.subjects || item.subjects.length === 0) &&
+        item.breadcrumb &&
+        item.breadcrumb.length > 0 && (
+          <div {...searchResultItemClasses('breadcrumb')}>
+            {item.breadcrumb.map((breadcrumbItem, index) => {
+              let icon = null;
+
+              if (index !== item.breadcrumb.length - 1) {
+                icon = <ChevronRight />;
+              }
+              return (
+                <Fragment key={uuid()}>
+                  <span>{breadcrumbItem}</span>
+                  {icon}
+                </Fragment>
+              );
+            })}
+          </div>
+        )}
       {item.subjects && item.subjects.length !== 0 && (
         <div {...searchResultItemClasses('subjects')}>
           <span>{subjectsLabel}</span>

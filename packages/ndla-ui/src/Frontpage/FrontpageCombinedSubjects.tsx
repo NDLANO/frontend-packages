@@ -77,6 +77,14 @@ const StyledButton = styled.button`
   background: none;
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
   &:before {
     content: '';
     display: block;
@@ -149,7 +157,6 @@ interface StateObject {
 
 type Props = {
   categories: categoryProp[];
-  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -160,7 +167,6 @@ const initialState: StateObject = {
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
-  linkToAbout,
   t,
 }) => {
   const [currentState, setState] = useState(initialState);
@@ -173,10 +179,13 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   } = currentState;
 
   const closeMenu = () => {
-    setState(prevState => {
-      return { ...prevState, animationDirection: 'out', menuIsOpen: false };
-    });
-    noScroll(false, 'frontpagePortal');
+    if (isIE) {
+      closedMenu();
+    } else {
+      setState(prevState => {
+        return { ...prevState, animationDirection: 'out' };
+      });
+    }
   };
 
   const closedMenu = () => {
@@ -205,7 +214,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   };
 
   const isIE11 = (isIE && parseInt(browserVersion) < 12);
-
   return (
     <>
       {menuIsOpen && (
@@ -217,7 +225,6 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           elementRect={elementRect}>
           {categoryIndex !== undefined && (
             <FrontpageSubjectsInPortal
-              linkToAbout={linkToAbout}
               category={categories[categoryIndex]}
             />
           )}

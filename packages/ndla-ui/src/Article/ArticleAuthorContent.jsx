@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import Portrait from '../Portrait';
 
 const classes = new BEMHelper({

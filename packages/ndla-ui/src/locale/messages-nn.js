@@ -74,7 +74,7 @@ const messages = {
       contentTypeResultShowLessLabel: 'Sjå færre resultat',
       allResultButtonText: 'Vis alle søketreff',
       searchResultHeading: 'Forslag:',
-      contentTypeResultNoHit: 'Ingen treff',
+      contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
@@ -156,6 +156,7 @@ const messages = {
       'Vi jobbar stadig med å forbetre oss! Har du kommentarer til søket, blir vi glad om du legg dei inn i «spør NDLA» nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
+    searchAllInfo: 'Sjå treff alle på søk',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {
@@ -181,7 +182,7 @@ const messages = {
     aboutNDLA: {
       heading: 'Om NDLA',
       description:
-        'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle fag i videregående opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
+        'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle fag i videregåande opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
       mainLink: {
         name: 'Meir om NDLA',
       },
@@ -462,7 +463,7 @@ const messages = {
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
-    prefixChangeLanguage: 'Vel målføre',
+    prefixChangeLanguage: 'Vel målform',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',
@@ -490,7 +491,7 @@ const messages = {
     slideForwardsLabel: 'Scroll framover',
     movieMatchInCategory: 'Treff',
     loadingMovies: 'Henter filmer..',
-    subjectsInMovies: 'Emner i film',
+    subjectsInMovies: 'Emne i film',
     about: {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
@@ -499,8 +500,8 @@ const messages = {
     },
     search: {
       placeholder: 'Søk på filmnavn',
-      categoryFromNdla: 'Utvalg fra NDLA',
-      chooseCategory: 'Velg filmkategori',
+      categoryFromNdla: 'Utval frå NDLA',
+      chooseCategory: 'Vel filmkategori',
       subjectButton: 'Gå til emne',
     },
     editor: {
@@ -515,8 +516,8 @@ const messages = {
       moveMovieGroupUp: 'Flytt opp',
       moveMovieGroupDown: 'Flytt ned',
       changeOrder: 'Endre rekkjefølgje',
-      removeMovieFromGroup: 'Ta vekk film fra gruppe',
-      removeMovieFromSlideshow: 'Ta vekk film fra slideshow',
+      removeMovieFromGroup: 'Ta vekk film frå gruppe',
+      removeMovieFromSlideshow: 'Ta vekk film frå slideshow',
       createThemeGroup: 'Opprett gruppe',
       saveNameChanges: 'Lagre endringar',
       cancel: 'Avbryt',
@@ -536,7 +537,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS.',
+        'Filmane i filmtjenesten er henta frå norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS.',
       secondParagraph:
         'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:
@@ -581,7 +582,7 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Korleis lage gode grupper med elever',
+      text: 'Korleis lage gode grupper med elevar',
       externalLink:
         'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
       linkText: 'Fagblogg',

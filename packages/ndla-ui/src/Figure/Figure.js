@@ -16,7 +16,7 @@ import { isFunction } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -106,7 +106,10 @@ const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
   const typeClass =
     type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   return (
-    <figure {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
+    <figure
+      data-sizetype={type}
+      {...classes('', { resize: resizeIframe }, typeClass)}
+      {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );

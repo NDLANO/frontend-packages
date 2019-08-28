@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { mq, breakpoints, fonts, spacing } from '@ndla/core';
-
+import SafeLink from '@ndla/safelink';
 import { classes } from './CompetenceGoals';
-import SafeLink from '../common/SafeLink';
 import { CompetenceGoalShape } from '../shapes';
 
 export const CompetenceGoalListHeading = styled('p')`

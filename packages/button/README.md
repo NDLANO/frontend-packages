@@ -5,11 +5,11 @@ Button component.
 ## Installation
 
 ```sh
-$ yarn add --save ndla-button
+$ yarn add --save @ndla/button
 ```
 
 ```sh
-$ npm install ndla-button --save
+$ npm install @ndla/button --save
 ```
 
 ## Usage
@@ -18,8 +18,8 @@ $ npm install ndla-button --save
 
 ```scss
 /* Your project's main .scss import file */
-@import '~ndla-button/scss/button'; // with webpack and sass-loader
-@import '../path/to/node_modules/ndla-button/scss/button'; // direct reference
+@import '~@ndla/button/scss/button'; // with webpack and sass-loader
+@import '../path/to/node_modules/@ndla/button/scss/button'; // direct reference
 ```
 
 ### Basic example

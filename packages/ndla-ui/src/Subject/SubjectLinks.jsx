@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 import { SubjectSectionTitle } from './Subject';
 

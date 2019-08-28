@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Logo, PageContainer, SafeLink } from '@ndla/ui';
+import { Logo, PageContainer } from '@ndla/ui';
+import SafeLink from '@ndla/safelink';
 import { StoryBody } from './wrappers';
 import { Center } from './helpers';
 

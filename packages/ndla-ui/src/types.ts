@@ -7,11 +7,15 @@ export type Messages = {
   closeSearchLabel: string;
 };
 
+type ResourceTypes = {
+  name: string;
+};
+
 export type Resource = {
   path: string;
-  boldName: string;
   name: string;
-  subName: string;
+  subject?: string;
+  resourceTypes?: Array<ResourceTypes>;
 };
 
 export type SearchResult = {
@@ -22,9 +26,13 @@ export type SearchResult = {
 
 export interface ContentTypeResultType {
   title: string;
+  contentType?: string;
   resources: Array<{
     path: string;
     name: string;
+    subject?: string;
+    additional?: boolean;
+    resourceTypes?: Array<ResourceTypes>;
   }>;
 }
 

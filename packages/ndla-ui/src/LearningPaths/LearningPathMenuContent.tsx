@@ -19,10 +19,9 @@ import {
   breakpoints,
   animations,
 } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import { LearningPathIcon } from './LearningPathIcon';
 import { StepProps } from './LearningPathMenu';
-// @ts-ignore
-import { SafeLink } from '../index';
 
 const SIDE_NAV_WIDTH = '372px';
 

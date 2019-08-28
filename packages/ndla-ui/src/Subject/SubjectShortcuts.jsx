@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { TransitionGroup } from 'react-transition-group';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
-
+import SafeLink from '@ndla/safelink';
 import { SubjectSectionTitle } from './Subject';
-
-import SafeLink from '../common/SafeLink';
 import Fade from '../Animation/Fade';
 
 const classes = BEMHelper('c-subject-shortcuts');

@@ -48,6 +48,7 @@ const StyledButton = styled.button`
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
   &:before {
     content: "";
     display: block;

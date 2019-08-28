@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Additional, Core } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
 

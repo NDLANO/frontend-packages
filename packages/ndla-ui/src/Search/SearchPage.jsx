@@ -10,10 +10,10 @@ import { injectT } from '@ndla/i18n';
 
 import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';
+import { SearchFieldForm } from './SearchFieldForm';
 
 const classes = BEMHelper('c-search-page');
 const filterClasses = BEMHelper('c-filter');
-const fieldClasses = new BEMHelper('c-search-field');
 
 class SearchPage extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class SearchPage extends Component {
     };
 
     this.filterCloseButton = null;
-
+    this.inputRef = React.createRef();
     this.checkScreenSize = this.checkScreenSize.bind(this);
     this.checkScreenSizeDebounce = debounce(() => this.checkScreenSize(), 100);
   }
@@ -71,14 +71,9 @@ class SearchPage extends Component {
     return (
       <main {...classes()}>
         <div {...classes('search-field-wrapper')}>
-          <form
-            action="/search/"
-            {...fieldClasses(
-              '',
-              searchFieldFilters.length ? ['has-filter'] : [],
-            )}
-            onSubmit={onSearch}>
+          <SearchFieldForm onSubmit={onSearch}>
             <SearchField
+              inputRef={this.inputRef}
               value={searchString}
               onChange={onSearchFieldChange}
               placeholder={t('searchPage.searchFieldPlaceholder')}
@@ -89,7 +84,7 @@ class SearchPage extends Component {
                 searchFieldTitle: t('searchPage.search'),
               }}
             />
-          </form>
+          </SearchFieldForm>
         </div>
         {author}
         <div {...classes('filter-result-wrapper')}>
@@ -105,6 +100,7 @@ class SearchPage extends Component {
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
+                showOnSmallScreen
                 onFilterRemove={(value, filterName) =>
                   onSearchFieldFilterRemove(value, filterName)
                 }

@@ -178,14 +178,6 @@ const messages = {
         name: 'Follow us',
       },
     },
-    aboutNDLA: {
-      heading: 'About NDLA',
-      description:
-        'NDLAs vision is to create good, open digital learning resources for all subjects in upper secondary education and support students and teachers in active and participatory learning work.',
-      mainLink: {
-        name: 'More about NDLA',
-      },
-    },
     category: {
       fellesfag: 'Common',
       yrkesfag: 'Vocational',
@@ -448,6 +440,7 @@ const messages = {
     es: 'Spanish',
     zh: 'Chinese',
     unknown: 'Unknown',
+    prefixChangeLanguage: 'Choose language',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',

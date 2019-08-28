@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { Forward } from '@ndla/icons/common';
 // @ts-ignore
@@ -8,7 +9,6 @@ import { injectT } from '@ndla/i18n';
 import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
-import SafeLink from '../common/SafeLink';
 
 const StyledSection = styled.section`
   margin-top: ${spacing.large};

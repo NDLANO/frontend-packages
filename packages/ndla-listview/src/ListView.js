@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
@@ -210,6 +211,24 @@ const ListViewWrapper = styled.div`
   }
 `;
 
+const inputStyle = css`
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid ${colors.brand.greyLight};
+  border-radius: $border-radius;
+  padding-right: ${spacing.large};
+  padding-left: ${spacing.normal};
+  flex-grow: 1;
+  outline: 0;
+
+  &:focus {
+    border-color: ${colors.brand.primary};
+  }
+
+  @include ${fonts.sizes(16, 20)};
+`;
+
 const listItemShape = PropTypes.shape({
   name: PropTypes.string,
   text: PropTypes.string,
@@ -296,7 +315,7 @@ const ListView = ({
               <div {...searchFieldClasses()}>
                 <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
                   <input
-                    {...searchFieldClasses('input', 'small')}
+                    css={inputStyle}
                     type="search"
                     placeholder="Søk i listevisning"
                     value={searchValue}

@@ -1,26 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
-import BEMHelper from 'react-bem-helper';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
-import { Cross } from '@ndla/icons/action';
-
+import { noScroll } from '@ndla/util';
 // @ts-ignore
 import { SearchField } from '../Search';
-
+import { SearchFieldForm } from '../Search/SearchFieldForm';
 // @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
-import { ContentTypeResultType } from '../types';
-const classes = new BEMHelper('c-search-field');
+import { ContentTypeResultType, Resource } from '../types';
 
-type StyledSearchFieldWrapperProps = {
-  inputHasFocus?: boolean;
+type StyledSearchFieldProps = {
+  inputHasFocus: boolean;
 };
 
-const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
-  background: ${(props: StyledSearchFieldWrapperProps) =>
+const StyledWrapper = styled.section<StyledSearchFieldProps>`
+  background: ${(props: StyledSearchFieldProps) =>
     props.inputHasFocus === true ? 'transparent' : colors.brand.accent};
   border-radius: 2px;
   position: absolute;
@@ -41,9 +39,8 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
     padding: ${spacing.large};
     bottom: -81px;
   }
-  form {
-    width: 100%;
-    > div {
+  ${mq.range({ until: breakpoints.tablet })} {
+    .c-search-field__input-wrapper {
       padding: 0;
     }
   }
@@ -55,56 +52,9 @@ const StyledSearchFieldWrapper = styled.section<StyledSearchFieldWrapperProps>`
   }
 `;
 
-const StyledSearchField = styled.div`
-  display: flex;
-  align-self: flex-start;
-
-  .c-search-field {
-    z-index: 9001;
-    ${mq.range({ from: breakpoints.tablet })} {
-      width: calc(100% - ${spacing.large});
-    }
-  }
-
-  .c-search-field__search-result {
-    left: 0px;
-  }
-
-  ${mq.range({ until: breakpoints.tablet })} {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: ${spacing.normal};
-    z-index: 9001;
-    background: ${colors.brand.accent};
-    .c-search-field__search-result {
-      margin-left: ${spacing.normal};
-      width: 100vw;
-      left: -${spacing.large};
-    }
-  }
-`;
-
-const StyledCloseButton = styled.button`
-  color: ${colors.brand.primary};
-  display: flex;
-  padding: 13px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  z-index: 9999;
-  ${animations.fadeIn(animations.durations.fast)};
-
-  svg {
-    height: 24px;
-    width: 24px;
-  }
-`;
-
 const StyledSearchBackdrop = styled.div`
   position: fixed;
-  z-index: 9000;
+  z-index: 0;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -113,13 +63,18 @@ const StyledSearchBackdrop = styled.div`
   ${animations.fadeIn(animations.durations.fast)};
 `;
 
-interface Props {
+type Props = {
   inputHasFocus: boolean;
   searchFieldValue: string;
   onSearchFieldChange: (searchValue: string) => {};
   searchFieldPlaceholder: string;
-  onSearchDeactiveFocusTrap: VoidFunction;
+  onInputBlur: VoidFunction;
   onSearchInputFocus: VoidFunction;
+  resourceToLinkProps: (
+    resource: Resource,
+  ) => {
+    to: string;
+  };
   onSearch: (event: {}) => void;
   messages: { closeSearchLabel: string };
   allResultUrl: string;
@@ -127,14 +82,15 @@ interface Props {
   infoText: string;
   loading: Boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-}
+};
 
-const FrontpageSearch: React.FC<Props> = ({
+const FrontpageSearch: React.FunctionComponent<Props> = ({
+  resourceToLinkProps,
   inputHasFocus,
   searchFieldValue,
   onSearchFieldChange,
   searchFieldPlaceholder,
-  onSearchDeactiveFocusTrap,
+  onInputBlur,
   onSearchInputFocus,
   onSearch,
   messages,
@@ -143,78 +99,83 @@ const FrontpageSearch: React.FC<Props> = ({
   loading,
   t,
 }) => {
-  const SearchFieldRef = React.createRef<HTMLDivElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const searchFieldRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (inputHasFocus && SearchFieldRef.current) {
-      const inputField = SearchFieldRef.current.getElementsByTagName(
-        'input',
-      )[0];
-      inputField.focus();
-      SearchFieldRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    const onKeyEsc = (e: KeyboardEvent) => {
+      if (e.code === 'Escape') {
+        onInputBlur();
+        if (inputRef && inputRef.current) {
+          inputRef.current!.blur();
+        }
+      }
+    };
+    window.addEventListener('keydown', onKeyEsc);
+    return () => {
+      window.removeEventListener('keydown', onKeyEsc);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (inputHasFocus && searchFieldRef && searchFieldRef.current) {
+      const yCoordinate =
+        searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const isIE11 = isIE && parseInt(browserVersion) < 12;
+      if (isIE11) {
+        // insta move on IE
+        window.scrollTo(0, yCoordinate);
+      } else {
+        window.scrollTo({
+          top: yCoordinate,
+          behavior: 'smooth',
+        });
+      }
+      noScroll(true, 'preventPageScroll');
+    } else {
+      noScroll(false, 'preventPageScroll');
     }
+    return () => noScroll(false, 'preventPageScroll');
   }, [inputHasFocus]);
-  const modifiers = inputHasFocus
-    ? ['no-left-margin', 'absolute-position-sleeve', 'input-has-focus']
-    : ['absolute-position-sleeve'];
+
   return (
-    <div ref={SearchFieldRef}>
-      <StyledSearchFieldWrapper inputHasFocus={inputHasFocus}>
-        {!inputHasFocus && (
-          <SearchField
-            value={searchFieldValue}
-            onChange={onSearchFieldChange}
-            onFocus={onSearchInputFocus}
-            placeholder={searchFieldPlaceholder}
-            messages={messages}
-            resourceToLinkProps={() => {}}
+    <div ref={searchFieldRef}>
+      <StyledWrapper inputHasFocus={inputHasFocus}>
+        {inputHasFocus && (
+          <StyledSearchBackdrop
+            role="button"
+            onClick={() => {
+              onInputBlur();
+              if (inputRef && inputRef.current) {
+                inputRef.current!.blur();
+              }
+            }}
           />
         )}
-        {inputHasFocus && (
-          <>
-            <StyledSearchBackdrop
-              role="button"
-              onClick={onSearchDeactiveFocusTrap}
+        <SearchFieldForm inputHasFocus={inputHasFocus} onSubmit={onSearch}>
+          <SearchField
+            inputRef={inputRef}
+            onFocus={onSearchInputFocus}
+            value={searchFieldValue}
+            onChange={onSearchFieldChange}
+            placeholder={searchFieldPlaceholder}
+            messages={messages}
+            loading={loading}
+          />
+          {searchFieldValue !== '' && inputHasFocus && (
+            <SearchResultSleeve
+              frontpage
+              loading={loading}
+              ignoreContentTypeBadge
+              result={searchResult || []}
+              searchString={searchFieldValue}
+              allResultUrl={allResultUrl}
+              resourceToLinkProps={resourceToLinkProps}
+              infoText={t('welcomePage.searchDisclaimer')}
             />
-            <StyledSearchField>
-              <form
-                action="/search/"
-                {...classes('', modifiers)}
-                onSubmit={onSearch}>
-                <SearchField
-                  modifiers={modifiers}
-                  value={searchFieldValue}
-                  onChange={onSearchFieldChange}
-                  placeholder={searchFieldPlaceholder}
-                  messages={messages}
-                  singleColumn
-                />
-                {!loading && searchResult && (
-                  <SearchResultSleeve
-                    ignoreContentTypeBadge
-                    result={searchResult}
-                    searchString={searchFieldValue}
-                    allResultUrl={allResultUrl}
-                    resourceToLinkProps={() => {}}
-                    hideSleeveHeader
-                    singleColumn
-                    infoText={t('welcomePage.searchDisclaimer')}
-                  />
-                )}
-              </form>
-              <StyledCloseButton
-                type="button"
-                onClick={onSearchDeactiveFocusTrap}
-                onBlur={onSearchDeactiveFocusTrap}
-                aria-label={messages.closeSearchLabel}>
-                <Cross />
-              </StyledCloseButton>
-            </StyledSearchField>
-          </>
-        )}
-      </StyledSearchFieldWrapper>
+          )}
+        </SearchFieldForm>
+      </StyledWrapper>
     </div>
   );
 };

@@ -19,7 +19,7 @@ import {
 } from '@ndla/ui';
 
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
-import Topics from '../molecules/topics';
+import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
@@ -43,11 +43,6 @@ const ArticleLearningMaterial = () => (
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        <FigureImage
-          alt=""
-          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          type="left"
-        />
         <p>
           En pitch er en kortvarig framføring av en idé for en potensiell
           samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
@@ -89,7 +84,7 @@ const ArticleLearningMaterial = () => (
         <RelatedArticleListExample />
       </LayoutItem>
       <LayoutItem layout="extend">
-        <Topics />
+        <Resources showTopicHeading />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

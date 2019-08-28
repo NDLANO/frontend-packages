@@ -73,7 +73,7 @@ const messages = {
       contentTypeResultShowLessLabel: 'Se færre resultater',
       allResultButtonText: 'Vis alle søketreff',
       searchResultHeading: 'Forslag:',
-      contentTypeResultNoHit: 'Ingen treff',
+      contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
@@ -155,6 +155,7 @@ const messages = {
       'Vi jobber stadig med å forbedre oss! Har du kommentarer til søket, blir vi glad om du legger dem inn i «spør NDLA» nede i høyre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
+    searchAllInfo: 'Se treff alle på søk',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {
@@ -175,14 +176,6 @@ const messages = {
         'NDLA har mange facebook- og twitterkontoer. Finn den som passer for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
-      },
-    },
-    aboutNDLA: {
-      heading: 'Om NDLA',
-      description:
-        'NDLA sin visjon er å lage gode, åpne digitale læremidler for alle fag i videregående opplæring og støtte opp om elever og lærere i aktivt og deltakende læringsarbeid.',
-      mainLink: {
-        name: 'Mer om NDLA',
       },
     },
     category: {

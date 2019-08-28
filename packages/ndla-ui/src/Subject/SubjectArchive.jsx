@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-subject-archive');

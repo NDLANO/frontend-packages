@@ -41,6 +41,30 @@ $overlay-height: 136px;
       height: $overlay-height;
     }
     box-shadow: 0 0 30px rgba($black, 0.2);
+    &.with-backdrop {
+      &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 74px;
+        @include mq(tablet) {
+          top: 100px;
+        }
+        @include mq(desktop) {
+          top: 136px;
+        }
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+        animation-name: fadeIn;
+        animation-duration: 400ms;
+        animation-delay: 100ms;
+        animation-fill-mode: forwards;
+      }
+    }
   }
 
   @include mq(desktop) {
@@ -71,41 +95,8 @@ $overlay-height: 136px;
     }
   }
 
-  &--has-filter {
-    .c-search-field__input {
-      @include mq(desktop) {
-        padding-left: $spacing;
-      }
-      padding-left: 0;
-      border-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-
-      &:focus {
-        border: 1px solid $brand-color;
-        border-left: 0;
-
-        & + .c-search-field__filters {
-          border: 1px solid $brand-color;
-          border-right: 0;
-        }
-      }
-    }
-  }
-
-  
   &--no-left-margin {
     margin-left: 0 !important;
-  }
-
-  &--absolute-position-sleeve {
-    position: relative;
-    .c-search-field__search-result {
-      z-index: 9999;
-      position: absolute;
-      top: 58px;
-      left: 0;
-    }
   }
 
   &__filters {
@@ -141,32 +132,6 @@ $overlay-height: 136px;
       }
       @include mq($until: desktop) {
         padding-right: $spacing--small;
-      }
-    }
-  }
-
-  &__input {
-    width: 100%;
-    height: 48px;
-    line-height: 48px;
-    border: 1px solid $brand-grey--light;
-    border-radius: $border-radius;
-    padding-right: $spacing--large;
-    padding-left: $spacing;
-    flex-grow: 1;
-    outline: 0;
-
-    &:focus {
-      border-color: $brand-color;
-    }
-
-    @include font-size(16px, 20px);
-
-    &:not(&--small) {
-      @include mq(tablet) {
-        height: 58px;
-        line-height: 58px;
-        @include font-size(18px, 24px);
       }
     }
   }
@@ -216,107 +181,7 @@ $overlay-height: 136px;
     }
   }
 
-  &__search-result {
-    overflow-y: auto;
-    width: 100%;
-
-    background: $white;
-    border: 1px solid $brand-grey--light;
-    border-top: 0;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    padding: $spacing--medium $spacing--large 0 $spacing--large;
-    animation: expand 0.2s;
-    transform-origin: top;
-
-    @include mq(tablet) {
-      max-height: calc(100vh - 110px);
-    }
-    @include mq(desktop) {
-      max-height: calc(100vh - 136px);
-    }
-
-    @include mq($until: tablet) {
-      margin-top: $spacing--small;
-      height: calc(100vh - 76px);
-      max-height: none;
-      padding: $spacing;
-    }
-  }
-
-  &__search-result-heading {
-    @include font-size(18px, 24px);
-    margin: 0 0 $spacing 0;
-  }
-
-  &__search-result-infotext {
-    @include font-size(16px, 22px);
-    display: flex;
-    align-items: flex-start;
-    margin: 0 0 $spacing--large;
-    color: $primary-color;
-    padding: $spacing $spacing--large $spacing $spacing;
-    background: $yellow-light;
-    border-radius: $border-radius;
-    span {
-      display: block;
-      max-width: 700px;
-      padding-left: $spacing--small;
-      flex: 1;
-    }
-    svg {
-      transform: translateY(6px);
-    }
-    @include mq($until: tablet) {
-      padding-right: $spacing;
-      svg {
-        display: none;
-      }
-      span {
-        padding: 0;
-      }
-    }
-  }
-
-  &__search-result-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-bottom: 1px solid $brand-color--light;
-    margin: 0;
-    padding-bottom: $spacing;
-
-    &--multiple-columned {
-      flex-direction: row;
-      .c-content-type-result {
-        a {
-          display: flex;
-          flex-grow: 1;
-        }
-        @include mq(desktop) {
-          flex: 0 0 30%;
-        }
-      }
-    }
-    @include mq($until: desktop) {
-      flex-direction: column;
-      padding-bottom: $spacing--small;
-    }
-  }
-
-  &__go-to-search {
-    text-align: center;
-    margin: $spacing--medium 0;
-  }
   /** Header adjustments... */
-  &__header {
-    @include mq(tablet) {
-      width: $inuit-wrapper-width;
-      max-width: calc(100vw - 156px);
-    }
-    padding: 0;
-    margin: 0 auto;
-  }
   &__button--close {
     right: $spacing--large;
     @include mq(tablet) {
@@ -325,52 +190,9 @@ $overlay-height: 136px;
     @include font-size(14px, 16px);
     text-transform: uppercase;
     color: $text-light-color;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: $brand-color;
-    }
-  }
-  &__header-container {
-    display: flex;
-    padding-top: $spacing--small;
-    @include mq(tablet) {
-      padding-top: $spacing;
-    }
-    @include mq(desktop) {
-      padding-top: $spacing + $spacing--small;
-    }
-    > .c-search-field {
-      width: 100%;
-      margin-right: -$spacing--large;
-      @include mq($until: tablet) {
-        .c-search-field__button--close {
-          right: $spacing--large + $spacing--medium;
-          top: 16px;
-        }
-        .c-search-field__button--searchIcon {
-          right: $spacing--large;
-          top: $spacing--small;
-        }
-      }
-    }
-    > button {
-      width: $spacing--large;
-      height: 48px;
-      @include mq(tablet) {
-        transform: translate($spacing--large, 0);
-        width: $spacing--large;
-        height: 56px;
-        &:hover,
-        &:focus {
-          transform: translate($spacing--large + 1, 1px);
-        }
-      }
-      @include mq(wide) {
-        transform: translate($spacing--large * 2, 0);
-        &:hover,
-        &:focus {
-          transform: translate(($spacing--large * 2) + 1, 1px);
-        }
-      }
     }
   }
 }

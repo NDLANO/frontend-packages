@@ -10,8 +10,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import SafeLink from '@ndla/safelink';
 import SvgLogo from './SvgLogo';
-import SafeLink from '../common/SafeLink';
 
 export const logoClasses = new BEMHelper({
   name: 'logo',

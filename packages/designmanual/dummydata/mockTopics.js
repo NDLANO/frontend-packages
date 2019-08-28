@@ -179,6 +179,12 @@ export const subtopicList = [
   },
 ];
 
+const contentTypeResultsMenu = [
+  contentTypeResults[0],
+  contentTypeResults[1],
+  contentTypeResults[2],
+];
+
 export const topicMenu = [
   {
     id: 'urn:topic:172416',
@@ -188,13 +194,13 @@ export const topicMenu = [
         id: 'urn:topic:170363',
         name: 'Idéutvikling',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         id: 'urn:topic:169397',
         name: 'Mediedesign',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
     ],
     contentUri: null,
@@ -207,19 +213,19 @@ export const topicMenu = [
         id: 'urn:topic:111111',
         name: 'Nettsider',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
         subtopics: [
           {
             id: 'urn:topic:162334',
             name: 'Html',
             contentUri: null,
-            contentTypeResults,
+            contentTypeResults: contentTypeResultsMenu,
           },
           {
             id: 'urn:topic:165354',
             name: 'Css',
             contentUri: null,
-            contentTypeResults,
+            contentTypeResults: contentTypeResultsMenu,
           },
         ],
       },
@@ -227,32 +233,32 @@ export const topicMenu = [
         id: 'urn:topic:170356',
         name: 'Produksjonsutstyr og HMS',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
         additional: true,
       },
       {
         id: 'urn:topic:170364',
         name: 'Lydarbeid',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         id: 'urn:topic:30a52046-451e-4302-b62f-21f1a1d0b81e',
         name: 'Levende bilde',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         id: 'urn:topic:170379',
         name: 'Bilde',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         id: 'urn:topic:412bdb35-87f6-49e4-b59a-71f6652652ac',
         name: 'Skriftlig tekstarbeid',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
     ],
     contentUri: null,
@@ -266,13 +272,13 @@ export const topicMenu = [
         id: 'urn:topic:63b785ca-9bda-4769-a95e-51d621cace34',
         name: 'Fortelleteknikker og virkemidler',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         id: 'urn:topic:169412',
         name: 'Mediekommunikasjon',
         contentUri: null,
-        contentTypeResults,
+        contentTypeResults: contentTypeResultsMenu,
       },
     ],
     contentUri: null,

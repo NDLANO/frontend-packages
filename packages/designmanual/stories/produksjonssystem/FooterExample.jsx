@@ -1,9 +1,6 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { Footer, FooterQualityInsurance, FooterStatus } from '@ndla/editor';
 import Button from '@ndla/button';
-import { colors, spacing, fonts } from '@ndla/core';
 
 const optionsQualityInsurance = [
   {

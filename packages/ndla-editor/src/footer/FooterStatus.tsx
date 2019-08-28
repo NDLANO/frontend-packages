@@ -7,6 +7,7 @@
  */
 
 import React, { useReducer } from 'react';
+import { css } from '@emotion/core';
 import { spacing, typography } from '@ndla/core';
 // @ts-ignore
 import { Check } from '@ndla/icons/editor';
@@ -15,7 +16,7 @@ import { Back } from '@ndla/icons/common';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
-import { PopUpWrapper, FieldHeader, Input } from '@ndla/forms'; 
+import { PopUpWrapper, FieldHeader, Input } from '@ndla/forms';
 import {
   StyledWrapper,
   StyledList,
@@ -28,7 +29,6 @@ import {
   buttonStyle,
   changeStatusStyle,
 } from './FooterStyles';
-
 
 type optionProps = {
   name: string;
@@ -63,16 +63,16 @@ interface State {
 }
 
 type Action =
-  | { type: 'comment', payload: string }
-  | { type: 'changeStatus', payload: { id: string, name: string } }
-  | { type: 'warn'; }
-  | { type: 'reset'; }
+  | { type: 'comment'; payload: string }
+  | { type: 'changeStatus'; payload: { id: string; name: string } }
+  | { type: 'warn' }
+  | { type: 'reset' };
 
 const initialState: State = {
   comment: '',
   warn: false,
   changeStatusTo: undefined,
-}
+};
 
 const footerReducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -89,20 +89,16 @@ const footerReducer = (state: State, action: Action) => {
   }
 };
 
-const FooterStatus: React.FC<Props> = ({
-  options,
-  messages,
-  onSave,
-}) => {
+const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
   const [state, dispatch] = useReducer(footerReducer, initialState);
-  const {
-    changeStatusTo,
-    warn,
-    comment,
-  } = state;
+  const { changeStatusTo, warn, comment } = state;
   return (
     <>
-      <div css={typography.mediumHeaderUppercase(`0 ${spacing.xsmall} 0 0`)}>
+      <div
+        css={css`
+          ${typography.mediumHeaderUppercase};
+          margin: 0 ${spacing.xsmall} 0 0;
+        `}>
         {messages.statusLabel}
       </div>
       <PopUpWrapper
@@ -113,76 +109,83 @@ const FooterStatus: React.FC<Props> = ({
         offsetY={spacing.spacingUnit * 2}
         withCloseButton
         onClose={() => dispatch({ type: 'reset' })}
-        buttonStyle={buttonStyle}
-      >
+        buttonStyle={buttonStyle}>
         {(onClosePopup: () => void) => (
           <StyledWrapper extended={changeStatusTo !== undefined}>
-          {changeStatusTo === undefined && 
-            <>
-              <h1
-                css={changeStatusStyle}
-              >{messages.changeStatus}</h1>
-              <StyledList>
-                {options.map(option => (
-                  <StyledListItem>
-                    <StyledButton disabled={option.active} onClick={() => dispatch({ type: 'changeStatus', payload: option })}>
-                      <Check />{option.name}
-                    </StyledButton>
-                  </StyledListItem>
-                ))}
-              </StyledList>
-            </>
-          }
-          {changeStatusTo !== undefined && 
-            <>
-              <StyledBackButton onClick={() => dispatch({ type: 'reset' })}>
-                <Back /><span>{messages.back}</span>
-              </StyledBackButton>
-              <StyledSelectedItemSpan>
-                <Check />{messages.newStatusPrefix} {changeStatusTo.name}
-              </StyledSelectedItemSpan>
-              <FieldHeader title={messages.inputHeader} subTitle={messages.inputHelperText} />
-              <StyledInputWrapper>
-                <Input
-                  warningText={
-                    warn ? messages.warningSavedWithoutComment : null
-                  }
-                  autoExpand
-                  container="div"
-                  type="text"
-                  focusOnMount
-                  placeholder="Skriv navn"
-                  value={comment}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    dispatch({ type: 'comment', payload: e.target.value });
-                  }}
+            {changeStatusTo === undefined && (
+              <>
+                <h1 css={changeStatusStyle}>{messages.changeStatus}</h1>
+                <StyledList>
+                  {options.map(option => (
+                    <StyledListItem>
+                      <StyledButton
+                        disabled={option.active}
+                        onClick={() =>
+                          dispatch({ type: 'changeStatus', payload: option })
+                        }>
+                        <Check />
+                        {option.name}
+                      </StyledButton>
+                    </StyledListItem>
+                  ))}
+                </StyledList>
+              </>
+            )}
+            {changeStatusTo !== undefined && (
+              <>
+                <StyledBackButton onClick={() => dispatch({ type: 'reset' })}>
+                  <Back />
+                  <span>{messages.back}</span>
+                </StyledBackButton>
+                <StyledSelectedItemSpan>
+                  <Check />
+                  {messages.newStatusPrefix} {changeStatusTo.name}
+                </StyledSelectedItemSpan>
+                <FieldHeader
+                  title={messages.inputHeader}
+                  subTitle={messages.inputHelperText}
                 />
-              </StyledInputWrapper>
-              <StyledButtonWrapper>
-                <Button
-                  outline
-                  onClick={() => {
-                    dispatch({ type: 'reset' });
-                    onClosePopup();
-                  }}>
-                  {messages.cancelLabel}
-                </Button>
-                <Button
-                  onClick={() => {
-                    if (comment !== '') {
-                      onSave(comment, changeStatusTo.id);
+                <StyledInputWrapper>
+                  <Input
+                    warningText={
+                      warn ? messages.warningSavedWithoutComment : null
+                    }
+                    autoExpand
+                    container="div"
+                    type="text"
+                    focusOnMount
+                    placeholder="Skriv navn"
+                    value={comment}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      dispatch({ type: 'comment', payload: e.target.value });
+                    }}
+                  />
+                </StyledInputWrapper>
+                <StyledButtonWrapper>
+                  <Button
+                    outline
+                    onClick={() => {
                       dispatch({ type: 'reset' });
                       onClosePopup();
-                    } else {
-                      dispatch({ type: 'warn' });
-                    }
-                  }}>
-                  {messages.saveLabel}
-                </Button>
-              </StyledButtonWrapper>
-            </>
-          }
-        </StyledWrapper>
+                    }}>
+                    {messages.cancelLabel}
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      if (comment !== '') {
+                        onSave(comment, changeStatusTo.id);
+                        dispatch({ type: 'reset' });
+                        onClosePopup();
+                      } else {
+                        dispatch({ type: 'warn' });
+                      }
+                    }}>
+                    {messages.saveLabel}
+                  </Button>
+                </StyledButtonWrapper>
+              </>
+            )}
+          </StyledWrapper>
         )}
       </PopUpWrapper>
     </>

@@ -39,7 +39,7 @@ const StyledFieldHeaderWrapper = styled.div`
 `;
 
 const StyledTitle = styled.h2`
-  ${typography.mediumHeaderUppercase()}
+  ${typography.mediumHeaderUppercase};
   span {
     ${fonts.sizes(16, 1.1)};
     font-weight: ${fonts.weight.normal};

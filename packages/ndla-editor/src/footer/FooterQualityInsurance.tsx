@@ -13,7 +13,7 @@ import { spacing, typography, colors, fonts } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
-import { PopUpWrapper } from '@ndla/forms'; 
+import { PopUpWrapper } from '@ndla/forms';
 
 const StyledWrapper = styled.section`
   padding: 0 ${spacing.large} ${spacing.large} ${spacing.medium};
@@ -27,10 +27,10 @@ const buttonStyle = css`
   padding: ${spacing.spacingUnit / 8}px 0;
   white-space: nowrap;
   &:last-child {
-    margin-bottom: -${spacing.spacingUnit / 8}px; 
+    margin-bottom: -${spacing.spacingUnit / 8}px;
   }
   &:first-child {
-    margin-top: -${spacing.spacingUnit / 8}px; 
+    margin-top: -${spacing.spacingUnit / 8}px;
   }
 `;
 
@@ -44,13 +44,10 @@ type Props = {
   messages: {
     buttonLabel: string;
     heading: string;
-  }
+  };
 };
 
-const FooterQualityInsurance: React.FC<Props> = ({
-  options,
-  messages,
-}) => {
+const FooterQualityInsurance: React.FC<Props> = ({ options, messages }) => {
   return (
     <PopUpWrapper
       label={messages.buttonLabel}
@@ -73,14 +70,20 @@ const FooterQualityInsurance: React.FC<Props> = ({
           margin-left: ${spacing.small};
           cursor: pointer;
         }
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           text-decoration: underline;
         }
-      `}
-    >
+      `}>
       {(onClosePopup: () => void) => (
         <StyledWrapper>
-          <h1 css={typography.smallerHeadingUppercase(`${spacing.xsmall} 0 ${spacing.small} 0`)}>{messages.heading}</h1>
+          <h1
+            css={css`
+              ${typography.smallerHeadingUppercase};
+              margin: ${spacing.xsmall} 0 ${spacing.small} 0;
+            `}>
+            {messages.heading}
+          </h1>
           {options.map(option => (
             <Button
               css={buttonStyle}
@@ -89,8 +92,7 @@ const FooterQualityInsurance: React.FC<Props> = ({
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 option.onClick(e);
                 onClosePopup();
-              }}
-            >
+              }}>
               {option.name}
             </Button>
           ))}

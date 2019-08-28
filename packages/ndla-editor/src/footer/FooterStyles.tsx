@@ -20,10 +20,12 @@ export const StyledWrapper = styled.section<StyledWrapperProp>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  ${props => props.extended && css`
-    min-width: 500px;
-    padding: 0 ${spacing.medium} ${spacing.large} ${spacing.medium};
-  `}
+  ${props =>
+    props.extended &&
+    css`
+      min-width: 500px;
+      padding: 0 ${spacing.medium} ${spacing.large} ${spacing.medium};
+    `}
 `;
 
 export const StyledList = styled.ul`
@@ -52,7 +54,7 @@ const checkItemStyle = css`
     fill: ${colors.support.green};
     margin-right: ${spacing.xsmall};
   }
-`
+`;
 
 export const StyledSelectedItemSpan = styled.div`
   ${checkItemStyle}
@@ -61,7 +63,8 @@ export const StyledSelectedItemSpan = styled.div`
 export const StyledButton = styled.button`
   background: transparent;
   border: 0;
-  padding: ${spacing.xsmall} ${spacing.large} ${spacing.xsmall} ${spacing.normal};
+  padding: ${spacing.xsmall} ${spacing.large} ${spacing.xsmall}
+    ${spacing.normal};
   ${checkItemStyle}
   &:disabled {
     color: ${colors.text.light};
@@ -107,13 +110,14 @@ export const StyledBackButton = styled.button`
     cursor: pointer;
     transition: transform 200ms ease;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     span {
       cursor: pointer;
       text-decoration: underline;
     }
     svg {
-      transform: translateX(-${spacing.xsmall})
+      transform: translateX(-${spacing.xsmall});
     }
   }
 `;
@@ -128,7 +132,8 @@ export const buttonStyle = css`
   color: ${colors.brand.primary};
   border: 0;
   ${fonts.sizes(18, 1.25)};
-  padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.spacingUnit * 0.75}px;
+  padding: ${spacing.small} ${spacing.small} ${spacing.small}
+    ${spacing.spacingUnit * 0.75}px;
   margin-right: ${spacing.normal};
   border-radius: ${misc.borderRadius};
   transition: background-color 200ms ease;
@@ -138,10 +143,14 @@ export const buttonStyle = css`
     width: ${spacing.normal};
     height: ${spacing.normal};
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: ${colors.brand.light};
     transform: translate(1px, 1px);
   }
 `;
 
-export const changeStatusStyle = typography.smallerHeadingUppercase(`${spacing.xsmall} ${spacing.large} ${spacing.small} ${spacing.medium}`);
+export const changeStatusStyle = css`
+  ${typography.smallerHeadingUppercase};
+  margin: ${spacing.xsmall} ${spacing.large} ${spacing.small} ${spacing.medium};
+`;

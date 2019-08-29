@@ -182,7 +182,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialisering',
+      studiespesialiserende: 'Studieførebuande',
       imported: 'Spoltefag',
       heading: 'Kva lærar du?',
     },

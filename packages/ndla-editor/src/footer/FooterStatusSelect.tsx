@@ -9,10 +9,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, typography, colors } from '@ndla/core';
+import { css } from '@emotion/core';
 // @ts-ignore
 import { Check } from '@ndla/icons/editor';
 import { optionProps, checkItemStyle } from './FooterStatus';
-import { css } from '@emotion/core';
 
 const StyledList = styled.ul`
   margin: 0;

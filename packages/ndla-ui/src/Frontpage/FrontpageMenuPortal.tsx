@@ -9,8 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import FocusTrapReact from 'focus-trap-react';
 import { isIE, browserVersion } from 'react-device-detect';
+import { DialogOverlay, DialogContent } from "@reach/dialog";
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 // @ts-ignore
@@ -220,43 +220,41 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
   const isIE11 = (isIE && parseInt(browserVersion) < 12);
   const content = (
     <>
-      <StyledModalWrapper
-        isIE11={isIE11}
-        animationNameIn={animationNameIn}
-        animationNameOut={animationNameOut}
-        elementRect={elementRect}
-        animationDirection={animationDirection}
-        onAnimationEnd={() => {
-          if (animationDirection === 'out') {
-            onClosed();
-          }
-        }}>
-        <FocusTrapReact
-          focusTrapOptions={{
-            onDeactivate: onClose,
-            escapeDeactivates: true,
-          }}>
-          <StyledContainerWrapper isIE11={isIE11}>
-            <StyledContainer animationDirection={animationDirection}>
-              <ScrollableContent isIE11={isIE11}>
-                <StyledButton
-                  isIE11={isIE11}
-                  type="button"
-                  aria-label={t('masthead.menu.close')}
-                  onClick={onClose}>
-                  <Cross />
-                </StyledButton>
-                <div>{children}</div>
-              </ScrollableContent>
-            </StyledContainer>
-          </StyledContainerWrapper>
-        </FocusTrapReact>
-      </StyledModalWrapper>
-      <Backdrop
-        onClick={onClose}
-        animationDuration={animations.durations.normal}
-        animateIn={animationDirection === 'in'}
-      />
+      <DialogOverlay>
+        <StyledModalWrapper
+            isIE11={isIE11}
+            animationNameIn={animationNameIn}
+            animationNameOut={animationNameOut}
+            elementRect={elementRect}
+            animationDirection={animationDirection}
+            onAnimationEnd={() => {
+              if (animationDirection === 'out') {
+                onClosed();
+              }
+            }}>
+          <DialogContent>
+            <StyledContainerWrapper isIE11={isIE11}>
+              <StyledContainer animationDirection={animationDirection}>
+                <ScrollableContent isIE11={isIE11}>
+                  <StyledButton
+                      isIE11={isIE11}
+                      type="button"
+                      aria-label={t('masthead.menu.close')}
+                      onClick={onClose}>
+                    <Cross />
+                  </StyledButton>
+                  <div>{children}</div>
+                </ScrollableContent>
+              </StyledContainer>
+            </StyledContainerWrapper>
+          </DialogContent>
+        </StyledModalWrapper>
+        <Backdrop
+            onClick={onClose}
+            animationDuration={animationDirection === 'in' ? animations.durations.fast : animations.durations.normal}
+            animateIn={animationDirection === 'in'}
+        />
+      </DialogOverlay>
     </>
   );
   return createUniversalPortal(content, 'body');

@@ -120,9 +120,7 @@ type StyledIllustrationContainerProps = {
   isIE11: boolean;
 };
 
-const StyledIllustrationContainer = styled.div<
-  StyledIllustrationContainerProps
->`
+const StyledIllustrationContainer = styled.div<StyledIllustrationContainerProps>`
   width: 100%;
   pointer-events: none;
   ${props =>

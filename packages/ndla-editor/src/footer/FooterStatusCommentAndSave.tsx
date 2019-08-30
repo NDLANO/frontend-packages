@@ -14,7 +14,7 @@ import { Back } from '@ndla/icons/common';
 // @ts-ignore
 import { Check } from '@ndla/icons/editor';
 // @ts-ignore
-import Button from '@ndla/Button';
+import Button from '@ndla/button';
 // @ts-ignore
 import { FieldHeader, Input } from '@ndla/forms';
 import {

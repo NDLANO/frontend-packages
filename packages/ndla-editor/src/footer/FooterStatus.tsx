@@ -25,10 +25,12 @@ const StyledWrapper = styled.section<StyledWrapperProp>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  ${props => props.extended && css`
-    min-width: 500px;
-    padding: 0 ${spacing.medium} ${spacing.large} ${spacing.medium};
-  `}
+  ${props =>
+    props.extended &&
+    css`
+      min-width: 500px;
+      padding: 0 ${spacing.medium} ${spacing.large} ${spacing.medium};
+    `}
 `;
 
 const buttonStyle = css`
@@ -41,7 +43,8 @@ const buttonStyle = css`
   color: ${colors.brand.primary};
   border: 0;
   ${fonts.sizes(18, 1.25)};
-  padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.spacingUnit * 0.75}px;
+  padding: ${spacing.small} ${spacing.small} ${spacing.small}
+    ${spacing.spacingUnit * 0.75}px;
   margin-right: ${spacing.normal};
   border-radius: ${misc.borderRadius};
   transition: background-color 200ms ease;
@@ -51,7 +54,8 @@ const buttonStyle = css`
     width: ${spacing.normal};
     height: ${spacing.normal};
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: ${colors.brand.light};
     transform: translate(1px, 1px);
   }
@@ -129,7 +133,7 @@ const footerReducer = (state: State, action: Action) => {
     case 'reset':
       return initialState;
     default:
-      throw new Error();
+      return state;
   }
 };
 
@@ -156,39 +160,41 @@ const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
         buttonStyle={buttonStyle}>
         {(onClosePopup: () => void) => (
           <StyledWrapper extended={changeStatusTo !== undefined}>
-          {changeStatusTo === undefined && 
-            <FooterStatusSelect
-              options={options}
-              onSelectStatus={(payload: optionProps) => dispatch({ type: 'changeStatus', payload })}
-              heading={messages.changeStatus}
-            />
-          }
-          {changeStatusTo !== undefined && 
-            <FooterStatusCommentAndSave
-              goBack={() => dispatch({ type: 'reset' })}
-              onCancel={() => {
-                dispatch({ type: 'reset' });
-                onClosePopup();
-              }}
-              onSave={() => {
-                if (comment !== '') {
-                  onSave(comment, changeStatusTo.id);
+            {changeStatusTo === undefined && (
+              <FooterStatusSelect
+                options={options}
+                onSelectStatus={(payload: optionProps) =>
+                  dispatch({ type: 'changeStatus', payload })
+                }
+                heading={messages.changeStatus}
+              />
+            )}
+            {changeStatusTo !== undefined && (
+              <FooterStatusCommentAndSave
+                goBack={() => dispatch({ type: 'reset' })}
+                onCancel={() => {
                   dispatch({ type: 'reset' });
                   onClosePopup();
-                } else {
-                  dispatch({ type: 'warn' });
-                }
-              }}
-              onChangeComment={(e: React.ChangeEvent<HTMLInputElement>) => {
-                dispatch({ type: 'comment', payload: e.target.value });
-              }}
-              changeStatusTo={changeStatusTo}
-              comment={comment}
-              messages={messages}
-              warn={warn}
-            />
-          }
-        </StyledWrapper>
+                }}
+                onSave={() => {
+                  if (comment !== '') {
+                    onSave(comment, changeStatusTo.id);
+                    dispatch({ type: 'reset' });
+                    onClosePopup();
+                  } else {
+                    dispatch({ type: 'warn' });
+                  }
+                }}
+                onChangeComment={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  dispatch({ type: 'comment', payload: e.target.value });
+                }}
+                changeStatusTo={changeStatusTo}
+                comment={comment}
+                messages={messages}
+                warn={warn}
+              />
+            )}
+          </StyledWrapper>
         )}
       </PopUpWrapper>
     </>

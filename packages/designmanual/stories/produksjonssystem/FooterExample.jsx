@@ -1,9 +1,12 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { Footer, FooterQualityInsurance, FooterStatus } from '@ndla/editor';
+
+import {
+  Footer,
+  FooterQualityInsurance,
+  FooterStatus,
+  FooterLinkButton,
+} from '@ndla/editor';
 import Button from '@ndla/button';
-import { colors, spacing, fonts } from '@ndla/core';
 
 const optionsQualityInsurance = [
   {
@@ -56,16 +59,25 @@ const FooterExample = () => (
         messages={{
           buttonLabel: 'Kvalitetssikring',
           heading: 'Kvalitetssikring:',
-        }}
-      />
+        }}>
+        {optionsQualityInsurance.map(option => (
+          <FooterLinkButton
+            key={option.name}
+            bold
+            onClick={e => {
+              option.onClick(e);
+            }}>
+            {option.name}
+          </FooterLinkButton>
+        ))}
+      </FooterQualityInsurance>
       <hr />
-      <Button
-        smallLink
+      <FooterLinkButton
         onClick={() => {
           console.log('clicked..');
         }}>
         Tilbakestill endringer
-      </Button>
+      </FooterLinkButton>
     </div>
     <div>
       <FooterStatus

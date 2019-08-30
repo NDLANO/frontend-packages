@@ -135,31 +135,6 @@ export const appearances = {
       box-shadow: ${colors.linkHover};
     }
   `,
-  smallLink: css`
-    ${strippedStyle};
-    ${fonts.sizes(16, 1.25)};
-    height: ${spacing.large};
-    color: ${colors.brand.primary};
-    font-weight: ${fonts.weight.semibold};
-    box-shadow: none;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  `,
-  boldLink: css`
-    ${strippedStyle};
-    color: ${colors.brand.primary};
-    text-decoration: underline;
-    font-weight: ${fonts.weight.bold};
-    font-size: inherit;
-    line-height: inherit;
-    &:focus,
-    &:hover {
-      text-decoration: none;
-    }
-  `,
   ghostPillInverted: css`
     ${strippedStyle};
     ${pillStyle};
@@ -280,8 +255,6 @@ export const Button = ({
   outline,
   stripped,
   link,
-  boldLink,
-  smallLink,
   large,
   lighter,
   submit,
@@ -300,8 +273,6 @@ export const Button = ({
 }) => {
   const modifiers = {
     link,
-    boldLink,
-    smallLink,
     large,
     outline,
     lighter,
@@ -338,8 +309,6 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
   link: PropTypes.bool,
-  boldLink: PropTypes.bool,
-  smallLink: PropTypes.bool,
   large: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
@@ -351,8 +320,6 @@ Button.propTypes = {
   appearance: PropTypes.oneOf([
     'outline',
     'link',
-    'boldLink',
-    'smallLink',
     'stripped',
     'lighter',
     'inverted',

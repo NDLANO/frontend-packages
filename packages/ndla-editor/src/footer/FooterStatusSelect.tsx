@@ -74,7 +74,7 @@ const FooterStatusSelect: React.FC<Props> = ({
             disabled={option.active}
             onClick={() => onSelectStatus(option)}>
             <Check />
-            {option.name}?
+            {option.name}
           </StyledButton>
         </StyledListItem>
       ))}

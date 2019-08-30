@@ -23,17 +23,6 @@ const StyledWrapper = styled.section`
   align-items: flex-start;
 `;
 
-const buttonStyle = css`
-  padding: ${spacing.spacingUnit / 8}px 0;
-  white-space: nowrap;
-  &:last-child {
-    margin-bottom: -${spacing.spacingUnit / 8}px;
-  }
-  &:first-child {
-    margin-top: -${spacing.spacingUnit / 8}px;
-  }
-`;
-
 type optionProps = {
   name: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -45,9 +34,10 @@ type Props = {
     buttonLabel: string;
     heading: string;
   };
+  children: (f: VoidFunction) => React.ReactNode;
 };
 
-const FooterQualityInsurance: React.FC<Props> = ({ options, messages }) => {
+const FooterQualityInsurance: React.FC<Props> = ({ children, messages }) => {
   return (
     <PopUpWrapper
       label={messages.buttonLabel}
@@ -84,18 +74,7 @@ const FooterQualityInsurance: React.FC<Props> = ({ options, messages }) => {
             `}>
             {messages.heading}
           </h1>
-          {options.map(option => (
-            <Button
-              css={buttonStyle}
-              boldLink
-              key={option.name}
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                option.onClick(e);
-                onClosePopup();
-              }}>
-              {option.name}
-            </Button>
-          ))}
+          {children(onClosePopup)}
         </StyledWrapper>
       )}
     </PopUpWrapper>

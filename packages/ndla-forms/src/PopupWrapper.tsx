@@ -20,11 +20,11 @@ import { spacing, misc, animations, colors } from '@ndla/core';
 
 type StyledIconProps = {
   rotate: number;
-}
+};
 
 const StyledIcon = styled(ChevronDown)<StyledIconProps>`
   transition: transform 200ms ease;
-  transform: rotate(${props => props.rotate}deg)
+  transform: rotate(${props => props.rotate}deg);
 `;
 
 type StyledOptionWrapperAnimationProps = {
@@ -40,7 +40,9 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
-const StyledOptionWrapperAnimation = styled.div<StyledOptionWrapperAnimationProps>`
+const StyledOptionWrapperAnimation = styled.div<
+  StyledOptionWrapperAnimationProps
+>`
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
   position: absolute;
   ${props => {
@@ -121,7 +123,8 @@ const StyledCloseButton = styled.button`
     opacity: 0;
     transition: all 200ms ease;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     &:before {
       transform: scale(1);
       opacity: 1;
@@ -141,7 +144,7 @@ interface Props extends StyledOptionWrapperAnimationProps {
   buttonStyle: CSSPropertiesWithMultiValues;
   onOpen?: () => void;
   onClose?: () => void;
-};
+}
 
 const PopupWrapper: React.FC<Props> = ({
   children,
@@ -158,13 +161,13 @@ const PopupWrapper: React.FC<Props> = ({
 }) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
-    toggleIsOpen(newState === true);
-    if (newState === true && onOpen) {
+    toggleIsOpen(!!newState);
+    if (newState && onOpen) {
       onOpen();
-    } else if (newState === false && onClose) {
+    } else if (!newState && onClose) {
       onClose();
     }
-  }
+  };
   return (
     <StyledWrapper>
       <FocusTrapReact
@@ -173,10 +176,12 @@ const PopupWrapper: React.FC<Props> = ({
           onDeactivate: () => setPopupState(false),
           clickOutsideDeactivates: true,
           escapeDeactivates: true,
-        }}
-      >
+        }}>
         <div>
-          <button type="button" css={buttonStyle} onClick={() => setPopupState(!isOpen)}>
+          <button
+            type="button"
+            css={buttonStyle}
+            onClick={() => setPopupState(!isOpen)}>
             {label} <StyledIcon rotate={isOpen ? 180 : 0} />
           </button>
           {isOpen && (
@@ -184,12 +189,13 @@ const PopupWrapper: React.FC<Props> = ({
               offsetX={typeof offsetX === 'string' ? offsetX : `${offsetX}px`}
               offsetY={typeof offsetY === 'string' ? offsetY : `${offsetY}px`}
               position={position}
-              verticalPosition={verticalPosition}
-            >
+              verticalPosition={verticalPosition}>
               <StyledOptionWrapper background={background}>
                 <StyledOptionContent>
                   {withCloseButton && (
-                    <StyledCloseButton type="button" onClick={() => setPopupState(false)}>
+                    <StyledCloseButton
+                      type="button"
+                      onClick={() => setPopupState(false)}>
                       <Cross />
                     </StyledCloseButton>
                   )}

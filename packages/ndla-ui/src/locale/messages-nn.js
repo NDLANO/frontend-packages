@@ -34,6 +34,7 @@ const messages = {
       'Orsak, vi kunne ikkje finne ressursen du leiter etter.',
   },
   notFoundPage: {
+    title: 'Sida finst ikkje',
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
   lti: {

@@ -34,6 +34,7 @@ const messages = {
       "Sorry, we can't locate the resource you are looking for.",
   },
   notFoundPage: {
+    title: 'Page not found',
     errorDescription: "We can't seem to find the page you are looking for.",
   },
   lti: {

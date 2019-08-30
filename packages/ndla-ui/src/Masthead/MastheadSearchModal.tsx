@@ -8,7 +8,8 @@ import Button from '@ndla/button';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 import styled from '@emotion/styled';
-import { spacing, mq, breakpoints } from '@ndla/core';
+import { css } from '@emotion/core';
+import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
 // @ts-ignore
 import ToggleSearchButton from '../Search/ToggleSearchButton';
 
@@ -76,43 +77,75 @@ const StyledHeader = styled.div`
   }
 `;
 
+const modalStyles = css`
+  & > [data-reach-dialog-content] {
+    position: fixed;
+    background: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 74px;
+    ${mq.range({ from: breakpoints.tablet })} {
+      height: 110px;
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      height: 136px;
+    }
+    overflow-y: visible;
+    box-shadow: none;
+  }
+`;
+
+const extraBackdrop = css`
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 74px;
+  background: ${colors.brand.greyLighter};
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 110px;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    height: 136px;
+  }
+  box-shadow: ${shadows.searchHeader};
+`;
+
 const MastheadSearchModal: React.FC<Props> = ({
   onClose: onSearchClose,
   children,
   hideOnNarrowScreen,
   ndlaFilm,
   t,
-}) => {
-  return (
-    <Modal
-      backgroundColor="grey"
-      animation="slide-down"
-      animationDuration={200}
-      size="full-width"
-      onClose={onSearchClose}
-      className="c-search-field__overlay-content"
-      activateButton={
-        <ToggleSearchButton
-          hideOnNarrowScreen={hideOnNarrowScreen}
-          ndlaFilm={ndlaFilm}>
-          {t('masthead.menu.search')}
-        </ToggleSearchButton>
-      }>
-      {(onClose: VoidFunction) => {
-        return (
-          <>
-            <div className="c-search-field__overlay-top" />
-            <StyledHeader>
-              {children}
-              <Button stripped onClick={onClose}>
-                <Cross className="c-icon--medium" />
-              </Button>
-            </StyledHeader>
-          </>
-        );
-      }}
-    </Modal>
-  );
-};
+}) => (
+  <Modal
+    backgroundColor="grey"
+    animation="slide-down"
+    animationDuration={200}
+    size="full-width"
+    onClose={onSearchClose}
+    css={modalStyles}
+    activateButton={
+      <ToggleSearchButton
+        hideOnNarrowScreen={hideOnNarrowScreen}
+        ndlaFilm={ndlaFilm}>
+        {t('masthead.menu.search')}
+      </ToggleSearchButton>
+    }>
+    {(onClose: VoidFunction) => (
+      <>
+        <div css={extraBackdrop} />
+        <StyledHeader>
+          {children}
+          <Button stripped onClick={onClose}>
+            <Cross className="c-icon--medium" />
+          </Button>
+        </StyledHeader>
+      </>
+    )}
+  </Modal>
+);
 
 export default injectT(MastheadSearchModal);

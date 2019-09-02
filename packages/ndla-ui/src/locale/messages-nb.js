@@ -33,6 +33,7 @@ const messages = {
     error404Description: 'Beklager, finner ikke ressursen du leter etter.',
   },
   notFoundPage: {
+    title: 'Siden finnes ikke',
     errorDescription: 'Beklager, finner ikke siden du prøvde å komme til.',
   },
   lti: {
@@ -181,7 +182,7 @@ const messages = {
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialisering',
+      studiespesialiserende: 'Studieforberedende',
       imported: 'Spoltefag',
       heading: 'Hva lærer du?',
     },

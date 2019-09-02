@@ -1,71 +1,9 @@
-$overlay-height-mobile: 74px;
-$overlay-height-tablet: 110px;
-$overlay-height: 136px;
-
 .c-search-field {
   display: flex;
   align-items: center;
   text-align: left;
   flex-direction: column;
   justify-content: center;
-
-  &__overlay-content > div:first-child {
-    position: fixed;
-    background: none;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: $overlay-height-mobile;
-    @include mq(tablet) {
-      height: $overlay-height-tablet;
-    }
-    @include mq(desktop) {
-      height: $overlay-height;
-    }
-    overflow-y: visible;
-    box-shadow: none;
-  }
-
-  &__overlay-top {
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: $overlay-height-mobile;
-    background: $brand-grey--lighter;
-    @include mq(tablet) {
-      height: $overlay-height-tablet;
-    }
-    @include mq(desktop) {
-      height: $overlay-height;
-    }
-    box-shadow: 0 0 30px rgba($black, 0.2);
-    &.with-backdrop {
-      &:before {
-        content: '';
-        display: block;
-        position: fixed;
-        top: 74px;
-        @include mq(tablet) {
-          top: 100px;
-        }
-        @include mq(desktop) {
-          top: 136px;
-        }
-        bottom: 0;
-        right: 0;
-        left: 0;
-        opacity: 0;
-        background: rgba(0, 0, 0, 0.3);
-        pointer-events: none;
-        animation-name: fadeIn;
-        animation-duration: 400ms;
-        animation-delay: 100ms;
-        animation-fill-mode: forwards;
-      }
-    }
-  }
 
   @include mq(desktop) {
     &--has-search-result {

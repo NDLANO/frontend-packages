@@ -123,9 +123,11 @@ type StyledIllustrationContainerProps = {
 const StyledIllustrationContainer = styled.div<StyledIllustrationContainerProps>`
   width: 100%;
   pointer-events: none;
-  ${props => props.isIE11 && css`
-    transform: scale(1.2);
-  `}
+  ${props =>
+    props.isIE11 &&
+    css`
+      transform: scale(1.2);
+    `}
   ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     width: calc(100vw - ${spacing.spacingUnit * 6}px);
   }
@@ -186,6 +188,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         return { ...prevState, animationDirection: 'out' };
       });
     }
+    noScroll(false, 'frontpagePortal');
   };
 
   const closedMenu = () => {
@@ -213,7 +216,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     noScroll(true, 'frontpagePortal');
   };
 
-  const isIE11 = (isIE && parseInt(browserVersion) < 12);
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   return (
     <>
       {menuIsOpen && (
@@ -224,9 +227,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           animationDirection={animationDirection}
           elementRect={elementRect}>
           {categoryIndex !== undefined && (
-            <FrontpageSubjectsInPortal
-              category={categories[categoryIndex]}
-            />
+            <FrontpageSubjectsInPortal category={categories[categoryIndex]} />
           )}
         </FrontpageMenuPortal>
       )}

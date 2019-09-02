@@ -16,19 +16,12 @@ import { Check } from '@ndla/icons/editor';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
-import { FieldHeader, Input } from '@ndla/forms';
-import {
-  checkItemStyle,
-} from './FooterStatus';
+import { checkItemStyle } from './FooterStatus';
 
 const StyledButtonWrapper = styled.div`
   margin: ${spacing.normal} 0 0 0;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-`;
-
-const StyledInputWrapper = styled.div`
   width: 100%;
 `;
 
@@ -48,13 +41,14 @@ const StyledBackButton = styled.button`
     cursor: pointer;
     transition: transform 200ms ease;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     span {
       cursor: pointer;
       text-decoration: underline;
     }
     svg {
-      transform: translateX(-${spacing.xsmall})
+      transform: translateX(-${spacing.xsmall});
     }
   }
 `;
@@ -73,14 +67,14 @@ type Props = {
     cancelLabel: string;
     saveLabel: string;
     commentPlaceholder: string;
-  }
+  };
   changeStatusTo: {
     id: string;
     name: string;
   };
   warn?: boolean;
   comment: string;
-}
+};
 
 const FooterStatusCommentAndSave: React.FC<Props> = ({
   goBack,
@@ -94,13 +88,18 @@ const FooterStatusCommentAndSave: React.FC<Props> = ({
 }) => (
   <>
     <StyledBackButton onClick={goBack}>
-      <Back /><span>{messages.back}</span>
+      <Back />
+      <span>{messages.back}</span>
     </StyledBackButton>
     <div css={checkItemStyle}>
-      <Check />{messages.newStatusPrefix} {changeStatusTo.name}
+      <Check />
+      {messages.newStatusPrefix} {changeStatusTo.name}
     </div>
-    <FieldHeader title={messages.inputHeader} subTitle={messages.inputHelperText} />
-    <StyledInputWrapper>
+    {/*<FieldHeader
+      title={messages.inputHeader}
+      subTitle={messages.inputHelperText}
+    />
+         <StyledInputWrapper>
       <Input
         warningText={
           warn ? messages.warningSavedWithoutComment : null
@@ -113,17 +112,12 @@ const FooterStatusCommentAndSave: React.FC<Props> = ({
         value={comment}
         onChange={onChangeComment}
       />
-    </StyledInputWrapper>
+    </StyledInputWrapper> */}
     <StyledButtonWrapper>
-      <Button
-        outline
-        onClick={onCancel}>
+      <Button outline onClick={onCancel}>
         {messages.cancelLabel}
       </Button>
-      <Button
-        onClick={onSave}>
-        {messages.saveLabel}
-      </Button>
+      <Button onClick={onSave}>{messages.saveLabel}</Button>
     </StyledButtonWrapper>
   </>
 );

@@ -27,7 +27,7 @@ const StyledIcon = styled(ChevronDown)<StyledIconProps>`
   transform: rotate(${props => props.rotate}deg);
 `;
 
-type StyledOptionWrapperAnimationProps = {
+type StyledOptionProps = {
   verticalPosition?: 'top' | 'bottom' | 'center';
   position?: 'left' | 'right' | 'center';
   offsetY?: number | string;
@@ -40,9 +40,7 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
-const StyledOptionWrapperAnimation = styled.div<
-  StyledOptionWrapperAnimationProps
->`
+const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
   position: absolute;
   ${props => {
@@ -81,7 +79,7 @@ const StyledOptionContent = styled.div`
   ${animations.fadeIn()}
 `;
 
-const StyledOptionWrapper = styled.div<StyledOptionWrapperAnimationProps>`
+const StyledOptionWrapper = styled.div<StyledOptionProps>`
   background: ${props => props.background};
   border-radius: ${misc.borderRadius};
   display: flex;
@@ -138,7 +136,7 @@ const StyledCloseButton = styled.button`
   }
 `;
 
-interface Props extends StyledOptionWrapperAnimationProps {
+interface Props extends StyledOptionProps {
   children: (arg: Function) => ReactChild | ReactChildren;
   label: string;
   buttonStyle: CSSPropertiesWithMultiValues;

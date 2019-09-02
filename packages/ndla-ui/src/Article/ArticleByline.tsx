@@ -40,15 +40,13 @@ const StyledAdditionalIcon = styled(Additional)`
 type ArticleBylineProps = {
   published: string;
   additional: boolean;
-  t: any;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const ArticleByline = ({ published, additional, t }: ArticleBylineProps) => {
   return (
     <StyledByline>
-      <span>
-        {t('article.lastUpdated')} {published}
-      </span>
+      <span>{`${t('article.lastUpdated')} ${published}`}</span>
       {additional && (
         <StyledAdditionalWrapper>
           <StyledAdditionalIcon />

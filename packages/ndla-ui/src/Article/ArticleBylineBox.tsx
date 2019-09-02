@@ -33,11 +33,11 @@ const StyledArticleBylineBox = styled('section')`
 
 const StyledAuthorName = styled('span')`
   margin: 0;
-  padding-right: 0.5em;
+  padding-right: ${spacing.xsmall};
 `;
 
 const StyledAuthorRole = styled('span')`
-  padding-right: 0.5em;
+  padding-right: ${spacing.xsmall};
   margin: 0;
   font-weight: ${fonts.weight.semibold};
 
@@ -95,9 +95,9 @@ type Author = {
 
 type ArticleBylineBoxProps = {
   authors: Author[];
-  licenseBox: any;
+  licenseBox: React.FunctionComponent;
   published: string;
-  t: any;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const ArticleBylineBox = ({
@@ -124,7 +124,7 @@ const ArticleBylineBox = ({
               <StyledAuthorName>{author.name}</StyledAuthorName>
               <LicenseByline
                 licenseRights={author.licenses.split(' ')}
-                size="16px"
+                size={`${spacing.spacingUnit / 1.625}px`}
                 removeBottomPadding
               />
             </StyledAuthorRow>
@@ -133,7 +133,7 @@ const ArticleBylineBox = ({
       )}
       <StyledRow>
         <StyledLastUpdated>
-          {t('article.lastUpdated')} {published}
+          {`${t('article.lastUpdated')} ${published}`}
         </StyledLastUpdated>
         {licenseBox && (
           <span>
@@ -143,7 +143,10 @@ const ArticleBylineBox = ({
               {(onClose: Function) => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">
-                    <ModalCloseButton onClick={onClose} title="Lukk" />
+                    <ModalCloseButton
+                      onClick={onClose}
+                      title={t('article.closeLabel')}
+                    />
                   </ModalHeader>
                   <ModalBody>{licenseBox}</ModalBody>
                 </>

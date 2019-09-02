@@ -124,11 +124,6 @@ export const Article = ({
     authors = processors;
   }
 
-  authors = authors.map(author => ({
-    ...author,
-    licenses: license,
-  }));
-
   return (
     <ArticleWrapper modifier={modifier} id={id}>
       <LayoutItem layout="center">
@@ -158,7 +153,14 @@ export const Article = ({
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
       <LayoutItem layout="center">
-        <ArticleBylineBox {...{ authors, licenseBox, published }} />
+        <ArticleBylineBox
+          authors={authors.map(author => ({
+            ...author,
+            licenses: license,
+          }))}
+          licenseBox={licenseBox}
+          published={published}
+        />
       </LayoutItem>
     </ArticleWrapper>
   );

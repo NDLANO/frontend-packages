@@ -177,13 +177,9 @@ const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
                   onClosePopup();
                 }}
                 onSave={() => {
-                  if (comment !== '') {
-                    onSave(comment, changeStatusTo.id);
-                    dispatch({ type: 'reset' });
-                    onClosePopup();
-                  } else {
-                    dispatch({ type: 'warn' });
-                  }
+                  onSave(comment, changeStatusTo.id);
+                  dispatch({ type: 'reset' });
+                  onClosePopup();
                 }}
                 onChangeComment={(e: React.ChangeEvent<HTMLInputElement>) => {
                   dispatch({ type: 'comment', payload: e.target.value });

@@ -21,13 +21,11 @@ const StyledWrapper = styled.section`
   align-items: flex-start;
 `;
 
-type optionProps = {
-  name: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
-
 type Props = {
-  options: Array<optionProps>;
+  options: Array<{
+    name: string;
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  }>;
   messages: {
     buttonLabel: string;
     heading: string;

@@ -44,16 +44,12 @@ const StyledContentWrapper = styled.div`
 `;
 
 type Props = {
-  children: React.ReactNode | React.ReactNodeArray;
+  children: JSX.Element;
 };
 
-const Footer: React.FC<Props> = ({
-  children,
-}) => (
+const Footer: React.FC<Props> = ({ children }) => (
   <StyledFooter>
-    <StyledContentWrapper>
-      {children}
-    </StyledContentWrapper>
+    <StyledContentWrapper>{children}</StyledContentWrapper>
   </StyledFooter>
 );
 

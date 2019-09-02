@@ -95,7 +95,8 @@ const FooterStatusCommentAndSave: React.FC<Props> = ({
       <Check />
       {messages.newStatusPrefix} {changeStatusTo.name}
     </div>
-    {/*<FieldHeader
+    {/* TODO
+    <FieldHeader
       title={messages.inputHeader}
       subTitle={messages.inputHelperText}
     />

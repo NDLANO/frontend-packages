@@ -22,14 +22,13 @@ const StyledAccordionPanel = styled.section<Props>`
   display: flex;
   transition: opacity 200ms ease;
   opacity: 1;
-  margin-bottom: ${spacing.normal};
+  margin-bottom: ${props => props.tiny ? spacing.small : spacing.normal};
   background: #fff;
   max-height: auto;
-  box-sizing: padding-box;
   border: 2px solid transparent;
   ${props => !props.isOpen &&
     css`
-      margin-bottom: ${spacing.xsmall};
+      margin-bottom: 0;
       padding: 0 !important;
       max-height: 0;
       overflow: hidden;

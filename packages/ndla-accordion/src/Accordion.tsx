@@ -31,6 +31,7 @@ type childrenProps = {
   getPanelProps: (arg: openIndexesProps) => {
     id: openIndexesProps,
     isOpen: boolean,
+    tiny?: boolean,
   };
 };
 
@@ -65,6 +66,7 @@ export const Accordion: React.FC<Props> = ({ openIndexes, single, tiny, children
     }),
     getPanelProps: (panelId: openIndexesProps) => ({
       id: panelId,
+      tiny,
       isOpen: currentOpenedIndexes.includes(panelId),
     }),
   });

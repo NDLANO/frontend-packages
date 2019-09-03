@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { css } from '@emotion/core';
 import Accordion, {
   AccordionBar,
@@ -18,16 +18,16 @@ const TinyAccordionExample = () => (
     {({ getPanelProps, getBarProps }) => (
       <AccordionWrapper>
         {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-          <React.Fragment key={item}>
+          <Fragment key={item}>
             <AccordionBar
               {...getBarProps(index)}
               title={`Panel ${index + 1}`}>
                 hello
             </AccordionBar>
-            <AccordionPanel {...getPanelProps(index)} sidePadding={0} css={paddingPanelStyle}>
+            <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyle}>
               <p>{item}</p>
             </AccordionPanel>
-          </React.Fragment>
+          </Fragment>
         ))}
       </AccordionWrapper>
     )}

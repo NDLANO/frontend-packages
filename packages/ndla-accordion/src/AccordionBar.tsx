@@ -22,7 +22,7 @@ type StyledAccordionBarProps = {
 
 const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
   ${props => props.tiny ? css`
-    padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0);
+    padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0;
   ` : css`
     padding: ${spacing.small} ${spacing.normal} ${spacing.small} calc(${spacing.xsmall} * 3);
   `}
@@ -69,7 +69,7 @@ const StyledButton = styled.button<ButtonProps>`
   };
   ${props => props.tiny ? 
     css`
-      padding: ${spacing.small};
+      padding: ${spacing.xsmall} ${spacing.xsmall} ${spacing.xsmall} ${spacing.small};
       span {
         ${fonts.sizes(18, 1.1)};
       }
@@ -94,10 +94,11 @@ const StyledButton = styled.button<ButtonProps>`
   } 
 `;
 
-const StyledChildrenWrapper = styled.div`
+const StyledChildrenWrapper = styled.div<{tiny?: boolean}>`
   color: ${colors.text.primary};
   display: flex;
   flex: 1;
+  ${props => props.tiny ? fonts.sizes(14, 1.3) : fonts.sizes(18, 1.3)};
 `;
 
 type Props = {
@@ -132,7 +133,7 @@ export const AccordionBar: React.FC<Props> = ({
       <ChevronRight />
       <span>{title}</span>
     </StyledButton>
-    <StyledChildrenWrapper>
+    <StyledChildrenWrapper tiny={tiny}>
       {children}
     </StyledChildrenWrapper>
   </StyledAccordionBar>

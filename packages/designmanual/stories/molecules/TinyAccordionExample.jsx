@@ -5,10 +5,12 @@ import Accordion, {
   AccordionPanel,
   AccordionWrapper,
 } from '@ndla/accordion';
-import { colors } from '@ndla/core';
+import { colors, spacing } from '@ndla/core';
 
 const paddingPanelStyle = css`
   background: ${colors.brand.greyLightest};
+  padding-left: ${spacing.medium};
+  padding-right: ${spacing.medium};
 `;
 
 const TinyAccordionExample = () => (
@@ -19,8 +21,8 @@ const TinyAccordionExample = () => (
           <React.Fragment key={item}>
             <AccordionBar
               {...getBarProps(index)}
-              ariaLabel={`Panel ${index + 1}`}>
-              Panel {index + 1}
+              title={`Panel ${index + 1}`}>
+                hello
             </AccordionBar>
             <AccordionPanel {...getPanelProps(index)} sidePadding={0} css={paddingPanelStyle}>
               <p>{item}</p>

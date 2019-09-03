@@ -14,8 +14,8 @@ import { colors, spacing } from '@ndla/core';
 type Props = {
   id: string;
   isOpen?: boolean;
+  tiny?: boolean;
   hasError?: boolean;
-  sidePadding?: number;
 };
 
 const StyledAccordionPanel = styled.section<Props>`
@@ -24,16 +24,16 @@ const StyledAccordionPanel = styled.section<Props>`
   opacity: 1;
   margin-bottom: ${spacing.normal};
   background: #fff;
-  padding: ${({ sidePadding }) => `0 ${sidePadding ? `${sidePadding}px` : `calc(${spacing.large} + ${spacing.small})`} ${spacing.large}`};
   max-height: auto;
   ${props => !props.isOpen &&
     css`
       margin-bottom: ${spacing.xsmall};
-      padding: 0;
+      padding: 0 !important;
       border: 0;
       max-height: 0;
       overflow: hidden;
       opacity: 0;
+      visibility: collapse;
     `};
   ${props => props.hasError && props.isOpen &&
     css`

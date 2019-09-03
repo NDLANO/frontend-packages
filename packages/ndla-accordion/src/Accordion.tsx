@@ -13,6 +13,7 @@ import { spacing } from '@ndla/core';
 export const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
   margin: ${spacing.normal} 0;
 `;
 
@@ -22,6 +23,7 @@ type childrenProps = {
   openIndexes: Array<openIndexesProps>,
   handleItemClick: (arg: openIndexesProps) => void;
   getBarProps: (arg: openIndexesProps) => {
+    tiny?: boolean;
     onClick: () => void,
     isOpen: boolean,
     panelId: openIndexesProps,
@@ -34,11 +36,12 @@ type childrenProps = {
 
 type Props = {
   openIndexes: Array<openIndexesProps>,
-  single: boolean;
+  single?: boolean;
+  tiny?: boolean;
   children: (arg: childrenProps) => React.ReactElement;
 };
 
-export const Accordion: React.FC<Props> = ({ openIndexes, single, children }) => {
+export const Accordion: React.FC<Props> = ({ openIndexes, single, tiny, children }) => {
   const [currentOpenedIndexes, setOpenIndexes] = useState(openIndexes || []);
 
   const togglePanel = (index: openIndexesProps) => {
@@ -55,6 +58,7 @@ export const Accordion: React.FC<Props> = ({ openIndexes, single, children }) =>
     openIndexes: currentOpenedIndexes,
     handleItemClick: togglePanel,
     getBarProps: (panelId: openIndexesProps) => ({
+      tiny,
       panelId,
       isOpen: currentOpenedIndexes.includes(panelId),
       onClick: () => togglePanel(panelId),

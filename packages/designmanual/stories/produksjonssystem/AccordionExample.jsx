@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import { css } from '@emotion/core';
 import Accordion, {
   AccordionBar,
   AccordionPanel,
@@ -14,8 +15,14 @@ import Accordion, {
 } from '@ndla/accordion';
 import Button from '@ndla/button';
 import { FilterList } from '@ndla/ui';
+import { spacing } from '@ndla/core';
 
 import ComponentInfo from '../ComponentInfo';
+import TinyAccordionExample from '../molecules/TinyAccordionExample';
+
+const panelStyle = css`
+  padding: ${spacing.small} calc(${spacing.large} + ${spacing.small}) ${spacing.large}; 
+`;
 
 class AccordionExample extends Component {
   constructor(props) {
@@ -77,13 +84,6 @@ class AccordionExample extends Component {
             default: 'false',
             description: 'Vis kun et panel omgangen',
           },
-          {
-            name: 'sidePadding',
-            type: 'Number',
-            default: 'undefined',
-            description:
-              'Custom padding på sidene til AccordionPanel komponenten. Brukes feks av Ed panel for sideredigeringen.',
-          },
         ]}
         status={2}>
         <h2>Eksempel</h2>
@@ -97,7 +97,7 @@ class AccordionExample extends Component {
                     ariaLabel={`Panel ${index + 1}`}>
                     Panel {index + 1}
                   </AccordionBar>
-                  <AccordionPanel {...getPanelProps(index)}>
+                  <AccordionPanel {...getPanelProps(index)} css={panelStyle}>
                     <div>
                       <p>{item}</p>
                     </div>
@@ -118,7 +118,7 @@ class AccordionExample extends Component {
                     ariaLabel={`Panel ${index + 1}`}>
                     Panel {index + 1}
                   </AccordionBar>
-                  <AccordionPanel {...getPanelProps(index)}>
+                  <AccordionPanel {...getPanelProps(index)} css={panelStyle}>
                     <p>{item}</p>
                   </AccordionPanel>
                 </React.Fragment>
@@ -156,7 +156,9 @@ class AccordionExample extends Component {
                   <AccordionPanel
                     id={`panel-${index}`}
                     hasError={errorPanels.includes(index)}
-                    isOpen={openIndexes.includes(index)}>
+                    isOpen={openIndexes.includes(index)}
+                    css={panelStyle}
+                  >
                     <div>
                       <p>{item}</p>
                       <Button onClick={() => handleItemClick(index)}>
@@ -166,6 +168,23 @@ class AccordionExample extends Component {
                   </AccordionPanel>
                 </React.Fragment>
               ))}
+              <AccordionBar
+                panelId="panelWithSubAccordion"
+                ariaLabel="Åpne"
+                onClick={() => handleItemClick(3)}
+                hasError={errorPanels.includes(3)}
+                isOpen={openIndexes.includes(3)}
+              >
+                Accordion with tiny accordion inside
+              </AccordionBar>
+              <AccordionPanel
+                id="panelWithSubAccordion"
+                hasError={errorPanels.includes(3)}
+                isOpen={openIndexes.includes(3)}
+                css={panelStyle}
+              >
+                <TinyAccordionExample />
+              </AccordionPanel>
             </AccordionWrapper>
           )}
         </Accordion>

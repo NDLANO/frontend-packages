@@ -17,29 +17,22 @@ import { openIndexesProps } from '../types';
 type StyledAccordionBarProps = {
   hasError?: boolean;
   isOpen?: boolean;
+  tiny?: boolean;
 };
 
 const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
   background: ${colors.brand.light};
-  padding: ${spacing.small} ${spacing.normal} ${spacing.small} calc(${spacing.xsmall} * 3);
+  ${props => props.tiny ? css`
+    padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0);
+  ` : css`
+    padding: ${spacing.small} ${spacing.normal} ${spacing.small} calc(${spacing.xsmall} * 3);
+  `}
   color: ${colors.brand.primary};
   display: flex;
-  alignItems: center;
-  justifyContent: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   border: 0;
   transition: color 100ms ease, background 100ms ease;
-  .c-icon {
-    transition: transform 100ms ease;
-    transform: rotate(0deg);
-    margin-right: ${spacing.small};
-  };
-  ${({ isOpen }) => isOpen && css`
-      .c-icon {
-        transform: rotate(90deg);
-      }
-      background: #fff;
-    `
-  }
   ${({ hasError }) => hasError && css`
       border: 2px solid ${colors.support.redLight};
       padding: calc(${spacing.small} - 2px) calc(${spacing.normal} - 2px)
@@ -57,18 +50,21 @@ const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
   }
 `;
 
-const accordionButtonCss = css`
+type ButtonProps = {
+  tiny?: boolean;
+  isOpen?: boolean;
+};
+
+const StyledButton = styled.button<ButtonProps>`
   border: 0;
   background: none;
   cursor: pointer;
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
-  height: ${spacing.large};
   span {
     box-shadow: inset 0 -1px;
     font-weight: ${fonts.weight.semibold};
-    ${fonts.sizes(spacing.normal, 1.1)};
   }
   &:hover,
   &:focus {
@@ -76,6 +72,34 @@ const accordionButtonCss = css`
       box-shadow: none;
     }
   }
+  svg {
+    transition: transform 100ms ease;
+    transform: rotate(${props => props.isOpen ? '90' : '0'}deg);
+  };
+  ${props => props.tiny ? 
+    css`
+      height: ${spacing.medium};
+      span {
+        ${fonts.sizes(16, 1.1)};
+      }
+      svg {
+        width: 16px;
+        height: 16px;
+        margin-right: ${spacing.xsmall};
+      }
+    ` : 
+    css`
+      height: ${spacing.large};
+      span {
+        ${fonts.sizes(spacing.normal, 1.1)};
+      }
+      svg {
+        width: 22px;
+        height: 22px;
+        margin-right: ${spacing.small};
+      }
+    `
+  } 
 `;
 
 type Props = {
@@ -84,6 +108,7 @@ type Props = {
   onClick: () => void;
   hasError?: boolean;
   isOpen?: boolean;
+  tiny?: boolean;
 };
 
 
@@ -94,18 +119,20 @@ export const AccordionBar: React.FC<Props> = ({
   hasError,
   isOpen,
   onClick,
+  tiny,
 }) => (
-  <StyledAccordionBar isOpen={isOpen} hasError={hasError}>
-    <button
+  <StyledAccordionBar isOpen={isOpen} hasError={hasError} tiny={tiny}>
+    <StyledButton
       type="button"
       aria-label={ariaLabel}
       aria-expanded={isOpen}
       aria-controls={panelId.toString()}
       onClick={onClick}
-      css={accordionButtonCss}
+      tiny={tiny}
+      isOpen={isOpen}
     >
-      <ChevronRight className="c-icon--medium" />
+      <ChevronRight />
       <span>{children}</span>
-    </button>
+    </StyledButton>
   </StyledAccordionBar>
 );

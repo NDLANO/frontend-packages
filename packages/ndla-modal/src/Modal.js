@@ -33,16 +33,17 @@ const Modal = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [animateIn, setAnimateIn] = useState(!!controllable);
-
+  const showDialog = controllable ? propsIsOpen : isOpen;
   const onAnimationEnd = () => {
-    if (!animateIn && isOpen) {
+    if (!animateIn && showDialog) {
       setIsOpen(false);
+
       if (onClose) onClose();
     }
   };
 
   const closeModal = () => {
-    if (isOpen) {
+    if (showDialog) {
       setAnimateIn(false);
     }
   };
@@ -53,8 +54,6 @@ const Modal = ({
       setIsOpen(true);
     }
   };
-
-  const showDialog = controllable ? propsIsOpen : isOpen;
 
   let clonedComponent;
   if (activateButton) {

@@ -7,27 +7,26 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing } from '@ndla/core';
 
-const StyledAccordionPanel = styled.section`
+type Props = {
+  id: string;
+  isOpen?: boolean;
+  hasError?: boolean;
+  sidePadding?: number;
+};
+
+const StyledAccordionPanel = styled.section<Props>`
   display: flex;
   transition: opacity 200ms ease;
   opacity: 1;
   margin-bottom: ${spacing.normal};
   background: #fff;
-  padding-left: ${props =>
-    props.sidePadding
-      ? `${props.sidePadding}px`
-      : `calc(${spacing.large} + ${spacing.small})`};
-  padding-right: ${props =>
-    props.sidePadding ? `${props.sidePadding}px` : spacing.large};
-  padding-bottom: ${spacing.large};
+  padding: ${({ sidePadding }) => `0 ${sidePadding ? `${sidePadding}px` : `calc(${spacing.large} + ${spacing.small})`} ${spacing.large}`};
   max-height: auto;
-  ${props =>
-    !props.isOpen &&
+  ${props => !props.isOpen &&
     css`
       margin-bottom: ${spacing.xsmall};
       padding: 0;
@@ -36,9 +35,7 @@ const StyledAccordionPanel = styled.section`
       overflow: hidden;
       opacity: 0;
     `};
-  ${props =>
-    props.hasError &&
-    props.isOpen &&
+  ${props => props.hasError && props.isOpen &&
     css`
       border: 2px solid ${colors.support.redLight};
       border-top: 0;
@@ -48,14 +45,6 @@ const StyledAccordionPanel = styled.section`
     `};
 `;
 
-export const AccordionPanel = ({ children, ...rest }) => (
+export const AccordionPanel: React.FC<Props> = ({ children, ...rest }) => (
   <StyledAccordionPanel {...rest}>{children}</StyledAccordionPanel>
 );
-
-AccordionPanel.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  children: PropTypes.node.isRequired,
-  hasError: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  sidePadding: PropTypes.number,
-};

@@ -6,15 +6,13 @@
  *
  */
 
-// Ignore typescript implicit any warning and export all javascript components
-// Move components to this file when they are migrated to typescript
-
-// @ts-ignore
-export * from './index-javascript';
-
 import { Accordion, AccordionWrapper } from './Accordion';
+import { AccordionBar } from './AccordionBar';
+import { AccordionPanel } from './AccordionPanel';
 
 export {
   Accordion as default,
   AccordionWrapper,
+  AccordionBar,
+  AccordionPanel,
 };

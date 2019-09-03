@@ -16,7 +16,7 @@ export const AccordionWrapper = styled.div`
   margin: ${spacing.normal} 0;
 `;
 
-type openIndexesProps = number | string;
+import { openIndexesProps } from '../types';
 
 type childrenProps = {
   openIndexes: Array<openIndexesProps>,

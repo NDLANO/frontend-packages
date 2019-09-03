@@ -6,7 +6,5 @@
  *
  */
 
-export { Accordion as default, AccordionWrapper } from './Accordion';
-
 export { AccordionPanel } from './AccordionPanel';
 export { AccordionBar } from './AccordionBar';

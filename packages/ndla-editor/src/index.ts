@@ -10,7 +10,9 @@
 export * from './index-javascript';
 
 import VersionHistory from './versionLogs/VersionHistory';
+import VersionLogTag from './versionLogs/VersionLogTag';
 
 export {
   VersionHistory,
+  VersionLogTag,
 };

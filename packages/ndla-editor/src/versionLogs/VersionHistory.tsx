@@ -116,6 +116,28 @@ const StyledInputLabel = styled.label`
 const StyledEmptyInputButton = styled.button`
   border: 0;
   background: transparent;
+  border-radius: 100%;
+  width: ${spacing.normal};
+  height: ${spacing.normal};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 200ms ease;
+  svg {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    fill: ${colors.brand.greyDark};
+    transition: fill 200ms ease;
+  }
+  &:hover, &:focus {
+    background: ${colors.brand.greyLight};
+    svg {
+      fill: ${colors.brand.primary};
+    }
+  }
 `;
 
 type Props = {
@@ -182,6 +204,7 @@ const VersionHistory: React.FC<Props> = ({ messages, onComment, t }) => {
           <StyledInput
             name="inputComment"
             value={commentValue}
+            autoComplete="off"
             onFocus={() => setInputHasFocus(true)}
             onBlur={() => setInputHasFocus(false)}
             onChange={e => {

@@ -8,11 +8,12 @@
 
 import { Accordion, AccordionWrapper } from './Accordion';
 import { AccordionBar } from './AccordionBar';
-import { AccordionPanel } from './AccordionPanel';
+import { AccordionPanel, StyledAccordionsPanelItemsWrapper } from './AccordionPanel';
 
 export {
   Accordion as default,
   AccordionWrapper,
   AccordionBar,
   AccordionPanel,
+  StyledAccordionsPanelItemsWrapper,
 };

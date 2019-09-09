@@ -11,6 +11,14 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing } from '@ndla/core';
 
+export const StyledAccordionsPanelItemsWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: ${spacing.xsmall};
+`;
+
 type Props = {
   id: string;
   isOpen?: boolean;

@@ -1,13 +1,14 @@
 import React, { useState, Fragment } from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Accordion, {
   AccordionBar,
   AccordionPanel,
   AccordionWrapper,
+  StyledAccordionsPanelItemsWrapper,
 } from '@ndla/accordion';
-import { VersionHistory } from '@ndla/editor';
+import { VersionHistory, VersionLogTag } from '@ndla/editor';
 import { colors, spacing } from '@ndla/core';
+import { uuid } from '@ndla/util';
 
 const paddingPanelStyle = css`
   padding-left: ${spacing.medium};
@@ -18,13 +19,6 @@ const paddingPanelStyleInside = css`
   background: ${colors.brand.greyLightest};
   padding-left: ${spacing.normal};
   padding-right: ${spacing.normal};
-`;
-
-const StyledAccordionsItemsWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  background: yellow;
 `;
 
 const VersionLogCurrentTag = () => (
@@ -141,20 +135,6 @@ const ProductionToolVersionLog = () => {
           <AccordionBar
             {...getBarProps(2)}
             title="Versjonslogg og merknader">
-              <StyledAccordionsItemsWrapper>
-                <div>
-                  12.23.1244
-                </div>
-                <div>
-                  <span>
-                    1
-                  </span>
-                  <span>
-                    2
-                  </span>
-                  <VersionLogCurrentTag />
-                </div>
-              </StyledAccordionsItemsWrapper>
           </AccordionBar>
           <AccordionPanel {...getPanelProps(2)} css={paddingPanelStyle}>
           <Accordion tiny>
@@ -165,30 +145,34 @@ const ProductionToolVersionLog = () => {
                     <AccordionBar
                       {...getBarProps(index)}
                       title={name}>
-                        <StyledAccordionsItemsWrapper>
+                        <StyledAccordionsPanelItemsWrapper>
                           <div>
                             {lastChange}
                           </div>
                           <div>
-                            {!current && (
-                              <>
-                                <span>
-                                  1
-                                </span>
-                                <span>
-                                  2
-                                </span>
-                              </>
-                            )}
-                            {current && <VersionLogCurrentTag />}
-                            {published && <VersionLogPublishedTag />}
+                            {current && <VersionLogTag color="yellow" label="Du er her" />}
+                            {published && <VersionLogTag color="green" label="Publisert" />}
                           </div>
-                        </StyledAccordionsItemsWrapper>
+                        </StyledAccordionsPanelItemsWrapper>
                     </AccordionBar>
                     <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyleInside}>
                       <VersionHistory
                         messages={messages}
-                        onComment={(value) => console.log('comment!', value)}
+                        onComment={(msg) => {
+                          const updatedVersions = [...versions];
+                          const now = new Date();
+                          const day = now.getDate();
+                          const month = now.getMonth() + 1;
+                          const newDate = `${day > 9 ? day : `0${day}`}.${month > 9 ? month : `0${month}`}.${now.getFullYear()}`;
+                          updatedVersions[index].messages.unshift({
+                            author: 'Dr. Phil',
+                            msg,
+                            status: '',
+                            id: uuid(),
+                            date: newDate,
+                          });
+                          updateVersions(updatedVersions);
+                        }}
                       />
                     </AccordionPanel>
                   </Fragment>

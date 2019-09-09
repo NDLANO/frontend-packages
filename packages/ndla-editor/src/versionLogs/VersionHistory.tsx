@@ -8,9 +8,14 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import { spacing, colors, fonts } from '@ndla/core';
+import { spacing, colors, fonts, misc } from '@ndla/core';
+// @ts-ignore
+import { buttonStyle } from '@ndla/button';
+// @ts-ignore
+import { Cross } from '@ndla/icons/action';
 
 const StyledWrapper = styled.div`
   padding: ${spacing.small} 0;
@@ -19,6 +24,7 @@ const StyledWrapper = styled.div`
 
 const StyledTable = styled.table`
   width: 100%;
+  margin: 0;
   th {
     ${fonts.sizes(16, 1.1)}
     font-weight: ${fonts.weight.semibold};
@@ -27,7 +33,7 @@ const StyledTable = styled.table`
   }
   td {
     padding: ${spacing.xsmall};
-    ${fonts.sizes(16, 1.1)}
+    ${fonts.sizes(14, 1.3)}
   }
   tbody tr {
     &:nth-child(odd) {
@@ -37,12 +43,79 @@ const StyledTable = styled.table`
 `;
 
 const StyleLine = styled.hr`
-  height: 1px;
+  height: 2px;
   border: 0;
-  background: ${colors.brand.grey};
+  background: ${colors.brand.greyLight};
+  margin: ${spacing.normal} 0 ${spacing.small};
   &:before {
     content: normal;
   }
+`;
+
+type StyledInputWrapperProps = {
+  inputHasFocus: boolean;
+};
+
+const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
+  margin: 0 ${spacing.small} 0 ${spacing.normal};
+  padding-right: ${spacing.xsmall};
+  display: flex;
+  flex-grow: 1;
+  justify-items: space-between;
+  align-items: center;
+  border: 1px solid;
+  background: #fff;
+  transition: border-color 200ms ease;
+  border-color: ${props => props.inputHasFocus ? colors.brand.primary : colors.brand.greyLight};
+  border-radius: ${misc.borderRadius};
+`;
+
+const StyledInput = styled.input`
+  ${fonts.sizes(16, '23px')};
+  border: 0;
+  outline: 0;
+  background: 0;
+  flex-grow: 1;
+  padding: ${spacing.xsmall} ${spacing.small};
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${spacing.small};
+`;
+
+type StyledSubmitButtonProps = {
+  disabledStyle: boolean;
+};
+
+const StyledSubmitButton = styled.button<StyledSubmitButtonProps>`
+  ${buttonStyle}
+  min-width: 100px;
+  ${props => props.disabledStyle && css`
+    color: ${colors.brand.grey};
+    background-color: ${colors.brand.greyLight};
+    border-color: transparent;
+    cursor: not-allowed;
+    transform: translateY(0) translateX(0);
+    &:hover, &:focus {
+      color: ${colors.brand.grey};
+      transform: translateY(0) translateX(0);
+      background-color: ${colors.brand.greyLight};
+    }
+  `}
+`;
+
+const StyledInputLabel = styled.label`
+  ${fonts.sizes(16, 1.1)};
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const StyledEmptyInputButton = styled.button`
+  border: 0;
+  background: transparent;
 `;
 
 type Props = {
@@ -60,6 +133,7 @@ type Props = {
 const VersionHistory: React.FC<Props> = ({ messages, onComment, t }) => {
   const [commentValue, setCommentValue] = useState('');
   const [commentError, setCommentError] = useState(false);
+  const [inputHasFocus, setInputHasFocus] = useState(false);
   return (
     <StyledWrapper>
       <StyledTable>
@@ -91,33 +165,47 @@ const VersionHistory: React.FC<Props> = ({ messages, onComment, t }) => {
         </tbody>
       </StyledTable>
       <StyleLine />
-      <form onSubmit={e => {
+      <StyledForm onSubmit={e => {
         if (commentValue.length < 3) {
           setCommentError(true);
         } else {
           onComment(commentValue);
+          setCommentValue('');
         }
         e.preventDefault();
         return false;
       }}>
-        <label>
+        <StyledInputLabel htmlFor="inputComment">
           {t('editor.versionHistory.inputLabel')}
-        </label>
-        <input
-          value={commentValue}
-          onChange={e => {
-            setCommentValue(e.target.value);
-            setCommentError(false);
-          }}
-          placeholder={t('editor.versionHistory.inputPlaceholder')}
-        />
+        </StyledInputLabel>
+        <StyledInputWrapper inputHasFocus={inputHasFocus}>
+          <StyledInput
+            name="inputComment"
+            value={commentValue}
+            onFocus={() => setInputHasFocus(true)}
+            onBlur={() => setInputHasFocus(false)}
+            onChange={e => {
+              setCommentValue(e.target.value);
+              setCommentError(false);
+            }}
+            placeholder={t('editor.versionHistory.inputPlaceholder')}
+          />
+          {commentValue.length > 0 && (
+            <StyledEmptyInputButton type="button" onClick={() => setCommentValue('')}>
+              <Cross />
+            </StyledEmptyInputButton>
+          )}
+        </StyledInputWrapper>
         {commentError && <span>
           Has error!!!
         </span>}
-        <button disabled={commentValue.length < 3} type="submit">
+        <StyledSubmitButton
+          disabledStyle={commentValue.length < 3 ? true : false}
+          type="submit"
+        >
           {t('editor.versionHistory.buttonLabel')}
-        </button>
-      </form>
+        </StyledSubmitButton>
+      </StyledForm>
     </StyledWrapper>
   );
 }

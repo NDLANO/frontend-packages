@@ -10,9 +10,14 @@ import { VersionHistory } from '@ndla/editor';
 import { colors, spacing } from '@ndla/core';
 
 const paddingPanelStyle = css`
-  background: ${colors.brand.greyLightest};
   padding-left: ${spacing.medium};
   padding-right: ${spacing.medium};
+`;
+
+const paddingPanelStyleInside = css`
+  background: ${colors.brand.greyLightest};
+  padding-left: ${spacing.normal};
+  padding-right: ${spacing.normal};
 `;
 
 const StyledAccordionsItemsWrapper = styled.div`
@@ -180,7 +185,7 @@ const ProductionToolVersionLog = () => {
                           </div>
                         </StyledAccordionsItemsWrapper>
                     </AccordionBar>
-                    <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyle}>
+                    <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyleInside}>
                       <VersionHistory
                         messages={messages}
                         onComment={(value) => console.log('comment!', value)}

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ListView, { activeAlphabet } from '@ndla/listview';
 import Tabs from '@ndla/tabs';
@@ -114,22 +114,35 @@ class ListViewExample extends Component {
 
     // 4. Sort filtered results
     if (sortByValue === 'title') {
-      filteredItems = filteredItems.sort((a, b) =>
-        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1,
-      );
+      filteredItems = filteredItems.sort((a, b) => {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1;
+        }
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
     } else if (sortByValue === 'category') {
-      filteredItems = filteredItems.sort((a, b) =>
-        a.category.title.toLowerCase() > b.category.title.toLowerCase()
-          ? 1
-          : -1,
-      );
+      filteredItems = filteredItems.sort((a, b) => {
+        if (a.category.title.toLowerCase() > b.category.title.toLowerCase()) {
+          return 1;
+        }
+        if (a.category.title.toLowerCase() < b.category.title.toLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
     } else {
-      // TODO: Clarify, how do you sort an array of subjects?
-      filteredItems = filteredItems.sort((a, b) =>
-        a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()
-          ? 1
-          : -1,
-      );
+      filteredItems = filteredItems.sort((a, b) => {
+        if (a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()) {
+          return 1;
+        }
+        if (a.subject[0].title.toLowerCase() < b.subject[0].title.toLowerCase()) {
+          return -1;
+        }
+        return 0;
+      });
     }
     return filteredItems;
   }
@@ -146,6 +159,7 @@ class ListViewExample extends Component {
 
   renderSelectedItem() {
     const { selectedItem } = this.state;
+    const { t } = this.props;
 
     return selectedItem ? (
       <NotionDialogWrapper
@@ -169,33 +183,33 @@ class ListViewExample extends Component {
           licenseBox={
             <Modal
               activateButton={
-                <Button link>{this.props.t('article.useContent')}</Button>
+                <Button link>{t('article.useContent')}</Button>
               }
               size="medium">
               {onClose => (
-                <Fragment>
+                <>
                   <ModalHeader modifier="no-bottom-padding">
                     <ModalCloseButton onClick={onClose} title="lukk" />
                   </ModalHeader>
                   <ModalBody>
-                    <Fragment>
-                      <h1>{this.props.t('license.heading')}</h1>
+                    <>
+                      <h1>{t('license.heading')}</h1>
                       <Tabs
                         singleLine
                         tabs={[
                           {
-                            title: this.props.t('license.tabs.text'),
-                            content: <TextContent />,
+                            title: t('license.tabs.text'),
+                            content: <TextContent t={t} />,
                           },
                           {
-                            title: this.props.t('license.tabs.images'),
-                            content: <ImageContent />,
+                            title: t('license.tabs.images'),
+                            content: <ImageContent t={t} />,
                           },
                         ]}
                       />
-                    </Fragment>
+                    </>
                   </ModalBody>
-                </Fragment>
+                </>
               )}
             </Modal>
           }
@@ -215,7 +229,6 @@ class ListViewExample extends Component {
 
     const filteredItems = this.filterItems();
     const alphabet = activeAlphabet(filteredItems);
-
     return (
       <ListView
         items={this.filterOnSelectedLetter(filteredItems)}

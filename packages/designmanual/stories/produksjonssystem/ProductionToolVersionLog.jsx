@@ -21,14 +21,6 @@ const paddingPanelStyleInside = css`
   padding-right: ${spacing.normal};
 `;
 
-const VersionLogCurrentTag = () => (
-  <span>current</span>
-);
-
-const VersionLogPublishedTag = () => (
-  <span>published</span>
-)
-
 const versionsDummy = [
   {
     name: '#003',

@@ -200,7 +200,6 @@ const LearningPathExample = ({ t, invertedStyle }) => {
   }
 
   const { duration, lastUpdated, copyright, learningsteps } = learningStepsData;
-  const stepId = learningsteps[currentLearningStepNumber].id; // should be fetched from url
   const lastUpdatedDate = new Date(lastUpdated);
   const lastUpdatedString = `${lastUpdatedDate.getDate()}.${
     lastUpdatedDate.getMonth() < 10 ? '0' : ''

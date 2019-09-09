@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
+import { openIndexesProps } from '../types';
 
 export const AccordionWrapper = styled.div`
   display: flex;
@@ -16,8 +17,6 @@ export const AccordionWrapper = styled.div`
   flex: 1;
   margin: ${spacing.normal} 0;
 `;
-
-import { openIndexesProps } from '../types';
 
 type childrenProps = {
   openIndexes: Array<openIndexesProps>,

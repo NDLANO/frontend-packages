@@ -6,11 +6,11 @@
  *
  */
 
-// @ts-ignore
-export * from './index-javascript';
-
 import VersionHistory from './versionLogs/VersionHistory';
 import VersionLogTag from './versionLogs/VersionLogTag';
+
+// @ts-ignore
+export * from './index-javascript';
 
 export {
   VersionHistory,

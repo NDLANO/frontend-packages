@@ -21,7 +21,7 @@ import ComponentInfo from '../ComponentInfo';
 import TinyAccordionExample from '../molecules/TinyAccordionExample';
 
 const panelStyle = css`
-  padding: ${spacing.small} calc(${spacing.large}) ${spacing.large}; 
+  padding: ${spacing.small} calc(${spacing.large}) ${spacing.large};
 `;
 
 class AccordionExample extends Component {
@@ -93,8 +93,7 @@ class AccordionExample extends Component {
                 <Fragment key={item}>
                   <AccordionBar
                     {...getBarProps(index)}
-                    title={`Panel ${index + 1}`}
-                  >
+                    title={`Panel ${index + 1}`}>
                     <div>Children in bar</div>
                   </AccordionBar>
                   <AccordionPanel {...getPanelProps(index)} css={panelStyle}>
@@ -115,8 +114,8 @@ class AccordionExample extends Component {
                 <Fragment key={item}>
                   <AccordionBar
                     {...getBarProps(index)}
-                    title={`Panel ${index + 1}`}>
-                  </AccordionBar>
+                    title={`Panel ${index + 1}`}
+                  />
                   <AccordionPanel {...getPanelProps(index)} css={panelStyle}>
                     <p>{item}</p>
                   </AccordionPanel>
@@ -156,8 +155,7 @@ class AccordionExample extends Component {
                     id={`panel-${index}`}
                     hasError={errorPanels.includes(index)}
                     isOpen={openIndexes.includes(index)}
-                    css={panelStyle}
-                  >
+                    css={panelStyle}>
                     <div>
                       <p>{item}</p>
                       <Button onClick={() => handleItemClick(index)}>
@@ -172,16 +170,14 @@ class AccordionExample extends Component {
                 title="With tiny accordion inside"
                 onClick={() => handleItemClick(3)}
                 hasError={errorPanels.includes(3)}
-                isOpen={openIndexes.includes(3)}
-              >
+                isOpen={openIndexes.includes(3)}>
                 Accordion with tiny accordion inside
               </AccordionBar>
               <AccordionPanel
                 id="panelWithSubAccordion"
                 hasError={errorPanels.includes(3)}
                 isOpen={openIndexes.includes(3)}
-                css={panelStyle}
-              >
+                css={panelStyle}>
                 <TinyAccordionExample />
               </AccordionPanel>
             </AccordionWrapper>

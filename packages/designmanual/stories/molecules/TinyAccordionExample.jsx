@@ -19,10 +19,8 @@ const TinyAccordionExample = () => (
       <AccordionWrapper>
         {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
           <Fragment key={item}>
-            <AccordionBar
-              {...getBarProps(index)}
-              title={`Panel ${index + 1}`}>
-                hello
+            <AccordionBar {...getBarProps(index)} title={`Panel ${index + 1}`}>
+              hello
             </AccordionBar>
             <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyle}>
               <p>{item}</p>

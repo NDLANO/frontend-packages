@@ -8,7 +8,11 @@
 
 import { Accordion, AccordionWrapper } from './Accordion';
 import { AccordionBar } from './AccordionBar';
-import { AccordionPanel, StyledAccordionsPanelItemsWrapper } from './AccordionPanel';
+import {
+  AccordionPanel,
+  StyledAccordionsPanelItemsWrapper,
+  StyledAccordionsPanelIconButton,
+} from './AccordionPanel';
 
 export {
   Accordion as default,
@@ -16,4 +20,5 @@ export {
   AccordionBar,
   AccordionPanel,
   StyledAccordionsPanelItemsWrapper,
+  StyledAccordionsPanelIconButton
 };

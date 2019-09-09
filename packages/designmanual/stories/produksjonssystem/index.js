@@ -228,7 +228,9 @@ storiesOf('Produksjonssystem', module)
       }}>
       <StoryIntro title="Versjonslogg og historikk">
         <p>
-          Versjonshistorikk og logg for emner/læringssressurser i ED. Mulighet for å se eller tilbakestille til tidligere versjon eller kommentere på versjonen man står i. 
+          Versjonshistorikk og logg for emner/læringssressurser i ED. Mulighet
+          for å se eller tilbakestille til tidligere versjon eller kommentere på
+          versjonen man står i.
         </p>
       </StoryIntro>
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">

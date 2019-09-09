@@ -5,10 +5,13 @@ import Accordion, {
   AccordionPanel,
   AccordionWrapper,
   StyledAccordionsPanelItemsWrapper,
+  StyledAccordionsPanelIconButton,
 } from '@ndla/accordion';
+import { Eye, Restore } from '@ndla/icons/editor';
 import { VersionHistory, VersionLogTag } from '@ndla/editor';
 import { colors, spacing } from '@ndla/core';
 import { uuid } from '@ndla/util';
+import Tooltip from '@ndla/tooltip';
 
 const paddingPanelStyle = css`
   padding-left: ${spacing.medium};
@@ -104,7 +107,7 @@ const versionsDummy = [
         id: '#1_2',
       },
     ],
-  }
+  },
 ];
 
 const ProductionToolVersionLog = () => {
@@ -115,63 +118,96 @@ const ProductionToolVersionLog = () => {
         <AccordionWrapper>
           {['Lisens og bruker', 'Metadata'].map((name, index) => (
             <Fragment key={name}>
-              <AccordionBar
-                {...getBarProps(index)}
-                title={name}>
-              </AccordionBar>
+              <AccordionBar {...getBarProps(index)} title={name} />
               <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyle}>
                 <p>{name}</p>
               </AccordionPanel>
             </Fragment>
           ))}
-          <AccordionBar
-            {...getBarProps(2)}
-            title="Versjonslogg og merknader">
-          </AccordionBar>
+          <AccordionBar {...getBarProps(2)} title="Versjonslogg og merknader" />
           <AccordionPanel {...getPanelProps(2)} css={paddingPanelStyle}>
-          <Accordion tiny>
-            {({ getPanelProps, getBarProps }) => (
-              <AccordionWrapper>
-                {versions.map(({ name, lastChange, current, published, messages }, index) => (
-                  <Fragment key={name}>
-                    <AccordionBar
-                      {...getBarProps(index)}
-                      title={name}>
-                        <StyledAccordionsPanelItemsWrapper>
-                          <div>
-                            {lastChange}
-                          </div>
-                          <div>
-                            {current && <VersionLogTag color="yellow" label="Du er her" />}
-                            {published && <VersionLogTag color="green" label="Publisert" />}
-                          </div>
-                        </StyledAccordionsPanelItemsWrapper>
-                    </AccordionBar>
-                    <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyleInside}>
-                      <VersionHistory
-                        messages={messages}
-                        onComment={(msg) => {
-                          const updatedVersions = [...versions];
-                          const now = new Date();
-                          const day = now.getDate();
-                          const month = now.getMonth() + 1;
-                          const newDate = `${day > 9 ? day : `0${day}`}.${month > 9 ? month : `0${month}`}.${now.getFullYear()}`;
-                          updatedVersions[index].messages.unshift({
-                            author: 'Dr. Phil',
-                            msg,
-                            status: '',
-                            id: uuid(),
-                            date: newDate,
-                          });
-                          updateVersions(updatedVersions);
-                        }}
-                      />
-                    </AccordionPanel>
-                  </Fragment>
-                ))}
-              </AccordionWrapper>
-            )}
-          </Accordion>
+            <Accordion openIndexes={[0]} tiny>
+              {({ getPanelProps, getBarProps }) => (
+                <AccordionWrapper>
+                  {versions.map(
+                    (
+                      { name, lastChange, current, published, messages },
+                      index,
+                    ) => (
+                      <Fragment key={name}>
+                        <AccordionBar {...getBarProps(index)} title={name}>
+                          <StyledAccordionsPanelItemsWrapper>
+                            <div>{lastChange}</div>
+                            <div>
+                              {!current && (
+                                <>
+                                  <Tooltip tooltip="Se versjon">
+                                    <StyledAccordionsPanelIconButton
+                                      onClick={() =>
+                                        console.log('Preview version')
+                                      } // eslint-disable-line no-console
+                                    >
+                                      <Eye />
+                                    </StyledAccordionsPanelIconButton>
+                                  </Tooltip>
+                                  <Tooltip tooltip="Tilbakestill til versjon">
+                                    <StyledAccordionsPanelIconButton
+                                      onClick={() =>
+                                        console.log(
+                                          'Are you sure? (modal to confirm revert?)',
+                                        )
+                                      } // eslint-disable-line no-console
+                                    >
+                                      <Restore />
+                                    </StyledAccordionsPanelIconButton>
+                                  </Tooltip>
+                                </>
+                              )}
+                              {current && (
+                                <VersionLogTag
+                                  color="yellow"
+                                  label="Du er her"
+                                />
+                              )}
+                              {published && (
+                                <VersionLogTag
+                                  color="green"
+                                  label="Publisert"
+                                />
+                              )}
+                            </div>
+                          </StyledAccordionsPanelItemsWrapper>
+                        </AccordionBar>
+                        <AccordionPanel
+                          {...getPanelProps(index)}
+                          css={paddingPanelStyleInside}>
+                          <VersionHistory
+                            messages={messages}
+                            onComment={msg => {
+                              const updatedVersions = [...versions];
+                              const now = new Date();
+                              const day = now.getDate();
+                              const month = now.getMonth() + 1;
+                              const newDate = `${day > 9 ? day : `0${day}`}.${
+                                month > 9 ? month : `0${month}`
+                              }.${now.getFullYear()}`;
+                              updatedVersions[index].messages.unshift({
+                                author: 'Dr. Phil',
+                                msg,
+                                status: '',
+                                id: uuid(),
+                                date: newDate,
+                              });
+                              updateVersions(updatedVersions);
+                            }}
+                          />
+                        </AccordionPanel>
+                      </Fragment>
+                    ),
+                  )}
+                </AccordionWrapper>
+              )}
+            </Accordion>
           </AccordionPanel>
         </AccordionWrapper>
       )}

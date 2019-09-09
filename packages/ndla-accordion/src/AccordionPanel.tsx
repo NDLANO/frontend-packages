@@ -17,6 +17,35 @@ export const StyledAccordionsPanelItemsWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: ${spacing.xsmall};
+  > div {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const StyledAccordionsPanelIconButton = styled.button`
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  color: ${colors.brand.primary};
+  height: ${spacing.normal};
+  width: ${spacing.normal};
+  transition: background 200ms ease;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  svg {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  &:hover, &:focus {
+    background: ${colors.brand.tertiary};
+  }
 `;
 
 type Props = {

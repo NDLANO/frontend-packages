@@ -22,6 +22,7 @@ const StyledTag = styled.span<StyledTagProps>`
   color: #000;
   padding: ${spacing.xxsmall} ${spacing.small};
   border-radius: ${misc.borderRadius};
+  margin-left: ${spacing.small};
 `;
 
 interface Props extends StyledTagProps {

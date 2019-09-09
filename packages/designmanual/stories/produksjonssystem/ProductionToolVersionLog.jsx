@@ -6,6 +6,7 @@ import Accordion, {
   AccordionPanel,
   AccordionWrapper,
 } from '@ndla/accordion';
+import { VersionHistory } from '@ndla/editor';
 import { colors, spacing } from '@ndla/core';
 
 const paddingPanelStyle = css`
@@ -20,10 +21,6 @@ const StyledAccordionsItemsWrapper = styled.div`
   justify-content: space-between;
   background: yellow;
 `;
-
-const VersionLog = () => (
-  <h1>Im a version component</h1>
-);
 
 const VersionLogCurrentTag = () => (
   <span>current</span>
@@ -44,18 +41,21 @@ const versionsDummy = [
         date: '03.09.2019',
         msg: 'Endret status',
         status: 'Fra "Kladd" til "Publisert"',
+        id: '#3_0',
       },
       {
         author: 'Ivar B.',
         date: '01.09.2019',
         msg: 'Omskrivning av ingress',
         status: '',
+        id: '#3_1',
       },
       {
         author: 'Torgeir H.',
         date: '27.08.2019',
         msg: 'Gjorde noe',
         status: 'Kladd',
+        id: '#3_2',
       },
     ],
   },
@@ -69,18 +69,21 @@ const versionsDummy = [
         date: '03.09.2019',
         msg: 'Endret status',
         status: 'Fra "Kladd" til "Publisert"',
+        id: '#2_0',
       },
       {
         author: 'Ivar B.',
         date: '01.09.2019',
         msg: 'Omskrivning av ingress',
         status: '',
+        id: '#2_1',
       },
       {
         author: 'Torgeir H.',
         date: '27.08.2019',
         msg: 'Gjorde noe',
         status: 'Kladd',
+        id: '#2_2',
       },
     ],
   },
@@ -93,18 +96,21 @@ const versionsDummy = [
         date: '03.09.2019',
         msg: 'Endret status',
         status: 'Fra "Kladd" til "Publisert"',
+        id: '#1_0',
       },
       {
         author: 'Ivar B.',
         date: '01.09.2019',
         msg: 'Omskrivning av ingress',
         status: '',
+        id: '#1_1',
       },
       {
         author: 'Torgeir H.',
         date: '27.08.2019',
         msg: 'Gjorde noe',
         status: 'Kladd',
+        id: '#1_2',
       },
     ],
   }
@@ -175,7 +181,10 @@ const ProductionToolVersionLog = () => {
                         </StyledAccordionsItemsWrapper>
                     </AccordionBar>
                     <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyle}>
-                      <VersionLog messages={messages} />
+                      <VersionHistory
+                        messages={messages}
+                        onComment={(value) => console.log('comment!', value)}
+                      />
                     </AccordionPanel>
                   </Fragment>
                 ))}

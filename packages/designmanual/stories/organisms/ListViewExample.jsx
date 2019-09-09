@@ -135,10 +135,14 @@ class ListViewExample extends Component {
       });
     } else {
       filteredItems = filteredItems.sort((a, b) => {
-        if (a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()) {
+        if (
+          a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()
+        ) {
           return 1;
         }
-        if (a.subject[0].title.toLowerCase() < b.subject[0].title.toLowerCase()) {
+        if (
+          a.subject[0].title.toLowerCase() < b.subject[0].title.toLowerCase()
+        ) {
           return -1;
         }
         return 0;
@@ -182,9 +186,7 @@ class ListViewExample extends Component {
           authors={selectedItem.authors}
           licenseBox={
             <Modal
-              activateButton={
-                <Button link>{t('article.useContent')}</Button>
-              }
+              activateButton={<Button link>{t('article.useContent')}</Button>}
               size="medium">
               {onClose => (
                 <>

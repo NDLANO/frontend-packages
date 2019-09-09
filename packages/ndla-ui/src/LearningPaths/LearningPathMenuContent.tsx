@@ -31,6 +31,7 @@ type StyledMenuItemProps = {
   afterCurrent: boolean;
   indexNumber: number;
   hasRead?: boolean;
+  invertedStyle?: boolean;
 };
 
 const StyledMenuItem = styled.li<StyledMenuItemProps>`
@@ -42,13 +43,18 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     align-items: center;
     padding: ${spacing.small};
     > span {
+      display: flex;
+      align-items: center;
       ${fonts.sizes(14, 1.2)};
       color: ${colors.text.primary};
+      ${mq.range({ from: breakpoints.tablet })} {
+        color: ${({ invertedStyle }) => invertedStyle ? '#fff' : colors.text.primary};
+      }
     }
     &:hover,
     &:focus {
       > span {
-        box-shadow: ${colors.link};
+        text-decoration: underline;
       }
     }
   }
@@ -121,6 +127,18 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       transform: translate(28px, -${spacing.spacingUnit * 3}px);
     }
   `}
+  ${props => 
+    !props.afterCurrent && !props.current && props.invertedStyle && `
+    ${mq.range({ from: breakpoints.tablet })} {
+      a {
+        > span {
+          color: #fff;
+        }
+        color: #fff;
+      }
+    }
+    `
+  }
 `;
 
 const StyledContentType = styled.div`
@@ -131,6 +149,7 @@ const StyledContentType = styled.div`
 
 type StyledNavigationProps = {
   isOpen: boolean;
+  invertedStyle?: boolean;
 };
 
 const StyledNavigation = styled.nav<StyledNavigationProps>`
@@ -177,6 +196,7 @@ type Props = {
   isOpen: boolean;
   toLearningPathUrl(pathId: number, stepId: number): string;
   currentIndex: number;
+  invertedStyle?: boolean;
   cookies: {
     [key: string]: string;
   };
@@ -206,8 +226,9 @@ const LearningPathMenuContent: React.FunctionComponent<Props> = ({
   learningPathId,
   learningsteps,
   toLearningPathUrl,
+  invertedStyle,
 }) => (
-  <StyledNavigation isOpen={isOpen}>
+  <StyledNavigation isOpen={isOpen} invertedStyle={invertedStyle}>
     <ul>
       {learningsteps.map(({ id, title, type }: StepProps, index: number) => (
         <StyledMenuItem
@@ -215,6 +236,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props> = ({
           current={index === currentIndex}
           afterCurrent={index > currentIndex}
           isOpen={isOpen}
+          invertedStyle={invertedStyle}
           indexNumber={index}>
           <SafeLink to={toLearningPathUrl(learningPathId, id)}>
             <StyledContentType>

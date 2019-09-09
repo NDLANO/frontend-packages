@@ -104,12 +104,14 @@ class MastheadWithTopicMenu extends Component {
     );
   }
 
-  renderSearchButtonView = hideOnNarrowScreen => {
+  renderSearchButtonView = (hideOnNarrowScreen, ndlaFilm) => {
     if (this.props.hideSearchButton) {
       return null;
     }
     return (
       <MastheadSearchModal
+        ndlaFilm={ndlaFilm}
+        hideOnNarrowScreen={hideOnNarrowScreen}
         onClose={() => {
           this.setState({ value: '' });
           this.closeAllModals[1] = null;
@@ -120,19 +122,24 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
+    const {
+      skipToMainContentId,
+      ndlaFilm,
+      beta,
+      betaInfoContent,
+      topicMenuProps,
+    } = this.props;
     return (
       <Masthead
         fixed
-        skipToMainContentId={this.props.skipToMainContentId}
-        ndlaFilm={this.props.ndlaFilm}
-        infoContent={this.props.beta && this.props.betaInfoContent}>
+        skipToMainContentId={skipToMainContentId}
+        ndlaFilm={ndlaFilm}
+        infoContent={beta && betaInfoContent}>
         <MastheadItem left>
           <Modal
             size="fullscreen"
             activateButton={
-              <TopicMenuButton ndlaFilm={this.props.ndlaFilm}>
-                Meny
-              </TopicMenuButton>
+              <TopicMenuButton ndlaFilm={ndlaFilm}>Meny</TopicMenuButton>
             }
             animation="subtle"
             animationDuration={150}
@@ -150,8 +157,11 @@ class MastheadWithTopicMenu extends Component {
               return (
                 <TopicMenu
                   close={onClose}
-                  isBeta={this.props.beta}
-                  searchFieldComponent={this.renderSearchButtonView()}
+                  isBeta={beta}
+                  searchFieldComponent={this.renderSearchButtonView(
+                    false,
+                    ndlaFilm,
+                  )}
                   subjectTitle="Mediefag"
                   toFrontpage={() =>
                     '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
@@ -199,7 +209,7 @@ class MastheadWithTopicMenu extends Component {
                       expandedSubtopicsId,
                     });
                   }}
-                  {...this.props.topicMenuProps}
+                  {...topicMenuProps}
                 />
               );
             }}
@@ -211,17 +221,17 @@ class MastheadWithTopicMenu extends Component {
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <LanguageSelector
-              inverted={this.props.ndlaFilm}
+              inverted={ndlaFilm}
               options={dummyLanguageOptions}
               currentLanguage="nb"
             />
           </DisplayOnPageYOffset>
-          {this.renderSearchButtonView(true)}
+          {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
             label="Nasjonal digital læringsarena"
-            isBeta={this.props.beta}
-            cssModifier={this.props.ndlaFilm && 'white'}
+            isBeta={beta}
+            cssModifier={ndlaFilm && 'white'}
           />
         </MastheadItem>
       </Masthead>

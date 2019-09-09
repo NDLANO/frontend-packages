@@ -57,6 +57,19 @@
     }
   }
 
+  &--invertedStyle {
+    color: #fff;
+    a {
+      color: #fff;
+  
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
+
   &:before {
     display: none;
   }

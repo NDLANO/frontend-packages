@@ -29,8 +29,11 @@ const items = [
   },
 ];
 
-export const BreadcrumbDefault = ({ onlySubject = false }) => (
-  <Breadcrumb items={onlySubject ? items.slice(0, 2) : items} />
+export const BreadcrumbDefault = ({ onlySubject = false, invertedStyle }) => (
+  <Breadcrumb
+    items={onlySubject ? items.slice(0, 2) : items}
+    invertedStyle={invertedStyle}
+  />
 );
 
 export const BreadcrumbSimpleArticle = () => (

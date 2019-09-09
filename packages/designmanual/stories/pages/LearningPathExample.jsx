@@ -117,7 +117,7 @@ const dataReducer = (state, action) => {
 const toLearningPathUrl = (id, locale) => {
   return '';
 };
-const LearningPathExample = ({ t }) => {
+const LearningPathExample = ({ t, invertedStyle }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
   const [learningPathId, updateLearningPathId] = useState(
@@ -231,16 +231,16 @@ const LearningPathExample = ({ t }) => {
       <LearningPathWrapper>
         <div className="c-hero__content">
           <section>
-            <Breadcrumb />
+            <Breadcrumb invertedStyle={invertedStyle} />
           </section>
         </div>
         <LearningPathContent>
           <LearningPathMenu
+            invertedStyle={invertedStyle}
             learningsteps={mappedLearningsteps}
             duration={duration}
             lastUpdated={lastUpdatedString}
             copyright={copyright}
-            stepId={stepId}
             learningPathId={3}
             toLearningPathUrl={toLearningPathUrl}
             currentIndex={currentLearningStepNumber}
@@ -252,6 +252,7 @@ const LearningPathExample = ({ t }) => {
             <div>
               {currentLearningStep.showTitle && (
                 <LearningPathInformation
+                  invertedStyle={invertedStyle}
                   title={currentLearningStep.title.title}
                   description={
                     currentLearningStep.description &&

@@ -80,7 +80,7 @@ type Props = {
   allResultUrl: string;
   searchResult: Array<ContentTypeResultType>;
   infoText: string;
-  loading: Boolean;
+  loading: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 

@@ -13,14 +13,15 @@ import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '../';
 
 const AccordionExample = props => (
   <Accordion {...props}>
-    {({ getPanelProps, getBarProps }) => (
+    {({ getPanelProps, handleItemClick }) => (
       <AccordionWrapper>
         {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
           <React.Fragment key={item}>
             <AccordionBar
-              {...getBarProps(index)}
-              data-testid={`bar-${index}`}
-              ariaLabel={`Panel ${index}`}>
+              panelId={`panel-${index}`}
+              title={`Panel ${index}`}
+              onClick={() => handleItemClick(index)}
+              data-testid={`bar-${index}`}>
               Panel {index}
             </AccordionBar>
             <AccordionPanel

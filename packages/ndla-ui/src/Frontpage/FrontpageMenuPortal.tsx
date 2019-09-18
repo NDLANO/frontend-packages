@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { isIE, browserVersion } from 'react-device-detect';
-import { DialogOverlay, DialogContent } from "@reach/dialog";
+import { DialogOverlay, DialogContent } from '@reach/dialog';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 // @ts-ignore
@@ -34,86 +34,87 @@ type ModalWrapperProps = {
 const StyledModalWrapper = styled.div<ModalWrapperProps>`
   position: fixed;
   z-index: 9001;
-  ${props => props.isIE11 ?
-    css`
-      left: 0px;
-      right: 0px;
-      top: 0px;
-      bottom: 0px;
-      background: ${colors.brand.lighter};
-    ` : 
-    css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      left: 50%;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        min-width: 100vh;
-        min-height: 100vw;
-        background: ${colors.brand.lighter};
-        border-radius: 100%;
-        animation-timing-function: ${misc.transition.cubicBezier};
-        animation-name: ${props.animationDirection === 'in'
-            ? props.animationNameIn
-            : props.animationNameOut};
-        animation-duration: ${animations.durations.normal};
-        animation-fill-mode: forwards;
-        @keyframes ${props.animationNameIn} {
-          0% {
-            opacity: 0;
-            background: ${colors.brand.light};
-            transform: translate(
-                calc(-100vw + ${props.elementRect.fromX}px),
-                calc(-50vh + ${props.elementRect.fromY}px)
-              )
-              scale(${props.elementRect.fromScale});
-          }
-          10% {
-            opacity: 1;
-          }
-          20% {
+  ${props =>
+    props.isIE11
+      ? css`
+          left: 0px;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+          background: ${colors.brand.lighter};
+        `
+      : css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          left: 50%;
+          top: 0;
+          width: 100vw;
+          height: 100vh;
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            min-width: 100vh;
+            min-height: 100vw;
+            background: ${colors.brand.lighter};
             border-radius: 100%;
+            animation-timing-function: ${misc.transition.cubicBezier};
+            animation-name: ${props.animationDirection === 'in'
+              ? props.animationNameIn
+              : props.animationNameOut};
+            animation-duration: ${animations.durations.normal};
+            animation-fill-mode: forwards;
+            @keyframes ${props.animationNameIn} {
+              0% {
+                opacity: 0;
+                background: ${colors.brand.light};
+                transform: translate(
+                    calc(-100vw + ${props.elementRect.fromX}px),
+                    calc(-50vh + ${props.elementRect.fromY}px)
+                  )
+                  scale(${props.elementRect.fromScale});
+              }
+              10% {
+                opacity: 1;
+              }
+              20% {
+                border-radius: 100%;
+              }
+              99% {
+                border-radius: 10%;
+                transform: translate(calc(-50vw), 0) scale(${fullSizedCircle});
+              }
+              100% {
+                border-radius: 0;
+                transform: translate(-50vw, 0);
+              }
+            }
+            @keyframes ${props.animationNameOut} {
+              0% {
+                border-radius: 0;
+                transform: translate(calc(-50vw), 30vh)
+                  scale(${fullSizedCircle});
+              }
+              50% {
+                border-radius: 100%;
+              }
+              70% {
+                opacity: 1;
+              }
+              100% {
+                opacity: 0;
+                transform: translate(
+                    calc(-100vw + ${props.elementRect.fromX}px),
+                    calc(-50vh + ${props.elementRect.fromY}px)
+                  )
+                  scale(${props.elementRect.fromScale});
+              }
+            }
           }
-          99% {
-            border-radius: 10%;
-            transform: translate(calc(-50vw), 0) scale(${fullSizedCircle});
-          }
-          100% {
-            border-radius: 0;
-            transform: translate(-50vw, 0);
-          }
-        }
-        @keyframes ${props.animationNameOut} {
-          0% {
-            border-radius: 0;
-            transform: translate(calc(-50vw), 30vh) scale(${fullSizedCircle});
-          }
-          50% {
-            border-radius: 100%;
-          }
-          70% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-            transform: translate(
-                calc(-100vw + ${props.elementRect.fromX}px),
-                calc(-50vh + ${props.elementRect.fromY}px)
-              )
-              scale(${props.elementRect.fromScale});
-          }
-        }
-      }
-    `
-  }
+        `}
 `;
 
 type ie11Props = {
@@ -127,11 +128,12 @@ const StyledContainerWrapper = styled.div<ie11Props>`
   flex-direction: column;
   overflow-y: scroll;
   align-items: center;
-  ${props => props.isIE11 ? ``:
-    css`
-      transform: translate(-50vw, 0);
-    `
-  }
+  ${props =>
+    props.isIE11
+      ? ``
+      : css`
+          transform: translate(-50vw, 0);
+        `}
 `;
 
 interface StyledContainerProps {
@@ -155,11 +157,11 @@ const ScrollableContent = styled.div<ie11Props>`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  ${props => props.isIE11 && 
+  ${props =>
+    props.isIE11 &&
     css`
       margin: 0 auto;
-    `
-  }
+    `}
   align-items: flex-end;
   animation-delay: ${animations.durations.fast};
   animation-fill-mode: forwards;
@@ -179,7 +181,10 @@ const StyledButton = styled.button<ie11Props>`
   background: none;
   position: absolute;
   ${mq.range({ until: breakpoints.tablet })} {
-    transform: translateY(-${spacing.normal}) translateX(${props => props.isIE11 ? `-${spacing.normal}` : spacing.small});
+    transform: translateY(-${spacing.normal})
+      translateX(
+        ${props => (props.isIE11 ? `-${spacing.normal}` : spacing.small)}
+      );
   }
   > svg {
     color: ${colors.brand.primary};
@@ -213,30 +218,30 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
 }) => {
   const animationNameIn = `menuPortalCircleAnimation_${menuOpenedCounter}`;
   const animationNameOut = `menuPortalCircleAnimationOut_${menuOpenedCounter}`;
-  const isIE11 = (isIE && parseInt(browserVersion) < 12);
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   const content = (
     <>
-      <DialogOverlay>
+      <DialogOverlay onDismiss={onClose}>
         <StyledModalWrapper
-            isIE11={isIE11}
-            animationNameIn={animationNameIn}
-            animationNameOut={animationNameOut}
-            elementRect={elementRect}
-            animationDirection={animationDirection}
-            onAnimationEnd={() => {
-              if (animationDirection === 'out') {
-                onClosed();
-              }
-            }}>
+          isIE11={isIE11}
+          animationNameIn={animationNameIn}
+          animationNameOut={animationNameOut}
+          elementRect={elementRect}
+          animationDirection={animationDirection}
+          onAnimationEnd={() => {
+            if (animationDirection === 'out') {
+              onClosed();
+            }
+          }}>
           <DialogContent>
             <StyledContainerWrapper isIE11={isIE11}>
               <StyledContainer animationDirection={animationDirection}>
                 <ScrollableContent isIE11={isIE11}>
                   <StyledButton
-                      isIE11={isIE11}
-                      type="button"
-                      aria-label={t('masthead.menu.close')}
-                      onClick={onClose}>
+                    isIE11={isIE11}
+                    type="button"
+                    aria-label={t('masthead.menu.close')}
+                    onClick={onClose}>
                     <Cross />
                   </StyledButton>
                   <div>{children}</div>
@@ -246,9 +251,13 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
           </DialogContent>
         </StyledModalWrapper>
         <Backdrop
-            onClick={onClose}
-            animationDuration={animationDirection === 'in' ? animations.durations.fast : animations.durations.normal}
-            animateIn={animationDirection === 'in'}
+          onClick={onClose}
+          animationDuration={
+            animationDirection === 'in'
+              ? animations.durations.fast
+              : animations.durations.normal
+          }
+          animateIn={animationDirection === 'in'}
         />
       </DialogOverlay>
     </>

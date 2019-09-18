@@ -9,13 +9,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+
 import { isIE, browserVersion } from 'react-device-detect';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import { createUniversalPortal } from '@ndla/util';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
@@ -204,6 +204,7 @@ interface Props {
   animationDirection: 'in' | 'out';
   elementRect: elementRectType;
   menuOpenedCounter: number;
+  menuIsOpen: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
@@ -214,55 +215,53 @@ const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
   animationDirection,
   elementRect,
   menuOpenedCounter,
+  menuIsOpen,
   t,
 }) => {
   const animationNameIn = `menuPortalCircleAnimation_${menuOpenedCounter}`;
   const animationNameOut = `menuPortalCircleAnimationOut_${menuOpenedCounter}`;
   const isIE11 = isIE && parseInt(browserVersion) < 12;
-  const content = (
-    <>
-      <DialogOverlay onDismiss={onClose}>
-        <StyledModalWrapper
-          isIE11={isIE11}
-          animationNameIn={animationNameIn}
-          animationNameOut={animationNameOut}
-          elementRect={elementRect}
-          animationDirection={animationDirection}
-          onAnimationEnd={() => {
-            if (animationDirection === 'out') {
-              onClosed();
-            }
-          }}>
-          <DialogContent>
-            <StyledContainerWrapper isIE11={isIE11}>
-              <StyledContainer animationDirection={animationDirection}>
-                <ScrollableContent isIE11={isIE11}>
-                  <StyledButton
-                    isIE11={isIE11}
-                    type="button"
-                    aria-label={t('masthead.menu.close')}
-                    onClick={onClose}>
-                    <Cross />
-                  </StyledButton>
-                  <div>{children}</div>
-                </ScrollableContent>
-              </StyledContainer>
-            </StyledContainerWrapper>
-          </DialogContent>
-        </StyledModalWrapper>
-        <Backdrop
-          onClick={onClose}
-          animationDuration={
-            animationDirection === 'in'
-              ? animations.durations.fast
-              : animations.durations.normal
+  return (
+    <DialogOverlay isOpen={menuIsOpen} onDismiss={onClose}>
+      <StyledModalWrapper
+        isIE11={isIE11}
+        animationNameIn={animationNameIn}
+        animationNameOut={animationNameOut}
+        elementRect={elementRect}
+        animationDirection={animationDirection}
+        onAnimationEnd={() => {
+          if (animationDirection === 'out') {
+            onClosed();
           }
-          animateIn={animationDirection === 'in'}
-        />
-      </DialogOverlay>
-    </>
+        }}>
+        <DialogContent>
+          <StyledContainerWrapper isIE11={isIE11}>
+            <StyledContainer animationDirection={animationDirection}>
+              <ScrollableContent isIE11={isIE11}>
+                <StyledButton
+                  isIE11={isIE11}
+                  type="button"
+                  aria-label={t('masthead.menu.close')}
+                  onClick={onClose}>
+                  <Cross />
+                </StyledButton>
+                <div>{children}</div>
+              </ScrollableContent>
+            </StyledContainer>
+          </StyledContainerWrapper>
+        </DialogContent>
+      </StyledModalWrapper>
+      <Backdrop
+        onClick={onClose}
+        animationDuration={
+          animationDirection === 'in'
+            ? animations.durations.fast
+            : animations.durations.normal
+        }
+        animateIn={animationDirection === 'in'}
+      />
+    </DialogOverlay>
   );
-  return createUniversalPortal(content, 'body');
 };
 
 export default injectT(FrontpageMenuPortal);

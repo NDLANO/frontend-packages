@@ -1,6 +1,6 @@
 {
   "name": "@ndla/editor",
-  "version": "0.4.23",
+  "version": "0.5.0",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -18,7 +18,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.6.17",
+    "@ndla/core": "^0.6.18",
     "@ndla/icons": "^0.6.17"
   },
   "peerDependencies": {

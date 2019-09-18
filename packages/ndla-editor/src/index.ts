@@ -16,3 +16,9 @@ export {
   VersionHistory,
   VersionLogTag,
 };
+export { default as Footer } from './footer/Footer';
+export {
+  default as FooterQualityInsurance,
+} from './footer/FooterQualityInsurance';
+export { default as FooterLinkButton } from './footer/FooterLinkButton';
+export { default as FooterStatus } from './footer/FooterStatus';

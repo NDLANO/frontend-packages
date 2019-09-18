@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { noScroll } from '@ndla/util';
+
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
@@ -120,6 +120,7 @@ type StyledIllustrationContainerProps = {
   isIE11: boolean;
 };
 
+//prettier-ignore
 const StyledIllustrationContainer = styled.div<StyledIllustrationContainerProps>`
   width: 100%;
   pointer-events: none;
@@ -188,14 +189,12 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         return { ...prevState, animationDirection: 'out' };
       });
     }
-    noScroll(false, 'frontpagePortal');
   };
 
   const closedMenu = () => {
     setState(prevState => {
       return { ...prevState, menuIsOpen: false, categoryIndex: undefined };
     });
-    noScroll(false, 'frontpagePortal');
   };
 
   const openMenu = (
@@ -213,24 +212,22 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         menuOpenedCounter: menuOpenedCounter + 1,
       };
     });
-    noScroll(true, 'frontpagePortal');
   };
 
   const isIE11 = isIE && parseInt(browserVersion) < 12;
   return (
     <>
-      {menuIsOpen && (
-        <FrontpageMenuPortal
-          menuOpenedCounter={menuOpenedCounter}
-          onClosed={closedMenu}
-          onClose={closeMenu}
-          animationDirection={animationDirection}
-          elementRect={elementRect}>
-          {categoryIndex !== undefined && (
-            <FrontpageSubjectsInPortal category={categories[categoryIndex]} />
-          )}
-        </FrontpageMenuPortal>
-      )}
+      <FrontpageMenuPortal
+        menuOpenedCounter={menuOpenedCounter}
+        menuIsOpen={menuIsOpen}
+        onClosed={closedMenu}
+        onClose={closeMenu}
+        animationDirection={animationDirection}
+        elementRect={elementRect}>
+        {categoryIndex !== undefined && (
+          <FrontpageSubjectsInPortal category={categories[categoryIndex]} />
+        )}
+      </FrontpageMenuPortal>
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject

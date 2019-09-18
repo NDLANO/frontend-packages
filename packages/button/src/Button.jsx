@@ -130,11 +130,7 @@ export const appearances = {
     line-height: inherit;
     color: ${colors.brand.primary};
     box-shadow: ${colors.link};
-
-    &:hover {
-      box-shadow: ${colors.linkHover};
-    }
-
+    &:hover,
     &:focus {
       box-shadow: ${colors.linkHover};
     }
@@ -201,6 +197,11 @@ export const appearances = {
       }
     }
   `,
+  large: css`
+    height: ${spacing.large};
+    padding: 0 ${spacing.normal};
+    ${fonts.sizes(18, 1.25)};
+  `,
 };
 
 export const buttonStyle = css`
@@ -254,6 +255,7 @@ export const Button = ({
   outline,
   stripped,
   link,
+  large,
   lighter,
   submit,
   loading,
@@ -271,6 +273,7 @@ export const Button = ({
 }) => {
   const modifiers = {
     link,
+    large,
     outline,
     lighter,
     stripped,
@@ -306,6 +309,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
   link: PropTypes.bool,
+  large: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
   ghostPill: PropTypes.bool,
@@ -323,6 +327,7 @@ Button.propTypes = {
     'ghostPill',
     'ghostPillInverted',
     'ghostPillOutline',
+    'large',
   ]),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type

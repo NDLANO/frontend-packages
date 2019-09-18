@@ -6,8 +6,9 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { noScroll } from '@ndla/util';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
@@ -128,6 +129,12 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
   category,
   t,
 }) => {
+  useEffect(() => {
+    noScroll(true, 'frontpagePortal');
+    return () => {
+      noScroll(false, 'frontpagePortal');
+    };
+  }, []);
   // @ts-ignore
   const Illustration = categoryIllustrationsInModal[category.name];
   // @ts-ignore

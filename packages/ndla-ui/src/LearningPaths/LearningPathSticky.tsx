@@ -20,8 +20,7 @@ import {
 } from '@ndla/core';
 // @ts-ignore
 import { Back, Forward } from '@ndla/icons/common';
-// @ts-ignore
-import { SafeLink } from '../index';
+import SafeLink from '@ndla/safelink';
 
 const FOOTER_HEIGHT = '78px';
 const FOOTER_HEIGHT_MOBILE = spacing.large;

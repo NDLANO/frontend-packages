@@ -16,7 +16,7 @@ import { isFunction } from '@ndla/util';
 import { injectT } from '@ndla/i18n';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 const classes = new BEMHelper({
   name: 'figure',

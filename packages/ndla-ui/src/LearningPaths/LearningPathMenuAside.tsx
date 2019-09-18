@@ -13,6 +13,7 @@ import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
+import { SafeLinkButton } from '@ndla/safelink';
 import {
   colors,
   spacing,
@@ -22,7 +23,6 @@ import {
   animations,
 } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
-import { SafeLinkButton } from '../index';
 
 const infoTextCSS = css`
   ${fonts.sizes(18, 1.3)};
@@ -113,7 +113,11 @@ const LearningPathMenuAside: React.FunctionComponent<Props> = ({
       <LearningPathMenuAsideCopyright copyright={copyright} />
     )}
     <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
-    <SafeLinkButton to={learningPathURL} target="_blank" rel="noopener noreferrer" outline>
+    <SafeLinkButton
+      to={learningPathURL}
+      target="_blank"
+      rel="noopener noreferrer"
+      outline>
       {t('learningPath.createLearningPathButtonText')}
     </SafeLinkButton>
   </StyledAside>

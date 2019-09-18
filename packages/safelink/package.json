@@ -1,11 +1,16 @@
 {
-  "name": "@ndla/button",
-  "version": "0.3.15",
-  "description": "Button component for NDLA",
+  "name": "@ndla/safelink",
+  "version": "0.0.3",
+  "description": "SafeLink component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
@@ -19,15 +24,12 @@
     "lib",
     "es"
   ],
-  "dependencies": {
-    "@ndla/core": "^0.6.15"
-  },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
-    "prop-types": "^15.6.0",
-    "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1"
+    "react": "^16.8.0",
+    "react-bem-helper": "^1.4.1",
+    "react-router-dom": "5.0.1"
   },
   "publishConfig": {
     "access": "public"

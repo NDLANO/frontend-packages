@@ -64,14 +64,7 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
         animation-name: ${props.animationDirection === 'in'
             ? props.animationNameIn
             : props.animationNameOut};
-        animation-duration: ${props.animationDirection === 'out'
-            ? animations.durations.fast
-            : animations.durations.normal};
-        ${mq.range({ from: breakpoints.tablet })} {
-          animation-duration: ${props.animationDirection === 'in'
-              ? animations.durations.normal
-              : animations.durations.fast};
-        }
+        animation-duration: ${animations.durations.normal};
         animation-fill-mode: forwards;
         @keyframes ${props.animationNameIn} {
           0% {
@@ -106,7 +99,7 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
           50% {
             border-radius: 100%;
           }
-          90% {
+          70% {
             opacity: 1;
           }
           100% {
@@ -175,6 +168,9 @@ const ScrollableContent = styled.div<ie11Props>`
   animation-timing-function: ease;
   > div {
     width: 100%;
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      padding-top: ${spacing.large};
+    }
   }
 `;
 

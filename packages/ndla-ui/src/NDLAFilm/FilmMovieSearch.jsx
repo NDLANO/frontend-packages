@@ -9,7 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { OneColumn, SafeLink } from '@ndla/ui';
+import { OneColumn } from '@ndla/ui';
+import SafeLink from '@ndla/safelink';
 import { injectT } from '@ndla/i18n';
 import CategorySelect from './CategorySelect';
 

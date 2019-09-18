@@ -77,6 +77,14 @@ const StyledButton = styled.button`
   background: none;
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
   &:before {
     content: '';
     display: block;
@@ -115,9 +123,11 @@ type StyledIllustrationContainerProps = {
 const StyledIllustrationContainer = styled.div<StyledIllustrationContainerProps>`
   width: 100%;
   pointer-events: none;
-  ${props => props.isIE11 && css`
-    transform: scale(1.2);
-  `}
+  ${props =>
+    props.isIE11 &&
+    css`
+      transform: scale(1.2);
+    `}
   ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     width: calc(100vw - ${spacing.spacingUnit * 6}px);
   }
@@ -171,9 +181,13 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   } = currentState;
 
   const closeMenu = () => {
-    setState(prevState => {
-      return { ...prevState, animationDirection: 'out', menuIsOpen: false };
-    });
+    if (isIE) {
+      closedMenu();
+    } else {
+      setState(prevState => {
+        return { ...prevState, animationDirection: 'out' };
+      });
+    }
     noScroll(false, 'frontpagePortal');
   };
 
@@ -202,8 +216,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
     noScroll(true, 'frontpagePortal');
   };
 
-  const isIE11 = (isIE && parseInt(browserVersion) < 12);
-
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   return (
     <>
       {menuIsOpen && (
@@ -214,9 +227,7 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
           animationDirection={animationDirection}
           elementRect={elementRect}>
           {categoryIndex !== undefined && (
-            <FrontpageSubjectsInPortal
-              category={categories[categoryIndex]}
-            />
+            <FrontpageSubjectsInPortal category={categories[categoryIndex]} />
           )}
         </FrontpageMenuPortal>
       )}

@@ -34,6 +34,7 @@ const messages = {
       "Sorry, we can't locate the resource you are looking for.",
   },
   notFoundPage: {
+    title: 'Page not found',
     errorDescription: "We can't seem to find the page you are looking for.",
   },
   lti: {
@@ -176,14 +177,6 @@ const messages = {
         'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
-      },
-    },
-    aboutNDLA: {
-      heading: 'About NDLA',
-      description:
-        'NDLAs vision is to create good, open digital learning resources for all subjects in upper secondary education and support students and teachers in active and participatory learning work.',
-      mainLink: {
-        name: 'More about NDLA',
       },
     },
     category: {

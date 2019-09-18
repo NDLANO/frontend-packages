@@ -31,9 +31,11 @@ interface Props {
   children: React.ReactNode;
   to: string;
   className?: string;
-};
+}
 
-const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchorElement>> = ({
+const SafeLinkButton: React.FunctionComponent<
+  Props & React.HTMLProps<HTMLAnchorElement>
+> = ({
   outline,
   stripped,
   link,

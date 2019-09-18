@@ -171,18 +171,19 @@ class Tooltip extends Component {
       delay,
       tooltip,
       children,
+      rest,
     } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
-        <div className={tooltipContainerClass} ref={this.contentRef}>
+        <div className={tooltipContainerClass} ref={this.contentRef} {...rest}>
           <span className={className}>{children}</span>
         </div>
       );
     }
 
     return (
-      <TooltipWrapper className={tooltipContainerClass}>
+      <TooltipWrapper className={tooltipContainerClass} {...rest}>
         <Fade animateIn={this.state.showTooltip} delay={delay}>
           <span
             role="tooltip"

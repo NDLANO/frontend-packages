@@ -14,8 +14,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import rgba from 'polished/lib/color/rgba';
 import { colors } from '@ndla/core';
-
-import SafeLink from './SafeLink'; // TODO: find a solution for sharing common components
+import SafeLink from '@ndla/safelink';
 import { stepNumbers } from './pagerHelpers';
 
 const createQueryString = obj =>

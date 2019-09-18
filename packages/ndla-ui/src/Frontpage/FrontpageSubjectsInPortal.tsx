@@ -11,8 +11,7 @@ import styled from '@emotion/styled';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-// @ts-ignore
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 import { category as categoryProp } from '../types';
 import {
   categoryIllustrations,
@@ -44,8 +43,7 @@ const StyledHeader = styled.h1`
     margin-bottom: -${spacing.spacingUnit * 3}px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    margin-top: ${spacing.normal};
-    margin-bottom: -${spacing.spacingUnit * 4}px;
+    margin-bottom: -${spacing.spacingUnit * 3}px;
   }
 `;
 
@@ -152,9 +150,7 @@ const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
               <StyledYearInfo>{subject.yearInfo}</StyledYearInfo>
             )}
             {subject.beta && (
-              <StyledTag>
-                {t('subjectPage.subjectIsBeta.iconLabel')}
-              </StyledTag>
+              <StyledTag>{t('subjectPage.subjectIsBeta.iconLabel')}</StyledTag>
             )}
           </StyledListItem>
         ))}

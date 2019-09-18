@@ -34,6 +34,7 @@ const messages = {
       'Orsak, vi kunne ikkje finne ressursen du leiter etter.',
   },
   notFoundPage: {
+    title: 'Sida finst ikkje',
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
   lti: {
@@ -74,7 +75,7 @@ const messages = {
       contentTypeResultShowLessLabel: 'Sjå færre resultat',
       allResultButtonText: 'Vis alle søketreff',
       searchResultHeading: 'Forslag:',
-      contentTypeResultNoHit: 'Ingen treff',
+      contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
@@ -156,6 +157,7 @@ const messages = {
       'Vi jobbar stadig med å forbetre oss! Har du kommentarer til søket, blir vi glad om du legg dei inn i «spør NDLA» nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
+    searchAllInfo: 'Sjå treff alle på søk',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {
@@ -178,18 +180,10 @@ const messages = {
         name: 'Følg oss',
       },
     },
-    aboutNDLA: {
-      heading: 'Om NDLA',
-      description:
-        'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle fag i videregåande opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
-      mainLink: {
-        name: 'Meir om NDLA',
-      },
-    },
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialisering',
+      studiespesialiserende: 'Studieførebuande',
       imported: 'Spoltefag',
       heading: 'Kva lærar du?',
     },

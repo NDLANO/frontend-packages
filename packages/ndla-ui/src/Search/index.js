@@ -7,7 +7,6 @@
  */
 
 import SearchField from './SearchField';
-import SearchResultSleeve from './SearchResultSleeve';
 import SearchOverlay from './SearchOverlay';
 import SearchPage from './SearchPage';
 
@@ -20,14 +19,12 @@ import {
 import SearchFilter from './SearchFilter';
 import SearchFilterList from './SearchFilterList';
 import SearchPopoverFilter from './SearchPopoverFilter';
-import ContentTypeResult from './ContentTypeResult';
 import SearchResultAuthor from './SearchResultAuthor';
 import ActiveFilters from './ActiveFilters';
 export { default as ToggleSearchButton } from './ToggleSearchButton';
 
 export {
   SearchField,
-  SearchResultSleeve,
   SearchOverlay,
   SearchPage,
   SearchResult,
@@ -36,7 +33,6 @@ export {
   SearchFilter,
   SearchFilterList,
   SearchPopoverFilter,
-  ContentTypeResult,
   SearchResultAuthor,
   ActiveFilters,
 };

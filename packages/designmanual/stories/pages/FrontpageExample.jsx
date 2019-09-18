@@ -25,10 +25,12 @@ class FrontpageExample extends Component {
     this.state = {
       searchFieldValue: '',
       inputHasFocus: false,
+      loading: false,
     };
     this.searchFieldValue = this.searchFieldValue.bind(this);
     this.onSearchInputFocus = this.onSearchInputFocus.bind(this);
     this.onSearchDeactiveFocusTrap = this.onSearchDeactiveFocusTrap.bind(this);
+    this.timeoutLoading = null;
   }
 
   onSearchInputFocus() {
@@ -45,15 +47,26 @@ class FrontpageExample extends Component {
   }
 
   searchFieldValue(searchFieldValue) {
-    this.setState(prevState => ({
-      searchFieldValue,
-      inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
-    }));
+    clearInterval(this.timeoutLoading);
+    this.setState(
+      prevState => ({
+        searchFieldValue,
+        inputHasFocus: searchFieldValue.length > 0 || prevState.inputHasFocus,
+        loading: true,
+      }),
+      () => {
+        this.timeoutLoading = setTimeout(() => {
+          this.setState({
+            loading: false,
+          });
+        }, 400);
+      },
+    );
   }
 
   render() {
     const { t } = this.props;
-    const { searchFieldValue, inputHasFocus } = this.state;
+    const { searchFieldValue, inputHasFocus, loading } = this.state;
 
     return (
       <>
@@ -67,13 +80,15 @@ class FrontpageExample extends Component {
             onSearch={e => {
               e.preventDefault();
             }}
+            resourceToLinkProps={res => ({ to: res.path })}
             allResultUrl={`search?query=${searchFieldValue}`}
             onSearchInputFocus={this.onSearchInputFocus}
-            onSearchDeactiveFocusTrap={this.onSearchDeactiveFocusTrap}
+            onInputBlur={this.onSearchDeactiveFocusTrap}
             searchFieldPlaceholder={t(
               'welcomePage.heading.searchFieldPlaceholder',
             )}
             inputHasFocus={inputHasFocus}
+            loading={loading}
             searchResult={
               searchFieldValue.length > 2 && [
                 {
@@ -82,20 +97,23 @@ class FrontpageExample extends Component {
                   resources: [
                     {
                       path: '#f1',
-                      boldName: 'Yrkesfag:',
+                      subject: 'Yrkesfag',
                       name: 'Design og håndverk',
-                      subName: 'Vg3',
                     },
                     {
                       path: '#f2',
-                      boldName: 'Yrkesfag:',
+                      subject: 'Yrkesfag',
                       name: 'Helsearbeiderfag',
-                      subName: 'Vg1',
                     },
                     {
                       path: '#f3',
-                      boldName: 'Fellesfag:',
+                      subject: 'Fellesfag',
                       name: 'Samfunnsfag',
+                    },
+                    {
+                      path: '#f4',
+                      subject: 'Fellesfag',
+                      name: 'Historie',
                     },
                   ],
                 },
@@ -105,20 +123,33 @@ class FrontpageExample extends Component {
                   resources: [
                     {
                       path: '#e1',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Politikk og demokrati',
+                      resourceTypes: [
+                        {
+                          name: 'Kildematerial',
+                        },
+                        {
+                          name: 'Kortfilm',
+                        },
+                      ],
                     },
                     {
                       path: '#e2',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Internasjonale forhold',
                     },
                     {
                       path: '#e3',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Arbeidsliv- og næring',
                     },
                   ],
+                },
+                {
+                  title: 'Oppgaver:',
+                  contentType: 'results-frontpage',
+                  resources: [],
                 },
                 {
                   title: 'Læringsressurser:',
@@ -126,69 +157,76 @@ class FrontpageExample extends Component {
                   resources: [
                     {
                       path: '#1',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Samfunnskontrakten: Å bli voksen',
-                      subName: 'Fagstoff',
                     },
                     {
                       path: '#2',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Ulike metoder',
-                      subName: 'Fagstoff',
+                      resourceTypes: [
+                        {
+                          name: 'Fagstoff',
+                        },
+                      ],
                     },
                     {
                       path: '#3',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Dette er NAV',
-                      subName: 'Fagstoff',
+                      resourceTypes: [
+                        {
+                          name: 'Oppgaver og aktiviteter',
+                        },
+                      ],
                     },
                     {
                       path: '#4',
-                      boldName: 'Samfunnsfag:',
+                      subject: 'Samfunnsfag',
                       name: 'Oppsummeringsoppgave, tema, Urfolk',
-                      subName: 'Oppgaver og aktiviteter',
+                      resourceTypes: [
+                        {
+                          name: 'Oppgaver og aktiviteter',
+                        },
+                      ],
+                      additional: true,
                     },
                     {
                       path: '#5',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Utvilking av ny design',
-                      subName: 'Fagstoff',
                     },
                     {
                       path: '#6',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Presentasjonsteknikk - demonstrasjon',
-                      subName: 'Oppgaver og aktiviteter',
                     },
                     {
                       path: '#7',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
+                      additional: true,
                     },
                     {
                       path: '#8',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                     },
                     {
                       path: '#9',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                     },
                     {
                       path: '#10',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
+                      additional: true,
                     },
                     {
                       path: '#11',
-                      boldName: 'Design og håndverk Vg1:',
+                      subject: 'Design og håndverk Vg1',
                       name: 'Form og funksjon',
-                      subName: 'Læringssti',
                     },
                   ],
                 },
@@ -206,7 +244,7 @@ class FrontpageExample extends Component {
         </FrontpageHeader>
         <main>
           <FrontpageCircularSubjectsSection categories={categories} />
-          <OneColumn wide extraPadding>
+          <OneColumn extraPadding>
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
@@ -272,14 +310,6 @@ class FrontpageExample extends Component {
                     icon: <Twitter />,
                   },
                 ]}
-              />
-              <InfoWidget
-                heading={t('welcomePage.aboutNDLA.heading')}
-                description={t('welcomePage.aboutNDLA.description')}
-                mainLink={{
-                  name: t('welcomePage.aboutNDLA.mainLink.name'),
-                  url: '#5',
-                }}
               />
             </FrontpageInfo>
           </OneColumn>

@@ -12,14 +12,103 @@ import { VersionHistory, VersionLogTag } from '@ndla/editor';
 import { colors, spacing } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import Tooltip from '@ndla/tooltip';
-
-const paddingPanelStyle = css`
-  padding: 0 ${spacing.medium};
-`;
+import styled from '@emotion/styled';
+// @ts-ignore
+import { fonts, misc } from '@ndla/core';
+// @ts-ignore
+import { buttonStyle } from '@ndla/button';
+// @ts-ignore
+import { Cross } from '@ndla/icons/action';
+import { injectT } from '@ndla/i18n';
 
 const paddingPanelStyleInside = css`
   background: ${colors.brand.greyLightest};
   padding: 0 ${spacing.normal};
+`;
+
+const StyledInputWrapper = styled.div`
+  margin: 0 ${spacing.small} 0 ${spacing.normal};
+  padding-right: ${spacing.xsmall};
+  display: flex;
+  flex-grow: 1;
+  justify-items: space-between;
+  align-items: center;
+  border: 1px solid;
+  background: #fff;
+  transition: border-color 200ms ease;
+  border-color: ${props =>
+    props.inputHasFocus ? colors.brand.primary : colors.brand.greyLight};
+  border-radius: ${misc.borderRadius};
+`;
+
+const StyledInput = styled.input`
+  ${fonts.sizes(16, '23px')};
+  border: 0;
+  outline: 0;
+  background: 0;
+  flex-grow: 1;
+  padding: ${spacing.xsmall} ${spacing.small};
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${spacing.small};
+`;
+
+const StyledSubmitButton = styled.button`
+  ${buttonStyle}
+  min-width: 100px;
+  ${props =>
+    props.disabledStyle &&
+    css`
+      color: ${colors.brand.grey};
+      background-color: ${colors.brand.greyLight};
+      border-color: transparent;
+      cursor: not-allowed;
+      transform: translateY(0) translateX(0);
+      &:hover,
+      &:focus {
+        color: ${colors.brand.grey};
+        transform: translateY(0) translateX(0);
+        background-color: ${colors.brand.greyLight};
+      }
+    `}
+`;
+
+const StyledInputLabel = styled.label`
+  ${fonts.sizes(16, 1.1)};
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const StyledEmptyInputButton = styled.button`
+  border: 0;
+  background: transparent;
+  border-radius: 100%;
+  width: ${spacing.normal};
+  height: ${spacing.normal};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 200ms ease;
+  svg {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    fill: ${colors.brand.greyDark};
+    transition: fill 200ms ease;
+  }
+  &:hover,
+  &:focus {
+    background: ${colors.brand.greyLight};
+    svg {
+      fill: ${colors.brand.primary};
+    }
+  }
 `;
 
 const versionsDummy = [
@@ -27,7 +116,7 @@ const versionsDummy = [
     name: '#003',
     lastChange: 'Sist endret 03.09.2019',
     current: true,
-    messages: [
+    notes: [
       {
         author: 'Torgeir H.',
         date: '03.09.2019',
@@ -55,7 +144,7 @@ const versionsDummy = [
     name: '#002',
     lastChange: 'Sist endret 03.09.2019',
     published: true,
-    messages: [
+    notes: [
       {
         author: 'Torgeir H.',
         date: '03.09.2019',
@@ -82,7 +171,7 @@ const versionsDummy = [
   {
     name: '#001',
     lastChange: 'Sist endret 03.09.2019',
-    messages: [
+    notes: [
       {
         author: 'Torgeir H.',
         date: '03.09.2019',
@@ -108,8 +197,11 @@ const versionsDummy = [
   },
 ];
 
-const ProductionToolVersionLog = () => {
+const ProductionToolVersionLog = ({ t }) => {
   const [versions, updateVersions] = useState(versionsDummy);
+  const [commentValue, setCommentValue] = useState('');
+  const [commentError, setCommentError] = useState(false);
+  const [inputHasFocus, setInputHasFocus] = useState(false);
   return (
     <Accordion openIndexes={[2]}>
       {({ getPanelProps, getBarProps }) => (
@@ -117,19 +209,19 @@ const ProductionToolVersionLog = () => {
           {['Lisens og bruker', 'Metadata'].map((name, index) => (
             <Fragment key={name}>
               <AccordionBar {...getBarProps(index)} title={name} />
-              <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyle}>
+              <AccordionPanel {...getPanelProps(index)}>
                 <p>{name}</p>
               </AccordionPanel>
             </Fragment>
           ))}
           <AccordionBar {...getBarProps(2)} title="Versjonslogg og merknader" />
-          <AccordionPanel {...getPanelProps(2)} css={paddingPanelStyle}>
+          <AccordionPanel {...getPanelProps(2)}>
             <Accordion openIndexes={[0]} tiny>
               {({ getPanelProps, getBarProps }) => (
                 <AccordionWrapper>
                   {versions.map(
                     (
-                      { name, lastChange, current, published, messages },
+                      { name, lastChange, current, published, notes },
                       index,
                     ) => (
                       <Fragment key={name}>
@@ -180,7 +272,7 @@ const ProductionToolVersionLog = () => {
                           {...getPanelProps(index)}
                           css={paddingPanelStyleInside}>
                           <VersionHistory
-                            messages={messages}
+                            notes={notes}
                             onComment={msg => {
                               const updatedVersions = [...versions];
                               const now = new Date();
@@ -189,7 +281,7 @@ const ProductionToolVersionLog = () => {
                               const newDate = `${day > 9 ? day : `0${day}`}.${
                                 month > 9 ? month : `0${month}`
                               }.${now.getFullYear()}`;
-                              updatedVersions[index].messages.unshift({
+                              updatedVersions[index].notes.unshift({
                                 author: 'Dr. Phil',
                                 msg,
                                 status: '',
@@ -197,8 +289,44 @@ const ProductionToolVersionLog = () => {
                                 date: newDate,
                               });
                               updateVersions(updatedVersions);
-                            }}
-                          />
+                            }}>
+                            <StyledForm onSubmit={() => {}}>
+                              <StyledInputLabel htmlFor="inputComment">
+                                {t('editor.versionHistory.inputLabel')}
+                              </StyledInputLabel>
+                              <StyledInputWrapper inputHasFocus={inputHasFocus}>
+                                <StyledInput
+                                  name="inputComment"
+                                  value={commentValue}
+                                  autoComplete="off"
+                                  onFocus={() => setInputHasFocus(true)}
+                                  onBlur={() => setInputHasFocus(false)}
+                                  onChange={e => {
+                                    setCommentValue(e.target.value);
+                                    setCommentError(false);
+                                  }}
+                                  placeholder={t(
+                                    'editor.versionHistory.inputPlaceholder',
+                                  )}
+                                />
+                                {commentValue.length > 0 && (
+                                  <StyledEmptyInputButton
+                                    type="button"
+                                    onClick={() => setCommentValue('')}>
+                                    <Cross />
+                                  </StyledEmptyInputButton>
+                                )}
+                              </StyledInputWrapper>
+                              {commentError && <span>Has error!!!</span>}
+                              <StyledSubmitButton
+                                disabledStyle={
+                                  commentValue.length < 3 ? true : false
+                                }
+                                type="submit">
+                                {t('editor.versionHistory.buttonLabel')}
+                              </StyledSubmitButton>
+                            </StyledForm>
+                          </VersionHistory>
                         </AccordionPanel>
                       </Fragment>
                     ),
@@ -213,4 +341,4 @@ const ProductionToolVersionLog = () => {
   );
 };
 
-export default ProductionToolVersionLog;
+export default injectT(ProductionToolVersionLog);

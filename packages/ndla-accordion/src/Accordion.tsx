@@ -19,40 +19,51 @@ export const AccordionWrapper = styled.div`
 `;
 
 type childrenProps = {
-  openIndexes: Array<openIndexesProps>,
+  openIndexes: Array<openIndexesProps>;
   handleItemClick: (arg: openIndexesProps) => void;
-  getBarProps: (arg: openIndexesProps) => {
+  getBarProps: (
+    arg: openIndexesProps,
+  ) => {
     tiny?: boolean;
-    onClick: () => void,
-    isOpen: boolean,
-    panelId: openIndexesProps,
+    onClick: () => void;
+    isOpen: boolean;
+    panelId: openIndexesProps;
   };
-  getPanelProps: (arg: openIndexesProps) => {
-    id: openIndexesProps,
-    isOpen: boolean,
-    tiny?: boolean,
+  getPanelProps: (
+    arg: openIndexesProps,
+  ) => {
+    id: openIndexesProps;
+    isOpen: boolean;
+    tiny?: boolean;
   };
 };
 
 type Props = {
-  openIndexes: Array<openIndexesProps>,
+  openIndexes: Array<openIndexesProps>;
   single?: boolean;
   tiny?: boolean;
   children: (arg: childrenProps) => React.ReactElement;
 };
 
-export const Accordion: React.FC<Props> = ({ openIndexes, single, tiny, children }) => {
+export const Accordion: React.FC<Props> = ({
+  openIndexes,
+  single,
+  tiny,
+  children,
+}) => {
   const [currentOpenedIndexes, setOpenIndexes] = useState(openIndexes || []);
 
   const togglePanel = (index: openIndexesProps) => {
     if (single) {
       setOpenIndexes(currentOpenedIndexes.includes(index) ? [] : [index]);
     } else if (currentOpenedIndexes.includes(index)) {
-      setOpenIndexes(currentOpenedIndexes.filter(openIndex => openIndex !== index));
+      setOpenIndexes(
+        currentOpenedIndexes.filter(openIndex => openIndex !== index),
+      );
     } else {
       setOpenIndexes([...currentOpenedIndexes, index]);
     }
-  }
+  };
 
   return children({
     openIndexes: currentOpenedIndexes,

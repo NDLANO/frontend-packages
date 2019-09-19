@@ -7,7 +7,6 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { css } from '@emotion/core';
 import Accordion, {
   AccordionBar,
   AccordionPanel,
@@ -15,14 +14,9 @@ import Accordion, {
 } from '@ndla/accordion';
 import Button from '@ndla/button';
 import { FilterList } from '@ndla/ui';
-import { spacing } from '@ndla/core';
 
 import ComponentInfo from '../ComponentInfo';
 import TinyAccordionExample from '../molecules/TinyAccordionExample';
-
-const panelStyle = css`
-  padding: ${spacing.small} calc(${spacing.large}) ${spacing.large};
-`;
 
 class AccordionExample extends Component {
   constructor(props) {
@@ -96,7 +90,7 @@ class AccordionExample extends Component {
                     title={`Panel ${index + 1}`}>
                     <div>Children in bar</div>
                   </AccordionBar>
-                  <AccordionPanel {...getPanelProps(index)} css={panelStyle}>
+                  <AccordionPanel {...getPanelProps(index)}>
                     <div>
                       <p>{item}</p>
                     </div>
@@ -116,7 +110,7 @@ class AccordionExample extends Component {
                     {...getBarProps(index)}
                     title={`Panel ${index + 1}`}
                   />
-                  <AccordionPanel {...getPanelProps(index)} css={panelStyle}>
+                  <AccordionPanel {...getPanelProps(index)}>
                     <p>{item}</p>
                   </AccordionPanel>
                 </Fragment>
@@ -154,8 +148,7 @@ class AccordionExample extends Component {
                   <AccordionPanel
                     id={`panel-${index}`}
                     hasError={errorPanels.includes(index)}
-                    isOpen={openIndexes.includes(index)}
-                    css={panelStyle}>
+                    isOpen={openIndexes.includes(index)}>
                     <div>
                       <p>{item}</p>
                       <Button onClick={() => handleItemClick(index)}>
@@ -176,8 +169,7 @@ class AccordionExample extends Component {
               <AccordionPanel
                 id="panelWithSubAccordion"
                 hasError={errorPanels.includes(3)}
-                isOpen={openIndexes.includes(3)}
-                css={panelStyle}>
+                isOpen={openIndexes.includes(3)}>
                 <TinyAccordionExample />
               </AccordionPanel>
             </AccordionWrapper>

@@ -14,14 +14,12 @@ import { uuid } from '@ndla/util';
 import Tooltip from '@ndla/tooltip';
 
 const paddingPanelStyle = css`
-  padding-left: ${spacing.medium};
-  padding-right: ${spacing.medium};
+  padding: 0 ${spacing.medium};
 `;
 
 const paddingPanelStyleInside = css`
   background: ${colors.brand.greyLightest};
-  padding-left: ${spacing.normal};
-  padding-right: ${spacing.normal};
+  padding: 0 ${spacing.normal};
 `;
 
 const versionsDummy = [

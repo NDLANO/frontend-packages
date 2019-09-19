@@ -43,7 +43,8 @@ export const StyledAccordionsPanelIconButton = styled.button`
     height: 20px;
     cursor: pointer;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: ${colors.brand.tertiary};
   }
 `;
@@ -59,11 +60,14 @@ const StyledAccordionPanel = styled.section<Props>`
   display: flex;
   transition: opacity 200ms ease;
   opacity: 1;
-  margin-bottom: ${props => props.tiny ? spacing.small : spacing.normal};
+  margin-bottom: ${props => (props.tiny ? spacing.small : spacing.normal)};
   background: #fff;
   max-height: auto;
   border: 2px solid transparent;
-  ${props => !props.isOpen &&
+  padding: ${spacing.small} calc(${spacing.large}) ${spacing.large};
+
+  ${props =>
+    !props.isOpen &&
     css`
       margin-bottom: 0;
       padding: 0 !important;
@@ -72,7 +76,10 @@ const StyledAccordionPanel = styled.section<Props>`
       opacity: 0;
       visibility: collapse;
     `};
-  ${props => props.hasError && props.isOpen &&
+
+  ${props =>
+    props.hasError &&
+    props.isOpen &&
     css`
       border: 2px solid ${colors.support.redLight};
       border-top-color: transparent;

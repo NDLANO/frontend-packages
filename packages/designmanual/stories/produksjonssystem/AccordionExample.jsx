@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Accordion, {
   AccordionBar,
   AccordionPanel,
@@ -16,6 +16,7 @@ import Button from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
 import ComponentInfo from '../ComponentInfo';
+import TinyAccordionExample from '../molecules/TinyAccordionExample';
 
 class AccordionExample extends Component {
   constructor(props) {
@@ -37,26 +38,25 @@ class AccordionExample extends Component {
     return (
       <ComponentInfo
         reactCode={`
-  <Accordion openIndexes={[0]}>
-    {({ getBarProps }) => (
-      <AccordionWrapper>
-        {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-          <React.Fragment key={item}>
-            <AccordionBar
-              {...getBarProps(index)}
-              ariaLabel={\`Panel \${index + 1}\`}>
-              Panel {index + 1}
-            </AccordionBar>
-            <AccordionPanel {...getPanelProps(index)}>
-              <div>
-                <p>{item}</p>
-              </div>
-            </AccordionPanel>
-          </React.Fragment>
-        ))}
-      </AccordionWrapper>
-    )}
-  </Accordion>
+          <Accordion openIndexes={[0]}>
+            {({ getBarProps }) => (
+              <AccordionWrapper>
+                {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
+                  <Fragment key={item}>
+                    <AccordionBar
+                      {...getBarProps(index)}
+                      title={\`Panel \${index + 1}\`}>
+                    </AccordionBar>
+                    <AccordionPanel {...getPanelProps(index)}>
+                      <div>
+                        <p>{item}</p>
+                      </div>
+                    </AccordionPanel>
+                  </Fragment>
+                ))}
+              </AccordionWrapper>
+            )}
+          </Accordion>
           `}
         usesPropTypes={[
           {
@@ -77,13 +77,6 @@ class AccordionExample extends Component {
             default: 'false',
             description: 'Vis kun et panel omgangen',
           },
-          {
-            name: 'sidePadding',
-            type: 'Number',
-            default: 'undefined',
-            description:
-              'Custom padding på sidene til AccordionPanel komponenten. Brukes feks av Ed panel for sideredigeringen.',
-          },
         ]}
         status={2}>
         <h2>Eksempel</h2>
@@ -91,18 +84,18 @@ class AccordionExample extends Component {
           {({ getPanelProps, getBarProps }) => (
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-                <React.Fragment key={item}>
+                <Fragment key={item}>
                   <AccordionBar
                     {...getBarProps(index)}
-                    ariaLabel={`Panel ${index + 1}`}>
-                    Panel {index + 1}
+                    title={`Panel ${index + 1}`}>
+                    <div>Children in bar</div>
                   </AccordionBar>
                   <AccordionPanel {...getPanelProps(index)}>
                     <div>
                       <p>{item}</p>
                     </div>
                   </AccordionPanel>
-                </React.Fragment>
+                </Fragment>
               ))}
             </AccordionWrapper>
           )}
@@ -112,16 +105,15 @@ class AccordionExample extends Component {
           {({ getPanelProps, getBarProps }) => (
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-                <React.Fragment key={item}>
+                <Fragment key={item}>
                   <AccordionBar
                     {...getBarProps(index)}
-                    ariaLabel={`Panel ${index + 1}`}>
-                    Panel {index + 1}
-                  </AccordionBar>
+                    title={`Panel ${index + 1}`}
+                  />
                   <AccordionPanel {...getPanelProps(index)}>
                     <p>{item}</p>
                   </AccordionPanel>
-                </React.Fragment>
+                </Fragment>
               ))}
             </AccordionWrapper>
           )}
@@ -144,10 +136,10 @@ class AccordionExample extends Component {
           {({ openIndexes, handleItemClick }) => (
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-                <React.Fragment key={item}>
+                <Fragment key={item}>
                   <AccordionBar
                     panelId={`panel-${index}`}
-                    ariaLabel={`Panel ${index + 1}`}
+                    title={`Panel ${index + 1}`}
                     onClick={() => handleItemClick(index)}
                     hasError={errorPanels.includes(index)}
                     isOpen={openIndexes.includes(index)}>
@@ -164,8 +156,22 @@ class AccordionExample extends Component {
                       </Button>
                     </div>
                   </AccordionPanel>
-                </React.Fragment>
+                </Fragment>
               ))}
+              <AccordionBar
+                panelId="panelWithSubAccordion"
+                title="With tiny accordion inside"
+                onClick={() => handleItemClick(3)}
+                hasError={errorPanels.includes(3)}
+                isOpen={openIndexes.includes(3)}>
+                Accordion with tiny accordion inside
+              </AccordionBar>
+              <AccordionPanel
+                id="panelWithSubAccordion"
+                hasError={errorPanels.includes(3)}
+                isOpen={openIndexes.includes(3)}>
+                <TinyAccordionExample />
+              </AccordionPanel>
             </AccordionWrapper>
           )}
         </Accordion>

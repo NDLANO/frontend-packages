@@ -604,6 +604,17 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
   },
+  editor: {
+    versionHistory: {
+      who: 'Hvem',
+      when: 'Når',
+      message: 'Merknad',
+      status: 'Status',
+      inputLabel: 'Legg til merknad:',
+      inputPlaceholder: 'Skriv inn merknad',
+      buttonLabel: 'Lagre',
+    },
+  },
 };
 
 export default messages;

@@ -25,7 +25,7 @@ import LearningPathMenuContent from './LearningPathMenuContent';
 const SIDE_NAV_WIDTH = '372px';
 
 type StyledMenuProps = {
-  isOpen?: Boolean;
+  isOpen?: boolean;
 };
 
 const StyledMenu = styled.div<StyledMenuProps>`
@@ -82,7 +82,6 @@ export type StepProps = {
 
 interface Props {
   learningsteps: StepProps[];
-  stepId: number;
   name: string;
   duration: number;
   lastUpdated: string[];
@@ -99,6 +98,7 @@ interface Props {
     };
   };
   learningPathURL: string;
+  invertedStyle?: boolean;
   currentIndex: boolean;
   cookies: {
     [key: string]: string;
@@ -117,8 +117,8 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
   copyright,
   learningPathId,
   toLearningPathUrl,
-  stepId,
   learningPathURL,
+  invertedStyle,
   cookies,
   t,
 }) => {
@@ -149,6 +149,7 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
           isOpen={isOpen}
           duration={duration}
           name={name}
+          invertedStyle={invertedStyle}
         />
         <LearningPathMenuContent
           learningsteps={learningsteps}
@@ -157,12 +158,14 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
           isOpen={isOpen}
           currentIndex={currentIndex}
           cookies={cookies}
+          invertedStyle={invertedStyle}
         />
         <LearningPathMenuAside
           isOpen={isOpen}
           lastUpdated={lastUpdated}
           copyright={copyright}
           learningPathURL={learningPathURL}
+          invertedStyle={invertedStyle}
         />
       </LearningPathMenuModalWrapper>
     </StyledMenu>

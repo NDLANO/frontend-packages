@@ -407,7 +407,7 @@ const messages = {
   errorMessage: {
     title: 'Ops, noko gjekk gale',
     description: 'Orsak, ein feil oppstod.',
-    linksTitle: 'Kjem igang:',
+    linksTitle: 'Kom igang:',
     back: 'Tilbake',
     goToFrontPage: 'Gå til forsida',
   },

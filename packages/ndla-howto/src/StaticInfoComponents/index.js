@@ -237,5 +237,17 @@ export const stories = {
   status: {
     title: 'Forklaring for ulike statuser',
     lead: 'Denne teksten kommer snart..',
+    body: [
+      {
+        type: 'text',
+        content:
+          'Kladd: Kun for forfatter',
+      },
+       {
+        type: 'text',
+        content:
+          'Utkast: For redaksjon',
+      },
+    ],
   },
 };

@@ -41,6 +41,12 @@ export const stories = {
     title: 'Ekspanderbar boks',
     lead:
       'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
+    body: [
+      {
+        type: 'text',
+        content: 'La til body tekst på ekspanderbar boks..',
+      },
+    ],
   },
 
   Blueprint: {
@@ -147,14 +153,13 @@ export const stories = {
     ],
   },
   userAgreements: {
-    title: 'Avtaler',
+    title: 'Avtaler i NDLA',
     lead:
-      'Avtaler beskriver lisensiering samt hvem som er rettighethavere, opphavspersoner m.m. for ressursen. I tilfeller hvor flere ressurser deler samme lisensiering anbefales det å bruke en avtale.',
+      'Avtaler beskriver lisensiering samt hvem som er rettighethavere, opphavspersoner m.m. for ressursen.',
     body: [
       {
         type: 'text',
-        content:
-          'Du kan opprette nye avtaler ved å bruke hovedmenyen med pluss-tegnet oppe til venstre og så trykke på "avtale" knappen',
+        content: 'Endret tekst til avtale...',
       },
     ],
   },

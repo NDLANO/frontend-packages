@@ -243,7 +243,7 @@ export const stories = {
         content:
           'Kladd: Kun for forfatter',
       },
-       {
+      {
         type: 'text',
         content:
           'Utkast: For redaksjon',

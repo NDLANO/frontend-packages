@@ -236,6 +236,6 @@ export const stories = {
   },
   status: {
     title: 'Forklaring for ulike statuser',
-    lead: 'Denne teksten kommer snart..',
+    lead: 'Denne teksten kommer snart. Veeeldig snart!.',
   },
 };

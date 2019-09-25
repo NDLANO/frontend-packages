@@ -219,6 +219,24 @@ test('ndla-error-reporter/ErrorReporter should ignore script errors', () => {
   nock.cleanAll();
 });
 
+test('ndla-error-reporter/ErrorReporter should ignore resizeobserver errors', () => {
+  const apiMock = nock('http://loggly-mock-api')
+    .post('/inputs/1223/', () => true)
+    .reply(200);
+
+  window.onerror.call(
+    window,
+    'undefined: ResizeObserver loop limit exceeded',
+    document.location.toString(),
+    0,
+    0,
+  );
+
+  // hack to check that no api calls was made
+  expect(apiMock.isDone()).toBe(false);
+  nock.cleanAll();
+});
+
 test('ndla-error-reporter/ErrorReporter should ignore provided urls', () => {
   const apiMock = nock('http://loggly-mock-api')
     .post('/inputs/1223/', () => true)

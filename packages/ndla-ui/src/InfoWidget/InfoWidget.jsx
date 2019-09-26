@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
 
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 import SectionHeading from '../SectionHeading';
 

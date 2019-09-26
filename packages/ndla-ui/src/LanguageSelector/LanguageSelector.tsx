@@ -13,7 +13,7 @@ import FocusTrapReact from 'focus-trap-react';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import Button from '@ndla/button';
+import Button, { appearances } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
@@ -125,6 +125,12 @@ const StyledSpan = styled.span`
   font-weight: ${fonts.weight.semibold};
 `;
 
+const styledInvertedOutlineLargeScreensOnly = css`
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${appearances.ghostPillOutlineInverted}
+  }
+`;
+
 type Props = {
   options: {
     [key: string]: {
@@ -134,6 +140,7 @@ type Props = {
   };
   currentLanguage: string;
   inverted?: boolean;
+  invertedOutlineLargeScreensOnly?: boolean;
   outline?: boolean;
   center?: boolean;
   alwaysVisible?: boolean;
@@ -146,6 +153,7 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
   outline,
   center,
   inverted,
+  invertedOutlineLargeScreensOnly,
   alwaysVisible,
   t,
 }) => {
@@ -158,6 +166,7 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
         ghostPill={!outline && !inverted}
         ghostPillOutlineInverted={outline && inverted}
         ghostPillInverted={!outline && inverted}
+        css={invertedOutlineLargeScreensOnly && styledInvertedOutlineLargeScreensOnly}
         onClick={() => setIsOpen(true)}>
         <StyledSpan>{t(`languages.prefixChangeLanguage`)}: {t(`languages.${infoLocale}`)}</StyledSpan>
         <ChevronDown />

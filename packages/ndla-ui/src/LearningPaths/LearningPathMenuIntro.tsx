@@ -15,61 +15,74 @@ import { injectT } from '@ndla/i18n';
 import { Time } from '@ndla/icons/common';
 import { colors, spacing, fonts, misc, typography, mq, breakpoints, animations } from '@ndla/core';
 
+const StyledInfoHeader = styled.p`
+  ${typography.smallHeading}
+`;
+
 type StyledMenuIntroProps = {
-  isOpen?: Boolean;
+  isOpen?: boolean;
+  invertedStyle?: boolean;
 };
 
 const BORDER_WIDTH = 4;
 
 const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
-    border-left: ${BORDER_WIDTH}px solid ${colors.brand.primary};
-    &:before {
-      content: '';
-      display: block;
-      background: ${colors.brand.primary};
-      border-radius: 100%;
-      height: 12px;
-      width: 12px;
-      position: absolute;
-      transform: translate(-8px, -8px);
-    }
-    > div {
-      padding: 0 0 ${spacing.medium} ${spacing.normal};
-    }
-    ${mq.range({ from: breakpoints.tablet })} {
-      margin-left: ${spacing.spacingUnit + BORDER_WIDTH / 2}px;
-      margin-top: ${spacing.normal};
-    }
-    ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-      ${props => !props.isOpen && css`
-        display: none;
-      `}
-      ${props => props.isOpen && css`
-        animation-duration: ${animations.durations.superFast};
-        animation-name: StyledMenuIntroAnimationHeight;
-        @keyframes StyledMenuIntroAnimationHeight {
-          0% {
-            height: ${spacing.normal};
-            width: 0;
-          }
-          99% {
-            overflow: hidden;
-            height: 118px;
-            width: 200px;
-          }
-          100% {
-            height: auto;
-            width: auto;
-          }
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${props => props.invertedStyle && css`
+      color: #fff;
+      ${StyledInfoHeader} {
+        color: #fff;
+      }
+    `}
+  }
+  border-left: ${BORDER_WIDTH}px solid ${colors.brand.primary};
+  &:before {
+    content: '';
+    display: block;
+    background: ${colors.brand.primary};
+    border-radius: 100%;
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    transform: translate(-8px, -8px);
+  }
+  > div {
+    padding: 0 0 ${spacing.medium} ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-left: ${spacing.spacingUnit + BORDER_WIDTH / 2}px;
+    margin-top: ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+    ${props => !props.isOpen && css`
+      display: none;
+    `}
+    ${props => props.isOpen && css`
+      animation-duration: ${animations.durations.superFast};
+      animation-name: StyledMenuIntroAnimationHeight;
+      @keyframes StyledMenuIntroAnimationHeight {
+        0% {
+          height: ${spacing.normal};
+          width: 0;
         }
-        > * {
-          opacity: 0;
-          ${animations.fadeInBottom()}
-          animation-fill-mode: forwards;
-          animation-delay: ${animations.durations.superFast};
+        99% {
+          overflow: hidden;
+          height: 118px;
+          width: 200px;
         }
-        `
-    }
+        100% {
+          height: auto;
+          width: auto;
+        }
+      }
+      > * {
+        opacity: 0;
+        ${animations.fadeInBottom()}
+        animation-fill-mode: forwards;
+        animation-delay: ${animations.durations.superFast};
+      }
+      `
+  }
 `;
 
 const StyledTimeBox = styled.div`
@@ -80,6 +93,7 @@ const StyledTimeBox = styled.div`
   font-weight: ${fonts.weight.normal};
   padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small} ${spacing.small};
   display: inline-flex;
+  color: ${colors.text.primary};
   svg {
     margin-right: ${spacing.xsmall};
   }
@@ -94,20 +108,21 @@ const StyledIntroHeader = styled.h1`
 interface Props {
   duration: number;
   isOpen: boolean;
+  invertedStyle?: boolean;
   name: string;
   t: any;
 }
 
 const LearningPathMenuIntro: React.FunctionComponent<Props> = ({
-  duration, isOpen, name, t,
+  duration, isOpen, name, invertedStyle, t,
 }) => {
   const hours = Math.floor(duration / 60);
   const usePluralsForHours = hours !== 1;
   const minutes = duration % 60;
   return (
-    <StyledMenuIntro isOpen={isOpen}>
+    <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
-        <p css={typography.smallHeading}>{t('learningPath.youAreInALearningPath')}</p>
+        <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
         <StyledIntroHeader>{name}</StyledIntroHeader>
         <StyledTimeBox>
           <Time />

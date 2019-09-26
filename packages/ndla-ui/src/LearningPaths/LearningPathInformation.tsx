@@ -10,7 +10,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing, breakpoints, mq } from '@ndla/core';
 
-const StyledWrapper = styled.div`
+type StyledWrapperProps = {
+  invertedStyle?: boolean;
+};
+
+const StyledWrapper = styled.div<StyledWrapperProps>`
   background: transparent;
   font-family: ${fonts.serif};
   h1, h2, h3, h4, h5, h6 {
@@ -32,11 +36,17 @@ const StyledWrapper = styled.div`
       padding: 0 ${spacing.spacingUnit * 0.75}px;
     }
   }
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${props => props.invertedStyle && `
+      color: #fff;
+    `}
+  }
 `;
 
 interface Props {
   description?: string;
   title: string;
+  invertedStyle?: boolean;
   license?: {
     license: string,
     description: string,
@@ -45,10 +55,10 @@ interface Props {
 };
 
 export const LearningPathInformation: React.FunctionComponent<Props> = ({
-  description, title, license,
+  description, title, license, invertedStyle,
 }) => (
   <section className="o-wrapper">
-    <StyledWrapper className="c-article">
+    <StyledWrapper invertedStyle={invertedStyle} className="c-article">
       <div>
         <h1>
           {title}

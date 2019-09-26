@@ -6,7 +6,7 @@ import ZendeskButton from '@ndla/zendesk';
 import { injectT } from '@ndla/i18n';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted, t }) => (
+const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t }) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -15,6 +15,7 @@ const FooterExample = ({ inverted, t }) => (
         outline
         center
         inverted={inverted}
+        invertedOutlineLargeScreensOnly={invertedOutlineLargeScreensOnly}
         options={{
           nb: {
             name: 'Bokmål',

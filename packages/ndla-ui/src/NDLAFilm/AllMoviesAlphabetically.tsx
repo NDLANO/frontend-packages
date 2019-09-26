@@ -19,11 +19,11 @@ import {
   fonts,
   animations,
 } from '@ndla/core';
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
 import { movieType } from './types';
-
+import { isLetter } from './isLetter';
 const IMAGE_WIDTH = 143;
 
 const StyledNewLetter = styled.h2`
@@ -144,9 +144,11 @@ type isIEProps = {
 const StyledSafeLink = styled(SafeLink)<isIEProps>`
   box-shadow: none;
   display: flex;
-  ${props => props.isIE11 && css`
-    flex: 1;
-  `}
+  ${props =>
+    props.isIE11 &&
+    css`
+      flex: 1;
+    `}
   &:hover,
   &:focus {
     ${MovieTitle} {
@@ -162,12 +164,6 @@ const StyledSafeLink = styled(SafeLink)<isIEProps>`
   }
 `;
 
-export const isLetter = (title: string): boolean => {
-  const regTest: RegExp = /^[A-Za-zÅØÆåøæ]+$/;
-  const firstLetter = title.substr(0, 1);
-  return !(firstLetter.match(regTest) === null);
-};
-
 interface Props {
   movies: movieType[];
   locale: string;
@@ -180,20 +176,20 @@ type visibleImagesProps = {
 const hasForEachPolyfill = () => {
   // Polyfill for ie11
   if ('NodeList' in window && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = function (callback, thisArg) {
+    NodeList.prototype.forEach = function(callback, thisArg) {
       thisArg = thisArg || window;
       for (var i = 0; i < this.length; i++) {
         callback.call(thisArg, this[i], i, this);
       }
     };
   }
-}
+};
 
 const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
   movies,
   locale,
 }) => {
-  const isIE11 = (isIE && parseInt(browserVersion) < 12);
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   // Split into Letters.
   let previousLetter = '';
   const wrapperRef: React.RefObject<HTMLElement> = React.useRef(null);

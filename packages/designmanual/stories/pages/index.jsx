@@ -458,4 +458,13 @@ storiesOf('Ndla film', module)
       </Content>
       <FooterExample inverted />
     </PageContainer>
+  ))
+  .add('Læringssti (på NDLA film)', () => (
+    <PageContainer backgroundWide ndlaFilm learningPath>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <LearningPathExample invertedStyle />
+      </Content>
+      <FooterExample invertedOutlineLargeScreensOnly />
+    </PageContainer>
   ));

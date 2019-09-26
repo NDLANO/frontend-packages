@@ -13,6 +13,7 @@ import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
+import { SafeLinkButton } from '@ndla/safelink';
 import {
   colors,
   spacing,
@@ -22,7 +23,6 @@ import {
   animations,
 } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
-import { SafeLinkButton } from '../index';
 
 const infoTextCSS = css`
   ${fonts.sizes(18, 1.3)};
@@ -52,6 +52,7 @@ const learningPathDetailsCSS = css`
 
 type StyledAsideProps = {
   isOpen: boolean;
+  invertedStyle?: boolean;
 };
 
 const StyledAside = styled.aside<StyledAsideProps>`
@@ -75,12 +76,31 @@ const StyledAside = styled.aside<StyledAsideProps>`
     display: block;
     padding-left: ${spacing.spacingUnit * 1.25}px;
   }
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${props => props.invertedStyle && `
+      color: #fff;
+    `}
+  }
+`;
+
+type StyledSafeLinkButtonProps = {
+  invertedStyle?: boolean;
+};
+
+const StyledSafeLinkButton = styled(SafeLinkButton)<StyledSafeLinkButtonProps>`
+  ${props => props.invertedStyle && css`
+    ${mq.range({ from: breakpoints.tablet })} {
+      border-color: #fff;
+      color: #fff;
+    }
+  `}
 `;
 
 type Props = {
   isOpen: boolean;
   lastUpdated: string;
   learningPathURL: string;
+  invertedStyle?: boolean;
   copyright: {
     contributors: {
       type: string;
@@ -100,9 +120,10 @@ const LearningPathMenuAside: React.FunctionComponent<Props> = ({
   learningPathURL,
   copyright,
   isOpen,
+  invertedStyle,
   t,
 }) => (
-  <StyledAside isOpen={isOpen}>
+  <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
     <div css={learningPathDetailsCSS}>
       <Time />
       <p>
@@ -113,9 +134,14 @@ const LearningPathMenuAside: React.FunctionComponent<Props> = ({
       <LearningPathMenuAsideCopyright copyright={copyright} />
     )}
     <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
-    <SafeLinkButton to={learningPathURL} target="_blank" rel="noopener noreferrer" outline>
+    <StyledSafeLinkButton
+      to={learningPathURL}
+      target="_blank"
+      rel="noopener noreferrer"
+      outline
+      invertedStyle={invertedStyle}>
       {t('learningPath.createLearningPathButtonText')}
-    </SafeLinkButton>
+    </StyledSafeLinkButton>
   </StyledAside>
 );
 

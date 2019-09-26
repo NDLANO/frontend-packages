@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { Spinner } from '@ndla/editor';
 import { Search } from '@ndla/icons/common';
 import { Input, FormPill } from '@ndla/forms';
+import { getFieldValue } from './dropdownHelper';
 
 const DropdownInput = ({
   multiSelect,
@@ -18,28 +19,39 @@ const DropdownInput = ({
   loading,
   values,
   removeItem,
-  ...props
+  idField,
+  labelField,
+  ...rest
 }) => (
-  <React.Fragment>
-    <Input
-      {...props}
-      iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
-      tags={
-        multiSelect &&
-        values.map(value => (
-          <FormPill label={value} key={value} id={value} onClick={removeItem} />
-        ))
-      }
-      data-testid={testid}
-      container="div"
-    />
-  </React.Fragment>
+  <Input
+    {...rest}
+    iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
+    tags={
+      multiSelect &&
+      values.map(value => (
+        <FormPill
+          label={getFieldValue(value, labelField)}
+          key={getFieldValue(value, idField)}
+          id={getFieldValue(value, idField)}
+          onClick={removeItem}
+        />
+      ))
+    }
+    data-testid={testid}
+    container="div"
+  />
 );
 
 DropdownInput.propTypes = {
   multiSelect: PropTypes.bool,
-  getInputProps: PropTypes.func,
+  removeItem: PropTypes.func.isRequired,
+  idField: PropTypes.string,
+  labelField: PropTypes.string,
   name: PropTypes.string,
+  loading: PropTypes.bool,
+  values: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  ),
   inputProps: PropTypes.shape({
     value: PropTypes.string,
     ref: PropTypes.func,
@@ -47,6 +59,11 @@ DropdownInput.propTypes = {
     onKeyDown: PropTypes.func,
     onFocus: PropTypes.func,
   }),
+};
+
+DropdownInput.defaultProps = {
+  values: [],
+  loading: false,
 };
 
 export default DropdownInput;

@@ -9,11 +9,10 @@
 import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronRight } from '@ndla/icons/common';
-
-import SafeLink from '../common/SafeLink';
+import SafeLink from '@ndla/safelink';
 
 const BreadcrumbItem = React.forwardRef(
-  ({ to, children, classes, isCurrent, home, name }, ref) => {
+  ({ to, children, classes, isCurrent, home, invertedStyle, name }, ref) => {
     const liRef = useRef();
     useImperativeHandle(ref, () => ({
       setMaxWidth: maxWidth => {
@@ -21,7 +20,7 @@ const BreadcrumbItem = React.forwardRef(
       },
     }));
     return (
-      <li {...classes('item', { home })} ref={liRef}>
+      <li {...classes('item', { home, invertedStyle })} ref={liRef}>
         {isCurrent ? (
           <span>{children}</span>
         ) : (

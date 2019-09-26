@@ -20,8 +20,9 @@ export const PageContainer = ({
   background,
   backgroundWide,
   ndlaFilm,
+  learningPath,
 }) => (
-  <div {...classes('', { background, backgroundWide, ndlaFilm })}>
+  <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })}>
     {children}
   </div>
 );

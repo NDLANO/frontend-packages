@@ -103,12 +103,15 @@ export const addEventListenerForFigureZoomButton = () => {
     const target = el;
     target.onclick = () => {
       const parentFigure = target.closest('figure');
-      if (target.dataset.expanded) {
+      const sourceTag =
+        parentFigure && parentFigure.getElementsByTagName('source')[0];
+      if (parentFigure && target.dataset.expanded) {
         target.setAttribute('aria-label', target.dataset.aria);
         target.classList.remove('c-figure__fullscreen-btn--expanded');
         parentFigure.classList.add(target.dataset.classtype);
         delete target.dataset.expanded;
-      } else {
+      } else if (sourceTag) {
+        sourceTag.setAttribute('sizes', '(min-width: 1024px) 1024px, 100vw');
         target.setAttribute('aria-label', target.dataset.ariaexpanded);
         parentFigure.classList.remove(target.dataset.classtype);
         target.classList.add('c-figure__fullscreen-btn--expanded');

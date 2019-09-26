@@ -9,12 +9,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import SafeLink from '@ndla/safelink';
 import { fonts, spacing } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { OneColumn, LayoutItem } from '../index-javascript';
-import { SafeLink } from '../index';
 
 const StyledHeader = styled.h1`
   display: flex;

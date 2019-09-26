@@ -34,17 +34,18 @@ const messages = {
       'Orsak, vi kunne ikkje finne ressursen du leiter etter.',
   },
   notFoundPage: {
+    title: 'Sida finst ikkje',
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
   lti: {
     embed: 'Sett inn',
     notSupported:
-      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på din side.',
+      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på di side.',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',
     search: 'Søk',
-    abilities: 'Egenskaper',
+    abilities: 'Eigenskaper',
     close: 'Lukk',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
@@ -74,7 +75,7 @@ const messages = {
       contentTypeResultShowLessLabel: 'Sjå færre resultat',
       allResultButtonText: 'Vis alle søketreff',
       searchResultHeading: 'Forslag:',
-      contentTypeResultNoHit: 'Ingen treff',
+      contentTypeResultNoHit: 'Ingen treff på søk ...',
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
@@ -84,12 +85,12 @@ const messages = {
       subjectsLabel: 'Opne i fag:',
       noResultHeading: 'Hmm, ikkje noko innhald ...',
       noResultDescription:
-        'Vi har dessverre ikkje noko å tilby her. Om du vil foreslå noko innhald til dette området, kan du bruke Spør NDLA som du finn nede til høgre på skjermen.',
+        'Vi har dessverre ikkje noko å tilby her. Om du vil føreslå noko innhald til dette området, kan du bruke Spør NDLA som du finn nede til høgre på skjermen.',
     },
     searchPageMessages: {
       filterHeading: 'Filter',
       resultHeading: '{totalCount} treff i NDLA',
-      resultHeadingByAuthor: '{totalCount} artiklar skrevet av {author}',
+      resultHeadingByAuthor: '{totalCount} artiklar skrive av {author}',
       narrowScreenFilterHeading: '{totalCount} treff på «{query}»',
       dropdownBtnLabel: 'Fleire innhaldstypar',
     },
@@ -107,7 +108,7 @@ const messages = {
     },
   },
   subjectPage: {
-    errorDescription: 'Orsak, ein feil oppstod under lasting av emnene.',
+    errorDescription: 'Orsak, ein feil oppstod under lasting av emna.',
     tabs: {
       topics: 'Emne',
     },
@@ -156,6 +157,7 @@ const messages = {
       'Vi jobbar stadig med å forbetre oss! Har du kommentarer til søket, blir vi glad om du legg dei inn i «spør NDLA» nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
+    searchAllInfo: 'Sjå treff alle på søk',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {
@@ -178,18 +180,10 @@ const messages = {
         name: 'Følg oss',
       },
     },
-    aboutNDLA: {
-      heading: 'Om NDLA',
-      description:
-        'NDLA sin visjon er å lage gode, opne digitale læremiddel for alle fag i videregående opplæring og støtte opp om elevar og lærarar i aktivt og deltakende læringsarbeid.',
-      mainLink: {
-        name: 'Meir om NDLA',
-      },
-    },
     category: {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studiespesialisering',
+      studiespesialiserende: 'Studieførebuande',
       imported: 'Spoltefag',
       heading: 'Kva lærar du?',
     },
@@ -206,7 +200,8 @@ const messages = {
   meta: {
     description:
       'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for videregåande opplæring',
-    keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff',
+    keywords:
+      'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
   masthead: {
     skipToContent: 'Hopp til innhald',
@@ -413,7 +408,7 @@ const messages = {
   errorMessage: {
     title: 'Ops, noko gjekk gale',
     description: 'Orsak, ein feil oppstod.',
-    linksTitle: 'Kjem igang:',
+    linksTitle: 'Kom i gang:',
     back: 'Tilbake',
     goToFrontPage: 'Gå til forsida',
   },
@@ -462,7 +457,7 @@ const messages = {
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
-    prefixChangeLanguage: 'Vel målføre',
+    prefixChangeLanguage: 'Vel målform',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',
@@ -490,7 +485,7 @@ const messages = {
     slideForwardsLabel: 'Scroll framover',
     movieMatchInCategory: 'Treff',
     loadingMovies: 'Henter filmer..',
-    subjectsInMovies: 'Emner i film',
+    subjectsInMovies: 'Emne i film',
     about: {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
@@ -499,13 +494,13 @@ const messages = {
     },
     search: {
       placeholder: 'Søk på filmnavn',
-      categoryFromNdla: 'Utvalg fra NDLA',
-      chooseCategory: 'Velg filmkategori',
+      categoryFromNdla: 'Utval frå NDLA',
+      chooseCategory: 'Vel filmkategori',
       subjectButton: 'Gå til emne',
     },
     editor: {
       slideshowHeader: 'Slideshow:',
-      slideshowTitle: 'Filmer i slideshow',
+      slideshowTitle: 'Filmar i slideshow',
       slideshowSubTitle: 'på forsida',
       movieGroupHeader: 'Film grupperingar:',
       addMovieToSlideshow: 'Legg til film i slideshow',
@@ -515,14 +510,14 @@ const messages = {
       moveMovieGroupUp: 'Flytt opp',
       moveMovieGroupDown: 'Flytt ned',
       changeOrder: 'Endre rekkjefølgje',
-      removeMovieFromGroup: 'Ta vekk film fra gruppe',
-      removeMovieFromSlideshow: 'Ta vekk film fra slideshow',
+      removeMovieFromGroup: 'Ta vekk film frå gruppe',
+      removeMovieFromSlideshow: 'Ta vekk film frå slideshow',
       createThemeGroup: 'Opprett gruppe',
       saveNameChanges: 'Lagre endringar',
       cancel: 'Avbryt',
       groupNamePlaceholder: 'Skriv navn på {lang}',
       editGroupTitle: 'Endre navn(ene) på filmgruppa:',
-      newGroupTitle: 'Kva skal gruppen hete?',
+      newGroupTitle: 'Kva skal gruppa heite?',
     },
   },
   filmfrontpage: {
@@ -536,16 +531,16 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtjenesten er henta fra norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS.',
+        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLA i samarbeid med Norgesfilm AS.',
       secondParagraph:
-        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
+        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettigheitsklarering og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:
         'Filmane er copyrightmerka. Dei kan fritt avspelast på ndla.no, men ikkje lastes ned eller distribuerast vidare i andre publikasjoner. Alle rettighetshavere honoreres for dei avspelinger som gjeres.',
       secondHeading: 'Bruk film i undervisninga',
       fourthParagraph:
-        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokon av dei mest effektive visuelle verkemidla som finnes; bevegelige bilder og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
+        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokre av dei mest effektive visuelle verkemidla som finst; levande bilete og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
       fifthParagraph:
-        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmer etisk orienteringsevne og estetisk sans.',
+        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmar etisk orienteringsevne og estetisk sans.',
       tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønsker på',
       tipSectionPt2: 'Facebook-sida',
       ariaLabel: 'Besøk Facebooksida til NDLA-film',
@@ -559,7 +554,7 @@ const messages = {
     createLearningPathButtonText: 'Gå til stier',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',
-    readTime: '{hours} Skoletimar = {minutes} min',
+    readTime: '{hours} Skuletimar = {minutes} min',
     pageOf: 'av',
     readTimeHour_plurals: 'timar',
     lastStep: {
@@ -580,7 +575,7 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Korleis lage gode grupper med elever',
+      text: 'Korleis lage gode grupper med elevar',
       externalLink:
         'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
       linkText: 'Fagblogg',
@@ -594,6 +589,17 @@ const messages = {
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',
+    },
+  },
+  editor: {
+    versionHistory: {
+      who: 'Kven',
+      when: 'Når',
+      message: 'Merknad',
+      status: 'Status',
+      inputLabel: 'Legg til merknad:',
+      inputPlaceholder: 'Skriv inn merknad',
+      buttonLabel: 'Lagre',
     },
   },
 };

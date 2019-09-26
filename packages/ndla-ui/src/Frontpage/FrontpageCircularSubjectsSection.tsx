@@ -31,13 +31,11 @@ const StyledSubjects = styled.div`
 
 type Props = {
   categories: categoryProp[];
-  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
   categories,
-  linkToAbout,
 }) => {
   const sortedCategories: categoryProp[] = sortCategories(categories);
   if (!(sortedCategories && sortedCategories.length)) {
@@ -51,7 +49,6 @@ const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
       <StyledSubjects>
         <FrontpageCombinedSubjects
           categories={sortedCategories}
-          linkToAbout={linkToAbout}
         />
       </StyledSubjects>
     </StyledSection>

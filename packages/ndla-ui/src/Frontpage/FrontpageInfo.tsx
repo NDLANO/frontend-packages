@@ -15,11 +15,18 @@ const StyledWrapper = styled.div`
   & > * {
     margin-top: ${spacing.large};
 
+    ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+      margin-right: ${spacing.normal};
+    }
+
+    ${mq.range({ from: breakpoints.desktop })} {
+      margin-right: ${spacing.large};
+    }
+
     ${mq.range({ from: breakpoints.tablet })} {
-      flex-basis: 33.3333333%;
+      flex-basis: 50%;
       flex-grow: 0;
       margin-top: 0;
-      margin-right: ${spacing.normal};
     }
 
     &:first-child {
@@ -28,6 +35,7 @@ const StyledWrapper = styled.div`
 
     &:last-child {
       margin-right: 0;
+      margin-top: 0;
     }
   }
 `;

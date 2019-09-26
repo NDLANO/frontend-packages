@@ -18,12 +18,13 @@ const classes = BEMHelper({
   prefix: 'c-',
 });
 
-const Breadcrumb = ({ children, items }) => (
-  <div {...classes()}>
+const Breadcrumb = ({ children, items, invertedStyle }) => (
+  <div>
     {children}
     <ol {...classes('list')}>
       {items.map((item, i) => (
         <BreadcrumbItem
+          invertedStyle={invertedStyle}
           classes={classes}
           home={i === 0}
           key={uuid()}
@@ -39,6 +40,7 @@ const Breadcrumb = ({ children, items }) => (
 
 Breadcrumb.propTypes = {
   children: PropTypes.node,
+  invertedStyle: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       to: PropTypes.string.isRequired,

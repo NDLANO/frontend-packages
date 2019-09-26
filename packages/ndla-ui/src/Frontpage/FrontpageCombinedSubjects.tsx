@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { noScroll } from '@ndla/util';
+
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
@@ -77,6 +77,14 @@ const StyledButton = styled.button`
   background: none;
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
   &:before {
     content: '';
     display: block;
@@ -112,12 +120,15 @@ type StyledIllustrationContainerProps = {
   isIE11: boolean;
 };
 
+//prettier-ignore
 const StyledIllustrationContainer = styled.div<StyledIllustrationContainerProps>`
   width: 100%;
   pointer-events: none;
-  ${props => props.isIE11 && css`
-    transform: scale(1.2);
-  `}
+  ${props =>
+    props.isIE11 &&
+    css`
+      transform: scale(1.2);
+    `}
   ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     width: calc(100vw - ${spacing.spacingUnit * 6}px);
   }
@@ -149,7 +160,6 @@ interface StateObject {
 
 type Props = {
   categories: categoryProp[];
-  linkToAbout: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -160,7 +170,6 @@ const initialState: StateObject = {
 
 const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   categories,
-  linkToAbout,
   t,
 }) => {
   const [currentState, setState] = useState(initialState);
@@ -173,17 +182,19 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
   } = currentState;
 
   const closeMenu = () => {
-    setState(prevState => {
-      return { ...prevState, animationDirection: 'out', menuIsOpen: false };
-    });
-    noScroll(false, 'frontpagePortal');
+    if (isIE) {
+      closedMenu();
+    } else {
+      setState(prevState => {
+        return { ...prevState, animationDirection: 'out' };
+      });
+    }
   };
 
   const closedMenu = () => {
     setState(prevState => {
       return { ...prevState, menuIsOpen: false, categoryIndex: undefined };
     });
-    noScroll(false, 'frontpagePortal');
   };
 
   const openMenu = (
@@ -201,28 +212,22 @@ const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
         menuOpenedCounter: menuOpenedCounter + 1,
       };
     });
-    noScroll(true, 'frontpagePortal');
   };
 
-  const isIE11 = (isIE && parseInt(browserVersion) < 12);
-
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   return (
     <>
-      {menuIsOpen && (
-        <FrontpageMenuPortal
-          menuOpenedCounter={menuOpenedCounter}
-          onClosed={closedMenu}
-          onClose={closeMenu}
-          animationDirection={animationDirection}
-          elementRect={elementRect}>
-          {categoryIndex !== undefined && (
-            <FrontpageSubjectsInPortal
-              linkToAbout={linkToAbout}
-              category={categories[categoryIndex]}
-            />
-          )}
-        </FrontpageMenuPortal>
-      )}
+      <FrontpageMenuPortal
+        menuOpenedCounter={menuOpenedCounter}
+        menuIsOpen={menuIsOpen}
+        onClosed={closedMenu}
+        onClose={closeMenu}
+        animationDirection={animationDirection}
+        elementRect={elementRect}>
+        {categoryIndex !== undefined && (
+          <FrontpageSubjectsInPortal category={categories[categoryIndex]} />
+        )}
+      </FrontpageMenuPortal>
       {categories.map((category: categoryProp, index: number) => (
         <StyledMobileSubjectLink key={category.name}>
           <FrontpageCircularSubject

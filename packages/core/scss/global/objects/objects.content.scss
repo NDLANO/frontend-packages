@@ -16,5 +16,10 @@
   &--ndlaFilm {
     background-color: $film-color;
     min-height: 100vh;
+    &.o-container--learningPath {
+      @include mq($until: tablet) {
+        background-color: #fff;
+      }
+    }
   }
 }

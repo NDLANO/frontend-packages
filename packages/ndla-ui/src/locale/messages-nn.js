@@ -40,12 +40,12 @@ const messages = {
   lti: {
     embed: 'Sett inn',
     notSupported:
-      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på din side.',
+      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på di side.',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',
     search: 'Søk',
-    abilities: 'Egenskaper',
+    abilities: 'Eigenskaper',
     close: 'Lukk',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
@@ -85,12 +85,12 @@ const messages = {
       subjectsLabel: 'Opne i fag:',
       noResultHeading: 'Hmm, ikkje noko innhald ...',
       noResultDescription:
-        'Vi har dessverre ikkje noko å tilby her. Om du vil foreslå noko innhald til dette området, kan du bruke Spør NDLA som du finn nede til høgre på skjermen.',
+        'Vi har dessverre ikkje noko å tilby her. Om du vil føreslå noko innhald til dette området, kan du bruke Spør NDLA som du finn nede til høgre på skjermen.',
     },
     searchPageMessages: {
       filterHeading: 'Filter',
       resultHeading: '{totalCount} treff i NDLA',
-      resultHeadingByAuthor: '{totalCount} artiklar skrevet av {author}',
+      resultHeadingByAuthor: '{totalCount} artiklar skrive av {author}',
       narrowScreenFilterHeading: '{totalCount} treff på «{query}»',
       dropdownBtnLabel: 'Fleire innhaldstypar',
     },
@@ -108,7 +108,7 @@ const messages = {
     },
   },
   subjectPage: {
-    errorDescription: 'Orsak, ein feil oppstod under lasting av emnene.',
+    errorDescription: 'Orsak, ein feil oppstod under lasting av emna.',
     tabs: {
       topics: 'Emne',
     },
@@ -200,7 +200,8 @@ const messages = {
   meta: {
     description:
       'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for videregåande opplæring',
-    keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff',
+    keywords:
+      'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
   masthead: {
     skipToContent: 'Hopp til innhald',
@@ -499,7 +500,7 @@ const messages = {
     },
     editor: {
       slideshowHeader: 'Slideshow:',
-      slideshowTitle: 'Filmer i slideshow',
+      slideshowTitle: 'Filmar i slideshow',
       slideshowSubTitle: 'på forsida',
       movieGroupHeader: 'Film grupperingar:',
       addMovieToSlideshow: 'Legg til film i slideshow',
@@ -516,7 +517,7 @@ const messages = {
       cancel: 'Avbryt',
       groupNamePlaceholder: 'Skriv navn på {lang}',
       editGroupTitle: 'Endre navn(ene) på filmgruppa:',
-      newGroupTitle: 'Kva skal gruppen hete?',
+      newGroupTitle: 'Kva skal gruppa heite?',
     },
   },
   filmfrontpage: {
@@ -530,16 +531,16 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtjenesten er henta frå norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLAs i samarbeid med Norgesfilm AS.',
+        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLA i samarbeid med Norgesfilm AS.',
       secondParagraph:
-        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettighetsklarering og betaling. Alt du treng å gjere, er å trykke play.',
+        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettigheitsklarering og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:
         'Filmane er copyrightmerka. Dei kan fritt avspelast på ndla.no, men ikkje lastes ned eller distribuerast vidare i andre publikasjoner. Alle rettighetshavere honoreres for dei avspelinger som gjeres.',
       secondHeading: 'Bruk film i undervisninga',
       fourthParagraph:
-        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokon av dei mest effektive visuelle verkemidla som finnes; bevegelige bilder og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
+        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokre av dei mest effektive visuelle verkemidla som finst; levande bilete og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
       fifthParagraph:
-        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmer etisk orienteringsevne og estetisk sans.',
+        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmar etisk orienteringsevne og estetisk sans.',
       tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønsker på',
       tipSectionPt2: 'Facebook-sida',
       ariaLabel: 'Besøk Facebooksida til NDLA-film',
@@ -549,11 +550,11 @@ const messages = {
   },
   learningPath: {
     createLearningPathText:
-      'Lag din egen, kopier denne eller sjå fleire læringsstiar?',
+      'Lag din eigen, kopier denne eller sjå fleire læringsstiar?',
     createLearningPathButtonText: 'Gå til stier',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',
-    readTime: '{hours} Skoletimar = {minutes} min',
+    readTime: '{hours} Skuletimar = {minutes} min',
     pageOf: 'av',
     readTimeHour_plurals: 'timar',
     lastStep: {
@@ -593,7 +594,7 @@ const messages = {
   },
   editor: {
     versionHistory: {
-      who: 'Hvem',
+      who: 'Kven',
       when: 'Når',
       message: 'Merknad',
       status: 'Status',

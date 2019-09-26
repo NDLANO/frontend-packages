@@ -227,7 +227,7 @@ const LearningPathExample = ({ t, invertedStyle }) => {
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
   return (
     <>
-      <LearningPathWrapper>
+      <LearningPathWrapper invertedStyle={invertedStyle}>
         <div className="c-hero__content">
           <section>
             <Breadcrumb invertedStyle={invertedStyle} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { isIE, browserVersion } from 'react-device-detect';
+import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
@@ -125,6 +125,12 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       if (isIE11) {
         // insta move on IE
         window.scrollTo(0, yCoordinate);
+      } else if(isMobileSafari) {
+        // Because safari on iOS set position:fixed to static when keyboard is open, we need to scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
       } else {
         window.scrollTo({
           top: yCoordinate,

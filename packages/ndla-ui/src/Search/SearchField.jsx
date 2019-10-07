@@ -24,7 +24,7 @@ const classes = new BEMHelper('c-search-field');
 const inputStyle = css`
   width: 100%;
   height: 48px;
-  line-height: 48px;
+  line-height: 28px;
   border: 1px solid ${colors.brand.greyLight};
   border-radius: ${misc.borderRadius};
   padding-right: ${spacing.large};
@@ -39,7 +39,7 @@ const inputStyle = css`
   ${mq.range({ from: breakpoints.tablet })} {
     height: 58px;
     line-height: 58px;
-    ${fonts.sizes(18, 24)};
+    ${fonts.sizes('18px', '24px')};
   }
 `;
 

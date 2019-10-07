@@ -112,7 +112,7 @@ type Props = {
       url: string;
     };
   };
-  t: any;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const LearningPathMenuAside: React.FunctionComponent<Props> = ({

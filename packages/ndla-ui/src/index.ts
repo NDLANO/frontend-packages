@@ -38,6 +38,7 @@ export {
   LearningPathInformation,
   LearningPathStickySibling,
   LearningPathLastStepNavigation,
+  LearningPathMobileStepInfo,
 } from './LearningPaths';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';

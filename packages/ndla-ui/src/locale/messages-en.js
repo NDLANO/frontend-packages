@@ -550,8 +550,7 @@ const messages = {
       subjectHeading: 'Go to subject:',
     },
     openMenuTooltip: 'Open menu',
-    previousArrow: 'Previous',
-    nextArrow: 'Next',
+    mobileStepInfo: '{currentPage} out of {totalPages}',
   },
   dropdown: {
     numberHits: `Search returned {hits} hits`,

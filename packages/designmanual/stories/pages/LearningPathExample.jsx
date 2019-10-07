@@ -18,6 +18,7 @@ import {
   LearningPathLastStepNavigation,
   LearningPathSticky,
   LearningPathStickySibling,
+  LearningPathMobileStepInfo,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -224,10 +225,9 @@ const LearningPathExample = ({ t, invertedStyle }) => {
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
-
   return (
     <>
-      <LearningPathWrapper>
+      <LearningPathWrapper invertedStyle={invertedStyle}>
         <div className="c-hero__content">
           <section>
             <Breadcrumb invertedStyle={invertedStyle} />
@@ -281,19 +281,21 @@ const LearningPathExample = ({ t, invertedStyle }) => {
               toLearningPathUrl={toLearningPathUrl}
               pathId={3}
               stepId={learningsteps[currentLearningStepNumber - 1].id}
-              label={t('learningPath.previousArrow')}
               title={learningsteps[currentLearningStepNumber - 1].title.title}
             />
           ) : (
             <div />
           )}
+          <LearningPathMobileStepInfo
+            total={learningsteps.length}
+            current={currentLearningStepNumber + 1}
+          />
           {currentLearningStepNumber < learningsteps.length - 1 && (
             <LearningPathStickySibling
               arrow="right"
               toLearningPathUrl={toLearningPathUrl}
               pathId={3}
               stepId={learningsteps[currentLearningStepNumber + 1].id}
-              label={t('learningPath.nextArrow')}
               title={learningsteps[currentLearningStepNumber + 1].title.title}
             />
           )}

@@ -40,12 +40,12 @@ const messages = {
   lti: {
     embed: 'Sett inn',
     notSupported:
-      'Det fungerte ikkje å sette inn innhaldet automatisk. Kopier kildekoden under for å sette inn på di side.',
+      'Det fungerte ikkje å setje inn innhaldet automatisk. Kopier kjeldekoden under for å setje han inn på sida di.',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {query}',
     search: 'Søk',
-    abilities: 'Eigenskaper',
+    abilities: 'Eigenskapar',
     close: 'Lukk',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
@@ -154,7 +154,7 @@ const messages = {
   welcomePage: {
     search: 'Søk',
     searchDisclaimer:
-      'Vi jobbar stadig med å forbetre oss! Har du kommentarer til søket, blir vi glad om du legg dei inn i «spør NDLA» nede i høgre hjørne.',
+      'Vi jobbar stadig med å forbetre oss! Har du kommentarar til søket, blir vi glade om du legg dei inn i Spør NDLA nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
     searchAllInfo: 'Sjå treff alle på søk',
@@ -175,7 +175,7 @@ const messages = {
     socialMedia: {
       heading: 'Følg oss',
       description:
-        'NDLA har mange facebook- og twitterkontoar. Finn den som passar for deg, og følg oss!',
+        'NDLA har mange Facebook- og Twitter-kontoar. Finn den som passar for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },
@@ -185,13 +185,13 @@ const messages = {
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studieførebuande',
       imported: 'Spoltefag',
-      heading: 'Kva lærar du?',
+      heading: 'Kva lærer du?',
     },
     film: {
       header: 'NDLA film',
       text:
         'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
-      textShort: 'Velkommen inn i filmens verden!',
+      textShort: 'Velkomen inn i filmen si verd!',
       linkLabel: 'Gå til NDLA film',
     },
     blog: 'Frå bloggen',
@@ -211,12 +211,12 @@ const messages = {
       search: 'Søk',
       subjectOverview: 'Alle fag',
       title: 'Meny',
-      subjectPage: 'Fagforside',
-      backToSubjectFrontpage: 'Tilbake til fagforsida',
+      subjectPage: 'Fagframside',
+      backToSubjectFrontpage: 'Tilbake til fagframsida',
       openFilter: 'Filter',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
-      learningResourcesHeading: 'Læringsressurser',
+      learningResourcesHeading: 'Læringsressursar',
       back: 'Tilbake',
       additionalFilterLabel: 'Tilleggsressursar',
       contentTypeResultsShowMore: {
@@ -225,7 +225,7 @@ const messages = {
           'Vis fleire oppgåver og aktivitetar',
         [contentTypes.LEARNING_PATH]: 'Vis fleire læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis fleire vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Vis fleire kjeldematerialer',
+        [contentTypes.SOURCE_MATERIAL]: 'Vis fleire kjeldemateriale',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
           'Vis fleire eksterne læringsressursar',
       },
@@ -236,16 +236,16 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldematerialer',
+        [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldemateriale',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
           'Vis færre eksterne læringsressursar',
       },
       contentTypeResultsNoHit: {
-        [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
+        [contentTypes.SUBJECT_MATERIAL]: 'Ikkje noko fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]: 'Ingen oppgåver',
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressursar',
-        [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldematerialer',
+        [contentTypes.SOURCE_MATERIAL]: 'Ingen kjeldemateriale',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
           'Ingen eksterne læringsressursar',
       },
@@ -267,15 +267,15 @@ const messages = {
     tooltipCoreTopic: 'Kjernestoff er fagstoff',
     tooltipAdditionalTopic: 'Tilleggsstoff er fagstoff',
     additionalTooltip: 'Tilleggsstoff',
-    shortcutsTooltip: 'Vis {count} artikler i dette emnet',
+    shortcutsTooltip: 'Vis {count} artiklar i dette emnet',
     dialogTooltip: 'Kva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
     dialogText1:
-      'Når du lærar deg kjernestoffet skaffar du deg den kompetansen som beskrives i læreplanen for faget.',
+      'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskrive i læreplanen for faget.',
     dialogText2:
-      'Tilleggsstoff er innhald i faget som du kan velje i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordjupe deg i et emne eller tilnærma deg emnet på en anna måte.',
+      'Tilleggsstoff er innhald du kan velje i tillegg til kjernestoffet. Gjennom dette kan du fordjupe deg i eit emne eller nærme deg emnet på ein annan måte.',
     showLess: 'Vis mindre',
-    showMore: 'Vis mer',
+    showMore: 'Vis meir',
     youAreHere: 'Du er her',
   },
   article: {
@@ -303,7 +303,7 @@ const messages = {
     competenceGoalsNarrowBackButton: 'Tilbake',
   },
   subject: {
-    associatedTopics: 'Tilhørende emner',
+    associatedTopics: 'Tilhøyrande emne',
   },
   license: {
     heading: 'Slik gjenbruker du innhald',
@@ -315,7 +315,7 @@ const messages = {
     download: 'Last ned',
     tabs: {
       text: 'Tekst',
-      images: 'Bilde',
+      images: 'Bilete',
       audio: 'Lyd',
       video: 'Video',
       h5p: 'H5P',
@@ -323,14 +323,14 @@ const messages = {
       other: 'Anna innhald',
     },
     images: {
-      heading: 'Slik bruker du bilder frå artikkelen',
+      heading: 'Slik bruker du bilete frå artikkelen',
       description:
-        'Hugs å kopiera teksten som skal leggjast ved bildet der du bruker det.',
-      rules: 'Regler for bruk av bildet:',
+        'Hugs å kopiere teksten som skal leggjast ved biletet der du bruker det.',
+      rules: 'Reglar for bruk av biletet:',
       itemImage: {
-        ariaLabel: 'Opne bilde i eit nytt vindauge',
-        zoomImageButtonLabel: 'Forstørr bilde',
-        zoomOutImageButtonLabel: 'Forminsk bilde',
+        ariaLabel: 'Opne bilete i eit nytt vindauge',
+        zoomImageButtonLabel: 'Forstørr bilete',
+        zoomOutImageButtonLabel: 'Forminsk bilete',
       },
       source: 'Kjelde',
       title: 'Tittel',
@@ -345,43 +345,43 @@ const messages = {
       heading: 'Slik bruker du lydfiler',
       description:
         'Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.',
-      rules: 'Regler for bruk av lydfila:',
+      rules: 'Reglar for bruk av lydfila:',
     },
     video: {
       heading: 'Slik bruker du video frå artikkelen',
       description:
         'Hugs å kopiera teksten som skal leggjast ved videoen der du bruker han.',
-      rules: 'Regler for bruk av videoen:',
+      rules: 'Reglar for bruk av videoen:',
       itemImage: {
         ariaLabel: 'Opne video i eit nytt vindauge',
       },
     },
     other: {
-      heading: 'Slik bruker du annet innhold frå artikkelen',
+      heading: 'Slik bruker du anna innhald frå artikkelen',
       description:
-        'Du finner retningslinjene for bruk av innholdet i innholdselementet.',
+        'Du finn retningslinjene for bruk av innhaldet i innhaldselementet.',
       itemImage: {
-        ariaLabel: 'Åpne i nytt vindauge',
+        ariaLabel: 'Opne i nytt vindauge',
       },
     },
     h5p: {
-      heading: 'Slik bruker du H5P-innhold frå artikkelen',
+      heading: 'Slik bruker du H5P-innhald frå artikkelen',
       description:
-        'Du finn retningslinjene for bruk av innholdet i H5P-elementet.',
-      rules: 'Regler for bruk av H5P:',
+        'Du finn retningslinjene for bruk av innhaldet i H5P-elementet.',
+      rules: 'Reglar for bruk av H5P:',
     },
     files: {
       heading: 'Slik bruker du filer frå artikkelen',
       description:
-        'Husk å kopier teksten som skal legges ved filen der du bruker den.',
-      rules: 'Regler for bruk av filen:',
+        'Hugs å kopiere teksten som skal leggjast ved fila der du bruker ho.',
+      rules: 'Regler for bruk av fila:',
       itemImage: {
-        ariaLabel: 'Åpne i nytt vindauge',
+        ariaLabel: 'Opne i nytt vindauge',
       },
     },
     creditType: {
       originator: 'Opphavsmann',
-      authorDesc: 'Denne artikkelen er laget av fleire opphavsmenn',
+      authorDesc: 'Denne artikkelen er laga av fleire opphavarar',
       photographer: 'Fotograf',
       artist: 'Kunstnar',
       editorial: 'Redaksjonelt',
@@ -391,15 +391,15 @@ const messages = {
       translator: 'Omsetjar',
       director: 'Regissør',
       illustrator: 'Illustratør',
-      cowriter: 'Medforfatter',
+      cowriter: 'Medforfattar',
       composer: 'Komponist',
       processor: 'Tilarbeidar',
       facilitator: 'Tilretteleggjar',
       linguistic: 'Språkleg',
       idea: 'Idé',
-      compiler: 'Sammenstillar',
+      compiler: 'Samanstillar',
       correction: 'Korrektur',
-      rightsholder: 'Rettshaver',
+      rightsholder: 'Rettshavar',
       publisher: 'Forlag',
       distributor: 'Distributør',
       supplier: 'Leverandør',
@@ -410,7 +410,7 @@ const messages = {
     description: 'Orsak, ein feil oppstod.',
     linksTitle: 'Kom i gang:',
     back: 'Tilbake',
-    goToFrontPage: 'Gå til forsida',
+    goToFrontPage: 'Gå til framsida',
   },
   footer: {
     aboutNDLA: 'Om NDLA',
@@ -465,8 +465,8 @@ const messages = {
     en: 'Change language to English',
   },
   currentLanguageText: {
-    nb: 'Sidene vises på bokmål',
-    nn: 'Sidene vises på nynorsk',
+    nb: 'Sidene blir viste på bokmål',
+    nn: 'Sidene blir viste på nynorsk',
     en:
       'Not all pages are available in English. These will be shown in Norwegian',
   },
@@ -484,7 +484,7 @@ const messages = {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll framover',
     movieMatchInCategory: 'Treff',
-    loadingMovies: 'Henter filmer..',
+    loadingMovies: 'Hentar filmar...',
     subjectsInMovies: 'Emne i film',
     about: {
       heading: 'Om NDLA Film',
@@ -501,11 +501,11 @@ const messages = {
     editor: {
       slideshowHeader: 'Slideshow:',
       slideshowTitle: 'Filmar i slideshow',
-      slideshowSubTitle: 'på forsida',
+      slideshowSubTitle: 'på framsida',
       movieGroupHeader: 'Film grupperingar:',
       addMovieToSlideshow: 'Legg til film i slideshow',
       addMovieToGroup: 'Legg til film i "{name}"',
-      editMovieGroupName: 'Endre navnene til filmgruppa',
+      editMovieGroupName: 'Endre namna til filmgruppa',
       deleteMovieGroup: 'Slett "{name}"',
       moveMovieGroupUp: 'Flytt opp',
       moveMovieGroupDown: 'Flytt ned',
@@ -515,37 +515,37 @@ const messages = {
       createThemeGroup: 'Opprett gruppe',
       saveNameChanges: 'Lagre endringar',
       cancel: 'Avbryt',
-      groupNamePlaceholder: 'Skriv navn på {lang}',
-      editGroupTitle: 'Endre navn(ene) på filmgruppa:',
+      groupNamePlaceholder: 'Skriv namn på {lang}',
+      editGroupTitle: 'Endre namn(a) på filmgruppa:',
       newGroupTitle: 'Kva skal gruppa heite?',
     },
   },
   filmfrontpage: {
     resourcetype: {
       documentary: 'Dokumentar',
-      featureFilm: 'Spillefilm',
-      series: 'Tv-serie',
+      featureFilm: 'Spelefilm',
+      series: 'TV-serie',
       shortFilm: 'Kortfilm',
       all: 'Alle filmar A-Å',
     },
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kobla mot læreplaner i fleire fag. Dei er utvalde av redaksjonene til NDLA i samarbeid med Norgesfilm AS.',
+        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kopla mot læreplaner i fleire fag. Dei er valde av redaksjonene til NDLA i samarbeid med Norgesfilm AS.',
       secondParagraph:
-        'Du kan sjå filmane om du er kobla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med rettigheitsklarering og betaling. Alt du treng å gjere, er å trykke play.',
+        'Du kan sjå filmane om du er kopla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med klarering av rettar og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:
-        'Filmane er copyrightmerka. Dei kan fritt avspelast på ndla.no, men ikkje lastes ned eller distribuerast vidare i andre publikasjoner. Alle rettighetshavere honoreres for dei avspelinger som gjeres.',
+        'Filmane er copyrightmerka. Dei kan fritt spele dei av på ndla.no, men ikkje laste dei ned eller distribuere dei vidare i andre publikasjonar. Alle rettshavarar blir honorerte for dei avspelingane som blir gjort.',
       secondHeading: 'Bruk film i undervisninga',
       fourthParagraph:
-        'Ein film fortel historier på måter som engasjerer og rører oss. I film brukast nokre av dei mest effektive visuelle verkemidla som finst; levande bilete og lyd. Ein god film kan vise sider ved samtida og gje visjonar om framtida eller kommentere fortida. Difor kan film ofte gje oss betre forståing av hendingar, kulturmøter og historie enn ein fagtekst.',
+        'Ein film fortel historier på måtar som engasjerer og rører oss. Film bruker nokre av dei mest effektive visuelle verkemidla som finst; levande bilete og lyd. Ein god film kan vise sider ved samtida og gi visjonar om framtida eller kommentere fortida. Difor kan film ofte gi oss betre forståing av hendingar, kulturmøte og historie enn ein fagtekst.',
       fifthParagraph:
-        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underholdningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremmar etisk orienteringsevne og estetisk sans.',
-      tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønsker på',
+        'Ved å sjå film blir elevane betre rusta til å lese filmspråket, slik at filmen får ein verdi ut over det reint underhaldningsmessige. Den generelle delen av læreplanen legg vekt på at elevane skal møte kunst og kulturformer som stimulerer, inspirerer eiga skaparevne, og fremjar etisk orienteringsevne og estetisk sans.',
+      tipSectionPt1: 'Kom gjerne med tips, spørsmål eller filmønske på',
       tipSectionPt2: 'Facebook-sida',
       ariaLabel: 'Besøk Facebooksida til NDLA-film',
       tipSectionPt3: 'vår',
-      ending: 'Vi ønsker alle filmelskarar ei god og lærerik oppleving!',
+      ending: 'Vi ønskjer alle filmelskarar ei god og lærerik oppleving!',
     },
   },
   learningPath: {
@@ -569,7 +569,7 @@ const messages = {
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,
-    searching: 'Søker...',
+    searching: 'Søkjer...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
   },

@@ -13,7 +13,7 @@ import { spacing, typography, colors, misc, fonts } from '@ndla/core';
 // @ts-ignore
 import { PopUpWrapper } from '@ndla/forms';
 import FooterStatusSelect from './FooterStatusSelect';
-import FooterStatusCommentAndSave from './FooterStatusCommentAndSave';
+// import FooterStatusCommentAndSave from './FooterStatusCommentAndSave';
 
 type StyledWrapperProp = {
   extended: boolean;
@@ -112,7 +112,7 @@ interface State {
 
 type Action =
   | { type: 'comment'; payload: string }
-  | { type: 'changeStatus'; payload: { id: string; name: string } }
+  | { type: 'changeStatus'; newStatus: { id: string; name: string } }
   | { type: 'warn' }
   | { type: 'reset' };
 
@@ -127,7 +127,7 @@ const footerReducer = (state: State, action: Action) => {
     case 'comment':
       return { ...state, comment: action.payload, warn: false };
     case 'changeStatus':
-      return { ...state, changeStatusTo: action.payload };
+      return { ...state, changeStatusTo: action.newStatus };
     case 'warn':
       return { ...state, warn: true };
     case 'reset':
@@ -139,7 +139,7 @@ const footerReducer = (state: State, action: Action) => {
 
 const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
   const [state, dispatch] = useReducer(footerReducer, initialState);
-  const { changeStatusTo, warn, comment } = state;
+  const { changeStatusTo, comment } = state;
   return (
     <>
       <div
@@ -163,13 +163,17 @@ const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
             {changeStatusTo === undefined && (
               <FooterStatusSelect
                 options={options}
-                onSelectStatus={(payload: optionProps) =>
-                  dispatch({ type: 'changeStatus', payload })
-                }
+                onSelectStatus={(newStatus: optionProps) => {
+                  // dispatch({ type: 'changeStatus', newStatus })
+                  onSave(comment, newStatus.id);
+                  onClosePopup();
+                }}
                 heading={messages.changeStatus}
               />
             )}
-            {changeStatusTo !== undefined && (
+            {/*             
+  TODO: Comment back inn when backend supports comments on status changes
+  {changeStatusTo !== undefined && (
               <FooterStatusCommentAndSave
                 goBack={() => dispatch({ type: 'reset' })}
                 onCancel={() => {
@@ -189,7 +193,7 @@ const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
                 messages={messages}
                 warn={warn}
               />
-            )}
+            )} */}
           </StyledWrapper>
         )}
       </PopUpWrapper>

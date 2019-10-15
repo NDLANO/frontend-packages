@@ -13,7 +13,7 @@ import { spacing, typography, colors, misc, fonts } from '@ndla/core';
 // @ts-ignore
 import { PopUpWrapper } from '@ndla/forms';
 import FooterStatusSelect from './FooterStatusSelect';
-import FooterStatusCommentAndSave from './FooterStatusCommentAndSave';
+// import FooterStatusCommentAndSave from './FooterStatusCommentAndSave';
 
 type StyledWrapperProp = {
   extended: boolean;
@@ -139,7 +139,7 @@ const footerReducer = (state: State, action: Action) => {
 
 const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
   const [state, dispatch] = useReducer(footerReducer, initialState);
-  const { changeStatusTo, warn, comment } = state;
+  const { changeStatusTo, comment } = state;
   return (
     <>
       <div

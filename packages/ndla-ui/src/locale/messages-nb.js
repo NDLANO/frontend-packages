@@ -377,8 +377,8 @@ const messages = {
       },
     },
     creditType: {
-      originator: 'Opphavsmann',
-      authorDesc: 'Denne artikkelen er laget av flere opphavsmenn',
+      originator: 'Opphaver',
+      authorDesc: 'Denne artikkelen er laget av flere opphavere',
       photographer: 'Fotograf',
       artist: 'Kunstner',
       editorial: 'Redaksjonelt',

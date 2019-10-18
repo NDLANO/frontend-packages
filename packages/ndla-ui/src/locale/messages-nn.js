@@ -380,7 +380,7 @@ const messages = {
       },
     },
     creditType: {
-      originator: 'Opphavsmann',
+      originator: 'Opphavar',
       authorDesc: 'Denne artikkelen er laga av fleire opphavarar',
       photographer: 'Fotograf',
       artist: 'Kunstnar',

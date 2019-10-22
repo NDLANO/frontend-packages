@@ -16,7 +16,7 @@ const StyledFooter = styled.footer`
   left: -10px;
   right: -10px;
   background: #fff;
-  z-index: 1000;
+  z-index: 100;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;

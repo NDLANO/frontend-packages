@@ -226,7 +226,7 @@ test('ndla-error-reporter/ErrorReporter should ignore resizeobserver errors', ()
 
   window.onerror.call(
     window,
-    'undefined: ResizeObserver loop limit exceeded',
+    'ResizeObserver loop limit exceeded',
     document.location.toString(),
     0,
     0,

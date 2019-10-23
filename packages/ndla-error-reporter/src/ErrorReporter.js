@@ -70,7 +70,7 @@ const ErrorReporter = (function Singleton() {
     const globalIgnoreErrors = [
       /^Script error\.?$/,
       /^Javascript error: Script error\.? on line 0$/,
-      /^undefined: ResizeObserver loop limit exceeded$/,
+      /^ResizeObserver loop limit exceeded$/,
     ];
 
     const ignoreErrors = config.ignoreErrors.concat(globalIgnoreErrors);

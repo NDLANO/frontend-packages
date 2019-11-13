@@ -52,7 +52,7 @@ const MakeDndList = ({
               return (
                 <Draggable
                   key={child.props.id}
-                  draggableId={child.props.id}
+                  draggableId={child.props.connectionId}
                   index={index}>
                   {(providedInner, snapshotInner) => (
                     <div

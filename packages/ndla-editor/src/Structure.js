@@ -56,6 +56,7 @@ const Structure = ({
   currentPath,
   DND,
   isMainActive,
+  onDragEnd,
 }) => {
   const isSubject = currentPath.length === 0;
   const ignoreFilter =
@@ -78,9 +79,18 @@ const Structure = ({
   const enableDND = DND && isMainActive && filteredStructure.length > 1;
   return (
     <StructureWrapper>
-      <MakeDNDList disableDND={!enableDND} dragHandle>
+      <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
         {filteredStructure.map(
-          ({ id, name, topics, subtopics, filters, loading, ...rest }) => {
+          ({
+            id,
+            connectionId,
+            name,
+            topics,
+            subtopics,
+            filters,
+            loading,
+            ...rest
+          }) => {
             const currentPathIds = [...currentPath, id];
             const children = topics || subtopics;
             const pathToString = currentPathIds.join('/');
@@ -89,7 +99,7 @@ const Structure = ({
             const isMainActive = openedPaths.slice(-1).pop() === pathToString;
             return (
               <StyledStructureItem
-                id={id}
+                connectionId={connectionId}
                 key={pathToString}
                 isOpen={isOpen}
                 greyedOut={!isOpen && isSubject && openedPaths.length > 0}>
@@ -138,6 +148,7 @@ const Structure = ({
                     highlightMainActive={highlightMainActive}
                     isMainActive={isMainActive}
                     DND={DND}
+                    onDragEnd={onDragEnd}
                   />
                 )}
                 {loading && (

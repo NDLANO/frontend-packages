@@ -200,11 +200,15 @@ storiesOf('Produksjonssystem', module)
       </StoryBody>
     </div>
   ))
-  .add('Sidestrurktur og taksonomi', () => (
+  .add('Sidestruktur og taksonomi', () => (
     <div>
-      <StoryIntro title="Sidesturktur og taksonomi" />
+      <StoryIntro title="Sidestruktur og taksonomi">
+        <p>Emnevelger for taksonomi</p>
+      </StoryIntro>
       <Center>
         <StructureExample />
+        <h3>Strukturredigering</h3>
+        <StructureExample structureEditor />
       </Center>
     </div>
   ))

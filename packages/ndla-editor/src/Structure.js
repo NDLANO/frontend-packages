@@ -10,9 +10,9 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors } from '@ndla/core';
 import Spinner from './Spinner';
 import ItemNameBar from './ItemNameBar';
+import MakeDNDList from './MakeDNDList';
 
 const StructureWrapper = styled.ul`
   margin: 0;
@@ -37,14 +37,6 @@ const StyledStructureItem = styled.li`
     `};
 
   ${props =>
-    props.highlight &&
-    css`
-      > div {
-        background: ${colors.brand.light};
-      }
-    `};
-
-  ${props =>
     props.greyedOut &&
     css`
       > div > button {
@@ -62,6 +54,8 @@ const Structure = ({
   toggleOpen,
   highlightMainActive,
   currentPath,
+  DND,
+  isMainActive,
 }) => {
   const isSubject = currentPath.length === 0;
   const ignoreFilter =
@@ -81,76 +75,81 @@ const Structure = ({
       ),
     [structure, activeFilters],
   );
-
+  const enableDND = DND && isMainActive && filteredStructure.length > 1;
   return (
     <StructureWrapper>
-      {filteredStructure.map(
-        ({ id, name, topics, subtopics, filters, loading, ...rest }) => {
-          const currentPathIds = [...currentPath, id];
-          const children = topics || subtopics;
-          const pathToString = currentPathIds.join('/');
-          const parentId = currentPath.slice(-1);
-          const isOpen = openedPaths.includes(pathToString);
-          const isMainActive = openedPaths.slice(-1).pop() === pathToString;
-          return (
-            <StyledStructureItem
-              key={pathToString}
-              highlight={
-                highlightMainActive ? isMainActive : isOpen && isSubject
-              }
-              isOpen={isOpen}
-              greyedOut={!isOpen && isSubject && openedPaths.length > 0}>
-              <ItemNameBar
+      <MakeDNDList disableDND={!enableDND} dragHandle>
+        {filteredStructure.map(
+          ({ id, name, topics, subtopics, filters, loading, ...rest }) => {
+            const currentPathIds = [...currentPath, id];
+            const children = topics || subtopics;
+            const pathToString = currentPathIds.join('/');
+            const parentId = currentPath.slice(-1);
+            const isOpen = openedPaths.includes(pathToString);
+            const isMainActive = openedPaths.slice(-1).pop() === pathToString;
+            return (
+              <StyledStructureItem
+                id={id}
+                key={pathToString}
                 isOpen={isOpen}
-                title={name}
-                level={currentPath.length}
-                lastItemClickable={highlightMainActive}
-                path={pathToString}
-                id={id.includes('topic') ? `${parentId}/${id}` : id}
-                hasSubtopics={!!children || isSubject}
-                toggleOpen={() =>
-                  toggleOpen({
-                    path: pathToString,
-                    isSubject,
-                    id,
-                    parent: rest.parent,
-                  })
-                }
-                isSubject={isSubject}>
-                {renderListItems &&
-                  renderListItems({
-                    pathToString,
-                    filters,
-                    isSubject,
-                    subjectId: currentPathIds[0],
-                    isOpen,
-                    id,
-                    name,
-                    isMainActive,
-                    ...rest,
-                  })}
-              </ItemNameBar>
-              {children && (
-                <Structure
-                  structure={children}
-                  currentPath={currentPathIds}
-                  filters={subjectFilters}
-                  openedPaths={openedPaths}
-                  toggleOpen={toggleOpen}
-                  activeFilters={activeFilters}
-                  renderListItems={renderListItems}
-                  highlightMainActive={highlightMainActive}
-                />
-              )}
-              {loading && (
-                <span>
-                  <Spinner size="normal" margin="4px 26px" />
-                </span>
-              )}
-            </StyledStructureItem>
-          );
-        },
-      )}
+                greyedOut={!isOpen && isSubject && openedPaths.length > 0}>
+                <ItemNameBar
+                  highlight={
+                    highlightMainActive ? isMainActive : isOpen && isSubject
+                  }
+                  isOpen={isOpen}
+                  title={name}
+                  level={currentPath.length}
+                  lastItemClickable={highlightMainActive}
+                  path={pathToString}
+                  id={id.includes('topic') ? `${parentId}/${id}` : id}
+                  hasSubtopics={!!children || isSubject}
+                  toggleOpen={() =>
+                    toggleOpen({
+                      path: pathToString,
+                      isSubject,
+                      id,
+                      parent: rest.parent,
+                    })
+                  }
+                  isSubject={isSubject}>
+                  {renderListItems &&
+                    renderListItems({
+                      pathToString,
+                      filters,
+                      isSubject,
+                      subjectId: currentPathIds[0],
+                      isOpen,
+                      id,
+                      name,
+                      isMainActive,
+                      ...rest,
+                    })}
+                </ItemNameBar>
+                {children && (
+                  <Structure
+                    structure={children}
+                    currentPath={currentPathIds}
+                    filters={subjectFilters}
+                    openedPaths={openedPaths}
+                    toggleOpen={toggleOpen}
+                    activeFilters={activeFilters}
+                    renderListItems={renderListItems}
+                    highlightMainActive={highlightMainActive}
+                    isMainActive={isMainActive}
+                    DND={DND}
+                  />
+                )}
+                {loading && (
+                  <span>
+                    <Spinner size="normal" margin="4px 26px" />
+                  </span>
+                )}
+              </StyledStructureItem>
+            );
+          },
+        )}
+      </MakeDNDList>
     </StructureWrapper>
   );
 };

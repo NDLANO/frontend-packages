@@ -46,7 +46,7 @@ const MakeDndList = ({
   dragHandle,
 }: Props) => {
   if (disableDND) {
-    return <React.Fragment>{children}</React.Fragment>;
+    return children;
   }
   return (
     <DragDropContext onDragEnd={onDragEnd}>

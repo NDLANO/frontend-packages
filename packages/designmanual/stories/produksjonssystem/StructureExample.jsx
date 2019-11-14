@@ -300,7 +300,9 @@ class StructureExample extends Component {
     ) : (
       <Fragment>
         <Structure
+          DND={this.props.structureEditor}
           openedPaths={this.state.openedPaths}
+          highlightMainActive={this.props.structureEditor}
           structure={structure}
           toggleOpen={({ path, id, isSubject }) => {
             this.setState(prevState => {

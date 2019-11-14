@@ -72,6 +72,7 @@ const StyledItemBar = styled.div`
     calc(${props => props.level} * 17px + ${spacing.small});
   height: 40px;
   border-bottom: 1px solid ${colors.brand.greyLighter};
+  background: ${props => props.highlight && colors.brand.light};
 
   &:hover {
     background: ${props => (props.highlight ? colors.brand.light : '#f1f5f8')};
@@ -86,13 +87,14 @@ const ItemNameBar = ({
   path,
   toggleOpen,
   hasSubtopics,
+  highlight,
   isOpen,
   isSubject,
   lastItemClickable,
   id,
   level,
 }) => (
-  <StyledItemBar level={level}>
+  <StyledItemBar level={level} highlight={highlight}>
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"

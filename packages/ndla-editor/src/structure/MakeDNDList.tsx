@@ -8,7 +8,6 @@ import {
   DroppableStateSnapshot,
   DraggableStateSnapshot,
 } from 'react-beautiful-dnd';
-
 import { colors } from '@ndla/core';
 import { css } from '@emotion/core';
 // @ts-ignore
@@ -20,11 +19,8 @@ const dropZone = css`
 
 const dragHandleWrapperStyle = css`
   display: flex;
+  position: relative;
   align-items: center;
-`;
-
-const dragHandleStyle = css`
-  margin: 0 40px 0 -40px;
 `;
 
 const draggingStyle = css`
@@ -86,7 +82,7 @@ const MakeDndList = ({
                         ]}>
                         {dragHandle && (
                           <div
-                            css={dragHandleStyle}
+                            css={{ position: 'absolute' }}
                             {...providedInner.dragHandleProps}>
                             <DragHorizontal />
                           </div>

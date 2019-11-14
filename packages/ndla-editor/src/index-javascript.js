@@ -8,7 +8,7 @@
 
 import SlateBlockMenu from './SlateBlockMenu';
 import Spinner from './Spinner';
-import Structure from './Structure';
+import Structure from './structure/Structure';
 import FileListEditor from './FileListEditor';
 import MovieList from './ndlaFilm/MovieList';
 import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';

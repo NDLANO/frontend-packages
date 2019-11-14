@@ -45,6 +45,19 @@ export default {
             opacity: 1;
           }
         }`,
+  fadeOutLeft: (duration?: string) => `
+        animation-duration: ${duration || DURATION_DEFAULT};
+          animation-name: fadeOutLeft;
+            @keyframes fadeOutLeft {
+                0% {
+                  transform: translateX(0);
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateX(${spacing.small});
+                  opacity: 0;
+                }
+              }`,
   fadeInBottom: (duration?: string, distance?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInBottom;
@@ -58,6 +71,19 @@ export default {
             opacity: 1;
           }
         }`,
+  fadeOutBottom: (duration?: string, distance?: string) => `
+        animation-duration: ${duration || DURATION_DEFAULT};
+          animation-name: fadeOutBottom;
+            @keyframes fadeOutBottom {
+                0% {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
+                100% {
+                    transform: translateY(${distance || spacing.small});
+                  opacity: 0;
+                }
+              }`,
   fadeInTop: (duration?: string, distance?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInTop;
@@ -71,6 +97,19 @@ export default {
             opacity: 1;
           }
         }`,
+  fadeOutTop: (duration?: string, distance?: string) => `
+        animation-duration: ${duration || DURATION_DEFAULT};
+          animation-name: fadeOutTop;
+            @keyframes fadeOutTop {
+                0% {
+                  transform: translateY(${distance || spacing.small});
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateY(0);
+                  opacity: 0;
+                }
+              }`,
   fadeInScaled: (duration?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeInScaled;
@@ -84,6 +123,19 @@ export default {
             opacity: 1;
           }
         }`,
+  fadeOutScaled: (duration?: string) => `
+        animation-duration: ${duration || DURATION_DEFAULT};
+          animation-name: fadeOutScaled;
+            @keyframes fadeOutScaled {
+                0% {
+                  transform: scale(1);
+                  opacity: 1;
+                }
+                100% {
+                  transform: scale(0.5);
+                  opacity: 0;
+                }
+              }`,
   fadeOut: (duration?: string) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: fadeOut;
@@ -106,7 +158,10 @@ export default {
             opacity: 1;
           }
         }`,
-  toggledContentWithSwitchAnimation: (duration?: string, animationName = 'toggledContentWithSwitchAnimation') => `
+  toggledContentWithSwitchAnimation: (
+    duration?: string,
+    animationName = 'toggledContentWithSwitchAnimation',
+  ) => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: ${animationName};
       @keyframes ${animationName} {

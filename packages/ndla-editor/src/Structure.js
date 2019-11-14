@@ -136,7 +136,11 @@ const Structure = ({
                       ...rest,
                     })}
                 </ItemNameBar>
-                {children && (
+                {loading ? (
+                  <span>
+                    <Spinner size="normal" margin="4px 26px" />
+                  </span>
+                ) : (
                   <Structure
                     structure={children}
                     currentPath={currentPathIds}
@@ -150,11 +154,6 @@ const Structure = ({
                     DND={DND}
                     onDragEnd={onDragEnd}
                   />
-                )}
-                {loading && (
-                  <span>
-                    <Spinner size="normal" margin="4px 26px" />
-                  </span>
                 )}
               </StyledStructureItem>
             );

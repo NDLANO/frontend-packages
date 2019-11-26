@@ -29,7 +29,7 @@ const messages = {
   },
   askNDLA: 'Ask NDLA',
   articlePage: {
-    errorDescription: 'Sorry, an error occurd while loading the resource.',
+    errorDescription: 'Sorry, an error occurred while loading the resource.',
     error404Description:
       "Sorry, we can't locate the resource you are looking for.",
   },
@@ -404,7 +404,7 @@ const messages = {
   },
   errorMessage: {
     title: 'Oops, something went wrong',
-    description: 'Sorry, an error occurd.',
+    description: 'Sorry, an error occurred.',
     linksTitle: 'Get started:',
     back: 'Go back',
     goToFrontPage: 'Go to frontpage',
@@ -416,6 +416,19 @@ const messages = {
     footerEditiorInChief: 'Editor in chief: ',
     footerManagingEditor: 'Managing editor: ',
     footerPrivacyLink: 'Cookies Policy',
+    vision:
+      'NDLA’s vision is to offer high quality open educational learning resources in all subjects in upper secondary education in Norway and to support students and teachers in their active and collaborative learning.',
+    footerLinksHeader: 'Andre NDLA nettsteder',
+    socialMediaLinks: {
+      facebook: 'NDLA on Facebook',
+      facebookAria: 'Visit NDLA on Facebook',
+      newsletter: 'Sign up for our Newsletter',
+      newsletterAria: 'Sign up for our Newsletter',
+      twitter: 'NDLA on Twitter',
+      twitterAria: 'Follow NDLA on Twitter',
+      sharePage: 'Share this page',
+      sharePageAria: 'Share this page',
+    },
   },
   contentTypes: {
     all: 'All',
@@ -557,6 +570,24 @@ const messages = {
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
+  },
+  blogPosts: {
+    blog1: {
+      text: 'Hvordan lage gode grupper med elever',
+      externalLink:
+        'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
+    blog2: {
+      text: 'Prosjektarbeid på tvers av fag',
+      externalLink:
+        'https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/',
+      linkText: 'Fagblogg',
+      license: 'CC-BY-NC-SA-4.0',
+      licenseAuthor: 'Scanpix.no',
+    },
   },
 };
 

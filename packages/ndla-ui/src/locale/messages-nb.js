@@ -596,8 +596,7 @@ const messages = {
     },
     blog2: {
       text: 'Strikkhopping i mattetimen',
-      externalLink:
-        'https://blogg.ndla.no/2019/11/strikkhopping-i-mattetimen/',
+      externalLink: 'https://blogg.ndla.no/2019/11/strikkhopping-i-mattetimen/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Jone N. Nyborg',

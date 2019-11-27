@@ -575,20 +575,20 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Korleis lage gode grupper med elevar',
+      text: 'Hva skjer med fagfornyelsen på NDLA?',
       externalLink:
-        'https://blogg.ndla.no/2018/11/hvordan-lage-gode-grupper-med-elever/',
+        'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Prosjektarbeid på tvers av fag',
+      text: 'Strikkhopping i mattetimen',
       externalLink:
-        'https://blogg.ndla.no/2019/03/prosjektarbeid-pa-tvers-av-fag-kuben-vgs/',
+        'https://blogg.ndla.no/2019/11/strikkhopping-i-mattetimen/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      licenseAuthor: 'Jone N. Nyborg',
     },
   },
   editor: {

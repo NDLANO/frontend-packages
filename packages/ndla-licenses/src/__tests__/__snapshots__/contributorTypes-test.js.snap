@@ -4,7 +4,7 @@ exports[`Get a grouped contributor description list for each supported language 
 Array [
   Object {
     "description": "Regissør Francis Ford Coppola",
-    "label": "Opphavsmann",
+    "label": "Opphaver",
     "metaType": "author",
   },
   Object {

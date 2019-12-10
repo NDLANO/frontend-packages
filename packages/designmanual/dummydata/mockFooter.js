@@ -5,7 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { EmailOutline, Facebook, Twitter, Share } from '@ndla/icons/common';
+import {
+  EmailOutline,
+  Facebook,
+  Twitter,
+  Share,
+  Youtube,
+} from '@ndla/icons/common';
 import React from 'react';
 
 export const mockFooterLinks = [
@@ -18,6 +24,11 @@ export const mockFooterLinks = [
     to: 'https://twitter.com/ndla_no',
     text: 'NDLA på Twitter',
     icon: <Twitter />,
+  },
+  {
+    to: 'https://www.youtube.com/channel/UCBlt6T8B0mmvDh3k5q7EhsA',
+    text: 'NDLA på YouTube',
+    icon: <Youtube />,
   },
   {
     to: 'https://om.ndla.no/nyhetsbrev/',

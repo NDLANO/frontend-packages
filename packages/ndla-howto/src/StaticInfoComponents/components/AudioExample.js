@@ -42,7 +42,7 @@ class AudioExample extends Component {
 
     const caption = 'Familien som spela vekk jula';
     const reuseLabel = 'Bruk lydklipp';
-    const authors = [{ type: 'Opphavsmann', name: 'Gary Waters' }];
+    const authors = [{ type: 'Opphaver', name: 'Gary Waters' }];
 
     const figureId = `figure-${this.id}`;
 

@@ -1737,6 +1737,44 @@ storiesOf('Grunnstiler', module)
           <li>Listepunkt</li>
           <li>Listepunkt</li>
         </ol>
+        <h2 className="u-heading">
+          Kombinasjonsliste punkt, alfabetisert og nummerisk
+        </h2>
+        <ul className="o-list--bullets">
+          <li>Listepunkt 1</li>
+          <li>Listepunkt 2</li>
+          <li>Listepunkt 3</li>
+          <li>
+            Underliste alfabetisert:
+            <ol className="ol-list--roman">
+              <li>Listepunkt</li>
+              <li>Listepunkt</li>
+              <li>Listepunkt</li>
+            </ol>
+          </li>
+          <li>
+            Underliste nummerert:
+            <ol>
+              <li>Listepunkt</li>
+              <li>Listepunkt</li>
+              <li>Listepunkt</li>
+            </ol>
+          </li>
+        </ul>
+        <h2 className="u-heading">Kombinasjonsliste nummerisk og punkt</h2>
+        <ol>
+          <li>Listepunkt</li>
+          <li>Listepunkt</li>
+          <li>Listepunkt</li>
+          <li>
+            Underliste punktliste:
+            <ul className="o-list--bullets">
+              <li>Listepunkt 1</li>
+              <li>Listepunkt 2</li>
+              <li>Listepunkt 3</li>
+            </ul>
+          </li>
+        </ol>
       </StoryBody>
     </div>
   ))

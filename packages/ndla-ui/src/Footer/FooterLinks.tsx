@@ -46,7 +46,7 @@ type FooterLinksProps = {
 
 const commonLinks = [
   { text: 'om.ndla.no', url: 'https://om.ndla.no' },
-  { text: 'om.ndla.no/about-ndla', url: 'https://om.ndla.no/about-ndla' },
+  { text: 'about.ndla.no', url: 'https://om.ndla.no/about-ndla' },
   { text: 'blogg.ndla.no', url: 'https://blogg.ndla.no' },
   { text: 'blogg.ndla.no/elever', url: 'https://blogg.ndla.no/elever' },
   { text: 'fyr.ndla.no', url: 'https://fyr.ndla.no' },

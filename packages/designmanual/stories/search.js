@@ -37,7 +37,7 @@ storiesOf('Søk', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Søkeside opphavsmann', () => (
+  .add('Søkeside opphaver', () => (
     <PageContainer background>
       <Content>
         <MastheadWithTopicMenu hideSearchButton />

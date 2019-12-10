@@ -20,7 +20,7 @@ import {
 import { Search as SearchIcon } from '@ndla/icons/common';
 
 const roleExamples = [
-  'Opphavsmann',
+  'Opphaver',
   'Fotograf',
   'Kunstner',
   'Forfatter',

@@ -181,9 +181,9 @@ class ArticleLoader extends Component {
                 messages={{
                   edition: 'Utgave',
                   publisher: 'Utgiver',
-                  authorLabel: 'Opphavsmann',
+                  authorLabel: 'Opphaver',
                   authorDescription:
-                    'Denne artikkelen er laget av flere opphavsmenn',
+                    'Denne artikkelen er laget av flere opphavere',
                   close: 'Lukk',
                   label,
                 }}

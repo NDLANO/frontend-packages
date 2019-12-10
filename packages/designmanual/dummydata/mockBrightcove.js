@@ -18,7 +18,7 @@ export const firstBrightcoveList = [
     custom_fields: {
       license: 'Navngivelse-Del på samme vilkår',
       yt_privacy_status: 'private',
-      licenseinfo: 'Opphavsmann: NRK',
+      licenseinfo: 'Opphaver: NRK',
     },
     delivery_type: 'unknown',
     description: null,
@@ -240,7 +240,7 @@ export const firstBrightcoveList = [
     cue_points: [],
     custom_fields: {
       yt_privacy_status: 'private',
-      licenseinfo: 'Opphavsmann: NRK',
+      licenseinfo: 'Opphaver: NRK',
       license: 'Navngivelse-Ikkekommersiell-Ingen Bearbeidelse',
     },
     delivery_type: 'unknown',
@@ -315,10 +315,10 @@ export const firstBrightcoveList = [
     created_at: '2017-04-06T17:42:59.330Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: NRK',
+      licenseinfo: 'Opphaver: NRK',
       yt_privacy_status: 'private',
       license: 'Navngivelse-Ikkekommersiell-Ingen Bearbeidelse',
-      licenseinfo2: 'Opphavsmann: STRIX',
+      licenseinfo2: 'Opphaver: STRIX',
     },
     delivery_type: 'unknown',
     description: null,
@@ -777,7 +777,7 @@ export const secondBrightcoveList = [
     created_at: '2017-04-07T00:48:53.296Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: Adalia film & media',
+      licenseinfo: 'Opphaver: Adalia film & media',
       license: 'Navngivelse-Del på samme vilkår',
       yt_privacy_status: 'private',
     },
@@ -854,7 +854,7 @@ export const secondBrightcoveList = [
     cue_points: [],
     custom_fields: {
       licenseinfo: 'Leverandør: Terranova Media',
-      licenseinfo2: 'Opphavsmann: Tor Segelcke',
+      licenseinfo2: 'Opphaver: Tor Segelcke',
       license: 'Navngivelse-Ikkekommersiell-Del på samme vilkår',
       yt_privacy_status: 'private',
     },
@@ -926,7 +926,7 @@ export const secondBrightcoveList = [
     created_at: '2017-04-07T00:48:04.268Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: Adalia film & media',
+      licenseinfo: 'Opphaver: Adalia film & media',
       license: 'Navngivelse-Del på samme vilkår',
       yt_privacy_status: 'private',
     },
@@ -1005,8 +1005,7 @@ export const secondBrightcoveList = [
     cue_points: [],
     custom_fields: {
       yt_privacy_status: 'private',
-      licenseinfo:
-        'Opphavsmann: Center for Occupational Employment Information',
+      licenseinfo: 'Opphaver: Center for Occupational Employment Information',
       license: 'Opphavsrett',
     },
     delivery_type: 'static_origin',
@@ -1077,7 +1076,7 @@ export const secondBrightcoveList = [
     created_at: '2017-04-07T00:47:46.779Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: Adalia film & media',
+      licenseinfo: 'Opphaver: Adalia film & media',
       license: 'Navngivelse-Del på samme vilkår',
       yt_privacy_status: 'private',
     },
@@ -1150,7 +1149,7 @@ export const secondBrightcoveList = [
     created_at: '2017-04-07T00:47:25.792Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: Adalia film & media',
+      licenseinfo: 'Opphaver: Adalia film & media',
       license: 'Navngivelse-Del på samme vilkår',
       yt_privacy_status: 'private',
     },
@@ -1340,7 +1339,7 @@ export const secondBrightcoveList = [
     created_at: '2017-04-06T14:34:27.632Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: Terranova Media',
+      licenseinfo: 'Opphaver: Terranova Media',
       license: 'Navngivelse-Ikkekommersiell-Del på samme vilkår',
       yt_privacy_status: 'private',
     },
@@ -1425,7 +1424,7 @@ export const secondBrightcoveList = [
     created_at: '2017-04-06T14:32:25.102Z',
     cue_points: [],
     custom_fields: {
-      licenseinfo: 'Opphavsmann: NRK',
+      licenseinfo: 'Opphaver: NRK',
       licenseinfo2:
         'Redaksjonelt: The Sub-frequency Cooperation Society, Rudi Moustafa',
       license: 'Navngivelse-Ikkekommersiell-Ingen Bearbeidelse',

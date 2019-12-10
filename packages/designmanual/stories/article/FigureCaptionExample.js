@@ -79,7 +79,7 @@ FigureCaptionExample.propTypes = {
 };
 
 FigureCaptionExample.defaultProps = {
-  authors: [{ type: 'Opphavsmann', name: 'Gary Waters' }],
+  authors: [{ type: 'Opphaver', name: 'Gary Waters' }],
   licenseAbbreviation: 'CC-BY-ND-4.0',
   messages: {
     close: 'Lukk',

@@ -124,7 +124,7 @@ export const TextContent = ({ t }) => (
                       metaType: metaTypes.title,
                     },
                     {
-                      label: 'Opphavsmann',
+                      label: 'Opphaver',
                       description: 'Fotograf Ola N',
                       metaType: metaTypes.author,
                     },
@@ -189,12 +189,12 @@ const AudioContent = ({ t }) => (
                 <MediaListItemMeta
                   items={[
                     {
-                      label: 'Tittle',
+                      label: 'Tittel',
                       description: el.title,
                       metaType: metaTypes.title,
                     },
                     {
-                      label: 'Opphavsmann',
+                      label: 'Opphaver',
                       description: 'Fotograf Ola N',
                       metaType: metaTypes.author,
                     },
@@ -258,7 +258,7 @@ export const ImageContent = ({ t }) => (
                       metaType: metaTypes.title,
                     },
                     {
-                      label: 'Opphavsmann',
+                      label: 'Opphaver',
                       description: 'Fotograf Ola N',
                       metaType: metaTypes.author,
                     },
@@ -305,7 +305,7 @@ export const ImageContent = ({ t }) => (
               <MediaListItemMeta
                 items={[
                   {
-                    label: 'Opphavsmann',
+                    label: 'Opphaver',
                     description: 'Fotograf Ola N',
                     metaType: metaTypes.author,
                   },
@@ -374,7 +374,7 @@ const OtherContent = ({ t }) => (
                       metaType: metaTypes.title,
                     },
                     {
-                      label: 'Opphavsmann',
+                      label: 'Opphaver',
                       description: 'Fotograf Ola N',
                       metaType: metaTypes.author,
                     },
@@ -422,7 +422,7 @@ const Files = ({ t }) => (
                       metaType: metaTypes.title,
                     },
                     {
-                      label: 'Opphavsmann',
+                      label: 'Opphaver',
                       description: 'Fotograf Ola N',
                       metaType: metaTypes.author,
                     },

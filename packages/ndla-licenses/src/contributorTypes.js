@@ -60,7 +60,7 @@ export const contributorTypes = {
     supplier: 'Supplier',
   },
   nb: {
-    originator: 'Opphavsmann',
+    originator: 'Opphaver',
     photographer: 'Fotograf',
     artist: 'Kunstner',
     editorial: 'Redaksjonelt',
@@ -84,7 +84,7 @@ export const contributorTypes = {
     supplier: 'Leverandør',
   },
   nn: {
-    originator: 'Opphavsmann',
+    originator: 'Opphavar',
     photographer: 'Fotograf',
     artist: 'Kunstnar',
     editorial: 'Redaksjonelt',

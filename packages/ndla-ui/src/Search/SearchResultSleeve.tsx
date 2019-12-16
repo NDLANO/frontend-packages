@@ -6,25 +6,17 @@
  *
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from '@emotion/styled';
-import { spacing, colors, misc, fonts, mq, breakpoints } from '@ndla/core';
+import {breakpoints, colors, fonts, misc, mq, spacing} from '@ndla/core';
 // @ts-ignore
-import { injectT } from '@ndla/i18n';
-import {
-  Search as SearchIcon,
-  Wrench,
-  Esc,
-  KeyboardReturn,
-  ChevronUp,
-  ChevronDown,
-  // @ts-ignore
-} from '@ndla/icons/common';
+import {injectT} from '@ndla/i18n';
+import {ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench,} from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
-import { highlightStyle } from './ContentTypeResultStyles';
-import { ContentTypeResultType, Resource } from '../types';
+import {highlightStyle} from './ContentTypeResultStyles';
+import {ContentTypeResultType, Resource} from '../types';
 
 const GO_TO_SEARCHPAGE = 'GO_TO_SEARCHPAGE';
 
@@ -163,98 +155,45 @@ const StyledInstructions = styled.div`
   }
 `;
 
+
+const getNextElementInDirection = (current: string, arr: Array<string>, direction: 1 | -1 | null): string => {
+  const currentIdx = arr.indexOf(current);
+
+  if (direction === 1) {
+    const idx = currentIdx + 1 > arr.length - 1 ? 0 : currentIdx + 1;
+    return arr[idx];
+  } else if (direction === -1){
+    const idx = currentIdx - 1 < 0 ? arr.length - 1 : currentIdx - 1;
+    return arr[idx];
+  } else {
+    return arr[currentIdx];
+  }
+};
+
 const findPathForKeyboardNavigation = (
   result: Array<ContentTypeResultType>,
   current: string,
   contentRef: HTMLDivElement | null,
   direction: 1 | -1 | null,
 ): string => {
-  const resultsContainingPaths = result.map(resultBlock =>
-    resultBlock.resources.length > 0 ? resultBlock.resources[0].path : '',
-  );
-  if (!resultsContainingPaths.some(result => result !== '')) {
-    return '';
-  } else if (direction === null) {
+  if (direction === null)
     return current;
-  }
-  let highlightPath: string = '';
-  if (current !== '' && current !== GO_TO_SEARCHPAGE) {
-    result.forEach((resultBlock, blockIndex) => {
-      resultBlock.resources.forEach((resource, resourceIndex) => {
-        if (resource.path === current) {
-          if (direction === 1) {
-            if (
-              resourceIndex < resultBlock.resources.length - 1 &&
-              contentRef &&
-              contentRef.querySelectorAll(
-                `[href="${
-                  result[blockIndex].resources[resourceIndex + 1].path
-                }"]`,
-              )[0]
-            ) {
-              highlightPath =
-                result[blockIndex].resources[resourceIndex + 1].path;
-            } else {
-              let currentBlock = blockIndex;
-              while (highlightPath === '') {
-                if (currentBlock < resultsContainingPaths.length - 1) {
-                  currentBlock += 1;
-                } else {
-                  highlightPath = GO_TO_SEARCHPAGE;
-                  break;
-                }
-                if (resultsContainingPaths[currentBlock] !== '') {
-                  highlightPath = resultsContainingPaths[currentBlock];
-                }
-              }
-            }
-          } else {
-            if (resourceIndex > 0) {
-              highlightPath =
-                result[blockIndex].resources[resourceIndex - 1].path;
-            } else {
-              let currentBlock = blockIndex;
-              while (highlightPath === '') {
-                if (currentBlock > 0) {
-                  currentBlock -= 1;
-                } else {
-                  highlightPath = GO_TO_SEARCHPAGE;
-                  break;
-                }
-                if (resultsContainingPaths[currentBlock] !== '') {
-                  // Get last visible LI with an A tag.
-                  const currentAnchor =
-                    contentRef &&
-                    contentRef.querySelector(
-                      `[href="${resultsContainingPaths[currentBlock]}"]`,
-                    );
-                  const currentUL =
-                    currentAnchor && currentAnchor.closest('ul');
-                  const anchorNodes =
-                    currentUL && currentUL.querySelectorAll('a');
-                  highlightPath = anchorNodes
-                    ? result[currentBlock].resources[anchorNodes.length - 1]
-                        .path
-                    : '';
-                }
-              }
-            }
-          }
-        }
-      });
-    });
-  } else if (direction === 1) {
-    if (current === '') {
-      highlightPath = GO_TO_SEARCHPAGE;
-    } else {
-      highlightPath = resultsContainingPaths.find(path => path !== '') || '';
+
+  const resultsContainingPathsNested = result.map(resultBlock =>
+      resultBlock.resources.map(r => r.path || '')
+  );
+  const resultsContainingPaths = ([GO_TO_SEARCHPAGE] as string[]).concat(...resultsContainingPathsNested);
+
+  // Nothing selected, goto either first or last
+  if (current === '') {
+    if (direction === 1) {
+      return resultsContainingPaths[0];
+    } else if (direction === -1) {
+      return resultsContainingPaths[resultsContainingPaths.length - 1];
     }
-  } else {
-    // go to last link..
-    highlightPath =
-      resultsContainingPaths.reverse().find(path => path !== '') || '';
   }
-  return highlightPath;
+
+  return getNextElementInDirection(current, resultsContainingPaths, direction);
 };
 
 type Props = {

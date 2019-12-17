@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
+import { History } from 'history';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
@@ -82,6 +83,7 @@ type Props = {
   infoText: string;
   loading: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+  history: History;
 };
 
 const FrontpageSearch: React.FunctionComponent<Props> = ({
@@ -98,6 +100,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   searchResult,
   loading,
   t,
+  history,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);
@@ -178,6 +181,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
               allResultUrl={allResultUrl}
               resourceToLinkProps={resourceToLinkProps}
               infoText={t('welcomePage.searchDisclaimer')}
+              history={history}
             />
           )}
         </SearchFieldForm>

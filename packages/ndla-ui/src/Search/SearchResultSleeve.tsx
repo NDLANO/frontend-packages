@@ -7,6 +7,7 @@
  */
 
 import React, {useEffect, useRef, useState} from 'react';
+import { History } from 'history';
 import styled from '@emotion/styled';
 import {breakpoints, colors, fonts, misc, mq, spacing} from '@ndla/core';
 // @ts-ignore
@@ -173,7 +174,6 @@ const getNextElementInDirection = (current: string, arr: Array<string>, directio
 const findPathForKeyboardNavigation = (
   result: Array<ContentTypeResultType>,
   current: string,
-  contentRef: HTMLDivElement | null,
   direction: 1 | -1 | null,
 ): string => {
   if (direction === null)
@@ -184,7 +184,7 @@ const findPathForKeyboardNavigation = (
   );
   const resultsContainingPaths = ([GO_TO_SEARCHPAGE] as string[]).concat(...resultsContainingPathsNested);
 
-  // Nothing selected, goto either first or last
+  // Nothing selected, goto either first or last depending on direction
   if (current === '') {
     if (direction === 1) {
       return resultsContainingPaths[0];
@@ -207,6 +207,7 @@ type Props = {
   loading: boolean;
   frontpage?: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+  history: History;
 };
 
 const SearchResultSleeve: React.FC<Props> = ({
@@ -220,6 +221,7 @@ const SearchResultSleeve: React.FC<Props> = ({
   loading,
   frontpage,
   t,
+  history,
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
@@ -242,52 +244,51 @@ const SearchResultSleeve: React.FC<Props> = ({
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
       if (e.code === 'ArrowDown') {
+        e.stopPropagation();
+        e.preventDefault();
+
         const focusPath = pathFromFocus();
-        setKeyNavigation(keyboardPathNavigation => {
+        setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
             result,
-            focusPath ? focusPath : keyboardPathNavigation,
-            contentRef.current,
+            focusPath ? focusPath : prevKeyPath,
             1,
           );
         });
+      } else if (e.code === 'ArrowUp') {
         e.stopPropagation();
         e.preventDefault();
-      } else if (e.code === 'ArrowUp') {
+
         const focusPath = pathFromFocus();
-        setKeyNavigation(keyboardPathNavigation => {
+        setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
             result,
-            focusPath ? focusPath : keyboardPathNavigation,
-            contentRef.current,
+            focusPath ? focusPath : prevKeyPath,
             -1,
           );
         });
+      } else if (e.code === 'Enter') {
         e.stopPropagation();
         e.preventDefault();
-      } else if (e.code === 'Enter') {
         if (keyboardPathNavigation) {
-          e.stopPropagation();
-          e.preventDefault();
-          window.location.href = keyboardPathNavigation;
+          history.push({ pathname: `/subjects${keyboardPathNavigation}` });
         }
       } else if (e.code === 'Tab') {
         setKeyNavigation('');
       }
     };
     window.addEventListener('keydown', onKeyDownEvent);
-    setKeyNavigation(keyboardPathNavigation => {
+    setKeyNavigation(prevKeyNav => {
       return findPathForKeyboardNavigation(
         result,
-        keyboardPathNavigation,
-        contentRef.current,
+        prevKeyNav,
         null,
       );
     });
     return () => {
       window.removeEventListener('keydown', onKeyDownEvent);
     };
-  }, [result, contentRef]);
+  }, [result, contentRef, keyboardPathNavigation]);
   useEffect(() => {
     const highlightedElement =
       keyboardPathNavigation === GO_TO_SEARCHPAGE

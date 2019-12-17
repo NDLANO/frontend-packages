@@ -196,6 +196,22 @@ const findPathForKeyboardNavigation = (
   return getNextElementInDirection(current, resultsContainingPaths, direction);
 };
 
+const pathFromFocus = (): string | null => {
+  // Check if has focus on an element
+  const focusedElementType = document.activeElement;
+  if (
+      focusedElementType &&
+      focusedElementType.getAttribute('data-highlighted')
+  ) {
+    // Use path form focused element.
+    if (focusedElementType instanceof HTMLElement) {
+      focusedElementType.blur();
+    }
+    return focusedElementType.getAttribute('href');
+  }
+  return null;
+};
+
 type Props = {
   result: Array<ContentTypeResultType>;
   allResultUrl: string;
@@ -226,21 +242,7 @@ const SearchResultSleeve: React.FC<Props> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
   const [keyboardPathNavigation, setKeyNavigation] = useState('');
-  const pathFromFocus = (): string | null => {
-    // Check if has focus on an element
-    const focusedElementType = document.activeElement;
-    if (
-      focusedElementType &&
-      focusedElementType.getAttribute('data-highlighted')
-    ) {
-      // Use path form focused element.
-      if (focusedElementType instanceof HTMLElement) {
-        focusedElementType.blur();
-      }
-      return focusedElementType.getAttribute('href');
-    }
-    return null;
-  };
+
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
       if (e.code === 'ArrowDown') {
@@ -255,6 +257,7 @@ const SearchResultSleeve: React.FC<Props> = ({
             1,
           );
         });
+
       } else if (e.code === 'ArrowUp') {
         e.stopPropagation();
         e.preventDefault();
@@ -267,12 +270,23 @@ const SearchResultSleeve: React.FC<Props> = ({
             -1,
           );
         });
+
       } else if (e.code === 'Enter') {
+
         e.stopPropagation();
         e.preventDefault();
         if (keyboardPathNavigation) {
-          history.push({ pathname: `/subjects${keyboardPathNavigation}` });
+          if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
+            const anchorTag = searchAllRef && searchAllRef.current && searchAllRef.current.closest("a");
+            if (anchorTag) {
+              const path = anchorTag.getAttribute("href") || '';
+              history.push({pathname: path })
+            }
+          } else {
+            history.push({ pathname: `/subjects${keyboardPathNavigation}` });
+          }
         }
+
       } else if (e.code === 'Tab') {
         setKeyNavigation('');
       }
@@ -288,7 +302,8 @@ const SearchResultSleeve: React.FC<Props> = ({
     return () => {
       window.removeEventListener('keydown', onKeyDownEvent);
     };
-  }, [result, contentRef, keyboardPathNavigation]);
+  }, [result, contentRef, searchAllRef, keyboardPathNavigation]);
+
   useEffect(() => {
     const highlightedElement =
       keyboardPathNavigation === GO_TO_SEARCHPAGE
@@ -303,6 +318,7 @@ const SearchResultSleeve: React.FC<Props> = ({
       });
     }
   }, [keyboardPathNavigation]);
+
   return (
     <StyledSearchResultsWrapper frontpage={frontpage} ref={contentRef}>
       <StyledScrollableContent extendHeight={frontpage ? 0 : 52}>

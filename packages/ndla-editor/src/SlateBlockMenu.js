@@ -94,6 +94,7 @@ const itemButton = css`
 `;
 
 const buttonCSS = css`
+  user-select: none;
   width: ${ICON_SIZE};
   height: ${ICON_SIZE};
   padding: 0;
@@ -149,14 +150,13 @@ FocusWrapper.propTypes = {
 const SlateBlockMenu = React.forwardRef(
   ({ heading, actions, clickItem, onToggleOpen, isOpen, cy }, ref) => (
     <>
-      <button
+      <div
         ref={ref}
         css={[buttonCSS, isOpen && buttonOpen]}
-        type="button"
         data-cy={cy}
         onClick={() => onToggleOpen(!isOpen)}>
         <Plus />
-      </button>
+      </div>
       {isOpen && (
         <FocusWrapper onToggleOpen={onToggleOpen}>
           <Wrapper>

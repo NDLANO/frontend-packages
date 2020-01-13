@@ -418,12 +418,14 @@ const messages = {
     footerPrivacyLink: 'Cookies Policy',
     vision:
       'NDLA’s vision is to offer high quality open educational learning resources in all subjects in upper secondary education in Norway and to support students and teachers in their active and collaborative learning.',
-    footerLinksHeader: 'Andre NDLA nettsteder',
+    footerLinksHeader: 'Other NDLA sites',
     socialMediaLinks: {
       facebook: 'NDLA on Facebook',
       facebookAria: 'Visit NDLA on Facebook',
       newsletter: 'Sign up for our Newsletter',
       newsletterAria: 'Sign up for our Newsletter',
+      youtube: 'NDLA on YouTube',
+      youtubeAria: 'NDLA on YouTube',
       twitter: 'NDLA on Twitter',
       twitterAria: 'Follow NDLA on Twitter',
       sharePage: 'Share this page',

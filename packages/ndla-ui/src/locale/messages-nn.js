@@ -427,6 +427,8 @@ const messages = {
       facebookAria: 'Besøk NDLA på Facebook',
       newsletter: 'Meld deg på vårt nyheitsbrev',
       newsletterAria: 'Meld deg på vårt nyheitsbrev',
+      youtube: 'NDLA på YouTube',
+      youtubeAria: 'NDLA på YouTube',
       twitter: 'NDLA på Twitter',
       twitterAria: 'Besøk NDLA på Twitter',
       sharePage: 'Del denne sida',

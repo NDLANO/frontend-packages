@@ -199,7 +199,8 @@ const findPathForKeyboardNavigation = (
 
 const pathFromFocus = (): string | null => {
   // Check if has focus on an element
-  const focusedElementType = document.activeElement;
+  const focusedElementType = document.querySelector('a[data-highlighted=true]');
+
   if (
       focusedElementType &&
       focusedElementType.getAttribute('data-highlighted')
@@ -250,11 +251,10 @@ const SearchResultSleeve: React.FC<Props> = ({
         e.stopPropagation();
         e.preventDefault();
 
-        const focusPath = pathFromFocus();
         setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
             result,
-            focusPath ? focusPath : prevKeyPath,
+            prevKeyPath,
             1,
           );
         });
@@ -263,31 +263,29 @@ const SearchResultSleeve: React.FC<Props> = ({
         e.stopPropagation();
         e.preventDefault();
 
-        const focusPath = pathFromFocus();
         setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
             result,
-            focusPath ? focusPath : prevKeyPath,
+            prevKeyPath,
             -1,
           );
         });
 
       } else if (e.code === 'Enter') {
-
         e.stopPropagation();
         e.preventDefault();
-        if (keyboardPathNavigation) {
-          if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
-            const anchorTag = searchAllRef && searchAllRef.current && searchAllRef.current.closest("a");
-            if (anchorTag) {
-              const path = anchorTag.getAttribute("href") || '';
-              history.push({pathname: path })
-            }
-          } else {
-            history.push({ pathname: `/subjects${keyboardPathNavigation}` });
+        if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
+          const anchorTag = searchAllRef && searchAllRef.current && searchAllRef.current.closest("a");
+          if (anchorTag) {
+            const path = anchorTag.getAttribute("href") || '';
+            history.push({pathname: path })
+          }
+        } else {
+          const focusPath = pathFromFocus();
+          if (focusPath) {
+            history.push(focusPath);
           }
         }
-
       } else if (e.code === 'Tab') {
         setKeyNavigation('');
       }

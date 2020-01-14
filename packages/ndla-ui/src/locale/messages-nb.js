@@ -580,6 +580,8 @@ const messages = {
     },
     openMenuTooltip: 'Vis læringssti',
     mobileStepInfo: '{currentPage} av {totalPages}',
+    nextArrow: 'Neste',
+    previousArrow: 'Forrige',
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

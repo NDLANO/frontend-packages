@@ -569,7 +569,7 @@ const messages = {
     openMenuTooltip: 'Vis læringssti',
     mobileStepInfo: '{currentPage} av {totalPages}',
     nextArrow: 'Neste',
-    previousArrow: 'Forrige',
+    previousArrow: 'Førre',
   },
   dropdown: {
     numberHits: `Søket gav {hits} treff`,

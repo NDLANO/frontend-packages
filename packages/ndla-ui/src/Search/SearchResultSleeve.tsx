@@ -172,6 +172,10 @@ const getNextElementInDirection = (current: string, arr: Array<string>, directio
   }
 };
 
+const getDefaultCount = () => {
+  return window.innerWidth > 980 ? 7 : 3;
+};
+
 const findPathForKeyboardNavigation = (
   result: Array<ContentTypeResultType>,
   current: string,
@@ -180,9 +184,13 @@ const findPathForKeyboardNavigation = (
   if (direction === null)
     return current;
 
-  const resultsContainingPathsNested = result.map(resultBlock =>
-      resultBlock.resources.map(r => r.path || '')
-  );
+  const resultsContainingPathsNested = result.map(resultBlock => {
+    const paths = resultBlock.resources.map(r => r.path || '');
+
+    // Slice to not navigate hidden paths behind "See more" button
+    return paths.slice(0, getDefaultCount());
+  });
+
   const resultsContainingPaths = ([GO_TO_SEARCHPAGE] as string[]).concat(...resultsContainingPathsNested);
 
   // Nothing selected, goto either first or last depending on direction
@@ -341,7 +349,7 @@ const SearchResultSleeve: React.FC<Props> = ({
               onNavigate={onNavigate}
               contentTypeResult={contentTypeResult}
               resourceToLinkProps={resourceToLinkProps}
-              defaultCount={window.innerWidth > 980 ? 7 : 3}
+              defaultCount={getDefaultCount()}
               key={contentTypeResult.title}
               keyboardPathNavigation={keyboardPathNavigation}
               showAdditionalResources

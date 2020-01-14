@@ -566,6 +566,8 @@ const messages = {
     },
     openMenuTooltip: 'Open menu',
     mobileStepInfo: '{currentPage} out of {totalPages}',
+    nextArrow: 'Next',
+    previousArrow: 'Previous',
   },
   dropdown: {
     numberHits: `Search returned {hits} hits`,

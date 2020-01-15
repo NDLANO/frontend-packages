@@ -19,6 +19,14 @@ export const highlightStyle = css`
   }
 `;
 
+export const noWidthhighlightStyle = css`
+  background: ${colors.brand.light};
+  color: ${colors.brand.dark};
+  small {
+    color: ${colors.text.primary} !important;
+  }
+`;
+
 type inMenuProps = {
   inMenu?: boolean;
   animateList?: number;

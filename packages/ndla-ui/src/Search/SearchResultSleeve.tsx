@@ -158,7 +158,7 @@ const StyledInstructions = styled.div`
 `;
 
 
-const getNextElementInDirection = (current: HTMLElement | null, arr: Array<HTMLElement | string>, direction: 1 | -1 | null): HTMLElement | string => {
+const getNextElementInDirection = (current: HTMLElement | string, arr: Array<HTMLElement | string>, direction: 1 | -1 | null): HTMLElement | string | null => {
   const currentIdx = arr.indexOf(current);
 
   if (direction === 1) {
@@ -178,27 +178,25 @@ const getDefaultCount = () => {
 
 const findPathForKeyboardNavigation = (
   contentRef: HTMLDivElement | null,
-  current: HTMLElement | null,
+  current: HTMLElement | string | null,
   direction: 1 | -1 | null,
 ): HTMLElement | string | null => {
-
-  if (direction === null)
-    return current;
-
-  // TODO: Nullsjekk
-  const selectables = Array.from(contentRef.querySelectorAll('li'));
+  const selectables = contentRef ? Array.from(contentRef.querySelectorAll('li')) : [];
   const resultsContainingPaths: Array<string | HTMLElement> = ([GO_TO_SEARCHPAGE] as Array<HTMLElement | string>).concat(...selectables);
 
   // Nothing selected, goto either first or last depending on direction
   if (current === null) {
-    if (direction === 1) {
-      return resultsContainingPaths[0];
-    } else if (direction === -1) {
-      return resultsContainingPaths[resultsContainingPaths.length - 1];
+    switch(direction) {
+      case 1:
+        return resultsContainingPaths[0];
+      case -1:
+        return resultsContainingPaths[resultsContainingPaths.length - 1];
+      default:
+        return current;
     }
+  } else {
+    return getNextElementInDirection(current, resultsContainingPaths, direction);
   }
-
-  return getNextElementInDirection(current, resultsContainingPaths, direction);
 };
 
 type Props = {
@@ -230,8 +228,7 @@ const SearchResultSleeve: React.FC<Props> = ({
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
-  const initialKeyboardPathNavigation: string | HTMLElement = '';
-  const [keyboardPathNavigation, setKeyNavigation] = useState(initialKeyboardPathNavigation);
+  const [keyboardPathNavigation, setKeyNavigation] = useState<HTMLElement | string | null>('');
 
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
@@ -269,13 +266,15 @@ const SearchResultSleeve: React.FC<Props> = ({
             history.push({pathname: path })
           }
         } else {
-            const toClick =
-                keyboardPathNavigation &&
-                keyboardPathNavigation.querySelector &&
-                (keyboardPathNavigation.querySelector('a') ||
-                    keyboardPathNavigation.querySelector('button'));
+            if (keyboardPathNavigation instanceof HTMLElement) {
+              const toClick =
+                  keyboardPathNavigation &&
+                  keyboardPathNavigation.querySelector &&
+                  (keyboardPathNavigation.querySelector('a') ||
+                      keyboardPathNavigation.querySelector('button'));
 
-            toClick && toClick.click();
+              toClick && toClick.click();
+            }
         }
       } else if (e.code === 'Tab') {
         setKeyNavigation('');

@@ -56,7 +56,7 @@ type Props = {
     noHit: string;
   };
   ignoreContentTypeBadge: boolean;
-  keyboardPathNavigation: string;
+  keyboardPathNavigation: HTMLElement;
   inMenu?: boolean;
   animateList?: number;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;

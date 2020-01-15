@@ -158,7 +158,7 @@ const StyledInstructions = styled.div`
 `;
 
 
-const getNextElementInDirection = (current: string, arr: Array<string>, direction: 1 | -1 | null): string => {
+const getNextElementInDirection = (current: HTMLElement | null, arr: Array<HTMLElement | string>, direction: 1 | -1 | null): HTMLElement | string => {
   const currentIdx = arr.indexOf(current);
 
   if (direction === 1) {
@@ -177,24 +177,20 @@ const getDefaultCount = () => {
 };
 
 const findPathForKeyboardNavigation = (
-  result: Array<ContentTypeResultType>,
-  current: string,
+  contentRef: HTMLDivElement | null,
+  current: HTMLElement | null,
   direction: 1 | -1 | null,
-): string => {
+): HTMLElement | string | null => {
+
   if (direction === null)
     return current;
 
-  const resultsContainingPathsNested = result.map(resultBlock => {
-    const paths = resultBlock.resources.map(r => r.path || '');
-
-    // Slice to not navigate hidden paths behind "See more" button
-    return paths.slice(0, getDefaultCount());
-  });
-
-  const resultsContainingPaths = ([GO_TO_SEARCHPAGE] as string[]).concat(...resultsContainingPathsNested);
+  // TODO: Nullsjekk
+  const selectables = Array.from(contentRef.querySelectorAll('li'));
+  const resultsContainingPaths: Array<string | HTMLElement> = ([GO_TO_SEARCHPAGE] as Array<HTMLElement | string>).concat(...selectables);
 
   // Nothing selected, goto either first or last depending on direction
-  if (current === '') {
+  if (current === null) {
     if (direction === 1) {
       return resultsContainingPaths[0];
     } else if (direction === -1) {
@@ -203,23 +199,6 @@ const findPathForKeyboardNavigation = (
   }
 
   return getNextElementInDirection(current, resultsContainingPaths, direction);
-};
-
-const pathFromFocus = (): string | null => {
-  // Check if has focus on an element
-  const focusedElementType = document.querySelector('a[data-highlighted=true]');
-
-  if (
-      focusedElementType &&
-      focusedElementType.getAttribute('data-highlighted')
-  ) {
-    // Use path form focused element.
-    if (focusedElementType instanceof HTMLElement) {
-      focusedElementType.blur();
-    }
-    return focusedElementType.getAttribute('href');
-  }
-  return null;
 };
 
 type Props = {
@@ -251,7 +230,8 @@ const SearchResultSleeve: React.FC<Props> = ({
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
-  const [keyboardPathNavigation, setKeyNavigation] = useState('');
+  const initialKeyboardPathNavigation: string | HTMLElement = '';
+  const [keyboardPathNavigation, setKeyNavigation] = useState(initialKeyboardPathNavigation);
 
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
@@ -261,7 +241,7 @@ const SearchResultSleeve: React.FC<Props> = ({
 
         setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
-            result,
+            contentRef.current,
             prevKeyPath,
             1,
           );
@@ -273,7 +253,7 @@ const SearchResultSleeve: React.FC<Props> = ({
 
         setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
-            result,
+            contentRef.current,
             prevKeyPath,
             -1,
           );
@@ -289,19 +269,23 @@ const SearchResultSleeve: React.FC<Props> = ({
             history.push({pathname: path })
           }
         } else {
-          const focusPath = pathFromFocus();
-          if (focusPath) {
-            history.push(focusPath);
-          }
+            const toClick =
+                keyboardPathNavigation &&
+                keyboardPathNavigation.querySelector &&
+                (keyboardPathNavigation.querySelector('a') ||
+                    keyboardPathNavigation.querySelector('button'));
+
+            toClick && toClick.click();
         }
       } else if (e.code === 'Tab') {
         setKeyNavigation('');
       }
     };
+
     window.addEventListener('keydown', onKeyDownEvent);
     setKeyNavigation(prevKeyNav => {
       return findPathForKeyboardNavigation(
-        result,
+        contentRef.current,
         prevKeyNav,
         null,
       );

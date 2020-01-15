@@ -113,6 +113,8 @@ const ContentTypeResult: React.FC<Props> = ({
         <StyledList inMenu={inMenu} animateList={animateList}>
           {resources.map(resource => {
             const { path, name, resourceTypes, subject, additional } = resource;
+
+
             const linkProps = resourceToLinkProps(resource);
             const linkContent = (
               <>
@@ -131,11 +133,20 @@ const ContentTypeResult: React.FC<Props> = ({
               animateList > 0 &&
               !!showAdditionalResources;
 
+            const anchor = keyboardPathNavigation && keyboardPathNavigation.querySelector && keyboardPathNavigation.querySelector('a');
+            const comparePath = `/subjects${path}`;
+            const anchorHref = anchor && anchor.getAttribute('href');
+            const shouldHighlight =  anchorHref === comparePath;
+
+            // TODO: Highlight showall button, shoAllRef could probably be used?
+
             return (
-              <StyledListItem key={path} delayAnimation={delayAnimation}>
+              <StyledListItem
+                  key={path}
+                  delayAnimation={delayAnimation}>
                 <SafeLink
-                  css={path === keyboardPathNavigation && highlightStyle}
-                  data-highlighted={path === keyboardPathNavigation}
+                  css={shouldHighlight && highlightStyle}
+                  data-highlighted={shouldHighlight || false}
                   {...linkProps}
                   onClick={() => {
                     if (onNavigate) {

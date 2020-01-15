@@ -57,7 +57,7 @@ type Props = {
     noHit: string;
   };
   ignoreContentTypeBadge: boolean;
-  keyboardPathNavigation: HTMLElement;
+  keyboardPathNavigation: HTMLElement | string | null;
   inMenu?: boolean;
   animateList?: number;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
@@ -88,7 +88,8 @@ const ContentTypeResult: React.FC<Props> = ({
     showAll || !defaultCount ? results : results.slice(0, defaultCount);
 
   const displayShowAllButton = defaultCount && results.length > defaultCount;
-  const shouldHighlightShowAllButton = showAllRef.current === keyboardPathNavigation;
+  const shouldHighlightShowAllButton =
+    showAllRef.current === keyboardPathNavigation;
 
   useEffect(() => {
     if (showAll && showAllRef.current) {
@@ -118,7 +119,6 @@ const ContentTypeResult: React.FC<Props> = ({
           {resources.map(resource => {
             const { path, name, resourceTypes, subject, additional } = resource;
 
-
             const linkProps = resourceToLinkProps(resource);
             const linkContent = (
               <>
@@ -138,15 +138,16 @@ const ContentTypeResult: React.FC<Props> = ({
               !!showAdditionalResources;
 
             // Figure out highlighting by comparing path of link with keyboard navigated anchor
-            const anchor = keyboardPathNavigation.querySelector('a');
+            const anchor =
+              keyboardPathNavigation instanceof HTMLElement &&
+              keyboardPathNavigation &&
+              keyboardPathNavigation.querySelector('a');
             const comparePath = `/subjects${path}`;
             const anchorHref = anchor && anchor.getAttribute('href');
             const shouldHighlight = anchorHref === comparePath;
 
             return (
-              <StyledListItem
-                  key={path}
-                  delayAnimation={delayAnimation}>
+              <StyledListItem key={path} delayAnimation={delayAnimation}>
                 <SafeLink
                   css={shouldHighlight && highlightStyle}
                   data-highlighted={shouldHighlight || false}
@@ -169,7 +170,10 @@ const ContentTypeResult: React.FC<Props> = ({
             <StyledListItem ref={showAllRef}>
               <Button
                 ghostPill
-                css={[showAllButtonStyle, shouldHighlightShowAllButton && noWidthhighlightStyle]}
+                css={[
+                  showAllButtonStyle,
+                  shouldHighlightShowAllButton && noWidthhighlightStyle,
+                ]}
                 data-highlighted={shouldHighlightShowAllButton}
                 onClick={() => toggleShowAll(!showAll)}>
                 {showAll

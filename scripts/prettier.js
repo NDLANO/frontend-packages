@@ -10,7 +10,7 @@ const prettierCmd = path.resolve(__dirname, `../node_modules/.bin/${prettier}`);
 
 const args = [].concat(
   `--${shouldWrite ? 'write' : 'l'}`,
-  '"**/*(*.js|*.jsx|*.md)"',
+  '"**/*(*.js|*.jsx|*.md|*.ts|*.tsx)"',
 );
 
 try {

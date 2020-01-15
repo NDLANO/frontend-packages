@@ -6,19 +6,19 @@
  *
  */
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { History } from 'history';
 import styled from '@emotion/styled';
-import {breakpoints, colors, fonts, misc, mq, spacing} from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 // @ts-ignore
-import {injectT} from '@ndla/i18n';
+import { injectT } from '@ndla/i18n';
 // @ts-ignore
-import {ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench,} from '@ndla/icons/common';
+import { ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';
-import {highlightStyle} from './ContentTypeResultStyles';
-import {ContentTypeResultType, Resource} from '../types';
+import { highlightStyle } from './ContentTypeResultStyles';
+import { ContentTypeResultType, Resource } from '../types';
 
 const GO_TO_SEARCHPAGE = 'GO_TO_SEARCHPAGE';
 
@@ -157,14 +157,17 @@ const StyledInstructions = styled.div`
   }
 `;
 
-
-const getNextElementInDirection = (current: string, arr: Array<string>, direction: 1 | -1 | null): string => {
+const getNextElementInDirection = (
+  current: HTMLElement | string,
+  arr: Array<HTMLElement | string>,
+  direction: 1 | -1 | null,
+): HTMLElement | string | null => {
   const currentIdx = arr.indexOf(current);
 
   if (direction === 1) {
     const idx = currentIdx + 1 > arr.length - 1 ? 0 : currentIdx + 1;
     return arr[idx];
-  } else if (direction === -1){
+  } else if (direction === -1) {
     const idx = currentIdx - 1 < 0 ? arr.length - 1 : currentIdx - 1;
     return arr[idx];
   } else {
@@ -172,45 +175,39 @@ const getNextElementInDirection = (current: string, arr: Array<string>, directio
   }
 };
 
-const findPathForKeyboardNavigation = (
-  result: Array<ContentTypeResultType>,
-  current: string,
-  direction: 1 | -1 | null,
-): string => {
-  if (direction === null)
-    return current;
-
-  const resultsContainingPathsNested = result.map(resultBlock =>
-      resultBlock.resources.map(r => r.path || '')
-  );
-  const resultsContainingPaths = ([GO_TO_SEARCHPAGE] as string[]).concat(...resultsContainingPathsNested);
-
-  // Nothing selected, goto either first or last depending on direction
-  if (current === '') {
-    if (direction === 1) {
-      return resultsContainingPaths[0];
-    } else if (direction === -1) {
-      return resultsContainingPaths[resultsContainingPaths.length - 1];
-    }
-  }
-
-  return getNextElementInDirection(current, resultsContainingPaths, direction);
+const getDefaultCount = () => {
+  return window.innerWidth > 980 ? 7 : 3;
 };
 
-const pathFromFocus = (): string | null => {
-  // Check if has focus on an element
-  const focusedElementType = document.activeElement;
-  if (
-      focusedElementType &&
-      focusedElementType.getAttribute('data-highlighted')
-  ) {
-    // Use path form focused element.
-    if (focusedElementType instanceof HTMLElement) {
-      focusedElementType.blur();
+const findPathForKeyboardNavigation = (
+  contentRef: HTMLDivElement | null,
+  current: HTMLElement | string | null,
+  direction: 1 | -1 | null,
+): HTMLElement | string | null => {
+  const selectables = contentRef
+    ? Array.from(contentRef.querySelectorAll('li'))
+    : [];
+  const resultsContainingPaths: Array<string | HTMLElement> = ([
+    GO_TO_SEARCHPAGE,
+  ] as Array<HTMLElement | string>).concat(...selectables);
+
+  // Nothing selected, goto either first or last depending on direction
+  if (current === null) {
+    switch (direction) {
+      case 1:
+        return resultsContainingPaths[0];
+      case -1:
+        return resultsContainingPaths[resultsContainingPaths.length - 1];
+      default:
+        return current;
     }
-    return focusedElementType.getAttribute('href');
+  } else {
+    return getNextElementInDirection(
+      current,
+      resultsContainingPaths,
+      direction,
+    );
   }
-  return null;
 };
 
 type Props = {
@@ -242,7 +239,9 @@ const SearchResultSleeve: React.FC<Props> = ({
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
-  const [keyboardPathNavigation, setKeyNavigation] = useState('');
+  const [keyboardPathNavigation, setKeyNavigation] = useState<
+    HTMLElement | string | null
+  >('');
 
   useEffect(() => {
     const onKeyDownEvent = (e: KeyboardEvent) => {
@@ -250,52 +249,56 @@ const SearchResultSleeve: React.FC<Props> = ({
         e.stopPropagation();
         e.preventDefault();
 
-        const focusPath = pathFromFocus();
         setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
-            result,
-            focusPath ? focusPath : prevKeyPath,
+            contentRef.current,
+            prevKeyPath,
             1,
           );
         });
-
       } else if (e.code === 'ArrowUp') {
         e.stopPropagation();
         e.preventDefault();
 
-        const focusPath = pathFromFocus();
         setKeyNavigation(prevKeyPath => {
           return findPathForKeyboardNavigation(
-            result,
-            focusPath ? focusPath : prevKeyPath,
+            contentRef.current,
+            prevKeyPath,
             -1,
           );
         });
-
       } else if (e.code === 'Enter') {
-
         e.stopPropagation();
         e.preventDefault();
-        if (keyboardPathNavigation) {
-          if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
-            const anchorTag = searchAllRef && searchAllRef.current && searchAllRef.current.closest("a");
-            if (anchorTag) {
-              const path = anchorTag.getAttribute("href") || '';
-              history.push({pathname: path })
-            }
-          } else {
-            history.push({ pathname: `/subjects${keyboardPathNavigation}` });
+        if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
+          const anchorTag =
+            searchAllRef &&
+            searchAllRef.current &&
+            searchAllRef.current.closest('a');
+          if (anchorTag) {
+            const path = anchorTag.getAttribute('href') || '';
+            history.push({ pathname: path });
+          }
+        } else {
+          if (keyboardPathNavigation instanceof HTMLElement) {
+            const toClick =
+              keyboardPathNavigation &&
+              keyboardPathNavigation.querySelector &&
+              (keyboardPathNavigation.querySelector('a') ||
+                keyboardPathNavigation.querySelector('button'));
+
+            toClick && toClick.click();
           }
         }
-
       } else if (e.code === 'Tab') {
         setKeyNavigation('');
       }
     };
+
     window.addEventListener('keydown', onKeyDownEvent);
     setKeyNavigation(prevKeyNav => {
       return findPathForKeyboardNavigation(
-        result,
+        contentRef.current,
         prevKeyNav,
         null,
       );
@@ -343,7 +346,7 @@ const SearchResultSleeve: React.FC<Props> = ({
               onNavigate={onNavigate}
               contentTypeResult={contentTypeResult}
               resourceToLinkProps={resourceToLinkProps}
-              defaultCount={window.innerWidth > 980 ? 7 : 3}
+              defaultCount={getDefaultCount()}
               key={contentTypeResult.title}
               keyboardPathNavigation={keyboardPathNavigation}
               showAdditionalResources

@@ -26,13 +26,11 @@ const StyledTag = styled.span<StyledTagProps>`
 `;
 
 interface Props extends StyledTagProps {
-  label: string,
-};
+  label: string;
+}
 
 const VersionLogTag: React.FC<Props> = ({ label, color }) => (
-  <StyledTag color={color}>
-    {label}
-  </StyledTag>
+  <StyledTag color={color}>{label}</StyledTag>
 );
 
 export default VersionLogTag;

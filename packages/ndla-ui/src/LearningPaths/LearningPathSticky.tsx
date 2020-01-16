@@ -10,13 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import {
-  colors,
-  spacing,
-  animations,
-  mq,
-  breakpoints,
-} from '@ndla/core';
+import { colors, spacing, animations, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { Back, Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
@@ -119,7 +113,7 @@ type PropsSiblings = {
   arrow?: 'left' | 'right';
   pathId: number;
   stepId: number;
-}
+};
 
 export const LearningPathStickySibling: React.FunctionComponent<
   PropsSiblings

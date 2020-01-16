@@ -12,10 +12,7 @@ import VersionLogTag from './versionLogs/VersionLogTag';
 // @ts-ignore
 export * from './index-javascript';
 
-export {
-  VersionHistory,
-  VersionLogTag,
-};
+export { VersionHistory, VersionLogTag };
 export { default as Footer } from './footer/Footer';
 export {
   default as FooterQualityInsurance,

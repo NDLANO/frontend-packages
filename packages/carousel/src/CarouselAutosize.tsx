@@ -26,7 +26,7 @@ interface Props {
   ndlaFilm: boolean;
   centered?: boolean;
   itemsLength: number;
-  breakpoints: CaruselBreakpoint[],
+  breakpoints: CaruselBreakpoint[];
   children: (
     calculatedProps: CalculatedCarouselProps | null,
   ) => React.ReactNode;
@@ -122,12 +122,9 @@ export class CarouselAutosize extends Component<Props, State> {
 
     let wrapperWidth = 'auto';
 
-    if (
-      centered &&
-      calculatedCarouselProps
-    ) {
+    if (centered && calculatedCarouselProps) {
       wrapperWidth = `${calculatedCarouselProps.columnWidth *
-        Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength)  +
+        Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
         calculatedCarouselProps.distanceBetweenItems *
           (calculatedCarouselProps.columnsPrSlide - 1) +
         (calculatedCarouselProps.margin || 0) * 2}px`;

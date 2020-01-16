@@ -1,4 +1,8 @@
-export const setCookie = (cookieName:string, cookieValue:string, removeCookie:boolean) => {
+export const setCookie = (
+  cookieName: string,
+  cookieValue: string,
+  removeCookie: boolean,
+) => {
   let expires;
   if (removeCookie) {
     expires = 'Thu, 01 Jan 1970 00:00:01 GMT';
@@ -10,9 +14,9 @@ export const setCookie = (cookieName:string, cookieValue:string, removeCookie:bo
   document.cookie = `${cookieName}=${cookieValue}; ${expires}; path=/`;
 };
 
-export const getCookie = (cookieName:string, cookies:string) => {
+export const getCookie = (cookieName: string, cookies: string) => {
   const value = `; ${cookies}`;
-  const parts:Array<any> = value.split(`; ${cookieName}=`);
+  const parts: Array<any> = value.split(`; ${cookieName}=`);
   if (parts.length > 1) {
     return parts
       .pop()
@@ -22,9 +26,9 @@ export const getCookie = (cookieName:string, cookies:string) => {
   return null;
 };
 
-export const isValidCookie = (cookieName:string, cookies:string) =>
+export const isValidCookie = (cookieName: string, cookies: string) =>
   getCookie(cookieName, cookies) !== null;
 
-export const deleteCookie = (cookieName:string) => {
+export const deleteCookie = (cookieName: string) => {
   setCookie(cookieName, '', true);
 };

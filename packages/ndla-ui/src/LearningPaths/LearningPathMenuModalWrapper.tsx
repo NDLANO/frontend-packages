@@ -71,9 +71,7 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
           activateButton={
             <Button css={buttonToggleCss}>
               <LearningPath />
-              <span>
-                Vis læringssti 
-              </span>
+              <span>Vis læringssti</span>
             </Button>
           }>
           {(onClose: Function) => (

@@ -128,7 +128,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       if (isIE11) {
         // insta move on IE
         window.scrollTo(0, yCoordinate);
-      } else if(isMobileSafari) {
+      } else if (isMobileSafari) {
         // Because safari on iOS set position:fixed to static when keyboard is open, we need to scroll to top
         window.scrollTo({
           top: 0,

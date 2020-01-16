@@ -6,7 +6,7 @@
  *
  */
 
- import React from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
 
 const cssStyle = css`
@@ -144,11 +144,7 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             id="Path"
             strokeLinecap="round"
           />
-          <path
-            d="M635.6,43.5 L635.7,69.7"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M635.6,43.5 L635.7,69.7" id="Path" strokeLinecap="round" />
           <path
             d="M642.8,78.3 L639.2,79.1 L630.6,81.6 L660.9,96.1 L700.3,78.5 L668.6,68.5 C667.2,68.8 647.6,76.3 647.6,76.3"
             id="Path"
@@ -186,11 +182,7 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             id="Path"
             strokeLinecap="round"
           />
-          <path
-            d="M384.5,81.2 L630.4,81.2"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M384.5,81.2 L630.4,81.2" id="Path" strokeLinecap="round" />
         </g>
       </g>
     </g>

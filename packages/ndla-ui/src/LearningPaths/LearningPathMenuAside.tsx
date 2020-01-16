@@ -77,7 +77,9 @@ const StyledAside = styled.aside<StyledAsideProps>`
     padding-left: ${spacing.spacingUnit * 1.25}px;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    ${props => props.invertedStyle && `
+    ${props =>
+      props.invertedStyle &&
+      `
       color: #fff;
     `}
   }
@@ -88,12 +90,14 @@ type StyledSafeLinkButtonProps = {
 };
 
 const StyledSafeLinkButton = styled(SafeLinkButton)<StyledSafeLinkButtonProps>`
-  ${props => props.invertedStyle && css`
-    ${mq.range({ from: breakpoints.tablet })} {
-      border-color: #fff;
-      color: #fff;
-    }
-  `}
+  ${props =>
+    props.invertedStyle &&
+    css`
+      ${mq.range({ from: breakpoints.tablet })} {
+        border-color: #fff;
+        color: #fff;
+      }
+    `}
 `;
 
 type Props = {

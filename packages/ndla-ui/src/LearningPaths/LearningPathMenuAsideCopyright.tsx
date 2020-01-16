@@ -34,17 +34,17 @@ type Props = {
     contributors: {
       type: string;
       name: string;
-    }[],
+    }[];
     license: {
       license: string;
       description: string;
       url: string;
-    },
+    };
   };
-}
+};
 
 const LearningPathMenuAsideCopyright: React.FunctionComponent<Props> = ({
-  copyright
+  copyright,
 }) => (
   <StyledLearningPathDetails>
     <User />

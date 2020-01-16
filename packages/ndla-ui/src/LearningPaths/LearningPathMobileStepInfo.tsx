@@ -23,9 +23,13 @@ type Props = {
   total: number;
   current: number;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-}
+};
 
-const LearningPathMobileStepInfo: React.FunctionComponent<Props> = ({ total, current, t }) => (
+const LearningPathMobileStepInfo: React.FunctionComponent<Props> = ({
+  total,
+  current,
+  t,
+}) => (
   <StyledInfo>
     {t('learningPath.mobileStepInfo', {
       totalPages: total,

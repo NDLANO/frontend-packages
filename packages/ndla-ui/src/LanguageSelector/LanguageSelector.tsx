@@ -14,7 +14,15 @@ import FocusTrapReact from 'focus-trap-react';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
-import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
+import {
+  spacing,
+  misc,
+  colors,
+  mq,
+  breakpoints,
+  animations,
+  fonts,
+} from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
 import LanguageSelectorContent from './LanguageSelectorContent';
@@ -166,9 +174,14 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
         ghostPill={!outline && !inverted}
         ghostPillOutlineInverted={outline && inverted}
         ghostPillInverted={!outline && inverted}
-        css={invertedOutlineLargeScreensOnly && styledInvertedOutlineLargeScreensOnly}
+        css={
+          invertedOutlineLargeScreensOnly &&
+          styledInvertedOutlineLargeScreensOnly
+        }
         onClick={() => setIsOpen(true)}>
-        <StyledSpan>{t(`languages.prefixChangeLanguage`)}: {t(`languages.${infoLocale}`)}</StyledSpan>
+        <StyledSpan>
+          {t(`languages.prefixChangeLanguage`)}: {t(`languages.${infoLocale}`)}
+        </StyledSpan>
         <ChevronDown />
       </Button>
       {isOpen && (

@@ -12,8 +12,15 @@ import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-// @ts-ignore
-import { ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench } from '@ndla/icons/common';
+import {
+  ChevronDown,
+  ChevronUp,
+  Esc,
+  KeyboardReturn,
+  Search as SearchIcon,
+  Wrench,
+  // @ts-ignore
+} from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import ContentTypeResult from './ContentTypeResult';

@@ -28,9 +28,11 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   display: inline-flex;
   min-height: ${spacing.normal};
   align-items: center;
-  ${props => props.hasFocus && css`
-    ${utils.restoreOutline};
-  `};
+  ${props =>
+    props.hasFocus &&
+    css`
+      ${utils.restoreOutline};
+    `};
   label {
     cursor: pointer;
     &:after {
@@ -41,7 +43,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       position: absolute;
       right: 0;
       top: 2px;
-      transform: translateX(-${(spacing.spacingUnit * 1.5) - SIZE}px);
+      transform: translateX(-${spacing.spacingUnit * 1.5 - SIZE}px);
       background: ${colors.brand.greyMedium};
       transition: all 100ms ease;
       border-radius: 100%;
@@ -128,15 +130,28 @@ type Props = {
   id: string;
   disabled?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-}
+};
 
 const Switch: React.FunctionComponent<Props> = ({
-  onChange, checked, disabled, id, label, ...rest
+  onChange,
+  checked,
+  disabled,
+  id,
+  label,
+  ...rest
 }) => {
   const [hasFocus, setFocusState] = useState(false);
   return (
     <StyledSwitch {...rest} hasFocus={hasFocus}>
-      <input onFocus={() => setFocusState(true)} onBlur={() => setFocusState(false)} onChange={onChange} id={id} type="checkbox" checked={checked} disabled={disabled} />
+      <input
+        onFocus={() => setFocusState(true)}
+        onBlur={() => setFocusState(false)}
+        onChange={onChange}
+        id={id}
+        type="checkbox"
+        checked={checked}
+        disabled={disabled}
+      />
       <label htmlFor={id}>{label}</label>
     </StyledSwitch>
   );

@@ -24,7 +24,7 @@ type AnimatedBackgroundProps = {
   animationSpeed: number;
   scaleTarget: number;
   pauseBetween: number;
-}
+};
 
 const AnimatedBackground = styled.div<AnimatedBackgroundProps>`
   display: block;
@@ -35,9 +35,11 @@ const AnimatedBackground = styled.div<AnimatedBackgroundProps>`
   left: 0;
   right: 0;
   animation: animatedFooter ${props => props.animationSpeed}ms infinite;
-  animation-direction: ${props => props.reversed ? 'alternate-reverse' : 'alternate'};
+  animation-direction: ${props =>
+    props.reversed ? 'alternate-reverse' : 'alternate'};
   @keyframes animatedFooter {
-    0%, ${props => props.pauseBetween}% {
+    0%,
+    ${props => props.pauseBetween}% {
       transform: scale(1);
       opacity: 0;
     }
@@ -46,7 +48,6 @@ const AnimatedBackground = styled.div<AnimatedBackgroundProps>`
     }
   }
 `;
-
 
 const StyledFooter = styled.footer`
   color: #fff;
@@ -166,10 +167,40 @@ const Footer: React.FunctionComponent<Props> = ({
         {children}
         <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
       </OneColumn>
-      <AnimatedBackground pauseBetween={75} animationSpeed={25000} scaleTarget={1} reversed background={'linear-gradient(-60deg, rgba(4,29,48,1) 0%, rgba(32,88,143,0) 100%)'} />
-      <AnimatedBackground pauseBetween={50} animationSpeed={10000} scaleTarget={1.5} background={'linear-gradient(117deg, rgba(1,146,206,1) 0%, rgba(32,88,143,0) 100%)'} />
-      <AnimatedBackground pauseBetween={65} animationSpeed={15000} scaleTarget={2} background={'linear-gradient(-49deg, rgba(7,38,60,1) 0%, rgba(32,88,143,0) 100%)'} />
-      <AnimatedBackground pauseBetween={40} animationSpeed={7500} scaleTarget={2} reversed background={'linear-gradient(96deg, rgba(0,117,160,1) 0%, rgba(32,88,143,0) 100%)'} />
+      <AnimatedBackground
+        pauseBetween={75}
+        animationSpeed={25000}
+        scaleTarget={1}
+        reversed
+        background={
+          'linear-gradient(-60deg, rgba(4,29,48,1) 0%, rgba(32,88,143,0) 100%)'
+        }
+      />
+      <AnimatedBackground
+        pauseBetween={50}
+        animationSpeed={10000}
+        scaleTarget={1.5}
+        background={
+          'linear-gradient(117deg, rgba(1,146,206,1) 0%, rgba(32,88,143,0) 100%)'
+        }
+      />
+      <AnimatedBackground
+        pauseBetween={65}
+        animationSpeed={15000}
+        scaleTarget={2}
+        background={
+          'linear-gradient(-49deg, rgba(7,38,60,1) 0%, rgba(32,88,143,0) 100%)'
+        }
+      />
+      <AnimatedBackground
+        pauseBetween={40}
+        animationSpeed={7500}
+        scaleTarget={2}
+        reversed
+        background={
+          'linear-gradient(96deg, rgba(0,117,160,1) 0%, rgba(32,88,143,0) 100%)'
+        }
+      />
     </StyledFooter>
   </>
 );

@@ -11,24 +11,23 @@
 import { getCookie, isValidCookie } from '../index';
 
 const testCookieKey = 'COOKIE_KEY';
-const dummyCookies = 'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true};';
+const dummyCookies =
+  'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true};';
 
 test('test getCookie ', () => {
-  expect(getCookie(testCookieKey, dummyCookies))
-    .toBe('{"1":true,"2":true,"3":true}');
+  expect(getCookie(testCookieKey, dummyCookies)).toBe(
+    '{"1":true,"2":true,"3":true}',
+  );
 });
 
 test('test getCookie new', () => {
-  expect(getCookie('NEW_COOKIE_KEY', dummyCookies))
-    .toBe(null);
+  expect(getCookie('NEW_COOKIE_KEY', dummyCookies)).toBe(null);
 });
 
 test('test isValidCookie existingCookie', () => {
-  expect(isValidCookie(testCookieKey, dummyCookies))
-    .toBe(true);
+  expect(isValidCookie(testCookieKey, dummyCookies)).toBe(true);
 });
 
 test('test isValidCookie newCookie', () => {
-  expect(isValidCookie('NEW_COOKIE_KEY', dummyCookies))
-    .toBe(false);
+  expect(isValidCookie('NEW_COOKIE_KEY', dummyCookies)).toBe(false);
 });

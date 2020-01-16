@@ -13,7 +13,16 @@ import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
-import { colors, spacing, fonts, misc, typography, mq, breakpoints, animations } from '@ndla/core';
+import {
+  colors,
+  spacing,
+  fonts,
+  misc,
+  typography,
+  mq,
+  breakpoints,
+  animations,
+} from '@ndla/core';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -28,12 +37,14 @@ const BORDER_WIDTH = 4;
 
 const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
   ${mq.range({ from: breakpoints.tablet })} {
-    ${props => props.invertedStyle && css`
-      color: #fff;
-      ${StyledInfoHeader} {
+    ${props =>
+      props.invertedStyle &&
+      css`
         color: #fff;
-      }
-    `}
+        ${StyledInfoHeader} {
+          color: #fff;
+        }
+      `}
   }
   border-left: ${BORDER_WIDTH}px solid ${colors.brand.primary};
   &:before {
@@ -54,35 +65,38 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     margin-top: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-    ${props => !props.isOpen && css`
-      display: none;
-    `}
-    ${props => props.isOpen && css`
-      animation-duration: ${animations.durations.superFast};
-      animation-name: StyledMenuIntroAnimationHeight;
-      @keyframes StyledMenuIntroAnimationHeight {
-        0% {
-          height: ${spacing.normal};
-          width: 0;
+    ${props =>
+      !props.isOpen &&
+      css`
+        display: none;
+      `}
+    ${props =>
+      props.isOpen &&
+      css`
+        animation-duration: ${animations.durations.superFast};
+        animation-name: StyledMenuIntroAnimationHeight;
+        @keyframes StyledMenuIntroAnimationHeight {
+          0% {
+            height: ${spacing.normal};
+            width: 0;
+          }
+          99% {
+            overflow: hidden;
+            height: 118px;
+            width: 200px;
+          }
+          100% {
+            height: auto;
+            width: auto;
+          }
         }
-        99% {
-          overflow: hidden;
-          height: 118px;
-          width: 200px;
+        > * {
+          opacity: 0;
+          ${animations.fadeInBottom()}
+          animation-fill-mode: forwards;
+          animation-delay: ${animations.durations.superFast};
         }
-        100% {
-          height: auto;
-          width: auto;
-        }
-      }
-      > * {
-        opacity: 0;
-        ${animations.fadeInBottom()}
-        animation-fill-mode: forwards;
-        animation-delay: ${animations.durations.superFast};
-      }
-      `
-  }
+      `}
 `;
 
 const StyledTimeBox = styled.div`
@@ -91,7 +105,8 @@ const StyledTimeBox = styled.div`
   border-radius: ${misc.borderRadius};
   ${fonts.sizes(14, 1.2)};
   font-weight: ${fonts.weight.normal};
-  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small} ${spacing.small};
+  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small}
+    ${spacing.small};
   display: inline-flex;
   color: ${colors.text.primary};
   svg {
@@ -114,7 +129,11 @@ interface Props {
 }
 
 const LearningPathMenuIntro: React.FunctionComponent<Props> = ({
-  duration, isOpen, name, invertedStyle, t,
+  duration,
+  isOpen,
+  name,
+  invertedStyle,
+  t,
 }) => {
   const hours = Math.floor(duration / 60);
   const usePluralsForHours = hours !== 1;
@@ -122,12 +141,20 @@ const LearningPathMenuIntro: React.FunctionComponent<Props> = ({
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
-        <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
+        <StyledInfoHeader>
+          {t('learningPath.youAreInALearningPath')}
+        </StyledInfoHeader>
         <StyledIntroHeader>{name}</StyledIntroHeader>
         <StyledTimeBox>
           <Time />
-            {hours} {t(usePluralsForHours ? 'learningPath.readTimeHour_plurals' : 'learningPath.readTimeHour')}
-            {minutes > 0 && ` ${minutes} ${t('learningPath.readTimeMinutesShort')}`}
+          {hours}{' '}
+          {t(
+            usePluralsForHours
+              ? 'learningPath.readTimeHour_plurals'
+              : 'learningPath.readTimeHour',
+          )}
+          {minutes > 0 &&
+            ` ${minutes} ${t('learningPath.readTimeMinutesShort')}`}
         </StyledTimeBox>
       </div>
     </StyledMenuIntro>

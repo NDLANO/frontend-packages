@@ -9,7 +9,4 @@
 import BlogPostWrapper from './BlogPostWrapper';
 import BlogPost from './BlogPost';
 
-export { 
-  BlogPostWrapper,
-  BlogPost,
-}; 
+export { BlogPostWrapper, BlogPost };

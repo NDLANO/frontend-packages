@@ -34,10 +34,6 @@ interface Props {
 
 export const BlogPostWrapper: React.FunctionComponent<Props> = ({
   children,
-}) => (
-  <StyledGrid>
-    {children}
-  </StyledGrid>
-);
+}) => <StyledGrid>{children}</StyledGrid>;
 
 export default BlogPostWrapper;

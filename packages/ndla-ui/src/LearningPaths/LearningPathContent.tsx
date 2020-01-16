@@ -32,6 +32,4 @@ interface Props {
 
 export const LearningPathContent: React.FunctionComponent<Props> = ({
   children,
-}) => (
-  <StyledContent>{children}</StyledContent>
-);
+}) => <StyledContent>{children}</StyledContent>;

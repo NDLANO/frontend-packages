@@ -31,11 +31,13 @@ const StyledWrapper = styled.section<PropStyledWrapper>`
       display: flex;
     }
   }
-  ${props => props.invertedStyle && css`
-    ${mq.range({ until: breakpoints.mobileWide })} {
-      background: #fff;
-    }
-  `}
+  ${props =>
+    props.invertedStyle &&
+    css`
+      ${mq.range({ until: breakpoints.mobileWide })} {
+        background: #fff;
+      }
+    `}
 `;
 
 interface Props {
@@ -46,6 +48,4 @@ interface Props {
 export const LearningPathWrapper: React.FunctionComponent<Props> = ({
   children,
   invertedStyle,
-}) => (
-  <StyledWrapper invertedStyle={invertedStyle}>{children}</StyledWrapper>
-);
+}) => <StyledWrapper invertedStyle={invertedStyle}>{children}</StyledWrapper>;

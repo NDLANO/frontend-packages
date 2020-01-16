@@ -48,7 +48,8 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       ${fonts.sizes(14, 1.2)};
       color: ${colors.text.primary};
       ${mq.range({ from: breakpoints.tablet })} {
-        color: ${({ invertedStyle }) => invertedStyle ? '#fff' : colors.text.primary};
+        color: ${({ invertedStyle }) =>
+          invertedStyle ? '#fff' : colors.text.primary};
       }
     }
     &:hover,
@@ -127,8 +128,11 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       transform: translate(28px, -${spacing.spacingUnit * 3}px);
     }
   `}
-  ${props => 
-    !props.afterCurrent && !props.current && props.invertedStyle && `
+  ${props =>
+    !props.afterCurrent &&
+    !props.current &&
+    props.invertedStyle &&
+    `
     ${mq.range({ from: breakpoints.tablet })} {
       a {
         > span {
@@ -137,8 +141,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
         color: #fff;
       }
     }
-    `
-  }
+    `}
 `;
 
 const StyledContentType = styled.div`

@@ -47,9 +47,7 @@ const FrontpageCircularSubjectsSection: React.FunctionComponent<Props> = ({
   return (
     <StyledSection>
       <StyledSubjects>
-        <FrontpageCombinedSubjects
-          categories={sortedCategories}
-        />
+        <FrontpageCombinedSubjects categories={sortedCategories} />
       </StyledSubjects>
     </StyledSection>
   );

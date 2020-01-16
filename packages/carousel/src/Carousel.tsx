@@ -58,22 +58,22 @@ export class Carousel extends Component<Props, State> {
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const { columnsPrSlide, items } = nextProps;
     const { slideIndex } = prevState;
-    
+
     // Check if resize caused carousel to be scrolled to far.
     if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
       const adjustedSlideIndex =
         slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
-      
+
       if (items.length < columnsPrSlide) {
         return {
           slideIndex: 0,
-        }
+        };
       }
       return {
         slideIndex: adjustedSlideIndex,
       };
     }
-    
+
     return null;
   }
 

@@ -42,7 +42,7 @@ const StyledWrapper = styled.div`
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 const FrontpageInfo: React.FunctionComponent<Props> = ({ children }) => (
   <StyledWrapper>{children}</StyledWrapper>

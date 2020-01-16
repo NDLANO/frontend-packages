@@ -20,5 +20,5 @@ export {
   AccordionBar,
   AccordionPanel,
   StyledAccordionsPanelItemsWrapper,
-  StyledAccordionsPanelIconButton
+  StyledAccordionsPanelIconButton,
 };

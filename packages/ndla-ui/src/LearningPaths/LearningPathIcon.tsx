@@ -16,7 +16,7 @@ import { colors } from '@ndla/core';
 type IconProps = {
   beforeCurrent?: boolean;
   current?: boolean;
-}
+};
 const Icon = styled.div<IconProps>`
   border-radius: 100%;
   display: flex;
@@ -30,7 +30,7 @@ const Icon = styled.div<IconProps>`
   svg {
     width: 18px;
     height: 18px;
-    fill: ${props => props.current ? '#fff' : colors.brand.tertiary};
+    fill: ${props => (props.current ? '#fff' : colors.brand.tertiary)};
   }
 `;
 

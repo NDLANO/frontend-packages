@@ -17,4 +17,9 @@ export {
 export { createUniversalPortal } from './createUniversalPortal';
 export { isFunction } from './isFunction';
 export { resizeObserver } from './resizeObserver';
-export { setCookie, getCookie, deleteCookie, isValidCookie } from './cookieHandler';
+export {
+  setCookie,
+  getCookie,
+  deleteCookie,
+  isValidCookie,
+} from './cookieHandler';

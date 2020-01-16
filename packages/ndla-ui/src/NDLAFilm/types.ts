@@ -10,4 +10,4 @@ export interface movieType {
   };
   path: string;
   title: string;
-};
+}

@@ -17,14 +17,21 @@ type StyledWrapperProps = {
 const StyledWrapper = styled.div<StyledWrapperProps>`
   background: transparent;
   font-family: ${fonts.serif};
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: ${fonts.serif};
   }
   max-width: 720px;
   margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
-    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.spacingUnit * 4}px;
+    margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall}
+      0 !important;
+    padding: ${spacing.normal} ${spacing.large} ${spacing.large}
+      ${spacing.spacingUnit * 4}px;
     ul {
       margin-left: ${spacing.normal};
     }
@@ -37,7 +44,9 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
     }
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    ${props => props.invertedStyle && `
+    ${props =>
+      props.invertedStyle &&
+      `
       color: #fff;
     `}
   }
@@ -48,26 +57,25 @@ interface Props {
   title: string;
   invertedStyle?: boolean;
   license?: {
-    license: string,
-    description: string,
-    url: string,
-  },
-};
+    license: string;
+    description: string;
+    url: string;
+  };
+}
 
 export const LearningPathInformation: React.FunctionComponent<Props> = ({
-  description, title, license, invertedStyle,
+  description,
+  title,
+  license,
+  invertedStyle,
 }) => (
   <section className="o-wrapper">
     <StyledWrapper invertedStyle={invertedStyle} className="c-article">
       <div>
-        <h1>
-          {title}
-        </h1>
+        <h1>{title}</h1>
         {license && license.license}
       </div>
-      {description && <div
-        dangerouslySetInnerHTML={{ __html: description }}
-      />}
+      {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
     </StyledWrapper>
   </section>
 );

@@ -156,6 +156,7 @@ const messages = {
     search: 'Search',
     resetSearch: 'Empty search',
     closeSearch: 'Close search',
+    searchAllInfo: 'View all results',
     topicsConjunction: 'and',
     highlighted: 'Highlighted',
     heading: {
@@ -472,6 +473,20 @@ const messages = {
   breadcrumb: {
     toFrontpage: 'To the frontpage',
   },
+  listview: {
+    filters: {
+      subject: {
+        useFilter: 'Use filter',
+        openFilter: 'Use filter on subcject',
+        closeFilter: 'Close filter',
+      },
+      category: {
+        useFilter: 'Use filter',
+        openFilter: 'Use filter on cathegory',
+        closeFilter: 'Close filter',
+      },
+    },
+  },
   notions: {
     closeNotion: 'Close',
   },
@@ -556,7 +571,9 @@ const messages = {
     youAreInALearningPath: 'You are now in a learningpath',
     readTime: '{hours} schoolhours = {minutes} min',
     pageOf: 'of',
+    readTimeHour: 'hour',
     readTimeHour_plurals: 'hours',
+    readTimeMinutesShort: 'min',
     lastStep: {
       heading: 'Last step of this learningpath',
       headingSmall:

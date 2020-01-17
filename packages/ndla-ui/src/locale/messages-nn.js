@@ -157,7 +157,7 @@ const messages = {
       'Vi jobbar stadig med å forbetre oss! Har du kommentarar til søket, blir vi glade om du legg dei inn i Spør NDLA nede i høgre hjørne.',
     resetSearch: 'Tøm søk',
     closeSearch: 'Lukk søk',
-    searchAllInfo: 'Sjå treff alle på søk',
+    searchAllInfo: 'Sjå alle treff på søk',
     topicsConjunction: 'og',
     highlighted: 'Aktuelt',
     heading: {
@@ -475,6 +475,20 @@ const messages = {
   breadcrumb: {
     toFrontpage: 'Til framsida',
   },
+  listview: {
+    filters: {
+      subject: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på fag',
+        closeFilter: 'Lukk filter',
+      },
+      category: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer på kategori',
+        closeFilter: 'Lukk filter',
+      },
+    },
+  },
   notions: {
     closeNotion: 'Lukk',
   },
@@ -558,7 +572,9 @@ const messages = {
     youAreInALearningPath: 'Du er nå inne i en læringssti',
     readTime: '{hours} Skuletimar = {minutes} min',
     pageOf: 'av',
+    readTimeHour: 'time',
     readTimeHour_plurals: 'timar',
+    readTimeMinutesShort: 'min',
     lastStep: {
       heading: 'Siste steg i læringsstien',
       headingSmall:

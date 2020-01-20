@@ -165,7 +165,7 @@ const messages = {
         'Search for topics, learning materials, keywords ...',
       messages: {
         searchFieldTitle: 'Search',
-        menuButton: 'Menu',
+        menuButton: 'Content',
       },
       links: {
         aboutNDLA: 'About NDLA',
@@ -209,7 +209,7 @@ const messages = {
       search: 'Search',
       subjectOverview: 'All subjects',
       backToSubjectFrontpage: 'Back to subject frontpage',
-      title: 'Menu',
+      title: 'Content',
       subjectPage: 'Subject front page',
       openFilter: 'Filter',
       useFilter: 'Use filter',

@@ -13,20 +13,13 @@ import Icon from '../Icon';
 const Menu = props => (
   <Icon
     title="Menu"
-    viewBox="0 0 30.4 30.5"
-    data-license="CC-BY 4.0"
-    data-source="Netlife"
+    viewBox="0 0 24 24"
+    data-license="Apache License 2.0"
+    data-source="Material Design"
     {...props}>
     <g>
-      <rect x="1.8" y="1.8" width="6.8" height="6.8" />
-      <rect x="11.8" y="1.8" width="6.8" height="6.8" />
-      <rect x="21.8" y="1.8" width="6.8" height="6.8" />
-      <rect x="1.8" y="11.8" width="6.8" height="6.8" />
-      <rect x="11.8" y="11.8" width="6.8" height="6.8" />
-      <rect x="21.8" y="11.8" width="6.8" height="6.8" />
-      <rect x="1.8" y="21.8" width="6.8" height="6.8" />
-      <rect x="11.8" y="21.8" width="6.8" height="6.8" />
-      <rect x="21.8" y="21.8" width="6.8" height="6.8" />
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
     </g>
   </Icon>
 );

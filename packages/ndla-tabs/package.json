@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tabs",
-  "version": "0.11.22",
+  "version": "0.11.23",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@ndla/core": "^0.6.21",
-    "@ndla/util": "^0.3.5",
+    "@ndla/util": "^0.3.6",
     "react-tabs": "^3.0.0"
   },
   "publishConfig": {

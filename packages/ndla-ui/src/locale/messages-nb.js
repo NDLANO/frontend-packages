@@ -164,7 +164,7 @@ const messages = {
       searchFieldPlaceholder: 'Hva vil du lære om i dag?',
       messages: {
         searchFieldTitle: 'Søk',
-        menuButton: 'Innhold',
+        menuButton: 'Faginnhold',
       },
       links: {
         aboutNDLA: 'Om NDLA',
@@ -208,7 +208,7 @@ const messages = {
       goTo: 'Gå til',
       search: 'Søk',
       subjectOverview: 'Alle fag',
-      title: 'Innhold',
+      title: 'Faginnhold',
       subjectPage: 'Fagforside',
       backToSubjectFrontpage: 'Tilbake til fagforsiden',
       openFilter: 'Filter',

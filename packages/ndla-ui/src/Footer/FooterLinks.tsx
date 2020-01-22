@@ -45,12 +45,12 @@ type FooterLinksProps = {
 };
 
 const commonLinks = [
-  { text: 'om.ndla.no', url: 'https://om.ndla.no' },
-  { text: 'about.ndla.no', url: 'https://om.ndla.no/about-ndla' },
-  { text: 'blogg.ndla.no', url: 'https://blogg.ndla.no' },
-  { text: 'blogg.ndla.no/elever', url: 'https://blogg.ndla.no/elever' },
-  { text: 'fyr.ndla.no', url: 'https://fyr.ndla.no' },
-  { text: 'deling.ndla.no', url: 'https://deling.ndla.no' },
+  { text: 'Om NDLA', url: 'https://om.ndla.no' },
+  { text: 'About NDLA', url: 'https://om.ndla.no/about-ndla' },
+  { text: 'Fagblogg', url: 'https://blogg.ndla.no' },
+  { text: 'Tips til elever', url: 'https://blogg.ndla.no/elever' },
+  { text: 'FYR-prosjektet', url: 'https://fyr.ndla.no' },
+  { text: 'Delingsarena', url: 'https://deling.ndla.no' },
 ];
 
 const StyledNav = styled.nav`

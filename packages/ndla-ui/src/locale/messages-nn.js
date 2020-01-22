@@ -432,6 +432,14 @@ const messages = {
       sharePage: 'Del denne sida',
       sharePageAria: 'Del denne sida',
     },
+    ndlaLinks: {
+      omNdla: 'Om NDLA',
+      aboutNdla: 'About NDLA',
+      blog: 'Fagblogg',
+      tips: 'Tips til elevar',
+      fyr: 'FYR-prosjektet',
+      sharing: 'Delingsarena',
+    },
   },
   contentTypes: {
     all: 'Alle',

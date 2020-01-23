@@ -432,6 +432,14 @@ const messages = {
       sharePage: 'Share this page',
       sharePageAria: 'Share this page',
     },
+    ndlaLinks: {
+      omNdla: 'Om NDLA',
+      aboutNdla: 'About NDLA',
+      blog: 'Blog',
+      tips: 'Tips to students',
+      fyr: 'FYR project',
+      sharing: 'Sharing arena',
+    },
   },
   contentTypes: {
     all: 'All',

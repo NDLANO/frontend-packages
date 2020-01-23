@@ -45,12 +45,15 @@ type FooterLinksProps = {
 };
 
 const commonLinks = [
-  { text: 'om.ndla.no', url: 'https://om.ndla.no' },
-  { text: 'om.ndla.no/about-ndla', url: 'https://om.ndla.no/about-ndla' },
-  { text: 'blogg.ndla.no', url: 'https://blogg.ndla.no' },
-  { text: 'blogg.ndla.no/elever', url: 'https://blogg.ndla.no/elever' },
-  { text: 'fyr.ndla.no', url: 'https://fyr.ndla.no' },
-  { text: 'deling.ndla.no', url: 'https://deling.ndla.no' },
+  { key: 'omNdla', url: 'https://om.ndla.no' },
+  {
+    key: 'aboutNdla',
+    url: 'https://om.ndla.no/about-ndla',
+  },
+  { key: 'blog', url: 'https://blogg.ndla.no' },
+  { key: 'tips', url: 'https://blogg.ndla.no/elever' },
+  { key: 'fyr', url: 'https://fyr.ndla.no' },
+  { key: 'sharing', url: 'https://deling.ndla.no' },
 ];
 
 const StyledNav = styled.nav`
@@ -111,12 +114,12 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
           {commonLinks.map(link => (
             <div key={link.url}>
               <StyledSafeLink
-                key={link.text}
-                aria-label={link.text}
+                key={t(`footer.ndlaLinks.${link.key}`)}
+                aria-label={t(`footer.ndlaLinks.${link.key}`)}
                 to={link.url}
                 target="_blank"
                 rel="noopener noreferrer">
-                {link.text}
+                {t(`footer.ndlaLinks.${link.key}`)}
               </StyledSafeLink>
             </div>
           ))}

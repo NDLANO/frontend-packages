@@ -28,14 +28,21 @@ const Link = styled.a`
 `;
 
 type Props = {
+  contentUrl?: string;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const CreatedBy = ({ t }: Props) => (
+const CreatedBy = ({ contentUrl, t }: Props) => (
   <Container>
     <Wrapper>
       <Text>
-        {t('createdBy.linkText')} <Link href={`https://ndla.no`}>NDLA</Link>
+        {contentUrl ? (
+          <Link href={contentUrl}>{t('createdBy.content')}</Link>
+        ) : (
+          t('createdBy.content')
+        )}
+        &nbsp;{t('createdBy.text')}&nbsp;
+        <Link href={`https://ndla.no`}>NDLA</Link>
       </Text>
       <Logo label={`NDLA`} to={`https://ndla.no`} />
     </Wrapper>

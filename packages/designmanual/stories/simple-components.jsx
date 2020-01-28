@@ -14,8 +14,6 @@ import {
   LayoutItem,
   AudioPlayer,
   OneColumn,
-  PageContainer,
-  Content,
   CreatedBy,
 } from '@ndla/ui';
 import { colors } from '@ndla/core';
@@ -28,8 +26,6 @@ import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
 import SolutionTableExample from './molecules/SolutionExample';
-import { Center } from './helpers';
-import LicenseBox from './article/LicenseBox';
 
 const floatVideo = left => (
   <Fragment>
@@ -897,11 +893,15 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Utarbeidet av">
         <p>
           LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i
-          bunnen
+          bunnen. "NDLA" og logoen lenker til ndla.no. "Artikkel" kan være en
+          lenke til artikkelen på ndla.no om den fins
         </p>
       </StoryIntro>
       <StoryBody>
+        <h2>Uten artikkellenke</h2>
         <CreatedBy />
+        <h2>Med artikkellenke</h2>
+        <CreatedBy contentUrl="https://ndla.no/subjects/subject:26/topic:1:191103/topic:1:4352/resource:1:2052" />
       </StoryBody>
     </div>
   ));

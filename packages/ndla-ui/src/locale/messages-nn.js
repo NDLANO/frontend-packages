@@ -622,7 +622,8 @@ const messages = {
     },
   },
   createdBy: {
-    linkText: 'Artikkelen er utarbeida av',
+    content: 'Artikkelen',
+    text: 'er utarbeida av',
   },
 };
 

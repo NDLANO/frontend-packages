@@ -610,7 +610,8 @@ const messages = {
     },
   },
   createdBy: {
-    linkText: 'The article is created by',
+    content: 'The article',
+    text: 'is created by',
   },
 };
 

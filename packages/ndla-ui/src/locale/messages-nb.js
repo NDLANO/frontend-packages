@@ -618,7 +618,8 @@ const messages = {
     },
   },
   createdBy: {
-    linkText: 'Artikkelen er utarbeidet av',
+    content: 'Artikkelen',
+    text: 'er utarbeidet av',
   },
 };
 

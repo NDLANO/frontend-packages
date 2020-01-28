@@ -10,12 +10,21 @@ import { useState, useEffect } from 'react';
 import throttle from 'lodash/throttle';
 
 function getSize() {
-  return {
-    innerHeight: window.innerHeight,
-    innerWidth: window.innerWidth,
-    outerHeight: window.outerHeight,
-    outerWidth: window.outerWidth,
-  };
+  if (window) {
+    return {
+      innerHeight: window.innerHeight,
+      innerWidth: window.innerWidth,
+      outerHeight: window.outerHeight,
+      outerWidth: window.outerWidth,
+    };
+  } else {
+    return {
+      innerHeight: 600,
+      innerWidth: 800,
+      outerHeight: 600,
+      outerWidth: 800,
+    };
+  }
 }
 
 export function useWindowSize(wait?: number) {
@@ -36,9 +45,9 @@ export function useWindowSize(wait?: number) {
     }
     // Throttle if wait param is provided
     const fn = wait ? throttle(handleResize, wait) : handleResize;
-    window.addEventListener('resize', fn);
+    window && window.addEventListener('resize', fn);
     return () => {
-      window.removeEventListener('resize', fn);
+      window && window.removeEventListener('resize', fn);
     };
   }, []);
 

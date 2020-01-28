@@ -22,9 +22,9 @@ const style = css`
   font-weight: ${fonts.weight.normal};
 
   svg {
-    width: 16px;
-    height: 16px;
-    margin-top: -6px;
+    width: 25px;
+    height: 25px;
+    margin-top: -3px;
     margin-right: ${spacing.xsmall};
   }
   &:hover {

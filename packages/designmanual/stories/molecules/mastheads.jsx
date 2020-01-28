@@ -128,6 +128,7 @@ class MastheadWithTopicMenu extends Component {
       beta,
       betaInfoContent,
       topicMenuProps,
+      t,
     } = this.props;
     return (
       <Masthead
@@ -139,7 +140,9 @@ class MastheadWithTopicMenu extends Component {
           <Modal
             size="fullscreen"
             activateButton={
-              <TopicMenuButton ndlaFilm={ndlaFilm}>Meny</TopicMenuButton>
+              <TopicMenuButton ndlaFilm={ndlaFilm}>
+                {t('masthead.menu.title')}
+              </TopicMenuButton>
             }
             animation="subtle"
             animationDuration={150}

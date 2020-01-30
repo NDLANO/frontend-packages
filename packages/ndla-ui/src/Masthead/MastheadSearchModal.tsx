@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactChild, ReactChildren } from 'react';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
@@ -7,6 +7,7 @@ import Modal from '@ndla/modal';
 import Button from '@ndla/button';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
+import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
@@ -15,7 +16,7 @@ import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;
-  children: React.ReactNode;
+  children: (arg: Function) => ReactChild | ReactChildren | React.ReactNode;
   hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
@@ -134,12 +135,12 @@ const MastheadSearchModal: React.FC<Props> = ({
         {t('masthead.menu.search')}
       </ToggleSearchButton>
     }>
-    {(onClose: VoidFunction) => (
+    {(closeModal: VoidFunction) => (
       <>
         <div css={extraBackdrop} />
         <StyledHeader>
-          {children}
-          <Button stripped onClick={onClose}>
+          {isFunction(children) ? children(closeModal) : children}
+          <Button stripped onClick={closeModal}>
             <Cross className="c-icon--medium" />
           </Button>
         </StyledHeader>

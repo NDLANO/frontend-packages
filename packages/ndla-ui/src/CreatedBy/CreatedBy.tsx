@@ -5,6 +5,8 @@ import { colors, fonts } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Logo from '../Logo';
+import SafeLink from '@ndla/safelink';
+import { LinkProps } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +28,9 @@ const Text = styled.div`
 const Link = styled.a`
   color: ${colors.text.light};
 `;
+const StyledSafeLink = styled(SafeLink)<LinkProps>`
+  color: ${colors.text.light};
+`;
 
 type Props = {
   contentUrl?: string;
@@ -37,12 +42,14 @@ const CreatedBy = ({ contentUrl, t }: Props) => (
     <Wrapper>
       <Text>
         {contentUrl ? (
-          <Link href={contentUrl}>{t('createdBy.content')}</Link>
+          <StyledSafeLink to={contentUrl}>
+            {t('createdBy.content')}
+          </StyledSafeLink>
         ) : (
           t('createdBy.content')
         )}
         &nbsp;{t('createdBy.text')}&nbsp;
-        <Link href={`https://ndla.no`}>NDLA</Link>
+        <StyledSafeLink to={`http://ndla.no`}>NDLA</StyledSafeLink>
       </Text>
       <Logo label={`NDLA`} to={`https://ndla.no`} />
     </Wrapper>

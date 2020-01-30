@@ -13,9 +13,7 @@ import isString from 'lodash/isString';
 import MissingRouterContext from './MissingRouterContext';
 
 const isExternalLink = (to?: LocationDescriptor) =>
-  to &&
-  isString(to) &&
-  (to.startsWith('https://') || to.startsWith('https://'));
+  to && isString(to) && (to.startsWith('https://') || to.startsWith('http://'));
 
 export const isOldNdlaLink = (to?: LocationDescriptor) =>
   to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;

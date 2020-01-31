@@ -1,12 +1,12 @@
 import React from 'react';
+import { LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import Logo from '../Logo';
-import SafeLink from '@ndla/safelink';
-import { LinkProps } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -25,9 +25,6 @@ const Text = styled.div`
   ${fonts.sizes('20px', '20px')};
 `;
 
-const Link = styled.a`
-  color: ${colors.text.light};
-`;
 const StyledSafeLink = styled(SafeLink)<LinkProps>`
   color: ${colors.text.light};
 `;
@@ -49,7 +46,7 @@ const CreatedBy = ({ contentUrl, t }: Props) => (
           t('createdBy.content')
         )}
         &nbsp;{t('createdBy.text')}&nbsp;
-        <StyledSafeLink to={`http://ndla.no`}>NDLA</StyledSafeLink>
+        <StyledSafeLink to={`https://ndla.no`}>NDLA</StyledSafeLink>
       </Text>
       <Logo label={`NDLA`} to={`https://ndla.no`} />
     </Wrapper>

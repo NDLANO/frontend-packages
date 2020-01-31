@@ -617,6 +617,10 @@ const messages = {
       licenseAuthor: 'Jone N. Nyborg',
     },
   },
+  createdBy: {
+    content: 'The article',
+    text: 'is created by',
+  },
 };
 
 export default messages;

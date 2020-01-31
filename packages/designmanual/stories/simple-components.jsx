@@ -14,6 +14,7 @@ import {
   LayoutItem,
   AudioPlayer,
   OneColumn,
+  CreatedBy,
 } from '@ndla/ui';
 import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
@@ -884,6 +885,23 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
       <StoryBody>
         <TooltipExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('Utarbeidet av', () => (
+    <div>
+      <StoryIntro title="Utarbeidet av">
+        <p>
+          LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i
+          bunnen. "NDLA" og logoen lenker til ndla.no. "Artikkel" kan være en
+          lenke til artikkelen på ndla.no om den fins
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <h2>Uten artikkellenke</h2>
+        <CreatedBy />
+        <h2>Med artikkellenke</h2>
+        <CreatedBy contentUrl="https://ndla.no/subjects/subject:26/topic:1:191103/topic:1:4352/resource:1:2052" />
       </StoryBody>
     </div>
   ));

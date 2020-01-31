@@ -629,6 +629,10 @@ const messages = {
       buttonLabel: 'Lagre',
     },
   },
+  createdBy: {
+    content: 'Artikkelen',
+    text: 'er utarbeida av',
+  },
 };
 
 export default messages;

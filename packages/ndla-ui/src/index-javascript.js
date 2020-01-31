@@ -163,3 +163,5 @@ export {
   FilmMovieList,
   AllMoviesAlphabetically,
 } from './NDLAFilm';
+
+export { default as CreatedBy } from './CreatedBy';

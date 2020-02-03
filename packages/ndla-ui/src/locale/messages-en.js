@@ -78,7 +78,7 @@ const messages = {
       contentTypeResultNoHit: 'No results',
     },
     searchResultMessages: {
-      searchStringLabel: 'You searched on:',
+      searchStringLabel: 'You searched for:',
       subHeading: '{totalCount} hits in NDLA',
     },
     searchResultListMessages: {

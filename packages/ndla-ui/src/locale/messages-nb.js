@@ -23,7 +23,7 @@ const messages = {
   },
   newsLetter: {
     heading: 'Nyhetsbrev',
-    description: 'Hold deg oppdatert. Abonnér på siste nytt fra NDLA.',
+    description: 'Hold deg oppdatert. Abonner på siste nytt fra NDLA.',
     mainLinkName: 'Meld deg på',
     iconLinkName: 'Meld deg på nyhetsbrev',
   },
@@ -183,7 +183,7 @@ const messages = {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studieforberedende',
-      imported: 'Spoltefag',
+      imported: 'Spolte fag',
       heading: 'Hva lærer du?',
     },
     errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',

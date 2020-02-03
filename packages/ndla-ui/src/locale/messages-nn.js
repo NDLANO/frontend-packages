@@ -23,7 +23,7 @@ const messages = {
   },
   newsLetter: {
     heading: 'Nyheitsbrev',
-    description: 'Hald deg oppdatert. Abonnér på siste nytt frå NDLA.',
+    description: 'Hald deg oppdatert. Abonner på siste nytt frå NDLA.',
     mainLinkName: 'Meld deg på',
     iconLinkName: 'Meld deg på nyheitsbrev',
   },
@@ -149,7 +149,7 @@ const messages = {
     articleErrorDescription:
       'Orsak, ein feil oppstod under lasting av emneskildringa.',
     topic: 'EMNE',
-    topics: 'Emner',
+    topics: 'Emne',
   },
   welcomePage: {
     search: 'Søk',
@@ -184,7 +184,7 @@ const messages = {
       fellesfag: 'Fellesfag',
       yrkesfag: 'Yrkesfag',
       studiespesialiserende: 'Studieførebuande',
-      imported: 'Spoltefag',
+      imported: 'Spolte fag',
       heading: 'Kva lærer du?',
     },
     film: {
@@ -199,7 +199,7 @@ const messages = {
   },
   meta: {
     description:
-      'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for videregåande opplæring',
+      'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
     keywords:
       'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
@@ -223,7 +223,7 @@ const messages = {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis meir fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
           'Vis fleire oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis fleire læringsstier',
+        [contentTypes.LEARNING_PATH]: 'Vis fleire læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis fleire vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Vis fleire kjeldemateriale',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
@@ -233,8 +233,8 @@ const messages = {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
         [contentTypes.TASKS_AND_ACTIVITIES]:
           'Vis færre oppgåver og aktivitetar',
-        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
-        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
+        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstiar',
+        [contentTypes.LEARNING_PATH]: 'Vis færre læringsstiar',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressursar',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kjeldemateriale',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
@@ -514,10 +514,10 @@ const messages = {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
       text:
-        'NDLA film er ei nettbasert filmteneste for elevar og lærarar i videregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
+        'NDLA film er ei nettbasert filmteneste for elevar og lærarar i vidaregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
     search: {
-      placeholder: 'Søk på filmnavn',
+      placeholder: 'Søk på filmnamn',
       categoryFromNdla: 'Utval frå NDLA',
       chooseCategory: 'Vel filmkategori',
       subjectButton: 'Gå til emne',
@@ -555,7 +555,7 @@ const messages = {
     moreAboutNdlaFilm: {
       header: 'NDLA Film',
       firstParagraph:
-        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kopla mot læreplaner i fleire fag. Dei er valde av redaksjonene til NDLA i samarbeid med Norgesfilm AS.',
+        'Filmane i filmtenesta er henta frå norsk og internasjonal filmarv og er kopla mot læreplanar i fleire fag. Dei er valde av redaksjonane til NDLA i samarbeid med Norgesfilm AS.',
       secondParagraph:
         'Du kan sjå filmane om du er kopla til Internett via datamaskina, nettbrettet eller smarttelefonen din. Vi har gjort jobben med klarering av rettar og betaling. Alt du treng å gjere, er å trykke play.',
       thirdParagraph:
@@ -575,9 +575,9 @@ const messages = {
   learningPath: {
     createLearningPathText:
       'Lag din eigen, kopier denne eller sjå fleire læringsstiar?',
-    createLearningPathButtonText: 'Gå til stier',
+    createLearningPathButtonText: 'Gå til stiar',
     lastUpdated: 'Sist oppdatert',
-    youAreInALearningPath: 'Du er nå inne i en læringssti',
+    youAreInALearningPath: 'Du er no inne i ein læringssti',
     readTime: '{hours} Skuletimar = {minutes} min',
     pageOf: 'av',
     readTimeHour: 'time',
@@ -586,7 +586,7 @@ const messages = {
     lastStep: {
       heading: 'Siste steg i læringsstien',
       headingSmall:
-        'Du er nå på siste steget i læringsstien {learningPathName}',
+        'Du er no på siste steget i læringsstien {learningPathName}',
       topicHeading: 'Gå til emne:',
       subjectHeading: 'Gå til faget:',
     },
@@ -603,7 +603,7 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
+      text: 'Kva skjer med fagfornyinga på NDLA?',
       externalLink:
         'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
       linkText: 'Fagblogg',

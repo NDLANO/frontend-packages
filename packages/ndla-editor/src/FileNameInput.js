@@ -11,12 +11,16 @@ import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, fonts, colors } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
+import { css } from '@emotion/core';
+import { InformationOutline } from '@ndla/icons/common';
+import Tooltip from '@ndla/tooltip';
 
 class InputComponent extends Component {
   constructor(props) {
     super(props);
     this.inputRef = React.createRef();
   }
+
   componentDidMount() {
     // Get position from props.forwardedRef.
     if (this.props.usePortal) {
@@ -46,6 +50,35 @@ class InputComponent extends Component {
   }
 }
 
+const getButtonComponent = file => {
+  if (file.missingAtRemote) {
+    return (
+      <Tooltip
+        tooltip={`Ser ikke ut til å eksistere på serveren. Den kan ha blitt slettet fra en annen artikkel.`}>
+        <LinkButton
+          type="button"
+          css={css`
+            color: red;
+          `}>
+          {file.title === '' ? '[Mangler filnavn]' : file.title}
+          {` `}
+          <span>
+            ({file.type}) {<InformationOutline />}
+          </span>
+        </LinkButton>
+      </Tooltip>
+    );
+  } else {
+    return (
+      <LinkButton type="button" onClick={() => window.open(file.url)}>
+        {file.title === '' ? '[Mangler filnavn]' : file.title}
+        {` `}
+        <span>({file.type})</span>
+      </LinkButton>
+    );
+  }
+};
+
 const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
   if (editMode)
     return (
@@ -56,11 +89,7 @@ const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
   return (
     <div>
       <Download />
-      <LinkButton type="button" onClick={() => window.open(file.url)}>
-        {file.title === '' ? '[Mangler filnavn]' : file.title}
-        {` `}
-        <span>({file.type})</span>
-      </LinkButton>
+      {getButtonComponent(file)}
     </div>
   );
 };

@@ -50,17 +50,16 @@ class InputComponent extends Component {
   }
 }
 
-const getButtonComponent = (file, isMissing) => {
+const getButtonComponent = (file, isMissing, messages) => {
   if (isMissing) {
     return (
-      <Tooltip
-        tooltip={`Ser ikke ut til å eksistere på serveren. Den kan ha blitt slettet fra en annen artikkel.`}>
+      <Tooltip tooltip={messages.missingFileTooltip}>
         <LinkButton
           type="button"
           css={css`
             color: red;
           `}>
-          {file.title === '' ? '[Mangler filnavn]' : file.title}
+          {file.title === '' ? messages.missingTitle : file.title}
           {` `}
           <span>
             ({file.type}) {<InformationOutline />}
@@ -71,7 +70,7 @@ const getButtonComponent = (file, isMissing) => {
   } else {
     return (
       <LinkButton type="button" onClick={() => window.open(file.url)}>
-        {file.title === '' ? '[Mangler filnavn]' : file.title}
+        {file.title === '' ? messages.missingTitle : file.title}
         {` `}
         <span>({file.type})</span>
       </LinkButton>
@@ -79,7 +78,14 @@ const getButtonComponent = (file, isMissing) => {
   }
 };
 
-const FileNameInput = ({ editMode, useRef, file, isMissing, ...rest }) => {
+const FileNameInput = ({
+  editMode,
+  useRef,
+  file,
+  isMissing,
+  messages,
+  ...rest
+}) => {
   if (editMode)
     return (
       <div>
@@ -89,7 +95,7 @@ const FileNameInput = ({ editMode, useRef, file, isMissing, ...rest }) => {
   return (
     <div>
       <Download />
-      {getButtonComponent(file, isMissing)}
+      {getButtonComponent(file, isMissing, messages)}
     </div>
   );
 };

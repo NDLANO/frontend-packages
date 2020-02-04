@@ -92,6 +92,9 @@ class StructureExample extends Component {
           changeName: 'Endre navn',
           changeOrder: 'Endre rekkefølge',
           removeFile: 'Ta bort fil',
+          missingFileTooltip:
+            'Ser ikke ut til å eksistere på serveren. Den kan ha blitt slettet fra en annen artikkel.',
+          missingTitle: '[Mangler filnavn]',
         }}
       />
     );

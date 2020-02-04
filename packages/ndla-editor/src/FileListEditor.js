@@ -253,6 +253,7 @@ class FileListEditor extends Component {
                 deleteIndex === index ? this.executeDeleteFile : undefined
               }>
               <FileNameInput
+                messages={messages}
                 isMissing={isMissing}
                 useRef={this.filesWrapperRef}
                 file={file}

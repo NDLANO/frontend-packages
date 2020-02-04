@@ -50,8 +50,8 @@ class InputComponent extends Component {
   }
 }
 
-const getButtonComponent = file => {
-  if (file.missingAtRemote) {
+const getButtonComponent = (file, isMissing) => {
+  if (isMissing) {
     return (
       <Tooltip
         tooltip={`Ser ikke ut til å eksistere på serveren. Den kan ha blitt slettet fra en annen artikkel.`}>
@@ -79,7 +79,7 @@ const getButtonComponent = file => {
   }
 };
 
-const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
+const FileNameInput = ({ editMode, useRef, file, isMissing, ...rest }) => {
   if (editMode)
     return (
       <div>
@@ -89,7 +89,7 @@ const FileNameInput = ({ editMode, useRef, file, ...rest }) => {
   return (
     <div>
       <Download />
-      {getButtonComponent(file)}
+      {getButtonComponent(file, isMissing)}
     </div>
   );
 };

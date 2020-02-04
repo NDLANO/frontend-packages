@@ -284,7 +284,7 @@ const SearchResultSleeve: React.FC<Props> = ({
             searchAllRef.current.closest('a');
           if (anchorTag) {
             const path = anchorTag.getAttribute('href') || '';
-            history.push({ pathname: path });
+            history.push(path);
           }
         } else {
           if (keyboardPathNavigation instanceof HTMLElement) {

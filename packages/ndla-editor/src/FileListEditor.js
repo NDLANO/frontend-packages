@@ -226,53 +226,75 @@ class FileListEditor extends Component {
   }
 
   render() {
-    const { files, onEditFileName, usePortal, messages } = this.props;
+    const {
+      files,
+      onEditFileName,
+      usePortal,
+      messages,
+      missingFilePaths,
+    } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
     return (
       <ListWrapper ref={this.filesWrapperRef} draggingIndex={draggingIndex}>
-        {files.map((file, index) => (
-          <li
-            key={file.path}
-            css={[
-              fileCss,
-              deleteIndex === index && fadeOutAnimation,
-              editFileIndex !== index && file.title === '' && fileErrorCss,
-            ]}
-            onAnimationEnd={
-              deleteIndex === index ? this.executeDeleteFile : undefined
-            }>
-            <FileNameInput
-              useRef={this.filesWrapperRef}
-              file={file}
-              editMode={editFileIndex === index}
-              value={file.title}
-              childIndex={index}
-              usePortal={usePortal}
-              type="text"
-              placeholder={messages.placeholder}
-              onChange={e => {
-                onEditFileName(index, e.target.value);
-              }}
-              onKeyDown={e => {
-                if (e.key === 'Enter') {
-                  e.target.blur();
-                }
-              }}
-              onBlur={this.exitEditFileName}
-            />
-            <div>
-              <Tooltip tooltip={messages.changeName}>
-                <ButtonIcons
-                  tabIndex={-1}
-                  type="button"
-                  onClick={e => this.editFile(e, index)}>
-                  <Pencil />
-                </ButtonIcons>
-              </Tooltip>
-              {files.length > 1 &&
-                (draggingIndex === -1 ? (
-                  <Tooltip tooltip={messages.changeOrder}>
+        {files.map((file, index) => {
+          const isMissing = !!(missingFilePaths || []).find(
+            mp => mp === file.path,
+          );
+          return (
+            <li
+              key={file.path}
+              css={[
+                fileCss,
+                deleteIndex === index && fadeOutAnimation,
+                editFileIndex !== index && file.title === '' && fileErrorCss,
+              ]}
+              onAnimationEnd={
+                deleteIndex === index ? this.executeDeleteFile : undefined
+              }>
+              <FileNameInput
+                messages={messages}
+                isMissing={isMissing}
+                useRef={this.filesWrapperRef}
+                file={file}
+                editMode={editFileIndex === index}
+                value={file.title}
+                childIndex={index}
+                usePortal={usePortal}
+                type="text"
+                placeholder={messages.placeholder}
+                onChange={e => {
+                  onEditFileName(index, e.target.value);
+                }}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    e.target.blur();
+                  }
+                }}
+                onBlur={this.exitEditFileName}
+              />
+              <div>
+                <Tooltip tooltip={messages.changeName}>
+                  <ButtonIcons
+                    tabIndex={-1}
+                    type="button"
+                    onClick={e => this.editFile(e, index)}>
+                    <Pencil />
+                  </ButtonIcons>
+                </Tooltip>
+                {files.length > 1 &&
+                  (draggingIndex === -1 ? (
+                    <Tooltip tooltip={messages.changeOrder}>
+                      <ButtonIcons
+                        draggable
+                        tabIndex={-1}
+                        type="button"
+                        onMouseDown={e => this.onDragStart(e, index)}
+                        onMouseUp={this.onDragEnd}>
+                        <DragHorizontal />
+                      </ButtonIcons>
+                    </Tooltip>
+                  ) : (
                     <ButtonIcons
                       draggable
                       tabIndex={-1}
@@ -281,29 +303,20 @@ class FileListEditor extends Component {
                       onMouseUp={this.onDragEnd}>
                       <DragHorizontal />
                     </ButtonIcons>
-                  </Tooltip>
-                ) : (
+                  ))}
+                <Tooltip tooltip={messages.removeFile}>
                   <ButtonIcons
-                    draggable
                     tabIndex={-1}
                     type="button"
-                    onMouseDown={e => this.onDragStart(e, index)}
-                    onMouseUp={this.onDragEnd}>
-                    <DragHorizontal />
+                    onClick={() => this.deleteFile(index)}
+                    delete>
+                    <DeleteForever />
                   </ButtonIcons>
-                ))}
-              <Tooltip tooltip={messages.removeFile}>
-                <ButtonIcons
-                  tabIndex={-1}
-                  type="button"
-                  onClick={() => this.deleteFile(index)}
-                  delete>
-                  <DeleteForever />
-                </ButtonIcons>
-              </Tooltip>
-            </div>
-          </li>
-        ))}
+                </Tooltip>
+              </div>
+            </li>
+          );
+        })}
       </ListWrapper>
     );
   }
@@ -317,6 +330,7 @@ FileListEditor.propTypes = {
       type: PropTypes.string,
     }),
   ),
+  missingFilePaths: PropTypes.arrayOf(PropTypes.string),
   sortable: PropTypes.bool,
   onEditFileName: PropTypes.func.isRequired,
   onDeleteFile: PropTypes.func.isRequired,

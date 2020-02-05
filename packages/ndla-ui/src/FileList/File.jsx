@@ -13,7 +13,7 @@ const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
 
   if (isDeadLink) {
     return (
-      <>
+      <span key={format.url}>
         <Download />
         <span>
           {isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}
@@ -21,7 +21,7 @@ const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
         <span {...classes('tooltip')} aria-hidden role="tooltip" id={formatId}>
           <span {...classes('tooltip-text')}>{format.tooltip}</span>
         </span>
-      </>
+      </span>
     );
   }
 
@@ -61,6 +61,7 @@ const File = ({ file, id }) => {
 File.propTypes = {
   id: PropTypes.string.isRequired,
   file: PropTypes.shape({
+    fileExists: PropTypes.bool,
     title: PropTypes.string.isRequired,
     formats: PropTypes.arrayOf(
       PropTypes.shape({

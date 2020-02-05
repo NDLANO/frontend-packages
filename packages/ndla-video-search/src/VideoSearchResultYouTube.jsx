@@ -27,65 +27,68 @@ export default function VideoSearchResultYouTube({
   translations,
   locale,
 }) {
-  const videoData = video.pagemap.videoobject[0];
-  const active =
-    selectedVideo &&
-    selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid
-      ? 'active'
-      : '';
+  const videoData = video?.pagemap?.videoobject?.shift();
+  const activeVideo =
+    selectedVideo?.pagemap?.videoobject?.shift()?.videoid ===
+    videoData?.videoid;
 
-  return (
-    <div {...classes('list-item', active)}>
-      <div {...classes('list-item-inner')}>
-        <img
-          role="presentation"
-          alt="presentation"
-          src={videoData.thumbnailurl}
-        />
-        <div {...classes('information')}>
-          <h2>{videoData.name}</h2>
-          <div>
-            {`${translations.publishedDate}: ${setLocaleDate(
-              videoData.datepublished,
-              locale,
-            )}`}
-          </div>
-          <div>
-            {`${translations.duration}: ${setYouTubeDuration(
-              videoData.duration,
-            )}`}
-          </div>
-          <div>
-            {`${translations.interactioncount}: ${videoData.interactioncount}`}
-          </div>
-          <div>{videoData.description}</div>
-          <Button
-            {...classes('button')}
-            outline
-            onClick={() => onVideoPreview(video)}>
-            {translations.previewVideo}
-          </Button>
-          <Button {...classes('button')} onClick={() => onSelectVideo(video)}>
-            {translations.addVideo}
-          </Button>
-        </div>
-      </div>
-
-      {selectedVideo &&
-      selectedVideo.pagemap.videoobject[0].videoid === videoData.videoid ? (
-        <PreviewVideo onVideoPreview={onVideoPreview} selectedType="youtube">
-          <iframe
-            className="c-video-preview__video"
-            title={selectedVideo.title}
-            src={selectedVideo.pagemap.videoobject[0].embedurl}
-            allowFullScreen
+  if (videoData) {
+    return (
+      <div {...classes('list-item', activeVideo ? 'active' : '')}>
+        <div {...classes('list-item-inner')}>
+          <img
+            role="presentation"
+            alt="presentation"
+            src={videoData.thumbnailurl}
           />
-        </PreviewVideo>
-      ) : (
-        ''
-      )}
-    </div>
-  );
+          <div {...classes('information')}>
+            <h2>{videoData.name}</h2>
+            <div>
+              {`${translations.publishedDate}: ${setLocaleDate(
+                videoData.datepublished,
+                locale,
+              )}`}
+            </div>
+            <div>
+              {`${translations.duration}: ${setYouTubeDuration(
+                videoData.duration,
+              )}`}
+            </div>
+            <div>
+              {`${translations.interactioncount}: ${
+                videoData.interactioncount
+              }`}
+            </div>
+            <div>{videoData.description}</div>
+            <Button
+              {...classes('button')}
+              outline
+              onClick={() => onVideoPreview(video)}>
+              {translations.previewVideo}
+            </Button>
+            <Button {...classes('button')} onClick={() => onSelectVideo(video)}>
+              {translations.addVideo}
+            </Button>
+          </div>
+        </div>
+
+        {activeVideo ? (
+          <PreviewVideo onVideoPreview={onVideoPreview} selectedType="youtube">
+            <iframe
+              className="c-video-preview__video"
+              title={selectedVideo.title}
+              src={selectedVideo.pagemap.videoobject[0].embedurl}
+              allowFullScreen
+            />
+          </PreviewVideo>
+        ) : (
+          ''
+        )}
+      </div>
+    );
+  } else {
+    return <div />;
+  }
 }
 
 VideoSearchResultYouTube.propTypes = {

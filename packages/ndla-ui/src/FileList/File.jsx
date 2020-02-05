@@ -6,10 +6,24 @@ import SafeLink from '@ndla/safelink';
 
 const classes = BEMHelper('c-file-list');
 
-const renderFormat = (format, title, isPrimary, id) => {
+const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
   const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
 
   const formatId = `${id}_${format.fileType}`;
+
+  if (isDeadLink) {
+    return (
+      <>
+        <Download />
+        <span>
+          {isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}
+        </span>
+        <span {...classes('tooltip')} aria-hidden role="tooltip" id={formatId}>
+          <span {...classes('tooltip-text')}>{format.tooltip}</span>
+        </span>
+      </>
+    );
+  }
 
   return (
     <SafeLink
@@ -34,7 +48,7 @@ const renderFormat = (format, title, isPrimary, id) => {
 
 const File = ({ file, id }) => {
   const formatLinks = file.formats.map((format, index) =>
-    renderFormat(format, file.title, index === 0, id),
+    renderFormat(format, file.title, index === 0, id, !file.fileExists),
   );
 
   return (

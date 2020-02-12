@@ -309,6 +309,9 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
+      @include mq($until: tabletWide) {
+        width: 100%;
+      }
       @include mq($until: mobileWide) {
         width: 100%;
         padding: $spacing--small / 2 $spacing;

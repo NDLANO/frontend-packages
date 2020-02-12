@@ -7,10 +7,7 @@ export const mockListView = {
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       image: 'https://www.clasohlson.com/medias/sys_master/9058803056670.jpg',
       id: '1',
-      category: {
-        title: 'El-Håndverkøy',
-        value: 'elhandverktoy',
-      },
+
       subject: [
         {
           title: 'Murerfaget',
@@ -27,8 +24,6 @@ export const mockListView = {
       description: 'Dette er utstyr som brukes til å kutte armeringsjern.',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'https://ndla.no/sites/default/files/images/side44-armeringskutter-bc-16.jpg',
       id: '2',
       category: {
         title: 'Maskiner',

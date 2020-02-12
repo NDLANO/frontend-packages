@@ -48,14 +48,7 @@
       }
       &:not(:first-child) {
         border-top: 1px solid $brand-grey--lighter;
-        @include mq(tabletWide) {
-          padding-top: $spacing--small;
-        }
-        @include mq($until: tabletWide) {
-          .c-active-filters {
-            padding-top: $spacing--small;
-          }
-        }
+        padding-top: $spacing--small;
       }
     }
   }
@@ -260,7 +253,7 @@
       display: none !important;
     }
 
-    &--no-results {
+    &--no-results, &--disabled {
       cursor: not-allowed;
       pointer-events: none;
       color: $brand-color--tertiary;
@@ -319,7 +312,7 @@
       @include mq($until: mobileWide) {
         width: 100%;
         padding: $spacing--small / 2 $spacing;
-        justify-items: space-between;
+        justify-content: space-between;
         flex-direction: row-reverse;
         min-height: 52px;
         align-items: center;
@@ -456,6 +449,23 @@
   }
 
   &__narrow-active-filters {
+    @include mq($from: tabletWide) {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+    li {
+      margin-bottom: $spacing--small;
+    }
+    .c-filter__modal-button {
+      flex: 0 0 auto;
+      height: 40px;
+      margin-right: 13px;
+      @include mq($until: desktop) {
+        height: auto;
+      }
+    }
     .c-active-filters {
       padding-bottom: 0;
       flex-direction: row;
@@ -465,8 +475,9 @@
       }
     }
   }
-
-  &__modal-button {
-    margin-top: $spacing--small / 2;
+  &__modal-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }

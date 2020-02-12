@@ -25,7 +25,7 @@ const StyledActiveFilters = styled('ul')`
       }
     `}
 
-  ${mq.range({ from: breakpoints.desktop })} {
+  ${mq.range({ from: breakpoints.tabletWide })} {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -63,7 +63,7 @@ const StyledActiveFilterWrapper = styled('li')`
   display: flex;
   margin-bottom: ${spacing.xsmall};
 
-  ${mq.range({ from: breakpoints.desktop })} {
+  ${mq.range({ from: breakpoints.tabletWide })} {
     margin: 0 ${spacing.small} 0 0;
 
     &:last-of-type {

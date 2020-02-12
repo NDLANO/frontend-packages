@@ -6,99 +6,13 @@ import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
-import { ChevronDown } from '@ndla/icons/common';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
 
 import ListItem from './ListItem';
 
-/* TODO: USE NDLA-FORM WHEN FORM IS OUT! */
-const SelectWrapper = styled.div`
-  display: flex;
-  height: 48px;
-  line-height: 48px;
-  align-items: center;
-
-  .select-label {
-    font-family: ${fonts.sans};
-    font-weight: ${fonts.weight.semibold};
-    display: flex;
-    ${fonts.sizes('16px', 1.3)};
-    margin-right: ${spacing.normal};
-    width: 120px;
-  }
-
-  .select-wrapper {
-    display: flex;
-    border: 1px solid ${colors.brand.greyLight};
-    border-radius: ${misc.borderRadius};
-    margin-right: ${spacing.small};
-    padding-right: ${spacing.large};
-    position: relative;
-  }
-
-  .select-input {
-    border: none;
-    display: block;
-    width: 100%;
-    height: 48px;
-    background: transparent;
-    padding: 0 ${spacing.normal};
-    ${fonts.sizes('16px', 1.3)};
-    appearance: none;
-    -moz-appearance: none;
-    text-indent: 0;
-    text-overflow: '';
-    margin: 0;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .symbol {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    height: 48px;
-    width: ${spacing.large};
-    display: block;
-    text-align: center;
-    pointer-events: none;
-  }
-`;
-
-/* TODO: USE NDLA-FORM WHEN FORM IS OUT! */
-const Select = ({ children, label, value, id, onChange }) => (
-  <SelectWrapper>
-    <label htmlFor={id} className={'select-label'}>
-      {label}
-    </label>
-    <div className={'select-wrapper'}>
-      <select
-        className={'select-input'}
-        value={value}
-        onChange={onChange}
-        name={id}>
-        {children}
-      </select>
-      <span className={'symbol'}>
-        <ChevronDown />
-      </span>
-    </div>
-  </SelectWrapper>
-);
-
-Select.propTypes = {
-  children: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-};
-
 const ListViewWrapper = styled.div`
   .sorting {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     .sorting-wrapper {
@@ -107,9 +21,9 @@ const ListViewWrapper = styled.div`
       &:not(:last-child) {
         margin-right: ${spacing.medium};
       }
-    }
-    ${mq.range({ from: breakpoints.tabletWide })} {
-      display: flex;
+      .search-input-wrapper {
+        padding: 0;
+      }
     }
   }
   .content-wrapper {
@@ -132,14 +46,17 @@ const ListViewWrapper = styled.div`
     }
   }
   .list-style {
-    display: flex;
+    display: none;
     > button:first-of-type {
       margin-right: ${spacing.xsmall};
+    }
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      display: flex;
     }
   }
 
   .alphabet {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     flex-grow: 1;
     list-style: none;
@@ -147,6 +64,9 @@ const ListViewWrapper = styled.div`
     height: 32px;
     padding: 0;
     margin: ${spacing.normal} 0 ${spacing.normal} 0;
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      display: flex;
+    }
   }
 
   .letter {
@@ -261,7 +181,6 @@ const ListView = ({
   onChangedViewStyle,
   viewStyle,
   filters,
-  sortBy,
   searchValue,
   onChangedSearchValue,
   alphabet,
@@ -293,38 +212,26 @@ const ListView = ({
       </div>
     )}
     <div className={'sorting'}>
-      {(sortBy || !disableSearch) && (
+      {!disableSearch && (
         <div className={'sorting-wrapper'}>
-          {sortBy && (
-            <div className={'sortBy'}>
-              <Select
-                label={sortBy.label}
-                value={sortBy.value}
-                id={sortBy.id}
-                onChange={sortBy.onChange}>
-                {sortBy.options.map(sortOption => (
-                  <option key={sortOption.value} value={sortOption.value}>
-                    {sortOption.label}
-                  </option>
-                ))}
-              </Select>
-            </div>
-          )}
-          {!disableSearch && (
-            <div className={'search'}>
-              <div {...searchFieldClasses()}>
-                <div {...searchFieldClasses('input-wrapper', 'with-icon')}>
-                  <input
-                    css={inputStyle}
-                    type="search"
-                    placeholder="Søk i listevisning"
-                    value={searchValue}
-                    onChange={onChangedSearchValue}
-                  />
-                </div>
+          <div className={'search'}>
+            <div {...searchFieldClasses()}>
+              <div
+                {...searchFieldClasses(
+                  'input-wrapper',
+                  'with-icon',
+                  'search-input-wrapper',
+                )}>
+                <input
+                  css={inputStyle}
+                  type="search"
+                  placeholder="Søk i listevisning"
+                  value={searchValue}
+                  onChange={onChangedSearchValue}
+                />
               </div>
             </div>
-          )}
+          </div>
         </div>
       )}
       {!disableViewOption && (
@@ -344,7 +251,7 @@ const ListView = ({
         </div>
       )}
 
-      {viewStyle === 'list' && selectedLetterCallback ? (
+      {selectedLetterCallback ? (
         <ul className={'alphabet'}>
           {Object.keys(alphabet).map(letter => (
             <li key={`letter-${letter}`} className={'letter'}>
@@ -389,6 +296,7 @@ const filterShapes = PropTypes.shape({
         .isRequired,
       icon: PropTypes.func,
       noResults: PropTypes.bool,
+      disabled: PropTypes.bool,
     }),
   ).isRequired,
   onChange: PropTypes.func.isRequired,
@@ -397,19 +305,6 @@ const filterShapes = PropTypes.shape({
   ),
   label: PropTypes.string.isRequired,
   key: PropTypes.oneOf(['subject', 'category']),
-});
-
-const sortByShape = PropTypes.shape({
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
 });
 
 ListView.propTypes = {
@@ -435,7 +330,6 @@ ListView.propTypes = {
   alphabet: PropTypes.objectOf(PropTypes.bool),
   onChangedSearchValue: PropTypes.func,
   searchValue: PropTypes.string,
-  sortBy: sortByShape,
   onSelectItem: PropTypes.func.isRequired,
   selectedItem: PropTypes.node,
   t: PropTypes.func.isRequired,

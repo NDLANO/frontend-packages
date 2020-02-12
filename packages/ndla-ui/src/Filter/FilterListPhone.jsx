@@ -80,6 +80,7 @@ class FilterListPhone extends Component {
       alignedGroup,
       collapseMobile,
       activeFiltersNarrow,
+      viewMode,
     } = this.props;
 
     const showAll =
@@ -90,18 +91,20 @@ class FilterListPhone extends Component {
       labelModifiers.push('hidden');
     }
 
-    if (this.state.isNarrowScreen) {
+    if (this.state.isNarrowScreen || viewMode === 'allModal') {
       const currentlyActiveFilters = options.filter(option =>
         values.some(value => value === option.value),
       );
       return (
         <div
           className={
-            activeFiltersNarrow && classes('narrow-active-filters').className
+            (activeFiltersNarrow || viewMode === 'allModal') &&
+            classes('narrow-active-filters').className
           }>
           {currentlyActiveFilters.length > 0 && (
             <ActiveFilters
               filters={currentlyActiveFilters}
+              showOnSmallScreen
               onFilterRemove={value => {
                 onChange(values.filter(option => option !== value), value);
               }}
@@ -119,35 +122,57 @@ class FilterListPhone extends Component {
             {onClose => (
               <Fragment>
                 <ModalHeader modifier={['grey-dark', 'left-align']}>
-                  <ModalCloseButton
-                    title={
-                      <Fragment>
-                        <Cross /> {messages.closeFilter}
-                      </Fragment>
-                    }
-                    onClick={onClose}
-                  />
+                  <div {...classes('modal-header')}>
+                    <Button outline onClick={onClose}>
+                      {messages.useFilter}
+                    </Button>
+                    <ModalCloseButton
+                      title={
+                        <Fragment>
+                          <Cross /> {messages.closeFilter}
+                        </Fragment>
+                      }
+                      onClick={onClose}
+                    />
+                  </div>
                 </ModalHeader>
                 <ModalBody modifier="no-side-padding-mobile">
-                  <h1 {...classes('label')}>{label}</h1>
+                  {label && <h1 {...classes('label')}>{label}</h1>}
                   <ul
                     {...classes('item-wrapper', {
                       'aligned-grouping': alignedGroup,
                       'collapse-mobile': collapseMobile,
                     })}>
-                    {options.map(option => (
-                      <ToggleItem
-                        key={option.value}
-                        id={preid + option.value}
-                        value={option.value}
-                        checked={values.some(value => value === option.value)}
-                        onChange={event => {
-                          this.handleChange(event, option);
-                        }}
-                        icon={option.icon}
-                        label={option.title}
-                      />
-                    ))}
+                    {options.map(option => {
+                      const itemModifiers = [];
+
+                      const checked = values.some(
+                        value => value === option.value,
+                      );
+
+                      if (option.noResults) {
+                        itemModifiers.push('no-results');
+                      }
+
+                      if (option.disabled) {
+                        itemModifiers.push('disabled');
+                      }
+                      return (
+                        <ToggleItem
+                          key={option.value}
+                          id={preid + option.value}
+                          value={option.value}
+                          checked={checked}
+                          onChange={event => {
+                            this.handleChange(event, option);
+                          }}
+                          icon={option.icon}
+                          label={option.title}
+                          disabled={option.disabled}
+                          modifiers={itemModifiers}
+                        />
+                      );
+                    })}
                   </ul>
                   <div {...classes('usefilter-wrapper')}>
                     <Button outline onClick={onClose}>
@@ -164,7 +189,7 @@ class FilterListPhone extends Component {
 
     return (
       <section {...classes('list', modifiers)}>
-        <h1 {...classes('label', labelModifiers)}>{label}</h1>
+        {label && <h1 {...classes('label', labelModifiers)}>{label}</h1>}
         <ul {...classes('item-wrapper')}>
           {options.map((option, index) => {
             const itemModifiers = [];
@@ -177,6 +202,10 @@ class FilterListPhone extends Component {
 
             if (option.noResults) {
               itemModifiers.push('no-results');
+            }
+
+            if (option.disabled) {
+              itemModifiers.push('disabled');
             }
 
             return (
@@ -192,6 +221,7 @@ class FilterListPhone extends Component {
                 icon={option.icon}
                 label={option.title}
                 modifiers={itemModifiers}
+                disabled={option.disabled}
               />
             );
           })}
@@ -259,6 +289,7 @@ FilterListPhone.propTypes = {
     openFilter: PropTypes.string.isRequired,
     closeFilter: PropTypes.string.isRequired,
   }).isRequired,
+  viewMode: PropTypes.oneOf('inlineDesktop', 'allModal'),
 };
 
 FilterListPhone.defaultProps = {
@@ -268,6 +299,7 @@ FilterListPhone.defaultProps = {
   onToggle: null,
   alignedGroup: false,
   collapseMobile: true,
+  viewMode: 'inlineDesktop',
 };
 
 export default FilterListPhone;

@@ -46,6 +46,7 @@ import LearningPathExample from './LearningPathExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
+import ExplanationService from './ExplanationService';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -468,3 +469,11 @@ storiesOf('Ndla film', module)
       <FooterExample invertedOutlineLargeScreensOnly />
     </PageContainer>
   ));
+storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (
+  <PageContainer>
+    <StoryIntro title="Forklaringstjenesten" />
+    <OneColumn>
+      <ExplanationService />
+    </OneColumn>
+  </PageContainer>
+));

@@ -274,6 +274,7 @@ FilterListPhone.propTypes = {
       value: valueShape.isRequired,
       icon: PropTypes.func,
       noResults: PropTypes.bool,
+      disabled: PropTypes.bool,
     }),
   ).isRequired,
   values: PropTypes.arrayOf(valueShape),

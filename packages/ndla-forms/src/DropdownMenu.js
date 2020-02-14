@@ -68,6 +68,8 @@ const DropdownMenu = ({
   positionAbsolute,
   menuHeight,
   disableSelected,
+  totalCount,
+  inputValue,
 }) => {
   if (!isOpen) {
     return null;
@@ -103,10 +105,12 @@ const DropdownMenu = ({
       <StyledResultFooter>
         {loading
           ? t('dropdown.searching')
-          : t('dropdown.numberHits', { hits: items.length })}
+          : t('dropdown.numberHits', { hits: totalCount || items.length })}
       </StyledResultFooter>
       {onCreate && (
-        <StyledCreateButton type="button" onClick={onCreate}>
+        <StyledCreateButton
+          type="button"
+          onClick={inputValue ? () => onCreate(inputValue) : onCreate}>
           {t('dropdown.create')}
         </StyledCreateButton>
       )}

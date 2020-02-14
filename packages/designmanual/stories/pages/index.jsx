@@ -471,7 +471,18 @@ storiesOf('Ndla film', module)
   ));
 storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (
   <PageContainer>
-    <StoryIntro title="Forklaringstjenesten" />
+    <StoryIntro title="Forklaringstjenesten">
+      <p>
+        Ett eller flere fag må velges før filtrering vises. Velges flere fag
+        vises alle begrep som er tilknyttet minst ett av fagene.
+      </p>
+      <p>
+        Filtre som alene ikke gir treff skal ikke vises. Begrep som vises i
+        listen må inneholde alle filtre som er valgt. Dersom bruker velger ett
+        eller flere filtre skal de resterende filtrene som ikke gir treff i
+        kombinasjon med valgte filtre være deaktivert
+      </p>
+    </StoryIntro>
     <OneColumn>
       <ExplanationService />
     </OneColumn>

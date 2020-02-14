@@ -15,7 +15,7 @@ import Button from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';
-import { mockListView, searchFilterOptions } from '../../dummydata';
+import { mockListView } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
 
 const SubjectFilterWrapper = styled.div`
@@ -55,20 +55,125 @@ const ExplanationService = ({ t }) => {
     setSubjectFilter(values);
   };
 
-  const filterItems = () => {
-    let filteredItems = mockListView.items;
-    // 1. Filter items on subjects
-    if (filters.subject && filters.subject.length) {
-      filteredItems = filteredItems.filter(item =>
-        item.subject.some(subject => filters.subject.includes(subject.value)),
-      );
+  const getFilters = () => {
+    const filtersBySubject = {
+      category: [],
+      subCategory: [],
+    };
+    // Loop through all items and fetch all corresponding filters
+    mockListView.items.forEach(item => {
+      const hasValue = item.subject.some(itemSubject => {
+        return subjectFilter.includes(itemSubject.value);
+      });
+      if (hasValue) {
+        if (item.category) {
+          item.category.forEach(categoryItem => {
+            const exists = filtersBySubject.category.some(element => {
+              return element.value === categoryItem.value;
+            });
+            if (!exists) {
+              filtersBySubject.category.push(categoryItem);
+            }
+          });
+        }
+        if (item.subCategory) {
+          item.subCategory.forEach(categoryItem => {
+            const exists = filtersBySubject.subCategory.some(element => {
+              return element.value === categoryItem.value;
+            });
+            if (!exists) {
+              filtersBySubject.subCategory.push(categoryItem);
+            }
+          });
+        }
+      }
+    });
+
+    const filteredFilters = [];
+
+    if (filtersBySubject.category.length) {
+      const category = {
+        options: filtersBySubject.category,
+        filterValues: filters.category,
+        onChange: handleChangeFilters,
+        key: 'category',
+      };
+      filteredFilters.push(category);
+    }
+    if (filtersBySubject.subCategory.length) {
+      const category = {
+        options: filtersBySubject.subCategory,
+        filterValues: filters.subCategory,
+        onChange: handleChangeFilters,
+        key: 'subCategory',
+      };
+      filteredFilters.push(category);
     }
 
-    // 2 Filter items on category
+    // Disbale filters that will give zero results in combination with the selected filters
+    const items = filterItems();
+
+    filteredFilters.forEach(filterGroup => {
+      const type = filterGroup.key;
+      const options = filterGroup.options;
+
+      options.forEach(option => {
+        const optionValue = option.value;
+        const hasItems = items.some(item => {
+          if (item[type]) {
+            return item[type].some(category => category.value === optionValue);
+          }
+          return false;
+        });
+        option.disabled = !hasItems;
+      });
+    });
+    return filteredFilters;
+  };
+
+  const filterItems = () => {
+    let filteredItems = mockListView.items;
+
+    // Filter items on subject. Item must include SOME of the selected subjects
+    if (subjectFilter && subjectFilter.length) {
+      filteredItems = filteredItems.filter(item => {
+        if (item.subject) {
+          return subjectFilter.some(subject => {
+            return item.subject.some(
+              itemSubject => itemSubject.value === subject,
+            );
+          });
+        }
+        return false;
+      });
+    }
+
+    // 1. Filter items on category. Item must include ALL of the selected categories
     if (filters.category && filters.category.length) {
-      filteredItems = filteredItems.filter(
-        item => item.category && filters.category.includes(item.category.value),
-      );
+      filteredItems = filteredItems.filter(item => {
+        if (item.category) {
+          return filters.category.every(category => {
+            return item.category.some(
+              itemCategory => itemCategory.value === category,
+            );
+          });
+        }
+        return false;
+      });
+    }
+
+    // 2 Filter items on sub-category. Item must include ALL of the selected categories
+    if (filters.subCategory && filters.subCategory.length) {
+      filteredItems = filteredItems.filter(item => {
+        if (item.subCategory) {
+          return filters.subCategory.every(category => {
+            return item.subCategory.some(
+              itemCategory => itemCategory.value === category,
+            );
+          });
+        }
+        return false;
+      });
     }
 
     // 3. Filter with search (testing name, description and tags[])
@@ -161,9 +266,8 @@ const ExplanationService = ({ t }) => {
       <SubjectFilterWrapper>
         <FilterListPhone
           preid="subject-list"
-          label="Filtrer på fag"
-          options={searchFilterOptions.subjects}
-          alignedGroup
+          label={t(`listview.filters.subject.openFilter`)}
+          options={mockListView.subjects}
           values={subjectFilter}
           messages={{
             useFilter: t(`listview.filters.subject.useFilter`),
@@ -185,37 +289,7 @@ const ExplanationService = ({ t }) => {
         onChangedSearchValue={handleChangeSearchValue}
         onSelectItem={setDetailedItemHandler}
         selectedItem={renderSelectedItem()}
-        filters={[
-          {
-            options: [
-              { title: 'Betongfaget', value: 'betongfaget' },
-              { title: 'Innredningsfaget', value: 'innredningsfaget' },
-              { title: 'Murerfaget', value: 'murerfaget' },
-              {
-                title: 'Trelastfaget',
-                value: 'trelastfaget',
-                disabled: true,
-              },
-              { title: 'Tømrerfaget', value: 'tomrerfaget' },
-            ],
-            filterValues: filters.subject,
-            onChange: handleChangeFilters,
-            key: 'subject',
-            //label: 'Fag',
-          },
-          {
-            options: [
-              { title: 'El-håndverkøy', value: 'elhandverktoy' },
-              { title: 'Håndverkøy', value: 'handverktoy' },
-              { title: 'Maskiner', value: 'maskiner' },
-              { title: 'Måleverkøy', value: 'maleverktoy' },
-            ],
-            filterValues: filters.category,
-            onChange: handleChangeFilters,
-            key: 'category',
-            //label: 'Verktøy',
-          },
-        ]}
+        filters={getFilters()}
       />
     </>
   );

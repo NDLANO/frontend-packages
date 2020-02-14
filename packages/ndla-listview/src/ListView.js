@@ -189,7 +189,7 @@ const ListView = ({
   t,
 }) => (
   <ListViewWrapper>
-    {filters && (
+    {filters ? (
       <div {...filterClasses('wrapper-multiple-filters')}>
         {filters.map(filter => (
           <FilterListPhone
@@ -210,7 +210,7 @@ const ListView = ({
           />
         ))}
       </div>
-    )}
+    ) : null}
     <div className={'sorting'}>
       {!disableSearch && (
         <div className={'sorting-wrapper'}>
@@ -271,7 +271,6 @@ const ListView = ({
         </ul>
       ) : null}
     </div>
-
     <div className={'content-wrapper'}>
       <div className={`content ${viewStyle}`}>
         {items.map(item => (

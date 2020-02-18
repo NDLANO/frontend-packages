@@ -39,7 +39,7 @@ const ExplanationService = ({ t }) => {
   };
 
   const handleChangeFilters = (key, values) => {
-    const newFilter = { [key]: values };
+    const newFilter = { category: values };
     setFilters({ ...filters, ...newFilter });
   };
 
@@ -89,46 +89,50 @@ const ExplanationService = ({ t }) => {
       }
     });
 
-    const filteredFilters = [];
+    const filteredFilter = {
+      onChange: handleChangeFilters,
+      key: 'default',
+      filterValues: filters.category,
+      options: [],
+      isGroupedOptions: true,
+      label: t(`listview.filters.default.heading`),
+    };
 
     if (filtersBySubject.category.length) {
-      const category = {
-        options: filtersBySubject.category,
-        filterValues: filters.category,
-        onChange: handleChangeFilters,
-        key: 'category',
-      };
-      filteredFilters.push(category);
+      filteredFilter.options.push(filtersBySubject.category);
     }
     if (filtersBySubject.subCategory.length) {
-      const category = {
-        options: filtersBySubject.subCategory,
-        filterValues: filters.subCategory,
-        onChange: handleChangeFilters,
-        key: 'subCategory',
-      };
-      filteredFilters.push(category);
+      filteredFilter.options.push(filtersBySubject.subCategory);
     }
 
-    // Disbale filters that will give zero results in combination with the selected filters
     const items = filterItems();
 
-    filteredFilters.forEach(filterGroup => {
-      const type = filterGroup.key;
-      const options = filterGroup.options;
-
-      options.forEach(option => {
+    // Disable filters that will give zero results in combination with the selected filters
+    filteredFilter.options.forEach(filterGroup => {
+      filterGroup.forEach(option => {
         const optionValue = option.value;
         const hasItems = items.some(item => {
-          if (item[type]) {
-            return item[type].some(category => category.value === optionValue);
+          let hasValue = false;
+          if (item.category) {
+            hasValue = item.category.some(
+              category => category.value === optionValue,
+            );
           }
-          return false;
+          if (!hasValue && item.subCategory) {
+            hasValue = item.subCategory.some(
+              category => category.value === optionValue,
+            );
+          }
+          return hasValue;
         });
         option.disabled = !hasItems;
       });
     });
-    return filteredFilters;
+
+    if (filteredFilter.options.length) {
+      return [filteredFilter];
+    }
+    return [];
   };
 
   const filterItems = () => {
@@ -148,35 +152,28 @@ const ExplanationService = ({ t }) => {
       });
     }
 
-    // 1. Filter items on category. Item must include ALL of the selected categories
+    // Filter items on category. Item must include ALL of the selected categories
     if (filters.category && filters.category.length) {
       filteredItems = filteredItems.filter(item => {
-        if (item.category) {
-          return filters.category.every(category => {
-            return item.category.some(
+        return filters.category.every(category => {
+          let hasValue = false;
+          if (item.category) {
+            hasValue = item.category.some(
               itemCategory => itemCategory.value === category,
             );
-          });
-        }
-        return false;
+          }
+
+          if (!hasValue && item.subCategory) {
+            hasValue = item.subCategory.some(
+              itemCategory => itemCategory.value === category,
+            );
+          }
+          return hasValue;
+        });
       });
     }
 
-    // 2 Filter items on sub-category. Item must include ALL of the selected categories
-    if (filters.subCategory && filters.subCategory.length) {
-      filteredItems = filteredItems.filter(item => {
-        if (item.subCategory) {
-          return filters.subCategory.every(category => {
-            return item.subCategory.some(
-              itemCategory => itemCategory.value === category,
-            );
-          });
-        }
-        return false;
-      });
-    }
-
-    // 3. Filter with search (testing name, description and tags[])
+    // Filter with search (testing name, description and tags[])
     if (searchValue.length > 0) {
       const searchValueLowercase = searchValue.toLowerCase();
       filteredItems = filteredItems.filter(
@@ -207,7 +204,7 @@ const ExplanationService = ({ t }) => {
     return detailedItem ? (
       <NotionDialogWrapper
         title={detailedItem.name}
-        subTitle={detailedItem.category.title}
+        subTitle={detailedItem.category && detailedItem.category[0].title}
         closeCallback={() => setDetailedItemHandler(null)}>
         <NotionDialogContent>
           {detailedItem.image ? (
@@ -276,6 +273,7 @@ const ExplanationService = ({ t }) => {
           }}
           onChange={handleChangedSubjectFilter}
           viewMode="allModal"
+          showActiveFiltersOnSmallScreen
         />
       </SubjectFilterWrapper>
       <ListView

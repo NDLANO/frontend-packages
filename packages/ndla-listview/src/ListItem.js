@@ -117,6 +117,11 @@ const ListItemWrapper = styled.div`
   }
 `;
 
+const categoryShape = PropTypes.shape({
+  title: PropTypes.string,
+  value: PropTypes.string,
+});
+
 const listItemShape = PropTypes.shape({
   name: PropTypes.string,
   text: PropTypes.string,
@@ -128,10 +133,10 @@ const listItemShape = PropTypes.shape({
       value: PropTypes.string,
     }),
   ),
-  category: PropTypes.shape({
-    title: PropTypes.string,
-    value: PropTypes.string,
-  }),
+  category: PropTypes.oneOfType([
+    PropTypes.arrayOf(categoryShape),
+    categoryShape,
+  ]),
   source: PropTypes.string,
   license: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
@@ -177,6 +182,11 @@ class ListItem extends Component {
     );
   }
 
+  renderCategory(category) {
+    const values = !Array.isArray(category) ? [category] : category;
+    return <span className={'item-category'}>{values[0].title}</span>;
+  }
+
   render() {
     const { item, viewStyle } = this.props;
     const { category } = item;
@@ -193,9 +203,7 @@ class ListItem extends Component {
           ) : (
             this.renderNoImage()
           )}
-          {category && category.title && (
-            <span className={'item-category'}>{category.title}</span>
-          )}
+          {category && this.renderCategory(category)}
         </div>
         {viewStyle === 'grid' ? (
           this.renderItem()

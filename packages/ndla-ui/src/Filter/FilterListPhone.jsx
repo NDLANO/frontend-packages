@@ -81,6 +81,8 @@ class FilterListPhone extends Component {
       collapseMobile,
       activeFiltersNarrow,
       viewMode,
+      isGroupedOptions,
+      showActiveFiltersOnSmallScreen,
     } = this.props;
 
     const showAll =
@@ -91,20 +93,30 @@ class FilterListPhone extends Component {
       labelModifiers.push('hidden');
     }
 
+    let groupedOptions = options;
+    if (!isGroupedOptions) {
+      groupedOptions = [options];
+    }
+
     if (this.state.isNarrowScreen || viewMode === 'allModal') {
-      const currentlyActiveFilters = options.filter(option =>
-        values.some(value => value === option.value),
-      );
+      let currentlyActiveFilters = [];
+      groupedOptions.forEach(options => {
+        const activeFilters = options.filter(option =>
+          values.some(value => value === option.value),
+        );
+        currentlyActiveFilters = [...currentlyActiveFilters, ...activeFilters];
+      });
+
+      const wrapperClassName =
+        activeFiltersNarrow || viewMode === 'allModal'
+          ? classes('narrow-active-filters').className
+          : '';
       return (
-        <div
-          className={
-            (activeFiltersNarrow || viewMode === 'allModal') &&
-            classes('narrow-active-filters').className
-          }>
+        <div className={wrapperClassName}>
           {currentlyActiveFilters.length > 0 && (
             <ActiveFilters
               filters={currentlyActiveFilters}
-              showOnSmallScreen
+              showOnSmallScreen={showActiveFiltersOnSmallScreen}
               onFilterRemove={value => {
                 onChange(values.filter(option => option !== value), value);
               }}
@@ -121,11 +133,16 @@ class FilterListPhone extends Component {
             }>
             {onClose => (
               <Fragment>
-                <ModalHeader modifier={['grey-dark', 'left-align']}>
+                <ModalHeader modifier={['left-align']}>
                   <div {...classes('modal-header')}>
-                    <Button outline onClick={onClose}>
-                      {messages.useFilter}
-                    </Button>
+                    <div {...classes('modal-heading')}>
+                      {!this.state.isNarrowScreen && label && (
+                        <h1 {...classes('label')}>{label}</h1>
+                      )}
+                      <Button outline onClick={onClose}>
+                        {messages.useFilter}
+                      </Button>
+                    </div>
                     <ModalCloseButton
                       title={
                         <Fragment>
@@ -137,43 +154,50 @@ class FilterListPhone extends Component {
                   </div>
                 </ModalHeader>
                 <ModalBody modifier="no-side-padding-mobile">
-                  {label && <h1 {...classes('label')}>{label}</h1>}
-                  <ul
-                    {...classes('item-wrapper', {
-                      'aligned-grouping': alignedGroup,
-                      'collapse-mobile': collapseMobile,
-                    })}>
-                    {options.map(option => {
-                      const itemModifiers = [];
+                  {this.state.isNarrowScreen && label && (
+                    <h1 {...classes('label')}>{label}</h1>
+                  )}
+                  {groupedOptions.map((options, index) => (
+                    <ul
+                      key={index}
+                      {...classes('item-wrapper', {
+                        'aligned-grouping': alignedGroup,
+                        'collapse-mobile': collapseMobile,
+                        'grouped-options': isGroupedOptions,
+                      })}>
+                      {options.map(option => {
+                        const itemModifiers = [];
 
-                      const checked = values.some(
-                        value => value === option.value,
-                      );
+                        const checked = values.some(
+                          value => value === option.value,
+                        );
 
-                      if (option.noResults) {
-                        itemModifiers.push('no-results');
-                      }
+                        if (option.noResults) {
+                          itemModifiers.push('no-results');
+                        }
 
-                      if (option.disabled) {
-                        itemModifiers.push('disabled');
-                      }
-                      return (
-                        <ToggleItem
-                          key={option.value}
-                          id={preid + option.value}
-                          value={option.value}
-                          checked={checked}
-                          onChange={event => {
-                            this.handleChange(event, option);
-                          }}
-                          icon={option.icon}
-                          label={option.title}
-                          disabled={option.disabled}
-                          modifiers={itemModifiers}
-                        />
-                      );
-                    })}
-                  </ul>
+                        if (option.disabled) {
+                          itemModifiers.push('disabled');
+                        }
+                        return (
+                          <ToggleItem
+                            key={option.value}
+                            id={preid + option.value}
+                            value={option.value}
+                            checked={checked}
+                            onChange={event => {
+                              this.handleChange(event, option);
+                            }}
+                            icon={option.icon}
+                            label={option.title}
+                            disabled={option.disabled}
+                            modifiers={itemModifiers}
+                          />
+                        );
+                      })}
+                    </ul>
+                  ))}
+
                   <div {...classes('usefilter-wrapper')}>
                     <Button outline onClick={onClose}>
                       {messages.useFilter}
@@ -188,95 +212,111 @@ class FilterListPhone extends Component {
     }
 
     return (
-      <section {...classes('list', modifiers)}>
-        {label && <h1 {...classes('label', labelModifiers)}>{label}</h1>}
-        <ul {...classes('item-wrapper')}>
-          {options.map((option, index) => {
-            const itemModifiers = [];
+      <>
+        {isGroupedOptions && label && (
+          <h2 {...classes('label', labelModifiers)}>{label}</h2>
+        )}
+        {groupedOptions.map((options, index) => (
+          <section key={index} {...classes('list', modifiers)}>
+            {!isGroupedOptions && label && (
+              <h1 {...classes('label', labelModifiers)}>{label}</h1>
+            )}
+            <ul {...classes('item-wrapper')}>
+              {options.map((option, index) => {
+                const itemModifiers = [];
 
-            const checked = values.some(value => value === option.value);
+                const checked = values.some(value => value === option.value);
 
-            if (!showAll && !checked && index + 1 > this.state.visibleCount) {
-              itemModifiers.push('hidden');
-            }
-
-            if (option.noResults) {
-              itemModifiers.push('no-results');
-            }
-
-            if (option.disabled) {
-              itemModifiers.push('disabled');
-            }
-
-            return (
-              <ToggleItem
-                key={option.value}
-                id={preid + option.value}
-                value={option.value}
-                tabIndex={option.noResults ? -1 : 0}
-                checked={checked}
-                onChange={event => {
-                  this.handleChange(event, option);
-                }}
-                icon={option.icon}
-                label={option.title}
-                modifiers={itemModifiers}
-                disabled={option.disabled}
-              />
-            );
-          })}
-        </ul>
-        {!showAll && (
-          <button
-            {...classes('expand')}
-            type="button"
-            onClick={() => {
-              this.setState(prevState => {
-                if (prevState.visibleCount === defaultVisibleCount) {
-                  return {
-                    visibleCount: options.length,
-                  };
+                if (
+                  !showAll &&
+                  !checked &&
+                  index + 1 > this.state.visibleCount
+                ) {
+                  itemModifiers.push('hidden');
                 }
 
-                return {
-                  visibleCount: defaultVisibleCount,
-                };
-              });
-            }}>
-            {this.state.visibleCount === defaultVisibleCount ? (
-              <Fragment>
-                <span>{showLabel}</span> <ChevronDown />
-              </Fragment>
-            ) : (
-              <Fragment>
-                <span>{hideLabel}</span> <ChevronUp />
-              </Fragment>
+                if (option.noResults) {
+                  itemModifiers.push('no-results');
+                }
+
+                if (option.disabled) {
+                  itemModifiers.push('disabled');
+                }
+
+                return (
+                  <ToggleItem
+                    key={option.value}
+                    id={preid + option.value}
+                    value={option.value}
+                    tabIndex={option.noResults ? -1 : 0}
+                    checked={checked}
+                    onChange={event => {
+                      this.handleChange(event, option);
+                    }}
+                    icon={option.icon}
+                    label={option.title}
+                    modifiers={itemModifiers}
+                    disabled={option.disabled}
+                  />
+                );
+              })}
+            </ul>
+            {!showAll && (
+              <button
+                {...classes('expand')}
+                type="button"
+                onClick={() => {
+                  this.setState(prevState => {
+                    if (prevState.visibleCount === defaultVisibleCount) {
+                      return {
+                        visibleCount: options.length,
+                      };
+                    }
+
+                    return {
+                      visibleCount: defaultVisibleCount,
+                    };
+                  });
+                }}>
+                {this.state.visibleCount === defaultVisibleCount ? (
+                  <Fragment>
+                    <span>{showLabel}</span> <ChevronDown />
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <span>{hideLabel}</span> <ChevronUp />
+                  </Fragment>
+                )}
+              </button>
             )}
-          </button>
-        )}
-      </section>
+          </section>
+        ))}
+      </>
     );
   }
 }
 
 const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
+const optionsShape = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  value: valueShape.isRequired,
+  icon: PropTypes.func,
+  noResults: PropTypes.bool,
+  disabled: PropTypes.bool,
+});
+
 FilterListPhone.propTypes = {
   preid: PropTypes.string.isRequired,
   children: PropTypes.node,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   labelNotVisible: PropTypes.bool,
   modifiers: PropTypes.string,
   onChange: PropTypes.func, // isRequired
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      value: valueShape.isRequired,
-      icon: PropTypes.func,
-      noResults: PropTypes.bool,
-      disabled: PropTypes.bool,
-    }),
-  ).isRequired,
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(optionsShape),
+    PropTypes.arrayOf(PropTypes.arrayOf(optionsShape)),
+  ]).isRequired,
   values: PropTypes.arrayOf(valueShape),
   defaultVisibleCount: PropTypes.number,
   showLabel: PropTypes.string,
@@ -290,7 +330,9 @@ FilterListPhone.propTypes = {
     openFilter: PropTypes.string.isRequired,
     closeFilter: PropTypes.string.isRequired,
   }).isRequired,
-  viewMode: PropTypes.oneOf('inlineDesktop', 'allModal'),
+  viewMode: PropTypes.oneOf(['inlineDesktop', 'allModal']),
+  isGroupedOptions: PropTypes.bool,
+  showActiveFiltersOnSmallScreen: PropTypes.bool,
 };
 
 FilterListPhone.defaultProps = {

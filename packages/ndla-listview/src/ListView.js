@@ -83,6 +83,7 @@ const ListViewWrapper = styled.div`
       height: ${spacing.normal};
       width: ${spacing.normal};
       border-radius: 50%;
+      cursor: pointer;
 
       &:hover,
       &:focus {
@@ -149,6 +150,11 @@ const inputStyle = css`
   @include ${fonts.sizes(16, 20)};
 `;
 
+const categoryShape = PropTypes.shape({
+  title: PropTypes.string,
+  value: PropTypes.string,
+});
+
 const listItemShape = PropTypes.shape({
   name: PropTypes.string,
   text: PropTypes.string,
@@ -160,10 +166,10 @@ const listItemShape = PropTypes.shape({
       value: PropTypes.string,
     }),
   ),
-  category: PropTypes.shape({
-    title: PropTypes.string,
-    value: PropTypes.string,
-  }),
+  category: PropTypes.oneOfType([
+    PropTypes.arrayOf(categoryShape),
+    categoryShape,
+  ]),
   source: PropTypes.string,
   license: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
@@ -197,7 +203,9 @@ const ListView = ({
             key={filter.key}
             label={filter.label}
             options={filter.options}
+            isGroupedOptions={filter.isGroupedOptions}
             alignedGroup
+            showActiveFiltersOnSmallScreen
             values={filter.filterValues}
             messages={{
               useFilter: t(`listview.filters.${filter.key}.useFilter`),
@@ -225,7 +233,7 @@ const ListView = ({
                 <input
                   css={inputStyle}
                   type="search"
-                  placeholder="Søk i listevisning"
+                  placeholder={t(`listview.search.placeholder`)}
                   value={searchValue}
                   onChange={onChangedSearchValue}
                 />
@@ -287,23 +295,26 @@ const ListView = ({
   </ListViewWrapper>
 );
 
+const optionsShape = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  icon: PropTypes.func,
+  noResults: PropTypes.bool,
+  disabled: PropTypes.bool,
+});
+
 const filterShapes = PropTypes.shape({
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-      icon: PropTypes.func,
-      noResults: PropTypes.bool,
-      disabled: PropTypes.bool,
-    }),
-  ).isRequired,
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(optionsShape),
+    PropTypes.arrayOf(PropTypes.arrayOf(optionsShape)),
+  ]).isRequired,
   onChange: PropTypes.func.isRequired,
   filterValues: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   ),
-  label: PropTypes.string.isRequired,
-  key: PropTypes.oneOf(['subject', 'category']),
+  label: PropTypes.string,
+  key: PropTypes.oneOf(['subject', 'category', 'default']),
+  isGroupedOptions: PropTypes.bool,
 });
 
 ListView.propTypes = {

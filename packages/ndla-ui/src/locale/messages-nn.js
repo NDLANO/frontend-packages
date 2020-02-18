@@ -484,16 +484,25 @@ const messages = {
     toFrontpage: 'Til framsida',
   },
   listview: {
+    search: {
+      placeholder: 'Søk',
+    },
     filters: {
       subject: {
         useFilter: 'Bruk filter',
-        openFilter: 'Filtrer på fag',
+        openFilter: 'Velg fag',
         closeFilter: 'Lukk filter',
       },
       category: {
         useFilter: 'Bruk filter',
         openFilter: 'Filtrer på kategori',
         closeFilter: 'Lukk filter',
+      },
+      default: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer',
+        closeFilter: 'Lukk filter',
+        heading: 'Filter',
       },
     },
   },

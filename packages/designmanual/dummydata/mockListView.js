@@ -94,8 +94,6 @@ export const mockListView = {
       description: 'Denne brukes både til boring og skruing',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'https://images.clasohlson.com/medias/sys_master/9587119489054.jpg',
       id: '5',
       subject: [
         {
@@ -113,8 +111,6 @@ export const mockListView = {
       description: 'Mykt håndtak for sikkert grep.',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'https://images.clasohlson.com/medias/sys_master/9587119489054.jpg',
       id: '6',
       subject: [
         {
@@ -130,8 +126,6 @@ export const mockListView = {
       description: 'Perfekt for større mengder maling, flytesparkel etc.',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'https://images.clasohlson.com/medias/sys_master/9585603051550.jpg',
       id: '7',
       category: [
         {
@@ -155,8 +149,6 @@ export const mockListView = {
       description: 'Passer til flisekutter',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'https://images.clasohlson.com/medias/sys_master/9573241028638.jpg',
       id: '8',
       category: [
         {

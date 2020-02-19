@@ -278,7 +278,13 @@ const SearchResultSleeve: React.FC<Props> = ({
         e.stopPropagation();
         e.preventDefault();
         if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
-          searchAllRef?.current?.closest('a')?.click();
+          const anchorTag =
+            searchAllRef &&
+            searchAllRef.current &&
+            searchAllRef.current.closest('a');
+          if (anchorTag) {
+            anchorTag.click();
+          }
         } else {
           if (keyboardPathNavigation instanceof HTMLElement) {
             const toClick =

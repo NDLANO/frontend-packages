@@ -16,7 +16,7 @@ import Button from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';
-import { mockListView } from '../../dummydata';
+import { mockExplanationService } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
 
 const SubjectFilterWrapper = styled.div`
@@ -62,7 +62,7 @@ const ExplanationService = ({ t }) => {
       subCategory: [],
     };
     // Loop through all items and fetch all corresponding filters
-    mockListView.items.forEach(item => {
+    mockExplanationService.items.forEach(item => {
       const hasValue = item.subject.some(itemSubject => {
         return subjectFilter.includes(itemSubject.value);
       });
@@ -137,7 +137,7 @@ const ExplanationService = ({ t }) => {
   };
 
   const filterItems = () => {
-    let filteredItems = mockListView.items;
+    let filteredItems = mockExplanationService.items;
 
     // Filter items on subject. Item must include SOME of the selected subjects
     if (subjectFilter && subjectFilter.length) {
@@ -269,7 +269,7 @@ const ExplanationService = ({ t }) => {
         <FilterListPhone
           preid="subject-list"
           label={t(`listview.filters.subject.openFilter`)}
-          options={mockListView.subjects}
+          options={mockExplanationService.subjects}
           values={subjectFilter}
           messages={{
             useFilter: t(`listview.filters.subject.useFilter`),

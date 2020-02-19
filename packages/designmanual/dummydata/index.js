@@ -36,6 +36,7 @@ import { mockDownloadArticleText } from './mockDownloadArticleText';
 
 import contentCards from './mockContentCards';
 import { mockListView } from './mockListView';
+import { mockExplanationService } from './mockExplanationService';
 
 import {
   mockAllMovies,
@@ -87,4 +88,5 @@ export {
   mockTypeahead,
   mockFooterLinks,
   dummyLanguageOptions,
+  mockExplanationService,
 };

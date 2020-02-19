@@ -41,7 +41,7 @@ const NotionDialogTagWrapper = styled.div`
 const NotionDialogRelatedLinksWrapper = styled.div`
   margin: ${spacing.small} 0;
 
-  .link:first-child {
+  .link:first-of-type {
     padding-left: ${spacing.small};
   }
 `;
@@ -73,7 +73,7 @@ export const NotionDialogRelatedLinks = ({ links, label }) =>
     <NotionDialogRelatedLinksWrapper>
       {label}:
       {links.map((link, index) => (
-        <span className={'link'}>
+        <span className={'link'} key={`key-${link.href}`}>
           <SafeLink to={link.href}>{link.label}</SafeLink>
           {links[index + 1] && ' - '}
         </span>

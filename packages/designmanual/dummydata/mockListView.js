@@ -17,6 +17,12 @@ export const mockListView = {
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Murerfaget'],
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Armeringskutter',
@@ -39,6 +45,12 @@ export const mockListView = {
       authors: ['Ola Nordmann', 'Kari Nordmann'],
       source: 'snl.no',
       license: 'by-nc-nd',
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Bajonettsag',
@@ -63,6 +75,12 @@ export const mockListView = {
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Murerfaget'],
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Batteridrill',
@@ -88,6 +106,12 @@ export const mockListView = {
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Betongfaget', 'Murerfaget'],
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Pussebrett',

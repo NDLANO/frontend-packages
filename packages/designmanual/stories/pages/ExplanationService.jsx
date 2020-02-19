@@ -9,6 +9,7 @@ import {
   NotionDialogTags,
   NotionDialogLicenses,
   NotionDialogWrapper,
+  NotionDialogRelatedLinks,
 } from '@ndla/notion';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
@@ -216,6 +217,10 @@ const ExplanationService = ({ t }) => {
           <NotionDialogText>{detailedItem.longDescription}</NotionDialogText>
         </NotionDialogContent>
         <NotionDialogTags tags={detailedItem.tags} />
+        <NotionDialogRelatedLinks
+          label={t(`listview.relatedLinks.label`)}
+          links={detailedItem.relatedArticles}
+        />
         <NotionDialogLicenses
           license={detailedItem.license}
           source={detailedItem.source}

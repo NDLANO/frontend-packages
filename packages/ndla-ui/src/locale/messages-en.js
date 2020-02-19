@@ -503,6 +503,9 @@ const messages = {
         heading: 'Filter',
       },
     },
+    relatedLinks: {
+      label: 'Related articles',
+    },
   },
   notions: {
     closeNotion: 'Close',

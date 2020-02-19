@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';
 
@@ -37,6 +38,13 @@ const NotionDialogTagWrapper = styled.div`
   }
 `;
 
+const NotionDialogRelatedLinksWrapper = styled.div`
+  margin: ${spacing.small} 0;
+
+  .link:first-child {
+    padding-left: ${spacing.small};
+  }
+`;
 export const NotionDialogTags = ({ tags }) =>
   tags ? (
     <NotionDialogTagWrapper>
@@ -58,6 +66,29 @@ NotionDialogTags.propTypes = {
     href: PropTypes.string,
     ariaLabel: PropTypes.string,
   }),
+};
+
+export const NotionDialogRelatedLinks = ({ links, label }) =>
+  links ? (
+    <NotionDialogRelatedLinksWrapper>
+      {label}:
+      {links.map((link, index) => (
+        <span className={'link'}>
+          <SafeLink to={link.href}>{link.label}</SafeLink>
+          {links[index + 1] && ' - '}
+        </span>
+      ))}
+    </NotionDialogRelatedLinksWrapper>
+  ) : null;
+
+NotionDialogRelatedLinks.propTypes = {
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      href: PropTypes.string,
+    }),
+  ),
+  label: PropTypes.string,
 };
 
 NotionDialogContent.propTypes = {

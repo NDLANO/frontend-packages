@@ -502,6 +502,9 @@ const messages = {
         heading: 'Filter',
       },
     },
+    relatedLinks: {
+      label: 'Tilknyttede artikler',
+    },
   },
   notions: {
     closeNotion: 'Lukk',

@@ -1,4 +1,4 @@
-export const mockListView = {
+export const mockExplanationService = {
   items: [
     {
       name: 'Bajonettsag',
@@ -7,10 +7,6 @@ export const mockListView = {
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       image: 'https://www.clasohlson.com/medias/sys_master/9058803056670.jpg',
       id: '1',
-      category: {
-        title: 'El-Håndverkøy',
-        value: 'elhandverktoy',
-      },
       subject: [
         {
           title: 'Murerfaget',
@@ -21,6 +17,12 @@ export const mockListView = {
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Murerfaget'],
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Armeringskutter',
@@ -28,10 +30,12 @@ export const mockListView = {
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       id: '2',
-      category: {
-        title: 'Maskiner',
-        value: 'maskiner',
-      },
+      category: [
+        {
+          title: 'Maskiner',
+          value: 'maskiner',
+        },
+      ],
       subject: [
         {
           title: 'Betongfaget',
@@ -41,6 +45,12 @@ export const mockListView = {
       authors: ['Ola Nordmann', 'Kari Nordmann'],
       source: 'snl.no',
       license: 'by-nc-nd',
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Bajonettsag',
@@ -49,10 +59,12 @@ export const mockListView = {
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       image: 'https://www.clasohlson.com/medias/sys_master/9058803056670.jpg',
       id: '3',
-      category: {
-        title: 'El-Håndverkøy',
-        value: 'elhandverktoy',
-      },
+      category: [
+        {
+          title: 'El-Håndverkøy',
+          value: 'elhandverktoy',
+        },
+      ],
       subject: [
         {
           title: 'Murerfaget',
@@ -63,6 +75,12 @@ export const mockListView = {
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Murerfaget'],
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Batteridrill',
@@ -72,10 +90,12 @@ export const mockListView = {
       image:
         'http://byggebolig.no/imageoriginals/3f4e8adf19e44126a8b05c7bc5435724.jpg?maxwidth=900',
       id: '4',
-      category: {
-        title: 'El-Håndverkøy',
-        value: 'elhandverktoy',
-      },
+      category: [
+        {
+          title: 'El-Håndverkøy',
+          value: 'elhandverktoy',
+        },
+      ],
       subject: [
         {
           title: 'Betongfaget',
@@ -86,6 +106,12 @@ export const mockListView = {
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Betongfaget', 'Murerfaget'],
+      relatedArticles: [
+        {
+          href: 'https://ndla.no',
+          label: 'NDLA',
+        },
+      ],
     },
     {
       name: 'Pussebrett',
@@ -93,10 +119,6 @@ export const mockListView = {
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       id: '5',
-      category: {
-        title: 'Betongfaget',
-        value: 'betongfaget',
-      },
       subject: [
         {
           title: 'Murerfaget',
@@ -114,10 +136,6 @@ export const mockListView = {
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       id: '6',
-      category: {
-        title: 'Betongfaget',
-        value: 'betongfaget',
-      },
       subject: [
         {
           title: 'Murerfaget',
@@ -133,10 +151,12 @@ export const mockListView = {
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       id: '7',
-      category: {
-        title: 'Betongfaget',
-        value: 'betongfaget',
-      },
+      category: [
+        {
+          title: 'Måleverktøy',
+          value: 'maleverktoy',
+        },
+      ],
       subject: [
         {
           title: 'Murerfaget',
@@ -154,10 +174,18 @@ export const mockListView = {
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       id: '8',
-      category: {
-        title: 'Betongfaget',
-        value: 'betongfaget',
-      },
+      category: [
+        {
+          title: 'Maskiner',
+          value: 'maskiner',
+        },
+      ],
+      subCategory: [
+        {
+          title: 'Sager',
+          value: 'sager',
+        },
+      ],
       subject: [
         {
           title: 'Murerfaget',
@@ -176,10 +204,12 @@ export const mockListView = {
       image:
         'https://images.clasohlson.com/medias/sys_master/9349608898590.jpg',
       id: '9',
-      category: {
-        title: 'El-Håndverkøy',
-        value: 'elhandverktoy',
-      },
+      subCategory: [
+        {
+          title: 'Slanger',
+          value: 'slanger',
+        },
+      ],
       subject: [
         {
           title: 'Betongfaget',
@@ -189,6 +219,36 @@ export const mockListView = {
       authors: ['Ola Nordmann', 'Kari Nordmann'],
       source: 'snl.no',
       license: 'by-nc-nd',
+    },
+  ],
+  subjects: [
+    {
+      title: 'Murerfaget',
+      value: 'murerfaget',
+    },
+    {
+      title: 'Betongfaget',
+      value: 'betongfaget',
+    },
+    {
+      title: 'Brønnteknikk',
+      value: 'bronnteknikk',
+    },
+    {
+      title: 'Elektrofag Vg1',
+      value: 'Elektrofag Vg1',
+    },
+    {
+      title: 'Naturbruk Vg1',
+      value: 'Naturbruk Vg1',
+    },
+    {
+      title: 'IKT-servicefag Vg2',
+      value: 'IKT-servicefag Vg2',
+    },
+    {
+      title: 'Helsearbeiderfag Vg2',
+      value: 'Helsearbeiderfag Vg2',
     },
   ],
 };

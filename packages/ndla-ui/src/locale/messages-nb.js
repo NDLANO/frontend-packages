@@ -481,10 +481,13 @@ const messages = {
     toFrontpage: 'Til forsiden',
   },
   listview: {
+    search: {
+      placeholder: 'Søk',
+    },
     filters: {
       subject: {
         useFilter: 'Bruk filter',
-        openFilter: 'Filtrer på fag',
+        openFilter: 'Velg fag',
         closeFilter: 'Lukk filter',
       },
       category: {
@@ -492,6 +495,15 @@ const messages = {
         openFilter: 'Filtrer på kategori',
         closeFilter: 'Lukk filter',
       },
+      default: {
+        useFilter: 'Bruk filter',
+        openFilter: 'Filtrer',
+        closeFilter: 'Lukk filter',
+        heading: 'Filter',
+      },
+    },
+    relatedLinks: {
+      label: 'Tilknyttede artikler',
     },
   },
   notions: {

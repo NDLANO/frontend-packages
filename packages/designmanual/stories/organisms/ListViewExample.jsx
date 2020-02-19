@@ -22,14 +22,12 @@ class ListViewExample extends Component {
     this.state = {
       detailedItem: null,
       selectedLetter: '',
-      sortByValue: 'category',
       viewStyle: 'grid',
       searchValue: '',
       filters: {},
     };
     this.setSelectedLetter = this.setSelectedLetter.bind(this);
     this.setDetailedItem = this.setDetailedItem.bind(this);
-    this.handleChangeSortBy = this.handleChangeSortBy.bind(this);
     this.handleChangeFilters = this.handleChangeFilters.bind(this);
     this.handleChangedViewStyle = this.handleChangedViewStyle.bind(this);
     this.handleChangeSearchValue = this.handleChangeSearchValue.bind(this);
@@ -60,12 +58,6 @@ class ListViewExample extends Component {
     });
   }
 
-  handleChangeSortBy(e) {
-    this.setState({
-      sortByValue: e.target.value,
-    });
-  }
-
   handleChangedViewStyle({ viewStyle }) {
     this.setState({
       viewStyle,
@@ -79,7 +71,7 @@ class ListViewExample extends Component {
   }
 
   filterItems() {
-    const { filters, sortByValue, searchValue } = this.state;
+    const { filters, searchValue } = this.state;
 
     let filteredItems = mockListView.items;
     // 1. Filter items on subjects
@@ -91,8 +83,8 @@ class ListViewExample extends Component {
 
     // 2 Filter items on category
     if (filters.category && filters.category.length) {
-      filteredItems = filteredItems.filter(item =>
-        filters.category.includes(item.category.value),
+      filteredItems = filteredItems.filter(
+        item => item.category && filters.category.includes(item.category.value),
       );
     }
 
@@ -110,43 +102,6 @@ class ListViewExample extends Component {
               -1) ||
           item.name.toLowerCase().indexOf(searchValueLowercase) !== -1,
       );
-    }
-
-    // 4. Sort filtered results
-    if (sortByValue === 'title') {
-      filteredItems = filteredItems.sort((a, b) => {
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-          return 1;
-        }
-        if (a.name.toLowerCase() < b.name.toLowerCase()) {
-          return -1;
-        }
-        return 0;
-      });
-    } else if (sortByValue === 'category') {
-      filteredItems = filteredItems.sort((a, b) => {
-        if (a.category.title.toLowerCase() > b.category.title.toLowerCase()) {
-          return 1;
-        }
-        if (a.category.title.toLowerCase() < b.category.title.toLowerCase()) {
-          return -1;
-        }
-        return 0;
-      });
-    } else {
-      filteredItems = filteredItems.sort((a, b) => {
-        if (
-          a.subject[0].title.toLowerCase() > b.subject[0].title.toLowerCase()
-        ) {
-          return 1;
-        }
-        if (
-          a.subject[0].title.toLowerCase() < b.subject[0].title.toLowerCase()
-        ) {
-          return -1;
-        }
-        return 0;
-      });
     }
     return filteredItems;
   }
@@ -221,13 +176,7 @@ class ListViewExample extends Component {
   }
 
   render() {
-    const {
-      detailedItem,
-      selectedLetter,
-      sortByValue,
-      viewStyle,
-      searchValue,
-    } = this.state;
+    const { detailedItem, selectedLetter, viewStyle, searchValue } = this.state;
 
     const filteredItems = this.filterItems();
     const alphabet = activeAlphabet(filteredItems);
@@ -245,39 +194,23 @@ class ListViewExample extends Component {
         onChangedSearchValue={this.handleChangeSearchValue}
         onSelectItem={this.handleSelectItem}
         selectedItem={this.renderSelectedItem()}
-        sortBy={{
-          onChange: this.handleChangeSortBy,
-          value: sortByValue,
-          label: 'Sorter etter',
-          id: 'sortbyId',
-          options: [
-            {
-              label: 'Tittel',
-              value: 'title',
-            },
-            {
-              label: 'Fag',
-              value: 'subject',
-            },
-            {
-              label: 'Kategori',
-              value: 'category',
-            },
-          ],
-        }}
         filters={[
           {
             options: [
               { title: 'Betongfaget', value: 'betongfaget' },
               { title: 'Innredningsfaget', value: 'innredningsfaget' },
               { title: 'Murerfaget', value: 'murerfaget' },
-              { title: 'Trelastfaget', value: 'trelastfaget' },
+              {
+                title: 'Trelastfaget',
+                value: 'trelastfaget',
+                disabled: true,
+              },
               { title: 'Tømrerfaget', value: 'tomrerfaget' },
             ],
             filterValues: this.state.filters.subject,
             onChange: this.handleChangeFilters,
             key: 'subject',
-            label: 'Fag',
+            //label: 'Fag',
           },
           {
             options: [

@@ -28,6 +28,7 @@ import {
   EditorName,
   FooterText,
   LanguageSelector,
+  OneColumn,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 import { Switch } from '@ndla/switch';
@@ -764,8 +765,8 @@ storiesOf('Sammensatte moduler', module)
   .add('Listevisning', () => (
     <PageContainer>
       <StoryIntro title="Listevisning" />
-      <Center>
+      <OneColumn>
         <ListViewExample />
-      </Center>
+      </OneColumn>
     </PageContainer>
   ));

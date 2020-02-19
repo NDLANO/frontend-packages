@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
+import { DocumentDetails } from '@ndla/icons/common';
 
 const ListItemWrapper = styled.div`
   padding: ${spacing.small};
@@ -28,6 +29,20 @@ const ListItemWrapper = styled.div`
       height: auto;
       max-height: 100%;
       max-width: 100%;
+    }
+    .no-image-wrapper {
+      width: 100%;
+      height: 100%;
+      padding-bottom: 10px;
+    }
+    .no-image {
+      background: ${colors.brand.lightest};
+      width: 100%;
+      height: 100%;
+      color: ${colors.brand.primary};
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   .item-category {
@@ -89,8 +104,11 @@ const ListItemWrapper = styled.div`
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    flex-basis: 50%;
-    ${mq.range({ from: breakpoints.tablet })} {
+    flex-basis: 100%;
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      flex-basis: 50%;
+    }
+    ${mq.range({ from: breakpoints.tabletWide })} {
       flex-basis: 33.33%;
     }
     ${mq.range({ from: breakpoints.desktop })} {
@@ -98,6 +116,11 @@ const ListItemWrapper = styled.div`
     }
   }
 `;
+
+const categoryShape = PropTypes.shape({
+  title: PropTypes.string,
+  value: PropTypes.string,
+});
 
 const listItemShape = PropTypes.shape({
   name: PropTypes.string,
@@ -110,10 +133,10 @@ const listItemShape = PropTypes.shape({
       value: PropTypes.string,
     }),
   ),
-  category: PropTypes.shape({
-    title: PropTypes.string,
-    value: PropTypes.string,
-  }),
+  category: PropTypes.oneOfType([
+    PropTypes.arrayOf(categoryShape),
+    categoryShape,
+  ]),
   source: PropTypes.string,
   license: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
@@ -149,8 +172,24 @@ class ListItem extends Component {
     );
   }
 
+  renderNoImage() {
+    return (
+      <div className={'no-image-wrapper'}>
+        <div className={'no-image'}>
+          <DocumentDetails className={`c-icon--large`} />
+        </div>
+      </div>
+    );
+  }
+
+  renderCategory(category) {
+    const values = !Array.isArray(category) ? [category] : category;
+    return <span className={'item-category'}>{values[0].title}</span>;
+  }
+
   render() {
     const { item, viewStyle } = this.props;
+    const { category } = item;
     return (
       <ListItemWrapper
         onClick={this.handleClick}
@@ -159,8 +198,12 @@ class ListItem extends Component {
         className={viewStyle}
         tabIndex={0}>
         <div className={'item-image'}>
-          {item.image ? <img src={item.image} alt={item.description} /> : null}
-          <span className={'item-category'}>{item.category.title}</span>
+          {item.image ? (
+            <img src={item.image} alt={item.description} />
+          ) : (
+            this.renderNoImage()
+          )}
+          {category && this.renderCategory(category)}
         </div>
         {viewStyle === 'grid' ? (
           this.renderItem()

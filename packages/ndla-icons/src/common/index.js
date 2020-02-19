@@ -20,6 +20,7 @@ export { default as ChevronRight } from './ChevronRight';
 export { default as ChevronUp } from './ChevronUp';
 export { default as Core } from './Core';
 export { default as Document } from './Document';
+export { default as DocumentDetails } from './DocumentDetails';
 export { default as Download } from './Download';
 export { default as EmailOutline } from './EmailOutline';
 export { default as Esc } from './Esc';

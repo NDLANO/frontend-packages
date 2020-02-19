@@ -46,6 +46,7 @@ import LearningPathExample from './LearningPathExample';
 
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
+import ExplanationService from './ExplanationService';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -468,3 +469,22 @@ storiesOf('Ndla film', module)
       <FooterExample invertedOutlineLargeScreensOnly />
     </PageContainer>
   ));
+storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (
+  <PageContainer>
+    <StoryIntro title="Forklaringstjenesten">
+      <p>
+        Ett eller flere fag må velges før filtrering vises. Velges flere fag
+        vises alle begrep som er tilknyttet minst ett av fagene.
+      </p>
+      <p>
+        Filtre som alene ikke gir treff skal ikke vises. Begrep som vises i
+        listen må inneholde alle filtre som er valgt. Dersom bruker velger ett
+        eller flere filtre skal de resterende filtrene som ikke gir treff i
+        kombinasjon med valgte filtre være deaktivert
+      </p>
+    </StoryIntro>
+    <OneColumn>
+      <ExplanationService />
+    </OneColumn>
+  </PageContainer>
+));

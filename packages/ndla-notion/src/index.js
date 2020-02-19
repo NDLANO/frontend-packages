@@ -15,6 +15,7 @@ import NotionDialog, {
   NotionDialogText,
   NotionDialogImage,
   NotionDialogTags,
+  NotionDialogRelatedLinks,
 } from './NotionDialog';
 
 export {
@@ -25,6 +26,7 @@ export {
   NotionDialogTags,
   NotionDialogWrapper,
   NotionDialogLicenses,
+  NotionDialogRelatedLinks,
 };
 
 export default Notion;

@@ -482,17 +482,29 @@ const messages = {
     toFrontpage: 'To the frontpage',
   },
   listview: {
+    search: {
+      placeholder: 'Search',
+    },
     filters: {
       subject: {
         useFilter: 'Use filter',
-        openFilter: 'Use filter on subcject',
+        openFilter: 'Choose subject',
         closeFilter: 'Close filter',
       },
       category: {
         useFilter: 'Use filter',
-        openFilter: 'Use filter on cathegory',
+        openFilter: 'Use filter on category',
         closeFilter: 'Close filter',
       },
+      default: {
+        useFilter: 'Use filter',
+        openFilter: 'Filter',
+        closeFilter: 'Close filter',
+        heading: 'Filter',
+      },
+    },
+    relatedLinks: {
+      label: 'Related articles',
     },
   },
   notions: {

@@ -6,28 +6,35 @@ import ZendeskButton from '@ndla/zendesk';
 import { injectT } from '@ndla/i18n';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t }) => (
+const FooterExample = ({
+  inverted,
+  invertedOutlineLargeScreensOnly,
+  t,
+  hideLanguageSelector,
+}) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
-      <LanguageSelector
-        alwaysVisible
-        outline
-        center
-        inverted={inverted}
-        invertedOutlineLargeScreensOnly={invertedOutlineLargeScreensOnly}
-        options={{
-          nb: {
-            name: 'Bokmål',
-            url: '#',
-          },
-          nn: {
-            name: 'Nynorsk',
-            url: '#',
-          },
-        }}
-        currentLanguage="nb"
-      />
+      !hideLanguageSelector && (
+        <LanguageSelector
+          alwaysVisible
+          outline
+          center
+          inverted={inverted}
+          invertedOutlineLargeScreensOnly={invertedOutlineLargeScreensOnly}
+          options={{
+            nb: {
+              name: 'Bokmål',
+              url: '#',
+            },
+            nn: {
+              name: 'Nynorsk',
+              url: '#',
+            },
+          }}
+          currentLanguage="nb"
+        />
+      )
     }>
     <FooterText>
       <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
@@ -43,6 +50,7 @@ const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t }) => (
 
 FooterExample.propTypes = {
   inverted: PropTypes.bool,
+  hideLanguageSelector: PropTypes.bool,
 };
 
 export default injectT(FooterExample);

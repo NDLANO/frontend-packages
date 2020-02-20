@@ -47,6 +47,7 @@ import LearningPathExample from './LearningPathExample';
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
+import FFFrontpage from './FFFrontpage';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -417,6 +418,14 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ));
+storiesOf('Fagfornyelse', module).add('Forside midlertidig', () => (
+  <PageContainer background>
+    <Content>
+      <FFFrontpage />
+    </Content>
+    <FooterExample hideLanguageSelector={true} />
+  </PageContainer>
+));
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>

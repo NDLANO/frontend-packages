@@ -20,6 +20,7 @@ export {
   FrontpageInfo,
   FrontpageFilm,
   FrontpageHeader,
+  FFFrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,

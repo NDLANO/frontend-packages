@@ -59,6 +59,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
   &:before {
     background-image: url(${props => props.backgroundImage});
     background-size: cover;
+    background-position: center;
     content: '';
     display: block;
     position: absolute;

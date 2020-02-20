@@ -73,6 +73,10 @@ const ListItemWrapper = styled.div`
     ${fonts.sizes('14px', 1.3)};
     margin: 0;
     color: ${colors.brand.text};
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   &.list {

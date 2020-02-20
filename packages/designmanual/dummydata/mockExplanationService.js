@@ -2,9 +2,10 @@ export const mockExplanationService = {
   items: [
     {
       name: 'Bajonettsag',
-      description: 'Bajonettsag brukes med ulike typer blad.',
+      description:
+        'Bajonettsag brukes med ulike typer blad. Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       longDescription:
-        'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
+        'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
       image: 'https://www.clasohlson.com/medias/sys_master/9058803056670.jpg',
       id: '1',
       subject: [

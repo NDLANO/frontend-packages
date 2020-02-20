@@ -23,6 +23,7 @@ import {
   StyledTag,
   noWidthhighlightStyle,
 } from './ContentTypeResultStyles';
+import { isPathToHighlight } from './IsPathToHighlight';
 
 const renderAdditionalIcon = (
   label: string,
@@ -142,9 +143,8 @@ const ContentTypeResult: React.FC<Props> = ({
               keyboardPathNavigation instanceof HTMLElement &&
               keyboardPathNavigation &&
               keyboardPathNavigation.querySelector('a');
-            const comparePath = `/subjects${path}`;
             const anchorHref = anchor && anchor.getAttribute('href');
-            const shouldHighlight = anchorHref === comparePath;
+            const shouldHighlight = isPathToHighlight(path, anchorHref);
 
             return (
               <StyledListItem key={path} delayAnimation={delayAnimation}>

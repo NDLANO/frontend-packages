@@ -633,6 +633,12 @@ const messages = {
     content: 'The article',
     text: 'is created by',
   },
+  fffrontpage: {
+    heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
+    text:
+      'Høsten 2020 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
+    blogHeading: 'Vil du vite mer?',
+  },
 };
 
 export default messages;

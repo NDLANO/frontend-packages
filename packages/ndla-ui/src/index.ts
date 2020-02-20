@@ -20,12 +20,13 @@ export {
   FrontpageInfo,
   FrontpageFilm,
   FrontpageHeader,
-  FFFrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
   FrontpageSearch,
 } from './Frontpage';
+
+export { FFFrontpageInfo, FFFrontpageHeader } from './FFFrontpage';
 
 export { Footer, EditorName, FooterText } from './Footer';
 

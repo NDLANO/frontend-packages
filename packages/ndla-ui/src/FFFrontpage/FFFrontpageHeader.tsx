@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, mq, breakpoints, fonts } from '@ndla/core';
+import { spacing, mq, breakpoints } from '@ndla/core';
 
 // @ts-ignore
 import Logo from '../Logo';
@@ -32,10 +32,6 @@ const StyledHeader = styled.div`
 
 const StyledHeaderWrapper = styled.header`
   background: #5f219c;
-  margin-bottom: ${spacing.spacingUnit * 3}px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-bottom: ${spacing.spacingUnit * 4}px;
-  }
 `;
 
 const StyledLogo = styled.div`
@@ -63,7 +59,7 @@ const FFFrontpageHeader: React.FunctionComponent<FFFrontpageHeaderProps> = ({
   <StyledHeaderWrapper>
     <StyledHeader>
       <StyledLogo>
-        <Logo to="/" large cssModifier={'white'} />
+        <Logo to="/" label={'NDLA'} large cssModifier={'white'} />
       </StyledLogo>
       {children}
     </StyledHeader>

@@ -1,5 +1,4 @@
 export { default as FrontpageHeader } from './FrontpageHeader';
-export { default as FFFrontpageHeader } from './FFFrontpageHeader';
 export { default as FrontpageInfo } from './FrontpageInfo';
 export { default as FrontpageFilm } from './FrontpageFilm';
 export { default as FrontpageSearch } from './FrontpageSearch';

@@ -1,39 +1,44 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { injectT } from '@ndla/i18n';
 import {
-  FrontpageHeader,
   OneColumn,
   SubjectSectionTitle,
   BlogPost,
   BlogPostWrapper,
   FFFrontpageHeader,
+  FFFrontpageInfo,
 } from '@ndla/ui';
-import { dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
-import PropTypes from 'prop-types';
 
 const FFFrontpage = ({ t }) => {
   return (
     <>
-      <FFFrontpageHeader locale="nb" languageOptions={dummyLanguageOptions} />
+      <FFFrontpageHeader />
       <main>
         <OneColumn extraPadding>
-          <section>
-            <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
-            <BlogPostWrapper>
-              <BlogPost
-                text={t('blogPosts.blog1.text')}
-                image={{
-                  url: BlogExampleImage1,
-                }}
-                externalLink={t('blogPosts.blog1.externalLink')}
-                linkText={t('blogPosts.blog1.linkText')}
-                license={t('blogPosts.blog1.license')}
-                licenseAuthor={t('blogPosts.blog1.licenseAuthor')}
-                locale="nb"
-              />
-            </BlogPostWrapper>
-          </section>
+          <FFFrontpageInfo
+            heading={t('fffrontpage.heading')}
+            text={t('fffrontpage.text')}
+            link={{ to: '/', label: 'Se de nye ressursene' }}
+          />
+          <SubjectSectionTitle>
+            {t('fffrontpage.blogHeading')}
+          </SubjectSectionTitle>
+          <BlogPostWrapper oneColumn>
+            <BlogPost
+              text={t('blogPosts.blog1.text')}
+              image={{
+                url: BlogExampleImage1,
+              }}
+              externalLink={t('blogPosts.blog1.externalLink')}
+              linkText={t('blogPosts.blog1.linkText')}
+              license={t('blogPosts.blog1.license')}
+              licenseAuthor={t('blogPosts.blog1.licenseAuthor')}
+              locale="nb"
+              oneColumn
+            />
+          </BlogPostWrapper>
         </OneColumn>
       </main>
     </>

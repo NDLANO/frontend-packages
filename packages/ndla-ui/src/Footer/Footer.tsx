@@ -49,11 +49,17 @@ const AnimatedBackground = styled.div<AnimatedBackgroundProps>`
   }
 `;
 
-const StyledFooter = styled.footer`
+type StyledFooterProps = {
+  addMargin?: boolean;
+};
+
+const StyledFooter = styled.footer<StyledFooterProps>`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
+  ${props => props.addMargin && `margin-top: ${spacing.spacingUnit * 4}px;`}
+
   > div:first-of-type {
     position: relative;
     z-index: 1;
@@ -152,7 +158,7 @@ const Footer: React.FunctionComponent<Props> = ({
     {languageSelector && (
       <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
     )}
-    <StyledFooter>
+    <StyledFooter addMargin={true}>
       <OneColumn cssModifier="large">
         <StyledColumns>
           <div>

@@ -1,7 +1,7 @@
 .c-subject-header {
   width: 100%;
   position: relative;
-  height: 180px;
+  min-height: 180px;
   display: flex;
   justify-content: flex-start;
   background: $brand-color;
@@ -61,7 +61,7 @@
     @include font-size(24px, 28px);
     color: $white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    margin: $spacing--medium 0 0 0;
+    margin: $spacing--medium 0 $spacing 0;
     font-weight: $font-weight-bold;
     padding: 0 $spacing;
 
@@ -74,6 +74,13 @@
     @include mq(desktop) {
       margin: 0;
       @include font-size(52px, 52px);
+      padding: 0 0 0 $subject-margin;
+    }
+  }
+  &__badge {
+    margin:$spacing--medium $spacing $spacing--medium;
+    @include mq(tablet) {
+      margin: 0 0 $spacing--medium;
       padding: 0 0 0 $subject-margin;
     }
   }

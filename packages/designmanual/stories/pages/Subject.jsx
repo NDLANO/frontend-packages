@@ -180,18 +180,23 @@ const some = (
   </SubjectSocialContent>
 );
 
-export default ({ id }) => (
+export default ({ id, showFFBadge, noHeaderImages }) => (
   <article>
     <SubjectHeader
       heading="Medieuttrykk og mediesamfunnet"
-      images={[
-        {
-          url: exampleBackground,
-          types: Object.keys(breakpoints),
-        },
-      ]}
+      images={
+        !noHeaderImages
+          ? [
+              {
+                url: exampleBackground,
+                types: Object.keys(breakpoints),
+              },
+            ]
+          : []
+      }
+      showFFBadge={showFFBadge}
     />
-    <OneColumn wide>
+    <OneColumn>
       <SubjectContent breadcrumb={<Breadcrumb onlySubject />}>
         <ResourcesWrapper
           id={id}

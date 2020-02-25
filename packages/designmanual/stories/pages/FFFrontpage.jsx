@@ -18,12 +18,12 @@ const FFFrontpage = ({ t }) => {
       <main>
         <OneColumn extraPadding>
           <FFFrontpageInfo
-            heading={t('fffrontpage.heading')}
-            text={t('fffrontpage.text')}
+            heading={t('fagfornyelse.frontpage.heading')}
+            text={t('fagfornyelse.frontpage.text')}
             link={{ to: '/', label: 'Se de nye ressursene' }}
           />
           <SubjectSectionTitle>
-            {t('fffrontpage.blogHeading')}
+            {t('fagfornyelse.frontpage.blogHeading')}
           </SubjectSectionTitle>
           <BlogPostWrapper oneColumn>
             <BlogPost

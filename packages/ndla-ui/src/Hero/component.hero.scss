@@ -5,6 +5,7 @@
 
   @include mq(tablet) {
     min-height: 246px;
+    padding-bottom: 156px;
   }
 
   &--subject-material {
@@ -112,9 +113,10 @@
   z-index: 9;
 
   @include mq(tablet) {
-    height: 90px;
+    min-height: 90px;
     padding-bottom: $spacing--small/2;
   }
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
 }

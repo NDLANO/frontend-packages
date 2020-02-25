@@ -23,6 +23,7 @@ import {
   OneColumn,
   PageContainer,
   Content,
+  FFHeroBadge,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -418,14 +419,72 @@ storiesOf('Emnesider', module)
       <FooterExample />
     </PageContainer>
   ));
-storiesOf('Fagfornyelse', module).add('Forside midlertidig', () => (
-  <PageContainer background>
-    <Content>
-      <FFFrontpage />
-    </Content>
-    <FooterExample hideLanguageSelector={true} />
-  </PageContainer>
-));
+storiesOf('Fagfornyelse', module)
+  .add('Forside', () => (
+    <PageContainer background>
+      <Content>
+        <FFFrontpage />
+      </Content>
+      <FooterExample hideLanguageSelector={true} />
+    </PageContainer>
+  ))
+  .add('Fagforside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu
+          skipToMainContentId="mainContentId"
+          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        />
+        <Subject id="mainContentId" noHeaderImages showFFBadge />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Hovedemne', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <SubjectHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <FFHeroBadge />
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectHero>
+        <ArticleLoader
+          articleId="29"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+          id="mainContentId"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Læringsressurser', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <FFHeroBadge />
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLearningmaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ));
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>

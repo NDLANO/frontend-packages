@@ -45,18 +45,7 @@ type FooterLinksProps = {
   isFFServer?: boolean; // To be removed when FF-server is not in use anymore
 };
 
-const ffCommonLinks = [
-  { key: 'ndla', url: 'https://ndla.no' },
-  { key: 'omNdla', url: 'https://om.ndla.no' },
-  {
-    key: 'aboutNdla',
-    url: 'https://om.ndla.no/about-ndla',
-  },
-  { key: 'blog', url: 'https://blogg.ndla.no' },
-  { key: 'tips', url: 'https://blogg.ndla.no/elever' },
-  { key: 'fyr', url: 'https://fyr.ndla.no' },
-  { key: 'sharing', url: 'https://deling.ndla.no' },
-];
+const additionalFFCommonLinks = [{ key: 'ndla', url: 'https://ndla.no' }];
 
 const commonLinks = [
   { key: 'omNdla', url: 'https://om.ndla.no' },
@@ -119,7 +108,9 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
   links,
   isFFServer,
 }) => {
-  const mainLinks = isFFServer ? ffCommonLinks : commonLinks;
+  const mainLinks = isFFServer
+    ? [...additionalFFCommonLinks, ...commonLinks]
+    : commonLinks;
   return (
     <>
       <StyledLinksWrapper>

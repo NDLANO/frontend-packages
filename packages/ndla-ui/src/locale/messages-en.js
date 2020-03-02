@@ -637,15 +637,15 @@ const messages = {
   },
   fagfornyelse: {
     frontpage: {
-      heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
+      heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
       text:
-        'Høsten 2020 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
-      blogHeading: 'Vil du vite mer?',
+        'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
+      blogHeading: 'Do you want to know more?',
     },
     badge: {
-      heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020',
-      text: 'Ikke på jakt etter dette?',
-      linkText: 'Gå til ndla.no for dagens innhold',
+      heading: 'This page is adapted for Fagfornyelsen 2020',
+      text: 'Not what you were looking for?',
+      linkText: "Go to ndla.no for today's content",
     },
   },
 };

@@ -651,13 +651,13 @@ const messages = {
     frontpage: {
       heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
       text:
-        'Høsten 2020 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
-      blogHeading: 'Vil du vite mer?',
+        'Hausten 2020 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
+      blogHeading: 'Vil du vite meir?',
     },
     badge: {
-      heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020',
-      text: 'Ikke på jakt etter dette?',
-      linkText: 'Gå til ndla.no for dagens innhold',
+      heading: 'Denne sida er tilrettelagt for fagfornyelsen 2020',
+      text: 'Ikkje på jakt etter dette?',
+      linkText: 'Gå til ndla.no for dagens innhald',
     },
   },
 };

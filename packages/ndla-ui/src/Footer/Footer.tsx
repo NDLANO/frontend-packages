@@ -169,7 +169,7 @@ const Footer: React.FunctionComponent<Props> = ({
       {languageSelector && (
         <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
       )}
-      <StyledFooter>
+      <StyledFooter addMargin={!languageSelector}>
         <OneColumn cssModifier="large">{footerContent}</OneColumn>
         <StyledBackground />
       </StyledFooter>

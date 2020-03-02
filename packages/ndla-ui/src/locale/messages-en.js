@@ -433,6 +433,7 @@ const messages = {
       sharePageAria: 'Share this page',
     },
     ndlaLinks: {
+      ndla: 'ndla.no',
       omNdla: 'Om NDLA',
       aboutNdla: 'About NDLA',
       blog: 'Blog',

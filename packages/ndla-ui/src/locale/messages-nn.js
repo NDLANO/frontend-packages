@@ -435,6 +435,7 @@ const messages = {
       sharePageAria: 'Del denne sida',
     },
     ndlaLinks: {
+      ndla: 'ndla.no',
       omNdla: 'Om NDLA',
       aboutNdla: 'About NDLA',
       blog: 'Fagblogg',

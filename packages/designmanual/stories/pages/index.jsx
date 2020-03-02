@@ -425,7 +425,7 @@ storiesOf('Fagfornyelse', module)
       <Content>
         <FFFrontpage />
       </Content>
-      <FooterExample hideLanguageSelector={true} />
+      <FooterExample hideLanguageSelector={true} isFFServer />
     </PageContainer>
   ))
   .add('Fagforside', () => (
@@ -437,7 +437,7 @@ storiesOf('Fagfornyelse', module)
         />
         <Subject id="mainContentId" noHeaderImages showFFBadge />
       </Content>
-      <FooterExample />
+      <FooterExample isFFServer />
     </PageContainer>
   ))
   .add('Hovedemne', () => (
@@ -463,7 +463,7 @@ storiesOf('Fagfornyelse', module)
           id="mainContentId"
         />
       </Content>
-      <FooterExample />
+      <FooterExample isFFServer />
     </PageContainer>
   ))
   .add('Læringsressurser', () => (
@@ -482,7 +482,7 @@ storiesOf('Fagfornyelse', module)
         </SubjectMaterialHero>
         <ArticleLearningmaterial />
       </Content>
-      <FooterExample />
+      <FooterExample isFFServer />
     </PageContainer>
   ));
 storiesOf('Ndla film', module)

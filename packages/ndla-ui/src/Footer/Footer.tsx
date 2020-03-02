@@ -18,35 +18,18 @@ import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
 
-type AnimatedBackgroundProps = {
-  background: string;
-  reversed?: boolean;
-  animationSpeed: number;
-  scaleTarget: number;
-  pauseBetween: number;
-};
-
-const AnimatedBackground = styled.div<AnimatedBackgroundProps>`
+const StyledBackground = styled.div`
   display: block;
   position: absolute;
-  background: ${props => props.background};
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  animation: animatedFooter ${props => props.animationSpeed}ms infinite;
-  animation-direction: ${props =>
-    props.reversed ? 'alternate-reverse' : 'alternate'};
-  @keyframes animatedFooter {
-    0%,
-    ${props => props.pauseBetween}% {
-      transform: scale(1);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(${props => props.scaleTarget});
-    }
-  }
+  background: linear-gradient(
+    96deg,
+    rgba(0, 117, 160, 1) 0%,
+    rgba(32, 88, 143, 0) 100%
+  );
 `;
 
 type StyledFooterProps = {
@@ -135,7 +118,7 @@ type Props = {
   children: React.ReactNode;
   lang: 'nb' | 'nn' | 'en';
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-  links: {
+  links?: {
     email: string;
     facebook: string;
     twitter: string;
@@ -155,62 +138,43 @@ const Footer: React.FunctionComponent<Props> = ({
   links,
   languageSelector,
   isFFServer,
-}) => (
-  <>
-    {languageSelector && (
-      <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
-    )}
-    <StyledFooter addMargin={true}>
-      <OneColumn cssModifier="large">
-        <StyledColumns>
-          <div>
-            <StyledFooterHeaderIcon />
-          </div>
-          <div>
-            <StyledHeader>{t('footer.vision')}</StyledHeader>
-            <FooterLinks links={links} isFFServer={isFFServer} />
-          </div>
-        </StyledColumns>
-        <StyledHr />
-        {children}
-        <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
-      </OneColumn>
-      <AnimatedBackground
-        pauseBetween={75}
-        animationSpeed={25000}
-        scaleTarget={1}
-        reversed
-        background={
-          'linear-gradient(-60deg, rgba(4,29,48,1) 0%, rgba(32,88,143,0) 100%)'
-        }
-      />
-      <AnimatedBackground
-        pauseBetween={50}
-        animationSpeed={10000}
-        scaleTarget={1.5}
-        background={
-          'linear-gradient(117deg, rgba(1,146,206,1) 0%, rgba(32,88,143,0) 100%)'
-        }
-      />
-      <AnimatedBackground
-        pauseBetween={65}
-        animationSpeed={15000}
-        scaleTarget={2}
-        background={
-          'linear-gradient(-49deg, rgba(7,38,60,1) 0%, rgba(32,88,143,0) 100%)'
-        }
-      />
-      <AnimatedBackground
-        pauseBetween={40}
-        animationSpeed={7500}
-        scaleTarget={2}
-        reversed
-        background={
-          'linear-gradient(96deg, rgba(0,117,160,1) 0%, rgba(32,88,143,0) 100%)'
-        }
-      />
-    </StyledFooter>
-  </>
-);
+}) => {
+  const mainContent = (
+    <>
+      {children}
+      <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
+    </>
+  );
+
+  const footerContent = links ? (
+    <>
+      <StyledColumns>
+        <div>
+          <StyledFooterHeaderIcon />
+        </div>
+        <div>
+          <StyledHeader>{t('footer.vision')}</StyledHeader>
+          <FooterLinks links={links} isFFServer={isFFServer} />
+        </div>
+      </StyledColumns>
+      <StyledHr />
+      {mainContent}
+    </>
+  ) : (
+    mainContent
+  );
+
+  return (
+    <>
+      {languageSelector && (
+        <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
+      )}
+      <StyledFooter>
+        <OneColumn cssModifier="large">{footerContent}</OneColumn>
+        <StyledBackground />
+      </StyledFooter>
+    </>
+  );
+};
 
 export default injectT(Footer);

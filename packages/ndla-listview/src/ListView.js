@@ -192,6 +192,9 @@ const ListView = ({
   alphabet,
   onSelectItem,
   selectedItem,
+  renderMarkdown = text => {
+    return text;
+  },
   t,
 }) => (
   <ListViewWrapper>
@@ -287,6 +290,7 @@ const ListView = ({
             key={item.id}
             clickCallback={() => onSelectItem(item)}
             viewStyle={viewStyle}
+            renderMarkdown={renderMarkdown}
           />
         ))}
       </div>
@@ -342,6 +346,7 @@ ListView.propTypes = {
   searchValue: PropTypes.string,
   onSelectItem: PropTypes.func.isRequired,
   selectedItem: PropTypes.node,
+  renderMarkdown: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
 

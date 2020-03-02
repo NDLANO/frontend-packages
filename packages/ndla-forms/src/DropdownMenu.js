@@ -69,7 +69,6 @@ const DropdownMenu = ({
   menuHeight,
   disableSelected,
   totalCount,
-  inputValue,
 }) => {
   if (!isOpen) {
     return null;
@@ -108,9 +107,7 @@ const DropdownMenu = ({
           : t('dropdown.numberHits', { hits: totalCount || items.length })}
       </StyledResultFooter>
       {onCreate && (
-        <StyledCreateButton
-          type="button"
-          onClick={inputValue ? () => onCreate(inputValue) : onCreate}>
+        <StyledCreateButton type="button" onClick={onCreate}>
           {t('dropdown.create')}
         </StyledCreateButton>
       )}
@@ -135,6 +132,7 @@ DropdownMenu.propTypes = {
   getMenuProps: PropTypes.func.isRequired,
   maxRender: PropTypes.number,
   disableSelected: PropTypes.bool,
+  totalCount: PropTypes.number,
 };
 
 DropdownMenu.defaultProps = {

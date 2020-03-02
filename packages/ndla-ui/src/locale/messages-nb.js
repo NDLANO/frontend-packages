@@ -439,6 +439,7 @@ const messages = {
       tips: 'Tips til elever',
       fyr: 'FYR-prosjektet',
       sharing: 'Delingsarena',
+      vacancies: 'Ledige stillinger',
     },
   },
   contentTypes: {

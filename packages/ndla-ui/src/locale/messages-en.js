@@ -440,6 +440,7 @@ const messages = {
       tips: 'Tips to students',
       fyr: 'FYR project',
       sharing: 'Sharing arena',
+      vacancies: 'Vacancies',
     },
   },
   contentTypes: {

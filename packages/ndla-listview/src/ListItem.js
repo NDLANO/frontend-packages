@@ -73,6 +73,10 @@ const ListItemWrapper = styled.div`
     ${fonts.sizes('14px', 1.3)};
     margin: 0;
     color: ${colors.brand.text};
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   &.list {
@@ -162,12 +166,12 @@ class ListItem extends Component {
   }
 
   renderItem() {
-    const { item } = this.props;
+    const { item, renderMarkdown } = this.props;
     return (
       <Fragment>
         <span className={'item-subject'}>{item.subject[0].title}</span>
         <h3 className={'item-name'}>{item.name}</h3>
-        <p className={'item-description'}>{item.description}</p>
+        <p className={'item-description'}>{renderMarkdown(item.description)}</p>
       </Fragment>
     );
   }
@@ -222,6 +226,7 @@ ListItem.propTypes = {
   previousItem: PropTypes.shape(),
   itemIndex: PropTypes.number,
   viewStyle: PropTypes.oneOf(['grid', 'list']).isRequired,
+  renderMarkdown: PropTypes.func.isRequired,
 };
 
 export default ListItem;

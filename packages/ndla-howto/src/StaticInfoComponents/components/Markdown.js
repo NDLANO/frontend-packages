@@ -9,15 +9,15 @@ const markdownSyntax = [
   '**Bold**',
   '*Italics*',
   'super^script^',
-  'sub~script~'
-]
+  'sub~script~',
+];
 
 const Markdown = () => (
   <Fragment>
     <p>
-      Markdown er et språk som brukes til å formatere tekst. 
-      Nedenfor er en tabell som viser den mest nyttige syntaksen.
-      Fullstendig syntaks finnes <a href="https://commonmark.org/help/">her</a>.
+      Markdown er et språk som brukes til å formatere tekst. Nedenfor er en
+      tabell som viser den mest nyttige syntaksen. Fullstendig syntaks finnes{' '}
+      <a href="https://commonmark.org/help/">her</a>.
     </p>
     <Table
       messages={{
@@ -31,23 +31,21 @@ const Markdown = () => (
         </tr>
       </thead>
       <tbody>
-        {
-          markdownSyntax.map((item, i) => (
-            <tr key={item}>
-              <td>{item}</td>
-              <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: md.render(item),
-                  }}
-                />
-              </td>
-            </tr>
-          ))
-        }
+        {markdownSyntax.map((item, i) => (
+          <tr key={item}>
+            <td>{item}</td>
+            <td>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: md.render(item),
+                }}
+              />
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   </Fragment>
-)
+);
 
 export default Markdown;

@@ -247,5 +247,5 @@ export const stories = {
         content: <Markdown />,
       },
     ],
-  }
+  },
 };

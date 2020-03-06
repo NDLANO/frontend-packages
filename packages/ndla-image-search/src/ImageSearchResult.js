@@ -28,7 +28,7 @@ export default function ImageSearchResult({
           <img
             role="presentation"
             alt="presentation"
-            srcSet={getPreviewSrcSets(encodeURI(image.previewUrl))}
+            srcSet={getPreviewSrcSets(image.previewUrl)}
             src={image.previewUrl}
           />
           <span className="list-item-title">{image.title.title}</span>

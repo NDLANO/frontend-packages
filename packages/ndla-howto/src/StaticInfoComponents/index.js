@@ -2,6 +2,7 @@ import React from 'react';
 import AudioPlayerExamples from './components/AudioExample';
 import FactboxExample from './components/FactboxExample';
 import SolutionExample from './components/SolutionExample';
+import Markdown from './components/Markdown';
 
 export const stories = {
   Paragraph: {
@@ -237,5 +238,14 @@ export const stories = {
   status: {
     title: 'Forklaring for ulike statuser',
     lead: 'Denne teksten kommer snart. Veeeldig snart!.',
+  },
+  Markdown: {
+    title: 'Markdown',
+    body: [
+      {
+        type: 'component',
+        content: <Markdown />,
+      },
+    ],
   },
 };

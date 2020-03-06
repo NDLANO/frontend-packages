@@ -1,6 +1,6 @@
 {
   "name": "@ndla/howto",
-  "version": "0.1.79",
+  "version": "0.1.80",
   "description": "Temporary how-to texts for production system",
   "license": "GPL-3.0",
   "main": "lib/index.js",

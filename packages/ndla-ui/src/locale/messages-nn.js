@@ -625,7 +625,8 @@ const messages = {
     },
     blog2: {
       text: 'Informasjon til elever om koronaviruset',
-      externalLink: 'https://blogg.ndla.no/2020/03/informasjon-til-elever-om-koronaviruset/',
+      externalLink:
+        'https://blogg.ndla.no/2020/03/informasjon-til-elever-om-koronaviruset/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Jan Frode Lindsø',

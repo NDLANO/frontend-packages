@@ -624,11 +624,12 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Strikkhopping i mattetimen',
-      externalLink: 'https://blogg.ndla.no/2019/11/strikkhopping-i-mattetimen/',
+      text: 'Informasjon til elever om koronaviruset',
+      externalLink:
+        'https://blogg.ndla.no/2020/03/informasjon-til-elever-om-koronaviruset/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Jone N. Nyborg',
+      licenseAuthor: 'Jan Frode Lindsø',
     },
   },
   editor: {

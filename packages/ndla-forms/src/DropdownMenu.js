@@ -69,6 +69,8 @@ const DropdownMenu = ({
   menuHeight,
   disableSelected,
   totalCount,
+  customCreateButtonText,
+  hideTotalSearchCount,
 }) => {
   if (!isOpen) {
     return null;
@@ -101,14 +103,18 @@ const DropdownMenu = ({
           />
         ))}
       </StyledResultList>
-      <StyledResultFooter>
-        {loading
-          ? t('dropdown.searching')
-          : t('dropdown.numberHits', { hits: totalCount || items.length })}
-      </StyledResultFooter>
+      {!hideTotalSearchCount && (
+        <StyledResultFooter>
+          {loading
+            ? t('dropdown.searching')
+            : t('dropdown.numberHits', { hits: totalCount || items.length })}
+        </StyledResultFooter>
+      )}
       {onCreate && (
         <StyledCreateButton type="button" onClick={onCreate}>
-          {t('dropdown.create')}
+          {customCreateButtonText
+            ? customCreateButtonText
+            : t('dropdown.create')}
         </StyledCreateButton>
       )}
     </StyledDropDownContainer>
@@ -133,6 +139,8 @@ DropdownMenu.propTypes = {
   maxRender: PropTypes.number,
   disableSelected: PropTypes.bool,
   totalCount: PropTypes.number,
+  customCreateButtonText: PropTypes.string,
+  hideTotalSearchCount: PropTypes.bool,
 };
 
 DropdownMenu.defaultProps = {

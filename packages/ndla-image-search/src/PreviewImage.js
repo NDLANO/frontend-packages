@@ -25,7 +25,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
         <img
           role="presentation"
           alt="presentation"
-          srcSet={getSrcSets(encodeURI(image.imageUrl))}
+          srcSet={getSrcSets(image.imageUrl)}
           sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
           src={image.imageUrl}
         />

@@ -22,7 +22,6 @@ const FFFrontpage = ({ t }) => {
             <ArticleLoader
               articleId="21411"
               hideResources
-              showSubTopics
               reset
               id="mainContentId"
               useFFServer

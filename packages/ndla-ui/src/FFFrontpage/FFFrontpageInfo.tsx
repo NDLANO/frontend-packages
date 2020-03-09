@@ -7,19 +7,21 @@ import { SafeLinkButton } from '@ndla/safelink';
 const StyledWrapper = styled.section`
   background: ${colors.white};
   padding: ${spacing.small};
-  margin-top: -${spacing.large};
-  margin-bottom: ${spacing.large};
-  ${mq.range({ from: breakpoints.mobileWide })} {
-    padding: ${spacing.normal};
+  margin: -${spacing.large} -${spacing.medium} ${spacing.large};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.normal} ${spacing.small};
+    margin-left: 0;
+    margin-right: 0;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.large} ${spacing.spacingUnit * 3}px;
+    padding: ${spacing.large} ${spacing.small};
     margin-top: -${spacing.spacingUnit * 3}px;
   }
 `;
 
 const StyledContentWrapper = styled.div`
   max-width: 748px;
+  margin: 0 auto;
 `;
 
 const StyledHeading = styled.h1`
@@ -34,22 +36,24 @@ const StyledText = styled.p`
 `;
 
 type Props = {
-  heading: string;
-  text: string;
-  link: {
+  heading?: string;
+  text?: string;
+  link?: {
     label: string;
     to: string;
   };
+  children: React.ReactNode;
 };
 
-const FFFrontpageInfo = ({ heading, text, link }: Props) => {
+const FFFrontpageInfo = ({ heading, text, link, children }: Props) => {
   return (
     <StyledWrapper>
       <StyledContentWrapper>
-        <StyledHeading>{heading}</StyledHeading>
-        <StyledText>{text}</StyledText>
-        <SafeLinkButton to={link.to}>{link.label}</SafeLinkButton>
+        {heading && <StyledHeading>{heading}</StyledHeading>}
+        {text && <StyledText>{text}</StyledText>}
+        {link && <SafeLinkButton to={link.to}>{link.label}</SafeLinkButton>}
       </StyledContentWrapper>
+      {children}
     </StyledWrapper>
   );
 };

@@ -10,18 +10,25 @@ import {
   FFFrontpageInfo,
 } from '@ndla/ui';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
+import ArticleLoader from '../article/ArticleLoader';
 
 const FFFrontpage = ({ t }) => {
   return (
     <>
       <FFFrontpageHeader />
       <main>
-        <OneColumn extraPadding>
-          <FFFrontpageInfo
-            heading={t('fagfornyelse.frontpage.heading')}
-            text={t('fagfornyelse.frontpage.text')}
-            link={{ to: '/', label: 'Se de nye ressursene' }}
-          />
+        <OneColumn>
+          <FFFrontpageInfo>
+            <ArticleLoader
+              articleId="21411"
+              hideResources
+              showSubTopics
+              reset
+              id="mainContentId"
+              useFFServer
+              hideCompetenceGoals
+            />
+          </FFFrontpageInfo>
           <SubjectSectionTitle>
             {t('fagfornyelse.frontpage.blogHeading')}
           </SubjectSectionTitle>

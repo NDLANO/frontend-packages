@@ -202,6 +202,13 @@ export const appearances = {
     padding: 0 ${spacing.normal};
     ${fonts.sizes(18, 1.25)};
   `,
+  clippedButton: css`
+    border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
+  `,
+  clippedButtonAttachment: css`
+    border-radius: 0 ${misc.borderRadius} ${misc.borderRadius} 0;
+    padding: 0;
+  `,
 };
 
 export const buttonStyle = css`
@@ -269,6 +276,8 @@ export const Button = ({
   ghostPillInverted,
   ghostPillOutline,
   ghostPillOutlineInverted,
+  clippedButton,
+  clippedButtonAttachment,
   ...rest
 }) => {
   const modifiers = {
@@ -283,6 +292,8 @@ export const Button = ({
     ghostPillInverted,
     ghostPillOutline,
     ghostPillOutlineInverted,
+    clippedButton,
+    clippedButtonAttachment,
   };
 
   const styledAppearance = appearance || modifierToApperance(modifiers);

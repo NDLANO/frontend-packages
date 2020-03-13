@@ -49,6 +49,7 @@ import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
 import FFFrontpage from './FFFrontpage';
+import SearchPageExample from './SearchPageExample';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -483,6 +484,18 @@ storiesOf('Fagfornyelse', module)
         <ArticleLearningmaterial />
       </Content>
       <FooterExample isFFServer />
+    </PageContainer>
+  ))
+  .add('Søkeside', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu hideSearchButton />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <FFHeroBadge isSearchPage noMargin simple />
+          <SearchPageExample />
+        </OneColumn>
+      </Content>
+      <FooterExample />
     </PageContainer>
   ));
 storiesOf('Ndla film', module)

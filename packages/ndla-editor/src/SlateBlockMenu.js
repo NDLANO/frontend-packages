@@ -160,7 +160,7 @@ const SlateBlockMenu = React.forwardRef(
       {isOpen && (
         <FocusWrapper onToggleOpen={onToggleOpen}>
           <Wrapper>
-            <div>
+            <div cy="slate-block-picker-menu">
               <HeaderLabel>{heading}</HeaderLabel>
               {actions.map(action => (
                 <Item key={action.data.object}>

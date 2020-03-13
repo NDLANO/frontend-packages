@@ -207,7 +207,6 @@ export const appearances = {
   `,
   clippedButtonAttachment: css`
     border-radius: 0 ${misc.borderRadius} ${misc.borderRadius} 0;
-    padding: 0;
   `,
 };
 

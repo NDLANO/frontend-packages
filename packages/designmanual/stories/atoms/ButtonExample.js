@@ -36,9 +36,12 @@ const ButtonExample = () => {
           <Button disabled onClick={action('clicked')}>
             Knapp deaktivert
           </Button>{' '}
-          <Button onClick={action('clicked')} clippedButton>Knapp med nedtrekk</Button>
-          <Button onClick={action('clicked')} clippedButtonAttachment><ChevronDown/></Button>
-          {' '}
+          <Button onClick={action('clicked')} clippedButton>
+            Knapp med nedtrekk
+          </Button>
+          <Button onClick={action('clicked')} clippedButtonAttachment>
+            <ChevronDown />
+          </Button>{' '}
         </InlineContainer>
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)

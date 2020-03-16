@@ -624,12 +624,11 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Informasjon til elever om koronaviruset',
-      externalLink:
-        'https://blogg.ndla.no/2020/03/informasjon-til-elever-om-koronaviruset/',
+      text: 'Nettundervisning',
+      externalLink: 'https://blogg.ndla.no/nettundervisning/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Jan Frode Lindsø',
+      licenseAuthor: 'Scanpix.no',
     },
   },
   editor: {

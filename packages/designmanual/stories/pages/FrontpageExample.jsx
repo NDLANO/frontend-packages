@@ -16,7 +16,7 @@ import {
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { categories, dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
-import BlogExampleImage2 from '../../images/blog/sy0512e8_0.jpg';
+import BlogExampleImage2 from '../../images/blog/studereute.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 
 class FrontpageExample extends Component {

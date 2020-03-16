@@ -620,7 +620,7 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Nettundervisning',
+      text: 'Nyttige tips til nettundervisning',
       externalLink: 'https://blogg.ndla.no/nettundervisning/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',

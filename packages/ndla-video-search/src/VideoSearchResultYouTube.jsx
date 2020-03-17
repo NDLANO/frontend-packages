@@ -66,7 +66,10 @@ export default function VideoSearchResultYouTube({
               onClick={() => onVideoPreview(video)}>
               {translations.previewVideo}
             </Button>
-            <Button {...classes('button')} onClick={() => onSelectVideo(video)}>
+            <Button
+              data-cy="use-video"
+              {...classes('button')}
+              onClick={() => onSelectVideo(video)}>
               {translations.addVideo}
             </Button>
           </div>

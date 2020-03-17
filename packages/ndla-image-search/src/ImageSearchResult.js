@@ -24,7 +24,10 @@ export default function ImageSearchResult({
   return (
     <div key={image.id} className={`list-item ${active}`}>
       <div className="list-item-inner">
-        <Button stripped onClick={() => onImageClick(image)}>
+        <Button
+          data-cy="select-image-from-list"
+          stripped
+          onClick={() => onImageClick(image)}>
           <img
             role="presentation"
             alt="presentation"

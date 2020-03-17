@@ -89,7 +89,8 @@ class Tabs extends Component {
                   [modifier]: modifier,
                 })}
                 key={tab.key ? tab.key : i}
-                disabled={tab.disabled}>
+                disabled={tab.disabled}
+                data-cy={`${tab.title}-video-tab`}>
                 {tab.title}
               </Tab>
             ))}

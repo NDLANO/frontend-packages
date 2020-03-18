@@ -14,7 +14,7 @@ import { BlocksDark } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { SpeechBadge } from '../Badge';
+import { MessageBox } from '../MessageBox';
 
 type WrapperProps = {
   noMargin?: boolean;
@@ -44,11 +44,23 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 type TextProps = {
-  isSearchPage?: boolean;
+  smallText?: boolean;
+  color?: string;
 };
 const Text = styled.div<TextProps>`
-  font-size: ${props => (props.isSearchPage ? '14px' : '16px')};
+  font-size: ${props => (props.smallText ? '14px' : '16px')};
   margin-top: ${spacing.xxsmall};
+  ${props =>
+    props.color &&
+    `
+    color: ${props.color};
+    a {
+      color: ${props.color};
+      &:hover {
+        color: ${props.color};
+      }
+    }
+  `}
 `;
 
 const SimpleText = styled.span`
@@ -57,31 +69,48 @@ const SimpleText = styled.span`
 
 type Props = {
   noMargin?: boolean;
-  simple?: boolean;
   isSearchPage?: boolean;
+  isNDLAFilm?: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-export const FFHeroBadge = ({ noMargin, simple, isSearchPage, t }: Props) => (
-  <Wrapper noMargin={noMargin} isSearchPage={isSearchPage}>
-    <SpeechBadge
-      heading={!simple ? t('fagfornyelse.badge.heading') : ''}
-      icon={<BlocksDark className={`c-icon--large`} />}
-      hideArrow={simple}
-      backgroundColor={isSearchPage ? '#E0C5FA' : undefined}
-      borderColor={isSearchPage ? '#E0C5FA' : undefined}>
-      <Text isSearchPage={isSearchPage}>
-        {simple && (
-          <SimpleText>{t('fagfornyelse.badge.heading')}.&nbsp;</SimpleText>
-        )}
-        {t('fagfornyelse.badge.text')}
-        {simple ? ' ' : <br />}
-        <SafeLink to={'https://ndla.no'}>
-          {t('fagfornyelse.badge.linkText')}
-        </SafeLink>
-      </Text>
-    </SpeechBadge>
-  </Wrapper>
-);
+export const FFHeroBadge = ({
+  noMargin,
+  isSearchPage,
+  isNDLAFilm,
+  t,
+}: Props) => {
+  const simple = isSearchPage || isNDLAFilm;
+  let backgroundColor, borderColor, color;
+  if (isSearchPage) {
+    backgroundColor = '#E0C5FA';
+    borderColor = '#E0C5FA';
+  } else if (isNDLAFilm) {
+    backgroundColor = 'transparent';
+    borderColor = '#ffffff';
+    color = '#ffffff';
+  }
+  return (
+    <Wrapper noMargin={noMargin} isSearchPage={isSearchPage}>
+      <MessageBox
+        heading={!simple ? t('fagfornyelse.badge.heading') : ''}
+        icon={<BlocksDark className={`c-icon--large`} />}
+        simple={simple}
+        backgroundColor={backgroundColor}
+        borderColor={borderColor}>
+        <Text smallText={isSearchPage || isNDLAFilm} color={color}>
+          {simple && (
+            <SimpleText>{t('fagfornyelse.badge.heading')}.&nbsp;</SimpleText>
+          )}
+          {t('fagfornyelse.badge.text')}
+          {simple ? ' ' : <br />}
+          <SafeLink to={'https://ndla.no'}>
+            {t('fagfornyelse.badge.linkText')}
+          </SafeLink>
+        </Text>
+      </MessageBox>
+    </Wrapper>
+  );
+};
 
 export default injectT(FFHeroBadge);

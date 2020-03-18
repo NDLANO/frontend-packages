@@ -5,21 +5,24 @@ import { colors, spacing } from '@ndla/core';
 type WrapperProps = {
   backgroundColor?: string;
   borderColor?: string;
-  hideArrow?: boolean;
+  simple?: boolean;
 };
 
 const Wrapper = styled.div<WrapperProps>`
   background: ${props =>
     props.backgroundColor ? props.backgroundColor : colors.white};
   position: relative;
-  padding: ${spacing.small};
-  margin-bottom: ${spacing.small};
+  padding: ${props =>
+    props.simple
+      ? `${spacing.xsmall} ${spacing.small} ${spacing.xsmall} ${spacing.xsmall}`
+      : spacing.small};
+  margin-bottom: ${props => (props.simple ? 0 : spacing.small)};
   border-radius: 2px;
   border: 2px solid
     ${props => (props.borderColor ? props.borderColor : colors.white)};
   display: inline-flex;
   ${props =>
-    !props.hideArrow &&
+    !props.simple &&
     `
       &:after,
       &:before {
@@ -70,21 +73,21 @@ type Props = {
   icon?: React.ReactNode;
   backgroundColor?: string;
   borderColor?: string;
-  hideArrow?: boolean;
+  simple?: boolean;
   children: React.ReactNode;
 };
-export const SpeechBadge = ({
+export const MessageBox = ({
   heading,
   icon,
   backgroundColor,
   borderColor,
-  hideArrow,
+  simple,
   children,
 }: Props) => (
   <Wrapper
     backgroundColor={backgroundColor}
     borderColor={borderColor}
-    hideArrow={hideArrow}>
+    simple={simple}>
     {icon && <IconWrapper>{icon}</IconWrapper>}
     <TextWrapper>
       {heading && <Label>{heading}</Label>}
@@ -93,4 +96,4 @@ export const SpeechBadge = ({
   </Wrapper>
 );
 
-export default SpeechBadge;
+export default MessageBox;

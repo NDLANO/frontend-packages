@@ -6,7 +6,7 @@ import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import { BlocksLight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-import { SpeechBadge } from '../Badge';
+import { MessageBox } from '../MessageBox';
 // @ts-ignore
 import Logo from '../Logo';
 
@@ -82,7 +82,7 @@ const FFFrontpageHeader: React.FunctionComponent<FFFrontpageHeaderProps> = ({
 }) => (
   <StyledHeaderWrapper>
     <StyledHeader>
-      <SpeechBadge
+      <MessageBox
         heading={t('fagfornyelse.badge.heading')}
         icon={<BlocksLight className={`c-icon--large`} />}
         backgroundColor={'#5f219c'}>
@@ -93,7 +93,7 @@ const FFFrontpageHeader: React.FunctionComponent<FFFrontpageHeaderProps> = ({
             {t('fagfornyelse.badge.linkText')}
           </SafeLink>
         </Text>
-      </SpeechBadge>
+      </MessageBox>
       <StyledLogo>
         <Logo to="/" label={'NDLA'} large cssModifier={'white'} />
       </StyledLogo>

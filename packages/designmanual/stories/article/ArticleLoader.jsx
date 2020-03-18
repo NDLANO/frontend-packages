@@ -125,6 +125,7 @@ class ArticleLoader extends Component {
       hideForm,
       id,
       hideCompetenceGoals,
+      isFFServer,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -169,6 +170,7 @@ class ArticleLoader extends Component {
           <NdlaFilmArticleHero
             article={article}
             withBackgroundImage={withBackgroundImage}
+            isFFServer={isFFServer}
           />
         )}
         <div>
@@ -228,6 +230,7 @@ ArticleLoader.propTypes = {
   ndlaFilm: PropTypes.bool,
   useFFServer: PropTypes.bool,
   hideCompetenceGoals: PropTypes.bool,
+  isFFServer: PropTypes.bool,
 };
 
 ArticleLoader.defaultProps = {

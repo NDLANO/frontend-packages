@@ -6,6 +6,6 @@
  *
  */
 
-import SpeechBadge from './SpeechBadge';
+import MessageBox from './MessageBox';
 
-export { SpeechBadge };
+export { MessageBox };

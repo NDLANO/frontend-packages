@@ -491,11 +491,67 @@ storiesOf('Fagfornyelse', module)
       <Content>
         <MastheadWithTopicMenu hideSearchButton />
         <OneColumn cssModifier="clear-desktop" wide>
-          <FFHeroBadge isSearchPage noMargin simple />
+          <FFHeroBadge isSearchPage noMargin />
           <SearchPageExample />
         </OneColumn>
       </Content>
       <FooterExample />
+    </PageContainer>
+  ))
+  .add('NDLA Film forside', () => (
+    <PageContainer ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <FFHeroBadge isNDLAFilm />
+        </OneColumn>
+        <NdlaFilmFrontpage id="mainContentId" />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Film (emne side)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <ArticleLoader
+          id="mainContentId"
+          articleId="3683"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          withBackgroundImage
+          ndlaFilm
+          isFFServer
+        />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Film emne (over film)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <ArticleLoader
+          id="mainContentId"
+          articleId="4824"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+          ndlaFilm
+          isFFServer
+        />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Læringssti (på NDLA film)', () => (
+    <PageContainer backgroundWide ndlaFilm learningPath>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <LearningPathExample invertedStyle isFFServer isNDLAFilm />
+      </Content>
+      <FooterExample invertedOutlineLargeScreensOnly />
     </PageContainer>
   ));
 storiesOf('Ndla film', module)

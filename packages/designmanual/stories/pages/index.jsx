@@ -510,7 +510,7 @@ storiesOf('Fagfornyelse', module)
       <FooterExample inverted />
     </PageContainer>
   ))
-  .add('Film (emne side)', () => (
+  .add('Film (emneside)', () => (
     <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />

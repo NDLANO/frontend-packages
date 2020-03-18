@@ -52,8 +52,8 @@ const StyledPillsWrapper = styled.div`
 
 export const FormPill = ({ label, id, onClick }) => (
   <StyledPill>
-    <button type="button" onClick={() => onClick(id)}>
-      <Cross />
+    <button type="button">
+      <Cross onClick={() => onClick(id)} />
       <span>{label}</span>
     </button>
   </StyledPill>

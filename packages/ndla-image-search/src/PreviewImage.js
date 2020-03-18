@@ -51,7 +51,9 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
         </div>
-        <Button onClick={() => onSelectImage(image)}>{useImageTitle}</Button>
+        <Button data-cy="use-image" onClick={() => onSelectImage(image)}>
+          {useImageTitle}
+        </Button>
       </div>
       <div className="clear" />
     </div>

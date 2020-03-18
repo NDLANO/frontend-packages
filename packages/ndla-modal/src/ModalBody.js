@@ -66,7 +66,10 @@ const bodyStyles = css`
 `;
 
 const ModalBody = ({ children, modifier }) => (
-  <div css={bodyStyles} className={`modal-body ${modifier}`}>
+  <div
+    data-cy="modal-body"
+    css={bodyStyles}
+    className={`modal-body ${modifier}`}>
     {children}
   </div>
 );

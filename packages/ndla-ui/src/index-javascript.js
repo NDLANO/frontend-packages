@@ -166,4 +166,4 @@ export {
 } from './NDLAFilm';
 
 export { default as CreatedBy } from './CreatedBy';
-export { SpeechBadge } from './Badge';
+export { MessageBox } from './MessageBox';

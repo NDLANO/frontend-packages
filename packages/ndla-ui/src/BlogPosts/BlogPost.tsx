@@ -18,6 +18,7 @@ import SafeLink from '@ndla/safelink';
 
 type StyledBlogProps = {
   backgroundImage: string;
+  oneColumn?: boolean;
 };
 
 const StyledLicense = styled.span`
@@ -59,6 +60,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
   &:before {
     background-image: url(${props => props.backgroundImage});
     background-size: cover;
+    background-position: center;
     content: '';
     display: block;
     position: absolute;
@@ -67,7 +69,6 @@ const StyledBlog = styled.div<StyledBlogProps>`
     right: 0;
     bottom: 0;
   }
-  min-height: 250px;
   padding: ${spacing.medium} ${spacing.normal};
   height: 100%;
   &:after {
@@ -88,6 +89,12 @@ const StyledBlog = styled.div<StyledBlogProps>`
   min-height: 200px;
   ${mq.range({ from: breakpoints.tablet })} {
     min-height: 250px;
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    ${props =>
+      props.oneColumn &&
+      `
+    min-height: 400px;`}
   }
 `;
 
@@ -150,6 +157,7 @@ type Props = {
   image: {
     url: string;
   };
+  oneColumn?: boolean;
 };
 
 export const BlogPost: React.FunctionComponent<Props> = ({
@@ -160,12 +168,13 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   license,
   licenseAuthor,
   locale,
+  oneColumn,
 }) => {
   const { rights } = getLicenseByAbbreviation(license, 'nb');
   return (
     <>
       <div>
-        <StyledBlog backgroundImage={image.url}>
+        <StyledBlog oneColumn={oneColumn} backgroundImage={image.url}>
           <StyledTag>{linkText}</StyledTag>
           <StyledSafeLink to={externalLink} target="_blank" aria-label={text}>
             <span>

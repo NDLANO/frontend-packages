@@ -23,6 +23,7 @@ import {
   OneColumn,
   PageContainer,
   Content,
+  FFHeroBadge,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -47,6 +48,8 @@ import LearningPathExample from './LearningPathExample';
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
+import FFFrontpage from './FFFrontpage';
+import SearchPageExample from './SearchPageExample';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -415,6 +418,140 @@ storiesOf('Emnesider', module)
         />
       </Content>
       <FooterExample />
+    </PageContainer>
+  ));
+storiesOf('Fagfornyelse', module)
+  .add('Forside', () => (
+    <PageContainer background>
+      <Content>
+        <FFFrontpage />
+      </Content>
+      <FooterExample hideLanguageSelector={true} isFFServer />
+    </PageContainer>
+  ))
+  .add('Fagforside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu
+          skipToMainContentId="mainContentId"
+          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        />
+        <Subject id="mainContentId" noHeaderImages showFFBadge />
+      </Content>
+      <FooterExample isFFServer />
+    </PageContainer>
+  ))
+  .add('Hovedemne', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <SubjectHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <FFHeroBadge />
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectHero>
+        <ArticleLoader
+          articleId="29"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+          id="mainContentId"
+        />
+      </Content>
+      <FooterExample isFFServer />
+    </PageContainer>
+  ))
+  .add('Læringsressurser', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <FFHeroBadge />
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLearningmaterial />
+      </Content>
+      <FooterExample isFFServer />
+    </PageContainer>
+  ))
+  .add('Søkeside', () => (
+    <PageContainer background>
+      <Content>
+        <MastheadWithTopicMenu hideSearchButton />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <FFHeroBadge isSearchPage noMargin />
+          <SearchPageExample />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('NDLA Film forside', () => (
+    <PageContainer ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <FFHeroBadge isNDLAFilm />
+        </OneColumn>
+        <NdlaFilmFrontpage id="mainContentId" />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Film (emneside)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <ArticleLoader
+          id="mainContentId"
+          articleId="3683"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          withBackgroundImage
+          ndlaFilm
+          isFFServer
+        />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Film emne (over film)', () => (
+    <PageContainer backgroundWide ndlaFilm>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <ArticleLoader
+          id="mainContentId"
+          articleId="4824"
+          icon={<SubjectBadge size="large" background />}
+          label="Emne"
+          hideResources
+          showSubTopics
+          ndlaFilm
+          isFFServer
+        />
+      </Content>
+      <FooterExample inverted />
+    </PageContainer>
+  ))
+  .add('Læringssti (på NDLA film)', () => (
+    <PageContainer backgroundWide ndlaFilm learningPath>
+      <Content>
+        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
+        <LearningPathExample invertedStyle isFFServer isNDLAFilm />
+      </Content>
+      <FooterExample invertedOutlineLargeScreensOnly />
     </PageContainer>
   ));
 storiesOf('Ndla film', module)

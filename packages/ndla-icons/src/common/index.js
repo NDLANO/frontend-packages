@@ -14,6 +14,8 @@ export { default as Audio } from './Audio';
 export { default as Audiobook } from './Audiobook';
 export { default as AudioDocument } from './AudioDocument';
 export { default as Back } from './Back';
+export { default as BlocksDark } from './BlocksDark';
+export { default as BlocksLight } from './BlocksLight';
 export { default as ChevronDown } from './ChevronDown';
 export { default as ChevronLeft } from './ChevronLeft';
 export { default as ChevronRight } from './ChevronRight';

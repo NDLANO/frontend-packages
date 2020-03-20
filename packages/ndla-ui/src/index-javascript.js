@@ -113,6 +113,7 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
+  FFHeroBadge,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
@@ -165,3 +166,4 @@ export {
 } from './NDLAFilm';
 
 export { default as CreatedBy } from './CreatedBy';
+export { MessageBox } from './MessageBox';

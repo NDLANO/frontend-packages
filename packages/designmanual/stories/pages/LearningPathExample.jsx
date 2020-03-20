@@ -19,6 +19,7 @@ import {
   LearningPathSticky,
   LearningPathStickySibling,
   LearningPathMobileStepInfo,
+  FFHeroBadge,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -115,10 +116,10 @@ const dataReducer = (state, action) => {
   }
 };
 
-const toLearningPathUrl = (id, locale) => {
+const toLearningPathUrl = () => {
   return '';
 };
-const LearningPathExample = ({ t, invertedStyle }) => {
+const LearningPathExample = ({ invertedStyle, isFFServer, isNDLAFilm }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
   const [learningPathId, updateLearningPathId] = useState(
@@ -230,6 +231,7 @@ const LearningPathExample = ({ t, invertedStyle }) => {
       <LearningPathWrapper invertedStyle={invertedStyle}>
         <div className="c-hero__content">
           <section>
+            {isFFServer && <FFHeroBadge isNDLAFilm={isNDLAFilm} />}
             <Breadcrumb invertedStyle={invertedStyle} />
           </section>
         </div>

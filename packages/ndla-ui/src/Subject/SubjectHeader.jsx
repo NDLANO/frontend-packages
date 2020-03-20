@@ -5,10 +5,11 @@ import BEMHelper from 'react-bem-helper';
 import { breakpoints } from '@ndla/util';
 
 import OneColumn from '../Layout/OneColumn';
+import { FFHeroBadge } from '../../lib';
 
 const classes = BEMHelper('c-subject-header');
 
-const SubjectHeader = ({ images, heading }) => (
+const SubjectHeader = ({ images, heading, showFFBadge }) => (
   <header {...classes()}>
     {images &&
       images.map(image =>
@@ -21,6 +22,11 @@ const SubjectHeader = ({ images, heading }) => (
         )),
       )}
     <OneColumn noPadding>
+      {showFFBadge && (
+        <div {...classes('badge')}>
+          <FFHeroBadge noMargin />
+        </div>
+      )}
       <h1 {...classes('heading')}>{heading}</h1>
     </OneColumn>
   </header>
@@ -35,6 +41,7 @@ SubjectHeader.propTypes = {
     }),
   ),
   heading: PropTypes.string.isRequired,
+  showFFBadge: PropTypes.bool,
 };
 
 SubjectHeader.defaultProps = {

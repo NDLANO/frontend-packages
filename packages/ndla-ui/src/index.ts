@@ -26,6 +26,8 @@ export {
   FrontpageSearch,
 } from './Frontpage';
 
+export { FFFrontpageInfo, FFFrontpageHeader } from './FFFrontpage';
+
 export { Footer, EditorName, FooterText } from './Footer';
 
 export { LanguageSelector } from './LanguageSelector';

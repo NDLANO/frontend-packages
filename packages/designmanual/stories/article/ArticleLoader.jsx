@@ -86,8 +86,9 @@ class ArticleLoader extends Component {
   }
 
   handleSubmit = async articleId => {
+    const { useFFServer } = this.props;
     try {
-      const article = await fetchArticle(articleId);
+      const article = await fetchArticle(articleId, useFFServer);
       this.setState({
         article: {
           ...article,
@@ -123,6 +124,8 @@ class ArticleLoader extends Component {
       withBackgroundImage,
       hideForm,
       id,
+      hideCompetenceGoals,
+      isFFServer,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -167,12 +170,13 @@ class ArticleLoader extends Component {
           <NdlaFilmArticleHero
             article={article}
             withBackgroundImage={withBackgroundImage}
+            isFFServer={isFFServer}
           />
         )}
         <div>
           <Helmet script={scripts} />
           {article && (
-            <OneColumn>
+            <OneColumn noPadding={reset}>
               <Article
                 id={id}
                 icon={icon}
@@ -188,7 +192,9 @@ class ArticleLoader extends Component {
                   label,
                 }}
                 licenseBox={<LicenseBox />}
-                competenceGoals={<CompetenceGoalListExample />}>
+                competenceGoals={
+                  !hideCompetenceGoals ? <CompetenceGoalListExample /> : null
+                }>
                 {articleChildren}
               </Article>
             </OneColumn>
@@ -222,6 +228,9 @@ ArticleLoader.propTypes = {
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
   ndlaFilm: PropTypes.bool,
+  useFFServer: PropTypes.bool,
+  hideCompetenceGoals: PropTypes.bool,
+  isFFServer: PropTypes.bool,
 };
 
 ArticleLoader.defaultProps = {

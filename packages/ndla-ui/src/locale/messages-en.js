@@ -433,6 +433,7 @@ const messages = {
       sharePageAria: 'Share this page',
     },
     ndlaLinks: {
+      ndla: 'ndla.no',
       omNdla: 'Om NDLA',
       aboutNdla: 'About NDLA',
       blog: 'Blog',
@@ -633,6 +634,19 @@ const messages = {
   createdBy: {
     content: 'The article',
     text: 'is created by',
+  },
+  fagfornyelse: {
+    frontpage: {
+      heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
+      text:
+        'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
+      blogHeading: 'Do you want to know more?',
+    },
+    badge: {
+      heading: 'This page is adapted for Fagfornyelsen 2020',
+      text: 'Not what you were looking for?',
+      linkText: "Go to ndla.no for today's content",
+    },
   },
 };
 

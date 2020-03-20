@@ -435,6 +435,7 @@ const messages = {
       sharePageAria: 'Del denne sida',
     },
     ndlaLinks: {
+      ndla: 'ndla.no',
       omNdla: 'Om NDLA',
       aboutNdla: 'About NDLA',
       blog: 'Fagblogg',
@@ -645,6 +646,19 @@ const messages = {
   createdBy: {
     content: 'Artikkelen',
     text: 'er utarbeida av',
+  },
+  fagfornyelse: {
+    frontpage: {
+      heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
+      text:
+        'Hausten 2020 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
+      blogHeading: 'Vil du vite meir?',
+    },
+    badge: {
+      heading: 'Denne sida er tilrettelagt for fagfornyelsen 2020',
+      text: 'Ikkje på jakt etter dette?',
+      linkText: 'Gå til ndla.no for dagens innhald',
+    },
   },
 };
 

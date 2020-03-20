@@ -10,16 +10,25 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints } from '@ndla/core';
 
-const StyledGrid = styled.section`
+type StyledGridProps = {
+  oneColumn?: boolean;
+};
+const StyledGrid = styled.section<StyledGridProps>`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: -${spacing.normal};
   > * {
-    display: flex-inline;
     width: calc(50% - ${spacing.xsmall});
     margin-bottom: ${spacing.normal};
   }
+  ${props =>
+    props.oneColumn &&
+    `
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }`}
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
     > * {
@@ -30,10 +39,12 @@ const StyledGrid = styled.section`
 
 interface Props {
   children: React.ReactNode;
+  oneColumn?: boolean;
 }
 
 export const BlogPostWrapper: React.FunctionComponent<Props> = ({
   children,
-}) => <StyledGrid>{children}</StyledGrid>;
+  oneColumn,
+}) => <StyledGrid oneColumn={oneColumn}>{children}</StyledGrid>;
 
 export default BlogPostWrapper;

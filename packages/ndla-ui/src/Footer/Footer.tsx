@@ -32,11 +32,17 @@ const StyledBackground = styled.div`
   );
 `;
 
-const StyledFooter = styled.footer`
+type StyledFooterProps = {
+  addMargin?: boolean;
+};
+
+const StyledFooter = styled.footer<StyledFooterProps>`
   color: #fff;
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
+  ${props => props.addMargin && `margin-top: ${spacing.spacingUnit * 4}px;`}
+
   > div:first-of-type {
     position: relative;
     z-index: 1;
@@ -122,6 +128,7 @@ type Props = {
     icon: React.ReactNode;
   };
   languageSelector?: React.ReactNode;
+  isFFServer?: boolean;
 };
 
 const Footer: React.FunctionComponent<Props> = ({
@@ -130,6 +137,7 @@ const Footer: React.FunctionComponent<Props> = ({
   t,
   links,
   languageSelector,
+  isFFServer,
 }) => {
   const mainContent = (
     <>
@@ -146,7 +154,7 @@ const Footer: React.FunctionComponent<Props> = ({
         </div>
         <div>
           <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} />
+          <FooterLinks links={links} isFFServer={isFFServer} />
         </div>
       </StyledColumns>
       <StyledHr />
@@ -161,7 +169,7 @@ const Footer: React.FunctionComponent<Props> = ({
       {languageSelector && (
         <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
       )}
-      <StyledFooter>
+      <StyledFooter addMargin={!languageSelector}>
         <OneColumn cssModifier="large">{footerContent}</OneColumn>
         <StyledBackground />
       </StyledFooter>

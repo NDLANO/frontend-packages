@@ -414,6 +414,7 @@ class ImageSearch extends React.Component {
           query={queryObject}
           onClick={this.searchImages}
           pageItemComponentClass="button"
+          type="button"
         />
       </ImageSearchWrapper>
     );

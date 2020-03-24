@@ -154,7 +154,7 @@ const SlateBlockMenu = React.forwardRef(
         ref={ref}
         css={[buttonCSS, isOpen && buttonOpen]}
         data-cy={cy}
-        onClick={() => onToggleOpen(!isOpen)}>
+        onMouseDown={() => onToggleOpen(!isOpen)}>
         <Plus />
       </div>
       {isOpen && (

@@ -81,6 +81,7 @@ PageItem.propTypes = {
   query: PropTypes.object.isRequired, // eslint-disable-line
   pathname: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  type: PropTypes.string,
 };
 
 const StyledPager = styled.div`

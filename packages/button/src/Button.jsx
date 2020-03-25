@@ -60,6 +60,74 @@ export const pillStyle = css`
     }
   }
 `;
+export const outlineStyle = css`
+  color: ${colors.brand.primary};
+  background-color: transparent;
+  border: 2px solid ${colors.brand.primary};
+  font-weight: ${fonts.weight.bold};
+  box-shadow: none;
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: ${colors.brand.primary};
+    border: 2px solid transparent;
+    transform: translateY(0) translateX(0);
+  }
+  &:disabled {
+    color: ${colors.brand.grey};
+    border: 2px solid transparent;
+    background-color: ${colors.background.dark};
+    cursor: not-allowed;
+    transform: translateY(0) translateX(0);
+  }
+`;
+
+export const clippedButtonStyle = css`
+  border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
+  &:hover,
+  &:focus,
+  &:disabled {
+    transform: translateY(0) translateX(0);
+  }
+`;
+export const clippedButtonAttachmentStyle = css`
+  border-radius: 0 ${misc.borderRadius} ${misc.borderRadius} 0;
+  &:hover,
+  &:focus,
+  &:disabled {
+    transform: translateY(0) translateX(0);
+  }
+`;
+export const clippedButtonOutlineStyle = css`
+  ${outlineStyle};
+  border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
+  border-right: 0;
+  padding-right: calc(${spacing.small} + 2px);
+  &:hover,
+  &:focus,
+  &:disabled {
+    transform: translateY(0) translateX(0);
+    border-right: 0;
+  }
+`;
+export const clippedButtonAttachmentOutlineStyle = css`
+  ${outlineStyle};
+  border-radius: 0 ${misc.borderRadius} ${misc.borderRadius} 0;
+  border-left: 0;
+  padding-left: calc(${spacing.small} + 2px);
+  &:hover,
+  &:focus,
+  &:disabled {
+    transform: translateY(0) translateX(0);
+    border-left: 0;
+  }
+`;
+
+export const largeStyle = css`
+  height: ${spacing.large};
+  padding: 0 ${spacing.normal};
+  ${fonts.sizes(18, 1.25)};
+`;
 
 export const appearances = {
   inverted: css`
@@ -103,23 +171,7 @@ export const appearances = {
     }
   `,
   outline: css`
-    color: ${colors.brand.primary};
-    background-color: transparent;
-    border: 2px solid ${colors.brand.primary};
-    font-weight: ${fonts.weight.bold};
-    box-shadow: none;
-    &:hover,
-    &:focus {
-      color: white;
-      background-color: ${colors.brand.primary};
-      border: 2px solid transparent;
-      transform: translateY(0) translateX(0);
-    }
-    &:disabled {
-      border: 2px solid transparent;
-      cursor: not-allowed;
-      transform: translateY(0) translateX(0);
-    }
+    ${outlineStyle};
   `,
   stripped: css`
     ${strippedStyle};
@@ -198,9 +250,37 @@ export const appearances = {
     }
   `,
   large: css`
-    height: ${spacing.large};
-    padding: 0 ${spacing.normal};
-    ${fonts.sizes(18, 1.25)};
+    ${largeStyle};
+  `,
+  clippedButton: css`
+    ${clippedButtonStyle};
+  `,
+  clippedButtonAttachment: css`
+    ${clippedButtonAttachmentStyle};
+  `,
+  clippedButtonOutline: css`
+    ${clippedButtonOutlineStyle};
+  `,
+  clippedButtonAttachmentOutline: css`
+    ${clippedButtonAttachmentOutlineStyle};
+  `,
+  clippedButtonLarge: css`
+    ${largeStyle};
+    ${clippedButtonStyle};
+  `,
+  clippedButtonAttachmentLarge: css`
+    ${largeStyle};
+    ${clippedButtonAttachmentStyle};
+  `,
+  clippedButtonOutlineLarge: css`
+    ${largeStyle};
+    ${clippedButtonOutlineStyle};
+    padding-right: ${spacing.normal};
+  `,
+  clippedButtonAttachmentOutlineLarge: css`
+    ${largeStyle};
+    ${clippedButtonAttachmentOutlineStyle};
+    padding-left: ${spacing.normal};
   `,
 };
 
@@ -248,8 +328,11 @@ export const StyledButton = styled('button')`
   ${p => appearances[p.appearance]};
 `;
 
+// Reverse the array to find the last element first
 const modifierToApperance = modifiers =>
-  Object.keys(modifiers).find(key => modifiers[key]);
+  Object.keys(modifiers)
+    .reverse()
+    .find(key => modifiers[key]);
 
 export const Button = ({
   outline,
@@ -269,8 +352,17 @@ export const Button = ({
   ghostPillInverted,
   ghostPillOutline,
   ghostPillOutlineInverted,
+  clippedButton,
+  clippedButtonOutline,
+  clippedButtonAttachment,
+  clippedButtonAttachmentOutline,
   ...rest
 }) => {
+  const clippedButtonLarge = clippedButton && large;
+  const clippedButtonOutlineLarge = clippedButtonOutline && large;
+  const clippedButtonAttachmentLarge = clippedButtonAttachment && large;
+  const clippedButtonAttachmentOutlineLarge =
+    clippedButtonAttachmentOutline && large;
   const modifiers = {
     link,
     large,
@@ -283,6 +375,14 @@ export const Button = ({
     ghostPillInverted,
     ghostPillOutline,
     ghostPillOutlineInverted,
+    clippedButton,
+    clippedButtonOutline,
+    clippedButtonAttachment,
+    clippedButtonAttachmentOutline,
+    clippedButtonLarge,
+    clippedButtonOutlineLarge,
+    clippedButtonAttachmentLarge,
+    clippedButtonAttachmentOutlineLarge,
   };
 
   const styledAppearance = appearance || modifierToApperance(modifiers);

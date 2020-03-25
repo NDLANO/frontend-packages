@@ -1,11 +1,28 @@
 import React from 'react';
-import Button, { StyledButton } from '@ndla/button';
+import Button, { MultiButton, StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown } from '@ndla/icons/common';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 
 const AnchorButton = StyledButton.withComponent('a');
+
+const MultiButtonData = {
+  mainButton: {
+    label: 'Lagre',
+    value: 'lagre',
+  },
+  secondaryButtons: [
+    {
+      label: 'Lagre og ny versjon',
+      value: 'lagreogny',
+    },
+    {
+      label: 'Lagre og avslutt',
+      value: 'lagreogavslutt',
+    },
+  ],
+};
 
 const ButtonExample = () => {
   return (
@@ -36,6 +53,64 @@ const ButtonExample = () => {
           <Button disabled onClick={action('clicked')}>
             Knapp deaktivert
           </Button>
+        </InlineContainer>
+        <h2 className="u-heading">Multiknapper</h2>
+        <p>Undermeny kan vises over eller under hovedknappen</p>
+        <InlineContainer>
+          <MultiButton
+            outline
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />{' '}
+          <MultiButton
+            outline
+            disabled
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />
+        </InlineContainer>
+        <InlineContainer>
+          <MultiButton
+            onClick={() => {
+              action('clicked');
+            }}
+            menuPosition="bottom"
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />{' '}
+          <MultiButton
+            disabled
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />
+        </InlineContainer>
+        <InlineContainer>
+          <MultiButton
+            large
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />{' '}
+          <MultiButton
+            large
+            outline
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />
         </InlineContainer>
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)

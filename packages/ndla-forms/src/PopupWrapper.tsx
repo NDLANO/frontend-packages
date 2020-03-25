@@ -18,6 +18,9 @@ import { Cross } from '@ndla/icons/action';
 
 import { spacing, misc, animations, colors } from '@ndla/core';
 
+// @ts-ignore
+import Button from '@ndla/button';
+
 type StyledIconProps = {
   rotate: number;
 };
@@ -142,6 +145,7 @@ interface Props extends StyledOptionProps {
   buttonStyle: CSSPropertiesWithMultiValues;
   onOpen?: () => void;
   onClose?: () => void;
+  buttonComponentProps?: any;
 }
 
 const PopupWrapper: React.FC<Props> = ({
@@ -156,6 +160,7 @@ const PopupWrapper: React.FC<Props> = ({
   onOpen,
   onClose,
   buttonStyle,
+  buttonComponentProps,
 }) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
@@ -176,12 +181,21 @@ const PopupWrapper: React.FC<Props> = ({
           escapeDeactivates: true,
         }}>
         <div>
-          <button
-            type="button"
-            css={buttonStyle}
-            onClick={() => setPopupState(!isOpen)}>
-            {label} <StyledIcon rotate={isOpen ? 180 : 0} />
-          </button>
+          {buttonComponentProps ? (
+            <Button
+              {...buttonComponentProps}
+              css={buttonStyle}
+              onClick={() => setPopupState(!isOpen)}>
+              {label} <StyledIcon rotate={isOpen ? 180 : 0} />
+            </Button>
+          ) : (
+            <button
+              type="button"
+              css={buttonStyle}
+              onClick={() => setPopupState(!isOpen)}>
+              {label} <StyledIcon rotate={isOpen ? 180 : 0} />
+            </button>
+          )}
           {isOpen && (
             <StyledOptionWrapperAnimation
               offsetX={typeof offsetX === 'string' ? offsetX : `${offsetX}px`}

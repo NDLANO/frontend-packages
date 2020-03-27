@@ -6,11 +6,13 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { colors, misc } from '@ndla/core';
+import { animations, colors, misc } from '@ndla/core';
+import FocusTrapReact from 'focus-trap-react';
+import { css } from '@emotion/core';
 // @ts-ignore
-import { PopUpWrapper } from '@ndla/forms';
+import { ChevronDown } from '@ndla/icons/common';
 
 // @ts-ignore
 import { Button, buttonStyle, outlineStyle, largeStyle } from './Button';
@@ -35,9 +37,66 @@ const Spacer = styled.div<SpacerProps>`
     ${props => (props.disabled ? colors.background.dark : colors.brand.primary)};
 `;
 
+const StyledMenuWrapper = styled.div`
+  position: relative;
+`;
+
 const PopUpMenu = styled.ul`
   padding: 0;
   margin: 0;
+`;
+
+type StyledOptionProps = {
+  verticalPosition?: 'top' | 'bottom';
+  offsetY?: number | string;
+};
+
+const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
+  position: absolute;
+  right: 0;
+  ${props => {
+    if (props.verticalPosition === 'top') {
+      return css`
+        top: ${props.offsetY};
+      `;
+    } else if (props.verticalPosition === 'bottom') {
+      return css`
+        bottom: ${props.offsetY};
+      `;
+    }
+  }}
+  z-index: 1;
+  ${animations.fadeIn(animations.durations.fast)}
+`;
+
+const StyledOptionContent = styled.div`
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  animation-delay: 100ms;
+  animation-fill-mode: forwards;
+  ${animations.fadeIn(animations.durations.fast)}
+`;
+
+const StyledOptionWrapper = styled.div`
+  background: #fff;
+  border-radius: ${misc.borderRadius};
+  display: flex;
+  flex-direction: column;
+  animation-duration: 200ms;
+  animation-name: wrapperAnimation;
+  animation-timing-function: cubic-bezier(0.46, 0.01, 0.19, 1);
+  animation-fill-mode: forwards;
+  @keyframes wrapperAnimation {
+    0% {
+      clip-path: inset(99% 99% 0 0 round 1%);
+    }
+    100% {
+      clip-path: inset(0 0 0 0 round 0%);
+    }
+  }
 `;
 
 type StyledButtonProps = {
@@ -88,6 +147,15 @@ const MenuItem = styled.li<StyledButtonProps>`
   }
 `;
 
+type StyledIconProps = {
+  rotate: number;
+};
+
+const StyledIcon = styled(ChevronDown)<StyledIconProps>`
+  transition: transform 200ms ease;
+  transform: rotate(${props => props.rotate}deg);
+`;
+
 type ButtonProps = {
   label: string;
   value: string;
@@ -112,6 +180,11 @@ export const MultiButton = ({
   large,
   menuPosition = 'top',
 }: Props) => {
+  const [isOpen, toggleIsOpen] = useState(false);
+  const setPopupState = (newState?: boolean) => {
+    toggleIsOpen(!!newState);
+  };
+
   let clippedButtonProps = {
     disabled: disabled,
     large: large,
@@ -144,30 +217,48 @@ export const MultiButton = ({
         {mainButton.label}
       </Button>
       <Spacer outline={outline} disabled={disabled} />
-      <PopUpWrapper
-        label=""
-        verticalPosition={verticalPosition}
-        position="right"
-        offsetY={popUpOffsetY}
-        buttonComponentProps={clippedButtonAttachmentOutline}>
-        {(setPopupState: VoidFunction) => (
-          <PopUpMenu>
-            {secondaryButtons.map(button => (
-              <MenuItem key={button.value} outline={outline}>
-                <ButtonItem
-                  outline={outline}
-                  large={large}
-                  onClick={() => {
-                    onClick(button.value);
-                    setPopupState();
-                  }}>
-                  {button.label}
-                </ButtonItem>
-              </MenuItem>
-            ))}
-          </PopUpMenu>
-        )}
-      </PopUpWrapper>
+      <StyledMenuWrapper>
+        <FocusTrapReact
+          active={isOpen}
+          focusTrapOptions={{
+            onDeactivate: () => setPopupState(false),
+            clickOutsideDeactivates: true,
+            escapeDeactivates: true,
+          }}>
+          <div>
+            <Button
+              {...clippedButtonAttachmentOutline}
+              onClick={() => setPopupState(!isOpen)}>
+              <StyledIcon rotate={isOpen ? 180 : 0} />
+            </Button>
+            {isOpen && (
+              <StyledOptionWrapperAnimation
+                offsetY={popUpOffsetY}
+                verticalPosition={verticalPosition}>
+                <StyledOptionWrapper>
+                  <StyledOptionContent>
+                    <PopUpMenu>
+                      {secondaryButtons.map(button => (
+                        <MenuItem key={button.value} outline={outline}>
+                          <ButtonItem
+                            outline={outline}
+                            large={large}
+                            onClick={() => {
+                              onClick(button.value);
+                              setPopupState();
+                            }}>
+                            {button.label}
+                          </ButtonItem>
+                        </MenuItem>
+                      ))}
+                    </PopUpMenu>
+                  </StyledOptionContent>
+                </StyledOptionWrapper>
+              </StyledOptionWrapperAnimation>
+            )}
+          </div>
+        </FocusTrapReact>
+      </StyledMenuWrapper>
     </StyledWrapper>
   );
 };

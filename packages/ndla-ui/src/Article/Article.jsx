@@ -69,7 +69,12 @@ ArticleTitle.defaultProps = {
   label: null,
 };
 
-export const ArticleIntroduction = ({ children }) => {
+export const ArticleIntroduction = ({
+  children,
+  renderMarkdown = text => {
+    return text;
+  },
+}) => {
   if (isString(children)) {
     /* Since article introduction is already escaped from the api
        we run into a double escaping issues as React escapes all strings.
@@ -77,7 +82,7 @@ export const ArticleIntroduction = ({ children }) => {
     return (
       <p
         className="article_introduction"
-        dangerouslySetInnerHTML={{ __html: children }}
+        dangerouslySetInnerHTML={{ __html: renderMarkdown(children) }}
       />
     );
   }
@@ -89,6 +94,7 @@ export const ArticleIntroduction = ({ children }) => {
 
 ArticleIntroduction.propTypes = {
   children: PropTypes.node,
+  renderMarkdown: PropTypes.func,
 };
 
 export const Article = ({
@@ -102,6 +108,7 @@ export const Article = ({
   locale,
   competenceGoals,
   id,
+  renderMarkdown,
 }) => {
   const {
     title,
@@ -130,7 +137,9 @@ export const Article = ({
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>
-          <ArticleIntroduction>{introduction}</ArticleIntroduction>
+          <ArticleIntroduction renderMarkdown={renderMarkdown}>
+            {introduction}
+          </ArticleIntroduction>
           <ArticleByline
             {...{
               authors,
@@ -168,6 +177,7 @@ Article.propTypes = {
   messages: PropTypes.shape({
     label: PropTypes.string,
   }).isRequired,
+  renderMarkdown: PropTypes.func,
 };
 
 Article.defaultProps = {

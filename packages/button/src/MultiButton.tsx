@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { animations, colors, misc } from '@ndla/core';
+import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
 import { css } from '@emotion/core';
 // @ts-ignore
@@ -44,6 +44,7 @@ const StyledMenuWrapper = styled.div`
 const PopUpMenu = styled.ul`
   padding: 0;
   margin: 0;
+  list-style: none;
 `;
 
 type StyledOptionProps = {
@@ -67,17 +68,12 @@ const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
     }
   }}
   z-index: 1;
-  ${animations.fadeIn(animations.durations.fast)}
 `;
 
 const StyledOptionContent = styled.div`
-  opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  animation-delay: 100ms;
-  animation-fill-mode: forwards;
-  ${animations.fadeIn(animations.durations.fast)}
 `;
 
 const StyledOptionWrapper = styled.div`
@@ -85,18 +81,6 @@ const StyledOptionWrapper = styled.div`
   border-radius: ${misc.borderRadius};
   display: flex;
   flex-direction: column;
-  animation-duration: 200ms;
-  animation-name: wrapperAnimation;
-  animation-timing-function: cubic-bezier(0.46, 0.01, 0.19, 1);
-  animation-fill-mode: forwards;
-  @keyframes wrapperAnimation {
-    0% {
-      clip-path: inset(99% 99% 0 0 round 1%);
-    }
-    100% {
-      clip-path: inset(0 0 0 0 round 0%);
-    }
-  }
 `;
 
 type StyledButtonProps = {

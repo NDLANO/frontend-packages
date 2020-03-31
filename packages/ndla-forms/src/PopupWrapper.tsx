@@ -76,7 +76,7 @@ const StyledOptionContent = styled.div`
   align-items: flex-end;
   animation-delay: 100ms;
   animation-fill-mode: forwards;
-  ${animations.fadeIn()}
+  ${animations.fadeIn(animations.durations.fast)}
 `;
 
 const StyledOptionWrapper = styled.div<StyledOptionProps>`

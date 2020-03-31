@@ -13,3 +13,4 @@ export {
   appearances,
 } from './Button';
 export { default as CopyButton } from './CopyButton';
+export { default as MultiButton } from './MultiButton';

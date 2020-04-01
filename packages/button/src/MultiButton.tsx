@@ -153,6 +153,7 @@ type Props = {
   disabled?: boolean;
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
+  children?: () => React.ReactElement;
 };
 
 export const MultiButton = ({
@@ -163,6 +164,7 @@ export const MultiButton = ({
   disabled,
   large,
   menuPosition = 'top',
+  children,
 }: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
@@ -198,7 +200,7 @@ export const MultiButton = ({
         onClick={() => {
           onClick(mainButton.value);
         }}>
-        {mainButton.label}
+        {children || mainButton.label}
       </Button>
       <Spacer outline={outline} disabled={disabled} />
       <StyledMenuWrapper>

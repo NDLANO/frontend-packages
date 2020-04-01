@@ -17,6 +17,7 @@ const dialogStyles = css`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 `;
 
 export const StyledDialogOverlay: React.FC<Props> = ({

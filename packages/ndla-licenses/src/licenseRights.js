@@ -17,6 +17,7 @@ export const PD = 'pd'; // Public Domain
 export const CC0 = 'cc0'; // Public Domain Dedication
 export const CC = 'cc'; // Creative Commons
 export const COPYRIGHTED = 'copyrighted'; // Copyrighted
+export const NA = 'na'; // Not Applicable
 
 const by = {
   short: BY,
@@ -180,6 +181,26 @@ const cc = {
   },
 };
 
+const na = {
+  short: NA,
+  nn: {
+    title: 'NA - ikkje relevant',
+    userFriendlyTitle: 'NA - ikkje relevant',
+    description: 'Lisensen er ment for begreper som ikkje trenger lisens.',
+  },
+  nb: {
+    title: 'NA - ikke relevant',
+    userFriendlyTitle: 'NA - ikke relevant',
+    description: 'Lisensen er ment for begreper som ikke trenger lisens.',
+  },
+  en: {
+    title: 'NA - not applicable',
+    userFriendlyTitle: 'NA - not applicable',
+    description:
+      'The license is intended for concepts that do not require a license.',
+  },
+};
+
 function licenseRightByLocale(license, locale) {
   const texts = defined(license[locale], license.nb);
   return {
@@ -208,6 +229,8 @@ export function getLicenseRightByAbbreviation(abbreviation, locale) {
       return licenseRightByLocale(cc0, locale);
     case COPYRIGHTED:
       return licenseRightByLocale(copyrighted, locale);
+    case NA:
+      return licenseRightByLocale(na, locale);
     default:
       return {
         short: abbreviation,

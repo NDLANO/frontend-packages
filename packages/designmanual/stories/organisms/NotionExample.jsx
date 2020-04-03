@@ -62,7 +62,7 @@ class NotionExample extends Component {
                           </NotionDialogContent>
                           <NotionDialogLicenses
                             license="CC-BY-ND-4.0"
-                            source="snl.no"
+                            source="https://snl.no"
                             authors={['Gary Waters']}
                           />
                         </Fragment>
@@ -121,7 +121,7 @@ class NotionExample extends Component {
                         </NotionDialogContent>
                         <NotionDialogLicenses
                           license="CC-BY-ND-4.0"
-                          source="snl.no"
+                          source="https://snl.no"
                           authors={['Gary Waters']}
                         />
                       </Fragment>
@@ -160,7 +160,7 @@ class NotionExample extends Component {
                                     </NotionDialogText>
                                     <NotionDialogLicenses
                                       license="CC-BY-ND-4.0"
-                                      source="snl.no"
+                                      source="https://snl.no"
                                     />
                                   </Fragment>
                                 ),
@@ -253,7 +253,7 @@ class NotionExample extends Component {
                         </NotionDialogContent>
                         <NotionDialogLicenses
                           license="CC-BY-ND-4.0"
-                          source="snl.no"
+                          source="https://snl.no"
                           authors={['Gary Waters']}
                         />
                       </Fragment>

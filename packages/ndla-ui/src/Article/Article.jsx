@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
+import parse from 'html-react-parser';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -76,14 +77,8 @@ export const ArticleIntroduction = ({
   },
 }) => {
   if (isString(children)) {
-    /* Since article introduction is already escaped from the api
-       we run into a double escaping issues as React escapes all strings.
-       Use dangerouslySetInnerHTML to circumvent the issue */
     return (
-      <p
-        className="article_introduction"
-        dangerouslySetInnerHTML={{ __html: renderMarkdown(children) }}
-      />
+      <p className="article_introduction">{parse(renderMarkdown(children))}</p>
     );
   }
   if (children) {

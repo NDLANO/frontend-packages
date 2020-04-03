@@ -47,6 +47,7 @@
     "classnames": "2.2.6",
     "focus-trap": "^4.0.2",
     "focus-trap-react": "^6.0.0",
+    "html-react-parser": "^0.10.3",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.14",
     "react-bem-helper": "1.4.1",

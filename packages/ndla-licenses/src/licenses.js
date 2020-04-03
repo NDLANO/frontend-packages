@@ -7,7 +7,7 @@
  */
 
 import defined from 'defined';
-import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC } from './licenseRights';
+import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from './licenseRights';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseNN = 'Fri gjenbruk';
@@ -22,6 +22,10 @@ const restrictedReuseEN = 'Restricted reuse';
 const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
 const openLicenseLinkTextNN = 'Lær mer om åpne lisenser';
 const openLicenseLinkTextEN = 'Learn more about open licenses';
+
+const naNB = 'NA - ikke relevant';
+const naNN = 'NA - ikkje relevant';
+const naEN = 'NA - not applicable';
 
 const byncnd = {
   nn: {
@@ -321,6 +325,37 @@ const copy = {
   abbreviation: COPYRIGHTED.toUpperCase(),
 };
 
+const na = {
+  nn: {
+    short: naNN,
+    title: 'NA - ikkje relevant',
+    userFriendlyTitle: '',
+    url: '',
+    linkText: 'NA',
+    description: 'Lisensen er meint for innhald som ikkje treng lisens.',
+  },
+  nb: {
+    short: naNB,
+    title: 'NA - ikke relevant',
+    userFriendlyTitle: '',
+    url: '',
+    linkText: 'NA',
+    description: 'Lisensen er ment for innhold som ikke trenger lisens.',
+  },
+
+  en: {
+    short: naEN,
+    title: 'NA - not applicable',
+    userFriendlyTitle: '',
+    url: '',
+    linkText: 'NA',
+    description:
+      'The license is intended for content that does not require a license.',
+  },
+  rights: [NA],
+  abbreviation: NA.toUpperCase(),
+};
+
 function licenseByLocale(license, locale) {
   const texts = defined(license[locale], license.nb);
   return {
@@ -350,6 +385,8 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       return licenseByLocale(cc0, locale);
     case 'COPYRIGHTED':
       return licenseByLocale(copy, locale);
+    case 'NA':
+      return licenseByLocale(na, locale);
     // TODO: Following cases are deprecated. Remove when all api's are updated
     case 'by-nc-nd':
       return licenseByLocale(byncnd, locale);

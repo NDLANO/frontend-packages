@@ -35,6 +35,16 @@ const NotionDialogLicenses = ({
 }) => {
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
   const authorsLength = authors.length;
+  const wrapLink = source => {
+    if (source?.startsWith('http')) {
+      return (
+        <a href={source} alt={source}>
+          {source}
+        </a>
+      );
+    }
+    return source;
+  };
   return (
     <NotionDialogLicensesWrapper>
       {licenseRights.length > 0 && (
@@ -56,7 +66,7 @@ const NotionDialogLicenses = ({
           ))}
         </span>
       )}
-      <span key={source}>{source}</span>
+      <span key={source}>{wrapLink(source)}</span>
       {licenseBox && <span>{licenseBox}</span>}
     </NotionDialogLicensesWrapper>
   );

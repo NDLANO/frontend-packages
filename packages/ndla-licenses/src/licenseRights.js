@@ -186,18 +186,18 @@ const na = {
   nn: {
     title: 'NA - ikkje relevant',
     userFriendlyTitle: 'NA - ikkje relevant',
-    description: 'Lisensen er ment for begreper som ikkje trenger lisens.',
+    description: 'Lisensen er meint for innhald som ikkje treng lisens.',
   },
   nb: {
     title: 'NA - ikke relevant',
     userFriendlyTitle: 'NA - ikke relevant',
-    description: 'Lisensen er ment for begreper som ikke trenger lisens.',
+    description: 'Lisensen er ment for innhold som ikke trenger lisens.',
   },
   en: {
     title: 'NA - not applicable',
     userFriendlyTitle: 'NA - not applicable',
     description:
-      'The license is intended for concepts that do not require a license.',
+      'The license is intended for content that does not require a license.',
   },
 };
 
@@ -209,7 +209,7 @@ function licenseRightByLocale(license, locale) {
   };
 }
 
-export const licenseRights = [BY, SA, NC, ND, PD, CC, CC0, COPYRIGHTED];
+export const licenseRights = [BY, SA, NC, ND, PD, CC, CC0, COPYRIGHTED, NA];
 export function getLicenseRightByAbbreviation(abbreviation, locale) {
   // const
   switch (abbreviation) {

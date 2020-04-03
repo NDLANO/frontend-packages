@@ -436,8 +436,6 @@ export function getLicenseByNBTitle(title, locale) {
       return getLicenseByAbbreviation('by-sa', locale);
     case 'navngivelse':
       return getLicenseByAbbreviation('by', locale);
-    case 'na-ikkerelevant':
-      return getLicenseByAbbreviation('NA', locale);
     default:
       return title;
   }

@@ -23,9 +23,9 @@ const openLicenseLinkTextNB = 'Lær mer om åpne lisenser';
 const openLicenseLinkTextNN = 'Lær mer om åpne lisenser';
 const openLicenseLinkTextEN = 'Learn more about open licenses';
 
-const naNB = 'NA - ikke relevant';
-const naNN = 'NA - ikkje relevant';
-const naEN = 'NA - not applicable';
+const naNB = 'N/A - ikke relevant';
+const naNN = 'N/A - ikkje relevant';
+const naEN = 'N/A - not applicable';
 
 const byncnd = {
   nn: {
@@ -328,27 +328,27 @@ const copy = {
 const na = {
   nn: {
     short: naNN,
-    title: 'NA - ikkje relevant',
+    title: 'N/A - ikkje relevant',
     userFriendlyTitle: '',
     url: '',
-    linkText: 'NA',
+    linkText: 'N/A',
     description: 'Lisensen er meint for innhald som ikkje treng lisens.',
   },
   nb: {
     short: naNB,
-    title: 'NA - ikke relevant',
+    title: 'N/A - ikke relevant',
     userFriendlyTitle: '',
     url: '',
-    linkText: 'NA',
+    linkText: 'N/A',
     description: 'Lisensen er ment for innhold som ikke trenger lisens.',
   },
 
   en: {
     short: naEN,
-    title: 'NA - not applicable',
+    title: 'N/A - not applicable',
     userFriendlyTitle: '',
     url: '',
-    linkText: 'NA',
+    linkText: 'N/A',
     description:
       'The license is intended for content that does not require a license.',
   },
@@ -385,7 +385,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       return licenseByLocale(cc0, locale);
     case 'COPYRIGHTED':
       return licenseByLocale(copy, locale);
-    case 'NA':
+    case 'N/A':
       return licenseByLocale(na, locale);
     // TODO: Following cases are deprecated. Remove when all api's are updated
     case 'by-nc-nd':

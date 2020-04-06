@@ -17,7 +17,7 @@ export const PD = 'pd'; // Public Domain
 export const CC0 = 'cc0'; // Public Domain Dedication
 export const CC = 'cc'; // Creative Commons
 export const COPYRIGHTED = 'copyrighted'; // Copyrighted
-export const NA = 'na'; // Not Applicable
+export const NA = 'n/a'; // Not Applicable
 
 const by = {
   short: BY,
@@ -184,17 +184,17 @@ const cc = {
 const na = {
   short: NA,
   nn: {
-    title: 'NA - ikkje relevant',
+    title: 'N/A - ikkje relevant',
     userFriendlyTitle: 'NA - ikkje relevant',
     description: 'Lisensen er meint for innhald som ikkje treng lisens.',
   },
   nb: {
-    title: 'NA - ikke relevant',
+    title: 'N/A - ikke relevant',
     userFriendlyTitle: 'NA - ikke relevant',
     description: 'Lisensen er ment for innhold som ikke trenger lisens.',
   },
   en: {
-    title: 'NA - not applicable',
+    title: 'N/A - not applicable',
     userFriendlyTitle: 'NA - not applicable',
     description:
       'The license is intended for content that does not require a license.',

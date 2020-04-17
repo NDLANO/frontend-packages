@@ -12,6 +12,7 @@ import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
+import { Remarkable } from 'remarkable';
 
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -76,11 +77,15 @@ export const ArticleIntroduction = ({
     return text;
   },
 }) => {
+  const markdown = new Remarkable();
+  markdown.inline.ruler.enable(['sub', 'sup']);
+
   if (isString(children)) {
     return (
-      <p className="article_introduction">{parse(renderMarkdown(children))}</p>
+      <p className="article_introduction">{parse(markdown.render(children))}</p>
     );
   }
+
   if (children) {
     return <p className="article_introduction">{children}</p>;
   }

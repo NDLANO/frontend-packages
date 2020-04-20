@@ -489,7 +489,7 @@ const messages = {
     filters: {
       subject: {
         useFilter: 'Bruk filter',
-        openFilter: 'Velg fag',
+        openFilter: 'Filtrer på fag',
         closeFilter: 'Lukk filter',
       },
       category: {

@@ -23,25 +23,37 @@ const SubjectFilterWrapper = styled.div`
   margin-bottom: 13px;
 `;
 
+const availableCategories = () => {
+  const categories = [];
+  mockExplanationService.items.forEach(item => {
+    if (item.category) {
+      item.category.forEach(categoryItem => {
+        const exists = categories.some(element => {
+          return element.value === categoryItem.value;
+        });
+        if (!exists) {
+          categories.push(categoryItem);
+        }
+      });
+    }
+  });
+  return categories;
+};
+
 const ExplanationService = ({ t }) => {
   const [detailedItem, setDetailedItem] = useState(null);
-  const [selectedLetter, setSelectedLetter] = useState('');
   const [viewStyle, setViewStyle] = useState('grid');
   const [searchValue, setSearchValue] = useState('');
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState([]);
   const [subjectFilter, setSubjectFilter] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState([]);
 
   const setDetailedItemHandler = item => {
     setDetailedItem(item);
   };
 
-  const setSelectedLetterHandler = letter => {
-    setSelectedLetter(letter);
-  };
-
   const handleChangeFilters = (key, values) => {
-    const newFilter = { category: values };
-    setFilters({ ...filters, ...newFilter });
+    setFilters(values);
   };
 
   const handleChangeSearchValue = e => {
@@ -53,37 +65,54 @@ const ExplanationService = ({ t }) => {
   };
 
   const handleChangedSubjectFilter = values => {
+    setCategoryFilter([]);
+    setFilters([]);
     setSubjectFilter(values);
   };
 
+  const handleChangedCategoryFilter = values => {
+    setSubjectFilter([]);
+    setFilters([]);
+    setCategoryFilter(values);
+  };
+
   const getFilters = () => {
-    const filtersBySubject = {
-      category: [],
+    if (subjectFilter.length) {
+      return [];
+    }
+    const filtersBySelectedCategory = {
       subCategory: [],
+      subCategory2: [],
     };
     // Loop through all items and fetch all corresponding filters
     mockExplanationService.items.forEach(item => {
-      const hasValue = item.subject.some(itemSubject => {
-        return subjectFilter.includes(itemSubject.value);
-      });
+      const hasValue =
+        item.category &&
+        item.category.some(itemCategory => {
+          return categoryFilter.includes(itemCategory.value);
+        });
       if (hasValue) {
-        if (item.category) {
-          item.category.forEach(categoryItem => {
-            const exists = filtersBySubject.category.some(element => {
-              return element.value === categoryItem.value;
-            });
+        if (item.subCategory) {
+          item.subCategory.forEach(categoryItem => {
+            const exists = filtersBySelectedCategory.subCategory.some(
+              element => {
+                return element.value === categoryItem.value;
+              },
+            );
             if (!exists) {
-              filtersBySubject.category.push(categoryItem);
+              filtersBySelectedCategory.subCategory.push(categoryItem);
             }
           });
         }
-        if (item.subCategory) {
-          item.subCategory.forEach(categoryItem => {
-            const exists = filtersBySubject.subCategory.some(element => {
-              return element.value === categoryItem.value;
-            });
+        if (item.subCategory2) {
+          item.subCategory2.forEach(categoryItem => {
+            const exists = filtersBySelectedCategory.subCategory2.some(
+              element => {
+                return element.value === categoryItem.value;
+              },
+            );
             if (!exists) {
-              filtersBySubject.subCategory.push(categoryItem);
+              filtersBySelectedCategory.subCategory2.push(categoryItem);
             }
           });
         }
@@ -93,17 +122,17 @@ const ExplanationService = ({ t }) => {
     const filteredFilter = {
       onChange: handleChangeFilters,
       key: 'default',
-      filterValues: filters.category,
+      filterValues: filters,
       options: [],
       isGroupedOptions: true,
       label: t(`listview.filters.default.heading`),
     };
 
-    if (filtersBySubject.category.length) {
-      filteredFilter.options.push(filtersBySubject.category);
+    if (filtersBySelectedCategory.subCategory.length) {
+      filteredFilter.options.push(filtersBySelectedCategory.subCategory);
     }
-    if (filtersBySubject.subCategory.length) {
-      filteredFilter.options.push(filtersBySubject.subCategory);
+    if (filtersBySelectedCategory.subCategory2.length) {
+      filteredFilter.options.push(filtersBySelectedCategory.subCategory2);
     }
 
     const items = filterItems();
@@ -114,13 +143,13 @@ const ExplanationService = ({ t }) => {
         const optionValue = option.value;
         const hasItems = items.some(item => {
           let hasValue = false;
-          if (item.category) {
-            hasValue = item.category.some(
+          if (item.subCategory) {
+            hasValue = item.subCategory.some(
               category => category.value === optionValue,
             );
           }
-          if (!hasValue && item.subCategory) {
-            hasValue = item.subCategory.some(
+          if (!hasValue && item.subCategory2) {
+            hasValue = item.subCategory2.some(
               category => category.value === optionValue,
             );
           }
@@ -153,19 +182,33 @@ const ExplanationService = ({ t }) => {
       });
     }
 
-    // Filter items on category. Item must include ALL of the selected categories
-    if (filters.category && filters.category.length) {
+    // Filter items on category. Item must include SOME of the selected categories
+    if (categoryFilter && categoryFilter.length) {
       filteredItems = filteredItems.filter(item => {
-        return filters.category.every(category => {
+        if (item.category) {
+          return categoryFilter.some(category => {
+            return item.category.some(
+              itemCategory => itemCategory.value === category,
+            );
+          });
+        }
+        return false;
+      });
+    }
+
+    // Filter items on subCategory. Item must include ALL of the selected categories
+    if (filters && filters.length) {
+      filteredItems = filteredItems.filter(item => {
+        return filters.every(category => {
           let hasValue = false;
-          if (item.category) {
-            hasValue = item.category.some(
+          if (item.subCategory) {
+            hasValue = item.subCategory.some(
               itemCategory => itemCategory.value === category,
             );
           }
 
-          if (!hasValue && item.subCategory) {
-            hasValue = item.subCategory.some(
+          if (!hasValue && item.subCategory2) {
+            hasValue = item.subCategory2.some(
               itemCategory => itemCategory.value === category,
             );
           }
@@ -177,25 +220,8 @@ const ExplanationService = ({ t }) => {
     // Filter with search (testing name, description and tags[])
     if (searchValue.length > 0) {
       const searchValueLowercase = searchValue.toLowerCase();
-      filteredItems = filteredItems.filter(
-        item =>
-          (item.tags &&
-            item.tags.some(
-              tag => tag.toLowerCase().indexOf(searchValueLowercase) !== -1,
-            )) ||
-          (item.description &&
-            item.description.toLowerCase().indexOf(searchValueLowercase) !==
-              -1) ||
-          item.name.toLowerCase().indexOf(searchValueLowercase) !== -1,
-      );
-    }
-    return filteredItems;
-  };
-
-  const filterOnSelectedLetter = filteredItems => {
-    if (selectedLetter) {
-      return filteredItems.filter(
-        item => item.name.toLowerCase().substr(0, 1) === selectedLetter,
+      filteredItems = filteredItems.filter(item =>
+        item.name.toLowerCase().startsWith(searchValueLowercase),
       );
     }
     return filteredItems;
@@ -261,6 +287,8 @@ const ExplanationService = ({ t }) => {
     ) : null;
   };
 
+  const renderMarkdown = text => text;
+
   const filteredItems = filterItems();
   const alphabet = activeAlphabet(filteredItems);
   return (
@@ -281,11 +309,25 @@ const ExplanationService = ({ t }) => {
           showActiveFiltersOnSmallScreen
         />
       </SubjectFilterWrapper>
+      <SubjectFilterWrapper>
+        <FilterListPhone
+          preid="list-filter"
+          label={t(`listview.filters.category.openFilter`)}
+          options={availableCategories()}
+          values={categoryFilter}
+          messages={{
+            useFilter: t(`listview.filters.category.useFilter`),
+            openFilter: t(`listview.filters.category.openFilter`),
+            closeFilter: t(`listview.filters.category.closeFilter`),
+          }}
+          onChange={handleChangedCategoryFilter}
+          viewMode="allModal"
+          showActiveFiltersOnSmallScreen
+        />
+      </SubjectFilterWrapper>
       <ListView
-        items={filterOnSelectedLetter(filteredItems)}
+        items={filteredItems}
         alphabet={alphabet}
-        selectedLetter={selectedLetter}
-        selectedLetterCallback={setSelectedLetterHandler}
         onChangedViewStyle={handleChangedViewStyle}
         viewStyle={viewStyle}
         searchValue={searchValue}
@@ -293,6 +335,7 @@ const ExplanationService = ({ t }) => {
         onSelectItem={setDetailedItemHandler}
         selectedItem={renderSelectedItem()}
         filters={getFilters()}
+        renderMarkdown={renderMarkdown}
       />
     </>
   );

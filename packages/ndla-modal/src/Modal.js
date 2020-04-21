@@ -37,7 +37,7 @@ const Modal = ({
   const onAnimationEnd = () => {
     if (!animateIn && showDialog) {
       setIsOpen(false);
-
+      setAnimateIn(true);
       if (onClose) onClose();
     }
   };

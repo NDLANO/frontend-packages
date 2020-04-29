@@ -24,8 +24,8 @@ const DropdownInput = ({
   ...rest
 }) => (
   <Input
-    {...rest}
     iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
+    {...rest}
     tags={
       multiSelect &&
       values.map(value => (

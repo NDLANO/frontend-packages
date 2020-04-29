@@ -13,14 +13,64 @@ import {
 } from '@ndla/notion';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
+import { colors, fonts, spacing } from '@ndla/core';
+import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';
+import { DropdownInput, DropdownMenu } from '@ndla/forms';
+import { ChevronDown } from '@ndla/icons/lib/common';
+import { Search } from '@ndla/icons/lib/common';
+import Downshift from 'downshift';
 import { mockExplanationService } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
 
 const SubjectFilterWrapper = styled.div`
-  margin-bottom: 13px;
+  margin-bottom: ${spacing.small};
+`;
+
+const SeparatorWrapper = styled.div`
+  margin-bottom: ${spacing.small};
+  padding-left: ${spacing.small};
+`;
+
+const CategoriesFilterWrapper = styled.div`
+  margin-bottom: ${spacing.small};
+  position: relative;
+  display: inline-block;
+`;
+
+const placeholderCSS = css`
+  color: initial;
+  font-weight: initial;
+  opacity: 0.5;
+`;
+const placeholderHasValuesCSS = props =>
+  !props.hasValues
+    ? css`
+        color: ${colors.brand.primary};
+        font-weight: bold;
+        ${fonts.sizes('16px')};
+      `
+    : placeholderCSS;
+
+const categoryFilterCSS = props => css`
+  border: 2px solid ${colors.brand.primary};
+  min-height: auto;
+  cursor: pointer;
+  background-color: transparent;
+  flex-grow: 0;
+  input {
+    cursor: pointer;
+    ::placeholder {
+      ${placeholderHasValuesCSS(props)}
+    }
+    :focus {
+      ::placeholder {
+        ${placeholderCSS}
+      }
+    }
+  }
 `;
 
 const availableCategories = () => {
@@ -47,6 +97,13 @@ const ExplanationService = ({ t }) => {
   const [filters, setFilters] = useState([]);
   const [subjectFilter, setSubjectFilter] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState([]);
+  const [categoryFilterData, setCategoryFilterData] = useState(
+    availableCategories(),
+  );
+  const [categoryFilterOpen, setCategoryFilterOpen] = useState(false);
+  const [categoryFilterSearchValue, setCategoryFilterSearchValue] = useState(
+    '',
+  );
 
   const setDetailedItemHandler = item => {
     setDetailedItem(item);
@@ -73,7 +130,48 @@ const ExplanationService = ({ t }) => {
   const handleChangedCategoryFilter = values => {
     setSubjectFilter([]);
     setFilters([]);
-    setCategoryFilter(values);
+    setCategoryFilter([values]);
+    setCategoryFilterOpen(false);
+    setCategoryFilterSearchValue('');
+  };
+
+  const handleStateChangeCategoryFilter = changes => {
+    const { isOpen, type } = changes;
+
+    if (type === Downshift.stateChangeTypes.mouseUp) {
+      setCategoryFilterOpen(isOpen);
+      if (!isOpen) {
+        setCategoryFilterSearchValue('');
+      }
+    }
+
+    if (type === Downshift.stateChangeTypes.keyDownEnter) {
+      setCategoryFilterSearchValue('');
+    }
+  };
+
+  const onCategoryFilterSearch = e => {
+    const {
+      target: { value },
+    } = e;
+    const searchValueLowercase = value.toLowerCase();
+    const filteredCategories = availableCategories().filter(item =>
+      item.title.toLowerCase().startsWith(searchValueLowercase),
+    );
+    setCategoryFilterSearchValue(value);
+    setCategoryFilterData(filteredCategories);
+  };
+
+  const onCategoryFilterSearchFocus = () => {
+    setCategoryFilterData(availableCategories());
+    setCategoryFilterOpen(true);
+  };
+
+  const removeCategoryFilter = value => {
+    const filteredCategories = categoryFilter.filter(
+      item => item.title !== value,
+    );
+    setCategoryFilter(filteredCategories);
   };
 
   const getFilters = () => {
@@ -89,7 +187,10 @@ const ExplanationService = ({ t }) => {
       const hasValue =
         item.category &&
         item.category.some(itemCategory => {
-          return categoryFilter.includes(itemCategory.value);
+          return categoryFilter.some(
+            categoryFilterItem =>
+              categoryFilterItem.value === itemCategory.value,
+          );
         });
       if (hasValue) {
         if (item.subCategory) {
@@ -188,7 +289,7 @@ const ExplanationService = ({ t }) => {
         if (item.category) {
           return categoryFilter.some(category => {
             return item.category.some(
-              itemCategory => itemCategory.value === category,
+              itemCategory => itemCategory.value === category.value,
             );
           });
         }
@@ -291,6 +392,14 @@ const ExplanationService = ({ t }) => {
 
   const filteredItems = filterItems();
   const alphabet = activeAlphabet(filteredItems);
+
+  const categoryFilterInputProps = {
+    value: categoryFilterSearchValue,
+    onChange: onCategoryFilterSearch,
+    onFocus: onCategoryFilterSearchFocus,
+    onClick: onCategoryFilterSearchFocus,
+    placeholder: t(`listview.filters.category.openFilter`),
+  };
   return (
     <>
       <SubjectFilterWrapper>
@@ -309,34 +418,69 @@ const ExplanationService = ({ t }) => {
           showActiveFiltersOnSmallScreen
         />
       </SubjectFilterWrapper>
-      <SubjectFilterWrapper>
-        <FilterListPhone
-          preid="list-filter"
-          label={t(`listview.filters.category.openFilter`)}
-          options={availableCategories()}
-          values={categoryFilter}
-          messages={{
-            useFilter: t(`listview.filters.category.useFilter`),
-            openFilter: t(`listview.filters.category.openFilter`),
-            closeFilter: t(`listview.filters.category.closeFilter`),
+      <SeparatorWrapper>eller</SeparatorWrapper>
+      <CategoriesFilterWrapper>
+        <Downshift
+          onSelect={handleChangedCategoryFilter}
+          itemToString={item => {
+            return item ? item.title || '' : '';
           }}
-          onChange={handleChangedCategoryFilter}
-          viewMode="allModal"
-          showActiveFiltersOnSmallScreen
+          onStateChange={handleStateChangeCategoryFilter}
+          isOpen={categoryFilterOpen}>
+          {({ getInputProps, getRootProps, getMenuProps, getItemProps }) => {
+            return (
+              <div>
+                <DropdownInput
+                  multiSelect
+                  {...getInputProps(categoryFilterInputProps)}
+                  data-testid={'dropdownInput'}
+                  idField="title"
+                  labelField="title"
+                  iconRight={
+                    categoryFilterOpen ? (
+                      <Search />
+                    ) : (
+                      <span onClick={onCategoryFilterSearchFocus}>
+                        <ChevronDown />
+                      </span>
+                    )
+                  }
+                  values={categoryFilter}
+                  removeItem={removeCategoryFilter}
+                  customCSS={categoryFilterCSS({
+                    hasValues: categoryFilter.length,
+                  })}
+                />
+                <DropdownMenu
+                  getMenuProps={getMenuProps}
+                  getItemProps={getItemProps}
+                  isOpen={categoryFilterOpen}
+                  idField="title"
+                  labelField="title"
+                  items={categoryFilterData}
+                  maxRender={1000}
+                  hideTotalSearchCount
+                  positionAbsolute
+                />
+              </div>
+            );
+          }}
+        </Downshift>
+      </CategoriesFilterWrapper>
+      <div>
+        <ListView
+          items={filteredItems}
+          alphabet={alphabet}
+          onChangedViewStyle={handleChangedViewStyle}
+          viewStyle={viewStyle}
+          searchValue={searchValue}
+          onChangedSearchValue={handleChangeSearchValue}
+          onSelectItem={setDetailedItemHandler}
+          selectedItem={renderSelectedItem()}
+          filters={getFilters()}
+          renderMarkdown={renderMarkdown}
         />
-      </SubjectFilterWrapper>
-      <ListView
-        items={filteredItems}
-        alphabet={alphabet}
-        onChangedViewStyle={handleChangedViewStyle}
-        viewStyle={viewStyle}
-        searchValue={searchValue}
-        onChangedSearchValue={handleChangeSearchValue}
-        onSelectItem={setDetailedItemHandler}
-        selectedItem={renderSelectedItem()}
-        filters={getFilters()}
-        renderMarkdown={renderMarkdown}
-      />
+      </div>
     </>
   );
 };

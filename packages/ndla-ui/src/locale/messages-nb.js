@@ -489,12 +489,12 @@ const messages = {
     filters: {
       subject: {
         useFilter: 'Bruk filter',
-        openFilter: 'Filtrer på fag',
+        openFilter: 'Velg fag',
         closeFilter: 'Lukk filter',
       },
       category: {
         useFilter: 'Bruk filter',
-        openFilter: 'Filtrer på kategori',
+        openFilter: 'Velg liste',
         closeFilter: 'Lukk filter',
       },
       default: {

@@ -154,6 +154,7 @@ type Props = {
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
   children?: () => React.ReactElement;
+  hideSecondaryButton: boolean;
 };
 
 export const MultiButton = ({
@@ -165,6 +166,7 @@ export const MultiButton = ({
   large,
   menuPosition = 'top',
   children,
+  hideSecondaryButton,
 }: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
@@ -174,7 +176,7 @@ export const MultiButton = ({
   let clippedButtonProps = {
     disabled: disabled,
     large: large,
-    clippedButton: true,
+    clippedButton: !hideSecondaryButton,
     clippedButtonOutline: false,
   };
   const clippedButtonAttachmentOutline = {
@@ -202,8 +204,8 @@ export const MultiButton = ({
         }}>
         {children || mainButton.label}
       </Button>
-      <Spacer outline={outline} disabled={disabled} />
-      <StyledMenuWrapper>
+      { !hideSecondaryButton && <Spacer outline={outline} disabled={disabled} />}
+      {!hideSecondaryButton && <StyledMenuWrapper>
         <FocusTrapReact
           active={isOpen}
           focusTrapOptions={{
@@ -244,7 +246,7 @@ export const MultiButton = ({
             )}
           </div>
         </FocusTrapReact>
-      </StyledMenuWrapper>
+      </StyledMenuWrapper>}
     </StyledWrapper>
   );
 };

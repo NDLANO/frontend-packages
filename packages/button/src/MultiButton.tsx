@@ -170,11 +170,12 @@ export const MultiButton = ({
   const setPopupState = (newState?: boolean) => {
     toggleIsOpen(!!newState);
   };
+  const hideSecondaryButton = secondaryButtons.length === 0;
 
   let clippedButtonProps = {
     disabled: disabled,
     large: large,
-    clippedButton: true,
+    clippedButton: !hideSecondaryButton,
     clippedButtonOutline: false,
   };
   const clippedButtonAttachmentOutline = {
@@ -202,49 +203,51 @@ export const MultiButton = ({
         }}>
         {children || mainButton.label}
       </Button>
-      <Spacer outline={outline} disabled={disabled} />
-      <StyledMenuWrapper>
-        <FocusTrapReact
-          active={isOpen}
-          focusTrapOptions={{
-            onDeactivate: () => setPopupState(false),
-            clickOutsideDeactivates: true,
-            escapeDeactivates: true,
-          }}>
-          <div>
-            <Button
-              {...clippedButtonAttachmentOutline}
-              onClick={() => setPopupState(!isOpen)}>
-              <StyledIcon rotate={isOpen ? 180 : 0} />
-            </Button>
-            {isOpen && (
-              <StyledOptionWrapperAnimation
-                offsetY={popUpOffsetY}
-                verticalPosition={verticalPosition}>
-                <StyledOptionWrapper>
-                  <StyledOptionContent>
-                    <PopUpMenu>
-                      {secondaryButtons.map(button => (
-                        <MenuItem key={button.value} outline={outline}>
-                          <ButtonItem
-                            outline={outline}
-                            large={large}
-                            onClick={() => {
-                              onClick(button.value);
-                              setPopupState();
-                            }}>
-                            {button.label}
-                          </ButtonItem>
-                        </MenuItem>
-                      ))}
-                    </PopUpMenu>
-                  </StyledOptionContent>
-                </StyledOptionWrapper>
-              </StyledOptionWrapperAnimation>
-            )}
-          </div>
-        </FocusTrapReact>
-      </StyledMenuWrapper>
+      {!hideSecondaryButton && <Spacer outline={outline} disabled={disabled} />}
+      {!hideSecondaryButton && (
+        <StyledMenuWrapper>
+          <FocusTrapReact
+            active={isOpen}
+            focusTrapOptions={{
+              onDeactivate: () => setPopupState(false),
+              clickOutsideDeactivates: true,
+              escapeDeactivates: true,
+            }}>
+            <div>
+              <Button
+                {...clippedButtonAttachmentOutline}
+                onClick={() => setPopupState(!isOpen)}>
+                <StyledIcon rotate={isOpen ? 180 : 0} />
+              </Button>
+              {isOpen && (
+                <StyledOptionWrapperAnimation
+                  offsetY={popUpOffsetY}
+                  verticalPosition={verticalPosition}>
+                  <StyledOptionWrapper>
+                    <StyledOptionContent>
+                      <PopUpMenu>
+                        {secondaryButtons.map(button => (
+                          <MenuItem key={button.value} outline={outline}>
+                            <ButtonItem
+                              outline={outline}
+                              large={large}
+                              onClick={() => {
+                                onClick(button.value);
+                                setPopupState();
+                              }}>
+                              {button.label}
+                            </ButtonItem>
+                          </MenuItem>
+                        ))}
+                      </PopUpMenu>
+                    </StyledOptionContent>
+                  </StyledOptionWrapper>
+                </StyledOptionWrapperAnimation>
+              )}
+            </div>
+          </FocusTrapReact>
+        </StyledMenuWrapper>
+      )}
     </StyledWrapper>
   );
 };

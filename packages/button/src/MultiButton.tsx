@@ -154,7 +154,6 @@ type Props = {
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
   children?: () => React.ReactElement;
-  hideSecondaryButton: boolean;
 };
 
 export const MultiButton = ({
@@ -166,12 +165,12 @@ export const MultiButton = ({
   large,
   menuPosition = 'top',
   children,
-  hideSecondaryButton,
 }: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
     toggleIsOpen(!!newState);
   };
+  const hideSecondaryButton = secondaryButtons.length === 0;
 
   let clippedButtonProps = {
     disabled: disabled,

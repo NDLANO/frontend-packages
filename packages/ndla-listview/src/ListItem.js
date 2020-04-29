@@ -58,10 +58,6 @@ const ListItemWrapper = styled.div`
     line-height: 0.5rem;
     ${fonts.sizes('12px', 1.7)};
   }
-  .item-subject {
-    color: ${colors.text.light};
-    ${fonts.sizes('16px', 1.3)};
-  }
   .item-name {
     display: inline-block;
     ${fonts.sizes('18px', 1.3)};
@@ -99,10 +95,6 @@ const ListItemWrapper = styled.div`
     .item-name {
       max-width: 500px;
     }
-
-    .item-subject {
-      display: none;
-    }
   }
   &.grid {
     display: flex;
@@ -131,12 +123,6 @@ const listItemShape = PropTypes.shape({
   text: PropTypes.string,
   image: PropTypes.string,
   id: PropTypes.string,
-  subject: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      value: PropTypes.string,
-    }),
-  ),
   category: PropTypes.oneOfType([
     PropTypes.arrayOf(categoryShape),
     categoryShape,
@@ -169,7 +155,6 @@ class ListItem extends Component {
     const { item, renderMarkdown } = this.props;
     return (
       <Fragment>
-        <span className={'item-subject'}>{item.subject[0].title}</span>
         <h3 className={'item-name'}>{item.name}</h3>
         <p className={'item-description'}>{renderMarkdown(item.description)}</p>
       </Fragment>

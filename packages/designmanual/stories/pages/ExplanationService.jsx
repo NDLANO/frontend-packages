@@ -13,35 +13,104 @@ import {
 } from '@ndla/notion';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
+import { colors, fonts, spacing } from '@ndla/core';
+import { css } from '@emotion/core';
 import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';
+import { DropdownInput, DropdownMenu } from '@ndla/forms';
+import { ChevronDown } from '@ndla/icons/lib/common';
+import { Search } from '@ndla/icons/lib/common';
+import Downshift from 'downshift';
 import { mockExplanationService } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
 
 const SubjectFilterWrapper = styled.div`
-  margin-bottom: 13px;
+  margin-bottom: ${spacing.small};
 `;
+
+const SeparatorWrapper = styled.div`
+  margin-bottom: ${spacing.small};
+  padding-left: ${spacing.small};
+`;
+
+const CategoriesFilterWrapper = styled.div`
+  margin-bottom: ${spacing.small};
+  position: relative;
+  display: inline-block;
+`;
+
+const placeholderCSS = css`
+  color: initial;
+  font-weight: initial;
+  opacity: 0.5;
+`;
+const placeholderHasValuesCSS = props =>
+  !props.hasValues
+    ? css`
+        color: ${colors.brand.primary};
+        font-weight: bold;
+        ${fonts.sizes('16px')};
+      `
+    : placeholderCSS;
+
+const categoryFilterCSS = props => css`
+  border: 2px solid ${colors.brand.primary};
+  min-height: auto;
+  cursor: pointer;
+  background-color: transparent;
+  flex-grow: 0;
+  input {
+    cursor: pointer;
+    ::placeholder {
+      ${placeholderHasValuesCSS(props)}
+    }
+    :focus {
+      ::placeholder {
+        ${placeholderCSS}
+      }
+    }
+  }
+`;
+
+const availableCategories = () => {
+  const categories = [];
+  mockExplanationService.items.forEach(item => {
+    if (item.category) {
+      item.category.forEach(categoryItem => {
+        const exists = categories.some(element => {
+          return element.value === categoryItem.value;
+        });
+        if (!exists) {
+          categories.push(categoryItem);
+        }
+      });
+    }
+  });
+  return categories;
+};
 
 const ExplanationService = ({ t }) => {
   const [detailedItem, setDetailedItem] = useState(null);
-  const [selectedLetter, setSelectedLetter] = useState('');
   const [viewStyle, setViewStyle] = useState('grid');
   const [searchValue, setSearchValue] = useState('');
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState([]);
   const [subjectFilter, setSubjectFilter] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState([]);
+  const [categoryFilterData, setCategoryFilterData] = useState(
+    availableCategories(),
+  );
+  const [categoryFilterOpen, setCategoryFilterOpen] = useState(false);
+  const [categoryFilterSearchValue, setCategoryFilterSearchValue] = useState(
+    '',
+  );
 
   const setDetailedItemHandler = item => {
     setDetailedItem(item);
   };
 
-  const setSelectedLetterHandler = letter => {
-    setSelectedLetter(letter);
-  };
-
   const handleChangeFilters = (key, values) => {
-    const newFilter = { category: values };
-    setFilters({ ...filters, ...newFilter });
+    setFilters(values);
   };
 
   const handleChangeSearchValue = e => {
@@ -53,37 +122,98 @@ const ExplanationService = ({ t }) => {
   };
 
   const handleChangedSubjectFilter = values => {
+    setCategoryFilter([]);
+    setFilters([]);
     setSubjectFilter(values);
   };
 
+  const handleChangedCategoryFilter = values => {
+    setSubjectFilter([]);
+    setFilters([]);
+    setCategoryFilter([values]);
+    setCategoryFilterOpen(false);
+    setCategoryFilterSearchValue('');
+  };
+
+  const handleStateChangeCategoryFilter = changes => {
+    const { isOpen, type } = changes;
+
+    if (type === Downshift.stateChangeTypes.mouseUp) {
+      setCategoryFilterOpen(isOpen);
+      if (!isOpen) {
+        setCategoryFilterSearchValue('');
+      }
+    }
+
+    if (type === Downshift.stateChangeTypes.keyDownEnter) {
+      setCategoryFilterSearchValue('');
+    }
+  };
+
+  const onCategoryFilterSearch = e => {
+    const {
+      target: { value },
+    } = e;
+    const searchValueLowercase = value.toLowerCase();
+    const filteredCategories = availableCategories().filter(item =>
+      item.title.toLowerCase().startsWith(searchValueLowercase),
+    );
+    setCategoryFilterSearchValue(value);
+    setCategoryFilterData(filteredCategories);
+  };
+
+  const onCategoryFilterSearchFocus = () => {
+    setCategoryFilterData(availableCategories());
+    setCategoryFilterOpen(true);
+  };
+
+  const removeCategoryFilter = value => {
+    const filteredCategories = categoryFilter.filter(
+      item => item.title !== value,
+    );
+    setCategoryFilter(filteredCategories);
+  };
+
   const getFilters = () => {
-    const filtersBySubject = {
-      category: [],
+    if (subjectFilter.length) {
+      return [];
+    }
+    const filtersBySelectedCategory = {
       subCategory: [],
+      subCategory2: [],
     };
     // Loop through all items and fetch all corresponding filters
     mockExplanationService.items.forEach(item => {
-      const hasValue = item.subject.some(itemSubject => {
-        return subjectFilter.includes(itemSubject.value);
-      });
+      const hasValue =
+        item.category &&
+        item.category.some(itemCategory => {
+          return categoryFilter.some(
+            categoryFilterItem =>
+              categoryFilterItem.value === itemCategory.value,
+          );
+        });
       if (hasValue) {
-        if (item.category) {
-          item.category.forEach(categoryItem => {
-            const exists = filtersBySubject.category.some(element => {
-              return element.value === categoryItem.value;
-            });
+        if (item.subCategory) {
+          item.subCategory.forEach(categoryItem => {
+            const exists = filtersBySelectedCategory.subCategory.some(
+              element => {
+                return element.value === categoryItem.value;
+              },
+            );
             if (!exists) {
-              filtersBySubject.category.push(categoryItem);
+              filtersBySelectedCategory.subCategory.push(categoryItem);
             }
           });
         }
-        if (item.subCategory) {
-          item.subCategory.forEach(categoryItem => {
-            const exists = filtersBySubject.subCategory.some(element => {
-              return element.value === categoryItem.value;
-            });
+        if (item.subCategory2) {
+          item.subCategory2.forEach(categoryItem => {
+            const exists = filtersBySelectedCategory.subCategory2.some(
+              element => {
+                return element.value === categoryItem.value;
+              },
+            );
             if (!exists) {
-              filtersBySubject.subCategory.push(categoryItem);
+              filtersBySelectedCategory.subCategory2.push(categoryItem);
             }
           });
         }
@@ -93,17 +223,17 @@ const ExplanationService = ({ t }) => {
     const filteredFilter = {
       onChange: handleChangeFilters,
       key: 'default',
-      filterValues: filters.category,
+      filterValues: filters,
       options: [],
       isGroupedOptions: true,
       label: t(`listview.filters.default.heading`),
     };
 
-    if (filtersBySubject.category.length) {
-      filteredFilter.options.push(filtersBySubject.category);
+    if (filtersBySelectedCategory.subCategory.length) {
+      filteredFilter.options.push(filtersBySelectedCategory.subCategory);
     }
-    if (filtersBySubject.subCategory.length) {
-      filteredFilter.options.push(filtersBySubject.subCategory);
+    if (filtersBySelectedCategory.subCategory2.length) {
+      filteredFilter.options.push(filtersBySelectedCategory.subCategory2);
     }
 
     const items = filterItems();
@@ -114,13 +244,13 @@ const ExplanationService = ({ t }) => {
         const optionValue = option.value;
         const hasItems = items.some(item => {
           let hasValue = false;
-          if (item.category) {
-            hasValue = item.category.some(
+          if (item.subCategory) {
+            hasValue = item.subCategory.some(
               category => category.value === optionValue,
             );
           }
-          if (!hasValue && item.subCategory) {
-            hasValue = item.subCategory.some(
+          if (!hasValue && item.subCategory2) {
+            hasValue = item.subCategory2.some(
               category => category.value === optionValue,
             );
           }
@@ -153,19 +283,33 @@ const ExplanationService = ({ t }) => {
       });
     }
 
-    // Filter items on category. Item must include ALL of the selected categories
-    if (filters.category && filters.category.length) {
+    // Filter items on category. Item must include SOME of the selected categories
+    if (categoryFilter && categoryFilter.length) {
       filteredItems = filteredItems.filter(item => {
-        return filters.category.every(category => {
+        if (item.category) {
+          return categoryFilter.some(category => {
+            return item.category.some(
+              itemCategory => itemCategory.value === category.value,
+            );
+          });
+        }
+        return false;
+      });
+    }
+
+    // Filter items on subCategory. Item must include ALL of the selected categories
+    if (filters && filters.length) {
+      filteredItems = filteredItems.filter(item => {
+        return filters.every(category => {
           let hasValue = false;
-          if (item.category) {
-            hasValue = item.category.some(
+          if (item.subCategory) {
+            hasValue = item.subCategory.some(
               itemCategory => itemCategory.value === category,
             );
           }
 
-          if (!hasValue && item.subCategory) {
-            hasValue = item.subCategory.some(
+          if (!hasValue && item.subCategory2) {
+            hasValue = item.subCategory2.some(
               itemCategory => itemCategory.value === category,
             );
           }
@@ -177,25 +321,8 @@ const ExplanationService = ({ t }) => {
     // Filter with search (testing name, description and tags[])
     if (searchValue.length > 0) {
       const searchValueLowercase = searchValue.toLowerCase();
-      filteredItems = filteredItems.filter(
-        item =>
-          (item.tags &&
-            item.tags.some(
-              tag => tag.toLowerCase().indexOf(searchValueLowercase) !== -1,
-            )) ||
-          (item.description &&
-            item.description.toLowerCase().indexOf(searchValueLowercase) !==
-              -1) ||
-          item.name.toLowerCase().indexOf(searchValueLowercase) !== -1,
-      );
-    }
-    return filteredItems;
-  };
-
-  const filterOnSelectedLetter = filteredItems => {
-    if (selectedLetter) {
-      return filteredItems.filter(
-        item => item.name.toLowerCase().substr(0, 1) === selectedLetter,
+      filteredItems = filteredItems.filter(item =>
+        item.name.toLowerCase().startsWith(searchValueLowercase),
       );
     }
     return filteredItems;
@@ -261,8 +388,18 @@ const ExplanationService = ({ t }) => {
     ) : null;
   };
 
+  const renderMarkdown = text => text;
+
   const filteredItems = filterItems();
   const alphabet = activeAlphabet(filteredItems);
+
+  const categoryFilterInputProps = {
+    value: categoryFilterSearchValue,
+    onChange: onCategoryFilterSearch,
+    onFocus: onCategoryFilterSearchFocus,
+    onClick: onCategoryFilterSearchFocus,
+    placeholder: t(`listview.filters.category.openFilter`),
+  };
   return (
     <>
       <SubjectFilterWrapper>
@@ -281,19 +418,69 @@ const ExplanationService = ({ t }) => {
           showActiveFiltersOnSmallScreen
         />
       </SubjectFilterWrapper>
-      <ListView
-        items={filterOnSelectedLetter(filteredItems)}
-        alphabet={alphabet}
-        selectedLetter={selectedLetter}
-        selectedLetterCallback={setSelectedLetterHandler}
-        onChangedViewStyle={handleChangedViewStyle}
-        viewStyle={viewStyle}
-        searchValue={searchValue}
-        onChangedSearchValue={handleChangeSearchValue}
-        onSelectItem={setDetailedItemHandler}
-        selectedItem={renderSelectedItem()}
-        filters={getFilters()}
-      />
+      <SeparatorWrapper>eller</SeparatorWrapper>
+      <CategoriesFilterWrapper>
+        <Downshift
+          onSelect={handleChangedCategoryFilter}
+          itemToString={item => {
+            return item ? item.title || '' : '';
+          }}
+          onStateChange={handleStateChangeCategoryFilter}
+          isOpen={categoryFilterOpen}>
+          {({ getInputProps, getRootProps, getMenuProps, getItemProps }) => {
+            return (
+              <div>
+                <DropdownInput
+                  multiSelect
+                  {...getInputProps(categoryFilterInputProps)}
+                  data-testid={'dropdownInput'}
+                  idField="title"
+                  labelField="title"
+                  iconRight={
+                    categoryFilterOpen ? (
+                      <Search />
+                    ) : (
+                      <span onClick={onCategoryFilterSearchFocus}>
+                        <ChevronDown />
+                      </span>
+                    )
+                  }
+                  values={categoryFilter}
+                  removeItem={removeCategoryFilter}
+                  customCSS={categoryFilterCSS({
+                    hasValues: categoryFilter.length,
+                  })}
+                />
+                <DropdownMenu
+                  getMenuProps={getMenuProps}
+                  getItemProps={getItemProps}
+                  isOpen={categoryFilterOpen}
+                  idField="title"
+                  labelField="title"
+                  items={categoryFilterData}
+                  maxRender={1000}
+                  hideTotalSearchCount
+                  positionAbsolute
+                />
+              </div>
+            );
+          }}
+        </Downshift>
+      </CategoriesFilterWrapper>
+      <div>
+        <ListView
+          items={filteredItems}
+          alphabet={alphabet}
+          onChangedViewStyle={handleChangedViewStyle}
+          viewStyle={viewStyle}
+          searchValue={searchValue}
+          onChangedSearchValue={handleChangeSearchValue}
+          onSelectItem={setDetailedItemHandler}
+          selectedItem={renderSelectedItem()}
+          filters={getFilters()}
+          renderMarkdown={renderMarkdown}
+        />
+      </div>
     </>
   );
 };

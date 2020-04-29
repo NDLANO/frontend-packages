@@ -494,7 +494,7 @@ const messages = {
       },
       category: {
         useFilter: 'Bruk filter',
-        openFilter: 'Filtrer på kategori',
+        openFilter: 'Velg liste',
         closeFilter: 'Lukk filter',
       },
       default: {

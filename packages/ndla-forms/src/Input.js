@@ -147,6 +147,7 @@ class Input extends React.Component {
       autoExpand,
       value,
       label,
+      customCSS,
       ...rest
     } = this.props;
 
@@ -161,6 +162,7 @@ class Input extends React.Component {
               inputWrapperCSS,
               this.state.hasFocus && hasFocusCSS,
               white && whiteCSS,
+              customCSS && customCSS,
             ]}
             ref={this.wrapperRef}>
             {tags && tags}
@@ -212,6 +214,7 @@ Input.propTypes = {
   focusOnMount: PropTypes.bool,
   autoExpand: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  customCSS: PropTypes.object,
 };
 
 Input.defaultProps = {

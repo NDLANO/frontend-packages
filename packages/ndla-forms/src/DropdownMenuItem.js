@@ -64,6 +64,7 @@ const StyledItemButton = styled.button`
   justify-content: flex-start;
   width: 100%;
   transition: background 200ms ease;
+  background: transparent;
   &:focus,
   &:hover {
     background: ${colors.brand.lighter};

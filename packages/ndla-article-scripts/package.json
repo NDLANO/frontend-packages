@@ -22,9 +22,15 @@
     "@ndla/util": "^0.3.6",
     "focus-trap": "^4.0.2",
     "jump.js": "^1.0.2",
-    "lodash": "^4.17.14"
+    "lodash": "^4.17.14",
+    "snyk": "^1.316.1"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }

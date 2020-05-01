@@ -11,7 +11,8 @@
     "build": "yarn build:css && yarn build:types",
     "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn build"
+    "prepublish": "npm run snyk-protect && yarn build",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -55,7 +56,8 @@
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
     "react-swipeable": "^5.0.1",
-    "react-transition-group": "^2.5.3"
+    "react-transition-group": "^2.5.3",
+    "snyk": "^1.316.1"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
@@ -75,5 +77,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "snyk": true
 }

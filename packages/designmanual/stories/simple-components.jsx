@@ -26,6 +26,7 @@ import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
 import SolutionTableExample from './molecules/SolutionExample';
+import CodeblockExample from './codeblock/CodeblockExample';
 
 const floatVideo = left => (
   <Fragment>
@@ -902,6 +903,16 @@ storiesOf('Enkle komponenter', module)
         <CreatedBy />
         <h2>Med artikkellenke</h2>
         <CreatedBy contentUrl="https://ndla.no/subjects/subject:26/topic:1:191103/topic:1:4352/resource:1:2052" />
+      </StoryBody>
+    </div>
+  ))
+  .add('Kodeblokk', () => (
+    <div>
+      <StoryIntro title="Kodeblokk">
+        <p>Lær deg HTML, CSS og Javascript.</p>
+      </StoryIntro>
+      <StoryBody>
+        <CodeblockExample />
       </StoryBody>
     </div>
   ));

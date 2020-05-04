@@ -44,6 +44,7 @@
     "@ndla/tooltip": "^0.2.21",
     "@ndla/util": "^0.3.6",
     "@reach/dialog": "^0.2.9",
+    "@types/react-syntax-highlighter": "^11.0.4",
     "classnames": "2.2.6",
     "focus-trap": "^4.0.2",
     "focus-trap-react": "^6.0.0",
@@ -55,6 +56,7 @@
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
     "react-swipeable": "^5.0.1",
+    "react-syntax-highlighter": "11.0.2",
     "react-transition-group": "^2.5.3"
   },
   "peerDependencies": {

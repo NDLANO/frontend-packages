@@ -21,7 +21,7 @@
   }
 
   &__wrapper {
-    margin: $spacing--large 0 $spacing--large 0;
+    margin: $spacing--small 0;
 
     @include mq($from: desktop) {
       @include grids-expand(4, 6, 2);

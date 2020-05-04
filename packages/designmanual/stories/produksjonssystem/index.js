@@ -255,8 +255,8 @@ storiesOf('Produksjonssystem', module)
       <StoryIntro title="Kodesnutter">
         <p>Visning av formatert kode</p>
       </StoryIntro>
-      <StoryBody>
+      <Center>
         <CodeBlockEditorExample />
-      </StoryBody>
+      </Center>
     </div>
   ));

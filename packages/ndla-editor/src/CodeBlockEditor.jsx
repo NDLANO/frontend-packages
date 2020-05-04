@@ -177,14 +177,14 @@ const CodeBlockEditor = () => {
         </HeaderColumn>
         <HeaderRow>
           <span>Velg kodespråk:&nbsp;</span>
-          <Select onChange={handleChange}>
+          <select onChange={handleChange}>
             <option value="text">Tekst</option>
             <option value="js">Javascript</option>
             <option value="jsx">JSX</option>
             <option value="markup">HTML/Markup</option>
             <option value="css">CSS</option>
             <option value="php">PHP</option>
-          </Select>
+          </select>
         </HeaderRow>
         <HeaderColumn>some actions here.</HeaderColumn>
       </Header>

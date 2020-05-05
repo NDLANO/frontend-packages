@@ -515,6 +515,21 @@ const messages = {
     back: 'Bla tilbake',
     forward: 'Bla fremover',
   },
+  codeEditor: {
+    title: 'LEGG TIL',
+    subtitle: 'kodeeksempel',
+    languageSelect: 'Velg kodespråk',
+    save: 'Lagre',
+    abort: 'Avbryt',
+    languageOptions: {
+      text: 'Tekst',
+      js: 'Javascript',
+      jsx: 'JSX',
+      markup: 'HTML',
+      css: 'CSS',
+      php: 'PHP',
+    },
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',

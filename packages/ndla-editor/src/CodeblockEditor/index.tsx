@@ -58,7 +58,7 @@ const CodeBlockEditor = ({ onSave, onAbort, t }: Props) => {
       code: '',
       title: defaultLang.title,
       format: defaultLang.format,
-    })
+    });
     onAbort();
   };
   const handleSave = () => {
@@ -110,9 +110,7 @@ const CodeBlockEditor = ({ onSave, onAbort, t }: Props) => {
         highlight={code =>
           hightlightWithLineNumbers(
             code,
-            languages[codeContent.format]
-              ? languages[codeContent.format]
-              : '',
+            languages[codeContent.format] ? languages[codeContent.format] : '',
           )
         }
         padding={10}

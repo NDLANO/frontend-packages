@@ -69,6 +69,7 @@ const Structure = ({
     [structure, activeFilters],
   );
   const enableDND = DND && isMainActive && filteredStructure.length > 1;
+
   return (
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
@@ -82,6 +83,7 @@ const Structure = ({
               subtopics,
               filters,
               loading,
+              metadata,
               ...rest
             }) => {
               const currentPathIds = [...currentPath, id];
@@ -94,6 +96,12 @@ const Structure = ({
               const greyedOut = highlightMainActive
                 ? !isNewMainActive && !isMainActive && openedPaths.length > 0
                 : !isOpen && isSubject && openedPaths.length > 0;
+
+              const isVisible =
+                metadata !== undefined && metadata.visible
+                  ? metadata.visible
+                  : false;
+
               return (
                 <StyledStructureItem
                   connectionId={connectionId}
@@ -120,7 +128,8 @@ const Structure = ({
                         parent: rest.parent,
                       })
                     }
-                    isSubject={isSubject}>
+                    isSubject={isSubject}
+                    isVisible={isVisible}>
                     {renderListItems &&
                       renderListItems({
                         pathToString,
@@ -130,6 +139,7 @@ const Structure = ({
                         isOpen,
                         id,
                         name,
+                        metadata,
                         isMainActive: isNewMainActive,
                         ...rest,
                       })}

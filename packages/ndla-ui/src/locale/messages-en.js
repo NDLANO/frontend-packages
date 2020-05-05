@@ -522,14 +522,6 @@ const messages = {
     languageSelect: 'Select language',
     save: 'Save',
     abort: 'Abort',
-    languageOptions: {
-      text: 'Text',
-      js: 'Javascript',
-      jsx: 'JSX',
-      markup: 'HTML',
-      css: 'CSS',
-      php: 'PHP',
-    },
   },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll backwards',

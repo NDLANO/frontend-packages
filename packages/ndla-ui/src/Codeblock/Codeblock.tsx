@@ -40,12 +40,12 @@ const Title = styled.h3`
 `;
 
 type Props = {
-  language: string;
+  format: string;
   code: string;
   title?: string | null;
 };
 
-export const Codeblock = ({ title, code, language = 'markup' }: Props) => {
+export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
   const [isCopied, setIsCopied] = useState(false);
   useEffect(() => {
     if (isCopied) {
@@ -65,7 +65,7 @@ export const Codeblock = ({ title, code, language = 'markup' }: Props) => {
           overflowX: 'auto',
         }}
         style={coy}
-        language={language}
+        language={format}
         wrapLines
         showLineNumbers>
         {code}

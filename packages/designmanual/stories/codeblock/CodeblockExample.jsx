@@ -30,7 +30,7 @@ console.log(first);`;
 
 const CodeExample = () => (
   <ComponentInfo
-    reactCode={`<Code\n  title="HTML EKSEMPEL"\n  language="markup"\n  code="<p>Hello world!</p>"\n/>\n\nconst cssCode = \`${cssCode}\`;\n<Code\n  code={cssCode}\n  language="css"\n  title="CSS EKSEMPEL"\n/>`}
+    reactCode={`<Code\n  title="HTML EKSEMPEL"\n  format="markup"\n  code="<p>Hello world!</p>"\n/>\n\nconst cssCode = \`${cssCode}\`;\n<Code\n  code={cssCode}\n  format="css"\n  title="CSS EKSEMPEL"\n/>`}
     usesPropTypes={[
       {
         name: 'title',
@@ -39,7 +39,7 @@ const CodeExample = () => (
         description: 'Optional code block title',
       },
       {
-        name: 'language',
+        name: 'format',
         type: 'string',
         default: 'markup',
         description: 'Code type, defaults to markup',
@@ -58,11 +58,11 @@ const CodeExample = () => (
     ]}>
     <p>Kodekomponent for visning av kodesnutter</p>
     <Codeblock code={htmlCode} title="HTML EKSEMPEL" />
-    <Codeblock code={cssCode} language="css" title="CSS EKSEMPEL" />
-    <Codeblock code={jsCode} language="jsx" title="JS EKSEMPEL" />
+    <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
+    <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock
       code="Pure text without highlighting and no title"
-      language="text"
+      format="text"
     />
   </ComponentInfo>
 );

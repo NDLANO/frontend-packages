@@ -6,18 +6,20 @@
  *
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { CodeBlockEditor } from '@ndla/editor';
 
-class CodeBlockEditorExample extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return <CodeBlockEditor />;
-  }
-}
-
+export const CodeBlockEditorExample = () => {
+  const handleSave = codeContent => {
+    console.log('save codeContent: ', codeContent);
+  };
+  const handleAbort = () => {
+    console.log('aborted');
+  };
+  return (
+    <>
+      <CodeBlockEditor onSave={handleSave} onAbort={handleAbort} />
+    </>
+  );
+};
 export default CodeBlockEditorExample;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 // coy looks good, vs or any dark theme?
-import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism'; 
+import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     background: #fff;
     font-family: 'Source Code Pro';
   }
-`
+`;
 const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
@@ -37,7 +37,7 @@ const Title = styled.h3`
   text-transform: uppercase;
   color: ${colors.text.primary};
   margin: 5px 0;
-`
+`;
 
 type Props = {
   language: string;
@@ -46,20 +46,16 @@ type Props = {
 };
 
 export const Codeblock = ({ title, code, language = 'markup' }: Props) => {
-  if (!code) {
-    return null;
-  }
   const [isCopied, setIsCopied] = useState(false);
   useEffect(() => {
     if (isCopied) {
-      const timer = setInterval(() => setIsCopied(false), 3000)
-      // ensure interval is cleared if unmounted
+      const timer = setInterval(() => setIsCopied(false), 3000);
+      // ensure interval is cleared - also if unmounted
       return () => {
-        clearTimeout(timer)
-      }
+        clearTimeout(timer);
+      };
     }
-  }, [isCopied]); // effect if changed - initial false
-
+  }, [isCopied]);
   return (
     <Wrapper>
       {title ? <Title>{title}</Title> : null}
@@ -75,7 +71,7 @@ export const Codeblock = ({ title, code, language = 'markup' }: Props) => {
         {code}
       </SyntaxHighlighter>
       <Button
-        title='Kopier kode'
+        title="Kopier kode"
         disabled={isCopied}
         onClick={() => {
           copyTextToClipboard(code);
@@ -83,11 +79,13 @@ export const Codeblock = ({ title, code, language = 'markup' }: Props) => {
         }}>
         <>
           {isCopied ? <Done /> : <Copy />}{' '}
-          {isCopied ? 'Kode kopiert til utklippstavle' : 'Kopier kode til utklippstavle'}
+          {isCopied
+            ? 'Kode kopiert til utklippstavle'
+            : 'Kopier kode til utklippstavle'}
         </>
       </Button>
     </Wrapper>
   );
-}
+};
 
 export default Codeblock;

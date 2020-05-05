@@ -250,14 +250,12 @@ export const stories = {
   },
   CodeBlock: {
     title: 'CodeBlock',
-    lead:
-      'Legg til formatert kodesnutt.',
+    lead: 'Legg til formatert kodesnutt.',
     body: [
       {
         type: 'text',
-        content:
-          'Vis og presenter kodesnutter formatert i valgt språk.',
-      }
+        content: 'Vis og presenter kodesnutter formatert i valgt språk.',
+      },
     ],
   },
 };

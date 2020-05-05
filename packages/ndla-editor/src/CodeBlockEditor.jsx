@@ -9,8 +9,9 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Editor from 'react-simple-code-editor';
-import { Select } from '@ndla/forms';
+import { injectT } from '@ndla/i18n';
 import { Code } from '@ndla/icons/editor';
+import Button from '@ndla/button';
 
 import { highlight, languages } from 'prismjs/components/prism-core';
 
@@ -23,10 +24,8 @@ import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 
-// import { languages } from 'prismjs/components/prism-core';
-
+// https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css
 const Wrapper = styled.div`
-  /* https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css */
   .editor {
     counter-reset: line;
     border: 1px solid #ced4da;
@@ -123,31 +122,34 @@ const Header = styled.div`
     font-weight: bold;
     color: #444444;
   }
+  > div:last-child {
+    justify-content: flex-end;
+    padding-right: 30px;
+  }
+  > div {
+    padding: 15px 20px;
+  }
+  > div:first-child {
+    padding-left: 30px;
+  }
 `;
 
 const HeaderColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 15px 30px;
 `;
 
 const HeaderRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  padding: 15px 20px;
   flex: 1;
   span {
     max-width: 250px;
     padding-right: 10px;
   }
-  select {
-    width: 200px;
-  }
 `;
-
-// https://codesandbox.io/s/charming-moore-wy240?fontsize=14&hidenavigation=1&theme=dark&file=/src/index.js:412-608
 
 const hightlightWithLineNumbers = (input, language) =>
   highlight(input, language)
@@ -155,7 +157,7 @@ const hightlightWithLineNumbers = (input, language) =>
     .map((line, i) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
     .join('\n');
 
-const CodeBlockEditor = () => {
+const CodeBlockEditor = ({ onSave, onAbort, t }) => {
   const [codeContent, setCodeContent] = useState({
     code: '',
     language: 'text',
@@ -163,30 +165,39 @@ const CodeBlockEditor = () => {
   const handleChange = event => {
     setCodeContent({ ...codeContent, language: event.target.value });
   };
-  
   return (
     <Wrapper>
       <Header>
         <HeaderColumn>
-          LEGG TIL
+          {t('codeEditor.title')}
           <br />
           <b>
             <Code />
-            &nbsp;kodeeksempel
+            &nbsp;{t('codeEditor.subtitle')}
           </b>
         </HeaderColumn>
         <HeaderRow>
-          <span>Velg kodespråk:&nbsp;</span>
+          <span>{t('codeEditor.languageSelect')}:&nbsp;</span>
           <select onChange={handleChange}>
-            <option value="text">Tekst</option>
-            <option value="js">Javascript</option>
-            <option value="jsx">JSX</option>
-            <option value="markup">HTML/Markup</option>
-            <option value="css">CSS</option>
-            <option value="php">PHP</option>
+            <option value="text">{t('codeEditor.languageOptions.text')}</option>
+            <option value="js">{t('codeEditor.languageOptions.js')}</option>
+            <option value="jsx">{t('codeEditor.languageOptions.jsx')}</option>
+            <option value="markup">
+              {t('codeEditor.languageOptions.markup')}
+            </option>
+            <option value="css">{t('codeEditor.languageOptions.css')}</option>
+            <option value="php">{t('codeEditor.languageOptions.php')}</option>
           </select>
         </HeaderRow>
-        <HeaderColumn>some actions here.</HeaderColumn>
+        <HeaderRow>
+          <Button onClick={() => onSave(codeContent)}>
+            <span>{t('codeEditor.save')}</span>
+          </Button>
+          &nbsp;
+          <Button outline onClick={() => onAbort()}>
+            <span>{t('codeEditor.abort')}</span>
+          </Button>
+        </HeaderRow>
       </Header>
       <Editor
         className="editor"
@@ -215,4 +226,4 @@ const CodeBlockEditor = () => {
   );
 };
 
-export default CodeBlockEditor;
+export default injectT(CodeBlockEditor);

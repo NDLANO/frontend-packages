@@ -60,7 +60,10 @@ const CodeExample = () => (
     <Codeblock code={htmlCode} title="HTML EKSEMPEL" />
     <Codeblock code={cssCode} language="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} language="jsx" title="JS EKSEMPEL" />
-    <Codeblock code="Pure text without highlighting and no title" language="text" />
+    <Codeblock
+      code="Pure text without highlighting and no title"
+      language="text"
+    />
   </ComponentInfo>
 );
 

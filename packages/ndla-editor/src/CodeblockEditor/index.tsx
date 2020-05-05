@@ -16,7 +16,6 @@ import { Code } from '@ndla/icons/editor';
 import Button from '@ndla/button';
 // @ts-ignore
 import { highlight, languages } from 'prismjs/components/prism-core';
-
 // @ts-ignore
 import { Wrapper, Header, HeaderColumn, HeaderRow } from './style';
 import { ICodeLangugeOption, languageOptions } from './languages';
@@ -34,14 +33,19 @@ type Props = {
   onSave: Function;
   onAbort: Function;
   t: Function;
+  content: {
+    code: string;
+    title: string;
+    format: string;
+  } | null;
 };
 
-const CodeBlockEditor = ({ onSave, onAbort, t }: Props) => {
+const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({
-    code: '',
-    title: defaultLang.title,
-    format: defaultLang.format,
+    code: content ? content.code : '',
+    title: content ? content.title : defaultLang.title,
+    format: content ? content.format : defaultLang.format,
   });
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;

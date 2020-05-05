@@ -16,9 +16,20 @@ export const CodeBlockEditorExample = () => {
   const handleAbort = () => {
     console.log('aborted');
   };
+
+  const demoContent = {
+    code: 'const foo = "bar";',
+    title: 'Javascript',
+    format: 'js',
+  };
+
   return (
     <>
-      <CodeBlockEditor onSave={handleSave} onAbort={handleAbort} />
+      <CodeBlockEditor
+        onSave={handleSave}
+        onAbort={handleAbort}
+        content={demoContent}
+      />
     </>
   );
 };

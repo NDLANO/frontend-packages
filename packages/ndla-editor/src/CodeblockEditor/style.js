@@ -124,4 +124,7 @@ export const HeaderRow = styled.div`
     max-width: 250px;
     padding-right: 10px;
   }
+  select {
+    min-width: 150px;
+  }
 `;

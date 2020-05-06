@@ -67,7 +67,7 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
     });
     onAbort();
   };
-  
+
   const save = () => {
     const selectedLanguage = languageOptions.find(
       (item: ICodeLangugeOption) => item.title === codeContent.title,

@@ -47,6 +47,7 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
     title: content ? content.title : defaultLang.title,
     format: content ? content.format : defaultLang.format,
   });
+
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     const selectedLanguage = languageOptions.find(
@@ -57,7 +58,8 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
       setCodeContent({ ...codeContent, title: value, format });
     }
   };
-  const handleAbort = () => {
+
+  const abort = () => {
     setCodeContent({
       code: '',
       title: defaultLang.title,
@@ -65,7 +67,8 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
     });
     onAbort();
   };
-  const handleSave = () => {
+  
+  const save = () => {
     const selectedLanguage = languageOptions.find(
       (item: ICodeLangugeOption) => item.title === codeContent.title,
     );
@@ -96,11 +99,11 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
           </select>
         </HeaderRow>
         <HeaderRow>
-          <Button onClick={handleSave}>
+          <Button onClick={save}>
             <span>{t('codeEditor.save')}</span>
           </Button>
           &nbsp;
-          <Button outline onClick={handleAbort}>
+          <Button outline onClick={abort}>
             <span>{t('codeEditor.abort')}</span>
           </Button>
         </HeaderRow>

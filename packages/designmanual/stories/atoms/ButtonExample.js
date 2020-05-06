@@ -35,7 +35,8 @@ const ButtonExample = () => {
         </p>
         <p>
           Knapp med ramme brukes for de fleste knapper, men er det behov for
-          ekstra oppmerksomhet, kan fylt knapp benyttes.
+          ekstra oppmerksomhet, kan fylt knapp benyttes. Som regel bør det ikke
+          brukes mer enn 1 fylt knapp på en side.
         </p>
       </StoryIntro>
       <StoryBody>

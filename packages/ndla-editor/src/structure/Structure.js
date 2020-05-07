@@ -96,11 +96,8 @@ const Structure = ({
               const greyedOut = highlightMainActive
                 ? !isNewMainActive && !isMainActive && openedPaths.length > 0
                 : !isOpen && isSubject && openedPaths.length > 0;
-
               const isVisible =
-                metadata !== undefined && metadata.visible
-                  ? metadata.visible
-                  : false;
+                metadata !== undefined ? metadata.visible : true;
 
               return (
                 <StyledStructureItem

@@ -44,7 +44,8 @@ const ItemTitleButton = styled.button`
   font-weight: ${fonts.weight.semibold};
   border: 0;
   background: 0;
-  color: ${colors.brand.primary};
+  color: ${props =>
+    !props.isVisible ? colors.brand.grey : colors.brand.primary};
   display: flex;
   align-items: center;
   text-align: left;
@@ -111,7 +112,7 @@ const ItemNameBar = ({
         {title}
       </ItemTitleButton>
     ) : (
-      <ItemTitleSpan>{title}</ItemTitleSpan>
+      <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
     )}
     {children}
   </StyledItemBar>

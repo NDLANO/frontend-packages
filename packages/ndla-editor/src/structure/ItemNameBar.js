@@ -44,11 +44,13 @@ const ItemTitleButton = styled.button`
   font-weight: ${fonts.weight.semibold};
   border: 0;
   background: 0;
-  color: ${colors.brand.primary};
+  color: ${props =>
+    !props.isVisible ? colors.brand.grey : colors.brand.primary};
   display: flex;
   align-items: center;
   text-align: left;
   white-space: nowrap;
+  font-style: ${props => !props.isVisible && 'italic'};
 
   ${props => props.hasSubtopics && itemTitleArrow};
   ${props =>
@@ -57,6 +59,7 @@ const ItemTitleButton = styled.button`
       cursor: pointer;
     `};
   ${props => !props.hasSubtopics && !props.isSubject && itemTitleLinked};
+
   &:before {
     transition: transform 200ms ease;
     transform: rotate(
@@ -93,6 +96,7 @@ const ItemNameBar = ({
   lastItemClickable,
   id,
   level,
+  isVisible,
 }) => (
   <StyledItemBar level={level} highlight={highlight}>
     {lastItemClickable || hasSubtopics ? (
@@ -103,11 +107,12 @@ const ItemNameBar = ({
         isSubject={isSubject}
         lastItemClickable={lastItemClickable}
         arrowDirection={isOpen ? 90 : 0}
-        onClick={() => toggleOpen(path)}>
+        onClick={() => toggleOpen(path)}
+        isVisible={isVisible}>
         {title}
       </ItemTitleButton>
     ) : (
-      <ItemTitleSpan>{title}</ItemTitleSpan>
+      <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
     )}
     {children}
   </StyledItemBar>
@@ -123,6 +128,7 @@ ItemNameBar.propTypes = {
   lastItemClickable: PropTypes.bool,
   id: PropTypes.string,
   isSubject: PropTypes.bool,
+  isVisible: PropTypes.bool,
 };
 
 export default ItemNameBar;

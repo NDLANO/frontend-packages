@@ -1,4 +1,3 @@
-// eslint-disable
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
@@ -8,6 +7,7 @@ import { injectT } from '@ndla/i18n';
 const ListWrapper = styled.div`
   border: 1px solid ${colors.brand.light};
   padding: 32px 40px;
+  margin: 32px 0;
   h3 {
     color: #444444;
     font-size: 20px;

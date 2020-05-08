@@ -13,6 +13,8 @@ import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
 
+export const NotionContext = React.createContext({ listView: false });
+
 const NotionWrapper = styled.span`
   display: inline;
 `;
@@ -31,7 +33,7 @@ const NotionButton = styled.button`
     outline: none;
   }
   ${props =>
-    props.isList && {
+    props.isListView && {
       padding: '2px 0',
       margin: '4px 0',
       lineHeight: '1.1em',
@@ -47,7 +49,6 @@ const NotionButton = styled.button`
       fontSize: '16px',
       color: `${colors.brand.primary}`,
     }}
-
   &:before {
     content: '';
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI0E1QkNEMyIgZD0iTTQgOWgxNnYySDRWOXptMCA0aDEwdjJINHYtMnoiLz48L3N2Zz4K);
@@ -59,7 +60,7 @@ const NotionButton = styled.button`
     width: 32px;
     height: 32px;
     ${props =>
-      props.isList && {
+      props.isListView && {
         position: 'relative',
         margin: '0',
         backgroundPosition: '0 0',
@@ -69,31 +70,27 @@ const NotionButton = styled.button`
   }
 `;
 
-const Notion = ({
-  id,
-  ariaLabel,
-  content,
-  children,
-  isList = false,
-  ...rest
-}) => (
-  <NotionWrapper id={id} data-notion>
-    <NotionButton
-      isList={isList}
-      type="button"
-      aria-label={ariaLabel}
-      className={'link'}
-      data-notion-link>
-      {children}
-    </NotionButton>
-    {createUniversalPortal(
-      <NotionDialog {...rest} id={id}>
-        {content}
-      </NotionDialog>,
-      'body',
-    )}
-  </NotionWrapper>
-);
+const Notion = ({ id, ariaLabel, content, children, ...rest }) => {
+  const { listView = false } = React.useContext(NotionContext);
+  return (
+    <NotionWrapper id={id} data-notion>
+      <NotionButton
+        isListView={listView}
+        type="button"
+        aria-label={ariaLabel}
+        className={'link'}
+        data-notion-link>
+        {children}
+      </NotionButton>
+      {createUniversalPortal(
+        <NotionDialog {...rest} id={id}>
+          {content}
+        </NotionDialog>,
+        'body',
+      )}
+    </NotionWrapper>
+  );
+};
 
 Notion.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -101,7 +98,7 @@ Notion.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   content: PropTypes.node,
-  isList: PropTypes.bool,
+  isListView: PropTypes.bool,
 };
 
 export default Notion;

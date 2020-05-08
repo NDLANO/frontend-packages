@@ -8,67 +8,83 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
 
-const NotionCSS = css`
+const NotionWrapper = styled.span`
   display: inline;
-  .link {
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-style: inherit;
-    line-height: 1em;
-    padding: 0 0 4px 0;
-    margin-bottom: -4px;
-    text-decoration: none;
-    color: #000;
-    border-bottom: 1px solid ${colors.brand.tertiary};
-    position: relative;
-    cursor: pointer;
-    &:after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      margin: calc(1em + 4px) auto 0;
-      left: 0;
-      right: 0;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid ${colors.brand.primary};
-      transition: transform 0.1s ease;
-    }
-    &:hover,
-    &:focus {
-      border-color: ${colors.brand.primary};
-      outline: none;
-      &:after {
-        transform: scale(1.4) translateY(1px);
-      }
-    }
+`;
+const NotionButton = styled.button`
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-style: inherit;
+  line-height: 1em;
+  padding: 0 0 4px 0;
+  margin-bottom: -4px;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  ${props =>
+    props.isList && {
+      padding: '0',
+      margin: '4px 0',
+      lineHeight: '1.1em',
+      height: '32px',
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'row',
+      width: '100%',
+      textTransform: 'capitalize',
+      fontFamily: 'Source Sans Pro',
+      fontWeight: '600',
+      fontSize: '16px',
+      color: `${colors.brand.primary}`,
+    }}
+  &:before {
+    content: '';
+    display: inline-block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI0E1QkNEMyIgZD0iTTQgOWgxNnYySDRWOXptMCA0aDEwdjJINHYtMnoiLz48L3N2Zz4K);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    margin: calc(1em - 10px) 0 0 -2px;
+    ${props =>
+      props.isList && {
+        position: 'relative',
+        margin: '-2px 0 0 0',
+        paddingRight: '40px',
+      }}
   }
 `;
 
-const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
-  <span css={NotionCSS} id={id} data-notion>
-    <button
+const Notion = ({
+  id,
+  ariaLabel,
+  content,
+  children,
+  isList = false,
+  ...rest
+}) => (
+  <NotionWrapper id={id} data-notion>
+    <NotionButton
+      isList={isList}
       type="button"
       aria-label={ariaLabel}
       className={'link'}
       data-notion-link>
       {children}
-    </button>
+    </NotionButton>
     {createUniversalPortal(
       <NotionDialog {...rest} id={id}>
         {content}
       </NotionDialog>,
       'body',
     )}
-  </span>
+  </NotionWrapper>
 );
 
 Notion.propTypes = {
@@ -77,6 +93,7 @@ Notion.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   content: PropTypes.node,
+  isList: PropTypes.bool,
 };
 
 export default Notion;

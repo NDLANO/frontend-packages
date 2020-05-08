@@ -27,15 +27,19 @@ const NotionButton = styled.button`
   text-decoration: none;
   position: relative;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
   ${props =>
     props.isList && {
-      padding: '0',
+      padding: '2px 0',
       margin: '4px 0',
       lineHeight: '1.1em',
       height: '32px',
       display: 'flex',
       flex: 1,
       flexDirection: 'row',
+      alignItems: 'center',
       width: '100%',
       textTransform: 'capitalize',
       fontFamily: 'Source Sans Pro',
@@ -43,20 +47,23 @@ const NotionButton = styled.button`
       fontSize: '16px',
       color: `${colors.brand.primary}`,
     }}
+
   &:before {
     content: '';
-    display: inline-block;
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI0E1QkNEMyIgZD0iTTQgOWgxNnYySDRWOXptMCA0aDEwdjJINHYtMnoiLz48L3N2Zz4K);
     background-repeat: no-repeat;
-    width: 16px;
-    height: 16px;
+    background-size: 32px 32px;
     position: absolute;
     margin: calc(1em - 10px) 0 0 -2px;
+    width: 32px;
+    height: 32px;
     ${props =>
       props.isList && {
         position: 'relative',
-        margin: '-2px 0 0 0',
-        paddingRight: '40px',
+        margin: '0',
+        backgroundPosition: '0 0',
+        width: '32px',
+        height: '24px',
       }}
   }
 `;

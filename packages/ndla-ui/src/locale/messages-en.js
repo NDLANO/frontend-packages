@@ -511,6 +511,7 @@ const messages = {
   },
   notions: {
     closeNotion: 'Close',
+    listheading: 'Do you know the terms?',
   },
   carousel: {
     back: 'Slide backwards',

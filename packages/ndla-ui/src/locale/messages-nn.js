@@ -513,6 +513,7 @@ const messages = {
   },
   notions: {
     closeNotion: 'Lukk',
+    listheading: 'Kan du begrepa?',
   },
   carousel: {
     back: 'Bla tilbake',

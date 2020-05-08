@@ -2,10 +2,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
 
 const ListWrapper = styled.div`
   border: 1px solid ${colors.brand.light};
-  padding: 32px;
+  padding: 32px 40px;
   h3 {
     color: #444444;
     font-size: 20px;
@@ -15,20 +17,21 @@ const ListWrapper = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  padding: 24px 0 4px;
 `;
 type Props = {
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   children: JSX.Element;
 };
 
 interface INotionOption {
-  isList?: boolean;
+  isList: boolean;
 }
 
-const NotionList = ({ children }: Props) => {
+const NotionList = ({ children, t }: Props) => {
   return (
     <ListWrapper>
-      <h3>Begreper</h3>
+      <h3>{t('notions.listheading')}</h3>
       <List>
         {React.Children.map(children, (child: React.ReactChild) => {
           if (!React.isValidElement(child)) {
@@ -41,4 +44,4 @@ const NotionList = ({ children }: Props) => {
   );
 };
 
-export default NotionList;
+export default injectT(NotionList);

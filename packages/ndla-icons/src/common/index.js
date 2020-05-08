@@ -47,6 +47,7 @@ export { default as Play } from './Play';
 export { default as Sad } from './Sad';
 export { default as Search } from './Search';
 export { default as Share } from './Share';
+export { default as ShortText } from './ShortText';
 export { default as Time } from './Time';
 export { default as Twitter } from './Twitter';
 export { default as User } from './User';

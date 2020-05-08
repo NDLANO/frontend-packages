@@ -54,7 +54,8 @@ const NotionButton = styled.button`
     background-repeat: no-repeat;
     background-size: 32px 32px;
     position: absolute;
-    margin: calc(1em - 10px) 0 0 -2px;
+    background-position: -4px 0;
+    margin: calc(1em - 10px) 0 0 0;
     width: 32px;
     height: 32px;
     ${props =>

@@ -8,7 +8,7 @@
 
 import jump from 'jump.js';
 
-import { forEachElement, inIframe } from './domHelpers';
+import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
 export const addFootnoteClickListeners = () => {
   forEachElement('.c-footnotes__ref sup a, .c-footnotes__cite sup a', el => {
@@ -17,9 +17,21 @@ export const addFootnoteClickListeners = () => {
     const hash = target.href.slice(target.href.indexOf('#'));
     target.onclick = e => {
       e.preventDefault();
-      const scrollOffset = inIframe() ? -100 : -200; // different offset because of no menu in iFrame
+      const scrollTarget = document.getElementById(hash.slice(1));
 
-      jump(hash, { offset: scrollOffset, duration: 300 });
+      if (inIframe() && window.parent) {
+        const elementOffset = getElementOffset(scrollTarget);
+        window.parent.postMessage(
+          {
+            event: 'scrollTo',
+            top: elementOffset.top - 100, // different offset because of no menu in iframe.
+          },
+          '*',
+        );
+        jump(hash, { offset: -100, duration: 300 });
+      } else {
+        jump(hash, { offset: -200, duration: 300 });
+      }
     };
   });
 };

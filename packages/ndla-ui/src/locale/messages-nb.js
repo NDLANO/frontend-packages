@@ -652,7 +652,7 @@ const messages = {
     },
     badge: {
       heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020',
-      text: 'Ikke på jakt etter dette?',
+      text: 'Innholdet er under arbeid. Ikke på jakt etter dette?',
       linkText: 'Gå til ndla.no for dagens innhold',
     },
   },

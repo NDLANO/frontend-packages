@@ -644,7 +644,7 @@ const messages = {
     },
     badge: {
       heading: 'This page is adapted for Fagfornyelsen 2020',
-      text: 'Not what you were looking for?',
+      text: 'The content is in progress. Not what you were looking for?',
       linkText: "Go to ndla.no for today's content",
     },
   },

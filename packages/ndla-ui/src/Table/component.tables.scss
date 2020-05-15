@@ -300,3 +300,12 @@ details .c-table__wrapper {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+// Removes excess padding from paragraphs in table headers
+.c-article,
+.c-editor,
+.c-table {
+  th p {
+    margin: 0;
+  }
+}

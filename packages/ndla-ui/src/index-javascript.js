@@ -167,3 +167,4 @@ export {
 
 export { default as CreatedBy } from './CreatedBy';
 export { MessageBox } from './MessageBox';
+export { default as NavigationBox } from './NavigationBox';

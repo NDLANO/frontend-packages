@@ -19,6 +19,8 @@ export { BlogPost, BlogPostWrapper } from './BlogPosts';
 export {
   FrontpageInfo,
   FrontpageFilm,
+  FrontpageToolbox,
+  FrontpageMultidisciplinarySubject,
   FrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,

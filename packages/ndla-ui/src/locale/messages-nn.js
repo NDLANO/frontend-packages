@@ -660,6 +660,12 @@ const messages = {
       linkText: 'Gå til ndla.no for dagens innhald',
     },
   },
+  frontPageToolbox: {
+    heading: 'Verktøykassa',
+    text:
+      'Har du lyst til å bli god til å presentera, eller vil du læra å studera smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I Verktøyskassen til NDLA finn du masse gode tips og råd!',
+    linkText: 'Sjå alle tipsa i Verktøykassen her',
+  },
 };
 
 export default messages;

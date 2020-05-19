@@ -7,6 +7,8 @@ import {
   OneColumn,
   FrontpageInfo,
   FrontpageFilm,
+  FrontpageToolbox,
+  FrontpageMultidisciplinarySubject,
   FrontpageCircularSubjectsSection,
   InfoWidget,
   SubjectSectionTitle,
@@ -18,6 +20,8 @@ import { categories, dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
 import BlogExampleImage2 from '../../images/blog/studereute.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
+import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
+import NdlaMultiSubjectIllustration from '../../images/fp_multidisciplinary.svg';
 
 class FrontpageExample extends Component {
   constructor(props) {
@@ -274,6 +278,14 @@ class FrontpageExample extends Component {
             </section>
             <FrontpageFilm
               imageUrl={NdlaFilmIllustration}
+              url="https://ndla.no/nb/film"
+            />
+            <FrontpageToolbox
+              imageUrl={NdlaToolboxIllustration}
+              url="https://ndla.no/nb/film"
+            />
+            <FrontpageMultidisciplinarySubject
+              imageUrl={NdlaMultiSubjectIllustration}
               url="https://ndla.no/nb/film"
             />
             <FrontpageInfo>

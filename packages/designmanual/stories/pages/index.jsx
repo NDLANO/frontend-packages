@@ -50,8 +50,17 @@ import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
 import FFFrontpage from './FFFrontpage';
 import SearchPageExample from './SearchPageExample';
+import FrontpageReDesignExample from './FrontpageReDesignExample';
 
 storiesOf('Sidevisninger', module)
+  .add('Forside re-design', () => (
+    <PageContainer background>
+      <Content>
+        <FrontpageReDesignExample />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
   .add('En side, laster innhold (helt tom)', () => (
     <PageContainer>
       <Content>

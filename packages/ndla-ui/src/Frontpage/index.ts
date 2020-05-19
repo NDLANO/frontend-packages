@@ -15,6 +15,8 @@ export {
 export {
   default as FrontpageCircularSubjectsSection,
 } from './FrontpageCircularSubjectsSection';
+export { default as FrontpageProgramMenu } from './FrontpageProgramMenu';
+export { default as FrontpageAllSubjects } from './FrontpageAllSubjects';
 
 export {
   Fellesfag,

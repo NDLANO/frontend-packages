@@ -26,6 +26,7 @@ export {
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
   FrontpageSearch,
+  FrontpageProgramMenu,
 } from './Frontpage';
 
 export { FFFrontpageInfo, FFFrontpageHeader } from './FFFrontpage';

@@ -10,7 +10,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, misc, fonts, animations } from '@ndla/core';
+import {
+  colors,
+  spacing,
+  misc,
+  fonts,
+  animations,
+  breakpoints,
+  mq,
+} from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 
 export const strippedStyle = css`
@@ -154,13 +162,18 @@ export const borderShapes = {
   `,
   rounded: size => css`
     border-radius: 32px;
-    padding-left: ${spacing.normal};
-    padding-right: ${spacing.normal};
     ${size === 'medium'
-      ? `padding-left:${spacing.medium};padding-right:${spacing.medium};`
+      ? `
+      ${mq.range({ from: breakpoints.tablet })} {
+        padding-left:${spacing.medium};
+        padding-right:${spacing.medium};
+      }`
       : null}
     ${size === 'large'
-      ? `padding-left:${spacing.large};padding-right:${spacing.large};`
+      ? `
+        ${mq.range({ from: breakpoints.tablet })} {
+        padding-left:${spacing.large};padding-right:${spacing.large};
+      }`
       : null}
   `,
   sharpened: size => css`

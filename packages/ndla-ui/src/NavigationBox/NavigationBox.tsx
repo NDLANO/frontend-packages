@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
+import { breakpoints, mq } from '@ndla/core';
 
 const StyledWrapper = styled.nav``;
 const StyledHeading = styled.h2``;
@@ -8,11 +9,20 @@ const StyledList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  column-count: 3;
-  column-gap: 20px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    column-count: 3;
+    column-gap: 20px;
+  }
 `;
 const StyledListItem = styled.li`
-  margin-bottom: 20px;
+  margin-bottom: 2px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: 20px;
+  }
 `;
 const StyledButtonContent = styled.span`
   width: 100%;

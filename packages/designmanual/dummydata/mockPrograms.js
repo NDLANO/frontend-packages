@@ -266,7 +266,7 @@ export const subjectCategories = [
     ],
   },
   {
-    name: 'studiespesialiserende',
+    name: 'studieforberedende',
     subjects: [
       { nodeId: '52234', name: 'Biologi 1', url: '#', id: 'urn:subject:42' },
       {

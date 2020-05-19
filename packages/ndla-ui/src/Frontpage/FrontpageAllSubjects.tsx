@@ -3,18 +3,43 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
-import { colors, fonts } from '@ndla/core';
+import { colors, fonts, mq, breakpoints } from '@ndla/core';
 
 const StyledWrapper = styled.nav`
-  margin: 44px 0 134px;
+  margin: 32px 0 0;
+  .c-tabs--subjects {
+    margin: 0;
+  }
+  .c-tabs__list--subjects {
+    margin:0;
+  }
+  .c-tabs__tab--subjects {
+  ${mq.range({ until: breakpoints.tablet })} {
+    margin:0;
+    font-size: 12px;
+    padding-left:8px;
+    padding-right:8px;
+    :first-of-type {
+      padding-left:0;
+    }
+    :last-of-type {
+      padding-right:0;
+    }
+  }
 `;
 
 const StyledList = styled.ul`
   list-style: none;
   margin: 40px 0 0;
   padding: 0;
-  column-count: 3;
-  column-gap: 20px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    column-count: 3;
+    column-gap: 20px;
+  }
 `;
 const StyledListItem = styled.li`
   margin-bottom: 10px;
@@ -99,7 +124,7 @@ const FrontpageAllSubjects = ({ categories }: subjectsProps) => {
 
   return (
     <StyledWrapper>
-      <Tabs tabs={data} />
+      <Tabs modifier="subjects" tabs={data} />
     </StyledWrapper>
   );
 };

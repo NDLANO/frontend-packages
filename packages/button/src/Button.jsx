@@ -163,8 +163,30 @@ export const borderShapes = {
       ? `padding-left:${spacing.large};padding-right:${spacing.large};`
       : null}
   `,
-  sharpened: () => css`
+  sharpened: size => css`
     border-radius: 2px;
+    ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null}
+  `,
+};
+
+export const width = {
+  auto: css`
+    width: auto;
+  `,
+  full: css`
+    width: 100%;
+  `,
+};
+
+export const textAlign = {
+  center: css`
+    text-align: center;
+  `,
+  left: css`
+    text-align: left;
+  `,
+  right: css`
+    text-align: right;
   `,
 };
 
@@ -198,7 +220,6 @@ export const appearances = {
   lighter: css`
     ${fonts.sizes('12px', '15px')};
     background-color: ${colors.brand.lighter};
-    border: none;
     border: 2px solid ${colors.brand.lighter};
     color: ${colors.brand.primary};
     font-weight: ${fonts.weight.semibold};
@@ -208,6 +229,7 @@ export const appearances = {
     &:active {
       transform: translateY(0) translateX(0);
       background: ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
     }
     &:disabled {
       color: ${colors.brand.grey};
@@ -370,13 +392,20 @@ export const buttonStyle = css`
   }
 `;
 
-export const StyledButton = styled('button')`
+export const ButtonStyles = p =>
+  css`
   ${buttonStyle}
-  ${p => appearances[p.appearance]};
-  ${p => (p.size ? sizes[p.size] : null)};
-  ${p => (p.outline ? outlineStyle : null)};
-  ${p => (p.borderShape ? borderShapes[p.borderShape](p.size) : null)};
-  ${p => (p.lighter ? appearances[p.lighter] : null)};
+  ${p.appearance ? appearances[p.appearance] : null}
+  ${p.lighter ? appearances['lighter'] : null}
+  ${p.size ? sizes[p.size] : null};
+  ${p.outline ? outlineStyle : null}
+  ${p.borderShape ? borderShapes[p.borderShape](p.size) : null}
+  ${p.width ? width[p.width] : null}
+  ${p.textAlign ? textAlign[p.textAlign] : null}
+`;
+
+export const StyledButton = styled('button')`
+  ${p => ButtonStyles(p)}
 `;
 
 // Reverse the array to find the last element first
@@ -391,7 +420,6 @@ export const Button = ({
   link,
   large,
   lighter,
-  rounded,
   submit,
   loading,
   appearance,
@@ -439,8 +467,6 @@ export const Button = ({
 
   const styledAppearance = appearance || modifierToApperance(modifiers);
 
-  console.log(styledAppearance);
-
   /* eslint-disable react/button-has-type */
   const type = submit ? 'submit' : rest.type || 'button';
   // Unless the disabled state is explicitly set, the button is disabled when loading.
@@ -467,7 +493,6 @@ Button.propTypes = {
   large: PropTypes.bool,
   stripped: PropTypes.bool,
   lighter: PropTypes.bool,
-  rounded: PropTypes.bool,
   ghostPill: PropTypes.bool,
   ghostPillInverted: PropTypes.bool,
   loading: PropTypes.bool,
@@ -487,6 +512,8 @@ Button.propTypes = {
   ]),
   size: PropTypes.oneOf(['normal', 'medium', 'large']),
   borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
+  width: PropTypes.oneOf(['auto', 'full']),
+  textAlign: PropTypes.oneOf(['center', 'left', 'right']),
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

@@ -9,7 +9,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 // @ts-ignore
-import { buttonStyle, appearances } from '@ndla/button';
+import { appearances, ButtonStyles } from '@ndla/button';
 import SafeLink from './SafeLink';
 
 interface StylesProps {
@@ -31,6 +31,10 @@ interface Props {
   children: React.ReactNode;
   to: string;
   className?: string;
+  buttonSize?: 'normal' | 'medium' | 'large';
+  borderShape?: 'normal' | 'rounded' | 'sharpened';
+  width?: 'auto' | 'full';
+  textAlign?: 'center' | 'left' | 'right';
 }
 
 const SafeLinkButton: React.FunctionComponent<
@@ -44,6 +48,10 @@ const SafeLinkButton: React.FunctionComponent<
   inverted,
   invertedOutline,
   to,
+  buttonSize,
+  borderShape,
+  width,
+  textAlign,
   ...rest
 }) => {
   const modifierStyles = getStyles({
@@ -55,12 +63,22 @@ const SafeLinkButton: React.FunctionComponent<
     invertedOutline,
   });
 
+  const buttonStyleProps = {
+    outline,
+    lighter,
+    size: buttonSize,
+    borderShape,
+    width,
+    textAlign,
+  };
+  const styles = ButtonStyles(buttonStyleProps);
+
   return (
     <SafeLink
       to={to}
       css={css`
-        ${buttonStyle}
         ${modifierStyles}
+        ${styles}
       `}
       {...rest}>
       {children}

@@ -654,6 +654,12 @@ const messages = {
       'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
     linkText: 'See all tips in the Toolbox here',
   },
+  frontpageMultidisciplinarySubject: {
+    heading: 'Interdisciplinary subjects',
+    text:
+      'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
+    linkText: 'Get an overview of our interdisciplinary topics here',
+  },
 };
 
 export default messages;

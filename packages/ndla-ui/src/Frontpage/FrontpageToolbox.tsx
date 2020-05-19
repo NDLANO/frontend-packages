@@ -86,7 +86,7 @@ const FrontpageToolbox: React.FunctionComponent<Props> = ({
   t,
 }) => (
   <StyledSection>
-    <SectionHeading large>{t('frontPageToolbox.title')}</SectionHeading>
+    <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
     <ToolboxWrapper imageUrl={imageUrl}>
       <StyledText>{t('frontPageToolbox.text')}</StyledText>
     </ToolboxWrapper>

@@ -75,16 +75,13 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
   <StyledSection>
     <Wrapper imageUrl={imageUrl}>
       <Content>
-        <SectionHeading large>Tverrfaglig tema TODO: translate</SectionHeading>
-        <StyledText>
-          De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i
-          aktuelle samfunnsutfordringer som krever engasjement og innsats fra
-          enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og
-          globalt.
-        </StyledText>
+        <SectionHeading large>
+          {t('frontpageMultidisciplinarySubject.heading')}
+        </SectionHeading>
+        <StyledText>{t('frontpageMultidisciplinarySubject.text')}</StyledText>
         <div className="o-text-link__wrapper o-text-link__wrapper">
           <SafeLink className="o-text-link" to={url}>
-            Få oversikten over våre tverrfaglige tema her
+            {t('frontpageMultidisciplinarySubject.linkText')}
             <Forward />
           </SafeLink>
         </div>

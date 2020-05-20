@@ -253,6 +253,14 @@ class FrontpageReDesignExample extends Component {
               programItems={programs}
               subjectCategories={subjectCategories}
             />
+            <FrontpageMultidisciplinarySubject
+              imageUrl={NdlaMultiSubjectIllustration}
+              url="https://ndla.no/nb/film"
+            />
+            <FrontpageToolbox
+              imageUrl={NdlaToolboxIllustration}
+              url="https://ndla.no/nb/film"
+            />
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>
@@ -282,14 +290,6 @@ class FrontpageReDesignExample extends Component {
             </section>
             <FrontpageFilm
               imageUrl={NdlaFilmIllustration}
-              url="https://ndla.no/nb/film"
-            />
-            <FrontpageToolbox
-              imageUrl={NdlaToolboxIllustration}
-              url="https://ndla.no/nb/film"
-            />
-            <FrontpageMultidisciplinarySubject
-              imageUrl={NdlaMultiSubjectIllustration}
               url="https://ndla.no/nb/film"
             />
             <FrontpageInfo>

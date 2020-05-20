@@ -52,15 +52,16 @@ import FFFrontpage from './FFFrontpage';
 import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
 
+storiesOf('Re-design', module).add('Forside', () => (
+  <PageContainer background>
+    <Content>
+      <FrontpageReDesignExample />
+    </Content>
+    <FooterExample />
+  </PageContainer>
+));
+
 storiesOf('Sidevisninger', module)
-  .add('Forside re-design', () => (
-    <PageContainer background>
-      <Content>
-        <FrontpageReDesignExample />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
   .add('En side, laster innhold (helt tom)', () => (
     <PageContainer>
       <Content>

@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, fonts, mq } from '@ndla/core';
 
 const StyledWrapper = styled.nav``;
-const StyledHeading = styled.h2``;
+const StyledHeading = styled.h2`
+  ${fonts.sizes('18px', '32px')};
+  text-transform: uppercase;
+  margin-bottom: 10px;
+`;
 const StyledList = styled.ul`
   list-style: none;
   margin: 0;
@@ -45,7 +49,11 @@ export const NavigationBox = ({
   items,
 }: Props) => (
   <StyledWrapper>
-    {heading && <StyledHeading>{heading}</StyledHeading>}
+    {heading && (
+      <StyledHeading>
+        {heading} ({items.length})
+      </StyledHeading>
+    )}
     <StyledList>
       {items.map((item: ItemProps) => (
         <StyledListItem key={item.label}>

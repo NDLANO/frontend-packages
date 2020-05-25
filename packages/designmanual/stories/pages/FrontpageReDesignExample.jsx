@@ -22,7 +22,6 @@ import BlogExampleImage2 from '../../images/blog/studereute.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import { programs, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
-import NdlaMultiSubjectIllustration from '../../images/fp_multidisciplinary.svg';
 
 class FrontpageReDesignExample extends Component {
   constructor(props) {
@@ -253,10 +252,7 @@ class FrontpageReDesignExample extends Component {
               programItems={programs}
               subjectCategories={subjectCategories}
             />
-            <FrontpageMultidisciplinarySubject
-              imageUrl={NdlaMultiSubjectIllustration}
-              url="https://ndla.no/nb/film"
-            />
+            <FrontpageMultidisciplinarySubject url="https://ndla.no/nb/film" />
             <FrontpageToolbox
               imageUrl={NdlaToolboxIllustration}
               url="https://ndla.no/nb/film"

@@ -671,6 +671,9 @@ const messages = {
     text:
       'Dei tre tverrfaglege tema i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
     linkText: 'Få oversikta over dei tverrfaglege tema våre her',
+    publicHealthTopic: 'Folkehelse og livsmestring',
+    democracyTopic: 'Demokrati og medborgarskap',
+    sustainableTopic: 'Bærekraftig utvikling',
   },
 };
 

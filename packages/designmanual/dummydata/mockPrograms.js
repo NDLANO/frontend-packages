@@ -113,7 +113,194 @@ export const programs = [
   { label: 'Naturbruk', id: 10, url: '#' },
   { label: 'Påbygg', id: 11, url: '#' },
   { label: 'Restaurant- og matfag', id: 12, url: '#' },
-  { label: 'Service og samferdsel', id: 13, url: '#' },
+  {
+    label: 'Salg, service og reiseliv (Service og samferdsel)',
+    id: 13,
+    url: '#',
+    grades: [
+      // Klassetrinn
+      {
+        name: 'Vg1',
+        categories: [
+          // Fag inndelt i kategorier
+          {
+            name: 'programfag',
+            subjects: [
+              {
+                label: 'Forretningsdrift',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Kultur og samhandling',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Markedsføring og innovasjon',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Yrkesfaglig fordypning',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+            ],
+          },
+          {
+            name: 'fellesfag',
+            subjects: [
+              {
+                label: 'Engelsk for yrkesfag',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Kroppsøving',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: '(Matematikk 1T-Y for salg, service og reiseliv)',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Matematikk 1P-Y for salg, service og reiseliv',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Naturfag for salg, service og reiseliv',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'Vg2',
+        categories: [
+          // Fag inndelt i kategorier
+          {
+            name: 'IKT-service programfag ',
+            subjects: [
+              {
+                label: 'Virksomhetsstøtte',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Bruker- og driftsstøtte',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Drift og vedlikehold',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+            ],
+          },
+          {
+            name: 'Reiseliv programfag ',
+            subjects: [
+              {
+                label: 'Etablering og drift',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Sal og marknadsføring',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Vertskapsrolla',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Yrkesfaglig fordypning',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+            ],
+          },
+          {
+            name: 'Salg, service og sikkerhet programfag ',
+            subjects: [
+              {
+                label: 'Markedsføring og salg',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Sikkerhet',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Økonomi og administrasjon',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+            ],
+          },
+          {
+            name: 'Fellesfag',
+            subjects: [
+              {
+                label: '06 Samfunnsfag',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: 'Kroppsøving',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: '06 Norsk for yrkesfag',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+              {
+                label: '06 Sør-samisk som førstespråk for yrkesfag',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
   { label: 'Studiespesialisering', id: 14, url: '#' },
   { label: 'Teknikk og industriell produksjon', id: 15, url: '#' },
 ];

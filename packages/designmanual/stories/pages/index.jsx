@@ -51,15 +51,26 @@ import ExplanationService from './ExplanationService';
 import FFFrontpage from './FFFrontpage';
 import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
+import ProgramPage from './ProgramPage';
 
-storiesOf('Re-design', module).add('Forside', () => (
-  <PageContainer background>
-    <Content>
-      <FrontpageReDesignExample />
-    </Content>
-    <FooterExample />
-  </PageContainer>
-));
+storiesOf('Re-design', module)
+  .add('Forside', () => (
+    <PageContainer background>
+      <Content>
+        <FrontpageReDesignExample />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Programside', () => (
+    <PageContainer backgroundWide>
+      <Content>
+        <MastheadWithTopicMenu />
+        <ProgramPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ));
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (

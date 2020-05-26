@@ -11,9 +11,19 @@
 
   &__media-wrapper {
     width: 100%;
-
+    &--wide {
+      @include mq(tablet) {
+          width: auto;
+        }
+      }
     & > * {
       width: 100%;
+    }
+  }
+
+  &--wide {
+    @include mq(tablet) {
+      display: flex;
     }
   }
 

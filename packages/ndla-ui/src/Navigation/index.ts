@@ -7,5 +7,6 @@
  */
 
 import NavigationBox from './NavigationBox';
+import NavigationHeading from './NavigationHeading';
 
-export default { NavigationBox };
+export { NavigationHeading, NavigationBox };

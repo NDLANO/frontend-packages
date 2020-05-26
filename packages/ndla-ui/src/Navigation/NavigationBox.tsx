@@ -3,7 +3,9 @@ import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 import { breakpoints, fonts, mq } from '@ndla/core';
 
-const StyledWrapper = styled.nav``;
+const StyledWrapper = styled.nav`
+  margin: 20px 0 60px;
+`;
 const StyledHeading = styled.h2`
   ${fonts.sizes('18px', '32px')};
   text-transform: uppercase;

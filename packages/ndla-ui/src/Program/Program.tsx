@@ -5,7 +5,7 @@ import Button from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
-import NavigationBox from '../NavigationBox/NavigationBox';
+import { NavigationHeading, NavigationBox } from '../Navigation';
 
 const StyledWrapper = styled.div`
   background-image: url(https://www.flowerglossary.com/wp-content/uploads/2019/12/lotus-flowers.png);
@@ -83,7 +83,7 @@ export const Program = ({ heading, grades }: Props) => {
       <OneColumn>
         <StyledContentWrapper>
           <LayoutItem layout="extend">
-            <StyledH1>{heading}</StyledH1>
+            <NavigationHeading>{heading}</NavigationHeading>
             <StyledMenu>
               {grades.map((item, index) => (
                 <Button

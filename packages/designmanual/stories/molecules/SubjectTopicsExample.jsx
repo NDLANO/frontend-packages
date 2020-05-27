@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { NavigationBox, SubjectFilter } from '@ndla/ui';
 import { subject, topics as topicsData } from '../../dummydata/mockPrograms';
 
-const SubjectTopicsExample = () => {
-  const [filterValues, setFilterValues] = useState([]);
+const SubjectTopicsExample = ({ selectedFilters, selectedMainTopic }) => {
+  const [filterValues, setFilterValues] = useState(selectedFilters);
 
   const filterTopics = () => {
     if (filterValues.length === 0) {
@@ -13,6 +14,9 @@ const SubjectTopicsExample = () => {
     const len = topicsData.length;
     for (let i = 0; i < len; i += 1) {
       const topic = topicsData[i];
+      if (topic.label === selectedMainTopic) {
+        topic.selected = true;
+      }
       const filterlen = filterValues.length;
       for (let j = 0; j < filterlen; j += 1) {
         const filter = filterValues[j];
@@ -37,6 +41,14 @@ const SubjectTopicsExample = () => {
       <NavigationBox items={filterTopics()} />
     </div>
   );
+};
+
+SubjectTopicsExample.propTypes = {
+  selectedFilters: PropTypes.array,
+  selectedMainTopic: PropTypes.string,
+};
+SubjectTopicsExample.defaultProps = {
+  selectedFilters: [],
 };
 
 export default SubjectTopicsExample;

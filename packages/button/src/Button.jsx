@@ -252,6 +252,10 @@ export const appearances = {
       transform: translateY(0) translateX(0);
     }
   `,
+  darker: css`
+    background-color: ${colors.brand.dark};
+    border-color: ${colors.brand.dark};
+  `,
   outline: css`
     ${outlineStyle};
   `,
@@ -415,6 +419,7 @@ export const ButtonStyles = p =>
   ${p.borderShape ? borderShapes[p.borderShape](p.size) : null}
   ${p.width ? width[p.width] : null}
   ${p.textAlign ? textAlign[p.textAlign] : null}
+  ${p.darker ? appearances['darker'] : null}
 `;
 
 export const StyledButton = styled('button')`
@@ -527,6 +532,7 @@ Button.propTypes = {
   borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
   width: PropTypes.oneOf(['auto', 'full']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),
+  darker: PropTypes.bool,
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
 import { NavigationHeading, NavigationBox } from '../Navigation';
@@ -19,22 +19,6 @@ const StyledContentWrapper = styled.div`
   background: #fff;
   margin-top: 230px;
   padding: 50px 0;
-`;
-
-const StyledH1 = styled.h1`
-  ${fonts.sizes('24px', '28px')}
-  margin: ${spacing.medium} 0 ${spacing.normal} 0;
-  font-weight: ${fonts.weight.bold};
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin: 0;
-    ${fonts.sizes('40px', '48px')};
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    margin: 0;
-    ${fonts.sizes('52px', '62px')};
-  }
 `;
 
 const StyledMenu = styled.div`

@@ -80,6 +80,18 @@ storiesOf('Re-design', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Hovedemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          selectedFilters={['Forretningsdrift']}
+          selectedMainTopic="Økonomi"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));
 
 storiesOf('Sidevisninger', module)

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
-import { breakpoints, fonts, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, mq } from '@ndla/core';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 60px;
@@ -31,7 +31,17 @@ const StyledListItem = styled.li`
   }
 `;
 const StyledButtonContent = styled.span`
+  display: flex;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+const StyledButtonContentText = styled.span``;
+const StyledButtonContentSelected = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: ${colors.white};
 `;
 
 export type ItemProps = {
@@ -62,11 +72,15 @@ export const NavigationBox = ({
           <SafeLinkButton
             to={item.url}
             lighter={colorMode === 'light'}
+            darker={item.selected}
             buttonSize="medium"
             borderShape="sharpened"
             width="full"
             textAlign="left">
-            <StyledButtonContent>{item.label}</StyledButtonContent>
+            <StyledButtonContent>
+              <StyledButtonContentText>{item.label}</StyledButtonContentText>
+              {item.selected && <StyledButtonContentSelected />}
+            </StyledButtonContent>
           </SafeLinkButton>
         </StyledListItem>
       ))}

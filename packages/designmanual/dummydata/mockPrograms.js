@@ -82,6 +82,32 @@ export const topics = [
     url: '#',
     description:
       'Lær å rekne ut pris på eit produkt, setje opp budsjett, føre enkle rekneskap og vurdere lønsemd.',
+    subTopics: [
+      {
+        label: 'Prissetjing',
+        url: '#',
+        description:
+          'Vi har tre prissetjingsmetodar: kostnadsbasert, marknadsbasert og konkurransebasert.',
+      },
+      {
+        label: 'Rekneskap',
+        url: '#',
+        description:
+          'Ein rekneskap viser eit oversyn over inntekter, kostnader, eigendelar og gjeld. Lær korleis du fører enkle rekneskap.',
+      },
+      {
+        label: 'Lønsemd',
+        url: '#',
+        description:
+          'For å vurdere lønsemda til ei bedrift utfører vi ein rekneskapsanalyse som gir oss oversyn over den økonomiske tilstanden og utviklinga i bedrifta.',
+      },
+      {
+        label: 'Budsjett',
+        url: '#',
+        description:
+          'Eit budsjett er eit oversyn over inntekter og utgifter for framtida. Lær korleis du set opp eit budsjett.',
+      },
+    ],
   },
   {
     label: 'Verdikjeda og berekraftig utvikling',

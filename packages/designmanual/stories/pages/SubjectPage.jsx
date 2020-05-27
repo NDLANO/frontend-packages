@@ -7,16 +7,19 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Image,
+  NavigationBox,
   NavigationHeading,
+  NavigationTopicAbout,
   OneColumn,
   SubjectAbout,
   SubjectCarousel,
 } from '@ndla/ui';
 
-import { subject } from '../../dummydata/mockPrograms';
+import { subject, topics } from '../../dummydata/mockPrograms';
 import SubjectTopicsExample from '../molecules/SubjectTopicsExample';
 import { contentCards } from '../../dummydata';
 
@@ -34,12 +37,38 @@ const subjectAbout = (label, description) => (
   />
 );
 
-export default () => {
+const selectedTopicData = topic => {
+  return topics.find(item => item.label === topic);
+};
+
+const SubjectPage = ({ selectedFilters, selectedMainTopic }) => {
+  let topicData = null;
+  if (selectedMainTopic) {
+    topicData = selectedTopicData(selectedMainTopic);
+  }
   return (
     <>
       <OneColumn>
         <NavigationHeading>{subject.label}</NavigationHeading>
-        <SubjectTopicsExample />
+        <SubjectTopicsExample
+          selectedFilters={selectedFilters}
+          selectedMainTopic={selectedMainTopic}
+        />
+        {topicData && (
+          <>
+            <NavigationTopicAbout
+              heading={topicData.label}
+              ingress={topicData.description}
+            />
+            {topicData.subTopics && (
+              <NavigationBox
+                colorMode="light"
+                heading="emner"
+                items={topicData.subTopics}
+              />
+            )}
+          </>
+        )}
       </OneColumn>
       <OneColumn wide>
         {subjectAbout(subject.description.heading, subject.description.text)}
@@ -53,3 +82,13 @@ export default () => {
     </>
   );
 };
+
+SubjectPage.propTypes = {
+  selectedFilters: PropTypes.array,
+  selectedMainTopic: PropTypes.string,
+};
+SubjectPage.defaultProps = {
+  selectedFilters: [],
+};
+
+export default SubjectPage;

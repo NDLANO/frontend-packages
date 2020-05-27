@@ -168,5 +168,9 @@ export {
 
 export { default as CreatedBy } from './CreatedBy';
 export { MessageBox } from './MessageBox';
-export { NavigationHeading, NavigationBox } from './Navigation';
+export {
+  NavigationHeading,
+  NavigationBox,
+  NavigationTopicAbout,
+} from './Navigation';
 export { default as Program } from './Program';

@@ -35,6 +35,7 @@ interface Props {
   borderShape?: 'normal' | 'rounded' | 'sharpened';
   width?: 'auto' | 'full';
   textAlign?: 'center' | 'left' | 'right';
+  darker?: boolean;
 }
 
 const SafeLinkButton: React.FunctionComponent<
@@ -52,6 +53,7 @@ const SafeLinkButton: React.FunctionComponent<
   borderShape,
   width,
   textAlign,
+  darker,
   ...rest
 }) => {
   const modifierStyles = getStyles({
@@ -70,6 +72,7 @@ const SafeLinkButton: React.FunctionComponent<
     borderShape,
     width,
     textAlign,
+    darker,
   };
   const styles = ButtonStyles(buttonStyleProps);
 

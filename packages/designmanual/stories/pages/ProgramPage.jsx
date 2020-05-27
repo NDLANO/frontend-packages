@@ -15,6 +15,10 @@ import { programs } from '../../dummydata/mockPrograms';
 export default () => {
   const exampleProgram = programs[11];
   return (
-    <Program heading={exampleProgram.label} grades={exampleProgram.grades} />
+    <Program
+      heading={exampleProgram.label}
+      grades={exampleProgram.grades}
+      image={exampleProgram.image}
+    />
   );
 };

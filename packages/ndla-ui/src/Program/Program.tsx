@@ -8,17 +8,32 @@ import LayoutItem, { OneColumn } from '../Layout';
 import { NavigationHeading, NavigationBox } from '../Navigation';
 
 const StyledWrapper = styled.div`
-  background-image: url(https://www.flowerglossary.com/wp-content/uploads/2019/12/lotus-flowers.png);
-  background-position: center top;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
 `;
 
-const StyledContentWrapper = styled.div`
+type StyledBackgroundProps = {
+  image?: string;
+};
+const StyledBackground = styled.div<StyledBackgroundProps>`
+  height: 160px;
+  ${(props: StyledBackgroundProps) =>
+    props.image &&
+    `
+    background-image: url(${props.image});
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 400px;
+  `}
+`;
+
+const StyledLayoutWrapper = styled.div`
   background: #fff;
-  margin-top: 230px;
-  padding: 50px 0;
+  margin-top: -170px;
+`;
+
+const StyledContentWrapper = styled.div`
+  padding-top: 1px;
 `;
 
 const StyledMenu = styled.div`
@@ -39,6 +54,7 @@ const StyledMenuItem = styled.span`
 
 type Props = {
   heading?: string;
+  image?: string;
   grades: [
     {
       name: string;
@@ -57,38 +73,41 @@ type Props = {
   ];
 };
 
-export const Program = ({ heading, grades }: Props) => {
+export const Program = ({ heading, image, grades }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(0);
 
   const selectedGrade = grades[showGradeIndex];
 
   return (
     <StyledWrapper>
+      <StyledBackground image={image} />
       <OneColumn>
-        <StyledContentWrapper>
+        <StyledLayoutWrapper>
           <LayoutItem layout="extend">
-            <NavigationHeading>{heading}</NavigationHeading>
-            <StyledMenu>
-              {grades.map((item, index) => (
-                <Button
-                  key={item.name}
-                  onClick={() => setShowGradeIndex(index)}
-                  lighter={showGradeIndex !== index}
-                  size="normal"
-                  borderShape="rounded">
-                  <StyledMenuItem>{item.name}</StyledMenuItem>
-                </Button>
+            <StyledContentWrapper>
+              <NavigationHeading>{heading}</NavigationHeading>
+              <StyledMenu>
+                {grades.map((item, index) => (
+                  <Button
+                    key={item.name}
+                    onClick={() => setShowGradeIndex(index)}
+                    lighter={showGradeIndex !== index}
+                    size="normal"
+                    borderShape="rounded">
+                    <StyledMenuItem>{item.name}</StyledMenuItem>
+                  </Button>
+                ))}
+              </StyledMenu>
+              {selectedGrade.categories.map(category => (
+                <NavigationBox
+                  key={category.name}
+                  heading={category.name}
+                  items={category.subjects}
+                />
               ))}
-            </StyledMenu>
-            {selectedGrade.categories.map(category => (
-              <NavigationBox
-                key={category.name}
-                heading={category.name}
-                items={category.subjects}
-              />
-            ))}
+            </StyledContentWrapper>
           </LayoutItem>
-        </StyledContentWrapper>
+        </StyledLayoutWrapper>
       </OneColumn>
     </StyledWrapper>
   );

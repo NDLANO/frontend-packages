@@ -293,6 +293,7 @@ export const programs = [
     label: 'Salg, service og reiseliv (Service og samferdsel)',
     id: 13,
     url: '#',
+    image: 'https://api.ff.ndla.no/image-api/raw/378616471.jpg?width=10720',
     grades: [
       // Klassetrinn
       {

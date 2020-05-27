@@ -255,6 +255,7 @@ export const appearances = {
   darker: css`
     background-color: ${colors.brand.dark};
     border-color: ${colors.brand.dark};
+    color: ${colors.background.default};
   `,
   outline: css`
     ${outlineStyle};

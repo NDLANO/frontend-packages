@@ -4,7 +4,9 @@ import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 const StyledWrapper = styled.section``;
 
-const StyledIngress = styled.p``;
+const StyledIngress = styled.p`
+  max-width: 612px;
+`;
 
 const StyledH1 = styled.h1`
   ${fonts.sizes('24px', '28px')}

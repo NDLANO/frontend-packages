@@ -22,6 +22,7 @@ import {
 import { subject, topics } from '../../dummydata/mockPrograms';
 import SubjectTopicsExample from '../molecules/SubjectTopicsExample';
 import { contentCards } from '../../dummydata';
+import Resources from '../molecules/resources';
 
 const subjectAbout = (label, description) => (
   <SubjectAbout
@@ -41,10 +42,23 @@ const selectedTopicData = topic => {
   return topics.find(item => item.label === topic);
 };
 
-const SubjectPage = ({ selectedFilters, selectedMainTopic }) => {
-  let topicData = null;
+const SubjectPage = ({
+  selectedFilters,
+  selectedMainTopic,
+  selectedSubTopic,
+}) => {
+  let topicData,
+    subTopicData = null;
   if (selectedMainTopic) {
     topicData = selectedTopicData(selectedMainTopic);
+    if (selectedSubTopic) {
+      topicData.subTopics.forEach(item => {
+        if (item.label === selectedSubTopic) {
+          item.selected = true;
+          subTopicData = item;
+        }
+      });
+    }
   }
   return (
     <>
@@ -67,6 +81,15 @@ const SubjectPage = ({ selectedFilters, selectedMainTopic }) => {
                 items={topicData.subTopics}
               />
             )}
+            {subTopicData && (
+              <>
+                <NavigationTopicAbout
+                  heading={subTopicData.label}
+                  ingress={subTopicData.description}
+                />
+                <Resources />
+              </>
+            )}
           </>
         )}
       </OneColumn>
@@ -86,6 +109,7 @@ const SubjectPage = ({ selectedFilters, selectedMainTopic }) => {
 SubjectPage.propTypes = {
   selectedFilters: PropTypes.array,
   selectedMainTopic: PropTypes.string,
+  selectedSubTopic: PropTypes.string,
 };
 SubjectPage.defaultProps = {
   selectedFilters: [],

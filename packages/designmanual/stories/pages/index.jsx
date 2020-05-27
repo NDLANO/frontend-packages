@@ -92,6 +92,19 @@ storiesOf('Re-design', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Underemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          selectedFilters={['Forretningsdrift']}
+          selectedMainTopic="Økonomi"
+          selectedSubTopic="Lønsemd"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));
 
 storiesOf('Sidevisninger', module)

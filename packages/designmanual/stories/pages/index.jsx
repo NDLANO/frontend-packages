@@ -52,10 +52,11 @@ import FFFrontpage from './FFFrontpage';
 import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
 import ProgramPage from './ProgramPage';
+import SubjectPage from './SubjectPage';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
-    <PageContainer background>
+    <PageContainer>
       <Content>
         <FrontpageReDesignExample />
       </Content>
@@ -63,10 +64,19 @@ storiesOf('Re-design', module)
     </PageContainer>
   ))
   .add('Programside', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
         <ProgramPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Fagside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage />
       </Content>
       <FooterExample />
     </PageContainer>

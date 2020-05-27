@@ -1,3 +1,153 @@
+export const subject = {
+  label: 'Salg, service og reiseliv Vg1',
+  description: {
+    heading: 'Om salg, service og reiseliv',
+    text: 'Beskrivelse av faget',
+    image: '',
+  },
+  filters: [
+    {
+      title: 'Forretningsdrift',
+      value: 'Forretningsdrift',
+      url: '#',
+      id: 'urn:subject:12', // Id til faget
+    },
+    {
+      title: 'Kultur og samhandling',
+      value: 'Kultur og samhandling',
+      url: '#',
+      id: 'urn:subject:12', // Id til faget
+    },
+    {
+      title: 'Markedsføring og innovasjon',
+      value: 'Markedsføring og innovasjon',
+      url: '#',
+      id: 'urn:subject:12', // Id til faget
+    },
+    {
+      title: 'Yrkesfaglig fordypning',
+      value: 'Yrkesfaglig fordypning',
+      url: '#',
+      id: 'urn:subject:12', // Id til faget
+    },
+  ],
+};
+
+export const topics = [
+  {
+    label: 'Praksis i bedrift',
+    tags: ['Yrkesfaglig fordypning'],
+    url: '#',
+    description:
+      'Det er nyttig å prøve ut teorien du lærer på skulen, i praksis. Du kan vere utplassert innan vektarfaget, kontor og resepsjon, sal eller reiseliv.',
+  },
+  {
+    label: 'Tverrfaglege oppgåver',
+    tags: ['Yrkesfaglig fordypning'],
+    url: '#',
+    description:
+      'Tverrfaglege oppgåver inneheld læreplanmål frå alle programfaga: forretningsdrift, marknadsføring og innovasjon og kultur og samhandling.',
+  },
+  {
+    label: 'Å starte ungdomsbedrift',
+    tags: ['Yrkesfaglig fordypning'],
+    url: '#',
+    description:
+      'Alle elevar i vidaregåande skule kan starte ei ungdomsbedrift i samarbeid med lærar.',
+  },
+  {
+    label: 'Å starte eiga bedrift',
+    tags: ['Yrkesfaglig fordypning'],
+    url: '#',
+    description:
+      'Tips og råd til deg som har lyst til å starte di eiga bedrift.',
+  },
+  {
+    label: 'Lover og reglar',
+    tags: ['Forretningsdrift'],
+    url: '#',
+    description:
+      'Det er mange lover og reglar som regulerer drift av verksemder innan servicenæringa. Alle lovene finn vi digitalt på Lovdata.',
+  },
+  {
+    label: 'Organisering',
+    tags: ['Forretningsdrift'],
+    url: '#',
+    description:
+      'Alle verksemder treng ei tydeleg ansvarsfordeling der dei ulike rollene er klart definerte. Organisasjonskart blir utarbeidde for å presentere strukturen.',
+  },
+  {
+    label: 'Økonomi',
+    tags: ['Forretningsdrift'],
+    url: '#',
+    description:
+      'Lær å rekne ut pris på eit produkt, setje opp budsjett, føre enkle rekneskap og vurdere lønsemd.',
+  },
+  {
+    label: 'Verdikjeda og berekraftig utvikling',
+    tags: ['Forretningsdrift'],
+    url: '#',
+    description:
+      'Prosessen frå råvare til endeleg produkt blir kalla verdikjeda. For å fremje kvalitet og berekraftig utvikling må vi analysere dei ulike ledda.',
+  },
+  {
+    label: 'Trygging',
+    tags: ['Forretningsdrift'],
+    url: '#',
+    description:
+      'Vi kan definere trygging som evna til å ha kontroll med risiko. Dette emnet handlar om risikovurdering, tryggingstiltak og beredskapsplanar.',
+  },
+  {
+    label: 'HMS',
+    tags: ['Forretningsdrift'],
+    url: '#',
+    description:
+      'Arbeidsmiljølova og forskrifter krev at det blir arbeidd systematisk for å tryggje helse, miljø og sikkerheit/tryggleik for arbeidstakarane, HMS.',
+  },
+  {
+    label: 'Kommunikasjon og kundebehandling',
+    tags: ['Kultur og samhandling'],
+    url: '#',
+    description:
+      'Kommunikasjon og kundebehandling omfattar tema som kulturforståing, vertskapsrolla, nettverksbygging, konflikthandtering og digital kommunikasjon.',
+  },
+  {
+    label: 'Etikk og berekraft',
+    tags: ['Kultur og samhandling'],
+    url: '#',
+    description:
+      'Forbrukarane forventar at bedrifter skal handle både etisk og berekraftig. Korleis bedrifta gjer dette, blir ofte omtalt i verdigrunnlaget til bedrifta.',
+  },
+  {
+    label: 'Partane i arbeidslivet',
+    tags: ['Kultur og samhandling'],
+    url: '#',
+    description:
+      'Korleis samarbeider partane i arbeidslivet for å utvikle arbeidslivet? I arbeidslivet har både arbeidsgivarar og arbeidstakarar sine eigne organisasjonar.',
+  },
+  {
+    label: 'Innovasjon',
+    tags: ['Markedsføring og innovasjon'],
+    url: '#',
+    description:
+      'Nytenking, kreativitet og berekraft er viktig når du utarbeider ein forretningsidé.',
+  },
+  {
+    label: 'Marknadsføring og sal',
+    tags: ['Markedsføring og innovasjon'],
+    url: '#',
+    description:
+      'Ein medarbeidar innan sal og marknadsføring treng mellom anna kunnskap om forbrukaråtferd, marknadsføringsstrategiar, marknadsplanar og regelverk.',
+  },
+  {
+    label: 'Administrasjon',
+    tags: ['Markedsføring og innovasjon'],
+    url: '#',
+    description:
+      'På eit kontor er det mange administrative oppgåver som består i å yte service internt og eksternt.',
+  },
+];
+
 export const programs = [
   {
     label: 'Bygg- og anleggsteknikk',

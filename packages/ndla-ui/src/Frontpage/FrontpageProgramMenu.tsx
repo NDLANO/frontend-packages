@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
 import { breakpoints, mq } from '@ndla/core';
-import NavigationBox, { ItemProps } from '../NavigationBox/NavigationBox';
+import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
 import FrontpageAllSubjects, { subjectsProps } from './FrontpageAllSubjects';
 
 const StyledWrapper = styled.div`

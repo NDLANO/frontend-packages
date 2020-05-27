@@ -143,16 +143,25 @@ export const roundedStyle = css`
 
 export const sizes = {
   normal: css`
-    padding: 5px ${spacing.small};
+    display: inline-flex;
+    padding-left: ${spacing.small};
+    padding-right: ${spacing.small};
     ${fonts.sizes('16px')};
+    min-height: 40px;
   `,
   medium: css`
-    padding: 10px 16px;
-    ${fonts.sizes('16px', 1.5)};
+    display: inline-flex;
+    padding-left: 16px;
+    padding-right: 16px;
+    ${fonts.sizes('16px', '18px')};
+    min-height: 48px;
   `,
   large: css`
-    padding: ${spacing.small} ${spacing.normal};
-    ${fonts.sizes('18px', 1.25)};
+    display: inline-flex;
+    padding-left: ${spacing.normal};
+    padding-right: ${spacing.normal};
+    ${fonts.sizes('18px', '20px')};
+    min-height: 52px;
   `,
 };
 
@@ -178,7 +187,8 @@ export const borderShapes = {
   `,
   sharpened: size => css`
     border-radius: 2px;
-    ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null}
+    font-weight: ${fonts.weight.semibold};
+    ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null};
   `,
 };
 

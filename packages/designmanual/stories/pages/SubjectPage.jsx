@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -18,10 +18,10 @@ import {
   OneColumn,
   SubjectAbout,
   SubjectCarousel,
+  SubjectFilter,
 } from '@ndla/ui';
 
-import { subject, topics } from '../../dummydata/mockPrograms';
-import SubjectTopicsExample from '../molecules/SubjectTopicsExample';
+import { subject, topics as topicsData } from '../../dummydata/mockPrograms';
 import { contentCards } from '../../dummydata';
 import Resources from '../molecules/resources';
 
@@ -40,7 +40,7 @@ const subjectAbout = (label, description) => (
 );
 
 const selectedTopicData = topic => {
-  return topics.find(item => item.label === topic);
+  return topicsData.find(item => item.label === topic);
 };
 
 const SubjectPage = ({
@@ -48,28 +48,100 @@ const SubjectPage = ({
   selectedMainTopic,
   selectedSubTopic,
 }) => {
-  let topicData,
-    subTopicData = null;
-  if (selectedMainTopic) {
-    topicData = selectedTopicData(selectedMainTopic);
-    if (selectedSubTopic) {
-      topicData.subTopics.forEach(item => {
-        if (item.label === selectedSubTopic) {
+  const [filterValues, setFilterValues] = useState(selectedFilters);
+  const [mainTopic, setMainTopic] = useState(selectedMainTopic);
+  const [subTopic, setSubTopic] = useState(selectedSubTopic);
+  const [mainTopics, setMainTopics] = useState([]);
+  const [topicData, setTopicData] = useState(null);
+  const [subTopicData, setSubTopicData] = useState(null);
+
+  const mainTopicRef = createRef();
+  const subTopicRef = createRef();
+
+  useEffect(() => {
+    if (mainTopic) {
+      const topicDataItems = selectedTopicData(mainTopic);
+
+      topicDataItems.subTopics.forEach(item => {
+        if (item.label === subTopic) {
           item.selected = true;
-          subTopicData = item;
+          setSubTopicData(item);
+        } else {
+          item.selected = false;
         }
       });
+      if (!subTopic) {
+        setSubTopicData(null);
+      }
+      setTopicData(topicDataItems);
     }
-  }
+  }, [mainTopic, subTopic]);
+
+  useEffect(() => {
+    const topics = [];
+    const len = topicsData.length;
+    for (let i = 0; i < len; i += 1) {
+      const topic = topicsData[i];
+      if (topic.label === mainTopic) {
+        topic.selected = true;
+      }
+
+      const filterlen = filterValues.length;
+      if (filterlen) {
+        for (let j = 0; j < filterlen; j += 1) {
+          const filter = filterValues[j];
+          if (topic.tags.indexOf(filter) > -1) {
+            topics.push(topic);
+          }
+        }
+      } else {
+        topics.push(topic);
+      }
+    }
+    setMainTopics(topics);
+  }, [filterValues, mainTopic]);
+
+  const onClickMainTopic = e => {
+    e.preventDefault();
+    setMainTopic('Økonomi');
+    setSubTopic('');
+    window.scrollTo({
+      top:
+        mainTopicRef.current.getBoundingClientRect().bottom +
+        window.scrollY -
+        100,
+      behavior: 'smooth',
+    });
+  };
+
+  const onClickSubTopic = e => {
+    e.preventDefault();
+    window.scrollTo({
+      top:
+        subTopicRef.current.getBoundingClientRect().bottom +
+        window.scrollY -
+        100,
+      behavior: 'smooth',
+    });
+    setSubTopic('Lønsemd');
+  };
+
   return (
     <>
       <OneColumn>
         <LayoutItem layout="extend">
           <NavigationHeading>{subject.label}</NavigationHeading>
-          <SubjectTopicsExample
-            selectedFilters={selectedFilters}
-            selectedMainTopic={selectedMainTopic}
-          />
+          <div ref={mainTopicRef}>
+            <SubjectFilter
+              label="Filter"
+              options={subject.filters}
+              values={filterValues}
+              onChange={newValues => {
+                setFilterValues(newValues);
+              }}
+            />
+            <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
+          </div>
           {topicData && (
             <>
               <NavigationTopicAbout
@@ -77,11 +149,14 @@ const SubjectPage = ({
                 ingress={topicData.description}
               />
               {topicData.subTopics && (
-                <NavigationBox
-                  colorMode="light"
-                  heading="emner"
-                  items={topicData.subTopics}
-                />
+                <div ref={subTopicRef}>
+                  <NavigationBox
+                    colorMode="light"
+                    heading="emner"
+                    items={topicData.subTopics}
+                    onClick={onClickSubTopic}
+                  />
+                </div>
               )}
               {subTopicData && (
                 <>

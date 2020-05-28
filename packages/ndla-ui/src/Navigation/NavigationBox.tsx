@@ -56,12 +56,14 @@ type Props = {
   heading?: string;
   colorMode?: 'dark' | 'light';
   items: [ItemProps];
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 export const NavigationBox = ({
   heading,
   colorMode = 'dark',
   items,
+  onClick,
 }: Props) => (
   <StyledWrapper>
     {heading && (
@@ -79,7 +81,8 @@ export const NavigationBox = ({
             buttonSize="medium"
             borderShape="sharpened"
             width="full"
-            textAlign="left">
+            textAlign="left"
+            onClick={onClick}>
             <StyledButtonContent>
               <StyledButtonContentText>{item.label}</StyledButtonContentText>
               {item.selected && <StyledButtonContentSelected />}

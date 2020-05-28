@@ -28,6 +28,9 @@ const StyledListItem = styled.li`
   margin-bottom: 2px;
   ${mq.range({ from: breakpoints.tablet })} {
     margin-bottom: 20px;
+    & > * {
+      margin-bottom: 1px;
+    }
   }
 `;
 const StyledButtonContent = styled.span`

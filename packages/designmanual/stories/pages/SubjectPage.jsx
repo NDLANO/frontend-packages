@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 
 import {
   Image,
+  LayoutItem,
   NavigationBox,
   NavigationHeading,
   NavigationTopicAbout,
@@ -63,35 +64,37 @@ const SubjectPage = ({
   return (
     <>
       <OneColumn>
-        <NavigationHeading>{subject.label}</NavigationHeading>
-        <SubjectTopicsExample
-          selectedFilters={selectedFilters}
-          selectedMainTopic={selectedMainTopic}
-        />
-        {topicData && (
-          <>
-            <NavigationTopicAbout
-              heading={topicData.label}
-              ingress={topicData.description}
-            />
-            {topicData.subTopics && (
-              <NavigationBox
-                colorMode="light"
-                heading="emner"
-                items={topicData.subTopics}
+        <LayoutItem layout="extend">
+          <NavigationHeading>{subject.label}</NavigationHeading>
+          <SubjectTopicsExample
+            selectedFilters={selectedFilters}
+            selectedMainTopic={selectedMainTopic}
+          />
+          {topicData && (
+            <>
+              <NavigationTopicAbout
+                heading={topicData.label}
+                ingress={topicData.description}
               />
-            )}
-            {subTopicData && (
-              <>
-                <NavigationTopicAbout
-                  heading={subTopicData.label}
-                  ingress={subTopicData.description}
+              {topicData.subTopics && (
+                <NavigationBox
+                  colorMode="light"
+                  heading="emner"
+                  items={topicData.subTopics}
                 />
-                <Resources />
-              </>
-            )}
-          </>
-        )}
+              )}
+              {subTopicData && (
+                <>
+                  <NavigationTopicAbout
+                    heading={subTopicData.label}
+                    ingress={subTopicData.description}
+                  />
+                  <Resources />
+                </>
+              )}
+            </>
+          )}
+        </LayoutItem>
       </OneColumn>
       <OneColumn wide>
         {subjectAbout(subject.description.heading, subject.description.text)}

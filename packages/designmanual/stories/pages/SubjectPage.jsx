@@ -19,9 +19,15 @@ import {
   SubjectAbout,
   SubjectCarousel,
   SubjectFilter,
+  BreadCrumblist,
 } from '@ndla/ui';
 
-import { subject, topics as topicsData } from '../../dummydata/mockPrograms';
+import {
+  subject,
+  topics as topicsData,
+  programs,
+} from '../../dummydata/mockPrograms';
+
 import { contentCards } from '../../dummydata';
 import Resources from '../molecules/resources';
 
@@ -54,15 +60,36 @@ const SubjectPage = ({
   const [mainTopics, setMainTopics] = useState([]);
   const [topicData, setTopicData] = useState(null);
   const [subTopicData, setSubTopicData] = useState(null);
+  const [currentLevel, setCurrentLevel] = useState('Subject'); // default to subject
 
   const mainTopicRef = createRef();
   const subTopicRef = createRef();
+
+  const breadcrumbItems = [
+    { ...programs[11], typename: 'Subjecttype' },
+    { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
+  ];
+
+  if (topicData) {
+    breadcrumbItems.push({
+      ...topicData,
+      typename: 'Topic',
+      isCurrent: currentLevel === 'Topic',
+    });
+  }
+  if (subTopicData) {
+    breadcrumbItems.push({
+      ...subTopicData,
+      typename: 'Subtopic',
+      isCurrent: currentLevel === 'Subtopic',
+    });
+  }
 
   useEffect(() => {
     if (mainTopic) {
       const topicDataItems = selectedTopicData(mainTopic);
 
-      if (topicDataItems.subTopics) {
+      if (topicDataItems && topicDataItems.subTopics) {
         topicDataItems.subTopics.forEach(item => {
           if (item.label === subTopic) {
             item.selected = true;
@@ -103,6 +130,7 @@ const SubjectPage = ({
     const topic = e.currentTarget.textContent;
     setMainTopic(topic);
     setSubTopic('');
+    setCurrentLevel('Topic');
     window.scrollTo({
       top:
         mainTopicRef.current.getBoundingClientRect().bottom +
@@ -123,12 +151,59 @@ const SubjectPage = ({
       behavior: 'smooth',
     });
     setSubTopic(subTopic);
+    setCurrentLevel('Subtopic');
+  };
+
+  const handleNav = (e, item) => {
+    const { typename } = item;
+    switch (typename) {
+      case 'Subjecttype':
+        e.preventDefault();
+        window.scrollTo({
+          top: 50,
+          behavior: 'smooth',
+        });
+        setCurrentLevel(typename);
+        break;
+      case 'Subject':
+        e.preventDefault();
+        window.scrollTo({
+          top: 50,
+          behavior: 'smooth',
+        });
+        setCurrentLevel(typename);
+        break;
+      case 'Topic':
+        e.preventDefault();
+        window.scrollTo({
+          top:
+            mainTopicRef.current.getBoundingClientRect().bottom +
+            window.scrollY -
+            100,
+          behavior: 'smooth',
+        });
+        setCurrentLevel(typename);
+        break;
+      case 'Subtopic':
+        e.preventDefault();
+        window.scrollTo({
+          top:
+            subTopicRef.current.getBoundingClientRect().bottom +
+            window.scrollY -
+            100,
+          behavior: 'smooth',
+        });
+        setCurrentLevel(typename);
+        break;
+      default: // do nothing, redirect??
+    }
   };
 
   return (
     <>
       <OneColumn>
         <LayoutItem layout="extend">
+          <BreadCrumblist items={breadcrumbItems} onNav={handleNav} />
           <NavigationHeading>{subject.label}</NavigationHeading>
           <div ref={mainTopicRef}>
             <SubjectFilter

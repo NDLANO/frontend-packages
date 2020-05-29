@@ -1,5 +1,6 @@
 export const subject = {
   label: 'Salg, service og reiseliv Vg1',
+  url: '#',
   description: {
     heading: 'Om salg, service og reiseliv',
     text: 'Beskrivelse av faget',

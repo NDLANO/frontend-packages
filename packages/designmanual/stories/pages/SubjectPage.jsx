@@ -17,6 +17,7 @@ import {
   NavigationTopicAbout,
   OneColumn,
   SubjectAbout,
+  SubjectBanner,
   SubjectCarousel,
   SubjectFilter,
   BreadCrumblist,
@@ -30,6 +31,7 @@ import {
 
 import { contentCards } from '../../dummydata';
 import Resources from '../molecules/resources';
+import exampleBackground from '../../images/banners/Service-og-samferdsel-black.svg';
 
 const subjectAbout = (label, description) => (
   <SubjectAbout
@@ -199,6 +201,8 @@ const SubjectPage = ({
     }
   };
 
+  const moveBannerUp = !subTopicData;
+
   return (
     <>
       <OneColumn>
@@ -245,6 +249,10 @@ const SubjectPage = ({
           )}
         </LayoutItem>
       </OneColumn>
+      <SubjectBanner
+        image={exampleBackground}
+        negativeTopMargin={moveBannerUp}
+      />
       <OneColumn wide>
         {subjectAbout(subject.description.heading, subject.description.text)}
       </OneColumn>

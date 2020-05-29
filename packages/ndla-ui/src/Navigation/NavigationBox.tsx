@@ -28,9 +28,9 @@ const StyledListItem = styled.li`
   margin-bottom: 2px;
   ${mq.range({ from: breakpoints.tablet })} {
     margin-bottom: 20px;
-    & > * {
-      margin-bottom: 1px;
-    }
+  }
+  & > * {
+    margin-bottom: 1px;
   }
 `;
 const StyledButtonContent = styled.span`
@@ -45,6 +45,7 @@ const StyledButtonContentSelected = styled.span`
   height: 10px;
   border-radius: 50%;
   background: ${colors.white};
+  flex-shrink: 0;
 `;
 
 export type ItemProps = {

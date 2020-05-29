@@ -62,14 +62,16 @@ const SubjectPage = ({
     if (mainTopic) {
       const topicDataItems = selectedTopicData(mainTopic);
 
-      topicDataItems.subTopics.forEach(item => {
-        if (item.label === subTopic) {
-          item.selected = true;
-          setSubTopicData(item);
-        } else {
-          item.selected = false;
-        }
-      });
+      if (topicDataItems.subTopics) {
+        topicDataItems.subTopics.forEach(item => {
+          if (item.label === subTopic) {
+            item.selected = true;
+            setSubTopicData(item);
+          } else {
+            item.selected = false;
+          }
+        });
+      }
       if (!subTopic) {
         setSubTopicData(null);
       }
@@ -79,31 +81,31 @@ const SubjectPage = ({
 
   useEffect(() => {
     const topics = [];
-    const len = topicsData.length;
-    for (let i = 0; i < len; i += 1) {
-      const topic = topicsData[i];
+
+    topicsData.forEach(topic => {
       if (topic.label === mainTopic) {
         topic.selected = true;
+      } else {
+        topic.selected = false;
       }
 
-      const filterlen = filterValues.length;
-      if (filterlen) {
-        for (let j = 0; j < filterlen; j += 1) {
-          const filter = filterValues[j];
+      if (filterValues.length) {
+        filterValues.forEach(filter => {
           if (topic.tags.indexOf(filter) > -1) {
             topics.push(topic);
           }
-        }
+        });
       } else {
         topics.push(topic);
       }
-    }
+    });
     setMainTopics(topics);
   }, [filterValues, mainTopic]);
 
   const onClickMainTopic = e => {
     e.preventDefault();
-    setMainTopic('Økonomi');
+    const topic = e.currentTarget.textContent;
+    setMainTopic(topic);
     setSubTopic('');
     window.scrollTo({
       top:
@@ -116,6 +118,7 @@ const SubjectPage = ({
 
   const onClickSubTopic = e => {
     e.preventDefault();
+    const subTopic = e.currentTarget.textContent;
     window.scrollTo({
       top:
         subTopicRef.current.getBoundingClientRect().bottom +
@@ -123,7 +126,7 @@ const SubjectPage = ({
         100,
       behavior: 'smooth',
     });
-    setSubTopic('Lønsemd');
+    setSubTopic(subTopic);
   };
 
   return (

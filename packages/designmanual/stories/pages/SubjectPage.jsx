@@ -83,11 +83,7 @@ const SubjectPage = ({
     const topics = [];
 
     topicsData.forEach(topic => {
-      if (topic.label === mainTopic) {
-        topic.selected = true;
-      } else {
-        topic.selected = false;
-      }
+      topic.selected = topic.label === mainTopic;
 
       if (filterValues.length) {
         filterValues.forEach(filter => {

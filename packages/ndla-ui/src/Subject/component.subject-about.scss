@@ -22,8 +22,10 @@
   }
 
   &--wide {
+    margin: 40px 0;
     @include mq(tablet) {
       display: flex;
+      margin: 80px 0;
     }
   }
 

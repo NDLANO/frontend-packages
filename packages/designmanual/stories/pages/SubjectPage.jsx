@@ -17,6 +17,7 @@ import {
   NavigationTopicAbout,
   OneColumn,
   SubjectAbout,
+  SubjectBanner,
   SubjectCarousel,
   SubjectFilter,
 } from '@ndla/ui';
@@ -24,6 +25,7 @@ import {
 import { subject, topics as topicsData } from '../../dummydata/mockPrograms';
 import { contentCards } from '../../dummydata';
 import Resources from '../molecules/resources';
+import exampleBackground from '../../images/banners/Service-og-samferdsel-black.svg';
 
 const subjectAbout = (label, description) => (
   <SubjectAbout
@@ -170,6 +172,7 @@ const SubjectPage = ({
           )}
         </LayoutItem>
       </OneColumn>
+      <SubjectBanner image={exampleBackground} />
       <OneColumn wide>
         {subjectAbout(subject.description.heading, subject.description.text)}
       </OneColumn>

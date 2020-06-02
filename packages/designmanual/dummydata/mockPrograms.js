@@ -81,6 +81,7 @@ export const topics = [
     label: 'Økonomi',
     tags: ['Forretningsdrift'],
     url: '#',
+    id: 22665,
     description:
       'Lær å rekne ut pris på eit produkt, setje opp budsjett, føre enkle rekneskap og vurdere lønsemd.',
     subTopics: [
@@ -304,6 +305,12 @@ export const programs = [
           {
             name: 'programfag',
             subjects: [
+              {
+                label: 'Salg, service og reiseliv Vg1',
+                url: '#',
+                id: 'urn:subject:12', // Id til faget
+                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
+              },
               {
                 label: 'Forretningsdrift',
                 url: '#',

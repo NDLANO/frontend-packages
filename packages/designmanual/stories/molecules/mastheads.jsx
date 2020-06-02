@@ -30,7 +30,6 @@ import {
   contentTypeResults,
   dummyLanguageOptions,
 } from '../../dummydata';
-import { BreadcrumbBlock } from './breadcrumbs';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 
@@ -217,9 +216,6 @@ class MastheadWithTopicMenu extends Component {
               );
             }}
           </Modal>
-          <DisplayOnPageYOffset yOffsetMin={150}>
-            <BreadcrumbBlock />
-          </DisplayOnPageYOffset>
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, fonts, mq } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
 import { NavigationHeading, NavigationBox } from '../Navigation';
@@ -31,9 +31,13 @@ const StyledBackground = styled.div<StyledBackgroundProps>`
     
     ${mq.range({ until: breakpoints.tablet })} {
       height: 160px;
+      margin: ${spacing.normal} ${spacing.normal} 0;
+      width: calc(100% - ${spacing.large});
     }
     ${mq.range({ until: breakpoints.mobileWide })} {
       height: 128px;
+      margin: 20px 20px 0;
+      width: calc(100% - 40px);
     }
   `}
 `;

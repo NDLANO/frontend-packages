@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 const StyledH1 = styled.h1`
-  ${fonts.sizes('24px', '28px')}
+  ${fonts.sizes('24px', '28px')};
   margin: ${spacing.medium} 0 ${spacing.normal} 0;
   font-weight: ${fonts.weight.bold};
 

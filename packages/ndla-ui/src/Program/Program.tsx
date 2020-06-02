@@ -17,19 +17,33 @@ type StyledBackgroundProps = {
 };
 const StyledBackground = styled.div<StyledBackgroundProps>`
   height: 160px;
+  max-width: 1105px;
+  width: 100%;
+  margin: 0 auto;
   ${(props: StyledBackgroundProps) =>
     props.image &&
     `
     background-image: url(${props.image});
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     height: 400px;
+    
+    ${mq.range({ until: breakpoints.tablet })} {
+      height: 160px;
+    }
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      height: 128px;
+    }
   `}
 `;
 
 const StyledLayoutWrapper = styled.div`
   background: #fff;
   margin-top: -170px;
+  ${mq.range({ until: breakpoints.tablet })} {
+    margin-top: 0;
+  }
 `;
 
 const StyledContentWrapper = styled.div`

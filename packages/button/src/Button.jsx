@@ -144,6 +144,7 @@ export const roundedStyle = css`
 export const sizes = {
   normal: css`
     display: inline-flex;
+    align-items: center;
     padding-left: ${spacing.small};
     padding-right: ${spacing.small};
     ${fonts.sizes('16px')};
@@ -151,6 +152,7 @@ export const sizes = {
   `,
   medium: css`
     display: inline-flex;
+    align-items: center;
     padding-left: 16px;
     padding-right: 16px;
     ${fonts.sizes('16px', '18px')};
@@ -158,6 +160,7 @@ export const sizes = {
   `,
   large: css`
     display: inline-flex;
+    align-items: center;
     padding-left: ${spacing.normal};
     padding-right: ${spacing.normal};
     ${fonts.sizes('18px', '20px')};

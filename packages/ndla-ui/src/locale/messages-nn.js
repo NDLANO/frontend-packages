@@ -669,8 +669,8 @@ const messages = {
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfagleg tema',
     text:
-      'Dei tre tverrfaglege tema i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
-    linkText: 'Få oversikta over dei tverrfaglege temaa våre her',
+      'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    linkText: 'Få oversikta over tverrfaglege tema på NDLA.no',
     publicHealthTopic: 'Folkehelse og livsmeistring',
     democracyTopic: 'Demokrati og medborgarskap',
     sustainableTopic: 'Bærekraftig utvikling',

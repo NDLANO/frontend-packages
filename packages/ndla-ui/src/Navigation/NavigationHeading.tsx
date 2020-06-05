@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq } from '@ndla/core';
 
 const StyledH1 = styled.h1`
   ${fonts.sizes('24px', '28px')};
-  margin: ${spacing.medium} 0 ${spacing.normal} 0;
+  margin: 30px 0 20px 0;
   font-weight: ${fonts.weight.bold};
 
   ${mq.range({ from: breakpoints.tablet })} {
-    margin: 40px 0 18px;
+    margin: 40px 0 22px;
     ${fonts.sizes('40px', '48px')};
   }
 

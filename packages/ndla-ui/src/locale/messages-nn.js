@@ -320,7 +320,15 @@ const messages = {
       video: 'Video',
       h5p: 'H5P',
       files: 'Filer',
+      embedlink: 'Innbyggingslenke',
       other: 'Anna innhald',
+    },
+    embedlink: {
+      heading: 'Slik viser du artikkelen i anna innhald',
+      description:
+        'Denne lenka viser artikkelen utan kontekst(meny og botntekst)',
+      copyTitle: 'Kopier lenke',
+      hasCopiedTitle: 'Lenke kopiert',
     },
     images: {
       heading: 'Slik bruker du bilete frå artikkelen',

@@ -317,7 +317,15 @@ const messages = {
       video: 'Video',
       h5p: 'H5P',
       files: 'Filer',
+      embedlink: 'Innbyggingslenke',
       other: 'Annet innhold',
+    },
+    embedlink: {
+      heading: 'Slik viser du artikkelen i annet innhold',
+      description:
+        'Denne lenken viser artikkelen uten kontekst(meny og bunntekst)',
+      copyTitle: 'Kopier lenke',
+      hasCopiedTitle: 'Lenke kopiert',
     },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',

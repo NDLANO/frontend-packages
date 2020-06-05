@@ -312,7 +312,14 @@ const messages = {
       video: 'Video',
       h5p: 'H5P',
       files: 'Files',
+      embedlink: 'Embedded link',
       other: 'Other content',
+    },
+    embedlink: {
+      heading: 'How to show the article in other content',
+      description: 'This url shows the article without menu and footer',
+      copyTitle: 'Copy link',
+      hasCopiedTitle: 'Link copied',
     },
     images: {
       heading: 'How to use images from the article',

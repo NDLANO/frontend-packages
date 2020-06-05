@@ -663,6 +663,10 @@ const messages = {
     democracyTopic: 'Democracy and citizenship',
     sustainableTopic: 'Sustainable development',
   },
+  frontpageMenu: {
+    program: 'Education',
+    allsubjects: 'All subjects',
+  },
 };
 
 export default messages;

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
+import { injectT } from '@ndla/i18n';
+// @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
@@ -70,6 +72,7 @@ type categoryProps = {
 
 export type subjectsProps = {
   categories: [categoryProps];
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const sortAlphabetically = (subjects: subjectProps[], locale: string = 'nb') =>
@@ -105,7 +108,7 @@ const renderList = (subjects: subjectProps[]) => {
   );
 };
 
-const FrontpageAllSubjects = ({ categories }: subjectsProps) => {
+const FrontpageAllSubjects = ({ categories, t }: subjectsProps) => {
   const allSubjects: subjectProps[] = [];
   const data: any = [];
 
@@ -118,7 +121,7 @@ const FrontpageAllSubjects = ({ categories }: subjectsProps) => {
   });
 
   data.unshift({
-    title: 'Alle fag'.toUpperCase(),
+    title: t('frontpageMenu.allsubjects').toUpperCase(),
     content: renderList(allSubjects),
   });
 
@@ -129,4 +132,4 @@ const FrontpageAllSubjects = ({ categories }: subjectsProps) => {
   );
 };
 
-export default FrontpageAllSubjects;
+export default injectT(FrontpageAllSubjects);

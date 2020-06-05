@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
+import { injectT } from '@ndla/i18n';
+// @ts-ignore
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
 import { breakpoints, mq } from '@ndla/core';
@@ -33,9 +35,14 @@ const StyledMenuItem = styled.span`
 type Props = {
   programItems: [ItemProps];
   subjectCategories: subjectsProps['categories'];
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
+const FrontpageProgramMenu = ({
+  programItems,
+  subjectCategories,
+  t,
+}: Props) => {
   const [showSubjects, setShowSubjects] = useState(false);
 
   return (
@@ -46,14 +53,14 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
           lighter={showSubjects}
           size="medium"
           borderShape="rounded">
-          <StyledMenuItem>Utdanningsprogram</StyledMenuItem>
+          <StyledMenuItem>{t('frontpageMenu.program')}</StyledMenuItem>
         </Button>
         <Button
           onClick={() => setShowSubjects(true)}
           lighter={!showSubjects}
           size="medium"
           borderShape="rounded">
-          <StyledMenuItem>Alle fag</StyledMenuItem>
+          <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
       </StyledMenu>
       {showSubjects ? (
@@ -65,4 +72,4 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
   );
 };
 
-export default FrontpageProgramMenu;
+export default injectT(FrontpageProgramMenu);

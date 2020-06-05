@@ -675,6 +675,10 @@ const messages = {
     democracyTopic: 'Demokrati og medborgarskap',
     sustainableTopic: 'Bærekraftig utvikling',
   },
+  frontpageMenu: {
+    program: 'Utdanningsprogram',
+    allsubjects: 'Alle fag',
+  },
 };
 
 export default messages;

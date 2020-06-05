@@ -17,6 +17,7 @@ import {
   Class as ClassIcon,
   // @ts-ignore
 } from '@ndla/icons/action';
+import SafeLink from '@ndla/safelink';
 
 const Wrapper = styled.div`
   display: flex;
@@ -75,6 +76,9 @@ type IconProps = {
 const IconWrapper = styled.span<IconProps>`
   margin: 0px 8px;
   color: #a5bcd3;
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
   ${props =>
     props.isCurrent &&
     `
@@ -101,14 +105,15 @@ type BreadcrumbItemProps = {
   id: string | number;
   label: string;
   url: string;
-  typename: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic';
+  typename?: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic';
   isCurrent?: boolean | false;
+  icon?: React.ReactNode;
 };
 
 type BreadCrumbProps = {
   children: React.ReactNode;
   items: [BreadcrumbItemProps];
-  onNav: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
+  onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
 };
 
 const TypeIcon = (type: string) => {
@@ -130,21 +135,22 @@ const BreadCrumblist = ({ children, items, onNav }: BreadCrumbProps) => (
   <Wrapper>
     <List>
       {items.map((item: BreadcrumbItemProps, level: number) => {
-        const { id, label, url, typename, isCurrent = false } = item;
+        const { id, label, url, typename, icon, isCurrent = false } = item;
         return (
           <ListItem key={`${id}-${typename}`}>
             {isCurrent ? <Dot /> : null}
-            <a
-              href={url}
-              onClick={e => {
-                onNav(e, item);
+            <SafeLink
+              to={url}
+              onClick={(e: React.MouseEvent<HTMLElement>) => {
+                onNav && onNav(e, item);
               }}
               aria-label={label}>
               <IconWrapper isCurrent={isCurrent}>
-                {TypeIcon(typename)}
+                {icon && icon}
+                {typename && TypeIcon(typename)}
               </IconWrapper>
               <span>{label}</span>
-            </a>
+            </SafeLink>
           </ListItem>
         );
       })}

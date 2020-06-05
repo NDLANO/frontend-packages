@@ -24,6 +24,7 @@ import {
   PageContainer,
   Content,
   FFHeroBadge,
+  BreadCrumblist,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -53,6 +54,7 @@ import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
 import ProgramPage from './ProgramPage';
 import SubjectPage from './SubjectPage';
+import { articleBreadCrumb } from '../../dummydata/mockPrograms';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
@@ -102,6 +104,16 @@ storiesOf('Re-design', module)
           selectedMainTopic="Økonomi"
           selectedSubTopic="Lønsemd"
         />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Fagressurs', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <BreadCrumblist items={articleBreadCrumb} />
+        <ArticleLearningmaterial />
       </Content>
       <FooterExample />
     </PageContainer>

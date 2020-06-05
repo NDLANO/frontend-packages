@@ -1,3 +1,6 @@
+import { SubjectMaterialBadge } from '@ndla/ui';
+import React from 'react';
+
 export const subject = {
   label: 'Salg, service og reiseliv Vg1',
   url: '#',
@@ -737,5 +740,39 @@ export const subjectCategories = [
       { nodeId: '137416', name: 'Tysk 1', url: '#', id: 'urn:subject:8' },
       { nodeId: '138655', name: 'Tysk 2', url: '#', id: 'urn:subject:8' },
     ],
+  },
+];
+
+export const articleBreadCrumb = [
+  {
+    label: 'Salg, service og reiseliv (Service og samferdsel)',
+    id: 13,
+    url: '#',
+    typename: 'Subjecttype',
+  },
+  {
+    label: 'Salg, service og reiseliv Vg1',
+    id: 14,
+    url: '#',
+    typename: 'Subject',
+  },
+  {
+    label: 'Økonomi',
+    id: 15,
+    url: '#',
+    typename: 'Topic',
+  },
+  {
+    label: 'Budsjett',
+    id: 16,
+    url: '#',
+    typename: 'Subtopic',
+  },
+  {
+    label: 'Artikkel fagstoff',
+    id: 17,
+    url: '#',
+    isCurrent: true,
+    icon: <SubjectMaterialBadge background size="xx-small" />,
   },
 ];

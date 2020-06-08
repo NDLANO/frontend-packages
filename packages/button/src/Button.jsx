@@ -10,7 +10,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, misc, fonts, animations } from '@ndla/core';
+import {
+  colors,
+  spacing,
+  misc,
+  fonts,
+  animations,
+  breakpoints,
+  mq,
+} from '@ndla/core';
 import rgba from 'polished/lib/color/rgba';
 
 export const strippedStyle = css`
@@ -129,6 +137,85 @@ export const largeStyle = css`
   ${fonts.sizes(18, 1.25)};
 `;
 
+export const roundedStyle = css`
+  border-radius: 23px;
+`;
+
+export const sizes = {
+  normal: css`
+    display: inline-flex;
+    align-items: center;
+    padding-left: ${spacing.small};
+    padding-right: ${spacing.small};
+    ${fonts.sizes('16px')};
+    min-height: 40px;
+  `,
+  medium: css`
+    display: inline-flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    ${fonts.sizes('16px', '18px')};
+    min-height: 48px;
+  `,
+  large: css`
+    display: inline-flex;
+    align-items: center;
+    padding-left: ${spacing.normal};
+    padding-right: ${spacing.normal};
+    ${fonts.sizes('18px', '20px')};
+    min-height: 52px;
+  `,
+};
+
+export const borderShapes = {
+  normal: () => css`
+    border-radius: ${misc.borderRadius};
+  `,
+  rounded: size => css`
+    border-radius: 32px;
+    ${size === 'medium'
+      ? `
+      ${mq.range({ from: breakpoints.tablet })} {
+        padding-left:${spacing.medium};
+        padding-right:${spacing.medium};
+      }`
+      : null}
+    ${size === 'large'
+      ? `
+        ${mq.range({ from: breakpoints.tablet })} {
+        padding-left:${spacing.large};padding-right:${spacing.large};
+      }`
+      : null}
+  `,
+  sharpened: size => css`
+    border-radius: 2px;
+    font-weight: ${fonts.weight.semibold};
+    ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null};
+  `,
+};
+
+export const width = {
+  auto: css`
+    width: auto;
+  `,
+  full: css`
+    width: 100%;
+  `,
+};
+
+export const textAlign = {
+  center: css`
+    text-align: center;
+  `,
+  left: css`
+    text-align: left;
+  `,
+  right: css`
+    text-align: right;
+  `,
+};
+
 export const appearances = {
   inverted: css`
     background: #0f2b47;
@@ -159,16 +246,29 @@ export const appearances = {
   lighter: css`
     ${fonts.sizes('12px', '15px')};
     background-color: ${colors.brand.lighter};
-    border: none;
+    border: 2px solid ${colors.brand.lighter};
     color: ${colors.brand.primary};
     font-weight: ${fonts.weight.semibold};
 
     &:hover,
     &:focus,
     &:active {
-      border: none;
+      transform: translateY(0) translateX(0);
       background: ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
     }
+    &:disabled {
+      color: ${colors.brand.grey};
+      border: 2px solid transparent;
+      background-color: ${colors.background.dark};
+      cursor: not-allowed;
+      transform: translateY(0) translateX(0);
+    }
+  `,
+  darker: css`
+    background-color: ${colors.brand.dark};
+    border-color: ${colors.brand.dark};
+    color: ${colors.background.default};
   `,
   outline: css`
     ${outlineStyle};
@@ -323,9 +423,21 @@ export const buttonStyle = css`
   }
 `;
 
-export const StyledButton = styled('button')`
+export const ButtonStyles = p =>
+  css`
   ${buttonStyle}
-  ${p => appearances[p.appearance]};
+  ${p.appearance ? appearances[p.appearance] : null}
+  ${p.lighter ? appearances['lighter'] : null}
+  ${p.size ? sizes[p.size] : null};
+  ${p.outline ? outlineStyle : null}
+  ${p.borderShape ? borderShapes[p.borderShape](p.size) : null}
+  ${p.width ? width[p.width] : null}
+  ${p.textAlign ? textAlign[p.textAlign] : null}
+  ${p.darker ? appearances['darker'] : null}
+`;
+
+export const StyledButton = styled('button')`
+  ${p => ButtonStyles(p)}
 `;
 
 // Reverse the array to find the last element first
@@ -392,12 +504,13 @@ export const Button = ({
   // Unless the disabled state is explicitly set, the button is disabled when loading.
   const isDisabled = (disabled !== undefined ? disabled : loading) || false;
 
+  const buttonProps = { ...rest, outline };
   return (
     <StyledButton
       type={type}
       appearance={styledAppearance}
       disabled={isDisabled}
-      {...rest}>
+      {...buttonProps}>
       {children}
     </StyledButton>
   );
@@ -429,6 +542,11 @@ Button.propTypes = {
     'ghostPillOutline',
     'large',
   ]),
+  size: PropTypes.oneOf(['normal', 'medium', 'large']),
+  borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
+  width: PropTypes.oneOf(['auto', 'full']),
+  textAlign: PropTypes.oneOf(['center', 'left', 'right']),
+  darker: PropTypes.bool,
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

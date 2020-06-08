@@ -5,12 +5,12 @@ import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-subject-about');
 
-const SubjectAbout = ({ fixedWidth, media, heading, description }) => (
-  <section {...classes('', { fixedWidth })}>
+const SubjectAbout = ({ fixedWidth, media, heading, description, wide }) => (
+  <section {...classes('', { fixedWidth, wide })}>
     <SectionHeading large className={classes('top-heading').className}>
       {heading}
     </SectionHeading>
-    <div {...classes('media-wrapper')}>{media}</div>
+    <div {...classes('media-wrapper', { wide })}>{media}</div>
     <div {...classes('content')}>
       <h1 {...classes('main-heading')}>{heading}</h1>
       <p {...classes('description')}>{description}</p>
@@ -20,6 +20,7 @@ const SubjectAbout = ({ fixedWidth, media, heading, description }) => (
 
 SubjectAbout.propTypes = {
   fixedWidth: PropTypes.bool,
+  wide: PropTypes.bool,
   media: PropTypes.node.isRequired,
   heading: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

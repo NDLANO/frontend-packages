@@ -6,6 +6,7 @@ export { default as SubjectAbout } from './SubjectAbout';
 export { default as SubjectCarousel } from './SubjectCarousel';
 export { default as SubjectFilter } from './SubjectFilter';
 export { default as SubjectNewContent } from './SubjectNewContent';
+export { default as SubjectBanner } from './SubjectBanner';
 
 export {
   SubjectContent,

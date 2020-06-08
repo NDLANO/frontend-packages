@@ -19,11 +19,14 @@ export { BlogPost, BlogPostWrapper } from './BlogPosts';
 export {
   FrontpageInfo,
   FrontpageFilm,
+  FrontpageToolbox,
+  FrontpageMultidisciplinarySubject,
   FrontpageHeader,
   FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
   FrontpageCircularSubjectsSection,
   FrontpageSearch,
+  FrontpageProgramMenu,
 } from './Frontpage';
 
 export { FFFrontpageInfo, FFFrontpageHeader } from './FFFrontpage';

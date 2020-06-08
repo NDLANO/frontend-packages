@@ -105,8 +105,16 @@
   margin-top: $spacing;
   padding: $spacing--small;
   @include mq(tablet) {
-    padding: none;
+    padding: 0;
   }
+  border: none;
+}
+.c-article--clean-in-context {
+  margin-top: $spacing;
+  @include mq(tablet) {
+    margin-top: 52px;
+  }
+  padding: 0;
   border: none;
 }
 

@@ -664,6 +664,25 @@ const messages = {
       linkText: 'Gå til ndla.no for dagens innhold',
     },
   },
+  frontPageToolbox: {
+    heading: 'Verktøykassen',
+    text:
+      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassen til NDLA finner du masse gode tips og råd!',
+    linkText: 'Se alle tipsene i verktøykassen her',
+  },
+  frontpageMultidisciplinarySubject: {
+    heading: 'Tverrfaglig tema',
+    text:
+      'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    linkText: 'Få oversikten over våre tverrfaglige tema her',
+    publicHealthTopic: 'Folkehelse og livsmestring',
+    democracyTopic: 'Demokrati og medborgerskap',
+    sustainableTopic: 'Bærekraftig utvikling',
+  },
+  frontpageMenu: {
+    program: 'Utdanningsprogram',
+    allsubjects: 'Alle fag',
+  },
 };
 
 export default messages;

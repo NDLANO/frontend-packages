@@ -27,7 +27,7 @@ import { FigureImage } from '../article/FigureImage';
 
 const ArticleLearningMaterial = () => (
   <OneColumn>
-    <ArticleWrapper id="mainContentId">
+    <ArticleWrapper modifier={'clean-in-context'} id="mainContentId">
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle

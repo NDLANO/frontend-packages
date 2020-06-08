@@ -43,6 +43,10 @@ export default {
     filmColorLight: '#0f263b',
   },
 
+  ndlaToolBox: {
+    boxColor: '#e8e3c3',
+  },
+
   subject: {
     light: brandLight,
     dark: brandDark,

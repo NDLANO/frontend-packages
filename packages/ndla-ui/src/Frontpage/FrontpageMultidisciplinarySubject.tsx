@@ -11,23 +11,16 @@ import SectionHeading from '../SectionHeading';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
 
 const AnchorButton = StyledButton.withComponent('a');
-/* 
-import {
-  Content,
-  StyledSection,
-  TargetItem,
-  StyledText,
-  Wrapper,
-  Topics,
-  Topic,
-} from './FrontpageMultidisciplinarySubjectStyle'; */
-
 
 export const StyledSection = styled.section`
   margin-top: ${spacing.large};
   margin-bottom: ${spacing.large};
-  background-color: rgb(250,246,240);
-  background: linear-gradient(304.38deg, rgba(239,238,220,0.35), rgba(250,246,240,0.75));
+  background-color: rgb(250, 246, 240);
+  background: linear-gradient(
+    304.38deg,
+    rgba(239, 238, 220, 0.35),
+    rgba(250, 246, 240, 0.75)
+  );
   border-radius: 8px;
   padding: ${spacing.medium};
   ${mq.range({ from: breakpoints.desktop })} {
@@ -86,7 +79,7 @@ const Topic = styled.div`
 type Props = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   url: string;
-  topics?: [{ url: string, title: string }],
+  topics?: [{ url: string; title: string }];
 };
 
 const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
@@ -94,35 +87,39 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
   t,
   topics,
 }) => (
-    <StyledSection>
-      <Wrapper>
-        <Content>
-          <SectionHeading large>
-            {t('frontpageMultidisciplinarySubject.heading')}
-          </SectionHeading>
-          {topics ? <Topics>
+  <StyledSection>
+    <Wrapper>
+      <Content>
+        <SectionHeading large>
+          {t('frontpageMultidisciplinarySubject.heading')}
+        </SectionHeading>
+        {topics ? (
+          <Topics>
             {topics.map(topic => {
               return (
                 <Topic>
-                  <SafeLink to={topic.url} key={`subjecttitle-${topic.title}`}>{topic.title}</SafeLink>
+                  <SafeLink to={topic.url} key={`subjecttitle-${topic.title}`}>
+                    {topic.title}
+                  </SafeLink>
                 </Topic>
-              )
+              );
             })}
-          </Topics> : null}
-          <StyledText>{t('frontpageMultidisciplinarySubject.text')}</StyledText>
-        </Content>
-      </Wrapper>
-      <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
-        <AnchorButton
-          href={url}
-          size="medium"
-          borderShape="rounded"
-          rel="noopener noreferrer">
-          {t('frontpageMultidisciplinarySubject.linkText')}
-        </AnchorButton>
-      </TargetItem>
-      <Illustration />
-    </StyledSection>
-  );
+          </Topics>
+        ) : null}
+        <StyledText>{t('frontpageMultidisciplinarySubject.text')}</StyledText>
+      </Content>
+    </Wrapper>
+    <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
+      <AnchorButton
+        href={url}
+        size="medium"
+        borderShape="rounded"
+        rel="noopener noreferrer">
+        {t('frontpageMultidisciplinarySubject.linkText')}
+      </AnchorButton>
+    </TargetItem>
+    <Illustration />
+  </StyledSection>
+);
 
 export default injectT(FrontpageMultidisciplinarySubject);

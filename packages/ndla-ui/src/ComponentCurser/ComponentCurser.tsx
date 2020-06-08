@@ -8,12 +8,12 @@ const Wrapper = styled.div`
   border: 1px solid red;
   width: 100px;
   height: 100px;
-`
+`;
 
 const Text = styled.span`
   display: inline-block;
   padding-bottom: 10px;
-`
+`;
 
 const LeftCursor = styled.div`
   height: 100px;
@@ -22,7 +22,7 @@ const LeftCursor = styled.div`
   background-repeat: no-repeat;
   background-position: top center;
   color: #757575;
-`
+`;
 
 export default () => {
   return (
@@ -31,4 +31,4 @@ export default () => {
       <LeftCursor />
     </Wrapper>
   );
-}
+};

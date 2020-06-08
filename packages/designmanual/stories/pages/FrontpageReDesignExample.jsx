@@ -260,10 +260,7 @@ class FrontpageReDesignExample extends Component {
                 { url: '#', title: 'Bærekraftig utvikling' },
               ]}
             />
-            <FrontpageToolbox
-              imageUrl={NdlaToolboxIllustration}
-              url="#"
-            />
+            <FrontpageToolbox imageUrl={NdlaToolboxIllustration} url="#" />
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
               <BlogPostWrapper>

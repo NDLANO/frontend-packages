@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { StyledButton } from '@ndla/button';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
-import { spacing, colors, breakpoints, mq } from '@ndla/core';
+import { spacing, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCurser from '../ComponentCurser';
@@ -15,7 +15,7 @@ const AnchorButton = StyledButton.withComponent('a');
 const StyledSection = styled.section`
   margin-top: ${spacing.large};
   margin-bottom: ${spacing.large};
-  border: 1px solid #E6E6E6;
+  border: 1px solid #e6e6e6;
   border-radius: 8px;
   padding: ${spacing.medium};
   position: relative;
@@ -52,22 +52,22 @@ const FrontpageToolbox: React.FunctionComponent<Props> = ({
   imageUrl,
   t,
 }) => (
-    <StyledSection>
-      <ComponentCurser />
-      <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
-      <ToolboxWrapper>
-        <StyledText>{t('frontPageToolbox.text')}</StyledText>
-      </ToolboxWrapper>
-      <AnchorButton
-        href={url}
-        target="_blank"
-        size="medium"
-        borderShape="rounded"
-        rel="noopener noreferrer">
-        {t('frontPageToolbox.linkText')}
-      </AnchorButton>
-      <Illustration />
-    </StyledSection>
-  );
+  <StyledSection>
+    <ComponentCurser />
+    <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
+    <ToolboxWrapper>
+      <StyledText>{t('frontPageToolbox.text')}</StyledText>
+    </ToolboxWrapper>
+    <AnchorButton
+      href={url}
+      target="_blank"
+      size="medium"
+      borderShape="rounded"
+      rel="noopener noreferrer">
+      {t('frontPageToolbox.linkText')}
+    </AnchorButton>
+    <Illustration />
+  </StyledSection>
+);
 
 export default injectT(FrontpageToolbox);

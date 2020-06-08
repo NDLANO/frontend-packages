@@ -299,6 +299,8 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
+    competenceGoalResourceSearchText:
+      'Search all resources appropriate to this goal',
   },
   subject: {
     associatedTopics: 'Associated topics',

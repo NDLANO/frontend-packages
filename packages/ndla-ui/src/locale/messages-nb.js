@@ -298,6 +298,8 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
+    competenceGoalResourceSearchText:
+      'Søk på alle ressurser som passer til dette kompetansemålet',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

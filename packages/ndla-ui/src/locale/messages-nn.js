@@ -301,6 +301,8 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
+    competenceGoalResourceSearchText:
+      'Søk på alle ressursar som passar til dette kompetansemålet',
   },
   subject: {
     associatedTopics: 'Tilhøyrande emne',

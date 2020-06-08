@@ -252,10 +252,17 @@ class FrontpageReDesignExample extends Component {
               programItems={programs}
               subjectCategories={subjectCategories}
             />
-            <FrontpageMultidisciplinarySubject url="https://ndla.no/nb/film" />
+            <FrontpageMultidisciplinarySubject
+              url="#"
+              topics={[
+                { url: '#', title: 'Folkehelse og livsmestring' },
+                { url: '#', title: 'Demokrati og medborgerskap' },
+                { url: '#', title: 'Bærekraftig utvikling' },
+              ]}
+            />
             <FrontpageToolbox
               imageUrl={NdlaToolboxIllustration}
-              url="https://ndla.no/nb/film"
+              url="#"
             />
             <section>
               <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>

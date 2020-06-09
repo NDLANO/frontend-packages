@@ -7,7 +7,7 @@ import { injectT } from '@ndla/i18n';
 import { spacing, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
-import ComponentCurser from '../ComponentCurser';
+import ComponentCursor from '../ComponentCursor';
 import { ToolboxIllustration as Illustration } from './illustrations/FrontpageIllustrations';
 
 const AnchorButton = StyledButton.withComponent('a');
@@ -48,7 +48,7 @@ type Props = {
 
 const FrontpageToolbox: React.FunctionComponent<Props> = ({ url, t }) => (
   <StyledSection>
-    <ComponentCurser variant="left" text={t('frontPageToolbox.cursorText')} />
+    <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
     <ToolboxWrapper>
       <StyledText>{t('frontPageToolbox.text')}</StyledText>

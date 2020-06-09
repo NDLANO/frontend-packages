@@ -8,8 +8,7 @@ import { StyledButton } from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
-// import ComponentCurser from '@ndla/ui';
-import ComponentCurser from '../ComponentCurser';
+import ComponentCursor from '../ComponentCursor';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
 
 const AnchorButton = StyledButton.withComponent('a');
@@ -91,7 +90,7 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
   topics,
 }) => (
   <StyledSection>
-    <ComponentCurser
+    <ComponentCursor
       variant="left"
       text={t('frontpageMultidisciplinarySubject.cursorText')}
     />

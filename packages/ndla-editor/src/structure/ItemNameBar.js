@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
+import { Star } from '@ndla/icons/editor';
 
 const itemTitleArrow = css`
   &:before {
@@ -68,6 +69,30 @@ const ItemTitleButton = styled.button`
   }
 `;
 
+
+const RoundIcon = ({smallIcon,...rest}) => (
+    <StyledIcon {...rest}> {smallIcon}</StyledIcon>
+);
+
+RoundIcon.propTypes = {
+  smallIcon: PropTypes.node,
+  clicked: PropTypes.bool
+};
+
+const StyledIcon = styled.button`
+  display: flex;
+  align-items: center;
+  
+  border: 0;
+  background: 0;
+  
+  svg:hover {
+    fill: #fcba03;
+    cursor: pointer;
+  }
+    
+`;
+
 const StyledItemBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -84,6 +109,7 @@ const StyledItemBar = styled.div`
 
 const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
+
 const ItemNameBar = ({
   title,
   children,
@@ -97,8 +123,13 @@ const ItemNameBar = ({
   id,
   level,
   isVisible,
+  favoriteSubjectIds,
+  toggleStar,
 }) => (
   <StyledItemBar level={level} highlight={highlight}>
+    {favoriteSubjectIds &&
+    <RoundIcon  onClick={() => toggleStar()} smallIcon={favoriteSubjectIds.includes(id) ? <Star color="#fcba03"/> : <Star color={colors.brand.greyDark}/>}/>
+    }
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"
@@ -115,6 +146,7 @@ const ItemNameBar = ({
       <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
     )}
     {children}
+
   </StyledItemBar>
 );
 

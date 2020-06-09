@@ -147,7 +147,7 @@ const ItemNameBar = ({
 );
 
 const RoundIcon = ({ smallIcon, ...rest }) => (
-  <StyledIcon {...rest}> {smallIcon}</StyledIcon>
+  <StyledIcon {...rest}>{smallIcon}</StyledIcon>
 );
 
 RoundIcon.propTypes = {

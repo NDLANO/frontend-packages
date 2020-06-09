@@ -24,6 +24,7 @@ import {
   PageContainer,
   Content,
   FFHeroBadge,
+  BreadCrumblist,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -50,6 +51,73 @@ import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
 import FFFrontpage from './FFFrontpage';
 import SearchPageExample from './SearchPageExample';
+import FrontpageReDesignExample from './FrontpageReDesignExample';
+import ProgramPage from './ProgramPage';
+import SubjectPage from './SubjectPage';
+import { articleBreadCrumb } from '../../dummydata/mockPrograms';
+
+storiesOf('Re-design', module)
+  .add('Forside', () => (
+    <PageContainer>
+      <Content>
+        <FrontpageReDesignExample />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Programside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <ProgramPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Fagside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Hovedemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          selectedFilters={['Forretningsdrift']}
+          selectedMainTopic="Økonomi"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Underemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          selectedFilters={['Forretningsdrift']}
+          selectedMainTopic="Økonomi"
+          selectedSubTopic="Lønsemd"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Fagressurs', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <BreadCrumblist items={articleBreadCrumb} />
+        <ArticleLearningmaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ));
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (

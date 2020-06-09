@@ -11,6 +11,7 @@ export {
   StyledButton,
   buttonStyle,
   appearances,
+  ButtonStyles,
 } from './Button';
 export { default as CopyButton } from './CopyButton';
 export { default as MultiButton } from './MultiButton';

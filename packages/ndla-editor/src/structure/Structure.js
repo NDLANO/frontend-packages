@@ -50,7 +50,7 @@ const Structure = ({
   onDragEnd,
   isOpen,
   favoriteSubjectIds,
-  toggleStar,
+  toggleFavorite,
 }) => {
   const isSubject = currentPath.length === 0;
   const ignoreFilter =
@@ -127,8 +127,8 @@ const Structure = ({
                     }
                     isSubject={isSubject}
                     isVisible={isVisible}
-                    favoriteSubjectIds = {favoriteSubjectIds}
-                    toggleStar={() => toggleStar(id)}>
+                    favoriteSubjectIds={favoriteSubjectIds}
+                    toggleFavorite={() => toggleFavorite(id)}>
                     {renderListItems &&
                       renderListItems({
                         pathToString,
@@ -199,6 +199,8 @@ Structure.propTypes = {
   renderListItems: PropTypes.func,
   activeFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
+  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
+  toggleFavorite: PropTypes.func,
 };
 
 Structure.defaultProps = {

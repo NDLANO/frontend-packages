@@ -69,28 +69,26 @@ const ItemTitleButton = styled.button`
   }
 `;
 
-
-const RoundIcon = ({smallIcon,...rest}) => (
-    <StyledIcon {...rest}> {smallIcon}</StyledIcon>
+const RoundIcon = ({ smallIcon, ...rest }) => (
+  <StyledIcon {...rest}> {smallIcon}</StyledIcon>
 );
 
 RoundIcon.propTypes = {
   smallIcon: PropTypes.node,
-  clicked: PropTypes.bool
+  clicked: PropTypes.bool,
 };
 
 const StyledIcon = styled.button`
   display: flex;
   align-items: center;
-  
+
   border: 0;
   background: 0;
-  
+
   svg:hover {
     fill: #fcba03;
     cursor: pointer;
   }
-    
 `;
 
 const StyledItemBar = styled.div`
@@ -109,7 +107,6 @@ const StyledItemBar = styled.div`
 
 const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
-
 const ItemNameBar = ({
   title,
   children,
@@ -124,12 +121,21 @@ const ItemNameBar = ({
   level,
   isVisible,
   favoriteSubjectIds,
-  toggleStar,
+  toggleFavorite,
 }) => (
   <StyledItemBar level={level} highlight={highlight}>
-    {favoriteSubjectIds &&
-    <RoundIcon  onClick={() => toggleStar()} smallIcon={favoriteSubjectIds.includes(id) ? <Star color="#fcba03"/> : <Star color={colors.brand.greyDark}/>}/>
-    }
+    {favoriteSubjectIds && (
+      <RoundIcon
+        onClick={() => toggleFavorite()}
+        smallIcon={
+          favoriteSubjectIds.includes(id) ? (
+            <Star color="#fcba03" />
+          ) : (
+            <Star color={colors.brand.greyDark} />
+          )
+        }
+      />
+    )}
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"
@@ -146,7 +152,6 @@ const ItemNameBar = ({
       <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
     )}
     {children}
-
   </StyledItemBar>
 );
 
@@ -161,6 +166,8 @@ ItemNameBar.propTypes = {
   id: PropTypes.string,
   isSubject: PropTypes.bool,
   isVisible: PropTypes.bool,
+  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
+  toggleFavorite: PropTypes.func,
 };
 
 export default ItemNameBar;

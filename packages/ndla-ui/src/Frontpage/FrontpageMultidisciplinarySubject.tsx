@@ -8,11 +8,14 @@ import { StyledButton } from '@ndla/button';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
+// import ComponentCurser from '@ndla/ui';
+import ComponentCurser from '../ComponentCurser';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
 
 const AnchorButton = StyledButton.withComponent('a');
 
 export const StyledSection = styled.section`
+  position: relative;
   margin-top: ${spacing.large};
   margin-bottom: ${spacing.large};
   background-color: rgb(250, 246, 240);
@@ -79,7 +82,7 @@ const Topic = styled.div`
 type Props = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   url: string;
-  topics?: [{ url: string; title: string }];
+  topics?: [{ url: string; title: string; id: string }];
 };
 
 const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
@@ -88,6 +91,10 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
   topics,
 }) => (
   <StyledSection>
+    <ComponentCurser
+      variant="left"
+      text={t('frontpageMultidisciplinarySubject.cursorText')}
+    />
     <Wrapper>
       <Content>
         <SectionHeading large>
@@ -97,10 +104,8 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
           <Topics>
             {topics.map(topic => {
               return (
-                <Topic>
-                  <SafeLink to={topic.url} key={`subjecttitle-${topic.title}`}>
-                    {topic.title}
-                  </SafeLink>
+                <Topic key={topic.id}>
+                  <SafeLink to={topic.url}>{topic.title}</SafeLink>
                 </Topic>
               );
             })}

@@ -175,4 +175,3 @@ export {
   NavigationTopicAbout,
 } from './Navigation';
 export { default as Program } from './Program';
-export { default as ComponentCurser } from './ComponentCurser';

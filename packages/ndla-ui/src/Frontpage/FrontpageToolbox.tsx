@@ -44,16 +44,11 @@ const StyledText = styled.span`
 type Props = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   url: string;
-  imageUrl: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<Props> = ({
-  url,
-  imageUrl,
-  t,
-}) => (
+const FrontpageToolbox: React.FunctionComponent<Props> = ({ url, t }) => (
   <StyledSection>
-    <ComponentCurser />
+    <ComponentCurser variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
     <ToolboxWrapper>
       <StyledText>{t('frontPageToolbox.text')}</StyledText>

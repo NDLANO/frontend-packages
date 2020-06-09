@@ -669,6 +669,7 @@ const messages = {
     text:
       'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassen til NDLA finner du masse gode tips og råd!',
     linkText: 'Se alle tipsene i verktøykassen her',
+    cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfaglig tema',
@@ -678,10 +679,12 @@ const messages = {
     publicHealthTopic: 'Folkehelse og livsmestring',
     democracyTopic: 'Demokrati og medborgerskap',
     sustainableTopic: 'Bærekraftig utvikling',
+    cursorText: 'Nyhet',
   },
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
+    cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
   },
 };
 

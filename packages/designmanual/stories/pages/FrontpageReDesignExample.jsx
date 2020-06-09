@@ -255,9 +255,9 @@ class FrontpageReDesignExample extends Component {
             <FrontpageMultidisciplinarySubject
               url="#"
               topics={[
-                { url: '#', title: 'Folkehelse og livsmestring' },
-                { url: '#', title: 'Demokrati og medborgerskap' },
-                { url: '#', title: 'Bærekraftig utvikling' },
+                { url: '#', title: 'Folkehelse og livsmestring', id: '335' },
+                { url: '#', title: 'Demokrati og medborgerskap', id: '332' },
+                { url: '#', title: 'Bærekraftig utvikling', id: '355' },
               ]}
             />
             <FrontpageToolbox imageUrl={NdlaToolboxIllustration} url="#" />

@@ -111,6 +111,7 @@ export default {
     yellowLight: rgba('#ead854', 0.3),
   },
   tableBg: '#f9fafb',
+  favoriteColor: '#fcba03',
 
   /**
    * Link colors

@@ -69,16 +69,12 @@ const ItemTitleButton = styled.button`
   }
 `;
 
-const RoundIcon = ({ smallIcon, ...rest }) => (
-  <StyledIcon {...rest}> {smallIcon}</StyledIcon>
-);
-
 const StyledIcon = styled.button`
   display: flex;
   align-items: center;
 
   border: 0;
-  background: 0;
+  background: transparent;
 
   svg:hover {
     fill: #fcba03;
@@ -124,7 +120,7 @@ const ItemNameBar = ({
         onClick={() => toggleFavorite()}
         smallIcon={
           favoriteSubjectIds.includes(id) ? (
-            <Star color="#fcba03" />
+            <Star color={colors.favoriteColor} />
           ) : (
             <Star color={colors.brand.greyDark} />
           )
@@ -148,6 +144,10 @@ const ItemNameBar = ({
     )}
     {children}
   </StyledItemBar>
+);
+
+const RoundIcon = ({ smallIcon, ...rest }) => (
+  <StyledIcon {...rest}> {smallIcon}</StyledIcon>
 );
 
 RoundIcon.propTypes = {

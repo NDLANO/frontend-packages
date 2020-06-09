@@ -73,11 +73,6 @@ const RoundIcon = ({ smallIcon, ...rest }) => (
   <StyledIcon {...rest}> {smallIcon}</StyledIcon>
 );
 
-RoundIcon.propTypes = {
-  smallIcon: PropTypes.node,
-  clicked: PropTypes.bool,
-};
-
 const StyledIcon = styled.button`
   display: flex;
   align-items: center;
@@ -154,6 +149,11 @@ const ItemNameBar = ({
     {children}
   </StyledItemBar>
 );
+
+RoundIcon.propTypes = {
+  smallIcon: PropTypes.node,
+  clicked: PropTypes.bool,
+};
 
 ItemNameBar.propTypes = {
   title: PropTypes.string.isRequired,

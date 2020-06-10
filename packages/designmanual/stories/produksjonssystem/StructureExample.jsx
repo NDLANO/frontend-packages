@@ -16,14 +16,8 @@ import {
   subjectTopics,
   subjects,
   allFilters,
+  favoriteSubjects,
 } from '../../dummydata/mockTaxonomyStructure';
-import BEMHelper from "react-bem-helper";
-import {OneColumn} from "@ndla/ui";
-
-export const classes = new BEMHelper({
-  name: 'folder',
-  prefix: 'c-',
-});
 
 function delay(t, v) {
   return new Promise(resolve => {
@@ -34,7 +28,7 @@ function delay(t, v) {
 const fetchSubjectsTopics = subjectId =>
   delay(1000).then(() => subjectTopics[subjectId]);
 
-let fetchFavoriteSubjectIds = [];
+let fetchFavoriteSubjectIds = [].concat(favoriteSubjects);
 
 const AddTitle = styled('span')`
   ${fonts.sizes(16, 1.2)};
@@ -157,7 +151,7 @@ const buttonAddition = css`
 
 const StyledButtonWrapper = styled.div`
   display: flex;
-  margin-left:auto;
+  margin-left: auto;
   &:focus-within {
     > button {
       opacity: 1;
@@ -181,14 +175,8 @@ const StyledButtonWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  display:flex;
+  display: flex;
   width: 100%;
-  min-height: 100%;
-`;
-
-const Plumbcontainer = styled.div`
-  position: relative;
-  z-index:  1:
 `;
 
 class StructureExample extends Component {
@@ -250,21 +238,23 @@ class StructureExample extends Component {
     }
   }
 
-  toggleFavorite(subjectId){
-    if(!fetchFavoriteSubjectIds.includes(subjectId)){
-      fetchFavoriteSubjectIds.push(subjectId)
+  toggleFavorite(subjectId) {
+    if (!fetchFavoriteSubjectIds.includes(subjectId)) {
+      fetchFavoriteSubjectIds.push(subjectId);
     } else {
-      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter(id => id !== subjectId)
+      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter(
+        id => id !== subjectId,
+      );
     }
     this.forceUpdate();
   }
 
-  renderListItems({ subjectId, isSubject, isOpen })  {
+  renderListItems({ subjectId, isSubject, isOpen }) {
     const { availableFilters } = this.state;
 
     if (isSubject) {
       if (!availableFilters[subjectId] || !isOpen) {
-        return <Wrapper/>
+        return <Wrapper />;
       }
       return (
         <Wrapper>
@@ -332,37 +322,31 @@ class StructureExample extends Component {
       <Spinner />
     ) : (
       <Fragment>
-        <OneColumn>
-          <Plumbcontainer>
-            <Structure
-              DND={this.props.structureEditor}
-              openedPaths={this.state.openedPaths}
-              highlightMainActive={this.props.structureEditor}
-              structure={structure}
-              toggleOpen={({ path, id, isSubject }) => {
-                this.setState(prevState => {
-                  const filtered = prevState.openedPaths.filter(p => p !== path);
-                  if (filtered.length === prevState.openedPaths.length) {
-                    this.onOpenPath({ id, isSubject });
-                    return { openedPaths: [...prevState.openedPaths, path] };
-                  }
-                  return { openedPaths: filtered };
-                });
-              }}
-              renderListItems={this.renderListItems}
-              activeFilters={activeFilters}
-              filters={availableFilters}
-              toggleFavorite={this.toggleFavorite}
-              favoriteSubjectIds={fetchFavoriteSubjectIds}
-              children
-            />
-          </Plumbcontainer>
-        </OneColumn>
+        <Structure
+          DND={this.props.structureEditor}
+          openedPaths={this.state.openedPaths}
+          highlightMainActive={this.props.structureEditor}
+          structure={structure}
+          toggleOpen={({ path, id, isSubject }) => {
+            this.setState(prevState => {
+              const filtered = prevState.openedPaths.filter(p => p !== path);
+              if (filtered.length === prevState.openedPaths.length) {
+                this.onOpenPath({ id, isSubject });
+                return { openedPaths: [...prevState.openedPaths, path] };
+              }
+              return { openedPaths: filtered };
+            });
+          }}
+          renderListItems={this.renderListItems}
+          activeFilters={activeFilters}
+          filters={availableFilters}
+          toggleFavorite={this.toggleFavorite}
+          favoriteSubjectIds={fetchFavoriteSubjectIds}
+          children
+        />
       </Fragment>
-
     );
   }
 }
 
 export default StructureExample;
-

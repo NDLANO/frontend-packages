@@ -49,6 +49,8 @@ const Structure = ({
   isMainActive,
   onDragEnd,
   isOpen,
+  favoriteSubjectIds,
+  toggleFavorite,
 }) => {
   const isSubject = currentPath.length === 0;
   const ignoreFilter =
@@ -69,7 +71,6 @@ const Structure = ({
     [structure, activeFilters],
   );
   const enableDND = DND && isMainActive && filteredStructure.length > 1;
-
   return (
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
@@ -98,7 +99,6 @@ const Structure = ({
                 : !isOpen && isSubject && openedPaths.length > 0;
               const isVisible =
                 metadata !== undefined ? metadata.visible : true;
-
               return (
                 <StyledStructureItem
                   connectionId={connectionId}
@@ -126,7 +126,9 @@ const Structure = ({
                       })
                     }
                     isSubject={isSubject}
-                    isVisible={isVisible}>
+                    isVisible={isVisible}
+                    favoriteSubjectIds={favoriteSubjectIds}
+                    toggleFavorite={() => toggleFavorite(id)}>
                     {renderListItems &&
                       renderListItems({
                         pathToString,
@@ -197,6 +199,8 @@ Structure.propTypes = {
   renderListItems: PropTypes.func,
   activeFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
+  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
+  toggleFavorite: PropTypes.func,
 };
 
 Structure.defaultProps = {

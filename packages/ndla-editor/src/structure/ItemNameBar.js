@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
+import { Star } from '@ndla/icons/editor';
 
 const itemTitleArrow = css`
   &:before {
@@ -68,6 +69,19 @@ const ItemTitleButton = styled.button`
   }
 `;
 
+const StyledIcon = styled.button`
+  display: flex;
+  align-items: center;
+
+  border: 0;
+  background: transparent;
+
+  svg:hover {
+    fill: ${colors.favoriteColor};
+    cursor: pointer;
+  }
+`;
+
 const StyledItemBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -97,8 +111,22 @@ const ItemNameBar = ({
   id,
   level,
   isVisible,
+  favoriteSubjectIds,
+  toggleFavorite,
 }) => (
   <StyledItemBar level={level} highlight={highlight}>
+    {favoriteSubjectIds && (
+      <RoundIcon
+        onClick={() => toggleFavorite()}
+        smallIcon={
+          favoriteSubjectIds.includes(id) ? (
+            <Star color={colors.favoriteColor} />
+          ) : (
+            <Star color={colors.brand.greyDark} />
+          )
+        }
+      />
+    )}
     {lastItemClickable || hasSubtopics ? (
       <ItemTitleButton
         type="button"
@@ -118,6 +146,15 @@ const ItemNameBar = ({
   </StyledItemBar>
 );
 
+const RoundIcon = ({ smallIcon, ...rest }) => (
+  <StyledIcon {...rest}>{smallIcon}</StyledIcon>
+);
+
+RoundIcon.propTypes = {
+  smallIcon: PropTypes.node,
+  clicked: PropTypes.bool,
+};
+
 ItemNameBar.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
@@ -129,6 +166,8 @@ ItemNameBar.propTypes = {
   id: PropTypes.string,
   isSubject: PropTypes.bool,
   isVisible: PropTypes.bool,
+  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
+  toggleFavorite: PropTypes.func,
 };
 
 export default ItemNameBar;

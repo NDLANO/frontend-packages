@@ -238,3 +238,5 @@ export const subjectTopics = {
   'urn:subject:9': historieTopics,
   'urn:subject:24': helseTopics,
 };
+
+export const favoriteSubjects = ['urn:subject:24'];

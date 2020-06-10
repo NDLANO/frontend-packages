@@ -77,7 +77,7 @@ const StyledIcon = styled.button`
   background: transparent;
 
   svg:hover {
-    fill: #fcba03;
+    fill: ${colors.favoriteColor};
     cursor: pointer;
   }
 `;

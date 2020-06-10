@@ -17,6 +17,13 @@ import {
   subjects,
   allFilters,
 } from '../../dummydata/mockTaxonomyStructure';
+import BEMHelper from "react-bem-helper";
+import {OneColumn} from "@ndla/ui";
+
+export const classes = new BEMHelper({
+  name: 'folder',
+  prefix: 'c-',
+});
 
 function delay(t, v) {
   return new Promise(resolve => {
@@ -26,6 +33,8 @@ function delay(t, v) {
 
 const fetchSubjectsTopics = subjectId =>
   delay(1000).then(() => subjectTopics[subjectId]);
+
+let fetchFavoriteSubjectIds = [];
 
 const AddTitle = styled('span')`
   ${fonts.sizes(16, 1.2)};
@@ -148,6 +157,7 @@ const buttonAddition = css`
 
 const StyledButtonWrapper = styled.div`
   display: flex;
+  margin-left:auto;
   &:focus-within {
     > button {
       opacity: 1;
@@ -170,6 +180,17 @@ const StyledButtonWrapper = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  display:flex;
+  width: 100%;
+  min-height: 100%;
+`;
+
+const Plumbcontainer = styled.div`
+  position: relative;
+  z-index:  1:
+`;
+
 class StructureExample extends Component {
   constructor(props) {
     super(props);
@@ -182,6 +203,7 @@ class StructureExample extends Component {
     };
     this.renderListItems = this.renderListItems.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
   componentDidMount() {
@@ -228,54 +250,65 @@ class StructureExample extends Component {
     }
   }
 
-  renderListItems({ subjectId, isSubject, isOpen }) {
+  toggleFavorite(subjectId){
+    if(!fetchFavoriteSubjectIds.includes(subjectId)){
+      fetchFavoriteSubjectIds.push(subjectId)
+    } else {
+      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter(id => id !== subjectId)
+    }
+    this.forceUpdate();
+  }
+
+  renderListItems({ subjectId, isSubject, isOpen })  {
     const { availableFilters } = this.state;
 
     if (isSubject) {
       if (!availableFilters[subjectId] || !isOpen) {
-        return null;
+        return <Wrapper/>
       }
       return (
-        <StyledButtonWrapper>
-          <AddTitle show>Filtrer emner:</AddTitle>
-          {availableFilters[subjectId].map(filter => (
-            <ConnectionButton
-              type="button"
-              key={filter.id}
-              className={
-                this.state.activeFilters.some(
-                  StructureFilter => StructureFilter === filter.id,
-                )
-                  ? 'checkboxItem--checked'
-                  : ''
-              }
-              onClick={() => {
-                const currentIndex = this.state.activeFilters.findIndex(
-                  StructureFilter => StructureFilter === filter.id,
-                );
-                if (currentIndex === -1) {
-                  this.setState(prevState => {
-                    const { activeFilters } = prevState;
-                    activeFilters.push(filter.id);
-                    return {
-                      activeFilters,
-                    };
-                  });
-                } else {
-                  this.setState(prevState => {
-                    const { activeFilters } = prevState;
-                    activeFilters.splice(currentIndex, 1);
-                    return {
-                      activeFilters,
-                    };
-                  });
+        <Wrapper>
+          <StyledButtonWrapper>
+            <AddTitle show>Filtrer emner:</AddTitle>
+            {availableFilters[subjectId].map(filter => (
+              <ConnectionButton
+                type="button"
+                key={filter.id}
+                className={
+                  this.state.activeFilters.some(
+                    StructureFilter => StructureFilter === filter.id,
+                  )
+                    ? 'checkboxItem--checked'
+                    : ''
                 }
-              }}>
-              <span />
-              <span>{filter.name}</span>
-            </ConnectionButton>
-          ))}
-        </StyledButtonWrapper>
+                onClick={() => {
+                  const currentIndex = this.state.activeFilters.findIndex(
+                    StructureFilter => StructureFilter === filter.id,
+                  );
+                  if (currentIndex === -1) {
+                    this.setState(prevState => {
+                      const { activeFilters } = prevState;
+                      activeFilters.push(filter.id);
+                      return {
+                        activeFilters,
+                      };
+                    });
+                  } else {
+                    this.setState(prevState => {
+                      const { activeFilters } = prevState;
+                      activeFilters.splice(currentIndex, 1);
+                      return {
+                        activeFilters,
+                      };
+                    });
+                  }
+                }}>
+                <span />
+                <span>{filter.name}</span>
+              </ConnectionButton>
+            ))}
+          </StyledButtonWrapper>
+        </Wrapper>
       );
     }
     return (
@@ -299,28 +332,37 @@ class StructureExample extends Component {
       <Spinner />
     ) : (
       <Fragment>
-        <Structure
-          DND={this.props.structureEditor}
-          openedPaths={this.state.openedPaths}
-          highlightMainActive={this.props.structureEditor}
-          structure={structure}
-          toggleOpen={({ path, id, isSubject }) => {
-            this.setState(prevState => {
-              const filtered = prevState.openedPaths.filter(p => p !== path);
-              if (filtered.length === prevState.openedPaths.length) {
-                this.onOpenPath({ id, isSubject });
-                return { openedPaths: [...prevState.openedPaths, path] };
-              }
-              return { openedPaths: filtered };
-            });
-          }}
-          renderListItems={this.renderListItems}
-          activeFilters={activeFilters}
-          filters={availableFilters}
-        />
+        <OneColumn>
+          <Plumbcontainer>
+            <Structure
+              DND={this.props.structureEditor}
+              openedPaths={this.state.openedPaths}
+              highlightMainActive={this.props.structureEditor}
+              structure={structure}
+              toggleOpen={({ path, id, isSubject }) => {
+                this.setState(prevState => {
+                  const filtered = prevState.openedPaths.filter(p => p !== path);
+                  if (filtered.length === prevState.openedPaths.length) {
+                    this.onOpenPath({ id, isSubject });
+                    return { openedPaths: [...prevState.openedPaths, path] };
+                  }
+                  return { openedPaths: filtered };
+                });
+              }}
+              renderListItems={this.renderListItems}
+              activeFilters={activeFilters}
+              filters={availableFilters}
+              toggleFavorite={this.toggleFavorite}
+              favoriteSubjectIds={fetchFavoriteSubjectIds}
+              children
+            />
+          </Plumbcontainer>
+        </OneColumn>
       </Fragment>
+
     );
   }
 }
 
 export default StructureExample;
+

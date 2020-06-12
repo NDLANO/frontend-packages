@@ -7,6 +7,7 @@ import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
 import { breakpoints, mq } from '@ndla/core';
 import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
+import ComponentCursor from '../ComponentCursor';
 import FrontpageAllSubjects, { subjectsProps } from './FrontpageAllSubjects';
 
 const StyledWrapper = styled.div`
@@ -19,6 +20,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledMenu = styled.div`
+  position: relative;
   margin-bottom: 28px;
   > *:first-of-type {
     margin-right: 10px;
@@ -48,6 +50,7 @@ const FrontpageProgramMenu = ({
   return (
     <StyledWrapper>
       <StyledMenu>
+        <ComponentCursor variant="right" text={t('frontpageMenu.cursorText')} />
         <Button
           onClick={() => setShowSubjects(false)}
           lighter={showSubjects}

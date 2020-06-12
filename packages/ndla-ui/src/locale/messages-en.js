@@ -660,19 +660,22 @@ const messages = {
     text:
       'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
     linkText: 'See all tips in the Toolbox here',
+    cursorText: 'Tip',
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Interdisciplinary subjects',
     text:
       'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
-    linkText: 'Get an overview of our interdisciplinary topics here',
+    linkText: 'See cases for multidisciplinary topics',
     publicHealthTopic: 'Public health and life management',
     democracyTopic: 'Democracy and citizenship',
     sustainableTopic: 'Sustainable development',
+    cursorText: 'New',
   },
   frontpageMenu: {
     program: 'Education',
     allsubjects: 'All subjects',
+    cursorText: 'Find teaching material, assignments, movies and more.',
   },
 };
 

@@ -2,7 +2,8 @@ import { SubjectMaterialBadge } from '@ndla/ui';
 import React from 'react';
 
 export const subject = {
-  label: 'Salg, service og reiseliv Vg1',
+  subjectName: 'Salg, service og reiseliv Vg1',
+  label: 'Forretningsdrift',
   url: '#',
   description: {
     heading: 'Om salg, service og reiseliv',
@@ -309,30 +310,28 @@ export const programs = [
             name: 'programfag',
             subjects: [
               {
-                label: 'Salg, service og reiseliv Vg1',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
+                subjectName: 'Salg, service og reiseliv Vg1',
                 label: 'Forretningsdrift',
                 url: '#',
                 id: 'urn:subject:12', // Id til faget
                 showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
               },
               {
+                subjectName: 'Salg, service og reiseliv Vg1',
                 label: 'Kultur og samhandling',
                 url: '#',
                 id: 'urn:subject:12', // Id til faget
                 showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
               },
               {
+                subjectName: 'Salg, service og reiseliv Vg1',
                 label: 'Markedsføring og innovasjon',
                 url: '#',
                 id: 'urn:subject:12', // Id til faget
                 showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
               },
               {
+                subjectName: 'Salg, service og reiseliv Vg1',
                 label: 'Yrkesfaglig fordypning',
                 url: '#',
                 id: 'urn:subject:12', // Id til faget

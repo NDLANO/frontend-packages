@@ -67,11 +67,7 @@ export const NavigationBox = ({
   onClick,
 }: Props) => (
   <StyledWrapper>
-    {heading && (
-      <StyledHeading>
-        {heading} ({items.length})
-      </StyledHeading>
-    )}
+    {heading && <StyledHeading>{heading}</StyledHeading>}
     <StyledList>
       {items.map((item: ItemProps) => (
         <StyledListItem key={item.label}>

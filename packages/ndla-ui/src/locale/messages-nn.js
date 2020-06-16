@@ -687,6 +687,11 @@ const messages = {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
   },
+  navigation: {
+    showLongerDescription: 'Lengre beskriving',
+    showShorterDescription: 'Kortere beskriving',
+    topics: 'Emner',
+  },
 };
 
 export default messages;

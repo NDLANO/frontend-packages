@@ -674,6 +674,11 @@ const messages = {
     program: 'Education',
     allsubjects: 'All subjects',
   },
+  navigation: {
+    showLongerDescription: 'Longer description',
+    showShorterDescription: 'Shorter description',
+    topics: 'Topics',
+  },
 };
 
 export default messages;

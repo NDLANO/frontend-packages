@@ -5,6 +5,7 @@ details {
   width: 100%;
   position: relative;
   left: 0;
+  clear: left;
 
   &:not(.c-details--solution-box) {
     border: 1px solid $brand-grey--light;
@@ -19,11 +20,11 @@ details {
   }
 
   // summary is first child, 2 child is content
-  >*:nth-child(2) {
+  > *:nth-child(2) {
     margin-top: 0;
   }
 
-  >*:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 
@@ -35,22 +36,22 @@ details {
   }
 }
 
-details>ul:not([class]),
-details :not(li)>ul:not([class]) {
+details > ul:not([class]),
+details :not(li) > ul:not([class]) {
   @include mq(desktop) {
     margin-left: $spacing;
   }
 }
 
-details>ol:not([class]),
-details :not(li)>ol:not([class]),
+details > ol:not([class]),
+details :not(li) > ol:not([class]),
 details .ol-list--roman {
   @include mq(desktop) {
     margin-left: $spacing--large;
   }
 }
 
-details+details {
+details + details {
   margin-top: $spacing !important;
 }
 

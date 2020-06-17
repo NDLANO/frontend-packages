@@ -76,6 +76,7 @@ const SearchField = ({
   loading,
   onFilterRemove,
   inputRef,
+  frontPageSearch = false,
 }) => {
   const handleOnFilterRemove = (value, filterName) => {
     onFilterRemove(value, filterName);

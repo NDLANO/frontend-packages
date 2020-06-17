@@ -21,18 +21,18 @@ import { ContentTypeResultShape } from '../shapes';
 
 const classes = new BEMHelper('c-search-field');
 
-const inputStyle = css`
+const inputStyle = frontPageSearch => css`
   width: 100%;
   height: 48px;
   line-height: 28px;
   border: 1px solid ${colors.brand.greyLight};
-  border-radius: ${misc.borderRadius};
+  border-radius: ${frontPageSearch ? '100px' : misc.borderRadius};
   padding-right: ${spacing.large};
   padding-left: ${spacing.normal};
   flex-grow: 1;
   outline: 0;
-
-  &:focus {
+  &:focus,
+  &:hover {
     border-color: ${colors.brand.primary};
   }
 
@@ -93,7 +93,7 @@ const SearchField = ({
         ref={inputRef}
         type="search"
         css={css`
-          ${inputStyle};
+          ${inputStyle(frontPageSearch)};
           ${hasFilters && filterStyle};
         `}
         aria-autocomplete="list"

@@ -14,7 +14,7 @@ const StyledHeader = styled.div`
   align-items: center;
   position: relative;
   max-width: 1024px;
-  padding: ${spacing.normal} 0 0;
+  padding: ${spacing.normal} 0 ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
     padding: ${spacing.large} 0 0;
   }

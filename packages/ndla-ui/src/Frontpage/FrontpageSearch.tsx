@@ -34,7 +34,7 @@ const StyledWrapper = styled.section`
 
 const StyledSearchBackdrop = styled.div`
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -142,6 +142,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
         )}
         <SearchFieldForm inputHasFocus={inputHasFocus} onSubmit={onSearch}>
           <SearchField
+            frontPageSearch={true}
             inputRef={inputRef}
             onFocus={onSearchInputFocus}
             value={searchFieldValue}

@@ -251,8 +251,8 @@ const Item = ({ goal, t }: any) => {
                     {isExpanded ? (
                       <ToggleText>Skjul støtte til læreplanen</ToggleText>
                     ) : (
-                        <ToggleText>Vis støtte til læreplanen</ToggleText>
-                      )}
+                      <ToggleText>Vis støtte til læreplanen</ToggleText>
+                    )}
                   </ToggleWrapper>
                 </Button>
               )}

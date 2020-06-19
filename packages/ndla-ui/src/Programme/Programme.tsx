@@ -66,7 +66,6 @@ const StyledMenu = styled.div`
   }
 `;
 const StyledMenuItem = styled.span`
-  text-transform: uppercase;
   font-weight: ${fonts.weight.bold};
 `;
 
@@ -91,7 +90,7 @@ type Props = {
   ];
 };
 
-export const Program = ({ heading, image, grades }: Props) => {
+export const Programme = ({ heading, image, grades }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(0);
 
   const selectedGrade = grades[showGradeIndex];
@@ -131,4 +130,4 @@ export const Program = ({ heading, image, grades }: Props) => {
   );
 };
 
-export default Program;
+export default Programme;

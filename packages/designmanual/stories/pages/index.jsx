@@ -52,7 +52,7 @@ import ExplanationService from './ExplanationService';
 import FFFrontpage from './FFFrontpage';
 import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
-import ProgramPage from './ProgramPage';
+import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
 import { articleBreadCrumb } from '../../dummydata/mockPrograms';
 
@@ -69,7 +69,7 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <ProgramPage />
+        <ProgrammePage />
       </Content>
       <FooterExample />
     </PageContainer>

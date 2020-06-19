@@ -115,13 +115,13 @@ const FrontpageAllSubjects = ({ categories, t }: subjectsProps) => {
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);
     data.push({
-      title: category.name.toUpperCase(),
+      title: category.name,
       content: renderList(category.subjects),
     });
   });
 
   data.unshift({
-    title: t('frontpageMenu.allsubjects').toUpperCase(),
+    title: t('frontpageMenu.allsubjects'),
     content: renderList(allSubjects),
   });
 

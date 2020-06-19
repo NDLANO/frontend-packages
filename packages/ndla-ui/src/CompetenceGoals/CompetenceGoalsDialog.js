@@ -25,12 +25,13 @@ export const CompetenceGoalsDialog = ({
         controllable
         isOpen={isOpen}
         onClose={onClose}
+        size="fullscreen"
+        animation="slide-up"
         backgroundColor="grey-dark"
-        size="large"
         narrow>
         {close => (
           <Fragment>
-            <ModalHeader>
+            <ModalHeader modifier="white modal-body">
               <ModalCloseButton onClick={close} title="Lukk" />
             </ModalHeader>
             <ModalBody>

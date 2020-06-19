@@ -117,7 +117,7 @@ const CompetenceGoalTabdata = [
   {
     id: 'tmpid1',
     name: 'Kompetansemål',
-    description: 'Målet er at du skal kunne:',
+    description: 'Målet er at eleven skal kunne:',
     type: 'goals',
     goals: [
       {
@@ -125,21 +125,61 @@ const CompetenceGoalTabdata = [
         name:
           'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
         url: '#1',
+        subitems: [
+          {
+            type: 'core',
+            name: 'Utforskning og problemløsning',
+            resourceurl: '#',
+          },
+          {
+            type: 'topic',
+            name: 'Folkehelse og livsmestring',
+            resourceurl: '#',
+          },
+          {
+            type: 'subject',
+            name: 'Utforskning og problemløsning',
+            resourceurl: '#',
+            linkitem: {
+              label: 'Se alle kompetansemål i dette faget',
+              url: '#',
+            },
+          },
+        ],
       },
       {
         id: 'K17637',
         name:
           'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
-        url: '#1',
+        url: '#2',
+        subitems: [
+          {
+            type: 'core',
+            name: 'Utforskning og problemløsning',
+          },
+          {
+            type: 'topic',
+            name: 'Folkehelse og livsmestring',
+            resourceurl: '#',
+          },
+          {
+            type: 'subject',
+            name: 'Utforskning og problemløsning',
+            linkitem: {
+              label: 'Se alle kompetansemål i dette faget',
+              url: '#',
+            },
+          },
+        ],
       },
       {
         id: 'K17635',
         name: 'lage budskap tilpasset målgruppe, formål og kanal',
-        url: '#1',
+        url: '#3',
       },
     ],
   },
-  {
+  /* {
     id: 'tmpid2',
     name: 'Kjerneelementer',
     description: '',
@@ -161,9 +201,9 @@ const CompetenceGoalTabdata = [
         id: 'K176353',
         name: 'lage budskap tilpasset målgruppe, formål og kanal - Kjernestuff',
         url: '#1',
-      },
+      }, 
     ],
-  },
+  },*/
 ];
 
 export const CompetenceGoalListExample = () => {

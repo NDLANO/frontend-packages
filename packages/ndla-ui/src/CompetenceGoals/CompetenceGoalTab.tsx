@@ -246,13 +246,13 @@ const Item = ({ goal, t }: any) => {
                 <Button link onClick={() => setIsExpanded(!!!isExpanded)}>
                   <ToggleWrapper className="showMore">
                     <ToggleItem>
-                      {isExpanded ? <ChevronDown /> : <ChevronUp />}
+                      {isExpanded ? <ChevronUp /> : <ChevronDown />}
                     </ToggleItem>
                     {isExpanded ? (
                       <ToggleText>Skjul støtte til læreplanen</ToggleText>
                     ) : (
-                      <ToggleText>Vis støtte til læreplanen</ToggleText>
-                    )}
+                        <ToggleText>Vis støtte til læreplanen</ToggleText>
+                      )}
                   </ToggleWrapper>
                 </Button>
               )}

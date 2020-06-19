@@ -19,7 +19,6 @@ import {
   breakpoints,
   mq,
 } from '@ndla/core';
-import rgba from 'polished/lib/color/rgba';
 
 export const strippedStyle = css`
   transition: background-color none;
@@ -38,7 +37,6 @@ export const strippedStyle = css`
     box-shadow: none;
     color: ${colors.brand.primary};
     background-color: transparent;
-    transform: none;
     border: none;
   }
   &:focus {
@@ -62,7 +60,6 @@ export const pillStyle = css`
     box-shadow: 0px 1px 0px ${colors.brand.primary};
   }
   &:hover {
-    transform: none;
     > span {
       box-shadow: none;
     }
@@ -79,32 +76,20 @@ export const outlineStyle = css`
     color: white;
     background-color: ${colors.brand.primary};
     border: 2px solid transparent;
-    transform: translateY(0) translateX(0);
   }
   &:disabled {
     color: ${colors.brand.grey};
     border: 2px solid transparent;
     background-color: ${colors.background.dark};
     cursor: not-allowed;
-    transform: translateY(0) translateX(0);
   }
 `;
 
 export const clippedButtonStyle = css`
   border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
-  &:hover,
-  &:focus,
-  &:disabled {
-    transform: translateY(0) translateX(0);
-  }
 `;
 export const clippedButtonAttachmentStyle = css`
   border-radius: 0 ${misc.borderRadius} ${misc.borderRadius} 0;
-  &:hover,
-  &:focus,
-  &:disabled {
-    transform: translateY(0) translateX(0);
-  }
 `;
 export const clippedButtonOutlineStyle = css`
   ${outlineStyle};
@@ -114,7 +99,6 @@ export const clippedButtonOutlineStyle = css`
   &:hover,
   &:focus,
   &:disabled {
-    transform: translateY(0) translateX(0);
     border-right: 0;
   }
 `;
@@ -126,7 +110,6 @@ export const clippedButtonAttachmentOutlineStyle = css`
   &:hover,
   &:focus,
   &:disabled {
-    transform: translateY(0) translateX(0);
     border-left: 0;
   }
 `;
@@ -235,12 +218,10 @@ export const appearances = {
       color: white;
       background-color: ${colors.brand.primary};
       border: 2px solid transparent;
-      transform: translateY(0) translateX(0);
     }
     &:disabled {
       border: 2px solid transparent;
       cursor: not-allowed;
-      transform: translateY(0) translateX(0);
     }
   `,
   lighter: css`
@@ -253,7 +234,6 @@ export const appearances = {
     &:hover,
     &:focus,
     &:active {
-      transform: translateY(0) translateX(0);
       background: ${colors.brand.primary};
       border-color: ${colors.brand.primary};
     }
@@ -262,13 +242,24 @@ export const appearances = {
       border: 2px solid transparent;
       background-color: ${colors.background.dark};
       cursor: not-allowed;
-      transform: translateY(0) translateX(0);
     }
   `,
   darker: css`
     background-color: ${colors.brand.dark};
     border-color: ${colors.brand.dark};
     color: ${colors.background.default};
+  `,
+  lighterGrey: css`
+    background-color: ${colors.brand.greyLightest};
+    border-color: ${colors.brand.greyLightest};
+    color: ${colors.brand.primary};
+    font-weight: ${fonts.weight.semibold};
+    &:hover,
+    &:focus,
+    &:active {
+      background: ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
+    }
   `,
   outline: css`
     ${outlineStyle};
@@ -404,11 +395,7 @@ export const buttonStyle = css`
   &:focus {
     color: white;
     background-color: ${colors.brand.dark};
-    border: 2px solid ${rgba(colors.brand.primary, 0)};
-    transform: translateY(1px) translateX(1px);
-  }
-  &:active {
-    transform: translateY(2px) translateX(2px);
+    border: 2px solid ${colors.brand.dark};
   }
 
   &[disabled] {
@@ -416,7 +403,6 @@ export const buttonStyle = css`
     background-color: ${colors.background.dark};
     border-color: transparent;
     cursor: not-allowed;
-    transform: translateY(0) translateX(0);
   }
   &:focus {
     box-shadow: 0 0 2px ${colors.brand.primary};
@@ -434,6 +420,7 @@ export const ButtonStyles = p =>
   ${p.width ? width[p.width] : null}
   ${p.textAlign ? textAlign[p.textAlign] : null}
   ${p.darker ? appearances['darker'] : null}
+  ${p.lighterGrey ? appearances['lighterGrey'] : null}
 `;
 
 export const StyledButton = styled('button')`
@@ -547,6 +534,7 @@ Button.propTypes = {
   width: PropTypes.oneOf(['auto', 'full']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),
   darker: PropTypes.bool,
+  lighterGrey: PropTypes.bool,
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

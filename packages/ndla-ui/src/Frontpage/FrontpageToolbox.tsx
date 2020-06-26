@@ -21,6 +21,7 @@ const StyledSection = styled.section`
   position: relative;
   ${mq.range({ from: breakpoints.desktop })} {
     padding: ${spacing.large};
+    margin: 124px 0;
   }
 `;
 

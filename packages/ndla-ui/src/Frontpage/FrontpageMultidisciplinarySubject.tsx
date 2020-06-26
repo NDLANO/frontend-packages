@@ -27,6 +27,7 @@ export const StyledSection = styled.section`
   padding: ${spacing.medium};
   ${mq.range({ from: breakpoints.desktop })} {
     padding: ${spacing.large};
+    margin: 124px 0;
   }
 `;
 

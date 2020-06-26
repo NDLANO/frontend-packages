@@ -1,11 +1,18 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+// @ts-ignore
+import Button from '@ndla/button';
+// @ts-ignore
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
 
 const StyledWrapper = styled.section``;
 
-const StyledIngress = styled.p`
+const StyledIngress = styled.div`
   max-width: 612px;
+  margin-bottom: 10px;
 `;
 
 const StyledH1 = styled.h1`
@@ -24,18 +31,79 @@ const StyledH1 = styled.h1`
   }
 `;
 
+const StyledButtonWrapper = styled.div`
+  margin-top: 10px;
+`;
+
+const StyledContentWrapper = styled.div`
+  margin-top: 32px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    border: 2px solid #e6e6e6;
+    border-radius: 6px;
+    margin-left: -8.33%;
+    margin-right: -8.33%;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding: 0 102px;
+  }
+  ${mq.range({ from: breakpoints.wide })} {
+    margin: 32px -102px;
+  }
+`;
+
 type Props = {
   heading: string;
-  ingress: string;
+  ingress: React.ReactNode;
+  onToggleShowContent: () => void;
+  showContent: boolean;
+  isLoading: boolean;
   children: React.ReactNode;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-export const NavigationTopicAbout = ({ heading, ingress, children }: Props) => (
-  <StyledWrapper>
-    <StyledH1>{heading}</StyledH1>
-    <StyledIngress>{ingress}</StyledIngress>
-    {children}
-  </StyledWrapper>
-);
+export const NavigationTopicAbout = ({
+  heading,
+  ingress,
+  onToggleShowContent,
+  showContent,
+  isLoading,
+  children,
+  t,
+}: Props) => {
+  return (
+    <StyledWrapper>
+      <StyledH1>{heading}</StyledH1>
+      {isLoading ? (
+        <p>Laster emne</p>
+      ) : (
+        <>
+          <StyledIngress>
+            {ingress}
+            <StyledButtonWrapper>
+              <Button
+                link
+                onClick={() => {
+                  onToggleShowContent();
+                }}>
+                {showContent ? (
+                  <>
+                    {t('navigation.showShorterDescription')} <ChevronUp />
+                  </>
+                ) : (
+                  <>
+                    {t('navigation.showLongerDescription')} <ChevronDown />
+                  </>
+                )}
+              </Button>
+            </StyledButtonWrapper>
+          </StyledIngress>
+          {showContent && (
+            <StyledContentWrapper>{children}</StyledContentWrapper>
+          )}
+        </>
+      )}
+    </StyledWrapper>
+  );
+};
 
-export default NavigationTopicAbout;
+export default injectT(NavigationTopicAbout);

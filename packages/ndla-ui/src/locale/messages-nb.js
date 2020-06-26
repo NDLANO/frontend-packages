@@ -686,6 +686,11 @@ const messages = {
     allsubjects: 'Alle fag',
     cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
   },
+  navigation: {
+    showLongerDescription: 'Lengre beskrivelse',
+    showShorterDescription: 'Kortere beskrivelse',
+    topics: 'Emner',
+  },
 };
 
 export default messages;

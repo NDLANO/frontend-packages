@@ -87,10 +87,7 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage
-          selectedFilters={['Forretningsdrift']}
-          selectedMainTopic="Økonomi"
-        />
+        <SubjectPage selectedMainTopic="Økonomi" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -99,11 +96,7 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage
-          selectedFilters={['Forretningsdrift']}
-          selectedMainTopic="Økonomi"
-          selectedSubTopic="Lønsemd"
-        />
+        <SubjectPage selectedMainTopic="Økonomi" selectedSubTopic="Lønsemd" />
       </Content>
       <FooterExample />
     </PageContainer>

@@ -17,13 +17,32 @@ const StyledH1 = styled.h1`
     ${fonts.sizes('52px', '65px')};
   }
 `;
+const StyledMainText = styled.span`
+  display: block;
+`;
+const StyledSubText = styled.span`
+  display: block;
+  ${fonts.sizes('20px', '24px')};
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes('32px', '40px')};
+  }
+
+  ${mq.range({ from: breakpoints.desktop })} {
+    ${fonts.sizes('40px', '48px')};
+  }
+`;
 
 type Props = {
+  subHeading?: string;
   children: React.ReactNode;
 };
 
-export const NavigationHeading = ({ children }: Props) => (
-  <StyledH1>{children}</StyledH1>
+export const NavigationHeading = ({ subHeading, children }: Props) => (
+  <StyledH1>
+    <StyledMainText>{children}</StyledMainText>
+    {subHeading && <StyledSubText>{subHeading}</StyledSubText>}
+  </StyledH1>
 );
 
 export default NavigationHeading;

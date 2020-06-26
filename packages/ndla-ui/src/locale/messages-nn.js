@@ -690,6 +690,11 @@ const messages = {
     allsubjects: 'Alle fag',
     cursorText: 'Finn lærestoff, oppgåver, filmar m.m.',
   },
+  navigation: {
+    showLongerDescription: 'Lengre beskriving',
+    showShorterDescription: 'Kortere beskriving',
+    topics: 'Emner',
+  },
 };
 
 export default messages;

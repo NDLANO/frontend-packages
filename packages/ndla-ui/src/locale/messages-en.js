@@ -677,6 +677,11 @@ const messages = {
     allsubjects: 'All subjects',
     cursorText: 'Find teaching material, assignments, movies and more.',
   },
+  navigation: {
+    showLongerDescription: 'Longer description',
+    showShorterDescription: 'Shorter description',
+    topics: 'Topics',
+  },
 };
 
 export default messages;

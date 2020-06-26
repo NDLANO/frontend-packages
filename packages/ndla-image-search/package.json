@@ -23,7 +23,8 @@
     "@ndla/core": "^0.6.26",
     "@ndla/forms": "^0.3.96",
     "@ndla/licenses": "^0.6.29",
-    "@ndla/util": "^0.4.0"
+    "@ndla/util": "^0.4.0",
+    "snyk": "^1.349.0"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
@@ -33,5 +34,10 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }

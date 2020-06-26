@@ -57,8 +57,11 @@ const StyledContentWrapper = styled.div`
 const StyledMenu = styled.div`
   margin-top: 28px;
   margin-bottom: 28px;
-  > *:first-of-type {
+  > * {
     margin-right: 10px;
+  }
+  > *:last-of-type {
+    margin-right: 0;
   }
   ${mq.range({ from: breakpoints.tablet })} {
     margin-top: 40px;

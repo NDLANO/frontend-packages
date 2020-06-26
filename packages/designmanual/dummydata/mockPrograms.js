@@ -494,7 +494,7 @@ export const programs = [
 
 export const subjectCategories = [
   {
-    name: 'fellesfag',
+    name: 'Fellesfag',
     subjects: [
       {
         nodeId: '42',
@@ -549,7 +549,7 @@ export const subjectCategories = [
     ],
   },
   {
-    name: 'yrkesfag',
+    name: 'Yrkesfag',
     subjects: [
       {
         nodeId: '51',
@@ -640,7 +640,7 @@ export const subjectCategories = [
     ],
   },
   {
-    name: 'studieforberedende',
+    name: 'Studieforberedende',
     subjects: [
       { nodeId: '52234', name: 'Biologi 1', url: '#', id: 'urn:subject:42' },
       {

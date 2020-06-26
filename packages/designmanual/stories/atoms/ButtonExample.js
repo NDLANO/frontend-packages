@@ -76,6 +76,18 @@ const ButtonExample = () => {
             Stor knapp
           </Button>{' '}
         </InlineContainer>
+        <h3>Lys grå versjon(lighterGrey)</h3>
+        <InlineContainer>
+          <Button size="normal" lighterGrey onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button size="medium" lighterGrey onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" lighterGrey onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
         <h3>Rundet knapp</h3>
         <InlineContainer>
           <Button
@@ -138,6 +150,29 @@ const ButtonExample = () => {
           <Button
             borderShape="rounded"
             lighter
+            size="large"
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            borderShape="rounded"
+            lighterGrey
+            size="normal"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            lighterGrey
+            size="medium"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            lighterGrey
             size="large"
             onClick={action('clicked')}>
             Stor knapp
@@ -206,6 +241,29 @@ const ButtonExample = () => {
             size="large"
             borderShape="sharpened"
             lighter
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            size="normal"
+            borderShape="sharpened"
+            lighterGrey
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            size="medium"
+            borderShape="sharpened"
+            lighterGrey
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            size="large"
+            borderShape="sharpened"
+            lighterGrey
             onClick={action('clicked')}>
             Stor knapp
           </Button>{' '}

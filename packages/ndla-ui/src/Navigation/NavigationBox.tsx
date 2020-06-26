@@ -55,7 +55,7 @@ export type ItemProps = {
 };
 type Props = {
   heading?: string;
-  colorMode?: 'dark' | 'light';
+  colorMode?: 'dark' | 'light' | 'lighterGrey';
   items: [ItemProps];
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
@@ -74,6 +74,7 @@ export const NavigationBox = ({
           <SafeLinkButton
             to={item.url}
             lighter={colorMode === 'light'}
+            lighterGrey={colorMode === 'lighterGrey'}
             darker={item.selected}
             buttonSize="medium"
             borderShape="sharpened"

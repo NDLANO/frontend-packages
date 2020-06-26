@@ -6,6 +6,6 @@
  *
  */
 
-import Program from './Program';
+import Programme from './Programme';
 
-export default Program;
+export default Programme;

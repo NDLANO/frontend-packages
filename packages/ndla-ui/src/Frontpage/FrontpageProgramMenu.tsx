@@ -30,8 +30,7 @@ const StyledMenu = styled.div`
   }
 `;
 const StyledMenuItem = styled.span`
-  text-transform: uppercase;
-  font-weight: ${fonts.weight.bold};
+  font-weight: ${fonts.weight.semibold};
 `;
 
 type Props = {
@@ -69,7 +68,7 @@ const FrontpageProgramMenu = ({
       {showSubjects ? (
         <FrontpageAllSubjects categories={subjectCategories} />
       ) : (
-        <NavigationBox colorMode="light" items={programItems} />
+        <NavigationBox colorMode="lighterGrey" items={programItems} />
       )}
     </StyledWrapper>
   );

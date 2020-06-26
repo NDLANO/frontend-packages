@@ -252,6 +252,8 @@ class FrontpageReDesignExample extends Component {
               programItems={programs}
               subjectCategories={subjectCategories}
             />
+          </OneColumn>
+          <OneColumn wide>
             <FrontpageMultidisciplinarySubject
               url="#"
               topics={[

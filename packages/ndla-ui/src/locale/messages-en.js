@@ -673,7 +673,7 @@ const messages = {
     cursorText: 'New',
   },
   frontpageMenu: {
-    program: 'Education',
+    program: 'Education programme',
     allsubjects: 'All subjects',
     cursorText: 'Find teaching material, assignments, movies and more.',
   },

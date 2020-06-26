@@ -8,14 +8,14 @@
 
 import React from 'react';
 
-import { Program } from '@ndla/ui';
+import { Programme } from '@ndla/ui';
 
 import { programs } from '../../dummydata/mockPrograms';
 
 export default () => {
   const exampleProgram = programs[11];
   return (
-    <Program
+    <Programme
       heading={exampleProgram.label}
       grades={exampleProgram.grades}
       image={exampleProgram.image}

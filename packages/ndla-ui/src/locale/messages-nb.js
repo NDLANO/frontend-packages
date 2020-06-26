@@ -665,14 +665,14 @@ const messages = {
     },
   },
   frontPageToolbox: {
-    heading: 'Verktøykassen',
+    heading: 'Verktøykassa',
     text:
-      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassen til NDLA finner du masse gode tips og råd!',
-    linkText: 'Se alle tipsene i verktøykassen her',
+      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
+    linkText: 'Se alle tipsene i verktøykassa her',
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
-    heading: 'Tverrfaglig tema',
+    heading: 'Tverrfaglige tema',
     text:
       'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
     linkText: 'Se caser for tverrfaglige tema',

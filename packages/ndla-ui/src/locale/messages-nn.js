@@ -676,7 +676,7 @@ const messages = {
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
-    heading: 'Tverrfagleg tema',
+    heading: 'Tverrfaglege tema',
     text:
       'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
     linkText: 'Sjå casar for tverrfaglege tema',

@@ -1,17 +1,13 @@
 import React from 'react';
-import SafeLink from '@ndla/safelink';
+import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
-// @ts-ignore
-import { StyledButton } from '@ndla/button';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
-
-const AnchorButton = StyledButton.withComponent('a');
 
 export const StyledSection = styled.section`
   position: relative;
@@ -115,13 +111,9 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
       </Content>
     </Wrapper>
     <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
-      <AnchorButton
-        href={url}
-        size="medium"
-        borderShape="rounded"
-        rel="noopener noreferrer">
+      <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
         {t('frontpageMultidisciplinarySubject.linkText')}
-      </AnchorButton>
+      </SafeLinkButton>
     </TargetItem>
     <Illustration />
   </StyledSection>

@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
-import { StyledButton } from '@ndla/button';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { spacing, breakpoints, mq } from '@ndla/core';
+import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
 import { ToolboxIllustration as Illustration } from './illustrations/FrontpageIllustrations';
-
-const AnchorButton = StyledButton.withComponent('a');
 
 const StyledSection = styled.section`
   margin-top: ${spacing.large};
@@ -54,14 +51,9 @@ const FrontpageToolbox: React.FunctionComponent<Props> = ({ url, t }) => (
     <ToolboxWrapper>
       <StyledText>{t('frontPageToolbox.text')}</StyledText>
     </ToolboxWrapper>
-    <AnchorButton
-      href={url}
-      target="_blank"
-      size="medium"
-      borderShape="rounded"
-      rel="noopener noreferrer">
+    <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
       {t('frontPageToolbox.linkText')}
-    </AnchorButton>
+    </SafeLinkButton>
     <Illustration />
   </StyledSection>
 );

@@ -55,6 +55,7 @@ import FrontpageReDesignExample from './FrontpageReDesignExample';
 import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
 import { articleBreadCrumb } from '../../dummydata/mockPrograms';
+import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
@@ -107,6 +108,15 @@ storiesOf('Re-design', module)
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <BreadCrumblist items={articleBreadCrumb} />
         <ArticleLearningmaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglige tema', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <MultidisciplinarySubjectPage />
       </Content>
       <FooterExample />
     </PageContainer>

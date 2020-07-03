@@ -175,3 +175,6 @@ export {
   NavigationTopicAbout,
 } from './Navigation';
 export { default as Programme } from './Programme';
+export {
+  default as MultidisciplinarySubject,
+} from './MultidisciplinarySubject';

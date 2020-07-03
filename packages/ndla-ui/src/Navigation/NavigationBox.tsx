@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
+// @ts-ignore
+import Button from '@ndla/button';
 import { breakpoints, colors, fonts, mq } from '@ndla/core';
 
 const StyledWrapper = styled.nav`
@@ -49,47 +51,59 @@ const StyledButtonContentSelected = styled.span`
 `;
 
 export type ItemProps = {
-  url: string;
+  url?: string;
   label: string;
+  id?: string;
   selected?: boolean;
 };
 type Props = {
   heading?: string;
   colorMode?: 'dark' | 'light' | 'lighterGrey';
-  items: [ItemProps];
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  isButtonElements?: boolean;
+  items: ItemProps[];
+  onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
 };
 
 export const NavigationBox = ({
   heading,
   colorMode = 'dark',
   items,
+  isButtonElements,
   onClick,
-}: Props) => (
-  <StyledWrapper>
-    {heading && <StyledHeading>{heading}</StyledHeading>}
-    <StyledList>
-      {items.map((item: ItemProps) => (
-        <StyledListItem key={item.label}>
-          <SafeLinkButton
-            to={item.url}
-            lighter={colorMode === 'light'}
-            lighterGrey={colorMode === 'lighterGrey'}
-            darker={item.selected}
-            buttonSize="medium"
-            borderShape="sharpened"
-            width="full"
-            textAlign="left"
-            onClick={onClick}>
-            <StyledButtonContent>
-              <StyledButtonContentText>{item.label}</StyledButtonContentText>
-              {item.selected && <StyledButtonContentSelected />}
-            </StyledButtonContent>
-          </SafeLinkButton>
-        </StyledListItem>
-      ))}
-    </StyledList>
-  </StyledWrapper>
-);
+}: Props) => {
+  const ListElementType = isButtonElements ? Button : SafeLinkButton;
+
+  return (
+    <StyledWrapper>
+      {heading && <StyledHeading>{heading}</StyledHeading>}
+      <StyledList>
+        {items.map((item: ItemProps) => (
+          <StyledListItem key={item.label}>
+            <ListElementType
+              to={item.url}
+              lighter={colorMode === 'light'}
+              lighterGrey={colorMode === 'lighterGrey'}
+              darker={item.selected}
+              buttonSize="medium"
+              size="medium"
+              borderShape="sharpened"
+              width="full"
+              textAlign="left"
+              onClick={(e: React.MouseEvent<HTMLElement>) => {
+                if (onClick) {
+                  onClick(e, item.id);
+                }
+              }}>
+              <StyledButtonContent>
+                <StyledButtonContentText>{item.label}</StyledButtonContentText>
+                {item.selected && <StyledButtonContentSelected />}
+              </StyledButtonContent>
+            </ListElementType>
+          </StyledListItem>
+        ))}
+      </StyledList>
+    </StyledWrapper>
+  );
+};
 
 export default NavigationBox;

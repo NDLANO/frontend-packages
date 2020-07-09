@@ -489,6 +489,7 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'To the frontpage',
+    youAreHere: 'You are here',
   },
   listview: {
     search: {

@@ -18,6 +18,7 @@ export { default as ExpandMore } from './ExpandMore';
 export { default as FileCompare } from './FileCompare';
 export { default as ForwardArrow } from './ForwardArrow';
 export { default as Grid } from './Grid';
+export { default as Home } from './Home';
 export { default as List } from './List';
 export { default as MenuBook } from './MenuBook';
 export { default as Minus } from './Minus';

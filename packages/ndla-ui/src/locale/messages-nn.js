@@ -492,6 +492,7 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til framsida',
+    youAreHere: 'Du er her',
   },
   listview: {
     search: {

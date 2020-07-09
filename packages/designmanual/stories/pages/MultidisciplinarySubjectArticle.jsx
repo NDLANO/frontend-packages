@@ -8,12 +8,14 @@
 
 import React, { useState } from 'react';
 
-import { MultidisciplinarySubjectHeader } from '@ndla/ui';
+import { BreadCrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
+import { injectT } from '@ndla/i18n';
 import ArticleLoader from '../article/ArticleLoader';
 
 const MultidisciplinarySubjectArticle = ({
   articleId = '22220',
   subjects = [],
+  t,
 }) => {
   const [article, setArticle] = useState(null);
   const subjectsLinks = [];
@@ -37,6 +39,24 @@ const MultidisciplinarySubjectArticle = ({
     });
   }
 
+  const breadCrumb = [
+    {
+      label: t('frontpageMultidisciplinarySubject.heading'),
+      id: 1,
+      url: '#',
+      typename: 'Home',
+    },
+  ];
+  if (article) {
+    breadCrumb.push({
+      label: article.title,
+      id: 2,
+      url: '#',
+      typename: 'Subjecttype',
+      isCurrent: true,
+    });
+  }
+
   const onArticleLoaded = article => {
     setArticle(article);
   };
@@ -44,6 +64,7 @@ const MultidisciplinarySubjectArticle = ({
     <>
       {article && (
         <>
+          <BreadCrumblist items={breadCrumb} startOffset={268} />
           <MultidisciplinarySubjectHeader
             subjects={subjects}
             subjectsLinks={subjectsLinks}
@@ -62,4 +83,4 @@ const MultidisciplinarySubjectArticle = ({
   );
 };
 
-export default MultidisciplinarySubjectArticle;
+export default injectT(MultidisciplinarySubjectArticle);

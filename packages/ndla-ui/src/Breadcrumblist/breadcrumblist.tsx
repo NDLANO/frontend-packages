@@ -6,27 +6,32 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints } from '@ndla/core';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
 
 import {
   School as SchoolIcon,
   MenuBook as MenuBookIcon,
   Bookmark as BookmarkIcon,
   Class as ClassIcon,
+  Home as HomeIcon,
   // @ts-ignore
 } from '@ndla/icons/action';
 import SafeLink from '@ndla/safelink';
 
-const Wrapper = styled.div`
+type WrapperProps = {
+  startOffset?: number;
+};
+const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
   margin: 32px 0 16px;
   width: auto;
-  background: #fff;
   z-index: 1;
   ${mq.range({ from: breakpoints.wide })} {
     margin: 32px 0;
@@ -34,12 +39,30 @@ const Wrapper = styled.div`
     position: fixed;
     left: 22px;
     top: 85px;
+    ${props =>
+      props.startOffset &&
+      `
+        position: absolute;
+        top: calc(${props.startOffset}px + 85px); 
+    `}
   }
   ${mq.range({ from: breakpoints.ultraWide })} {
     margin: 32px 0;
     left: 52px;
     width: 290px;
   }
+  ${mq.range({ from: '1440px' })} {
+    margin-left: 52px;
+    left: calc((100vw - 1480px) / 2);
+  }
+`;
+
+const Heading = styled.div`
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  padding: 0 0 18px 10px;
 `;
 
 const List = styled.ul`
@@ -66,6 +89,10 @@ const ListItem = styled.li`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    &:hover {
+      text-decoration: underline;
+      color: #20588f;
+    }
   }
 `;
 
@@ -101,21 +128,6 @@ const Dot = styled.span`
   margin-right: 5px;
 `;
 
-type BreadcrumbItemProps = {
-  id: string | number;
-  label: string;
-  url: string;
-  typename?: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic';
-  isCurrent?: boolean | false;
-  icon?: React.ReactNode;
-};
-
-type BreadCrumbProps = {
-  children: React.ReactNode;
-  items: [BreadcrumbItemProps];
-  onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
-};
-
 const TypeIcon = (type: string) => {
   switch (type) {
     case 'Subjecttype':
@@ -126,36 +138,106 @@ const TypeIcon = (type: string) => {
       return <BookmarkIcon className="crumbicon" />;
     case 'Subtopic':
       return <ClassIcon className="crumbicon" />;
+    case 'Home':
+      return <HomeIcon className="crumbicon" />;
     default:
       return null;
   }
 };
 
-const BreadCrumblist = ({ children, items, onNav }: BreadCrumbProps) => (
-  <Wrapper>
-    <List>
-      {items.map((item: BreadcrumbItemProps, level: number) => {
-        const { id, label, url, typename, icon, isCurrent = false } = item;
-        return (
-          <ListItem key={`${id}-${typename}`}>
-            {isCurrent ? <Dot /> : null}
-            <SafeLink
-              to={url}
-              onClick={(e: React.MouseEvent<HTMLElement>) => {
-                onNav && onNav(e, item);
-              }}
-              aria-label={label}>
-              <IconWrapper isCurrent={isCurrent}>
-                {icon && icon}
-                {typename && TypeIcon(typename)}
-              </IconWrapper>
-              <span>{label}</span>
-            </SafeLink>
-          </ListItem>
-        );
-      })}
-    </List>
-  </Wrapper>
-);
+type BreadcrumbItemProps = {
+  id: string | number;
+  label: string;
+  url: string;
+  typename?: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic' | 'Home';
+  isCurrent?: boolean | false;
+  icon?: React.ReactNode;
+};
 
-export default BreadCrumblist;
+type BreadCrumbProps = {
+  children: React.ReactNode;
+  items: [BreadcrumbItemProps];
+  startOffset?: number;
+  onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+};
+
+const BreadCrumblist = ({
+  children,
+  items,
+  startOffset = 0,
+  onNav,
+  t,
+}: BreadCrumbProps) => {
+  const [wrapperOffset, setWrapperOffset] = useState(startOffset);
+  const [useScrollEvent, setUseScrollEvent] = useState(false);
+
+  const handleScroll = () => {
+    let position = 0;
+    if (window.pageYOffset < startOffset) {
+      position = startOffset;
+    }
+    setWrapperOffset(position);
+  };
+
+  useEffect(() => {
+    if (useScrollEvent) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    } else {
+      window.removeEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [useScrollEvent]);
+
+  const checkScreenSize = () => {
+    if (window.innerWidth >= 1301) {
+      // Wide. If larger, and there is a startOffset, the breadcrumb is positioned absolute at start
+      setUseScrollEvent(true);
+    } else {
+      setUseScrollEvent(false);
+    }
+  };
+
+  useEffect(() => {
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
+  return (
+    <Wrapper startOffset={wrapperOffset}>
+      <Heading>{t('breadcrumb.youAreHere')}</Heading>
+      <List>
+        {items.map((item: BreadcrumbItemProps) => {
+          const { id, label, url, typename, icon, isCurrent = false } = item;
+          return (
+            <ListItem key={`${id}-${typename}`}>
+              {isCurrent ? <Dot /> : null}
+              <SafeLink
+                to={url}
+                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                  onNav && onNav(e, item);
+                }}
+                aria-label={label}>
+                <IconWrapper isCurrent={isCurrent}>
+                  {icon && icon}
+                  {typename && TypeIcon(typename)}
+                </IconWrapper>
+                <span>{label}</span>
+              </SafeLink>
+            </ListItem>
+          );
+        })}
+      </List>
+      {children}
+    </Wrapper>
+  );
+};
+
+export default injectT(BreadCrumblist);

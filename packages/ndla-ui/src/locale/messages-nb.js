@@ -489,6 +489,7 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til forsiden',
+    youAreHere: 'Du er her',
   },
   listview: {
     search: {

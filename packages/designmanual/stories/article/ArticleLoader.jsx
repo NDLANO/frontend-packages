@@ -66,6 +66,7 @@ ResourcesSubTopics.propTypes = {
   showAdditionalCores: PropTypes.bool,
   toggleAdditionalCores: PropTypes.func,
   ndlaFilm: PropTypes.bool,
+  onArticleLoaded: PropTypes.func,
 };
 
 class ArticleLoader extends Component {
@@ -86,7 +87,7 @@ class ArticleLoader extends Component {
   }
 
   handleSubmit = async articleId => {
-    const { useFFServer } = this.props;
+    const { useFFServer, onArticleLoaded } = this.props;
     try {
       const article = await fetchArticle(articleId, useFFServer);
       this.setState({
@@ -96,6 +97,9 @@ class ArticleLoader extends Component {
         },
         message: '',
       });
+      if (onArticleLoaded) {
+        onArticleLoaded(article);
+      }
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
       this.setState({
@@ -114,6 +118,7 @@ class ArticleLoader extends Component {
     const { article, message } = this.state;
     const {
       reset,
+      cleanInContext,
       closeButton,
       icon,
       label,
@@ -164,6 +169,12 @@ class ArticleLoader extends Component {
       );
     }
 
+    const articleModifier = cleanInContext
+      ? 'clean-in-context'
+      : reset
+      ? 'clean'
+      : '';
+
     return (
       <>
         {ndlaFilm && (
@@ -173,15 +184,15 @@ class ArticleLoader extends Component {
             isFFServer={isFFServer}
           />
         )}
-        <div>
-          <Helmet script={scripts} />
-          {article && (
+        {article && (
+          <div>
+            <Helmet script={scripts} />
             <OneColumn noPadding={reset}>
               <Article
                 id={id}
                 icon={icon}
                 article={article}
-                modifier={reset ? 'clean' : ''}
+                modifier={articleModifier}
                 messages={{
                   edition: 'Utgave',
                   publisher: 'Utgiver',
@@ -198,20 +209,21 @@ class ArticleLoader extends Component {
                 {articleChildren}
               </Article>
             </OneColumn>
-          )}
-          {!article && !hideForm && (
-            <SimpleSubmitForm
-              onSubmit={this.handleSubmit}
-              errorMessage={message}
-              labelText="Artikkel ID:"
-            />
-          )}
-          {article && closeButton ? (
-            <Button onClick={() => this.setState({ article: undefined })}>
-              Lukk
-            </Button>
-          ) : null}
-        </div>
+
+            {!article && !hideForm && (
+              <SimpleSubmitForm
+                onSubmit={this.handleSubmit}
+                errorMessage={message}
+                labelText="Artikkel ID:"
+              />
+            )}
+            {article && closeButton ? (
+              <Button onClick={() => this.setState({ article: undefined })}>
+                Lukk
+              </Button>
+            ) : null}
+          </div>
+        )}
       </>
     );
   }
@@ -227,6 +239,7 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
+  cleanInContext: PropTypes.bool,
   ndlaFilm: PropTypes.bool,
   useFFServer: PropTypes.bool,
   hideCompetenceGoals: PropTypes.bool,

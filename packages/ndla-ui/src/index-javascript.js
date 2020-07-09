@@ -177,4 +177,5 @@ export {
 export { default as Programme } from './Programme';
 export {
   default as MultidisciplinarySubject,
+  MultidisciplinarySubjectHeader,
 } from './MultidisciplinarySubject';

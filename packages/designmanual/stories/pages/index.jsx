@@ -56,6 +56,7 @@ import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
 import { articleBreadCrumb } from '../../dummydata/mockPrograms';
 import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
+import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
@@ -117,6 +118,90 @@ storiesOf('Re-design', module)
       <Content>
         <MastheadWithTopicMenu />
         <MultidisciplinarySubjectPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel bærekraftig utvikling', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate']}
+          articleId="22220"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel folkehelse og livsmestring', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth']}
+          articleId="22844"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel demokrati og medborgerskap', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['democracy']}
+          articleId="22727"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel alle tema', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate', 'democracy', 'publicHealth']}
+          articleId="22277"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel 2 tema(demokrati og klima)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate', 'democracy']}
+          articleId="22222"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel 2 tema(demokrati og folkehelse)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth', 'democracy']}
+          articleId="21045"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel 2 tema(klima og folkehelse)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth', 'climate']}
+          articleId="20655"
+        />
       </Content>
       <FooterExample />
     </PageContainer>

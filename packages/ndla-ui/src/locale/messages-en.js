@@ -682,6 +682,9 @@ const messages = {
     showShorterDescription: 'Shorter description',
     topics: 'Topics',
   },
+  multidisciplinarySubject: {
+    subjectsLinksDescription: 'Case in',
+  },
 };
 
 export default messages;

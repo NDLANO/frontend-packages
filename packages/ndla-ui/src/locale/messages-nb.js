@@ -691,6 +691,9 @@ const messages = {
     showShorterDescription: 'Kortere beskrivelse',
     topics: 'Emner',
   },
+  multidisciplinarySubject: {
+    subjectsLinksDescription: 'Case innen',
+  },
 };
 
 export default messages;

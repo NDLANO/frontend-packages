@@ -69,7 +69,6 @@ export const outlineStyle = css`
   color: ${colors.brand.primary};
   background-color: transparent;
   border: 2px solid ${colors.brand.primary};
-  font-weight: ${fonts.weight.bold};
   box-shadow: none;
   &:hover,
   &:focus {
@@ -84,6 +83,19 @@ export const outlineStyle = css`
     cursor: not-allowed;
   }
 `;
+
+const outlineWithSize = size =>
+  css`
+    ${outlineStyle}
+    ${size === 'small' &&
+      `border-width:1px;
+        &:hover,
+        &:focus,
+        &:disabled {
+          border-width:1px;
+        }
+     `}
+  `;
 
 export const clippedButtonStyle = css`
   border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
@@ -125,9 +137,20 @@ export const roundedStyle = css`
 `;
 
 export const sizes = {
+  small: css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: ${spacing.xsmall};
+    padding-right: ${spacing.xsmall};
+    ${fonts.sizes('14px', '18px')};
+    min-height: 32px;
+    font-weight: ${fonts.weight.semibold};
+  `,
   normal: css`
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding-left: ${spacing.small};
     padding-right: ${spacing.small};
     ${fonts.sizes('16px')};
@@ -136,6 +159,7 @@ export const sizes = {
   medium: css`
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding-left: 16px;
     padding-right: 16px;
     ${fonts.sizes('16px', '18px')};
@@ -144,6 +168,7 @@ export const sizes = {
   large: css`
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding-left: ${spacing.normal};
     padding-right: ${spacing.normal};
     ${fonts.sizes('18px', '20px')};
@@ -157,19 +182,26 @@ export const borderShapes = {
   `,
   rounded: size => css`
     border-radius: 32px;
-    ${size === 'medium'
-      ? `
+    ${size === 'small' &&
+      `padding-left:${spacing.small};
+       padding-right:${spacing.small};`}
+    ${
+      size === 'medium'
+        ? `
       ${mq.range({ from: breakpoints.tablet })} {
         padding-left:${spacing.medium};
         padding-right:${spacing.medium};
       }`
-      : null}
-    ${size === 'large'
-      ? `
+        : null
+    }
+    ${
+      size === 'large'
+        ? `
         ${mq.range({ from: breakpoints.tablet })} {
         padding-left:${spacing.large};padding-right:${spacing.large};
       }`
-      : null}
+        : null
+    }
   `,
   sharpened: size => css`
     border-radius: 2px;
@@ -415,7 +447,7 @@ export const ButtonStyles = p =>
   ${p.appearance ? appearances[p.appearance] : null}
   ${p.lighter ? appearances['lighter'] : null}
   ${p.size ? sizes[p.size] : null};
-  ${p.outline ? outlineStyle : null}
+  ${p.outline ? outlineWithSize(p.size) : null}
   ${p.borderShape ? borderShapes[p.borderShape](p.size) : null}
   ${p.width ? width[p.width] : null}
   ${p.textAlign ? textAlign[p.textAlign] : null}
@@ -529,7 +561,7 @@ Button.propTypes = {
     'ghostPillOutline',
     'large',
   ]),
-  size: PropTypes.oneOf(['normal', 'medium', 'large']),
+  size: PropTypes.oneOf(['small', 'normal', 'medium', 'large']),
   borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
   width: PropTypes.oneOf(['auto', 'full']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),

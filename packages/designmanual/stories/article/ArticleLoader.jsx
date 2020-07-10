@@ -49,7 +49,8 @@ const ResourcesSubTopics = ({
         toggleAdditionalResources={toggleAdditionalCores}
         showAdditionalResources={showAdditionalCores}
       />
-    }>
+    }
+    id="resourcesListId">
     <TopicIntroductionList
       toTopic={() => '#'}
       topics={ndlaFilm ? topicListFilm : topicList}
@@ -76,6 +77,7 @@ class ArticleLoader extends Component {
       showAdditionalCores: false,
       article: undefined,
     };
+    this.resourcesRef = React.createRef();
     this.toggleAdditionalCores = this.toggleAdditionalCores.bind(this);
   }
 
@@ -98,7 +100,7 @@ class ArticleLoader extends Component {
         message: '',
       });
       if (onArticleLoaded) {
-        onArticleLoaded(article);
+        onArticleLoaded(article, this.resourcesRef);
       }
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
@@ -158,7 +160,11 @@ class ArticleLoader extends Component {
     }
 
     if (!hideResources) {
-      articleChildren.push(<Resources key="resources" />);
+      articleChildren.push(
+        <div key="resources" ref={this.resourcesRef}>
+          <Resources />
+        </div>,
+      );
     }
 
     if (article && article.status) {

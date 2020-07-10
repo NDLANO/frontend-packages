@@ -16,6 +16,7 @@ export { default as ArticleByline } from './ArticleByline';
 export { default as ArticleContent } from './ArticleContent';
 export { default as ArticleFootNotes } from './ArticleFootNotes';
 export { default as ArticleHeaderWrapper } from './ArticleHeaderWrapper';
+export { default as ArticleSideBar } from './ArticleSideBar';
 export { ArticleTitle, ArticleIntroduction, ArticleWrapper };
 
 export default Article;

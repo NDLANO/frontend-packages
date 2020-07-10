@@ -290,6 +290,8 @@ const messages = {
     multipleAuthorsLabelAria: 'Licensees of this article are {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'The Licensee of this article is {name}',
+    copyPageLink: 'Copy page-link',
+    copyPageLinkCopied: 'Link copied',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',

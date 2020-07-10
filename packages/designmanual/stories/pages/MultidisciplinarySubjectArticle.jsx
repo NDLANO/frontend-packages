@@ -10,7 +10,9 @@ import React, { useState } from 'react';
 
 import { BreadCrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
+import { ArticleSideBar } from '@ndla/ui';
 import ArticleLoader from '../article/ArticleLoader';
+import LicenseBox from '../article/LicenseBox';
 
 const MultidisciplinarySubjectArticle = ({
   articleId = '22220',
@@ -18,6 +20,7 @@ const MultidisciplinarySubjectArticle = ({
   t,
 }) => {
   const [article, setArticle] = useState(null);
+  const [resourcesRef, setResourcesRef] = useState(null);
   const subjectsLinks = [];
 
   if (subjects.includes('climate')) {
@@ -57,14 +60,30 @@ const MultidisciplinarySubjectArticle = ({
     });
   }
 
-  const onArticleLoaded = article => {
+  const onArticleLoaded = (article, resourcesRef) => {
+    setResourcesRef(resourcesRef);
     setArticle(article);
+  };
+
+  const onToResourcesClick = e => {
+    e.preventDefault();
+    window.scrollTo({
+      top: resourcesRef.current.getBoundingClientRect().top + window.scrollY,
+      behavior: 'smooth',
+    });
   };
   return (
     <>
       {article && (
         <>
-          <BreadCrumblist items={breadCrumb} startOffset={268} />
+          <BreadCrumblist items={breadCrumb} startOffset={268}>
+            <ArticleSideBar
+              licenseBox={<LicenseBox />}
+              copyPageUrlLink={window.location}
+              onLinkToResourcesClick={onToResourcesClick}
+              linkToResources="#"
+            />
+          </BreadCrumblist>
           <MultidisciplinarySubjectHeader
             subjects={subjects}
             subjectsLinks={subjectsLinks}

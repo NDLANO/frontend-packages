@@ -279,7 +279,7 @@ const messages = {
     lastUpdated: 'Sist oppdatert',
     edition: 'Utgave',
     publisher: 'Utgiver',
-    useContent: 'Bruk innhold',
+    useContent: 'Retningslinjer for bruk',
     closeLabel: 'Lukk',
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Se hva {name} har bidratt med',
@@ -289,6 +289,8 @@ const messages = {
     multipleAuthorsLabelAria: 'Rettighetshavere er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'Rettighetshaver av artikkelen er {name}',
+    copyPageLink: 'Kopier lenke til siden',
+    copyPageLinkCopied: 'Lenke kopiert',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

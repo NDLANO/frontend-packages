@@ -137,7 +137,10 @@ export const MultidisciplinarySubject = ({
           <LayoutItem layout="extend">
             <NavigationBox
               items={filters}
-              onClick={(e, id) => onFilterClick(id)}
+              onClick={(
+                e: React.MouseEvent<HTMLElement>,
+                id: string | undefined,
+              ) => onFilterClick(id)}
               isButtonElements
             />
             <List items={items} totalCount={totalItemsCount} />

@@ -3,10 +3,20 @@ import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq } from '@ndla/core';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
+import { css } from '@emotion/core';
+import { Switch } from '@ndla/switch';
+import { uuid } from '@ndla/util';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 60px;
+`;
+const StyledHeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 `;
 const StyledHeading = styled.h2`
   ${fonts.sizes('18px', '32px')};
@@ -26,14 +36,39 @@ const StyledList = styled.ul`
     column-gap: 20px;
   }
 `;
-const StyledListItem = styled.li`
+type additionalResourceProps = {
+  isAdditionalResource?: boolean;
+  lighter?: boolean;
+  selected?: boolean;
+};
+
+const StyledListItem = styled.li<additionalResourceProps>`
   margin-bottom: 2px;
   ${mq.range({ from: breakpoints.tablet })} {
     margin-bottom: 20px;
   }
-  & > * {
-    margin-bottom: 1px;
-  }
+  ${props =>
+    props.isAdditionalResource &&
+    css`
+      position: relative;
+      & > * {
+        border: 1px dashed
+          ${props.lighter && !props.selected
+            ? `${colors.brand.tertiary}`
+            : `${colors.brand.dark}`};
+        background-clip: padding-box;
+        :hover,
+        :focus {
+          border: 1px dashed ${colors.brand.dark};
+          background-clip: padding-box;
+          color: ${colors.white};
+          ${StyledAdditionalResourceMark} {
+            color: ${colors.white};
+            border-color: ${colors.white};
+          }
+        }
+      }
+    `}
 `;
 const StyledButtonContent = styled.span`
   display: flex;
@@ -41,7 +76,33 @@ const StyledButtonContent = styled.span`
   justify-content: space-between;
   align-items: center;
 `;
-const StyledButtonContentText = styled.span``;
+
+const StyledButtonContentText = styled.span<additionalResourceProps>`
+  ${props => props.isAdditionalResource && `padding-left: 13px;`}
+`;
+const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
+  color: ${props =>
+    props.lighter && !props.selected
+      ? `${colors.brand.dark}`
+      : `${colors.white}`};
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid
+    ${props =>
+      props.lighter && !props.selected
+        ? `${colors.brand.dark}`
+        : `${colors.white}`};
+  border-radius: 100px;
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  transition: ${misc.transition.default};
+`;
 const StyledButtonContentSelected = styled.span`
   width: 10px;
   height: 10px;
@@ -55,6 +116,7 @@ export type ItemProps = {
   label: string;
   id?: string;
   selected?: boolean;
+  isAdditionalResource?: boolean;
 };
 type Props = {
   heading?: string;
@@ -62,6 +124,10 @@ type Props = {
   isButtonElements?: boolean;
   items: ItemProps[];
   onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
+  hasAdditionalResources?: boolean;
+  showAdditionalResources?: boolean;
+  onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 export const NavigationBox = ({
@@ -70,19 +136,37 @@ export const NavigationBox = ({
   items,
   isButtonElements,
   onClick,
+  hasAdditionalResources,
+  showAdditionalResources = false,
+  onToggleAdditionalResources = () => {},
+  t,
 }: Props) => {
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
 
   return (
     <StyledWrapper>
-      {heading && <StyledHeading>{heading}</StyledHeading>}
+      <StyledHeadingWrapper>
+        {heading && <StyledHeading>{heading}</StyledHeading>}
+        {hasAdditionalResources && (
+          <Switch
+            id={uuid()}
+            checked={showAdditionalResources}
+            label={t('navigation.additionalTopics')}
+            onChange={onToggleAdditionalResources}
+          />
+        )}
+      </StyledHeadingWrapper>
       <StyledList>
         {items.map((item: ItemProps) => (
-          <StyledListItem key={item.label}>
+          <StyledListItem
+            isAdditionalResource={item.isAdditionalResource}
+            lighter={colorMode === 'light'}
+            selected={item.selected}
+            key={item.label}>
             <ListElementType
               to={item.url}
-              lighter={colorMode === 'light'}
-              lighterGrey={colorMode === 'lighterGrey'}
+              lighter={!item.selected && colorMode === 'light'}
+              lighterGrey={!item.selected && colorMode === 'lighterGrey'}
               darker={item.selected}
               buttonSize="medium"
               size="medium"
@@ -95,7 +179,18 @@ export const NavigationBox = ({
                 }
               }}>
               <StyledButtonContent>
-                <StyledButtonContentText>{item.label}</StyledButtonContentText>
+                <StyledButtonContentText
+                  isAdditionalResource={item.isAdditionalResource}
+                  lighter={colorMode === 'light'}>
+                  {item.isAdditionalResource && (
+                    <StyledAdditionalResourceMark
+                      lighter={colorMode === 'light'}
+                      selected={item.selected}>
+                      T
+                    </StyledAdditionalResourceMark>
+                  )}
+                  {item.label}
+                </StyledButtonContentText>
                 {item.selected && <StyledButtonContentSelected />}
               </StyledButtonContent>
             </ListElementType>
@@ -106,4 +201,4 @@ export const NavigationBox = ({
   );
 };
 
-export default NavigationBox;
+export default injectT(NavigationBox);

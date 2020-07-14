@@ -116,7 +116,7 @@ const getMainTopicData = selectedTopic => {
 
   topicsData.forEach(topic => {
     const item = { ...topic };
-    item.selected = topic.label === selectedTopic;
+    item.selected = topic.id === selectedTopic;
     topics.push(item);
   });
   return topics;
@@ -126,8 +126,8 @@ const SubjectPage = ({
   selectedMainTopic: preSelectedMainTopic,
   selectedSubTopic: preSelectedSubTopic,
 }) => {
-  const fetchTopicData = (topicDataItem, setDataCallback, articleId) => {
-    loadArticle(articleId).then(result => {
+  const fetchTopicData = (topicDataItem, setDataCallback) => {
+    loadArticle(topicDataItem.id).then(result => {
       const updatedItem = { ...topicDataItem };
       updatedItem.loadingContent = false;
       updatedItem.content = result.content;
@@ -136,11 +136,11 @@ const SubjectPage = ({
     });
   };
 
-  const loadTopicData = (topicDataItem, articleId = 1344, isSubTopic) => {
+  const loadTopicData = (topicDataItem, isSubTopic) => {
     const callback = item => {
       isSubTopic ? setSubTopicData(item) : setTopicData(item);
     };
-    fetchTopicData(topicDataItem, callback, articleId);
+    fetchTopicData(topicDataItem, callback);
   };
 
   const [selectedMainTopic, setSelectedMainTopic] = useState(
@@ -164,7 +164,7 @@ const SubjectPage = ({
           if (newSubItem.label === preSelectedSubTopic) {
             if (!newSubItem.content) {
               newSubItem.loadingContent = true;
-              loadTopicData(newSubItem, 1345, true);
+              loadTopicData(newSubItem, true);
             }
           }
           newSubTopics.push(newSubItem);
@@ -188,6 +188,11 @@ const SubjectPage = ({
 
   const [showMainTopicContent, setShowMainTopicContent] = useState(null);
   const [showSubTopicContent, setShowSubTopicContent] = useState(null);
+
+  const [
+    showSubTopicAdditionalTopics,
+    setShowSubTopicAdditionalTopics,
+  ] = useState(false);
 
   const [currentLevel, setCurrentLevel] = useState('Subject'); // default to subject
 
@@ -222,9 +227,7 @@ const SubjectPage = ({
     setMainTopics(getMainTopicData(selectedMainTopic));
 
     if (selectedMainTopic) {
-      const mainTopicData = topics.find(
-        item => item.label === selectedMainTopic,
-      );
+      const mainTopicData = topics.find(item => item.selected);
 
       if (!mainTopicData.content) {
         mainTopicData.loadingContent = true;
@@ -240,11 +243,11 @@ const SubjectPage = ({
     if (topicsData && topicsData.length) {
       topicsData.forEach(item => {
         const newSubItem = { ...item };
-        newSubItem.selected = newSubItem.label === selectedSubTopic;
-        if (newSubItem.label === selectedSubTopic) {
+        newSubItem.selected = newSubItem.id === selectedSubTopic;
+        if (newSubItem.selected) {
           if (!newSubItem.content) {
             newSubItem.loadingContent = true;
-            loadTopicData(newSubItem, 1344, true);
+            loadTopicData(newSubItem, true);
           }
           setSubTopicData(newSubItem);
         }
@@ -292,15 +295,14 @@ const SubjectPage = ({
     }
   }, []);
 
-  const onClickMainTopic = e => {
+  const onClickMainTopic = (e, id) => {
     e.preventDefault();
-    const topic = e.currentTarget.textContent;
-    if (topic !== selectedMainTopic) {
+    if (id !== selectedMainTopic) {
       setSelectedSubTopic(null);
       setSubTopicData(null);
       setShowMainTopicContent(false);
       setShowSubTopicContent(false);
-      setSelectedMainTopic(topic);
+      setSelectedMainTopic(id);
     }
 
     setCurrentLevel('Topic');
@@ -313,10 +315,9 @@ const SubjectPage = ({
     });
   };
 
-  const onClickSubTopic = e => {
+  const onClickSubTopic = (e, id) => {
     e.preventDefault();
-    const subTopic = e.currentTarget.textContent;
-    setSelectedSubTopic(subTopic);
+    setSelectedSubTopic(id);
     setCurrentLevel('Subtopic');
 
     window.scrollTo({
@@ -385,7 +386,18 @@ const SubjectPage = ({
     }
   };
 
+  const onToogleSubTopicAdditionalTopics = () => {
+    setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics);
+  };
+
   const moveBannerUp = !subTopicData;
+
+  const getSubTopics = () => {
+    if (showSubTopicAdditionalTopics) {
+      return subTopics;
+    }
+    return subTopics.filter(item => !item.isAdditionalResource);
+  };
 
   return (
     <>
@@ -405,6 +417,7 @@ const SubjectPage = ({
                 ingress={topicData.introduction}
                 onToggleShowContent={onToggleShowMainContent}
                 showContent={showMainTopicContent}
+                isAdditionalTopic={topicData.isAdditionalResource}
                 isLoading={topicData.loadingContent}>
                 {topicData.content}
               </NavigationTopicAbout>
@@ -413,7 +426,14 @@ const SubjectPage = ({
                   <NavigationBox
                     colorMode="light"
                     heading="emner"
-                    items={subTopics}
+                    hasAdditionalResources={subTopics.some(
+                      item => item.isAdditionalResource,
+                    )}
+                    showAdditionalResources={showSubTopicAdditionalTopics}
+                    items={getSubTopics()}
+                    onToggleAdditionalResources={
+                      onToogleSubTopicAdditionalTopics
+                    }
                     onClick={onClickSubTopic}
                   />
                 </div>
@@ -425,6 +445,7 @@ const SubjectPage = ({
                     ingress={subTopicData.introduction}
                     onToggleShowContent={onToggleShowSubContent}
                     showContent={showSubTopicContent}
+                    isAdditionalTopic={subTopicData.isAdditionalResource}
                     isLoading={subTopicData.loadingContent}>
                     {subTopicData.content}
                   </NavigationTopicAbout>

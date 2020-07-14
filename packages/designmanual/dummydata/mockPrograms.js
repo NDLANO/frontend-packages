@@ -39,7 +39,7 @@ export const subject = {
 };
 
 export const topics = [
-  {
+  /*{
     label: 'Praksis i bedrift',
     tags: ['Yrkesfaglig fordypning'],
     url: '#',
@@ -66,9 +66,10 @@ export const topics = [
     url: '#',
     description:
       'Tips og råd til deg som har lyst til å starte di eiga bedrift.',
-  },
+  },*/
   {
-    label: 'Lover og reglar',
+    label: 'Lover og regler',
+    id: 22661,
     tags: ['Forretningsdrift'],
     url: '#',
     description:
@@ -76,6 +77,7 @@ export const topics = [
   },
   {
     label: 'Organisering',
+    id: 22664,
     tags: ['Forretningsdrift'],
     url: '#',
     description:
@@ -90,53 +92,58 @@ export const topics = [
       'Lær å rekne ut pris på eit produkt, setje opp budsjett, føre enkle rekneskap og vurdere lønsemd.',
     subTopics: [
       {
-        label: 'Prissetjing',
+        label: 'Prissetting',
+        id: 22703,
         url: '#',
         description:
           'Vi har tre prissetjingsmetodar: kostnadsbasert, marknadsbasert og konkurransebasert.',
       },
       {
-        label: 'Rekneskap',
+        label: 'Budsjett',
+        id: 22718,
+        url: '#',
+      },
+      {
+        label: 'Regnskap',
+        id: 22716,
         url: '#',
         description:
           'Ein rekneskap viser eit oversyn over inntekter, kostnader, eigendelar og gjeld. Lær korleis du fører enkle rekneskap.',
       },
       {
-        label: 'Lønsemd',
+        label: 'Lønnsomhet',
+        id: 22719,
         url: '#',
         description:
           'For å vurdere lønsemda til ei bedrift utfører vi ein rekneskapsanalyse som gir oss oversyn over den økonomiske tilstanden og utviklinga i bedrifta.',
-      },
-      {
-        label: 'Budsjett',
-        url: '#',
-        description:
-          'Eit budsjett er eit oversyn over inntekter og utgifter for framtida. Lær korleis du set opp eit budsjett.',
+        isAdditionalResource: true,
       },
     ],
   },
   {
-    label: 'Verdikjeda og berekraftig utvikling',
+    label: 'Verdikjeden og bærekraftig utvikling',
     tags: ['Forretningsdrift'],
     url: '#',
+    id: 22666,
     description:
       'Prosessen frå råvare til endeleg produkt blir kalla verdikjeda. For å fremje kvalitet og berekraftig utvikling må vi analysere dei ulike ledda.',
   },
   {
-    label: 'Trygging',
+    label: 'Sikkerhet',
+    id: 22675,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Vi kan definere trygging som evna til å ha kontroll med risiko. Dette emnet handlar om risikovurdering, tryggingstiltak og beredskapsplanar.',
+    isAdditionalResource: true,
   },
   {
     label: 'HMS',
+    id: 22678,
     tags: ['Forretningsdrift'],
     url: '#',
     description:
       'Arbeidsmiljølova og forskrifter krev at det blir arbeidd systematisk for å tryggje helse, miljø og sikkerheit/tryggleik for arbeidstakarane, HMS.',
   },
-  {
+  /*{
     label: 'Kommunikasjon og kundebehandling',
     tags: ['Kultur og samhandling'],
     url: '#',
@@ -163,6 +170,7 @@ export const topics = [
     url: '#',
     description:
       'Nytenking, kreativitet og berekraft er viktig når du utarbeider ein forretningsidé.',
+    isAdditionalResource: true,
   },
   {
     label: 'Marknadsføring og sal',
@@ -177,7 +185,7 @@ export const topics = [
     url: '#',
     description:
       'På eit kontor er det mange administrative oppgåver som består i å yte service internt og eksternt.',
-  },
+  },*/
 ];
 
 export const programs = [

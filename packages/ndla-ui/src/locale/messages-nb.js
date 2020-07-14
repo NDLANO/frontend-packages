@@ -693,6 +693,8 @@ const messages = {
     showLongerDescription: 'Lengre beskrivelse',
     showShorterDescription: 'Kortere beskrivelse',
     topics: 'Emner',
+    additionalTopic: 'Tillegsemne',
+    additionalTopics: 'Tillegsemner',
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innen',

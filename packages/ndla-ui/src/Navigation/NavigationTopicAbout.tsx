@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -17,18 +17,41 @@ const StyledIngress = styled.div`
 
 const StyledH1 = styled.h1`
   ${fonts.sizes('24px', '28px')}
-  margin: ${spacing.medium} 0 ${spacing.normal} 0;
+  margin: ${spacing.medium} ${spacing.normal} ${spacing.normal} 0;
   font-weight: ${fonts.weight.bold};
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
 
   ${mq.range({ from: breakpoints.tablet })} {
-    margin: 40px 0 18px;
+    margin: 40px ${spacing.normal} 18px 0;
     ${fonts.sizes('32px', '28px')};
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: 50px 0 24px;
+    margin: 50px ${spacing.normal} 24px 0;
     ${fonts.sizes('38px', '32px')};
   }
+`;
+
+const StyledHeadingText = styled.span`
+  margin-right: 28px;
+`;
+
+const StyledAdditionalResourceMark = styled.span`
+  text-align: center;
+  display: inline-block;
+  line-height: 18px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid ${colors.brand.dark};
+  border-radius: 100px;
+  margin-right: 7px;
+`;
+const StyledAdditionalResource = styled.span`
+  font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes('12px', '15px')};
+  color: ${colors.brand.dark};
 `;
 
 const StyledButtonWrapper = styled.div`
@@ -57,6 +80,7 @@ type Props = {
   onToggleShowContent: () => void;
   showContent: boolean;
   isLoading: boolean;
+  isAdditionalTopic?: boolean;
   children: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
@@ -67,12 +91,21 @@ export const NavigationTopicAbout = ({
   onToggleShowContent,
   showContent,
   isLoading,
+  isAdditionalTopic,
   children,
   t,
 }: Props) => {
   return (
     <StyledWrapper>
-      <StyledH1>{heading}</StyledH1>
+      <StyledH1>
+        <StyledHeadingText>{heading}</StyledHeadingText>
+        {isAdditionalTopic && (
+          <StyledAdditionalResource>
+            <StyledAdditionalResourceMark>T</StyledAdditionalResourceMark>
+            {t('navigation.additionalTopic')}
+          </StyledAdditionalResource>
+        )}
+      </StyledH1>
       {isLoading ? (
         <p>Laster emne</p>
       ) : (

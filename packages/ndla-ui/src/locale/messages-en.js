@@ -684,6 +684,8 @@ const messages = {
     showLongerDescription: 'Longer description',
     showShorterDescription: 'Shorter description',
     topics: 'Topics',
+    additionalTopic: 'Additional topic',
+    additionalTopics: 'Additional topics',
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case in',

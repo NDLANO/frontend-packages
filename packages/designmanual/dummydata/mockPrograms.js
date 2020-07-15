@@ -72,31 +72,42 @@ export const topics = [
     id: 22661,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Det er mange lover og reglar som regulerer drift av verksemder innan servicenæringa. Alle lovene finn vi digitalt på Lovdata.',
   },
   {
     label: 'Organisering',
     id: 22664,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Alle verksemder treng ei tydeleg ansvarsfordeling der dei ulike rollene er klart definerte. Organisasjonskart blir utarbeidde for å presentere strukturen.',
+    subTopics: [
+      {
+        label: 'Organisasjonskart og ansvarsfordeling',
+        id: 22830,
+        url: '#',
+      },
+      {
+        label: 'Omstilling og utvikling',
+        id: 20978,
+        url: '#',
+      },
+    ],
   },
   {
     label: 'Økonomi',
     tags: ['Forretningsdrift'],
     url: '#',
     id: 22665,
-    description:
-      'Lær å rekne ut pris på eit produkt, setje opp budsjett, føre enkle rekneskap og vurdere lønsemd.',
     subTopics: [
       {
         label: 'Prissetting',
         id: 22703,
         url: '#',
-        description:
-          'Vi har tre prissetjingsmetodar: kostnadsbasert, marknadsbasert og konkurransebasert.',
+        subTopics: [
+          {
+            label: 'Prissetting underemne',
+            id: 22703,
+            url: '#',
+          },
+        ],
       },
       {
         label: 'Budsjett',
@@ -107,15 +118,11 @@ export const topics = [
         label: 'Regnskap',
         id: 22716,
         url: '#',
-        description:
-          'Ein rekneskap viser eit oversyn over inntekter, kostnader, eigendelar og gjeld. Lær korleis du fører enkle rekneskap.',
       },
       {
         label: 'Lønnsomhet',
         id: 22719,
         url: '#',
-        description:
-          'For å vurdere lønsemda til ei bedrift utfører vi ein rekneskapsanalyse som gir oss oversyn over den økonomiske tilstanden og utviklinga i bedrifta.',
         isAdditionalResource: true,
       },
     ],
@@ -125,8 +132,6 @@ export const topics = [
     tags: ['Forretningsdrift'],
     url: '#',
     id: 22666,
-    description:
-      'Prosessen frå råvare til endeleg produkt blir kalla verdikjeda. For å fremje kvalitet og berekraftig utvikling må vi analysere dei ulike ledda.',
   },
   {
     label: 'Sikkerhet',
@@ -140,8 +145,6 @@ export const topics = [
     id: 22678,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Arbeidsmiljølova og forskrifter krev at det blir arbeidd systematisk for å tryggje helse, miljø og sikkerheit/tryggleik for arbeidstakarane, HMS.',
   },
   /*{
     label: 'Kommunikasjon og kundebehandling',

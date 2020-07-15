@@ -89,7 +89,7 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage selectedMainTopic="Økonomi" />
+        <SubjectPage selectedMainTopic={22665} />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -98,7 +98,20 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage selectedMainTopic="Økonomi" selectedSubTopic="Lønsemd" />
+        <SubjectPage selectedMainTopic={22665} selectedSubTopic={22703} />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Underemne med underemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          selectedMainTopic={22665}
+          selectedSubTopic={22703}
+          selectedSubSubTopic={22703}
+        />
       </Content>
       <FooterExample />
     </PageContainer>

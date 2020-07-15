@@ -49,7 +49,6 @@ const Wrapper = styled.div<WrapperProps>`
   ${mq.range({ from: breakpoints.ultraWide })} {
     margin: 32px 0;
     left: 52px;
-    width: 290px;
   }
   ${mq.range({ from: '1440px' })} {
     margin-left: 52px;
@@ -137,6 +136,7 @@ const TypeIcon = (type: string) => {
     case 'Topic':
       return <BookmarkIcon className="crumbicon" />;
     case 'Subtopic':
+    case 'SubSubtopic':
       return <ClassIcon className="crumbicon" />;
     case 'Home':
       return <HomeIcon className="crumbicon" />;
@@ -149,7 +149,13 @@ type BreadcrumbItemProps = {
   id: string | number;
   label: string;
   url: string;
-  typename?: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic' | 'Home';
+  typename?:
+    | 'Subjecttype'
+    | 'Subject'
+    | 'Topic'
+    | 'Subtopic'
+    | 'SubSubtopic'
+    | 'Home';
   isCurrent?: boolean | false;
   icon?: React.ReactNode;
 };

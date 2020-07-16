@@ -6,7 +6,7 @@
  *
  */
 
-import React, { createRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { injectT } from '@ndla/i18n';
@@ -31,15 +31,7 @@ import {
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
-import {
-  subject,
-  topics as topicsData,
-  programs,
-} from '../../dummydata/mockPrograms';
-
-import { contentCards } from '../../dummydata';
 import Resources from '../molecules/resources';
-import exampleBackground from '../../images/banners/Service-og-samferdsel-black.svg';
 import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 
@@ -145,6 +137,13 @@ const SubjectPage = ({
   selectedMainTopic: preSelectedMainTopic,
   selectedSubTopic: preSelectedSubTopic,
   selectedSubSubTopic: preSelectedSubSubTopic,
+  topics: topicsData,
+  initialBreadcrumb = [],
+  subjectName,
+  bannerBackground,
+  subjectContentCards,
+  subjectAboutHeading,
+  subjectAboutDescription,
   t,
 }) => {
   const [selectedMainTopic, setSelectedMainTopic] = useState(
@@ -244,14 +243,19 @@ const SubjectPage = ({
   const prevSelectedMainTopicRef = useRef('__initial__');
   const prevSelectedSubTopicRef = useRef('__initial__');
 
-  const mainTopicRef = createRef();
-  const subTopicRef = createRef();
-  const subSubTopicRef = createRef();
+  const mainTopicRef = useRef(null);
+  const subTopicRef = useRef(null);
+  const subSubTopicRef = useRef(null);
 
-  const breadcrumbItems = [
+  /*const breadcrumbItems = [
     { ...programs[11], typename: 'Subjecttype' },
     { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
-  ];
+  ];*/
+
+  const breadcrumbItems = initialBreadcrumb.map(item => ({
+    ...item,
+    isCurrent: currentLevel === item.typename,
+  }));
 
   if (topicData) {
     breadcrumbItems.push({
@@ -426,7 +430,7 @@ const SubjectPage = ({
     }
   };
 
-  const moveBannerUp = !subTopicData;
+  const moveBannerUp = !topicData;
 
   const getSubTopics = () => {
     if (showSubTopicAdditionalTopics) {
@@ -440,9 +444,7 @@ const SubjectPage = ({
       <OneColumn>
         <LayoutItem layout="extend">
           <BreadCrumblist items={breadcrumbItems} onNav={handleNav} />
-          <NavigationHeading subHeading={subject.subjectName}>
-            {subject.label}
-          </NavigationHeading>
+          <NavigationHeading>{subjectName}</NavigationHeading>
           <div ref={mainTopicRef}>
             <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
           </div>
@@ -552,19 +554,25 @@ const SubjectPage = ({
           )}
         </LayoutItem>
       </OneColumn>
-      <SubjectBanner
-        image={exampleBackground}
-        negativeTopMargin={moveBannerUp}
-      />
-      <OneColumn wide>
-        {subjectAbout(subject.description.heading, subject.description.text)}
-      </OneColumn>
-      <SubjectCarousel
-        wideScreen
-        subjects={contentCards}
-        title="Litt forskjellig fra faget"
-        subjectPage
-      />
+      {bannerBackground && (
+        <SubjectBanner
+          image={bannerBackground}
+          negativeTopMargin={moveBannerUp}
+        />
+      )}
+      {subjectAboutHeading && (
+        <OneColumn wide>
+          {subjectAbout(subjectAboutHeading, subjectAboutDescription)}
+        </OneColumn>
+      )}
+      {subjectContentCards && (
+        <SubjectCarousel
+          wideScreen
+          subjects={subjectContentCards}
+          title="Litt forskjellig fra faget"
+          subjectPage
+        />
+      )}
     </>
   );
 };
@@ -573,6 +581,13 @@ SubjectPage.propTypes = {
   selectedMainTopic: PropTypes.number,
   selectedSubTopic: PropTypes.number,
   selectedSubSubTopic: PropTypes.number,
+  topics: PropTypes.array,
+  initialBreadcrumb: PropTypes.array,
+  subjectName: PropTypes.string,
+  bannerBackground: PropTypes.string,
+  subjectContentCards: PropTypes.array,
+  subjectAboutHeading: PropTypes.string,
+  subjectAboutDescription: PropTypes.string,
 };
 
 export default injectT(SubjectPage);

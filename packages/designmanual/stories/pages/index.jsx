@@ -54,9 +54,20 @@ import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
 import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
-import { articleBreadCrumb } from '../../dummydata/mockPrograms';
+import {
+  articleBreadCrumb,
+  subjectBreadcrumb,
+  topics,
+} from '../../dummydata/mockPrograms';
+import {
+  breadcrumb as toolboxBreadcrumb,
+  topics as toolboxTopics,
+} from '../../dummydata/mockToolbox';
 import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
 import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
+import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
+import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
+import { contentCards } from '../../dummydata';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
@@ -80,7 +91,15 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -89,7 +108,16 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage selectedMainTopic={22665} />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -98,7 +126,17 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage selectedMainTopic={22665} selectedSubTopic={22703} />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          selectedSubTopic={22703}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -108,9 +146,16 @@ storiesOf('Re-design', module)
       <Content>
         <MastheadWithTopicMenu />
         <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
           selectedMainTopic={22665}
           selectedSubTopic={22703}
           selectedSubSubTopic={22703}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
         />
       </Content>
       <FooterExample />
@@ -122,6 +167,20 @@ storiesOf('Re-design', module)
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <BreadCrumblist items={articleBreadCrumb} />
         <ArticleLearningmaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Verktøykassa', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={toolboxTopics}
+          initialBreadcrumb={toolboxBreadcrumb}
+          subjectName="Verktøykassa"
+          bannerBackground={backgroundToolbox}
+        />
       </Content>
       <FooterExample />
     </PageContainer>

@@ -39,34 +39,6 @@ export const subject = {
 };
 
 export const topics = [
-  /*{
-    label: 'Praksis i bedrift',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Det er nyttig å prøve ut teorien du lærer på skulen, i praksis. Du kan vere utplassert innan vektarfaget, kontor og resepsjon, sal eller reiseliv.',
-  },
-  {
-    label: 'Tverrfaglege oppgåver',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Tverrfaglege oppgåver inneheld læreplanmål frå alle programfaga: forretningsdrift, marknadsføring og innovasjon og kultur og samhandling.',
-  },
-  {
-    label: 'Å starte ungdomsbedrift',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Alle elevar i vidaregåande skule kan starte ei ungdomsbedrift i samarbeid med lærar.',
-  },
-  {
-    label: 'Å starte eiga bedrift',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Tips og råd til deg som har lyst til å starte di eiga bedrift.',
-  },*/
   {
     label: 'Lover og regler',
     id: 22661,
@@ -146,49 +118,6 @@ export const topics = [
     tags: ['Forretningsdrift'],
     url: '#',
   },
-  /*{
-    label: 'Kommunikasjon og kundebehandling',
-    tags: ['Kultur og samhandling'],
-    url: '#',
-    description:
-      'Kommunikasjon og kundebehandling omfattar tema som kulturforståing, vertskapsrolla, nettverksbygging, konflikthandtering og digital kommunikasjon.',
-  },
-  {
-    label: 'Etikk og berekraft',
-    tags: ['Kultur og samhandling'],
-    url: '#',
-    description:
-      'Forbrukarane forventar at bedrifter skal handle både etisk og berekraftig. Korleis bedrifta gjer dette, blir ofte omtalt i verdigrunnlaget til bedrifta.',
-  },
-  {
-    label: 'Partane i arbeidslivet',
-    tags: ['Kultur og samhandling'],
-    url: '#',
-    description:
-      'Korleis samarbeider partane i arbeidslivet for å utvikle arbeidslivet? I arbeidslivet har både arbeidsgivarar og arbeidstakarar sine eigne organisasjonar.',
-  },
-  {
-    label: 'Innovasjon',
-    tags: ['Markedsføring og innovasjon'],
-    url: '#',
-    description:
-      'Nytenking, kreativitet og berekraft er viktig når du utarbeider ein forretningsidé.',
-    isAdditionalResource: true,
-  },
-  {
-    label: 'Marknadsføring og sal',
-    tags: ['Markedsføring og innovasjon'],
-    url: '#',
-    description:
-      'Ein medarbeidar innan sal og marknadsføring treng mellom anna kunnskap om forbrukaråtferd, marknadsføringsstrategiar, marknadsplanar og regelverk.',
-  },
-  {
-    label: 'Administrasjon',
-    tags: ['Markedsføring og innovasjon'],
-    url: '#',
-    description:
-      'På eit kontor er det mange administrative oppgåver som består i å yte service internt og eksternt.',
-  },*/
 ];
 
 export const programs = [
@@ -784,5 +713,20 @@ export const articleBreadCrumb = [
     url: '#',
     isCurrent: true,
     icon: <SubjectMaterialBadge background size="xx-small" />,
+  },
+];
+
+export const subjectBreadcrumb = [
+  {
+    label: 'Salg, service og reiseliv (Service og samferdsel)',
+    id: 11,
+    url: '#',
+    typename: 'Subjecttype',
+  },
+  {
+    label: 'Forretningsdrift',
+    id: 2,
+    url: '#',
+    typename: 'Subject',
   },
 ];

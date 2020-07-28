@@ -8,6 +8,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useIntersectionObserver } from '@ndla/hooks';
 
 import { injectT } from '@ndla/i18n';
 
@@ -439,121 +440,139 @@ const SubjectPage = ({
     return subTopics.filter(item => !item.isAdditionalResource);
   };
 
+  // show/hide breadcrumb based on intersection
+  const [containerRef, { entry }] = useIntersectionObserver({
+    root: null,
+    rootMargin: '-325px',
+  });
+  const showBreadCrumb = entry && entry.isIntersecting;
+  useEffect(() => {
+    console.log(
+      `The component is ${showBreadCrumb ? 'visible' : 'not visible'}.`,
+    );
+  }, [showBreadCrumb]);
+
   return (
     <>
-      <OneColumn>
-        <LayoutItem layout="extend">
-          <BreadCrumblist items={breadcrumbItems} onNav={handleNav} />
-          <NavigationHeading>{subjectName}</NavigationHeading>
-          <div ref={mainTopicRef}>
-            <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
-          </div>
-          {topicData && (
-            <>
-              <NavigationTopicAbout
-                heading={topicData.label}
-                ingress={topicData.introduction}
-                onToggleShowContent={() =>
-                  setShowMainTopicContent(!showMainTopicContent)
-                }
-                showContent={showMainTopicContent}
-                isAdditionalTopic={topicData.isAdditionalResource}
-                isLoading={topicData.loadingContent}>
-                {topicData.content}
-              </NavigationTopicAbout>
+      <div ref={containerRef}>
+        <OneColumn>
+          <LayoutItem layout="extend">
+            <BreadCrumblist
+              isVisible={showBreadCrumb}
+              items={breadcrumbItems}
+              onNav={handleNav}
+            />
+            <NavigationHeading>{subjectName}</NavigationHeading>
+            <div ref={mainTopicRef}>
+              <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
+            </div>
+            {topicData && (
+              <>
+                <NavigationTopicAbout
+                  heading={topicData.label}
+                  ingress={topicData.introduction}
+                  onToggleShowContent={() =>
+                    setShowMainTopicContent(!showMainTopicContent)
+                  }
+                  showContent={showMainTopicContent}
+                  isAdditionalTopic={topicData.isAdditionalResource}
+                  isLoading={topicData.loadingContent}>
+                  {topicData.content}
+                </NavigationTopicAbout>
 
-              <div ref={subTopicRef}>
-                {subTopics.length ? (
-                  <NavigationBox
-                    colorMode="light"
-                    heading={t('navigation.topics')}
-                    hasAdditionalResources={subTopics.some(
-                      item => item.isAdditionalResource,
-                    )}
-                    showAdditionalResources={showSubTopicAdditionalTopics}
-                    items={getSubTopics()}
-                    onToggleAdditionalResources={() =>
-                      setShowSubTopicAdditionalTopics(
-                        !showSubTopicAdditionalTopics,
-                      )
-                    }
-                    onClick={onClickSubTopic}
-                  />
-                ) : null}
-                {currentLevel === 'Topic' && (
-                  <Resources
-                    title={topicData.label}
-                    showActiveResource={false}
-                  />
-                )}
-              </div>
-              {subTopicData && (
-                <>
-                  <NavigationTopicAbout
-                    heading={subTopicData.label}
-                    ingress={subTopicData.introduction}
-                    onToggleShowContent={() =>
-                      setShowSubTopicContent(!showSubTopicContent)
-                    }
-                    showContent={showSubTopicContent}
-                    isAdditionalTopic={subTopicData.isAdditionalResource}
-                    isLoading={subTopicData.loadingContent}>
-                    {subTopicData.content}
-                  </NavigationTopicAbout>
-                </>
-              )}
-              <div ref={subSubTopicRef}>
+                <div ref={subTopicRef}>
+                  {subTopics.length ? (
+                    <NavigationBox
+                      colorMode="light"
+                      heading={t('navigation.topics')}
+                      hasAdditionalResources={subTopics.some(
+                        item => item.isAdditionalResource,
+                      )}
+                      showAdditionalResources={showSubTopicAdditionalTopics}
+                      items={getSubTopics()}
+                      onToggleAdditionalResources={() =>
+                        setShowSubTopicAdditionalTopics(
+                          !showSubTopicAdditionalTopics,
+                        )
+                      }
+                      onClick={onClickSubTopic}
+                    />
+                  ) : null}
+                  {currentLevel === 'Topic' && (
+                    <Resources
+                      title={topicData.label}
+                      showActiveResource={false}
+                    />
+                  )}
+                </div>
                 {subTopicData && (
                   <>
-                    {subSubTopics.length ? (
-                      <NavigationBox
-                        colorMode="light"
-                        heading={t('navigation.topics')}
-                        hasAdditionalResources={subSubTopics.some(
-                          item => item.isAdditionalResource,
-                        )}
-                        showAdditionalResources={showSubTopicAdditionalTopics}
-                        items={subSubTopics}
-                        onToggleAdditionalResources={() =>
-                          setShowSubTopicAdditionalTopics(
-                            !showSubTopicAdditionalTopics,
-                          )
-                        }
-                        onClick={onClickSubSubTopic}
-                      />
-                    ) : null}
-                    {currentLevel === 'Subtopic' && (
-                      <Resources
-                        title={subTopicData.label}
-                        showActiveResource={false}
-                      />
-                    )}
+                    <NavigationTopicAbout
+                      heading={subTopicData.label}
+                      ingress={subTopicData.introduction}
+                      onToggleShowContent={() =>
+                        setShowSubTopicContent(!showSubTopicContent)
+                      }
+                      showContent={showSubTopicContent}
+                      isAdditionalTopic={subTopicData.isAdditionalResource}
+                      isLoading={subTopicData.loadingContent}>
+                      {subTopicData.content}
+                    </NavigationTopicAbout>
                   </>
                 )}
-              </div>
-              {subSubTopicData && (
-                <>
-                  <NavigationTopicAbout
-                    heading={subSubTopicData.label}
-                    ingress={subSubTopicData.introduction}
-                    onToggleShowContent={() =>
-                      setShowSubSubTopicContent(!showSubSubTopicContent)
-                    }
-                    showContent={showSubSubTopicContent}
-                    isAdditionalTopic={subSubTopicData.isAdditionalResource}
-                    isLoading={subSubTopicData.loadingContent}>
-                    {subSubTopicData.content}
-                  </NavigationTopicAbout>
-                  <Resources
-                    title={subSubTopicData.label}
-                    showActiveResource={false}
-                  />
-                </>
-              )}
-            </>
-          )}
-        </LayoutItem>
-      </OneColumn>
+                <div ref={subSubTopicRef}>
+                  {subTopicData && (
+                    <>
+                      {subSubTopics.length ? (
+                        <NavigationBox
+                          colorMode="light"
+                          heading={t('navigation.topics')}
+                          hasAdditionalResources={subSubTopics.some(
+                            item => item.isAdditionalResource,
+                          )}
+                          showAdditionalResources={showSubTopicAdditionalTopics}
+                          items={subSubTopics}
+                          onToggleAdditionalResources={() =>
+                            setShowSubTopicAdditionalTopics(
+                              !showSubTopicAdditionalTopics,
+                            )
+                          }
+                          onClick={onClickSubSubTopic}
+                        />
+                      ) : null}
+                      {currentLevel === 'Subtopic' && (
+                        <Resources
+                          title={subTopicData.label}
+                          showActiveResource={false}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
+                {subSubTopicData && (
+                  <>
+                    <NavigationTopicAbout
+                      heading={subSubTopicData.label}
+                      ingress={subSubTopicData.introduction}
+                      onToggleShowContent={() =>
+                        setShowSubSubTopicContent(!showSubSubTopicContent)
+                      }
+                      showContent={showSubSubTopicContent}
+                      isAdditionalTopic={subSubTopicData.isAdditionalResource}
+                      isLoading={subSubTopicData.loadingContent}>
+                      {subSubTopicData.content}
+                    </NavigationTopicAbout>
+                    <Resources
+                      title={subSubTopicData.label}
+                      showActiveResource={false}
+                    />
+                  </>
+                )}
+              </>
+            )}
+          </LayoutItem>
+        </OneColumn>
+      </div>
       {bannerBackground && (
         <SubjectBanner
           image={bannerBackground}

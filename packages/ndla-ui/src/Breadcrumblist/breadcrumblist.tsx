@@ -24,7 +24,9 @@ import SafeLink from '@ndla/safelink';
 
 type WrapperProps = {
   startOffset?: number;
+  isVisible?: boolean;
 };
+
 const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: flex-start;
@@ -45,6 +47,14 @@ const Wrapper = styled.div<WrapperProps>`
         position: absolute;
         top: calc(${props.startOffset}px + 85px); 
     `}
+  }
+  ${mq.range({ from: breakpoints.wide })} {
+    ${props =>
+      !props.isVisible &&
+      `
+    opacity: 0;
+    transition: opacity 125ms ease-in-out;
+  `}
   }
   ${mq.range({ from: breakpoints.ultraWide })} {
     margin: 32px 0;
@@ -164,6 +174,7 @@ type BreadCrumbProps = {
   children: React.ReactNode;
   items: [BreadcrumbItemProps];
   startOffset?: number;
+  isVisible?: boolean;
   onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
@@ -172,6 +183,7 @@ const BreadCrumblist = ({
   children,
   items,
   startOffset = 0,
+  isVisible = true,
   onNav,
   t,
 }: BreadCrumbProps) => {
@@ -217,32 +229,34 @@ const BreadCrumblist = ({
   }, []);
 
   return (
-    <Wrapper startOffset={wrapperOffset}>
-      <Heading>{t('breadcrumb.youAreHere')}</Heading>
-      <List>
-        {items.map((item: BreadcrumbItemProps) => {
-          const { id, label, url, typename, icon, isCurrent = false } = item;
-          return (
-            <ListItem key={`${id}-${typename}`}>
-              {isCurrent ? <Dot /> : null}
-              <SafeLink
-                to={url}
-                onClick={(e: React.MouseEvent<HTMLElement>) => {
-                  onNav && onNav(e, item);
-                }}
-                aria-label={label}>
-                <IconWrapper isCurrent={isCurrent}>
-                  {icon && icon}
-                  {typename && TypeIcon(typename)}
-                </IconWrapper>
-                <span>{label}</span>
-              </SafeLink>
-            </ListItem>
-          );
-        })}
-      </List>
-      {children}
-    </Wrapper>
+    <>
+      <Wrapper startOffset={wrapperOffset} isVisible={isVisible}>
+        <Heading>{t('breadcrumb.youAreHere')}</Heading>
+        <List>
+          {items.map((item: BreadcrumbItemProps) => {
+            const { id, label, url, typename, icon, isCurrent = false } = item;
+            return (
+              <ListItem key={`${id}-${typename}`}>
+                {isCurrent && <Dot />}
+                <SafeLink
+                  to={url}
+                  onClick={(e: React.MouseEvent<HTMLElement>) => {
+                    onNav && onNav(e, item);
+                  }}
+                  aria-label={label}>
+                  <IconWrapper isCurrent={isCurrent}>
+                    {icon && icon}
+                    {typename && TypeIcon(typename)}
+                  </IconWrapper>
+                  <span>{label}</span>
+                </SafeLink>
+              </ListItem>
+            );
+          })}
+        </List>
+        {children}
+      </Wrapper>
+    </>
   );
 };
 

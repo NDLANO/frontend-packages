@@ -523,6 +523,13 @@ const messages = {
     back: 'Bla tilbake',
     forward: 'Bla fremover',
   },
+  codeEditor: {
+    title: 'LEGG TIL',
+    subtitle: 'kodeeksempel',
+    languageSelect: 'Velg kodespråk',
+    save: 'Lagre',
+    abort: 'Avbryt',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',

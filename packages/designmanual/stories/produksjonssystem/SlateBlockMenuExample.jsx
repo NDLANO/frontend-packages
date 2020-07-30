@@ -15,6 +15,7 @@ import {
   PresentationPlay,
   RelatedArticle,
   Keyhole,
+  Code,
 } from '@ndla/icons/editor';
 import { ArticleInModal } from '@ndla/howto';
 import { VolumeUp, Download, InformationOutline } from '@ndla/icons/common';
@@ -117,6 +118,12 @@ const actions = [
     label: 'Relatert artikkel',
     icon: <RelatedArticle />,
     helpIcon: renderArticleInModal('RelatedArticle'),
+  },
+  {
+    data: { type: 'related', object: 'related' },
+    label: 'Kodeblokk',
+    icon: <Code />,
+    helpIcon: renderArticleInModal('CodeBlock'),
   },
 ];
 

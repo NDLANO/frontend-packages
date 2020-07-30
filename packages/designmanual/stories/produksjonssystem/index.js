@@ -30,6 +30,7 @@ import { Center } from '../helpers';
 import NdlaFilmEditorExample from './NdlaFilmEditorExample';
 import FooterExample from './FooterExample';
 import ProductionToolVersionLog from './ProductionToolVersionLog';
+import CodeBlockEditorExample from './CodeBlockEditorExample';
 
 storiesOf('Produksjonssystem', module)
   .add('Footer for produksjonssystem', () => (
@@ -247,5 +248,15 @@ storiesOf('Produksjonssystem', module)
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
         <ProductionToolVersionLog />
       </div>
+    </div>
+  ))
+  .add('Kode editor', () => (
+    <div>
+      <StoryIntro title="Kodesnutter">
+        <p>Visning av formatert kode</p>
+      </StoryIntro>
+      <Center>
+        <CodeBlockEditorExample />
+      </Center>
     </div>
   ));

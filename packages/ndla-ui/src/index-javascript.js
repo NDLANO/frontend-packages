@@ -169,6 +169,7 @@ export {
 
 export { default as CreatedBy } from './CreatedBy';
 export { MessageBox } from './MessageBox';
+export { Codeblock } from './Codeblock';
 export {
   NavigationHeading,
   NavigationBox,

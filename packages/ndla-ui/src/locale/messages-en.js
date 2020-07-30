@@ -523,6 +523,13 @@ const messages = {
     back: 'Slide backwards',
     forward: 'Slide forwards',
   },
+  codeEditor: {
+    title: 'ADD',
+    subtitle: 'code example',
+    languageSelect: 'Select language',
+    save: 'Save',
+    abort: 'Abort',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',

@@ -133,7 +133,7 @@ const TypeIcon = (type: string) => {
 
 const BreadCrumblist = ({ children, items, onNav }: BreadCrumbProps) => (
   <Wrapper>
-    <List>
+    <List data-testid="breadcrumb-list">
       {items.map((item: BreadcrumbItemProps, level: number) => {
         const { id, label, url, typename, icon, isCurrent = false } = item;
         return (

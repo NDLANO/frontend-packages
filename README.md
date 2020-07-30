@@ -58,9 +58,23 @@ yarn check-all
 yarn start
 ```
 
+#### Usage during development
+
+```js
+cd packages/[package-name]
+yarn link
+```
+
+In repo using the package (ie. ndla-frontend). Forces usage of the same react versions as in frontend-packages.
+
+```js
+yarn link @ndla/[package-name] react react-dom react-router react-router-dom
+yarn
+```
+
 ## Publishing
 
-### Publish packages to npm:
+### Publish packages to npm
 
 ```js
 yarn run publish

@@ -71,7 +71,7 @@ export const NavigationTopicAbout = ({
   t,
 }: Props) => {
   return (
-    <StyledWrapper>
+    <StyledWrapper data-testid="nav-topic-about">
       <StyledH1>{heading}</StyledH1>
       {isLoading ? (
         <p>Laster emne</p>

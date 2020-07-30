@@ -68,9 +68,9 @@ export const NavigationBox = ({
 }: Props) => (
   <StyledWrapper>
     {heading && <StyledHeading>{heading}</StyledHeading>}
-    <StyledList>
+    <StyledList data-testid="nav-box-list">
       {items.map((item: ItemProps) => (
-        <StyledListItem key={item.label}>
+        <StyledListItem key={item.label} data-testid="nav-box-item">
           <SafeLinkButton
             to={item.url}
             lighter={colorMode === 'light'}

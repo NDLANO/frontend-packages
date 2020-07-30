@@ -49,6 +49,8 @@ const Structure = ({
   isMainActive,
   onDragEnd,
   isOpen,
+  favoriteSubjectIds,
+  toggleFavorite,
 }) => {
   const isSubject = currentPath.length === 0;
   const ignoreFilter =
@@ -82,6 +84,7 @@ const Structure = ({
               subtopics,
               filters,
               loading,
+              metadata,
               ...rest
             }) => {
               const currentPathIds = [...currentPath, id];
@@ -94,6 +97,8 @@ const Structure = ({
               const greyedOut = highlightMainActive
                 ? !isNewMainActive && !isMainActive && openedPaths.length > 0
                 : !isOpen && isSubject && openedPaths.length > 0;
+              const isVisible =
+                metadata !== undefined ? metadata.visible : true;
               return (
                 <StyledStructureItem
                   connectionId={connectionId}
@@ -120,7 +125,10 @@ const Structure = ({
                         parent: rest.parent,
                       })
                     }
-                    isSubject={isSubject}>
+                    isSubject={isSubject}
+                    isVisible={isVisible}
+                    favoriteSubjectIds={favoriteSubjectIds}
+                    toggleFavorite={() => toggleFavorite(id)}>
                     {renderListItems &&
                       renderListItems({
                         pathToString,
@@ -130,6 +138,7 @@ const Structure = ({
                         isOpen,
                         id,
                         name,
+                        metadata,
                         isMainActive: isNewMainActive,
                         ...rest,
                       })}
@@ -190,6 +199,8 @@ Structure.propTypes = {
   renderListItems: PropTypes.func,
   activeFilters: PropTypes.arrayOf(PropTypes.string),
   filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
+  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
+  toggleFavorite: PropTypes.func,
 };
 
 Structure.defaultProps = {

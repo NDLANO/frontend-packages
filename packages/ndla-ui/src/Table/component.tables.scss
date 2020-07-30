@@ -21,7 +21,7 @@
   }
 
   &__wrapper {
-    margin: $spacing--large 0 $spacing--large 0;
+    margin: $spacing--small 0;
 
     @include mq($from: desktop) {
       @include grids-expand(4, 6, 2);
@@ -299,4 +299,13 @@ details .c-table__wrapper {
   width: 100% !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+// Removes excess padding from paragraphs in table headers.
+.c-article,
+.c-editor,
+.c-table {
+  th p {
+    margin: 0;
+  }
 }

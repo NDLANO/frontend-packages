@@ -312,7 +312,14 @@ const messages = {
       video: 'Video',
       h5p: 'H5P',
       files: 'Files',
+      embedlink: 'Embedded link',
       other: 'Other content',
+    },
+    embedlink: {
+      heading: 'How to show the article in other content',
+      description: 'This url shows the article without menu and footer',
+      copyTitle: 'Copy link',
+      hasCopiedTitle: 'Link copied',
     },
     images: {
       heading: 'How to use images from the article',
@@ -651,9 +658,36 @@ const messages = {
     },
     badge: {
       heading: 'This page is adapted for Fagfornyelsen 2020',
-      text: 'Not what you were looking for?',
+      text: 'The content is in progress. Not what you were looking for?',
       linkText: "Go to ndla.no for today's content",
     },
+  },
+  frontPageToolbox: {
+    heading: 'Toolbox',
+    text:
+      'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
+    linkText: 'See all tips in the Toolbox here',
+    cursorText: 'Tip',
+  },
+  frontpageMultidisciplinarySubject: {
+    heading: 'Interdisciplinary subjects',
+    text:
+      'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
+    linkText: 'See cases for multidisciplinary topics',
+    publicHealthTopic: 'Public health and life management',
+    democracyTopic: 'Democracy and citizenship',
+    sustainableTopic: 'Sustainable development',
+    cursorText: 'New',
+  },
+  frontpageMenu: {
+    program: 'Education programme',
+    allsubjects: 'All subjects',
+    cursorText: 'Find teaching material, assignments, movies and more.',
+  },
+  navigation: {
+    showLongerDescription: 'Longer description',
+    showShorterDescription: 'Shorter description',
+    topics: 'Topics',
   },
 };
 

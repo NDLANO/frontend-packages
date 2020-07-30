@@ -317,7 +317,15 @@ const messages = {
       video: 'Video',
       h5p: 'H5P',
       files: 'Filer',
+      embedlink: 'Innbyggingslenke',
       other: 'Annet innhold',
+    },
+    embedlink: {
+      heading: 'Slik viser du artikkelen i annet innhold',
+      description:
+        'Denne lenken viser artikkelen uten kontekst(meny og bunntekst)',
+      copyTitle: 'Kopier lenke',
+      hasCopiedTitle: 'Lenke kopiert',
     },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',
@@ -659,9 +667,36 @@ const messages = {
     },
     badge: {
       heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020',
-      text: 'Ikke på jakt etter dette?',
+      text: 'Innholdet er under arbeid. Ikke på jakt etter dette?',
       linkText: 'Gå til ndla.no for dagens innhold',
     },
+  },
+  frontPageToolbox: {
+    heading: 'Verktøykassa',
+    text:
+      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
+    linkText: 'Se alle tipsene i verktøykassa her',
+    cursorText: 'Tips',
+  },
+  frontpageMultidisciplinarySubject: {
+    heading: 'Tverrfaglige tema',
+    text:
+      'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    linkText: 'Se caser for tverrfaglige tema',
+    publicHealthTopic: 'Folkehelse og livsmestring',
+    democracyTopic: 'Demokrati og medborgerskap',
+    sustainableTopic: 'Bærekraftig utvikling',
+    cursorText: 'Nyhet',
+  },
+  frontpageMenu: {
+    program: 'Utdanningsprogram',
+    allsubjects: 'Alle fag',
+    cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
+  },
+  navigation: {
+    showLongerDescription: 'Lengre beskrivelse',
+    showShorterDescription: 'Kortere beskrivelse',
+    topics: 'Emner',
   },
 };
 

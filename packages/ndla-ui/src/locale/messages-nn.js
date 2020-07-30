@@ -320,7 +320,15 @@ const messages = {
       video: 'Video',
       h5p: 'H5P',
       files: 'Filer',
+      embedlink: 'Innbyggingslenke',
       other: 'Anna innhald',
+    },
+    embedlink: {
+      heading: 'Slik viser du artikkelen i anna innhald',
+      description:
+        'Denne lenka viser artikkelen utan kontekst(meny og botntekst)',
+      copyTitle: 'Kopier lenke',
+      hasCopiedTitle: 'Lenke kopiert',
     },
     images: {
       heading: 'Slik bruker du bilete frå artikkelen',
@@ -663,9 +671,36 @@ const messages = {
     },
     badge: {
       heading: 'Denne sida er tilrettelagt for fagfornyelsen 2020',
-      text: 'Ikkje på jakt etter dette?',
+      text: 'Innhaldet er under arbeid. Ikkje på jakt etter dette?',
       linkText: 'Gå til ndla.no for dagens innhald',
     },
+  },
+  frontPageToolbox: {
+    heading: 'Verktøykassa',
+    text:
+      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I verktøykassa til NDLA finn du masse gode tips og råd!',
+    linkText: 'Sjå alle tipsa i verktøykassa her',
+    cursorText: 'Tips',
+  },
+  frontpageMultidisciplinarySubject: {
+    heading: 'Tverrfaglege tema',
+    text:
+      'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    linkText: 'Sjå casar for tverrfaglege tema',
+    publicHealthTopic: 'Folkehelse og livsmeistring',
+    democracyTopic: 'Demokrati og medborgarskap',
+    sustainableTopic: 'Bærekraftig utvikling',
+    cursorText: 'Nyheit',
+  },
+  frontpageMenu: {
+    program: 'Utdanningsprogram',
+    allsubjects: 'Alle fag',
+    cursorText: 'Finn lærestoff, oppgåver, filmar m.m.',
+  },
+  navigation: {
+    showLongerDescription: 'Lengre beskriving',
+    showShorterDescription: 'Kortere beskriving',
+    topics: 'Emner',
   },
 };
 

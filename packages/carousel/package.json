@@ -1,6 +1,6 @@
 {
   "name": "@ndla/carousel",
-  "version": "0.3.20",
+  "version": "0.3.25",
   "description": "Carousel for NDLA",
   "license": "GPL-3.0",
   "sideEffects": false,
@@ -25,7 +25,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.6.21",
+    "@ndla/core": "^0.6.26",
     "react-swipeable": "^5.0.1"
   },
   "peerDependencies": {

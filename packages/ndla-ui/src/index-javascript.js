@@ -40,6 +40,7 @@ export {
   SubjectAbout,
   SubjectSecondaryContent,
   SubjectNewContent,
+  SubjectBanner,
 } from './Subject';
 
 export { default as Logo } from './Logo';
@@ -104,6 +105,7 @@ export {
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
+export { default as BreadCrumblist } from './Breadcrumblist';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
@@ -168,3 +170,9 @@ export {
 export { default as CreatedBy } from './CreatedBy';
 export { MessageBox } from './MessageBox';
 export { Codeblock } from './Codeblock';
+export {
+  NavigationHeading,
+  NavigationBox,
+  NavigationTopicAbout,
+} from './Navigation';
+export { default as Programme } from './Programme';

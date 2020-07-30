@@ -19,7 +19,6 @@ import {
   Footer,
   TopicIntroductionList,
   PageContainer,
-  Content,
   LayoutItem,
   Translation,
   TranslationLine,
@@ -493,16 +492,14 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Lisensboks', () => (
     <PageContainer>
-      <Content>
-        <Center>
-          <h2 className="u-heading">Lisensboks</h2>
-          <article className="article">
-            <LayoutItem layout="center">
-              <LicenseBox headingId="licenseBox-headingId" />
-            </LayoutItem>
-          </article>
-        </Center>
-      </Content>
+      <LayoutItem layout="wide">
+        <h2 className="u-heading">Lisensboks</h2>
+        <article className="article">
+          <LayoutItem layout="center">
+            <LicenseBox headingId="licenseBox-headingId" />
+          </LayoutItem>
+        </article>
+      </LayoutItem>
     </PageContainer>
   ))
   .add('Læringsressurser', () => (

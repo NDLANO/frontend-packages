@@ -775,10 +775,10 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Kildehenvisninger">
         <p>
           Kildehenvisninger benytter{' '}
-          <a href="http://sokogskriv.no/kildebruk-og-referanser/referansestiler/chicago-fotnoter/">
-            Chicago 16-stilen
-          </a>
-          .
+          <a href="https://sokogskriv.no/kildebruk-og-referanser/referansestiler/apa-6th/">
+            APA-stilen
+          </a>{' '}
+          for utlisting nederst på siden.
         </p>
         <p>
           I teksten brukes en enkel nummerering for å henvise til referanse.

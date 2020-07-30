@@ -10,8 +10,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, misc, fonts, animations } from '@ndla/core';
-import rgba from 'polished/lib/color/rgba';
+import {
+  colors,
+  spacing,
+  misc,
+  fonts,
+  animations,
+  breakpoints,
+  mq,
+} from '@ndla/core';
 
 export const strippedStyle = css`
   transition: background-color none;
@@ -30,7 +37,6 @@ export const strippedStyle = css`
     box-shadow: none;
     color: ${colors.brand.primary};
     background-color: transparent;
-    transform: none;
     border: none;
   }
   &:focus {
@@ -54,7 +60,6 @@ export const pillStyle = css`
     box-shadow: 0px 1px 0px ${colors.brand.primary};
   }
   &:hover {
-    transform: none;
     > span {
       box-shadow: none;
     }
@@ -71,32 +76,20 @@ export const outlineStyle = css`
     color: white;
     background-color: ${colors.brand.primary};
     border: 2px solid transparent;
-    transform: translateY(0) translateX(0);
   }
   &:disabled {
     color: ${colors.brand.grey};
     border: 2px solid transparent;
     background-color: ${colors.background.dark};
     cursor: not-allowed;
-    transform: translateY(0) translateX(0);
   }
 `;
 
 export const clippedButtonStyle = css`
   border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
-  &:hover,
-  &:focus,
-  &:disabled {
-    transform: translateY(0) translateX(0);
-  }
 `;
 export const clippedButtonAttachmentStyle = css`
   border-radius: 0 ${misc.borderRadius} ${misc.borderRadius} 0;
-  &:hover,
-  &:focus,
-  &:disabled {
-    transform: translateY(0) translateX(0);
-  }
 `;
 export const clippedButtonOutlineStyle = css`
   ${outlineStyle};
@@ -106,7 +99,6 @@ export const clippedButtonOutlineStyle = css`
   &:hover,
   &:focus,
   &:disabled {
-    transform: translateY(0) translateX(0);
     border-right: 0;
   }
 `;
@@ -118,7 +110,6 @@ export const clippedButtonAttachmentOutlineStyle = css`
   &:hover,
   &:focus,
   &:disabled {
-    transform: translateY(0) translateX(0);
     border-left: 0;
   }
 `;
@@ -128,6 +119,85 @@ export const largeStyle = css`
   padding: 0 ${spacing.normal};
   ${fonts.sizes(18, 1.25)};
 `;
+
+export const roundedStyle = css`
+  border-radius: 23px;
+`;
+
+export const sizes = {
+  normal: css`
+    display: inline-flex;
+    align-items: center;
+    padding-left: ${spacing.small};
+    padding-right: ${spacing.small};
+    ${fonts.sizes('16px')};
+    min-height: 40px;
+  `,
+  medium: css`
+    display: inline-flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    ${fonts.sizes('16px', '18px')};
+    min-height: 48px;
+  `,
+  large: css`
+    display: inline-flex;
+    align-items: center;
+    padding-left: ${spacing.normal};
+    padding-right: ${spacing.normal};
+    ${fonts.sizes('18px', '20px')};
+    min-height: 52px;
+  `,
+};
+
+export const borderShapes = {
+  normal: () => css`
+    border-radius: ${misc.borderRadius};
+  `,
+  rounded: size => css`
+    border-radius: 32px;
+    ${size === 'medium'
+      ? `
+      ${mq.range({ from: breakpoints.tablet })} {
+        padding-left:${spacing.medium};
+        padding-right:${spacing.medium};
+      }`
+      : null}
+    ${size === 'large'
+      ? `
+        ${mq.range({ from: breakpoints.tablet })} {
+        padding-left:${spacing.large};padding-right:${spacing.large};
+      }`
+      : null}
+  `,
+  sharpened: size => css`
+    border-radius: 2px;
+    font-weight: ${fonts.weight.semibold};
+    ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null};
+  `,
+};
+
+export const width = {
+  auto: css`
+    width: auto;
+  `,
+  full: css`
+    width: 100%;
+  `,
+};
+
+export const textAlign = {
+  center: css`
+    text-align: center;
+  `,
+  left: css`
+    text-align: left;
+  `,
+  right: css`
+    text-align: right;
+  `,
+};
 
 export const appearances = {
   inverted: css`
@@ -148,26 +218,47 @@ export const appearances = {
       color: white;
       background-color: ${colors.brand.primary};
       border: 2px solid transparent;
-      transform: translateY(0) translateX(0);
     }
     &:disabled {
       border: 2px solid transparent;
       cursor: not-allowed;
-      transform: translateY(0) translateX(0);
     }
   `,
   lighter: css`
     ${fonts.sizes('12px', '15px')};
     background-color: ${colors.brand.lighter};
-    border: none;
+    border: 2px solid ${colors.brand.lighter};
     color: ${colors.brand.primary};
     font-weight: ${fonts.weight.semibold};
 
     &:hover,
     &:focus,
     &:active {
-      border: none;
       background: ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
+    }
+    &:disabled {
+      color: ${colors.brand.grey};
+      border: 2px solid transparent;
+      background-color: ${colors.background.dark};
+      cursor: not-allowed;
+    }
+  `,
+  darker: css`
+    background-color: ${colors.brand.dark};
+    border-color: ${colors.brand.dark};
+    color: ${colors.background.default};
+  `,
+  lighterGrey: css`
+    background-color: ${colors.brand.greyLightest};
+    border-color: ${colors.brand.greyLightest};
+    color: ${colors.brand.primary};
+    font-weight: ${fonts.weight.semibold};
+    &:hover,
+    &:focus,
+    &:active {
+      background: ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
     }
   `,
   outline: css`
@@ -304,11 +395,7 @@ export const buttonStyle = css`
   &:focus {
     color: white;
     background-color: ${colors.brand.dark};
-    border: 2px solid ${rgba(colors.brand.primary, 0)};
-    transform: translateY(1px) translateX(1px);
-  }
-  &:active {
-    transform: translateY(2px) translateX(2px);
+    border: 2px solid ${colors.brand.dark};
   }
 
   &[disabled] {
@@ -316,16 +403,28 @@ export const buttonStyle = css`
     background-color: ${colors.background.dark};
     border-color: transparent;
     cursor: not-allowed;
-    transform: translateY(0) translateX(0);
   }
   &:focus {
     box-shadow: 0 0 2px ${colors.brand.primary};
   }
 `;
 
-export const StyledButton = styled('button')`
+export const ButtonStyles = p =>
+  css`
   ${buttonStyle}
-  ${p => appearances[p.appearance]};
+  ${p.appearance ? appearances[p.appearance] : null}
+  ${p.lighter ? appearances['lighter'] : null}
+  ${p.size ? sizes[p.size] : null};
+  ${p.outline ? outlineStyle : null}
+  ${p.borderShape ? borderShapes[p.borderShape](p.size) : null}
+  ${p.width ? width[p.width] : null}
+  ${p.textAlign ? textAlign[p.textAlign] : null}
+  ${p.darker ? appearances['darker'] : null}
+  ${p.lighterGrey ? appearances['lighterGrey'] : null}
+`;
+
+export const StyledButton = styled('button')`
+  ${p => ButtonStyles(p)}
 `;
 
 // Reverse the array to find the last element first
@@ -392,12 +491,13 @@ export const Button = ({
   // Unless the disabled state is explicitly set, the button is disabled when loading.
   const isDisabled = (disabled !== undefined ? disabled : loading) || false;
 
+  const buttonProps = { ...rest, outline };
   return (
     <StyledButton
       type={type}
       appearance={styledAppearance}
       disabled={isDisabled}
-      {...rest}>
+      {...buttonProps}>
       {children}
     </StyledButton>
   );
@@ -429,6 +529,12 @@ Button.propTypes = {
     'ghostPillOutline',
     'large',
   ]),
+  size: PropTypes.oneOf(['normal', 'medium', 'large']),
+  borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
+  width: PropTypes.oneOf(['auto', 'full']),
+  textAlign: PropTypes.oneOf(['center', 'left', 'right']),
+  darker: PropTypes.bool,
+  lighterGrey: PropTypes.bool,
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

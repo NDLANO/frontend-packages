@@ -2,6 +2,7 @@ export const setCookie = (
   cookieName: string,
   cookieValue: string,
   removeCookie: boolean,
+  lax?: boolean,
 ) => {
   let expires;
   if (removeCookie) {
@@ -11,7 +12,9 @@ export const setCookie = (
     d.setTime(d.getTime() + 9999 * 24 * 60 * 60 * 1000);
     expires = `expires=${d.toUTCString()}`;
   }
-  document.cookie = `${cookieName}=${cookieValue}; ${expires}; path=/`;
+  document.cookie = `${cookieName}=${cookieValue}; ${expires}; SameSite=${
+    lax ? 'Lax' : 'Strict'
+  }; path=/`;
 };
 
 export const getCookie = (cookieName: string, cookies: string) => {

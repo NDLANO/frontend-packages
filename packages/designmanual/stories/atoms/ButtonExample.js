@@ -35,22 +35,248 @@ const ButtonExample = () => {
         </p>
         <p>
           Knapp med ramme brukes for de fleste knapper, men er det behov for
-          ekstra oppmerksomhet, kan fylt knapp benyttes.
+          ekstra oppmerksomhet, kan fylt knapp benyttes. Som regel bør det ikke
+          brukes mer enn 1 fylt knapp på en side.
         </p>
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
         <InlineContainer>
-          <Button outline onClick={action('clicked')}>
-            Knapp med ramme
+          <Button size="normal" onClick={action('clicked')}>
+            Normal knapp
           </Button>{' '}
-          <Button outline disabled onClick={action('clicked')}>
-            Deaktivert knapp med ramme
+          <Button size="medium" onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <h3>Knapp med ramme(outline)</h3>
+        <InlineContainer>
+          <Button outline size="normal" onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button outline size="medium" onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button outline size="large" onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <h3>Lys versjon(lighter)</h3>
+        <InlineContainer>
+          <Button size="normal" lighter onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button size="medium" lighter onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" lighter onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <h3>Lys grå versjon(lighterGrey)</h3>
+        <InlineContainer>
+          <Button size="normal" lighterGrey onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button size="medium" lighterGrey onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" lighterGrey onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <h3>Rundet knapp</h3>
+        <InlineContainer>
+          <Button
+            borderShape="rounded"
+            size="normal"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            size="medium"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            size="large"
+            onClick={action('clicked')}>
+            Stor knapp
           </Button>
         </InlineContainer>
         <InlineContainer>
-          <Button onClick={action('clicked')}>Fylt knapp</Button>{' '}
+          <Button
+            borderShape="rounded"
+            outline
+            size="normal"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            outline
+            size="medium"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            outline
+            size="large"
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            borderShape="rounded"
+            lighter
+            size="normal"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            lighter
+            size="medium"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            lighter
+            size="large"
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            borderShape="rounded"
+            lighterGrey
+            size="normal"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            lighterGrey
+            size="medium"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            lighterGrey
+            size="large"
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <h3>Firkantet knapp</h3>
+        <InlineContainer>
+          <Button
+            size="normal"
+            borderShape="sharpened"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            size="medium"
+            borderShape="sharpened"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            size="large"
+            borderShape="sharpened"
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            size="normal"
+            borderShape="sharpened"
+            outline
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            size="medium"
+            borderShape="sharpened"
+            outline
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            size="large"
+            borderShape="sharpened"
+            outline
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            size="normal"
+            borderShape="sharpened"
+            lighter
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            size="medium"
+            borderShape="sharpened"
+            lighter
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            size="large"
+            borderShape="sharpened"
+            lighter
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            size="normal"
+            borderShape="sharpened"
+            lighterGrey
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            size="medium"
+            borderShape="sharpened"
+            lighterGrey
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            size="large"
+            borderShape="sharpened"
+            lighterGrey
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <h3>Deaktiverte knapper</h3>
+        <InlineContainer>
           <Button disabled onClick={action('clicked')}>
+            Knapp deaktivert
+          </Button>{' '}
+          <Button disabled size="medium" onClick={action('clicked')}>
+            Knapp deaktivert
+          </Button>{' '}
+          <Button disabled size="large" onClick={action('clicked')}>
             Knapp deaktivert
           </Button>
         </InlineContainer>

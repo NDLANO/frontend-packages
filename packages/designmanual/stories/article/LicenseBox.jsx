@@ -450,6 +450,22 @@ Files.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
+export const LinkContent = ({ t }) => (
+  <div>
+    <div className="u-introduction">
+      <h2>{t('license.embedlink.heading')}</h2>
+      <p>{t('license.embedlink.description')}</p>
+    </div>
+    <CopyButton outline copyNode={t('license.embedlink.hasCopiedTitle')}>
+      {t('license.embedlink.copyTitle')}
+    </CopyButton>
+  </div>
+);
+
+LinkContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
 const LicenseBox = ({ t }) => (
   <Fragment>
     <h1>{t('license.heading')}</h1>
@@ -461,6 +477,7 @@ const LicenseBox = ({ t }) => (
         { title: t('license.tabs.video'), content: <VideoContent t={t} /> },
         { title: t('license.tabs.audio'), content: <AudioContent t={t} /> },
         { title: t('license.tabs.files'), content: <Files t={t} /> },
+        { title: t('license.tabs.embedlink'), content: <LinkContent t={t} /> },
         { title: t('license.tabs.other'), content: <OtherContent t={t} /> },
       ]}
     />

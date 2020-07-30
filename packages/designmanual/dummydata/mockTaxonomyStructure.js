@@ -13,6 +13,11 @@ export const historieFilters = [
   },
 ];
 
+export const invisibleMetadata = {
+  grepCodes: [],
+  visible: false,
+};
+
 export const historieTopics = [
   {
     id: 'urn:topic:1:182020',
@@ -22,6 +27,7 @@ export const historieTopics = [
       {
         id: 'urn:topic:1:144149',
         name: 'Historie + statistikk = sant?',
+        metadata: invisibleMetadata,
         filters: historieFilters,
       },
       {
@@ -217,6 +223,7 @@ export const subjects = [
   {
     id: 'urn:subject:9',
     name: 'Historie Vg2 og Vg3',
+    metadata: invisibleMetadata,
   },
 ];
 
@@ -231,3 +238,5 @@ export const subjectTopics = {
   'urn:subject:9': historieTopics,
   'urn:subject:24': helseTopics,
 };
+
+export const favoriteSubjects = ['urn:subject:24'];

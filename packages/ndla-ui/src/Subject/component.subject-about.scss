@@ -11,9 +11,21 @@
 
   &__media-wrapper {
     width: 100%;
-
+    &--wide {
+      @include mq(tablet) {
+          width: auto;
+        }
+      }
     & > * {
       width: 100%;
+    }
+  }
+
+  &--wide {
+    margin: 40px 0;
+    @include mq(tablet) {
+      display: flex;
+      margin: 80px 0;
     }
   }
 

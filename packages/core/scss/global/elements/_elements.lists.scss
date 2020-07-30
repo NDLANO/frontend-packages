@@ -1,6 +1,6 @@
 ul,
 ol {
-  margin: $spacing--large 0;
+  margin: $spacing--small 0;
   padding: 0 1rem 0 2rem;
   @include mq(desktop) {
     padding: 0 1rem 0 0;
@@ -8,7 +8,7 @@ ol {
 
   ul,
   ol {
-    margin: $spacing 0;
+    margin: $spacing--small 0;
   }
 }
 
@@ -25,7 +25,7 @@ li {
 }
 li ul,
 li ol {
-  margin-top: $spacing;
+  margin-top: $spacing--small;
   margin-left: $spacing;
 }
 ol {

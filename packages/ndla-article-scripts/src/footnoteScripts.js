@@ -28,6 +28,7 @@ export const addFootnoteClickListeners = () => {
           },
           '*',
         );
+        jump(hash, { offset: -100, duration: 300 });
       } else {
         jump(hash, { offset: -200, duration: 300 });
       }

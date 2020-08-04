@@ -116,7 +116,7 @@ export default CompetenceGoalsExample;
 const CompetenceGoalTabdata = [
   {
     id: 'tmpid1',
-    name: 'Kompetansemål',
+    name: 'Kompetansemål (KM)',
     description: 'Målet er at eleven skal kunne:',
     type: 'goals',
     goals: [
@@ -124,7 +124,7 @@ const CompetenceGoalTabdata = [
         id: 'K15502',
         name:
           'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
-        url: '#1',
+        /* url: '#1',
         subitems: [
           {
             type: 'core',
@@ -145,13 +145,13 @@ const CompetenceGoalTabdata = [
               url: '#',
             },
           },
-        ],
+        ], */
       },
       {
         id: 'K17637',
         name:
           'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
-        url: '#2',
+        /* url: '#2',
         subitems: [
           {
             type: 'core',
@@ -170,40 +170,41 @@ const CompetenceGoalTabdata = [
               url: '#',
             },
           },
-        ],
+        ], */
       },
       {
         id: 'K17635',
         name: 'lage budskap tilpasset målgruppe, formål og kanal',
-        url: '#3',
       },
     ],
   },
-  /* {
+  {
     id: 'tmpid2',
-    name: 'Kjerneelementer',
+    // name: 'Kjerneelementer',
+    name: 'Kompetansemål (LK20)',
     description: '',
-    type: 'coreElements',
+    // type: 'coreElements',
+    type: 'goals',
     goals: [
       {
         id: 'K15504',
         name:
           'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - Kjernestuff',
-        url: '#1',
+        // url: '#1',
       },
       {
         id: 'K176378',
         name:
           'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk -Kjernestuff',
-        url: '#1',
+        // url: '#1',
       },
       {
         id: 'K176353',
         name: 'lage budskap tilpasset målgruppe, formål og kanal - Kjernestuff',
-        url: '#1',
+        // url: '#1',
       }, 
     ],
-  },*/
+  },
 ];
 
 export const CompetenceGoalListExample = () => {

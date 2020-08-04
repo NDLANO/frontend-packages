@@ -31,11 +31,6 @@ const Title = styled.h2`
   line-height: 32px;
 `;
 
-/* const Subtitle = styled.h3`
-  font-weight: ${fonts.weight.semibold};
-  font-size: 24px;
-`; */
-
 const Info = styled.p`
   font-weight: 600;
   font-size: 20px;
@@ -91,6 +86,10 @@ const GoalItem = styled.li`
     background-color: #20588f;
   }
 `;
+
+const GoalWrapper = styled.div`
+  width: 100%;
+`
 
 const GoalSearchitem = styled.div`
   display: flex;
@@ -157,7 +156,6 @@ const ToggleItem = styled.span`
 `;
 
 const ToggleText = styled.span`
-  /* padding: 6px 0px 0; */
   text-align: left;
   line-height: 16px;
   color: #20588f;
@@ -207,11 +205,11 @@ const Item = ({ goal, t }: any) => {
   const labelByType = (type: string) => {
     switch (type) {
       case 'core':
-        return 'Kjerneelement';
+        return t('competenceGoals.competenceCoreLabel');
       case 'topic':
-        return 'Tverrfaglige tema';
+        return t('competenceGoals.competenceTopicLabel');
       case 'subject':
-        return 'Fag';
+        return t('competenceGoals.competenceSubjectLabel');
       default:
         return '';
     }
@@ -219,11 +217,11 @@ const Item = ({ goal, t }: any) => {
   const linkTextbyType = (type: string) => {
     switch (type) {
       case 'core':
-        return 'Søk ressurser for kjerneelementet';
+        return t('competenceGoals.competenceCoreSearchText');
       case 'topic':
-        return 'Søk ressurser for temaet';
+        return t('competenceGoals.competenceTopicSearchText');
       case 'subject':
-        return 'Gå til fagsiden';
+        return t('competenceGoals.competenceSubjectSearchText');
       default:
         return '';
     }
@@ -231,7 +229,7 @@ const Item = ({ goal, t }: any) => {
   const { subitems = null } = goal;
   return (
     <GoalItem>
-      <div style={{ width: '100%' }}>
+      <GoalWrapper>
         {goal.name}
         {goal.url && (
           <div>
@@ -249,9 +247,9 @@ const Item = ({ goal, t }: any) => {
                       {isExpanded ? <ChevronUp /> : <ChevronDown />}
                     </ToggleItem>
                     {isExpanded ? (
-                      <ToggleText>Skjul støtte til læreplanen</ToggleText>
+                      <ToggleText>{t('competenceGoals.competenceGoalCloseExtra')}</ToggleText>
                     ) : (
-                      <ToggleText>Vis støtte til læreplanen</ToggleText>
+                      <ToggleText>{t('competenceGoals.competenceGoalShowExtra')}</ToggleText>
                     )}
                   </ToggleWrapper>
                 </Button>
@@ -262,7 +260,6 @@ const Item = ({ goal, t }: any) => {
         {subitems &&
           isExpanded &&
           subitems.map((subItem: any) => {
-            // const { linkitem }
             return (
               <GoalSubItemWrapper key={`${subItem.type}-${subItem.name}`}>
                 <GoalSubItem>
@@ -291,7 +288,7 @@ const Item = ({ goal, t }: any) => {
               </GoalSubItemWrapper>
             );
           })}
-      </div>
+      </GoalWrapper>
     </GoalItem>
   );
 };
@@ -301,7 +298,6 @@ const CompetenceCurriculumGoal = ({ title, subtitle, list, t }: any) => {
   return (
     <Wrapper>
       {title && title !== '' ? <Title>{title}</Title> : null}
-      {/* subtitle && subtitle !== '' ? <Subtitle>{subtitle}</Subtitle> : null */}
       <TabWrapper>
         {list.map((tabItem: any, index: number) => {
           return (

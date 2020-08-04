@@ -301,6 +301,15 @@ const messages = {
     competenceGoalsNarrowBackButton: 'Go back',
     competenceGoalResourceSearchText:
       'Search all resources appropriate to this goal',
+    competenceGoalShowExtra: 'Show',
+    competenceGoalCloseExtra: 'Hide',
+    competenceCoreLabel: 'Core element',
+    competenceTopicLabel: 'Interdisciplinary theme',
+    competenceSubjectLabel: 'Topic',
+    competenceCoreSearchText: 'Find resources',
+    competenceTopicSearchText: 'Find resources',
+    competenceSubjectSearchText: 'Go to topic page',
+    competenceGoalClose: 'Close',
   },
   subject: {
     associatedTopics: 'Associated topics',

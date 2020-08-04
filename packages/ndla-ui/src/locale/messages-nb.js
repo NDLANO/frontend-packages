@@ -300,6 +300,15 @@ const messages = {
     competenceGoalsNarrowBackButton: 'Tilbake',
     competenceGoalResourceSearchText:
       'Søk på alle ressurser som passer til dette kompetansemålet',
+    competenceGoalShowExtra: 'Vis støtte til læreplanen',
+    competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
+    competenceCoreLabel: 'Kjerneelement',
+    competenceTopicLabel: 'Tverrfaglige tema',
+    competenceSubjectLabel: 'Fag',
+    competenceCoreSearchText: 'Søk ressurser for kjerneelementet',
+    competenceTopicSearchText: 'Søk ressurser for temaet',
+    competenceSubjectSearchText: 'Gå til fagsiden',
+    competenceGoalClose: 'Lukk',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

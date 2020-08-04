@@ -202,7 +202,7 @@ const CompetenceGoalTabdata = [
         id: 'K176353',
         name: 'lage budskap tilpasset målgruppe, formål og kanal - Kjernestuff',
         // url: '#1',
-      }, 
+      },
     ],
   },
 ];

@@ -89,7 +89,7 @@ const GoalItem = styled.li`
 
 const GoalWrapper = styled.div`
   width: 100%;
-`
+`;
 
 const GoalSearchitem = styled.div`
   display: flex;
@@ -247,9 +247,13 @@ const Item = ({ goal, t }: any) => {
                       {isExpanded ? <ChevronUp /> : <ChevronDown />}
                     </ToggleItem>
                     {isExpanded ? (
-                      <ToggleText>{t('competenceGoals.competenceGoalCloseExtra')}</ToggleText>
+                      <ToggleText>
+                        {t('competenceGoals.competenceGoalCloseExtra')}
+                      </ToggleText>
                     ) : (
-                      <ToggleText>{t('competenceGoals.competenceGoalShowExtra')}</ToggleText>
+                      <ToggleText>
+                        {t('competenceGoals.competenceGoalShowExtra')}
+                      </ToggleText>
                     )}
                   </ToggleWrapper>
                 </Button>

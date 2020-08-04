@@ -32,7 +32,10 @@ export const CompetenceGoalsDialog = ({
         {close => (
           <Fragment>
             <ModalHeader modifier="white modal-body">
-              <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
+              <ModalCloseButton
+                onClick={close}
+                title={t('competenceGoals.competenceGoalClose')}
+              />
             </ModalHeader>
             <ModalBody>
               <div {...classes()} className="c-competence-goals">

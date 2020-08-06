@@ -172,7 +172,7 @@ export const mockExplanationService = {
       ],
       authors: ['Ola Nordmann', 'Kari Nordmann'],
       source: 'snl.no',
-      license: 'by-nc-nd',
+      license: 'na',
       tags: ['Bygg- og anleggsteknikk'],
       relatedArticles: [
         {

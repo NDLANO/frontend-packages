@@ -13,13 +13,20 @@ import {
   isCreativeCommonsLicense,
 } from '../licenses';
 
-import { BY, SA, NC, CC, COPYRIGHTED } from '../licenseRights';
+import { BY, SA, NC, CC, COPYRIGHTED, NA } from '../licenseRights';
 
 test('licenses/getLicenseByAbbreviation get license for CC-BY-SA-4.0 in english', () => {
   const license = getLicenseByAbbreviation('CC-BY-SA-4.0', 'en');
 
   expect(license.title).toBe('CC BY-SA 4.0: Attribution ShareAlike');
   expect(license.rights).toEqual([CC, BY, SA]);
+});
+
+test('licenses/getLicenseByAbbreviation get license for N/A in norwegian', () => {
+  const license = getLicenseByAbbreviation('N/A', 'nb');
+
+  expect(license.title).toBe('N/A - ikke relevant');
+  expect(license.rights).toEqual([NA]);
 });
 
 test('licenses/getLicenseByAbbreviation get license without locale defaults to nb', () => {

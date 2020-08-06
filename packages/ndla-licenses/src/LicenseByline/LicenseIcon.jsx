@@ -18,7 +18,7 @@ import {
   Publicdomain,
   Copyright,
 } from '@ndla/icons/licenses';
-import { COPYRIGHTED, BY, SA, NC, ND, PD, CC0, CC } from '../licenseRights';
+import { COPYRIGHTED, BY, SA, NA, NC, ND, PD, CC0, CC } from '../licenseRights';
 
 const LicenseIcon = ({ licenseRight, description }) => {
   switch (licenseRight) {
@@ -38,6 +38,8 @@ const LicenseIcon = ({ licenseRight, description }) => {
       return <Publicdomain aria-label={description} />;
     case COPYRIGHTED:
       return <Copyright aria-label={description} />;
+    case NA:
+      return <Zero aria-label={description} />;
     default:
       return undefined;
   }

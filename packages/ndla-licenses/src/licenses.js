@@ -406,6 +406,8 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
       return licenseByLocale(cc0, locale);
     case 'copyrighted':
       return licenseByLocale(copy, locale);
+    case 'na':
+      return licenseByLocale(na, locale);
     default:
       return {
         short: abbreviation,

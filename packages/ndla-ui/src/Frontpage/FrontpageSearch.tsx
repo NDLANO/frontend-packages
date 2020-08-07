@@ -14,48 +14,27 @@ import { SearchFieldForm } from '../Search/SearchFieldForm';
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';
 
-type StyledSearchFieldProps = {
-  inputHasFocus: boolean;
-};
-
-const StyledWrapper = styled.section<StyledSearchFieldProps>`
-  background: ${(props: StyledSearchFieldProps) =>
-    props.inputHasFocus === true ? 'transparent' : colors.brand.accent};
+const StyledWrapper = styled.section`
   border-radius: 2px;
-  position: absolute;
-  bottom: -${spacing.large};
-  z-index: 8001;
-  padding: ${spacing.small};
-  right: ${spacing.small};
-  left: ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    background: ${colors.brand.accent};
-  }
+  width: 100%;
+  padding: ${spacing.normal} 0;
   ${mq.range({ from: breakpoints.mobileWide })} {
-    padding: ${spacing.normal};
-    right: ${spacing.normal};
-    left: ${spacing.normal};
+    width: 450px;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    width: 550px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.large};
-    bottom: -81px;
-  }
-  ${mq.range({ until: breakpoints.tablet })} {
-    .c-search-field__input-wrapper {
-      padding: 0;
-    }
+    width: 750px;
   }
   input {
     border-color: ${colors.brand.tertiary};
-    ${mq.range({ until: breakpoints.tablet })} {
-      padding-left: ${spacing.small};
-    }
   }
 `;
 
 const StyledSearchBackdrop = styled.div`
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -149,7 +128,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
 
   return (
     <div ref={searchFieldRef}>
-      <StyledWrapper inputHasFocus={inputHasFocus}>
+      <StyledWrapper>
         {inputHasFocus && (
           <StyledSearchBackdrop
             role="button"
@@ -163,6 +142,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
         )}
         <SearchFieldForm inputHasFocus={inputHasFocus} onSubmit={onSearch}>
           <SearchField
+            frontPageSearch={true}
             inputRef={inputRef}
             onFocus={onSearchInputFocus}
             value={searchFieldValue}

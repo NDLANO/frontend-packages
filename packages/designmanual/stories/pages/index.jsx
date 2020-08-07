@@ -728,6 +728,11 @@ storiesOf('Fagfornyelse', module)
   ))
   .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>
+      <BreadCrumblist
+        invertedStyle={true}
+        leftAlign={true}
+        items={articleBreadCrumb}
+      />
       <Content>
         <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <OneColumn cssModifier="clear-desktop" wide>

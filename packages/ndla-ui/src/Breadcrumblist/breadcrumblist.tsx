@@ -8,7 +8,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { mq, breakpoints } from '@ndla/core';
+import { mq, breakpoints, colors } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 
@@ -25,6 +25,11 @@ import SafeLink from '@ndla/safelink';
 type WrapperProps = {
   startOffset?: number;
   isVisible?: boolean;
+  leftAlign?: boolean;
+};
+
+type InvertItProps = {
+  invertedStyle?: boolean;
 };
 
 const Wrapper = styled.div<WrapperProps>`
@@ -59,31 +64,43 @@ const Wrapper = styled.div<WrapperProps>`
   ${mq.range({ from: breakpoints.ultraWide })} {
     margin: 32px 0;
     left: 52px;
+    ${props =>
+      props.leftAlign &&
+      `
+        left: 0;
+    `}
   }
   ${mq.range({ from: '1440px' })} {
     margin-left: 52px;
     left: calc((100vw - 1480px) / 2);
+    ${props =>
+      props.leftAlign &&
+      `
+        left: 0;
+    `}
   }
 `;
-
-const Heading = styled.div`
+const Heading = styled.div<InvertItProps>`
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
   padding: 0 0 18px 10px;
+  ${props =>
+    props.invertedStyle &&
+    `
+      color: #fff;
+  `}
 `;
 
 const List = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  /* margin-left: 20px; */
   width: 100%;
 `;
 
-const ListItem = styled.li`
-  color: #20588f;
+const ListItem = styled.li<InvertItProps>`
   font-size: 16px;
   position: relative;
   display: flex;
@@ -91,6 +108,7 @@ const ListItem = styled.li`
   align-items: center;
   margin-bottom: 8px;
   a {
+    color: ${colors.brand.primary};
     text-decoration: none;
     box-shadow: none;
     display: inline-block;
@@ -98,27 +116,43 @@ const ListItem = styled.li`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    ${props =>
+      props.invertedStyle &&
+      `
+        color: white;
+    `}
     &:hover {
       text-decoration: underline;
-      color: #20588f;
+      color: ${colors.brand.primary};
+      ${props =>
+        props.invertedStyle &&
+        `
+          color: #fff;
+      `}
     }
   }
 `;
 
 type IconProps = {
   isCurrent: boolean;
+  invertedStyle?: boolean;
 };
 
 const IconWrapper = styled.span<IconProps>`
   margin: 0px 8px;
-  color: #a5bcd3;
+  color: ${colors.brand.tertiary};
   display: inline-block;
   min-width: 24px;
   text-align: center;
   ${props =>
     props.isCurrent &&
     `
-    color: #20588F;
+    color: ${colors.brand.primary};
+  `}
+  ${props =>
+    props.invertedStyle &&
+    `
+      color: #fff;
   `}
   .crumbicon {
     width: 24px;
@@ -127,7 +161,7 @@ const IconWrapper = styled.span<IconProps>`
   }
 `;
 
-const Dot = styled.span`
+const Dot = styled.span<InvertItProps>`
   height: 10px;
   width: 10px;
   background-color: #20588f;
@@ -135,6 +169,11 @@ const Dot = styled.span`
   display: inline-block;
   margin-left: -15px;
   margin-right: 5px;
+  ${props =>
+    props.invertedStyle &&
+    `
+      background-color: #fff;
+  `}
 `;
 
 const TypeIcon = (type: string) => {
@@ -175,6 +214,8 @@ type BreadCrumbProps = {
   items: [BreadcrumbItemProps];
   startOffset?: number;
   isVisible?: boolean;
+  invertedStyle?: boolean;
+  leftAlign?: boolean;
   onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
@@ -184,6 +225,8 @@ const BreadCrumblist = ({
   items,
   startOffset = 0,
   isVisible = true,
+  invertedStyle,
+  leftAlign,
   onNav,
   t,
 }: BreadCrumbProps) => {
@@ -230,21 +273,29 @@ const BreadCrumblist = ({
 
   return (
     <>
-      <Wrapper startOffset={wrapperOffset} isVisible={isVisible}>
-        <Heading>{t('breadcrumb.youAreHere')}</Heading>
-        <List data-testid="breadcrumb-list">
+      <Wrapper
+        leftAlign={leftAlign}
+        startOffset={wrapperOffset}
+        isVisible={isVisible}>
+        <Heading invertedStyle={invertedStyle}>
+          {t('breadcrumb.youAreHere')}
+        </Heading>
+        <List>
           {items.map((item: BreadcrumbItemProps) => {
             const { id, label, url, typename, icon, isCurrent = false } = item;
             return (
-              <ListItem key={`${id}-${typename}`}>
-                {isCurrent && <Dot />}
+              <ListItem invertedStyle={invertedStyle} key={`${id}-${typename}`}>
+                {isCurrent && <Dot invertedStyle={invertedStyle} />}
                 <SafeLink
+                  className="linkitem"
                   to={url}
                   onClick={(e: React.MouseEvent<HTMLElement>) => {
                     onNav && onNav(e, item);
                   }}
                   aria-label={label}>
-                  <IconWrapper isCurrent={isCurrent}>
+                  <IconWrapper
+                    invertedStyle={invertedStyle}
+                    isCurrent={isCurrent}>
                     {icon && icon}
                     {typename && TypeIcon(typename)}
                   </IconWrapper>

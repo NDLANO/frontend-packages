@@ -84,7 +84,7 @@ export const mockListView = {
       ],
       authors: ['Ola Nordmann', 'Kari Nordmann'],
       source: 'https://snl.no',
-      license: 'by-nc-nd',
+      license: 'na',
       tags: ['Betongfaget', 'Murerfaget'],
     },
     {

@@ -12,6 +12,7 @@ import Structure from './structure/Structure';
 import FileListEditor from './FileListEditor';
 import MovieList from './ndlaFilm/MovieList';
 import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
+import CodeBlockEditor from './CodeblockEditor';
 
 export {
   SlateBlockMenu,
@@ -20,4 +21,5 @@ export {
   MovieList,
   NdlaFilmThemeEditorModal,
   FileListEditor,
+  CodeBlockEditor,
 };

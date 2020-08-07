@@ -27,10 +27,9 @@ export default function VideoSearchResultYouTube({
   translations,
   locale,
 }) {
-  const videoData = video?.pagemap?.videoobject?.shift();
+  const videoData = video?.pagemap?.videoobject[0];
   const activeVideo =
-    selectedVideo?.pagemap?.videoobject?.shift()?.videoid ===
-    videoData?.videoid;
+    selectedVideo?.pagemap?.videoobject[0]?.videoid === videoData?.videoid;
 
   if (videoData) {
     return (

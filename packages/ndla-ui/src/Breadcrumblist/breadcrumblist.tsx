@@ -232,7 +232,7 @@ const BreadCrumblist = ({
     <>
       <Wrapper startOffset={wrapperOffset} isVisible={isVisible}>
         <Heading>{t('breadcrumb.youAreHere')}</Heading>
-        <List>
+        <List data-testid="breadcrumb-list">
           {items.map((item: BreadcrumbItemProps) => {
             const { id, label, url, typename, icon, isCurrent = false } = item;
             return (

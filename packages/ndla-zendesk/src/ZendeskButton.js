@@ -63,7 +63,7 @@ class ZendeskButton extends React.Component {
         <Global
           styles={css`
             /* Hide default launcher so that we can provide our own. */
-            .zEWidget-launcher {
+            iframe#launcher {
               display: none;
             }
           `}

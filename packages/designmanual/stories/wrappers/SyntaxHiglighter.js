@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
-import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light';
 import prism from 'react-syntax-highlighter/dist/styles/prism/prism';
 
 ReactSyntaxHighlighter.registerLanguage('jsx', jsx);

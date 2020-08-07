@@ -98,9 +98,8 @@ const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   position: ${props => (props.frontpage ? 'absolute' : 'static')};
   left: 0;
   right: 0;
-  top: 58px;
-  border-bottom-left-radius: ${misc.borderRadius};
-  border-bottom-right-radius: ${misc.borderRadius};
+  top: 62px;
+  border-radius: ${misc.borderRadius};
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
     left: 0;
@@ -116,7 +115,7 @@ type StyledScrollableContentProps = {
 
 const StyledScrollableContent = styled.div<StyledScrollableContentProps>`
   max-height: calc(100vh - ${props => 260 - props.extendHeight}px);
-  overflow-y: scroll;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   padding: ${props => (props.extendHeight ? spacing.normal : spacing.large)}

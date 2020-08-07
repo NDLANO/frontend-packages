@@ -156,13 +156,14 @@ export const NavigationBox = ({
           />
         )}
       </StyledHeadingWrapper>
-      <StyledList>
+      <StyledList data-testid="nav-box-list">
         {items.map((item: ItemProps) => (
           <StyledListItem
             isAdditionalResource={item.isAdditionalResource}
             lighter={colorMode === 'light'}
             selected={item.selected}
-            key={item.label}>
+            key={item.label}
+            data-testid="nav-box-item">
             <ListElementType
               to={item.url}
               lighter={!item.selected && colorMode === 'light'}

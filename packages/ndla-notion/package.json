@@ -1,6 +1,6 @@
 {
   "name": "@ndla/notion",
-  "version": "0.2.45",
+  "version": "0.2.46",
   "description": "Notions and dictionary-notions for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@ndla/core": "^0.6.27",
-    "@ndla/licenses": "^0.6.31",
+    "@ndla/licenses": "^0.6.32",
     "@ndla/modal": "^0.4.20"
   },
   "peerDependencies": {

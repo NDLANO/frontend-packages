@@ -332,7 +332,7 @@ const na = {
     userFriendlyTitle: '',
     url: '',
     linkText: 'N/A',
-    description: 'Lisensen er meint for innhald som ikkje treng lisens.',
+    description: 'Dette merket er meint for innhald som ikkje treng lisens.',
   },
   nb: {
     short: naNB,
@@ -340,7 +340,7 @@ const na = {
     userFriendlyTitle: '',
     url: '',
     linkText: 'N/A',
-    description: 'Lisensen er ment for innhold som ikke trenger lisens.',
+    description: 'Dette merket er ment for innhold som ikke trenger lisens.',
   },
 
   en: {
@@ -350,7 +350,7 @@ const na = {
     url: '',
     linkText: 'N/A',
     description:
-      'The license is intended for content that does not require a license.',
+      'This mark is intended for content that does not require a license.',
   },
   rights: [NA],
   abbreviation: NA.toUpperCase(),

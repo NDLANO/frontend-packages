@@ -117,35 +117,12 @@ const CompetenceGoalTabdata = [
   {
     id: 'tmpid1',
     name: 'Kompetansemål (KM)',
-    description: 'Målet er at eleven skal kunne:',
     type: 'LK06',
     goals: [
       {
         id: 'K15502',
         name:
           'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
-        /* url: '#1',
-        subitems: [
-          {
-            type: 'core',
-            name: 'Utforskning og problemløsning',
-            resourceurl: '#',
-          },
-          {
-            type: 'topic',
-            name: 'Folkehelse og livsmestring',
-            resourceurl: '#',
-          },
-          {
-            type: 'subject',
-            name: 'Utforskning og problemløsning',
-            resourceurl: '#',
-            linkitem: {
-              label: 'Se alle kompetansemål i dette faget',
-              url: '#',
-            },
-          },
-        ], */
       },
       {
         id: 'K17637',
@@ -161,7 +138,6 @@ const CompetenceGoalTabdata = [
   {
     id: 'tmpid2',
     name: 'Kompetansemål (LK20)',
-    description: '',
     type: 'LK20',
     goals: [
       {
@@ -205,13 +181,13 @@ const CompetenceGoalTabdata = [
           },
         ],
         text:
-          'Hovedområdet språklæring dreier seg om hva det innebærer å lære et nytt språk, å lære det engelske språket, og å se sammenhenger mellom engelsk, morsmål og andre språk. Det omfatter kunnskap om språket og innsikt i egen språklæring. Å kunne vurdere egen språkbruk og egne læringsbehov og velge egnede strategier og arbeidsmåter er nyttig for å lære og å bruke det engelske språket.',
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       },
       {
         name: 'En tittel 2',
         id: 'tmpid5',
         text:
-          'Hovedområdet språklæring dreier seg om hva det innebærer å lære et nytt språk, å lære det engelske språket, og å se sammenhenger mellom engelsk, morsmål og andre språk. Det omfatter kunnskap om språket og innsikt i egen språklæring. Å kunne vurdere egen språkbruk og egne læringsbehov og velge egnede strategier og arbeidsmåter er nyttig for å lære og å bruke det engelske språket.',
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       },
     ],
   },

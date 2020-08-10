@@ -309,6 +309,10 @@ const messages = {
     competenceTopicSearchText: 'Søk ressurser for temaet',
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
+    competenceGoalTitle: 'Målet er at eleven skal kunne:',
+    competenceTabLK06label: 'Kompetansemål (LK06)',
+    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabCorelabel: 'Kjerneelement',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

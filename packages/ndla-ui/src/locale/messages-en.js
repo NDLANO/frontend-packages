@@ -310,6 +310,10 @@ const messages = {
     competenceTopicSearchText: 'Find resources',
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
+    competenceGoalTitle: 'The goal is for the student to be able to:',
+    competenceTabLK06label: 'Competance goal (LK06)',
+    competenceTabLK20label: 'Competance goal (LK20)',
+    competenceTabCorelabel: 'Core element',
   },
   subject: {
     associatedTopics: 'Associated topics',

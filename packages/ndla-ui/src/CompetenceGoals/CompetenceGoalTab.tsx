@@ -33,7 +33,7 @@ const Title = styled.h2`
 
 const Info = styled.p`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 32px;
 `;
 
@@ -196,9 +196,18 @@ const GoalSubItemName = styled.span`
   background-position: 0 center;
   padding-left: 24px;
 `;
-
 const GoalSubItemLink = styled.span`
   padding-left: 24px;
+`;
+const CoreItem = styled.div`
+  margin: 16px 0 24px;
+`;
+const CoreItemTitle = styled.h3`
+  font-size: 22px;
+`;
+const CoreItemText = styled.p`
+  font-size: 18px;
+  line-height: 32px;
 `;
 const Item = ({ goal, t }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -297,8 +306,65 @@ const Item = ({ goal, t }: any) => {
   );
 };
 
-const CompetenceCurriculumGoal = ({ title, subtitle, list, t }: any) => {
+const CompetenceItem = ({ item, t }: any) => {
+  switch (item.type) {
+    case 'LK06':
+    case 'LK20':
+      return (
+        <>
+          <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
+          {item.goals && item.goals.length > 0 && (
+            <Goals>
+              {item.goals.map((goal: any) => (
+                <Item key={goal.id} goal={goal} t={t} />
+              ))}
+            </Goals>
+          )}
+        </>
+      );
+    case 'coreElement':
+      return (
+        <>
+          {item.coreItems && item.coreItems.length > 0 && (
+            <>
+              {item.coreItems.map((coreItem: any) => (
+                <CoreItem key={coreItem.id}>
+                  <CoreItemTitle>{coreItem.name}</CoreItemTitle>
+                  <CoreItemText>{coreItem.text}</CoreItemText>
+                  {coreItem.goals && coreItem.goals.length > 0 && (
+                    <Goals>
+                      <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
+                      {coreItem.goals.map((goal: any) => (
+                        <Item key={goal.id} goal={goal} t={t} />
+                      ))}
+                    </Goals>
+                  )}
+                </CoreItem>
+              ))}
+            </>
+          )}
+        </>
+      );
+    default:
+      return null;
+  }
+};
+
+const CompetenceCurriculumGoal = ({ title, list, t }: any) => {
   const [currentTab, setCurrentTab] = useState(list[0]);
+  const tabLabelTextbyType = (type: string) => {
+    switch (type) {
+      case 'LK06':
+        return t('competenceGoals.competenceTabLK06label');
+      case 'LK20':
+        return t('competenceGoals.competenceTabLK20label');
+      case 'coreElement':
+        return t('competenceGoals.competenceTabCorelabel');
+      default:
+        return null;
+    }
+  };
+
   return (
     <Wrapper>
       {title && title !== '' ? <Title>{title}</Title> : null}
@@ -311,17 +377,12 @@ const CompetenceCurriculumGoal = ({ title, subtitle, list, t }: any) => {
               size="normal"
               onClick={() => setCurrentTab(list[index])}
               key={`tabitem-${tabItem.id}`}>
-              {tabItem.name}
+              {tabLabelTextbyType(tabItem.type)}
             </Button>
           );
         })}
       </TabWrapper>
-      <Info>{currentTab.description ? currentTab.description : ''}</Info>
-      <Goals>
-        {currentTab.goals.map((goal: any) => (
-          <Item key={goal.id} goal={goal} t={t} />
-        ))}
-      </Goals>
+      <CompetenceItem item={currentTab} t={t} />
     </Wrapper>
   );
 };

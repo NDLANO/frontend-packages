@@ -118,7 +118,7 @@ const CompetenceGoalTabdata = [
     id: 'tmpid1',
     name: 'Kompetansemål (KM)',
     description: 'Målet er at eleven skal kunne:',
-    type: 'goals',
+    type: 'LK06',
     goals: [
       {
         id: 'K15502',
@@ -151,26 +151,6 @@ const CompetenceGoalTabdata = [
         id: 'K17637',
         name:
           'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
-        /* url: '#2',
-        subitems: [
-          {
-            type: 'core',
-            name: 'Utforskning og problemløsning',
-          },
-          {
-            type: 'topic',
-            name: 'Folkehelse og livsmestring',
-            resourceurl: '#',
-          },
-          {
-            type: 'subject',
-            name: 'Utforskning og problemløsning',
-            linkitem: {
-              label: 'Se alle kompetansemål i dette faget',
-              url: '#',
-            },
-          },
-        ], */
       },
       {
         id: 'K17635',
@@ -180,28 +160,58 @@ const CompetenceGoalTabdata = [
   },
   {
     id: 'tmpid2',
-    // name: 'Kjerneelementer',
     name: 'Kompetansemål (LK20)',
     description: '',
-    // type: 'coreElements',
-    type: 'goals',
+    type: 'LK20',
     goals: [
       {
         id: 'K15504',
         name:
-          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - Kjernestuff',
-        // url: '#1',
+          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
       },
       {
         id: 'K176378',
         name:
-          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk -Kjernestuff',
-        // url: '#1',
+          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
       },
       {
         id: 'K176353',
-        name: 'lage budskap tilpasset målgruppe, formål og kanal - Kjernestuff',
-        // url: '#1',
+        name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+      },
+    ],
+  },
+  {
+    id: 'tmpid3',
+    type: 'coreElement',
+    name: 'Kjerneelement',
+    coreItems: [
+      {
+        name: 'En tittel 1',
+        id: 'tmpid4',
+        goals: [
+          {
+            id: 'K15504',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+          },
+          {
+            id: 'K176378',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+          },
+          {
+            id: 'K176353',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+          },
+        ],
+        text:
+          'Hovedområdet språklæring dreier seg om hva det innebærer å lære et nytt språk, å lære det engelske språket, og å se sammenhenger mellom engelsk, morsmål og andre språk. Det omfatter kunnskap om språket og innsikt i egen språklæring. Å kunne vurdere egen språkbruk og egne læringsbehov og velge egnede strategier og arbeidsmåter er nyttig for å lære og å bruke det engelske språket.',
+      },
+      {
+        name: 'En tittel 2',
+        id: 'tmpid5',
+        text:
+          'Hovedområdet språklæring dreier seg om hva det innebærer å lære et nytt språk, å lære det engelske språket, og å se sammenhenger mellom engelsk, morsmål og andre språk. Det omfatter kunnskap om språket og innsikt i egen språklæring. Å kunne vurdere egen språkbruk og egne læringsbehov og velge egnede strategier og arbeidsmåter er nyttig for å lære og å bruke det engelske språket.',
       },
     ],
   },
@@ -209,12 +219,9 @@ const CompetenceGoalTabdata = [
 
 export const CompetenceGoalListExample = () => {
   return (
-    <>
-      <CompetenceGoalTab
-        title="Helse- og oppvekstfag Vg1"
-        subtitle="Finn læringsressurser ved å bruke læreplanen"
-        list={CompetenceGoalTabdata}
-      />
-    </>
+    <CompetenceGoalTab
+      title="Helse- og oppvekstfag Vg1"
+      list={CompetenceGoalTabdata}
+    />
   );
 };

@@ -22,7 +22,7 @@ import {
   SubjectAbout,
   SubjectBanner,
   SubjectCarousel,
-  BreadCrumblist,
+  Breadcrumblist,
   ArticleHeaderWrapper,
   ArticleByline,
   ArticleContent,
@@ -457,7 +457,7 @@ const SubjectPage = ({
       <div ref={containerRef}>
         <OneColumn>
           <LayoutItem layout="extend">
-            <BreadCrumblist
+            <Breadcrumblist
               isVisible={showBreadCrumb}
               items={breadcrumbItems}
               onNav={handleNav}

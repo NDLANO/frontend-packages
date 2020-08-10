@@ -24,7 +24,7 @@ import {
   PageContainer,
   Content,
   FFHeroBadge,
-  BreadCrumblist,
+  Breadcrumblist,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -165,7 +165,7 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <BreadCrumblist items={articleBreadCrumb} />
+        <Breadcrumblist items={articleBreadCrumb} />
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
@@ -728,7 +728,7 @@ storiesOf('Fagfornyelse', module)
   ))
   .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>
-      <BreadCrumblist
+      <Breadcrumblist
         invertedStyle={true}
         leftAlign={true}
         items={articleBreadCrumb}

@@ -220,7 +220,7 @@ type BreadCrumbProps = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const BreadCrumblist = ({
+const Breadcrumblist = ({
   children,
   items,
   startOffset = 0,
@@ -311,4 +311,4 @@ const BreadCrumblist = ({
   );
 };
 
-export default injectT(BreadCrumblist);
+export default injectT(Breadcrumblist);

@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 
-import { BreadCrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
+import { Breadcrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
 import { ArticleSideBar } from '@ndla/ui';
 import ArticleLoader from '../article/ArticleLoader';
@@ -76,14 +76,14 @@ const MultidisciplinarySubjectArticle = ({
     <>
       {article && (
         <>
-          <BreadCrumblist items={breadCrumb} startOffset={268}>
+          <Breadcrumblist items={breadCrumb} startOffset={268}>
             <ArticleSideBar
               licenseBox={<LicenseBox />}
               copyPageUrlLink={window.location}
               onLinkToResourcesClick={onToResourcesClick}
               linkToResources="#"
             />
-          </BreadCrumblist>
+          </Breadcrumblist>
           <MultidisciplinarySubjectHeader
             subjects={subjects}
             subjectsLinks={subjectsLinks}

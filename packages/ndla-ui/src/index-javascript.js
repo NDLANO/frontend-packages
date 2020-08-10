@@ -106,7 +106,7 @@ export {
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
-export { default as BreadCrumblist } from './Breadcrumblist';
+export { default as Breadcrumblist } from './Breadcrumblist';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,

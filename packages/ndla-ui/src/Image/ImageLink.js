@@ -8,18 +8,23 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { makeSrcQueryString } from './Image';
 import { FocalPointShape, CropShape } from './shapes';
 
+const StyledLink = styled.a`
+  box-shadow: inset 0 0;
+`;
+
 export function ImageLink({ src, crop, children, ...rest }) {
   return (
-    <a
+    <StyledLink
       target="_blank"
       href={`${src}?${makeSrcQueryString(10720, crop)}`}
       rel="noopener noreferrer"
       {...rest}>
       {children}
-    </a>
+    </StyledLink>
   );
 }
 

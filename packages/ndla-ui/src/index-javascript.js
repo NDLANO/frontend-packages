@@ -94,8 +94,9 @@ export {
   CompetenceGoalListHeading,
   CompetenceGoal,
   CompetenceGoalsDialog,
-  CompetenceGoalTab,
 } from './CompetenceGoals';
+
+export { CompetenceGoalTab } from './CompetenceGoalTab';
 
 export { default as NoContentBox } from './NoContentBox';
 

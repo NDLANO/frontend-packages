@@ -116,7 +116,6 @@ export default CompetenceGoalsExample;
 const CompetenceGoalTabdata = [
   {
     id: 'tmpid1',
-    name: 'Kompetansemål (KM)',
     type: 'LK06',
     goals: [
       {
@@ -137,7 +136,6 @@ const CompetenceGoalTabdata = [
   },
   {
     id: 'tmpid2',
-    name: 'Kompetansemål (LK20)',
     type: 'LK20',
     goals: [
       {
@@ -159,11 +157,12 @@ const CompetenceGoalTabdata = [
   {
     id: 'tmpid3',
     type: 'coreElement',
-    name: 'Kjerneelement',
     coreItems: [
       {
         name: 'En tittel 1',
         id: 'tmpid4',
+        text:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
         goals: [
           {
             id: 'K15504',
@@ -180,8 +179,6 @@ const CompetenceGoalTabdata = [
             name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
           },
         ],
-        text:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       },
       {
         name: 'En tittel 2',

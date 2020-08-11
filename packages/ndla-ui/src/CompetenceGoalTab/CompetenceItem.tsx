@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
-// @ts-ignore
-import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-// mq, breakpoints,
-import { spacing } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+// @ts-ignore
+import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 // @ts-ignore
 import {
   ForwardArrow as ForwardArrowIcon,
@@ -15,40 +11,13 @@ import {
 } from '@ndla/icons/action';
 // @ts-ignore
 import Button from '@ndla/button';
-
-const Wrapper = styled.div`
-  h2 {
-    margin: 0 0 ${spacing.medium};
-  }
-  h3 {
-    margin: ${spacing.xxsmall} 0 ${spacing.small};
-  }
-`;
-
-const Title = styled.h2`
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 32px;
-`;
+import { colors } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 
 const Info = styled.p`
   font-weight: 600;
   font-size: 16px;
   line-height: 32px;
-`;
-
-const TabWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  button {
-    margin: 8px;
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
 `;
 
 const Goals = styled.ul`
@@ -199,6 +168,7 @@ const GoalSubItemName = styled.span`
 const GoalSubItemLink = styled.span`
   padding-left: 24px;
 `;
+
 const CoreItem = styled.div`
   margin: 16px 0 24px;
 `;
@@ -209,6 +179,7 @@ const CoreItemText = styled.p`
   font-size: 18px;
   line-height: 32px;
 `;
+
 const Item = ({ goal, t }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const labelByType = (type: string) => {
@@ -306,7 +277,19 @@ const Item = ({ goal, t }: any) => {
   );
 };
 
-const CompetenceItem = ({ item, t }: any) => {
+export type CompetenceTypeProps = 'LK06' | 'LK20' | 'coreElement';
+export type ListItemProp = {
+  id: string;
+  type: CompetenceTypeProps;
+  goals?: any;
+  coreItems?: any;
+};
+export type ListItemProps = {
+  item: ListItemProp;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
+};
+
+const CompetenceItem = ({ item, t }: ListItemProps) => {
   switch (item.type) {
     case 'LK06':
     case 'LK20':
@@ -350,41 +333,4 @@ const CompetenceItem = ({ item, t }: any) => {
   }
 };
 
-const CompetenceCurriculumGoal = ({ title, list, t }: any) => {
-  const [currentTab, setCurrentTab] = useState(list[0]);
-  const tabLabelTextbyType = (type: string) => {
-    switch (type) {
-      case 'LK06':
-        return t('competenceGoals.competenceTabLK06label');
-      case 'LK20':
-        return t('competenceGoals.competenceTabLK20label');
-      case 'coreElement':
-        return t('competenceGoals.competenceTabCorelabel');
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <Wrapper>
-      {title && title !== '' ? <Title>{title}</Title> : null}
-      <TabWrapper>
-        {list.map((tabItem: any, index: number) => {
-          return (
-            <Button
-              borderShape="rounded"
-              lighter={tabItem.id !== currentTab.id}
-              size="normal"
-              onClick={() => setCurrentTab(list[index])}
-              key={`tabitem-${tabItem.id}`}>
-              {tabLabelTextbyType(tabItem.type)}
-            </Button>
-          );
-        })}
-      </TabWrapper>
-      <CompetenceItem item={currentTab} t={t} />
-    </Wrapper>
-  );
-};
-
-export default injectT(CompetenceCurriculumGoal);
+export default injectT(CompetenceItem);

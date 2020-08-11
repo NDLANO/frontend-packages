@@ -24,7 +24,7 @@ import {
   PageContainer,
   Content,
   FFHeroBadge,
-  BreadCrumblist,
+  Breadcrumblist,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -54,7 +54,20 @@ import SearchPageExample from './SearchPageExample';
 import FrontpageReDesignExample from './FrontpageReDesignExample';
 import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
-import { articleBreadCrumb } from '../../dummydata/mockPrograms';
+import {
+  articleBreadCrumb,
+  subjectBreadcrumb,
+  topics,
+} from '../../dummydata/mockPrograms';
+import {
+  breadcrumb as toolboxBreadcrumb,
+  topics as toolboxTopics,
+} from '../../dummydata/mockToolbox';
+import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
+import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
+import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
+import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
+import { contentCards } from '../../dummydata';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
@@ -78,7 +91,15 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -87,7 +108,16 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage selectedMainTopic="Økonomi" />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -96,7 +126,37 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage selectedMainTopic="Økonomi" selectedSubTopic="Lønsemd" />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          selectedSubTopic={22703}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Underemne med underemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          selectedSubTopic={22703}
+          selectedSubSubTopic={22703}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -105,8 +165,115 @@ storiesOf('Re-design', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <BreadCrumblist items={articleBreadCrumb} />
+        <Breadcrumblist items={articleBreadCrumb} />
         <ArticleLearningmaterial />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Verktøykassa', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={toolboxTopics}
+          initialBreadcrumb={toolboxBreadcrumb}
+          subjectName="Verktøykassa"
+          bannerBackground={backgroundToolbox}
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglige tema', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <MultidisciplinarySubjectPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel bærekraftig utvikling', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate']}
+          articleId="22220"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel folkehelse og livsmestring', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth']}
+          articleId="22844"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel demokrati og medborgerskap', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['democracy']}
+          articleId="22727"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel alle tema', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate', 'democracy', 'publicHealth']}
+          articleId="22277"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel 2 tema(demokrati og klima)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate', 'democracy']}
+          articleId="22222"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel 2 tema(demokrati og folkehelse)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth', 'democracy']}
+          articleId="21045"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig artikkel 2 tema(klima og folkehelse)', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth', 'climate']}
+          articleId="20655"
+        />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -561,6 +728,11 @@ storiesOf('Fagfornyelse', module)
   ))
   .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>
+      <Breadcrumblist
+        invertedStyle={true}
+        leftAlign={true}
+        items={articleBreadCrumb}
+      />
       <Content>
         <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <OneColumn cssModifier="clear-desktop" wide>

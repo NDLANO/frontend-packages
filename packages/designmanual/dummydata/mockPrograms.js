@@ -40,143 +40,83 @@ export const subject = {
 
 export const topics = [
   {
-    label: 'Praksis i bedrift',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Det er nyttig å prøve ut teorien du lærer på skulen, i praksis. Du kan vere utplassert innan vektarfaget, kontor og resepsjon, sal eller reiseliv.',
-  },
-  {
-    label: 'Tverrfaglege oppgåver',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Tverrfaglege oppgåver inneheld læreplanmål frå alle programfaga: forretningsdrift, marknadsføring og innovasjon og kultur og samhandling.',
-  },
-  {
-    label: 'Å starte ungdomsbedrift',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Alle elevar i vidaregåande skule kan starte ei ungdomsbedrift i samarbeid med lærar.',
-  },
-  {
-    label: 'Å starte eiga bedrift',
-    tags: ['Yrkesfaglig fordypning'],
-    url: '#',
-    description:
-      'Tips og råd til deg som har lyst til å starte di eiga bedrift.',
-  },
-  {
-    label: 'Lover og reglar',
+    label: 'Lover og regler',
+    id: 22661,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Det er mange lover og reglar som regulerer drift av verksemder innan servicenæringa. Alle lovene finn vi digitalt på Lovdata.',
   },
   {
     label: 'Organisering',
+    id: 22664,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Alle verksemder treng ei tydeleg ansvarsfordeling der dei ulike rollene er klart definerte. Organisasjonskart blir utarbeidde for å presentere strukturen.',
+    subTopics: [
+      {
+        label: 'Organisasjonskart og ansvarsfordeling',
+        id: 22830,
+        url: '#',
+      },
+      {
+        label: 'Omstilling og utvikling',
+        id: 20978,
+        url: '#',
+      },
+    ],
   },
   {
     label: 'Økonomi',
     tags: ['Forretningsdrift'],
     url: '#',
     id: 22665,
-    description:
-      'Lær å rekne ut pris på eit produkt, setje opp budsjett, føre enkle rekneskap og vurdere lønsemd.',
     subTopics: [
       {
-        label: 'Prissetjing',
+        label: 'Prissetting',
+        id: 22703,
         url: '#',
-        description:
-          'Vi har tre prissetjingsmetodar: kostnadsbasert, marknadsbasert og konkurransebasert.',
-      },
-      {
-        label: 'Rekneskap',
-        url: '#',
-        description:
-          'Ein rekneskap viser eit oversyn over inntekter, kostnader, eigendelar og gjeld. Lær korleis du fører enkle rekneskap.',
-      },
-      {
-        label: 'Lønsemd',
-        url: '#',
-        description:
-          'For å vurdere lønsemda til ei bedrift utfører vi ein rekneskapsanalyse som gir oss oversyn over den økonomiske tilstanden og utviklinga i bedrifta.',
+        subTopics: [
+          {
+            label: 'Prissetting underemne',
+            id: 22703,
+            url: '#',
+          },
+        ],
       },
       {
         label: 'Budsjett',
+        id: 22718,
         url: '#',
-        description:
-          'Eit budsjett er eit oversyn over inntekter og utgifter for framtida. Lær korleis du set opp eit budsjett.',
+      },
+      {
+        label: 'Regnskap',
+        id: 22716,
+        url: '#',
+      },
+      {
+        label: 'Lønnsomhet',
+        id: 22719,
+        url: '#',
+        isAdditionalResource: true,
       },
     ],
   },
   {
-    label: 'Verdikjeda og berekraftig utvikling',
+    label: 'Verdikjeden og bærekraftig utvikling',
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Prosessen frå råvare til endeleg produkt blir kalla verdikjeda. For å fremje kvalitet og berekraftig utvikling må vi analysere dei ulike ledda.',
+    id: 22666,
   },
   {
-    label: 'Trygging',
+    label: 'Sikkerhet',
+    id: 22675,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Vi kan definere trygging som evna til å ha kontroll med risiko. Dette emnet handlar om risikovurdering, tryggingstiltak og beredskapsplanar.',
+    isAdditionalResource: true,
   },
   {
     label: 'HMS',
+    id: 22678,
     tags: ['Forretningsdrift'],
     url: '#',
-    description:
-      'Arbeidsmiljølova og forskrifter krev at det blir arbeidd systematisk for å tryggje helse, miljø og sikkerheit/tryggleik for arbeidstakarane, HMS.',
-  },
-  {
-    label: 'Kommunikasjon og kundebehandling',
-    tags: ['Kultur og samhandling'],
-    url: '#',
-    description:
-      'Kommunikasjon og kundebehandling omfattar tema som kulturforståing, vertskapsrolla, nettverksbygging, konflikthandtering og digital kommunikasjon.',
-  },
-  {
-    label: 'Etikk og berekraft',
-    tags: ['Kultur og samhandling'],
-    url: '#',
-    description:
-      'Forbrukarane forventar at bedrifter skal handle både etisk og berekraftig. Korleis bedrifta gjer dette, blir ofte omtalt i verdigrunnlaget til bedrifta.',
-  },
-  {
-    label: 'Partane i arbeidslivet',
-    tags: ['Kultur og samhandling'],
-    url: '#',
-    description:
-      'Korleis samarbeider partane i arbeidslivet for å utvikle arbeidslivet? I arbeidslivet har både arbeidsgivarar og arbeidstakarar sine eigne organisasjonar.',
-  },
-  {
-    label: 'Innovasjon',
-    tags: ['Markedsføring og innovasjon'],
-    url: '#',
-    description:
-      'Nytenking, kreativitet og berekraft er viktig når du utarbeider ein forretningsidé.',
-  },
-  {
-    label: 'Marknadsføring og sal',
-    tags: ['Markedsføring og innovasjon'],
-    url: '#',
-    description:
-      'Ein medarbeidar innan sal og marknadsføring treng mellom anna kunnskap om forbrukaråtferd, marknadsføringsstrategiar, marknadsplanar og regelverk.',
-  },
-  {
-    label: 'Administrasjon',
-    tags: ['Markedsføring og innovasjon'],
-    url: '#',
-    description:
-      'På eit kontor er det mange administrative oppgåver som består i å yte service internt og eksternt.',
   },
 ];
 
@@ -773,5 +713,20 @@ export const articleBreadCrumb = [
     url: '#',
     isCurrent: true,
     icon: <SubjectMaterialBadge background size="xx-small" />,
+  },
+];
+
+export const subjectBreadcrumb = [
+  {
+    label: 'Salg, service og reiseliv (Service og samferdsel)',
+    id: 11,
+    url: '#',
+    typename: 'Subjecttype',
+  },
+  {
+    label: 'Forretningsdrift',
+    id: 2,
+    url: '#',
+    typename: 'Subject',
   },
 ];

@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   ResourcesWrapper,
@@ -111,10 +112,22 @@ class Resources extends Component {
   }
 
   render() {
+    const { title, showActiveResource } = this.props;
     const { showAdditionalResources, showAdditionalDialog } = this.state;
     const hasAdditionalResources = resourceGroups.some(group =>
       group.resources.some(resource => resource.additional),
     );
+
+    if (!showActiveResource) {
+      resourceGroups.forEach(group => {
+        group.resources.forEach(resource => {
+          if (resource.active) {
+            resource.active = false;
+          }
+        });
+      });
+    }
+
     return (
       <ResourcesWrapper
         header={
@@ -131,7 +144,7 @@ class Resources extends Component {
             }}
             explainationIconLabelledBy="learning-resources-info-header-id"
             id="learning-resources-id"
-            title="Havbunnsløsninger"
+            title={title}
             toggleAdditionalResources={this.toggleAdditionalResources}
             showAdditionalResources={showAdditionalResources}
             hasAdditionalResources={hasAdditionalResources}
@@ -162,5 +175,15 @@ class Resources extends Component {
     );
   }
 }
+
+Resources.propTypes = {
+  title: PropTypes.string,
+  showActiveResource: PropTypes.bool,
+};
+
+Resources.defaultProps = {
+  title: 'Havbunnsløsninger',
+  showActiveResource: true,
+};
 
 export default Resources;

@@ -283,7 +283,7 @@ const messages = {
     edition: 'Utgåve',
     publisher: 'Utgjevar',
     closeLabel: 'Lukk',
-    useContent: 'Bruk innhald',
+    useContent: 'Retningslinjer for bruk',
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Sjå kva {name} har bidratt med',
     urlAuthorLabel: 'Les meir om {name}',
@@ -292,6 +292,8 @@ const messages = {
     multipleAuthorsLabelAria: 'Rettshavarar av artikkelen er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'Rettshavar av artikkelen er {name}',
+    copyPageLink: 'Kopier lenke til sida',
+    copyPageLinkCopied: 'Lenke kopiert',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',
@@ -492,6 +494,7 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'Til framsida',
+    youAreHere: 'Du er her',
   },
   listview: {
     search: {
@@ -701,6 +704,11 @@ const messages = {
     showLongerDescription: 'Lengre beskriving',
     showShorterDescription: 'Kortere beskriving',
     topics: 'Emner',
+    additionalTopic: 'Tillegsemne',
+    additionalTopics: 'Tillegsemner',
+  },
+  multidisciplinarySubject: {
+    subjectsLinksDescription: 'Case innan',
   },
 };
 

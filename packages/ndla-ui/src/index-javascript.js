@@ -14,6 +14,7 @@ export {
   ArticleTitle,
   ArticleWrapper,
   ArticleHeaderWrapper,
+  ArticleSideBar,
   default as Article,
 } from './Article';
 
@@ -105,7 +106,7 @@ export {
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
-export { default as BreadCrumblist } from './Breadcrumblist';
+export { default as Breadcrumblist } from './Breadcrumblist';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
@@ -176,3 +177,7 @@ export {
   NavigationTopicAbout,
 } from './Navigation';
 export { default as Programme } from './Programme';
+export {
+  default as MultidisciplinarySubject,
+  MultidisciplinarySubjectHeader,
+} from './MultidisciplinarySubject';

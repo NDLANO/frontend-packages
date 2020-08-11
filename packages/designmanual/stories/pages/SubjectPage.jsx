@@ -6,8 +6,11 @@
  *
  */
 
-import React, { createRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useIntersectionObserver } from '@ndla/hooks';
+
+import { injectT } from '@ndla/i18n';
 
 import {
   Image,
@@ -19,7 +22,7 @@ import {
   SubjectAbout,
   SubjectBanner,
   SubjectCarousel,
-  BreadCrumblist,
+  Breadcrumblist,
   ArticleHeaderWrapper,
   ArticleByline,
   ArticleContent,
@@ -29,15 +32,7 @@ import {
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
-import {
-  subject,
-  topics as topicsData,
-  programs,
-} from '../../dummydata/mockPrograms';
-
-import { contentCards } from '../../dummydata';
 import Resources from '../molecules/resources';
-import exampleBackground from '../../images/banners/Service-og-samferdsel-black.svg';
 import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 
@@ -111,96 +106,157 @@ const loadArticle = async articleId => {
   }
 };
 
-const getMainTopicData = selectedTopic => {
-  const topics = [];
-
-  topicsData.forEach(topic => {
-    const item = { ...topic };
-    item.selected = topic.label === selectedTopic;
-    topics.push(item);
+const fetchTopicData = (topicDataItem, setDataCallback) => {
+  loadArticle(topicDataItem.id).then(result => {
+    const updatedItem = { ...topicDataItem };
+    updatedItem.loadingContent = false;
+    updatedItem.content = result.content;
+    updatedItem.introduction = result.introduction;
+    setDataCallback(updatedItem);
   });
-  return topics;
+};
+
+const prepareTopicData = (topics, selectedId, setDataCallback) => {
+  const items = [];
+  let selectedItem = null;
+  topics.forEach(item => {
+    const newItem = { ...item };
+    newItem.selected = newItem.id === selectedId;
+    if (newItem.selected) {
+      if (!newItem.content && setDataCallback) {
+        newItem.loadingContent = true;
+        fetchTopicData(newItem, setDataCallback);
+      }
+      selectedItem = newItem;
+    }
+    items.push(newItem);
+  });
+  return { items: items, selectedItem: selectedItem };
 };
 
 const SubjectPage = ({
   selectedMainTopic: preSelectedMainTopic,
   selectedSubTopic: preSelectedSubTopic,
+  selectedSubSubTopic: preSelectedSubSubTopic,
+  topics: topicsData,
+  initialBreadcrumb = [],
+  subjectName,
+  bannerBackground,
+  subjectContentCards,
+  subjectAboutHeading,
+  subjectAboutDescription,
+  t,
 }) => {
-  const fetchTopicData = (topicDataItem, setDataCallback, articleId) => {
-    loadArticle(articleId).then(result => {
-      const updatedItem = { ...topicDataItem };
-      updatedItem.loadingContent = false;
-      updatedItem.content = result.content;
-      updatedItem.introduction = result.introduction;
-      setDataCallback(updatedItem);
-    });
-  };
-
-  const loadTopicData = (topicDataItem, articleId = 1344, isSubTopic) => {
-    const callback = item => {
-      isSubTopic ? setSubTopicData(item) : setTopicData(item);
-    };
-    fetchTopicData(topicDataItem, callback, articleId);
-  };
-
   const [selectedMainTopic, setSelectedMainTopic] = useState(
     preSelectedMainTopic,
   );
   const [selectedSubTopic, setSelectedSubTopic] = useState(preSelectedSubTopic);
-
-  const [mainTopics, setMainTopics] = useState(() =>
-    getMainTopicData(preSelectedMainTopic),
+  const [selectedSubSubTopic, setSelectedSubSubTopic] = useState(
+    preSelectedSubSubTopic,
   );
+
+  const [topicData, setTopicData] = useState(null);
+  const [subTopicData, setSubTopicData] = useState(null);
+  const [subSubTopicData, setSubSubTopicData] = useState(null);
+
+  const [mainTopics, setMainTopics] = useState(() => {
+    const { items, selectedItem } = prepareTopicData(
+      topicsData,
+      preSelectedMainTopic,
+      setTopicData,
+    );
+    setTopicData(selectedItem);
+    return items;
+  });
+
   const [subTopics, setSubTopics] = useState(() => {
-    const topics = getMainTopicData(preSelectedMainTopic);
-    const mainTopicData = topics.find(item => item.label === selectedMainTopic);
-    const newSubTopics = [];
-    if (mainTopicData) {
-      const subTopics = mainTopicData.subTopics;
+    const { selectedItem } = prepareTopicData(topicsData, preSelectedMainTopic);
+    if (selectedItem) {
+      const subTopics = selectedItem.subTopics;
       if (subTopics && subTopics.length) {
-        subTopics.forEach(item => {
-          const newSubItem = { ...item };
-          newSubItem.selected = newSubItem.label === preSelectedSubTopic;
-          if (newSubItem.label === preSelectedSubTopic) {
-            if (!newSubItem.content) {
-              newSubItem.loadingContent = true;
-              loadTopicData(newSubItem, 1345, true);
-            }
-          }
-          newSubTopics.push(newSubItem);
-        });
+        const { items, selectedItem } = prepareTopicData(
+          subTopics,
+          preSelectedSubTopic,
+          setSubTopicData,
+        );
+        setSubTopicData(selectedItem);
+        return items;
       }
     }
-    return newSubTopics;
+    return [];
   });
 
-  const [topicData, setTopicData] = useState(() => {
-    const topics = getMainTopicData(preSelectedMainTopic);
-    const mainTopicData = topics.find(item => item.label === selectedMainTopic);
-
-    if (mainTopicData && !mainTopicData.content) {
-      mainTopicData.loadingContent = true;
-      loadTopicData(mainTopicData);
+  const [subSubTopics, setSubSubTopics] = useState(() => {
+    if (preSelectedSubSubTopic) {
+      const { selectedItem } = prepareTopicData(
+        topicsData,
+        preSelectedMainTopic,
+      );
+      if (selectedItem) {
+        const subTopics = selectedItem.subTopics;
+        if (subTopics && subTopics.length) {
+          const { selectedItem: selectedSubItem } = prepareTopicData(
+            subTopics,
+            preSelectedSubTopic,
+          );
+          if (selectedSubItem) {
+            const subSubTopics = selectedSubItem.subTopics;
+            if (subSubTopics && subSubTopics.length) {
+              const {
+                items,
+                selectedItem: selectedSubSubItem,
+              } = prepareTopicData(
+                subSubTopics,
+                preSelectedSubSubTopic,
+                setSubSubTopicData,
+              );
+              setSubTopicData(selectedSubSubItem);
+              return items;
+            }
+          }
+        }
+      }
     }
-    return mainTopicData;
+    return [];
   });
-  const [subTopicData, setSubTopicData] = useState(null);
 
   const [showMainTopicContent, setShowMainTopicContent] = useState(null);
   const [showSubTopicContent, setShowSubTopicContent] = useState(null);
+  const [showSubSubTopicContent, setShowSubSubTopicContent] = useState(null);
 
-  const [currentLevel, setCurrentLevel] = useState('Subject'); // default to subject
+  const [
+    showSubTopicAdditionalTopics,
+    setShowSubTopicAdditionalTopics,
+  ] = useState(false);
+
+  const [currentLevel, setCurrentLevel] = useState(() => {
+    if (preSelectedSubSubTopic) {
+      return 'SubSubtopic';
+    } else if (preSelectedSubTopic) {
+      return 'Subtopic';
+    } else if (preSelectedMainTopic) {
+      return 'Topic';
+    }
+    return 'Subject';
+  });
 
   // Hold the previous selected main topic
   const prevSelectedMainTopicRef = useRef('__initial__');
+  const prevSelectedSubTopicRef = useRef('__initial__');
 
-  const mainTopicRef = createRef();
-  const subTopicRef = createRef();
+  const mainTopicRef = useRef(null);
+  const subTopicRef = useRef(null);
+  const subSubTopicRef = useRef(null);
 
-  const breadcrumbItems = [
+  /*const breadcrumbItems = [
     { ...programs[11], typename: 'Subjecttype' },
     { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
-  ];
+  ];*/
+
+  const breadcrumbItems = initialBreadcrumb.map(item => ({
+    ...item,
+    isCurrent: currentLevel === item.typename,
+  }));
 
   if (topicData) {
     breadcrumbItems.push({
@@ -216,245 +272,341 @@ const SubjectPage = ({
       isCurrent: currentLevel === 'Subtopic',
     });
   }
+  if (subSubTopicData) {
+    breadcrumbItems.push({
+      ...subSubTopicData,
+      typename: 'SubSubtopic',
+      isCurrent: currentLevel === 'SubSubtopic',
+    });
+  }
 
   const updateMainContent = () => {
-    const topics = getMainTopicData(selectedMainTopic);
-    setMainTopics(getMainTopicData(selectedMainTopic));
-
-    if (selectedMainTopic) {
-      const mainTopicData = topics.find(
-        item => item.label === selectedMainTopic,
-      );
-
-      if (!mainTopicData.content) {
-        mainTopicData.loadingContent = true;
-        loadTopicData(mainTopicData);
-      }
-      setTopicData(mainTopicData);
-      updateSubContent(mainTopicData.subTopics);
+    const { items, selectedItem } = prepareTopicData(
+      topicsData,
+      selectedMainTopic,
+      setTopicData,
+    );
+    setMainTopics(items);
+    setTopicData(selectedItem);
+    if (selectedItem && selectedItem.subTopics) {
+      updateSubContent(selectedItem.subTopics);
     }
   };
 
   const updateSubContent = topicsData => {
-    const newSubTopics = [];
-    if (topicsData && topicsData.length) {
-      topicsData.forEach(item => {
-        const newSubItem = { ...item };
-        newSubItem.selected = newSubItem.label === selectedSubTopic;
-        if (newSubItem.label === selectedSubTopic) {
-          if (!newSubItem.content) {
-            newSubItem.loadingContent = true;
-            loadTopicData(newSubItem, 1344, true);
-          }
-          setSubTopicData(newSubItem);
-        }
-        newSubTopics.push(newSubItem);
-      });
-    }
-    setSubTopics(newSubTopics);
+    const { items, selectedItem } = prepareTopicData(
+      topicsData,
+      selectedSubTopic,
+      setSubTopicData,
+    );
+
+    setSubTopics(items);
+    setSubTopicData(selectedItem);
     setShowSubTopicContent(false);
+    if (selectedItem && selectedItem.subTopics) {
+      updateSubSubContent(selectedItem.subTopics);
+    }
+  };
+
+  const updateSubSubContent = topicsData => {
+    const { items, selectedItem } = prepareTopicData(
+      topicsData,
+      selectedSubSubTopic,
+      setSubSubTopicData,
+    );
+
+    setSubSubTopics(items);
+    setSubSubTopicData(selectedItem);
+    setShowSubSubTopicContent(false);
+  };
+
+  const scrollToCurrentLevel = () => {
+    let scrollTo = 0;
+    switch (currentLevel) {
+      case 'Subjecttype':
+      case 'Subject':
+        break;
+      case 'Topic':
+        scrollTo =
+          mainTopicRef.current.getBoundingClientRect().bottom +
+          window.scrollY -
+          55;
+        break;
+      case 'Subtopic':
+        scrollTo =
+          subTopicRef.current.getBoundingClientRect().bottom +
+          window.scrollY -
+          55;
+        break;
+      case 'SubSubtopic':
+        scrollTo =
+          subSubTopicRef.current.getBoundingClientRect().bottom +
+          window.scrollY -
+          55;
+        break;
+      default: // do nothing, redirect??
+    }
+    window.scrollTo({
+      top: scrollTo,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
     const prevMainTopic = prevSelectedMainTopicRef.current;
     if (prevMainTopic !== '__initial__') {
+      const prevSubTopic = prevSelectedSubTopicRef.current;
       // No need to run this on initial
       if (prevMainTopic !== selectedMainTopic) {
         updateMainContent();
-      } else {
+      } else if (prevSubTopic !== selectedSubTopic) {
         updateSubContent(subTopics);
+      } else {
+        updateSubSubContent(subSubTopics);
       }
     }
     prevSelectedMainTopicRef.current = selectedMainTopic;
-  }, [selectedMainTopic, selectedSubTopic]);
+  }, [selectedMainTopic, selectedSubTopic, selectedSubSubTopic]);
 
   useEffect(() => {
-    if (preSelectedMainTopic) {
-      if (preSelectedSubTopic) {
-        setCurrentLevel('Subtopic');
-        window.scrollTo({
-          top:
-            subTopicRef.current.getBoundingClientRect().bottom +
-            window.scrollY -
-            100,
-          behavior: 'smooth',
-        });
-      } else {
-        setCurrentLevel('Topic');
-        window.scrollTo({
-          top:
-            mainTopicRef.current.getBoundingClientRect().bottom +
-            window.scrollY -
-            100,
-          behavior: 'smooth',
-        });
-      }
-    }
-  }, []);
+    scrollToCurrentLevel();
+  }, [currentLevel]);
 
-  const onClickMainTopic = e => {
+  const onClickMainTopic = (e, id) => {
     e.preventDefault();
-    const topic = e.currentTarget.textContent;
-    if (topic !== selectedMainTopic) {
+    if (id !== selectedMainTopic) {
       setSelectedSubTopic(null);
+      setSubTopics([]);
       setSubTopicData(null);
-      setShowMainTopicContent(false);
       setShowSubTopicContent(false);
-      setSelectedMainTopic(topic);
-    }
 
-    setCurrentLevel('Topic');
-    window.scrollTo({
-      top:
-        mainTopicRef.current.getBoundingClientRect().bottom +
-        window.scrollY -
-        100,
-      behavior: 'smooth',
-    });
+      setSelectedSubSubTopic(null);
+      setSubSubTopics([]);
+      setSubSubTopicData(null);
+      setShowSubSubTopicContent(false);
+
+      setShowMainTopicContent(false);
+      setSelectedMainTopic(id);
+    }
+    if (currentLevel !== 'Topic') {
+      setCurrentLevel('Topic');
+    } else {
+      scrollToCurrentLevel();
+    }
   };
 
-  const onClickSubTopic = e => {
+  const onClickSubTopic = (e, id) => {
     e.preventDefault();
-    const subTopic = e.currentTarget.textContent;
-    setSelectedSubTopic(subTopic);
-    setCurrentLevel('Subtopic');
+    if (id !== selectedSubTopic) {
+      setSelectedSubTopic(id);
 
-    window.scrollTo({
-      top:
-        subTopicRef.current.getBoundingClientRect().bottom +
-        window.scrollY -
-        100,
-      behavior: 'smooth',
-    });
+      setSelectedSubSubTopic(null);
+      setSubSubTopics([]);
+      setSubSubTopicData(null);
+      setShowSubSubTopicContent(false);
+    }
+    if (currentLevel !== 'Subtopic') {
+      setCurrentLevel('Subtopic');
+    } else {
+      scrollToCurrentLevel();
+    }
+  };
+
+  const onClickSubSubTopic = (e, id) => {
+    e.preventDefault();
+    setSelectedSubSubTopic(id);
+    if (currentLevel !== 'SubSubtopic') {
+      setCurrentLevel('SubSubtopic');
+    } else {
+      scrollToCurrentLevel();
+    }
   };
 
   const handleNav = (e, item) => {
-    const { typename } = item;
-    switch (typename) {
-      case 'Subjecttype':
-        e.preventDefault();
-        window.scrollTo({
-          top: 50,
-          behavior: 'smooth',
-        });
-        setCurrentLevel(typename);
-        break;
-      case 'Subject':
-        e.preventDefault();
-        window.scrollTo({
-          top: 50,
-          behavior: 'smooth',
-        });
-        setCurrentLevel(typename);
-        break;
-      case 'Topic':
-        e.preventDefault();
-        window.scrollTo({
-          top:
-            mainTopicRef.current.getBoundingClientRect().bottom +
-            window.scrollY -
-            100,
-          behavior: 'smooth',
-        });
-        setCurrentLevel(typename);
-        break;
-      case 'Subtopic':
-        e.preventDefault();
-        window.scrollTo({
-          top:
-            subTopicRef.current.getBoundingClientRect().bottom +
-            window.scrollY -
-            100,
-          behavior: 'smooth',
-        });
-        setCurrentLevel(typename);
-        break;
-      default: // do nothing, redirect??
+    e.preventDefault();
+    if (currentLevel !== item.typename) {
+      setCurrentLevel(item.typename);
+    } else {
+      scrollToCurrentLevel();
     }
   };
 
-  const onToggleShowMainContent = () => {
-    if (topicData) {
-      setShowMainTopicContent(!showMainTopicContent);
+  const moveBannerUp = !topicData;
+
+  const getSubTopics = () => {
+    if (showSubTopicAdditionalTopics) {
+      return subTopics;
     }
+    return subTopics.filter(item => !item.isAdditionalResource);
   };
 
-  const onToggleShowSubContent = () => {
-    if (subTopicData) {
-      setShowSubTopicContent(!showSubTopicContent);
-    }
-  };
-
-  const moveBannerUp = !subTopicData;
+  // show/hide breadcrumb based on intersection
+  const [containerRef, { entry }] = useIntersectionObserver({
+    root: null,
+    rootMargin: '-325px',
+  });
+  const showBreadCrumb = entry && entry.isIntersecting;
+  useEffect(() => {
+    console.log(
+      `The component is ${showBreadCrumb ? 'visible' : 'not visible'}.`,
+    );
+  }, [showBreadCrumb]);
 
   return (
     <>
-      <OneColumn>
-        <LayoutItem layout="extend">
-          <BreadCrumblist items={breadcrumbItems} onNav={handleNav} />
-          <NavigationHeading subHeading={subject.subjectName}>
-            {subject.label}
-          </NavigationHeading>
-          <div ref={mainTopicRef}>
-            <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
-          </div>
-          {topicData && (
-            <>
-              <NavigationTopicAbout
-                heading={topicData.label}
-                ingress={topicData.introduction}
-                onToggleShowContent={onToggleShowMainContent}
-                showContent={showMainTopicContent}
-                isLoading={topicData.loadingContent}>
-                {topicData.content}
-              </NavigationTopicAbout>
-              {subTopics.length ? (
+      <div ref={containerRef}>
+        <OneColumn>
+          <LayoutItem layout="extend">
+            <Breadcrumblist
+              isVisible={showBreadCrumb}
+              items={breadcrumbItems}
+              onNav={handleNav}
+            />
+            <NavigationHeading>{subjectName}</NavigationHeading>
+            <div ref={mainTopicRef}>
+              <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
+            </div>
+            {topicData && (
+              <>
+                <NavigationTopicAbout
+                  heading={topicData.label}
+                  ingress={topicData.introduction}
+                  onToggleShowContent={() =>
+                    setShowMainTopicContent(!showMainTopicContent)
+                  }
+                  showContent={showMainTopicContent}
+                  isAdditionalTopic={topicData.isAdditionalResource}
+                  isLoading={topicData.loadingContent}>
+                  {topicData.content}
+                </NavigationTopicAbout>
+
                 <div ref={subTopicRef}>
-                  <NavigationBox
-                    colorMode="light"
-                    heading="emner"
-                    items={subTopics}
-                    onClick={onClickSubTopic}
-                  />
+                  {subTopics.length ? (
+                    <NavigationBox
+                      colorMode="light"
+                      heading={t('navigation.topics')}
+                      hasAdditionalResources={subTopics.some(
+                        item => item.isAdditionalResource,
+                      )}
+                      showAdditionalResources={showSubTopicAdditionalTopics}
+                      items={getSubTopics()}
+                      onToggleAdditionalResources={() =>
+                        setShowSubTopicAdditionalTopics(
+                          !showSubTopicAdditionalTopics,
+                        )
+                      }
+                      onClick={onClickSubTopic}
+                    />
+                  ) : null}
+                  {currentLevel === 'Topic' && (
+                    <Resources
+                      title={topicData.label}
+                      showActiveResource={false}
+                    />
+                  )}
                 </div>
-              ) : null}
-              {subTopicData && (
-                <>
-                  <NavigationTopicAbout
-                    heading={subTopicData.label}
-                    ingress={subTopicData.introduction}
-                    onToggleShowContent={onToggleShowSubContent}
-                    showContent={showSubTopicContent}
-                    isLoading={subTopicData.loadingContent}>
-                    {subTopicData.content}
-                  </NavigationTopicAbout>
-                  <Resources />
-                </>
-              )}
-            </>
-          )}
-        </LayoutItem>
-      </OneColumn>
-      <SubjectBanner
-        image={exampleBackground}
-        negativeTopMargin={moveBannerUp}
-      />
-      <OneColumn wide>
-        {subjectAbout(subject.description.heading, subject.description.text)}
-      </OneColumn>
-      <SubjectCarousel
-        wideScreen
-        subjects={contentCards}
-        title="Litt forskjellig fra faget"
-        subjectPage
-      />
+                {subTopicData && (
+                  <>
+                    <NavigationTopicAbout
+                      heading={subTopicData.label}
+                      ingress={subTopicData.introduction}
+                      onToggleShowContent={() =>
+                        setShowSubTopicContent(!showSubTopicContent)
+                      }
+                      showContent={showSubTopicContent}
+                      isAdditionalTopic={subTopicData.isAdditionalResource}
+                      isLoading={subTopicData.loadingContent}>
+                      {subTopicData.content}
+                    </NavigationTopicAbout>
+                  </>
+                )}
+                <div ref={subSubTopicRef}>
+                  {subTopicData && (
+                    <>
+                      {subSubTopics.length ? (
+                        <NavigationBox
+                          colorMode="light"
+                          heading={t('navigation.topics')}
+                          hasAdditionalResources={subSubTopics.some(
+                            item => item.isAdditionalResource,
+                          )}
+                          showAdditionalResources={showSubTopicAdditionalTopics}
+                          items={subSubTopics}
+                          onToggleAdditionalResources={() =>
+                            setShowSubTopicAdditionalTopics(
+                              !showSubTopicAdditionalTopics,
+                            )
+                          }
+                          onClick={onClickSubSubTopic}
+                        />
+                      ) : null}
+                      {currentLevel === 'Subtopic' && (
+                        <Resources
+                          title={subTopicData.label}
+                          showActiveResource={false}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
+                {subSubTopicData && (
+                  <>
+                    <NavigationTopicAbout
+                      heading={subSubTopicData.label}
+                      ingress={subSubTopicData.introduction}
+                      onToggleShowContent={() =>
+                        setShowSubSubTopicContent(!showSubSubTopicContent)
+                      }
+                      showContent={showSubSubTopicContent}
+                      isAdditionalTopic={subSubTopicData.isAdditionalResource}
+                      isLoading={subSubTopicData.loadingContent}>
+                      {subSubTopicData.content}
+                    </NavigationTopicAbout>
+                    <Resources
+                      title={subSubTopicData.label}
+                      showActiveResource={false}
+                    />
+                  </>
+                )}
+              </>
+            )}
+          </LayoutItem>
+        </OneColumn>
+      </div>
+      {bannerBackground && (
+        <SubjectBanner
+          image={bannerBackground}
+          negativeTopMargin={moveBannerUp}
+        />
+      )}
+      {subjectAboutHeading && (
+        <OneColumn wide>
+          {subjectAbout(subjectAboutHeading, subjectAboutDescription)}
+        </OneColumn>
+      )}
+      {subjectContentCards && (
+        <SubjectCarousel
+          wideScreen
+          subjects={subjectContentCards}
+          title="Litt forskjellig fra faget"
+          subjectPage
+        />
+      )}
     </>
   );
 };
 
 SubjectPage.propTypes = {
-  selectedMainTopic: PropTypes.string,
-  selectedSubTopic: PropTypes.string,
+  selectedMainTopic: PropTypes.number,
+  selectedSubTopic: PropTypes.number,
+  selectedSubSubTopic: PropTypes.number,
+  topics: PropTypes.array,
+  initialBreadcrumb: PropTypes.array,
+  subjectName: PropTypes.string,
+  bannerBackground: PropTypes.string,
+  subjectContentCards: PropTypes.array,
+  subjectAboutHeading: PropTypes.string,
+  subjectAboutDescription: PropTypes.string,
 };
 
-export default SubjectPage;
+export default injectT(SubjectPage);

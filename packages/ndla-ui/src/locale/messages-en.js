@@ -290,6 +290,8 @@ const messages = {
     multipleAuthorsLabelAria: 'Licensees of this article are {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'The Licensee of this article is {name}',
+    copyPageLink: 'Copy page-link',
+    copyPageLinkCopied: 'Link copied',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',
@@ -489,6 +491,7 @@ const messages = {
   },
   breadcrumb: {
     toFrontpage: 'To the frontpage',
+    youAreHere: 'You are here',
   },
   listview: {
     search: {
@@ -688,6 +691,11 @@ const messages = {
     showLongerDescription: 'Longer description',
     showShorterDescription: 'Shorter description',
     topics: 'Topics',
+    additionalTopic: 'Additional topic',
+    additionalTopics: 'Additional topics',
+  },
+  multidisciplinarySubject: {
+    subjectsLinksDescription: 'Case in',
   },
 };
 

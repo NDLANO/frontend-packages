@@ -706,6 +706,7 @@ const messages = {
     topics: 'Emner',
     additionalTopic: 'Tillegsemne',
     additionalTopics: 'Tillegsemner',
+    loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innan',

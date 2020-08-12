@@ -11,13 +11,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
-import createHistory from 'history/createMemoryHistory';
+import { createMemoryHistory } from 'history';
 import sinon from 'sinon';
 import withTracker from '../withTracker';
 import * as tracker from '../tracker';
 
 window.dataLayer = [];
-const history = createHistory();
+const history = createMemoryHistory();
 tracker.configureTracker({ listen: history.listen });
 
 class Page extends Component {

@@ -693,6 +693,7 @@ const messages = {
     topics: 'Topics',
     additionalTopic: 'Additional topic',
     additionalTopics: 'Additional topics',
+    loadingText: 'Loading subject',
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case in',

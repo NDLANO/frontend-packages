@@ -58,7 +58,7 @@ const Modal = ({
   let clonedComponent;
   if (activateButton) {
     clonedComponent = React.cloneElement(activateButton, {
-      onClick: (e) => {
+      onClick: e => {
         openModal();
         if (onClickEvent) {
           onClickEvent();

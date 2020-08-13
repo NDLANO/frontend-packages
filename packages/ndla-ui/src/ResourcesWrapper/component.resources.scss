@@ -38,6 +38,23 @@
         fill: #fff;
       }
     }
+    &--invertedStyle {
+      #HelpCircleDual-background {
+        fill: #fff;
+      }
+      #HelpCircleDual-symbol {
+        fill: $brand-color;
+      }
+      &:hover,
+      &:focus {
+        #HelpCircleDual-background {
+          fill: #fff;
+        }
+        #HelpCircleDual-symbol {
+          fill: $brand-color;
+        }
+      }
+    }
   }
 
   &__title {
@@ -72,6 +89,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    &--invertedStyle {
+      color: #fff;
+    }
     > div {
       display: inline-flex;
       flex-wrap: wrap;
@@ -121,7 +141,6 @@
 
   &__topic-title {
     font-weight: $font-weight-normal;
-    color: $primary-color;
     @include font-size(18px, 24px);
     @include mq(tablet) {
       @include font-size(20px, 26px);

@@ -11,8 +11,8 @@ import { Switch } from '@ndla/switch';
 
 import { classes } from './ResourcesWrapper';
 
-const HelpIcon = () => (
-  <div {...classes('topic-title-icon')}>
+const HelpIcon = ({ invertedStyle }) => (
+  <div {...classes('topic-title-icon', { invertedStyle })}>
     <HelpCircleDual
       className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`}
     />
@@ -23,12 +23,18 @@ const switchCSS = css`
   margin-right: ${spacing.xsmall};
 `;
 
+const invertedSwitchCSS = css`
+  margin-right: ${spacing.xsmall};
+  color: #fff;
+`;
+
 const ResourcesTopicTitle = ({
   title,
   hasAdditionalResources,
   toggleAdditionalResources,
   showAdditionalResources,
   messages,
+  invertedStyle,
   t,
 }) => {
   // Fix for heading while title not required when ready.
@@ -39,7 +45,7 @@ const ResourcesTopicTitle = ({
     heading = <h1 {...classes('topic-title')}>{messages.label}</h1>;
   }
   return (
-    <header {...classes('topic-title-wrapper')}>
+    <header {...classes('topic-title-wrapper', { invertedStyle })}>
       <div>
         {title && <p {...classes('topic-title-label')}>{messages.label}</p>}
         {heading}
@@ -51,7 +57,7 @@ const ResourcesTopicTitle = ({
             checked={showAdditionalResources}
             label={messages.additionalFilterLabel}
             onChange={toggleAdditionalResources}
-            css={switchCSS}
+            css={invertedStyle ? invertedSwitchCSS : switchCSS}
           />
           <Modal
             narrow
@@ -62,7 +68,7 @@ const ResourcesTopicTitle = ({
             )}
             activateButton={
               <Button appearance="stripped">
-                <HelpIcon />
+                <HelpIcon invertedStyle={invertedStyle} />
               </Button>
             }>
             {onClose => (
@@ -94,6 +100,7 @@ ResourcesTopicTitle.propTypes = {
   toggleAdditionalResources: PropTypes.func.isRequired,
   hasAdditionalResources: PropTypes.bool.isRequired,
   showAdditionalResources: PropTypes.bool.isRequired,
+  invertedStyle: PropTypes.bool,
   t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     label: PropTypes.string.isRequired,

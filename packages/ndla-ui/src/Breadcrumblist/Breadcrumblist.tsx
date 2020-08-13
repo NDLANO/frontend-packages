@@ -280,7 +280,7 @@ const Breadcrumblist = ({
         <Heading invertedStyle={invertedStyle}>
           {t('breadcrumb.youAreHere')}
         </Heading>
-        <List>
+        <List data-testid="breadcrumb-list">
           {items.map((item: BreadcrumbItemProps) => {
             const { id, label, url, typename, icon, isCurrent = false } = item;
             return (

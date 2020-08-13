@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { css } from '@emotion/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -8,14 +9,23 @@ import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
 
+type InvertItProps = {
+  invertedStyle?: boolean;
+};
+
 const StyledWrapper = styled.section``;
 
-const StyledIngress = styled.div`
+const StyledIngress = styled.div<InvertItProps>`
   max-width: 612px;
   margin-bottom: 10px;
+  ${props =>
+    props.invertedStyle &&
+    css`
+      color: #fff;
+    `}
 `;
 
-const StyledH1 = styled.h1`
+const StyledH1 = styled.h1<InvertItProps>`
   ${fonts.sizes('24px', '28px')}
   margin: ${spacing.medium} ${spacing.normal} ${spacing.normal} 0;
   font-weight: ${fonts.weight.bold};
@@ -32,6 +42,19 @@ const StyledH1 = styled.h1`
     margin: 50px ${spacing.normal} 24px 0;
     ${fonts.sizes('38px', '32px')};
   }
+  ${props =>
+    props.invertedStyle &&
+    css`
+      color: #fff;
+    `}
+`;
+
+const LoaderText = styled.p<InvertItProps>`
+  ${props =>
+    props.invertedStyle &&
+    css`
+      color: #fff;
+    `}
 `;
 
 const StyledHeadingText = styled.span`
@@ -54,11 +77,22 @@ const StyledAdditionalResource = styled.span`
   color: ${colors.brand.dark};
 `;
 
-const StyledButtonWrapper = styled.div`
+const StyledButtonWrapper = styled.div<InvertItProps>`
   margin-top: 10px;
+  ${props =>
+    props.invertedStyle &&
+    css`
+      button {
+        color: #fff;
+        &:hover,
+        &:focus {
+          color: #fff;
+        }
+      }
+    `}
 `;
 
-const StyledContentWrapper = styled.div`
+const StyledContentWrapper = styled.div<InvertItProps>`
   margin-top: 32px;
   ${mq.range({ from: breakpoints.tablet })} {
     border: 2px solid #e6e6e6;
@@ -72,6 +106,11 @@ const StyledContentWrapper = styled.div`
   ${mq.range({ from: breakpoints.wide })} {
     margin: 32px -102px;
   }
+  ${props =>
+    props.invertedStyle &&
+    css`
+      background: #fff;
+    `}
 `;
 
 type Props = {
@@ -81,6 +120,7 @@ type Props = {
   showContent: boolean;
   isLoading: boolean;
   isAdditionalTopic?: boolean;
+  invertedStyle?: boolean;
   children: React.ReactNode;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
@@ -92,12 +132,13 @@ export const NavigationTopicAbout = ({
   showContent,
   isLoading,
   isAdditionalTopic,
+  invertedStyle,
   children,
   t,
 }: Props) => {
   return (
     <StyledWrapper data-testid="nav-topic-about">
-      <StyledH1>
+      <StyledH1 invertedStyle={invertedStyle}>
         <StyledHeadingText>{heading}</StyledHeadingText>
         {isAdditionalTopic && (
           <StyledAdditionalResource>
@@ -107,12 +148,14 @@ export const NavigationTopicAbout = ({
         )}
       </StyledH1>
       {isLoading ? (
-        <p>Laster emne</p>
+        <LoaderText invertedStyle={invertedStyle}>
+          {t('navigation.loadingText')}
+        </LoaderText>
       ) : (
         <>
-          <StyledIngress>
+          <StyledIngress invertedStyle={invertedStyle}>
             {ingress}
-            <StyledButtonWrapper>
+            <StyledButtonWrapper invertedStyle={invertedStyle}>
               <Button
                 link
                 onClick={() => {
@@ -131,7 +174,9 @@ export const NavigationTopicAbout = ({
             </StyledButtonWrapper>
           </StyledIngress>
           {showContent && (
-            <StyledContentWrapper>{children}</StyledContentWrapper>
+            <StyledContentWrapper invertedStyle={invertedStyle}>
+              {children}
+            </StyledContentWrapper>
           )}
         </>
       )}

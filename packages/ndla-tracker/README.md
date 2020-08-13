@@ -17,10 +17,10 @@ $ yarn add ndla-tracker
 To use the tracker you need to configure the tracker with correct google analytics id, google tag manager id and a listener for when the history changes:
 
 ```javascript
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import { configureTracker } from 'ndla-tracker';
 
-const browserHistory = createHistory();
+const browserHistory = createBrowserHistory();
 
 configureTracker({
   listen: browserHistory.listen,

@@ -178,7 +178,7 @@ export const programs = [
     ],
   },
   {
-    label: 'Design og håndverk',
+    label: 'Håndverk, design og produktutvikling',
     id: 2,
     url: '#',
     subjectCategories: [
@@ -203,7 +203,7 @@ export const programs = [
     ],
   },
   {
-    label: 'Elektrofag',
+    label: 'Elektro og datateknologi',
     id: 3,
     url: '#',
     subjectCategories: [
@@ -229,8 +229,8 @@ export const programs = [
   },
   { label: 'Helse- og oppvekstfag', id: 4, url: '#' },
   { label: 'Idrett', id: 5, url: '#' },
-  { label: 'Kunst, design og akitektur', id: 6, url: '#' },
-  { label: 'Medier og kommunikasjon', id: 7, url: '#' },
+  { label: 'Kunst, design og arkitektur', id: 6, url: '#' },
+  { label: 'Informasjonsteknologi og medieproduksjon', id: 7, url: '#' },
   { label: 'Musikk, dans og drama', id: 8, url: '#' },
   { label: 'Naturbruk', id: 10, url: '#' },
   { label: 'Påbygg', id: 11, url: '#' },
@@ -429,7 +429,13 @@ export const programs = [
     ],
   },
   { label: 'Studiespesialisering', id: 14, url: '#' },
-  { label: 'Teknikk og industriell produksjon', id: 15, url: '#' },
+  { label: 'Teknologi- og industrifag', id: 15, url: '#' },
+  {
+    label: 'Frisør, blomster, interiør og eksponeringsdesign',
+    id: 16,
+    url: '#',
+  },
+  { label: 'Medier og kommunikasjon', id: 17, url: '#' },
 ];
 
 export const subjectCategories = [

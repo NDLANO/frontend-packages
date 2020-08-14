@@ -18,10 +18,20 @@ const StyledHeadingWrapper = styled.div`
   justify-content: space-between;
   align-items: baseline;
 `;
-const StyledHeading = styled.h2`
+
+type InvertItProps = {
+  invertedStyle?: boolean;
+};
+
+const StyledHeading = styled.h2<InvertItProps>`
   ${fonts.sizes('18px', '32px')};
   text-transform: uppercase;
   margin-bottom: 10px;
+  ${props =>
+    props.invertedStyle &&
+    `
+      color: #fff;
+  `}
 `;
 const StyledList = styled.ul`
   list-style: none;
@@ -126,6 +136,7 @@ type Props = {
   onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
+  invertedStyle?: boolean;
   onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
@@ -138,21 +149,24 @@ export const NavigationBox = ({
   onClick,
   hasAdditionalResources,
   showAdditionalResources = false,
+  invertedStyle,
   onToggleAdditionalResources = () => {},
   t,
 }: Props) => {
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
-
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
-        {heading && <StyledHeading>{heading}</StyledHeading>}
+        {heading && (
+          <StyledHeading invertedStyle={invertedStyle}>{heading}</StyledHeading>
+        )}
         {hasAdditionalResources && (
           <Switch
             id={uuid()}
             checked={showAdditionalResources}
             label={t('navigation.additionalTopics')}
             onChange={onToggleAdditionalResources}
+            css={invertedStyle ? { color: '#fff' } : {}}
           />
         )}
       </StyledHeadingWrapper>

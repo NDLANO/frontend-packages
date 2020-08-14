@@ -91,6 +91,9 @@
   &__header {
     border-bottom: 2px solid $brand-grey--light;
     margin-bottom: $spacing--small / 4;
+    &--invertedStyle {
+      color: #fff;
+    }
   }
 
   &--subject-material {

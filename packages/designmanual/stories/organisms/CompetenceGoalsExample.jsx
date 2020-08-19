@@ -1,11 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  CompetenceGoals,
-  CompetenceGoalList,
-  CompetenceGoalListHeading,
-} from '@ndla/ui';
+import { CompetenceGoals, CompetenceGoalTab } from '@ndla/ui';
 
 class CompetenceGoalsExample extends Component {
   constructor(props) {
@@ -26,18 +22,21 @@ class CompetenceGoalsExample extends Component {
             name:
               'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
             url: '#1',
+            text: 'demo',
           },
           {
             id: 'med-2',
             name:
               'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
             url: '#2',
+            text: 'demo',
           },
           {
             id: 'med-3',
             name:
               'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
             url: '#3',
+            text: 'demo',
           },
         ],
       },
@@ -52,10 +51,12 @@ class CompetenceGoalsExample extends Component {
           {
             id: 'lorem 1',
             name: 'Lorum ipsum',
+            text: 'demo',
           },
           {
             id: 'lorem 2',
             name: 'Lorum ipsum 2',
+            text: 'demo',
           },
         ],
       });
@@ -112,46 +113,88 @@ CompetenceGoalsExample.propTypes = {
 
 export default CompetenceGoalsExample;
 
-export const CompetenceGoalListExample = () => (
-  <>
-    {[
+const CompetenceGoalTabdata = [
+  {
+    id: 'tmpid1',
+    type: 'LK06',
+    goals: [
       {
-        id: 'NOR1-05',
-        name: 'Læreplan i norsk',
-        goals: [
-          {
-            id: 'K15502',
-            name:
-              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
-            url: '#1',
-          },
-        ],
-      },
-      {
-        id: 'MOK2-01',
+        id: 'K15502',
         name:
-          'Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon',
+          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+      },
+      {
+        id: 'K17637',
+        name:
+          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+      },
+      {
+        id: 'K17635',
+        name: 'lage budskap tilpasset målgruppe, formål og kanal',
+      },
+    ],
+  },
+  {
+    id: 'tmpid2',
+    type: 'LK20',
+    goals: [
+      {
+        id: 'K15504',
+        name:
+          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+      },
+      {
+        id: 'K176378',
+        name:
+          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+      },
+      {
+        id: 'K176353',
+        name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+      },
+    ],
+  },
+  {
+    id: 'tmpid3',
+    type: 'coreElement',
+    coreItems: [
+      {
+        name: 'En tittel 1',
+        id: 'tmpid4',
+        text:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
         goals: [
           {
-            id: 'K17637',
+            id: 'K15504',
             name:
-              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
-            url: '#1',
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
           },
           {
-            id: 'K17635',
-            name: 'lage budskap tilpasset målgruppe, formål og kanal',
-            url: '#1',
+            id: 'K176378',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+          },
+          {
+            id: 'K176353',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
           },
         ],
       },
-    ].map(curriculum => (
-      <Fragment key={curriculum.id}>
-        <CompetenceGoalListHeading>
-          {curriculum.name}:
-        </CompetenceGoalListHeading>
-        <CompetenceGoalList goals={curriculum.goals} />
-      </Fragment>
-    ))}
-  </>
-);
+      {
+        name: 'En tittel 2',
+        id: 'tmpid5',
+        text:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      },
+    ],
+  },
+];
+
+export const CompetenceGoalListExample = () => {
+  return (
+    <CompetenceGoalTab
+      title="Helse- og oppvekstfag Vg1"
+      list={CompetenceGoalTabdata}
+    />
+  );
+};

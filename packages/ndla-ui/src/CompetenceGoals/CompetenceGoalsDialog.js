@@ -10,7 +10,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Trans } from '@ndla/i18n';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-
 import { classes } from './CompetenceGoals';
 
 export const CompetenceGoalsDialog = ({
@@ -26,19 +25,20 @@ export const CompetenceGoalsDialog = ({
         controllable
         isOpen={isOpen}
         onClose={onClose}
+        size="fullscreen"
+        animation="slide-up"
+        backgroundColor="grey-dark"
         narrow>
         {close => (
           <Fragment>
-            <ModalHeader>
+            <ModalHeader modifier="white modal-body">
               <ModalCloseButton
                 onClick={close}
-                title={t('competenceGoals.closeCompetenceGoals')}
+                title={t('competenceGoals.competenceGoalClose')}
               />
             </ModalHeader>
             <ModalBody>
               <div {...classes()} className="c-competence-goals">
-                <h1>{t('competenceGoals.title')}</h1>
-                <hr />
                 {children}
               </div>
             </ModalBody>

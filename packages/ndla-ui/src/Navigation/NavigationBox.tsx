@@ -29,9 +29,9 @@ const StyledHeading = styled.h2<InvertItProps>`
   margin-bottom: 10px;
   ${props =>
     props.invertedStyle &&
-    `
+    css`
       color: #fff;
-  `}
+    `}
 `;
 const StyledList = styled.ul`
   list-style: none;

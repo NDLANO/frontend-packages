@@ -81,7 +81,7 @@ storiesOf('Re-design', module)
   .add('Programside', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu hideMenuButton />
         <ProgrammePage />
       </Content>
       <FooterExample />

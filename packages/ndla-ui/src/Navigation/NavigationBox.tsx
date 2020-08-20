@@ -11,7 +11,7 @@ import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
 
 const StyledWrapper = styled.nav`
-  margin: 20px 0 60px;
+  margin: 20px 0 34px;
 `;
 const StyledHeadingWrapper = styled.div`
   display: flex;
@@ -26,24 +26,39 @@ type InvertItProps = {
 const StyledHeading = styled.h2<InvertItProps>`
   ${fonts.sizes('18px', '32px')};
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
   ${props =>
     props.invertedStyle &&
     css`
       color: #fff;
     `}
 `;
-const StyledList = styled.ul`
+
+type listProps = {
+  direction?: 'horizontal' | 'vertical';
+};
+const StyledList = styled.ul<listProps>`
   list-style: none;
   margin: 0;
   padding: 0;
   ${mq.range({ from: breakpoints.tablet })} {
     column-count: 2;
     column-gap: 20px;
+    ${props =>
+      props.direction === 'vertical' &&
+      css`
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      `}
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     column-count: 3;
     column-gap: 20px;
+    ${props =>
+      props.direction === 'vertical' &&
+      css`
+        grid-template-columns: repeat(3, 1fr);
+      `}
   }
 `;
 type additionalResourceProps = {
@@ -80,6 +95,7 @@ const StyledListItem = styled.li<additionalResourceProps>`
       }
     `}
 `;
+
 const StyledButtonContent = styled.span`
   display: flex;
   width: 100%;
@@ -136,6 +152,7 @@ type Props = {
   onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
+  listDirection?: 'horizontal' | 'vertical';
   invertedStyle?: boolean;
   onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
@@ -149,6 +166,7 @@ export const NavigationBox = ({
   onClick,
   hasAdditionalResources,
   showAdditionalResources = false,
+  listDirection = 'vertical',
   invertedStyle,
   onToggleAdditionalResources = () => {},
   t,
@@ -170,7 +188,7 @@ export const NavigationBox = ({
           />
         )}
       </StyledHeadingWrapper>
-      <StyledList data-testid="nav-box-list">
+      <StyledList data-testid="nav-box-list" direction={listDirection}>
         {items.map((item: ItemProps) => (
           <StyledListItem
             isAdditionalResource={item.isAdditionalResource}

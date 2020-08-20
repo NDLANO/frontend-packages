@@ -55,6 +55,15 @@ class MastheadWithTopicMenu extends Component {
   }
 
   renderSearchField() {
+    const filters = [];
+    if (!this.props.hideMenuButton) {
+      filters.push({
+        value: 'Value',
+        title: this.props.ndlaFilm
+          ? 'NDLA Film'
+          : 'Medieuttrykk og mediesamfunnet',
+      });
+    }
     return (
       <SearchFieldForm onSubmit={e => e.preventDefault()}>
         <SearchField
@@ -66,14 +75,7 @@ class MastheadWithTopicMenu extends Component {
               value,
             });
           }}
-          filters={[
-            {
-              value: 'Value',
-              title: this.props.ndlaFilm
-                ? 'NDLA Film'
-                : 'Medieuttrykk og mediesamfunnet',
-            },
-          ]}
+          filters={filters}
           onFilterRemove={() => {}}
           messages={{
             searchFieldTitle: 'Søk',
@@ -127,6 +129,7 @@ class MastheadWithTopicMenu extends Component {
       beta,
       betaInfoContent,
       topicMenuProps,
+      hideMenuButton,
       t,
     } = this.props;
     return (
@@ -136,86 +139,88 @@ class MastheadWithTopicMenu extends Component {
         ndlaFilm={ndlaFilm}
         infoContent={beta && betaInfoContent}>
         <MastheadItem left>
-          <Modal
-            size="fullscreen"
-            activateButton={
-              <TopicMenuButton ndlaFilm={ndlaFilm}>
-                {t('masthead.menu.title')}
-              </TopicMenuButton>
-            }
-            animation="subtle"
-            animationDuration={150}
-            backgroundColor="grey"
-            noBackdrop
-            onClose={() => {
-              this.setState({
-                expandedTopicId: null,
-                expandedSubtopicsId: [],
-              });
-              this.closeAllModals[0] = null;
-            }}>
-            {onClose => {
-              this.closeAllModals[0] = onClose;
-              return (
-                <TopicMenu
-                  close={onClose}
-                  isBeta={beta}
-                  searchFieldComponent={this.renderSearchButtonView(
-                    false,
-                    ndlaFilm,
-                  )}
-                  subjectTitle="Mediefag"
-                  toFrontpage={() =>
-                    '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
-                  }
-                  toSubject={() => '#'}
-                  toTopic={() => '#'}
-                  topics={topicMenu}
-                  filterOptions={[
-                    {
-                      title: 'Medieuttrykk',
-                      value: 'Medieuttrykk',
-                    },
-                    {
-                      title: 'Mediesamfunnet',
-                      value: 'Mediesamfunnet',
-                    },
-                  ]}
-                  filterValues={this.state.filterMenuValues}
-                  competenceGoals={
-                    <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
-                  }
-                  onFilterClick={values => {
-                    this.setState({
-                      filterMenuValues: values,
-                    });
-                  }}
-                  resourceToLinkProps={resource => ({ to: resource.path })}
-                  expandedTopicId={this.state.expandedTopicId}
-                  expandedSubtopicsId={this.state.expandedSubtopicsId}
-                  onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
-                    let { expandedSubtopicsId } = this.state;
-                    if (expandedSubtopicsId.length > currentIndex) {
-                      expandedSubtopicsId = expandedSubtopicsId.slice(
-                        0,
-                        currentIndex,
-                      );
+          {!hideMenuButton && (
+            <Modal
+              size="fullscreen"
+              activateButton={
+                <TopicMenuButton ndlaFilm={ndlaFilm}>
+                  {t('masthead.menu.title')}
+                </TopicMenuButton>
+              }
+              animation="subtle"
+              animationDuration={150}
+              backgroundColor="grey"
+              noBackdrop
+              onClose={() => {
+                this.setState({
+                  expandedTopicId: null,
+                  expandedSubtopicsId: [],
+                });
+                this.closeAllModals[0] = null;
+              }}>
+              {onClose => {
+                this.closeAllModals[0] = onClose;
+                return (
+                  <TopicMenu
+                    close={onClose}
+                    isBeta={beta}
+                    searchFieldComponent={this.renderSearchButtonView(
+                      false,
+                      ndlaFilm,
+                    )}
+                    subjectTitle="Mediefag"
+                    toFrontpage={() =>
+                      '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
                     }
-                    if (subtopicId) {
-                      expandedSubtopicsId.push(subtopicId);
-                    } else {
-                      expandedSubtopicsId.pop();
+                    toSubject={() => '#'}
+                    toTopic={() => '#'}
+                    topics={topicMenu}
+                    filterOptions={[
+                      {
+                        title: 'Medieuttrykk',
+                        value: 'Medieuttrykk',
+                      },
+                      {
+                        title: 'Mediesamfunnet',
+                        value: 'Mediesamfunnet',
+                      },
+                    ]}
+                    filterValues={this.state.filterMenuValues}
+                    competenceGoals={
+                      <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
                     }
-                    this.setState({
-                      expandedTopicId,
-                      expandedSubtopicsId,
-                    });
-                  }}
-                  {...topicMenuProps}
-                />
-              );
-            }}
-          </Modal>
+                    onFilterClick={values => {
+                      this.setState({
+                        filterMenuValues: values,
+                      });
+                    }}
+                    resourceToLinkProps={resource => ({ to: resource.path })}
+                    expandedTopicId={this.state.expandedTopicId}
+                    expandedSubtopicsId={this.state.expandedSubtopicsId}
+                    onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
+                      let { expandedSubtopicsId } = this.state;
+                      if (expandedSubtopicsId.length > currentIndex) {
+                        expandedSubtopicsId = expandedSubtopicsId.slice(
+                          0,
+                          currentIndex,
+                        );
+                      }
+                      if (subtopicId) {
+                        expandedSubtopicsId.push(subtopicId);
+                      } else {
+                        expandedSubtopicsId.pop();
+                      }
+                      this.setState({
+                        expandedTopicId,
+                        expandedSubtopicsId,
+                      });
+                    }}
+                    {...topicMenuProps}
+                  />
+                );
+              }}
+            </Modal>
+          )}
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
@@ -242,6 +247,7 @@ MastheadWithTopicMenu.propTypes = {
   searchFieldExpanded: PropTypes.bool,
   hideOnNarrowScreen: PropTypes.bool,
   hideSearchButton: PropTypes.bool,
+  hideMenuButton: PropTypes.bool,
   beta: PropTypes.bool,
   betaInfoContent: PropTypes.node,
   topicMenuProps: PropTypes.object,

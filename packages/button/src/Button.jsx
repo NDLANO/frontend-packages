@@ -182,6 +182,9 @@ export const borderShapes = {
   `,
   rounded: size => css`
     border-radius: 32px;
+    font-weight: ${fonts.weight.semibold};
+    padding-left: 20px;
+    padding-right: 20px;
     ${size === 'small' &&
       `padding-left:${spacing.small};
        padding-right:${spacing.small};`}

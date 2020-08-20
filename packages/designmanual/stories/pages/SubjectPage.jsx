@@ -457,11 +457,6 @@ const SubjectPage = ({
       <div ref={containerRef}>
         <OneColumn>
           <LayoutItem layout="extend">
-            <Breadcrumblist
-              isVisible={showBreadCrumb}
-              items={breadcrumbItems}
-              onNav={handleNav}
-            />
             <NavigationHeading>{subjectName}</NavigationHeading>
             <div ref={mainTopicRef}>
               <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
@@ -592,6 +587,13 @@ const SubjectPage = ({
           subjectPage
         />
       )}
+      <OneColumn wide>
+        <Breadcrumblist
+          isVisible={showBreadCrumb}
+          items={breadcrumbItems}
+          onNav={handleNav}
+        />
+      </OneColumn>
     </>
   );
 };

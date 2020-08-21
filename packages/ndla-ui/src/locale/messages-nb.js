@@ -697,10 +697,10 @@ const messages = {
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
-    heading: 'Tverrfaglige tema',
+    heading: 'Tverrfaglige temaer',
     text:
       'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
-    linkText: 'Se caser for tverrfaglige tema',
+    linkText: 'Se caser for tverrfaglige temaer',
     publicHealthTopic: 'Folkehelse og livsmestring',
     democracyTopic: 'Demokrati og medborgerskap',
     sustainableTopic: 'Bærekraftig utvikling',

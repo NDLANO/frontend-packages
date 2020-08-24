@@ -74,8 +74,8 @@ const loadArticle = async articleId => {
     }
 
     const content = (
-      <ArticleWrapper modifier="clean-in-context">
-        <LayoutItem layout="extend">
+      <ArticleWrapper modifier="in-topic">
+        <LayoutItem layout="full">
           <ArticleHeaderWrapper>
             <ArticleIntroduction renderMarkdown={renderMarkdown}>
               {introduction}
@@ -90,10 +90,10 @@ const loadArticle = async articleId => {
             />
           </ArticleHeaderWrapper>
         </LayoutItem>
-        <LayoutItem layout="extend">
+        <LayoutItem layout="full">
           <ArticleContent content={articleContent} />
         </LayoutItem>
-        <LayoutItem layout="extend">
+        <LayoutItem layout="full">
           {footNotes && footNotes.length > 0 && (
             <ArticleFootNotes footNotes={footNotes} />
           )}

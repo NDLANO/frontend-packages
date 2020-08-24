@@ -124,13 +124,19 @@
   }
   border: none;
 }
-.c-article--clean-in-context {
-  margin-top: $spacing;
-  @include mq(tablet) {
-    margin-top: 52px;
-  }
+.c-article--in-topic {
+  margin-top: 0;
   padding-top: 0;
-  border: none;
+  padding: 0;
+  padding-left: $spacing--medium;
+  figure.c-figure {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+  }
 }
 
 .c-article__header {

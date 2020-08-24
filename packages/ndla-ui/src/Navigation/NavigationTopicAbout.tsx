@@ -17,7 +17,6 @@ const StyledWrapper = styled.section``;
 
 const StyledIngress = styled.div<InvertItProps>`
   max-width: 612px;
-  margin-bottom: 10px;
   ${props =>
     props.invertedStyle &&
     css`
@@ -78,7 +77,9 @@ const StyledAdditionalResource = styled.span`
 `;
 
 const StyledButtonWrapper = styled.div<InvertItProps>`
-  margin-top: 10px;
+  margin-top: ${spacing.small};
+  padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
+  border-left: 6px solid ${colors.brand.light};
   ${props =>
     props.invertedStyle &&
     css`
@@ -93,19 +94,10 @@ const StyledButtonWrapper = styled.div<InvertItProps>`
 `;
 
 const StyledContentWrapper = styled.div<InvertItProps>`
-  margin-top: 32px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    border: 2px solid #e6e6e6;
-    border-radius: 6px;
-    margin-left: -8.33%;
-    margin-right: -8.33%;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding: 0 102px;
-  }
-  ${mq.range({ from: breakpoints.wide })} {
-    margin: 32px -102px;
-  }
+  padding-top: ${spacing.normal};
+  margin-top: 0;
+  border-left: 6px solid ${colors.brand.light};
+
   ${props =>
     props.invertedStyle &&
     css`

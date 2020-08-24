@@ -16,6 +16,7 @@ import {
   ArticleIntroduction,
   ArticleHeaderWrapper,
   TasksAndActivitiesBadge,
+  constants,
 } from '@ndla/ui';
 
 import Resources from '../molecules/resources';
@@ -24,9 +25,13 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import { FigureImage } from '../article/FigureImage';
 
+const { contentTypes } = constants;
+
 export default () => (
   <OneColumn cssModifier="narrow">
-    <ArticleWrapper id="mainContentId">
+    <ArticleWrapper
+      id="mainContentId"
+      modifier={contentTypes.TASKS_AND_ACTIVITIES}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle

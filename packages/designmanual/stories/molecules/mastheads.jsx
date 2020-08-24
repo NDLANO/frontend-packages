@@ -22,6 +22,7 @@ import {
   MastheadSearchModal,
   TopicMenuButton,
   SearchFieldForm,
+  BreadcrumbBlock,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
@@ -130,6 +131,7 @@ class MastheadWithTopicMenu extends Component {
       betaInfoContent,
       topicMenuProps,
       hideMenuButton,
+      breadcrumbItems,
       t,
     } = this.props;
     return (
@@ -221,6 +223,11 @@ class MastheadWithTopicMenu extends Component {
               }}
             </Modal>
           )}
+          {breadcrumbItems && (
+            <DisplayOnPageYOffset yOffsetMin={150}>
+              <BreadcrumbBlock items={breadcrumbItems} />
+            </DisplayOnPageYOffset>
+          )}
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
@@ -254,6 +261,7 @@ MastheadWithTopicMenu.propTypes = {
   t: PropTypes.func.isRequired,
   ndlaFilm: PropTypes.bool,
   skipToMainContentId: PropTypes.string,
+  breadcrumbItems: PropTypes.array,
 };
 
 MastheadWithTopicMenu.defaultProps = {

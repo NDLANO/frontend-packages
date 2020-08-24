@@ -164,8 +164,32 @@ storiesOf('Re-design', module)
   .add('Fagressurs', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <Breadcrumblist items={articleBreadCrumb} />
+        <MastheadWithTopicMenu
+          breadcrumbItems={[
+            {
+              name: 'Hovedemne tittel',
+              to: '#1',
+            },
+            {
+              name: 'Underemne tittel',
+              to: '#2',
+            },
+            {
+              name: 'Artikkel fagstoff',
+              to: '#3',
+            },
+          ]}
+          skipToMainContentId="mainContentId"
+        />
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
         <ArticleLearningmaterial />
       </Content>
       <FooterExample />
@@ -396,7 +420,7 @@ storiesOf('Sidevisninger', module)
   ));
 storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
@@ -414,7 +438,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Oppgaver og aktiviteter', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <TasksAndActivitiesHero>
@@ -432,7 +456,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Vurderingsressurs', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <AssessmentResourcesHero>
@@ -450,7 +474,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Ekstern læringsressurs', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <ExternalLearningResourcesHero>
@@ -468,7 +492,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Kildemateriale', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SourceMaterialHero>
@@ -486,7 +510,7 @@ storiesOf('Læringsressurser', module)
     </PageContainer>
   ))
   .add('Tilleggsstoff', () => (
-    <PageContainer backgroundWide>
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>

@@ -16,6 +16,7 @@ import {
   ArticleIntroduction,
   ArticleHeaderWrapper,
   ExternalLearningResourcesBadge,
+  constants,
 } from '@ndla/ui';
 
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
@@ -25,9 +26,13 @@ import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 import { FigureImage } from '../article/FigureImage';
 
+const { contentTypes } = constants;
+
 export default () => (
   <OneColumn>
-    <ArticleWrapper id="mainContentId">
+    <ArticleWrapper
+      id="mainContentId"
+      modifier={contentTypes.EXTERNAL_LEARNING_RESOURCES}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle

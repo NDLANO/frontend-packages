@@ -16,6 +16,7 @@ import {
   ArticleIntroduction,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
+  constants,
 } from '@ndla/ui';
 
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
@@ -25,9 +26,11 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import { FigureImage } from '../article/FigureImage';
 
+const { contentTypes } = constants;
+
 const ArticleLearningMaterial = () => (
   <OneColumn>
-    <ArticleWrapper modifier={'clean-in-context'} id="mainContentId">
+    <ArticleWrapper id="mainContentId" modifier={contentTypes.SUBJECT_MATERIAL}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle

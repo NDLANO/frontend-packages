@@ -85,6 +85,21 @@
     margin-bottom: $spacing--large;
     margin-top: -$spacing * 6;
     padding-top: $spacing--large + $spacing;
+    &--subject-material {
+      border: 2px solid $subject-material-light;
+    }
+    &--assessment-resources {
+      border: 2px solid $assessment-resource-background;
+    }
+    &--tasks-and-activities {
+      border: 2px solid $tasks-and-activities-background;
+    }
+    &--external-learning-resources {
+      border: 2px solid $external-learning-resource-background;
+    }
+    &--source-material {
+      border: 2px solid $source-material-light;
+    }
   }
   @include mq(desktop) {
     padding-bottom: $spacing--large;

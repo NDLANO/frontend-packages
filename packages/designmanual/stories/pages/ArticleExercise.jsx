@@ -79,9 +79,9 @@ export default () => (
           klassen.
         </p>
       </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources />
-      </LayoutItem>
     </ArticleWrapper>
+    <LayoutItem layout="extend">
+      <Resources />
+    </LayoutItem>
   </OneColumn>
 );

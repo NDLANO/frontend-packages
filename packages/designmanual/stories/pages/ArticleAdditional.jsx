@@ -214,9 +214,9 @@ export default () => (
           klassen.
         </p>
       </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources showTopicHeading />
-      </LayoutItem>
     </ArticleWrapper>
+    <LayoutItem layout="extend">
+      <Resources showTopicHeading />
+    </LayoutItem>
   </OneColumn>
 );

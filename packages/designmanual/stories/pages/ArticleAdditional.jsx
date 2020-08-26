@@ -16,15 +16,18 @@ import {
   ArticleIntroduction,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
+  constants,
 } from '@ndla/ui';
 
 import Resources from '../molecules/resources';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
+const { contentTypes } = constants;
+
 export default () => (
   <OneColumn>
-    <ArticleWrapper id="mainContentId">
+    <ArticleWrapper id="mainContentId" modifier={contentTypes.SUBJECT_MATERIAL}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
           <ArticleTitle
@@ -211,9 +214,9 @@ export default () => (
           klassen.
         </p>
       </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources showTopicHeading />
-      </LayoutItem>
     </ArticleWrapper>
+    <LayoutItem layout="extend">
+      <Resources showTopicHeading />
+    </LayoutItem>
   </OneColumn>
 );

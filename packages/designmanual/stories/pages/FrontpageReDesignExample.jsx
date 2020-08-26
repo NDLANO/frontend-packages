@@ -20,7 +20,7 @@ import { dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
 import BlogExampleImage2 from '../../images/blog/studereute.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
-import { programs, subjectCategories } from '../../dummydata/mockPrograms';
+import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
 
 class FrontpageReDesignExample extends Component {
@@ -249,7 +249,7 @@ class FrontpageReDesignExample extends Component {
         <main>
           <OneColumn extraPadding>
             <FrontpageProgramMenu
-              programItems={programs}
+              programItems={programmes}
               subjectCategories={subjectCategories}
             />
           </OneColumn>

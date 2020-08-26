@@ -10,15 +10,12 @@ import React from 'react';
 
 import { Programme } from '@ndla/ui';
 
-import { programs } from '../../dummydata/mockPrograms';
+import { programme } from '../../dummydata/mockPrograms';
 
-export default () => {
-  const exampleProgram = programs[11];
-  return (
-    <Programme
-      heading={exampleProgram.label}
-      grades={exampleProgram.grades}
-      image={exampleProgram.image}
-    />
-  );
-};
+export default () => (
+  <Programme
+    heading={programme.label}
+    grades={programme.grades}
+    image={programme.image}
+  />
+);

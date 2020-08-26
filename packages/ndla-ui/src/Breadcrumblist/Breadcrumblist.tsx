@@ -94,7 +94,7 @@ const Heading = styled.div<InvertItProps>`
 `;
 
 const List = styled.ul`
-  margin: 0;
+  margin: 0 0 20px;
   padding: 0;
   list-style: none;
   width: 100%;
@@ -277,34 +277,47 @@ const Breadcrumblist = ({
         leftAlign={leftAlign}
         startOffset={wrapperOffset}
         isVisible={isVisible}>
-        <Heading invertedStyle={invertedStyle}>
-          {t('breadcrumb.youAreHere')}
-        </Heading>
-        <List data-testid="breadcrumb-list">
-          {items.map((item: BreadcrumbItemProps) => {
-            const { id, label, url, typename, icon, isCurrent = false } = item;
-            return (
-              <ListItem invertedStyle={invertedStyle} key={`${id}-${typename}`}>
-                {isCurrent && <Dot invertedStyle={invertedStyle} />}
-                <SafeLink
-                  className="linkitem"
-                  to={url}
-                  onClick={(e: React.MouseEvent<HTMLElement>) => {
-                    onNav && onNav(e, item);
-                  }}
-                  aria-label={label}>
-                  <IconWrapper
+        {items.length > 0 && (
+          <>
+            <Heading invertedStyle={invertedStyle}>
+              {t('breadcrumb.youAreHere')}
+            </Heading>
+            <List data-testid="breadcrumb-list">
+              {items.map((item: BreadcrumbItemProps) => {
+                const {
+                  id,
+                  label,
+                  url,
+                  typename,
+                  icon,
+                  isCurrent = false,
+                } = item;
+                return (
+                  <ListItem
                     invertedStyle={invertedStyle}
-                    isCurrent={isCurrent}>
-                    {icon && icon}
-                    {typename && TypeIcon(typename)}
-                  </IconWrapper>
-                  <span>{label}</span>
-                </SafeLink>
-              </ListItem>
-            );
-          })}
-        </List>
+                    key={`${id}-${typename}`}>
+                    {isCurrent && <Dot invertedStyle={invertedStyle} />}
+                    <SafeLink
+                      className="linkitem"
+                      to={url}
+                      onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        onNav && onNav(e, item);
+                      }}
+                      aria-label={label}>
+                      <IconWrapper
+                        invertedStyle={invertedStyle}
+                        isCurrent={isCurrent}>
+                        {icon && icon}
+                        {typename && TypeIcon(typename)}
+                      </IconWrapper>
+                      <span>{label}</span>
+                    </SafeLink>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </>
+        )}
         {children}
       </Wrapper>
     </>

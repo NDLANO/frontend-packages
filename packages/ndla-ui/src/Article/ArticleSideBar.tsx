@@ -11,7 +11,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 
 const Wrapper = styled.div`
   width: 160px;
-  margin: 26px 10px;
+  margin: 6px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

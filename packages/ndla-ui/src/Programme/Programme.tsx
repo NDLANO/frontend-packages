@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
 import { NavigationHeading, NavigationBox } from '../Navigation';
@@ -68,9 +68,6 @@ const StyledMenu = styled.div`
     margin-bottom: 40px;
   }
 `;
-const StyledMenuItem = styled.span`
-  font-weight: ${fonts.weight.bold};
-`;
 
 type Props = {
   heading?: string;
@@ -114,7 +111,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
                     lighter={showGradeIndex !== index}
                     size="normal"
                     borderShape="rounded">
-                    <StyledMenuItem>{item.name}</StyledMenuItem>
+                    {item.name}
                   </Button>
                 ))}
               </StyledMenu>

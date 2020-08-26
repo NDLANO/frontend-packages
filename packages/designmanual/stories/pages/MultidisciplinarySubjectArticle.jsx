@@ -12,7 +12,6 @@ import { Breadcrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
 import { injectT } from '@ndla/i18n';
 import { ArticleSideBar } from '@ndla/ui';
 import ArticleLoader from '../article/ArticleLoader';
-import LicenseBox from '../article/LicenseBox';
 
 const MultidisciplinarySubjectArticle = ({
   articleId = '22220',
@@ -76,9 +75,8 @@ const MultidisciplinarySubjectArticle = ({
     <>
       {article && (
         <>
-          <Breadcrumblist items={breadCrumb} startOffset={268}>
+          <Breadcrumblist items={[]} startOffset={268}>
             <ArticleSideBar
-              licenseBox={<LicenseBox />}
               copyPageUrlLink={window.location}
               onLinkToResourcesClick={onToResourcesClick}
               linkToResources="#"

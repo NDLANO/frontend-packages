@@ -74,8 +74,8 @@ const loadArticle = async articleId => {
     }
 
     const content = (
-      <ArticleWrapper modifier="clean-in-context">
-        <LayoutItem layout="extend">
+      <ArticleWrapper modifier="in-topic">
+        <LayoutItem layout="full">
           <ArticleHeaderWrapper>
             <ArticleIntroduction renderMarkdown={renderMarkdown}>
               {introduction}
@@ -90,10 +90,10 @@ const loadArticle = async articleId => {
             />
           </ArticleHeaderWrapper>
         </LayoutItem>
-        <LayoutItem layout="extend">
+        <LayoutItem layout="full">
           <ArticleContent content={articleContent} />
         </LayoutItem>
-        <LayoutItem layout="extend">
+        <LayoutItem layout="full">
           {footNotes && footNotes.length > 0 && (
             <ArticleFootNotes footNotes={footNotes} />
           )}
@@ -457,11 +457,6 @@ const SubjectPage = ({
       <div ref={containerRef}>
         <OneColumn>
           <LayoutItem layout="extend">
-            <Breadcrumblist
-              isVisible={showBreadCrumb}
-              items={breadcrumbItems}
-              onNav={handleNav}
-            />
             <NavigationHeading>{subjectName}</NavigationHeading>
             <div ref={mainTopicRef}>
               <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
@@ -592,6 +587,13 @@ const SubjectPage = ({
           subjectPage
         />
       )}
+      <OneColumn wide>
+        <Breadcrumblist
+          isVisible={showBreadCrumb}
+          items={breadcrumbItems}
+          onNav={handleNav}
+        />
+      </OneColumn>
     </>
   );
 };

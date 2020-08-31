@@ -76,13 +76,13 @@ const StyledColumns = styled.div`
   flex-direction: column;
   align-items: center;
   padding: ${spacing.large} ${spacing.large} 0 0;
-  > div:first-child {
+  > div:first-of-type {
     padding: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     flex-direction: row;
     align-items: flex-start;
-    > div:first-child {
+    > div:first-of-type {
       padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px
         ${spacing.normal} ${spacing.large};
     }

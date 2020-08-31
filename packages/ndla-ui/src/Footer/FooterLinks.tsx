@@ -15,11 +15,11 @@ const StyledLinksWrapper = styled.div`
   display: flex;
   flex-direction: columns;
   align-items: flex-start;
-  section:first-child {
+  section:first-of-type {
     margin-right: ${spacing.large};
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    section:first-child {
+    section:first-of-type {
       margin-right: ${spacing.spacingUnit * 4}px;
     }
   }

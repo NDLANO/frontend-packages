@@ -26,6 +26,7 @@ const hasFocusStyles = css`
   z-index: 9001;
   ${mq.range({ until: breakpoints.tablet })} {
     position: fixed;
+    display: block;
     top: 0;
     left: 0;
     right: 0;

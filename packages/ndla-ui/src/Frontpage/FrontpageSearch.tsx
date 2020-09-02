@@ -100,8 +100,12 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   }, []);
 
   useEffect(() => {
+    let yCoordinate = 0;
+    const resetScroll = () => {
+      window.scrollTo({ top: yCoordinate });
+    };
     if (inputHasFocus && searchFieldRef && searchFieldRef.current) {
-      const yCoordinate =
+      yCoordinate =
         searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
       const isIE11 = isIE && parseInt(browserVersion) < 12;
       if (isIE11) {
@@ -110,7 +114,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       } else if (isMobileSafari) {
         // Because safari on iOS set position:fixed to static when keyboard is open, we need to scroll to top
         window.scrollTo({
-          top: 0,
+          top: yCoordinate,
           behavior: 'smooth',
         });
       } else {
@@ -120,10 +124,18 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
         });
       }
       noScroll(true, 'preventPageScroll');
+      // Because change in content(click on show more elements button) triggers some strange scroll in browser,
+      // we must ensure that the scrollPos is the same all the time
+      // setTimeout is used so the 'smooth' scroll effect can finish
+      setTimeout(() => window.addEventListener('scroll', resetScroll), 1000);
     } else {
       noScroll(false, 'preventPageScroll');
+      window.removeEventListener('scroll', resetScroll);
     }
-    return () => noScroll(false, 'preventPageScroll');
+    return () => {
+      noScroll(false, 'preventPageScroll');
+      window.removeEventListener('scroll', resetScroll);
+    };
   }, [inputHasFocus]);
 
   return (

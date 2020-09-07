@@ -115,6 +115,15 @@
   p {
     margin-top: 0;
   }
+
+  &--multidisciplinary-topic {
+    margin-top:0;
+    padding: $spacing--small;
+    @include mq(tablet) {
+      padding: 0;
+    }
+    border: none;
+  }
 }
 .c-article--clean {
   margin-top: $spacing;
@@ -124,9 +133,9 @@
   }
   border: none;
 }
+
 .c-article--in-topic {
   margin-top: 0;
-  padding-top: 0;
   padding: 0;
   padding-left: $spacing--medium;
   figure.c-figure.u-float-full {

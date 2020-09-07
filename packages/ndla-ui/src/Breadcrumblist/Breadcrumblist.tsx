@@ -26,6 +26,7 @@ type WrapperProps = {
   startOffset?: number;
   isVisible?: boolean;
   leftAlign?: boolean;
+  hideOnNarrow?: boolean;
 };
 
 type InvertItProps = {
@@ -40,7 +41,9 @@ const Wrapper = styled.div<WrapperProps>`
   margin: 32px 0 16px;
   width: auto;
   z-index: 1;
+  ${props => props.hideOnNarrow && `display:none;`}
   ${mq.range({ from: breakpoints.wide })} {
+    display: flex;
     margin: 32px 0;
     width: 240px;
     position: fixed;
@@ -216,6 +219,7 @@ type BreadCrumbProps = {
   isVisible?: boolean;
   invertedStyle?: boolean;
   leftAlign?: boolean;
+  hideOnNarrow?: boolean;
   onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
@@ -227,6 +231,7 @@ const Breadcrumblist = ({
   isVisible = true,
   invertedStyle,
   leftAlign,
+  hideOnNarrow,
   onNav,
   t,
 }: BreadCrumbProps) => {
@@ -276,6 +281,7 @@ const Breadcrumblist = ({
       <Wrapper
         leftAlign={leftAlign}
         startOffset={wrapperOffset}
+        hideOnNarrow={hideOnNarrow}
         isVisible={isVisible}>
         {items.length > 0 && (
           <>

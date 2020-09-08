@@ -36,6 +36,9 @@ const messages = {
     title: 'Siden finnes ikke',
     errorDescription: 'Beklager, finner ikke siden du prøvde å komme til.',
   },
+  movedResourcePage: {
+    title: 'Siden har flyttet, men du kan finne den her:',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:

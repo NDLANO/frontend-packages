@@ -37,6 +37,9 @@ const messages = {
     title: 'Page not found',
     errorDescription: "We can't seem to find the page you are looking for.",
   },
+  movedResourcePage: {
+    title: 'The page has been moved, but you can find it here:',
+  },
   lti: {
     embed: 'Embed',
     notSupported:

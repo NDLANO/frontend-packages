@@ -37,6 +37,9 @@ const messages = {
     title: 'Sida finst ikkje',
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
+  movedResourcePage: {
+    title: 'Sida har flytta, men du kan finne den her:',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:

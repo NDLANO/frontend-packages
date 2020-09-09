@@ -719,11 +719,11 @@ const messages = {
     cursorText: 'Finn lærestoff, oppgåver, filmar m.m.',
   },
   navigation: {
-    showLongerDescription: 'Lengre beskriving',
-    showShorterDescription: 'Kortere beskriving',
-    topics: 'Emner',
-    additionalTopic: 'Tillegsemne',
-    additionalTopics: 'Tillegsemner',
+    showLongerDescription: 'Vis meir',
+    showShorterDescription: 'Vis mindre',
+    topics: 'Emne',
+    additionalTopic: 'Tilleggsemne',
+    additionalTopics: 'Tilleggsemne',
     loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {

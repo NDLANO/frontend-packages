@@ -721,9 +721,9 @@ const messages = {
   navigation: {
     showLongerDescription: 'Vis meir',
     showShorterDescription: 'Vis mindre',
-    topics: 'Emner',
-    additionalTopic: 'Tillegsemne',
-    additionalTopics: 'Tillegsemner',
+    topics: 'Emne',
+    additionalTopic: 'Tilleggsemne',
+    additionalTopics: 'Tilleggsemne',
     loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {

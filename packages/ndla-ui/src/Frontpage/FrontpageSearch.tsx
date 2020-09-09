@@ -114,9 +114,16 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       } else if (isMobileSafari) {
         // Because safari on iOS set position:fixed to static when keyboard is open, we need to scroll to top.
         yCoordinate = 0;
-        window.scrollTo({
-          top: yCoordinate,
-        });
+        // Strange scrolling is happening when keyboard opens in iOS, making scrollpos not to top.
+        // Use a small timeout so the scrolling starts after
+        setTimeout(
+          () =>
+            window.scrollTo({
+              top: yCoordinate,
+              behavior: 'smooth',
+            }),
+          100,
+        );
       } else {
         window.scrollTo({
           top: yCoordinate,

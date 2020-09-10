@@ -35,11 +35,9 @@ const Title = styled.h2`
 const TabWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   button {
-    margin: 8px;
-    &:first-of-type {
-      margin-left: 0;
-    }
+    margin: 8px 8px 8px 0;
     &:last-of-type {
       margin-right: 0;
     }

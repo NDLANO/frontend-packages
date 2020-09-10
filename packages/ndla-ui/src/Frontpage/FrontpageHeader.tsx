@@ -51,11 +51,13 @@ const HeaderIllustrationWrapper = styled.div`
 export type FrontPageHeaderProps = {
   languageOptions: string;
   locale: string;
+  showHeader: boolean;
 };
 
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
   languageOptions,
   locale,
+  showHeader = true,
   children,
 }) => (
   <StyledHeaderWrapper>
@@ -63,9 +65,11 @@ const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
       <StyledLogo to="/">
         <SvgLogo />
       </StyledLogo>
-      <HeaderIllustrationWrapper>
-        <FrontpageHeaderIllustration />
-      </HeaderIllustrationWrapper>
+      {showHeader && (
+        <HeaderIllustrationWrapper>
+          <FrontpageHeaderIllustration />
+        </HeaderIllustrationWrapper>
+      )}
       {children}
     </StyledHeader>
   </StyledHeaderWrapper>

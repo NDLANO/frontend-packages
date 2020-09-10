@@ -116,48 +116,83 @@ export default CompetenceGoalsExample;
 const CompetenceGoalTabdata = [
   {
     id: 'tmpid1',
+    title: 'Kompetansemål (LK06)',
     type: 'LK06',
-    goals: [
+    groupedItems: [
       {
-        id: 'K15502',
-        name:
-          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+        name: 'Læreplan i matematikk fellesfag Vg1...',
+        id: 'tmpid323',
+        goals: [
+          {
+            id: 'K15504',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+          },
+          {
+            id: 'K176378',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+          },
+          {
+            id: 'K176353',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+          },
+        ],
       },
       {
-        id: 'K17637',
-        name:
-          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
-      },
-      {
-        id: 'K17635',
-        name: 'lage budskap tilpasset målgruppe, formål og kanal',
+        name: 'Læreplan i matematikk fellesfag Vg1...',
+        id: 'tmpid3342',
+        goals: [
+          {
+            id: 'K15504',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+          },
+          {
+            id: 'K176378',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+          },
+          {
+            id: 'K176353',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+          },
+        ],
       },
     ],
   },
   {
     id: 'tmpid2',
+    title: 'Kompetansemål (LK20)',
     type: 'LK20',
-    goals: [
+    groupedItems: [
       {
-        id: 'K15504',
-        name:
-          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
-      },
-      {
-        id: 'K176378',
-        name:
-          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
-      },
-      {
-        id: 'K176353',
-        name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+        name: 'En tittel 1',
+        id: 'tmpid32',
+        goals: [
+          {
+            id: 'K15504',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+          },
+          {
+            id: 'K176378',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+          },
+          {
+            id: 'K176353',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+          },
+        ],
       },
     ],
   },
   {
     id: 'tmpid3',
+    title: 'Kjerneelement',
     type: 'coreElement',
-    coreItems: [
+    groupedItems: [
       {
         name: 'En tittel 1',
         id: 'tmpid4',

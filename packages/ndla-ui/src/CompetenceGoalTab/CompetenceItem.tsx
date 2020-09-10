@@ -170,7 +170,7 @@ const GoalSubItemLink = styled.span`
 `;
 
 const CoreItem = styled.div`
-  margin: 16px 0 24px;
+  margin: 16px 0 52px;
 `;
 const CoreItemTitle = styled.h3`
   font-size: 22px;
@@ -280,9 +280,9 @@ const Item = ({ goal, t }: any) => {
 export type CompetenceTypeProps = 'LK06' | 'LK20' | 'coreElement';
 export type ListItemProp = {
   id: string;
+  title: string;
   type: CompetenceTypeProps;
-  goals?: any;
-  coreItems?: any;
+  groupedItems?: any;
 };
 export type ListItemProps = {
   item: ListItemProp;
@@ -293,34 +293,28 @@ const CompetenceItem = ({ item, t }: ListItemProps) => {
   switch (item.type) {
     case 'LK06':
     case 'LK20':
-      return (
-        <>
-          <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
-          {item.goals && item.goals.length > 0 && (
-            <Goals>
-              {item.goals.map((goal: any) => (
-                <Item key={goal.id} goal={goal} t={t} />
-              ))}
-            </Goals>
-          )}
-        </>
-      );
     case 'coreElement':
       return (
         <>
-          {item.coreItems && item.coreItems.length > 0 && (
+          {item.groupedItems && item.groupedItems.length > 0 && (
             <>
-              {item.coreItems.map((coreItem: any) => (
-                <CoreItem key={coreItem.id}>
-                  <CoreItemTitle>{coreItem.name}</CoreItemTitle>
-                  <CoreItemText>{coreItem.text}</CoreItemText>
-                  {coreItem.goals && coreItem.goals.length > 0 && (
-                    <Goals>
+              {item.groupedItems.map((groupItem: any) => (
+                <CoreItem key={groupItem.id}>
+                  {groupItem.name && (
+                    <CoreItemTitle>{groupItem.name}</CoreItemTitle>
+                  )}
+                  {groupItem.text && (
+                    <CoreItemText>{groupItem.text}</CoreItemText>
+                  )}
+                  {groupItem.goals && groupItem.goals.length > 0 && (
+                    <>
                       <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
-                      {coreItem.goals.map((goal: any) => (
-                        <Item key={goal.id} goal={goal} t={t} />
-                      ))}
-                    </Goals>
+                      <Goals>
+                        {groupItem.goals.map((goal: any) => (
+                          <Item key={goal.id} goal={goal} t={t} />
+                        ))}
+                      </Goals>
+                    </>
                   )}
                 </CoreItem>
               ))}

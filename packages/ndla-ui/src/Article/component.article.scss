@@ -167,16 +167,6 @@
     }
   }
 
-  // Adjust first line width for competence goals button
-  @include mq(desktop) {
-    h1:before {
-      content: '';
-      float: right;
-      width: 140px;
-      height: 1em;
-    }
-  }
-
   padding: 0 0 $spacing--small 0;
 
   @include mq(tablet) {
@@ -217,21 +207,3 @@
   }
 }
 
-.c-article__competence-goals-button {
-  &--wide {
-    position: absolute;
-    z-index: 9;
-    right: 0;
-    top: 0;
-    display: none;
-    @include mq(desktop) {
-      display: block;
-    }
-  }
-
-  &--narrow {
-    @include mq(desktop) {
-      display: none;
-    }
-  }
-}

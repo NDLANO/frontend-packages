@@ -135,15 +135,6 @@ export const Article = ({
           <ArticleIntroduction renderMarkdown={renderMarkdown}>
             {introduction}
           </ArticleIntroduction>
-          <ArticleByline
-            {...{
-              authors,
-              published,
-              license,
-              additional,
-              licenseBox,
-            }}
-          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -153,6 +144,15 @@ export const Article = ({
         {footNotes && footNotes.length > 0 && (
           <ArticleFootNotes footNotes={footNotes} />
         )}
+        <ArticleByline
+          {...{
+            authors,
+            published,
+            license,
+            additional,
+            licenseBox,
+          }}
+        />
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>

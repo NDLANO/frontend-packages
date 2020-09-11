@@ -9,12 +9,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { css } from '@emotion/core';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';
-import { mq, breakpoints } from '@ndla/core';
+import { fonts, colors } from '@ndla/core';
 
+import styled from '@emotion/styled';
+import { FooterHeaderIcon } from '@ndla/icons/common';
 import CompetenceGoalsDialog from '../CompetenceGoals/CompetenceGoalsDialog';
 
 const classes = new BEMHelper({
@@ -22,28 +23,8 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const OpenButton = ({ children, modifier, onClick }) => (
-  <Button
-    lighter
-    onClick={onClick}
-    css={
-      modifier === 'wide'
-        ? css`
-            position: absolute;
-            z-index: 9;
-            right: 0;
-            top: 0;
-            display: none;
-            ${mq.range({ from: breakpoints.desktop })} {
-              display: block;
-            }
-          `
-        : css`
-            ${mq.range({ from: breakpoints.desktop })} {
-              display: none;
-            }
-          `
-    }>
+export const OpenButton = ({ children, onClick }) => (
+  <Button size="xsmall" lighter borderShape="rounded" onClick={onClick}>
     {children}
   </Button>
 );
@@ -53,6 +34,35 @@ OpenButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   modifier: PropTypes.string,
 };
+
+const CompetenceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const CompetenceBadge = styled.span`
+  display: inline-block;
+  background: ${colors.brand.greyLighter};
+  border-radius: 36px;
+  font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes('12px', '15px')};
+  display: inline-flex;
+  align-items: center;
+  color: ${colors.text.primary};
+  font-family: ${fonts.sans};
+  padding: 0 6px;
+  height: 25px;
+  margin-right: 7px;
+`;
+
+const CompetenceBadgeText = styled.span`
+  padding: 0 5px;
+`;
+
+const CompetenceButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  ${props => props.addSpace && `padding-left: 12px;`}
+`;
 
 class ArticleHeaderWrapper extends Component {
   constructor(props) {
@@ -81,7 +91,7 @@ class ArticleHeaderWrapper extends Component {
   }
 
   render() {
-    const { children, competenceGoals } = this.props;
+    const { children, competenceGoals, competenceGoalTypes } = this.props;
     if (!competenceGoals) {
       return <div {...classes('header')}>{children}</div>;
     }
@@ -106,13 +116,25 @@ class ArticleHeaderWrapper extends Component {
       <Trans>
         {({ t }) => (
           <div {...classes('header')}>
-            <OpenButton onClick={this.openDialog} modifier="wide">
-              {t('competenceGoals.showCompetenceGoals')}
-            </OpenButton>
             {children}
-            <OpenButton onClick={this.openDialog} modifier="narrow">
-              {t('competenceGoals.showCompetenceGoals')}
-            </OpenButton>
+            <CompetenceWrapper>
+              {competenceGoalTypes &&
+                competenceGoalTypes.map(type => (
+                  <CompetenceBadge key={type}>
+                    <FooterHeaderIcon />
+                    <CompetenceBadgeText>{type}</CompetenceBadgeText>
+                  </CompetenceBadge>
+                ))}
+              <CompetenceButtonWrapper
+                addSpace={competenceGoalTypes && competenceGoalTypes.length}>
+                <OpenButton onClick={this.openDialog}>
+                  <FooterHeaderIcon />
+                  <CompetenceBadgeText>
+                    {t('competenceGoals.showCompetenceGoals')}
+                  </CompetenceBadgeText>
+                </OpenButton>
+              </CompetenceButtonWrapper>
+            </CompetenceWrapper>
             {dialog}
           </div>
         )}
@@ -122,6 +144,7 @@ class ArticleHeaderWrapper extends Component {
 }
 
 ArticleHeaderWrapper.propTypes = {
+  competenceGoalTypes: PropTypes.arrayOf(PropTypes.string),
   competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.node.isRequired,
 };

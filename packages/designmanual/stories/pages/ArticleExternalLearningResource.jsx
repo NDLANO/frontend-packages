@@ -34,7 +34,9 @@ export default () => (
       id="mainContentId"
       modifier={contentTypes.EXTERNAL_LEARNING_RESOURCES}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
+        <ArticleHeaderWrapper
+          competenceGoals={<CompetenceGoalListExample />}
+          competenceGoalTypes={['LK20', 'LK06']}>
           <ArticleTitle
             icon={<ExternalLearningResourcesBadge background size="large" />}
             label="Ekstern læringsressurs">
@@ -44,7 +46,6 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleBylineExample />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -96,6 +97,12 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <ArticleBylineExample
+          multipleAuthors
+          useRealText
+          copyPageUrlLink={window.location}
+          id="article-by-line-example-id"
+        />
         <RelatedArticleListExample />
       </LayoutItem>
     </ArticleWrapper>

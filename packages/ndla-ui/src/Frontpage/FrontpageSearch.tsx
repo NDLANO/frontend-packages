@@ -83,6 +83,8 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);
+  const inputHasFocusRef = useRef(inputHasFocus);
+  inputHasFocusRef.current = inputHasFocus;
 
   useEffect(() => {
     const onKeyEsc = (e: KeyboardEvent) => {
@@ -134,7 +136,12 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       // Because change in content(click on show more elements button) triggers some strange scroll in browser,
       // we must ensure that the scrollPos is the same all the time
       // setTimeout is used so the 'smooth' scroll effect can finish
-      setTimeout(() => window.addEventListener('scroll', resetScroll), 1000);
+      setTimeout(() => {
+        // If user has closed modal search before timeout. Don't add event-listener
+        if (inputHasFocusRef.current) {
+          window.addEventListener('scroll', resetScroll);
+        }
+      }, 1000);
     } else {
       noScroll(false, 'preventPageScroll');
       window.removeEventListener('scroll', resetScroll);

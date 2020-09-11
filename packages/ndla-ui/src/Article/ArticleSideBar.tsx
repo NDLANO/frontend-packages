@@ -8,6 +8,7 @@ import { fonts } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { copyTextToClipboard } from '@ndla/util';
 
 const Wrapper = styled.div`
   width: 160px;
@@ -54,14 +55,8 @@ const ArticleSideBar = ({
   t,
 }: Props) => {
   const copyLinkHandler = () => {
-    if (navigator) {
-      // @ts-ignore
-      navigator.permissions.query({ name: 'clipboard-write' }).then(result => {
-        if (result.state === 'granted' || result.state === 'prompt') {
-          // @ts-ignore
-          navigator.clipboard.writeText(copyPageUrlLink);
-        }
-      });
+    if (copyPageUrlLink) {
+      copyTextToClipboard(copyPageUrlLink);
     }
   };
 

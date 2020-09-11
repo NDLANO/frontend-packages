@@ -20,6 +20,21 @@ const Info = styled.p`
   line-height: 32px;
 `;
 
+const GroupedGoalsWrapper = styled.div`
+  margin: 24px 0 52px;
+`;
+
+const GroupedGoalsTitle = styled.h3`
+  font-size: 22px;
+`;
+
+const GoalsInfo = styled.p`
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  margin-bottom: 10px;
+`;
+
 const Goals = styled.ul`
   margin: 0;
   padding: 0;
@@ -277,12 +292,17 @@ const Item = ({ goal, t }: any) => {
   );
 };
 
-export type CompetenceTypeProps = 'LK06' | 'LK20' | 'coreElement';
+export type CompetenceTypeProps = 'competenceGoals' | 'coreElement';
+export type CompetenceGoals = {
+  title?: string;
+  competenceGoals: any;
+};
 export type ListItemProp = {
   id: string;
+  title: string;
   type: CompetenceTypeProps;
-  goals?: any;
-  coreItems?: any;
+  groupedCompetenceGoals?: CompetenceGoals[];
+  coreElementItems?: any;
 };
 export type ListItemProps = {
   item: ListItemProp;
@@ -291,29 +311,42 @@ export type ListItemProps = {
 
 const CompetenceItem = ({ item, t }: ListItemProps) => {
   switch (item.type) {
-    case 'LK06':
-    case 'LK20':
+    case 'competenceGoals':
       return (
         <>
-          <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
-          {item.goals && item.goals.length > 0 && (
-            <Goals>
-              {item.goals.map((goal: any) => (
-                <Item key={goal.id} goal={goal} t={t} />
-              ))}
-            </Goals>
-          )}
+          {item.groupedCompetenceGoals &&
+            item.groupedCompetenceGoals.map((group: any) => (
+              <GroupedGoalsWrapper key={group.title}>
+                {group.title && (
+                  <GroupedGoalsTitle>{group.title}</GroupedGoalsTitle>
+                )}
+                <GoalsInfo>
+                  {t('competenceGoals.competenceGoalTitle')}
+                </GoalsInfo>
+                {group.competenceGoals.length > 0 && (
+                  <Goals>
+                    {group.competenceGoals.map((goal: any) => (
+                      <Item key={goal.id} goal={goal} t={t} />
+                    ))}
+                  </Goals>
+                )}
+              </GroupedGoalsWrapper>
+            ))}
         </>
       );
     case 'coreElement':
       return (
         <>
-          {item.coreItems && item.coreItems.length > 0 && (
+          {item.coreElementItems && item.coreElementItems.length > 0 && (
             <>
-              {item.coreItems.map((coreItem: any) => (
+              {item.coreElementItems.map((coreItem: any) => (
                 <CoreItem key={coreItem.id}>
-                  <CoreItemTitle>{coreItem.name}</CoreItemTitle>
-                  <CoreItemText>{coreItem.text}</CoreItemText>
+                  {coreItem.name && (
+                    <CoreItemTitle>{coreItem.name}</CoreItemTitle>
+                  )}
+                  {coreItem.text && (
+                    <CoreItemText>{coreItem.text}</CoreItemText>
+                  )}
                   {coreItem.goals && coreItem.goals.length > 0 && (
                     <Goals>
                       <Info>{t('competenceGoals.competenceGoalTitle')}</Info>

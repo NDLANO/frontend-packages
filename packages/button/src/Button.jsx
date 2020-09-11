@@ -87,7 +87,7 @@ export const outlineStyle = css`
 const outlineWithSize = size =>
   css`
     ${outlineStyle}
-    ${size === 'small' &&
+    ${(size === 'xsmall' || size === 'small') &&
       `border-width:1px;
         &:hover,
         &:focus,
@@ -142,7 +142,7 @@ export const sizes = {
     align-items: center;
     justify-content: center;
     padding: 2px ${spacing.xsmall};
-    ${fonts.sizes('12px', '15px')};
+    ${fonts.sizes('12px', '14px')};
     min-height: 24px;
     font-weight: ${fonts.weight.semibold};
   `,

@@ -121,7 +121,7 @@ const CompetenceGoalTabdata = [
     groupedCompetenceGoals: [
       {
         title: 'Kompetansemål og vurdering produksjon og historiefortelling',
-        competenceGoals: [
+        elements: [
           {
             id: 'K15502',
             name:
@@ -140,7 +140,7 @@ const CompetenceGoalTabdata = [
       },
       {
         title: 'Kompetansemål og vurdering produksjon og historiefortelling 2',
-        competenceGoals: [
+        elements: [
           {
             id: 'K15502',
             name:
@@ -166,7 +166,7 @@ const CompetenceGoalTabdata = [
     groupedCompetenceGoals: [
       {
         title: 'Kompetansemål og vurdering produksjon og historiefortelling',
-        competenceGoals: [
+        elements: [
           {
             id: 'K15504',
             name:
@@ -192,7 +192,7 @@ const CompetenceGoalTabdata = [
     groupedCoreElementItems: [
       {
         title: 'Læreplan i Vg1 informasjonsteknologi og medieproduksjon',
-        coreElementItems: [
+        elements: [
           {
             name: 'En tittel 1',
             id: 'tmpid4',
@@ -225,7 +225,7 @@ const CompetenceGoalTabdata = [
       },
       {
         title: 'Læreplan i norsk',
-        coreElementItems: [
+        elements: [
           {
             name: 'En tittel 1',
             id: 'tmpid6',

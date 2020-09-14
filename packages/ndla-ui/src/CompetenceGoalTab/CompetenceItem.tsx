@@ -296,11 +296,11 @@ const Item = ({ goal, t }: any) => {
 export type CompetenceTypeProps = 'competenceGoals' | 'coreElement';
 export type CompetenceGoals = {
   title?: string;
-  competenceGoals: any;
+  elements: any;
 };
 export type CoreElementItems = {
   title?: string;
-  coreElementItems: any;
+  elements: any;
 };
 export type ListItemProp = {
   id: string;
@@ -329,9 +329,9 @@ const CompetenceItem = ({ item, t }: ListItemProps) => {
                 <GoalsInfo>
                   {t('competenceGoals.competenceGoalTitle')}
                 </GoalsInfo>
-                {group.competenceGoals.length > 0 && (
+                {group.elements.length > 0 && (
                   <Goals>
-                    {group.competenceGoals.map((goal: any) => (
+                    {group.elements.map((goal: any) => (
                       <Item key={goal.id} goal={goal} t={t} />
                     ))}
                   </Goals>
@@ -349,7 +349,7 @@ const CompetenceItem = ({ item, t }: ListItemProps) => {
                 {group.title && (
                   <GroupedCoreItemsTitle>{group.title}</GroupedCoreItemsTitle>
                 )}
-                {group.coreElementItems.map((coreItem: any) => (
+                {group.elements.map((coreItem: any) => (
                   <CoreItem key={coreItem.id}>
                     {coreItem.name && (
                       <CoreItemTitle>{coreItem.name}</CoreItemTitle>

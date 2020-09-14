@@ -112,7 +112,13 @@ Modal.propTypes = {
     'full-width',
     'custom',
   ]),
-  backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue']),
+  backgroundColor: PropTypes.oneOf([
+    'white',
+    'grey',
+    'grey-dark',
+    'blue',
+    'light-gradient',
+  ]),
   animationDuration: PropTypes.number,
   activateButton: (props, propName, componentName) => {
     if (
@@ -336,6 +342,9 @@ const animationContainer = css`
   }
   &.blue {
     background: ${colors.brand.lighter};
+  }
+  &.light-gradient {
+    background: linear-gradient(90deg, #fafbfe 0%, #faf6f0 97.96%);
   }
 `;
 

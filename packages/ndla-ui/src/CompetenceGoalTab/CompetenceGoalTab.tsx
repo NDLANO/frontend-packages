@@ -10,7 +10,7 @@ import CompetenceItem, { ListItemProp } from './CompetenceItem';
 
 type CompetenceProps = {
   title: string;
-  list: [ListItemProp];
+  list: ListItemProp[];
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 

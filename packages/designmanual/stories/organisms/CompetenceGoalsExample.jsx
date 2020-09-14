@@ -189,34 +189,72 @@ const CompetenceGoalTabdata = [
     id: 'tmpid3',
     type: 'coreElement',
     title: 'Kjernelement',
-    coreElementItems: [
+    groupedCoreElementItems: [
       {
-        name: 'En tittel 1',
-        id: 'tmpid4',
-        text:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        goals: [
+        title: 'Læreplan i Vg1 informasjonsteknologi og medieproduksjon',
+        coreElementItems: [
           {
-            id: 'K15504',
-            name:
-              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+            name: 'En tittel 1',
+            id: 'tmpid4',
+            text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            goals: [
+              {
+                id: 'K15504',
+                name:
+                  'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+              },
+              {
+                id: 'K176378',
+                name:
+                  'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+              },
+              {
+                id: 'K176353',
+                name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+              },
+            ],
           },
           {
-            id: 'K176378',
-            name:
-              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
-          },
-          {
-            id: 'K176353',
-            name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+            name: 'En tittel 2',
+            id: 'tmpid5',
+            text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           },
         ],
       },
       {
-        name: 'En tittel 2',
-        id: 'tmpid5',
-        text:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        title: 'Læreplan i norsk',
+        coreElementItems: [
+          {
+            name: 'En tittel 1',
+            id: 'tmpid6',
+            text:
+              'Elevene skal kunne reflektere kritisk over hva slags påvirkningskraft og troverdighet tekster har. De skal kunne bruke og variere språklige og retoriske virkemidler hensiktsmessig i egne muntlige og skriftlige tekster. De skal vise digital dømmekraft og opptre etisk og reflektert i kommunikasjon med andre.',
+            goals: [
+              {
+                id: 'K15504',
+                name:
+                  'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+              },
+              {
+                id: 'K176378',
+                name:
+                  'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+              },
+              {
+                id: 'K176353',
+                name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+              },
+            ],
+          },
+          {
+            name: 'En tittel 2',
+            id: 'tmpid7',
+            text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+          },
+        ],
       },
     ],
   },

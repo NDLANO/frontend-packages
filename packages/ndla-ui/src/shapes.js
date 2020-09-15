@@ -50,7 +50,6 @@ export const ArticleShape = PropTypes.shape({
     creators: PropTypes.arrayOf(ContributorShape),
   }).isRequired,
   published: PropTypes.string.isRequired,
-  oembed: PropTypes.string,
 });
 
 export const ResourceShape = PropTypes.shape({

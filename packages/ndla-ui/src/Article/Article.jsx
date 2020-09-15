@@ -111,6 +111,7 @@ export const Article = ({
     published,
     content,
     footNotes,
+    oembed,
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
@@ -145,6 +146,7 @@ export const Article = ({
           <ArticleFootNotes footNotes={footNotes} />
         )}
         <ArticleByline
+          copyPageUrlLink={oembed}
           {...{
             authors,
             published,

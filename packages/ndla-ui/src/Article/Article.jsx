@@ -102,6 +102,7 @@ export const Article = ({
   children,
   locale,
   competenceGoals,
+  competenceGoalTypes,
   id,
   renderMarkdown,
 }) => {
@@ -129,7 +130,9 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier} id={id}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={competenceGoals}>
+        <ArticleHeaderWrapper
+          competenceGoals={competenceGoals}
+          competenceGoalTypes={competenceGoalTypes}>
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>

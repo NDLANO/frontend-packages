@@ -30,7 +30,6 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleBylineExample id="example-article-license-id" />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -82,6 +81,12 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <ArticleBylineExample
+          multipleAuthors
+          useRealText
+          copyPageUrlLink={window.location}
+          id="article-by-line-example-id"
+        />
       </LayoutItem>
     </ArticleWrapper>
   </OneColumn>

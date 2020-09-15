@@ -80,14 +80,6 @@ const loadArticle = async articleId => {
             <ArticleIntroduction renderMarkdown={renderMarkdown}>
               {introduction}
             </ArticleIntroduction>
-            <ArticleByline
-              licenseBox={<LicenseBox />}
-              {...{
-                authors,
-                published,
-                license,
-              }}
-            />
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="full">
@@ -98,6 +90,14 @@ const loadArticle = async articleId => {
             <ArticleFootNotes footNotes={footNotes} />
           )}
         </LayoutItem>
+        <ArticleByline
+          licenseBox={<LicenseBox />}
+          {...{
+            authors,
+            published,
+            license,
+          }}
+        />
       </ArticleWrapper>
     );
     return { content: content, introduction: introduction };

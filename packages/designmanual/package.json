@@ -28,6 +28,8 @@
     "@storybook/addon-knobs": "5.3.21",
     "@storybook/addon-links": "5.3.21",
     "@storybook/react": "5.3.21",
+    "@storybook/addons": "5.3.21",
+    "@storybook/theming": "5.3.21",
     "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
     "btoa": "^1.1.2",

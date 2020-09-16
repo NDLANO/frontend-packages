@@ -86,13 +86,12 @@ type Props = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const FrontpageCircularSubject: React.FunctionComponent<
-  Props & React.HTMLProps<HTMLButtonElement>
-> = ({ category, t, ...rest }) => {
+const FrontpageCircularSubject: React.FunctionComponent<Props &
+  React.HTMLProps<HTMLButtonElement>> = ({ category, t, ...rest }) => {
   // @ts-ignore
   const Illustration = categoryIllustrations[category.name];
   return (
-    <StyledButton type="button" {...rest}>
+    <StyledButton type="button">
       <StyledFigure>
         <Illustration />
       </StyledFigure>

@@ -22,7 +22,7 @@ type ButtonProps = {
   arrowOffset: number;
 };
 
-export const StyledButton = styled.button(
+export const StyledButton = styled.button<ButtonProps>(
   {
     position: 'absolute',
     zIndex: 1,
@@ -41,7 +41,10 @@ export const StyledButton = styled.button(
     },
 );
 
-export const StyledSlideContent = styled.div(
+type SlideProps = {
+  swiping?: boolean;
+};
+export const StyledSlideContent = styled.div<SlideProps>(
   {
     display: 'flex',
     justifyContent: 'space-between',
@@ -53,7 +56,10 @@ export const StyledSlideContent = styled.div(
     },
 );
 
-export const StyledWrapperAutosizer = styled.div(
+type WrapperProps = {
+  width: string;
+};
+export const StyledWrapperAutosizer = styled.div<WrapperProps>(
   {
     margin: '0 auto',
   },

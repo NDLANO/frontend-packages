@@ -40,7 +40,7 @@ type FooterLinksProps = {
       icon: React.ReactNode;
       facebook: string;
       twitter: string;
-    }
+    },
   ];
   isFFServer?: boolean; // To be removed when FF-server is not in use anymore
 };

@@ -115,9 +115,13 @@ type PropsSiblings = {
   stepId: number;
 };
 
-export const LearningPathStickySibling: React.FunctionComponent<
-  PropsSiblings
-> = ({ title, toLearningPathUrl, pathId, stepId, arrow }) => (
+export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> = ({
+  title,
+  toLearningPathUrl,
+  pathId,
+  stepId,
+  arrow,
+}) => (
   <SafeLink to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>

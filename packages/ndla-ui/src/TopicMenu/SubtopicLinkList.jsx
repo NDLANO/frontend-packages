@@ -222,9 +222,7 @@ class SubtopicLinkList extends Component {
                 contentTypeResult={result}
                 messages={{
                   noHit: t(
-                    `masthead.menu.contentTypeResultsNoHit.${
-                      result.contentType
-                    }`,
+                    `masthead.menu.contentTypeResultsNoHit.${result.contentType}`,
                   ),
                 }}
                 showAdditionalResources={showAdditionalResources}

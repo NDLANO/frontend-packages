@@ -24,6 +24,7 @@ test('SafeLink renderers Link correctly if router context is present', () => {
   );
 
   expect(component.toJSON()).toMatchSnapshot();
+  // @ts-ignore
   expect(component.toJSON()!.children![0].props.onClick).toBeInstanceOf(
     Function,
   );
@@ -42,6 +43,7 @@ test('SafeLink defaults to normal link if to prop is an external link', () => {
   );
 
   expect(component.toJSON()).toMatchSnapshot();
+  // @ts-ignore
   expect(component.toJSON()!.children![0].props.onClick).toBeUndefined();
 });
 
@@ -57,6 +59,7 @@ test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
     </StaticRouter>,
   );
 
+  // @ts-ignore
   expect(component.toJSON()!.children![0].props.onClick).toBeUndefined();
 });
 

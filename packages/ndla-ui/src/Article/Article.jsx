@@ -105,6 +105,7 @@ export const Article = ({
   competenceGoalTypes,
   id,
   renderMarkdown,
+  copyPageUrlLink,
 }) => {
   const {
     title,
@@ -112,7 +113,6 @@ export const Article = ({
     published,
     content,
     footNotes,
-    oembed,
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
@@ -149,7 +149,7 @@ export const Article = ({
           <ArticleFootNotes footNotes={footNotes} />
         )}
         <ArticleByline
-          copyPageUrlLink={oembed}
+          copyPageUrlLink={copyPageUrlLink}
           {...{
             authors,
             published,
@@ -178,6 +178,7 @@ Article.propTypes = {
     label: PropTypes.string,
   }).isRequired,
   renderMarkdown: PropTypes.func,
+  copyPageUrlLink: PropTypes.string,
 };
 
 Article.defaultProps = {

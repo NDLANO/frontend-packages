@@ -268,9 +268,9 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Bilde under ingress', () => (
+  .add('Visuelt element under ingress', () => (
     <div>
-      <StoryIntro title="Bilde under ingress">
+      <StoryIntro title="Visuelt element under ingress">
         <p>
           Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk
           helst bilder av mennesker og bilder som er relevante og naturlige.

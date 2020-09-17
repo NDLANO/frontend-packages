@@ -440,7 +440,7 @@ storiesOf('Sammensatte moduler', module)
               default: 'optional',
             },
           ]}
-          status={2}>
+          status={3}>
           <h2 className="u-heading">Switch eksempel</h2>
           <div className="u-margin-top">
             <Switch

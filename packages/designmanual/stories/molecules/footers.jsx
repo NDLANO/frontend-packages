@@ -11,11 +11,9 @@ const FooterExample = ({
   invertedOutlineLargeScreensOnly,
   t,
   hideLanguageSelector,
-  isFFServer,
 }) => (
   <Footer
     links={mockFooterLinks}
-    isFFServer={isFFServer}
     languageSelector={
       !hideLanguageSelector && (
         <LanguageSelector
@@ -53,7 +51,6 @@ const FooterExample = ({
 FooterExample.propTypes = {
   inverted: PropTypes.bool,
   hideLanguageSelector: PropTypes.bool,
-  isFFServer: PropTypes.bool,
 };
 
 export default injectT(FooterExample);

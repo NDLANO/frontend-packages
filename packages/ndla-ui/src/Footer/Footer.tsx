@@ -128,7 +128,6 @@ type Props = {
     icon: React.ReactNode;
   };
   languageSelector?: React.ReactNode;
-  isFFServer?: boolean;
 };
 
 const Footer: React.FunctionComponent<Props> = ({
@@ -137,7 +136,6 @@ const Footer: React.FunctionComponent<Props> = ({
   t,
   links,
   languageSelector,
-  isFFServer,
 }) => {
   const mainContent = (
     <>
@@ -154,7 +152,7 @@ const Footer: React.FunctionComponent<Props> = ({
         </div>
         <div>
           <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} isFFServer={isFFServer} />
+          <FooterLinks links={links} />
         </div>
       </StyledColumns>
       <StyledHr />

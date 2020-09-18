@@ -118,7 +118,6 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
-  FFHeroBadge,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {

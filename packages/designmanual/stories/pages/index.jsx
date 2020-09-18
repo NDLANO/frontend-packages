@@ -33,7 +33,6 @@ import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
 import ArticleSimple from './ArticleSimple';
-import AuthorPage from './AuthorPage';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
@@ -119,24 +118,6 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Hent artikkel med id', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <SubjectMaterialHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectMaterialHero>
-        <ArticleLoader closeButton />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
   .add('Forenklet artikkelmal', () => (
     <PageContainer backgroundWide>
       <Content>
@@ -151,24 +132,6 @@ storiesOf('Sidevisninger', module)
           </OneColumn>
         </Hero>
         <ArticleSimple />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Forfatter sidemal', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <Hero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <BreadcrumbSimpleArticle name="Cecilie Isaksen Eftedal" />
-              </section>
-            </div>
-          </OneColumn>
-        </Hero>
-        <AuthorPage />
       </Content>
       <FooterExample />
     </PageContainer>

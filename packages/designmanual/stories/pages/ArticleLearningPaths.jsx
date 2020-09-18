@@ -72,7 +72,7 @@ export default ({ title, description }) => (
           <ArticleBylineExample
             multipleAuthors
             useRealText
-            copyPageUrlLink={window.location}
+            copyPageUrlLink={window.location.href}
             id="article-by-line-example-id"
           />
         </LayoutItem>

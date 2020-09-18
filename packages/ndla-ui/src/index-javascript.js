@@ -66,6 +66,13 @@ export {
   ActiveFilters,
   ToggleSearchButton,
 } from './Search';
+
+export {
+  SearchTypeResult,
+  SearchTypeHeader,
+  SearchTypeTopicFilter,
+} from './SearchTypeResult';
+
 export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,

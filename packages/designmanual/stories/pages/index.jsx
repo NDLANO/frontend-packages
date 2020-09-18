@@ -68,6 +68,7 @@ import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
 import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
 import { contentCards } from '../../dummydata';
+import SearchResultTypeExample from './SearchResultTypeExample';
 
 storiesOf('Re-design', module)
   .add('Forside', () => (
@@ -274,6 +275,17 @@ storiesOf('Re-design', module)
           subjects={['publicHealth', 'climate']}
           articleId="20655"
         />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Søkeside', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <SearchResultTypeExample />
+        </OneColumn>
       </Content>
       <FooterExample />
     </PageContainer>

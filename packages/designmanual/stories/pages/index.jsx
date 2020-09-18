@@ -32,11 +32,10 @@ import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
-import ArticleSimple from './ArticleSimple';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
+import Breadcrumb from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 import LearningPathExample from './LearningPathExample';
@@ -118,20 +117,11 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Forenklet artikkelmal', () => (
+  .add('Læringssti', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <Hero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <BreadcrumbSimpleArticle />
-              </section>
-            </div>
-          </OneColumn>
-        </Hero>
-        <ArticleSimple />
+        <MastheadWithTopicMenu />
+        <LearningPathExample />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -244,18 +234,9 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
-  ))
-  .add('Læringssti', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu />
-        <LearningPathExample />
-      </Content>
-      <FooterExample />
-    </PageContainer>
   ));
 
-storiesOf('Emnesider', module)
+storiesOf('Fag- og emnesider', module)
   .add('1. Forside', () => (
     <PageContainer>
       <Content>

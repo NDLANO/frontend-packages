@@ -16,7 +16,7 @@ const licenseRightAbbreviations = [
   'pd',
   'cc0',
   'cc',
-  'copy',
+  'copyrighted',
 ];
 
 const licensesRights = {

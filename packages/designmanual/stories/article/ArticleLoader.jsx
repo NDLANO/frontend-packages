@@ -120,7 +120,7 @@ class ArticleLoader extends Component {
     const { article, message } = this.state;
     const {
       reset,
-      cleanInContext,
+      articleModifier,
       closeButton,
       icon,
       label,
@@ -174,12 +174,6 @@ class ArticleLoader extends Component {
         </OneColumn>
       );
     }
-
-    const articleModifier = cleanInContext
-      ? 'clean-in-context'
-      : reset
-      ? 'clean'
-      : '';
 
     return (
       <>
@@ -245,7 +239,7 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
-  cleanInContext: PropTypes.bool,
+  articleModifier: PropTypes.string,
   ndlaFilm: PropTypes.bool,
   useFFServer: PropTypes.bool,
   hideCompetenceGoals: PropTypes.bool,

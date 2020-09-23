@@ -75,8 +75,8 @@ const FrontpageHeaderIllustration: React.FunctionComponent = () => (
       stroke="#757575"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M260.833 6.16455C260.833 6.16455 255.573 6.28832 257.553 12.6623C259.038 17.4893 262.195 19.8408 264.051 18.7269C264.67 18.3556 265.165 17.613 265.351 16.4991C266.279 11.9197 264.423 6.7215 260.833 6.16455Z"
       stroke="#757575"
       strokeLinecap="round"
@@ -112,8 +112,8 @@ const FrontpageHeaderIllustration: React.FunctionComponent = () => (
       strokeLinecap="round"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M448.099 12.9104C448.099 12.9104 442.839 17.1185 443.334 20.0889C443.891 23.0593 447.171 25.2253 449.151 21.5741C449.646 20.6459 450.017 19.5939 450.203 18.6037C450.884 15.5095 450.141 12.5391 448.099 12.9104Z"
       stroke="#757575"
     />
@@ -155,8 +155,8 @@ const FrontpageHeaderIllustration: React.FunctionComponent = () => (
       stroke="#757575"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M458.495 1.52352C457.752 1.83294 457.628 11.8581 462.579 11.9819C467.53 12.1056 467.406 8.26884 466.725 6.84552C465.983 5.42219 464.498 -0.828058 458.495 1.52352Z"
       stroke="#757575"
     />

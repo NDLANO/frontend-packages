@@ -116,54 +116,57 @@ export default CompetenceGoalsExample;
 const CompetenceGoalTabdata = [
   {
     id: 'tmpid1',
-    type: 'LK06',
-    goals: [
+    type: 'competenceGoals',
+    title: 'Kompetansemål (LK06)',
+    groupedCompetenceGoals: [
       {
-        id: 'K15502',
-        name:
-          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+        title: 'Kompetansemål og vurdering produksjon og historiefortelling',
+        elements: [
+          {
+            id: 'K15502',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+          },
+          {
+            id: 'K17637',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+          },
+          {
+            id: 'K17635',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal',
+          },
+        ],
       },
       {
-        id: 'K17637',
-        name:
-          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
-      },
-      {
-        id: 'K17635',
-        name: 'lage budskap tilpasset målgruppe, formål og kanal',
+        title: 'Kompetansemål og vurdering produksjon og historiefortelling 2',
+        elements: [
+          {
+            id: 'K15502',
+            name:
+              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+          },
+          {
+            id: 'K17637',
+            name:
+              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+          },
+          {
+            id: 'K17635',
+            name: 'lage budskap tilpasset målgruppe, formål og kanal',
+          },
+        ],
       },
     ],
   },
   {
     id: 'tmpid2',
-    type: 'LK20',
-    goals: [
+    type: 'competenceGoals',
+    title: 'Kompetansemål (LK20)',
+    groupedCompetenceGoals: [
       {
-        id: 'K15504',
-        name:
-          'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
-      },
-      {
-        id: 'K176378',
-        name:
-          'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
-      },
-      {
-        id: 'K176353',
-        name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
-      },
-    ],
-  },
-  {
-    id: 'tmpid3',
-    type: 'coreElement',
-    coreItems: [
-      {
-        name: 'En tittel 1',
-        id: 'tmpid4',
-        text:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        goals: [
+        title: 'Kompetansemål og vurdering produksjon og historiefortelling',
+        elements: [
           {
             id: 'K15504',
             name:
@@ -180,11 +183,78 @@ const CompetenceGoalTabdata = [
           },
         ],
       },
+    ],
+  },
+  {
+    id: 'tmpid3',
+    type: 'coreElement',
+    title: 'Kjernelement',
+    groupedCoreElementItems: [
       {
-        name: 'En tittel 2',
-        id: 'tmpid5',
-        text:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        title: 'Læreplan i Vg1 informasjonsteknologi og medieproduksjon',
+        elements: [
+          {
+            name: 'En tittel 1',
+            id: 'tmpid4',
+            text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            goals: [
+              {
+                id: 'K15504',
+                name:
+                  'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+              },
+              {
+                id: 'K176378',
+                name:
+                  'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+              },
+              {
+                id: 'K176353',
+                name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+              },
+            ],
+          },
+          {
+            name: 'En tittel 2',
+            id: 'tmpid5',
+            text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+          },
+        ],
+      },
+      {
+        title: 'Læreplan i norsk',
+        elements: [
+          {
+            name: 'En tittel 1',
+            id: 'tmpid6',
+            text:
+              'Elevene skal kunne reflektere kritisk over hva slags påvirkningskraft og troverdighet tekster har. De skal kunne bruke og variere språklige og retoriske virkemidler hensiktsmessig i egne muntlige og skriftlige tekster. De skal vise digital dømmekraft og opptre etisk og reflektert i kommunikasjon med andre.',
+            goals: [
+              {
+                id: 'K15504',
+                name:
+                  'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+              },
+              {
+                id: 'K176378',
+                name:
+                  'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+              },
+              {
+                id: 'K176353',
+                name: 'lage budskap tilpasset målgruppe, formål og kanal - 2',
+              },
+            ],
+          },
+          {
+            name: 'En tittel 2',
+            id: 'tmpid7',
+            text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+          },
+        ],
       },
     ],
   },

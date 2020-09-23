@@ -14,10 +14,19 @@ import Button from '@ndla/button';
 import { colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 
-const Info = styled.p`
+const GroupedGoalsWrapper = styled.div`
+  margin: 24px 0 52px;
+`;
+
+const GroupedGoalsTitle = styled.h3`
+  font-size: 22px;
+`;
+
+const GoalsInfo = styled.p`
   font-weight: 600;
   font-size: 16px;
   line-height: 32px;
+  margin-bottom: 10px;
 `;
 
 const Goals = styled.ul`
@@ -172,8 +181,15 @@ const GoalSubItemLink = styled.span`
 const CoreItem = styled.div`
   margin: 16px 0 24px;
 `;
-const CoreItemTitle = styled.h3`
-  font-size: 22px;
+const GroupedCoreItemsWrapper = styled.div`
+  margin: 24px 0 52px;
+`;
+
+const GroupedCoreItemsTitle = styled.h3`
+  font-size: 24px;
+`;
+const CoreItemTitle = styled.h4`
+  font-size: 20px;
 `;
 const CoreItemText = styled.p`
   font-size: 18px;
@@ -277,12 +293,21 @@ const Item = ({ goal, t }: any) => {
   );
 };
 
-export type CompetenceTypeProps = 'LK06' | 'LK20' | 'coreElement';
+export type CompetenceTypeProps = 'competenceGoals' | 'coreElement';
+export type CompetenceGoals = {
+  title?: string;
+  elements: any;
+};
+export type CoreElementItems = {
+  title?: string;
+  elements: any;
+};
 export type ListItemProp = {
   id: string;
+  title: string;
   type: CompetenceTypeProps;
-  goals?: any;
-  coreItems?: any;
+  groupedCompetenceGoals?: CompetenceGoals[];
+  groupedCoreElementItems?: CoreElementItems[];
 };
 export type ListItemProps = {
   item: ListItemProp;
@@ -290,42 +315,52 @@ export type ListItemProps = {
 };
 
 const CompetenceItem = ({ item, t }: ListItemProps) => {
-  switch (item.type) {
-    case 'LK06':
-    case 'LK20':
+  const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
+  switch (type) {
+    case 'competenceGoals':
       return (
         <>
-          <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
-          {item.goals && item.goals.length > 0 && (
-            <Goals>
-              {item.goals.map((goal: any) => (
-                <Item key={goal.id} goal={goal} t={t} />
-              ))}
-            </Goals>
-          )}
+          {groupedCompetenceGoals &&
+            groupedCompetenceGoals.map((group: any) => (
+              <GroupedGoalsWrapper key={group.title}>
+                {group.title && (
+                  <GroupedGoalsTitle>{group.title}</GroupedGoalsTitle>
+                )}
+                <GoalsInfo>
+                  {t('competenceGoals.competenceGoalTitle')}
+                </GoalsInfo>
+                {group.elements.length > 0 && (
+                  <Goals>
+                    {group.elements.map((goal: any) => (
+                      <Item key={goal.id} goal={goal} t={t} />
+                    ))}
+                  </Goals>
+                )}
+              </GroupedGoalsWrapper>
+            ))}
         </>
       );
     case 'coreElement':
       return (
         <>
-          {item.coreItems && item.coreItems.length > 0 && (
-            <>
-              {item.coreItems.map((coreItem: any) => (
-                <CoreItem key={coreItem.id}>
-                  <CoreItemTitle>{coreItem.name}</CoreItemTitle>
-                  <CoreItemText>{coreItem.text}</CoreItemText>
-                  {coreItem.goals && coreItem.goals.length > 0 && (
-                    <Goals>
-                      <Info>{t('competenceGoals.competenceGoalTitle')}</Info>
-                      {coreItem.goals.map((goal: any) => (
-                        <Item key={goal.id} goal={goal} t={t} />
-                      ))}
-                    </Goals>
-                  )}
-                </CoreItem>
-              ))}
-            </>
-          )}
+          {groupedCoreElementItems &&
+            groupedCoreElementItems.map((group: any) => (
+              <GroupedCoreItemsWrapper key={group.title}>
+                {group.title && (
+                  <GroupedCoreItemsTitle>{group.title}</GroupedCoreItemsTitle>
+                )}
+                {group.elements.map((coreItem: any) => (
+                  <CoreItem key={coreItem.id}>
+                    {coreItem.name && (
+                      <CoreItemTitle>{coreItem.name}</CoreItemTitle>
+                    )}
+                    {coreItem.text && (
+                      <CoreItemText>{coreItem.text}</CoreItemText>
+                    )}
+                  </CoreItem>
+                ))}
+              </GroupedCoreItemsWrapper>
+            ))}
         </>
       );
     default:

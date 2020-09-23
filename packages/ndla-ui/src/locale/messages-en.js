@@ -37,6 +37,9 @@ const messages = {
     title: 'Page not found',
     errorDescription: "We can't seem to find the page you are looking for.",
   },
+  movedResourcePage: {
+    title: 'The page has been moved, but you can find it here:',
+  },
   lti: {
     embed: 'Embed',
     notSupported:
@@ -286,12 +289,14 @@ const messages = {
     urlContributionsLabel: 'See {name}`s contributions',
     urlAuthorLabel: 'Read more about {name}',
     multipleAuthorsLabelAbbreviation: 'et al.',
+    singleAuthorsLabel: 'Licensee:',
     multipleAuthorsLabel: 'Licensees:',
     multipleAuthorsLabelAria: 'Licensees of this article are {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'The Licensee of this article is {name}',
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
+    authorsConjunction: 'and',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',
@@ -703,8 +708,8 @@ const messages = {
     cursorText: 'Find teaching material, assignments, movies and more.',
   },
   navigation: {
-    showLongerDescription: 'Longer description',
-    showShorterDescription: 'Shorter description',
+    showLongerDescription: 'Show more',
+    showShorterDescription: 'Show less',
     topics: 'Topics',
     additionalTopic: 'Additional topic',
     additionalTopics: 'Additional topics',

@@ -32,7 +32,9 @@ const ArticleLearningMaterial = () => (
   <OneColumn>
     <ArticleWrapper id="mainContentId" modifier={contentTypes.SUBJECT_MATERIAL}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
+        <ArticleHeaderWrapper
+          competenceGoals={<CompetenceGoalListExample />}
+          competenceGoalTypes={['LK20', 'LK06']}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -42,7 +44,6 @@ const ArticleLearningMaterial = () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleBylineExample id="example-article-license-id" />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -84,6 +85,12 @@ const ArticleLearningMaterial = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <ArticleBylineExample
+          multipleAuthors
+          useRealText
+          copyPageUrlLink={window.location}
+          id="article-by-line-example-id"
+        />
         <RelatedArticleListExample />
       </LayoutItem>
     </ArticleWrapper>

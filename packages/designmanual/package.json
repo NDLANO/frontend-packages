@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "1.11.113",
+  "version": "1.11.125",
   "description": "Styleguide and ui component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -38,7 +38,7 @@
     "emotion-theming": "^10.0.10",
     "file-loader": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
-    "lazysizes": "^4.1.5",
+    "lazysizes": "^5.2.2",
     "pdfmake": "^0.1.51",
     "postcss-loader": "^3.0.0",
     "react-bem-helper": "1.4.1",
@@ -50,7 +50,7 @@
     "webpack-bundle-analyzer": "^3.0.4"
   },
   "dependencies": {
-    "@ndla/forms": "^0.3.109",
+    "@ndla/forms": "^0.3.121",
     "@ndla/safelink": "^0.0.6",
     "downshift": "^3.2.2"
   }

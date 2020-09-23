@@ -83,6 +83,8 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);
+  const inputHasFocusRef = useRef(inputHasFocus);
+  inputHasFocusRef.current = inputHasFocus;
 
   useEffect(() => {
     const onKeyEsc = (e: KeyboardEvent) => {
@@ -100,19 +102,30 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   }, []);
 
   useEffect(() => {
+    let yCoordinate = 0;
+    const resetScroll = () => {
+      window.scrollTo({ top: yCoordinate });
+    };
     if (inputHasFocus && searchFieldRef && searchFieldRef.current) {
-      const yCoordinate =
+      yCoordinate =
         searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
       const isIE11 = isIE && parseInt(browserVersion) < 12;
       if (isIE11) {
         // insta move on IE
         window.scrollTo(0, yCoordinate);
       } else if (isMobileSafari) {
-        // Because safari on iOS set position:fixed to static when keyboard is open, we need to scroll to top
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
+        // Because safari on iOS set position:fixed to static when keyboard is open, we need to scroll to top.
+        yCoordinate = 0;
+        // Strange scrolling is happening when keyboard opens in iOS, making scrollpos not to top.
+        // Use a small timeout so the scrolling starts after
+        setTimeout(
+          () =>
+            window.scrollTo({
+              top: yCoordinate,
+              behavior: 'smooth',
+            }),
+          100,
+        );
       } else {
         window.scrollTo({
           top: yCoordinate,
@@ -120,10 +133,23 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
         });
       }
       noScroll(true, 'preventPageScroll');
+      // Because change in content(click on show more elements button) triggers some strange scroll in browser,
+      // we must ensure that the scrollPos is the same all the time
+      // setTimeout is used so the 'smooth' scroll effect can finish
+      setTimeout(() => {
+        // If user has closed modal search before timeout. Don't add event-listener
+        if (inputHasFocusRef.current) {
+          window.addEventListener('scroll', resetScroll);
+        }
+      }, 1000);
     } else {
       noScroll(false, 'preventPageScroll');
+      window.removeEventListener('scroll', resetScroll);
     }
-    return () => noScroll(false, 'preventPageScroll');
+    return () => {
+      noScroll(false, 'preventPageScroll');
+      window.removeEventListener('scroll', resetScroll);
+    };
   }, [inputHasFocus]);
 
   return (

@@ -36,6 +36,9 @@ const messages = {
     title: 'Siden finnes ikke',
     errorDescription: 'Beklager, finner ikke siden du prøvde å komme til.',
   },
+  movedResourcePage: {
+    title: 'Siden har flyttet, men du kan finne den her:',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:
@@ -285,12 +288,14 @@ const messages = {
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
+    singleAuthorsLabel: 'Rettighetshaver:',
     multipleAuthorsLabel: 'Rettighetshavere:',
     multipleAuthorsLabelAria: 'Rettighetshavere er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'Rettighetshaver av artikkelen er {name}',
     copyPageLink: 'Kopier lenke til siden',
     copyPageLinkCopied: 'Lenke kopiert',
+    authorsConjunction: 'og',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',
@@ -712,8 +717,8 @@ const messages = {
     cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
   },
   navigation: {
-    showLongerDescription: 'Lengre beskrivelse',
-    showShorterDescription: 'Kortere beskrivelse',
+    showLongerDescription: 'Vis mer',
+    showShorterDescription: 'Vis mindre',
     topics: 'Emner',
     additionalTopic: 'Tillegsemne',
     additionalTopics: 'Tillegsemner',

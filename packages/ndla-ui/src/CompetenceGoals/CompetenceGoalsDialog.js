@@ -27,7 +27,7 @@ export const CompetenceGoalsDialog = ({
         onClose={onClose}
         size="fullscreen"
         animation="slide-up"
-        backgroundColor="grey-dark"
+        backgroundColor="light-gradient"
         narrow>
         {close => (
           <Fragment>

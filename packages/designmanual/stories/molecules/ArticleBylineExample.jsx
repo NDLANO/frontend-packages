@@ -68,7 +68,12 @@ const authors = {
   real: authorRealText,
 };
 
-const ArticleBylineExample = ({ multipleAuthors, useRealText, additional }) => {
+const ArticleBylineExample = ({
+  multipleAuthors,
+  useRealText,
+  additional,
+  copyPageUrlLink,
+}) => {
   const useAuthors = authors[useRealText ? 'real' : 'simple'];
   return (
     <ArticleByline
@@ -77,6 +82,7 @@ const ArticleBylineExample = ({ multipleAuthors, useRealText, additional }) => {
       license={useRealText ? 'CC BY-SA' : '[lisens]'}
       licenseBox={<LicenseBox />}
       additional={additional}
+      copyPageUrlLink={copyPageUrlLink}
     />
   );
 };
@@ -85,6 +91,7 @@ ArticleBylineExample.propTypes = {
   useRealText: PropTypes.bool,
   multipleAuthors: PropTypes.bool,
   additional: PropTypes.bool,
+  copyPageUrlLink: PropTypes.string,
 };
 
 ArticleBylineExample.defaultProps = {

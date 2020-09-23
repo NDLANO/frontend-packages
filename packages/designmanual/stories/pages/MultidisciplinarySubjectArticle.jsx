@@ -75,7 +75,7 @@ const MultidisciplinarySubjectArticle = ({
     <>
       {article && (
         <>
-          <Breadcrumblist items={[]} startOffset={268}>
+          <Breadcrumblist hideOnNarrow items={[]} startOffset={268}>
             <ArticleSideBar
               copyPageUrlLink={window.location}
               onLinkToResourcesClick={onToResourcesClick}
@@ -89,7 +89,7 @@ const MultidisciplinarySubjectArticle = ({
         </>
       )}
       <ArticleLoader
-        cleanInContext
+        articleModifier="multidisciplinary-topic"
         id="mainContentId"
         articleId={articleId}
         onArticleLoaded={onArticleLoaded}

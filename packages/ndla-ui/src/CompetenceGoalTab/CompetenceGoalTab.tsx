@@ -6,14 +6,11 @@ import { spacing } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
-import CompetenceItem, {
-  ListItemProp,
-  CompetenceTypeProps,
-} from './CompetenceItem';
+import CompetenceItem, { ListItemProp } from './CompetenceItem';
 
 type CompetenceProps = {
   title: string;
-  list: [ListItemProp];
+  list: ListItemProp[];
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
@@ -35,11 +32,9 @@ const Title = styled.h2`
 const TabWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   button {
-    margin: 8px;
-    &:first-of-type {
-      margin-left: 0;
-    }
+    margin: 8px 8px 8px 0;
     &:last-of-type {
       margin-right: 0;
     }
@@ -48,25 +43,13 @@ const TabWrapper = styled.div`
 
 const CompetenceGoalTab = ({ title, list, t }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
-  const tabLabelTextbyType = (type: CompetenceTypeProps) => {
-    switch (type) {
-      case 'LK06':
-        return t('competenceGoals.competenceTabLK06label');
-      case 'LK20':
-        return t('competenceGoals.competenceTabLK20label');
-      case 'coreElement':
-        return t('competenceGoals.competenceTabCorelabel');
-      default:
-        return '';
-    }
-  };
 
   return (
     <Wrapper>
       {title && title !== '' ? <Title>{title}</Title> : null}
       <TabWrapper>
         {list.map((tabItem, index: number) => {
-          const { id, type } = tabItem;
+          const { id, title: tabTitle } = tabItem;
           return (
             <Button
               borderShape="rounded"
@@ -74,7 +57,7 @@ const CompetenceGoalTab = ({ title, list, t }: CompetenceProps) => {
               size="normal"
               onClick={() => setCurrentTab(list[index])}
               key={`tabitem-${id}`}>
-              {tabLabelTextbyType(type)}
+              {tabTitle}
             </Button>
           );
         })}

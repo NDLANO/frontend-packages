@@ -37,6 +37,9 @@ const messages = {
     title: 'Sida finst ikkje',
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
+  movedResourcePage: {
+    title: 'Sida har flytta, men du kan finne den her:',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:
@@ -288,12 +291,14 @@ const messages = {
     urlContributionsLabel: 'Sjå kva {name} har bidratt med',
     urlAuthorLabel: 'Les meir om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
+    singleAuthorsLabel: 'Rettshavar:',
     multipleAuthorsLabel: 'Rettshavarar:',
     multipleAuthorsLabelAria: 'Rettshavarar av artikkelen er {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabelAria: 'Rettshavar av artikkelen er {name}',
     copyPageLink: 'Kopier lenke til sida',
     copyPageLinkCopied: 'Lenke kopiert',
+    authorsConjunction: 'og',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',
@@ -716,11 +721,11 @@ const messages = {
     cursorText: 'Finn lærestoff, oppgåver, filmar m.m.',
   },
   navigation: {
-    showLongerDescription: 'Lengre beskriving',
-    showShorterDescription: 'Kortere beskriving',
-    topics: 'Emner',
-    additionalTopic: 'Tillegsemne',
-    additionalTopics: 'Tillegsemner',
+    showLongerDescription: 'Vis meir',
+    showShorterDescription: 'Vis mindre',
+    topics: 'Emne',
+    additionalTopic: 'Tilleggsemne',
+    additionalTopics: 'Tilleggsemne',
     loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {

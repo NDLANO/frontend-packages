@@ -16,7 +16,6 @@ import {
   AssessmentResourcesHero,
   ExternalLearningResourcesHero,
   SourceMaterialHero,
-  Hero,
   SubjectBadge,
   ErrorMessage,
   OneColumn,

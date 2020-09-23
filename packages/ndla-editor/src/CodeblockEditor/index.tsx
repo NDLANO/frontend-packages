@@ -40,6 +40,13 @@ type Props = {
   } | null;
 };
 
+export const getTitleFromFormat = format => {
+  const selectedLanguage = languageOptions.find(
+    (item: ICodeLangugeOption) => item.format === format,
+  );
+  return selectedLanguage.title;
+};
+
 const CodeBlockEditor: FC<Props> = ({ onSave, onAbort, t, content = null }) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({

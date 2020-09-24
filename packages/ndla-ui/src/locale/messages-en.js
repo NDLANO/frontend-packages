@@ -290,7 +290,7 @@ const messages = {
     urlAuthorLabel: 'Read more about {name}',
     multipleAuthorsLabelAbbreviation: 'et al.',
     multipleAuthorsLabel: 'Text:',
-    multipleAuthorsLabelAria: 'Text {names}',
+    multipleAuthorsLabelAria: 'Text: {names}',
     multipleAuthorsLabelAriaConjunction: 'and',
     singleAuthorsLabel: 'Text:',
     singleAuthorsLabelAria: 'Text: {name}',

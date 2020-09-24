@@ -81,8 +81,9 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Bilde">
         <p>
           Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt
-          og høyrestilt. Bilder kan være i størrelsene liten, medium og stor
-          (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk.
+          og høyrestilt. Bilder kan være i størrelsene ekstra liten, liten,
+          medium og stor (fullbredde). Bilder som ikke er fullbredde, kan
+          ekspanderes på klikk.
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
@@ -106,12 +107,6 @@ storiesOf('Enkle komponenter', module)
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
           alt="Forstørrelsesglass"
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          link={{
-            text: 'Videoproduksjon i praksis',
-            description: '(Lenken tar deg til et annet nettsted)',
-            url: 'https://staging.api.ndla.no',
-            external: true,
-          }}
         />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du

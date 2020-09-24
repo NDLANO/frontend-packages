@@ -1802,13 +1802,13 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Sitater">
         <p>
-          Sitater som strekker seg over tre linjer i vanlig linjelengde, er det
-          best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere
-          sitater, men &laquo;&raquo;
+          Sitater som strekker seg inntil tre linjer i vanlig linjelengde kan
+          markeres med &laquo;&raquo;. Sitater som strekker seg over tre linjer
+          i vanlig linjelengde taes ut som et blokksitat.
         </p>
       </StoryIntro>
       <StoryBody>
-        <h2 className="u-heading">Eksempel</h2>
+        <h2 className="u-heading">Eksempel på blokksitat</h2>
         <blockquote>
           «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
           og hun viser oss at det å tre ut av den typiske sildestimen alle

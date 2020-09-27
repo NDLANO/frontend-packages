@@ -288,7 +288,7 @@ const messages = {
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
-    multipleAuthorsLabel: 'Text:',
+    multipleAuthorsLabel: 'Tekst:',
     multipleAuthorsLabelAria: 'Tekst: {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabel: 'Tekst:',

@@ -876,6 +876,13 @@ storiesOf('Enkle komponenter', module)
           to="/"
           label="Nasjonal digital læringsarena"
         />
+        <h2>Engelsk logo</h2>
+        <Logo
+          cssModifier="large"
+          locale="en"
+          name
+          label="Norwegian digital learning arena"
+        />
       </StoryBody>
     </div>
   ))

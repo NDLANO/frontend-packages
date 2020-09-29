@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
@@ -72,7 +73,6 @@ type categoryProps = {
 
 export type subjectsProps = {
   categories: [categoryProps];
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const sortAlphabetically = (subjects: subjectProps[], locale: string = 'nb') =>
@@ -108,7 +108,10 @@ const renderList = (subjects: subjectProps[]) => {
   );
 };
 
-const FrontpageAllSubjects = ({ categories, t }: subjectsProps) => {
+const FrontpageAllSubjects = ({
+  categories,
+  t,
+}: WithInjectedTProps<subjectsProps>) => {
   const allSubjects: subjectProps[] = [];
   const data: any = [];
 

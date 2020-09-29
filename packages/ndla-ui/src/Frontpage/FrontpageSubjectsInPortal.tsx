@@ -12,6 +12,7 @@ import { noScroll } from '@ndla/util';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import SafeLink from '@ndla/safelink';
 import { category as categoryProp } from '../types';
 import {
@@ -122,13 +123,11 @@ const StyledListItem = styled.li`
 
 interface Props {
   category: categoryProp;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
-const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
-  category,
-  t,
-}) => {
+const FrontpageSubjectsInPortal: React.FunctionComponent<
+  WithInjectedTProps<Props>
+> = ({ category, t }) => {
   useEffect(() => {
     noScroll(true, 'frontpagePortal');
     return () => {

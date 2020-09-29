@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -44,7 +45,7 @@ const renderAdditionalIcon = (
 
 type Props = {
   contentTypeResult: ContentTypeResultType;
-  onNavigate: VoidFunction;
+  onNavigate?: VoidFunction;
   defaultCount?: number;
   resourceToLinkProps: (
     resource: Resource,
@@ -61,10 +62,9 @@ type Props = {
   keyboardPathNavigation: HTMLElement | string | null;
   inMenu?: boolean;
   animateList?: number;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const ContentTypeResult: React.FC<Props> = ({
+const ContentTypeResult: React.FC<WithInjectedTProps<Props>> = ({
   contentTypeResult,
   onNavigate,
   defaultCount,

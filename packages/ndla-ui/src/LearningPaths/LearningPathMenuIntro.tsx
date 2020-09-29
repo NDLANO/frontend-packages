@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import {
@@ -125,16 +126,11 @@ interface Props {
   isOpen: boolean;
   invertedStyle?: boolean;
   name: string;
-  t: any;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<Props> = ({
-  duration,
-  isOpen,
-  name,
-  invertedStyle,
-  t,
-}) => {
+const LearningPathMenuIntro: React.FunctionComponent<
+  WithInjectedTProps<Props>
+> = ({ duration, isOpen, name, invertedStyle, t }) => {
   const hours = Math.floor(duration / 60);
   const usePluralsForHours = hours !== 1;
   const minutes = duration % 60;

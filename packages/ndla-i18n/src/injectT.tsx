@@ -28,11 +28,12 @@ export function injectT<P>(
   const getDisplayName = (component: ComponentType<WithInjectedTProps<P>>) =>
     component.displayName || component.name || 'Component';
 
-  const InjectT = (props: P, context: Context) =>
-      <WrappedComponent
-        {...props}
-        t={(id, value = {}) => context.formatMessage(prefix + id, value)}
-      />;
+  const InjectT = (props: P, context: Context) => (
+    <WrappedComponent
+      {...props}
+      t={(id, value = {}) => context.formatMessage(prefix + id, value)}
+    />
+  );
 
   InjectT.contextTypes = {
     formatMessage: PropTypes.func.isRequired,

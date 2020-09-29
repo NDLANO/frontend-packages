@@ -6,6 +6,7 @@ import { css } from '@emotion/core';
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllustration';
 // @ts-ignore
 import FrontpageCircularSubject from './FrontpageCircularSubject';
@@ -160,7 +161,6 @@ interface StateObject {
 
 type Props = {
   categories: categoryProp[];
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const initialState: StateObject = {
@@ -168,10 +168,9 @@ const initialState: StateObject = {
   menuIsOpen: false,
 };
 
-const FrontpageCombinedSubjects: React.FunctionComponent<Props> = ({
-  categories,
-  t,
-}) => {
+const FrontpageCombinedSubjects: React.FunctionComponent<
+  WithInjectedTProps<Props>
+> = ({ categories, t }) => {
   const [currentState, setState] = useState(initialState);
   const {
     elementRect,

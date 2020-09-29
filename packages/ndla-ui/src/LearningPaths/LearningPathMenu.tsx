@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
@@ -84,7 +85,7 @@ interface Props {
   learningsteps: StepProps[];
   name: string;
   duration: number;
-  lastUpdated: string[];
+  lastUpdated: string;
   language: string;
   copyright: {
     contributors: {
@@ -99,16 +100,15 @@ interface Props {
   };
   learningPathURL: string;
   invertedStyle?: boolean;
-  currentIndex: boolean;
+  currentIndex: number;
   cookies: {
     [key: string]: string;
   };
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   learningPathId: number;
   toLearningPathUrl(pathId: number, stepId: number): string;
 }
 
-const LearningPathMenu: React.FunctionComponent<Props> = ({
+const LearningPathMenu: React.FunctionComponent<WithInjectedTProps<Props>> = ({
   learningsteps,
   currentIndex,
   name,
@@ -129,42 +129,43 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
     <StyledMenu isOpen={isOpen}>
       <LearningPathMenuModalWrapper
         innerWidth={innerWidth}
-        currentIndex={currentIndex}
         closeLabel={t('modal.closeModal')}>
-        <div
-          css={css`
-            padding-left: ${spacing.small};
-          `}>
-          <Tooltip align="right" tooltip={t('learningPath.openMenuTooltip')}>
-            <StyledToggleMenubutton
-              type="button"
-              onClick={() => toggleOpenState(!isOpen)}>
-              {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
-            </StyledToggleMenubutton>
-          </Tooltip>
-        </div>
-        <LearningPathMenuIntro
-          isOpen={isOpen}
-          duration={duration}
-          name={name}
-          invertedStyle={invertedStyle}
-        />
-        <LearningPathMenuContent
-          learningsteps={learningsteps}
-          learningPathId={learningPathId}
-          toLearningPathUrl={toLearningPathUrl}
-          isOpen={isOpen}
-          currentIndex={currentIndex}
-          cookies={cookies}
-          invertedStyle={invertedStyle}
-        />
-        <LearningPathMenuAside
-          isOpen={isOpen}
-          lastUpdated={lastUpdated}
-          copyright={copyright}
-          learningPathURL={learningPathURL}
-          invertedStyle={invertedStyle}
-        />
+        <>
+          <div
+            css={css`
+              padding-left: ${spacing.small};
+            `}>
+            <Tooltip align="right" tooltip={t('learningPath.openMenuTooltip')}>
+              <StyledToggleMenubutton
+                type="button"
+                onClick={() => toggleOpenState(!isOpen)}>
+                {!isOpen ? <ArrowExpandRight /> : <ArrowExpandLeft />}
+              </StyledToggleMenubutton>
+            </Tooltip>
+          </div>
+          <LearningPathMenuIntro
+            isOpen={isOpen}
+            duration={duration}
+            name={name}
+            invertedStyle={invertedStyle}
+          />
+          <LearningPathMenuContent
+            learningsteps={learningsteps}
+            learningPathId={learningPathId}
+            toLearningPathUrl={toLearningPathUrl}
+            isOpen={isOpen}
+            currentIndex={currentIndex}
+            cookies={cookies}
+            invertedStyle={invertedStyle}
+          />
+          <LearningPathMenuAside
+            isOpen={isOpen}
+            lastUpdated={lastUpdated}
+            copyright={copyright}
+            learningPathURL={learningPathURL}
+            invertedStyle={invertedStyle}
+          />
+        </>
       </LearningPathMenuModalWrapper>
     </StyledMenu>
   );

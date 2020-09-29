@@ -12,6 +12,7 @@ import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import {
   ChevronDown,
   ChevronUp,
@@ -219,18 +220,21 @@ const findPathForKeyboardNavigation = (
 type Props = {
   result: Array<ContentTypeResultType>;
   allResultUrl: string;
-  resourceToLinkProps: (resource: Resource) => string;
-  onNavigate: VoidFunction;
+  resourceToLinkProps: (
+    resource: Resource,
+  ) => {
+    to: string;
+  };
+  onNavigate?: VoidFunction;
   infoText: string;
   ignoreContentTypeBadge: boolean;
   searchString: string;
   loading: boolean;
   frontpage?: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   history: History;
 };
 
-const SearchResultSleeve: React.FC<Props> = ({
+const SearchResultSleeve: React.FC<WithInjectedTProps<Props>> = ({
   result,
   allResultUrl,
   resourceToLinkProps,

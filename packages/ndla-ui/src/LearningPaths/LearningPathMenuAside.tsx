@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
@@ -116,17 +117,11 @@ type Props = {
       url: string;
     };
   };
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const LearningPathMenuAside: React.FunctionComponent<Props> = ({
-  lastUpdated,
-  learningPathURL,
-  copyright,
-  isOpen,
-  invertedStyle,
-  t,
-}) => (
+const LearningPathMenuAside: React.FunctionComponent<
+  WithInjectedTProps<Props>
+> = ({ lastUpdated, learningPathURL, copyright, isOpen, invertedStyle, t }) => (
   <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
     <div css={learningPathDetailsCSS}>
       <Time />

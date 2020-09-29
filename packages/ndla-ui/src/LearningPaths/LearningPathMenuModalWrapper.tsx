@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import { colors, spacing, fonts } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
@@ -51,15 +52,11 @@ type ModalWrapperProps = {
   innerWidth: number;
   closeLabel: string;
   children: JSX.Element;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps> = ({
-  innerWidth,
-  closeLabel,
-  children,
-  t,
-}) => {
+const ModalWrapperComponent: React.FunctionComponent<
+  WithInjectedTProps<ModalWrapperProps>
+> = ({ innerWidth, closeLabel, children, t }) => {
   if (innerWidth < 601) {
     return (
       <StyledWrapper>

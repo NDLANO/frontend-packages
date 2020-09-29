@@ -6,11 +6,15 @@
  *
  */
 
+// @ts-ignore
 import IntlProvider from './IntlProvider';
 
 export { default as injectT } from './injectT';
+// @ts-ignore
 export { default as formatMessage } from './formatMessage';
+// @ts-ignore
 export { default as Trans } from './Trans';
+// @ts-ignore
 export { formatNestedMessages } from './formatNestedMessages';
 
 export { IntlProvider };

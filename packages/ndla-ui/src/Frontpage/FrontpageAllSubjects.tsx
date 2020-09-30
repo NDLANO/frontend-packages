@@ -44,7 +44,7 @@ const StyledList = styled.ul`
   }
 `;
 const StyledListItem = styled.li`
-  margin-bottom: 10px;
+  margin-bottom: 0;
   break-inside: avoid;
 `;
 
@@ -54,6 +54,12 @@ const StyledLetterItem = styled.span`
   font-weight: ${fonts.weight.bold};
   color: ${colors.brand.primary};
   margin-bottom: 8px;
+`;
+
+const StyledSpacingElement = styled.span`
+  display: block;
+  width: 100%;
+  height: 10px;
 `;
 
 const StyledLetterSpacing = styled.span`
@@ -75,38 +81,59 @@ export type subjectsProps = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const sortAlphabetically = (subjects: subjectProps[], locale: string = 'nb') =>
-  subjects.sort((a, b) => a.name.localeCompare(b.name, locale));
-
-const renderList = (subjects: subjectProps[]) => {
-  let previousLetter = '';
-  return (
-    <StyledList>
-      {sortAlphabetically(subjects).map((subject: subjectProps) => {
-        const currentLetter = subject.name.substr(0, 1);
-        const isFirst = !previousLetter;
-        const isNewLetter = currentLetter.localeCompare(previousLetter) === 1;
-        previousLetter = currentLetter;
-
-        return (
-          <React.Fragment key={subject.name}>
-            {isNewLetter && !isFirst && (
-              <StyledListItem>
-                <StyledLetterSpacing />
-              </StyledListItem>
-            )}
-            <StyledListItem>
-              {isNewLetter && (
-                <StyledLetterItem>{currentLetter}</StyledLetterItem>
-              )}
-              <SafeLink to={subject.url}>{subject.name}</SafeLink>
-            </StyledListItem>
-          </React.Fragment>
-        );
-      })}
-    </StyledList>
-  );
+type letterCategories = {
+  letter: string;
+  items: subjectProps[];
 };
+
+const sortAlphabetically = (
+  subjects: subjectProps[],
+  locale: string = 'nb',
+) => {
+  const subjectsSorted = subjects.sort((a, b) =>
+    a.name.localeCompare(b.name, locale),
+  );
+  const subjectsLetterCategories: letterCategories[] = [];
+  let previousLetter = '';
+  let letterItems: subjectProps[] = [];
+  subjectsSorted.forEach((subject: subjectProps) => {
+    const currentLetter = subject.name.substr(0, 1);
+    const isNewLetter = currentLetter.localeCompare(previousLetter) === 1;
+    if (isNewLetter && letterItems.length) {
+      subjectsLetterCategories.push({
+        letter: previousLetter,
+        items: letterItems,
+      });
+      letterItems = [];
+    }
+    previousLetter = currentLetter;
+    letterItems.push(subject);
+  });
+  return subjectsLetterCategories;
+};
+
+const renderList = (subjects: subjectProps[]) => (
+  <StyledList>
+    {sortAlphabetically(subjects).map((letter: any) => {
+      return (
+        <React.Fragment key={letter.letter}>
+          {letter.items.map((subject: subjectProps, index: number) => (
+            <React.Fragment key={subject.name}>
+              <StyledListItem>
+                {index === 0 && (
+                  <StyledLetterItem>{letter.letter}</StyledLetterItem>
+                )}
+                <SafeLink to={subject.url}>{subject.name}</SafeLink>
+                <StyledSpacingElement />
+                {letter.items.length - 1 === index && <StyledLetterSpacing />}
+              </StyledListItem>
+            </React.Fragment>
+          ))}
+        </React.Fragment>
+      );
+    })}
+  </StyledList>
+);
 
 const FrontpageAllSubjects = ({ categories, t }: subjectsProps) => {
   const allSubjects: subjectProps[] = [];

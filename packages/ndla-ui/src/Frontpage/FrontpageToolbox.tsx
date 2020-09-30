@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
@@ -40,11 +40,13 @@ const StyledText = styled.span`
 `;
 
 type Props = {
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   url: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<Props> = ({ url, t }) => (
+const FrontpageToolbox: React.FunctionComponent<WithInjectedTProps<Props>> = ({
+  url,
+  t,
+}) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>

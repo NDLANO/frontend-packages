@@ -8,8 +8,8 @@
 
 import React, { useState } from 'react';
 import Editor from 'react-simple-code-editor';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import { Code } from '@ndla/icons/editor';
 // @ts-ignore
@@ -32,7 +32,6 @@ const hightlightWithLineNumbers = (input: string, language: string) =>
 type Props = {
   onSave: Function;
   onAbort: Function;
-  t: Function;
   content: {
     code: string;
     title: string;
@@ -40,7 +39,12 @@ type Props = {
   } | null;
 };
 
-const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
+const CodeBlockEditor = ({
+  onSave,
+  onAbort,
+  t,
+  content = null,
+}: WithInjectedTProps<Props>) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({
     code: content ? content.code : '',

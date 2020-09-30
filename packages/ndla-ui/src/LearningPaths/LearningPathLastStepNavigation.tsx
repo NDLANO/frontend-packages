@@ -11,8 +11,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import { OneColumn, LayoutItem } from '../index-javascript';
 
@@ -51,16 +51,11 @@ interface Props {
     url: string;
   };
   learningPathName: string;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
-const LearningPathLastStepNavigation: React.FunctionComponent<Props> = ({
-  subject,
-  topic,
-  learningPathName,
-  children,
-  t,
-}) => (
+const LearningPathLastStepNavigation: React.FunctionComponent<
+  WithInjectedTProps<Props>
+> = ({ subject, topic, learningPathName, children, t }) => (
   <OneColumn css={OneColumnCss}>
     <LayoutItem layout="center">
       <StyledHeader className="c-article__title">

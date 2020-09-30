@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 // @ts-ignore
@@ -311,10 +311,9 @@ export type ListItemProp = {
 };
 export type ListItemProps = {
   item: ListItemProp;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const CompetenceItem = ({ item, t }: ListItemProps) => {
+const CompetenceItem = ({ item, t }: WithInjectedTProps<ListItemProps>) => {
   const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
   switch (type) {
     case 'competenceGoals':

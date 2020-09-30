@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 

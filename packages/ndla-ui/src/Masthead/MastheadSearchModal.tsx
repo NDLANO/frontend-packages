@@ -1,6 +1,6 @@
 import React, { ReactChild, ReactChildren } from 'react';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore
 import Modal from '@ndla/modal';
 // @ts-ignore
@@ -19,7 +19,6 @@ interface Props {
   children: (arg: Function) => ReactChild | ReactChildren | React.ReactNode;
   hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
 const StyledHeader = styled.div`
@@ -114,7 +113,7 @@ const extraBackdrop = css`
   box-shadow: ${shadows.searchHeader};
 `;
 
-const MastheadSearchModal: React.FC<Props> = ({
+const MastheadSearchModal: React.FC<WithInjectedTProps<Props>> = ({
   onClose: onSearchClose,
   children,
   hideOnNarrowScreen,

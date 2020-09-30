@@ -4,7 +4,6 @@ import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import { css } from '@emotion/core';

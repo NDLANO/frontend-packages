@@ -10,7 +10,6 @@ import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { noScroll } from '@ndla/util';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import SafeLink from '@ndla/safelink';

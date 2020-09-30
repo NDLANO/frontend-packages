@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import { category as categoryProp } from '../types';

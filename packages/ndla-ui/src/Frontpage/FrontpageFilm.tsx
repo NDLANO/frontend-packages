@@ -4,8 +4,8 @@ import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { Forward } from '@ndla/icons/common';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
@@ -74,12 +74,11 @@ const StyledText = styled.span<StyledTextProps>`
 `;
 
 type Props = {
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   url: string;
   imageUrl: string;
 };
 
-const FrontpageFilm: React.FunctionComponent<Props> = ({
+const FrontpageFilm: React.FunctionComponent<WithInjectedTProps<Props>> = ({
   url,
   imageUrl,
   t,

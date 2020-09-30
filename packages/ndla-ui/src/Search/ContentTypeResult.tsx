@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 // @ts-ignore

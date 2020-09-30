@@ -8,7 +8,6 @@ import {
   Launch,
   // @ts-ignore
 } from '@ndla/icons/common';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 

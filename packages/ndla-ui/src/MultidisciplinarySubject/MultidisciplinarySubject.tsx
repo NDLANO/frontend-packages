@@ -1,7 +1,7 @@
 import React from 'react';
 
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
+import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
@@ -108,7 +108,6 @@ type Props = {
   onFilterClick(id?: string): void;
   items: ListItemProps[];
   totalItemsCount: number;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 export const MultidisciplinarySubject = ({
   filters,
@@ -116,7 +115,7 @@ export const MultidisciplinarySubject = ({
   items,
   totalItemsCount,
   t,
-}: Props) => {
+}: WithInjectedTProps<Props>) => {
   return (
     <StyledWrapper>
       <StyledBackground>

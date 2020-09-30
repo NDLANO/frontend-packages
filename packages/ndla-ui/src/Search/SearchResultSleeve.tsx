@@ -10,7 +10,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { History } from 'history';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import {

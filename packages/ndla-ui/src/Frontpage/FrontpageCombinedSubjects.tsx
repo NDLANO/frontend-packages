@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllustration';

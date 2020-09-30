@@ -14,7 +14,6 @@ import { isIE, browserVersion } from 'react-device-detect';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';

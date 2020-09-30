@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import IntlMessageFormat, { Formats, Options } from 'intl-messageformat';
 import { MessageFormatElement } from 'intl-messageformat-parser';
 import memoizeIntlConstructor from 'intl-format-cache';
-// @ts-ignore
 import localFormatMessage from './formatMessage';
 
 type GetMessageFormat = (

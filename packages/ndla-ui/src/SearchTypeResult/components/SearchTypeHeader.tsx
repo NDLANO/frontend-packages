@@ -1,44 +1,50 @@
 import React from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
 // @ts-ignore
-import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
-// @ts-ignore
 import Button from '@ndla/button';
-// import SearchTypeTopicFilter from './SearchTypeTopicFilter';
 
 const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  height: 75px;
-  border-bottom: 1px solid #ceddea;
+  border-bottom: 2px solid #20588f;
   align-items: center;
   margin: 15px 0;
+  justify-content: space-between;
+  padding: 0 2px;
+`;
+const TypeWrapper = styled.div`
+  flex: 1;
+  flex-direction: row;
+  display: flex;
+  min-width: 200px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 8px;
 `;
 
 const SubjectName = styled.span`
-  font-size: 22px;
-  margin: 5px 20px;
+  font-size: 16px;
+  margin: 2px 16px;
+  b {
+    font-size: 18px;
+  }
 `;
 
 const CategoryTypeButtonWrapper = styled.div`
-  margin: 0 5px;
+  margin: 4px;
 `;
 
 const CategoryItems = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  max-height: 35px;
-  overflow: hidden;
-`;
-
-const ResultNav = styled.div`
-  font-size: 14px;
-  font-weight: 600;
-  margin-left: 10px;
-  button.nav {
-    box-shadow: none;
+  position: relative;
+  right: -4px;
+  button {
+    white-space: nowrap;
+    max-height: 29px;
   }
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 `;
 
 const CategoryTypeButton = React.memo(
@@ -57,7 +63,29 @@ const CategoryTypeButton = React.memo(
     );
   },
 );
+export type ContextType = {
+  type: string;
+  typeicon: React.ReactNode;
+  typelabel: string;
+};
+export type FilterOptionsType = {
+  id: string;
+  name: string;
+};
+export type TypeFilterType = {
+  filter: Array<string>;
+  page: number;
+  pageSize: number;
+};
 
+type Props = {
+  context: ContextType;
+  filterOptions: Array<FilterOptionsType>;
+  onFilterUpdate: (type: string, filter: any) => void;
+  typeFilter: TypeFilterType;
+  loading: boolean;
+  totalCount: number;
+};
 const SearchTypeHeader = ({
   context,
   filterOptions,
@@ -65,15 +93,8 @@ const SearchTypeHeader = ({
   typeFilter,
   loading,
   totalCount,
-  setTopic,
-  currentTopic,
-}: // topics,
-any) => {
-  const rowCount = 4;
+}: Props) => {
   const { type, typeicon, typelabel } = context;
-  console.log('headertype', currentTopic, ' - THE TYPE: ', type);
-  // TMP - move up?
-  const isLast = rowCount * (typeFilter.page + 1) >= totalCount;
   const updateFilter = (id: string, clear: boolean = false) => {
     let filterUpdate: any = {};
     if (clear) {
@@ -93,18 +114,15 @@ any) => {
       onFilterUpdate(type, filterUpdate);
     }
   };
-  const goTo = (page: number) => {
-    let filterUpdate = { ...typeFilter };
-    filterUpdate.page = page;
-    onFilterUpdate(type, filterUpdate);
-  };
   return (
     <>
       <HeaderWrapper>
-        {typeicon}
-        <SubjectName>
-          {typelabel} {totalCount ? `(${totalCount})` : null}
-        </SubjectName>
+        <TypeWrapper>
+          {typeicon}
+          <SubjectName>
+            <b>{typelabel}</b> {totalCount ? `(${totalCount})` : null}
+          </SubjectName>
+        </TypeWrapper>
         {filterOptions && (
           <CategoryItems>
             <CategoryTypeButtonWrapper>
@@ -128,31 +146,6 @@ any) => {
               />
             ))}
           </CategoryItems>
-        )}
-        {!currentTopic && (
-          <ResultNav>
-            <Button link onClick={() => setTopic(type)}>
-              Se alle resultater
-            </Button>
-            &nbsp;&nbsp;&nbsp;
-            <Button
-              className="nav"
-              disabled={typeFilter.page === 0 || loading}
-              link
-              onClick={() =>
-                goTo(typeFilter.page > 0 ? (typeFilter.page -= 1) : 0)
-              }>
-              <ChevronLeft />
-            </Button>
-            &nbsp; &nbsp;
-            <Button
-              className="nav"
-              link
-              disabled={isLast || loading}
-              onClick={() => goTo((typeFilter.page += 1))}>
-              <ChevronRight />
-            </Button>
-          </ResultNav>
         )}
       </HeaderWrapper>
     </>

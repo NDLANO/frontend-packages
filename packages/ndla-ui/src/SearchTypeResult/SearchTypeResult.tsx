@@ -1,8 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import SearchTypeHeader from './components/SearchTypeHeader';
+import SearchTypeHeader, {
+  FilterOptionsType,
+  TypeFilterType,
+  ContextType,
+} from './components/SearchTypeHeader';
 import Items from './components/items';
 import { SearchItemType } from './components/SearchItem';
+import { SearchSubjectTypeItemType } from './components/SearchSubjectTypeItem';
+import ResultNavigation, {
+  PaginationType,
+} from './components/ResultNavigation';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,44 +19,37 @@ const Wrapper = styled.div`
   margin: 10px 0 40px;
 `;
 
-// export
-type SearchResultType = {
-  // items: Array<SearchItemType>;
-  loading: boolean;
-  totalCount: number;
-  page: number;
-  onFilterUpdate: () => void;
-};
-
-type ContextType = {
-  type: string;
-  typeicon: React.ReactNode;
-  typelabel: string;
-  currentTopic: string | null;
-};
-
 type Props = {
   context: ContextType;
-  searchResult: SearchResultType;
-  items: Array<SearchItemType>;
-  filterOptions: any;
-  onFilterUpdate: any;
-  typeFilter: any;
-  currentTopic: string | null;
-  setTopic: any;
+  items: Array<SearchItemType | SearchSubjectTypeItemType>;
+  filterOptions: Array<FilterOptionsType>;
+  onFilterUpdate: (type: string, filter: any) => void;
+  typeFilter: TypeFilterType;
+  loading?: boolean;
+  totalCount?: number;
+  pagination: PaginationType;
+  setSubjectType: (type: string) => void;
+  currentSubjectType: string | null;
 };
 
 const SearchTypeResult = ({
   context,
-  searchResult,
   items,
   filterOptions,
   onFilterUpdate,
   typeFilter,
-  setTopic,
-  currentTopic,
+  loading = false,
+  totalCount = 0,
+  pagination,
+  setSubjectType,
+  currentSubjectType,
 }: Props) => {
-  const { loading, totalCount } = searchResult;
+  const { type } = context;
+  const handleNavigate = (page: number) => {
+    let filterUpdate = { ...typeFilter };
+    filterUpdate.page = page;
+    onFilterUpdate(type, filterUpdate);
+  };
   return (
     <Wrapper>
       <SearchTypeHeader
@@ -58,10 +59,15 @@ const SearchTypeResult = ({
         filterOptions={filterOptions}
         loading={loading}
         totalCount={totalCount}
-        setTopic={setTopic}
-        currentTopic={currentTopic}
       />
-      <Items items={items} loading={loading} />
+      <Items items={items} type={type} loading={loading} />
+      {!currentSubjectType ? (
+        <ResultNavigation
+          pagination={pagination}
+          onNavigate={handleNavigate}
+          onSelectSubjectType={() => setSubjectType(type)}
+        />
+      ) : null}
     </Wrapper>
   );
 };

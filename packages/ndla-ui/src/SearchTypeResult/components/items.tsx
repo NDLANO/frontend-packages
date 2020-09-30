@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import { Spinner } from '@ndla/editor';
 import SearchItem, { SearchItemType } from './SearchItem';
+import SearchSubjectTypeItem, {
+  SearchSubjectTypeItemType,
+} from './SearchSubjectTypeItem';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -35,18 +38,29 @@ const Overlay = styled.div`
 `;
 
 type Props = {
-  items: Array<SearchItemType>;
+  items: Array<SearchItemType | SearchSubjectTypeItemType>;
   loading: boolean;
+  type: string;
 };
-const Items = ({ items = [], loading }: Props) => {
+const Items = ({ items, loading, type }: Props) => {
   return (
     <Wrapper>
       <Container loading={loading}>
-        {items.map((item: any) => {
-          return (
-            <SearchItem loading={loading} item={item} key={`${item.id}`} />
-          );
-        })}
+        {type === 'SUBJECT_TYPE'
+          ? items.map(item => {
+              return (
+                <SearchSubjectTypeItem
+                  loading={loading}
+                  item={item}
+                  key={`${item.id}`}
+                />
+              );
+            })
+          : items.map((item: any) => {
+              return (
+                <SearchItem loading={loading} item={item} key={`${item.id}`} />
+              );
+            })}
       </Container>
       {loading && (
         <>

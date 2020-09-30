@@ -15,14 +15,12 @@ type WrapperProps = {
 
 const ItemWrapper = styled.div<WrapperProps>`
   flex-direction: column;
-  margin: 15px 15px 20px;
-
+  margin: 16px 16px 20px;
   ${mq.range({ from: breakpoints.mobile })} {
-    margin: 15px 0px 15px;
+    margin: 16px 0px 16px;
   }
-
   ${mq.range({ from: breakpoints.tablet })} {
-    margin: 15px 15px 20px;
+    margin: 16px 16px 20px;
     flex: 1 0 47%;
     max-width: 48%;
     &:nth-of-type(1n) {
@@ -30,7 +28,7 @@ const ItemWrapper = styled.div<WrapperProps>`
     }
     &:nth-of-type(2n) {
       margin-right: 0;
-      margin-left: 15px;
+      margin-left: 16px;
     }
   }
 
@@ -38,17 +36,19 @@ const ItemWrapper = styled.div<WrapperProps>`
     flex: 1 0 21%;
     max-width: 252px;
     &:nth-of-type(1n) {
-      margin-left: 15px;
+      margin-left: 16px;
     }
     &:nth-of-type(2n) {
-      margin-right: 15px;
+      margin-right: 16px;
     }
-
     &:first-of-type {
       margin-left: 0;
     }
     &:nth-of-type(4n) {
       margin-right: 0;
+    }
+    &:nth-of-type(4n + 5) {
+      margin-left: 0px;
     }
   }
 
@@ -78,47 +78,18 @@ const ItemHead = styled.div`
   }
 `;
 
-/* 
-const ItemImage = styled.div`
-  height: auto;
-  margin: 0 0 10px;
-  overflow: hidden;
-  width: 100%;
-  img {
-    max-width: 100%;
-  }
-  ${mq.range({ until: breakpoints.tablet })} {
-    display: none;
-  }
-`; */
+const ImateIcon = styled.div`
+  height: 144px;
+  background: #ccc;
+  border-radius: 5px;
+`;
 
-type IsImageProps = {
-  isimage?: boolean;
-};
-
-const ItemPillWrapper = styled.div<IsImageProps>`
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  /* ${props =>
-    !props.isimage &&
-    `
-    position:relative;
-  }`} */
-  ${mq.range({ until: breakpoints.tablet })} {
-    /* position: relative; */
-    /* bottom: auto; */
-  }
+const ItemPillWrapper = styled.div`
+  margin-top: 8px;
 `;
 const ItemPill = styled.div`
-  margin-top: 4px;
-  &:first-of-type {
-    margin-top: 0;
-  }
+  margin: 4px 4px 4px 0;
   display: inline-block;
-  /* ${mq.range({ until: breakpoints.tablet })} {
-    display: inline-block;
-  } */
 `;
 const ItemContent = styled.div`
   /* flex-grow: 1; */
@@ -146,7 +117,7 @@ export type SearchItemType = {
   ingress: string;
   breadcrumb: Array<string>;
   image: React.ReactNode | null;
-  img: any;
+  img?: { url: string; alt: string };
   contentTypeLabel: string | null;
   type: string | null;
 };
@@ -162,7 +133,6 @@ const SearchItem = ({ item, loading }: Props) => {
     breadcrumb,
     type = null,
     contentTypeLabel = null,
-    // image = null,
     img = null,
   } = item;
   const ItemPillLabels = (
@@ -178,33 +148,39 @@ const SearchItem = ({ item, loading }: Props) => {
     </ItemPillWrapper>
   );
   return (
-    <ItemWrapper loading={loading}>
-      <ItemHead>
-        {img ? (
-          <SafeLink to={url}>
-            <img src={img.url} alt={img.alt} />
-          </SafeLink>
-        ) : null}
-        {ItemPillLabels}
-      </ItemHead>
-      <ItemContent>
-        <ItemTitle>
-          <SafeLink to={url}>{title}</SafeLink>
-        </ItemTitle>
-        <ItemText>{ingress}</ItemText>
-        <BreadcrumbPath>
-          {breadcrumb &&
-            breadcrumb.map((breadcrumbItem: string, i: number) => {
-              return (
-                <span key={`${breadcrumbItem}-${item.id}`}>
-                  <span>{breadcrumbItem}</span>
-                  {i !== breadcrumb.length - 1 && <ChevronRight />}
-                </span>
-              );
-            })}
-        </BreadcrumbPath>
-      </ItemContent>
-    </ItemWrapper>
+    <>
+      <ItemWrapper loading={loading}>
+        <ItemHead>
+          {img ? (
+            <SafeLink to={url}>
+              <img src={img.url} alt={img.alt} />
+            </SafeLink>
+          ) : (
+            <SafeLink to={url}>
+              <ImateIcon />
+            </SafeLink>
+          )}
+        </ItemHead>
+        <ItemContent>
+          <ItemTitle>
+            <SafeLink to={url}>{title}</SafeLink>
+            {ItemPillLabels}
+          </ItemTitle>
+          <ItemText>{ingress}</ItemText>
+          <BreadcrumbPath>
+            {breadcrumb &&
+              breadcrumb.map((breadcrumbItem: string, i: number) => {
+                return (
+                  <span key={`${breadcrumbItem}-${item.id}`}>
+                    <span>{breadcrumbItem}</span>
+                    {i !== breadcrumb.length - 1 && <ChevronRight />}
+                  </span>
+                );
+              })}
+          </BreadcrumbPath>
+        </ItemContent>
+      </ItemWrapper>
+    </>
   );
 };
 

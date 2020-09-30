@@ -1,3 +1,30 @@
+const subjectTypeResults = [
+  {
+    id: 1,
+    title: 'Norsk',
+    url: '#1',
+    img: {
+      url: 'https://api.ndla.no/image-api/raw/id/51959',
+    },
+  },
+  {
+    id: 2,
+    title: 'Engelsk',
+    url: '#2',
+    img: {
+      url: 'https://api.ndla.no/image-api/raw/id/51990',
+    },
+  },
+  {
+    id: 3,
+    title: 'Matte',
+    url: '#3',
+    img: {
+      url: 'https://api.ndla.no/image-api/raw/id/51959',
+    },
+  },
+];
+
 const subjectResults = [
   {
     id: 1,
@@ -7,9 +34,7 @@ const subjectResults = [
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Emne',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-    matchTab: ['SUBJECT'],
     img: {
-      // url: 'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1024&focalX=50&focalY=50&ratio=16.9',
       url:
         'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
@@ -23,7 +48,6 @@ const subjectResults = [
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Læringssti',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-    matchTab: ['SUBJECT'],
     resourceTypes: [
       {
         id: 'urn:resourcetype:tasksAndActivities',
@@ -32,7 +56,6 @@ const subjectResults = [
       { id: 'urn:resourcetype:task', name: 'Øvelse' },
     ],
     img: {
-      // url: 'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1024&focalX=50&focalY=50&ratio=16.9',
       url:
         'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
@@ -47,7 +70,6 @@ const subjectResults = [
     contentTypeLabel: 'Fagstoff',
     additional: true,
     img: {
-      // url: 'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1024&focalX=50&focalY=50&ratio=16.9',
       url:
         'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
@@ -76,16 +98,13 @@ const subjectResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
     img: {
-      // url: 'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1024&focalX=50&focalY=50&ratio=16.9',
       url:
         'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
@@ -98,13 +117,11 @@ const subjectResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
   },
   {
@@ -114,13 +131,11 @@ const subjectResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
     img: {
       url:
@@ -135,13 +150,11 @@ const subjectResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
   },
   {
@@ -151,13 +164,11 @@ const subjectResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
   },
   {
@@ -167,16 +178,13 @@ const subjectResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
     img: {
-      // url: 'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?width=1024&focalX=50&focalY=50&ratio=16.9',
       url:
         'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
@@ -194,7 +202,6 @@ const subjectResults = [
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
     type: 'Oppgave',
   },
 ];
@@ -208,7 +215,6 @@ const subjectMaterialResults = [
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Emne',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-    matchTab: ['SUBJECT'],
   },
   {
     id: 11,
@@ -218,7 +224,6 @@ const subjectMaterialResults = [
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     contentTypeLabel: 'Læringssti',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-    matchTab: ['SUBJECT'],
     resourceTypes: [
       {
         id: 'urn:resourcetype:tasksAndActivities',
@@ -254,7 +259,6 @@ const subjectMaterialResults = [
         title: 'Norsk',
       },
     ],
-    matchTab: ['SUBJECT'],
     type: 'Undervisningsfilm',
   },
   {
@@ -264,13 +268,21 @@ const subjectMaterialResults = [
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
-    // contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    matchTab: ['SUBJECT'],
+    type: 'Oppgave',
+  },
+  {
+    id: 14,
+    title: 'Hva kan du om platetektonikk? 50',
+    url: '#5',
+    ingress:
+      'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
+    contentTypeLabel: 'Oppgaver og aktiveter',
+    breadcrumb: ['Brønnteknikk', 'Geologi for brønnteknikk'],
     type: 'Oppgave',
   },
 ];
@@ -320,10 +332,14 @@ const searchTypeFilterOptions = {
   SHARED_RESOURCES: null,
 };
 
-const searchTopicOptions = [
+const searchSubjectTypeOptions = [
   {
     title: 'Alle',
-    value: null,
+    value: 'ALL',
+  },
+  {
+    title: 'Fag',
+    value: 'SUBJECT_TYPE',
   },
   {
     title: 'Emne',
@@ -347,5 +363,6 @@ export {
   subjectResults,
   subjectMaterialResults,
   searchTypeFilterOptions,
-  searchTopicOptions,
+  searchSubjectTypeOptions,
+  subjectTypeResults,
 };

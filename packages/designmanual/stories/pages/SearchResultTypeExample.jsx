@@ -4,27 +4,48 @@ import {
   SubjectBadge,
   SubjectMaterialBadge,
   SearchTypeResult,
-  SearchTypeTopicFilter,
+  /* SearchTypeTopicFilter,
+  ContentTypeBadge,
+  SourceMaterialBadge,
+  TasksAndActivitiesBadge,
+  ExternalLearningResourcesBadge,
+  LearningPathBadge, */
+  SubjectTypeBadge,
 } from '@ndla/ui';
 
+/* import {
+  // MenuBook as MenuBookIcon,
+  // @ts-ignore
+} from '@ndla/icons/action'; */
+
+import { FilterTabs } from '@ndla/tabs';
+
 import {
+  subjectTypeResults,
   subjectResults,
   subjectMaterialResults,
   searchTypeFilterOptions,
-  searchTopicOptions,
+  searchSubjectTypeOptions,
 } from '../../dummydata/mockSearchResultType';
 
-let searchResponse = [
+const responseDataSource = [
+  {
+    context: {
+      type: 'SUBJECT_TYPE',
+      typeicon: <SubjectTypeBadge size="small" background />,
+      typelabel: 'Fag',
+    },
+    items: subjectTypeResults,
+    totalCount: subjectTypeResults.length,
+  },
   {
     context: {
       type: 'SUBJECT',
       typeicon: <SubjectBadge size="small" background />,
-      typelabel: 'Fag',
+      typelabel: 'Emne',
     },
     items: subjectResults,
-    totalCount: 13,
-    page: 0,
-    loading: false,
+    totalCount: subjectResults.length,
   },
   {
     context: {
@@ -33,24 +54,12 @@ let searchResponse = [
       typelabel: 'Fagstoff',
     },
     items: subjectMaterialResults,
-    totalCount: 12,
-    page: 0,
-    loading: false,
+    totalCount: subjectMaterialResults.length,
   },
 ];
 
-const initialTypeFilter = {};
-searchResponse.forEach(item => {
-  initialTypeFilter[item.context.type] = {
-    filter: [],
-    page: 0,
-    sortOrder: null,
-    limit: 4,
-  };
-});
-const searchResults = searchResponse;
+const searchResults = responseDataSource;
 const resultsReducer = (state, action) => {
-  // return state;
   switch (action.type) {
     case 'SEARCH':
       return state.map(contextItem => {
@@ -65,11 +74,10 @@ const resultsReducer = (state, action) => {
       });
     case 'SEARCH_RESULT_UPDATE':
       return state.map(contextItem => {
-        console.log('SEARCH_RESULT_UPDATE');
         if (contextItem.context.type === action.results.contextType) {
           return {
             ...contextItem,
-            // items: [...state[0].items, ...action.res],
+            // append new items
             items: action.results.items,
             loading: false,
           };
@@ -83,32 +91,61 @@ const resultsReducer = (state, action) => {
 };
 
 const SearchPageDemo = () => {
+  const [currentSubjectType, setCurrentSubjectType] = useState(null);
+  const initialTypeFilter = {};
+  responseDataSource.forEach(item => {
+    const pageSize = item.context.type === 'SUBJECT_TYPE' ? 2 : 4;
+    initialTypeFilter[item.context.type] = {
+      filter: [],
+      page: 0,
+      loading: false,
+      pageSize,
+    };
+  });
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
-  const [currentTopic, setCurrentTopic] = useState(null);
-  // console.log('searchResults', searchResults);
+  const initialResults = searchResults.map(res => {
+    if (res.items.length > initialTypeFilter[res.context.type].pageSize) {
+      return {
+        ...res,
+        items: res.items.slice(0, initialTypeFilter[res.context.type].pageSize),
+      };
+    }
+    return res;
+  });
   const [searchItems, dispatch] = React.useReducer(
     resultsReducer,
-    searchResults,
+    initialResults,
+    // searchResults,
   );
 
   // mock search
-  const search = async (q, callback) => {
+  const search = async (q, cb) => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const { page = 0, type } = q;
-    const topicIndex = searchResults.findIndex(x => x.context.type === type);
+    const subjectTypeIndex = searchResults.findIndex(
+      x => x.context.type === type,
+    );
     let mockDataRes = [];
     if (page === 0) {
-      mockDataRes = [...searchResults[topicIndex].items];
+      mockDataRes = [
+        ...searchResults[subjectTypeIndex].items.slice(
+          0,
+          typeFilter[type].pageSize,
+        ),
+      ];
     } else {
-      searchResults[topicIndex].items.forEach((item, index) => {
-        const id = searchResults[topicIndex].items.length + index + 1;
-        const title = `Tittel artikkel - ${id} - ${page}`;
-        const mockItem = { ...item, id, title, url: `#${id}` };
-        mockDataRes.push(mockItem);
-      });
+      if (
+        searchResults[subjectTypeIndex].items.length >
+        (q.page + 1) * typeFilter[type].pageSize
+      ) {
+        const to = (q.page + 1) * typeFilter[type].pageSize;
+        mockDataRes = [...searchResults[subjectTypeIndex].items.slice(0, to)];
+      } else {
+        mockDataRes = [...searchResults[subjectTypeIndex].items];
+      }
     }
-    await delay(1000);
-    callback(mockDataRes);
+    await delay(500);
+    cb(mockDataRes);
   };
 
   const handleFilterUpdate = async (type, filterUpdate) => {
@@ -121,61 +158,81 @@ const SearchPageDemo = () => {
     });
   };
 
-  const handleSetTopic = topic => {
-    setCurrentTopic(topic);
+  const handleSetSubjectType = subjectType => {
+    // reset mockup data if no subjectType
+    if (subjectType === 'ALL') {
+      setTypeFilter(initialTypeFilter);
+      initialResults.forEach(res => {
+        const results = { items: res.items, contextType: res.context.type };
+        dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
+      });
+      setCurrentSubjectType(null);
+    } else {
+      if (typeFilter[subjectType]) {
+        const filterUpdate = { ...typeFilter };
+        filterUpdate[subjectType].pageSize = 8;
+        setTypeFilter({
+          ...typeFilter,
+          [subjectType]: filterUpdate[subjectType],
+        });
+        dispatch({ type: 'SEARCH', context: subjectType });
+        const q = { type: subjectType, ...filterUpdate };
+        search(q, res => {
+          const results = { items: res, contextType: subjectType };
+          dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
+        });
+      }
+      setCurrentSubjectType(subjectType);
+    }
   };
 
-  const TopicResponse = () => {
-    const currentTopicItem = searchItems.find(obj => {
-      return obj.context.type === currentTopic;
+  const SubjectTypeResponse = () => {
+    const currentSubjectTypeData = searchItems.find(obj => {
+      return obj.context.type === currentSubjectType;
     });
-
-    if (!currentTopicItem) {
+    if (!currentSubjectTypeData) {
       return <p>ingen treff</p>;
     }
-    const { context, ...rest } = currentTopicItem;
+    const { context, items } = currentSubjectTypeData;
     const { type } = context;
-    const searchItemResult = {
-      ...rest,
-    };
-
     return (
       <SearchTypeResult
-        currentTopic={currentTopic}
+        currentSubjectType={currentSubjectType}
         context={{ ...context }}
         filterOptions={searchTypeFilterOptions[type]}
         typeFilter={typeFilter[type]}
         onFilterUpdate={handleFilterUpdate}
-        searchResult={searchItemResult}
-        items={searchItemResult.items}
+        items={items}
+        loading={currentSubjectTypeData.loading}
       />
     );
   };
 
   const SearchResponse = () => {
     return searchItems.map(searchItem => {
-      const { context, ...rest } = searchItem;
+      const { context, totalCount, ...rest } = searchItem;
       const { type } = context;
       const searchItemResult = {
         ...rest,
       };
-      console.log('searchItemResult', searchItemResult);
+      const pagination = {
+        totalCount,
+        page: typeFilter[type].page,
+        pageSize: typeFilter[type].pageSize,
+      };
       return (
         <SearchTypeResult
           key={`searchresult-${type}`}
-          currentTopic={currentTopic}
+          currentSubjectType={currentSubjectType}
           context={{ ...context }}
           filterOptions={searchTypeFilterOptions[type]}
           typeFilter={typeFilter[type]}
           onFilterUpdate={handleFilterUpdate}
-          searchResult={searchItemResult}
-          items={
-            searchItemResult.items && searchItemResult.items.length > 4
-              ? [...searchItemResult.items.slice(0, 4)]
-              : searchItemResult.items
-          }
-          setTopic={handleSetTopic}
-          topics={searchTopicOptions}
+          items={searchItemResult.items}
+          loading={searchItemResult.loading}
+          totalCount={totalCount}
+          setSubjectType={handleSetSubjectType}
+          pagination={pagination}
         />
       );
     });
@@ -183,79 +240,19 @@ const SearchPageDemo = () => {
 
   return (
     <>
-      <SearchTypeTopicFilter
-        currentTopic={currentTopic}
-        setTopic={handleSetTopic}
-        topics={searchTopicOptions}
-      />
-      {currentTopic ? <TopicResponse /> : <SearchResponse />}
+      <FilterTabs
+        dropdownBtnLabel="Velg"
+        value={currentSubjectType ? currentSubjectType : 'ALL'}
+        options={searchSubjectTypeOptions}
+        contentId="search-result-content"
+        onChange={handleSetSubjectType}>
+        <div>
+          <h5>185 treff</h5>
+        </div>
+        {currentSubjectType ? <SubjectTypeResponse /> : <SearchResponse />}
+      </FilterTabs>
     </>
   );
-
-  /* searchTabOptions: any; */
-  /* if (currentTopic === null) {
-    return (
-      <>
-        <SearchTypeTopicFilter
-          currentTopic={currentTopic}
-          setTopic={handleSetTopic}
-          topics={searchTopicOptions}
-        />
-        {searchItems.map(searchItem => {
-          const { context, ...rest } = searchItem;
-          const { type } = context;
-          const searchItemResult = {
-            ...rest,
-          };
-          return (
-            <div key={`searchresult-${type}`}>
-              <SearchTypeResult
-                currentTopic={currentTopic}
-                context={{ ...context, currentTopic }}
-                filterOptions={searchTypeFilterOptions[type]}
-                typeFilter={typeFilter[type]}
-                onFilterUpdate={handleFilterUpdate}
-                searchResult={searchItemResult}
-                setTopic={handleSetTopic}
-                topics={searchTopicOptions}
-              />
-            </div>
-          );
-        })}
-      </>
-    );
-  }
-  if (currentTopic !== 'all') {
-    const currentTopicItem = searchItems.find(obj => {
-      return obj.context.type === currentTopic;
-    });
-    if (currentTopicItem) {
-      const { context, ...rest } = currentTopicItem;
-      const { type } = context;
-      const searchItemResult = {
-        ...rest,
-      };
-
-      return (
-        <>
-          <SearchTypeTopicFilter
-            currentTopic={currentTopic}
-            setTopic={handleSetTopic}
-            topics={searchTopicOptions}
-          />
-          <SearchTypeResult
-            currentTopic={currentTopic}
-            context={{ ...context, currentTopic }}
-            filterOptions={searchTypeFilterOptions[type]}
-            typeFilter={typeFilter[type]}
-            onFilterUpdate={handleFilterUpdate}
-            searchResult={searchItemResult}
-          />
-        </>
-      );
-    }
-  }
-  return null; */
 };
 
 export default SearchPageDemo;

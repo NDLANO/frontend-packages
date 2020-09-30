@@ -8,8 +8,8 @@
 
 export const copyTextToClipboard = async (copyPageUrlLink: string) => {
   if (navigator) {
-    // @ts-ignore
     const permission = await navigator.permissions.query({
+      // @ts-ignore
       name: 'clipboard-write',
     });
     if (

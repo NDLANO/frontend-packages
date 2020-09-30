@@ -18,7 +18,7 @@ export interface InjectedProps {
 
 interface Context {
   [key: string]: any;
-  formatMessage: Function;
+  formatMessage: (...args: ConstructorParameters<any>) => any;
 }
 
 export function injectT<P>(

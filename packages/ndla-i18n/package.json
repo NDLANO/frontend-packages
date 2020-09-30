@@ -7,6 +7,11 @@
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "sideEffects": false,
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-i18n/"

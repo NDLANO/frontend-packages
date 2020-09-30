@@ -21,19 +21,27 @@ interface Context {
   formatMessage: (...args: ConstructorParameters<any>) => any;
 }
 
+interface TFunctionValue {
+  [key: string]: number | string;
+}
+
 export function injectT<P>(
   WrappedComponent: React.ComponentType<WithInjectedTProps<P>>,
   prefix: string = '',
-) {
-  const getDisplayName = (component: ComponentType<WithInjectedTProps<P>>) =>
-    component.displayName || component.name || 'Component';
+): React.ComponentType<P> {
+  const getDisplayName = (
+    component: ComponentType<WithInjectedTProps<P>>,
+  ): string => component.displayName || component.name || 'Component';
 
-  const InjectT = (props: P, context: Context) => (
-    <WrappedComponent
-      {...props}
-      t={(id, value = {}) => context.formatMessage(prefix + id, value)}
-    />
-  );
+  const InjectT = (props: P, context: Context): React.ReactElement<P> => {
+    const composedProps = {
+      ...props,
+      t: (id: string, value: TFunctionValue = {}): string =>
+        context.formatMessage(prefix + id, value),
+    } as P & InjectedProps;
+
+    return <WrappedComponent {...composedProps} />;
+  };
 
   InjectT.contextTypes = {
     formatMessage: PropTypes.func.isRequired,

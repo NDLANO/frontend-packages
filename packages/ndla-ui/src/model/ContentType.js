@@ -13,3 +13,4 @@ export const SUBJECT = 'subject';
 export const EXTERNAL_LEARNING_RESOURCES = 'external-learning-resources';
 export const SOURCE_MATERIAL = 'source-material';
 export const LEARNING_PATH = 'learning-path';
+export const SUBJECT_TYPE = 'menu-book';

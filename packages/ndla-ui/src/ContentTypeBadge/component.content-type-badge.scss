@@ -147,6 +147,39 @@
     }
   }
 
+  &--menu-book {
+    border-color: $subjecttype-dark;
+
+    &.c-content-type-badge--large {
+      svg {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    &.c-content-type-badge--small {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &.c-content-type-badge--x-small {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    svg {
+      color: $subjecttype-light !important;
+    }
+
+    &.c-content-type-badge--background {
+      background: $subjecttype-background;
+    }
+  }
+
   &--large {
     width: 50px;
     height: 50px;

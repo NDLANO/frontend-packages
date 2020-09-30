@@ -12,6 +12,8 @@ import {
   LearningPath,
 } from '@ndla/icons/contentType';
 
+import { MenuBook } from '@ndla/icons/action';
+
 import * as contentTypes from '../model/ContentType';
 import { ContentTypeShape } from '../shapes';
 
@@ -49,6 +51,9 @@ export const ContentTypeBadge = ({ type, background, size }) => {
       break;
     case contentTypes.LEARNING_PATH:
       icon = <LearningPath />;
+      break;
+    case contentTypes.SUBJECT_TYPE:
+      icon = <MenuBook />;
       break;
     default:
       break;
@@ -90,4 +95,8 @@ export const SourceMaterialBadge = props => (
 
 export const LearningPathBadge = props => (
   <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
+);
+
+export const SubjectTypeBadge = props => (
+  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_TYPE} />
 );

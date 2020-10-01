@@ -133,6 +133,6 @@ export const languageOptions: Array<ICodeLangugeOption> = [
   },
   {
     title: 'XML',
-    format: 'jsx',
+    format: 'jsx', // TODO should this be xml or removed?
   },
 ];

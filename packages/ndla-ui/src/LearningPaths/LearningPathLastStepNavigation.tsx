@@ -11,8 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { OneColumn, LayoutItem } from '../index-javascript';
 
@@ -54,7 +53,7 @@ interface Props {
 }
 
 const LearningPathLastStepNavigation: React.FunctionComponent<
-  WithInjectedTProps<Props>
+  Props & tType
 > = ({ subject, topic, learningPathName, children, t }) => (
   <OneColumn css={OneColumnCss}>
     <LayoutItem layout="center">

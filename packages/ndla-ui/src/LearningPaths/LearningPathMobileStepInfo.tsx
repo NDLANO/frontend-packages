@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, typography } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 
 const StyledInfo = styled.div`
   ${typography.smallHeading}
@@ -24,9 +23,11 @@ type Props = {
   current: number;
 };
 
-const LearningPathMobileStepInfo: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({ total, current, t }) => (
+const LearningPathMobileStepInfo: React.FunctionComponent<Props & tType> = ({
+  total,
+  current,
+  t,
+}) => (
   <StyledInfo>
     {t('learningPath.mobileStepInfo', {
       totalPages: total,

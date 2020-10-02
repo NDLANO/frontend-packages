@@ -6,8 +6,7 @@ import { css } from '@emotion/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -126,7 +125,7 @@ export const NavigationTopicAbout = ({
   invertedStyle,
   children,
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   return (
     <StyledWrapper data-testid="nav-topic-about">
       <StyledH1 invertedStyle={invertedStyle}>

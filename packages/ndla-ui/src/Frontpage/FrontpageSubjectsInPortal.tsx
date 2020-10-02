@@ -10,8 +10,7 @@ import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { noScroll } from '@ndla/util';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import SafeLink from '@ndla/safelink';
 import { category as categoryProp } from '../types';
 import {
@@ -124,9 +123,10 @@ interface Props {
   category: categoryProp;
 }
 
-const FrontpageSubjectsInPortal: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({ category, t }) => {
+const FrontpageSubjectsInPortal: React.FunctionComponent<Props & tType> = ({
+  category,
+  t,
+}) => {
   useEffect(() => {
     noScroll(true, 'frontpagePortal');
     return () => {

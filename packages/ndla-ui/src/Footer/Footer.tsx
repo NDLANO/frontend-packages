@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
 // @ts-ignore
@@ -130,7 +129,7 @@ type Props = {
   isFFServer?: boolean;
 };
 
-const Footer: React.FunctionComponent<WithInjectedTProps<Props>> = ({
+const Footer: React.FunctionComponent<Props & tType> = ({
   lang,
   children,
   t,

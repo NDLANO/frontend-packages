@@ -4,8 +4,7 @@ import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import { css } from '@emotion/core';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
@@ -169,7 +168,7 @@ export const NavigationBox = ({
   invertedStyle,
   onToggleAdditionalResources = () => {},
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
   return (
     <StyledWrapper>

@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import {
@@ -127,9 +126,13 @@ interface Props {
   name: string;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({ duration, isOpen, name, invertedStyle, t }) => {
+const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({
+  duration,
+  isOpen,
+  name,
+  invertedStyle,
+  t,
+}) => {
   const hours = Math.floor(duration / 60);
   const usePluralsForHours = hours !== 1;
   const minutes = duration % 60;

@@ -4,8 +4,7 @@ import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { Forward } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
@@ -78,7 +77,7 @@ type Props = {
   imageUrl: string;
 };
 
-const FrontpageFilm: React.FunctionComponent<WithInjectedTProps<Props>> = ({
+const FrontpageFilm: React.FunctionComponent<Props & tType> = ({
   url,
   imageUrl,
   t,

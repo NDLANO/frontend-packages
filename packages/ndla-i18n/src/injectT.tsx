@@ -9,12 +9,7 @@
 import React, { ComponentType } from 'react';
 import PropTypes from 'prop-types';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-
-export type WithInjectedTProps<P> = P & InjectedProps;
-
-export interface InjectedProps {
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-}
+import t from './t';
 
 interface Context {
   [key: string]: any;
@@ -26,19 +21,18 @@ interface TFunctionValue {
 }
 
 export function injectT<P>(
-  WrappedComponent: React.ComponentType<WithInjectedTProps<P>>,
+  WrappedComponent: React.ComponentType<P & t>,
   prefix: string = '',
 ): React.ComponentType<P> {
-  const getDisplayName = (
-    component: ComponentType<WithInjectedTProps<P>>,
-  ): string => component.displayName || component.name || 'Component';
+  const getDisplayName = (component: ComponentType<P & t>): string =>
+    component.displayName || component.name || 'Component';
 
   const InjectT = (props: P, context: Context): React.ReactElement<P> => {
     const composedProps = {
       ...props,
       t: (id: string, value: TFunctionValue = {}): string =>
         context.formatMessage(prefix + id, value),
-    } as P & InjectedProps;
+    } as P & t;
 
     return <WrappedComponent {...composedProps} />;
   };

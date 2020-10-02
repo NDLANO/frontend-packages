@@ -2,8 +2,7 @@ import React from 'react';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
@@ -81,7 +80,7 @@ type Props = {
 };
 
 const FrontpageMultidisciplinarySubject: React.FunctionComponent<
-  WithInjectedTProps<Props>
+  Props & tType
 > = ({ url, t, topics }) => (
   <StyledSection>
     <ComponentCursor

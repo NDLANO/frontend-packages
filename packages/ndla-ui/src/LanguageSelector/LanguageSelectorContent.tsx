@@ -7,8 +7,7 @@
  */
 
 import React from 'react';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 
 type Props = {
   options: {
@@ -22,9 +21,13 @@ type Props = {
   infoLocale: string;
 };
 
-const LanguageSelectorContent: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({ options, currentLanguage, setInfoLocale, infoLocale, t }) => (
+const LanguageSelectorContent: React.FunctionComponent<Props & tType> = ({
+  options,
+  currentLanguage,
+  setInfoLocale,
+  infoLocale,
+  t,
+}) => (
   <nav>
     <ul>
       {Object.keys(options).map(key => (

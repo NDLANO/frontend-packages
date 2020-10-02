@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import { colors, spacing, fonts } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
@@ -54,7 +53,7 @@ type ModalWrapperProps = {
 };
 
 const ModalWrapperComponent: React.FunctionComponent<
-  WithInjectedTProps<ModalWrapperProps>
+  ModalWrapperProps & tType
 > = ({ innerWidth, closeLabel, children, t }) => {
   if (innerWidth < 601) {
     return (

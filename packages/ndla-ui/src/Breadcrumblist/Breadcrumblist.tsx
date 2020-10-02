@@ -9,8 +9,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 
 import {
   School as SchoolIcon,
@@ -233,7 +232,7 @@ const Breadcrumblist = ({
   hideOnNarrow,
   onNav,
   t,
-}: WithInjectedTProps<BreadCrumbProps>) => {
+}: BreadCrumbProps & tType) => {
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
   const [useScrollEvent, setUseScrollEvent] = useState(false);
 

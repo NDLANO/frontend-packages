@@ -1,6 +1,5 @@
 import React, { ReactChild, ReactChildren } from 'react';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal from '@ndla/modal';
 // @ts-ignore
@@ -113,7 +112,7 @@ const extraBackdrop = css`
   box-shadow: ${shadows.searchHeader};
 `;
 
-const MastheadSearchModal: React.FC<WithInjectedTProps<Props>> = ({
+const MastheadSearchModal: React.FC<Props & tType> = ({
   onClose: onSearchClose,
   children,
   hideOnNarrowScreen,

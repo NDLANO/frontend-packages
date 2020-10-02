@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import { breakpoints, mq, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import {
@@ -79,7 +78,7 @@ const MultidisciplinarySubjectHeader = ({
   subjects = [],
   subjectsLinks = [],
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   const getIllustration = () => {
     if (subjects.length === 3) {
       return <PublicHealthDemocracyClimateIllustration />;

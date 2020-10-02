@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
@@ -118,9 +117,14 @@ type Props = {
   };
 };
 
-const LearningPathMenuAside: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({ lastUpdated, learningPathURL, copyright, isOpen, invertedStyle, t }) => (
+const LearningPathMenuAside: React.FunctionComponent<Props & tType> = ({
+  lastUpdated,
+  learningPathURL,
+  copyright,
+  isOpen,
+  invertedStyle,
+  t,
+}) => (
   <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
     <div css={learningPathDetailsCSS}>
       <Time />

@@ -8,8 +8,7 @@ import {
   Launch,
   // @ts-ignore
 } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -103,9 +102,11 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<
-  WithInjectedTProps<FooterLinksProps>
-> = ({ t, links, isFFServer }) => {
+const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({
+  t,
+  links,
+  isFFServer,
+}) => {
   const mainLinks = isFFServer
     ? [...additionalFFCommonLinks, ...commonLinks]
     : commonLinks;

@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints, colors } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { BlocksLight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
@@ -76,7 +75,7 @@ export type FFFrontpageHeaderProps = {
 };
 
 const FFFrontpageHeader: React.FunctionComponent<
-  WithInjectedTProps<FFFrontpageHeaderProps>
+  FFFrontpageHeaderProps & tType
 > = ({ t, children }) => (
   <StyledHeaderWrapper>
     <StyledHeader>

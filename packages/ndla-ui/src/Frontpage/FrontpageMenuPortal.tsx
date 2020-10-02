@@ -14,8 +14,7 @@ import { isIE, browserVersion } from 'react-device-detect';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
@@ -215,9 +214,7 @@ interface Props {
   menuIsOpen: boolean;
 }
 
-const FrontpageMenuPortal: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({
+const FrontpageMenuPortal: React.FunctionComponent<Props & tType> = ({
   children,
   onClose,
   onClosed,

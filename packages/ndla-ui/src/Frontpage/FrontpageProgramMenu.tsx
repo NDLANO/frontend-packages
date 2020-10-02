@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
@@ -42,7 +41,7 @@ const FrontpageProgramMenu = ({
   programItems,
   subjectCategories,
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   const [showSubjects, setShowSubjects] = useState(false);
 
   return (

@@ -2,8 +2,7 @@ import React from 'react';
 import { LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import Logo from '../Logo';
@@ -33,7 +32,7 @@ type Props = {
   contentUrl?: string;
 };
 
-const CreatedBy = ({ contentUrl, t }: WithInjectedTProps<Props>) => (
+const CreatedBy = ({ contentUrl, t }: Props & tType) => (
   <Container>
     <Wrapper>
       <Text>

@@ -8,8 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
@@ -60,7 +59,7 @@ const ArticleByline = ({
   published,
   copyPageUrlLink,
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);

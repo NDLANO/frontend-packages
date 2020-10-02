@@ -8,8 +8,7 @@
 
 import React, { useState } from 'react';
 import Editor from 'react-simple-code-editor';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Code } from '@ndla/icons/editor';
 // @ts-ignore
@@ -44,7 +43,7 @@ const CodeBlockEditor = ({
   onAbort,
   t,
   content = null,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({
     code: content ? content.code : '',

@@ -9,8 +9,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
@@ -107,7 +106,7 @@ interface Props {
   toLearningPathUrl(pathId: number, stepId: number): string;
 }
 
-const LearningPathMenu: React.FunctionComponent<WithInjectedTProps<Props>> = ({
+const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
   learningsteps,
   currentIndex,
   name,

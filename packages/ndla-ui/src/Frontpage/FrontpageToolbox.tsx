@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
@@ -43,7 +42,7 @@ type Props = {
   url: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<WithInjectedTProps<Props>> = ({
+const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({
   url,
   t,
 }) => (

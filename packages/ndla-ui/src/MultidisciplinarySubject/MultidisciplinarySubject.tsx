@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
@@ -115,7 +114,7 @@ export const MultidisciplinarySubject = ({
   items,
   totalItemsCount,
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   return (
     <StyledWrapper>
       <StyledBackground>

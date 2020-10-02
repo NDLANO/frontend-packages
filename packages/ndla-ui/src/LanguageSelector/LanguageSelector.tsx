@@ -10,8 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
 import {
@@ -154,7 +153,7 @@ type Props = {
   alwaysVisible?: boolean;
 };
 
-const LanguageSelector: React.FunctionComponent<WithInjectedTProps<Props>> = ({
+const LanguageSelector: React.FunctionComponent<Props & tType> = ({
   options,
   currentLanguage,
   outline,

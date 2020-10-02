@@ -4,8 +4,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
 import { breakpoints, mq, spacing, colors, fonts } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import FrontpageSubjectIllustration from './illustrations/FrontpageSubjectIllustration';
 // @ts-ignore
 import FrontpageCircularSubject from './FrontpageCircularSubject';
@@ -167,9 +166,10 @@ const initialState: StateObject = {
   menuIsOpen: false,
 };
 
-const FrontpageCombinedSubjects: React.FunctionComponent<
-  WithInjectedTProps<Props>
-> = ({ categories, t }) => {
+const FrontpageCombinedSubjects: React.FunctionComponent<Props & tType> = ({
+  categories,
+  t,
+}) => {
   const [currentState, setState] = useState(initialState);
   const {
     elementRect,

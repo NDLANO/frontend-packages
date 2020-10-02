@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
@@ -107,10 +106,7 @@ const renderList = (subjects: subjectProps[]) => {
   );
 };
 
-const FrontpageAllSubjects = ({
-  categories,
-  t,
-}: WithInjectedTProps<subjectsProps>) => {
+const FrontpageAllSubjects = ({ categories, t }: subjectsProps & tType) => {
   const allSubjects: subjectProps[] = [];
   const data: any = [];
 

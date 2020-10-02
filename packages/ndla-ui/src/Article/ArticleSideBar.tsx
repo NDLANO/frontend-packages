@@ -4,8 +4,7 @@ import Button, { CopyButton } from '@ndla/button';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { fonts } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
@@ -52,7 +51,7 @@ const ArticleSideBar = ({
   copyPageUrlLink,
   licenseBox,
   t,
-}: WithInjectedTProps<Props>) => {
+}: Props & tType) => {
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);

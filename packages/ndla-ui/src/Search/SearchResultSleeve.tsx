@@ -10,8 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { History } from 'history';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 import {
   ChevronDown,
   ChevronUp,
@@ -233,7 +232,7 @@ type Props = {
   history: History;
 };
 
-const SearchResultSleeve: React.FC<WithInjectedTProps<Props>> = ({
+const SearchResultSleeve: React.FC<Props & tType> = ({
   result,
   allResultUrl,
   resourceToLinkProps,

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { injectT } from '@ndla/i18n';
-import { WithInjectedTProps } from '@ndla/i18n/lib/injectT';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -63,7 +62,7 @@ type Props = {
   animateList?: number;
 };
 
-const ContentTypeResult: React.FC<WithInjectedTProps<Props>> = ({
+const ContentTypeResult: React.FC<Props & tType> = ({
   contentTypeResult,
   onNavigate,
   defaultCount,

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 // @ts-ignore
 import { injectT } from '@ndla/i18n';
@@ -40,7 +40,17 @@ type Props = {
   } | null;
 };
 
-const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
+export const getTitleFromFormat = (format: string) => {
+  const selectedLanguage = languageOptions.find(
+    (item: ICodeLangugeOption) => item.format === format,
+  );
+  if (selectedLanguage) {
+    return selectedLanguage.title;
+  }
+  return;
+};
+
+const CodeBlockEditor: FC<Props> = ({ onSave, onAbort, t, content = null }) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({
     code: content ? content.code : '',
@@ -60,11 +70,6 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
   };
 
   const abort = () => {
-    setCodeContent({
-      code: '',
-      title: defaultLang.title,
-      format: defaultLang.format,
-    });
     onAbort();
   };
 

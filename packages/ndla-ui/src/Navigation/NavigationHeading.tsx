@@ -30,14 +30,14 @@ const StyledMainText = styled.span`
 `;
 const StyledSubText = styled.span`
   display: block;
-  ${fonts.sizes('20px', '24px')};
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+
+  ${fonts.sizes('14px', '24px')};
 
   ${mq.range({ from: breakpoints.tablet })} {
-    ${fonts.sizes('32px', '40px')};
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    ${fonts.sizes('40px', '48px')};
+    ${fonts.sizes('18px', '32px')};
   }
 `;
 
@@ -53,8 +53,8 @@ export const NavigationHeading = ({
   invertedStyle,
 }: Props) => (
   <StyledH1 invertedStyle={invertedStyle}>
-    <StyledMainText>{children}</StyledMainText>
     {subHeading && <StyledSubText>{subHeading}</StyledSubText>}
+    <StyledMainText>{children}</StyledMainText>
   </StyledH1>
 );
 

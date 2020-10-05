@@ -67,10 +67,11 @@ type additionalResourceProps = {
 };
 
 const StyledListItem = styled.li<additionalResourceProps>`
-  margin-bottom: 2px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 0;
+  break-inside: avoid;
+`;
+
+const StyledListElementWrapper = styled.div<additionalResourceProps>`
   ${props =>
     props.isAdditionalResource &&
     css`
@@ -93,6 +94,15 @@ const StyledListItem = styled.li<additionalResourceProps>`
         }
       }
     `}
+`;
+
+const StyledSpacingElement = styled.span`
+  display: block;
+  width: 100%;
+  height: 2px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 20px;
+  }
 `;
 
 const StyledButtonContent = styled.span`
@@ -188,43 +198,44 @@ export const NavigationBox = ({
       </StyledHeadingWrapper>
       <StyledList data-testid="nav-box-list" direction={listDirection}>
         {items.map((item: ItemProps) => (
-          <StyledListItem
-            isAdditionalResource={item.isAdditionalResource}
-            lighter={colorMode === 'light'}
-            selected={item.selected}
-            key={item.label}
-            data-testid="nav-box-item">
-            <ListElementType
-              to={item.url}
-              lighter={!item.selected && colorMode === 'light'}
-              lighterGrey={!item.selected && colorMode === 'lighterGrey'}
-              darker={item.selected}
-              buttonSize="medium"
-              size="medium"
-              borderShape="sharpened"
-              width="full"
-              textAlign="left"
-              onClick={(e: React.MouseEvent<HTMLElement>) => {
-                if (onClick) {
-                  onClick(e, item.id);
-                }
-              }}>
-              <StyledButtonContent>
-                <StyledButtonContentText
-                  isAdditionalResource={item.isAdditionalResource}
-                  lighter={colorMode === 'light'}>
-                  {item.isAdditionalResource && (
-                    <StyledAdditionalResourceMark
-                      lighter={colorMode === 'light'}
-                      selected={item.selected}>
-                      T
-                    </StyledAdditionalResourceMark>
-                  )}
-                  {item.label}
-                </StyledButtonContentText>
-                {item.selected && <StyledButtonContentSelected />}
-              </StyledButtonContent>
-            </ListElementType>
+          <StyledListItem key={item.label} data-testid="nav-box-item">
+            <StyledListElementWrapper
+              isAdditionalResource={item.isAdditionalResource}
+              lighter={colorMode === 'light'}
+              selected={item.selected}>
+              <ListElementType
+                to={item.url}
+                lighter={!item.selected && colorMode === 'light'}
+                lighterGrey={!item.selected && colorMode === 'lighterGrey'}
+                darker={item.selected}
+                buttonSize="medium"
+                size="medium"
+                borderShape="sharpened"
+                width="full"
+                textAlign="left"
+                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                  if (onClick) {
+                    onClick(e, item.id);
+                  }
+                }}>
+                <StyledButtonContent>
+                  <StyledButtonContentText
+                    isAdditionalResource={item.isAdditionalResource}
+                    lighter={colorMode === 'light'}>
+                    {item.isAdditionalResource && (
+                      <StyledAdditionalResourceMark
+                        lighter={colorMode === 'light'}
+                        selected={item.selected}>
+                        T
+                      </StyledAdditionalResourceMark>
+                    )}
+                    {item.label}
+                  </StyledButtonContentText>
+                  {item.selected && <StyledButtonContentSelected />}
+                </StyledButtonContent>
+              </ListElementType>
+            </StyledListElementWrapper>
+            <StyledSpacingElement />
           </StyledListItem>
         ))}
       </StyledList>

@@ -133,6 +133,6 @@ export const languageOptions: Array<ICodeLangugeOption> = [
   },
   {
     title: 'XML',
-    format: 'jsx',
+    format: 'xml',
   },
 ];

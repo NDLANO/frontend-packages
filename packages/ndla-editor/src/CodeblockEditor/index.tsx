@@ -48,7 +48,12 @@ export const getTitleFromFormat = (format: string) => {
   return;
 };
 
-const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null }) => {
+const CodeBlockEditor: FC<Props & tType> = ({
+  onSave,
+  onAbort,
+  t,
+  content = null,
+}) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({
     code: content ? content.code : '',

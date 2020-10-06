@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
 // @ts-ignore
@@ -117,21 +116,20 @@ const StyledLanguageWrapper = styled.div`
 type Props = {
   children: React.ReactNode;
   lang: 'nb' | 'nn' | 'en';
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-  links?: {
-    email: string;
-    facebook: string;
-    twitter: string;
-    share?: string;
-    to: string;
-    text: string;
-    icon: React.ReactNode;
-  };
+  links?: [
+    {
+      to: string;
+      text: string;
+      icon: React.ReactNode;
+      facebook: string;
+      twitter: string;
+    }
+  ];
   languageSelector?: React.ReactNode;
   isFFServer?: boolean;
 };
 
-const Footer: React.FunctionComponent<Props> = ({
+const Footer: React.FunctionComponent<Props & tType> = ({
   lang,
   children,
   t,

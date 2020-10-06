@@ -6,10 +6,18 @@
  *
  */
 
+interface Phrases {
+  [key: string]: string | Phrases;
+}
+
+interface FormattedMessages {
+  [key: string]: string;
+}
+
 export const formatNestedMessages = (
-  phrases,
-  formattedMessages = {},
-  prefix = '',
+  phrases: Phrases,
+  formattedMessages: FormattedMessages = {},
+  prefix: string = '',
 ) => {
   const messages = formattedMessages;
 

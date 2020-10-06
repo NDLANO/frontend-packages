@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
@@ -78,7 +77,6 @@ type categoryProps = {
 
 export type subjectsProps = {
   categories: [categoryProps];
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 type letterCategories = {
@@ -135,7 +133,7 @@ const renderList = (subjects: subjectProps[]) => (
   </StyledList>
 );
 
-const FrontpageAllSubjects = ({ categories, t }: subjectsProps) => {
+const FrontpageAllSubjects = ({ categories, t }: subjectsProps & tType) => {
   const allSubjects: subjectProps[] = [];
   const data: any = [];
 

@@ -7,8 +7,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { BlocksDark } from '@ndla/icons/common';
 import styled from '@emotion/styled';
@@ -71,7 +70,6 @@ type Props = {
   noMargin?: boolean;
   isSearchPage?: boolean;
   isNDLAFilm?: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 export const FFHeroBadge = ({
@@ -79,7 +77,7 @@ export const FFHeroBadge = ({
   isSearchPage,
   isNDLAFilm,
   t,
-}: Props) => {
+}: Props & tType) => {
   const simple = isSearchPage || isNDLAFilm;
   let backgroundColor, borderColor, color;
   if (isSearchPage) {

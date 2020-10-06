@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { History } from 'history';
-// @ts-ignore
 import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore

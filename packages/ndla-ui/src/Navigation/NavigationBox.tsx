@@ -4,8 +4,7 @@ import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import { css } from '@emotion/core';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
@@ -165,7 +164,6 @@ type Props = {
   listDirection?: 'horizontal' | 'vertical';
   invertedStyle?: boolean;
   onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 export const NavigationBox = ({
@@ -180,7 +178,7 @@ export const NavigationBox = ({
   invertedStyle,
   onToggleAdditionalResources = () => {},
   t,
-}: Props) => {
+}: Props & tType) => {
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
   return (
     <StyledWrapper>

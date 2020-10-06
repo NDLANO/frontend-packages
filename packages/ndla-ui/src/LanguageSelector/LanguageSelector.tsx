@@ -10,8 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
 import {
@@ -152,10 +151,9 @@ type Props = {
   outline?: boolean;
   center?: boolean;
   alwaysVisible?: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const LanguageSelector: React.FunctionComponent<Props> = ({
+const LanguageSelector: React.FunctionComponent<Props & tType> = ({
   options,
   currentLanguage,
   outline,

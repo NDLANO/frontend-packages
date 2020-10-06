@@ -5,7 +5,13 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-i18n/"
@@ -20,12 +26,13 @@
   ],
   "peerDependencies": {
     "prop-types": "^15.6.0",
-    "react": "^15.6.0 || ^16.0.0"
+    "react": "^15.6.0 || ^16.8.0"
   },
   "dependencies": {
+    "@types/hoist-non-react-statics": "^3.3.1",
     "hoist-non-react-statics": "^3.3.0",
-    "intl-format-cache": "^2.1.0",
-    "intl-messageformat": "^2.2.0",
+    "intl-format-cache": "^4.3.1",
+    "intl-messageformat": "5.4.3",
     "invariant": "^2.2.3"
   },
   "publishConfig": {

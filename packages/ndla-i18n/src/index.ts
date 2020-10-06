@@ -9,6 +9,8 @@
 import IntlProvider from './IntlProvider';
 
 export { default as injectT } from './injectT';
+// @ts-ignore
+export { default as tType } from './t';
 export { default as formatMessage } from './formatMessage';
 export { default as Trans } from './Trans';
 export { formatNestedMessages } from './formatNestedMessages';

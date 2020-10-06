@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints, colors } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { BlocksLight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
@@ -73,13 +72,11 @@ const Text = styled.div`
 export type FFFrontpageHeaderProps = {
   languageOptions: string;
   locale: string;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const FFFrontpageHeader: React.FunctionComponent<FFFrontpageHeaderProps> = ({
-  t,
-  children,
-}) => (
+const FFFrontpageHeader: React.FunctionComponent<
+  FFFrontpageHeaderProps & tType
+> = ({ t, children }) => (
   <StyledHeaderWrapper>
     <StyledHeader>
       <MessageBox

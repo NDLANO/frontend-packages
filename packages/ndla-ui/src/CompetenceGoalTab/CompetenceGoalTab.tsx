@@ -3,15 +3,12 @@ import styled from '@emotion/styled';
 // mq, breakpoints,
 import { spacing } from '@ndla/core';
 // @ts-ignore
-import { injectT } from '@ndla/i18n';
-// @ts-ignore
 import Button from '@ndla/button';
 import CompetenceItem, { ListItemProp } from './CompetenceItem';
 
 type CompetenceProps = {
   title: string;
   list: ListItemProp[];
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const Wrapper = styled.div`
@@ -41,7 +38,7 @@ const TabWrapper = styled.div`
   }
 `;
 
-const CompetenceGoalTab = ({ title, list, t }: CompetenceProps) => {
+const CompetenceGoalTab = ({ title, list }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
 
   return (
@@ -62,9 +59,9 @@ const CompetenceGoalTab = ({ title, list, t }: CompetenceProps) => {
           );
         })}
       </TabWrapper>
-      <CompetenceItem item={currentTabItem} t={t} />
+      <CompetenceItem item={currentTabItem} />
     </Wrapper>
   );
 };
 
-export default injectT(CompetenceGoalTab);
+export default CompetenceGoalTab;

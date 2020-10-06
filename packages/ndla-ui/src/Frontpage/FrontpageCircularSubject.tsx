@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import { category as categoryProp } from '../types';
 import { categoryIllustrations } from './illustrations';
 
@@ -83,11 +82,10 @@ const StyledButton = styled.button`
 
 type Props = {
   category: categoryProp;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const FrontpageCircularSubject: React.FunctionComponent<
-  Props & React.HTMLProps<HTMLButtonElement>
+  Props & React.HTMLProps<HTMLButtonElement> & tType
 > = ({ category, t, ...rest }) => {
   // @ts-ignore
   const Illustration = categoryIllustrations[category.name];

@@ -19,11 +19,11 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^0.3.35",
+    "@ndla/button": "^0.3.36",
     "@ndla/core": "^0.6.27",
     "@ndla/forms": "^0.3.124",
     "@ndla/licenses": "^0.6.33",
-    "@ndla/util": "^0.4.1"
+    "@ndla/util": "^0.4.2"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

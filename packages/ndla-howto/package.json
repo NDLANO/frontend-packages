@@ -19,11 +19,11 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^0.3.35",
+    "@ndla/button": "^0.3.36",
     "@ndla/core": "^0.6.27",
     "@ndla/icons": "^0.6.24",
     "@ndla/licenses": "^0.6.33",
-    "@ndla/modal": "^0.4.25",
+    "@ndla/modal": "^0.4.26",
     "@ndla/tooltip": "^0.2.27",
     "@ndla/ui": "^0.27.66",
     "remarkable": "^2.0.0"

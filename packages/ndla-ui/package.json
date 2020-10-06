@@ -56,7 +56,7 @@
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
     "react-swipeable": "^5.0.1",
-    "react-syntax-highlighter": "13.0.0",
+    "react-syntax-highlighter": "15.1.0",
     "react-transition-group": "^2.5.3"
   },
   "peerDependencies": {

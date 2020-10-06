@@ -48,7 +48,6 @@ export const getTitleFromFormat = (format: string) => {
   return;
 };
 
-
 const CodeBlockEditor: FC<Props & tType> = ({
   onSave,
   onAbort,

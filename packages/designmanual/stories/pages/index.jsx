@@ -13,35 +13,28 @@ import { storiesOf } from '@storybook/react';
 import {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
-  SubjectHero,
   AssessmentResourcesHero,
   ExternalLearningResourcesHero,
   SourceMaterialHero,
-  Hero,
   SubjectBadge,
   ErrorMessage,
   OneColumn,
   PageContainer,
   Content,
-  FFHeroBadge,
-  Breadcrumblist,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
 import MastheadWithTopicMenu from '../molecules/mastheads';
-import Subject, { SubjectWithTwoColumn, SubjectLanguage } from './Subject';
 
 import FooterExample from '../molecules/footers';
 import ArticleLoader from '../article/ArticleLoader';
 import ArticleLearningmaterial from './ArticleLearningmaterial';
 import ArticleAdditional from './ArticleAdditional';
 import ArticleExercise from './ArticleExercise';
-import ArticleSimple from './ArticleSimple';
-import AuthorPage from './AuthorPage';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import Breadcrumb, { BreadcrumbSimpleArticle } from '../molecules/breadcrumbs';
+import Breadcrumb from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 import LearningPathExample from './LearningPathExample';
@@ -49,16 +42,9 @@ import LearningPathExample from './LearningPathExample';
 import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
-import FFFrontpage from './FFFrontpage';
-import SearchPageExample from './SearchPageExample';
-import FrontpageReDesignExample from './FrontpageReDesignExample';
 import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
-import {
-  articleBreadCrumb,
-  subjectBreadcrumb,
-  topics,
-} from '../../dummydata/mockPrograms';
+import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
 import {
   breadcrumb as toolboxBreadcrumb,
   topics as toolboxTopics,
@@ -68,240 +54,6 @@ import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
 import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
 import { contentCards } from '../../dummydata';
-
-storiesOf('Re-design', module)
-  .add('Forside', () => (
-    <PageContainer>
-      <Content>
-        <FrontpageReDesignExample />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Programside', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu hideMenuButton />
-        <ProgrammePage />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Fagside', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <SubjectPage
-          topics={topics}
-          initialBreadcrumb={subjectBreadcrumb}
-          subjectName="Forretningsdrift (SR Vg1)"
-          bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Hovedemne', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <SubjectPage
-          topics={topics}
-          initialBreadcrumb={subjectBreadcrumb}
-          subjectName="Forretningsdrift (SR Vg1)"
-          bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
-          selectedMainTopic={22665}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Underemne', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <SubjectPage
-          topics={topics}
-          initialBreadcrumb={subjectBreadcrumb}
-          subjectName="Forretningsdrift (SR Vg1)"
-          bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
-          selectedMainTopic={22665}
-          selectedSubTopic={22703}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Underemne med underemne', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <SubjectPage
-          topics={topics}
-          initialBreadcrumb={subjectBreadcrumb}
-          subjectName="Forretningsdrift (SR Vg1)"
-          bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
-          selectedMainTopic={22665}
-          selectedSubTopic={22703}
-          selectedSubSubTopic={22703}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Fagressurs', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu
-          breadcrumbItems={[
-            {
-              name: 'Hovedemne tittel',
-              to: '#1',
-            },
-            {
-              name: 'Underemne tittel',
-              to: '#2',
-            },
-            {
-              name: 'Artikkel fagstoff',
-              to: '#3',
-            },
-          ]}
-          skipToMainContentId="mainContentId"
-        />
-        <SubjectMaterialHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectMaterialHero>
-        <ArticleLearningmaterial />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Verktøykassa', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <SubjectPage
-          topics={toolboxTopics}
-          initialBreadcrumb={toolboxBreadcrumb}
-          subjectName="Verktøykassa"
-          bannerBackground={backgroundToolbox}
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglige tema', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <MultidisciplinarySubjectPage />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel bærekraftig utvikling', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['climate']}
-          articleId="22220"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel folkehelse og livsmestring', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['publicHealth']}
-          articleId="22844"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel demokrati og medborgerskap', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['democracy']}
-          articleId="22727"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel alle tema', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['climate', 'democracy', 'publicHealth']}
-          articleId="22277"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel 2 tema(demokrati og klima)', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['climate', 'democracy']}
-          articleId="22222"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel 2 tema(demokrati og folkehelse)', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['publicHealth', 'democracy']}
-          articleId="21045"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Tverrfaglig artikkel 2 tema(klima og folkehelse)', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['publicHealth', 'climate']}
-          articleId="20655"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ));
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -364,56 +116,11 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('Hent artikkel med id', () => (
+  .add('Læringssti', () => (
     <PageContainer backgroundWide>
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <SubjectMaterialHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectMaterialHero>
-        <ArticleLoader closeButton />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Forenklet artikkelmal', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <Hero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <BreadcrumbSimpleArticle />
-              </section>
-            </div>
-          </OneColumn>
-        </Hero>
-        <ArticleSimple />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('Forfatter sidemal', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <Hero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <BreadcrumbSimpleArticle name="Cecilie Isaksen Eftedal" />
-              </section>
-            </div>
-          </OneColumn>
-        </Hero>
-        <AuthorPage />
+        <MastheadWithTopicMenu />
+        <LearningPathExample />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -526,105 +233,202 @@ storiesOf('Læringsressurser', module)
       </Content>
       <FooterExample />
     </PageContainer>
-  ))
-  .add('Læringssti', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu />
-        <LearningPathExample />
-      </Content>
-      <FooterExample />
-    </PageContainer>
   ));
 
-storiesOf('Emnesider', module)
-  .add('1. Fagoversikt', () => (
-    <PageContainer background>
+storiesOf('Fag- og emnesider', module)
+  .add('1. Forside', () => (
+    <PageContainer>
       <Content>
         <Frontpage />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('2. Fag', () => (
+  .add('2. Programside', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu
-          skipToMainContentId="mainContentId"
-          topicMenuProps={{ isOnSubjectFrontPage: true }}
-        />
-        <Subject id="mainContentId" />
+        <MastheadWithTopicMenu hideMenuButton />
+        <ProgrammePage />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('3. Fag med to kolonner', () => (
+  .add('3. Fagside', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu
-          skipToMainContentId="mainContentId"
-          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
         />
-        <SubjectWithTwoColumn id="mainContentId" />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('4. Fagforside språk', () => (
+  .add('4. Hovedemne', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu
-          skipToMainContentId="mainContentId"
-          topicMenuProps={{ isOnSubjectFrontPage: true }}
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
         />
-        <SubjectLanguage id="mainContentId" />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('5. Hovedemne', () => (
-    <PageContainer backgroundWide>
+  .add('5. Underemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          selectedSubTopic={22703}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('6. Underemne med underemne', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          selectedMainTopic={22665}
+          selectedSubTopic={22703}
+          selectedSubSubTopic={22703}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Verktøykassa', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={toolboxTopics}
+          initialBreadcrumb={toolboxBreadcrumb}
+          subjectName="Verktøykassa"
+          bannerBackground={backgroundToolbox}
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglige tema', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <MultidisciplinarySubjectPage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig emne - bærekraftig utvikling', () => (
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <ArticleLoader
-          articleId="29"
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
-          hideResources
-          showSubTopics
-          id="mainContentId"
+        <MultidisciplinarySubjectArticle
+          subjects={['climate']}
+          articleId="22220"
         />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
-  .add('6. Underemne', () => (
-    <PageContainer backgroundWide>
+  .add('Tverrfaglig emne - folkehelse og livsmestring', () => (
+    <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <ArticleLoader
-          id="mainContentId"
-          articleId="60"
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth']}
+          articleId="22844"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig emne - demokrati og medborgerskap', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['democracy']}
+          articleId="22727"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig emne - demokrati og klima', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate', 'democracy']}
+          articleId="22222"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig emne - demokrati og folkehelse', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth', 'democracy']}
+          articleId="21045"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig emne - klima og folkehelse', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['publicHealth', 'climate']}
+          articleId="20655"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Tverrfaglig emne - alle tema', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
+        <MultidisciplinarySubjectArticle
+          subjects={['climate', 'democracy', 'publicHealth']}
+          articleId="22277"
         />
       </Content>
       <FooterExample />
@@ -648,168 +452,6 @@ storiesOf('Emnesider', module)
         <BannerList banners={banners} />
       </div>
     </div>
-  ))
-  .add('Last inn emne', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <ArticleLoader
-          articleId=""
-          closeButton
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
-        />
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ));
-storiesOf('Fagfornyelse', module)
-  .add('Forside', () => (
-    <PageContainer background>
-      <Content>
-        <FFFrontpage />
-      </Content>
-      <FooterExample hideLanguageSelector={true} isFFServer />
-    </PageContainer>
-  ))
-  .add('Fagforside', () => (
-    <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu
-          skipToMainContentId="mainContentId"
-          topicMenuProps={{ isOnSubjectFrontPage: true }}
-        />
-        <Subject id="mainContentId" noHeaderImages showFFBadge />
-      </Content>
-      <FooterExample isFFServer />
-    </PageContainer>
-  ))
-  .add('Hovedemne', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <SubjectHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <FFHeroBadge />
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectHero>
-        <ArticleLoader
-          articleId="29"
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
-          hideResources
-          showSubTopics
-          id="mainContentId"
-        />
-      </Content>
-      <FooterExample isFFServer />
-    </PageContainer>
-  ))
-  .add('Læringsressurser', () => (
-    <PageContainer backgroundWide>
-      <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <SubjectMaterialHero>
-          <OneColumn>
-            <div className="c-hero__content">
-              <FFHeroBadge />
-              <section>
-                <Breadcrumb />
-              </section>
-            </div>
-          </OneColumn>
-        </SubjectMaterialHero>
-        <ArticleLearningmaterial />
-      </Content>
-      <FooterExample isFFServer />
-    </PageContainer>
-  ))
-  .add('Søkeside', () => (
-    <PageContainer background>
-      <Content>
-        <MastheadWithTopicMenu hideSearchButton />
-        <OneColumn cssModifier="clear-desktop" wide>
-          <FFHeroBadge isSearchPage noMargin />
-          <SearchPageExample />
-        </OneColumn>
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
-  .add('NDLA Film forside', () => (
-    <PageContainer ndlaFilm>
-      <Breadcrumblist
-        invertedStyle={true}
-        leftAlign={true}
-        items={articleBreadCrumb}
-      />
-      <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
-        <OneColumn cssModifier="clear-desktop" wide>
-          <FFHeroBadge isNDLAFilm />
-        </OneColumn>
-        <NdlaFilmFrontpage id="mainContentId" />
-      </Content>
-      <FooterExample inverted />
-    </PageContainer>
-  ))
-  .add('Film (emneside)', () => (
-    <PageContainer backgroundWide ndlaFilm>
-      <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
-        <ArticleLoader
-          id="mainContentId"
-          articleId="3683"
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
-          withBackgroundImage
-          ndlaFilm
-          isFFServer
-        />
-      </Content>
-      <FooterExample inverted />
-    </PageContainer>
-  ))
-  .add('Film emne (over film)', () => (
-    <PageContainer backgroundWide ndlaFilm>
-      <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
-        <ArticleLoader
-          id="mainContentId"
-          articleId="4824"
-          icon={<SubjectBadge size="large" background />}
-          label="Emne"
-          hideResources
-          showSubTopics
-          ndlaFilm
-          isFFServer
-        />
-      </Content>
-      <FooterExample inverted />
-    </PageContainer>
-  ))
-  .add('Læringssti (på NDLA film)', () => (
-    <PageContainer backgroundWide ndlaFilm learningPath>
-      <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
-        <LearningPathExample invertedStyle isFFServer isNDLAFilm />
-      </Content>
-      <FooterExample invertedOutlineLargeScreensOnly />
-    </PageContainer>
   ));
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (

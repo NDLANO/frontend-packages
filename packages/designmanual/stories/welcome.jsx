@@ -8,14 +8,19 @@ import { Center } from './helpers';
 const Welcome = () => (
   <PageContainer>
     <div style={{ marginTop: '30px' }}>
-      <Center>
-        <center>
+      <StoryBody>
+        <Center
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
-        </center>
-      </Center>
-      <StoryBody>
-        <h2>Hva designmanualen er, og hva den ikke er</h2>
+        </Center>
+        <h2 style={{ marginTop: '26px' }}>
+          Hva designmanualen er, og hva den ikke er
+        </h2>
         <p>
           Designmanualen inneholder retningslinjer for formatering, visuelt
           uttrykk, interaksjon og innholdselementer.
@@ -27,12 +32,23 @@ const Welcome = () => (
           innholdselementer utvikles videre med reell funksjonalitet, kan de tas
           inn i designmanualen og erstatte de gamle elementene.{' '}
         </p>
+        <p>
+          Den er ikke en brukermanual for innholdsproduksjon. Råd og
+          retningslinjer for produksjon av innhold ligger i{' '}
+          <a
+            href="https://brukskvalitetsplattform.ndla.no/"
+            target="_blank"
+            rel="noopener noreferrer">
+            brukskvalitetsplattformen.
+          </a>
+        </p>
 
         <h2>Hvordan bruke designmanualen?</h2>
         <p>
-          Denne designmanualen består av hovedsakelig to deler: et CSS-bibliotek
-          som styler de mest brukte HTML-elementene, og et komponent-bibliotek
-          for <a href="https://facebook.github.io/react/">React</a>. Den er også
+          Designmanual er for produksjon av teknisk innhold. Den består av
+          hovedsakelig to deler: et CSS-bibliotek som styler de mest brukte
+          HTML-elementene, og et komponent-bibliotek for{' '}
+          <a href="https://facebook.github.io/react/">React</a>. Den er også
           publisert på <a href="https://www.npmjs.com/package/ndla-ui">npm</a>.
         </p>
 

@@ -81,8 +81,9 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Bilde">
         <p>
           Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt
-          og høyrestilt. Bilder kan være i størrelsene liten, medium og stor
-          (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes på klikk.
+          og høyrestilt. Bilder kan være i størrelsene ekstra liten, liten,
+          medium og stor (fullbredde). Bilder som ikke er fullbredde, kan
+          ekspanderes på klikk.
         </p>
         <p>
           Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk
@@ -106,12 +107,6 @@ storiesOf('Enkle komponenter', module)
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
           alt="Forstørrelsesglass"
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-          link={{
-            text: 'Videoproduksjon i praksis',
-            description: '(Lenken tar deg til et annet nettsted)',
-            url: 'https://staging.api.ndla.no',
-            external: true,
-          }}
         />
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
@@ -268,9 +263,9 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Bilde under ingress', () => (
+  .add('Visuelt element under ingress', () => (
     <div>
-      <StoryIntro title="Bilde under ingress">
+      <StoryIntro title="Visuelt element under ingress">
         <p>
           Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk
           helst bilder av mennesker og bilder som er relevante og naturlige.
@@ -330,17 +325,17 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Boks i tekst', () => (
+  .add('Tekst i ramme', () => (
     <div>
-      <StoryIntro title="Boks i tekst">
+      <StoryIntro title="Tekst i ramme">
         <p>
-          En boks i teksten kan brukes for å framheve noe av særlig interesse,
-          annet enn sitat (som det fins egen sitatstil til).
+          Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet
+          enn sitat (som det fins egen sitatstil til).
         </p>
-        <p>Boks i tekst bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
+        <p>Tekst i ramme bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
       </StoryIntro>
       <StoryBody>
-        <h1 className="c-article__title">Eksempelartikkels</h1>
+        <h1 className="c-article__title">Eksempelartikkel</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
           produsere filmen.
@@ -363,20 +358,6 @@ storiesOf('Enkle komponenter', module)
         <LayoutItem layout="full">
           <div className="c-bodybox c-bodybox--extended">
             <p>En tekstboks som fyller spaltebredden.</p>
-            <p>
-              En tekstboks med eksternt innhold kan også ha lisensiering av
-              innholdet.
-            </p>
-            <div className="c-source-list">
-              <LicenseByline
-                marginRight
-                color={colors.brand.grey}
-                locale="nb"
-                licenseRights={[BY, NC, ND]}
-              />
-              <span className="c-source-list__item">Gary Waters</span>
-              <span className="c-source-list__item">Kilde: SNL.no</span>
-            </div>
           </div>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du
@@ -407,7 +388,7 @@ storiesOf('Enkle komponenter', module)
           <LayoutItem layout="center">
             <div className="c-bodybox">
               <h2>
-                En boks i tekst fungerer <em>dårlig</em> med mye tekst.
+                Tekst i ramme fungerer <em>dårlig</em> med mye tekst.
               </h2>
               <p>
                 Pitching er også en god måte å bevisstgjøre seg selv på. Når du

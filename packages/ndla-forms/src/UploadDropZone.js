@@ -10,7 +10,7 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Spinner } from '@ndla/editor';
+import { Spinner } from '@ndla/ui';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
 

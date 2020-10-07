@@ -924,8 +924,12 @@ storiesOf('Grunnstiler', module)
         </p>
         <div className="c-bodybox">
           <p>
-            Dette er en <a href="http://ndla.no">ekstern lenke</a>. Dette er en{' '}
-            <a href="/">intern lenke</a>, og dette er en{' '}
+            Dette er en{' '}
+            <a href="http://ndla.no" target="blank">
+              ekstern lenke
+            </a>{' '}
+            som åpnes i nytt vindu. Dette er en <a href="/">intern lenke</a>, og
+            dette er en{' '}
             <a href="#overskrift">lenke som viser til innhold på samme side</a>.
           </p>
         </div>
@@ -969,9 +973,6 @@ storiesOf('Grunnstiler', module)
         <p>
           Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens
           stilsett, men gjøres i redaktørgrensesnittet.
-        </p>
-        <p>
-          Titler markeres med: <code>&lt;hr&gt;</code>
         </p>
         <p>
           Titlene kan kuttes ut, plasseres som en topprad (thead), eller som
@@ -1702,22 +1703,6 @@ storiesOf('Grunnstiler', module)
             <a href="https://example.com">Listepunkt 3</a>
           </li>
         </ul>
-        <h2 className="u-heading">Liste over to kolonner</h2>
-        <p>Skal brukes til korte ord og utrykk.</p>
-        <ul className="o-list--two-columns">
-          <li>Listepunkt 1</li>
-          <li>Listepunkt 2</li>
-          <li>Listepunkt 3</li>
-          <li>Listepunkt 4</li>
-          <li>Listepunkt 5</li>
-          <li>Listepunkt 6</li>
-          <li>Listepunkt 7</li>
-          <li>Listepunkt 8</li>
-          <li>Listepunkt 9</li>
-          <li>Listepunkt 10</li>
-          <li>Listepunkt 11</li>
-          <li>Listepunkt 12</li>
-        </ul>
         <h2 className="u-heading">Nummererte lister</h2>
         <ol>
           <li>Listepunkt</li>
@@ -1785,6 +1770,7 @@ storiesOf('Grunnstiler', module)
           Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
           derfor kan man i disse tilfellene bruke en liste for oversettelser.
         </p>
+        <p>Status: Ikke implementert på ndla.no eller i ED</p>
       </StoryIntro>
       <StoryBody>
         <Translation index={1}>
@@ -1816,13 +1802,13 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Sitater">
         <p>
-          Sitater som strekker seg over tre linjer i vanlig linjelengde, er det
-          best å ta ut som et blokksitat. Vi bruker ikke kursiv for å markere
-          sitater, men &laquo;&raquo;
+          Sitater som strekker seg inntil tre linjer i vanlig linjelengde kan
+          markeres med &laquo;&raquo;. Sitater som strekker seg over tre linjer
+          i vanlig linjelengde taes ut som et blokksitat.
         </p>
       </StoryIntro>
       <StoryBody>
-        <h2 className="u-heading">Eksempel</h2>
+        <h2 className="u-heading">Eksempel på blokksitat</h2>
         <blockquote>
           «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
           og hun viser oss at det å tre ut av den typiske sildestimen alle

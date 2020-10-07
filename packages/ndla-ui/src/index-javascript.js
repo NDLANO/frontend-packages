@@ -118,7 +118,6 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
-  FFHeroBadge,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
@@ -183,3 +182,4 @@ export {
   default as MultidisciplinarySubject,
   MultidisciplinarySubjectHeader,
 } from './MultidisciplinarySubject';
+export { default as Spinner } from './Spinner';

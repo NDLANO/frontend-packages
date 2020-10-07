@@ -16,6 +16,10 @@ const Wrapper = styled.div`
   padding: 20px 52px;
   background: ${colors.brand.greyLighter};
   margin: 15px 0;
+  code {
+    margin:0;
+    padding:0;
+  }
   [class^="language-"] { {
     border-left: 4px solid ${colors.brand.primary};
     padding: 0;

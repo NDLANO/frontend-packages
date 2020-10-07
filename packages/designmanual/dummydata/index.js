@@ -13,7 +13,7 @@ import {
   sourceMaterialResources,
   externalLearningResources,
 } from './mockResources';
-import { subjectList, subjectConcepts, categories } from './mockSubjects';
+import { subjectList, subjectConcepts } from './mockSubjects';
 import {
   firstBrightcoveList,
   secondBrightcoveList,
@@ -58,7 +58,6 @@ export {
   topicListFilm,
   subjectList,
   subjectConcepts,
-  categories,
   learningPathResources,
   articleResources,
   exerciseResources,

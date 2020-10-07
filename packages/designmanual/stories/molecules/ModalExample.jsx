@@ -67,7 +67,7 @@ class ModalExample extends Component {
   >
     {(onClose) => (
       <ModalHeader>
-        <ModalCloseButton onClick={onClose}>
+        <ModalCloseButton onClick={onClose} />
       </ModalHeader>
       <ModalBody>
         <h1>Modal example</h1>
@@ -292,6 +292,7 @@ class ModalExample extends Component {
         <h4>Velg bakgrunnsfarge på header</h4>
         <FilterList
           labelNotVisible
+          preid="header"
           options={[
             { title: 'Standard', value: 'blue' },
             { title: 'Hvit', value: 'white' },

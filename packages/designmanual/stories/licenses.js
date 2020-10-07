@@ -16,7 +16,7 @@ const licenseRightAbbreviations = [
   'pd',
   'cc0',
   'cc',
-  'copy',
+  'copyrighted',
 ];
 
 const licensesRights = {
@@ -59,9 +59,9 @@ const licenses = {
 };
 
 storiesOf('Lisensgivning', module)
-  .add('Sammensatte lisenser', () => (
+  .add('Lisenser', () => (
     <div>
-      <StoryIntro title="Sammensatte lisenser">
+      <StoryIntro title="Lisenser">
         <p>Liste over lisenser som brukes på ndla</p>
       </StoryIntro>
       <StoryBody>

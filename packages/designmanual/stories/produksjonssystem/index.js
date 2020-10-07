@@ -131,9 +131,9 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Videosøk">
         <p>
-          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove,
-          samt YouTube via Google Custom Search. Denne modulen krever at det
-          både finnes en token og api url (for brightcove).
+          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove.
+          Denne modulen krever at det både finnes en token og api url (for
+          brightcove).
         </p>
       </StoryIntro>
       <StoryBody>
@@ -163,8 +163,8 @@ storiesOf('Produksjonssystem', module)
   ))
   .add('Uploader', () => (
     <div>
-      <StoryIntro title="Form elementer">
-        <p>Tekst kommer</p>
+      <StoryIntro title="Uploader">
+        <p>Komponent for filopplasting</p>
       </StoryIntro>
       <StoryBody>
         <UploaderExample />
@@ -183,9 +183,7 @@ storiesOf('Produksjonssystem', module)
   ))
   .add('FileListEditor', () => (
     <div>
-      <StoryIntro title="Editor for redigering av fillister">
-        <p>Tekst kommer</p>
-      </StoryIntro>
+      <StoryIntro title="Editor for redigering av fillister" />
       <StoryBody>
         <FileListEditorExample />
       </StoryBody>

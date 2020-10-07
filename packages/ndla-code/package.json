@@ -1,0 +1,48 @@
+{
+  "name": "@ndla/code",
+  "version": "0.0.1",
+  "description": "Code components for NDLA",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-code/"
+  },
+  "keywords": [
+    "ndla"
+  ],
+  "author": "ndla@knowit.no",
+  "files": [
+    "lib",
+    "es",
+    "src",
+    "types"
+  ],
+  "dependencies": {
+    "@ndla/core": "^0.6.27",
+    "@ndla/icons": "^0.6.24",
+    "prismjs": "^1.20.0",
+    "react-simple-code-editor": "^0.11.0",
+    "@ndla/i18n": "^0.4.2",
+    "@types/react-syntax-highlighter": "^11.0.4",
+    "react-syntax-highlighter": "13.0.0",
+    "@ndla/button": "^0.3.35",
+    "@ndla/util": "^0.4.1"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
+    "react": "^16.8.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

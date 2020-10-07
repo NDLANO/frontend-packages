@@ -17,7 +17,7 @@ import Button from '@ndla/button';
 import { highlight, languages } from 'prismjs/components/prism-core';
 // @ts-ignore
 import { Wrapper, Header, HeaderColumn, HeaderRow } from './style';
-import { ICodeLangugeOption, languageOptions } from './languages';
+import { ICodeLangugeOption, languageOptions } from '../languages';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
   highlight(input, language)

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { CodeBlockEditor } from '@ndla/editor';
+import { CodeBlockEditor } from '@ndla/code';
 
 export const CodeBlockEditorExample = () => {
   const handleSave = codeContent => {

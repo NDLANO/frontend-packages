@@ -1,5 +1,5 @@
 import React from 'react';
-import { Codeblock } from '@ndla/ui';
+import { Codeblock } from '@ndla/code';
 import ComponentInfo from '../ComponentInfo';
 
 const htmlCode = `<div class="demo-content">

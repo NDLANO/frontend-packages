@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Spinner from '@ndla/ui/lib/Spinner';
+import { Spinner } from '@ndla/ui';
 import { Search } from '@ndla/icons/common';
 import { Input, FormPill } from '@ndla/forms';
 import { getFieldValue } from './dropdownHelper';

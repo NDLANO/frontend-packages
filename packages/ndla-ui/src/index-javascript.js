@@ -183,3 +183,4 @@ export {
   default as MultidisciplinarySubject,
   MultidisciplinarySubjectHeader,
 } from './MultidisciplinarySubject';
+export { default as Spinner } from './Spinner';

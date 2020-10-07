@@ -1,6 +1,6 @@
 {
   "name": "@ndla/carousel",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Carousel for NDLA",
   "license": "GPL-3.0",
   "sideEffects": false,

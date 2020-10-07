@@ -6,14 +6,44 @@
  *
  */
 
-import { Component, Children } from 'react';
+import { Component, Children, Validator } from 'react';
 import PropTypes from 'prop-types';
-import IntlMessageFormat from 'intl-messageformat';
+import IntlMessageFormat, { Formats, Options } from 'intl-messageformat';
+import { MessageFormatElement } from 'intl-messageformat-parser';
 import memoizeIntlConstructor from 'intl-format-cache';
 import localFormatMessage from './formatMessage';
 
-export default class IntlProvider extends Component {
-  constructor(props, context = {}) {
+type GetMessageFormat = (
+  message: string | MessageFormatElement[],
+  locales?: string | string[] | undefined,
+  overrideFormats?: Partial<Formats> | undefined,
+  opts?: Options | undefined,
+) => any;
+
+interface Context {
+  getMessageFormat?: GetMessageFormat;
+  formatMessage: Function;
+}
+
+interface State {
+  getMessageFormat: GetMessageFormat;
+}
+
+interface Props {
+  locale: string;
+  messages: { [key: string]: string };
+}
+
+export default class IntlProvider extends Component<Props, State> {
+  static contextTypes: {
+    formatMessage: (...args: any[]) => any;
+    getMessageFormat: (...args: any[]) => any;
+  };
+  static childContextTypes: {
+    formatMessage: Validator<NonNullable<(...args: any[]) => any>>;
+    getMessageFormat: Validator<NonNullable<(...args: any[]) => any>>;
+  };
+  constructor(props: Props, context: Context = {} as Context) {
     super(props, context);
 
     const { getMessageFormat } = context;
@@ -44,12 +74,6 @@ export default class IntlProvider extends Component {
     return Children.only(this.props.children);
   }
 }
-
-IntlProvider.propTypes = {
-  locale: PropTypes.string.isRequired,
-  messages: PropTypes.object.isRequired, //eslint-disable-line
-  children: PropTypes.node.isRequired,
-};
 
 IntlProvider.contextTypes = {
   getMessageFormat: PropTypes.func,

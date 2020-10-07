@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import { breakpoints, mq, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import {
@@ -73,14 +72,13 @@ type subjectLink = {
 type Props = {
   subjects?: subjects[];
   subjectsLinks?: subjectLink[];
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const MultidisciplinarySubjectHeader = ({
   subjects = [],
   subjectsLinks = [],
   t,
-}: Props) => {
+}: Props & tType) => {
   const getIllustration = () => {
     if (subjects.length === 3) {
       return <PublicHealthDemocracyClimateIllustration />;

@@ -8,8 +8,7 @@ import {
   Launch,
   // @ts-ignore
 } from '@ndla/icons/common';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -32,7 +31,6 @@ const StyledLinksWrapper = styled.div`
 `;
 
 type FooterLinksProps = {
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   links: [
     {
       to: string;
@@ -101,7 +99,7 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
+const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({
   t,
   links,
 }) => (

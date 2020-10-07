@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import {
   colors,
   spacing,
@@ -222,7 +221,7 @@ const getIconType = (
   return type;
 };
 
-const LearningPathMenuContent: React.FunctionComponent<Props> = ({
+const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
   isOpen,
   currentIndex,
   cookies,

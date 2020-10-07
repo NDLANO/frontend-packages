@@ -4,8 +4,7 @@ import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import { css } from '@emotion/core';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
@@ -68,10 +67,11 @@ type additionalResourceProps = {
 };
 
 const StyledListItem = styled.li<additionalResourceProps>`
-  margin-bottom: 2px;
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 0;
+  break-inside: avoid;
+`;
+
+const StyledListElementWrapper = styled.div<additionalResourceProps>`
   ${props =>
     props.isAdditionalResource &&
     css`
@@ -94,6 +94,15 @@ const StyledListItem = styled.li<additionalResourceProps>`
         }
       }
     `}
+`;
+
+const StyledSpacingElement = styled.span`
+  display: block;
+  width: 100%;
+  height: 2px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 20px;
+  }
 `;
 
 const StyledButtonContent = styled.span`
@@ -155,7 +164,6 @@ type Props = {
   listDirection?: 'horizontal' | 'vertical';
   invertedStyle?: boolean;
   onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 export const NavigationBox = ({
@@ -170,7 +178,7 @@ export const NavigationBox = ({
   invertedStyle,
   onToggleAdditionalResources = () => {},
   t,
-}: Props) => {
+}: Props & tType) => {
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
   return (
     <StyledWrapper>
@@ -190,43 +198,44 @@ export const NavigationBox = ({
       </StyledHeadingWrapper>
       <StyledList data-testid="nav-box-list" direction={listDirection}>
         {items.map((item: ItemProps) => (
-          <StyledListItem
-            isAdditionalResource={item.isAdditionalResource}
-            lighter={colorMode === 'light'}
-            selected={item.selected}
-            key={item.label}
-            data-testid="nav-box-item">
-            <ListElementType
-              to={item.url}
-              lighter={!item.selected && colorMode === 'light'}
-              lighterGrey={!item.selected && colorMode === 'lighterGrey'}
-              darker={item.selected}
-              buttonSize="medium"
-              size="medium"
-              borderShape="sharpened"
-              width="full"
-              textAlign="left"
-              onClick={(e: React.MouseEvent<HTMLElement>) => {
-                if (onClick) {
-                  onClick(e, item.id);
-                }
-              }}>
-              <StyledButtonContent>
-                <StyledButtonContentText
-                  isAdditionalResource={item.isAdditionalResource}
-                  lighter={colorMode === 'light'}>
-                  {item.isAdditionalResource && (
-                    <StyledAdditionalResourceMark
-                      lighter={colorMode === 'light'}
-                      selected={item.selected}>
-                      T
-                    </StyledAdditionalResourceMark>
-                  )}
-                  {item.label}
-                </StyledButtonContentText>
-                {item.selected && <StyledButtonContentSelected />}
-              </StyledButtonContent>
-            </ListElementType>
+          <StyledListItem key={item.label} data-testid="nav-box-item">
+            <StyledListElementWrapper
+              isAdditionalResource={item.isAdditionalResource}
+              lighter={colorMode === 'light'}
+              selected={item.selected}>
+              <ListElementType
+                to={item.url}
+                lighter={!item.selected && colorMode === 'light'}
+                lighterGrey={!item.selected && colorMode === 'lighterGrey'}
+                darker={item.selected}
+                buttonSize="medium"
+                size="medium"
+                borderShape="sharpened"
+                width="full"
+                textAlign="left"
+                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                  if (onClick) {
+                    onClick(e, item.id);
+                  }
+                }}>
+                <StyledButtonContent>
+                  <StyledButtonContentText
+                    isAdditionalResource={item.isAdditionalResource}
+                    lighter={colorMode === 'light'}>
+                    {item.isAdditionalResource && (
+                      <StyledAdditionalResourceMark
+                        lighter={colorMode === 'light'}
+                        selected={item.selected}>
+                        T
+                      </StyledAdditionalResourceMark>
+                    )}
+                    {item.label}
+                  </StyledButtonContentText>
+                  {item.selected && <StyledButtonContentSelected />}
+                </StyledButtonContent>
+              </ListElementType>
+            </StyledListElementWrapper>
+            <StyledSpacingElement />
           </StyledListItem>
         ))}
       </StyledList>

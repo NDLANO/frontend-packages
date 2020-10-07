@@ -8,8 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import { spacing, colors, fonts } from '@ndla/core';
 const StyledWrapper = styled.div`
   padding: ${spacing.small} 0;
@@ -56,10 +55,9 @@ type Props = {
   }>;
   onComment(arg: string): void;
   current: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const VersionHistory: React.FC<Props> = ({ notes, t, children }) => {
+const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
   return (
     <StyledWrapper>
       <StyledTable>

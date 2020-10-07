@@ -44,7 +44,9 @@ export const addCopyToClipboardListeners = () => {
       const text = target.getAttribute('data-copy-string');
       const copiedTitle = target.getAttribute('data-copied-title');
 
-      copyTextToClipboard(text, el.parentNode).then(() => {
+      const success = copyTextToClipboard(text, el.parentNode);
+
+      if (success) {
         const previousTitle = target.innerHTML;
         target.innerHTML = copiedTitle;
         target.disabled = true;
@@ -53,7 +55,7 @@ export const addCopyToClipboardListeners = () => {
           target.innerHTML = previousTitle;
           target.disabled = false;
         }, 10000);
-      });
+      }
     };
   });
 };

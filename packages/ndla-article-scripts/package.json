@@ -1,6 +1,6 @@
 {
   "name": "@ndla/article-scripts",
-  "version": "0.5.18",
+  "version": "0.5.19",
   "description": "A collection of functions for making article content responsive (and interactive)",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -19,7 +19,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/util": "^0.4.3",
+    "@ndla/util": "^0.4.4",
     "focus-trap": "^4.0.2",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.14"

@@ -83,6 +83,7 @@ export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
       <Button
         title="Kopier kode"
         disabled={isCopied}
+        data-copy-string={code}
         onClick={() => {
           copyTextToClipboard(code);
           setIsCopied(true);

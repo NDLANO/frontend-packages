@@ -120,6 +120,7 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}
           </CopyButton>

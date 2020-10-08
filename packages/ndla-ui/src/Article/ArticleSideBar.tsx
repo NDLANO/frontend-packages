@@ -67,7 +67,8 @@ const ArticleSideBar = ({
             size="small"
             width="full"
             outline
-            copyNode={t('article.copyPageLinkCopied')}>
+            copyNode={t('article.copyPageLinkCopied')}
+            data-copy-string={copyPageUrlLink}>
             {t('article.copyPageLink')}
           </CopyButton>
         </ButtonWrapper>

@@ -15,18 +15,28 @@ const Wrapper = styled.div`
   padding: 20px 52px;
   background: ${colors.brand.greyLighter};
   margin: 15px 0;
-  code:first-of-type {
-    border-right: 2px solid ${colors.brand.greyLightest};
-    border-left: 4px solid ${colors.brand.primary};
-    margin-right: 10px;
-    user-select: none;
-  }
   code {
-    padding: 10px;
+    margin:0;
+    padding:0;
+  }
+  [class^="language-"] { {
+    border-left: 4px solid ${colors.brand.primary};
+    padding: 0;
     background: #fff;
     font-family: 'Source Code Pro';
+    font-size: 16px !important;
+    code:first-of-type {
+      border-right: 2px solid ${colors.brand.greyLightest};
+      margin-right: 10px;
+      user-select: none;
+    }
+    & > span:first-of-type {
+      margin-top: 10px;
+      display:block;
+    }
   }
 `;
+
 const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
@@ -63,9 +73,14 @@ export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
           padding: '0',
           overflowX: 'auto',
         }}
+        lineNumberContainerStyle={{
+          padding: '10px 10px 10px 0',
+          float: 'left',
+        }}
         style={coy}
         language={format}
         wrapLines
+        showInlineLineNumbers={false}
         showLineNumbers>
         {code}
       </SyntaxHighlighter>

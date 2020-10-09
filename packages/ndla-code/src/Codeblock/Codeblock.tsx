@@ -11,6 +11,8 @@ import { Copy } from '@ndla/icons/action';
 // @ts-ignore
 import { Done } from '@ndla/icons/editor';
 
+import { getTitleFromFormat } from '../CodeBlockEditor';
+
 const Wrapper = styled.div`
   padding: 20px 52px;
   background: ${colors.brand.greyLighter};
@@ -49,13 +51,14 @@ const Title = styled.h3`
 `;
 
 type Props = {
-  format: string;
   code: string;
+  format: string;
   title?: string | null;
 };
 
-export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
+export const Codeblock: FC<Props> = ({ code, format, title }) => {
   const [isCopied, setIsCopied] = useState(false);
+
   useEffect(() => {
     if (isCopied) {
       const timer = setInterval(() => setIsCopied(false), 3000);
@@ -65,9 +68,10 @@ export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
       };
     }
   }, [isCopied]);
+
   return (
     <Wrapper>
-      {title ? <Title>{title}</Title> : null}
+      <Title>{title ? title : getTitleFromFormat(format)}</Title>
       <SyntaxHighlighter
         customStyle={{
           padding: '0',
@@ -84,19 +88,19 @@ export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
         showLineNumbers>
         {code}
       </SyntaxHighlighter>
+
       <Button
         title="Kopier kode"
         disabled={isCopied}
+        data-copy-string={code}
         onClick={() => {
           copyTextToClipboard(code);
           setIsCopied(true);
         }}>
-        <>
-          {isCopied ? <Done /> : <Copy />}{' '}
-          {isCopied
-            ? 'Kode kopiert til utklippstavle'
-            : 'Kopier kode til utklippstavle'}
-        </>
+        {isCopied ? <Done /> : <Copy />}{' '}
+        {isCopied
+          ? 'Kode kopiert til utklippstavle'
+          : 'Kopier kode til utklippstavle'}
       </Button>
     </Wrapper>
   );

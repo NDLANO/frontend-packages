@@ -556,6 +556,11 @@ const messages = {
     save: 'Lagre',
     abort: 'Avbryt',
   },
+  codeBlock: {
+    copiedCode: 'Kode kopiert til utklippstavle',
+    copyButton: 'Kopier kode',
+    copyCode: 'Kopier kode til utklippstavle',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll framover',

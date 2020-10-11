@@ -1,16 +1,24 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React, { FC, useState, useEffect } from 'react';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { Copy } from '@ndla/icons/action';
 // @ts-ignore
 import { Done } from '@ndla/icons/editor';
-
 import { getTitleFromFormat } from '../CodeBlockEditor';
 
 const Wrapper = styled.div`
@@ -56,7 +64,7 @@ type Props = {
   title?: string | null;
 };
 
-export const Codeblock: FC<Props> = ({ code, format, title }) => {
+export const Codeblock: FC<Props & tType> = ({ code, format, t, title }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
@@ -90,7 +98,7 @@ export const Codeblock: FC<Props> = ({ code, format, title }) => {
       </SyntaxHighlighter>
 
       <Button
-        title="Kopier kode"
+        title={t('codeBlock.copyButton')}
         disabled={isCopied}
         data-copy-string={code}
         onClick={() => {
@@ -98,12 +106,10 @@ export const Codeblock: FC<Props> = ({ code, format, title }) => {
           setIsCopied(true);
         }}>
         {isCopied ? <Done /> : <Copy />}{' '}
-        {isCopied
-          ? 'Kode kopiert til utklippstavle'
-          : 'Kopier kode til utklippstavle'}
+        {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
       </Button>
     </Wrapper>
   );
 };
 
-export default Codeblock;
+export default injectT(Codeblock);

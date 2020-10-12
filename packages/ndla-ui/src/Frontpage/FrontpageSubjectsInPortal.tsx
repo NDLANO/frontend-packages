@@ -10,8 +10,7 @@ import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { noScroll } from '@ndla/util';
 import { spacing, fonts, colors, mq, breakpoints, misc } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import SafeLink from '@ndla/safelink';
 import { category as categoryProp } from '../types';
 import {
@@ -122,10 +121,9 @@ const StyledListItem = styled.li`
 
 interface Props {
   category: categoryProp;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
-const FrontpageSubjectsInPortal: React.FunctionComponent<Props> = ({
+const FrontpageSubjectsInPortal: React.FunctionComponent<Props & tType> = ({
   category,
   t,
 }) => {

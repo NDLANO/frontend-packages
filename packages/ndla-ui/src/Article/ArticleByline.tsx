@@ -8,8 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
@@ -51,7 +50,6 @@ type Props = {
   license: string;
   licenseBox?: React.ReactNode;
   copyPageUrlLink?: string;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const ArticleByline = ({
@@ -61,7 +59,7 @@ const ArticleByline = ({
   published,
   copyPageUrlLink,
   t,
-}: Props) => {
+}: Props & tType) => {
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
@@ -122,6 +120,7 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}
           </CopyButton>

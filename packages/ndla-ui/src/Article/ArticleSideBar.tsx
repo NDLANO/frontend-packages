@@ -4,8 +4,7 @@ import Button, { CopyButton } from '@ndla/button';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { fonts } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
@@ -45,7 +44,6 @@ type Props = {
   onLinkToResourcesClick?: (e: React.MouseEvent<HTMLElement>) => void;
   copyPageUrlLink?: string;
   licenseBox?: React.ReactNode;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 const ArticleSideBar = ({
   linkToResources,
@@ -53,7 +51,7 @@ const ArticleSideBar = ({
   copyPageUrlLink,
   licenseBox,
   t,
-}: Props) => {
+}: Props & tType) => {
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
@@ -69,7 +67,8 @@ const ArticleSideBar = ({
             size="small"
             width="full"
             outline
-            copyNode={t('article.copyPageLinkCopied')}>
+            copyNode={t('article.copyPageLinkCopied')}
+            data-copy-string={copyPageUrlLink}>
             {t('article.copyPageLink')}
           </CopyButton>
         </ButtonWrapper>

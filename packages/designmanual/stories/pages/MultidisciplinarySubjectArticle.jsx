@@ -77,7 +77,7 @@ const MultidisciplinarySubjectArticle = ({
         <>
           <Breadcrumblist hideOnNarrow items={[]} startOffset={268}>
             <ArticleSideBar
-              copyPageUrlLink={window.location}
+              copyPageUrlLink={window.location.href}
               onLinkToResourcesClick={onToResourcesClick}
               linkToResources="#"
             />

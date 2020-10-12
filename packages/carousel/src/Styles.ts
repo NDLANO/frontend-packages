@@ -27,43 +27,37 @@ export const StyledButton = styled.button<ButtonProps>(
     position: 'absolute',
     zIndex: 1,
   },
-  (props: ButtonProps) =>
+  props =>
     props.prev && {
       left: `${props.arrowOffset}px`,
     },
-  (props: ButtonProps) =>
+  props =>
     props.next && {
       right: `${props.arrowOffset}px`,
     },
-  (props: ButtonProps) =>
+  props =>
     props.dontShow && {
       display: 'none !important',
     },
 );
 
-type SlideProps = {
-  swiping?: boolean;
-};
-export const StyledSlideContent = styled.div<SlideProps>(
+export const StyledSlideContent = styled.div<{ swiping?: boolean }>(
   {
     display: 'flex',
     justifyContent: 'space-between',
     transition: 'transform 600ms ease',
   },
-  (props: { swiping?: boolean }) =>
+  props =>
     props.swiping && {
       transition: 'none',
     },
 );
 
-type WrapperProps = {
-  width: string;
-};
-export const StyledWrapperAutosizer = styled.div<WrapperProps>(
+export const StyledWrapperAutosizer = styled.div<{ width: string }>(
   {
     margin: '0 auto',
   },
-  (props: { width: string }) => ({
+  props => ({
     width: props.width,
   }),
 );

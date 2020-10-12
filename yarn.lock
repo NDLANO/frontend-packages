@@ -2789,10 +2789,23 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.7.tgz#613957d900fab9ff84c8dfb24fa3eef0c2a40896"
   integrity sha512-2xtoL22/3Mv6a70i4+4RB7VgbDDORoWwjcqeNysojZA0R7NK17RbY5Gof/2QiFfJgX+KkWghbwJ+d/2SB8Ndzg==
 
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/html-minifier-terser@^5.0.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-5.1.0.tgz#551a4589b6ee2cc9c1dff08056128aec29b94880"
-  integrity sha512-iYCgjm1dGPRuo12+BStjd1HiVQqhlRhWDOQigNxn023HcjnhsiFz9pc6CzJj4HwDCSQca9bxTL4PxJDbkdm3PA==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-5.1.1.tgz#3c9ee980f1a10d6021ae6632ca3e79ca2ec4fb50"
+  integrity sha512-giAlZwstKbmvMk1OO7WXSj4OZ0keXAcl2TQq4LWHiiPH2ByaH7WeUzng+Qej8UPxxv+8lRTuouo0iaNDBuzIBA==
+
+"@types/invariant@^2.2.34":
+  version "2.2.34"
+  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.34.tgz#05e4f79f465c2007884374d4795452f995720bbe"
+  integrity sha512-lYUtmJ9BqUN688fGY1U1HZoWT1/Jrmgigx2loq4ZcJpICECm/Om3V314BxdzypO0u5PORKGMM6x0OXaljV1YFg==
 
 "@types/is-function@^1.0.0":
   version "1.0.0"
@@ -2853,6 +2866,11 @@
   version "14.10.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.1.tgz#cc323bad8e8a533d4822f45ce4e5326f36e42177"
   integrity sha512-aYNbO+FZ/3KGeQCEkNhHFRIzBOUgc7QvcVNKXbfnhDkSfwUv91JsQQa10rDgKSTSLkXZ1UIyPe4FJJNVgw1xWQ==
+
+"@types/node@^14.11.2":
+  version "14.11.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.2.tgz#2de1ed6670439387da1c9f549a2ade2b0a799256"
+  integrity sha512-jiE3QIxJ8JLNcb1Ps6rDbysDhN4xa8DJJvuC9prr6w+1tIh+QAbYyNF3tyiZNLDBIuBCf4KEcV2UvQm/V60xfA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -8351,15 +8369,10 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-highlight.js@^10.1.1:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.2.0.tgz#367151bcf813adebc54822f1cb51d2e1e599619f"
-  integrity sha512-OryzPiqqNCfO/wtFo619W+nPYALM6u7iCQkum4bqRmmlcTikOkmlL06i009QelynBPAlNByTQU6cBB2cOBQtCw==
-
-highlight.js@~10.1.0:
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.1.2.tgz#c20db951ba1c22c055010648dfffd7b2a968e00c"
-  integrity sha512-Q39v/Mn5mfBlMff9r+zzA+gWxRsCRKwEMvYTiisLr/XUiFI/4puWt0Ojdko3R3JCNWGdOWaA5g/Yxqa23kC5AA==
+highlight.js@^10.1.1, highlight.js@~10.2.0:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.2.1.tgz#09784fe2e95612abbefd510948945d4fe6fa9668"
+  integrity sha512-A+sckVPIb9zQTUydC9lpRX1qRFO/N0OKEh0NwIr65ckvWA/oMY8v9P3+kGRK3w2ULSh9E8v5MszXafodQ6039g==
 
 highlight.js@~9.13.0:
   version "9.13.1"
@@ -8387,7 +8400,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -8819,22 +8832,23 @@ interpret@^2.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
   integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
 
-intl-format-cache@^2.1.0:
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-2.2.9.tgz#fb560de20c549cda20b569cf1ffb6dc62b5b93b4"
-  integrity sha512-Zv/u8wRpekckv0cLkwpVdABYST4hZNTDaX7reFetrYTJwxExR2VyTqQm+l0WmL0Qo8Mjb9Tf33qnfj0T7pjxdQ==
+intl-format-cache@^4.1.3, intl-format-cache@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-4.3.1.tgz#484d31a9872161e6c02139349b259a6229ade377"
+  integrity sha512-OEUYNA7D06agqPOYhbTkl0T8HA3QKSuwWh1HiClEnpd9vw7N+3XsQt5iZ0GUEchp5CW1fQk/tary+NsbF3yQ1Q==
 
-intl-messageformat-parser@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.4.0.tgz#b43d45a97468cadbe44331d74bb1e8dea44fc075"
-  integrity sha1-tD1FqXRoytvkQzHXS7Ho3qRPwHU=
+intl-messageformat-parser@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-2.1.3.tgz#c918e36a08bd7ff01349d8ea3736262c986aaeb1"
+  integrity sha512-YOP2GuQ8Y+f3j2Vti1/abcozYlkv/WsIffsRP8cgtN4Oha5hjhNnucxzyfmeAoDgDHw4s/lNyLylB01369a5lg==
 
-intl-messageformat@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-2.2.0.tgz#345bcd46de630b7683330c2e52177ff5eab484fc"
-  integrity sha1-NFvNRt5jC3aDMwwuUhd/9eq0hPw=
+intl-messageformat@5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-5.4.3.tgz#3864f6201d779e61b09c1afb6b8ed386163a18dc"
+  integrity sha512-wiGIeeokY6D/TFC6JYoBIUmZJ2AzkTHJuWp5QulDH4h77aghFTBm+8MvjTLIUiQ/z7xiY3SUQN2UBG7EtwYTAg==
   dependencies:
-    intl-messageformat-parser "1.4.0"
+    intl-format-cache "^4.1.3"
+    intl-messageformat-parser "^2.1.3"
 
 inuitcss@6.0.0-beta.4:
   version "6.0.0-beta.4"
@@ -10272,12 +10286,12 @@ lower-case@^2.0.1:
     tslib "^1.10.0"
 
 lowlight@^1.14.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/lowlight/-/lowlight-1.14.0.tgz#83ebc143fec0f9e6c0d3deffe01be129ce56b108"
-  integrity sha512-N2E7zTM7r1CwbzwspPxJvmjAbxljCPThTFawEX2Z7+P3NGrrvY54u8kyU16IY4qWfoVIxY8SYCS8jTkuG7TqYA==
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/lowlight/-/lowlight-1.15.0.tgz#51a8888852493cbbe4a7f39919b237a1d502c18c"
+  integrity sha512-GhG/R+2zt5Wg8kCfOhapH8wDdJSHSIvdDW/DOPXCeResVqgHYLnOHBp6g9DoUIPVIyBpvQYCG4SV7XeelYFpyA==
   dependencies:
     fault "^1.0.0"
-    highlight.js "~10.1.0"
+    highlight.js "~10.2.0"
 
 lowlight@~1.11.0:
   version "1.11.0"
@@ -12939,10 +12953,10 @@ react-swipeable@^5.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-syntax-highlighter@13.5.3:
-  version "13.5.3"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-13.5.3.tgz#9712850f883a3e19eb858cf93fad7bb357eea9c6"
-  integrity sha512-crPaF+QGPeHNIblxxCdf2Lg936NAHKhNhuMzRL3F9ct6aYXL3NcZtCL0Rms9+qVo6Y1EQLdXGypBNSbPL/r+qg==
+react-syntax-highlighter@15.1.0:
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.1.0.tgz#06f1d6877b1964061da58cb8a547c1c522ce30e7"
+  integrity sha512-+K7PKhXgtL3EJ2jnJEkpZe4dfXWA4OXDODxnQQLl6g4wXY3IpCiL2wy7bPMSiXFMvDtuBmIiHztrMKnEkQnXUQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "^10.1.1"

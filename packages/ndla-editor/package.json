@@ -1,6 +1,6 @@
 {
   "name": "@ndla/editor",
-  "version": "0.7.18",
+  "version": "0.7.23",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -18,7 +18,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.6.27",
+    "@ndla/core": "^0.6.29",
     "@ndla/icons": "^0.6.24",
     "@types/react-beautiful-dnd": "^11.0.3",
     "prismjs": "^1.21.0",

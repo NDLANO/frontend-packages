@@ -6,8 +6,7 @@ import { css } from '@emotion/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -114,7 +113,6 @@ type Props = {
   isAdditionalTopic?: boolean;
   invertedStyle?: boolean;
   children: React.ReactNode;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 export const NavigationTopicAbout = ({
@@ -127,7 +125,7 @@ export const NavigationTopicAbout = ({
   invertedStyle,
   children,
   t,
-}: Props) => {
+}: Props & tType) => {
   return (
     <StyledWrapper data-testid="nav-topic-about">
       <StyledH1 invertedStyle={invertedStyle}>

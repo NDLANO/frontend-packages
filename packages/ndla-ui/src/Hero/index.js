@@ -16,5 +16,3 @@ export {
   Hero,
   NdlaFilmHero,
 } from './Hero';
-
-export { default as FFHeroBadge } from './FFHeroBadge';

@@ -14,8 +14,7 @@ import { isIE, browserVersion } from 'react-device-detect';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 import { spacing, colors, animations, mq, breakpoints, misc } from '@ndla/core';
 // @ts-ignore
 import { Backdrop } from '@ndla/modal';
@@ -24,8 +23,8 @@ import { elementRectType } from '../types';
 const fullSizedCircle = 1.1;
 
 type ModalWrapperProps = {
-  elementRect: elementRectType;
-  animationDirection: 'in' | 'out';
+  elementRect?: elementRectType;
+  animationDirection?: 'in' | 'out';
   animationNameIn: string;
   animationNameOut: string;
   isIE11: boolean;
@@ -72,10 +71,14 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
                 opacity: 0;
                 background: ${colors.brand.light};
                 transform: translate(
-                    calc(-100vw + ${props.elementRect.fromX}px),
-                    calc(-50vh + ${props.elementRect.fromY}px)
+                    calc(
+                      -100vw + ${props.elementRect ? props.elementRect.fromX : ''}px
+                    ),
+                    calc(
+                      -50vh + ${props.elementRect ? props.elementRect.fromY : ''}px
+                    )
                   )
-                  scale(${props.elementRect.fromScale});
+                  scale(${props.elementRect ? props.elementRect.fromScale : ''});
               }
               10% {
                 opacity: 1;
@@ -107,10 +110,14 @@ const StyledModalWrapper = styled.div<ModalWrapperProps>`
               100% {
                 opacity: 0;
                 transform: translate(
-                    calc(-100vw + ${props.elementRect.fromX}px),
-                    calc(-50vh + ${props.elementRect.fromY}px)
+                    calc(
+                      -100vw + ${props.elementRect ? props.elementRect.fromX : ''}px
+                    ),
+                    calc(
+                      -50vh + ${props.elementRect ? props.elementRect.fromY : ''}px
+                    )
                   )
-                  scale(${props.elementRect.fromScale});
+                  scale(${props.elementRect ? props.elementRect.fromScale : ''});
               }
             }
           }
@@ -137,7 +144,7 @@ const StyledContainerWrapper = styled.div<ie11Props>`
 `;
 
 interface StyledContainerProps {
-  animationDirection: 'in' | 'out';
+  animationDirection?: 'in' | 'out';
 }
 
 const StyledContainer = styled.div<StyledContainerProps>`
@@ -201,14 +208,13 @@ interface Props {
   children: React.ReactNode;
   onClosed: () => void;
   onClose: () => void;
-  animationDirection: 'in' | 'out';
-  elementRect: elementRectType;
+  animationDirection?: 'in' | 'out';
+  elementRect?: elementRectType;
   menuOpenedCounter: number;
   menuIsOpen: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 }
 
-const FrontpageMenuPortal: React.FunctionComponent<Props> = ({
+const FrontpageMenuPortal: React.FunctionComponent<Props & tType> = ({
   children,
   onClose,
   onClosed,

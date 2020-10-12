@@ -6,10 +6,9 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Editor from 'react-simple-code-editor';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Code } from '@ndla/icons/editor';
 // @ts-ignore
@@ -32,7 +31,6 @@ const hightlightWithLineNumbers = (input: string, language: string) =>
 type Props = {
   onSave: Function;
   onAbort: Function;
-  t: Function;
   content: {
     code: string;
     title: string;
@@ -40,7 +38,22 @@ type Props = {
   } | null;
 };
 
-const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
+export const getTitleFromFormat = (format: string) => {
+  const selectedLanguage = languageOptions.find(
+    (item: ICodeLangugeOption) => item.format === format,
+  );
+  if (selectedLanguage) {
+    return selectedLanguage.title;
+  }
+  return;
+};
+
+const CodeBlockEditor: FC<Props & tType> = ({
+  onSave,
+  onAbort,
+  t,
+  content = null,
+}) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState({
     code: content ? content.code : '',
@@ -60,11 +73,6 @@ const CodeBlockEditor = ({ onSave, onAbort, t, content = null }: Props) => {
   };
 
   const abort = () => {
-    setCodeContent({
-      code: '',
-      title: defaultLang.title,
-      format: defaultLang.format,
-    });
     onAbort();
   };
 

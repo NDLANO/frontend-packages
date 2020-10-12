@@ -8,8 +8,7 @@ import {
   Launch,
   // @ts-ignore
 } from '@ndla/icons/common';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -32,7 +31,6 @@ const StyledLinksWrapper = styled.div`
 `;
 
 type FooterLinksProps = {
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   links: [
     {
       to: string;
@@ -42,10 +40,7 @@ type FooterLinksProps = {
       twitter: string;
     },
   ];
-  isFFServer?: boolean; // To be removed when FF-server is not in use anymore
 };
-
-const additionalFFCommonLinks = [{ key: 'ndla', url: 'https://ndla.no' }];
 
 const commonLinks = [
   { key: 'omNdla', url: 'https://om.ndla.no' },
@@ -104,52 +99,46 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps> = ({
+const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({
   t,
   links,
-  isFFServer,
-}) => {
-  const mainLinks = isFFServer
-    ? [...additionalFFCommonLinks, ...commonLinks]
-    : commonLinks;
-  return (
-    <>
-      <StyledLinksWrapper>
-        <section>
-          <StyledHeaderLinks>
-            {t('footer.footerLinksHeader')} <Launch />
-          </StyledHeaderLinks>
-          <StyledNav>
-            {mainLinks.map(link => (
-              <div key={link.url}>
-                <StyledSafeLink
-                  key={t(`footer.ndlaLinks.${link.key}`)}
-                  aria-label={t(`footer.ndlaLinks.${link.key}`)}
-                  to={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  {t(`footer.ndlaLinks.${link.key}`)}
-                </StyledSafeLink>
-              </div>
-            ))}
-          </StyledNav>
-        </section>
-        <section>
-          <StyledNav>
-            {links.map(link => (
-              <StyledSocialMediaLinkWrapper key={link.to}>
-                <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
-                <StyledSafeLink to={link.to}>
-                  {link.text}
-                  <Forward />
-                </StyledSafeLink>
-              </StyledSocialMediaLinkWrapper>
-            ))}
-          </StyledNav>
-        </section>
-      </StyledLinksWrapper>
-    </>
-  );
-};
+}) => (
+  <>
+    <StyledLinksWrapper>
+      <section>
+        <StyledHeaderLinks>
+          {t('footer.footerLinksHeader')} <Launch />
+        </StyledHeaderLinks>
+        <StyledNav>
+          {commonLinks.map(link => (
+            <div key={link.url}>
+              <StyledSafeLink
+                key={t(`footer.ndlaLinks.${link.key}`)}
+                aria-label={t(`footer.ndlaLinks.${link.key}`)}
+                to={link.url}
+                target="_blank"
+                rel="noopener noreferrer">
+                {t(`footer.ndlaLinks.${link.key}`)}
+              </StyledSafeLink>
+            </div>
+          ))}
+        </StyledNav>
+      </section>
+      <section>
+        <StyledNav>
+          {links.map(link => (
+            <StyledSocialMediaLinkWrapper key={link.to}>
+              <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
+              <StyledSafeLink to={link.to}>
+                {link.text}
+                <Forward />
+              </StyledSafeLink>
+            </StyledSocialMediaLinkWrapper>
+          ))}
+        </StyledNav>
+      </section>
+    </StyledLinksWrapper>
+  </>
+);
 
 export default injectT(FooterLinks);

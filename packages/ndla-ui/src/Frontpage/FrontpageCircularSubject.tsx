@@ -84,9 +84,9 @@ type Props = {
   category: categoryProp;
 };
 
-const FrontpageCircularSubject: React.FunctionComponent<
-  Props & React.HTMLProps<HTMLButtonElement> & tType
-> = ({ category, t, ...rest }) => {
+const FrontpageCircularSubject: React.FunctionComponent<Props &
+  React.HTMLProps<HTMLButtonElement> &
+  tType> = ({ category, t, ...rest }) => {
   // @ts-ignore
   const Illustration = categoryIllustrations[category.name];
   return (

@@ -52,9 +52,8 @@ type ModalWrapperProps = {
   children: JSX.Element;
 };
 
-const ModalWrapperComponent: React.FunctionComponent<
-  ModalWrapperProps & tType
-> = ({ innerWidth, closeLabel, children, t }) => {
+const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps &
+  tType> = ({ innerWidth, closeLabel, children, t }) => {
   if (innerWidth < 601) {
     return (
       <StyledWrapper>

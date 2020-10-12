@@ -29,7 +29,7 @@
   "dependencies": {
     "@ndla/core": "^0.6.27",
     "@ndla/icons": "^0.6.24",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.21.0",
     "react-simple-code-editor": "^0.11.0",
     "@ndla/i18n": "^0.4.2",
     "@types/react-syntax-highlighter": "^11.0.4",

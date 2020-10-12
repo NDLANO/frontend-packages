@@ -45,6 +45,29 @@ class i18nReactComponent extends Component {
 export default injectT(i18nReactComponent);
 ```
 
+```tsx
+// After initial instantiation, using it with a React Functional Component and typescript
+// It is important not to define t in the Props interface as then typescript will require to pass
+// the t in the props, but rather import the type from @ndla/i18n package as shown in the example below.
+...
+import { injectT, tType } from '@ndla/i18n';
+
+interface Props {
+  prop1: number;
+  prop2: string;
+}
+
+const i18nReactComponent: FC<Props & tType> = ({ t, prop1, prop2 }) => {
+  ...
+  render() {
+    return <button>{t('translationItem.buttonText')}</button>;
+  }
+}
+...
+
+export default injectT(i18nReactComponent);
+```
+
 ```jsx
 // Using it with a render props component
 ...

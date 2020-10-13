@@ -15,6 +15,12 @@ export type IntersectionObserverHookResult = [
   { entry: IntersectionObserverEntry | undefined },
 ];
 
+const IntersectionObserverBrowserSupport = () =>
+  !(
+    !('IntersectionObserver' in window) ||
+    !('IntersectionObserverEntry' in window)
+  );
+
 // For more info:
 // https://developers.google.com/web/updates/2016/04/intersectionobserver
 // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
@@ -59,7 +65,7 @@ export function useIntersectionObserver({
     },
     [root, rootMargin, threshold],
   );
-  if (isIE11) {
+  if (isIE11 || !IntersectionObserverBrowserSupport()) {
     return [() => {}, { entry }];
   }
   return [refCallback, { entry }];

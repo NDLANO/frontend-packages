@@ -38,9 +38,9 @@
     "react-syntax-highlighter": "15.1.0"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.9",
-    "@emotion/styled": "^10.0.9",
-    "react": "^16.8.4"
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "react": "16.13.1"
   },
   "publishConfig": {
     "access": "public"

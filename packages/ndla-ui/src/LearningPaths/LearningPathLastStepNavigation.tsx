@@ -52,9 +52,8 @@ interface Props {
   learningPathName: string;
 }
 
-const LearningPathLastStepNavigation: React.FunctionComponent<
-  Props & tType
-> = ({ subject, topic, learningPathName, children, t }) => (
+const LearningPathLastStepNavigation: React.FunctionComponent<Props &
+  tType> = ({ subject, topic, learningPathName, children, t }) => (
   <OneColumn css={OneColumnCss}>
     <LayoutItem layout="center">
       <StyledHeader className="c-article__title">

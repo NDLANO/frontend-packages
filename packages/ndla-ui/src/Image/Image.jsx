@@ -13,9 +13,7 @@ import LazyLoadImage from './LazyLoadImage';
 
 export const makeSrcQueryString = (width, crop, focalPoint) => {
   const cropParams = crop
-    ? `&cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${
-        crop.startY
-      }&cropEndY=${crop.endY}`
+    ? `&cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`
     : '';
   const focalPointParams = focalPoint
     ? `&focalX=${focalPoint.x}&focalY=${focalPoint.y}`

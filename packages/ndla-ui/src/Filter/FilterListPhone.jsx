@@ -118,7 +118,10 @@ class FilterListPhone extends Component {
               filters={currentlyActiveFilters}
               showOnSmallScreen={showActiveFiltersOnSmallScreen}
               onFilterRemove={value => {
-                onChange(values.filter(option => option !== value), value);
+                onChange(
+                  values.filter(option => option !== value),
+                  value,
+                );
               }}
             />
           )}

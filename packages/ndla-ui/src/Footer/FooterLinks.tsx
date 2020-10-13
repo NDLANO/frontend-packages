@@ -38,7 +38,7 @@ type FooterLinksProps = {
       icon: React.ReactNode;
       facebook: string;
       twitter: string;
-    }
+    },
   ];
 };
 

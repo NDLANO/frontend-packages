@@ -34,9 +34,9 @@ export const FigureLicenseCta = ({
         <li {...classLicenses('item')}>{`${messages.title}: ${title}`}</li>
       )}
       {authors.map(author => (
-        <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${
-          author.name
-        }`}</li>
+        <li
+          key={uuid()}
+          {...classLicenses('item')}>{`${author.type}: ${author.name}`}</li>
       ))}
       {origin && (
         <li {...classLicenses('item')}>

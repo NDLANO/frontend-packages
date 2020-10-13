@@ -123,8 +123,8 @@ Modal.propTypes = {
   activateButton: (props, propName, componentName) => {
     if (
       !props.controllable &&
-      (typeof props[propName] !== 'string' &&
-        !React.isValidElement(props[propName]))
+      typeof props[propName] !== 'string' &&
+      !React.isValidElement(props[propName])
     ) {
       return new Error(
         `Invalid prop \`${propName}\` supplied to` +

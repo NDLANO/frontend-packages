@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "@ndla/util": "^0.4.4",
-    "lodash": "^4.17.14"
+    "lodash": "^4.17.20"
   },
   "publishConfig": {
     "access": "public"

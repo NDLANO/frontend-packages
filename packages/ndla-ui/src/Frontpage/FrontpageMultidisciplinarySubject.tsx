@@ -79,9 +79,8 @@ type Props = {
   topics?: [{ url: string; title: string; id: string }];
 };
 
-const FrontpageMultidisciplinarySubject: React.FunctionComponent<
-  Props & tType
-> = ({ url, t, topics }) => (
+const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props &
+  tType> = ({ url, t, topics }) => (
   <StyledSection>
     <ComponentCursor
       variant="left"

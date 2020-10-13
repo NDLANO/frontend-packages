@@ -123,7 +123,7 @@ type Props = {
       icon: React.ReactNode;
       facebook: string;
       twitter: string;
-    }
+    },
   ];
   languageSelector?: React.ReactNode;
 };

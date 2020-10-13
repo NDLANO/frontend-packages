@@ -178,11 +178,21 @@ const FilterShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
 });
 
+function lazyFunction(f) {
+  return function() {
+    return f.apply(this, arguments);
+  };
+}
+
+const lazyItemShape = lazyFunction(function() {
+  return ItemShape;
+});
+
 const ItemShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   // eslint-disable-next-line no-use-before-define
-  topics: PropTypes.arrayOf(ItemShape),
+  topics: PropTypes.arrayOf(lazyItemShape),
   filters: PropTypes.arrayOf(FilterShape),
 }).isRequired;
 

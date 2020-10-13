@@ -12,7 +12,7 @@ export type IntersectionObserverHookRefCallback = (
 
 export type IntersectionObserverHookResult = [
   IntersectionObserverHookRefCallback,
-  { entry: IntersectionObserverEntry | undefined }
+  { entry: IntersectionObserverEntry | undefined },
 ];
 
 // For more info:

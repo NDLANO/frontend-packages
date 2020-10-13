@@ -54,9 +54,7 @@ export default function VideoSearchResultYouTube({
               )}`}
             </div>
             <div>
-              {`${translations.interactioncount}: ${
-                videoData.interactioncount
-              }`}
+              {`${translations.interactioncount}: ${videoData.interactioncount}`}
             </div>
             <div>{videoData.description}</div>
             <Button

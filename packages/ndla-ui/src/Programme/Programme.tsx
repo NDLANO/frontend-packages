@@ -82,11 +82,11 @@ type Props = {
             {
               label: string;
               url: string;
-            }
+            },
           ];
-        }
+        },
       ];
-    }
+    },
   ];
 };
 

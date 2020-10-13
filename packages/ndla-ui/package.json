@@ -50,7 +50,7 @@
     "focus-trap-react": "^6.0.0",
     "html-react-parser": "^0.10.3",
     "jump.js": "^1.0.2",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.20",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^1.6.2",
     "react-facebook": "^6.0.15",
@@ -72,8 +72,8 @@
     "enzyme-adapter-react-16": "^1.9.1",
     "mini-css-extract-plugin": "^0.5.0",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "publishConfig": {
     "access": "public"

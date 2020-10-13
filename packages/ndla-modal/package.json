@@ -1,6 +1,6 @@
 {
   "name": "@ndla/modal",
-  "version": "0.4.30",
+  "version": "0.4.31",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -19,8 +19,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^0.3.39",
-    "@ndla/core": "^0.6.29",
+    "@ndla/button": "^0.3.40",
+    "@ndla/core": "^0.6.30",
     "@ndla/util": "^0.4.4",
     "@reach/dialog": "^0.2.9"
   },

@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from 'react';
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import React, { FC, useState, useEffect } from 'react';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-// coy looks good, vs or any dark theme?
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { Copy } from '@ndla/icons/action';
 // @ts-ignore
 import { Done } from '@ndla/icons/editor';
+import { getTitleFromFormat } from '../CodeBlockEditor';
 
 const Wrapper = styled.div`
   padding: 20px 52px;
@@ -37,6 +46,7 @@ const Wrapper = styled.div`
     }
   }
 `;
+
 const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
@@ -49,13 +59,14 @@ const Title = styled.h3`
 `;
 
 type Props = {
-  format: string;
   code: string;
+  format: string;
   title?: string | null;
 };
 
-export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
+export const Codeblock: FC<Props & tType> = ({ code, format, t, title }) => {
   const [isCopied, setIsCopied] = useState(false);
+
   useEffect(() => {
     if (isCopied) {
       const timer = setInterval(() => setIsCopied(false), 3000);
@@ -65,9 +76,10 @@ export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
       };
     }
   }, [isCopied]);
+
   return (
     <Wrapper>
-      {title ? <Title>{title}</Title> : null}
+      <Title>{title ? title : getTitleFromFormat(format)}</Title>
       <SyntaxHighlighter
         customStyle={{
           padding: '0',
@@ -84,23 +96,20 @@ export const Codeblock = ({ title, code, format = 'markup' }: Props) => {
         showLineNumbers>
         {code}
       </SyntaxHighlighter>
+
       <Button
-        title="Kopier kode"
+        title={t('codeBlock.copyButton')}
         disabled={isCopied}
         data-copy-string={code}
         onClick={() => {
           copyTextToClipboard(code);
           setIsCopied(true);
         }}>
-        <>
-          {isCopied ? <Done /> : <Copy />}{' '}
-          {isCopied
-            ? 'Kode kopiert til utklippstavle'
-            : 'Kopier kode til utklippstavle'}
-        </>
+        {isCopied ? <Done /> : <Copy />}{' '}
+        {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
       </Button>
     </Wrapper>
   );
 };
 
-export default Codeblock;
+export default injectT(Codeblock);

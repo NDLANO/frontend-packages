@@ -1,5 +1,5 @@
 import React from 'react';
-import { Codeblock } from '@ndla/ui';
+import { Codeblock } from '@ndla/code';
 import ComponentInfo from '../ComponentInfo';
 
 const htmlCode = `<div class="demo-content">
@@ -57,7 +57,7 @@ const CodeExample = () => (
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',
     ]}>
     <p>Kodekomponent for visning av kodesnutter</p>
-    <Codeblock code={htmlCode} title="HTML EKSEMPEL" />
+    <Codeblock code={htmlCode} format="markup" title="HTML EKSEMPEL" />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock

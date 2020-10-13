@@ -553,6 +553,11 @@ const messages = {
     save: 'Save',
     abort: 'Abort',
   },
+  codeBlock: {
+    copiedCode: 'Copied code',
+    copyButton: 'Copy code',
+    copyCode: 'Copy code',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',

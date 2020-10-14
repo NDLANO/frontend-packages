@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@ndla/button';
 import { Codeblock } from '@ndla/code';
 import { ArrowExpand } from '@ndla/icons/editor';
+import { Cross } from '@ndla/icons/action';
 import ComponentInfo from '../ComponentInfo';
 
 const htmlCode = `<div class="demo-content">
@@ -33,6 +34,12 @@ console.log(first);`;
 const fullscreenButton = (
   <Button stripped>
     <ArrowExpand />
+  </Button>
+);
+
+const edCloseButton = (
+  <Button stripped>
+    <Cross />
   </Button>
 );
 
@@ -72,7 +79,12 @@ const CodeExample = () => (
       title="HTML EKSEMPEL"
       showCopy={true}
     />
-    <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
+    <Codeblock
+      actionButton={edCloseButton}
+      code={cssCode}
+      format="css"
+      title="CSS EKSEMPEL"
+    />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock
       code="Pure text without highlighting and no title"

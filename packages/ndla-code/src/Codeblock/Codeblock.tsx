@@ -22,7 +22,7 @@ import { Done } from '@ndla/icons/editor';
 import { getTitleFromFormat } from '../CodeBlockEditor';
 
 const Wrapper = styled.div`
-  padding: 20px 52px;
+  padding: 10px 26px;
   background: ${colors.brand.greyLighter};
   margin: 15px 0;
   code {
@@ -47,6 +47,12 @@ const Wrapper = styled.div`
   }
 `;
 
+const TitleBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
@@ -62,9 +68,18 @@ type Props = {
   code: string;
   format: string;
   title?: string | null;
+  actionButton?: FC | null;
+  showCopyButton?: boolean;
 };
 
-export const Codeblock: FC<Props & tType> = ({ code, format, t, title }) => {
+export const Codeblock: FC<Props & tType> = ({
+  actionButton,
+  code,
+  format,
+  showCopyButton = false,
+  t,
+  title,
+}) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
@@ -79,7 +94,10 @@ export const Codeblock: FC<Props & tType> = ({ code, format, t, title }) => {
 
   return (
     <Wrapper>
-      <Title>{title ? title : getTitleFromFormat(format)}</Title>
+      <TitleBar>
+        <Title>{title ? title : getTitleFromFormat(format)}</Title>
+        {actionButton}
+      </TitleBar>
       <SyntaxHighlighter
         customStyle={{
           padding: '0',
@@ -97,17 +115,19 @@ export const Codeblock: FC<Props & tType> = ({ code, format, t, title }) => {
         {code}
       </SyntaxHighlighter>
 
-      <Button
-        title={t('codeBlock.copyButton')}
-        disabled={isCopied}
-        data-copy-string={code}
-        onClick={() => {
-          copyTextToClipboard(code);
-          setIsCopied(true);
-        }}>
-        {isCopied ? <Done /> : <Copy />}{' '}
-        {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
-      </Button>
+      {showCopyButton && (
+        <Button
+          title={t('codeBlock.copyButton')}
+          disabled={isCopied}
+          data-copy-string={code}
+          onClick={() => {
+            copyTextToClipboard(code);
+            setIsCopied(true);
+          }}>
+          {isCopied ? <Done /> : <Copy />}{' '}
+          {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
+        </Button>
+      )}
     </Wrapper>
   );
 };

@@ -1,5 +1,7 @@
 import React from 'react';
+import Button from '@ndla/button';
 import { Codeblock } from '@ndla/code';
+import { ArrowExpand } from '@ndla/icons/editor';
 import ComponentInfo from '../ComponentInfo';
 
 const htmlCode = `<div class="demo-content">
@@ -27,6 +29,12 @@ const cssCode = `body {
 const jsCode = `const arr = ["This", "Little", "Piggy"];
 const first = arr.shift();
 console.log(first);`;
+
+const fullscreenButton = (
+  <Button stripped>
+    <ArrowExpand />
+  </Button>
+);
 
 const CodeExample = () => (
   <ComponentInfo
@@ -57,7 +65,13 @@ const CodeExample = () => (
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',
     ]}>
     <p>Kodekomponent for visning av kodesnutter</p>
-    <Codeblock code={htmlCode} format="markup" title="HTML EKSEMPEL" />
+    <Codeblock
+      actionButton={fullscreenButton}
+      code={htmlCode}
+      format="markup"
+      title="HTML EKSEMPEL"
+      showCopyButton={true}
+    />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock

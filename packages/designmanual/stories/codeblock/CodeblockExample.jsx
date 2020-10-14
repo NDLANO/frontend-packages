@@ -70,7 +70,7 @@ const CodeExample = () => (
       code={htmlCode}
       format="markup"
       title="HTML EKSEMPEL"
-      showCopyButton={true}
+      showCopy={true}
     />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />

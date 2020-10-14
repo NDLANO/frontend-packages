@@ -69,14 +69,14 @@ type Props = {
   format: string;
   title?: string | null;
   actionButton?: FC | null;
-  showCopyButton?: boolean;
+  showCopy?: boolean;
 };
 
 export const Codeblock: FC<Props & tType> = ({
   actionButton,
   code,
   format,
-  showCopyButton = false,
+  showCopy: showCopyButton = false,
   t,
   title,
 }) => {

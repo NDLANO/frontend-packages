@@ -76,7 +76,7 @@ export const Codeblock: FC<Props & tType> = ({
   actionButton,
   code,
   format,
-  showCopy: showCopyButton = false,
+  showCopy = false,
   t,
   title,
 }) => {
@@ -115,7 +115,7 @@ export const Codeblock: FC<Props & tType> = ({
         {code}
       </SyntaxHighlighter>
 
-      {showCopyButton && (
+      {showCopy && (
         <Button
           title={t('codeBlock.copyButton')}
           disabled={isCopied}

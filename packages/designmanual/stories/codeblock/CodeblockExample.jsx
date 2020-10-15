@@ -72,11 +72,7 @@ const CodeExample = () => (
       title="HTML EKSEMPEL"
       showCopy={true}
     />
-    <Codeblock
-      code={cssCode}
-      format="css"
-      title="CSS EKSEMPEL"
-    />
+    <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock
       code="Pure text without highlighting and no title"

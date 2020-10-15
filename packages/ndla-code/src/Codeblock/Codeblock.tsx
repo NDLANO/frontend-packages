@@ -16,6 +16,8 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
 // @ts-ignore
 import { ArrowExpand } from '@ndla/icons/editor';
+// @ts-ignore
+import { ArrowCollapse } from '@ndla/icons/common';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -109,7 +111,7 @@ export const Codeblock: FC<Props & tType> = ({
 
   const fullscreenButton = (
     <Button stripped onClick={() => toggleFullscreen()}>
-      <ArrowExpand />
+      {isFullscreen ? <ArrowCollapse /> : <ArrowExpand />}
     </Button>
   );
 
@@ -117,10 +119,7 @@ export const Codeblock: FC<Props & tType> = ({
     <Wrapper>
       <TitleBar>
         <Title>{title ? title : getTitleFromFormat(format)}</Title>
-        <ButtonBar>
-          {isFullscreen ? '' : fullscreenButton}
-          {actionButton}
-        </ButtonBar>
+        <ButtonBar>{actionButton || fullscreenButton}</ButtonBar>
       </TitleBar>
       <SyntaxHighlighter
         customStyle={{

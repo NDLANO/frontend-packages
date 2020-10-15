@@ -1,5 +1,7 @@
 import React from 'react';
+import Button from '@ndla/button';
 import { Codeblock } from '@ndla/code';
+import { Cross } from '@ndla/icons/action';
 import ComponentInfo from '../ComponentInfo';
 
 const htmlCode = `<div class="demo-content">
@@ -28,10 +30,22 @@ const jsCode = `const arr = ["This", "Little", "Piggy"];
 const first = arr.shift();
 console.log(first);`;
 
+const edCloseButton = (
+  <Button stripped>
+    <Cross />
+  </Button>
+);
+
 const CodeExample = () => (
   <ComponentInfo
-    reactCode={`<Code\n  title="HTML EKSEMPEL"\n  format="markup"\n  code="<p>Hello world!</p>"\n/>\n\nconst cssCode = \`${cssCode}\`;\n<Code\n  code={cssCode}\n  format="css"\n  title="CSS EKSEMPEL"\n/>`}
+    reactCode={`<Codeblock\n title="HTML EKSEMPEL"\n format="markup"\n code="<p>Hello world!</p>"\n showCopy="true"\n/>\n\nconst cssCode = \`${cssCode}\`;\n<Codeblock\n  code={cssCode}\n  format="css"\n  title="CSS EKSEMPEL"\n/>`}
     usesPropTypes={[
+      {
+        name: 'actionButton',
+        type: 'Component',
+        default: 'Optional',
+        description: 'Button to show instead of fullscreen. Used in ed.',
+      },
       {
         name: 'title',
         type: 'string',
@@ -41,14 +55,20 @@ const CodeExample = () => (
       {
         name: 'format',
         type: 'string',
-        default: 'markup',
-        description: 'Code type, defaults to markup',
+        default: 'Required',
+        description: 'Code type',
       },
       {
         name: 'code',
         type: 'string',
         default: 'Required',
         description: 'Required code snippet',
+      },
+      {
+        name: 'showCopy',
+        type: 'boolean',
+        default: 'false',
+        description: 'Show copy code button',
       },
     ]}
     status={2}
@@ -57,12 +77,19 @@ const CodeExample = () => (
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',
     ]}>
     <p>Kodekomponent for visning av kodesnutter</p>
-    <Codeblock code={htmlCode} format="markup" title="HTML EKSEMPEL" />
+    <Codeblock
+      actionButton={edCloseButton}
+      code={htmlCode}
+      format="markup"
+      title="HTML EKSEMPEL"
+      showCopy={true}
+    />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock
       code="Pure text without highlighting and no title"
       format="text"
+      title=" "
     />
   </ComponentInfo>
 );

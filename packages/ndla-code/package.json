@@ -31,7 +31,6 @@
     "@ndla/core": "^0.6.30",
     "@ndla/i18n": "^0.5.1",
     "@ndla/icons": "^0.6.25",
-    "@ndla/modal": "0.4.31",
     "@ndla/util": "^0.4.4",
     "@types/react-syntax-highlighter": "^11.0.4",
     "prismjs": "^1.22.0",

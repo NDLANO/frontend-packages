@@ -38,8 +38,14 @@ const edCloseButton = (
 
 const CodeExample = () => (
   <ComponentInfo
-    reactCode={`<Code\n  title="HTML EKSEMPEL"\n  format="markup"\n  code="<p>Hello world!</p>"\n/>\n\nconst cssCode = \`${cssCode}\`;\n<Code\n  code={cssCode}\n  format="css"\n  title="CSS EKSEMPEL"\n/>`}
+    reactCode={`<Codeblock\n title="HTML EKSEMPEL"\n format="markup"\n code="<p>Hello world!</p>"\n showCopy="true"\n/>\n\nconst cssCode = \`${cssCode}\`;\n<Codeblock\n  code={cssCode}\n  format="css"\n  title="CSS EKSEMPEL"\n/>`}
     usesPropTypes={[
+      {
+        name: 'actionButton',
+        type: 'Component',
+        default: 'Optional',
+        description: 'Button to show instead of fullscreen. Used in ed.',
+      },
       {
         name: 'title',
         type: 'string',
@@ -57,6 +63,12 @@ const CodeExample = () => (
         type: 'string',
         default: 'Required',
         description: 'Required code snippet',
+      },
+      {
+        name: 'showCopy',
+        type: 'boolean',
+        default: 'false',
+        description: 'Show copy code button',
       },
     ]}
     status={2}

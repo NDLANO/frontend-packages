@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@ndla/button';
 import { Codeblock } from '@ndla/code';
-import { ArrowExpand } from '@ndla/icons/editor';
 import { Cross } from '@ndla/icons/action';
 import ComponentInfo from '../ComponentInfo';
 
@@ -30,12 +29,6 @@ const cssCode = `body {
 const jsCode = `const arr = ["This", "Little", "Piggy"];
 const first = arr.shift();
 console.log(first);`;
-
-const fullscreenButton = (
-  <Button stripped>
-    <ArrowExpand />
-  </Button>
-);
 
 const edCloseButton = (
   <Button stripped>
@@ -73,14 +66,13 @@ const CodeExample = () => (
     ]}>
     <p>Kodekomponent for visning av kodesnutter</p>
     <Codeblock
-      actionButton={fullscreenButton}
+      actionButton={edCloseButton}
       code={htmlCode}
       format="markup"
       title="HTML EKSEMPEL"
       showCopy={true}
     />
     <Codeblock
-      actionButton={edCloseButton}
       code={cssCode}
       format="css"
       title="CSS EKSEMPEL"
@@ -89,6 +81,7 @@ const CodeExample = () => (
     <Codeblock
       code="Pure text without highlighting and no title"
       format="text"
+      title=" "
     />
   </ComponentInfo>
 );

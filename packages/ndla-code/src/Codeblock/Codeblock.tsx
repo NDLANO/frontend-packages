@@ -6,12 +6,16 @@
  *
  */
 
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, Fragment, useState, useEffect } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
+// @ts-ignore
+import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
+// @ts-ignore
+import { ArrowExpand } from '@ndla/icons/editor';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -53,6 +57,12 @@ const TitleBar = styled.div`
   width: 100%;
 `;
 
+const ButtonBar = styled.div`
+  button {
+    padding-left: 10px;
+  }
+`;
+
 const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
@@ -81,6 +91,7 @@ export const Codeblock: FC<Props & tType> = ({
   title,
 }) => {
   const [isCopied, setIsCopied] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     if (isCopied) {
@@ -92,11 +103,24 @@ export const Codeblock: FC<Props & tType> = ({
     }
   }, [isCopied]);
 
-  return (
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
+  const fullscreenButton = (
+    <Button stripped onClick={() => toggleFullscreen()}>
+      <ArrowExpand />
+    </Button>
+  );
+
+  const codeElement = (
     <Wrapper>
       <TitleBar>
         <Title>{title ? title : getTitleFromFormat(format)}</Title>
-        {actionButton}
+        <ButtonBar>
+          {isFullscreen ? '' : fullscreenButton}
+          {actionButton}
+        </ButtonBar>
       </TitleBar>
       <SyntaxHighlighter
         customStyle={{
@@ -114,7 +138,6 @@ export const Codeblock: FC<Props & tType> = ({
         showLineNumbers>
         {code}
       </SyntaxHighlighter>
-
       {showCopy && (
         <Button
           title={t('codeBlock.copyButton')}
@@ -129,6 +152,36 @@ export const Codeblock: FC<Props & tType> = ({
         </Button>
       )}
     </Wrapper>
+  );
+
+  return (
+    <Fragment>
+      {codeElement}
+      {isFullscreen && (
+        <Modal
+          controllable
+          isOpen={isFullscreen}
+          onClose={() => toggleFullscreen()}
+          size="fullscreen"
+          animation="slide-up"
+          backgroundColor="light-gradient"
+          narrow>
+          {(close: Function) => (
+            <Fragment>
+              <ModalHeader modifier="white modal-body">
+                <ModalCloseButton
+                  onClick={close}
+                  title={t('modal.closeModal')}
+                />
+              </ModalHeader>
+              <ModalBody>
+                <div className="c-codeblock">{codeElement}</div>
+              </ModalBody>
+            </Fragment>
+          )}
+        </Modal>
+      )}
+    </Fragment>
   );
 };
 

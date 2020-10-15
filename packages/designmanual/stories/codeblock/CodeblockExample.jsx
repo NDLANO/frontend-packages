@@ -55,8 +55,8 @@ const CodeExample = () => (
       {
         name: 'format',
         type: 'string',
-        default: 'markup',
-        description: 'Code type, defaults to markup',
+        default: 'Required',
+        description: 'Code type',
       },
       {
         name: 'code',

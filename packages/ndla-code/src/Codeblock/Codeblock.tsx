@@ -53,12 +53,6 @@ const TitleBar = styled.div`
   width: 100%;
 `;
 
-const ButtonBar = styled.div`
-  button {
-    padding-left: 10px;
-  }
-`;
-
 const Title = styled.h3`
   font-style: normal;
   font-weight: normal;
@@ -102,7 +96,7 @@ export const Codeblock: FC<Props & tType> = ({
     <Wrapper>
       <TitleBar>
         <Title>{title ? title : getTitleFromFormat(format)}</Title>
-        <ButtonBar>{actionButton}</ButtonBar>
+        {actionButton}
       </TitleBar>
       <SyntaxHighlighter
         customStyle={{

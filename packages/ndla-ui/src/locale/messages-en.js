@@ -296,7 +296,9 @@ const messages = {
     singleAuthorsLabelAria: 'Text: {name}',
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
-    authorsConjunction: 'and',
+    conjunction: 'and',
+    supplierLabel: 'Supplier:',
+    multipleSuppliersLabel: 'Suppliers:',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',

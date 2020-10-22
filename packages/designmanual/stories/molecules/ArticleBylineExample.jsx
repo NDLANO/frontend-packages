@@ -68,6 +68,8 @@ const authors = {
   real: authorRealText,
 };
 
+const suppliers = [{ name: 'Riksarkivet' }];
+
 const ArticleBylineExample = ({
   multipleAuthors,
   useRealText,
@@ -83,6 +85,7 @@ const ArticleBylineExample = ({
       licenseBox={<LicenseBox />}
       additional={additional}
       copyPageUrlLink={copyPageUrlLink}
+      suppliers={suppliers}
     />
   );
 };

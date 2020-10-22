@@ -96,7 +96,8 @@ const sortAlphabetically = (
   let letterItems: subjectProps[] = [];
   subjectsSorted.forEach((subject: subjectProps) => {
     const currentLetter = subject.name.substr(0, 1);
-    const isNewLetter = currentLetter.localeCompare(previousLetter) === 1;
+    const isNewLetter =
+      currentLetter.localeCompare(previousLetter, locale) === 1;
     if (isNewLetter && letterItems.length) {
       subjectsLetterCategories.push({
         letter: previousLetter,
@@ -107,6 +108,13 @@ const sortAlphabetically = (
     previousLetter = currentLetter;
     letterItems.push(subject);
   });
+  // Add last letter
+  if (previousLetter && letterItems.length) {
+    subjectsLetterCategories.push({
+      letter: previousLetter,
+      items: letterItems,
+    });
+  }
   return subjectsLetterCategories;
 };
 

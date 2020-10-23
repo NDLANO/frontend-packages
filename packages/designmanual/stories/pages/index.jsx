@@ -54,7 +54,6 @@ import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
 import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
 import { contentCards } from '../../dummydata';
-import SearchResultTypeExample from './SearchResultTypeExample';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (

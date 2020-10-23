@@ -36,6 +36,9 @@ const messages = {
     title: 'Siden finnes ikke',
     errorDescription: 'Beklager, finner ikke siden du prøvde å komme til.',
   },
+  movedResourcePage: {
+    title: 'Siden har flyttet, men du kan finne den her:',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:
@@ -285,12 +288,14 @@ const messages = {
     urlContributionsLabel: 'Se hva {name} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
-    multipleAuthorsLabel: 'Rettighetshavere:',
-    multipleAuthorsLabelAria: 'Rettighetshavere er {names}',
+    multipleAuthorsLabel: 'Tekst:',
+    multipleAuthorsLabelAria: 'Tekst: {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'Rettighetshaver av artikkelen er {name}',
+    singleAuthorsLabel: 'Tekst:',
+    singleAuthorsLabelAria: 'Tekst: {name}',
     copyPageLink: 'Kopier lenke til siden',
     copyPageLinkCopied: 'Lenke kopiert',
+    authorsConjunction: 'og',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',
@@ -300,6 +305,21 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
+    competenceGoalResourceSearchText:
+      'Søk på alle ressurser som passer til dette kompetansemålet',
+    competenceGoalShowExtra: 'Vis støtte til læreplanen',
+    competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
+    competenceCoreLabel: 'Kjerneelement',
+    competenceTopicLabel: 'Tverrfaglige tema',
+    competenceSubjectLabel: 'Fag',
+    competenceCoreSearchText: 'Søk ressurser for kjerneelementet',
+    competenceTopicSearchText: 'Søk ressurser for temaet',
+    competenceSubjectSearchText: 'Gå til fagsiden',
+    competenceGoalClose: 'Lukk',
+    competenceGoalTitle: 'Målet er at eleven skal kunne:',
+    competenceTabLK06label: 'Kompetansemål (LK06)',
+    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabCorelabel: 'Kjerneelement',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',
@@ -533,6 +553,11 @@ const messages = {
     save: 'Lagre',
     abort: 'Avbryt',
   },
+  codeBlock: {
+    copiedCode: 'Kode kopiert til utklippstavle',
+    copyButton: 'Kopier kode',
+    copyCode: 'Kopier kode til utklippstavle',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll fremover',
@@ -682,10 +707,10 @@ const messages = {
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
-    heading: 'Tverrfaglige tema',
+    heading: 'Tverrfaglige temaer',
     text:
       'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
-    linkText: 'Se caser for tverrfaglige tema',
+    linkText: 'Se caser for tverrfaglige temaer',
     publicHealthTopic: 'Folkehelse og livsmestring',
     democracyTopic: 'Demokrati og medborgerskap',
     sustainableTopic: 'Bærekraftig utvikling',
@@ -697,8 +722,8 @@ const messages = {
     cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
   },
   navigation: {
-    showLongerDescription: 'Lengre beskrivelse',
-    showShorterDescription: 'Kortere beskrivelse',
+    showLongerDescription: 'Vis mer',
+    showShorterDescription: 'Vis mindre',
     topics: 'Emner',
     additionalTopic: 'Tillegsemne',
     additionalTopics: 'Tillegsemner',

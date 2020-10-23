@@ -16,6 +16,7 @@ import {
   ArticleIntroduction,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
+  constants,
 } from '@ndla/ui';
 
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
@@ -25,11 +26,15 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import { FigureImage } from '../article/FigureImage';
 
+const { contentTypes } = constants;
+
 const ArticleLearningMaterial = () => (
   <OneColumn>
-    <ArticleWrapper modifier={'clean-in-context'} id="mainContentId">
+    <ArticleWrapper id="mainContentId" modifier={contentTypes.SUBJECT_MATERIAL}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
+        <ArticleHeaderWrapper
+          competenceGoals={<CompetenceGoalListExample />}
+          competenceGoalTypes={['LK20', 'LK06']}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -39,7 +44,6 @@ const ArticleLearningMaterial = () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleBylineExample id="example-article-license-id" />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -81,12 +85,18 @@ const ArticleLearningMaterial = () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
+        <ArticleBylineExample
+          multipleAuthors
+          useRealText
+          copyPageUrlLink={window.location.href}
+          id="article-by-line-example-id"
+        />
         <RelatedArticleListExample />
       </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources showTopicHeading />
-      </LayoutItem>
     </ArticleWrapper>
+    <LayoutItem layout="extend">
+      <Resources showTopicHeading />
+    </LayoutItem>
   </OneColumn>
 );
 

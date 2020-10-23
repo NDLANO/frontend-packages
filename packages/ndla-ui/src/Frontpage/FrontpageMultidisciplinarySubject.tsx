@@ -2,8 +2,7 @@ import React from 'react';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
@@ -76,16 +75,12 @@ const Topic = styled.div`
 `;
 
 type Props = {
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   url: string;
   topics?: [{ url: string; title: string; id: string }];
 };
 
-const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props> = ({
-  url,
-  t,
-  topics,
-}) => (
+const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props &
+  tType> = ({ url, t, topics }) => (
   <StyledSection>
     <ComponentCursor
       variant="left"

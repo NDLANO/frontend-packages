@@ -39,9 +39,8 @@ interface Props {
   lighterGrey?: boolean;
 }
 
-const SafeLinkButton: React.FunctionComponent<
-  Props & React.HTMLProps<HTMLAnchorElement>
-> = ({
+const SafeLinkButton: React.FunctionComponent<Props &
+  React.HTMLProps<HTMLAnchorElement>> = ({
   outline,
   stripped,
   link,

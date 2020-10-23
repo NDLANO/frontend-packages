@@ -56,10 +56,10 @@ class Messages extends Component {
             key =>
               !this.flattenedNb[key] ||
               this.flattenedNb[key].substr(0, 1) === '*' ||
-              (!this.flattenedNn[key] ||
-                this.flattenedNn[key].substr(0, 1) === '*') ||
-              (!this.flattenedEn[key] ||
-                this.flattenedEn[key].substr(0, 1) === '*'),
+              !this.flattenedNn[key] ||
+              this.flattenedNn[key].substr(0, 1) === '*' ||
+              !this.flattenedEn[key] ||
+              this.flattenedEn[key].substr(0, 1) === '*',
           )
           .reduce(
             (result, key) => ({ ...result, [key]: this.flattenedNb[key] }),

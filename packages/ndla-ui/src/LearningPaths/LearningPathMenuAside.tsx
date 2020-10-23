@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
@@ -116,10 +115,9 @@ type Props = {
       url: string;
     };
   };
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const LearningPathMenuAside: React.FunctionComponent<Props> = ({
+const LearningPathMenuAside: React.FunctionComponent<Props & tType> = ({
   lastUpdated,
   learningPathURL,
   copyright,

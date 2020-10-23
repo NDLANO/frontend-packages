@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import {
@@ -125,10 +124,9 @@ interface Props {
   isOpen: boolean;
   invertedStyle?: boolean;
   name: string;
-  t: any;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<Props> = ({
+const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({
   duration,
   isOpen,
   name,

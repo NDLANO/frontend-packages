@@ -7,8 +7,7 @@
  */
 
 import React from 'react';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 
 type Props = {
   options: {
@@ -20,10 +19,9 @@ type Props = {
   currentLanguage: string;
   setInfoLocale(arg: string): void;
   infoLocale: string;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
-const LanguageSelectorContent: React.FunctionComponent<Props> = ({
+const LanguageSelectorContent: React.FunctionComponent<Props & tType> = ({
   options,
   currentLanguage,
   setInfoLocale,

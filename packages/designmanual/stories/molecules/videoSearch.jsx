@@ -60,7 +60,7 @@ export const VideoSearcher = () => {
       locale="nb"
       onVideoSelect={videoSelect}
       onError={onError}
-      enabledSources={['Brightcove', 'YouTube']}
+      enabledSources={['Brightcove']}
     />
   );
 };

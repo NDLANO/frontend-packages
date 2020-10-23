@@ -105,6 +105,8 @@ export {
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
+export { CompetenceGoalTab } from './CompetenceGoalTab';
+
 export { default as NoContentBox } from './NoContentBox';
 
 export {
@@ -124,7 +126,6 @@ export {
   SourceMaterialHero,
   Hero,
   NdlaFilmHero,
-  FFHeroBadge,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export {
@@ -178,7 +179,6 @@ export {
 
 export { default as CreatedBy } from './CreatedBy';
 export { MessageBox } from './MessageBox';
-export { Codeblock } from './Codeblock';
 export {
   NavigationHeading,
   NavigationBox,
@@ -189,3 +189,4 @@ export {
   default as MultidisciplinarySubject,
   MultidisciplinarySubjectHeader,
 } from './MultidisciplinarySubject';
+export { default as Spinner } from './Spinner';

@@ -37,6 +37,9 @@ const messages = {
     title: 'Page not found',
     errorDescription: "We can't seem to find the page you are looking for.",
   },
+  movedResourcePage: {
+    title: 'The page has been moved, but you can find it here:',
+  },
   lti: {
     embed: 'Embed',
     notSupported:
@@ -286,12 +289,14 @@ const messages = {
     urlContributionsLabel: 'See {name}`s contributions',
     urlAuthorLabel: 'Read more about {name}',
     multipleAuthorsLabelAbbreviation: 'et al.',
-    multipleAuthorsLabel: 'Licensees:',
-    multipleAuthorsLabelAria: 'Licensees of this article are {names}',
-    multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'The Licensee of this article is {name}',
+    multipleAuthorsLabel: 'Text:',
+    multipleAuthorsLabelAria: 'Text: {names}',
+    multipleAuthorsLabelAriaConjunction: 'and',
+    singleAuthorsLabel: 'Text:',
+    singleAuthorsLabelAria: 'Text: {name}',
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
+    authorsConjunction: 'and',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',
@@ -301,6 +306,21 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
+    competenceGoalResourceSearchText:
+      'Search all resources appropriate to this goal',
+    competenceGoalShowExtra: 'Show',
+    competenceGoalCloseExtra: 'Hide',
+    competenceCoreLabel: 'Core element',
+    competenceTopicLabel: 'Interdisciplinary theme',
+    competenceSubjectLabel: 'Topic',
+    competenceCoreSearchText: 'Find resources',
+    competenceTopicSearchText: 'Find resources',
+    competenceSubjectSearchText: 'Go to topic page',
+    competenceGoalClose: 'Close',
+    competenceGoalTitle: 'The goal is for the student to be able to:',
+    competenceTabLK06label: 'Competance goal (LK06)',
+    competenceTabLK20label: 'Competance goal (LK20)',
+    competenceTabCorelabel: 'Core element',
   },
   subject: {
     associatedTopics: 'Associated topics',
@@ -533,6 +553,11 @@ const messages = {
     save: 'Save',
     abort: 'Abort',
   },
+  codeBlock: {
+    copiedCode: 'Copied code',
+    copyButton: 'Copy code',
+    copyCode: 'Copy code',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll backwards',
     slideForwardsLabel: 'Scroll forwards',
@@ -688,8 +713,8 @@ const messages = {
     cursorText: 'Find teaching material, assignments, movies and more.',
   },
   navigation: {
-    showLongerDescription: 'Longer description',
-    showShorterDescription: 'Shorter description',
+    showLongerDescription: 'Show more',
+    showShorterDescription: 'Show less',
     topics: 'Topics',
     additionalTopic: 'Additional topic',
     additionalTopics: 'Additional topics',

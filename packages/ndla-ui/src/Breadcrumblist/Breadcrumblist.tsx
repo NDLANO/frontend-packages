@@ -9,8 +9,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 
 import {
   School as SchoolIcon,
@@ -26,6 +25,7 @@ type WrapperProps = {
   startOffset?: number;
   isVisible?: boolean;
   leftAlign?: boolean;
+  hideOnNarrow?: boolean;
 };
 
 type InvertItProps = {
@@ -40,7 +40,9 @@ const Wrapper = styled.div<WrapperProps>`
   margin: 32px 0 16px;
   width: auto;
   z-index: 1;
+  ${props => props.hideOnNarrow && `display:none;`}
   ${mq.range({ from: breakpoints.wide })} {
+    display: flex;
     margin: 32px 0;
     width: 240px;
     position: fixed;
@@ -94,7 +96,7 @@ const Heading = styled.div<InvertItProps>`
 `;
 
 const List = styled.ul`
-  margin: 0;
+  margin: 0 0 20px;
   padding: 0;
   list-style: none;
   width: 100%;
@@ -216,8 +218,8 @@ type BreadCrumbProps = {
   isVisible?: boolean;
   invertedStyle?: boolean;
   leftAlign?: boolean;
+  hideOnNarrow?: boolean;
   onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const Breadcrumblist = ({
@@ -227,9 +229,10 @@ const Breadcrumblist = ({
   isVisible = true,
   invertedStyle,
   leftAlign,
+  hideOnNarrow,
   onNav,
   t,
-}: BreadCrumbProps) => {
+}: BreadCrumbProps & tType) => {
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
   const [useScrollEvent, setUseScrollEvent] = useState(false);
 
@@ -276,35 +279,49 @@ const Breadcrumblist = ({
       <Wrapper
         leftAlign={leftAlign}
         startOffset={wrapperOffset}
+        hideOnNarrow={hideOnNarrow}
         isVisible={isVisible}>
-        <Heading invertedStyle={invertedStyle}>
-          {t('breadcrumb.youAreHere')}
-        </Heading>
-        <List data-testid="breadcrumb-list">
-          {items.map((item: BreadcrumbItemProps) => {
-            const { id, label, url, typename, icon, isCurrent = false } = item;
-            return (
-              <ListItem invertedStyle={invertedStyle} key={`${id}-${typename}`}>
-                {isCurrent && <Dot invertedStyle={invertedStyle} />}
-                <SafeLink
-                  className="linkitem"
-                  to={url}
-                  onClick={(e: React.MouseEvent<HTMLElement>) => {
-                    onNav && onNav(e, item);
-                  }}
-                  aria-label={label}>
-                  <IconWrapper
+        {items.length > 0 && (
+          <>
+            <Heading invertedStyle={invertedStyle}>
+              {t('breadcrumb.youAreHere')}
+            </Heading>
+            <List data-testid="breadcrumb-list">
+              {items.map((item: BreadcrumbItemProps) => {
+                const {
+                  id,
+                  label,
+                  url,
+                  typename,
+                  icon,
+                  isCurrent = false,
+                } = item;
+                return (
+                  <ListItem
                     invertedStyle={invertedStyle}
-                    isCurrent={isCurrent}>
-                    {icon && icon}
-                    {typename && TypeIcon(typename)}
-                  </IconWrapper>
-                  <span>{label}</span>
-                </SafeLink>
-              </ListItem>
-            );
-          })}
-        </List>
+                    key={`${id}-${typename}`}>
+                    {isCurrent && <Dot invertedStyle={invertedStyle} />}
+                    <SafeLink
+                      className="linkitem"
+                      to={url}
+                      onClick={(e: React.MouseEvent<HTMLElement>) => {
+                        onNav && onNav(e, item);
+                      }}
+                      aria-label={label}>
+                      <IconWrapper
+                        invertedStyle={invertedStyle}
+                        isCurrent={isCurrent}>
+                        {icon && icon}
+                        {typename && TypeIcon(typename)}
+                      </IconWrapper>
+                      <span>{label}</span>
+                    </SafeLink>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </>
+        )}
         {children}
       </Wrapper>
     </>

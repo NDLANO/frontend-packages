@@ -27,9 +27,9 @@ export default function VideoSearchResultYouTube({
   translations,
   locale,
 }) {
-  const videoData = video?.pagemap?.videoobject[0];
+  const videoData = video?.pagemap?.videoobject?.[0];
   const activeVideo =
-    selectedVideo?.pagemap?.videoobject[0]?.videoid === videoData?.videoid;
+    selectedVideo?.pagemap?.videoobject?.[0]?.videoid === videoData?.videoid;
 
   if (videoData) {
     return (
@@ -54,9 +54,7 @@ export default function VideoSearchResultYouTube({
               )}`}
             </div>
             <div>
-              {`${translations.interactioncount}: ${
-                videoData.interactioncount
-              }`}
+              {`${translations.interactioncount}: ${videoData.interactioncount}`}
             </div>
             <div>{videoData.description}</div>
             <Button

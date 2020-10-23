@@ -1,39 +1,192 @@
-import { SubjectMaterialBadge } from '@ndla/ui';
-import React from 'react';
-
-export const subject = {
-  subjectName: 'Salg, service og reiseliv Vg1',
-  label: 'Forretningsdrift',
-  url: '#',
-  description: {
-    heading: 'Om salg, service og reiseliv',
-    text: 'Beskrivelse av faget',
-    image: '',
+export const programmes = [
+  {
+    label: 'Bygg- og anleggsteknikk',
+    url: '#',
   },
-  filters: [
+  {
+    label: 'Elektro og datateknologi',
+    url: '#',
+  },
+  {
+    label: 'Frisør, blomster, interiør og eksponeringsdesign',
+    url: '#',
+  },
+  { label: 'Helse- og oppvekstfag', url: '#' },
+  {
+    label: 'Håndverk, design og produktutvikling',
+    url: '#',
+  },
+  { label: 'Idrett', url: '#' },
+  { label: 'Informasjonsteknologi og medieproduksjon', url: '#' },
+  { label: 'Kunst, design og arkitektur', url: '#' },
+  { label: 'Medier og kommunikasjon', url: '#' },
+  { label: 'Musikk, dans og drama', url: '#' },
+  { label: 'Naturbruk', url: '#' },
+  { label: 'Påbygg', url: '#' },
+  { label: 'Restaurant- og matfag', url: '#' },
+  {
+    label: 'Salg, service og reiseliv (Service og samferdsel)',
+    url: '#',
+  },
+  { label: 'Studiespesialisering', url: '#' },
+  { label: 'Teknologi- og industrifag', url: '#' },
+];
+
+export const programme = {
+  label: 'Salg, service og reiseliv (Service og samferdsel)',
+  image: 'https://api.ndla.no/image-api/raw/5E4fooai.jpg',
+  grades: [
+    // Klassetrinn
     {
-      title: 'Forretningsdrift',
-      value: 'Forretningsdrift',
-      url: '#',
-      id: 'urn:subject:12', // Id til faget
+      name: 'Vg1',
+      categories: [
+        // Fag inndelt i kategorier
+        {
+          name: null,
+          subjects: [
+            {
+              label: 'Forretningsdrift',
+              url: '#',
+            },
+            {
+              label: 'Kultur og samhandling',
+              url: '#',
+            },
+            {
+              label: 'Markedsføring og innovasjon',
+              url: '#',
+            },
+            {
+              label: 'Yrkesfaglig fordypning',
+              url: '#',
+            },
+          ],
+        },
+        {
+          name: 'fellesfag',
+          subjects: [
+            {
+              label: 'Engelsk',
+              url: '#',
+            },
+            {
+              label: 'Kroppsøving',
+              url: '#',
+            },
+            {
+              label: 'Matematikk 1P-Y',
+              url: '#',
+            },
+            {
+              label: 'Matematikk 1T-Y',
+              url: '#',
+            },
+            {
+              label: 'Naturfag',
+              url: '#',
+            },
+          ],
+        },
+      ],
     },
     {
-      title: 'Kultur og samhandling',
-      value: 'Kultur og samhandling',
-      url: '#',
-      id: 'urn:subject:12', // Id til faget
-    },
-    {
-      title: 'Markedsføring og innovasjon',
-      value: 'Markedsføring og innovasjon',
-      url: '#',
-      id: 'urn:subject:12', // Id til faget
-    },
-    {
-      title: 'Yrkesfaglig fordypning',
-      value: 'Yrkesfaglig fordypning',
-      url: '#',
-      id: 'urn:subject:12', // Id til faget
+      name: 'Vg2',
+      categories: [
+        // Fag inndelt i kategorier
+        {
+          name: 'IKT-service programfag ',
+          subjects: [
+            {
+              label: 'Virksomhetsstøtte',
+              url: '#',
+            },
+            {
+              label: 'Bruker- og driftsstøtte',
+              url: '#',
+            },
+            {
+              label: 'Drift og vedlikehold',
+              url: '#',
+            },
+          ],
+        },
+        {
+          name: 'Reiseliv',
+          subjects: [
+            {
+              label: 'Etablering og drift',
+              url: '#',
+            },
+            {
+              label: 'Sal og marknadsføring',
+              url: '#',
+            },
+            {
+              label: 'Vertskapsrolla',
+              url: '#',
+            },
+            {
+              label: 'Yrkesfaglig fordypning',
+              url: '#',
+            },
+          ],
+        },
+        {
+          name: 'Salg, service og sikkerhet',
+          subjects: [
+            {
+              label: 'Markedsføring og salg',
+              url: '#',
+            },
+            {
+              label: 'Sikkerhet',
+              url: '#',
+            },
+            {
+              label: 'Økonomi og administrasjon',
+              url: '#',
+            },
+          ],
+        },
+        {
+          name: 'Transport og logistikk',
+          subjects: [
+            {
+              label: 'Bransjeteknikk',
+              url: '#',
+            },
+            {
+              label: 'Transport og logistikk',
+              url: '#',
+            },
+          ],
+        },
+        {
+          name: 'Fellesfag',
+          subjects: [
+            {
+              label: 'Kroppsøving',
+              url: '#',
+            },
+            {
+              label: 'Matematikk 2P-Y',
+              url: '#',
+            },
+            {
+              label: 'Norsk',
+              url: '#',
+            },
+            {
+              label: 'Samfunnsfag',
+              url: '#',
+            },
+            {
+              label: 'Sør-samisk',
+              url: '#',
+            },
+          ],
+        },
+      ],
     },
   ],
 };
@@ -120,605 +273,159 @@ export const topics = [
   },
 ];
 
-export const programs = [
-  {
-    label: 'Bygg- og anleggsteknikk',
-    id: 1,
-    url: '#',
-    grades: [
-      // Klassetrinn
-      {
-        name: 'VG1',
-        categories: [
-          // Fag inndelt i kategorier
-          {
-            name: 'programfag',
-            subjects: [
-              { id: 'urn:subject:39' }, // Id til faget som er spesifisert i fagstruktur
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-            ],
-          },
-          {
-            name: 'fellesfag',
-            subjects: [
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-            ],
-          },
-        ],
-      },
-      {
-        name: 'VG2 & VG3',
-        categories: [
-          // Fag inndelt i kategorier
-          {
-            name: 'programfag',
-            subjects: [
-              { id: 'urn:subject:39' }, // Id til faget som er spesifisert i fagstruktur
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-            ],
-          },
-          {
-            name: 'fellesfag',
-            subjects: [
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-              { id: 'urn:subject:39' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Håndverk, design og produktutvikling',
-    id: 2,
-    url: '#',
-    subjectCategories: [
-      {
-        name: 'programfag',
-        subjects: [
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-        ],
-      },
-      {
-        name: 'fellesfag',
-        subjects: [
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Elektro og datateknologi',
-    id: 3,
-    url: '#',
-    subjectCategories: [
-      {
-        name: 'programfag',
-        subjects: [
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-        ],
-      },
-      {
-        name: 'fellesfag',
-        subjects: [
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-          { id: 'urn:subject:39' },
-        ],
-      },
-    ],
-  },
-  { label: 'Helse- og oppvekstfag', id: 4, url: '#' },
-  { label: 'Idrett', id: 5, url: '#' },
-  { label: 'Kunst, design og arkitektur', id: 6, url: '#' },
-  { label: 'Informasjonsteknologi og medieproduksjon', id: 7, url: '#' },
-  { label: 'Musikk, dans og drama', id: 8, url: '#' },
-  { label: 'Naturbruk', id: 10, url: '#' },
-  { label: 'Påbygg', id: 11, url: '#' },
-  { label: 'Restaurant- og matfag', id: 12, url: '#' },
-  {
-    label: 'Salg, service og reiseliv (Service og samferdsel)',
-    id: 13,
-    url: '#',
-    image: 'https://api.ff.ndla.no/image-api/raw/378616471.jpg?width=10720',
-    grades: [
-      // Klassetrinn
-      {
-        name: 'Vg1',
-        categories: [
-          // Fag inndelt i kategorier
-          {
-            name: 'programfag',
-            subjects: [
-              {
-                subjectName: 'Salg, service og reiseliv Vg1',
-                label: 'Forretningsdrift',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                subjectName: 'Salg, service og reiseliv Vg1',
-                label: 'Kultur og samhandling',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                subjectName: 'Salg, service og reiseliv Vg1',
-                label: 'Markedsføring og innovasjon',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                subjectName: 'Salg, service og reiseliv Vg1',
-                label: 'Yrkesfaglig fordypning',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-            ],
-          },
-          {
-            name: 'fellesfag',
-            subjects: [
-              {
-                label: 'Engelsk for yrkesfag',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Kroppsøving',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: '(Matematikk 1T-Y for salg, service og reiseliv)',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Matematikk 1P-Y for salg, service og reiseliv',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Naturfag for salg, service og reiseliv',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: 'Vg2',
-        categories: [
-          // Fag inndelt i kategorier
-          {
-            name: 'IKT-service programfag ',
-            subjects: [
-              {
-                label: 'Virksomhetsstøtte',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Bruker- og driftsstøtte',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Drift og vedlikehold',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-            ],
-          },
-          {
-            name: 'Reiseliv programfag ',
-            subjects: [
-              {
-                label: 'Etablering og drift',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Sal og marknadsføring',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Vertskapsrolla',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Yrkesfaglig fordypning',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-            ],
-          },
-          {
-            name: 'Salg, service og sikkerhet programfag ',
-            subjects: [
-              {
-                label: 'Markedsføring og salg',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Sikkerhet',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Økonomi og administrasjon',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-            ],
-          },
-          {
-            name: 'Fellesfag',
-            subjects: [
-              {
-                label: '06 Samfunnsfag',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: 'Kroppsøving',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: '06 Norsk for yrkesfag',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-              {
-                label: '06 Sør-samisk som førstespråk for yrkesfag',
-                url: '#',
-                id: 'urn:subject:12', // Id til faget
-                showFilters: true, // Skal filtre på faget fra taksonomi vises som egne innganger
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  { label: 'Studiespesialisering', id: 14, url: '#' },
-  { label: 'Teknologi- og industrifag', id: 15, url: '#' },
-  {
-    label: 'Frisør, blomster, interiør og eksponeringsdesign',
-    id: 16,
-    url: '#',
-  },
-  { label: 'Medier og kommunikasjon', id: 17, url: '#' },
-];
-
 export const subjectCategories = [
   {
     name: 'Fellesfag',
     subjects: [
-      {
-        nodeId: '42',
-        lang: 'en',
-        name: 'Engelsk',
-        id: 'urn:subject:39',
-        url: '#',
-      },
-      {
-        url: '#',
-        id: 'urn:subject:9',
-        nodeId: '52253',
-        name: 'Historie Vg2 og Vg3',
-      },
-      { nodeId: '46', name: 'Kroppsøving', url: '#', id: 'urn:subject:26' },
-      { nodeId: '55', name: 'Matematikk 1P', url: '#', id: 'urn:subject:34' },
-      { nodeId: '54', name: 'Matematikk 1T', url: '#', id: 'urn:subject:33' },
-      { nodeId: '53', name: 'Matematikk 2P', url: '#', id: 'urn:subject:29' },
-      { name: 'Matematikk 1P-Y', url: '#', id: 'urn:subject:30' },
-      { name: 'Matematikk 1T-Y', url: '#', id: 'urn:subject:30' },
-      { name: 'Matematikk 2P-Y', url: '#', id: 'urn:subject:30' },
-      { nodeId: '7', name: 'Naturfag', url: '#', id: 'urn:subject:21' },
-      {
-        nodeId: '27',
-        name: 'Norsk Vg2 og Vg3 SF',
-        shortname: 'SF Vg2,SF Vg3',
-        url: '#',
-        id: 'urn:subject:19',
-      },
-      {
-        nodeId: '116784',
-        name: 'Norsk YF og SF',
-        shortname: 'SF Vg1,PB Vg3,YF Vg1/Vg2',
-        url: '#',
-        id: 'urn:subject:19',
-      },
-      {
-        nodeId: '185100',
-        beta: true,
-        name: 'Religion og etikk',
-        url: '#',
-        id: 'urn:subject:44',
-      },
-      { nodeId: '36', name: 'Samfunnsfag', url: '#', id: 'urn:subject:3' },
-      {
-        nodeId: '126960',
-        beta: true,
-        name: 'Sørsamisk som førstespråk',
-        url: '#',
-        id: 'urn:subject:15',
-      },
+      { name: 'Bærekraftig utvikling', url: '#' },
+      { name: 'Demokrati og medborgerskap', url: '#' },
+      { name: 'Engelsk (SF)', url: '#' },
+      { name: 'Engelsk (YF)', url: '#' },
+      { name: 'Folkehelse og livsmestring', url: '#' },
+      { name: 'Historie (PB Vg3)', url: '#' },
+      { name: 'Historie (SF Vg2)', url: '#' },
+      { name: 'Historie (SF Vg3)', url: '#' },
+      { name: 'Kroppsøving (Vg1)', url: '#' },
+      { name: 'Kroppsøving (Vg2)', url: '#' },
+      { name: 'Kroppsøving (Vg3)', url: '#' },
+      { name: 'Lissiebigkeme (PB Jåa3)', url: '#' },
+      { name: 'Matematikk 1P', url: '#' },
+      { name: 'Matematikk 1P-Y (BA)', url: '#' },
+      { name: 'Matematikk 1P-Y (DT)', url: '#' },
+      { name: 'Matematikk 1P-Y (EL)', url: '#' },
+      { name: 'Matematikk 1P-Y (FD)', url: '#' },
+      { name: 'Matematikk 1P-Y (HS)', url: '#' },
+      { name: 'Matematikk 1P-Y (IM)', url: '#' },
+      { name: 'Matematikk 1P-Y (NA)', url: '#' },
+      { name: 'Matematikk 1P-Y (RM)', url: '#' },
+      { name: 'Matematikk 1P-Y (SR)', url: '#' },
+      { name: 'Matematikk 1P-Y (TP)', url: '#' },
+      { name: 'Matematikk 1T', url: '#' },
+      { name: 'Matematikk 1T-Y (BA)', url: '#' },
+      { name: 'Matematikk 1T-Y (DT)', url: '#' },
+      { name: 'Matematikk 1T-Y (EL)', url: '#' },
+      { name: 'Matematikk 1T-Y (FD)', url: '#' },
+      { name: 'Matematikk 1T-Y (HS)', url: '#' },
+      { name: 'Matematikk 1T-Y (IM)', url: '#' },
+      { name: 'Matematikk 1T-Y (NA)', url: '#' },
+      { name: 'Matematikk 1T-Y (RM)', url: '#' },
+      { name: 'Matematikk 1T-Y (SR)', url: '#' },
+      { name: 'Matematikk 1T-Y (TP)', url: '#' },
+      { name: 'Matematikk 2P', url: '#' },
+      { name: 'Matematikk 2P-Y', url: '#' },
+      { name: 'Naturfag (BA)', url: '#' },
+      { name: 'Naturfag (DT)', url: '#' },
+      { name: 'Naturfag (EL)', url: '#' },
+      { name: 'Naturfag (FD)', url: '#' },
+      { name: 'Naturfag (HS)', url: '#' },
+      { name: 'Naturfag (IM)', url: '#' },
+      { name: 'Naturfag (NA)', url: '#' },
+      { name: 'Naturfag (RM)', url: '#' },
+      { name: 'Naturfag (SR)', url: '#' },
+      { name: 'Naturfag (TP)', url: '#' },
+      { name: 'Naturfag for påbygg', url: '#' },
+      { name: 'Norsk (PB Vg3)', url: '#' },
+      { name: 'Norsk (SF Vg1)', url: '#' },
+      { name: 'Norsk (SF Vg2)', url: '#' },
+      { name: 'Norsk (SF Vg3)', url: '#' },
+      { name: 'Norsk (YF Vg2)', url: '#' },
+      { name: 'Religion og etikk', url: '#' },
+      { name: 'Samfunnsfag (Vg2)', url: '#' },
+      { name: 'Samfunnskunnskap', url: '#' },
+      { name: 'Sørsamisk (SF Vg1)', url: '#' },
+      { name: 'Sørsamisk (YF Vg2)', url: '#' },
+      { name: 'Tverrfaglige tema', url: '#' },
+      { name: 'Verktøykassa', url: '#' },
+      { name: 'Åarjelsaemien voestesgïeline (SR Jåa2)', url: '#' },
+      { name: 'Åarjelsaemien voestesgïeline (SR Jåa3)', url: '#' },
     ],
   },
   {
-    name: 'Yrkesfag',
+    name: 'Programfag',
     subjects: [
+      { name: 'Arbeidsmiljø og dokumentasjon (BA Vg1)', url: '#' },
+      { name: 'Bransje og arbeidsliv (RM Vg1)', url: '#' },
+      { name: 'Bransjeteknikk (SS-TRL Vg2)', url: '#' },
+      { name: 'Bruker- og driftsstøtte (SS-ISF Vg2)', url: '#' },
+      { name: 'Drift og vedlikehold (SS-ISF Vg2)', url: '#' },
+      { name: 'Elektroniske kretser og nettverk (EL Vg1)', url: '#' },
+      { name: 'Energi- og styresystemer (EL Vg1)', url: '#' },
+      { name: 'Etablering og drift (SS-RLV Vg2)', url: '#' },
+      { name: 'FBIE Vg1 - programfag', url: '#' },
+      { name: 'Forretningsdrift (SR Vg1)', url: '#' },
+      { name: 'HDP Vg1 - programfag', url: '#' },
+      { name: 'HMS og kvalitet (TP Vg2)', url: '#' },
+      { name: 'Helsefremmende arbeid (HS Vg1)', url: '#' },
+      { name: 'Helsefremmende arbeid (HS-BU Vg2)', url: '#' },
+      { name: 'Helsefremmende arbeid (HS-HA Vg2)', url: '#' },
+      { name: 'Kommunikasjon og samhandling (HS Vg1)', url: '#' },
+      { name: 'Kommunikasjon og samhandling (HS-BU Vg2)', url: '#' },
+      { name: 'Kommunikasjon og samhandling (HS-HA Vg2)', url: '#' },
       {
-        nodeId: '51',
-        name: 'Barne- og ungdomsarbeiderfag Vg2',
+        name: 'Komplettering, produksjon og brønnvedlikehold (TP Vg2)',
         url: '#',
-        id: 'urn:subject:40',
       },
-      { nodeId: '137414', name: 'Brønnteknikk', url: '#', id: 'urn:subject:6' },
-      {
-        nodeId: '127013',
-        name: 'Bygg- og anleggsteknikk Vg1',
-        url: '#',
-        id: 'urn:subject:11',
-      },
-      {
-        nodeId: '44',
-        name: 'Design og håndverk Vg1',
-        url: '#',
-        id: 'urn:subject:38',
-      },
-      { nodeId: '43', name: 'Elektrofag Vg1', url: '#', id: 'urn:subject:16' },
-      {
-        nodeId: '8',
-        name: 'Helse- og oppvekstfag Vg1',
-        url: '#',
-        id: 'urn:subject:24',
-      },
-      {
-        nodeId: '52',
-        name: 'Helsearbeiderfag Vg2',
-        url: '#',
-        id: 'urn:subject:4',
-      },
-      {
-        nodeId: '102783',
-        name: 'IKT-servicefag Vg2',
-        url: '#',
-        id: 'urn:subject:25',
-      },
-      {
-        nodeId: '86643',
-        name: 'Kokk- og servitørfag Vg2',
-        url: '#',
-        id: 'urn:subject:41',
-      },
-      {
-        nodeId: '137415',
-        name: 'Naturbruk Vg1',
-        url: '#',
-        id: 'urn:subject:13',
-      },
-      {
-        nodeId: '102780',
-        name: 'Reiseliv Vg2',
-        url: '#',
-        id: 'urn:subject:35',
-      },
-      {
-        nodeId: '37',
-        name: 'Restaurant- og matfag Vg1',
-        url: '#',
-        id: 'urn:subject:37',
-      },
-      {
-        nodeId: '102781',
-        name: 'Salg, service og sikkerhet Vg2',
-        url: '#',
-        id: 'urn:subject:22',
-      },
-      {
-        nodeId: '52291',
-        name: 'Service og samferdsel Vg1',
-        url: '#',
-        id: 'urn:subject:12',
-      },
-      {
-        nodeId: '35',
-        name: 'Teknikk og industriell produksjon Vg1',
-        url: '#',
-        id: 'urn:subject:28',
-      },
-      {
-        nodeId: '102782',
-        name: 'Transport og logistikk Vg2',
-        url: '#',
-        id: 'urn:subject:36',
-      },
+      { name: 'Konseptutvikling og programmering (IM Vg1)', url: '#' },
+      { name: 'Konstruksjons- og styringsteknikk (TP Vg1)', url: '#' },
+      { name: 'Kosthold, ernæring og helse (RM Vg2)', url: '#' },
+      { name: 'Kultur og samhandling (SR Vg1)', url: '#' },
+      { name: 'Leting og boring (TP Vg2)', url: '#' },
+      { name: 'Markedsføring og innovasjon (SR Vg1)', url: '#' },
+      { name: 'Markedsføring og ledelse 1', url: '#' },
+      { name: 'Markedsføring og salg (SS-SSS Vg2)', url: '#' },
+      { name: 'Naturbruk Vg1 - programfag', url: '#' },
+      { name: 'Praktisk yrkesutøvelse (BA Vg1)', url: '#' },
+      { name: 'Produksjon og historiefortelling (IM Vg1)', url: '#' },
+      { name: 'Produksjon og tjenester (TP Vg1)', url: '#' },
+      { name: 'Produktivitet- og kvalitetsstyring (TP Vg1)', url: '#' },
+      { name: 'Råvare, produksjon og kvalitet (RM Vg1)', url: '#' },
+      { name: 'Råvarer og produksjon (RM Vg2)', url: '#' },
+      { name: 'Salg og markedsføring (SS-RLV Vg2)', url: '#' },
+      { name: 'Servering, bransje og miljø (RM Vg2)', url: '#' },
+      { name: 'Sikkerhet (SS-SSS Vg2)', url: '#' },
+      { name: 'Teknologiforståelse (IM Vg1)', url: '#' },
+      { name: 'Transport og logistikk (SS-TRL Vg2)', url: '#' },
+      { name: 'Vertskapsrollen (SS-RLV Vg2)', url: '#' },
+      { name: 'Virksomhetsstøtte (SS-ISF Vg2)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (EL Vg1)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (HS Vg1)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (HS-BU Vg2)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (HS-HA Vg2)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (IM Vg1)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (SR Vg1)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (SR-RE Vg2)', url: '#' },
+      { name: 'Yrkesfaglig fordypning (TP Vg1)', url: '#' },
+      { name: 'Yrkesliv i helse- og oppvekstfag (HS Vg1)', url: '#' },
+      { name: 'Yrkesutøvelse (HS-BU Vg2)', url: '#' },
+      { name: 'Yrkesutøvelse (HS-HA Vg2)', url: '#' },
+      { name: 'Økonomi og administrasjon (SS-SSS Vg2)', url: '#' },
     ],
   },
   {
     name: 'Studieforberedende',
     subjects: [
-      { nodeId: '52234', name: 'Biologi 1', url: '#', id: 'urn:subject:42' },
-      {
-        nodeId: '71085',
-        lang: 'en',
-        name: 'Engelskspråklig litteratur og kultur',
-        url: '#',
-        id: 'urn:subject:17',
-      },
-      {
-        nodeId: '56850',
-        lang: 'en',
-        name: 'Internasjonal engelsk',
-        url: '#',
-        id: 'urn:subject:27',
-      },
-      { nodeId: '127756', name: 'Kinesisk 1', url: '#', id: 'urn:subject:2' },
-      { nodeId: '138654', name: 'Kinesisk 2', url: '#', id: 'urn:subject:2' },
-      {
-        nodeId: '6118',
-        name: 'Kommunikasjon og kultur 1',
-        shortname: 'KK1',
-        url: '#',
-        id: 'urn:subject:18',
-      },
-      {
-        nodeId: '2602',
-        name: 'Kommunikasjon og kultur 2',
-        shortname: 'KK2',
-        url: '#',
-        id: 'urn:subject:18',
-      },
-      {
-        nodeId: '2603',
-        name: 'Kommunikasjon og kultur 3',
-        shortname: 'KK3',
-        url: '#',
-        id: 'urn:subject:18',
-      },
-      {
-        nodeId: '52293',
-        name: 'Markedsføring og ledelse 1',
-        url: '#',
-        id: 'urn:subject:7',
-      },
-
-      {
-        nodeId: '57933',
-        name: 'Matematikk R1',
-        url: '#',
-        id: 'urn:subject:32',
-      },
-      {
-        nodeId: '98361',
-        name: 'Matematikk R2',
-        url: '#',
-        id: 'urn:subject:32',
-      },
-      {
-        nodeId: '57934',
-        name: 'Matematikk S1',
-        url: '#',
-        id: 'urn:subject:31',
-      },
-      {
-        nodeId: '98366',
-        name: 'Matematikk S2',
-        url: '#',
-        id: 'urn:subject:31',
-      },
-      {
-        name: 'Medie- og informasjonskunnskap',
-        url: '#',
-        id: 'urn:subject:14',
-      },
-      {
-        nodeId: '156500',
-        beta: true,
-        name: 'Medieuttrykk og mediesamfunnet',
-        url: '#',
-        id: 'urn:subject:1',
-      },
-      {
-        nodeId: '71082',
-        lang: 'en',
-        name: 'Samfunnsfaglig engelsk',
-        url: '#',
-        id: 'urn:subject:23',
-      },
-      {
-        nodeId: '185103',
-        name: 'Sosiologi og sosialantropologi',
-        url: '#',
-        id: 'urn:subject:43',
-      },
-      { nodeId: '137416', name: 'Tysk 1', url: '#', id: 'urn:subject:8' },
-      { nodeId: '138655', name: 'Tysk 2', url: '#', id: 'urn:subject:8' },
+      { name: 'Biologi 1', url: '#' },
+      { name: 'Engelskspråklig litteratur og kultur (SF Vg3)', url: '#' },
+      { name: 'Internasjonal engelsk (SF Vg2)', url: '#' },
+      { name: 'Kinesisk 1', url: '#' },
+      { name: 'Kinesisk 2', url: '#' },
+      { name: 'Kommunikasjon og kultur 1', url: '#' },
+      { name: 'Kommunikasjon og kultur 2', url: '#' },
+      { name: 'Kommunikasjon og kultur 3', url: '#' },
+      { name: 'Matematikk R1', url: '#' },
+      { name: 'Matematikk R2', url: '#' },
+      { name: 'Matematikk S1', url: '#' },
+      { name: 'Matematikk S2', url: '#' },
+      { name: 'Medie- og informasjonskunnskap', url: '#' },
+      { name: 'Mediesamfunnet 1', url: '#' },
+      { name: 'Medieuttrykk 1', url: '#' },
+      { name: 'Medieuttrykk og mediesamfunnet', url: '#' },
+      { name: 'Naturfag (SF)', url: '#' },
+      { name: 'Samfunnsfaglig engelsk (SF VG3)', url: '#' },
+      { name: 'Sosiologi og sosialantropologi (SF VG2)', url: '#' },
+      { name: 'Tysk 1', url: '#' },
+      { name: 'Tysk 2', url: '#' },
     ],
-  },
-];
-
-export const articleBreadCrumb = [
-  {
-    label: 'Salg, service og reiseliv (Service og samferdsel)',
-    id: 13,
-    url: '#',
-    typename: 'Subjecttype',
-  },
-  {
-    label: 'Salg, service og reiseliv Vg1',
-    id: 14,
-    url: '#',
-    typename: 'Subject',
-  },
-  {
-    label: 'Økonomi',
-    id: 15,
-    url: '#',
-    typename: 'Topic',
-  },
-  {
-    label: 'Budsjett',
-    id: 16,
-    url: '#',
-    typename: 'Subtopic',
-  },
-  {
-    label: 'Artikkel fagstoff',
-    id: 17,
-    url: '#',
-    isCurrent: true,
-    icon: <SubjectMaterialBadge background size="xx-small" />,
   },
 ];
 

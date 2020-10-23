@@ -9,8 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
 // @ts-ignore
@@ -76,13 +75,13 @@ const StyledColumns = styled.div`
   flex-direction: column;
   align-items: center;
   padding: ${spacing.large} ${spacing.large} 0 0;
-  > div:first-child {
+  > div:first-of-type {
     padding: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     flex-direction: row;
     align-items: flex-start;
-    > div:first-child {
+    > div:first-of-type {
       padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px
         ${spacing.normal} ${spacing.large};
     }
@@ -117,27 +116,24 @@ const StyledLanguageWrapper = styled.div`
 type Props = {
   children: React.ReactNode;
   lang: 'nb' | 'nn' | 'en';
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
-  links?: {
-    email: string;
-    facebook: string;
-    twitter: string;
-    share?: string;
-    to: string;
-    text: string;
-    icon: React.ReactNode;
-  };
+  links?: [
+    {
+      to: string;
+      text: string;
+      icon: React.ReactNode;
+      facebook: string;
+      twitter: string;
+    },
+  ];
   languageSelector?: React.ReactNode;
-  isFFServer?: boolean;
 };
 
-const Footer: React.FunctionComponent<Props> = ({
+const Footer: React.FunctionComponent<Props & tType> = ({
   lang,
   children,
   t,
   links,
   languageSelector,
-  isFFServer,
 }) => {
   const mainContent = (
     <>
@@ -154,7 +150,7 @@ const Footer: React.FunctionComponent<Props> = ({
         </div>
         <div>
           <StyledHeader>{t('footer.vision')}</StyledHeader>
-          <FooterLinks links={links} isFFServer={isFFServer} />
+          <FooterLinks links={links} />
         </div>
       </StyledColumns>
       <StyledHr />

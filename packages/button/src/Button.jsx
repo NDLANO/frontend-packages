@@ -87,7 +87,7 @@ export const outlineStyle = css`
 const outlineWithSize = size =>
   css`
     ${outlineStyle}
-    ${size === 'small' &&
+    ${(size === 'xsmall' || size === 'small') &&
       `border-width:1px;
         &:hover,
         &:focus,
@@ -137,6 +137,15 @@ export const roundedStyle = css`
 `;
 
 export const sizes = {
+  xsmall: css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px ${spacing.xsmall};
+    ${fonts.sizes('12px', '14px')};
+    min-height: 24px;
+    font-weight: ${fonts.weight.semibold};
+  `,
   small: css`
     display: inline-flex;
     align-items: center;
@@ -182,8 +191,14 @@ export const borderShapes = {
   `,
   rounded: size => css`
     border-radius: 32px;
-    ${size === 'small' &&
-      `padding-left:${spacing.small};
+    font-weight: ${fonts.weight.semibold};
+    padding-left: 20px;
+    padding-right: 20px;
+    ${size === 'xsmall' &&
+      `padding-left: 4.5px;
+       padding-right: 4.5px;`}
+     ${size === 'small' &&
+       `padding-left:${spacing.small};
        padding-right:${spacing.small};`}
     ${
       size === 'medium'
@@ -561,7 +576,7 @@ Button.propTypes = {
     'ghostPillOutline',
     'large',
   ]),
-  size: PropTypes.oneOf(['small', 'normal', 'medium', 'large']),
+  size: PropTypes.oneOf(['xsmall', 'small', 'normal', 'medium', 'large']),
   borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
   width: PropTypes.oneOf(['auto', 'full']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),

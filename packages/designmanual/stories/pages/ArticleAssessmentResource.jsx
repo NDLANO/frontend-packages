@@ -16,6 +16,7 @@ import {
   ArticleHeaderWrapper,
   ArticleIntroduction,
   AssessmentResourcesBadge,
+  constants,
 } from '@ndla/ui';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
@@ -23,11 +24,17 @@ import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 import { FigureImage } from '../article/FigureImage';
 
+const { contentTypes } = constants;
+
 export default () => (
   <OneColumn cssModifier="narrow">
-    <ArticleWrapper id="mainContentId">
+    <ArticleWrapper
+      id="mainContentId"
+      modifier={contentTypes.ASSESSMENT_RESOURCES}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
+        <ArticleHeaderWrapper
+          competenceGoals={<CompetenceGoalListExample />}
+          competenceGoalTypes={['LK20', 'LK06']}>
           <ArticleTitle
             icon={<AssessmentResourcesBadge background size="large" />}
             label="Vurderingsressurs">
@@ -38,7 +45,6 @@ export default () => (
             lærere i arbeidet med vurdering. Ressursene her kan brukes til
             egenevaluering av elevene og i dialog mellom elev og lærer.
           </ArticleIntroduction>
-          <ArticleBylineExample id="article-by-line-example-id" />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -73,10 +79,16 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources showTopicHeading />
+        <ArticleBylineExample
+          multipleAuthors
+          useRealText
+          copyPageUrlLink={window.location.href}
+          id="article-by-line-example-id"
+        />
       </LayoutItem>
     </ArticleWrapper>
+    <LayoutItem layout="extend">
+      <Resources showTopicHeading />
+    </LayoutItem>
   </OneColumn>
 );

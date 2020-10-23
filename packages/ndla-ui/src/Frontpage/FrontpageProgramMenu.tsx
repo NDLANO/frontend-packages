@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import { injectT } from '@ndla/i18n';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
@@ -36,14 +35,13 @@ const StyledMenuItem = styled.span`
 type Props = {
   programItems: [ItemProps];
   subjectCategories: subjectsProps['categories'];
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const FrontpageProgramMenu = ({
   programItems,
   subjectCategories,
   t,
-}: Props) => {
+}: Props & tType) => {
   const [showSubjects, setShowSubjects] = useState(false);
 
   return (
@@ -68,7 +66,11 @@ const FrontpageProgramMenu = ({
       {showSubjects ? (
         <FrontpageAllSubjects categories={subjectCategories} />
       ) : (
-        <NavigationBox colorMode="lighterGrey" items={programItems} />
+        <NavigationBox
+          colorMode="lighterGrey"
+          items={programItems}
+          listDirection="horizontal"
+        />
       )}
     </StyledWrapper>
   );

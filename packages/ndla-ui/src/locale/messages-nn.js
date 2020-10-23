@@ -37,6 +37,9 @@ const messages = {
     title: 'Sida finst ikkje',
     errorDescription: 'Orsak, vi fann ikkje sida du prøvde å kome til.',
   },
+  movedResourcePage: {
+    title: 'Sida har flytta, men du kan finne den her:',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:
@@ -288,12 +291,14 @@ const messages = {
     urlContributionsLabel: 'Sjå kva {name} har bidratt med',
     urlAuthorLabel: 'Les meir om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
-    multipleAuthorsLabel: 'Rettshavarar:',
-    multipleAuthorsLabelAria: 'Rettshavarar av artikkelen er {names}',
+    multipleAuthorsLabel: 'Tekst:',
+    multipleAuthorsLabelAria: 'Tekst: {names}',
     multipleAuthorsLabelAriaConjunction: 'og',
-    singleAuthorsLabelAria: 'Rettshavar av artikkelen er {name}',
+    singleAuthorsLabel: 'Tekst:',
+    singleAuthorsLabelAria: 'Tekst: {name}',
     copyPageLink: 'Kopier lenke til sida',
     copyPageLinkCopied: 'Lenke kopiert',
+    authorsConjunction: 'og',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',
@@ -303,6 +308,21 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
+    competenceGoalResourceSearchText:
+      'Søk på alle ressursar som passar til dette kompetansemålet',
+    competenceGoalShowExtra: 'Vis støtte til læreplanen',
+    competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
+    competenceCoreLabel: 'Kjerneelement',
+    competenceTopicLabel: 'Tverrfaglege tema',
+    competenceSubjectLabel: 'Fag',
+    competenceCoreSearchText: 'Søk ressursar for kjerneelementet',
+    competenceTopicSearchText: 'Søk ressursar for tema',
+    competenceSubjectSearchText: 'Gå til fagsiden',
+    competenceGoalClose: 'Lukk',
+    competenceGoalTitle: 'Målet er at eleven skal kunna:',
+    competenceTabLK06label: 'Kompetansemål (LK06)',
+    competenceTabLK20label: 'Kompetansemål (LK20)',
+    competenceTabCorelabel: 'Kjerneelement',
   },
   subject: {
     associatedTopics: 'Tilhøyrande emne',
@@ -536,6 +556,11 @@ const messages = {
     save: 'Lagre',
     abort: 'Avbryt',
   },
+  codeBlock: {
+    copiedCode: 'Kode kopiert til utklippstavle',
+    copyButton: 'Kopier kode',
+    copyCode: 'Kopier kode til utklippstavle',
+  },
   ndlaFilm: {
     slideBackwardsLabel: 'Scroll bakover',
     slideForwardsLabel: 'Scroll framover',
@@ -701,11 +726,11 @@ const messages = {
     cursorText: 'Finn lærestoff, oppgåver, filmar m.m.',
   },
   navigation: {
-    showLongerDescription: 'Lengre beskriving',
-    showShorterDescription: 'Kortere beskriving',
-    topics: 'Emner',
-    additionalTopic: 'Tillegsemne',
-    additionalTopics: 'Tillegsemner',
+    showLongerDescription: 'Vis meir',
+    showShorterDescription: 'Vis mindre',
+    topics: 'Emne',
+    additionalTopic: 'Tilleggsemne',
+    additionalTopics: 'Tilleggsemne',
     loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {

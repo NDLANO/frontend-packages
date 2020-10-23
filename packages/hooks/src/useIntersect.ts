@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
+import { isIE, browserVersion } from 'react-device-detect';
 
 const DEFAULT_ROOT = null;
 const DEFAULT_ROOT_MARGIN = '0px';
@@ -11,8 +12,14 @@ export type IntersectionObserverHookRefCallback = (
 
 export type IntersectionObserverHookResult = [
   IntersectionObserverHookRefCallback,
-  { entry: IntersectionObserverEntry | undefined }
+  { entry: IntersectionObserverEntry | undefined },
 ];
+
+const IntersectionObserverBrowserSupport = () =>
+  !(
+    !('IntersectionObserver' in window) ||
+    !('IntersectionObserverEntry' in window)
+  );
 
 // For more info:
 // https://developers.google.com/web/updates/2016/04/intersectionobserver
@@ -22,6 +29,7 @@ export function useIntersectionObserver({
   rootMargin = DEFAULT_ROOT_MARGIN,
   threshold = DEFAULT_THRESHOLD,
 }: IntersectionObserverInit = {}): IntersectionObserverHookResult {
+  const isIE11 = isIE && parseInt(browserVersion) < 12;
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
@@ -57,5 +65,8 @@ export function useIntersectionObserver({
     },
     [root, rootMargin, threshold],
   );
+  if (isIE11 || !IntersectionObserverBrowserSupport()) {
+    return [() => {}, { entry }];
+  }
   return [refCallback, { entry }];
 }

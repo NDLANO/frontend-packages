@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { OneColumn, NdlaFilmHero, FFHeroBadge } from '@ndla/ui';
+import { OneColumn, NdlaFilmHero } from '@ndla/ui';
 import Breadcrumb from '../molecules/breadcrumbs';
 
-const NdlaFilmArticleHero = ({ withBackgroundImage, article, isFFServer }) => {
+const NdlaFilmArticleHero = ({ withBackgroundImage, article }) => {
   const backgroundImage = article && article.metaImage && article.metaImage.url;
 
   return (
-    <NdlaFilmHero
-      hasImage={isFFServer || (withBackgroundImage && backgroundImage)}>
+    <NdlaFilmHero hasImage={withBackgroundImage && backgroundImage}>
       {withBackgroundImage && backgroundImage && (
         <div className="c-hero__background">
           <img src={backgroundImage} alt={article.metaImage.alt} />
@@ -17,7 +16,6 @@ const NdlaFilmArticleHero = ({ withBackgroundImage, article, isFFServer }) => {
       <OneColumn>
         <div className="c-hero__content">
           <section>
-            {isFFServer && <FFHeroBadge isNDLAFilm />}
             <Breadcrumb />
           </section>
         </div>
@@ -31,7 +29,6 @@ NdlaFilmArticleHero.propTypes = {
   article: PropTypes.shape({
     metaImage: PropTypes.object,
   }),
-  isFFServer: PropTypes.bool,
 };
 
 export default NdlaFilmArticleHero;

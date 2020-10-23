@@ -120,7 +120,7 @@ class ArticleLoader extends Component {
     const { article, message } = this.state;
     const {
       reset,
-      cleanInContext,
+      articleModifier,
       closeButton,
       icon,
       label,
@@ -132,7 +132,6 @@ class ArticleLoader extends Component {
       hideForm,
       id,
       hideCompetenceGoals,
-      isFFServer,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -175,19 +174,12 @@ class ArticleLoader extends Component {
       );
     }
 
-    const articleModifier = cleanInContext
-      ? 'clean-in-context'
-      : reset
-      ? 'clean'
-      : '';
-
     return (
       <>
         {ndlaFilm && (
           <NdlaFilmArticleHero
             article={article}
             withBackgroundImage={withBackgroundImage}
-            isFFServer={isFFServer}
           />
         )}
         {article && (
@@ -245,11 +237,10 @@ ArticleLoader.propTypes = {
   articleId: PropTypes.string,
   closeButton: PropTypes.bool,
   reset: PropTypes.bool,
-  cleanInContext: PropTypes.bool,
+  articleModifier: PropTypes.string,
   ndlaFilm: PropTypes.bool,
   useFFServer: PropTypes.bool,
   hideCompetenceGoals: PropTypes.bool,
-  isFFServer: PropTypes.bool,
 };
 
 ArticleLoader.defaultProps = {

@@ -102,8 +102,10 @@ export const Article = ({
   children,
   locale,
   competenceGoals,
+  competenceGoalTypes,
   id,
   renderMarkdown,
+  copyPageUrlLink,
 }) => {
   const {
     title,
@@ -128,22 +130,15 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier} id={id}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={competenceGoals}>
+        <ArticleHeaderWrapper
+          competenceGoals={competenceGoals}
+          competenceGoalTypes={competenceGoalTypes}>
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>
           <ArticleIntroduction renderMarkdown={renderMarkdown}>
             {introduction}
           </ArticleIntroduction>
-          <ArticleByline
-            {...{
-              authors,
-              published,
-              license,
-              additional,
-              licenseBox,
-            }}
-          />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -153,6 +148,16 @@ export const Article = ({
         {footNotes && footNotes.length > 0 && (
           <ArticleFootNotes footNotes={footNotes} />
         )}
+        <ArticleByline
+          copyPageUrlLink={copyPageUrlLink}
+          {...{
+            authors,
+            published,
+            license,
+            additional,
+            licenseBox,
+          }}
+        />
       </LayoutItem>
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>
@@ -173,6 +178,7 @@ Article.propTypes = {
     label: PropTypes.string,
   }).isRequired,
   renderMarkdown: PropTypes.func,
+  copyPageUrlLink: PropTypes.string,
 };
 
 Article.defaultProps = {

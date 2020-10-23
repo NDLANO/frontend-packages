@@ -47,12 +47,12 @@ export const addCopyToClipboardListeners = () => {
       const success = copyTextToClipboard(text, el.parentNode);
 
       if (success) {
-        const previouesTitle = target.innerHTML;
+        const previousTitle = target.innerHTML;
         target.innerHTML = copiedTitle;
         target.disabled = true;
 
         setTimeout(() => {
-          target.innerHTML = previouesTitle;
+          target.innerHTML = previousTitle;
           target.disabled = false;
         }, 10000);
       }

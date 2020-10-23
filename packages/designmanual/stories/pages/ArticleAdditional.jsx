@@ -16,17 +16,22 @@ import {
   ArticleIntroduction,
   SubjectMaterialBadge,
   ArticleHeaderWrapper,
+  constants,
 } from '@ndla/ui';
 
 import Resources from '../molecules/resources';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
+const { contentTypes } = constants;
+
 export default () => (
   <OneColumn>
-    <ArticleWrapper id="mainContentId">
+    <ArticleWrapper id="mainContentId" modifier={contentTypes.SUBJECT_MATERIAL}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />}>
+        <ArticleHeaderWrapper
+          competenceGoals={<CompetenceGoalListExample />}
+          competenceGoalTypes={['LK20', 'LK06']}>
           <ArticleTitle
             icon={<SubjectMaterialBadge background size="large" />}
             label="Fagstoff">
@@ -36,7 +41,6 @@ export default () => (
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger
             å produsere filmen.
           </ArticleIntroduction>
-          <ArticleBylineExample useRealText multipleAuthors />
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
@@ -210,10 +214,16 @@ export default () => (
           tydeligere for både deg selv og dem du eventuelt jobber sammen med i
           klassen.
         </p>
-      </LayoutItem>
-      <LayoutItem layout="extend">
-        <Resources showTopicHeading />
+        <ArticleBylineExample
+          multipleAuthors
+          useRealText
+          copyPageUrlLink={window.location.href}
+          id="article-by-line-example-id"
+        />
       </LayoutItem>
     </ArticleWrapper>
+    <LayoutItem layout="extend">
+      <Resources showTopicHeading />
+    </LayoutItem>
   </OneColumn>
 );

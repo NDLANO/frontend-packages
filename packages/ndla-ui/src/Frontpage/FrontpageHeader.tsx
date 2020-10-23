@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
+// @ts-ignore
+import { injectT } from '@ndla/i18n';
 import FrontpageHeaderIllustration from './illustrations/FrontpageHeaderIllustration';
 // @ts-ignore
 import SvgLogo from '../Logo/SvgLogo';
@@ -51,24 +53,30 @@ const HeaderIllustrationWrapper = styled.div`
 export type FrontPageHeaderProps = {
   languageOptions: string;
   locale: string;
+  showHeader: boolean;
+  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
 };
 
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps> = ({
   languageOptions,
   locale,
+  showHeader = true,
   children,
+  t,
 }) => (
   <StyledHeaderWrapper>
     <StyledHeader>
-      <StyledLogo to="/">
-        <SvgLogo />
+      <StyledLogo to="/" aria-label={t('logo.altText')}>
+        <SvgLogo locale={locale} />
       </StyledLogo>
-      <HeaderIllustrationWrapper>
-        <FrontpageHeaderIllustration />
-      </HeaderIllustrationWrapper>
+      {showHeader && (
+        <HeaderIllustrationWrapper>
+          <FrontpageHeaderIllustration />
+        </HeaderIllustrationWrapper>
+      )}
       {children}
     </StyledHeader>
   </StyledHeaderWrapper>
 );
 
-export default FrontpageHeader;
+export default injectT(FrontpageHeader);

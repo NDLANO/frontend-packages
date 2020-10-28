@@ -10,16 +10,12 @@ import React, { useRef } from 'react';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
 import BreadcrumbItem from './BreadcrumbItem';
+import { BreadcrumbItemI } from './Breadcrumb';
 
 const classes: BEMHelper<ReturnObject> = BEMHelper({
   name: 'breadcrumb-block',
   prefix: 'c-',
 });
-
-interface BreadcrumbItemI {
-  to: string;
-  name: string;
-}
 
 interface Props {
   children: React.ReactNode;

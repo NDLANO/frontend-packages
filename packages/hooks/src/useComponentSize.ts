@@ -10,7 +10,9 @@ import { useCallback, useState } from 'react';
 import { resizeObserver } from '@ndla/util';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
-function getSize(el?: HTMLElement | null) {
+type NullableHtmlElement = HTMLElement | null | undefined;
+
+function getSize(el: NullableHtmlElement) {
   if (!el) {
     return {
       width: 0,
@@ -25,7 +27,7 @@ function getSize(el?: HTMLElement | null) {
 }
 
 interface Ref {
-  current: HTMLElement | undefined | null;
+  current: NullableHtmlElement;
 }
 
 export function useComponentSize(ref: Ref = { current: undefined }) {

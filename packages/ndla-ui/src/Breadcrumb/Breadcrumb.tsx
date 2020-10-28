@@ -19,7 +19,7 @@ const classes: BEMHelper<ReturnObject> = BEMHelper({
   prefix: 'c-',
 });
 
-interface BreadcrumbItemI {
+export interface BreadcrumbItemI {
   to: string;
   name: string;
 }

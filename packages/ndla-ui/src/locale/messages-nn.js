@@ -299,8 +299,8 @@ const messages = {
     copyPageLink: 'Kopier lenke til sida',
     copyPageLinkCopied: 'Lenke kopiert',
     conjunction: 'og',
-    supplierLabel: 'Rettighetshaver:',
-    multipleSuppliersLabel: 'Rettighetshavere:',
+    supplierLabel: 'Rettshavar:',
+    multipleSuppliersLabel: 'Rettshavarar:',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

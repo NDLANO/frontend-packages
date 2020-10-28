@@ -6,8 +6,9 @@
  *
  */
 
-import { useCallback, useState, useLayoutEffect } from 'react';
+import { useCallback, useState } from 'react';
 import { resizeObserver } from '@ndla/util';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 function getSize(el?: HTMLElement) {
   if (!el) {
@@ -37,7 +38,7 @@ export function useComponentSize(ref: Ref = { current: undefined }) {
     },
     [ref],
   );
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!ref.current) {
       return;
     }

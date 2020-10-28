@@ -7,18 +7,34 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { uuid } from '@ndla/util';
+
+// @ts-ignore
 import { Home } from '@ndla/icons/common';
 import BreadcrumbItem from './BreadcrumbItem';
 
-const classes = BEMHelper({
+const classes: BEMHelper<ReturnObject> = BEMHelper({
   name: 'breadcrumb',
   prefix: 'c-',
 });
 
-const Breadcrumb = ({ children, items, invertedStyle }) => (
+interface BreadcrumbItemI {
+  to: string;
+  name: string;
+}
+
+interface Props {
+  children: React.ReactNode;
+  items: BreadcrumbItemI[];
+  invertedStyle: boolean;
+}
+
+const Breadcrumb: React.FunctionComponent<Props> = ({
+  children,
+  items,
+  invertedStyle,
+}) => (
   <div>
     {children}
     <ol {...classes('list')}>
@@ -37,16 +53,5 @@ const Breadcrumb = ({ children, items, invertedStyle }) => (
     </ol>
   </div>
 );
-
-Breadcrumb.propTypes = {
-  children: PropTypes.node,
-  invertedStyle: PropTypes.bool,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      to: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
-};
 
 export default Breadcrumb;

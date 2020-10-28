@@ -297,8 +297,8 @@ const messages = {
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
     conjunction: 'and',
-    supplierLabel: 'Supplier:',
-    multipleSuppliersLabel: 'Suppliers:',
+    supplierLabel: 'Rightsholder:',
+    multipleSuppliersLabel: 'Rightsholder:',
   },
   competenceGoals: {
     title: 'Competance goals and curriculum ',

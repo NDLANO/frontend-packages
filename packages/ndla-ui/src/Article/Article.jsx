@@ -121,11 +121,9 @@ export const Article = ({
 
   let authors = creators;
   if (Array.isArray(authors) && authors.length === 0) {
-    authors = rightsholders;
-  }
-  if (Array.isArray(authors) && authors.length === 0) {
     authors = processors;
   }
+  const suppliers = rightsholders.length ? rightsholders : undefined;
 
   return (
     <ArticleWrapper modifier={modifier} id={id}>
@@ -152,6 +150,7 @@ export const Article = ({
           copyPageUrlLink={copyPageUrlLink}
           {...{
             authors,
+            suppliers,
             published,
             license,
             additional,

@@ -6,26 +6,34 @@
  *
  */
 
-import React, { useRef, useLayoutEffect } from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-import { useComponentSize } from '@ndla/hooks';
+import React, { useRef } from 'react';
+import BEMHelper, { ReturnObject } from 'react-bem-helper';
+import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
 import BreadcrumbItem from './BreadcrumbItem';
+import { BreadcrumbItemI } from './Breadcrumb';
 
-const classes = BEMHelper({
+const classes: BEMHelper<ReturnObject> = BEMHelper({
   name: 'breadcrumb-block',
   prefix: 'c-',
 });
 
-const BreadcrumbBlock = ({ children, items }) => {
-  const olRef = useRef(null);
-  const containerRef = useRef(null);
+interface Props {
+  children: React.ReactNode;
+  items: BreadcrumbItemI[];
+}
+
+const BreadcrumbBlock: React.FunctionComponent<Props> = ({
+  children,
+  items,
+}) => {
+  const olRef = useRef<any>();
+  const containerRef = useRef<HTMLDivElement>(null);
   // No idiomatic way of dealing with sets of refs yet
   // See: https://github.com/facebook/react/issues/14072#issuecomment-446777406
   const breadcrumbItemRefs = useRef(new Map()).current;
   const size = useComponentSize(containerRef);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Create an array of all breadcrumb item refs
     const items = Array.from(breadcrumbItemRefs).map(([key, value]) => value);
 
@@ -58,23 +66,16 @@ const BreadcrumbBlock = ({ children, items }) => {
             classes={classes}
             key={item.to}
             isCurrent={i === items.length - 1}
-            to={item.to}>
+            to={item.to}
+            name={item.name}
+            home={false}
+            invertedStyle={false}>
             {item.name}
           </BreadcrumbItem>
         ))}
       </ol>
     </div>
   );
-};
-
-BreadcrumbBlock.propTypes = {
-  children: PropTypes.node,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      to: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
 };
 
 export default BreadcrumbBlock;

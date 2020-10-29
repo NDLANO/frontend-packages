@@ -6,10 +6,13 @@
  *
  */
 
-import { useCallback, useState, useLayoutEffect } from 'react';
+import { useCallback, useState } from 'react';
 import { resizeObserver } from '@ndla/util';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
-function getSize(el?: HTMLElement) {
+type NullableHtmlElement = HTMLElement | null | undefined;
+
+function getSize(el: NullableHtmlElement) {
   if (!el) {
     return {
       width: 0,
@@ -24,7 +27,7 @@ function getSize(el?: HTMLElement) {
 }
 
 interface Ref {
-  current?: HTMLElement;
+  current: NullableHtmlElement;
 }
 
 export function useComponentSize(ref: Ref = { current: undefined }) {
@@ -37,7 +40,7 @@ export function useComponentSize(ref: Ref = { current: undefined }) {
     },
     [ref],
   );
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!ref.current) {
       return;
     }

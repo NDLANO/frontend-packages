@@ -7,15 +7,27 @@
  */
 
 import React, { useRef, useImperativeHandle } from 'react';
-import PropTypes from 'prop-types';
+// @ts-ignore
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import BEMHelper, { ReturnObject } from 'react-bem-helper';
+import * as H from 'history';
 
-const BreadcrumbItem = React.forwardRef(
+interface Props {
+  classes: BEMHelper<ReturnObject>;
+  isCurrent: boolean;
+  children: React.ReactNode;
+  to: H.LocationDescriptor;
+  home: boolean;
+  name: string;
+  invertedStyle: boolean;
+}
+
+const BreadcrumbItem = React.forwardRef<any, Props>(
   ({ to, children, classes, isCurrent, home, invertedStyle, name }, ref) => {
-    const liRef = useRef();
+    const liRef = useRef<any>();
     useImperativeHandle(ref, () => ({
-      setMaxWidth: maxWidth => {
+      setMaxWidth: (maxWidth: number) => {
         liRef.current.children[0].style.maxWidth = maxWidth;
       },
     }));
@@ -24,7 +36,7 @@ const BreadcrumbItem = React.forwardRef(
         {isCurrent ? (
           <span>{children}</span>
         ) : (
-          <SafeLink to={to} aria-label={home ? name : null}>
+          <SafeLink to={to} aria-label={home ? name : undefined}>
             {children}
           </SafeLink>
         )}
@@ -33,18 +45,5 @@ const BreadcrumbItem = React.forwardRef(
     );
   },
 );
-
-BreadcrumbItem.propTypes = {
-  classes: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  to: PropTypes.string.isRequired,
-  isCurrent: PropTypes.bool,
-  home: PropTypes.bool,
-  name: PropTypes.string,
-};
-
-BreadcrumbItem.defaultProps = {
-  home: false,
-};
 
 export default BreadcrumbItem;

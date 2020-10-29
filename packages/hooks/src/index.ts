@@ -9,3 +9,4 @@
 export { useWindowSize } from './useWindowSize';
 export { useComponentSize } from './useComponentSize';
 export { useIntersectionObserver } from './useIntersect';
+export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';

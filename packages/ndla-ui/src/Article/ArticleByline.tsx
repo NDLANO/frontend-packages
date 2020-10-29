@@ -44,8 +44,13 @@ type AuthorProps = {
   name: string;
 };
 
+type SupplierProps = {
+  name: string;
+};
+
 type Props = {
   authors?: AuthorProps[];
+  suppliers?: SupplierProps[];
   published: string;
   license: string;
   licenseBox?: React.ReactNode;
@@ -54,6 +59,7 @@ type Props = {
 
 const ArticleByline = ({
   authors,
+  suppliers,
   license,
   licenseBox,
   published,
@@ -66,6 +72,29 @@ const ArticleByline = ({
     }
   };
 
+  const renderContributors = (
+    contributors: SupplierProps[] | AuthorProps[],
+  ) => (
+    <>
+      {contributors.map((contributor, index) => {
+        let separator = ' ';
+        if (index > 0) {
+          if (index === contributors.length - 1) {
+            separator = ` ${t('article.conjunction')} `;
+          } else {
+            separator = ', ';
+          }
+        }
+        return (
+          <span key={contributor.name}>
+            {separator}
+            {contributor.name}
+          </span>
+        );
+      })}
+    </>
+  );
+
   return (
     <Wrapper>
       <div>
@@ -76,23 +105,16 @@ const ArticleByline = ({
           {authors.length > 1
             ? t('article.multipleAuthorsLabel')
             : t('article.singleAuthorsLabel')}
-          {authors.map((author, index) => {
-            let separator = ' ';
-            if (index > 0) {
-              if (index === authors.length - 1) {
-                separator = ` ${t('article.authorsConjunction')} `;
-              } else {
-                separator = ', ';
-              }
-            }
-            return (
-              <span key={author.name}>
-                {separator}
-                {author.name}
-              </span>
-            );
-          })}
+          {renderContributors(authors)}
           <span>{` (${license})`}</span>
+        </TextWrapper>
+      )}
+      {suppliers && (
+        <TextWrapper>
+          {suppliers.length > 1
+            ? t('article.multipleSuppliersLabel')
+            : t('article.supplierLabel')}
+          {renderContributors(suppliers)}
         </TextWrapper>
       )}
       <ButtonWrapper>

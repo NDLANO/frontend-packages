@@ -295,7 +295,9 @@ const messages = {
     singleAuthorsLabelAria: 'Tekst: {name}',
     copyPageLink: 'Kopier lenke til siden',
     copyPageLinkCopied: 'Lenke kopiert',
-    authorsConjunction: 'og',
+    conjunction: 'og',
+    supplierLabel: 'Rettighetshaver:',
+    multipleSuppliersLabel: 'Rettighetshavere:',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

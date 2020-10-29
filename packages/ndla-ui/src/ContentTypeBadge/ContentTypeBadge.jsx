@@ -101,7 +101,3 @@ export const SourceMaterialBadge = props => (
 export const LearningPathBadge = props => (
   <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
 );
-
-export const SubjectTypeBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_TYPE} />
-);

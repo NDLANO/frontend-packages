@@ -109,6 +109,13 @@ const messages = {
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
     },
+    resultType: {
+      showing: 'Showing {fromCount} to {toCount} of {totalCount}',
+      showMore: 'Show more',
+      showAll: 'Show all',
+      toSubjectPageLabel: 'Go to subject page',
+      all: 'All',
+    },
   },
 
   subjectPage: {

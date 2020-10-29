@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { ChevronRight, ChevronDown } from '@ndla/icons/common';
 // @ts-ignore
 import Button from '@ndla/button';
+import { injectT, tType } from '@ndla/i18n';
 
 const ResultNav = styled.div`
   font-size: 14px;
@@ -41,27 +42,32 @@ const ResultNavigation = ({
   onNavigate,
   onSelectSubjectType,
   pagination,
-}: Props) => {
+  t,
+}: Props & tType) => {
   const { totalCount, pageSize, page } = pagination;
   const nextPage = page + 1;
   const currentItems = nextPage * pageSize;
   const isMore = currentItems < totalCount;
+  const toCount = currentItems > totalCount ? totalCount : currentItems;
   return (
     <ResultNav>
       <NavInfo>
-        Viser 1 til {currentItems > totalCount ? totalCount : currentItems} av{' '}
-        {totalCount}
+        {t('searchPage.resultType.showing', {
+          fromCount: 1,
+          toCount,
+          totalCount,
+        })}
       </NavInfo>
       {isMore && (
         <Button className="nav" link onClick={() => onNavigate(nextPage)}>
-          Vis mer <ChevronDown />
+          {t('searchPage.resultType.showMore')} <ChevronDown />
         </Button>
       )}
       <Button link className="nav" onClick={() => onSelectSubjectType()}>
-        Vis alle <ChevronRight />
+        {t('searchPage.resultType.showAll')} <ChevronRight />
       </Button>
     </ResultNav>
   );
 };
 
-export default ResultNavigation;
+export default injectT(ResultNavigation);

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import SafeLink from '@ndla/safelink';
 import { breakpoints, mq } from '@ndla/core';
+import { injectT, tType } from '@ndla/i18n';
 
 type WrapperProps = {
   loading?: boolean;
@@ -103,7 +104,7 @@ type Props = {
   item: SearchSubjectTypeItemType;
   loading: boolean;
 };
-const SearchSubjectTypeItem = ({ item, loading }: Props) => {
+const SearchSubjectTypeItem = ({ item, loading, t }: Props & tType) => {
   const { title, url, img = null } = item; // img = null
 
   return (
@@ -112,7 +113,9 @@ const SearchSubjectTypeItem = ({ item, loading }: Props) => {
         <ItemContent>
           <ItemTitle>{title}</ItemTitle>
           <ItemText>
-            <SafeLink to={url}>Gå til fagsiden</SafeLink>
+            <SafeLink to={url}>
+              {t('searchPage.resultType.toSubjectPageLabel')}
+            </SafeLink>
           </ItemText>
         </ItemContent>
       </ItemWrapper>
@@ -120,4 +123,4 @@ const SearchSubjectTypeItem = ({ item, loading }: Props) => {
   );
 };
 
-export default SearchSubjectTypeItem;
+export default injectT(SearchSubjectTypeItem);

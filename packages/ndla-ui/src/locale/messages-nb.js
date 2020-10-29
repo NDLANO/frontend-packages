@@ -108,6 +108,13 @@ const messages = {
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
     },
+    resultType: {
+      showing: 'Viser {fromCount} til {toCount} av {totalCount}',
+      showMore: 'Vis mer',
+      showAll: 'Vis alle',
+      toSubjectPageLabel: 'Gå til fagsiden',
+      all: 'Alle',
+    },
   },
   subjectPage: {
     errorDescription: 'Beklager, en feil oppsto under lasting av emnene.',

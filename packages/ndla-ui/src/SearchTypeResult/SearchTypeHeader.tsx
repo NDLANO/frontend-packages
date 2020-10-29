@@ -133,7 +133,7 @@ const SearchTypeHeader = ({
                 disabled={loading}
                 lighter={typeFilter.filter && typeFilter.filter.length > 0}
                 onClick={() => updateFilter('', true)}>
-                Alle
+                {t('searchPage.resultType.all')}
               </Button>
             </CategoryTypeButtonWrapper>
 

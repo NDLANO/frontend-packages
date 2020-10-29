@@ -109,6 +109,13 @@ const messages = {
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
     },
+    resultType: {
+      showing: 'Viser {fromCount} til {toCount} av {totalCount}',
+      showMore: 'Vis meir',
+      showAll: 'Vis alle',
+      toSubjectPageLabel: 'Gå til fagsida',
+      all: 'Alle',
+    },
   },
   subjectPage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av emna.',

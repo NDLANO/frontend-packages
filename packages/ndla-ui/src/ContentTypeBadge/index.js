@@ -8,7 +8,6 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
   LearningPathBadge,
-  SubjectTypeBadge,
 } from './ContentTypeBadge';
 
 export default ContentTypeBadge;

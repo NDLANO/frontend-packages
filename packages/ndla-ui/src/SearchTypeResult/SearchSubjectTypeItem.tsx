@@ -42,7 +42,7 @@ const ItemWrapper = styled.div<WrapperProps>`
 
   ${mq.range({ from: breakpoints.tabletWide })} {
     flex: 1 0 48%;
-    max-width: 50%;
+    max-width: 48%;
     margin-bottom: 16px;
     &:nth-of-type(odd) {
       margin-right: 8px;
@@ -56,7 +56,6 @@ const ItemWrapper = styled.div<WrapperProps>`
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
-    max-width: 533px;
     margin-bottom: 32px;
     &:nth-of-type(odd) {
       margin-right: 16px;

@@ -477,7 +477,7 @@ const messages = {
   },
   contentTypes: {
     all: 'Alle',
-    subject: 'Emne',
+    subject: 'Fag',
     'topic-article': 'Emne',
     'learning-path': 'Læringssti',
     'subject-material': 'Fagstoff',
@@ -485,6 +485,7 @@ const messages = {
     'external-learning-resources': 'Ekstern læringsressurs',
     'source-material': 'Kjeldemateriale',
     'assessment-resources': 'Vurderingsressurs',
+    topic: 'Emne',
   },
   modal: {
     closeModal: 'Lukk',

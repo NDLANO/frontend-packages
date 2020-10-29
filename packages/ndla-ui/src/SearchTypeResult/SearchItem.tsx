@@ -5,9 +5,17 @@ import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import BEMHelper from 'react-bem-helper';
 
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, colors, mq } from '@ndla/core';
+import { ContentType } from './SearchTypeResult';
+// @ts-ignore
+import constants from '../model';
+
+// @ts-ignore
+import ContentTypeBadge from '../ContentTypeBadge';
 
 const searchResultItemClasses = BEMHelper('c-search-result-item');
+
+const { contentTypes } = constants;
 
 type WrapperProps = {
   loading?: boolean;
@@ -57,7 +65,7 @@ const ItemWrapper = styled.div<WrapperProps>`
     `
     opacity: 0.6;
     z-index: 0;
-  }`}
+  `}
 `;
 
 const ItemHead = styled.div`
@@ -78,10 +86,37 @@ const ItemHead = styled.div`
   }
 `;
 
-const ImateIcon = styled.div`
+type ItemIconProps = {
+  type?: ContentType;
+};
+
+const ItemIcon = styled.div<ItemIconProps>`
   height: 144px;
   background: #ccc;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${props => {
+    switch (props.type) {
+      case contentTypes.SUBJECT_MATERIAL:
+        return `background: ${colors.subjectMaterial.light};`;
+      case contentTypes.TOPIC:
+        return `background: ${colors.subject.light};`;
+      case contentTypes.TASKS_AND_ACTIVITIES:
+        return `background: ${colors.tasksAndActivities.light};`;
+      case contentTypes.ASSESSMENT_RESOURCES:
+        return `background: ${colors.assessmentResource.light};`;
+      case contentTypes.EXTERNAL_LEARNING_RESOURCES:
+        return `background: ${colors.externalLearningResource.light};`;
+      case contentTypes.SOURCE_MATERIAL:
+        return `background: ${colors.sourceMaterial.light};`;
+      case contentTypes.LEARNING_PATH:
+        return `background: ${colors.learningPath.light};`;
+      default:
+        return null;
+    }
+  }}
 `;
 
 const ItemPillWrapper = styled.div`
@@ -110,6 +145,7 @@ const BreadcrumbPath = styled.div`
   font-size: 14px;
   line-height: 20px;
 `;
+
 export type SearchItemType = {
   id: string;
   title: string;
@@ -124,20 +160,20 @@ export type SearchItemType = {
 type Props = {
   item: SearchItemType;
   loading: boolean;
+  type?: ContentType;
 };
-const SearchItem = ({ item, loading }: Props) => {
+const SearchItem = ({ item, loading, type }: Props) => {
   const {
     title,
     url,
     ingress,
     breadcrumb,
-    type = null,
     contentTypeLabel = null,
     img = null,
   } = item;
   const ItemPillLabels = (
     <ItemPillWrapper>
-      {type && (
+      {item.type && (
         <ItemPill {...searchResultItemClasses('pills')}>{item.type}</ItemPill>
       )}
       {contentTypeLabel && (
@@ -147,6 +183,7 @@ const SearchItem = ({ item, loading }: Props) => {
       )}
     </ItemPillWrapper>
   );
+
   return (
     <>
       <ItemWrapper loading={loading}>
@@ -157,7 +194,11 @@ const SearchItem = ({ item, loading }: Props) => {
             </SafeLink>
           ) : (
             <SafeLink to={url}>
-              <ImateIcon />
+              {type && (
+                <ItemIcon type={type}>
+                  <ContentTypeBadge type={type} size="small" border={false} />
+                </ItemIcon>
+              )}
             </SafeLink>
           )}
         </ItemHead>

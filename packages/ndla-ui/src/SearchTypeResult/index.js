@@ -7,7 +7,7 @@
  */
 
 import SearchTypeResult from './SearchTypeResult';
-import SearchTypeHeader from './components/SearchTypeHeader';
-import SearchTypeTopicFilter from './components/SearchTypeTopicFilter';
+import SearchTypeHeader from './SearchTypeHeader';
+import SearchTypeTopicFilter from './SearchTypeTopicFilter';
 
 export { SearchTypeResult, SearchTypeHeader, SearchTypeTopicFilter };

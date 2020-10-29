@@ -2,10 +2,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { Spinner } from '@ndla/editor';
+// @ts-ignore
+import constants from '../model';
 import SearchItem, { SearchItemType } from './SearchItem';
 import SearchSubjectTypeItem, {
   SearchSubjectTypeItemType,
 } from './SearchSubjectTypeItem';
+
+const { contentTypes } = constants;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,11 +46,11 @@ type Props = {
   loading: boolean;
   type: string;
 };
-const Items = ({ items, loading, type }: Props) => {
+const SearchItems = ({ items, loading, type }: Props) => {
   return (
     <Wrapper>
       <Container loading={loading}>
-        {type === 'SUBJECT_TYPE'
+        {type === contentTypes.SUBJECT
           ? items.map(item => {
               return (
                 <SearchSubjectTypeItem
@@ -58,7 +62,12 @@ const Items = ({ items, loading, type }: Props) => {
             })
           : items.map((item: any) => {
               return (
-                <SearchItem loading={loading} item={item} key={`${item.id}`} />
+                <SearchItem
+                  loading={loading}
+                  item={item}
+                  key={`${item.id}`}
+                  type={type}
+                />
               );
             })}
       </Container>
@@ -73,4 +82,4 @@ const Items = ({ items, loading, type }: Props) => {
   );
 };
 
-export default React.memo(Items);
+export default React.memo(SearchItems);

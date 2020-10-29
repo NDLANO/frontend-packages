@@ -288,22 +288,9 @@ const subjectMaterialResults = [
 ];
 
 const searchTypeFilterOptions = {
-  SUBJECT: [
-    {
-      name: 'Oppgave test',
-      id: 'urn:resourcetype:task:test',
-    },
-    {
-      name: 'Øvelse test',
-      id: 'urn:resourcetype:exercise:test',
-    },
-    {
-      name: 'Øvelse test 2',
-      id: 'urn:resourcetype:exercise:test2',
-    },
-  ],
-  LEARNING_PATH: null,
-  SUBJECT_MATERIAL: [
+  subject: null,
+  'learning-path': null,
+  'subject-material': [
     {
       name: 'Veiledning',
       id: 'urn:resourcetype:guidance',
@@ -317,7 +304,7 @@ const searchTypeFilterOptions = {
       id: 'urn:resourcetype:academicArticle',
     },
   ],
-  TASKS_AND_ACTIVITIES: [
+  'tasks-and-activities': [
     {
       name: 'Oppgave',
       id: 'urn:resourcetype:task',
@@ -330,6 +317,7 @@ const searchTypeFilterOptions = {
   EVALUATION_RESOURCE: null,
   SOURCE_MATERIAL: null,
   SHARED_RESOURCES: null,
+  topic: null,
 };
 
 const searchSubjectTypeOptions = [
@@ -339,23 +327,23 @@ const searchSubjectTypeOptions = [
   },
   {
     title: 'Fag',
-    value: 'SUBJECT_TYPE',
+    value: 'subject',
   },
   {
     title: 'Emne',
-    value: 'SUBJECT',
+    value: 'topic',
   },
   {
     title: 'Fagstoff',
-    value: 'SUBJECT_MATERIAL',
+    value: 'subject-material',
   },
   {
     title: 'Oppgaver og aktiviteter',
-    value: 'TASKS_AND_ACTIVITIES',
+    value: 'tasks-and-activities',
   },
   {
     title: 'Læringssti',
-    value: 'LEARNING_PATH',
+    value: 'learning-path',
   },
 ];
 

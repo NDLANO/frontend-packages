@@ -22,11 +22,14 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ContentTypeBadge = ({ type, background, size }) => {
+export const ContentTypeBadge = ({ type, background, size, border }) => {
   const modifiers = [type, size];
 
   if (background) {
     modifiers.push('background');
+  }
+  if (border) {
+    modifiers.push('border');
   }
 
   let icon = null;
@@ -41,7 +44,7 @@ export const ContentTypeBadge = ({ type, background, size }) => {
       icon = <AssessmentResource />;
       break;
     case contentTypes.SUBJECT:
-      icon = <Subject />;
+      icon = <MenuBook />;
       break;
     case contentTypes.EXTERNAL_LEARNING_RESOURCES:
       icon = <ExternalLearningResource />;
@@ -52,8 +55,8 @@ export const ContentTypeBadge = ({ type, background, size }) => {
     case contentTypes.LEARNING_PATH:
       icon = <LearningPath />;
       break;
-    case contentTypes.SUBJECT_TYPE:
-      icon = <MenuBook />;
+    case contentTypes.TOPIC:
+      icon = <Subject />;
       break;
     default:
       break;
@@ -65,10 +68,12 @@ ContentTypeBadge.propTypes = {
   size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'large']),
   type: ContentTypeShape,
   background: PropTypes.bool,
+  border: PropTypes.bool,
 };
 
 ContentTypeBadge.defaultProps = {
   size: 'small',
+  border: true,
 };
 
 export const SubjectMaterialBadge = props => (

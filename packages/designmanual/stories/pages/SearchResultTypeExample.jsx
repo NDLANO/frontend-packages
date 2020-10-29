@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 import {
-  SubjectBadge,
-  SubjectMaterialBadge,
   SearchTypeResult,
   /* SearchTypeTopicFilter,
   ContentTypeBadge,
@@ -10,13 +8,8 @@ import {
   TasksAndActivitiesBadge,
   ExternalLearningResourcesBadge,
   LearningPathBadge, */
-  SubjectTypeBadge,
+  constants,
 } from '@ndla/ui';
-
-/* import {
-  // MenuBook as MenuBookIcon,
-  // @ts-ignore
-} from '@ndla/icons/action'; */
 
 import { FilterTabs } from '@ndla/tabs';
 
@@ -28,33 +21,23 @@ import {
   searchSubjectTypeOptions,
 } from '../../dummydata/mockSearchResultType';
 
+const { contentTypes } = constants;
+
 const responseDataSource = [
   {
-    context: {
-      type: 'SUBJECT_TYPE',
-      typeicon: <SubjectTypeBadge size="small" background />,
-      typelabel: 'Fag',
-    },
     items: subjectTypeResults,
     totalCount: subjectTypeResults.length,
+    type: contentTypes.SUBJECT,
   },
   {
-    context: {
-      type: 'SUBJECT',
-      typeicon: <SubjectBadge size="small" background />,
-      typelabel: 'Emne',
-    },
     items: subjectResults,
     totalCount: subjectResults.length,
+    type: contentTypes.TOPIC,
   },
   {
-    context: {
-      type: 'SUBJECT_MATERIAL',
-      typeicon: <SubjectMaterialBadge size="small" background />,
-      typelabel: 'Fagstoff',
-    },
     items: subjectMaterialResults,
     totalCount: subjectMaterialResults.length,
+    type: contentTypes.SUBJECT_MATERIAL,
   },
 ];
 
@@ -63,7 +46,7 @@ const resultsReducer = (state, action) => {
   switch (action.type) {
     case 'SEARCH':
       return state.map(contextItem => {
-        if (contextItem.context.type === action.context) {
+        if (contextItem.type === action.context) {
           return {
             ...contextItem,
             loading: true,
@@ -74,7 +57,7 @@ const resultsReducer = (state, action) => {
       });
     case 'SEARCH_RESULT_UPDATE':
       return state.map(contextItem => {
-        if (contextItem.context.type === action.results.contextType) {
+        if (contextItem.type === action.results.contextType) {
           return {
             ...contextItem,
             // append new items
@@ -94,8 +77,8 @@ const SearchPageDemo = () => {
   const [currentSubjectType, setCurrentSubjectType] = useState(null);
   const initialTypeFilter = {};
   responseDataSource.forEach(item => {
-    const pageSize = item.context.type === 'SUBJECT_TYPE' ? 2 : 4;
-    initialTypeFilter[item.context.type] = {
+    const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
+    initialTypeFilter[item.type] = {
       filter: [],
       page: 0,
       loading: false,
@@ -104,10 +87,10 @@ const SearchPageDemo = () => {
   });
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
   const initialResults = searchResults.map(res => {
-    if (res.items.length > initialTypeFilter[res.context.type].pageSize) {
+    if (res.items.length > initialTypeFilter[res.type].pageSize) {
       return {
         ...res,
-        items: res.items.slice(0, initialTypeFilter[res.context.type].pageSize),
+        items: res.items.slice(0, initialTypeFilter[res.type].pageSize),
       };
     }
     return res;
@@ -122,10 +105,8 @@ const SearchPageDemo = () => {
   const search = async (q, cb) => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const { page = 0, type } = q;
-    const subjectTypeIndex = searchResults.findIndex(
-      x => x.context.type === type,
-    );
-    let mockDataRes = [];
+    const subjectTypeIndex = searchResults.findIndex(x => x.type === type);
+    let mockDataRes;
     if (page === 0) {
       mockDataRes = [
         ...searchResults[subjectTypeIndex].items.slice(
@@ -163,7 +144,7 @@ const SearchPageDemo = () => {
     if (subjectType === 'ALL') {
       setTypeFilter(initialTypeFilter);
       initialResults.forEach(res => {
-        const results = { items: res.items, contextType: res.context.type };
+        const results = { items: res.items, contextType: res.type };
         dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
       });
       setCurrentSubjectType(null);
@@ -188,30 +169,28 @@ const SearchPageDemo = () => {
 
   const SubjectTypeResponse = () => {
     const currentSubjectTypeData = searchItems.find(obj => {
-      return obj.context.type === currentSubjectType;
+      return obj.type === currentSubjectType;
     });
     if (!currentSubjectTypeData) {
       return <p>ingen treff</p>;
     }
-    const { context, items } = currentSubjectTypeData;
-    const { type } = context;
+    const { items, type } = currentSubjectTypeData;
     return (
       <SearchTypeResult
         currentSubjectType={currentSubjectType}
-        context={{ ...context }}
         filterOptions={searchTypeFilterOptions[type]}
         typeFilter={typeFilter[type]}
         onFilterUpdate={handleFilterUpdate}
         items={items}
         loading={currentSubjectTypeData.loading}
+        type={type}
       />
     );
   };
 
   const SearchResponse = () => {
     return searchItems.map(searchItem => {
-      const { context, totalCount, ...rest } = searchItem;
-      const { type } = context;
+      const { type, totalCount, ...rest } = searchItem;
       const searchItemResult = {
         ...rest,
       };
@@ -224,7 +203,6 @@ const SearchPageDemo = () => {
         <SearchTypeResult
           key={`searchresult-${type}`}
           currentSubjectType={currentSubjectType}
-          context={{ ...context }}
           filterOptions={searchTypeFilterOptions[type]}
           typeFilter={typeFilter[type]}
           onFilterUpdate={handleFilterUpdate}
@@ -233,6 +211,7 @@ const SearchPageDemo = () => {
           totalCount={totalCount}
           setSubjectType={handleSetSubjectType}
           pagination={pagination}
+          type={type}
         />
       );
     });

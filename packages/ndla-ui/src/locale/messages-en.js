@@ -482,6 +482,7 @@ const messages = {
     'external-learning-resources': 'External learning resources',
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
+    topic: 'Topic',
   },
   modal: {
     closeModal: 'Close',

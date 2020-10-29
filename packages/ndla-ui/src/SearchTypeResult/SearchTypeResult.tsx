@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
+// @ts-ignore
+import constants from '../model';
 import SearchTypeHeader, {
   FilterOptionsType,
   TypeFilterType,
-  ContextType,
-} from './components/SearchTypeHeader';
-import Items from './components/items';
-import { SearchItemType } from './components/SearchItem';
-import { SearchSubjectTypeItemType } from './components/SearchSubjectTypeItem';
-import ResultNavigation, {
-  PaginationType,
-} from './components/ResultNavigation';
+} from './SearchTypeHeader';
+import SearchItems from './SearchItems';
+import { SearchItemType } from './SearchItem';
+import { SearchSubjectTypeItemType } from './SearchSubjectTypeItem';
+import ResultNavigation, { PaginationType } from './ResultNavigation';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,8 +18,17 @@ const Wrapper = styled.div`
   margin: 10px 0 40px;
 `;
 
+export type ContentType =
+  | constants.contentTypes.SUBJECT
+  | constants.contentTypes.SUBJECT_MATERIAL
+  | constants.contentTypes.TASKS_AND_ACTIVITIES
+  | constants.contentTypes.ASSESSMENT_RESOURCES
+  | constants.contentTypes.EXTERNAL_LEARNING_RESOURCES
+  | constants.contentTypes.SOURCE_MATERIAL
+  | constants.contentTypes.LEARNING_PATH
+  | constants.contentTypes.TOPIC;
+
 type Props = {
-  context: ContextType;
   items: Array<SearchItemType | SearchSubjectTypeItemType>;
   filterOptions: Array<FilterOptionsType>;
   onFilterUpdate: (type: string, filter: any) => void;
@@ -30,10 +38,10 @@ type Props = {
   pagination: PaginationType;
   setSubjectType: (type: string) => void;
   currentSubjectType: string | null;
+  type?: ContentType;
 };
 
 const SearchTypeResult = ({
-  context,
   items,
   filterOptions,
   onFilterUpdate,
@@ -43,8 +51,8 @@ const SearchTypeResult = ({
   pagination,
   setSubjectType,
   currentSubjectType,
+  type,
 }: Props) => {
-  const { type } = context;
   const handleNavigate = (page: number) => {
     let filterUpdate = { ...typeFilter };
     filterUpdate.page = page;
@@ -55,12 +63,12 @@ const SearchTypeResult = ({
       <SearchTypeHeader
         onFilterUpdate={onFilterUpdate}
         typeFilter={typeFilter}
-        context={context}
         filterOptions={filterOptions}
         loading={loading}
         totalCount={totalCount}
+        type={type}
       />
-      <Items items={items} type={type} loading={loading} />
+      <SearchItems items={items} type={type} loading={loading} />
       {!currentSubjectType ? (
         <ResultNavigation
           pagination={pagination}

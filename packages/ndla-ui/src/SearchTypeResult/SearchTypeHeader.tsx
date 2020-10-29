@@ -1,7 +1,11 @@
 import React from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
+// @ts-ignore
+import ContentTypeBadge from '../ContentTypeBadge';
+import { ContentType } from './SearchTypeResult';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -63,11 +67,7 @@ const CategoryTypeButton = React.memo(
     );
   },
 );
-export type ContextType = {
-  type: string;
-  typeicon: React.ReactNode;
-  typelabel: string;
-};
+
 export type FilterOptionsType = {
   id: string;
   name: string;
@@ -79,22 +79,22 @@ export type TypeFilterType = {
 };
 
 type Props = {
-  context: ContextType;
   filterOptions: Array<FilterOptionsType>;
   onFilterUpdate: (type: string, filter: any) => void;
   typeFilter: TypeFilterType;
   loading: boolean;
   totalCount: number;
+  type?: ContentType;
 };
 const SearchTypeHeader = ({
-  context,
   filterOptions,
   onFilterUpdate,
   typeFilter,
   loading,
   totalCount,
-}: Props) => {
-  const { type, typeicon, typelabel } = context;
+  type,
+  t,
+}: Props & tType) => {
   const updateFilter = (id: string, clear: boolean = false) => {
     let filterUpdate: any = {};
     if (clear) {
@@ -114,13 +114,15 @@ const SearchTypeHeader = ({
       onFilterUpdate(type, filterUpdate);
     }
   };
+
   return (
     <>
       <HeaderWrapper>
         <TypeWrapper>
-          {typeicon}
+          {type && <ContentTypeBadge type={type} background size="large" />}
           <SubjectName>
-            <b>{typelabel}</b> {totalCount ? `(${totalCount})` : null}
+            {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
+            {totalCount ? `(${totalCount})` : null}
           </SubjectName>
         </TypeWrapper>
         {filterOptions && (
@@ -151,4 +153,4 @@ const SearchTypeHeader = ({
     </>
   );
 };
-export default React.memo(SearchTypeHeader);
+export default React.memo(injectT(SearchTypeHeader));

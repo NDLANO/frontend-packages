@@ -15,10 +15,10 @@ import { FilterTabs } from '@ndla/tabs';
 
 import {
   subjectTypeResults,
-  subjectResults,
   subjectMaterialResults,
   searchTypeFilterOptions,
   searchSubjectTypeOptions,
+  topicResults,
 } from '../../dummydata/mockSearchResultType';
 
 const { contentTypes } = constants;
@@ -30,8 +30,8 @@ const responseDataSource = [
     type: contentTypes.SUBJECT,
   },
   {
-    items: subjectResults,
-    totalCount: subjectResults.length,
+    items: topicResults,
+    totalCount: topicResults.length,
     type: contentTypes.TOPIC,
   },
   {

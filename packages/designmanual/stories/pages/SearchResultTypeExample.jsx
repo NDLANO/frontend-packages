@@ -1,15 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  SearchTypeResult,
-  /* SearchTypeTopicFilter,
-  ContentTypeBadge,
-  SourceMaterialBadge,
-  TasksAndActivitiesBadge,
-  ExternalLearningResourcesBadge,
-  LearningPathBadge, */
-  constants,
-} from '@ndla/ui';
+import { SearchTypeResult, SearchCountHeader, constants } from '@ndla/ui';
 
 import { FilterTabs } from '@ndla/tabs';
 
@@ -219,15 +210,13 @@ const SearchPageDemo = () => {
 
   return (
     <>
+      <SearchCountHeader count={123} />
       <FilterTabs
         dropdownBtnLabel="Velg"
         value={currentSubjectType ? currentSubjectType : 'ALL'}
         options={searchSubjectTypeOptions}
         contentId="search-result-content"
         onChange={handleSetSubjectType}>
-        <div>
-          <h5>185 treff</h5>
-        </div>
         {currentSubjectType ? <SubjectTypeResponse /> : <SearchResponse />}
       </FilterTabs>
     </>

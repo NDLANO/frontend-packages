@@ -115,6 +115,7 @@ const messages = {
       showAll: 'Show all',
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
+      hits: 'hits',
     },
   },
 

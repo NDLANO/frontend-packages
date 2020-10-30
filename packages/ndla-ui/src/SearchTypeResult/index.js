@@ -9,5 +9,11 @@
 import SearchTypeResult from './SearchTypeResult';
 import SearchTypeHeader from './SearchTypeHeader';
 import SearchTypeTopicFilter from './SearchTypeTopicFilter';
+import SearchCountHeader from './SearchCountHeader';
 
-export { SearchTypeResult, SearchTypeHeader, SearchTypeTopicFilter };
+export {
+  SearchTypeResult,
+  SearchTypeHeader,
+  SearchTypeTopicFilter,
+  SearchCountHeader,
+};

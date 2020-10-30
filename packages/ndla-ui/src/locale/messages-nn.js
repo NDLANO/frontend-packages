@@ -115,6 +115,7 @@ const messages = {
       showAll: 'Vis alle',
       toSubjectPageLabel: 'Gå til fagsida',
       all: 'Alle',
+      hits: 'treff',
     },
   },
   subjectPage: {

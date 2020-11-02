@@ -83,7 +83,6 @@ export {
   SubjectBadge,
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
-  SubjectTypeBadge,
 } from './ContentTypeBadge';
 export {
   default as LayoutItem,

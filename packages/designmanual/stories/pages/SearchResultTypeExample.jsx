@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { SearchTypeResult, SearchCountHeader, constants } from '@ndla/ui';
 
@@ -14,12 +14,13 @@ import {
 
 const { contentTypes } = constants;
 
+const subjectDataSource = {
+  items: subjectTypeResults,
+  totalCount: subjectTypeResults.length,
+  type: contentTypes.SUBJECT,
+};
+
 const responseDataSource = [
-  {
-    items: subjectTypeResults,
-    totalCount: subjectTypeResults.length,
-    type: contentTypes.SUBJECT,
-  },
   {
     items: topicResults,
     totalCount: topicResults.length,
@@ -32,7 +33,28 @@ const responseDataSource = [
   },
 ];
 
-const searchResults = responseDataSource;
+const searchResults = [...responseDataSource, subjectDataSource];
+const initialTypeFilter = {};
+searchResults.forEach(item => {
+  const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
+  initialTypeFilter[item.type] = {
+    filter: [],
+    page: 0,
+    loading: false,
+    pageSize,
+  };
+});
+
+const initialResults = searchResults.map(res => {
+  if (res.items.length > initialTypeFilter[res.type].pageSize) {
+    return {
+      ...res,
+      items: res.items.slice(0, initialTypeFilter[res.type].pageSize),
+    };
+  }
+  return res;
+});
+
 const resultsReducer = (state, action) => {
   switch (action.type) {
     case 'SEARCH':
@@ -66,30 +88,11 @@ const resultsReducer = (state, action) => {
 
 const SearchPageDemo = () => {
   const [currentSubjectType, setCurrentSubjectType] = useState(null);
-  const initialTypeFilter = {};
-  responseDataSource.forEach(item => {
-    const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
-    initialTypeFilter[item.type] = {
-      filter: [],
-      page: 0,
-      loading: false,
-      pageSize,
-    };
-  });
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
-  const initialResults = searchResults.map(res => {
-    if (res.items.length > initialTypeFilter[res.type].pageSize) {
-      return {
-        ...res,
-        items: res.items.slice(0, initialTypeFilter[res.type].pageSize),
-      };
-    }
-    return res;
-  });
+
   const [searchItems, dispatch] = React.useReducer(
     resultsReducer,
     initialResults,
-    // searchResults,
   );
 
   // mock search
@@ -158,66 +161,76 @@ const SearchPageDemo = () => {
     }
   };
 
-  const SubjectTypeResponse = () => {
-    const currentSubjectTypeData = searchItems.find(obj => {
-      return obj.type === currentSubjectType;
+  const handleShowMore = type => {
+    dispatch({ type: 'SEARCH', context: type });
+    const filterUpdate = { ...typeFilter[type] };
+    filterUpdate.page = filterUpdate.page + 1;
+    setTypeFilter({ ...typeFilter, [type]: filterUpdate });
+    const q = { type, ...filterUpdate };
+    search(q, res => {
+      const results = { items: res, contextType: type };
+      dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
     });
-    if (!currentSubjectTypeData) {
-      return <p>ingen treff</p>;
-    }
-    const { items, type } = currentSubjectTypeData;
-    return (
-      <SearchTypeResult
-        currentSubjectType={currentSubjectType}
-        filterOptions={searchTypeFilterOptions[type]}
-        typeFilter={typeFilter[type]}
-        onFilterUpdate={handleFilterUpdate}
-        items={items}
-        loading={currentSubjectTypeData.loading}
-        type={type}
-      />
-    );
   };
 
-  const SearchResponse = () => {
-    return searchItems.map(searchItem => {
-      const { type, totalCount, ...rest } = searchItem;
-      const searchItemResult = {
-        ...rest,
-      };
-      const pagination = {
-        totalCount,
-        page: typeFilter[type].page,
-        pageSize: typeFilter[type].pageSize,
-      };
+  const handleShowAll = type => {
+    handleSetSubjectType(type);
+  };
+
+  const ResultResponse = ({ type: typeParam }) => {
+    const type = typeParam || currentSubjectType;
+
+    const result = (data, type) => {
+      const { items, totalCount } = data;
+      let pagination = null;
+      if (currentSubjectType !== type) {
+        // Only show this type of pagination if ALL tab is selected
+        pagination = {
+          totalCount,
+          page: typeFilter[type].page,
+          pageSize: typeFilter[type].pageSize,
+          onShowMore: () => handleShowMore(type),
+          onShowAll: () => handleShowAll(type),
+        };
+      }
       return (
         <SearchTypeResult
-          key={`searchresult-${type}`}
-          currentSubjectType={currentSubjectType}
           filterOptions={searchTypeFilterOptions[type]}
           typeFilter={typeFilter[type]}
           onFilterUpdate={handleFilterUpdate}
-          items={searchItemResult.items}
-          loading={searchItemResult.loading}
-          totalCount={totalCount}
-          setSubjectType={handleSetSubjectType}
-          pagination={pagination}
+          items={items}
+          loading={data.loading}
           type={type}
+          totalCount={totalCount}
+          pagination={pagination}
         />
       );
-    });
+    };
+    if (type) {
+      const data = searchItems.find(obj => {
+        return obj.type === type;
+      });
+      return result(data, type);
+    } else {
+      return searchItems.map(searchItem => (
+        <Fragment key={`searchresult-${searchItem.type}`}>
+          {result(searchItem, searchItem.type)}
+        </Fragment>
+      ));
+    }
   };
 
   return (
     <>
       <SearchCountHeader count={123} />
+      <ResultResponse type={contentTypes.SUBJECT} />
       <FilterTabs
         dropdownBtnLabel="Velg"
         value={currentSubjectType ? currentSubjectType : 'ALL'}
         options={searchSubjectTypeOptions}
         contentId="search-result-content"
         onChange={handleSetSubjectType}>
-        {currentSubjectType ? <SubjectTypeResponse /> : <SearchResponse />}
+        <ResultResponse />
       </FilterTabs>
     </>
   );

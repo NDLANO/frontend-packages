@@ -329,10 +329,6 @@ const searchSubjectTypeOptions = [
     value: 'ALL',
   },
   {
-    title: 'Fag',
-    value: 'subject',
-  },
-  {
     title: 'Emne',
     value: 'topic',
   },

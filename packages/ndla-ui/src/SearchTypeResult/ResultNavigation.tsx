@@ -27,24 +27,21 @@ const NavInfo = styled.div`
 `;
 
 export type PaginationType = {
+  onShowMore: () => void;
+  onShowAll: () => void;
   totalCount: number;
   pageSize: number;
   page: number;
 };
 
-type Props = {
-  onNavigate: (page: number) => void;
-  onSelectSubjectType: () => void;
-  pagination: PaginationType;
-};
-
 const ResultNavigation = ({
-  onNavigate,
-  onSelectSubjectType,
-  pagination,
+  onShowMore,
+  onShowAll,
+  totalCount,
+  pageSize,
+  page,
   t,
-}: Props & tType) => {
-  const { totalCount, pageSize, page } = pagination;
+}: PaginationType & tType) => {
   const nextPage = page + 1;
   const currentItems = nextPage * pageSize;
   const isMore = currentItems < totalCount;
@@ -59,13 +56,15 @@ const ResultNavigation = ({
         })}
       </NavInfo>
       {isMore && (
-        <Button className="nav" link onClick={() => onNavigate(nextPage)}>
-          {t('searchPage.resultType.showMore')} <ChevronDown />
-        </Button>
+        <>
+          <Button className="nav" link onClick={onShowMore}>
+            {t('searchPage.resultType.showMore')} <ChevronDown />
+          </Button>
+          <Button link className="nav" onClick={onShowAll}>
+            {t('searchPage.resultType.showAll')} <ChevronRight />
+          </Button>
+        </>
       )}
-      <Button link className="nav" onClick={() => onSelectSubjectType()}>
-        {t('searchPage.resultType.showAll')} <ChevronRight />
-      </Button>
     </ResultNav>
   );
 };

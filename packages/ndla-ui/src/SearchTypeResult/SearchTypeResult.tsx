@@ -35,10 +35,11 @@ type Props = {
   typeFilter: TypeFilterType;
   loading?: boolean;
   totalCount?: number;
-  pagination: PaginationType;
-  setSubjectType: (type: string) => void;
-  currentSubjectType: string | null;
+  pagination?: PaginationType;
+  onShowMore: () => void;
+  onShowAll: () => void;
   type?: ContentType;
+  children?: React.ReactNode;
 };
 
 const SearchTypeResult = ({
@@ -49,15 +50,9 @@ const SearchTypeResult = ({
   loading = false,
   totalCount = 0,
   pagination,
-  setSubjectType,
-  currentSubjectType,
   type,
+  children,
 }: Props) => {
-  const handleNavigate = (page: number) => {
-    let filterUpdate = { ...typeFilter };
-    filterUpdate.page = page;
-    onFilterUpdate(type, filterUpdate);
-  };
   return (
     <Wrapper>
       <SearchTypeHeader
@@ -69,13 +64,8 @@ const SearchTypeResult = ({
         type={type}
       />
       <SearchItems items={items} type={type} loading={loading} />
-      {!currentSubjectType ? (
-        <ResultNavigation
-          pagination={pagination}
-          onNavigate={handleNavigate}
-          onSelectSubjectType={() => setSubjectType(type)}
-        />
-      ) : null}
+      {pagination && <ResultNavigation {...pagination} />}
+      {children && children}
     </Wrapper>
   );
 };

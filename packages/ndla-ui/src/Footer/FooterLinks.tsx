@@ -74,7 +74,8 @@ const StyledSafeLink = styled(SafeLink)<LinkProps>`
 `;
 
 const StyledSocialMediaIcon = styled.span`
-  background: ${colors.brand.primary};
+  background: ${colors.white};
+  color: ${colors.brand.primary};
   border-radius: 100%;
   display: flex;
   align-items: center;

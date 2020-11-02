@@ -17,6 +17,7 @@ export type IntersectionObserverHookResult = [
 
 const IntersectionObserverBrowserSupport = () =>
   !(
+    typeof window === 'undefined' ||
     !('IntersectionObserver' in window) ||
     !('IntersectionObserverEntry' in window)
   );

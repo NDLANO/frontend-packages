@@ -68,7 +68,7 @@ type Props = {
   code: string;
   format: string;
   title?: string | null;
-  actionButton?: FC | null;
+  actionButton?: JSX.Element | null;
   showCopy?: boolean;
 };
 

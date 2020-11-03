@@ -71,7 +71,7 @@ export {
   SearchTypeResult,
   SearchTypeHeader,
   SearchTypeTopicFilter,
-  SearchCountHeader,
+  SearchHeader,
 } from './SearchTypeResult';
 
 export {

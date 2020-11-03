@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-import { SearchTypeResult, SearchCountHeader, constants } from '@ndla/ui';
+import { SearchTypeResult, SearchHeader, constants } from '@ndla/ui';
 
 import { FilterTabs } from '@ndla/tabs';
 
@@ -138,8 +138,11 @@ const SearchPageDemo = () => {
     if (subjectType === 'ALL') {
       setTypeFilter(initialTypeFilter);
       initialResults.forEach(res => {
-        const results = { items: res.items, contextType: res.type };
-        dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
+        if (res.type !== contentTypes.SUBJECT) {
+          // Don't reset subjects
+          const results = { ...res, items: res.items, contextType: res.type };
+          dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
+        }
       });
       setCurrentSubjectType(null);
     } else {
@@ -212,17 +215,26 @@ const SearchPageDemo = () => {
       });
       return result(data, type);
     } else {
-      return searchItems.map(searchItem => (
-        <Fragment key={`searchresult-${searchItem.type}`}>
-          {result(searchItem, searchItem.type)}
-        </Fragment>
-      ));
+      return searchItems
+        .filter(item => item.type !== contentTypes.SUBJECT) // Subject items are shown in separate wrapper
+        .map(searchItem => (
+          <Fragment key={`searchresult-${searchItem.type}`}>
+            {result(searchItem, searchItem.type)}
+          </Fragment>
+        ));
     }
   };
 
   return (
     <>
-      <SearchCountHeader count={123} />
+      <SearchHeader
+        count={123}
+        searchPhrase="nunorsk"
+        searchPhraseSuggestion="nynorsk"
+        searchPhraseSuggestionOnClick={() =>
+          console.log('search-phrase suggestion click')
+        }
+      />
       <ResultResponse type={contentTypes.SUBJECT} />
       <FilterTabs
         dropdownBtnLabel="Velg"

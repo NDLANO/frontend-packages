@@ -116,6 +116,8 @@ const messages = {
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
       hits: 'hits',
+      showingSearchPhrase: 'Showing results for:',
+      searchPhraseSuggestion: 'Search instead for:',
     },
   },
 

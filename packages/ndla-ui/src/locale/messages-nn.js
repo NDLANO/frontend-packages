@@ -116,6 +116,8 @@ const messages = {
       toSubjectPageLabel: 'Gå til fagsida',
       all: 'Alle',
       hits: 'treff',
+      showingSearchPhrase: 'Du søkte på:',
+      searchPhraseSuggestion: 'Vis heller treff for:',
     },
   },
   subjectPage: {

@@ -69,7 +69,7 @@ const FrontpageProgramMenu = ({
         <NavigationBox
           colorMode="lighterGrey"
           items={programItems}
-          listDirection="horizontal"
+          listDirection="vertical"
         />
       )}
     </StyledWrapper>

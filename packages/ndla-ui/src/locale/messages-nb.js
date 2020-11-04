@@ -282,7 +282,7 @@ const messages = {
     lastUpdated: 'Sist oppdatert',
     edition: 'Utgave',
     publisher: 'Utgiver',
-    useContent: 'Retningslinjer for bruk',
+    useContent: 'Regler for bruk',
     closeLabel: 'Lukk',
     additionalLabel: 'Tilleggsstoff',
     urlContributionsLabel: 'Se hva {name} har bidratt med',

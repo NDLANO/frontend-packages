@@ -44,7 +44,7 @@ const StyledList = styled.ul<listProps>`
     column-count: 2;
     column-gap: 20px;
     ${props =>
-      props.direction === 'vertical' &&
+      props.direction === 'horizontal' &&
       css`
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -54,7 +54,7 @@ const StyledList = styled.ul<listProps>`
     column-count: 3;
     column-gap: 20px;
     ${props =>
-      props.direction === 'vertical' &&
+      props.direction === 'horizontal' &&
       css`
         grid-template-columns: repeat(3, 1fr);
       `}
@@ -174,7 +174,7 @@ export const NavigationBox = ({
   onClick,
   hasAdditionalResources,
   showAdditionalResources = false,
-  listDirection = 'vertical',
+  listDirection = 'horizontal',
   invertedStyle,
   onToggleAdditionalResources = () => {},
   t,

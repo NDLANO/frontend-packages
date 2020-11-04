@@ -30,27 +30,24 @@ export type PaginationType = {
   onShowMore: () => void;
   onShowAll: () => void;
   totalCount: number;
-  pageSize: number;
-  page: number;
+  fromCount?: number;
+  toCount: number;
 };
 
 const ResultNavigation = ({
   onShowMore,
   onShowAll,
   totalCount,
-  pageSize,
-  page,
+  fromCount = 1,
+  toCount,
   t,
 }: PaginationType & tType) => {
-  const nextPage = page + 1;
-  const currentItems = nextPage * pageSize;
-  const isMore = currentItems < totalCount;
-  const toCount = currentItems > totalCount ? totalCount : currentItems;
+  const isMore = toCount < totalCount;
   return (
     <ResultNav>
       <NavInfo>
         {t('searchPage.resultType.showing', {
-          fromCount: 1,
+          fromCount,
           toCount,
           totalCount,
         })}

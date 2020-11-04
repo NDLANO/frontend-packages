@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 10px 0 40px;
+  margin: 40px 0;
 `;
 
 export type ContentType =

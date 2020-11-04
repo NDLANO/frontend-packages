@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 import { SearchTypeResult, SearchHeader, constants } from '@ndla/ui';
 
 import { FilterTabs } from '@ndla/tabs';
+import Pager from '@ndla/pager';
 
 import {
   subjectTypeResults,
@@ -39,7 +40,7 @@ searchResults.forEach(item => {
   const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
   initialTypeFilter[item.type] = {
     filter: [],
-    page: 0,
+    page: 1,
     loading: false,
     pageSize,
   };
@@ -98,27 +99,15 @@ const SearchPageDemo = () => {
   // mock search
   const search = async (q, cb) => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    const { page = 0, type } = q;
+    const { page = 1, type, pageSize } = q;
     const subjectTypeIndex = searchResults.findIndex(x => x.type === type);
-    let mockDataRes;
-    if (page === 0) {
-      mockDataRes = [
-        ...searchResults[subjectTypeIndex].items.slice(
-          0,
-          typeFilter[type].pageSize,
-        ),
-      ];
-    } else {
-      if (
-        searchResults[subjectTypeIndex].items.length >
-        (q.page + 1) * typeFilter[type].pageSize
-      ) {
-        const to = (q.page + 1) * typeFilter[type].pageSize;
-        mockDataRes = [...searchResults[subjectTypeIndex].items.slice(0, to)];
-      } else {
-        mockDataRes = [...searchResults[subjectTypeIndex].items];
-      }
-    }
+
+    const pageIndex = page - 1;
+    const fromIndex = pageIndex * pageSize;
+    const toIndex = page * pageSize;
+    const mockDataRes = [
+      ...searchResults[subjectTypeIndex].items.slice(fromIndex, toIndex),
+    ];
     await delay(500);
     cb(mockDataRes);
   };
@@ -148,13 +137,16 @@ const SearchPageDemo = () => {
     } else {
       if (typeFilter[subjectType]) {
         const filterUpdate = { ...typeFilter };
-        filterUpdate[subjectType].pageSize = 8;
+        filterUpdate[subjectType] = {
+          ...filterUpdate[subjectType],
+          pageSize: 8,
+          page: 1,
+        };
         setTypeFilter({
-          ...typeFilter,
-          [subjectType]: filterUpdate[subjectType],
+          ...filterUpdate,
         });
         dispatch({ type: 'SEARCH', context: subjectType });
-        const q = { type: subjectType, ...filterUpdate };
+        const q = { type: subjectType, ...filterUpdate[subjectType] };
         search(q, res => {
           const results = { items: res, contextType: subjectType };
           dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
@@ -167,7 +159,7 @@ const SearchPageDemo = () => {
   const handleShowMore = type => {
     dispatch({ type: 'SEARCH', context: type });
     const filterUpdate = { ...typeFilter[type] };
-    filterUpdate.page = filterUpdate.page + 1;
+    filterUpdate.pageSize += filterUpdate.pageSize;
     setTypeFilter({ ...typeFilter, [type]: filterUpdate });
     const q = { type, ...filterUpdate };
     search(q, res => {
@@ -180,18 +172,34 @@ const SearchPageDemo = () => {
     handleSetSubjectType(type);
   };
 
+  const onPagerNavigate = q => {
+    const { type, page } = q;
+    dispatch({ type: 'SEARCH', context: type });
+    const filterUpdate = { ...typeFilter[type] };
+    filterUpdate.page = page;
+    setTypeFilter({ ...typeFilter, [type]: filterUpdate });
+    const query = { type, ...filterUpdate };
+    search(query, res => {
+      const results = { items: res, contextType: type };
+      dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
+    });
+  };
+
   const ResultResponse = ({ type: typeParam }) => {
     const type = typeParam || currentSubjectType;
 
     const result = (data, type) => {
       const { items, totalCount } = data;
       let pagination = null;
-      if (currentSubjectType !== type) {
-        // Only show this type of pagination if ALL tab is selected
+      if (currentSubjectType !== type || type === contentTypes.SUBJECT) {
+        // Only show this type of pagination if ALL tab is selected or is subject
+        const toCount =
+          typeFilter[type].pageSize > totalCount
+            ? totalCount
+            : typeFilter[type].pageSize;
         pagination = {
           totalCount,
-          page: typeFilter[type].page,
-          pageSize: typeFilter[type].pageSize,
+          toCount,
           onShowMore: () => handleShowMore(type),
           onShowAll: () => handleShowAll(type),
         };
@@ -205,8 +213,18 @@ const SearchPageDemo = () => {
           loading={data.loading}
           type={type}
           totalCount={totalCount}
-          pagination={pagination}
-        />
+          pagination={pagination}>
+          {!pagination && (
+            <Pager
+              page={typeFilter[type].page}
+              lastPage={Math.ceil(totalCount / typeFilter[type].pageSize)}
+              query={{ type: type }}
+              pageItemComponentClass="button"
+              pathname="#"
+              onClick={onPagerNavigate}
+            />
+          )}
+        </SearchTypeResult>
       );
     };
     if (type) {

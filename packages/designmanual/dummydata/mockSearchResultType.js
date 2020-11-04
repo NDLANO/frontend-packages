@@ -71,7 +71,7 @@ const topicResults = [
   },
   {
     id: 4,
-    title: 'Hva kan du om platetektonikk?',
+    title: 'Hva kan du om platetektonikk 4?',
     url: '#4',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',

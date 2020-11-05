@@ -97,7 +97,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
   useEffect(() => {
     if (isWindowContext) {
       const rememberGradeIndex =
-        window.localStorage.getItem('showGradeIndex') || '0';
+        window.localStorage.getItem('prgrammeShowGradeIndex') || '0';
       if (grades.length > Number(rememberGradeIndex)) {
         setShowGradeIndex(Number(rememberGradeIndex));
       }
@@ -107,7 +107,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
   const toggleGradeIndex = (index: number) => {
     setShowGradeIndex(index);
     if (isWindowContext) {
-      window.localStorage.setItem('showGradeIndex', `${index}`);
+      window.localStorage.setItem('prgrammeShowGradeIndex', `${index}`);
     }
   };
 

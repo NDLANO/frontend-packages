@@ -48,7 +48,7 @@ const FrontpageProgramMenu = ({
   useEffect(() => {
     if (isWindowContext) {
       const rememberSubjects =
-        window.localStorage.getItem('showSubjects') || '';
+        window.localStorage.getItem('frontpageShowSubjects') || '';
       setShowSubjects(rememberSubjects.localeCompare('true') === 0);
     }
   }, []);
@@ -56,7 +56,7 @@ const FrontpageProgramMenu = ({
   const toggleSubjects = (toggle: boolean) => {
     setShowSubjects(toggle);
     if (isWindowContext) {
-      window.localStorage.setItem('showSubjects', `${toggle}`);
+      window.localStorage.setItem('frontpageShowSubjects', `${toggle}`);
     }
   };
 

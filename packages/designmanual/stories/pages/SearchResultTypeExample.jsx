@@ -38,8 +38,13 @@ const searchResults = [...responseDataSource, subjectDataSource];
 const initialTypeFilter = {};
 searchResults.forEach(item => {
   const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
+  const filters = [];
+  if (searchTypeFilterOptions[item.type].length) {
+    filters.push({ id: 'all', name: 'Alle', active: true });
+    filters.push(...searchTypeFilterOptions[item.type]);
+  }
   initialTypeFilter[item.type] = {
-    filter: [],
+    filters: filters,
     page: 1,
     loading: false,
     pageSize,
@@ -112,14 +117,26 @@ const SearchPageDemo = () => {
     cb(mockDataRes);
   };
 
-  const handleFilterUpdate = async (type, filterUpdate) => {
+  const handleFilterClick = (type, filterId) => {
+    // For now changing filters does nothing except toggling on and of
+    // Real examples to be implemented
+    const filterUpdate = { ...typeFilter[type] };
+    const filters = [...filterUpdate.filters];
+    const selectedFilter = filters.find(item => filterId === item.id);
+    if (filterId === 'all') {
+      filters.forEach(filter => {
+        filter.active = filter.id === 'all';
+      });
+    } else {
+      const allFilter = filters.find(item => 'all' === item.id);
+      allFilter.active = false;
+      // First flip active state of clicked element
+      selectedFilter.active = !selectedFilter.active;
+      if (!filters.some(item => item.active)) {
+        allFilter.active = true;
+      }
+    }
     setTypeFilter({ ...typeFilter, [type]: filterUpdate });
-    dispatch({ type: 'SEARCH', context: type });
-    const q = { type, ...filterUpdate };
-    search(q, res => {
-      const results = { items: res, contextType: type };
-      dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
-    });
   };
 
   const handleSetSubjectType = subjectType => {
@@ -206,9 +223,8 @@ const SearchPageDemo = () => {
       }
       return (
         <SearchTypeResult
-          filterOptions={searchTypeFilterOptions[type]}
-          typeFilter={typeFilter[type]}
-          onFilterUpdate={handleFilterUpdate}
+          filters={typeFilter[type].filters}
+          onFilterClick={id => handleFilterClick(type, id)}
           items={items}
           loading={data.loading}
           type={type}

@@ -2,10 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import constants from '../model';
-import SearchTypeHeader, {
-  FilterOptionsType,
-  TypeFilterType,
-} from './SearchTypeHeader';
+import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
 import SearchItems from './SearchItems';
 import { SearchItemType } from './SearchItem';
 import { SearchSubjectTypeItemType } from './SearchSubjectTypeItem';
@@ -30,9 +27,8 @@ export type ContentType =
 
 type Props = {
   items: Array<SearchItemType | SearchSubjectTypeItemType>;
-  filterOptions: Array<FilterOptionsType>;
-  onFilterUpdate: (type: string, filter: any) => void;
-  typeFilter: TypeFilterType;
+  filters: Array<FilterOptionsType>;
+  onFilterClick: (id: string) => void;
   loading?: boolean;
   totalCount?: number;
   pagination?: PaginationType;
@@ -44,9 +40,8 @@ type Props = {
 
 const SearchTypeResult = ({
   items,
-  filterOptions,
-  onFilterUpdate,
-  typeFilter,
+  filters,
+  onFilterClick,
   loading = false,
   totalCount = 0,
   pagination,
@@ -56,9 +51,8 @@ const SearchTypeResult = ({
   return (
     <Wrapper>
       <SearchTypeHeader
-        onFilterUpdate={onFilterUpdate}
-        typeFilter={typeFilter}
-        filterOptions={filterOptions}
+        onFilterClick={onFilterClick}
+        filters={filters}
         loading={loading}
         totalCount={totalCount}
         type={type}

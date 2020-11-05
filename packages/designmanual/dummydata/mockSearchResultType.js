@@ -291,8 +291,8 @@ const subjectMaterialResults = [
 ];
 
 const searchTypeFilterOptions = {
-  subject: null,
-  'learning-path': null,
+  subject: [],
+  'learning-path': [],
   'subject-material': [
     {
       name: 'Veiledning',
@@ -317,10 +317,10 @@ const searchTypeFilterOptions = {
       id: 'urn:resourcetype:exercise',
     },
   ],
-  EVALUATION_RESOURCE: null,
-  SOURCE_MATERIAL: null,
-  SHARED_RESOURCES: null,
-  topic: null,
+  EVALUATION_RESOURCE: [],
+  SOURCE_MATERIAL: [],
+  SHARED_RESOURCES: [],
+  topic: [],
 };
 
 const searchSubjectTypeOptions = [

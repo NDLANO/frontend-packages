@@ -51,70 +51,27 @@ const CategoryItems = styled.div`
   flex-wrap: wrap;
 `;
 
-const CategoryTypeButton = React.memo(
-  ({ item, onFilterUpdate, isActive, loading }: any) => {
-    const { id, name } = item;
-    return (
-      <CategoryTypeButtonWrapper>
-        <Button
-          size="small"
-          lighter={!isActive}
-          disabled={loading}
-          onClick={() => onFilterUpdate(id)}>
-          {name}
-        </Button>
-      </CategoryTypeButtonWrapper>
-    );
-  },
-);
-
 export type FilterOptionsType = {
   id: string;
   name: string;
-};
-export type TypeFilterType = {
-  filter: Array<string>;
-  page: number;
-  pageSize: number;
+  active?: boolean;
 };
 
 type Props = {
-  filterOptions: Array<FilterOptionsType>;
-  onFilterUpdate: (type: string, filter: any) => void;
-  typeFilter: TypeFilterType;
+  filters: Array<FilterOptionsType>;
+  onFilterClick: (id: string) => void;
   loading: boolean;
   totalCount: number;
   type?: ContentType;
 };
 const SearchTypeHeader = ({
-  filterOptions,
-  onFilterUpdate,
-  typeFilter,
+  filters,
+  onFilterClick,
   loading,
   totalCount,
   type,
   t,
 }: Props & tType) => {
-  const updateFilter = (id: string, clear: boolean = false) => {
-    let filterUpdate: any = {};
-    if (clear) {
-      filterUpdate.filter = [];
-      filterUpdate.page = 0;
-      onFilterUpdate(type, filterUpdate);
-    } else {
-      filterUpdate = { ...typeFilter };
-      if (filterUpdate.filter.includes(id)) {
-        filterUpdate.filter = filterUpdate.filter.filter(
-          (item: string) => item !== id,
-        );
-      } else {
-        filterUpdate.filter.push(id);
-      }
-      filterUpdate.page = 0;
-      onFilterUpdate(type, filterUpdate);
-    }
-  };
-
   return (
     <>
       <HeaderWrapper>
@@ -125,27 +82,18 @@ const SearchTypeHeader = ({
             {totalCount ? `(${totalCount})` : null}
           </SubjectName>
         </TypeWrapper>
-        {filterOptions && (
+        {filters && (
           <CategoryItems>
-            <CategoryTypeButtonWrapper>
-              <Button
-                size="small"
-                disabled={loading}
-                lighter={typeFilter.filter && typeFilter.filter.length > 0}
-                onClick={() => updateFilter('', true)}>
-                {t('searchPage.resultType.all')}
-              </Button>
-            </CategoryTypeButtonWrapper>
-
-            {filterOptions.slice(0, 3).map((option: any) => (
-              <CategoryTypeButton
-                loading={loading}
-                key={`${type}_${option.id}`}
-                type={type}
-                item={option}
-                onFilterUpdate={updateFilter}
-                isActive={typeFilter.filter.includes(option.id)}
-              />
+            {filters.map((option: FilterOptionsType) => (
+              <CategoryTypeButtonWrapper key={option.id}>
+                <Button
+                  size="small"
+                  lighter={!option.active}
+                  disabled={loading}
+                  onClick={() => onFilterClick(option.id)}>
+                  {option.name}
+                </Button>
+              </CategoryTypeButtonWrapper>
             ))}
           </CategoryItems>
         )}

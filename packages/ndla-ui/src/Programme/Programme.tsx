@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -92,6 +92,24 @@ type Props = {
 
 export const Programme = ({ heading, image, grades }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(0);
+  const isWindowContext = typeof window !== 'undefined';
+
+  useEffect(() => {
+    if (isWindowContext) {
+      const rememberGradeIndex =
+        window.localStorage.getItem('showGradeIndex') || '0';
+      if (grades.length > Number(rememberGradeIndex)) {
+        setShowGradeIndex(Number(rememberGradeIndex));
+      }
+    }
+  }, []);
+
+  const toggleGradeIndex = (index: number) => {
+    setShowGradeIndex(index);
+    if (isWindowContext) {
+      window.localStorage.setItem('showGradeIndex', `${index}`);
+    }
+  };
 
   const selectedGrade = grades[showGradeIndex];
 
@@ -107,7 +125,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
                 {grades.map((item, index) => (
                   <Button
                     key={item.name}
-                    onClick={() => setShowGradeIndex(index)}
+                    onClick={() => toggleGradeIndex(index)}
                     lighter={showGradeIndex !== index}
                     size="normal"
                     borderShape="rounded">

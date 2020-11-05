@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
@@ -43,20 +43,36 @@ const FrontpageProgramMenu = ({
   t,
 }: Props & tType) => {
   const [showSubjects, setShowSubjects] = useState(false);
+  const isWindowContext = typeof window !== 'undefined';
+
+  useEffect(() => {
+    if (isWindowContext) {
+      const rememberSubjects =
+        window.localStorage.getItem('showSubjects') || '';
+      setShowSubjects(rememberSubjects.localeCompare('true') === 0);
+    }
+  }, []);
+
+  const toggleSubjects = (toggle: boolean) => {
+    setShowSubjects(toggle);
+    if (isWindowContext) {
+      window.localStorage.setItem('showSubjects', `${toggle}`);
+    }
+  };
 
   return (
     <StyledWrapper>
       <StyledMenu>
         <ComponentCursor variant="right" text={t('frontpageMenu.cursorText')} />
         <Button
-          onClick={() => setShowSubjects(false)}
+          onClick={() => toggleSubjects(false)}
           lighter={showSubjects}
           size="medium"
           borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.program')}</StyledMenuItem>
         </Button>
         <Button
-          onClick={() => setShowSubjects(true)}
+          onClick={() => toggleSubjects(true)}
           lighter={!showSubjects}
           size="medium"
           borderShape="rounded">

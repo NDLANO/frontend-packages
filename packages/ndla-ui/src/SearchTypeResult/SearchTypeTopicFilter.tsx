@@ -58,30 +58,28 @@ type Props = {
   setTopic: any;
 };
 
-const SearchTypeTopicFilter = ({ topics, currentTopic, setTopic }: Props) => {
-  return (
-    <>
-      <p>current topic: {currentTopic}</p>
-      <Wrapper>
-        {topics.map((option: TopicType) => {
-          const { value, title } = option;
-          return (
-            <Topic
-              isCurrent={currentTopic === value}
-              key={option.value ? option.value : 'all'}>
-              <Button
-                link
-                size="small"
-                disabled={false}
-                onClick={() => setTopic(value)}>
-                {title}
-              </Button>
-            </Topic>
-          );
-        })}
-      </Wrapper>
-    </>
-  );
-};
+const SearchTypeTopicFilter = ({ topics, currentTopic, setTopic }: Props) => (
+  <>
+    <p>current topic: {currentTopic}</p>
+    <Wrapper>
+      {topics.map((option: TopicType) => {
+        const { value, title } = option;
+        return (
+          <Topic
+            isCurrent={currentTopic === value}
+            key={option.value ? option.value : 'all'}>
+            <Button
+              link
+              size="small"
+              disabled={false}
+              onClick={() => setTopic(value)}>
+              {title}
+            </Button>
+          </Topic>
+        );
+      })}
+    </Wrapper>
+  </>
+);
 
 export default SearchTypeTopicFilter;

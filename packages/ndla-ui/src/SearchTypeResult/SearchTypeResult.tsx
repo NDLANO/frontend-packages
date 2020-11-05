@@ -45,21 +45,19 @@ const SearchTypeResult = ({
   pagination,
   type,
   children,
-}: Props) => {
-  return (
-    <Wrapper>
-      <SearchTypeHeader
-        onFilterClick={onFilterClick}
-        filters={filters}
-        loading={loading}
-        totalCount={totalCount}
-        type={type}
-      />
-      <SearchItems items={items} type={type} loading={loading} />
-      {pagination && <ResultNavigation {...pagination} />}
-      {children && children}
-    </Wrapper>
-  );
-};
+}: Props) => (
+  <Wrapper>
+    <SearchTypeHeader
+      onFilterClick={onFilterClick}
+      filters={filters}
+      loading={loading}
+      totalCount={totalCount}
+      type={type}
+    />
+    <SearchItems items={items} type={type} loading={loading} />
+    {pagination && <ResultNavigation {...pagination} />}
+    {children && children}
+  </Wrapper>
+);
 
 export default React.memo(SearchTypeResult);

@@ -71,34 +71,30 @@ const SearchTypeHeader = ({
   totalCount,
   type,
   t,
-}: Props & tType) => {
-  return (
-    <>
-      <HeaderWrapper>
-        <TypeWrapper>
-          {type && <ContentTypeBadge type={type} background size="large" />}
-          <SubjectName>
-            {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
-            {totalCount ? `(${totalCount})` : null}
-          </SubjectName>
-        </TypeWrapper>
-        {filters && (
-          <CategoryItems>
-            {filters.map((option: FilterOptionsType) => (
-              <CategoryTypeButtonWrapper key={option.id}>
-                <Button
-                  size="small"
-                  lighter={!option.active}
-                  disabled={loading}
-                  onClick={() => onFilterClick(option.id)}>
-                  {option.name}
-                </Button>
-              </CategoryTypeButtonWrapper>
-            ))}
-          </CategoryItems>
-        )}
-      </HeaderWrapper>
-    </>
-  );
-};
+}: Props & tType) => (
+  <HeaderWrapper>
+    <TypeWrapper>
+      {type && <ContentTypeBadge type={type} background size="large" />}
+      <SubjectName>
+        {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
+        {totalCount ? `(${totalCount})` : null}
+      </SubjectName>
+    </TypeWrapper>
+    {filters && (
+      <CategoryItems>
+        {filters.map((option: FilterOptionsType) => (
+          <CategoryTypeButtonWrapper key={option.id}>
+            <Button
+              size="small"
+              lighter={!option.active}
+              disabled={loading}
+              onClick={() => onFilterClick(option.id)}>
+              {option.name}
+            </Button>
+          </CategoryTypeButtonWrapper>
+        ))}
+      </CategoryItems>
+    )}
+  </HeaderWrapper>
+);
 export default React.memo(injectT(SearchTypeHeader));

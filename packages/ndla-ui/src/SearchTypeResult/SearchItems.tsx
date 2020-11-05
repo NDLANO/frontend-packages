@@ -46,40 +46,38 @@ type Props = {
   loading: boolean;
   type: string;
 };
-const SearchItems = ({ items, loading, type }: Props) => {
-  return (
-    <Wrapper>
-      <Container loading={loading}>
-        {type === contentTypes.SUBJECT
-          ? items.map(item => {
-              return (
-                <SearchSubjectTypeItem
-                  loading={loading}
-                  item={item}
-                  key={`${item.id}`}
-                />
-              );
-            })
-          : items.map((item: any) => {
-              return (
-                <SearchItem
-                  loading={loading}
-                  item={item}
-                  key={`${item.id}`}
-                  type={type}
-                />
-              );
-            })}
-      </Container>
-      {loading && (
-        <>
-          <Overlay>
-            <Spinner />
-          </Overlay>
-        </>
-      )}
-    </Wrapper>
-  );
-};
+const SearchItems = ({ items, loading, type }: Props) => (
+  <Wrapper>
+    <Container loading={loading}>
+      {type === contentTypes.SUBJECT
+        ? items.map(item => {
+            return (
+              <SearchSubjectTypeItem
+                loading={loading}
+                item={item}
+                key={`${item.id}`}
+              />
+            );
+          })
+        : items.map((item: any) => {
+            return (
+              <SearchItem
+                loading={loading}
+                item={item}
+                key={`${item.id}`}
+                type={type}
+              />
+            );
+          })}
+    </Container>
+    {loading && (
+      <>
+        <Overlay>
+          <Spinner />
+        </Overlay>
+      </>
+    )}
+  </Wrapper>
+);
 
 export default React.memo(SearchItems);

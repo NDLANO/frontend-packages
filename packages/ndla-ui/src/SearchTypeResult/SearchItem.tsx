@@ -3,17 +3,14 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-import BEMHelper from 'react-bem-helper';
 
-import { breakpoints, colors, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
 
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
-
-const searchResultItemClasses = BEMHelper('c-search-result-item');
 
 const { contentTypes } = constants;
 
@@ -125,6 +122,12 @@ const ItemPillWrapper = styled.div`
 const ItemPill = styled.div`
   margin: 4px 4px 4px 0;
   display: inline-block;
+  background: ${colors.brand.greyLightest};
+  margin-right: ${spacing.small};
+  padding: 0 ${spacing.xxsmall};
+  border-radius: 2px;
+  ${fonts.sizes('12px', '20px')};
+  font-weight: ${fonts.weight.semibold};
 `;
 const ItemContent = styled.div`
   /* flex-grow: 1; */
@@ -154,8 +157,7 @@ export type SearchItemType = {
   breadcrumb: Array<string>;
   image: React.ReactNode | null;
   img?: { url: string; alt: string };
-  contentTypeLabel: string | null;
-  type: string | null;
+  labels?: string[];
 };
 type Props = {
   item: SearchItemType;
@@ -163,27 +165,7 @@ type Props = {
   type?: ContentType;
 };
 const SearchItem = ({ item, loading, type }: Props) => {
-  const {
-    title,
-    url,
-    ingress,
-    breadcrumb,
-    contentTypeLabel = null,
-    img = null,
-  } = item;
-  const ItemPillLabels = (
-    <ItemPillWrapper>
-      {item.type && (
-        <ItemPill {...searchResultItemClasses('pills')}>{item.type}</ItemPill>
-      )}
-      {contentTypeLabel && (
-        <ItemPill {...searchResultItemClasses('pills')}>
-          {contentTypeLabel}
-        </ItemPill>
-      )}
-    </ItemPillWrapper>
-  );
-
+  const { title, url, ingress, breadcrumb, img = null, labels = [] } = item;
   return (
     <>
       <ItemWrapper loading={loading}>
@@ -205,7 +187,13 @@ const SearchItem = ({ item, loading, type }: Props) => {
         <ItemContent>
           <ItemTitle>
             <SafeLink to={url}>{title}</SafeLink>
-            {ItemPillLabels}
+            {labels.length > 0 && (
+              <ItemPillWrapper>
+                {labels.map(label => (
+                  <ItemPill key={label}>{label}</ItemPill>
+                ))}
+              </ItemPillWrapper>
+            )}
           </ItemTitle>
           <ItemText>{ingress}</ItemText>
           <BreadcrumbPath>

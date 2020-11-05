@@ -32,13 +32,13 @@ const topicResults = [
     url: '#1',
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-    contentTypeLabel: 'Emne',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
     img: {
       url:
         'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
     },
+    labels: ['Type', 'Type2'],
   },
   {
     id: 2,
@@ -46,7 +46,6 @@ const topicResults = [
     url: '#2',
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-    contentTypeLabel: 'Emne',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
     img: {
       url:
@@ -60,14 +59,11 @@ const topicResults = [
     url: '#3',
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé. Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-    contentTypeLabel: 'Emne',
-    additional: true,
     img: {
       url:
         'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
     },
-    matchTab: ['SUBJECT'],
   },
   {
     id: 4,
@@ -75,7 +71,6 @@ const topicResults = [
     url: '#4',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -93,7 +88,6 @@ const topicResults = [
     url: '#5',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -106,7 +100,6 @@ const topicResults = [
     url: '#6',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -124,7 +117,6 @@ const topicResults = [
     url: '#7',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -137,7 +129,6 @@ const topicResults = [
     url: '#8',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -150,7 +141,6 @@ const topicResults = [
     url: '#9',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -168,7 +158,6 @@ const topicResults = [
     url: '#10',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Emne',
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
@@ -184,15 +173,8 @@ const subjectMaterialResults = [
     url: '#1',
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-    contentTypeLabel: 'Fagstoff',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-    resourceTypes: [
-      {
-        id: 'urn:resourcetype:subjectMaterial',
-        name: 'Fagstoff',
-      },
-      { id: 'urn:resourcetype:academicArticle', name: 'Fagartikkel' },
-    ],
+    labels: ['h5p', 'Simulering', 'Oppgave'],
   },
   {
     id: 11,
@@ -200,16 +182,8 @@ const subjectMaterialResults = [
     url: '#2',
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-    contentTypeLabel: 'Veiledning',
-    type: 'Fagstoff',
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
-    resourceTypes: [
-      {
-        id: 'urn:resourcetype:subjectMaterial',
-        name: 'Fagstoff',
-      },
-      { id: 'urn:resourcetype:guidance', name: 'Veiledning' },
-    ],
+    labels: ['h5p', 'Simulering', 'Oppgave'],
   },
   {
     id: 12,
@@ -217,35 +191,12 @@ const subjectMaterialResults = [
     url: '#3',
     ingress:
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
-    contentTypeLabel: 'Film og filmklipp',
-    additional: true,
     img: {
       url:
         'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
       alt: 'Forstørrelsesglass',
     },
-    resourceTypes: [
-      {
-        id: 'urn:resourcetype:subjectMaterial',
-        name: 'Fagstoff',
-      },
-      { id: 'urn:resourcetype:movieAndClip', name: 'Film og filmklipp' },
-    ],
-    type: 'Fagstoff',
-    subjects: [
-      {
-        url: '#1',
-        title: 'Flerfaglig',
-      },
-      {
-        url: '#2',
-        title: 'Medieuttrykk og mediesamfunnet',
-      },
-      {
-        url: '#3',
-        title: 'Norsk',
-      },
-    ],
+    labels: ['h5p', 'Simulering', 'Oppgave'],
   },
   {
     id: 13,
@@ -253,20 +204,11 @@ const subjectMaterialResults = [
     url: '#4',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Forelesning og presentasjon',
-    resourceTypes: [
-      {
-        id: 'urn:resourcetype:subjectMaterial',
-        name: 'Fagstoff',
-      },
-      { id: 'urn:resourcetype:dictionary', name: 'Oppslagsverk og ordliste' },
-    ],
     breadcrumb: [
       'Brønnteknikk',
       'Leting og boring',
       'Geologi for brønnteknikk',
     ],
-    type: 'Fagstoff',
   },
   {
     id: 14,
@@ -274,19 +216,7 @@ const subjectMaterialResults = [
     url: '#5',
     ingress:
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
-    contentTypeLabel: 'Forelesning og presentasjon',
-    resourceTypes: [
-      {
-        id: 'urn:resourcetype:subjectMaterial',
-        name: 'Fagstoff',
-      },
-      {
-        id: 'urn:resourcetype:lectureAndPresentation',
-        name: 'Forelesning og presentasjon',
-      },
-    ],
     breadcrumb: ['Brønnteknikk', 'Geologi for brønnteknikk'],
-    type: 'Fagstoff',
   },
 ];
 
@@ -336,14 +266,14 @@ const searchSubjectTypeOptions = [
     title: 'Fagstoff',
     value: 'subject-material',
   },
-  {
+  /*{
     title: 'Oppgaver og aktiviteter',
     value: 'tasks-and-activities',
   },
   {
     title: 'Læringssti',
     value: 'learning-path',
-  },
+  },*/
 ];
 
 export {

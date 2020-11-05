@@ -20,7 +20,7 @@ const Topic = styled.div<TopicProps>`
     props.isCurrent &&
     `
       border-bottom: 3px solid #20598F;
-    }`}
+    `}
   button {
     box-shadow: none;
     color: #303030;
@@ -37,7 +37,7 @@ const Topic = styled.div<TopicProps>`
         outline: none;
         outline-width: 0px;
       }
-    }`}
+    `}
   }
   :first-of-type {
     margin-left: 0;

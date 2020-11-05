@@ -24,7 +24,7 @@ const ItemWrapper = styled.div<WrapperProps>`
     background-position-y: 100%;
     background-position-x: 100%;
     background-size: auto 100px;
-  }`}
+  `}
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex: 1 0 100%;
@@ -74,7 +74,7 @@ const ItemWrapper = styled.div<WrapperProps>`
     `
     opacity: 0.6;
     z-index: 0;
-  }`}
+  `}
 `;
 
 const ItemContent = styled.div`
@@ -102,9 +102,9 @@ export type SearchSubjectTypeItemType = {
 };
 type Props = {
   item: SearchSubjectTypeItemType;
-  loading: boolean;
+  loading?: boolean;
 };
-const SearchSubjectTypeItem = ({ item, loading, t }: Props & tType) => {
+const SearchSubjectTypeItem = ({ item, loading = false, t }: Props & tType) => {
   const { title, url, img = null } = item; // img = null
 
   return (

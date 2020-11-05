@@ -32,8 +32,6 @@ type Props = {
   loading?: boolean;
   totalCount?: number;
   pagination?: PaginationType;
-  onShowMore: () => void;
-  onShowAll: () => void;
   type?: ContentType;
   children?: React.ReactNode;
 };

@@ -109,6 +109,16 @@ const messages = {
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
     },
+    resultType: {
+      showing: 'Viser {fromCount} til {toCount} av {totalCount}',
+      showMore: 'Vis meir',
+      showAll: 'Vis alle',
+      toSubjectPageLabel: 'Gå til fagsida',
+      all: 'Alle',
+      hits: 'treff',
+      showingSearchPhrase: 'Du søkte på:',
+      searchPhraseSuggestion: 'Vis heller treff for:',
+    },
   },
   subjectPage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av emna.',
@@ -479,7 +489,7 @@ const messages = {
   },
   contentTypes: {
     all: 'Alle',
-    subject: 'Emne',
+    subject: 'Fag',
     'topic-article': 'Emne',
     'learning-path': 'Læringssti',
     'subject-material': 'Fagstoff',
@@ -487,6 +497,7 @@ const messages = {
     'external-learning-resources': 'Ekstern læringsressurs',
     'source-material': 'Kjeldemateriale',
     'assessment-resources': 'Vurderingsressurs',
+    topic: 'Emne',
   },
   modal: {
     closeModal: 'Lukk',

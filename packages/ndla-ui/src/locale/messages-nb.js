@@ -108,6 +108,16 @@ const messages = {
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
     },
+    resultType: {
+      showing: 'Viser {fromCount} til {toCount} av {totalCount}',
+      showMore: 'Vis mer',
+      showAll: 'Vis alle',
+      toSubjectPageLabel: 'Gå til fagsiden',
+      all: 'Alle',
+      hits: 'treff',
+      showingSearchPhrase: 'Du søkte på:',
+      searchPhraseSuggestion: 'Vis heller treff for:',
+    },
   },
   subjectPage: {
     errorDescription: 'Beklager, en feil oppsto under lasting av emnene.',
@@ -476,7 +486,7 @@ const messages = {
   },
   contentTypes: {
     all: 'Alle',
-    subject: 'Emne',
+    subject: 'Fag',
     'topic-article': 'Emne',
     'learning-path': 'Læringssti',
     'subject-material': 'Fagstoff',
@@ -484,6 +494,7 @@ const messages = {
     'external-learning-resources': 'Ekstern læringsressurs',
     'source-material': 'Kildemateriale',
     'assessment-resources': 'Vurderingsressurs',
+    topic: 'Emne',
   },
   modal: {
     closeModal: 'Lukk',

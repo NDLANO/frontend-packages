@@ -1,0 +1,216 @@
+import React from 'react';
+import styled from '@emotion/styled';
+// @ts-ignore
+import { ChevronRight } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
+
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { ContentType } from './SearchTypeResult';
+// @ts-ignore
+import constants from '../model';
+
+// @ts-ignore
+import ContentTypeBadge from '../ContentTypeBadge';
+
+const { contentTypes } = constants;
+
+type WrapperProps = {
+  loading?: boolean;
+};
+
+const ItemWrapper = styled.div<WrapperProps>`
+  flex-direction: column;
+  margin: 16px 16px 20px;
+  ${mq.range({ from: breakpoints.mobile })} {
+    margin: 16px 0px 16px;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin: 16px 16px 20px;
+    flex: 1 0 47%;
+    max-width: 48%;
+    &:nth-of-type(1n) {
+      margin-left: 0;
+    }
+    &:nth-of-type(2n) {
+      margin-right: 0;
+      margin-left: 16px;
+    }
+  }
+
+  ${mq.range({ from: breakpoints.desktop })} {
+    flex: 1 0 21%;
+    max-width: 252px;
+    &:nth-of-type(1n) {
+      margin-left: 16px;
+    }
+    &:nth-of-type(2n) {
+      margin-right: 16px;
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:nth-of-type(4n) {
+      margin-right: 0;
+    }
+    &:nth-of-type(4n + 5) {
+      margin-left: 0px;
+    }
+  }
+
+  ${props =>
+    props.loading &&
+    `
+    opacity: 0.6;
+    z-index: 0;
+  `}
+`;
+
+const ItemHead = styled.div`
+  height: auto;
+  min-height: 45px;
+  position: relative;
+  a {
+    box-shadow: none;
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    max-height: 312px;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    max-height: 144px;
+  }
+  img {
+    border-radius: 5px;
+  }
+`;
+
+type ItemIconProps = {
+  type?: ContentType;
+};
+
+const ItemIcon = styled.div<ItemIconProps>`
+  height: 144px;
+  background: #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${props => {
+    switch (props.type) {
+      case contentTypes.SUBJECT_MATERIAL:
+        return `background: ${colors.subjectMaterial.light};`;
+      case contentTypes.TOPIC:
+        return `background: ${colors.subject.light};`;
+      case contentTypes.TASKS_AND_ACTIVITIES:
+        return `background: ${colors.tasksAndActivities.light};`;
+      case contentTypes.ASSESSMENT_RESOURCES:
+        return `background: ${colors.assessmentResource.light};`;
+      case contentTypes.EXTERNAL_LEARNING_RESOURCES:
+        return `background: ${colors.externalLearningResource.light};`;
+      case contentTypes.SOURCE_MATERIAL:
+        return `background: ${colors.sourceMaterial.light};`;
+      case contentTypes.LEARNING_PATH:
+        return `background: ${colors.learningPath.light};`;
+      default:
+        return null;
+    }
+  }}
+`;
+
+const ItemPillWrapper = styled.div`
+  margin-top: 8px;
+`;
+const ItemPill = styled.div`
+  margin: 4px 4px 4px 0;
+  display: inline-block;
+  background: ${colors.brand.greyLightest};
+  margin-right: ${spacing.small};
+  padding: 0 ${spacing.xxsmall};
+  border-radius: 2px;
+  ${fonts.sizes('12px', '20px')};
+  font-weight: ${fonts.weight.semibold};
+`;
+const ItemContent = styled.div`
+  /* flex-grow: 1; */
+`;
+
+const ItemTitle = styled.h3`
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 14px;
+`;
+const ItemText = styled.p`
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 16px;
+`;
+const BreadcrumbPath = styled.div`
+  color: #ccc;
+  font-size: 14px;
+  line-height: 20px;
+`;
+
+export type SearchItemType = {
+  id: string;
+  title: string;
+  url: string;
+  ingress: string;
+  breadcrumb: Array<string>;
+  image: React.ReactNode | null;
+  img?: { url: string; alt: string };
+  labels?: string[];
+};
+type Props = {
+  item: SearchItemType;
+  loading: boolean;
+  type?: ContentType;
+};
+const SearchItem = ({ item, loading, type }: Props) => {
+  const { title, url, ingress, breadcrumb, img = null, labels = [] } = item;
+  return (
+    <>
+      <ItemWrapper loading={loading}>
+        <ItemHead>
+          {img ? (
+            <SafeLink to={url}>
+              <img src={img.url} alt={img.alt} />
+            </SafeLink>
+          ) : (
+            <SafeLink to={url}>
+              {type && (
+                <ItemIcon type={type}>
+                  <ContentTypeBadge type={type} size="small" border={false} />
+                </ItemIcon>
+              )}
+            </SafeLink>
+          )}
+        </ItemHead>
+        <ItemContent>
+          <ItemTitle>
+            <SafeLink to={url}>{title}</SafeLink>
+            {labels.length > 0 && (
+              <ItemPillWrapper>
+                {labels.map(label => (
+                  <ItemPill key={label}>{label}</ItemPill>
+                ))}
+              </ItemPillWrapper>
+            )}
+          </ItemTitle>
+          <ItemText>{ingress}</ItemText>
+          <BreadcrumbPath>
+            {breadcrumb &&
+              breadcrumb.map((breadcrumbItem: string, i: number) => {
+                return (
+                  <span key={`${breadcrumbItem}-${item.id}`}>
+                    <span>{breadcrumbItem}</span>
+                    {i !== breadcrumb.length - 1 && <ChevronRight />}
+                  </span>
+                );
+              })}
+          </BreadcrumbPath>
+        </ItemContent>
+      </ItemWrapper>
+    </>
+  );
+};
+
+export default SearchItem;

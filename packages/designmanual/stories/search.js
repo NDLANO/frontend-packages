@@ -6,6 +6,7 @@ import { PageContainer, Content, OneColumn } from '@ndla/ui';
 import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
 import SearchPageExample from './pages/SearchPageExample';
+import SearchResultTypeExample from './pages/SearchResultTypeExample';
 
 storiesOf('Søk', module)
   .add('Søkefelt', () => (
@@ -43,6 +44,17 @@ storiesOf('Søk', module)
         <MastheadWithTopicMenu hideSearchButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample showAuthor />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Søkeside re-design', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <SearchResultTypeExample />
         </OneColumn>
       </Content>
       <FooterExample />

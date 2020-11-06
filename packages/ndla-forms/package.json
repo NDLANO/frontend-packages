@@ -1,6 +1,6 @@
 {
   "name": "@ndla/forms",
-  "version": "0.3.136",
+  "version": "0.3.137",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@ndla/core": "^0.6.31",
     "@ndla/icons": "^0.6.25",
-    "@ndla/ui": "^0.28.6"
+    "@ndla/ui": "^0.28.7"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

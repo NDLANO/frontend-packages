@@ -51,3 +51,22 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
+
+export { default as CreatedBy } from './CreatedBy';
+
+export { default as Breadcrumblist } from './Breadcrumblist';
+
+export { MessageBox } from './MessageBox';
+
+export {
+  NavigationHeading,
+  NavigationBox,
+  NavigationTopicAbout,
+} from './Navigation';
+
+export { default as Programme } from './Programme';
+
+export {
+  default as MultidisciplinarySubject,
+  MultidisciplinarySubjectHeader,
+} from './MultidisciplinarySubject';

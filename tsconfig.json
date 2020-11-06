@@ -25,5 +25,5 @@
       "*": ["node_modules"]
     }
   },
-  "exclude": ["**/*.d.ts", "./packages/*/lib", "**/*-test.*"]
+  "exclude": ["./packages/*/lib", "**/*-test.*"]
 }

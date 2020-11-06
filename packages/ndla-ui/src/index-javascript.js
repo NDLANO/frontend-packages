@@ -116,7 +116,6 @@ export {
 } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
-export { default as Breadcrumblist } from './Breadcrumblist';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
@@ -177,16 +176,4 @@ export {
   AllMoviesAlphabetically,
 } from './NDLAFilm';
 
-export { default as CreatedBy } from './CreatedBy';
-export { MessageBox } from './MessageBox';
-export {
-  NavigationHeading,
-  NavigationBox,
-  NavigationTopicAbout,
-} from './Navigation';
-export { default as Programme } from './Programme';
-export {
-  default as MultidisciplinarySubject,
-  MultidisciplinarySubjectHeader,
-} from './MultidisciplinarySubject';
 export { default as Spinner } from './Spinner';

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
-import { Spinner } from '@ndla/editor';
+import { Spinner } from '@ndla/ui';
 // @ts-ignore
 import constants from '../model';
 import SearchItem, { SearchItemType } from './SearchItem';

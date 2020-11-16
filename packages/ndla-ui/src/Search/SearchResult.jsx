@@ -7,6 +7,7 @@ import { uuid } from '@ndla/util';
 import { Trans } from '@ndla/i18n';
 import Button from '@ndla/button';
 import { FilterTabs } from '@ndla/tabs';
+import Tooltip from '@ndla/tooltip';
 import SafeLink from '@ndla/safelink';
 import Spinner from '../../lib/Spinner';
 
@@ -153,80 +154,87 @@ export const SearchResultItem = ({
   subjectsLabel,
   additionalContentToolip,
   children,
-}) => (
-  <li key={item.id} {...searchResultItemClasses()}>
-    <article>
-      <header {...searchResultItemClasses('header')}>
-        <h1>
-          {item.url.href ? (
-            <a {...item.url}>{item.title}</a>
-          ) : (
-            <SafeLink to={item.url}>{item.title}</SafeLink>
+}) => {
+  const itemBreadcrumb = (item, cssClasses = {}) => {
+    if (item.breadcrumb?.length > 0) {
+      return (
+        <div {...cssClasses}>
+          {item.breadcrumb.map((breadcrumbItem, index) => {
+            let icon = null;
+            if (index !== item.breadcrumb.length - 1) {
+              icon = <ChevronRight />;
+            }
+            return (
+              <Fragment key={uuid()}>
+                <span>{breadcrumbItem}</span>
+                {icon}
+              </Fragment>
+            );
+          })}
+        </div>
+      );
+    }
+  };
+  return (
+    <li key={item.id} {...searchResultItemClasses()}>
+      <article>
+        <header {...searchResultItemClasses('header')}>
+          <h1>
+            {item.url.href ? (
+              <a {...item.url}>{item.title}</a>
+            ) : (
+              <SafeLink to={item.url}>{item.title}</SafeLink>
+            )}
+          </h1>
+          <div {...searchResultItemClasses('content-type-wrapper')}>
+            {item.contentTypeIcon}
+          </div>
+          {item.contentTypeLabel && (
+            <div {...searchResultItemClasses('pills')}>
+              {item.contentTypeLabel}
+            </div>
           )}
-        </h1>
-        <div {...searchResultItemClasses('content-type-wrapper')}>
-          {item.contentTypeIcon}
+          {item.type && (
+            <div {...searchResultItemClasses('pills')}>{item.type}</div>
+          )}
+          {item.additional && (
+            <div {...searchResultItemClasses('pills')}>
+              {additionalContentToolip}
+            </div>
+          )}
+          {children}
+        </header>
+        <div {...searchResultItemClasses('content')}>
+          <p
+            {...searchResultItemClasses('ingress')}
+            dangerouslySetInnerHTML={{ __html: item.ingress }}
+          />
+          {item.image}
         </div>
-        {item.contentTypeLabel && (
-          <div {...searchResultItemClasses('pills')}>
-            {item.contentTypeLabel}
+        {(!item.subjects || item.subjects.length === 0) &&
+          itemBreadcrumb(item, searchResultItemClasses('breadcrumb'))}
+        {item.subjects && item.subjects.length !== 0 && (
+          <div {...searchResultItemClasses('subjects')}>
+            <span>{subjectsLabel}</span>
+            <ul>
+              {item.subjects.map(subject => (
+                <li key={uuid()}>
+                  <Tooltip tooltip={itemBreadcrumb(subject)}>
+                    {subject.url.href ? (
+                      <a {...subject.url}>{subject.title}</a>
+                    ) : (
+                      <SafeLink to={subject.url}>{subject.title}</SafeLink>
+                    )}
+                  </Tooltip>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
-        {item.type && (
-          <div {...searchResultItemClasses('pills')}>{item.type}</div>
-        )}
-        {item.additional && (
-          <div {...searchResultItemClasses('pills')}>
-            {additionalContentToolip}
-          </div>
-        )}
-        {children}
-      </header>
-      <div {...searchResultItemClasses('content')}>
-        <p
-          {...searchResultItemClasses('ingress')}
-          dangerouslySetInnerHTML={{ __html: item.ingress }}
-        />
-        {item.image}
-      </div>
-      {(!item.subjects || item.subjects.length === 0) &&
-        item.breadcrumb &&
-        item.breadcrumb.length > 0 && (
-          <div {...searchResultItemClasses('breadcrumb')}>
-            {item.breadcrumb.map((breadcrumbItem, index) => {
-              let icon = null;
-
-              if (index !== item.breadcrumb.length - 1) {
-                icon = <ChevronRight />;
-              }
-              return (
-                <Fragment key={uuid()}>
-                  <span>{breadcrumbItem}</span>
-                  {icon}
-                </Fragment>
-              );
-            })}
-          </div>
-        )}
-      {item.subjects && item.subjects.length !== 0 && (
-        <div {...searchResultItemClasses('subjects')}>
-          <span>{subjectsLabel}</span>
-          <ul>
-            {item.subjects.map(subject => (
-              <li key={uuid()}>
-                {subject.url.href ? (
-                  <a {...subject.url}>{subject.title}</a>
-                ) : (
-                  <SafeLink to={subject.url}>{subject.title}</SafeLink>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </article>
-  </li>
-);
+      </article>
+    </li>
+  );
+};
 
 SearchResultItem.propTypes = {
   item: searchResultItemShape.isRequired,

@@ -55,7 +55,7 @@ const ModalContent = ({ pageId, onClose }) => {
               );
             }
             if (block.type === 'component') {
-              return block.content;
+              return <block.content key={`${pageId}-${index}`} />;
             }
             if (block.type === 'link') {
               return (

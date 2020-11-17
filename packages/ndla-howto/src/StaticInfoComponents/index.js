@@ -244,7 +244,7 @@ export const stories = {
     body: [
       {
         type: 'component',
-        content: <Markdown />,
+        content: Markdown,
       },
     ],
   },

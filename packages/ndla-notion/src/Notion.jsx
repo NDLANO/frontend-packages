@@ -8,68 +8,89 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
 
-const NotionCSS = css`
+export const NotionContext = React.createContext({ listView: false });
+
+const NotionWrapper = styled.span`
   display: inline;
-  .link {
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-style: inherit;
-    line-height: 1em;
-    padding: 0 0 4px 0;
-    margin-bottom: -4px;
-    text-decoration: none;
-    color: #000;
-    border-bottom: 1px solid ${colors.brand.tertiary};
-    position: relative;
-    cursor: pointer;
-    &:after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      margin: calc(1em + 4px) auto 0;
-      left: 0;
-      right: 0;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid ${colors.brand.primary};
-      transition: transform 0.1s ease;
-    }
-    &:hover,
-    &:focus {
-      border-color: ${colors.brand.primary};
-      outline: none;
-      &:after {
-        transform: scale(1.4) translateY(1px);
-      }
-    }
+`;
+const NotionButton = styled.button`
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-style: inherit;
+  line-height: 1em;
+  padding: 0 0 4px 0;
+  margin-bottom: -4px;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  ${props =>
+    props.isListView && {
+      padding: '2px 0',
+      margin: '4px 0',
+      lineHeight: '1.1em',
+      height: '32px',
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: '100%',
+      textTransform: 'capitalize',
+      fontFamily: 'Source Sans Pro',
+      fontWeight: '600',
+      fontSize: '16px',
+      color: `${colors.brand.primary}`,
+    }}
+  &:before {
+    content: '';
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI0E1QkNEMyIgZD0iTTQgOWgxNnYySDRWOXptMCA0aDEwdjJINHYtMnoiLz48L3N2Zz4K);
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    position: absolute;
+    background-position: -4px 0;
+    margin: calc(1em - 10px) 0 0 0;
+    width: 32px;
+    height: 32px;
+    ${props =>
+      props.isListView && {
+        position: 'relative',
+        margin: '0',
+        backgroundPosition: '0 0',
+        width: '32px',
+        height: '24px',
+      }}
   }
 `;
 
-const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
-  <span css={NotionCSS} id={id} data-notion>
-    <button
-      type="button"
-      aria-label={ariaLabel}
-      className={'link'}
-      data-notion-link>
-      {children}
-    </button>
-    {createUniversalPortal(
-      <NotionDialog {...rest} id={id}>
-        {content}
-      </NotionDialog>,
-      'body',
-    )}
-  </span>
-);
+const Notion = ({ id, ariaLabel, content, children, ...rest }) => {
+  const { listView = false } = React.useContext(NotionContext);
+  return (
+    <NotionWrapper id={id} data-notion>
+      <NotionButton
+        isListView={listView}
+        type="button"
+        aria-label={ariaLabel}
+        className={'link'}
+        data-notion-link>
+        {children}
+      </NotionButton>
+      {createUniversalPortal(
+        <NotionDialog {...rest} id={id}>
+          {content}
+        </NotionDialog>,
+        'body',
+      )}
+    </NotionWrapper>
+  );
+};
 
 Notion.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -77,6 +98,7 @@ Notion.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   content: PropTypes.node,
+  isListView: PropTypes.bool,
 };
 
 export default Notion;

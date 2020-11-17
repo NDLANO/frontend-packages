@@ -13,6 +13,7 @@ import Notion, {
   NotionDialogText,
   NotionDialogImage,
   NotionDialogLicenses,
+  NotionList,
 } from '@ndla/notion';
 import Tabs from '@ndla/tabs';
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
@@ -264,6 +265,94 @@ class NotionExample extends Component {
                 </p>
               </div>
             </section>
+            <NotionList>
+              <Notion
+                id="NotionId_4"
+                ariaLabel="Vis begrep beskrivelse"
+                title="Usikker"
+                subTitle="forklaring"
+                content={
+                  <Fragment>
+                    <NotionDialogContent>
+                      <NotionDialogText>
+                        De signalene andre mennesker sender ut, kan for et
+                        individ oppleves som forvirrende og i mange tilfeller
+                        også motstridende. Det kalles normforvirring. Denne
+                        normforvirringen er en naturlig del av
+                        sosialiseringsprosessen, og noe vi må lære oss å
+                        forholde oss til. En vanlig konflikt er at venner ønsker
+                        at du skal spille internettspill eller bli med på kino,
+                        mens foreldrene ber deg skru av PC-en for å gjøre
+                        husarbeid og lekser.
+                      </NotionDialogText>
+                    </NotionDialogContent>
+                    <NotionDialogLicenses
+                      license="CC-BY-ND-4.0"
+                      source="https://snl.no"
+                      authors={['Gary Waters']}
+                    />
+                  </Fragment>
+                }>
+                usikker
+              </Notion>
+              <Notion
+                id="NotionId_3"
+                ariaLabel="Vis begrep beskrivelse"
+                title="Norm"
+                subTitle="forklaring"
+                content={
+                  <Fragment>
+                    <NotionDialogContent>
+                      <Tabs
+                        singleLine
+                        tabs={[
+                          {
+                            title: 'Forklaring',
+                            content: (
+                              <Fragment>
+                                <NotionDialogImage
+                                  src="https://api.ndla.no/image-api/raw/futrue%20padawan.jpg?width=800"
+                                  alt="Normer i samfunnet"
+                                />
+                                <NotionDialogText>
+                                  Norm, særskilt sosiale normer, er en
+                                  sosiologisk betegnelse for intersubjektive,
+                                  allment delte og ofte underforståtte regler og
+                                  forventninger på oppførsel som gjelder for et
+                                  mindre sosialt fellesskap og for samfunnet i
+                                  sin helhet.
+                                </NotionDialogText>
+                                <NotionDialogLicenses
+                                  license="CC-BY-ND-4.0"
+                                  source="https://snl.no"
+                                />
+                              </Fragment>
+                            ),
+                          },
+                          {
+                            title: 'Ordbok',
+                            content: (
+                              <Fragment>
+                                <NotionDialogText>
+                                  Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit, sed do eiusmod tempor
+                                  incididunt ut labore et dolore magna aliqua.
+                                </NotionDialogText>
+                                <NotionDialogLicenses
+                                  license="CC-BY-4.0"
+                                  source="lipsum.com"
+                                />
+                              </Fragment>
+                            ),
+                          },
+                        ]}
+                      />
+                    </NotionDialogContent>
+                  </Fragment>
+                }>
+                norm
+              </Notion>
+            </NotionList>
           </LayoutItem>
         </article>
       </OneColumn>

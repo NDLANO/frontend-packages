@@ -72,16 +72,23 @@ const results = [
       {
         url: '#1',
         title: 'Flerfaglig',
+        breadcrumb: ['Flerfaglig', 'Ideskapning og mediedesign'],
       },
       {
         url: '#2',
         title: 'Medieuttrykk og mediesamfunnet',
+        breadcrumb: [
+          'Medieuttrykk og mediesamfunnet',
+          'Ideskapning og mediedesign',
+        ],
       },
       {
         url: '#3',
         title: 'Norsk',
+        breadcrumb: ['Norsk', 'Ideskapning og mediedesign'],
       },
     ],
+    breadcrumb: ['Flerfaglig', 'Ideskapning og mediedesign'],
     matchTab: ['SUBJECT_MATERIAL'],
     type: 'Undervisningsfilm',
   },
@@ -142,6 +149,13 @@ const results = [
     breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Brukertips og årsplaner'],
     matchTab: ['SOURCE_MATERIAL'],
     type: 'Lærervurdering',
+  },
+  {
+    id: 8,
+    title: 'Frittstående artikkel',
+    url: '#7',
+    ingress: 'Frittstående artikkel uten kontekst og uten brødsmulesti.',
+    matchTab: ['SOURCE_MATERIAL'],
   },
 ];
 

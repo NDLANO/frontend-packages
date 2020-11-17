@@ -1,8 +1,15 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import { LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import Logo from '../Logo';
@@ -29,21 +36,17 @@ const StyledSafeLink = styled(SafeLink)<LinkProps>`
 `;
 
 type Props = {
-  contentUrl?: string;
+  name: string;
+  description: string;
+  url?: string;
 };
 
-const CreatedBy = ({ contentUrl, t }: Props & tType) => (
+const CreatedBy = ({ name, description, url }: Props) => (
   <Container>
     <Wrapper>
       <Text>
-        {contentUrl ? (
-          <StyledSafeLink to={contentUrl}>
-            {t('createdBy.content')}
-          </StyledSafeLink>
-        ) : (
-          t('createdBy.content')
-        )}
-        &nbsp;{t('createdBy.text')}&nbsp;
+        {url ? <StyledSafeLink to={url}>{name}</StyledSafeLink> : name}
+        &nbsp;{description}&nbsp;
         <StyledSafeLink to={`https://ndla.no`}>NDLA</StyledSafeLink>
       </Text>
       <Logo label={`NDLA`} to={`https://ndla.no`} />
@@ -51,4 +54,4 @@ const CreatedBy = ({ contentUrl, t }: Props & tType) => (
   </Container>
 );
 
-export default injectT(CreatedBy);
+export default CreatedBy;

@@ -888,9 +888,13 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
       <StoryBody>
         <h2>Uten artikkellenke</h2>
-        <CreatedBy />
+        <CreatedBy name={'Artikkelen'} description={'er utarbeidet av'} />
         <h2>Med artikkellenke</h2>
-        <CreatedBy contentUrl="https://ndla.no/subjects/subject:26/topic:1:191103/topic:1:4352/resource:1:2052" />
+        <CreatedBy
+          name={'Artikkelen'}
+          description={'er utarbeidet av'}
+          url="https://ndla.no/subjects/subject:26/topic:1:191103/topic:1:4352/resource:1:2052"
+        />
       </StoryBody>
     </div>
   ))

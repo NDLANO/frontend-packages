@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2017-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
@@ -38,11 +46,19 @@ const NotionHeaderWrapper = styled.div`
   }
 `;
 
+const notionTitle = (title, subTitle) => (
+  <h1>
+    {title} {subTitle ? <small>{subTitle}</small> : null}
+  </h1>
+);
+
+export const NotionHeaderWithoutExitButton = ({ title, subTitle }) => (
+  <NotionHeaderWrapper>{notionTitle(title, subTitle)}</NotionHeaderWrapper>
+);
+
 const NotionHeader = injectT(({ title, subTitle, onClose, t }) => (
   <NotionHeaderWrapper>
-    <h1>
-      {title} {subTitle ? <small>{subTitle}</small> : null}
-    </h1>
+    {notionTitle(title, subTitle)}
     {onClose ? (
       <button type="button" onClick={onClose}>
         {t('notions.closeNotion')}
@@ -59,6 +75,11 @@ NotionHeader.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   onClose: PropTypes.func,
+};
+
+NotionHeaderWithoutExitButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
 };
 
 export { NotionHeader as default };

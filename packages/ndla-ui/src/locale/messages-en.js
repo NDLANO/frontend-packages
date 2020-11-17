@@ -348,6 +348,7 @@ const messages = {
       files: 'Files',
       embedlink: 'Embedded link',
       other: 'Other content',
+      concept: 'Concepts',
     },
     embedlink: {
       heading: 'How to show the article in other content',
@@ -402,6 +403,13 @@ const messages = {
       description:
         'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5P:',
+    },
+    concept: {
+      heading: 'How to use concept content from the article',
+      description:
+        'You will find guidelines for use of concept content in the asset',
+      rules: 'Rules for use of concept:',
+      title: 'Title',
     },
     files: {
       heading: 'How to use files from the article',

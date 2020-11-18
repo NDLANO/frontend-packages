@@ -15,12 +15,12 @@ const StyledBanner = styled.div<BannerProps>`
   background-repeat: no-repeat;
   background-position: center right;
   ${mq.range({ from: breakpoints.tablet })} {
-    height: 260px;
-    ${props => props.negativeTopMargin && `margin-top: -40px;`}
+    height: 190px;
+    ${props => props.negativeTopMargin && `margin-top: -30px;`}
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    height: 320px;
-    ${props => props.negativeTopMargin && `margin-top: -80px;`}
+    height: 220px;
+    ${props => props.negativeTopMargin && `margin-top: -60px;`}
   }
 `;
 

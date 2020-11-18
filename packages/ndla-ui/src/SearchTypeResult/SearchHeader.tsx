@@ -36,6 +36,13 @@ const PhraseText = styled.div`
 `;
 const PhraseSuggestionText = styled.div``;
 
+const HideOnDesktopWrapper = styled.div`
+  display: none;
+  ${mq.range({ until: breakpoints.wide })} {
+    display: block;
+  }
+`;
+
 const SearchCountWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -98,12 +105,20 @@ const SearchHeader = ({
         </PhraseSuggestionText>
       )}
     </PhraseWrapper>
-    {activeFilters && <ActiveFilters {...activeFilters} showOnSmallScreen />}
+    {activeFilters && (
+      <HideOnDesktopWrapper>
+        <ActiveFilters {...activeFilters} showOnSmallScreen />
+      </HideOnDesktopWrapper>
+    )}
     <SearchCountWrapper>
       <CountHeading>
         {count} {t('searchPage.resultType.hits')}
       </CountHeading>
-      {filters && <PopupFilter {...filters} />}
+      {filters && (
+        <HideOnDesktopWrapper>
+          <PopupFilter {...filters} />
+        </HideOnDesktopWrapper>
+      )}
     </SearchCountWrapper>
   </Wrapper>
 );

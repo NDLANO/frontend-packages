@@ -4,6 +4,10 @@ import { injectT, tType } from '@ndla/i18n';
 import { breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
+import { FilterProps } from './ActiveFilterContent';
+import ActiveFilters from './ActiveFilters';
+import SearchFieldHeader from './SearchFieldHeader';
+import PopupFilter, { PopupFilterProps } from './PopupFilter';
 
 const Wrapper = styled.div`
   margin-top: 24px;
@@ -12,16 +16,31 @@ const Wrapper = styled.div`
   }
 `;
 
+const SearchInputWrapper = styled.div`
+  display: none;
+  ${mq.range({ until: breakpoints.wide })} {
+    display: block;
+    margin-bottom: 24px;
+  }
+`;
+
 const PhraseWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-size: 16px;
+  margin-bottom: 24px;
 `;
 
 const PhraseText = styled.div`
   margin-right: 60px;
 `;
 const PhraseSuggestionText = styled.div``;
+
+const SearchCountWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 const CountHeading = styled.h2`
   font-size: 24px;
   font-weight: 400;
@@ -34,15 +53,36 @@ type Props = {
   searchPhrase?: string;
   searchPhraseSuggestion?: string;
   searchPhraseSuggestionOnClick?: () => void;
+  searchValue: string;
+  filters?: PopupFilterProps;
+  activeFilters?: {
+    filters: FilterProps[];
+    onFilterRemove: (value: string, name: string) => void;
+  };
+  onSearchValueChange: (value: string) => void;
+  onSubmit: () => void;
 };
+
 const SearchHeader = ({
   count,
   searchPhrase,
   searchPhraseSuggestion,
   searchPhraseSuggestionOnClick,
+  searchValue,
+  onSearchValueChange,
+  onSubmit,
+  activeFilters,
+  filters,
   t,
 }: Props & tType) => (
   <Wrapper>
+    <SearchInputWrapper>
+      <SearchFieldHeader
+        value={searchValue}
+        onChange={onSearchValueChange}
+        onSubmit={onSubmit}
+      />
+    </SearchInputWrapper>
     <PhraseWrapper>
       {searchPhrase && (
         <PhraseText>
@@ -58,9 +98,13 @@ const SearchHeader = ({
         </PhraseSuggestionText>
       )}
     </PhraseWrapper>
-    <CountHeading>
-      {count} {t('searchPage.resultType.hits')}
-    </CountHeading>
+    {activeFilters && <ActiveFilters {...activeFilters} showOnSmallScreen />}
+    <SearchCountWrapper>
+      <CountHeading>
+        {count} {t('searchPage.resultType.hits')}
+      </CountHeading>
+      {filters && <PopupFilter {...filters} />}
+    </SearchCountWrapper>
   </Wrapper>
 );
 

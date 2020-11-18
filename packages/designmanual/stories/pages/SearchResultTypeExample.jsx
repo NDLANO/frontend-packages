@@ -1,6 +1,12 @@
 import React, { Fragment, useState } from 'react';
 
-import { SearchTypeResult, SearchHeader, constants } from '@ndla/ui';
+import {
+  SearchTypeResult,
+  SearchHeader,
+  SearchFieldHeader,
+  constants,
+  OneColumn,
+} from '@ndla/ui';
 
 import { FilterTabs } from '@ndla/tabs';
 import Pager from '@ndla/pager';
@@ -12,6 +18,8 @@ import {
   searchSubjectTypeOptions,
   topicResults,
 } from '../../dummydata/mockSearchResultType';
+import { searchFilterOptions } from '../../dummydata';
+import MastheadWithTopicMenu from '../molecules/mastheads';
 
 const { contentTypes } = constants;
 
@@ -95,6 +103,11 @@ const resultsReducer = (state, action) => {
 const SearchPageDemo = () => {
   const [currentSubjectType, setCurrentSubjectType] = useState(null);
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
+  const [searchValue, setSearchValue] = useState('nunorsk');
+  const [searchFilter, setSearchFilter] = useState([
+    'subjects:bronnteknikk',
+    'subjects:kinesisk',
+  ]);
 
   const [searchItems, dispatch] = React.useReducer(
     resultsReducer,
@@ -202,6 +215,17 @@ const SearchPageDemo = () => {
     });
   };
 
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+  };
+  const handleFilterRemove = value => {
+    setSearchFilter(searchFilter.filter(option => option !== value));
+  };
+
+  const activeSubjectFilters = searchFilterOptions.subjects.filter(option =>
+    searchFilter.includes(option.value),
+  );
+
   const ResultResponse = ({ type: typeParam }) => {
     const type = typeParam || currentSubjectType;
 
@@ -261,23 +285,53 @@ const SearchPageDemo = () => {
 
   return (
     <>
-      <SearchHeader
-        count={123}
-        searchPhrase="nunorsk"
-        searchPhraseSuggestion="nynorsk"
-        searchPhraseSuggestionOnClick={() =>
-          console.log('search-phrase suggestion click')
-        }
-      />
-      <ResultResponse type={contentTypes.SUBJECT} />
-      <FilterTabs
-        dropdownBtnLabel="Velg"
-        value={currentSubjectType ? currentSubjectType : 'ALL'}
-        options={searchSubjectTypeOptions}
-        contentId="search-result-content"
-        onChange={handleSetSubjectType}>
-        <ResultResponse />
-      </FilterTabs>
+      <MastheadWithTopicMenu hideSearchButton isSearchPage>
+        <SearchFieldHeader
+          value={searchValue}
+          onChange={value => setSearchValue(value)}
+          onSubmit={handleSearchSubmit}
+          activeFilters={{
+            filters: activeSubjectFilters,
+            onFilterRemove: handleFilterRemove,
+          }}
+          filters={{
+            options: searchFilterOptions.subjects,
+            values: searchFilter,
+            onSubmit: setSearchFilter,
+          }}
+        />
+      </MastheadWithTopicMenu>
+      <OneColumn cssModifier="clear-desktop" wide>
+        <SearchHeader
+          count={123}
+          searchPhrase={searchValue}
+          searchPhraseSuggestion="nynorsk"
+          searchPhraseSuggestionOnClick={() =>
+            console.log('search-phrase suggestion click')
+          }
+          searchValue={searchValue}
+          onSearchValueChange={value => setSearchValue(value)}
+          onSubmit={handleSearchSubmit}
+          activeFilters={{
+            filters: activeSubjectFilters,
+            onFilterRemove: handleFilterRemove,
+          }}
+          filters={{
+            options: searchFilterOptions.subjects,
+            values: searchFilter,
+            onSubmit: setSearchFilter,
+          }}
+        />
+        <ResultResponse type={contentTypes.SUBJECT} />
+        <FilterTabs
+          dropdownBtnLabel="Velg"
+          value={currentSubjectType ? currentSubjectType : 'ALL'}
+          options={searchSubjectTypeOptions}
+          contentId="search-result-content"
+          onChange={handleSetSubjectType}>
+          <ResultResponse />
+        </FilterTabs>
+      </OneColumn>
     </>
   );
 };

@@ -52,10 +52,7 @@ storiesOf('Søk', module)
   .add('Søkeside re-design', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
-        <OneColumn cssModifier="clear-desktop" wide>
-          <SearchResultTypeExample />
-        </OneColumn>
+        <SearchResultTypeExample />
       </Content>
       <FooterExample />
     </PageContainer>

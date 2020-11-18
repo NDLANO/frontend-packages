@@ -132,15 +132,18 @@ class MastheadWithTopicMenu extends Component {
       topicMenuProps,
       hideMenuButton,
       breadcrumbItems,
+      children,
+      isSearchPage,
       t,
     } = this.props;
+    const itemClassName = isSearchPage ? 'search-page-header' : '';
     return (
       <Masthead
         fixed
         skipToMainContentId={skipToMainContentId}
         ndlaFilm={ndlaFilm}
         infoContent={beta && betaInfoContent}>
-        <MastheadItem left>
+        <MastheadItem left className={itemClassName}>
           {!hideMenuButton && (
             <Modal
               size="fullscreen"
@@ -229,7 +232,12 @@ class MastheadWithTopicMenu extends Component {
             </DisplayOnPageYOffset>
           )}
         </MastheadItem>
-        <MastheadItem right>
+        {children && (
+          <MastheadItem center className={itemClassName}>
+            {children}
+          </MastheadItem>
+        )}
+        <MastheadItem right className={itemClassName}>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <LanguageSelector
               inverted={ndlaFilm}
@@ -262,6 +270,7 @@ MastheadWithTopicMenu.propTypes = {
   ndlaFilm: PropTypes.bool,
   skipToMainContentId: PropTypes.string,
   breadcrumbItems: PropTypes.array,
+  isSearchPage: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

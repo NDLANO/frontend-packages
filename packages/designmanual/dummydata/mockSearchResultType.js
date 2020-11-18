@@ -276,6 +276,94 @@ const searchSubjectTypeOptions = [
   },*/
 ];
 
+export const searchFilterOptions = {
+  subjects: [
+    {
+      title: 'Brønnteknikk',
+      value: 'subjects:bronnteknikk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'YF VG2',
+          value: 'bronnteknikk:yfvg2',
+        },
+        {
+          title: 'YF VG3',
+          value: 'bronnteknikk:yfvg3',
+        },
+      ],
+    },
+    {
+      title: 'Kinesisk',
+      value: 'subjects:kinesisk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'kinesisk:vg1',
+        },
+        {
+          title: 'VG2',
+          value: 'kinesisk:vg2',
+        },
+      ],
+    },
+    {
+      title: 'Markedsføring og ledelse',
+      value: 'subjects:markedsforing_og_ledelse',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'markedsforing_og_ledelse:vg1',
+        },
+        {
+          title: 'VG2',
+          value: 'markedsforing_og_ledelse:vg2',
+        },
+      ],
+    },
+    {
+      title: 'Medieuttrykk og mediesamfunnet',
+      value: 'subjects:medieuttrykk_og_mediesamfunnet',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'Medieuttrykk',
+          value: 'medieuttrykk_og_mediesamfunnet:medieuttrykk',
+        },
+        {
+          title: 'Mediesamfunnet',
+          value: 'medieuttrykk_og_mediesamfunnet:mediesamfunnet',
+        },
+        {
+          title: 'VG1',
+          value: 'medieuttrykk_og_mediesamfunnet:vg1',
+        },
+        {
+          title: 'VG2',
+          value: 'medieuttrykk_og_mediesamfunnet:vg2',
+        },
+        {
+          title: 'VG3',
+          value: 'medieuttrykk_og_mediesamfunnet:vg3',
+        },
+      ],
+    },
+    {
+      title: 'Naturbruk',
+      value: 'subjects:naturbruk',
+      filterName: 'filter_subjects',
+      subjectFilters: [
+        {
+          title: 'VG1',
+          value: 'naturbruk:vg1',
+        },
+      ],
+    },
+  ],
+};
+
 export {
   topicResults,
   subjectMaterialResults,

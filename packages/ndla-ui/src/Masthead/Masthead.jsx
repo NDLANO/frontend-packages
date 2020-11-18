@@ -18,10 +18,11 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const MastheadItem = ({ children, className, left, right }) => {
+export const MastheadItem = ({ children, className, left, right, center }) => {
   const itemClassNames = classNames(
     { [classes('left').className]: left },
     { [classes('right').className]: right },
+    { [classes('center').className]: center },
     className,
   );
 
@@ -33,11 +34,13 @@ MastheadItem.propTypes = {
   className: PropTypes.string,
   right: PropTypes.bool,
   left: PropTypes.bool,
+  center: PropTypes.bool,
 };
 
 MastheadItem.defaultProps = {
   right: false,
   left: false,
+  center: false,
 };
 
 const MastheadInfo = ({ children }) => (

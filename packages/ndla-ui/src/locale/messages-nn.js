@@ -356,6 +356,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       other: 'Anna innhald',
+      concept: 'Forklaringar',
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i anna innhald',
@@ -411,6 +412,13 @@ const messages = {
       description:
         'Du finn retningslinjene for bruk av innhaldet i H5P-elementet.',
       rules: 'Reglar for bruk av H5P:',
+    },
+    concept: {
+      heading: 'Slik bruker du forklaringar frå artikkelen',
+      description:
+        'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
+      rules: 'Reglar for bruk av forklaring:',
+      title: 'Tittel',
     },
     files: {
       heading: 'Slik bruker du filer frå artikkelen',

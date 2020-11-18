@@ -414,10 +414,10 @@ const messages = {
       rules: 'Reglar for bruk av H5P:',
     },
     concept: {
-      heading: 'Slik bruker du forklaringer fra artikkelen',
+      heading: 'Slik bruker du forklaringar frå artikkelen',
       description:
-        'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
-      rules: 'Regler for bruk av forklaring:',
+        'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
+      rules: 'Reglar for bruk av forklaring:',
       title: 'Tittel',
     },
     files: {

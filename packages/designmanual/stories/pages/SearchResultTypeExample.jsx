@@ -105,6 +105,10 @@ const SearchPageDemo = ({ t }) => {
   const [currentSubjectType, setCurrentSubjectType] = useState(null);
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
   const [searchValue, setSearchValue] = useState('nunorsk');
+  const [searchPhrase, setSearchPhrase] = useState('nunorsk');
+  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(
+    'nynorsk',
+  );
   const [searchFilter, setSearchFilter] = useState([
     'subjects:bronnteknikk',
     'subjects:kinesisk',
@@ -218,6 +222,8 @@ const SearchPageDemo = ({ t }) => {
 
   const handleSearchSubmit = e => {
     e.preventDefault();
+    setSearchPhrase(searchValue);
+    setSearchPhraseSuggestion('');
   };
   const handleFilterRemove = value => {
     setSearchFilter(searchFilter.filter(option => option !== value));
@@ -313,8 +319,8 @@ const SearchPageDemo = ({ t }) => {
       <OneColumn cssModifier="clear-desktop" wide>
         <SearchHeader
           count={123}
-          searchPhrase={searchValue}
-          searchPhraseSuggestion="nynorsk"
+          searchPhrase={searchPhrase}
+          searchPhraseSuggestion={searchPhraseSuggestion}
           searchPhraseSuggestionOnClick={() =>
             console.log('search-phrase suggestion click')
           }

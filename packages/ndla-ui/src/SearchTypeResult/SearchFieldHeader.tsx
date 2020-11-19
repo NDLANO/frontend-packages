@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 // @ts-ignore
@@ -78,6 +78,8 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
   t,
 }) => {
   const [hasFocus, setHasFocus] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <StyledForm action="/search/" inputHasFocus={hasFocus} onSubmit={onSubmit}>
       <SearchButton tabIndex={2} type="submit" value={t('searchPage.search')}>
@@ -85,6 +87,7 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
       </SearchButton>
       {activeFilters && <ActiveFilters {...activeFilters} />}
       <SearchInput
+        ref={inputRef}
         tabIndex={1}
         type="search"
         autoComplete="off"
@@ -97,7 +100,15 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
       />
-      <ClearButton type="button" value={t('welcomePage.resetSearch')}>
+      <ClearButton
+        type="button"
+        value={t('welcomePage.resetSearch')}
+        onClick={() => {
+          onChange('');
+          if (inputRef && inputRef.current) {
+            inputRef.current.focus();
+          }
+        }}>
         <CrossIcon style={{ width: '24px', height: '24px' }} />
       </ClearButton>
       {filters && <PopupFilter {...filters} />}

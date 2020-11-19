@@ -10,6 +10,7 @@ import {
 
 import { FilterTabs } from '@ndla/tabs';
 import Pager from '@ndla/pager';
+import { injectT } from '@ndla/i18n';
 
 import {
   subjectTypeResults,
@@ -100,7 +101,7 @@ const resultsReducer = (state, action) => {
   }
 };
 
-const SearchPageDemo = () => {
+const SearchPageDemo = ({ t }) => {
   const [currentSubjectType, setCurrentSubjectType] = useState(null);
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
   const [searchValue, setSearchValue] = useState('nunorsk');
@@ -283,6 +284,18 @@ const SearchPageDemo = () => {
     }
   };
 
+  const filterProps = {
+    options: searchFilterOptions.subjects,
+    values: searchFilter,
+    onSubmit: setSearchFilter,
+    messages: {
+      filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
+      closeButton: t('searchPage.close'),
+      confirmButton: t('searchPage.searchFilterMessages.confirmButton'),
+      buttonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
+    },
+  };
+
   return (
     <>
       <MastheadWithTopicMenu hideSearchButton isSearchPage>
@@ -294,11 +307,7 @@ const SearchPageDemo = () => {
             filters: activeSubjectFilters,
             onFilterRemove: handleFilterRemove,
           }}
-          filters={{
-            options: searchFilterOptions.subjects,
-            values: searchFilter,
-            onSubmit: setSearchFilter,
-          }}
+          filters={filterProps}
         />
       </MastheadWithTopicMenu>
       <OneColumn cssModifier="clear-desktop" wide>
@@ -316,11 +325,7 @@ const SearchPageDemo = () => {
             filters: activeSubjectFilters,
             onFilterRemove: handleFilterRemove,
           }}
-          filters={{
-            options: searchFilterOptions.subjects,
-            values: searchFilter,
-            onSubmit: setSearchFilter,
-          }}
+          filters={filterProps}
         />
         <ResultResponse type={contentTypes.SUBJECT} />
         <FilterTabs
@@ -336,4 +341,4 @@ const SearchPageDemo = () => {
   );
 };
 
-export default SearchPageDemo;
+export default injectT(SearchPageDemo);

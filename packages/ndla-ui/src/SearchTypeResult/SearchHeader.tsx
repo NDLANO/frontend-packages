@@ -49,10 +49,14 @@ const SearchCountWrapper = styled.div`
   align-items: center;
 `;
 const CountHeading = styled.h2`
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 400;
   color: #303030;
   margin-top: 24px;
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    font-size: 24px;
+  }
 `;
 
 type Props = {

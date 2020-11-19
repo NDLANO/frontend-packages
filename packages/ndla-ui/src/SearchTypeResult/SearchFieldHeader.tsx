@@ -80,7 +80,7 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
   const [hasFocus, setHasFocus] = useState(false);
   return (
     <StyledForm action="/search/" inputHasFocus={hasFocus} onSubmit={onSubmit}>
-      <SearchButton tabIndex={2} type="submit" value="Search">
+      <SearchButton tabIndex={2} type="submit" value={t('searchPage.search')}>
         <SearchIcon style={{ width: '24px', height: '24px' }} />
       </SearchButton>
       {activeFilters && <ActiveFilters {...activeFilters} />}

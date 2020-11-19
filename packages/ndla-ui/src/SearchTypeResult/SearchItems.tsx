@@ -1,5 +1,14 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
+import { breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import Spinner from '../Spinner';
 // @ts-ignore
@@ -17,13 +26,35 @@ const Wrapper = styled.div`
 `;
 
 type ContainerProps = {
-  loading?: boolean;
+  itemCount: number;
 };
 
 const Container = styled.div<ContainerProps>`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  row-gap: 22px;
+  grid-template-columns: repeat(1, 1fr);
+  ${mq.range({ from: breakpoints.tablet })} {
+    column-gap: 22px;
+    ${props =>
+      props.itemCount > 1 &&
+      `
+        grid-template-columns: repeat(2, 1fr);
+      `}
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    ${props =>
+      props.itemCount > 2 &&
+      `
+        grid-template-columns: repeat(3, 1fr);
+      `}
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    ${props =>
+      props.itemCount > 3 &&
+      `
+        grid-template-columns: repeat(4, 1fr);
+      `}
+  }
 `;
 
 const Overlay = styled.div`
@@ -49,27 +80,23 @@ type Props = {
 };
 const SearchItems = ({ items, loading, type }: Props) => (
   <Wrapper>
-    <Container loading={loading}>
+    <Container itemCount={items.length}>
       {type === contentTypes.SUBJECT
-        ? items.map(item => {
-            return (
-              <SearchSubjectTypeItem
-                loading={loading}
-                item={item}
-                key={`${item.id}`}
-              />
-            );
-          })
-        : items.map((item: any) => {
-            return (
-              <SearchItem
-                loading={loading}
-                item={item}
-                key={`${item.id}`}
-                type={type}
-              />
-            );
-          })}
+        ? items.map(item => (
+            <SearchSubjectTypeItem
+              loading={loading}
+              item={item}
+              key={`${item.id}`}
+            />
+          ))
+        : items.map((item: any) => (
+            <SearchItem
+              loading={loading}
+              item={item}
+              key={`${item.id}`}
+              type={type}
+            />
+          ))}
     </Container>
     {loading && (
       <>

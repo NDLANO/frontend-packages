@@ -69,8 +69,6 @@ export {
 
 export {
   SearchTypeResult,
-  SearchTypeHeader,
-  SearchTypeTopicFilter,
   SearchHeader,
   SearchFieldHeader,
 } from './SearchTypeResult';

@@ -1,10 +1,18 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -20,43 +28,6 @@ type WrapperProps = {
 
 const ItemWrapper = styled.div<WrapperProps>`
   flex-direction: column;
-  margin: 16px 16px 20px;
-  ${mq.range({ from: breakpoints.mobile })} {
-    margin: 16px 0px 16px;
-  }
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin: 16px 16px 20px;
-    flex: 1 0 47%;
-    max-width: 48%;
-    &:nth-of-type(1n) {
-      margin-left: 0;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 0;
-      margin-left: 16px;
-    }
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    flex: 1 0 21%;
-    max-width: 252px;
-    &:nth-of-type(1n) {
-      margin-left: 16px;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 16px;
-    }
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:nth-of-type(4n) {
-      margin-right: 0;
-    }
-    &:nth-of-type(4n + 5) {
-      margin-left: 0px;
-    }
-  }
-
   ${props =>
     props.loading &&
     `
@@ -118,19 +89,18 @@ const ItemIcon = styled.div<ItemIconProps>`
 
 const ItemPillWrapper = styled.div`
   margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4px;
+  row-gap: 4px;
 `;
 const ItemPill = styled.div`
-  margin: 4px 4px 4px 0;
   display: inline-block;
   background: ${colors.brand.greyLightest};
-  margin-right: ${spacing.small};
-  padding: 0 ${spacing.xxsmall};
+  padding: 2px 4px;
   border-radius: 2px;
   ${fonts.sizes('12px', '20px')};
   font-weight: ${fonts.weight.semibold};
-`;
-const ItemContent = styled.div`
-  /* flex-grow: 1; */
 `;
 
 const ItemTitle = styled.h3`
@@ -144,9 +114,15 @@ const ItemText = styled.p`
   margin-bottom: 16px;
 `;
 const BreadcrumbPath = styled.div`
-  color: #ccc;
+  color: ${colors.text.light};
   font-size: 14px;
   line-height: 20px;
+`;
+
+const BreadcrumbItem = styled.span`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 export type SearchItemType = {
@@ -184,30 +160,28 @@ const SearchItem = ({ item, loading, type }: Props) => {
             </SafeLink>
           )}
         </ItemHead>
-        <ItemContent>
-          <ItemTitle>
-            <SafeLink to={url}>{title}</SafeLink>
-            {labels.length > 0 && (
-              <ItemPillWrapper>
-                {labels.map(label => (
-                  <ItemPill key={label}>{label}</ItemPill>
-                ))}
-              </ItemPillWrapper>
-            )}
-          </ItemTitle>
-          <ItemText>{ingress}</ItemText>
-          <BreadcrumbPath>
-            {breadcrumb &&
-              breadcrumb.map((breadcrumbItem: string, i: number) => {
-                return (
-                  <span key={`${breadcrumbItem}-${item.id}`}>
-                    <span>{breadcrumbItem}</span>
-                    {i !== breadcrumb.length - 1 && <ChevronRight />}
-                  </span>
-                );
-              })}
-          </BreadcrumbPath>
-        </ItemContent>
+        {labels.length > 0 && (
+          <ItemPillWrapper>
+            {labels.map(label => (
+              <ItemPill key={label}>{label}</ItemPill>
+            ))}
+          </ItemPillWrapper>
+        )}
+        <ItemTitle>
+          <SafeLink to={url}>{title}</SafeLink>
+        </ItemTitle>
+        <ItemText>{ingress}</ItemText>
+        <BreadcrumbPath>
+          {breadcrumb &&
+            breadcrumb.map((breadcrumbItem: string, i: number) => {
+              return (
+                <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
+                  <span>{breadcrumbItem}</span>
+                  {i !== breadcrumb.length - 1 && <ChevronRight />}
+                </BreadcrumbItem>
+              );
+            })}
+        </BreadcrumbPath>
       </ItemWrapper>
     </>
   );

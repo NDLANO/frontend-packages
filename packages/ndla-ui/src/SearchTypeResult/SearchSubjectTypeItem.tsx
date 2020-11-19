@@ -1,8 +1,15 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import SafeLink from '@ndla/safelink';
-import { breakpoints, mq } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 
 type WrapperProps = {
@@ -26,59 +33,12 @@ const ItemWrapper = styled.div<WrapperProps>`
     background-size: auto 100px;
   `}
 
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    flex: 1 0 100%;
-    max-width: none;
-    margin-bottom: 16px;
-    &:nth-of-type(odd) {
-      margin-right: 0px;
-    }
-    &:nth-of-type(even) {
-      margin-left: 0px;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 0;
-    }
-  }
-
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    flex: 1 0 48%;
-    max-width: 48%;
-    margin-bottom: 16px;
-    &:nth-of-type(odd) {
-      margin-right: 8px;
-    }
-    &:nth-of-type(even) {
-      margin-left: 8px;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 0;
-    }
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    margin-bottom: 32px;
-    &:nth-of-type(odd) {
-      margin-right: 16px;
-    }
-    &:nth-of-type(even) {
-      margin-left: 16px;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 0;
-    }
-  }
-
   ${props =>
     props.loading &&
     `
     opacity: 0.6;
     z-index: 0;
   `}
-`;
-
-const ItemContent = styled.div`
-  /* flex-grow: 1; */
 `;
 
 const ItemTitle = styled.h2`
@@ -110,14 +70,12 @@ const SearchSubjectTypeItem = ({ item, loading = false, t }: Props & tType) => {
   return (
     <>
       <ItemWrapper loading={loading} backgroundImage={img ? img.url : ''}>
-        <ItemContent>
-          <ItemTitle>{title}</ItemTitle>
-          <ItemText>
-            <SafeLink to={url}>
-              {t('searchPage.resultType.toSubjectPageLabel')}
-            </SafeLink>
-          </ItemText>
-        </ItemContent>
+        <ItemTitle>{title}</ItemTitle>
+        <ItemText>
+          <SafeLink to={url}>
+            {t('searchPage.resultType.toSubjectPageLabel')}
+          </SafeLink>
+        </ItemText>
       </ItemWrapper>
     </>
   );

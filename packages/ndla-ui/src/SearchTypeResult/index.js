@@ -7,15 +7,7 @@
  */
 
 import SearchTypeResult from './SearchTypeResult';
-import SearchTypeHeader from './SearchTypeHeader';
-import SearchTypeTopicFilter from './SearchTypeTopicFilter';
 import SearchHeader from './SearchHeader';
 import SearchFieldHeader from './SearchFieldHeader';
 
-export {
-  SearchTypeResult,
-  SearchTypeHeader,
-  SearchTypeTopicFilter,
-  SearchHeader,
-  SearchFieldHeader,
-};
+export { SearchTypeResult, SearchHeader, SearchFieldHeader };

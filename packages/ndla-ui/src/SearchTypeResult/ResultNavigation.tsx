@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
@@ -9,7 +17,7 @@ import { injectT, tType } from '@ndla/i18n';
 const ResultNav = styled.div`
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 24px;
+  margin: 24px 0;
   button.nav {
     margin-right: 8px;
     font-size: 18px;

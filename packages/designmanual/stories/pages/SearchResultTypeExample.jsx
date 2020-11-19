@@ -46,7 +46,7 @@ const responseDataSource = [
 const searchResults = [...responseDataSource, subjectDataSource];
 const initialTypeFilter = {};
 searchResults.forEach(item => {
-  const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
+  const pageSize = item.type === contentTypes.SUBJECT ? 10 : 4;
   const filters = [];
   if (searchTypeFilterOptions[item.type].length) {
     filters.push({ id: 'all', name: 'Alle', active: true });

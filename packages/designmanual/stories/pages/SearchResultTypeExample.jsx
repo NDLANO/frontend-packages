@@ -4,6 +4,7 @@ import {
   SearchTypeResult,
   SearchHeader,
   SearchFieldHeader,
+  SearchNotionsResult,
   constants,
   OneColumn,
 } from '@ndla/ui';
@@ -18,6 +19,7 @@ import {
   searchTypeFilterOptions,
   searchSubjectTypeOptions,
   topicResults,
+  notionResults,
 } from '../../dummydata/mockSearchResultType';
 import { searchFilterOptions } from '../../dummydata';
 import MastheadWithTopicMenu from '../molecules/mastheads';
@@ -103,6 +105,7 @@ const resultsReducer = (state, action) => {
 
 const SearchPageDemo = ({ t }) => {
   const [currentSubjectType, setCurrentSubjectType] = useState(null);
+  const [hideNotionsResult, setHideNotionsResult] = useState(false);
   const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
   const [searchValue, setSearchValue] = useState('nunorsk');
   const [searchPhrase, setSearchPhrase] = useState('nunorsk');
@@ -333,6 +336,16 @@ const SearchPageDemo = ({ t }) => {
           }}
           filters={filterProps}
         />
+        {!hideNotionsResult && (
+          <SearchNotionsResult
+            items={notionResults}
+            totalCount={notionResults.length}
+            onRemove={() => {
+              setHideNotionsResult(true);
+            }}
+          />
+        )}
+
         <ResultResponse type={contentTypes.SUBJECT} />
         <FilterTabs
           dropdownBtnLabel="Velg"

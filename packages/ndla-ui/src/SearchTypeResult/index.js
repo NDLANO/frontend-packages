@@ -9,5 +9,11 @@
 import SearchTypeResult from './SearchTypeResult';
 import SearchHeader from './SearchHeader';
 import SearchFieldHeader from './SearchFieldHeader';
+import SearchNotionsResult from './SearchNotionsResult';
 
-export { SearchTypeResult, SearchHeader, SearchFieldHeader };
+export {
+  SearchTypeResult,
+  SearchHeader,
+  SearchFieldHeader,
+  SearchNotionsResult,
+};

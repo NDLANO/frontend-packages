@@ -27,6 +27,7 @@ const Wrapper = styled.div`
 
 type ContainerProps = {
   itemCount: number;
+  type: string;
 };
 
 const Container = styled.div<ContainerProps>`
@@ -36,21 +37,21 @@ const Container = styled.div<ContainerProps>`
   ${mq.range({ from: breakpoints.tablet })} {
     column-gap: 22px;
     ${props =>
-      props.itemCount > 1 &&
+      (props.itemCount > 1 || props.type !== contentTypes.SUBJECT) &&
       `
         grid-template-columns: repeat(2, 1fr);
       `}
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     ${props =>
-      props.itemCount > 2 &&
+      (props.itemCount > 2 || props.type !== contentTypes.SUBJECT) &&
       `
         grid-template-columns: repeat(3, 1fr);
       `}
   }
   ${mq.range({ from: breakpoints.desktop })} {
     ${props =>
-      props.itemCount > 3 &&
+      (props.itemCount > 3 || props.type !== contentTypes.SUBJECT) &&
       `
         grid-template-columns: repeat(4, 1fr);
       `}
@@ -80,7 +81,7 @@ type Props = {
 };
 const SearchItems = ({ items, loading, type }: Props) => (
   <Wrapper>
-    <Container itemCount={items.length}>
+    <Container itemCount={items.length} type={type}>
       {type === contentTypes.SUBJECT
         ? items.map(item => (
             <SearchSubjectTypeItem

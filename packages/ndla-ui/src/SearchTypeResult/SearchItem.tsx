@@ -120,7 +120,7 @@ const BreadcrumbPath = styled.div`
 `;
 
 const BreadcrumbItem = styled.span`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
 `;

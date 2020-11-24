@@ -32,6 +32,7 @@ import 'prismjs/components/prism-rust';
 import 'prismjs/components/prism-sql';
 import 'prismjs/components/prism-powershell';
 import 'prismjs/components/prism-vhdl';
+import 'prismjs/components/prism-bash';
 
 export interface ICodeLangugeOption {
   title: string;
@@ -39,6 +40,10 @@ export interface ICodeLangugeOption {
 }
 
 export const languageOptions: Array<ICodeLangugeOption> = [
+  {
+    title: 'Bash',
+    format: 'bash',
+  },
   {
     title: 'C',
     format: 'c',

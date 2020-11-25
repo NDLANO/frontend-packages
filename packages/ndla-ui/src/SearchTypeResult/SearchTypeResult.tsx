@@ -13,7 +13,6 @@ import constants from '../model';
 import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
 import SearchItems from './SearchItems';
 import { SearchItemType } from './SearchItem';
-import { SearchSubjectTypeItemType } from './SearchSubjectTypeItem';
 import ResultNavigation, { PaginationType } from './ResultNavigation';
 
 const Wrapper = styled.div`
@@ -24,7 +23,6 @@ const Wrapper = styled.div`
 `;
 
 export type ContentType =
-  | constants.contentTypes.SUBJECT
   | constants.contentTypes.SUBJECT_MATERIAL
   | constants.contentTypes.TASKS_AND_ACTIVITIES
   | constants.contentTypes.ASSESSMENT_RESOURCES
@@ -34,8 +32,8 @@ export type ContentType =
   | constants.contentTypes.TOPIC;
 
 type Props = {
-  items: Array<SearchItemType | SearchSubjectTypeItemType>;
-  filters: Array<FilterOptionsType>;
+  items: SearchItemType[];
+  filters: FilterOptionsType[];
   onFilterClick: (id: string) => void;
   loading?: boolean;
   totalCount?: number;

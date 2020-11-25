@@ -130,7 +130,7 @@ export type SearchItemType = {
   title: string;
   url: string;
   ingress: string;
-  breadcrumb: Array<string>;
+  breadcrumb: string[];
   image: React.ReactNode | null;
   img?: { url: string; alt: string };
   labels?: string[];

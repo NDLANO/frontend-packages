@@ -10,6 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { injectT, tType } from '@ndla/i18n';
 
 type ItemWrapperProps = {
   hasMedia?: boolean;
@@ -83,7 +84,8 @@ const SearchNotionItem = ({
   image,
   media,
   labels = [],
-}: SearchNotionItemProps) => {
+  t,
+}: SearchNotionItemProps & tType) => {
   const hasMedia = !!(image || media);
   return (
     <ItemWrapper hasMedia={hasMedia}>
@@ -93,9 +95,11 @@ const SearchNotionItem = ({
         </DescriptionWrapper>
         {labels.length > 0 && (
           <LabelsWrapper>
-            <LabelsLabel>Brukes i:</LabelsLabel>
+            <LabelsLabel>
+              {t('searchPage.resultType.notionLabels')}:
+            </LabelsLabel>
             {labels.map(label => (
-              <Label>{label}</Label>
+              <Label key={label}>{label}</Label>
             ))}
           </LabelsWrapper>
         )}
@@ -110,4 +114,4 @@ const SearchNotionItem = ({
   );
 };
 
-export default SearchNotionItem;
+export default injectT(SearchNotionItem);

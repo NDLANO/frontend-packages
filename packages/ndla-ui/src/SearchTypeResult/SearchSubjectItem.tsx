@@ -54,17 +54,17 @@ const ItemText = styled.span`
   }
 `;
 
-export type SearchSubjectTypeItemType = {
+export type SearchSubjecItemType = {
   id: string;
   title: string;
   url: string;
   img?: { url: string };
 };
 type Props = {
-  item: SearchSubjectTypeItemType;
+  item: SearchSubjecItemType;
   loading?: boolean;
 };
-const SearchSubjectTypeItem = ({ item, loading = false, t }: Props & tType) => {
+const SearchSubjectItem = ({ item, loading = false, t }: Props & tType) => {
   const { title, url, img = null } = item; // img = null
 
   return (
@@ -81,4 +81,4 @@ const SearchSubjectTypeItem = ({ item, loading = false, t }: Props & tType) => {
   );
 };
 
-export default injectT(SearchSubjectTypeItem);
+export default injectT(SearchSubjectItem);

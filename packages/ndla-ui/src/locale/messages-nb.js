@@ -114,9 +114,10 @@ const messages = {
       showAll: 'Vis alle',
       toSubjectPageLabel: 'Gå til fagsiden',
       all: 'Alle',
-      hits: 'treff',
-      showingSearchPhrase: 'Du søkte på:',
-      searchPhraseSuggestion: 'Vis heller treff for:',
+      hits: '{count} Treff',
+      showingSearchPhrase: 'Viser resultater for',
+      searchPhraseSuggestion: 'Søk i stedet for',
+      notionLabels: 'Brukes i',
     },
   },
   subjectPage: {

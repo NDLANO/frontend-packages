@@ -10,10 +10,12 @@ import SearchTypeResult from './SearchTypeResult';
 import SearchHeader from './SearchHeader';
 import SearchFieldHeader from './SearchFieldHeader';
 import SearchNotionsResult from './SearchNotionsResult';
+import SearchSubjectResult from './SearchSubjectResult';
 
 export {
   SearchTypeResult,
   SearchHeader,
   SearchFieldHeader,
   SearchNotionsResult,
+  SearchSubjectResult,
 };

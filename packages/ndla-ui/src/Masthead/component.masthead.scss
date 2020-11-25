@@ -170,12 +170,6 @@
       text-align: left;
     }
   }
-  &__left.search-page-header {
-    flex-grow: 0;
-    @include mq(ultraWide) {
-      width: 340px;
-    }
-  }
 
   &__right {
     display: flex;
@@ -185,21 +179,6 @@
     @include mq(tablet) {
       padding: $spacing--small 0;
       padding: 0;
-    }
-  }
-  &__right.search-page-header {
-    @include mq(ultraWide) {
-      width: 340px;
-    }
-  }
-  &__center.search-page-header {
-    display: none;
-    @include mq(wide) {
-      margin: 0 24px;
-      flex-grow: 1;
-      max-width: 1098px;
-      width: 100%;
-      display: block;
     }
   }
 }

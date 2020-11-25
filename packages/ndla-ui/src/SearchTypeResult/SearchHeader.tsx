@@ -25,18 +25,14 @@ const Wrapper = styled.div`
 `;
 
 const SearchInputWrapper = styled.div`
-  display: none;
-  ${mq.range({ until: breakpoints.wide })} {
-    display: block;
-    margin-bottom: 24px;
-  }
+  margin-bottom: 24px;
 `;
 
 const PhraseWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-size: 16px;
-  margin-bottom: 24px;
+  margin: 24px 0 38px;
 `;
 
 const PhraseText = styled.div`
@@ -51,24 +47,13 @@ const HideOnDesktopWrapper = styled.div`
   }
 `;
 
-const SearchCountWrapper = styled.div`
+const SearchFilterWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-const CountHeading = styled.h2`
-  font-size: 18px;
-  font-weight: 400;
-  color: #303030;
-  margin-top: 24px;
-
-  ${mq.range({ from: breakpoints.tablet })} {
-    font-size: 24px;
-  }
-`;
 
 type Props = {
-  count: number;
   searchPhrase?: string;
   searchPhraseSuggestion?: string;
   searchPhraseSuggestionOnClick?: () => void;
@@ -83,7 +68,6 @@ type Props = {
 };
 
 const SearchHeader = ({
-  count,
   searchPhrase,
   searchPhraseSuggestion,
   searchPhraseSuggestionOnClick,
@@ -100,6 +84,8 @@ const SearchHeader = ({
         value={searchValue}
         onChange={onSearchValueChange}
         onSubmit={onSubmit}
+        activeFilters={activeFilters}
+        filters={filters}
       />
     </SearchInputWrapper>
     <PhraseWrapper>
@@ -122,16 +108,13 @@ const SearchHeader = ({
         <ActiveFilters {...activeFilters} showOnSmallScreen />
       </HideOnDesktopWrapper>
     )}
-    <SearchCountWrapper>
-      <CountHeading>
-        {count} {t('searchPage.resultType.hits')}
-      </CountHeading>
+    <SearchFilterWrapper>
       {filters && (
         <HideOnDesktopWrapper>
           <PopupFilter {...filters} />
         </HideOnDesktopWrapper>
       )}
-    </SearchCountWrapper>
+    </SearchFilterWrapper>
   </Wrapper>
 );
 

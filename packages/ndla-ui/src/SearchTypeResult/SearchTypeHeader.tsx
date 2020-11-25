@@ -35,11 +35,15 @@ const TypeWrapper = styled.div`
 `;
 
 const SubjectName = styled.span`
-  font-size: 16px;
+  font-size: 18px;
   margin: 2px 16px;
   b {
     font-size: 18px;
   }
+`;
+
+const Count = styled.span`
+  margin-left: 4px;
 `;
 
 const CategoryTypeButtonWrapper = styled.div`
@@ -66,7 +70,7 @@ export type FilterOptionsType = {
 };
 
 type Props = {
-  filters: Array<FilterOptionsType>;
+  filters: FilterOptionsType[];
   onFilterClick: (id: string) => void;
   loading: boolean;
   totalCount: number;
@@ -85,7 +89,11 @@ const SearchTypeHeader = ({
       {type && <ContentTypeBadge type={type} background size="large" />}
       <SubjectName>
         {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
-        {totalCount ? `(${totalCount})` : null}
+        {totalCount && (
+          <Count>
+            {t(`searchPage.resultType.hits`, { count: totalCount })}
+          </Count>
+        )}
       </SubjectName>
     </TypeWrapper>
     {filters && (

@@ -3,8 +3,8 @@ import React, { Fragment, useState } from 'react';
 import {
   SearchTypeResult,
   SearchHeader,
-  SearchFieldHeader,
   SearchNotionsResult,
+  SearchSubjectResult,
   constants,
   OneColumn,
 } from '@ndla/ui';
@@ -22,7 +22,6 @@ import {
   notionResults,
 } from '../../dummydata/mockSearchResultType';
 import { searchFilterOptions } from '../../dummydata';
-import MastheadWithTopicMenu from '../molecules/mastheads';
 
 const { contentTypes } = constants;
 
@@ -307,21 +306,8 @@ const SearchPageDemo = ({ t }) => {
 
   return (
     <>
-      <MastheadWithTopicMenu hideSearchButton isSearchPage>
-        <SearchFieldHeader
-          value={searchValue}
-          onChange={value => setSearchValue(value)}
-          onSubmit={handleSearchSubmit}
-          activeFilters={{
-            filters: activeSubjectFilters,
-            onFilterRemove: handleFilterRemove,
-          }}
-          filters={filterProps}
-        />
-      </MastheadWithTopicMenu>
       <OneColumn cssModifier="clear-desktop" wide>
         <SearchHeader
-          count={123}
           searchPhrase={searchPhrase}
           searchPhraseSuggestion={searchPhraseSuggestion}
           searchPhraseSuggestionOnClick={() =>
@@ -345,8 +331,7 @@ const SearchPageDemo = ({ t }) => {
             }}
           />
         )}
-
-        <ResultResponse type={contentTypes.SUBJECT} />
+        <SearchSubjectResult items={subjectDataSource.items} />
         <FilterTabs
           dropdownBtnLabel="Velg"
           value={currentSubjectType ? currentSubjectType : 'ALL'}

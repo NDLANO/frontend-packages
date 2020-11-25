@@ -72,6 +72,7 @@ export {
   SearchHeader,
   SearchFieldHeader,
   SearchNotionsResult,
+  SearchSubjectResult,
 } from './SearchTypeResult';
 
 export {

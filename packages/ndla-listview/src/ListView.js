@@ -150,6 +150,12 @@ const inputStyle = css`
   @include ${fonts.sizes(16, 20)};
 `;
 
+const CountWrapper = styled.h2`
+  margin: 24px 0;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
 const categoryShape = PropTypes.shape({
   title: PropTypes.string,
   value: PropTypes.string,
@@ -192,6 +198,7 @@ const ListView = ({
   alphabet,
   onSelectItem,
   selectedItem,
+  totalCount,
   renderMarkdown = text => {
     return text;
   },
@@ -282,6 +289,7 @@ const ListView = ({
         </ul>
       ) : null}
     </div>
+    <CountWrapper>{t('listview.hits', { count: totalCount })}</CountWrapper>
     <div className={'content-wrapper'}>
       <div className={`content ${viewStyle}`}>
         {items.map(item => (
@@ -347,6 +355,7 @@ ListView.propTypes = {
   onSelectItem: PropTypes.func.isRequired,
   selectedItem: PropTypes.node,
   renderMarkdown: PropTypes.func.isRequired,
+  totalCount: PropTypes.number.isRequired,
   t: PropTypes.func.isRequired,
 };
 

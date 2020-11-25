@@ -479,6 +479,7 @@ const ExplanationService = ({ t }) => {
           selectedItem={renderSelectedItem()}
           filters={getFilters()}
           renderMarkdown={renderMarkdown}
+          totalCount={filteredItems.length}
         />
       </div>
     </>

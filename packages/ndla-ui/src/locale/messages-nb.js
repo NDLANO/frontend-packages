@@ -559,6 +559,7 @@ const messages = {
     relatedLinks: {
       label: 'Tilknyttede artikler',
     },
+    hits: '{count} treff',
   },
   notions: {
     closeNotion: 'Lukk',

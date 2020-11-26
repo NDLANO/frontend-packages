@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { fonts, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
+import { injectT, tType } from '@ndla/i18n';
 import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
 const Wrapper = styled.div`
@@ -42,7 +43,7 @@ const Heading = styled.h2`
 const HeadingCount = styled.span`
   font-weight: 400;
   margin-left: 10px;
-  text-transform: initial;
+  text-transform: lowercase;
 `;
 
 const ButtonRemoveText = styled.span`
@@ -55,14 +56,24 @@ type Props = {
   onRemove: () => void;
 };
 
-const SearchNotionsResult = ({ items, totalCount, onRemove }: Props) => (
+const SearchNotionsResult = ({
+  items,
+  totalCount,
+  onRemove,
+  t,
+}: Props & tType) => (
   <Wrapper>
     <HeadingWrapper>
       <Heading>
-        Begrepsforklaring<HeadingCount>{totalCount} treff</HeadingCount>
+        {t(`searchPage.resultType.notionsHeading`)}
+        <HeadingCount>
+          {t(`searchPage.resultType.hits`, { count: totalCount })}
+        </HeadingCount>
       </Heading>
       <Button onClick={onRemove} link>
-        <ButtonRemoveText>Fjern</ButtonRemoveText>
+        <ButtonRemoveText>
+          {t(`searchPage.resultType.notionsRemove`)}
+        </ButtonRemoveText>
       </Button>
     </HeadingWrapper>
     {items.map(item => (
@@ -71,4 +82,4 @@ const SearchNotionsResult = ({ items, totalCount, onRemove }: Props) => (
   </Wrapper>
 );
 
-export default SearchNotionsResult;
+export default injectT(SearchNotionsResult);

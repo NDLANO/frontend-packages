@@ -119,6 +119,8 @@ const messages = {
       showingSearchPhrase: 'Viser resultat for',
       searchPhraseSuggestion: 'Søk i staden for',
       notionLabels: 'Brukes i',
+      notionsHeading: 'Begrepsforklaring',
+      notionsRemove: 'Fjern',
     },
   },
   subjectPage: {

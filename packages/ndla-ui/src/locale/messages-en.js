@@ -119,6 +119,8 @@ const messages = {
       showingSearchPhrase: 'Showing results for:',
       searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
+      notionsHeading: 'Begrepsforklaring',
+      notionsRemove: 'Remove',
     },
   },
 

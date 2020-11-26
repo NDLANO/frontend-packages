@@ -118,6 +118,8 @@ const messages = {
       showingSearchPhrase: 'Viser resultater for',
       searchPhraseSuggestion: 'Søk i stedet for',
       notionLabels: 'Brukes i',
+      notionsHeading: 'Begrepsforklaring',
+      notionsRemove: 'Fjern',
     },
   },
   subjectPage: {

@@ -72,14 +72,12 @@ export type FilterOptionsType = {
 type Props = {
   filters: FilterOptionsType[];
   onFilterClick: (id: string) => void;
-  loading: boolean;
   totalCount: number;
   type?: ContentType;
 };
 const SearchTypeHeader = ({
   filters,
   onFilterClick,
-  loading,
   totalCount,
   type,
   t,
@@ -103,7 +101,6 @@ const SearchTypeHeader = ({
             <Button
               size="small"
               lighter={!option.active}
-              disabled={loading}
               onClick={() => onFilterClick(option.id)}>
               {option.name}
             </Button>

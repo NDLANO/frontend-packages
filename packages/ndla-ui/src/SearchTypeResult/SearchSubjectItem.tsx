@@ -12,12 +12,11 @@ import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { injectT, tType } from '@ndla/i18n';
 
-type WrapperProps = {
-  loading?: boolean;
+type ItemWrapperProps = {
   backgroundImage?: string;
 };
 
-const ItemWrapper = styled.div<WrapperProps>`
+const ItemWrapper = styled.div<ItemWrapperProps>`
   background: #deebf6;
   padding: 20px 30px;
   border-radius: 5px;
@@ -31,13 +30,6 @@ const ItemWrapper = styled.div<WrapperProps>`
     background-position-y: 100%;
     background-position-x: 100%;
     background-size: auto 100px;
-  `}
-
-  ${props =>
-    props.loading &&
-    `
-    opacity: 0.6;
-    z-index: 0;
   `}
 `;
 
@@ -62,14 +54,13 @@ export type SearchSubjecItemType = {
 };
 type Props = {
   item: SearchSubjecItemType;
-  loading?: boolean;
 };
-const SearchSubjectItem = ({ item, loading = false, t }: Props & tType) => {
+const SearchSubjectItem = ({ item, t }: Props & tType) => {
   const { title, url, img = null } = item; // img = null
 
   return (
     <>
-      <ItemWrapper loading={loading} backgroundImage={img ? img.url : ''}>
+      <ItemWrapper backgroundImage={img ? img.url : ''}>
         <ItemTitle>{title}</ItemTitle>
         <ItemText>
           <SafeLink to={url}>

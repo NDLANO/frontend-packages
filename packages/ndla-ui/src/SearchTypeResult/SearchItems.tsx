@@ -9,8 +9,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
-// @ts-ignore
-import Spinner from '../Spinner';
 import SearchItem, { SearchItemType } from './SearchItem';
 import { ContentType } from './SearchTypeResult';
 
@@ -40,46 +38,17 @@ const Container = styled.div<ContainerProps>`
   }
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: -1%;
-  right: 0;
-  bottom: 0;
-  width: 102%;
-  background-color: rgb(204, 204, 204, 0.1);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 10px;
-`;
-
 type Props = {
   items: SearchItemType[];
-  loading: boolean;
   type: ContentType;
 };
-const SearchItems = ({ items, loading, type }: Props) => (
+const SearchItems = ({ items, type }: Props) => (
   <Wrapper>
     <Container itemCount={items.length} type={type}>
       {items.map((item: any) => (
-        <SearchItem
-          loading={loading}
-          item={item}
-          key={`${item.id}`}
-          type={type}
-        />
+        <SearchItem item={item} key={`${item.id}`} type={type} />
       ))}
     </Container>
-    {loading && (
-      <>
-        <Overlay>
-          <Spinner />
-        </Overlay>
-      </>
-    )}
   </Wrapper>
 );
 

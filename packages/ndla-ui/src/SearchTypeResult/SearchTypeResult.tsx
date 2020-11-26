@@ -35,7 +35,6 @@ type Props = {
   items: SearchItemType[];
   filters: FilterOptionsType[];
   onFilterClick: (id: string) => void;
-  loading?: boolean;
   totalCount?: number;
   pagination?: PaginationType;
   type?: ContentType;
@@ -46,7 +45,6 @@ const SearchTypeResult = ({
   items,
   filters,
   onFilterClick,
-  loading = false,
   totalCount = 0,
   pagination,
   type,
@@ -56,11 +54,10 @@ const SearchTypeResult = ({
     <SearchTypeHeader
       onFilterClick={onFilterClick}
       filters={filters}
-      loading={loading}
       totalCount={totalCount}
       type={type}
     />
-    <SearchItems items={items} type={type} loading={loading} />
+    <SearchItems items={items} type={type} />
     {pagination && <ResultNavigation {...pagination} />}
     {children && children}
   </Wrapper>

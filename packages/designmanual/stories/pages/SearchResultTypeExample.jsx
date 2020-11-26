@@ -55,7 +55,6 @@ searchResults.forEach(item => {
   initialTypeFilter[item.type] = {
     filters: filters,
     page: 1,
-    loading: false,
     pageSize,
   };
 });
@@ -77,7 +76,6 @@ const resultsReducer = (state, action) => {
         if (contextItem.type === action.context) {
           return {
             ...contextItem,
-            loading: true,
           };
         } else {
           return contextItem;
@@ -90,7 +88,6 @@ const resultsReducer = (state, action) => {
             ...contextItem,
             // append new items
             items: action.results.items,
-            loading: false,
           };
         } else {
           return contextItem;
@@ -132,7 +129,7 @@ const SearchPageDemo = ({ t }) => {
     const mockDataRes = [
       ...searchResults[subjectTypeIndex].items.slice(fromIndex, toIndex),
     ];
-    await delay(500);
+    await delay(5000);
     cb(mockDataRes);
   };
 
@@ -258,7 +255,6 @@ const SearchPageDemo = ({ t }) => {
           filters={typeFilter[type].filters}
           onFilterClick={id => handleFilterClick(type, id)}
           items={items}
-          loading={data.loading}
           type={type}
           totalCount={totalCount}
           pagination={pagination}>

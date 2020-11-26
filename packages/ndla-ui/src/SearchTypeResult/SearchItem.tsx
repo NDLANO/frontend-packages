@@ -22,18 +22,8 @@ import ContentTypeBadge from '../ContentTypeBadge';
 
 const { contentTypes } = constants;
 
-type WrapperProps = {
-  loading?: boolean;
-};
-
-const ItemWrapper = styled.div<WrapperProps>`
+const ItemWrapper = styled.div`
   flex-direction: column;
-  ${props =>
-    props.loading &&
-    `
-    opacity: 0.6;
-    z-index: 0;
-  `}
 `;
 
 const ItemHead = styled.div`
@@ -137,14 +127,13 @@ export type SearchItemType = {
 };
 type Props = {
   item: SearchItemType;
-  loading: boolean;
   type?: ContentType;
 };
-const SearchItem = ({ item, loading, type }: Props) => {
+const SearchItem = ({ item, type }: Props) => {
   const { title, url, ingress, breadcrumb, img = null, labels = [] } = item;
   return (
     <>
-      <ItemWrapper loading={loading}>
+      <ItemWrapper>
         <ItemHead>
           {img ? (
             <SafeLink to={url}>

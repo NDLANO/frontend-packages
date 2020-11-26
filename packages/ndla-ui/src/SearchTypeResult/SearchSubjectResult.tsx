@@ -45,13 +45,12 @@ const Container = styled.div<ContainerProps>`
 
 type Props = {
   items: SearchSubjecItemType[];
-  loading?: boolean;
 };
 
-const SearchSubjectResult = ({ items, loading = false }: Props) => (
+const SearchSubjectResult = ({ items }: Props) => (
   <Container itemCount={items.length}>
     {items.map(item => (
-      <SearchSubjectItem loading={loading} item={item} key={`${item.id}`} />
+      <SearchSubjectItem item={item} key={`${item.id}`} />
     ))}
   </Container>
 );

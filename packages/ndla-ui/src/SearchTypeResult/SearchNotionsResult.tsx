@@ -53,7 +53,6 @@ type Props = {
   items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
-  loading?: boolean;
 };
 
 const SearchNotionsResult = ({ items, totalCount, onRemove }: Props) => (

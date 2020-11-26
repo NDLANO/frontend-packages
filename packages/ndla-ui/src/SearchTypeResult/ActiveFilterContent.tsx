@@ -38,7 +38,7 @@ const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & tType) => (
       filterName: filter.title,
     })}
     type="button"
-    size="medium"
+    size="normal"
     lighter
     onClick={() => onFilterRemove(filter.value, filter.name)}>
     <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>

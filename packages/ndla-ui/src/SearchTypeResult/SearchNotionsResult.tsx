@@ -36,11 +36,13 @@ const HeadingWrapper = styled.div`
 const Heading = styled.h2`
   margin: 0;
   ${fonts.sizes('20px', '45px')};
+  text-transform: uppercase;
 `;
 
 const HeadingCount = styled.span`
   font-weight: 400;
   margin-left: 10px;
+  text-transform: initial;
 `;
 
 const ButtonRemoveText = styled.span`

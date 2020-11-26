@@ -42,15 +42,13 @@ const PhraseSuggestionText = styled.div``;
 
 const HideOnDesktopWrapper = styled.div`
   display: none;
-  ${mq.range({ until: breakpoints.wide })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     display: block;
   }
 `;
 
 const SearchFilterWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 18px 0 32px;
 `;
 
 type Props = {

@@ -25,23 +25,32 @@ type StyledActiveFiltersProps = {
 const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
   margin: 0;
   padding: 0;
-  flex-direction: column;
-  align-items: stretch;
-  flex-wrap: wrap;
   display: none;
 
   ${({ showOnSmallScreen }) =>
     showOnSmallScreen &&
-    css`
-      ${mq.range({ until: breakpoints.desktop })} {
+    `
+    ${mq.range({ until: breakpoints.desktop })} {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 4px;
+        column-gap: 4px;
+      }
+    ${mq.range({ until: breakpoints.tablet })} {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: wrap;
+        row-gap: 4px;
       }
     `}
 
-  ${mq.range({ from: breakpoints.tabletWide })} {
+  ${mq.range({ from: breakpoints.desktop })} {
     display: flex;
     flex-direction: row;
     align-items: center;
+    column-gap: 10px;
 
     ${StyledActiveFilterTitle} {
       ${({ filterLength }) =>
@@ -74,10 +83,9 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
 const StyledActiveFilterWrapper = styled.li`
   list-style: none;
   display: flex;
-  margin-bottom: ${spacing.xsmall};
+  margin: 0;
 
   ${mq.range({ from: breakpoints.tabletWide })} {
-    margin: 0 ${spacing.small} 0 0;
     &:last-of-type {
       margin-right: 0;
     }

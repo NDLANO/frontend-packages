@@ -6,7 +6,6 @@ import {
   SearchNotionsResult,
   SearchSubjectResult,
   constants,
-  OneColumn,
 } from '@ndla/ui';
 
 import { FilterTabs } from '@ndla/tabs';
@@ -306,41 +305,39 @@ const SearchPageDemo = ({ t }) => {
 
   return (
     <>
-      <OneColumn cssModifier="clear-desktop" wide>
-        <SearchHeader
-          searchPhrase={searchPhrase}
-          searchPhraseSuggestion={searchPhraseSuggestion}
-          searchPhraseSuggestionOnClick={() =>
-            console.log('search-phrase suggestion click')
-          }
-          searchValue={searchValue}
-          onSearchValueChange={value => setSearchValue(value)}
-          onSubmit={handleSearchSubmit}
-          activeFilters={{
-            filters: activeSubjectFilters,
-            onFilterRemove: handleFilterRemove,
+      <SearchHeader
+        searchPhrase={searchPhrase}
+        searchPhraseSuggestion={searchPhraseSuggestion}
+        searchPhraseSuggestionOnClick={() =>
+          console.log('search-phrase suggestion click')
+        }
+        searchValue={searchValue}
+        onSearchValueChange={value => setSearchValue(value)}
+        onSubmit={handleSearchSubmit}
+        activeFilters={{
+          filters: activeSubjectFilters,
+          onFilterRemove: handleFilterRemove,
+        }}
+        filters={filterProps}
+      />
+      {!hideNotionsResult && (
+        <SearchNotionsResult
+          items={notionResults}
+          totalCount={notionResults.length}
+          onRemove={() => {
+            setHideNotionsResult(true);
           }}
-          filters={filterProps}
         />
-        {!hideNotionsResult && (
-          <SearchNotionsResult
-            items={notionResults}
-            totalCount={notionResults.length}
-            onRemove={() => {
-              setHideNotionsResult(true);
-            }}
-          />
-        )}
-        <SearchSubjectResult items={subjectDataSource.items} />
-        <FilterTabs
-          dropdownBtnLabel="Velg"
-          value={currentSubjectType ? currentSubjectType : 'ALL'}
-          options={searchSubjectTypeOptions}
-          contentId="search-result-content"
-          onChange={handleSetSubjectType}>
-          <ResultResponse />
-        </FilterTabs>
-      </OneColumn>
+      )}
+      <SearchSubjectResult items={subjectDataSource.items} />
+      <FilterTabs
+        dropdownBtnLabel="Velg"
+        value={currentSubjectType ? currentSubjectType : 'ALL'}
+        options={searchSubjectTypeOptions}
+        contentId="search-result-content"
+        onChange={handleSetSubjectType}>
+        <ResultResponse />
+      </FilterTabs>
     </>
   );
 };

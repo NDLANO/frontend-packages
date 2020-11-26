@@ -8,7 +8,7 @@
 
 import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
+import { colors, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import { Search as SearchIcon } from '@ndla/icons/common';
 // @ts-ignore
@@ -31,7 +31,9 @@ const StyledForm = styled.form<StyledProps>`
   background: #fff;
   border-radius: 5px;
   border: 1px solid ${colors.brand.greyLight};
-  padding: 3px;
+  padding: 7px;
+  min-height: 58px;
+  column-gap: 10px;
   ${props =>
     props.inputHasFocus &&
     `
@@ -39,6 +41,13 @@ const StyledForm = styled.form<StyledProps>`
     `}
   &:hover {
     border-color: ${colors.brand.primary};
+  }
+`;
+
+const HideOnNarrowScreen = styled.div`
+  display: none;
+  ${mq.range({ from: breakpoints.desktop })} {
+    display: block;
   }
 `;
 
@@ -57,7 +66,6 @@ const ClearButton = styled.button`
   background: unset;
   color: ${colors.text.light};
   cursor: pointer;
-  margin-right: 10px;
 `;
 
 const SearchInput = styled.input`
@@ -90,13 +98,14 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
 
   return (
     <StyledForm action="/search/" inputHasFocus={hasFocus} onSubmit={onSubmit}>
-      <SearchButton tabIndex={2} type="submit" value={t('searchPage.search')}>
-        <SearchIcon style={{ width: '24px', height: '24px' }} />
-      </SearchButton>
+      {filters && (
+        <HideOnNarrowScreen>
+          <PopupFilter {...filters} />
+        </HideOnNarrowScreen>
+      )}
       {activeFilters && <ActiveFilters {...activeFilters} />}
       <SearchInput
         ref={inputRef}
-        tabIndex={1}
         type="search"
         autoComplete="off"
         id="search"
@@ -108,18 +117,22 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
       />
-      <ClearButton
-        type="button"
-        value={t('welcomePage.resetSearch')}
-        onClick={() => {
-          onChange('');
-          if (inputRef && inputRef.current) {
-            inputRef.current.focus();
-          }
-        }}>
-        <CrossIcon style={{ width: '24px', height: '24px' }} />
-      </ClearButton>
-      {filters && <PopupFilter {...filters} />}
+      {value && (
+        <ClearButton
+          type="button"
+          value={t('welcomePage.resetSearch')}
+          onClick={() => {
+            onChange('');
+            if (inputRef && inputRef.current) {
+              inputRef.current.focus();
+            }
+          }}>
+          <CrossIcon style={{ width: '24px', height: '24px' }} />
+        </ClearButton>
+      )}
+      <SearchButton type="submit" value={t('searchPage.search')}>
+        <SearchIcon style={{ width: '24px', height: '24px' }} />
+      </SearchButton>
     </StyledForm>
   );
 };

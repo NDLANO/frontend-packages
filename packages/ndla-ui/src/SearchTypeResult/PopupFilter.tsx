@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 // @ts-ignore
@@ -54,11 +54,16 @@ const PopupFilter = ({
   messages,
 }: PopupFilterProps) => {
   const [values, setValues] = useState(valuesProps);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setValues(valuesProps);
+  }, [isOpen]);
 
   const buttonContent = (
-    <Button size="medium">
+    <Button size="normal" lighterGrey>
       <FilterButtonText>{messages.buttonText}</FilterButtonText>
-      <PlusIcon style={{ width: '24px', height: '24px' }} />
+      <PlusIcon />
     </Button>
   );
   return (
@@ -66,11 +71,18 @@ const PopupFilter = ({
       activateButton={buttonContent}
       animation="subtle"
       animationDuration={50}
+      onClick={() => setIsOpen(true)}
       size="fullscreen">
       {(onClose: () => void) => (
         <>
           <ModalHeader modifier="no-bottom-padding">
-            <ModalCloseButton onClick={onClose} title={messages.closeButton} />
+            <ModalCloseButton
+              onClick={() => {
+                onClose();
+                setIsOpen(false);
+              }}
+              title={messages.closeButton}
+            />
           </ModalHeader>
           <ModalBody>
             <FilterList
@@ -88,6 +100,7 @@ const PopupFilter = ({
                 outline
                 onClick={() => {
                   onClose();
+                  setIsOpen(false);
                   onSubmit(values);
                 }}>
                 {messages.confirmButton}

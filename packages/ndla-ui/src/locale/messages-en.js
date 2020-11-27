@@ -457,7 +457,7 @@ const messages = {
     description: 'Sorry, an error occurred.',
     linksTitle: 'Get started:',
     back: 'Go back',
-    goToFrontPage: 'NDLA frontpage',
+    goToFrontPage: 'Go to frontpage',
   },
   footer: {
     aboutNDLA: 'About NDLA',
@@ -531,7 +531,7 @@ const messages = {
       'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
-    toFrontpage: 'To the frontpage',
+    toFrontpage: 'NDLA frontpage',
     youAreHere: 'You are here',
   },
   listview: {

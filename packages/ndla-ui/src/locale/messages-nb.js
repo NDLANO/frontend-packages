@@ -457,7 +457,7 @@ const messages = {
     description: 'Beklager, en feil oppsto.',
     linksTitle: 'Kom igang:',
     back: 'Gå tilbake',
-    goToFrontPage: 'NDLA forside',
+    goToFrontPage: 'Gå til forsiden',
   },
   footer: {
     aboutNDLA: 'Om NDLA',
@@ -531,7 +531,7 @@ const messages = {
       'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
-    toFrontpage: 'Til forsiden',
+    toFrontpage: 'NDLA forside',
     youAreHere: 'Du er her',
   },
   listview: {

@@ -457,7 +457,7 @@ const messages = {
     description: 'Beklager, en feil oppsto.',
     linksTitle: 'Kom igang:',
     back: 'Gå tilbake',
-    goToFrontPage: 'Gå til forsiden',
+    goToFrontPage: 'NDLA forside',
   },
   footer: {
     aboutNDLA: 'Om NDLA',

@@ -457,7 +457,7 @@ const messages = {
     description: 'Sorry, an error occurred.',
     linksTitle: 'Get started:',
     back: 'Go back',
-    goToFrontPage: 'Go to frontpage',
+    goToFrontPage: 'NDLA frontpage',
   },
   footer: {
     aboutNDLA: 'About NDLA',

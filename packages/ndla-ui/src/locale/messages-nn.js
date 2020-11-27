@@ -460,7 +460,7 @@ const messages = {
     description: 'Orsak, ein feil oppstod.',
     linksTitle: 'Kom i gang:',
     back: 'Tilbake',
-    goToFrontPage: 'Gå til framsida',
+    goToFrontPage: 'NDLA framside',
   },
   footer: {
     aboutNDLA: 'Om NDLA',

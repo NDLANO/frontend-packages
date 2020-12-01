@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 
-import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { colors, fonts } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -32,12 +32,6 @@ const ItemHead = styled.div`
   position: relative;
   a {
     box-shadow: none;
-  }
-  ${mq.range({ until: breakpoints.tablet })} {
-    max-height: 312px;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    max-height: 144px;
   }
   img {
     border-radius: 5px;

@@ -35,7 +35,7 @@ const topicResults = [
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
     img: {
       url:
-        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
+        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
     labels: ['Type', 'Type2'],
@@ -49,7 +49,7 @@ const topicResults = [
     breadcrumb: ['Mediene i samfunnet', 'Mediestruktur i Norge'],
     img: {
       url:
-        'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
+        'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
   },
@@ -61,7 +61,7 @@ const topicResults = [
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé. Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     img: {
       url:
-        'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
+        'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
   },
@@ -78,7 +78,7 @@ const topicResults = [
     ],
     img: {
       url:
-        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
+        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
   },
@@ -107,7 +107,7 @@ const topicResults = [
     ],
     img: {
       url:
-        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
+        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
   },
@@ -148,7 +148,7 @@ const topicResults = [
     ],
     img: {
       url:
-        'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&ratio=1.75',
+        'https://staging.api.ndla.no/image-api/raw/42-45210905.jpg?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
   },
@@ -193,7 +193,7 @@ const subjectMaterialResults = [
       'Trykkpressen til Gutenberg og Tim Berners Lees The World Wide Web er begge revolusjonerende oppfinnelser som har endret historien. Utgangspunktet var en god idé.',
     img: {
       url:
-        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&ratio=1.75',
+        'https://api.ndla.no/image-api/raw/id/28404?focalX=50&focalY=50&width=600',
       alt: 'Forstørrelsesglass',
     },
     labels: ['h5p', 'Simulering', 'Oppgave'],

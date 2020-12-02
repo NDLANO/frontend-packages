@@ -70,3 +70,11 @@ export {
   default as MultidisciplinarySubject,
   MultidisciplinarySubjectHeader,
 } from './MultidisciplinarySubject';
+
+export {
+  SearchTypeResult,
+  SearchHeader,
+  SearchFieldHeader,
+  SearchNotionsResult,
+  SearchSubjectResult,
+} from './SearchTypeResult';

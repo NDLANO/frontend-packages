@@ -22,6 +22,27 @@ import ContentTypeBadge from '../ContentTypeBadge';
 
 const { contentTypes } = constants;
 
+const resourceTypeColor = (type: string) => {
+  switch (type) {
+    case contentTypes.SUBJECT_MATERIAL:
+      return colors.subjectMaterial.light;
+    case contentTypes.TOPIC:
+      return colors.subject.light;
+    case contentTypes.TASKS_AND_ACTIVITIES:
+      return colors.tasksAndActivities.light;
+    case contentTypes.ASSESSMENT_RESOURCES:
+      return colors.assessmentResource.light;
+    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
+      return colors.externalLearningResource.light;
+    case contentTypes.SOURCE_MATERIAL:
+      return colors.sourceMaterial.light;
+    case contentTypes.LEARNING_PATH:
+      return colors.learningPath.light;
+    default:
+      return null;
+  }
+};
+
 const ItemWrapper = styled.div`
   flex-direction: column;
 `;
@@ -47,11 +68,11 @@ const ItemHead = styled.div`
   }
 `;
 
-type ItemIconProps = {
+type ItemTypeProps = {
   type?: ContentType;
 };
 
-const ItemIcon = styled.div<ItemIconProps>`
+const ItemIcon = styled.div<ItemTypeProps>`
   height: 100%;
   background: #ccc;
   border-top-left-radius: 5px;
@@ -59,30 +80,12 @@ const ItemIcon = styled.div<ItemIconProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => {
-    switch (props.type) {
-      case contentTypes.SUBJECT_MATERIAL:
-        return `background: ${colors.subjectMaterial.light};`;
-      case contentTypes.TOPIC:
-        return `background: ${colors.subject.light};`;
-      case contentTypes.TASKS_AND_ACTIVITIES:
-        return `background: ${colors.tasksAndActivities.light};`;
-      case contentTypes.ASSESSMENT_RESOURCES:
-        return `background: ${colors.assessmentResource.light};`;
-      case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-        return `background: ${colors.externalLearningResource.light};`;
-      case contentTypes.SOURCE_MATERIAL:
-        return `background: ${colors.sourceMaterial.light};`;
-      case contentTypes.LEARNING_PATH:
-        return `background: ${colors.learningPath.light};`;
-      default:
-        return null;
-    }
-  }}
+  ${props => props.type && `background: ${resourceTypeColor(props.type)};`}
 `;
 
-const ItemContent = styled.div`
-  border: 1px solid ${colors.brand.light};
+const ItemContent = styled.div<ItemTypeProps>`
+  border: 1px solid
+    ${props => props.type && `${resourceTypeColor(props.type)};`};
   border-top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -161,7 +164,7 @@ const SearchItem = ({ item, type }: Props) => {
             </SafeLink>
           )}
         </ItemHead>
-        <ItemContent>
+        <ItemContent type={type}>
           {labels.length > 0 && (
             <ItemPillWrapper>
               {labels.map(label => (

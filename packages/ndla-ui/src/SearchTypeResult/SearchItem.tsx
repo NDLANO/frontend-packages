@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 
-import { colors, fonts } from '@ndla/core';
+import { breakpoints, colors, fonts, mq } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -27,14 +27,23 @@ const ItemWrapper = styled.div`
 `;
 
 const ItemHead = styled.div`
-  height: auto;
-  min-height: 45px;
+  height: 200px;
   position: relative;
   a {
     box-shadow: none;
   }
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 160px;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    height: 100px;
+  }
   img {
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -43,9 +52,10 @@ type ItemIconProps = {
 };
 
 const ItemIcon = styled.div<ItemIconProps>`
-  height: 144px;
+  height: 100%;
   background: #ccc;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,6 +79,14 @@ const ItemIcon = styled.div<ItemIconProps>`
         return null;
     }
   }}
+`;
+
+const ItemContent = styled.div`
+  border: 1px solid ${colors.brand.light};
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 16px;
 `;
 
 const ItemPillWrapper = styled.div`
@@ -143,28 +161,30 @@ const SearchItem = ({ item, type }: Props) => {
             </SafeLink>
           )}
         </ItemHead>
-        {labels.length > 0 && (
-          <ItemPillWrapper>
-            {labels.map(label => (
-              <ItemPill key={label}>{label}</ItemPill>
-            ))}
-          </ItemPillWrapper>
-        )}
-        <ItemTitle>
-          <SafeLink to={url}>{title}</SafeLink>
-        </ItemTitle>
-        <ItemText>{ingress}</ItemText>
-        <BreadcrumbPath>
-          {breadcrumb &&
-            breadcrumb.map((breadcrumbItem: string, i: number) => {
-              return (
-                <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
-                  <span>{breadcrumbItem}</span>
-                  {i !== breadcrumb.length - 1 && <ChevronRight />}
-                </BreadcrumbItem>
-              );
-            })}
-        </BreadcrumbPath>
+        <ItemContent>
+          {labels.length > 0 && (
+            <ItemPillWrapper>
+              {labels.map(label => (
+                <ItemPill key={label}>{label}</ItemPill>
+              ))}
+            </ItemPillWrapper>
+          )}
+          <ItemTitle>
+            <SafeLink to={url}>{title}</SafeLink>
+          </ItemTitle>
+          <ItemText>{ingress}</ItemText>
+          <BreadcrumbPath>
+            {breadcrumb &&
+              breadcrumb.map((breadcrumbItem: string, i: number) => {
+                return (
+                  <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
+                    <span>{breadcrumbItem}</span>
+                    {i !== breadcrumb.length - 1 && <ChevronRight />}
+                  </BreadcrumbItem>
+                );
+              })}
+          </BreadcrumbPath>
+        </ItemContent>
       </ItemWrapper>
     </>
   );

@@ -22,14 +22,14 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Farger på NDLA">
         <p>
-          Fargene til NDLA er laget på grunnlag av å skape god lesbarhet og flyt
-          for brukerne. Fargene skal alltid brukes på meningsfulle måter for å
-          gruppere innhold, skape hierarki og tilhørighet. De kan også brukes
-          for å gi oppmerksomhet til viktige elementer og støtte i de oppgavene
-          brukeren utfører. Det skal alltid være nok kontrast mellom elementer
-          som f.eks bakgrunn og tekst. Fargene skal til enhver tid oppfylle alle
-          standarder for WCAG (Web Content Accessibility Guidelines). Verktøy
-          for å kontrollere kontrast mellom tekst og bakgrunn finnes her:{' '}
+          Fargene til NDLA er laget for å skape god lesbarhet og flyt for
+          brukerne. Fargene skal alltid benyttes i design av brukergrensesnitt.
+          Fargene skal ikke brukes på redaksjonelt innhold som for eksempel
+          illustrasjoner og elementer inne i H5P. Ved bruk av farger i design
+          skal det alltid være nok kontrast mellom elementer som f.eks bakgrunn
+          og tekst. Fargene skal til enhver tid oppfylle alle standarder for
+          WCAG (Web Content Accessibility Guidelines). Verktøy for å kontrollere
+          kontrast mellom tekst og bakgrunn finnes her:{' '}
           <a href="https://webaim.org/resources/contrastchecker/">
             https://webaim.org/resources/contrastchecker/
           </a>

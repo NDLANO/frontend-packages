@@ -130,12 +130,17 @@ const BreadcrumbItem = styled.span`
   flex-wrap: wrap;
 `;
 
+type context = {
+  breadcrumb: string[];
+  url: string;
+};
+
 export type SearchItemType = {
   id: string;
   title: string;
   url: string;
   ingress: string;
-  breadcrumb: string[];
+  contexts: context[];
   image: React.ReactNode | null;
   img?: { url: string; alt: string };
   labels?: string[];
@@ -145,7 +150,8 @@ type Props = {
   type?: ContentType;
 };
 const SearchItem = ({ item, type }: Props) => {
-  const { title, url, ingress, breadcrumb, img = null, labels = [] } = item;
+  const { title, url, ingress, contexts, img = null, labels = [] } = item;
+  const mainContext = contexts[0]; // Until we can handle several contexts
   return (
     <>
       <ItemWrapper>
@@ -177,15 +183,19 @@ const SearchItem = ({ item, type }: Props) => {
           </ItemTitle>
           <ItemText>{ingress}</ItemText>
           <BreadcrumbPath>
-            {breadcrumb &&
-              breadcrumb.map((breadcrumbItem: string, i: number) => {
-                return (
-                  <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
-                    <span>{breadcrumbItem}</span>
-                    {i !== breadcrumb.length - 1 && <ChevronRight />}
-                  </BreadcrumbItem>
-                );
-              })}
+            {mainContext &&
+              mainContext.breadcrumb.map(
+                (breadcrumbItem: string, i: number) => {
+                  return (
+                    <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
+                      <span>{breadcrumbItem}</span>
+                      {i !== mainContext.breadcrumb.length - 1 && (
+                        <ChevronRight />
+                      )}
+                    </BreadcrumbItem>
+                  );
+                },
+              )}
           </BreadcrumbPath>
         </ItemContent>
       </ItemWrapper>

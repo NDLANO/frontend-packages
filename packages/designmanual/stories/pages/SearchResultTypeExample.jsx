@@ -18,6 +18,11 @@ import {
   searchSubjectTypeOptions,
   topicResults,
   notionResults,
+  resourcesTasksAndActivitiesResults,
+  resourcesLearningPathResults,
+  resourcesAssessmentResults,
+  resourcesExternalResults,
+  resourcesSourceMaterialResults,
 } from '../../dummydata/mockSearchResultType';
 import { searchFilterOptions } from '../../dummydata';
 
@@ -36,6 +41,31 @@ const responseDataSource = [
     items: subjectMaterialResults,
     totalCount: subjectMaterialResults.length,
     type: contentTypes.SUBJECT_MATERIAL,
+  },
+  {
+    items: resourcesTasksAndActivitiesResults,
+    totalCount: resourcesTasksAndActivitiesResults.length,
+    type: contentTypes.TASKS_AND_ACTIVITIES,
+  },
+  {
+    items: resourcesLearningPathResults,
+    totalCount: resourcesLearningPathResults.length,
+    type: contentTypes.LEARNING_PATH,
+  },
+  {
+    items: resourcesAssessmentResults,
+    totalCount: resourcesAssessmentResults.length,
+    type: contentTypes.ASSESSMENT_RESOURCES,
+  },
+  {
+    items: resourcesExternalResults,
+    totalCount: resourcesExternalResults.length,
+    type: contentTypes.EXTERNAL_LEARNING_RESOURCES,
+  },
+  {
+    items: resourcesSourceMaterialResults,
+    totalCount: resourcesSourceMaterialResults.length,
+    type: contentTypes.SOURCE_MATERIAL,
   },
 ];
 

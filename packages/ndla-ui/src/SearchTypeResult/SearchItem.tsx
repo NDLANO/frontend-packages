@@ -1,10 +1,18 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -14,123 +22,90 @@ import ContentTypeBadge from '../ContentTypeBadge';
 
 const { contentTypes } = constants;
 
-type WrapperProps = {
-  loading?: boolean;
+const resourceTypeColor = (type: string) => {
+  switch (type) {
+    case contentTypes.SUBJECT_MATERIAL:
+      return colors.subjectMaterial.light;
+    case contentTypes.TOPIC:
+      return colors.subject.light;
+    case contentTypes.TASKS_AND_ACTIVITIES:
+      return colors.tasksAndActivities.light;
+    case contentTypes.ASSESSMENT_RESOURCES:
+      return colors.assessmentResource.light;
+    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
+      return colors.externalLearningResource.light;
+    case contentTypes.SOURCE_MATERIAL:
+      return colors.sourceMaterial.light;
+    case contentTypes.LEARNING_PATH:
+      return colors.learningPath.light;
+    default:
+      return null;
+  }
 };
 
-const ItemWrapper = styled.div<WrapperProps>`
+const ItemWrapper = styled.div`
   flex-direction: column;
-  margin: 16px 16px 20px;
-  ${mq.range({ from: breakpoints.mobile })} {
-    margin: 16px 0px 16px;
-  }
-  ${mq.range({ from: breakpoints.tablet })} {
-    margin: 16px 16px 20px;
-    flex: 1 0 47%;
-    max-width: 48%;
-    &:nth-of-type(1n) {
-      margin-left: 0;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 0;
-      margin-left: 16px;
-    }
-  }
-
-  ${mq.range({ from: breakpoints.desktop })} {
-    flex: 1 0 21%;
-    max-width: 252px;
-    &:nth-of-type(1n) {
-      margin-left: 16px;
-    }
-    &:nth-of-type(2n) {
-      margin-right: 16px;
-    }
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:nth-of-type(4n) {
-      margin-right: 0;
-    }
-    &:nth-of-type(4n + 5) {
-      margin-left: 0px;
-    }
-  }
-
-  ${props =>
-    props.loading &&
-    `
-    opacity: 0.6;
-    z-index: 0;
-  `}
 `;
 
 const ItemHead = styled.div`
-  height: auto;
-  min-height: 45px;
+  height: 200px;
   position: relative;
   a {
     box-shadow: none;
   }
-  ${mq.range({ until: breakpoints.tablet })} {
-    max-height: 312px;
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 160px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    max-height: 144px;
+    height: 100px;
   }
   img {
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
-type ItemIconProps = {
+type ItemTypeProps = {
   type?: ContentType;
 };
 
-const ItemIcon = styled.div<ItemIconProps>`
-  height: 144px;
+const ItemIcon = styled.div<ItemTypeProps>`
+  height: 100%;
   background: #ccc;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => {
-    switch (props.type) {
-      case contentTypes.SUBJECT_MATERIAL:
-        return `background: ${colors.subjectMaterial.light};`;
-      case contentTypes.TOPIC:
-        return `background: ${colors.subject.light};`;
-      case contentTypes.TASKS_AND_ACTIVITIES:
-        return `background: ${colors.tasksAndActivities.light};`;
-      case contentTypes.ASSESSMENT_RESOURCES:
-        return `background: ${colors.assessmentResource.light};`;
-      case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-        return `background: ${colors.externalLearningResource.light};`;
-      case contentTypes.SOURCE_MATERIAL:
-        return `background: ${colors.sourceMaterial.light};`;
-      case contentTypes.LEARNING_PATH:
-        return `background: ${colors.learningPath.light};`;
-      default:
-        return null;
-    }
-  }}
+  ${props => props.type && `background: ${resourceTypeColor(props.type)};`}
+`;
+
+const ItemContent = styled.div<ItemTypeProps>`
+  border: 1px solid
+    ${props => props.type && `${resourceTypeColor(props.type)};`};
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 16px;
 `;
 
 const ItemPillWrapper = styled.div`
   margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4px;
+  row-gap: 4px;
 `;
 const ItemPill = styled.div`
-  margin: 4px 4px 4px 0;
   display: inline-block;
   background: ${colors.brand.greyLightest};
-  margin-right: ${spacing.small};
-  padding: 0 ${spacing.xxsmall};
+  padding: 2px 4px;
   border-radius: 2px;
   ${fonts.sizes('12px', '20px')};
   font-weight: ${fonts.weight.semibold};
-`;
-const ItemContent = styled.div`
-  /* flex-grow: 1; */
 `;
 
 const ItemTitle = styled.h3`
@@ -144,31 +119,42 @@ const ItemText = styled.p`
   margin-bottom: 16px;
 `;
 const BreadcrumbPath = styled.div`
-  color: #ccc;
+  color: ${colors.text.light};
   font-size: 14px;
   line-height: 20px;
 `;
+
+const BreadcrumbItem = styled.span`
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+type context = {
+  breadcrumb: string[];
+  url: string;
+};
 
 export type SearchItemType = {
   id: string;
   title: string;
   url: string;
   ingress: string;
-  breadcrumb: Array<string>;
+  contexts: context[];
   image: React.ReactNode | null;
   img?: { url: string; alt: string };
   labels?: string[];
 };
 type Props = {
   item: SearchItemType;
-  loading: boolean;
   type?: ContentType;
 };
-const SearchItem = ({ item, loading, type }: Props) => {
-  const { title, url, ingress, breadcrumb, img = null, labels = [] } = item;
+const SearchItem = ({ item, type }: Props) => {
+  const { title, url, ingress, contexts, img = null, labels = [] } = item;
+  const mainContext = contexts[0]; // Until we can handle several contexts
   return (
     <>
-      <ItemWrapper loading={loading}>
+      <ItemWrapper>
         <ItemHead>
           {img ? (
             <SafeLink to={url}>
@@ -184,28 +170,32 @@ const SearchItem = ({ item, loading, type }: Props) => {
             </SafeLink>
           )}
         </ItemHead>
-        <ItemContent>
+        <ItemContent type={type}>
+          {labels.length > 0 && (
+            <ItemPillWrapper>
+              {labels.map(label => (
+                <ItemPill key={label}>{label}</ItemPill>
+              ))}
+            </ItemPillWrapper>
+          )}
           <ItemTitle>
             <SafeLink to={url}>{title}</SafeLink>
-            {labels.length > 0 && (
-              <ItemPillWrapper>
-                {labels.map(label => (
-                  <ItemPill key={label}>{label}</ItemPill>
-                ))}
-              </ItemPillWrapper>
-            )}
           </ItemTitle>
           <ItemText>{ingress}</ItemText>
           <BreadcrumbPath>
-            {breadcrumb &&
-              breadcrumb.map((breadcrumbItem: string, i: number) => {
-                return (
-                  <span key={`${breadcrumbItem}-${item.id}`}>
-                    <span>{breadcrumbItem}</span>
-                    {i !== breadcrumb.length - 1 && <ChevronRight />}
-                  </span>
-                );
-              })}
+            {mainContext &&
+              mainContext.breadcrumb.map(
+                (breadcrumbItem: string, i: number) => {
+                  return (
+                    <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
+                      <span>{breadcrumbItem}</span>
+                      {i !== mainContext.breadcrumb.length - 1 && (
+                        <ChevronRight />
+                      )}
+                    </BreadcrumbItem>
+                  );
+                },
+              )}
           </BreadcrumbPath>
         </ItemContent>
       </ItemWrapper>

@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2020-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
@@ -27,11 +35,15 @@ const TypeWrapper = styled.div`
 `;
 
 const SubjectName = styled.span`
-  font-size: 16px;
+  font-size: 18px;
   margin: 2px 16px;
   b {
     font-size: 18px;
   }
+`;
+
+const Count = styled.span`
+  margin-left: 4px;
 `;
 
 const CategoryTypeButtonWrapper = styled.div`
@@ -58,16 +70,14 @@ export type FilterOptionsType = {
 };
 
 type Props = {
-  filters: Array<FilterOptionsType>;
+  filters: FilterOptionsType[];
   onFilterClick: (id: string) => void;
-  loading: boolean;
   totalCount: number;
   type?: ContentType;
 };
 const SearchTypeHeader = ({
   filters,
   onFilterClick,
-  loading,
   totalCount,
   type,
   t,
@@ -77,7 +87,11 @@ const SearchTypeHeader = ({
       {type && <ContentTypeBadge type={type} background size="large" />}
       <SubjectName>
         {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
-        {totalCount ? `(${totalCount})` : null}
+        {totalCount && (
+          <Count>
+            {t(`searchPage.resultType.hits`, { count: totalCount })}
+          </Count>
+        )}
       </SubjectName>
     </TypeWrapper>
     {filters && (
@@ -87,7 +101,6 @@ const SearchTypeHeader = ({
             <Button
               size="small"
               lighter={!option.active}
-              disabled={loading}
               onClick={() => onFilterClick(option.id)}>
               {option.name}
             </Button>

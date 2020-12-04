@@ -115,9 +115,12 @@ const messages = {
       showAll: 'Show all',
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
-      hits: 'hits',
+      hits: '{count} hits',
       showingSearchPhrase: 'Showing results for:',
       searchPhraseSuggestion: 'Search instead for:',
+      notionLabels: 'Used in',
+      notionsHeading: 'Begrepsforklaring',
+      notionsRemove: 'Remove',
     },
   },
 

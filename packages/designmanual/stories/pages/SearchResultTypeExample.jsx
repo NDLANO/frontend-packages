@@ -1,9 +1,15 @@
-import React, { Fragment, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { SearchTypeResult, SearchHeader, constants } from '@ndla/ui';
+import {
+  SearchTypeResult,
+  SearchHeader,
+  SearchNotionsResult,
+  SearchSubjectResult,
+  constants,
+} from '@ndla/ui';
 
 import { FilterTabs } from '@ndla/tabs';
-import Pager from '@ndla/pager';
+import { injectT } from '@ndla/i18n';
 
 import {
   subjectTypeResults,
@@ -11,15 +17,19 @@ import {
   searchTypeFilterOptions,
   searchSubjectTypeOptions,
   topicResults,
+  notionResults,
+  resourcesTasksAndActivitiesResults,
+  resourcesLearningPathResults,
+  resourcesAssessmentResults,
+  resourcesExternalResults,
+  resourcesSourceMaterialResults,
 } from '../../dummydata/mockSearchResultType';
+import { searchFilterOptions } from '../../dummydata';
 
 const { contentTypes } = constants;
 
-const subjectDataSource = {
-  items: subjectTypeResults,
-  totalCount: subjectTypeResults.length,
-  type: contentTypes.SUBJECT,
-};
+const PAGESIZE_SINGLE = 8;
+const PAGESIZE_ALL = 4;
 
 const responseDataSource = [
   {
@@ -32,38 +42,55 @@ const responseDataSource = [
     totalCount: subjectMaterialResults.length,
     type: contentTypes.SUBJECT_MATERIAL,
   },
+  {
+    items: resourcesTasksAndActivitiesResults,
+    totalCount: resourcesTasksAndActivitiesResults.length,
+    type: contentTypes.TASKS_AND_ACTIVITIES,
+  },
+  {
+    items: resourcesLearningPathResults,
+    totalCount: resourcesLearningPathResults.length,
+    type: contentTypes.LEARNING_PATH,
+  },
+  {
+    items: resourcesAssessmentResults,
+    totalCount: resourcesAssessmentResults.length,
+    type: contentTypes.ASSESSMENT_RESOURCES,
+  },
+  {
+    items: resourcesExternalResults,
+    totalCount: resourcesExternalResults.length,
+    type: contentTypes.EXTERNAL_LEARNING_RESOURCES,
+  },
+  {
+    items: resourcesSourceMaterialResults,
+    totalCount: resourcesSourceMaterialResults.length,
+    type: contentTypes.SOURCE_MATERIAL,
+  },
 ];
 
-const searchResults = [...responseDataSource, subjectDataSource];
-const initialTypeFilter = {};
-searchResults.forEach(item => {
-  const pageSize = item.type === contentTypes.SUBJECT ? 2 : 4;
+const searchResults = responseDataSource.map(resourceType => {
   const filters = [];
-  if (searchTypeFilterOptions[item.type].length) {
+  if (searchTypeFilterOptions[resourceType.type].length) {
     filters.push({ id: 'all', name: 'Alle', active: true });
-    filters.push(...searchTypeFilterOptions[item.type]);
+    filters.push(...searchTypeFilterOptions[resourceType.type]);
   }
-  initialTypeFilter[item.type] = {
-    filters: filters,
-    page: 1,
-    loading: false,
-    pageSize,
-  };
+  return { ...resourceType, pageSize: PAGESIZE_ALL, filters };
 });
 
-const initialResults = searchResults.map(res => {
-  if (res.items.length > initialTypeFilter[res.type].pageSize) {
+const initialResourceResults = searchResults.map(res => {
+  if (res.items.length > res.pageSize) {
     return {
       ...res,
-      items: res.items.slice(0, initialTypeFilter[res.type].pageSize),
+      items: res.items.slice(0, res.pageSize),
     };
   }
   return res;
 });
 
-const resultsReducer = (state, action) => {
+const resourcesReducer = (state, action) => {
   switch (action.type) {
-    case 'SEARCH':
+    case 'RESOURCE_TYPE_LOADING':
       return state.map(contextItem => {
         if (contextItem.type === action.context) {
           return {
@@ -74,212 +101,232 @@ const resultsReducer = (state, action) => {
           return contextItem;
         }
       });
-    case 'SEARCH_RESULT_UPDATE':
+    case 'RESOURCE_TYPE_ADD_ITEMS':
       return state.map(contextItem => {
-        if (contextItem.type === action.results.contextType) {
+        if (contextItem.type === action.contextType) {
           return {
             ...contextItem,
             // append new items
-            items: action.results.items,
+            items: [...contextItem.items, ...action.items],
             loading: false,
           };
         } else {
           return contextItem;
         }
       });
+    case 'RESOURCE_TYPE_UPDATE':
+      return state.map(contextItem => {
+        if (contextItem.type === action.contextType) {
+          return {
+            ...contextItem,
+            items: action.items,
+            filters: action.filters,
+            loading: false,
+          };
+        } else {
+          return contextItem;
+        }
+      });
+    case 'RESOURCE_TYPE_SELECTED':
+      return state.map(contextItem => {
+        if (contextItem.type === action.contextType) {
+          return {
+            ...contextItem,
+            items: action.items,
+            pageSize: PAGESIZE_SINGLE,
+            active: true,
+          };
+        } else {
+          return { ...contextItem, active: false };
+        }
+      });
+    case 'RESOURCE_TYPE_ALL_SELECTED':
+      return state.map(contextItem => {
+        return { ...contextItem, pageSize: PAGESIZE_ALL, active: true };
+      });
     default:
       return state;
   }
 };
 
-const SearchPageDemo = () => {
-  const [currentSubjectType, setCurrentSubjectType] = useState(null);
-  const [typeFilter, setTypeFilter] = useState(initialTypeFilter);
+const mockSearchDelay = async () => {
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  await delay(200);
+  return true;
+};
 
-  const [searchItems, dispatch] = React.useReducer(
-    resultsReducer,
-    initialResults,
+const SearchPageDemo = ({ t }) => {
+  const [currentResourceType, setCurrentResourceType] = useState(null);
+  const [hideNotionsResult, setHideNotionsResult] = useState(false);
+  const [searchValue, setSearchValue] = useState('nunorsk');
+  const [searchPhrase, setSearchPhrase] = useState('nunorsk');
+  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(
+    'nynorsk',
   );
+  const [searchFilter, setSearchFilter] = useState([
+    'subjects:bronnteknikk',
+    'subjects:kinesisk',
+  ]);
 
-  // mock search
-  const search = async (q, cb) => {
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-    const { page = 1, type, pageSize } = q;
-    const subjectTypeIndex = searchResults.findIndex(x => x.type === type);
+  const [notionsItems] = React.useState(notionResults);
 
-    const pageIndex = page - 1;
-    const fromIndex = pageIndex * pageSize;
-    const toIndex = page * pageSize;
-    const mockDataRes = [
-      ...searchResults[subjectTypeIndex].items.slice(fromIndex, toIndex),
-    ];
-    await delay(500);
-    cb(mockDataRes);
-  };
+  const [subjectItems] = React.useState(subjectTypeResults);
+
+  const [resourceItems, dispatchResources] = React.useReducer(
+    resourcesReducer,
+    initialResourceResults,
+  );
 
   const handleFilterClick = (type, filterId) => {
     // For now changing filters does nothing except toggling on and of
     // Real examples to be implemented
-    const filterUpdate = { ...typeFilter[type] };
-    const filters = [...filterUpdate.filters];
-    const selectedFilter = filters.find(item => filterId === item.id);
-    if (filterId === 'all') {
-      filters.forEach(filter => {
-        filter.active = filter.id === 'all';
-      });
-    } else {
-      const allFilter = filters.find(item => 'all' === item.id);
-      allFilter.active = false;
-      // First flip active state of clicked element
-      selectedFilter.active = !selectedFilter.active;
-      if (!filters.some(item => item.active)) {
-        allFilter.active = true;
-      }
-    }
-    setTypeFilter({ ...typeFilter, [type]: filterUpdate });
-  };
-
-  const handleSetSubjectType = subjectType => {
-    // reset mockup data if no subjectType
-    if (subjectType === 'ALL') {
-      setTypeFilter(initialTypeFilter);
-      initialResults.forEach(res => {
-        if (res.type !== contentTypes.SUBJECT) {
-          // Don't reset subjects
-          const results = { ...res, items: res.items, contextType: res.type };
-          dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
-        }
-      });
-      setCurrentSubjectType(null);
-    } else {
-      if (typeFilter[subjectType]) {
-        const filterUpdate = { ...typeFilter };
-        filterUpdate[subjectType] = {
-          ...filterUpdate[subjectType],
-          pageSize: 8,
-          page: 1,
-        };
-        setTypeFilter({
-          ...filterUpdate,
-        });
-        dispatch({ type: 'SEARCH', context: subjectType });
-        const q = { type: subjectType, ...filterUpdate[subjectType] };
-        search(q, res => {
-          const results = { items: res, contextType: subjectType };
-          dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
-        });
-      }
-      setCurrentSubjectType(subjectType);
-    }
-  };
-
-  const handleShowMore = type => {
-    dispatch({ type: 'SEARCH', context: type });
-    const filterUpdate = { ...typeFilter[type] };
-    filterUpdate.pageSize += filterUpdate.pageSize;
-    setTypeFilter({ ...typeFilter, [type]: filterUpdate });
-    const q = { type, ...filterUpdate };
-    search(q, res => {
-      const results = { items: res, contextType: type };
-      dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
-    });
-  };
-
-  const handleShowAll = type => {
-    handleSetSubjectType(type);
-  };
-
-  const onPagerNavigate = q => {
-    const { type, page } = q;
-    dispatch({ type: 'SEARCH', context: type });
-    const filterUpdate = { ...typeFilter[type] };
-    filterUpdate.page = page;
-    setTypeFilter({ ...typeFilter, [type]: filterUpdate });
-    const query = { type, ...filterUpdate };
-    search(query, res => {
-      const results = { items: res, contextType: type };
-      dispatch({ type: 'SEARCH_RESULT_UPDATE', results });
-    });
-  };
-
-  const ResultResponse = ({ type: typeParam }) => {
-    const type = typeParam || currentSubjectType;
-
-    const result = (data, type) => {
-      const { items, totalCount } = data;
-      let pagination = null;
-      if (currentSubjectType !== type || type === contentTypes.SUBJECT) {
-        // Only show this type of pagination if ALL tab is selected or is subject
-        const toCount =
-          typeFilter[type].pageSize > totalCount
-            ? totalCount
-            : typeFilter[type].pageSize;
-        pagination = {
-          totalCount,
-          toCount,
-          onShowMore: () => handleShowMore(type),
-          onShowAll: () => handleShowAll(type),
-        };
-      }
-      return (
-        <SearchTypeResult
-          filters={typeFilter[type].filters}
-          onFilterClick={id => handleFilterClick(type, id)}
-          items={items}
-          loading={data.loading}
-          type={type}
-          totalCount={totalCount}
-          pagination={pagination}>
-          {!pagination && (
-            <Pager
-              page={typeFilter[type].page}
-              lastPage={Math.ceil(totalCount / typeFilter[type].pageSize)}
-              query={{ type: type }}
-              pageItemComponentClass="button"
-              pathname="#"
-              onClick={onPagerNavigate}
-            />
-          )}
-        </SearchTypeResult>
-      );
-    };
-    if (type) {
-      const data = searchItems.find(obj => {
+    dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });
+    mockSearchDelay().then(() => {
+      const resources = resourceItems.find(obj => {
         return obj.type === type;
       });
-      return result(data, type);
-    } else {
-      return searchItems
-        .filter(item => item.type !== contentTypes.SUBJECT) // Subject items are shown in separate wrapper
-        .map(searchItem => (
-          <Fragment key={`searchresult-${searchItem.type}`}>
-            {result(searchItem, searchItem.type)}
-          </Fragment>
-        ));
-    }
+      const updateFilters = [...resources.filters];
+      const selectedFilter = updateFilters.find(item => filterId === item.id);
+      if (filterId === 'all') {
+        updateFilters.forEach(filter => {
+          filter.active = filter.id === 'all';
+        });
+      } else {
+        const allFilter = updateFilters.find(item => 'all' === item.id);
+        allFilter.active = false;
+        // First flip active state of clicked element
+        selectedFilter.active = !selectedFilter.active;
+        if (!resources.filters.some(item => item.active)) {
+          allFilter.active = true;
+        }
+      }
+      const results = {
+        items: resources.items,
+        contextType: type,
+        filters: updateFilters,
+      };
+      dispatchResources({ type: 'RESOURCE_TYPE_UPDATE', ...results });
+    });
   };
+
+  useEffect(() => {
+    // reset mockup data if no subjectType
+    if (!currentResourceType || currentResourceType === 'ALL') {
+      dispatchResources({ type: 'RESOURCE_TYPE_ALL_SELECTED' });
+    } else {
+      const currentShown = resourceItems.find(
+        item => item.type === currentResourceType,
+      );
+      if (currentShown) {
+        const data = { contextType: currentResourceType };
+        if (currentShown.items.length >= PAGESIZE_SINGLE) {
+          data.items = currentShown.items;
+        } else {
+          const resources = searchResults.find(
+            item => item.type === currentResourceType,
+          );
+          data.items = [...resources.items.slice(0, PAGESIZE_SINGLE)];
+        }
+        dispatchResources({ type: 'RESOURCE_TYPE_SELECTED', ...data });
+      }
+    }
+  }, [currentResourceType]);
+
+  const handleShowMore = type => {
+    dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });
+    mockSearchDelay().then(() => {
+      const currentShown = resourceItems.find(item => item.type === type);
+      const resources = searchResults.find(item => item.type === type);
+      const data = { contextType: type };
+      data.items = [
+        ...resources.items.slice(
+          currentShown.items.length,
+          currentShown.items.length + currentShown.pageSize,
+        ),
+      ];
+      dispatchResources({ type: 'RESOURCE_TYPE_ADD_ITEMS', ...data });
+    });
+  };
+
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+    setSearchPhrase(searchValue);
+    setSearchPhraseSuggestion('');
+  };
+  const handleFilterRemove = value => {
+    setSearchFilter(searchFilter.filter(option => option !== value));
+  };
+
+  const activeSubjectFilters = searchFilterOptions.subjects.filter(option =>
+    searchFilter.includes(option.value),
+  );
+
+  const filterProps = {
+    options: searchFilterOptions.subjects,
+    values: searchFilter,
+    onSubmit: setSearchFilter,
+    messages: {
+      filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
+      closeButton: t('searchPage.close'),
+      confirmButton: t('searchPage.searchFilterMessages.confirmButton'),
+      buttonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
+    },
+  };
+
+  const visibleResourceTypes = resourceItems.filter(item => item.active);
 
   return (
     <>
       <SearchHeader
-        count={123}
-        searchPhrase="nunorsk"
-        searchPhraseSuggestion="nynorsk"
+        searchPhrase={searchPhrase}
+        searchPhraseSuggestion={searchPhraseSuggestion}
         searchPhraseSuggestionOnClick={() =>
           console.log('search-phrase suggestion click')
         }
+        searchValue={searchValue}
+        onSearchValueChange={value => setSearchValue(value)}
+        onSubmit={handleSearchSubmit}
+        activeFilters={{
+          filters: activeSubjectFilters,
+          onFilterRemove: handleFilterRemove,
+        }}
+        filters={filterProps}
       />
-      <ResultResponse type={contentTypes.SUBJECT} />
+      {!hideNotionsResult && (
+        <SearchNotionsResult
+          items={notionsItems}
+          totalCount={notionsItems.length}
+          onRemove={() => {
+            setHideNotionsResult(true);
+          }}
+        />
+      )}
+      <SearchSubjectResult items={subjectItems} />
       <FilterTabs
         dropdownBtnLabel="Velg"
-        value={currentSubjectType ? currentSubjectType : 'ALL'}
+        value={currentResourceType ? currentResourceType : 'ALL'}
         options={searchSubjectTypeOptions}
         contentId="search-result-content"
-        onChange={handleSetSubjectType}>
-        <ResultResponse />
+        onChange={setCurrentResourceType}>
+        {visibleResourceTypes.map(item => (
+          <SearchTypeResult
+            key={`search-result-${item.type}`}
+            filters={item.filters}
+            onFilterClick={id => handleFilterClick(item.type, id)}
+            items={item.items}
+            type={item.type}
+            totalCount={item.totalCount}
+            loading={item.loading}
+            pagination={{
+              totalCount: item.totalCount,
+              toCount: item.items.length,
+              onShowMore: () => handleShowMore(item.type),
+            }}
+          />
+        ))}
       </FilterTabs>
     </>
   );
 };
 
-export default SearchPageDemo;
+export default injectT(SearchPageDemo);

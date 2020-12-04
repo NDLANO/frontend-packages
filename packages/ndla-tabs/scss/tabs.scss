@@ -5,11 +5,6 @@
 
 $tabs-spacing: 12px;
 .c-tabs {
-  margin-left: $spacing;
-  @include mq($from: desktop) {
-    margin-left: 0;
-  }
-
   &__tab {
     display: inline-block;
     padding: ($tabs-spacing / 2) $tabs-spacing;

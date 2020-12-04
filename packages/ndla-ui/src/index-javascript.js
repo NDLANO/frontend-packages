@@ -68,13 +68,6 @@ export {
 } from './Search';
 
 export {
-  SearchTypeResult,
-  SearchTypeHeader,
-  SearchTypeTopicFilter,
-  SearchHeader,
-} from './SearchTypeResult';
-
-export {
   default as ContentTypeBadge,
   SubjectMaterialBadge,
   TasksAndActivitiesBadge,

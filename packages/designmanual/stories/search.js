@@ -52,7 +52,7 @@ storiesOf('Søk', module)
   .add('Søkeside re-design', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu />
+        <MastheadWithTopicMenu hideSearchButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchResultTypeExample />
         </OneColumn>

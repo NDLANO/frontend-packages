@@ -1323,39 +1323,6 @@ const resourcesSourceMaterialResults = [
   },
 ];
 
-const searchTypeFilterOptions = {
-  subject: [],
-  'learning-path': [],
-  'subject-material': [
-    {
-      name: 'Veiledning',
-      id: 'urn:resourcetype:guidance',
-    },
-    {
-      name: 'Forelesning og presentasjon',
-      id: 'urn:resourcetype:lectureAndPresentation',
-    },
-    {
-      name: 'Fagartikkel',
-      id: 'urn:resourcetype:academicArticle',
-    },
-  ],
-  'tasks-and-activities': [
-    {
-      name: 'Oppgave',
-      id: 'urn:resourcetype:task',
-    },
-    {
-      name: 'Øvelse',
-      id: 'urn:resourcetype:exercise',
-    },
-  ],
-  'assessment-resources': [],
-  'external-learning-resources': [],
-  'source-material': [],
-  topic: [],
-};
-
 const searchSubjectTypeOptions = [
   {
     title: 'Alle',
@@ -1507,7 +1474,6 @@ export const notionResults = [
 export {
   topicResults,
   subjectMaterialResults,
-  searchTypeFilterOptions,
   searchSubjectTypeOptions,
   subjectTypeResults,
   resourcesTasksAndActivitiesResults,

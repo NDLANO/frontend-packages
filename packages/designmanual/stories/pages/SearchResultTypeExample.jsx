@@ -14,7 +14,6 @@ import { injectT } from '@ndla/i18n';
 import {
   subjectTypeResults,
   subjectMaterialResults,
-  searchTypeFilterOptions,
   searchSubjectTypeOptions,
   topicResults,
   notionResults,
@@ -71,9 +70,17 @@ const responseDataSource = [
 
 const searchResults = responseDataSource.map(resourceType => {
   const filters = [];
-  if (searchTypeFilterOptions[resourceType.type].length) {
-    filters.push({ id: 'all', name: 'Alle', active: true });
-    filters.push(...searchTypeFilterOptions[resourceType.type]);
+  resourceType.items.forEach(item => {
+    if (item.labels) {
+      item.labels.forEach(label => {
+        if (!filters.some(filter => filter.name === label)) {
+          filters.push({ id: label, name: label });
+        }
+      });
+    }
+  });
+  if (filters.length) {
+    filters.unshift({ id: 'all', name: 'Alle', active: true });
   }
   return { ...resourceType, pageSize: PAGESIZE_ALL, filters };
 });
@@ -121,6 +128,7 @@ const resourcesReducer = (state, action) => {
             ...contextItem,
             items: action.items,
             filters: action.filters,
+            totalCount: action.totalCount,
             loading: false,
           };
         } else {
@@ -153,6 +161,16 @@ const mockSearchDelay = async () => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
   await delay(200);
   return true;
+};
+
+const resourceItemsByTypeAndFilters = (type, filters = []) => {
+  const resources = searchResults.find(item => item.type === type);
+  if (!filters.length || filters.indexOf('Alle') > -1) {
+    return resources.items;
+  }
+  return resources.items.filter(item =>
+    item.labels.some(label => filters.includes(label)),
+  );
 };
 
 const SearchPageDemo = ({ t }) => {
@@ -200,10 +218,16 @@ const SearchPageDemo = ({ t }) => {
           allFilter.active = true;
         }
       }
+      const activeFilters = updateFilters.filter(filter => filter.active);
+      const filterArray = activeFilters.map(filter => filter.name);
+      const allFilteredItems = resourceItemsByTypeAndFilters(type, filterArray);
+      const filteredItems = [...allFilteredItems.slice(0, resources.pageSize)];
+
       const results = {
-        items: resources.items,
+        items: filteredItems,
         contextType: type,
         filters: updateFilters,
+        totalCount: allFilteredItems.length,
       };
       dispatchResources({ type: 'RESOURCE_TYPE_UPDATE', ...results });
     });
@@ -222,10 +246,16 @@ const SearchPageDemo = ({ t }) => {
         if (currentShown.items.length >= PAGESIZE_SINGLE) {
           data.items = currentShown.items;
         } else {
-          const resources = searchResults.find(
-            item => item.type === currentResourceType,
+          const activeFilters = currentShown.filters.filter(
+            filter => filter.active,
           );
-          data.items = [...resources.items.slice(0, PAGESIZE_SINGLE)];
+          const filterArray = activeFilters.map(filter => filter.name);
+          const allFilteredItems = resourceItemsByTypeAndFilters(
+            currentResourceType,
+            filterArray,
+          );
+
+          data.items = [...allFilteredItems.slice(0, PAGESIZE_SINGLE)];
         }
         dispatchResources({ type: 'RESOURCE_TYPE_SELECTED', ...data });
       }
@@ -236,10 +266,16 @@ const SearchPageDemo = ({ t }) => {
     dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });
     mockSearchDelay().then(() => {
       const currentShown = resourceItems.find(item => item.type === type);
-      const resources = searchResults.find(item => item.type === type);
+
+      const activeFilters = currentShown.filters.filter(
+        filter => filter.active,
+      );
+      const filterArray = activeFilters.map(filter => filter.name);
+      const allFilteredItems = resourceItemsByTypeAndFilters(type, filterArray);
+
       const data = { contextType: type };
       data.items = [
-        ...resources.items.slice(
+        ...allFilteredItems.slice(
           currentShown.items.length,
           currentShown.items.length + currentShown.pageSize,
         ),

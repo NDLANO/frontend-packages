@@ -59,6 +59,8 @@ export { default as Breadcrumblist } from './Breadcrumblist';
 
 export { MessageBox } from './MessageBox';
 
+export { default as AudioPlayer } from './AudioPlayer';
+
 export {
   NavigationHeading,
   NavigationBox,

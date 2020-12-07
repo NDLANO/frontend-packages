@@ -41,17 +41,20 @@ const onSeek = (percent, audioElement, progressPlayed, timeDisplay) => {
 };
 
 export const initAudioPlayers = () => {
-  forEachElement('.c-audio-player', el => {
+  forEachElement('[data-audio-player]', el => {
     const wrapper = el;
     const audioElement = wrapper.querySelector('audio');
-    const playButton = wrapper.querySelector('.c-audio-player__play');
-    const progressBar = wrapper.querySelector('.c-audio-player__progress');
+    const controlsWrapper = wrapper.querySelector('[data-controls]');
+    const playButton = wrapper.querySelector('[data-play]');
+    const progressBar = wrapper.querySelector('[data-progress]');
 
     const toggleStateClasses = playing => {
-      if (playing) {
-        wrapper.classList.add('c-audio-player--playing');
-      } else {
-        wrapper.classList.remove('c-audio-player--playing');
+      if (controlsWrapper) {
+        if (playing) {
+          controlsWrapper.classList.add('playing');
+        } else {
+          controlsWrapper.classList.remove('playing');
+        }
       }
     };
 
@@ -65,14 +68,16 @@ export const initAudioPlayers = () => {
       }
     };
 
-    playButton.onclick = togglePlay;
+    if (playButton) {
+      playButton.onclick = togglePlay;
+    }
 
     if (progressBar) {
       // if complete version
       const progressPlayed = progressBar.querySelector(
-        '.c-audio-player__progress-played',
+        '[data-progress-played]',
       );
-      const timeDisplay = wrapper.querySelector('.c-audio-player__time');
+      const timeDisplay = controlsWrapper.querySelector('[data-time]');
 
       audioElement.addEventListener('timeupdate', () => {
         onTimeUpdate(audioElement, progressPlayed, timeDisplay);

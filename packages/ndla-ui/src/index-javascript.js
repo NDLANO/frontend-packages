@@ -47,7 +47,6 @@ export {
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone } from './Filter';
-export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
 export { default as FileList, File } from './FileList';

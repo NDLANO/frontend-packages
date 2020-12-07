@@ -223,7 +223,7 @@ class FilmSlideshow extends Component {
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <SafeLink
-                to={`/subjects${slideshow[activeSlide].path}`}
+                to={slideshow[activeSlide].path}
                 {...classes('item-wrapper', 'text', {
                   out: !animationComplete,
                 })}>

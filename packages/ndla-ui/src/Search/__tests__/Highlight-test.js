@@ -14,51 +14,48 @@ test('Test that determining whether to highlight path works with locale and not'
   const tests = [
     {
       path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href:
-        '/subjects/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      href: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      expected: true,
+    },
+    {
+      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      href: '/nn/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      expected: true,
+    },
+    {
+      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      href: '/nb/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
       expected: true,
     },
     {
       path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
       href:
-        '/nn/subjects/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+        '/kultspråk/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
       expected: true,
     },
     {
       path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href:
-        '/nb/subjects/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      expected: true,
-    },
-    {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href:
-        '/kultspråk/subjects/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      expected: true,
-    },
-    {
-      path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subjects/subject:123/topic:1:123/topic:2:5343',
+      href: '/nb/subject:123/topic:1:123/topic:2:5343',
       expected: false,
     },
     {
       path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subjects/subject:123/topic:1:123',
+      href: '/nb/subject:123/topic:1:123',
       expected: false,
     },
     {
       path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href: '/nb/subjects/subject:123',
-      expected: false,
-    },
-    {
-      path: '/subject:123/topic:1:123/topic:2:5343',
-      href: '/nb/subjects/subject:123/topic:1:123',
+      href: '/nb/subject:123',
       expected: false,
     },
     {
       path: '/subject:123/topic:1:123/topic:2:5343',
-      href: '/nb/subjects/subject:123',
+      href: '/nb/subject:123/topic:1:123',
+      expected: false,
+    },
+    {
+      path: '/subject:123/topic:1:123/topic:2:5343',
+      href: '/nb/subject:123',
       expected: false,
     },
   ];

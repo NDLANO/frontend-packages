@@ -25,7 +25,7 @@ const HeaderWrapper = styled.div`
   padding: 0 2px;
 `;
 const TypeWrapper = styled.div`
-  flex: 1;
+  flex: 1 0 auto;
   flex-direction: row;
   display: flex;
   min-width: 200px;
@@ -39,12 +39,11 @@ const SubjectName = styled.span`
   margin: 2px 16px;
   b {
     font-size: 18px;
+    margin-right: 4px;
   }
 `;
 
-const Count = styled.span`
-  margin-left: 4px;
-`;
+const Count = styled.span``;
 
 const CategoryTypeButtonWrapper = styled.div`
   margin: 4px;

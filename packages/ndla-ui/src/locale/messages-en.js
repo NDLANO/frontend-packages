@@ -122,6 +122,10 @@ const messages = {
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Remove',
     },
+    contextModal: {
+      button: '+ {count} more contexts',
+      heading: 'The resource is used in several contexts',
+    },
   },
 
   subjectPage: {

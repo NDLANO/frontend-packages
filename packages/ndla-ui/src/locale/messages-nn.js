@@ -122,6 +122,10 @@ const messages = {
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
     },
+    contextModal: {
+      button: '+ {count} fleire stader',
+      heading: 'Ressursen er brukt fleire stader',
+    },
   },
   subjectPage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av emna.',

@@ -121,6 +121,10 @@ const messages = {
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
     },
+    contextModal: {
+      button: '+ {count} flere steder',
+      heading: 'Ressursen er brukt flere steder',
+    },
   },
   subjectPage: {
     errorDescription: 'Beklager, en feil oppsto under lasting av emnene.',

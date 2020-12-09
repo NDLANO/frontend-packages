@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
+import { breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
@@ -23,6 +24,9 @@ const HeaderWrapper = styled.div`
   margin: 15px 0;
   justify-content: space-between;
   padding: 0 2px;
+  ${mq.range({ until: breakpoints.tablet })} {
+    flex-wrap: wrap;
+  }
 `;
 const TypeWrapper = styled.div`
   flex: 1 0 auto;
@@ -60,6 +64,9 @@ const CategoryItems = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
+  ${mq.range({ until: breakpoints.tablet })} {
+    justify-content: flex-start;
+  }
 `;
 
 export type FilterOptionsType = {

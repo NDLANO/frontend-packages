@@ -256,7 +256,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
               <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>
             )}
             <MovieItem inView={inView}>
-              <StyledSafeLink isIE11={isIE11} to={`/subjects${movie.path}`}>
+              <StyledSafeLink isIE11={isIE11} to={movie.path}>
                 <MovieImage
                   role="img"
                   backgroundImage={

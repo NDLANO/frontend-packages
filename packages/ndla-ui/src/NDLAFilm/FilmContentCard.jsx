@@ -25,7 +25,7 @@ const FilmContentCard = ({
       key={id}
       columnWidth={columnWidth}
       style={{ marginRight: `${distanceBetweenItems}px` }}>
-      <SafeLink to={`/subjects${path}`}>
+      <SafeLink to={path}>
         <StyledImage
           role="img"
           columnWidth={columnWidth}

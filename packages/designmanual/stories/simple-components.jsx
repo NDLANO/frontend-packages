@@ -893,7 +893,7 @@ storiesOf('Enkle komponenter', module)
         <CreatedBy
           name={'Artikkelen'}
           description={'er utarbeidet av'}
-          url="https://ndla.no/subjects/subject:26/topic:1:191103/topic:1:4352/resource:1:2052"
+          url="https://ndla.no/subject:26/topic:1:191103/topic:1:4352/resource:1:2052"
         />
       </StoryBody>
     </div>

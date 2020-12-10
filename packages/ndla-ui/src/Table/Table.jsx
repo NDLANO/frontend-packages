@@ -11,25 +11,27 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ZoomOutMap } from '@ndla/icons/common';
 
+import { uuid } from '@ndla/util';
 import Dialog from '../Dialog';
 
 const classes = BEMHelper('c-table');
 
 const Table = ({ children, messages, id, ...rest }) => {
-  const dialogId = `dialog-${id}`;
+  const tableId = id || uuid();
+  const dialogId = `dialog-${tableId}`;
 
   return (
     <div {...classes('wrapper')}>
       <div {...classes('content')}>
         <div {...classes('left-shadow')} />
-        <table id={id} {...classes({ extra: ['o-table'] })} {...rest}>
+        <table id={tableId} {...classes({ extra: ['o-table'] })} {...rest}>
           {children}
         </table>
         <button
           type="button"
           data-dialog-trigger-id={dialogId}
-          data-dialog-source-id={id}
-          data-table-id={id}
+          data-dialog-source-id={tableId}
+          data-table-id={tableId}
           {...classes('expand-button')}
           aria-label={messages.expandButtonLabel}>
           <ZoomOutMap />
@@ -54,7 +56,7 @@ const Table = ({ children, messages, id, ...rest }) => {
 };
 
 Table.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   messages: PropTypes.shape({
     dialogCloseButton: PropTypes.string.isRequired,
     expandButtonLabel: PropTypes.string.isRequired,

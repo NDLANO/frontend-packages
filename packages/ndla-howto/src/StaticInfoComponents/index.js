@@ -1,6 +1,5 @@
-import React from 'react';
 import AudioPlayerExamples from './components/AudioExample';
-import FactboxExample from './components/FactboxExample';
+import FactBoxExample from './components/FactBoxExample';
 import SolutionExample from './components/SolutionExample';
 import Markdown from './components/Markdown';
 
@@ -17,7 +16,7 @@ export const stories = {
     body: [
       {
         type: 'component',
-        content: <FactboxExample />,
+        content: FactBoxExample,
       },
     ],
   },
@@ -51,7 +50,7 @@ export const stories = {
     body: [
       {
         type: 'component',
-        content: <SolutionExample />,
+        content: SolutionExample,
       },
     ],
   },
@@ -90,7 +89,7 @@ export const stories = {
       },
       {
         type: 'component',
-        content: <AudioPlayerExamples />,
+        content: AudioPlayerExamples,
       },
     ],
   },

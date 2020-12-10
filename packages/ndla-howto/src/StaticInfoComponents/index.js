@@ -1,4 +1,3 @@
-import React from 'react';
 import AudioPlayerExamples from './components/AudioExample';
 import FactBoxExample from './components/FactBoxExample';
 import SolutionExample from './components/SolutionExample';

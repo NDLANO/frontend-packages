@@ -17,7 +17,7 @@ export const stories = {
     body: [
       {
         type: 'component',
-        content: <FactboxExample />,
+        content: FactboxExample,
       },
     ],
   },
@@ -51,7 +51,7 @@ export const stories = {
     body: [
       {
         type: 'component',
-        content: <SolutionExample />,
+        content: SolutionExample,
       },
     ],
   },
@@ -90,7 +90,7 @@ export const stories = {
       },
       {
         type: 'component',
-        content: <AudioPlayerExamples />,
+        content: AudioPlayerExamples,
       },
     ],
   },

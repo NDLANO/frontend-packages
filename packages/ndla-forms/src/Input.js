@@ -206,7 +206,7 @@ Input.propTypes = {
   iconLeft: PropTypes.node,
   tags: PropTypes.node,
   container: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   white: PropTypes.bool,

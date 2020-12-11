@@ -19,19 +19,10 @@ const Additional = props => (
     {...props}>
     <g>
       <title>Tilleggstoff</title>
-      <g
-        id="icon/tilleggstoff"
-        stroke="none"
-        fill="none"
-        strokeWidth="1"
-        fillRule="evenodd">
-        <g
-          id="Group-2"
-          transform="translate(1.000000, 1.000000)"
-          fillRule="nonzero">
-          <circle id="Oval" stroke="#184673" cx="10.5" cy="10.5" r="10.5" />
+      <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
+        <g transform="translate(1.000000, 1.000000)" fillRule="nonzero">
+          <circle stroke="#184673" cx="10.5" cy="10.5" r="10.5" />
           <polygon
-            id="Shape"
             fill="#184673"
             points="9.3 8.886 7 8.886 7 7 13.9 7 13.9 8.932 11.6 8.932 11.6 15.694 9.3 15.694"
           />

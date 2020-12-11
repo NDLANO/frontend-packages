@@ -14,7 +14,7 @@ import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
-const StyledLicenseIconItem = styled.li`
+export const StyledLicenseIconItem = styled.li`
   display: flex;
   padding-bottom: 5px;
   margin-bottom: 0;
@@ -42,8 +42,16 @@ const StyledLicenseIconItem = styled.li`
     height: 24px;
     min-width: 24px;
   }
-
-  &:hover {
+`;
+export const StyledLicenseIconButton = styled.button`
+  display: flex;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  &:hover,
+  &:focus {
     svg {
       color: ${colors.brand.primary};
     }
@@ -62,10 +70,12 @@ const LicenseIconItem = ({ licenseRight, locale }) => {
 
   return (
     <StyledLicenseIconItem>
-      <LicenseIcon licenseRight={licenseRight} description={description} />
-      <span>
-        {getLicenseRightByAbbreviation(licenseRight, locale).description}
-      </span>
+      <StyledLicenseIconButton>
+        <LicenseIcon licenseRight={licenseRight} description={description} />
+        <span role="tooltip">
+          {getLicenseRightByAbbreviation(licenseRight, locale).description}
+        </span>
+      </StyledLicenseIconButton>
     </StyledLicenseIconItem>
   );
 };

@@ -9,6 +9,7 @@
 import React from 'react';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { uuid } from '@ndla/util';
+import { injectT, tType } from '@ndla/i18n';
 
 // @ts-ignore
 import { Home } from '@ndla/icons/common';
@@ -30,12 +31,13 @@ interface Props {
   invertedStyle: boolean;
 }
 
-const Breadcrumb: React.FunctionComponent<Props> = ({
+const Breadcrumb: React.FunctionComponent<Props & tType> = ({
   children,
   items,
   invertedStyle,
+  t,
 }) => (
-  <div>
+  <nav aria-label={t('breadcrumb.breadcrumb')}>
     {children}
     <ol {...classes('list')}>
       {items.map((item, i) => (
@@ -51,7 +53,7 @@ const Breadcrumb: React.FunctionComponent<Props> = ({
         </BreadcrumbItem>
       ))}
     </ol>
-  </div>
+  </nav>
 );
 
-export default Breadcrumb;
+export default injectT(Breadcrumb);

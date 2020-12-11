@@ -903,8 +903,10 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Kodeblokk">
         <p>Lær deg HTML, CSS og Javascript.</p>
       </StoryIntro>
-      <StoryBody>
-        <CodeblockExample />
-      </StoryBody>
+      <OneColumn>
+        <LayoutItem layout="extend">
+          <CodeblockExample />
+        </LayoutItem>
+      </OneColumn>
     </div>
   ));

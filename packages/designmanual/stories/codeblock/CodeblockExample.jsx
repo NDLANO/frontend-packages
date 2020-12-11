@@ -71,7 +71,7 @@ const CodeExample = () => (
         description: 'Show copy code button',
       },
     ]}
-    status={2}
+    status={3}
     messages={[
       'react-syntax-highlighter implemented with Prism',
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',

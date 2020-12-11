@@ -621,10 +621,14 @@ storiesOf('Grunnstiler', module)
           NDLA bruker fontene{' '}
           <a href="https://fonts.google.com/specimen/Source+Serif+Pro">
             Source Serif Pro
-          </a>{' '}
-          og{' '}
+          </a>
+          ,{' '}
           <a href="https://fonts.google.com/specimen/Source+Sans+Pro">
             Source Sans Pro
+          </a>{' '}
+          og{' '}
+          <a href="https://fonts.google.com/specimen/Source+Code+Pro">
+            Source Code Pro
           </a>
           .
         </p>

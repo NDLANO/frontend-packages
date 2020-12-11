@@ -22,24 +22,12 @@ import { Done } from '@ndla/icons/editor';
 import { getTitleFromFormat } from '../CodeBlockEditor';
 
 const Wrapper = styled.div`
-  padding: 10px 26px;
-  background: ${colors.brand.greyLighter};
   margin: 15px 0;
   code {
     margin:0;
     padding:0;
   }
   [class^="language-"] { {
-    border-left: 4px solid ${colors.brand.primary};
-    padding: 0;
-    background: #fff;
-    font-family: 'Source Code Pro';
-    font-size: 16px !important;
-    code:first-of-type {
-      border-right: 2px solid ${colors.brand.greyLightest};
-      margin-right: 10px;
-      user-select: none;
-    }
     & > span:first-of-type {
       margin-top: 10px;
       display:block;
@@ -63,6 +51,28 @@ const Title = styled.h3`
   color: ${colors.text.primary};
   margin: 5px 0;
 `;
+
+const syntaxHighlighterStyle = {
+  ...coy,
+  'code[class*="language-"]': {
+    ...coy['code[class*="language-"]'],
+    fontFamily: 'Source Code Pro, Monaco',
+    fontSize: '14px',
+    background: colors.brand.greyLighter,
+    borderLeft: `4px solid ${colors.brand.dark}`,
+    padding: '0',
+  },
+};
+
+const lineNumberContainerStyle = {
+  padding: '10px',
+  float: 'left',
+  borderRight: '1px solid #D8D8D8',
+  borderLeft: 0,
+  marginRight: '10px',
+  userSelect: 'none',
+  color: '#979797',
+};
 
 type Props = {
   code: string;
@@ -99,15 +109,8 @@ export const Codeblock: FC<Props & tType> = ({
         {actionButton}
       </TitleBar>
       <SyntaxHighlighter
-        customStyle={{
-          padding: '0',
-          overflowX: 'auto',
-        }}
-        lineNumberContainerStyle={{
-          padding: '10px 10px 10px 0',
-          float: 'left',
-        }}
-        style={coy}
+        lineNumberContainerStyle={lineNumberContainerStyle}
+        style={syntaxHighlighterStyle}
         language={format}
         wrapLines
         showInlineLineNumbers={false}

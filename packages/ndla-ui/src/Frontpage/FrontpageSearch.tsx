@@ -34,10 +34,10 @@ const StyledWrapper = styled.section`
 const StyledSearchBackdrop = styled.div`
   position: fixed;
   z-index: 1;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(1, 1, 1, 0.3);
   ${animations.fadeIn(animations.durations.fast)};
 `;
@@ -151,6 +151,13 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
     };
   }, [inputHasFocus]);
 
+  const onBlur = () => {
+    // This is needed when user tabs out of field
+    if (!searchFieldValue) {
+      onInputBlur();
+    }
+  };
+
   return (
     <div ref={searchFieldRef}>
       <StyledWrapper>
@@ -175,6 +182,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
             placeholder={searchFieldPlaceholder}
             messages={messages}
             loading={loading}
+            onBlur={onBlur}
           />
           {searchFieldValue !== '' && inputHasFocus && (
             <SearchResultSleeve

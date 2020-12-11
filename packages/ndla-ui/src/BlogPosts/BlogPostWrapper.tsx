@@ -13,7 +13,7 @@ import { spacing, mq, breakpoints } from '@ndla/core';
 type StyledGridProps = {
   oneColumn?: boolean;
 };
-const StyledGrid = styled.section<StyledGridProps>`
+const StyledGrid = styled.div<StyledGridProps>`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

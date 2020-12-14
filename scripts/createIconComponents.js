@@ -9,7 +9,7 @@ const prettier = require('prettier');
 const prettierOptions = require('../.prettierrc');
 
 const rootDir = path.join(__dirname, '..', 'packages', 'ndla-icons');
-const attrs = ['xlink:href'];
+const attrs = ['xlink:href', 'id'];
 
 const copyright = fs.readFileSync(
   path.join(__dirname, '..', 'COPYRIGHT'),

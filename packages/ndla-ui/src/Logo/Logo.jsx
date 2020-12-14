@@ -42,7 +42,7 @@ export const Logo = ({
       <SvgLogo name={name} color={color} locale={locale} />
     </Fragment>
   );
-  return <h1 {...logoClasses('', modifiers)}>{logo}</h1>;
+  return <div {...logoClasses('', modifiers)}>{logo}</div>;
 };
 
 Logo.propTypes = {

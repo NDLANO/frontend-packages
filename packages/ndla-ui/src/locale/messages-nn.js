@@ -539,6 +539,7 @@ const messages = {
   breadcrumb: {
     toFrontpage: 'NDLA framside',
     youAreHere: 'Du er her',
+    breadcrumb: 'Brødsmulesti',
   },
   listview: {
     search: {

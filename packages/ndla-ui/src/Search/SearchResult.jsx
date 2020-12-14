@@ -30,7 +30,7 @@ export const SearchResult = ({
   <Trans>
     {({ t }) => (
       <Fragment>
-        <h2 aria-hidden="true" {...resultClasses('result-label')}>
+        <h2 {...resultClasses('result-label')}>
           {!hideResultText ? messages.resultHeading : '\u00A0'}
         </h2>
 

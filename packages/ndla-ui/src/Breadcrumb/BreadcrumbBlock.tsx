@@ -9,6 +9,7 @@
 import React, { useRef } from 'react';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
+import { injectT, tType } from '@ndla/i18n';
 import BreadcrumbItem from './BreadcrumbItem';
 import { BreadcrumbItemI } from './Breadcrumb';
 
@@ -22,9 +23,10 @@ interface Props {
   items: BreadcrumbItemI[];
 }
 
-const BreadcrumbBlock: React.FunctionComponent<Props> = ({
+const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({
   children,
   items,
+  t,
 }) => {
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,7 +55,10 @@ const BreadcrumbBlock: React.FunctionComponent<Props> = ({
   }, [size]);
 
   return (
-    <div {...classes('')} ref={containerRef}>
+    <nav
+      {...classes('')}
+      ref={containerRef}
+      aria-label={t('breadcrumb.ariaLabel')}>
       {children}
       <ol {...classes('list')} ref={olRef}>
         {items.map((item, i) => (
@@ -74,8 +79,8 @@ const BreadcrumbBlock: React.FunctionComponent<Props> = ({
           </BreadcrumbItem>
         ))}
       </ol>
-    </div>
+    </nav>
   );
 };
 
-export default BreadcrumbBlock;
+export default injectT(BreadcrumbBlock);

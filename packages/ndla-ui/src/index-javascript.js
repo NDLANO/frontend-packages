@@ -148,8 +148,6 @@ export { Translation, TranslationLine, TranslationBox } from './Translation';
 
 export { default as ContentLoader } from './ContentLoader';
 
-export { default as constants } from './model';
-
 export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';

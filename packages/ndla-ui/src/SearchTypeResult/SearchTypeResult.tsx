@@ -42,13 +42,13 @@ const Overlay = styled.div`
 `;
 
 export type ContentType =
-  | constants.contentTypes.SUBJECT_MATERIAL
-  | constants.contentTypes.TASKS_AND_ACTIVITIES
-  | constants.contentTypes.ASSESSMENT_RESOURCES
-  | constants.contentTypes.EXTERNAL_LEARNING_RESOURCES
-  | constants.contentTypes.SOURCE_MATERIAL
-  | constants.contentTypes.LEARNING_PATH
-  | constants.contentTypes.TOPIC;
+  | typeof constants.contentTypes.SUBJECT_MATERIAL
+  | typeof constants.contentTypes.TASKS_AND_ACTIVITIES
+  | typeof constants.contentTypes.ASSESSMENT_RESOURCES
+  | typeof constants.contentTypes.EXTERNAL_LEARNING_RESOURCES
+  | typeof constants.contentTypes.SOURCE_MATERIAL
+  | typeof constants.contentTypes.LEARNING_PATH
+  | typeof constants.contentTypes.TOPIC;
 
 type Props = {
   items: SearchItemType[];

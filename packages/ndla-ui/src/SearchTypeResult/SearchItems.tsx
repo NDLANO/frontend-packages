@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 type ContainerProps = {
   itemCount: number;
-  type: string;
+  type?: string;
 };
 
 const Container = styled.div<ContainerProps>`
@@ -40,7 +40,7 @@ const Container = styled.div<ContainerProps>`
 
 type Props = {
   items: SearchItemType[];
-  type: ContentType;
+  type?: ContentType;
 };
 const SearchItems = ({ items, type }: Props) => (
   <Wrapper>

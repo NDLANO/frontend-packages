@@ -11,6 +11,14 @@ import styled from '@emotion/styled';
 
 import { breakpoints, colors, fonts, mq } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
+// @ts-ignore
+import Button from '@ndla/button';
+// @ts-ignore
+import { Play } from '@ndla/icons/common';
+// @ts-ignore
+import { ArrowExpand } from '@ndla/icons/editor';
+// @ts-ignore
+import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
 
 type ItemWrapperProps = {
   hasMedia?: boolean;
@@ -43,9 +51,9 @@ const TitleWrapper = styled.span`
 
 const MediaWrapper = styled.div`
   margin-bottom: 24px;
+  position: relative;
 `;
 const LabelsWrapper = styled.div`
-  margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   column-gap: 4px;
@@ -69,12 +77,45 @@ const Image = styled.img`
   border-radius: 5px;
 `;
 
+const ShowMediaWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  &:after {
+    background: #000;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+  }
+`;
+const ShowMediaButtonWrapper = styled.div`
+  z-index: 1;
+`;
+const ShowMediaButtonText = styled.span`
+  margin-left: 4px;
+`;
+
+type MediaProps = {
+  type: 'video' | 'other';
+  element: React.ReactNode;
+};
+
 export type SearchNotionItemProps = {
   id: string;
   title: string;
   text: React.ReactNode;
   image?: { url: string; alt: string };
-  media?: React.ReactNode;
+  media?: MediaProps;
   labels?: string[];
 };
 
@@ -87,6 +128,50 @@ const SearchNotionItem = ({
   t,
 }: SearchNotionItemProps & tType) => {
   const hasMedia = !!(image || media);
+  const ShowMediaButton = ({ type, element }: MediaProps) => {
+    return (
+      <ShowMediaButtonWrapper>
+        <Modal
+          activateButton={
+            <Button lighter size="xsmall" borderShape="rounded">
+              {type === 'video' && (
+                <>
+                  <Play />
+                  <ShowMediaButtonText>
+                    {t('searchPage.resultType.showVideo')}
+                  </ShowMediaButtonText>
+                </>
+              )}
+              {type === 'other' && (
+                <>
+                  <ArrowExpand />
+                  <ShowMediaButtonText>
+                    {t('searchPage.resultType.showNotion')}
+                  </ShowMediaButtonText>
+                </>
+              )}
+            </Button>
+          }
+          animation="subtle"
+          animationDuration={50}
+          backgroundColor="white"
+          size="medium">
+          {(onClose: () => void) => (
+            <>
+              <ModalHeader>
+                <ModalCloseButton
+                  onClick={onClose}
+                  title={t('searchPage.close')}
+                />
+              </ModalHeader>
+              <ModalBody>{element}</ModalBody>
+            </>
+          )}
+        </Modal>
+      </ShowMediaButtonWrapper>
+    );
+  };
+
   return (
     <ItemWrapper hasMedia={hasMedia}>
       <TextWrapper>
@@ -107,7 +192,11 @@ const SearchNotionItem = ({
       {hasMedia && (
         <MediaWrapper>
           {image && <Image src={image.url} alt={image.alt} />}
-          {media && media}
+          {media && (
+            <ShowMediaWrapper>
+              <ShowMediaButton type={media.type} element={media.element} />
+            </ShowMediaWrapper>
+          )}
         </MediaWrapper>
       )}
     </ItemWrapper>

@@ -120,6 +120,8 @@ const messages = {
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
+      showVideo: 'Se video',
+      showNotion: 'Se forklaring',
     },
     contextModal: {
       button: '+ {count} flere steder',

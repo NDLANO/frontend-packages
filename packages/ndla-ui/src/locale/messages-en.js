@@ -121,6 +121,8 @@ const messages = {
       notionLabels: 'Used in',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Remove',
+      showVideo: 'Watch video',
+      showNotion: 'Show notion',
     },
     contextModal: {
       button: '+ {count} more contexts',

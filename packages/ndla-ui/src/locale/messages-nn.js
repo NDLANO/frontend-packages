@@ -121,6 +121,12 @@ const messages = {
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
+      showVideo: 'Sjå video',
+      showNotion: 'Sjå forklaring',
+    },
+    contextModal: {
+      button: '+ {count} fleire stader',
+      heading: 'Ressursen er brukt fleire stader',
     },
   },
   subjectPage: {

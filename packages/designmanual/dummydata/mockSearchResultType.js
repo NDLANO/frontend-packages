@@ -64,7 +64,7 @@ const topicResults = [
     },
     contexts: [
       { breadcrumb: ['Kroppsøving', 'Helse og livsstil'], url: '#1' },
-      { breadcrumb: ['Kroppsøving', 'Helse og livsstil'], url: '#1' },
+      { breadcrumb: ['Kroppsøving', 'Helse og livsstil'], url: '#2' },
     ],
   },
   {
@@ -80,7 +80,7 @@ const topicResults = [
     },
     contexts: [
       { breadcrumb: ['Medieuttrykk og mediesamfunnet Vg2 og Vg3'], url: '#1' },
-      { breadcrumb: ['Medieuttrykk og mediesamfunnet Vg2 og Vg3'], url: '#1' },
+      { breadcrumb: ['Medieuttrykk og mediesamfunnet Vg2 og Vg3'], url: '#2' },
     ],
   },
   {
@@ -96,7 +96,7 @@ const topicResults = [
     },
     contexts: [
       { breadcrumb: ['Naturbruk Vg1', 'Hestefag'], url: '#1' },
-      { breadcrumb: ['Naturbruk Vg1', 'Hestefag'], url: '#1' },
+      { breadcrumb: ['Naturbruk Vg1', 'Hestefag'], url: '#2' },
     ],
   },
   {
@@ -123,7 +123,7 @@ const topicResults = [
           'Medieuttrykk og mediesamfunnet Vg2 og Vg3',
           'Medieproduksjon',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -145,7 +145,7 @@ const topicResults = [
       },
       {
         breadcrumb: ['Medie- og informasjonskunnskap', 'Medieproduksjon'],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -203,7 +203,7 @@ const topicResults = [
       },
       {
         breadcrumb: ['Frisør, blomster, interiør og eksponeringsdesign Vg1'],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -278,7 +278,7 @@ const topicResults = [
           'Frisør, blomster, interiør og eksponeringsdesign Vg1',
           'Visualisering ',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -316,7 +316,7 @@ const topicResults = [
     },
     contexts: [
       { breadcrumb: ['Norsk SF Vg1'], url: '#1' },
-      { breadcrumb: ['Norsk SF Vg1'], url: '#1' },
+      { breadcrumb: ['Norsk SF Vg1'], url: '#2' },
     ],
   },
   {
@@ -332,9 +332,9 @@ const topicResults = [
     },
     contexts: [
       { breadcrumb: ['Norsk'], url: '#1' },
-      { breadcrumb: ['Norsk'], url: '#1' },
-      { breadcrumb: ['Norsk'], url: '#1' },
-      { breadcrumb: ['Norsk'], url: '#1' },
+      { breadcrumb: ['Norsk'], url: '#2' },
+      { breadcrumb: ['Norsk'], url: '#3' },
+      { breadcrumb: ['Norsk'], url: '#4' },
     ],
   },
   {
@@ -350,8 +350,8 @@ const topicResults = [
     },
     contexts: [
       { breadcrumb: ['Barne- og ungdomsarbeiderfag Vg2'], url: '#1' },
-      { breadcrumb: ['Barne- og ungdomsarbeiderfag Vg2'], url: '#1' },
-      { breadcrumb: ['Barne- og ungdomsarbeiderfag Vg2'], url: '#1' },
+      { breadcrumb: ['Barne- og ungdomsarbeiderfag Vg2'], url: '#2' },
+      { breadcrumb: ['Barne- og ungdomsarbeiderfag Vg2'], url: '#3' },
     ],
   },
   {
@@ -411,7 +411,7 @@ const subjectMaterialResults = [
           'Helse og livsstil',
           'Uheldige sider ved trening',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -438,7 +438,7 @@ const subjectMaterialResults = [
           'Helse og livsstil',
           'Uheldige sider ved trening',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -460,7 +460,7 @@ const subjectMaterialResults = [
       },
       {
         breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Idrettsskader'],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -504,7 +504,7 @@ const subjectMaterialResults = [
       },
       {
         breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Idrettsskader'],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -528,7 +528,7 @@ const subjectMaterialResults = [
           'Informasjonsteknologi og medieproduksjon Vg1',
           'Videoproduksjon',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -579,7 +579,7 @@ const subjectMaterialResults = [
           'Medietekster og medieanalyse',
           'Fortelleteknikk i medietekster',
         ],
-        url: '#1',
+        url: '#2',
       },
       {
         breadcrumb: [
@@ -587,7 +587,7 @@ const subjectMaterialResults = [
           'Medieproduksjon',
           'Levende bilder',
         ],
-        url: '#1',
+        url: '#3',
       },
       {
         breadcrumb: [
@@ -595,7 +595,7 @@ const subjectMaterialResults = [
           'Medieproduksjon',
           'Levende bilder',
         ],
-        url: '#1',
+        url: '#4',
       },
       {
         breadcrumb: [
@@ -603,7 +603,7 @@ const subjectMaterialResults = [
           'Medieproduksjon',
           'Videoproduksjon',
         ],
-        url: '#1',
+        url: '#5',
       },
     ],
   },
@@ -643,7 +643,7 @@ const subjectMaterialResults = [
       },
       {
         breadcrumb: ['Mediesamfunnet og medieuttrykk Vg1', 'Video'],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -717,7 +717,7 @@ const subjectMaterialResults = [
           'Helse og livsstil',
           'Uheldige sider ved trening',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -747,7 +747,7 @@ const subjectMaterialResults = [
           'Helse og livsstil',
           'Uheldige sider ved trening',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -776,7 +776,7 @@ const subjectMaterialResults = [
           'Informasjonsteknologi og medieproduksjon Vg1',
           'Praktisk IT',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -799,7 +799,7 @@ const subjectMaterialResults = [
       },
       {
         breadcrumb: ['Håndverk, design og produktutvikling Vg1', 'Keramikk'],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -884,7 +884,7 @@ const subjectMaterialResults = [
           'Trearbeid',
           'Verktøy',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -1102,7 +1102,7 @@ const resourcesExternalResults = [
           'Design og håndverk Vg1 2019-2020',
           'Tverrfaglige arbeidsoppdrag',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -1130,7 +1130,7 @@ const resourcesExternalResults = [
           'Design og håndverk Vg1 2019-2020',
           'Tverrfaglige arbeidsoppdrag',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -1158,7 +1158,7 @@ const resourcesExternalResults = [
           'Design og håndverk Vg1 2019-2020',
           'Tverrfaglige arbeidsoppdrag',
         ],
-        url: '#1',
+        url: '#2',
       },
     ],
   },
@@ -1188,35 +1188,35 @@ const resourcesExternalResults = [
           'Bærekraftig utvikling',
           'Feltarbeid – vi undersøker et økosystem',
         ],
-        url: '#1',
+        url: '#2',
       },
       {
         breadcrumb: ['Naturfag Påbygg', 'Nyttig fra naturfag', 'Verktøy'],
-        url: '#1',
+        url: '#3',
       },
       {
         breadcrumb: ['Naturfag Påbygg', 'Nyttig fra naturfag', 'Verktøy'],
-        url: '#1',
+        url: '#4',
       },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
-      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#1' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#5' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#6' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#7' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#8' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#9' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#10' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#11' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#12' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#13' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#14' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#15' },
+      { breadcrumb: ['Naturfag', 'Nyttig i naturfag', 'Verktøy'], url: '#16' },
       {
         breadcrumb: ['Naturbruk Vg1', 'Naturgrunnlaget', 'Økologi og kretsløp'],
-        url: '#1',
+        url: '#17',
       },
       {
         breadcrumb: ['Naturbruk Vg1', 'Naturgrunnlaget', 'Økologi og kretsløp'],
-        url: '#1',
+        url: '#18',
       },
     ],
   },
@@ -1322,39 +1322,6 @@ const resourcesSourceMaterialResults = [
     ],
   },
 ];
-
-const searchTypeFilterOptions = {
-  subject: [],
-  'learning-path': [],
-  'subject-material': [
-    {
-      name: 'Veiledning',
-      id: 'urn:resourcetype:guidance',
-    },
-    {
-      name: 'Forelesning og presentasjon',
-      id: 'urn:resourcetype:lectureAndPresentation',
-    },
-    {
-      name: 'Fagartikkel',
-      id: 'urn:resourcetype:academicArticle',
-    },
-  ],
-  'tasks-and-activities': [
-    {
-      name: 'Oppgave',
-      id: 'urn:resourcetype:task',
-    },
-    {
-      name: 'Øvelse',
-      id: 'urn:resourcetype:exercise',
-    },
-  ],
-  'assessment-resources': [],
-  'external-learning-resources': [],
-  'source-material': [],
-  topic: [],
-};
 
 const searchSubjectTypeOptions = [
   {
@@ -1486,10 +1453,13 @@ export const notionResults = [
     text:
       'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
     image: {
-      url: 'https://api.ndla.no/image-api/raw/id/40164',
+      url: 'https://api.ndla.no/image-api/raw/id/40164?width=660',
       alt: 'And',
     },
     labels: ['Naturbruk Vg1'],
+    media: {
+      type: 'video',
+    },
   },
   {
     id: 2,
@@ -1497,17 +1467,19 @@ export const notionResults = [
     text:
       'Hos breiflabben – eller marulken som den også kalles – utgjør det store hodet om lag halvparten av den totale lengden. Den finnes fra fjæra og ned til 600 meters dyp, der den gjemmer seg blant planter eller delvis nedgravd i sanden. Breiflabben lever hovedsakelig av fisk og skalldyr.',
     image: {
-      url: 'https://api.ndla.no/image-api/raw/id/9825',
+      url: 'https://api.ndla.no/image-api/raw/id/9825?width=660',
       alt: 'Breiflabb',
     },
     labels: ['Naturbruk Vg1'],
+    media: {
+      type: 'other',
+    },
   },
 ];
 
 export {
   topicResults,
   subjectMaterialResults,
-  searchTypeFilterOptions,
   searchSubjectTypeOptions,
   subjectTypeResults,
   resourcesTasksAndActivitiesResults,

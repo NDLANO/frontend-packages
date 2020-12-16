@@ -10,7 +10,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Spinner from '../Spinner';
-// @ts-ignore
 import constants from '../model';
 import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
 import SearchItems from './SearchItems';

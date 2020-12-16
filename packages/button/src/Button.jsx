@@ -195,8 +195,8 @@ export const borderShapes = {
     padding-left: 20px;
     padding-right: 20px;
     ${size === 'xsmall' &&
-      `padding-left: 4.5px;
-       padding-right: 4.5px;`}
+      `padding-left: 10px;
+       padding-right: 10px;`}
      ${size === 'small' &&
        `padding-left:${spacing.small};
        padding-right:${spacing.small};`}

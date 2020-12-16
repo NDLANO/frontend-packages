@@ -78,3 +78,5 @@ export {
   SearchNotionsResult,
   SearchSubjectResult,
 } from './SearchTypeResult';
+
+export { default as constants } from './model';

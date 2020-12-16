@@ -9,10 +9,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
-import { ChevronRight } from '@ndla/icons/common';
+import { ChevronRight, Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import { injectT, tType } from '@ndla/i18n';
+// @ts-ignore
+import Button from '@ndla/button';
+// @ts-ignore
+import Modal, { ModalCloseButton } from '@ndla/modal';
 
-import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -43,11 +48,15 @@ const resourceTypeColor = (type: string) => {
   }
 };
 
+type ItemTypeProps = {
+  type?: ContentType;
+};
+
 const ItemWrapper = styled.div`
   flex-direction: column;
 `;
 
-const ItemHead = styled.div`
+const ItemHead = styled.div<ItemTypeProps>`
   height: 200px;
   position: relative;
   a {
@@ -59,6 +68,11 @@ const ItemHead = styled.div`
   ${mq.range({ from: breakpoints.desktop })} {
     height: 100px;
   }
+  border: 1px solid
+    ${props => props.type && `${resourceTypeColor(props.type)};`};
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -67,10 +81,6 @@ const ItemHead = styled.div`
     object-fit: cover;
   }
 `;
-
-type ItemTypeProps = {
-  type?: ContentType;
-};
 
 const ItemIcon = styled.div<ItemTypeProps>`
   height: 100%;
@@ -120,8 +130,11 @@ const ItemText = styled.p`
 `;
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 const BreadcrumbItem = styled.span`
@@ -130,9 +143,60 @@ const BreadcrumbItem = styled.span`
   flex-wrap: wrap;
 `;
 
+const ContextsWrapper = styled.div`
+  margin-top: 10px;
+  button {
+    ${fonts.sizes('16px', '24px')};
+    box-shadow: none;
+    &:hover {
+      box-shadow: inset 0 -1px;
+    }
+  }
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${spacing.normal} ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.normal} ${spacing.large};
+  }
+`;
+
+const ModalHeading = styled.h2`
+  margin: 0;
+  ${fonts.sizes('16px', '20px')};
+  font-weight: 600;
+`;
+
+const ModalContent = styled.div`
+  padding: 0 ${spacing.small} ${spacing.normal};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: 0 ${spacing.large} ${spacing.normal};
+  }
+`;
+
+const ContextList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+const ContextListItem = styled.li`
+  margin-bottom: 24px;
+  ${fonts.sizes('16px', '28px')};
+`;
+
+const IconWrapper = styled.div`
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+`;
+
 type context = {
   breadcrumb: string[];
   url: string;
+  isAdditional?: boolean;
 };
 
 export type SearchItemType = {
@@ -149,13 +213,34 @@ type Props = {
   item: SearchItemType;
   type?: ContentType;
 };
-const SearchItem = ({ item, type }: Props) => {
+const SearchItem = ({ item, type, t }: Props & tType) => {
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
-  const mainContext = contexts[0]; // Until we can handle several contexts
+  const mainContext = contexts[0];
+
+  const Breadcrumb = ({
+    breadcrumb,
+    children,
+  }: {
+    breadcrumb: string[];
+    children?: React.ReactNode;
+  }) => (
+    <BreadcrumbPath>
+      {breadcrumb.map((breadcrumbItem: string, i: number) => {
+        return (
+          <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
+            <span>{breadcrumbItem}</span>
+            {i !== mainContext.breadcrumb.length - 1 && <ChevronRight />}
+          </BreadcrumbItem>
+        );
+      })}
+      {children}
+    </BreadcrumbPath>
+  );
+
   return (
     <>
       <ItemWrapper>
-        <ItemHead>
+        <ItemHead type={type}>
           {img ? (
             <SafeLink to={url}>
               <img src={img.url} alt={img.alt} />
@@ -182,25 +267,63 @@ const SearchItem = ({ item, type }: Props) => {
             <SafeLink to={url}>{title}</SafeLink>
           </ItemTitle>
           <ItemText>{ingress}</ItemText>
-          <BreadcrumbPath>
-            {mainContext &&
-              mainContext.breadcrumb.map(
-                (breadcrumbItem: string, i: number) => {
-                  return (
-                    <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
-                      <span>{breadcrumbItem}</span>
-                      {i !== mainContext.breadcrumb.length - 1 && (
-                        <ChevronRight />
-                      )}
-                    </BreadcrumbItem>
-                  );
-                },
-              )}
-          </BreadcrumbPath>
+          {mainContext && <Breadcrumb breadcrumb={mainContext.breadcrumb} />}
+          {contexts.length > 1 && (
+            <ContextsWrapper>
+              <Modal
+                activateButton={
+                  <Button link>
+                    {t('searchPage.contextModal.button', {
+                      count: contexts.length - 1,
+                    })}
+                  </Button>
+                }
+                animation="subtle"
+                animationDuration={50}
+                backgroundColor="white"
+                size="medium">
+                {(onClose: () => void) => (
+                  <>
+                    <ModalHeader>
+                      <ModalHeading>
+                        {t('searchPage.contextModal.heading')}
+                      </ModalHeading>
+                      <ModalCloseButton
+                        onClick={onClose}
+                        title={t('searchPage.close')}
+                      />
+                    </ModalHeader>
+                    <ModalContent>
+                      <ContextList>
+                        {contexts.map(context => (
+                          <ContextListItem key={context.url}>
+                            <SafeLink to={context.url}>{title}</SafeLink>
+                            <Breadcrumb breadcrumb={context.breadcrumb}>
+                              <IconWrapper>
+                                {context.isAdditional ? (
+                                  <Additional
+                                    style={{ width: '22px', height: '22px' }}
+                                  />
+                                ) : (
+                                  <Core
+                                    style={{ width: '22px', height: '22px' }}
+                                  />
+                                )}
+                              </IconWrapper>
+                            </Breadcrumb>
+                          </ContextListItem>
+                        ))}
+                      </ContextList>
+                    </ModalContent>
+                  </>
+                )}
+              </Modal>
+            </ContextsWrapper>
+          )}
         </ItemContent>
       </ItemWrapper>
     </>
   );
 };
 
-export default SearchItem;
+export default injectT(SearchItem);

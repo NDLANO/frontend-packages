@@ -37,6 +37,7 @@ const ItemTitle = styled.h2`
   font-size: 18px;
   line-height: 18px;
   margin-top: 8px;
+  font-weight: 600;
 `;
 const ItemText = styled.span`
   a {

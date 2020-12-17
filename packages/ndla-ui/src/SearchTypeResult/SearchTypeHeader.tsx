@@ -44,6 +44,7 @@ const SubjectName = styled.span`
   b {
     font-size: 18px;
     margin-right: 4px;
+    font-weight: 600;
   }
 `;
 
@@ -107,7 +108,12 @@ const SearchTypeHeader = ({
             <Button
               size="small"
               lighter={!option.active}
-              onClick={() => onFilterClick(option.id)}>
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                if (e.currentTarget && option.active) {
+                  e.currentTarget.blur();
+                }
+                onFilterClick(option.id);
+              }}>
               {option.name}
             </Button>
           </CategoryTypeButtonWrapper>

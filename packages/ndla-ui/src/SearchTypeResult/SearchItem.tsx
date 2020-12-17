@@ -122,6 +122,7 @@ const ItemTitle = styled.h3`
   font-size: 18px;
   line-height: 24px;
   margin-top: 14px;
+  font-weight: 600;
 `;
 const ItemText = styled.p`
   font-size: 15px;

@@ -40,6 +40,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   position: relative;
   background: ${colors.brand.dark};
   overflow: hidden;
+  z-index: 0;
   ${props => props.addMargin && `margin-top: ${spacing.spacingUnit * 4}px;`}
 
   > div:first-of-type {

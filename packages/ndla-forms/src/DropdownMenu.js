@@ -106,7 +106,7 @@ const DropdownMenu = ({
           />
         ))}
       </StyledResultList>
-      {page && (
+      {page && !loading && (
         <Pager
           page={parseInt(page, 10)}
           lastPage={totalCount ? Math.ceil(totalCount / 10) : 1}

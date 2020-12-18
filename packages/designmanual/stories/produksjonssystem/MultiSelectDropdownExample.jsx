@@ -39,6 +39,7 @@ class MultiSelectDropdownExample extends Component {
       useLayout: '1',
       useTags: '1',
       keepOpen: '1',
+      showPagination: '1',
       isOpen: false,
     };
     this.onChange = this.onChange.bind(this);
@@ -108,6 +109,7 @@ class MultiSelectDropdownExample extends Component {
       useTags,
       keepOpen,
       isOpen,
+      showPagination,
       value,
     } = this.state;
 
@@ -126,6 +128,8 @@ class MultiSelectDropdownExample extends Component {
       onChange: this.onSearch,
       placeholder: 'Type a name',
     };
+
+    const page = showPagination === '1' ? undefined : 1;
 
     return (
       <>
@@ -173,6 +177,20 @@ class MultiSelectDropdownExample extends Component {
             });
           }}
         />
+        <RadioButtonGroup
+          label="Paginering:"
+          selected={showPagination}
+          uniqeIds
+          options={[
+            { title: 'Uten', value: '1' },
+            { title: 'Med', value: '2' },
+          ]}
+          onChange={showPagination => {
+            this.setState({
+              showPagination,
+            });
+          }}
+        />
         {useTags !== '1' && (
           <FormPills
             onClick={id => {
@@ -215,6 +233,9 @@ class MultiSelectDropdownExample extends Component {
                   multiSelect
                   selectedItems={addedData}
                   items={dataFormatted}
+                  totalCount={dataFormatted.length}
+                  page={page}
+                  loading={loading}
                 />
               </div>
             );

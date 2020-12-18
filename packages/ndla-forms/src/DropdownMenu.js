@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { injectT } from '@ndla/i18n';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
+import Pager from '@ndla/pager';
 import DropdownMenuItem from './DropdownMenuItem';
 import { getFieldValue, checkIfItemIsSelected } from './dropdownHelper';
 
@@ -71,6 +72,8 @@ const DropdownMenu = ({
   totalCount,
   customCreateButtonText,
   hideTotalSearchCount,
+  handlePage,
+  page,
 }) => {
   if (!isOpen) {
     return null;
@@ -103,6 +106,14 @@ const DropdownMenu = ({
           />
         ))}
       </StyledResultList>
+      {page && (
+        <Pager
+          page={parseInt(page, 10)}
+          lastPage={totalCount ? Math.ceil(totalCount / 10) : 1}
+          onClick={handlePage}
+          pageItemComponentClass="button"
+        />
+      )}
       {!hideTotalSearchCount && (
         <StyledResultFooter>
           {loading
@@ -141,6 +152,8 @@ DropdownMenu.propTypes = {
   totalCount: PropTypes.number,
   customCreateButtonText: PropTypes.string,
   hideTotalSearchCount: PropTypes.bool,
+  handlePage: PropTypes.func,
+  page: PropTypes.number,
 };
 
 DropdownMenu.defaultProps = {

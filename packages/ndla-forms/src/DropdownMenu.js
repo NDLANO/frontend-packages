@@ -72,7 +72,7 @@ const DropdownMenu = ({
   totalCount,
   customCreateButtonText,
   hideTotalSearchCount,
-  handlePage,
+  handlePageChange,
   page,
 }) => {
   if (!isOpen) {
@@ -110,7 +110,7 @@ const DropdownMenu = ({
         <Pager
           page={parseInt(page, 10)}
           lastPage={totalCount ? Math.ceil(totalCount / 10) : 1}
-          onClick={handlePage}
+          onClick={handlePageChange}
           pageItemComponentClass="button"
         />
       )}
@@ -152,7 +152,7 @@ DropdownMenu.propTypes = {
   totalCount: PropTypes.number,
   customCreateButtonText: PropTypes.string,
   hideTotalSearchCount: PropTypes.bool,
-  handlePage: PropTypes.func,
+  handlePageChange: PropTypes.func,
   page: PropTypes.number,
 };
 

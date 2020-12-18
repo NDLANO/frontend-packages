@@ -206,7 +206,7 @@ class MultiSelectDropdownExample extends Component {
         <FieldHeader title="Countries" subTitle="in Europe" />
         <Downshift
           onChange={this.onChange}
-          itemToString={item => item.title || ''}
+          itemToString={item => item?.title || ''}
           onStateChange={this.handleStateChange}
           isOpen={isOpen}>
           {({ getInputProps, getRootProps, getMenuProps, getItemProps }) => {

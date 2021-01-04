@@ -69,6 +69,10 @@ const StyledItemButton = styled.button`
   &:hover {
     background: ${colors.brand.lighter};
   }
+  ${props => 
+    props.highlighted && css`
+      background: ${colors.brand.lighter};
+    `}
   ${props =>
     props.isSelected &&
     css`
@@ -84,13 +88,14 @@ const StyledItemButton = styled.button`
       `}
 `;
 
-function DropdownMenuItem({ disableSelected, item, isSelected, t, ...rest }) {
+function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, ...rest }) {
   return (
     <StyledItemButton
       key={item.id}
       type="button"
       isSelected={isSelected}
       disabled={disableSelected && isSelected}
+      highlighted={highlighted}
       {...rest}>
       {<DropdownMenuImage image={item.image} alt={item.alt} />}
       <StyledText>

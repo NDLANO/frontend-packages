@@ -19,8 +19,10 @@ import PopupFilter, { PopupFilterProps } from './PopupFilter';
 
 const Wrapper = styled.div`
   margin-top: 24px;
+  margin-bottom: 24px;
   ${mq.range({ from: breakpoints.tablet })} {
     margin-top: 48px;
+    margin-bottom: 40px;
   }
 `;
 

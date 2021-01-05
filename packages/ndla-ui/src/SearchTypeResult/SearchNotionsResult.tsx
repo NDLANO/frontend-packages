@@ -20,8 +20,9 @@ const Wrapper = styled.div`
   padding: 32px 0;
   ${mq.range({ from: breakpoints.tablet })} {
     padding: 32px 36px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.24);
     border-radius: 5px;
+    margin: 50px 0;
   }
   ${mq.range({ from: breakpoints.desktop })} {
     padding: 32px 66px;

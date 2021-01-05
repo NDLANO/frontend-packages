@@ -18,9 +18,10 @@ const Container = styled.div<ContainerProps>`
   display: grid;
   row-gap: 22px;
   grid-template-columns: repeat(1, 1fr);
-  margin: 80px 0;
+  margin: 40px 0;
   ${mq.range({ from: breakpoints.tablet })} {
     column-gap: 22px;
+    margin: 60px 0;
     ${props =>
       props.itemCount > 1 &&
       `
@@ -35,6 +36,7 @@ const Container = styled.div<ContainerProps>`
       `}
   }
   ${mq.range({ from: breakpoints.desktop })} {
+    margin: 80px 0;
     ${props =>
       props.itemCount > 3 &&
       `

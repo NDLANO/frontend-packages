@@ -123,11 +123,13 @@ const ItemTitle = styled.h3`
   line-height: 24px;
   margin-top: 14px;
   font-weight: 600;
+  overflow-wrap: anywhere;
 `;
 const ItemText = styled.p`
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 16px;
+  overflow-wrap: anywhere;
 `;
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};
@@ -142,6 +144,7 @@ const BreadcrumbItem = styled.span`
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
+  overflow-wrap: anywhere;
 `;
 
 const ContextsWrapper = styled.div`

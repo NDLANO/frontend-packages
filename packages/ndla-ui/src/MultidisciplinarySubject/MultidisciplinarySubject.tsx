@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { ReactChildren } from 'react';
 
 import { injectT, tType } from '@ndla/i18n';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
-import { NavigationBox } from '../Navigation';
 import List from './List';
 import { ListItemProps } from './ListItem';
 
@@ -97,23 +96,19 @@ const Illustration = styled.div`
   }
 `;
 
-type FilterProps = {
-  label: string;
-  id: string;
+type Props = {
+  cards: ListItemProps[];
+  children: ReactChildren;
+  totalCardCount: number;
+  hideCards: boolean;
 };
 
-type Props = {
-  filters: FilterProps[];
-  onFilterClick(id?: string): void;
-  items: ListItemProps[];
-  totalItemsCount: number;
-};
 export const MultidisciplinarySubject = ({
-  filters,
-  onFilterClick,
-  items,
-  totalItemsCount,
   t,
+  cards,
+  children,
+  totalCardCount,
+  hideCards,
 }: Props & tType) => {
   return (
     <StyledWrapper>
@@ -133,15 +128,10 @@ export const MultidisciplinarySubject = ({
       <StyledLayoutWrapper>
         <OneColumn wide>
           <LayoutItem layout="extend">
-            <NavigationBox
-              items={filters}
-              onClick={(
-                e: React.MouseEvent<HTMLElement>,
-                id: string | undefined,
-              ) => onFilterClick(id)}
-              isButtonElements
-            />
-            <List items={items} totalCount={totalItemsCount} />
+            <>
+              {children}
+              {hideCards || <List items={cards} totalCount={totalCardCount} />}
+            </>
           </LayoutItem>
         </OneColumn>
       </StyledLayoutWrapper>

@@ -58,7 +58,7 @@ const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({
     <nav
       {...classes('')}
       ref={containerRef}
-      aria-label={t('breadcrumb.ariaLabel')}>
+      aria-label={t('breadcrumb.breadcrumb')}>
       {children}
       <ol {...classes('list')} ref={olRef}>
         {items.map((item, i) => (

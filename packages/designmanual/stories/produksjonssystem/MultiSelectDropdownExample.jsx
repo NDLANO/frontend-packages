@@ -206,7 +206,13 @@ class MultiSelectDropdownExample extends Component {
           itemToString={item => item?.title || ''}
           onStateChange={this.handleStateChange}
           isOpen={isOpen}>
-          {({ getInputProps, getRootProps, getMenuProps, getItemProps }) => {
+          {({
+            getInputProps,
+            getRootProps,
+            getMenuProps,
+            getItemProps,
+            highlightedIndex,
+          }) => {
             return (
               <div>
                 <DropdownInput
@@ -233,6 +239,7 @@ class MultiSelectDropdownExample extends Component {
                   totalCount={dataFormatted.length}
                   page={page}
                   loading={loading}
+                  highlightedIndex={highlightedIndex}
                 />
               </div>
             );

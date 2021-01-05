@@ -69,6 +69,7 @@ class MultiSelectDropdownExample extends Component {
     this.setState(prevState => ({
       addedData: [...prevState.addedData, selected],
       value: '',
+      isOpen: this.state.keepOpen !== '1',
     }));
   }
 

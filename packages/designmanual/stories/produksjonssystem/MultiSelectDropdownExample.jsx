@@ -52,26 +52,17 @@ class MultiSelectDropdownExample extends Component {
     const {
       target: { value },
     } = e;
-    if (value === '') {
-      this.setState({
-        data: [],
-        loading: false,
-        value,
-        isOpen: false,
-      });
-    } else {
-      this.setState({
-        loading: true,
-        isOpen: true,
-        value,
-      });
-      const lowerCaseValue = value.toLowerCase();
-      const data = await fetchData(lowerCaseValue);
-      this.setState({
-        data,
-        loading: false,
-      });
-    }
+    this.setState({
+      loading: true,
+      value,
+    });
+    const lowerCaseValue = value.toLowerCase();
+    const data = await fetchData(lowerCaseValue);
+    this.setState({
+      isOpen: true,
+      data,
+      loading: false,
+    });
   }
 
   onChange(selected) {
@@ -127,6 +118,11 @@ class MultiSelectDropdownExample extends Component {
       value,
       onChange: this.onSearch,
       placeholder: 'Type a name',
+      onKeyDown: async event => {
+        if (event.key === 'ArrowDown') {
+          await this.onSearch(event);
+        }
+      },
     };
 
     const page = showPagination === '1' ? undefined : 1;

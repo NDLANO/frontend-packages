@@ -74,6 +74,7 @@ const DropdownMenu = ({
   hideTotalSearchCount,
   handlePageChange,
   page,
+  highlightedIndex,
 }) => {
   if (!isOpen) {
     return null;
@@ -97,6 +98,7 @@ const DropdownMenu = ({
               ),
             })}
             disableSelected={disableSelected}
+            highlighted={highlightedIndex === index}
             item={{
               ...item,
               title: getFieldValue(item, labelField),

@@ -1,4 +1,4 @@
-import React, {ReactChildren} from 'react';
+import React, { ReactChildren } from 'react';
 
 import { injectT, tType } from '@ndla/i18n';
 import styled from '@emotion/styled';
@@ -100,6 +100,7 @@ type Props = {
   cards: ListItemProps[];
   children: ReactChildren;
   totalCardCount: number;
+  hideCards: boolean;
 };
 
 export const MultidisciplinarySubject = ({
@@ -107,6 +108,7 @@ export const MultidisciplinarySubject = ({
   cards,
   children,
   totalCardCount,
+  hideCards,
 }: Props & tType) => {
   return (
     <StyledWrapper>
@@ -126,8 +128,10 @@ export const MultidisciplinarySubject = ({
       <StyledLayoutWrapper>
         <OneColumn wide>
           <LayoutItem layout="extend">
-            {children}
-            <List items={cards} totalCount={totalCardCount} />
+            <>
+              {children}
+              {hideCards || <List items={cards} totalCount={totalCardCount} />}
+            </>
           </LayoutItem>
         </OneColumn>
       </StyledLayoutWrapper>

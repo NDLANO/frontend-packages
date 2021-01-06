@@ -108,10 +108,10 @@ const DropdownMenu = ({
           />
         ))}
       </StyledResultList>
-      {page && !loading && (
+      {page && totalCount > maxRender && (
         <Pager
           page={parseInt(page, 10)}
-          lastPage={totalCount ? Math.ceil(totalCount / 10) : 1}
+          lastPage={totalCount ? Math.ceil(totalCount / maxRender) : 1}
           onClick={handlePageChange}
           pageItemComponentClass="button"
         />

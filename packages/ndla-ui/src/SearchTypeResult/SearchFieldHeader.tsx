@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { colors, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
 import { Search as SearchIcon } from '@ndla/icons/common';
+import { spacing } from '@ndla/core';
 // @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { injectT, tType } from '@ndla/i18n';
@@ -31,7 +32,7 @@ const StyledForm = styled.form<StyledProps>`
   background: #fff;
   border-radius: 5px;
   border: 1px solid ${colors.brand.greyLight};
-  padding: 7px;
+  padding: ${spacing.xsmall};
   min-height: 58px;
   column-gap: 10px;
   ${props =>

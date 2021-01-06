@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 // @ts-ignore
 import Spinner from '../Spinner';
 import constants from '../model';
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 40px 0;
+  margin: ${spacing.medium} 0;
   position: relative;
 `;
 
@@ -37,7 +38,7 @@ const Overlay = styled.div`
   flex-direction: column;
   justify-content: center;
   border-radius: 4px;
-  padding: 10px;
+  padding: ${spacing.small};
 `;
 
 export type ContentType =

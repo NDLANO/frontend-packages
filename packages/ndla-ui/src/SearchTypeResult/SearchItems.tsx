@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemType } from './SearchItem';
 import { ContentType } from './SearchTypeResult';
 
@@ -24,10 +24,10 @@ type ContainerProps = {
 
 const Container = styled.div<ContainerProps>`
   display: grid;
-  row-gap: 22px;
+  row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
   ${mq.range({ from: breakpoints.tablet })} {
-    column-gap: 22px;
+    column-gap: ${spacing.normal};
     grid-template-columns: repeat(2, 1fr);
   }
   ${mq.range({ from: breakpoints.tabletWide })} {

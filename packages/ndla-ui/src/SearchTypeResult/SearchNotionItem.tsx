@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { breakpoints, colors, fonts, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -25,7 +25,7 @@ type ItemWrapperProps = {
 };
 const ItemWrapper = styled.div<ItemWrapperProps>`
   border-top: 2px solid ${colors.brand.light};
-  padding: 34px 0;
+  padding: ${spacing.medium} 0;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -35,7 +35,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
     `${mq.range({ from: breakpoints.tabletWide })} {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    column-gap: 32px;
+    column-gap: ${spacing.medium};
     align-items: start;
   }`}
 `;
@@ -50,7 +50,7 @@ const TitleWrapper = styled.span`
 `;
 
 const MediaWrapper = styled.div`
-  margin-bottom: 24px;
+  margin-bottom: ${spacing.normal};
   position: relative;
 `;
 const LabelsWrapper = styled.div`
@@ -58,7 +58,7 @@ const LabelsWrapper = styled.div`
   flex-wrap: wrap;
   column-gap: 4px;
   row-gap: 4px;
-  margin-top: 24px;
+  margin-top: ${spacing.normal};
 `;
 const LabelsLabel = styled.span`
   display: inline-block;

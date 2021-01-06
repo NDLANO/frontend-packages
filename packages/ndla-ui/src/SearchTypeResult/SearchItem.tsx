@@ -99,7 +99,7 @@ const ItemContent = styled.div<ItemTypeProps>`
   border-top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding: 16px;
+  padding: ${spacing.small};
 `;
 
 const ItemPillWrapper = styled.div`
@@ -121,14 +121,14 @@ const ItemPill = styled.div`
 const ItemTitle = styled.h3`
   font-size: 18px;
   line-height: 24px;
-  margin-top: 14px;
+  margin-top: ${spacing.small};
   font-weight: 600;
   overflow-wrap: anywhere;
 `;
 const ItemText = styled.p`
   font-size: 15px;
   line-height: 20px;
-  margin-bottom: 16px;
+  margin-bottom: ${spacing.small};
   overflow-wrap: anywhere;
 `;
 const BreadcrumbPath = styled.div`
@@ -148,7 +148,7 @@ const BreadcrumbItem = styled.span`
 `;
 
 const ContextsWrapper = styled.div`
-  margin-top: 10px;
+  margin-top: ${spacing.small};
   button {
     ${fonts.sizes('16px', '24px')};
     box-shadow: none;
@@ -187,12 +187,12 @@ const ContextList = styled.ul`
   list-style: none;
 `;
 const ContextListItem = styled.li`
-  margin-bottom: 24px;
+  margin-bottom: ${spacing.normal};
   ${fonts.sizes('16px', '28px')};
 `;
 
 const IconWrapper = styled.div`
-  margin-left: 10px;
+  margin-left: ${spacing.small};
   display: flex;
   align-items: center;
 `;

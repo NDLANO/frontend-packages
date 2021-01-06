@@ -9,7 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
+
 // @ts-ignore
 import Button from '@ndla/button';
 import { FilterProps } from './ActiveFilterContent';
@@ -18,27 +19,27 @@ import SearchFieldHeader from './SearchFieldHeader';
 import PopupFilter, { PopupFilterProps } from './PopupFilter';
 
 const Wrapper = styled.div`
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: ${spacing.normal};
+  margin-bottom: ${spacing.normal};
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-top: 48px;
-    margin-bottom: 40px;
+    margin-top: ${spacing.large};
+    margin-bottom: ${spacing.large};
   }
 `;
 
 const SearchInputWrapper = styled.div`
-  margin-bottom: 24px;
+  margin-bottom: ${spacing.normal};
 `;
 
 const PhraseWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-size: 16px;
-  margin: 24px 0 38px;
+  margin: ${spacing.normal} 0 ${spacing.medium};
 `;
 
 const PhraseText = styled.div`
-  margin-right: 60px;
+  margin-right: ${spacing.large};
 `;
 const PhraseSuggestionText = styled.div``;
 
@@ -50,7 +51,7 @@ const HideOnDesktopWrapper = styled.div`
 `;
 
 const SearchFilterWrapper = styled.div`
-  margin: 18px 0 32px;
+  margin: ${spacing.normal} 0 ${spacing.medium};
 `;
 
 type Props = {

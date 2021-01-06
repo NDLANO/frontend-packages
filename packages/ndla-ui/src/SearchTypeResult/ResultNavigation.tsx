@@ -13,13 +13,14 @@ import { ChevronDown } from '@ndla/icons/common';
 // @ts-ignore
 import Button from '@ndla/button';
 import { injectT, tType } from '@ndla/i18n';
+import { spacing } from '@ndla/core';
 
 const ResultNav = styled.div`
   font-size: 14px;
   font-weight: 600;
-  margin: 24px 0;
+  margin: ${spacing.normal} 0;
   button.nav {
-    margin-right: 8px;
+    margin-right: ${spacing.xsmall};
     font-size: 18px;
     font-weight: 600;
     &:disabled {
@@ -31,7 +32,7 @@ const ResultNav = styled.div`
 const NavInfo = styled.div`
   font-size: 16px;
   font-weight: 400;
-  margin-bottom: 12px;
+  margin-bottom: ${spacing.small};
 `;
 
 export type PaginationType = {

@@ -121,6 +121,7 @@ export const Codeblock: FC<Props & tType> = ({
         <Button
           title={t('codeBlock.copyButton')}
           disabled={isCopied}
+          data-copied-title={t('codeBlock.copiedCode')}
           data-copy-string={code}
           onClick={() => {
             copyTextToClipboard(code);

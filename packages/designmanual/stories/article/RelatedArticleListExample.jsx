@@ -21,7 +21,7 @@ import { toggleRelatedArticles } from '@ndla/article-scripts';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
 export const RelatedArticleExerciseList = () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+  <RelatedArticleList messages={{ title: 'Relatert innhold' }}>
     <RelatedArticle
       title={exerciseResources[0].name}
       icon={<TasksAndActivitiesBadge background />}
@@ -40,7 +40,7 @@ export const RelatedArticleExerciseList = () => (
 );
 
 export const RelatedArticleMixedList = () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+  <RelatedArticleList messages={{ title: 'Relatert innhold' }}>
     <RelatedArticle
       title={exerciseResources[0].name}
       icon={<TasksAndActivitiesBadge background />}
@@ -59,7 +59,7 @@ export const RelatedArticleMixedList = () => (
 );
 
 export const RelatedArticleExternal = () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+  <RelatedArticleList messages={{ title: 'Relatert innhold' }}>
     <RelatedArticle
       title="Bioteknologinemda"
       icon={<ExternalLearningResourcesBadge background />}
@@ -132,8 +132,8 @@ class ExpandExample extends Component {
     return (
       <RelatedArticleList
         messages={{
-          title: 'Relaterte artikler',
-          showMore: 'Vis flere relaterte artikler',
+          title: 'Relatert innhold',
+          showMore: 'Vis mer relatert innhold',
           showLess: 'Vis mindre',
         }}>
         {articles}

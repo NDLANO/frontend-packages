@@ -7,6 +7,9 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { toggleRelatedArticles } from '@ndla/article-scripts';
+import { injectT } from '@ndla/i18n';
 import {
   RelatedArticleList,
   RelatedArticle,
@@ -17,11 +20,10 @@ import {
   SubjectBadge,
   SourceMaterialBadge,
 } from '@ndla/ui';
-import { toggleRelatedArticles } from '@ndla/article-scripts';
 import { articleResources, exerciseResources } from '../../dummydata/index';
 
-export const RelatedArticleExerciseList = () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+export const RelatedArticleExerciseList = ({ t }) => (
+  <RelatedArticleList messages={{ title: t('related.title') }}>
     <RelatedArticle
       title={exerciseResources[0].name}
       icon={<TasksAndActivitiesBadge background />}
@@ -39,8 +41,8 @@ export const RelatedArticleExerciseList = () => (
   </RelatedArticleList>
 );
 
-export const RelatedArticleMixedList = () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+export const RelatedArticleMixedList = ({ t }) => (
+  <RelatedArticleList messages={{ title: t('related.title') }}>
     <RelatedArticle
       title={exerciseResources[0].name}
       icon={<TasksAndActivitiesBadge background />}
@@ -58,8 +60,8 @@ export const RelatedArticleMixedList = () => (
   </RelatedArticleList>
 );
 
-export const RelatedArticleExternal = () => (
-  <RelatedArticleList messages={{ title: 'Relaterte artikler' }}>
+export const RelatedArticleExternal = ({ t }) => (
+  <RelatedArticleList messages={{ title: t('related.title') }}>
     <RelatedArticle
       title="Bioteknologinemda"
       icon={<ExternalLearningResourcesBadge background />}
@@ -85,6 +87,7 @@ class ExpandExample extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const articles = [
       <RelatedArticle
         title={articleResources[0].name}
@@ -132,9 +135,9 @@ class ExpandExample extends Component {
     return (
       <RelatedArticleList
         messages={{
-          title: 'Relaterte artikler',
-          showMore: 'Vis flere relaterte artikler',
-          showLess: 'Vis mindre',
+          title: t('related.title'),
+          showMore: t('related.showMore'),
+          showLess: t('related.showLess'),
         }}>
         {articles}
       </RelatedArticleList>
@@ -142,4 +145,8 @@ class ExpandExample extends Component {
   }
 }
 
-export default ExpandExample;
+ExpandExample.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default injectT(ExpandExample);

@@ -7,11 +7,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from '@ndla/util';
 import { initArticleScripts } from '@ndla/article-scripts';
-
+import { injectT } from '@ndla/i18n';
 import { Figure } from '@ndla/ui';
-import { FigureCaptionExample } from './FigureCaptionExample';
+import { uuid } from '@ndla/util';
+import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
 function FigureWithLicense({
@@ -21,6 +21,7 @@ function FigureWithLicense({
   resizeIframe,
   caption,
   type,
+  t,
 }) {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
@@ -36,7 +37,9 @@ function FigureWithLicense({
           id={id}
           figureId={figureId}
           caption={caption}
-          messages={messages}
+          messages={
+            messages || { reuse: t('video.reuse'), modelPermission: null }
+          }
           hasHiddenCaption={hasHiddenCaption}
         />
       )}
@@ -69,4 +72,4 @@ FigureWithLicense.defaultProps = {
   hasHiddenCaption: false,
 };
 
-export default FigureWithLicense;
+export default injectT(FigureWithLicense);

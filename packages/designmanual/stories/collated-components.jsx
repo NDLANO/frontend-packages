@@ -31,10 +31,11 @@ import {
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 
+import { Trans } from '@ndla/i18n';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
-import { FigureImage } from './article/FigureImage';
+import FigureImage from './article/FigureImage';
 import { topicList, mockFooterLinks } from '../dummydata/index';
 import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
@@ -495,24 +496,29 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Relaterte artikler', () => (
-    <div>
-      <StoryIntro title="Relaterte artikler">
-        <p>Kan brukes i slutten av artikler, eller midt i.</p>
-      </StoryIntro>
-      <StoryBody>
-        <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
-        <RelatedArticleExerciseList />
-        <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
-        <RelatedArticleMixedList />
-        <h2 className="u-heading">Eksterne ressurser eksempel</h2>
-        <p>
-          Dersom en ekstern relatert artikkel ikke har metatekst, skal url vise.
-        </p>
-        <RelatedArticleExternal />
-        <h2 className="u-heading">Eksempel med vis mer</h2>
-        <RelatedArticleListExample />
-      </StoryBody>
-    </div>
+    <Trans>
+      {({ t }) => (
+        <div>
+          <StoryIntro title="Relaterte artikler">
+            <p>Kan brukes i slutten av artikler, eller midt i.</p>
+          </StoryIntro>
+          <StoryBody>
+            <h2 className="u-heading">Oppgave og aktivitet eksempel</h2>
+            <RelatedArticleExerciseList t={t} />
+            <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
+            <RelatedArticleMixedList t={t} />
+            <h2 className="u-heading">Eksterne ressurser eksempel</h2>
+            <p>
+              Dersom en ekstern relatert artikkel ikke har metatekst, skal url
+              vise.
+            </p>
+            <RelatedArticleExternal t={t} />
+            <h2 className="u-heading">Eksempel med vis mer</h2>
+            <RelatedArticleListExample t={t} />
+          </StoryBody>
+        </div>
+      )}
+    </Trans>
   ))
   .add('Sidefot', () => (
     <Center>

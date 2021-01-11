@@ -29,6 +29,9 @@ function FigureCaptionExample({
     close: t('close'),
     learnAboutLicenses: license ? license.linkText : t('license.learnMore'),
     source: t('source'),
+    rulesForUse: t('license.images.rules'),
+    reuse: t('image.reuse'),
+    download: t('image.download'),
     ...providedMessages,
   };
 
@@ -70,13 +73,6 @@ FigureCaptionExample.propTypes = {
 FigureCaptionExample.defaultProps = {
   authors: [{ type: 'Opphaver', name: 'Gary Waters' }],
   licenseAbbreviation: 'CC-BY-ND-4.0',
-  messages: {
-    rulesForUse: 'Regler for bruk av bildet',
-    modelPremission:
-      'Personen(e) på bildet har godkjent at det kan brukes videre.',
-    reuse: 'Bruk bildet',
-    download: 'Last ned bildet',
-  },
   caption: '',
   hasHiddenCaption: false,
 };

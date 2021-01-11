@@ -69,6 +69,8 @@ function FigureImage({ type, alt, src, caption, hasHiddenCaption, link, t }) {
     zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
     reuse: t('image.reuse'),
     download: t('image.download'),
+    modelPermission:
+      'Personen(e) på bildet har godkjent at det kan brukes videre.',
   };
   return (
     <Figure id={figureId} type={type}>

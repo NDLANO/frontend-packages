@@ -6,6 +6,7 @@
  *
  */
 
+import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
 const { contentTypes } = constants;
@@ -276,6 +277,7 @@ const messages = {
   resource: {
     errorDescription:
       'Beklager, men en feil oppsto under lasting av emneressurser.',
+    error: 'Beklager, en del av innholdet kunne ikke vises.',
     noCoreResourcesAvailableUnspecific:
       'Det er ikke noe kjernestoff tilgjengelig.',
     noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {name}.',
@@ -764,6 +766,51 @@ const messages = {
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innen',
   },
+  close: 'Lukk',
+  title: 'Tittel',
+  image: {
+    download: 'Last ned bildet',
+    reuse: 'Bruk bildet',
+    largeSize: 'Se stor utgave av bilde',
+    error: {
+      url: 'Feil ved lasting av bildet.',
+      caption: 'Beklager, en feil oppsto ved lasting av bildet.',
+    },
+  },
+  audio: {
+    download: 'Last ned lydklipp',
+    reuse: 'Bruk lydklipp',
+    error: {
+      url: 'Feil ved lasting av lydklippet.',
+      caption: 'Beklager, en feil oppsto ved lasting av lydklipp.',
+    },
+  },
+  video: {
+    download: 'Last ned video',
+    reuse: 'Bruk video',
+    error:
+      'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
+  },
+  concept: {
+    showDescription: 'Vis beskrivelsen av forklaringen.',
+    error: {
+      title: 'En feil oppstod ikke',
+      content: 'Kunne ikke laste beskrivelsen av forklaringen.',
+    },
+  },
+  source: 'Kilde',
+  related: {
+    title: 'Relatert innhold',
+    linkInfo: 'Nettside hos',
+    showMore: 'Vis mer relatert innhold',
+    showLess: 'Vis mindre',
+  },
+  'external.error': 'En feil oppstod ved lasting av en ekstern ressurs.',
+  'h5p.error': 'En feil oppstod ved lasting av H5P.',
+  files: 'Filer',
+  download: 'Last ned fil: ',
+  expandButton: 'Vis stor versjon',
+  ...contributorTypes.nb,
 };
 
 export default messages;

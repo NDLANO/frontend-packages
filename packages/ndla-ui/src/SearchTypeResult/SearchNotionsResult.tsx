@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, mq, breakpoints } from '@ndla/core';
+import { fonts, mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 import { injectT, tType } from '@ndla/i18n';
@@ -17,14 +17,15 @@ import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 32px 0;
+  padding: ${spacing.medium} 0;
   ${mq.range({ from: breakpoints.tablet })} {
-    padding: 32px 36px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.24);
+    padding: ${spacing.medium};
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.24);
     border-radius: 5px;
+    margin: ${spacing.large} 0;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    padding: 32px 66px;
+    padding: ${spacing.medium} 66px;
   }
 `;
 
@@ -32,7 +33,7 @@ const HeadingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: ${spacing.small};
 `;
 const Heading = styled.h2`
   margin: 0;
@@ -42,7 +43,7 @@ const Heading = styled.h2`
 
 const HeadingCount = styled.span`
   font-weight: 400;
-  margin-left: 10px;
+  margin-left: ${spacing.small};
   text-transform: lowercase;
 `;
 

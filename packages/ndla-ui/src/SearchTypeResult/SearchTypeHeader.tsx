@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
@@ -21,7 +21,7 @@ const HeaderWrapper = styled.div`
   flex-direction: row;
   border-bottom: 2px solid #20588f;
   align-items: center;
-  margin: 15px 0;
+  margin: ${spacing.small} 0;
   justify-content: space-between;
   padding: 0 2px;
   ${mq.range({ until: breakpoints.tablet })} {
@@ -35,12 +35,12 @@ const TypeWrapper = styled.div`
   min-width: 200px;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: ${spacing.xsmall};
 `;
 
 const SubjectName = styled.span`
   font-size: 18px;
-  margin: 2px 16px;
+  margin: 2px ${spacing.small};
   b {
     font-size: 18px;
     margin-right: 4px;

@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import SafeLink from '@ndla/safelink';
 import { injectT, tType } from '@ndla/i18n';
+import { spacing } from '@ndla/core';
 
 type ItemWrapperProps = {
   backgroundImage?: string;
@@ -18,7 +19,7 @@ type ItemWrapperProps = {
 
 const ItemWrapper = styled.div<ItemWrapperProps>`
   background: #deebf6;
-  padding: 20px 30px;
+  padding: ${spacing.normal} ${spacing.medium};
   border-radius: 5px;
   height: 150px;
   ${props =>
@@ -36,7 +37,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
 const ItemTitle = styled.h2`
   font-size: 18px;
   line-height: 18px;
-  margin-top: 8px;
+  margin-top: ${spacing.small};
   font-weight: 600;
 `;
 const ItemText = styled.span`

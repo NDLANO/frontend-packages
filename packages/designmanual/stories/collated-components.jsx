@@ -495,11 +495,11 @@ storiesOf('Sammensatte moduler', module)
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
   ))
-  .add('Relaterte artikler', () => (
+  .add('Relatert innhold', () => (
     <Trans>
       {({ t }) => (
         <div>
-          <StoryIntro title="Relaterte artikler">
+          <StoryIntro title="Relatert innhold">
             <p>Kan brukes i slutten av artikler, eller midt i.</p>
           </StoryIntro>
           <StoryBody>
@@ -509,7 +509,7 @@ storiesOf('Sammensatte moduler', module)
             <RelatedArticleMixedList t={t} />
             <h2 className="u-heading">Eksterne ressurser eksempel</h2>
             <p>
-              Dersom en ekstern relatert artikkel ikke har metatekst, skal url
+              Dersom eksternt relatert innhold ikke har metatekst, skal url
               vise.
             </p>
             <RelatedArticleExternal t={t} />

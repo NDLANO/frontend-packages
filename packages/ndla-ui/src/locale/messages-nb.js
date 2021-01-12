@@ -778,11 +778,11 @@ const messages = {
     },
   },
   audio: {
-    download: 'Last ned lydklipp',
-    reuse: 'Bruk lydklipp',
+    download: 'Last ned lydfil',
+    reuse: 'Bruk lydfil',
     error: {
-      url: 'Feil ved lasting av lydklippet.',
-      caption: 'Beklager, en feil oppsto ved lasting av lydklipp.',
+      url: 'Feil ved lasting av lydfila.',
+      caption: 'Beklager, en feil oppsto ved lasting av lydfil.',
     },
   },
   video: {

@@ -782,11 +782,11 @@ const messages = {
     },
   },
   audio: {
-    download: 'Last ned lydklipp',
-    reuse: 'Bruk lydklipp',
+    download: 'Last ned lydfil',
+    reuse: 'Bruk lydfil',
     error: {
-      url: 'Feil ved lasting av lydklippet.',
-      caption: 'Orsak, ein feil oppstod ved lasting av lydklipp.',
+      url: 'Feil ved lasting av lydfila.',
+      caption: 'Orsak, ein feil oppstod ved lasting av lydfil.',
     },
   },
   video: {

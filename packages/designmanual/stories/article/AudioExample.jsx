@@ -1,24 +1,21 @@
 import React from 'react';
+import { initArticleScripts } from '@ndla/article-scripts';
+import { injectT } from '@ndla/i18n';
 import { AudioPlayer, Figure } from '@ndla/ui';
 import { uuid } from '@ndla/util';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { initArticleScripts } from '@ndla/article-scripts';
-import { FigureCaptionExample } from './FigureCaptionExample';
+import PropTypes from 'prop-types';
+import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function AudioExample() {
+function AudioExample({ t }) {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
-  const license = getLicenseByAbbreviation('CC-BY-ND-4.0', 'nb');
 
   const messages = {
-    close: 'Lukk',
-    rulesForUse: 'Regler for bruk av lydklippet',
-    learnAboutLicenses: license.linkText,
-    source: 'Kilde',
-    title: 'Tittel',
-    mediaType: 'lydklipp',
+    rulesForUse: t('license.audio.rules'),
+    reuse: t('audio.reuse'),
+    download: t('audio.download'),
   };
 
   const caption = 'Familien som spela vekk jula';
@@ -43,6 +40,8 @@ function AudioExample() {
   );
 }
 
-AudioExample.propTypes = {};
+AudioExample.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
-export default AudioExample;
+export default injectT(AudioExample);

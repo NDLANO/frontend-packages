@@ -171,11 +171,7 @@ const initNotionResult = () => {
                 <FigureWithLicense
                   type="full-column"
                   resizeIframe
-                  caption="Utholdenhet - animasjon av oksygentransporten"
-                  messages={{
-                    mediaType: 'videoen',
-                    modelPremission: null,
-                  }}>
+                  caption="Utholdenhet - animasjon av oksygentransporten">
                   <iframe
                     title="Video: Utholdenhet - animasjon av oksygentransporten"
                     height="270"
@@ -197,11 +193,7 @@ const initNotionResult = () => {
                 <FigureWithLicense
                   type="full-column"
                   resizeIframe
-                  caption="Utholdenhet - animasjon av oksygentransporten"
-                  messages={{
-                    mediaType: 'videoen',
-                    modelPremission: null,
-                  }}>
+                  caption="Utholdenhet - animasjon av oksygentransporten">
                   <iframe
                     title="Ekskresjon"
                     loading="lazy"

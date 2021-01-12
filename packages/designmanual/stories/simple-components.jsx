@@ -19,7 +19,7 @@ import {
 import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
-import { FigureImage } from './article/FigureImage';
+import FigureImage from './article/FigureImage';
 import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
@@ -42,11 +42,7 @@ const floatVideo = left => (
     <FigureWithLicense
       type={left ? 'left' : 'right'}
       resizeIframe
-      caption="Utholdenhet - animasjon av oksygentransporten"
-      messages={{
-        mediaType: 'videoen',
-        modelPremission: null,
-      }}>
+      caption="Utholdenhet - animasjon av oksygentransporten">
       <iframe
         title="Video: Utholdenhet - animasjon av oksygentransporten"
         height="270"
@@ -504,11 +500,7 @@ storiesOf('Enkle komponenter', module)
         </h2>
         <FigureWithLicense
           resizeIframe
-          caption="Utholdenhet - animasjon av oksygentransporten"
-          messages={{
-            mediaType: 'videoen',
-            modelPremission: null,
-          }}>
+          caption="Utholdenhet - animasjon av oksygentransporten">
           <iframe
             title="Video: Utholdenhet - animasjon av oksygentransporten"
             height="270"
@@ -543,13 +535,7 @@ storiesOf('Enkle komponenter', module)
           Denne varianten skal kun brukes om det er nødvendig. Visningen fases
           bort når høyrespalte fases bort.
         </p>
-        <FigureWithLicense
-          resizeIframe
-          noCaption
-          messages={{
-            mediaType: 'videoen',
-            modelPremission: null,
-          }}>
+        <FigureWithLicense resizeIframe noCaption>
           <iframe
             src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
             title="Video without dimensions"

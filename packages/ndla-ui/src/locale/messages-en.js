@@ -6,6 +6,7 @@
  *
  */
 
+import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
 const { contentTypes } = constants;
@@ -273,7 +274,8 @@ const messages = {
   },
   resource: {
     errorDescription:
-      'Sorry, an error occurd while loading the topic resources.',
+      'Sorry, an error occurred while loading the topic resources.',
+    error: 'Sorry, a part of the content could not be shown.',
     noCoreResourcesAvailableUnspecific: 'There is no core content available.',
     noCoreResourcesAvailable: 'There is no core content available for {name}.',
     activateAdditionalResources: 'Show additional content',
@@ -755,6 +757,51 @@ const messages = {
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case in',
   },
+  close: 'Close',
+  title: 'Title',
+  image: {
+    download: 'Download image',
+    reuse: 'Use image',
+    largeSize: 'View original',
+    error: {
+      url: 'Error loading the image.',
+      caption: 'Sorry, an error occurred while loading the image.',
+    },
+  },
+  audio: {
+    download: 'Download audio',
+    reuse: 'Use audio',
+    error: {
+      url: 'Error loading the audio.',
+      caption: 'Sorry, an error occurred while loading the audio.',
+    },
+  },
+  video: {
+    download: 'Download video',
+    reuse: 'Use video',
+    error:
+      'Sorry, an error occurred while loading the video or metadata about the video.',
+  },
+  concept: {
+    showDescription: 'Show concept description',
+    error: {
+      title: 'An error occurred',
+      content: 'Could not load the description of the concept.',
+    },
+  },
+  source: 'Source',
+  related: {
+    title: 'Related content',
+    linkInfo: 'Web page at',
+    showMore: 'Show more related content',
+    showLess: 'Show less',
+  },
+  'external.error': 'An error occurred while loading an external resource.',
+  'h5p.error': 'An error occurred while loading the H5P.',
+  files: 'Files',
+  download: 'Download file: ',
+  expandButton: 'Show large version',
+  ...contributorTypes.en,
 };
 
 export default messages;

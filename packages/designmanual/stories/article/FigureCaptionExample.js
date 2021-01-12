@@ -8,21 +8,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { Trans } from '@ndla/i18n';
+import { injectT } from '@ndla/i18n';
 import { FigureCaption, FigureLicenseDialog } from '@ndla/ui';
 import Button from '@ndla/button';
 
-const defaultMessages = {
-  close: 'Lukk',
-  rulesForUse: 'Regler for bruk av bildet',
-  modelPremission:
-    'Personen(e) på bildet har godkjent at det kan brukes videre.',
-  source: 'Kilde',
-  mediaType: 'bilde',
-  title: 'Tittel',
-};
-
-export function FigureCaptionExample({
+function FigureCaptionExample({
   id,
   figureId,
   caption,
@@ -31,41 +21,43 @@ export function FigureCaptionExample({
   licenseAbbreviation,
   hasHiddenCaption,
   link,
+  t,
 }) {
   const license = getLicenseByAbbreviation(licenseAbbreviation, 'nb');
   const messages = {
-    ...defaultMessages,
-    learnAboutLicenses: license.linkText,
+    title: t('title'),
+    close: t('close'),
+    learnAboutLicenses: license ? license.linkText : t('license.learnMore'),
+    source: t('source'),
+    rulesForUse: t('license.images.rules'),
+    reuse: t('image.reuse'),
+    download: t('image.download'),
     ...providedMessages,
   };
 
   return (
-    <Trans>
-      {({ t }) => (
-        <FigureCaption
-          hideFigcaption={hasHiddenCaption}
-          figureId={figureId}
-          id={id}
-          locale="nb"
-          caption={caption}
-          reuseLabel={`Bruk ${messages.mediaType}`}
-          licenseRights={license.rights}
-          authors={authors}
-          link={link}>
-          <FigureLicenseDialog
-            id={id}
-            authors={authors}
-            license={license}
-            origin="https://www.wikimedia.com"
-            title="Mann med lupe"
-            locale="nb"
-            messages={messages}>
-            <Button outline>Kopier referanse</Button>
-            <Button outline>Last ned {messages.mediaType}</Button>
-          </FigureLicenseDialog>
-        </FigureCaption>
-      )}
-    </Trans>
+    <FigureCaption
+      hideFigcaption={hasHiddenCaption}
+      figureId={figureId}
+      id={id}
+      locale="nb"
+      caption={caption}
+      reuseLabel={messages.reuse}
+      licenseRights={license.rights}
+      authors={authors}
+      link={link}>
+      <FigureLicenseDialog
+        id={id}
+        authors={authors}
+        license={license}
+        origin="https://www.wikimedia.com"
+        title="Mann med lupe"
+        locale="nb"
+        messages={messages}>
+        <Button outline>{t('license.copyTitle')}</Button>
+        <Button outline>{messages.download}</Button>
+      </FigureLicenseDialog>
+    </FigureCaption>
   );
 }
 
@@ -81,15 +73,8 @@ FigureCaptionExample.propTypes = {
 FigureCaptionExample.defaultProps = {
   authors: [{ type: 'Opphaver', name: 'Gary Waters' }],
   licenseAbbreviation: 'CC-BY-ND-4.0',
-  messages: {
-    close: 'Lukk',
-    rulesForUse: 'Regler for bruk av bildet',
-    modelPremission:
-      'Personen(e) på bildet har godkjent at det kan brukes videre.',
-    source: 'Kilde',
-    mediaType: 'bilde',
-    title: 'Tittel',
-  },
   caption: '',
   hasHiddenCaption: false,
 };
+
+export default injectT(FigureCaptionExample);

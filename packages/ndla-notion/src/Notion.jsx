@@ -77,6 +77,7 @@ Notion.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   content: PropTypes.node,
+  customCSS: PropTypes.object,
 };
 
 export default Notion;

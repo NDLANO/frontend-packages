@@ -19,7 +19,7 @@ import {
   constants,
 } from '@ndla/ui';
 
-import { FigureImage } from '../article/FigureImage';
+import FigureImage from '../article/FigureImage';
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';

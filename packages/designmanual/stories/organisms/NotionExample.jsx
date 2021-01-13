@@ -18,7 +18,7 @@ import Tabs from '@ndla/tabs';
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
-import { FigureImage } from '../article/FigureImage';
+import FigureImage from '../article/FigureImage';
 
 class NotionExample extends Component {
   componentDidMount() {

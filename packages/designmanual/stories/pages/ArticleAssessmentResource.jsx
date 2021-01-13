@@ -22,7 +22,7 @@ import {
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import Resources from '../molecules/resources';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
-import { FigureImage } from '../article/FigureImage';
+import FigureImage from '../article/FigureImage';
 
 const { contentTypes } = constants;
 

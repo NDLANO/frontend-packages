@@ -17,7 +17,7 @@ import {
   ArticleHeaderWrapper,
 } from '@ndla/ui';
 
-import { FigureImage } from '../article/FigureImage';
+import FigureImage from '../article/FigureImage';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 export default ({ title, description }) => (

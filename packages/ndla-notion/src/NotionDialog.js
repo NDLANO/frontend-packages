@@ -176,13 +176,21 @@ export const NotionDialogStyledWrapper = styled.div`
   }
 `;
 
-const NotionDialog = ({ title, children, id, subTitle, ariaHidden }) => (
+const NotionDialog = ({
+  title,
+  children,
+  id,
+  subTitle,
+  ariaHidden,
+  customCSS,
+}) => (
   <NotionDialogStyledWrapper
     aria-hidden={ariaHidden}
     role="dialog"
     data-concept-id={id}
     aria-labelledby={id}
-    aria-describedby={id}>
+    aria-describedby={id}
+    css={customCSS}>
     <NotionHeader title={title} subTitle={subTitle} />
     <NotionBody>{children}</NotionBody>
   </NotionDialogStyledWrapper>

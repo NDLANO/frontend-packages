@@ -233,7 +233,7 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
         return (
           <BreadcrumbItem key={`${breadcrumbItem}-${item.id}`}>
             <span>{breadcrumbItem}</span>
-            {i !== mainContext.breadcrumb.length - 1 && <ChevronRight />}
+            {i !== breadcrumb.length - 1 && <ChevronRight />}
           </BreadcrumbItem>
         );
       })}

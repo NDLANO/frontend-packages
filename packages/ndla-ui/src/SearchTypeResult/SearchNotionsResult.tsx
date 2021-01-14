@@ -55,12 +55,14 @@ type Props = {
   items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
+  renderMarkdown: (text: React.ReactNode) => string;
 };
 
 const SearchNotionsResult = ({
   items,
   totalCount,
   onRemove,
+  renderMarkdown,
   t,
 }: Props & tType) => (
   <Wrapper>
@@ -78,7 +80,11 @@ const SearchNotionsResult = ({
       </Button>
     </HeadingWrapper>
     {items.map(item => (
-      <SearchNotionItem key={item.id} {...item} />
+      <SearchNotionItem
+        key={item.id}
+        {...item}
+        renderMarkdown={renderMarkdown}
+      />
     ))}
   </Wrapper>
 );

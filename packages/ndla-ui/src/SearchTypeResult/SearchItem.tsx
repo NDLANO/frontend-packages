@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import parse from 'html-react-parser';
 // @ts-ignore
 import { ChevronRight, Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
@@ -270,7 +271,7 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
           <ItemTitle>
             <SafeLink to={url}>{title}</SafeLink>
           </ItemTitle>
-          <ItemText>{ingress}</ItemText>
+          <ItemText>{parse(ingress)}</ItemText>
           {mainContext && <Breadcrumb breadcrumb={mainContext.breadcrumb} />}
           {contexts.length > 1 && (
             <ContextsWrapper>

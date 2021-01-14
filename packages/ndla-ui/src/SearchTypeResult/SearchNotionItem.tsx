@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import parse from 'html-react-parser';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
@@ -44,9 +45,6 @@ const TextWrapper = styled.div``;
 const DescriptionWrapper = styled.div`
   ${fonts.sizes('18px', '26px')};
   font-family: ${fonts.serif};
-`;
-const TitleWrapper = styled.span`
-  font-weight: bold;
 `;
 
 const MediaWrapper = styled.div`
@@ -117,6 +115,7 @@ export type SearchNotionItemProps = {
   image?: { url: string; alt: string };
   media?: MediaProps;
   labels?: string[];
+  renderMarkdown: (text: React.ReactNode) => string;
 };
 
 const SearchNotionItem = ({
@@ -125,6 +124,7 @@ const SearchNotionItem = ({
   image,
   media,
   labels = [],
+  renderMarkdown,
   t,
 }: SearchNotionItemProps & tType) => {
   const hasMedia = !!(image || media);
@@ -176,7 +176,7 @@ const SearchNotionItem = ({
     <ItemWrapper hasMedia={hasMedia}>
       <TextWrapper>
         <DescriptionWrapper>
-          <TitleWrapper>{title}</TitleWrapper> – {text}
+          {parse(renderMarkdown(`**${title}** - ${text}`))}
         </DescriptionWrapper>
         {labels.length > 0 && (
           <LabelsWrapper>

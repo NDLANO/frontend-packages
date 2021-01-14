@@ -1814,9 +1814,9 @@ storiesOf('Grunnstiler', module)
       <StoryBody>
         <h2 className="u-heading">Eksempel på blokksitat</h2>
         <blockquote>
-          «Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
+          Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne,
           og hun viser oss at det å tre ut av den typiske sildestimen alle
-          absolutt skal følge, er kult.» <br />
+          absolutt skal følge, er kult. <br />
           (Jente 19 år, Si;D, Aftenposten 23. mai 2016)
         </blockquote>
       </StoryBody>

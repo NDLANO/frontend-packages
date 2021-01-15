@@ -176,7 +176,11 @@ const SearchNotionItem = ({
     <ItemWrapper hasMedia={hasMedia}>
       <TextWrapper>
         <DescriptionWrapper>
-          {parse(renderMarkdown(`**${title}** - ${text}`))}
+          {parse(
+            renderMarkdown
+              ? renderMarkdown(`**${title}** - ${text}`)
+              : `<b>${title}</b> - ${text}`,
+          )}
         </DescriptionWrapper>
         {labels.length > 0 && (
           <LabelsWrapper>

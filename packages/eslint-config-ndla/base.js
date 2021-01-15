@@ -7,6 +7,7 @@ module.exports = {
     'import/no-cycle': ['warn', { maxDepth: Infinity }],
     'react/no-unused-state': 'warn',
     'react-hooks/rules-of-hooks': 'error',
+    'no-console': 'error',
   },
   // remove when https://github.com/facebook/create-react-app/pull/6513 is merged
   overrides: {

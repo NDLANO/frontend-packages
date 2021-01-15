@@ -233,21 +233,20 @@ const ProductionToolVersionLog = ({ t }) => {
                                 <>
                                   <Tooltip tooltip="Se versjon">
                                     <StyledAccordionsPanelIconButton
-                                      onClick={() =>
-                                        console.log('Preview version')
-                                      } // eslint-disable-line no-console
-                                    >
+                                      onClick={
+                                        () => console.log('Preview version') // eslint-disable-line no-console
+                                      }>
                                       <Eye />
                                     </StyledAccordionsPanelIconButton>
                                   </Tooltip>
                                   <Tooltip tooltip="Tilbakestill til versjon">
                                     <StyledAccordionsPanelIconButton
                                       onClick={() =>
+                                        // eslint-disable-next-line no-console
                                         console.log(
                                           'Are you sure? (modal to confirm revert?)',
                                         )
-                                      } // eslint-disable-line no-console
-                                    >
+                                      }>
                                       <Restore />
                                     </StyledAccordionsPanelIconButton>
                                   </Tooltip>

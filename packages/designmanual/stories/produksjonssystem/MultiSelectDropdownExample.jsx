@@ -86,7 +86,7 @@ class MultiSelectDropdownExample extends Component {
   }
 
   removeItem(item) {
-    console.log(item);
+    console.log(item); // eslint-disable-line no-console
     this.setState(prevState => ({
       addedData: prevState.addedData.filter(it => it.title !== item),
     }));

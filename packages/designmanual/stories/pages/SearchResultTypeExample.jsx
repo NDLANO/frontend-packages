@@ -374,8 +374,8 @@ const SearchPageDemo = ({ t }) => {
       <SearchHeader
         searchPhrase={searchPhrase}
         searchPhraseSuggestion={searchPhraseSuggestion}
-        searchPhraseSuggestionOnClick={() =>
-          console.log('search-phrase suggestion click')
+        searchPhraseSuggestionOnClick={
+          () => console.log('search-phrase suggestion click') // eslint-disable-line no-console
         }
         searchValue={searchValue}
         onSearchValueChange={value => setSearchValue(value)}

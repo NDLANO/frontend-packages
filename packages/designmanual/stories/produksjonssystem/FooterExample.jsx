@@ -74,14 +74,14 @@ const FooterExample = () => (
       <hr />
       <FooterLinkButton
         onClick={() => {
-          console.log('clicked..');
+          console.log('clicked..'); // eslint-disable-line no-console
         }}>
         Tilbakestill endringer
       </FooterLinkButton>
     </div>
     <div>
       <FooterStatus
-        onSave={(comment, statusId) => console.log(comment, statusId)}
+        onSave={(comment, statusId) => console.log(comment, statusId)} // eslint-disable-line no-console
         options={optionsFooterStatus}
         messages={{
           label: '',
@@ -100,7 +100,7 @@ const FooterExample = () => (
       <Button
         large
         onClick={() => {
-          console.log('save resource');
+          console.log('save resource'); // eslint-disable-line no-console
         }}>
         Lagre
       </Button>

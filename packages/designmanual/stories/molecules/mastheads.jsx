@@ -85,12 +85,12 @@ class MastheadWithTopicMenu extends Component {
             try {
               this.closeAllModals[1]();
             } catch (e) {
-              console.log('no search modal to close');
+              console.log('no search modal to close'); // eslint-disable-line no-console
             }
             try {
               this.closeAllModals[0]();
             } catch (e) {
-              console.log('no menu modal to close');
+              console.log('no menu modal to close'); // eslint-disable-line no-console
             }
           }}
         />

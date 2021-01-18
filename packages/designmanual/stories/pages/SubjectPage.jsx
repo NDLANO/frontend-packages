@@ -447,6 +447,7 @@ const SubjectPage = ({
   });
   const showBreadCrumb = entry && entry.isIntersecting;
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log(
       `The component is ${showBreadCrumb ? 'visible' : 'not visible'}.`,
     );

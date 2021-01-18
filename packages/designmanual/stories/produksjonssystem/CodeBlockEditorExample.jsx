@@ -11,10 +11,10 @@ import { CodeBlockEditor } from '@ndla/code';
 
 export const CodeBlockEditorExample = () => {
   const handleSave = codeContent => {
-    console.log('save codeContent: ', codeContent);
+    console.log('save codeContent: ', codeContent); // eslint-disable-line no-console
   };
   const handleAbort = () => {
-    console.log('aborted');
+    console.log('aborted'); // eslint-disable-line no-console
   };
 
   const demoContent = {

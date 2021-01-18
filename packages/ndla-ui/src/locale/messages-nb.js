@@ -300,8 +300,8 @@ const messages = {
     youAreHere: 'Du er her',
     trait: {
       video: 'Video',
-      h5p: 'Interaktiv'
-    }
+      h5p: 'Interaktiv',
+    },
   },
   article: {
     lastUpdated: 'Sist oppdatert',

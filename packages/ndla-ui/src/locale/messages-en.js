@@ -298,8 +298,8 @@ const messages = {
     youAreHere: 'You are here',
     trait: {
       video: 'Video',
-      h5p: 'Interactive'
-    }
+      h5p: 'Interactive',
+    },
   },
   article: {
     author: 'Author',

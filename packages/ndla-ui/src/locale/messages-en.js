@@ -298,7 +298,7 @@ const messages = {
     youAreHere: 'You are here',
     trait: {
       video: 'Video',
-      h5p: 'Interactiv'
+      h5p: 'Interactive'
     }
   },
   article: {

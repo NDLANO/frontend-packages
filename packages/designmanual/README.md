@@ -1,6 +1,6 @@
 # Designmanual
 
-Designmanual/Styleguide for NDLA.
+Designmanual/styleguide for NDLA.
 
 ## Getting started
 

@@ -15,7 +15,7 @@ npm install --save-dev eslint-config-ndla
 
 ### Configs
 
-Edit your `.eslintrc` and extend the config.
+Edit your `.eslintrc` file and extend the config.
 
 Example:
 

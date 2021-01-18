@@ -301,6 +301,10 @@ const messages = {
     showLess: 'Vis mindre',
     showMore: 'Vis meir',
     youAreHere: 'Du er her',
+    trait: {
+      video: 'Video',
+      h5p: 'Interaktiv',
+    },
   },
   article: {
     lastUpdated: 'Sist oppdatert',

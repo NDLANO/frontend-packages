@@ -296,6 +296,10 @@ const messages = {
     showLess: 'Show less',
     showMore: 'Show more',
     youAreHere: 'You are here',
+    trait: {
+      video: 'Video',
+      h5p: 'Interactiv'
+    }
   },
   article: {
     author: 'Author',

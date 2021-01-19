@@ -130,3 +130,19 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>
 );
+
+export const showLearningPathButtonToggleCss = css`
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: none;
+  }
+  position: fixed;
+  z-index: 100;
+  bottom: ${spacing.xsmall};
+  left: ${spacing.normal};
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: ${spacing.xsmall};
+    transform: translateY(-2px);
+  }
+`;

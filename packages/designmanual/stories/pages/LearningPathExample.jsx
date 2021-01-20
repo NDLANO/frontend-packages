@@ -9,6 +9,7 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { LearningPath } from '@ndla/icons/contentType';
 import { injectT } from '@ndla/i18n';
 import {
   LearningPathWrapper,
@@ -19,6 +20,7 @@ import {
   LearningPathSticky,
   LearningPathStickySibling,
   LearningPathMobileStepInfo,
+  showLearningPathButtonToggleCss,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -118,7 +120,7 @@ const dataReducer = (state, action) => {
 const toLearningPathUrl = () => {
   return '';
 };
-const LearningPathExample = ({ invertedStyle }) => {
+const LearningPathExample = ({ invertedStyle, t }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
   const [learningPathId, updateLearningPathId] = useState(
@@ -225,6 +227,12 @@ const LearningPathExample = ({ invertedStyle }) => {
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
+  const showLearningPathButton = (
+    <Button css={showLearningPathButtonToggleCss}>
+      <LearningPath />
+      <span>{t('learningPath.openMenuTooltip')}</span>
+    </Button>
+  );
   return (
     <>
       <LearningPathWrapper invertedStyle={invertedStyle}>
@@ -246,6 +254,7 @@ const LearningPathExample = ({ invertedStyle }) => {
             name={learningStepsData.title.title}
             cookies={useCookies}
             learningPathURL="https://stier.ndla.no"
+            showLearningPathButton={showLearningPathButton}
           />
           {currentLearningStep && (
             <div>
@@ -275,6 +284,7 @@ const LearningPathExample = ({ invertedStyle }) => {
           )}
         </LearningPathContent>
         <LearningPathSticky>
+          {showLearningPathButton}
           {currentLearningStepNumber > 0 ? (
             <LearningPathStickySibling
               arrow="left"

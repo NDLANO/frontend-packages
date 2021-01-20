@@ -30,6 +30,7 @@ const StyledFooter = styled.nav`
     left: 0;
     right: 0;
     justify-content: flex-end;
+    padding-bottom: env(safe-area-inset-bottom);
   }
   background: ${colors.brand.lighter};
   align-items: center;
@@ -53,14 +54,16 @@ const SafeLinkCSS = css`
   display: flex;
   box-shadow: none;
   align-items: center;
+  justify-content: center;
   color: ${colors.brand.primary};
   height: ${FOOTER_HEIGHT};
   ${mq.range({ until: breakpoints.tablet })} {
     height: ${FOOTER_HEIGHT_MOBILE};
+    width: ${FOOTER_HEIGHT_MOBILE};
   }
   padding: 0 ${spacing.normal} 0 ${spacing.normal};
   ${mq.range({ until: breakpoints.tablet })} {
-    padding: 0 ${spacing.small} 0 ${spacing.small};
+    padding: 0;
   }
   transition: background 200ms ease;
   > .c-icon--medium {
@@ -130,3 +133,19 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>
 );
+
+export const showLearningPathButtonToggleCss = css`
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: none;
+  }
+  position: fixed;
+  z-index: 100;
+  bottom: ${spacing.xsmall};
+  left: ${spacing.normal};
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: ${spacing.xsmall};
+    transform: translateY(-2px);
+  }
+`;

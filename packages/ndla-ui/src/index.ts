@@ -40,6 +40,7 @@ export {
   LearningPathSticky,
   LearningPathInformation,
   LearningPathStickySibling,
+  showLearningPathButtonToggleCss,
   LearningPathLastStepNavigation,
   LearningPathMobileStepInfo,
 } from './LearningPaths';

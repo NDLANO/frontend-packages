@@ -21,4 +21,5 @@ export { LearningPathInformation } from './LearningPathInformation';
 export {
   LearningPathSticky,
   LearningPathStickySibling,
+  showLearningPathButtonToggleCss,
 } from './LearningPathSticky';

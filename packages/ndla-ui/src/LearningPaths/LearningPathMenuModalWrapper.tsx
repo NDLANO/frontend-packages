@@ -8,30 +8,12 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
 import { colors, spacing, fonts } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
-import Button from '@ndla/button';
-// @ts-ignore
-import { LearningPath } from '@ndla/icons/contentType';
-// @ts-ignore
 import { LearningPathBadge } from '../index-javascript';
-
-const buttonToggleCss = css`
-  position: fixed;
-  z-index: 999;
-  bottom: ${spacing.xsmall};
-  left: ${spacing.normal};
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-right: ${spacing.xsmall};
-    transform: translateY(-2px);
-  }
-`;
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -49,11 +31,12 @@ const StyledMiniHeader = styled.span`
 type ModalWrapperProps = {
   innerWidth: number;
   closeLabel: string;
+  activateButton: Object;
   children: JSX.Element;
 };
 
 const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps &
-  tType> = ({ innerWidth, closeLabel, children, t }) => {
+  tType> = ({ innerWidth, closeLabel, children, t, activateButton }) => {
   if (innerWidth < 601) {
     return (
       <StyledWrapper>
@@ -62,12 +45,7 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps &
           animation="slide-up"
           animationDuration={200}
           size="fullscreen"
-          activateButton={
-            <Button css={buttonToggleCss}>
-              <LearningPath />
-              <span>Vis læringssti</span>
-            </Button>
-          }>
+          activateButton={activateButton}>
           {(onClose: Function) => (
             <>
               <ModalHeader>

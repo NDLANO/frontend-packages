@@ -104,6 +104,7 @@ interface Props {
   };
   learningPathId: number;
   toLearningPathUrl(pathId: number, stepId: number): string;
+  showLearningPathButton: Object;
 }
 
 const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
@@ -119,6 +120,7 @@ const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
   invertedStyle,
   cookies,
   t,
+  showLearningPathButton,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
@@ -127,7 +129,8 @@ const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
     <StyledMenu isOpen={isOpen}>
       <LearningPathMenuModalWrapper
         innerWidth={innerWidth}
-        closeLabel={t('modal.closeModal')}>
+        closeLabel={t('modal.closeModal')}
+        activateButton={showLearningPathButton}>
         <>
           <div
             css={css`

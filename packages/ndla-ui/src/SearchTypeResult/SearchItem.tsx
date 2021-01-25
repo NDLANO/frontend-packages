@@ -213,6 +213,7 @@ export type SearchItemType = {
   image: React.ReactNode | null;
   img?: { url: string; alt: string };
   labels?: string[];
+  children?: React.ReactNode;
 };
 type Props = {
   item: SearchItemType;
@@ -271,6 +272,7 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
           <ItemTitle>
             <SafeLink to={url}>{title}</SafeLink>
           </ItemTitle>
+          {item.children}
           <ItemText>{parse(ingress)}</ItemText>
           {mainContext && <Breadcrumb breadcrumb={mainContext.breadcrumb} />}
           {contexts.length > 1 && (

@@ -91,6 +91,12 @@ const fadeOutAnimation = css`
   ${animations.fadeOut()}
 `;
 
+const StyledInputCheckbox = styled.input`
+  appearance: checkbox !important;
+  margin-right: ${spacing.small};
+  width: auto;
+`;
+
 class FileListEditor extends Component {
   constructor(props) {
     super(props);
@@ -232,6 +238,8 @@ class FileListEditor extends Component {
       usePortal,
       messages,
       missingFilePaths,
+      showCheckboxes,
+      toggleCheckbox,
     } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
@@ -273,6 +281,16 @@ class FileListEditor extends Component {
                 }}
                 onBlur={this.exitEditFileName}
               />
+              {showCheckboxes && file.type === 'pdf' && (
+                <Tooltip tooltip={messages.renderInlineTooltip}>
+                  <StyledInputCheckbox
+                    type="checkbox"
+                    checked={file.renderInline}
+                    onChange={() => toggleCheckbox(index)}
+                  />
+                  {messages.renderInlineLabel}
+                </Tooltip>
+              )}
               <div>
                 <Tooltip tooltip={messages.changeName}>
                   <ButtonIcons
@@ -332,9 +350,11 @@ FileListEditor.propTypes = {
   ),
   missingFilePaths: PropTypes.arrayOf(PropTypes.string),
   sortable: PropTypes.bool,
+  showCheckboxes: PropTypes.bool,
   onEditFileName: PropTypes.func.isRequired,
   onDeleteFile: PropTypes.func.isRequired,
   onMovedFile: PropTypes.func.isRequired,
+  toggleCheckbox: PropTypes.func,
   usePortal: PropTypes.bool,
 };
 

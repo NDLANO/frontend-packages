@@ -59,7 +59,7 @@ export { default as Breadcrumblist } from './Breadcrumblist';
 
 export { MessageBox } from './MessageBox';
 
-export { default as AudioPlayer } from './AudioPlayer';
+export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
 export {
   NavigationHeading,

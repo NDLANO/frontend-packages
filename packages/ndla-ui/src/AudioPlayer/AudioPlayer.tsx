@@ -8,145 +8,89 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import { Play, Pause, VolumeUp } from '@ndla/icons/common';
 import { colors, fonts, spacing } from '@ndla/core';
-
-const stopPropagation = (e: React.MouseEvent<HTMLElement>) => {
-  e.stopPropagation();
-};
+import Controls from './Controls';
+import SpeechControl from './SpeechControl';
 
 const Heading = styled.h2`
   ${fonts.sizes('20px', '20px')};
   margin: ${spacing.small} 0;
 `;
 
-const SpeechPlayButton = styled.button`
-  background: none;
-  border: none;
+const InfoWrapper = styled.div`
+  border: 1px solid ${colors.brand.lighter};
+  border-bottom: 0;
+  display: flex;
+`;
+
+const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 0;
-  cursor: pointer;
-  color: ${colors.brand.primary};
-  margin-right: 0;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: ${colors.brand.secondary};
-  }
-  .c-icon {
-    width: 24px;
-    height: 24px;
+  flex: 1 0 auto;
+  max-width: 28%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
   }
 `;
-
-const PlayIconWrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
+const TextWrapper = styled.div`
+  padding: ${spacing.normal} ${spacing.medium};
 `;
-
-const PauseIconWrapper = styled.span`
-  display: none;
-  align-items: center;
+const Title = styled.h2`
+  ${fonts.sizes('22px', '30px')};
+  margin: 0 0 ${spacing.small};
 `;
-
-const ControlsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  background: ${colors.brand.greyLighter};
-  padding: ${spacing.xsmall} 20px;
-
-  &.playing ${PlayIconWrapper} {
-    display: none;
-  }
-  &.playing ${PauseIconWrapper} {
-    display: inline-flex;
-  }
-`;
-
-const PlayButton = styled.button`
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin-right: ${spacing.small};
-  cursor: pointer;
-
-  .c-icon {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-const TimeWrapper = styled.div`
-  margin-right: ${spacing.small};
-  ${fonts.sizes('14px', '22px')};
-`;
-
-const ProgressWrapper = styled.div`
-  position: relative;
-  height: 30px;
-  cursor: pointer;
-  flex: 1 1 auto;
-`;
-
-const ProgressBackground = styled.div`
-  position: absolute;
-  top: 13px;
-  left: 0;
-  height: 4px;
-  background: #ffffff;
-  width: 100%;
-`;
-
-const ProgressPlayed = styled.div`
-  position: absolute;
-  top: 13px;
-  left: 0;
-  height: 4px;
-  background: ${colors.text.primary};
+const Description = styled.p`
+  ${fonts.sizes('16px', '30px')};
+  font-family: ${fonts.sans};
+  margin: 0;
 `;
 
 type Props = {
   src: string;
   title: string;
   speech?: boolean;
+  description?: string;
+  img?: {
+    url: string;
+    alt: string;
+  };
 };
-const AudioPlayer = ({ src, title, speech = false }: Props) => {
+const AudioPlayer = ({ src, title, speech, description, img }: Props) => {
   if (speech) {
     return (
-      <div data-audio-player={1}>
-        <audio src={src} title={title} preload="metadata" />
-        <SpeechPlayButton type="button" onClick={stopPropagation} data-play={1}>
-          <VolumeUp role="img" aria-label="play" title="play" />
-        </SpeechPlayButton>
+      <div
+        data-audio-player={1}
+        data-speech={1}
+        data-src={src}
+        data-title={title}>
+        <SpeechControl src={src} title={title} />
       </div>
     );
   }
 
   return (
-    <div data-audio-player={1}>
-      <Heading>{title}</Heading>
-      <audio src={src} title={title} preload="metadata" />
-      <ControlsWrapper data-controls={1}>
-        <PlayButton type="button" onClick={stopPropagation} data-play={1}>
-          <PlayIconWrapper>
-            <Play role="img" aria-label="play" title="play" />
-          </PlayIconWrapper>
-          <PauseIconWrapper>
-            <Pause role="img" aria-label="pause" title="play" />
-          </PauseIconWrapper>
-        </PlayButton>
-        <TimeWrapper data-time={1}>0:00</TimeWrapper>
-        <ProgressWrapper tabIndex={0} data-progress={1}>
-          <ProgressBackground />
-          <ProgressPlayed data-value="0" data-progress-played={1} />
-        </ProgressWrapper>
-      </ControlsWrapper>
-    </div>
+    <>
+      {description || img ? (
+        <InfoWrapper>
+          {img && (
+            <ImageWrapper>
+              <img src={img.url} alt={img.alt} />
+            </ImageWrapper>
+          )}
+          <TextWrapper>
+            <Title>{title}</Title>
+            {description && <Description>{description}</Description>}
+          </TextWrapper>
+        </InfoWrapper>
+      ) : (
+        <Heading>{title}</Heading>
+      )}
+      <div data-audio-player={1} data-src={src} data-title={title}>
+        <Controls src={src} title={title} />
+      </div>
+    </>
   );
 };
 

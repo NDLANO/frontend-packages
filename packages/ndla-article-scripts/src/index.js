@@ -37,8 +37,6 @@ import {
 
 import { addFootnoteClickListeners } from './footnoteScripts';
 
-import { initAudioPlayers } from './audioPlayerScript';
-
 import { addShowConceptDefinitionClickListeners } from './conceptScripts';
 
 import { toggleRelatedArticles } from './relatedArticlesToggle';
@@ -61,7 +59,6 @@ export const initArticleScripts = () => {
   addShowConceptDefinitionClickListeners();
   toggleLicenseInfoBox();
   addDetailsEventListeners();
-  initAudioPlayers();
   addFootnoteClickListeners();
   toggleRelatedArticles();
   initTableScript();
@@ -85,7 +82,6 @@ export {
   removeShowDialogClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,
-  initAudioPlayers,
   addFootnoteClickListeners,
   toggleLicenseInfoBox,
   toggleRelatedArticles,

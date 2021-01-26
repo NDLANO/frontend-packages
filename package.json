@@ -100,6 +100,6 @@
     "string-length": "^2.0.0",
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.0",
-    "typescript": "3.5.x"
+    "typescript": "^4.1.3"
   }
 }

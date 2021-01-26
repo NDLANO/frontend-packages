@@ -40,9 +40,9 @@ export {
   LearningPathSticky,
   LearningPathInformation,
   LearningPathStickySibling,
-  showLearningPathButtonToggleCss,
   LearningPathLastStepNavigation,
   LearningPathMobileStepInfo,
+  LearningPathMobileHeader,
 } from './LearningPaths';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';

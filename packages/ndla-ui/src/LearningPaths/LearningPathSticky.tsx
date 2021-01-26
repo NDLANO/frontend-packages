@@ -23,7 +23,8 @@ const StyledFooter = styled.nav`
   height: ${FOOTER_HEIGHT};
   width: 100%;
   ${mq.range({ until: breakpoints.tablet })} {
-    height: ${FOOTER_HEIGHT_MOBILE};
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    height: calc(${FOOTER_HEIGHT_MOBILE} + var(--safe-area-inset-bottom));
     position: fixed;
     z-index: 2;
     bottom: 0;
@@ -133,19 +134,3 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>
 );
-
-export const showLearningPathButtonToggleCss = css`
-  ${mq.range({ from: breakpoints.tablet })} {
-    display: none;
-  }
-  position: fixed;
-  z-index: 100;
-  bottom: ${spacing.xsmall};
-  left: ${spacing.normal};
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-right: ${spacing.xsmall};
-    transform: translateY(-2px);
-  }
-`;

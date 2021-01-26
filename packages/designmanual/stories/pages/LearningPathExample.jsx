@@ -9,7 +9,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { LearningPath } from '@ndla/icons/contentType';
 import { injectT } from '@ndla/i18n';
 import {
   LearningPathWrapper,
@@ -20,13 +19,13 @@ import {
   LearningPathSticky,
   LearningPathStickySibling,
   LearningPathMobileStepInfo,
-  showLearningPathButtonToggleCss,
+  LearningPathMobileHeader,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
 import Button from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-
+import { useWindowSize } from '@ndla/hooks';
 import Resources from '../molecules/resources';
 import ArticleLoader from '../article/ArticleLoader';
 import Breadcrumb from '../molecules/breadcrumbs';
@@ -198,6 +197,9 @@ const LearningPathExample = ({ invertedStyle, t }) => {
     fetchLearningSteps({ learningPathId });
   }, [learningPathId]);
 
+  const { innerWidth } = useWindowSize(100);
+  const mobileView = innerWidth < 601;
+
   if (!learningStepsData || currentLearningStepNumber === undefined) {
     return null;
   }
@@ -227,11 +229,20 @@ const LearningPathExample = ({ invertedStyle, t }) => {
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
-  const showLearningPathButton = (
-    <Button css={showLearningPathButtonToggleCss}>
-      <LearningPath />
-      <span>{t('learningPath.openMenuTooltip')}</span>
-    </Button>
+  const learningPathMenu = (
+    <LearningPathMenu
+      invertedStyle={invertedStyle}
+      learningsteps={mappedLearningsteps}
+      duration={duration}
+      lastUpdated={lastUpdatedString}
+      copyright={copyright}
+      learningPathId={3}
+      toLearningPathUrl={toLearningPathUrl}
+      currentIndex={currentLearningStepNumber}
+      name={learningStepsData.title.title}
+      cookies={useCookies}
+      learningPathURL="https://stier.ndla.no"
+    />
   );
   return (
     <>
@@ -242,20 +253,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
           </section>
         </div>
         <LearningPathContent>
-          <LearningPathMenu
-            invertedStyle={invertedStyle}
-            learningsteps={mappedLearningsteps}
-            duration={duration}
-            lastUpdated={lastUpdatedString}
-            copyright={copyright}
-            learningPathId={3}
-            toLearningPathUrl={toLearningPathUrl}
-            currentIndex={currentLearningStepNumber}
-            name={learningStepsData.title.title}
-            cookies={useCookies}
-            learningPathURL="https://stier.ndla.no"
-            showLearningPathButton={showLearningPathButton}
-          />
+          {mobileView ? <LearningPathMobileHeader /> : learningPathMenu}
           {currentLearningStep && (
             <div>
               {currentLearningStep.showTitle && (
@@ -284,7 +282,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
           )}
         </LearningPathContent>
         <LearningPathSticky>
-          {showLearningPathButton}
+          {mobileView && learningPathMenu}
           {currentLearningStepNumber > 0 ? (
             <LearningPathStickySibling
               arrow="left"

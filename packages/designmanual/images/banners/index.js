@@ -42,7 +42,7 @@ import Biologi1 from './Biologi-1.svg';
 import ReligionOgEtikk from './Religion-og-Etikk.svg';
 import SosiologiOgSosialantropologi from './Sosiologi-og-Sosialantropologi.svg';
 
-export default [
+const banners = [
   { desktop: Biologi1, mobile: Biologi1, name: 'Biologi 1' },
   {
     desktop: ReligionOgEtikk,
@@ -211,3 +211,5 @@ export default [
     name: 'Norsk',
   },
 ];
+
+export default banners;

@@ -141,7 +141,7 @@ type IconProps = {
 };
 
 const IconWrapper = styled.span<IconProps>`
-  margin: 0px 8px;
+  margin: 0 8px;
   color: ${colors.brand.tertiary};
   display: inline-block;
   min-width: 24px;
@@ -236,15 +236,15 @@ const Breadcrumblist = ({
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
   const [useScrollEvent, setUseScrollEvent] = useState(false);
 
-  const handleScroll = () => {
-    let position = 0;
-    if (window.pageYOffset < startOffset) {
-      position = startOffset;
-    }
-    setWrapperOffset(position);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      let position = 0;
+      if (window.pageYOffset < startOffset) {
+        position = startOffset;
+      }
+      setWrapperOffset(position);
+    };
+
     if (useScrollEvent) {
       window.addEventListener('scroll', handleScroll, { passive: true });
     } else {
@@ -254,7 +254,7 @@ const Breadcrumblist = ({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [useScrollEvent]);
+  }, [useScrollEvent, startOffset]);
 
   const checkScreenSize = () => {
     if (window.innerWidth >= 1301) {

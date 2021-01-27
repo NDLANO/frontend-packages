@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntersectionObserver } from '@ndla/hooks';
 
@@ -320,7 +320,7 @@ const SubjectPage = ({
     setShowSubSubTopicContent(false);
   };
 
-  const scrollToCurrentLevel = () => {
+  const scrollToCurrentLevel = useCallback(() => {
     let scrollTo = 0;
     switch (currentLevel) {
       case 'Subjecttype':
@@ -350,7 +350,7 @@ const SubjectPage = ({
       top: scrollTo,
       behavior: 'smooth',
     });
-  };
+  }, [currentLevel]);
 
   useEffect(() => {
     const prevMainTopic = prevSelectedMainTopicRef.current;
@@ -366,11 +366,10 @@ const SubjectPage = ({
       }
     }
     prevSelectedMainTopicRef.current = selectedMainTopic;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMainTopic, selectedSubTopic, selectedSubSubTopic]);
 
-  useEffect(() => {
-    scrollToCurrentLevel();
-  }, [currentLevel]);
+  useEffect(scrollToCurrentLevel, [currentLevel, scrollToCurrentLevel]);
 
   const onClickMainTopic = (e, id) => {
     e.preventDefault();

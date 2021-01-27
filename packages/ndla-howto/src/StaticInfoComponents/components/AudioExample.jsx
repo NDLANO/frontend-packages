@@ -12,7 +12,6 @@ import { getLicenseByAbbreviation } from '@ndla/licenses';
 import {
   addCloseDialogClickListeners,
   addShowDialogClickListeners,
-  initAudioPlayers,
 } from '@ndla/article-scripts';
 
 class AudioExample extends Component {
@@ -25,7 +24,6 @@ class AudioExample extends Component {
     if (this.props.runScripts) {
       addShowDialogClickListeners();
       addCloseDialogClickListeners();
-      initAudioPlayers();
     }
   }
 

@@ -102,7 +102,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
         setShowGradeIndex(Number(rememberGradeIndex));
       }
     }
-  }, []);
+  }, [isWindowContext, grades]);
 
   const toggleGradeIndex = (index: number) => {
     setShowGradeIndex(index);

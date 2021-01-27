@@ -98,7 +98,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
     return () => {
       window.removeEventListener('keydown', onKeyEsc);
     };
-  }, []);
+  }, [onInputBlur]);
 
   useEffect(() => {
     let yCoordinate = 0;

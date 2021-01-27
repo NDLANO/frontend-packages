@@ -318,6 +318,7 @@ const SearchPageDemo = ({ t }) => {
         dispatchResources({ type: 'RESOURCE_TYPE_SELECTED', ...data });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentResourceType]);
 
   const handleShowMore = type => {

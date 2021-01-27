@@ -320,7 +320,7 @@ const Controls = ({ src, title }: Props) => {
         audioElement.removeEventListener('ended', handleTimeEnded);
       };
     }
-  }, [audioRef.current]);
+  }, []);
 
   useEffect(() => {
     if (audioRef.current) {

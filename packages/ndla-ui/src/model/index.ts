@@ -8,6 +8,8 @@
 
 import * as contentTypes from './ContentType';
 
-export default {
+const model = {
   contentTypes,
 };
+
+export default model;

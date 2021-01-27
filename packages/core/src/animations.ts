@@ -2,7 +2,7 @@ import spacing from './spacing';
 
 const DURATION_DEFAULT = '400ms';
 
-export default {
+const animations = {
   durations: {
     superFast: '100ms',
     fast: '200ms',
@@ -177,3 +177,5 @@ export default {
       }
   `,
 };
+
+export default animations;

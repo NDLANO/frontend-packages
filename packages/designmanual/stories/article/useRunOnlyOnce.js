@@ -8,15 +8,15 @@ export function useRunOnlyOnce(id, callback) {
 
   useEffect(() => {
     mountedInstances.push(idRef.current);
+    const index = mountedInstances.indexOf(idRef.current);
     if (mountedInstances.length === 1) {
       callback();
     }
 
     return () => {
-      const index = mountedInstances.indexOf(idRef.current);
       mountedInstances.splice(index, 1);
     };
-  }, []);
+  }, [callback]);
 
   return idRef.current;
 }

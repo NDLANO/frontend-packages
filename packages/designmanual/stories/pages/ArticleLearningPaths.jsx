@@ -20,7 +20,7 @@ import {
 import FigureImage from '../article/FigureImage';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
-export default ({ title, description }) => (
+const ArticleLearningPaths = ({ title, description }) => (
   <>
     <h1>{title}</h1>
     <p>{description}</p>
@@ -80,3 +80,5 @@ export default ({ title, description }) => (
     </OneColumn>
   </>
 );
+
+export default ArticleLearningPaths;

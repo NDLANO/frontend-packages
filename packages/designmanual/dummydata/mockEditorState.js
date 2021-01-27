@@ -21,7 +21,7 @@ export const subjectList = [
   },
 ];
 
-export default {
+const editorState = {
   entityMap: {
     0: {
       type: 'image',
@@ -88,3 +88,5 @@ export default {
     },
   ],
 };
+
+export default editorState;

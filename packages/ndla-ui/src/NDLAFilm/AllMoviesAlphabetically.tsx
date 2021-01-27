@@ -102,9 +102,9 @@ const MovieImage = styled.div<movieImageType>`
   }
   position: relative;
   &:after {
-    content: "";
-    position: absolute; 
-    z-index; 1;
+    content: '';
+    position: absolute;
+    z-index: 1;
     background: ${colors.ndlaFilm.filmColor};
     opacity: 0;
     left: 0;
@@ -223,11 +223,11 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
     }
     setVisibleImages(visibleImages => ({ ...visibleImages, ...updates }));
   };
-  const throttledScrollEvent = throttle(() => {
-    scrollEvent();
-  }, 100);
 
   useEffect(() => {
+    const throttledScrollEvent = throttle(() => {
+      scrollEvent();
+    }, 100);
     window.addEventListener('scroll', throttledScrollEvent);
     scrollEvent();
     return () => {

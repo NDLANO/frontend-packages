@@ -51,7 +51,7 @@ const FrontpageProgramMenu = ({
         window.localStorage.getItem('frontpageShowSubjects') || '';
       setShowSubjects(rememberSubjects.localeCompare('true') === 0);
     }
-  }, []);
+  }, [isWindowContext]);
 
   const toggleSubjects = (toggle: boolean) => {
     setShowSubjects(toggle);

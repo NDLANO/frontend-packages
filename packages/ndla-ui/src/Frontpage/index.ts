@@ -5,10 +5,7 @@ export { default as FrontpageToolbox } from './FrontpageToolbox';
 export { default as FrontpageMultidisciplinarySubject } from './FrontpageMultidisciplinarySubject';
 export { default as FrontpageSearch } from './FrontpageSearch';
 export { default as FrontpageSubjectIllustration } from './illustrations/FrontpageSubjectIllustration';
-export { default as FrontpageSubjectsInPortal } from './FrontpageSubjectsInPortal';
-export { default as FrontpageCircularSubjectsSection } from './FrontpageCircularSubjectsSection';
 export { default as FrontpageProgramMenu } from './FrontpageProgramMenu';
-export { default as FrontpageAllSubjects } from './FrontpageAllSubjects';
 
 export {
   Fellesfag,

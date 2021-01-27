@@ -22,9 +22,7 @@ export {
   FrontpageToolbox,
   FrontpageMultidisciplinarySubject,
   FrontpageHeader,
-  FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
-  FrontpageCircularSubjectsSection,
   FrontpageSearch,
   FrontpageProgramMenu,
 } from './Frontpage';

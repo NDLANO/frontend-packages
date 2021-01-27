@@ -1,6 +1,6 @@
 const spacingUnit = 26;
 
-export default {
+const spacing = {
   xxsmall: `${spacingUnit / 6}px`,
   xsmall: `${spacingUnit / 4}px`,
   small: `${spacingUnit / 2}px`,
@@ -9,3 +9,4 @@ export default {
   large: `${spacingUnit * 2}px`,
   spacingUnit,
 };
+export default spacing;

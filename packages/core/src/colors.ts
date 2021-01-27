@@ -8,7 +8,7 @@ const brandGreyLight = '#e8e3e3';
 const brandGreyLightest = '#f8f8f8';
 const brandYellow = '#fde74c';
 
-export default {
+const colors = {
   /**
    * NDLA Brand colors
    */
@@ -132,3 +132,5 @@ export default {
     grayDark: '#e4e4e4',
   },
 };
+
+export default colors;

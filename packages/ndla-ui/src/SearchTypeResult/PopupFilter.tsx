@@ -58,7 +58,7 @@ const PopupFilter = ({
 
   useEffect(() => {
     setValues(valuesProps);
-  }, [isOpen]);
+  }, [isOpen, valuesProps]);
 
   const buttonContent = (
     <Button size="normal" lighterGrey>

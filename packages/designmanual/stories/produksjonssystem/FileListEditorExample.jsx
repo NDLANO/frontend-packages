@@ -98,6 +98,7 @@ class StructureExample extends Component {
 
   render() {
     const { addedFiles } = this.state;
+    const { withCheckboxes } = this.props;
     return (
       <FileListEditor
         files={addedFiles}
@@ -105,7 +106,7 @@ class StructureExample extends Component {
         onMovedFile={this.onMovedFile}
         onDeleteFile={this.onDeleteFile}
         onToggleRenderInline={this.onToggleRenderInline}
-        showRenderInlineCheckbox={true}
+        showRenderInlineCheckbox={withCheckboxes}
         messages={{
           placeholder: 'Oppgi et filnavn',
           changeName: 'Endre navn',

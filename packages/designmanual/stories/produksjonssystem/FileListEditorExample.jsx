@@ -18,44 +18,42 @@ class StructureExample extends Component {
           path: 'http://www.exampleurl1.com',
           title: 'Filename',
           type: 'pdf',
-          renderInline: true,
+          'render-inline': 'true',
         },
         {
           path: 'http://www.exampleurl2.com',
           title: 'Filename 2',
           type: 'pdf',
-          renderInline: false,
         },
         {
           path: 'http://www.exampleurl3.com',
           title: 'Filename 3',
           type: 'pdf',
-          renderInline: false,
+          'render-inline': 'false',
         },
         {
           path: 'http://www.exampleurl4.com',
           title: 'Filename 4',
           type: 'txt',
-          renderInline: false,
+          'render-inline': 'false',
         },
         {
           path: 'http://www.exampleurl5.com',
           title: 'Filename 5',
           type: 'txt',
-          renderInline: false,
         },
         {
           path: 'http://www.exampleurl6.com',
           title: 'Filename 6',
           type: 'txt',
-          renderInline: false,
+          'render-inline': 'false',
         },
       ],
     };
     this.onUpdateFileName = this.onUpdateFileName.bind(this);
     this.onMovedFile = this.onMovedFile.bind(this);
     this.onDeleteFile = this.onDeleteFile.bind(this);
-    this.toggleInlineRender = this.toggleInlineRender.bind(this);
+    this.onToggleRenderInline = this.onToggleRenderInline.bind(this);
   }
 
   onMovedFile(from, to) {
@@ -85,25 +83,29 @@ class StructureExample extends Component {
     }));
   }
 
-  toggleInlineRender(index) {
+  onToggleRenderInline(index) {
     this.setState(prevState => ({
-      addedFiles: prevState.addedFiles.map((file, i) =>
-        i === index ? { ...file, renderInline: !file.renderInline } : file,
-      ),
+      addedFiles: prevState.addedFiles.map((file, i) => {
+        return i === index
+          ? {
+              ...file,
+              'render-inline': (!(file['render-inline'] === 'true')).toString(),
+            }
+          : file;
+      }),
     }));
   }
 
   render() {
     const { addedFiles } = this.state;
-
     return (
       <FileListEditor
         files={addedFiles}
         onEditFileName={this.onUpdateFileName}
         onMovedFile={this.onMovedFile}
         onDeleteFile={this.onDeleteFile}
-        showCheckboxes={true}
-        toggleCheckbox={this.toggleInlineRender}
+        onToggleRenderInline={this.onToggleRenderInline}
+        showRenderInlineCheckbox={true}
         messages={{
           placeholder: 'Oppgi et filnavn',
           changeName: 'Endre navn',

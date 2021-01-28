@@ -14,6 +14,7 @@ import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, fonts, colors, shadows, animations } from '@ndla/core';
+import { CheckboxItem } from '@ndla/forms';
 import FileNameInput from './FileNameInput';
 
 const FILE_HEIGHT = 69;
@@ -89,12 +90,6 @@ const ButtonIcons = styled.button`
 
 const fadeOutAnimation = css`
   ${animations.fadeOut()}
-`;
-
-const StyledInputCheckbox = styled.input`
-  appearance: checkbox !important;
-  margin-right: ${spacing.small};
-  width: auto;
 `;
 
 class FileListEditor extends Component {
@@ -238,8 +233,8 @@ class FileListEditor extends Component {
       usePortal,
       messages,
       missingFilePaths,
-      showCheckboxes,
-      toggleCheckbox,
+      showRenderInlineCheckbox,
+      onToggleRenderInline,
     } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
@@ -281,14 +276,15 @@ class FileListEditor extends Component {
                 }}
                 onBlur={this.exitEditFileName}
               />
-              {showCheckboxes && file.type === 'pdf' && (
+              {showRenderInlineCheckbox && file.type === 'pdf' && (
                 <Tooltip tooltip={messages.renderInlineTooltip}>
-                  <StyledInputCheckbox
-                    type="checkbox"
-                    checked={file.renderInline}
-                    onChange={() => toggleCheckbox(index)}
+                  <CheckboxItem
+                    label="Vis PDF"
+                    checked={file['render-inline'] === 'true'}
+                    value=""
+                    id={index}
+                    onChange={i => onToggleRenderInline(i)}
                   />
-                  {messages.renderInlineLabel}
                 </Tooltip>
               )}
               <div>
@@ -350,11 +346,11 @@ FileListEditor.propTypes = {
   ),
   missingFilePaths: PropTypes.arrayOf(PropTypes.string),
   sortable: PropTypes.bool,
-  showCheckboxes: PropTypes.bool,
+  showRenderInlineCheckbox: PropTypes.bool,
   onEditFileName: PropTypes.func.isRequired,
   onDeleteFile: PropTypes.func.isRequired,
   onMovedFile: PropTypes.func.isRequired,
-  toggleCheckbox: PropTypes.func,
+  onToggleRenderInline: PropTypes.func,
   usePortal: PropTypes.bool,
 };
 

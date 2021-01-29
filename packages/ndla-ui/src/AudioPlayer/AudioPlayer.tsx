@@ -6,9 +6,13 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
+// @ts-ignore
+import Button from '@ndla/button';
+// @ts-ignore
+import { Cross as CrossIcon } from '@ndla/icons/action';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 
@@ -47,17 +51,74 @@ const Description = styled.p`
   margin: 0;
 `;
 
+const LinkToTextVersionWrapper = styled.div`
+  margin-top: ${spacing.normal};
+`;
+
+const TextVersionWrapper = styled.div`
+  padding: ${spacing.normal} ${spacing.medium};
+  border: 1px solid ${colors.brand.lighter};
+  border-top: 0;
+  ${fonts.sizes('16px', '30px')};
+  font-family: ${fonts.sans};
+  &.audio-player-text-version-hidden {
+    display: none;
+  }
+`;
+
+const TextVersionHeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const TextVersionHeading = styled.h3`
+  ${fonts.sizes('28px', '35px')};
+  font-weight: ${fonts.weight.semibold};
+  margin: ${spacing.small} 0 ${spacing.normal};
+`;
+
+const LinkButton = styled(Button)`
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 4px;
+  min-height: ${spacing.medium};
+  ${fonts.sizes('16px', '25px')};
+  column-gap: ${spacing.xsmall};
+  flex: 0 0 auto;
+  &:hover,
+  &:focus {
+    box-shadow: ${colors.link};
+  }
+`;
+
+const TextVersionText = styled.div`
+  max-width: 670px;
+`;
+
 type Props = {
   src: string;
   title: string;
   speech?: boolean;
   description?: string;
+  textVersion?: ReactNode;
   img?: {
     url: string;
     alt: string;
   };
+  staticRenderId?: string;
 };
-const AudioPlayer = ({ src, title, speech, description, img }: Props) => {
+const AudioPlayer = ({
+  src,
+  title,
+  speech,
+  description,
+  img,
+  textVersion,
+  staticRenderId,
+}: Props) => {
+  const [showTextVersion, setShowTextVersion] = useState(false);
+
   if (speech) {
     return (
       <div
@@ -70,9 +131,13 @@ const AudioPlayer = ({ src, title, speech, description, img }: Props) => {
     );
   }
 
+  const toggleTextVersion = () => {
+    setShowTextVersion(!showTextVersion);
+  };
+
   return (
     <>
-      {description || img ? (
+      {description || img || textVersion ? (
         <InfoWrapper>
           {img && (
             <ImageWrapper>
@@ -82,6 +147,17 @@ const AudioPlayer = ({ src, title, speech, description, img }: Props) => {
           <TextWrapper>
             <Title>{title}</Title>
             {description && <Description>{description}</Description>}
+            {textVersion && (
+              <LinkToTextVersionWrapper>
+                <LinkButton
+                  link
+                  size="normal"
+                  onClick={toggleTextVersion}
+                  data-audio-text-button-id={staticRenderId}>
+                  Tekstversjon
+                </LinkButton>
+              </LinkToTextVersionWrapper>
+            )}
           </TextWrapper>
         </InfoWrapper>
       ) : (
@@ -90,6 +166,22 @@ const AudioPlayer = ({ src, title, speech, description, img }: Props) => {
       <div data-audio-player={1} data-src={src} data-title={title}>
         <Controls src={src} title={title} />
       </div>
+      {textVersion && (showTextVersion || staticRenderId) && (
+        <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
+          <TextVersionHeadingWrapper>
+            <TextVersionHeading>Tekstversjon</TextVersionHeading>
+            <LinkButton
+              link
+              size="normal"
+              onClick={toggleTextVersion}
+              data-audio-text-button-id={staticRenderId}>
+              <CrossIcon style={{ width: '20px', height: '20px' }} />
+              <span>Lukk tekstversjon</span>
+            </LinkButton>
+          </TextVersionHeadingWrapper>
+          <TextVersionText>{textVersion}</TextVersionText>
+        </TextVersionWrapper>
+      )}
     </>
   );
 };

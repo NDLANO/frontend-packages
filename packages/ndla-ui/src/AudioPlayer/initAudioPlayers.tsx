@@ -31,6 +31,14 @@ const initAudioPlayers = () => {
       }
     }
   });
+
+  forEachElement('[data-audio-text-button-id]', (el: HTMLElement) => {
+    const id = el.getAttribute('data-audio-text-button-id');
+    if (id) {
+      el.onclick = () =>
+        document?.getElementById(id)?.toggleAttribute('hidden');
+    }
+  });
 };
 
 export default initAudioPlayers;

@@ -42,24 +42,24 @@ class StructureExample extends Component {
           path: 'http://www.exampleurl1.com',
           title: 'Filename',
           type: 'pdf',
-          'render-inline': 'true',
+          display: 'block',
         },
         {
           path: 'http://www.exampleurl2.com',
           title: 'Filename 2',
           type: 'pdf',
+          display: 'inline',
         },
         {
           path: 'http://www.exampleurl3.com',
           title: 'Filename 3',
           type: 'pdf',
-          'render-inline': 'false',
+          display: 'block',
         },
         {
           path: 'http://www.exampleurl4.com',
           title: 'Filename 4',
           type: 'txt',
-          'render-inline': 'false',
         },
         {
           path: 'http://www.exampleurl5.com',
@@ -70,7 +70,6 @@ class StructureExample extends Component {
           path: 'http://www.exampleurl6.com',
           title: 'Filename 6',
           type: 'txt',
-          'render-inline': 'false',
         },
       ],
     };
@@ -109,7 +108,7 @@ class StructureExample extends Component {
         return i === index
           ? {
               ...file,
-              'render-inline': (!(file['render-inline'] === 'true')).toString(),
+              display: file.display === 'block' ? 'inline' : 'block',
             }
           : file;
       }),

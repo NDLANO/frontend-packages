@@ -283,7 +283,7 @@ class FileListEditor extends Component {
                 <Tooltip tooltip={messages.renderInlineTooltip}>
                   <CheckboxItem
                     label="Vis PDF"
-                    checked={file['render-inline'] === 'true'}
+                    checked={file.display === 'block'}
                     value=""
                     id={index}
                     onChange={i => onToggleRenderInline(i)}

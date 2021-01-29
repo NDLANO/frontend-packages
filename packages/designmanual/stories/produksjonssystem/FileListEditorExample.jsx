@@ -9,6 +9,30 @@
 import React, { Component } from 'react';
 import { FileListEditor } from '@ndla/editor';
 
+export function arrMove(array, fromIndex, toIndex) {
+  const item = array[fromIndex];
+  const length = array.length;
+  const diff = fromIndex - toIndex;
+
+  if (diff > 0) {
+    return [
+      ...array.slice(0, toIndex),
+      item,
+      ...array.slice(toIndex, fromIndex),
+      ...array.slice(fromIndex + 1, length),
+    ];
+  } else if (diff < 0) {
+    const targetIndex = toIndex + 1;
+    return [
+      ...array.slice(0, fromIndex),
+      ...array.slice(fromIndex + 1, targetIndex),
+      item,
+      ...array.slice(targetIndex, length),
+    ];
+  }
+  return array;
+}
+
 class StructureExample extends Component {
   constructor(props) {
     super(props);
@@ -57,12 +81,8 @@ class StructureExample extends Component {
   }
 
   onMovedFile(from, to) {
-    this.setState(({ addedFiles }) => ({
-      addedFiles: addedFiles.map((file, i) => {
-        if (i === from) return addedFiles[to];
-        if (i === to) return addedFiles[from];
-        return file;
-      }),
+    this.setState(prevState => ({
+      addedFiles: arrMove(prevState.addedFiles, from, to),
     }));
   }
 

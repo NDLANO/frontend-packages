@@ -25,6 +25,7 @@ import {
 // @ts-ignore
 import { Play, Pause } from '@ndla/icons/common';
 import { colors, fonts, misc, spacing } from '@ndla/core';
+import { injectT, tType } from '@ndla/i18n';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -137,7 +138,10 @@ const SpeedList = styled(MenuItems)`
   align-items: stretch;
 `;
 
-const SpeedValueButton = styled(MenuItem)`
+type SpeedValueButtonProps = {
+  selected?: boolean;
+};
+const SpeedValueButton = styled(MenuItem)<SpeedValueButtonProps>`
   height: 28px;
   position: relative;
   background: none;
@@ -148,8 +152,8 @@ const SpeedValueButton = styled(MenuItem)`
   font-size: 14px;
   color: ${colors.text.light};
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   &:hover,
   &:active,
   &:focus,
@@ -158,17 +162,22 @@ const SpeedValueButton = styled(MenuItem)`
     border-radius: 5px;
     color: ${colors.text.primary};
   }
-  &.selected {
+  ${props =>
+    props.selected &&
+    `
     color: ${colors.text.primary};
-    &:after {
-      content: '';
-      border-radius: 50%;
-      background: #d1372e;
-      width: 6px;
-      height: 6px;
-      position: absolute;
-    }
-  }
+    
+  `}
+`;
+
+const SpeedSelectedMark = styled.span`
+  border-radius: 50%;
+  background: #d1372e;
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  align-self: flex-start;
+  margin: 6px 0 0 2px;
 `;
 
 const Time = styled.div`
@@ -290,7 +299,7 @@ type Props = {
   title: string;
 };
 
-const Controls = ({ src, title }: Props) => {
+const Controls = ({ src, title, t }: Props & tType) => {
   const [speedValue, setSpeedValue] = useState(1);
   const [volumeValue, setVolumeValue] = useState(100);
   const [sliderValue, setSliderValue] = useState(0);
@@ -394,6 +403,8 @@ const Controls = ({ src, title }: Props) => {
         </PlayButton>
         <ButtonWrrapper>
           <Forward15SecButton
+            title={t('audio.controls.forward15sec')}
+            aria-label={t('audio.controls.forward15sec')}
             onClick={() => {
               onSeekSeconds(15);
             }}>
@@ -401,7 +412,12 @@ const Controls = ({ src, title }: Props) => {
           </Forward15SecButton>
           <SpeedWrapper>
             <Menu>
-              <SpeedButton as="button">{speedValue}x</SpeedButton>
+              <SpeedButton
+                as="button"
+                title={t('audio.controls.selectSpeed')}
+                aria-label={t('audio.controls.selectSpeed')}>
+                {speedValue}x
+              </SpeedButton>
               <SpeedMenu as="div" portal={false}>
                 <div>
                   <SpeedList as="div">
@@ -409,10 +425,11 @@ const Controls = ({ src, title }: Props) => {
                       <SpeedValueButton
                         as="button"
                         key={speed}
+                        selected={speed === speedValue}
                         onSelect={() => {
                           setSpeedValue(speed);
                         }}>
-                        {speed}x
+                        {speed}x{speed === speedValue && <SpeedSelectedMark />}
                       </SpeedValueButton>
                     ))}
                   </SpeedList>
@@ -421,6 +438,8 @@ const Controls = ({ src, title }: Props) => {
             </Menu>
           </SpeedWrapper>
           <Back15SecButton
+            title={t('audio.controls.rewind15sec')}
+            aria-label={t('audio.controls.rewind15sec')}
             onClick={() => {
               onSeekSeconds(-15);
             }}>
@@ -440,7 +459,11 @@ const Controls = ({ src, title }: Props) => {
         <VolumeWrapper>
           <Menu>
             {/* @ts-ignore */}
-            <VolumeButton as="button" />
+            <VolumeButton
+              as="button"
+              title={t('audio.controls.adjustVolume')}
+              aria-label={t('audio.controls.adjustVolume')}
+            />
             <VolumeMenu as="div" portal={false}>
               <VolumeList>
                 <VolumeSliderWrapper>
@@ -463,4 +486,4 @@ const Controls = ({ src, title }: Props) => {
   );
 };
 
-export default Controls;
+export default injectT(Controls);

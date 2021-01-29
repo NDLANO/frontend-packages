@@ -792,6 +792,16 @@ const messages = {
       url: 'Feil ved lasting av lydfila.',
       caption: 'Orsak, ein feil oppstod ved lasting av lydfil.',
     },
+    controls: {
+      forward15sec: 'Spol 15 sekundar fram',
+      rewind15sec: 'Spol 15 sekundar tilbake',
+      selectSpeed: 'Velg avspelingshastigheit',
+      adjustVolume: 'Endre volum',
+    },
+    textVersion: {
+      heading: 'Tekstversjon',
+      close: 'Lukk tekstversjon',
+    },
   },
   video: {
     download: 'Last ned video',

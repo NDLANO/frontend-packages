@@ -779,6 +779,16 @@ const messages = {
       url: 'Error loading the audio.',
       caption: 'Sorry, an error occurred while loading the audio.',
     },
+    controls: {
+      forward15sec: 'Forward 15 seconds',
+      rewind15sec: 'Rewind 15 seconds',
+      selectSpeed: 'Choose speed',
+      adjustVolume: 'Adjust volume',
+    },
+    textVersion: {
+      heading: 'Text version',
+      close: 'Close text version',
+    },
   },
   video: {
     download: 'Download video',

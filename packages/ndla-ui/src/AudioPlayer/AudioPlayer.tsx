@@ -13,6 +13,7 @@ import { colors, fonts, spacing } from '@ndla/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
+import { injectT, tType } from '@ndla/i18n';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 
@@ -116,7 +117,8 @@ const AudioPlayer = ({
   img,
   textVersion,
   staticRenderId,
-}: Props) => {
+  t,
+}: Props & tType) => {
   const [showTextVersion, setShowTextVersion] = useState(false);
 
   if (speech) {
@@ -154,7 +156,7 @@ const AudioPlayer = ({
                   size="normal"
                   onClick={toggleTextVersion}
                   data-audio-text-button-id={staticRenderId}>
-                  Tekstversjon
+                  {t('audio.textVersion.heading')}
                 </LinkButton>
               </LinkToTextVersionWrapper>
             )}
@@ -169,14 +171,16 @@ const AudioPlayer = ({
       {textVersion && (showTextVersion || staticRenderId) && (
         <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
           <TextVersionHeadingWrapper>
-            <TextVersionHeading>Tekstversjon</TextVersionHeading>
+            <TextVersionHeading>
+              {t('audio.textVersion.heading')}
+            </TextVersionHeading>
             <LinkButton
               link
               size="normal"
               onClick={toggleTextVersion}
               data-audio-text-button-id={staticRenderId}>
               <CrossIcon style={{ width: '20px', height: '20px' }} />
-              <span>Lukk tekstversjon</span>
+              <span>{t('audio.textVersion.close')}</span>
             </LinkButton>
           </TextVersionHeadingWrapper>
           <TextVersionText>{textVersion}</TextVersionText>
@@ -186,4 +190,4 @@ const AudioPlayer = ({
   );
 };
 
-export default AudioPlayer;
+export default injectT(AudioPlayer);

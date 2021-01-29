@@ -185,7 +185,10 @@ class FileListEditor extends Component {
     window.removeEventListener('mousemove', this.onDragging);
     window.removeEventListener('mouseup', this.onDragEnd);
 
-    this.props.onMovedFile(this.initialPosition, this.state.draggingIndex);
+    if (this.state.draggingIndex !== -1) {
+      this.props.onMovedFile(this.initialPosition, this.state.draggingIndex);
+    }
+
     this.setState({
       draggingIndex: -1,
     });

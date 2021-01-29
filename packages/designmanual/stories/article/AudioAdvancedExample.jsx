@@ -1,8 +1,24 @@
 import React from 'react';
 import { AudioPlayer, Figure } from '@ndla/ui';
+import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
+import { injectT } from '@ndla/i18n';
+import FigureCaptionExample from './FigureCaptionExample';
+import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-const AudioAdvancedExample = () => {
+const AudioAdvancedExample = ({ t }) => {
+  const id = useRunOnlyOnce(uuid(), () => {
+    initArticleScripts();
+  });
+
+  const messages = {
+    rulesForUse: t('license.audio.rules'),
+    reuse: t('audio.reuse'),
+    download: t('audio.download'),
+  };
+
+  const figureId = `figure-${id}`;
+
   const description =
     'Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero.';
 
@@ -31,20 +47,21 @@ const AudioAdvancedExample = () => {
     </>
   );
   return (
-    <Figure id={uuid()} type="full-column">
+    <Figure id={figureId} type="full-column">
       <AudioPlayer
         src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
         title="Den gode lydhistoria"
         description={description}
         img={{
-          url: 'https://api.ndla.no/image-api/raw/BagNsXHq.jpg?width=400',
+          url: 'https://api.ndla.no/image-api/raw/BagNsXHq.jpg?height=400',
           alt:
             'Mann blir målt og observert. Omgitt av ulike diagrammer. Illustrasjon.',
         }}
         textVersion={TextVersion}
       />
+      <FigureCaptionExample figureId={figureId} id={id} messages={messages} />
     </Figure>
   );
 };
 
-export default AudioAdvancedExample;
+export default injectT(AudioAdvancedExample);

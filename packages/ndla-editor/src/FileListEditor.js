@@ -36,12 +36,16 @@ const fileCss = css`
   > div {
     display: flex;
     align-items: center;
-    padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
+    padding: 0 ${spacing.small} 0 ${spacing.small};
     &:first-of-type {
       flex-basis: 0;
       flex-shrink: 1;
       min-width: 0;
       flex-grow: 1;
+      padding-left: calc(${spacing.small} + ${spacing.xsmall});
+    }
+    &:last-of-type {
+      padding-left: ${spacing.xsmall};
     }
     svg {
       width: 18px;

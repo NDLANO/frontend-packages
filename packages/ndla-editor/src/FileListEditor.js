@@ -38,6 +38,9 @@ const fileCss = css`
     align-items: center;
     padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
     &:first-of-type {
+      flex-basis: 0;
+      flex-shrink: 1;
+      min-width: 0;
       flex-grow: 1;
     }
     svg {
@@ -90,6 +93,12 @@ const ButtonIcons = styled.button`
 
 const fadeOutAnimation = css`
   ${animations.fadeOut()}
+`;
+
+const checkboxStyle = css`
+  label > span {
+    white-space: nowrap;
+  }
 `;
 
 class FileListEditor extends Component {
@@ -280,7 +289,7 @@ class FileListEditor extends Component {
                 onBlur={this.exitEditFileName}
               />
               {showRenderInlineCheckbox && file.type === 'pdf' && (
-                <Tooltip tooltip={messages.checkboxTooltip}>
+                <Tooltip css={checkboxStyle} tooltip={messages.checkboxTooltip}>
                   <CheckboxItem
                     label={messages.checkboxLabel}
                     checked={file.display === 'block'}

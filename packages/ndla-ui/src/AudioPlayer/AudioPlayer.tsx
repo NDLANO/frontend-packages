@@ -8,7 +8,7 @@
 
 import React, { ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -26,6 +26,9 @@ const InfoWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
   border-bottom: 0;
   display: flex;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: block;
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -33,14 +36,28 @@ const ImageWrapper = styled.div`
   align-items: center;
   flex: 1 0 auto;
   max-width: 28%;
+
   img {
     width: 100%;
     height: 100%;
-    object-fit: none;
+    object-fit: cover;
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    max-height: 400px;
+    max-width: 100%;
+    img {
+      object-fit: scale-down;
+    }
   }
 `;
 const TextWrapper = styled.div`
-  padding: ${spacing.normal} ${spacing.medium};
+  padding: ${spacing.normal} ${spacing.small} ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.normal} ${spacing.medium};
+  }
 `;
 const Title = styled.h2`
   ${fonts.sizes('22px', '30px')};
@@ -57,13 +74,19 @@ const LinkToTextVersionWrapper = styled.div`
 `;
 
 const TextVersionWrapper = styled.div`
-  padding: ${spacing.normal} ${spacing.medium};
   border: 1px solid ${colors.brand.lighter};
   border-top: 0;
   ${fonts.sizes('16px', '30px')};
   font-family: ${fonts.sans};
   &.audio-player-text-version-hidden {
     display: none;
+  }
+  padding: ${spacing.normal} ${spacing.small} ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.normal} ${spacing.medium};
   }
 `;
 
@@ -73,8 +96,7 @@ const TextVersionHeadingWrapper = styled.div`
   align-items: flex-start;
 `;
 
-const TextVersionHeading = styled.h3`
-  ${fonts.sizes('28px', '35px')};
+const TextVersionHeading = styled.h2`
   font-weight: ${fonts.weight.semibold};
   margin: ${spacing.small} 0 ${spacing.normal};
 `;

@@ -24,17 +24,23 @@ import {
 } from '@reach/slider';
 // @ts-ignore
 import { Play, Pause } from '@ndla/icons/common';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
   display: flex;
   align-items: center;
+  justify-content: center;
   background: #ffffff;
-  padding: ${spacing.small} ${spacing.normal};
-  column-gap: ${spacing.small};
   font-family: ${fonts.sans};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-wrap: wrap;
+  }
+  padding: ${spacing.small};
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding: ${spacing.small} ${spacing.normal};
+  }
 `;
 
 const PlayButton = styled.button`
@@ -50,6 +56,11 @@ const PlayButton = styled.button`
   height: 55px;
   border-radius: 50%;
   transition: ${misc.transition.default};
+  margin-right: ${spacing.small};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    order: 4;
+    margin-left: ${spacing.small};
+  }
 
   &:hover,
   &:active,
@@ -62,11 +73,6 @@ const PlayButton = styled.button`
     width: 24px;
     height: 24px;
   }
-`;
-
-const ButtonWrrapper = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 const ForwardRewindButton = styled.button`
@@ -92,15 +98,24 @@ const ForwardRewindButton = styled.button`
 
 const Forward15SecButton = styled(ForwardRewindButton)`
   background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.8358 20.8769C17.7849 22.6711 15.1504 23.6564 12.4254 23.6482C9.70049 23.6401 7.07191 22.6391 5.03176 20.8326C2.99161 19.0262 1.67975 16.5381 1.34176 13.8342C1.00377 11.1303 1.66282 8.39585 3.19553 6.1428C4.72825 3.88975 7.02955 2.27253 9.66866 1.59387C12.3078 0.915214 15.1037 1.22165 17.5332 2.45581C19.9627 3.68998 21.8591 5.76726 22.8674 8.2988M23.5676 1.29649L23.5676 8.2988L16.5653 8.2988' stroke='%23184673' stroke-width='1.52778' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    order: 3;
+  }
 `;
 const Back15SecButton = styled(ForwardRewindButton)`
   background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.19004 21.3306C7.24095 23.1248 9.87547 24.11 12.6004 24.1019C15.3254 24.0937 17.954 23.0927 19.9941 21.2863C22.0343 19.4798 23.3461 16.9918 23.6841 14.2879C24.0221 11.5839 23.3631 8.84951 21.8303 6.59646C20.2976 4.3434 17.9963 2.72618 15.3572 2.04753C12.7181 1.36887 9.92213 1.67531 7.49267 2.90947C5.0632 4.14363 3.16681 6.22092 2.15848 8.75246M1.45825 1.75015L1.45825 8.75246L8.46057 8.75246' stroke='%23184673' stroke-width='1.52778' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    order: 5;
+  }
 `;
 
 const SpeedWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    order: 2;
+  }
 `;
 const SpeedButton = styled(MenuButton)`
   height: 32px;
@@ -185,6 +200,19 @@ const Time = styled.div`
 `;
 
 const ProgressWrapper = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  column-gap: ${spacing.small};
+  margin: 0 ${spacing.small};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    margin-bottom: ${spacing.normal};
+  }
+`;
+const SliderWrapper = styled.div`
   cursor: pointer;
   flex: 1 1 auto;
 `;
@@ -214,6 +242,9 @@ const VolumeWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    order: 6;
+  }
 `;
 
 const VolumeButton = styled(MenuButton)`
@@ -401,61 +432,61 @@ const Controls = ({ src, title, t }: Props & tType) => {
             )}
           </span>
         </PlayButton>
-        <ButtonWrrapper>
-          <Forward15SecButton
-            title={t('audio.controls.forward15sec')}
-            aria-label={t('audio.controls.forward15sec')}
-            onClick={() => {
-              onSeekSeconds(15);
-            }}>
-            15
-          </Forward15SecButton>
-          <SpeedWrapper>
-            <Menu>
-              <SpeedButton
-                as="button"
-                title={t('audio.controls.selectSpeed')}
-                aria-label={t('audio.controls.selectSpeed')}>
-                {speedValue}x
-              </SpeedButton>
-              <SpeedMenu as="div" portal={false}>
-                <div>
-                  <SpeedList as="div">
-                    {speedValues.map(speed => (
-                      <SpeedValueButton
-                        as="button"
-                        key={speed}
-                        selected={speed === speedValue}
-                        onSelect={() => {
-                          setSpeedValue(speed);
-                        }}>
-                        {speed}x{speed === speedValue && <SpeedSelectedMark />}
-                      </SpeedValueButton>
-                    ))}
-                  </SpeedList>
-                </div>
-              </SpeedMenu>
-            </Menu>
-          </SpeedWrapper>
-          <Back15SecButton
-            title={t('audio.controls.rewind15sec')}
-            aria-label={t('audio.controls.rewind15sec')}
-            onClick={() => {
-              onSeekSeconds(-15);
-            }}>
-            15
-          </Back15SecButton>
-        </ButtonWrrapper>
-        <Time>{formatTime(currentTime)}</Time>
+        <Forward15SecButton
+          title={t('audio.controls.forward15sec')}
+          aria-label={t('audio.controls.forward15sec')}
+          onClick={() => {
+            onSeekSeconds(15);
+          }}>
+          15
+        </Forward15SecButton>
+        <SpeedWrapper>
+          <Menu>
+            <SpeedButton
+              as="button"
+              title={t('audio.controls.selectSpeed')}
+              aria-label={t('audio.controls.selectSpeed')}>
+              {speedValue}x
+            </SpeedButton>
+            <SpeedMenu as="div" portal={false}>
+              <div>
+                <SpeedList as="div">
+                  {speedValues.map(speed => (
+                    <SpeedValueButton
+                      as="button"
+                      key={speed}
+                      selected={speed === speedValue}
+                      onSelect={() => {
+                        setSpeedValue(speed);
+                      }}>
+                      {speed}x{speed === speedValue && <SpeedSelectedMark />}
+                    </SpeedValueButton>
+                  ))}
+                </SpeedList>
+              </div>
+            </SpeedMenu>
+          </Menu>
+        </SpeedWrapper>
+        <Back15SecButton
+          title={t('audio.controls.rewind15sec')}
+          aria-label={t('audio.controls.rewind15sec')}
+          onClick={() => {
+            onSeekSeconds(-15);
+          }}>
+          15
+        </Back15SecButton>
         <ProgressWrapper>
-          <SliderInput onChange={handleSliderChange} value={sliderValue}>
-            <ProgressBackground as="div">
-              <ProgressPlayed as="div" />
-              <ProgressHandle as="div" />
-            </ProgressBackground>
-          </SliderInput>
+          <Time>{formatTime(currentTime)}</Time>
+          <SliderWrapper>
+            <SliderInput onChange={handleSliderChange} value={sliderValue}>
+              <ProgressBackground as="div">
+                <ProgressPlayed as="div" />
+                <ProgressHandle as="div" />
+              </ProgressBackground>
+            </SliderInput>
+          </SliderWrapper>
+          <Time>-{formatTime(remainingTime)}</Time>
         </ProgressWrapper>
-        <Time>-{formatTime(remainingTime)}</Time>
         <VolumeWrapper>
           <Menu>
             {/* @ts-ignore */}

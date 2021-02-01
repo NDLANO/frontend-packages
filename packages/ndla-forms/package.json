@@ -19,7 +19,6 @@
   ],
   "dependencies": {
     "@ndla/core": "^0.6.32",
-    "@ndla/forms": "^0.3.163",
     "@ndla/icons": "^0.6.26",
     "@ndla/ui": "^0.30.8"
   },

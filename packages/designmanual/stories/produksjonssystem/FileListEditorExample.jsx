@@ -135,7 +135,7 @@ class StructureExample extends Component {
             'Ser ikke ut til å eksistere på serveren. Den kan ha blitt slettet fra en annen artikkel.',
           missingTitle: '[Mangler filnavn]',
           checkboxLabel: 'Vis ekspandert',
-          checkboxTooltip: 'Vis PDF ekspandert i artikkel',
+          checkboxTooltip: 'Vis ekspandert PDF i artikkel',
         }}
       />
     );

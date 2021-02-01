@@ -134,8 +134,8 @@ class StructureExample extends Component {
           missingFileTooltip:
             'Ser ikke ut til å eksistere på serveren. Den kan ha blitt slettet fra en annen artikkel.',
           missingTitle: '[Mangler filnavn]',
-          renderInlineLabel: 'Vis PDF',
-          renderInlineTooltip: 'Forhåndsvis PDF i artikkel',
+          checkboxLabel: 'Vis PDF',
+          checkboxTooltip: 'Forhåndsvis PDF i artikkel',
         }}
       />
     );

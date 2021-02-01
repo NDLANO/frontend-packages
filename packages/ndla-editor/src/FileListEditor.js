@@ -280,9 +280,9 @@ class FileListEditor extends Component {
                 onBlur={this.exitEditFileName}
               />
               {showRenderInlineCheckbox && file.type === 'pdf' && (
-                <Tooltip tooltip={messages.renderInlineTooltip}>
+                <Tooltip tooltip={messages.checkboxTooltip}>
                   <CheckboxItem
-                    label="Vis PDF"
+                    label={messages.checkboxLabel}
                     checked={file.display === 'block'}
                     value=""
                     id={index}

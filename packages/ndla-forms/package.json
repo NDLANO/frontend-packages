@@ -1,6 +1,6 @@
 {
   "name": "@ndla/forms",
-  "version": "0.3.163",
+  "version": "0.4.0",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

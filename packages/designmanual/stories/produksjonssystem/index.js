@@ -187,6 +187,10 @@ storiesOf('Produksjonssystem', module)
       <StoryBody>
         <FileListEditorExample />
       </StoryBody>
+      <StoryBody>
+        <h1>Med markering av pdf-filer:</h1>
+        <FileListEditorExample withCheckboxes />
+      </StoryBody>
     </div>
   ))
   .add('How-to', () => (

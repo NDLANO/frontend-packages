@@ -10,6 +10,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
+import { uuid } from '@ndla/util';
 
 const CheckboxInput = styled.input`
   position: absolute;
@@ -103,24 +104,27 @@ const CheckboxLabel = styled.label`
   }
 `;
 
-const CheckboxItem = ({ label, checked, value, id, onChange, disabled }) => (
-  <Fragment>
-    <CheckboxInput
-      disabled={disabled}
-      aria-checked={checked}
-      checked={checked}
-      type="checkbox"
-      value={value}
-      id={id}
-      name={id}
-      onChange={() => onChange(id)}
-    />
-    <CheckboxLabel htmlFor={id} hasLabel={label !== ''}>
-      <span />
-      <span>{label}</span>
-    </CheckboxLabel>
-  </Fragment>
-);
+const CheckboxItem = ({ label, checked, value, id, onChange, disabled }) => {
+  const uniqueID = uuid();
+  return (
+    <Fragment>
+      <CheckboxInput
+        disabled={disabled}
+        aria-checked={checked}
+        checked={checked}
+        type="checkbox"
+        value={value}
+        id={uniqueID}
+        name={id}
+        onChange={() => onChange(id)}
+      />
+      <CheckboxLabel htmlFor={uniqueID} hasLabel={label !== ''}>
+        <span />
+        <span>{label}</span>
+      </CheckboxLabel>
+    </Fragment>
+  );
+};
 
 CheckboxItem.propTypes = {
   disabled: PropTypes.bool,

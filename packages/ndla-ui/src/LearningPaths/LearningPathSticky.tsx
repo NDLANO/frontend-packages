@@ -137,5 +137,5 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
 );
 
 export const LearningPathStickyPlaceholder: React.FunctionComponent = () => (
-    <div css={SafeLinkCSS} />
-)
+  <div css={SafeLinkCSS} />
+);

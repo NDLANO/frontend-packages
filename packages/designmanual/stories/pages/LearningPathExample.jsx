@@ -20,6 +20,7 @@ import {
   LearningPathStickySibling,
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
+  LearningPathStickyPlaceholder,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -292,13 +293,13 @@ const LearningPathExample = ({ invertedStyle, t }) => {
               title={learningsteps[currentLearningStepNumber - 1].title.title}
             />
           ) : (
-            <div />
+            <LearningPathStickyPlaceholder />
           )}
           <LearningPathMobileStepInfo
             total={learningsteps.length}
             current={currentLearningStepNumber + 1}
           />
-          {currentLearningStepNumber < learningsteps.length - 1 && (
+          {currentLearningStepNumber < learningsteps.length - 1 ? (
             <LearningPathStickySibling
               arrow="right"
               toLearningPathUrl={toLearningPathUrl}
@@ -306,6 +307,8 @@ const LearningPathExample = ({ invertedStyle, t }) => {
               stepId={learningsteps[currentLearningStepNumber + 1].id}
               title={learningsteps[currentLearningStepNumber + 1].title.title}
             />
+          ) : (
+            <LearningPathStickyPlaceholder />
           )}
         </LearningPathSticky>
       </LearningPathWrapper>

@@ -926,7 +926,9 @@ $navigation-row-width: 980px / 3;
   margin-top: 0;
   margin-bottom: $spacing;
   padding: 0 $spacing;
-  max-width: 1014px;
+  max-width: 1024px;
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
 
   @include mq($until: tabletWide) {
     padding: 0 $left-margin-narrow-screen 100px;

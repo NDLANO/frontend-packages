@@ -27,6 +27,7 @@ import { TopicShape } from '../shapes';
 import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
 import NavigationBox from '../Navigation/NavigationBox';
+import ProgrammeContent from './ProgrammeContent';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -50,7 +51,7 @@ export const renderAdditionalIcon = (isAdditional, label) => {
 };
 
 const MENU_CURRENT_SUBJECT = 'subject';
-//const MENU_CURRENT_PROGRAMME = 'programme';
+const MENU_CURRENT_PROGRAMME = 'programme';
 const MENU_PROGRAMMES = 'programmes';
 const MENU_ALL_SUBJECTS = 'allSubjects';
 
@@ -71,6 +72,7 @@ export const TopicMenu = ({
   onNavigate,
   subjectCategories,
   programItems,
+  currentProgramme,
   t,
 }) => {
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
@@ -193,20 +195,33 @@ export const TopicMenu = ({
                 borderShape="rounded">
                 {subjectTitle}
               </Button>
-              <Button
-                onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                lighter={selectedMenu !== MENU_PROGRAMMES}
-                size="small"
-                borderShape="rounded">
-                {t('frontpageMenu.program')}
-              </Button>
-              <Button
-                onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                lighter={selectedMenu !== MENU_ALL_SUBJECTS}
-                size="small"
-                borderShape="rounded">
-                {t('frontpageMenu.allsubjects')}
-              </Button>
+              {currentProgramme && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_CURRENT_PROGRAMME)}
+                  lighter={selectedMenu !== MENU_CURRENT_PROGRAMME}
+                  size="small"
+                  borderShape="rounded">
+                  {currentProgramme.name}
+                </Button>
+              )}
+              {programItems && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  size="small"
+                  borderShape="rounded">
+                  {t('frontpageMenu.program')}
+                </Button>
+              )}
+              {subjectCategories && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                  lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                  size="small"
+                  borderShape="rounded">
+                  {t('frontpageMenu.allsubjects')}
+                </Button>
+              )}
             </div>
           </div>
           {selectedMenu === MENU_CURRENT_SUBJECT && (
@@ -223,6 +238,18 @@ export const TopicMenu = ({
         {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
           <div {...classes('all-subjects')}>
             <FrontpageAllSubjects categories={subjectCategories} />
+          </div>
+        )}
+        {selectedMenu === MENU_CURRENT_PROGRAMME && currentProgramme && (
+          <div {...classes('all-subjects')}>
+            <ProgrammeContent
+              grades={currentProgramme.grades}
+              preSelectedGradeIndex={
+                currentProgramme.selectedGradeIndex
+                  ? currentProgramme.selectedGradeIndex
+                  : 0
+              }
+            />
           </div>
         )}
         {selectedMenu === MENU_PROGRAMMES && programItems && (
@@ -380,6 +407,26 @@ TopicMenu.propTypes = {
       url: PropTypes.string.isRequired,
     }),
   ),
+  currentProgramme: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    grades: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        categories: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            subjects: PropTypes.arrayOf(
+              PropTypes.shape({
+                label: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired,
+              }),
+            ),
+          }),
+        ),
+      }),
+    ).isRequired,
+    selectedGradeIndex: PropTypes.number,
+  }),
 };
 
 TopicMenu.defaultProps = {

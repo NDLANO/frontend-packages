@@ -293,34 +293,36 @@ storiesOf('Enkle komponenter', module)
           <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
           <AudioExample />
           <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Forenklet</th>
-                <th>Trad.</th>
-                <th>Pinyin</th>
-                <th>Ordkl.</th>
-                <th>Oversettelse</th>
-                <th>Uttale</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>旅游</td>
-                <td>旅遊</td>
-                <td>lǚyóu</td>
-                <td>v/n</td>
-                <td>å reise (rundt); å dra på tur; reise(liv)</td>
-                <td>
-                  <AudioPlayer
-                    src="https://staging.api.ndla.no/audio/files/shu3jia4.mp3"
-                    speech
-                    title="Oversettelse"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="c-article">
+            <table>
+              <thead>
+                <tr>
+                  <th>Forenklet</th>
+                  <th>Trad.</th>
+                  <th>Pinyin</th>
+                  <th>Ordkl.</th>
+                  <th>Oversettelse</th>
+                  <th>Uttale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>旅游</td>
+                  <td>旅遊</td>
+                  <td>lǚyóu</td>
+                  <td>v/n</td>
+                  <td>å reise (rundt); å dra på tur; reise(liv)</td>
+                  <td>
+                    <AudioPlayer
+                      src="https://staging.api.ndla.no/audio/files/shu3jia4.mp3"
+                      speech
+                      title="Oversettelse"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </LayoutItem>
       </OneColumn>
     </div>

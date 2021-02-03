@@ -27,7 +27,7 @@ ol {
 // For resetting starting-point for ordered lists. 50 is a random large number.
 @for $i from 1 through 50 {
   .ol-reset-#{$i} {
-    counter-reset: item $i-1;
+    counter-reset: item $i - 1;
   }
 }
 

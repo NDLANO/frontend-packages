@@ -1720,8 +1720,27 @@ storiesOf('Grunnstiler', module)
             </ol>
           </li>
         </ol>
+        <h2 className="u-heading">Nummererte lister som starter på 3</h2>
+        <ol className="ol-reset-3">
+          <li>Listepunkt</li>
+          <li>Listepunkt</li>
+          <li>
+            Underliste:
+            <ol className="ol-list--roman">
+              <li>Underlistepunkt</li>
+              <li>Underlistepunkt</li>
+              <li>Underlistepunkt</li>
+            </ol>
+          </li>
+        </ol>
         <h2 className="u-heading">Alfabetiserte lister</h2>
         <ol className="ol-list--roman">
+          <li>Listepunkt</li>
+          <li>Listepunkt</li>
+          <li>Listepunkt</li>
+        </ol>
+        <h2 className="u-heading">Alfabetiserte lister som starter på b</h2>
+        <ol className="ol-list--roman ol-reset-2">
           <li>Listepunkt</li>
           <li>Listepunkt</li>
           <li>Listepunkt</li>

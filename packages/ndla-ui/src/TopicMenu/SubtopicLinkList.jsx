@@ -172,10 +172,10 @@ class SubtopicLinkList extends Component {
           {...classes('link', ['big'])}
           onClick={closeMenu}
           to={toTopic(topic.id)}>
-          <span {...classes('link-label')}>{t('masthead.menu.goTo')}: </span>
-          <span {...classes('link-target')}>
-            {topic.name}{' '}
-            <span>
+          <span {...classes('link-wrapper')}>
+            <span {...classes('link-label')}>{t('masthead.menu.goTo')}:</span>
+            <span {...classes('link-target')}>
+              <span>{topic.name} </span>
               <ChevronRight className="c-icon--22" />
             </span>
           </span>

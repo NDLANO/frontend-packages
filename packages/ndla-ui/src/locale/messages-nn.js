@@ -232,6 +232,7 @@ const messages = {
       close: 'Lukk',
       goTo: 'Gå til',
       search: 'Søk',
+      toFrontpage: 'Til framsida',
       subjectOverview: 'Alle fag',
       title: 'Innhald',
       subjectPage: 'Fagframside',

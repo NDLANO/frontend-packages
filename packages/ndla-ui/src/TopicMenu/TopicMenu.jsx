@@ -28,6 +28,8 @@ import { TopicShape } from '../shapes';
 
 import Logo from '../Logo';
 import { FilterListPhone } from '../Filter';
+import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
+import NavigationBox from '../Navigation/NavigationBox';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -50,6 +52,11 @@ export const renderAdditionalIcon = (isAdditional, label) => {
   return null;
 };
 
+const MENU_CURRENT_SUBJECT = 'subject';
+//const MENU_CURRENT_PROGRAMME = 'programme';
+const MENU_PROGRAMMES = 'programmes';
+const MENU_ALL_SUBJECTS = 'allSubjects';
+
 export const TopicMenu = ({
   topics,
   toTopic,
@@ -71,10 +78,13 @@ export const TopicMenu = ({
   locale,
   isOnSubjectFrontPage,
   onNavigate,
+  subjectCategories,
+  programItems,
   t,
 }) => {
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [competenceGoalsOpen, setCompetenceGoalsOpen] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState(MENU_CURRENT_SUBJECT);
 
   useEffect(() => {
     const setScreenSize = (initial = false) => {
@@ -220,7 +230,7 @@ export const TopicMenu = ({
         <div {...classes('back', 'wide')}>
           <SafeLink {...classes('back-link')} to={toFrontpage()}>
             <Home {...classes('home-icon', '', 'c-icon--20')} />
-            {t('masthead.menu.subjectOverview')}
+            {t('masthead.menu.toFrontpage')}
           </SafeLink>
         </div>
         <div
@@ -230,77 +240,79 @@ export const TopicMenu = ({
           })}>
           <SafeLink {...classes('back-link')} to={toFrontpage()}>
             <Home {...classes('home-icon', '', 'c-icon--20')} />
-            {t('masthead.menu.subjectOverview')}
+            {t('masthead.menu.toFrontpage')}
           </SafeLink>
         </div>
-        {!disableMain && (
-          <Fragment>
-            {!disableHeaderNavigation && (
-              <div
-                {...classes('subject', {
-                  hasFilter:
-                    filterOptions &&
-                    filterOptions.length > 0 &&
-                    !competenceGoalsOpen,
-                })}>
-                <div {...classes('subject__header')}>
-                  <h1>
-                    {isOnSubjectFrontPage ? (
-                      <button
-                        type="button"
-                        onClick={closeMenu}
-                        aria-label={t('masthead.menu.backToSubjectFrontpage')}>
-                        {subjectTitle}
-                        <ChevronRight className="c-icon--22" />
-                      </button>
-                    ) : (
-                      <SafeLink to={toSubject()}>
-                        {subjectTitle}
-                        <ChevronRight className="c-icon--22" />
-                      </SafeLink>
-                    )}
-                  </h1>
-                  {competenceGoals &&
-                    !isNarrowScreen &&
-                    renderCompentenceGoals()}
-                </div>
-                {!competenceGoalsOpen &&
+        <Fragment>
+          {!disableHeaderNavigation && (
+            <div
+              {...classes('subject', {
+                hasFilter:
                   filterOptions &&
-                  filterOptions.length > 1 && (
-                    <div {...classes('filter-wrapper')}>
-                      <FilterListPhone
-                        preid="topic-menu"
-                        activeFiltersNarrow
-                        alignedGroup
-                        options={filterOptions}
-                        values={filterValues}
-                        onChange={onFilterClick}
-                        messages={{
-                          useFilter: t('masthead.menu.useFilter'),
-                          openFilter: t('masthead.menu.openFilter'),
-                          closeFilter: t('masthead.menu.closeFilter'),
-                        }}
-                        label={`${subjectTitle}:`}
-                      />
-                    </div>
-                  )}
-                {!competenceGoalsOpen && (
-                  <div {...classes('back-button-slide-wrapper')}>
-                    <button
-                      type="button"
-                      {...classes(
-                        'back-button-slides',
-                        `slide-${sliderCounter}`,
-                      )}
-                      onClick={handleOnGoBack}>
-                      <Back /> <span>{t('masthead.menu.back')}</span>
-                    </button>
+                  filterOptions.length > 0 &&
+                  !competenceGoalsOpen,
+              })}>
+              <div {...classes('subject__header')}>
+                <div {...classes('subject__header__menu-filter')}>
+                  <Button
+                    onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
+                    lighter={selectedMenu !== MENU_CURRENT_SUBJECT}
+                    size="small"
+                    borderShape="rounded">
+                    {subjectTitle}
+                  </Button>
+                  <Button
+                    onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                    lighter={selectedMenu !== MENU_PROGRAMMES}
+                    size="small"
+                    borderShape="rounded">
+                    {t('frontpageMenu.program')}
+                  </Button>
+                  <Button
+                    onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                    lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                    size="small"
+                    borderShape="rounded">
+                    {t('frontpageMenu.allsubjects')}
+                  </Button>
+                </div>
+                {competenceGoals && !isNarrowScreen && renderCompentenceGoals()}
+              </div>
+              {!competenceGoalsOpen &&
+                !disableMain &&
+                selectedMenu === MENU_CURRENT_SUBJECT &&
+                filterOptions &&
+                filterOptions.length > 1 && (
+                  <div {...classes('filter-wrapper')}>
+                    <FilterListPhone
+                      preid="topic-menu"
+                      activeFiltersNarrow
+                      alignedGroup
+                      options={filterOptions}
+                      values={filterValues}
+                      onChange={onFilterClick}
+                      messages={{
+                        useFilter: t('masthead.menu.useFilter'),
+                        openFilter: t('masthead.menu.openFilter'),
+                        closeFilter: t('masthead.menu.closeFilter'),
+                      }}
+                      label={`${subjectTitle}:`}
+                    />
                   </div>
                 )}
-              </div>
-            )}
-          </Fragment>
-        )}
+              {!competenceGoalsOpen && selectedMenu === MENU_CURRENT_SUBJECT && (
+                <div {...classes('back-button-slide-wrapper')}>
+                  <button
+                    type="button"
+                    {...classes('back-button-slides', `slide-${sliderCounter}`)}
+                    onClick={handleOnGoBack}>
+                    <Back /> <span>{t('masthead.menu.back')}</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </Fragment>
         {competenceGoalsOpen && (
           <div {...classes('competence')}>
             <button
@@ -317,7 +329,25 @@ export const TopicMenu = ({
             {competenceGoals}
           </div>
         )}
-        {!competenceGoalsOpen && (
+        {!competenceGoalsOpen &&
+          selectedMenu === MENU_ALL_SUBJECTS &&
+          subjectCategories && (
+            <div {...classes('all-subjects')}>
+              <FrontpageAllSubjects categories={subjectCategories} />
+            </div>
+          )}
+        {!competenceGoalsOpen &&
+          selectedMenu === MENU_PROGRAMMES &&
+          programItems && (
+            <div {...classes('all-subjects')}>
+              <NavigationBox
+                colorMode="light"
+                items={programItems}
+                listDirection="vertical"
+              />
+            </div>
+          )}
+        {!competenceGoalsOpen && selectedMenu === MENU_CURRENT_SUBJECT && (
           <div {...classes('subject-navigation', `slide-${sliderCounter}`)}>
             {!disableMain && (
               <Fragment>
@@ -326,12 +356,12 @@ export const TopicMenu = ({
                     onClick={closeMenu}
                     to={toSubject()}
                     className={classes('link', 'big').className}>
-                    <span {...classes('link-label')}>
-                      {t('masthead.menu.goTo')}:
-                    </span>
-                    <span {...classes('link-target')}>
-                      {t('masthead.menu.subjectPage')}
-                      <span>
+                    <span {...classes('link-wrapper')}>
+                      <span {...classes('link-label')}>
+                        {t('masthead.menu.goTo')}:
+                      </span>
+                      <span {...classes('link-target')}>
+                        {t('masthead.menu.subjectPage')}
                         <ChevronRight className="c-icon--22" />
                       </span>
                     </span>
@@ -464,6 +494,23 @@ TopicMenu.propTypes = {
   searchFieldComponent: PropTypes.node,
   locale: PropTypes.string,
   isOnSubjectFrontPage: PropTypes.bool,
+  subjectCategories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      subjects: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          url: PropTypes.string.isRequired,
+        }),
+      ),
+    }),
+  ),
+  programItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 TopicMenu.defaultProps = {

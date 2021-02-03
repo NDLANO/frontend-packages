@@ -186,7 +186,6 @@ $navigation-row-width: 980px / 3;
   width: 100%;
 
   @include mq(tabletWide) {
-    margin-top: $spacing;
     padding: 0 $spacing--small;
     border-left: 1px solid $brand-color--light;
     width: $navigation-row-width;
@@ -227,6 +226,9 @@ $navigation-row-width: 980px / 3;
         }
         .c-topic-menu__link-label,
         .c-topic-menu__arrow {
+          display: none;
+        }
+        > :last-child {
           display: none;
         }
       }
@@ -407,9 +409,11 @@ $navigation-row-width: 980px / 3;
     }
     &__menu-filter {
       display:flex;
-      column-gap: $spacing--small;
-      row-gap: $spacing--small;
       flex-wrap: wrap;
+      margin-top: -$spacing--small;
+      button {
+        margin: $spacing--small $spacing--small 0 0;
+      }
     }
   }
 
@@ -449,6 +453,7 @@ $navigation-row-width: 980px / 3;
 .c-topic-menu__back-button {
   display: flex;
   align-items: center;
+  cursor:pointer;
   border: 0;
   padding: 0;
   color: $brand-color;
@@ -479,6 +484,7 @@ $navigation-row-width: 980px / 3;
   .c-topic-menu__back-button-slides {
     display: flex;
     align-items: center;
+    cursor:pointer;
     border: 0;
     padding: 0;
     color: $brand-color;
@@ -743,6 +749,7 @@ $navigation-row-width: 980px / 3;
       border-bottom: 1px solid $brand-color--dark;
       padding-bottom: $spacing--small;
       display: flex;
+      flex-wrap: wrap;
       @include mq($until: tabletWide) {
         border:0;
         padding-bottom: 0;
@@ -763,6 +770,9 @@ $navigation-row-width: 980px / 3;
 
     &:hover {
       text-decoration: none;
+    }
+    .c-topic-menu__link-target-name {
+      word-break: break-word;
     }
 
     &:hover {
@@ -916,6 +926,7 @@ $navigation-row-width: 980px / 3;
   margin-top: 0;
   margin-bottom: $spacing;
   padding: 0 $spacing;
+  max-width: 1014px;
 
   @include mq($until: tabletWide) {
     padding: 0 $left-margin-narrow-screen 100px;

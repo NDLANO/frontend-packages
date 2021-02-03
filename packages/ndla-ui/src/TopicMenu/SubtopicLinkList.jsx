@@ -140,7 +140,6 @@ class SubtopicLinkList extends Component {
       onGoBack,
       backLabel,
       resourceToLinkProps,
-      competenceButton,
       lastOpen,
       t,
     } = this.props;
@@ -175,7 +174,7 @@ class SubtopicLinkList extends Component {
           <span {...classes('link-wrapper')}>
             <span {...classes('link-label')}>{t('masthead.menu.goTo')}:</span>
             <span {...classes('link-target')}>
-              <span>{topic.name} </span>
+              <span {...classes('link-target-name')}>{topic.name} </span>
               <ChevronRight className="c-icon--22" />
             </span>
           </span>
@@ -240,7 +239,6 @@ class SubtopicLinkList extends Component {
             )}
           </StyledAside>
         )}
-        {competenceButton}
       </div>
     );
   }
@@ -257,7 +255,6 @@ SubtopicLinkList.propTypes = {
   toTopic: PropTypes.func.isRequired,
   onGoBack: PropTypes.func.isRequired,
   backLabel: PropTypes.string.isRequired,
-  competenceButton: PropTypes.node,
   defaultCount: PropTypes.number,
   t: PropTypes.func.isRequired,
   lastOpen: PropTypes.bool,

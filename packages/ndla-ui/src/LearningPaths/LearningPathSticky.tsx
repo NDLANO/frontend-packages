@@ -25,6 +25,7 @@ const StyledFooter = styled.nav`
   ${mq.range({ until: breakpoints.tablet })} {
     --safe-area-inset-bottom: env(safe-area-inset-bottom);
     height: calc(${FOOTER_HEIGHT_MOBILE} + var(--safe-area-inset-bottom));
+    min-height: var(-webkit-fill-available);
     position: fixed;
     z-index: 2;
     bottom: 0;
@@ -134,3 +135,7 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
     {arrow === 'right' && <Forward className="c-icon--medium" />}
   </SafeLink>
 );
+
+export const LearningPathStickyPlaceholder: React.FunctionComponent = () => (
+    <div css={SafeLinkCSS} />
+)

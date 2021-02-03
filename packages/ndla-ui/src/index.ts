@@ -40,6 +40,7 @@ export {
   LearningPathSticky,
   LearningPathInformation,
   LearningPathStickySibling,
+  LearningPathStickyPlaceholder,
   LearningPathLastStepNavigation,
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,

@@ -22,5 +22,6 @@ export { LearningPathInformation } from './LearningPathInformation';
 export {
   LearningPathSticky,
   LearningPathStickySibling,
+  LearningPathStickyPlaceholder,
 } from './LearningPathSticky';
 export { LearningPathMobileHeader };

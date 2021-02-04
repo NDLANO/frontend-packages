@@ -107,12 +107,16 @@ const LinkButton = styled(Button)`
   padding-right: 4px;
   min-height: ${spacing.medium};
   ${fonts.sizes('16px', '25px')};
-  column-gap: ${spacing.xsmall};
   flex: 0 0 auto;
   &:hover,
   &:focus {
     box-shadow: ${colors.link};
   }
+`;
+
+const CloseText = styled.span`
+  display: inline-block;
+  margin-left: ${spacing.xsmall};
 `;
 
 const TextVersionText = styled.div`
@@ -202,7 +206,7 @@ const AudioPlayer = ({
               onClick={toggleTextVersion}
               data-audio-text-button-id={staticRenderId}>
               <CrossIcon style={{ width: '20px', height: '20px' }} />
-              <span>{t('audio.textVersion.close')}</span>
+              <CloseText>{t('audio.textVersion.close')}</CloseText>
             </LinkButton>
           </TextVersionHeadingWrapper>
           <TextVersionText>{textVersion}</TextVersionText>

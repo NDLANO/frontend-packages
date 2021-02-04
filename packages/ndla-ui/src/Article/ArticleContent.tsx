@@ -16,16 +16,17 @@ import { initAudioPlayers } from '../AudioPlayer';
 
 type Props = {
   content: string;
+  locale: 'nb' | 'nn' | 'en';
 };
-const ArticleContent = ({ content, ...rest }: Props) => {
+const ArticleContent = ({ content, locale, ...rest }: Props) => {
   useEffect(() => {
     removeEventListenerForResize();
     initArticleScripts();
-    initAudioPlayers();
+    initAudioPlayers(locale);
     return () => {
       removeEventListenerForResize();
     };
-  }, [content]);
+  }, [content, locale]);
 
   return <div dangerouslySetInnerHTML={{ __html: content }} {...rest} />;
 };

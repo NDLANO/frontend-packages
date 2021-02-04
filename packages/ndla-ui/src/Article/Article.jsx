@@ -140,7 +140,7 @@ export const Article = ({
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        <ArticleContent content={content} />
+        <ArticleContent content={content} locale={locale} />
       </LayoutItem>
       <LayoutItem layout="center">
         {footNotes && footNotes.length > 0 && (

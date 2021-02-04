@@ -8,8 +8,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import IntlProvider, { formatNestedMessages } from '@ndla/i18n';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
+// @ts-ignore
+import messagesNB from '../locale/messages-nb.js';
+// @ts-ignore
+import messagesNN from '../locale/messages-nn.js';
+// @ts-ignore
+import messagesEN from '../locale/messages-en.js';
+
+const messages = {
+  nb: formatNestedMessages(messagesNB),
+  nn: formatNestedMessages(messagesNN),
+  en: formatNestedMessages(messagesEN),
+};
 
 const forEachElement = (selector: string, callback: Function) => {
   const nodeList = document.querySelectorAll(selector);
@@ -18,7 +31,9 @@ const forEachElement = (selector: string, callback: Function) => {
   }
 };
 
-const initAudioPlayers = () => {
+type LocaleProps = 'nb' | 'nn' | 'en';
+
+const initAudioPlayers = (locale: LocaleProps) => {
   forEachElement('[data-audio-player]', (el: HTMLElement) => {
     const src = el.getAttribute('data-src');
     const title = el.getAttribute('data-title');
@@ -27,7 +42,12 @@ const initAudioPlayers = () => {
       if (speech) {
         ReactDOM.render(<SpeechControl src={src} title={title} />, el);
       } else {
-        ReactDOM.render(<Controls src={src} title={title} />, el);
+        ReactDOM.render(
+          <IntlProvider locale={locale} messages={messages[locale]}>
+            <Controls src={src} title={title} />
+          </IntlProvider>,
+          el,
+        );
       }
     }
   });

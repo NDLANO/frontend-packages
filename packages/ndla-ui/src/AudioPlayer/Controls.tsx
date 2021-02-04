@@ -203,7 +203,6 @@ const ProgressWrapper = styled.div`
   flex: 1 1 auto;
   display: flex;
   align-items: center;
-  column-gap: ${spacing.small};
   margin: 0 ${spacing.small};
   ${mq.range({ until: breakpoints.tabletWide })} {
     order: 1;
@@ -215,6 +214,7 @@ const ProgressWrapper = styled.div`
 const SliderWrapper = styled.div`
   cursor: pointer;
   flex: 1 1 auto;
+  margin: 0 ${spacing.small};
 `;
 
 const ProgressBackground = styled(SliderTrack)`

@@ -8,21 +8,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import IntlProvider, { formatNestedMessages } from '@ndla/i18n';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
-// @ts-ignore
-import messagesNB from '../locale/messages-nb.js';
-// @ts-ignore
-import messagesNN from '../locale/messages-nn.js';
-// @ts-ignore
-import messagesEN from '../locale/messages-en.js';
-
-const messages = {
-  nb: formatNestedMessages(messagesNB),
-  nn: formatNestedMessages(messagesNN),
-  en: formatNestedMessages(messagesEN),
-};
+import LocaleProvider from '../locale/LocaleProvider';
 
 const forEachElement = (selector: string, callback: Function) => {
   const nodeList = document.querySelectorAll(selector);
@@ -43,9 +31,9 @@ const initAudioPlayers = (locale: LocaleProps) => {
         ReactDOM.render(<SpeechControl src={src} title={title} />, el);
       } else {
         ReactDOM.render(
-          <IntlProvider locale={locale} messages={messages[locale]}>
+          <LocaleProvider locale={locale}>
             <Controls src={src} title={title} />
-          </IntlProvider>,
+          </LocaleProvider>,
           el,
         );
       }

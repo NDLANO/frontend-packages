@@ -6,6 +6,7 @@
  *
  */
 
+// @ts-ignore
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 

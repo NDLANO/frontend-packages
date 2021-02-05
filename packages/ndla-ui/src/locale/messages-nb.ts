@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
+// @ts-ignore
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 

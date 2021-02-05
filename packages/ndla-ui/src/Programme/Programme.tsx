@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import Button from '@ndla/button';
 import { breakpoints, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
-import { NavigationHeading, NavigationBox } from '../Navigation';
+import { NavigationHeading } from '../Navigation';
+import ProgrammeSubjects from './ProgrammeSubjects';
+import { GradesProps } from './ProgrammeSubjects';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -54,40 +54,16 @@ const StyledContentWrapper = styled.div`
   padding-top: 1px;
 `;
 
-const StyledMenu = styled.div`
+const SubjectsWrapper = styled.div`
   margin-top: 28px;
-  margin-bottom: 28px;
-  > * {
-    margin-right: 10px;
-  }
-  > *:last-of-type {
-    margin-right: 0;
-  }
   ${mq.range({ from: breakpoints.tablet })} {
     margin-top: 40px;
-    margin-bottom: 40px;
   }
 `;
 
-type Props = {
+type Props = GradesProps & {
   heading?: string;
   image?: string;
-  grades: [
-    {
-      name: string;
-      categories: [
-        {
-          name: string;
-          subjects: [
-            {
-              label: string;
-              url: string;
-            },
-          ];
-        },
-      ];
-    },
-  ];
 };
 
 export const Programme = ({ heading, image, grades }: Props) => {
@@ -104,15 +80,6 @@ export const Programme = ({ heading, image, grades }: Props) => {
     }
   }, []);
 
-  const toggleGradeIndex = (index: number) => {
-    setShowGradeIndex(index);
-    if (isWindowContext) {
-      window.localStorage.setItem('prgrammeShowGradeIndex', `${index}`);
-    }
-  };
-
-  const selectedGrade = grades[showGradeIndex];
-
   return (
     <StyledWrapper>
       <StyledBackground image={image} />
@@ -121,25 +88,12 @@ export const Programme = ({ heading, image, grades }: Props) => {
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
-              <StyledMenu>
-                {grades.map((item, index) => (
-                  <Button
-                    key={item.name}
-                    onClick={() => toggleGradeIndex(index)}
-                    lighter={showGradeIndex !== index}
-                    size="normal"
-                    borderShape="rounded">
-                    {item.name}
-                  </Button>
-                ))}
-              </StyledMenu>
-              {selectedGrade.categories.map(category => (
-                <NavigationBox
-                  key={category.name}
-                  heading={category.name}
-                  items={category.subjects}
+              <SubjectsWrapper>
+                <ProgrammeSubjects
+                  grades={grades}
+                  preSelectedGradeIndex={showGradeIndex}
                 />
-              ))}
+              </SubjectsWrapper>
             </StyledContentWrapper>
           </LayoutItem>
         </StyledLayoutWrapper>

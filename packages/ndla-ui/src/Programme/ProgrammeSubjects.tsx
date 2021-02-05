@@ -26,7 +26,7 @@ const GradesMenu = styled.div`
   }
 `;
 
-type Props = {
+export type GradesProps = {
   grades: [
     {
       name: string;
@@ -43,10 +43,13 @@ type Props = {
       ];
     },
   ];
+};
+
+type Props = GradesProps & {
   preSelectedGradeIndex?: number;
 };
 
-const ProgrammeContent = ({ grades, preSelectedGradeIndex = 0 }: Props) => {
+const ProgrammeSubjects = ({ grades, preSelectedGradeIndex = 0 }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(preSelectedGradeIndex);
 
   const selectedGrade = grades[showGradeIndex];
@@ -75,4 +78,4 @@ const ProgrammeContent = ({ grades, preSelectedGradeIndex = 0 }: Props) => {
   );
 };
 
-export default ProgrammeContent;
+export default ProgrammeSubjects;

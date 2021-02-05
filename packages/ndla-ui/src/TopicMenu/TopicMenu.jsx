@@ -27,7 +27,7 @@ import { TopicShape } from '../shapes';
 import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
 import NavigationBox from '../Navigation/NavigationBox';
-import ProgrammeContent from './ProgrammeContent';
+import { ProgrammeSubjects } from '../Programme';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -39,7 +39,7 @@ export const renderAdditionalIcon = (isAdditional, label) => {
     return (
       <Tooltip
         tooltip={label}
-        tooltipContainerClass="c-topic-menu__tooltipContainer">
+        stooltipContainerClass="c-topic-menu__tooltipContainer">
         <Additional className="c-icon--20" />
       </Tooltip>
     );
@@ -242,7 +242,7 @@ export const TopicMenu = ({
         )}
         {selectedMenu === MENU_CURRENT_PROGRAMME && currentProgramme && (
           <div {...classes('all-subjects')}>
-            <ProgrammeContent
+            <ProgrammeSubjects
               grades={currentProgramme.grades}
               preSelectedGradeIndex={
                 currentProgramme.selectedGradeIndex

@@ -29,10 +29,6 @@ const StyledWrapper = styled.div`
       margin-top: 0;
     }
 
-    &:first-child {
-      margin-top: 0;
-    }
-
     &:last-child {
       margin-right: 0;
       margin-top: 0;

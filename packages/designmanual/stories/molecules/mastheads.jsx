@@ -181,7 +181,7 @@ class MastheadWithTopicMenu extends Component {
                     }
                     toSubject={() => '#'}
                     toTopic={() => '#'}
-                    programItems={programmes}
+                    programmes={programmes}
                     subjectCategories={subjectCategories}
                     currentProgramme={{
                       name: programme.label,

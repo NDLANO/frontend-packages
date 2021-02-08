@@ -71,7 +71,7 @@ export const TopicMenu = ({
   locale,
   onNavigate,
   subjectCategories,
-  programItems,
+  programmes,
   currentProgramme,
   t,
 }) => {
@@ -204,7 +204,7 @@ export const TopicMenu = ({
                   {currentProgramme.name}
                 </Button>
               )}
-              {programItems && (
+              {programmes && (
                 <Button
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
                   lighter={selectedMenu !== MENU_PROGRAMMES}
@@ -252,11 +252,11 @@ export const TopicMenu = ({
             />
           </div>
         )}
-        {selectedMenu === MENU_PROGRAMMES && programItems && (
+        {selectedMenu === MENU_PROGRAMMES && programmes && (
           <div {...classes('all-subjects')}>
             <NavigationBox
               colorMode="light"
-              items={programItems}
+              items={programmes}
               listDirection="vertical"
             />
           </div>
@@ -401,7 +401,7 @@ TopicMenu.propTypes = {
       ),
     }),
   ),
-  programItems: PropTypes.arrayOf(
+  programmes: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
@@ -414,7 +414,7 @@ TopicMenu.propTypes = {
         name: PropTypes.string.isRequired,
         categories: PropTypes.arrayOf(
           PropTypes.shape({
-            name: PropTypes.string.isRequired,
+            name: PropTypes.string,
             subjects: PropTypes.arrayOf(
               PropTypes.shape({
                 label: PropTypes.string.isRequired,

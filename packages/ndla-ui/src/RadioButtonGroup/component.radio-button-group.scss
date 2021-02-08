@@ -42,7 +42,7 @@
   &__input {
     opacity: 0;
     position: absolute;
-    display:none;
+    display: none;
     &:hover, &:focus {
       + .c-radio-button-group__label {
         @include restore-outline();

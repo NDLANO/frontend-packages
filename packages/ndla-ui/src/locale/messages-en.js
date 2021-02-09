@@ -230,6 +230,7 @@ const messages = {
       close: 'Close',
       goTo: 'Go to',
       search: 'Search',
+      toFrontpage: 'To frontpage',
       subjectOverview: 'All subjects',
       backToSubjectFrontpage: 'Back to subject frontpage',
       title: 'Content',

@@ -33,6 +33,11 @@ import {
 } from '../../dummydata';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
+import {
+  programmes,
+  programme,
+  subjectCategories,
+} from '../../dummydata/mockPrograms';
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -176,6 +181,13 @@ class MastheadWithTopicMenu extends Component {
                     }
                     toSubject={() => '#'}
                     toTopic={() => '#'}
+                    programmes={programmes}
+                    subjectCategories={subjectCategories}
+                    currentProgramme={{
+                      name: programme.label,
+                      grades: programme.grades,
+                      selectedGradeIndex: 1,
+                    }}
                     topics={topicMenu}
                     filterOptions={[
                       {

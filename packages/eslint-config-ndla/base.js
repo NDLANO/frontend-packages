@@ -28,7 +28,7 @@ module.exports = {
       'react/prop-types': 'off',
       'no-array-constructor': 'off',
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-angle-bracket-type-assertion': 'warn',
+      '@typescript-eslint/consistent-type-assertions': 'warn',
       '@typescript-eslint/no-array-constructor': 'warn',
       '@typescript-eslint/no-namespace': 'error',
       '@typescript-eslint/no-unused-vars': [

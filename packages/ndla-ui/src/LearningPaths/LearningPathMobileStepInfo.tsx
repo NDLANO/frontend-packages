@@ -13,6 +13,7 @@ import { injectT, tType } from '@ndla/i18n';
 
 const StyledInfo = styled.div`
   ${typography.smallHeading}
+  white-space: nowrap;
   ${mq.range({ from: breakpoints.tablet })} {
     display: none;
   }

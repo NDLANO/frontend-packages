@@ -29,12 +29,12 @@ type StyledMenuProps = {
 
 const StyledMenu = styled.div<StyledMenuProps>`
   width: 100%;
-  flex-shrink: 0;
-  transition: all 200ms ease;
-  margin-bottom: ${spacing.large};
   ${mq.range({ from: breakpoints.tablet })} {
+    flex-shrink: 0;
+    transition: all 200ms ease;
     max-width: ${SIDE_NAV_WIDTH};
     width: ${SIDE_NAV_WIDTH};
+    margin-bottom: ${spacing.large};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     min-width: ${SIDE_NAV_WIDTH};
@@ -120,17 +120,13 @@ const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
   invertedStyle,
   cookies,
   t,
-  showLearningPathButton,
 }) => {
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);
 
   return (
     <StyledMenu isOpen={isOpen}>
-      <LearningPathMenuModalWrapper
-        innerWidth={innerWidth}
-        closeLabel={t('modal.closeModal')}
-        activateButton={showLearningPathButton}>
+      <LearningPathMenuModalWrapper innerWidth={innerWidth}>
         <>
           <div
             css={css`

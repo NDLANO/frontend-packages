@@ -9,6 +9,7 @@
 import LearningPathMenu from './LearningPathMenu';
 import LearningPathLastStepNavigation from './LearningPathLastStepNavigation';
 import LearningPathMobileStepInfo from './LearningPathMobileStepInfo';
+import LearningPathMobileHeader from './LearningPathMobileHeader';
 
 export { LearningPathWrapper } from './LearningPathWrapper';
 export { LearningPathContent } from './LearningPathContent';
@@ -21,5 +22,6 @@ export { LearningPathInformation } from './LearningPathInformation';
 export {
   LearningPathSticky,
   LearningPathStickySibling,
-  showLearningPathButtonToggleCss,
+  LearningPathStickyPlaceholder,
 } from './LearningPathSticky';
+export { LearningPathMobileHeader };

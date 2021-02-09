@@ -69,11 +69,18 @@ const getButtonComponent = (file, isMissing, messages) => {
     );
   } else {
     return (
-      <LinkButton type="button" onClick={() => window.open(file.url)}>
-        {file.title === '' ? messages.missingTitle : file.title}
-        {` `}
-        <span>({file.type})</span>
-      </LinkButton>
+      <div
+        css={css`
+          max-width: 100%;
+        `}>
+        <Tooltip tooltip={`${file.title} (${file.type.toUpperCase()})`}>
+          <LinkButton type="button" onClick={() => window.open(file.url)}>
+            {file.title === '' ? messages.missingTitle : file.title}
+            {` `}
+            <span>({file.type})</span>
+          </LinkButton>
+        </Tooltip>
+      </div>
     );
   }
 };
@@ -94,7 +101,9 @@ const FileNameInput = ({
     );
   return (
     <div>
-      <Download />
+      <div>
+        <Download />
+      </div>
       {getButtonComponent(file, isMissing, messages)}
     </div>
   );
@@ -120,6 +129,11 @@ const LinkButton = styled.button`
   box-shadow: inset 0 -1px;
   border: 0;
   background: none;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+  white-space: nowrap;
   cursor: pointer;
   transform: translateY(-2px);
   span {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019-present, NDLA.
+ * Copyright (c) 2021-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -74,6 +74,8 @@ export { default as SquareAudio } from './SquareAudio';
 export { default as SquareVideo } from './SquareVideo';
 export { default as Star } from './Star';
 export { default as SubjectMatter } from './SubjectMatter';
+export { default as Subscript } from './Subscript';
+export { default as Superscript } from './Superscript';
 export { default as Table } from './Table';
 export { default as TableMaterial } from './TableMaterial';
 export { default as Taxonomy } from './Taxonomy';

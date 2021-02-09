@@ -14,6 +14,7 @@ import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, fonts, colors, shadows, animations } from '@ndla/core';
+import { CheckboxItem } from '@ndla/forms';
 import FileNameInput from './FileNameInput';
 
 const FILE_HEIGHT = 69;
@@ -35,9 +36,16 @@ const fileCss = css`
   > div {
     display: flex;
     align-items: center;
-    padding: 0 ${spacing.small} 0 calc(${spacing.small} + ${spacing.xsmall});
+    padding: 0 ${spacing.small} 0 ${spacing.small};
     &:first-of-type {
+      flex-basis: 0;
+      flex-shrink: 1;
+      min-width: 0;
       flex-grow: 1;
+      padding-left: calc(${spacing.small} + ${spacing.xsmall});
+    }
+    &:last-of-type {
+      padding-left: ${spacing.xsmall};
     }
     svg {
       width: 18px;
@@ -89,6 +97,12 @@ const ButtonIcons = styled.button`
 
 const fadeOutAnimation = css`
   ${animations.fadeOut()}
+`;
+
+const checkboxStyle = css`
+  label > span {
+    white-space: nowrap;
+  }
 `;
 
 class FileListEditor extends Component {
@@ -184,7 +198,10 @@ class FileListEditor extends Component {
     window.removeEventListener('mousemove', this.onDragging);
     window.removeEventListener('mouseup', this.onDragEnd);
 
-    this.props.onMovedFile(this.initialPosition, this.state.draggingIndex);
+    if (this.state.draggingIndex !== -1) {
+      this.props.onMovedFile(this.initialPosition, this.state.draggingIndex);
+    }
+
     this.setState({
       draggingIndex: -1,
     });
@@ -232,6 +249,8 @@ class FileListEditor extends Component {
       usePortal,
       messages,
       missingFilePaths,
+      showRenderInlineCheckbox,
+      onToggleRenderInline,
     } = this.props;
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
@@ -273,6 +292,17 @@ class FileListEditor extends Component {
                 }}
                 onBlur={this.exitEditFileName}
               />
+              {showRenderInlineCheckbox && file.type === 'pdf' && (
+                <Tooltip css={checkboxStyle} tooltip={messages.checkboxTooltip}>
+                  <CheckboxItem
+                    label={messages.checkboxLabel}
+                    checked={file.display === 'block'}
+                    value=""
+                    id={index}
+                    onChange={i => onToggleRenderInline(i)}
+                  />
+                </Tooltip>
+              )}
               <div>
                 <Tooltip tooltip={messages.changeName}>
                   <ButtonIcons
@@ -332,9 +362,11 @@ FileListEditor.propTypes = {
   ),
   missingFilePaths: PropTypes.arrayOf(PropTypes.string),
   sortable: PropTypes.bool,
+  showRenderInlineCheckbox: PropTypes.bool,
   onEditFileName: PropTypes.func.isRequired,
   onDeleteFile: PropTypes.func.isRequired,
   onMovedFile: PropTypes.func.isRequired,
+  onToggleRenderInline: PropTypes.func,
   usePortal: PropTypes.bool,
 };
 

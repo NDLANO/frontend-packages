@@ -12,7 +12,7 @@
     font-weight: 600;
   }
   &__label {
-    @include font-size(16px, 28px);
+    @include font-size(16px, 28px, $important: true);
     color: $brand-color;
     align-items: center;
     display: inline-flex;
@@ -42,6 +42,7 @@
   &__input {
     opacity: 0;
     position: absolute;
+    width: auto;
     &:hover, &:focus {
       + .c-radio-button-group__label {
         @include restore-outline();

@@ -13,17 +13,34 @@ import { uuid } from '@ndla/util';
 
 const classes = BEMHelper('c-radio-button-group');
 
-class RadioButtonGroup extends Component {
-  constructor(props) {
+interface Props {
+  selected?: string;
+  options: {
+    title: string;
+    value: string;
+    disabled?: boolean;
+  }[];
+  label?: string;
+  uniqeIds?: boolean;
+  onChange: (value: string) => void;
+}
+
+interface State {
+  selected: string;
+}
+
+class RadioButtonGroup extends Component<Props, State> {
+  private readonly uuid?: string;
+  constructor(props: Props) {
     super(props);
     this.state = {
       selected: props.selected || props.options[0].value,
     };
     this.handleOnChange = this.handleOnChange.bind(this);
-    this.uuid = this.props.uniqeIds && uuid();
+    this.uuid = this.props.uniqeIds ? uuid() : undefined;
   }
 
-  handleOnChange(e) {
+  handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       selected: e.target.value,
     });
@@ -64,20 +81,20 @@ class RadioButtonGroup extends Component {
       </section>
     );
   }
-}
 
-RadioButtonGroup.propTypes = {
-  selected: PropTypes.string,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-      disabled: PropTypes.bool,
-    }),
-  ).isRequired,
-  label: PropTypes.string,
-  uniqeIds: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
-};
+  static propTypes = {
+    selected: PropTypes.string,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+        disabled: PropTypes.bool,
+      }),
+    ).isRequired,
+    label: PropTypes.string,
+    uniqeIds: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+  };
+}
 
 export default RadioButtonGroup;

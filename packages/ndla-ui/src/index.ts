@@ -81,3 +81,6 @@ export {
 } from './SearchTypeResult';
 
 export { default as constants } from './model';
+
+export { default as RadioButtonGroup } from './RadioButtonGroup';
+

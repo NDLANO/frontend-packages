@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "0.30.12",
+  "version": "0.30.13",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",

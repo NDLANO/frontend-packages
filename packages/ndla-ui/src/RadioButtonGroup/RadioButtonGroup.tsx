@@ -7,7 +7,6 @@
  */
 
 import React, { Fragment, Component } from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
 
@@ -81,20 +80,6 @@ class RadioButtonGroup extends Component<Props, State> {
       </section>
     );
   }
-
-  static propTypes = {
-    selected: PropTypes.string,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired,
-        disabled: PropTypes.bool,
-      }),
-    ).isRequired,
-    label: PropTypes.string,
-    uniqeIds: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-  };
 }
 
 export default RadioButtonGroup;

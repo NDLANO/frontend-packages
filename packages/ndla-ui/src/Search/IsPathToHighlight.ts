@@ -3,5 +3,5 @@ export const isPathToHighlight = (
   href: string | false | null,
 ): boolean => {
   const regexForPath = new RegExp(`^(/.*)?${path}$`);
-  return regexForPath.test(href || '');
+  return regexForPath.test(href || '') || path === href;
 };

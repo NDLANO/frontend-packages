@@ -278,7 +278,10 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
       } else if (e.code === 'Enter') {
         e.stopPropagation();
         e.preventDefault();
-        if (keyboardPathNavigation === GO_TO_SEARCHPAGE) {
+        if (
+          keyboardPathNavigation === GO_TO_SEARCHPAGE ||
+          keyboardPathNavigation === undefined
+        ) {
           const anchorTag =
             searchAllRef &&
             searchAllRef.current &&

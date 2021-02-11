@@ -151,10 +151,6 @@ export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';
 
-export { default as messagesNB } from './locale/messages-nb';
-export { default as messagesNN } from './locale/messages-nn';
-export { default as messagesEN } from './locale/messages-en';
-
 export {
   FilmSlideshow,
   MovieGrid,

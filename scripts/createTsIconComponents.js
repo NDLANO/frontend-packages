@@ -135,12 +135,12 @@ ${exportsString}\n`;
       ...prettierOptions,
       parser: 'babylon',
     });
-    const fileName = path.join(rootDir, 'src', folder, 'index.js');
+    const fileName = path.join(rootDir, 'src', folder, 'index.ts');
     fs.writeFileSync(fileName, formatedIconsModule, 'utf-8');
     console.log(
       `${chalk.green(`CREATED`)} ${chalk.dim(
         path.join(rootDir, 'src'),
-      )}${chalk.bold(`${folder}/index.js`)}`,
+      )}${chalk.bold(`${folder}/index.ts`)}`,
     );
   });
 }

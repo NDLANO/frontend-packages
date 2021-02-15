@@ -77,7 +77,7 @@ test('File with allowed type and allowed ending is allowed in catch-all function
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with empty type but allowed ending is approved in catch-all function', () => {
+test('File with empty type but allowed ending is allowed in catch-all function', () => {
   const files = [
     {
       type: '',
@@ -87,7 +87,7 @@ test('File with empty type but allowed ending is approved in catch-all function'
   expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
 });
 
-test('File with unknown type but allowed ending is approved in catch-all function', () => {
+test('File with unknown type but allowed ending is allowed in catch-all function', () => {
   const files = [
     {
       type: 'application/woot',

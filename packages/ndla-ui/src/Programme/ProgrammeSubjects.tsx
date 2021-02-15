@@ -47,9 +47,14 @@ export type GradesProps = {
 
 type Props = GradesProps & {
   preSelectedGradeIndex?: number;
+  onNavigate?: () => void;
 };
 
-const ProgrammeSubjects = ({ grades, preSelectedGradeIndex = 0 }: Props) => {
+const ProgrammeSubjects = ({
+  grades,
+  onNavigate,
+  preSelectedGradeIndex = 0,
+}: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(preSelectedGradeIndex);
 
   const selectedGrade = grades[showGradeIndex];
@@ -72,6 +77,11 @@ const ProgrammeSubjects = ({ grades, preSelectedGradeIndex = 0 }: Props) => {
           key={category.name}
           heading={category.name}
           items={category.subjects}
+          onClick={() => {
+            if (onNavigate) {
+              onNavigate();
+            }
+          }}
         />
       ))}
     </>

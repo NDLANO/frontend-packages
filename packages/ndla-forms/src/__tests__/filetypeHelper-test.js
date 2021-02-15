@@ -88,14 +88,14 @@ test('File with empty type but allowed ending is approved in catch-all function'
 });
 
 test('File with unknown type but allowed ending is approved in catch-all function', () => {
-    const files = [
-      {
-        type: 'application/woot',
-        name: 'file.pdf',
-      },
-    ];
-    expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
-  });
+  const files = [
+    {
+      type: 'application/woot',
+      name: 'file.pdf',
+    },
+  ];
+  expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
+});
 
 test('File with empty type and disallowed ending is denied in catch-all function', () => {
   const files = [
@@ -108,11 +108,11 @@ test('File with empty type and disallowed ending is denied in catch-all function
 });
 
 test('Image file with image type and unknown ending is allowed in catch-all function', () => {
-    const files = [
-      {
-        type: 'image/png',
-        name: 'file.whatever',
-      },
-    ];
-    expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
-  });
+  const files = [
+    {
+      type: 'image/png',
+      name: 'file.whatever',
+    },
+  ];
+  expect(getIllegalFiles(files, allowedFiles)).toStrictEqual([]);
+});

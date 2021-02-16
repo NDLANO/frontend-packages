@@ -62,6 +62,7 @@ const SafeLinkCSS = css`
   ${mq.range({ until: breakpoints.tablet })} {
     height: ${FOOTER_HEIGHT_MOBILE};
     width: ${FOOTER_HEIGHT_MOBILE};
+    min-width: ${FOOTER_HEIGHT_MOBILE};
   }
   padding: 0 ${spacing.normal} 0 ${spacing.normal};
   ${mq.range({ until: breakpoints.tablet })} {

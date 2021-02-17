@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';
 import { injectT } from '@ndla/i18n';
-import Button from '@ndla/button';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';
@@ -26,6 +26,17 @@ const switchCSS = css`
 const invertedSwitchCSS = css`
   margin-right: ${spacing.xsmall};
   color: #fff;
+`;
+
+const TooltipWrapper = styled.div`
+  line-height: 1;
+`;
+const TooltipButton = styled.button`
+  border: 0;
+  background: initial;
+  padding: 0;
+  line-height: unset;
+  cursor: pointer;
 `;
 
 const ResourcesTopicTitle = ({
@@ -62,14 +73,16 @@ const ResourcesTopicTitle = ({
           <Modal
             narrow
             wrapperFunctionForButton={activateButton => (
-              <Tooltip tooltip={t('resource.dialogTooltip')}>
-                {activateButton}
-              </Tooltip>
+              <TooltipWrapper>
+                <Tooltip tooltip={t('resource.dialogTooltip')}>
+                  {activateButton}
+                </Tooltip>
+              </TooltipWrapper>
             )}
             activateButton={
-              <Button appearance="stripped">
+              <TooltipButton aria-label={t('resource.dialogTooltip')}>
                 <HelpIcon invertedStyle={invertedStyle} />
-              </Button>
+              </TooltipButton>
             }>
             {onClose => (
               <Fragment>

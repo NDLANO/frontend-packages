@@ -7,12 +7,12 @@
 
 export const illegalFormats = (files, allowedFiles) => {
   return files.filter(file => {
-    const typeToArray = file.type.split('/');
+    const [type, subtype] = file.type.split('/');
 
     const fileTypeAllowed =
       allowedFiles.includes(file.type) ||
-      allowedFiles.includes(`${typeToArray[0]}/*`) ||
-      allowedFiles.includes(`.${typeToArray[1]}`);
+      allowedFiles.includes(`${type}/*`) ||
+      allowedFiles.includes(`.${subtype}`);
 
     return !fileTypeAllowed;
   });

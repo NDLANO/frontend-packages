@@ -82,7 +82,6 @@ export type StepProps = {
 interface Props {
   learningsteps: StepProps[];
   name: string;
-  duration: number;
   lastUpdated: string;
   language: string;
   copyright: {
@@ -111,7 +110,6 @@ const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
   learningsteps,
   currentIndex,
   name,
-  duration,
   lastUpdated,
   copyright,
   learningPathId,
@@ -142,7 +140,6 @@ const LearningPathMenu: React.FunctionComponent<Props & tType> = ({
           </div>
           <LearningPathMenuIntro
             isOpen={isOpen}
-            duration={duration}
             name={name}
             invertedStyle={invertedStyle}
           />

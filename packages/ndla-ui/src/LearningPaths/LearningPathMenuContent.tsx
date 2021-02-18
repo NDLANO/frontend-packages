@@ -19,8 +19,11 @@ import {
   animations,
 } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { LearningPathIcon } from './LearningPathIcon';
+// @ts-ignore
+import { LearningPathRead } from '@ndla/icons/contentType';
 import { StepProps } from './LearningPathMenu';
+// @ts-ignore
+import ContentTypeBadge from '../ContentTypeBadge';
 
 const SIDE_NAV_WIDTH = '372px';
 
@@ -37,7 +40,6 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   margin: 0;
   a {
     box-shadow: none;
-    height: ${spacing.large};
     display: inline-flex;
     align-items: center;
     padding: ${spacing.small};
@@ -45,10 +47,11 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       display: flex;
       align-items: center;
       ${fonts.sizes(14, 1.2)};
-      color: ${colors.text.primary};
+      color: ${colors.brand.primary};
       ${mq.range({ from: breakpoints.tablet })} {
         color: ${({ invertedStyle }) =>
-          invertedStyle ? '#fff' : colors.text.primary};
+          invertedStyle ? '#fff' : colors.brand.primary};
+        font-weight: ${fonts.weight.semibold};
       }
     }
     &:hover,
@@ -99,16 +102,14 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
   ${props =>
     props.current &&
     `
-    ${mq.range({ from: breakpoints.desktop })} {
       background: #fff;
-    }
   `}
   &:after {
     content: '';
     display: block;
     height: ${spacing.large};
     width: 2px;
-    background: ${colors.brand.primary};
+    background: ${colors.brand.greyLight};
     position: absolute;
     transform: translate(29px, -${spacing.spacingUnit * 3}px);
   }
@@ -118,12 +119,14 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     a {
       > span {
         color: ${colors.text.primary};
+        font-weight: ${fonts.weight.normal};
       }
       color: ${colors.text.primary};
+      font-weight: ${fonts.weight.normal};
     }
     &:after {
       width: 4px;
-      background: ${colors.brand.primary};
+      background: ${colors.text.light};
       transform: translate(28px, -${spacing.spacingUnit * 3}px);
     }
   `}
@@ -147,6 +150,7 @@ const StyledContentType = styled.div`
   position: relative;
   z-index: 1;
   margin-right: ${spacing.spacingUnit * 0.75}px;
+  max-height: 36px;
 `;
 
 type StyledNavigationProps = {
@@ -192,6 +196,26 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
     `}
 `;
 
+const ReadIcon = styled.div`
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -6px;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background: ${colors.brand.secondary};
+  color: ${colors.text.light};
+  transform: translateX(4px);
+  svg {
+    width: 12px;
+    height: 12px;
+    fill: ${colors.brand.lighter};
+  }
+`;
+
 type Props = {
   learningsteps: StepProps[];
   learningPathId: number;
@@ -204,22 +228,12 @@ type Props = {
   };
 };
 
-const getIconType = (
+const hasRead = (
   id: number,
-  index: number,
-  currentIndex: number,
   cookies: {
     [key: string]: string;
   },
-  type: string,
-) => {
-  if (index === currentIndex) {
-    return 'CURRENT';
-  } else if (cookies[id]) {
-    return 'HAS_READ';
-  }
-  return type;
-};
+) => !!cookies[id];
 
 const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
   isOpen,
@@ -242,11 +256,12 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
           indexNumber={index}>
           <SafeLink to={toLearningPathUrl(learningPathId, id)}>
             <StyledContentType>
-              <LearningPathIcon
-                type={getIconType(id, index, currentIndex, cookies, type)}
-                current={index === currentIndex}
-                beforeCurrent={index <= currentIndex}
-              />
+              {type && <ContentTypeBadge type={type} background size="small" />}
+              {hasRead(id, cookies) && (
+                <ReadIcon>
+                  <LearningPathRead />
+                </ReadIcon>
+              )}
             </StyledContentType>
             <span>{title}</span>
           </SafeLink>

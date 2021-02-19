@@ -13,6 +13,7 @@ import { css } from '@emotion/core';
 import { Spinner } from '@ndla/ui';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
+import { getIllegalFiles } from './filetypeHelper';
 
 const SpinnerWrapper = styled.div`
   margin: -${spacing.small} 0;
@@ -179,18 +180,6 @@ class UploadDropZone extends Component {
     clearTimeout(this.errorTimer);
   }
 
-  illegalFormats(files) {
-    return files.filter(file => {
-      const typeToArray = file.type.split('/');
-      const fileTypeAllowed =
-        this.props.allowedFiles.includes(file.type) ||
-        this.props.allowedFiles.includes(`${typeToArray[0]}/*`) ||
-        this.props.allowedFiles.includes(`.${typeToArray[1]}`);
-
-      return !fileTypeAllowed;
-    });
-  }
-
   onChangeField(e) {
     const files = [];
     for (let i = 0; i < e.target.files.length; i++) {
@@ -216,7 +205,7 @@ class UploadDropZone extends Component {
 
   onDrop(e) {
     const files = getFiles(e);
-    const illegalFiles = this.illegalFormats(files);
+    const illegalFiles = getIllegalFiles(files, this.props.allowedFiles);
     const hasIllegalFiles = illegalFiles.length > 0;
     let errorMessage;
     if (hasIllegalFiles) {

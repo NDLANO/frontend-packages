@@ -24,6 +24,7 @@ import { LearningPathRead } from '@ndla/icons/contentType';
 import { StepProps } from './LearningPathMenu';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
+import constants from '../model';
 
 const SIDE_NAV_WIDTH = '372px';
 
@@ -245,34 +246,48 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
   toLearningPathUrl,
   invertedStyle,
   onStepNavigate,
-}) => (
-  <StyledNavigation isOpen={isOpen} invertedStyle={invertedStyle}>
-    <ul>
-      {learningsteps.map(({ id, title, type }: StepProps, index: number) => (
-        <StyledMenuItem
-          key={id}
-          current={index === currentIndex}
-          afterCurrent={index > currentIndex}
-          isOpen={isOpen}
-          invertedStyle={invertedStyle}
-          indexNumber={index}>
-          <SafeLink
-            onClick={onStepNavigate}
-            to={toLearningPathUrl(learningPathId, id)}>
-            <StyledContentType>
-              {type && <ContentTypeBadge type={type} background size="small" />}
-              {hasRead(id, cookies) && (
-                <ReadIcon>
-                  <LearningPathRead />
-                </ReadIcon>
-              )}
-            </StyledContentType>
-            <span>{title}</span>
-          </SafeLink>
-        </StyledMenuItem>
-      ))}
-    </ul>
-  </StyledNavigation>
-);
+}) => {
+  const getContentTypeBadge = (type?: string) => {
+    if (!type) {
+      return (
+        <ContentTypeBadge
+          type={constants.contentTypes.LEARNING_PATH}
+          background
+          size="small"
+        />
+      );
+    }
+    return <ContentTypeBadge type={type} background size="small" />;
+  };
+  return (
+    <StyledNavigation isOpen={isOpen} invertedStyle={invertedStyle}>
+      <ul>
+        {learningsteps.map(({ id, title, type }: StepProps, index: number) => (
+          <StyledMenuItem
+            key={id}
+            current={index === currentIndex}
+            afterCurrent={index > currentIndex}
+            isOpen={isOpen}
+            invertedStyle={invertedStyle}
+            indexNumber={index}>
+            <SafeLink
+              onClick={onStepNavigate}
+              to={toLearningPathUrl(learningPathId, id)}>
+              <StyledContentType>
+                {getContentTypeBadge(type)}
+                {hasRead(id, cookies) && (
+                  <ReadIcon>
+                    <LearningPathRead />
+                  </ReadIcon>
+                )}
+              </StyledContentType>
+              <span>{title}</span>
+            </SafeLink>
+          </StyledMenuItem>
+        ))}
+      </ul>
+    </StyledNavigation>
+  );
+};
 
 export default injectT(LearningPathMenuContent);

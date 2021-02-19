@@ -226,6 +226,7 @@ type Props = {
   cookies: {
     [key: string]: string;
   };
+  onStepNavigate: () => void;
 };
 
 const hasRead = (
@@ -243,6 +244,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
   learningsteps,
   toLearningPathUrl,
   invertedStyle,
+  onStepNavigate,
 }) => (
   <StyledNavigation isOpen={isOpen} invertedStyle={invertedStyle}>
     <ul>
@@ -254,7 +256,9 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
           isOpen={isOpen}
           invertedStyle={invertedStyle}
           indexNumber={index}>
-          <SafeLink to={toLearningPathUrl(learningPathId, id)}>
+          <SafeLink
+            onClick={onStepNavigate}
+            to={toLearningPathUrl(learningPathId, id)}>
             <StyledContentType>
               {type && <ContentTypeBadge type={type} background size="small" />}
               {hasRead(id, cookies) && (

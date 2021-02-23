@@ -11,12 +11,10 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import { Time } from '@ndla/icons/common';
 import {
   colors,
   spacing,
   fonts,
-  misc,
   typography,
   mq,
   breakpoints,
@@ -45,11 +43,11 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
         }
       `}
   }
-  border-left: ${BORDER_WIDTH}px solid ${colors.brand.primary};
+  border-left: ${BORDER_WIDTH}px solid ${colors.text.light};
   &:before {
     content: '';
     display: block;
-    background: ${colors.brand.primary};
+    background: ${colors.text.light};
     border-radius: 100%;
     height: 12px;
     width: 12px;
@@ -98,21 +96,6 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
       `}
 `;
 
-const StyledTimeBox = styled.div`
-  background: ${colors.brand.lighter};
-  border: 1px solid ${colors.brand.light};
-  border-radius: ${misc.borderRadius};
-  ${fonts.sizes(14, 1.2)};
-  font-weight: ${fonts.weight.normal};
-  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small}
-    ${spacing.small};
-  display: inline-flex;
-  color: ${colors.text.primary};
-  svg {
-    margin-right: ${spacing.xsmall};
-  }
-`;
-
 const StyledIntroHeader = styled.h1`
   ${fonts.sizes(18, 1.1)};
   line-height: 20px;
@@ -120,22 +103,17 @@ const StyledIntroHeader = styled.h1`
 `;
 
 interface Props {
-  duration: number;
   isOpen: boolean;
   invertedStyle?: boolean;
   name: string;
 }
 
 const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({
-  duration,
   isOpen,
   name,
   invertedStyle,
   t,
 }) => {
-  const hours = Math.floor(duration / 60);
-  const usePluralsForHours = hours !== 1;
-  const minutes = duration % 60;
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
@@ -143,17 +121,6 @@ const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({
           {t('learningPath.youAreInALearningPath')}
         </StyledInfoHeader>
         <StyledIntroHeader>{name}</StyledIntroHeader>
-        <StyledTimeBox>
-          <Time />
-          {hours}{' '}
-          {t(
-            usePluralsForHours
-              ? 'learningPath.readTimeHour_plurals'
-              : 'learningPath.readTimeHour',
-          )}
-          {minutes > 0 &&
-            ` ${minutes} ${t('learningPath.readTimeMinutesShort')}`}
-        </StyledTimeBox>
       </div>
     </StyledMenuIntro>
   );

@@ -61,7 +61,7 @@ const PopupFilter = ({
   }, [isOpen, valuesProps]);
 
   const buttonContent = (
-    <Button size="normal" lighterGrey>
+    <Button type="button" size="normal" lighterGrey borderShape="rounded">
       <FilterButtonText>{messages.buttonText}</FilterButtonText>
       <PlusIcon />
     </Button>

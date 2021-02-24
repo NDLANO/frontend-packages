@@ -427,6 +427,20 @@ export const subjectCategories = [
       { name: 'Tysk 2', url: '#' },
     ],
   },
+  {
+    name: 'LK06 fag',
+    subjects: [
+      { name: 'Matematikk 1P', url: '#' },
+      { name: 'Matematikk for yrkesfaglige programmer 1P-Y', url: '#' },
+      { name: 'Matematikk for yrkesfaglige programmer 1T-Y', url: '#' },
+      { name: 'Matematikk 1T1', url: '#' },
+      { name: 'Naturfag SF Vg1', url: '#' },
+      { name: 'Naturfag YF Vg1', url: '#' },
+      { name: 'Naturfag PB Vg3', url: '#' },
+      { name: 'Engelsk VG1 SF', url: '#' },
+      { name: 'Sørsamisk som førstespråk (SF Vg1)', url: '#' },
+    ],
+  },
 ];
 
 export const subjectBreadcrumb = [

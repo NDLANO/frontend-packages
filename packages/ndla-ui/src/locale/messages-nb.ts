@@ -827,6 +827,9 @@ const messages = {
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',
   ...contributorTypes.nb,
+  filterButtons: {
+    removeAllFilters: 'Fjern filter',
+  },
 };
 
 export default messages;

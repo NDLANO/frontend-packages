@@ -818,6 +818,9 @@ const messages = {
   download: 'Download file: ',
   expandButton: 'Show large version',
   ...contributorTypes.en,
+  filterButtons: {
+    removeAllFilters: 'Remove filters',
+  },
 };
 
 export default messages;

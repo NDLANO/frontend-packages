@@ -30,8 +30,8 @@ const StyledForm = styled.form<StyledProps>`
   flex-direction: row;
   justify-content: center;
   background: #fff;
-  border-radius: 5px;
-  border: 1px solid ${colors.brand.greyLight};
+  border-radius: 100px;
+  border: 2px solid ${colors.brand.greyLight};
   padding: ${spacing.xsmall};
   min-height: 58px;
   column-gap: 10px;
@@ -73,6 +73,7 @@ const SearchInput = styled.input`
   flex-grow: 1;
   border: 0;
   outline: 0;
+  margin-left: 3px;
 `;
 
 type Props = {

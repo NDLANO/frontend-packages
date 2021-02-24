@@ -39,7 +39,7 @@ const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & tType) => (
     })}
     type="button"
     size="normal"
-    lighter
+    borderShape="rounded"
     onClick={() => onFilterRemove(filter.value, filter.name)}>
     <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
     <Cross />

@@ -10,3 +10,4 @@ export { default as FilterList } from './FilterList';
 export { default as FilterListPhone } from './FilterListPhone';
 export { default as ToggleItem } from './ToggleItem';
 export { classes as filterClasses } from './filterClasses';
+export { default as FilterButtons } from './FilterButtons';

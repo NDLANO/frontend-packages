@@ -752,8 +752,8 @@ const messages = {
     cursorText: 'Find teaching material, assignments, movies and more.',
   },
   navigation: {
-    showLongerDescription: 'Show more',
-    showShorterDescription: 'Show less',
+    showLongerDescription: 'Show topic description',
+    showShorterDescription: 'Hide topic description',
     topics: 'Topics',
     additionalTopic: 'Additional topic',
     additionalTopics: 'Additional topics',

@@ -26,6 +26,7 @@ export { default as DocumentDetails } from './DocumentDetails';
 export { default as Download } from './Download';
 export { default as EmailOutline } from './EmailOutline';
 export { default as Esc } from './Esc';
+export { default as Explanation } from './Explanation';
 export { default as Facebook } from './Facebook';
 export { default as FileDocumentOutline } from './FileDocumentOutline';
 export { default as FileDownloadOutline } from './FileDownloadOutline';

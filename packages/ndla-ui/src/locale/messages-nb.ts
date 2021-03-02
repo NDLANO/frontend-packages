@@ -99,7 +99,7 @@ const messages = {
     },
     searchFilterMessages: {
       backButton: 'Tilbake til filter',
-      filterLabel: 'Velg fag',
+      filterLabel: 'Filtrer søket',
       confirmButton: 'Oppdater filter',
       hasValuesButtonText: 'Flere fag',
       noValuesButtonText: 'Filtrer på fag',

@@ -22,8 +22,8 @@ import {
   resourcesExternalResults,
   resourcesSourceMaterialResults,
 } from '../../dummydata/mockSearchResultType';
-import { searchFilterOptions } from '../../dummydata';
 import FigureWithLicense from '../article/FigureWithLicense';
+import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 
 const { contentTypes } = constants;
 
@@ -238,10 +238,8 @@ const SearchPageDemo = ({ t }) => {
   const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(
     'nynorsk',
   );
-  const [searchFilter, setSearchFilter] = useState([
-    'subjects:bronnteknikk',
-    'subjects:kinesisk',
-  ]);
+  const [subjectFilter, setSubjectFilter] = useState(['programme_subject_5']);
+  const [programmeFilter, setProgrammeFilter] = useState(['programme_9']);
 
   const [notionsItems] = React.useState(initNotionResult);
 
@@ -350,7 +348,8 @@ const SearchPageDemo = ({ t }) => {
     setSearchPhraseSuggestion('');
   };
   const handleFilterRemove = value => {
-    setSearchFilter(searchFilter.filter(option => option !== value));
+    setSubjectFilter(subjectFilter.filter(option => option !== value));
+    setProgrammeFilter(programmeFilter.filter(option => option !== value));
   };
 
   const handleContentTypeFilterToggle = value => {
@@ -364,19 +363,44 @@ const SearchPageDemo = ({ t }) => {
     setSelectedResourceTypes(updated);
   };
 
-  const activeSubjectFilters = searchFilterOptions.subjects.filter(option =>
-    searchFilter.includes(option.value),
-  );
+  const activeSubjectFilters = [];
+  subjectCategories.forEach(category => {
+    category.subjects.forEach(subject => {
+      if (subjectFilter.includes(subject.id)) {
+        activeSubjectFilters.push({
+          name: subject.name,
+          value: subject.id,
+          title: subject.name,
+        });
+      }
+    });
+  });
+  programmes.forEach(item => {
+    if (programmeFilter.includes(item.id)) {
+      activeSubjectFilters.push({
+        name: item.label,
+        value: item.id,
+        title: item.label,
+      });
+    }
+  });
 
   const filterProps = {
-    options: searchFilterOptions.subjects,
-    values: searchFilter,
-    onSubmit: setSearchFilter,
     messages: {
       filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
       closeButton: t('searchPage.close'),
       confirmButton: t('searchPage.searchFilterMessages.confirmButton'),
       buttonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
+    },
+    programmes: {
+      options: programmes.map(item => ({ name: item.label, ...item })),
+      values: programmeFilter,
+      onProgrammeValuesChange: setProgrammeFilter,
+    },
+    subjectCategories: {
+      categories: subjectCategories,
+      values: subjectFilter,
+      onSubjectValuesChange: setSubjectFilter,
     },
   };
 

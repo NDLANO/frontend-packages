@@ -54,13 +54,12 @@ const MediaWrapper = styled.div`
 const LabelsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 4px;
-  row-gap: 4px;
   margin-top: ${spacing.normal};
 `;
 const LabelsLabel = styled.span`
   display: inline-block;
   ${fonts.sizes('16px', '20px')};
+  margin-right: 4px;
 `;
 const Label = styled.span`
   display: inline-block;
@@ -69,6 +68,7 @@ const Label = styled.span`
   border-radius: 2px;
   ${fonts.sizes('12px', '20px')};
   font-weight: ${fonts.weight.semibold};
+  margin: 0 4px 4px 0;
 `;
 
 const Image = styled.img`

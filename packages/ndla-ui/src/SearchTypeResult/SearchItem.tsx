@@ -107,8 +107,6 @@ const ItemPillWrapper = styled.div`
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
-  column-gap: 4px;
-  row-gap: 4px;
 `;
 const ItemPill = styled.div`
   display: inline-block;
@@ -117,6 +115,7 @@ const ItemPill = styled.div`
   border-radius: 2px;
   ${fonts.sizes('12px', '20px')};
   font-weight: ${fonts.weight.semibold};
+  margin: 8px 4px 4px 0;
 `;
 
 const ItemTitle = styled.h3`

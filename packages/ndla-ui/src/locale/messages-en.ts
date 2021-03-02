@@ -100,7 +100,7 @@ const messages = {
     },
     searchFilterMessages: {
       backButton: 'Back to filter',
-      filterLabel: 'Chose subjects',
+      filterLabel: 'Search-filter',
       confirmButton: 'Refresh filter',
       hasValuesButtonText: 'More subjects',
       noValuesButtonText: 'Filter by subjects',

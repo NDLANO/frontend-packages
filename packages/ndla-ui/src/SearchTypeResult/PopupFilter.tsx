@@ -8,30 +8,67 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
+import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { Plus as PlusIcon } from '@ndla/icons/action';
 // @ts-ignore
-import { FilterList } from '../Filter';
+import { ToggleItem } from '../Filter';
 
+import FrontpageAllSubjects, {
+  subjectsProps,
+} from '../Frontpage/FrontpageAllSubjects';
+
+const ModalWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const ModalContent = styled.div`
+  max-width: 1040px;
+  flex-grow: 1;
+`;
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Heading = styled.h1`
+  ${fonts.sizes('22px', '32px')};
+`;
 const FilterButtonText = styled.span`
   display: inline-block;
   font-weight: 600;
   margin-right: 10px;
 `;
 
-const ConfirmWrapper = styled.div`
-  padding: ${spacing.medium} 0;
+const MainFilterButtonWrapper = styled.div`
+  display: inline-block;
+  margin-right: ${spacing.xsmall};
+`;
+const StyledList = styled.ul`
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    column-count: 3;
+    column-gap: 20px;
+  }
+`;
+const StyledListItem = styled.li`
+  margin-bottom: 0;
+  break-inside: avoid;
 `;
 
-type OptionProps = {
-  title: string;
-  value: string;
-};
+const MENU_PROGRAMMES = 'programmes';
+const MENU_ALL_SUBJECTS = 'allSubjects';
 
 type messagesProps = {
   buttonText: string;
@@ -40,25 +77,73 @@ type messagesProps = {
   filterLabel: string;
 };
 
-export type PopupFilterProps = {
-  options: OptionProps[];
+type ProgrammeOptionProps = {
+  name: string;
+  id: string;
+};
+type ProgrammeProps = {
+  options: ProgrammeOptionProps[];
   values: string[];
-  onSubmit: (values: string[]) => void;
+  onProgrammeValuesChange: (values: string[]) => void;
+};
+
+type SubjectCategoriesProps = {
+  categories: subjectsProps['categories'];
+  values: string[];
+  onSubjectValuesChange: (values: string[]) => void;
+};
+
+export type PopupFilterProps = {
   messages: messagesProps;
+  programmes?: ProgrammeProps;
+  subjectCategories?: SubjectCategoriesProps;
 };
 
 const PopupFilter = ({
-  options,
-  values: valuesProps,
-  onSubmit,
   messages,
-}: PopupFilterProps) => {
-  const [values, setValues] = useState(valuesProps);
+  programmes,
+  subjectCategories,
+  t,
+}: PopupFilterProps & tType) => {
+  const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
+  const [subjectValues, setSubjectValues] = useState<Array<string>>([]);
+  const [programmesValues, setProgrammesValues] = useState<Array<string>>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setValues(valuesProps);
-  }, [isOpen, valuesProps]);
+    if (subjectCategories) {
+      setSubjectValues([...subjectCategories.values]);
+    }
+    if (programmes) {
+      setProgrammesValues([...programmes.values]);
+    }
+  }, [isOpen]);
+
+  const onToggleSubject = (subjectId: string) => {
+    let updatedFilter = [...subjectValues];
+    if (updatedFilter.includes(subjectId)) {
+      updatedFilter = subjectValues.filter(option => option !== subjectId);
+    } else {
+      updatedFilter.push(subjectId);
+    }
+    setSubjectValues(updatedFilter);
+    if (subjectCategories) {
+      subjectCategories.onSubjectValuesChange(updatedFilter);
+    }
+  };
+
+  const onToggleProgramme = (programmeId: string) => {
+    let updatedFilter = [...programmesValues];
+    if (updatedFilter.includes(programmeId)) {
+      updatedFilter = programmesValues.filter(option => option !== programmeId);
+    } else {
+      updatedFilter.push(programmeId);
+    }
+    setProgrammesValues(updatedFilter);
+    if (programmes) {
+      programmes.onProgrammeValuesChange(updatedFilter);
+    }
+  };
 
   const buttonContent = (
     <Button type="button" size="normal" lighterGrey borderShape="rounded">
@@ -66,51 +151,82 @@ const PopupFilter = ({
       <PlusIcon />
     </Button>
   );
+
   return (
     <Modal
       activateButton={buttonContent}
+      backgroundColor="white"
       animation="subtle"
       animationDuration={50}
       onClick={() => setIsOpen(true)}
+      onClose={() => setIsOpen(false)}
       size="fullscreen">
       {(onClose: () => void) => (
-        <>
-          <ModalHeader modifier="no-bottom-padding">
-            <ModalCloseButton
-              onClick={() => {
-                onClose();
-                setIsOpen(false);
-              }}
-              title={messages.closeButton}
-            />
-          </ModalHeader>
-          <ModalBody>
-            <FilterList
-              preid="search-popover"
-              options={options}
-              label={messages.filterLabel}
-              values={values}
-              modifiers="search-popover"
-              onChange={(values: string[]) => {
-                setValues(values);
-              }}
-            />
-            <ConfirmWrapper>
-              <Button
-                outline
-                onClick={() => {
-                  onClose();
-                  setIsOpen(false);
-                  onSubmit(values);
-                }}>
-                {messages.confirmButton}
-              </Button>
-            </ConfirmWrapper>
-          </ModalBody>
-        </>
+        <ModalBody>
+          <ModalWrapper>
+            <ModalContent>
+              <Header>
+                <Heading>{messages.filterLabel}</Heading>
+                <ModalCloseButton
+                  onClick={() => {
+                    setIsOpen(false);
+                    onClose();
+                  }}
+                  title={messages.closeButton}
+                />
+              </Header>
+              {programmes && (
+                <MainFilterButtonWrapper>
+                  <Button
+                    onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                    lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                    size="normal"
+                    borderShape="rounded">
+                    {t('frontpageMenu.allsubjects')}
+                  </Button>
+                </MainFilterButtonWrapper>
+              )}
+              {subjectCategories && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  size="normal"
+                  borderShape="rounded">
+                  {t('frontpageMenu.program')}
+                </Button>
+              )}
+              {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
+                <FrontpageAllSubjects
+                  categories={subjectCategories.categories}
+                  selectedSubjects={subjectValues}
+                  onToggleSubject={onToggleSubject}
+                  subjectViewType="checkbox"
+                />
+              )}
+              {selectedMenu === MENU_PROGRAMMES && programmes && (
+                <StyledList>
+                  {programmes.options.map(item => (
+                    <StyledListItem key={item.id}>
+                      <ToggleItem
+                        id={item.id}
+                        value={item.id}
+                        checked={programmesValues.includes(item.id)}
+                        label={item.name}
+                        component="div"
+                        onChange={() => {
+                          onToggleProgramme(item.id);
+                        }}
+                      />
+                    </StyledListItem>
+                  ))}
+                </StyledList>
+              )}
+            </ModalContent>
+          </ModalWrapper>
+        </ModalBody>
       )}
     </Modal>
   );
 };
 
-export default PopupFilter;
+export default injectT(PopupFilter);

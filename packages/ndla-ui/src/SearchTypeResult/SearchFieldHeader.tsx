@@ -32,9 +32,8 @@ const StyledForm = styled.form<StyledProps>`
   background: #fff;
   border-radius: 100px;
   border: 2px solid ${colors.brand.greyLight};
-  padding: ${spacing.xsmall};
+  padding: ${spacing.xsmall} 8px;
   min-height: 58px;
-  column-gap: 10px;
   ${props =>
     props.inputHasFocus &&
     `

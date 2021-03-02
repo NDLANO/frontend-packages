@@ -59,6 +59,11 @@ function camelCaseAttributes($el, $) {
         .join('');
       $el.attr(camelCaseAttr, value);
     }
+    if (attr === 'class') {
+      const value = $el[0].attribs[attr];
+      $el.removeAttr(attr);
+      $el.attr('className', value);
+    }
   });
 
   if ($el.children().length === 0) {

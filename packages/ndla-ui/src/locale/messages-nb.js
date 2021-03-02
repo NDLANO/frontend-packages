@@ -761,8 +761,8 @@ const messages = {
     cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
   },
   navigation: {
-    showLongerDescription: 'Vis mer',
-    showShorterDescription: 'Vis mindre',
+    showLongerDescription: 'Les emnebeskrivelse',
+    showShorterDescription: 'Skjul emnebeskrivelse',
     topics: 'Emner',
     additionalTopic: 'Tillegsemne',
     additionalTopics: 'Tillegsemner',

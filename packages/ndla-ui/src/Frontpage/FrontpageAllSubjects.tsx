@@ -15,18 +15,18 @@ const StyledWrapper = styled.nav`
     margin:0;
   }
   .c-tabs__tab--subjects {
-  ${mq.range({ until: breakpoints.tablet })} {
-    margin:0;
-    font-size: 12px;
-    padding-left:8px;
-    padding-right:8px;
-    :first-of-type {
-      padding-left:0;
+    ${mq.range({ until: breakpoints.tablet })} {
+      margin:0;
+      font-size: 12px;
+      padding-left:8px;
+      padding-right:8px;
+      :first-of-type {
+        padding-left:0;
+      }
+      :last-of-type {
+        padding-right:0;
+      }
     }
-    :last-of-type {
-      padding-right:0;
-    }
-  }
 `;
 
 const StyledList = styled.ul`
@@ -77,6 +77,7 @@ type categoryProps = {
 
 export type subjectsProps = {
   categories: [categoryProps];
+  onNavigate?: () => void;
 };
 
 type letterCategories = {
@@ -118,7 +119,7 @@ const sortAlphabetically = (
   return subjectsLetterCategories;
 };
 
-const renderList = (subjects: subjectProps[]) => (
+const renderList = (subjects: subjectProps[], onNavigate?: () => void) => (
   <StyledList>
     {sortAlphabetically(subjects).map((letter: any) => {
       return (
@@ -129,7 +130,15 @@ const renderList = (subjects: subjectProps[]) => (
                 {index === 0 && (
                   <StyledLetterItem>{letter.letter}</StyledLetterItem>
                 )}
-                <SafeLink to={subject.url}>{subject.name}</SafeLink>
+                <SafeLink
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate();
+                    }
+                  }}
+                  to={subject.url}>
+                  {subject.name}
+                </SafeLink>
                 <StyledSpacingElement />
                 {letter.items.length - 1 === index && <StyledLetterSpacing />}
               </StyledListItem>
@@ -141,7 +150,11 @@ const renderList = (subjects: subjectProps[]) => (
   </StyledList>
 );
 
-const FrontpageAllSubjects = ({ categories, t }: subjectsProps & tType) => {
+const FrontpageAllSubjects = ({
+  categories,
+  onNavigate,
+  t,
+}: subjectsProps & tType) => {
   const allSubjects: subjectProps[] = [];
   const data: any = [];
 
@@ -149,13 +162,13 @@ const FrontpageAllSubjects = ({ categories, t }: subjectsProps & tType) => {
     allSubjects.push(...category.subjects);
     data.push({
       title: category.name,
-      content: renderList(category.subjects),
+      content: renderList(category.subjects, onNavigate),
     });
   });
 
   data.unshift({
     title: t('frontpageMenu.allsubjects'),
-    content: renderList(allSubjects),
+    content: renderList(allSubjects, onNavigate),
   });
 
   return (

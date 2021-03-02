@@ -23,34 +23,34 @@
     outline: 0;
     background: transparent;
     // dual coloured icon..
-    #HelpCircleDual-background {
+    .HelpCircleDual-background {
       fill: $brand-color--light;
     }
-    #HelpCircleDual-symbol {
+    .HelpCircleDual-symbol {
       fill: $brand-color--dark;
     }
     &:hover,
     &:focus {
-      #HelpCircleDual-background {
+      .HelpCircleDual-background {
         fill: $brand-color;
       }
-      #HelpCircleDual-symbol {
+      .HelpCircleDual-symbol {
         fill: #fff;
       }
     }
     &--invertedStyle {
-      #HelpCircleDual-background {
+      .HelpCircleDual-background {
         fill: #fff;
       }
-      #HelpCircleDual-symbol {
+      .HelpCircleDual-symbol {
         fill: $brand-color;
       }
       &:hover,
       &:focus {
-        #HelpCircleDual-background {
+        .HelpCircleDual-background {
           fill: #fff;
         }
-        #HelpCircleDual-symbol {
+        .HelpCircleDual-symbol {
           fill: $brand-color;
         }
       }

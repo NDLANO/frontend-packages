@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import FocusTrapReact from 'focus-trap-react';
+import { FocusOn } from 'react-focus-on';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -129,16 +129,13 @@ const buttonOpen = css`
 `;
 
 const FocusWrapper = ({ onToggleOpen, children }) => (
-  <FocusTrapReact
-    focusTrapOptions={{
-      onDeactivate: e => {
-        onToggleOpen(false);
-      },
-      clickOutsideDeactivates: true,
-      escapeDeactivates: true,
-    }}>
+  <FocusOn
+    onDeactivation={() => onToggleOpen(false)}
+    onClickOutside={() => onToggleOpen(false)}
+    onEscapeKey={() => onToggleOpen(false)}
+    scrollLock={false}>
     {children}
-  </FocusTrapReact>
+  </FocusOn>
 );
 
 FocusWrapper.propTypes = {

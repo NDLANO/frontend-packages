@@ -104,7 +104,7 @@ class Input extends React.Component {
 
   componentDidMount() {
     if (this.props.focusOnMount) {
-      this.inputRef.current.focus();
+      setTimeout(() => this.inputRef.current.focus(), 0);
     }
   }
 

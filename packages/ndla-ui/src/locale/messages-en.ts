@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-const { contentTypes } = constants;
+export const { contentTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 

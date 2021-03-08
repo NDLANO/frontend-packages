@@ -8,6 +8,7 @@
 
 import defined from 'defined';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from './licenseRights';
+import { LicenseType, Locale } from './types';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseNN = 'Fri gjenbruk';
@@ -27,7 +28,7 @@ const naNB = 'N/A - ikke relevant';
 const naNN = 'N/A - ikkje relevant';
 const naEN = 'N/A - not applicable';
 
-const byncnd = {
+const byncnd: LicenseType = {
   nn: {
     short: restrictedReuseNN,
     title: 'CC BY-NC-ND 4.0: Namngiving-Ikkjekommersiell-Ingen tilarbeiding',
@@ -60,7 +61,7 @@ const byncnd = {
   abbreviation: `${CC} ${BY}-${NC}-${ND}`.toUpperCase(),
 };
 
-const byncsa = {
+const byncsa: LicenseType = {
   nn: {
     short: restrictedReuseNN,
     title: 'CC BY-NC-SA 4.0: Namngiving-Ikkjekommersiell-Del på same vilkår',
@@ -93,7 +94,7 @@ const byncsa = {
   abbreviation: `${CC} ${BY}-${NC}-${SA}`.toUpperCase(),
 };
 
-const bync = {
+const bync: LicenseType = {
   nn: {
     short: restrictedReuseNN,
     title: 'CC BY-NC 4.0: Namngiving-Ikkjekommersiell',
@@ -126,7 +127,7 @@ const bync = {
   abbreviation: `${CC} ${BY}-${NC}`.toUpperCase(),
 };
 
-const bynd = {
+const bynd: LicenseType = {
   nn: {
     short: restrictedReuseNN,
     title: 'CC BY-ND 4.0: Namngiving-Ingen tilarbeiding',
@@ -159,7 +160,7 @@ const bynd = {
   abbreviation: `${CC} ${BY}-${ND}`.toUpperCase(),
 };
 
-const bysa = {
+const bysa: LicenseType = {
   nn: {
     short: restrictedReuseNN,
     title: 'CC BY-SA 4.0: Namngiving-Del på samme vilkår',
@@ -192,7 +193,7 @@ const bysa = {
   abbreviation: `${CC} ${BY}-${SA}`.toUpperCase(),
 };
 
-const by = {
+const by: LicenseType = {
   nn: {
     short: freeUseNN,
     title: 'CC BY 4.0: Namngiving',
@@ -225,7 +226,7 @@ const by = {
   abbreviation: `${CC} ${BY}`.toUpperCase(),
 };
 
-const pd = {
+const pd: LicenseType = {
   nn: {
     short: freeUseNN,
     title: 'PD Public domain merket: Offentleg eigedom',
@@ -259,7 +260,7 @@ const pd = {
   abbreviation: PD.toUpperCase(),
 };
 
-const cc0 = {
+const cc0: LicenseType = {
   nn: {
     short: freeUseNN,
     title: 'CC0 Public domain dedication: Gitt til fellesskapet',
@@ -292,7 +293,7 @@ const cc0 = {
   abbreviation: CC0.toUpperCase(),
 };
 
-const copy = {
+const copy: LicenseType = {
   nn: {
     short: restrictedUseNN,
     title: 'Opphavsrett',
@@ -325,7 +326,7 @@ const copy = {
   abbreviation: COPYRIGHTED.toUpperCase(),
 };
 
-const na = {
+const na: LicenseType = {
   nn: {
     short: naNN,
     title: 'N/A - ikkje relevant',
@@ -356,7 +357,7 @@ const na = {
   abbreviation: NA.toUpperCase(),
 };
 
-function licenseByLocale(license, locale) {
+function licenseByLocale(license: LicenseType, locale: Locale) {
   const texts = defined(license[locale], license.nb);
   return {
     ...texts,
@@ -365,7 +366,7 @@ function licenseByLocale(license, locale) {
   };
 }
 
-export function getLicenseByAbbreviation(abbreviation, locale) {
+export function getLicenseByAbbreviation(abbreviation: string, locale: Locale) {
   switch (abbreviation) {
     case 'CC-BY-NC-ND-4.0':
       return licenseByLocale(byncnd, locale);
@@ -422,7 +423,7 @@ export function getLicenseByAbbreviation(abbreviation, locale) {
   }
 }
 
-export function getLicenseByNBTitle(title, locale) {
+export function getLicenseByNBTitle(title: string, locale: Locale) {
   switch (title.replace(/\s/g, '').toLowerCase()) {
     case 'navngivelse-ikkekommersiell-ingenbearbeidelser':
       return getLicenseByAbbreviation('by-nc-nd', locale);
@@ -443,5 +444,5 @@ export function getLicenseByNBTitle(title, locale) {
   }
 }
 
-export const isCreativeCommonsLicense = licenseRights =>
+export const isCreativeCommonsLicense = (licenseRights: string[]) =>
   licenseRights.every(r => r !== COPYRIGHTED);

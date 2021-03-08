@@ -6,6 +6,8 @@
  *
  */
 
+export type ResourceTypes = 'video' | 'image' | 'audio' | 'text' | 'h5p';
+
 export const resourceTypes = {
   video: 'video',
   image: 'image',
@@ -14,7 +16,9 @@ export const resourceTypes = {
   h5p: 'h5p',
 };
 
-export const getResourceTypeNamespace = type => {
+export const getResourceTypeNamespace = (
+  type: ResourceTypes | undefined | null,
+) => {
   switch (type) {
     case resourceTypes.video:
       return 'http://purl.org/dc/dcmitype/MovingImage';

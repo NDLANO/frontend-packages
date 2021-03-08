@@ -6,7 +6,7 @@
  *
  */
 
-import defined from 'defined';
+import { isLocale, Locale, RightLocaleInfo, RightType } from './types';
 
 // License rights
 export const BY = 'by'; // Attribution
@@ -19,7 +19,7 @@ export const CC = 'cc'; // Creative Commons
 export const COPYRIGHTED = 'copyrighted'; // Copyrighted
 export const NA = 'n/a'; // Not Applicable
 
-const by = {
+const by: RightType = {
   short: BY,
   nn: {
     title: 'Namngiving',
@@ -38,7 +38,7 @@ const by = {
   },
 };
 
-const sa = {
+const sa: RightType = {
   short: SA,
   nn: {
     title: 'Del på same vilkår',
@@ -53,7 +53,6 @@ const sa = {
       'Du kan bare dele innholdet med samme lisens som det opprinnelige innholdet.',
   },
   en: {
-    short: 'SA',
     title: 'Del likt',
     userFriendlyTitle: 'Share with same license',
     description:
@@ -61,7 +60,7 @@ const sa = {
   },
 };
 
-const nc = {
+const nc: RightType = {
   short: NC,
   nn: {
     title: 'Ikkje-kommersiell',
@@ -80,7 +79,7 @@ const nc = {
   },
 };
 
-const nd = {
+const nd: RightType = {
   short: ND,
   nn: {
     title: 'Ingen tilarbeiding',
@@ -99,7 +98,7 @@ const nd = {
   },
 };
 
-const pd = {
+const pd: RightType = {
   short: PD,
   nn: {
     title: 'Offentleg eigedom',
@@ -118,7 +117,7 @@ const pd = {
   },
 };
 
-const cc0 = {
+const cc0: RightType = {
   short: CC0,
   nn: {
     title: 'Gjeve til fellesskapet',
@@ -138,7 +137,7 @@ const cc0 = {
   },
 };
 
-const copyrighted = {
+const copyrighted: RightType = {
   short: COPYRIGHTED,
   nn: {
     title: 'Opphavsrett',
@@ -160,7 +159,7 @@ const copyrighted = {
   },
 };
 
-const cc = {
+const cc: RightType = {
   short: CC,
   nn: {
     title: 'Creative Commons',
@@ -181,7 +180,7 @@ const cc = {
   },
 };
 
-const na = {
+const na: RightType = {
   short: NA,
   nn: {
     title: 'N/A - ikkje relevant',
@@ -201,8 +200,18 @@ const na = {
   },
 };
 
-function licenseRightByLocale(license, locale) {
-  const texts = defined(license[locale], license.nb);
+function licenseRightByLocale(
+  license: RightType,
+  locale: Locale | string | undefined,
+): RightLocaleInfo & { short: string } {
+  const newLocale = locale || 'nb';
+  let texts: RightLocaleInfo;
+  if (isLocale(newLocale)) {
+    texts = license[newLocale];
+  } else {
+    texts = license['nb'];
+  }
+
   return {
     short: license.short,
     ...texts,
@@ -210,7 +219,11 @@ function licenseRightByLocale(license, locale) {
 }
 
 export const licenseRights = [BY, SA, NC, ND, PD, CC, CC0, COPYRIGHTED, NA];
-export function getLicenseRightByAbbreviation(abbreviation, locale) {
+
+export function getLicenseRightByAbbreviation(
+  abbreviation: string,
+  locale: Locale | string | undefined,
+): RightLocaleInfo & { short: string } {
   // const
   switch (abbreviation) {
     case BY:

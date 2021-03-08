@@ -6,13 +6,20 @@
  *
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-export const StyledList = styled.ul`
+interface Props {
+  highlightCC?: boolean;
+  horizontal?: boolean;
+  color?: string;
+  marginRight?: boolean;
+}
+
+export const StyledList = styled.ul<Props>`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -36,7 +43,7 @@ export const StyledList = styled.ul`
   margin-right: ${p => (p.marginRight ? spacing.small : 0)};
 `;
 
-const StyledLicenseIconList = ({
+const StyledLicenseIconList: FC<Props> = ({
   highlightCC,
   horizontal,
   color,

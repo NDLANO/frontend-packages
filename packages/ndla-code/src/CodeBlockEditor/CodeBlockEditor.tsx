@@ -61,6 +61,8 @@ const CodeBlockEditor: FC<Props & tType> = ({
     format: content ? content.format : defaultLang.format,
   });
 
+  console.log('editorContent', content);
+
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     const selectedLanguage = languageOptions.find(

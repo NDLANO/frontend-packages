@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
@@ -19,19 +19,29 @@ const StyledModelpermission = styled.div`
     height: 24px;
     margin-right: ${spacing.small};
   }
-  margin-top: ${spacing.small / 2};
-  padding-top: ${spacing.small / 1.5};
+  margin-top: ${spacing.xsmall};
+  padding-top: ${spacing.nsmall};
   border-top: 2px solid ${colors.brand.light};
 `;
 
-const LicenseDescription = ({
+interface Props {
+  children?: React.ReactNode;
+  licenseRights: string[];
+  messages?: {
+    modelPremission?: string;
+  };
+  locale?: string;
+  highlightCC?: boolean;
+  color?: string;
+}
+
+const LicenseDescription: FC<Props> = ({
   children,
   licenseRights,
   messages,
   locale,
   highlightCC,
   color,
-  marginRight,
 }) => (
   <StyledLicenseByline>
     <div>
@@ -53,7 +63,7 @@ const LicenseDescription = ({
 
 LicenseDescription.propTypes = {
   children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   messages: PropTypes.shape({
     modelPremission: PropTypes.string,
   }),

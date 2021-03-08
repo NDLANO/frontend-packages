@@ -95,10 +95,14 @@ function createComponent(name, svg) {
   return prettier.format(
     `${copyright}
 ${autoNotice}
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Icon from '../Icon';
 
-const ${name} = props => (
+interface Props {
+  children?: ReactNode;
+}
+
+const ${name} = (props: Props) => (
   <Icon
     title="${name}"
     viewBox="${viewBox}"
@@ -136,12 +140,12 @@ ${exportsString}\n`;
       ...prettierOptions,
       parser: 'babylon',
     });
-    const fileName = path.join(rootDir, 'src', folder, 'index.js');
+    const fileName = path.join(rootDir, 'src', folder, 'index.ts');
     fs.writeFileSync(fileName, formatedIconsModule, 'utf-8');
     console.log(
       `${chalk.green(`CREATED`)} ${chalk.dim(
         path.join(rootDir, 'src'),
-      )}${chalk.bold(`${folder}/index.js`)}`,
+      )}${chalk.bold(`${folder}/index.ts`)}`,
     );
   });
 }
@@ -196,7 +200,7 @@ function createComponents() {
         .replace(path.join(`${rootDir}/`, 'svg'), '')
         .replace(`/${path.basename(iconPath)}`, '');
       const name = capitalize(camelcase(id));
-      const componentPath = path.join(folder, `${name}.js`);
+      const componentPath = path.join(folder, `${name}.tsx`);
 
       if (!types[folder]) {
         types[folder] = [];

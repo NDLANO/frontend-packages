@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactChild, ReactChildren } from 'react';
 import { injectT, tType } from '@ndla/i18n';
 import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
@@ -34,11 +34,14 @@ const buttonToggleCss = css`
 
 type ModalWrapperProps = {
   innerWidth: number;
-  children: JSX.Element;
+  children: (arg: VoidFunction) => ReactChild | ReactChildren | React.ReactNode;
 };
 
-const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps &
-  tType> = ({ innerWidth, children, t }) => {
+const ModalWrapperComponent: React.FC<ModalWrapperProps & tType> = ({
+  innerWidth,
+  children,
+  t,
+}) => {
   if (innerWidth < 601) {
     return (
       <Modal
@@ -52,21 +55,21 @@ const ModalWrapperComponent: React.FunctionComponent<ModalWrapperProps &
             <span>{t('learningPath.openMenuTooltip')}</span>
           </Button>
         }>
-        {(onClose: Function) => (
+        {(closeModal: VoidFunction) => (
           <>
             <ModalHeader>
               <ModalCloseButton
                 title={t('modal.closeModal')}
-                onClick={onClose}
+                onClick={closeModal}
               />
             </ModalHeader>
-            <ModalBody>{children}</ModalBody>
+            <ModalBody>{children(closeModal)}</ModalBody>
           </>
         )}
       </Modal>
     );
   }
-  return children;
+  return <>{children(() => {})}</>;
 };
 
 export default injectT(ModalWrapperComponent);

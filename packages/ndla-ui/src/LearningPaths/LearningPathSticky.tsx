@@ -17,6 +17,7 @@ import SafeLink from '@ndla/safelink';
 
 const FOOTER_HEIGHT = '78px';
 const FOOTER_HEIGHT_MOBILE = spacing.large;
+const SAFELINK_SIZE_MOBILE = spacing.large;
 
 const StyledFooter = styled.nav`
   display: flex;
@@ -60,8 +61,9 @@ const SafeLinkCSS = css`
   color: ${colors.brand.primary};
   height: ${FOOTER_HEIGHT};
   ${mq.range({ until: breakpoints.tablet })} {
-    height: ${FOOTER_HEIGHT_MOBILE};
-    width: ${FOOTER_HEIGHT_MOBILE};
+    height: ${SAFELINK_SIZE_MOBILE};
+    width: ${SAFELINK_SIZE_MOBILE};
+    min-width: ${SAFELINK_SIZE_MOBILE};
   }
   padding: 0 ${spacing.normal} 0 ${spacing.normal};
   ${mq.range({ until: breakpoints.tablet })} {

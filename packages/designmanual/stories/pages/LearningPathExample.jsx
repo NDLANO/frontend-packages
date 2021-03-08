@@ -21,6 +21,7 @@ import {
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
   LearningPathStickyPlaceholder,
+  constants,
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
@@ -54,6 +55,8 @@ const UPDATE_SEQUENCE_NUMBER = 'UPDATE_SEQUENCE_NUMBER';
 const UPDATE_LEARNING_PATH_STEP = 'UPDATE_LEARNING_PATH_STEP';
 const UPDATE_LEARNING_PATH_DATA = 'UPDATE_LEARNING_PATH_DATA';
 const DEMO_LEARNING_PATH_ID = 434;
+
+const { contentTypes } = constants;
 
 const StyledInfoHelper = styled.aside`
   display: block;
@@ -206,7 +209,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
     return null;
   }
 
-  const { duration, lastUpdated, copyright, learningsteps } = learningStepsData;
+  const { lastUpdated, copyright, learningsteps } = learningStepsData;
   const lastUpdatedDate = new Date(lastUpdated);
   const lastUpdatedString = `${lastUpdatedDate.getDate()}.${
     lastUpdatedDate.getMonth() < 10 ? '0' : ''
@@ -222,11 +225,35 @@ const LearningPathExample = ({ invertedStyle, t }) => {
   if (articleId && articleId.indexOf(':') !== -1) {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
   }
-  const mappedLearningsteps = learningsteps.map(step => ({
-    ...step,
-    title: step.title.title,
-    description: step.description ? step.description.description : '',
-  }));
+
+  const mappedLearningsteps = learningsteps.map(step => {
+    // The designmanual fetches from learningpath-api. Must map type to content-type
+    let type = '';
+    switch (step.type) {
+      case 'INTRODUCTION':
+        type = contentTypes.LEARNING_PATH;
+        break;
+      case 'TEXT':
+        type = contentTypes.SUBJECT_MATERIAL;
+        break;
+      case 'TASK':
+      case 'QUIZ':
+        type = contentTypes.TASKS_AND_ACTIVITIES;
+        break;
+      case 'MULTIMEDIA':
+        type = contentTypes.ASSESSMENT_RESOURCES;
+        break;
+      default:
+        type = contentTypes.LEARNING_PATH;
+        break;
+    }
+    return {
+      ...step,
+      type: type,
+      title: step.title.title,
+      description: step.description ? step.description.description : '',
+    };
+  });
   const cookieKey = `${LEARNING_PATHS_COOKIES_KEY}_${DEMO_LEARNING_PATH_ID}`;
   const fetchedCookies = getCookie(cookieKey, document.cookie);
   const useCookies = fetchedCookies ? JSON.parse(fetchedCookies) : {};
@@ -235,7 +262,6 @@ const LearningPathExample = ({ invertedStyle, t }) => {
     <LearningPathMenu
       invertedStyle={invertedStyle}
       learningsteps={mappedLearningsteps}
-      duration={duration}
       lastUpdated={lastUpdatedString}
       copyright={copyright}
       learningPathId={3}

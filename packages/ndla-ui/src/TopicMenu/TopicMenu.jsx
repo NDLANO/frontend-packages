@@ -237,7 +237,10 @@ export const TopicMenu = ({
         </div>
         {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
           <div {...classes('all-subjects')}>
-            <FrontpageAllSubjects categories={subjectCategories} />
+            <FrontpageAllSubjects
+              categories={subjectCategories}
+              onNavigate={closeMenu}
+            />
           </div>
         )}
         {selectedMenu === MENU_CURRENT_PROGRAMME && currentProgramme && (
@@ -249,6 +252,7 @@ export const TopicMenu = ({
                   ? currentProgramme.selectedGradeIndex
                   : 0
               }
+              onNavigate={closeMenu}
             />
           </div>
         )}
@@ -258,6 +262,7 @@ export const TopicMenu = ({
               colorMode="light"
               items={programmes}
               listDirection="vertical"
+              onClick={closeMenu}
             />
           </div>
         )}

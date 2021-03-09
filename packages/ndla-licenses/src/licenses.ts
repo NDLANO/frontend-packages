@@ -8,7 +8,13 @@
 
 import defined from 'defined';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from './licenseRights';
-import {getLocaleOrDefault, isLocale, LicenseLocaleType, LicenseType, Locale} from './types';
+import {
+  getLocaleOrDefault,
+  isLocale,
+  LicenseLocaleType,
+  LicenseType,
+  Locale,
+} from './types';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseNN = 'Fri gjenbruk';
@@ -357,8 +363,11 @@ const na: LicenseType = {
   abbreviation: NA.toUpperCase(),
 };
 
-function licenseByLocale(license: LicenseType, locale: Locale | string | undefined) {
-  const surelyLocale = getLocaleOrDefault(locale, 'nb')
+function licenseByLocale(
+  license: LicenseType,
+  locale: Locale | string | undefined,
+) {
+  const surelyLocale = getLocaleOrDefault(locale, 'nb');
   const texts = license[surelyLocale];
 
   return {
@@ -368,7 +377,10 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   };
 }
 
-export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined) {
+export function getLicenseByAbbreviation(
+  abbreviation: string,
+  locale: Locale | string | undefined,
+) {
   switch (abbreviation) {
     case 'CC-BY-NC-ND-4.0':
       return licenseByLocale(byncnd, locale);

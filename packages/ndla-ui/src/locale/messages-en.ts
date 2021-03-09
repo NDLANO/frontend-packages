@@ -587,8 +587,9 @@ const messages = {
   },
   codeEditor: {
     title: 'ADD',
+    titleLabel: 'Title:',
     subtitle: 'code example',
-    languageSelect: 'Select language',
+    languageSelect: 'Select language:',
     save: 'Save',
     abort: 'Abort',
   },

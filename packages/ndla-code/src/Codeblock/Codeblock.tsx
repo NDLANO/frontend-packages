@@ -15,9 +15,7 @@ import { copyTextToClipboard } from '@ndla/util';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { Copy } from '@ndla/icons/action';
-// @ts-ignore
 import { Done } from '@ndla/icons/editor';
 import { getTitleFromFormat } from '../CodeBlockEditor';
 

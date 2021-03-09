@@ -590,8 +590,9 @@ const messages = {
   },
   codeEditor: {
     title: 'LEGG TIL',
+    titleLabel: 'Tittel:',
     subtitle: 'kodeeksempel',
-    languageSelect: 'Velg kodespråk',
+    languageSelect: 'Velg kodespråk:',
     save: 'Lagre',
     abort: 'Avbryt',
   },

@@ -94,9 +94,9 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Header = styled.div`
+export const FlexContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
   font-family: Source Sans Pro;
   font-style: normal;
   font-size: 18px;
@@ -106,10 +106,9 @@ export const Header = styled.div`
     color: #444444;
   }
   > div {
-    padding: 15px 20px;
+    padding: 15px 10px;
   }
   > div:last-of-type {
-    justify-content: flex-end;
     padding-right: 30px;
   }
   > div:first-of-type {
@@ -117,22 +116,10 @@ export const Header = styled.div`
   }
 `;
 
-export const HeaderColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-`;
-
-export const HeaderRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  flex: 1;
-  span.label {
-    max-width: 250px;
-    padding-right: 10px;
-  }
-  select {
-    min-width: 150px;
+export const FlexElement = styled.div<{ widthPercentage?: number }>`
+  width: ${p => p.widthPercentage || 25}%;
+  select,
+  input {
+    width: 100%;
   }
 `;

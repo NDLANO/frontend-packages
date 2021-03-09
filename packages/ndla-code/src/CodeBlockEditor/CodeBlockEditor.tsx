@@ -6,17 +6,17 @@
  *
  */
 
-import React, { FC, useState } from 'react';
+import React, { createRef, FC, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { injectT, tType } from '@ndla/i18n';
-// @ts-ignore
 import { Code } from '@ndla/icons/editor';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { highlight, languages } from 'prismjs/components/prism-core';
-// @ts-ignore
-import { Wrapper, Header, HeaderColumn, HeaderRow } from './style';
+import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
+import { Wrapper, FlexContainer, FlexElement } from './style';
 import { ICodeLangugeOption, languageOptions } from '../languages';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
@@ -48,6 +48,21 @@ export const getTitleFromFormat = (format: string) => {
   return;
 };
 
+const StyledInput = styled.input`
+  ${fonts.sizes(18, 1.1)};
+  font-weight: ${fonts.weight.normal};
+  font-family: ${fonts.sans};
+  padding: 0.4em 1.4em 0.4em 1em;
+  min-height: 1.5em;
+  border: 1px solid ${colors.brand.greyDark};
+`;
+
+interface CodeContentState {
+  code: string;
+  title: string;
+  format: string;
+}
+
 const CodeBlockEditor: FC<Props & tType> = ({
   onSave,
   onAbort,
@@ -55,22 +70,26 @@ const CodeBlockEditor: FC<Props & tType> = ({
   content = null,
 }) => {
   const [defaultLang] = languageOptions;
-  const [codeContent, setCodeContent] = useState({
+  const [codeContent, setCodeContent] = useState<CodeContentState>({
     code: content ? content.code : '',
     title: content ? content.title : defaultLang.title,
     format: content ? content.format : defaultLang.format,
   });
 
-  console.log('editorContent', content);
+  const titleRef = createRef<HTMLInputElement>();
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeLanguage = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     const { value } = event.target;
     const selectedLanguage = languageOptions.find(
-      (item: ICodeLangugeOption) => item.title === value,
+      (item: ICodeLangugeOption) => item.format === value,
     );
     if (selectedLanguage) {
       const { format } = selectedLanguage;
-      setCodeContent({ ...codeContent, title: value, format });
+      setCodeContent((prev: CodeContentState) => {
+        return { ...prev, title: value, format };
+      });
     }
   };
 
@@ -80,44 +99,59 @@ const CodeBlockEditor: FC<Props & tType> = ({
 
   const save = () => {
     const selectedLanguage = languageOptions.find(
-      (item: ICodeLangugeOption) => item.title === codeContent.title,
+      (item: ICodeLangugeOption) => item.format === codeContent.format,
     );
     if (selectedLanguage) {
+      const titleValue = titleRef.current && titleRef.current.value;
       const { title, format } = selectedLanguage;
-      onSave({ ...codeContent, title, format });
+      onSave({ ...codeContent, title: titleValue || title, format });
     }
   };
   return (
     <Wrapper>
-      <Header>
-        <HeaderColumn>
+      <FlexContainer>
+        <FlexElement>
           {t('codeEditor.title')}
           <br />
           <b>
             <Code />
             &nbsp;{t('codeEditor.subtitle')}
           </b>
-        </HeaderColumn>
-        <HeaderRow>
-          <span className="label">{t('codeEditor.languageSelect')}:&nbsp;</span>
-          <select onChange={handleChange} value={codeContent.title}>
+        </FlexElement>
+        <FlexElement>
+          <span className="label">{t('codeEditor.languageSelect')}</span>
+          <select onChange={handleChangeLanguage} value={codeContent.format}>
             {languageOptions.map((item: ICodeLangugeOption) => (
-              <option key={`${item.title}`} value={item.title}>
+              <option key={`${item.title}`} value={item.format}>
                 {item.title}
               </option>
             ))}
           </select>
-        </HeaderRow>
-        <HeaderRow>
+        </FlexElement>
+        <FlexElement>
+          <span className="label">{t('codeEditor.titleLabel')}</span>
+          <StyledInput
+            ref={titleRef}
+            type="text"
+            defaultValue={codeContent.title}
+          />
+        </FlexElement>
+        <FlexElement
+          css={{
+            display: 'flex',
+            gap: '5px',
+            'align-items': 'flex-end',
+            'justify-content': 'flex-end',
+            'margin-bottom': '1px',
+          }}>
           <Button onClick={save}>
             <span>{t('codeEditor.save')}</span>
           </Button>
-          &nbsp;
           <Button outline onClick={abort}>
             <span>{t('codeEditor.abort')}</span>
           </Button>
-        </HeaderRow>
-      </Header>
+        </FlexElement>
+      </FlexContainer>
       <Editor
         className="editor"
         value={codeContent.code}

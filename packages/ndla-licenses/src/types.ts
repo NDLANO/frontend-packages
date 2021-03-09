@@ -35,8 +35,11 @@ export function isLocale(l: string): l is Locale {
   return (locales as readonly string[]).includes(l);
 }
 
-export function getLocaleOrDefault(maybeLocale: string | undefined, def: Locale): Locale {
-  if(maybeLocale === undefined || !isLocale(maybeLocale)) {
+export function getLocaleOrDefault(
+  maybeLocale: string | undefined,
+  def: Locale,
+): Locale {
+  if (maybeLocale === undefined || !isLocale(maybeLocale)) {
     return def;
   }
   return maybeLocale;

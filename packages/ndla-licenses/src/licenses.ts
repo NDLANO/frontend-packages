@@ -6,15 +6,8 @@
  *
  */
 
-import defined from 'defined';
 import { BY, SA, NC, ND, PD, CC0, COPYRIGHTED, CC, NA } from './licenseRights';
-import {
-  getLocaleOrDefault,
-  isLocale,
-  LicenseLocaleType,
-  LicenseType,
-  Locale,
-} from './types';
+import { getLocaleOrDefault, LicenseType, Locale } from './types';
 
 const freeUseNB = 'Fri gjenbruk';
 const freeUseNN = 'Fri gjenbruk';
@@ -437,7 +430,10 @@ export function getLicenseByAbbreviation(
   }
 }
 
-export function getLicenseByNBTitle(title: string, locale: Locale) {
+export function getLicenseByNBTitle(
+  title: string,
+  locale: Locale | string | undefined,
+) {
   switch (title.replace(/\s/g, '').toLowerCase()) {
     case 'navngivelse-ikkekommersiell-ingenbearbeidelser':
       return getLicenseByAbbreviation('by-nc-nd', locale);

@@ -139,7 +139,7 @@ const CodeBlockEditor: FC<Props & tType> = ({
         <FlexElement
           css={{
             display: 'flex',
-            gap: '5px',
+            gap: spacing.xxsmall,
             'align-items': 'flex-end',
             'justify-content': 'flex-end',
             'margin-bottom': '1px',

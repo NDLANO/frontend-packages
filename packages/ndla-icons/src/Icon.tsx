@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface Props {
+export interface Props {
   color?: string;
   title?: string;
   description?: string;

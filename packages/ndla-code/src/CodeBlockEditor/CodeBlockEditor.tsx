@@ -132,6 +132,14 @@ const CodeBlockEditor: FC<Props & tType> = ({
           </b>
         </FlexElement>
         <FlexElement>
+          <span className="label">{t('codeEditor.titleLabel')}</span>
+          <StyledInput
+            ref={titleRef}
+            type="text"
+            defaultValue={codeContent.title}
+          />
+        </FlexElement>
+        <FlexElement>
           <span className="label">{t('codeEditor.languageSelect')}</span>
           <StyledSelect
             onChange={handleChangeLanguage}
@@ -142,14 +150,6 @@ const CodeBlockEditor: FC<Props & tType> = ({
               </option>
             ))}
           </StyledSelect>
-        </FlexElement>
-        <FlexElement>
-          <span className="label">{t('codeEditor.titleLabel')}</span>
-          <StyledInput
-            ref={titleRef}
-            type="text"
-            defaultValue={codeContent.title}
-          />
         </FlexElement>
         <FlexElement
           css={{

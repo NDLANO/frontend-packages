@@ -385,11 +385,10 @@ const SearchPageDemo = ({ t }) => {
     }
   });
 
-  const filterProps = {
+  const subjectFilterProps = {
     messages: {
       filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
       closeButton: t('searchPage.close'),
-      confirmButton: t('searchPage.searchFilterMessages.confirmButton'),
       buttonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
     },
     programmes: {
@@ -427,7 +426,7 @@ const SearchPageDemo = ({ t }) => {
           filters: activeSubjectFilters,
           onFilterRemove: handleFilterRemove,
         }}
-        filters={filterProps}
+        filters={subjectFilterProps}
       />
       {!hideNotionsResult && (
         <SearchNotionsResult
@@ -440,11 +439,17 @@ const SearchPageDemo = ({ t }) => {
       )}
       <SearchSubjectResult id="search-result-content" items={subjectItems} />
       <FilterButtons
-        heading="Filtrer på innholdstype"
+        heading={t(
+          'searchPage.searchFilterMessages.resourceTypeFilter.heading',
+        )}
         items={contentTypeFilters}
         onFilterToggle={handleContentTypeFilterToggle}
         onRemoveAllFilters={() => setSelectedResourceTypes([])}
-        labels={{ openFilter: 'Legg til filter' }}
+        labels={{
+          openFilter: t(
+            'searchPage.searchFilterMessages.resourceTypeFilter.button',
+          ),
+        }}
       />
       {visibleResourceTypes.map(item => (
         <SearchTypeResult

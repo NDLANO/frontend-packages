@@ -18,7 +18,7 @@ const Container = styled.div<ContainerProps>`
   display: grid;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
-  margin: ${spacing.normal} 0;
+  margin: ${spacing.medium} 0;
   ${mq.range({ from: breakpoints.tablet })} {
     column-gap: ${spacing.normal};
     margin: ${spacing.large} 0;

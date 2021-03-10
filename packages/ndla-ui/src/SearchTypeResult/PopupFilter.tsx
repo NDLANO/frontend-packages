@@ -73,7 +73,6 @@ const MENU_ALL_SUBJECTS = 'allSubjects';
 type messagesProps = {
   buttonText: string;
   closeButton: string;
-  confirmButton: string;
   filterLabel: string;
 };
 

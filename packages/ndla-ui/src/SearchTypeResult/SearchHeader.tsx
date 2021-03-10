@@ -23,7 +23,6 @@ const Wrapper = styled.div`
   margin-bottom: ${spacing.normal};
   ${mq.range({ from: breakpoints.tablet })} {
     margin-top: ${spacing.large};
-    margin-bottom: ${spacing.large};
   }
 `;
 
@@ -48,10 +47,6 @@ const HideOnDesktopWrapper = styled.div`
   ${mq.range({ until: breakpoints.desktop })} {
     display: block;
   }
-`;
-
-const SearchFilterWrapper = styled.div`
-  margin: ${spacing.normal} 0 ${spacing.medium};
 `;
 
 type Props = {
@@ -106,16 +101,13 @@ const SearchHeader = ({
     </PhraseWrapper>
     {activeFilters && (
       <HideOnDesktopWrapper>
-        <ActiveFilters {...activeFilters} showOnSmallScreen />
+        <ActiveFilters
+          {...activeFilters}
+          showOnSmallScreen
+          customElements={filters ? [<PopupFilter {...filters} />] : []}
+        />
       </HideOnDesktopWrapper>
     )}
-    <SearchFilterWrapper>
-      {filters && (
-        <HideOnDesktopWrapper>
-          <PopupFilter {...filters} />
-        </HideOnDesktopWrapper>
-      )}
-    </SearchFilterWrapper>
   </Wrapper>
 );
 

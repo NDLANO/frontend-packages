@@ -10,12 +10,15 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
-import { colors, fonts, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+
+// @ts-ignore
+import ToggleItem from './ToggleItem';
 
 const StyledHeading = styled.h3`
   ${fonts.sizes('16px', '32px')};
@@ -29,11 +32,26 @@ const StyledButtonsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const StyledModalButtonWrapper = styled.div`
-  margin-bottom: ${spacing.xsmall};
-`;
 const StyledButtonElementWrapper = styled.div`
   margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
+  break-inside: avoid;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    column-count: 3;
+    column-gap: 20px;
+  }
+`;
+const StyledListItem = styled.li`
+  margin-bottom: 0;
   break-inside: avoid;
 `;
 
@@ -100,46 +118,40 @@ export const FilterButtons = ({
   return (
     <>
       {isNarrowScreen && (
-        <>
-          {activeItems.length > 0 && (
-            <StyledButtonsWrapper>
-              {activeItems.map((item: ItemProps) => (
-                <StyledButtonElementWrapper key={item.value}>
-                  <Button
-                    type="button"
-                    size="normal"
-                    borderShape="rounded"
-                    onClick={() => {
-                      onFilterToggle(item.value);
-                    }}>
-                    <StyledButtonContent>{item.label}</StyledButtonContent>
-                    <StyledButtonContentSelected>
-                      <CrossIcon />
-                    </StyledButtonContentSelected>
-                  </Button>
-                </StyledButtonElementWrapper>
-              ))}
-            </StyledButtonsWrapper>
-          )}
+        <StyledButtonsWrapper>
+          {activeItems.map((item: ItemProps) => (
+            <StyledButtonElementWrapper key={item.value}>
+              <Button
+                type="button"
+                size="normal"
+                borderShape="rounded"
+                onClick={() => {
+                  onFilterToggle(item.value);
+                }}>
+                <StyledButtonContent>{item.label}</StyledButtonContent>
+                <StyledButtonContentSelected>
+                  <CrossIcon />
+                </StyledButtonContentSelected>
+              </Button>
+            </StyledButtonElementWrapper>
+          ))}
           <Modal
             size="fullscreen"
             animation="slide-up"
             backgroundColor="white"
             activateButton={
-              <Button
-                type="button"
-                size="normal"
-                lighterGrey
-                borderShape="rounded">
-                <StyledButtonContent>{labels.openFilter}</StyledButtonContent>
-                <StyledButtonContentSelected>
-                  <PlusIcon />
-                </StyledButtonContentSelected>
-              </Button>
+              <StyledButtonElementWrapper>
+                <Button type="button" size="normal" light borderShape="rounded">
+                  <StyledButtonContent>{labels.openFilter}</StyledButtonContent>
+                  <StyledButtonContentSelected>
+                    <PlusIcon />
+                  </StyledButtonContentSelected>
+                </Button>
+              </StyledButtonElementWrapper>
             }>
             {(onClose: void) => (
               <>
-                <ModalHeader modifier={['left-align']}>
+                <ModalHeader modifier={['left-align', 'grey']}>
                   <h1>{heading}</h1>
                   <ModalCloseButton
                     title={t('modal.closeModal')}
@@ -147,31 +159,27 @@ export const FilterButtons = ({
                   />
                 </ModalHeader>
                 <ModalBody>
-                  {items.map((item: ItemProps) => (
-                    <StyledModalButtonWrapper key={item.value}>
-                      <Button
-                        type="button"
-                        size="normal"
-                        lighterGrey={!item.selected}
-                        borderShape="rounded"
-                        width="full"
-                        onClick={() => {
-                          onFilterToggle(item.value);
-                        }}>
-                        <StyledButtonContent>{item.label}</StyledButtonContent>
-                        {item.selected && (
-                          <StyledButtonContentSelected>
-                            <CrossIcon />
-                          </StyledButtonContentSelected>
-                        )}
-                      </Button>
-                    </StyledModalButtonWrapper>
-                  ))}
+                  <StyledList>
+                    {items.map((item: ItemProps) => (
+                      <StyledListItem key={item.value}>
+                        <ToggleItem
+                          id={item.value}
+                          value={item.value}
+                          checked={item.selected}
+                          label={item.label}
+                          component="div"
+                          onChange={() => {
+                            onFilterToggle(item.value);
+                          }}
+                        />
+                      </StyledListItem>
+                    ))}
+                  </StyledList>
                 </ModalBody>
               </>
             )}
           </Modal>
-        </>
+        </StyledButtonsWrapper>
       )}
       {!isNarrowScreen && (
         <>

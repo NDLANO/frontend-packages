@@ -109,6 +109,10 @@ const messages = {
       closeFilter: 'Lukk filter',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
+      resourceTypeFilter: {
+        heading: 'Filtrer på innhaldstype',
+        button: 'Filtrer på innhaldstype',
+      },
     },
     resultType: {
       showing: 'Viser {fromCount} til {toCount} av {totalCount}',

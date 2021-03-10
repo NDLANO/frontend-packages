@@ -82,7 +82,7 @@ const StyledActiveFilterWrapper = styled.li`
   display: flex;
   margin: 0;
   margin-right: ${spacing.xsmall};
-  ${mq.range({ until: breakpoints.tablet })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     margin-bottom: ${spacing.xsmall};
   }
 `;
@@ -91,12 +91,14 @@ type Props = {
   filters: FilterProps[];
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
+  customElements?: React.ReactElement[];
 };
 
 const ActiveFilters = ({
   filters,
   onFilterRemove,
   showOnSmallScreen,
+  customElements,
   t,
 }: Props & tType) => {
   if (filters && filters.length > 0) {
@@ -135,6 +137,10 @@ const ActiveFilters = ({
         showOnSmallScreen={showOnSmallScreen}
         filterLength={filterLength}>
         {filterItems}
+        {customElements &&
+          customElements.map(item => (
+            <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>
+          ))}
       </StyledActiveFilters>
     );
   }

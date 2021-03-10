@@ -109,6 +109,10 @@ const messages = {
       removeFilter: 'Remove filter {filterName}',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
+      resourceTypeFilter: {
+        heading: 'Content type filter',
+        button: 'Content type filter',
+      },
     },
     resultType: {
       showing: 'Showing {fromCount} to {toCount} of {totalCount}',

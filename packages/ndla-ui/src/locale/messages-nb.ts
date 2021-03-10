@@ -108,6 +108,10 @@ const messages = {
       removeFilter: 'Fjern filter {filterName}',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
+      resourceTypeFilter: {
+        heading: 'Filtrer på innholdstype',
+        button: 'Filtrer på innholdstype',
+      },
     },
     resultType: {
       showing: 'Viser {fromCount} til {toCount} av {totalCount}',

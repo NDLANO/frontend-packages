@@ -100,10 +100,12 @@ export const Codeblock: FC<Props & tType> = ({
     }
   }, [isCopied]);
 
+  const formatTitle = getTitleFromFormat(format);
+
   return (
     <Wrapper>
       <TitleBar>
-        <Title>{title ? title : getTitleFromFormat(format)}</Title>
+        <Title>{title ? `${title} - ${formatTitle}` : formatTitle}</Title>
         {actionButton}
       </TitleBar>
       <SyntaxHighlighter

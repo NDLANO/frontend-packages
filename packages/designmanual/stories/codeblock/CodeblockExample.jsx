@@ -89,7 +89,6 @@ const CodeExample = () => (
     <Codeblock
       code="Pure text without highlighting and no title"
       format="text"
-      title=" "
     />
   </ComponentInfo>
 );

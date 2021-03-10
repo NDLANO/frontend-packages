@@ -1,13 +1,19 @@
 {
   "name": "@ndla/licenses",
-  "version": "0.6.40",
+  "version": "0.6.41",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    "url": "https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-licenses"
   },
   "keywords": [
     "ndla"
@@ -22,8 +28,11 @@
     "@emotion/styled": "^10.0.9",
     "react": "^15.6.0 || ^16.0.0"
   },
+  "devDependencies": {
+    "@types/defined": "1.0.0"
+  },
   "dependencies": {
-    "@ndla/core": "^0.6.33",
+    "@ndla/core": "^0.6.34",
     "defined": "1.0.0",
     "react-bem-helper": "1.4.1"
   },

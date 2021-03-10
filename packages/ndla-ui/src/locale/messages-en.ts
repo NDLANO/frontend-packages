@@ -6,11 +6,10 @@
  *
  */
 
-// @ts-ignore
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-const { contentTypes } = constants;
+export const { contentTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -588,8 +587,9 @@ const messages = {
   },
   codeEditor: {
     title: 'ADD',
+    titleLabel: 'Title:',
     subtitle: 'code example',
-    languageSelect: 'Select language',
+    languageSelect: 'Select language:',
     save: 'Save',
     abort: 'Abort',
   },

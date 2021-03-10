@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-const { contentTypes } = constants;
+export const { contentTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -590,8 +590,9 @@ const messages = {
   },
   codeEditor: {
     title: 'LEGG TIL',
+    titleLabel: 'Tittel:',
     subtitle: 'kodeeksempel',
-    languageSelect: 'Velg kodespråk',
+    languageSelect: 'Velg kodespråk:',
     save: 'Lagre',
     abort: 'Avbryt',
   },

@@ -15,9 +15,7 @@ import { copyTextToClipboard } from '@ndla/util';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { Copy } from '@ndla/icons/action';
-// @ts-ignore
 import { Done } from '@ndla/icons/editor';
 import { getTitleFromFormat } from '../CodeBlockEditor';
 
@@ -102,10 +100,12 @@ export const Codeblock: FC<Props & tType> = ({
     }
   }, [isCopied]);
 
+  const formatTitle = getTitleFromFormat(format);
+
   return (
     <Wrapper>
       <TitleBar>
-        <Title>{title ? title : getTitleFromFormat(format)}</Title>
+        <Title>{title ? `${title} - ${formatTitle}` : formatTitle}</Title>
         {actionButton}
       </TitleBar>
       <SyntaxHighlighter

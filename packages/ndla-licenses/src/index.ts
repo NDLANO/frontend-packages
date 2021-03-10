@@ -7,10 +7,13 @@
  */
 
 export {
-  getLicenseByAbbreviation,
-  getLicenseByNBTitle,
-  isCreativeCommonsLicense,
-} from './licenses';
+  contributorTypes,
+  contributorGroups,
+  mkContributorString,
+  getGroupedContributorDescriptionList,
+} from './contributorTypes';
+
+export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
 
 export {
   BY,
@@ -24,13 +27,10 @@ export {
   getLicenseRightByAbbreviation,
 } from './licenseRights';
 
-export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
+export {
+  getLicenseByAbbreviation,
+  getLicenseByNBTitle,
+  isCreativeCommonsLicense,
+} from './licenses';
 
 export { LicenseByline, LicenseDescription } from './LicenseByline';
-
-export {
-  contributorTypes,
-  contributorGroups,
-  mkContributorString,
-  getGroupedContributorDescriptionList,
-} from './contributorTypes';

@@ -6,12 +6,20 @@
  * FRI OG BEGRENSET
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
 import StyledLicenseByline from './StyledLicenseByline';
 
-const LicenseByline = ({
+interface Props {
+  children?: React.ReactNode;
+  licenseRights: string[];
+  locale?: string;
+  color?: string;
+  marginRight?: boolean;
+}
+
+const LicenseByline: FC<Props> = ({
   children,
   licenseRights,
   locale,
@@ -34,7 +42,7 @@ const LicenseByline = ({
 
 LicenseByline.propTypes = {
   children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   locale: PropTypes.string,
   color: PropTypes.string,
   marginRight: PropTypes.bool,

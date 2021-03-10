@@ -6,17 +6,17 @@
  *
  */
 
-import React, { FC, useState } from 'react';
+import React, { createRef, FC, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { injectT, tType } from '@ndla/i18n';
-// @ts-ignore
 import { Code } from '@ndla/icons/editor';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { highlight, languages } from 'prismjs/components/prism-core';
-// @ts-ignore
-import { Wrapper, Header, HeaderColumn, HeaderRow } from './style';
+import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
+import { Wrapper, FlexContainer, FlexElement } from './style';
 import { ICodeLangugeOption, languageOptions } from '../languages';
 
 const hightlightWithLineNumbers = (input: string, language: string) =>
@@ -48,6 +48,34 @@ export const getTitleFromFormat = (format: string) => {
   return;
 };
 
+const StyledInput = styled.input`
+  ${fonts.sizes(18, 1.15)};
+  border: 1px solid ${colors.brand.greyDark};
+  font-family: ${fonts.sans};
+  font-weight: ${fonts.weight.normal};
+  min-height: 1.5em;
+  padding: 0.4em 1.4em 0.4em 1em;
+`;
+
+const StyledSelect = styled.select`
+  appearance: none;
+  background: ${colors.white};
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: 100%;
+  border: 1px solid ${colors.brand.greyDark};
+  color: ${colors.brand.greyDark};
+  line-height: 1.15;
+  min-height: 1.5em;
+  padding: 0.4em 1.4em 0.4em 1em;
+`;
+
+interface CodeContentState {
+  code: string;
+  title: string;
+  format: string;
+}
+
 const CodeBlockEditor: FC<Props & tType> = ({
   onSave,
   onAbort,
@@ -55,20 +83,26 @@ const CodeBlockEditor: FC<Props & tType> = ({
   content = null,
 }) => {
   const [defaultLang] = languageOptions;
-  const [codeContent, setCodeContent] = useState({
+  const [codeContent, setCodeContent] = useState<CodeContentState>({
     code: content ? content.code : '',
     title: content ? content.title : defaultLang.title,
     format: content ? content.format : defaultLang.format,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const titleRef = createRef<HTMLInputElement>();
+
+  const handleChangeLanguage = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     const { value } = event.target;
     const selectedLanguage = languageOptions.find(
-      (item: ICodeLangugeOption) => item.title === value,
+      (item: ICodeLangugeOption) => item.format === value,
     );
     if (selectedLanguage) {
       const { format } = selectedLanguage;
-      setCodeContent({ ...codeContent, title: value, format });
+      setCodeContent((prev: CodeContentState) => {
+        return { ...prev, title: value, format };
+      });
     }
   };
 
@@ -78,44 +112,61 @@ const CodeBlockEditor: FC<Props & tType> = ({
 
   const save = () => {
     const selectedLanguage = languageOptions.find(
-      (item: ICodeLangugeOption) => item.title === codeContent.title,
+      (item: ICodeLangugeOption) => item.format === codeContent.format,
     );
     if (selectedLanguage) {
+      const titleValue = titleRef.current && titleRef.current.value;
       const { title, format } = selectedLanguage;
-      onSave({ ...codeContent, title, format });
+      onSave({ ...codeContent, title: titleValue || title, format });
     }
   };
   return (
     <Wrapper>
-      <Header>
-        <HeaderColumn>
+      <FlexContainer>
+        <FlexElement>
           {t('codeEditor.title')}
           <br />
           <b>
             <Code />
             &nbsp;{t('codeEditor.subtitle')}
           </b>
-        </HeaderColumn>
-        <HeaderRow>
-          <span className="label">{t('codeEditor.languageSelect')}:&nbsp;</span>
-          <select onChange={handleChange} value={codeContent.title}>
+        </FlexElement>
+        <FlexElement>
+          <span className="label">{t('codeEditor.titleLabel')}</span>
+          <StyledInput
+            ref={titleRef}
+            type="text"
+            defaultValue={codeContent.title}
+          />
+        </FlexElement>
+        <FlexElement>
+          <span className="label">{t('codeEditor.languageSelect')}</span>
+          <StyledSelect
+            onChange={handleChangeLanguage}
+            value={codeContent.format}>
             {languageOptions.map((item: ICodeLangugeOption) => (
-              <option key={`${item.title}`} value={item.title}>
+              <option key={`${item.title}`} value={item.format}>
                 {item.title}
               </option>
             ))}
-          </select>
-        </HeaderRow>
-        <HeaderRow>
+          </StyledSelect>
+        </FlexElement>
+        <FlexElement
+          css={{
+            display: 'flex',
+            gap: spacing.xxsmall,
+            'align-items': 'flex-end',
+            'justify-content': 'flex-end',
+            'margin-bottom': '1px',
+          }}>
           <Button onClick={save}>
             <span>{t('codeEditor.save')}</span>
           </Button>
-          &nbsp;
           <Button outline onClick={abort}>
             <span>{t('codeEditor.abort')}</span>
           </Button>
-        </HeaderRow>
-      </Header>
+        </FlexElement>
+      </FlexContainer>
       <Editor
         className="editor"
         value={codeContent.code}

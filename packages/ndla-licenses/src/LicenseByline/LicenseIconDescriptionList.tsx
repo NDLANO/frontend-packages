@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
@@ -22,7 +22,15 @@ const StyledLicenseLabel = styled.div`
   margin-left: ${spacing.small};
 `;
 
-const LicenseIconItem = ({ licenseRight, locale }) => {
+interface LicenseIconItemProps {
+  licenseRight: string;
+  locale?: string;
+}
+
+const LicenseIconItem: FC<LicenseIconItemProps> = ({
+  licenseRight,
+  locale,
+}) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
@@ -41,7 +49,14 @@ LicenseIconItem.propTypes = {
   locale: PropTypes.string,
 };
 
-const LicenseIconDescriptionList = ({
+interface LicenseIconDescriptionListProps {
+  licenseRights: string[];
+  highlightCC?: boolean;
+  color?: string;
+  locale?: string;
+}
+
+const LicenseIconDescriptionList: FC<LicenseIconDescriptionListProps> = ({
   licenseRights,
   locale,
   color,
@@ -59,7 +74,7 @@ const LicenseIconDescriptionList = ({
 );
 
 LicenseIconDescriptionList.propTypes = {
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   highlightCC: PropTypes.bool,
   color: PropTypes.string,
   locale: PropTypes.string,

@@ -170,7 +170,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   locale,
   oneColumn,
 }) => {
-  const { rights } = getLicenseByAbbreviation(license, 'nb');
+  const { rights } = getLicenseByAbbreviation(license || '', 'nb');
   return (
     <>
       <div>

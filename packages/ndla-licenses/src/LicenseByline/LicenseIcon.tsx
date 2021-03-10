@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import {
   By,
@@ -20,7 +20,12 @@ import {
 } from '@ndla/icons/licenses';
 import { COPYRIGHTED, BY, SA, NA, NC, ND, PD, CC0, CC } from '../licenseRights';
 
-const LicenseIcon = ({ licenseRight, description }) => {
+interface Props {
+  licenseRight: string;
+  description: string;
+}
+
+const LicenseIcon: FC<Props> = ({ licenseRight, description }) => {
   switch (licenseRight) {
     case CC:
       return <Cc aria-label={description} />;
@@ -41,7 +46,7 @@ const LicenseIcon = ({ licenseRight, description }) => {
     case NA:
       return <Zero aria-label={description} />;
     default:
-      return undefined;
+      return null;
   }
 };
 

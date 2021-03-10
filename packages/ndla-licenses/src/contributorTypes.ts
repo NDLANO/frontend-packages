@@ -34,7 +34,13 @@ export const contributorGroups = {
   rightsholders: ['rightsholder', 'publisher', 'distributor', 'supplier'],
 };
 
-export const contributorTypes = {
+export interface ContributorTypes {
+  [lang: string]: {
+    [key: string]: string;
+  };
+}
+
+export const contributorTypes: ContributorTypes = {
   en: {
     originator: 'Originator',
     photographer: 'Photographer',
@@ -109,7 +115,22 @@ export const contributorTypes = {
   },
 };
 
-export function mkContributorString(contributors, lang, ignoreType) {
+export interface Contributor {
+  type: string;
+  name: string;
+}
+
+export interface CopyrightType {
+  creators: Contributor[];
+  processors: Contributor[];
+  rightsholders: Contributor[];
+}
+
+export function mkContributorString(
+  contributors: Contributor[],
+  lang: string,
+  ignoreType: string,
+) {
   return contributors
     .map(contributor => {
       const type = contributor.type.toLowerCase();
@@ -122,7 +143,10 @@ export function mkContributorString(contributors, lang, ignoreType) {
     .join(', ');
 }
 
-export function getGroupedContributorDescriptionList(copyright, lang) {
+export function getGroupedContributorDescriptionList(
+  copyright: CopyrightType,
+  lang: string,
+) {
   const { creators, rightsholders, processors } = copyright;
   return [
     {

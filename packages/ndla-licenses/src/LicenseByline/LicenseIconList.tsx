@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { colors, fonts, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
@@ -65,8 +65,16 @@ export const StyledLicenseIconButton = styled.button`
   }
 `;
 
-const LicenseIconItem = ({ licenseRight, locale }) => {
-  const { description } = getLicenseRightByAbbreviation(licenseRight);
+interface LicenseIconItemProps {
+  licenseRight: string;
+  locale?: string;
+}
+
+const LicenseIconItem: FC<LicenseIconItemProps> = ({
+  licenseRight,
+  locale,
+}) => {
+  const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
     <StyledLicenseIconItem>
@@ -82,9 +90,18 @@ const LicenseIconItem = ({ licenseRight, locale }) => {
 
 LicenseIconItem.propTypes = {
   licenseRight: PropTypes.string.isRequired,
+  locale: PropTypes.string,
 };
 
-const LicenseIconList = ({
+interface LicenseIconListProps {
+  licenseRights: string[];
+  locale?: string;
+  color?: string;
+  marginRight?: boolean;
+  horizontal?: boolean;
+}
+
+const LicenseIconList: FC<LicenseIconListProps> = ({
   licenseRights,
   locale,
   color,
@@ -106,7 +123,7 @@ const LicenseIconList = ({
 );
 
 LicenseIconList.propTypes = {
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   locale: PropTypes.string,
   color: PropTypes.string,
   marginRight: PropTypes.bool,

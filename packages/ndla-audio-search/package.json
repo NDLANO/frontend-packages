@@ -1,6 +1,6 @@
 {
   "name": "@ndla/audio-search",
-  "version": "0.6.59",
+  "version": "0.6.60",
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -19,9 +19,9 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^0.3.48",
-    "@ndla/core": "^0.6.34",
-    "@ndla/licenses": "^0.6.41",
+    "@ndla/button": "^0.3.49",
+    "@ndla/core": "^0.6.35",
+    "@ndla/licenses": "^0.6.42",
     "@ndla/util": "^0.4.4"
   },
   "peerDependencies": {

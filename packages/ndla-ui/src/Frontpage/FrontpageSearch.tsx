@@ -62,6 +62,7 @@ type Props = {
   loading: boolean;
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   history: History;
+  suggestion: string;
 };
 
 const FrontpageSearch: React.FunctionComponent<Props> = ({
@@ -79,6 +80,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   loading,
   t,
   history,
+  suggestion,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);

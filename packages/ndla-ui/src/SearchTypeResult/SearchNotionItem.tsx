@@ -164,7 +164,7 @@ const SearchNotionItem = ({
                   title={t('searchPage.close')}
                 />
               </ModalHeader>
-              <ModalBody>{element}</ModalBody>
+              <ModalBody modifier="no-side-padding-mobile">{element}</ModalBody>
             </>
           )}
         </Modal>

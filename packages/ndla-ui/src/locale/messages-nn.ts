@@ -53,6 +53,7 @@ const messages = {
     close: 'Lukk',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
+    searchFieldPlaceholderShort: 'Søk',
     label: {
       content: 'Innhald:',
       contentTypes: 'Innhaldstypar:',

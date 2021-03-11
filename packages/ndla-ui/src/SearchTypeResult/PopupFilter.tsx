@@ -10,8 +10,8 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import Modal, { ModalCloseButton, ModalBody, ModalHeader } from '@ndla/modal';
+import { breakpoints, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -31,14 +31,7 @@ const ModalContent = styled.div`
   max-width: 1040px;
   flex-grow: 1;
 `;
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const Heading = styled.h1`
-  ${fonts.sizes('22px', '32px')};
-`;
+
 const FilterButtonText = styled.span`
   display: inline-block;
   font-weight: 600;
@@ -61,6 +54,8 @@ const StyledList = styled.ul`
     column-count: 3;
     column-gap: 20px;
   }
+  animation-name: fadeInLeft;
+  animation-duration: 500ms;
 `;
 const StyledListItem = styled.li`
   margin-bottom: 0;
@@ -161,68 +156,70 @@ const PopupFilter = ({
       onClose={() => setIsOpen(false)}
       size="fullscreen">
       {(onClose: () => void) => (
-        <ModalBody>
-          <ModalWrapper>
-            <ModalContent>
-              <Header>
-                <Heading>{messages.filterLabel}</Heading>
-                <ModalCloseButton
-                  onClick={() => {
-                    setIsOpen(false);
-                    onClose();
-                  }}
-                  title={messages.closeButton}
-                />
-              </Header>
-              {programmes && (
-                <MainFilterButtonWrapper>
+        <>
+          <ModalHeader>
+            <h1>{messages.filterLabel}</h1>
+            <ModalCloseButton
+              onClick={() => {
+                setIsOpen(false);
+                onClose();
+              }}
+              title={messages.closeButton}
+            />
+          </ModalHeader>
+          <ModalBody>
+            <ModalWrapper>
+              <ModalContent>
+                {programmes && (
+                  <MainFilterButtonWrapper>
+                    <Button
+                      onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                      lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                      size="normal"
+                      borderShape="rounded">
+                      {t('frontpageMenu.allsubjects')}
+                    </Button>
+                  </MainFilterButtonWrapper>
+                )}
+                {subjectCategories && (
                   <Button
-                    onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                    lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                    onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                    lighter={selectedMenu !== MENU_PROGRAMMES}
                     size="normal"
                     borderShape="rounded">
-                    {t('frontpageMenu.allsubjects')}
+                    {t('frontpageMenu.program')}
                   </Button>
-                </MainFilterButtonWrapper>
-              )}
-              {subjectCategories && (
-                <Button
-                  onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                  lighter={selectedMenu !== MENU_PROGRAMMES}
-                  size="normal"
-                  borderShape="rounded">
-                  {t('frontpageMenu.program')}
-                </Button>
-              )}
-              {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
-                <FrontpageAllSubjects
-                  categories={subjectCategories.categories}
-                  selectedSubjects={subjectValues}
-                  onToggleSubject={onToggleSubject}
-                  subjectViewType="checkbox"
-                />
-              )}
-              {selectedMenu === MENU_PROGRAMMES && programmes && (
-                <StyledList>
-                  {programmes.options.map(item => (
-                    <StyledListItem key={item.id}>
-                      <ToggleItem
-                        id={item.id}
-                        value={item.id}
-                        checked={programmesValues.includes(item.id)}
-                        label={item.name}
-                        component="div"
-                        onChange={() => {
-                          onToggleProgramme(item.id);
-                        }}
-                      />
-                    </StyledListItem>
-                  ))}
-                </StyledList>
-              )}
-            </ModalContent>
-          </ModalWrapper>
-        </ModalBody>
+                )}
+                {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
+                  <FrontpageAllSubjects
+                    categories={subjectCategories.categories}
+                    selectedSubjects={subjectValues}
+                    onToggleSubject={onToggleSubject}
+                    subjectViewType="checkbox"
+                  />
+                )}
+                {selectedMenu === MENU_PROGRAMMES && programmes && (
+                  <StyledList>
+                    {programmes.options.map(item => (
+                      <StyledListItem key={item.id}>
+                        <ToggleItem
+                          id={item.id}
+                          value={item.id}
+                          checked={programmesValues.includes(item.id)}
+                          label={item.name}
+                          component="div"
+                          onChange={() => {
+                            onToggleProgramme(item.id);
+                          }}
+                        />
+                      </StyledListItem>
+                    ))}
+                  </StyledList>
+                )}
+              </ModalContent>
+            </ModalWrapper>
+          </ModalBody>
+        </>
       )}
     </Modal>
   );

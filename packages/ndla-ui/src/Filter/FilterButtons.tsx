@@ -137,7 +137,7 @@ export const FilterButtons = ({
           ))}
           <Modal
             size="fullscreen"
-            animation="slide-up"
+            animation="subtle"
             backgroundColor="white"
             activateButton={
               <StyledButtonElementWrapper>
@@ -151,14 +151,14 @@ export const FilterButtons = ({
             }>
             {(onClose: void) => (
               <>
-                <ModalHeader modifier={['left-align', 'grey']}>
+                <ModalHeader modifier={['left-align']}>
                   <h1>{heading}</h1>
                   <ModalCloseButton
                     title={t('modal.closeModal')}
                     onClick={onClose}
                   />
                 </ModalHeader>
-                <ModalBody>
+                <ModalBody modifier="slide-in-left">
                   <StyledList>
                     {items.map((item: ItemProps) => (
                       <StyledListItem key={item.value}>

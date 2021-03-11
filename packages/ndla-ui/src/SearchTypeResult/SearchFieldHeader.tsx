@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
@@ -95,7 +95,22 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
   t,
 }) => {
   const [hasFocus, setHasFocus] = useState(false);
+  const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const isNarrowScreenMatch = window.matchMedia(
+      `(max-width: ${breakpoints.tablet})`,
+    );
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsNarrowScreen(e.matches);
+    };
+    isNarrowScreenMatch.addEventListener('change', handleChange);
+    handleChange(isNarrowScreenMatch);
+    return () => {
+      isNarrowScreenMatch.removeEventListener('change', handleChange);
+    };
+  }, []);
 
   return (
     <StyledForm action="/search/" inputHasFocus={hasFocus} onSubmit={onSubmit}>
@@ -111,7 +126,11 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
         autoComplete="off"
         id="search"
         name="search"
-        placeholder={t('searchPage.searchFieldPlaceholder')}
+        placeholder={
+          isNarrowScreen
+            ? t('searchPage.searchFieldPlaceholderShort')
+            : t('searchPage.searchFieldPlaceholder')
+        }
         aria-label={t('searchPage.searchFieldPlaceholder')}
         value={value}
         onChange={e => onChange(e.target.value)}

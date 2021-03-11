@@ -113,6 +113,7 @@ const ActiveFilters = ({
         <StyledActiveFilterWrapper key={filterKey}>
           {filterLength > 1 ? (
             <Tooltip
+              delay={2000}
               align="bottom"
               tooltip={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,

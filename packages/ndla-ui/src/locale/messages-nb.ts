@@ -52,6 +52,7 @@ const messages = {
     abilities: 'Egenskaper',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgaver og aktiviteter eller læringsstier',
+    searchFieldPlaceholderShort: 'Søk',
     label: {
       content: 'Innhold:',
       contentTypes: 'Innholdstyper:',

@@ -53,6 +53,7 @@ const messages = {
     search: 'Search',
     searchFieldPlaceholder:
       'Search for subjects, tasks and activities or learningpaths',
+    searchFieldPlaceholderShort: 'Search',
     label: {
       content: 'Content:',
       contentTypes: 'Content types',

@@ -10,8 +10,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import Modal, { ModalCloseButton, ModalBody, ModalHeader } from '@ndla/modal';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -26,6 +26,17 @@ import FrontpageAllSubjects, {
 const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+const ModalHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${spacing.normal};
+`;
+
+const ModalHeading = styled.h1`
+  ${fonts.sizes('22px', 1.2)};
+  margin: 0;
 `;
 const ModalContent = styled.div`
   max-width: 1040px;
@@ -165,19 +176,19 @@ const PopupFilter = ({
       size="fullscreen">
       {(onClose: () => void) => (
         <>
-          <ModalHeader>
-            <h1>{messages.filterLabel}</h1>
-            <ModalCloseButton
-              onClick={() => {
-                setIsOpen(false);
-                onClose();
-              }}
-              title={messages.closeButton}
-            />
-          </ModalHeader>
           <ModalBody>
             <ModalWrapper>
               <ModalContent>
+                <ModalHeaderWrapper>
+                  <ModalHeading>{messages.filterLabel}</ModalHeading>
+                  <ModalCloseButton
+                    onClick={() => {
+                      setIsOpen(false);
+                      onClose();
+                    }}
+                    title={messages.closeButton}
+                  />
+                </ModalHeaderWrapper>
                 {programmes && (
                   <MainFilterButtonWrapper>
                     <Button

@@ -1,4 +1,4 @@
-export default {
+const misc = {
   maxTextWidth: '700px',
   borderRadius: '4px',
   borderRadiusLarge: '50%',
@@ -10,3 +10,5 @@ export default {
   },
   textLinkBoxShadow: 'inset 0 -1px',
 };
+
+export default misc;

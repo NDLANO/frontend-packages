@@ -22,9 +22,7 @@ export {
   FrontpageToolbox,
   FrontpageMultidisciplinarySubject,
   FrontpageHeader,
-  FrontpageSubjectsInPortal,
   FrontpageSubjectIllustration,
-  FrontpageCircularSubjectsSection,
   FrontpageSearch,
   FrontpageProgramMenu,
 } from './Frontpage';
@@ -60,6 +58,8 @@ export { default as Breadcrumblist } from './Breadcrumblist';
 
 export { MessageBox } from './MessageBox';
 
+export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
+
 export {
   NavigationHeading,
   NavigationBox,
@@ -82,5 +82,9 @@ export {
 } from './SearchTypeResult';
 
 export { default as constants } from './model';
+
+export { default as messagesNB } from './locale/messages-nb';
+export { default as messagesNN } from './locale/messages-nn';
+export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';

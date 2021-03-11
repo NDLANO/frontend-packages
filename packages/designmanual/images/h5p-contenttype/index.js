@@ -14,7 +14,7 @@ import imageHotspot from './image-hotspots-icon-color.png';
 import imageHotspotQuestion from './image_hotspot-question-icon_0.png';
 import iframe from './iframe_embeddor_icon-color_0.png';
 
-export default [
+const h5pContentTypes = [
   {
     id: 'othercontent-id-1',
     description: 'Regler for bruk av fyll ut',
@@ -120,3 +120,5 @@ export default [
     url: 'https://h5p.org/',
   },
 ];
+
+export default h5pContentTypes;

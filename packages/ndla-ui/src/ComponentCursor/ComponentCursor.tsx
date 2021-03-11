@@ -80,7 +80,7 @@ type Props = {
   text?: string;
 };
 
-export default ({ variant = 'left', text = '' }: Props) => {
+const ComponentCursor = ({ variant = 'left', text = '' }: Props) => {
   const [componentSize, setComponentSize] = useState(null);
   const textRef = (useRef(null) as unknown) as React.MutableRefObject<
     HTMLSpanElement
@@ -98,3 +98,5 @@ export default ({ variant = 'left', text = '' }: Props) => {
     </Wrapper>
   );
 };
+
+export default ComponentCursor;

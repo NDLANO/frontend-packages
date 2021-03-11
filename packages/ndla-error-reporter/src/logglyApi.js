@@ -14,7 +14,7 @@ const logglyUrl = (() => {
   return 'https://logs-01.loggly.com';
 })();
 
-export default (logglyApiKey, data) =>
+const logglyApi = (logglyApiKey, data) =>
   fetch(`${logglyUrl}/inputs/${logglyApiKey}/`, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -31,3 +31,5 @@ export default (logglyApiKey, data) =>
       console.error('Failed log data:', data); // eslint-disable-line no-console
     }
   });
+
+export default logglyApi;

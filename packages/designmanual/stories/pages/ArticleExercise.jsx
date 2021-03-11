@@ -27,7 +27,7 @@ import FigureImage from '../article/FigureImage';
 
 const { contentTypes } = constants;
 
-export default () => (
+const ArticleExercise = () => (
   <OneColumn cssModifier="narrow">
     <ArticleWrapper
       id="mainContentId"
@@ -92,3 +92,5 @@ export default () => (
     </LayoutItem>
   </OneColumn>
 );
+
+export default ArticleExercise;

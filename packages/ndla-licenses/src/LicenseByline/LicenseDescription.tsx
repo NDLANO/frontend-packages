@@ -7,7 +7,6 @@
  */
 
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
@@ -60,16 +59,5 @@ const LicenseDescription: FC<Props> = ({
     {children}
   </StyledLicenseByline>
 );
-
-LicenseDescription.propTypes = {
-  children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  messages: PropTypes.shape({
-    modelPremission: PropTypes.string,
-  }),
-  highlightCC: PropTypes.bool,
-  color: PropTypes.string,
-  locale: PropTypes.string,
-};
 
 export default LicenseDescription;

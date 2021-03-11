@@ -78,7 +78,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
         setShowGradeIndex(Number(rememberGradeIndex));
       }
     }
-  }, []);
+  }, [isWindowContext, grades]);
 
   return (
     <StyledWrapper>

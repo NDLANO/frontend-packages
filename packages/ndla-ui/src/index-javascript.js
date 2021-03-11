@@ -47,7 +47,6 @@ export {
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone } from './Filter';
-export { default as AudioPlayer } from './AudioPlayer';
 export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
 export { default as FileList, File } from './FileList';
@@ -151,10 +150,6 @@ export { default as ContentLoader } from './ContentLoader';
 export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';
-
-export { default as messagesNB } from './locale/messages-nb';
-export { default as messagesNN } from './locale/messages-nn';
-export { default as messagesEN } from './locale/messages-en';
 
 export {
   FilmSlideshow,

@@ -27,8 +27,10 @@ const mediumHeaderUppercase = css`
   ${fonts.sizes(20, 1.1)};
 `;
 
-export default {
+const typography = {
   smallHeading,
   smallerHeadingUppercase,
   mediumHeaderUppercase,
 };
+
+export default typography;

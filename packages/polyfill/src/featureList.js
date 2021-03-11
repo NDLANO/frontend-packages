@@ -6,7 +6,7 @@
  *
  */
 
-export default [
+const featureList = [
   {
     test: `('fetch' in window)`,
     feature: 'fetch',
@@ -52,3 +52,5 @@ export default [
     feature: 'Number.isNaN',
   },
 ];
+
+export default featureList;

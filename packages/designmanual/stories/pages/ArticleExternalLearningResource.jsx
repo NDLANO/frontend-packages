@@ -28,7 +28,7 @@ import FigureImage from '../article/FigureImage';
 
 const { contentTypes } = constants;
 
-export default () => (
+const ArticleExternalLearningResource = () => (
   <OneColumn>
     <ArticleWrapper
       id="mainContentId"
@@ -111,3 +111,5 @@ export default () => (
     </LayoutItem>
   </OneColumn>
 );
+
+export default ArticleExternalLearningResource;

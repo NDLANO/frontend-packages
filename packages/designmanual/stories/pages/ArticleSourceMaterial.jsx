@@ -28,7 +28,7 @@ import ArticleBylineExample from '../molecules/ArticleBylineExample';
 
 const { contentTypes } = constants;
 
-export default () => (
+const ArticleSourceMaterial = () => (
   <OneColumn>
     <ArticleWrapper id="mainContentId" modifier={contentTypes.SOURCE_MATERIAL}>
       <LayoutItem layout="center">
@@ -111,3 +111,5 @@ export default () => (
     </LayoutItem>
   </OneColumn>
 );
+
+export default ArticleSourceMaterial;

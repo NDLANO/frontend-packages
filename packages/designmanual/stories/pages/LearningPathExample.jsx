@@ -167,7 +167,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
       dispatch({ type: UPDATE_SEQUENCE_NUMBER, code: e.code });
     };
     window.addEventListener('keyup', onKeyUpEvent);
-    fetchLearningSteps({ learningPathId });
+    fetchLearningSteps({ learningPathId: DEMO_LEARNING_PATH_ID });
     return () => {
       window.removeEventListener('keyup', onKeyUpEvent);
     };
@@ -176,6 +176,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
   useEffect(() => {
     if (learningStepsData && currentLearningStepNumber !== undefined) {
       dispatch({ type: UPDATE_LEARNING_PATH_STEP });
+      const { learningsteps } = learningStepsData;
       fetchLearningStep({
         stepId: learningsteps[currentLearningStepNumber].id,
         learningPathId,
@@ -188,7 +189,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
       updatedCookie[learningsteps[currentLearningStepNumber].id] = true;
       setCookie(cookieKey, JSON.stringify(updatedCookie));
     }
-  }, [currentLearningStepNumber]);
+  }, [learningPathId, learningStepsData, currentLearningStepNumber]);
 
   useEffect(() => {
     if (learningStepsData) {

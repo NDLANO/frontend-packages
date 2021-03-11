@@ -68,7 +68,7 @@ const Structure = ({
             activeFilters.includes(topicFilter.id),
           ),
       ),
-    [structure, activeFilters],
+    [structure, activeFilters, ignoreFilter],
   );
   const enableDND = DND && isMainActive && filteredStructure.length > 1;
   return (

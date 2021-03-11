@@ -19,7 +19,7 @@ function sizes(fontSize: string | number, lineHeight?: string | number) {
   return `${fontSizeStyling} line-height: ${defaultLineHeight}`;
 }
 
-export default {
+const fonts = {
   sans:
     "'Source Sans Pro',Helvetica,Arial,STKaiti,'华文楷体',KaiTi,SimKai,'楷体',KaiU,DFKai-SB,'標楷體',SongTi,'宋体',sans-serif",
   serif:
@@ -32,3 +32,5 @@ export default {
   },
   sizes,
 };
+
+export default fonts;

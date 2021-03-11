@@ -20,4 +20,10 @@ $font-weight-bold: 700;
   --font-weight-normal: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  /**
+   * Remove reach-warning about not including reach-css
+   */
+  --reach-dialog: 1;
+  --reach-menu-button: 1;
+  --reach-slider: 1;
 }

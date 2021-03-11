@@ -10,6 +10,7 @@ export interface Props {
   width?: string;
   height?: string;
   viewBox?: string;
+  role?: string;
   style?: {}; // eslint-disable-line
 }
 const IconBase = ({
@@ -17,6 +18,7 @@ const IconBase = ({
   color,
   size,
   style,
+  role,
   title,
   description,
   width,
@@ -34,6 +36,7 @@ const IconBase = ({
       height={height || computedSize}
       width={width || computedSize}
       className={classes}
+      role={role}
       {...props}
       style={{
         verticalAlign: 'middle',

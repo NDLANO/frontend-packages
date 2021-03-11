@@ -22,7 +22,6 @@ import {
   SliderHandle,
   SliderOrientation,
 } from '@reach/slider';
-// @ts-ignore
 import { Play, Pause } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';

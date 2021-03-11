@@ -7,7 +7,6 @@
  */
 
 import React, { Component } from 'react';
-// @ts-ignore
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import { Swipeable, EventData } from 'react-swipeable';
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';

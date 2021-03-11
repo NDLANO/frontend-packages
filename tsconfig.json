@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "esnext",
+    "target": "es5",
     "esModuleInterop": true,
     "jsx": "react",
     // isolatedModules and declaration are not allowed together at

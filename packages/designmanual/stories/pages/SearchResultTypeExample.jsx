@@ -318,7 +318,7 @@ const SearchPageDemo = ({ t }) => {
       });
       dispatchResources({ type: 'RESOURCE_TYPE_SELECTED', ...data });
     }
-  }, [selectedResourceTypes]);
+  }, [selectedResourceTypes]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleShowMore = type => {
     dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });

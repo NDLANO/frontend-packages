@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
@@ -104,14 +104,22 @@ const PopupFilter = ({
   const [programmesValues, setProgrammesValues] = useState<Array<string>>([]);
   const [isOpen, setIsOpen] = useState(false);
 
+  const prevIsOpenRef = useRef<boolean>();
   useEffect(() => {
-    if (subjectCategories) {
-      setSubjectValues([...subjectCategories.values]);
+    prevIsOpenRef.current = isOpen;
+  });
+  const prevIsOpen = prevIsOpenRef.current;
+
+  useEffect(() => {
+    if (isOpen && isOpen !== prevIsOpen) {
+      if (subjectCategories) {
+        setSubjectValues([...subjectCategories.values]);
+      }
+      if (programmes) {
+        setProgrammesValues([...programmes.values]);
+      }
     }
-    if (programmes) {
-      setProgrammesValues([...programmes.values]);
-    }
-  }, [isOpen]);
+  }, [isOpen, prevIsOpen, subjectCategories, programmes]);
 
   const onToggleSubject = (subjectId: string) => {
     let updatedFilter = [...subjectValues];

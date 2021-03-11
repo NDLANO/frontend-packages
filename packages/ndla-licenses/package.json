@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@ndla/core": "^0.6.34",
+    "@ndla/icons": "^0.7.1",
     "defined": "1.0.0",
     "react-bem-helper": "1.4.1"
   },

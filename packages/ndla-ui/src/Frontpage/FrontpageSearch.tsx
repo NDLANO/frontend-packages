@@ -63,6 +63,7 @@ type Props = {
   t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   history: History;
   suggestion: string;
+  suggestionUrl: string;
 };
 
 const FrontpageSearch: React.FunctionComponent<Props> = ({
@@ -81,6 +82,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   t,
   history,
   suggestion,
+  suggestionUrl,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);
@@ -197,6 +199,8 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
               resourceToLinkProps={resourceToLinkProps}
               infoText={t('welcomePage.searchDisclaimer')}
               history={history}
+              suggestion={suggestion}
+              suggestionUrl={suggestionUrl}
             />
           )}
         </SearchFieldForm>

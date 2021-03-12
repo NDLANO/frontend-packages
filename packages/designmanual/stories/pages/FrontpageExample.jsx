@@ -244,6 +244,8 @@ class FrontpageExample extends Component {
               menuButton: t('welcomePage.heading.messages.menuButton'),
             }}
             languageOptions={dummyLanguageOptions}
+            suggestion={searchFieldValue.length > 2 && 'et-liknende-ord'}
+            suggestionUrl={'search?query=et-liknende-ord'}
           />
         </FrontpageHeader>
         <main>

@@ -11,6 +11,7 @@ $padding-bottom: 17px;
   padding-bottom: $padding-bottom;
 
   &__content {
+    position: relative;
     color: $brand-grey-dark;
     padding: $spacing $spacing $spacing--large;
     border: 1px solid $brand-grey--light;

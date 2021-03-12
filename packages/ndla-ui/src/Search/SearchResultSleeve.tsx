@@ -59,14 +59,13 @@ const StyledAside = styled.aside`
 `;
 
 const SearchLinkContainer = styled.div`
-  margin: calc(${spacing.normal} - ${spacing.xsmall}) 0;
+  margin: ${spacing.normal} -${spacing.small};
 `;
 
 const StyledSearchLink = styled(SafeLink)`
   width: 100%;
   box-shadow: none;
   border: 0;
-  margin: ${spacing.xsmall} -${spacing.small};
   background: transparent;
   display: inline-flex;
   flex-grow: 1;

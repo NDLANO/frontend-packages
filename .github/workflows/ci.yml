@@ -19,18 +19,6 @@ jobs:
     name: "Unit tests"
     runs-on: ubuntu-latest
     steps:
-      - name: "Jonas tests stuff"
-        run: |
-          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
-          echo "GITHUB_ACTOR=$GITHUB_ACTOR"
-          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
-          echo "GITHUB_EVENT_PATH=$GITHUB_EVENT_PATH"
-          echo "GH_PR_NUMBER=$GH_PR_NUMBER"
-          echo "GH_PR_REPO=$GH_PR_REPO"
-          echo "GITHUB_SHA=$GITHUB_SHA"
-          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
-          echo "cat GITHUB_EVENT_PATH:"
-          cat $GITHUB_EVENT_PATH
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -60,4 +48,8 @@ jobs:
         run: yarn build-storybook
       - name: "Deploy now build"
         run: yarn ndla-scripts now-github
+        continue-on-error: true
+      - name: "Deploy designmanual"
+        if:  ${{ github.event.ref == 'refs/head/master' }}
+        run: yarn deploy
         continue-on-error: true

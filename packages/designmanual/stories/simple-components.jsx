@@ -348,9 +348,6 @@ storiesOf('Enkle komponenter', module)
           produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
           og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
-        <LayoutItem layout="center">
-          <div className="c-bodybox">En tekstboks i midten av teksten.</div>
-        </LayoutItem>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du
           pitcher, blir idéen og historien i den filmen du planlegger å lage,
@@ -387,67 +384,71 @@ storiesOf('Enkle komponenter', module)
               sammen med i klassen.
             </p>
           </div>
-          <LayoutItem layout="center">
-            <div className="c-bodybox">
-              <h2>
-                Tekst i ramme fungerer <em>dårlig</em> med mye tekst.
-              </h2>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-              <p>
-                Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-                pitcher, blir idéen og historien i den filmen du planlegger å
-                lage, tydeligere for både deg selv og dem du eventuelt jobber
-                sammen med i klassen.
-              </p>
-            </div>
-          </LayoutItem>
+          <div className="c-bodybox c-bodybox--extended">
+            <h2>
+              Tekst i ramme fungerer <em>dårlig</em> med mye tekst.
+            </h2>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+            <p>
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
+            </p>
+          </div>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du
             pitcher, blir idéen og historien i den filmen du planlegger å lage,
             tydeligere for både deg selv og dem du eventuelt jobber sammen med i
             klassen.
           </p>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          <p className="c-componentinfo__status-label--warn">Status: Inaktiv</p>
+          <div className="c-bodybox">
+            En tekstboks i midten av teksten som ikke fyller bredden.
+          </div>
         </LayoutItem>
       </StoryBody>
     </div>

@@ -13,6 +13,8 @@ import parse from 'html-react-parser';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+// @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { Play } from '@ndla/icons/common';
@@ -20,6 +22,7 @@ import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
+import { joinNamesAsList } from '../Article/utils/joinNamesAsList';
 
 type ItemWrapperProps = {
   hasMedia?: boolean;
@@ -103,6 +106,19 @@ const ShowMediaButtonText = styled.span`
   margin-left: 4px;
 `;
 
+const AuthorsWrapper = styled.div`
+  margin: 1rem 0;
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  button {
+    margin-left: 1rem;
+  }
+`
+
 type MediaProps = {
   type: 'video' | 'other';
   element: React.ReactNode;
@@ -115,6 +131,9 @@ export type SearchNotionItemProps = {
   image?: { url: string; alt: string };
   media?: MediaProps;
   labels?: string[];
+  authors?: { name: string }[];
+  license?: string;
+  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   renderMarkdown: (text: React.ReactNode) => string;
 };
 
@@ -124,6 +143,9 @@ const SearchNotionItem = ({
   image,
   media,
   labels = [],
+  authors = [],
+  license,
+  onReferenceClick,
   renderMarkdown,
   t,
 }: SearchNotionItemProps & tType) => {
@@ -170,9 +192,27 @@ const SearchNotionItem = ({
       <TextWrapper>
         <DescriptionWrapper>
           {parse(
-            renderMarkdown ? renderMarkdown(`**${title}** - ${text}`) : `<b>${title}</b> - ${text}`,
+            renderMarkdown
+              ? renderMarkdown(`**${title}** &ndash; ${text}`)
+              : `<b>${title}</b> \u2013 ${text}`,
           )}
         </DescriptionWrapper>
+        {(authors || license) && (
+          <AuthorsWrapper>
+            {
+              <p>
+                {authors.length > 0 && t('article.writtenBy', { authors: joinNamesAsList(authors.map((author) => author.name), { conjunction: 'og' }) || '' })}
+                {(authors.length > 0 && license) && ' '}
+                {license && `(${getLicenseByAbbreviation(license).abbreviation})`}
+                {onReferenceClick && (
+                  <Button link onClick={onReferenceClick}>
+                    {t('article.cite')}
+                  </Button>
+                )}
+              </p>
+            }
+          </AuthorsWrapper>
+        )}
         {labels.length > 0 && (
           <LabelsWrapper>
             <LabelsLabel>{t('searchPage.resultType.notionLabels')}:</LabelsLabel>

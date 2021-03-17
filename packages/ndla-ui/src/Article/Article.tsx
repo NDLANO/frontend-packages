@@ -12,6 +12,7 @@ import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
+import { useIntersectionObserver } from '@ndla/hooks';
 import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -19,6 +20,7 @@ import ArticleByline from './ArticleByline';
 // @ts-ignore
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
+import ArticleNotions, { Notion } from './ArticleNotions';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -31,11 +33,11 @@ type ArticleWrapperProps = {
   children: ReactNode;
 };
 
-export const ArticleWrapper = ({ children, modifier, id }: ArticleWrapperProps) => (
-  <article id={id} {...classes(undefined, modifier)}>
+export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
+  <article id={id} {...classes(undefined, modifier)} ref={ref}>
     {children}
   </article>
-);
+));
 
 type ArticleTitleProps = {
   icon: boolean;
@@ -103,7 +105,19 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink: string;
   printUrl: string;
+  notions: Notion[];
 };
+
+const getArticleContent = (content: any, locale: Locale) => {
+  switch (typeof content) {
+    case 'string':
+      return <ArticleContent content={content} locale={locale} />
+    case 'function':
+      return content()
+    default:
+      return content
+  }
+}
 
 export const Article = ({
   article,
@@ -120,7 +134,12 @@ export const Article = ({
   renderMarkdown,
   copyPageUrlLink,
   printUrl,
+  notions,
 }: Props) => {
+  const [articleRef, { entry }] = useIntersectionObserver({ root: null, rootMargin: '100%', threshold: 0.15 });
+
+  const showExplainNotions = entry && entry.isIntersecting;
+
   const {
     title,
     introduction,
@@ -139,7 +158,7 @@ export const Article = ({
   const suppliers = rightsholders.length ? rightsholders : undefined;
 
   return (
-    <ArticleWrapper modifier={modifier} id={id}>
+    <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper
           competenceGoals={competenceGoals}
@@ -151,7 +170,8 @@ export const Article = ({
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        <ArticleContent content={content} locale={locale} />
+        {showExplainNotions && <ArticleNotions notions={notions.list} relatedContent={notions.related} renderMarkdown={renderMarkdown} />}
+        {getArticleContent(content, locale)}
       </LayoutItem>
       <LayoutItem layout="center">
         {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
@@ -168,7 +188,9 @@ export const Article = ({
           }}
         />
       </LayoutItem>
-      <LayoutItem layout="extend">{children}</LayoutItem>
+      <LayoutItem layout="extend">
+        {children}
+      </LayoutItem>
     </ArticleWrapper>
   );
 };

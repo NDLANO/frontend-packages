@@ -27,6 +27,7 @@ import { highlightStyle } from './ContentTypeResultStyles';
 import { ContentTypeResultType, Resource } from '../types';
 
 const GO_TO_SEARCHPAGE = 'GO_TO_SEARCHPAGE';
+const GO_TO_SUGGESTION = 'GO_TO_SUGGESTION';
 
 const StyledNoHits = styled.div`
   ${fonts.sizes(16, 1.1)};
@@ -57,10 +58,14 @@ const StyledAside = styled.aside`
   }
 `;
 
-const StyledSearchAll = styled(SafeLink)`
+const SearchLinkContainer = styled.div`
+  margin: ${spacing.normal} -${spacing.small};
+`;
+
+const StyledSearchLink = styled(SafeLink)`
+  width: 100%;
   box-shadow: none;
   border: 0;
-  margin: ${spacing.normal} -${spacing.small};
   background: transparent;
   display: inline-flex;
   flex-grow: 1;
@@ -74,7 +79,6 @@ const StyledSearchAll = styled(SafeLink)`
   }
   &:focus {
     ${highlightStyle}
-    width: 100%;
   }
   &:hover {
     strong {
@@ -194,6 +198,7 @@ const findPathForKeyboardNavigation = (
     : [];
   const resultsContainingPaths: Array<string | HTMLElement> = ([
     GO_TO_SEARCHPAGE,
+    GO_TO_SUGGESTION,
   ] as Array<HTMLElement | string>).concat(...selectables);
 
   // Nothing selected, goto either first or last depending on direction
@@ -230,6 +235,8 @@ type Props = {
   loading: boolean;
   frontpage?: boolean;
   history: History;
+  suggestion: string;
+  suggestionUrl: string;
 };
 
 const SearchResultSleeve: React.FC<Props & tType> = ({
@@ -244,9 +251,12 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
   frontpage,
   t,
   history,
+  suggestion,
+  suggestionUrl,
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
+  const searchSuggestionRef = useRef<HTMLDivElement>(null);
   const [keyboardPathNavigation, setKeyNavigation] = useState<
     HTMLElement | string | null
   >('');
@@ -278,7 +288,15 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
       } else if (e.code === 'Enter') {
         e.stopPropagation();
         e.preventDefault();
-        if (
+        if (keyboardPathNavigation === GO_TO_SUGGESTION) {
+          const anchorTag =
+            searchSuggestionRef &&
+            searchSuggestionRef.current &&
+            searchSuggestionRef.current.closest('a');
+          if (anchorTag) {
+            anchorTag.click();
+          }
+        } else if (
           keyboardPathNavigation === GO_TO_SEARCHPAGE ||
           keyboardPathNavigation === undefined
         ) {
@@ -343,13 +361,30 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
           </StyledAside>
         )}
         <div>
-          <StyledSearchAll
-            css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle}
-            to={allResultUrl}>
-            <SearchIcon className="c-icon--22" />
-            <strong ref={searchAllRef}>{searchString}</strong>
-            <small>{t('welcomePage.searchAllInfo')}</small>
-          </StyledSearchAll>
+          <SearchLinkContainer>
+            <StyledSearchLink
+              css={
+                keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle
+              }
+              to={allResultUrl}>
+              <SearchIcon className="c-icon--22" />
+              <strong ref={searchAllRef}>{searchString}</strong>
+              <small>{t('welcomePage.searchAllInfo')}</small>
+            </StyledSearchLink>
+            {suggestion && (
+              <StyledSearchLink
+                css={
+                  keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle
+                }
+                to={suggestionUrl}>
+                <SearchIcon className="c-icon--22" />
+                <small>
+                  {t('searchPage.resultType.searchPhraseSuggestion')}
+                </small>
+                <strong ref={searchSuggestionRef}>{suggestion}</strong>
+              </StyledSearchLink>
+            )}
+          </SearchLinkContainer>
           {result.map((contentTypeResult: ContentTypeResultType) => (
             <ContentTypeResult
               ignoreContentTypeBadge={ignoreContentTypeBadge}

@@ -77,6 +77,7 @@ AudioSearchForm.propTypes = {
     page: PropTypes.number.isRequired,
     pageSize: PropTypes.number.isRequired,
     locale: PropTypes.string.isRequired,
+    'audio-type': PropTypes.string.isRequired,
   }),
   translations: PropTypes.shape({
     searchPlaceholder: PropTypes.string.isRequired,

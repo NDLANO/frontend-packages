@@ -28,6 +28,7 @@ import {
   FooterText,
   LanguageSelector,
   OneColumn,
+  Content,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 
@@ -60,6 +61,8 @@ import ComponentInfo from './ComponentInfo';
 import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
+import Frontpage from './pages/FrontpageExample';
+import FooterExample from './molecules/footers';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -332,7 +335,7 @@ storiesOf('Sammensatte moduler', module)
       { title: '1T', value: '1T' },
       { title: 'R1', value: 'R1' },
       { title: 'R2', value: 'R2' },
-      { title: 'S1', value: 'S1' },
+      { title: 'S1', value: 'S1' }
     ]}
     onChange={(value) => {
       console.log('changed to', value);
@@ -714,5 +717,20 @@ storiesOf('Sammensatte moduler', module)
       <OneColumn>
         <ListViewExample />
       </OneColumn>
+    </PageContainer>
+  ))
+
+  .add('Meldingsboks', () => (
+    <PageContainer>
+      <StoryIntro title="Meldingsboks">
+        <p>
+          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom
+          den er sticky så vises den i toppen dersom man scroller forbi.
+        </p>
+      </StoryIntro>
+      <Content>
+        <Frontpage showMessageBox />
+      </Content>
+      <FooterExample />
     </PageContainer>
   ));

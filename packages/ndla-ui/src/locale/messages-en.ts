@@ -53,6 +53,7 @@ const messages = {
     search: 'Search',
     searchFieldPlaceholder:
       'Search for subjects, tasks and activities or learningpaths',
+    searchFieldPlaceholderShort: 'Search',
     label: {
       content: 'Content:',
       contentTypes: 'Content types',
@@ -100,7 +101,7 @@ const messages = {
     },
     searchFilterMessages: {
       backButton: 'Back to filter',
-      filterLabel: 'Chose subjects',
+      filterLabel: 'Search-filter',
       confirmButton: 'Refresh filter',
       hasValuesButtonText: 'More subjects',
       noValuesButtonText: 'Filter by subjects',
@@ -109,6 +110,10 @@ const messages = {
       removeFilter: 'Remove filter {filterName}',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
+      resourceTypeFilter: {
+        heading: 'Content type filter',
+        button: 'Content type filter',
+      },
     },
     resultType: {
       showing: 'Showing {fromCount} to {toCount} of {totalCount}',
@@ -818,6 +823,9 @@ const messages = {
   download: 'Download file: ',
   expandButton: 'Show large version',
   ...contributorTypes.en,
+  filterButtons: {
+    removeAllFilters: 'Remove filters',
+  },
 };
 
 export default messages;

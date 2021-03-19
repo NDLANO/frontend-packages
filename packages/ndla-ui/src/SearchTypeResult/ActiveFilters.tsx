@@ -34,15 +34,12 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        row-gap: 4px;
-        column-gap: 4px;
       }
     ${mq.range({ until: breakpoints.tablet })} {
         display: flex;
         flex-direction: column;
         align-items: stretch;
         flex-wrap: wrap;
-        row-gap: 4px;
       }
     `}
 
@@ -50,7 +47,7 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
     display: flex;
     flex-direction: row;
     align-items: center;
-    column-gap: 10px;
+    margin-left: ${spacing.xsmall};
 
     ${StyledActiveFilterTitle} {
       ${({ filterLength }) =>
@@ -84,11 +81,9 @@ const StyledActiveFilterWrapper = styled.li`
   list-style: none;
   display: flex;
   margin: 0;
-
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    &:last-of-type {
-      margin-right: 0;
-    }
+  margin-right: ${spacing.xsmall};
+  ${mq.range({ until: breakpoints.desktop })} {
+    margin-bottom: ${spacing.xsmall};
   }
 `;
 
@@ -96,12 +91,14 @@ type Props = {
   filters: FilterProps[];
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
+  customElements?: React.ReactElement[];
 };
 
 const ActiveFilters = ({
   filters,
   onFilterRemove,
   showOnSmallScreen,
+  customElements,
   t,
 }: Props & tType) => {
   if (filters && filters.length > 0) {
@@ -116,6 +113,7 @@ const ActiveFilters = ({
         <StyledActiveFilterWrapper key={filterKey}>
           {filterLength > 1 ? (
             <Tooltip
+              delay={2000}
               align="bottom"
               tooltip={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,
@@ -140,6 +138,10 @@ const ActiveFilters = ({
         showOnSmallScreen={showOnSmallScreen}
         filterLength={filterLength}>
         {filterItems}
+        {customElements &&
+          customElements.map(item => (
+            <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>
+          ))}
       </StyledActiveFilters>
     );
   }

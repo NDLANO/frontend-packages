@@ -6,9 +6,8 @@ import {
   SearchNotionsResult,
   SearchSubjectResult,
   constants,
+  FilterButtons,
 } from '@ndla/ui';
-
-import { FilterTabs } from '@ndla/tabs';
 import { injectT } from '@ndla/i18n';
 
 import {
@@ -23,8 +22,8 @@ import {
   resourcesExternalResults,
   resourcesSourceMaterialResults,
 } from '../../dummydata/mockSearchResultType';
-import { searchFilterOptions } from '../../dummydata';
 import FigureWithLicense from '../article/FigureWithLicense';
+import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 
 const { contentTypes } = constants;
 
@@ -138,10 +137,10 @@ const resourcesReducer = (state, action) => {
       });
     case 'RESOURCE_TYPE_SELECTED':
       return state.map(contextItem => {
-        if (contextItem.type === action.contextType) {
+        if (action.contextTypes.indexOf(contextItem.type) > -1) {
           return {
             ...contextItem,
-            items: action.items,
+            items: action.resourceTypeItems[contextItem.type].items,
             pageSize: PAGESIZE_SINGLE,
             active: true,
           };
@@ -232,17 +231,15 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
 };
 
 const SearchPageDemo = ({ t }) => {
-  const [currentResourceType, setCurrentResourceType] = useState(null);
+  const [selectedResourceTypes, setSelectedResourceTypes] = useState([]);
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
   const [searchValue, setSearchValue] = useState('nunorsk');
   const [searchPhrase, setSearchPhrase] = useState('nunorsk');
   const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(
     'nynorsk',
   );
-  const [searchFilter, setSearchFilter] = useState([
-    'subjects:bronnteknikk',
-    'subjects:kinesisk',
-  ]);
+  const [subjectFilter, setSubjectFilter] = useState(['programme_subject_5']);
+  const [programmeFilter, setProgrammeFilter] = useState(['programme_9']);
 
   const [notionsItems] = React.useState(initNotionResult);
 
@@ -293,33 +290,35 @@ const SearchPageDemo = ({ t }) => {
 
   useEffect(() => {
     // reset mockup data if no subjectType
-    if (!currentResourceType || currentResourceType === 'ALL') {
+    if (!selectedResourceTypes.length) {
       dispatchResources({ type: 'RESOURCE_TYPE_ALL_SELECTED' });
     } else {
-      const currentShown = resourceItems.find(
-        item => item.type === currentResourceType,
-      );
-      if (currentShown) {
-        const data = { contextType: currentResourceType };
-        if (currentShown.items.length >= PAGESIZE_SINGLE) {
-          data.items = currentShown.items;
-        } else {
-          const activeFilters = currentShown.filters.filter(
-            filter => filter.active,
-          );
-          const filterArray = activeFilters.map(filter => filter.name);
-          const allFilteredItems = resourceItemsByTypeAndFilters(
-            currentResourceType,
-            filterArray,
-          );
-
-          data.items = [...allFilteredItems.slice(0, PAGESIZE_SINGLE)];
+      const data = {
+        contextTypes: selectedResourceTypes,
+        resourceTypeItems: {},
+      };
+      resourceItems.forEach(item => {
+        if (selectedResourceTypes.indexOf(item.type) > -1) {
+          data.resourceTypeItems[item.type] = item;
+          if (item.items.length >= PAGESIZE_SINGLE) {
+            data.resourceTypeItems[item.type] = item;
+          } else {
+            const activeFilters = item.filters.filter(filter => filter.active);
+            const filterArray = activeFilters.map(filter => filter.name);
+            const allFilteredItems = resourceItemsByTypeAndFilters(
+              item.type,
+              filterArray,
+            );
+            data.resourceTypeItems[item.type] = {
+              ...item,
+              items: [...allFilteredItems.slice(0, PAGESIZE_SINGLE)],
+            };
+          }
         }
-        dispatchResources({ type: 'RESOURCE_TYPE_SELECTED', ...data });
-      }
+      });
+      dispatchResources({ type: 'RESOURCE_TYPE_SELECTED', ...data });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentResourceType]);
+  }, [selectedResourceTypes]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleShowMore = type => {
     dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });
@@ -349,26 +348,68 @@ const SearchPageDemo = ({ t }) => {
     setSearchPhraseSuggestion('');
   };
   const handleFilterRemove = value => {
-    setSearchFilter(searchFilter.filter(option => option !== value));
+    setSubjectFilter(subjectFilter.filter(option => option !== value));
+    setProgrammeFilter(programmeFilter.filter(option => option !== value));
   };
 
-  const activeSubjectFilters = searchFilterOptions.subjects.filter(option =>
-    searchFilter.includes(option.value),
-  );
+  const handleContentTypeFilterToggle = value => {
+    const index = selectedResourceTypes.indexOf(value);
+    const updated = [...selectedResourceTypes];
+    if (index > -1) {
+      updated.splice(index, 1);
+    } else {
+      updated.push(value);
+    }
+    setSelectedResourceTypes(updated);
+  };
 
-  const filterProps = {
-    options: searchFilterOptions.subjects,
-    values: searchFilter,
-    onSubmit: setSearchFilter,
+  const activeSubjectFilters = [];
+  subjectCategories.forEach(category => {
+    category.subjects.forEach(subject => {
+      if (subjectFilter.includes(subject.id)) {
+        activeSubjectFilters.push({
+          name: subject.name,
+          value: subject.id,
+          title: subject.name,
+        });
+      }
+    });
+  });
+  programmes.forEach(item => {
+    if (programmeFilter.includes(item.id)) {
+      activeSubjectFilters.push({
+        name: item.label,
+        value: item.id,
+        title: item.label,
+      });
+    }
+  });
+
+  const subjectFilterProps = {
     messages: {
       filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
       closeButton: t('searchPage.close'),
-      confirmButton: t('searchPage.searchFilterMessages.confirmButton'),
       buttonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
+    },
+    programmes: {
+      options: programmes.map(item => ({ name: item.label, ...item })),
+      values: programmeFilter,
+      onProgrammeValuesChange: setProgrammeFilter,
+    },
+    subjectCategories: {
+      categories: subjectCategories,
+      values: subjectFilter,
+      onSubjectValuesChange: setSubjectFilter,
     },
   };
 
   const visibleResourceTypes = resourceItems.filter(item => item.active);
+  const contentTypeFilters = searchSubjectTypeOptions.map(item => {
+    return {
+      ...item,
+      selected: selectedResourceTypes.indexOf(item.value) > -1,
+    };
+  });
 
   return (
     <>
@@ -385,7 +426,7 @@ const SearchPageDemo = ({ t }) => {
           filters: activeSubjectFilters,
           onFilterRemove: handleFilterRemove,
         }}
-        filters={filterProps}
+        filters={subjectFilterProps}
       />
       {!hideNotionsResult && (
         <SearchNotionsResult
@@ -396,30 +437,36 @@ const SearchPageDemo = ({ t }) => {
           }}
         />
       )}
-      <SearchSubjectResult items={subjectItems} />
-      <FilterTabs
-        dropdownBtnLabel="Velg"
-        value={currentResourceType ? currentResourceType : 'ALL'}
-        options={searchSubjectTypeOptions}
-        contentId="search-result-content"
-        onChange={setCurrentResourceType}>
-        {visibleResourceTypes.map(item => (
-          <SearchTypeResult
-            key={`search-result-${item.type}`}
-            filters={item.filters}
-            onFilterClick={id => handleFilterClick(item.type, id)}
-            items={item.items}
-            type={item.type}
-            totalCount={item.totalCount}
-            loading={item.loading}
-            pagination={{
-              totalCount: item.totalCount,
-              toCount: item.items.length,
-              onShowMore: () => handleShowMore(item.type),
-            }}
-          />
-        ))}
-      </FilterTabs>
+      <SearchSubjectResult id="search-result-content" items={subjectItems} />
+      <FilterButtons
+        heading={t(
+          'searchPage.searchFilterMessages.resourceTypeFilter.heading',
+        )}
+        items={contentTypeFilters}
+        onFilterToggle={handleContentTypeFilterToggle}
+        onRemoveAllFilters={() => setSelectedResourceTypes([])}
+        labels={{
+          openFilter: t(
+            'searchPage.searchFilterMessages.resourceTypeFilter.button',
+          ),
+        }}
+      />
+      {visibleResourceTypes.map(item => (
+        <SearchTypeResult
+          key={`search-result-${item.type}`}
+          filters={item.filters}
+          onFilterClick={id => handleFilterClick(item.type, id)}
+          items={item.items}
+          type={item.type}
+          totalCount={item.totalCount}
+          loading={item.loading}
+          pagination={{
+            totalCount: item.totalCount,
+            toCount: item.items.length,
+            onShowMore: () => handleShowMore(item.type),
+          }}
+        />
+      ))}
     </>
   );
 };

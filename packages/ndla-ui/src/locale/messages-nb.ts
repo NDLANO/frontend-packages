@@ -52,6 +52,7 @@ const messages = {
     abilities: 'Egenskaper',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgaver og aktiviteter eller læringsstier',
+    searchFieldPlaceholderShort: 'Søk',
     label: {
       content: 'Innhold:',
       contentTypes: 'Innholdstyper:',
@@ -99,7 +100,7 @@ const messages = {
     },
     searchFilterMessages: {
       backButton: 'Tilbake til filter',
-      filterLabel: 'Velg fag',
+      filterLabel: 'Filtrer søket',
       confirmButton: 'Oppdater filter',
       hasValuesButtonText: 'Flere fag',
       noValuesButtonText: 'Filtrer på fag',
@@ -108,6 +109,10 @@ const messages = {
       removeFilter: 'Fjern filter {filterName}',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
+      resourceTypeFilter: {
+        heading: 'Filtrer på innholdstype',
+        button: 'Filtrer på innholdstype',
+      },
     },
     resultType: {
       showing: 'Viser {fromCount} til {toCount} av {totalCount}',
@@ -827,6 +832,9 @@ const messages = {
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',
   ...contributorTypes.nb,
+  filterButtons: {
+    removeAllFilters: 'Fjern filter',
+  },
 };
 
 export default messages;

@@ -1325,36 +1325,33 @@ const resourcesSourceMaterialResults = [
 
 const searchSubjectTypeOptions = [
   {
-    title: 'Alle',
-    value: 'ALL',
-  },
-  {
-    title: 'Emne',
+    label: 'Emne',
     value: 'topic',
   },
   {
-    title: 'Læringssti',
-    value: 'learning-path',
-  },
-  {
-    title: 'Fagstoff',
+    label: 'Fagstoff',
     value: 'subject-material',
   },
   {
-    title: 'Oppgaver og aktiviteter',
+    label: 'Oppgaver og aktiviteter',
     value: 'tasks-and-activities',
   },
   {
-    title: 'Vurderingsressurs',
+    label: 'Læringssti',
+    value: 'learning-path',
+    selected: false,
+  },
+  {
+    label: 'Vurderingsressurs',
     value: 'assessment-resources',
   },
   {
-    title: 'Kildemateriale',
-    value: 'source-material',
+    label: 'Ekstern læringsressurs',
+    value: 'external-learning-resources',
   },
   {
-    title: 'Ekstern læringsressurs',
-    value: 'external-learning-resources',
+    label: 'Kildemateriale',
+    value: 'source-material',
   },
 ];
 

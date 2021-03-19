@@ -200,6 +200,9 @@ export const borderShapes = {
      ${size === 'small' &&
        `padding-left:${spacing.small};
        padding-right:${spacing.small};`}
+     ${size === 'normal' &&
+       `padding-left:16px;
+       padding-right:16px;`}
     ${
       size === 'medium'
         ? `
@@ -295,6 +298,12 @@ export const appearances = {
     background-color: ${colors.brand.dark};
     border-color: ${colors.brand.dark};
     color: ${colors.background.default};
+  `,
+  light: css`
+    background-color: ${colors.brand.light};
+    border-color: ${colors.brand.light};
+    color: ${colors.brand.primary};
+    font-weight: ${fonts.weight.semibold};
   `,
   lighterGrey: css`
     background-color: ${colors.brand.greyLightest};
@@ -468,6 +477,7 @@ export const ButtonStyles = p =>
   ${p.textAlign ? textAlign[p.textAlign] : null}
   ${p.darker ? appearances['darker'] : null}
   ${p.lighterGrey ? appearances['lighterGrey'] : null}
+  ${p.light ? appearances['light'] : null}
 `;
 
 export const StyledButton = styled('button')`
@@ -558,6 +568,7 @@ Button.propTypes = {
   link: PropTypes.bool,
   large: PropTypes.bool,
   stripped: PropTypes.bool,
+  light: PropTypes.bool,
   lighter: PropTypes.bool,
   ghostPill: PropTypes.bool,
   ghostPillInverted: PropTypes.bool,

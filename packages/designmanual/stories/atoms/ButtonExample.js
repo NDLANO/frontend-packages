@@ -76,7 +76,25 @@ const ButtonExample = () => {
             Stor knapp
           </Button>
         </InlineContainer>
-        <h3>Lys versjon(lighter)</h3>
+        <h3>Lys versjon(light)</h3>
+        <InlineContainer>
+          <Button size="xsmall" light onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button size="small" light onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button size="normal" light onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button size="medium" light onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" light onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <h3>Lysere versjon(lighter)</h3>
         <InlineContainer>
           <Button size="xsmall" lighter onClick={action('clicked')}>
             Liten knapp
@@ -177,6 +195,43 @@ const ButtonExample = () => {
           <Button
             borderShape="rounded"
             outline
+            size="large"
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            borderShape="rounded"
+            light
+            size="xsmall"
+            onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            light
+            size="small"
+            onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            light
+            size="normal"
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            light
+            size="medium"
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            borderShape="rounded"
+            light
             size="large"
             onClick={action('clicked')}>
             Stor knapp
@@ -322,6 +377,43 @@ const ButtonExample = () => {
             size="large"
             borderShape="sharpened"
             outline
+            onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <Button
+            size="xsmall"
+            borderShape="sharpened"
+            light
+            onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button
+            size="small"
+            borderShape="sharpened"
+            light
+            onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button
+            size="normal"
+            borderShape="sharpened"
+            light
+            onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button
+            size="medium"
+            borderShape="sharpened"
+            light
+            onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button
+            size="large"
+            borderShape="sharpened"
+            light
             onClick={action('clicked')}>
             Stor knapp
           </Button>{' '}

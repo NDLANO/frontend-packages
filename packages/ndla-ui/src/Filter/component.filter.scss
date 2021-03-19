@@ -328,21 +328,14 @@
       }
       @include mq($until: mobileWide) {
         width: 100%;
-        padding: $spacing--small / 2 $spacing;
+        padding: $spacing--small / 2 0;
         justify-content: space-between;
-        flex-direction: row-reverse;
         min-height: 52px;
         align-items: center;
         .c-filter__text {
           flex-grow: 1;
         }
-        .c-filter__item-checkbox {
-          margin-right: 0;
-        }
-        .c-icon {
-          margin-left: 0;
-          margin-right: $spacing--small;
-        }
+
       }
     }
   }

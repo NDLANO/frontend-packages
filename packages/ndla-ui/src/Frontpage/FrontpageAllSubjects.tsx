@@ -5,6 +5,8 @@ import { injectT, tType } from '@ndla/i18n';
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
+// @ts-ignore
+import { ToggleItem } from '../Filter';
 
 const StyledWrapper = styled.nav`
   margin: 32px 0 0;
@@ -47,12 +49,13 @@ const StyledListItem = styled.li`
   break-inside: avoid;
 `;
 
-const StyledLetterItem = styled.span`
+const StyledLetterItem = styled.span<{ subjectViewType?: string }>`
   display: block;
   ${fonts.sizes(30, 1)};
   font-weight: ${fonts.weight.bold};
   color: ${colors.brand.primary};
   margin-bottom: 8px;
+  ${props => props.subjectViewType === 'checkbox' && `margin-left:37px;`}
 `;
 
 const StyledSpacingElement = styled.span`
@@ -69,15 +72,19 @@ const StyledLetterSpacing = styled.span`
 type subjectProps = {
   name: string;
   url: string;
+  id?: string;
 };
 type categoryProps = {
   name: string;
-  subjects: [subjectProps];
+  subjects: subjectProps[];
 };
 
 export type subjectsProps = {
-  categories: [categoryProps];
+  categories: categoryProps[];
+  subjectViewType?: 'link' | 'checkbox';
+  onToggleSubject?: (id: string) => void;
   onNavigate?: () => void;
+  selectedSubjects?: string[];
 };
 
 type letterCategories = {
@@ -119,7 +126,13 @@ const sortAlphabetically = (
   return subjectsLetterCategories;
 };
 
-const renderList = (subjects: subjectProps[], onNavigate?: () => void) => (
+const renderList = (
+  subjects: subjectProps[],
+  onNavigate?: () => void,
+  onToggleSubject?: subjectsProps['onToggleSubject'],
+  subjectViewType?: subjectsProps['subjectViewType'],
+  selectedSubjects: subjectsProps['selectedSubjects'] = [],
+) => (
   <StyledList>
     {sortAlphabetically(subjects).map((letter: any) => {
       return (
@@ -128,18 +141,37 @@ const renderList = (subjects: subjectProps[], onNavigate?: () => void) => (
             <React.Fragment key={subject.name}>
               <StyledListItem>
                 {index === 0 && (
-                  <StyledLetterItem>{letter.letter}</StyledLetterItem>
+                  <StyledLetterItem subjectViewType={subjectViewType}>
+                    {letter.letter}
+                  </StyledLetterItem>
                 )}
-                <SafeLink
-                  onClick={() => {
-                    if (onNavigate) {
-                      onNavigate();
-                    }
-                  }}
-                  to={subject.url}>
-                  {subject.name}
-                </SafeLink>
-                <StyledSpacingElement />
+                {subjectViewType === 'checkbox' && subject.id ? (
+                  <ToggleItem
+                    id={subject.id}
+                    value={subject.id}
+                    checked={selectedSubjects.includes(subject.id)}
+                    label={subject.name}
+                    component="div"
+                    onChange={() => {
+                      if (onToggleSubject && subject.id) {
+                        onToggleSubject(subject.id);
+                      }
+                    }}
+                  />
+                ) : (
+                  <>
+                    <SafeLink
+                      onClick={() => {
+                        if (onNavigate) {
+                          onNavigate();
+                        }
+                      }}
+                      to={subject.url}>
+                      {subject.name}
+                    </SafeLink>
+                    <StyledSpacingElement />
+                  </>
+                )}
                 {letter.items.length - 1 === index && <StyledLetterSpacing />}
               </StyledListItem>
             </React.Fragment>
@@ -153,6 +185,9 @@ const renderList = (subjects: subjectProps[], onNavigate?: () => void) => (
 const FrontpageAllSubjects = ({
   categories,
   onNavigate,
+  onToggleSubject,
+  subjectViewType,
+  selectedSubjects,
   t,
 }: subjectsProps & tType) => {
   const allSubjects: subjectProps[] = [];
@@ -162,13 +197,25 @@ const FrontpageAllSubjects = ({
     allSubjects.push(...category.subjects);
     data.push({
       title: category.name,
-      content: renderList(category.subjects, onNavigate),
+      content: renderList(
+        category.subjects,
+        onNavigate,
+        onToggleSubject,
+        subjectViewType,
+        selectedSubjects,
+      ),
     });
   });
 
   data.unshift({
     title: t('frontpageMenu.allsubjects'),
-    content: renderList(allSubjects, onNavigate),
+    content: renderList(
+      allSubjects,
+      onNavigate,
+      onToggleSubject,
+      subjectViewType,
+      selectedSubjects,
+    ),
   });
 
   return (

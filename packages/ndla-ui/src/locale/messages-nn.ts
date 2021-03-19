@@ -53,6 +53,7 @@ const messages = {
     close: 'Lukk',
     searchFieldPlaceholder:
       'Søk i fagstoff, oppgåver og aktivitetar eller læringsstiar',
+    searchFieldPlaceholderShort: 'Søk',
     label: {
       content: 'Innhald:',
       contentTypes: 'Innhaldstypar:',
@@ -100,7 +101,7 @@ const messages = {
     },
     searchFilterMessages: {
       backButton: 'Tilbake til filter',
-      filterLabel: 'Vel fag',
+      filterLabel: 'Filtrer søket',
       confirmButton: 'Oppdater filter',
       hasValuesButtonText: 'Fleire fag',
       noValuesButtonText: 'Filtrer på fag',
@@ -109,6 +110,10 @@ const messages = {
       closeFilter: 'Lukk filter',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
+      resourceTypeFilter: {
+        heading: 'Filtrer på innhaldstype',
+        button: 'Filtrer på innhaldstype',
+      },
     },
     resultType: {
       showing: 'Viser {fromCount} til {toCount} av {totalCount}',
@@ -831,6 +836,9 @@ const messages = {
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',
   ...contributorTypes.nn,
+  filterButtons: {
+    removeAllFilters: 'Fjern filter',
+  },
 };
 
 export default messages;

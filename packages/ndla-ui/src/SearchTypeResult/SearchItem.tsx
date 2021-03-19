@@ -129,6 +129,7 @@ const ItemText = styled.p`
   font-size: 15px;
   line-height: 20px;
   margin-bottom: ${spacing.small};
+  word-break: break-word;
   overflow-wrap: anywhere;
 `;
 const BreadcrumbPath = styled.div`

@@ -42,6 +42,7 @@ class AudioSearch extends Component {
       page: 1,
       pageSize: queryObject.pageSize,
       locale: queryObject.locale,
+      audioType: queryObject.audioType || 'standard',
     });
   }
 
@@ -56,6 +57,7 @@ class AudioSearch extends Component {
             page: queryObject.page,
             pageSize: result.pageSize,
             locale: queryObject.locale,
+            audioType: queryObject.audioType || 'standard',
           },
           audios: result.results,
           lastPage: Math.ceil(result.totalCount / result.pageSize),
@@ -106,6 +108,7 @@ class AudioSearch extends Component {
 AudioSearch.propTypes = {
   queryObject: PropTypes.shape({
     query: PropTypes.string,
+    audioType: PropTypes.string,
     page: PropTypes.number.isRequired,
     pageSize: PropTypes.number.isRequired,
     locale: PropTypes.string.isRequired,

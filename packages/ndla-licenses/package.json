@@ -1,6 +1,6 @@
 {
   "name": "@ndla/licenses",
-  "version": "0.6.44",
+  "version": "0.6.45",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@ndla/core": "^0.6.37",
-    "@ndla/icons": "^0.7.2",
+    "@ndla/icons": "^0.7.3",
     "defined": "1.0.0",
     "react-bem-helper": "1.4.1"
   },

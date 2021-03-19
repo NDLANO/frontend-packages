@@ -1,99 +1,154 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import Sticky from 'react-sticky-el';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+// @ts-ignore
+import Button from '@ndla/button';
+import { Cross } from '@ndla/icons/action';
+import { InformationOutline } from '@ndla/icons/common';
+import { injectT, tType } from '@ndla/i18n';
 
 type WrapperProps = {
-  backgroundColor?: string;
-  borderColor?: string;
-  simple?: boolean;
+  boxType?: 'info';
+};
+
+const colorsByType = (type: WrapperProps['boxType']) => {
+  const colors = {
+    color: '#551700',
+    backgroundColor: '#FEEFB3',
+  };
+  switch (type) {
+    case 'info':
+    default:
+      break;
+  }
+  return colors;
 };
 
 const Wrapper = styled.div<WrapperProps>`
-  background: ${props =>
-    props.backgroundColor ? props.backgroundColor : colors.white};
+  background: ${props => colorsByType(props.boxType).backgroundColor};
+  color: ${props => colorsByType(props.boxType).color};
+  font-size: 18px;
+  line-height: 32px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
+  display: flex;
+  padding: ${spacing.small};
   position: relative;
-  padding: ${props =>
-    props.simple
-      ? `${spacing.xsmall} ${spacing.small} ${spacing.xsmall} ${spacing.xsmall}`
-      : spacing.small};
-  margin-bottom: ${props => (props.simple ? 0 : spacing.small)};
-  border-radius: 2px;
-  border: 2px solid
-    ${props => (props.borderColor ? props.borderColor : colors.white)};
-  display: inline-flex;
-  ${props =>
-    !props.simple &&
-    `
-      &:after,
-      &:before {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        top: 100%;
-        left: ${spacing.medium};
-        border: solid transparent;
-        pointer-events: none;
-      }
-      &:after {
-        border-top-color: ${
-          props.backgroundColor ? props.backgroundColor : colors.white
-        };
-        border-width: 14px;
-        margin-left: -14px;
-      }
-      &:before {
-        border-top-color: ${
-          props.borderColor ? props.borderColor : colors.white
-        };
-        border-width: 17px;
-        margin-left: -17px;
-      }
-    `}
+`;
+
+const Label = styled.label`
+  font-weight: ${fonts.weight.bold};
+  display: inline-block;
+  margin-right: ${spacing.small};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    font-size: 18px;
+    font-weight: ${fonts.weight.semibold};
+  }
+`;
+
+const InfoWrapper = styled.div`
+  margin: 0 auto;
+  padding: 0 100px;
+  display: flex;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    padding: 0 90px 0 0;
+  }
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    padding: 0 50px 0 0;
+  }
+`;
+const TextWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    line-height: 24px;
+    font-size: 16px;
+  }
 `;
 
 const IconWrapper = styled.div`
   padding-right: ${spacing.small};
-`;
-
-const Label = styled.label`
-  font-size: 20px;
-  display: inline-block;
-`;
-
-const TextWrapper = styled.div`
-  padding: ${spacing.xxsmall} 0 ${spacing.xxsmall};
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    padding-top: 4px;
+  }
+`;
+
+const CloseButtonWrapper = styled.div`
+  position: absolute;
+  top: 13px;
+  right: ${spacing.small};
+  display: flex;
+  justify-content: flex-end;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    top: 16px;
+  }
+`;
+
+const CloseButton = styled(Button)`
+  display: flex;
   justify-content: center;
+  align-items: center;
+  font-weight: ${fonts.weight.semibold};
+  font-size: 16px;
+  color: ${props => colorsByType(props.boxType).color};
+  &:hover {
+    color: ${props => colorsByType(props.boxType).color};
+  }
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    flex-direction: column-reverse;
+  }
+`;
+
+const CloseButtonText = styled.span`
+  margin-right: ${spacing.small};
+  line-height: 1;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin-right: 0;
+    ${fonts.sizes('14px', '18px')};
+    font-weight: ${fonts.weight.normal};
+  }
 `;
 
 type Props = {
+  type?: WrapperProps['boxType'];
   heading?: string;
-  icon?: React.ReactNode;
-  backgroundColor?: string;
-  borderColor?: string;
-  simple?: boolean;
+  sticky?: boolean;
+  onClose?: () => void;
   children: React.ReactNode;
 };
+
 export const MessageBox = ({
   heading,
-  icon,
-  backgroundColor,
-  borderColor,
-  simple,
+  type = 'info',
+  sticky = true,
+  onClose,
   children,
-}: Props) => (
-  <Wrapper
-    backgroundColor={backgroundColor}
-    borderColor={borderColor}
-    simple={simple}>
-    {icon && <IconWrapper>{icon}</IconWrapper>}
-    <TextWrapper>
-      {heading && <Label>{heading}</Label>}
-      {children}
-    </TextWrapper>
-  </Wrapper>
+  t,
+}: Props & tType) => (
+  <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9999 }}>
+    <Wrapper boxType={type}>
+      <InfoWrapper>
+        <IconWrapper>
+          <InformationOutline style={{ width: '24px', height: '24px' }} />
+        </IconWrapper>
+        <TextWrapper>
+          {heading && <Label>{heading}</Label>}
+          {children}
+        </TextWrapper>
+      </InfoWrapper>
+      {onClose && (
+        <CloseButtonWrapper>
+          <CloseButton link onClick={onClose}>
+            <CloseButtonText>{t('close')}</CloseButtonText>
+            <Cross style={{ width: '24px', height: '24px' }} />
+          </CloseButton>
+        </CloseButtonWrapper>
+      )}
+    </Wrapper>
+  </Sticky>
 );
 
-export default MessageBox;
+export default injectT(MessageBox);

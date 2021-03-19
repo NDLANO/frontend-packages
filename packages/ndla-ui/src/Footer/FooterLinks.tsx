@@ -12,7 +12,6 @@ import { injectT, tType } from '@ndla/i18n';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   section:first-of-type {
     margin-right: ${spacing.large};

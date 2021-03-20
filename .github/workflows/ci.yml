@@ -50,7 +50,6 @@ jobs:
         run: yarn ndla-scripts now-github
         continue-on-error: true
       - name: "Deploy designmanual"
-        if:  ${{ github.event.ref == 'refs/head/master' }}
         if: github.ref == 'refs/head/master'
         run: yarn deploy
         continue-on-error: true

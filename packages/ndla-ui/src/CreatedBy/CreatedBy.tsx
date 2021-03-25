@@ -39,15 +39,24 @@ type Props = {
   name: string;
   description: string;
   url?: string;
+  target?: string;
 };
 
-const CreatedBy = ({ name, description, url }: Props) => (
+const CreatedBy = ({ name, description, url, target = '_blank' }: Props) => (
   <Container>
     <Wrapper>
       <Text>
-        {url ? <StyledSafeLink to={url}>{name}</StyledSafeLink> : name}
+        {url ? (
+          <StyledSafeLink to={url} target={target}>
+            {name}
+          </StyledSafeLink>
+        ) : (
+          name
+        )}
         &nbsp;{description}&nbsp;
-        <StyledSafeLink to={`https://ndla.no`}>NDLA</StyledSafeLink>
+        <StyledSafeLink to={`https://ndla.no`} target={target}>
+          NDLA
+        </StyledSafeLink>
       </Text>
       <Logo label={`NDLA`} to={`https://ndla.no`} />
     </Wrapper>

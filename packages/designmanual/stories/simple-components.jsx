@@ -876,7 +876,7 @@ storiesOf('Enkle komponenter', module)
         <p>
           LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i
           bunnen. "NDLA" og logoen lenker til ndla.no. "Artikkel" kan være en
-          lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som 
+          lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som
           standard i ny fane men det kan overstyres med target-parameter.
         </p>
       </StoryIntro>

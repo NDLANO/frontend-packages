@@ -1,6 +1,6 @@
 type ListOptions = {
   conjunction: string;
-}
+};
 
 export const joinNamesAsList = (names: string[], options: ListOptions) => {
   let joinedNames = '';
@@ -17,7 +17,7 @@ export const joinNamesAsList = (names: string[], options: ListOptions) => {
         joinedNames += `, ${name}`;
       }
     }
-  })
+  });
 
   return joinedNames;
 };

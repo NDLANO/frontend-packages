@@ -52,7 +52,8 @@ export const ContributorShape = PropTypes.shape({
 
 export const ArticleShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
-  content: PropTypes.oneOf([PropTypes.string, PropTypes.elementType]).isRequired,
+  content: PropTypes.oneOf([PropTypes.string, PropTypes.elementType])
+    .isRequired,
   copyright: PropTypes.shape({
     authors: PropTypes.array,
     creators: PropTypes.arrayOf(ContributorShape),

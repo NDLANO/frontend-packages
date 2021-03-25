@@ -29,7 +29,8 @@ const ArticleSourceMaterial = () => (
     <Article
       article={{
         title: 'Artikkel kildemateriale',
-        introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+        introduction:
+          'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
         published: '24.04.2018',
         content: () => (
           <>
@@ -40,32 +41,33 @@ const ArticleSourceMaterial = () => (
               caption=""
             />
             <p>
-              Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-              produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-              og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+              Du har en kjempegod idé til en kortfilm. Men det koster mange
+              penger å produsere filmen. Derfor er du avhengig av at noen tenner
+              på idéen din og bestemmer seg for å bruke ressurser på nettopp
+              dette prosjektet.
             </p>
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å <a href="#test">tenne på idéen din og se potensialet</a> i
-              den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å{' '}
+              <a href="#test">tenne på idéen din og se potensialet</a> i den.
             </p>
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å tenne på idéen din og se potensialet i den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <FigureImage
               alt=""
@@ -74,14 +76,14 @@ const ArticleSourceMaterial = () => (
             />
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å tenne på idéen din og se potensialet i den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <RelatedArticleListExample />
           </>
@@ -122,18 +124,15 @@ const ArticleSourceMaterial = () => (
             },
             authors: [{ name: 'Fornavn Etternavn' }],
             license: 'CC-BY-SA-4.0',
-            linkedTo: [
-              { label: "Fag" },
-              { label: "Fag" },
-            ],
-            onReferenceClick: (e) => console.log(e), // eslint-disable-line no-console
+            linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
+            onReferenceClick: e => console.log(e), // eslint-disable-line no-console
           },
         ],
         related: [
           { url: '', label: 'Vis flere begreper til tema politikk' },
           { url: '', label: 'Vis flere begreper til tema politikk' },
           { url: '', label: 'Vis tilknyttede læringsressurser' },
-        ]
+        ],
       }}
     />
     <LayoutItem layout="extend">

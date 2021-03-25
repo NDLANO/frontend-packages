@@ -117,7 +117,7 @@ const AuthorsWrapper = styled.div`
   button {
     margin-left: 1rem;
   }
-`
+`;
 
 type MediaProps = {
   type: 'video' | 'other';
@@ -203,9 +203,17 @@ const SearchNotionItem = ({
           <AuthorsWrapper>
             {
               <p>
-                {authors.length > 0 && t('article.writtenBy', { authors: joinNamesAsList(authors.map((author) => author.name), { conjunction: 'og' }) || '' })}
-                {(authors.length > 0 && license) && ' '}
-                {license && `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
+                {authors.length > 0 &&
+                  t('article.writtenBy', {
+                    authors:
+                      joinNamesAsList(
+                        authors.map(author => author.name),
+                        { conjunction: 'og' },
+                      ) || '',
+                  })}
+                {authors.length > 0 && license && ' '}
+                {license &&
+                  `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
                 {onReferenceClick && (
                   <Button link onClick={onReferenceClick}>
                     {t('article.cite')}

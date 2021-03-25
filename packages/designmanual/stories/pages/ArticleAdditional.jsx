@@ -26,25 +26,27 @@ const ArticleAdditional = () => (
     <Article
       article={{
         title: 'Artikkel Tilleggsstoff?',
-        introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+        introduction:
+          'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
         published: '24.04.2018',
         content: () => (
           <>
             <p>
-              Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-              produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-              og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+              Du har en kjempegod idé til en kortfilm. Men det koster mange
+              penger å produsere filmen. Derfor er du avhengig av at noen tenner
+              på idéen din og bestemmer seg for å bruke ressurser på nettopp
+              dette prosjektet.
             </p>
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å tenne på idéen din og se potensialet i den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <table className="c-table o-wrapper--wide">
               <tbody>
@@ -72,7 +74,8 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        en av journalistenes mening om en ny film, bok, konsert e.l.{' '}
+                        en av journalistenes mening om en ny film, bok, konsert
+                        e.l.{' '}
                       </li>
                       <li>
                         skal være en bruksanvisning slik at målgruppen vet om
@@ -86,7 +89,9 @@ const ArticleAdditional = () => (
                   <td>Leserinnlegg og kommentarfelt</td>
                   <td>
                     <ul>
-                      <li>lar den enkelte mottaker komme med sitt syn på en sak</li>
+                      <li>
+                        lar den enkelte mottaker komme med sitt syn på en sak
+                      </li>
                       <li>leserinnlegg i avis, kommentarfelt på nett </li>
                     </ul>
                   </td>
@@ -147,8 +152,8 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        kort nyhetsmelding som gir grunnleggende informasjon om en
-                        aktuell hendelse
+                        kort nyhetsmelding som gir grunnleggende informasjon om
+                        en aktuell hendelse
                       </li>
                       <li>gjerne bare 10–15 setninger</li>
                     </ul>
@@ -166,7 +171,8 @@ const ArticleAdditional = () => (
                         alle sanser og litterære virkemidler{' '}
                       </li>
                       <li>
-                        går i dybden, gir leseren en større forståelse av et tema
+                        går i dybden, gir leseren en større forståelse av et
+                        tema
                       </li>
                     </ul>
                   </td>
@@ -191,14 +197,14 @@ const ArticleAdditional = () => (
             </table>
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å tenne på idéen din og se potensialet i den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
           </>
         ),
@@ -238,18 +244,15 @@ const ArticleAdditional = () => (
             },
             authors: [{ name: 'Fornavn Etternavn' }],
             license: 'CC-BY-SA-4.0',
-            linkedTo: [
-              { label: "Fag" },
-              { label: "Fag" },
-            ],
-            onReferenceClick: (e) => console.log(e), // eslint-disable-line no-console
+            linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
+            onReferenceClick: e => console.log(e), // eslint-disable-line no-console
           },
         ],
         related: [
           { url: '', label: 'Vis flere begreper til tema politikk' },
           { url: '', label: 'Vis flere begreper til tema politikk' },
           { url: '', label: 'Vis tilknyttede læringsressurser' },
-        ]
+        ],
       }}
     />
     <LayoutItem layout="extend">

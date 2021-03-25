@@ -27,32 +27,33 @@ const ArticleAssessmentResource = () => (
     <Article
       article={{
         title: 'Portal for vurdering, engelsk fellesfag',
-        introduction: 'På disse sidene har vi samlet ressurser som kan støtte elever og lærere i arbeidet med vurdering. Ressursene her kan brukes til egenevaluering av elevene og i dialog mellom elev og lærer.',
+        introduction:
+          'På disse sidene har vi samlet ressurser som kan støtte elever og lærere i arbeidet med vurdering. Ressursene her kan brukes til egenevaluering av elevene og i dialog mellom elev og lærer.',
         published: '24.04.2018',
         content: () => (
           <>
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å <a href="#test">tenne på idéen din og se potensialet</a> i
-              den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å{' '}
+              <a href="#test">tenne på idéen din og se potensialet</a> i den.
             </p>
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å tenne på idéen din og se potensialet i den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
             <FigureImage
               alt=""
@@ -60,14 +61,14 @@ const ArticleAssessmentResource = () => (
             />
             <p>
               En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-              andre til å tenne på idéen din og se potensialet i den.
+              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
+              få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å lage,
-              tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-              klassen.
+              pitcher, blir idéen og historien i den filmen du planlegger å
+              lage, tydeligere for både deg selv og dem du eventuelt jobber
+              sammen med i klassen.
             </p>
           </>
         ),
@@ -107,18 +108,15 @@ const ArticleAssessmentResource = () => (
             },
             authors: [{ name: 'Fornavn Etternavn' }],
             license: 'CC-BY-SA-4.0',
-            linkedTo: [
-              { label: "Fag" },
-              { label: "Fag" },
-            ],
-            onReferenceClick: (e) => console.log(e), // eslint-disable-line no-console
+            linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
+            onReferenceClick: e => console.log(e), // eslint-disable-line no-console
           },
         ],
         related: [
           { url: '', label: 'Vis flere begreper til tema politikk' },
           { url: '', label: 'Vis flere begreper til tema politikk' },
           { url: '', label: 'Vis tilknyttede læringsressurser' },
-        ]
+        ],
       }}
     />
     <LayoutItem layout="extend">

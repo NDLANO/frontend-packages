@@ -111,13 +111,13 @@ type Props = {
 const getArticleContent = (content: any, locale: Locale) => {
   switch (typeof content) {
     case 'string':
-      return <ArticleContent content={content} locale={locale} />
+      return <ArticleContent content={content} locale={locale} />;
     case 'function':
-      return content()
+      return content();
     default:
-      return content
+      return content;
   }
-}
+};
 
 export const Article = ({
   article,
@@ -136,7 +136,11 @@ export const Article = ({
   printUrl,
   notions,
 }: Props) => {
-  const [articleRef, { entry }] = useIntersectionObserver({ root: null, rootMargin: '100%', threshold: 0.15 });
+  const [articleRef, { entry }] = useIntersectionObserver({
+    root: null,
+    rootMargin: '100%',
+    threshold: 0.15,
+  });
 
   const showExplainNotions = entry && entry.isIntersecting;
 
@@ -170,7 +174,13 @@ export const Article = ({
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        {showExplainNotions && <ArticleNotions locale={locale} notions={notions.list} relatedContent={notions.related} renderMarkdown={renderMarkdown} />}
+        {showExplainNotions && (
+          <ArticleNotions
+            locale={locale}
+            notions={notions.list}
+            relatedContent={notions.related}
+          />
+        )}
         {getArticleContent(content, locale)}
       </LayoutItem>
       <LayoutItem layout="center">
@@ -188,9 +198,7 @@ export const Article = ({
           }}
         />
       </LayoutItem>
-      <LayoutItem layout="extend">
-        {children}
-      </LayoutItem>
+      <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>
   );
 };

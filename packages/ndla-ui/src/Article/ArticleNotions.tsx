@@ -108,18 +108,19 @@ export type Notion = {
   url: string;
 }
 
-type NotionRelatedContent = {
+export type NotionRelatedContent = {
   url: string;
   label: string;
 }
 
 type ArticleNotionsProps = {
+  locale: string;
   notions: Notion[];
   renderMarkdown: (text: string) => string;
   relatedContent?: NotionRelatedContent[];
 }
 
-export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({ notions, renderMarkdown, relatedContent = [], t }) => (
+export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({ locale, notions, renderMarkdown, relatedContent = [], t }) => (
   <div>
     <Modal
       activateButton={
@@ -150,6 +151,7 @@ export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({ notions
             {notions.map((notion) => (
               <SearchNotionItem
                 key={notion.id}
+                locale={locale}
                 {...notion}
                 renderMarkdown={renderMarkdown}
               />

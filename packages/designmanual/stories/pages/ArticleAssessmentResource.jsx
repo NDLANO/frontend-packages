@@ -12,10 +12,6 @@ import {
   OneColumn,
   LayoutItem,
   Article,
-  ArticleTitle,
-  ArticleWrapper,
-  ArticleHeaderWrapper,
-  ArticleIntroduction,
   AssessmentResourcesBadge,
   constants,
 } from '@ndla/ui';

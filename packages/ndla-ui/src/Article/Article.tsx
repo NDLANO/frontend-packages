@@ -20,7 +20,7 @@ import ArticleByline from './ArticleByline';
 // @ts-ignore
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleNotions, { Notion } from './ArticleNotions';
+import ArticleNotions, { Notion, NotionRelatedContent } from './ArticleNotions';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -105,7 +105,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink: string;
   printUrl: string;
-  notions: Notion[];
+  notions: { list: Notion[], related: NotionRelatedContent[] };
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -170,7 +170,7 @@ export const Article = ({
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
-        {showExplainNotions && <ArticleNotions notions={notions.list} relatedContent={notions.related} renderMarkdown={renderMarkdown} />}
+        {showExplainNotions && <ArticleNotions locale={locale} notions={notions.list} relatedContent={notions.related} renderMarkdown={renderMarkdown} />}
         {getArticleContent(content, locale)}
       </LayoutItem>
       <LayoutItem layout="center">

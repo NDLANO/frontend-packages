@@ -133,6 +133,7 @@ export type SearchNotionItemProps = {
   labels?: string[];
   authors?: { name: string }[];
   license?: string;
+  locale?: string;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   renderMarkdown: (text: React.ReactNode) => string;
 };
@@ -145,6 +146,7 @@ const SearchNotionItem = ({
   labels = [],
   authors = [],
   license,
+  locale,
   onReferenceClick,
   renderMarkdown,
   t,
@@ -203,7 +205,7 @@ const SearchNotionItem = ({
               <p>
                 {authors.length > 0 && t('article.writtenBy', { authors: joinNamesAsList(authors.map((author) => author.name), { conjunction: 'og' }) || '' })}
                 {(authors.length > 0 && license) && ' '}
-                {license && `(${getLicenseByAbbreviation(license).abbreviation})`}
+                {license && `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
                 {onReferenceClick && (
                   <Button link onClick={onReferenceClick}>
                     {t('article.cite')}

@@ -73,7 +73,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
   useEffect(() => {
     if (isWindowContext) {
       const rememberGradeIndex =
-        window.localStorage.getItem('prgrammeShowGradeIndex') || '0';
+        window.localStorage.getItem('programmeShowGradeIndex') || '0';
       if (grades.length > Number(rememberGradeIndex)) {
         setShowGradeIndex(Number(rememberGradeIndex));
       }

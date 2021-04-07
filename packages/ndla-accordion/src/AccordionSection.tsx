@@ -12,7 +12,6 @@ import { AccordionBar, AccordionPanel } from './';
 export interface Props {
   id: string;
   title: string;
-  className: string;
   hasError?: boolean;
   startOpen?: boolean;
   tiny?: boolean;
@@ -45,19 +44,14 @@ const AccordionSection: FC<Props> = props => {
       </AccordionBar>
       {isOpen && (
         <AccordionPanel id={id} hasError={hasError} isOpen={isOpen}>
-          <>
-            {Children.map(children, child => {
-              if (
-                React.isValidElement(child) &&
-                typeof child.type !== 'string'
-              ) {
-                return React.cloneElement(child, {
-                  setIsOpen: onClick ? onClick : setIsOpen,
-                });
-              }
-              return child;
-            })}
-          </>
+          {Children.map(children, child => {
+            if (React.isValidElement(child) && typeof child.type !== 'string') {
+              return React.cloneElement(child, {
+                setIsOpen: onClick ? onClick : setIsOpen,
+              });
+            }
+            return child;
+          })}
         </AccordionPanel>
       )}
     </>

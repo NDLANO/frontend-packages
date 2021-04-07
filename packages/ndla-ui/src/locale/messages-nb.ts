@@ -357,6 +357,10 @@ const messages = {
   subject: {
     associatedTopics: 'Tilhørende emner',
   },
+  accordion: {
+    closeAll: 'Lukk alle',
+    openAll: 'Åpne alle',
+  },
   license: {
     heading: 'Slik gjenbruker du innhold',
     learnMore: 'Lær mer om åpne lisenser',

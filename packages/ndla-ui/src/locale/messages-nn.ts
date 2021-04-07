@@ -360,6 +360,10 @@ const messages = {
   subject: {
     associatedTopics: 'Tilhøyrande emne',
   },
+  accordion: {
+    closeAll: 'Lukk alle',
+    openAll: 'Åpne alle',
+  },
   license: {
     heading: 'Slik gjenbruker du innhald',
     learnMore: 'Lær meir om opne lisensar',

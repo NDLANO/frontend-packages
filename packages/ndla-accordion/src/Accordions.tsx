@@ -7,12 +7,16 @@
  */
 
 import React, { useState, Children } from 'react';
+import { injectT, tType } from '@ndla/i18n';
+// @ts-ignore
+import Button from '@ndla/button';
+
 import { getPanelIds, getOpenPanels } from './accordionUtil';
 import AccordionSection from './AccordionSection';
 
 type Props = { tiny?: boolean; single?: boolean };
 
-const Accordions: React.FC<Props> = ({ tiny, single, children }) => {
+const Accordions: React.FC<Props & tType> = ({ tiny, single, t, children }) => {
   const [panelIds] = useState<string[]>(getPanelIds(children));
   const [openPanels, setOpenPanels] = useState<string[]>(
     getOpenPanels(children),
@@ -29,15 +33,21 @@ const Accordions: React.FC<Props> = ({ tiny, single, children }) => {
       setOpenPanels(newOpenPanels);
     }
   };
+  const allOpen = openPanels.length === panelIds.length;
   const toggleAllOpen = () => {
-    const newOpenPanels =
-      openPanels.length === panelIds.length ? [] : [...panelIds];
+    const newOpenPanels = allOpen ? [] : [...panelIds];
     setOpenPanels(newOpenPanels);
   };
 
   return (
     <>
-      {!single && <button onClick={toggleAllOpen}>button</button>}
+      {!single && (
+        <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+          <Button size="small" stripped onClick={toggleAllOpen}>
+            {allOpen ? t('accordion.closeAll') : t('accordion.openAll')}
+          </Button>
+        </div>
+      )}
       {Children.map(children, child => {
         if (React.isValidElement(child) && child.type === AccordionSection) {
           const { id } = child.props;
@@ -53,4 +63,4 @@ const Accordions: React.FC<Props> = ({ tiny, single, children }) => {
   );
 };
 
-export default Accordions;
+export default injectT(Accordions);

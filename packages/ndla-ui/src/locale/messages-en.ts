@@ -358,6 +358,10 @@ const messages = {
   subject: {
     associatedTopics: 'Associated topics',
   },
+  accordion: {
+    closeAll: 'Close all',
+    openAll: 'Open all',
+  },
   license: {
     heading: 'Howto reuse content',
     tabs: {

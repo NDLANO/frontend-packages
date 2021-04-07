@@ -21,8 +21,8 @@ export interface Props {
 }
 
 const AccordionSection: FC<Props> = props => {
-  const { id, title, children, startOpen, open, onClick } = props;
-  const { tiny, barChildren, hasError } = props;
+  const { id, children, startOpen, open, onClick } = props;
+  const { title, barChildren, tiny, hasError } = props; // bar props
   const [isOpen, setIsOpen] = useState(!!startOpen);
 
   useEffect(() => {

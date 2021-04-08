@@ -7,9 +7,9 @@
  */
 
 import React, { ReactElement, ReactNode, Children } from 'react';
-import AccordionSection, { Props as ASProps } from './AccordionSection';
+import AccordionSection, { Props as AccordionSectionProps } from './AccordionSection';
 
-const getPanels = (children: ReactNode): ReactElement<ASProps>[] => {
+const getPanels = (children: ReactNode): ReactElement<AccordionSectionProps>[] => {
   const panels = Children.map(children, child =>
     React.isValidElement(child) && child.type === AccordionSection ? child : null,
   );

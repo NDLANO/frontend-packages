@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, NDLA.
+ * Copyright (c) 2021-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -23,7 +23,7 @@ const PanelComponent = ({ tekst, setIsOpen }) => {
   );
 };
 
-class AccordionExample extends Component {
+class AccordionExample2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -155,4 +155,4 @@ class AccordionExample extends Component {
   }
 }
 
-export default AccordionExample;
+export default AccordionExample2;

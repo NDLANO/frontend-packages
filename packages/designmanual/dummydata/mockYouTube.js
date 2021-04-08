@@ -44,8 +44,7 @@ export const firstYouTubeList = {
       link: 'https://www.youtube.com/watch?v=fFRRNUaPTkE',
       displayLink: 'www.youtube.com',
       snippet: 'Nov 13, 2015 ... Produsert og levert november 2015.',
-      htmlSnippet:
-        'Nov 13, 2015 \u003cb\u003e...\u003c/b\u003e Produsert og levert november 2015.',
+      htmlSnippet: 'Nov 13, 2015 \u003cb\u003e...\u003c/b\u003e Produsert og levert november 2015.',
       cacheId: 'MIDAD_wYYS8J',
       formattedUrl: 'https://www.youtube.com/watch?v=fFRRNUaPTkE',
       htmlFormattedUrl: 'https://www.youtube.com/watch?v=fFRRNUaPTkE',
@@ -84,14 +83,11 @@ export const firstYouTubeList = {
             'og:description': 'Produsert og levert november 2015.',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/fFRRNUaPTkE',
             'og:video:secure_url': 'https://www.youtube.com/embed/fFRRNUaPTkE',
@@ -104,8 +100,7 @@ export const firstYouTubeList = {
             'twitter:url': 'https://www.youtube.com/watch?v=fFRRNUaPTkE',
             'twitter:title': 'Smittekjeden for NDLA',
             'twitter:description': 'Produsert og levert november 2015.',
-            'twitter:image':
-              'https://i.ytimg.com/vi/fFRRNUaPTkE/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/fFRRNUaPTkE/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -116,8 +111,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=fFRRNUaPTkE&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=fFRRNUaPTkE',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=fFRRNUaPTkE',
             'twitter:player': 'https://www.youtube.com/embed/fFRRNUaPTkE',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -133,8 +127,7 @@ export const firstYouTubeList = {
             videoid: 'fFRRNUaPTkE',
             duration: 'PT5M30S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/fFRRNUaPTkE/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/fFRRNUaPTkE/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/fFRRNUaPTkE',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -169,8 +162,7 @@ export const firstYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'Visiting Norway and NDLA - Frank J. M￼ller - YouTube',
-      htmlTitle:
-        'Visiting Norway and \u003cb\u003eNDLA\u003c/b\u003e - Frank J. M￼ller - YouTube',
+      htmlTitle: 'Visiting Norway and \u003cb\u003eNDLA\u003c/b\u003e - Frank J. M￼ller - YouTube',
       link: 'https://www.youtube.com/watch?v=Zzkf6SkpSWQ',
       displayLink: 'www.youtube.com',
       snippet:
@@ -216,14 +208,11 @@ export const firstYouTubeList = {
               'Prof. Frank J. M￼ller tour of Norway and NDLA in March 2017. Jone Nyborg interviews him about his trip and his impressions. Shot in Kristiansand at Universit...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/Zzkf6SkpSWQ',
             'og:video:secure_url': 'https://www.youtube.com/embed/Zzkf6SkpSWQ',
@@ -238,8 +227,7 @@ export const firstYouTubeList = {
             'twitter:title': 'Visiting Norway and NDLA - Frank J. M￼ller',
             'twitter:description':
               'Prof. Frank J. M￼ller tour of Norway and NDLA in March 2017. Jone Nyborg interviews him about his trip and his impressions. Shot in Kristiansand at Universit...',
-            'twitter:image':
-              'https://i.ytimg.com/vi/Zzkf6SkpSWQ/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/Zzkf6SkpSWQ/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -250,8 +238,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=Zzkf6SkpSWQ&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=Zzkf6SkpSWQ',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=Zzkf6SkpSWQ',
             'twitter:player': 'https://www.youtube.com/embed/Zzkf6SkpSWQ',
           },
         ],
@@ -266,8 +253,7 @@ export const firstYouTubeList = {
             videoid: 'Zzkf6SkpSWQ',
             duration: 'PT9M31S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/Zzkf6SkpSWQ/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/Zzkf6SkpSWQ/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/Zzkf6SkpSWQ',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -301,8 +287,7 @@ export const firstYouTubeList = {
     },
     {
       kind: 'customsearch#result',
-      title:
-        'NDLA motivating other countries - Prof. Frank J. M￼ller - YouTube',
+      title: 'NDLA motivating other countries - Prof. Frank J. M￼ller - YouTube',
       htmlTitle:
         '\u003cb\u003eNDLA\u003c/b\u003e motivating other countries - Prof. Frank J. M￼ller - YouTube',
       link: 'https://www.youtube.com/watch?v=hDlos0DbTNs',
@@ -344,21 +329,17 @@ export const firstYouTubeList = {
             'theme-color': '#ff0000',
             'og:site_name': 'YouTube',
             'og:url': 'https://www.youtube.com/watch?v=hDlos0DbTNs',
-            'og:title':
-              'NDLA motivating other countries - Prof. Frank J. M￼ller',
+            'og:title': 'NDLA motivating other countries - Prof. Frank J. M￼ller',
             'og:image': 'https://i.ytimg.com/vi/hDlos0DbTNs/maxresdefault.jpg',
             'og:description':
               'Prof. Frank J. M￼ller tour of Norway and NDLA in March 2017. Jone Nyborg interviews him about his trip and his impressions. Shot in Kristiansand at Universit...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=hDlos0DbTNs&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=hDlos0DbTNs&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=hDlos0DbTNs&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=hDlos0DbTNs&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=hDlos0DbTNs&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=hDlos0DbTNs&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/hDlos0DbTNs',
             'og:video:secure_url': 'https://www.youtube.com/embed/hDlos0DbTNs',
@@ -370,12 +351,10 @@ export const firstYouTubeList = {
             'twitter:card': 'player',
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=hDlos0DbTNs',
-            'twitter:title':
-              'NDLA motivating other countries - Prof. Frank J. M￼ller',
+            'twitter:title': 'NDLA motivating other countries - Prof. Frank J. M￼ller',
             'twitter:description':
               'Prof. Frank J. M￼ller tour of Norway and NDLA in March 2017. Jone Nyborg interviews him about his trip and his impressions. Shot in Kristiansand at Universit...',
-            'twitter:image':
-              'https://i.ytimg.com/vi/hDlos0DbTNs/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/hDlos0DbTNs/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -398,8 +377,7 @@ export const firstYouTubeList = {
             videoid: 'hDlos0DbTNs',
             duration: 'PT1M54S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/hDlos0DbTNs/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/hDlos0DbTNs/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/hDlos0DbTNs',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -480,14 +458,11 @@ export const firstYouTubeList = {
               'En solcelle konverterer energi i sollys direkte til elektrisitet. Elektrisk energi fra solceller blir regnet som fornybar energi siden den stammer fra sollys...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=oE_YqdeD2Eg&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=oE_YqdeD2Eg&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=oE_YqdeD2Eg&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=oE_YqdeD2Eg&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=oE_YqdeD2Eg&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=oE_YqdeD2Eg&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/oE_YqdeD2Eg',
             'og:video:secure_url': 'https://www.youtube.com/embed/oE_YqdeD2Eg',
@@ -601,14 +576,11 @@ export const firstYouTubeList = {
               'Radioaktivitet er partikler eller elektromagnetisk stråling som blir sendt ut fra ustabile atomkjerner. BM: http://ndla.no/nb/node/44767?fag=7&meny=30 NN: ht...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/PFsTyRcMItE',
             'og:video:secure_url': 'https://www.youtube.com/embed/PFsTyRcMItE',
@@ -634,8 +606,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=PFsTyRcMItE&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=PFsTyRcMItE',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=PFsTyRcMItE',
             'twitter:player': 'https://www.youtube.com/embed/PFsTyRcMItE',
           },
         ],
@@ -685,8 +656,7 @@ export const firstYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'Guerilla Story Time NDLA 2015 Video 15 - YouTube',
-      htmlTitle:
-        'Guerilla Story Time \u003cb\u003eNDLA\u003c/b\u003e 2015 Video 15 - YouTube',
+      htmlTitle: 'Guerilla Story Time \u003cb\u003eNDLA\u003c/b\u003e 2015 Video 15 - YouTube',
       link: 'https://www.youtube.com/watch?v=55iOpM1X7r8',
       displayLink: 'www.youtube.com',
       snippet:
@@ -721,14 +691,11 @@ export const firstYouTubeList = {
               'Guerrilla Story Time Session at the North Dakota Library Association 2015 conference.',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/55iOpM1X7r8',
             'og:video:secure_url': 'https://www.youtube.com/embed/55iOpM1X7r8',
@@ -753,8 +720,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=55iOpM1X7r8&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=55iOpM1X7r8',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=55iOpM1X7r8',
             'twitter:player': 'https://www.youtube.com/embed/55iOpM1X7r8',
             'twitter:player:width': '640',
             'twitter:player:height': '360',
@@ -806,8 +772,7 @@ export const firstYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'samskrive.ndla.no og itslearning - YouTube',
-      htmlTitle:
-        'samskrive.\u003cb\u003endla\u003c/b\u003e.no og itslearning - YouTube',
+      htmlTitle: 'samskrive.\u003cb\u003endla\u003c/b\u003e.no og itslearning - YouTube',
       link: 'https://www.youtube.com/watch?v=vEfLLhcQUlE',
       displayLink: 'www.youtube.com',
       snippet:
@@ -849,18 +814,14 @@ export const firstYouTubeList = {
             'og:url': 'https://www.youtube.com/watch?v=vEfLLhcQUlE',
             'og:title': 'samskrive.ndla.no og itslearning',
             'og:image': 'https://i.ytimg.com/vi/vEfLLhcQUlE/maxresdefault.jpg',
-            'og:description':
-              'Samskriving i samskrive.ndla.no og dele/bruke denne via itslearning',
+            'og:description': 'Samskriving i samskrive.ndla.no og dele/bruke denne via itslearning',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/vEfLLhcQUlE',
             'og:video:secure_url': 'https://www.youtube.com/embed/vEfLLhcQUlE',
@@ -874,8 +835,7 @@ export const firstYouTubeList = {
             'twitter:title': 'samskrive.ndla.no og itslearning',
             'twitter:description':
               'Samskriving i samskrive.ndla.no og dele/bruke denne via itslearning',
-            'twitter:image':
-              'https://i.ytimg.com/vi/vEfLLhcQUlE/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/vEfLLhcQUlE/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -886,8 +846,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=vEfLLhcQUlE&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=vEfLLhcQUlE',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=vEfLLhcQUlE',
             'twitter:player': 'https://www.youtube.com/embed/vEfLLhcQUlE',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -897,15 +856,13 @@ export const firstYouTubeList = {
           {
             url: 'https://www.youtube.com/watch?v=vEfLLhcQUlE',
             name: 'samskrive.ndla.no og itslearning',
-            description:
-              'Samskriving i samskrive.ndla.no og dele/bruke denne via itslearning',
+            description: 'Samskriving i samskrive.ndla.no og dele/bruke denne via itslearning',
             paid: 'False',
             channelid: 'UCbsfGEtXflkHKe3v_6luLQw',
             videoid: 'vEfLLhcQUlE',
             duration: 'PT4M45S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/vEfLLhcQUlE/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/vEfLLhcQUlE/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/vEfLLhcQUlE',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -940,8 +897,7 @@ export const firstYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'Guerilla Story Time NDLA 2015 Video 4 - YouTube',
-      htmlTitle:
-        'Guerilla Story Time \u003cb\u003eNDLA\u003c/b\u003e 2015 Video 4 - YouTube',
+      htmlTitle: 'Guerilla Story Time \u003cb\u003eNDLA\u003c/b\u003e 2015 Video 4 - YouTube',
       link: 'https://www.youtube.com/watch?v=8D30256C_w4',
       displayLink: 'www.youtube.com',
       snippet:
@@ -987,14 +943,11 @@ export const firstYouTubeList = {
               'Guerrilla Story Time Session at the North Dakota Library Association 2015 conference.',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/8D30256C_w4',
             'og:video:secure_url': 'https://www.youtube.com/embed/8D30256C_w4',
@@ -1019,8 +972,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=8D30256C_w4&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=8D30256C_w4',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=8D30256C_w4',
             'twitter:player': 'https://www.youtube.com/embed/8D30256C_w4',
             'twitter:player:width': '640',
             'twitter:player:height': '360',
@@ -1073,8 +1025,7 @@ export const firstYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'Guerilla Story Time NDLA 2015 Video 10 - YouTube',
-      htmlTitle:
-        'Guerilla Story Time \u003cb\u003eNDLA\u003c/b\u003e 2015 Video 10 - YouTube',
+      htmlTitle: 'Guerilla Story Time \u003cb\u003eNDLA\u003c/b\u003e 2015 Video 10 - YouTube',
       link: 'https://www.youtube.com/watch?v=n-50d8TyZgA',
       displayLink: 'www.youtube.com',
       snippet:
@@ -1117,14 +1068,11 @@ export const firstYouTubeList = {
               'Guerrilla Story Time Session at the North Dakota Library Association 2015 conference.',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/n-50d8TyZgA',
             'og:video:secure_url': 'https://www.youtube.com/embed/n-50d8TyZgA',
@@ -1149,8 +1097,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=n-50d8TyZgA&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=n-50d8TyZgA',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=n-50d8TyZgA',
             'twitter:player': 'https://www.youtube.com/embed/n-50d8TyZgA',
             'twitter:player:width': '640',
             'twitter:player:height': '360',
@@ -1249,14 +1196,11 @@ export const firstYouTubeList = {
               'Nasjonal digital læringsarena (NDLA) er et fylkeskommunalt prosjekt som har som mål å tilby kvalitetssikrede, fritt tilgjengelige, nettbaserte læremidler i a...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/I-xSqPqqRZU',
             'og:video:secure_url': 'https://www.youtube.com/embed/I-xSqPqqRZU',
@@ -1282,8 +1226,7 @@ export const firstYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=I-xSqPqqRZU&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=I-xSqPqqRZU',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=I-xSqPqqRZU',
             'twitter:player': 'https://www.youtube.com/embed/I-xSqPqqRZU',
             'twitter:player:width': '640',
             'twitter:player:height': '360',
@@ -1425,14 +1368,11 @@ export const secondYouTubeList = {
             'og:image': 'https://i.ytimg.com/vi/oSMsegou3lQ/maxresdefault.jpg',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/oSMsegou3lQ',
             'og:video:secure_url': 'https://www.youtube.com/embed/oSMsegou3lQ',
@@ -1444,8 +1384,7 @@ export const secondYouTubeList = {
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=oSMsegou3lQ',
             'twitter:title': 'ndla',
-            'twitter:image':
-              'https://i.ytimg.com/vi/oSMsegou3lQ/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/oSMsegou3lQ/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -1456,8 +1395,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=oSMsegou3lQ',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=oSMsegou3lQ',
             'twitter:player': 'https://www.youtube.com/embed/oSMsegou3lQ',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -1472,8 +1410,7 @@ export const secondYouTubeList = {
             videoid: 'oSMsegou3lQ',
             duration: 'PT8M33S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/oSMsegou3lQ/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/oSMsegou3lQ/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/oSMsegou3lQ',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -1545,24 +1482,19 @@ export const secondYouTubeList = {
         ],
         metatags: [
           {
-            title:
-              '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
+            title: '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
             'theme-color': '#ff0000',
             'og:site_name': 'YouTube',
             'og:url': 'https://www.youtube.com/watch?v=KwiAtuNt8Mc',
-            'og:title':
-              '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
+            'og:title': '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
             'og:image': 'https://i.ytimg.com/vi/KwiAtuNt8Mc/maxresdefault.jpg',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/KwiAtuNt8Mc',
             'og:video:secure_url': 'https://www.youtube.com/embed/KwiAtuNt8Mc',
@@ -1573,10 +1505,8 @@ export const secondYouTubeList = {
             'twitter:card': 'player',
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=KwiAtuNt8Mc',
-            'twitter:title':
-              '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
-            'twitter:image':
-              'https://i.ytimg.com/vi/KwiAtuNt8Mc/maxresdefault.jpg',
+            'twitter:title': '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
+            'twitter:image': 'https://i.ytimg.com/vi/KwiAtuNt8Mc/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -1587,8 +1517,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=KwiAtuNt8Mc&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=KwiAtuNt8Mc',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=KwiAtuNt8Mc',
             'twitter:player': 'https://www.youtube.com/embed/KwiAtuNt8Mc',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -1597,15 +1526,13 @@ export const secondYouTubeList = {
         videoobject: [
           {
             url: 'https://www.youtube.com/watch?v=KwiAtuNt8Mc',
-            name:
-              '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
+            name: '￘ivind H￸ines - CEO of Norwegian Digital Learning Arena(NDLA)',
             paid: 'False',
             channelid: 'UCqH_2FugL-HF_DuodQBSInQ',
             videoid: 'KwiAtuNt8Mc',
             duration: 'PT2M31S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/KwiAtuNt8Mc/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/KwiAtuNt8Mc/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/KwiAtuNt8Mc',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -1687,14 +1614,11 @@ export const secondYouTubeList = {
               'Lær om nervesystemet hos mennesket. Videoen tar for seg nervecella, sentralnervesystemet, det perifere nervesystemet og refleks. Bokmål: http://ndla.no/nb/no...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=uEwGgwtx_aA&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=uEwGgwtx_aA&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=uEwGgwtx_aA&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=uEwGgwtx_aA&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=uEwGgwtx_aA&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=uEwGgwtx_aA&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/uEwGgwtx_aA',
             'og:video:secure_url': 'https://www.youtube.com/embed/uEwGgwtx_aA',
@@ -1719,8 +1643,7 @@ export const secondYouTubeList = {
             videoid: 'uEwGgwtx_aA',
             duration: 'PT4M42S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/uEwGgwtx_aA/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/uEwGgwtx_aA/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/uEwGgwtx_aA',
             playertype: 'HTML5 Flash',
             width: '960',
@@ -1755,8 +1678,7 @@ export const secondYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'Regnearkmodellene for lån fra NDLA - YouTube',
-      htmlTitle:
-        'Regnearkmodellene for lån fra \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
+      htmlTitle: 'Regnearkmodellene for lån fra \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
       link: 'https://www.youtube.com/watch?v=nq9FlhZXheA',
       displayLink: 'www.youtube.com',
       snippet:
@@ -1799,14 +1721,11 @@ export const secondYouTubeList = {
             'apple-itunes-app': 'app-id=544007664',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=nq9FlhZXheA&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=nq9FlhZXheA&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=nq9FlhZXheA&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=nq9FlhZXheA&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=nq9FlhZXheA&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=nq9FlhZXheA&feature=applinks',
             'al:web:should_fallback': 'true',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/nq9FlhZXheA',
@@ -1822,8 +1741,7 @@ export const secondYouTubeList = {
             'twitter:title': 'Regnearkmodellene for lån fra NDLA - YouTube',
             'twitter:description':
               'Annuitetslån: http://ndla.no/nb/contentbrowser/node/26628?fag=55 Serielån: http://ndla.no/nb/contentbrowser/node/26630?fag=55',
-            'twitter:image':
-              'https://i.ytimg.com/vi/nq9FlhZXheA/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/nq9FlhZXheA/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:url:iphone':
@@ -1848,8 +1766,7 @@ export const secondYouTubeList = {
             videoid: 'nq9FlhZXheA',
             duration: 'PT6M16S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/nq9FlhZXheA/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/nq9FlhZXheA/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/nq9FlhZXheA',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -1881,8 +1798,7 @@ export const secondYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'Lysjustering Photoshop NDLA Mediefag - YouTube',
-      htmlTitle:
-        'Lysjustering Photoshop \u003cb\u003eNDLA\u003c/b\u003e Mediefag - YouTube',
+      htmlTitle: 'Lysjustering Photoshop \u003cb\u003eNDLA\u003c/b\u003e Mediefag - YouTube',
       link: 'https://www.youtube.com/watch?v=xRA9UZsOyJg',
       displayLink: 'www.youtube.com',
       snippet:
@@ -1928,14 +1844,11 @@ export const secondYouTubeList = {
               'Lysjustering av portrett i Photoshop. Visning av verkt￸y i Camera Raw og Photoshop. Sjekk ut flere filmer om fotografering og bildebehandling i spillelisten ...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=xRA9UZsOyJg&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=xRA9UZsOyJg&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=xRA9UZsOyJg&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=xRA9UZsOyJg&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=xRA9UZsOyJg&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=xRA9UZsOyJg&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/xRA9UZsOyJg',
             'og:video:secure_url': 'https://www.youtube.com/embed/xRA9UZsOyJg',
@@ -1950,8 +1863,7 @@ export const secondYouTubeList = {
             'twitter:title': 'Lysjustering Photoshop NDLA Mediefag',
             'twitter:description':
               'Lysjustering av portrett i Photoshop. Visning av verkt￸y i Camera Raw og Photoshop. Sjekk ut flere filmer om fotografering og bildebehandling i spillelisten ...',
-            'twitter:image':
-              'https://i.ytimg.com/vi/xRA9UZsOyJg/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/xRA9UZsOyJg/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
           },
         ],
@@ -1966,8 +1878,7 @@ export const secondYouTubeList = {
             videoid: 'xRA9UZsOyJg',
             duration: 'PT3M42S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/xRA9UZsOyJg/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/xRA9UZsOyJg/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/xRA9UZsOyJg',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -2005,8 +1916,7 @@ export const secondYouTubeList = {
       htmlTitle: '2014 10 27 10 07 \u003cb\u003eNDLA\u003c/b\u003e - YouTube',
       link: 'https://www.youtube.com/watch?v=U2IUgMIU1U0',
       displayLink: 'www.youtube.com',
-      snippet:
-        'Nov 10, 2014 ... Webseminar om NDLA, for service og samferdsel(HFK)',
+      snippet: 'Nov 10, 2014 ... Webseminar om NDLA, for service og samferdsel(HFK)',
       htmlSnippet:
         'Nov 10, 2014 \u003cb\u003e...\u003c/b\u003e Webseminar om \u003cb\u003eNDLA\u003c/b\u003e, for service og samferdsel(HFK)',
       cacheId: 'zfBaKa8CUagJ',
@@ -2044,18 +1954,14 @@ export const secondYouTubeList = {
             'og:url': 'https://www.youtube.com/watch?v=U2IUgMIU1U0',
             'og:title': '2014 10 27 10 07 NDLA',
             'og:image': 'https://i.ytimg.com/vi/U2IUgMIU1U0/maxresdefault.jpg',
-            'og:description':
-              'Webseminar om NDLA, for service og samferdsel(HFK)',
+            'og:description': 'Webseminar om NDLA, for service og samferdsel(HFK)',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/U2IUgMIU1U0',
             'og:video:secure_url': 'https://www.youtube.com/embed/U2IUgMIU1U0',
@@ -2068,10 +1974,8 @@ export const secondYouTubeList = {
             'twitter:site': '@youtube',
             'twitter:url': 'https://www.youtube.com/watch?v=U2IUgMIU1U0',
             'twitter:title': '2014 10 27 10 07 NDLA',
-            'twitter:description':
-              'Webseminar om NDLA, for service og samferdsel(HFK)',
-            'twitter:image':
-              'https://i.ytimg.com/vi/U2IUgMIU1U0/maxresdefault.jpg',
+            'twitter:description': 'Webseminar om NDLA, for service og samferdsel(HFK)',
+            'twitter:image': 'https://i.ytimg.com/vi/U2IUgMIU1U0/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -2082,8 +1986,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=U2IUgMIU1U0&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=U2IUgMIU1U0',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=U2IUgMIU1U0',
             'twitter:player': 'https://www.youtube.com/embed/U2IUgMIU1U0',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -2099,8 +2002,7 @@ export const secondYouTubeList = {
             videoid: 'U2IUgMIU1U0',
             duration: 'PT54M16S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/U2IUgMIU1U0/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/U2IUgMIU1U0/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/U2IUgMIU1U0',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -2182,14 +2084,11 @@ export const secondYouTubeList = {
               'Historiefaget er klart til bruk på NDLA. H￸r fagredakt￸r Inga Berntsen Rudi fortelle om fagressursene. Her finner du faget: http://ndla.no/nb/node/52253',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/cfV78Gil-gc',
             'og:video:secure_url': 'https://www.youtube.com/embed/cfV78Gil-gc',
@@ -2215,8 +2114,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=cfV78Gil-gc&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=cfV78Gil-gc',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=cfV78Gil-gc',
             'twitter:player': 'https://www.youtube.com/embed/cfV78Gil-gc',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -2268,8 +2166,7 @@ export const secondYouTubeList = {
     {
       kind: 'customsearch#result',
       title: 'NDLA: Papiravisene på vei ut - YouTube',
-      htmlTitle:
-        '\u003cb\u003eNDLA\u003c/b\u003e: Papiravisene på vei ut - YouTube',
+      htmlTitle: '\u003cb\u003eNDLA\u003c/b\u003e: Papiravisene på vei ut - YouTube',
       link: 'https://www.youtube.com/watch?v=McMUx-FinQc',
       displayLink: 'www.youtube.com',
       snippet:
@@ -2315,14 +2212,11 @@ export const secondYouTubeList = {
               'Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går gjennom artikkelen om papiravisene som er på vei ut på NDLA',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/McMUx-FinQc',
             'og:video:secure_url': 'https://www.youtube.com/embed/McMUx-FinQc',
@@ -2337,8 +2231,7 @@ export const secondYouTubeList = {
             'twitter:title': 'NDLA: Papiravisene på vei ut',
             'twitter:description':
               'Grethe Melby, lektor i mediefag ved Laksevåg videregående skole i Bergen, går gjennom artikkelen om papiravisene som er på vei ut på NDLA',
-            'twitter:image':
-              'https://i.ytimg.com/vi/McMUx-FinQc/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/McMUx-FinQc/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -2349,8 +2242,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=McMUx-FinQc&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=McMUx-FinQc',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=McMUx-FinQc',
             'twitter:player': 'https://www.youtube.com/embed/McMUx-FinQc',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -2367,8 +2259,7 @@ export const secondYouTubeList = {
             videoid: 'McMUx-FinQc',
             duration: 'PT8M42S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/McMUx-FinQc/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/McMUx-FinQc/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/McMUx-FinQc',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -2449,14 +2340,11 @@ export const secondYouTubeList = {
               'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokmål: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/KA2Ej5epxjk',
             'og:video:secure_url': 'https://www.youtube.com/embed/KA2Ej5epxjk',
@@ -2471,8 +2359,7 @@ export const secondYouTubeList = {
             'twitter:title': 'Behov og motiv - videoforedrag',
             'twitter:description':
               'En grundig og god innf￸ring i Maslows behovshierarki. Les mer hos NDLA: Bokmål: http://ndla.no/nb/node/110002?fag=52291 Nynorsk: http://ndla.no/nn/node/11015...',
-            'twitter:image':
-              'https://i.ytimg.com/vi/KA2Ej5epxjk/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/KA2Ej5epxjk/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -2483,8 +2370,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=KA2Ej5epxjk&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=KA2Ej5epxjk',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=KA2Ej5epxjk',
             'twitter:player': 'https://www.youtube.com/embed/KA2Ej5epxjk',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -2501,8 +2387,7 @@ export const secondYouTubeList = {
             videoid: 'KA2Ej5epxjk',
             duration: 'PT6M36S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/KA2Ej5epxjk/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/KA2Ej5epxjk/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/KA2Ej5epxjk',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -2583,14 +2468,11 @@ export const secondYouTubeList = {
               'Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokmål). Nynorsk: http:/...',
             'al:ios:app_store_id': '544007664',
             'al:ios:app_name': 'YouTube',
-            'al:ios:url':
-              'vnd.youtube://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
-            'al:android:url':
-              'vnd.youtube://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
+            'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
+            'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
             'al:android:app_name': 'YouTube',
             'al:android:package': 'com.google.android.youtube',
-            'al:web:url':
-              'https://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
+            'al:web:url': 'https://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
             'og:type': 'video',
             'og:video:url': 'https://www.youtube.com/embed/293NnCsv870',
             'og:video:secure_url': 'https://www.youtube.com/embed/293NnCsv870',
@@ -2605,8 +2487,7 @@ export const secondYouTubeList = {
             'twitter:title': 'Animasjon: Elverikene',
             'twitter:description':
               'Lær mer om tidlige sivilisasjoner og elvekulturene i Mesopotamia og Egypt på NDLA Historie: http://ndla.no/nb/node/158921?fag=52253 (bokmål). Nynorsk: http:/...',
-            'twitter:image':
-              'https://i.ytimg.com/vi/293NnCsv870/maxresdefault.jpg',
+            'twitter:image': 'https://i.ytimg.com/vi/293NnCsv870/maxresdefault.jpg',
             'twitter:app:name:iphone': 'YouTube',
             'twitter:app:id:iphone': '544007664',
             'twitter:app:name:ipad': 'YouTube',
@@ -2617,8 +2498,7 @@ export const secondYouTubeList = {
               'vnd.youtube://www.youtube.com/watch?v=293NnCsv870&feature=applinks',
             'twitter:app:name:googleplay': 'YouTube',
             'twitter:app:id:googleplay': 'com.google.android.youtube',
-            'twitter:app:url:googleplay':
-              'https://www.youtube.com/watch?v=293NnCsv870',
+            'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=293NnCsv870',
             'twitter:player': 'https://www.youtube.com/embed/293NnCsv870',
             'twitter:player:width': '1280',
             'twitter:player:height': '720',
@@ -2635,8 +2515,7 @@ export const secondYouTubeList = {
             videoid: '293NnCsv870',
             duration: 'PT5M6S',
             unlisted: 'False',
-            thumbnailurl:
-              'https://i.ytimg.com/vi/293NnCsv870/maxresdefault.jpg',
+            thumbnailurl: 'https://i.ytimg.com/vi/293NnCsv870/maxresdefault.jpg',
             embedurl: 'https://www.youtube.com/embed/293NnCsv870',
             playertype: 'HTML5 Flash',
             width: '1280',
@@ -2718,14 +2597,11 @@ export const youTubeMockVideo = {
         'og:image': 'https://i.ytimg.com/vi/oSMsegou3lQ/maxresdefault.jpg',
         'al:ios:app_store_id': '544007664',
         'al:ios:app_name': 'YouTube',
-        'al:ios:url':
-          'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
-        'al:android:url':
-          'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
+        'al:ios:url': 'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
+        'al:android:url': 'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
         'al:android:app_name': 'YouTube',
         'al:android:package': 'com.google.android.youtube',
-        'al:web:url':
-          'https://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
+        'al:web:url': 'https://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
         'og:type': 'video',
         'og:video:url': 'https://www.youtube.com/embed/oSMsegou3lQ',
         'og:video:secure_url': 'https://www.youtube.com/embed/oSMsegou3lQ',
@@ -2748,8 +2624,7 @@ export const youTubeMockVideo = {
           'vnd.youtube://www.youtube.com/watch?v=oSMsegou3lQ&feature=applinks',
         'twitter:app:name:googleplay': 'YouTube',
         'twitter:app:id:googleplay': 'com.google.android.youtube',
-        'twitter:app:url:googleplay':
-          'https://www.youtube.com/watch?v=oSMsegou3lQ',
+        'twitter:app:url:googleplay': 'https://www.youtube.com/watch?v=oSMsegou3lQ',
         'twitter:player': 'https://www.youtube.com/embed/oSMsegou3lQ',
         'twitter:player:width': '1280',
         'twitter:player:height': '720',

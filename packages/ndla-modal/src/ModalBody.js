@@ -16,8 +16,7 @@ const bodyStyles = css`
     animation-name: fadeInLeft;
     animation-duration: 500ms;
   }
-  padding: ${spacing.normal} ${spacing.normal} ${spacing.large}
-    ${spacing.normal};
+  padding: ${spacing.normal} ${spacing.normal} ${spacing.large} ${spacing.normal};
   &.no-padding {
     padding: 0 !important;
   }
@@ -66,10 +65,7 @@ const bodyStyles = css`
 `;
 
 const ModalBody = ({ children, modifier }) => (
-  <div
-    data-cy="modal-body"
-    css={bodyStyles}
-    className={`modal-body ${modifier}`}>
+  <div data-cy="modal-body" css={bodyStyles} className={`modal-body ${modifier}`}>
     {children}
   </div>
 );

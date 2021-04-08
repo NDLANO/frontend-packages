@@ -32,11 +32,7 @@ const TasksAndActivities = (props: Props) => (
               fill="currentColor"
               fillRule="nonzero"
             />
-            <polygon
-              fill="currentColor"
-              points="0 22 24 22 24 24 0 24"
-              fillRule="nonzero"
-            />
+            <polygon fill="currentColor" points="0 22 24 22 24 24 0 24" fillRule="nonzero" />
           </g>
         </g>
       </g>

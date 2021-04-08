@@ -65,11 +65,7 @@ test('Makes a translated comma seperated contributor string', () => {
 });
 
 test('Makes a translated comma separated contributor string (ignores rightsholder prefix)', () => {
-  const contributorString = mkContributorString(
-    contributorList,
-    'nb',
-    'rightsholder',
-  );
+  const contributorString = mkContributorString(contributorList, 'nb', 'rightsholder');
   expect(contributorString).toMatchSnapshot();
 });
 
@@ -103,10 +99,6 @@ test('Get a grouped contributor description list for each supported language', (
     ],
   };
 
-  expect(
-    getGroupedContributorDescriptionList(copyright, 'nb'),
-  ).toMatchSnapshot();
-  expect(
-    getGroupedContributorDescriptionList(copyright, 'en'),
-  ).toMatchSnapshot();
+  expect(getGroupedContributorDescriptionList(copyright, 'nb')).toMatchSnapshot();
+  expect(getGroupedContributorDescriptionList(copyright, 'en')).toMatchSnapshot();
 });

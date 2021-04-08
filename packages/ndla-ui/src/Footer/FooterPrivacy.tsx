@@ -68,15 +68,10 @@ const StyledFooterText = styled.div`
   }
 `;
 
-const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({
-  lang,
-  label,
-}) => (
+const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({ lang, label }) => (
   <StyledFooterText>
     <Modal
-      activateButton={
-        <StyledPrivacyButton type="button">{label}</StyledPrivacyButton>
-      }
+      activateButton={<StyledPrivacyButton type="button">{label}</StyledPrivacyButton>}
       size="fullscreen">
       {(onClose: void) => (
         <OneColumn cssModifier="medium">

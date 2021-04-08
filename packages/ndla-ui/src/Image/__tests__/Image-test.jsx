@@ -13,9 +13,7 @@ import renderer from 'react-test-renderer';
 import Image from '../Image';
 
 test('Image renderers correctly', () => {
-  const component = renderer.create(
-    <Image alt="example" src="https://example.com/image.png" />,
-  );
+  const component = renderer.create(<Image alt="example" src="https://example.com/image.png" />);
 
   expect(component.toJSON()).toMatchSnapshot();
 });

@@ -29,8 +29,7 @@ const StyledListItem = styled.li`
 const StyledButton = styled.button`
   background: transparent;
   border: 0;
-  padding: ${spacing.xsmall} ${spacing.large} ${spacing.xsmall}
-    ${spacing.normal};
+  padding: ${spacing.xsmall} ${spacing.large} ${spacing.xsmall} ${spacing.normal};
   &:disabled {
     color: ${colors.text.light};
   }
@@ -59,11 +58,7 @@ type Props = {
   onSelectStatus(option: optionProps): void;
 };
 
-const FooterStatusSelect: React.FC<Props> = ({
-  onSelectStatus,
-  heading,
-  options,
-}) => (
+const FooterStatusSelect: React.FC<Props> = ({ onSelectStatus, heading, options }) => (
   <>
     <h1 css={changeStatusStyle}>{heading}</h1>
     <StyledList>

@@ -24,9 +24,7 @@ const classes = new BEMHelper({
 
 const FactBox = ({ children, dangerouslySetInnerHTML }) => (
   <aside {...classes()}>
-    <div
-      {...classes('content')}
-      dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+    <div {...classes('content')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
       {children}
     </div>
     <Button {...classes('button')} onClick={toggleFactBox} />

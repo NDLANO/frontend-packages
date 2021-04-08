@@ -123,14 +123,7 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
   try {
     someUndefinedFunction(); // eslint-disable-line no-undef
   } catch (e) {
-    window.onerror.call(
-      window,
-      e.toString(),
-      document.location.toString(),
-      58,
-      4,
-      e,
-    );
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 
   apiMock.done();
@@ -151,30 +144,9 @@ test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () =
     const someVal = null;
     someVal.foo = 1;
   } catch (e) {
-    window.onerror.call(
-      window,
-      e.toString(),
-      document.location.toString(),
-      58,
-      4,
-      e,
-    );
-    window.onerror.call(
-      window,
-      e.toString(),
-      document.location.toString(),
-      58,
-      4,
-      e,
-    );
-    window.onerror.call(
-      window,
-      e.toString(),
-      document.location.toString(),
-      58,
-      4,
-      e,
-    );
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
+    window.onerror.call(window, e.toString(), document.location.toString(), 58, 4, e);
   }
 
   apiMock.done();
@@ -206,13 +178,7 @@ test('ndla-error-reporter/ErrorReporter should ignore script errors', () => {
     .post('/inputs/1223/', () => true)
     .reply(200);
 
-  window.onerror.call(
-    window,
-    'Script error.',
-    document.location.toString(),
-    0,
-    0,
-  );
+  window.onerror.call(window, 'Script error.', document.location.toString(), 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);
@@ -242,23 +208,11 @@ test('ndla-error-reporter/ErrorReporter should ignore provided urls', () => {
     .post('/inputs/1223/', () => true)
     .reply(200);
 
-  window.onerror.call(
-    window,
-    'Some error',
-    'https://cdn.hotjar.com/some/path/to/script.js',
-    0,
-    0,
-  );
+  window.onerror.call(window, 'Some error', 'https://cdn.hotjar.com/some/path/to/script.js', 0, 0);
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);
 
-  window.onerror.call(
-    window,
-    'Some error',
-    'https://example.com/script.js',
-    0,
-    0,
-  );
+  window.onerror.call(window, 'Some error', 'https://example.com/script.js', 0, 0);
 
   // hack to check that no api calls was made
   expect(apiMock.isDone()).toBe(false);

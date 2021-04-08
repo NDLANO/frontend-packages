@@ -42,15 +42,11 @@ class EmbeddedTwitter extends React.Component {
 
       const { screenName, tweetLimit } = this.props;
       // Create widget
-      tw.widgets.createTimeline(
-        { sourceType: 'profile', screenName },
-        this.widgetWrapper,
-        {
-          tweetLimit,
-          chrome: 'noheader nofooter noborders',
-          borderColor: '#e8e3e3',
-        },
-      );
+      tw.widgets.createTimeline({ sourceType: 'profile', screenName }, this.widgetWrapper, {
+        tweetLimit,
+        chrome: 'noheader nofooter noborders',
+        borderColor: '#e8e3e3',
+      });
     });
   }
 

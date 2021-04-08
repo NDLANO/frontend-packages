@@ -6,11 +6,7 @@
  *
  */
 
-import {
-  getIllegalFiles,
-  illegalEndings,
-  illegalFormats,
-} from '../filetypeHelper';
+import { getIllegalFiles, illegalEndings, illegalFormats } from '../filetypeHelper';
 
 const allowedFiles = ['.pdf', 'application/pdf', 'image/*'];
 

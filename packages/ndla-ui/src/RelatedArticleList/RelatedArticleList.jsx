@@ -10,14 +10,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const RelatedArticle = ({
-  title,
-  introduction,
-  icon,
-  modifier,
-  to,
-  linkInfo,
-}) => {
+export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkInfo }) => {
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
     <article {...classes('item', modifier)}>
@@ -33,10 +26,7 @@ export const RelatedArticle = ({
           </SafeLink>
         </span>
       </h1>
-      <p
-        {...classes('description')}
-        dangerouslySetInnerHTML={{ __html: introduction }}
-      />
+      <p {...classes('description')} dangerouslySetInnerHTML={{ __html: introduction }} />
       {linkInfo && <p {...classes('link-info')}>{linkInfo}</p>}
     </article>
   );
@@ -55,19 +45,11 @@ RelatedArticle.defaultProps = {
   linkInfo: null,
 };
 
-const RelatedArticleList = ({
-  messages,
-  children,
-  articleCount,
-  dangerouslySetInnerHTML,
-}) => {
+const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }) => {
   const clonedChildren = !dangerouslySetInnerHTML
     ? React.Children.map(children, (article, i) =>
         React.cloneElement(article, {
-          modifier:
-            i >= 2
-              ? `${article.props.modifier} hidden`
-              : article.props.modifier,
+          modifier: i >= 2 ? `${article.props.modifier} hidden` : article.props.modifier,
         }),
       )
     : null;
@@ -78,9 +60,7 @@ const RelatedArticleList = ({
       <SectionHeading className={classes('component-title').className}>
         {messages.title}
       </SectionHeading>
-      <div
-        {...classes('articles')}
-        dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+      <div {...classes('articles')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {clonedChildren}
       </div>
       {childrenCount > 2 && (

@@ -13,14 +13,7 @@ import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
-import {
-  colors,
-  spacing,
-  fonts,
-  mq,
-  breakpoints,
-  animations,
-} from '@ndla/core';
+import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 
 const infoTextCSS = css`
@@ -132,9 +125,7 @@ const LearningPathMenuAside: React.FunctionComponent<Props & tType> = ({
         {t('learningPath.lastUpdated')}: {lastUpdated}
       </p>
     </div>
-    {copyright.contributors && (
-      <LearningPathMenuAsideCopyright copyright={copyright} />
-    )}
+    {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
     <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
     <StyledSafeLinkButton
       to={learningPathURL}

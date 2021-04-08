@@ -40,8 +40,7 @@ class SearchPage extends Component {
   checkScreenSize() {
     const currentBreakpoint = getCurrentBreakpoint();
     const isNarrowScreen =
-      currentBreakpoint === breakpoints.mobile ||
-      currentBreakpoint === breakpoints.tablet;
+      currentBreakpoint === breakpoints.mobile || currentBreakpoint === breakpoints.tablet;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if (isNarrowScreen !== this.state.isNarrowScreen) {
@@ -92,18 +91,14 @@ class SearchPage extends Component {
             <h1 {...classes('filter-heading')}>
               {t('searchPage.searchPageMessages.filterHeading')}
             </h1>
-            <div {...classes('filters')}>
-              {!this.state.isNarrowScreen && filters}
-            </div>
+            <div {...classes('filters')}>{!this.state.isNarrowScreen && filters}</div>
           </aside>
           <div {...classes('result-wrapper')}>
             <div {...classes('active-filters')}>
               <ActiveFilters
                 filters={activeFilters}
                 showOnSmallScreen
-                onFilterRemove={(value, filterName) =>
-                  onSearchFieldFilterRemove(value, filterName)
-                }
+                onFilterRemove={(value, filterName) => onSearchFieldFilterRemove(value, filterName)}
               />
             </div>
             <div {...classes('toggle-filter')}>
@@ -113,9 +108,7 @@ class SearchPage extends Component {
                 size="fullscreen"
                 backgroundColor="grey"
                 activateButton={
-                  <Button outline>
-                    {t('searchPage.searchPageMessages.filterHeading')}
-                  </Button>
+                  <Button outline>{t('searchPage.searchPageMessages.filterHeading')}</Button>
                 }>
                 {onClose => (
                   <Fragment>

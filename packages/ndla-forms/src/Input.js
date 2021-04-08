@@ -193,9 +193,7 @@ class Input extends React.Component {
             {iconRight && iconRight}
           </Component>
         </ComponentWrapper>
-        {warningText && (
-          <FormWarningText withLabel={label}>{warningText}</FormWarningText>
-        )}
+        {warningText && <FormWarningText withLabel={label}>{warningText}</FormWarningText>}
       </Wrapper>
     );
   }

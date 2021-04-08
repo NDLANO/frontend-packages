@@ -6,10 +6,7 @@
  *
  */
 
-import {
-  addFactBoxClickListener,
-  removeFactBoxClickListener,
-} from './factBoxScripts';
+import { addFactBoxClickListener, removeFactBoxClickListener } from './factBoxScripts';
 
 import { addFilelistTooltipListners } from './fileListScript';
 
@@ -30,10 +27,7 @@ import {
 
 import { initTableScript, removeTableEventListeners } from './tableScripts';
 
-import {
-  addDetailsEventListeners,
-  removeDetailsEventListeners,
-} from './detailsScript';
+import { addDetailsEventListeners, removeDetailsEventListeners } from './detailsScript';
 
 import { addFootnoteClickListeners } from './footnoteScripts';
 
@@ -43,11 +37,7 @@ import { toggleRelatedArticles } from './relatedArticlesToggle';
 
 import { initArticleTabs } from './articleTabScripts';
 
-export {
-  forEachElement,
-  findAncestorByClass,
-  getElementOffset,
-} from './domHelpers';
+export { forEachElement, findAncestorByClass, getElementOffset } from './domHelpers';
 
 export const initArticleScripts = () => {
   addEventListenerForResize();

@@ -26,18 +26,10 @@ import {
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
-import {
-  topicMenu,
-  contentTypeResults,
-  dummyLanguageOptions,
-} from '../../dummydata';
+import { topicMenu, contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
 import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
-import {
-  programmes,
-  programme,
-  subjectCategories,
-} from '../../dummydata/mockPrograms';
+import { programmes, programme, subjectCategories } from '../../dummydata/mockPrograms';
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -65,9 +57,7 @@ class MastheadWithTopicMenu extends Component {
     if (!this.props.hideMenuButton) {
       filters.push({
         value: 'Value',
-        title: this.props.ndlaFilm
-          ? 'NDLA Film'
-          : 'Medieuttrykk og mediesamfunnet',
+        title: this.props.ndlaFilm ? 'NDLA Film' : 'Medieuttrykk og mediesamfunnet',
       });
     }
     return (
@@ -150,9 +140,7 @@ class MastheadWithTopicMenu extends Component {
             <Modal
               size="fullscreen"
               activateButton={
-                <TopicMenuButton ndlaFilm={ndlaFilm}>
-                  {t('masthead.menu.title')}
-                </TopicMenuButton>
+                <TopicMenuButton ndlaFilm={ndlaFilm}>{t('masthead.menu.title')}</TopicMenuButton>
               }
               animation="subtle"
               animationDuration={150}
@@ -171,10 +159,7 @@ class MastheadWithTopicMenu extends Component {
                   <TopicMenu
                     close={onClose}
                     isBeta={beta}
-                    searchFieldComponent={this.renderSearchButtonView(
-                      false,
-                      ndlaFilm,
-                    )}
+                    searchFieldComponent={this.renderSearchButtonView(false, ndlaFilm)}
                     subjectTitle="Mediefag"
                     toFrontpage={() =>
                       '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
@@ -214,10 +199,7 @@ class MastheadWithTopicMenu extends Component {
                     onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
                       let { expandedSubtopicsId } = this.state;
                       if (expandedSubtopicsId.length > currentIndex) {
-                        expandedSubtopicsId = expandedSubtopicsId.slice(
-                          0,
-                          currentIndex,
-                        );
+                        expandedSubtopicsId = expandedSubtopicsId.slice(0, currentIndex);
                       }
                       if (subtopicId) {
                         expandedSubtopicsId.push(subtopicId);

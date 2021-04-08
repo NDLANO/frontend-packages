@@ -13,11 +13,7 @@ import LearningPathMobileHeader from './LearningPathMobileHeader';
 
 export { LearningPathWrapper } from './LearningPathWrapper';
 export { LearningPathContent } from './LearningPathContent';
-export {
-  LearningPathMenu,
-  LearningPathLastStepNavigation,
-  LearningPathMobileStepInfo,
-};
+export { LearningPathMenu, LearningPathLastStepNavigation, LearningPathMobileStepInfo };
 export { LearningPathInformation } from './LearningPathInformation';
 export {
   LearningPathSticky,

@@ -123,10 +123,7 @@ const listItemShape = PropTypes.shape({
   text: PropTypes.string,
   image: PropTypes.string,
   id: PropTypes.string,
-  category: PropTypes.oneOfType([
-    PropTypes.arrayOf(categoryShape),
-    categoryShape,
-  ]),
+  category: PropTypes.oneOfType([PropTypes.arrayOf(categoryShape), categoryShape]),
   source: PropTypes.string,
   license: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
@@ -187,18 +184,10 @@ class ListItem extends Component {
         className={viewStyle}
         tabIndex={0}>
         <div className={'item-image'}>
-          {item.image ? (
-            <img src={item.image} alt={item.description} />
-          ) : (
-            this.renderNoImage()
-          )}
+          {item.image ? <img src={item.image} alt={item.description} /> : this.renderNoImage()}
           {category && this.renderCategory(category)}
         </div>
-        {viewStyle === 'grid' ? (
-          this.renderItem()
-        ) : (
-          <div>{this.renderItem()}</div>
-        )}
+        {viewStyle === 'grid' ? this.renderItem() : <div>{this.renderItem()}</div>}
       </ListItemWrapper>
     );
   }

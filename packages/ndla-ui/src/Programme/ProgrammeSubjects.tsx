@@ -50,11 +50,7 @@ type Props = GradesProps & {
   onNavigate?: () => void;
 };
 
-const ProgrammeSubjects = ({
-  grades,
-  onNavigate,
-  preSelectedGradeIndex = 0,
-}: Props) => {
+const ProgrammeSubjects = ({ grades, onNavigate, preSelectedGradeIndex = 0 }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(preSelectedGradeIndex);
   const isWindowContext = typeof window !== 'undefined';
 

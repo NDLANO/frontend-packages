@@ -13,10 +13,7 @@ import { spacing } from '@ndla/core';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
-import {
-  StyledLicenseIconButton,
-  StyledLicenseIconItem,
-} from './LicenseIconList';
+import { StyledLicenseIconButton, StyledLicenseIconItem } from './LicenseIconList';
 
 const StyledLicenseLabel = styled.div`
   margin-left: ${spacing.small};
@@ -27,10 +24,7 @@ interface LicenseIconItemProps {
   locale?: string;
 }
 
-const LicenseIconItem: FC<LicenseIconItemProps> = ({
-  licenseRight,
-  locale,
-}) => {
+const LicenseIconItem: FC<LicenseIconItemProps> = ({ licenseRight, locale }) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
@@ -64,11 +58,7 @@ const LicenseIconDescriptionList: FC<LicenseIconDescriptionListProps> = ({
 }) => (
   <StyledLicenseIconList color={color} highlightCC={highlightCC}>
     {licenseRights.map(licenseRight => (
-      <LicenseIconItem
-        key={licenseRight}
-        licenseRight={licenseRight}
-        locale={locale}
-      />
+      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
   </StyledLicenseIconList>
 );

@@ -82,23 +82,13 @@ type Props = {
   totalCount: number;
   type?: ContentType;
 };
-const SearchTypeHeader = ({
-  filters,
-  onFilterClick,
-  totalCount,
-  type,
-  t,
-}: Props & tType) => (
+const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props & tType) => (
   <HeaderWrapper>
     <TypeWrapper>
       {type && <ContentTypeBadge type={type} background size="large" />}
       <SubjectName>
         {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
-        {totalCount && (
-          <Count>
-            {t(`searchPage.resultType.hits`, { count: totalCount })}
-          </Count>
-        )}
+        {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
       </SubjectName>
     </TypeWrapper>
     {filters && (

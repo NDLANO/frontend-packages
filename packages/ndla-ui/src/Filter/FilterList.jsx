@@ -37,8 +37,7 @@ class FilterList extends Component {
       collapseMobile,
     } = this.props;
 
-    const showAll =
-      defaultVisibleCount === null || options.length <= defaultVisibleCount;
+    const showAll = defaultVisibleCount === null || options.length <= defaultVisibleCount;
     const labelModifiers = [];
 
     if (labelNotVisible) {
@@ -49,9 +48,7 @@ class FilterList extends Component {
       <section {...classes('list', modifiers)}>
         {label && <h1 {...classes('label', labelModifiers)}>{label}</h1>}
         {this.props.noFilterSelectedLabel && options.length === 0 && (
-          <span {...classes('no-filter-selected')}>
-            {this.props.noFilterSelectedLabel}
-          </span>
+          <span {...classes('no-filter-selected')}>{this.props.noFilterSelectedLabel}</span>
         )}
         <ul
           {...classes('item-wrapper', {

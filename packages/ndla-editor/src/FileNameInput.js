@@ -28,10 +28,8 @@ class InputComponent extends Component {
         this.props.childIndex
       ].firstChild.getBoundingClientRect();
       this.inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
-      this.inputRef.current.style.left = `${rect.left +
-        spacing.spacingUnit * 0.75}px`;
-      this.inputRef.current.style.width = `${rect.width -
-        spacing.spacingUnit}px`;
+      this.inputRef.current.style.left = `${rect.left + spacing.spacingUnit * 0.75}px`;
+      this.inputRef.current.style.width = `${rect.width - spacing.spacingUnit}px`;
     }
     this.inputRef.current.focus();
     this.inputRef.current.select();
@@ -43,10 +41,7 @@ class InputComponent extends Component {
     if (!usePortal) {
       return <StyledInput ref={this.inputRef} {...rest} />;
     }
-    return createUniversalPortal(
-      <StyledInput ref={this.inputRef} {...rest} />,
-      'body',
-    );
+    return createUniversalPortal(<StyledInput ref={this.inputRef} {...rest} />, 'body');
   }
 }
 
@@ -85,14 +80,7 @@ const getButtonComponent = (file, isMissing, messages) => {
   }
 };
 
-const FileNameInput = ({
-  editMode,
-  useRef,
-  file,
-  isMissing,
-  messages,
-  ...rest
-}) => {
+const FileNameInput = ({ editMode, useRef, file, isMissing, messages, ...rest }) => {
   if (editMode)
     return (
       <div>

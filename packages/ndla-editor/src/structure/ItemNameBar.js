@@ -45,8 +45,7 @@ const ItemTitleButton = styled.button`
   font-weight: ${fonts.weight.semibold};
   border: 0;
   background: 0;
-  color: ${props =>
-    !props.isVisible ? colors.brand.grey : colors.brand.primary};
+  color: ${props => (!props.isVisible ? colors.brand.grey : colors.brand.primary)};
   display: flex;
   align-items: center;
   text-align: left;
@@ -63,9 +62,7 @@ const ItemTitleButton = styled.button`
 
   &:before {
     transition: transform 200ms ease;
-    transform: rotate(
-      ${props => props.hasSubtopics && props.arrowDirection}deg
-    );
+    transform: rotate(${props => props.hasSubtopics && props.arrowDirection}deg);
   }
 `;
 
@@ -85,8 +82,7 @@ const StyledIcon = styled.button`
 const StyledItemBar = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 ${spacing.small} 0
-    calc(${props => props.level} * 17px + ${spacing.small});
+  padding: 0 ${spacing.small} 0 calc(${props => props.level} * 17px + ${spacing.small});
   height: 40px;
   border-bottom: 1px solid ${colors.brand.greyLighter};
   background: ${props => props.highlight && colors.brand.light};
@@ -146,9 +142,7 @@ const ItemNameBar = ({
   </StyledItemBar>
 );
 
-const RoundIcon = ({ smallIcon, ...rest }) => (
-  <StyledIcon {...rest}>{smallIcon}</StyledIcon>
-);
+const RoundIcon = ({ smallIcon, ...rest }) => <StyledIcon {...rest}>{smallIcon}</StyledIcon>;
 
 RoundIcon.propTypes = {
   smallIcon: PropTypes.node,

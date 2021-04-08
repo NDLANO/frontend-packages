@@ -15,16 +15,8 @@ const StyledWrapper = styled.div`
 
 const StyledBackground = styled.div`
   width: 100%;
-  background: linear-gradient(
-      179.64deg,
-      rgba(255, 255, 255, 0.6) 80.1%,
-      rgba(255, 255, 255) 99.05%
-    ),
-    linear-gradient(
-      318.9deg,
-      rgb(239, 238, 220, 0.6) 35.53%,
-      rgb(250, 246, 235) 74.23%
-    ),
+  background: linear-gradient(179.64deg, rgba(255, 255, 255, 0.6) 80.1%, rgba(255, 255, 255) 99.05%),
+    linear-gradient(318.9deg, rgb(239, 238, 220, 0.6) 35.53%, rgb(250, 246, 235) 74.23%),
     rgb(221, 216, 175);
 
   ${mq.range({ until: breakpoints.tablet })} {
@@ -116,9 +108,7 @@ export const MultidisciplinarySubject = ({
         <OneColumn wide>
           <Header>
             <LayoutItem layout="extend">
-              <Heading>
-                {t('frontpageMultidisciplinarySubject.heading')}
-              </Heading>
+              <Heading>{t('frontpageMultidisciplinarySubject.heading')}</Heading>
               <InfoText>{t('frontpageMultidisciplinarySubject.text')}</InfoText>
             </LayoutItem>
             <Illustration />

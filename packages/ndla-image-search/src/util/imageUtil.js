@@ -22,8 +22,4 @@ export const getSrcSets = imageUrl =>
   ].join(', ');
 
 export const getPreviewSrcSets = imageUrl =>
-  [
-    `${imageUrl}?width=480 3x`,
-    `${imageUrl}?width=320 2x`,
-    `${imageUrl}?width=160 1x`,
-  ].join(', ');
+  [`${imageUrl}?width=480 3x`, `${imageUrl}?width=320 2x`, `${imageUrl}?width=160 1x`].join(', ');

@@ -14,11 +14,7 @@ import PropTypes from 'prop-types';
 
 import Dialog from '../Dialog';
 import { ContributorShape, LicenseShape } from '../shapes';
-import {
-  classLicenses,
-  FigureLicenseByline,
-  FigureLicenseCta,
-} from './FigureLicense';
+import { classLicenses, FigureLicenseByline, FigureLicenseCta } from './FigureLicense';
 
 export const FigureLicenseDialog = ({
   children,
@@ -37,16 +33,8 @@ export const FigureLicenseDialog = ({
         <h3 id={headingLabelId} {...classLicenses('title')}>
           {messages.rulesForUse}
         </h3>
-        <FigureLicenseByline
-          license={license}
-          messages={messages}
-          locale={locale}
-        />
-        <FigureLicenseCta
-          authors={authors}
-          title={title}
-          origin={origin}
-          messages={messages}>
+        <FigureLicenseByline license={license} messages={messages} locale={locale} />
+        <FigureLicenseCta authors={authors} title={title} origin={origin} messages={messages}>
           {children}
         </FigureLicenseCta>
       </div>

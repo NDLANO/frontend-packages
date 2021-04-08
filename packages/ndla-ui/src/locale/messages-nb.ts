@@ -50,8 +50,7 @@ const messages = {
     search: 'Søk',
     close: 'Lukk',
     abilities: 'Egenskaper',
-    searchFieldPlaceholder:
-      'Søk i fagstoff, oppgaver og aktiviteter eller læringsstier',
+    searchFieldPlaceholder: 'Søk i fagstoff, oppgaver og aktiviteter eller læringsstier',
     searchFieldPlaceholderShort: 'Søk',
     label: {
       content: 'Innhold:',
@@ -173,8 +172,7 @@ const messages = {
     chooseSubject: 'Velg fag',
   },
   topicPage: {
-    articleErrorDescription:
-      'Beklager, en feil oppsto under lasting av emnebeskrivelsen.',
+    articleErrorDescription: 'Beklager, en feil oppsto under lasting av emnebeskrivelsen.',
     topic: 'EMNE',
     topics: 'Emner',
   },
@@ -248,23 +246,19 @@ const messages = {
       additionalFilterLabel: 'Tilleggsressurser',
       contentTypeResultsShowMore: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mer fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]:
-          'Vis flere oppgaver og aktiviteter',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'Vis flere oppgaver og aktiviteter',
         [contentTypes.LEARNING_PATH]: 'Vis flere læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis flere kildematerialer',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
-          'Vis flere eksterne læringsressurser',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis flere eksterne læringsressurser',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
-        [contentTypes.TASKS_AND_ACTIVITIES]:
-          'Vis færre oppgaver og aktiviteter',
+        [contentTypes.TASKS_AND_ACTIVITIES]: 'Vis færre oppgaver og aktiviteter',
         [contentTypes.LEARNING_PATH]: 'Vis færre læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kildematerialer',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
-          'Vis færre eksterne læringsressurser',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis færre eksterne læringsressurser',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
@@ -272,8 +266,7 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Ingen læringsstier',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kildematerialer',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
-          'Ingen eksterne læringsressurser',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Ingen eksterne læringsressurser',
       },
     },
   },
@@ -281,11 +274,9 @@ const messages = {
     altText: 'Nasjonal digital læringsarena',
   },
   resource: {
-    errorDescription:
-      'Beklager, men en feil oppsto under lasting av emneressurser.',
+    errorDescription: 'Beklager, men en feil oppsto under lasting av emneressurser.',
     error: 'Beklager, en del av innholdet kunne ikke vises.',
-    noCoreResourcesAvailableUnspecific:
-      'Det er ikke noe kjernestoff tilgjengelig.',
+    noCoreResourcesAvailableUnspecific: 'Det er ikke noe kjernestoff tilgjengelig.',
     noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {name}.',
     activateAdditionalResources: 'Tilleggsstoff',
     toggleFilterLabel: 'Tilleggsressurser',
@@ -338,8 +329,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Bruk filter',
     closeCompentenceGoalsFilter: 'Lukk filter',
     competenceGoalsNarrowBackButton: 'Tilbake',
-    competenceGoalResourceSearchText:
-      'Søk på alle ressurser som passer til dette kompetansemålet',
+    competenceGoalResourceSearchText: 'Søk på alle ressurser som passer til dette kompetansemålet',
     competenceGoalShowExtra: 'Vis støtte til læreplanen',
     competenceGoalCloseExtra: 'Skjul støtte til læreplanen',
     competenceCoreLabel: 'Kjerneelement',
@@ -378,15 +368,13 @@ const messages = {
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i annet innhold',
-      description:
-        'Denne lenken viser artikkelen uten kontekst(meny og bunntekst)',
+      description: 'Denne lenken viser artikkelen uten kontekst(meny og bunntekst)',
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
     },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',
-      description:
-        'Husk å kopiere teksten som skal legges ved bildet der du bruker det.',
+      description: 'Husk å kopiere teksten som skal legges ved bildet der du bruker det.',
       rules: 'Regler for bruk av bildet:',
       itemImage: {
         ariaLabel: 'Åpne bilde i et nytt vindu',
@@ -404,14 +392,12 @@ const messages = {
     },
     audio: {
       heading: 'Slik bruker du lydfiler',
-      description:
-        'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
+      description: 'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
       rules: 'Regler for bruk av lydfilen:',
     },
     video: {
       heading: 'Slik bruker du video fra artikkelen',
-      description:
-        'Husk å kopiere teksten som skal legges ved videoen der du bruker den.',
+      description: 'Husk å kopiere teksten som skal legges ved videoen der du bruker den.',
       rules: 'Regler for bruk av videoen:',
       itemImage: {
         ariaLabel: 'Åpne video i et nytt vindu',
@@ -419,29 +405,25 @@ const messages = {
     },
     other: {
       heading: 'Slik bruker du annet innhold fra artikkelen',
-      description:
-        'Du finner retningslinjene for bruk av innholdet i innholdselementet',
+      description: 'Du finner retningslinjene for bruk av innholdet i innholdselementet',
       itemImage: {
         ariaLabel: 'Åpne i nytt vindu',
       },
     },
     h5p: {
       heading: 'Slik bruker du H5P-innhold fra artikkelen',
-      description:
-        'Du finner retningslinjene for bruk av innholdet i H5P-elementet',
+      description: 'Du finner retningslinjene for bruk av innholdet i H5P-elementet',
       rules: 'Regler for bruk av H5P:',
     },
     concept: {
       heading: 'Slik bruker du forklaringer fra artikkelen',
-      description:
-        'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
+      description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
     },
     files: {
       heading: 'Slik bruker du filer fra artikkelen',
-      description:
-        'Husk å kopier teksten som skal legges ved filen der du bruker den.',
+      description: 'Husk å kopier teksten som skal legges ved filen der du bruker den.',
       rules: 'Regler for bruk av filen:',
       itemImage: {
         ariaLabel: 'Åpne i nytt vindu',
@@ -548,8 +530,7 @@ const messages = {
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
-    en:
-      'Not all pages are available in English. These will be shown in Norwegian',
+    en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
     toFrontpage: 'NDLA forside',
@@ -672,8 +653,7 @@ const messages = {
     },
   },
   learningPath: {
-    createLearningPathText:
-      'Lag din egen, kopier denne eller se flere læringsstier?',
+    createLearningPathText: 'Lag din egen, kopier denne eller se flere læringsstier?',
     createLearningPathButtonText: 'Gå til stier',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',
@@ -683,8 +663,7 @@ const messages = {
     pageOf: 'av',
     lastStep: {
       heading: 'Siste steg i læringsstien',
-      headingSmall:
-        'Du er nå på siste steget i læringsstien {learningPathName}',
+      headingSmall: 'Du er nå på siste steget i læringsstien {learningPathName}',
       topicHeading: 'Gå til emne:',
       subjectHeading: 'Gå til faget:',
     },
@@ -702,8 +681,7 @@ const messages = {
   blogPosts: {
     blog1: {
       text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink:
-        'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',
@@ -809,8 +787,7 @@ const messages = {
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',
-    error:
-      'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
+    error: 'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
   concept: {
     showDescription: 'Vis beskrivelsen av forklaringen.',

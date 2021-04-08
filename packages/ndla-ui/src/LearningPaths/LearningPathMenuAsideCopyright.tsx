@@ -43,9 +43,7 @@ type Props = {
   };
 };
 
-const LearningPathMenuAsideCopyright: React.FunctionComponent<Props> = ({
-  copyright,
-}) => (
+const LearningPathMenuAsideCopyright: React.FunctionComponent<Props> = ({ copyright }) => (
   <StyledLearningPathDetails>
     <User />
     <p>

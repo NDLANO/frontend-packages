@@ -30,12 +30,7 @@ function AudioExample({ t }) {
         title={caption}
         typeLabel="Hørespill"
       />
-      <FigureCaptionExample
-        caption={caption}
-        figureId={figureId}
-        id={id}
-        messages={messages}
-      />
+      <FigureCaptionExample caption={caption} figureId={figureId} id={id} messages={messages} />
     </Figure>
   );
 }

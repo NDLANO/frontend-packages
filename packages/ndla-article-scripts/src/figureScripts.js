@@ -17,13 +17,9 @@ export const toggleLicenseInfoBox = () => {
     if (toggleButton) {
       toggleButton.onclick = () => {
         const activeClass = 'c-figure-license__hidden-content--active';
-        const hiddenContent = target.querySelector(
-          '.c-figure-license__hidden-content',
-        );
+        const hiddenContent = target.querySelector('.c-figure-license__hidden-content');
 
-        const dialogContent = target.querySelector(
-          '.c-figure-license--fullscreen',
-        );
+        const dialogContent = target.querySelector('.c-figure-license--fullscreen');
 
         hiddenContent.classList.toggle(activeClass);
 
@@ -103,8 +99,7 @@ export const addEventListenerForFigureZoomButton = () => {
     const target = el;
     target.onclick = () => {
       const parentFigure = target.closest('figure');
-      const sourceTag =
-        parentFigure && parentFigure.getElementsByTagName('source')[0];
+      const sourceTag = parentFigure && parentFigure.getElementsByTagName('source')[0];
       if (parentFigure && target.dataset.expanded) {
         target.setAttribute('aria-label', target.dataset.aria);
         target.classList.remove('c-figure__fullscreen-btn--expanded');

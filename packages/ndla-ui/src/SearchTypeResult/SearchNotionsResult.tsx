@@ -58,33 +58,19 @@ type Props = {
   renderMarkdown: (text: React.ReactNode) => string;
 };
 
-const SearchNotionsResult = ({
-  items,
-  totalCount,
-  onRemove,
-  renderMarkdown,
-  t,
-}: Props & tType) => (
+const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & tType) => (
   <Wrapper>
     <HeadingWrapper>
       <Heading>
         {t(`searchPage.resultType.notionsHeading`)}
-        <HeadingCount>
-          {t(`searchPage.resultType.hits`, { count: totalCount })}
-        </HeadingCount>
+        <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
       </Heading>
       <Button onClick={onRemove} link>
-        <ButtonRemoveText>
-          {t(`searchPage.resultType.notionsRemove`)}
-        </ButtonRemoveText>
+        <ButtonRemoveText>{t(`searchPage.resultType.notionsRemove`)}</ButtonRemoveText>
       </Button>
     </HeadingWrapper>
     {items.map(item => (
-      <SearchNotionItem
-        key={item.id}
-        {...item}
-        renderMarkdown={renderMarkdown}
-      />
+      <SearchNotionItem key={item.id} {...item} renderMarkdown={renderMarkdown} />
     ))}
   </Wrapper>
 );

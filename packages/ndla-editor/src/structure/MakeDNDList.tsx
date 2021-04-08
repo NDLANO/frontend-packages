@@ -35,25 +35,15 @@ type Props = {
   dragHandle: boolean;
 };
 
-const MakeDndList = ({
-  disableDND,
-  children,
-  onDragEnd,
-  dragHandle,
-}: Props) => {
+const MakeDndList = ({ disableDND, children, onDragEnd, dragHandle }: Props) => {
   if (disableDND) {
     return children;
   }
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
-        {(
-          provided: DroppableProvided,
-          snapshot: DroppableStateSnapshot,
-        ): React.ReactElement => (
-          <div
-            ref={provided.innerRef}
-            css={snapshot.isDraggingOver && dropZone}>
+        {(provided: DroppableProvided, snapshot: DroppableStateSnapshot): React.ReactElement => (
+          <div ref={provided.innerRef} css={snapshot.isDraggingOver && dropZone}>
             {React.Children.map(
               children,
               (
@@ -68,22 +58,14 @@ const MakeDndList = ({
                     key={child.props.id}
                     draggableId={child.props.connectionId}
                     index={index}>
-                    {(
-                      providedInner: DraggableProvided,
-                      snapshotInner: DraggableStateSnapshot,
-                    ) => (
+                    {(providedInner: DraggableProvided, snapshotInner: DraggableStateSnapshot) => (
                       <div
                         ref={providedInner.innerRef}
                         {...providedInner.draggableProps}
                         {...(dragHandle ? {} : providedInner.dragHandleProps)}
-                        css={[
-                          dragHandleWrapperStyle,
-                          snapshotInner.isDragging && draggingStyle,
-                        ]}>
+                        css={[dragHandleWrapperStyle, snapshotInner.isDragging && draggingStyle]}>
                         {dragHandle && (
-                          <div
-                            css={{ position: 'absolute' }}
-                            {...providedInner.dragHandleProps}>
+                          <div css={{ position: 'absolute' }} {...providedInner.dragHandleProps}>
                             <DragHorizontal />
                           </div>
                         )}

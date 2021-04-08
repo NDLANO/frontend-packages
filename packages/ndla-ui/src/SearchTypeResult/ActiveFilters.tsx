@@ -13,10 +13,7 @@ import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { injectT, tType } from '@ndla/i18n';
-import ActiveFilterContent, {
-  FilterProps,
-  StyledActiveFilterTitle,
-} from './ActiveFilterContent';
+import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
 type StyledActiveFiltersProps = {
   showOnSmallScreen?: boolean;
@@ -105,9 +102,7 @@ const ActiveFilters = ({
     const filterLength = filters.length;
 
     const filterItems = filters.map(filter => {
-      const filterKey = filter.name
-        ? `${filter.name}${filter.value}`
-        : filter.value;
+      const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
 
       return (
         <StyledActiveFilterWrapper key={filterKey}>
@@ -118,30 +113,20 @@ const ActiveFilters = ({
               tooltip={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,
               })}>
-              <ActiveFilterContent
-                filter={filter}
-                onFilterRemove={onFilterRemove}
-              />
+              <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
             </Tooltip>
           ) : (
-            <ActiveFilterContent
-              filter={filter}
-              onFilterRemove={onFilterRemove}
-            />
+            <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
           )}
         </StyledActiveFilterWrapper>
       );
     });
 
     return (
-      <StyledActiveFilters
-        showOnSmallScreen={showOnSmallScreen}
-        filterLength={filterLength}>
+      <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
         {filterItems}
         {customElements &&
-          customElements.map(item => (
-            <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>
-          ))}
+          customElements.map(item => <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>)}
       </StyledActiveFilters>
     );
   }

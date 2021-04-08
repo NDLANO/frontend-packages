@@ -58,9 +58,7 @@ class FruitTabSelector extends Component {
     const { index } = this.state;
     return (
       <div>
-        <button onClick={() => this.setState({ index: 1 })}>
-          Show banana tab
-        </button>
+        <button onClick={() => this.setState({ index: 1 })}>Show banana tab</button>
         <Tabs selectedIndex={index} tabs={fruitTabs} />
       </div>
     );

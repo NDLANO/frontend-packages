@@ -17,9 +17,7 @@ const statusMessages = {
 
 const classes = BEMHelper('c-componentinfo');
 
-const SyntaxHighlighter = React.lazy(() =>
-  import('./wrappers/SyntaxHiglighter'),
-);
+const SyntaxHighlighter = React.lazy(() => import('./wrappers/SyntaxHiglighter'));
 
 class ComponentInfo extends Component {
   constructor(props) {
@@ -56,18 +54,14 @@ class ComponentInfo extends Component {
                     coping: true,
                   },
                   () => {
-                    this.timeKeeper = window.setTimeout(
-                      this.resetTimeout,
-                      5000,
-                    );
+                    this.timeKeeper = window.setTimeout(this.resetTimeout, 5000);
                   },
                 );
               }}
               outline
               title="Kopier til clipboard">
               <Fragment>
-                <Copy />{' '}
-                {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
+                <Copy /> {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
               </Fragment>
             </Button>
 
@@ -94,9 +88,7 @@ class ComponentInfo extends Component {
                 <tr key={uuid()}>
                   <td>{prop.name}</td>
                   <td>{prop.type}</td>
-                  <td className={prop.default === 'Required' ? 'required' : ''}>
-                    {prop.default}
-                  </td>
+                  <td className={prop.default === 'Required' ? 'required' : ''}>{prop.default}</td>
                   <td>{prop.description}</td>
                 </tr>
               ))}

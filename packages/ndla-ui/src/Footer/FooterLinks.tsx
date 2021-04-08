@@ -99,10 +99,7 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({
-  t,
-  links,
-}) => (
+const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, links }) => (
   <>
     <StyledLinksWrapper>
       <section>

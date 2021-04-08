@@ -20,10 +20,7 @@ const classes = new BEMHelper({
 });
 
 const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
-  if (
-    (showAuthor === null || showAuthor === undefined) &&
-    authors.length !== 1
-  ) {
+  if ((showAuthor === null || showAuthor === undefined) && authors.length !== 1) {
     // Render author list
     return (
       <Trans>
@@ -36,10 +33,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
                 <li key={author.name}>
                   {author.role && <span>{author.role}:</span>}
                   <span>
-                    {author.phone ||
-                    author.email ||
-                    author.introduction ||
-                    author.title ? (
+                    {author.phone || author.email || author.introduction || author.title ? (
                       <Button
                         type="button"
                         appearance="link"
@@ -53,9 +47,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
                     )}
                   </span>
                   {author.licenses && (
-                    <span {...classes('', 'author-licenses')}>
-                      {author.licenses}
-                    </span>
+                    <span {...classes('', 'author-licenses')}>{author.licenses}</span>
                   )}
                 </li>
               ))}
@@ -84,9 +76,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
       {({ t }) => (
         <div {...classes()}>
           <div {...classes('author-info')}>
-            {image && (
-              <Portrait src={image} alt={name} {...classes('portrait')} />
-            )}
+            {image && <Portrait src={image} alt={name} {...classes('portrait')} />}
             <section>
               <h1>{name}</h1>
               <hr />

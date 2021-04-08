@@ -15,10 +15,7 @@ const ScriptLoader = ({ polyfill, scripts }) => {
     <script
       type="text/javascript"
       dangerouslySetInnerHTML={{
-        __html: featureDetect(
-          JSON.stringify(polyfill),
-          JSON.stringify(scripts),
-        ),
+        __html: featureDetect(JSON.stringify(polyfill), JSON.stringify(scripts)),
       }}
     />
   );

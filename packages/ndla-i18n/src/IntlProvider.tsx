@@ -49,20 +49,14 @@ export default class IntlProvider extends Component<Props, State> {
     const { getMessageFormat } = context;
 
     this.state = {
-      getMessageFormat:
-        getMessageFormat || memoizeIntlConstructor(IntlMessageFormat),
+      getMessageFormat: getMessageFormat || memoizeIntlConstructor(IntlMessageFormat),
     };
   }
 
   getChildContext() {
     const { getMessageFormat } = this.state;
     const { locale, messages } = this.props;
-    const formatMessage = localFormatMessage.bind(
-      null,
-      locale,
-      messages,
-      getMessageFormat,
-    );
+    const formatMessage = localFormatMessage.bind(null, locale, messages, getMessageFormat);
 
     return {
       getMessageFormat,

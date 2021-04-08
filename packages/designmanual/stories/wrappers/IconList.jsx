@@ -42,17 +42,13 @@ class IconItem extends Component {
           })}
           <strong style={{ marginLeft: '13px' }}>{name}</strong>
         </div>
-        <div
-          style={{ marginTop: '6.5px' }}
-          title={`Kilde: ${icon().props['data-source']}`}>
+        <div style={{ marginTop: '6.5px' }} title={`Kilde: ${icon().props['data-source']}`}>
           {icon().props['data-license']}
           {hover && (
             <Button
               stripped
               onClick={() =>
-                copyTextToClipboard(
-                  `import { ${name} } from '@ndla/icons/${folder}';`,
-                )
+                copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)
               }
               style={{ float: 'right' }}
               title="Kopier import kode">

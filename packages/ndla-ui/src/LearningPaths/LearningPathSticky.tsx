@@ -45,9 +45,9 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const LearningPathSticky: React.FunctionComponent<Props> = ({
-  children,
-}) => <StyledFooter>{children}</StyledFooter>;
+export const LearningPathSticky: React.FunctionComponent<Props> = ({ children }) => (
+  <StyledFooter>{children}</StyledFooter>
+);
 
 LearningPathSticky.propTypes = {
   children: PropTypes.node,

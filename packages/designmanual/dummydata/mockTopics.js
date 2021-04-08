@@ -290,8 +290,7 @@ export const topicListChinese = [
     id: 'urn:topic:1:200001',
     name: 'Kinesisk 1',
     contentUri: 'urn:article:6104',
-    introduction:
-      'Kinesisk 1 gir grunnleggende innsikt i levemåter og tankesett i Kina.',
+    introduction: 'Kinesisk 1 gir grunnleggende innsikt i levemåter og tankesett i Kina.',
     parent: 'urn:subject:100',
     author: 'Inga Berntsen Rudi',
     path: '/subject:100/topic:1:179373',

@@ -17,10 +17,7 @@ const withTracker = WrappedComponent => {
     static trackPageView(props) {
       const lastMountedInstance = mountedInstances[mountedInstances.length - 1];
 
-      if (
-        hasCurrentPageBeenTracked() ||
-        lastMountedInstance !== WrappedComponent
-      ) {
+      if (hasCurrentPageBeenTracked() || lastMountedInstance !== WrappedComponent) {
         return;
       }
 
@@ -61,12 +58,7 @@ const withTracker = WrappedComponent => {
     }
 
     render() {
-      return (
-        <WrappedComponent
-          {...this.props}
-          trackPageView={Tracker.trackPageView}
-        />
-      );
+      return <WrappedComponent {...this.props} trackPageView={Tracker.trackPageView} />;
     }
   };
 

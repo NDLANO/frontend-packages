@@ -9,13 +9,7 @@ import { HelpCircle } from '@ndla/icons/common';
 
 import ComponentInfo from '../ComponentInfo';
 
-const ModalDemo = ({
-  title,
-  size,
-  animation,
-  backgroundColor,
-  headerColorModifier,
-}) => (
+const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifier }) => (
   <Modal
     narrow
     size={size}
@@ -156,11 +150,10 @@ class ModalExample extends Component {
           'Vil etterhvert erstatte <Dialog /> komponenten.',
         ]}>
         <p>
-          Modal som håndterer åpne/lukke states og håndterer automatisk lås av
-          pagescroll, scroll på content, focus-trap samt ESC-exit. Krever at
-          minst ett child-element er focusable. Animasjon inn/ut, størrelser og
-          bakgrunn kan enkelt endres ved behov. Tar også onOpen og onClose som
-          functions via props.
+          Modal som håndterer åpne/lukke states og håndterer automatisk lås av pagescroll, scroll på
+          content, focus-trap samt ESC-exit. Krever at minst ett child-element er focusable.
+          Animasjon inn/ut, størrelser og bakgrunn kan enkelt endres ved behov. Tar også onOpen og
+          onClose som functions via props.
         </p>
         <h3>Enkel versjon:</h3>
         <Modal narrow activateButton={<Button outline>Åpne modal</Button>}>
@@ -182,17 +175,14 @@ class ModalExample extends Component {
                     {onClose2ndModal => (
                       <Fragment>
                         <ModalHeader>
-                          <ModalCloseButton
-                            title="Lukk"
-                            onClick={onClose2ndModal}
-                          />
+                          <ModalCloseButton title="Lukk" onClick={onClose2ndModal} />
                         </ModalHeader>
                         <ModalBody>
                           <h1>En modal over modal!</h1>
                           <hr />
                           <p>
-                            All logikk håndteres automagisk! Trykk lukk, trykk
-                            utenfor modal eller lukk med ESCAPE-knappen
+                            All logikk håndteres automagisk! Trykk lukk, trykk utenfor modal eller
+                            lukk med ESCAPE-knappen
                           </p>
                         </ModalBody>
                       </Fragment>
@@ -209,8 +199,8 @@ class ModalExample extends Component {
         <h3>Eksempel med wrapper</h3>
         <p>
           Noen ganger må vi wrappe modalen ved behov igjennom prop funksjonen
-          wrapperFunctionForButton. Nyttig når man skal ha Modal på en komponent
-          som feks {`<Tooltip />`}
+          wrapperFunctionForButton. Nyttig når man skal ha Modal på en komponent som feks{' '}
+          {`<Tooltip />`}
         </p>
         <span>Trykk på ikon for å åpne:</span>
         <Modal

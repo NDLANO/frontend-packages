@@ -9,12 +9,7 @@
 import React, { Component } from 'react';
 import Downshift from 'downshift';
 import { RadioButtonGroup, SubjectMaterialBadge } from '@ndla/ui';
-import {
-  DropdownMenu,
-  DropdownInput,
-  FieldHeader,
-  FormPills,
-} from '@ndla/forms';
+import { DropdownMenu, DropdownInput, FieldHeader, FormPills } from '@ndla/forms';
 import { Spinner } from '@ndla/editor';
 import { Search } from '@ndla/icons/common';
 import { mockTypeahead } from '../../dummydata';
@@ -109,9 +104,7 @@ class MultiSelectDropdownExample extends Component {
       title: item.title,
       description: useLayout !== '4' && item.description,
       image:
-        useLayout === '1'
-          ? item.image
-          : useLayout === '2' && <SubjectMaterialBadge background />,
+        useLayout === '1' ? item.image : useLayout === '2' && <SubjectMaterialBadge background />,
       alt: item.alt,
     }));
 
@@ -192,9 +185,7 @@ class MultiSelectDropdownExample extends Component {
           <FormPills
             onClick={id => {
               this.setState(prevState => ({
-                addedData: prevState.addedData.filter(
-                  addedItemId => addedItemId !== id,
-                ),
+                addedData: prevState.addedData.filter(addedItemId => addedItemId !== id),
               }));
             }}
             labels={addedData}
@@ -206,13 +197,7 @@ class MultiSelectDropdownExample extends Component {
           itemToString={item => item?.title || ''}
           onStateChange={this.handleStateChange}
           isOpen={isOpen}>
-          {({
-            getInputProps,
-            getRootProps,
-            getMenuProps,
-            getItemProps,
-            highlightedIndex,
-          }) => {
+          {({ getInputProps, getRootProps, getMenuProps, getItemProps, highlightedIndex }) => {
             return (
               <div>
                 <DropdownInput
@@ -221,9 +206,7 @@ class MultiSelectDropdownExample extends Component {
                   data-testid={'dropdownInput'}
                   idField="title"
                   labelField="title"
-                  iconRight={
-                    loading ? <Spinner size="normal" margin="0" /> : <Search />
-                  }
+                  iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
                   values={useTags === '1' && addedData}
                   removeItem={this.removeItem}
                 />

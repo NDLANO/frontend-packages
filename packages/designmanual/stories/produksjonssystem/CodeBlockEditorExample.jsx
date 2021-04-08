@@ -25,11 +25,7 @@ export const CodeBlockEditorExample = () => {
 
   return (
     <>
-      <CodeBlockEditor
-        onSave={handleSave}
-        onAbort={handleAbort}
-        content={demoContent}
-      />
+      <CodeBlockEditor onSave={handleSave} onAbort={handleAbort} content={demoContent} />
     </>
   );
 };

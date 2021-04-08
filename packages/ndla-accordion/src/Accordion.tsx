@@ -45,21 +45,14 @@ type Props = {
   children: (arg: childrenProps) => React.ReactElement;
 };
 
-export const Accordion: React.FC<Props> = ({
-  openIndexes,
-  single,
-  tiny,
-  children,
-}) => {
+export const Accordion: React.FC<Props> = ({ openIndexes, single, tiny, children }) => {
   const [currentOpenedIndexes, setOpenIndexes] = useState(openIndexes || []);
 
   const togglePanel = (index: openIndexesProps) => {
     if (single) {
       setOpenIndexes(currentOpenedIndexes.includes(index) ? [] : [index]);
     } else if (currentOpenedIndexes.includes(index)) {
-      setOpenIndexes(
-        currentOpenedIndexes.filter(openIndex => openIndex !== index),
-      );
+      setOpenIndexes(currentOpenedIndexes.filter(openIndex => openIndex !== index));
     } else {
       setOpenIndexes([...currentOpenedIndexes, index]);
     }

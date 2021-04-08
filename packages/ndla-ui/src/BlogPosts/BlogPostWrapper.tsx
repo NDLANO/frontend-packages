@@ -42,9 +42,8 @@ interface Props {
   oneColumn?: boolean;
 }
 
-export const BlogPostWrapper: React.FunctionComponent<Props> = ({
-  children,
-  oneColumn,
-}) => <StyledGrid oneColumn={oneColumn}>{children}</StyledGrid>;
+export const BlogPostWrapper: React.FunctionComponent<Props> = ({ children, oneColumn }) => (
+  <StyledGrid oneColumn={oneColumn}>{children}</StyledGrid>
+);
 
 export default BlogPostWrapper;

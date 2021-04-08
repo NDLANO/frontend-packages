@@ -77,9 +77,7 @@ export const ArticleIntroduction = ({
   },
 }) => {
   if (isString(children)) {
-    return (
-      <p className="article_introduction">{parse(renderMarkdown(children))}</p>
-    );
+    return <p className="article_introduction">{parse(renderMarkdown(children))}</p>;
   }
   if (children) {
     return <p className="article_introduction">{children}</p>;
@@ -116,8 +114,7 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
-  const license = getLicenseByAbbreviation(licenseObj.license, locale)
-    .abbreviation;
+  const license = getLicenseByAbbreviation(licenseObj.license, locale).abbreviation;
 
   let authors = creators;
   if (Array.isArray(authors) && authors.length === 0) {
@@ -134,18 +131,14 @@ export const Article = ({
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>
-          <ArticleIntroduction renderMarkdown={renderMarkdown}>
-            {introduction}
-          </ArticleIntroduction>
+          <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <ArticleContent content={content} locale={locale} />
       </LayoutItem>
       <LayoutItem layout="center">
-        {footNotes && footNotes.length > 0 && (
-          <ArticleFootNotes footNotes={footNotes} />
-        )}
+        {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
         <ArticleByline
           copyPageUrlLink={copyPageUrlLink}
           {...{

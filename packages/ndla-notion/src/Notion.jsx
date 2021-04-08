@@ -55,11 +55,7 @@ const NotionCSS = css`
 
 const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
   <span css={NotionCSS} id={id} data-notion>
-    <button
-      type="button"
-      aria-label={ariaLabel}
-      className={'link'}
-      data-notion-link>
+    <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
       {children}
     </button>
     {createUniversalPortal(

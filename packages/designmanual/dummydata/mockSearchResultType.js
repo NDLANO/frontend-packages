@@ -29,17 +29,14 @@ const topicResults = [
   {
     id: 12627,
     title: 'Løping',
-    ingress:
-      'Løping er ofte med som hovedaktivitet i den generelle oppvarmingen.',
+    ingress: 'Løping er ofte med som hovedaktivitet i den generelle oppvarmingen.',
     url: '#12627',
     labels: [],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/43283?width=600',
       alt: 'Kvinne jogger på gata. Foto.',
     },
-    contexts: [
-      { breadcrumb: ['Kroppsøving', 'Øvingsbank', 'Oppvarming'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Kroppsøving', 'Øvingsbank', 'Oppvarming'], url: '#1' }],
   },
   {
     id: 20681,
@@ -112,17 +109,11 @@ const topicResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Medieuttrykk og mediesamfunnet Vg2 og Vg3',
-          'Medieproduksjon',
-        ],
+        breadcrumb: ['Medieuttrykk og mediesamfunnet Vg2 og Vg3', 'Medieproduksjon'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Medieuttrykk og mediesamfunnet Vg2 og Vg3',
-          'Medieproduksjon',
-        ],
+        breadcrumb: ['Medieuttrykk og mediesamfunnet Vg2 og Vg3', 'Medieproduksjon'],
         url: '#2',
       },
     ],
@@ -160,9 +151,7 @@ const topicResults = [
       url: 'https://api.ndla.no/image-api/raw/id/45661?width=600',
       alt: 'To smykker med samisk solgud. Foto.',
     },
-    contexts: [
-      { breadcrumb: ['Håndverk, design og produktutvikling Vg1'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Håndverk, design og produktutvikling Vg1'], url: '#1' }],
   },
   {
     id: 22813,
@@ -177,10 +166,7 @@ const topicResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Salg, service og reiseliv Vg1',
-          'Verdikjeden og bærekraftig utvikling',
-        ],
+        breadcrumb: ['Salg, service og reiseliv Vg1', 'Verdikjeden og bærekraftig utvikling'],
         url: '#1',
       },
     ],
@@ -233,10 +219,7 @@ const topicResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Brønnteknikk Vg2',
-          'Komplettering, produksjon og brønnvedlikehold',
-        ],
+        breadcrumb: ['Brønnteknikk Vg2', 'Komplettering, produksjon og brønnvedlikehold'],
         url: '#1',
       },
     ],
@@ -267,17 +250,11 @@ const topicResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Frisør, blomster, interiør og eksponeringsdesign Vg1',
-          'Visualisering ',
-        ],
+        breadcrumb: ['Frisør, blomster, interiør og eksponeringsdesign Vg1', 'Visualisering '],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Frisør, blomster, interiør og eksponeringsdesign Vg1',
-          'Visualisering ',
-        ],
+        breadcrumb: ['Frisør, blomster, interiør og eksponeringsdesign Vg1', 'Visualisering '],
         url: '#2',
       },
     ],
@@ -295,10 +272,7 @@ const topicResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Håndverk, design og produktutvikling Vg1',
-          'Visualisering ',
-        ],
+        breadcrumb: ['Håndverk, design og produktutvikling Vg1', 'Visualisering '],
         url: '#1',
       },
     ],
@@ -365,9 +339,7 @@ const topicResults = [
       url: 'https://api.ndla.no/image-api/raw/id/51785?width=600',
       alt: ' ',
     },
-    contexts: [
-      { breadcrumb: ['Mediesamfunnet og medieuttrykk Vg1'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Mediesamfunnet og medieuttrykk Vg1'], url: '#1' }],
   },
   {
     id: 1157,
@@ -398,19 +370,11 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#2',
       },
     ],
@@ -425,19 +389,11 @@ const subjectMaterialResults = [
     img: null,
     contexts: [
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#2',
       },
     ],
@@ -477,11 +433,7 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Kokk- og servitørfag Vg2',
-          'Råvarer og produksjon',
-          'Kjøtt',
-        ],
+        breadcrumb: ['Kokk- og servitørfag Vg2', 'Råvarer og produksjon', 'Kjøtt'],
         url: '#1',
       },
     ],
@@ -524,10 +476,7 @@ const subjectMaterialResults = [
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Informasjonsteknologi og medieproduksjon Vg1',
-          'Videoproduksjon',
-        ],
+        breadcrumb: ['Informasjonsteknologi og medieproduksjon Vg1', 'Videoproduksjon'],
         url: '#2',
       },
     ],
@@ -545,11 +494,7 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Naturfag Påbygg',
-          'Bioteknologi',
-          'Medisinsk bruk av bioteknologi',
-        ],
+        breadcrumb: ['Naturfag Påbygg', 'Bioteknologi', 'Medisinsk bruk av bioteknologi'],
         url: '#1',
       },
     ],
@@ -582,19 +527,11 @@ const subjectMaterialResults = [
         url: '#2',
       },
       {
-        breadcrumb: [
-          'Medie- og informasjonskunnskap',
-          'Medieproduksjon',
-          'Levende bilder',
-        ],
+        breadcrumb: ['Medie- og informasjonskunnskap', 'Medieproduksjon', 'Levende bilder'],
         url: '#3',
       },
       {
-        breadcrumb: [
-          'Medie- og informasjonskunnskap',
-          'Medieproduksjon',
-          'Levende bilder',
-        ],
+        breadcrumb: ['Medie- og informasjonskunnskap', 'Medieproduksjon', 'Levende bilder'],
         url: '#4',
       },
       {
@@ -617,9 +554,7 @@ const subjectMaterialResults = [
       url: 'https://api.ndla.no/image-api/raw/id/5772?width=600',
       alt: 'Kinesiske tegn. Betydning: uttale. Illustrasjon.',
     },
-    contexts: [
-      { breadcrumb: ['Kinesisk', 'Introduksjon til kinesisk'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Kinesisk', 'Introduksjon til kinesisk'], url: '#1' }],
   },
   {
     id: 5108,
@@ -660,11 +595,7 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Bygg- og anleggsteknikk',
-          'Yrkesutøvelse',
-          'Betongarbeideren',
-        ],
+        breadcrumb: ['Bygg- og anleggsteknikk', 'Yrkesutøvelse', 'Betongarbeideren'],
         url: '#1',
       },
     ],
@@ -682,11 +613,7 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Bygg- og anleggsteknikk',
-          'Yrkesutøvelse',
-          'Betongarbeideren',
-        ],
+        breadcrumb: ['Bygg- og anleggsteknikk', 'Yrkesutøvelse', 'Betongarbeideren'],
         url: '#1',
       },
     ],
@@ -704,19 +631,11 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#2',
       },
     ],
@@ -734,19 +653,11 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Kroppsøving',
-          'Helse og livsstil',
-          'Uheldige sider ved trening',
-        ],
+        breadcrumb: ['Kroppsøving', 'Helse og livsstil', 'Uheldige sider ved trening'],
         url: '#2',
       },
     ],
@@ -754,8 +665,7 @@ const subjectMaterialResults = [
   {
     id: 20614,
     title: 'Terminering av RJ45-plugg',
-    ingress:
-      'Her lærer du hvordan du terminerer en nettverkskabel med 8-pin-plugg (RJ-45).',
+    ingress: 'Her lærer du hvordan du terminerer en nettverkskabel med 8-pin-plugg (RJ-45).',
     url: '#20614',
     labels: ['Fagstoff', 'Fagartikkel'],
     img: {
@@ -764,18 +674,11 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Elektro og datateknologi Vg1',
-          'Nettverk',
-          'Nettverksenheter',
-        ],
+        breadcrumb: ['Elektro og datateknologi Vg1', 'Nettverk', 'Nettverksenheter'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Informasjonsteknologi og medieproduksjon Vg1',
-          'Praktisk IT',
-        ],
+        breadcrumb: ['Informasjonsteknologi og medieproduksjon Vg1', 'Praktisk IT'],
         url: '#2',
       },
     ],
@@ -789,8 +692,7 @@ const subjectMaterialResults = [
     labels: ['Fagstoff', 'Veiledning'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/13982?width=600',
-      alt:
-        'Tre bilder som viser hvordan du kan lage ei gipsform ut fra et annet produkt. Foto. ',
+      alt: 'Tre bilder som viser hvordan du kan lage ei gipsform ut fra et annet produkt. Foto. ',
     },
     contexts: [
       {
@@ -861,8 +763,7 @@ const subjectMaterialResults = [
   {
     id: 26897,
     title: 'Håndsirkelsag',
-    ingress:
-      'Lær deg sikker bruk av ei håndsirkelsag. Saga brukes både til kapping og kløyving. ',
+    ingress: 'Lær deg sikker bruk av ei håndsirkelsag. Saga brukes både til kapping og kløyving. ',
     url: '#26897',
     labels: ['Fagstoff', 'Film og filmklipp'],
     img: {
@@ -871,19 +772,11 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Håndverk, design og produktutvikling Vg1',
-          'Trearbeid',
-          'Verktøy',
-        ],
+        breadcrumb: ['Håndverk, design og produktutvikling Vg1', 'Trearbeid', 'Verktøy'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Håndverk, design og produktutvikling Vg1',
-          'Trearbeid',
-          'Verktøy',
-        ],
+        breadcrumb: ['Håndverk, design og produktutvikling Vg1', 'Trearbeid', 'Verktøy'],
         url: '#2',
       },
     ],
@@ -915,9 +808,7 @@ const resourcesTasksAndActivitiesResults = [
     ingress:
       'Lag deg ei enkel oversikt over pronomena som er ulike i bokmål og nynorsk. Kjekt å ha!',
     labels: ['Tilleggsstoff', 'Øvelse', 'Oppgave'],
-    contexts: [
-      { breadcrumb: ['Språket som system', 'Nynorskkurs'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Språket som system', 'Nynorskkurs'], url: '#1' }],
   },
   {
     id: 16,
@@ -925,9 +816,7 @@ const resourcesTasksAndActivitiesResults = [
     url: '#1',
     ingress: 'Enkel gjennomgang av spørjeorda i nynorsk.',
     labels: ['Tilleggsstoff', 'Øvelse', 'Oppgave'],
-    contexts: [
-      { breadcrumb: ['Språket som system', 'Heilt grei nynorsk'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Språket som system', 'Heilt grei nynorsk'], url: '#1' }],
   },
   {
     id: 17,
@@ -940,9 +829,7 @@ const resourcesTasksAndActivitiesResults = [
       url: 'https://api.ndla.no/image-api/raw/id/46762?width=600',
       alt: 'Person som hoppar over ordet verb. Illustrasjon.',
     },
-    contexts: [
-      { breadcrumb: ['Språket som system', 'Heilt grei nynorsk'], url: '#1' },
-    ],
+    contexts: [{ breadcrumb: ['Språket som system', 'Heilt grei nynorsk'], url: '#1' }],
   },
 ];
 
@@ -1011,11 +898,7 @@ const resourcesAssessmentResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Praktisk yrkesutøvelse (BA Vg1)',
-          'Yrkesutøvelse',
-          'Betongarbeideren',
-        ],
+        breadcrumb: ['Praktisk yrkesutøvelse (BA Vg1)', 'Yrkesutøvelse', 'Betongarbeideren'],
         url: '#1',
       },
     ],
@@ -1061,8 +944,7 @@ const resourcesExternalResults = [
   {
     id: 10810,
     title: 'Veggmonterte panelovner',
-    ingress:
-      'Lær om veggmonterte panelovner, som finnes i de fleste norsk hjem.',
+    ingress: 'Lær om veggmonterte panelovner, som finnes i de fleste norsk hjem.',
     url: '#10810',
     labels: ['Ekstern læringsressurs', 'Ekstern lenke'],
     img: {
@@ -1091,17 +973,11 @@ const resourcesExternalResults = [
     img: null,
     contexts: [
       {
-        breadcrumb: [
-          'Design og håndverk Vg1 2019-2020',
-          'Tverrfaglige arbeidsoppdrag',
-        ],
+        breadcrumb: ['Design og håndverk Vg1 2019-2020', 'Tverrfaglige arbeidsoppdrag'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Design og håndverk Vg1 2019-2020',
-          'Tverrfaglige arbeidsoppdrag',
-        ],
+        breadcrumb: ['Design og håndverk Vg1 2019-2020', 'Tverrfaglige arbeidsoppdrag'],
         url: '#2',
       },
     ],
@@ -1119,17 +995,11 @@ const resourcesExternalResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Design og håndverk Vg1 2019-2020',
-          'Tverrfaglige arbeidsoppdrag',
-        ],
+        breadcrumb: ['Design og håndverk Vg1 2019-2020', 'Tverrfaglige arbeidsoppdrag'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Design og håndverk Vg1 2019-2020',
-          'Tverrfaglige arbeidsoppdrag',
-        ],
+        breadcrumb: ['Design og håndverk Vg1 2019-2020', 'Tverrfaglige arbeidsoppdrag'],
         url: '#2',
       },
     ],
@@ -1147,17 +1017,11 @@ const resourcesExternalResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Design og håndverk Vg1 2019-2020',
-          'Tverrfaglige arbeidsoppdrag',
-        ],
+        breadcrumb: ['Design og håndverk Vg1 2019-2020', 'Tverrfaglige arbeidsoppdrag'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Design og håndverk Vg1 2019-2020',
-          'Tverrfaglige arbeidsoppdrag',
-        ],
+        breadcrumb: ['Design og håndverk Vg1 2019-2020', 'Tverrfaglige arbeidsoppdrag'],
         url: '#2',
       },
     ],

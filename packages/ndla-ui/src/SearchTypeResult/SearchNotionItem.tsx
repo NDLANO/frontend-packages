@@ -137,17 +137,13 @@ const SearchNotionItem = ({
               {type === 'video' && (
                 <>
                   <Play />
-                  <ShowMediaButtonText>
-                    {t('searchPage.resultType.showVideo')}
-                  </ShowMediaButtonText>
+                  <ShowMediaButtonText>{t('searchPage.resultType.showVideo')}</ShowMediaButtonText>
                 </>
               )}
               {type === 'other' && (
                 <>
                   <ArrowExpand />
-                  <ShowMediaButtonText>
-                    {t('searchPage.resultType.showNotion')}
-                  </ShowMediaButtonText>
+                  <ShowMediaButtonText>{t('searchPage.resultType.showNotion')}</ShowMediaButtonText>
                 </>
               )}
             </Button>
@@ -159,10 +155,7 @@ const SearchNotionItem = ({
           {(onClose: () => void) => (
             <>
               <ModalHeader>
-                <ModalCloseButton
-                  onClick={onClose}
-                  title={t('searchPage.close')}
-                />
+                <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
               </ModalHeader>
               <ModalBody modifier="no-side-padding-mobile">{element}</ModalBody>
             </>
@@ -177,16 +170,12 @@ const SearchNotionItem = ({
       <TextWrapper>
         <DescriptionWrapper>
           {parse(
-            renderMarkdown
-              ? renderMarkdown(`**${title}** - ${text}`)
-              : `<b>${title}</b> - ${text}`,
+            renderMarkdown ? renderMarkdown(`**${title}** - ${text}`) : `<b>${title}</b> - ${text}`,
           )}
         </DescriptionWrapper>
         {labels.length > 0 && (
           <LabelsWrapper>
-            <LabelsLabel>
-              {t('searchPage.resultType.notionLabels')}:
-            </LabelsLabel>
+            <LabelsLabel>{t('searchPage.resultType.notionLabels')}:</LabelsLabel>
             {labels.map(label => (
               <Label key={label}>{label}</Label>
             ))}

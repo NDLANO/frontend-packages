@@ -13,8 +13,7 @@ import { spacing, colors } from '@ndla/core';
 
 const SpinnerDiv = styled('div')`
   border: calc(${props => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);
-  border-bottom-color: ${props =>
-    props.inverted ? '#fff' : colors.brand.primary};
+  border-bottom-color: ${props => (props.inverted ? '#fff' : colors.brand.primary)};
   border-radius: 50%;
   animation: spinnerAnimation 0.7s linear infinite;
   height: ${props => spacing[props.size]};

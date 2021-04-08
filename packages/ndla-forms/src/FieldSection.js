@@ -42,9 +42,7 @@ const siblingCSS = css`
   }
 `;
 
-const FieldSection = ({ children }) => (
-  <Wrapper css={siblingCSS}>{children}</Wrapper>
-);
+const FieldSection = ({ children }) => <Wrapper css={siblingCSS}>{children}</Wrapper>;
 
 FieldSection.propTypes = {
   children: PropTypes.node,

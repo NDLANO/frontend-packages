@@ -22,10 +22,7 @@ const Wrapper = styled.div`
 const ListWrapper = styled.ul`
   overflow: visible;
   margin: 0 0
-    ${props =>
-      props.draggingIndex > -1
-        ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px`
-        : '0'};
+    ${props => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;
@@ -64,14 +61,12 @@ class MovieList extends Component {
   }
 
   updateTransforms(dragIndex) {
-    Array.from(this.wrapperRef.current.childNodes.values()).forEach(
-      (node, index) => {
-        if (index !== this.initialPosition) {
-          const value = index >= dragIndex ? MOVIE_HEIGHT : 0;
-          node.style.transform = `translateY(${value}px)`;
-        }
-      },
-    );
+    Array.from(this.wrapperRef.current.childNodes.values()).forEach((node, index) => {
+      if (index !== this.initialPosition) {
+        const value = index >= dragIndex ? MOVIE_HEIGHT : 0;
+        node.style.transform = `translateY(${value}px)`;
+      }
+    });
   }
 
   onDragStart(e, dragIndex) {
@@ -82,15 +77,12 @@ class MovieList extends Component {
     this.updateTransforms(dragIndex);
 
     this.DraggingFile = this.wrapperRef.current.childNodes[dragIndex];
-    this.DraggingFile.style.width = `${
-      this.DraggingFile.getBoundingClientRect().width
-    }px`;
+    this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
     this.DraggingFile.style.position = 'absolute';
     this.DraggingFile.style.top = 0;
     this.DraggingFile.style.zIndex = 9999;
     this.DraggingFile.style.boxShadow = shadows.levitate1;
-    this.DraggingFile.style.transform = `translateY(${this.mouseMovement +
-      MOVIE_HEIGHT}px)`;
+    this.DraggingFile.style.transform = `translateY(${this.mouseMovement + MOVIE_HEIGHT}px)`;
 
     this.setState(
       {
@@ -98,11 +90,9 @@ class MovieList extends Component {
       },
       () => {
         // Add transitions
-        Array.from(this.wrapperRef.current.childNodes.values()).forEach(
-          node => {
-            node.style.transition = 'transform 100ms ease';
-          },
-        );
+        Array.from(this.wrapperRef.current.childNodes.values()).forEach(node => {
+          node.style.transition = 'transform 100ms ease';
+        });
         this.DraggingFile.style.transition = 'box-shadow 100ms ease';
       },
     );
@@ -126,12 +116,10 @@ class MovieList extends Component {
       draggingIndex: -1,
     });
 
-    Array.from(this.wrapperRef.current.childNodes.values()).forEach(
-      (node, index) => {
-        node.style.transition = 'none';
-        node.style.transform = 'none';
-      },
-    );
+    Array.from(this.wrapperRef.current.childNodes.values()).forEach((node, index) => {
+      node.style.transition = 'none';
+      node.style.transform = 'none';
+    });
 
     this.DraggingFile.style.width = 'auto';
     this.DraggingFile.style.position = 'static';
@@ -146,12 +134,8 @@ class MovieList extends Component {
       0,
     );
     const addToPosition = this.initialPosition < currentPosition ? 1 : 0;
-    const dragIndex = Math.min(
-      this.props.movies.length,
-      Math.max(currentPosition, 0),
-    );
-    this.DraggingFile.style.transform = `translateY(${this.mouseMovement +
-      MOVIE_HEIGHT}px)`;
+    const dragIndex = Math.min(this.props.movies.length, Math.max(currentPosition, 0));
+    this.DraggingFile.style.transform = `translateY(${this.mouseMovement + MOVIE_HEIGHT}px)`;
     this.updateTransforms(dragIndex + addToPosition);
     if (this.state.draggingIndex !== dragIndex) {
       this.setState({

@@ -238,17 +238,11 @@ const Item = ({ goal, t }: any) => {
               {subitems && (
                 <Button link onClick={() => setIsExpanded(!!!isExpanded)}>
                   <ToggleWrapper className="showMore">
-                    <ToggleItem>
-                      {isExpanded ? <ChevronUp /> : <ChevronDown />}
-                    </ToggleItem>
+                    <ToggleItem>{isExpanded ? <ChevronUp /> : <ChevronDown />}</ToggleItem>
                     {isExpanded ? (
-                      <ToggleText>
-                        {t('competenceGoals.competenceGoalCloseExtra')}
-                      </ToggleText>
+                      <ToggleText>{t('competenceGoals.competenceGoalCloseExtra')}</ToggleText>
                     ) : (
-                      <ToggleText>
-                        {t('competenceGoals.competenceGoalShowExtra')}
-                      </ToggleText>
+                      <ToggleText>{t('competenceGoals.competenceGoalShowExtra')}</ToggleText>
                     )}
                   </ToggleWrapper>
                 </Button>
@@ -262,9 +256,7 @@ const Item = ({ goal, t }: any) => {
             return (
               <GoalSubItemWrapper key={`${subItem.type}-${subItem.name}`}>
                 <GoalSubItem>
-                  <GoalSubItemLabel>
-                    {labelByType(subItem.type)}
-                  </GoalSubItemLabel>
+                  <GoalSubItemLabel>{labelByType(subItem.type)}</GoalSubItemLabel>
                   <GoalSubItemName>{subItem.name}</GoalSubItemName>
                   {subItem.linkitem && (
                     <GoalSubItemLink>
@@ -321,12 +313,8 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
           {groupedCompetenceGoals &&
             groupedCompetenceGoals.map((group: any) => (
               <GroupedGoalsWrapper key={group.title}>
-                {group.title && (
-                  <GroupedGoalsTitle>{group.title}</GroupedGoalsTitle>
-                )}
-                <GoalsInfo>
-                  {t('competenceGoals.competenceGoalTitle')}
-                </GoalsInfo>
+                {group.title && <GroupedGoalsTitle>{group.title}</GroupedGoalsTitle>}
+                <GoalsInfo>{t('competenceGoals.competenceGoalTitle')}</GoalsInfo>
                 {group.elements.length > 0 && (
                   <Goals>
                     {group.elements.map((goal: any) => (
@@ -344,17 +332,11 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
           {groupedCoreElementItems &&
             groupedCoreElementItems.map((group: any) => (
               <GroupedCoreItemsWrapper key={group.title}>
-                {group.title && (
-                  <GroupedCoreItemsTitle>{group.title}</GroupedCoreItemsTitle>
-                )}
+                {group.title && <GroupedCoreItemsTitle>{group.title}</GroupedCoreItemsTitle>}
                 {group.elements.map((coreItem: any) => (
                   <CoreItem key={coreItem.id}>
-                    {coreItem.name && (
-                      <CoreItemTitle>{coreItem.name}</CoreItemTitle>
-                    )}
-                    {coreItem.text && (
-                      <CoreItemText>{coreItem.text}</CoreItemText>
-                    )}
+                    {coreItem.name && <CoreItemTitle>{coreItem.name}</CoreItemTitle>}
+                    {coreItem.text && <CoreItemText>{coreItem.text}</CoreItemText>}
                   </CoreItem>
                 ))}
               </GroupedCoreItemsWrapper>

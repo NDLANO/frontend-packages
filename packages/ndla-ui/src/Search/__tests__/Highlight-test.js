@@ -29,8 +29,7 @@ test('Test that determining whether to highlight path works with locale and not'
     },
     {
       path: '/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
-      href:
-        '/kultspråk/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
+      href: '/kultspråk/subject:123/topic:1:123/topic:2:5343/resource:1:1231231231',
       expected: true,
     },
     {

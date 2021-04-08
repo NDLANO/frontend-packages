@@ -37,9 +37,7 @@ function FigureWithLicense({
           id={id}
           figureId={figureId}
           caption={caption}
-          messages={
-            messages || { reuse: t('video.reuse'), modelPermission: null }
-          }
+          messages={messages || { reuse: t('video.reuse'), modelPermission: null }}
           hasHiddenCaption={hasHiddenCaption}
         />
       )}

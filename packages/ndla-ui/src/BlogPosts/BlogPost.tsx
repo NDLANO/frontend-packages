@@ -183,11 +183,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
             </span>
           </StyledSafeLink>
           <StyledLicense>
-            <LicenseByline
-              locale={locale}
-              color="#fff"
-              licenseRights={rights}
-            />
+            <LicenseByline locale={locale} color="#fff" licenseRights={rights} />
             {licenseAuthor}
           </StyledLicense>
         </StyledBlog>

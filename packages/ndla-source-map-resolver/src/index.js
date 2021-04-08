@@ -59,9 +59,7 @@ function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
       printSourceLine(sourceMap.mapping, orgPos);
     }
   } else {
-    process.stdout.write(
-      chalk.bold.red(`  at ${frame.func} `) + chalk.cyan(`(${frame.url}) \n`),
-    );
+    process.stdout.write(chalk.bold.red(`  at ${frame.func} `) + chalk.cyan(`(${frame.url}) \n`));
   }
 }
 
@@ -136,9 +134,7 @@ async function runSourceMapResolver(argv) {
   } = first;
   const { url } = stackInfo.stack[0];
   const sourceMaps = await collectSourceMaps(argv, url);
-  process.stdout.write(
-    chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`),
-  );
+  process.stdout.write(chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`));
   stackInfo.stack.forEach(frame => printOriginalPosition(sourceMaps, frame));
 }
 

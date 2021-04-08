@@ -110,10 +110,7 @@ const SearchField = ({
       />
       {hasFilters && (
         <div {...classes('filters')}>
-          <ActiveFilters
-            filters={filters}
-            onFilterRemove={handleOnFilterRemove}
-          />
+          <ActiveFilters filters={filters} onFilterRemove={handleOnFilterRemove} />
         </div>
       )}
       {value !== '' && (
@@ -130,11 +127,7 @@ const SearchField = ({
           {t('welcomePage.resetSearch')}
         </button>
       )}
-      <button
-        tabIndex="-1"
-        {...classes('button', 'searchIcon')}
-        type="submit"
-        value="Search">
+      <button tabIndex="-1" {...classes('button', 'searchIcon')} type="submit" value="Search">
         <SearchIcon />
       </button>
     </div>

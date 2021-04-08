@@ -112,7 +112,7 @@ Modal.propTypes = {
       !React.isValidElement(props[propName])
     ) {
       return new Error(
-        `Invalid prop \`${propName}\` supplied to` + ` \`${componentName}\`. Validation failed.`,
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`,
       );
     }
     return null;

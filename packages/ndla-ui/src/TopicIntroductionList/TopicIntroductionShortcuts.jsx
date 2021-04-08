@@ -55,17 +55,12 @@ class TopicIntroductionShortcuts extends Component {
             this.handleOnToggle(!open);
           }}>
           <Forward />
-          {showButtonText && (
-            <span {...classes('label')}>{messages.toggleButtonText}</span>
-          )}
+          {showButtonText && <span {...classes('label')}>{messages.toggleButtonText}</span>}
         </button>
       );
     }
     return (
-      <div
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        {...classes()}>
+      <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} {...classes()}>
         {buttonView}
         {open && (
           <ul className={classes('list', open ? 'visible' : '').className}>

@@ -13,9 +13,7 @@ import { classes } from './ResourcesWrapper';
 
 const HelpIcon = ({ invertedStyle }) => (
   <div {...classes('topic-title-icon', { invertedStyle })}>
-    <HelpCircleDual
-      className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`}
-    />
+    <HelpCircleDual className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`} />
   </div>
 );
 
@@ -74,9 +72,7 @@ const ResourcesTopicTitle = ({
             narrow
             wrapperFunctionForButton={activateButton => (
               <TooltipWrapper>
-                <Tooltip tooltip={t('resource.dialogTooltip')}>
-                  {activateButton}
-                </Tooltip>
+                <Tooltip tooltip={t('resource.dialogTooltip')}>{activateButton}</Tooltip>
               </TooltipWrapper>
             )}
             activateButton={
@@ -87,10 +83,7 @@ const ResourcesTopicTitle = ({
             {onClose => (
               <Fragment>
                 <ModalHeader>
-                  <ModalCloseButton
-                    title={t('modal.closeModal')}
-                    onClick={onClose}
-                  />
+                  <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
                 </ModalHeader>
                 <ModalBody>
                   <h1>{t('resource.dialogHeading')}</h1>

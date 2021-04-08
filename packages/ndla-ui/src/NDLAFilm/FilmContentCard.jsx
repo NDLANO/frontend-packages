@@ -31,9 +31,7 @@ const FilmContentCard = ({
           columnWidth={columnWidth}
           aria-label={(metaImage && metaImage.alt) || ''}
           style={{
-            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(
-              600,
-            )})`,
+            backgroundImage: `url(${backgroundImage}?${makeSrcQueryString(600)})`,
           }}>
           {movieResourceTypes && !hideTags && (
             <FilmContentCardTags

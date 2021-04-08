@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react';
 import { css } from '@emotion/core';
-import Accordion, {
-  AccordionBar,
-  AccordionPanel,
-  AccordionWrapper,
-} from '@ndla/accordion';
+import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '@ndla/accordion';
 import { colors, spacing } from '@ndla/core';
 
 const paddingPanelStyle = css`

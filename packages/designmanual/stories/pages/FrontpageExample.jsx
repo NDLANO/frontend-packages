@@ -63,9 +63,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
   return (
     <>
       {showMessageBox && !hideMessageBox && (
-        <MessageBox
-          onClose={onCloseMessageBox}
-          heading="Nettleseren din er utdatert">
+        <MessageBox onClose={onCloseMessageBox} heading="Nettleseren din er utdatert">
           <span>
             Bytt til en annen nettleser og få bedre ytelse:{' '}
             <a href="https://updatemybrowser.org/">updatemybrowser.org</a>
@@ -86,9 +84,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
           allResultUrl={`search?query=${searchFieldValue}`}
           onSearchInputFocus={onSearchInputFocus}
           onInputBlur={onSearchDeactivateFocusTrap}
-          searchFieldPlaceholder={t(
-            'welcomePage.heading.searchFieldPlaceholder',
-          )}
+          searchFieldPlaceholder={t('welcomePage.heading.searchFieldPlaceholder')}
           inputHasFocus={inputHasFocus}
           loading={loading}
           searchResult={
@@ -235,9 +231,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
             ]
           }
           messages={{
-            searchFieldTitle: t(
-              'welcomePage.heading.messages.searchFieldTitle',
-            ),
+            searchFieldTitle: t('welcomePage.heading.messages.searchFieldTitle'),
             closeSearchLabel: t('welcomePage.closeSearch'),
             menuButton: t('welcomePage.heading.messages.menuButton'),
           }}
@@ -248,10 +242,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
       </FrontpageHeader>
       <main>
         <OneColumn extraPadding>
-          <FrontpageProgramMenu
-            programItems={programmes}
-            subjectCategories={subjectCategories}
-          />
+          <FrontpageProgramMenu programItems={programmes} subjectCategories={subjectCategories} />
         </OneColumn>
         <OneColumn wide>
           <FrontpageMultidisciplinarySubject
@@ -290,10 +281,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
               />
             </BlogPostWrapper>
           </section>
-          <FrontpageFilm
-            imageUrl={NdlaFilmIllustration}
-            url="https://ndla.no/nb/film"
-          />
+          <FrontpageFilm imageUrl={NdlaFilmIllustration} url="https://ndla.no/nb/film" />
           <FrontpageInfo>
             <InfoWidget
               heading={t('newsLetter.heading')}

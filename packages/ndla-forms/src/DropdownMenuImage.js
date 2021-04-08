@@ -28,11 +28,7 @@ export function DropdownMenuImage({ image, alt }) {
   }
   return (
     <StyledImageContainer>
-      {typeof image === 'string' ? (
-        <StyledImage src={image} alt={alt} />
-      ) : (
-        image
-      )}
+      {typeof image === 'string' ? <StyledImage src={image} alt={alt} /> : image}
     </StyledImageContainer>
   );
 }

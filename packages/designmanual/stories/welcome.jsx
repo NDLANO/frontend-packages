@@ -18,23 +18,20 @@ const Welcome = () => (
           <Logo label="Nasjonal digital læringsarena" />
           <h1>Designmanual</h1>
         </Center>
-        <h2 style={{ marginTop: '26px' }}>
-          Hva designmanualen er, og hva den ikke er
-        </h2>
+        <h2 style={{ marginTop: '26px' }}>Hva designmanualen er, og hva den ikke er</h2>
         <p>
-          Designmanualen inneholder retningslinjer for formatering, visuelt
-          uttrykk, interaksjon og innholdselementer.
+          Designmanualen inneholder retningslinjer for formatering, visuelt uttrykk, interaksjon og
+          innholdselementer.
         </p>
         <p>
-          En del lenker, knapper og lignende funksjonalitet har foreløpig ikke
-          reelt innhold. De er ment som eksempler til videre utvikling oppimot
-          APIer og reelt innhold på nye ndla.no. Etter hvert som
-          innholdselementer utvikles videre med reell funksjonalitet, kan de tas
-          inn i designmanualen og erstatte de gamle elementene.{' '}
+          En del lenker, knapper og lignende funksjonalitet har foreløpig ikke reelt innhold. De er
+          ment som eksempler til videre utvikling oppimot APIer og reelt innhold på nye ndla.no.
+          Etter hvert som innholdselementer utvikles videre med reell funksjonalitet, kan de tas inn
+          i designmanualen og erstatte de gamle elementene.{' '}
         </p>
         <p>
-          Den er ikke en brukermanual for innholdsproduksjon. Råd og
-          retningslinjer for produksjon av innhold ligger i{' '}
+          Den er ikke en brukermanual for innholdsproduksjon. Råd og retningslinjer for produksjon
+          av innhold ligger i{' '}
           <a
             href="https://brukskvalitetsplattform.ndla.no/"
             target="_blank"
@@ -44,11 +41,10 @@ const Welcome = () => (
         </p>
         <h2>Hvordan bruke designmanualen?</h2>
         <p>
-          Designmanual er for produksjon av teknisk innhold. Den består av
-          hovedsakelig to deler: et CSS-bibliotek som styler de mest brukte
-          HTML-elementene, og et komponent-bibliotek for{' '}
-          <a href="https://facebook.github.io/react/">React</a>. Den er også
-          publisert på <a href="https://www.npmjs.com/package/ndla-ui">npm</a>.
+          Designmanual er for produksjon av teknisk innhold. Den består av hovedsakelig to deler: et
+          CSS-bibliotek som styler de mest brukte HTML-elementene, og et komponent-bibliotek for{' '}
+          <a href="https://facebook.github.io/react/">React</a>. Den er også publisert på{' '}
+          <a href="https://www.npmjs.com/package/ndla-ui">npm</a>.
         </p>
         <h3>Hente inn prosjekt direkte via npm</h3>
         <code>npm install @ndla/ui --save</code>

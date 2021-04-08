@@ -36,8 +36,7 @@ export default class DisplayOnPageYOffset extends Component {
   handleScroll() {
     if (
       window.pageYOffset >= this.props.yOffsetMin &&
-      (this.props.yOffsetMax === null ||
-        window.pageYOffset <= this.props.yOffsetMax)
+      (this.props.yOffsetMax === null || window.pageYOffset <= this.props.yOffsetMax)
     ) {
       if (!this.state.show) {
         this.setState({ show: true });

@@ -72,8 +72,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
 
   useEffect(() => {
     if (isWindowContext) {
-      const rememberGradeIndex =
-        window.localStorage.getItem('prgrammeShowGradeIndex') || '0';
+      const rememberGradeIndex = window.localStorage.getItem('programmeShowGradeIndex') || '0';
       if (grades.length > Number(rememberGradeIndex)) {
         setShowGradeIndex(Number(rememberGradeIndex));
       }
@@ -89,10 +88,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
               <SubjectsWrapper>
-                <ProgrammeSubjects
-                  grades={grades}
-                  preSelectedGradeIndex={showGradeIndex}
-                />
+                <ProgrammeSubjects grades={grades} preSelectedGradeIndex={showGradeIndex} />
               </SubjectsWrapper>
             </StyledContentWrapper>
           </LayoutItem>

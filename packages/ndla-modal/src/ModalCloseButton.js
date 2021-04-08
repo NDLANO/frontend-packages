@@ -11,11 +11,7 @@ import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 
 const ModalClose = ({ title, onClick, className }) => (
-  <Button
-    data-cy="close-modal-button"
-    onClick={onClick}
-    link
-    className={className}>
+  <Button data-cy="close-modal-button" onClick={onClick} link className={className}>
     {title}
   </Button>
 );

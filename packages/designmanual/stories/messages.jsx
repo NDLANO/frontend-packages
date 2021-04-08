@@ -45,10 +45,7 @@ class Messages extends Component {
   filterSearch() {
     const { findNotApprovedLabels } = this.state;
 
-    const searchText = this.state.searchText.replace(
-      /([*+^$[\]\\(){}|-])/g,
-      '',
-    ); // remove failing letters like '*, +'..
+    const searchText = this.state.searchText.replace(/([*+^$[\]\\(){}|-])/g, ''); // remove failing letters like '*, +'..
 
     const flattened = findNotApprovedLabels
       ? Object.keys(this.flattenedNb)
@@ -61,10 +58,7 @@ class Messages extends Component {
               !this.flattenedEn[key] ||
               this.flattenedEn[key].substr(0, 1) === '*',
           )
-          .reduce(
-            (result, key) => ({ ...result, [key]: this.flattenedNb[key] }),
-            {},
-          )
+          .reduce((result, key) => ({ ...result, [key]: this.flattenedNb[key] }), {})
       : this.flattenedNb;
     if (searchText === '') {
       return flattened;
@@ -77,13 +71,9 @@ class Messages extends Component {
           this.flattenedNb[key].search(new RegExp(searchText, 'i')) !== -1) ||
         (this.flattenedNn[key] &&
           this.flattenedNn[key].search(new RegExp(searchText, 'i')) !== -1) ||
-        (this.flattenedEn[key] &&
-          this.flattenedEn[key].search(new RegExp(searchText, 'i')) !== -1),
+        (this.flattenedEn[key] && this.flattenedEn[key].search(new RegExp(searchText, 'i')) !== -1),
     );
-    return filtered.reduce(
-      (result, key) => ({ ...result, [key]: flattened[key] }),
-      {},
-    );
+    return filtered.reduce((result, key) => ({ ...result, [key]: flattened[key] }), {});
   }
 
   renderAllPhrases() {
@@ -92,15 +82,9 @@ class Messages extends Component {
     return Object.keys(this.filterSearch()).map(key => (
       <tr key={key}>
         <td>{key}</td>
-        <td className={phraseApprovedClass(this.flattenedNb[key])}>
-          {this.flattenedNb[key]}
-        </td>
-        <td className={phraseApprovedClass(this.flattenedNn[key])}>
-          {this.flattenedNn[key]}
-        </td>
-        <td className={phraseApprovedClass(this.flattenedEn[key])}>
-          {this.flattenedEn[key]}
-        </td>
+        <td className={phraseApprovedClass(this.flattenedNb[key])}>{this.flattenedNb[key]}</td>
+        <td className={phraseApprovedClass(this.flattenedNn[key])}>{this.flattenedNn[key]}</td>
+        <td className={phraseApprovedClass(this.flattenedEn[key])}>{this.flattenedEn[key]}</td>
       </tr>
     ));
   }
@@ -163,6 +147,4 @@ class Messages extends Component {
   }
 }
 
-storiesOf('Tekster og labels', module).add('Tekster og labels', () => (
-  <Messages />
-));
+storiesOf('Tekster og labels', module).add('Tekster og labels', () => <Messages />);

@@ -36,8 +36,7 @@ const StyledInputWrapper = styled.div`
   border: 1px solid;
   background: #fff;
   transition: border-color 200ms ease;
-  border-color: ${props =>
-    props.inputHasFocus ? colors.brand.primary : colors.brand.greyLight};
+  border-color: ${props => (props.inputHasFocus ? colors.brand.primary : colors.brand.greyLight)};
   border-radius: ${misc.borderRadius};
 `;
 
@@ -219,117 +218,94 @@ const ProductionToolVersionLog = ({ t }) => {
             <Accordion openIndexes={[0]} tiny>
               {({ getPanelProps, getBarProps }) => (
                 <AccordionWrapper>
-                  {versions.map(
-                    (
-                      { name, lastChange, current, published, notes },
-                      index,
-                    ) => (
-                      <Fragment key={name}>
-                        <AccordionBar {...getBarProps(index)} title={name}>
-                          <StyledAccordionsPanelItemsWrapper>
-                            <div>{lastChange}</div>
-                            <div>
-                              {!current && (
-                                <>
-                                  <Tooltip tooltip="Se versjon">
-                                    <StyledAccordionsPanelIconButton
-                                      onClick={
-                                        () => console.log('Preview version') // eslint-disable-line no-console
-                                      }>
-                                      <Eye />
-                                    </StyledAccordionsPanelIconButton>
-                                  </Tooltip>
-                                  <Tooltip tooltip="Tilbakestill til versjon">
-                                    <StyledAccordionsPanelIconButton
-                                      onClick={() =>
-                                        // eslint-disable-next-line no-console
-                                        console.log(
-                                          'Are you sure? (modal to confirm revert?)',
-                                        )
-                                      }>
-                                      <Restore />
-                                    </StyledAccordionsPanelIconButton>
-                                  </Tooltip>
-                                </>
+                  {versions.map(({ name, lastChange, current, published, notes }, index) => (
+                    <Fragment key={name}>
+                      <AccordionBar {...getBarProps(index)} title={name}>
+                        <StyledAccordionsPanelItemsWrapper>
+                          <div>{lastChange}</div>
+                          <div>
+                            {!current && (
+                              <>
+                                <Tooltip tooltip="Se versjon">
+                                  <StyledAccordionsPanelIconButton
+                                    onClick={
+                                      () => console.log('Preview version') // eslint-disable-line no-console
+                                    }>
+                                    <Eye />
+                                  </StyledAccordionsPanelIconButton>
+                                </Tooltip>
+                                <Tooltip tooltip="Tilbakestill til versjon">
+                                  <StyledAccordionsPanelIconButton
+                                    onClick={() =>
+                                      // eslint-disable-next-line no-console
+                                      console.log('Are you sure? (modal to confirm revert?)')
+                                    }>
+                                    <Restore />
+                                  </StyledAccordionsPanelIconButton>
+                                </Tooltip>
+                              </>
+                            )}
+                            {current && <VersionLogTag color="yellow" label="Du er her" />}
+                            {published && <VersionLogTag color="green" label="Publisert" />}
+                          </div>
+                        </StyledAccordionsPanelItemsWrapper>
+                      </AccordionBar>
+                      <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyleInside}>
+                        <VersionHistory
+                          notes={notes}
+                          onComment={msg => {
+                            const updatedVersions = [...versions];
+                            const now = new Date();
+                            const day = now.getDate();
+                            const month = now.getMonth() + 1;
+                            const newDate = `${day > 9 ? day : `0${day}`}.${
+                              month > 9 ? month : `0${month}`
+                            }.${now.getFullYear()}`;
+                            updatedVersions[index].notes.unshift({
+                              author: 'Dr. Phil',
+                              msg,
+                              status: '',
+                              id: uuid(),
+                              date: newDate,
+                            });
+                            updateVersions(updatedVersions);
+                          }}>
+                          <StyledForm onSubmit={() => {}}>
+                            <StyledInputLabel htmlFor="inputComment">
+                              {t('editor.versionHistory.inputLabel')}
+                            </StyledInputLabel>
+                            <StyledInputWrapper inputHasFocus={inputHasFocus}>
+                              <StyledInput
+                                name="inputComment"
+                                value={commentValue}
+                                autoComplete="off"
+                                onFocus={() => setInputHasFocus(true)}
+                                onBlur={() => setInputHasFocus(false)}
+                                onChange={e => {
+                                  setCommentValue(e.target.value);
+                                  setCommentError(false);
+                                }}
+                                placeholder={t('editor.versionHistory.inputPlaceholder')}
+                              />
+                              {commentValue.length > 0 && (
+                                <StyledEmptyInputButton
+                                  type="button"
+                                  onClick={() => setCommentValue('')}>
+                                  <Cross />
+                                </StyledEmptyInputButton>
                               )}
-                              {current && (
-                                <VersionLogTag
-                                  color="yellow"
-                                  label="Du er her"
-                                />
-                              )}
-                              {published && (
-                                <VersionLogTag
-                                  color="green"
-                                  label="Publisert"
-                                />
-                              )}
-                            </div>
-                          </StyledAccordionsPanelItemsWrapper>
-                        </AccordionBar>
-                        <AccordionPanel
-                          {...getPanelProps(index)}
-                          css={paddingPanelStyleInside}>
-                          <VersionHistory
-                            notes={notes}
-                            onComment={msg => {
-                              const updatedVersions = [...versions];
-                              const now = new Date();
-                              const day = now.getDate();
-                              const month = now.getMonth() + 1;
-                              const newDate = `${day > 9 ? day : `0${day}`}.${
-                                month > 9 ? month : `0${month}`
-                              }.${now.getFullYear()}`;
-                              updatedVersions[index].notes.unshift({
-                                author: 'Dr. Phil',
-                                msg,
-                                status: '',
-                                id: uuid(),
-                                date: newDate,
-                              });
-                              updateVersions(updatedVersions);
-                            }}>
-                            <StyledForm onSubmit={() => {}}>
-                              <StyledInputLabel htmlFor="inputComment">
-                                {t('editor.versionHistory.inputLabel')}
-                              </StyledInputLabel>
-                              <StyledInputWrapper inputHasFocus={inputHasFocus}>
-                                <StyledInput
-                                  name="inputComment"
-                                  value={commentValue}
-                                  autoComplete="off"
-                                  onFocus={() => setInputHasFocus(true)}
-                                  onBlur={() => setInputHasFocus(false)}
-                                  onChange={e => {
-                                    setCommentValue(e.target.value);
-                                    setCommentError(false);
-                                  }}
-                                  placeholder={t(
-                                    'editor.versionHistory.inputPlaceholder',
-                                  )}
-                                />
-                                {commentValue.length > 0 && (
-                                  <StyledEmptyInputButton
-                                    type="button"
-                                    onClick={() => setCommentValue('')}>
-                                    <Cross />
-                                  </StyledEmptyInputButton>
-                                )}
-                              </StyledInputWrapper>
-                              {commentError && <span>Has error!!!</span>}
-                              <StyledSubmitButton
-                                disabledStyle={
-                                  commentValue.length < 3 ? true : false
-                                }
-                                type="submit">
-                                {t('editor.versionHistory.buttonLabel')}
-                              </StyledSubmitButton>
-                            </StyledForm>
-                          </VersionHistory>
-                        </AccordionPanel>
-                      </Fragment>
-                    ),
-                  )}
+                            </StyledInputWrapper>
+                            {commentError && <span>Has error!!!</span>}
+                            <StyledSubmitButton
+                              disabledStyle={commentValue.length < 3 ? true : false}
+                              type="submit">
+                              {t('editor.versionHistory.buttonLabel')}
+                            </StyledSubmitButton>
+                          </StyledForm>
+                        </VersionHistory>
+                      </AccordionPanel>
+                    </Fragment>
+                  ))}
                 </AccordionWrapper>
               )}
             </Accordion>

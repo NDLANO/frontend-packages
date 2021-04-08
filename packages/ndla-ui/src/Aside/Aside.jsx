@@ -15,21 +15,14 @@ const classes = BEMHelper({
   name: 'aside',
 });
 
-const Aside = ({
-  children,
-  narrowScreen,
-  dangerouslySetInnerHTML,
-  wideScreen,
-}) => {
+const Aside = ({ children, narrowScreen, dangerouslySetInnerHTML, wideScreen }) => {
   const modifiers = {
     narrowScreen,
     wideScreen,
   };
   return (
     <aside {...classes('', modifiers)}>
-      <div
-        {...classes('content')}
-        dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+      <div {...classes('content')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {children}
       </div>
     </aside>

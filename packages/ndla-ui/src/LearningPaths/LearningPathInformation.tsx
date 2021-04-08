@@ -28,10 +28,8 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   max-width: 720px;
   margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall}
-      0 !important;
-    padding: ${spacing.normal} ${spacing.large} ${spacing.large}
-      ${spacing.spacingUnit * 4}px;
+    margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
+    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.spacingUnit * 4}px;
     ul {
       margin-left: ${spacing.normal};
     }

@@ -16,14 +16,7 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-export const OneColumn = ({
-  children,
-  className,
-  cssModifier,
-  wide,
-  noPadding,
-  extraPadding,
-}) => {
+export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding }) => {
   const modifiers = [];
 
   if (cssModifier) {
@@ -42,9 +35,7 @@ export const OneColumn = ({
     modifiers.push('extra-padding');
   }
 
-  return (
-    <div className={`${classes('', modifiers)} ${className}`}>{children}</div>
-  );
+  return <div className={`${classes('', modifiers)} ${className}`}>{children}</div>;
 };
 
 OneColumn.propTypes = {

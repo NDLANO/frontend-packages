@@ -50,13 +50,9 @@ class RadioButtonGroup extends Component<Props, State> {
     return (
       <section>
         <div role="radiogroup" {...classes('wrapper')}>
-          {this.props.label && (
-            <h1 {...classes('label-heading')}>{this.props.label}</h1>
-          )}
+          {this.props.label && <h1 {...classes('label-heading')}>{this.props.label}</h1>}
           {this.props.options.map(option => {
-            const id = this.uuid
-              ? `${this.uuid}_${option.value}`
-              : option.value;
+            const id = this.uuid ? `${this.uuid}_${option.value}` : option.value;
             return (
               <Fragment key={option.value}>
                 <input

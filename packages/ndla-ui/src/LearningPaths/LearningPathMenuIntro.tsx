@@ -11,15 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import {
-  colors,
-  spacing,
-  fonts,
-  typography,
-  mq,
-  breakpoints,
-  animations,
-} from '@ndla/core';
+import { colors, spacing, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -117,9 +109,7 @@ const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
-        <StyledInfoHeader>
-          {t('learningPath.youAreInALearningPath')}
-        </StyledInfoHeader>
+        <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
         <StyledIntroHeader>{name}</StyledIntroHeader>
       </div>
     </StyledMenuIntro>

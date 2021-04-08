@@ -12,12 +12,7 @@ import { Trans } from '@ndla/i18n';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { classes } from './CompetenceGoals';
 
-export const CompetenceGoalsDialog = ({
-  children,
-  isOpen,
-  onClose,
-  modalProps,
-}) => (
+export const CompetenceGoalsDialog = ({ children, isOpen, onClose, modalProps }) => (
   <Trans>
     {({ t }) => (
       <Modal
@@ -32,10 +27,7 @@ export const CompetenceGoalsDialog = ({
         {close => (
           <Fragment>
             <ModalHeader modifier="white modal-body">
-              <ModalCloseButton
-                onClick={close}
-                title={t('competenceGoals.competenceGoalClose')}
-              />
+              <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
             </ModalHeader>
             <ModalBody>
               <div {...classes()} className="c-competence-goals">

@@ -7,11 +7,7 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import Accordion, {
-  AccordionBar,
-  AccordionPanel,
-  AccordionWrapper,
-} from '@ndla/accordion';
+import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '@ndla/accordion';
 import Button from '@ndla/button';
 import { FilterList } from '@ndla/ui';
 
@@ -85,9 +81,7 @@ class AccordionExample extends Component {
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
                 <Fragment key={item}>
-                  <AccordionBar
-                    {...getBarProps(index)}
-                    title={`Panel ${index + 1}`}>
+                  <AccordionBar {...getBarProps(index)} title={`Panel ${index + 1}`}>
                     <div>Children in bar</div>
                   </AccordionBar>
                   <AccordionPanel {...getPanelProps(index)}>
@@ -106,10 +100,7 @@ class AccordionExample extends Component {
             <AccordionWrapper>
               {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
                 <Fragment key={item}>
-                  <AccordionBar
-                    {...getBarProps(index)}
-                    title={`Panel ${index + 1}`}
-                  />
+                  <AccordionBar {...getBarProps(index)} title={`Panel ${index + 1}`} />
                   <AccordionPanel {...getPanelProps(index)}>
                     <p>{item}</p>
                   </AccordionPanel>
@@ -118,9 +109,7 @@ class AccordionExample extends Component {
             </AccordionWrapper>
           )}
         </Accordion>
-        <h2>
-          Eksempel 3, kontrollert trekkspill med eksempler for feilmelding(er)
-        </h2>
+        <h2>Eksempel 3, kontrollert trekkspill med eksempler for feilmelding(er)</h2>
         <FilterList
           label="Simuler feilmeldinger:"
           preid="filter-list"
@@ -151,9 +140,7 @@ class AccordionExample extends Component {
                     isOpen={openIndexes.includes(index)}>
                     <div>
                       <p>{item}</p>
-                      <Button onClick={() => handleItemClick(index)}>
-                        Lukk
-                      </Button>
+                      <Button onClick={() => handleItemClick(index)}>Lukk</Button>
                     </div>
                   </AccordionPanel>
                 </Fragment>

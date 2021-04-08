@@ -13,11 +13,4 @@ import FileListEditor from './FileListEditor';
 import MovieList from './ndlaFilm/MovieList';
 import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
-export {
-  SlateBlockMenu,
-  Structure,
-  Spinner,
-  MovieList,
-  NdlaFilmThemeEditorModal,
-  FileListEditor,
-};
+export { SlateBlockMenu, Structure, Spinner, MovieList, NdlaFilmThemeEditorModal, FileListEditor };

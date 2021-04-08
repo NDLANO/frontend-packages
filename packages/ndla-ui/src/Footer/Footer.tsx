@@ -24,11 +24,7 @@ const StyledBackground = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(
-    96deg,
-    rgba(0, 117, 160, 1) 0%,
-    rgba(32, 88, 143, 0) 100%
-  );
+  background: linear-gradient(96deg, rgba(0, 117, 160, 1) 0%, rgba(32, 88, 143, 0) 100%);
 `;
 
 type StyledFooterProps = {
@@ -83,8 +79,7 @@ const StyledColumns = styled.div`
     flex-direction: row;
     align-items: flex-start;
     > div:first-of-type {
-      padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px
-        ${spacing.normal} ${spacing.large};
+      padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
     }
   }
   ${mq.range({ from: breakpoints.desktop })} {
@@ -163,9 +158,7 @@ const Footer: React.FunctionComponent<Props & tType> = ({
 
   return (
     <>
-      {languageSelector && (
-        <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>
-      )}
+      {languageSelector && <StyledLanguageWrapper>{languageSelector}</StyledLanguageWrapper>}
       <StyledFooter addMargin={!languageSelector}>
         <OneColumn cssModifier="large">{footerContent}</OneColumn>
         <StyledBackground />

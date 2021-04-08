@@ -8,16 +8,7 @@
 
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
-import {
-  By,
-  Cc,
-  Nc,
-  Nd,
-  Sa,
-  Zero,
-  Publicdomain,
-  Copyright,
-} from '@ndla/icons/licenses';
+import { By, Cc, Nc, Nd, Sa, Zero, Publicdomain, Copyright } from '@ndla/icons/licenses';
 import { COPYRIGHTED, BY, SA, NA, NC, ND, PD, CC0, CC } from '../licenseRights';
 
 interface Props {

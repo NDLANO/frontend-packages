@@ -15,11 +15,7 @@ import {
 
 const StyledWrapper = styled.div`
   width: 100%;
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0) 68.75%,
-      #ffffff 100%
-    ),
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68.75%, #ffffff 100%),
     linear-gradient(336.12deg, #efeedc 35.53%, #faf6f0 74.23%), #ddd8af;
 
   display: flex;
@@ -110,8 +106,7 @@ const MultidisciplinarySubjectHeader = ({
             {subjectsLinks.map((subject, index) => {
               return (
                 <span key={subject.label}>
-                  {index > 0 &&
-                    (index < subjectsLinks.length - 1 ? ', ' : ' og ')}
+                  {index > 0 && (index < subjectsLinks.length - 1 ? ', ' : ' og ')}
                   <SafeLink to={subject.url}>{subject.label}</SafeLink>
                 </span>
               );

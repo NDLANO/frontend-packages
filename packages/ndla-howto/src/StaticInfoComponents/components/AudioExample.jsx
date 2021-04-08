@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  AudioPlayer,
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-} from '@ndla/ui';
+import { AudioPlayer, Figure, FigureCaption, FigureLicenseDialog } from '@ndla/ui';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import {
-  addCloseDialogClickListeners,
-  addShowDialogClickListeners,
-} from '@ndla/article-scripts';
+import { addCloseDialogClickListeners, addShowDialogClickListeners } from '@ndla/article-scripts';
 
 class AudioExample extends Component {
   constructor(props) {

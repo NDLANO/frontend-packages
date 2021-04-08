@@ -100,9 +100,7 @@ class FormExampleAuthors extends Component {
             <div>
               <FieldSplitter>
                 <Input
-                  warningText={
-                    author.name === '' ? 'Du må oppgi navn på forfatter' : null
-                  }
+                  warningText={author.name === '' ? 'Du må oppgi navn på forfatter' : null}
                   container="div"
                   type="text"
                   focusOnMount={author.focusOnMount}
@@ -149,12 +147,7 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <Input
-              container="div"
-              type="text"
-              placeholder="Skriv navn"
-              autoExpand
-            />
+            <Input container="div" type="text" placeholder="Skriv navn" autoExpand />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>

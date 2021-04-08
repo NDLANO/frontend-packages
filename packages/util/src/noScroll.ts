@@ -32,9 +32,7 @@ const noScroll = (enable: boolean, uuid: string): void => {
       const scrollWidth = getScrollbarWidth();
       htmlElement.style.overflow = 'hidden';
       htmlElement.style.paddingRight = `${scrollWidth}px`;
-      const mastHead = document.querySelector(
-        '.c-masthead--fixed',
-      ) as HTMLElement;
+      const mastHead = document.querySelector('.c-masthead--fixed') as HTMLElement;
       if (mastHead) {
         mastHead.style.paddingRight = `${scrollWidth}px`;
       }
@@ -46,9 +44,7 @@ const noScroll = (enable: boolean, uuid: string): void => {
     if (scrollTargets.length === 0) {
       htmlElement.style.paddingRight = '0';
       htmlElement.style.overflow = 'visible';
-      const mastHead = document.querySelector(
-        '.c-masthead--fixed',
-      ) as HTMLElement;
+      const mastHead = document.querySelector('.c-masthead--fixed') as HTMLElement;
       if (mastHead) {
         mastHead.style.paddingRight = '0';
       }

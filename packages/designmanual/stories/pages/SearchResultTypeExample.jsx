@@ -225,9 +225,7 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
   if (!filters.length || filters.indexOf('Alle') > -1) {
     return resources.items;
   }
-  return resources.items.filter(item =>
-    item.labels.some(label => filters.includes(label)),
-  );
+  return resources.items.filter(item => item.labels.some(label => filters.includes(label)));
 };
 
 const SearchPageDemo = ({ t }) => {
@@ -235,9 +233,7 @@ const SearchPageDemo = ({ t }) => {
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
   const [searchValue, setSearchValue] = useState('nunorsk');
   const [searchPhrase, setSearchPhrase] = useState('nunorsk');
-  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(
-    'nynorsk',
-  );
+  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState('nynorsk');
   const [subjectFilter, setSubjectFilter] = useState(['programme_subject_5']);
   const [programmeFilter, setProgrammeFilter] = useState(['programme_9']);
 
@@ -305,10 +301,7 @@ const SearchPageDemo = ({ t }) => {
           } else {
             const activeFilters = item.filters.filter(filter => filter.active);
             const filterArray = activeFilters.map(filter => filter.name);
-            const allFilteredItems = resourceItemsByTypeAndFilters(
-              item.type,
-              filterArray,
-            );
+            const allFilteredItems = resourceItemsByTypeAndFilters(item.type, filterArray);
             data.resourceTypeItems[item.type] = {
               ...item,
               items: [...allFilteredItems.slice(0, PAGESIZE_SINGLE)],
@@ -325,9 +318,7 @@ const SearchPageDemo = ({ t }) => {
     mockSearchDelay().then(() => {
       const currentShown = resourceItems.find(item => item.type === type);
 
-      const activeFilters = currentShown.filters.filter(
-        filter => filter.active,
-      );
+      const activeFilters = currentShown.filters.filter(filter => filter.active);
       const filterArray = activeFilters.map(filter => filter.name);
       const allFilteredItems = resourceItemsByTypeAndFilters(type, filterArray);
 
@@ -439,16 +430,12 @@ const SearchPageDemo = ({ t }) => {
       )}
       <SearchSubjectResult id="search-result-content" items={subjectItems} />
       <FilterButtons
-        heading={t(
-          'searchPage.searchFilterMessages.resourceTypeFilter.heading',
-        )}
+        heading={t('searchPage.searchFilterMessages.resourceTypeFilter.heading')}
         items={contentTypeFilters}
         onFilterToggle={handleContentTypeFilterToggle}
         onRemoveAllFilters={() => setSelectedResourceTypes([])}
         labels={{
-          openFilter: t(
-            'searchPage.searchFilterMessages.resourceTypeFilter.button',
-          ),
+          openFilter: t('searchPage.searchFilterMessages.resourceTypeFilter.button'),
         }}
       />
       {visibleResourceTypes.map(item => (

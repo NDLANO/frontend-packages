@@ -28,9 +28,7 @@ const FilmMovieList = ({
   resizeThumbnailImages,
 }) => (
   <section {...classes()}>
-    <h1
-      {...classes('heading')}
-      style={{ marginLeft: `${autoSizedProps.margin}px` }}>
+    <h1 {...classes('heading')} style={{ marginLeft: `${autoSizedProps.margin}px` }}>
       {name}
     </h1>
     <Carousel

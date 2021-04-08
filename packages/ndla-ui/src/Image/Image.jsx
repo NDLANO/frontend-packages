@@ -15,34 +15,15 @@ export const makeSrcQueryString = (width, crop, focalPoint) => {
   const cropParams = crop
     ? `&cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`
     : '';
-  const focalPointParams = focalPoint
-    ? `&focalX=${focalPoint.x}&focalY=${focalPoint.y}`
-    : '';
+  const focalPointParams = focalPoint ? `&focalX=${focalPoint.x}&focalY=${focalPoint.y}` : '';
 
   return `width=${width}${cropParams}${focalPointParams}`;
 };
 
 const getSrcSet = (src, crop, focalPoint) => {
-  const widths = [
-    2720,
-    2080,
-    1760,
-    1440,
-    1120,
-    1000,
-    960,
-    800,
-    640,
-    480,
-    320,
-    240,
-    180,
-  ];
+  const widths = [2720, 2080, 1760, 1440, 1120, 1000, 960, 800, 640, 480, 320, 240, 180];
   return widths
-    .map(
-      width =>
-        `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`,
-    )
+    .map(width => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`)
     .join(', ');
 };
 

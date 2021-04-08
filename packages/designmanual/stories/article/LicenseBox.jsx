@@ -242,8 +242,7 @@ export const ImageContent = ({ t }) => (
             license={byncndLicenseAbbreviation}
             title={t('license.images.rules')}
             messages={{
-              modelPremission:
-                'Personen(e) på bildet har godkjent at det kan brukes videre.',
+              modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
             }}
             locale="nb"
             resourceUrl={src}
@@ -352,11 +351,7 @@ const OtherContent = ({ t }) => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('license.other.itemImage.ariaLabel')}>
-              <img
-                src={example.image}
-                alt={example.name}
-                className="other-content-image"
-              />
+              <img src={example.image} alt={example.name} className="other-content-image" />
             </a>
           </MediaListItemImage>
           <MediaListItemBody
@@ -408,10 +403,7 @@ const Files = ({ t }) => (
           <MediaListItemImage>
             <FileDocumentOutline className="c-medialist__icon" />
           </MediaListItemImage>
-          <MediaListItemBody
-            license={COPYRIGHTED}
-            title={t('license.files.rules')}
-            resourceUrl="">
+          <MediaListItemBody license={COPYRIGHTED} title={t('license.files.rules')} resourceUrl="">
             <MediaListItemActions>
               <div className="c-medialist__ref">
                 <MediaListItemMeta

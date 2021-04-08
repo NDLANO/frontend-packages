@@ -91,19 +91,14 @@ const ModalHeader = ({ children, modifier }) => (
   <div
     data-cy="modal-header"
     css={headerStyles}
-    className={`modal-header ${
-      Array.isArray(modifier) ? modifier.join(' ') : modifier
-    }`}>
+    className={`modal-header ${Array.isArray(modifier) ? modifier.join(' ') : modifier}`}>
     {children}
   </div>
 );
 
 ModalHeader.propTypes = {
   children: PropTypes.node,
-  modifier: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
+  modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
 };
 
 export default ModalHeader;

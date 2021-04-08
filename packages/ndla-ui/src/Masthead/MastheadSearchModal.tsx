@@ -127,9 +127,7 @@ const MastheadSearchModal: React.FC<Props & tType> = ({
     onClose={onSearchClose}
     css={modalStyles}
     activateButton={
-      <ToggleSearchButton
-        hideOnNarrowScreen={hideOnNarrowScreen}
-        ndlaFilm={ndlaFilm}>
+      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
         {t('masthead.menu.search')}
       </ToggleSearchButton>
     }>

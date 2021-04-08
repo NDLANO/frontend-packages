@@ -6,15 +6,7 @@ import SafeLink from '@ndla/safelink';
 
 const classes = BEMHelper('c-content-card');
 
-const ContentCard = ({
-  title,
-  text,
-  image,
-  type,
-  isFilm,
-  toLinkProps,
-  columnWidth,
-}) => (
+const ContentCard = ({ title, text, image, type, isFilm, toLinkProps, columnWidth }) => (
   <article {...classes()} style={{ width: `${columnWidth}px` }}>
     <SafeLink {...toLinkProps()} title={title} {...classes('link')}>
       <header>

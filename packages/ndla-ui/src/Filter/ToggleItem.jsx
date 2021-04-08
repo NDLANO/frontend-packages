@@ -56,16 +56,9 @@ ToggleItem.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   tabIndex: PropTypes.number,
-  modifiers: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
+  modifiers: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   hits: PropTypes.number,
   icon: PropTypes.func,
 };

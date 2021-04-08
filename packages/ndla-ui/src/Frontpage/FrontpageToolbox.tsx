@@ -42,10 +42,7 @@ type Props = {
   url: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({
-  url,
-  t,
-}) => (
+const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({ url, t }) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>

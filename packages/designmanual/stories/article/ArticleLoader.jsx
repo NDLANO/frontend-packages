@@ -26,11 +26,7 @@ import { topicList, topicListFilm } from '../../dummydata/index';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import NdlaFilmArticleHero from './NdlaFilmArticleHero';
 
-const ResourcesSubTopics = ({
-  showAdditionalCores,
-  toggleAdditionalCores,
-  ndlaFilm,
-}) => (
+const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores, ndlaFilm }) => (
   <ResourcesWrapper
     header={
       <ResourcesTopicTitle
@@ -177,10 +173,7 @@ class ArticleLoader extends Component {
     return (
       <>
         {ndlaFilm && (
-          <NdlaFilmArticleHero
-            article={article}
-            withBackgroundImage={withBackgroundImage}
-          />
+          <NdlaFilmArticleHero article={article} withBackgroundImage={withBackgroundImage} />
         )}
         {article && (
           <div>
@@ -195,15 +188,12 @@ class ArticleLoader extends Component {
                   edition: 'Utgave',
                   publisher: 'Utgiver',
                   authorLabel: 'Opphaver',
-                  authorDescription:
-                    'Denne artikkelen er laget av flere opphavere',
+                  authorDescription: 'Denne artikkelen er laget av flere opphavere',
                   close: 'Lukk',
                   label,
                 }}
                 licenseBox={<LicenseBox />}
-                competenceGoals={
-                  !hideCompetenceGoals ? <CompetenceGoalListExample /> : null
-                }>
+                competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}>
                 {articleChildren}
               </Article>
             </OneColumn>
@@ -216,9 +206,7 @@ class ArticleLoader extends Component {
               />
             )}
             {article && closeButton ? (
-              <Button onClick={() => this.setState({ article: undefined })}>
-                Lukk
-              </Button>
+              <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button>
             ) : null}
           </div>
         )}

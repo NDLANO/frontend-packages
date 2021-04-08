@@ -36,8 +36,7 @@ SubjectHeader.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
-      types: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(breakpoints)))
-        .isRequired,
+      types: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(breakpoints))).isRequired,
     }),
   ),
   heading: PropTypes.string.isRequired,

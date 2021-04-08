@@ -9,11 +9,7 @@
 import React from 'react';
 
 const FrontpageHeaderIllustration: React.FunctionComponent = () => (
-  <svg
-    width="482"
-    height="68"
-    viewBox="68 48 779 100"
-    xmlns="http://www.w3.org/2000/svg">
+  <svg width="482" height="68" viewBox="68 48 779 100" xmlns="http://www.w3.org/2000/svg">
     <style>
       {
         '.frontpage_header_illustration1{display:none}.frontpage_header_illustration2{display:inline}.frontpage_header_illustration3,.frontpage_header_illustration4,.frontpage_header_illustration5,.frontpage_header_illustration6,.frontpage_header_illustration7{fill:none;stroke:#000}.frontpage_header_illustration4{stroke-linecap:round}.frontpage_header_illustration5,.frontpage_header_illustration6,.frontpage_header_illustration7{stroke-miterlimit:10}.frontpage_header_illustration6,.frontpage_header_illustration7{stroke:#020202}.frontpage_header_illustration7{stroke:#000;stroke-width:.75;stroke-linecap:round;stroke-linejoin:round}'

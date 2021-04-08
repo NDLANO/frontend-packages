@@ -82,9 +82,7 @@ type Props = {
 
 const ComponentCursor = ({ variant = 'left', text = '' }: Props) => {
   const [componentSize, setComponentSize] = useState(null);
-  const textRef = (useRef(null) as unknown) as React.MutableRefObject<
-    HTMLSpanElement
-  >;
+  const textRef = (useRef(null) as unknown) as React.MutableRefObject<HTMLSpanElement>;
   const size: any = useComponentSize(textRef);
   if (!componentSize && textRef && textRef.current) {
     setComponentSize(size.width + 5);

@@ -8,20 +8,14 @@
 
 /* eslint-env jest */
 
-import {
-  getLicenseRightByAbbreviation,
-  BY,
-  COPYRIGHTED,
-} from '../licenseRights';
+import { getLicenseRightByAbbreviation, BY, COPYRIGHTED } from '../licenseRights';
 
 test('lisence/getLicenseRightByAbbreviation get info for BY in bokmål', () => {
   const licenseRight = getLicenseRightByAbbreviation('by', 'nb');
   expect(licenseRight.title).toBe('Navngivelse');
   expect(licenseRight.short).toBe(BY);
   expect(licenseRight.userFriendlyTitle).toBe('Navngivelse');
-  expect(licenseRight.description).toBe(
-    'Du må alltid oppgi hvem som har laget innholdet.',
-  );
+  expect(licenseRight.description).toBe('Du må alltid oppgi hvem som har laget innholdet.');
 });
 
 test('lisence/getLicenseRightByAbbreviation get info for SA in English', () => {

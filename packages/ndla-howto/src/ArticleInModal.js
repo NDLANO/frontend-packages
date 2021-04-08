@@ -46,13 +46,7 @@ const ModalContent = ({ pageId, onClose }) => {
               return <p key={`${pageId}-${index}`}>{block.content}</p>;
             }
             if (block.type === 'image') {
-              return (
-                <img
-                  key={`${pageId}-${index}`}
-                  src={block.content}
-                  alt="example"
-                />
-              );
+              return <img key={`${pageId}-${index}`} src={block.content} alt="example" />;
             }
             if (block.type === 'component') {
               return <block.content key={`${pageId}-${index}`} />;
@@ -80,9 +74,7 @@ const ArticleInModal = ({ pageId, tooltip, activateButton }) => (
   <Modal
     size="medium"
     backgroundColor="white"
-    wrapperFunctionForButton={
-      tooltip ? btn => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : null
-    }
+    wrapperFunctionForButton={tooltip ? btn => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : null}
     activateButton={activateButton}>
     {onClose =>
       ModalContent({

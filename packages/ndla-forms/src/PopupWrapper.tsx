@@ -176,10 +176,7 @@ const PopupWrapper: React.FC<Props> = ({
           escapeDeactivates: true,
         }}>
         <div>
-          <button
-            type="button"
-            css={buttonStyle}
-            onClick={() => setPopupState(!isOpen)}>
+          <button type="button" css={buttonStyle} onClick={() => setPopupState(!isOpen)}>
             {label} <StyledIcon rotate={isOpen ? 180 : 0} />
           </button>
           {isOpen && (
@@ -191,9 +188,7 @@ const PopupWrapper: React.FC<Props> = ({
               <StyledOptionWrapper background={background}>
                 <StyledOptionContent>
                   {withCloseButton && (
-                    <StyledCloseButton
-                      type="button"
-                      onClick={() => setPopupState(false)}>
+                    <StyledCloseButton type="button" onClick={() => setPopupState(false)}>
                       <Cross />
                     </StyledCloseButton>
                   )}

@@ -25,8 +25,7 @@ function delay(t, v) {
   });
 }
 
-const fetchSubjectsTopics = subjectId =>
-  delay(1000).then(() => subjectTopics[subjectId]);
+const fetchSubjectsTopics = subjectId => delay(1000).then(() => subjectTopics[subjectId]);
 
 let fetchFavoriteSubjectIds = [].concat(favoriteSubjects);
 
@@ -207,13 +206,8 @@ class StructureExample extends Component {
   onOpenPath({ id, isSubject }) {
     if (isSubject) {
       // already loaded?
-      const index = this.state.structure.findIndex(
-        subject => subject.id === id,
-      );
-      if (
-        !this.state.structure[index].topics &&
-        !this.state.structure[index].loading
-      ) {
+      const index = this.state.structure.findIndex(subject => subject.id === id);
+      if (!this.state.structure[index].topics && !this.state.structure[index].loading) {
         this.setState(
           prevState => {
             const { structure } = prevState;
@@ -242,9 +236,7 @@ class StructureExample extends Component {
     if (!fetchFavoriteSubjectIds.includes(subjectId)) {
       fetchFavoriteSubjectIds.push(subjectId);
     } else {
-      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter(
-        id => id !== subjectId,
-      );
+      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter(id => id !== subjectId);
     }
     this.forceUpdate();
   }
@@ -265,9 +257,7 @@ class StructureExample extends Component {
                 type="button"
                 key={filter.id}
                 className={
-                  this.state.activeFilters.some(
-                    StructureFilter => StructureFilter === filter.id,
-                  )
+                  this.state.activeFilters.some(StructureFilter => StructureFilter === filter.id)
                     ? 'checkboxItem--checked'
                     : ''
                 }
@@ -311,12 +301,7 @@ class StructureExample extends Component {
   }
 
   render() {
-    const {
-      loadedEssentials,
-      structure,
-      activeFilters,
-      availableFilters,
-    } = this.state;
+    const { loadedEssentials, structure, activeFilters, availableFilters } = this.state;
 
     return !loadedEssentials ? (
       <Spinner />

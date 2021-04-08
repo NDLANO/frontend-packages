@@ -11,14 +11,7 @@ import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import throttle from 'lodash/throttle';
-import {
-  breakpoints,
-  mq,
-  spacing,
-  colors,
-  fonts,
-  animations,
-} from '@ndla/core';
+import { breakpoints, mq, spacing, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
@@ -185,10 +178,7 @@ const hasForEachPolyfill = () => {
   }
 };
 
-const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
-  movies,
-  locale,
-}) => {
+const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies, locale }) => {
   const isIE11 = isIE && parseInt(browserVersion) < 12;
   // Split into Letters.
   let previousLetter = '';
@@ -244,26 +234,19 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({
       {movies.map((movie: movieType, index: number) => {
         const currentLetter = movie.title.substr(0, 1);
         const isNewLetter =
-          currentLetter.localeCompare(previousLetter, locale) === 1 &&
-          isLetter(movie.title);
+          currentLetter.localeCompare(previousLetter, locale) === 1 && isLetter(movie.title);
         previousLetter = currentLetter;
-        const inView: boolean | null = visibleImages
-          ? visibleImages[index]
-          : null;
+        const inView: boolean | null = visibleImages ? visibleImages[index] : null;
         return (
           <Fragment key={movie.id}>
-            {isNewLetter && (
-              <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>
-            )}
+            {isNewLetter && <StyledNewLetter>{movie.title.substr(0, 1)}</StyledNewLetter>}
             <MovieItem inView={inView}>
               <StyledSafeLink isIE11={isIE11} to={movie.path}>
                 <MovieImage
                   role="img"
                   backgroundImage={
                     inView && movie.metaImage && movie.metaImage.url
-                      ? `${movie.metaImage.url}?${makeSrcQueryString(
-                          IMAGE_WIDTH * 2,
-                        )}`
+                      ? `${movie.metaImage.url}?${makeSrcQueryString(IMAGE_WIDTH * 2)}`
                       : null
                   }
                   aria-label={movie.metaImage && movie.metaImage.alt}

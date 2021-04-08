@@ -51,9 +51,7 @@ const LicenseDescription: FC<Props> = ({
         highlightCC={highlightCC}
       />
       {messages && messages.modelPremission && (
-        <StyledModelpermission>
-          {messages.modelPremission}
-        </StyledModelpermission>
+        <StyledModelpermission>{messages.modelPremission}</StyledModelpermission>
       )}
     </div>
     {children}

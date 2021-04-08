@@ -56,10 +56,7 @@ class FilterTabs extends Component {
   }
 
   updateTabSizes() {
-    if (
-      !this.tabWidths &&
-      this.liRefs[Object.keys(this.liRefs)[0]].parentNode.offsetWidth !== 0
-    ) {
+    if (!this.tabWidths && this.liRefs[Object.keys(this.liRefs)[0]].parentNode.offsetWidth !== 0) {
       // Get all tabs widths
       this.tabWidths = [];
       let widestNode = 0;
@@ -80,8 +77,7 @@ class FilterTabs extends Component {
       this.updateTabSizes();
     }
     if (this.tabWidths) {
-      const containerWidth =
-        this.containerRef.current.offsetWidth - this.dropdownTabWidth;
+      const containerWidth = this.containerRef.current.offsetWidth - this.dropdownTabWidth;
       let visibleTabsTotalWidth = 0;
       let visibleTabsCounter = -1;
       for (
@@ -185,20 +181,13 @@ class FilterTabs extends Component {
       return null;
     }
 
-    const {
-      options,
-      value,
-      dropdownBtnLabel,
-      contentId,
-      onChange,
-    } = this.props;
+    const { options, value, dropdownBtnLabel, contentId, onChange } = this.props;
     let minimumWidthDropdownContainer = 0;
     const tabDropdownModifier = ['no-margin'];
     if (this.state.showDropdown) {
       tabDropdownModifier.push('visible');
     } else if (
-      options.findIndex(option => option.value === value) >=
-      this.state.visibleTabsCounter
+      options.findIndex(option => option.value === value) >= this.state.visibleTabsCounter
     ) {
       this.showSelectedTab = true;
     }
@@ -255,9 +244,7 @@ class FilterTabs extends Component {
       );
     });
     const moreLabel = this.showSelectedTab
-      ? this.props.options[
-          this.props.options.findIndex(option => option.value === value)
-        ].title
+      ? this.props.options[this.props.options.findIndex(option => option.value === value)].title
       : dropdownBtnLabel;
     const modifiers = ['no-margin', 'button-based', 'dropdown-btn'];
     const isSelected = moreLabel !== dropdownBtnLabel;
@@ -313,11 +300,7 @@ class FilterTabs extends Component {
           {this.renderVisibleTabs()}
           {this.renderDropdownTabs()}
         </ul>
-        <div
-          {...classes('panel')}
-          role="tabpanel"
-          id={contentId}
-          aria-labelledby={value}>
+        <div {...classes('panel')} role="tabpanel" id={contentId} aria-labelledby={value}>
           {children}
         </div>
       </div>

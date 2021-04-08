@@ -129,8 +129,7 @@ const CompetenceGoalTabdata = [
           },
           {
             id: 'K17637',
-            name:
-              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+            name: 'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
           },
           {
             id: 'K17635',
@@ -148,8 +147,7 @@ const CompetenceGoalTabdata = [
           },
           {
             id: 'K17637',
-            name:
-              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
+            name: 'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk',
           },
           {
             id: 'K17635',
@@ -174,8 +172,7 @@ const CompetenceGoalTabdata = [
           },
           {
             id: 'K176378',
-            name:
-              'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+            name: 'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
           },
           {
             id: 'K176353',
@@ -196,8 +193,7 @@ const CompetenceGoalTabdata = [
           {
             name: 'En tittel 1',
             id: 'tmpid4',
-            text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
             goals: [
               {
                 id: 'K15504',
@@ -206,8 +202,7 @@ const CompetenceGoalTabdata = [
               },
               {
                 id: 'K176378',
-                name:
-                  'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+                name: 'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
               },
               {
                 id: 'K176353',
@@ -218,8 +213,7 @@ const CompetenceGoalTabdata = [
           {
             name: 'En tittel 2',
             id: 'tmpid5',
-            text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           },
         ],
       },
@@ -239,8 +233,7 @@ const CompetenceGoalTabdata = [
               },
               {
                 id: 'K176378',
-                name:
-                  'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
+                name: 'bruke og vurdere virkemidler og fortellerteknikker i medieuttrykk - 2',
               },
               {
                 id: 'K176353',
@@ -251,8 +244,7 @@ const CompetenceGoalTabdata = [
           {
             name: 'En tittel 2',
             id: 'tmpid7',
-            text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           },
         ],
       },
@@ -261,10 +253,5 @@ const CompetenceGoalTabdata = [
 ];
 
 export const CompetenceGoalListExample = () => {
-  return (
-    <CompetenceGoalTab
-      title="Helse- og oppvekstfag Vg1"
-      list={CompetenceGoalTabdata}
-    />
-  );
+  return <CompetenceGoalTab title="Helse- og oppvekstfag Vg1" list={CompetenceGoalTabdata} />;
 };

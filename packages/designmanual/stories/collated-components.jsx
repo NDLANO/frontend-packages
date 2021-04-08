@@ -3,16 +3,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import {
-  LicenseDescription,
-  BY,
-  SA,
-  NC,
-  ND,
-  PD,
-  CC0,
-  COPYRIGHTED,
-} from '@ndla/licenses';
+import { LicenseDescription, BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import {
   ErrorMessage,
   FilterList,
@@ -69,9 +60,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Artikkel informasjonslinje">
         <p>
-          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse
-          av regler ved bruk av innhold, ikon hvis artikkel er tilleggsstoff og
-          dato for forrige oppdatering.
+          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk
+          av innhold, ikon hvis artikkel er tilleggsstoff og dato for forrige oppdatering.
         </p>
       </StoryIntro>
       <StoryBody layout="extend">
@@ -129,9 +119,7 @@ storiesOf('Sammensatte moduler', module)
           licenseBox={<LicenseBox />}
           additional
         />
-        <h2 className="u-heading">
-          Linje med flere opphavere med detaljert informasjon
-        </h2>
+        <h2 className="u-heading">Linje med flere opphavere med detaljert informasjon</h2>
         <ArticleByline
           authors={[
             {
@@ -181,14 +169,8 @@ storiesOf('Sammensatte moduler', module)
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
-        <h2 className="u-heading">
-          Linje uten opphavere detaljert informasjon
-        </h2>
-        <ArticleByline
-          published="21.06.2018"
-          license="CC BY-SA"
-          licenseBox={<LicenseBox />}
-        />
+        <h2 className="u-heading">Linje uten opphavere detaljert informasjon</h2>
+        <ArticleByline published="21.06.2018" license="CC BY-SA" licenseBox={<LicenseBox />} />
       </StoryBody>
     </div>
   ))
@@ -198,9 +180,8 @@ storiesOf('Sammensatte moduler', module)
       <Breadcrumb />
       <h2 className="u-heading">Brødsmulesti-blokkeksempel</h2>
       <p>
-        Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den
-        ligger i header. På små enheter vil blokkvarianten gjemmes.
-        Brødsmulestien er fortsatt tilgjengelig øverst på siden.
+        Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den ligger i header. På små
+        enheter vil blokkvarianten gjemmes. Brødsmulestien er fortsatt tilgjengelig øverst på siden.
       </p>
       <BreadcrumbBlock />
     </Center>
@@ -218,13 +199,10 @@ storiesOf('Sammensatte moduler', module)
   .add('Emneliste', () => (
     <div>
       <StoryIntro title="Emneliste">
+        <p>Emnelister brukes typisk innen et fag eller emne for å vise underliggende emner.</p>
         <p>
-          Emnelister brukes typisk innen et fag eller emne for å vise
-          underliggende emner.
-        </p>
-        <p>
-          Ved klikk på emnetittel kommer brukerne til emneartikkelen for emnet
-          de klikker på. Se også siden for Emnebeskrivelse.
+          Ved klikk på emnetittel kommer brukerne til emneartikkelen for emnet de klikker på. Se
+          også siden for Emnebeskrivelse.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -247,10 +225,10 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Kontrollerte faner</h2>
       <div className="o-wrapper--inner">
         <p>
-          Knapper kan også brukes til å kontrollere fanene. En mulighet her er
-          f.eks. å ha en knapp nederst inni en fane for å la brukeren gå til
-          neste fane uten å først måtte scrolle opp til fanetoppen. Dette
-          benyttes ikke foreløpig, men kan brukes ved behov i senere utvikling.
+          Knapper kan også brukes til å kontrollere fanene. En mulighet her er f.eks. å ha en knapp
+          nederst inni en fane for å la brukeren gå til neste fane uten å først måtte scrolle opp
+          til fanetoppen. Dette benyttes ikke foreløpig, men kan brukes ved behov i senere
+          utvikling.
         </p>
         <TabsControlled />
       </div>
@@ -260,9 +238,9 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Filter">
         <p>
-          Alle elementer vises enten ingen eller alle filtervalg er valgt. Når
-          brukeren klikker på et filter, skal dette umiddelbart reflekteres i
-          innholdet som filtreres, uten at siden lastes på nytt.
+          Alle elementer vises enten ingen eller alle filtervalg er valgt. Når brukeren klikker på
+          et filter, skal dette umiddelbart reflekteres i innholdet som filtreres, uten at siden
+          lastes på nytt.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -322,10 +300,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Radiobuttons', () => (
     <div>
       <StoryIntro title="Filter">
-        <p>
-          Radiobutton group komponent som håndterer states og gir callback ved
-          endring
-        </p>
+        <p>Radiobutton group komponent som håndterer states og gir callback ved endring</p>
       </StoryIntro>
       <StoryBody>
         <ComponentInfo
@@ -421,8 +396,7 @@ storiesOf('Sammensatte moduler', module)
           <LicenseDescription
             locale="nb"
             messages={{
-              modelPremission:
-                'Personen(e) på bildet har godkjent at det kan brukes videre.',
+              modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
             }}
             licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
           />
@@ -430,10 +404,7 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureImage
-          alt=""
-          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-        />
+        <FigureImage alt="" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
       </LayoutItem>
     </Center>
   ))
@@ -452,15 +423,11 @@ storiesOf('Sammensatte moduler', module)
   .add('Læringsressurser', () => (
     <div>
       <StoryIntro title="Læringsressurser">
+        <p>Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og aktiviteter.</p>
         <p>
-          Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og
-          aktiviteter.
-        </p>
-        <p>
-          Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som
-          er tilleggsstoff. Det er ellers skjult. Tilleggsstoffet er merket med
-          T-ikonet, samt med en noe dusere farge. Sjekkboksen skal være markert
-          når tilleggsstoff er aktivt.
+          Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som er tilleggsstoff.
+          Det er ellers skjult. Tilleggsstoffet er merket med T-ikonet, samt med en noe dusere
+          farge. Sjekkboksen skal være markert når tilleggsstoff er aktivt.
         </p>
         <p>Emneoverskriften viser hvilke emne man står i.</p>
       </StoryIntro>
@@ -473,9 +440,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Læringsressurser - tom liste">
         <p>
-          Når en ressursgruppe er tom for innhold, vises en tekst som forklarer
-          dette for brukeren og tilbyr en handlingsdriver som lar deg utforske
-          tilleggsstoff om det er tilgjengelig.
+          Når en ressursgruppe er tom for innhold, vises en tekst som forklarer dette for brukeren
+          og tilbyr en handlingsdriver som lar deg utforske tilleggsstoff om det er tilgjengelig.
         </p>
       </StoryIntro>
       <LayoutItem layout="center">
@@ -511,10 +477,7 @@ storiesOf('Sammensatte moduler', module)
             <h2 className="u-heading">Fagstoff og oppgave eksempel</h2>
             <RelatedArticleMixedList t={t} />
             <h2 className="u-heading">Eksterne ressurser eksempel</h2>
-            <p>
-              Dersom eksternt relatert innhold ikke har metatekst, skal url
-              vise.
-            </p>
+            <p>Dersom eksternt relatert innhold ikke har metatekst, skal url vise.</p>
             <RelatedArticleExternal t={t} />
             <h2 className="u-heading">Eksempel med vis mer</h2>
             <RelatedArticleListExample t={t} />
@@ -548,9 +511,7 @@ storiesOf('Sammensatte moduler', module)
         <FooterText>
           <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
         </FooterText>
-        <FooterText>
-          Nettstedet er utarbeidet av NDLA med åpen kildekode.
-        </FooterText>
+        <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
       </Footer>
     </Center>
   ))
@@ -558,8 +519,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Bilde karusell">
         <p>
-          Bilde karusell består av 2 komponenter. En Wrapper komponent for
-          automatisk utregning av størrelser, og selve bildekarusellen.
+          Bilde karusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av
+          størrelser, og selve bildekarusellen.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -572,14 +533,13 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Tilleggsstoff">
         <p>
           Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
-          tilleggsstoff-filteret aktiveres, vil ressursopplistingen utvides med
-          tilleggsstoff. Tilleggsstoff markeres med T-ikon, og mindre mettet
-          bakgrunnsfarge.{' '}
+          tilleggsstoff-filteret aktiveres, vil ressursopplistingen utvides med tilleggsstoff.
+          Tilleggsstoff markeres med T-ikon, og mindre mettet bakgrunnsfarge.{' '}
         </p>
         <p>
-          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er
-          tilknyttet. Så hvis brukeren aktiverer tilleggsstoff for Fagstoff, vil
-          bare Fagstoff-listen oppdateres med tilleggsstoff-elementer.
+          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren
+          aktiverer tilleggsstoff for Fagstoff, vil bare Fagstoff-listen oppdateres med
+          tilleggsstoff-elementer.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -593,29 +553,25 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <h2>Overskrift</h2>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+          eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+          eventuelt jobber sammen med i klassen.
         </p>
         <FileListExample />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+          eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+          eventuelt jobber sammen med i klassen.
         </p>
       </StoryBody>
     </div>
@@ -624,9 +580,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Feilmelding">
         <p>
-          Feilmeldingskomponenten lenker tilbake til forrige side eller til
-          forsiden. Den brukes når det har oppstått en feil i systemet, f.eks.
-          ved 404- eller 503-feil.
+          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når
+          det har oppstått en feil i systemet, f.eks. ved 404- eller 503-feil.
         </p>
       </StoryIntro>
       <ErrorMessage
@@ -649,8 +604,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Oversettelse">
         <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller,
-          derfor kan man i disse tilfellene heller bruke en oversettelse-liste.
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse
+          tilfellene heller bruke en oversettelse-liste.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -669,9 +624,7 @@ storiesOf('Sammensatte moduler', module)
         </Translation>
       </StoryBody>
       <StoryBody>
-        <h2 className="u-heading">
-          Oversettelseliste (Med props lang og langName definert)
-        </h2>
+        <h2 className="u-heading">Oversettelseliste (Med props lang og langName definert)</h2>
         <Translation index={1}>
           <TranslationLine lang="cn" langName="Kinesisk">
             你叫什么名字？//你叫什麼名字？
@@ -724,8 +677,8 @@ storiesOf('Sammensatte moduler', module)
     <PageContainer>
       <StoryIntro title="Meldingsboks">
         <p>
-          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom
-          den er sticky så vises den i toppen dersom man scroller forbi.
+          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom den er sticky så
+          vises den i toppen dersom man scroller forbi.
         </p>
       </StoryIntro>
       <Content>

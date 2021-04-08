@@ -24,10 +24,7 @@ import {
 } from './ContentTypeResultStyles';
 import { isPathToHighlight } from './IsPathToHighlight';
 
-const renderAdditionalIcon = (
-  label: string,
-  isAdditional?: boolean,
-): React.ReactElement | null => {
+const renderAdditionalIcon = (label: string, isAdditional?: boolean): React.ReactElement | null => {
   if (isAdditional && label) {
     return (
       <Tooltip tooltip={label} align="top" css={tooltipStyle}>
@@ -83,12 +80,10 @@ const ContentTypeResult: React.FC<Props & tType> = ({
       ? contentTypeResult.resources
       : contentTypeResult.resources.filter(items => !items.additional);
 
-  const resources =
-    showAll || !defaultCount ? results : results.slice(0, defaultCount);
+  const resources = showAll || !defaultCount ? results : results.slice(0, defaultCount);
 
   const displayShowAllButton = defaultCount && results.length > defaultCount;
-  const shouldHighlightShowAllButton =
-    showAllRef.current === keyboardPathNavigation;
+  const shouldHighlightShowAllButton = showAllRef.current === keyboardPathNavigation;
 
   useEffect(() => {
     if (showAll && showAllRef.current) {
@@ -125,16 +120,11 @@ const ContentTypeResult: React.FC<Props & tType> = ({
                 {!inMenu && subject && <small>{subject}</small>}
                 {!inMenu &&
                   resourceTypes &&
-                  resourceTypes.map(type => (
-                    <StyledTag key={type.name}>{type.name}</StyledTag>
-                  ))}
+                  resourceTypes.map(type => <StyledTag key={type.name}>{type.name}</StyledTag>)}
               </>
             );
             const delayAnimation =
-              !!animateList &&
-              !!additional &&
-              animateList > 0 &&
-              !!showAdditionalResources;
+              !!animateList && !!additional && animateList > 0 && !!showAdditionalResources;
 
             // Figure out highlighting by comparing path of link with keyboard navigated anchor
             const anchor =
@@ -156,10 +146,7 @@ const ContentTypeResult: React.FC<Props & tType> = ({
                     }
                   }}>
                   {linkContent}
-                  {renderAdditionalIcon(
-                    t('resource.additionalTooltip'),
-                    additional,
-                  )}
+                  {renderAdditionalIcon(t('resource.additionalTooltip'), additional)}
                 </SafeLink>
               </StyledListItem>
             );
@@ -168,15 +155,10 @@ const ContentTypeResult: React.FC<Props & tType> = ({
             <StyledListItem ref={showAllRef}>
               <Button
                 ghostPill
-                css={[
-                  showAllButtonStyle,
-                  shouldHighlightShowAllButton && noWidthhighlightStyle,
-                ]}
+                css={[showAllButtonStyle, shouldHighlightShowAllButton && noWidthhighlightStyle]}
                 data-highlighted={shouldHighlightShowAllButton}
                 onClick={() => toggleShowAll(!showAll)}>
-                {showAll
-                  ? messages.showLessResultLabel
-                  : messages.allResultLabel}
+                {showAll ? messages.showLessResultLabel : messages.allResultLabel}
                 {showAll ? <ChevronUp /> : <ChevronDown />}
               </Button>
             </StyledListItem>

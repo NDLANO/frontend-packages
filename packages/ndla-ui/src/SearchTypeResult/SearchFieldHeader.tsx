@@ -99,9 +99,7 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const isNarrowScreenMatch = window.matchMedia(
-      `(max-width: ${breakpoints.tablet})`,
-    );
+    const isNarrowScreenMatch = window.matchMedia(`(max-width: ${breakpoints.tablet})`);
     const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
       setIsNarrowScreen(e.matches);
     };

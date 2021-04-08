@@ -6,11 +6,7 @@
  *
  */
 
-import Article, {
-  ArticleTitle,
-  ArticleIntroduction,
-  ArticleWrapper,
-} from './Article';
+import Article, { ArticleTitle, ArticleIntroduction, ArticleWrapper } from './Article';
 
 export { default as ArticleByline } from './ArticleByline';
 export { default as ArticleContent } from './ArticleContent';

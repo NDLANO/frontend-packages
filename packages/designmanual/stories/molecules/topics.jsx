@@ -8,11 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  ResourcesWrapper,
-  ResourcesTopicTitle,
-  TopicIntroductionList,
-} from '@ndla/ui';
+import { ResourcesWrapper, ResourcesTopicTitle, TopicIntroductionList } from '@ndla/ui';
 import { topicList, topicListFilm } from '../../dummydata/index';
 
 class Topics extends Component {

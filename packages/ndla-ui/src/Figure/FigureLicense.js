@@ -21,22 +21,12 @@ export const classLicenses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureLicenseCta = ({
-  children,
-  messages,
-  authors,
-  origin,
-  title,
-}) => (
+export const FigureLicenseCta = ({ children, messages, authors, origin, title }) => (
   <div {...classLicenses('cta-wrapper')}>
     <ul {...classLicenses('list')}>
-      {title && (
-        <li {...classLicenses('item')}>{`${messages.title}: ${title}`}</li>
-      )}
+      {title && <li {...classLicenses('item')}>{`${messages.title}: ${title}`}</li>}
       {authors.map(author => (
-        <li
-          key={uuid()}
-          {...classLicenses('item')}>{`${author.type}: ${author.name}`}</li>
+        <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${author.name}`}</li>
       ))}
       {origin && (
         <li {...classLicenses('item')}>

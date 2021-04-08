@@ -33,20 +33,13 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
           }
           if (link.href) {
             return (
-              <a
-                key={link.href}
-                href={link.href}
-                {...classes('icon-link')}
-                aria-label={link.name}>
+              <a key={link.href} href={link.href} {...classes('icon-link')} aria-label={link.name}>
                 {link.icon}
               </a>
             );
           }
           return (
-            <span
-              key={link.name}
-              {...classes('icon-link')}
-              aria-label={link.name}>
+            <span key={link.name} {...classes('icon-link')} aria-label={link.name}>
               {link.icon}
             </span>
           );

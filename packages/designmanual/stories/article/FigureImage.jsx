@@ -22,12 +22,8 @@ function ImageWrapper({ typeClass, src, hasHiddenCation, children, t }) {
         <FigureExpandButton
           typeClass={typeClass}
           messages={{
-            zoomImageButtonLabel: t(
-              'license.images.itemImage.zoomImageButtonLabel',
-            ),
-            zoomOutImageButtonLabel: t(
-              'license.images.itemImage.zoomOutImageButtonLabel',
-            ),
+            zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
+            zoomOutImageButtonLabel: t('license.images.itemImage.zoomOutImageButtonLabel'),
           }}
         />
         {children}
@@ -69,18 +65,13 @@ function FigureImage({ type, alt, src, caption, hasHiddenCaption, link, t }) {
     zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
     reuse: t('image.reuse'),
     download: t('image.download'),
-    modelPermission:
-      'Personen(e) på bildet har godkjent at det kan brukes videre.',
+    modelPermission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
   };
   return (
     <Figure id={figureId} type={type}>
       {({ typeClass }) => (
         <>
-          <ImageWrapper
-            hasHiddenCation={hasHiddenCaption}
-            typeClass={typeClass}
-            t={t}
-            src={src}>
+          <ImageWrapper hasHiddenCation={hasHiddenCaption} typeClass={typeClass} t={t} src={src}>
             <Image alt={alt} src={src} sizes={sizes} />
           </ImageWrapper>
           <FigureCaptionExample

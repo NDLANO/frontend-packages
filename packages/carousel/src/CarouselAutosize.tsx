@@ -27,9 +27,7 @@ interface Props {
   centered?: boolean;
   itemsLength: number;
   breakpoints: CaruselBreakpoint[];
-  children: (
-    calculatedProps: CalculatedCarouselProps | null,
-  ) => React.ReactNode;
+  children: (calculatedProps: CalculatedCarouselProps | null) => React.ReactNode;
 }
 
 interface State {
@@ -76,9 +74,7 @@ export class CarouselAutosize extends Component<Props, State> {
     });
   };
 
-  calculateCarouselProps = (
-    breakpoint: CaruselBreakpoint,
-  ): CalculatedCarouselProps | null => {
+  calculateCarouselProps = (breakpoint: CaruselBreakpoint): CalculatedCarouselProps | null => {
     if (!this.state.carouselBreakpoint || !this.autosizeRef.current) {
       return null;
     }
@@ -116,9 +112,7 @@ export class CarouselAutosize extends Component<Props, State> {
       return <div ref={this.autosizeRef} />;
     }
 
-    const calculatedCarouselProps = this.calculateCarouselProps(
-      carouselBreakpoint,
-    );
+    const calculatedCarouselProps = this.calculateCarouselProps(carouselBreakpoint);
 
     let wrapperWidth = 'auto';
 

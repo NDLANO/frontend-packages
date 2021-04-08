@@ -13,9 +13,7 @@ import { uuid } from '@ndla/util';
 import { getSrcSets } from './util/imageUtil';
 
 const convertWithFallBack = (fieldName, value, fallback) =>
-  value[fieldName] && value[fieldName][fieldName]
-    ? value[fieldName][fieldName]
-    : fallback;
+  value[fieldName] && value[fieldName][fieldName] ? value[fieldName][fieldName] : fallback;
 
 const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
   const tags = convertWithFallBack('tags', image.tags, []);
@@ -31,9 +29,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
         />
       </div>
       <div className="information">
-        <h2 className="title">
-          {convertWithFallBack('title', image.title, '')}
-        </h2>
+        <h2 className="title">{convertWithFallBack('title', image.title, '')}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
             <span className="text right">
@@ -42,9 +38,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
           </div>
         ) : null}
         <div className="license">
-          <span className="text right">
-            {image.copyright.license.description}
-          </span>
+          <span className="text right">{image.copyright.license.description}</span>
         </div>
         <div className="tags">
           {tags.map(tag => (

@@ -5,18 +5,10 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-export const checkIfItemIsSelected = (
-  item,
-  selectedItem,
-  selectedItems,
-  multiSelect,
-  idField,
-) => {
+export const checkIfItemIsSelected = (item, selectedItem, selectedItems, multiSelect, idField) => {
   if (idField) {
     if (multiSelect) {
-      return !!selectedItems.find(
-        selectedItem => selectedItem[idField] === item[idField],
-      );
+      return !!selectedItems.find(selectedItem => selectedItem[idField] === item[idField]);
     }
     if (selectedItem) {
       return selectedItem[idField] === item[idField];

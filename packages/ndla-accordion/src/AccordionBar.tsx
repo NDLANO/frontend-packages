@@ -27,16 +27,14 @@ const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
           padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0;
         `
       : css`
-          padding: ${spacing.small} ${spacing.normal} ${spacing.small}
-            calc(${spacing.xsmall} * 3);
+          padding: ${spacing.small} ${spacing.normal} ${spacing.small} calc(${spacing.xsmall} * 3);
         `}
   background: ${colors.brand.light};
   display: flex;
   align-items: center;
   justify-content: flex-start;
   transition: color 100ms ease, background 100ms ease;
-  border: 2px solid ${props =>
-    props.hasError ? colors.support.redLight : 'transparent'};
+  border: 2px solid ${props => (props.hasError ? colors.support.redLight : 'transparent')};
   ${({ hasError, isOpen }) =>
     hasError &&
     isOpen &&
@@ -77,8 +75,7 @@ const StyledButton = styled.button<ButtonProps>`
   ${props =>
     props.tiny
       ? css`
-          padding: ${spacing.xsmall} ${spacing.xsmall} ${spacing.xsmall}
-            ${spacing.small};
+          padding: ${spacing.xsmall} ${spacing.xsmall} ${spacing.xsmall} ${spacing.small};
           span {
             ${fonts.sizes(18, 1.1)};
           }

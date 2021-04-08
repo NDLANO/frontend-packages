@@ -39,10 +39,7 @@ export const FigureCaption = ({
     {caption ? <div {...classes('info')}>{caption}</div> : null}
     <footer {...classes('byline')}>
       <div {...classes('byline-licenselist')}>
-        <LicenseByline
-          licenseRights={licenseRights}
-          locale={locale}
-          marginRight>
+        <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
           <span {...classes('byline-authors')}>
             {authors.map(author => author.name).join(', ')}
           </span>
@@ -66,9 +63,7 @@ export const FigureCaption = ({
               <span {...classes('link-text')}>{link.text}</span>
               <LinkIcon />
             </SafeLink>
-            {link.description && (
-              <p {...classes('link-description')}>{link.description}</p>
-            )}
+            {link.description && <p {...classes('link-description')}>{link.description}</p>}
           </div>
         )}
       </div>
@@ -103,13 +98,9 @@ FigureCaption.defaultProps = {
 };
 
 const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
-  const typeClass =
-    type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
+  const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   return (
-    <figure
-      data-sizetype={type}
-      {...classes('', { resize: resizeIframe }, typeClass)}
-      {...rest}>
+    <figure data-sizetype={type} {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
@@ -117,10 +108,7 @@ const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
 
 Figure.propTypes = {
   id: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.node.isRequired,
-    PropTypes.func.isRequired,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node.isRequired, PropTypes.func.isRequired]).isRequired,
   type: PropTypes.oneOf([
     'full',
     'full-column',

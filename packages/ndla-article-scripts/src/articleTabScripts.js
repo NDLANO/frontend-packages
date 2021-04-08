@@ -62,9 +62,7 @@ export const initArticleTabs = () => {
           changeTabs(tab, nextTab);
 
           const currentPanel = el.querySelector(`[aria-hidden='false']`);
-          const panel = el.querySelector(
-            `#${nextTab.getAttribute('aria-controls')}`,
-          );
+          const panel = el.querySelector(`#${nextTab.getAttribute('aria-controls')}`);
           changePanel(currentPanel, panel);
         }
       });

@@ -50,12 +50,16 @@ type Props = GradesProps & {
   onNavigate?: () => void;
 };
 
-const ProgrammeSubjects = ({
-  grades,
-  onNavigate,
-  preSelectedGradeIndex = 0,
-}: Props) => {
+const ProgrammeSubjects = ({ grades, onNavigate, preSelectedGradeIndex = 0 }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(preSelectedGradeIndex);
+  const isWindowContext = typeof window !== 'undefined';
+
+  const toggleGradeIndex = (index: number) => {
+    setShowGradeIndex(index);
+    if (isWindowContext) {
+      window.localStorage.setItem('programmeShowGradeIndex', `${index}`);
+    }
+  };
 
   const selectedGrade = grades[showGradeIndex];
   return (
@@ -64,7 +68,7 @@ const ProgrammeSubjects = ({
         {grades.map((item, index) => (
           <Button
             key={item.name}
-            onClick={() => setShowGradeIndex(index)}
+            onClick={() => toggleGradeIndex(index)}
             lighter={showGradeIndex !== index}
             size="normal"
             borderShape="rounded">

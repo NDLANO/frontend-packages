@@ -58,15 +58,11 @@ export const ErrorMessage: React.FunctionComponent<Props> = ({
     <h1>{messages.title}</h1>
     <Description>{messages.description}</Description>
     {messages.linksTitle && <h2>{messages.linksTitle}</h2>}
-    {messages.back &&
-      typeof window !== 'undefined' &&
-      window.history.length > 1 && (
-        <SafeLink
-          to={`/#${encodeURI(messages.back)}`}
-          onClick={() => window.history.back()}>
-          {messages.back}
-        </SafeLink>
-      )}
+    {messages.back && typeof window !== 'undefined' && window.history.length > 1 && (
+      <SafeLink to={`/#${encodeURI(messages.back)}`} onClick={() => window.history.back()}>
+        {messages.back}
+      </SafeLink>
+    )}
     {messages.goToFrontPage && (
       <div css={{ marginTop: spacing.xsmall }}>
         <SafeLink to="/">{messages.goToFrontPage}</SafeLink>

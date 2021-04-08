@@ -15,12 +15,7 @@ const Illustration: React.FunctionComponent = () => (
     viewBox="0 0 940 175"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg">
-    <g
-      id="MenuOpen2"
-      stroke="none"
-      strokeWidth="1"
-      fill="none"
-      fillRule="evenodd">
+    <g id="MenuOpen2" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <path
         d="M451.082302,41.077211 C451.082302,41.077211 437.836086,51.3862687 439.082788,58.6632507 C440.485329,65.9402326 448.744734,71.2463653 453.731545,62.3017416 C454.978248,60.0276848 455.913275,57.4504203 456.380788,55.0247597 C458.095004,47.4445702 456.22495,40.1675882 451.082302,41.077211 Z"
         id="Path"
@@ -60,12 +55,7 @@ const Illustration: React.FunctionComponent = () => (
         stroke="#000000"
         strokeLinecap="round"
       />
-      <path
-        d="M420.9,78 L421.1,118"
-        id="Path"
-        stroke="#000000"
-        strokeLinecap="round"
-      />
+      <path d="M420.9,78 L421.1,118" id="Path" stroke="#000000" strokeLinecap="round" />
       <path
         d="M433.07891,132.268116 L427.449067,133.514493 L414,137.40942 L461.384505,160 L523,132.57971 L473.426112,117 C471.236729,117.467391 440.585366,129.152174 440.585366,129.152174"
         id="Path"

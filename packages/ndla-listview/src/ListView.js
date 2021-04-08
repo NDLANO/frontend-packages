@@ -172,10 +172,7 @@ const listItemShape = PropTypes.shape({
       value: PropTypes.string,
     }),
   ),
-  category: PropTypes.oneOfType([
-    PropTypes.arrayOf(categoryShape),
-    categoryShape,
-  ]),
+  category: PropTypes.oneOfType([PropTypes.arrayOf(categoryShape), categoryShape]),
   source: PropTypes.string,
   license: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
@@ -234,12 +231,7 @@ const ListView = ({
         <div className={'sorting-wrapper'}>
           <div className={'search'}>
             <div {...searchFieldClasses()}>
-              <div
-                {...searchFieldClasses(
-                  'input-wrapper',
-                  'with-icon',
-                  'search-input-wrapper',
-                )}>
+              <div {...searchFieldClasses('input-wrapper', 'with-icon', 'search-input-wrapper')}>
                 <input
                   css={inputStyle}
                   type="search"
@@ -275,8 +267,9 @@ const ListView = ({
             <li key={`letter-${letter}`} className={'letter'}>
               <button
                 type="button"
-                className={`letter-button ${selectedLetter === letter &&
-                  'active'} ${!alphabet[letter] && 'disabled'}`}
+                className={`letter-button ${selectedLetter === letter && 'active'} ${!alphabet[
+                  letter
+                ] && 'disabled'}`}
                 onClick={() =>
                   selectedLetter === letter
                     ? selectedLetterCallback('')
@@ -321,9 +314,7 @@ const filterShapes = PropTypes.shape({
     PropTypes.arrayOf(PropTypes.arrayOf(optionsShape)),
   ]).isRequired,
   onChange: PropTypes.func.isRequired,
-  filterValues: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
+  filterValues: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   label: PropTypes.string,
   key: PropTypes.oneOf(['subject', 'category', 'default']),
   isGroupedOptions: PropTypes.bool,
@@ -339,10 +330,7 @@ ListView.propTypes = {
   disableSearch: PropTypes.bool,
   disableViewOption: PropTypes.bool,
   onChangedViewStyle: (props, propName, componentName) => {
-    if (
-      props.disableViewOption !== true &&
-      typeof props[propName] !== 'function'
-    ) {
+    if (props.disableViewOption !== true && typeof props[propName] !== 'function') {
       return new Error(
         `Invalid prop ${propName} supplied to ${componentName}. Must be a function when disableViewOption !== true.`,
       );

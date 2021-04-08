@@ -34,12 +34,7 @@ class SimpleSubmitForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="query">{labelText}</label>
-        <input
-          id="query"
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.articleId}
-        />
+        <input id="query" type="text" onChange={this.handleChange} value={this.state.articleId} />
         <Button submit> {submitText}</Button>
         {errorMessage ? <p>{errorMessage}</p> : null}
       </form>

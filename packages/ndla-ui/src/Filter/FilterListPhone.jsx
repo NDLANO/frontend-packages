@@ -39,8 +39,7 @@ class FilterListPhone extends Component {
   }
 
   setScreenSize(initial = false) {
-    const isNarrowScreen =
-      (window.innerWidth || document.documentElement.clientWidth) < 768;
+    const isNarrowScreen = (window.innerWidth || document.documentElement.clientWidth) < 768;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if ((initial && isNarrowScreen) || !initial) {
@@ -85,8 +84,7 @@ class FilterListPhone extends Component {
       showActiveFiltersOnSmallScreen,
     } = this.props;
 
-    const showAll =
-      defaultVisibleCount === null || options.length <= defaultVisibleCount;
+    const showAll = defaultVisibleCount === null || options.length <= defaultVisibleCount;
     const labelModifiers = [];
 
     if (labelNotVisible) {
@@ -157,9 +155,7 @@ class FilterListPhone extends Component {
                   </div>
                 </ModalHeader>
                 <ModalBody modifier="no-side-padding-mobile">
-                  {this.state.isNarrowScreen && label && (
-                    <h1 {...classes('label')}>{label}</h1>
-                  )}
+                  {this.state.isNarrowScreen && label && <h1 {...classes('label')}>{label}</h1>}
                   {groupedOptions.map((options, index) => (
                     <ul
                       key={index}
@@ -171,9 +167,7 @@ class FilterListPhone extends Component {
                       {options.map(option => {
                         const itemModifiers = [];
 
-                        const checked = values.some(
-                          value => value === option.value,
-                        );
+                        const checked = values.some(value => value === option.value);
 
                         if (option.noResults) {
                           itemModifiers.push('no-results');
@@ -216,25 +210,17 @@ class FilterListPhone extends Component {
 
     return (
       <>
-        {isGroupedOptions && label && (
-          <h2 {...classes('label', labelModifiers)}>{label}</h2>
-        )}
+        {isGroupedOptions && label && <h2 {...classes('label', labelModifiers)}>{label}</h2>}
         {groupedOptions.map((options, index) => (
           <section key={index} {...classes('list', modifiers)}>
-            {!isGroupedOptions && label && (
-              <h1 {...classes('label', labelModifiers)}>{label}</h1>
-            )}
+            {!isGroupedOptions && label && <h1 {...classes('label', labelModifiers)}>{label}</h1>}
             <ul {...classes('item-wrapper')}>
               {options.map((option, index) => {
                 const itemModifiers = [];
 
                 const checked = values.some(value => value === option.value);
 
-                if (
-                  !showAll &&
-                  !checked &&
-                  index + 1 > this.state.visibleCount
-                ) {
+                if (!showAll && !checked && index + 1 > this.state.visibleCount) {
                   itemModifiers.push('hidden');
                 }
 

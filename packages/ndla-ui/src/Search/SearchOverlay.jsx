@@ -16,11 +16,7 @@ const SearchOverlay = ({ close, isOpen, children }) => (
     <Fade in={isOpen}>
       <div className="o-backdrop" />
     </Fade>
-    <CSSTransition
-      timeout={300}
-      classNames={classes().className}
-      unmountOnExit
-      in={isOpen}>
+    <CSSTransition timeout={300} classNames={classes().className} unmountOnExit in={isOpen}>
       <div {...classes()}>
         <div {...classes('container o-wrapper')}>
           {children}

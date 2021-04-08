@@ -95,22 +95,16 @@ class Tooltip extends Component {
 
       if (isIE) {
         // IE is bad with transform % + px..
-        currentStyles.left = `-${(this.tooltipRef.current.offsetWidth -
-          widthRef) /
-          2}px`;
+        currentStyles.left = `-${(this.tooltipRef.current.offsetWidth - widthRef) / 2}px`;
         currentStyles.top = `-${this.tooltipRef.current.offsetHeight + 10}px`;
       } else if (
         align === 'top' ||
         align === 'bottom' ||
         (align === 'left' && leftRef - tooltipWidth < 20) ||
-        (align === 'right' &&
-          leftRef + widthRef + tooltipWidth > window.innerWidth - 40)
+        (align === 'right' && leftRef + widthRef + tooltipWidth > window.innerWidth - 40)
       ) {
         const centeredLeft = leftRef + widthRef / 2;
-        let moveHorizontal = Math.max(
-          centeredLeft + tooltipWidth / 2 + 20 - window.innerWidth,
-          0,
-        );
+        let moveHorizontal = Math.max(centeredLeft + tooltipWidth / 2 + 20 - window.innerWidth, 0);
         if (moveHorizontal === 0) {
           moveHorizontal = Math.min(-(tooltipWidth / 2 - centeredLeft + 20), 0);
         }
@@ -134,9 +128,7 @@ class Tooltip extends Component {
   }
 
   componentDidMount() {
-    this.focusableChild = this.contentRef.current.querySelector(
-      'a, button, [role="button"]',
-    );
+    this.focusableChild = this.contentRef.current.querySelector('a, button, [role="button"]');
     if (this.focusableChild) {
       this.focusableChild.addEventListener('focusin', this.handleShowTooltip);
       this.focusableChild.addEventListener('focusout', this.handleHideTooltip);
@@ -145,14 +137,8 @@ class Tooltip extends Component {
 
   componentWillUnmount() {
     if (this.focusableChild) {
-      this.focusableChild.removeEventListener(
-        'focusin',
-        this.handleShowTooltip,
-      );
-      this.focusableChild.removeEventListener(
-        'focusout',
-        this.handleHideTooltip,
-      );
+      this.focusableChild.removeEventListener('focusin', this.handleShowTooltip);
+      this.focusableChild.removeEventListener('focusout', this.handleHideTooltip);
     }
   }
 
@@ -165,14 +151,7 @@ class Tooltip extends Component {
   }
 
   render() {
-    const {
-      tooltipContainerClass,
-      className,
-      delay,
-      tooltip,
-      children,
-      rest,
-    } = this.props;
+    const { tooltipContainerClass, className, delay, tooltip, children, rest } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
@@ -185,11 +164,7 @@ class Tooltip extends Component {
     return (
       <TooltipWrapper className={tooltipContainerClass} {...rest}>
         <Fade animateIn={this.state.showTooltip} delay={delay}>
-          <span
-            role="tooltip"
-            css={tooltipCss}
-            style={this.getPosition()}
-            ref={this.tooltipRef}>
+          <span role="tooltip" css={tooltipCss} style={this.getPosition()} ref={this.tooltipRef}>
             {tooltip}
           </span>
         </Fade>

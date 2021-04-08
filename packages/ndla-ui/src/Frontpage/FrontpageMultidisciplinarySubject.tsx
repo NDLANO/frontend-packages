@@ -13,11 +13,7 @@ export const StyledSection = styled.section`
   margin-top: ${spacing.large};
   margin-bottom: ${spacing.large};
   background-color: rgb(250, 246, 240);
-  background: linear-gradient(
-    304.38deg,
-    rgba(239, 238, 220, 0.35),
-    rgba(250, 246, 240, 0.75)
-  );
+  background: linear-gradient(304.38deg, rgba(239, 238, 220, 0.35), rgba(250, 246, 240, 0.75));
   border-radius: 8px;
   padding: ${spacing.medium};
   ${mq.range({ from: breakpoints.desktop })} {
@@ -79,18 +75,16 @@ type Props = {
   topics?: [{ url: string; title: string; id: string }];
 };
 
-const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props &
-  tType> = ({ url, t, topics }) => (
+const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> = ({
+  url,
+  t,
+  topics,
+}) => (
   <StyledSection>
-    <ComponentCursor
-      variant="left"
-      text={t('frontpageMultidisciplinarySubject.cursorText')}
-    />
+    <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
     <Wrapper>
       <Content>
-        <SectionHeading large>
-          {t('frontpageMultidisciplinarySubject.heading')}
-        </SectionHeading>
+        <SectionHeading large>{t('frontpageMultidisciplinarySubject.heading')}</SectionHeading>
         {topics ? (
           <Topics>
             {topics.map(topic => {

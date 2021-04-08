@@ -65,15 +65,9 @@ class CompetenceGoals extends Component {
                       values={filterValues}
                       onChange={onFilterClick}
                       messages={{
-                        openFilter: t(
-                          'competenceGoals.openCompentenceGoalsFilter',
-                        ),
-                        useFilter: t(
-                          'competenceGoals.useCompentenceGoalsFilter',
-                        ),
-                        closeFilter: t(
-                          'competenceGoals.closeCompentenceGoalsFilter',
-                        ),
+                        openFilter: t('competenceGoals.openCompentenceGoalsFilter'),
+                        useFilter: t('competenceGoals.useCompentenceGoalsFilter'),
+                        closeFilter: t('competenceGoals.closeCompentenceGoalsFilter'),
                       }}
                     />
                   </Fragment>
@@ -103,11 +97,7 @@ class CompetenceGoals extends Component {
                             };
                           });
                         }}>
-                        {this.state.expanded === topic.heading ? (
-                          <ChevronDown />
-                        ) : (
-                          <ChevronRight />
-                        )}
+                        {this.state.expanded === topic.heading ? <ChevronDown /> : <ChevronRight />}
                         {topic.heading}
                       </button>
                     </h3>

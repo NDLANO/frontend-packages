@@ -86,10 +86,7 @@ const CodeExample = () => (
     />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
-    <Codeblock
-      code="Pure text without highlighting and no title"
-      format="text"
-    />
+    <Codeblock code="Pure text without highlighting and no title" format="text" />
   </ComponentInfo>
 );
 

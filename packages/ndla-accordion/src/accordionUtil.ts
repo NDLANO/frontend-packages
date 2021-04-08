@@ -11,14 +11,11 @@ import AccordionSection, { Props as ASProps } from './AccordionSection';
 
 const getPanels = (children: ReactNode): ReactElement<ASProps>[] => {
   const panels = Children.map(children, child =>
-    React.isValidElement(child) && child.type === AccordionSection
-      ? child
-      : null,
+    React.isValidElement(child) && child.type === AccordionSection ? child : null,
   );
   return panels ? panels.filter(p => p) : [];
 };
-export const getPanelIds = (children: ReactNode) =>
-  getPanels(children).map(p => p.props.id);
+export const getPanelIds = (children: ReactNode) => getPanels(children).map(p => p.props.id);
 export const getOpenPanels = (children: ReactNode) =>
   getPanels(children)
     .filter(p => p.props.startOpen)

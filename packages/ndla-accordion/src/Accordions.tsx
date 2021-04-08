@@ -18,9 +18,7 @@ type Props = { tiny?: boolean; single?: boolean };
 
 const Accordions: React.FC<Props & tType> = ({ tiny, single, t, children }) => {
   const [panelIds] = useState<string[]>(getPanelIds(children));
-  const [openPanels, setOpenPanels] = useState<string[]>(
-    getOpenPanels(children),
-  );
+  const [openPanels, setOpenPanels] = useState<string[]>(getOpenPanels(children));
 
   const toggleOpen = (id: string) => {
     if (single) {

@@ -67,13 +67,11 @@ storiesOf('Produksjonssystem', module)
       }}>
       <StoryIntro title="Trekkspill">
         <p>
-          Trekkspill (Accordions). Importeres via ndla-accordion. Innbygget
-          kontroll for åpning og lukking gjennom render props. Støtter
-          feil-status via boolean prop på paneler.
+          Trekkspill (Accordions). Importeres via ndla-accordion. Innbygget kontroll for åpning og
+          lukking gjennom render props. Støtter feil-status via boolean prop på paneler.
         </p>
         <p>
-          Denne versjonen bruker Accordions og AccordionSection komponentene for
-          å forenkle koden
+          Denne versjonen bruker Accordions og AccordionSection komponentene for å forenkle koden
         </p>
       </StoryIntro>
 

@@ -76,16 +76,10 @@ class AccordionExample extends Component {
           barChildren={<div>Children in bar</div>}>
           <p>Innhold 1</p>
         </AccordionSection>
-        <AccordionSection
-          id="panel2"
-          title="Panel 2"
-          barChildren={<div>Children in bar</div>}>
+        <AccordionSection id="panel2" title="Panel 2" barChildren={<div>Children in bar</div>}>
           <p>Innhold 2</p>
         </AccordionSection>
-        <AccordionSection
-          id="panel3"
-          title="Panel 3"
-          barChildren={<div>Children in bar</div>}>
+        <AccordionSection id="panel3" title="Panel 3" barChildren={<div>Children in bar</div>}>
           <p>Innhold 3</p>
         </AccordionSection>
 
@@ -115,9 +109,7 @@ class AccordionExample extends Component {
           </AccordionSection>
         </Accordions>
 
-        <h2>
-          Eksempel 3, kontrollert trekkspill med eksempler for feilmelding(er)
-        </h2>
+        <h2>Eksempel 3, kontrollert trekkspill med eksempler for feilmelding(er)</h2>
         <FilterList
           label="Simuler feilmeldinger:"
           preid="filter-list"

@@ -42,3 +42,31 @@ import Accordion, {
   )}
 </Accordion>;
 ```
+
+### Simple example where panel is open on render. (with Accordions)
+
+```js
+<Accordions single>
+  <AccordionSection
+    id="panel-1"
+    title="Panel 1"
+    barChildren="Panel 1"
+    startOpen>
+    <p>Innhold 1</p>
+  </AccordionSection>
+  <AccordionSection
+    id="panel-2"
+    title="Panel 2"
+    barChildren="Panel 2"
+    startOpen>
+    <p>Innhold 2</p>
+  </AccordionSection>
+  <AccordionSection
+    id="panel-3"
+    title="Panel 3"
+    barChildren="Panel 3"
+    startOpen>
+    <p>Innhold 3</p>
+  </AccordionSection>
+</Accordions>
+```

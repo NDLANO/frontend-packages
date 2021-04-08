@@ -20,9 +20,7 @@ class SubjectShortcuts extends Component {
   }
 
   handleOnExpand(expanded) {
-    const newVisibleCount = expanded
-      ? this.props.links.length
-      : this.props.defaultVisableCount;
+    const newVisibleCount = expanded ? this.props.links.length : this.props.defaultVisableCount;
 
     this.setState({
       visibleCount: newVisibleCount,
@@ -53,9 +51,7 @@ class SubjectShortcuts extends Component {
         </button>
       );
 
-      filteredLinks = this.props.links.filter(
-        (link, index) => index < this.state.visibleCount,
-      );
+      filteredLinks = this.props.links.filter((link, index) => index < this.state.visibleCount);
     }
     return (
       <section {...classes('')}>

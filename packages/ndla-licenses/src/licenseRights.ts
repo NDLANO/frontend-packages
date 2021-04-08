@@ -43,14 +43,12 @@ const sa: RightType = {
   nn: {
     title: 'Del på same vilkår',
     userFriendlyTitle: 'Del på same vilkår',
-    description:
-      'Du kan berre dele innhaldet med same lisens som det opphavlege innhaldet.',
+    description: 'Du kan berre dele innhaldet med same lisens som det opphavlege innhaldet.',
   },
   nb: {
     title: 'Del på samme vilkår',
     userFriendlyTitle: 'Del på samme vilkår',
-    description:
-      'Du kan bare dele innholdet med samme lisens som det opprinnelige innholdet.',
+    description: 'Du kan bare dele innholdet med samme lisens som det opprinnelige innholdet.',
   },
   en: {
     title: 'Del likt',
@@ -170,8 +168,7 @@ const cc: RightType = {
   nb: {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',
-    description:
-      'Denne lisensen gir deg rett til å dele og bruke dette innholdet på visse vilkår.',
+    description: 'Denne lisensen gir deg rett til å dele og bruke dette innholdet på visse vilkår.',
   },
   en: {
     title: 'Creative Commons',
@@ -195,8 +192,7 @@ const na: RightType = {
   en: {
     title: 'N/A - not applicable',
     userFriendlyTitle: 'NA - not applicable',
-    description:
-      'This mark is intended for content that does not require a license.',
+    description: 'This mark is intended for content that does not require a license.',
   },
 };
 

@@ -30,7 +30,5 @@ test('that featureDetect does not insert polyfill if no features are missing', (
   // Check that body contains client script tags
   const body = document.getElementsByTagName('body')[0];
   const bodyScriptTags = body.querySelectorAll('script');
-  expect(bodyScriptTags[0].outerHTML).toBe(
-    '<script src="/client.js"></script>',
-  );
+  expect(bodyScriptTags[0].outerHTML).toBe('<script src="/client.js"></script>');
 });

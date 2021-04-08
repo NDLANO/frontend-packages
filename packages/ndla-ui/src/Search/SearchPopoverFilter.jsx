@@ -76,10 +76,7 @@ Popover.propTypes = {
 };
 
 const PopoverFilter = ({ messages, values, onChange, ...rest }) => {
-  const buttonText =
-    values.length > 0
-      ? messages.hasValuesButtonText
-      : messages.noValuesButtonText;
+  const buttonText = values.length > 0 ? messages.hasValuesButtonText : messages.noValuesButtonText;
 
   const buttonContent = (
     <button type="button" {...filterClasses('expand')}>

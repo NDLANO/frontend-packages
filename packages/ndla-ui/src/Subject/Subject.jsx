@@ -60,9 +60,7 @@ SubjectTopics.propTypes = {
 
 const sidebarClasses = BEMHelper('c-subject-sidebar-wrapper');
 
-export const SubjectSidebarWrapper = ({ children }) => (
-  <div {...sidebarClasses()}>{children}</div>
-);
+export const SubjectSidebarWrapper = ({ children }) => <div {...sidebarClasses()}>{children}</div>;
 
 SubjectSidebarWrapper.propTypes = {
   children: PropTypes.node.isRequired,

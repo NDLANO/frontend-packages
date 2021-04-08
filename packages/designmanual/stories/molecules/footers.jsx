@@ -6,12 +6,7 @@ import ZendeskButton from '@ndla/zendesk';
 import { injectT } from '@ndla/i18n';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({
-  inverted,
-  invertedOutlineLargeScreensOnly,
-  t,
-  hideLanguageSelector,
-}) => (
+const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLanguageSelector }) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -39,9 +34,7 @@ const FooterExample = ({
     <FooterText>
       <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
       <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
-      <ZendeskButton
-        locale="nb"
-        widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+      <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
         {t('askNDLA')}
       </ZendeskButton>
     </FooterText>

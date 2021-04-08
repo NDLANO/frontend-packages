@@ -94,12 +94,9 @@ class ListViewExample extends Component {
       filteredItems = filteredItems.filter(
         item =>
           (item.tags &&
-            item.tags.some(
-              tag => tag.toLowerCase().indexOf(searchValueLowercase) !== -1,
-            )) ||
+            item.tags.some(tag => tag.toLowerCase().indexOf(searchValueLowercase) !== -1)) ||
           (item.description &&
-            item.description.toLowerCase().indexOf(searchValueLowercase) !==
-              -1) ||
+            item.description.toLowerCase().indexOf(searchValueLowercase) !== -1) ||
           item.name.toLowerCase().indexOf(searchValueLowercase) !== -1,
       );
     }
@@ -109,9 +106,7 @@ class ListViewExample extends Component {
   filterOnSelectedLetter(filteredItems) {
     const { selectedLetter } = this.state;
     if (selectedLetter) {
-      return filteredItems.filter(
-        item => item.name.toLowerCase().substr(0, 1) === selectedLetter,
-      );
+      return filteredItems.filter(item => item.name.toLowerCase().substr(0, 1) === selectedLetter);
     }
     return filteredItems;
   }
@@ -127,10 +122,7 @@ class ListViewExample extends Component {
         closeCallback={() => this.handleSelectItem()}>
         <NotionDialogContent>
           {selectedItem.image ? (
-            <NotionDialogImage
-              src={selectedItem.image}
-              alt={selectedItem.description}
-            />
+            <NotionDialogImage src={selectedItem.image} alt={selectedItem.description} />
           ) : null}
           <NotionDialogText>{selectedItem.longDescription}</NotionDialogText>
         </NotionDialogContent>
@@ -140,9 +132,7 @@ class ListViewExample extends Component {
           source={selectedItem.source}
           authors={selectedItem.authors}
           licenseBox={
-            <Modal
-              activateButton={<Button link>{t('article.useContent')}</Button>}
-              size="medium">
+            <Modal activateButton={<Button link>{t('article.useContent')}</Button>} size="medium">
               {onClose => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">

@@ -18,8 +18,7 @@ const StyledWrapper = styled.div`
   }
   > div {
     ${animations.fadeIn('1000ms')};
-    transform: translateX(${spacing.spacingUnit * 1.5}px)
-      translateY(-${spacing.xsmall});
+    transform: translateX(${spacing.spacingUnit * 1.5}px) translateY(-${spacing.xsmall});
   }
 `;
 

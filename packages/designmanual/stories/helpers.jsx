@@ -19,17 +19,13 @@ Center.propTypes = {
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
-export const InlineContainer = ({ children }) => (
-  <div className="inline-container">{children}</div>
-);
+export const InlineContainer = ({ children }) => <div className="inline-container">{children}</div>;
 
 InlineContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const DottedContainer = ({ children }) => (
-  <div className="dotted-container">{children}</div>
-);
+export const DottedContainer = ({ children }) => <div className="dotted-container">{children}</div>;
 
 DottedContainer.propTypes = {
   children: PropTypes.node.isRequired,

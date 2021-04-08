@@ -102,9 +102,7 @@ const Paragraph = styled.p`
   font-family: ${fonts.serif};
 `;
 
-export const NotionDialogText = ({ children }) => (
-  <Paragraph>{children}</Paragraph>
-);
+export const NotionDialogText = ({ children }) => <Paragraph>{children}</Paragraph>;
 
 NotionDialogText.propTypes = {
   children: PropTypes.node,
@@ -176,14 +174,7 @@ export const NotionDialogStyledWrapper = styled.div`
   }
 `;
 
-const NotionDialog = ({
-  title,
-  children,
-  id,
-  subTitle,
-  ariaHidden,
-  customCSS,
-}) => (
+const NotionDialog = ({ title, children, id, subTitle, ariaHidden, customCSS }) => (
   <NotionDialogStyledWrapper
     aria-hidden={ariaHidden}
     role="dialog"

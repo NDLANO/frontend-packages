@@ -19,11 +19,7 @@ import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 import { DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 
-import {
-  mockAllMovies,
-  mockHighlightedMovies,
-  movieThemes as themes,
-} from '../../dummydata';
+import { mockAllMovies, mockHighlightedMovies, movieThemes as themes } from '../../dummydata';
 
 const StyledSection = styled('section')`
   margin-top: ${spacing.spacingUnit * 4}px;
@@ -60,10 +56,7 @@ class NdlaFilmExample extends Component {
   }
 
   onMoveTheme(index, direction) {
-    if (
-      index + direction >= 0 &&
-      this.state.themes.length > index + direction
-    ) {
+    if (index + direction >= 0 && this.state.themes.length > index + direction) {
       this.setState(prevState => {
         const { themes } = prevState;
         const moveTheme = themes[index];
@@ -157,9 +150,7 @@ class NdlaFilmExample extends Component {
               });
             }}
           />
-          <Select
-            value=""
-            onChange={e => this.onAddMovieToSlideshow(e.target.value)}>
+          <Select value="" onChange={e => this.onAddMovieToSlideshow(e.target.value)}>
             <option value="">{t('ndlaFilm.editor.addMovieToSlideshow')}</option>
             {this.renderAddMovieOptions(mainMovies)}
           </Select>
@@ -281,13 +272,9 @@ class NdlaFilmExample extends Component {
                   removeFilm: t('ndlaFilm.editor.removeMovieFromGroup'),
                 }}
                 id={theme.id}
-                onUpdateMovies={updates =>
-                  this.movieThemeUpdate(updates, index)
-                }
+                onUpdateMovies={updates => this.movieThemeUpdate(updates, index)}
               />
-              <Select
-                value=""
-                onChange={e => this.onAddMovieToTheme(e.target.value, index)}>
+              <Select value="" onChange={e => this.onAddMovieToTheme(e.target.value, index)}>
                 <option value="">
                   {t('ndlaFilm.editor.addMovieToGroup', {
                     name: theme.name.nb,

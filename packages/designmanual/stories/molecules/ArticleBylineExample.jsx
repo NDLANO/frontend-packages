@@ -70,12 +70,7 @@ const authors = {
 
 const suppliers = [{ name: 'Riksarkivet' }];
 
-const ArticleBylineExample = ({
-  multipleAuthors,
-  useRealText,
-  additional,
-  copyPageUrlLink,
-}) => {
+const ArticleBylineExample = ({ multipleAuthors, useRealText, additional, copyPageUrlLink }) => {
   const useAuthors = authors[useRealText ? 'real' : 'simple'];
   return (
     <ArticleByline

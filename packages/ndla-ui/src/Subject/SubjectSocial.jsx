@@ -5,9 +5,7 @@ import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-social');
 
-export const SubjectSocialContent = ({ children }) => (
-  <div {...classes('content')}>{children}</div>
-);
+export const SubjectSocialContent = ({ children }) => <div {...classes('content')}>{children}</div>;
 
 SubjectSocialContent.propTypes = {
   children: PropTypes.node.isRequired,
@@ -15,9 +13,7 @@ SubjectSocialContent.propTypes = {
 
 export const SubjectSocialSection = ({ children, title }) => (
   <section {...classes('section')}>
-    <SubjectSectionTitle className={classes('title').className}>
-      {title}
-    </SubjectSectionTitle>
+    <SubjectSectionTitle className={classes('title').className}>{title}</SubjectSectionTitle>
     {children}
   </section>
 );

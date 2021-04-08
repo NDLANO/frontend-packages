@@ -22,11 +22,7 @@ const StyledListItem = styled('li')`
 `;
 
 export const CompetenceGoal = ({ goal }) => {
-  const content = goal.url ? (
-    <SafeLink to={goal.url}>{goal.name}</SafeLink>
-  ) : (
-    goal.name
-  );
+  const content = goal.url ? <SafeLink to={goal.url}>{goal.name}</SafeLink> : goal.name;
 
   return <StyledListItem {...classes('topic-item')}>{content}</StyledListItem>;
 };

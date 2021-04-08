@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const Media = (props: Props) => (
-  <Icon
-    title="Media"
-    viewBox="0 0 60 44"
-    data-license="CC-BY 4.0"
-    data-source="Knowit"
-    {...props}>
+  <Icon title="Media" viewBox="0 0 60 44" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path d="M59,0H1A1.1,1.1,0,0,0,0,1V43a1.1,1.1,0,0,0,1,1H59a1.1,1.1,0,0,0,1-1V1A1.1,1.1,0,0,0,59,0ZM58,2V23.2L44.1,11.7,24.4,27.8l-15-8.4L2,25.7V2ZM2,42V28.3l7.6-6.5,15,8.4L44.1,14.3,57.8,25.6H58V42Z" />
       <path d="M23.5,18A5.5,5.5,0,1,0,18,12.5,5.5,5.5,0,0,0,23.5,18Zm0-9A3.5,3.5,0,1,1,20,12.5,3.5,3.5,0,0,1,23.5,9Z" />

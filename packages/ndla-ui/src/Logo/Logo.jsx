@@ -18,15 +18,7 @@ export const logoClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Logo = ({
-  name,
-  to,
-  cssModifier,
-  color,
-  large,
-  locale,
-  label,
-}) => {
+export const Logo = ({ name, to, cssModifier, color, large, locale, label }) => {
   const modifiers = { large };
 
   if (cssModifier) {

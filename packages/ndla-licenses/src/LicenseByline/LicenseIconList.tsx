@@ -70,10 +70,7 @@ interface LicenseIconItemProps {
   locale?: string;
 }
 
-const LicenseIconItem: FC<LicenseIconItemProps> = ({
-  licenseRight,
-  locale,
-}) => {
+const LicenseIconItem: FC<LicenseIconItemProps> = ({ licenseRight, locale }) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
@@ -108,16 +105,9 @@ const LicenseIconList: FC<LicenseIconListProps> = ({
   marginRight,
   horizontal,
 }) => (
-  <StyledLicenseIconList
-    marginRight={marginRight}
-    color={color}
-    horizontal={horizontal}>
+  <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
     {licenseRights.map(licenseRight => (
-      <LicenseIconItem
-        key={licenseRight}
-        licenseRight={licenseRight}
-        locale={locale}
-      />
+      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
   </StyledLicenseIconList>
 );

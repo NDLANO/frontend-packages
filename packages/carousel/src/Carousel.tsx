@@ -77,12 +77,7 @@ export class Carousel extends Component<Props, State> {
   }
 
   onSwipeEnd = () => {
-    const {
-      columnsPrSlide,
-      columnWidth,
-      distanceBetweenItems,
-      items,
-    } = this.props;
+    const { columnsPrSlide, columnWidth, distanceBetweenItems, items } = this.props;
     if (!this.state.swiping) {
       return;
     }
@@ -90,8 +85,7 @@ export class Carousel extends Component<Props, State> {
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
 
     const moved = Math.round(
-      (-Math.min(this.props.columnWidth / 2, this.swipeSpeed * 5) +
-        this.swipeDistance) /
+      (-Math.min(this.props.columnWidth / 2, this.swipeSpeed * 5) + this.swipeDistance) /
         (columnWidth + distanceBetweenItems),
     );
     this.swipeDistance = 0;
@@ -117,11 +111,7 @@ export class Carousel extends Component<Props, State> {
 
   onSwipe = (eventData: EventData) => {
     const moved = -eventData.deltaX;
-    if (
-      Math.abs(moved) < 15 ||
-      eventData.dir === 'Up' ||
-      eventData.dir === 'Down'
-    ) {
+    if (Math.abs(moved) < 15 || eventData.dir === 'Up' || eventData.dir === 'Down') {
       return;
     }
     this.setState({
@@ -129,8 +119,7 @@ export class Carousel extends Component<Props, State> {
     });
     this.swipeSpeed = this.swipeDistance - moved;
     this.swipeDistance = moved;
-    const transformX =
-      this.swipeDistance + this.state.slideIndex * this.props.columnWidth;
+    const transformX = this.swipeDistance + this.state.slideIndex * this.props.columnWidth;
 
     if (this.slideshowRef.current) {
       this.slideshowRef.current.style.transform = `translateX(${transformX}px)`;
@@ -142,8 +131,7 @@ export class Carousel extends Component<Props, State> {
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
     if (roundedColumnsPrSlide < items.length) {
       this.setState(prevState => {
-        let slideIndex =
-          prevState.slideIndex + roundedColumnsPrSlide * direction;
+        let slideIndex = prevState.slideIndex + roundedColumnsPrSlide * direction;
 
         if (slideIndex > 0) {
           slideIndex = 0;
@@ -174,8 +162,7 @@ export class Carousel extends Component<Props, State> {
     const { slideIndex, swiping } = this.state;
     const hideButtons = columnsPrSlide >= items.length;
 
-    const transformX =
-      this.swipeDistance + slideIndex * (columnWidth + distanceBetweenItems);
+    const transformX = this.swipeDistance + slideIndex * (columnWidth + distanceBetweenItems);
 
     return (
       <section>
@@ -197,10 +184,7 @@ export class Carousel extends Component<Props, State> {
                   type="button"
                   aria-label={slideForwardsLabel}
                   className={buttonClass}
-                  dontShow={
-                    hideButtons ||
-                    Math.floor(columnsPrSlide) === items.length + slideIndex
-                  }
+                  dontShow={hideButtons || Math.floor(columnsPrSlide) === items.length + slideIndex}
                   next
                   arrowOffset={arrowOffset}
                   onClick={() => this.slidePage(-1)}>

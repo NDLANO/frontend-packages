@@ -38,8 +38,7 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer?',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    introduction:
-      'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
+    introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
     type: 'Fagstoff',
     additional: true,
   },
@@ -49,8 +48,7 @@ export const articleResources = [
     name: 'Hvordan oppstår ideer 2',
     resourceTypes: [],
     contentUri: 'urn:article:341',
-    introduction:
-      'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
+    introduction: 'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon.',
     type: 'Fagstoff',
     additional: true,
   },

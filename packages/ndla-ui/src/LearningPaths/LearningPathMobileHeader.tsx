@@ -29,9 +29,7 @@ const StyledMiniHeader = styled.span`
 const LearningPathMobileHeader: React.FunctionComponent<tType> = ({ t }) => (
   <StyledWrapper>
     <LearningPathBadge size="xx-small" background />
-    <StyledMiniHeader>
-      {t('learningPath.youAreInALearningPath')}
-    </StyledMiniHeader>
+    <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
   </StyledWrapper>
 );
 

@@ -1,10 +1,4 @@
-import {
-  topicMenu,
-  subtopicList,
-  topicList,
-  topicListChinese,
-  topicListFilm,
-} from './mockTopics';
+import { topicMenu, subtopicList, topicList, topicListChinese, topicListFilm } from './mockTopics';
 import {
   learningPathResources,
   articleResources,
@@ -14,16 +8,8 @@ import {
   externalLearningResources,
 } from './mockResources';
 import { subjectList, subjectConcepts } from './mockSubjects';
-import {
-  firstBrightcoveList,
-  secondBrightcoveList,
-  brightCoveMockVideo,
-} from './mockBrightcove';
-import {
-  firstYouTubeList,
-  secondYouTubeList,
-  youTubeMockVideo,
-} from './mockYouTube';
+import { firstBrightcoveList, secondBrightcoveList, brightCoveMockVideo } from './mockBrightcove';
+import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from './mockYouTube';
 
 import {
   contentTypeResults,

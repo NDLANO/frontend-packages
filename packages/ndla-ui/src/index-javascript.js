@@ -76,19 +76,11 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
 } from './ContentTypeBadge';
-export {
-  default as LayoutItem,
-  OneColumn,
-  PageContainer,
-  Content,
-} from './Layout';
+export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
-export {
-  default as RelatedArticleList,
-  RelatedArticle,
-} from './RelatedArticleList';
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
 export {
   default as CompetenceGoals,
   CompetenceGoalList,
@@ -119,12 +111,7 @@ export {
   NdlaFilmHero,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export {
-  Figure,
-  FigureCaption,
-  FigureLicenseDialog,
-  FigureExpandButton,
-} from './Figure';
+export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
 export {
   MediaList,
   MediaListItem,
@@ -134,11 +121,7 @@ export {
   MediaListItemMeta,
 } from './MediaList';
 
-export {
-  EmbeddedTwitter,
-  EmbeddedFacebook,
-  EmbeddedFacebookPage,
-} from './Embedded';
+export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';
 
 export { default as Image, ImageLink } from './Image';
 export { makeSrcQueryString } from './Image';

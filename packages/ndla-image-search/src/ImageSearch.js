@@ -149,9 +149,9 @@ const ImageSearchWrapper = styled.div`
 
   .information {
     width: 50%;
-    padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${
-  spacing.normal
-} ${spacing.small};
+    padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${spacing.normal} ${
+  spacing.small
+};
     word-break: initial;
     ${mq.range({ until: breakpoints.mobileWide })} {
       width: 100%;
@@ -356,14 +356,7 @@ class ImageSearch extends React.Component {
   render() {
     const { searchPlaceholder, searchButtonTitle, useImageTitle } = this.props;
 
-    const {
-      queryObject,
-      images,
-      selectedImage,
-      lastPage,
-      searching,
-      queryString,
-    } = this.state;
+    const { queryObject, images, selectedImage, lastPage, searching, queryString } = this.state;
 
     const { page } = queryObject;
     const noResultsFound = !searching && images.length === 0;

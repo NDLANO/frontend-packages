@@ -36,9 +36,7 @@ export const TasksAndActivitiesHero = props => (
 export const AssessmentResourcesHero = props => (
   <Hero contentType={contentTypes.ASSESSMENT_RESOURCES} {...props} />
 );
-export const SubjectHero = props => (
-  <Hero contentType={contentTypes.SUBJECT} {...props} />
-);
+export const SubjectHero = props => <Hero contentType={contentTypes.SUBJECT} {...props} />;
 export const ExternalLearningResourcesHero = props => (
   <Hero contentType={contentTypes.EXTERNAL_LEARNING_RESOURCES} {...props} />
 );
@@ -46,8 +44,5 @@ export const SourceMaterialHero = props => (
   <Hero contentType={contentTypes.SOURCE_MATERIAL} {...props} />
 );
 export const NdlaFilmHero = ({ hasImage, ...rest }) => (
-  <Hero
-    {...rest}
-    contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'}
-  />
+  <Hero {...rest} contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'} />
 );

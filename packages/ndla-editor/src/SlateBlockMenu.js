@@ -62,8 +62,7 @@ const Item = styled.div`
 `;
 
 const itemButton = css`
-  padding: ${spacing.xsmall} ${spacing.normal} ${spacing.xsmall}
-    ${spacing.normal};
+  padding: ${spacing.xsmall} ${spacing.normal} ${spacing.xsmall} ${spacing.normal};
   border: 0;
   background: 0;
   color: ${colors.brand.primary};

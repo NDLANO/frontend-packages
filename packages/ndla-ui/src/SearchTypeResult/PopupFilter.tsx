@@ -19,9 +19,7 @@ import { Plus as PlusIcon } from '@ndla/icons/action';
 // @ts-ignore
 import { ToggleItem } from '../Filter';
 
-import FrontpageAllSubjects, {
-  subjectsProps,
-} from '../Frontpage/FrontpageAllSubjects';
+import FrontpageAllSubjects, { subjectsProps } from '../Frontpage/FrontpageAllSubjects';
 
 const ModalWrapper = styled.div`
   display: flex;
@@ -104,12 +102,7 @@ export type PopupFilterProps = {
   subjectCategories?: SubjectCategoriesProps;
 };
 
-const PopupFilter = ({
-  messages,
-  programmes,
-  subjectCategories,
-  t,
-}: PopupFilterProps & tType) => {
+const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilterProps & tType) => {
   const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
   const [subjectValues, setSubjectValues] = useState<Array<string>>([]);
   const [programmesValues, setProgrammesValues] = useState<Array<string>>([]);

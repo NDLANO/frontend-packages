@@ -69,8 +69,7 @@ const ItemHead = styled.div<ItemTypeProps>`
   ${mq.range({ from: breakpoints.desktop })} {
     height: 100px;
   }
-  border: 1px solid
-    ${props => props.type && `${resourceTypeColor(props.type)};`};
+  border: 1px solid ${props => props.type && `${resourceTypeColor(props.type)};`};
   border-bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -95,8 +94,7 @@ const ItemIcon = styled.div<ItemTypeProps>`
 `;
 
 const ItemContent = styled.div<ItemTypeProps>`
-  border: 1px solid
-    ${props => props.type && `${resourceTypeColor(props.type)};`};
+  border: 1px solid ${props => props.type && `${resourceTypeColor(props.type)};`};
   border-top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -292,13 +290,8 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
                 {(onClose: () => void) => (
                   <>
                     <ModalHeader>
-                      <ModalHeading>
-                        {t('searchPage.contextModal.heading')}
-                      </ModalHeading>
-                      <ModalCloseButton
-                        onClick={onClose}
-                        title={t('searchPage.close')}
-                      />
+                      <ModalHeading>{t('searchPage.contextModal.heading')}</ModalHeading>
+                      <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
                     </ModalHeader>
                     <ModalContent>
                       <ContextList>
@@ -308,13 +301,9 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
                             <Breadcrumb breadcrumb={context.breadcrumb}>
                               <IconWrapper>
                                 {context.isAdditional ? (
-                                  <Additional
-                                    style={{ width: '22px', height: '22px' }}
-                                  />
+                                  <Additional style={{ width: '22px', height: '22px' }} />
                                 ) : (
-                                  <Core
-                                    style={{ width: '22px', height: '22px' }}
-                                  />
+                                  <Core style={{ width: '22px', height: '22px' }} />
                                 )}
                               </IconWrapper>
                             </Breadcrumb>

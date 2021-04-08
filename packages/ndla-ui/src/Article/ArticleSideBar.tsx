@@ -84,10 +84,7 @@ const ArticleSideBar = ({
           {(onClose: () => void) => (
             <>
               <ModalHeader modifier="no-bottom-padding">
-                <ModalCloseButton
-                  onClick={onClose}
-                  title={t('article.closeLabel')}
-                />
+                <ModalCloseButton onClick={onClose} title={t('article.closeLabel')} />
               </ModalHeader>
               <ModalBody>{licenseBox}</ModalBody>
             </>

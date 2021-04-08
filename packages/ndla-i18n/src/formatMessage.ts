@@ -41,25 +41,19 @@ export default function formatMessage(
     } catch (e) {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error(
-          `Error formatting message: "${id}" for locale: "${locale}"\n${e}`,
-        );
+        console.error(`Error formatting message: "${id}" for locale: "${locale}"\n${e}`);
       }
     }
   } else if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
-    console.error(
-      `Missing message: "${id}" for locale: "${locale}", using id as fallback`,
-    );
+    console.error(`Missing message: "${id}" for locale: "${locale}", using id as fallback`);
     return id;
   }
 
   if (!formattedMessage) {
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line no-console
-      console.error(
-        `Cannot format message: "${id}", using message source as fallback.`,
-      );
+      console.error(`Cannot format message: "${id}", using message source as fallback.`);
     }
   }
 

@@ -20,9 +20,7 @@ test('that featureDetect inserts polyfill if needed', () => {
   // Check that head contains polyfill script tag
   const head = document.getElementsByTagName('head')[0];
   const polyfillScriptTag = head.querySelector('script');
-  expect(polyfillScriptTag.outerHTML).toBe(
-    '<script src="/polyfill.js"></script>',
-  );
+  expect(polyfillScriptTag.outerHTML).toBe('<script src="/polyfill.js"></script>');
 
   // Trigger on load event for polyfill script tag
   polyfillScriptTag.onload();
@@ -30,10 +28,6 @@ test('that featureDetect inserts polyfill if needed', () => {
   // Check that body contains vendor and client script tags
   const body = document.getElementsByTagName('body')[0];
   const bodyScriptTags = body.querySelectorAll('script');
-  expect(bodyScriptTags[0].outerHTML).toBe(
-    '<script src="/vendor.js"></script>',
-  );
-  expect(bodyScriptTags[1].outerHTML).toBe(
-    '<script src="/client.js"></script>',
-  );
+  expect(bodyScriptTags[0].outerHTML).toBe('<script src="/vendor.js"></script>');
+  expect(bodyScriptTags[1].outerHTML).toBe('<script src="/client.js"></script>');
 });

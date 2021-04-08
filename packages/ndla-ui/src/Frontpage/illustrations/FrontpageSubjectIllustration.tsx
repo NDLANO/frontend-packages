@@ -15,11 +15,7 @@ const cssStyle = css`
 `;
 
 const FrontpageSubjectIllustration: React.FunctionComponent = () => (
-  <svg
-    css={cssStyle}
-    viewBox="0 0 837 194"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg">
+  <svg css={cssStyle} viewBox="0 0 837 194" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(12.000000, 22.000000)" stroke="#000000">
         <g transform="translate(0.000000, 7.000000)">
@@ -43,11 +39,7 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             id="Path"
             strokeLinecap="round"
           />
-          <path
-            d="M69.3,31.8 C69.3,31.8 75.8,60.4 83.1,60.2"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M69.3,31.8 C69.3,31.8 75.8,60.4 83.1,60.2" id="Path" strokeLinecap="round" />
           <path
             d="M101.6,71.4 C98.3,67.9 96.5,60.2 92.7,55.6 C91.2,53.8 89.9,52.1 88.1,53.6 C86.5,54.9 81.4,60.1 74.3,75.6"
             id="Path"
@@ -100,11 +92,7 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             id="Path"
             strokeLinecap="round"
           />
-          <path
-            d="M377.8,72.8 C371.9,75.2 358.2,77.6 355.8,77.4"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M377.8,72.8 C371.9,75.2 358.2,77.6 355.8,77.4" id="Path" strokeLinecap="round" />
           <path
             d="M348,22.2 C349.4,21.2 354.6,21 354.4,21.3 C354.2,21.6 349.9,23.4 349.7,23.7"
             id="Path"
@@ -129,21 +117,9 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             d="M653.8,37.4 C653.8,37.4 654.4,42.4 659.6,44.9 C664.8,47.4 670.4,52.4 669.8,57.4 C669.2,62.4 666.5,67.7 665.9,68.8"
             id="Path"
           />
-          <path
-            d="M651.6,69.4 C652.2,61 656.8,45.2 656.8,45.2"
-            id="Path"
-            strokeLinecap="round"
-          />
-          <path
-            d="M660.2,46.8 C659.6,47.6 655.8,61.3 654.4,67.4"
-            id="Path"
-            strokeLinecap="round"
-          />
-          <path
-            d="M638.7,42.6 C638.7,42.6 638.7,61.3 637.9,62.7"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M651.6,69.4 C652.2,61 656.8,45.2 656.8,45.2" id="Path" strokeLinecap="round" />
+          <path d="M660.2,46.8 C659.6,47.6 655.8,61.3 654.4,67.4" id="Path" strokeLinecap="round" />
+          <path d="M638.7,42.6 C638.7,42.6 638.7,61.3 637.9,62.7" id="Path" strokeLinecap="round" />
           <path d="M635.6,43.5 L635.7,69.7" id="Path" strokeLinecap="round" />
           <path
             d="M642.8,78.3 L639.2,79.1 L630.6,81.6 L660.9,96.1 L700.3,78.5 L668.6,68.5 C667.2,68.8 647.6,76.3 647.6,76.3"
@@ -153,26 +129,14 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             d="M671.1,1.4 C669.9,1.9 669.7,18.1 677.7,18.3 C685.7,18.5 685.5,12.3 684.4,10 C683.2,7.7 680.8,-2.4 671.1,1.4 Z"
             id="Path"
           />
-          <path
-            d="M672.9,14.2 C673,15.3 677.6,11.5 677.6,11.5"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M672.9,14.2 C673,15.3 677.6,11.5 677.6,11.5" id="Path" strokeLinecap="round" />
           <path
             d="M684.5,15.7 C684.5,15.7 684.6,18.8 687.5,19.8 C691.7,21.3 698.5,22 701.3,31.2 C704.1,40.4 708.7,57.1 708.2,58.5 C707.7,59.9 701,70.2 698,72.7 C695,75.2 681.4,74.4 682.3,76 C683.1,77.7 687,76.6 687,76.6 C687,76.6 694.7,74.1 697.8,68 C697.8,68 692,71.3 687.6,63 C683.2,54.7 681.8,27.9 683.2,23.4 C684.6,18.9 680.7,17.9 680.7,17.9"
             id="Path"
             strokeLinecap="round"
           />
-          <path
-            d="M684.7,53.2 C684.7,54 684.1,64.1 678.6,69.9"
-            id="Path"
-            strokeLinecap="round"
-          />
-          <path
-            d="M705.1,63.3 C705.4,64.1 707.3,76.7 707.3,76.7"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M684.7,53.2 C684.7,54 684.1,64.1 678.6,69.9" id="Path" strokeLinecap="round" />
+          <path d="M705.1,63.3 C705.4,64.1 707.3,76.7 707.3,76.7" id="Path" strokeLinecap="round" />
           <path
             d="M697.7,68 C697.7,68 704.9,62.4 701.8,50.2 C698.6,37.2 693.8,32.9 692.1,28.7 C690.4,24.5 689.6,24 691.5,21.2"
             id="Path"

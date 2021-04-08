@@ -22,8 +22,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const defaultTransitionSwipeEnd =
-  'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
+const defaultTransitionSwipeEnd = 'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
 const defaultTransitionText = 'opacity 600ms ease';
 
 const renderSlideItem = slide => (
@@ -69,8 +68,7 @@ class FilmSlideshow extends Component {
   onChangedSlide() {
     if (!this.state.animationComplete) {
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = `translateX(${this.state
-        .slideIndexTarget * 100}vw))`;
+      this.slideRef.current.style.transform = `translateX(${this.state.slideIndexTarget * 100}vw))`;
       this.setState(prevState => ({
         animationComplete: true,
         slideIndex: prevState.slideIndexTarget,
@@ -78,8 +76,7 @@ class FilmSlideshow extends Component {
     } else if (this.state.slideIndexTarget === -1) {
       // Go to last slide for continuous loop
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = `translateX(${this.props.slideshow
-        .length * 100}vw))`;
+      this.slideRef.current.style.transform = `translateX(${this.props.slideshow.length * 100}vw))`;
       this.setState({
         slideIndex: this.props.slideshow.length - 1,
         slideIndexTarget: this.props.slideshow.length - 1,
@@ -125,9 +122,7 @@ class FilmSlideshow extends Component {
       });
     } else {
       // Reset transfrom
-      this.slideRef.current.style.transform = this.getSlidePosition(
-        this.state.slideIndex + slide,
-      );
+      this.slideRef.current.style.transform = this.getSlidePosition(this.state.slideIndex + slide);
     }
   }
 
@@ -138,9 +133,7 @@ class FilmSlideshow extends Component {
     clearTimeout(this.timer);
     this.swipeDistance = -eventData.deltaX;
     this.slideRef.current.style.transition = 'none';
-    this.slideRef.current.style.transform = this.getSlidePosition(
-      this.state.slideIndexTarget,
-    );
+    this.slideRef.current.style.transform = this.getSlidePosition(this.state.slideIndexTarget);
     const opacityText = 1 - Math.min(100, Math.abs(this.swipeDistance)) / 100;
     this.slideText.current.style.transition = 'none';
     this.slideText.current.style.opacity = opacityText;
@@ -150,9 +143,7 @@ class FilmSlideshow extends Component {
     const slideshowLength = this.props.slideshow.length;
     if (this.state.slideIndex === -1) {
       this.slideRef.current.style.transition = 'none';
-      this.slideRef.current.style.transform = this.getSlidePosition(
-        slideshowLength - 1,
-      );
+      this.slideRef.current.style.transform = this.getSlidePosition(slideshowLength - 1);
       this.setState({
         slideIndex: slideshowLength - 1,
         slideIndexTarget: slideshowLength - 1,
@@ -216,10 +207,7 @@ class FilmSlideshow extends Component {
 
     return (
       <section>
-        <Swipeable
-          {...classes('')}
-          onSwiped={this.onSwipeEnd}
-          onSwiping={this.onSwipe}>
+        <Swipeable {...classes('')} onSwiped={this.onSwipeEnd} onSwiping={this.onSwipe}>
           <div {...classes('slide-link-wrapper')}>
             <OneColumn>
               <SafeLink
@@ -235,15 +223,11 @@ class FilmSlideshow extends Component {
             </OneColumn>
           </div>
           <NavigationArrow
-            slideIndexTarget={
-              slideIndexTarget > 0 ? slideIndexTarget - 1 : slideshow.length - 1
-            }
+            slideIndexTarget={slideIndexTarget > 0 ? slideIndexTarget - 1 : slideshow.length - 1}
             gotoSlide={this.gotoSlide}
           />
           <NavigationArrow
-            slideIndexTarget={
-              slideIndexTarget < slideshow.length - 1 ? slideIndexTarget + 1 : 0
-            }
+            slideIndexTarget={slideIndexTarget < slideshow.length - 1 ? slideIndexTarget + 1 : 0}
             gotoSlide={this.gotoSlide}
             rightArrow
           />

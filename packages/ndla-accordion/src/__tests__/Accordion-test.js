@@ -24,9 +24,7 @@ const AccordionExample = props => (
               data-testid={`bar-${index}`}>
               Panel {index}
             </AccordionBar>
-            <AccordionPanel
-              {...getPanelProps(index)}
-              data-testid={`panel-${index}`}>
+            <AccordionPanel {...getPanelProps(index)} data-testid={`panel-${index}`}>
               <div>
                 <p>{item}</p>
               </div>
@@ -53,9 +51,7 @@ test('Accordion provided openIndexes are visible', () => {
 });
 
 test('Accordion opens and closes panel on bar click', () => {
-  const { getByTestId, getByLabelText } = render(
-    <AccordionExample openIndexes={[]} />,
-  );
+  const { getByTestId, getByLabelText } = render(<AccordionExample openIndexes={[]} />);
   expect(getByTestId('panel-0')).not.toBeVisible();
 
   fireEvent.click(getByLabelText('Panel 0'));

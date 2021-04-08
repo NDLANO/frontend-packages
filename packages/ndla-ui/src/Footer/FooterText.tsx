@@ -36,6 +36,6 @@ type FooterTextProps = {
   children: React.ReactNode;
 };
 
-export const FooterText: React.FunctionComponent<FooterTextProps> = ({
-  children,
-}) => <StyledFooterText>{children}</StyledFooterText>;
+export const FooterText: React.FunctionComponent<FooterTextProps> = ({ children }) => (
+  <StyledFooterText>{children}</StyledFooterText>
+);

@@ -72,9 +72,7 @@ const ArticleByline = ({
     }
   };
 
-  const renderContributors = (
-    contributors: SupplierProps[] | AuthorProps[],
-  ) => (
+  const renderContributors = (contributors: SupplierProps[] | AuthorProps[]) => (
     <>
       {contributors.map((contributor, index) => {
         let separator = ' ';
@@ -102,18 +100,14 @@ const ArticleByline = ({
       </div>
       {authors && (
         <TextWrapper>
-          {authors.length > 1
-            ? t('article.multipleAuthorsLabel')
-            : t('article.singleAuthorsLabel')}
+          {authors.length > 1 ? t('article.multipleAuthorsLabel') : t('article.singleAuthorsLabel')}
           {renderContributors(authors)}
           <span>{` (${license})`}</span>
         </TextWrapper>
       )}
       {suppliers && (
         <TextWrapper>
-          {suppliers.length > 1
-            ? t('article.multipleSuppliersLabel')
-            : t('article.supplierLabel')}
+          {suppliers.length > 1 ? t('article.multipleSuppliersLabel') : t('article.supplierLabel')}
           {renderContributors(suppliers)}
         </TextWrapper>
       )}

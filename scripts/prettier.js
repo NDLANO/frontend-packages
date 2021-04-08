@@ -8,10 +8,7 @@ const isWindows = process.platform === 'win32';
 const prettier = isWindows ? 'prettier.cmd' : 'prettier';
 const prettierCmd = path.resolve(__dirname, `../node_modules/.bin/${prettier}`);
 
-const args = [].concat(
-  `--${shouldWrite ? 'write' : 'l'}`,
-  '"**/*(*.js|*.jsx|*.md|*.ts|*.tsx)"',
-);
+const args = [].concat(`--${shouldWrite ? 'write' : 'l'}`, '"**/*(*.js|*.jsx|*.md|*.ts|*.tsx)"');
 
 try {
   runCommand(prettierCmd, args, path.resolve(__dirname, '..'));

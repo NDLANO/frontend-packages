@@ -22,10 +22,7 @@ import { ICodeLangugeOption, languageOptions } from '../languages';
 const hightlightWithLineNumbers = (input: string, language: string) =>
   highlight(input, language)
     .split('\n')
-    .map(
-      (line: string, i: number) =>
-        `<span class='editorLineNumber'>${i + 1}</span>${line}`,
-    )
+    .map((line: string, i: number) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
     .join('\n');
 
 type Props = {
@@ -76,12 +73,7 @@ interface CodeContentState {
   format: string;
 }
 
-const CodeBlockEditor: FC<Props & tType> = ({
-  onSave,
-  onAbort,
-  t,
-  content = null,
-}) => {
+const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null }) => {
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState<CodeContentState>({
     code: content ? content.code : '',
@@ -91,9 +83,7 @@ const CodeBlockEditor: FC<Props & tType> = ({
 
   const titleRef = createRef<HTMLInputElement>();
 
-  const handleChangeLanguage = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleChangeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     const selectedLanguage = languageOptions.find(
       (item: ICodeLangugeOption) => item.format === value,
@@ -133,17 +123,11 @@ const CodeBlockEditor: FC<Props & tType> = ({
         </FlexElement>
         <FlexElement>
           <span className="label">{t('codeEditor.titleLabel')}</span>
-          <StyledInput
-            ref={titleRef}
-            type="text"
-            defaultValue={codeContent.title}
-          />
+          <StyledInput ref={titleRef} type="text" defaultValue={codeContent.title} />
         </FlexElement>
         <FlexElement>
           <span className="label">{t('codeEditor.languageSelect')}</span>
-          <StyledSelect
-            onChange={handleChangeLanguage}
-            value={codeContent.format}>
+          <StyledSelect onChange={handleChangeLanguage} value={codeContent.format}>
             {languageOptions.map((item: ICodeLangugeOption) => (
               <option key={`${item.title}`} value={item.format}>
                 {item.title}

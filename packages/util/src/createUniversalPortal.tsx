@@ -19,10 +19,7 @@ const canUseDOM = () =>
     !window.document.hidden
   ); // window.document.hidden === jsdom check
 
-export function createUniversalPortal(
-  children: React.ReactNode,
-  selector: string,
-) {
+export function createUniversalPortal(children: React.ReactNode, selector: string) {
   if (!canUseDOM()) {
     return <div data-react-universal-portal>{children}</div>;
   }

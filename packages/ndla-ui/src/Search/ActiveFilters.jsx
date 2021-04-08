@@ -5,9 +5,7 @@ import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { injectT } from '@ndla/i18n';
-import ActiveFilterContent, {
-  StyledActiveFilterTitle,
-} from './ActiveFilterContent';
+import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
 
 const StyledActiveFilters = styled('ul')`
   margin: 0;
@@ -73,18 +71,14 @@ const StyledActiveFilterWrapper = styled('li')`
 `;
 
 const getFilterLength = filters =>
-  filters.filter(
-    filter => filter.filterName === 'filter_subjects' && filter.title,
-  ).length;
+  filters.filter(filter => filter.filterName === 'filter_subjects' && filter.title).length;
 
 const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, t }) => {
   if (filters && filters.length > 0) {
     const filterLength = getFilterLength(filters);
 
     const filterItems = filters.map(filter => {
-      const filterKey = filter.filterName
-        ? `${filter.filterName}${filter.value}`
-        : filter.value;
+      const filterKey = filter.filterName ? `${filter.filterName}${filter.value}` : filter.value;
 
       return (
         <StyledActiveFilterWrapper key={filterKey}>
@@ -118,9 +112,7 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, t }) => {
     });
 
     return (
-      <StyledActiveFilters
-        showOnSmallScreen={showOnSmallScreen}
-        filterLength={filterLength}>
+      <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
         {filterItems}
       </StyledActiveFilters>
     );

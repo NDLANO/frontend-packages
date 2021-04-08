@@ -35,13 +35,7 @@ class SubjectArchive extends Component {
   }
 
   render() {
-    const {
-      fixedWidth,
-      featuringArticle,
-      messages,
-      sectionHeading,
-      archiveArticles,
-    } = this.props;
+    const { fixedWidth, featuringArticle, messages, sectionHeading, archiveArticles } = this.props;
 
     const archiveId = 'subject-archive';
 
@@ -60,9 +54,7 @@ class SubjectArchive extends Component {
         <div {...classes('media-wrapper')}>{featuringArticle.media}</div>
         <div {...classes('content')}>
           <h1 {...classes('heading')}>
-            <SafeLink to={featuringArticle.url}>
-              {featuringArticle.heading}
-            </SafeLink>
+            <SafeLink to={featuringArticle.url}>{featuringArticle.heading}</SafeLink>
           </h1>
           <p {...classes('description')}>{featuringArticle.description}</p>
         </div>

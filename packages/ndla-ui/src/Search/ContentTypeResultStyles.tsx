@@ -1,14 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import {
-  colors,
-  spacing,
-  fonts,
-  misc,
-  animations,
-  mq,
-  breakpoints,
-} from '@ndla/core';
+import { colors, spacing, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
 
 export const highlightStyle = css`
   background: ${colors.brand.light};

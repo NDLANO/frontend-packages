@@ -47,10 +47,7 @@ class Tabs extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { index } = this.state;
-    if (
-      this.props.selectedIndex !== undefined &&
-      this.props.selectedIndex !== index
-    ) {
+    if (this.props.selectedIndex !== undefined && this.props.selectedIndex !== index) {
       this.setState({ index: this.props.selectedIndex });
     }
   }
@@ -96,9 +93,7 @@ class Tabs extends Component {
             ))}
           </TabList>
           {tabs.map((tab, i) => (
-            <TabPanel
-              {...classes('panel', modifier)}
-              key={tab.key ? tab.key : i}>
+            <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
               {isFunction(tab.content) ? tab.content() : tab.content}
             </TabPanel>
           ))}

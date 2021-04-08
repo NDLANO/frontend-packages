@@ -43,8 +43,7 @@ const initAudioPlayers = (locale: LocaleProps) => {
   forEachElement('[data-audio-text-button-id]', (el: HTMLElement) => {
     const id = el.getAttribute('data-audio-text-button-id');
     if (id) {
-      el.onclick = () =>
-        document?.getElementById(id)?.toggleAttribute('hidden');
+      el.onclick = () => document?.getElementById(id)?.toggleAttribute('hidden');
     }
   });
 };

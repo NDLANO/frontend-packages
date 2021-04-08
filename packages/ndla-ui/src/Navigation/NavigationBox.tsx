@@ -78,9 +78,7 @@ const StyledListElementWrapper = styled.div<additionalResourceProps>`
       position: relative;
       & > * {
         border: 1px dashed
-          ${props.lighter && !props.selected
-            ? `${colors.brand.tertiary}`
-            : `${colors.brand.dark}`};
+          ${props.lighter && !props.selected ? `${colors.brand.tertiary}` : `${colors.brand.dark}`};
         background-clip: padding-box;
         :hover,
         :focus {
@@ -117,9 +115,7 @@ const StyledButtonContentText = styled.span<additionalResourceProps>`
 `;
 const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
   color: ${props =>
-    props.lighter && !props.selected
-      ? `${colors.brand.dark}`
-      : `${colors.white}`};
+    props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`};
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
@@ -128,10 +124,7 @@ const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
   width: 20px;
   height: 20px;
   border: 1px solid
-    ${props =>
-      props.lighter && !props.selected
-        ? `${colors.brand.dark}`
-        : `${colors.white}`};
+    ${props => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
   border-radius: 100px;
   position: absolute;
   left: 7px;
@@ -183,9 +176,7 @@ export const NavigationBox = ({
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
-        {heading && (
-          <StyledHeading invertedStyle={invertedStyle}>{heading}</StyledHeading>
-        )}
+        {heading && <StyledHeading invertedStyle={invertedStyle}>{heading}</StyledHeading>}
         {hasAdditionalResources && (
           <Switch
             id={uuid()}

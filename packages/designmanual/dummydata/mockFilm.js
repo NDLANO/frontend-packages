@@ -263,12 +263,7 @@ export const movies = [
   }),
 ];
 
-export const mockAllMovies = [
-  ...documentaries,
-  ...shortmovies,
-  ...movies,
-  ...tvSeries,
-];
+export const mockAllMovies = [...documentaries, ...shortmovies, ...movies, ...tvSeries];
 
 export const movieTopics = [
   {
@@ -285,14 +280,7 @@ export const movieThemes = [
       nn: 'Eksempel 1',
       en: 'Example 1',
     },
-    movies: [
-      documentaries[0],
-      tvSeries[0],
-      movies[0],
-      movies[1],
-      tvSeries[2],
-      documentaries[2],
-    ],
+    movies: [documentaries[0], tvSeries[0], movies[0], movies[1], tvSeries[2], documentaries[2]],
   },
   {
     id: uuid(),
@@ -323,14 +311,7 @@ export const movieThemes = [
       nn: 'Eksempel 3',
       en: 'Example 3',
     },
-    movies: [
-      movies[6],
-      movies[1],
-      movies[7],
-      documentaries[1],
-      movies[0],
-      tvSeries[2],
-    ],
+    movies: [movies[6], movies[1], movies[7], documentaries[1], movies[0], tvSeries[2]],
   },
 ];
 

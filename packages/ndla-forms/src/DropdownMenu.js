@@ -125,9 +125,7 @@ const DropdownMenu = ({
       )}
       {onCreate && (
         <StyledCreateButton type="button" onClick={onCreate}>
-          {customCreateButtonText
-            ? customCreateButtonText
-            : t('dropdown.create')}
+          {customCreateButtonText ? customCreateButtonText : t('dropdown.create')}
         </StyledCreateButton>
       )}
     </StyledDropDownContainer>
@@ -135,9 +133,7 @@ const DropdownMenu = ({
 };
 
 DropdownMenu.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  ).isRequired,
+  items: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])).isRequired,
   idField: PropTypes.string,
   labelField: PropTypes.string,
   absolute: PropTypes.bool,

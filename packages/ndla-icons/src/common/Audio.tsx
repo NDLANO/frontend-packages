@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const Audio = (props: Props) => (
-  <Icon
-    title="Audio"
-    viewBox="0 0 34 21"
-    data-license="CC-BY 4.0"
-    data-source="Knowit"
-    {...props}>
+  <Icon title="Audio" viewBox="0 0 34 21" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path
         fill="none"

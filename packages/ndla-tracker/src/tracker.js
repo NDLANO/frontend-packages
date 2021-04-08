@@ -24,12 +24,7 @@ function resetDataLayer(googleTagManagerId) {
   }
 }
 
-export const configureTracker = ({
-  listen,
-  debug,
-  gaTrackingId,
-  googleTagManagerId,
-}) => {
+export const configureTracker = ({ listen, debug, gaTrackingId, googleTagManagerId }) => {
   initializeGA(gaTrackingId);
   // Push current page and start listning
   pageViewHistory.push({
@@ -40,9 +35,7 @@ export const configureTracker = ({
 
   listen(location => {
     if (debug) {
-      console.info(
-        `The current URL is ${location.pathname}${location.search}${location.hash}`,
-      );
+      console.info(`The current URL is ${location.pathname}${location.search}${location.hash}`);
     }
 
     pageViewHistory.push({
@@ -54,8 +47,7 @@ export const configureTracker = ({
   });
 };
 
-export const hasCurrentPageBeenTracked = () =>
-  pageViewHistory[pageViewHistory.length - 1].tracked;
+export const hasCurrentPageBeenTracked = () => pageViewHistory[pageViewHistory.length - 1].tracked;
 
 export const sendPageView = ({ title, dimensions }) => {
   const current = pageViewHistory[pageViewHistory.length - 1];

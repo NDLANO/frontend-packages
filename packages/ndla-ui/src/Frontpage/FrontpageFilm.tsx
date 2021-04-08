@@ -77,11 +77,7 @@ type Props = {
   imageUrl: string;
 };
 
-const FrontpageFilm: React.FunctionComponent<Props & tType> = ({
-  url,
-  imageUrl,
-  t,
-}) => (
+const FrontpageFilm: React.FunctionComponent<Props & tType> = ({ url, imageUrl, t }) => (
   <StyledSection>
     <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
     <StyledImage imageUrl={imageUrl}>

@@ -56,17 +56,13 @@ const Structure = ({
   const ignoreFilter =
     isSubject ||
     !subjectFilters[currentPath[0]] ||
-    !subjectFilters[currentPath[0]].some(filter =>
-      activeFilters.includes(filter.id),
-    );
+    !subjectFilters[currentPath[0]].some(filter => activeFilters.includes(filter.id));
   const filteredStructure = useMemo(
     () =>
       structure.filter(
         subjectOrTopic =>
           ignoreFilter ||
-          subjectOrTopic.filters.some(topicFilter =>
-            activeFilters.includes(topicFilter.id),
-          ),
+          subjectOrTopic.filters.some(topicFilter => activeFilters.includes(topicFilter.id)),
       ),
     [structure, activeFilters, ignoreFilter],
   );
@@ -92,24 +88,18 @@ const Structure = ({
               const pathToString = currentPathIds.join('/');
               const parentId = currentPath.slice(-1);
               const isOpen = openedPaths.includes(pathToString);
-              const isNewMainActive =
-                openedPaths.slice(-1).pop() === pathToString;
+              const isNewMainActive = openedPaths.slice(-1).pop() === pathToString;
               const greyedOut = highlightMainActive
                 ? !isNewMainActive && !isMainActive && openedPaths.length > 0
                 : !isOpen && isSubject && openedPaths.length > 0;
-              const isVisible =
-                metadata !== undefined ? metadata.visible : true;
+              const isVisible = metadata !== undefined ? metadata.visible : true;
               return (
                 <StyledStructureItem
                   connectionId={connectionId}
                   key={pathToString}
                   greyedOut={greyedOut}>
                   <ItemNameBar
-                    highlight={
-                      highlightMainActive
-                        ? isNewMainActive
-                        : isOpen && isSubject
-                    }
+                    highlight={highlightMainActive ? isNewMainActive : isOpen && isSubject}
                     isOpen={isOpen}
                     title={name}
                     level={currentPath.length}

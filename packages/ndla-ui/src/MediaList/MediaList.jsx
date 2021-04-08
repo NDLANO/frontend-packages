@@ -98,11 +98,7 @@ export const MediaListItemBody = ({
   return (
     <div {...containerProps}>
       {metaResourceType && (
-        <span
-          rel="dct:type"
-          href={metaResourceType}
-          style={{ display: 'none' }}
-        />
+        <span rel="dct:type" href={metaResourceType} style={{ display: 'none' }} />
       )}
       {title ? <h3 className="c-medialist__title">{title} </h3> : null}
       <LicenseDescription
@@ -123,9 +119,7 @@ MediaListItemBody.propTypes = {
   license: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
   resourceUrl: PropTypes.string,
-  resourceType: PropTypes.oneOf(
-    Object.keys(resourceTypes).map(key => resourceTypes[key]),
-  ),
+  resourceType: PropTypes.oneOf(Object.keys(resourceTypes).map(key => resourceTypes[key])),
   messages: PropTypes.shape({
     modelPremission: PropTypes.string,
   }),
@@ -162,11 +156,7 @@ HandleLink.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const attributionTypes = [
-  metaTypes.author,
-  metaTypes.copyrightHolder,
-  metaTypes.contributor,
-];
+const attributionTypes = [metaTypes.author, metaTypes.copyrightHolder, metaTypes.contributor];
 
 export const MediaListItemMeta = ({ items }) => {
   const attributionItems = items.filter(item =>
@@ -177,14 +167,10 @@ export const MediaListItemMeta = ({ items }) => {
     .join(', ');
 
   return (
-    <ul
-      {...cClasses('actions')}
-      property="cc:attributionName"
-      content={attributionMeta}>
+    <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta}>
       {items.map(item => (
         <li key={uuid()} className="c-medialist__meta-item">
-          {item.label}:{' '}
-          <HandleLink text={item.description}>{item.description}</HandleLink>
+          {item.label}: <HandleLink text={item.description}>{item.description}</HandleLink>
         </li>
       ))}
     </ul>
@@ -195,8 +181,7 @@ const mediaListItemShape = PropTypes.arrayOf(
   PropTypes.shape({
     label: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key]))
-      .isRequired,
+    metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key])).isRequired,
   }),
 );
 

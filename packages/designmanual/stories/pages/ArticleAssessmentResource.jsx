@@ -28,9 +28,7 @@ const { contentTypes } = constants;
 
 const ArticleAssessmentResource = () => (
   <OneColumn cssModifier="narrow">
-    <ArticleWrapper
-      id="mainContentId"
-      modifier={contentTypes.ASSESSMENT_RESOURCES}>
+    <ArticleWrapper id="mainContentId" modifier={contentTypes.ASSESSMENT_RESOURCES}>
       <LayoutItem layout="center">
         <ArticleHeaderWrapper
           competenceGoals={<CompetenceGoalListExample />}
@@ -41,43 +39,38 @@ const ArticleAssessmentResource = () => (
             Portal for vurdering, engelsk fellesfag
           </ArticleTitle>
           <ArticleIntroduction>
-            På disse sidene har vi samlet ressurser som kan støtte elever og
-            lærere i arbeidet med vurdering. Ressursene her kan brukes til
-            egenevaluering av elevene og i dialog mellom elev og lærer.
+            På disse sidene har vi samlet ressurser som kan støtte elever og lærere i arbeidet med
+            vurdering. Ressursene her kan brukes til egenevaluering av elevene og i dialog mellom
+            elev og lærer.
           </ArticleIntroduction>
         </ArticleHeaderWrapper>
       </LayoutItem>
       <LayoutItem layout="center">
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å
-          produsere filmen. Derfor er du avhengig av at noen tenner på idéen din
-          og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
+          Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å bruke
+          ressurser på nettopp dette prosjektet.
         </p>
         <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
+          En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
+          kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
+          potensialet i den.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+          eventuelt jobber sammen med i klassen.
         </p>
-        <FigureImage
-          alt="alt"
-          src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-        />
+        <FigureImage alt="alt" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
         <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell
-          samarbeidspartner eller kunde. I løpet av noen få minutter skal du få
-          andre til å tenne på idéen din og se potensialet i den.
+          En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
+          kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
+          potensialet i den.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-          pitcher, blir idéen og historien i den filmen du planlegger å lage,
-          tydeligere for både deg selv og dem du eventuelt jobber sammen med i
-          klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+          eventuelt jobber sammen med i klassen.
         </p>
         <ArticleBylineExample
           multipleAuthors

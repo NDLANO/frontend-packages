@@ -138,9 +138,7 @@ export const NavigationTopicAbout = ({
         )}
       </StyledH1>
       {isLoading ? (
-        <LoaderText invertedStyle={invertedStyle}>
-          {t('navigation.loadingText')}
-        </LoaderText>
+        <LoaderText invertedStyle={invertedStyle}>{t('navigation.loadingText')}</LoaderText>
       ) : (
         <>
           <StyledIngress invertedStyle={invertedStyle}>
@@ -164,9 +162,7 @@ export const NavigationTopicAbout = ({
             </StyledButtonWrapper>
           </StyledIngress>
           {showContent && (
-            <StyledContentWrapper invertedStyle={invertedStyle}>
-              {children}
-            </StyledContentWrapper>
+            <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>
           )}
         </>
       )}

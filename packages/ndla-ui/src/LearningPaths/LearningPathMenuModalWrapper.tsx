@@ -58,10 +58,7 @@ const ModalWrapperComponent: React.FC<ModalWrapperProps & tType> = ({
         {(closeModal: VoidFunction) => (
           <>
             <ModalHeader>
-              <ModalCloseButton
-                title={t('modal.closeModal')}
-                onClick={closeModal}
-              />
+              <ModalCloseButton title={t('modal.closeModal')} onClick={closeModal} />
             </ModalHeader>
             <ModalBody>{children(closeModal)}</ModalBody>
           </>

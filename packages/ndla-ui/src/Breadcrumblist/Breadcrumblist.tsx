@@ -200,13 +200,7 @@ type BreadcrumbItemProps = {
   id: string | number;
   label: string;
   url: string;
-  typename?:
-    | 'Subjecttype'
-    | 'Subject'
-    | 'Topic'
-    | 'Subtopic'
-    | 'SubSubtopic'
-    | 'Home';
+  typename?: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic' | 'SubSubtopic' | 'Home';
   isCurrent?: boolean | false;
   icon?: React.ReactNode;
 };
@@ -283,23 +277,12 @@ const Breadcrumblist = ({
         isVisible={isVisible}>
         {items.length > 0 && (
           <>
-            <Heading invertedStyle={invertedStyle}>
-              {t('breadcrumb.youAreHere')}
-            </Heading>
+            <Heading invertedStyle={invertedStyle}>{t('breadcrumb.youAreHere')}</Heading>
             <List data-testid="breadcrumb-list">
               {items.map((item: BreadcrumbItemProps) => {
-                const {
-                  id,
-                  label,
-                  url,
-                  typename,
-                  icon,
-                  isCurrent = false,
-                } = item;
+                const { id, label, url, typename, icon, isCurrent = false } = item;
                 return (
-                  <ListItem
-                    invertedStyle={invertedStyle}
-                    key={`${id}-${typename}`}>
+                  <ListItem invertedStyle={invertedStyle} key={`${id}-${typename}`}>
                     {isCurrent && <Dot invertedStyle={invertedStyle} />}
                     <SafeLink
                       className="linkitem"
@@ -308,9 +291,7 @@ const Breadcrumblist = ({
                         onNav && onNav(e, item);
                       }}
                       aria-label={label}>
-                      <IconWrapper
-                        invertedStyle={invertedStyle}
-                        isCurrent={isCurrent}>
+                      <IconWrapper invertedStyle={invertedStyle} isCurrent={isCurrent}>
                         {icon && icon}
                         {typename && TypeIcon(typename)}
                       </IconWrapper>

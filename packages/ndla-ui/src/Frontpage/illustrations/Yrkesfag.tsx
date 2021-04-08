@@ -15,12 +15,7 @@ const Illustration: React.FunctionComponent = () => (
     viewBox="0 0 90 90"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg">
-    <g
-      id="Artboard"
-      stroke="none"
-      strokeWidth="1"
-      fill="none"
-      fillRule="evenodd">
+    <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <path
         d="M40.3344969,28.2189361 C40.3344969,28.2189361 35.0859962,32.25877 35.5799727,35.1104175 C36.1356964,37.9620651 39.408291,40.0413913 41.3841971,36.5362413 C41.8781736,35.6451014 42.248656,34.6351429 42.4338972,33.6845937 C43.113115,30.7141276 42.3721501,27.8624802 40.3344969,28.2189361 Z"
         id="Path"

@@ -18,9 +18,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 function pagerTest({ setup, expected }) {
   test(`component/LinkPager page ${setup.page}/${setup.lastPage}`, () => {
-    const steps = shallow(
-      <Pager pathname="somepath" query={{}} {...setup} />,
-    ).children();
+    const steps = shallow(<Pager pathname="somepath" query={{}} {...setup} />).children();
 
     const prev = setup.page - 1;
     const next = setup.page + 1;

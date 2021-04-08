@@ -19,13 +19,7 @@ interface Props {
   marginRight?: boolean;
 }
 
-const LicenseByline: FC<Props> = ({
-  children,
-  licenseRights,
-  locale,
-  color,
-  marginRight,
-}) => {
+const LicenseByline: FC<Props> = ({ children, licenseRights, locale, color, marginRight }) => {
   return (
     <StyledLicenseByline>
       <LicenseIconList

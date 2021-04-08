@@ -20,14 +20,12 @@ const messages = {
 };
 
 test('@ndla/i18n/formatMessage message with matching ID', () => {
-  expect(formatMessage(locale, messages, getMessageFormat, 'helloworld')).toBe(
-    'Hello world',
-  );
+  expect(formatMessage(locale, messages, getMessageFormat, 'helloworld')).toBe('Hello world');
 });
 test('@ndla/i18n/formatMessage message without matching ID', () => {
-  expect(
-    formatMessage(locale, messages, getMessageFormat, 'does.not.exists'),
-  ).toBe('does.not.exists');
+  expect(formatMessage(locale, messages, getMessageFormat, 'does.not.exists')).toBe(
+    'does.not.exists',
+  );
 });
 test('@ndla/i18n/formatMessage matching message with value', () => {
   expect(

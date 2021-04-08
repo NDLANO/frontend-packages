@@ -62,8 +62,7 @@ const loadArticle = async articleId => {
       copyright: { license: licenseObj, creators, rightsholders, processors },
     } = article;
 
-    const license = getLicenseByAbbreviation(licenseObj.license, 'nb')
-      .abbreviation;
+    const license = getLicenseByAbbreviation(licenseObj.license, 'nb').abbreviation;
 
     let authors = creators;
     if (Array.isArray(authors) && authors.length === 0) {
@@ -86,9 +85,7 @@ const loadArticle = async articleId => {
           <ArticleContent content={articleContent} />
         </LayoutItem>
         <LayoutItem layout="full">
-          {footNotes && footNotes.length > 0 && (
-            <ArticleFootNotes footNotes={footNotes} />
-          )}
+          {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
         </LayoutItem>
         <ArticleByline
           licenseBox={<LicenseBox />}
@@ -147,13 +144,9 @@ const SubjectPage = ({
   subjectAboutDescription,
   t,
 }) => {
-  const [selectedMainTopic, setSelectedMainTopic] = useState(
-    preSelectedMainTopic,
-  );
+  const [selectedMainTopic, setSelectedMainTopic] = useState(preSelectedMainTopic);
   const [selectedSubTopic, setSelectedSubTopic] = useState(preSelectedSubTopic);
-  const [selectedSubSubTopic, setSelectedSubSubTopic] = useState(
-    preSelectedSubSubTopic,
-  );
+  const [selectedSubSubTopic, setSelectedSubSubTopic] = useState(preSelectedSubSubTopic);
 
   const [topicData, setTopicData] = useState(null);
   const [subTopicData, setSubTopicData] = useState(null);
@@ -188,10 +181,7 @@ const SubjectPage = ({
 
   const [subSubTopics, setSubSubTopics] = useState(() => {
     if (preSelectedSubSubTopic) {
-      const { selectedItem } = prepareTopicData(
-        topicsData,
-        preSelectedMainTopic,
-      );
+      const { selectedItem } = prepareTopicData(topicsData, preSelectedMainTopic);
       if (selectedItem) {
         const subTopics = selectedItem.subTopics;
         if (subTopics && subTopics.length) {
@@ -202,10 +192,7 @@ const SubjectPage = ({
           if (selectedSubItem) {
             const subSubTopics = selectedSubItem.subTopics;
             if (subSubTopics && subSubTopics.length) {
-              const {
-                items,
-                selectedItem: selectedSubSubItem,
-              } = prepareTopicData(
+              const { items, selectedItem: selectedSubSubItem } = prepareTopicData(
                 subSubTopics,
                 preSelectedSubSubTopic,
                 setSubSubTopicData,
@@ -224,10 +211,7 @@ const SubjectPage = ({
   const [showSubTopicContent, setShowSubTopicContent] = useState(null);
   const [showSubSubTopicContent, setShowSubSubTopicContent] = useState(null);
 
-  const [
-    showSubTopicAdditionalTopics,
-    setShowSubTopicAdditionalTopics,
-  ] = useState(false);
+  const [showSubTopicAdditionalTopics, setShowSubTopicAdditionalTopics] = useState(false);
 
   const [currentLevel, setCurrentLevel] = useState(() => {
     if (preSelectedSubSubTopic) {
@@ -281,11 +265,7 @@ const SubjectPage = ({
   }
 
   const updateMainContent = () => {
-    const { items, selectedItem } = prepareTopicData(
-      topicsData,
-      selectedMainTopic,
-      setTopicData,
-    );
+    const { items, selectedItem } = prepareTopicData(topicsData, selectedMainTopic, setTopicData);
     setMainTopics(items);
     setTopicData(selectedItem);
     if (selectedItem && selectedItem.subTopics) {
@@ -294,11 +274,7 @@ const SubjectPage = ({
   };
 
   const updateSubContent = topicsData => {
-    const { items, selectedItem } = prepareTopicData(
-      topicsData,
-      selectedSubTopic,
-      setSubTopicData,
-    );
+    const { items, selectedItem } = prepareTopicData(topicsData, selectedSubTopic, setSubTopicData);
 
     setSubTopics(items);
     setSubTopicData(selectedItem);
@@ -327,22 +303,13 @@ const SubjectPage = ({
       case 'Subject':
         break;
       case 'Topic':
-        scrollTo =
-          mainTopicRef.current.getBoundingClientRect().bottom +
-          window.scrollY -
-          55;
+        scrollTo = mainTopicRef.current.getBoundingClientRect().bottom + window.scrollY - 55;
         break;
       case 'Subtopic':
-        scrollTo =
-          subTopicRef.current.getBoundingClientRect().bottom +
-          window.scrollY -
-          55;
+        scrollTo = subTopicRef.current.getBoundingClientRect().bottom + window.scrollY - 55;
         break;
       case 'SubSubtopic':
-        scrollTo =
-          subSubTopicRef.current.getBoundingClientRect().bottom +
-          window.scrollY -
-          55;
+        scrollTo = subSubTopicRef.current.getBoundingClientRect().bottom + window.scrollY - 55;
         break;
       default: // do nothing, redirect??
     }
@@ -447,9 +414,7 @@ const SubjectPage = ({
   const showBreadCrumb = entry && entry.isIntersecting;
   useEffect(() => {
     // eslint-disable-next-line no-console
-    console.log(
-      `The component is ${showBreadCrumb ? 'visible' : 'not visible'}.`,
-    );
+    console.log(`The component is ${showBreadCrumb ? 'visible' : 'not visible'}.`);
   }, [showBreadCrumb]);
 
   return (
@@ -466,9 +431,7 @@ const SubjectPage = ({
                 <NavigationTopicAbout
                   heading={topicData.label}
                   ingress={topicData.introduction}
-                  onToggleShowContent={() =>
-                    setShowMainTopicContent(!showMainTopicContent)
-                  }
+                  onToggleShowContent={() => setShowMainTopicContent(!showMainTopicContent)}
                   showContent={showMainTopicContent}
                   isAdditionalTopic={topicData.isAdditionalResource}
                   isLoading={topicData.loadingContent}>
@@ -480,24 +443,17 @@ const SubjectPage = ({
                     <NavigationBox
                       colorMode="light"
                       heading={t('navigation.topics')}
-                      hasAdditionalResources={subTopics.some(
-                        item => item.isAdditionalResource,
-                      )}
+                      hasAdditionalResources={subTopics.some(item => item.isAdditionalResource)}
                       showAdditionalResources={showSubTopicAdditionalTopics}
                       items={getSubTopics()}
                       onToggleAdditionalResources={() =>
-                        setShowSubTopicAdditionalTopics(
-                          !showSubTopicAdditionalTopics,
-                        )
+                        setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)
                       }
                       onClick={onClickSubTopic}
                     />
                   ) : null}
                   {currentLevel === 'Topic' && (
-                    <Resources
-                      title={topicData.label}
-                      showActiveResource={false}
-                    />
+                    <Resources title={topicData.label} showActiveResource={false} />
                   )}
                 </div>
                 {subTopicData && (
@@ -505,9 +461,7 @@ const SubjectPage = ({
                     <NavigationTopicAbout
                       heading={subTopicData.label}
                       ingress={subTopicData.introduction}
-                      onToggleShowContent={() =>
-                        setShowSubTopicContent(!showSubTopicContent)
-                      }
+                      onToggleShowContent={() => setShowSubTopicContent(!showSubTopicContent)}
                       showContent={showSubTopicContent}
                       isAdditionalTopic={subTopicData.isAdditionalResource}
                       isLoading={subTopicData.loadingContent}>
@@ -528,18 +482,13 @@ const SubjectPage = ({
                           showAdditionalResources={showSubTopicAdditionalTopics}
                           items={subSubTopics}
                           onToggleAdditionalResources={() =>
-                            setShowSubTopicAdditionalTopics(
-                              !showSubTopicAdditionalTopics,
-                            )
+                            setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)
                           }
                           onClick={onClickSubSubTopic}
                         />
                       ) : null}
                       {currentLevel === 'Subtopic' && (
-                        <Resources
-                          title={subTopicData.label}
-                          showActiveResource={false}
-                        />
+                        <Resources title={subTopicData.label} showActiveResource={false} />
                       )}
                     </>
                   )}
@@ -549,18 +498,13 @@ const SubjectPage = ({
                     <NavigationTopicAbout
                       heading={subSubTopicData.label}
                       ingress={subSubTopicData.introduction}
-                      onToggleShowContent={() =>
-                        setShowSubSubTopicContent(!showSubSubTopicContent)
-                      }
+                      onToggleShowContent={() => setShowSubSubTopicContent(!showSubSubTopicContent)}
                       showContent={showSubSubTopicContent}
                       isAdditionalTopic={subSubTopicData.isAdditionalResource}
                       isLoading={subSubTopicData.loadingContent}>
                       {subSubTopicData.content}
                     </NavigationTopicAbout>
-                    <Resources
-                      title={subSubTopicData.label}
-                      showActiveResource={false}
-                    />
+                    <Resources title={subSubTopicData.label} showActiveResource={false} />
                   </>
                 )}
               </>
@@ -569,15 +513,10 @@ const SubjectPage = ({
         </OneColumn>
       </div>
       {bannerBackground && (
-        <SubjectBanner
-          image={bannerBackground}
-          negativeTopMargin={moveBannerUp}
-        />
+        <SubjectBanner image={bannerBackground} negativeTopMargin={moveBannerUp} />
       )}
       {subjectAboutHeading && (
-        <OneColumn wide>
-          {subjectAbout(subjectAboutHeading, subjectAboutDescription)}
-        </OneColumn>
+        <OneColumn wide>{subjectAbout(subjectAboutHeading, subjectAboutDescription)}</OneColumn>
       )}
       {subjectContentCards && (
         <SubjectCarousel
@@ -588,11 +527,7 @@ const SubjectPage = ({
         />
       )}
       <OneColumn wide>
-        <Breadcrumblist
-          isVisible={showBreadCrumb}
-          items={breadcrumbItems}
-          onNav={handleNav}
-        />
+        <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />
       </OneColumn>
     </>
   );

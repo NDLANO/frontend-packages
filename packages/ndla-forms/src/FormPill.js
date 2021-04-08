@@ -13,8 +13,7 @@ import { Cross } from '@ndla/icons/action';
 import { colors, fonts, spacing, misc } from '@ndla/core';
 
 const StyledPill = styled.div`
-  padding: ${spacing.spacingUnit / 8}px 0 ${spacing.spacingUnit / 8}px
-    ${spacing.spacingUnit / 4}px;
+  padding: ${spacing.spacingUnit / 8}px 0 ${spacing.spacingUnit / 8}px ${spacing.spacingUnit / 4}px;
   button {
     padding: ${spacing.xsmall} ${spacing.small};
     margin: 0;

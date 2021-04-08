@@ -25,9 +25,7 @@ const StyledMovieTags = styled.span`
 const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
   const resources = {};
   movieResourceTypes.forEach(movieResourceType => {
-    const resource = resourceTypes.find(
-      resourceType => resourceType.id === movieResourceType.id,
-    );
+    const resource = resourceTypes.find(resourceType => resourceType.id === movieResourceType.id);
     if (resource) {
       resources[resource.name] = true;
     }

@@ -36,8 +36,7 @@ const ContentWrapper = styled.div`
     width: ${spacing.large};
     height: ${spacing.large};
     color: ${colors.brand.tertiary};
-    transition: transform 300ms cubic-bezier(0.2, 1.44, 0.53, 1),
-      color 200ms ease;
+    transition: transform 300ms cubic-bezier(0.2, 1.44, 0.53, 1), color 200ms ease;
   }
 `;
 
@@ -171,8 +170,7 @@ class UploadDropZone extends Component {
 
   componentDidMount() {
     // update size of input.
-    const dropZoneWidth =
-      this.dropZoneRef.current.getBoundingClientRect().width - 6;
+    const dropZoneWidth = this.dropZoneRef.current.getBoundingClientRect().width - 6;
     this.inputRef.current.style.width = `${dropZoneWidth}px`;
   }
 
@@ -229,15 +227,7 @@ class UploadDropZone extends Component {
   }
 
   render() {
-    const {
-      name,
-      allowedFiles,
-      multiple,
-      useIcon,
-      children,
-      ariaLabel,
-      loading,
-    } = this.props;
+    const { name, allowedFiles, multiple, useIcon, children, ariaLabel, loading } = this.props;
     const { dropAllowed, draggedOver, errorMessage } = this.state;
     return (
       <Fragment>

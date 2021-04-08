@@ -37,18 +37,13 @@ type Props = {
   subjectCategories: subjectsProps['categories'];
 };
 
-const FrontpageProgramMenu = ({
-  programItems,
-  subjectCategories,
-  t,
-}: Props & tType) => {
+const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tType) => {
   const [showSubjects, setShowSubjects] = useState(false);
   const isWindowContext = typeof window !== 'undefined';
 
   useEffect(() => {
     if (isWindowContext) {
-      const rememberSubjects =
-        window.localStorage.getItem('frontpageShowSubjects') || '';
+      const rememberSubjects = window.localStorage.getItem('frontpageShowSubjects') || '';
       setShowSubjects(rememberSubjects.localeCompare('true') === 0);
     }
   }, [isWindowContext]);
@@ -82,11 +77,7 @@ const FrontpageProgramMenu = ({
       {showSubjects ? (
         <FrontpageAllSubjects categories={subjectCategories} />
       ) : (
-        <NavigationBox
-          colorMode="lighterGrey"
-          items={programItems}
-          listDirection="vertical"
-        />
+        <NavigationBox colorMode="lighterGrey" items={programItems} listDirection="vertical" />
       )}
     </StyledWrapper>
   );

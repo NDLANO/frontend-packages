@@ -28,8 +28,7 @@ const ResourceGroup = ({
   contentType,
   invertedStyle,
 }) => (
-  <section
-    {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
+  <section {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
     <header {...classes('header', { invertedStyle })}>
       <ResourcesTitle>{title}</ResourcesTitle>
     </header>

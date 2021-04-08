@@ -9,8 +9,7 @@ const SwitchExample = () => {
     <>
       <StoryIntro title="Switch button">
         <p>
-          Brukes istedet for checkbox når man ser endringen med engang og det
-          kun er on/off state
+          Brukes istedet for checkbox når man ser endringen med engang og det kun er on/off state
         </p>
       </StoryIntro>
       <StoryBody>

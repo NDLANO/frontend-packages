@@ -19,8 +19,7 @@ const resources = [
     introduction:
       'Statistikk er et fantastisk verktøy for å forstå verden, men det kan også misbrukes. Her kan du lære hvordan du unngår å bli lurt av statistikk og dårlig forskning.',
     image: 'https://api.ndla.no/image-api/raw/BagNsXHq.jpg?width=600',
-    imageAlt:
-      'Mann blir målt og observert. Omgitt av ulike diagrammer. Illustrasjon.',
+    imageAlt: 'Mann blir målt og observert. Omgitt av ulike diagrammer. Illustrasjon.',
     filters: ['urn:filter:1e3b4fd0-3245-42b5-8685-db02c5592acc'],
     url: '#',
   },

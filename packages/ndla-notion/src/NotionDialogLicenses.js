@@ -26,13 +26,7 @@ const NotionDialogLicensesWrapper = styled.div`
   }
 `;
 
-const NotionDialogLicenses = ({
-  license,
-  authors,
-  source,
-  locale,
-  licenseBox,
-}) => {
+const NotionDialogLicenses = ({ license, authors, source, locale, licenseBox }) => {
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
   const authorsLength = authors.length;
   const wrapLink = source => {

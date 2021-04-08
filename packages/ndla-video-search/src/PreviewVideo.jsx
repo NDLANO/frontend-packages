@@ -20,10 +20,7 @@ const classes = new BEMHelper({
 export default function PreviewVideo({ onVideoPreview, children }) {
   return (
     <div {...classes()}>
-      <Button
-        {...classes('close')}
-        stripped
-        onClick={() => onVideoPreview(undefined)}>
+      <Button {...classes('close')} stripped onClick={() => onVideoPreview(undefined)}>
         <Cross />
       </Button>
       {children}

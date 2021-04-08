@@ -30,10 +30,7 @@ const items = [
 ];
 
 export const BreadcrumbDefault = ({ onlySubject = false, invertedStyle }) => (
-  <Breadcrumb
-    items={onlySubject ? items.slice(0, 2) : items}
-    invertedStyle={invertedStyle}
-  />
+  <Breadcrumb items={onlySubject ? items.slice(0, 2) : items} invertedStyle={invertedStyle} />
 );
 
 BreadcrumbDefault.propTypes = {
@@ -42,6 +39,4 @@ BreadcrumbDefault.propTypes = {
 
 export default BreadcrumbDefault;
 
-export const BreadcrumbBlock = () => (
-  <BreadcrumbBlockUI items={items} toTopic={() => '#'} />
-);
+export const BreadcrumbBlock = () => <BreadcrumbBlockUI items={items} toTopic={() => '#'} />;

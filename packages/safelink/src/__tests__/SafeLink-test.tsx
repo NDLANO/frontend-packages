@@ -25,19 +25,14 @@ test('SafeLink renderers Link correctly if router context is present', () => {
 
   expect(component.toJSON()).toMatchSnapshot();
   // @ts-ignore
-  expect(component.toJSON()!.children![0].props.onClick).toBeInstanceOf(
-    Function,
-  );
+  expect(component.toJSON()!.children![0].props.onClick).toBeInstanceOf(Function);
 });
 
 test('SafeLink defaults to normal link if to prop is an external link', () => {
   const component = renderer.create(
     <StaticRouter location="foo" context={{}}>
       <div>
-        <Safelink to="https://example.com">
-          Snapshot should not contain onClick
-        </Safelink>
-        ,
+        <Safelink to="https://example.com">Snapshot should not contain onClick</Safelink>,
       </div>
     </StaticRouter>,
   );
@@ -51,10 +46,7 @@ test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
   const component = renderer.create(
     <StaticRouter location="foo" context={{}}>
       <div>
-        <Safelink to="/nb/node/54">
-          Snapshot should not contain onClick
-        </Safelink>
-        ,
+        <Safelink to="/nb/node/54">Snapshot should not contain onClick</Safelink>,
       </div>
     </StaticRouter>,
   );

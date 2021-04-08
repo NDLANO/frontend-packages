@@ -32,9 +32,7 @@ const SelectWrapper = styled.select`
   }
 `;
 
-const Select = ({ children, ...rest }) => (
-  <SelectWrapper {...rest}>{children}</SelectWrapper>
-);
+const Select = ({ children, ...rest }) => <SelectWrapper {...rest}>{children}</SelectWrapper>;
 
 Select.propTypes = {
   children: PropTypes.node,

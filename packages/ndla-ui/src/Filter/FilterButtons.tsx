@@ -153,10 +153,7 @@ export const FilterButtons = ({
               <>
                 <ModalHeader modifier={['left-align']}>
                   <h1>{heading}</h1>
-                  <ModalCloseButton
-                    title={t('modal.closeModal')}
-                    onClick={onClose}
-                  />
+                  <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
                 </ModalHeader>
                 <ModalBody modifier="slide-in-left">
                   <StyledList>
@@ -208,9 +205,7 @@ export const FilterButtons = ({
           <StyledRemoveWrapper>
             {hasSelectedFilters && (
               <Button onClick={onRemoveAllFilters} link>
-                <ButtonRemoveText>
-                  {t(`filterButtons.removeAllFilters`)}
-                </ButtonRemoveText>
+                <ButtonRemoveText>{t(`filterButtons.removeAllFilters`)}</ButtonRemoveText>
               </Button>
             )}
           </StyledRemoveWrapper>

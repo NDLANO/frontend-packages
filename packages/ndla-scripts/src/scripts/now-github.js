@@ -123,14 +123,7 @@ async function spawnAlias(sha, deployUrl) {
 }
 
 async function spawnDeploy(sha) {
-  const cliArgs = [
-    '--token',
-    nowToken,
-    '--no-clipboard',
-    '--regions',
-    'bru1',
-    ...providedArgs,
-  ];
+  const cliArgs = ['--token', nowToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
   safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
   try {
     const result = await spawn('now', cliArgs);

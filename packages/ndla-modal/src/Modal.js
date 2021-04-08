@@ -70,9 +70,7 @@ const Modal = ({
 
   const modalButton =
     activateButton &&
-    (wrapperFunctionForButton
-      ? wrapperFunctionForButton(clonedComponent)
-      : clonedComponent);
+    (wrapperFunctionForButton ? wrapperFunctionForButton(clonedComponent) : clonedComponent);
 
   return (
     <>
@@ -104,21 +102,8 @@ Modal.propTypes = {
   onClick: PropTypes.func,
   onClose: PropTypes.func,
   animation: PropTypes.oneOf(['slide-up', 'slide-down', 'zoom-in', 'subtle']),
-  size: PropTypes.oneOf([
-    'regular',
-    'medium',
-    'large',
-    'fullscreen',
-    'full-width',
-    'custom',
-  ]),
-  backgroundColor: PropTypes.oneOf([
-    'white',
-    'grey',
-    'grey-dark',
-    'blue',
-    'light-gradient',
-  ]),
+  size: PropTypes.oneOf(['regular', 'medium', 'large', 'fullscreen', 'full-width', 'custom']),
+  backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue', 'light-gradient']),
   animationDuration: PropTypes.number,
   activateButton: (props, propName, componentName) => {
     if (
@@ -127,8 +112,7 @@ Modal.propTypes = {
       !React.isValidElement(props[propName])
     ) {
       return new Error(
-        `Invalid prop \`${propName}\` supplied to` +
-          ` \`${componentName}\`. Validation failed.`,
+        `Invalid prop \`${propName}\` supplied to` + ` \`${componentName}\`. Validation failed.`,
       );
     }
     return null;

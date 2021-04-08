@@ -69,11 +69,7 @@ class BannerList extends Component {
                 images={[
                   {
                     url: banner.desktop,
-                    types: [
-                      breakpoints.desktop,
-                      breakpoints.tablet,
-                      breakpoints.wide,
-                    ],
+                    types: [breakpoints.desktop, breakpoints.tablet, breakpoints.wide],
                   },
                   { url: banner.mobile, types: [breakpoints.mobile] },
                 ]}
@@ -88,9 +84,7 @@ class BannerList extends Component {
                   }
                   onClick={() => {
                     copyTextToClipboard(
-                      `${window.location.origin}${addLeadingSlash(
-                        banner.mobile,
-                      )}`,
+                      `${window.location.origin}${addLeadingSlash(banner.mobile)}`,
                       this.buttonContainer,
                     );
                   }}
@@ -110,9 +104,7 @@ class BannerList extends Component {
                   }
                   onClick={() => {
                     copyTextToClipboard(
-                      `${window.location.origin}${addLeadingSlash(
-                        banner.desktop,
-                      )}`,
+                      `${window.location.origin}${addLeadingSlash(banner.desktop)}`,
                       this.buttonContainer,
                     );
                   }}

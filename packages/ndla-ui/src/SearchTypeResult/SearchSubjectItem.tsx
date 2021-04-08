@@ -65,9 +65,7 @@ const SearchSubjectItem = ({ item, t }: Props & tType) => {
       <ItemWrapper backgroundImage={img ? img.url : ''}>
         <ItemTitle>{title}</ItemTitle>
         <ItemText>
-          <SafeLink to={url}>
-            {t('searchPage.resultType.toSubjectPageLabel')}
-          </SafeLink>
+          <SafeLink to={url}>{t('searchPage.resultType.toSubjectPageLabel')}</SafeLink>
         </ItemText>
       </ItemWrapper>
     </>

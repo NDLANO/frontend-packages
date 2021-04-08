@@ -37,11 +37,7 @@ export const SearchResult = ({
         <div {...resultClasses()}>
           {author || (
             <div {...resultClasses('heading-wrapper')}>
-              <h1
-                {...resultClasses(
-                  'heading',
-                  currentCompetenceGoal ? 'competence-goal' : null,
-                )}>
+              <h1 {...resultClasses('heading', currentCompetenceGoal ? 'competence-goal' : null)}>
                 {messages.searchStringLabel} <span>{searchString}</span>
               </h1>
               {competenceGoalsOpen && (
@@ -75,9 +71,7 @@ export const SearchResult = ({
           {!competenceGoalsOpen && (
             <Fragment>
               <FilterTabs
-                dropdownBtnLabel={t(
-                  'searchPage.searchPageMessages.dropdownBtnLabel',
-                )}
+                dropdownBtnLabel={t('searchPage.searchPageMessages.dropdownBtnLabel')}
                 value={currentTab}
                 options={tabOptions}
                 contentId="search-result-content"
@@ -149,12 +143,7 @@ const searchResultItemShape = PropTypes.shape({
   contentTypeLabel: PropTypes.string.isRequired,
 });
 
-export const SearchResultItem = ({
-  item,
-  subjectsLabel,
-  additionalContentToolip,
-  children,
-}) => {
+export const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip, children }) => {
   const itemBreadcrumb = (item, cssClasses = {}) => {
     if (item.breadcrumb?.length > 0) {
       return (
@@ -186,21 +175,13 @@ export const SearchResultItem = ({
               <SafeLink to={item.url}>{item.title}</SafeLink>
             )}
           </h1>
-          <div {...searchResultItemClasses('content-type-wrapper')}>
-            {item.contentTypeIcon}
-          </div>
+          <div {...searchResultItemClasses('content-type-wrapper')}>{item.contentTypeIcon}</div>
           {item.contentTypeLabel && (
-            <div {...searchResultItemClasses('pills')}>
-              {item.contentTypeLabel}
-            </div>
+            <div {...searchResultItemClasses('pills')}>{item.contentTypeLabel}</div>
           )}
-          {item.type && (
-            <div {...searchResultItemClasses('pills')}>{item.type}</div>
-          )}
+          {item.type && <div {...searchResultItemClasses('pills')}>{item.type}</div>}
           {item.additional && (
-            <div {...searchResultItemClasses('pills')}>
-              {additionalContentToolip}
-            </div>
+            <div {...searchResultItemClasses('pills')}>{additionalContentToolip}</div>
           )}
           {children}
         </header>
@@ -242,11 +223,7 @@ SearchResultItem.propTypes = {
   subjectsLabel: PropTypes.string.isRequired,
 };
 
-export const SearchResultList = ({
-  results,
-  component: Component,
-  loading,
-}) => {
+export const SearchResultList = ({ results, component: Component, loading }) => {
   if (loading) {
     return <Spinner />;
   }
@@ -259,9 +236,7 @@ export const SearchResultList = ({
         results.length === 0 ? (
           <article className="c-search-result-list__empty">
             <h1>{t('searchPage.searchResultListMessages.noResultHeading')}</h1>
-            <p>
-              {t('searchPage.searchResultListMessages.noResultDescription')}
-            </p>
+            <p>{t('searchPage.searchResultListMessages.noResultDescription')}</p>
           </article>
         ) : (
           <ul className="c-search-result-list">
@@ -272,9 +247,7 @@ export const SearchResultList = ({
                 }`}
                 item={item}
                 additionalContentToolip={t('resource.tooltipAdditionalTopic')}
-                subjectsLabel={t(
-                  'searchPage.searchResultListMessages.subjectsLabel',
-                )}>
+                subjectsLabel={t('searchPage.searchResultListMessages.subjectsLabel')}>
                 {item.children}
               </Component>
             ))}

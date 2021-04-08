@@ -106,9 +106,7 @@ class ArticleHeaderWrapper extends Component {
           },
         })
       ) : (
-        <CompetenceGoalsDialog
-          onClose={this.closeDialog}
-          isOpen={this.state.isOpen}>
+        <CompetenceGoalsDialog onClose={this.closeDialog} isOpen={this.state.isOpen}>
           {competenceGoals}
         </CompetenceGoalsDialog>
       );
@@ -125,8 +123,7 @@ class ArticleHeaderWrapper extends Component {
                     <CompetenceBadgeText>{type}</CompetenceBadgeText>
                   </CompetenceBadge>
                 ))}
-              <CompetenceButtonWrapper
-                addSpace={competenceGoalTypes && competenceGoalTypes.length}>
+              <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length}>
                 <OpenButton onClick={this.openDialog}>
                   <FooterHeaderIcon />
                   <CompetenceBadgeText>

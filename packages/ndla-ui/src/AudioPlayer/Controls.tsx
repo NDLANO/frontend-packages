@@ -8,13 +8,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuPopover,
-  MenuItems,
-} from '@reach/menu-button';
+import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems } from '@reach/menu-button';
 import {
   SliderInput,
   SliderTrack,
@@ -317,8 +311,7 @@ const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   const currentSeconds = seconds % 60;
 
-  const formattedSeconds =
-    currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
+  const formattedSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
   return `${minutes}:${formattedSeconds}`;
 };
 
@@ -371,10 +364,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
       audioElement.addEventListener('ended', handleTimeEnded);
       return () => {
         audioElement.removeEventListener('timeupdate', handleTimeUpdate);
-        audioElement.removeEventListener(
-          'loadedmetadata',
-          handleLoadedMetaData,
-        );
+        audioElement.removeEventListener('loadedmetadata', handleLoadedMetaData);
         audioElement.removeEventListener('ended', handleTimeEnded);
       };
     }
@@ -418,11 +408,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
     <>
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <ControlsWrapper>
-        <PlayButton
-          type="button"
-          onClick={togglePlay}
-          title="play"
-          aria-label="play">
+        <PlayButton type="button" onClick={togglePlay} title="play" aria-label="play">
           <span aria-hidden>
             {playing ? (
               <Pause role="img" aria-label="pause" title="play" />

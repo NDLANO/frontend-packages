@@ -6,8 +6,7 @@ import Markdown from './components/Markdown';
 export const stories = {
   Paragraph: {
     title: 'Paragraf',
-    lead:
-      'Dette lager en ny seksjon i teksten. Det skiller seg fra et hard linjeskrift..',
+    lead: 'Dette lager en ny seksjon i teksten. Det skiller seg fra et hard linjeskrift..',
   },
   FactASide: {
     title: 'Faktaboks',
@@ -27,13 +26,11 @@ export const stories = {
   },
   BodyBox: {
     title: 'Tekst i ramme',
-    lead:
-      'Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat',
+    lead: 'Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat',
     body: [
       {
         type: 'text',
-        content:
-          'Teksten bør være kortfattet og ikke ha mer enn omtrent 100 ord eller 500 tegn.',
+        content: 'Teksten bør være kortfattet og ikke ha mer enn omtrent 100 ord eller 500 tegn.',
       },
     ],
   },
@@ -132,8 +129,7 @@ export const stories = {
   },
   RelatedArticle: {
     title: 'RelatedArticle',
-    lead:
-      'Denne funksjonen lar deg lar deg vise og lenke til relaterte artikler.',
+    lead: 'Denne funksjonen lar deg lar deg vise og lenke til relaterte artikler.',
     body: [
       {
         type: 'text',
@@ -165,8 +161,7 @@ export const stories = {
     body: [
       {
         type: 'text',
-        content:
-          'Vi skal også ivareta alle rettigheter til åndsverk. For mer informasjon se:',
+        content: 'Vi skal også ivareta alle rettigheter til åndsverk. For mer informasjon se:',
       },
       {
         type: 'link',
@@ -215,8 +210,7 @@ export const stories = {
   },
   TaxonomySubjectConnections: {
     title: 'Emnetilknytninger',
-    lead:
-      'For at en ressurs skal bli tilgjengelig i meny må den tilknyttes et (eller flere) emne.',
+    lead: 'For at en ressurs skal bli tilgjengelig i meny må den tilknyttes et (eller flere) emne.',
   },
   TaxonomyTopicConnections: {
     title: 'Emneplassering',

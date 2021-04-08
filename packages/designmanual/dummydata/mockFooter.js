@@ -5,13 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import {
-  EmailOutline,
-  Facebook,
-  Twitter,
-  Share,
-  Youtube,
-} from '@ndla/icons/common';
+import { EmailOutline, Facebook, Twitter, Share, Youtube } from '@ndla/icons/common';
 import React from 'react';
 
 export const mockFooterLinks = [

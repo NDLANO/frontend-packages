@@ -13,9 +13,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ShortcutItem = ({
-  shortcut: { id, tooltip, contentType, url, count },
-}) => (
+const ShortcutItem = ({ shortcut: { id, tooltip, contentType, url, count } }) => (
   <Trans>
     {({ t }) => (
       <Tooltip

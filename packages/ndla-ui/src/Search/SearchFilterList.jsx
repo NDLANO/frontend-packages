@@ -72,11 +72,7 @@ const SearchFilterList = ({
                   labelNotVisible
                   values={subjectValues[option.value]}
                   onChange={(subjectFilters, subjectFilter) =>
-                    onSubfilterChange(
-                      option.value,
-                      subjectFilters,
-                      subjectFilter,
-                    )
+                    onSubfilterChange(option.value, subjectFilters, subjectFilter)
                   }
                   alignedGroup
                   noFilterSelectedLabel={noFilterSelectedLabel}

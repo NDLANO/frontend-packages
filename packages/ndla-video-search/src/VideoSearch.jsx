@@ -161,14 +161,7 @@ class VideoSearch extends React.Component {
   render() {
     const { translations, locale, enabledSources } = this.props;
 
-    const {
-      queryObject,
-      lastPage,
-      videos,
-      selectedVideo,
-      selectedType,
-      searching,
-    } = this.state;
+    const { queryObject, lastPage, videos, selectedVideo, selectedType, searching } = this.state;
 
     const { query, page } = queryObject;
 
@@ -184,13 +177,7 @@ class VideoSearch extends React.Component {
           />
         );
       }
-      return (
-        <Pager
-          page={page || 1}
-          lastPage={lastPage}
-          onClick={this.changeQueryPage}
-        />
-      );
+      return <Pager page={page || 1} lastPage={lastPage} onClick={this.changeQueryPage} />;
     };
 
     const searchListTabs = enabledSources.map(source => ({

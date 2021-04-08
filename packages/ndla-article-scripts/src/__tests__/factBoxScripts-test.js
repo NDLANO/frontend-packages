@@ -1,9 +1,6 @@
 /* eslint-env jest */
 
-import {
-  addFactBoxClickListener,
-  removeFactBoxClickListener,
-} from '../factBoxScripts';
+import { addFactBoxClickListener, removeFactBoxClickListener } from '../factBoxScripts';
 
 const byId = id => document.getElementById(id);
 

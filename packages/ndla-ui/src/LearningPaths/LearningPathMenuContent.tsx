@@ -10,14 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
-import {
-  colors,
-  spacing,
-  fonts,
-  mq,
-  breakpoints,
-  animations,
-} from '@ndla/core';
+import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { LearningPathRead } from '@ndla/icons/contentType';
@@ -50,8 +43,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       ${fonts.sizes(14, 1.2)};
       color: ${colors.brand.primary};
       ${mq.range({ from: breakpoints.tablet })} {
-        color: ${({ invertedStyle }) =>
-          invertedStyle ? '#fff' : colors.brand.primary};
+        color: ${({ invertedStyle }) => (invertedStyle ? '#fff' : colors.brand.primary)};
         font-weight: ${fonts.weight.semibold};
       }
     }
@@ -250,11 +242,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
   const getContentTypeBadge = (type?: string) => {
     if (!type) {
       return (
-        <ContentTypeBadge
-          type={constants.contentTypes.LEARNING_PATH}
-          background
-          size="small"
-        />
+        <ContentTypeBadge type={constants.contentTypes.LEARNING_PATH} background size="small" />
       );
     }
     return <ContentTypeBadge type={type} background size="small" />;
@@ -270,9 +258,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
             isOpen={isOpen}
             invertedStyle={invertedStyle}
             indexNumber={index}>
-            <SafeLink
-              onClick={onStepNavigate}
-              to={toLearningPathUrl(learningPathId, id)}>
+            <SafeLink onClick={onStepNavigate} to={toLearningPathUrl(learningPathId, id)}>
               <StyledContentType>
                 {getContentTypeBadge(type)}
                 {hasRead(id, cookies) && (

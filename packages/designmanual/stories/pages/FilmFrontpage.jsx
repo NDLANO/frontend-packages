@@ -159,9 +159,7 @@ class FilmFrontpage extends Component {
 
     const resourceTypeName =
       resourceTypeSelected &&
-      resourceTypes.find(
-        resourceType => resourceType.id === resourceTypeSelected,
-      );
+      resourceTypes.find(resourceType => resourceType.id === resourceTypeSelected);
 
     return (
       <div
@@ -190,10 +188,7 @@ class FilmFrontpage extends Component {
             this.renderMovieGrid({ resourceTypeName })
           )}
         </div>
-        <AboutNdlaFilm
-          aboutNDLAVideo={aboutNDLAVideo}
-          moreAboutNdlaFilm={moreAboutNdlaFilm}
-        />
+        <AboutNdlaFilm aboutNDLAVideo={aboutNDLAVideo} moreAboutNdlaFilm={moreAboutNdlaFilm} />
       </div>
     );
   }

@@ -13,11 +13,7 @@ import { injectT } from '@ndla/i18n';
 import { ArticleSideBar } from '@ndla/ui';
 import ArticleLoader from '../article/ArticleLoader';
 
-const MultidisciplinarySubjectArticle = ({
-  articleId = '22220',
-  subjects = [],
-  t,
-}) => {
+const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [], t }) => {
   const [article, setArticle] = useState(null);
   const [resourcesRef, setResourcesRef] = useState(null);
   const subjectsLinks = [];
@@ -82,10 +78,7 @@ const MultidisciplinarySubjectArticle = ({
               linkToResources="#"
             />
           </Breadcrumblist>
-          <MultidisciplinarySubjectHeader
-            subjects={subjects}
-            subjectsLinks={subjectsLinks}
-          />
+          <MultidisciplinarySubjectHeader subjects={subjects} subjectsLinks={subjectsLinks} />
         </>
       )}
       <ArticleLoader

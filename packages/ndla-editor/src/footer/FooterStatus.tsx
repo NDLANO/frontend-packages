@@ -43,8 +43,7 @@ const buttonStyle = css`
   color: ${colors.brand.primary};
   border: 0;
   ${fonts.sizes(18, 1.25)};
-  padding: ${spacing.small} ${spacing.small} ${spacing.small}
-    ${spacing.spacingUnit * 0.75}px;
+  padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.spacingUnit * 0.75}px;
   margin-right: ${spacing.normal};
   border-radius: ${misc.borderRadius};
   transition: background-color 200ms ease;

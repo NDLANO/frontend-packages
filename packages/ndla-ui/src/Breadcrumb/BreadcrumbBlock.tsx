@@ -23,11 +23,7 @@ interface Props {
   items: BreadcrumbItemI[];
 }
 
-const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({
-  children,
-  items,
-  t,
-}) => {
+const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({ children, items, t }) => {
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);
   // No idiomatic way of dealing with sets of refs yet
@@ -55,10 +51,7 @@ const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({
   }, [size]);
 
   return (
-    <nav
-      {...classes('')}
-      ref={containerRef}
-      aria-label={t('breadcrumb.breadcrumb')}>
+    <nav {...classes('')} ref={containerRef} aria-label={t('breadcrumb.breadcrumb')}>
       {children}
       <ol {...classes('list')} ref={olRef}>
         {items.map((item, i) => (

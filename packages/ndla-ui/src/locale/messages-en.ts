@@ -31,8 +31,7 @@ const messages = {
   askNDLA: 'Ask NDLA',
   articlePage: {
     errorDescription: 'Sorry, an error occurred while loading the resource.',
-    error404Description:
-      "Sorry, we can't locate the resource you are looking for.",
+    error404Description: "Sorry, we can't locate the resource you are looking for.",
   },
   notFoundPage: {
     title: 'Page not found',
@@ -51,8 +50,7 @@ const messages = {
     close: 'Close',
     abilities: 'Abilities',
     search: 'Search',
-    searchFieldPlaceholder:
-      'Search for subjects, tasks and activities or learningpaths',
+    searchFieldPlaceholder: 'Search for subjects, tasks and activities or learningpaths',
     searchFieldPlaceholderShort: 'Search',
     label: {
       content: 'Content:',
@@ -175,8 +173,7 @@ const messages = {
     errorDescription: 'Sorry, an error occurd while loading the subjects.',
   },
   topicPage: {
-    articleErrorDescription:
-      'Sorry, an error occurd while loading the topic description.',
+    articleErrorDescription: 'Sorry, an error occurd while loading the topic description.',
     topic: 'TOPIC',
     topics: 'Topics',
   },
@@ -189,8 +186,7 @@ const messages = {
     highlighted: 'Highlighted',
     heading: {
       heading: 'The Norwegian Digital Learning Arena',
-      searchFieldPlaceholder:
-        'Search for topics, learning materials, keywords ...',
+      searchFieldPlaceholder: 'Search for topics, learning materials, keywords ...',
       messages: {
         searchFieldTitle: 'Search',
         menuButton: 'Content',
@@ -252,8 +248,7 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Show more learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
-          'Show more external learning resources',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show more external learning resources',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
@@ -261,8 +256,7 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'Show less learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
-          'Show less external learning resources',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show less external learning resources',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
@@ -270,8 +264,7 @@ const messages = {
         [contentTypes.LEARNING_PATH]: 'No learningpaths',
         [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'No source materials',
-        [contentTypes.EXTERNAL_LEARNING_RESOURCES]:
-          'No external learning resources',
+        [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'No external learning resources',
       },
     },
   },
@@ -279,8 +272,7 @@ const messages = {
     altText: 'The Norwegian Digital Learning Arena',
   },
   resource: {
-    errorDescription:
-      'Sorry, an error occurred while loading the topic resources.',
+    errorDescription: 'Sorry, an error occurred while loading the topic resources.',
     error: 'Sorry, a part of the content could not be shown.',
     noCoreResourcesAvailableUnspecific: 'There is no core content available.',
     noCoreResourcesAvailable: 'There is no core content available for {name}.',
@@ -289,8 +281,7 @@ const messages = {
     label: 'Learning content',
     shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
-    tooltipAdditionalTopic:
-      'Additional content is a subject that is not on the curriculum',
+    tooltipAdditionalTopic: 'Additional content is a subject that is not on the curriculum',
     additionalTooltip: 'Additional content is not on the curriculum',
     shortcutsTooltip: 'Show {count} articles in this subject',
     dialogTooltip: 'What is core content and additional content?',
@@ -339,8 +330,7 @@ const messages = {
     useCompentenceGoalsFilter: 'Use filter',
     closeCompentenceGoalsFilter: 'Close filter',
     competenceGoalsNarrowBackButton: 'Go back',
-    competenceGoalResourceSearchText:
-      'Search all resources appropriate to this goal',
+    competenceGoalResourceSearchText: 'Search all resources appropriate to this goal',
     competenceGoalShowExtra: 'Show',
     competenceGoalCloseExtra: 'Hide',
     competenceCoreLabel: 'Core element',
@@ -383,8 +373,7 @@ const messages = {
     },
     images: {
       heading: 'How to use images from the article',
-      description:
-        'Remember to copy the text to be attached to the image where you use it.',
+      description: 'Remember to copy the text to be attached to the image where you use it.',
       rules: 'Rules for use of image:',
       itemImage: {
         ariaLabel: 'Open image in new window',
@@ -402,14 +391,12 @@ const messages = {
     },
     audio: {
       heading: 'How to use audio files from the article',
-      description:
-        'Remember to copy the text to be attached to the audio where you use it.',
+      description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
     },
     video: {
       heading: 'How to use videos from the article',
-      description:
-        'Remember to copy the text to be attached to the video where you use it.',
+      description: 'Remember to copy the text to be attached to the video where you use it.',
       rules: 'Rules for use of audio file:',
       itemImage: {
         ariaLabel: 'Open video in new window',
@@ -417,29 +404,25 @@ const messages = {
     },
     other: {
       heading: 'How to use other content from the article',
-      description:
-        'You will find guidelines for use of other content in the asset',
+      description: 'You will find guidelines for use of other content in the asset',
       itemImage: {
         ariaLabel: 'Open video in new window',
       },
     },
     h5p: {
       heading: 'How to use H5P content from the article',
-      description:
-        'You will find guidelines for use of H5P content in the asset',
+      description: 'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5P:',
     },
     concept: {
       heading: 'How to use concept content from the article',
-      description:
-        'You will find guidelines for use of concept content in the asset',
+      description: 'You will find guidelines for use of concept content in the asset',
       rules: 'Rules for use of concept:',
       title: 'Title',
     },
     files: {
       heading: 'How to use files from the article',
-      description:
-        'Remember to copy the text to be attached to the file where you use it.',
+      description: 'Remember to copy the text to be attached to the file where you use it.',
       rules: 'Rules for use of file:',
       itemImage: {
         ariaLabel: 'Open video in new window',
@@ -552,8 +535,7 @@ const messages = {
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
-    en:
-      'Not all pages are available in English. These will be shown in Norwegian',
+    en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
     toFrontpage: 'NDLA frontpage',
@@ -668,8 +650,7 @@ const messages = {
         'A film tells stories in ways that engage and touch us. In film, some of the most effective visuals are used; moving images and sound. A good film can show sides of the present and give visions of the future or comment on the past. Therefore, films can often give us a better understanding of events, cultural meetings and history than a text.',
       fifthParagraph:
         'By watching films, the students are better equipped to read the film language, so that the film gets a value beyond the purely entertaining. The general part of the curriculum emphasizes that the students should meet art and cultural forms that stimulate, inspire their own creativity, and promote ethical orientation ability and aesthetic sense.',
-      tipSectionPt1:
-        'Please give tips, ask questions or wish for new movies at our',
+      tipSectionPt1: 'Please give tips, ask questions or wish for new movies at our',
       tipSectionPt2: 'Facebook page.',
       ariaLabel: 'Visit NDLA-films Facebook page',
       tipSectionPt3: '',
@@ -677,8 +658,7 @@ const messages = {
     },
   },
   learningPath: {
-    createLearningPathText:
-      'Create your own, copy this or see more learningpaths?',
+    createLearningPathText: 'Create your own, copy this or see more learningpaths?',
     createLearningPathButtonText: 'Go to learningpaths',
     lastUpdated: 'Last updated',
     youAreInALearningPath: 'You are now in a learningpath',
@@ -689,8 +669,7 @@ const messages = {
     readTimeMinutesShort: 'min',
     lastStep: {
       heading: 'Last step of this learningpath',
-      headingSmall:
-        'You are now in the last step of the learningpath {learningPathName}',
+      headingSmall: 'You are now in the last step of the learningpath {learningPathName}',
       topicHeading: 'Go to topic:',
       subjectHeading: 'Go to subject:',
     },
@@ -708,8 +687,7 @@ const messages = {
   blogPosts: {
     blog1: {
       text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink:
-        'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',
@@ -804,8 +782,7 @@ const messages = {
   video: {
     download: 'Download video',
     reuse: 'Use video',
-    error:
-      'Sorry, an error occurred while loading the video or metadata about the video.',
+    error: 'Sorry, an error occurred while loading the video or metadata about the video.',
   },
   concept: {
     showDescription: 'Show concept description',

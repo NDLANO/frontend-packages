@@ -35,9 +35,7 @@ if (process.env.NODE_ENV === 'development') {
     .add('Innholdlaster', () => (
       <div>
         <StoryIntro title="Innholdlaster">
-          <p>
-            Placeholder som kan brukes inntil et bilde/video/artikkel er lastet.
-          </p>
+          <p>Placeholder som kan brukes inntil et bilde/video/artikkel er lastet.</p>
         </StoryIntro>
         <StoryBody>
           <h2>Bilde/Video eksempel</h2>

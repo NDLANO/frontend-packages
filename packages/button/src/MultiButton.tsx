@@ -28,11 +28,9 @@ type SpacerProps = {
 };
 
 const Spacer = styled.div<SpacerProps>`
-  background-color: ${props =>
-    props.outline && !props.disabled ? colors.brand.primary : 'white'};
+  background-color: ${props => (props.outline && !props.disabled ? colors.brand.primary : 'white')};
   width: 1px;
-  border-top: 2px solid
-    ${props => (props.disabled ? colors.background.dark : colors.brand.primary)};
+  border-top: 2px solid ${props => (props.disabled ? colors.background.dark : colors.brand.primary)};
   border-bottom: 2px solid
     ${props => (props.disabled ? colors.background.dark : colors.brand.primary)};
 `;
@@ -112,8 +110,7 @@ const ButtonItem = styled.button<StyledButtonProps>`
 `;
 const MenuItem = styled.li<StyledButtonProps>`
   margin: 0;
-  border-bottom: 1px solid
-    ${props => (props.outline ? colors.brand.primary : `white`)};
+  border-bottom: 1px solid ${props => (props.outline ? colors.brand.primary : `white`)};
   line-height: normal;
   border-radius: 0;
   &:first-of-type {
@@ -214,9 +211,7 @@ export const MultiButton = ({
               escapeDeactivates: true,
             }}>
             <div>
-              <Button
-                {...clippedButtonAttachmentOutline}
-                onClick={() => setPopupState(!isOpen)}>
+              <Button {...clippedButtonAttachmentOutline} onClick={() => setPopupState(!isOpen)}>
                 <StyledIcon rotate={isOpen ? 180 : 0} />
               </Button>
               {isOpen && (

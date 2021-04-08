@@ -1,34 +1,16 @@
 import React from 'react';
 import { uuid } from '@ndla/util';
-import {
-  getLicenseRightByAbbreviation,
-  getLicenseByAbbreviation,
-} from '@ndla/licenses';
+import { getLicenseRightByAbbreviation, getLicenseByAbbreviation } from '@ndla/licenses';
 import { storiesOf } from '@storybook/react';
 import { LanguageSelectorNonMessages } from './LanguageWrapper';
 import { StoryIntro, StoryBody } from './wrappers';
 
-const licenseRightAbbreviations = [
-  'by',
-  'sa',
-  'nc',
-  'nd',
-  'pd',
-  'cc0',
-  'cc',
-  'copyrighted',
-];
+const licenseRightAbbreviations = ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copyrighted'];
 
 const licensesRights = {
-  nb: licenseRightAbbreviations.map(license =>
-    getLicenseRightByAbbreviation(license, 'nb'),
-  ),
-  nn: licenseRightAbbreviations.map(license =>
-    getLicenseRightByAbbreviation(license, 'nn'),
-  ),
-  en: licenseRightAbbreviations.map(license =>
-    getLicenseRightByAbbreviation(license, 'en'),
-  ),
+  nb: licenseRightAbbreviations.map(license => getLicenseRightByAbbreviation(license, 'nb')),
+  nn: licenseRightAbbreviations.map(license => getLicenseRightByAbbreviation(license, 'nn')),
+  en: licenseRightAbbreviations.map(license => getLicenseRightByAbbreviation(license, 'en')),
 };
 
 const licenseAbbreviations = [

@@ -10,10 +10,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { MultidisciplinarySubject } from '@ndla/ui';
-import {
-  filters,
-  getResources,
-} from '../../dummydata/mockMultidisciplinarySubject';
+import { filters, getResources } from '../../dummydata/mockMultidisciplinarySubject';
 
 const getFilters = selectedFilters =>
   filters.map(filter => {
@@ -35,9 +32,7 @@ const getItems = selectedFilters => {
   );
 };
 
-const MultidisciplinarySubjectPage = ({
-  selectedFilters: selectedFiltersProps = [],
-}) => {
+const MultidisciplinarySubjectPage = ({ selectedFilters: selectedFiltersProps = [] }) => {
   const [selectedFilters, setSelectedFilters] = useState(selectedFiltersProps);
 
   const onFilterClick = id => {

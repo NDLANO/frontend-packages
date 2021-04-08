@@ -10,15 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import {
-  colors,
-  spacing,
-  misc,
-  fonts,
-  animations,
-  breakpoints,
-  mq,
-} from '@ndla/core';
+import { colors, spacing, misc, fonts, animations, breakpoints, mq } from '@ndla/core';
 
 export const strippedStyle = css`
   transition: background-color none;
@@ -517,8 +509,7 @@ export const Button = ({
   const clippedButtonLarge = clippedButton && large;
   const clippedButtonOutlineLarge = clippedButtonOutline && large;
   const clippedButtonAttachmentLarge = clippedButtonAttachment && large;
-  const clippedButtonAttachmentOutlineLarge =
-    clippedButtonAttachmentOutline && large;
+  const clippedButtonAttachmentOutlineLarge = clippedButtonAttachmentOutline && large;
   const modifiers = {
     link,
     large,
@@ -550,11 +541,7 @@ export const Button = ({
 
   const buttonProps = { ...rest, outline };
   return (
-    <StyledButton
-      type={type}
-      appearance={styledAppearance}
-      disabled={isDisabled}
-      {...buttonProps}>
+    <StyledButton type={type} appearance={styledAppearance} disabled={isDisabled} {...buttonProps}>
       {children}
     </StyledButton>
   );

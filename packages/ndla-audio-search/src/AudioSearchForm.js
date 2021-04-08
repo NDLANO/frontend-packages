@@ -60,10 +60,7 @@ class AudioSearchForm extends Component {
           value={this.state.queryObject.query}
           placeholder={translations.searchPlaceholder}
         />
-        <Button
-          {...classes('form-button')}
-          onClick={this.handleSubmit}
-          loading={searching}>
+        <Button {...classes('form-button')} onClick={this.handleSubmit} loading={searching}>
           {translations.searchButtonTitle}
         </Button>
       </div>

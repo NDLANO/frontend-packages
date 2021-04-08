@@ -92,20 +92,14 @@ type letterCategories = {
   items: subjectProps[];
 };
 
-const sortAlphabetically = (
-  subjects: subjectProps[],
-  locale: string = 'nb',
-) => {
-  const subjectsSorted = subjects.sort((a, b) =>
-    a.name.localeCompare(b.name, locale),
-  );
+const sortAlphabetically = (subjects: subjectProps[], locale: string = 'nb') => {
+  const subjectsSorted = subjects.sort((a, b) => a.name.localeCompare(b.name, locale));
   const subjectsLetterCategories: letterCategories[] = [];
   let previousLetter = '';
   let letterItems: subjectProps[] = [];
   subjectsSorted.forEach((subject: subjectProps) => {
     const currentLetter = subject.name.substr(0, 1);
-    const isNewLetter =
-      currentLetter.localeCompare(previousLetter, locale) === 1;
+    const isNewLetter = currentLetter.localeCompare(previousLetter, locale) === 1;
     if (isNewLetter && letterItems.length) {
       subjectsLetterCategories.push({
         letter: previousLetter,

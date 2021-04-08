@@ -148,9 +148,7 @@ class SubtopicLinkList extends Component {
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
     const hasContentTypeResults =
-      lastOpen &&
-      topic.contentTypeResults &&
-      topic.contentTypeResults.length > 0;
+      lastOpen && topic.contentTypeResults && topic.contentTypeResults.length > 0;
 
     const someResourcesAreAdditional =
       hasContentTypeResults &&
@@ -167,10 +165,7 @@ class SubtopicLinkList extends Component {
         <button type="button" {...classes('back-button')} onClick={onGoBack}>
           <Back /> <span>{backLabel}</span>
         </button>
-        <SafeLink
-          {...classes('link', ['big'])}
-          onClick={closeMenu}
-          to={toTopic(topic.id)}>
+        <SafeLink {...classes('link', ['big'])} onClick={closeMenu} to={toTopic(topic.id)}>
           <span {...classes('link-wrapper')}>
             <span {...classes('link-label')}>{t('masthead.menu.goTo')}:</span>
             <span {...classes('link-target')}>
@@ -199,9 +194,7 @@ class SubtopicLinkList extends Component {
         {hasContentTypeResults && (
           <StyledAside>
             <HeaderWrapper>
-              <StyledHeader>
-                {t('masthead.menu.learningResourcesHeading')}
-              </StyledHeader>
+              <StyledHeader>{t('masthead.menu.learningResourcesHeading')}</StyledHeader>
               {someResourcesAreAdditional && (
                 <Switch
                   id="showAdditionalId"
@@ -220,9 +213,7 @@ class SubtopicLinkList extends Component {
                 key={result.title}
                 contentTypeResult={result}
                 messages={{
-                  noHit: t(
-                    `masthead.menu.contentTypeResultsNoHit.${result.contentType}`,
-                  ),
+                  noHit: t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
                 }}
                 showAdditionalResources={showAdditionalResources}
                 inMenu

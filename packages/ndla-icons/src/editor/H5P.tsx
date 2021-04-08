@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const H5P = (props: Props) => (
-  <Icon
-    title="H5P"
-    viewBox="0 0 31 15"
-    data-license="CC-BY 4.0"
-    data-source="Knowit"
-    {...props}>
+  <Icon title="H5P" viewBox="0 0 31 15" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path
         fillRule="evenodd"

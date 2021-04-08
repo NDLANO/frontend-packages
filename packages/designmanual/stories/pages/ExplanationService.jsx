@@ -97,13 +97,9 @@ const ExplanationService = ({ t }) => {
   const [filters, setFilters] = useState([]);
   const [subjectFilter, setSubjectFilter] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState([]);
-  const [categoryFilterData, setCategoryFilterData] = useState(
-    availableCategories(),
-  );
+  const [categoryFilterData, setCategoryFilterData] = useState(availableCategories());
   const [categoryFilterOpen, setCategoryFilterOpen] = useState(false);
-  const [categoryFilterSearchValue, setCategoryFilterSearchValue] = useState(
-    '',
-  );
+  const [categoryFilterSearchValue, setCategoryFilterSearchValue] = useState('');
 
   const setDetailedItemHandler = item => {
     setDetailedItem(item);
@@ -168,9 +164,7 @@ const ExplanationService = ({ t }) => {
   };
 
   const removeCategoryFilter = value => {
-    const filteredCategories = categoryFilter.filter(
-      item => item.title !== value,
-    );
+    const filteredCategories = categoryFilter.filter(item => item.title !== value);
     setCategoryFilter(filteredCategories);
   };
 
@@ -188,18 +182,15 @@ const ExplanationService = ({ t }) => {
         item.category &&
         item.category.some(itemCategory => {
           return categoryFilter.some(
-            categoryFilterItem =>
-              categoryFilterItem.value === itemCategory.value,
+            categoryFilterItem => categoryFilterItem.value === itemCategory.value,
           );
         });
       if (hasValue) {
         if (item.subCategory) {
           item.subCategory.forEach(categoryItem => {
-            const exists = filtersBySelectedCategory.subCategory.some(
-              element => {
-                return element.value === categoryItem.value;
-              },
-            );
+            const exists = filtersBySelectedCategory.subCategory.some(element => {
+              return element.value === categoryItem.value;
+            });
             if (!exists) {
               filtersBySelectedCategory.subCategory.push(categoryItem);
             }
@@ -207,11 +198,9 @@ const ExplanationService = ({ t }) => {
         }
         if (item.subCategory2) {
           item.subCategory2.forEach(categoryItem => {
-            const exists = filtersBySelectedCategory.subCategory2.some(
-              element => {
-                return element.value === categoryItem.value;
-              },
-            );
+            const exists = filtersBySelectedCategory.subCategory2.some(element => {
+              return element.value === categoryItem.value;
+            });
             if (!exists) {
               filtersBySelectedCategory.subCategory2.push(categoryItem);
             }
@@ -245,14 +234,10 @@ const ExplanationService = ({ t }) => {
         const hasItems = items.some(item => {
           let hasValue = false;
           if (item.subCategory) {
-            hasValue = item.subCategory.some(
-              category => category.value === optionValue,
-            );
+            hasValue = item.subCategory.some(category => category.value === optionValue);
           }
           if (!hasValue && item.subCategory2) {
-            hasValue = item.subCategory2.some(
-              category => category.value === optionValue,
-            );
+            hasValue = item.subCategory2.some(category => category.value === optionValue);
           }
           return hasValue;
         });
@@ -274,9 +259,7 @@ const ExplanationService = ({ t }) => {
       filteredItems = filteredItems.filter(item => {
         if (item.subject) {
           return subjectFilter.some(subject => {
-            return item.subject.some(
-              itemSubject => itemSubject.value === subject,
-            );
+            return item.subject.some(itemSubject => itemSubject.value === subject);
           });
         }
         return false;
@@ -288,9 +271,7 @@ const ExplanationService = ({ t }) => {
       filteredItems = filteredItems.filter(item => {
         if (item.category) {
           return categoryFilter.some(category => {
-            return item.category.some(
-              itemCategory => itemCategory.value === category.value,
-            );
+            return item.category.some(itemCategory => itemCategory.value === category.value);
           });
         }
         return false;
@@ -303,15 +284,11 @@ const ExplanationService = ({ t }) => {
         return filters.every(category => {
           let hasValue = false;
           if (item.subCategory) {
-            hasValue = item.subCategory.some(
-              itemCategory => itemCategory.value === category,
-            );
+            hasValue = item.subCategory.some(itemCategory => itemCategory.value === category);
           }
 
           if (!hasValue && item.subCategory2) {
-            hasValue = item.subCategory2.some(
-              itemCategory => itemCategory.value === category,
-            );
+            hasValue = item.subCategory2.some(itemCategory => itemCategory.value === category);
           }
           return hasValue;
         });
@@ -336,10 +313,7 @@ const ExplanationService = ({ t }) => {
         closeCallback={() => setDetailedItemHandler(null)}>
         <NotionDialogContent>
           {detailedItem.image ? (
-            <NotionDialogImage
-              src={detailedItem.image}
-              alt={detailedItem.description}
-            />
+            <NotionDialogImage src={detailedItem.image} alt={detailedItem.description} />
           ) : null}
           <NotionDialogText>{detailedItem.longDescription}</NotionDialogText>
         </NotionDialogContent>
@@ -353,9 +327,7 @@ const ExplanationService = ({ t }) => {
           source={detailedItem.source}
           authors={detailedItem.authors}
           licenseBox={
-            <Modal
-              activateButton={<Button link>{t('article.useContent')}</Button>}
-              size="medium">
+            <Modal activateButton={<Button link>{t('article.useContent')}</Button>} size="medium">
               {onClose => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">

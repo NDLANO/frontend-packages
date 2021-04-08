@@ -349,17 +349,13 @@ const na: LicenseType = {
     userFriendlyTitle: '',
     url: '',
     linkText: 'N/A',
-    description:
-      'This mark is intended for content that does not require a license.',
+    description: 'This mark is intended for content that does not require a license.',
   },
   rights: [NA],
   abbreviation: NA.toUpperCase(),
 };
 
-function licenseByLocale(
-  license: LicenseType,
-  locale: Locale | string | undefined,
-) {
+function licenseByLocale(license: LicenseType, locale: Locale | string | undefined) {
   const surelyLocale = getLocaleOrDefault(locale, 'nb');
   const texts = license[surelyLocale];
 
@@ -430,10 +426,7 @@ export function getLicenseByAbbreviation(
   }
 }
 
-export function getLicenseByNBTitle(
-  title: string,
-  locale: Locale | string | undefined,
-) {
+export function getLicenseByNBTitle(title: string, locale: Locale | string | undefined) {
   switch (title.replace(/\s/g, '').toLowerCase()) {
     case 'navngivelse-ikkekommersiell-ingenbearbeidelser':
       return getLicenseByAbbreviation('by-nc-nd', locale);

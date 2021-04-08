@@ -55,6 +55,4 @@ watcher
     removeBuildFile(file, 'lib');
   });
 
-process.stdout.write(
-  `${chalk.red('-> ') + chalk.cyan('Watching for changes...')}\n`,
-);
+process.stdout.write(`${chalk.red('-> ') + chalk.cyan('Watching for changes...')}\n`);

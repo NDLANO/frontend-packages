@@ -11,13 +11,10 @@
 import { getCookie, isValidCookie } from '../index';
 
 const testCookieKey = 'COOKIE_KEY';
-const dummyCookies =
-  'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true};';
+const dummyCookies = 'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true};';
 
 test('test getCookie ', () => {
-  expect(getCookie(testCookieKey, dummyCookies)).toBe(
-    '{"1":true,"2":true,"3":true}',
-  );
+  expect(getCookie(testCookieKey, dummyCookies)).toBe('{"1":true,"2":true,"3":true}');
 });
 
 test('test getCookie new', () => {

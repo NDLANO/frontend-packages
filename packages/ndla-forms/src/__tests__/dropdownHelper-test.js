@@ -25,13 +25,7 @@ test('checkIfItemIsSelected is true with objects & multiselect', () => {
   const selectedItems = [dropdownItem, dropdownItem2];
   const multiselect = true;
   expect(
-    checkIfItemIsSelected(
-      dropdownItem,
-      selectedItem,
-      selectedItems,
-      multiselect,
-      'anIdField',
-    ),
+    checkIfItemIsSelected(dropdownItem, selectedItem, selectedItems, multiselect, 'anIdField'),
   ).toBe(true);
 });
 
@@ -40,13 +34,7 @@ test('checkIfItemIsSelected is false with objects & multiselect', () => {
   const selectedItems = [dropdownItem2];
   const multiselect = true;
   expect(
-    checkIfItemIsSelected(
-      dropdownItem,
-      selectedItem,
-      selectedItems,
-      multiselect,
-      'anIdField',
-    ),
+    checkIfItemIsSelected(dropdownItem, selectedItem, selectedItems, multiselect, 'anIdField'),
   ).toBe(false);
 });
 
@@ -55,13 +43,7 @@ test('checkIfItemIsSelected is true with strings & multiselect', () => {
   const selectedItems = ['String 1', 'String 2', 'String 3'];
   const multiselect = true;
   expect(
-    checkIfItemIsSelected(
-      'String 2',
-      selectedItem,
-      selectedItems,
-      multiselect,
-      undefined,
-    ),
+    checkIfItemIsSelected('String 2', selectedItem, selectedItems, multiselect, undefined),
   ).toBe(true);
 });
 
@@ -85,13 +67,7 @@ test('checkIfItemIsSelected is true with strings & multiselect false', () => {
   const selectedItems = ['String 1', 'String 2', 'String 3'];
   const multiselect = false;
   expect(
-    checkIfItemIsSelected(
-      'String 2',
-      selectedItem,
-      selectedItems,
-      multiselect,
-      undefined,
-    ),
+    checkIfItemIsSelected('String 2', selectedItem, selectedItems, multiselect, undefined),
   ).toBe(true);
 });
 
@@ -117,9 +93,6 @@ test('getFieldValue with field undefined', () => {
 
 test('getFieldValue with field assigned', () => {
   expect(
-    getFieldValue(
-      { testfield: 'test', someotherfield: 'other test value' },
-      'testfield',
-    ),
+    getFieldValue({ testfield: 'test', someotherfield: 'other test value' }, 'testfield'),
   ).toMatchSnapshot();
 });

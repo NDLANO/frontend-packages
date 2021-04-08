@@ -9,9 +9,7 @@ const classes = BEMHelper('c-subject-links');
 
 const SubjectLinks = ({ links, heading }) => (
   <section {...classes()}>
-    <SubjectSectionTitle className={classes('heading').className}>
-      {heading}
-    </SubjectSectionTitle>
+    <SubjectSectionTitle className={classes('heading').className}>{heading}</SubjectSectionTitle>
     <nav>
       <ul {...classes('list')}>
         {links.map(link => (

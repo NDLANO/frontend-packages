@@ -15,9 +15,7 @@ const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
     return (
       <span key={format.url}>
         <Download />
-        <span>
-          {isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}
-        </span>
+        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
         <span {...classes('tooltip')} aria-hidden role="tooltip" id={formatId}>
           <span {...classes('tooltip-text')}>{format.tooltip}</span>
         </span>
@@ -35,9 +33,7 @@ const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
       aria-describedby={formatId}>
       <Download />
       <span {...classes('link-text')}>
-        <span>
-          {isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}
-        </span>
+        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
       </span>
       <span {...classes('tooltip')} aria-hidden role="tooltip" id={formatId}>
         <span {...classes('tooltip-text')}>{format.tooltip}</span>

@@ -12,9 +12,7 @@ export const toggleRelatedArticles = () => {
   const shownItem = classes('item--shown').className;
 
   forEachElement('.c-related-articles', el => {
-    const button = el.querySelector(
-      `button[data-type='related-article-button']`,
-    );
+    const button = el.querySelector(`button[data-type='related-article-button']`);
 
     if (button && typeof button.onclick !== 'function') {
       button.onclick = e => {

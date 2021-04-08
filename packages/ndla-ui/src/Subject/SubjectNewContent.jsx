@@ -9,20 +9,13 @@ const classes = BEMHelper('c-subject-new-content');
 
 const SubjectNewContent = ({ heading, content }) => (
   <section {...classes()}>
-    <SubjectSectionTitle className={classes('heading').className}>
-      {heading}
-    </SubjectSectionTitle>
+    <SubjectSectionTitle className={classes('heading').className}>{heading}</SubjectSectionTitle>
     <nav {...classes('content')}>
       <ul {...classes('list')}>
         {content.map(item => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
-              <ContentTypeBadge
-                type={item.contentType}
-                size="x-small"
-                background
-                outline
-              />
+              <ContentTypeBadge type={item.contentType} size="x-small" background outline />
               <div {...classes('content-link')}>
                 <div {...classes('date')}>{item.formattedDate}</div>
                 <SafeLink to={item.url} {...classes('link')}>

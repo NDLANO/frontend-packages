@@ -77,10 +77,7 @@ const results = [
       {
         url: '#2',
         title: 'Medieuttrykk og mediesamfunnet',
-        breadcrumb: [
-          'Medieuttrykk og mediesamfunnet',
-          'Ideskapning og mediedesign',
-        ],
+        breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Ideskapning og mediedesign'],
       },
       {
         url: '#3',
@@ -100,11 +97,7 @@ const results = [
       'Interaktiv oppgave om platetektonikkens påvirkning på jordskorpa. Hvilken retning beveger platene seg og hvilke resultater gir det? Plasser ord og bilder på riktig sted.',
     contentTypeLabel: 'Oppgaver og aktiveter',
     contentTypeIcon: <TasksAndActivitiesBadge size="xx-small" background />,
-    breadcrumb: [
-      'Brønnteknikk',
-      'Leting og boring',
-      'Geologi for brønnteknikk',
-    ],
+    breadcrumb: ['Brønnteknikk', 'Leting og boring', 'Geologi for brønnteknikk'],
     matchTab: ['TASKS_AND_ACTIVITIES'],
     type: 'Oppgave',
   },
@@ -127,14 +120,8 @@ const results = [
     ingress:
       'Filmen En helt vanlig dag på jobben er regissert av Terje Rangnes etter et manus av Erlend Loe. Manuset er basert på en bok av tidligere Se og Hør-journalist Håvard Melnæs med samme tittel.',
     contentTypeLabel: 'Delte ressurser',
-    contentTypeIcon: (
-      <ExternalLearningResourcesBadge size="xx-small" background />
-    ),
-    breadcrumb: [
-      'Medieuttrykk og mediesamfunnet',
-      'Mediebransjen',
-      'Journalistikk',
-    ],
+    contentTypeIcon: <ExternalLearningResourcesBadge size="xx-small" background />,
+    breadcrumb: ['Medieuttrykk og mediesamfunnet', 'Mediebransjen', 'Journalistikk'],
     matchTab: ['SHARED_RESOURCES'],
     type: 'Delt læringsressurs',
   },
@@ -236,9 +223,7 @@ class SearchPageExample extends Component {
           .subjectFilters.filter(
             subjectFilter =>
               this.state.filter_subject_values[subjectKey] &&
-              this.state.filter_subject_values[subjectKey].includes(
-                subjectFilter.value,
-              ),
+              this.state.filter_subject_values[subjectKey].includes(subjectFilter.value),
           )
           .map(subjects => ({
             filterName: subjectKey,
@@ -274,9 +259,7 @@ class SearchPageExample extends Component {
     const authorTablet = author('tablet');
     const authorDesktop = author('desktop');
     const hasAuthor = authorTablet !== null;
-    const searchString = this.props.competenceGoals
-      ? 'Kompetansemål'
-      : this.state.searchString;
+    const searchString = this.props.competenceGoals ? 'Kompetansemål' : this.state.searchString;
 
     return (
       <SearchPage
@@ -285,16 +268,14 @@ class SearchPageExample extends Component {
         onSearchFieldFilterRemove={(value, filterName) => {
           if (this.state[filterName]) {
             this.setState(prevState => ({
-              [filterName]: prevState[filterName].filter(
-                option => option !== value,
-              ),
+              [filterName]: prevState[filterName].filter(option => option !== value),
             }));
           } else {
             this.setState(prevState => {
               const currentFilterSubjects = prevState.filter_subject_values;
-              currentFilterSubjects[filterName] = currentFilterSubjects[
-                filterName
-              ].filter(option => option !== value);
+              currentFilterSubjects[filterName] = currentFilterSubjects[filterName].filter(
+                option => option !== value,
+              );
               return {
                 filter_subject_values: currentFilterSubjects,
               };
@@ -336,15 +317,9 @@ class SearchPageExample extends Component {
                   backButton: t('searchPage.searchFilterMessages.backButton'),
                   filterLabel: t('searchPage.searchFilterMessages.filterLabel'),
                   closeButton: t('searchPage.searchFilterMessages.closeFilter'),
-                  confirmButton: t(
-                    'searchPage.searchFilterMessages.confirmButton',
-                  ),
-                  hasValuesButtonText: t(
-                    'searchPage.searchFilterMessages.hasValuesButtonText',
-                  ),
-                  noValuesButtonText: t(
-                    'searchPage.searchFilterMessages.noValuesButtonText',
-                  ),
+                  confirmButton: t('searchPage.searchFilterMessages.confirmButton'),
+                  hasValuesButtonText: t('searchPage.searchFilterMessages.hasValuesButtonText'),
+                  noValuesButtonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
                 }}
                 options={searchFilterOptions.subjects}
                 values={this.state.filter_subjects}
@@ -403,9 +378,7 @@ class SearchPageExample extends Component {
           author={authorDesktop}
           hideResultText={this.state.competenceGoalsOpen}
           messages={{
-            searchStringLabel: t(
-              'searchPage.searchResultMessages.searchStringLabel',
-            ),
+            searchStringLabel: t('searchPage.searchResultMessages.searchStringLabel'),
             resultHeading: hasAuthor
               ? t('searchPage.searchPageMessages.resultHeadingByAuthor', {
                   totalCount: 37,
@@ -418,19 +391,14 @@ class SearchPageExample extends Component {
               totalCount: 43,
             }),
             openCompetenceGoalsButtonPrefix: '1 av',
-            openCompetenceGoalsButton:
-              '16 kompetansemål i medieuttrykk- og mediesamfunnet',
+            openCompetenceGoalsButton: '16 kompetansemål i medieuttrykk- og mediesamfunnet',
           }}
           currentCompetenceGoal={
             this.props.competenceGoals
               ? 'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier'
               : null
           }
-          competenceGoals={
-            this.props.competenceGoals ? (
-              <CompetenceGoalsExample search />
-            ) : null
-          }
+          competenceGoals={this.props.competenceGoals ? <CompetenceGoalsExample search /> : null}
           competenceGoalsOpen={this.state.competenceGoalsOpen}
           onToggleCompetenceGoals={() => {
             this.setState(prevState => ({

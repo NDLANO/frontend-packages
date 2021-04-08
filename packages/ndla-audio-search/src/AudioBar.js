@@ -42,11 +42,7 @@ class AudioBar extends Component {
 
   render() {
     const { audioSource, audioType } = this.state;
-    return (
-      <audio controls>
-        {audioSource && <source src={audioSource} type={audioType} />}
-      </audio>
-    );
+    return <audio controls>{audioSource && <source src={audioSource} type={audioType} />}</audio>;
   }
 }
 

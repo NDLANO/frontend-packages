@@ -47,11 +47,7 @@ type Props = {
   invertedStyle?: boolean;
 };
 
-export const NavigationHeading = ({
-  subHeading,
-  children,
-  invertedStyle,
-}: Props) => (
+export const NavigationHeading = ({ subHeading, children, invertedStyle }: Props) => (
   <StyledH1 invertedStyle={invertedStyle}>
     {subHeading && <StyledSubText>{subHeading}</StyledSubText>}
     <StyledMainText>{children}</StyledMainText>

@@ -21,14 +21,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ResourceLink = ({
-  t,
-  icon,
-  children,
-  active,
-  component: Component,
-  ...rest
-}) => (
+const ResourceLink = ({ t, icon, children, active, component: Component, ...rest }) => (
   <Component
     {...classes('link o-flag o-flag--top', '', {
       active,
@@ -49,11 +42,7 @@ ResourceLink.propTypes = {
   t: PropTypes.func.isRequired,
   icon: PropTypes.node.isRequired,
   active: PropTypes.bool,
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
 };
 
 ResourceLink.defaultProps = {
@@ -120,15 +109,7 @@ Resource.propTypes = {
 
 injectT(Resource);
 
-const ResourceList = ({
-  resources,
-  onClick,
-  type,
-  title,
-  showAdditionalResources,
-  t,
-  ...rest
-}) => {
+const ResourceList = ({ resources, onClick, type, title, showAdditionalResources, t, ...rest }) => {
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
     resources.filter(res => res.additional).length > 0 &&

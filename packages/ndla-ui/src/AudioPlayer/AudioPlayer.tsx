@@ -149,11 +149,7 @@ const AudioPlayer = ({
 
   if (speech) {
     return (
-      <div
-        data-audio-player={1}
-        data-speech={1}
-        data-src={src}
-        data-title={title}>
+      <div data-audio-player={1} data-speech={1} data-src={src} data-title={title}>
         <SpeechControl src={src} title={title} />
       </div>
     );
@@ -197,9 +193,7 @@ const AudioPlayer = ({
       {textVersion && (showTextVersion || staticRenderId) && (
         <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
           <TextVersionHeadingWrapper>
-            <TextVersionHeading>
-              {t('audio.textVersion.heading')}
-            </TextVersionHeading>
+            <TextVersionHeading>{t('audio.textVersion.heading')}</TextVersionHeading>
             <LinkButton
               link
               size="normal"

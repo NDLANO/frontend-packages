@@ -1,8 +1,8 @@
 declare module 'react-swipeable' {
   import React from 'react';
-  export class Swipeable<
-    T extends Element = HTMLElement
-  > extends React.Component<SwipeableProps<T>> {}
+  export class Swipeable<T extends Element = HTMLElement> extends React.Component<
+    SwipeableProps<T>
+  > {}
 
   interface EventData<T extends Element = HTMLElement> {
     event: React.TouchEvent<T>;
@@ -15,9 +15,7 @@ declare module 'react-swipeable' {
   }
 
   type Callback<T extends Element = HTMLElement> = (data: EventData<T>) => void;
-  type OnTapCallback<T extends Element = HTMLElement> = (
-    event: React.TouchEvent<T>,
-  ) => void;
+  type OnTapCallback<T extends Element = HTMLElement> = (event: React.TouchEvent<T>) => void;
 
   interface SwipeableProps<T extends Element = HTMLElement>
     extends React.ClassAttributes<Swipeable<T>>,

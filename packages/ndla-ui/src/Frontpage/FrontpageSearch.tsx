@@ -110,8 +110,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
       window.scrollTo({ top: yCoordinate });
     };
     if (inputHasFocus && searchFieldRef && searchFieldRef.current) {
-      yCoordinate =
-        searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
+      yCoordinate = searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
       const isIE11 = isIE && parseInt(browserVersion) < 12;
       if (isIE11) {
         // insta move on IE

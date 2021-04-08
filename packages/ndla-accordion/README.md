@@ -13,11 +13,7 @@ $ yarn ndla-accordion
 ### Simple example where panel is open on render.
 
 ```js
-import Accordion, {
-  AccordionWrapper,
-  AccordionPanel,
-  AccordionBar,
-} from '@ndla/accordion';
+import Accordion, { AccordionWrapper, AccordionPanel, AccordionBar } from '@ndla/accordion';
 
 <Accordion openIndexes={[0]} single>
   {({ openIndexes, handleItemClick }) => (
@@ -31,9 +27,7 @@ import Accordion, {
             isOpen={openIndexes.includes(index)}>
             Panel {index + 1}
           </AccordionBar>
-          <AccordionPanel
-            id={`panel-${index}`}
-            isOpen={openIndexes.includes(index)}>
+          <AccordionPanel id={`panel-${index}`} isOpen={openIndexes.includes(index)}>
             <p>{item}</p>
           </AccordionPanel>
         </React.Fragment>

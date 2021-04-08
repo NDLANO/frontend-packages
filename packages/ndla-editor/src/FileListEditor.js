@@ -64,10 +64,7 @@ const fileErrorCss = css`
 const ListWrapper = styled.ul`
   overflow: visible;
   margin: 0 0
-    ${props =>
-      props.draggingIndex > -1
-        ? `${FILE_HEIGHT + spacing.spacingUnit * 0.75}px`
-        : '0'};
+    ${props => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;
@@ -90,8 +87,7 @@ const ButtonIcons = styled.button`
 
   &:hover,
   &:focus {
-    background: ${props =>
-      props.delete ? colors.support.redLight : colors.brand.light};
+    background: ${props => (props.delete ? colors.support.redLight : colors.brand.light)};
   }
 `;
 
@@ -148,14 +144,12 @@ class FileListEditor extends Component {
   }
 
   updateTransforms(dragIndex) {
-    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(
-      (node, index) => {
-        if (index !== this.initialPosition) {
-          const value = index >= dragIndex ? FILE_HEIGHT : 0;
-          node.style.transform = `translateY(${value}px)`;
-        }
-      },
-    );
+    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node, index) => {
+      if (index !== this.initialPosition) {
+        const value = index >= dragIndex ? FILE_HEIGHT : 0;
+        node.style.transform = `translateY(${value}px)`;
+      }
+    });
   }
 
   onDragStart(e, dragIndex) {
@@ -165,15 +159,12 @@ class FileListEditor extends Component {
     this.updateTransforms(dragIndex);
 
     this.DraggingFile = this.filesWrapperRef.current.childNodes[dragIndex];
-    this.DraggingFile.style.width = `${
-      this.DraggingFile.getBoundingClientRect().width
-    }px`;
+    this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
     this.DraggingFile.style.position = 'absolute';
     this.DraggingFile.style.top = 0;
     this.DraggingFile.style.zIndex = 9999;
     this.DraggingFile.style.boxShadow = shadows.levitate1;
-    this.DraggingFile.style.transform = `translateY(${this.mouseMovement +
-      FILE_HEIGHT}px)`;
+    this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
 
     this.setState(
       {
@@ -181,11 +172,9 @@ class FileListEditor extends Component {
       },
       () => {
         // Add transitions
-        Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(
-          node => {
-            node.style.transition = 'transform 100ms ease';
-          },
-        );
+        Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(node => {
+          node.style.transition = 'transform 100ms ease';
+        });
         this.DraggingFile.style.transition = 'box-shadow 100ms ease';
       },
     );
@@ -206,12 +195,10 @@ class FileListEditor extends Component {
       draggingIndex: -1,
     });
 
-    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(
-      node => {
-        node.style.transition = 'none';
-        node.style.transform = 'none';
-      },
-    );
+    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(node => {
+      node.style.transition = 'none';
+      node.style.transform = 'none';
+    });
 
     this.DraggingFile.style.width = 'auto';
     this.DraggingFile.style.position = 'static';
@@ -226,12 +213,8 @@ class FileListEditor extends Component {
       0,
     );
     const addToPosition = this.initialPosition < currentPosition ? 1 : 0;
-    const dragIndex = Math.min(
-      this.props.files.length,
-      Math.max(currentPosition, 0),
-    );
-    this.DraggingFile.style.transform = `translateY(${this.mouseMovement +
-      FILE_HEIGHT}px)`;
+    const dragIndex = Math.min(this.props.files.length, Math.max(currentPosition, 0));
+    this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
     this.updateTransforms(dragIndex + addToPosition);
     this.setState(prevState => {
       if (prevState.draggingIndex !== dragIndex) {
@@ -257,9 +240,7 @@ class FileListEditor extends Component {
     return (
       <ListWrapper ref={this.filesWrapperRef} draggingIndex={draggingIndex}>
         {files.map((file, index) => {
-          const isMissing = !!(missingFilePaths || []).find(
-            mp => mp === file.path,
-          );
+          const isMissing = !!(missingFilePaths || []).find(mp => mp === file.path);
           return (
             <li
               key={file.path}
@@ -268,9 +249,7 @@ class FileListEditor extends Component {
                 deleteIndex === index && fadeOutAnimation,
                 editFileIndex !== index && file.title === '' && fileErrorCss,
               ]}
-              onAnimationEnd={
-                deleteIndex === index ? this.executeDeleteFile : undefined
-              }>
+              onAnimationEnd={deleteIndex === index ? this.executeDeleteFile : undefined}>
               <FileNameInput
                 messages={messages}
                 isMissing={isMissing}
@@ -305,10 +284,7 @@ class FileListEditor extends Component {
               )}
               <div>
                 <Tooltip tooltip={messages.changeName}>
-                  <ButtonIcons
-                    tabIndex={-1}
-                    type="button"
-                    onClick={e => this.editFile(e, index)}>
+                  <ButtonIcons tabIndex={-1} type="button" onClick={e => this.editFile(e, index)}>
                     <Pencil />
                   </ButtonIcons>
                 </Tooltip>

@@ -89,14 +89,7 @@ const StyledItemButton = styled.button`
       `}
 `;
 
-function DropdownMenuItem({
-  disableSelected,
-  item,
-  isSelected,
-  t,
-  highlighted,
-  ...rest
-}) {
+function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, ...rest }) {
   return (
     <StyledItemButton
       key={item.id}
@@ -108,9 +101,7 @@ function DropdownMenuItem({
       {<DropdownMenuImage image={item.image} alt={item.alt} />}
       <StyledText>
         <StyledTitle>{item.title}</StyledTitle>
-        {item.description && (
-          <StyledDescription>{item.description}</StyledDescription>
-        )}
+        {item.description && <StyledDescription>{item.description}</StyledDescription>}
       </StyledText>
       {isSelected && (
         <StyledisSelected>

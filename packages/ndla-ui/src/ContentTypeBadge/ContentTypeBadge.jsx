@@ -85,14 +85,9 @@ export const TasksAndActivitiesBadge = props => (
 export const AssessmentResourcesBadge = props => (
   <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
 );
-export const SubjectBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />
-);
+export const SubjectBadge = props => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
 export const ExternalLearningResourcesBadge = props => (
-  <ContentTypeBadge
-    {...props}
-    type={contentTypes.EXTERNAL_LEARNING_RESOURCES}
-  />
+  <ContentTypeBadge {...props} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
 );
 export const SourceMaterialBadge = props => (
   <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />

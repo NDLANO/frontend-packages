@@ -28,45 +28,25 @@ export default function VideoSearchResultYouTube({
   locale,
 }) {
   const videoData = video?.pagemap?.videoobject?.[0];
-  const activeVideo =
-    selectedVideo?.pagemap?.videoobject?.[0]?.videoid === videoData?.videoid;
+  const activeVideo = selectedVideo?.pagemap?.videoobject?.[0]?.videoid === videoData?.videoid;
 
   if (videoData) {
     return (
       <div {...classes('list-item', activeVideo ? 'active' : '')}>
         <div {...classes('list-item-inner')}>
-          <img
-            role="presentation"
-            alt="presentation"
-            src={videoData.thumbnailurl}
-          />
+          <img role="presentation" alt="presentation" src={videoData.thumbnailurl} />
           <div {...classes('information')}>
             <h2>{videoData.name}</h2>
             <div>
-              {`${translations.publishedDate}: ${setLocaleDate(
-                videoData.datepublished,
-                locale,
-              )}`}
+              {`${translations.publishedDate}: ${setLocaleDate(videoData.datepublished, locale)}`}
             </div>
-            <div>
-              {`${translations.duration}: ${setYouTubeDuration(
-                videoData.duration,
-              )}`}
-            </div>
-            <div>
-              {`${translations.interactioncount}: ${videoData.interactioncount}`}
-            </div>
+            <div>{`${translations.duration}: ${setYouTubeDuration(videoData.duration)}`}</div>
+            <div>{`${translations.interactioncount}: ${videoData.interactioncount}`}</div>
             <div>{videoData.description}</div>
-            <Button
-              {...classes('button')}
-              outline
-              onClick={() => onVideoPreview(video)}>
+            <Button {...classes('button')} outline onClick={() => onVideoPreview(video)}>
               {translations.previewVideo}
             </Button>
-            <Button
-              data-cy="use-video"
-              {...classes('button')}
-              onClick={() => onSelectVideo(video)}>
+            <Button data-cy="use-video" {...classes('button')} onClick={() => onSelectVideo(video)}>
               {translations.addVideo}
             </Button>
           </div>

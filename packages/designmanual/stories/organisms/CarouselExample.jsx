@@ -168,8 +168,7 @@ const CarouselExample = () => (
         name: 'wrapperClass',
         type: 'String',
         default: 'undefined',
-        description:
-          'Wrapper class (for hover button effects use with buttonClass prop)',
+        description: 'Wrapper class (for hover button effects use with buttonClass prop)',
       },
       {
         name: 'disableScroll',
@@ -180,8 +179,8 @@ const CarouselExample = () => (
     ]}
     status={2}>
     <p>
-      Carousel med (valgfritt) tilhørende hjelpe komponent for utregning av
-      størrelser. Har swipe funksjonalitet innebygget.
+      Carousel med (valgfritt) tilhørende hjelpe komponent for utregning av størrelser. Har swipe
+      funksjonalitet innebygget.
     </p>
     <h3>Med hjelpekomponent versjon:</h3>
     <DemoExample />

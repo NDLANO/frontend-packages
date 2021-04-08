@@ -79,8 +79,7 @@ const ErrorReporter = (function Singleton() {
     }
 
     // Don't send multiple copies of the same error. This fixes a problem when a client goes into an infinite loop
-    const firstFrame =
-      stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
+    const firstFrame = stackInfo.stack && stackInfo.stack[0] ? stackInfo.stack[0] : {};
     const deduplicate = [
       stackInfo.name,
       stackInfo.message,

@@ -126,11 +126,7 @@ export interface CopyrightType {
   rightsholders: Contributor[];
 }
 
-export function mkContributorString(
-  contributors: Contributor[],
-  lang: string,
-  ignoreType: string,
-) {
+export function mkContributorString(contributors: Contributor[], lang: string, ignoreType: string) {
   return contributors
     .map(contributor => {
       const type = contributor.type.toLowerCase();
@@ -143,10 +139,7 @@ export function mkContributorString(
     .join(', ');
 }
 
-export function getGroupedContributorDescriptionList(
-  copyright: CopyrightType,
-  lang: string,
-) {
+export function getGroupedContributorDescriptionList(copyright: CopyrightType, lang: string) {
   const { creators, rightsholders, processors } = copyright;
   return [
     {

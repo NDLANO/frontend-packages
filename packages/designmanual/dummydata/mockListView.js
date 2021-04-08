@@ -173,8 +173,7 @@ export const mockListView = {
       description: 'Brukes til ledninger',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'https://images.clasohlson.com/medias/sys_master/9349608898590.jpg',
+      image: 'https://images.clasohlson.com/medias/sys_master/9349608898590.jpg',
       id: '9',
       category: {
         title: 'El-Håndverkøy',

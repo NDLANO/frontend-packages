@@ -49,9 +49,7 @@ DropdownInput.propTypes = {
   labelField: PropTypes.string,
   name: PropTypes.string,
   loading: PropTypes.bool,
-  values: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  ),
+  values: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   inputProps: PropTypes.shape({
     value: PropTypes.string,
     ref: PropTypes.func,

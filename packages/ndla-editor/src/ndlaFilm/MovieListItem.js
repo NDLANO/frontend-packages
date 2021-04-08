@@ -52,11 +52,7 @@ const MovieListItem = ({
           </ButtonIcons>
         )}
         <Tooltip tooltip={removeFilm}>
-          <ButtonIcons
-            tabIndex={-1}
-            type="button"
-            onClick={() => deleteFile(index)}
-            delete>
+          <ButtonIcons tabIndex={-1} type="button" onClick={() => deleteFile(index)} delete>
             <DeleteForever />
           </ButtonIcons>
         </Tooltip>

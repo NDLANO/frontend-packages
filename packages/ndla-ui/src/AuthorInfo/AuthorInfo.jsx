@@ -20,12 +20,7 @@ const classes = new BEMHelper({
 const AuthorInfo = ({ authorName, authorRole, email, image, phone }) => (
   <section {...classes('')}>
     {image && (
-      <Portrait
-        src={image}
-        alt={authorName}
-        modifier="large"
-        {...classes('portrait-image')}
-      />
+      <Portrait src={image} alt={authorName} modifier="large" {...classes('portrait-image')} />
     )}
     <div>
       <h1 {...classes('heading')}>{authorName}</h1>

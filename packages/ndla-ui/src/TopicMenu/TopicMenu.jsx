@@ -37,9 +37,7 @@ const classes = new BEMHelper({
 export const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
     return (
-      <Tooltip
-        tooltip={label}
-        stooltipContainerClass="c-topic-menu__tooltipContainer">
+      <Tooltip tooltip={label} stooltipContainerClass="c-topic-menu__tooltipContainer">
         <Additional className="c-icon--20" />
       </Tooltip>
     );
@@ -80,8 +78,7 @@ export const TopicMenu = ({
 
   useEffect(() => {
     const setScreenSize = (initial = false) => {
-      const isNarrow =
-        (window.innerWidth || document.documentElement.clientWidth) < 768;
+      const isNarrow = (window.innerWidth || document.documentElement.clientWidth) < 768;
 
       if ((initial && isNarrow) || !initial) {
         setIsNarrowScreen(isNarrow);
@@ -124,14 +121,10 @@ export const TopicMenu = ({
     let foundMatch;
     expandedSubtopicsId.forEach((id, index) => {
       if (index === 0) {
-        currentSubtopic = expandedTopic.subtopics.find(
-          topic => topic.id === id,
-        );
+        currentSubtopic = expandedTopic.subtopics.find(topic => topic.id === id);
         foundMatch = currentSubtopic ? 0 : undefined;
       } else {
-        currentSubtopic = currentSubtopic.subtopics.find(
-          topic => topic.id === id,
-        );
+        currentSubtopic = currentSubtopic.subtopics.find(topic => topic.id === id);
         foundMatch += currentSubtopic ? 1 : 0;
       }
       if (foundMatch === index) {
@@ -156,10 +149,7 @@ export const TopicMenu = ({
     <nav>
       <ModalHeader modifier={['white', 'menu']}>
         <div {...classes('masthead-left')}>
-          <button
-            type="button"
-            {...classes('close-button')}
-            onClick={closeMenu}>
+          <button type="button" {...classes('close-button')} onClick={closeMenu}>
             <Cross />
             <span>{t('masthead.menu.close')}</span>
           </button>
@@ -237,10 +227,7 @@ export const TopicMenu = ({
         </div>
         {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
           <div {...classes('all-subjects')}>
-            <FrontpageAllSubjects
-              categories={subjectCategories}
-              onNavigate={closeMenu}
-            />
+            <FrontpageAllSubjects categories={subjectCategories} onNavigate={closeMenu} />
           </div>
         )}
         {selectedMenu === MENU_CURRENT_PROGRAMME && currentProgramme && (
@@ -248,9 +235,7 @@ export const TopicMenu = ({
             <ProgrammeSubjects
               grades={currentProgramme.grades}
               preSelectedGradeIndex={
-                currentProgramme.selectedGradeIndex
-                  ? currentProgramme.selectedGradeIndex
-                  : 0
+                currentProgramme.selectedGradeIndex ? currentProgramme.selectedGradeIndex : 0
               }
               onNavigate={closeMenu}
             />
@@ -276,9 +261,7 @@ export const TopicMenu = ({
                     to={toSubject()}
                     className={classes('link', 'big').className}>
                     <span {...classes('link-wrapper')}>
-                      <span {...classes('link-label')}>
-                        {t('masthead.menu.goTo')}:
-                      </span>
+                      <span {...classes('link-label')}>{t('masthead.menu.goTo')}:</span>
                       <span {...classes('link-target')}>
                         <span {...classes('link-target-name')}>
                           {t('masthead.menu.subjectPage')}
@@ -289,8 +272,7 @@ export const TopicMenu = ({
                   </SafeLink>
                   <ul {...classes('list')}>
                     {topics.map(topic => {
-                      const active =
-                        topic.id === expandedTopicId ? 'active' : null;
+                      const active = topic.id === expandedTopicId ? 'active' : null;
 
                       return (
                         <li {...classes('topic-item', active)} key={topic.id}>
@@ -298,9 +280,7 @@ export const TopicMenu = ({
                             type="button"
                             {...classes('link')}
                             onClick={event => handleClick(event, topic.id)}
-                            onKeyPress={event =>
-                              handleBtnKeyPress(event, topic.id)
-                            }>
+                            onKeyPress={event => handleBtnKeyPress(event, topic.id)}>
                             <span>
                               {topic.name}
                               {renderAdditionalIcon(
@@ -326,15 +306,12 @@ export const TopicMenu = ({
                 backLabel={
                   !hasExpandedSubtopics
                     ? subjectTitle
-                    : currentlyExpandedSubTopics[
-                        currentlyExpandedSubTopics.length - 1
-                      ].name
+                    : currentlyExpandedSubTopics[currentlyExpandedSubTopics.length - 1].name
                 }
                 goToTitle={t('masthead.menu.goTo')}
                 toTopic={toTopic}
                 expandedSubtopicId={
-                  currentlyExpandedSubTopics[0] &&
-                  currentlyExpandedSubTopics[0].id
+                  currentlyExpandedSubTopics[0] && currentlyExpandedSubTopics[0].id
                 }
                 onSubtopicExpand={id => {
                   handleSubtopicExpand(id, 0);
@@ -348,9 +325,7 @@ export const TopicMenu = ({
               <SubtopicLinkList
                 key={subTopic.id}
                 classes={classes}
-                className={
-                  classes('section', ['sub-topic', 'no-border']).className
-                }
+                className={classes('section', ['sub-topic', 'no-border']).className}
                 closeMenu={closeMenu}
                 topic={subTopic}
                 backLabel={

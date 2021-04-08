@@ -14,8 +14,7 @@ function sizes(fontSize: string | number, lineHeight?: string | number) {
   }
 
   const defaultLineHeight =
-    Math.ceil(fontSizeUnit / baseLineHeightUnit) *
-    (baseLineHeightUnit / fontSizeUnit);
+    Math.ceil(fontSizeUnit / baseLineHeightUnit) * (baseLineHeightUnit / fontSizeUnit);
   return `${fontSizeStyling} line-height: ${defaultLineHeight}`;
 }
 

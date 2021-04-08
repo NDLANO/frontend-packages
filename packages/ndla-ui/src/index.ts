@@ -60,11 +60,7 @@ export { MessageBox } from './MessageBox';
 
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
-export {
-  NavigationHeading,
-  NavigationBox,
-  NavigationTopicAbout,
-} from './Navigation';
+export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';
 
 export { default as Programme } from './Programme';
 

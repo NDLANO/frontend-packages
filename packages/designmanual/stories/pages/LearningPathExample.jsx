@@ -45,9 +45,9 @@ async function fetchLearningPathLearningSteps({ learningPathId }) {
 }
 
 async function fetchTaxonomiResourceId({ resourceId }) {
-  return await fetch(
-    `https://api.ndla.no/taxonomy/v1/resources/urn:${resourceId}`,
-  ).then(data => data.json());
+  return await fetch(`https://api.ndla.no/taxonomy/v1/resources/urn:${resourceId}`).then(data =>
+    data.json(),
+  );
 }
 
 const LEARNING_PATHS_COOKIES_KEY = 'LEARNING_PATHS_COOKIES_KEY';
@@ -75,10 +75,7 @@ const StyledInfoHelper = styled.aside`
   box-shadow: ${shadows.levitate1};
 `;
 
-const updateLearningStepNumber = (
-  { learningStepsData, currentLearningStepNumber },
-  code,
-) => {
+const updateLearningStepNumber = ({ learningStepsData, currentLearningStepNumber }, code) => {
   let direction;
   if (code === 'ArrowLeft') {
     direction = -1;
@@ -89,8 +86,7 @@ const updateLearningStepNumber = (
   }
   if (
     currentLearningStepNumber + direction < 0 ||
-    currentLearningStepNumber + direction >=
-      learningStepsData.learningsteps.length
+    currentLearningStepNumber + direction >= learningStepsData.learningsteps.length
   ) {
     return currentLearningStepNumber;
   }
@@ -126,25 +122,14 @@ const toLearningPathUrl = () => {
 const LearningPathExample = ({ invertedStyle, t }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
-  const [learningPathId, updateLearningPathId] = useState(
-    DEMO_LEARNING_PATH_ID,
-  );
-  const [tempLearningPathId, updateTempLearningPathId] = useState(
-    DEMO_LEARNING_PATH_ID,
-  );
-  const {
-    currentLearningStepNumber,
-    currentLearningStep,
-    learningStepsData,
-  } = currentState;
+  const [learningPathId, updateLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
+  const [tempLearningPathId, updateTempLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
+  const { currentLearningStepNumber, currentLearningStep, learningStepsData } = currentState;
 
   async function fetchLearningStep(params) {
     const data = await fetchLearningPathArticle(params);
     const { embedUrl } = data;
-    if (
-      embedUrl &&
-      embedUrl.url.indexOf(':') !== embedUrl.url.lastIndexOf(':')
-    ) {
+    if (embedUrl && embedUrl.url.indexOf(':') !== embedUrl.url.lastIndexOf(':')) {
       // Fetch article via /taxonomy/v1/resources/urn:resource:1:117811
       const resourceId = embedUrl.url.substr(embedUrl.url.lastIndexOf('/') + 1);
       const dataResourceArticleId = await fetchTaxonomiResourceId({
@@ -289,15 +274,12 @@ const LearningPathExample = ({ invertedStyle, t }) => {
                   invertedStyle={invertedStyle}
                   title={currentLearningStep.title.title}
                   description={
-                    currentLearningStep.description &&
-                    currentLearningStep.description.description
+                    currentLearningStep.description && currentLearningStep.description.description
                   }
                   license={currentLearningStep.license}
                 />
               )}
-              {articleId && (
-                <ArticleLoader hideForm hideResources articleId={articleId} />
-              )}
+              {articleId && <ArticleLoader hideForm hideResources articleId={articleId} />}
               {isLastStep && (
                 <LearningPathLastStepNavigation
                   learningPathName={learningStepsData.title.title}

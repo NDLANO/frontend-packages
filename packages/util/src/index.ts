@@ -10,16 +10,8 @@ export { default as uuid } from './uuid';
 export { default as getComponentName } from './getComponentName';
 export { copyTextToClipboard } from './copyTextToClipboard';
 export { default as noScroll } from './noScroll';
-export {
-  default as getCurrentBreakpoint,
-  breakpoints,
-} from './getCurrentBreakpoint';
+export { default as getCurrentBreakpoint, breakpoints } from './getCurrentBreakpoint';
 export { createUniversalPortal } from './createUniversalPortal';
 export { isFunction } from './isFunction';
 export { resizeObserver } from './resizeObserver';
-export {
-  setCookie,
-  getCookie,
-  deleteCookie,
-  isValidCookie,
-} from './cookieHandler';
+export { setCookie, getCookie, deleteCookie, isValidCookie } from './cookieHandler';

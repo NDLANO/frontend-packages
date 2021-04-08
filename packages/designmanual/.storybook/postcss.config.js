@@ -1,7 +1,3 @@
-module.exports = () => {
-  const plugins = [require('autoprefixer')];
-
-  return {
-    plugins: plugins,
-  };
+module.exports = {
+  plugins: [require('autoprefixer')],
 };

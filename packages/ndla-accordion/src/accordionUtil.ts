@@ -9,6 +9,7 @@
 import React, { ReactElement, ReactNode, Children } from 'react';
 import AccordionSection, { Props as AccordionSectionProps } from './AccordionSection';
 
+// Filtrer ut alle children som ikke er AccordionSections
 const getPanels = (children: ReactNode): ReactElement<AccordionSectionProps>[] => {
   const panels = Children.map(children, child =>
     React.isValidElement(child) && child.type === AccordionSection ? child : null,

@@ -14,9 +14,9 @@ import Button from '@ndla/button';
 import { getPanelIds, getOpenPanels } from './accordionUtil';
 import AccordionSection from './AccordionSection';
 
-type Props = { tiny?: boolean; single?: boolean };
+type Props = { tiny?: boolean; single?: boolean; children?: React.ReactNode };
 
-const Accordions: React.FC<Props & tType> = ({ tiny, single, t, children }) => {
+const Accordions = ({ tiny, single, t, children }: Props & tType) => {
   const [panelIds] = useState<string[]>(getPanelIds(children));
   const [openPanels, setOpenPanels] = useState<string[]>(getOpenPanels(children));
 

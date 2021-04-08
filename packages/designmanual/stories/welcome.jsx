@@ -53,9 +53,9 @@ const Welcome = () => (
         </p>
 
         <h3>Hente inn prosjekt direkte via npm</h3>
-        <code>npm install ndla-ui --save</code>
+        <code>npm install @ndla/ui --save</code>
         <br />
-        <code>yarn add ndla-ui -S</code>
+        <code>yarn add @ndla/ui -S</code>
         <h3>Fonter må hentes inn direkte i prosjektet</h3>
         <code>
           {
@@ -63,11 +63,16 @@ const Welcome = () => (
           }
         </code>
 
-        <h3>Hente inn stilark direkte via CDN</h3>
-        <code>
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;
-          href=&quot;ndla-ui.css&quot;&gt;
-        </code>
+        <h3>Hente inn stilark</h3>
+        <code>@import '^@ndla/ui/lib/all.css';</code>
+        <br />
+        Eller
+        <br />
+        <code>@import '~@ndla/core/scss/core';</code>
+        <br />
+        <code>@import '~@ndla/ui/src/main';</code>
+        <br />
+        Osv.
       </StoryBody>
     </div>
   </PageContainer>

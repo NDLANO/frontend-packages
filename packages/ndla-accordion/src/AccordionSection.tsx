@@ -18,11 +18,12 @@ export interface Props {
   barChildren?: React.ReactNode;
   open?: boolean;
   onClick?: () => void;
+  className?: string;
   children?: React.ReactNode;
 }
 
 const AccordionSection = (props: Props) => {
-  const { id, children, startOpen, open, onClick } = props;
+  const { id, children, startOpen, open, onClick, className } = props;
   const { title, barChildren, tiny, hasError } = props; // bar props
   const [isOpen, setIsOpen] = useState(!!startOpen);
 
@@ -33,7 +34,7 @@ const AccordionSection = (props: Props) => {
   }, [open]);
 
   return (
-    <>
+    <div className={className}>
       <AccordionBar
         panelId={id}
         hasError={hasError}
@@ -55,7 +56,7 @@ const AccordionSection = (props: Props) => {
           })}
         </AccordionPanel>
       )}
-    </>
+    </div>
   );
 };
 

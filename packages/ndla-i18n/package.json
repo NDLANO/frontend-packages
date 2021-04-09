@@ -1,6 +1,6 @@
 {
   "name": "@ndla/i18n",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "NDLA's own i18n package based on react-intl",
   "license": "GPL-3.0",
   "main": "lib/index.js",

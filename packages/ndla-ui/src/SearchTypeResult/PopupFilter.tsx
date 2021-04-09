@@ -182,7 +182,7 @@ const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilter
                     title={messages.closeButton}
                   />
                 </ModalHeaderWrapper>
-                {programmes && (
+                {subjectCategories && programmes && (
                   <MainFilterButtonWrapper>
                     <Button
                       onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
@@ -193,7 +193,7 @@ const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilter
                     </Button>
                   </MainFilterButtonWrapper>
                 )}
-                {subjectCategories && (
+                {programmes && (
                   <Button
                     onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
                     lighter={selectedMenu !== MENU_PROGRAMMES}
@@ -212,7 +212,7 @@ const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilter
                 )}
                 {selectedMenu === MENU_PROGRAMMES && programmes && (
                   <StyledList>
-                    {programmes.options.map(item => (
+                    {programmes.options.map((item: ProgrammeOptionProps) => (
                       <StyledListItem key={item.id}>
                         <ToggleItem
                           id={item.id}

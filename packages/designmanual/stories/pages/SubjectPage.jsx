@@ -430,9 +430,10 @@ const SubjectPage = ({
               <>
                 <NavigationTopicAbout
                   heading={topicData.label}
-                  ingress={topicData.introduction}
+                  introduction={topicData.introduction}
                   onToggleShowContent={() => setShowMainTopicContent(!showMainTopicContent)}
                   showContent={showMainTopicContent}
+                  renderMarkdown={text => text}
                   isAdditionalTopic={topicData.isAdditionalResource}
                   isLoading={topicData.loadingContent}>
                   {topicData.content}
@@ -460,9 +461,10 @@ const SubjectPage = ({
                   <>
                     <NavigationTopicAbout
                       heading={subTopicData.label}
-                      ingress={subTopicData.introduction}
+                      introduction={subTopicData.introduction}
                       onToggleShowContent={() => setShowSubTopicContent(!showSubTopicContent)}
                       showContent={showSubTopicContent}
+                      renderMarkdown={text => text}
                       isAdditionalTopic={subTopicData.isAdditionalResource}
                       isLoading={subTopicData.loadingContent}>
                       {subTopicData.content}
@@ -497,9 +499,10 @@ const SubjectPage = ({
                   <>
                     <NavigationTopicAbout
                       heading={subSubTopicData.label}
-                      ingress={subSubTopicData.introduction}
+                      introduction={subSubTopicData.introduction}
                       onToggleShowContent={() => setShowSubSubTopicContent(!showSubSubTopicContent)}
                       showContent={showSubSubTopicContent}
+                      renderMarkdown={text => text}
                       isAdditionalTopic={subSubTopicData.isAdditionalResource}
                       isLoading={subSubTopicData.loadingContent}>
                       {subSubTopicData.content}

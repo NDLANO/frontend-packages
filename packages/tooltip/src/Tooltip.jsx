@@ -183,7 +183,7 @@ class Tooltip extends Component {
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
-  tooltip: PropTypes.string.isRequired,
+  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   delay: PropTypes.number,
   disabled: PropTypes.bool,
   align: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),

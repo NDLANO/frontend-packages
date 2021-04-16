@@ -126,7 +126,7 @@ SearchResult.defaultProps = {
 const searchResultItemClasses = BEMHelper('c-search-result-item');
 
 const searchResultItemShape = PropTypes.shape({
-  id: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   breadcrumb: PropTypes.arrayOf(PropTypes.string),

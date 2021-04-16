@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
@@ -106,23 +107,25 @@ const StyledContentWrapper = styled.div<InvertItProps>`
 
 type Props = {
   heading: string;
-  ingress: React.ReactNode;
+  introduction: string;
   onToggleShowContent: () => void;
   showContent: boolean;
   isLoading: boolean;
   isAdditionalTopic?: boolean;
   invertedStyle?: boolean;
+  renderMarkdown: (text: string) => string;
   children: React.ReactNode;
 };
 
 export const NavigationTopicAbout = ({
   heading,
-  ingress,
+  introduction,
   onToggleShowContent,
   showContent,
   isLoading,
   isAdditionalTopic,
   invertedStyle,
+  renderMarkdown,
   children,
   t,
 }: Props & tType) => {
@@ -142,7 +145,7 @@ export const NavigationTopicAbout = ({
       ) : (
         <>
           <StyledIngress invertedStyle={invertedStyle}>
-            {ingress}
+            {parse(renderMarkdown(introduction))}
             <StyledButtonWrapper invertedStyle={invertedStyle}>
               <Button
                 link

@@ -20,7 +20,7 @@ export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkIn
           <SafeLink
             to={to}
             {...classes('link')}
-            target={(linkInfo || inOembed) ? '_blank' : null}
+            target={linkInfo || inOembed ? '_blank' : null}
             rel={linkInfo ? 'noopener noreferrer' : null}>
             {title}
           </SafeLink>

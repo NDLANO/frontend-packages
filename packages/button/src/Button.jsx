@@ -49,7 +49,7 @@ export const pillStyle = css`
     width: 18px;
   }
   > span {
-    box-shadow: 0px 1px 0px ${colors.brand.primary};
+    box-shadow: 0 1px 0 ${colors.brand.primary};
   }
   &:hover {
     > span {
@@ -297,7 +297,19 @@ export const appearances = {
     color: ${colors.brand.primary};
     font-weight: ${fonts.weight.semibold};
   `,
-  lighterGrey: css`
+  greyLighter: css`
+    background-color: ${colors.brand.greyLighter};
+    border-color: ${colors.brand.greyLighter};
+    color: ${colors.brand.primary};
+    font-weight: ${fonts.weight.semibold};
+    &:hover,
+    &:focus,
+    &:active {
+      background: ${colors.brand.primary};
+      border-color: ${colors.brand.primary};
+    }
+  `,
+  greyLightest: css`
     background-color: ${colors.brand.greyLightest};
     border-color: ${colors.brand.greyLightest};
     color: ${colors.brand.primary};
@@ -468,7 +480,8 @@ export const ButtonStyles = p =>
   ${p.width ? width[p.width] : null}
   ${p.textAlign ? textAlign[p.textAlign] : null}
   ${p.darker ? appearances['darker'] : null}
-  ${p.lighterGrey ? appearances['lighterGrey'] : null}
+  ${p.greyLighter ? appearances['greyLighter'] : null}
+  ${p.greyLightest ? appearances['greyLightest'] : null}
   ${p.light ? appearances['light'] : null}
 `;
 
@@ -579,7 +592,8 @@ Button.propTypes = {
   width: PropTypes.oneOf(['auto', 'full']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),
   darker: PropTypes.bool,
-  lighterGrey: PropTypes.bool,
+  greyLighter: PropTypes.bool,
+  greyLightest: PropTypes.bool,
   /**
    * Applies the submit attribute to the button for use in forms. This overrides the type
    */

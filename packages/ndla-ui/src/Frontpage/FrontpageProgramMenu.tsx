@@ -77,7 +77,7 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tT
       {showSubjects ? (
         <FrontpageAllSubjects categories={subjectCategories} />
       ) : (
-        <NavigationBox colorMode="lighterGrey" items={programItems} listDirection="vertical" />
+        <NavigationBox colorMode="greyLightest" items={programItems} listDirection="vertical" />
       )}
     </StyledWrapper>
   );

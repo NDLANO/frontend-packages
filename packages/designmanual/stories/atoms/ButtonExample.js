@@ -111,7 +111,25 @@ const ButtonExample = () => {
             Stor knapp
           </Button>{' '}
         </InlineContainer>
-        <h3>Lys grå versjon(greyLightest)</h3>
+        <h3>Lys grå versjon(greyLighter)</h3>
+        <InlineContainer>
+          <Button size="xsmall" greyLighter onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button size="small" greyLighter onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button size="normal" greyLighter onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button size="medium" greyLighter onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" greyLighter onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <h3>Lysere grå versjon(greyLightest)</h3>
         <InlineContainer>
           <Button size="xsmall" greyLightest onClick={action('clicked')}>
             Liten knapp
@@ -199,6 +217,23 @@ const ButtonExample = () => {
           </Button>
         </InlineContainer>
         <InlineContainer>
+          <Button borderShape="rounded" greyLighter size="xsmall" onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button borderShape="rounded" greyLighter size="small" onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button borderShape="rounded" greyLighter size="normal" onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button borderShape="rounded" greyLighter size="medium" onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button borderShape="rounded" greyLighter size="large" onClick={action('clicked')}>
+            Stor knapp
+          </Button>
+        </InlineContainer>
+        <InlineContainer>
           <Button borderShape="rounded" greyLightest size="xsmall" onClick={action('clicked')}>
             Liten knapp
           </Button>{' '}
@@ -281,6 +316,23 @@ const ButtonExample = () => {
             Medium knapp
           </Button>{' '}
           <Button size="large" borderShape="sharpened" lighter onClick={action('clicked')}>
+            Stor knapp
+          </Button>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <Button size="xsmall" borderShape="sharpened" greyLighter onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button size="small" borderShape="sharpened" greyLighter onClick={action('clicked')}>
+            Liten knapp
+          </Button>{' '}
+          <Button size="normal" borderShape="sharpened" greyLighter onClick={action('clicked')}>
+            Normal knapp
+          </Button>{' '}
+          <Button size="medium" borderShape="sharpened" greyLighter onClick={action('clicked')}>
+            Medium knapp
+          </Button>{' '}
+          <Button size="large" borderShape="sharpened" greyLighter onClick={action('clicked')}>
             Stor knapp
           </Button>{' '}
         </InlineContainer>

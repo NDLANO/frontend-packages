@@ -36,6 +36,7 @@ interface Props {
   width?: 'auto' | 'full';
   textAlign?: 'center' | 'left' | 'right';
   darker?: boolean;
+  greyLighter?: boolean;
   greyLightest?: boolean;
 }
 
@@ -53,6 +54,7 @@ const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchor
   width,
   textAlign,
   darker,
+  greyLighter,
   greyLightest,
   ...rest
 }) => {
@@ -73,6 +75,7 @@ const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchor
     width,
     textAlign,
     darker,
+    greyLighter,
     greyLightest,
   };
   const styles = ButtonStyles(buttonStyleProps);

@@ -148,7 +148,7 @@ export type ItemProps = {
 };
 type Props = {
   heading?: string;
-  colorMode?: 'dark' | 'light' | 'greyLightest';
+  colorMode?: 'dark' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
   onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
@@ -197,6 +197,7 @@ export const NavigationBox = ({
               <ListElementType
                 to={item.url}
                 lighter={!item.selected && colorMode === 'light'}
+                greyLighter={!item.selected && colorMode === 'greyLighter'}
                 greyLightest={!item.selected && colorMode === 'greyLightest'}
                 darker={item.selected}
                 buttonSize="medium"

@@ -19,7 +19,8 @@
   ],
   "dependencies": {
     "details-polyfill": "^1.1.0",
-    "react-app-polyfill": "^0.2.1"
+    "react-app-polyfill": "^0.2.1",
+    "core-js": "^3.10.2"
   },
   "publishConfig": {
     "access": "public"

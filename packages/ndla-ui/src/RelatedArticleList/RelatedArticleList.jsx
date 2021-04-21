@@ -10,7 +10,15 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkInfo }) => {
+export const RelatedArticle = ({
+  title,
+  introduction,
+  icon,
+  modifier,
+  to,
+  linkInfo = '',
+  target = '',
+}) => {
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
     <article {...classes('item', modifier)}>
@@ -20,7 +28,7 @@ export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkIn
           <SafeLink
             to={to}
             {...classes('link')}
-            target={linkInfo ? '_blank' : null}
+            target={target}
             rel={linkInfo ? 'noopener noreferrer' : null}>
             {title}
           </SafeLink>
@@ -39,10 +47,7 @@ RelatedArticle.propTypes = {
   introduction: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   linkInfo: PropTypes.string,
-};
-
-RelatedArticle.defaultProps = {
-  linkInfo: null,
+  target: PropTypes.string,
 };
 
 const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }) => {

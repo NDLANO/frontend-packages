@@ -1,6 +1,6 @@
 {
   "name": "@ndla/polyfill",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "NDLA polyfills for various browser",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -18,9 +18,9 @@
     "es"
   ],
   "dependencies": {
+    "core-js": "^3.10.2",
     "details-polyfill": "^1.1.0",
-    "react-app-polyfill": "^0.2.1",
-    "core-js": "^3.10.2"
+    "react-app-polyfill": "^0.2.1"
   },
   "publishConfig": {
     "access": "public"

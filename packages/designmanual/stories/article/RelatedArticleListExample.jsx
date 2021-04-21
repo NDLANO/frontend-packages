@@ -68,6 +68,7 @@ export const RelatedArticleExternal = ({ t }) => (
       modifier="external-learning-resources"
       introduction="Bioteknologinemnda er et frittstående, rådgivende organ som er oppnevnt av Regjeringen og hjemlet (begrunnet) i Genteknologiloven og Bioteknologiloven."
       linkInfo="Nettside hos bion.no"
+      target={'_blank'}
       to="#"
     />
     <RelatedArticle
@@ -76,6 +77,7 @@ export const RelatedArticleExternal = ({ t }) => (
       modifier="external-learning-resources"
       introduction="https://www.url.no/visuelt/vin…"
       linkInfo="Nettside hos helsedirektoratet.no"
+      target={'_blank'}
       to="#"
     />
   </RelatedArticleList>

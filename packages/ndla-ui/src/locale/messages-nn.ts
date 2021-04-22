@@ -719,11 +719,11 @@ const messages = {
     frontpage: {
       heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
       text:
-        'Hausten 2020 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
+        'Hausten 2020 og 2021 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
       blogHeading: 'Vil du vite meir?',
     },
     badge: {
-      heading: 'Denne sida er tilrettelagt for fagfornyelsen 2020',
+      heading: 'Denne sida er tilrettelagt for fagfornyelsen 2020/2021',
       text: 'Innhaldet er under arbeid. Ikkje på jakt etter dette?',
       linkText: 'Gå til ndla.no for dagens innhald',
     },
@@ -808,8 +808,8 @@ const messages = {
     showMore: 'Vis meir relatert innhald',
     showLess: 'Vis mindre',
   },
-  'external.error': 'Ein feil oppsto ved lasting av ein ekstern ressurs.',
-  'h5p.error': 'Ein feil oppsto ved lasting av H5P.',
+  'external.error': 'Ein feil oppstod ved lasting av ein ekstern ressurs.',
+  'h5p.error': 'Ein feil oppstod ved lasting av H5P.',
   source: 'Kjelde',
   files: 'Filer',
   download: 'Last ned fil: ',

@@ -135,7 +135,7 @@ const messages = {
   },
 
   subjectPage: {
-    errorDescription: 'Sorry, an error occurd while loading the topics.',
+    errorDescription: 'Sorry, an error occurred while loading the topics.',
     tabs: {
       topics: 'Topics',
     },
@@ -170,10 +170,10 @@ const messages = {
   },
   subjectsPage: {
     chooseSubject: 'Choose subject',
-    errorDescription: 'Sorry, an error occurd while loading the subjects.',
+    errorDescription: 'Sorry, an error occurred while loading the subjects.',
   },
   topicPage: {
-    articleErrorDescription: 'Sorry, an error occurd while loading the topic description.',
+    articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
     topic: 'TOPIC',
     topics: 'Topics',
   },
@@ -219,7 +219,7 @@ const messages = {
       linkLabel: 'Go to NDLA film',
     },
     blog: 'From our blog',
-    errorDescription: 'Sorry, an error occurd while loading the subjects.',
+    errorDescription: 'Sorry, an error occurred while loading the subjects.',
   },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',

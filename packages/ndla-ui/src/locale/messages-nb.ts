@@ -30,7 +30,7 @@ const messages = {
   },
   askNDLA: 'Spør NDLA',
   articlePage: {
-    errorDescription: 'Beklager, en feil oppsto under lasting av ressursen.',
+    errorDescription: 'Beklager, en feil oppstod under lasting av ressursen.',
     error404Description: 'Beklager, finner ikke ressursen du leter etter.',
   },
   notFoundPage: {
@@ -134,7 +134,7 @@ const messages = {
     },
   },
   subjectPage: {
-    errorDescription: 'Beklager, en feil oppsto under lasting av emnene.',
+    errorDescription: 'Beklager, en feil oppstod under lasting av emnene.',
     tabs: {
       topics: 'Emner',
     },
@@ -168,11 +168,11 @@ const messages = {
     },
   },
   subjectsPage: {
-    errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
+    errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     chooseSubject: 'Velg fag',
   },
   topicPage: {
-    articleErrorDescription: 'Beklager, en feil oppsto under lasting av emnebeskrivelsen.',
+    articleErrorDescription: 'Beklager, en feil oppstod under lasting av emnebeskrivelsen.',
     topic: 'EMNE',
     topics: 'Emner',
   },
@@ -212,7 +212,7 @@ const messages = {
       imported: 'Spolte fag',
       heading: 'Hva lærer du?',
     },
-    errorDescription: 'Beklager, en feil oppsto under lasting av fagene.',
+    errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     film: {
       header: 'NDLA film',
       text:
@@ -274,7 +274,7 @@ const messages = {
     altText: 'Nasjonal digital læringsarena',
   },
   resource: {
-    errorDescription: 'Beklager, men en feil oppsto under lasting av emneressurser.',
+    errorDescription: 'Beklager, men en feil oppstod under lasting av emneressurser.',
     error: 'Beklager, en del av innholdet kunne ikke vises.',
     noCoreResourcesAvailableUnspecific: 'Det er ikke noe kjernestoff tilgjengelig.',
     noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {name}.',
@@ -461,7 +461,7 @@ const messages = {
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',
-    description: 'Beklager, en feil oppsto.',
+    description: 'Beklager, en feil oppstod.',
     linksTitle: 'Kom igang:',
     back: 'Gå tilbake',
     goToFrontPage: 'Gå til forsiden',
@@ -717,11 +717,11 @@ const messages = {
     frontpage: {
       heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
       text:
-        'Høsten 2020 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
+        'Høsten 2020 og 2021 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
       blogHeading: 'Vil du vite mer?',
     },
     badge: {
-      heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020',
+      heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020/2021',
       text: 'Innholdet er under arbeid. Ikke på jakt etter dette?',
       linkText: 'Gå til ndla.no for dagens innhold',
     },
@@ -767,7 +767,7 @@ const messages = {
     largeSize: 'Se stor utgave av bilde',
     error: {
       url: 'Feil ved lasting av bildet.',
-      caption: 'Beklager, en feil oppsto ved lasting av bildet.',
+      caption: 'Beklager, en feil oppstod ved lasting av bildet.',
     },
   },
   audio: {
@@ -775,7 +775,7 @@ const messages = {
     reuse: 'Bruk lydfil',
     error: {
       url: 'Feil ved lasting av lydfila.',
-      caption: 'Beklager, en feil oppsto ved lasting av lydfil.',
+      caption: 'Beklager, en feil oppstod ved lasting av lydfil.',
     },
     controls: {
       forward15sec: 'Spol 15 sekunder frem',

@@ -84,3 +84,5 @@ export { default as messagesNN } from './locale/messages-nn';
 export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
+
+export { default as ToolboxPage } from './ToolboxPage';

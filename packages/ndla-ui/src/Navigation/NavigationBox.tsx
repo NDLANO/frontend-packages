@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, colors, fonts, misc, mq } from '@ndla/core';
+import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 import { css } from '@emotion/core';
 import { Switch } from '@ndla/switch';
@@ -34,41 +34,50 @@ const StyledHeading = styled.h2<InvertItProps>`
 `;
 
 type listProps = {
-  direction?: 'horizontal' | 'vertical';
+  direction?: 'horizontal' | 'vertical' | 'floating';
 };
 const StyledList = styled.ul<listProps>`
   list-style: none;
   margin: 0;
   padding: 0;
-  ${mq.range({ from: breakpoints.tablet })} {
-    column-count: 2;
-    column-gap: 20px;
-    ${props =>
-      props.direction === 'horizontal' &&
-      css`
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      `}
-  }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    column-count: 3;
-    column-gap: 20px;
-    ${props =>
-      props.direction === 'horizontal' &&
-      css`
-        grid-template-columns: repeat(3, 1fr);
-      `}
-  }
+  ${props =>
+    props.direction !== 'floating' &&
+    css`
+      ${mq.range({ from: breakpoints.tablet })} {
+        column-count: 2;
+        column-gap: 20px;
+        ${props.direction === 'horizontal' &&
+          css`
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+          `}
+      }
+      ${mq.range({ from: breakpoints.tabletWide })} {
+        column-count: 3;
+        column-gap: 20px;
+        ${props.direction === 'horizontal' &&
+          css`
+            grid-template-columns: repeat(3, 1fr);
+          `}
+      }
+    `};
 `;
 type additionalResourceProps = {
   isAdditionalResource?: boolean;
   lighter?: boolean;
   selected?: boolean;
+  listDirection?: listProps['direction'];
 };
 
 const StyledListItem = styled.li<additionalResourceProps>`
   margin-bottom: 0;
   break-inside: avoid;
+  ${props =>
+    props.listDirection === 'floating' &&
+    css`
+      display: inline-block;
+      margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
+    `}
 `;
 
 const StyledListElementWrapper = styled.div<additionalResourceProps>`
@@ -137,6 +146,7 @@ const StyledButtonContentSelected = styled.span`
   border-radius: 50%;
   background: ${colors.white};
   flex-shrink: 0;
+  margin-left: ${spacing.small};
 `;
 
 export type ItemProps = {
@@ -154,7 +164,7 @@ type Props = {
   onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
-  listDirection?: 'horizontal' | 'vertical';
+  listDirection?: listProps['direction'];
   invertedStyle?: boolean;
   onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
 };
@@ -189,7 +199,7 @@ export const NavigationBox = ({
       </StyledHeadingWrapper>
       <StyledList data-testid="nav-box-list" direction={listDirection}>
         {items.map((item: ItemProps) => (
-          <StyledListItem key={item.label} data-testid="nav-box-item">
+          <StyledListItem key={item.label} listDirection={listDirection} data-testid="nav-box-item">
             <StyledListElementWrapper
               isAdditionalResource={item.isAdditionalResource}
               lighter={colorMode === 'light'}
@@ -203,7 +213,7 @@ export const NavigationBox = ({
                 buttonSize="medium"
                 size="medium"
                 borderShape="sharpened"
-                width="full"
+                width={listDirection === 'floating' ? 'auto' : 'full'}
                 textAlign="left"
                 onClick={(e: React.MouseEvent<HTMLElement>) => {
                   if (onClick) {
@@ -227,7 +237,7 @@ export const NavigationBox = ({
                 </StyledButtonContent>
               </ListElementType>
             </StyledListElementWrapper>
-            <StyledSpacingElement />
+            {listDirection !== 'floating' && <StyledSpacingElement />}
           </StyledListItem>
         ))}
       </StyledList>

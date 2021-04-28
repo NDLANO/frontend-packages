@@ -20,10 +20,14 @@ import { Camera } from '@ndla/icons/editor';
 
 const IconList = () => (
   <ul>
-    <li><Audio /> Audio icon</li>
-    <li><Camera /> Camera icon</li>
+    <li>
+      <Audio /> Audio icon
+    </li>
+    <li>
+      <Camera /> Camera icon
+    </li>
   </ul>
-)
+);
 ```
 
 or
@@ -31,7 +35,7 @@ or
 ```js
 import { Audio } from '@ndla/icons/lib/common/Audio';
 
-<Audio />
+<Audio />;
 ```
 
 ### Icons are currently grouped into three folders

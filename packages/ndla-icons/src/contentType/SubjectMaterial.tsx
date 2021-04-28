@@ -23,17 +23,11 @@ const SubjectMaterial = (props: Props) => (
     {...props}>
     <g>
       <title>Fagstoff</title>
-      <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
-        <g>
-          <g>
-            <polygon points="0 0 24 0 24 24 0 24" />
-            <path
-              d="M0,10 L0,8 L11,8 L11,10 L0,10 Z M24,0 L24,2 L0,2 L0,0 L24,0 Z M24,4 L24,6 L0,6 L0,4 L24,4 Z M13,8 L24,15.5 L13,23 L13,8 Z"
-              fill="currentColor"
-            />
-          </g>
-        </g>
-      </g>
+      <path
+        d="M19 5V19H5V5H19ZM19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"
+        fill="currentColor"
+      />
+      <path d="M14 17H7V15H14V17ZM17 13H7V11H17V13ZM17 9H7V7H17V9Z" fill="currentColor" />
     </g>
   </Icon>
 );

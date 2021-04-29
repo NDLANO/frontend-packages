@@ -370,19 +370,16 @@ const Controls = ({ src, title, t }: Props & tType) => {
     }
   }, []);
 
-  useEffect(() => {
+  const togglePlay = () => {
     if (audioRef.current) {
       const audioElement = audioRef.current;
-      if (playing) {
+      if (!playing) {
         audioElement.play();
       } else {
         audioElement.pause();
       }
+      setPlaying(!playing);
     }
-  }, [playing]);
-
-  const togglePlay = () => {
-    setPlaying(!playing);
   };
 
   const onSeekSeconds = (seconds: number) => {

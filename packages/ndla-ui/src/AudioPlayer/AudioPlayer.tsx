@@ -50,6 +50,7 @@ const ImageWrapper = styled.div`
     }
   }
 `;
+
 const TextWrapper = styled.div`
   padding: ${spacing.normal} ${spacing.small} ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
@@ -59,10 +60,19 @@ const TextWrapper = styled.div`
     padding: ${spacing.normal} ${spacing.medium};
   }
 `;
+
 const Title = styled.h2`
   ${fonts.sizes('22px', '30px')};
   margin: 0 0 ${spacing.small};
 `;
+
+const Subtitle = styled.h3`
+  ${fonts.sizes('16px', '30px')};
+  color: ${colors.brand.primary};
+  font-family: ${fonts.sans};
+  margin: 0 0 ${spacing.medium};
+`;
+
 const Description = styled.p`
   ${fonts.sizes('16px', '30px')};
   font-family: ${fonts.sans};
@@ -126,6 +136,7 @@ const TextVersionText = styled.div`
 type Props = {
   src: string;
   title: string;
+  subtitle: string;
   speech?: boolean;
   description?: string;
   textVersion?: ReactNode;
@@ -138,6 +149,7 @@ type Props = {
 const AudioPlayer = ({
   src,
   title,
+  subtitle,
   speech,
   description,
   img,
@@ -170,6 +182,7 @@ const AudioPlayer = ({
           )}
           <TextWrapper>
             <Title>{title}</Title>
+            {subtitle && <Subtitle>{subtitle}</Subtitle>}
             {description && <Description>{description}</Description>}
             {textVersion && (
               <LinkToTextVersionWrapper>

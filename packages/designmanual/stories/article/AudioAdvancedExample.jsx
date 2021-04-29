@@ -48,6 +48,7 @@ const AudioAdvancedExample = ({ t }) => {
       <AudioPlayer
         src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
         title="Den gode lydhistoria"
+        subtitle="En podcast fra NDLA"
         description={description}
         img={{
           url: 'https://api.ndla.no/image-api/raw/BagNsXHq.jpg?height=400',

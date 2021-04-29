@@ -28,12 +28,12 @@ const ResourceLink = ({ t, icon, children, active, component: Component, ...rest
     })}
     {...rest}>
     <div {...classes('icon o-flag__img')}>{icon}</div>
-    <h1 {...classes('title')}>
+    <h2 {...classes('title')}>
       <span>
         {children}
         {active && <small>{t('resource.youAreHere')}</small>}
       </span>
-    </h1>
+    </h2>
   </Component>
 );
 

@@ -45,7 +45,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   }
 `;
 
-const StyledHeader = styled.h1`
+const StyledHeader = styled.h2`
   ${fonts.sizes(20, 1.5)};
   margin: 0;
   font-weight: ${fonts.weight.semibold};

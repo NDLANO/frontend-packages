@@ -410,6 +410,9 @@
       transform-origin: 0% 0%;
     }
   }
+  &__text {
+    z-index: 2;
+  }
 
   &__expand {
     display: flex;

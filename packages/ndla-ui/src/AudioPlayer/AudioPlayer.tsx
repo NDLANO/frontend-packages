@@ -136,7 +136,7 @@ const TextVersionText = styled.div`
 type Props = {
   src: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   speech?: boolean;
   description?: string;
   textVersion?: ReactNode;

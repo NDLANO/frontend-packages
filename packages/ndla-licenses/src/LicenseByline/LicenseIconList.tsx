@@ -75,7 +75,7 @@ const LicenseIconItem: FC<LicenseIconItemProps> = ({ licenseRight, locale }) => 
 
   return (
     <StyledLicenseIconItem>
-      <StyledLicenseIconButton>
+      <StyledLicenseIconButton type="button">
         <LicenseIcon licenseRight={licenseRight} description={description} />
         <span role="tooltip">
           {getLicenseRightByAbbreviation(licenseRight, locale).description}

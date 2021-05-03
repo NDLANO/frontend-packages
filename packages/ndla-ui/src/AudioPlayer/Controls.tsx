@@ -415,6 +415,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
           </span>
         </PlayButton>
         <Forward15SecButton
+          type="button"
           title={t('audio.controls.forward15sec')}
           aria-label={t('audio.controls.forward15sec')}
           onClick={() => {
@@ -425,6 +426,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
         <SpeedWrapper>
           <Menu>
             <SpeedButton
+              type="button"
               as="button"
               title={t('audio.controls.selectSpeed')}
               aria-label={t('audio.controls.selectSpeed')}>
@@ -435,6 +437,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
                 <SpeedList as="div">
                   {speedValues.map(speed => (
                     <SpeedValueButton
+                      type="button"
                       as="button"
                       key={speed}
                       selected={speed === speedValue}
@@ -450,6 +453,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
           </Menu>
         </SpeedWrapper>
         <Back15SecButton
+          type="button"
           title={t('audio.controls.rewind15sec')}
           aria-label={t('audio.controls.rewind15sec')}
           onClick={() => {
@@ -473,6 +477,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
           <Menu>
             {/* @ts-ignore */}
             <VolumeButton
+              type="button"
               as="button"
               title={t('audio.controls.adjustVolume')}
               aria-label={t('audio.controls.adjustVolume')}

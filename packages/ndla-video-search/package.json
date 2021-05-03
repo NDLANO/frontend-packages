@@ -1,6 +1,6 @@
 {
   "name": "@ndla/video-search",
-  "version": "0.8.70",
+  "version": "0.8.71",
   "description": "A simple library for searching NDLA videos",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
   "dependencies": {
     "@ndla/button": "^0.3.54",
     "@ndla/core": "^0.6.38",
-    "@ndla/licenses": "^0.6.47",
+    "@ndla/licenses": "^0.6.48",
     "@ndla/tabs": "^0.11.48",
     "@ndla/util": "^0.4.5",
     "react-bem-helper": "^1.4.1"

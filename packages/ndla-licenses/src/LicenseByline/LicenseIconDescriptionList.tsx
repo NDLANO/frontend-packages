@@ -6,7 +6,7 @@
  *
  */
 
-import React, { FC } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
@@ -24,7 +24,7 @@ interface LicenseIconItemProps {
   locale?: string;
 }
 
-const LicenseIconItem: FC<LicenseIconItemProps> = ({ licenseRight, locale }) => {
+const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
@@ -50,12 +50,12 @@ interface LicenseIconDescriptionListProps {
   locale?: string;
 }
 
-const LicenseIconDescriptionList: FC<LicenseIconDescriptionListProps> = ({
+const LicenseIconDescriptionList = ({
   licenseRights,
   locale,
   color,
   highlightCC,
-}) => (
+}: LicenseIconDescriptionListProps) => (
   <StyledLicenseIconList color={color} highlightCC={highlightCC}>
     {licenseRights.map(licenseRight => (
       <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />

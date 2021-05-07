@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { FC } from 'react';
+import React from 'react';
 import { colors, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
@@ -34,14 +34,14 @@ interface Props {
   color?: string;
 }
 
-const LicenseDescription: FC<Props> = ({
+const LicenseDescription = ({
   children,
   licenseRights,
   messages,
   locale,
   highlightCC,
   color,
-}) => (
+}: Props) => (
   <StyledLicenseByline>
     <div>
       <LicenseIconDescriptionList

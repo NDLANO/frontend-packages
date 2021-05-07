@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { FC } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
 import StyledLicenseByline from './StyledLicenseByline';
@@ -19,7 +19,7 @@ interface Props {
   marginRight?: boolean;
 }
 
-const LicenseByline: FC<Props> = ({ children, licenseRights, locale, color, marginRight }) => {
+const LicenseByline = ({ children, licenseRights, locale, color, marginRight }: Props) => {
   return (
     <StyledLicenseByline>
       <LicenseIconList

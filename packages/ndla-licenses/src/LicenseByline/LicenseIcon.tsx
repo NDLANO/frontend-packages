@@ -6,7 +6,7 @@
  *
  */
 
-import React, { FC } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { By, Cc, Nc, Nd, Sa, Zero, Publicdomain, Copyright } from '@ndla/icons/licenses';
 import { COPYRIGHTED, BY, SA, NA, NC, ND, PD, CC0, CC } from '../licenseRights';
@@ -16,7 +16,7 @@ interface Props {
   description: string;
 }
 
-const LicenseIcon: FC<Props> = ({ licenseRight, description }) => {
+const LicenseIcon = ({ licenseRight, description }: Props) => {
   switch (licenseRight) {
     case CC:
       return <Cc aria-label={description} />;

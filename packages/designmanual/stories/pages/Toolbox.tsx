@@ -7,19 +7,47 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { ToolboxPage } from '@ndla/ui';
+// @ts-ignore
+import { SubjectBanner, ToolboxPage } from '@ndla/ui';
 // @ts-ignore
 import { topics as toolboxTopics } from '../../dummydata/mockToolbox';
 // @ts-ignore
 import { fetchArticle } from '../article/articleApi';
 // @ts-ignore
 import Resources from '../molecules/resources';
+// @ts-ignore
+import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
+
+import { Image, Video, H5p } from '../molecules/VisualElements';
+
+const dummyVisualElementOfTopic = (id: string) => {
+  const index = toolboxTopics.findIndex((topic: any) => id === topic.id) + 1;
+  switch (index % 3) {
+    case 1:
+      return {
+        type: 'image',
+        element: <Image />,
+      };
+    case 2:
+      return {
+        type: 'video',
+        element: <Video />,
+      };
+    default:
+      return {
+        type: 'other',
+        element: <H5p />,
+      };
+  }
+};
 
 const Toolbox = () => {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [topics, setTopics] = useState(toolboxTopics);
   const [topicData, setTopicData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+
+  const topicContentRef = React.useRef<any>(null);
 
   useEffect(() => {
     const updatedTopics = toolboxTopics.map((topic: any) => {
@@ -35,8 +63,9 @@ const Toolbox = () => {
         const topicData = {
           title: data.title,
           introduction: data.introduction,
-          image: data.metaImage,
+          image: { url: `${data.metaImage.url}?width=400`, alt: data.metaImage.alt },
           resources: <Resources title="" showActiveResource={false} />,
+          visualElement: dummyVisualElementOfTopic(selectedTopic),
         };
         setLoading(false);
         setTopicData(topicData);
@@ -44,20 +73,36 @@ const Toolbox = () => {
     }
   }, [selectedTopic]);
 
+  const scrollToTopic = () => {
+    if (topicContentRef.current) {
+      const scrollTo = topicContentRef.current.getBoundingClientRect().top + window.scrollY - 155;
+      window.scrollTo({
+        top: scrollTo,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const onTopicSelected = (e: React.MouseEvent<HTMLElement>, id?: string) => {
     if (id) {
       setSelectedTopic(id);
+      scrollToTopic();
     }
   };
 
   return (
-    <ToolboxPage
-      topics={topics}
-      onSelectTopic={onTopicSelected}
-      selectedTopic={topicData}
-      isLoadingTopic={loading}
-      introduction="Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I Verktøykassen til NDLA finner du masse gode tips og råd!"
-    />
+    <>
+      <ToolboxPage
+        ref={topicContentRef}
+        topics={topics}
+        onSelectTopic={onTopicSelected}
+        selectedTopic={topicData}
+        isLoadingTopic={loading}
+        title="Verktøykassa"
+        introduction="Hva vil det si å arbeide utforskende? Hvordan kan du lære bedre? Hva skal til for å få gruppearbeid til å fungere? I Verktøykassa finner både elever og lærere ressurser som er aktuelle for alle fag, og som støtter opp under læringsarbeid og utvikling av kunnskap, ferdigheter og forståelse."
+      />
+      <SubjectBanner image={backgroundToolbox} negativeTopMargin={!selectedTopic} />
+    </>
   );
 };
 

@@ -807,6 +807,10 @@ const messages = {
   filterButtons: {
     removeAllFilters: 'Remove filters',
   },
+  visualElement: {
+    show: 'Show',
+    showVideo: 'Show video',
+  },
 };
 
 export default messages;

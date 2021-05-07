@@ -17,7 +17,6 @@ import {
   LayoutItem,
   NavigationBox,
   NavigationHeading,
-  NavigationTopicAbout,
   OneColumn,
   SubjectAbout,
   SubjectBanner,
@@ -29,12 +28,14 @@ import {
   ArticleFootNotes,
   ArticleIntroduction,
   ArticleWrapper,
+  Topic,
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
 import Resources from '../molecules/resources';
 import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
+import FigureImage from '../article/FigureImage';
 
 const subjectAbout = (label, description) => (
   <SubjectAbout
@@ -97,7 +98,7 @@ const loadArticle = async articleId => {
         />
       </ArticleWrapper>
     );
-    return { content: content, introduction: introduction };
+    return { content: content, introduction: introduction, metaImage: article.metaImage };
   } catch (error) {
     console.error(error); // eslint-disable-line no-console
   }
@@ -109,6 +110,16 @@ const fetchTopicData = (topicDataItem, setDataCallback) => {
     updatedItem.loadingContent = false;
     updatedItem.content = result.content;
     updatedItem.introduction = result.introduction;
+    if (result.metaImage) {
+      updatedItem.image = { url: `${result.metaImage.url}?width=400`, alt: result.metaImage.alt };
+      updatedItem.visualElement = {
+        type: 'image',
+        element: (
+          <FigureImage type="full-column" alt={result.metaImage.alt} src={result.metaImage.url} />
+        ),
+      };
+    }
+
     setDataCallback(updatedItem);
   });
 };
@@ -428,16 +439,20 @@ const SubjectPage = ({
             </div>
             {topicData && (
               <>
-                <NavigationTopicAbout
-                  heading={topicData.label}
-                  introduction={topicData.introduction}
-                  onToggleShowContent={() => setShowMainTopicContent(!showMainTopicContent)}
-                  showContent={showMainTopicContent}
+                <Topic
                   renderMarkdown={text => text}
+                  isLoading={topicData.loadingContent}
+                  topic={{
+                    title: topicData.label,
+                    introduction: topicData.introduction,
+                    image: topicData.image,
+                    visualElement: topicData.visualElement,
+                  }}
+                  onToggleShowContent={() => setShowMainTopicContent(!showMainTopicContent)}
                   isAdditionalTopic={topicData.isAdditionalResource}
-                  isLoading={topicData.loadingContent}>
+                  showContent={showMainTopicContent}>
                   {topicData.content}
-                </NavigationTopicAbout>
+                </Topic>
 
                 <div ref={subTopicRef}>
                   {subTopics.length ? (
@@ -458,18 +473,20 @@ const SubjectPage = ({
                   )}
                 </div>
                 {subTopicData && (
-                  <>
-                    <NavigationTopicAbout
-                      heading={subTopicData.label}
-                      introduction={subTopicData.introduction}
-                      onToggleShowContent={() => setShowSubTopicContent(!showSubTopicContent)}
-                      showContent={showSubTopicContent}
-                      renderMarkdown={text => text}
-                      isAdditionalTopic={subTopicData.isAdditionalResource}
-                      isLoading={subTopicData.loadingContent}>
-                      {subTopicData.content}
-                    </NavigationTopicAbout>
-                  </>
+                  <Topic
+                    renderMarkdown={text => text}
+                    isLoading={subTopicData.loadingContent}
+                    topic={{
+                      title: subTopicData.label,
+                      introduction: subTopicData.introduction,
+                      image: subTopicData.image,
+                      visualElement: subTopicData.visualElement,
+                    }}
+                    onToggleShowContent={() => setShowSubTopicContent(!showSubTopicContent)}
+                    isAdditionalTopic={subTopicData.isAdditionalResource}
+                    showContent={showSubTopicContent}>
+                    {subTopicData.content}
+                  </Topic>
                 )}
                 <div ref={subSubTopicRef}>
                   {subTopicData && (
@@ -497,16 +514,20 @@ const SubjectPage = ({
                 </div>
                 {subSubTopicData && (
                   <>
-                    <NavigationTopicAbout
-                      heading={subSubTopicData.label}
-                      introduction={subSubTopicData.introduction}
-                      onToggleShowContent={() => setShowSubSubTopicContent(!showSubSubTopicContent)}
-                      showContent={showSubSubTopicContent}
+                    <Topic
                       renderMarkdown={text => text}
+                      isLoading={subSubTopicData.loadingContent}
+                      topic={{
+                        title: subSubTopicData.label,
+                        introduction: subSubTopicData.introduction,
+                        image: subSubTopicData.image,
+                        visualElement: subSubTopicData.visualElement,
+                      }}
+                      onToggleShowContent={() => setShowSubSubTopicContent(!showSubSubTopicContent)}
                       isAdditionalTopic={subSubTopicData.isAdditionalResource}
-                      isLoading={subSubTopicData.loadingContent}>
+                      showContent={showSubSubTopicContent}>
                       {subSubTopicData.content}
-                    </NavigationTopicAbout>
+                    </Topic>
                     <Resources title={subSubTopicData.label} showActiveResource={false} />
                   </>
                 )}

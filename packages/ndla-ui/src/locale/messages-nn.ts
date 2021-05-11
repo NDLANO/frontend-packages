@@ -359,6 +359,12 @@ const messages = {
     hasCopiedTitle: 'Kopiert!',
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',
+    copyText: {
+      internet: 'Internett',
+      noTitle: 'Utan tittel',
+      downloadedFrom: 'Henta frå',
+      readDate: 'Lese',
+    },
     download: 'Last ned',
     tabs: {
       text: 'Tekst',

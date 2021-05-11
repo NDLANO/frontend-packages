@@ -432,6 +432,12 @@ const messages = {
     copyTitle: 'Copy reference',
     embed: 'Embed',
     embedCopied: 'Copied embed code!',
+    copyText: {
+      internet: 'Internet',
+      noTitle: 'No title',
+      downloadedFrom: 'Downloaded from',
+      readDate: 'Read',
+    },
     hasCopiedTitle: 'Copied!',
     download: 'Download',
     creditType: {

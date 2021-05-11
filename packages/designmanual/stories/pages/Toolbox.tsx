@@ -84,6 +84,7 @@ const Toolbox = () => {
   };
 
   const onTopicSelected = (e: React.MouseEvent<HTMLElement>, id?: string) => {
+    e.preventDefault();
     if (id) {
       setSelectedTopic(id);
       scrollToTopic();

@@ -129,7 +129,7 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
   stepId,
   arrow,
 }) => (
-  <SafeLink to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
+  <SafeLink tabIndex={0} to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
       <StyledTitle>{title}</StyledTitle>

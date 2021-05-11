@@ -7,7 +7,8 @@
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/polyfill"
   },
   "keywords": [
     "ndla"

@@ -7,7 +7,7 @@
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    "url": "https://github.com/NDLANO/frontend-packages.git"
   },
   "keywords": [
     "ndla"

@@ -37,7 +37,7 @@ const SafeLink: React.FunctionComponent<LinkProps & React.HTMLAttributes<HTMLEle
   }
 
   return (
-    <Link to={to} replace={replace} {...rest}>
+    <Link tabIndex={0} to={to} replace={replace} {...rest}>
       {children}
     </Link>
   );

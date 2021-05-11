@@ -258,10 +258,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
             isOpen={isOpen}
             invertedStyle={invertedStyle}
             indexNumber={index}>
-            <SafeLink
-              tabIndex={0}
-              onClick={onStepNavigate}
-              to={toLearningPathUrl(learningPathId, id)}>
+            <SafeLink onClick={onStepNavigate} to={toLearningPathUrl(learningPathId, id)}>
               <StyledContentType>
                 {getContentTypeBadge(type)}
                 {hasRead(id, cookies) && (

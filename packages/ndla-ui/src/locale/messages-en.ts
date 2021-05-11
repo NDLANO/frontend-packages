@@ -474,8 +474,7 @@ const messages = {
     footerEditiorInChief: 'Editor in chief: ',
     footerManagingEditor: 'Managing editor: ',
     footerPrivacyLink: 'Cookies Policy',
-    vision:
-      'NDLA’s vision is to offer high quality open educational learning resources in all subjects in upper secondary education in Norway and to support students and teachers in their active and collaborative learning.',
+    vision: 'We create the learning of the future together.',
     footerLinksHeader: 'Other NDLA sites',
     socialMediaLinks: {
       facebook: 'NDLA on Facebook',

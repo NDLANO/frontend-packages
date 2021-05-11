@@ -8,10 +8,10 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 import parse from 'html-react-parser';
-import { ChevronDown, ChevronUp, Play } from '@ndla/icons/common';
+import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
 // @ts-ignore
@@ -29,42 +29,74 @@ const TopicHeaderVisualElementWrapper = styled.div`
   float: right;
   margin-left: ${spacing.normal};
   position: relative;
+  width: 100px;
+  height: 100px;
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    width: 150px;
+    height: 150px;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    width: 200px;
+    height: 200px;
+  }
+`;
+
+const ShowVisualElementWrapper = styled.div`
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
+
+const VisualElementButton = styled(Button)`
+  color: ${colors.brand.secondary};
+  width: 100%;
+  height: 100%;
 `;
 
 const TopicHeaderImage = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  transition: transform ${animations.durations.fast};
+  ${VisualElementButton}:hover & {
+    transform: scale(1.1);
+    opacity: 1.2;
+  }
 `;
-const ShowVisualElementWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+const ExpandVisualElementButton = styled.span`
+  position: absolute;
+  right: -10px;
+  bottom: -4px;
+  transition: all ${animations.durations.fast};
+  ${VisualElementButton}:hover & {
+    color: ${colors.brand.primary};
+    right: 10px;
+  }
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    right: 0;
+    bottom: 0;
+  }
+`;
+
+const TopicHeaderOverlay = styled.div`
+  background: black;
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
   bottom: 0;
-  z-index: 2;
-`;
-
-const ExpandVisualElementButton = styled(Button)`
-  width: 48px;
-  height: 48px;
-  padding: 0;
+  right: 0;
   border-radius: 50%;
-`;
-
-const ExpandImageButton = styled(Button)`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: ${colors.brand.tertiary};
+  transition: opacity ${animations.durations.fast};
+  ${VisualElementButton}:hover & {
+    opacity: 0.1;
+  }
 `;
 
 const TopicHeading = styled.h1<InvertItProps>`
-  margin: ${spacing.medium} 0 ${spacing.normal};
+  margin: ${spacing.medium} 0 0;
   font-weight: ${fonts.weight.bold};
   display: flex;
   flex-wrap: wrap;
@@ -73,12 +105,12 @@ const TopicHeading = styled.h1<InvertItProps>`
 
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('32px', '28px')};
-    margin: 40px 18px;
+    margin: 40px 0 0;
   }
 
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: 50px 0 24px;
-    ${fonts.sizes('38px', '32px')};
+    margin: 50px 0 0;
+    ${fonts.sizes('38px', '48px')};
   }
   ${props =>
     props.invertedStyle &&
@@ -110,6 +142,7 @@ const StyledAdditionalResource = styled.span`
 const TopicIntroduction = styled.p`
   font-weight: ${fonts.weight.light};
   max-width: 612px;
+  margin-top: ${spacing.xsmall};
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('22px', '32px')};
   }
@@ -193,59 +226,52 @@ const Topic = ({
           <>
             {topic.image && (
               <TopicHeaderVisualElementWrapper>
-                <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
-                {topic.visualElement && (
-                  <ShowVisualElementWrapper>
-                    <Modal
-                      activateButton={
-                        topic.visualElement.type === 'image' ? (
-                          <ExpandImageButton
+                {topic.visualElement ? (
+                  <>
+                    <ShowVisualElementWrapper>
+                      <Modal
+                        activateButton={
+                          <VisualElementButton
                             stripped
-                            size="small"
-                            borderShape="rounded"
-                            title={t('image.largeSize')}>
-                            <ExpandTwoArrows style={{ width: '20px', height: '20px' }} />
-                          </ExpandImageButton>
-                        ) : (
-                          <ExpandVisualElementButton
-                            size="normal"
-                            borderShape="rounded"
-                            title={t('visualElement.showVideo')}>
-                            {topic.visualElement.type === 'video' && (
-                              <>
-                                <Play
-                                  title={t('visualElement.show')}
-                                  style={{ width: '32px', height: '32px' }}
-                                />
-                              </>
-                            )}
-                            {topic.visualElement.type === 'other' && (
-                              <>
-                                <CursorClick
-                                  title={t('visualElement.show')}
-                                  style={{ width: '32px', height: '32px' }}
-                                />
-                              </>
-                            )}
-                          </ExpandVisualElementButton>
-                        )
-                      }
-                      animation="subtle"
-                      animationDuration={50}
-                      backgroundColor="white"
-                      size="large">
-                      {(onClose: () => void) => (
-                        <>
-                          <ModalHeader>
-                            <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                          </ModalHeader>
-                          <ModalBody modifier="no-side-padding-mobile">
-                            {topic.visualElement && topic.visualElement.element}
-                          </ModalBody>
-                        </>
-                      )}
-                    </Modal>
-                  </ShowVisualElementWrapper>
+                            title={
+                              topic.visualElement.type === 'image'
+                                ? t('image.largeSize')
+                                : t('visualElement.show')
+                            }>
+                            <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
+                            <TopicHeaderOverlay />
+                            <ExpandVisualElementButton>
+                              {topic.visualElement.type === 'image' && (
+                                <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
+                              )}
+                              {topic.visualElement.type === 'video' && (
+                                <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
+                              )}
+                              {topic.visualElement.type === 'other' && (
+                                <CursorClick style={{ width: '24px', height: '24px' }} />
+                              )}
+                            </ExpandVisualElementButton>
+                          </VisualElementButton>
+                        }
+                        animation="subtle"
+                        animationDuration={50}
+                        backgroundColor="white"
+                        size="large">
+                        {(onClose: () => void) => (
+                          <>
+                            <ModalHeader>
+                              <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
+                            </ModalHeader>
+                            <ModalBody modifier="no-side-padding-mobile">
+                              {topic.visualElement && topic.visualElement.element}
+                            </ModalBody>
+                          </>
+                        )}
+                      </Modal>
+                    </ShowVisualElementWrapper>
+                  </>
+                ) : (
+                  <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
                 )}
               </TopicHeaderVisualElementWrapper>
             )}

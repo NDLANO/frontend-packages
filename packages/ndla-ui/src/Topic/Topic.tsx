@@ -82,7 +82,7 @@ const ExpandVisualElementButton = styled.span`
 
 const TopicHeaderOverlay = styled.div`
   background: black;
-  opacity: 0;
+  opacity: 0.05;
   position: absolute;
   top: 0;
   left: 0;

@@ -433,10 +433,10 @@ const messages = {
     embed: 'Embed',
     embedCopied: 'Copied embed code!',
     copyText: {
-      internet: 'Internet',
+      internet: '[Internet]. ',
       noTitle: 'No title',
-      downloadedFrom: 'Downloaded from',
-      readDate: 'Read',
+      downloadedFrom: 'Downloaded from: ',
+      readDate: 'Read: ',
     },
     hasCopiedTitle: 'Copied!',
     download: 'Download',

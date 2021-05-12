@@ -359,10 +359,10 @@ const messages = {
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',
     copyText: {
-      internet: 'Internett',
+      internet: '[Internett]. ',
       noTitle: 'Uten tittel',
-      downloadedFrom: 'Hentet fra',
-      readDate: 'Lest',
+      downloadedFrom: 'Hentet fra: ',
+      readDate: 'Lest: ',
     },
     download: 'Last ned',
     tabs: {

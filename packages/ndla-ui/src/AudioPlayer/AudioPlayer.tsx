@@ -40,7 +40,7 @@ const ImageWrapper = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
     max-height: 400px;
@@ -127,7 +127,7 @@ type Props = {
   src: string;
   title: string;
   speech?: boolean;
-  description?: string;
+  description?: ReactNode;
   textVersion?: ReactNode;
   img?: {
     url: string;

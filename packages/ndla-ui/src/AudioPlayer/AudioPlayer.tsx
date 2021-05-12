@@ -35,16 +35,24 @@ const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   flex: 1 0 auto;
-  max-width: 28%;
+
+  width: 200px;
+  height: 200px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  ${mq.range({ from: breakpoints.desktop })} {
+    width: 260px;
+    height: 260px;
+  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     max-height: 400px;
     max-width: 100%;
+    width: 100%;
+    height: auto;
     img {
       object-fit: scale-down;
     }

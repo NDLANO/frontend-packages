@@ -9,7 +9,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MultidisciplinarySubject } from '@ndla/ui';
+import { MultidisciplinarySubject, NavigationBox } from '@ndla/ui';
 import { filters, getResources } from '../../dummydata/mockMultidisciplinarySubject';
 
 const getFilters = selectedFilters =>
@@ -35,7 +35,7 @@ const getItems = selectedFilters => {
 const MultidisciplinarySubjectPage = ({ selectedFilters: selectedFiltersProps = [] }) => {
   const [selectedFilters, setSelectedFilters] = useState(selectedFiltersProps);
 
-  const onFilterClick = id => {
+  const onFilterClick = (e, id) => {
     const newFilters = [...selectedFilters];
     const idIndex = newFilters.indexOf(id);
     if (idIndex > -1) {
@@ -49,11 +49,12 @@ const MultidisciplinarySubjectPage = ({ selectedFilters: selectedFiltersProps = 
   const items = getItems(selectedFilters);
   return (
     <MultidisciplinarySubject
-      filters={getFilters(selectedFilters)}
       onFilterClick={onFilterClick}
-      items={items}
-      totalItemsCount={items.length}
-    />
+      cards={items}
+      totalCardCount={items.length}
+      totalItemsCount={items.length}>
+      <NavigationBox items={getFilters(selectedFilters)} onClick={onFilterClick} isButtonElements />
+    </MultidisciplinarySubject>
   );
 };
 

@@ -92,7 +92,7 @@ type Props = {
   cards: ListItemProps[];
   children: ReactChildren;
   totalCardCount: number;
-  hideCards: boolean;
+  hideCards?: boolean;
 };
 
 export const MultidisciplinarySubject = ({

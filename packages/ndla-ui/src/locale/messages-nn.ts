@@ -753,7 +753,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Finn lærestoff, oppgåver, filmar m.m.',
+    cursorText: 'Sjå smakebitar frå nye ressursar i Vg2-faga som kjem i haust',
   },
   navigation: {
     showLongerDescription: 'Vis heile emneskildringa',

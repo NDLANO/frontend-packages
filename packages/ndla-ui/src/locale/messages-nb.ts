@@ -751,7 +751,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Finn lærestoff, oppgaver, filmer m.m.',
+    cursorText: 'Se smakebiter fra nye ressurser i Vg2-fagene som kommer i høst',
   },
   navigation: {
     showLongerDescription: 'Vis hele emnebeskrivelsen',

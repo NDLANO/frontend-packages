@@ -742,7 +742,7 @@ const messages = {
   frontpageMenu: {
     program: 'Education programme',
     allsubjects: 'All subjects',
-    cursorText: 'Find teaching material, assignments, movies and more.',
+    cursorText: 'Preview new resources from Vg2-subjects to be released this autumn',
   },
   navigation: {
     showLongerDescription: 'Show topic description',

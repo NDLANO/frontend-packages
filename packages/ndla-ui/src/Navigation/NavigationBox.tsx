@@ -77,6 +77,9 @@ const StyledListItem = styled.li<additionalResourceProps>`
     css`
       display: inline-block;
       margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
+      ${mq.range({ until: breakpoints.mobileWide })} {
+        display: block;
+      }
     `}
 `;
 
@@ -213,7 +216,7 @@ export const NavigationBox = ({
                 buttonSize="medium"
                 size="medium"
                 borderShape="sharpened"
-                width={listDirection === 'floating' ? 'auto' : 'full'}
+                width="full"
                 textAlign="left"
                 onClick={(e: React.MouseEvent<HTMLElement>) => {
                   if (onClick) {

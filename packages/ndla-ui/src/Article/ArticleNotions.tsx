@@ -15,7 +15,6 @@ import { mq, breakpoints, fonts } from '@ndla/core';
 import { Explanation } from '@ndla/icons/common';
 import { injectT, tType } from '@ndla/i18n';
 import SearchNotionItem from '../SearchTypeResult/SearchNotionItem';
-import { to2DArray } from './utils/to2DArray';
 
 const NotionsTrigger = styled.div`
   position: fixed;
@@ -64,11 +63,19 @@ const NotionsTrigger = styled.div`
 const ModalHeadingContainer = styled.div`
   display: flex;
   align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  ${mq.range({ from: breakpoints.mobile })} {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
 
   svg {
     display: block;
     width: 4.5rem;
     height: 4.5rem;
+    color: #638b98;
   }
 
   h1 {
@@ -76,19 +83,42 @@ const ModalHeadingContainer = styled.div`
   }
 `;
 
-const RelatedContentRow = styled.div`
+const NotionsContainer = styled.div`
+  padding: 0 1rem;
+
+  ${mq.range({ from: breakpoints.mobile })} {
+    padding: 0 3.5rem;
+  }
+`
+
+const RelatedContentContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0 1rem;
+
+  ${mq.range({ from: breakpoints.mobile })} {
+    padding: 0 3.5rem;
+  }
 
   &:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 
-  > div {
-    width: calc(100% * (1 / 3));
+  > li {
+    width: 100%;
 
     &:not(:nth-child(2n)) {
-      margin-right: 0.5rem;
+      margin-right: 0;
+    }
+
+    ${mq.range({ from: breakpoints.mobile })} {
+      width: calc(100% * (1 / 3));
+
+      &:not(:nth-child(2n)) {
+        margin-right: 0.5rem;
+      }
     }
   }
 `;
@@ -170,40 +200,36 @@ export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({
       size="large"
       backgroundColor="white">
       {(onClose: void) => (
-        <>
-          <ModalHeader modifier="no-bottom-padding">
+        <div>
+          <ModalHeader modifier="notions-modal-header no-padding">
             <ModalCloseButton onClick={onClose} title="Lukk" />
           </ModalHeader>
-          <ModalBody>
+          <ModalBody modifier="notions-modal-body no-padding">
             <ModalHeadingContainer>
               <Explanation />
               <h1>{t('article.notionsPrompt')}</h1>
             </ModalHeadingContainer>
-            {notions.map(notion => (
-              <SearchNotionItem
-                key={notion.id}
-                locale={locale}
-                {...notion}
-                renderMarkdown={renderMarkdown}
-              />
-            ))}
+            <NotionsContainer>
+              {notions.map(notion => (
+                <SearchNotionItem
+                  key={notion.id}
+                  locale={locale}
+                  {...notion}
+                  renderMarkdown={renderMarkdown}
+                />
+              ))}
+            </NotionsContainer>
             {relatedContent.length > 0 && (
-              <div>
-                {to2DArray<NotionRelatedContent>(relatedContent, 2).map(
-                  (row, i) => (
-                    <RelatedContentRow key={`notion-related-row-${i + 1}`}>
-                      {row.map((rcItem, j) => (
-                        <div key={`notion-related-item-${j + 1}`}>
-                          <a href={rcItem.url}>{rcItem.label}</a>
-                        </div>
-                      ))}
-                    </RelatedContentRow>
-                  ),
-                )}
-              </div>
+              <RelatedContentContainer>
+                {relatedContent.map((content, i) => (
+                  <li key={`notion-related-item-${i + 1}`}>
+                    <a href={content.url}>{content.label}</a>
+                  </li>
+                ))}
+              </RelatedContentContainer>
             )}
           </ModalBody>
-        </>
+        </div>
       )}
     </Modal>
   </div>

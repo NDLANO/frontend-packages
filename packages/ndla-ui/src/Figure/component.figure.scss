@@ -77,6 +77,7 @@
   text-align: left;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 
   .c-figure__captionbtn {
     svg {
@@ -135,6 +136,7 @@
       animation-name: fadeIn;
       animation-duration: 0.2s;
       animation-fill-mode: forwards;
+      padding-right: $spacing--large;
     }
   }
 

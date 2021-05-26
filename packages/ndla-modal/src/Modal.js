@@ -29,6 +29,7 @@ const Modal = ({
   narrow,
   controllable,
   isOpen: propsIsOpen,
+  customDialogStyles,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -86,6 +87,7 @@ const Modal = ({
             minheight: ${minHeight};
             ${dialogStyles};
             ${narrow && narrowStyle};
+            ${customDialogStyles};
           `}
           onAnimationEnd={onAnimationEnd}
           className={`animation-container ${animation} ${animateIn &&
@@ -123,6 +125,7 @@ Modal.propTypes = {
   controllable: PropTypes.bool,
   minHeight: PropTypes.string,
   isOpen: PropTypes.bool,
+  customDialogStyles: PropTypes.object,
 };
 
 Modal.defaultProps = {
@@ -132,6 +135,7 @@ Modal.defaultProps = {
   animationDuration: 300,
   className: '',
   narrow: false,
+  customDialogStyles: {},
 };
 
 const modalAnimations = `

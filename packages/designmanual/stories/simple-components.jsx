@@ -7,7 +7,16 @@ import * as commonIcons from '@ndla/icons/common';
 import * as editorIcons from '@ndla/icons/editor';
 import * as actionIcons from '@ndla/icons/action';
 import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
-import { Aside, FactBox, Logo, LayoutItem, AudioPlayer, OneColumn, CreatedBy } from '@ndla/ui';
+import {
+  Aside,
+  FactBox,
+  Logo,
+  LayoutItem,
+  AudioPlayer,
+  OneColumn,
+  CreatedBy,
+  IframeButton,
+} from '@ndla/ui';
 import { colors } from '@ndla/core';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
@@ -802,5 +811,56 @@ storiesOf('Enkle komponenter', module)
           <CodeblockExample />
         </LayoutItem>
       </OneColumn>
+    </div>
+  ))
+  .add('Visning av applikasjoner', () => (
+    <div>
+      <StoryIntro title="Visning av applikasjoner">
+        <p>
+          Me lagar no ein del spesialapplikasjonar, desse bør visast fram på ndla.no i kontekst. Den
+          enklaste måten å få hente inn dette er å bruke iframe med t.d. kjelde:
+          https://statisk.test.ndla.no/statistikk/
+          https://statisk.test.ndla.no/mediehistorie/mediehistorieBM/
+          https://statisk.test.ndla.no/historie/tankekart/den_forste_industrielle_revolusjon/
+          https://statisk.test.ndla.no/historie/tankekart/andre_verdenskrig/ Desse applikasjonanen
+          er ofte breie og bør kjørast i tilnærma fullskjerm
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <h1 className="c-article__title">Eksempelartikkel</h1>
+        <p className="article_introduction">
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
+        </p>
+        <section>
+          <p>
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
+            Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å bruke
+            ressurser på nettopp dette prosjektet.
+          </p>
+          <p>
+            <IframeButton
+              src="https://statisk.ndla.no/mediehistorie/mediehistorieBM/"
+              title="Mediehistorie"
+              buttonTitle="Åpne interaktivt oppslagsverk"
+            />
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+            eventuelt jobber sammen med i klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+            eventuelt jobber sammen med i klassen.
+          </p>
+          <p>
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+            eventuelt jobber sammen med i klassen.
+          </p>
+        </section>
+        <ArticleBylineExample />
+      </StoryBody>
     </div>
   ));

@@ -32,18 +32,18 @@ export type Resource = {
 export interface Contributor {
   type: string;
   name: string;
-};
+}
 
 export interface License {
   license: string;
-};
+}
 
 export interface Copyright {
   license: License;
   creators: Array<Contributor>;
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
-};
+}
 
 export interface FootNote {
   ref: number;
@@ -62,7 +62,7 @@ export interface Article {
   footNotes: Array<FootNote>;
   copyright: Copyright;
   published: string;
-};
+}
 
 export type SearchResult = {
   title: string;

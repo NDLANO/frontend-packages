@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
+import SafeLink from '@ndla/safelink';
+import { BY, CC, LicenseByline } from '@ndla/licenses';
 import CompetenceItem, { ListItemProp } from './CompetenceItem';
 
 type CompetenceProps = {
@@ -38,6 +40,11 @@ const TabWrapper = styled.div`
   }
 `;
 
+const LicenseIconsTextWrapper = styled.span`
+  padding-bottom: 5px;
+  margin-left: 5px;
+`;
+
 const CompetenceGoalTab = ({ title, list }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
 
@@ -60,6 +67,17 @@ const CompetenceGoalTab = ({ title, list }: CompetenceProps) => {
         })}
       </TabWrapper>
       <CompetenceItem item={currentTabItem} />
+      <LicenseByline licenseRights={[CC, BY]}>
+        <LicenseIconsTextWrapper>UDIR</LicenseIconsTextWrapper>
+      </LicenseByline>
+      Inneholder data under{' '}
+      <SafeLink to="https://data.norge.no/nlod/no" target="_blank">
+        NLOD
+      </SafeLink>
+      , tilgjengeliggjort på{' '}
+      <SafeLink to="https://data.udir.no/" target="_blank">
+        data.udir.no
+      </SafeLink>
     </Wrapper>
   );
 };

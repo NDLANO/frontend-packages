@@ -6,18 +6,6 @@
  *
  */
 
-export {
-  ArticleByline,
-  ArticleContent,
-  ArticleFootNotes,
-  ArticleIntroduction,
-  ArticleTitle,
-  ArticleWrapper,
-  ArticleHeaderWrapper,
-  ArticleSideBar,
-  default as Article,
-} from './Article';
-
 export { default as AuthorInfo } from './AuthorInfo';
 export { default as ContentCard } from './ContentCard';
 export { InfoBox } from './InfoBox';

@@ -13,6 +13,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { OneColumn } from '../Layout';
+import { Locale } from '../types';
 
 import PrivacyNb from './privacy_nb';
 import PrivacyNn from './privacy_nn';
@@ -20,7 +21,7 @@ import PrivacyEn from './privacy_en';
 
 type FooterPrivacyProps = {
   label: string;
-  lang: 'nb' | 'nn' | 'en';
+  lang: Locale;
 };
 
 const privacyTexts = (lang: string) => {

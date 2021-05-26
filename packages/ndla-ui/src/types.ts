@@ -1,3 +1,14 @@
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+const locales = ['nb', 'nn', 'en'] as const;
+export type Locale = typeof locales[number];
+
 export type Link = {
   text: string;
   to: string;
@@ -16,6 +27,41 @@ export type Resource = {
   name: string;
   subject?: string;
   resourceTypes?: Array<ResourceTypes>;
+};
+
+export interface Contributor {
+  type: string;
+  name: string;
+};
+
+export interface License {
+  license: string;
+};
+
+export interface Copyright {
+  license: License;
+  creators: Array<Contributor>;
+  rightsholders: Array<Contributor>;
+  processors: Array<Contributor>;
+};
+
+export interface FootNote {
+  ref: number;
+  title: string;
+  year: string;
+  authors: Array<string>;
+  edition?: string;
+  publisher?: string;
+  url?: string;
+}
+
+export interface Article {
+  title: string;
+  introduction: string;
+  content: string;
+  footNotes: Array<FootNote>;
+  copyright: Copyright;
+  published: string;
 };
 
 export type SearchResult = {

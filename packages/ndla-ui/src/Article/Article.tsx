@@ -6,18 +6,18 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
+import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
+// @ts-ignore
 import LayoutItem from '../Layout';
-import { ArticleShape } from '../shapes';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 
 const classes = new BEMHelper({
@@ -25,19 +25,25 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ArticleWrapper = ({ children, modifier, id }) => (
+type ArticleWrapperProps = {
+  id: string;
+  modifier: string;
+  children: ReactNode;
+};
+
+export const ArticleWrapper = ({ children, modifier, id }: ArticleWrapperProps) => (
   <article id={id} {...classes(undefined, modifier)}>
     {children}
   </article>
 );
 
-ArticleWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-  modifier: PropTypes.string,
-  id: PropTypes.string,
+type ArticleTitleProps = {
+  icon: boolean;
+  label: string;
+  children: ReactNode;
 };
 
-export const ArticleTitle = ({ children, icon, label }) => {
+export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
   const modifiers = [];
   if (icon) {
     modifiers.push('icon');
@@ -58,16 +64,9 @@ export const ArticleTitle = ({ children, icon, label }) => {
   );
 };
 
-ArticleTitle.propTypes = {
-  hasCompetenceGoals: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  label: PropTypes.string,
-  icon: PropTypes.node,
-};
-
-ArticleTitle.defaultProps = {
-  icon: null,
-  label: null,
+type ArticleIntroductionProps = {
+  children: ReactNode;
+  renderMarkdown: (text: string) => string;
 };
 
 export const ArticleIntroduction = ({
@@ -75,7 +74,7 @@ export const ArticleIntroduction = ({
   renderMarkdown = text => {
     return text;
   },
-}) => {
+}: ArticleIntroductionProps) => {
   if (isString(children)) {
     return <p className="article_introduction">{parse(renderMarkdown(children))}</p>;
   }
@@ -85,9 +84,24 @@ export const ArticleIntroduction = ({
   return null;
 };
 
-ArticleIntroduction.propTypes = {
-  children: PropTypes.node,
-  renderMarkdown: PropTypes.func,
+type Messages = {
+  label: string;
+};
+
+type Props = {
+  article: ArticleType;
+  icon: boolean;
+  additional: string;
+  licenseBox: ReactNode;
+  modifier: string;
+  children: ReactNode;
+  messages: Messages;
+  locale: Locale;
+  competenceGoals: Function | string[];
+  competenceGoalTypes: string[];
+  id: string;
+  renderMarkdown: (text: string) => string;
+  copyPageUrlLink: string;
 };
 
 export const Article = ({
@@ -104,7 +118,7 @@ export const Article = ({
   id,
   renderMarkdown,
   copyPageUrlLink,
-}) => {
+}: Props) => {
   const {
     title,
     introduction,
@@ -154,31 +168,6 @@ export const Article = ({
       <LayoutItem layout="extend">{children}</LayoutItem>
     </ArticleWrapper>
   );
-};
-
-Article.propTypes = {
-  article: ArticleShape.isRequired,
-  modifier: PropTypes.string,
-  icon: PropTypes.node,
-  licenseBox: PropTypes.node,
-  locale: PropTypes.string,
-  additional: PropTypes.bool,
-  competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  children: PropTypes.node,
-  id: PropTypes.string,
-  messages: PropTypes.shape({
-    label: PropTypes.string,
-  }).isRequired,
-  renderMarkdown: PropTypes.func,
-  copyPageUrlLink: PropTypes.string,
-};
-
-Article.defaultProps = {
-  licenseBox: null,
-  additional: null,
-  competenceGoals: null,
-  icon: null,
-  children: null,
 };
 
 export default Article;

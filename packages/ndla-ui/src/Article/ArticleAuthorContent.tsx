@@ -7,11 +7,12 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { Trans } from '@ndla/i18n';
+import { Trans, tType } from '@ndla/i18n';
+// @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
+// @ts-ignore
 import Portrait from '../Portrait';
 
 const classes = new BEMHelper({
@@ -19,12 +20,32 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
+type Author = {
+  image: string;
+  name: string;
+  shortName: string;
+  role: string;
+  phone: string;
+  email: string;
+  introduction: string;
+  urlContributions: string;
+  urlAuthor: string;
+  title: string;
+  licenses: string[];
+};
+
+type Props = {
+  showAuthor: any;
+  authors: Array<Author>;
+  onSelectAuthor: (index: number) => void;
+};
+
+const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }: Props) => {
   if ((showAuthor === null || showAuthor === undefined) && authors.length !== 1) {
     // Render author list
     return (
       <Trans>
-        {({ t }) => (
+        {({ t }: tType) => (
           <div>
             <h1>{t('article.multipleAuthorsLabel')}</h1>
             <hr />
@@ -73,7 +94,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
 
   return (
     <Trans>
-      {({ t }) => (
+      {({ t }: tType) => (
         <div {...classes()}>
           <div {...classes('author-info')}>
             {image && <Portrait src={image} alt={name} {...classes('portrait')} />}
@@ -108,30 +129,6 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }) => {
       )}
     </Trans>
   );
-};
-
-ArticleAuthorContent.propTypes = {
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      shortName: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      phone: PropTypes.string,
-      email: PropTypes.string,
-      image: PropTypes.string,
-      introduction: PropTypes.string,
-      role: PropTypes.string,
-      urlContributions: PropTypes.string,
-      urlAuthor: PropTypes.string,
-      licenses: PropTypes.string,
-    }),
-  ).isRequired,
-  showAuthor: PropTypes.number,
-  onSelectAuthor: PropTypes.func.isRequired,
-};
-
-ArticleAuthorContent.defaultProps = {
-  showAuthor: null,
 };
 
 export default ArticleAuthorContent;

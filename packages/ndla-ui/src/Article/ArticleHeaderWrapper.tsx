@@ -6,16 +6,17 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Trans } from '@ndla/i18n';
+import { Trans, tType } from '@ndla/i18n';
+// @ts-ignore
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';
 import { fonts, colors } from '@ndla/core';
 
 import styled from '@emotion/styled';
 import { FooterHeaderIcon } from '@ndla/icons/common';
+// @ts-ignore
 import CompetenceGoalsDialog from '../CompetenceGoals/CompetenceGoalsDialog';
 
 const classes = new BEMHelper({
@@ -23,22 +24,22 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const OpenButton = ({ children, onClick }) => (
+type OpenButtonProps = {
+  onClick: () => void;
+  children: ReactNode;
+};
+
+export const OpenButton = ({ children, onClick }: OpenButtonProps) => (
   <Button size="xsmall" lighter borderShape="rounded" onClick={onClick}>
     {children}
   </Button>
 );
 
-OpenButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
-  modifier: PropTypes.string,
-};
-
 const CompetenceWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
 const CompetenceBadge = styled.span`
   display: inline-block;
   background: ${colors.brand.greyLighter};
@@ -58,14 +59,28 @@ const CompetenceBadgeText = styled.span`
   padding: 0 5px;
 `;
 
-const CompetenceButtonWrapper = styled.div`
+type CompetenceButtonWrapperProps = {
+  addSpace: boolean;
+};
+
+const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
   display: flex;
   align-items: center;
   ${props => props.addSpace && `padding-left: 12px;`}
 `;
 
-class ArticleHeaderWrapper extends Component {
-  constructor(props) {
+type Props = {
+  competenceGoals: Function | string[];
+  competenceGoalTypes: string[];
+  children: ReactNode;
+};
+
+interface State {
+  isOpen: boolean;
+}
+
+class ArticleHeaderWrapper extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = { isOpen: false };
     this.closeDialog = this.closeDialog.bind(this);
@@ -74,7 +89,9 @@ class ArticleHeaderWrapper extends Component {
 
   componentDidMount() {
     if (isMobile) {
-      const heroContentList = document.querySelectorAll('.c-article__header');
+      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll(
+        '.c-article__header',
+      );
       if (heroContentList.length === 1) {
         heroContentList[0].scrollIntoView(true);
         window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
@@ -112,7 +129,7 @@ class ArticleHeaderWrapper extends Component {
       );
     return (
       <Trans>
-        {({ t }) => (
+        {({ t }: tType) => (
           <div {...classes('header')}>
             {children}
             <CompetenceWrapper>
@@ -123,7 +140,8 @@ class ArticleHeaderWrapper extends Component {
                     <CompetenceBadgeText>{type}</CompetenceBadgeText>
                   </CompetenceBadge>
                 ))}
-              <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length}>
+              <CompetenceButtonWrapper
+                addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
                 <OpenButton onClick={this.openDialog}>
                   <FooterHeaderIcon />
                   <CompetenceBadgeText>
@@ -139,11 +157,5 @@ class ArticleHeaderWrapper extends Component {
     );
   }
 }
-
-ArticleHeaderWrapper.propTypes = {
-  competenceGoalTypes: PropTypes.arrayOf(PropTypes.string),
-  competenceGoals: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-  children: PropTypes.node.isRequired,
-};
 
 export default ArticleHeaderWrapper;

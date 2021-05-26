@@ -16,6 +16,7 @@ import { FooterHeaderIcon } from '@ndla/icons/common';
 import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
+import { Locale } from '../types';
 
 const StyledBackground = styled.div`
   display: block;
@@ -111,7 +112,7 @@ const StyledLanguageWrapper = styled.div`
 
 type Props = {
   children: React.ReactNode;
-  lang: 'nb' | 'nn' | 'en';
+  lang: Locale;
   links?: [
     {
       to: string;

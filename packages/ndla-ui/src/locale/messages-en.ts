@@ -480,7 +480,7 @@ const messages = {
     footerEditiorInChief: 'Editor in chief: ',
     footerManagingEditor: 'Managing editor: ',
     footerPrivacyLink: 'Cookies Policy',
-    vision: 'We create the learning of the future together.',
+    vision: 'We create the learning of the future together',
     footerLinksHeader: 'Other NDLA sites',
     socialMediaLinks: {
       facebook: 'NDLA on Facebook',

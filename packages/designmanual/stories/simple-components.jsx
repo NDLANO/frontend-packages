@@ -9,6 +9,7 @@ import * as actionIcons from '@ndla/icons/action';
 import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 import { Aside, FactBox, Logo, LayoutItem, AudioPlayer, OneColumn, CreatedBy } from '@ndla/ui';
 import { colors } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
 import FigureImage from './article/FigureImage';
@@ -509,6 +510,14 @@ storiesOf('Enkle komponenter', module)
           avhengig av koden som ligger der, brukerens/browserens preferanser skal styre
         </p>
       </StoryIntro>
+      <StoryBody>
+        <h2>Lenke som åpnes i nytt vindu</h2>
+        <p>
+          <SafeLink showNewWindowIcon to="https://api.ndla.no/" target="_blank">
+            https://api.ndla.no/
+          </SafeLink>
+        </p>
+      </StoryBody>
     </div>
   ))
   .add('Faktaboks og høyrespalte', () => (

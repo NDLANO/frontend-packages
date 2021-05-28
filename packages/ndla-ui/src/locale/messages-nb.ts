@@ -390,6 +390,8 @@ const messages = {
         ariaLabel: 'Åpne bilde i et nytt vindu',
         zoomImageButtonLabel: 'Forstørr bilde',
         zoomOutImageButtonLabel: 'Forminsk bilde',
+        expandByline: 'Vis byline',
+        minimizeByline: 'Skjul byline',
       },
       source: 'Kilde',
       title: 'Tittel',

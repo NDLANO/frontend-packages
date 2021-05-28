@@ -104,6 +104,7 @@ export const Article = ({
   id,
   renderMarkdown,
   copyPageUrlLink,
+  printUrl,
 }) => {
   const {
     title,
@@ -148,6 +149,7 @@ export const Article = ({
             license,
             additional,
             licenseBox,
+            printUrl,
           }}
         />
       </LayoutItem>
@@ -171,6 +173,7 @@ Article.propTypes = {
   }).isRequired,
   renderMarkdown: PropTypes.func,
   copyPageUrlLink: PropTypes.string,
+  printUrl: PropTypes.string,
 };
 
 Article.defaultProps = {

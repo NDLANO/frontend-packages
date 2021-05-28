@@ -2,8 +2,7 @@ import { uuid } from '@ndla/util';
 
 export const mockTypeahead = [
   {
-    title:
-      'Albania Albania Albania Albania Albania Albania Albania Albania Albania Albania Albania Albania Albania Albania',
+    title: 'Albania',
     description:
       'Halfvarsson legger seg flat: – Det ble ingen bra greie ut av det : – Det ble ingen bra greie ut av de. Halfvarsson legger seg flat: – Det ble ingen bra greie ut av det : – Det ble ingen bra greie ut av de',
     image: 'https://placeimg.com/100/200/nature',

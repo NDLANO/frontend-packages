@@ -15,7 +15,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
-import { Audiobook } from '@ndla/icons/common'; //TODO: Replace icon
+import { Print } from '@ndla/icons/action';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -144,7 +144,7 @@ const ArticleByline = ({
         )}
         {printUrl && (
           <Button stripped onClick={() => printPage(printUrl)}>
-            <Audiobook />
+            <Print />
           </Button>
         )}
       </ButtonWrapper>

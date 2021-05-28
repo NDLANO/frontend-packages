@@ -35,12 +35,13 @@ const StyledText = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding-right: ${spacing.small};
-  flex-grow: 1;
+  flex-grow: 3;
 `;
 
 const StyledisSelected = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   align-items: flex-start;
   padding-right: ${spacing.small};
   .c-icon {
@@ -56,15 +57,11 @@ const StyledisSelected = styled.div`
 `;
 
 const StyledIsDisabled = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-grow: 1;
   padding-right: ${spacing.small};
   .c-icon {
     margin-left: ${spacing.xsmall};
   }
-  display: flex;
-  flex-direction: row;
   ${fonts.sizes(14, 1.1)};
   font-weight: ${fonts.weight.normal};
   color: ${colors.text.light};

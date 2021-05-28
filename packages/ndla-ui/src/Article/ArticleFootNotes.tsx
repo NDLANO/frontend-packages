@@ -39,13 +39,12 @@ const FootNote = ({ footNote }: FootNoteProps) => (
 
 type ArticleFootNotesProps = {
   footNotes: Array<FootNoteType>;
-  rest?: any;
 };
 
-const ArticleFootNotes = ({ footNotes, ...rest }: ArticleFootNotesProps) => (
+const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
   <ol className="c-footnotes">
     {footNotes.map(footNote => (
-      <FootNote key={footNote.ref} footNote={footNote} {...rest} />
+      <FootNote key={footNote.ref} footNote={footNote} />
     ))}
   </ol>
 );

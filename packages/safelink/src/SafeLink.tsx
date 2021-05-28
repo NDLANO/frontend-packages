@@ -8,14 +8,13 @@
 
 import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import { LocationDescriptor } from 'history';
 import isString from 'lodash/isString';
 import MissingRouterContext from './MissingRouterContext';
 
-const isExternalLink = (to?: LocationDescriptor) =>
+const isExternalLink = (to?: LinkProps['to']) =>
   to && isString(to) && (to.startsWith('https://') || to.startsWith('http://'));
 
-export const isOldNdlaLink = (to?: LocationDescriptor) =>
+export const isOldNdlaLink = (to?: LinkProps['to']) =>
   to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link

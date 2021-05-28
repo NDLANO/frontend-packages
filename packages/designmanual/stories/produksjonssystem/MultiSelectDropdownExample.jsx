@@ -100,9 +100,10 @@ class MultiSelectDropdownExample extends Component {
       value,
     } = this.state;
 
-    const dataFormatted = data.map(item => ({
+    const dataFormatted = data.map((item, idx) => ({
       title: item.title,
       description: useLayout !== '4' && item.description,
+      disabledText: idx === 0 ? 'Finnes allerede' : undefined,
       image:
         useLayout === '1' ? item.image : useLayout === '2' && <SubjectMaterialBadge background />,
       alt: item.alt,

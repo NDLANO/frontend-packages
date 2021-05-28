@@ -16,6 +16,7 @@ const StyledImage = styled.img`
   height: ${spacing.large};
   min-width: ${spacing.large};
   object-fit: cover;
+  flex-grow: 1;
 `;
 
 const StyledImageContainer = styled.div`

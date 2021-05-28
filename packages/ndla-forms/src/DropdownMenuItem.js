@@ -57,9 +57,17 @@ const StyledisSelected = styled.div`
 `;
 
 const StyledIsDisabled = styled.div`
-  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 2;
+  justify-content: flex-end;
+  align-items: flex-start;
   padding-right: ${spacing.small};
   .c-icon {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    min-height: 17px;
     margin-left: ${spacing.xsmall};
   }
   ${fonts.sizes(14, 1.1)};

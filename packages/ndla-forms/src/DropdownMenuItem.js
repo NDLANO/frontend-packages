@@ -43,6 +43,7 @@ const StyledisSelected = styled.div`
   flex-direction: column;
   flex-grow: 1;
   align-items: flex-start;
+  justify-content: flex-end;
   padding-right: ${spacing.small};
   .c-icon {
     color: ${colors.support.green};

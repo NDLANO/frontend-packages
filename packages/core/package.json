@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-core/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/core"
   },
   "keywords": [
     "ndla"

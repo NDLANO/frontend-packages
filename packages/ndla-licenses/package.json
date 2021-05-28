@@ -13,7 +13,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages/tree/master/packages/ndla-licenses"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-licenses"
   },
   "keywords": [
     "ndla"

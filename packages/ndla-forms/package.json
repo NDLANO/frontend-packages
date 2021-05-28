@@ -1,13 +1,14 @@
 {
   "name": "@ndla/forms",
-  "version": "0.4.32",
+  "version": "0.4.33",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-forms/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-forms"
   },
   "keywords": [
     "ndla"
@@ -20,7 +21,7 @@
   "dependencies": {
     "@ndla/core": "^0.6.38",
     "@ndla/icons": "^0.7.5",
-    "@ndla/ui": "^0.34.7"
+    "@ndla/ui": "^0.34.8"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

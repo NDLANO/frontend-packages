@@ -1,13 +1,14 @@
 {
   "name": "@ndla/polyfill",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "NDLA polyfills for various browser",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/polyfill"
   },
   "keywords": [
     "ndla"

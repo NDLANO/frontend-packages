@@ -1,12 +1,13 @@
 {
   "name": "eslint-config-ndla",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "An eslint config for NDLA. Extends Airbnb's.",
   "main": "index.js",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/eslint-config-ndla/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/eslint-config-ndla"
   },
   "keywords": [
     "lint",

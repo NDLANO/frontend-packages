@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-carousel/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/carousel"
   },
   "keywords": [
     "ndla"

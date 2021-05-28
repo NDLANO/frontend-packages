@@ -135,7 +135,7 @@ type Props = {
   src: string;
   title: string;
   speech?: boolean;
-  description?: string;
+  description?: ReactNode;
   textVersion?: ReactNode;
   img?: {
     url: string;

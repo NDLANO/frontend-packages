@@ -7,7 +7,8 @@
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-video-search/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-video-search"
   },
   "keywords": [
     "ndla"

@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-i18n/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-i18n"
   },
   "keywords": [
     "ndla"

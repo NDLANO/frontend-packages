@@ -6,7 +6,8 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/eslint-config-ndla/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/eslint-config-ndla"
   },
   "keywords": [
     "lint",

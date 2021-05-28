@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-switch/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/switch"
   },
   "keywords": [
     "ndla"

@@ -11,6 +11,7 @@ import ReactDOM from 'react-dom';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 import LocaleProvider from '../locale/LocaleProvider';
+import { Locale } from '../types';
 
 const forEachElement = (selector: string, callback: Function) => {
   const nodeList = document.querySelectorAll(selector);
@@ -19,9 +20,7 @@ const forEachElement = (selector: string, callback: Function) => {
   }
 };
 
-type LocaleProps = 'nb' | 'nn' | 'en';
-
-const initAudioPlayers = (locale: LocaleProps) => {
+const initAudioPlayers = (locale: Locale) => {
   forEachElement('[data-audio-player]', (el: HTMLElement) => {
     const src = el.getAttribute('data-src');
     const title = el.getAttribute('data-title');

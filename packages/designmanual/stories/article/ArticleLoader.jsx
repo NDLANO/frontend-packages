@@ -185,11 +185,6 @@ class ArticleLoader extends Component {
                 article={article}
                 modifier={articleModifier}
                 messages={{
-                  edition: 'Utgave',
-                  publisher: 'Utgiver',
-                  authorLabel: 'Opphaver',
-                  authorDescription: 'Denne artikkelen er laget av flere opphavere',
-                  close: 'Lukk',
                   label,
                 }}
                 licenseBox={<LicenseBox />}

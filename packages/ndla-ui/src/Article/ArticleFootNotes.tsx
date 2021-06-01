@@ -7,12 +7,16 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { FootNoteShape } from '../shapes';
+import { FootNote as FootNoteType } from '../types';
 
-const citeDetailString = description => (description ? `${description}. ` : '');
+const citeDetailString = (description: string | undefined) =>
+  description ? `${description}. ` : '';
 
-const FootNote = ({ footNote }) => (
+type FootNoteProps = {
+  footNote: FootNoteType;
+};
+
+const FootNote = ({ footNote }: FootNoteProps) => (
   <li className="c-footnotes__item">
     <cite className="c-footnotes__cite" id={`note${footNote.ref}`}>
       <sup>
@@ -33,20 +37,16 @@ const FootNote = ({ footNote }) => (
   </li>
 );
 
-FootNote.propTypes = {
-  footNote: FootNoteShape.isRequired,
+type ArticleFootNotesProps = {
+  footNotes: Array<FootNoteType>;
 };
 
-const ArticleFootNotes = ({ footNotes, ...rest }) => (
+const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
   <ol className="c-footnotes">
     {footNotes.map(footNote => (
-      <FootNote key={footNote.ref} footNote={footNote} {...rest} />
+      <FootNote key={footNote.ref} footNote={footNote} />
     ))}
   </ol>
 );
-
-ArticleFootNotes.propTypes = {
-  footNotes: PropTypes.arrayOf(FootNoteShape).isRequired,
-};
 
 export default ArticleFootNotes;

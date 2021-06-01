@@ -12,6 +12,18 @@
 // @ts-ignore
 export * from './index-javascript';
 
+export {
+  ArticleByline,
+  ArticleContent,
+  ArticleFootNotes,
+  ArticleIntroduction,
+  ArticleTitle,
+  ArticleWrapper,
+  ArticleHeaderWrapper,
+  ArticleSideBar,
+  default as Article,
+} from './Article';
+
 export { default as ErrorMessage } from './ErrorMessage';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';

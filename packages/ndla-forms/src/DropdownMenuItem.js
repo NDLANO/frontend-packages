@@ -12,6 +12,7 @@ import { injectT } from '@ndla/i18n';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Check } from '@ndla/icons/editor';
+import { Information } from '@ndla/icons/common';
 import { DropdownMenuImage } from './DropdownMenuImage';
 
 const StyledDescription = styled.span`
@@ -34,13 +35,15 @@ const StyledText = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding-right: ${spacing.small};
-  flex-grow: 1;
+  flex-grow: 3;
 `;
 
 const StyledisSelected = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   align-items: flex-start;
+  justify-content: flex-end;
   padding-right: ${spacing.small};
   .c-icon {
     color: ${colors.support.green};
@@ -48,6 +51,26 @@ const StyledisSelected = styled.div`
   }
   display: flex;
   flex-direction: row;
+  ${fonts.sizes(14, 1.1)};
+  font-weight: ${fonts.weight.normal};
+  color: ${colors.text.light};
+  text-transform: uppercase;
+`;
+
+const StyledIsDisabled = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-grow: 2;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-right: ${spacing.small};
+  .c-icon {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    min-height: 17px;
+    margin-left: ${spacing.xsmall};
+  }
   ${fonts.sizes(14, 1.1)};
   font-weight: ${fonts.weight.normal};
   color: ${colors.text.light};
@@ -83,11 +106,34 @@ const StyledItemButton = styled.button`
       }
     `}
   ${props =>
-    props.disableSelected &&
+    props.disabled &&
     css`
-        disabled
+        disabled;
+        background: ${colors.brand.greyLightest};
+        ${StyledTitle} {
+          color: ${colors.text.light};
+        }
       `}
 `;
+
+const InfoPart = ({ isSelected, disabledText, t }) => {
+  if (isSelected) {
+    return (
+      <StyledisSelected>
+        {t('dropdown.isSelectedItem')}
+        <Check />
+      </StyledisSelected>
+    );
+  } else if (disabledText) {
+    return (
+      <StyledIsDisabled>
+        {disabledText}
+        <Information />
+      </StyledIsDisabled>
+    );
+  }
+  return null;
+};
 
 function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, ...rest }) {
   return (
@@ -95,7 +141,7 @@ function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, .
       key={item.id}
       type="button"
       isSelected={isSelected}
-      disabled={disableSelected && isSelected}
+      disabled={item.disabledText || (disableSelected && isSelected)}
       highlighted={highlighted}
       {...rest}>
       {<DropdownMenuImage image={item.image} alt={item.alt} />}
@@ -103,14 +149,7 @@ function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, .
         <StyledTitle>{item.title}</StyledTitle>
         {item.description && <StyledDescription>{item.description}</StyledDescription>}
       </StyledText>
-      {isSelected && (
-        <StyledisSelected>
-          <>
-            {t('dropdown.isSelectedItem')}
-            <Check />
-          </>
-        </StyledisSelected>
-      )}
+      <InfoPart disabledText={item.disabledText} isSelected={isSelected} t={t} />
     </StyledItemButton>
   );
 }

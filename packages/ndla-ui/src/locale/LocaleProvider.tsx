@@ -8,6 +8,7 @@
 
 import React from 'react';
 import IntlProvider, { formatNestedMessages } from '@ndla/i18n';
+import { Locale } from '../types';
 
 import messagesNB from './messages-nb';
 import messagesNN from './messages-nn';
@@ -20,7 +21,7 @@ const messages = {
 };
 
 type Props = {
-  locale: 'nb' | 'nn' | 'en';
+  locale: Locale;
   children: React.ReactNode;
 };
 

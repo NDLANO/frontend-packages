@@ -13,10 +13,11 @@ import {
   // @ts-ignore
 } from '@ndla/article-scripts';
 import { initAudioPlayers } from '../AudioPlayer';
+import { Locale } from '../types';
 
 type Props = {
   content: string;
-  locale: 'nb' | 'nn' | 'en';
+  locale: Locale;
 };
 const ArticleContent = ({ content, locale, ...rest }: Props) => {
   useEffect(() => {

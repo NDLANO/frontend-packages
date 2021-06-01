@@ -61,7 +61,7 @@ export const Masthead = ({
 }) => (
   <>
     {skipToMainContentId && (
-      <a href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
+      <a tabIndex={0} href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
         {t('masthead.skipToContent')}
       </a>
     )}

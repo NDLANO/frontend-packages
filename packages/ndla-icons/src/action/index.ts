@@ -24,6 +24,7 @@ export { default as MenuBook } from './MenuBook';
 export { default as Minus } from './Minus';
 export { default as Pencil } from './Pencil';
 export { default as Plus } from './Plus';
+export { default as Print } from './Print';
 export { default as RemoveCircle } from './RemoveCircle';
 export { default as RightArrow } from './RightArrow';
 export { default as School } from './School';

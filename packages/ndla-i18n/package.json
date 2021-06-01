@@ -1,6 +1,6 @@
 {
   "name": "@ndla/i18n",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "NDLA's own i18n package based on react-intl",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-i18n/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-i18n"
   },
   "keywords": [
     "ndla"

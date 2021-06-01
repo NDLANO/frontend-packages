@@ -14,10 +14,10 @@ import { Launch } from '@ndla/icons/common';
 import isString from 'lodash/isString';
 import MissingRouterContext from './MissingRouterContext';
 
-const isExternalLink = (to?: LocationDescriptor) =>
+const isExternalLink = (to?: LinkProps['to']) =>
   to && isString(to) && (to.startsWith('https://') || to.startsWith('http://'));
 
-export const isOldNdlaLink = (to?: LocationDescriptor) =>
+export const isOldNdlaLink = (to?: LinkProps['to']) =>
   to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;
 
 const LaunchIcon = styled(Launch)`
@@ -54,7 +54,7 @@ const SafeLink: React.FunctionComponent<Props & LinkProps & React.HTMLAttributes
   }
 
   return (
-    <Link to={to} replace={replace} {...rest}>
+    <Link tabIndex={0} to={to} replace={replace} {...rest}>
       {children}
     </Link>
   );

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tabs",
-  "version": "0.11.48",
+  "version": "0.11.49",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -8,7 +8,8 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-tabs"
   },
   "keywords": [
     "ndla"
@@ -25,8 +26,8 @@
     "react-bem-helper": "^1.4.1"
   },
   "dependencies": {
-    "@ndla/core": "^0.6.38",
-    "@ndla/util": "^0.4.5",
+    "@ndla/core": "^0.6.39",
+    "@ndla/util": "^0.4.6",
     "react-tabs": "^3.0.0"
   },
   "publishConfig": {

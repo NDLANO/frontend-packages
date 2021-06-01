@@ -20,8 +20,11 @@ const isExternalLink = (to?: LocationDescriptor) =>
 export const isOldNdlaLink = (to?: LocationDescriptor) =>
   to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;
 
-const LaunchIconWrapper = styled.span`
+const LaunchIcon = styled(Launch)`
   margin-left: 6px;
+  height: auto;
+  width: auto;
+  margin-top: 1px;
 `;
 
 type Props = {
@@ -44,12 +47,8 @@ const SafeLink: React.FunctionComponent<Props & LinkProps & React.HTMLAttributes
       <>
         <a href={href} {...rest}>
           {children}
+          {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
         </a>
-        {showNewWindowIcon && (
-          <LaunchIconWrapper>
-            <Launch />
-          </LaunchIconWrapper>
-        )}
       </>
     );
   }

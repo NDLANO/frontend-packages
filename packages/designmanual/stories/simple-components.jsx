@@ -517,6 +517,11 @@ storiesOf('Enkle komponenter', module)
             https://api.ndla.no/
           </SafeLink>
         </p>
+        <p>
+          <SafeLink showNewWindowIcon to="https://api.ndla.no/" target="_blank">
+            NDLA API
+          </SafeLink>
+        </p>
       </StoryBody>
     </div>
   ))

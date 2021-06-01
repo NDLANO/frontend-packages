@@ -8,7 +8,6 @@
 
 import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import { LocationDescriptor } from 'history';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
 import isString from 'lodash/isString';

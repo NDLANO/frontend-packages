@@ -102,6 +102,7 @@ type Props = {
   id: string;
   renderMarkdown: (text: string) => string;
   copyPageUrlLink: string;
+  printUrl: string;
 };
 
 export const Article = ({
@@ -118,6 +119,7 @@ export const Article = ({
   id,
   renderMarkdown,
   copyPageUrlLink,
+  printUrl,
 }: Props) => {
   const {
     title,
@@ -162,6 +164,7 @@ export const Article = ({
             license,
             additional,
             licenseBox,
+            printUrl,
           }}
         />
       </LayoutItem>

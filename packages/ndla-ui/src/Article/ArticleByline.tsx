@@ -14,7 +14,8 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
 import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
-import { copyTextToClipboard } from '@ndla/util';
+import { copyTextToClipboard, printPage } from '@ndla/util';
+import { Print } from '@ndla/icons/action';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -34,8 +35,6 @@ const ButtonWrapper = styled.div`
   margin-top: 18px;
   button {
     margin-bottom: 10px;
-  }
-  button:first-of-type {
     margin-right: 16px;
   }
 `;
@@ -55,6 +54,7 @@ type Props = {
   license: string;
   licenseBox?: React.ReactNode;
   copyPageUrlLink?: string;
+  printUrl?: string;
 };
 
 const ArticleByline = ({
@@ -64,6 +64,7 @@ const ArticleByline = ({
   licenseBox,
   published,
   copyPageUrlLink,
+  printUrl,
   t,
 }: Props & tType) => {
   const copyLinkHandler = () => {
@@ -140,6 +141,11 @@ const ArticleByline = ({
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}
           </CopyButton>
+        )}
+        {printUrl && (
+          <Button stripped onClick={() => printPage(printUrl)}>
+            <Print />
+          </Button>
         )}
       </ButtonWrapper>
     </Wrapper>

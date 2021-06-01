@@ -25,6 +25,9 @@
     "lib",
     "es"
   ],
+  "dependencies": {
+    "@ndla/icons": "^0.7.5"
+  },
   "peerDependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",

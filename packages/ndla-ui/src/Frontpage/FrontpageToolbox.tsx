@@ -38,19 +38,31 @@ const StyledText = styled.span`
   }
 `;
 
+const StyledStudentsButton = styled(SafeLinkButton)`
+  margin: 0 ${spacing.small} ${spacing.small} 0;
+`;
+
 type Props = {
-  url: string;
+  urlStudents: string;
+  urlTeachers: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({ url, t }) => (
+const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({
+  urlStudents,
+  urlTeachers,
+  t,
+}) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
     <ToolboxWrapper>
       <StyledText>{t('frontPageToolbox.text')}</StyledText>
     </ToolboxWrapper>
-    <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
-      {t('frontPageToolbox.linkText')}
+    <StyledStudentsButton to={urlStudents} buttonSize="medium" borderShape="rounded">
+      {t('frontPageToolbox.linkTextStudents')}
+    </StyledStudentsButton>
+    <SafeLinkButton to={urlTeachers} buttonSize="medium" borderShape="rounded">
+      {t('frontPageToolbox.linkTextTeachers')}
     </SafeLinkButton>
     <Illustration />
   </StyledSection>

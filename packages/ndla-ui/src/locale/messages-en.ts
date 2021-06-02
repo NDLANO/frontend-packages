@@ -703,7 +703,8 @@ const messages = {
     heading: 'Toolbox',
     text:
       'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
-    linkText: 'See all tips in the Toolbox here',
+    linkTextStudents: 'See all tips for students here',
+    linkTextTeachers: 'See all tips for teachers here',
     cursorText: 'Tip',
   },
   frontpageMultidisciplinarySubject: {

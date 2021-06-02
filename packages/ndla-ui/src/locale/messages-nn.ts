@@ -714,7 +714,8 @@ const messages = {
     heading: 'Verktøykassa',
     text:
       'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I verktøykassa til NDLA finn du masse gode tips og råd!',
-    linkText: 'Sjå alle tipsa i verktøykassa her',
+    linkTextStudents: 'Sjå alle tipsa for elever her',
+    linkTextTeachers: 'Sjå alle tipsa for lærarar her',
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {

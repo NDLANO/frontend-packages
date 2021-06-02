@@ -253,7 +253,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
               { url: '#', title: 'Bærekraftig utvikling', id: '355' },
             ]}
           />
-          <FrontpageToolbox imageUrl={NdlaToolboxIllustration} url="#" />
+          <FrontpageToolbox imageUrl={NdlaToolboxIllustration} urlStudents="#" urlTeachers="#" />
           <section>
             <SubjectSectionTitle>{t('welcomePage.blog')}</SubjectSectionTitle>
             <BlogPostWrapper>

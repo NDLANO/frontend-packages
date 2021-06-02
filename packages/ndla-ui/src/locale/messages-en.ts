@@ -379,6 +379,8 @@ const messages = {
         ariaLabel: 'Open image in new window',
         zoomImageButtonLabel: 'Expand image',
         zoomOutImageButtonLabel: 'Shrink image',
+        expandByline: 'Show byline',
+        minimizeByline: 'Hide byline',
       },
       source: 'Source',
       title: 'Title',

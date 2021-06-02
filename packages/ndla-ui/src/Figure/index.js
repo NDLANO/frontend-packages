@@ -10,3 +10,4 @@ import Figure, { FigureCaption } from './Figure';
 export { Figure, FigureCaption };
 export { FigureLicenseDialog } from './FigureLicenseDialog';
 export { FigureExpandButton } from './FigureExpandButton';
+export { FigureBylineExpandButton } from './FigureBylineExpandButton';

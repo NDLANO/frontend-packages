@@ -15,8 +15,8 @@ import { Figure, Image, FigureExpandButton, ImageLink } from '@ndla/ui';
 import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function ImageWrapper({ typeClass, src, hasHiddenCation, children, t }) {
-  if (hasHiddenCation) {
+function ImageWrapper({ typeClass, src, hasHiddenCaption, children, t }) {
+  if (hasHiddenCaption) {
     return (
       <>
         <FigureExpandButton
@@ -71,7 +71,7 @@ function FigureImage({ type, alt, src, caption, hasHiddenCaption, link, t }) {
     <Figure id={figureId} type={type}>
       {({ typeClass }) => (
         <>
-          <ImageWrapper hasHiddenCation={hasHiddenCaption} typeClass={typeClass} t={t} src={src}>
+          <ImageWrapper hasHiddenCaption={hasHiddenCaption} typeClass={typeClass} t={t} src={src}>
             <Image alt={alt} src={src} sizes={sizes} />
           </ImageWrapper>
           <FigureCaptionExample

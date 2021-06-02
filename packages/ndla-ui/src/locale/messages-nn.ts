@@ -391,6 +391,8 @@ const messages = {
         ariaLabel: 'Opne bilete i eit nytt vindauge',
         zoomImageButtonLabel: 'Forstørr bilete',
         zoomOutImageButtonLabel: 'Forminsk bilete',
+        expandByline: 'Vis byline',
+        minimizeByline: 'Skjul byline',
       },
       source: 'Kjelde',
       title: 'Tittel',

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -38,8 +38,6 @@ const StyledStructureItem = styled.li`
 
 const Structure = ({
   renderListItems,
-  activeFilters,
-  filters: subjectFilters,
   structure,
   openedPaths,
   toggleOpen,
@@ -53,36 +51,13 @@ const Structure = ({
   toggleFavorite,
 }) => {
   const isSubject = currentPath.length === 0;
-  const ignoreFilter =
-    isSubject ||
-    !subjectFilters[currentPath[0]] ||
-    !subjectFilters[currentPath[0]].some(filter => activeFilters.includes(filter.id));
-  const filteredStructure = useMemo(
-    () =>
-      structure.filter(
-        subjectOrTopic =>
-          ignoreFilter ||
-          subjectOrTopic.filters.some(topicFilter => activeFilters.includes(topicFilter.id)),
-      ),
-    [structure, activeFilters, ignoreFilter],
-  );
-  const enableDND = DND && isMainActive && filteredStructure.length > 1;
+  const enableDND = DND && isMainActive && structure.length > 1;
   return (
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
         <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
-          {filteredStructure.map(
-            ({
-              id,
-              connectionId,
-              name,
-              topics,
-              subtopics,
-              filters,
-              loading,
-              metadata,
-              ...rest
-            }) => {
+          {structure.map(
+            ({ id, connectionId, name, topics, subtopics, loading, metadata, ...rest }) => {
               const currentPathIds = [...currentPath, id];
               const children = topics || subtopics;
               const pathToString = currentPathIds.join('/');
@@ -122,7 +97,6 @@ const Structure = ({
                     {renderListItems &&
                       renderListItems({
                         pathToString,
-                        filters,
                         isSubject,
                         subjectId: currentPathIds[0],
                         isOpen,
@@ -141,10 +115,8 @@ const Structure = ({
                     <Structure
                       structure={children}
                       currentPath={currentPathIds}
-                      filters={subjectFilters}
                       openedPaths={openedPaths}
                       toggleOpen={toggleOpen}
-                      activeFilters={activeFilters}
                       renderListItems={renderListItems}
                       highlightMainActive={highlightMainActive}
                       isMainActive={isNewMainActive}
@@ -163,11 +135,6 @@ const Structure = ({
   );
 };
 
-const FilterShape = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-});
-
 function lazyFunction(f) {
   return function() {
     return f.apply(this, arguments);
@@ -183,7 +150,6 @@ const ItemShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
   // eslint-disable-next-line no-use-before-define
   topics: PropTypes.arrayOf(lazyItemShape),
-  filters: PropTypes.arrayOf(FilterShape),
 }).isRequired;
 
 Structure.propTypes = {
@@ -197,8 +163,6 @@ Structure.propTypes = {
   ),
   openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
   renderListItems: PropTypes.func,
-  activeFilters: PropTypes.arrayOf(PropTypes.string),
-  filters: PropTypes.objectOf(PropTypes.arrayOf(FilterShape)),
   favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
   toggleFavorite: PropTypes.func,
 };
@@ -206,7 +170,6 @@ Structure.propTypes = {
 Structure.defaultProps = {
   structure: [],
   className: '',
-  activeFilters: [],
   isSubject: true,
   currentPath: [],
 };

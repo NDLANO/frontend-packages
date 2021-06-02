@@ -355,7 +355,7 @@ const messages = {
   license: {
     heading: 'Slik gjenbruker du innhald',
     learnMore: 'Lær meir om opne lisensar',
-    copyTitle: 'Kopier referanse',
+    copyTitle: 'Kjeldetilvising',
     hasCopiedTitle: 'Kopiert!',
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',

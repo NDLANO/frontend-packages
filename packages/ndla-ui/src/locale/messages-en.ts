@@ -431,7 +431,7 @@ const messages = {
       },
     },
     learnMore: 'Learn more about open licenses',
-    copyTitle: 'Copy reference',
+    copyTitle: 'Source reference',
     embed: 'Embed',
     embedCopied: 'Copied embed code!',
     copyText: {

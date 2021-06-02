@@ -48,11 +48,7 @@ const MultidisciplinarySubjectPage = ({ selectedFilters: selectedFiltersProps = 
 
   const items = getItems(selectedFilters);
   return (
-    <MultidisciplinarySubject
-      onFilterClick={onFilterClick}
-      cards={items}
-      totalCardCount={items.length}
-      totalItemsCount={items.length}>
+    <MultidisciplinarySubject cards={items} totalCardCount={items.length}>
       <NavigationBox items={getFilters(selectedFilters)} onClick={onFilterClick} isButtonElements />
     </MultidisciplinarySubject>
   );

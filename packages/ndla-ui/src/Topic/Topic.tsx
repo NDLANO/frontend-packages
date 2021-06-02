@@ -20,10 +20,32 @@ import { injectT, tType } from '@ndla/i18n';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/core';
 import Loader from './Loader';
+import { ItemProps } from '../Navigation/NavigationBox';
+import { NavigationBox } from '../Navigation';
 
 type InvertItProps = {
   invertedStyle?: boolean;
 };
+type FrameProps = {
+  frame?: boolean;
+};
+
+const Wrapper = styled.section<FrameProps>`
+  ${props =>
+    props.frame &&
+    css`
+      ${mq.range({ from: breakpoints.tabletWide })} {
+        padding: 40px 40px;
+        border: 2px solid #d1d6db;
+      }
+      ${mq.range({ from: breakpoints.desktop })} {
+        padding: 40px 80px;
+      }
+      ${mq.range({ from: '1180px' })} {
+        padding: 60px 160px;
+      }
+    `}
+`;
 
 const TopicHeaderVisualElementWrapper = styled.div`
   float: right;
@@ -177,10 +199,6 @@ const StyledContentWrapper = styled.div<InvertItProps>`
     `}
 `;
 
-const TopicResources = styled.div`
-  clear: both;
-`;
-
 type VisualElementProps = {
   type: 'image' | 'video' | 'other';
   element: React.ReactNode;
@@ -197,27 +215,33 @@ export type TopicProps = {
     visualElement?: VisualElementProps;
     resources?: React.ReactNode;
   };
+  subTopics?: ItemProps[] | null | undefined;
+  onSubTopicSelected?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
   isLoading?: boolean;
   renderMarkdown?: (text: string) => string;
   invertedStyle?: boolean;
   onToggleShowContent?: () => void;
   showContent?: boolean;
   isAdditionalTopic?: boolean;
+  frame?: boolean;
   children?: React.ReactNode;
 };
 
 const Topic = ({
   topic,
+  subTopics,
+  onSubTopicSelected,
   isLoading,
   renderMarkdown,
   invertedStyle,
   onToggleShowContent,
   showContent,
   isAdditionalTopic,
+  frame,
   children,
   t,
 }: TopicProps & tType) => (
-  <section data-testid="nav-topic-about">
+  <Wrapper frame={frame} data-testid="nav-topic-about">
     {isLoading ? (
       <Loader />
     ) : (
@@ -309,11 +333,19 @@ const Topic = ({
             {showContent && (
               <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>
             )}
-            <TopicResources>{topic.resources}</TopicResources>
+            {subTopics?.length && (
+              <NavigationBox
+                colorMode="light"
+                heading={t('navigation.topics')}
+                items={subTopics}
+                onClick={onSubTopicSelected}
+              />
+            )}
+            {topic.resources}
           </>
         )}
       </>
     )}
-  </section>
+  </Wrapper>
 );
 export default injectT(Topic);

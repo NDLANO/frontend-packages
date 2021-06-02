@@ -6,6 +6,6 @@
  *
  */
 
-import ToolboxPage from './ToolboxPage';
+import ToolboxInfo from './ToolboxInfo';
 
-export default ToolboxPage;
+export { ToolboxInfo };

@@ -772,6 +772,7 @@ const messages = {
       heading: 'Tekstversjon',
       close: 'Lukk tekstversjon',
     },
+    readMoreDescriptionLabel: 'vis meir',
   },
   video: {
     download: 'Last ned video',

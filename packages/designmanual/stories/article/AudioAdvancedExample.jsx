@@ -20,7 +20,7 @@ const AudioAdvancedExample = ({ t }) => {
   const figureId = `figure-${id}`;
 
   const description =
-    'Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero.';
+    'Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero. Se gjerne nærmere på hvordan andre kjente fortellere griper saken an. Siri Knudsen i NRK P3 lot seg for eksempel inspirere av Asbjørnsen og Moe da hun jobbet med sin radiodokumentar om artisten Truls Heggero.';
 
   const TextVersion = (
     <>
@@ -48,6 +48,7 @@ const AudioAdvancedExample = ({ t }) => {
       <AudioPlayer
         src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
         title="Den gode lydhistoria"
+        subtitle={{ title: 'Serienavn', url: '#' }}
         description={description}
         img={{
           url: 'https://api.ndla.no/image-api/raw/BagNsXHq.jpg?height=400',

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
@@ -14,6 +14,8 @@ import Button from '@ndla/button';
 // @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { injectT, tType } from '@ndla/i18n';
+import SafeLink from '@ndla/safelink';
+import shave from 'shave';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 
@@ -59,19 +61,26 @@ const ImageWrapper = styled.div`
   }
 `;
 const TextWrapper = styled.div`
-  padding: ${spacing.normal} ${spacing.small} ${spacing.small};
+  padding: ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal};
+    padding: ${spacing.small} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.normal} ${spacing.medium};
+    padding: ${spacing.small} ${spacing.medium};
   }
 `;
 const Title = styled.h2`
   ${fonts.sizes('22px', '30px')};
   margin: 0 0 ${spacing.small};
 `;
-const Description = styled.p`
+
+const Subtitle = styled.h3`
+  ${fonts.sizes('18px', '28px')};
+  margin: 0;
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const StyledDescription = styled.div`
   ${fonts.sizes('16px', '30px')};
   font-family: ${fonts.sans};
   margin: 0;
@@ -131,9 +140,19 @@ const TextVersionText = styled.div`
   max-width: 670px;
 `;
 
+export const truncateDescription = (el: HTMLElement, readMoreLabel: string | null) => {
+  shave(el, 90, {
+    character: `... <a href="#" onclick="(function(e){e.preventDefault(); const parentNode = e.target.parentNode; parentNode.nextSibling.style.display = 'inline'; parentNode.remove();return false;})(arguments[0]);return false;">${readMoreLabel}</a>`,
+  });
+};
+
 type Props = {
   src: string;
   title: string;
+  subtitle?: {
+    title: string;
+    url?: string;
+  };
   speech?: boolean;
   description?: ReactNode;
   textVersion?: ReactNode;
@@ -147,6 +166,7 @@ type Props = {
 const AudioPlayer = ({
   src,
   title,
+  subtitle,
   speech,
   description,
   img,
@@ -155,6 +175,15 @@ const AudioPlayer = ({
   t,
 }: Props & tType) => {
   const [showTextVersion, setShowTextVersion] = useState(false);
+
+  const descriptionRef = useRef<HTMLDivElement>(null);
+  const readMoreDescriptionLabel = t('audio.readMoreDescriptionLabel');
+
+  useEffect(() => {
+    if (descriptionRef?.current) {
+      truncateDescription(descriptionRef.current, readMoreDescriptionLabel);
+    }
+  }, [readMoreDescriptionLabel]);
 
   if (speech) {
     return (
@@ -178,17 +207,35 @@ const AudioPlayer = ({
             </ImageWrapper>
           )}
           <TextWrapper>
+            {subtitle && (
+              <Subtitle>
+                {subtitle.url ? (
+                  <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink>
+                ) : (
+                  subtitle.title
+                )}
+              </Subtitle>
+            )}
             <Title>{title}</Title>
-            {description && <Description>{description}</Description>}
+            {description && (
+              <StyledDescription>
+                <div
+                  ref={descriptionRef}
+                  data-audio-player-description={1}
+                  data-read-more-text={t('audio.readMoreDescriptionLabel')}>
+                  {description}
+                </div>
+              </StyledDescription>
+            )}
             {textVersion && (
               <LinkToTextVersionWrapper>
-                <LinkButton
-                  link
+                <Button
                   size="normal"
+                  borderShape="rounded"
                   onClick={toggleTextVersion}
                   data-audio-text-button-id={staticRenderId}>
                   {t('audio.textVersion.heading')}
-                </LinkButton>
+                </Button>
               </LinkToTextVersionWrapper>
             )}
           </TextWrapper>

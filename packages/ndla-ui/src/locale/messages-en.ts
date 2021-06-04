@@ -761,6 +761,7 @@ const messages = {
       heading: 'Text version',
       close: 'Close text version',
     },
+    readMoreDescriptionLabel: 'show more',
   },
   video: {
     download: 'Download video',

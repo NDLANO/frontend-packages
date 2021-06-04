@@ -12,6 +12,7 @@ import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 import LocaleProvider from '../locale/LocaleProvider';
 import { Locale } from '../types';
+import { truncateDescription } from './AudioPlayer';
 
 const forEachElement = (selector: string, callback: Function) => {
   const nodeList = document.querySelectorAll(selector);
@@ -37,6 +38,11 @@ const initAudioPlayers = (locale: Locale) => {
         );
       }
     }
+  });
+
+  forEachElement('[data-audio-player-description]', (el: HTMLElement) => {
+    const readMoreLabel = el.getAttribute('data-read-more-text');
+    truncateDescription(el, readMoreLabel);
   });
 
   forEachElement('[data-audio-text-button-id]', (el: HTMLElement) => {

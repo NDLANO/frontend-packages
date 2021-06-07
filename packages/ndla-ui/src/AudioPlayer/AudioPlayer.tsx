@@ -19,11 +19,6 @@ import shave from 'shave';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
 
-const Heading = styled.h2`
-  ${fonts.sizes('20px', '20px')};
-  margin: ${spacing.small} 0;
-`;
-
 const InfoWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
   border-bottom: 0;
@@ -60,18 +55,39 @@ const ImageWrapper = styled.div`
     }
   }
 `;
-const TextWrapper = styled.div`
+
+type TextWrapperProps = {
+  hasImage?: boolean;
+};
+
+const TextWrapper = styled.div<TextWrapperProps>`
   padding: ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
+  width: 100%;
+
+  ${props =>
+    props.hasImage &&
+    `${mq.range({ from: breakpoints.tablet })} {
     padding: ${spacing.small} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding: ${spacing.small} ${spacing.medium};
+  }`}
+`;
+
+const TitleWrapper = styled.div`
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    display: flex;
+    justify-content: space-between;
   }
 `;
-const Title = styled.h2`
+
+type TitleProps = {
+  hasDescription?: boolean;
+};
+
+const Title = styled.h2<TitleProps>`
   ${fonts.sizes('22px', '30px')};
-  margin: 0 0 ${spacing.small};
+  margin: 0 0 ${props => props.hasDescription && `${spacing.small}`};
 `;
 
 const Subtitle = styled.h3`
@@ -86,8 +102,17 @@ const StyledDescription = styled.div`
   margin: 0;
 `;
 
-const LinkToTextVersionWrapper = styled.div`
-  margin-top: ${spacing.normal};
+type LinkToTextVersionWrapperProps = {
+  noMargin?: boolean;
+};
+const LinkToTextVersionWrapper = styled.div<LinkToTextVersionWrapperProps>`
+  ${props =>
+    !props.noMargin &&
+    `margin-top: ${spacing.normal};
+  `}
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin: ${spacing.small} 0;
+  }
 `;
 
 const TextVersionWrapper = styled.div`
@@ -197,52 +222,58 @@ const AudioPlayer = ({
     setShowTextVersion(!showTextVersion);
   };
 
+  type TextVersionComponentProps = {
+    noMargin?: boolean;
+  };
+  const TextVersionComponent = ({ noMargin }: TextVersionComponentProps) => (
+    <LinkToTextVersionWrapper noMargin={noMargin}>
+      <Button
+        size="normal"
+        borderShape="rounded"
+        onClick={toggleTextVersion}
+        data-audio-text-button-id={staticRenderId}>
+        {t('audio.textVersion.heading')}
+      </Button>
+    </LinkToTextVersionWrapper>
+  );
+
   return (
     <>
-      {description || img || textVersion ? (
-        <InfoWrapper>
-          {img && (
-            <ImageWrapper>
-              <img src={img.url} alt={img.alt} />
-            </ImageWrapper>
+      <InfoWrapper>
+        {img && (
+          <ImageWrapper>
+            <img src={img.url} alt={img.alt} />
+          </ImageWrapper>
+        )}
+        <TextWrapper hasImage={!!img}>
+          <TitleWrapper>
+            <div>
+              {subtitle && (
+                <Subtitle>
+                  {subtitle.url ? (
+                    <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink>
+                  ) : (
+                    subtitle.title
+                  )}
+                </Subtitle>
+              )}
+              <Title hasDescription={!!description}>{title}</Title>
+            </div>
+            {textVersion && !img && <TextVersionComponent noMargin />}
+          </TitleWrapper>
+          {description && (
+            <StyledDescription>
+              <div
+                ref={descriptionRef}
+                data-audio-player-description={1}
+                data-read-more-text={t('audio.readMoreDescriptionLabel')}>
+                {description}
+              </div>
+            </StyledDescription>
           )}
-          <TextWrapper>
-            {subtitle && (
-              <Subtitle>
-                {subtitle.url ? (
-                  <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink>
-                ) : (
-                  subtitle.title
-                )}
-              </Subtitle>
-            )}
-            <Title>{title}</Title>
-            {description && (
-              <StyledDescription>
-                <div
-                  ref={descriptionRef}
-                  data-audio-player-description={1}
-                  data-read-more-text={t('audio.readMoreDescriptionLabel')}>
-                  {description}
-                </div>
-              </StyledDescription>
-            )}
-            {textVersion && (
-              <LinkToTextVersionWrapper>
-                <Button
-                  size="normal"
-                  borderShape="rounded"
-                  onClick={toggleTextVersion}
-                  data-audio-text-button-id={staticRenderId}>
-                  {t('audio.textVersion.heading')}
-                </Button>
-              </LinkToTextVersionWrapper>
-            )}
-          </TextWrapper>
-        </InfoWrapper>
-      ) : (
-        <Heading>{title}</Heading>
-      )}
+          {textVersion && img && <TextVersionComponent />}
+        </TextWrapper>
+      </InfoWrapper>
       <div data-audio-player={1} data-src={src} data-title={title}>
         <Controls src={src} title={title} />
       </div>

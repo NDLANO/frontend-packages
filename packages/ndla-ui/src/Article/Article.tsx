@@ -94,21 +94,22 @@ type Messages = {
 };
 
 type Props = {
-  article: ArticleType;
-  icon: boolean;
   additional: string;
-  licenseBox: ReactNode;
-  modifier: string;
+  article: ArticleType;
   children: ReactNode;
-  messages: Messages;
-  locale: Locale;
   competenceGoals: Function | string[];
   competenceGoalTypes: string[];
-  id: string;
-  renderMarkdown: (text: string) => string;
   copyPageUrlLink: string;
-  printUrl: string;
+  icon: boolean;
+  id: string;
+  licenseBox: ReactNode;
+  locale: Locale;
+  messages: Messages;
+  modifier: string;
   notions: { list: NotionItem[], related: NotionRelatedContent[] };
+  onReferenceClick: React.MouseEventHandler;
+  printUrl: string;
+  renderMarkdown: (text: string) => string;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -123,22 +124,22 @@ const getArticleContent = (content: any, locale: Locale) => {
 };
 
 export const Article = ({
-  article,
-  icon,
   additional,
-  licenseBox,
-  modifier,
-  messages,
+  article,
   children,
-  locale,
   competenceGoals,
   competenceGoalTypes,
-  id,
-  renderMarkdown,
   copyPageUrlLink,
-  printUrl,
+  icon,
+  id,
+  licenseBox,
+  locale,
+  messages,
+  modifier,
   notions,
-  t,
+  onReferenceClick,
+  printUrl,
+  renderMarkdown,
 }: Props & tType) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -183,7 +184,9 @@ export const Article = ({
             <ArticleNotions
               locale={locale}
               notions={notions.list}
+              onReferenceClick={onReferenceClick}
               relatedContent={notions.related}
+              renderMarkdown={renderMarkdown}
             />
           </>
         )}

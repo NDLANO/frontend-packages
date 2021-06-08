@@ -59,7 +59,7 @@ type NotionProps = {
   media?: React.ReactNode;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   onMediaClick?: React.MouseEventHandler
-  renderMarkdown: (text: React.ReactNode) => string;
+  renderMarkdown: (text: React.ReactNode|string) => string;
   text: React.ReactNode;
   title: string;
 };

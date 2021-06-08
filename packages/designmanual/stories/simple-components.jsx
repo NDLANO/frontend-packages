@@ -13,14 +13,13 @@ import SafeLink from '@ndla/safelink';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
 import FigureImage from './article/FigureImage';
-import AudioExample from './article/AudioExample';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
-import AudioAdvancedExample from './article/AudioAdvancedExample';
+import AudioExample from './article/AudioExample';
 
 const floatVideo = left => (
   <Fragment>
@@ -258,7 +257,10 @@ storiesOf('Enkle komponenter', module)
       <OneColumn>
         <LayoutItem layout="extend">
           <h2 className="u-heading">Podcast</h2>
-          <AudioAdvancedExample />
+          <AudioExample showSubtitle showImage showDescription showTextVersion />
+          <AudioExample showSubtitle showDescription showTextVersion />
+          <h2 className="u-heading">Lydavspiller med tekstversjon</h2>
+          <AudioExample showTextVersion />
           <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
           <AudioExample />
           <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>

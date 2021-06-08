@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
@@ -14,13 +14,10 @@ import Button from '@ndla/button';
 // @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { injectT, tType } from '@ndla/i18n';
+import SafeLink from '@ndla/safelink';
+import shave from 'shave';
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
-
-const Heading = styled.h2`
-  ${fonts.sizes('20px', '20px')};
-  margin: ${spacing.small} 0;
-`;
 
 const InfoWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -58,27 +55,64 @@ const ImageWrapper = styled.div`
     }
   }
 `;
-const TextWrapper = styled.div`
-  padding: ${spacing.normal} ${spacing.small} ${spacing.small};
-  ${mq.range({ from: breakpoints.tablet })} {
-    padding: ${spacing.normal};
+
+type TextWrapperProps = {
+  hasImage?: boolean;
+};
+
+const TextWrapper = styled.div<TextWrapperProps>`
+  padding: ${spacing.small};
+  width: 100%;
+
+  ${props =>
+    props.hasImage &&
+    `${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.small} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
-    padding: ${spacing.normal} ${spacing.medium};
+    padding: ${spacing.small} ${spacing.medium};
+  }`}
+`;
+
+const TitleWrapper = styled.div`
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    display: flex;
+    justify-content: space-between;
   }
 `;
-const Title = styled.h2`
+
+type TitleProps = {
+  hasDescription?: boolean;
+};
+
+const Title = styled.h2<TitleProps>`
   ${fonts.sizes('22px', '30px')};
-  margin: 0 0 ${spacing.small};
+  margin: 0 0 ${props => props.hasDescription && `${spacing.small}`};
 `;
-const Description = styled.p`
+
+const Subtitle = styled.h3`
+  ${fonts.sizes('18px', '28px')};
+  margin: 0;
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const StyledDescription = styled.div`
   ${fonts.sizes('16px', '30px')};
   font-family: ${fonts.sans};
   margin: 0;
 `;
 
-const LinkToTextVersionWrapper = styled.div`
-  margin-top: ${spacing.normal};
+type LinkToTextVersionWrapperProps = {
+  noMargin?: boolean;
+};
+const LinkToTextVersionWrapper = styled.div<LinkToTextVersionWrapperProps>`
+  ${props =>
+    !props.noMargin &&
+    `margin-top: ${spacing.normal};
+  `}
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin: ${spacing.small} 0;
+  }
 `;
 
 const TextVersionWrapper = styled.div`
@@ -131,9 +165,19 @@ const TextVersionText = styled.div`
   max-width: 670px;
 `;
 
+export const truncateDescription = (el: HTMLElement, readMoreLabel: string | null) => {
+  shave(el, 90, {
+    character: `... <a href="#" onclick="(function(e){e.preventDefault(); const parentNode = e.target.parentNode; parentNode.nextSibling.style.display = 'inline'; parentNode.remove();return false;})(arguments[0]);return false;">${readMoreLabel}</a>`,
+  });
+};
+
 type Props = {
   src: string;
   title: string;
+  subtitle?: {
+    title: string;
+    url?: string;
+  };
   speech?: boolean;
   description?: ReactNode;
   textVersion?: ReactNode;
@@ -147,6 +191,7 @@ type Props = {
 const AudioPlayer = ({
   src,
   title,
+  subtitle,
   speech,
   description,
   img,
@@ -155,6 +200,15 @@ const AudioPlayer = ({
   t,
 }: Props & tType) => {
   const [showTextVersion, setShowTextVersion] = useState(false);
+
+  const descriptionRef = useRef<HTMLDivElement>(null);
+  const readMoreDescriptionLabel = t('audio.readMoreDescriptionLabel');
+
+  useEffect(() => {
+    if (descriptionRef?.current) {
+      truncateDescription(descriptionRef.current, readMoreDescriptionLabel);
+    }
+  }, [readMoreDescriptionLabel]);
 
   if (speech) {
     return (
@@ -168,34 +222,58 @@ const AudioPlayer = ({
     setShowTextVersion(!showTextVersion);
   };
 
+  type TextVersionComponentProps = {
+    noMargin?: boolean;
+  };
+  const TextVersionComponent = ({ noMargin }: TextVersionComponentProps) => (
+    <LinkToTextVersionWrapper noMargin={noMargin}>
+      <Button
+        size="normal"
+        borderShape="rounded"
+        onClick={toggleTextVersion}
+        data-audio-text-button-id={staticRenderId}>
+        {t('audio.textVersion.heading')}
+      </Button>
+    </LinkToTextVersionWrapper>
+  );
+
   return (
     <>
-      {description || img || textVersion ? (
-        <InfoWrapper>
-          {img && (
-            <ImageWrapper>
-              <img src={img.url} alt={img.alt} />
-            </ImageWrapper>
+      <InfoWrapper>
+        {img && (
+          <ImageWrapper>
+            <img src={img.url} alt={img.alt} />
+          </ImageWrapper>
+        )}
+        <TextWrapper hasImage={!!img}>
+          <TitleWrapper>
+            <div>
+              {subtitle && (
+                <Subtitle>
+                  {subtitle.url ? (
+                    <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink>
+                  ) : (
+                    subtitle.title
+                  )}
+                </Subtitle>
+              )}
+              <Title hasDescription={!!description}>{title}</Title>
+            </div>
+            {textVersion && !img && <TextVersionComponent noMargin />}
+          </TitleWrapper>
+          {description && (
+            <StyledDescription>
+              <div
+                ref={descriptionRef}
+                data-audio-player-description={1}
+                data-read-more-text={t('audio.readMoreDescriptionLabel')}>
+                {description}
+              </div>
+            </StyledDescription>
           )}
-          <TextWrapper>
-            <Title>{title}</Title>
-            {description && <Description>{description}</Description>}
-            {textVersion && (
-              <LinkToTextVersionWrapper>
-                <LinkButton
-                  link
-                  size="normal"
-                  onClick={toggleTextVersion}
-                  data-audio-text-button-id={staticRenderId}>
-                  {t('audio.textVersion.heading')}
-                </LinkButton>
-              </LinkToTextVersionWrapper>
-            )}
-          </TextWrapper>
-        </InfoWrapper>
-      ) : (
-        <Heading>{title}</Heading>
-      )}
+          {textVersion && img && <TextVersionComponent />}
+        </TextWrapper>
+      </InfoWrapper>
       <div data-audio-player={1} data-src={src} data-title={title}>
         <Controls src={src} title={title} />
       </div>

@@ -22,7 +22,7 @@ const ArticleNotionsContainer = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     margin-bottom: 0;
   }
-`
+`;
 
 const NotionsTrigger = styled.div`
   position: relative;
@@ -55,8 +55,8 @@ const NotionsTrigger = styled.div`
       width: 40px;
       height: 54px;
       cursor: pointer;
-      color: #DEF1ED;
-  
+      color: #def1ed;
+
       ${mq.range({ from: breakpoints.tablet })} {
         display: block;
       }
@@ -123,7 +123,7 @@ const NotionsContainer = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     padding: 0 3.5rem;
   }
-`
+`;
 
 const RelatedContentContainer = styled.ul`
   display: flex;
@@ -182,7 +182,7 @@ type ArticleNotionsProps = {
   notions: NotionItem[];
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];
-  renderMarkdown: (text: React.ReactNode|string) => string;
+  renderMarkdown: (text: React.ReactNode | string) => string;
 };
 
 export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({

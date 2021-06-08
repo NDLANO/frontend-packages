@@ -103,4 +103,4 @@ export type elementRectType = {
 export type NotionMedia = {
   type: 'video' | 'other';
   element: React.ReactNode;
-}
+};

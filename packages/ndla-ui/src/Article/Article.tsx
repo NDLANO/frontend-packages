@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
@@ -36,11 +36,13 @@ type ArticleWrapperProps = {
   children: ReactNode;
 };
 
-export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
-  <article id={id} {...classes(undefined, modifier)} ref={ref}>
-    {children}
-  </article>
-));
+export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(
+  ({ children, modifier, id }, ref) => (
+    <article id={id} {...classes(undefined, modifier)} ref={ref}>
+      {children}
+    </article>
+  ),
+);
 
 type ArticleTitleProps = {
   icon: boolean;
@@ -106,7 +108,7 @@ type Props = {
   locale: Locale;
   messages: Messages;
   modifier: string;
-  notions: { list: NotionItem[], related: NotionRelatedContent[] };
+  notions: { list: NotionItem[]; related: NotionRelatedContent[] };
   onReferenceClick: React.MouseEventHandler;
   printUrl: string;
   renderMarkdown: (text: string) => string;

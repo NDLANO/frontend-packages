@@ -3,14 +3,14 @@ import { injectT, tType } from '@ndla/i18n';
 import HTMLReactParser from 'html-react-parser';
 import React from 'react';
 import Button from '@ndla/button';
-import { colors, fonts } from "@ndla/core"
+import { colors, fonts } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { joinNamesAsList } from '../Article/utils/joinNamesAsList';
 
 const NotionContainer = styled.div`
   border-bottom: 1px solid ${colors.brand.greyLighter};
   margin-bottom: 3.5rem;
-`
+`;
 
 const AuthorsContainer = styled.div`
   display: flex;
@@ -37,10 +37,10 @@ const LabelsContainer = styled.div`
     margin: 0;
   }
 
-  >:not(:last-child) {
+  > :not(:last-child) {
     margin-right: 0.5rem;
   }
-`
+`;
 
 const Label = styled.span`
   ${fonts.sizes('14px', '24px')};
@@ -48,7 +48,7 @@ const Label = styled.span`
   padding: 0 0.25rem;
   background-color: ${colors.brand.greyLightest};
   vertical-align: center;
-`
+`;
 
 type NotionProps = {
   authors?: { name: string }[];
@@ -58,8 +58,8 @@ type NotionProps = {
   locale?: string;
   media?: React.ReactNode;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onMediaClick?: React.MouseEventHandler
-  renderMarkdown: (text: React.ReactNode|string) => string;
+  onMediaClick?: React.MouseEventHandler;
+  renderMarkdown: (text: React.ReactNode | string) => string;
   text: React.ReactNode;
   title: string;
 };
@@ -83,7 +83,7 @@ const Notion: React.FC<NotionProps & tType> = ({
         {HTMLReactParser(
           renderMarkdown
             ? renderMarkdown(`**${title}** &ndash; ${text}`)
-            : `<b>${title}</b> \u2013 ${text}`
+            : `<b>${title}</b> \u2013 ${text}`,
         )}
       </div>
       {!!media && media}
@@ -91,16 +91,16 @@ const Notion: React.FC<NotionProps & tType> = ({
         <AuthorsContainer>
           <p>
             {t('article.writtenBy', {
-              authors: joinNamesAsList(authors.map((author) => author.name), {
-                conjunction: t('article.conjunction'),
-              }),
+              authors: joinNamesAsList(
+                authors.map(author => author.name),
+                {
+                  conjunction: t('article.conjunction'),
+                },
+              ),
             })}
             {license && ` (${getLicenseByAbbreviation(license, locale).abbreviation})`}
           </p>
-          <Button
-            link
-            onClick={onReferenceClick}
-          >
+          <Button link onClick={onReferenceClick}>
             {t('article.citeNotion')}
           </Button>
         </AuthorsContainer>
@@ -114,7 +114,7 @@ const Notion: React.FC<NotionProps & tType> = ({
         </LabelsContainer>
       )}
     </NotionContainer>
-  )
+  );
 };
 
 export default injectT(Notion);

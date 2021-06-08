@@ -27,10 +27,7 @@ const NotionFlip = (props: Props) => (
         fill="#638B98"
         stroke="#638B98"
       />
-      <path
-        d="M1 27C1 15.9543 9.95431 7 21 7H37V47H21C9.95431 47 1 38.0457 1 27Z"
-        fill="#DEF1ED"
-      />
+      <path d="M1 27C1 15.9543 9.95431 7 21 7H37V47H21C9.95431 47 1 38.0457 1 27Z" fill="#DEF1ED" />
       <path
         d="M2 27C2 16.5066 10.5066 8 21 8H36V46H21C10.5066 46 2 37.4934 2 27Z"
         stroke="#638B98"

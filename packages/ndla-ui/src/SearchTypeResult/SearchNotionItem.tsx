@@ -208,8 +208,7 @@ const SearchNotionItem = ({
                       ) || '',
                   })}
                 {authors.length > 0 && license && ' '}
-                {license &&
-                  `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
+                {license && `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
                 {onReferenceClick && (
                   <Button link onClick={onReferenceClick}>
                     {t('article.cite')}

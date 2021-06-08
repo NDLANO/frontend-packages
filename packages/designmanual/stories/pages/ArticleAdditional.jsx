@@ -8,13 +8,7 @@
 
 import React from 'react';
 
-import {
-  OneColumn,
-  LayoutItem,
-  Article,
-  SubjectMaterialBadge,
-  constants,
-} from '@ndla/ui';
+import { OneColumn, LayoutItem, Article, SubjectMaterialBadge, constants } from '@ndla/ui';
 
 import Resources from '../molecules/resources';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
@@ -33,21 +27,19 @@ const ArticleAdditional = () => (
         content: () => (
           <>
             <p>
-              Du har en kjempegod idé til en kortfilm. Men det koster mange
-              penger å produsere filmen. Derfor er du avhengig av at noen tenner
-              på idéen din og bestemmer seg for å bruke ressurser på nettopp
-              dette prosjektet.
+              Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere
+              filmen. Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å
+              bruke ressurser på nettopp dette prosjektet.
             </p>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-              få andre til å tenne på idéen din og se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
+              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
+              se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å
-              lage, tydeligere for både deg selv og dem du eventuelt jobber
-              sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+              eventuelt jobber sammen med i klassen.
             </p>
             <table className="c-table o-wrapper--wide">
               <tbody>
@@ -74,13 +66,10 @@ const ArticleAdditional = () => (
                   <td>Anmeldelse</td>
                   <td>
                     <ul>
+                      <li>en av journalistenes mening om en ny film, bok, konsert e.l. </li>
                       <li>
-                        en av journalistenes mening om en ny film, bok, konsert
-                        e.l.{' '}
-                      </li>
-                      <li>
-                        skal være en bruksanvisning slik at målgruppen vet om
-                        produktet er noe for dem
+                        skal være en bruksanvisning slik at målgruppen vet om produktet er noe for
+                        dem
                       </li>
                     </ul>
                   </td>
@@ -90,9 +79,7 @@ const ArticleAdditional = () => (
                   <td>Leserinnlegg og kommentarfelt</td>
                   <td>
                     <ul>
-                      <li>
-                        lar den enkelte mottaker komme med sitt syn på en sak
-                      </li>
+                      <li>lar den enkelte mottaker komme med sitt syn på en sak</li>
                       <li>leserinnlegg i avis, kommentarfelt på nett </li>
                     </ul>
                   </td>
@@ -103,8 +90,8 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        kan skrives av en i redaksjonen, men gjerne også av en
-                        fagperson utenfor redaksjonen{' '}
+                        kan skrives av en i redaksjonen, men gjerne også av en fagperson utenfor
+                        redaksjonen{' '}
                       </li>
                       <li>skal gi dybdekunnskap om et tema </li>
                     </ul>
@@ -140,10 +127,7 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>enkelt oppsett med spørsmål og svar </li>
-                      <li>
-                        brukes gjerne som en del av en nyhetsreportasje eller
-                        artikkel
-                      </li>
+                      <li>brukes gjerne som en del av en nyhetsreportasje eller artikkel</li>
                     </ul>
                   </td>
                 </tr>
@@ -153,8 +137,7 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        kort nyhetsmelding som gir grunnleggende informasjon om
-                        en aktuell hendelse
+                        kort nyhetsmelding som gir grunnleggende informasjon om en aktuell hendelse
                       </li>
                       <li>gjerne bare 10–15 setninger</li>
                     </ul>
@@ -168,13 +151,10 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        hører til i objektiv-kategorien, men journalisten bruker
-                        alle sanser og litterære virkemidler{' '}
+                        hører til i objektiv-kategorien, men journalisten bruker alle sanser og
+                        litterære virkemidler{' '}
                       </li>
-                      <li>
-                        går i dybden, gir leseren en større forståelse av et
-                        tema
-                      </li>
+                      <li>går i dybden, gir leseren en større forståelse av et tema</li>
                     </ul>
                   </td>
                 </tr>
@@ -184,28 +164,24 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        hører til i objektiv-kategorien, men journalisten bruker
-                        alle sanser og litterære virkemidler{' '}
+                        hører til i objektiv-kategorien, men journalisten bruker alle sanser og
+                        litterære virkemidler{' '}
                       </li>
-                      <li>
-                        gir leseren dybdekunnskap om en aktuell person i
-                        nyhetsbildet
-                      </li>
+                      <li>gir leseren dybdekunnskap om en aktuell person i nyhetsbildet</li>
                     </ul>
                   </td>
                 </tr>
               </tbody>
             </table>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-              få andre til å tenne på idéen din og se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
+              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
+              se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å
-              lage, tydeligere for både deg selv og dem du eventuelt jobber
-              sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+              eventuelt jobber sammen med i klassen.
             </p>
           </>
         ),

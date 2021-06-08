@@ -8,13 +8,7 @@
 
 import React from 'react';
 
-import {
-  OneColumn,
-  LayoutItem,
-  Article,
-  SubjectMaterialBadge,
-  constants,
-} from '@ndla/ui';
+import { OneColumn, LayoutItem, Article, SubjectMaterialBadge, constants } from '@ndla/ui';
 
 import RelatedArticleListExample from '../article/RelatedArticleListExample';
 import Resources from '../molecules/resources';
@@ -36,42 +30,35 @@ const ArticleLearningMaterial = () => (
         content: () => (
           <>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-              få andre til å{' '}
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
+              eller kunde. I løpet av noen få minutter skal du få andre til å{' '}
               <a href="#test">tenne på idéen din og se potensialet</a> i den.
             </p>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-              få andre til å tenne på idéen din og se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
+              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
+              se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å
-              lage, tydeligere for både deg selv og dem du eventuelt jobber
-              sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+              eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å
-              lage, tydeligere for både deg selv og dem du eventuelt jobber
-              sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+              eventuelt jobber sammen med i klassen.
             </p>
-            <FigureImage
-              alt=""
-              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-            />
+            <FigureImage alt="" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell
-              samarbeidspartner eller kunde. I løpet av noen få minutter skal du
-              få andre til å tenne på idéen din og se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
+              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
+              se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du
-              pitcher, blir idéen og historien i den filmen du planlegger å
-              lage, tydeligere for både deg selv og dem du eventuelt jobber
-              sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
+              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
+              eventuelt jobber sammen med i klassen.
             </p>
             <RelatedArticleListExample />
           </>

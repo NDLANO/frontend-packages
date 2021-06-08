@@ -6,10 +6,8 @@
  *
  */
 
-export async function fetchArticle(id, useFFServer) {
-  const url = useFFServer
-    ? `https://api.ff.ndla.no/article-converter/json/nb/${id}/`
-    : `https://api.ndla.no/article-converter/json/nb/${id}/`;
+export async function fetchArticle(id) {
+  const url = `https://api.ndla.no/article-converter/json/nb/${id}/`;
   const response = await fetch(url);
 
   return response.json();

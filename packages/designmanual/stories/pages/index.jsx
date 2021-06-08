@@ -45,15 +45,11 @@ import ExplanationService from './ExplanationService';
 import ProgrammePage from './ProgrammePage';
 import SubjectPage from './SubjectPage';
 import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
-import {
-  breadcrumb as toolboxBreadcrumb,
-  topics as toolboxTopics,
-} from '../../dummydata/mockToolbox';
 import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
 import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
-import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
 import { contentCards } from '../../dummydata';
+import Toolbox from './Toolbox';
 
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
@@ -330,12 +326,7 @@ storiesOf('Fag- og emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
-        <SubjectPage
-          topics={toolboxTopics}
-          initialBreadcrumb={toolboxBreadcrumb}
-          subjectName="Verktøykassa"
-          bannerBackground={backgroundToolbox}
-        />
+        <Toolbox />
       </Content>
       <FooterExample />
     </PageContainer>

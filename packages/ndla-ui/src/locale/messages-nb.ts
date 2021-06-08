@@ -800,6 +800,10 @@ const messages = {
   filterButtons: {
     removeAllFilters: 'Fjern filter',
   },
+  visualElement: {
+    show: 'Vis',
+    showVideo: 'Vis video',
+  },
 };
 
 export default messages;

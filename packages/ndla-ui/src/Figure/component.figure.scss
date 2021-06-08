@@ -32,12 +32,13 @@
   }
 }
 .c-figure {
+  display: flex;
   margin: $spacing 0 $spacing;
   position: relative;
 
   @include mq($from: desktop) {
     margin: $spacing--large 0 $spacing--large;
-    @include grids-expand(4,6,2);
+    @include grids-expand(4, 6, 2);
   }
   transition: transform 0.4s, width 0.4s, height 0.4s;
 
@@ -52,24 +53,19 @@
   }
 }
 
+.brightcove-video {
+  .hidden {
+    display: none;
+  }
+}
+
 /* 2. */
 .c-figure__caption {
   background-color: $brand-grey--lightest;
   padding-top: $spacing--small;
   display: block;
 }
-.c-figure__captionbtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: $brand-color;
-  box-shadow: $link;
-  padding: 0;
-  @include font-size(14px);
-  &:hover {
-    box-shadow: $link--hover;
-  }
-}
+
 .c-figure__licensetag {
   display: none;
 }
@@ -78,9 +74,23 @@
   display: flex;
   align-items: center;
 
-  .c-figure__captionbtn {
-    svg {
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $brand-color;
+    box-shadow: $link;
+    padding: 0;
+    @include font-size(14px);
+    &:hover {
+      box-shadow: $link--hover;
+    }
+
+    &.c-figure__captionbtn svg {
       display: none;
+    }
+    &.c-figure__toggleSynstolket {
+      margin-left: 10px;
     }
   }
 }

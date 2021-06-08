@@ -50,7 +50,9 @@ export const FigureCaption = ({
             {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
-
+          <button type="button" {...classes('toggleSynstolket')}>
+            <span>Bytt til synstolket</span>
+          </button>
           {children}
         </LicenseByline>
         {link && (

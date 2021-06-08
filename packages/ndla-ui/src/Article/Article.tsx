@@ -27,7 +27,7 @@ const classes = new BEMHelper({
 
 type ArticleWrapperProps = {
   id: string;
-  modifier: string;
+  modifier?: string;
   children: ReactNode;
 };
 
@@ -38,8 +38,8 @@ export const ArticleWrapper = ({ children, modifier, id }: ArticleWrapperProps) 
 );
 
 type ArticleTitleProps = {
-  icon: ReactNode;
-  label: string;
+  icon?: ReactNode;
+  label?: string;
   children: ReactNode;
 };
 
@@ -90,25 +90,23 @@ type Messages = {
 
 type Props = {
   article: ArticleType;
-  icon: ReactNode;
-  additional: string;
-  licenseBox: ReactNode;
-  modifier: string;
+  icon?: ReactNode;
+  licenseBox?: ReactNode;
+  modifier?: string;
   children: ReactNode;
   messages: Messages;
   locale: Locale;
-  competenceGoals: Function | string[];
-  competenceGoalTypes: string[];
+  competenceGoals?: Function | string[];
+  competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;
-  copyPageUrlLink: string;
-  printUrl: string;
+  copyPageUrlLink?: string;
+  printUrl?: string;
 };
 
 export const Article = ({
   article,
   icon,
-  additional,
   licenseBox,
   modifier,
   messages,
@@ -162,7 +160,6 @@ export const Article = ({
             suppliers,
             published,
             license,
-            additional,
             licenseBox,
             printUrl,
           }}

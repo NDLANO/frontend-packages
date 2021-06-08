@@ -1,6 +1,6 @@
 {
   "name": "@ndla/safelink",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "SafeLink component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

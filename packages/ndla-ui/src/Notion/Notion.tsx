@@ -2,7 +2,10 @@ import styled from '@emotion/styled';
 import { injectT, tType } from '@ndla/i18n';
 import HTMLReactParser from 'html-react-parser';
 import React from 'react';
+
+// @ts-ignore
 import Button from '@ndla/button';
+
 import { colors, fonts } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import { joinNamesAsList } from '../Article/utils/joinNamesAsList';
@@ -59,7 +62,7 @@ type NotionProps = {
   media?: React.ReactNode;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   onMediaClick?: React.MouseEventHandler;
-  renderMarkdown: (text: React.ReactNode | string) => string;
+  renderMarkdown: (text: string) => string;
   text: React.ReactNode;
   title: string;
 };

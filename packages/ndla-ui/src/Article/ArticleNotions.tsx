@@ -182,7 +182,7 @@ type ArticleNotionsProps = {
   notions: NotionItem[];
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];
-  renderMarkdown: (text: React.ReactNode | string) => string;
+  renderMarkdown: (text: string) => string;
 };
 
 export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({

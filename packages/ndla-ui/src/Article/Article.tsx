@@ -38,7 +38,7 @@ export const ArticleWrapper = ({ children, modifier, id }: ArticleWrapperProps) 
 );
 
 type ArticleTitleProps = {
-  icon: boolean;
+  icon: ReactNode;
   label: string;
   children: ReactNode;
 };

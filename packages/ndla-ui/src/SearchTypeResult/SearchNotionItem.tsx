@@ -23,6 +23,7 @@ import { ArrowExpand } from '@ndla/icons/editor';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
 import { joinNamesAsList } from '../Article/utils/joinNamesAsList';
+import { NotionMedia } from '../types';
 
 type ItemWrapperProps = {
   hasMedia?: boolean;
@@ -119,17 +120,12 @@ const AuthorsWrapper = styled.div`
   }
 `;
 
-type MediaProps = {
-  type: 'video' | 'other';
-  element: React.ReactNode;
-};
-
 export type SearchNotionItemProps = {
   id: string;
   title: string;
   text: React.ReactNode;
   image?: { url: string; alt: string };
-  media?: MediaProps;
+  media?: NotionMedia;
   labels?: string[];
   authors?: { name: string }[];
   license?: string;
@@ -152,7 +148,7 @@ const SearchNotionItem = ({
   t,
 }: SearchNotionItemProps & tType) => {
   const hasMedia = !!(image || media);
-  const ShowMediaButton = ({ type, element }: MediaProps) => {
+  const ShowMediaButton = ({ type, element }: NotionMedia) => {
     return (
       <ShowMediaButtonWrapper>
         <Modal
@@ -208,7 +204,7 @@ const SearchNotionItem = ({
                     authors:
                       joinNamesAsList(
                         authors.map(author => author.name),
-                        { conjunction: 'og' },
+                        { conjunction: t('article.conjunction') },
                       ) || '',
                   })}
                 {authors.length > 0 && license && ' '}

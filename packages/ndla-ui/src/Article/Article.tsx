@@ -8,11 +8,14 @@
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
+import styled from "@emotion/styled"
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
+import { mq, breakpoints, fonts } from '@ndla/core';
 import { useIntersectionObserver } from '@ndla/hooks';
+import { injectT, tType } from '@ndla/i18n';
 import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -20,7 +23,7 @@ import ArticleByline from './ArticleByline';
 // @ts-ignore
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleNotions, { Notion, NotionRelatedContent } from './ArticleNotions';
+import ArticleNotions, { NotionItem, NotionRelatedContent } from './ArticleNotions';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -105,7 +108,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink: string;
   printUrl: string;
-  notions: { list: Notion[], related: NotionRelatedContent[] };
+  notions: { list: NotionItem[], related: NotionRelatedContent[] };
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -135,7 +138,8 @@ export const Article = ({
   copyPageUrlLink,
   printUrl,
   notions,
-}: Props) => {
+  t,
+}: Props & tType) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
     rootMargin: '100%',
@@ -175,11 +179,13 @@ export const Article = ({
       </LayoutItem>
       <LayoutItem layout="center">
         {showExplainNotions && (
-          <ArticleNotions
-            locale={locale}
-            notions={notions.list}
-            relatedContent={notions.related}
-          />
+          <>
+            <ArticleNotions
+              locale={locale}
+              notions={notions.list}
+              relatedContent={notions.related}
+            />
+          </>
         )}
         {getArticleContent(content, locale)}
       </LayoutItem>
@@ -203,4 +209,4 @@ export const Article = ({
   );
 };
 
-export default Article;
+export default injectT(Article);

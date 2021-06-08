@@ -19,6 +19,7 @@ import {
 
 import FigureImage from '../article/FigureImage';
 import ArticleBylineExample from '../molecules/ArticleBylineExample';
+import FigureWithLicense from '../article/FigureWithLicense';
 
 const ArticleLearningPaths = ({ title, description }) => (
   <>

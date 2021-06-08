@@ -18,6 +18,7 @@ import {
 
 import Resources from '../molecules/resources';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
+import FigureWithLicense from '../article/FigureWithLicense';
 
 const { contentTypes } = constants;
 
@@ -239,9 +240,21 @@ const ArticleAdditional = () => (
               alt: 'And',
             },
             labels: ['Naturbruk Vg1'],
-            media: {
-              type: 'video',
-            },
+            media: (
+              <FigureWithLicense
+                type="full-column"
+                resizeIframe
+                caption="Utholdenhet - animasjon av oksygentransporten">
+                <iframe
+                  title="Video: Utholdenhet - animasjon av oksygentransporten"
+                  height="270"
+                  width="480"
+                  frameBorder="0"
+                  src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+                  allowFullScreen
+                />
+              </FigureWithLicense>
+            ),
             authors: [{ name: 'Fornavn Etternavn' }],
             license: 'CC-BY-SA-4.0',
             linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],

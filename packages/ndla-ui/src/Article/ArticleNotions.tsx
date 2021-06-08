@@ -11,48 +11,74 @@ import styled from '@emotion/styled';
 
 // @ts-ignore
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
-import { mq, breakpoints, fonts } from '@ndla/core';
-import { Explanation } from '@ndla/icons/common';
+import { mq, breakpoints, fonts, colors } from '@ndla/core';
+import { Explanation, NotionFlip } from '@ndla/icons/common';
 import { injectT, tType } from '@ndla/i18n';
-import SearchNotionItem from '../SearchTypeResult/SearchNotionItem';
+import { Notion } from '../Notion';
 
-const NotionsTrigger = styled.div`
-  position: fixed;
-  right: 26px;
-  bottom: 1rem;
-  padding: calc(0.4rem - 2px) 0.6rem 0.4rem;
-  background-color: #def1ed;
-  border: 2px solid #638b98;
-  border-radius: 2px;
-  z-index: 10;
+const ArticleNotionsContainer = styled.div`
+  margin-bottom: 26px;
 
   ${mq.range({ from: breakpoints.tablet })} {
-    top: 12rem;
-    bottom: auto;
-    padding: 0;
-    background-color: transparent;
-    border: none;
+    margin-bottom: 0;
   }
-  ${mq.range({ from: '1076px' })} {
-    right: calc(50vw - 60.75rem / 2 + 3rem - 9px);
+`
+
+const NotionsTrigger = styled.div`
+  position: relative;
+  display: inline-block;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  background-color: ${colors.brand.greyLighter};
+  border-radius: 4px;
+  cursor: pointer;
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    position: fixed;
+    border: none;
+    padding: 0;
+    height: auto;
+    top: 12rem;
+    right: 18px;
+    background-color: transparent;
+    z-index: 10;
+  }
+
+  ${mq.range({ from: '1024px' })} {
+    right: calc(50vw - 1024px / 2 + 19px);
   }
 
   svg {
-    display: none;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-
-    ${mq.range({ from: breakpoints.tablet })} {
+    &:first-of-type {
+      display: none;
+      width: 40px;
+      height: 54px;
+      cursor: pointer;
+      color: #DEF1ED;
+  
+      ${mq.range({ from: breakpoints.tablet })} {
+        display: block;
+      }
+    }
+    &:nth-of-type(2) {
       display: block;
+      color: ${colors.brand.primary};
+      margin-right: 8px;
+
+      ${mq.range({ from: breakpoints.tablet })} {
+        display: none;
+      }
     }
   }
 
   span {
+    ${fonts.sizes('16px', '39px')};
     display: block;
     font-family: ${fonts.sans};
-    font-weight: ${fonts.weight.bold};
-    color: #3f6679;
+    font-weight: ${fonts.weight.semibold};
+    color: ${colors.brand.primary};
+    padding-bottom: 1px;
 
     ${mq.range({ from: breakpoints.tablet })} {
       display: none;
@@ -65,17 +91,25 @@ const ModalHeadingContainer = styled.div`
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 2rem;
 
-  ${mq.range({ from: breakpoints.mobile })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     padding-left: 3.5rem;
     padding-right: 3.5rem;
   }
 
   svg {
     display: block;
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 2rem;
+    height: 2rem;
     color: #638b98;
+    margin: 0 1rem 0 -0.25rem;
+
+    ${mq.range({ from: breakpoints.tablet })} {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 1.5rem 0 -0.5rem;
+    }
   }
 
   h1 {
@@ -84,9 +118,9 @@ const ModalHeadingContainer = styled.div`
 `;
 
 const NotionsContainer = styled.div`
-  padding: 0 1rem;
+  padding: 0 20px;
 
-  ${mq.range({ from: breakpoints.mobile })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     padding: 0 3.5rem;
   }
 `
@@ -96,9 +130,9 @@ const RelatedContentContainer = styled.ul`
   flex-wrap: wrap;
   list-style: none;
   margin: 0 0 2rem;
-  padding: 0 1rem;
+  padding: 0 20px;
 
-  ${mq.range({ from: breakpoints.mobile })} {
+  ${mq.range({ from: breakpoints.tablet })} {
     padding: 0 3.5rem;
   }
 
@@ -113,7 +147,7 @@ const RelatedContentContainer = styled.ul`
       margin-right: 0;
     }
 
-    ${mq.range({ from: breakpoints.mobile })} {
+    ${mq.range({ from: breakpoints.tablet })} {
       width: calc(100% * (1 / 3));
 
       &:not(:nth-child(2n)) {
@@ -123,7 +157,7 @@ const RelatedContentContainer = styled.ul`
   }
 `;
 
-export type Notion = {
+export type NotionItem = {
   id: string;
   title: string;
   text: string;
@@ -145,55 +179,26 @@ export type NotionRelatedContent = {
 
 type ArticleNotionsProps = {
   locale: string;
-  notions: Notion[];
-  renderMarkdown: (text: string) => string;
+  notions: NotionItem[];
+  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];
+  renderMarkdown: (text: React.ReactNode) => string;
 };
 
 export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({
   locale,
   notions,
-  renderMarkdown,
+  onReferenceClick,
   relatedContent = [],
+  renderMarkdown,
   t,
 }) => (
-  <div>
+  <ArticleNotionsContainer>
     <Modal
       activateButton={
-        <NotionsTrigger role="button">
-          <svg
-            width="41"
-            height="54"
-            viewBox="0 0 41 54"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M36.5 47.085L32.5 52.485V1.51501L36.5 6.91501V47.085Z"
-              fill="#638B98"
-              stroke="#638B98"
-            />
-            <path
-              d="M1 27C1 15.9543 9.95431 7 21 7H37V47H21C9.95431 47 1 38.0457 1 27Z"
-              fill="#DEF1ED"
-            />
-            <path
-              d="M2 27C2 16.5066 10.5066 8 21 8H36V46H21C10.5066 46 2 37.4934 2 27Z"
-              stroke="#638B98"
-              stroke-width="2"
-            />
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M23.8682 28.0598C24.2622 25.5195 27.0859 25.344 27.5445 23.8441C27.7891 23.0441 27.4522 22.3579 26.6022 22.098C25.9188 21.8891 25.2669 22.0543 24.6206 22.4398L23.8545 21.1304C24.8311 20.4995 25.9978 20.2002 27.2145 20.5721C29.0144 21.1224 30.0073 22.4648 29.4519 24.2814C28.8048 26.3981 25.9755 26.3532 25.5516 28.5745L23.8682 28.0598ZM22.7256 30.4259C22.9549 29.6759 23.6564 29.289 24.3564 29.503C25.0564 29.717 25.4382 30.4352 25.2089 31.1851C24.9796 31.9351 24.2615 32.317 23.5615 32.103C22.8615 31.889 22.4963 31.1759 22.7256 30.4259Z"
-              fill="#638B98"
-            />
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M16.9054 31.0545C15.7266 28.0129 18.7184 26.0285 18.2706 24.0891C18.0318 23.0548 17.2262 22.5145 16.1272 22.7682C15.2437 22.9722 14.6321 23.5673 14.1664 24.4012L12.4938 23.4482C13.1667 22.1353 14.259 21.0661 15.832 20.7029C18.1592 20.1656 20.102 21.0108 20.6443 23.3596C21.2761 26.0962 18.1384 27.842 19.0818 30.5521L16.9054 31.0545ZM17.151 34.3796C16.9272 33.41 17.4525 32.5397 18.3576 32.3307C19.2626 32.1218 20.1379 32.6687 20.3617 33.6384C20.5856 34.6081 20.0387 35.4833 19.1337 35.6923C18.2286 35.9012 17.3749 35.3493 17.151 34.3796Z"
-              fill="#638B98"
-            />
-          </svg>
+        <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')}>
+          <NotionFlip />
+          <Explanation />
           <span>{t('article.notionsPrompt')}</span>
         </NotionsTrigger>
       }
@@ -211,11 +216,12 @@ export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({
             </ModalHeadingContainer>
             <NotionsContainer>
               {notions.map(notion => (
-                <SearchNotionItem
+                <Notion
                   key={notion.id}
                   locale={locale}
-                  {...notion}
+                  onReferenceClick={onReferenceClick}
                   renderMarkdown={renderMarkdown}
+                  {...notion}
                 />
               ))}
             </NotionsContainer>
@@ -232,7 +238,7 @@ export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({
         </div>
       )}
     </Modal>
-  </div>
+  </ArticleNotionsContainer>
 );
 
 export default injectT(ArticleNotions);

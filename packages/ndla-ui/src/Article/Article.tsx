@@ -90,7 +90,7 @@ type Messages = {
 
 type Props = {
   article: ArticleType;
-  icon: boolean;
+  icon: ReactNode;
   additional: string;
   licenseBox: ReactNode;
   modifier: string;

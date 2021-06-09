@@ -344,6 +344,9 @@ const messages = {
     competenceTabLK06label: 'Competence goal (LK06)',
     competenceTabLK20label: 'Competence goal (LK20)',
     competenceTabCorelabel: 'Core element',
+    competenceGoalItem: {
+      title: 'Competence goals and assessment',
+    },
   },
   subject: {
     associatedTopics: 'Associated topics',

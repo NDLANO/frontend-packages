@@ -1,6 +1,13 @@
+/**
+ * Copyright (c) 2021-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-// mq, breakpoints,
 import { spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -9,7 +16,6 @@ import { BY, CC, LicenseByline } from '@ndla/licenses';
 import CompetenceItem, { ListItemProp } from './CompetenceItem';
 
 type CompetenceProps = {
-  title: string;
   list: ListItemProp[];
 };
 
@@ -17,15 +23,6 @@ const Wrapper = styled.div`
   h2 {
     margin: 0 0 ${spacing.medium};
   }
-  h3 {
-    margin: ${spacing.xxsmall} 0 ${spacing.small};
-  }
-`;
-
-const Title = styled.h2`
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 32px;
 `;
 
 const TabWrapper = styled.div`
@@ -45,12 +42,11 @@ const LicenseIconsTextWrapper = styled.span`
   margin-left: 5px;
 `;
 
-const CompetenceGoalTab = ({ title, list }: CompetenceProps) => {
+const CompetenceGoalTab = ({ list }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
 
   return (
     <Wrapper>
-      {title && title !== '' ? <Title>{title}</Title> : null}
       <TabWrapper>
         {list.map((tabItem, index: number) => {
           const { id, title: tabTitle } = tabItem;

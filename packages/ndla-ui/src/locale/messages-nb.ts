@@ -343,6 +343,9 @@ const messages = {
     competenceTabLK06label: 'Kompetansemål (LK06)',
     competenceTabLK20label: 'Kompetansemål (LK20)',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceGoalItem: {
+      title: 'Kompetansemål og vurdering',
+    },
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

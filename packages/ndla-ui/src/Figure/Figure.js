@@ -34,6 +34,7 @@ export const FigureCaption = ({
   locale,
   link,
   hideFigcaption,
+  synstolketVideo,
 }) => (
   <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
@@ -50,9 +51,11 @@ export const FigureCaption = ({
             {...classes('captionbtn')}>
             <span>{reuseLabel}</span>
           </button>
-          <button type="button" {...classes('toggleSynstolket')}>
-            <span>Bytt til synstolket</span>
-          </button>
+          {synstolketVideo && (
+            <button type="button" {...classes('toggleSynstolket')}>
+              <span>Bytt til synstolket</span>
+            </button>
+          )}
           {children}
         </LicenseByline>
         {link && (
@@ -93,6 +96,7 @@ FigureCaption.propTypes = {
   }),
   locale: PropTypes.string,
   hideFigcaption: PropTypes.bool,
+  sysntolketVideo: PropTypes.bool,
 };
 
 FigureCaption.defaultProps = {

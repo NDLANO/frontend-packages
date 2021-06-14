@@ -53,6 +53,14 @@
         }
       }
     }
+    &__icon {
+      display: flex;
+    }
+    &__type {
+      align-self: center;
+      right: 30px;
+      @include font-size(16px, 18px);
+    }
   }
 
   &__link {

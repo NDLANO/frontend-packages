@@ -14,6 +14,7 @@ import Tooltip from '@ndla/tooltip';
 import { Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import NoContentBox from '../NoContentBox';
+import ContentTypeBadge from '../ContentTypeBadge';
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
@@ -59,6 +60,9 @@ const Resource = ({
   contentTypeDescription,
 }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
+  if (icon === undefined) {
+    icon = <ContentTypeBadge type={resource.contentType} />;
+  }
 
   return (
     <li
@@ -77,10 +81,10 @@ const Resource = ({
           {...resourceToLinkProps(resource)}>
           {resource.name}
         </ResourceLink>
-        <span id={id} hidden>
-          {contentTypeDescription}
-        </span>
-        <div>
+        <div {...classes('item__icon')}>
+          <span id={id} hidden={resource.type === undefined} {...classes('item__type')}>
+            {resource.type}
+          </span>
           {resource.additional && (
             <Tooltip tooltip={contentTypeDescription} align="left">
               <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
@@ -99,12 +103,11 @@ const Resource = ({
 
 Resource.propTypes = {
   showAdditionalResources: PropTypes.bool,
-  icon: PropTypes.node.isRequired,
   resource: ResourceShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   contentTypeDescription: PropTypes.string.isRequired,
-  currentPage: PropTypes.bool,
+  icon: PropTypes.node,
 };
 
 injectT(Resource);
@@ -160,6 +163,7 @@ ResourceList.propTypes = {
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
+  icon: PropTypes.node,
 };
 
 export default injectT(ResourceList);

@@ -22,8 +22,8 @@ const ResourceGroup = ({
   title,
   icon,
   resources,
-  toggleAdditionalResources,
   showAdditionalResources,
+  toggleAdditionalResources,
   resourceToLinkProps,
   contentType,
   invertedStyle,
@@ -47,18 +47,17 @@ const ResourceGroup = ({
 
 ResourceGroup.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
-  contentType: ContentTypeShape.isRequired,
+  icon: PropTypes.node,
+  contentType: ContentTypeShape,
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
+  showAdditionalResources: PropTypes.bool,
   toggleAdditionalResources: PropTypes.func.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
-  empty: PropTypes.bool,
-  showAdditionalResources: PropTypes.bool,
+  invertedStyle: PropTypes.bool,
 };
 
 ResourceGroup.defaultProps = {
-  hideResourceToggleFilter: false,
   showAdditionalResources: false,
 };
 

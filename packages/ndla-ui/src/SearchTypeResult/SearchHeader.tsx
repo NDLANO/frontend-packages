@@ -17,6 +17,8 @@ import { FilterProps } from './ActiveFilterContent';
 import ActiveFilters from './ActiveFilters';
 import SearchFieldHeader from './SearchFieldHeader';
 import PopupFilter, { PopupFilterProps } from './PopupFilter';
+import { CompetenceGoalsItemType } from '../types';
+import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -35,6 +37,21 @@ const PhraseWrapper = styled.div`
   flex-wrap: wrap;
   font-size: 16px;
   margin: ${spacing.normal} 0 ${spacing.medium};
+`;
+
+const CompetenceGoalsWrapper = styled.div`
+  font-size: 16px;
+  width: 100%;
+  margin-top: ${spacing.normal};
+`;
+
+const CompetenceGoalsList = styled.ul`
+  padding: 0;
+  margin: 0;
+  li {
+    border: 0;
+    margin: 0;
+  }
 `;
 
 const PhraseText = styled.div`
@@ -59,6 +76,7 @@ type Props = {
     filters: FilterProps[];
     onFilterRemove: (value: string, name: string) => void;
   };
+  competenceGoals?: CompetenceGoalsItemType;
   onSearchValueChange: (value: string) => void;
   onSubmit: () => void;
 };
@@ -72,6 +90,7 @@ const SearchHeader = ({
   onSubmit,
   activeFilters,
   filters,
+  competenceGoals,
   t,
 }: Props & tType) => (
   <Wrapper>
@@ -97,6 +116,19 @@ const SearchHeader = ({
             {searchPhraseSuggestion}
           </Button>
         </PhraseSuggestionText>
+      )}
+      {competenceGoals && (
+        <CompetenceGoalsWrapper>
+          {competenceGoals && (
+            <CompetenceGoalsList>
+              <CompetenceGoalItem
+                id={competenceGoals.id}
+                title={competenceGoals.title}
+                goals={competenceGoals.goals}
+              />
+            </CompetenceGoalsList>
+          )}
+        </CompetenceGoalsWrapper>
       )}
     </PhraseWrapper>
     {activeFilters && (

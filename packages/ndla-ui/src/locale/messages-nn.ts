@@ -323,6 +323,7 @@ const messages = {
     multipleSuppliersLabel: 'Rettshavarar:',
   },
   competenceGoals: {
+    competenceGoal: 'kompetansemål',
     title: 'Kompetansemål og læreplan',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',

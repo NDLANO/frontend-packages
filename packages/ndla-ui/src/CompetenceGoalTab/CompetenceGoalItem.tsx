@@ -47,8 +47,8 @@ const CompetenceGoalItem = ({ title, goals, t }: CompetenceGoalsItemType & tType
         <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
         <GoalsHeading>{title}</GoalsHeading>
         <ul>
-          {goals.map(goal => (
-            <GoalListElement>{goal.text}</GoalListElement>
+          {goals.map((goal, index) => (
+            <GoalListElement key={`${goal.text}${index}`}>{goal.text}</GoalListElement>
           ))}
         </ul>
       </GoalWrapper>

@@ -323,6 +323,7 @@ const messages = {
     multipleSuppliersLabel: 'Rightsholders:',
   },
   competenceGoals: {
+    competenceGoal: 'competence-goal',
     title: 'Competence goals and curriculum ',
     closeCompetenceGoals: 'Close competence goals',
     showCompetenceGoals: 'Show competence goals',

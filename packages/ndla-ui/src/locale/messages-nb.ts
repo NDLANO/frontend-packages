@@ -121,6 +121,7 @@ const messages = {
       all: 'Alle',
       hits: '{count} Treff',
       showingSearchPhrase: 'Viser resultater for',
+      showingCompetenceGoalSearchPhrase: 'Viser resultater for kompetansemål {text}',
       searchPhraseSuggestion: 'Søk i stedet for',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
@@ -322,6 +323,7 @@ const messages = {
     multipleSuppliersLabel: 'Rettighetshavere:',
   },
   competenceGoals: {
+    competenceGoal: 'kompetansemål',
     title: 'Kompetansemål og læreplan',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',

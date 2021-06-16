@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 import { CompetenceGoalsItemType } from '../types';
+import SearchButton from './SearchButton';
 
 const GoalItem = styled.li`
   margin: ${spacing.medium} 0;
@@ -35,9 +36,18 @@ const GoalsHeading = styled.h3`
   margin-top: 0;
   font-weight: ${fonts.weight.semibold};
 `;
-
+const GoalList = styled.ul`
+  padding: 0;
+`;
 const GoalListElement = styled.li`
   ${fonts.sizes('22px', '32px')};
+`;
+const GoalListElementInnerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const GoalSearchWrapper = styled.div`
+  margin-left: ${spacing.normal};
 `;
 
 const CompetenceGoalItem = ({ title, goals, t }: CompetenceGoalsItemType & tType) => {
@@ -46,11 +56,23 @@ const CompetenceGoalItem = ({ title, goals, t }: CompetenceGoalsItemType & tType
       <GoalWrapper>
         <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
         <GoalsHeading>{title}</GoalsHeading>
-        <ul>
+        <GoalList>
           {goals.map((goal, index) => (
-            <GoalListElement key={`${goal.text}${index}`}>{goal.text}</GoalListElement>
+            <GoalListElement key={`${goal.text}${index}`}>
+              <GoalListElementInnerWrapper>
+                <div>{goal.text}</div>
+                {goal.url && (
+                  <GoalSearchWrapper>
+                    <SearchButton
+                      to={goal.url}
+                      text={t('competenceGoals.competenceGoalResourceSearchText')}
+                    />
+                  </GoalSearchWrapper>
+                )}
+              </GoalListElementInnerWrapper>
+            </GoalListElement>
           ))}
-        </ul>
+        </GoalList>
       </GoalWrapper>
     </GoalItem>
   );

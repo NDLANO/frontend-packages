@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
@@ -144,7 +144,7 @@ type Props = {
   alwaysVisible?: boolean;
 };
 
-const LanguageSelector: React.FunctionComponent<Props & tType> = ({
+const LanguageSelector: React.FunctionComponent<Props> = ({
   options,
   currentLanguage,
   outline,
@@ -152,10 +152,12 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
   inverted,
   invertedOutlineLargeScreensOnly,
   alwaysVisible,
-  t,
 }) => {
+  currentLanguage = localStorage.getItem('i18nextLng') as string;
   const [infoLocale, setInfoLocale] = useState(currentLanguage);
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
+
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
       <Button
@@ -188,12 +190,7 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
               }}>
               {t('masthead.menu.close')}
             </Button>
-            <LanguageSelectorContent
-              options={options}
-              currentLanguage={currentLanguage}
-              setInfoLocale={setInfoLocale}
-              infoLocale={infoLocale}
-            />
+            <LanguageSelectorContent setInfoLocale={setInfoLocale} infoLocale={infoLocale} />
           </StyledModal>
         </FocusTrapReact>
       )}
@@ -201,4 +198,4 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
   );
 };
 
-export default injectT(LanguageSelector);
+export default LanguageSelector;

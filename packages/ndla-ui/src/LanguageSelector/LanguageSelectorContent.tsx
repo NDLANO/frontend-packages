@@ -7,50 +7,46 @@
  */
 
 import React from 'react';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
-  options: {
-    [key: string]: {
-      name: string;
-      url: string;
-    };
-  };
-  currentLanguage: string;
   setInfoLocale(arg: string): void;
   infoLocale: string;
 };
 
-const LanguageSelectorContent: React.FunctionComponent<Props & tType> = ({
-  options,
-  currentLanguage,
-  setInfoLocale,
-  infoLocale,
-  t,
-}) => (
-  <nav>
-    <ul>
-      {Object.keys(options).map(key => (
-        <li key={key}>
-          {key === currentLanguage ? (
-            <span>{options[key].name}</span>
-          ) : (
-            <a
-              href={options[key].url}
-              onMouseOver={() => {
-                setInfoLocale(key);
-              }}
-              onMouseOut={() => {
-                setInfoLocale(currentLanguage);
-              }}
-              aria-label={t(`changeLanguage.${key}`)}>
-              {options[key].name}
-            </a>
-          )}
-        </li>
-      ))}
-    </ul>
-    <p>{t(`currentLanguageText.${infoLocale}`)}</p>
-  </nav>
-);
-export default injectT(LanguageSelectorContent);
+const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale, infoLocale }) => {
+  const { t, i18n } = useTranslation();
+  const lngs = ['nn', 'nb'];
+
+  return (
+    <nav>
+      <ul>
+        {lngs.map(key => (
+          <li key={key}>
+            {key === i18n.language ? (
+              <span>{t(`languages.${key}`)}</span>
+            ) : (
+              // eslint-disable-next-line
+              <a
+                onMouseOver={() => {
+                  setInfoLocale(key);
+                }}
+                onMouseOut={() => {
+                  setInfoLocale(i18n.language);
+                }}
+                onClick={() => {
+                  i18n.changeLanguage(key);
+                  setInfoLocale(key);
+                }}
+                aria-label={t(`changeLanguage.${key}`)}>
+                {t(`languages.${key}`)}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+      <p>{t(`currentLanguageText.${infoLocale}`)}</p>
+    </nav>
+  );
+};
+export default LanguageSelectorContent;

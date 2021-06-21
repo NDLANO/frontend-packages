@@ -96,7 +96,7 @@ FigureCaption.propTypes = {
   }),
   locale: PropTypes.string,
   hideFigcaption: PropTypes.bool,
-  sysntolketVideo: PropTypes.bool,
+  synstolketVideo: PropTypes.bool,
 };
 
 FigureCaption.defaultProps = {

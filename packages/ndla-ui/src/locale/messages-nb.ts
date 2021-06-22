@@ -449,6 +449,12 @@ const messages = {
     back: 'Gå tilbake',
     goToFrontPage: 'Gå til forsiden',
   },
+  figure: {
+    button: {
+      synstolket: 'Bytt til synstolket',
+      original: 'Bytt til original video',
+    },
+  },
   footer: {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Velg språk (language): ',

@@ -35,6 +35,7 @@ export const FigureCaption = ({
   link,
   hideFigcaption,
   synstolketVideo,
+  t,
 }) => (
   <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
     {caption ? <div {...classes('info')}>{caption}</div> : null}
@@ -53,7 +54,8 @@ export const FigureCaption = ({
           </button>
           {synstolketVideo && (
             <button type="button" {...classes('toggleSynstolket')}>
-              <span>Bytt til synstolket</span>
+              <span className="original">{t('figure.button.synstolket')}</span>
+              <span className="synstolket hidden">{t('figure.button.original')}</span>
             </button>
           )}
           {children}

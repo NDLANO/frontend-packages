@@ -9,11 +9,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import Pager from '@ndla/pager';
 import DropdownMenuItem from './DropdownMenuItem';
 import { getFieldValue, checkIfItemIsSelected } from './dropdownHelper';
-import { useTranslation } from 'react-i18next';
 
 const StyledDropDownContainer = styled.div`
   font-family: ${fonts.sans};
@@ -75,10 +75,11 @@ const DropdownMenu = ({
   page,
   highlightedIndex,
 }) => {
+  const { t } = useTranslation();
   if (!isOpen) {
     return null;
   }
-  const {t} = useTranslation()
+
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}

@@ -147,7 +147,7 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
   const { t, i18n } = useTranslation();
   const [infoLocale, setInfoLocale] = useState(i18n.language);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
       <Button

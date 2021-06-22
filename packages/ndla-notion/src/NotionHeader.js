@@ -57,21 +57,22 @@ export const NotionHeaderWithoutExitButton = ({ title, subTitle }) => (
 );
 
 const NotionHeader = ({ title, subTitle, onClose }) => {
-  const {t} = useTranslation()
-  return(
-  <NotionHeaderWrapper>
-    {notionTitle(title, subTitle)}
-    {onClose ? (
-      <button type="button" onClick={onClose}>
-        {t('notions.closeNotion')}
-      </button>
-    ) : (
-      <button type="button" data-notion-close>
-        {t('notions.closeNotion')}
-      </button>
-    )}
-  </NotionHeaderWrapper>
-)};
+  const { t } = useTranslation();
+  return (
+    <NotionHeaderWrapper>
+      {notionTitle(title, subTitle)}
+      {onClose ? (
+        <button type="button" onClick={onClose}>
+          {t('notions.closeNotion')}
+        </button>
+      ) : (
+        <button type="button" data-notion-close>
+          {t('notions.closeNotion')}
+        </button>
+      )}
+    </NotionHeaderWrapper>
+  );
+};
 
 NotionHeader.propTypes = {
   title: PropTypes.string.isRequired,

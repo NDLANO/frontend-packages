@@ -22,15 +22,14 @@ const languageButton = css`
   border: none;
 `;
 
-const LanguageSelectorContent = ({ setInfoLocale, infoLocale }:Props) => {
+const LanguageSelectorContent = ({ setInfoLocale, infoLocale }: Props) => {
   const { t, i18n } = useTranslation();
-  const languages = i18n.options.supportedLngs as string[]
-  
+  const languages = i18n.options.supportedLngs as string[];
+
   //CIMODE is used for testing to consistently return the translation key instead of the variant value
-  let i = languages.indexOf("cimode")
-  if(i > -1) {
-    console.log(i)
-    languages.splice(i)
+  let i = languages.indexOf('cimode');
+  if (i > -1) {
+    languages.splice(i);
   }
   return (
     <nav>
@@ -41,7 +40,8 @@ const LanguageSelectorContent = ({ setInfoLocale, infoLocale }:Props) => {
               <span>{t(`languages.${key}`)}</span>
             ) : (
               // eslint-disable-next-line
-              <button css={languageButton}
+              <button
+                css={languageButton}
                 onMouseOver={() => {
                   setInfoLocale(key);
                 }}

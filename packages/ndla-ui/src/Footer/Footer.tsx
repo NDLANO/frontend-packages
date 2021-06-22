@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
@@ -16,7 +17,6 @@ import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
 import { Locale } from '../types';
-import { useTranslation } from 'react-i18next';
 
 const StyledBackground = styled.div`
   display: block;
@@ -125,13 +125,8 @@ type Props = {
   languageSelector?: React.ReactNode;
 };
 
-const Footer: React.FunctionComponent<Props> = ({
-  lang,
-  children,
-  links,
-  languageSelector,
-}) => {
-  const {t} = useTranslation()
+const Footer: React.FunctionComponent<Props> = ({ lang, children, links, languageSelector }) => {
+  const { t } = useTranslation();
 
   const mainContent = (
     <>

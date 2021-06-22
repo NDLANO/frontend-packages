@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
+import { useTranslation } from 'react-i18next';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
-import { useTranslation } from 'react-i18next';
 
 const StyledActiveFilters = styled('ul')`
   margin: 0;
@@ -73,8 +73,8 @@ const StyledActiveFilterWrapper = styled('li')`
 const getFilterLength = filters =>
   filters.filter(filter => filter.filterName === 'filter_subjects' && filter.title).length;
 
-const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen}) => {
-const {t} = useTranslation();
+const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
+  const { t } = useTranslation();
   if (filters && filters.length > 0) {
     const filterLength = getFilterLength(filters);
 

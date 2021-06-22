@@ -199,107 +199,108 @@ const ListView = ({
     return text;
   },
 }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
-return (
-  <ListViewWrapper>
-    {filters ? (
-      <div {...filterClasses('wrapper-multiple-filters')}>
-        {filters.map(filter => (
-          <FilterListPhone
-            preid="list-view"
-            key={filter.key}
-            label={filter.label}
-            options={filter.options}
-            isGroupedOptions={filter.isGroupedOptions}
-            alignedGroup
-            showActiveFiltersOnSmallScreen
-            values={filter.filterValues}
-            messages={{
-              useFilter: t(`listview.filters.${filter.key}.useFilter`),
-              openFilter: t(`listview.filters.${filter.key}.openFilter`),
-              closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
-            }}
-            onChange={values => {
-              filter.onChange(filter.key, values);
-            }}
-          />
-        ))}
-      </div>
-    ) : null}
-    <div className={'sorting'}>
-      {!disableSearch && (
-        <div className={'sorting-wrapper'}>
-          <div className={'search'}>
-            <div {...searchFieldClasses()}>
-              <div {...searchFieldClasses('input-wrapper', 'with-icon', 'search-input-wrapper')}>
-                <input
-                  css={inputStyle}
-                  type="search"
-                  placeholder={t(`listview.search.placeholder`)}
-                  value={searchValue}
-                  onChange={onChangedSearchValue}
-                />
+  return (
+    <ListViewWrapper>
+      {filters ? (
+        <div {...filterClasses('wrapper-multiple-filters')}>
+          {filters.map(filter => (
+            <FilterListPhone
+              preid="list-view"
+              key={filter.key}
+              label={filter.label}
+              options={filter.options}
+              isGroupedOptions={filter.isGroupedOptions}
+              alignedGroup
+              showActiveFiltersOnSmallScreen
+              values={filter.filterValues}
+              messages={{
+                useFilter: t(`listview.filters.${filter.key}.useFilter`),
+                openFilter: t(`listview.filters.${filter.key}.openFilter`),
+                closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
+              }}
+              onChange={values => {
+                filter.onChange(filter.key, values);
+              }}
+            />
+          ))}
+        </div>
+      ) : null}
+      <div className={'sorting'}>
+        {!disableSearch && (
+          <div className={'sorting-wrapper'}>
+            <div className={'search'}>
+              <div {...searchFieldClasses()}>
+                <div {...searchFieldClasses('input-wrapper', 'with-icon', 'search-input-wrapper')}>
+                  <input
+                    css={inputStyle}
+                    type="search"
+                    placeholder={t(`listview.search.placeholder`)}
+                    value={searchValue}
+                    onChange={onChangedSearchValue}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      {!disableViewOption && (
-        <div className={'list-style'}>
-          <button
-            type="button"
-            className={`style-button ${viewStyle === 'list' && 'active'}`}
-            onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
-            <ListIcon />
-          </button>
-          <button
-            type="button"
-            className={`style-button ${viewStyle === 'grid' && 'active'}`}
-            onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
-            <GridIcon />
-          </button>
-        </div>
-      )}
+        )}
+        {!disableViewOption && (
+          <div className={'list-style'}>
+            <button
+              type="button"
+              className={`style-button ${viewStyle === 'list' && 'active'}`}
+              onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
+              <ListIcon />
+            </button>
+            <button
+              type="button"
+              className={`style-button ${viewStyle === 'grid' && 'active'}`}
+              onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
+              <GridIcon />
+            </button>
+          </div>
+        )}
 
-      {selectedLetterCallback ? (
-        <ul className={'alphabet'}>
-          {Object.keys(alphabet).map(letter => (
-            <li key={`letter-${letter}`} className={'letter'}>
-              <button
-                type="button"
-                className={`letter-button ${selectedLetter === letter && 'active'} ${!alphabet[
-                  letter
-                ] && 'disabled'}`}
-                onClick={() =>
-                  selectedLetter === letter
-                    ? selectedLetterCallback('')
-                    : selectedLetterCallback(letter)
-                }>
-                {letter}
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </div>
-    <CountWrapper>{t('listview.hits', { count: totalCount })}</CountWrapper>
-    <div className={'content-wrapper'}>
-      <div className={`content ${viewStyle}`}>
-        {items.map(item => (
-          <ListItem
-            item={item}
-            key={item.id}
-            clickCallback={() => onSelectItem(item)}
-            viewStyle={viewStyle}
-            renderMarkdown={renderMarkdown}
-          />
-        ))}
+        {selectedLetterCallback ? (
+          <ul className={'alphabet'}>
+            {Object.keys(alphabet).map(letter => (
+              <li key={`letter-${letter}`} className={'letter'}>
+                <button
+                  type="button"
+                  className={`letter-button ${selectedLetter === letter && 'active'} ${!alphabet[
+                    letter
+                  ] && 'disabled'}`}
+                  onClick={() =>
+                    selectedLetter === letter
+                      ? selectedLetterCallback('')
+                      : selectedLetterCallback(letter)
+                  }>
+                  {letter}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
-    </div>
-    {selectedItem}
-  </ListViewWrapper>
-)};
+      <CountWrapper>{t('listview.hits', { count: totalCount })}</CountWrapper>
+      <div className={'content-wrapper'}>
+        <div className={`content ${viewStyle}`}>
+          {items.map(item => (
+            <ListItem
+              item={item}
+              key={item.id}
+              clickCallback={() => onSelectItem(item)}
+              viewStyle={viewStyle}
+              renderMarkdown={renderMarkdown}
+            />
+          ))}
+        </div>
+      </div>
+      {selectedItem}
+    </ListViewWrapper>
+  );
+};
 
 const optionsShape = PropTypes.shape({
   title: PropTypes.string.isRequired,

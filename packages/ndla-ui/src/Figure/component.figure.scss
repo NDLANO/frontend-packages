@@ -91,6 +91,9 @@
     }
     &.c-figure__toggleSynstolket {
       margin-left: 10px;
+      span.hidden {
+        display: none;
+      }
     }
   }
 }
@@ -181,7 +184,7 @@
     max-height: 0;
     overflow: hidden;
 
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   .expanded-icon {

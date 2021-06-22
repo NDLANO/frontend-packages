@@ -39,7 +39,6 @@ const LanguageSelectorContent = ({ setInfoLocale, infoLocale }: Props) => {
             {key === i18n.language ? (
               <span>{t(`languages.${key}`)}</span>
             ) : (
-              // eslint-disable-next-line
               <button
                 css={languageButton}
                 onMouseOver={() => {

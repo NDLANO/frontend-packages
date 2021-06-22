@@ -8,12 +8,12 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Check } from '@ndla/icons/editor';
 import { Information } from '@ndla/icons/common';
 import { DropdownMenuImage } from './DropdownMenuImage';
+import { useTranslation } from 'react-i18next';
 
 const StyledDescription = styled.span`
   ${fonts.sizes(14, 1.1)};
@@ -135,7 +135,8 @@ const InfoPart = ({ isSelected, disabledText, t }) => {
   return null;
 };
 
-function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, ...rest }) {
+function DropdownMenuItem({ disableSelected, item, isSelected, highlighted, ...rest }) {
+  const {t} = useTranslation()
   return (
     <StyledItemButton
       key={item.id}
@@ -154,4 +155,4 @@ function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, .
   );
 }
 
-export default injectT(DropdownMenuItem);
+export default DropdownMenuItem;

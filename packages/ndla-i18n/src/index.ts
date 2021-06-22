@@ -7,17 +7,12 @@
  */
 
 import IntlProvider from './IntlProvider';
-// @ts-ignore
 export { default as injectT } from './injectT';
-// @ts-ignore
 export { default as i18n } from './i18n';
 // @ts-ignore
 export { default as tType } from './t';
 export { default as formatMessage } from './formatMessage';
 export { default as Trans } from './Trans';
 export { formatNestedMessages } from './formatNestedMessages';
-
 export { IntlProvider };
-// @ts-ignore
-
 export default IntlProvider;

@@ -130,13 +130,6 @@ const styledInvertedOutlineLargeScreensOnly = css`
 `;
 
 type Props = {
-  options: {
-    [key: string]: {
-      name: string;
-      url: string;
-    };
-  };
-  currentLanguage: string;
   inverted?: boolean;
   invertedOutlineLargeScreensOnly?: boolean;
   outline?: boolean;
@@ -145,19 +138,16 @@ type Props = {
 };
 
 const LanguageSelector: React.FunctionComponent<Props> = ({
-  options,
-  currentLanguage,
   outline,
   center,
   inverted,
   invertedOutlineLargeScreensOnly,
   alwaysVisible,
 }) => {
-  currentLanguage = localStorage.getItem('i18nextLng') as string;
-  const [infoLocale, setInfoLocale] = useState(currentLanguage);
+  const { t, i18n } = useTranslation();
+  const [infoLocale, setInfoLocale] = useState(i18n.language);
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation();
-
+  
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
       <Button

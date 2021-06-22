@@ -9,7 +9,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
 // @ts-ignore
@@ -17,6 +16,7 @@ import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';
 import { Locale } from '../types';
+import { useTranslation } from 'react-i18next';
 
 const StyledBackground = styled.div`
   display: block;
@@ -125,13 +125,14 @@ type Props = {
   languageSelector?: React.ReactNode;
 };
 
-const Footer: React.FunctionComponent<Props & tType> = ({
+const Footer: React.FunctionComponent<Props> = ({
   lang,
   children,
-  t,
   links,
   languageSelector,
 }) => {
+  const {t} = useTranslation()
+
   const mainContent = (
     <>
       {children}
@@ -168,4 +169,4 @@ const Footer: React.FunctionComponent<Props & tType> = ({
   );
 };
 
-export default injectT(Footer);
+export default Footer;

@@ -5,29 +5,43 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 import React from 'react';
+import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
   setInfoLocale(arg: string): void;
   infoLocale: string;
 };
+const languageButton = css`
+  background: transparent;
+  color: #184673;
+  width: 100%;
+  padding: 13px 65px;
+  justify-content: center;
+  border: none;
+`;
 
-const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale, infoLocale }) => {
+const LanguageSelectorContent = ({ setInfoLocale, infoLocale }:Props) => {
   const { t, i18n } = useTranslation();
-  const lngs = ['nn', 'nb'];
-
+  const languages = i18n.options.supportedLngs as string[]
+  
+  //CIMODE is used for testing to consistently return the translation key instead of the variant value
+  let i = languages.indexOf("cimode")
+  if(i > -1) {
+    console.log(i)
+    languages.splice(i)
+  }
   return (
     <nav>
       <ul>
-        {lngs.map(key => (
+        {languages.map(key => (
           <li key={key}>
             {key === i18n.language ? (
               <span>{t(`languages.${key}`)}</span>
             ) : (
               // eslint-disable-next-line
-              <a
+              <button css={languageButton}
                 onMouseOver={() => {
                   setInfoLocale(key);
                 }}
@@ -40,7 +54,7 @@ const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale
                 }}
                 aria-label={t(`changeLanguage.${key}`)}>
                 {t(`languages.${key}`)}
-              </a>
+              </button>
             )}
           </li>
         ))}

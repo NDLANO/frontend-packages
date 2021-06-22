@@ -9,11 +9,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import Pager from '@ndla/pager';
 import DropdownMenuItem from './DropdownMenuItem';
 import { getFieldValue, checkIfItemIsSelected } from './dropdownHelper';
+import { useTranslation } from 'react-i18next';
 
 const StyledDropDownContainer = styled.div`
   font-family: ${fonts.sans};
@@ -62,7 +62,6 @@ const DropdownMenu = ({
   loading,
   getItemProps,
   getMenuProps,
-  t,
   maxRender,
   multiSelect,
   onCreate,
@@ -79,6 +78,7 @@ const DropdownMenu = ({
   if (!isOpen) {
     return null;
   }
+  const {t} = useTranslation()
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}
@@ -160,4 +160,4 @@ DropdownMenu.defaultProps = {
   disableSelected: false,
 };
 
-export default injectT(DropdownMenu);
+export default DropdownMenu;

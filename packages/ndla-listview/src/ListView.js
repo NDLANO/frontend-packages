@@ -4,10 +4,9 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
-
+import { useTranslation } from 'react-i18next';
 import ListItem from './ListItem';
 
 const ListViewWrapper = styled.div`
@@ -199,8 +198,10 @@ const ListView = ({
   renderMarkdown = text => {
     return text;
   },
-  t,
-}) => (
+}) => {
+  const {t} = useTranslation()
+
+return (
   <ListViewWrapper>
     {filters ? (
       <div {...filterClasses('wrapper-multiple-filters')}>
@@ -298,7 +299,7 @@ const ListView = ({
     </div>
     {selectedItem}
   </ListViewWrapper>
-);
+)};
 
 const optionsShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
@@ -344,7 +345,6 @@ ListView.propTypes = {
   selectedItem: PropTypes.node,
   renderMarkdown: PropTypes.func.isRequired,
   totalCount: PropTypes.number.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 ListView.defaultProps = {
@@ -352,4 +352,4 @@ ListView.defaultProps = {
   selectedLetter: '',
 };
 
-export default injectT(ListView);
+export default ListView;

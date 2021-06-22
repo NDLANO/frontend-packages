@@ -549,7 +549,7 @@ const messages = {
     relatedLinks: {
       label: 'Related articles',
     },
-    hits: '{count} hits',
+    hits: '{{count}} hits',
   },
   notions: {
     closeNotion: 'Close',

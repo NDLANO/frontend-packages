@@ -27,11 +27,19 @@ const ResourceGroup = ({
   resourceToLinkProps,
   contentType,
   invertedStyle,
+  unGrouped,
 }) => (
-  <section {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
-    <header {...classes('header', { invertedStyle })}>
-      <ResourcesTitle>{title}</ResourcesTitle>
-    </header>
+  <section
+    {...classes('', [
+      contentType,
+      showAdditionalResources ? 'showall' : '',
+      unGrouped ? 'un-grouped' : '',
+    ])}>
+    {title && (
+      <header {...classes('header', { invertedStyle })}>
+        <ResourcesTitle>{title}</ResourcesTitle>
+      </header>
+    )}
     {resources.length > 0 ? (
       <ResourceList
         title={title}
@@ -55,6 +63,7 @@ ResourceGroup.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
   invertedStyle: PropTypes.bool,
+  unGrouped: PropTypes.bool,
 };
 
 ResourceGroup.defaultProps = {

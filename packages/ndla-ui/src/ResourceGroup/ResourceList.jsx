@@ -61,16 +61,21 @@ const Resource = ({
 }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
   if (icon === undefined) {
-    icon = <ContentTypeBadge type={resource.contentType} />;
+    icon = <ContentTypeBadge type={resource.contentType} background border={false} />;
   }
 
   return (
     <li
-      {...classes('item', {
-        hidden,
-        additional: resource.additional,
-        active: resource.active,
-      })}>
+      {...classes(
+        'item',
+        {
+          hidden,
+          additional: resource.additional,
+          active: resource.active,
+          spacer: resource.extraBottomMargin,
+        },
+        resource.contentType,
+      )}>
       <div {...classes('body o-flag__body')}>
         <ResourceLink
           component={resource.active ? 'div' : SafeLink}

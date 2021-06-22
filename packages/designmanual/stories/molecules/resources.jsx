@@ -88,6 +88,16 @@ const resourceGroups = [
   resourceGroup6,
 ];
 
+const flattenResources = resourceGroups.flatMap(group =>
+  group.resources.map(r => {
+    return {
+      ...r,
+      type: group.title,
+      contentType: group.contentType,
+    };
+  }),
+);
+
 class Resources extends Component {
   constructor(props) {
     super(props);
@@ -129,15 +139,8 @@ class Resources extends Component {
     }
 
     const allResources = showUngrouped
-      ? resourceGroups.flatMap(group => {
-          const resources = group.resources.map(r => {
-            return {
-              ...r,
-              type: group.title,
-              contentType: group.contentType,
-            };
-          });
-          return resources;
+      ? flattenResources.map((r, index) => {
+          return { ...r, extraBottomMargin: (index + 1) % 4 === 0 };
         })
       : [];
 
@@ -167,12 +170,11 @@ class Resources extends Component {
         }>
         {showUngrouped && (
           <ResourceGroup
-            key="all-resources"
-            title="Ressuser"
             resources={allResources}
             showAdditionalResources={showAdditionalResources}
             toggleAdditionalResources={this.toggleAdditionalResources}
             resourceToLinkProps={toLink}
+            unGrouped
           />
         )}
         {!showUngrouped &&

@@ -146,6 +146,10 @@
       @include font-size(20px, 26px);
     }
     margin: 0;
+    &--single {
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+    }
   }
 
   &__topic-title-link {

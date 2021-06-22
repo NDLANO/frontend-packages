@@ -60,7 +60,7 @@ const CompetenceBadgeText = styled.span`
 `;
 
 type CompetenceButtonWrapperProps = {
-  addSpace: boolean;
+  addSpace: boolean | undefined;
 };
 
 const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
@@ -70,8 +70,8 @@ const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
 `;
 
 type Props = {
-  competenceGoals: Function | string[];
-  competenceGoalTypes: string[];
+  competenceGoals?: Function | string[];
+  competenceGoalTypes?: string[];
   children: ReactNode;
 };
 

@@ -55,6 +55,7 @@ const SafeLink: React.FunctionComponent<Props & LinkProps & React.HTMLAttributes
   return (
     <Link tabIndex={0} to={to} replace={replace} {...rest}>
       {children}
+      {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
     </Link>
   );
 };

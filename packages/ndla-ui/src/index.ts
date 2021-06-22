@@ -9,7 +9,7 @@
 // Ignore typescript implicit any warning and export all javascript components
 // Move components to this file when they are migrated to typescript
 
-// @ts-ignore
+/** @ts-ignore */
 export * from './index-javascript';
 
 export {
@@ -96,3 +96,6 @@ export { default as messagesNN } from './locale/messages-nn';
 export { default as messagesEN } from './locale/messages-en';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
+
+export { ToolboxInfo } from './ToolboxPage';
+export { default as Topic } from './Topic';

@@ -281,6 +281,7 @@ const messages = {
     activateAdditionalResources: 'Tilleggsstoff',
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
+    allResources: 'Ressurser',
     shortcutButtonText: 'Lærestoff',
     tooltipCoreTopic: 'Kjernestoff',
     tooltipAdditionalTopic: 'Tilleggsstoff',

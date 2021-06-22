@@ -125,7 +125,7 @@ const CarouselExample = () => (
         type: 'Number',
         default: 'Required',
         description:
-          'Total utregnet lengde på hele bilde karusellen. (Tips: <CarouselAutosize /> hjelper deg å finne denne)',
+          'Total utregnet lengde på hele bildekarusellen. (Tips: <CarouselAutosize /> hjelper deg å finne denne)',
       },
       {
         name: 'distanceBetweenItems',

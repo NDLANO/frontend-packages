@@ -279,6 +279,7 @@ const messages = {
     activateAdditionalResources: 'Show additional content',
     toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
+    allResources: 'Content',
     shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
     tooltipAdditionalTopic: 'Additional content is a subject that is not on the curriculum',

@@ -420,35 +420,6 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
     </PageContainer>
   ))
-  .add('Læringsressurser', () => (
-    <div>
-      <StoryIntro title="Læringsressurser">
-        <p>Læringsressurser deles opp i læringsstier, fagstoff og oppgaver og aktiviteter.</p>
-        <p>
-          Ved å klikke på «Tilleggsstoff» vil brukeren få vist også innhold som er tilleggsstoff.
-          Det er ellers skjult. Tilleggsstoffet er merket med T-ikonet, samt med en noe dusere
-          farge. Sjekkboksen skal være markert når tilleggsstoff er aktivt.
-        </p>
-        <p>Emneoverskriften viser hvilke emne man står i.</p>
-      </StoryIntro>
-      <LayoutItem layout="center">
-        <Resources showTopicHeading />
-      </LayoutItem>
-    </div>
-  ))
-  .add('Læringsressurser tom', () => (
-    <div>
-      <StoryIntro title="Læringsressurser - tom liste">
-        <p>
-          Når en ressursgruppe er tom for innhold, vises en tekst som forklarer dette for brukeren
-          og tilbyr en handlingsdriver som lar deg utforske tilleggsstoff om det er tilgjengelig.
-        </p>
-      </StoryIntro>
-      <LayoutItem layout="center">
-        <Resources onlyAdditional />
-      </LayoutItem>
-    </div>
-  ))
   .add('Paginering', () => (
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
@@ -515,11 +486,11 @@ storiesOf('Sammensatte moduler', module)
       </Footer>
     </Center>
   ))
-  .add('Bilde karusell', () => (
+  .add('Bildekarusell', () => (
     <div>
-      <StoryIntro title="Bilde karusell">
+      <StoryIntro title="Bildekarusell">
         <p>
-          Bilde karusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av
+          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av
           størrelser, og selve bildekarusellen.
         </p>
       </StoryIntro>
@@ -528,9 +499,9 @@ storiesOf('Sammensatte moduler', module)
       </StoryBody>
     </div>
   ))
-  .add('Tilleggsstoff', () => (
+  .add('Læringsressurser', () => (
     <div>
-      <StoryIntro title="Tilleggsstoff">
+      <StoryIntro title="Læringsressurser/launchpad">
         <p>
           Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
           tilleggsstoff-filteret aktiveres, vil ressursopplistingen utvides med tilleggsstoff.
@@ -544,6 +515,19 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <StoryBody>
         <Resources />
+      </StoryBody>
+    </div>
+  ))
+  .add('Ugrupperte læringsressurser', () => (
+    <div>
+      <StoryIntro title="Ugrupperte ressurser">
+        <p>
+          Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i
+          ei liste.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <Resources showUngrouped />
       </StoryBody>
     </div>
   ))

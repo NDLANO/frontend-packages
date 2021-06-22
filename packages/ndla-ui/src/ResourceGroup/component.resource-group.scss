@@ -173,4 +173,33 @@
       border: 1px dashed rgba($source-material-dark, 0.4);
     }
   }
+  &--un-grouped {
+    li {
+      border: 1px solid #D1D6DB;
+      border-radius: 5px;
+      background: none;
+      margin-bottom: $spacing--small / 2;
+      * {
+        transition: all 0.2s;
+      }
+      &.c-topic-resource__item--spacer {
+        margin-bottom: $spacing--medium;
+      }
+      a:hover .c-topic-resource__icon .c-content-type-badge  {
+        width: 38px;
+        height: 38px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        &.c-content-type-badge--subject-material, &.c-content-type-badge--learning-path, &.c-content-type-badge--source-material, &.c-content-type-badge--external-learning-resources {
+          svg {
+            width: 26px;
+            height: 26px;
+          }
+        }
+      }
+    }
+  }
 }

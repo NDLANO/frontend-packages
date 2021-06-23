@@ -450,6 +450,12 @@ const messages = {
     back: 'Tilbake',
     goToFrontPage: 'Gå til framsida',
   },
+  figure: {
+    button: {
+      synstolket: 'Bytt til synstolket',
+      original: 'Bytt til original video',
+    },
+  },
   footer: {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Vel språk (language): ',

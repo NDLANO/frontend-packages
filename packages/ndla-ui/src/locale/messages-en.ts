@@ -450,6 +450,12 @@ const messages = {
     back: 'Go back',
     goToFrontPage: 'Go to frontpage',
   },
+  figure: {
+    button: {
+      synstolket: 'Switch to visually interpretted video',
+      original: 'Switch to original video',
+    },
+  },
   footer: {
     aboutNDLA: 'About NDLA',
     selectLanguage: 'Choose language (språk): ',

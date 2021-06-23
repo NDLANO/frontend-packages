@@ -51,7 +51,7 @@ const ResourcesTopicTitle = ({
   if (title) {
     heading = <h1 {...classes('topic-title')}>{title}</h1>;
   } else {
-    heading = <h1 {...classes('topic-title')}>{messages.label}</h1>;
+    heading = <h1 {...classes('topic-title', 'single')}>{messages.label}</h1>;
   }
   return (
     <header {...classes('topic-title-wrapper', { invertedStyle })}>

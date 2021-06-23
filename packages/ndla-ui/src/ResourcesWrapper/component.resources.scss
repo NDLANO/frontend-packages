@@ -83,8 +83,7 @@
     flex-flow: wrap;
     align-items: center;
     margin-top: $spacing--large;
-    border-bottom: 2px solid $brand-color--lighter;
-    padding-bottom: $spacing--small / 2;
+    padding-bottom: $spacing--small;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
@@ -146,6 +145,10 @@
       @include font-size(20px, 26px);
     }
     margin: 0;
+    &--single {
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+    }
   }
 
   &__topic-title-link {

@@ -65,6 +65,8 @@ export const ResourceShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
   contentUri: PropTypes.string,
   primary: PropTypes.bool,
+  contentType: PropTypes.string,
+  type: PropTypes.string,
 });
 
 export const ShortcutShape = PropTypes.shape({

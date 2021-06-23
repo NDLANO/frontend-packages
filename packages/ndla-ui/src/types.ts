@@ -23,10 +23,17 @@ type ResourceTypes = {
 };
 
 export type Resource = {
-  path: string;
+  id: string;
   name: string;
+  contentUri: string;
+  path: string;
+  primary?: boolean;
+  rank?: number;
   subject?: string;
   resourceTypes?: Array<ResourceTypes>;
+  contentType?: string;
+  active?: boolean;
+  additional?: boolean;
 };
 
 export interface Contributor {
@@ -73,13 +80,7 @@ export type SearchResult = {
 export interface ContentTypeResultType {
   title: string;
   contentType?: string;
-  resources: Array<{
-    path: string;
-    name: string;
-    subject?: string;
-    additional?: boolean;
-    resourceTypes?: Array<ResourceTypes>;
-  }>;
+  resources: Array<Resource>;
 }
 
 export type subjectProp = {

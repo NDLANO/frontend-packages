@@ -46,6 +46,7 @@ export { default as Menu } from './Menu';
 export { default as NotionFlip } from './NotionFlip';
 export { default as Pause } from './Pause';
 export { default as Play } from './Play';
+export { default as PlayCircleFilled } from './PlayCircleFilled';
 export { default as Podcast } from './Podcast';
 export { default as Sad } from './Sad';
 export { default as Search } from './Search';

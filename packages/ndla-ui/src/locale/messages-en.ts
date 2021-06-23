@@ -279,6 +279,7 @@ const messages = {
     activateAdditionalResources: 'Show additional content',
     toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
+    allResources: 'Content',
     shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
     tooltipAdditionalTopic: 'Additional content is a subject that is not on the curriculum',
@@ -765,6 +766,7 @@ const messages = {
       heading: 'Text version',
       close: 'Close text version',
     },
+    readMoreDescriptionLabel: 'show more',
   },
   video: {
     download: 'Download video',
@@ -793,6 +795,10 @@ const messages = {
   ...contributorTypes.en,
   filterButtons: {
     removeAllFilters: 'Remove filters',
+  },
+  visualElement: {
+    show: 'Show',
+    showVideo: 'Show video',
   },
 };
 

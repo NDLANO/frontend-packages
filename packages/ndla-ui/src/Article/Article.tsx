@@ -30,7 +30,7 @@ const classes = new BEMHelper({
 
 type ArticleWrapperProps = {
   id: string;
-  modifier: string;
+  modifier?: string;
   children: ReactNode;
 };
 
@@ -43,8 +43,8 @@ export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>
 );
 
 type ArticleTitleProps = {
-  icon: boolean;
-  label: string;
+  icon?: ReactNode;
+  label?: string;
   children: ReactNode;
 };
 
@@ -94,22 +94,21 @@ type Messages = {
 };
 
 type Props = {
-  additional: string;
   article: ArticleType;
+  icon?: ReactNode;
+  licenseBox: ReactNode;
+  modifier: string;
   children: ReactNode;
+  messages: Messages;
+  locale: Locale;
   competenceGoals: Function | string[];
   competenceGoalTypes: string[];
-  copyPageUrlLink: string;
-  icon: boolean;
   id: string;
-  licenseBox: ReactNode;
-  locale: Locale;
-  messages: Messages;
-  modifier: string;
+  renderMarkdown: (text: string) => string;
+  copyPageUrlLink: string;
+  printUrl: string;
   notions: { list: NotionItem[]; related: NotionRelatedContent[] };
   onReferenceClick: React.MouseEventHandler;
-  printUrl: string;
-  renderMarkdown: (text: string) => string;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -124,18 +123,17 @@ const getArticleContent = (content: any, locale: Locale) => {
 };
 
 export const Article = ({
-  additional,
   article,
+  icon,
+  licenseBox,
+  modifier,
+  messages,
   children,
   competenceGoals,
   competenceGoalTypes,
   copyPageUrlLink,
-  icon,
   id,
-  licenseBox,
   locale,
-  messages,
-  modifier,
   notions,
   onReferenceClick,
   printUrl,
@@ -201,7 +199,6 @@ export const Article = ({
             suppliers,
             published,
             license,
-            additional,
             licenseBox,
             printUrl,
           }}

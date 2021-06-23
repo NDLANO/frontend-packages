@@ -281,6 +281,7 @@ const messages = {
     activateAdditionalResources: 'Tilleggsstoff',
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
+    allResources: 'Ressurser',
     shortcutButtonText: 'Lærestoff',
     tooltipCoreTopic: 'Kjernestoff',
     tooltipAdditionalTopic: 'Tilleggsstoff',
@@ -774,6 +775,7 @@ const messages = {
       heading: 'Tekstversjon',
       close: 'Lukk tekstversjon',
     },
+    readMoreDescriptionLabel: 'vis mer',
   },
   video: {
     download: 'Last ned video',
@@ -802,6 +804,10 @@ const messages = {
   ...contributorTypes.nb,
   filterButtons: {
     removeAllFilters: 'Fjern filter',
+  },
+  visualElement: {
+    show: 'Vis',
+    showVideo: 'Vis video',
   },
 };
 

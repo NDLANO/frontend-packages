@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import Pager from '@ndla/pager';
 import DropdownMenuItem from './DropdownMenuItem';
@@ -62,7 +62,6 @@ const DropdownMenu = ({
   loading,
   getItemProps,
   getMenuProps,
-  t,
   maxRender,
   multiSelect,
   onCreate,
@@ -76,9 +75,11 @@ const DropdownMenu = ({
   page,
   highlightedIndex,
 }) => {
+  const { t } = useTranslation();
   if (!isOpen) {
     return null;
   }
+
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}
@@ -160,4 +161,4 @@ DropdownMenu.defaultProps = {
   disableSelected: false,
 };
 
-export default injectT(DropdownMenu);
+export default DropdownMenu;

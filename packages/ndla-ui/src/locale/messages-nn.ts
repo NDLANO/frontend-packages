@@ -452,7 +452,7 @@ const messages = {
   },
   figure: {
     button: {
-      synstolket: 'Bytt til synstolket',
+      synstolket: 'Bytt til synstolka',
       original: 'Bytt til original video',
     },
   },

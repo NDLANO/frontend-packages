@@ -26,5 +26,4 @@ i18n
     fallbackLng: 'nb',
     resources: {},
   });
-
 export { i18n, useTranslation, I18nextProvider, withTranslation };

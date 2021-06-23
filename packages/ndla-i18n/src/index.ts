@@ -14,6 +14,9 @@ export { default as tType } from './t';
 export { default as formatMessage } from './formatMessage';
 export { default as Trans } from './Trans';
 export { formatNestedMessages } from './formatNestedMessages';
-
+export { useTranslation } from './i18n';
+export { withTranslation } from './i18n';
+export { i18n } from './i18n';
+export { I18nextProvider } from './i18n';
 export { IntlProvider };
 export default IntlProvider;

@@ -8,12 +8,10 @@
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-import styled from '@emotion/styled';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
-import { mq, breakpoints, fonts } from '@ndla/core';
 import { useIntersectionObserver } from '@ndla/hooks';
 import { injectT, tType } from '@ndla/i18n';
 import { Article as ArticleType, Locale } from '../types';

@@ -452,7 +452,7 @@ const messages = {
   },
   figure: {
     button: {
-      synstolket: 'Switch to visually interpretted video',
+      synstolket: 'Switch to visually interpreted video',
       original: 'Switch to original video',
     },
   },

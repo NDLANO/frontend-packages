@@ -7,11 +7,8 @@
  */
 
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import { initReactI18next, I18nextProvider, withTranslation, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { I18nextProvider } from 'react-i18next';
-import { withTranslation } from 'react-i18next';
-import { useTranslation } from 'react-i18next';
 
 const DETECTION_OPTIONS = {
   order: ['path', 'localStorage', 'htmlTag'],

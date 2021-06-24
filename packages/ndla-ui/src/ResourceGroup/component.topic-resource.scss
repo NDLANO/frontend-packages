@@ -127,9 +127,12 @@
 
   &__icon {
     display: flex;
+    flex: 0 0 auto;
     text-align: center;
     justify-content: center;
+    align-items: center;
     width: 42px;
+    height: 42px;
     box-sizing: content-box;
     padding-right: $spacing--small;
     @include mq(tablet) {

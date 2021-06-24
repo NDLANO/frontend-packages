@@ -63,13 +63,7 @@
     background-color: rgba($brand-grey--light, 0.4);
     border: 1px solid rgba(0, 0, 0, 0);
     .c-topic-resource__link {
-      min-height: 62px;
-      @include mq(tablet) {
-        min-height: 68px;
-      }
-      @include mq(desktop) {
-        min-height: 70px;
-      }
+      min-height: 70px;
     }
     .c-topic-resource__icon {
       padding-right: $spacing--small;
@@ -180,10 +174,13 @@
       background: none;
       margin-bottom: $spacing--small / 2;
       * {
-        transition: all 0.2s;
+        transition: all ease-out 0.2s;
       }
       &.c-topic-resource__item--spacer {
-        margin-bottom: $spacing--medium;
+        margin-bottom: $spacing--large;
+      }
+      &.c-topic-resource__item--additional {
+        border-style: dashed;
       }
       a:hover .c-topic-resource__icon .c-content-type-badge  {
         width: 38px;

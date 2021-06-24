@@ -21,6 +21,7 @@ i18n
   .init({
     detection: DETECTION_OPTIONS,
     fallbackLng: 'nb',
+    supportedLngs: ['nb'],
     resources: {},
   });
 export { i18n, useTranslation, I18nextProvider, withTranslation };

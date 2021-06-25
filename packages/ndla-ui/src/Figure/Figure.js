@@ -35,7 +35,7 @@ export const FigureCaption = injectT(
     locale,
     link,
     hideFigcaption,
-    synstolketVideo,
+    hasLinkedVideo,
     t,
   }) => (
     <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
@@ -53,7 +53,7 @@ export const FigureCaption = injectT(
               {...classes('captionbtn')}>
               <span>{reuseLabel}</span>
             </button>
-            {synstolketVideo && (
+            {hasLinkedVideo && (
               <button type="button" {...classes('toggleSynstolket')}>
                 <span className="original">{t('figure.button.synstolket')}</span>
                 <span className="synstolket hidden">{t('figure.button.original')}</span>
@@ -100,7 +100,7 @@ FigureCaption.propTypes = {
   }),
   locale: PropTypes.string,
   hideFigcaption: PropTypes.bool,
-  synstolketVideo: PropTypes.bool,
+  hasLinkedVideo: PropTypes.bool,
 };
 
 FigureCaption.defaultProps = {

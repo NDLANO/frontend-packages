@@ -689,6 +689,17 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
   },
+  editor: {
+    versionHistory: {
+      who: 'Who',
+      when: 'When',
+      message: 'Message',
+      status: 'Status',
+      inputLabel: 'Add message:',
+      inputPlaceholder: 'Write message',
+      buttonLabel: 'Save',
+    },
+  },
   createdBy: {
     content: 'The article',
     text: 'is created by',

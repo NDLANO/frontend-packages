@@ -6,7 +6,7 @@
  *
  */
 
-import i18n from 'i18next';
+import i18n, { Resource as TranslationResource } from 'i18next';
 import { initReactI18next, I18nextProvider, withTranslation, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
@@ -16,7 +16,7 @@ const DETECTION_OPTIONS = {
   lookupLocalStorage: 'i18nextLng',
 };
 
-const initializeI18n = (languages: string[], translation: any) => {
+const initializeI18n = (languages: string[], translation: TranslationResource) => {
   i18n
     .use(initReactI18next)
     .use(LanguageDetector)

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/accordion",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "A simple accordion from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@ndla/core": "^0.6.39",
-    "@ndla/i18n": "^0.5.4"
+    "@ndla/i18n": "^0.5.5"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

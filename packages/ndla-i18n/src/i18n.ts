@@ -6,7 +6,8 @@
  *
  */
 
-import i18n, { Resource as TranslationResource } from 'i18next';
+import i18n from 'i18next';
+import { messagesNB, messagesEN, messagesNN } from '@ndla/ui';
 import { initReactI18next, I18nextProvider, withTranslation, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
@@ -16,18 +17,25 @@ const DETECTION_OPTIONS = {
   lookupLocalStorage: 'i18nextLng',
 };
 
-const initializeI18n = (languages: string[], translation: TranslationResource) => {
   i18n
     .use(initReactI18next)
     .use(LanguageDetector)
     .init({
       detection: DETECTION_OPTIONS,
       fallbackLng: 'nb',
-      supportedLngs: languages,
-      resources: translation,
+      supportedLngs: ['nb', 'nn', 'en'],
+      resources: {
+        en: {
+          translation: messagesEN
+        },
+        nn: {
+          translation: messagesNN
+        },
+        nb: {
+          translation: messagesNB
+        }
+      },
     });
 
-  return i18n;
-};
 
-export { initializeI18n, useTranslation, I18nextProvider, withTranslation };
+export { i18n, useTranslation, I18nextProvider, withTranslation };

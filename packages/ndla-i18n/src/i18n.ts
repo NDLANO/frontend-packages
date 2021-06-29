@@ -6,7 +6,7 @@
  *
  */
 
-import i18n from 'i18next';
+import i18n, { Resource as TranslationResource } from 'i18next';
 import { initReactI18next, I18nextProvider, withTranslation, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
@@ -15,13 +15,19 @@ const DETECTION_OPTIONS = {
   caches: ['localStorage'],
   lookupLocalStorage: 'i18nextLng',
 };
-i18n
-  .use(initReactI18next)
-  .use(LanguageDetector)
-  .init({
-    detection: DETECTION_OPTIONS,
-    fallbackLng: 'nb',
-    supportedLngs: ['nb'],
-    resources: {},
-  });
-export { i18n, useTranslation, I18nextProvider, withTranslation };
+
+const initializeI18n = (languages: string[], translation: TranslationResource) => {
+  i18n
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+      detection: DETECTION_OPTIONS,
+      fallbackLng: 'nb',
+      supportedLngs: languages,
+      resources: translation,
+    });
+
+  return i18n;
+};
+
+export { initializeI18n, useTranslation, I18nextProvider, withTranslation };

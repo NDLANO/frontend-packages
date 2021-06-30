@@ -699,8 +699,8 @@ const messages = {
     },
   },
   createdBy: {
-    content: 'Artikkelen',
-    text: 'er utarbeidet av',
+    content: 'Ressursen',
+    text: 'er hentet fra',
   },
   fagfornyelse: {
     frontpage: {

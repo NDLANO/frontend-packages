@@ -701,8 +701,8 @@ const messages = {
     },
   },
   createdBy: {
-    content: 'Artikkelen',
-    text: 'er utarbeida av',
+    content: 'Ressursen',
+    text: 'er henta frå',
   },
   fagfornyelse: {
     frontpage: {

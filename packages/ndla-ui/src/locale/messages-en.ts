@@ -701,8 +701,8 @@ const messages = {
     },
   },
   createdBy: {
-    content: 'The article',
-    text: 'is created by',
+    content: 'The resource',
+    text: 'is retrieved from',
   },
   fagfornyelse: {
     frontpage: {

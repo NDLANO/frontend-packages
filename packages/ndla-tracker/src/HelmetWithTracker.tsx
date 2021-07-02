@@ -12,30 +12,34 @@ import Helmet from 'react-helmet';
 import warning from 'warning';
 import withTracker from './withTracker';
 
+interface Props {
+  title: string;
+}
+
 /**
  * Convenience component for including Helmet and page view tracking to a component.
  *
  * Since we only can track a page once, changes to the title prop will trigger a warning.
  */
-class HelmetWithTracker extends Component {
-  componentDidUpdate(prevProps, prevState) {
+class HelmetWithTracker extends Component<Props> {
+  componentDidUpdate(prevProps: Props, prevState: Props) {
     warning(
       !(prevProps.title !== this.props.title),
       'N.B! Title changes are not supported because of page view tracking. \n\n Please use willTrackPageView provided by withTracker for more lowlevel control over which title to track.',
     );
   }
 
-  static getDocumentTitle(props) {
+  static getDocumentTitle(props: Props) {
     return props.title;
   }
 
   render() {
     return <Helmet {...this.props} />;
   }
-}
 
-HelmetWithTracker.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+  };
+}
 
 export default withTracker(HelmetWithTracker);

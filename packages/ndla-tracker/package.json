@@ -5,10 +5,17 @@
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NDLANO/frontend-packages.git/ndla-tracker/"
+    "url": "https://github.com/NDLANO/frontend-packages.git",
+    "directory": "packages/ndla-tracker"
   },
   "keywords": [
     "ndla"
@@ -16,12 +23,18 @@
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "es"
+    "src",
+    "es",
+    "types"
   ],
   "peerDependencies": {
     "classnames": "^2.2.5",
     "react": "^15.6.0 || ^16.0.0",
     "react-helmet": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react-helmet": "^5.0.16",
+    "@types/history": "4.7.8"
   },
   "publishConfig": {
     "access": "public"

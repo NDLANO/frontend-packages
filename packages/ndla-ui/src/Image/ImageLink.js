@@ -18,11 +18,7 @@ const StyledLink = styled.a`
 
 export function ImageLink({ src, crop, children, ...rest }) {
   return (
-    <StyledLink
-      target="_blank"
-      href={`${src}?${makeSrcQueryString(10720, crop)}`}
-      rel="noopener noreferrer"
-      {...rest}>
+    <StyledLink target="_blank" href={`${src}?${makeSrcQueryString(10720, crop)}`} rel="noopener noreferrer" {...rest}>
       {children}
     </StyledLink>
   );

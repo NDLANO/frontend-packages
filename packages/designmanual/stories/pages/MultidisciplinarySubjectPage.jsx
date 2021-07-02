@@ -12,21 +12,21 @@ import PropTypes from 'prop-types';
 import { MultidisciplinarySubject, NavigationBox } from '@ndla/ui';
 import { filters, getResources } from '../../dummydata/mockMultidisciplinarySubject';
 
-const getFilters = selectedFilters =>
-  filters.map(filter => {
+const getFilters = (selectedFilters) =>
+  filters.map((filter) => {
     const item = { ...filter };
     item.selected = selectedFilters.indexOf(item.id) > -1;
     return item;
   });
 
-const getItems = selectedFilters => {
+const getItems = (selectedFilters) => {
   const items = getResources();
   if (!selectedFilters.length) {
     return items;
   }
 
-  return items.filter(item =>
-    item.filters.some(filterId => {
+  return items.filter((item) =>
+    item.filters.some((filterId) => {
       return selectedFilters.indexOf(filterId) > -1;
     }),
   );

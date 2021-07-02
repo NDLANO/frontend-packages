@@ -107,7 +107,7 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, lin
           {t('footer.footerLinksHeader')} <Launch />
         </StyledHeaderLinks>
         <StyledNav>
-          {commonLinks.map(link => (
+          {commonLinks.map((link) => (
             <div key={link.url}>
               <StyledSafeLink
                 key={t(`footer.ndlaLinks.${link.key}`)}
@@ -123,7 +123,7 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, lin
       </section>
       <section>
         <StyledNav>
-          {links.map(link => (
+          {links.map((link) => (
             <StyledSocialMediaLinkWrapper key={link.to}>
               <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
               <StyledSafeLink to={link.to}>

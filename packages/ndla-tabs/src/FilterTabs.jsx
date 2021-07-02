@@ -65,10 +65,7 @@ class FilterTabs extends Component {
         widestNode = Math.max(nodeWidth, widestNode);
         this.tabWidths[counter] = nodeWidth;
       });
-      this.dropdownTabWidth = Math.max(
-        this.dropdownTabRef.current.parentNode.offsetWidth,
-        widestNode,
-      );
+      this.dropdownTabWidth = Math.max(this.dropdownTabRef.current.parentNode.offsetWidth, widestNode);
     }
   }
 
@@ -80,11 +77,7 @@ class FilterTabs extends Component {
       const containerWidth = this.containerRef.current.offsetWidth - this.dropdownTabWidth;
       let visibleTabsTotalWidth = 0;
       let visibleTabsCounter = -1;
-      for (
-        let i = 0;
-        i <= this.tabWidths.length && visibleTabsTotalWidth < containerWidth;
-        i += 1
-      ) {
+      for (let i = 0; i <= this.tabWidths.length && visibleTabsTotalWidth < containerWidth; i += 1) {
         visibleTabsCounter = i;
         visibleTabsTotalWidth += this.tabWidths[i];
       }
@@ -97,12 +90,12 @@ class FilterTabs extends Component {
   changeMainTabs({ currentMainTab, event }) {
     let mainTabSelected = null;
 
-    if (rightKeys.some(key => key === event.key)) {
+    if (rightKeys.some((key) => key === event.key)) {
       mainTabSelected = currentMainTab + 1;
       if (mainTabSelected > this.props.options.length - 1) {
         mainTabSelected = 0;
       }
-    } else if (leftKeys.some(key => key === event.key)) {
+    } else if (leftKeys.some((key) => key === event.key)) {
       mainTabSelected = currentMainTab - 1;
       if (mainTabSelected < 0) {
         mainTabSelected = this.props.options.length - 1;
@@ -158,10 +151,10 @@ class FilterTabs extends Component {
                 showDropdown: false,
               });
             }}
-            ref={ref => {
+            ref={(ref) => {
               this.liRefs[option.value] = ref;
             }}
-            onKeyDown={event => {
+            onKeyDown={(event) => {
               this.changeMainTabs({ currentMainTab: mainTabIndex, event });
             }}>
             {option.title}
@@ -173,10 +166,7 @@ class FilterTabs extends Component {
 
   renderDropdownTabs() {
     this.showSelectedTab = false;
-    if (
-      this.state.visibleTabsCounter === this.props.options.length &&
-      this.dropdownTabRef.current
-    ) {
+    if (this.state.visibleTabsCounter === this.props.options.length && this.dropdownTabRef.current) {
       // No need for dropdown as every tab is showing.
       return null;
     }
@@ -186,9 +176,7 @@ class FilterTabs extends Component {
     const tabDropdownModifier = ['no-margin'];
     if (this.state.showDropdown) {
       tabDropdownModifier.push('visible');
-    } else if (
-      options.findIndex(option => option.value === value) >= this.state.visibleTabsCounter
-    ) {
+    } else if (options.findIndex((option) => option.value === value) >= this.state.visibleTabsCounter) {
       this.showSelectedTab = true;
     }
     const dropdownTabs = options.map((option, mainTabIndex) => {
@@ -223,14 +211,11 @@ class FilterTabs extends Component {
                 showDropdown: true,
               });
             }}
-            ref={ref => {
+            ref={(ref) => {
               this.liRefs[option.value] = ref;
             }}
-            onKeyDown={event => {
-              if (
-                escKeys.some(key => key === event.key) ||
-                tabKeys.some(key => key === event.key)
-              ) {
+            onKeyDown={(event) => {
+              if (escKeys.some((key) => key === event.key) || tabKeys.some((key) => key === event.key)) {
                 this.setState({
                   showDropdown: false,
                 });
@@ -244,7 +229,7 @@ class FilterTabs extends Component {
       );
     });
     const moreLabel = this.showSelectedTab
-      ? this.props.options[this.props.options.findIndex(option => option.value === value)].title
+      ? this.props.options[this.props.options.findIndex((option) => option.value === value)].title
       : dropdownBtnLabel;
     const modifiers = ['no-margin', 'button-based', 'dropdown-btn'];
     const isSelected = moreLabel !== dropdownBtnLabel;
@@ -273,8 +258,8 @@ class FilterTabs extends Component {
               focusOnSelected: false,
             });
           }}
-          onKeyDown={event => {
-            if (escKeys.some(key => key === event.key)) {
+          onKeyDown={(event) => {
+            if (escKeys.some((key) => key === event.key)) {
               this.setState({
                 showDropdown: false,
               });
@@ -283,9 +268,7 @@ class FilterTabs extends Component {
           ref={this.dropdownTabRef}>
           {moreLabel} <ArrowDropDown />
         </button>
-        <div
-          {...classes('tab-dropdown', tabDropdownModifier)}
-          style={{ width: `${minimumWidthDropdownContainer}px` }}>
+        <div {...classes('tab-dropdown', tabDropdownModifier)} style={{ width: `${minimumWidthDropdownContainer}px` }}>
           <ul>{dropdownTabs}</ul>
         </div>
       </li>

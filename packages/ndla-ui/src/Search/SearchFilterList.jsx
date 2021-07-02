@@ -29,7 +29,7 @@ const SearchFilterList = ({
       <div>
         {options.map((option, index) => {
           const itemModifiers = [];
-          const checked = values.some(value => value === option.value);
+          const checked = values.some((value) => value === option.value);
 
           if (!checked && index + 1 > this.state.visibleCount) {
             itemModifiers.push('hidden');
@@ -53,12 +53,12 @@ const SearchFilterList = ({
                 icon={option.icon}
                 label={option.title}
                 component="div"
-                onChange={event => {
+                onChange={(event) => {
                   let newValues = null;
                   if (event.currentTarget.checked) {
                     newValues = [...values, option.value];
                   } else {
-                    newValues = values.filter(value => value !== option.value);
+                    newValues = values.filter((value) => value !== option.value);
                   }
                   if (onChange) {
                     onChange(newValues, option.value);

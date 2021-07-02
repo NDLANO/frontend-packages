@@ -58,7 +58,7 @@ const Modal = ({
   let clonedComponent;
   if (activateButton) {
     clonedComponent = React.cloneElement(activateButton, {
-      onClick: e => {
+      onClick: (e) => {
         openModal();
         if (onClickEvent) {
           onClickEvent();
@@ -69,17 +69,12 @@ const Modal = ({
   }
 
   const modalButton =
-    activateButton &&
-    (wrapperFunctionForButton ? wrapperFunctionForButton(clonedComponent) : clonedComponent);
+    activateButton && (wrapperFunctionForButton ? wrapperFunctionForButton(clonedComponent) : clonedComponent);
 
   return (
     <>
       {modalButton}
-      <StyledDialogOverlay
-        isOpen={showDialog}
-        animateIn={animateIn}
-        onDismiss={closeModal}
-        {...rest}>
+      <StyledDialogOverlay isOpen={showDialog} animateIn={animateIn} onDismiss={closeModal} {...rest}>
         <DialogContent
           css={css`
             animation-duration: ${animationDuration}ms;
@@ -88,8 +83,7 @@ const Modal = ({
             ${narrow && narrowStyle};
           `}
           onAnimationEnd={onAnimationEnd}
-          className={`animation-container ${animation} ${animateIn &&
-            'animateIn'} ${size} ${backgroundColor}`}>
+          className={`animation-container ${animation} ${animateIn && 'animateIn'} ${size} ${backgroundColor}`}>
           {children(closeModal)}
         </DialogContent>
       </StyledDialogOverlay>
@@ -106,14 +100,8 @@ Modal.propTypes = {
   backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue', 'light-gradient']),
   animationDuration: PropTypes.number,
   activateButton: (props, propName, componentName) => {
-    if (
-      !props.controllable &&
-      typeof props[propName] !== 'string' &&
-      !React.isValidElement(props[propName])
-    ) {
-      return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`,
-      );
+    if (!props.controllable && typeof props[propName] !== 'string' && !React.isValidElement(props[propName])) {
+      return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`);
     }
     return null;
   },

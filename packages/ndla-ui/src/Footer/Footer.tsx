@@ -38,7 +38,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   background: ${colors.brand.dark};
   overflow: hidden;
   z-index: 0;
-  ${props => props.addMargin && `margin-top: ${spacing.spacingUnit * 4}px;`}
+  ${(props) => props.addMargin && `margin-top: ${spacing.spacingUnit * 4}px;`}
 
   > div:first-of-type {
     position: relative;
@@ -125,13 +125,7 @@ type Props = {
   languageSelector?: React.ReactNode;
 };
 
-const Footer: React.FunctionComponent<Props & tType> = ({
-  lang,
-  children,
-  t,
-  links,
-  languageSelector,
-}) => {
+const Footer: React.FunctionComponent<Props & tType> = ({ lang, children, t, links, languageSelector }) => {
   const mainContent = (
     <>
       {children}

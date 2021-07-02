@@ -17,15 +17,12 @@ const DETECTION_OPTIONS = {
 };
 
 const initializeI18n = (languages: string[], translation: TranslationResource) => {
-  i18n
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .init({
-      detection: DETECTION_OPTIONS,
-      fallbackLng: 'nb',
-      supportedLngs: languages,
-      resources: translation,
-    });
+  i18n.use(initReactI18next).use(LanguageDetector).init({
+    detection: DETECTION_OPTIONS,
+    fallbackLng: 'nb',
+    supportedLngs: languages,
+    resources: translation,
+  });
 
   return i18n;
 };

@@ -76,10 +76,7 @@ export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Naviga
 
 export { default as Programme } from './Programme';
 
-export {
-  default as MultidisciplinarySubject,
-  MultidisciplinarySubjectHeader,
-} from './MultidisciplinarySubject';
+export { default as MultidisciplinarySubject, MultidisciplinarySubjectHeader } from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,

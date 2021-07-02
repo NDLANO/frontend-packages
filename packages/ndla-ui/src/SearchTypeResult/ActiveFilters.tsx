@@ -57,19 +57,19 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
           display: block;
         `}
 
-    ${({ filterLength }) =>
-      filterLength &&
-      filterLength === 2 &&
-      css`
-        max-width: 90px;
-      `}
+      ${({ filterLength }) =>
+        filterLength &&
+        filterLength === 2 &&
+        css`
+          max-width: 90px;
+        `}
 
     ${({ filterLength }) =>
-      filterLength &&
-      filterLength > 2 &&
-      css`
-        max-width: 70px;
-      `}
+        filterLength &&
+        filterLength > 2 &&
+        css`
+          max-width: 70px;
+        `}
     }
   }
 `;
@@ -91,17 +91,11 @@ type Props = {
   customElements?: React.ReactElement[];
 };
 
-const ActiveFilters = ({
-  filters,
-  onFilterRemove,
-  showOnSmallScreen,
-  customElements,
-  t,
-}: Props & tType) => {
+const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements, t }: Props & tType) => {
   if (filters && filters.length > 0) {
     const filterLength = filters.length;
 
-    const filterItems = filters.map(filter => {
+    const filterItems = filters.map((filter) => {
       const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
 
       return (
@@ -125,8 +119,7 @@ const ActiveFilters = ({
     return (
       <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
         {filterItems}
-        {customElements &&
-          customElements.map(item => <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>)}
+        {customElements && customElements.map((item) => <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>)}
       </StyledActiveFilters>
     );
   }

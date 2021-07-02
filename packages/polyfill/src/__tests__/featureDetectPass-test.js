@@ -14,10 +14,7 @@ test('that featureDetect does not insert polyfill if no features are missing', (
   Number.prototype.isInteger = () => {}; // eslint-disable-line no-extend-native
   Number.prototype.isNaN = () => {}; // eslint-disable-line no-extend-native
 
-  const js = featureDetect(
-    JSON.stringify({ src: '/polyfill.js' }),
-    JSON.stringify([{ src: '/client.js' }]),
-  );
+  const js = featureDetect(JSON.stringify({ src: '/polyfill.js' }), JSON.stringify([{ src: '/client.js' }]));
 
   // Run js code
   eval(js); // eslint-disable-line no-eval

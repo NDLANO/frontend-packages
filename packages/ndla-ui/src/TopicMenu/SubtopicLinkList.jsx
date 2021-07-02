@@ -70,7 +70,7 @@ const SubtopicLink = ({
     <li {...classes('subtopic-item', active && 'active')} key={id}>
       <SafeLink
         {...classes('link')}
-        onClick={event => {
+        onClick={(event) => {
           event.preventDefault();
           onSubtopicExpand(subtopicId);
         }}
@@ -122,7 +122,7 @@ class SubtopicLinkList extends Component {
   }
 
   toggleAdditionalResources() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showAdditionalResources: !prevState.showAdditionalResources,
       animateUL: prevState.animateUL + 1,
     }));
@@ -147,19 +147,16 @@ class SubtopicLinkList extends Component {
     const { showAdditionalResources, animateUL } = this.state;
 
     const hasSubTopics = topic.subtopics && topic.subtopics.length > 0;
-    const hasContentTypeResults =
-      lastOpen && topic.contentTypeResults && topic.contentTypeResults.length > 0;
+    const hasContentTypeResults = lastOpen && topic.contentTypeResults && topic.contentTypeResults.length > 0;
 
     const someResourcesAreAdditional =
       hasContentTypeResults &&
-      topic.contentTypeResults.some(result =>
-        result.resources.some(resource => resource.additional),
-      );
+      topic.contentTypeResults.some((result) => result.resources.some((resource) => resource.additional));
 
     return (
       <div
         className={className}
-        ref={ref => {
+        ref={(ref) => {
           this.containerRef = ref;
         }}>
         <button type="button" {...classes('back-button')} onClick={onGoBack}>
@@ -177,7 +174,7 @@ class SubtopicLinkList extends Component {
         </SafeLink>
         {hasSubTopics && (
           <ul {...classes('list')}>
-            {topic.subtopics.map(subtopic => (
+            {topic.subtopics.map((subtopic) => (
               <SubtopicLink
                 onSubtopicExpand={onSubtopicExpand}
                 expandedSubtopicId={expandedSubtopicId}
@@ -205,7 +202,7 @@ class SubtopicLinkList extends Component {
                 />
               )}
             </HeaderWrapper>
-            {topic.contentTypeResults.map(result => (
+            {topic.contentTypeResults.map((result) => (
               <ContentTypeResult
                 animateUL={animateUL}
                 resourceToLinkProps={resourceToLinkProps}

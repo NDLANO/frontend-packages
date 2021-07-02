@@ -67,7 +67,7 @@ export const configureTracker = ({
     debug: !!debug,
   });
 
-  listen(location => {
+  listen((location) => {
     if (debug) {
       console.info(`The current URL is ${location.pathname}${location.search}${location.hash}`);
     }

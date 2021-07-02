@@ -58,7 +58,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
   justify-content: flex-end;
   position: relative;
   &:before {
-    background-image: url(${props => props.backgroundImage});
+    background-image: url(${(props) => props.backgroundImage});
     background-size: cover;
     background-position: center;
     content: '';
@@ -91,7 +91,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
     min-height: 250px;
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
-    ${props =>
+    ${(props) =>
       props.oneColumn &&
       `
     min-height: 400px;`}

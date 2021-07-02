@@ -58,7 +58,7 @@ class SubjectShortcuts extends Component {
         <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
         <nav id={id}>
           <TransitionGroup className={classes('list').className} component="ul">
-            {filteredLinks.map(link => (
+            {filteredLinks.map((link) => (
               <Fade key={link.url}>
                 <li {...classes('item')}>
                   <SafeLink to={link.url}>{link.text}</SafeLink>

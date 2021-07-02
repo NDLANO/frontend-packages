@@ -28,9 +28,7 @@ function withTracker<P>(WrappedComponent: TrackableComponent<P>): React.Componen
       }
 
       const title = WrappedComponent.getDocumentTitle(props);
-      const dimensions = WrappedComponent.getDimensions
-        ? WrappedComponent.getDimensions(props)
-        : undefined;
+      const dimensions = WrappedComponent.getDimensions ? WrappedComponent.getDimensions(props) : undefined;
       sendPageView({ title, dimensions });
     }
 
@@ -39,9 +37,7 @@ function withTracker<P>(WrappedComponent: TrackableComponent<P>): React.Componen
 
       // Kept for js interop, but should not be hit in ts.
       if (!WrappedComponent.getDocumentTitle) {
-        throw new Error(
-          `Tracker expects a static getDocumentTitle function on the WrappedComponent.`,
-        );
+        throw new Error(`Tracker expects a static getDocumentTitle function on the WrappedComponent.`);
       }
 
       if (WrappedComponent.willTrackPageView) {

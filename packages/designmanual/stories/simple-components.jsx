@@ -21,13 +21,12 @@ import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 
-const floatVideo = left => (
+const floatVideo = (left) => (
   <Fragment>
     <h2 className="u-heading">{`Eksempel ${!left ? 'høyrestilt' : 'venstrestilt'}`}</h2>
     <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-      historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt
-      jobber sammen med i klassen.
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
     </p>
 
     <FigureWithLicense
@@ -45,19 +44,16 @@ const floatVideo = left => (
     </FigureWithLicense>
 
     <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-      historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt
-      jobber sammen med i klassen.
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
     </p>
     <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-      historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt
-      jobber sammen med i klassen.
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
     </p>
     <p>
-      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-      historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt
-      jobber sammen med i klassen.
+      Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+      planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
     </p>
   </Fragment>
 );
@@ -67,25 +63,21 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Bilde">
         <p>
-          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt.
-          Bilder kan være i størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som
-          ikke er fullbredde, kan ekspanderes på klikk.
+          Bilder har tre mulige plasseringer: fullbredde midtstilt, venstrestilt og høyrestilt. Bilder kan være i
+          størrelsene ekstra liten, liten, medium og stor (fullbredde). Bilder som ikke er fullbredde, kan ekspanderes
+          på klikk.
         </p>
         <p>
-          Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk bildet» som gjør at
-          brukeren får opp lisensboksen for bildet. Små bilder kan være uten metainfo og lisensinfo.
+          Under bildet vises lisensikoner, forfatter og handlingsknappen «Bruk bildet» som gjør at brukeren får opp
+          lisensboksen for bildet. Små bilder kan være uten metainfo og lisensinfo.
         </p>
-        <p>
-          Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned fullversjonen av
-          bildet.
-        </p>
+        <p>Ved klikk på «Last ned bilde» i lisensboksen, kan brukeren laste ned fullversjonen av bildet.</p>
       </StoryIntro>
       <StoryBody>
         <h2>Fullbredde</h2>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <FigureImage
           caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
@@ -93,15 +85,13 @@ storiesOf('Enkle komponenter', module)
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
         />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <h2>Flyt til venstre</h2>
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-          Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å bruke
-          ressurser på nettopp dette prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
+          av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <FigureImage
           type="left"
@@ -110,26 +100,22 @@ storiesOf('Enkle komponenter', module)
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
         />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
 
         <h2>Flyt til høyre</h2>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <FigureImage
           type="right"
@@ -138,25 +124,21 @@ storiesOf('Enkle komponenter', module)
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
         />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <h2>Flyt til høyre, liten versjon</h2>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <FigureImage
           type="small-right"
@@ -166,30 +148,25 @@ storiesOf('Enkle komponenter', module)
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
         />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <h2>Flyt til venstre, liten versjon</h2>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <FigureImage
           type="small-left"
@@ -199,14 +176,12 @@ storiesOf('Enkle komponenter', module)
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
         />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <h2>Flyt til høyre, ekstra liten versjon</h2>
         <FigureImage
@@ -217,14 +192,12 @@ storiesOf('Enkle komponenter', module)
           src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
         />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
       </StoryBody>
     </div>
@@ -233,9 +206,9 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Visuelt element under ingress">
         <p>
-          Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk helst bilder av
-          mennesker og bilder som er relevante og naturlige. Bildet må være i landskapsformat, slik
-          at det ikke blir så høyt at det skyver brødteksten for langt ned på siden.
+          Under ingressen bruker vi et bilde for å illustrere tematikken. Bruk helst bilder av mennesker og bilder som
+          er relevante og naturlige. Bildet må være i landskapsformat, slik at det ikke blir så høyt at det skyver
+          brødteksten for langt ned på siden.
         </p>
         <p>
           Bildet bør ha proporsjoner mellom 1:1 og 1:2. <br />
@@ -302,8 +275,8 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Tekst i ramme">
         <p>
-          Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat (som det
-          fins egen sitatstil til).
+          Tekst i ramme kan brukes for å framheve noe av særlig interesse, annet enn sitat (som det fins egen sitatstil
+          til).
         </p>
         <p>Tekst i ramme bør ikke ha mer enn omtrent 100 ord eller 500 tegn.</p>
       </StoryIntro>
@@ -314,40 +287,31 @@ storiesOf('Enkle komponenter', module)
         </p>
         <ArticleBylineExample />
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-          Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å bruke
-          ressurser på nettopp dette prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
+          av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <LayoutItem layout="full">
           <div className="c-bodybox c-bodybox--extended">
             <p>En tekstboks som fyller spaltebredden.</p>
           </div>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
           <div className="c-bodybox c-bodybox--extended">
             <p>En boks med flytelementer</p>
-            <FigureImage
-              alt=""
-              src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-              type="right"
-            />
+            <FigureImage alt="" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" type="right" />
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
           </div>
           <div className="c-bodybox c-bodybox--extended">
@@ -355,50 +319,41 @@ storiesOf('Enkle komponenter', module)
               Tekst i ramme fungerer <em>dårlig</em> med mye tekst.
             </h2>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
           </div>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
         </LayoutItem>
         <LayoutItem layout="center">
@@ -420,16 +375,15 @@ storiesOf('Enkle komponenter', module)
           <code>{`<Figure resizeIframe>\n  <iframe ... />\n</Figure>`}</code>
         </p>
         <p>
-          Om det er satt høyde og bredde på iframen (som vist under) vil den beholde forholdet
-          mellom høyde og bredde (så lenge resize scriptet er kjørt).
+          Om det er satt høyde og bredde på iframen (som vist under) vil den beholde forholdet mellom høyde og bredde
+          (så lenge resize scriptet er kjørt).
           <code>{`<iframe width="400" height="300" ... />`}</code>
         </p>
       </StoryIntro>
       <StoryBody>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <h2 className="u-heading">Iframe med satt høyde og bredde</h2>
         <FigureWithLicense resizeIframe hasHiddenCaption>
@@ -441,16 +395,12 @@ storiesOf('Enkle komponenter', module)
           />
         </FigureWithLicense>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <h2 className="u-heading">Iframe uten satt høyde og bredde</h2>
         <FigureWithLicense resizeIframe hasHiddenCaption>
-          <iframe
-            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
-            title="Video without dimensions"
-          />
+          <iframe src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed" title="Video without dimensions" />
         </FigureWithLicense>
 
         <h2 className="u-heading">Embedded innhold (brightcove) med lisens og caption</h2>
@@ -471,22 +421,19 @@ storiesOf('Enkle komponenter', module)
           <h1>Høyrespalte</h1>
           <p>Høyrespalten skal fases ut.</p>
           <p>
-            I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan
-            høyrespalten likevel brukes. Innholdet skal etter hvert flyttes til hovedspalten. Fakta
-            kan legges i en faktaboks, annet innhold kan bakes inn i artikkelteksten, eller slettes.
+            I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan høyrespalten likevel
+            brukes. Innholdet skal etter hvert flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet innhold
+            kan bakes inn i artikkelteksten, eller slettes.
           </p>
           <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.</p>
           <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
         </Aside>
         <p>
-          Dette er måte å vise embedded innhold sidestilt med høyrekolonne. Denne varianten skal kun
-          brukes om det er nødvendig. Visningen fases bort når høyrespalte fases bort.
+          Dette er måte å vise embedded innhold sidestilt med høyrekolonne. Denne varianten skal kun brukes om det er
+          nødvendig. Visningen fases bort når høyrespalte fases bort.
         </p>
         <FigureWithLicense resizeIframe noCaption>
-          <iframe
-            src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed"
-            title="Video without dimensions"
-          />
+          <iframe src="https://www.youtube.com/embed/wOgIkxAfJsk?feature=oembed" title="Video without dimensions" />
         </FigureWithLicense>
       </StoryBody>
     </div>
@@ -495,21 +442,20 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Bruk av lenker">
         <p>
-          Lenker på <a href="//ndla.no">ndla.no</a> bruker den vanlige konvensjonen med underlinje.
-          Lenker skal i hovedsak åpne seg i samme vindu (det vil si at vi bruker{' '}
-          <code>target=&quot;_self&quot;</code> eller ingen target-attributt). Unntaket er hvis
-          lenken inngår i et skjema eller læringssammenhengen gjør det er nødvendig at brukerne
-          beholder vinduet eller fanen de står i. Når lenker går til et annet nettsted (eksterne
-          lenker) skal disse alltid åpnes i ny fane
+          Lenker på <a href="//ndla.no">ndla.no</a> bruker den vanlige konvensjonen med underlinje. Lenker skal i
+          hovedsak åpne seg i samme vindu (det vil si at vi bruker <code>target=&quot;_self&quot;</code> eller ingen
+          target-attributt). Unntaket er hvis lenken inngår i et skjema eller læringssammenhengen gjør det er nødvendig
+          at brukerne beholder vinduet eller fanen de står i. Når lenker går til et annet nettsted (eksterne lenker)
+          skal disse alltid åpnes i ny fane
         </p>
         <p>
-          Når det finnes flere kontekster til en lenke/node skal den ta konteksten/fag til det en
-          stod i før en klikket seg videre, hvis ikke den finnes i samme, skal den ta
-          primærkoblingen til noden. Dette gjelder både for relaterte artikler og interne lenker.
+          Når det finnes flere kontekster til en lenke/node skal den ta konteksten/fag til det en stod i før en klikket
+          seg videre, hvis ikke den finnes i samme, skal den ta primærkoblingen til noden. Dette gjelder både for
+          relaterte artikler og interne lenker.
         </p>
         <p>
-          Interne lenker blir styrt av html innstilling i nettleser (samme vindu eller ny fane)
-          avhengig av koden som ligger der, brukerens/browserens preferanser skal styre
+          Interne lenker blir styrt av html innstilling i nettleser (samme vindu eller ny fane) avhengig av koden som
+          ligger der, brukerens/browserens preferanser skal styre
         </p>
       </StoryIntro>
       <StoryBody>
@@ -531,9 +477,8 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Faktaboks og høyrespalte">
         <p>
-          For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes. I stedet benytter
-          vi faktabokser innenfor innholdsspalten. Høyrespalten fases ut, men vil for en tid
-          eksistere på gamle artikler.
+          For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes. I stedet benytter vi faktabokser
+          innenfor innholdsspalten. Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
         </p>
         <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
       </StoryIntro>
@@ -548,86 +493,66 @@ storiesOf('Enkle komponenter', module)
             <h1>Høyrespalte</h1>
             <p>Høyrespalten skal fases ut.</p>
             <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan
-              høyrespalten likevel brukes. Innholdet skal etter hvert flyttes til hovedspalten.
-              Fakta kan legges i en faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
-              slettes.
+              I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan høyrespalten likevel
+              brukes. Innholdet skal etter hvert flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+              innhold kan bakes inn i artikkelteksten, eller slettes.
             </p>
-            <p>
-              Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.
-            </p>
+            <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.</p>
             <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
           </Aside>
           <p>
-            Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-            Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å bruke
-            ressurser på nettopp dette prosjektet.
+            Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du
+            avhengig av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
           </p>
           <ul>
             <li>Test</li>
             <li>Test</li>
           </ul>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
           <Aside narrowScreen>
             <h1>Høyrespalte</h1>
             <p>Høyrespalten skal fases ut.</p>
             <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan
-              høyrespalten likevel brukes. Innholdet skal etter hvert flyttes til hovedspalten.
-              Fakta kan legges i en faktaboks, annet innhold kan bakes inn i artikkelteksten, eller
-              slettes.
+              I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan høyrespalten likevel
+              brukes. Innholdet skal etter hvert flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
+              innhold kan bakes inn i artikkelteksten, eller slettes.
             </p>
-            <p>
-              Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.
-            </p>
+            <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.</p>
             <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
           </Aside>
         </section>
 
         <FactBox>
           <h2>Faktaboks</h2>
+          <p>En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.</p>
           <p>
-            En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens
-            innhold.
-          </p>
-          <p>
-            Det anbefales å ikke ha for mye innhold i faktaboks, slik at lese-konteksten i størst
-            mulig grad beholdes.
+            Det anbefales å ikke ha for mye innhold i faktaboks, slik at lese-konteksten i størst mulig grad beholdes.
           </p>
           <h2>Enkel tittel</h2>
           <p>
-            Faktaboksen kan også brukes til å oppsummere innhold i slutten av en artikkel, og den
-            kan inneholde lisensiering om eksternt innhold er brukt.
+            Faktaboksen kan også brukes til å oppsummere innhold i slutten av en artikkel, og den kan inneholde
+            lisensiering om eksternt innhold er brukt.
           </p>
           <div className="c-source-list">
-            <LicenseByline
-              locale="nb"
-              marginRight
-              color={colors.brand.grey}
-              licenseRights={[BY, NC, ND]}
-            />
+            <LicenseByline locale="nb" marginRight color={colors.brand.grey} licenseRights={[BY, NC, ND]} />
             <span className="c-source-list__item">Gary Waters</span>
             <span className="c-source-list__item">Kilde: SNL.no</span>
           </div>
         </FactBox>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
       </StoryBody>
     </div>
@@ -639,14 +564,12 @@ storiesOf('Enkle komponenter', module)
         <details>
           <summary>Oppsummering av innhold</summary>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
           <p>
-            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-            historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-            eventuelt jobber sammen med i klassen.
+            Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+            filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
           </p>
         </details>
       </StoryBody>
@@ -682,14 +605,11 @@ storiesOf('Enkle komponenter', module)
       <StoryIntro title="Kildehenvisninger">
         <p>
           Kildehenvisninger benytter{' '}
-          <a href="https://sokogskriv.no/kildebruk-og-referanser/referansestiler/apa-6th/">
-            APA-stilen
-          </a>{' '}
-          for utlisting nederst på siden.
+          <a href="https://sokogskriv.no/kildebruk-og-referanser/referansestiler/apa-6th/">APA-stilen</a> for utlisting
+          nederst på siden.
         </p>
         <p>
-          I teksten brukes en enkel nummerering for å henvise til referanse. Tallet lenkes til den
-          aktuelle referansen.
+          I teksten brukes en enkel nummerering for å henvise til referanse. Tallet lenkes til den aktuelle referansen.
         </p>
         <p>I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten.</p>
       </StoryIntro>
@@ -705,16 +625,14 @@ storiesOf('Enkle komponenter', module)
         <LayoutItem layout="center">
           <h2>Systemikoner</h2>
           <p>
-            Systemikonene identifiserer handlinger en bruker kan ta på en gitt skjerm, de kan også
-            representere objekter og områder.
+            Systemikonene identifiserer handlinger en bruker kan ta på en gitt skjerm, de kan også representere objekter
+            og områder.
           </p>
           <p>
-            Systemikonene er hentet fra Google sitt Material Design som er open source og
-            tilgjengelig med Apache License Version 2.0. Hvis det er behov for flere eller nye
-            systemikoner skal disse hentes her:{' '}
-            <a href="https://material.io/icons/">https://material.io/icons/</a> og hvis det ikke
-            finnes et passende ikon i denne pakken kan man lage nye ikoner ved å bruke disse
-            retningslinjene:{' '}
+            Systemikonene er hentet fra Google sitt Material Design som er open source og tilgjengelig med Apache
+            License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her:{' '}
+            <a href="https://material.io/icons/">https://material.io/icons/</a> og hvis det ikke finnes et passende ikon
+            i denne pakken kan man lage nye ikoner ved å bruke disse retningslinjene:{' '}
             <a href="https://material.io/guidelines/">https://material.io/guidelines/</a>
           </p>
         </LayoutItem>
@@ -723,15 +641,13 @@ storiesOf('Enkle komponenter', module)
         <LayoutItem layout="center">
           <h2>Innholdstypeikoner</h2>
           <p>
-            Hver innholdstype i NDLA systemet har et ikon knyttet til seg. Ikonene er visuelle
-            representasjoner av innholdstypen og skal sammen med innholdstypefargen skape en
-            gjenkjennelseseffekt for brukerne.
+            Hver innholdstype i NDLA systemet har et ikon knyttet til seg. Ikonene er visuelle representasjoner av
+            innholdstypen og skal sammen med innholdstypefargen skape en gjenkjennelseseffekt for brukerne.
           </p>
           <p>
-            Hvis det skal lages nye innholdstypeikoner er det viktig at de kommuniserer
-            innholdstypens kjernefunksjon og hensikt. De må også ha lik visuell utførelse og
-            fremtoning som de eksisterende. Alle innholdstypeikonene er bygget ut fra Material
-            Design sine ikoner;
+            Hvis det skal lages nye innholdstypeikoner er det viktig at de kommuniserer innholdstypens kjernefunksjon og
+            hensikt. De må også ha lik visuell utførelse og fremtoning som de eksisterende. Alle innholdstypeikonene er
+            bygget ut fra Material Design sine ikoner;
             <a href="https://material.io/icons/">https://material.io/icons/</a>
           </p>
         </LayoutItem>
@@ -750,19 +666,18 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Logo">
         <p>
-          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for kommunikasjon. Den skal
-          inspirere målgruppen elever og lærere i videregående opplæring og gjøre dem nysgjerrige på
-          NDLA.
+          Logoen er vårt tydeligste kjennetegn og vårt viktigste verktøy for kommunikasjon. Den skal inspirere
+          målgruppen elever og lærere i videregående opplæring og gjøre dem nysgjerrige på NDLA.
         </p>
         <p>
-          Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen
-          med underteksten. Logo uten undertekst kan benyttes i tilfeller der det kommer godt fram
-          andre steder hva NDLA er, eksempelvis på ndla.no.
+          Logoen består av navnet NDLA i en spesiell typografi og bør hovedsakelig benyttes sammen med underteksten.
+          Logo uten undertekst kan benyttes i tilfeller der det kommer godt fram andre steder hva NDLA er, eksempelvis
+          på ndla.no.
         </p>
         <p>
-          Logo uten undertekst kan kompletteres med en beskrivende tekst til høyre. Logoen kan
-          benyttes i blått, eller i svart eller hvitt avhengig av bakgrunn. Den skal plasseres i det
-          øverste eller nederste hjørnet av en ytterkant. Logoen skal ikke sentreres.
+          Logo uten undertekst kan kompletteres med en beskrivende tekst til høyre. Logoen kan benyttes i blått, eller i
+          svart eller hvitt avhengig av bakgrunn. Den skal plasseres i det øverste eller nederste hjørnet av en
+          ytterkant. Logoen skal ikke sentreres.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -790,10 +705,9 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Utarbeidet av">
         <p>
-          LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i bunnen. "NDLA" og
-          logoen lenker til ndla.no. "Artikkel" kan være en lenke til artikkelen på ndla.no om den
-          fins. Begge lenker åpner som standard i ny fane men det kan overstyres med
-          target-parameter.
+          LTI-versjoner av innhold fra NDLA skal vise denne teksten og logo i bunnen. "NDLA" og logoen lenker til
+          ndla.no. "Artikkel" kan være en lenke til artikkelen på ndla.no om den fins. Begge lenker åpner som standard i
+          ny fane men det kan overstyres med target-parameter.
         </p>
       </StoryIntro>
       <StoryBody>

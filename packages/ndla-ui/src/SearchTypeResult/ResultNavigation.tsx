@@ -42,13 +42,7 @@ export type PaginationType = {
   toCount: number;
 };
 
-const ResultNavigation = ({
-  onShowMore,
-  totalCount,
-  fromCount = 1,
-  toCount,
-  t,
-}: PaginationType & tType) => {
+const ResultNavigation = ({ onShowMore, totalCount, fromCount = 1, toCount, t }: PaginationType & tType) => {
   const isMore = toCount < totalCount;
   return (
     <ResultNav>

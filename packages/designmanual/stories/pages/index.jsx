@@ -380,10 +380,7 @@ storiesOf('Fag- og emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['publicHealth', 'democracy']}
-          articleId="21045"
-        />
+        <MultidisciplinarySubjectArticle subjects={['publicHealth', 'democracy']} articleId="21045" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -401,10 +398,7 @@ storiesOf('Fag- og emnesider', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
-        <MultidisciplinarySubjectArticle
-          subjects={['climate', 'democracy', 'publicHealth']}
-          articleId="22277"
-        />
+        <MultidisciplinarySubjectArticle subjects={['climate', 'democracy', 'publicHealth']} articleId="22277" />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -413,13 +407,12 @@ storiesOf('Fag- og emnesider', module)
     <div>
       <StoryIntro title="Bannerbilder">
         <p>
-          Hvert fag i NDLA kan ha sitt eget unike bannerbilde. Det er anbefalt at bannerbildene er i
-          SVG format og har en versjon for desktop og en annen versjon for mobil.
+          Hvert fag i NDLA kan ha sitt eget unike bannerbilde. Det er anbefalt at bannerbildene er i SVG format og har
+          en versjon for desktop og en annen versjon for mobil.
         </p>
         <p>
-          Ved utfylling av importskjema må lenken til bannerbildet hentes herfra. Ved å trykke på
-          «Kopier mobil/desktop banner» knappene, får du en lenke som kan limes inn i
-          importskjemaet.
+          Ved utfylling av importskjema må lenken til bannerbildet hentes herfra. Ved å trykke på «Kopier mobil/desktop
+          banner» knappene, får du en lenke som kan limes inn i importskjemaet.
         </p>
       </StoryIntro>
       <div>
@@ -483,13 +476,13 @@ storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (
   <PageContainer>
     <StoryIntro title="Forklaringstjenesten">
       <p>
-        Ett eller flere fag må velges før filtrering vises. Velges flere fag vises alle begrep som
-        er tilknyttet minst ett av fagene.
+        Ett eller flere fag må velges før filtrering vises. Velges flere fag vises alle begrep som er tilknyttet minst
+        ett av fagene.
       </p>
       <p>
-        Filtre som alene ikke gir treff skal ikke vises. Begrep som vises i listen må inneholde alle
-        filtre som er valgt. Dersom bruker velger ett eller flere filtre skal de resterende filtrene
-        som ikke gir treff i kombinasjon med valgte filtre være deaktivert
+        Filtre som alene ikke gir treff skal ikke vises. Begrep som vises i listen må inneholde alle filtre som er
+        valgt. Dersom bruker velger ett eller flere filtre skal de resterende filtrene som ikke gir treff i kombinasjon
+        med valgte filtre være deaktivert
       </p>
     </StoryIntro>
     <OneColumn>

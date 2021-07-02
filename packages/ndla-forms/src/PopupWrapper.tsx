@@ -24,7 +24,7 @@ type StyledIconProps = {
 
 const StyledIcon = styled(ChevronDown)<StyledIconProps>`
   transition: transform 200ms ease;
-  transform: rotate(${props => props.rotate}deg);
+  transform: rotate(${(props) => props.rotate}deg);
 `;
 
 type StyledOptionProps = {
@@ -43,7 +43,7 @@ const StyledWrapper = styled.div`
 const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
   position: absolute;
-  ${props => {
+  ${(props) => {
     if (props.position === 'left') {
       return css`
         left: ${props.offsetX};
@@ -54,7 +54,7 @@ const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
       `;
     }
   }}
-  ${props => {
+  ${(props) => {
     if (props.verticalPosition === 'top') {
       return css`
         top: ${props.offsetY};
@@ -80,7 +80,7 @@ const StyledOptionContent = styled.div`
 `;
 
 const StyledOptionWrapper = styled.div<StyledOptionProps>`
-  background: ${props => props.background};
+  background: ${(props) => props.background};
   border-radius: ${misc.borderRadius};
   display: flex;
   flex-direction: column;

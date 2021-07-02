@@ -12,14 +12,14 @@ import styled from '@emotion/styled';
 import { spacing, colors } from '@ndla/core';
 
 const SpinnerDiv = styled('div')`
-  border: calc(${props => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);
-  border-bottom-color: ${props => (props.inverted ? '#fff' : colors.brand.primary)};
+  border: calc(${(props) => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);
+  border-bottom-color: ${(props) => (props.inverted ? '#fff' : colors.brand.primary)};
   border-radius: 50%;
   animation: spinnerAnimation 0.7s linear infinite;
-  height: ${props => spacing[props.size]};
-  width: ${props => spacing[props.size]};
+  height: ${(props) => spacing[props.size]};
+  width: ${(props) => spacing[props.size]};
   display: block;
-  margin: ${props => props.margin};
+  margin: ${(props) => props.margin};
   @keyframes spinnerAnimation {
     0% {
       transform: rotate(0deg);
@@ -30,9 +30,7 @@ const SpinnerDiv = styled('div')`
   }
 `;
 
-const Spinner = ({ size, margin, inverted }) => (
-  <SpinnerDiv size={size} margin={margin} inverted={inverted} />
-);
+const Spinner = ({ size, margin, inverted }) => <SpinnerDiv size={size} margin={margin} inverted={inverted} />;
 
 Spinner.propTypes = {
   size: PropTypes.oneOf(['large', 'medium', 'normal']),

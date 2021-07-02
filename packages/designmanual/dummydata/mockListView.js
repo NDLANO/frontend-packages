@@ -69,8 +69,7 @@ export const mockListView = {
       description: 'Denne brukes både til boring og skruing',
       longDescription:
         'Bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk. Mer tekst om bajonettsag gir kraftige kutt og kan brukes på plastrør, grener i hagen eller treverk.',
-      image:
-        'http://byggebolig.no/imageoriginals/3f4e8adf19e44126a8b05c7bc5435724.jpg?maxwidth=900',
+      image: 'http://byggebolig.no/imageoriginals/3f4e8adf19e44126a8b05c7bc5435724.jpg?maxwidth=900',
       id: '4',
       category: {
         title: 'El-Håndverkøy',

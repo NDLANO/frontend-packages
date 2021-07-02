@@ -40,7 +40,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
     setSearchFieldValue('');
   };
 
-  const onSearchFieldValueChange = value => {
+  const onSearchFieldValueChange = (value) => {
     if (typeof timeoutLoading === 'number') {
       clearInterval(timeoutLoading);
     }
@@ -77,10 +77,10 @@ const FrontpageExample = ({ showMessageBox, t }) => {
           logoTo="home"
           hideSearch={false}
           onSearchFieldChange={onSearchFieldValueChange}
-          onSearch={e => {
+          onSearch={(e) => {
             e.preventDefault();
           }}
-          resourceToLinkProps={res => ({ to: res.path })}
+          resourceToLinkProps={(res) => ({ to: res.path })}
           allResultUrl={`search?query=${searchFieldValue}`}
           onSearchInputFocus={onSearchInputFocus}
           onInputBlur={onSearchDeactivateFocusTrap}

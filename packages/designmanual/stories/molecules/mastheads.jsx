@@ -61,12 +61,12 @@ class MastheadWithTopicMenu extends Component {
       });
     }
     return (
-      <SearchFieldForm onSubmit={e => e.preventDefault()}>
+      <SearchFieldForm onSubmit={(e) => e.preventDefault()}>
         <SearchField
           inputRef={this.inputRef}
           placeholder={this.props.t('searchPage.searchFieldPlaceholder')}
           value={this.state.value}
-          onChange={value => {
+          onChange={(value) => {
             this.setState({
               value,
             });
@@ -94,7 +94,7 @@ class MastheadWithTopicMenu extends Component {
             result={contentTypeResults}
             searchString={this.state.value}
             allResultUrl={'#'}
-            resourceToLinkProps={resource => ({ to: resource.path })}
+            resourceToLinkProps={(resource) => ({ to: resource.path })}
           />
         )}
       </SearchFieldForm>
@@ -119,16 +119,8 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    const {
-      skipToMainContentId,
-      ndlaFilm,
-      beta,
-      betaInfoContent,
-      topicMenuProps,
-      hideMenuButton,
-      breadcrumbItems,
-      t,
-    } = this.props;
+    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, topicMenuProps, hideMenuButton, breadcrumbItems, t } =
+      this.props;
     return (
       <Masthead
         fixed
@@ -139,9 +131,7 @@ class MastheadWithTopicMenu extends Component {
           {!hideMenuButton && (
             <Modal
               size="fullscreen"
-              activateButton={
-                <TopicMenuButton ndlaFilm={ndlaFilm}>{t('masthead.menu.title')}</TopicMenuButton>
-              }
+              activateButton={<TopicMenuButton ndlaFilm={ndlaFilm}>{t('masthead.menu.title')}</TopicMenuButton>}
               animation="subtle"
               animationDuration={150}
               backgroundColor="grey"
@@ -153,7 +143,7 @@ class MastheadWithTopicMenu extends Component {
                 });
                 this.closeAllModals[0] = null;
               }}>
-              {onClose => {
+              {(onClose) => {
                 this.closeAllModals[0] = onClose;
                 return (
                   <TopicMenu
@@ -188,12 +178,12 @@ class MastheadWithTopicMenu extends Component {
                     competenceGoals={
                       <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
                     }
-                    onFilterClick={values => {
+                    onFilterClick={(values) => {
                       this.setState({
                         filterMenuValues: values,
                       });
                     }}
-                    resourceToLinkProps={resource => ({ to: resource.path })}
+                    resourceToLinkProps={(resource) => ({ to: resource.path })}
                     expandedTopicId={this.state.expandedTopicId}
                     expandedSubtopicsId={this.state.expandedSubtopicsId}
                     onNavigate={(expandedTopicId, subtopicId, currentIndex) => {
@@ -225,11 +215,7 @@ class MastheadWithTopicMenu extends Component {
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
-            <LanguageSelector
-              inverted={ndlaFilm}
-              options={dummyLanguageOptions}
-              currentLanguage="nb"
-            />
+            <LanguageSelector inverted={ndlaFilm} options={dummyLanguageOptions} currentLanguage="nb" />
           </DisplayOnPageYOffset>
           {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
@@ -262,8 +248,7 @@ MastheadWithTopicMenu.defaultProps = {
   searchFieldExpanded: false,
   betaInfoContent: (
     <>
-      <span>Du tester nå de nye nettsidene.</span>{' '}
-      <SafeLink to="#">Les mer om nye NDLA.no</SafeLink>
+      <span>Du tester nå de nye nettsidene.</span> <SafeLink to="#">Les mer om nye NDLA.no</SafeLink>
     </>
   ),
 };

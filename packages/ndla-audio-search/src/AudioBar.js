@@ -29,13 +29,13 @@ class AudioBar extends Component {
   loadAudio() {
     const { fetchAudio, audio, onError } = this.props;
     fetchAudio(audio.id)
-      .then(result => {
+      .then((result) => {
         this.setState({
           audioSource: result.audioFile.url,
           audioType: result.audioFile.mimeType,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         onError(err);
       });
   }

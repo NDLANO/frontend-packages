@@ -70,11 +70,7 @@ type Props = {
   subjectsLinks?: subjectLink[];
 };
 
-const MultidisciplinarySubjectHeader = ({
-  subjects = [],
-  subjectsLinks = [],
-  t,
-}: Props & tType) => {
+const MultidisciplinarySubjectHeader = ({ subjects = [], subjectsLinks = [], t }: Props & tType) => {
   const getIllustration = () => {
     if (subjects.length === 3) {
       return <PublicHealthDemocracyClimateIllustration />;
@@ -113,9 +109,7 @@ const MultidisciplinarySubjectHeader = ({
             })}
           </SubjectsWrapper>
         </TextWrapper>
-        <IllustrationsWrapper subjectCount={subjects.length}>
-          {getIllustration()}
-        </IllustrationsWrapper>
+        <IllustrationsWrapper subjectCount={subjects.length}>{getIllustration()}</IllustrationsWrapper>
       </ContentWrapper>
     </StyledWrapper>
   );

@@ -12,8 +12,6 @@ import { Programme } from '@ndla/ui';
 
 import { programme } from '../../dummydata/mockPrograms';
 
-const ProgrammePage = () => (
-  <Programme heading={programme.label} grades={programme.grades} image={programme.image} />
-);
+const ProgrammePage = () => <Programme heading={programme.label} grades={programme.grades} image={programme.image} />;
 
 export default ProgrammePage;

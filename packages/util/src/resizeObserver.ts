@@ -12,10 +12,7 @@ interface IEDocument extends Document {
 
 // Fallback is copied from https://github.com/developit/simple-element-resize-detector
 // Only added  firefox support and types
-function fallbackResizeObserver(
-  element: HTMLElement,
-  handler: (el: HTMLElement) => void,
-): () => void {
+function fallbackResizeObserver(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   const CSS =
     'position:absolute;left:0;top:-100%;width:100%;height:100%;margin:1px 0 0;border:none;opacity:0;pointer-events:none;';
   let frame = document.createElement('iframe');
@@ -34,10 +31,7 @@ function fallbackResizeObserver(
   };
 }
 
-function resizeObserverWrapper(
-  element: HTMLElement,
-  handler: (el: HTMLElement) => void,
-): () => void {
+function resizeObserverWrapper(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   // @ts-ignore ResizeObserver
   let resizeObserver = new ResizeObserver(() => {
     handler(element);
@@ -56,10 +50,7 @@ function resizeObserverWrapper(
  * @param handler is called on every resize events
  * @returns a callback function which removes the resize listner
  */
-export function resizeObserver(
-  element: HTMLElement,
-  handler: (el: HTMLElement) => void,
-): () => void {
+export function resizeObserver(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   // @ts-ignore ResizeObserver
   if (typeof ResizeObserver === 'function') {
     return resizeObserverWrapper(element, handler);

@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const Menu = (props: Props) => (
-  <Icon
-    title="Menu"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon title="Menu" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path d="M0 0h24v24H0z" fill="none" />
       <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />

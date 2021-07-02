@@ -55,7 +55,7 @@ export const configureTracker = ({
   googleTagManagerId,
 }: {
   listen: History<any>['listen'];
-  debug?: any;
+  debug?: boolean;
   gaTrackingId?: string;
   googleTagManagerId?: string;
 }) => {
@@ -64,7 +64,7 @@ export const configureTracker = ({
   pageViewHistory.push({
     url: `${location.pathname}${location.search}${location.hash}`,
     tracked: false,
-    debug,
+    debug: !!debug,
   });
 
   listen(location => {
@@ -75,7 +75,7 @@ export const configureTracker = ({
     pageViewHistory.push({
       url: `${location.pathname}${location.search}${location.hash}`,
       tracked: false,
-      debug,
+      debug: !!debug,
       resetDataLayer: () => resetDataLayer(googleTagManagerId),
     });
   });

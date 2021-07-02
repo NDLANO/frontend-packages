@@ -196,7 +196,7 @@ const TypeIcon = (type: string) => {
   }
 };
 
-type BreadcrumbItemProps = {
+export type BreadcrumbItemProps = {
   id: string | number;
   label: string;
   url: string;
@@ -206,8 +206,8 @@ type BreadcrumbItemProps = {
 };
 
 type BreadCrumbProps = {
-  children: React.ReactNode;
-  items: [BreadcrumbItemProps];
+  children?: React.ReactNode;
+  items: BreadcrumbItemProps[];
   startOffset?: number;
   isVisible?: boolean;
   invertedStyle?: boolean;

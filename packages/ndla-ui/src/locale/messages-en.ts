@@ -179,6 +179,8 @@ const messages = {
   },
   welcomePage: {
     search: 'Search',
+    searchDisclaimer:
+      'We are constantly working to improve ourselves! If you have comments to the search, please use the «spør NDLA» function in the bottom right corner.',
     resetSearch: 'Empty search',
     closeSearch: 'Close search',
     searchAllInfo: 'View all results',
@@ -300,11 +302,8 @@ const messages = {
     },
   },
   article: {
-    author: 'Author',
-    published: 'Published',
     edition: 'Edition',
     publisher: 'Publisher',
-    created: 'Created',
     lastUpdated: 'Last updated',
     closeLabel: 'Close',
     useContent: 'Cite or use',
@@ -645,7 +644,6 @@ const messages = {
     createLearningPathButtonText: 'Go to learningpaths',
     lastUpdated: 'Last updated',
     youAreInALearningPath: 'You are now in a learningpath',
-    readTime: '{hours} schoolhours = {minutes} min',
     pageOf: 'of',
     readTimeHour: 'hour',
     readTimeHour_plurals: 'hours',
@@ -681,6 +679,17 @@ const messages = {
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',
+    },
+  },
+    editor: {
+    versionHistory: {
+      who: 'Who',
+      when: 'When',
+      message: 'Message',
+      status: 'Status',
+      inputLabel: 'Add message:',
+      inputPlaceholder: 'Write a message',
+      buttonLabel: 'Save',
     },
   },
   createdBy: {

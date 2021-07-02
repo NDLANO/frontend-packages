@@ -6877,7 +6877,7 @@ cli-spinners@^2.0.0:
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.4.0.tgz#c6256db216b878cfba4720e719cec7cf72685d7f"
   integrity sha512-sJAofoarcm76ZGpuooaO0eDy8saEy+YoZBLjC4h8srt4jeBnkYeOgqxgsJQTpyt2LjI5PTfLJHSL+41Yu4fEJA==
 
-cli-table3@0.6.0:
+cli-table3@0.6.0, cli-table3@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/cli-table3/-/cli-table3-0.6.0.tgz#b7b1bc65ca8e7b5cef9124e13dc2b21e2ce4faee"
   integrity sha512-gnB85c3MGC7Nm9I/FkiasNBOKjOiO1RNuXXarQms37q4QMpWdlbBgD/VnOStA2faG1dpXMv31RFApjX1/QdgWQ==
@@ -17230,6 +17230,15 @@ tr46@^2.0.2:
   integrity sha512-3n1qG+/5kg+jrbTzwAykB5yRYtQCTqOGKq5U5PE3b0a1/mzo6snDhjGS0zJVJunO0NrT3Dg1MLy5TjWP/UJppg==
   dependencies:
     punycode "^2.1.1"
+
+translation-file-validator@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/translation-file-validator/-/translation-file-validator-1.0.2.tgz#134591b1ea866bdefc49678422d680ae6e8c5b17"
+  integrity sha512-J+3wjMcGjJqZ05xU2X6jzaoMWq7kQfzgk869LxN9Z4T/COS/A3ca5V5o306Lcbwv9aqspczD3+iXwVBjzK1y2A==
+  dependencies:
+    chalk "^4.1.0"
+    cli-table3 "^0.6.0"
+    lodash "^4.17.20"
 
 tree-kill@^1.2.1:
   version "1.2.2"

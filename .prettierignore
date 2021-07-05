@@ -7,3 +7,4 @@ packages/*/es/**/*ts
 packages/*/dist/**/*ts
 node_modules/
 packages/**/.scss
+.idea/

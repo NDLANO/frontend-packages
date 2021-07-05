@@ -92,7 +92,7 @@ const flattenResources = resourceGroups.flatMap(group =>
   group.resources.map(r => {
     return {
       ...r,
-      type: group.title,
+      contentTypeName: group.title,
       contentType: group.contentType,
     };
   }),

@@ -99,3 +99,5 @@ export { default as RadioButtonGroup } from './RadioButtonGroup';
 
 export { ToolboxInfo } from './ToolboxPage';
 export { default as Topic } from './Topic';
+
+export { default as ResourceGroup } from './ResourceGroup';

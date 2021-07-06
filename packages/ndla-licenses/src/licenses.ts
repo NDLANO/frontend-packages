@@ -426,7 +426,7 @@ export function getLicenseByAbbreviation(
   }
 }
 
-export function getLicenseByNBTitle(title: string, locale: Locale | string | undefined) {
+export function getLicenseByNBTitle(title: string, locale?: Locale | string) {
   switch (title.replace(/\s/g, '').toLowerCase()) {
     case 'navngivelse-ikkekommersiell-ingenbearbeidelser':
       return getLicenseByAbbreviation('by-nc-nd', locale);

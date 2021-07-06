@@ -16,3 +16,4 @@ export { isFunction } from './isFunction';
 export { resizeObserver } from './resizeObserver';
 export { setCookie, getCookie, deleteCookie, isValidCookie } from './cookieHandler';
 export { printPage } from './printPage';
+export { default as joinArrayWithConjunction } from './joinArrayWithConjunction';

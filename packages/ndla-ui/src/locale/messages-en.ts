@@ -681,7 +681,7 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
   },
-    editor: {
+  editor: {
     versionHistory: {
       who: 'Who',
       when: 'When',

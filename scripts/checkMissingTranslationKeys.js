@@ -7,13 +7,10 @@
  */
 
 /**
- * Sjekker oversettelsesfiler etter nøkler som mangler i noen av filene. 
+ * Sjekker oversettelsesfiler etter nøkler som mangler i noen av filene.
  */
 
-const {
-  TranslationChecker,
-  TranslationFile,
-} = require('translation-file-validator');
+const { TranslationChecker, TranslationFile } = require('translation-file-validator');
 const { messagesNB, messagesEN, messagesNN } = require('@ndla/ui');
 //const messagesNB = require.main.require('../packages/ndla-ui/src/locale/messages-nb.ts');
 //const messagesNN = require.main.require('../packages/ndla-ui/src/locale/messages-nn.ts');
@@ -29,7 +26,6 @@ function checkMissingTranslation() {
   const checker = new TranslationChecker(languages);
 
   checker.check();
-};
+}
 
 checkMissingTranslation();
-

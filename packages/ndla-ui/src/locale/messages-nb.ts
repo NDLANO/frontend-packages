@@ -324,7 +324,7 @@ const messages = {
     writtenBy: 'Skrevet av {authors}',
     cite: 'Bruk innhold',
     notionsPrompt: 'Kan du begrepene?',
-    citeNotion: 'Burk forklaringen',
+    citeNotion: 'Bruk forklaringen',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

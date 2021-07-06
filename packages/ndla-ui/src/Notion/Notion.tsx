@@ -5,10 +5,9 @@ import React from 'react';
 
 // @ts-ignore
 import Button from '@ndla/button';
-
+import { joinArrayWithConjunction } from '@ndla/util';
 import { colors, fonts } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { joinNamesAsList } from '../Article/utils/joinNamesAsList';
 
 const NotionContainer = styled.div`
   border-bottom: 1px solid ${colors.brand.greyLighter};
@@ -61,16 +60,15 @@ type NotionProps = {
   locale?: string;
   media?: React.ReactNode;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onMediaClick?: React.MouseEventHandler;
-  renderMarkdown: (text: string) => string;
+  renderMarkdown?: (text: string) => string;
   text: React.ReactNode;
   title: string;
 };
 
-const Notion: React.FC<NotionProps & tType> = ({
-  authors,
+const Notion = ({
+  authors = [],
   id,
-  labels,
+  labels = [],
   license,
   locale,
   media,
@@ -79,7 +77,7 @@ const Notion: React.FC<NotionProps & tType> = ({
   text,
   title,
   t,
-}) => {
+}: NotionProps & tType) => {
   return (
     <NotionContainer>
       <div>
@@ -90,25 +88,27 @@ const Notion: React.FC<NotionProps & tType> = ({
         )}
       </div>
       {!!media && media}
-      {Array.isArray(authors) && !!authors.length && (
+      {!!authors.length && (
         <AuthorsContainer>
           <p>
             {t('article.writtenBy', {
-              authors: joinNamesAsList(
+              authors: joinArrayWithConjunction(
                 authors.map(author => author.name),
                 {
-                  conjunction: t('article.conjunction'),
+                  conjunction: ` ${t('article.conjunction')} `,
                 },
               ),
             })}
             {license && ` (${getLicenseByAbbreviation(license, locale).abbreviation})`}
           </p>
-          <Button link onClick={onReferenceClick}>
-            {t('article.citeNotion')}
-          </Button>
+          {onReferenceClick && (
+            <Button link onClick={onReferenceClick}>
+              {t('article.citeNotion')}
+            </Button>
+          )}
         </AuthorsContainer>
       )}
-      {Array.isArray(labels) && !!labels.length && (
+      {!!labels.length && (
         <LabelsContainer>
           <p>{t('searchPage.resultType.notionLabels')}</p>
           {labels.map((label, i) => (

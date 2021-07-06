@@ -25,8 +25,6 @@ const ArticleNotionsContainer = styled.div`
 `;
 
 const NotionsTrigger = styled.div`
-  position: relative;
-  display: inline-block;
   padding: 0 16px;
   display: inline-flex;
   align-items: center;
@@ -43,10 +41,6 @@ const NotionsTrigger = styled.div`
     right: 18px;
     background-color: transparent;
     z-index: 10;
-  }
-
-  ${mq.range({ from: '1024px' })} {
-    right: calc(50vw - 1024px / 2 + 19px);
   }
 
   svg {
@@ -182,63 +176,71 @@ type ArticleNotionsProps = {
   notions: NotionItem[];
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];
-  renderMarkdown: (text: string) => string;
+  renderMarkdown?: (text: string) => string;
+  buttonOffsetRight: number;
 };
 
-export const ArticleNotions: React.VFC<ArticleNotionsProps & tType> = ({
+export const ArticleNotions = ({
   locale,
   notions,
   onReferenceClick,
   relatedContent = [],
   renderMarkdown,
+  buttonOffsetRight,
   t,
-}) => (
-  <ArticleNotionsContainer>
-    <Modal
-      activateButton={
-        <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')}>
-          <NotionFlip />
-          <Explanation />
-          <span>{t('article.notionsPrompt')}</span>
-        </NotionsTrigger>
-      }
-      size="large"
-      backgroundColor="white">
-      {(onClose: void) => (
-        <div>
-          <ModalHeader modifier="notions-modal-header no-padding">
-            <ModalCloseButton onClick={onClose} title="Lukk" />
-          </ModalHeader>
-          <ModalBody modifier="notions-modal-body no-padding">
-            <ModalHeadingContainer>
-              <Explanation />
-              <h1>{t('article.notionsPrompt')}</h1>
-            </ModalHeadingContainer>
-            <NotionsContainer>
-              {notions.map(notion => (
-                <Notion
-                  key={notion.id}
-                  locale={locale}
-                  onReferenceClick={onReferenceClick}
-                  renderMarkdown={renderMarkdown}
-                  {...notion}
-                />
-              ))}
-            </NotionsContainer>
-            {relatedContent.length > 0 && (
-              <RelatedContentContainer>
-                {relatedContent.map((content, i) => (
-                  <li key={`notion-related-item-${i + 1}`}>
-                    <a href={content.url}>{content.label}</a>
-                  </li>
+}: ArticleNotionsProps & tType) => {
+  const leftOffset = `${buttonOffsetRight - 32}px`;
+  return (
+    <ArticleNotionsContainer>
+      <Modal
+        activateButton={
+          <NotionsTrigger
+            role="button"
+            aria-label={t('article.notionsPrompt')}
+            style={{ left: leftOffset }}>
+            <NotionFlip />
+            <Explanation />
+            <span>{t('article.notionsPrompt')}</span>
+          </NotionsTrigger>
+        }
+        size="large"
+        backgroundColor="white">
+        {(onClose: void) => (
+          <div>
+            <ModalHeader modifier="notions-modal-header no-padding">
+              <ModalCloseButton onClick={onClose} title="Lukk" />
+            </ModalHeader>
+            <ModalBody modifier="notions-modal-body no-padding">
+              <ModalHeadingContainer>
+                <Explanation />
+                <h1>{t('article.notionsPrompt')}</h1>
+              </ModalHeadingContainer>
+              <NotionsContainer>
+                {notions.map(notion => (
+                  <Notion
+                    key={notion.id}
+                    locale={locale}
+                    onReferenceClick={onReferenceClick}
+                    renderMarkdown={renderMarkdown}
+                    {...notion}
+                  />
                 ))}
-              </RelatedContentContainer>
-            )}
-          </ModalBody>
-        </div>
-      )}
-    </Modal>
-  </ArticleNotionsContainer>
-);
+              </NotionsContainer>
+              {relatedContent.length > 0 && (
+                <RelatedContentContainer>
+                  {relatedContent.map((content, i) => (
+                    <li key={`notion-related-item-${i + 1}`}>
+                      <a href={content.url}>{content.label}</a>
+                    </li>
+                  ))}
+                </RelatedContentContainer>
+              )}
+            </ModalBody>
+          </div>
+        )}
+      </Modal>
+    </ArticleNotionsContainer>
+  );
+};
 
 export default injectT(ArticleNotions);

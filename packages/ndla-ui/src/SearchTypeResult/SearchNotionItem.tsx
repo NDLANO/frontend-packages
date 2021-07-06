@@ -22,7 +22,7 @@ import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
-import { joinNamesAsList } from '../Article/utils/joinNamesAsList';
+import { joinArrayWithConjunction } from '@ndla/util';
 import { NotionMedia } from '../types';
 
 type ItemWrapperProps = {
@@ -202,9 +202,9 @@ const SearchNotionItem = ({
                 {authors.length > 0 &&
                   t('article.writtenBy', {
                     authors:
-                      joinNamesAsList(
+                      joinArrayWithConjunction(
                         authors.map(author => author.name),
-                        { conjunction: t('article.conjunction') },
+                        { conjunction: ` ${t('article.conjunction')} ` },
                       ) || '',
                   })}
                 {authors.length > 0 && license && ' '}

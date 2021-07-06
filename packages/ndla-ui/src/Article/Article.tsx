@@ -6,14 +6,14 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
 import { useIntersectionObserver } from '@ndla/hooks';
-import { injectT, tType } from '@ndla/i18n';
+import { resizeObserver } from '@ndla/util';
 import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
@@ -96,19 +96,19 @@ type Messages = {
 type Props = {
   article: ArticleType;
   icon?: ReactNode;
-  licenseBox: ReactNode;
-  modifier: string;
+  licenseBox?: ReactNode;
+  modifier?: string;
   children: ReactNode;
   messages: Messages;
   locale: Locale;
-  competenceGoals: Function | string[];
-  competenceGoalTypes: string[];
+  competenceGoals?: Function | string[];
+  competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;
-  copyPageUrlLink: string;
-  printUrl: string;
-  notions: { list: NotionItem[]; related: NotionRelatedContent[] };
-  onReferenceClick: React.MouseEventHandler;
+  copyPageUrlLink?: string;
+  printUrl?: string;
+  notions?: { list: NotionItem[]; related: NotionRelatedContent[] };
+  onReferenceClick?: React.MouseEventHandler;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -138,14 +138,32 @@ export const Article = ({
   onReferenceClick,
   printUrl,
   renderMarkdown,
-}: Props & tType) => {
+}: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
-    rootMargin: '100%',
-    threshold: 0.15,
+    rootMargin: '400px',
+    threshold: 0.25,
   });
+  const [articlePositionRight, setArticlePositionRight] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const showExplainNotions = entry && entry.isIntersecting;
+
+  useEffect(() => {
+    if (wrapperRef && wrapperRef.current) {
+      const handler = () => {
+        if (wrapperRef && wrapperRef.current) {
+          const offset =
+            wrapperRef.current.getBoundingClientRect().left +
+            wrapperRef.current.getBoundingClientRect().width;
+          setArticlePositionRight(offset);
+        }
+      };
+      handler();
+
+      return resizeObserver(document.body, handler);
+    }
+  }, [wrapperRef]);
 
   const {
     title,
@@ -165,48 +183,53 @@ export const Article = ({
   const suppliers = rightsholders.length ? rightsholders : undefined;
 
   return (
-    <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
-      <LayoutItem layout="center">
-        <ArticleHeaderWrapper
-          competenceGoals={competenceGoals}
-          competenceGoalTypes={competenceGoalTypes}>
-          <ArticleTitle icon={icon} label={messages.label}>
-            {title}
-          </ArticleTitle>
-          <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
-        </ArticleHeaderWrapper>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        {showExplainNotions && (
-          <>
-            <ArticleNotions
-              locale={locale}
-              notions={notions.list}
-              onReferenceClick={onReferenceClick}
-              relatedContent={notions.related}
-              renderMarkdown={renderMarkdown}
-            />
-          </>
-        )}
-        {getArticleContent(content, locale)}
-      </LayoutItem>
-      <LayoutItem layout="center">
-        {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
-        <ArticleByline
-          copyPageUrlLink={copyPageUrlLink}
-          {...{
-            authors,
-            suppliers,
-            published,
-            license,
-            licenseBox,
-            printUrl,
-          }}
-        />
-      </LayoutItem>
-      <LayoutItem layout="extend">{children}</LayoutItem>
-    </ArticleWrapper>
+    <div ref={wrapperRef}>
+      <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
+        <LayoutItem layout="center">
+          <ArticleHeaderWrapper
+            competenceGoals={competenceGoals}
+            competenceGoalTypes={competenceGoalTypes}>
+            <ArticleTitle icon={icon} label={messages.label}>
+              {title}
+            </ArticleTitle>
+            <ArticleIntroduction renderMarkdown={renderMarkdown}>
+              {introduction}
+            </ArticleIntroduction>
+          </ArticleHeaderWrapper>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          {notions && showExplainNotions && (
+            <>
+              <ArticleNotions
+                locale={locale}
+                notions={notions.list}
+                onReferenceClick={onReferenceClick}
+                relatedContent={notions.related}
+                renderMarkdown={renderMarkdown}
+                buttonOffsetRight={articlePositionRight}
+              />
+            </>
+          )}
+          {getArticleContent(content, locale)}
+        </LayoutItem>
+        <LayoutItem layout="center">
+          {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
+          <ArticleByline
+            copyPageUrlLink={copyPageUrlLink}
+            {...{
+              authors,
+              suppliers,
+              published,
+              license,
+              licenseBox,
+              printUrl,
+            }}
+          />
+        </LayoutItem>
+        <LayoutItem layout="extend">{children}</LayoutItem>
+      </ArticleWrapper>
+    </div>
   );
 };
 
-export default injectT(Article);
+export default Article;

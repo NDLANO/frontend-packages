@@ -86,7 +86,6 @@ export {
   ResourcesTitle,
   ResourcesTopicTitle,
 } from './ResourcesWrapper';
-export { default as ResourceGroup } from './ResourceGroup';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 export {
   SubjectMaterialHero,

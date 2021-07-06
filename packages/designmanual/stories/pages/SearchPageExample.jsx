@@ -22,8 +22,6 @@ import {
 
 import { injectT } from '@ndla/i18n';
 
-import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
-
 import {
   searchTabOptions,
   searchTabFilterOptions,
@@ -398,7 +396,6 @@ class SearchPageExample extends Component {
               ? 'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier'
               : null
           }
-          competenceGoals={this.props.competenceGoals ? <CompetenceGoalsExample search /> : null}
           competenceGoalsOpen={this.state.competenceGoalsOpen}
           onToggleCompetenceGoals={() => {
             this.setState(prevState => ({

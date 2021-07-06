@@ -100,3 +100,13 @@ export type elementRectType = {
   fromY: number;
   fromScale: number;
 };
+
+export type CompetenceGoalsItemType = {
+  id: string;
+  title: string;
+  goals: {
+    text: string;
+    url?: string;
+  }[];
+  selected?: boolean;
+};

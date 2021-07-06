@@ -121,6 +121,7 @@ const messages = {
       all: 'Alle',
       hits: '{count} Treff',
       showingSearchPhrase: 'Viser resultater for',
+      showingCompetenceGoalSearchPhrase: 'Viser resultater for kompetansemål {text}',
       searchPhraseSuggestion: 'Søk i stedet for',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
@@ -323,6 +324,7 @@ const messages = {
     multipleSuppliersLabel: 'Rettighetshavere:',
   },
   competenceGoals: {
+    competenceGoal: 'kompetansemål',
     title: 'Kompetansemål og læreplan',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
@@ -344,6 +346,9 @@ const messages = {
     competenceTabLK06label: 'Kompetansemål (LK06)',
     competenceTabLK20label: 'Kompetansemål (LK20)',
     competenceTabCorelabel: 'Kjerneelement',
+    competenceGoalItem: {
+      title: 'Kompetansemål og vurdering',
+    },
   },
   subject: {
     associatedTopics: 'Tilhørende emner',

@@ -28,7 +28,6 @@ import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
 import { topicMenu, contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
-import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
 import { programmes, programme, subjectCategories } from '../../dummydata/mockPrograms';
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
@@ -185,9 +184,6 @@ class MastheadWithTopicMenu extends Component {
                       },
                     ]}
                     filterValues={this.state.filterMenuValues}
-                    competenceGoals={
-                      <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
-                    }
                     onFilterClick={values => {
                       this.setState({
                         filterMenuValues: values,

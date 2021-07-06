@@ -9,10 +9,29 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Trans } from '@ndla/i18n';
+import { fonts } from '@ndla/core';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
+import { FooterHeaderIcon } from '@ndla/icons/common';
+import styled from '@emotion/styled';
 import { classes } from './CompetenceGoals';
 
-export const CompetenceGoalsDialog = ({ children, isOpen, onClose, modalProps }) => (
+const HeaderWrapper = styled.div`
+  padding: 14px 20px 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const HeadingWrapper = styled.h2`
+  display: flex;
+  align-items: center;
+  ${fonts.sizes('18px', '32px')};
+  margin: 0;
+  font-weight: ${fonts.weight.semibold};
+`;
+
+export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, modalProps }) => (
   <Trans>
     {({ t }) => (
       <Modal
@@ -26,8 +45,17 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, modalProps })
         narrow>
         {close => (
           <Fragment>
-            <ModalHeader modifier="white modal-body">
-              <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
+            <ModalHeader modifier="menu">
+              <HeaderWrapper>
+                <HeadingWrapper>
+                  <FooterHeaderIcon size="24px" style={{ marginRight: '20px' }} />
+                  {'Utforsk læreplankoblinger'} {subjectName && ` \u2022 ${subjectName}`}
+                </HeadingWrapper>
+                <ModalCloseButton
+                  onClick={close}
+                  title={t('competenceGoals.competenceGoalClose')}
+                />
+              </HeaderWrapper>
             </ModalHeader>
             <ModalBody>
               <div {...classes()} className="c-competence-goals">
@@ -54,6 +82,7 @@ CompetenceGoalsDialog.propTypes = {
       ),
     }),
   ),
+  subjectName: PropTypes.string,
 };
 
 export default CompetenceGoalsDialog;

@@ -811,6 +811,8 @@ export const subjectCategories = [
   },
 ];
 
+export const competenceGoals = [{ name: 'KM1196', id: 'KM1196', url: '#' }];
+
 export const subjectBreadcrumb = [
   {
     label: 'Salg, service og reiseliv (Service og samferdsel)',

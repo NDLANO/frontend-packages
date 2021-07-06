@@ -21,7 +21,7 @@ const StyledDropDownContainer = styled.div`
   border-radius: ${misc.borderRadius};
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
-  ${props => props.positionAbsolute && 'position: absolute; z-index: 1;'}
+  ${props => props.positionAbsolute && 'position: absolute; z-index: 99;'}
   width: 100%;
 `;
 

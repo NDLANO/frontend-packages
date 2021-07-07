@@ -56,10 +56,8 @@ export class CarouselAutosize extends Component<Props, State> {
     const breakpoints: CaruselBreakpoint[] = this.props.breakpoints;
 
     const useBreakpoint = breakpoints
-      .filter(breakpointItem => {
-        const until = breakpointItem.until
-          ? parseFloat(breakpointFromCore[breakpointItem.until])
-          : 9999;
+      .filter((breakpointItem) => {
+        const until = breakpointItem.until ? parseFloat(breakpointFromCore[breakpointItem.until]) : 9999;
         return until >= wrapperWidthInEm;
       })
       .sort((a, b) =>
@@ -78,23 +76,13 @@ export class CarouselAutosize extends Component<Props, State> {
     if (!this.state.carouselBreakpoint || !this.autosizeRef.current) {
       return null;
     }
-    const {
-      columnsPrSlide,
-      distanceBetweenItems,
-      arrowOffset,
-      margin,
-      maxColumnWidth,
-    } = breakpoint;
+    const { columnsPrSlide, distanceBetweenItems, arrowOffset, margin, maxColumnWidth } = breakpoint;
 
     const wrapperWidth =
-      this.autosizeRef.current.offsetWidth -
-      (columnsPrSlide - 1) * distanceBetweenItems -
-      (margin || 0) * 2;
+      this.autosizeRef.current.offsetWidth - (columnsPrSlide - 1) * distanceBetweenItems - (margin || 0) * 2;
 
     const columnWidthDynamic = wrapperWidth / columnsPrSlide;
-    const columnWidth = maxColumnWidth
-      ? Math.min(columnWidthDynamic, maxColumnWidth)
-      : columnWidthDynamic;
+    const columnWidth = maxColumnWidth ? Math.min(columnWidthDynamic, maxColumnWidth) : columnWidthDynamic;
 
     return {
       columnsPrSlide,
@@ -117,19 +105,17 @@ export class CarouselAutosize extends Component<Props, State> {
     let wrapperWidth = 'auto';
 
     if (centered && calculatedCarouselProps) {
-      wrapperWidth = `${calculatedCarouselProps.columnWidth *
-        Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
-        calculatedCarouselProps.distanceBetweenItems *
-          (calculatedCarouselProps.columnsPrSlide - 1) +
-        (calculatedCarouselProps.margin || 0) * 2}px`;
+      wrapperWidth = `${
+        calculatedCarouselProps.columnWidth * Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
+        calculatedCarouselProps.distanceBetweenItems * (calculatedCarouselProps.columnsPrSlide - 1) +
+        (calculatedCarouselProps.margin || 0) * 2
+      }px`;
     }
 
     return (
       <div ref={this.autosizeRef}>
         {carouselBreakpoint && (
-          <StyledWrapperAutosizer width={wrapperWidth}>
-            {children(calculatedCarouselProps)}
-          </StyledWrapperAutosizer>
+          <StyledWrapperAutosizer width={wrapperWidth}>{children(calculatedCarouselProps)}</StyledWrapperAutosizer>
         )}
       </div>
     );

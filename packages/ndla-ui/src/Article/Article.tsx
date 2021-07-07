@@ -71,7 +71,7 @@ type ArticleIntroductionProps = {
 
 export const ArticleIntroduction = ({
   children,
-  renderMarkdown = text => {
+  renderMarkdown = (text) => {
     return text;
   },
 }: ArticleIntroductionProps) => {
@@ -139,9 +139,7 @@ export const Article = ({
   return (
     <ArticleWrapper modifier={modifier} id={id}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper
-          competenceGoals={competenceGoals}
-          competenceGoalTypes={competenceGoalTypes}>
+        <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
           <ArticleTitle icon={icon} label={messages.label}>
             {title}
           </ArticleTitle>

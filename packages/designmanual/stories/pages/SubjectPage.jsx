@@ -40,21 +40,16 @@ import FigureImage from '../article/FigureImage';
 const subjectAbout = (label, description) => (
   <SubjectAbout
     wide
-    media={
-      <Image
-        alt="Forstørrelsesglass"
-        src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-      />
-    }
+    media={<Image alt="Forstørrelsesglass" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />}
     heading={label}
     description={description}
   />
 );
 
-const loadArticle = async articleId => {
+const loadArticle = async (articleId) => {
   try {
     const article = await fetchArticle(articleId);
-    const renderMarkdown = text => text;
+    const renderMarkdown = (text) => text;
     const {
       introduction,
       published,
@@ -77,9 +72,7 @@ const loadArticle = async articleId => {
       <ArticleWrapper modifier="in-topic">
         <LayoutItem layout="full">
           <ArticleHeaderWrapper>
-            <ArticleIntroduction renderMarkdown={renderMarkdown}>
-              {introduction}
-            </ArticleIntroduction>
+            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="full">
@@ -105,7 +98,7 @@ const loadArticle = async articleId => {
 };
 
 const fetchTopicData = (topicDataItem, setDataCallback) => {
-  loadArticle(topicDataItem.id).then(result => {
+  loadArticle(topicDataItem.id).then((result) => {
     const updatedItem = { ...topicDataItem };
     updatedItem.loadingContent = false;
     updatedItem.content = result.content;
@@ -114,9 +107,7 @@ const fetchTopicData = (topicDataItem, setDataCallback) => {
       updatedItem.image = { url: `${result.metaImage.url}?width=400`, alt: result.metaImage.alt };
       updatedItem.visualElement = {
         type: 'image',
-        element: (
-          <FigureImage type="full-column" alt={result.metaImage.alt} src={result.metaImage.url} />
-        ),
+        element: <FigureImage type="full-column" alt={result.metaImage.alt} src={result.metaImage.url} />,
       };
     }
 
@@ -127,7 +118,7 @@ const fetchTopicData = (topicDataItem, setDataCallback) => {
 const prepareTopicData = (topics, selectedId, setDataCallback) => {
   const items = [];
   let selectedItem = null;
-  topics.forEach(item => {
+  topics.forEach((item) => {
     const newItem = { ...item };
     newItem.selected = newItem.id === selectedId;
     if (newItem.selected) {
@@ -164,11 +155,7 @@ const SubjectPage = ({
   const [subSubTopicData, setSubSubTopicData] = useState(null);
 
   const [mainTopics, setMainTopics] = useState(() => {
-    const { items, selectedItem } = prepareTopicData(
-      topicsData,
-      preSelectedMainTopic,
-      setTopicData,
-    );
+    const { items, selectedItem } = prepareTopicData(topicsData, preSelectedMainTopic, setTopicData);
     setTopicData(selectedItem);
     return items;
   });
@@ -178,11 +165,7 @@ const SubjectPage = ({
     if (selectedItem) {
       const subTopics = selectedItem.subTopics;
       if (subTopics && subTopics.length) {
-        const { items, selectedItem } = prepareTopicData(
-          subTopics,
-          preSelectedSubTopic,
-          setSubTopicData,
-        );
+        const { items, selectedItem } = prepareTopicData(subTopics, preSelectedSubTopic, setSubTopicData);
         setSubTopicData(selectedItem);
         return items;
       }
@@ -196,10 +179,7 @@ const SubjectPage = ({
       if (selectedItem) {
         const subTopics = selectedItem.subTopics;
         if (subTopics && subTopics.length) {
-          const { selectedItem: selectedSubItem } = prepareTopicData(
-            subTopics,
-            preSelectedSubTopic,
-          );
+          const { selectedItem: selectedSubItem } = prepareTopicData(subTopics, preSelectedSubTopic);
           if (selectedSubItem) {
             const subSubTopics = selectedSubItem.subTopics;
             if (subSubTopics && subSubTopics.length) {
@@ -248,7 +228,7 @@ const SubjectPage = ({
     { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
   ];*/
 
-  const breadcrumbItems = initialBreadcrumb.map(item => ({
+  const breadcrumbItems = initialBreadcrumb.map((item) => ({
     ...item,
     isCurrent: currentLevel === item.typename,
   }));
@@ -284,7 +264,7 @@ const SubjectPage = ({
     }
   };
 
-  const updateSubContent = topicsData => {
+  const updateSubContent = (topicsData) => {
     const { items, selectedItem } = prepareTopicData(topicsData, selectedSubTopic, setSubTopicData);
 
     setSubTopics(items);
@@ -295,12 +275,8 @@ const SubjectPage = ({
     }
   };
 
-  const updateSubSubContent = topicsData => {
-    const { items, selectedItem } = prepareTopicData(
-      topicsData,
-      selectedSubSubTopic,
-      setSubSubTopicData,
-    );
+  const updateSubSubContent = (topicsData) => {
+    const { items, selectedItem } = prepareTopicData(topicsData, selectedSubSubTopic, setSubSubTopicData);
 
     setSubSubTopics(items);
     setSubSubTopicData(selectedItem);
@@ -414,7 +390,7 @@ const SubjectPage = ({
     if (showSubTopicAdditionalTopics) {
       return subTopics;
     }
-    return subTopics.filter(item => !item.isAdditionalResource);
+    return subTopics.filter((item) => !item.isAdditionalResource);
   };
 
   // show/hide breadcrumb based on intersection
@@ -440,7 +416,7 @@ const SubjectPage = ({
             {topicData && (
               <>
                 <Topic
-                  renderMarkdown={text => text}
+                  renderMarkdown={(text) => text}
                   isLoading={topicData.loadingContent}
                   topic={{
                     title: topicData.label,
@@ -459,22 +435,18 @@ const SubjectPage = ({
                     <NavigationBox
                       colorMode="light"
                       heading={t('navigation.topics')}
-                      hasAdditionalResources={subTopics.some(item => item.isAdditionalResource)}
+                      hasAdditionalResources={subTopics.some((item) => item.isAdditionalResource)}
                       showAdditionalResources={showSubTopicAdditionalTopics}
                       items={getSubTopics()}
-                      onToggleAdditionalResources={() =>
-                        setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)
-                      }
+                      onToggleAdditionalResources={() => setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)}
                       onClick={onClickSubTopic}
                     />
                   ) : null}
-                  {currentLevel === 'Topic' && (
-                    <Resources title={topicData.label} showActiveResource={false} />
-                  )}
+                  {currentLevel === 'Topic' && <Resources title={topicData.label} showActiveResource={false} />}
                 </div>
                 {subTopicData && (
                   <Topic
-                    renderMarkdown={text => text}
+                    renderMarkdown={(text) => text}
                     isLoading={subTopicData.loadingContent}
                     topic={{
                       title: subTopicData.label,
@@ -495,9 +467,7 @@ const SubjectPage = ({
                         <NavigationBox
                           colorMode="light"
                           heading={t('navigation.topics')}
-                          hasAdditionalResources={subSubTopics.some(
-                            item => item.isAdditionalResource,
-                          )}
+                          hasAdditionalResources={subSubTopics.some((item) => item.isAdditionalResource)}
                           showAdditionalResources={showSubTopicAdditionalTopics}
                           items={subSubTopics}
                           onToggleAdditionalResources={() =>
@@ -515,7 +485,7 @@ const SubjectPage = ({
                 {subSubTopicData && (
                   <>
                     <Topic
-                      renderMarkdown={text => text}
+                      renderMarkdown={(text) => text}
                       isLoading={subSubTopicData.loadingContent}
                       topic={{
                         title: subSubTopicData.label,
@@ -536,19 +506,10 @@ const SubjectPage = ({
           </LayoutItem>
         </OneColumn>
       </div>
-      {bannerBackground && (
-        <SubjectBanner image={bannerBackground} negativeTopMargin={moveBannerUp} />
-      )}
-      {subjectAboutHeading && (
-        <OneColumn wide>{subjectAbout(subjectAboutHeading, subjectAboutDescription)}</OneColumn>
-      )}
+      {bannerBackground && <SubjectBanner image={bannerBackground} negativeTopMargin={moveBannerUp} />}
+      {subjectAboutHeading && <OneColumn wide>{subjectAbout(subjectAboutHeading, subjectAboutDescription)}</OneColumn>}
       {subjectContentCards && (
-        <SubjectCarousel
-          wideScreen
-          subjects={subjectContentCards}
-          title="Litt forskjellig fra faget"
-          subjectPage
-        />
+        <SubjectCarousel wideScreen subjects={subjectContentCards} title="Litt forskjellig fra faget" subjectPage />
       )}
       <OneColumn wide>
         <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />

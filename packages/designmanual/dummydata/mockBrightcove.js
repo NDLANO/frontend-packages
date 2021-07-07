@@ -32,12 +32,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5388440966001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388440966001_5388423620001-th.jpg?pubId=4806596774001&videoId=5388423620001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388440966001_5388423620001-th.jpg?pubId=4806596774001&videoId=5388423620001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388440966001_5388423620001-th.jpg?pubId=4806596774001&videoId=5388423620001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388440966001_5388423620001-th.jpg?pubId=4806596774001&videoId=5388423620001',
             height: 88,
             width: 160,
           },
@@ -46,12 +44,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5388443667001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388443667001_5388423620001-vs.jpg?pubId=4806596774001&videoId=5388423620001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388443667001_5388423620001-vs.jpg?pubId=4806596774001&videoId=5388423620001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388443667001_5388423620001-vs.jpg?pubId=4806596774001&videoId=5388423620001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388443667001_5388423620001-vs.jpg?pubId=4806596774001&videoId=5388423620001',
             height: 477,
             width: 869,
           },
@@ -108,12 +104,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5388483409001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
             height: 90,
             width: 160,
           },
@@ -122,12 +116,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5388483382001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
             height: 720,
             width: 1280,
           },
@@ -182,12 +174,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5388305883001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388305883001_5388292320001-th.jpg?pubId=4806596774001&videoId=5388292320001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388305883001_5388292320001-th.jpg?pubId=4806596774001&videoId=5388292320001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388305883001_5388292320001-th.jpg?pubId=4806596774001&videoId=5388292320001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388305883001_5388292320001-th.jpg?pubId=4806596774001&videoId=5388292320001',
             height: 90,
             width: 160,
           },
@@ -196,12 +186,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5388303799001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388303799001_5388292320001-vs.jpg?pubId=4806596774001&videoId=5388292320001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388303799001_5388292320001-vs.jpg?pubId=4806596774001&videoId=5388292320001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388303799001_5388292320001-vs.jpg?pubId=4806596774001&videoId=5388292320001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388303799001_5388292320001-vs.jpg?pubId=4806596774001&videoId=5388292320001',
             height: 623,
             width: 1108,
           },
@@ -218,15 +206,7 @@ export const firstBrightcoveList = [
     schedule: null,
     sharing: null,
     state: 'ACTIVE',
-    tags: [
-      'install',
-      'intervju',
-      'interview',
-      'paraboloppsett',
-      'dish setup',
-      'montere',
-      'elektrofag vg1',
-    ],
+    tags: ['install', 'intervju', 'interview', 'paraboloppsett', 'dish setup', 'montere', 'elektrofag vg1'],
     text_tracks: [],
     updated_at: '2017-04-07T15:06:09.174Z',
   },
@@ -255,12 +235,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5389229189001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229189001_5387575563001-th.jpg?pubId=4806596774001&videoId=5387575563001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229189001_5387575563001-th.jpg?pubId=4806596774001&videoId=5387575563001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229189001_5387575563001-th.jpg?pubId=4806596774001&videoId=5387575563001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229189001_5387575563001-th.jpg?pubId=4806596774001&videoId=5387575563001',
             height: 90,
             width: 123,
           },
@@ -269,12 +247,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5389229303001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229303001_5387575563001-vs.jpg?pubId=4806596774001&videoId=5387575563001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229303001_5387575563001-vs.jpg?pubId=4806596774001&videoId=5387575563001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229303001_5387575563001-vs.jpg?pubId=4806596774001&videoId=5387575563001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389229303001_5387575563001-vs.jpg?pubId=4806596774001&videoId=5387575563001',
             height: 551,
             width: 752,
           },
@@ -332,12 +308,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5388049614001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388049614001_5388030607001-th.jpg?pubId=4806596774001&videoId=5388030607001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388049614001_5388030607001-th.jpg?pubId=4806596774001&videoId=5388030607001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388049614001_5388030607001-th.jpg?pubId=4806596774001&videoId=5388030607001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388049614001_5388030607001-th.jpg?pubId=4806596774001&videoId=5388030607001',
             height: 90,
             width: 159,
           },
@@ -346,12 +320,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5388044841001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388044841001_5388030607001-vs.jpg?pubId=4806596774001&videoId=5388030607001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388044841001_5388030607001-vs.jpg?pubId=4806596774001&videoId=5388030607001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388044841001_5388030607001-vs.jpg?pubId=4806596774001&videoId=5388030607001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388044841001_5388030607001-vs.jpg?pubId=4806596774001&videoId=5388030607001',
             height: 324,
             width: 574,
           },
@@ -408,12 +380,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5389135386001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389135386001_5389112712001-th.jpg?pubId=4806596774001&videoId=5389112712001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389135386001_5389112712001-th.jpg?pubId=4806596774001&videoId=5389112712001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389135386001_5389112712001-th.jpg?pubId=4806596774001&videoId=5389112712001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389135386001_5389112712001-th.jpg?pubId=4806596774001&videoId=5389112712001',
             height: 90,
             width: 160,
           },
@@ -422,12 +392,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5389133794001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133794001_5389112712001-vs.jpg?pubId=4806596774001&videoId=5389112712001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133794001_5389112712001-vs.jpg?pubId=4806596774001&videoId=5389112712001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133794001_5389112712001-vs.jpg?pubId=4806596774001&videoId=5389112712001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133794001_5389112712001-vs.jpg?pubId=4806596774001&videoId=5389112712001',
             height: 720,
             width: 1280,
           },
@@ -484,12 +452,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5389133288001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133288001_5389101737001-th.jpg?pubId=4806596774001&videoId=5389101737001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133288001_5389101737001-th.jpg?pubId=4806596774001&videoId=5389101737001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133288001_5389101737001-th.jpg?pubId=4806596774001&videoId=5389101737001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133288001_5389101737001-th.jpg?pubId=4806596774001&videoId=5389101737001',
             height: 90,
             width: 160,
           },
@@ -498,12 +464,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5389133126001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133126001_5389101737001-vs.jpg?pubId=4806596774001&videoId=5389101737001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133126001_5389101737001-vs.jpg?pubId=4806596774001&videoId=5389101737001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133126001_5389101737001-vs.jpg?pubId=4806596774001&videoId=5389101737001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389133126001_5389101737001-vs.jpg?pubId=4806596774001&videoId=5389101737001',
             height: 720,
             width: 1280,
           },
@@ -562,12 +526,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5388969984001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969984001_5388964462001-th.jpg?pubId=4806596774001&videoId=5388964462001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969984001_5388964462001-th.jpg?pubId=4806596774001&videoId=5388964462001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969984001_5388964462001-th.jpg?pubId=4806596774001&videoId=5388964462001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969984001_5388964462001-th.jpg?pubId=4806596774001&videoId=5388964462001',
             height: 90,
             width: 160,
           },
@@ -576,12 +538,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5388970147001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388970147001_5388964462001-vs.jpg?pubId=4806596774001&videoId=5388964462001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388970147001_5388964462001-vs.jpg?pubId=4806596774001&videoId=5388964462001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388970147001_5388964462001-vs.jpg?pubId=4806596774001&videoId=5388964462001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388970147001_5388964462001-vs.jpg?pubId=4806596774001&videoId=5388964462001',
             height: 720,
             width: 1280,
           },
@@ -643,12 +603,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5389131027001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131027001_5389115230001-th.jpg?pubId=4806596774001&videoId=5389115230001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131027001_5389115230001-th.jpg?pubId=4806596774001&videoId=5389115230001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131027001_5389115230001-th.jpg?pubId=4806596774001&videoId=5389115230001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131027001_5389115230001-th.jpg?pubId=4806596774001&videoId=5389115230001',
             height: 90,
             width: 160,
           },
@@ -657,12 +615,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5389129208001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389129208001_5389115230001-vs.jpg?pubId=4806596774001&videoId=5389115230001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389129208001_5389115230001-vs.jpg?pubId=4806596774001&videoId=5389115230001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389129208001_5389115230001-vs.jpg?pubId=4806596774001&videoId=5389115230001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389129208001_5389115230001-vs.jpg?pubId=4806596774001&videoId=5389115230001',
             height: 720,
             width: 1280,
           },
@@ -710,12 +666,10 @@ export const firstBrightcoveList = [
       thumbnail: {
         asset_id: '5389131799001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131799001_5389115238001-th.jpg?pubId=4806596774001&videoId=5389115238001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131799001_5389115238001-th.jpg?pubId=4806596774001&videoId=5389115238001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131799001_5389115238001-th.jpg?pubId=4806596774001&videoId=5389115238001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131799001_5389115238001-th.jpg?pubId=4806596774001&videoId=5389115238001',
             height: 90,
             width: 160,
           },
@@ -724,12 +678,10 @@ export const firstBrightcoveList = [
       poster: {
         asset_id: '5389131802001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131802001_5389115238001-vs.jpg?pubId=4806596774001&videoId=5389115238001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131802001_5389115238001-vs.jpg?pubId=4806596774001&videoId=5389115238001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131802001_5389115238001-vs.jpg?pubId=4806596774001&videoId=5389115238001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389131802001_5389115238001-vs.jpg?pubId=4806596774001&videoId=5389115238001',
             height: 720,
             width: 1280,
           },
@@ -777,12 +729,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5388683145001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683145001_5388679539001-th.jpg?pubId=4806596774001&videoId=5388679539001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683145001_5388679539001-th.jpg?pubId=4806596774001&videoId=5388679539001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683145001_5388679539001-th.jpg?pubId=4806596774001&videoId=5388679539001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683145001_5388679539001-th.jpg?pubId=4806596774001&videoId=5388679539001',
             height: 90,
             width: 160,
           },
@@ -791,12 +741,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5388683149001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683149001_5388679539001-vs.jpg?pubId=4806596774001&videoId=5388679539001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683149001_5388679539001-vs.jpg?pubId=4806596774001&videoId=5388679539001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683149001_5388679539001-vs.jpg?pubId=4806596774001&videoId=5388679539001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388683149001_5388679539001-vs.jpg?pubId=4806596774001&videoId=5388679539001',
             height: 576,
             width: 1024,
           },
@@ -854,12 +802,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5388969166001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969166001_5388964641001-th.jpg?pubId=4806596774001&videoId=5388964641001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969166001_5388964641001-th.jpg?pubId=4806596774001&videoId=5388964641001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969166001_5388964641001-th.jpg?pubId=4806596774001&videoId=5388964641001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388969166001_5388964641001-th.jpg?pubId=4806596774001&videoId=5388964641001',
             height: 90,
             width: 160,
           },
@@ -868,12 +814,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5388968723001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388968723001_5388964641001-vs.jpg?pubId=4806596774001&videoId=5388964641001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388968723001_5388964641001-vs.jpg?pubId=4806596774001&videoId=5388964641001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388968723001_5388964641001-vs.jpg?pubId=4806596774001&videoId=5388964641001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388968723001_5388964641001-vs.jpg?pubId=4806596774001&videoId=5388964641001',
             height: 720,
             width: 1280,
           },
@@ -890,14 +834,7 @@ export const secondBrightcoveList = [
     schedule: null,
     sharing: null,
     state: 'ACTIVE',
-    tags: [
-      'treningsøvelse',
-      'dynamisk',
-      'dynamic',
-      'kroppsøving',
-      'kettlebell',
-      'training exercise',
-    ],
+    tags: ['treningsøvelse', 'dynamisk', 'dynamic', 'kroppsøving', 'kettlebell', 'training exercise'],
     text_tracks: [],
     updated_at: '2017-04-07T12:38:37.306Z',
   },
@@ -926,12 +863,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5388682781001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682781001_5388679295001-th.jpg?pubId=4806596774001&videoId=5388679295001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682781001_5388679295001-th.jpg?pubId=4806596774001&videoId=5388679295001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682781001_5388679295001-th.jpg?pubId=4806596774001&videoId=5388679295001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682781001_5388679295001-th.jpg?pubId=4806596774001&videoId=5388679295001',
             height: 90,
             width: 160,
           },
@@ -940,12 +875,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5388682884001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682884001_5388679295001-vs.jpg?pubId=4806596774001&videoId=5388679295001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682884001_5388679295001-vs.jpg?pubId=4806596774001&videoId=5388679295001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682884001_5388679295001-vs.jpg?pubId=4806596774001&videoId=5388679295001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682884001_5388679295001-vs.jpg?pubId=4806596774001&videoId=5388679295001',
             height: 576,
             width: 1024,
           },
@@ -1004,12 +937,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5389371154001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371154001_5389148849001-th.jpg?pubId=4806596774001&videoId=5389148849001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371154001_5389148849001-th.jpg?pubId=4806596774001&videoId=5389148849001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371154001_5389148849001-th.jpg?pubId=4806596774001&videoId=5389148849001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371154001_5389148849001-th.jpg?pubId=4806596774001&videoId=5389148849001',
             height: 90,
             width: 120,
           },
@@ -1018,12 +949,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5389371153001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371153001_5389148849001-vs.jpg?pubId=4806596774001&videoId=5389148849001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371153001_5389148849001-vs.jpg?pubId=4806596774001&videoId=5389148849001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371153001_5389148849001-vs.jpg?pubId=4806596774001&videoId=5389148849001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5389371153001_5389148849001-vs.jpg?pubId=4806596774001&videoId=5389148849001',
             height: 240,
             width: 320,
           },
@@ -1069,12 +998,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5388682860001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682860001_5388676325001-th.jpg?pubId=4806596774001&videoId=5388676325001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682860001_5388676325001-th.jpg?pubId=4806596774001&videoId=5388676325001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682860001_5388676325001-th.jpg?pubId=4806596774001&videoId=5388676325001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682860001_5388676325001-th.jpg?pubId=4806596774001&videoId=5388676325001',
             height: 90,
             width: 160,
           },
@@ -1083,12 +1010,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5388682861001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682861001_5388676325001-vs.jpg?pubId=4806596774001&videoId=5388676325001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682861001_5388676325001-vs.jpg?pubId=4806596774001&videoId=5388676325001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682861001_5388676325001-vs.jpg?pubId=4806596774001&videoId=5388676325001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388682861001_5388676325001-vs.jpg?pubId=4806596774001&videoId=5388676325001',
             height: 576,
             width: 1024,
           },
@@ -1105,15 +1030,7 @@ export const secondBrightcoveList = [
     schedule: null,
     sharing: null,
     state: 'ACTIVE',
-    tags: [
-      'geology',
-      'realfagsportrett',
-      'science portrait',
-      'biologi 1',
-      'norsk yf og sf',
-      'geologi',
-      'geolog',
-    ],
+    tags: ['geology', 'realfagsportrett', 'science portrait', 'biologi 1', 'norsk yf og sf', 'geologi', 'geolog'],
     text_tracks: [],
     updated_at: '2017-04-07T12:12:32.719Z',
   },
@@ -1142,12 +1059,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5388685541001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685541001_5388679065001-th.jpg?pubId=4806596774001&videoId=5388679065001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685541001_5388679065001-th.jpg?pubId=4806596774001&videoId=5388679065001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685541001_5388679065001-th.jpg?pubId=4806596774001&videoId=5388679065001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685541001_5388679065001-th.jpg?pubId=4806596774001&videoId=5388679065001',
             height: 90,
             width: 160,
           },
@@ -1156,12 +1071,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5388685178001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685178001_5388679065001-vs.jpg?pubId=4806596774001&videoId=5388679065001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685178001_5388679065001-vs.jpg?pubId=4806596774001&videoId=5388679065001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685178001_5388679065001-vs.jpg?pubId=4806596774001&videoId=5388679065001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388685178001_5388679065001-vs.jpg?pubId=4806596774001&videoId=5388679065001',
             height: 576,
             width: 1024,
           },
@@ -1216,12 +1129,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5388519323001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519323001_5388509967001-th.jpg?pubId=4806596774001&videoId=5388509967001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519323001_5388509967001-th.jpg?pubId=4806596774001&videoId=5388509967001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519323001_5388509967001-th.jpg?pubId=4806596774001&videoId=5388509967001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519323001_5388509967001-th.jpg?pubId=4806596774001&videoId=5388509967001',
             height: 88,
             width: 160,
           },
@@ -1230,12 +1141,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5388519324001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519324001_5388509967001-vs.jpg?pubId=4806596774001&videoId=5388509967001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519324001_5388509967001-vs.jpg?pubId=4806596774001&videoId=5388509967001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519324001_5388509967001-vs.jpg?pubId=4806596774001&videoId=5388509967001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388519324001_5388509967001-vs.jpg?pubId=4806596774001&videoId=5388509967001',
             height: 704,
             width: 1280,
           },
@@ -1271,8 +1180,7 @@ export const secondBrightcoveList = [
       {
         id: '0c7ed3bf-695a-4e88-9c02-396a6b7cd994',
         account_id: '4806596774001',
-        src:
-          'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_b71ba196-30c1-4f8b-85a9-1d8bc69a2ef1.vtt?pubId=4806596774001&videoId=5388509967001',
+        src: 'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_b71ba196-30c1-4f8b-85a9-1d8bc69a2ef1.vtt?pubId=4806596774001&videoId=5388509967001',
         srclang: 'nn-NO',
         label: 'Nynorsk',
         kind: 'captions',
@@ -1280,8 +1188,7 @@ export const secondBrightcoveList = [
         asset_id: 'b71ba196-30c1-4f8b-85a9-1d8bc69a2ef1',
         sources: [
           {
-            src:
-              'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_b71ba196-30c1-4f8b-85a9-1d8bc69a2ef1.vtt?pubId=4806596774001&videoId=5388509967001',
+            src: 'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_b71ba196-30c1-4f8b-85a9-1d8bc69a2ef1.vtt?pubId=4806596774001&videoId=5388509967001',
           },
         ],
         default: true,
@@ -1289,8 +1196,7 @@ export const secondBrightcoveList = [
       {
         id: '8d728b56-660a-49ac-93d3-e8792e3d8b5c',
         account_id: '4806596774001',
-        src:
-          'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_f02a2c0a-6f92-4316-a6b9-d39cc96ee762.vtt?pubId=4806596774001&videoId=5388509967001',
+        src: 'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_f02a2c0a-6f92-4316-a6b9-d39cc96ee762.vtt?pubId=4806596774001&videoId=5388509967001',
         srclang: 'nn-NO',
         label: 'Nynorsk',
         kind: 'captions',
@@ -1298,8 +1204,7 @@ export const secondBrightcoveList = [
         asset_id: 'f02a2c0a-6f92-4316-a6b9-d39cc96ee762',
         sources: [
           {
-            src:
-              'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_f02a2c0a-6f92-4316-a6b9-d39cc96ee762.vtt?pubId=4806596774001&videoId=5388509967001',
+            src: 'https://bcsecure01-a.akamaihd.net/3/4806596774001/201704/147/4806596774001_f02a2c0a-6f92-4316-a6b9-d39cc96ee762.vtt?pubId=4806596774001&videoId=5388509967001',
           },
         ],
         default: true,
@@ -1332,12 +1237,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5387758169001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387758169001_5387733964001-th.jpg?pubId=4806596774001&videoId=5387733964001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387758169001_5387733964001-th.jpg?pubId=4806596774001&videoId=5387733964001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387758169001_5387733964001-th.jpg?pubId=4806596774001&videoId=5387733964001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387758169001_5387733964001-th.jpg?pubId=4806596774001&videoId=5387733964001',
             height: 90,
             width: 160,
           },
@@ -1346,12 +1249,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5387759103001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387759103001_5387733964001-vs.jpg?pubId=4806596774001&videoId=5387733964001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387759103001_5387733964001-vs.jpg?pubId=4806596774001&videoId=5387733964001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387759103001_5387733964001-vs.jpg?pubId=4806596774001&videoId=5387733964001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387759103001_5387733964001-vs.jpg?pubId=4806596774001&videoId=5387733964001',
             height: 576,
             width: 1024,
           },
@@ -1418,12 +1319,10 @@ export const secondBrightcoveList = [
       thumbnail: {
         asset_id: '5387761376001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761376001_5387719656001-th.jpg?pubId=4806596774001&videoId=5387719656001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761376001_5387719656001-th.jpg?pubId=4806596774001&videoId=5387719656001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761376001_5387719656001-th.jpg?pubId=4806596774001&videoId=5387719656001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761376001_5387719656001-th.jpg?pubId=4806596774001&videoId=5387719656001',
             height: 90,
             width: 123,
           },
@@ -1432,12 +1331,10 @@ export const secondBrightcoveList = [
       poster: {
         asset_id: '5387761278001',
         remote: false,
-        src:
-          'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761278001_5387719656001-vs.jpg?pubId=4806596774001&videoId=5387719656001',
+        src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761278001_5387719656001-vs.jpg?pubId=4806596774001&videoId=5387719656001',
         sources: [
           {
-            src:
-              'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761278001_5387719656001-vs.jpg?pubId=4806596774001&videoId=5387719656001',
+            src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5387761278001_5387719656001-vs.jpg?pubId=4806596774001&videoId=5387719656001',
             height: 551,
             width: 752,
           },
@@ -1454,14 +1351,7 @@ export const secondBrightcoveList = [
     schedule: null,
     sharing: null,
     state: 'ACTIVE',
-    tags: [
-      'språk',
-      'kultur',
-      'kroppsspraak og politikere',
-      'kroppsspraak and politicians',
-      'language',
-      'culture',
-    ],
+    tags: ['språk', 'kultur', 'kroppsspraak og politikere', 'kroppsspraak and politicians', 'language', 'culture'],
     text_tracks: [],
     updated_at: '2017-04-07T12:04:42.348Z',
   },
@@ -1491,12 +1381,10 @@ export const brightCoveMockVideo = {
     thumbnail: {
       asset_id: '5388483409001',
       remote: false,
-      src:
-        'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
+      src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
       sources: [
         {
-          src:
-            'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
+          src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483409001_5388457322001-th.jpg?pubId=4806596774001&videoId=5388457322001',
           height: 90,
           width: 160,
         },
@@ -1505,12 +1393,10 @@ export const brightCoveMockVideo = {
     poster: {
       asset_id: '5388483382001',
       remote: false,
-      src:
-        'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
+      src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
       sources: [
         {
-          src:
-            'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
+          src: 'https://httpsak-a.akamaihd.net/4806596774001/4806596774001_5388483382001_5388457322001-vs.jpg?pubId=4806596774001&videoId=5388457322001',
           height: 720,
           width: 1280,
         },

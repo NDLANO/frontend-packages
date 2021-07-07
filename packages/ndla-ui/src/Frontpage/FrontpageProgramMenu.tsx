@@ -65,7 +65,7 @@ type CursorProps = { hide?: boolean };
 
 const Cursor = styled.div<CursorProps>`
   color: #757575;
-  ${props =>
+  ${(props) =>
     props.hide &&
     `
       visibility: hidden;
@@ -112,18 +112,10 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tT
   return (
     <StyledWrapper>
       <StyledMenu>
-        <Button
-          onClick={() => toggleSubjects(false)}
-          lighter={showSubjects}
-          size="medium"
-          borderShape="rounded">
+        <Button onClick={() => toggleSubjects(false)} lighter={showSubjects} size="medium" borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.program')}</StyledMenuItem>
         </Button>
-        <Button
-          onClick={() => toggleSubjects(true)}
-          lighter={!showSubjects}
-          size="medium"
-          borderShape="rounded">
+        <Button onClick={() => toggleSubjects(true)} lighter={!showSubjects} size="medium" borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
         <CursorPlaceholder>

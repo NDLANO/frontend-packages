@@ -10,11 +10,7 @@ import { Accordion, AccordionWrapper } from './Accordion';
 import Accordions from './Accordions';
 import AccordionSection from './AccordionSection';
 import { AccordionBar } from './AccordionBar';
-import {
-  AccordionPanel,
-  StyledAccordionsPanelItemsWrapper,
-  StyledAccordionsPanelIconButton,
-} from './AccordionPanel';
+import { AccordionPanel, StyledAccordionsPanelItemsWrapper, StyledAccordionsPanelIconButton } from './AccordionPanel';
 
 export {
   Accordion as default,

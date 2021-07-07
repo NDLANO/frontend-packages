@@ -43,7 +43,7 @@ function printSourceLine(mapConsumer, orgPos) {
 }
 
 function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
-  const sourceMap = sourceMaps.find(map => frame.url.indexOf(map.name) !== -1);
+  const sourceMap = sourceMaps.find((map) => frame.url.indexOf(map.name) !== -1);
 
   if (sourceMap) {
     const orgPos = sourceMap.mapping.originalPositionFor({
@@ -51,8 +51,7 @@ function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
       column: frame.column,
     });
     process.stdout.write(
-      chalk.bold.red(`  at ${orgPos.name} `) +
-        chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
+      chalk.bold.red(`  at ${orgPos.name} `) + chalk.cyan(`(${orgPos.source}:${orgPos.line}:${orgPos.column}) \n`),
     );
 
     if (printSourceLineFlag) {
@@ -64,9 +63,7 @@ function printOriginalPosition(sourceMaps, frame, printSourceLineFlag) {
 }
 
 async function fetchAssets(url) {
-  const name = parseUrl(url)
-    .pathname.split('/')
-    .pop();
+  const name = parseUrl(url).pathname.split('/').pop();
   const spinner = ora(`fetching ${name}`).start();
   const response = await fetch(url);
   const json = await response.json();
@@ -75,9 +72,7 @@ async function fetchAssets(url) {
 }
 
 async function fetchSourceMapFile(url) {
-  const name = parseUrl(url)
-    .pathname.split('/')
-    .pop();
+  const name = parseUrl(url).pathname.split('/').pop();
   const spinner = ora(`Fetching ${name}`).start();
   const response = await fetch(url);
   const text = await response.text();
@@ -86,12 +81,12 @@ async function fetchSourceMapFile(url) {
 }
 
 function getSourceMapFileNames(assets) {
-  return Object.keys(assets).map(key => `${assets[key].js}.map`);
+  return Object.keys(assets).map((key) => `${assets[key].js}.map`);
 }
 
 async function collectSourceMaps(argv, url) {
   if (argv.mapFiles) {
-    return argv.mapFiles.map(mapFile => {
+    return argv.mapFiles.map((mapFile) => {
       const content = loadFile(mapFile);
       const name = path.basename(mapFile).replace('.map', '');
       const { mapConsumer } = consumeSourceMap(content);
@@ -108,7 +103,7 @@ async function collectSourceMaps(argv, url) {
     const assets = await fetchAssets(assetsUrl);
     const sourceMapFileNames = getSourceMapFileNames(assets);
     return Promise.all(
-      sourceMapFileNames.map(async fileName => {
+      sourceMapFileNames.map(async (fileName) => {
         const urlToSourceMap = `${protocol}://${base}${fileName}`;
         const content = await fetchSourceMapFile(urlToSourceMap);
         const mapping = await consumeSourceMap(content);
@@ -135,7 +130,7 @@ async function runSourceMapResolver(argv) {
   const { url } = stackInfo.stack[0];
   const sourceMaps = await collectSourceMaps(argv, url);
   process.stdout.write(chalk.bold.red(`\n${stackInfo.name}: ${stackInfo.message} \n`));
-  stackInfo.stack.forEach(frame => printOriginalPosition(sourceMaps, frame));
+  stackInfo.stack.forEach((frame) => printOriginalPosition(sourceMaps, frame));
 }
 
 module.exports = runSourceMapResolver;

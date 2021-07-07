@@ -27,7 +27,7 @@ export function stepNumbers(currentStep, lastStep) {
   const offset = llim;
   const length = rlim - llim + 1;
 
-  const indexToStep = i => i + offset;
+  const indexToStep = (i) => i + offset;
   return Array(length)
     .fill()
     .map((_, i) => indexToStep(i));

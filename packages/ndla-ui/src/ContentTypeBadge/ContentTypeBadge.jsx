@@ -76,23 +76,17 @@ ContentTypeBadge.defaultProps = {
   border: true,
 };
 
-export const SubjectMaterialBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
-);
-export const TasksAndActivitiesBadge = props => (
+export const SubjectMaterialBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />;
+export const TasksAndActivitiesBadge = (props) => (
   <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
 );
-export const AssessmentResourcesBadge = props => (
+export const AssessmentResourcesBadge = (props) => (
   <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
 );
-export const SubjectBadge = props => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
-export const ExternalLearningResourcesBadge = props => (
+export const SubjectBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
+export const ExternalLearningResourcesBadge = (props) => (
   <ContentTypeBadge {...props} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
 );
-export const SourceMaterialBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
-);
+export const SourceMaterialBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />;
 
-export const LearningPathBadge = props => (
-  <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
-);
+export const LearningPathBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />;

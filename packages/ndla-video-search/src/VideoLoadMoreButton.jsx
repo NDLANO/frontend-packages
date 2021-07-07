@@ -17,7 +17,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const VideoLoadMoreButton = props => {
+const VideoLoadMoreButton = (props) => {
   const { videos, searching, limit, translations, loadMoreVideos } = props;
 
   if (!videos || videos.length === 0 || videos.length % limit !== 0) {
@@ -34,10 +34,7 @@ const VideoLoadMoreButton = props => {
 
 VideoLoadMoreButton.propTypes = {
   searching: PropTypes.bool.isRequired,
-  videos: PropTypes.oneOfType([
-    PropTypes.arrayOf(BrightcoveShape),
-    PropTypes.arrayOf(YouTubeShape),
-  ]),
+  videos: PropTypes.oneOfType([PropTypes.arrayOf(BrightcoveShape), PropTypes.arrayOf(YouTubeShape)]),
   translations: PropTypes.shape({
     searchPlaceholder: PropTypes.string.isRequired,
     searchButtonTitle: PropTypes.string.isRequired,

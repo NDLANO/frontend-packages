@@ -49,8 +49,8 @@ storiesOf('Produksjonssystem', module)
       }}>
       <StoryIntro title="Trekkspill">
         <p>
-          Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget kontroll for åpning og
-          lukking gjennom render props. Støtter feil-status via boolean prop på paneler.
+          Trekkspill (Accordion). Importeres via ndla-accordion. Innbygget kontroll for åpning og lukking gjennom render
+          props. Støtter feil-status via boolean prop på paneler.
         </p>
       </StoryIntro>
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
@@ -67,12 +67,10 @@ storiesOf('Produksjonssystem', module)
       }}>
       <StoryIntro title="Trekkspill">
         <p>
-          Trekkspill (Accordions). Importeres via ndla-accordion. Innbygget kontroll for åpning og
-          lukking gjennom render props. Støtter feil-status via boolean prop på paneler.
+          Trekkspill (Accordions). Importeres via ndla-accordion. Innbygget kontroll for åpning og lukking gjennom
+          render props. Støtter feil-status via boolean prop på paneler.
         </p>
-        <p>
-          Denne versjonen bruker Accordions og AccordionSection komponentene for å forenkle koden
-        </p>
+        <p>Denne versjonen bruker Accordions og AccordionSection komponentene for å forenkle koden</p>
       </StoryIntro>
 
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">
@@ -84,8 +82,7 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Bildesøk">
         <p>
-          I produksjonssystemet til nye NDLA så er det mulig å definere et utsnitt og/eller et
-          fokuspunkt på et bilde.
+          I produksjonssystemet til nye NDLA så er det mulig å definere et utsnitt og/eller et fokuspunkt på et bilde.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -104,10 +101,7 @@ storiesOf('Produksjonssystem', module)
           src="https://test.api.ndla.no/image-api/raw/id/604"
         />
         <h2>Fokuspunkt</h2>
-        <p>
-          Et fokuspunkt sikrer at ansikt/objekt er i fokus når bildet tilpasses for visning på
-          mindre flater.
-        </p>
+        <p>Et fokuspunkt sikrer at ansikt/objekt er i fokus når bildet tilpasses for visning på mindre flater.</p>
         <Image
           alt="Mann med maske"
           focalPoint={{
@@ -124,8 +118,8 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Bildesøk">
         <p>
-          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne modulen krever at det
-          både finnes en token og api url.
+          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne modulen krever at det både finnes en token
+          og api url.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -137,8 +131,8 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Lydsøk">
         <p>
-          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api. Denne modulen krever at det både
-          finnes en token og api url.
+          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api. Denne modulen krever at det både finnes en token og
+          api url.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -150,8 +144,8 @@ storiesOf('Produksjonssystem', module)
     <div>
       <StoryIntro title="Videosøk">
         <p>
-          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove. Denne modulen
-          krever at det både finnes en token og api url (for brightcove).
+          Videsøk som gjør det mulig å søke mot NDLA sine videoer på brightcove. Denne modulen krever at det både finnes
+          en token og api url (for brightcove).
         </p>
       </StoryIntro>
       <StoryBody>
@@ -260,8 +254,8 @@ storiesOf('Produksjonssystem', module)
       }}>
       <StoryIntro title="Versjonslogg og historikk">
         <p>
-          Versjonshistorikk og logg for emner/læringssressurser i ED. Mulighet for å se eller
-          tilbakestille til tidligere versjon eller kommentere på versjonen man står i.
+          Versjonshistorikk og logg for emner/læringssressurser i ED. Mulighet for å se eller tilbakestille til
+          tidligere versjon eller kommentere på versjonen man står i.
         </p>
       </StoryIntro>
       <div className="u-4/6@desktop u-push-1/6@desktop u-10/12@tablet u-push-1/12@tablet">

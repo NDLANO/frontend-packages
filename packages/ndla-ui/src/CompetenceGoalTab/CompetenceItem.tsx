@@ -260,9 +260,7 @@ const Item = ({ goal, t }: any) => {
                   <GoalSubItemName>{subItem.name}</GoalSubItemName>
                   {subItem.linkitem && (
                     <GoalSubItemLink>
-                      <SafeLink to={subItem.linkitem.resourceurl}>
-                        {subItem.linkitem.label}
-                      </SafeLink>
+                      <SafeLink to={subItem.linkitem.resourceurl}>{subItem.linkitem.label}</SafeLink>
                     </GoalSubItemLink>
                   )}
                 </GoalSubItem>

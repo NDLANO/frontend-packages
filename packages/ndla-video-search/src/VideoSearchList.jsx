@@ -19,17 +19,8 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const VideoSearchList = props => {
-  const {
-    videos,
-    locale,
-    translations,
-    selectedType,
-    selectedVideo,
-    onSelectVideo,
-    onVideoPreview,
-    searching,
-  } = props;
+const VideoSearchList = (props) => {
+  const { videos, locale, translations, selectedType, selectedVideo, onSelectVideo, onVideoPreview, searching } = props;
 
   if ((!videos || videos.length === 0) && !searching) {
     return <p>{translations.noResults}</p>;
@@ -40,7 +31,7 @@ const VideoSearchList = props => {
 
   const videoresults = () => {
     if (selectedType === 'youtube') {
-      return videos.map(video => (
+      return videos.map((video) => (
         <VideoSearchResultYouTube
           key={video.cacheId}
           video={video}
@@ -53,7 +44,7 @@ const VideoSearchList = props => {
       ));
     }
 
-    return videos.map(video => (
+    return videos.map((video) => (
       <VideoSearchResultBrightcove
         key={video.id}
         video={video}
@@ -75,10 +66,7 @@ VideoSearchList.propTypes = {
   searching: PropTypes.bool.isRequired,
   selectedType: PropTypes.string.isRequired,
   selectedVideo: PropTypes.oneOfType([BrightcoveShape, YouTubeShape]),
-  videos: PropTypes.oneOfType([
-    PropTypes.arrayOf(BrightcoveShape),
-    PropTypes.arrayOf(YouTubeShape),
-  ]),
+  videos: PropTypes.oneOfType([PropTypes.arrayOf(BrightcoveShape), PropTypes.arrayOf(YouTubeShape)]),
   translations: PropTypes.shape({
     searchPlaceholder: PropTypes.string.isRequired,
     searchButtonTitle: PropTypes.string.isRequired,

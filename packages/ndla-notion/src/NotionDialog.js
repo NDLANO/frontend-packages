@@ -50,7 +50,7 @@ export const NotionDialogTags = ({ tags }) =>
     <NotionDialogTagWrapper>
       <div className={'tags'}>
         {tags && <span>Brukes i:</span>}
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <span className={'tag'} key={`key-${tag}`}>
             {tag}
           </span>

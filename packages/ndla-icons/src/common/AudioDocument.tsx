@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const AudioDocument = (props: Props) => (
-  <Icon
-    title="AudioDocument"
-    viewBox="0 0 24 24"
-    data-license="CC-BY 4.0"
-    data-source="Keyteq"
-    {...props}>
+  <Icon title="AudioDocument" viewBox="0 0 24 24" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <g transform="translate(4.000000, 2.000000)" fill="currentColor" fillRule="nonzero">

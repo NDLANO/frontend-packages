@@ -79,12 +79,7 @@ const SearchTypeResult = ({
         </Overlay>
       </>
     )}
-    <SearchTypeHeader
-      onFilterClick={onFilterClick}
-      filters={filters}
-      totalCount={totalCount}
-      type={type}
-    />
+    <SearchTypeHeader onFilterClick={onFilterClick} filters={filters} totalCount={totalCount} type={type} />
     <SearchItems items={items} type={type} />
     {pagination && <ResultNavigation {...pagination} />}
     {children && children}

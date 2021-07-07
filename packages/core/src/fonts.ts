@@ -13,16 +13,13 @@ function sizes(fontSize: string | number, lineHeight?: string | number) {
     return `${fontSizeStyling} line-height: ${lineHeight}`;
   }
 
-  const defaultLineHeight =
-    Math.ceil(fontSizeUnit / baseLineHeightUnit) * (baseLineHeightUnit / fontSizeUnit);
+  const defaultLineHeight = Math.ceil(fontSizeUnit / baseLineHeightUnit) * (baseLineHeightUnit / fontSizeUnit);
   return `${fontSizeStyling} line-height: ${defaultLineHeight}`;
 }
 
 const fonts = {
-  sans:
-    "'Source Sans Pro',Helvetica,Arial,STKaiti,'华文楷体',KaiTi,SimKai,'楷体',KaiU,DFKai-SB,'標楷體',SongTi,'宋体',sans-serif",
-  serif:
-    "'Source Serif Pro',Times,STKaiti,'华文楷体',KaiTi,SimKai,'楷体',KaiU,DFKai-SB,'標楷體',SongTi,'宋体',serif",
+  sans: "'Source Sans Pro',Helvetica,Arial,STKaiti,'华文楷体',KaiTi,SimKai,'楷体',KaiU,DFKai-SB,'標楷體',SongTi,'宋体',sans-serif",
+  serif: "'Source Serif Pro',Times,STKaiti,'华文楷体',KaiTi,SimKai,'楷体',KaiU,DFKai-SB,'標楷體',SongTi,'宋体',serif",
   weight: {
     light: 300,
     normal: 400,

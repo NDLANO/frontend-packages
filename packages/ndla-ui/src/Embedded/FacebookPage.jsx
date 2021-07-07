@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FacebookProvider, Page } from 'react-facebook';
 
-const EmbeddedFacebookPage = props => (
+const EmbeddedFacebookPage = (props) => (
   <div>
     <FacebookProvider appId="155745961798881">
       <Page

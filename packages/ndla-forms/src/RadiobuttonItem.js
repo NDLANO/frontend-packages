@@ -44,7 +44,7 @@ const RadioLabel = styled.label`
   display: inline-flex;
   &:before {
     content: '';
-    margin-right: ${props => (props.hasLabel ? spacing.small : '0px')};
+    margin-right: ${(props) => (props.hasLabel ? spacing.small : '0px')};
     width: 20px;
     height: 20px;
     border-radius: 100%;

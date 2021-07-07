@@ -21,9 +21,9 @@ const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
   color: ${ndlaFilm ? '#fff' : colors.brand.primary};
   padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small} ${spacing.normal};
   ${hideOnNarrowScreen &&
-    css`
-      display: none;
-    `}
+  css`
+    display: none;
+  `}
 
   align-items: center;
   margin-left: ${spacing.normal};
@@ -47,13 +47,7 @@ const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
   }
 `;
 
-const ToggleSearchButton = ({
-  children,
-  ndlaFilm,
-  hideOnNarrowScreen,
-  hideOnWideScreen,
-  ...rest
-}) => (
+const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWideScreen, ...rest }) => (
   <Button type="button" css={style(hideOnNarrowScreen, hideOnWideScreen, ndlaFilm)} {...rest}>
     <span css={{ marginRight: spacing.normal, fontWeight: fonts.weight.normal }}>{children}</span>
     <Search />

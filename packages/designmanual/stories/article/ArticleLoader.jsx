@@ -10,13 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import format from 'date-fns/format';
-import {
-  OneColumn,
-  Article,
-  ResourcesWrapper,
-  ResourcesTopicTitle,
-  TopicIntroductionList,
-} from '@ndla/ui';
+import { OneColumn, Article, ResourcesWrapper, ResourcesTopicTitle, TopicIntroductionList } from '@ndla/ui';
 import Button from '@ndla/button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
@@ -41,7 +35,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores, ndlaFi
           ],
         }}
         title="Medieproduksjon"
-        hasAdditionalResources={topicList.some(topic => topic.additional)}
+        hasAdditionalResources={topicList.some((topic) => topic.additional)}
         toggleAdditionalResources={toggleAdditionalCores}
         showAdditionalResources={showAdditionalCores}
       />
@@ -84,7 +78,7 @@ class ArticleLoader extends Component {
     }
   }
 
-  handleSubmit = async articleId => {
+  handleSubmit = async (articleId) => {
     const { useFFServer, onArticleLoaded } = this.props;
     try {
       const article = await fetchArticle(articleId, useFFServer);
@@ -107,7 +101,7 @@ class ArticleLoader extends Component {
   };
 
   toggleAdditionalCores = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showAdditionalCores: !prevState.showAdditionalCores,
     }));
   };
@@ -131,7 +125,7 @@ class ArticleLoader extends Component {
     } = this.props;
     const scripts =
       article && article.requiredLibraries
-        ? article.requiredLibraries.map(lib => ({
+        ? article.requiredLibraries.map((lib) => ({
             src: lib.url,
             type: lib.mediaType,
           }))
@@ -172,9 +166,7 @@ class ArticleLoader extends Component {
 
     return (
       <>
-        {ndlaFilm && (
-          <NdlaFilmArticleHero article={article} withBackgroundImage={withBackgroundImage} />
-        )}
+        {ndlaFilm && <NdlaFilmArticleHero article={article} withBackgroundImage={withBackgroundImage} />}
         {article && (
           <div>
             <Helmet script={scripts} />
@@ -194,11 +186,7 @@ class ArticleLoader extends Component {
             </OneColumn>
 
             {!article && !hideForm && (
-              <SimpleSubmitForm
-                onSubmit={this.handleSubmit}
-                errorMessage={message}
-                labelText="Artikkel ID:"
-              />
+              <SimpleSubmitForm onSubmit={this.handleSubmit} errorMessage={message} labelText="Artikkel ID:" />
             )}
             {article && closeButton ? (
               <Button onClick={() => this.setState({ article: undefined })}>Lukk</Button>

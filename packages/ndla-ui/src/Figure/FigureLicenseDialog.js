@@ -16,16 +16,7 @@ import Dialog from '../Dialog';
 import { ContributorShape, LicenseShape } from '../shapes';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from './FigureLicense';
 
-export const FigureLicenseDialog = ({
-  children,
-  messages,
-  id,
-  authors,
-  origin,
-  title,
-  locale,
-  license,
-}) => {
+export const FigureLicenseDialog = ({ children, messages, id, authors, origin, title, locale, license }) => {
   const headingLabelId = `heading-${id}`;
   return (
     <Dialog id={id} labelledby={headingLabelId} messages={messages}>

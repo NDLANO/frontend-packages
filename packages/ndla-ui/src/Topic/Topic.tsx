@@ -31,7 +31,7 @@ type FrameProps = {
 };
 
 const Wrapper = styled.section<FrameProps>`
-  ${props =>
+  ${(props) =>
     props.frame &&
     css`
       ${mq.range({ from: breakpoints.tabletWide })} {
@@ -134,7 +134,7 @@ const TopicHeading = styled.h1<InvertItProps>`
     margin: 50px 0 0;
     ${fonts.sizes('38px', '48px')};
   }
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       color: #fff;
@@ -174,7 +174,7 @@ const StyledButtonWrapper = styled.div<InvertItProps>`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
   border-left: 6px solid ${colors.brand.light};
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       button {
@@ -192,7 +192,7 @@ const StyledContentWrapper = styled.div<InvertItProps>`
   margin-top: 0;
   border-left: 6px solid ${colors.brand.light};
 
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       background: #fff;
@@ -258,9 +258,7 @@ const Topic = ({
                           <VisualElementButton
                             stripped
                             title={
-                              topic.visualElement.type === 'image'
-                                ? t('image.largeSize')
-                                : t('visualElement.show')
+                              topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
                             }>
                             <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
                             <TopicHeaderOverlay />
@@ -330,9 +328,7 @@ const Topic = ({
                 </Button>
               </StyledButtonWrapper>
             )}
-            {showContent && (
-              <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>
-            )}
+            {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}
             {subTopics?.length && (
               <NavigationBox
                 colorMode="light"

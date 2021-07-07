@@ -8,9 +8,7 @@ const SwitchExample = () => {
   return (
     <>
       <StoryIntro title="Switch button">
-        <p>
-          Brukes istedet for checkbox når man ser endringen med engang og det kun er on/off state
-        </p>
+        <p>Brukes istedet for checkbox når man ser endringen med engang og det kun er on/off state</p>
       </StoryIntro>
       <StoryBody>
         <ComponentInfo
@@ -53,12 +51,7 @@ const SwitchExample = () => {
           status={3}>
           <h2 className="u-heading">Switch eksempel</h2>
           <div className="u-margin-top">
-            <Switch
-              label="Tilleggstoff"
-              id="exampleID"
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
-            />
+            <Switch label="Tilleggstoff" id="exampleID" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
           </div>
         </ComponentInfo>
       </StoryBody>

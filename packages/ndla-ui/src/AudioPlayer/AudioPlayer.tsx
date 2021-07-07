@@ -64,7 +64,7 @@ const TextWrapper = styled.div<TextWrapperProps>`
   padding: ${spacing.small};
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.hasImage &&
     `${mq.range({ from: breakpoints.tablet })} {
     padding: ${spacing.small} ${spacing.normal};
@@ -87,7 +87,7 @@ type TitleProps = {
 
 const Title = styled.h2<TitleProps>`
   ${fonts.sizes('22px', '30px')};
-  margin: 0 0 ${props => props.hasDescription && `${spacing.small}`};
+  margin: 0 0 ${(props) => props.hasDescription && `${spacing.small}`};
 `;
 
 const Subtitle = styled.h3`
@@ -106,7 +106,7 @@ type LinkToTextVersionWrapperProps = {
   noMargin?: boolean;
 };
 const LinkToTextVersionWrapper = styled.div<LinkToTextVersionWrapperProps>`
-  ${props =>
+  ${(props) =>
     !props.noMargin &&
     `margin-top: ${spacing.normal};
   `}
@@ -250,11 +250,7 @@ const AudioPlayer = ({
             <div>
               {subtitle && (
                 <Subtitle>
-                  {subtitle.url ? (
-                    <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink>
-                  ) : (
-                    subtitle.title
-                  )}
+                  {subtitle.url ? <SafeLink to={subtitle.url}>{subtitle.title}</SafeLink> : subtitle.title}
                 </Subtitle>
               )}
               <Title hasDescription={!!description}>{title}</Title>
@@ -281,11 +277,7 @@ const AudioPlayer = ({
         <TextVersionWrapper id={staticRenderId} hidden={!!staticRenderId}>
           <TextVersionHeadingWrapper>
             <TextVersionHeading>{t('audio.textVersion.heading')}</TextVersionHeading>
-            <LinkButton
-              link
-              size="normal"
-              onClick={toggleTextVersion}
-              data-audio-text-button-id={staticRenderId}>
+            <LinkButton link size="normal" onClick={toggleTextVersion} data-audio-text-button-id={staticRenderId}>
               <CrossIcon style={{ width: '20px', height: '20px' }} />
               <CloseText>{t('audio.textVersion.close')}</CloseText>
             </LinkButton>

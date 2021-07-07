@@ -63,8 +63,7 @@ const fileErrorCss = css`
 
 const ListWrapper = styled.ul`
   overflow: visible;
-  margin: 0 0
-    ${props => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;
@@ -73,7 +72,7 @@ const ListWrapper = styled.ul`
 const ButtonIcons = styled.button`
   border: 0;
   background: none;
-  color: ${props => (props.delete ? colors.support.red : colors.brand.primary)};
+  color: ${(props) => (props.delete ? colors.support.red : colors.brand.primary)};
   width: ${spacing.medium};
   height: ${spacing.medium};
   display: flex;
@@ -83,11 +82,11 @@ const ButtonIcons = styled.button`
   padding: 0;
   border-radius: 100%;
   transition: background 200ms ease;
-  cursor: ${props => (props.draggable ? 'grabbing' : 'auto')};
+  cursor: ${(props) => (props.draggable ? 'grabbing' : 'auto')};
 
   &:hover,
   &:focus {
-    background: ${props => (props.delete ? colors.support.redLight : colors.brand.light)};
+    background: ${(props) => (props.delete ? colors.support.redLight : colors.brand.light)};
   }
 `;
 
@@ -172,7 +171,7 @@ class FileListEditor extends Component {
       },
       () => {
         // Add transitions
-        Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(node => {
+        Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node) => {
           node.style.transition = 'transform 100ms ease';
         });
         this.DraggingFile.style.transition = 'box-shadow 100ms ease';
@@ -195,7 +194,7 @@ class FileListEditor extends Component {
       draggingIndex: -1,
     });
 
-    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach(node => {
+    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node) => {
       node.style.transition = 'none';
       node.style.transform = 'none';
     });
@@ -208,15 +207,12 @@ class FileListEditor extends Component {
 
   onDragging(e) {
     this.mouseMovement += e.movementY;
-    const currentPosition = Math.max(
-      Math.ceil((this.mouseMovement + FILE_HEIGHT / 2) / FILE_HEIGHT),
-      0,
-    );
+    const currentPosition = Math.max(Math.ceil((this.mouseMovement + FILE_HEIGHT / 2) / FILE_HEIGHT), 0);
     const addToPosition = this.initialPosition < currentPosition ? 1 : 0;
     const dragIndex = Math.min(this.props.files.length, Math.max(currentPosition, 0));
     this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
     this.updateTransforms(dragIndex + addToPosition);
-    this.setState(prevState => {
+    this.setState((prevState) => {
       if (prevState.draggingIndex !== dragIndex) {
         return {
           draggingIndex: dragIndex,
@@ -240,7 +236,7 @@ class FileListEditor extends Component {
     return (
       <ListWrapper ref={this.filesWrapperRef} draggingIndex={draggingIndex}>
         {files.map((file, index) => {
-          const isMissing = !!(missingFilePaths || []).find(mp => mp === file.path);
+          const isMissing = !!(missingFilePaths || []).find((mp) => mp === file.path);
           return (
             <li
               key={file.path}
@@ -261,10 +257,10 @@ class FileListEditor extends Component {
                 usePortal={usePortal}
                 type="text"
                 placeholder={messages.placeholder}
-                onChange={e => {
+                onChange={(e) => {
                   onEditFileName(index, e.target.value);
                 }}
-                onKeyDown={e => {
+                onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     e.target.blur();
                   }
@@ -278,13 +274,13 @@ class FileListEditor extends Component {
                     checked={file.display === 'block'}
                     value=""
                     id={index}
-                    onChange={i => onToggleRenderInline(i)}
+                    onChange={(i) => onToggleRenderInline(i)}
                   />
                 </Tooltip>
               )}
               <div>
                 <Tooltip tooltip={messages.changeName}>
-                  <ButtonIcons tabIndex={-1} type="button" onClick={e => this.editFile(e, index)}>
+                  <ButtonIcons tabIndex={-1} type="button" onClick={(e) => this.editFile(e, index)}>
                     <Pencil />
                   </ButtonIcons>
                 </Tooltip>
@@ -295,7 +291,7 @@ class FileListEditor extends Component {
                         draggable
                         tabIndex={-1}
                         type="button"
-                        onMouseDown={e => this.onDragStart(e, index)}
+                        onMouseDown={(e) => this.onDragStart(e, index)}
                         onMouseUp={this.onDragEnd}>
                         <DragHorizontal />
                       </ButtonIcons>
@@ -305,17 +301,13 @@ class FileListEditor extends Component {
                       draggable
                       tabIndex={-1}
                       type="button"
-                      onMouseDown={e => this.onDragStart(e, index)}
+                      onMouseDown={(e) => this.onDragStart(e, index)}
                       onMouseUp={this.onDragEnd}>
                       <DragHorizontal />
                     </ButtonIcons>
                   ))}
                 <Tooltip tooltip={messages.removeFile}>
-                  <ButtonIcons
-                    tabIndex={-1}
-                    type="button"
-                    onClick={() => this.deleteFile(index)}
-                    delete>
+                  <ButtonIcons tabIndex={-1} type="button" onClick={() => this.deleteFile(index)} delete>
                     <DeleteForever />
                   </ButtonIcons>
                 </Tooltip>

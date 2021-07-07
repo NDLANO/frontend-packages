@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tracker",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A simple library for tracking NDLA applications",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -33,8 +33,8 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "@types/react-helmet": "^5.0.16",
-    "@types/history": "4.7.8"
+    "@types/history": "4.7.8",
+    "@types/react-helmet": "^5.0.16"
   },
   "publishConfig": {
     "access": "public"

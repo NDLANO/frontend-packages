@@ -241,109 +241,109 @@ const Topic = ({
   children,
   t,
 }: TopicProps & tType) => {
-
-  return(
-  <Wrapper frame={frame} data-testid="nav-topic-about">
-    {isLoading ? (
-      <Loader />
-    ) : (
-      <>
-        {topic && (
-          <>
-            {topic.image && (
-              <TopicHeaderVisualElementWrapper>
-                {topic.visualElement ? (
-                  <>
-                    <ShowVisualElementWrapper>
-                      <Modal
-                        activateButton={
-                          <VisualElementButton
-                            stripped
-                            title={
-                              topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
-                            }>
-                            <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
-                            <TopicHeaderOverlay />
-                            <ExpandVisualElementButton>
-                              {topic.visualElement.type === 'image' && (
-                                <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
-                              )}
-                              {topic.visualElement.type === 'video' && (
-                                <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
-                              )}
-                              {topic.visualElement.type === 'other' && (
-                                <CursorClick style={{ width: '24px', height: '24px' }} />
-                              )}
-                            </ExpandVisualElementButton>
-                          </VisualElementButton>
-                        }
-                        animation="subtle"
-                        animationDuration={50}
-                        backgroundColor="white"
-                        size="large">
-                        {(onClose: () => void) => (
-                          <>
-                            <ModalHeader>
-                              <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                            </ModalHeader>
-                            <ModalBody modifier="no-side-padding-mobile">
-                              {topic.visualElement && topic.visualElement.element}
-                            </ModalBody>
-                          </>
-                        )}
-                      </Modal>
-                    </ShowVisualElementWrapper>
-                  </>
-                ) : (
-                  <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
-                )}
-              </TopicHeaderVisualElementWrapper>
-            )}
-            <TopicHeading invertedStyle={invertedStyle}>
-              <StyledHeadingText>{topic.title}</StyledHeadingText>
-              {isAdditionalTopic && (
-                <StyledAdditionalResource>
-                  <StyledAdditionalResourceMark>T</StyledAdditionalResourceMark>
-                  {t('navigation.additionalTopic')}
-                </StyledAdditionalResource>
-              )}
-            </TopicHeading>
-            <TopicIntroduction>
-              {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
-            </TopicIntroduction>
-            {onToggleShowContent && (
-              <StyledButtonWrapper invertedStyle={invertedStyle}>
-                <Button
-                  link
-                  onClick={() => {
-                    onToggleShowContent();
-                  }}>
-                  {showContent ? (
+  return (
+    <Wrapper frame={frame} data-testid="nav-topic-about">
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {topic && (
+            <>
+              {topic.image && (
+                <TopicHeaderVisualElementWrapper>
+                  {topic.visualElement ? (
                     <>
-                      {t('navigation.showShorterDescription')} <ChevronUp />
+                      <ShowVisualElementWrapper>
+                        <Modal
+                          activateButton={
+                            <VisualElementButton
+                              stripped
+                              title={
+                                topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
+                              }>
+                              <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
+                              <TopicHeaderOverlay />
+                              <ExpandVisualElementButton>
+                                {topic.visualElement.type === 'image' && (
+                                  <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
+                                )}
+                                {topic.visualElement.type === 'video' && (
+                                  <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
+                                )}
+                                {topic.visualElement.type === 'other' && (
+                                  <CursorClick style={{ width: '24px', height: '24px' }} />
+                                )}
+                              </ExpandVisualElementButton>
+                            </VisualElementButton>
+                          }
+                          animation="subtle"
+                          animationDuration={50}
+                          backgroundColor="white"
+                          size="large">
+                          {(onClose: () => void) => (
+                            <>
+                              <ModalHeader>
+                                <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
+                              </ModalHeader>
+                              <ModalBody modifier="no-side-padding-mobile">
+                                {topic.visualElement && topic.visualElement.element}
+                              </ModalBody>
+                            </>
+                          )}
+                        </Modal>
+                      </ShowVisualElementWrapper>
                     </>
                   ) : (
-                    <>
-                      {t('navigation.showLongerDescription')} <ChevronDown />
-                    </>
+                    <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
                   )}
-                </Button>
-              </StyledButtonWrapper>
-            )}
-            {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}
-            {subTopics && subTopics.length !== 0 && (
-              <NavigationBox
-                colorMode="light"
-                heading={t('navigation.topics')}
-                items={subTopics}
-                onClick={onSubTopicSelected}
-              />
-            )}
-            {topic.resources}
-          </>
-        )}
-      </>
-    )}
-  </Wrapper>
-)};
+                </TopicHeaderVisualElementWrapper>
+              )}
+              <TopicHeading invertedStyle={invertedStyle}>
+                <StyledHeadingText>{topic.title}</StyledHeadingText>
+                {isAdditionalTopic && (
+                  <StyledAdditionalResource>
+                    <StyledAdditionalResourceMark>T</StyledAdditionalResourceMark>
+                    {t('navigation.additionalTopic')}
+                  </StyledAdditionalResource>
+                )}
+              </TopicHeading>
+              <TopicIntroduction>
+                {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
+              </TopicIntroduction>
+              {onToggleShowContent && (
+                <StyledButtonWrapper invertedStyle={invertedStyle}>
+                  <Button
+                    link
+                    onClick={() => {
+                      onToggleShowContent();
+                    }}>
+                    {showContent ? (
+                      <>
+                        {t('navigation.showShorterDescription')} <ChevronUp />
+                      </>
+                    ) : (
+                      <>
+                        {t('navigation.showLongerDescription')} <ChevronDown />
+                      </>
+                    )}
+                  </Button>
+                </StyledButtonWrapper>
+              )}
+              {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}
+              {subTopics && subTopics.length !== 0 && (
+                <NavigationBox
+                  colorMode="light"
+                  heading={t('navigation.topics')}
+                  items={subTopics}
+                  onClick={onSubTopicSelected}
+                />
+              )}
+              {topic.resources}
+            </>
+          )}
+        </>
+      )}
+    </Wrapper>
+  );
+};
 export default injectT(Topic);

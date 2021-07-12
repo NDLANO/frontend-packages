@@ -240,7 +240,9 @@ const Topic = ({
   frame,
   children,
   t,
-}: TopicProps & tType) => (
+}: TopicProps & tType) => {
+
+  return(
   <Wrapper frame={frame} data-testid="nav-topic-about">
     {isLoading ? (
       <Loader />
@@ -329,7 +331,7 @@ const Topic = ({
               </StyledButtonWrapper>
             )}
             {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}
-            {subTopics?.length && (
+            {subTopics && subTopics.length !== 0 && (
               <NavigationBox
                 colorMode="light"
                 heading={t('navigation.topics')}
@@ -343,5 +345,5 @@ const Topic = ({
       </>
     )}
   </Wrapper>
-);
+)};
 export default injectT(Topic);

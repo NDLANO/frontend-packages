@@ -177,7 +177,7 @@ export const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip,
           <div {...searchResultItemClasses('subjects')}>
             <span>{subjectsLabel}</span>
             <ul>
-              {item.subjects.map((subject) => (
+              {item.subjects.map(subject => (
                 <li key={uuid()}>
                   <Tooltip tooltip={itemBreadcrumb(subject)}>
                     {subject.url.href ? (
@@ -219,7 +219,7 @@ export const SearchResultList = ({ results, component: Component, loading }) => 
           </article>
         ) : (
           <ul className="c-search-result-list">
-            {results.map((item) => (
+            {results.map(item => (
               <Component
                 key={`search_result_item_${typeof item.url === 'object' ? item.url.href : item.url}`}
                 item={item}

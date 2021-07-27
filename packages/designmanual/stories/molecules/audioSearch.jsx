@@ -10,41 +10,41 @@ import React from 'react';
 import AudioSearch from '@ndla/audio-search';
 import { headerWithAccessToken, getToken } from '../apiFunctions';
 
-const fetchAudios = (queryObject) => {
+const fetchAudios = queryObject => {
   const { query, page, pageSize, locale } = queryObject;
   const queryString = `${query ? `query=${query}&` : ''}page=${page}&page-size=${pageSize}&language=${locale}`;
   return new Promise((resolve, reject) => {
-    getToken().then((token) => {
+    getToken().then(token => {
       fetch(`https://test.api.ndla.no/audio-api/v1/audio/?${queryString}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
-      }).then((res) => {
+      }).then(res => {
         if (res.ok) return resolve(res.json());
-        return res.json().then((json) => reject(json));
+        return res.json().then(json => reject(json));
       });
     });
   });
 };
 
-const fetchAudio = (id) =>
+const fetchAudio = id =>
   new Promise((resolve, reject) => {
-    getToken().then((token) => {
+    getToken().then(token => {
       fetch(`https://test.api.ndla.no/audio-api/v1/audio/${id}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
-      }).then((res) => {
+      }).then(res => {
         if (res.ok) return resolve(res.json());
-        return res.json().then((json) => reject(json));
+        return res.json().then(json => reject(json));
       });
     });
   });
 
 export const AudioSearcher = () => {
-  const audioSelect = (audio) => {
+  const audioSelect = audio => {
     console.log(audio); // eslint-disable-line no-console
   };
 
-  const onError = (err) => {
+  const onError = err => {
     console.error(err); // eslint-disable-line no-console
   };
 

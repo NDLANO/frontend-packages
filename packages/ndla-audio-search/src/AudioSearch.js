@@ -50,7 +50,7 @@ class AudioSearch extends Component {
     this.setState({ searching: true });
     this.props
       .searchAudios(queryObject)
-      .then((result) => {
+      .then(result => {
         this.setState({
           queryObject: {
             query: queryObject.query,
@@ -64,7 +64,7 @@ class AudioSearch extends Component {
           searching: false,
         });
       })
-      .catch((err) => {
+      .catch(err => {
         this.props.onError(err);
         this.setState({ searching: false });
       });

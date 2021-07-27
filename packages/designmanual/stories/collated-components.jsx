@@ -342,7 +342,7 @@ storiesOf('Sammensatte moduler', module)
                 { title: 'R2', value: 'R2' },
                 { title: 'S1', value: 'S1' },
               ]}
-              onChange={(value) => {
+              onChange={value => {
                 console.log('changed to', value); // eslint-disable-line no-console
               }}
             />
@@ -358,7 +358,7 @@ storiesOf('Sammensatte moduler', module)
               ]}
               uniqeIds
               label="Velg fag"
-              onChange={(value) => {
+              onChange={value => {
                 console.log('changed to', value); // eslint-disable-line no-console
               }}
             />

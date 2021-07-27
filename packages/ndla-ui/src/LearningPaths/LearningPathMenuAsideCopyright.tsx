@@ -47,7 +47,7 @@ const LearningPathMenuAsideCopyright: React.FunctionComponent<Props> = ({ copyri
   <StyledLearningPathDetails>
     <User />
     <p>
-      {copyright.contributors.map((contributor) => (
+      {copyright.contributors.map(contributor => (
         <span key={contributor.name}>{contributor.name}</span>
       ))}
       <span>{copyright.license.license}</span>

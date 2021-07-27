@@ -20,12 +20,12 @@ const StyledBackdrop = styled('div')`
   bottom: 0;
   background: rgba(1, 1, 1, 0.3);
   animation-name: fadeOut;
-  ${(props) =>
+  ${props =>
     props.animateIn &&
     css`
       animation-name: fadeIn;
     `}
-  animation-duration: ${(props) => props.animationDuration};
+  animation-duration: ${props => props.animationDuration};
 `;
 
 export const Backdrop = React.forwardRef((props, ref) => {
@@ -34,9 +34,9 @@ export const Backdrop = React.forwardRef((props, ref) => {
       ref={ref}
       role="button"
       tabIndex={-1}
-      onTouchStart={(e) => e.preventDefault()}
-      onTouchMove={(e) => e.preventDefault()}
-      onTouchEnd={(e) => e.preventDefault()}
+      onTouchStart={e => e.preventDefault()}
+      onTouchMove={e => e.preventDefault()}
+      onTouchEnd={e => e.preventDefault()}
       {...props}
     />
   );

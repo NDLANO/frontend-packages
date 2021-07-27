@@ -36,7 +36,7 @@ const StyledInputWrapper = styled.div`
   border: 1px solid;
   background: #fff;
   transition: border-color 200ms ease;
-  border-color: ${(props) => (props.inputHasFocus ? colors.brand.primary : colors.brand.greyLight)};
+  border-color: ${props => (props.inputHasFocus ? colors.brand.primary : colors.brand.greyLight)};
   border-radius: ${misc.borderRadius};
 `;
 
@@ -60,7 +60,7 @@ const StyledForm = styled.form`
 const StyledSubmitButton = styled.button`
   ${buttonStyle}
   min-width: 100px;
-  ${(props) =>
+  ${props =>
     props.disabledStyle &&
     css`
       color: ${colors.brand.grey};
@@ -253,7 +253,7 @@ const ProductionToolVersionLog = ({ t }) => {
                       <AccordionPanel {...getPanelProps(index)} css={paddingPanelStyleInside}>
                         <VersionHistory
                           notes={notes}
-                          onComment={(msg) => {
+                          onComment={msg => {
                             const updatedVersions = [...versions];
                             const now = new Date();
                             const day = now.getDate();
@@ -281,7 +281,7 @@ const ProductionToolVersionLog = ({ t }) => {
                                 autoComplete="off"
                                 onFocus={() => setInputHasFocus(true)}
                                 onBlur={() => setInputHasFocus(false)}
-                                onChange={(e) => {
+                                onChange={e => {
                                   setCommentValue(e.target.value);
                                   setCommentError(false);
                                 }}

@@ -39,7 +39,7 @@ const StyledList = styled('ul')`
 
 export const CompetenceGoalList = ({ goals, ...rest }) => (
   <StyledList {...classes('topic-list')} {...rest}>
-    {goals.map((goal) => (
+    {goals.map(goal => (
       <CompetenceGoal key={goal.id} goal={goal} />
     ))}
   </StyledList>

@@ -11,7 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { logoClasses } from './Logo';
 
-const LogoText = (locale) => {
+const LogoText = locale => {
   if (locale === 'en') {
     return (
       <path

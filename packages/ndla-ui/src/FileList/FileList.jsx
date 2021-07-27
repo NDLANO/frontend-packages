@@ -9,7 +9,7 @@ const FileList = ({ files, heading, id }) => (
   <section {...classes()}>
     <h1 {...classes('heading')}>{heading}</h1>
     <ul {...classes('files')}>
-      {files.map((file) => (
+      {files.map(file => (
         <File key={`file-${id}-${file.title}`} file={file} id={id} />
       ))}
     </ul>

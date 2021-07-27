@@ -36,7 +36,7 @@ const FilmMovieList = ({
       slideForwardsLabel={slideForwardsLabel}
       buttonClass="c-film-movielist__carousel-buttons"
       wrapperClass="c-film-movielist__carousel-wrapper-buttons"
-      items={movies.map((movie) => (
+      items={movies.map(movie => (
         <FilmContentCard
           key={movie.id}
           movie={movie}

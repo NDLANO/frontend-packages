@@ -32,7 +32,7 @@ const iconClass = css`
   }
 `;
 
-const renderArticleInModal = (pageId) => (
+const renderArticleInModal = pageId => (
   <ArticleInModal pageId={pageId} activateButton={<InformationOutline css={iconClass} />} />
 );
 
@@ -147,7 +147,7 @@ class SlateBlockMenuExample extends Component {
           heading="Legg til"
           actions={actions}
           onToggleOpen={this.onToggleOpen}
-          clickItem={(data) => {
+          clickItem={data => {
             console.log(data); // eslint-disable-line no-console
           }}
         />

@@ -26,7 +26,7 @@ const BORDER_WIDTH = 4;
 
 const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
   ${mq.range({ from: breakpoints.tablet })} {
-    ${(props) =>
+    ${props =>
       props.invertedStyle &&
       css`
         color: #fff;
@@ -54,12 +54,12 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     margin-top: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-    ${(props) =>
+    ${props =>
       !props.isOpen &&
       css`
         display: none;
       `}
-    ${(props) =>
+    ${props =>
       props.isOpen &&
       css`
         animation-duration: ${animations.durations.superFast};

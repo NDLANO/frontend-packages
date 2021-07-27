@@ -25,7 +25,7 @@ const StyledWrapper = styled.section<StyledWrapperProp>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  ${(props) =>
+  ${props =>
     props.extended &&
     css`
       min-width: 500px;

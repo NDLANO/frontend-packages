@@ -40,7 +40,7 @@ class LanguageSelectorNonMessages extends Component {
             labelNotVisible
             options={LANGUAGES}
             values={[this.state.value]}
-            onChange={(e) => {
+            onChange={e => {
               this.changeLanguage(e.pop());
             }}
           />

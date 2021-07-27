@@ -24,7 +24,7 @@ type StyledWrapperProps = {
 
 const StyledWrapper = styled.div<StyledWrapperProps>`
   position: relative;
-  ${(props) =>
+  ${props =>
     !props.alwaysVisible &&
     css`
       ${mq.range({ until: breakpoints.wide })} {
@@ -50,12 +50,12 @@ const StyledModal = styled.div<StyledModalProps>`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  ${(props) =>
+  ${props =>
     props.animateIn &&
     css`
       ${animations.fadeInTop(animations.durations.superFast)}
     `};
-  ${(props) =>
+  ${props =>
     props.centered &&
     css`
       right: calc(50% - 225px);

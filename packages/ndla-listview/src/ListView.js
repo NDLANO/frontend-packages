@@ -196,7 +196,7 @@ const ListView = ({
   onSelectItem,
   selectedItem,
   totalCount,
-  renderMarkdown = (text) => {
+  renderMarkdown = text => {
     return text;
   },
   t,
@@ -204,7 +204,7 @@ const ListView = ({
   <ListViewWrapper>
     {filters ? (
       <div {...filterClasses('wrapper-multiple-filters')}>
-        {filters.map((filter) => (
+        {filters.map(filter => (
           <FilterListPhone
             preid="list-view"
             key={filter.key}
@@ -219,7 +219,7 @@ const ListView = ({
               openFilter: t(`listview.filters.${filter.key}.openFilter`),
               closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
             }}
-            onChange={(values) => {
+            onChange={values => {
               filter.onChange(filter.key, values);
             }}
           />
@@ -263,7 +263,7 @@ const ListView = ({
 
       {selectedLetterCallback ? (
         <ul className={'alphabet'}>
-          {Object.keys(alphabet).map((letter) => (
+          {Object.keys(alphabet).map(letter => (
             <li key={`letter-${letter}`} className={'letter'}>
               <button
                 type="button"
@@ -281,7 +281,7 @@ const ListView = ({
     <CountWrapper>{t('listview.hits', { count: totalCount })}</CountWrapper>
     <div className={'content-wrapper'}>
       <div className={`content ${viewStyle}`}>
-        {items.map((item) => (
+        {items.map(item => (
           <ListItem
             item={item}
             key={item.id}

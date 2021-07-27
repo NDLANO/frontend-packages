@@ -14,7 +14,10 @@ export const getCookie = (cookieName: string, cookies: string) => {
   const value = `; ${cookies}`;
   const parts: Array<any> = value.split(`; ${cookieName}=`);
   if (parts.length > 1) {
-    return parts.pop().split(';').shift();
+    return parts
+      .pop()
+      .split(';')
+      .shift();
   }
   return null;
 };

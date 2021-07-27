@@ -113,7 +113,7 @@ MediaListItemBody.propTypes = {
   license: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
   resourceUrl: PropTypes.string,
-  resourceType: PropTypes.oneOf(Object.keys(resourceTypes).map((key) => resourceTypes[key])),
+  resourceType: PropTypes.oneOf(Object.keys(resourceTypes).map(key => resourceTypes[key])),
   messages: PropTypes.shape({
     modelPremission: PropTypes.string,
   }),
@@ -130,7 +130,7 @@ MediaListItemActions.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const isLink = (text) => text.startsWith('http') || text.startsWith('https');
+const isLink = text => text.startsWith('http') || text.startsWith('https');
 
 export const HandleLink = ({ text, children }) => {
   if (isLink(text)) {
@@ -151,12 +151,12 @@ HandleLink.propTypes = {
 const attributionTypes = [metaTypes.author, metaTypes.copyrightHolder, metaTypes.contributor];
 
 export const MediaListItemMeta = ({ items }) => {
-  const attributionItems = items.filter((item) => attributionTypes.some((type) => type === item.metaType));
-  const attributionMeta = attributionItems.map((item) => `${item.label}: ${item.description}`).join(', ');
+  const attributionItems = items.filter(item => attributionTypes.some(type => type === item.metaType));
+  const attributionMeta = attributionItems.map(item => `${item.label}: ${item.description}`).join(', ');
 
   return (
     <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta}>
-      {items.map((item) => (
+      {items.map(item => (
         <li key={uuid()} className="c-medialist__meta-item">
           {item.label}: <HandleLink text={item.description}>{item.description}</HandleLink>
         </li>
@@ -169,7 +169,7 @@ const mediaListItemShape = PropTypes.arrayOf(
   PropTypes.shape({
     label: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    metaType: PropTypes.oneOf(Object.keys(metaTypes).map((key) => metaTypes[key])).isRequired,
+    metaType: PropTypes.oneOf(Object.keys(metaTypes).map(key => metaTypes[key])).isRequired,
   }),
 );
 

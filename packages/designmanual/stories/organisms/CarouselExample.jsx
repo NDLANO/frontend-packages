@@ -40,7 +40,7 @@ const DemoExample = () => (
           margin: 92,
         },
       ]}>
-      {(autoSizedProps) => (
+      {autoSizedProps => (
         <Carousel
           {...autoSizedProps}
           slideBackwardsLabel="tilbake"

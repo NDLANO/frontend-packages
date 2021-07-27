@@ -30,8 +30,8 @@ const TopicIntroductionList = ({
 }) => {
   const renderAdditionalTopicsTrigger =
     !showAdditionalCores &&
-    topics.filter((topic) => topic.additional).length > 0 &&
-    topics.filter((topic) => !topic.additional).length === 0;
+    topics.filter(topic => topic.additional).length > 0 &&
+    topics.filter(topic => !topic.additional).length === 0;
 
   return (
     <Trans>

@@ -197,8 +197,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Følg oss',
-      description:
-        'NDLA har mange Facebook- og Twitter-kontoar. Finn den som passar for deg, og følg oss!',
+      description: 'NDLA har mange Facebook- og Twitter-kontoar. Finn den som passar for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },
@@ -221,8 +220,7 @@ const messages = {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {
-    description:
-      'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
+    description: 'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
     keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
   masthead: {
@@ -288,8 +286,7 @@ const messages = {
     shortcutsTooltip: 'Vis {count} artiklar i dette emnet',
     dialogTooltip: 'Kva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
-    dialogText1:
-      'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskrive i læreplanen for faget.',
+    dialogText1: 'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskrive i læreplanen for faget.',
     dialogText2:
       'Tilleggsstoff er innhald du kan velje i tillegg til kjernestoffet. Gjennom dette kan du fordjupe deg i eit emne eller nærme deg emnet på ein annan måte.',
     showLess: 'Vis mindre',

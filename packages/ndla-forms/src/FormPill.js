@@ -66,7 +66,7 @@ FormPill.propTypes = {
 
 export const FormPills = ({ labels, onClick }) => (
   <StyledPillsWrapper>
-    {labels.map((label) => (
+    {labels.map(label => (
       <FormPill label={label} key={label} onClick={onClick} id={label} />
     ))}
   </StyledPillsWrapper>

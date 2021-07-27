@@ -18,8 +18,8 @@ interface StylesProps {
 
 const getStyles = (modifiers: StylesProps) =>
   Object.keys(modifiers)
-    .map((key) => (modifiers[key] ? appearances[key] : undefined))
-    .filter((appearance) => !!appearance);
+    .map(key => (modifiers[key] ? appearances[key] : undefined))
+    .filter(appearance => !!appearance);
 
 interface Props {
   outline?: boolean;

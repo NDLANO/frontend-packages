@@ -39,7 +39,7 @@ const List = ({ items, totalCount }: ListProps) => {
     <Wrapper>
       <Header>{totalCount} caser</Header>
       <ListWrapper>
-        {items.map((item) => (
+        {items.map(item => (
           <ListItem key={item.title} {...item} />
         ))}
       </ListWrapper>

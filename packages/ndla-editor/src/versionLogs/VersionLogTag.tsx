@@ -16,7 +16,7 @@ type StyledTagProps = {
 
 const StyledTag = styled.span<StyledTagProps>`
   display: flex;
-  background: ${(props) => colors.support[props.color]};
+  background: ${props => colors.support[props.color]};
   ${fonts.sizes(16, 1.1)};
   font-weight: ${fonts.weight.semibold};
   color: #000;

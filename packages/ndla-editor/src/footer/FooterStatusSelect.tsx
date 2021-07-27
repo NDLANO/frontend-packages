@@ -62,7 +62,7 @@ const FooterStatusSelect: React.FC<Props> = ({ onSelectStatus, heading, options 
   <>
     <h1 css={changeStatusStyle}>{heading}</h1>
     <StyledList>
-      {options.map((option) => (
+      {options.map(option => (
         <StyledListItem key={option.id}>
           <StyledButton css={checkItemStyle} disabled={option.active} onClick={() => onSelectStatus(option)}>
             <Check />

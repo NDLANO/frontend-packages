@@ -11,13 +11,13 @@ import AccordionSection, { Props as AccordionSectionProps } from './AccordionSec
 
 // Filtrer ut alle children som ikke er AccordionSections
 const getPanels = (children: ReactNode): ReactElement<AccordionSectionProps>[] => {
-  const panels = Children.map(children, (child) =>
+  const panels = Children.map(children, child =>
     React.isValidElement(child) && child.type === AccordionSection ? child : null,
   );
-  return panels ? panels.filter((p) => p) : [];
+  return panels ? panels.filter(p => p) : [];
 };
-export const getPanelIds = (children: ReactNode) => getPanels(children).map((p) => p.props.id);
+export const getPanelIds = (children: ReactNode) => getPanels(children).map(p => p.props.id);
 export const getOpenPanels = (children: ReactNode) =>
   getPanels(children)
-    .filter((p) => p.props.startOpen)
-    .map((p) => p.props.id);
+    .filter(p => p.props.startOpen)
+    .map(p => p.props.id);

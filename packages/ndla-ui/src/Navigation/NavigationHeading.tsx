@@ -19,7 +19,7 @@ const StyledH1 = styled.h1<InvertItProps>`
     margin: 50px 0 24px;
     ${fonts.sizes('52px', '65px')};
   }
-  ${(props) =>
+  ${props =>
     props.invertedStyle &&
     css`
       color: #fff;

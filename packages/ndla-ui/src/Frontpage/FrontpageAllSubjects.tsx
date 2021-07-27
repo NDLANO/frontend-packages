@@ -55,7 +55,7 @@ const StyledLetterItem = styled.span<{ subjectViewType?: string }>`
   font-weight: ${fonts.weight.bold};
   color: ${colors.brand.primary};
   margin-bottom: 8px;
-  ${(props) => props.subjectViewType === 'checkbox' && `margin-left:37px;`}
+  ${props => props.subjectViewType === 'checkbox' && `margin-left:37px;`}
 `;
 
 const StyledSpacingElement = styled.span`

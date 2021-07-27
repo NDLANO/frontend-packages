@@ -62,7 +62,7 @@ const ListItem = ({ title, introduction, url, image, imageAlt = '', subjects = [
         <Introduction>{introduction}</Introduction>
         {subjects.length && (
           <Subjects>
-            {subjects.map((subject) => (
+            {subjects.map(subject => (
               <Subject key={subject}>{subject}</Subject>
             ))}
           </Subjects>

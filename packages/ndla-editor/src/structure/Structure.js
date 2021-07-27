@@ -27,7 +27,7 @@ const StyledStructureItem = styled.li`
   display: flex;
   flex-direction: column;
 
-  ${(props) =>
+  ${props =>
     props.greyedOut &&
     css`
       > div > button {
@@ -131,12 +131,12 @@ const Structure = ({
 };
 
 function lazyFunction(f) {
-  return function () {
+  return function() {
     return f.apply(this, arguments);
   };
 }
 
-const lazyItemShape = lazyFunction(function () {
+const lazyItemShape = lazyFunction(function() {
   return ItemShape;
 });
 

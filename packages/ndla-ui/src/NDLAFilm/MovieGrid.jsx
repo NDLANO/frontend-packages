@@ -46,7 +46,7 @@ const MovieGrid = ({
         />
       )}
       {!fetchingMoviesByType &&
-        moviesByType.map((movie) => (
+        moviesByType.map(movie => (
           <FilmContentCard
             hideTags
             movie={movie}

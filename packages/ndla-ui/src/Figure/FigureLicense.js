@@ -25,7 +25,7 @@ export const FigureLicenseCta = ({ children, messages, authors, origin, title })
   <div {...classLicenses('cta-wrapper')}>
     <ul {...classLicenses('list')}>
       {title && <li {...classLicenses('item')}>{`${messages.title}: ${title}`}</li>}
-      {authors.map((author) => (
+      {authors.map(author => (
         <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${author.name}`}</li>
       ))}
       {origin && (

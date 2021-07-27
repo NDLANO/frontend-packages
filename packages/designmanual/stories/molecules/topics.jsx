@@ -23,13 +23,13 @@ class Topics extends Component {
   }
 
   toggleAdditionalCores() {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       showAdditionalCores: !prevState.showAdditionalCores,
     }));
   }
 
   toggleAdditionalDialog() {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       showAdditionalDialog: !prevState.showAdditionalDialog,
     }));
   }
@@ -53,7 +53,7 @@ class Topics extends Component {
             }}
             explainationIconLabelledBy="subject-header-id"
             title="Medieproduksjon"
-            hasAdditionalResources={topicList.some((topic) => topic.additional)}
+            hasAdditionalResources={topicList.some(topic => topic.additional)}
             toggleAdditionalResources={this.toggleAdditionalCores}
             showAdditionalResources={showAdditionalCores}
             toggleAdditionalDialog={this.toggleAdditionalDialog}

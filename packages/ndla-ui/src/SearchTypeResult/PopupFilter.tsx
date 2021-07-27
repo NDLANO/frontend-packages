@@ -128,7 +128,7 @@ const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilter
   const onToggleSubject = (subjectId: string) => {
     let updatedFilter = [...subjectValues];
     if (updatedFilter.includes(subjectId)) {
-      updatedFilter = subjectValues.filter((option) => option !== subjectId);
+      updatedFilter = subjectValues.filter(option => option !== subjectId);
     } else {
       updatedFilter.push(subjectId);
     }
@@ -141,7 +141,7 @@ const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilter
   const onToggleProgramme = (programmeId: string) => {
     let updatedFilter = [...programmesValues];
     if (updatedFilter.includes(programmeId)) {
-      updatedFilter = programmesValues.filter((option) => option !== programmeId);
+      updatedFilter = programmesValues.filter(option => option !== programmeId);
     } else {
       updatedFilter.push(programmeId);
     }

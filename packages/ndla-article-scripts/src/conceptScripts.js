@@ -10,8 +10,8 @@ import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
-const closeAllVisibleNotions = (returnFocusToParent) => {
-  forEachElement('[data-notion]', (item) => {
+const closeAllVisibleNotions = returnFocusToParent => {
+  forEachElement('[data-notion]', item => {
     const id = item.getAttribute('id');
     const popup = document.querySelector(`[data-concept-id='${id}']`);
     if (popup.classList.contains('visible')) {
@@ -25,7 +25,7 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
   });
 };
 
-const ESCKeyListener = (e) => {
+const ESCKeyListener = e => {
   if (e.key === 'Escape') {
     closeAllVisibleNotions(true);
     window.removeEventListener('keyup', ESCKeyListener, true);
@@ -37,7 +37,7 @@ const ESCKeyListener = (e) => {
   }
 };
 
-const checkClickOutside = (e) => {
+const checkClickOutside = e => {
   // click out side will close concept box.
   let { target } = e;
   let clickedInside = false;
@@ -56,7 +56,7 @@ const checkClickOutside = (e) => {
 };
 
 export const addShowConceptDefinitionClickListeners = () => {
-  forEachElement('[data-notion]', (item) => {
+  forEachElement('[data-notion]', item => {
     const id = item.getAttribute('id');
     const popup = document.querySelector(`[data-concept-id='${id}']`);
     const openBtn = item.querySelector('[data-notion-link]');
@@ -119,7 +119,7 @@ export const addShowConceptDefinitionClickListeners = () => {
         );
         focusableElements[focusableElements.length - 1].addEventListener(
           'keydown',
-          (e) => {
+          e => {
             if (e.key === 'Tab') {
               e.preventDefault();
               openBtn.focus();

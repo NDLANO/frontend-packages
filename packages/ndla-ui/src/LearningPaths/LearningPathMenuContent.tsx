@@ -55,14 +55,14 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     }
   }
   ${mq.range({ until: breakpoints.desktop })} {
-    ${(props) =>
+    ${props =>
       !props.isOpen &&
       `
       margin-bottom: -${spacing.xsmall};
       margin-top: -${spacing.xsmall};
       transition: margin ${animations.durations.superFast} ease;
     `}
-    ${(props) =>
+    ${props =>
       props.isOpen &&
       `
       a span {
@@ -75,7 +75,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       margin-bottom: 0;
     }
   }
-  ${(props) =>
+  ${props =>
     props.current &&
     props.isOpen &&
     `
@@ -91,7 +91,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       }
     }
   `}
-  ${(props) =>
+  ${props =>
     props.current &&
     `
       background: #fff;
@@ -105,7 +105,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     position: absolute;
     transform: translate(29px, -${spacing.spacingUnit * 3}px);
   }
-  ${(props) =>
+  ${props =>
     !props.afterCurrent &&
     `
     a {
@@ -122,7 +122,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       transform: translate(28px, -${spacing.spacingUnit * 3}px);
     }
   `}
-  ${(props) =>
+  ${props =>
     !props.afterCurrent &&
     !props.current &&
     props.invertedStyle &&
@@ -157,7 +157,7 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
     padding: 0;
   }
   margin-bottom: ${spacing.medium};
-  ${(props) =>
+  ${props =>
     !props.isOpen &&
     css`
       ${mq.range({ until: breakpoints.tablet })} {

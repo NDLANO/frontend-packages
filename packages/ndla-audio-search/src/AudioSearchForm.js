@@ -34,7 +34,7 @@ class AudioSearchForm extends Component {
   }
 
   handleQueryChange({ target: { value } }) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       queryObject: {
         ...prevState.queryObject,
         query: value,

@@ -24,8 +24,8 @@ export const getToken = () =>
     }),
     json: true,
   })
-    .then((res) => res.json())
-    .then((json) => json.access_token);
+    .then(res => res.json())
+    .then(json => json.access_token);
 
 export function headerWithAccessToken(token) {
   return { Authorization: `Bearer ${token}` };

@@ -11,7 +11,7 @@ import { copyTextToClipboard } from '@ndla/util';
 import { forEachElement } from './domHelpers';
 
 export const toggleLicenseInfoBox = () => {
-  forEachElement('.c-dialog', (el) => {
+  forEachElement('.c-dialog', el => {
     const target = el;
     const toggleButton = target.querySelector('.c-figure__captionbtn');
     if (toggleButton) {
@@ -34,7 +34,7 @@ export const toggleLicenseInfoBox = () => {
 };
 
 export const addCopyToClipboardListeners = () => {
-  forEachElement('button[data-copy-string]', (el) => {
+  forEachElement('button[data-copy-string]', el => {
     const target = el;
     target.onclick = () => {
       const text = target.getAttribute('data-copy-string');
@@ -59,7 +59,7 @@ export const addCopyToClipboardListeners = () => {
 export const updateIFrameDimensions = (init = true, topNode = null) => {
   forEachElement(
     '.c-figure--resize iframe',
-    (el) => {
+    el => {
       const iframe = el;
       const parent = iframe.parentNode;
       let ratio = 0.5625;
@@ -95,7 +95,7 @@ export const updateIFrameDimensions = (init = true, topNode = null) => {
 };
 
 export const addEventListenerForFigureZoomButton = () => {
-  forEachElement('button[data-figure-button]', (el) => {
+  forEachElement('button[data-figure-button]', el => {
     const target = el;
     target.onclick = () => {
       const elClass = target.classList[0];

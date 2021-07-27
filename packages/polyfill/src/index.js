@@ -26,8 +26,8 @@ import 'core-js/features/number/is-nan';
 import 'details-polyfill';
 
 // polyfill for Element .remove() in ie11
-(function (arr) {
-  arr.forEach(function (item) {
+(function(arr) {
+  arr.forEach(function(item) {
     if (item.hasOwnProperty('remove')) {
       return;
     }

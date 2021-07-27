@@ -22,21 +22,21 @@ const Container = styled.div<ContainerProps>`
   ${mq.range({ from: breakpoints.tablet })} {
     column-gap: ${spacing.normal};
     margin: ${spacing.large} 0;
-    ${(props) =>
+    ${props =>
       props.itemCount > 1 &&
       `
         grid-template-columns: repeat(2, 1fr);
       `}
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
-    ${(props) =>
+    ${props =>
       props.itemCount > 2 &&
       `
         grid-template-columns: repeat(3, 1fr);
       `}
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    ${(props) =>
+    ${props =>
       props.itemCount > 3 &&
       `
         grid-template-columns: repeat(4, 1fr);
@@ -50,7 +50,7 @@ type Props = {
 
 const SearchSubjectResult = ({ items }: Props) => (
   <Container itemCount={items.length}>
-    {items.map((item) => (
+    {items.map(item => (
       <SearchSubjectItem item={item} key={`${item.id}`} />
     ))}
   </Container>

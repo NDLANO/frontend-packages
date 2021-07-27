@@ -11,11 +11,11 @@ import jump from 'jump.js';
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
 export const addFootnoteClickListeners = () => {
-  forEachElement('.c-footnotes__ref sup a, .c-footnotes__cite sup a', (el) => {
+  forEachElement('.c-footnotes__ref sup a, .c-footnotes__cite sup a', el => {
     const target = el;
 
     const hash = target.href.slice(target.href.indexOf('#'));
-    target.onclick = (e) => {
+    target.onclick = e => {
       e.preventDefault();
       const scrollTarget = document.getElementById(hash.slice(1));
 

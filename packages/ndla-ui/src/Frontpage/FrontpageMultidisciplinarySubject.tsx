@@ -83,7 +83,7 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> 
         <SectionHeading large>{t('frontpageMultidisciplinarySubject.heading')}</SectionHeading>
         {topics ? (
           <Topics>
-            {topics.map((topic) => {
+            {topics.map(topic => {
               return (
                 <Topic key={topic.id}>
                   <SafeLink to={topic.url}>{topic.title}</SafeLink>

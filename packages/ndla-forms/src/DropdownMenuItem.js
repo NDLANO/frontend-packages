@@ -92,12 +92,12 @@ const StyledItemButton = styled.button`
   &:hover {
     background: ${colors.brand.lighter};
   }
-  ${(props) =>
+  ${props =>
     props.highlighted &&
     css`
       background: ${colors.brand.lighter};
     `}
-  ${(props) =>
+  ${props =>
     props.isSelected &&
     css`
       background: ${colors.brand.greyLightest};
@@ -105,7 +105,7 @@ const StyledItemButton = styled.button`
         color: ${colors.text.light};
       }
     `}
-  ${(props) =>
+  ${props =>
     props.disabled &&
     css`
         disabled;

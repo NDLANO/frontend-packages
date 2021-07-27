@@ -42,7 +42,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
     }
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    ${(props) =>
+    ${props =>
       props.invertedStyle &&
       `
       color: #fff;

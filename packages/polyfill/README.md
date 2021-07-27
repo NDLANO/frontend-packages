@@ -25,7 +25,7 @@ import '@ndla/polyfill';
 ```js
 import ScriptLoader from '@ndla/polyfill/lib/ScriptLoader';
 
-const Document = (props) => {
+const Document = props => {
   const polyfill = { src: '/polyfill.min.js' };
   const scripts = [{ src: '/vendor.min.js' }, { src: '/client.min.js' }];
   return (

@@ -13,7 +13,7 @@ import { Copy } from '@ndla/icons/action';
 import { PageContainer, LayoutItem, OneColumn, SubjectHeader } from '@ndla/ui';
 import { CopyButton } from '@ndla/button';
 
-const addLeadingSlash = (str) => {
+const addLeadingSlash = str => {
   if (str.startsWith('/')) {
     return str;
   }
@@ -57,10 +57,10 @@ class BannerList extends Component {
         </OneColumn>
         {banners
           .filter(
-            (banner) => bannerSearchLowerCase === '' || banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1,
+            banner => bannerSearchLowerCase === '' || banner.name.toLowerCase().indexOf(bannerSearchLowerCase) !== -1,
           )
           .sort((a, b) => a.name.localeCompare(b.name, { sensitivity: 'base' }))
-          .map((banner) => (
+          .map(banner => (
             <div key={banner.desktop} style={{ marginTop: '26px' }}>
               <SubjectHeader
                 heading={banner.name}

@@ -22,7 +22,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
   padding: ${spacing.normal} ${spacing.medium};
   border-radius: 5px;
   height: 150px;
-  ${(props) =>
+  ${props =>
     props.backgroundImage !== '' &&
     `
     background-image: url(${props.backgroundImage});

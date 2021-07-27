@@ -45,7 +45,7 @@ const VideoContent = ({ t }) => (
       {[
         { id: 'video-1', title: 'Søvn og hvile' },
         { id: 'video-2', title: 'Betydning og behov' },
-      ].map((el) => (
+      ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
             <a
@@ -103,7 +103,7 @@ export const TextContent = ({ t }) => (
       {[
         { id: 'text-1', title: 'Søvn og hvile' },
         { id: 'text-2', title: 'Betydning og behov' },
-      ].map((el) => (
+      ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
             <FileDocumentOutline className="c-medialist__icon" />
@@ -173,7 +173,7 @@ const AudioContent = ({ t }) => (
       {[
         { id: 'audio-1', title: 'Søvn og hvile' },
         { id: 'audio-2', title: 'Betydning og behov' },
-      ].map((el) => (
+      ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
             <AudioDocument className="c-medialist__icon" />
@@ -233,7 +233,7 @@ export const ImageContent = ({ t }) => (
         'https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
         'https://images.unsplash.com/photo-1463432786691-8ec0615f2dfe?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
         'https://images.unsplash.com/photo-1470138831303-3e77dd49163e?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=',
-      ].map((src) => (
+      ].map(src => (
         <MediaListItem key={uuid()}>
           <MediaListItemImage>
             <img alt="alt" src={src} />
@@ -337,7 +337,7 @@ const OtherContent = ({ t }) => (
       <p>{t('license.other.description')}</p>
     </div>
     <MediaList>
-      {H5PExamples.map((example) => (
+      {H5PExamples.map(example => (
         <MediaListItem key={example.id}>
           <MediaListItemImage>
             <a
@@ -392,7 +392,7 @@ const Files = ({ t }) => (
       {[
         { id: 'files-1', title: 'Søvn og hvile' },
         { id: 'files-2', title: 'Betydning og behov' },
-      ].map((el) => (
+      ].map(el => (
         <MediaListItem key={el.id}>
           <MediaListItemImage>
             <FileDocumentOutline className="c-medialist__icon" />

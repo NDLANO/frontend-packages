@@ -11,11 +11,11 @@ export const toggleRelatedArticles = () => {
   const hiddenItem = classes('item--hidden').className;
   const shownItem = classes('item--shown').className;
 
-  forEachElement('.c-related-articles', (el) => {
+  forEachElement('.c-related-articles', el => {
     const button = el.querySelector(`button[data-type='related-article-button']`);
 
     if (button && typeof button.onclick !== 'function') {
-      button.onclick = (e) => {
+      button.onclick = e => {
         e.stopPropagation();
         if (button.innerHTML === button.getAttribute('data-showless')) {
           const buttonPosition = button.getBoundingClientRect().top;

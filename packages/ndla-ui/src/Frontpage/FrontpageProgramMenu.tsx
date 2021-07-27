@@ -65,7 +65,7 @@ type CursorProps = { hide?: boolean };
 
 const Cursor = styled.div<CursorProps>`
   color: #757575;
-  ${(props) =>
+  ${props =>
     props.hide &&
     `
       visibility: hidden;

@@ -137,7 +137,7 @@ type isIEProps = {
 const StyledSafeLink = styled(SafeLink)<isIEProps>`
   box-shadow: none;
   display: flex;
-  ${(props) =>
+  ${props =>
     props.isIE11 &&
     css`
       flex: 1;
@@ -169,7 +169,7 @@ type visibleImagesProps = {
 const hasForEachPolyfill = () => {
   // Polyfill for ie11
   if ('NodeList' in window && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = function (callback, thisArg) {
+    NodeList.prototype.forEach = function(callback, thisArg) {
       thisArg = thisArg || window;
       for (var i = 0; i < this.length; i++) {
         callback.call(thisArg, this[i], i, this);
@@ -211,7 +211,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies, local
         }
       });
     }
-    setVisibleImages((visibleImages) => ({ ...visibleImages, ...updates }));
+    setVisibleImages(visibleImages => ({ ...visibleImages, ...updates }));
   };
 
   useEffect(() => {

@@ -58,7 +58,7 @@ class FilterList extends Component {
           {options.map((option, index) => {
             const itemModifiers = [];
 
-            const checked = values.some((value) => value === option.value);
+            const checked = values.some(value => value === option.value);
 
             if (!showAll && !checked && index + 1 > this.state.visibleCount) {
               itemModifiers.push('hidden');
@@ -81,12 +81,12 @@ class FilterList extends Component {
                 checked={checked}
                 icon={option.icon}
                 label={option.title}
-                onChange={(event) => {
+                onChange={event => {
                   let newValues = null;
                   if (event.currentTarget.checked) {
                     newValues = [...values, option.value];
                   } else {
-                    newValues = values.filter((value) => value !== option.value);
+                    newValues = values.filter(value => value !== option.value);
                   }
                   if (onChange) {
                     onChange(newValues, option.value);
@@ -101,7 +101,7 @@ class FilterList extends Component {
             {...classes('expand')}
             type="button"
             onClick={() => {
-              this.setState((prevState) => {
+              this.setState(prevState => {
                 if (prevState.visibleCount === defaultVisibleCount) {
                   return {
                     visibleCount: options.length,

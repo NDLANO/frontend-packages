@@ -1,9 +1,9 @@
-const activeAlphabet = (items) => {
+const activeAlphabet = items => {
   const letters = {};
-  'abcdefghijklmnopqrstuvxyzæøå'.split('').forEach((letter) => {
+  'abcdefghijklmnopqrstuvxyzæøå'.split('').forEach(letter => {
     letters[letter] = false;
   });
-  items.forEach((item) => {
+  items.forEach(item => {
     letters[item.name.charAt(0).toLowerCase()] = true;
   });
   return letters;

@@ -2,11 +2,11 @@ import throttle from 'lodash/throttle';
 
 import { forEachElement } from './domHelpers';
 
-const hasScrollbar = (tableEl) => tableEl.scrollWidth > tableEl.clientWidth;
+const hasScrollbar = tableEl => tableEl.scrollWidth > tableEl.clientWidth;
 
 const margin = 5;
 
-const toggleShadows = (tableEl) => {
+const toggleShadows = tableEl => {
   const isStart = tableEl.scrollLeft <= margin;
   const isEnd = tableEl.offsetWidth + tableEl.scrollLeft >= tableEl.scrollWidth - margin;
 
@@ -44,12 +44,12 @@ const toggleShadows = (tableEl) => {
   }
 };
 
-const eventListener = (event) => {
+const eventListener = event => {
   const targetEl = event.target;
   toggleShadows(targetEl);
 };
 
-const expandButtonEventListner = (event) => {
+const expandButtonEventListner = event => {
   const el = event.currentTarget;
 
   const dialogId = el.getAttribute('data-dialog-trigger-id');
@@ -71,7 +71,7 @@ const throttledEventListner = throttle(eventListener, 100);
 
 export const initTableScript = () => {
   setTimeout(() => {
-    forEachElement('.c-table__wrapper', (el) => {
+    forEachElement('.c-table__wrapper', el => {
       const table = el.querySelector('.c-table');
 
       if (hasScrollbar(table)) {
@@ -91,12 +91,12 @@ export const initTableScript = () => {
       }
     });
 
-    forEachElement('.c-table__expand-button', (el) => el.addEventListener('click', expandButtonEventListner));
+    forEachElement('.c-table__expand-button', el => el.addEventListener('click', expandButtonEventListner));
   }, 0);
 };
 
 export const removeTableEventListeners = () => {
-  forEachElement('.c-table', (el) => {
+  forEachElement('.c-table', el => {
     el.removeEventListener('scroll', throttledEventListner);
   });
 };

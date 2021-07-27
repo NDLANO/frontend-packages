@@ -105,7 +105,7 @@ class SearchPage extends Component {
                 size="fullscreen"
                 backgroundColor="grey"
                 activateButton={<Button outline>{t('searchPage.searchPageMessages.filterHeading')}</Button>}>
-                {(onClose) => (
+                {onClose => (
                   <Fragment>
                     <ModalHeader modifier="white left-align">
                       <ModalCloseButton

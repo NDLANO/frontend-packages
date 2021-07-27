@@ -196,8 +196,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Follow us',
-      description:
-        'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
+      description: 'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },
@@ -285,8 +284,7 @@ const messages = {
     shortcutsTooltip: 'Show {count} articles in this subject',
     dialogTooltip: 'What is core content and additional content?',
     dialogHeading: 'Core content and additional content',
-    dialogText1:
-      'As you learn the core content, you acquire the skills described in the curriculum for the subject.',
+    dialogText1: 'As you learn the core content, you acquire the skills described in the curriculum for the subject.',
     dialogText2:
       'Additional content is content in the subject that you can choose in addition to the core material. Through the additional subject, you can immerse yourself in a topic or approach yourself in a different way.',
     showLess: 'Show less',

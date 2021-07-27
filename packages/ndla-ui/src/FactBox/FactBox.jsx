@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Button from '@ndla/button';
 
-const toggleFactBox = (event) => {
+const toggleFactBox = event => {
   const button = event.target;
   const aside = button.previousSibling.parentNode;
   aside.classList.toggle('expanded');

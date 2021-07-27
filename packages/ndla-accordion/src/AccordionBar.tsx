@@ -21,7 +21,7 @@ type StyledAccordionBarProps = {
 };
 
 const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
-  ${(props) =>
+  ${props =>
     props.tiny
       ? css`
           padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0;
@@ -34,7 +34,7 @@ const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
   align-items: center;
   justify-content: flex-start;
   transition: color 100ms ease, background 100ms ease;
-  border: 2px solid ${(props) => (props.hasError ? colors.support.redLight : 'transparent')};
+  border: 2px solid ${props => (props.hasError ? colors.support.redLight : 'transparent')};
   ${({ hasError, isOpen }) =>
     hasError &&
     isOpen &&
@@ -70,9 +70,9 @@ const StyledButton = styled.button<ButtonProps>`
   }
   svg {
     transition: transform 100ms ease;
-    transform: rotate(${(props) => (props.isOpen ? '90' : '0')}deg);
+    transform: rotate(${props => (props.isOpen ? '90' : '0')}deg);
   }
-  ${(props) =>
+  ${props =>
     props.tiny
       ? css`
           padding: ${spacing.xsmall} ${spacing.xsmall} ${spacing.xsmall} ${spacing.small};
@@ -103,7 +103,7 @@ const StyledChildrenWrapper = styled.div<{ tiny?: boolean }>`
   color: ${colors.text.primary};
   display: flex;
   flex: 1;
-  ${(props) => (props.tiny ? fonts.sizes(14, 1.3) : fonts.sizes(18, 1.3))};
+  ${props => (props.tiny ? fonts.sizes(14, 1.3) : fonts.sizes(18, 1.3))};
 `;
 
 type Props = {

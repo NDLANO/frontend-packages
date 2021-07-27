@@ -25,14 +25,14 @@ Hero.propTypes = {
   children: PropTypes.node,
 };
 
-export const SubjectMaterialHero = (props) => <Hero contentType={contentTypes.SUBJECT_MATERIAL} {...props} />;
-export const TasksAndActivitiesHero = (props) => <Hero contentType={contentTypes.TASKS_AND_ACTIVITIES} {...props} />;
-export const AssessmentResourcesHero = (props) => <Hero contentType={contentTypes.ASSESSMENT_RESOURCES} {...props} />;
-export const SubjectHero = (props) => <Hero contentType={contentTypes.SUBJECT} {...props} />;
-export const ExternalLearningResourcesHero = (props) => (
+export const SubjectMaterialHero = props => <Hero contentType={contentTypes.SUBJECT_MATERIAL} {...props} />;
+export const TasksAndActivitiesHero = props => <Hero contentType={contentTypes.TASKS_AND_ACTIVITIES} {...props} />;
+export const AssessmentResourcesHero = props => <Hero contentType={contentTypes.ASSESSMENT_RESOURCES} {...props} />;
+export const SubjectHero = props => <Hero contentType={contentTypes.SUBJECT} {...props} />;
+export const ExternalLearningResourcesHero = props => (
   <Hero contentType={contentTypes.EXTERNAL_LEARNING_RESOURCES} {...props} />
 );
-export const SourceMaterialHero = (props) => <Hero contentType={contentTypes.SOURCE_MATERIAL} {...props} />;
+export const SourceMaterialHero = props => <Hero contentType={contentTypes.SOURCE_MATERIAL} {...props} />;
 export const NdlaFilmHero = ({ hasImage, ...rest }) => (
   <Hero {...rest} contentType={hasImage ? 'ndla-film has-image' : 'ndla-film'} />
 );

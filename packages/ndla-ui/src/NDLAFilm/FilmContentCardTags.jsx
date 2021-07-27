@@ -24,15 +24,15 @@ const StyledMovieTags = styled.span`
 
 const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
   const resources = {};
-  movieResourceTypes.forEach((movieResourceType) => {
-    const resource = resourceTypes.find((resourceType) => resourceType.id === movieResourceType.id);
+  movieResourceTypes.forEach(movieResourceType => {
+    const resource = resourceTypes.find(resourceType => resourceType.id === movieResourceType.id);
     if (resource) {
       resources[resource.name] = true;
     }
   });
   return (
     <StyledWrapperDiv>
-      {Object.keys(resources).map((resourceName) => (
+      {Object.keys(resources).map(resourceName => (
         <StyledMovieTags key={resourceName}>{resourceName}</StyledMovieTags>
       ))}
     </StyledWrapperDiv>

@@ -22,7 +22,7 @@ const StyledGrid = styled.div<StyledGridProps>`
     width: calc(50% - ${spacing.xsmall});
     margin-bottom: ${spacing.normal};
   }
-  ${(props) =>
+  ${props =>
     props.oneColumn &&
     `
     flex-direction: column;

@@ -1,7 +1,7 @@
 import { forEachElement } from './domHelpers';
 
 export const addToggleSynstolketListener = () => {
-  forEachElement('.c-figure', (el) => {
+  forEachElement('.c-figure', el => {
     const target = el;
     const toggleButton = target.querySelector('.c-figure__toggleSynstolket');
     if (toggleButton) {

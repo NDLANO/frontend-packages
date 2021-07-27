@@ -22,7 +22,7 @@ const secondDummyData = {
 };
 
 const fetchVideos = (query, type) =>
-  new Promise((resolve) => {
+  new Promise(resolve => {
     if (query.offset > 0 || query.page > 1) {
       return setTimeout(() => resolve(secondDummyData[type]), 1000);
     }
@@ -34,7 +34,7 @@ export const VideoSearcher = () => {
     console.log(video, type); // eslint-disable-line no-console
   };
 
-  const onError = (err) => {
+  const onError = err => {
     console.error(err); // eslint-disable-line no-console
   };
   const translations = {

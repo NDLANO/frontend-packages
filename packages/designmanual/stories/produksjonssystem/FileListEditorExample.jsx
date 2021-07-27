@@ -80,13 +80,13 @@ class StructureExample extends Component {
   }
 
   onMovedFile(from, to) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       addedFiles: arrMove(prevState.addedFiles, from, to),
     }));
   }
 
   onUpdateFileName(index, value) {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       const { addedFiles } = prevState;
       addedFiles[index].title = value;
       return {
@@ -97,13 +97,13 @@ class StructureExample extends Component {
   }
 
   onDeleteFile(index) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       addedFiles: prevState.addedFiles.filter((_, i) => i !== index),
     }));
   }
 
   onToggleRenderInline(index) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       addedFiles: prevState.addedFiles.map((file, i) => {
         return i === index
           ? {

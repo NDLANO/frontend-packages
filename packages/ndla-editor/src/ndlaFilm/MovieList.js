@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 
 const ListWrapper = styled.ul`
   overflow: visible;
-  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${props => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;
@@ -89,7 +89,7 @@ class MovieList extends Component {
       },
       () => {
         // Add transitions
-        Array.from(this.wrapperRef.current.childNodes.values()).forEach((node) => {
+        Array.from(this.wrapperRef.current.childNodes.values()).forEach(node => {
           node.style.transition = 'transform 100ms ease';
         });
         this.DraggingFile.style.transition = 'box-shadow 100ms ease';

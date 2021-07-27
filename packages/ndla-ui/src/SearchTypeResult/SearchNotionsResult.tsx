@@ -69,7 +69,7 @@ const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }:
         <ButtonRemoveText>{t(`searchPage.resultType.notionsRemove`)}</ButtonRemoveText>
       </Button>
     </HeadingWrapper>
-    {items.map((item) => (
+    {items.map(item => (
       <SearchNotionItem key={item.id} {...item} renderMarkdown={renderMarkdown} />
     ))}
   </Wrapper>

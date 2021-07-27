@@ -14,41 +14,41 @@ import { headerWithAccessToken, getToken } from '../apiFunctions';
 const fetchImages = (query, page) => {
   const queryString = query ? `query=${query}&page=${page}&page-size=15` : `page=${page}&page-size=15`;
   return new Promise((resolve, reject) => {
-    getToken().then((token) => {
+    getToken().then(token => {
       fetch(`https://test.api.ndla.no/image-api/v2/images/?${queryString}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
-      }).then((res) => {
+      }).then(res => {
         if (res.ok) {
           return resolve(res.json());
         }
-        return res.json().then((json) => reject(json));
+        return res.json().then(json => reject(json));
       });
     });
   });
 };
 
-const fetchImage = (id) =>
+const fetchImage = id =>
   new Promise((resolve, reject) => {
-    getToken().then((token) => {
+    getToken().then(token => {
       fetch(`https://test.api.ndla.no/image-api/v2/images/${id}`, {
         method: 'GET',
         headers: headerWithAccessToken(token),
-      }).then((res) => {
+      }).then(res => {
         if (res.ok) {
           return resolve(res.json());
         }
-        return res.json().then((json) => reject(json));
+        return res.json().then(json => reject(json));
       });
     });
   });
 
 export const ImageSearcher = () => {
-  const imageSelect = (image) => {
+  const imageSelect = image => {
     console.log(image); // eslint-disable-line no-console
   };
 
-  const onError = (err) => {
+  const onError = err => {
     console.error(err); // eslint-disable-line no-console
   };
 

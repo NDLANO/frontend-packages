@@ -49,7 +49,9 @@ type Props = {
   searchFieldPlaceholder: string;
   onInputBlur: VoidFunction;
   onSearchInputFocus: VoidFunction;
-  resourceToLinkProps: (resource: Resource) => {
+  resourceToLinkProps: (
+    resource: Resource,
+  ) => {
     to: string;
   };
   onSearch: (event: {}) => void;

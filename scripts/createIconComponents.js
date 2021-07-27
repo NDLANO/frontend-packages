@@ -28,7 +28,7 @@ function ensureDirectoryExistence(filePath) {
 }
 
 function cleanAttributes($el, $) {
-  attrs.forEach((attr) => {
+  attrs.forEach(attr => {
     $el.removeAttr(attr);
   });
   if ($el.children().length === 0) {
@@ -42,7 +42,7 @@ function cleanAttributes($el, $) {
 }
 
 function camelCaseAttributes($el, $) {
-  Object.keys($el[0].attribs).forEach((attr) => {
+  Object.keys($el[0].attribs).forEach(attr => {
     if ($el[0].name !== 'svg' && attr.indexOf('-') > 0 && !attr.startsWith('data-')) {
       const value = $el[0].attribs[attr];
       $el.removeAttr(attr);
@@ -114,10 +114,10 @@ export default ${name};
 }
 
 function writeIndexFiles(types) {
-  Object.keys(types).forEach((folder) => {
+  Object.keys(types).forEach(folder => {
     const components = types[folder];
     const exportsString = components
-      .map((component) => `export { default as ${component} } from './${component}';`)
+      .map(component => `export { default as ${component} } from './${component}';`)
       .join('\n');
     const iconsModule = `${copyright}
 ${autoNotice}
@@ -133,7 +133,7 @@ ${exportsString}\n`;
 }
 
 function writePackageFiles(types) {
-  Object.keys(types).forEach((folder) => {
+  Object.keys(types).forEach(folder => {
     const iconsModule = `
 {
   "name": "@ndla/icons${folder}",
@@ -154,13 +154,13 @@ function writePackageFiles(types) {
 
 function deleteComponents() {
   console.log(`${chalk.yellow.bold(`Deleting generted icon components...`)}`);
-  const isDirectory = (source) => fs.lstatSync(source).isDirectory();
-  const getDirectories = (source) =>
+  const isDirectory = source => fs.lstatSync(source).isDirectory();
+  const getDirectories = source =>
     fs
       .readdirSync(source)
-      .map((name) => path.join(source, name))
+      .map(name => path.join(source, name))
       .filter(isDirectory);
-  getDirectories(path.join(rootDir, 'src')).forEach((directory) => {
+  getDirectories(path.join(rootDir, 'src')).forEach(directory => {
     console.log(`${chalk.yellow(`Deleted`)} ${chalk.dim(`${directory}/*`)}`);
     rimraf.sync(`${directory}/*`);
   });
@@ -171,7 +171,7 @@ function createComponents() {
   const failed = [];
   glob(`${rootDir}/svg/*/*.svg`, (err, icons) => {
     const types = {};
-    icons.forEach((iconPath) => {
+    icons.forEach(iconPath => {
       const id = path.basename(iconPath, '.svg');
       const svg = fs.readFileSync(iconPath, 'utf-8');
       const folder = iconPath.replace(path.join(`${rootDir}/`, 'svg'), '').replace(`/${path.basename(iconPath)}`, '');

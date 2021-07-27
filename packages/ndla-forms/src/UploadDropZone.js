@@ -74,7 +74,7 @@ const DropZone = styled.div`
     left: ${spacing.small};
     bottom: ${spacing.small};
     border-radius: ${misc.borderRadius};
-    opacity: ${(props) => (props.draggedOver ? '0.32' : '0.16')};
+    opacity: ${props => (props.draggedOver ? '0.32' : '0.16')};
     transition: opacity 200ms ease;
   }
 `;
@@ -135,7 +135,7 @@ const AlertMessages = styled.div`
   ${fonts.sizes(14, 1.1)};
 `;
 
-const getFiles = (e) => {
+const getFiles = e => {
   const files = [];
   let i;
   if (e.dataTransfer.items) {
@@ -207,7 +207,7 @@ class UploadDropZone extends Component {
     const hasIllegalFiles = illegalFiles.length > 0;
     let errorMessage;
     if (hasIllegalFiles) {
-      const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf('/') + 1)).toString(', ');
+      const illegalFileTypes = files.map(file => file.type.substr(file.type.indexOf('/') + 1)).toString(', ');
       errorMessage = `Filetype(s) not supported: ${illegalFileTypes}`;
       clearTimeout(this.errorTimer);
       this.errorTimer = setTimeout(() => {

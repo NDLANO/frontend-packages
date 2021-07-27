@@ -2,7 +2,7 @@
 
 import { addFactBoxClickListener, removeFactBoxClickListener } from '../factBoxScripts';
 
-const byId = (id) => document.getElementById(id);
+const byId = id => document.getElementById(id);
 
 const asideHtml = `
     <section>

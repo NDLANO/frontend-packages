@@ -56,7 +56,7 @@ export class CarouselAutosize extends Component<Props, State> {
     const breakpoints: CaruselBreakpoint[] = this.props.breakpoints;
 
     const useBreakpoint = breakpoints
-      .filter((breakpointItem) => {
+      .filter(breakpointItem => {
         const until = breakpointItem.until ? parseFloat(breakpointFromCore[breakpointItem.until]) : 9999;
         return until >= wrapperWidthInEm;
       })
@@ -105,11 +105,10 @@ export class CarouselAutosize extends Component<Props, State> {
     let wrapperWidth = 'auto';
 
     if (centered && calculatedCarouselProps) {
-      wrapperWidth = `${
-        calculatedCarouselProps.columnWidth * Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
+      wrapperWidth = `${calculatedCarouselProps.columnWidth *
+        Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
         calculatedCarouselProps.distanceBetweenItems * (calculatedCarouselProps.columnsPrSlide - 1) +
-        (calculatedCarouselProps.margin || 0) * 2
-      }px`;
+        (calculatedCarouselProps.margin || 0) * 2}px`;
     }
 
     return (

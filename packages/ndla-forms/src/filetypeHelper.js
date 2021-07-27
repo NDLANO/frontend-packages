@@ -6,7 +6,7 @@
  */
 
 export const illegalFormats = (files, allowedFiles) => {
-  return files.filter((file) => {
+  return files.filter(file => {
     const [type, subtype] = file.type.split('/');
 
     const fileTypeAllowed =
@@ -17,7 +17,7 @@ export const illegalFormats = (files, allowedFiles) => {
 };
 
 export const illegalEndings = (files, allowedFiles) => {
-  return files.filter((file) => {
+  return files.filter(file => {
     const fileEnding = file.name.split('.').pop();
 
     const fileEndingAllowed = allowedFiles.includes(`.${fileEnding}`);

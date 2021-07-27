@@ -62,11 +62,11 @@ const resources = [
 ];
 
 export const getResources = () => {
-  return resources.map((item) => {
+  return resources.map(item => {
     if (item.filters.length) {
       item.subjects = [];
-      item.filters.forEach((filterId) => {
-        const subject = filters.find((filter) => filter.id === filterId);
+      item.filters.forEach(filterId => {
+        const subject = filters.find(filter => filter.id === filterId);
         item.subjects.push(subject.label);
       });
     }

@@ -28,10 +28,10 @@ type SpacerProps = {
 };
 
 const Spacer = styled.div<SpacerProps>`
-  background-color: ${(props) => (props.outline && !props.disabled ? colors.brand.primary : 'white')};
+  background-color: ${props => (props.outline && !props.disabled ? colors.brand.primary : 'white')};
   width: 1px;
-  border-top: 2px solid ${(props) => (props.disabled ? colors.background.dark : colors.brand.primary)};
-  border-bottom: 2px solid ${(props) => (props.disabled ? colors.background.dark : colors.brand.primary)};
+  border-top: 2px solid ${props => (props.disabled ? colors.background.dark : colors.brand.primary)};
+  border-bottom: 2px solid ${props => (props.disabled ? colors.background.dark : colors.brand.primary)};
 `;
 
 const StyledMenuWrapper = styled.div`
@@ -53,7 +53,7 @@ const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
   position: absolute;
   right: 0;
-  ${(props) => {
+  ${props => {
     if (props.verticalPosition === 'top') {
       return css`
         top: ${props.offsetY};
@@ -86,9 +86,9 @@ type StyledButtonProps = {
 };
 const ButtonItem = styled.button<StyledButtonProps>`
   ${buttonStyle};
-  ${(props) => props.outline && outlineStyle}
-  ${(props) => props.large && largeStyle}
-  ${(props) =>
+  ${props => props.outline && outlineStyle}
+  ${props => props.large && largeStyle}
+  ${props =>
     props.outline &&
     `
     border-color:white;
@@ -109,7 +109,7 @@ const ButtonItem = styled.button<StyledButtonProps>`
 `;
 const MenuItem = styled.li<StyledButtonProps>`
   margin: 0;
-  border-bottom: 1px solid ${(props) => (props.outline ? colors.brand.primary : `white`)};
+  border-bottom: 1px solid ${props => (props.outline ? colors.brand.primary : `white`)};
   line-height: normal;
   border-radius: 0;
   &:first-of-type {
@@ -133,7 +133,7 @@ type StyledIconProps = {
 
 const StyledIcon = styled(ChevronDown)<StyledIconProps>`
   transition: transform 200ms ease;
-  transform: rotate(${(props) => props.rotate}deg);
+  transform: rotate(${props => props.rotate}deg);
 `;
 
 type ButtonProps = {
@@ -218,7 +218,7 @@ export const MultiButton = ({
                   <StyledOptionWrapper>
                     <StyledOptionContent>
                       <PopUpMenu>
-                        {secondaryButtons.map((button) => (
+                        {secondaryButtons.map(button => (
                           <MenuItem key={button.value} outline={outline}>
                             <ButtonItem
                               outline={outline}

@@ -64,7 +64,7 @@ class TopicIntroductionShortcuts extends Component {
         {buttonView}
         {open && (
           <ul className={classes('list', open ? 'visible' : '').className}>
-            {shortcuts.map((shortcut) => (
+            {shortcuts.map(shortcut => (
               <li {...classes('item')} key={shortcut.id}>
                 <ShortcutItem shortcut={shortcut} />
               </li>

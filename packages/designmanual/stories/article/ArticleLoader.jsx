@@ -35,7 +35,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores, ndlaFi
           ],
         }}
         title="Medieproduksjon"
-        hasAdditionalResources={topicList.some((topic) => topic.additional)}
+        hasAdditionalResources={topicList.some(topic => topic.additional)}
         toggleAdditionalResources={toggleAdditionalCores}
         showAdditionalResources={showAdditionalCores}
       />
@@ -78,7 +78,7 @@ class ArticleLoader extends Component {
     }
   }
 
-  handleSubmit = async (articleId) => {
+  handleSubmit = async articleId => {
     const { useFFServer, onArticleLoaded } = this.props;
     try {
       const article = await fetchArticle(articleId, useFFServer);
@@ -101,7 +101,7 @@ class ArticleLoader extends Component {
   };
 
   toggleAdditionalCores = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       showAdditionalCores: !prevState.showAdditionalCores,
     }));
   };
@@ -125,7 +125,7 @@ class ArticleLoader extends Component {
     } = this.props;
     const scripts =
       article && article.requiredLibraries
-        ? article.requiredLibraries.map((lib) => ({
+        ? article.requiredLibraries.map(lib => ({
             src: lib.url,
             type: lib.mediaType,
           }))

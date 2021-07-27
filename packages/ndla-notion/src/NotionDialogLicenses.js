@@ -29,7 +29,7 @@ const NotionDialogLicensesWrapper = styled.div`
 const NotionDialogLicenses = ({ license, authors, source, locale, licenseBox }) => {
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
   const authorsLength = authors.length;
-  const wrapLink = (source) => {
+  const wrapLink = source => {
     if (source?.startsWith('http')) {
       return (
         <a href={source} alt={source}>

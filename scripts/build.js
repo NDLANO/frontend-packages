@@ -24,7 +24,7 @@ const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const OK = chalk.reset.inverse.bold.green(' DONE ');
 
-const adjustToTerminalWidth = (str) => {
+const adjustToTerminalWidth = str => {
   const columns = process.stdout.columns || 80;
   const width = columns - stringLength(OK) + 1;
   const strs = str.match(new RegExp(`(.{1,${width}})`, 'g'));
@@ -32,7 +32,10 @@ const adjustToTerminalWidth = (str) => {
   if (lastString.length < width) {
     lastString += Array(width - lastString.length).join(chalk.dim('.'));
   }
-  return strs.slice(0, -1).concat(lastString).join('\n');
+  return strs
+    .slice(0, -1)
+    .concat(lastString)
+    .join('\n');
 };
 
 function resolveDestPath(file, dest) {
@@ -97,7 +100,7 @@ function buildNodePackage(p) {
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));
 
-  files.forEach((file) => {
+  files.forEach(file => {
     buildFile(file, 'es', { silent: true });
     buildFile(file, 'lib', {
       silent: true,

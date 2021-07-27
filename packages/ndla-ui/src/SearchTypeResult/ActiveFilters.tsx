@@ -65,11 +65,11 @@ const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
         `}
 
     ${({ filterLength }) =>
-        filterLength &&
-        filterLength > 2 &&
-        css`
-          max-width: 70px;
-        `}
+      filterLength &&
+      filterLength > 2 &&
+      css`
+        max-width: 70px;
+      `}
     }
   }
 `;
@@ -95,7 +95,7 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customEleme
   if (filters && filters.length > 0) {
     const filterLength = filters.length;
 
-    const filterItems = filters.map((filter) => {
+    const filterItems = filters.map(filter => {
       const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
 
       return (
@@ -119,7 +119,7 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customEleme
     return (
       <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
         {filterItems}
-        {customElements && customElements.map((item) => <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>)}
+        {customElements && customElements.map(item => <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>)}
       </StyledActiveFilters>
     );
   }

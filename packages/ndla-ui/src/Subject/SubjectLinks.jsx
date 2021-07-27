@@ -12,7 +12,7 @@ const SubjectLinks = ({ links, heading }) => (
     <SubjectSectionTitle className={classes('heading').className}>{heading}</SubjectSectionTitle>
     <nav>
       <ul {...classes('list')}>
-        {links.map((link) => (
+        {links.map(link => (
           <li key={link.toLinkProps().to} {...classes('item')}>
             <SafeLink {...link.toLinkProps()}>{link.text}</SafeLink>
           </li>

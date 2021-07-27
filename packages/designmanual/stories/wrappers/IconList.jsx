@@ -67,7 +67,7 @@ IconItem.propTypes = {
 
 const IconList = ({ icons, folder }) => (
   <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
-    {Object.keys(icons).map((key) => (
+    {Object.keys(icons).map(key => (
       <IconItem key={key} name={key} icon={icons[key]} folder={folder} />
     ))}
   </ul>

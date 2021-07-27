@@ -21,7 +21,7 @@ const toggleExploded = (container, isOpen) => {
   }
 };
 
-const eventListener = (event) => {
+const eventListener = event => {
   if (event.currentTarget.getAttribute('open') !== null) {
     updateIFrameDimensions(false, event.currentTarget);
     toggleExploded(event.currentTarget, true);
@@ -31,13 +31,13 @@ const eventListener = (event) => {
 };
 
 export const addDetailsEventListeners = () => {
-  forEachElement('details', (el) => {
+  forEachElement('details', el => {
     el.addEventListener('toggle', eventListener);
   });
 };
 
 export const removeDetailsEventListeners = () => {
-  forEachElement('details', (el) => {
+  forEachElement('details', el => {
     el.removeEventListener('toggle', eventListener);
   });
 };

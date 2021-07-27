@@ -30,7 +30,7 @@ const LanguageSelectorContent: React.FunctionComponent<Props & tType> = ({
 }) => (
   <nav>
     <ul>
-      {Object.keys(options).map((key) => (
+      {Object.keys(options).map(key => (
         <li key={key}>
           {key === currentLanguage ? (
             <span>{options[key].name}</span>

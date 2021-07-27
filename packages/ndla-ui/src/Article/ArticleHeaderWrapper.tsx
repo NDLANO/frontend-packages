@@ -66,7 +66,7 @@ type CompetenceButtonWrapperProps = {
 const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
   display: flex;
   align-items: center;
-  ${(props) => props.addSpace && `padding-left: 12px;`}
+  ${props => props.addSpace && `padding-left: 12px;`}
 `;
 
 type Props = {
@@ -132,7 +132,7 @@ class ArticleHeaderWrapper extends Component<Props, State> {
             {children}
             <CompetenceWrapper>
               {competenceGoalTypes &&
-                competenceGoalTypes.map((type) => (
+                competenceGoalTypes.map(type => (
                   <CompetenceBadge key={type}>
                     <FooterHeaderIcon />
                     <CompetenceBadgeText>{type}</CompetenceBadgeText>

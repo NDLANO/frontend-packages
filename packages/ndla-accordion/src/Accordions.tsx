@@ -25,7 +25,7 @@ const Accordions = ({ tiny, single, t, children }: Props & tType) => {
       const newOpenPanels = openPanels.includes(id) ? [] : [id];
       setOpenPanels(newOpenPanels);
     } else {
-      const newOpenPanels = openPanels.includes(id) ? openPanels.filter((p) => p !== id) : openPanels.concat(id);
+      const newOpenPanels = openPanels.includes(id) ? openPanels.filter(p => p !== id) : openPanels.concat(id);
       setOpenPanels(newOpenPanels);
     }
   };
@@ -44,7 +44,7 @@ const Accordions = ({ tiny, single, t, children }: Props & tType) => {
           </Button>
         </div>
       )}
-      {Children.map(children, (child) => {
+      {Children.map(children, child => {
         if (React.isValidElement(child) && child.type === AccordionSection) {
           const { id } = child.props;
           return React.cloneElement(child, {

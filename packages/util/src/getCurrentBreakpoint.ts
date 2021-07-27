@@ -4,7 +4,10 @@ const getCurrentBreakpoint = () => {
     return '';
   }
 
-  return window.getComputedStyle(body, ':before').getPropertyValue('content').replace(/"/g, '');
+  return window
+    .getComputedStyle(body, ':before')
+    .getPropertyValue('content')
+    .replace(/"/g, '');
 };
 
 export default getCurrentBreakpoint;

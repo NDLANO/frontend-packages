@@ -25,7 +25,7 @@ To use the `VideoSearch` component, some functions for handling search and fetch
 ```js
 import VideoSearch from '@ndla/video-search';
 
-const videoSelector = (image) => {
+const videoSelector = image => {
   // handle video
 };
 

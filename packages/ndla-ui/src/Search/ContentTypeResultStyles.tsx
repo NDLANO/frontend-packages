@@ -29,7 +29,7 @@ export const StyledNoHit = styled.p<inMenuProps>`
   margin: 0;
   font-style: italic;
   ${fonts.sizes(16, 1.1)};
-  ${(props) =>
+  ${props =>
     props.inMenu &&
     css`
       ${mq.range({ from: breakpoints.desktop })} {
@@ -74,20 +74,20 @@ type StyledListItemProps = {
 };
 
 export const StyledListItem = styled.li<StyledListItemProps>`
-  ${(props) =>
+  ${props =>
     props.delayAnimation &&
     css`
       ${animations.fadeInLeftFromZero()}
       animation-delay: ${animations.durations.normal};
     `}
-  ${(props) => !props.delayAnimation && animations.fadeInLeft()}
+  ${props => !props.delayAnimation && animations.fadeInLeft()}
 `;
 
 export const StyledList = styled.ul<inMenuProps>`
   list-style: none;
   padding: 0;
   margin: 0;
-  ${(props) => {
+  ${props => {
     if (props.animateList && props.animateList > 0) {
       return animations.toggledContentWithSwitchAnimation(
         animations.durations.normal,
@@ -114,7 +114,7 @@ export const StyledList = styled.ul<inMenuProps>`
       &:focus {
         ${highlightStyle};
       }
-      ${(props) =>
+      ${props =>
         props.inMenu
           ? css`
               ${mq.range({ from: breakpoints.desktop })} {

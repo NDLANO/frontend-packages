@@ -19,7 +19,7 @@ const LANGUAGES = [
 
 const LanguageSelector = () => (
   <LanguageContext.Consumer value="en">
-    {(context) => (
+    {context => (
       <Fragment>
         <h2 className="u-heading">Velg språk for labels</h2>
         <div className="c-filter u-margin-top">
@@ -27,7 +27,7 @@ const LanguageSelector = () => (
             label="Velg språk:"
             options={LANGUAGES}
             selected={context.lang}
-            onChange={(value) => {
+            onChange={value => {
               context.changeLanguage(value);
             }}
           />

@@ -6,7 +6,7 @@ import NotionBody from './NotionBody';
 
 const NotionDialogWrapper = ({ title, children, closeCallback, subTitle }) => (
   <Modal backgroundColor="white" controllable isOpen animation="subtle" onClose={closeCallback}>
-    {(onCloseModal) => (
+    {onCloseModal => (
       <Fragment>
         <NotionHeader title={title} subTitle={subTitle} onClose={onCloseModal} />
         <NotionBody>{children}</NotionBody>

@@ -117,7 +117,7 @@ export const FlexContainer = styled.div`
 `;
 
 export const FlexElement = styled.div<{ widthPercentage?: number }>`
-  width: ${(p) => p.widthPercentage || 25}%;
+  width: ${p => p.widthPercentage || 25}%;
   select,
   input {
     width: 100%;

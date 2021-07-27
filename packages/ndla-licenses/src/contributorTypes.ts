@@ -120,7 +120,7 @@ export interface CopyrightType {
 
 export function mkContributorString(contributors: Contributor[], lang: string, ignoreType: string) {
   return contributors
-    .map((contributor) => {
+    .map(contributor => {
       const type = contributor.type.toLowerCase();
       if (type === ignoreType) {
         return contributor.name;
@@ -149,5 +149,5 @@ export function getGroupedContributorDescriptionList(copyright: CopyrightType, l
       description: mkContributorString(processors, lang, 'processor'),
       metaType: metaTypes.contributor,
     },
-  ].filter((item) => item.description !== '');
+  ].filter(item => item.description !== '');
 }

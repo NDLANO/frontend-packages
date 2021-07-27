@@ -7,7 +7,7 @@ import { Center } from './helpers';
 
 const classes = BEMHelper('c-table');
 
-const phraseApprovedClass = (phrase) => {
+const phraseApprovedClass = phrase => {
   if (typeof phrase !== 'string' || phrase.substr(0, 1) === '*') {
     return 'c-styleguide-table__warning-cell';
   }
@@ -41,7 +41,7 @@ class Messages extends Component {
     const flattened = findNotApprovedLabels
       ? Object.keys(this.flattenedNb)
           .filter(
-            (key) =>
+            key =>
               !this.flattenedNb[key] ||
               this.flattenedNb[key].substr(0, 1) === '*' ||
               !this.flattenedNn[key] ||
@@ -56,7 +56,7 @@ class Messages extends Component {
     }
 
     const filtered = Object.keys(flattened).filter(
-      (key) =>
+      key =>
         key.search(new RegExp(searchText, 'i')) !== -1 ||
         (this.flattenedNb[key] && this.flattenedNb[key].search(new RegExp(searchText, 'i')) !== -1) ||
         (this.flattenedNn[key] && this.flattenedNn[key].search(new RegExp(searchText, 'i')) !== -1) ||
@@ -68,7 +68,7 @@ class Messages extends Component {
   renderAllPhrases() {
     // 1. Loop through all phrases with lang "nb"
     // 2. Show other all languages next to it
-    return Object.keys(this.filterSearch()).map((key) => (
+    return Object.keys(this.filterSearch()).map(key => (
       <tr key={key}>
         <td>{key}</td>
         <td className={phraseApprovedClass(this.flattenedNb[key])}>{this.flattenedNb[key]}</td>
@@ -107,7 +107,7 @@ class Messages extends Component {
                       { title: 'Vis ikke godkjente', value: 1 },
                     ]}
                     values={[this.state.findNotApprovedLabels]}
-                    onChange={(e) => {
+                    onChange={e => {
                       this.setState({
                         findNotApprovedLabels: e.pop(),
                       });

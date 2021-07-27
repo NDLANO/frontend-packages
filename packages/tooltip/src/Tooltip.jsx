@@ -53,8 +53,8 @@ const Fade = styled.div`
     }
   }
   animation-fill-mode: forwards;
-  animation-delay: ${(props) => props.delay}ms;
-  animation-name: ${(props) => (props.animateIn ? 'fadeInTooltip' : '')};
+  animation-delay: ${props => props.delay}ms;
+  animation-name: ${props => (props.animateIn ? 'fadeInTooltip' : '')};
   animation-duration: 300ms;
 `;
 

@@ -164,7 +164,7 @@ const SpeedValueButton = styled(MenuItem)<SpeedValueButtonProps>`
     border-radius: 5px;
     color: ${colors.text.primary};
   }
-  ${(props) =>
+  ${props =>
     props.selected &&
     `
     color: ${colors.text.primary};
@@ -429,7 +429,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
             <SpeedMenu as="div" portal={false}>
               <div>
                 <SpeedList as="div">
-                  {speedValues.map((speed) => (
+                  {speedValues.map(speed => (
                     <SpeedValueButton
                       type="button"
                       as="button"

@@ -76,11 +76,11 @@ export const outlineStyle = css`
   }
 `;
 
-const outlineWithSize = (size) =>
+const outlineWithSize = size =>
   css`
     ${outlineStyle}
     ${(size === 'xsmall' || size === 'small') &&
-    `border-width:1px;
+      `border-width:1px;
         &:hover,
         &:focus,
         &:disabled {
@@ -181,35 +181,39 @@ export const borderShapes = {
   normal: () => css`
     border-radius: ${misc.borderRadius};
   `,
-  rounded: (size) => css`
+  rounded: size => css`
     border-radius: 32px;
     font-weight: ${fonts.weight.semibold};
     padding-left: 20px;
     padding-right: 20px;
     ${size === 'xsmall' &&
-    `padding-left: 10px;
+      `padding-left: 10px;
        padding-right: 10px;`}
     ${size === 'small' &&
-    `padding-left:${spacing.small};
+      `padding-left:${spacing.small};
        padding-right:${spacing.small};`}
      ${size === 'normal' &&
-    `padding-left:16px;
+       `padding-left:16px;
        padding-right:16px;`}
-    ${size === 'medium'
-      ? `
+    ${
+      size === 'medium'
+        ? `
       ${mq.range({ from: breakpoints.tablet })} {
         padding-left:${spacing.medium};
         padding-right:${spacing.medium};
       }`
-      : null}
-    ${size === 'large'
-      ? `
+        : null
+    }
+    ${
+      size === 'large'
+        ? `
         ${mq.range({ from: breakpoints.tablet })} {
         padding-left:${spacing.large};padding-right:${spacing.large};
       }`
-      : null}
+        : null
+    }
   `,
-  sharpened: (size) => css`
+  sharpened: size => css`
     border-radius: 2px;
     font-weight: ${fonts.weight.semibold};
     ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null};
@@ -465,7 +469,7 @@ export const buttonStyle = css`
   }
 `;
 
-export const ButtonStyles = (p) =>
+export const ButtonStyles = p =>
   css`
     ${buttonStyle}
     ${p.appearance ? appearances[p.appearance] : null}
@@ -482,14 +486,14 @@ export const ButtonStyles = (p) =>
   `;
 
 export const StyledButton = styled('button')`
-  ${(p) => ButtonStyles(p)}
+  ${p => ButtonStyles(p)}
 `;
 
 // Reverse the array to find the last element first
-const modifierToApperance = (modifiers) =>
+const modifierToApperance = modifiers =>
   Object.keys(modifiers)
     .reverse()
-    .find((key) => modifiers[key]);
+    .find(key => modifiers[key]);
 
 export const Button = ({
   outline,

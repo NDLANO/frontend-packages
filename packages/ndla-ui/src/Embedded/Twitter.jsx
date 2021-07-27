@@ -36,7 +36,7 @@ class EmbeddedTwitter extends React.Component {
   }
 
   loadWidget() {
-    window.twttr.ready((tw) => {
+    window.twttr.ready(tw => {
       // Delete existing
       EmbeddedTwitter.removeChildren(this.widgetWrapper);
 
@@ -52,7 +52,7 @@ class EmbeddedTwitter extends React.Component {
 
   render() {
     return React.createElement('div', {
-      ref: (c) => {
+      ref: c => {
         this.widgetWrapper = c;
       },
     });

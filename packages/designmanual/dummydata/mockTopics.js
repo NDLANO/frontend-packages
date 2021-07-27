@@ -136,7 +136,7 @@ export const topicList = [
   },
 ];
 
-export const topicListFilm = topicList.map((topic) => ({
+export const topicListFilm = topicList.map(topic => ({
   ...topic,
   metaImage: { url: 'http://placehold.it/200x160', alt: 'some image' },
 }));

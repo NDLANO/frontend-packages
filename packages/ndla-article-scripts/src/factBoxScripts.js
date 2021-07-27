@@ -9,14 +9,14 @@
 import { forEachElement } from './domHelpers';
 
 export const addFactBoxClickListener = () => {
-  forEachElement('.c-factbox__button', (el) => {
+  forEachElement('.c-factbox__button', el => {
     const target = el;
     target.onclick = () => target.parentNode.classList.toggle('expanded');
   });
 };
 
 export const removeFactBoxClickListener = () => {
-  forEachElement('.c-factbox__button', (el) => {
+  forEachElement('.c-factbox__button', el => {
     const target = el;
     target.onclick = undefined;
   });

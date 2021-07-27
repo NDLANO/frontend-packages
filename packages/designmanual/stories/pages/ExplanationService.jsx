@@ -45,7 +45,7 @@ const placeholderCSS = css`
   font-weight: initial;
   opacity: 0.5;
 `;
-const placeholderHasValuesCSS = props =>
+const placeholderHasValuesCSS = (props) =>
   !props.hasValues
     ? css`
         color: ${colors.brand.primary};
@@ -54,7 +54,7 @@ const placeholderHasValuesCSS = props =>
       `
     : placeholderCSS;
 
-const categoryFilterCSS = props => css`
+const categoryFilterCSS = (props) => css`
   border: 2px solid ${colors.brand.primary};
   min-height: auto;
   cursor: pointer;
@@ -75,10 +75,10 @@ const categoryFilterCSS = props => css`
 
 const availableCategories = () => {
   const categories = [];
-  mockExplanationService.items.forEach(item => {
+  mockExplanationService.items.forEach((item) => {
     if (item.category) {
-      item.category.forEach(categoryItem => {
-        const exists = categories.some(element => {
+      item.category.forEach((categoryItem) => {
+        const exists = categories.some((element) => {
           return element.value === categoryItem.value;
         });
         if (!exists) {
@@ -101,7 +101,7 @@ const ExplanationService = ({ t }) => {
   const [categoryFilterOpen, setCategoryFilterOpen] = useState(false);
   const [categoryFilterSearchValue, setCategoryFilterSearchValue] = useState('');
 
-  const setDetailedItemHandler = item => {
+  const setDetailedItemHandler = (item) => {
     setDetailedItem(item);
   };
 
@@ -109,7 +109,7 @@ const ExplanationService = ({ t }) => {
     setFilters(values);
   };
 
-  const handleChangeSearchValue = e => {
+  const handleChangeSearchValue = (e) => {
     setSearchValue(e.target.value);
   };
 
@@ -117,13 +117,13 @@ const ExplanationService = ({ t }) => {
     setViewStyle(viewStyle);
   };
 
-  const handleChangedSubjectFilter = values => {
+  const handleChangedSubjectFilter = (values) => {
     setCategoryFilter([]);
     setFilters([]);
     setSubjectFilter(values);
   };
 
-  const handleChangedCategoryFilter = values => {
+  const handleChangedCategoryFilter = (values) => {
     setSubjectFilter([]);
     setFilters([]);
     setCategoryFilter([values]);
@@ -131,7 +131,7 @@ const ExplanationService = ({ t }) => {
     setCategoryFilterSearchValue('');
   };
 
-  const handleStateChangeCategoryFilter = changes => {
+  const handleStateChangeCategoryFilter = (changes) => {
     const { isOpen, type } = changes;
 
     if (type === Downshift.stateChangeTypes.mouseUp) {
@@ -146,12 +146,12 @@ const ExplanationService = ({ t }) => {
     }
   };
 
-  const onCategoryFilterSearch = e => {
+  const onCategoryFilterSearch = (e) => {
     const {
       target: { value },
     } = e;
     const searchValueLowercase = value.toLowerCase();
-    const filteredCategories = availableCategories().filter(item =>
+    const filteredCategories = availableCategories().filter((item) =>
       item.title.toLowerCase().startsWith(searchValueLowercase),
     );
     setCategoryFilterSearchValue(value);
@@ -163,8 +163,8 @@ const ExplanationService = ({ t }) => {
     setCategoryFilterOpen(true);
   };
 
-  const removeCategoryFilter = value => {
-    const filteredCategories = categoryFilter.filter(item => item.title !== value);
+  const removeCategoryFilter = (value) => {
+    const filteredCategories = categoryFilter.filter((item) => item.title !== value);
     setCategoryFilter(filteredCategories);
   };
 
@@ -177,16 +177,16 @@ const ExplanationService = ({ t }) => {
       subCategory2: [],
     };
     // Loop through all items and fetch all corresponding filters
-    mockExplanationService.items.forEach(item => {
+    mockExplanationService.items.forEach((item) => {
       const hasValue =
         item.category &&
-        item.category.some(itemCategory => {
-          return categoryFilter.some(categoryFilterItem => categoryFilterItem.value === itemCategory.value);
+        item.category.some((itemCategory) => {
+          return categoryFilter.some((categoryFilterItem) => categoryFilterItem.value === itemCategory.value);
         });
       if (hasValue) {
         if (item.subCategory) {
-          item.subCategory.forEach(categoryItem => {
-            const exists = filtersBySelectedCategory.subCategory.some(element => {
+          item.subCategory.forEach((categoryItem) => {
+            const exists = filtersBySelectedCategory.subCategory.some((element) => {
               return element.value === categoryItem.value;
             });
             if (!exists) {
@@ -195,8 +195,8 @@ const ExplanationService = ({ t }) => {
           });
         }
         if (item.subCategory2) {
-          item.subCategory2.forEach(categoryItem => {
-            const exists = filtersBySelectedCategory.subCategory2.some(element => {
+          item.subCategory2.forEach((categoryItem) => {
+            const exists = filtersBySelectedCategory.subCategory2.some((element) => {
               return element.value === categoryItem.value;
             });
             if (!exists) {
@@ -226,16 +226,16 @@ const ExplanationService = ({ t }) => {
     const items = filterItems();
 
     // Disable filters that will give zero results in combination with the selected filters
-    filteredFilter.options.forEach(filterGroup => {
-      filterGroup.forEach(option => {
+    filteredFilter.options.forEach((filterGroup) => {
+      filterGroup.forEach((option) => {
         const optionValue = option.value;
-        const hasItems = items.some(item => {
+        const hasItems = items.some((item) => {
           let hasValue = false;
           if (item.subCategory) {
-            hasValue = item.subCategory.some(category => category.value === optionValue);
+            hasValue = item.subCategory.some((category) => category.value === optionValue);
           }
           if (!hasValue && item.subCategory2) {
-            hasValue = item.subCategory2.some(category => category.value === optionValue);
+            hasValue = item.subCategory2.some((category) => category.value === optionValue);
           }
           return hasValue;
         });
@@ -254,10 +254,10 @@ const ExplanationService = ({ t }) => {
 
     // Filter items on subject. Item must include SOME of the selected subjects
     if (subjectFilter && subjectFilter.length) {
-      filteredItems = filteredItems.filter(item => {
+      filteredItems = filteredItems.filter((item) => {
         if (item.subject) {
-          return subjectFilter.some(subject => {
-            return item.subject.some(itemSubject => itemSubject.value === subject);
+          return subjectFilter.some((subject) => {
+            return item.subject.some((itemSubject) => itemSubject.value === subject);
           });
         }
         return false;
@@ -266,10 +266,10 @@ const ExplanationService = ({ t }) => {
 
     // Filter items on category. Item must include SOME of the selected categories
     if (categoryFilter && categoryFilter.length) {
-      filteredItems = filteredItems.filter(item => {
+      filteredItems = filteredItems.filter((item) => {
         if (item.category) {
-          return categoryFilter.some(category => {
-            return item.category.some(itemCategory => itemCategory.value === category.value);
+          return categoryFilter.some((category) => {
+            return item.category.some((itemCategory) => itemCategory.value === category.value);
           });
         }
         return false;
@@ -278,15 +278,15 @@ const ExplanationService = ({ t }) => {
 
     // Filter items on subCategory. Item must include ALL of the selected categories
     if (filters && filters.length) {
-      filteredItems = filteredItems.filter(item => {
-        return filters.every(category => {
+      filteredItems = filteredItems.filter((item) => {
+        return filters.every((category) => {
           let hasValue = false;
           if (item.subCategory) {
-            hasValue = item.subCategory.some(itemCategory => itemCategory.value === category);
+            hasValue = item.subCategory.some((itemCategory) => itemCategory.value === category);
           }
 
           if (!hasValue && item.subCategory2) {
-            hasValue = item.subCategory2.some(itemCategory => itemCategory.value === category);
+            hasValue = item.subCategory2.some((itemCategory) => itemCategory.value === category);
           }
           return hasValue;
         });
@@ -296,7 +296,7 @@ const ExplanationService = ({ t }) => {
     // Filter with search (testing name, description and tags[])
     if (searchValue.length > 0) {
       const searchValueLowercase = searchValue.toLowerCase();
-      filteredItems = filteredItems.filter(item => item.name.toLowerCase().startsWith(searchValueLowercase));
+      filteredItems = filteredItems.filter((item) => item.name.toLowerCase().startsWith(searchValueLowercase));
     }
     return filteredItems;
   };
@@ -319,7 +319,7 @@ const ExplanationService = ({ t }) => {
           authors={detailedItem.authors}
           licenseBox={
             <Modal activateButton={<Button link>{t('article.useContent')}</Button>} size="medium">
-              {onClose => (
+              {(onClose) => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">
                     <ModalCloseButton onClick={onClose} title="lukk" />
@@ -351,7 +351,7 @@ const ExplanationService = ({ t }) => {
     ) : null;
   };
 
-  const renderMarkdown = text => text;
+  const renderMarkdown = (text) => text;
 
   const filteredItems = filterItems();
   const alphabet = activeAlphabet(filteredItems);
@@ -385,7 +385,7 @@ const ExplanationService = ({ t }) => {
       <CategoriesFilterWrapper>
         <Downshift
           onSelect={handleChangedCategoryFilter}
-          itemToString={item => {
+          itemToString={(item) => {
             return item ? item.title || '' : '';
           }}
           onStateChange={handleStateChangeCategoryFilter}

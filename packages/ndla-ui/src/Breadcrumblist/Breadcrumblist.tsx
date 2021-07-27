@@ -40,7 +40,7 @@ const Wrapper = styled.div<WrapperProps>`
   margin: 32px 0 16px;
   width: auto;
   z-index: 1;
-  ${props => props.hideOnNarrow && `display:none;`}
+  ${(props) => props.hideOnNarrow && `display:none;`}
   ${mq.range({ from: breakpoints.wide })} {
     display: flex;
     margin: 32px 0;
@@ -48,7 +48,7 @@ const Wrapper = styled.div<WrapperProps>`
     position: fixed;
     left: 22px;
     top: 85px;
-    ${props =>
+    ${(props) =>
       props.startOffset &&
       `
         position: absolute;
@@ -56,7 +56,7 @@ const Wrapper = styled.div<WrapperProps>`
     `}
   }
   ${mq.range({ from: breakpoints.wide })} {
-    ${props =>
+    ${(props) =>
       !props.isVisible &&
       `
     opacity: 0;
@@ -66,7 +66,7 @@ const Wrapper = styled.div<WrapperProps>`
   ${mq.range({ from: breakpoints.ultraWide })} {
     margin: 32px 0;
     left: 52px;
-    ${props =>
+    ${(props) =>
       props.leftAlign &&
       `
         left: 0;
@@ -75,7 +75,7 @@ const Wrapper = styled.div<WrapperProps>`
   ${mq.range({ from: '1440px' })} {
     margin-left: 52px;
     left: calc((100vw - 1480px) / 2);
-    ${props =>
+    ${(props) =>
       props.leftAlign &&
       `
         left: 0;
@@ -88,7 +88,7 @@ const Heading = styled.div<InvertItProps>`
   line-height: 15px;
   text-transform: uppercase;
   padding: 0 0 18px 10px;
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     `
       color: #fff;
@@ -118,7 +118,7 @@ const ListItem = styled.li<InvertItProps>`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    ${props =>
+    ${(props) =>
       props.invertedStyle &&
       `
         color: white;
@@ -126,7 +126,7 @@ const ListItem = styled.li<InvertItProps>`
     &:hover {
       text-decoration: underline;
       color: ${colors.brand.primary};
-      ${props =>
+      ${(props) =>
         props.invertedStyle &&
         `
           color: #fff;
@@ -146,12 +146,12 @@ const IconWrapper = styled.span<IconProps>`
   display: inline-block;
   min-width: 24px;
   text-align: center;
-  ${props =>
+  ${(props) =>
     props.isCurrent &&
     `
     color: ${colors.brand.primary};
   `}
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     `
       color: #fff;
@@ -171,7 +171,7 @@ const Dot = styled.span<InvertItProps>`
   display: inline-block;
   margin-left: -15px;
   margin-right: 5px;
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     `
       background-color: #fff;

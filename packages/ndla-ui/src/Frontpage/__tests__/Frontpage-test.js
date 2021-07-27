@@ -10,7 +10,7 @@
 
 import { sortCategories } from '../sortCategories';
 
-const arrayIsCorrect = array =>
+const arrayIsCorrect = (array) =>
   array &&
   array.length &&
   array[0].name === 'fellesfag' &&

@@ -22,7 +22,7 @@ export const makeSrcQueryString = (width, crop, focalPoint) => {
 
 const getSrcSet = (src, crop, focalPoint) => {
   const widths = [2720, 2080, 1760, 1440, 1120, 1000, 960, 800, 640, 480, 320, 240, 180];
-  return widths.map(width => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(', ');
+  return widths.map((width) => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(', ');
 };
 
 const Image = ({ alt, src, lazyLoad, lazyLoadSrc, crop, focalPoint, contentType, sizes, ...rest }) => {

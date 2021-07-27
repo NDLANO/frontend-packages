@@ -26,8 +26,8 @@ const colorsByType = (type: WrapperProps['boxType']) => {
 };
 
 const Wrapper = styled.div<WrapperProps>`
-  background: ${props => colorsByType(props.boxType).backgroundColor};
-  color: ${props => colorsByType(props.boxType).color};
+  background: ${(props) => colorsByType(props.boxType).backgroundColor};
+  color: ${(props) => colorsByType(props.boxType).color};
   font-size: 18px;
   line-height: 32px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
@@ -93,9 +93,9 @@ const CloseButton = styled(Button)`
   align-items: center;
   font-weight: ${fonts.weight.semibold};
   font-size: 16px;
-  color: ${props => colorsByType(props.boxType).color};
+  color: ${(props) => colorsByType(props.boxType).color};
   &:hover {
-    color: ${props => colorsByType(props.boxType).color};
+    color: ${(props) => colorsByType(props.boxType).color};
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
     flex-direction: column-reverse;

@@ -19,7 +19,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const VideoSearchList = props => {
+const VideoSearchList = (props) => {
   const { videos, locale, translations, selectedType, selectedVideo, onSelectVideo, onVideoPreview, searching } = props;
 
   if ((!videos || videos.length === 0) && !searching) {
@@ -31,7 +31,7 @@ const VideoSearchList = props => {
 
   const videoresults = () => {
     if (selectedType === 'youtube') {
-      return videos.map(video => (
+      return videos.map((video) => (
         <VideoSearchResultYouTube
           key={video.cacheId}
           video={video}
@@ -44,7 +44,7 @@ const VideoSearchList = props => {
       ));
     }
 
-    return videos.map(video => (
+    return videos.map((video) => (
       <VideoSearchResultBrightcove
         key={video.id}
         video={video}

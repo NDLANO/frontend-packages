@@ -46,10 +46,10 @@ const subjectAbout = (label, description) => (
   />
 );
 
-const loadArticle = async articleId => {
+const loadArticle = async (articleId) => {
   try {
     const article = await fetchArticle(articleId);
-    const renderMarkdown = text => text;
+    const renderMarkdown = (text) => text;
     const {
       introduction,
       published,
@@ -98,7 +98,7 @@ const loadArticle = async articleId => {
 };
 
 const fetchTopicData = (topicDataItem, setDataCallback) => {
-  loadArticle(topicDataItem.id).then(result => {
+  loadArticle(topicDataItem.id).then((result) => {
     const updatedItem = { ...topicDataItem };
     updatedItem.loadingContent = false;
     updatedItem.content = result.content;
@@ -118,7 +118,7 @@ const fetchTopicData = (topicDataItem, setDataCallback) => {
 const prepareTopicData = (topics, selectedId, setDataCallback) => {
   const items = [];
   let selectedItem = null;
-  topics.forEach(item => {
+  topics.forEach((item) => {
     const newItem = { ...item };
     newItem.selected = newItem.id === selectedId;
     if (newItem.selected) {
@@ -228,7 +228,7 @@ const SubjectPage = ({
     { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
   ];*/
 
-  const breadcrumbItems = initialBreadcrumb.map(item => ({
+  const breadcrumbItems = initialBreadcrumb.map((item) => ({
     ...item,
     isCurrent: currentLevel === item.typename,
   }));
@@ -264,7 +264,7 @@ const SubjectPage = ({
     }
   };
 
-  const updateSubContent = topicsData => {
+  const updateSubContent = (topicsData) => {
     const { items, selectedItem } = prepareTopicData(topicsData, selectedSubTopic, setSubTopicData);
 
     setSubTopics(items);
@@ -275,7 +275,7 @@ const SubjectPage = ({
     }
   };
 
-  const updateSubSubContent = topicsData => {
+  const updateSubSubContent = (topicsData) => {
     const { items, selectedItem } = prepareTopicData(topicsData, selectedSubSubTopic, setSubSubTopicData);
 
     setSubSubTopics(items);
@@ -390,7 +390,7 @@ const SubjectPage = ({
     if (showSubTopicAdditionalTopics) {
       return subTopics;
     }
-    return subTopics.filter(item => !item.isAdditionalResource);
+    return subTopics.filter((item) => !item.isAdditionalResource);
   };
 
   // show/hide breadcrumb based on intersection
@@ -416,7 +416,7 @@ const SubjectPage = ({
             {topicData && (
               <>
                 <Topic
-                  renderMarkdown={text => text}
+                  renderMarkdown={(text) => text}
                   isLoading={topicData.loadingContent}
                   topic={{
                     title: topicData.label,
@@ -435,7 +435,7 @@ const SubjectPage = ({
                     <NavigationBox
                       colorMode="light"
                       heading={t('navigation.topics')}
-                      hasAdditionalResources={subTopics.some(item => item.isAdditionalResource)}
+                      hasAdditionalResources={subTopics.some((item) => item.isAdditionalResource)}
                       showAdditionalResources={showSubTopicAdditionalTopics}
                       items={getSubTopics()}
                       onToggleAdditionalResources={() => setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)}
@@ -446,7 +446,7 @@ const SubjectPage = ({
                 </div>
                 {subTopicData && (
                   <Topic
-                    renderMarkdown={text => text}
+                    renderMarkdown={(text) => text}
                     isLoading={subTopicData.loadingContent}
                     topic={{
                       title: subTopicData.label,
@@ -467,7 +467,7 @@ const SubjectPage = ({
                         <NavigationBox
                           colorMode="light"
                           heading={t('navigation.topics')}
-                          hasAdditionalResources={subSubTopics.some(item => item.isAdditionalResource)}
+                          hasAdditionalResources={subSubTopics.some((item) => item.isAdditionalResource)}
                           showAdditionalResources={showSubTopicAdditionalTopics}
                           items={subSubTopics}
                           onToggleAdditionalResources={() =>
@@ -485,7 +485,7 @@ const SubjectPage = ({
                 {subSubTopicData && (
                   <>
                     <Topic
-                      renderMarkdown={text => text}
+                      renderMarkdown={(text) => text}
                       isLoading={subSubTopicData.loadingContent}
                       topic={{
                         title: subSubTopicData.label,

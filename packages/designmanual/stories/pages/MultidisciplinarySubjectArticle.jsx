@@ -60,7 +60,7 @@ const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [], t
     setArticle(article);
   };
 
-  const onToResourcesClick = e => {
+  const onToResourcesClick = (e) => {
     e.preventDefault();
     window.scrollTo({
       top: resourcesRef.current.getBoundingClientRect().top + window.scrollY,

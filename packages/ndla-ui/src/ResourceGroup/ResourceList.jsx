@@ -112,8 +112,8 @@ injectT(Resource);
 const ResourceList = ({ resources, onClick, type, title, showAdditionalResources, t, ...rest }) => {
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
-    resources.filter(res => res.additional).length > 0 &&
-    resources.filter(res => !res.additional).length === 0;
+    resources.filter((res) => res.additional).length > 0 &&
+    resources.filter((res) => !res.additional).length === 0;
 
   return (
     <div>

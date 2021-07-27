@@ -49,7 +49,7 @@ const StyledForm = styled.form<StyledProps>`
   > div {
     padding: 0;
   }
-  ${props =>
+  ${(props) =>
     props.inputHasFocus &&
     css`
       ${hasFocusStyles}

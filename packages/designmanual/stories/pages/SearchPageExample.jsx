@@ -139,8 +139,8 @@ const results = [
 
 const getActiveFilters = (filterName, fromOptions, currentState) => {
   if (currentState.length) {
-    return currentState.map(value => {
-      const activeFilter = fromOptions.find(option => option.value === value);
+    return currentState.map((value) => {
+      const activeFilter = fromOptions.find((option) => option.value === value);
       activeFilter.filterName = filterName;
       return activeFilter;
     });
@@ -170,9 +170,9 @@ class SearchPageExample extends Component {
     const { t } = this.props;
     const { currentTab } = this.state;
     const currentResult =
-      currentTab === 'all' ? results : results.filter(result => result.matchTab.indexOf(currentTab) !== -1);
+      currentTab === 'all' ? results : results.filter((result) => result.matchTab.indexOf(currentTab) !== -1);
 
-    const author = modifier =>
+    const author = (modifier) =>
       this.props.showAuthor ? (
         <SearchResultAuthor
           modifier={modifier}
@@ -197,24 +197,24 @@ class SearchPageExample extends Component {
       />
     ) : null;
 
-    const onSearch = evt => {
+    const onSearch = (evt) => {
       evt.preventDefault();
     };
 
-    const activeSubjectFilters = searchFilterOptions.subjects.filter(option =>
+    const activeSubjectFilters = searchFilterOptions.subjects.filter((option) =>
       this.state.filter_subjects.includes(option.value),
     );
 
     const activeSubjects = [].concat(
-      ...this.state.filter_subjects.map(subjectKey =>
+      ...this.state.filter_subjects.map((subjectKey) =>
         searchFilterOptions.subjects
-          .find(option => option.value === subjectKey)
+          .find((option) => option.value === subjectKey)
           .subjectFilters.filter(
-            subjectFilter =>
+            (subjectFilter) =>
               this.state.filter_subject_values[subjectKey] &&
               this.state.filter_subject_values[subjectKey].includes(subjectFilter.value),
           )
-          .map(subjects => ({
+          .map((subjects) => ({
             filterName: subjectKey,
             ...subjects,
           })),
@@ -249,16 +249,18 @@ class SearchPageExample extends Component {
     return (
       <SearchPage
         searchString={hasAuthor ? '«Cecilie Isaksen Eftedal»' : searchString}
-        onSearchFieldChange={searchString => this.setState({ searchString })}
+        onSearchFieldChange={(searchString) => this.setState({ searchString })}
         onSearchFieldFilterRemove={(value, filterName) => {
           if (this.state[filterName]) {
-            this.setState(prevState => ({
-              [filterName]: prevState[filterName].filter(option => option !== value),
+            this.setState((prevState) => ({
+              [filterName]: prevState[filterName].filter((option) => option !== value),
             }));
           } else {
-            this.setState(prevState => {
+            this.setState((prevState) => {
               const currentFilterSubjects = prevState.filter_subject_values;
-              currentFilterSubjects[filterName] = currentFilterSubjects[filterName].filter(option => option !== value);
+              currentFilterSubjects[filterName] = currentFilterSubjects[filterName].filter(
+                (option) => option !== value,
+              );
               return {
                 filter_subject_values: currentFilterSubjects,
               };
@@ -278,14 +280,16 @@ class SearchPageExample extends Component {
             <SearchFilterList
               label={t('searchPage.label.subjects')}
               noFilterSelectedLabel={t('searchPage.label.noFilter')}
-              options={searchFilterOptions.subjects.filter(option => this.state.filter_subjects.includes(option.value))}
-              onChange={values => {
+              options={searchFilterOptions.subjects.filter((option) =>
+                this.state.filter_subjects.includes(option.value),
+              )}
+              onChange={(values) => {
                 this.setState({ filter_subjects: values });
               }}
               subjectValues={this.state.filter_subject_values}
               values={this.state.filter_subjects}
               onSubfilterChange={(key, values, subjectValue) => {
-                this.setState(prevState => {
+                this.setState((prevState) => {
                   const newValues = prevState.filter_subject_values;
                   newValues[key] = values;
                   return {
@@ -304,7 +308,7 @@ class SearchPageExample extends Component {
                 }}
                 options={searchFilterOptions.subjects}
                 values={this.state.filter_subjects}
-                onChange={values => {
+                onChange={(values) => {
                   this.setState({ filter_subjects: values });
                 }}
               />
@@ -318,19 +322,19 @@ class SearchPageExample extends Component {
               hideLabel={t('searchPage.hideLabel.contentTypes')}
               options={searchFilterOptions.contentTypeFilter}
               values={this.state.filter_contentTypeFilter}
-              onChange={values => {
+              onChange={(values) => {
                 this.setState({ filter_contentTypeFilter: values });
               }}
             />
             <SearchFilter
               label={t('searchPage.label.content')}
-              options={searchFilterOptions.contentFilter.map(option => ({
+              options={searchFilterOptions.contentFilter.map((option) => ({
                 title: option.title,
                 value: option.value,
                 icon: option.additional ? Additional : Core,
               }))}
               values={this.state.filter_contentFilter}
-              onChange={values => {
+              onChange={(values) => {
                 this.setState({ filter_contentFilter: values });
               }}
             />
@@ -341,7 +345,7 @@ class SearchPageExample extends Component {
               showLabel={t('searchPage.showLabel.languageFilter')}
               hideLabel={t('searchPage.hideLabel.languageFilter')}
               values={this.state.filter_languageFilter}
-              onChange={values => {
+              onChange={(values) => {
                 this.setState({ filter_languageFilter: values });
               }}
             />
@@ -349,7 +353,7 @@ class SearchPageExample extends Component {
               label={t('searchPage.label.createdBy')}
               options={searchFilterOptions.createdByFilter}
               values={this.state.filter_createdByFilter}
-              onChange={values => {
+              onChange={(values) => {
                 this.setState({ filter_createdByFilter: values });
               }}
             />
@@ -382,13 +386,13 @@ class SearchPageExample extends Component {
           competenceGoals={this.props.competenceGoals ? <CompetenceGoalsExample search /> : null}
           competenceGoalsOpen={this.state.competenceGoalsOpen}
           onToggleCompetenceGoals={() => {
-            this.setState(prevState => ({
+            this.setState((prevState) => ({
               competenceGoalsOpen: !prevState.competenceGoalsOpen,
             }));
           }}
           searchString={hasAuthor ? null : searchString}
           tabOptions={searchTabOptions}
-          onTabChange={newCurrentTab => {
+          onTabChange={(newCurrentTab) => {
             this.setState({
               currentTab: newCurrentTab,
             });

@@ -32,14 +32,14 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
         <h2 className="title">{convertWithFallBack('title', image.title, '')}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
-            <span className="text right">{image.copyright.creators.map(creator => creator.name).join(', ')}</span>
+            <span className="text right">{image.copyright.creators.map((creator) => creator.name).join(', ')}</span>
           </div>
         ) : null}
         <div className="license">
           <span className="text right">{image.copyright.license.description}</span>
         </div>
         <div className="tags">
-          {tags.map(tag => (
+          {tags.map((tag) => (
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
         </div>

@@ -38,7 +38,7 @@ function ImageWrapper({ typeClass, src, hasHiddenCaption, children, t }) {
   );
 }
 
-const calculateSizesFromType = type => {
+const calculateSizesFromType = (type) => {
   switch (type) {
     case 'left':
     case 'right':

@@ -77,9 +77,8 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }: Props) =>
     );
   }
   // Show author
-  const { image, name, shortName, title, role, phone, email, introduction, urlContributions, urlAuthor } = authors[
-    showAuthor !== null && showAuthor !== undefined ? showAuthor : 0
-  ];
+  const { image, name, shortName, title, role, phone, email, introduction, urlContributions, urlAuthor } =
+    authors[showAuthor !== null && showAuthor !== undefined ? showAuthor : 0];
 
   return (
     <Trans>

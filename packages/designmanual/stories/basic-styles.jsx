@@ -1208,7 +1208,7 @@ storiesOf('Grunnstiler', module)
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3, 4].map(index => (
+            {[1, 2, 3, 4].map((index) => (
               <tr key={index}>
                 <td>Data</td>
                 <td>Data 1</td>
@@ -1229,7 +1229,7 @@ storiesOf('Grunnstiler', module)
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3, 4].map(index => (
+            {[1, 2, 3, 4].map((index) => (
               <tr key={index}>
                 <td>Data</td>
                 <td>Data 1</td>

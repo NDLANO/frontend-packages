@@ -61,9 +61,9 @@ const ArticleInModal = ({ pageId, tooltip, activateButton }) => (
   <Modal
     size="medium"
     backgroundColor="white"
-    wrapperFunctionForButton={tooltip ? btn => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : null}
+    wrapperFunctionForButton={tooltip ? (btn) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : null}
     activateButton={activateButton}>
-    {onClose =>
+    {(onClose) =>
       ModalContent({
         pageId,
         onClose,

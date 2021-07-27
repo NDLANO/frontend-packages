@@ -47,7 +47,7 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
               lang: t('languages.nb'),
             })}
             value={theme.name.nb}
-            onChange={e => onEditName({ value: e.target.value, lang: 'nb' })}
+            onChange={(e) => onEditName({ value: e.target.value, lang: 'nb' })}
           />
         </div>
         <div>
@@ -60,7 +60,7 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
               lang: t('languages.nn'),
             })}
             value={theme.name.nn}
-            onChange={e => onEditName({ value: e.target.value, lang: 'nn' })}
+            onChange={(e) => onEditName({ value: e.target.value, lang: 'nn' })}
           />
         </div>
         <div>
@@ -73,7 +73,7 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
               lang: t('languages.en'),
             })}
             value={theme.name.en}
-            onChange={e => onEditName({ value: e.target.value, lang: 'en' })}
+            onChange={(e) => onEditName({ value: e.target.value, lang: 'en' })}
           />
         </div>
       </StyledInputWrapper>

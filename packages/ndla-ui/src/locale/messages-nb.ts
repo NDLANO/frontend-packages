@@ -214,8 +214,7 @@ const messages = {
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     film: {
       header: 'NDLA film',
-      text:
-        'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
+      text: 'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
@@ -583,8 +582,7 @@ const messages = {
     about: {
       heading: 'Om NDLA Film',
       more: 'Les mer om NDLA film',
-      text:
-        'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+      text: 'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
     search: {
       placeholder: 'Søk på filmnavn',
@@ -702,8 +700,7 @@ const messages = {
   fagfornyelse: {
     frontpage: {
       heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
-      text:
-        'Høsten 2020 og 2021 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
+      text: 'Høsten 2020 og 2021 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
       blogHeading: 'Vil du vite mer?',
     },
     badge: {
@@ -714,16 +711,14 @@ const messages = {
   },
   frontPageToolbox: {
     heading: 'Verktøykassa',
-    text:
-      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
+    text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
     linkTextStudents: 'Se alle tipsene for elever her',
     linkTextTeachers: 'Se alle tipsene for lærere her',
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfaglige temaer',
-    text:
-      'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    text: 'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
     linkText: 'Se caser for tverrfaglige temaer',
     publicHealthTopic: 'Folkehelse og livsmestring',
     democracyTopic: 'Demokrati og medborgerskap',

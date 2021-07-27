@@ -17,7 +17,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const VideoLoadMoreButton = props => {
+const VideoLoadMoreButton = (props) => {
   const { videos, searching, limit, translations, loadMoreVideos } = props;
 
   if (!videos || videos.length === 0 || videos.length % limit !== 0) {

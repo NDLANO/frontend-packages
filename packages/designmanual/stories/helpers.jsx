@@ -31,7 +31,7 @@ DottedContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const articleUrl = id => (
+export const articleUrl = (id) => (
   <span>
     Hentet fra <a href={`http://api.test.ndla.no:8082/article/${id}`}>{`http://api.test.ndla.no:8082/article/${id}`}</a>
   </span>
@@ -47,7 +47,7 @@ export const AnchorNavigation = ({ links }) => (
       margin: 0,
       padding: 0,
     }}>
-    {links.map(link => (
+    {links.map((link) => (
       <li key={uuid()}>{link}</li>
     ))}
   </ul>

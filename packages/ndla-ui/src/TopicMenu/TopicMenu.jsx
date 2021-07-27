@@ -113,7 +113,7 @@ export const TopicMenu = ({
     }
   };
 
-  const expandedTopic = topics.find(topic => topic.id === expandedTopicId);
+  const expandedTopic = topics.find((topic) => topic.id === expandedTopicId);
 
   const currentlyExpandedSubTopics = [];
   if (expandedTopic) {
@@ -121,10 +121,10 @@ export const TopicMenu = ({
     let foundMatch;
     expandedSubtopicsId.forEach((id, index) => {
       if (index === 0) {
-        currentSubtopic = expandedTopic.subtopics.find(topic => topic.id === id);
+        currentSubtopic = expandedTopic.subtopics.find((topic) => topic.id === id);
         foundMatch = currentSubtopic ? 0 : undefined;
       } else {
-        currentSubtopic = currentSubtopic.subtopics.find(topic => topic.id === id);
+        currentSubtopic = currentSubtopic.subtopics.find((topic) => topic.id === id);
         foundMatch += currentSubtopic ? 1 : 0;
       }
       if (foundMatch === index) {
@@ -259,7 +259,7 @@ export const TopicMenu = ({
                     </span>
                   </SafeLink>
                   <ul {...classes('list')}>
-                    {topics.map(topic => {
+                    {topics.map((topic) => {
                       const active = topic.id === expandedTopicId ? 'active' : null;
 
                       return (
@@ -267,8 +267,8 @@ export const TopicMenu = ({
                           <button
                             type="button"
                             {...classes('link')}
-                            onClick={event => handleClick(event, topic.id)}
-                            onKeyPress={event => handleBtnKeyPress(event, topic.id)}>
+                            onClick={(event) => handleClick(event, topic.id)}
+                            onKeyPress={(event) => handleBtnKeyPress(event, topic.id)}>
                             <span>
                               {topic.name}
                               {renderAdditionalIcon(topic.additional, t('resource.additionalTooltip'))}
@@ -296,7 +296,7 @@ export const TopicMenu = ({
                 goToTitle={t('masthead.menu.goTo')}
                 toTopic={toTopic}
                 expandedSubtopicId={currentlyExpandedSubTopics[0] && currentlyExpandedSubTopics[0].id}
-                onSubtopicExpand={id => {
+                onSubtopicExpand={(id) => {
                   handleSubtopicExpand(id, 0);
                 }}
                 onGoBack={handleOnGoBack}
@@ -313,14 +313,14 @@ export const TopicMenu = ({
                 topic={subTopic}
                 backLabel={
                   index === 0
-                    ? topics.find(topic => topic.id === expandedTopicId).name
+                    ? topics.find((topic) => topic.id === expandedTopicId).name
                     : currentlyExpandedSubTopics[index - 1].name
                 }
                 toTopic={toTopic}
                 expandedSubtopicId={
                   currentlyExpandedSubTopics[index + 1] ? currentlyExpandedSubTopics[index + 1].id : 'no way'
                 }
-                onSubtopicExpand={id => {
+                onSubtopicExpand={(id) => {
                   handleSubtopicExpand(id, index + 1);
                 }}
                 onGoBack={handleOnGoBack}

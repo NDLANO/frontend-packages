@@ -148,10 +148,10 @@ const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null
       <Editor
         className="editor"
         value={codeContent.code}
-        onValueChange={code => {
+        onValueChange={(code) => {
           setCodeContent({ ...codeContent, code });
         }}
-        highlight={code =>
+        highlight={(code) =>
           hightlightWithLineNumbers(code, languages[codeContent.format] ? languages[codeContent.format] : '')
         }
         padding={10}

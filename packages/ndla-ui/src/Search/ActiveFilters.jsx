@@ -47,11 +47,11 @@ const StyledActiveFilters = styled('ul')`
         `}
 
     ${({ filterLength }) =>
-      filterLength &&
-      filterLength > 2 &&
-      css`
-        max-width: 70px;
-      `}
+        filterLength &&
+        filterLength > 2 &&
+        css`
+          max-width: 70px;
+        `}
     }
   }
 `;
@@ -70,14 +70,14 @@ const StyledActiveFilterWrapper = styled('li')`
   }
 `;
 
-const getFilterLength = filters =>
-  filters.filter(filter => filter.filterName === 'filter_subjects' && filter.title).length;
+const getFilterLength = (filters) =>
+  filters.filter((filter) => filter.filterName === 'filter_subjects' && filter.title).length;
 
 const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, t }) => {
   if (filters && filters.length > 0) {
     const filterLength = getFilterLength(filters);
 
-    const filterItems = filters.map(filter => {
+    const filterItems = filters.map((filter) => {
       const filterKey = filter.filterName ? `${filter.filterName}${filter.value}` : filter.value;
 
       return (

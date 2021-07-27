@@ -25,7 +25,7 @@ const classes = new BEMHelper({
 const defaultTransitionSwipeEnd = 'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
 const defaultTransitionText = 'opacity 600ms ease';
 
-const renderSlideItem = slide => (
+const renderSlideItem = (slide) => (
   <div
     {...classes('item')}
     key={slide.id}
@@ -67,7 +67,7 @@ class FilmSlideshow extends Component {
     if (!this.state.animationComplete) {
       this.slideRef.current.style.transition = 'none';
       this.slideRef.current.style.transform = `translateX(${this.state.slideIndexTarget * 100}vw))`;
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         animationComplete: true,
         slideIndex: prevState.slideIndexTarget,
       }));
@@ -90,7 +90,7 @@ class FilmSlideshow extends Component {
         animationComplete: true,
       });
     } else {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         animationComplete: true,
         slideIndex: prevState.slideIndexTarget,
       }));
@@ -112,7 +112,7 @@ class FilmSlideshow extends Component {
     this.swipeDistance = 0;
     this.initTimer();
     if (slide !== 0) {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         return {
           slideIndex: prevState.slideIndex + slide,
           slideIndexTarget: prevState.slideIndex + slide,
@@ -235,8 +235,9 @@ class FilmSlideshow extends Component {
               role="img"
               onAnimationEnd={this.onChangedSlide}
               style={{
-                backgroundImage: `url(${(slideshow[activeSlide].metaImage && slideshow[activeSlide].metaImage.url) ||
-                  ''})`,
+                backgroundImage: `url(${
+                  (slideshow[activeSlide].metaImage && slideshow[activeSlide].metaImage.url) || ''
+                })`,
               }}
             />
           )}

@@ -31,7 +31,7 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
   flex-direction: column-reverse;
   align-items: center;
 
-  ${props =>
+  ${(props) =>
     props.hasMedia &&
     `${mq.range({ from: breakpoints.tabletWide })} {
     display: grid;
@@ -174,7 +174,7 @@ const SearchNotionItem = ({
         {labels.length > 0 && (
           <LabelsWrapper>
             <LabelsLabel>{t('searchPage.resultType.notionLabels')}:</LabelsLabel>
-            {labels.map(label => (
+            {labels.map((label) => (
               <Label key={label}>{label}</Label>
             ))}
           </LabelsWrapper>

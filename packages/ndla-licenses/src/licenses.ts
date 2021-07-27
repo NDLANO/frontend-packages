@@ -444,4 +444,4 @@ export function getLicenseByNBTitle(title: string, locale: Locale | string | und
   }
 }
 
-export const isCreativeCommonsLicense = (licenseRights: string[]) => licenseRights.every(r => r !== COPYRIGHTED);
+export const isCreativeCommonsLicense = (licenseRights: string[]) => licenseRights.every((r) => r !== COPYRIGHTED);

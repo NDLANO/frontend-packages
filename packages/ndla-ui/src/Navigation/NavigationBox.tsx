@@ -26,7 +26,7 @@ const StyledHeading = styled.h2<InvertItProps>`
   ${fonts.sizes('18px', '32px')};
   text-transform: uppercase;
   margin: 0 0 10px;
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       color: #fff;
@@ -40,25 +40,25 @@ const StyledList = styled.ul<listProps>`
   list-style: none;
   margin: 0;
   padding: 0;
-  ${props =>
+  ${(props) =>
     props.direction !== 'floating' &&
     css`
       ${mq.range({ from: breakpoints.tablet })} {
         column-count: 2;
         column-gap: 20px;
         ${props.direction === 'horizontal' &&
-          css`
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-          `}
+        css`
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        `}
       }
       ${mq.range({ from: breakpoints.tabletWide })} {
         column-count: 3;
         column-gap: 20px;
         ${props.direction === 'horizontal' &&
-          css`
-            grid-template-columns: repeat(3, 1fr);
-          `}
+        css`
+          grid-template-columns: repeat(3, 1fr);
+        `}
       }
     `};
 `;
@@ -72,7 +72,7 @@ type additionalResourceProps = {
 const StyledListItem = styled.li<additionalResourceProps>`
   margin-bottom: 0;
   break-inside: avoid;
-  ${props =>
+  ${(props) =>
     props.listDirection === 'floating' &&
     css`
       display: inline-block;
@@ -84,7 +84,7 @@ const StyledListItem = styled.li<additionalResourceProps>`
 `;
 
 const StyledListElementWrapper = styled.div<additionalResourceProps>`
-  ${props =>
+  ${(props) =>
     props.isAdditionalResource &&
     css`
       position: relative;
@@ -122,10 +122,10 @@ const StyledButtonContent = styled.span`
 `;
 
 const StyledButtonContentText = styled.span<additionalResourceProps>`
-  ${props => props.isAdditionalResource && `padding-left: 13px;`}
+  ${(props) => props.isAdditionalResource && `padding-left: 13px;`}
 `;
 const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
-  color: ${props => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
+  color: ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
@@ -133,7 +133,7 @@ const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 1px solid ${props => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
+  border: 1px solid ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
   border-radius: 100px;
   position: absolute;
   left: 7px;

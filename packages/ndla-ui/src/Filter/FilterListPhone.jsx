@@ -56,7 +56,7 @@ class FilterListPhone extends Component {
     if (event.currentTarget.checked) {
       newValues = [...values, option.value];
     } else {
-      newValues = values.filter(value => value !== option.value);
+      newValues = values.filter((value) => value !== option.value);
     }
     if (onChange) {
       onChange(newValues, option.value);
@@ -98,8 +98,8 @@ class FilterListPhone extends Component {
 
     if (this.state.isNarrowScreen || viewMode === 'allModal') {
       let currentlyActiveFilters = [];
-      groupedOptions.forEach(options => {
-        const activeFilters = options.filter(option => values.some(value => value === option.value));
+      groupedOptions.forEach((options) => {
+        const activeFilters = options.filter((option) => values.some((value) => value === option.value));
         currentlyActiveFilters = [...currentlyActiveFilters, ...activeFilters];
       });
 
@@ -111,9 +111,9 @@ class FilterListPhone extends Component {
             <ActiveFilters
               filters={currentlyActiveFilters}
               showOnSmallScreen={showActiveFiltersOnSmallScreen}
-              onFilterRemove={value => {
+              onFilterRemove={(value) => {
                 onChange(
-                  values.filter(option => option !== value),
+                  values.filter((option) => option !== value),
                   value,
                 );
               }}
@@ -128,7 +128,7 @@ class FilterListPhone extends Component {
                 {messages.openFilter}
               </Button>
             }>
-            {onClose => (
+            {(onClose) => (
               <Fragment>
                 <ModalHeader modifier={['left-align']}>
                   <div {...classes('modal-header')}>
@@ -158,10 +158,10 @@ class FilterListPhone extends Component {
                         'collapse-mobile': collapseMobile,
                         'grouped-options': isGroupedOptions,
                       })}>
-                      {options.map(option => {
+                      {options.map((option) => {
                         const itemModifiers = [];
 
-                        const checked = values.some(value => value === option.value);
+                        const checked = values.some((value) => value === option.value);
 
                         if (option.noResults) {
                           itemModifiers.push('no-results');
@@ -176,7 +176,7 @@ class FilterListPhone extends Component {
                             id={preid + option.value}
                             value={option.value}
                             checked={checked}
-                            onChange={event => {
+                            onChange={(event) => {
                               this.handleChange(event, option);
                             }}
                             icon={option.icon}
@@ -212,7 +212,7 @@ class FilterListPhone extends Component {
               {options.map((option, index) => {
                 const itemModifiers = [];
 
-                const checked = values.some(value => value === option.value);
+                const checked = values.some((value) => value === option.value);
 
                 if (!showAll && !checked && index + 1 > this.state.visibleCount) {
                   itemModifiers.push('hidden');
@@ -233,7 +233,7 @@ class FilterListPhone extends Component {
                     value={option.value}
                     tabIndex={option.noResults ? -1 : 0}
                     checked={checked}
-                    onChange={event => {
+                    onChange={(event) => {
                       this.handleChange(event, option);
                     }}
                     icon={option.icon}
@@ -249,7 +249,7 @@ class FilterListPhone extends Component {
                 {...classes('expand')}
                 type="button"
                 onClick={() => {
-                  this.setState(prevState => {
+                  this.setState((prevState) => {
                     if (prevState.visibleCount === defaultVisibleCount) {
                       return {
                         visibleCount: options.length,

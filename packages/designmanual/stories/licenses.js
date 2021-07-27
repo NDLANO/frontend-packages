@@ -8,9 +8,9 @@ import { StoryIntro, StoryBody } from './wrappers';
 const licenseRightAbbreviations = ['by', 'sa', 'nc', 'nd', 'pd', 'cc0', 'cc', 'copyrighted'];
 
 const licensesRights = {
-  nb: licenseRightAbbreviations.map(license => getLicenseRightByAbbreviation(license, 'nb')),
-  nn: licenseRightAbbreviations.map(license => getLicenseRightByAbbreviation(license, 'nn')),
-  en: licenseRightAbbreviations.map(license => getLicenseRightByAbbreviation(license, 'en')),
+  nb: licenseRightAbbreviations.map((license) => getLicenseRightByAbbreviation(license, 'nb')),
+  nn: licenseRightAbbreviations.map((license) => getLicenseRightByAbbreviation(license, 'nn')),
+  en: licenseRightAbbreviations.map((license) => getLicenseRightByAbbreviation(license, 'en')),
 };
 
 const licenseAbbreviations = [
@@ -26,15 +26,15 @@ const licenseAbbreviations = [
 ];
 
 const licenses = {
-  nb: licenseAbbreviations.map(license => ({
+  nb: licenseAbbreviations.map((license) => ({
     code: license,
     data: getLicenseByAbbreviation(license, 'nb'),
   })),
-  nn: licenseAbbreviations.map(license => ({
+  nn: licenseAbbreviations.map((license) => ({
     code: license,
     data: getLicenseByAbbreviation(license, 'nn'),
   })),
-  en: licenseAbbreviations.map(license => ({
+  en: licenseAbbreviations.map((license) => ({
     code: license,
     data: getLicenseByAbbreviation(license, 'en'),
   })),
@@ -49,7 +49,7 @@ storiesOf('Lisensgivning', module)
       <StoryBody>
         <LanguageSelectorNonMessages>
           {({ lang }) =>
-            licenses[lang].map(license => (
+            licenses[lang].map((license) => (
               <article key={uuid()}>
                 <h2>{license.data.title}</h2>
                 <table>
@@ -96,7 +96,7 @@ storiesOf('Lisensgivning', module)
       <StoryBody>
         <LanguageSelectorNonMessages>
           {({ lang }) =>
-            licensesRights[lang].map(license => (
+            licensesRights[lang].map((license) => (
               <article key={uuid()}>
                 <h2>{license.title}</h2>
                 <p>{license.description}</p>

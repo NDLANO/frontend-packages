@@ -42,9 +42,7 @@ type Props = {
   contentTypeResult: ContentTypeResultType;
   onNavigate?: VoidFunction;
   defaultCount?: number;
-  resourceToLinkProps: (
-    resource: Resource,
-  ) => {
+  resourceToLinkProps: (resource: Resource) => {
     to: string;
   };
   showAdditionalResources?: boolean;
@@ -78,7 +76,7 @@ const ContentTypeResult: React.FC<Props & tType> = ({
   const results =
     showAdditionalResources || !contentTypeResult.resources
       ? contentTypeResult.resources
-      : contentTypeResult.resources.filter(items => !items.additional);
+      : contentTypeResult.resources.filter((items) => !items.additional);
 
   const resources = showAll || !defaultCount ? results : results.slice(0, defaultCount);
 
@@ -105,7 +103,7 @@ const ContentTypeResult: React.FC<Props & tType> = ({
       </StyledHeader>
       {resources.length > 0 ? (
         <StyledList inMenu={inMenu} animateList={animateList}>
-          {resources.map(resource => {
+          {resources.map((resource) => {
             const { path, name, resourceTypes, subject, additional } = resource;
 
             const linkProps = resourceToLinkProps(resource);
@@ -115,7 +113,7 @@ const ContentTypeResult: React.FC<Props & tType> = ({
                 {!inMenu && subject && <small>{subject}</small>}
                 {!inMenu &&
                   resourceTypes &&
-                  resourceTypes.map(type => <StyledTag key={type.name}>{type.name}</StyledTag>)}
+                  resourceTypes.map((type) => <StyledTag key={type.name}>{type.name}</StyledTag>)}
               </>
             );
             const delayAnimation = !!animateList && !!additional && animateList > 0 && !!showAdditionalResources;

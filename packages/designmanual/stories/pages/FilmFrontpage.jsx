@@ -47,15 +47,8 @@ class FilmFrontpage extends Component {
   }
 
   renderMovieGrid({ resourceTypeName }) {
-    const {
-      themes,
-      resourceTypes,
-      moviesByType,
-      fetchingMoviesByType,
-      resizeThumbnailImages,
-      language,
-      t,
-    } = this.props;
+    const { themes, resourceTypes, moviesByType, fetchingMoviesByType, resizeThumbnailImages, language, t } =
+      this.props;
     const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
     return (
       <CarouselAutosize
@@ -109,7 +102,7 @@ class FilmFrontpage extends Component {
             arrowOffset: 0,
           },
         ]}>
-        {autoSizedProps =>
+        {(autoSizedProps) =>
           resourceTypeSelected ? (
             <MovieGrid
               autoSizedProps={autoSizedProps}
@@ -123,7 +116,7 @@ class FilmFrontpage extends Component {
               }}
             />
           ) : (
-            themes.map(theme => (
+            themes.map((theme) => (
               <FilmMovieList
                 key={theme.name[language]}
                 name={theme.name[language]}
@@ -142,21 +135,13 @@ class FilmFrontpage extends Component {
   }
 
   render() {
-    const {
-      highlighted,
-      resourceTypes,
-      topics,
-      aboutNDLAVideo,
-      moreAboutNdlaFilm,
-      showingAll,
-      moviesByType,
-      id,
-    } = this.props;
+    const { highlighted, resourceTypes, topics, aboutNDLAVideo, moreAboutNdlaFilm, showingAll, moviesByType, id } =
+      this.props;
 
     const { resourceTypeSelected } = this.state;
 
     const resourceTypeName =
-      resourceTypeSelected && resourceTypes.find(resourceType => resourceType.id === resourceTypeSelected);
+      resourceTypeSelected && resourceTypes.find((resourceType) => resourceType.id === resourceTypeSelected);
 
     return (
       <div

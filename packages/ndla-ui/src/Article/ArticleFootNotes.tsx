@@ -42,7 +42,7 @@ type ArticleFootNotesProps = {
 
 const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
   <ol className="c-footnotes">
-    {footNotes.map(footNote => (
+    {footNotes.map((footNote) => (
       <FootNote key={footNote.ref} footNote={footNote} />
     ))}
   </ol>

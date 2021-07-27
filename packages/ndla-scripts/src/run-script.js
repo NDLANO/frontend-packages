@@ -44,7 +44,7 @@ if (script) {
   const scriptsPath = path.join(__dirname, 'scripts/');
   const scriptsAvailable = glob.sync(path.join(__dirname, 'scripts', '*'));
   const scriptsAvailableMessage = scriptsAvailable
-    .map(s => s.replace(scriptsPath, '').replace(/\.js$/, ''))
+    .map((s) => s.replace(scriptsPath, '').replace(/\.js$/, ''))
     .filter(Boolean)
     .join('\n  ')
     .trim();

@@ -102,11 +102,11 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
     };
   }, []);
 
-  const hasSelectedFilters = items.some(item => {
+  const hasSelectedFilters = items.some((item) => {
     return item.selected;
   });
 
-  const activeItems = items.filter(item => item.selected);
+  const activeItems = items.filter((item) => item.selected);
 
   return (
     <>

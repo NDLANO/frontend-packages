@@ -98,7 +98,7 @@ interface LicenseIconListProps {
 
 const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal }: LicenseIconListProps) => (
   <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
-    {licenseRights.map(licenseRight => (
+    {licenseRights.map((licenseRight) => (
       <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
   </StyledLicenseIconList>

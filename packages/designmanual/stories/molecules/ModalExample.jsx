@@ -16,7 +16,7 @@ const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifie
     animation={animation}
     backgroundColor={backgroundColor}
     activateButton={<Button outline>{title}</Button>}>
-    {onClose => (
+    {(onClose) => (
       <Fragment>
         <ModalHeader modifier={headerColorModifier}>
           <ModalCloseButton title="Lukk" onClick={onClose} />
@@ -155,7 +155,7 @@ class ModalExample extends Component {
         </p>
         <h3>Enkel versjon:</h3>
         <Modal narrow activateButton={<Button outline>Åpne modal</Button>}>
-          {onClose => (
+          {(onClose) => (
             <Fragment>
               <ModalHeader>
                 <ModalCloseButton title="Lukk" onClick={onClose} />
@@ -166,7 +166,7 @@ class ModalExample extends Component {
                 <p>Lukk denne modal eller åpne en ny modal fra denne modalen</p>
                 <div className="u-horisontal-list">
                   <Modal narrow size="fullscreen" animation="slide-up" activateButton={<Button>Åpne ny modal</Button>}>
-                    {onClose2ndModal => (
+                    {(onClose2ndModal) => (
                       <Fragment>
                         <ModalHeader>
                           <ModalCloseButton title="Lukk" onClick={onClose2ndModal} />
@@ -198,13 +198,13 @@ class ModalExample extends Component {
         <span>Trykk på ikon for å åpne:</span>
         <Modal
           narrow
-          wrapperFunctionForButton={activateButton => <Tooltip tooltip="Trykk på meg!">{activateButton}</Tooltip>}
+          wrapperFunctionForButton={(activateButton) => <Tooltip tooltip="Trykk på meg!">{activateButton}</Tooltip>}
           activateButton={
             <Button stripped tabIndex={-1}>
               <HelpCircle />
             </Button>
           }>
-          {onClose => (
+          {(onClose) => (
             <Fragment>
               <ModalHeader>
                 <ModalCloseButton title="Lukk" onClick={onClose} />
@@ -228,7 +228,7 @@ class ModalExample extends Component {
             { title: 'Slide down', value: 'slide-down' },
           ]}
           values={[this.state.animation]}
-          onChange={e => {
+          onChange={(e) => {
             this.setState({
               animation: e.pop(),
             });
@@ -248,7 +248,7 @@ class ModalExample extends Component {
             },
           ]}
           values={[this.state.size]}
-          onChange={e => {
+          onChange={(e) => {
             this.setState({
               size: e.pop(),
             });
@@ -264,7 +264,7 @@ class ModalExample extends Component {
             { title: 'Mørk-grå', value: 'grey-dark' },
           ]}
           values={[this.state.backgroundColor]}
-          onChange={e => {
+          onChange={(e) => {
             this.setState({
               backgroundColor: e.pop(),
             });
@@ -281,7 +281,7 @@ class ModalExample extends Component {
             { title: 'Mørk-grå', value: 'grey-dark' },
           ]}
           values={[this.state.headerColorModifier]}
-          onChange={e => {
+          onChange={(e) => {
             this.setState({
               headerColorModifier: e.pop(),
             });

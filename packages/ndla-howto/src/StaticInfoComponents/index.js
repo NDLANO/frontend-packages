@@ -10,8 +10,7 @@ export const stories = {
   },
   FactASide: {
     title: 'Faktaboks',
-    lead:
-      'Denne funksjonen setter inn en faktaboks i teksten. En faktaboks er et avgrenset område i teksten med en ramme rundt seg. Den kan ha en overskrift og en kort mengde tekst. Marker teksten du ønsker som tittel og velg H1 fra verktøyslinjen.',
+    lead: 'Denne funksjonen setter inn en faktaboks i teksten. En faktaboks er et avgrenset område i teksten med en ramme rundt seg. Den kan ha en overskrift og en kort mengde tekst. Marker teksten du ønsker som tittel og velg H1 fra verktøyslinjen.',
     body: [
       {
         type: 'component',
@@ -21,8 +20,7 @@ export const stories = {
   },
   Table: {
     title: 'Tabeller',
-    lead:
-      'Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.',
+    lead: 'Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.',
   },
   BodyBox: {
     title: 'Tekst i ramme',
@@ -36,14 +34,12 @@ export const stories = {
   },
   Details: {
     title: 'Ekspanderbar boks',
-    lead:
-      'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
+    lead: 'En ekspanderbar boks består av en tittel som er synlig og en kort tekst som er skjult. Brukeren kan klikke på en liten pil til venstre og utvide boksen for å se hele teksten.',
   },
 
   Blueprint: {
     title: 'Fasitboks',
-    lead:
-      'En ekspanderende fasitboks, primært tiltenkt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
+    lead: 'En ekspanderende fasitboks, primært tiltenkt matte- og realfag hvor man ønsker å engasjere eleven til å finne riktig løsning selv først.',
     body: [
       {
         type: 'component',
@@ -53,8 +49,7 @@ export const stories = {
   },
   Images: {
     title: 'Bilder',
-    lead:
-      'Denne funksjonen lar deg legge til et bilde i teksten. Du kan søke frem bilder fra NDLA sitt arkiv eller laste opp et nytt. Klikk på bildet etter du har lagt det inn i artikkelen for å velge plassering, utsnitt, størrelse og bildetekst på bildet.',
+    lead: 'Denne funksjonen lar deg legge til et bilde i teksten. Du kan søke frem bilder fra NDLA sitt arkiv eller laste opp et nytt. Klikk på bildet etter du har lagt det inn i artikkelen for å velge plassering, utsnitt, størrelse og bildetekst på bildet.',
     body: [
       {
         type: 'text',
@@ -71,8 +66,7 @@ export const stories = {
   },
   Videos: {
     title: 'Video',
-    lead:
-      'Denne funksjonen lar deg legge inn en video i artikkelen. Du kan søke frem videoer fra NDLA sin konto på Brightcove og YouTube.',
+    lead: 'Denne funksjonen lar deg legge inn en video i artikkelen. Du kan søke frem videoer fra NDLA sin konto på Brightcove og YouTube.',
   },
   Audios: {
     title: 'Lydfiler',
@@ -90,8 +84,7 @@ export const stories = {
   },
   H5P: {
     title: 'H5P',
-    lead:
-      'H5P er oppgaver man kan legge til en artikkel. Dette hjelper brukeren å bedre huske hva som blir lest, skaper engasjement og gjør det gøyere å lære.',
+    lead: 'H5P er oppgaver man kan legge til en artikkel. Dette hjelper brukeren å bedre huske hva som blir lest, skaper engasjement og gjør det gøyere å lære.',
     body: [
       {
         type: 'text',
@@ -121,8 +114,7 @@ export const stories = {
   },
   File: {
     title: 'Last opp filer til artikkel',
-    lead:
-      'Denne funksjonen gir deg mulighet til å laste opp filer som brukeren kan laste ned. Eksempelvis PDF-filer e.l.',
+    lead: 'Denne funksjonen gir deg mulighet til å laste opp filer som brukeren kan laste ned. Eksempelvis PDF-filer e.l.',
   },
   RelatedArticle: {
     title: 'RelatedArticle',
@@ -140,8 +132,7 @@ export const stories = {
   },
   userAgreements: {
     title: 'Avtaler',
-    lead:
-      'Avtaler beskriver lisensiering samt hvem som er rettighethavere, opphavspersoner m.m. for ressursen. I tilfeller hvor flere ressurser deler samme lisensiering anbefales det å bruke en avtale.',
+    lead: 'Avtaler beskriver lisensiering samt hvem som er rettighethavere, opphavspersoner m.m. for ressursen. I tilfeller hvor flere ressurser deler samme lisensiering anbefales det å bruke en avtale.',
     body: [
       {
         type: 'text',
@@ -152,8 +143,7 @@ export const stories = {
   },
   userLicense: {
     title: 'Lisenser',
-    lead:
-      'Alle ressurser skal merkes med en lisensiering. I NDLA ønsker vi å bidra til deling og gjenbruk. Vi bruker derfor åpne lisenser så langt det er mulig.',
+    lead: 'Alle ressurser skal merkes med en lisensiering. I NDLA ønsker vi å bidra til deling og gjenbruk. Vi bruker derfor åpne lisenser så langt det er mulig.',
     body: [
       {
         type: 'text',
@@ -170,13 +160,11 @@ export const stories = {
   },
   MetaKeyword: {
     title: 'Nøkkelord',
-    lead:
-      'Nøkkelord hjelper søkemotorer og søk intern på ndla.no og finne relevant og riktig innhold. Et nyttig tips er å legge til synonymer for ord som brukt i teksten eller som er relevant for ressursen',
+    lead: 'Nøkkelord hjelper søkemotorer og søk intern på ndla.no og finne relevant og riktig innhold. Et nyttig tips er å legge til synonymer for ord som brukt i teksten eller som er relevant for ressursen',
   },
   MetaDescription: {
     title: 'Metabeskrivelse',
-    lead:
-      'Metabeskrivelsen gir kort informasjon om hva emnebeskrivelsen inneholder. Den skal brukes til utlisting både eksternt, i f.eks. Google og på sosiale medier, og i emnelister på ndla.no.',
+    lead: 'Metabeskrivelsen gir kort informasjon om hva emnebeskrivelsen inneholder. Den skal brukes til utlisting både eksternt, i f.eks. Google og på sosiale medier, og i emnelister på ndla.no.',
     body: [
       {
         type: 'text',
@@ -187,8 +175,7 @@ export const stories = {
   },
   MetaImage: {
     title: 'Metabilde',
-    lead:
-      'Dette bildet skal kunne benyttes som bilde på emnekortene (både som bannerbilde og lite bannerbilde), ved visning i sosiale medier og ved opplisting i søkemotorer. Bildet må ha god pikselbredde, som f.eks. Scanpix-bilder.',
+    lead: 'Dette bildet skal kunne benyttes som bilde på emnekortene (både som bannerbilde og lite bannerbilde), ved visning i sosiale medier og ved opplisting i søkemotorer. Bildet må ha god pikselbredde, som f.eks. Scanpix-bilder.',
   },
   TaxonomyContentTypes: {
     title: 'Innholdstyper',
@@ -220,8 +207,7 @@ export const stories = {
   },
   TaxonomySubjectFilters: {
     title: 'Fagfilter',
-    lead:
-      'Alle ressurser må ha ett eller fagfilter. Fagfilterene du kan velge mellom blir gitt utfra emnetilknytningen og derav faget det tilhører. Itillegg til å velge fagfilter kan velge om ressursen skal være tilleggsstoff og kjernestoff under hvert av fagfilterene.',
+    lead: 'Alle ressurser må ha ett eller fagfilter. Fagfilterene du kan velge mellom blir gitt utfra emnetilknytningen og derav faget det tilhører. Itillegg til å velge fagfilter kan velge om ressursen skal være tilleggsstoff og kjernestoff under hvert av fagfilterene.',
   },
   status: {
     title: 'Forklaring for ulike statuser',

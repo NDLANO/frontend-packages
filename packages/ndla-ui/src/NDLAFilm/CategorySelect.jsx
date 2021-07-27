@@ -50,7 +50,7 @@ class CategorySelect extends React.Component {
     const { resourceTypes, resourceTypeSelected, ariaControlId, t } = this.props;
     const { resourceTypesIsOpen } = this.state;
     const offsetDropDown = resourceTypeSelected
-      ? resourceTypes.findIndex(resource => resource.id === resourceTypeSelected.id) + 1
+      ? resourceTypes.findIndex((resource) => resource.id === resourceTypeSelected.id) + 1
       : 0;
 
     return (
@@ -90,11 +90,11 @@ class CategorySelect extends React.Component {
                 {...classes('dropdown-button')}>
                 <span>{t('ndlaFilm.search.categoryFromNdla')}</span>
               </button>
-              {resourceTypes.map(resourceType => (
+              {resourceTypes.map((resourceType) => (
                 <button
                   aria-controls={ariaControlId}
                   type="button"
-                  ref={el => this.createRef(el, resourceType.id)}
+                  ref={(el) => this.createRef(el, resourceType.id)}
                   onClick={() => this.onSelect(resourceType.id)}
                   {...classes('dropdown-button', {
                     selected: resourceTypeSelected && resourceTypeSelected.id === resourceType.id,

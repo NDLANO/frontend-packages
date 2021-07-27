@@ -6,9 +6,9 @@ const toggleTooltip = (link, show) => {
 };
 
 export const addFilelistTooltipListners = () => {
-  forEachElement('.c-file-list__link', link => {
-    ['mouseenter', 'focus'].map(eventName => link.addEventListener(eventName, () => toggleTooltip(link, true)));
+  forEachElement('.c-file-list__link', (link) => {
+    ['mouseenter', 'focus'].map((eventName) => link.addEventListener(eventName, () => toggleTooltip(link, true)));
 
-    ['mouseleave', 'blur'].map(eventName => link.addEventListener(eventName, () => toggleTooltip(link, false)));
+    ['mouseleave', 'blur'].map((eventName) => link.addEventListener(eventName, () => toggleTooltip(link, false)));
   });
 };

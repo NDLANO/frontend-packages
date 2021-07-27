@@ -11,7 +11,7 @@ import { render, fireEvent } from 'react-testing-library';
 
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '../';
 
-const AccordionExample = props => (
+const AccordionExample = (props) => (
   <Accordion {...props}>
     {({ getPanelProps, handleItemClick }) => (
       <AccordionWrapper>

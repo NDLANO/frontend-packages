@@ -56,7 +56,7 @@ const StyledMovieTitle = styled.h2`
 `;
 
 const StyledImage = styled.div`
-  height: ${props => props.columnWidth * 0.5625}px;
+  height: ${(props) => props.columnWidth * 0.5625}px;
   background-size: cover;
   background-color: ${colors.ndlaFilm.filmColorLight};
   background-position-x: center;
@@ -79,7 +79,7 @@ const StyledImage = styled.div`
 `;
 
 const StyledSlideWrapper = styled.div`
-  width: ${props => props.columnWidth}px;
+  width: ${(props) => props.columnWidth}px;
   color: #fff;
   box-shadow: none;
   &:hover,

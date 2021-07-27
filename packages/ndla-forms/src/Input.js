@@ -85,7 +85,7 @@ const FormWarningText = styled.span`
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
-  ${props =>
+  ${(props) =>
     props.withLabel &&
     css`
       padding-left: ${spacing.spacingUnit * 4}px;
@@ -164,19 +164,19 @@ class Input extends React.Component {
             {iconLeft && !tags && iconLeft}
             <InputComponent
               ref={this.inputRef}
-              onChange={e => {
+              onChange={(e) => {
                 this.onCheckHeight();
                 if (onChange) {
                   onChange(e);
                 }
               }}
-              onFocus={e => {
+              onFocus={(e) => {
                 this.handleFocus();
                 if (onFocus) {
                   onFocus(e);
                 }
               }}
-              onBlur={e => {
+              onBlur={(e) => {
                 this.handleBlur();
                 if (onBlur) {
                   onBlur(e);

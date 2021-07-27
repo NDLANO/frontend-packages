@@ -33,7 +33,7 @@ const FilmMovieSearch = ({ topics, t, ...props }) => (
         <h2 {...classesMovieList('heading', '', 'u-12/12 u-4/12@tablet')}>{t('ndlaFilm.subjectsInMovies')}:</h2>
         <nav className="u-12/12 u-8/12@tablet">
           <ul>
-            {topics.map(topic => (
+            {topics.map((topic) => (
               <li key={topic.id}>
                 <SafeLink to={topic.path} key={topic.id}>
                   <span>{topic.name}</span>

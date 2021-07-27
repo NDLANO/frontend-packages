@@ -34,7 +34,7 @@ const StyledForm = styled.form<StyledProps>`
   border: 2px solid ${colors.brand.greyLight};
   padding: ${spacing.xsmall} 8px;
   min-height: 58px;
-  ${props =>
+  ${(props) =>
     props.inputHasFocus &&
     `
       border-color: ${colors.brand.primary};
@@ -122,7 +122,7 @@ const SearchFieldHeader: React.FC<Props & tType> = ({ value, onSubmit, onChange,
         }
         aria-label={t('searchPage.searchFieldPlaceholder')}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
       />

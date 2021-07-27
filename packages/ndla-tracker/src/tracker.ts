@@ -31,7 +31,7 @@ const pageViewHistory: PageViewHistoryType[] = [];
 function initializeGA(gaTrackingId?: string) {
   window.ga =
     window.ga ||
-    function() {
+    function () {
       // @ts-ignore
       (ga.q = ga.q || []).push(arguments);
     }; //eslint-disable-line
@@ -67,7 +67,7 @@ export const configureTracker = ({
     debug: !!debug,
   });
 
-  listen(location => {
+  listen((location) => {
     if (debug) {
       console.info(`The current URL is ${location.pathname}${location.search}${location.hash}`);
     }

@@ -39,7 +39,7 @@ const StyledMenu = styled.div<StyledMenuProps>`
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
     min-width: ${SIDE_NAV_WIDTH};
     margin-right: ${spacing.xsmall};
-    ${props =>
+    ${(props) =>
       !props.isOpen &&
       `
       width: ${spacing.large};

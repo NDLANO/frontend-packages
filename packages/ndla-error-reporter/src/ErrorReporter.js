@@ -18,14 +18,14 @@ function escapeRegExp(string) {
 
 function hasMatch(str, patterns) {
   // can be strings or ReqExp
-  const validPatterns = patterns.map(pattern => {
+  const validPatterns = patterns.map((pattern) => {
     if (Object.prototype.toString.call(pattern) === '[object String]') {
       return new RegExp(escapeRegExp(pattern));
     }
     return pattern;
   });
 
-  return validPatterns.findIndex(pattern => pattern.test(str)) !== -1;
+  return validPatterns.findIndex((pattern) => pattern.test(str)) !== -1;
 }
 
 const ErrorReporter = (function Singleton() {
@@ -100,7 +100,7 @@ const ErrorReporter = (function Singleton() {
 
   function init(config) {
     // Suscribes to window.onerror
-    TraceKit.report.subscribe(stackInfo => {
+    TraceKit.report.subscribe((stackInfo) => {
       processStackInfo(stackInfo, 'error', config);
     });
 

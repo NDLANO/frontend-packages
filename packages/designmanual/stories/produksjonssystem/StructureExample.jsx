@@ -15,12 +15,12 @@ import { colors, spacing, fonts } from '@ndla/core';
 import { subjectTopics, subjects, allFilters, favoriteSubjects } from '../../dummydata/mockTaxonomyStructure';
 
 function delay(t, v) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve.bind(null, v), t);
   });
 }
 
-const fetchSubjectsTopics = subjectId => delay(1000).then(() => subjectTopics[subjectId]);
+const fetchSubjectsTopics = (subjectId) => delay(1000).then(() => subjectTopics[subjectId]);
 
 let fetchFavoriteSubjectIds = [].concat(favoriteSubjects);
 
@@ -29,7 +29,7 @@ const AddTitle = styled('span')`
   font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
   color: ${colors.text.primary};
-  opacity: ${props => (props.show ? 1 : 0)};
+  opacity: ${(props) => (props.show ? 1 : 0)};
   display: flex;
   align-items: center;
   padding-right: ${spacing.small};
@@ -201,10 +201,10 @@ class StructureExample extends Component {
   onOpenPath({ id, isSubject }) {
     if (isSubject) {
       // already loaded?
-      const index = this.state.structure.findIndex(subject => subject.id === id);
+      const index = this.state.structure.findIndex((subject) => subject.id === id);
       if (!this.state.structure[index].topics && !this.state.structure[index].loading) {
         this.setState(
-          prevState => {
+          (prevState) => {
             const { structure } = prevState;
             structure[index].loading = true;
             return {
@@ -212,7 +212,7 @@ class StructureExample extends Component {
             };
           },
           () => {
-            fetchSubjectsTopics(id).then(result => {
+            fetchSubjectsTopics(id).then((result) => {
               const { structure } = this.state;
 
               structure[index].topics = result;
@@ -231,7 +231,7 @@ class StructureExample extends Component {
     if (!fetchFavoriteSubjectIds.includes(subjectId)) {
       fetchFavoriteSubjectIds.push(subjectId);
     } else {
-      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter(id => id !== subjectId);
+      fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter((id) => id !== subjectId);
     }
     this.forceUpdate();
   }
@@ -247,21 +247,21 @@ class StructureExample extends Component {
         <Wrapper>
           <StyledButtonWrapper>
             <AddTitle show>Filtrer emner:</AddTitle>
-            {availableFilters[subjectId].map(filter => (
+            {availableFilters[subjectId].map((filter) => (
               <ConnectionButton
                 type="button"
                 key={filter.id}
                 className={
-                  this.state.activeFilters.some(StructureFilter => StructureFilter === filter.id)
+                  this.state.activeFilters.some((StructureFilter) => StructureFilter === filter.id)
                     ? 'checkboxItem--checked'
                     : ''
                 }
                 onClick={() => {
                   const currentIndex = this.state.activeFilters.findIndex(
-                    StructureFilter => StructureFilter === filter.id,
+                    (StructureFilter) => StructureFilter === filter.id,
                   );
                   if (currentIndex === -1) {
-                    this.setState(prevState => {
+                    this.setState((prevState) => {
                       const { activeFilters } = prevState;
                       activeFilters.push(filter.id);
                       return {
@@ -269,7 +269,7 @@ class StructureExample extends Component {
                       };
                     });
                   } else {
-                    this.setState(prevState => {
+                    this.setState((prevState) => {
                       const { activeFilters } = prevState;
                       activeFilters.splice(currentIndex, 1);
                       return {
@@ -308,8 +308,8 @@ class StructureExample extends Component {
           highlightMainActive={this.props.structureEditor}
           structure={structure}
           toggleOpen={({ path, id, isSubject }) => {
-            this.setState(prevState => {
-              const filtered = prevState.openedPaths.filter(p => p !== path);
+            this.setState((prevState) => {
+              const filtered = prevState.openedPaths.filter((p) => p !== path);
               if (filtered.length === prevState.openedPaths.length) {
                 this.onOpenPath({ id, isSubject });
                 return { openedPaths: [...prevState.openedPaths, path] };

@@ -21,7 +21,7 @@ import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 
-const floatVideo = left => (
+const floatVideo = (left) => (
   <Fragment>
     <h2 className="u-heading">{`Eksempel ${!left ? 'høyrestilt' : 'venstrestilt'}`}</h2>
     <p>

@@ -25,7 +25,7 @@ export class TabsControlled extends Component {
       <div>
         <Tabs
           selectedIndex={this.state.selectedIndex}
-          onSelect={selectedIndex => {
+          onSelect={(selectedIndex) => {
             this.setState({
               selectedIndex,
             });

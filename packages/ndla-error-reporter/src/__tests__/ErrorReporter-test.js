@@ -45,7 +45,7 @@ test('ndla-error-reporter/ErrorReporter can capture message', () => {
 
 test('ndla-error-reporter/ErrorReporter can capture warning', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', body => {
+    .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         level: 'warning',
         text: 'Error: Some generic warning',
@@ -65,7 +65,7 @@ test('ndla-error-reporter/ErrorReporter can capture warning', () => {
 
 test('ndla-error-reporter/ErrorReporter can capture error', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', body => {
+    .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         level: 'error',
         text: 'Error: Some generic error',
@@ -85,7 +85,7 @@ test('ndla-error-reporter/ErrorReporter can capture error', () => {
 
 test('ndla-error-reporter/ErrorReporter can capture error with additional info', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', body => {
+    .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         level: 'error',
         text: 'Error: Some other generic error',
@@ -104,7 +104,7 @@ test('ndla-error-reporter/ErrorReporter can capture error with additional info',
 
 test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error to loggly', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', body => {
+    .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         level: 'error',
         text: 'ReferenceError: someUndefinedFunction is not defined',
@@ -131,7 +131,7 @@ test('ndla-error-reporter/ErrorReporter captures onerror calls and sends error t
 
 test('ndla-error-reporter/ErrorReporter should not send duplicate errors ', () => {
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', body => {
+    .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         text: "TypeError: Cannot set property 'foo' of null",
       });
@@ -156,7 +156,7 @@ test('ndla-error-reporter/ErrorReporter should not send more then 10 messages', 
   errorReporter.refresh();
 
   const apiMock = nock('http://loggly-mock-api')
-    .post('/inputs/1223/', body => {
+    .post('/inputs/1223/', (body) => {
       expect(body).toMatchObject({
         text: 'Log message',
       });

@@ -36,7 +36,7 @@ const MovieListItem = ({
               draggable
               tabIndex={-1}
               type="button"
-              onMouseDown={e => onDragStart(e, index)}
+              onMouseDown={(e) => onDragStart(e, index)}
               onMouseUp={onDragEnd}>
               <DragHorizontal />
             </ButtonIcons>
@@ -46,7 +46,7 @@ const MovieListItem = ({
             draggable
             tabIndex={-1}
             type="button"
-            onMouseDown={e => onDragStart(e, index)}
+            onMouseDown={(e) => onDragStart(e, index)}
             onMouseUp={onDragEnd}>
             <DragHorizontal />
           </ButtonIcons>
@@ -87,7 +87,7 @@ const StyledMovieItem = styled.li`
       height: 18px;
     }
   }
-  ${props =>
+  ${(props) =>
     props.delete &&
     css`
       ${animations.fadeOut()}
@@ -118,7 +118,7 @@ const ButtonIcons = styled.button`
   &:focus {
     background: ${colors.brand.light};
   }
-  ${props =>
+  ${(props) =>
     props.delete &&
     css`
       color: ${colors.support.red};
@@ -127,7 +127,7 @@ const ButtonIcons = styled.button`
         background: ${colors.support.redLight};
       }
     `}
-  ${props =>
+  ${(props) =>
     props.draggable &&
     css`
       cursor: grabbing;

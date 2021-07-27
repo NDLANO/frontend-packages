@@ -28,7 +28,7 @@ const DropdownInput = ({
     {...rest}
     tags={
       multiSelect &&
-      values.map(value => (
+      values.map((value) => (
         <FormPill
           label={getFieldValue(value, labelField)}
           key={getFieldValue(value, idField)}

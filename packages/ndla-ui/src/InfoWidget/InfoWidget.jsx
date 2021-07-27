@@ -19,7 +19,7 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
     </div>
     <div {...classes('links')}>
       {iconLinks &&
-        iconLinks.map(link => {
+        iconLinks.map((link) => {
           if (link.url) {
             return (
               <SafeLink key={link.url} {...classes('icon-link')} to={link.url} aria-label={link.name}>

@@ -37,8 +37,7 @@
     "intl-format-cache": "^4.3.1",
     "intl-messageformat": "5.4.3",
     "invariant": "^2.2.3",
-    "react-i18next": "^11.11.0",
-    "@ndla/ui": "^0.35.8"
+    "react-i18next": "^11.11.0"
   },
   "publishConfig": {
     "access": "public"

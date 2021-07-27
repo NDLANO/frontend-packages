@@ -7,9 +7,11 @@
  */
 
 import i18n from 'i18next';
-import { messagesNB, messagesEN, messagesNN } from '@ndla/ui';
 import { initReactI18next, I18nextProvider, withTranslation, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import messagesEN from './locale/messages-en';
+import messagesNN from './locale/messages-nn';
+import messagesNB from './locale/messages-nb';
 
 const DETECTION_OPTIONS = {
   order: ['path', 'localStorage', 'htmlTag'],

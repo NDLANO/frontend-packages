@@ -59,7 +59,7 @@ test('Test that determining whether to highlight path works with locale and not'
     },
   ];
 
-  tests.forEach(t => {
+  tests.forEach((t) => {
     const result = isPathToHighlight(t.path, t.href);
     expect(result).toBe(t.expected);
   });

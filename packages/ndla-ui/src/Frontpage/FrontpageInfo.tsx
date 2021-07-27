@@ -40,8 +40,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-const FrontpageInfo: React.FunctionComponent<Props> = ({ children }) => (
-  <StyledWrapper>{children}</StyledWrapper>
-);
+const FrontpageInfo: React.FunctionComponent<Props> = ({ children }) => <StyledWrapper>{children}</StyledWrapper>;
 
 export default FrontpageInfo;

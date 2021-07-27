@@ -25,7 +25,7 @@ export const FigureLicenseCta = ({ children, messages, authors, origin, title })
   <div {...classLicenses('cta-wrapper')}>
     <ul {...classLicenses('list')}>
       {title && <li {...classLicenses('item')}>{`${messages.title}: ${title}`}</li>}
-      {authors.map(author => (
+      {authors.map((author) => (
         <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${author.name}`}</li>
       ))}
       {origin && (
@@ -57,19 +57,8 @@ FigureLicenseCta.propTypes = {
 };
 
 export const FigureLicenseByline = ({ messages, license, locale }) => [
-  <LicenseDescription
-    key="byline"
-    highlightCC
-    locale={locale}
-    messages={messages}
-    licenseRights={license.rights}
-  />,
-  <a
-    key="link"
-    {...classLicenses('link')}
-    target="_blank"
-    rel="noopener noreferrer"
-    href={license.url}>
+  <LicenseDescription key="byline" highlightCC locale={locale} messages={messages} licenseRights={license.rights} />,
+  <a key="link" {...classLicenses('link')} target="_blank" rel="noopener noreferrer" href={license.url}>
     {license.linkText}
   </a>,
 ];

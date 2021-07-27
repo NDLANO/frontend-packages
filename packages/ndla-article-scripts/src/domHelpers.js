@@ -38,7 +38,7 @@ export const createElement = (type, id, className, innerHTML) => {
   return el;
 };
 
-export const removeElementById = id => {
+export const removeElementById = (id) => {
   const el = document.getElementById(id);
   if (el) {
     el.parentNode.removeChild(el);
@@ -46,12 +46,12 @@ export const removeElementById = id => {
 };
 
 export const removeModifiers = (className, modifier, rootSelector = '') => {
-  forEachElement(`${rootSelector} .${className}`, el => {
+  forEachElement(`${rootSelector} .${className}`, (el) => {
     el.classList.remove(`${className}--${modifier}`);
   });
 };
 
-export const getElementOffset = element => {
+export const getElementOffset = (element) => {
   const rect = element.getBoundingClientRect();
   const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;

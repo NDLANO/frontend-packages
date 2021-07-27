@@ -75,16 +75,16 @@ const Toolbox = () => {
       // An update of selected main topic
       setTopics([{ loading: true, label: '' }]);
       const mainTopicId = selectedTopics[0];
-      const updatedMainTopics = mainTopics.map(mainTopicItem => {
+      const updatedMainTopics = mainTopics.map((mainTopicItem) => {
         return {
           ...mainTopicItem,
           selected: mainTopicItem.id === mainTopicId,
         };
       });
 
-      const mainTopic = updatedMainTopics.find(topic => topic.selected);
+      const mainTopic = updatedMainTopics.find((topic) => topic.selected);
       if (mainTopic) {
-        fetchTopicData(mainTopic).then(topicData => {
+        fetchTopicData(mainTopic).then((topicData) => {
           mainTopic.content = topicData;
           setTopics([mainTopic]);
         });
@@ -98,15 +98,15 @@ const Toolbox = () => {
       // Update sub-topics with correct selected value on current topic
       const subTopicToUpdate = updatedTopics[updatedTopics.length - 1];
       if (subTopicToUpdate.subTopics) {
-        subTopicToUpdate.subTopics = subTopicToUpdate.subTopics.map(topicItem => {
+        subTopicToUpdate.subTopics = subTopicToUpdate.subTopics.map((topicItem) => {
           return {
             ...topicItem,
             selected: topicItem.id === newSelectedTopicId,
           };
         });
-        const selectedSubTopic = subTopicToUpdate.subTopics.find(topic => topic.selected);
+        const selectedSubTopic = subTopicToUpdate.subTopics.find((topic) => topic.selected);
         const selectedSubTopicIndex = selectedTopics.length - 1;
-        fetchTopicData(selectedSubTopic).then(topicData => {
+        fetchTopicData(selectedSubTopic).then((topicData) => {
           selectedSubTopic.content = topicData;
           const updatedTopics: any[] = [...topics];
           updatedTopics[selectedSubTopicIndex] = selectedSubTopic;

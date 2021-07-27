@@ -28,14 +28,7 @@ const LanguageIndicator = styled('div')`
   pointer-events: none;
 `;
 
-const ThemeEditorModal = ({
-  theme,
-  onClose,
-  onSave,
-  onEditName,
-  messages: { save, cancel, title },
-  t,
-}) => (
+const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save, cancel, title }, t }) => (
   <>
     <ModalHeader title="Ny tema gruppe">
       <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
@@ -45,11 +38,7 @@ const ThemeEditorModal = ({
       <StyledInputWrapper>
         <div>
           <Input
-            iconLeft={
-              <LanguageIndicator style={{ padding: '13px' }}>
-                {t('languages.nb')}:
-              </LanguageIndicator>
-            }
+            iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nb')}:</LanguageIndicator>}
             warningText={theme.warnings.nb && 'Mangler navn'}
             container="div"
             type="text"
@@ -58,16 +47,12 @@ const ThemeEditorModal = ({
               lang: t('languages.nb'),
             })}
             value={theme.name.nb}
-            onChange={e => onEditName({ value: e.target.value, lang: 'nb' })}
+            onChange={(e) => onEditName({ value: e.target.value, lang: 'nb' })}
           />
         </div>
         <div>
           <Input
-            iconLeft={
-              <LanguageIndicator style={{ padding: '13px' }}>
-                {t('languages.nn')}:
-              </LanguageIndicator>
-            }
+            iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nn')}:</LanguageIndicator>}
             warningText={theme.warnings.nn && 'Mangler navn'}
             container="div"
             type="text"
@@ -75,16 +60,12 @@ const ThemeEditorModal = ({
               lang: t('languages.nn'),
             })}
             value={theme.name.nn}
-            onChange={e => onEditName({ value: e.target.value, lang: 'nn' })}
+            onChange={(e) => onEditName({ value: e.target.value, lang: 'nn' })}
           />
         </div>
         <div>
           <Input
-            iconLeft={
-              <LanguageIndicator style={{ padding: '13px' }}>
-                {t('languages.en')}:
-              </LanguageIndicator>
-            }
+            iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.en')}:</LanguageIndicator>}
             warningText={theme.warnings.en && 'Mangler navn'}
             container="div"
             type="text"
@@ -92,7 +73,7 @@ const ThemeEditorModal = ({
               lang: t('languages.en'),
             })}
             value={theme.name.en}
-            onChange={e => onEditName({ value: e.target.value, lang: 'en' })}
+            onChange={(e) => onEditName({ value: e.target.value, lang: 'en' })}
           />
         </div>
       </StyledInputWrapper>

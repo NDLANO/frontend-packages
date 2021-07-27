@@ -50,15 +50,7 @@ ResourceLink.defaultProps = {
   component: SafeLink,
 };
 
-const Resource = ({
-  t,
-  resource,
-  icon,
-  resourceToLinkProps,
-  showAdditionalResources,
-  id,
-  contentTypeDescription,
-}) => {
+const Resource = ({ t, resource, icon, resourceToLinkProps, showAdditionalResources, id, contentTypeDescription }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
   if (icon === undefined) {
     icon = <ContentTypeBadge type={resource.contentType} background border={false} />;
@@ -120,8 +112,8 @@ injectT(Resource);
 const ResourceList = ({ resources, onClick, type, title, showAdditionalResources, t, ...rest }) => {
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
-    resources.filter(res => res.additional).length > 0 &&
-    resources.filter(res => !res.additional).length === 0;
+    resources.filter((res) => res.additional).length > 0 &&
+    resources.filter((res) => !res.additional).length === 0;
 
   return (
     <div>
@@ -136,9 +128,7 @@ const ResourceList = ({ resources, onClick, type, title, showAdditionalResources
             resource={resource}
             t={t}
             contentTypeDescription={
-              resource.additional
-                ? t('resource.tooltipAdditionalTopic')
-                : t('resource.tooltipCoreTopic')
+              resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')
             }
             id={`${resource.id}_${index}`}
           />

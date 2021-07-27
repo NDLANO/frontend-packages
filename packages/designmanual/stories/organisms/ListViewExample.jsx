@@ -43,7 +43,7 @@ class ListViewExample extends Component {
   }
 
   handleChangeFilters(key, values) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const currentFilters = prevState.filters;
       currentFilters[key] = values;
       return {
@@ -76,27 +76,23 @@ class ListViewExample extends Component {
     let filteredItems = mockListView.items;
     // 1. Filter items on subjects
     if (filters.subject && filters.subject.length) {
-      filteredItems = filteredItems.filter(item =>
-        item.subject.some(subject => filters.subject.includes(subject.value)),
+      filteredItems = filteredItems.filter((item) =>
+        item.subject.some((subject) => filters.subject.includes(subject.value)),
       );
     }
 
     // 2 Filter items on category
     if (filters.category && filters.category.length) {
-      filteredItems = filteredItems.filter(
-        item => item.category && filters.category.includes(item.category.value),
-      );
+      filteredItems = filteredItems.filter((item) => item.category && filters.category.includes(item.category.value));
     }
 
     // 3. Filter with search (testing name, description and tags[])
     if (searchValue.length > 0) {
       const searchValueLowercase = searchValue.toLowerCase();
       filteredItems = filteredItems.filter(
-        item =>
-          (item.tags &&
-            item.tags.some(tag => tag.toLowerCase().indexOf(searchValueLowercase) !== -1)) ||
-          (item.description &&
-            item.description.toLowerCase().indexOf(searchValueLowercase) !== -1) ||
+        (item) =>
+          (item.tags && item.tags.some((tag) => tag.toLowerCase().indexOf(searchValueLowercase) !== -1)) ||
+          (item.description && item.description.toLowerCase().indexOf(searchValueLowercase) !== -1) ||
           item.name.toLowerCase().indexOf(searchValueLowercase) !== -1,
       );
     }
@@ -106,7 +102,7 @@ class ListViewExample extends Component {
   filterOnSelectedLetter(filteredItems) {
     const { selectedLetter } = this.state;
     if (selectedLetter) {
-      return filteredItems.filter(item => item.name.toLowerCase().substr(0, 1) === selectedLetter);
+      return filteredItems.filter((item) => item.name.toLowerCase().substr(0, 1) === selectedLetter);
     }
     return filteredItems;
   }
@@ -121,9 +117,7 @@ class ListViewExample extends Component {
         subTitle={selectedItem.category.title}
         closeCallback={() => this.handleSelectItem()}>
         <NotionDialogContent>
-          {selectedItem.image ? (
-            <NotionDialogImage src={selectedItem.image} alt={selectedItem.description} />
-          ) : null}
+          {selectedItem.image ? <NotionDialogImage src={selectedItem.image} alt={selectedItem.description} /> : null}
           <NotionDialogText>{selectedItem.longDescription}</NotionDialogText>
         </NotionDialogContent>
         <NotionDialogTags tags={selectedItem.tags} />
@@ -133,7 +127,7 @@ class ListViewExample extends Component {
           authors={selectedItem.authors}
           licenseBox={
             <Modal activateButton={<Button link>{t('article.useContent')}</Button>} size="medium">
-              {onClose => (
+              {(onClose) => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">
                     <ModalCloseButton onClick={onClose} title="lukk" />

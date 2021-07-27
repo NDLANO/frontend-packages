@@ -31,12 +31,7 @@ interface Props {
   invertedStyle: boolean;
 }
 
-const Breadcrumb: React.FunctionComponent<Props & tType> = ({
-  children,
-  items,
-  invertedStyle,
-  t,
-}) => (
+const Breadcrumb: React.FunctionComponent<Props & tType> = ({ children, items, invertedStyle, t }) => (
   <nav aria-label={t('breadcrumb.breadcrumb')}>
     {children}
     <ol {...classes('list')}>

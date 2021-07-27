@@ -97,7 +97,7 @@ type WrapperProps = {
 const StyledSearchResultsWrapper = styled.section<WrapperProps>`
   background: #fff;
   width: 100%;
-  position: ${props => (props.frontpage ? 'absolute' : 'static')};
+  position: ${(props) => (props.frontpage ? 'absolute' : 'static')};
   left: 0;
   right: 0;
   top: 62px;
@@ -116,14 +116,14 @@ type StyledScrollableContentProps = {
 };
 
 const StyledScrollableContent = styled.div<StyledScrollableContentProps>`
-  max-height: calc(100vh - ${props => 260 - props.extendHeight}px);
+  max-height: calc(100vh - ${(props) => 260 - props.extendHeight}px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  padding: ${props => (props.extendHeight ? spacing.normal : spacing.large)} ${spacing.large}
-    ${spacing.large} ${spacing.large};
+  padding: ${(props) => (props.extendHeight ? spacing.normal : spacing.large)} ${spacing.large} ${spacing.large}
+    ${spacing.large};
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-    max-height: calc(100vh - ${props => 200 - props.extendHeight});
+    max-height: calc(100vh - ${(props) => 200 - props.extendHeight});
   }
   ${mq.range({ until: breakpoints.tablet })} {
     padding: 0 ${spacing.normal} ${spacing.large};
@@ -191,10 +191,9 @@ const findPathForKeyboardNavigation = (
   direction: 1 | -1 | null,
 ): HTMLElement | string | null => {
   const selectables = contentRef ? Array.from(contentRef.querySelectorAll('li')) : [];
-  const resultsContainingPaths: Array<string | HTMLElement> = ([
-    GO_TO_SEARCHPAGE,
-    GO_TO_SUGGESTION,
-  ] as Array<HTMLElement | string>).concat(...selectables);
+  const resultsContainingPaths: Array<string | HTMLElement> = (
+    [GO_TO_SEARCHPAGE, GO_TO_SUGGESTION] as Array<HTMLElement | string>
+  ).concat(...selectables);
 
   // Nothing selected, goto either first or last depending on direction
   if (current === null) {
@@ -214,9 +213,7 @@ const findPathForKeyboardNavigation = (
 type Props = {
   result: Array<ContentTypeResultType>;
   allResultUrl: string;
-  resourceToLinkProps: (
-    resource: Resource,
-  ) => {
+  resourceToLinkProps: (resource: Resource) => {
     to: string;
   };
   onNavigate?: VoidFunction;
@@ -256,14 +253,14 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
         e.stopPropagation();
         e.preventDefault();
 
-        setKeyNavigation(prevKeyPath => {
+        setKeyNavigation((prevKeyPath) => {
           return findPathForKeyboardNavigation(contentRef.current, prevKeyPath, 1);
         });
       } else if (e.code === 'ArrowUp') {
         e.stopPropagation();
         e.preventDefault();
 
-        setKeyNavigation(prevKeyPath => {
+        setKeyNavigation((prevKeyPath) => {
           return findPathForKeyboardNavigation(contentRef.current, prevKeyPath, -1);
         });
       } else if (e.code === 'Enter') {
@@ -271,18 +268,12 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
         e.preventDefault();
         if (keyboardPathNavigation === GO_TO_SUGGESTION) {
           const anchorTag =
-            searchSuggestionRef &&
-            searchSuggestionRef.current &&
-            searchSuggestionRef.current.closest('a');
+            searchSuggestionRef && searchSuggestionRef.current && searchSuggestionRef.current.closest('a');
           if (anchorTag) {
             anchorTag.click();
           }
-        } else if (
-          keyboardPathNavigation === GO_TO_SEARCHPAGE ||
-          keyboardPathNavigation === undefined
-        ) {
-          const anchorTag =
-            searchAllRef && searchAllRef.current && searchAllRef.current.closest('a');
+        } else if (keyboardPathNavigation === GO_TO_SEARCHPAGE || keyboardPathNavigation === undefined) {
+          const anchorTag = searchAllRef && searchAllRef.current && searchAllRef.current.closest('a');
           if (anchorTag) {
             anchorTag.click();
           }
@@ -291,8 +282,7 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
             const toClick =
               keyboardPathNavigation &&
               keyboardPathNavigation.querySelector &&
-              (keyboardPathNavigation.querySelector('a') ||
-                keyboardPathNavigation.querySelector('button'));
+              (keyboardPathNavigation.querySelector('a') || keyboardPathNavigation.querySelector('button'));
 
             toClick && toClick.click();
           }
@@ -303,7 +293,7 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
     };
 
     window.addEventListener('keydown', onKeyDownEvent);
-    setKeyNavigation(prevKeyNav => {
+    setKeyNavigation((prevKeyNav) => {
       return findPathForKeyboardNavigation(contentRef.current, prevKeyNav, null);
     });
     return () => {
@@ -336,17 +326,13 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
         )}
         <div>
           <SearchLinkContainer>
-            <StyledSearchLink
-              css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle}
-              to={allResultUrl}>
+            <StyledSearchLink css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle} to={allResultUrl}>
               <SearchIcon className="c-icon--22" />
               <strong ref={searchAllRef}>{searchString}</strong>
               <small>{t('welcomePage.searchAllInfo')}</small>
             </StyledSearchLink>
             {suggestion && (
-              <StyledSearchLink
-                css={keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle}
-                to={suggestionUrl}>
+              <StyledSearchLink css={keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle} to={suggestionUrl}>
                 <SearchIcon className="c-icon--22" />
                 <small>{t('searchPage.resultType.searchPhraseSuggestion')}</small>
                 <strong ref={searchSuggestionRef}>{suggestion}</strong>

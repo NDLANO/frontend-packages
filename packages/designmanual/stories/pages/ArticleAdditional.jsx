@@ -29,9 +29,7 @@ const ArticleAdditional = () => (
   <OneColumn>
     <ArticleWrapper id="mainContentId" modifier={contentTypes.SUBJECT_MATERIAL}>
       <LayoutItem layout="center">
-        <ArticleHeaderWrapper
-          competenceGoals={<CompetenceGoalListExample />}
-          competenceGoalTypes={['LK20', 'LK06']}>
+        <ArticleHeaderWrapper competenceGoals={<CompetenceGoalListExample />} competenceGoalTypes={['LK20', 'LK06']}>
           <ArticleTitle icon={<SubjectMaterialBadge background size="large" />} label="Fagstoff">
             Artikkel Tilleggsstoff?
           </ArticleTitle>
@@ -42,19 +40,16 @@ const ArticleAdditional = () => (
       </LayoutItem>
       <LayoutItem layout="center">
         <p>
-          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
-          Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å bruke
-          ressurser på nettopp dette prosjektet.
+          Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
+          av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
         </p>
         <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
-          kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
-          potensialet i den.
+          En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen
+          få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <table className="c-table o-wrapper--wide">
           <tbody>
@@ -82,9 +77,7 @@ const ArticleAdditional = () => (
               <td>
                 <ul>
                   <li>en av journalistenes mening om en ny film, bok, konsert e.l. </li>
-                  <li>
-                    skal være en bruksanvisning slik at målgruppen vet om produktet er noe for dem
-                  </li>
+                  <li>skal være en bruksanvisning slik at målgruppen vet om produktet er noe for dem</li>
                 </ul>
               </td>
             </tr>
@@ -103,10 +96,7 @@ const ArticleAdditional = () => (
               <td>Kommentar og kronikk</td>
               <td>
                 <ul>
-                  <li>
-                    kan skrives av en i redaksjonen, men gjerne også av en fagperson utenfor
-                    redaksjonen{' '}
-                  </li>
+                  <li>kan skrives av en i redaksjonen, men gjerne også av en fagperson utenfor redaksjonen </li>
                   <li>skal gi dybdekunnskap om et tema </li>
                 </ul>
               </td>
@@ -150,9 +140,7 @@ const ArticleAdditional = () => (
               <td>Notis</td>
               <td>
                 <ul>
-                  <li>
-                    kort nyhetsmelding som gir grunnleggende informasjon om en aktuell hendelse
-                  </li>
+                  <li>kort nyhetsmelding som gir grunnleggende informasjon om en aktuell hendelse</li>
                   <li>gjerne bare 10–15 setninger</li>
                 </ul>
               </td>
@@ -165,8 +153,7 @@ const ArticleAdditional = () => (
               <td>
                 <ul>
                   <li>
-                    hører til i objektiv-kategorien, men journalisten bruker alle sanser og
-                    litterære virkemidler{' '}
+                    hører til i objektiv-kategorien, men journalisten bruker alle sanser og litterære virkemidler{' '}
                   </li>
                   <li>går i dybden, gir leseren en større forståelse av et tema</li>
                 </ul>
@@ -178,8 +165,7 @@ const ArticleAdditional = () => (
               <td>
                 <ul>
                   <li>
-                    hører til i objektiv-kategorien, men journalisten bruker alle sanser og
-                    litterære virkemidler{' '}
+                    hører til i objektiv-kategorien, men journalisten bruker alle sanser og litterære virkemidler{' '}
                   </li>
                   <li>gir leseren dybdekunnskap om en aktuell person i nyhetsbildet</li>
                 </ul>
@@ -188,14 +174,12 @@ const ArticleAdditional = () => (
           </tbody>
         </table>
         <p>
-          En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
-          kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
-          potensialet i den.
+          En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen
+          få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <ArticleBylineExample
           multipleAuthors

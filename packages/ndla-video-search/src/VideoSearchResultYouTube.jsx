@@ -37,9 +37,7 @@ export default function VideoSearchResultYouTube({
           <img role="presentation" alt="presentation" src={videoData.thumbnailurl} />
           <div {...classes('information')}>
             <h2>{videoData.name}</h2>
-            <div>
-              {`${translations.publishedDate}: ${setLocaleDate(videoData.datepublished, locale)}`}
-            </div>
+            <div>{`${translations.publishedDate}: ${setLocaleDate(videoData.datepublished, locale)}`}</div>
             <div>{`${translations.duration}: ${setYouTubeDuration(videoData.duration)}`}</div>
             <div>{`${translations.interactioncount}: ${videoData.interactioncount}`}</div>
             <div>{videoData.description}</div>

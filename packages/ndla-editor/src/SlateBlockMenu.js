@@ -143,41 +143,35 @@ FocusWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const SlateBlockMenu = React.forwardRef(
-  ({ heading, actions, clickItem, onToggleOpen, isOpen, cy }, ref) => (
-    <>
-      <div
-        ref={ref}
-        css={[buttonCSS, isOpen && buttonOpen]}
-        data-cy={cy}
-        onMouseDown={() => onToggleOpen(!isOpen)}>
-        <Plus />
-      </div>
-      {isOpen && (
-        <FocusWrapper onToggleOpen={onToggleOpen}>
-          <Wrapper>
-            <div cy="slate-block-picker-menu">
-              <HeaderLabel>{heading}</HeaderLabel>
-              {actions.map(action => (
-                <Item key={action.data.object}>
-                  <button
-                    css={itemButton}
-                    data-cy={`create-${action.data.object}`}
-                    type="button"
-                    onClick={() => clickItem(action.data)}>
-                    {action.icon && action.icon}
-                    <span>{action.label}</span>
-                  </button>
-                  {action.helpIcon}
-                </Item>
-              ))}
-            </div>
-          </Wrapper>
-        </FocusWrapper>
-      )}
-    </>
-  ),
-);
+const SlateBlockMenu = React.forwardRef(({ heading, actions, clickItem, onToggleOpen, isOpen, cy }, ref) => (
+  <>
+    <div ref={ref} css={[buttonCSS, isOpen && buttonOpen]} data-cy={cy} onMouseDown={() => onToggleOpen(!isOpen)}>
+      <Plus />
+    </div>
+    {isOpen && (
+      <FocusWrapper onToggleOpen={onToggleOpen}>
+        <Wrapper>
+          <div cy="slate-block-picker-menu">
+            <HeaderLabel>{heading}</HeaderLabel>
+            {actions.map((action) => (
+              <Item key={action.data.object}>
+                <button
+                  css={itemButton}
+                  data-cy={`create-${action.data.object}`}
+                  type="button"
+                  onClick={() => clickItem(action.data)}>
+                  {action.icon && action.icon}
+                  <span>{action.label}</span>
+                </button>
+                {action.helpIcon}
+              </Item>
+            ))}
+          </div>
+        </Wrapper>
+      </FocusWrapper>
+    )}
+  </>
+));
 
 SlateBlockMenu.propTypes = {
   isOpen: PropTypes.bool.isRequired,

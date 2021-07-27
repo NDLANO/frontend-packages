@@ -69,7 +69,7 @@ const ItemHead = styled.div<ItemTypeProps>`
   ${mq.range({ from: breakpoints.desktop })} {
     height: 100px;
   }
-  border: 1px solid ${props => props.type && `${resourceTypeColor(props.type)};`};
+  border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
   border-bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -90,11 +90,11 @@ const ItemIcon = styled.div<ItemTypeProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => props.type && `background: ${resourceTypeColor(props.type)};`}
+  ${(props) => props.type && `background: ${resourceTypeColor(props.type)};`}
 `;
 
 const ItemContent = styled.div<ItemTypeProps>`
-  border: 1px solid ${props => props.type && `${resourceTypeColor(props.type)};`};
+  border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
   border-top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -221,13 +221,7 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
   const mainContext = contexts[0];
 
-  const Breadcrumb = ({
-    breadcrumb,
-    children,
-  }: {
-    breadcrumb: string[];
-    children?: React.ReactNode;
-  }) => (
+  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: React.ReactNode }) => (
     <BreadcrumbPath>
       {breadcrumb.map((breadcrumbItem: string, i: number) => {
         return (
@@ -262,7 +256,7 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
         <ItemContent type={type}>
           {labels.length > 0 && (
             <ItemPillWrapper>
-              {labels.map(label => (
+              {labels.map((label) => (
                 <ItemPill key={label}>{label}</ItemPill>
               ))}
             </ItemPillWrapper>
@@ -295,7 +289,7 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
                     </ModalHeader>
                     <ModalContent>
                       <ContextList>
-                        {contexts.map(context => (
+                        {contexts.map((context) => (
                           <ContextListItem key={context.url}>
                             <SafeLink to={context.url}>{title}</SafeLink>
                             <Breadcrumb breadcrumb={context.breadcrumb}>

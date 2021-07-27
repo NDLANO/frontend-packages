@@ -8,7 +8,7 @@ const Fade = ({ children, delay, timeout, exitDelay, ...rest }) => (
     {...rest}
     timeout={timeout}
     unmountOnExit
-    onEnter={node => {
+    onEnter={(node) => {
       const n = node;
       n.style.transitionDuration = `${timeout}ms`;
 
@@ -18,7 +18,7 @@ const Fade = ({ children, delay, timeout, exitDelay, ...rest }) => (
     }}
     onExit={
       exitDelay
-        ? node => {
+        ? (node) => {
             const n = node;
             n.style.transitionDelay = `${exitDelay}ms`;
           }

@@ -60,13 +60,13 @@ const StyledAccordionPanel = styled.section<Props>`
   display: flex;
   transition: opacity 200ms ease;
   opacity: 1;
-  margin-bottom: ${props => (props.tiny ? spacing.small : spacing.normal)};
+  margin-bottom: ${(props) => (props.tiny ? spacing.small : spacing.normal)};
   background: #fff;
   max-height: auto;
   border: 2px solid transparent;
   padding: ${spacing.small} calc(${spacing.large}) ${spacing.large};
 
-  ${props =>
+  ${(props) =>
     !props.isOpen &&
     css`
       margin-bottom: 0;
@@ -77,7 +77,7 @@ const StyledAccordionPanel = styled.section<Props>`
       visibility: collapse;
     `};
 
-  ${props =>
+  ${(props) =>
     props.hasError &&
     props.isOpen &&
     css`

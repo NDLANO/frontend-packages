@@ -6,14 +6,14 @@ import { forEachElement } from './domHelpers';
 
 const trapInstances = {};
 
-const closeDialog = dialog => {
+const closeDialog = (dialog) => {
   dialog.classList.remove('c-dialog--active');
   dialog.setAttribute('aria-hidden', 'true');
   noScroll(false);
 };
 
 export const addShowDialogClickListeners = () => {
-  forEachElement('[data-dialog-trigger-id]', el => {
+  forEachElement('[data-dialog-trigger-id]', (el) => {
     const target = el;
     const id = target.getAttribute('data-dialog-trigger-id');
 
@@ -32,10 +32,7 @@ export const addShowDialogClickListeners = () => {
 
     target.onclick = () => {
       noScroll(true);
-      const viewportHeight = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0,
-      );
+      const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
       const sourceHeight = source.offsetHeight;
 
       jump(source, {
@@ -59,14 +56,14 @@ export const addShowDialogClickListeners = () => {
 };
 
 export const removeShowDialogClickListeners = () => {
-  forEachElement('[data-dialog-trigger-id]', el => {
+  forEachElement('[data-dialog-trigger-id]', (el) => {
     const target = el;
     target.onclick = undefined;
   });
 };
 
 export const addCloseDialogClickListeners = () => {
-  forEachElement('.c-dialog', el => {
+  forEachElement('.c-dialog', (el) => {
     const target = el;
     const closeButton = target.querySelector('.c-dialog__close');
 

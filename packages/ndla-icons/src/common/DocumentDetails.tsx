@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const DocumentDetails = (props: Props) => (
-  <Icon
-    title="DocumentDetails"
-    viewBox="0 0 315 292"
-    data-license="CC-BY 4.0"
-    data-source="Keyteq"
-    {...props}>
+  <Icon title="DocumentDetails" viewBox="0 0 315 292" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
       <title>Detaljer</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">

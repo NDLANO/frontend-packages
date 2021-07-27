@@ -34,14 +34,7 @@ interface Props {
   color?: string;
 }
 
-const LicenseDescription = ({
-  children,
-  licenseRights,
-  messages,
-  locale,
-  highlightCC,
-  color,
-}: Props) => (
+const LicenseDescription = ({ children, licenseRights, messages, locale, highlightCC, color }: Props) => (
   <StyledLicenseByline>
     <div>
       <LicenseIconDescriptionList

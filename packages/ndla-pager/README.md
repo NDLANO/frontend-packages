@@ -27,11 +27,5 @@ Uses [Emotion](https://emotion.sh/). [See](https://emotion.sh/docs/ssr) for ssr.
 ### Example with custom component
 
 ```js
-<Pager
-  page={1}
-  lastPage={3}
-  query={{ term: 'Medier' }}
-  pageItemComponentClass="button"
-  pathname="#"
-/>
+<Pager page={1} lastPage={3} query={{ term: 'Medier' }} pageItemComponentClass="button" pathname="#" />
 ```

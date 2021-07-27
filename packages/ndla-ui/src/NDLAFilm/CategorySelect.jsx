@@ -50,7 +50,7 @@ class CategorySelect extends React.Component {
     const { resourceTypes, resourceTypeSelected, ariaControlId, t } = this.props;
     const { resourceTypesIsOpen } = this.state;
     const offsetDropDown = resourceTypeSelected
-      ? resourceTypes.findIndex(resource => resource.id === resourceTypeSelected.id) + 1
+      ? resourceTypes.findIndex((resource) => resource.id === resourceTypeSelected.id) + 1
       : 0;
 
     return (
@@ -65,8 +65,7 @@ class CategorySelect extends React.Component {
           <div>
             <span>{t('ndlaFilm.search.chooseCategory')}</span>
             <small>
-              {(resourceTypeSelected && resourceTypeSelected.name) ||
-                t('ndlaFilm.search.categoryFromNdla')}
+              {(resourceTypeSelected && resourceTypeSelected.name) || t('ndlaFilm.search.categoryFromNdla')}
             </small>
           </div>
           <div>
@@ -83,10 +82,7 @@ class CategorySelect extends React.Component {
               clickOutsideDeactivates: true,
               escapeDeactivates: true,
             }}>
-            <div
-              id="selectCategory"
-              {...classes('dropdown-wrapper')}
-              style={{ top: `-${offsetDropDown * 52 + 13}px` }}>
+            <div id="selectCategory" {...classes('dropdown-wrapper')} style={{ top: `-${offsetDropDown * 52 + 13}px` }}>
               <button
                 aria-controls={ariaControlId}
                 type="button"
@@ -94,11 +90,11 @@ class CategorySelect extends React.Component {
                 {...classes('dropdown-button')}>
                 <span>{t('ndlaFilm.search.categoryFromNdla')}</span>
               </button>
-              {resourceTypes.map(resourceType => (
+              {resourceTypes.map((resourceType) => (
                 <button
                   aria-controls={ariaControlId}
                   type="button"
-                  ref={el => this.createRef(el, resourceType.id)}
+                  ref={(el) => this.createRef(el, resourceType.id)}
                   onClick={() => this.onSelect(resourceType.id)}
                   {...classes('dropdown-button', {
                     selected: resourceTypeSelected && resourceTypeSelected.id === resourceType.id,

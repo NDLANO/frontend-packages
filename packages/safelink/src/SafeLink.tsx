@@ -16,8 +16,7 @@ import MissingRouterContext from './MissingRouterContext';
 const isExternalLink = (to?: LinkProps['to']) =>
   to && isString(to) && (to.startsWith('https://') || to.startsWith('http://'));
 
-export const isOldNdlaLink = (to?: LinkProps['to']) =>
-  to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;
+export const isOldNdlaLink = (to?: LinkProps['to']) => to && isString(to) && to.match(/(.*)\/?node\/(\d+).*/) !== null;
 
 const LaunchIcon = styled(Launch)`
   margin-left: 6px;

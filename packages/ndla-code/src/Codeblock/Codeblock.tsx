@@ -80,14 +80,7 @@ type Props = {
   showCopy?: boolean;
 };
 
-export const Codeblock: FC<Props & tType> = ({
-  actionButton,
-  code,
-  format,
-  showCopy = false,
-  t,
-  title,
-}) => {
+export const Codeblock: FC<Props & tType> = ({ actionButton, code, format, showCopy = false, t, title }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
@@ -125,8 +118,7 @@ export const Codeblock: FC<Props & tType> = ({
             copyTextToClipboard(code);
             setIsCopied(true);
           }}>
-          {isCopied ? <Done /> : <Copy />}{' '}
-          {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
+          {isCopied ? <Done /> : <Copy />} {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
         </Button>
       )}
     </Wrapper>

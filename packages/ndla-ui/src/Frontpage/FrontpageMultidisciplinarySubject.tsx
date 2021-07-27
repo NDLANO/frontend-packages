@@ -75,11 +75,7 @@ type Props = {
   topics?: [{ url: string; title: string; id: string }];
 };
 
-const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> = ({
-  url,
-  t,
-  topics,
-}) => (
+const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> = ({ url, t, topics }) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
     <Wrapper>
@@ -87,7 +83,7 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> 
         <SectionHeading large>{t('frontpageMultidisciplinarySubject.heading')}</SectionHeading>
         {topics ? (
           <Topics>
-            {topics.map(topic => {
+            {topics.map((topic) => {
               return (
                 <Topic key={topic.id}>
                   <SafeLink to={topic.url}>{topic.title}</SafeLink>

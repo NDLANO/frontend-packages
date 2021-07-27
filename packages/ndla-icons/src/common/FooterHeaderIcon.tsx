@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const FooterHeaderIcon = (props: Props) => (
-  <Icon
-    title="FooterHeaderIcon"
-    viewBox="0 0 76 76"
-    data-license="CC-BY 4.0"
-    data-source="Keyteq"
-    {...props}>
+  <Icon title="FooterHeaderIcon" viewBox="0 0 76 76" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
       <title>Footer icon</title>
       <g>

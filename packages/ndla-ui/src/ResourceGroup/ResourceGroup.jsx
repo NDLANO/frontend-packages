@@ -29,12 +29,7 @@ const ResourceGroup = ({
   invertedStyle,
   unGrouped,
 }) => (
-  <section
-    {...classes('', [
-      contentType,
-      showAdditionalResources ? 'showall' : '',
-      unGrouped ? 'un-grouped' : '',
-    ])}>
+  <section {...classes('', [contentType, showAdditionalResources ? 'showall' : '', unGrouped ? 'un-grouped' : ''])}>
     {title && (
       <header {...classes('header', { invertedStyle })}>
         <ResourcesTitle>{title}</ResourcesTitle>

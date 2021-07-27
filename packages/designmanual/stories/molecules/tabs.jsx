@@ -25,7 +25,7 @@ export class TabsControlled extends Component {
       <div>
         <Tabs
           selectedIndex={this.state.selectedIndex}
-          onSelect={selectedIndex => {
+          onSelect={(selectedIndex) => {
             this.setState({
               selectedIndex,
             });
@@ -37,19 +37,13 @@ export class TabsControlled extends Component {
           ]}
         />
         <InlineContainer>
-          <Button
-            style={{ marginRight: '5px' }}
-            onClick={() => this.setState({ selectedIndex: 0 })}>
+          <Button style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 0 })}>
             Vis bildefane
           </Button>
-          <Button
-            style={{ marginRight: '5px' }}
-            onClick={() => this.setState({ selectedIndex: 1 })}>
+          <Button style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 1 })}>
             Vis videofane
           </Button>
-          <Button
-            style={{ marginRight: '5px' }}
-            onClick={() => this.setState({ selectedIndex: 2 })}>
+          <Button style={{ marginRight: '5px' }} onClick={() => this.setState({ selectedIndex: 2 })}>
             Vis lydfane
           </Button>
         </InlineContainer>

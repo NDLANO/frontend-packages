@@ -34,5 +34,5 @@ export const StyledButtonWrapper = styled.div`
   > button {
     margin-right: ${spacing.small};
   }
-  padding-left: ${props => (props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0)};
+  padding-left: ${(props) => (props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0)};
 `;

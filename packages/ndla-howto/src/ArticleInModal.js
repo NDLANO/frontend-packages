@@ -4,23 +4,14 @@ import Modal from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
-import {
-  Wrapper,
-  InModalHeader,
-  Heading,
-  Lead,
-  ImageWrapper,
-  IconButton,
-  PushGrid,
-} from './Styles';
+import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, IconButton, PushGrid } from './Styles';
 
 import { stories } from './StaticInfoComponents';
 
 const ModalContent = ({ pageId, onClose }) => {
   const useStory = stories[pageId] || {
     title: `Fant ingen veiledningstekster "${pageId}"`,
-    lead:
-      'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
+    lead: 'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
   };
   return (
     <Wrapper>
@@ -53,11 +44,7 @@ const ModalContent = ({ pageId, onClose }) => {
             }
             if (block.type === 'link') {
               return (
-                <a
-                  key={`${pageId}-${index}`}
-                  href={block.content.href}
-                  target="_blank"
-                  rel="noopener noreferrer">
+                <a key={`${pageId}-${index}`} href={block.content.href} target="_blank" rel="noopener noreferrer">
                   {block.content.text}
                 </a>
               );
@@ -74,9 +61,9 @@ const ArticleInModal = ({ pageId, tooltip, activateButton }) => (
   <Modal
     size="medium"
     backgroundColor="white"
-    wrapperFunctionForButton={tooltip ? btn => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : null}
+    wrapperFunctionForButton={tooltip ? (btn) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : null}
     activateButton={activateButton}>
-    {onClose =>
+    {(onClose) =>
       ModalContent({
         pageId,
         onClose,

@@ -10,7 +10,7 @@ import React from 'react';
 import { CodeBlockEditor } from '@ndla/code';
 
 export const CodeBlockEditorExample = () => {
-  const handleSave = codeContent => {
+  const handleSave = (codeContent) => {
     console.log('save codeContent: ', codeContent); // eslint-disable-line no-console
   };
   const handleAbort = () => {

@@ -43,9 +43,7 @@ export const FigureCaption = injectT(
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
           <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
-            <span {...classes('byline-authors')}>
-              {authors.map(author => author.name).join(', ')}
-            </span>
+            <span {...classes('byline-authors')}>{authors.map((author) => author.name).join(', ')}</span>
             <button
               type="button"
               data-dialog-trigger-id={id}

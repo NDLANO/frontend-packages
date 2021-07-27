@@ -35,19 +35,17 @@ import Breadcrumb from '../molecules/breadcrumbs';
 async function fetchLearningPathArticle({ learningPathId, stepId }) {
   return await fetch(
     `https://api.ndla.no/learningpath-api/v2/learningpaths/${learningPathId}/learningsteps/${stepId}?language=nb&fallback=true`,
-  ).then(data => data.json());
+  ).then((data) => data.json());
 }
 
 async function fetchLearningPathLearningSteps({ learningPathId }) {
   return await fetch(
     `https://api.ndla.no/learningpath-api/v2/learningpaths/${learningPathId}?language=nb&fallback=true`,
-  ).then(data => data.json());
+  ).then((data) => data.json());
 }
 
 async function fetchTaxonomiResourceId({ resourceId }) {
-  return await fetch(`https://api.ndla.no/taxonomy/v1/resources/urn:${resourceId}`).then(data =>
-    data.json(),
-  );
+  return await fetch(`https://api.ndla.no/taxonomy/v1/resources/urn:${resourceId}`).then((data) => data.json());
 }
 
 const LEARNING_PATHS_COOKIES_KEY = 'LEARNING_PATHS_COOKIES_KEY';
@@ -148,7 +146,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
   }
 
   useEffect(() => {
-    const onKeyUpEvent = e => {
+    const onKeyUpEvent = (e) => {
       dispatch({ type: UPDATE_SEQUENCE_NUMBER, code: e.code });
     };
     window.addEventListener('keyup', onKeyUpEvent);
@@ -202,16 +200,14 @@ const LearningPathExample = ({ invertedStyle, t }) => {
 
   let articleId =
     currentLearningStep && currentLearningStep.embedUrl
-      ? currentLearningStep.embedUrl.url.substr(
-          currentLearningStep.embedUrl.url.lastIndexOf('/') + 1,
-        )
+      ? currentLearningStep.embedUrl.url.substr(currentLearningStep.embedUrl.url.lastIndexOf('/') + 1)
       : null;
 
   if (articleId && articleId.indexOf(':') !== -1) {
     articleId = articleId.substr(articleId.lastIndexOf(':') + 1);
   }
 
-  const mappedLearningsteps = learningsteps.map(step => {
+  const mappedLearningsteps = learningsteps.map((step) => {
     // The designmanual fetches from learningpath-api. Must map type to content-type
     let type = '';
     switch (step.type) {
@@ -273,9 +269,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
                 <LearningPathInformation
                   invertedStyle={invertedStyle}
                   title={currentLearningStep.title.title}
-                  description={
-                    currentLearningStep.description && currentLearningStep.description.description
-                  }
+                  description={currentLearningStep.description && currentLearningStep.description.description}
                   license={currentLearningStep.license}
                 />
               )}
@@ -304,10 +298,7 @@ const LearningPathExample = ({ invertedStyle, t }) => {
           ) : (
             <LearningPathStickyPlaceholder />
           )}
-          <LearningPathMobileStepInfo
-            total={learningsteps.length}
-            current={currentLearningStepNumber + 1}
-          />
+          <LearningPathMobileStepInfo total={learningsteps.length} current={currentLearningStepNumber + 1} />
           {currentLearningStepNumber < learningsteps.length - 1 ? (
             <LearningPathStickySibling
               arrow="right"
@@ -344,17 +335,15 @@ const LearningPathExample = ({ invertedStyle, t }) => {
                 width: 100px;
                 height: 39px;
               `}
-              onChange={e => updateTempLearningPathId(e.target.value)}
-              onKeyDown={e => {
+              onChange={(e) => updateTempLearningPathId(e.target.value)}
+              onKeyDown={(e) => {
                 if (e.keyCode === 13) {
                   updateLearningPathId(e.target.value);
                   e.preventDefault();
                 }
               }}
             />
-            <Button onClick={() => updateLearningPathId(tempLearningPathId)}>
-              Hent læringssti
-            </Button>
+            <Button onClick={() => updateLearningPathId(tempLearningPathId)}>Hent læringssti</Button>
           </div>
         </StyledInfoHelper>
       )}

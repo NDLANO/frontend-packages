@@ -81,13 +81,8 @@ export { CompetenceGoalTab } from './CompetenceGoalTab';
 
 export { default as NoContentBox } from './NoContentBox';
 
-export {
-  default as ResourcesWrapper,
-  ResourcesTitle,
-  ResourcesTopicTitle,
-} from './ResourcesWrapper';
+export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 export { default as ResourceGroup } from './ResourceGroup';
-export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,

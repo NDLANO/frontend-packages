@@ -100,3 +100,4 @@ export { default as Topic } from './Topic';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
+export { useTranslation, withTranslation, i18n, I18nextProvider } from './i18n';

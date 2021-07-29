@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from '../i18n';
 
 type Props = {
   languages: string[];
@@ -15,6 +16,7 @@ type Props = {
 };
 
 const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale, infoLocale, languages }) => {
+  const { t, i18n } = useTranslation();
   const paths: string[] = window.location.pathname.split('/');
   const { search } = window.location;
 
@@ -25,10 +27,6 @@ const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale
     }
   };
 
-  // @ts-ignore
-  const t = global.t;
-  // @ts-ignore
-  const i18n = global.i18test;
   const currentLang = i18n.language;
 
   return (

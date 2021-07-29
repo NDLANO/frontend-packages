@@ -96,6 +96,8 @@ export { default as RadioButtonGroup } from './RadioButtonGroup';
 
 export { ToolboxInfo } from './ToolboxPage';
 export { default as Topic } from './Topic';
+export { default as Aside } from './Aside';
+export { default as AuthorInfo } from './AuthorInfo';
 
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 

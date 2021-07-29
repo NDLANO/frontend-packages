@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
@@ -130,31 +130,24 @@ const styledInvertedOutlineLargeScreensOnly = css`
 `;
 
 type Props = {
-  options: {
-    [key: string]: {
-      name: string;
-      url: string;
-    };
-  };
-  currentLanguage: string;
   inverted?: boolean;
   invertedOutlineLargeScreensOnly?: boolean;
   outline?: boolean;
   center?: boolean;
   alwaysVisible?: boolean;
+  languages: string[];
 };
 
-const LanguageSelector: React.FunctionComponent<Props & tType> = ({
-  options,
-  currentLanguage,
+const LanguageSelector: React.FunctionComponent<Props> = ({
   outline,
   center,
   inverted,
   invertedOutlineLargeScreensOnly,
   alwaysVisible,
-  t,
+  languages,
 }) => {
-  const [infoLocale, setInfoLocale] = useState(currentLanguage);
+  const { t, i18n } = useTranslation();
+  const [infoLocale, setInfoLocale] = useState(i18n.language);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
@@ -188,12 +181,7 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
               }}>
               {t('masthead.menu.close')}
             </Button>
-            <LanguageSelectorContent
-              options={options}
-              currentLanguage={currentLanguage}
-              setInfoLocale={setInfoLocale}
-              infoLocale={infoLocale}
-            />
+            <LanguageSelectorContent languages={languages} setInfoLocale={setInfoLocale} infoLocale={infoLocale} />
           </StyledModal>
         </FocusTrapReact>
       )}
@@ -201,4 +189,4 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
   );
 };
 
-export default injectT(LanguageSelector);
+export default LanguageSelector;

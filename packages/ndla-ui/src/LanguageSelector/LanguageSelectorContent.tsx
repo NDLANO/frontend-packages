@@ -15,16 +15,13 @@ type Props = {
   infoLocale: string;
 };
 
-const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale, infoLocale, languages }) => {
+const LanguageSelectorContent = ({ setInfoLocale, infoLocale, languages }: Props) => {
   const { t, i18n } = useTranslation();
-  const paths: string[] = window.location.pathname.split('/');
-  const { search } = window.location;
 
-  const getURL = (language: string) => {
-    const basename = languages.includes(paths[1] as string) ? `${paths[1]}` : '';
-    if (!(basename === '' && language === 'nb')) {
-      return `/${language}/${search}`;
-    }
+  const getURL = (locale: string, newLocale: string, location: Location) => {
+    const { pathname, search } = location;
+    const basePath = pathname.startsWith(`/${locale}/`) ? pathname.replace(`/${locale}/`, '/') : pathname;
+    return `/${newLocale}${basePath}${search}`;
   };
 
   const currentLang = i18n.language;
@@ -38,7 +35,7 @@ const LanguageSelectorContent: React.FunctionComponent<Props> = ({ setInfoLocale
               <span>{t(`languages.${key}`)}</span>
             ) : (
               <a
-                href={getURL(key)}
+                href={getURL(currentLang, key, window.location)}
                 onMouseOver={() => {
                   setInfoLocale(key);
                 }}

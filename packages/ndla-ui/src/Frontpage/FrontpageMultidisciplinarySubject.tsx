@@ -72,7 +72,7 @@ const Topic = styled.div`
 
 type Props = {
   url: string;
-  topics?: [{ url: string; title: string; id: string }];
+  topics?: { url: string; title: string; id: string }[];
 };
 
 const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> = ({ url, t, topics }) => (

@@ -10,12 +10,12 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
+import { useTranslation } from 'react-i18next';
 import LanguageSelectorContent from './LanguageSelectorContent';
 
 type StyledWrapperProps = {
@@ -80,40 +80,14 @@ const StyledModal = styled.div<StyledModalProps>`
         margin: 0 0 ${spacing.xsmall};
         padding: 0;
       }
-      a,
-      span {
+      button {
+        border: none;
         width: 100%;
-        padding: ${spacing.small} ${spacing.spacingUnit * 2.5}px;
+        padding: ${spacing.spacingUnit / 2 + 5}px ${spacing.spacingUnit * 2.5}px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: ${misc.borderRadius};
-      }
-      a {
-        background: transparent;
-        color: ${colors.brand.dark};
-        box-shadow: none;
-        transition: background 200ms ease;
-        &:hover,
-        &:focus {
-          background: ${colors.brand.tertiary};
-        }
-      }
-      span {
-        background: ${colors.brand.primary};
-        color: #fff;
-        &:before {
-          content: '';
-          position: absolute;
-          display: block;
-          @include svg_icon(done, #fff);
-          width: ${spacing.normal};
-          height: ${spacing.normal};
-          background-size: ${spacing.spacingUnit - 2}px ${spacing.spacingUnit - 2}px;
-          left: ${spacing.spacingUnit * 6}px;
-          background-position-x: center;
-          background-position-y: center;
-        }
       }
     }
   }
@@ -144,17 +118,16 @@ type Props = {
   alwaysVisible?: boolean;
 };
 
-const LanguageSelector: React.FunctionComponent<Props & tType> = ({
-  options,
+const LanguageSelector = ({
   currentLanguage,
   outline,
   center,
   inverted,
   invertedOutlineLargeScreensOnly,
   alwaysVisible,
-  t,
-}) => {
-  const [infoLocale, setInfoLocale] = useState(currentLanguage);
+}: Props) => {
+  const { t, i18n } = useTranslation();
+  const [infoLocale, setInfoLocale] = useState(i18n.language);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
@@ -189,7 +162,6 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
               {t('masthead.menu.close')}
             </Button>
             <LanguageSelectorContent
-              options={options}
               currentLanguage={currentLanguage}
               setInfoLocale={setInfoLocale}
               infoLocale={infoLocale}
@@ -201,4 +173,4 @@ const LanguageSelector: React.FunctionComponent<Props & tType> = ({
   );
 };
 
-export default injectT(LanguageSelector);
+export default LanguageSelector;

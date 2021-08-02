@@ -76,7 +76,10 @@ export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Naviga
 
 export { default as Programme } from './Programme';
 
-export { default as MultidisciplinarySubject, MultidisciplinarySubjectHeader } from './MultidisciplinarySubject';
+export {
+  default as MultidisciplinarySubject,
+  MultidisciplinarySubjectHeader,
+} from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,
@@ -102,4 +105,4 @@ export { default as AuthorInfo } from './AuthorInfo';
 export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
-export { useTranslation, withTranslation, i18n, I18nextProvider } from './i18n';
+export { i18nInstance } from './i18n';

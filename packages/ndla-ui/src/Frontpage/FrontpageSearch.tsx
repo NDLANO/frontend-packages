@@ -45,14 +45,14 @@ const StyledSearchBackdrop = styled.div`
 type Props = {
   inputHasFocus: boolean;
   searchFieldValue: string;
-  onSearchFieldChange: (searchValue: string) => {};
+  onSearchFieldChange: (searchValue: string) => void;
   searchFieldPlaceholder: string;
   onInputBlur: VoidFunction;
   onSearchInputFocus: VoidFunction;
   resourceToLinkProps: (resource: Resource) => {
     to: string;
   };
-  onSearch: (event: {}) => void;
+  onSearch: (event: React.FormEvent) => void;
   messages: { closeSearchLabel: string };
   allResultUrl: string;
   searchResult: Array<ContentTypeResultType>;

@@ -29,9 +29,7 @@ export default function VideoSearchResultBrightcove({
 }) {
   const active = selectedVideo && selectedVideo.id === video.id ? 'active' : '';
   const license =
-    video.custom_fields && video.custom_fields.license
-      ? getLicenseByNBTitle(video.custom_fields.license, locale)
-      : '';
+    video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : '';
   const thumbnailSource = video.images && video.images.thumbnail ? video.images.thumbnail.src : '';
   return (
     <div key={video.id} {...classes('list-item', active)}>
@@ -40,16 +38,10 @@ export default function VideoSearchResultBrightcove({
         <div {...classes('information')}>
           <h2>{video.name || ''}</h2>
           <div {...classes('copyright-author')}>
-            {video.custom_fields && video.custom_fields.licenseinfo
-              ? video.custom_fields.licenseinfo
-              : ''}
+            {video.custom_fields && video.custom_fields.licenseinfo ? video.custom_fields.licenseinfo : ''}
           </div>
           <div {...classes('license')}>
-            {license.rights ? (
-              <LicenseByline licenseRights={license.rights} locale={locale} />
-            ) : (
-              license
-            )}
+            {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
           </div>
           <Button {...classes('button')} outline onClick={() => onVideoPreview(video)}>
             {translations.previewVideo}

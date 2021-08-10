@@ -199,8 +199,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Følg oss',
-      description:
-        'NDLA har mange Facebook- og Twitter-kontoar. Finn den som passar for deg, og følg oss!',
+      description: 'NDLA har mange Facebook- og Twitter-kontoar. Finn den som passar for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },
@@ -214,8 +213,7 @@ const messages = {
     },
     film: {
       header: 'NDLA film',
-      text:
-        'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
+      text: 'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
       textShort: 'Velkomen inn i filmen si verd!',
       linkLabel: 'Gå til NDLA film',
     },
@@ -223,8 +221,7 @@ const messages = {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {
-    description:
-      'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
+    description: 'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
     keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
   masthead: {
@@ -282,6 +279,7 @@ const messages = {
     toggleFilterLabel: 'Tilleggsressursar',
     activateAdditionalResources: 'Tilleggsressursar',
     label: 'Læringsressursar',
+    allResources: 'Ressursar',
     shortcutButtonText: 'Lærestoff',
     tooltipCoreTopic: 'Kjernestoff',
     tooltipAdditionalTopic: 'Tilleggsstoff',
@@ -289,8 +287,7 @@ const messages = {
     shortcutsTooltip: 'Vis {count} artiklar i dette emnet',
     dialogTooltip: 'Kva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
-    dialogText1:
-      'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskrive i læreplanen for faget.',
+    dialogText1: 'Når du lærer deg kjernestoffet, får du den kompetansen som blir beskrive i læreplanen for faget.',
     dialogText2:
       'Tilleggsstoff er innhald du kan velje i tillegg til kjernestoffet. Gjennom dette kan du fordjupe deg i eit emne eller nærme deg emnet på ein annan måte.',
     showLess: 'Vis mindre',
@@ -454,6 +451,12 @@ const messages = {
     back: 'Tilbake',
     goToFrontPage: 'Gå til framsida',
   },
+  figure: {
+    button: {
+      synstolket: 'Bytt til synstolka',
+      original: 'Bytt til original video',
+    },
+  },
   footer: {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Vel språk (language): ',
@@ -584,8 +587,7 @@ const messages = {
     about: {
       heading: 'Om NDLA Film',
       more: 'Les meir om NDLA film',
-      text:
-        'NDLA film er ei nettbasert filmteneste for elevar og lærarar i vidaregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
+      text: 'NDLA film er ei nettbasert filmteneste for elevar og lærarar i vidaregåande skule. Her finn du spelefilmar, kortfilmar, dokumentarfilmar og TV-seriar.',
     },
     search: {
       placeholder: 'Søk på filmnamn',
@@ -698,14 +700,13 @@ const messages = {
     },
   },
   createdBy: {
-    content: 'Artikkelen',
-    text: 'er utarbeida av',
+    content: 'Ressursen',
+    text: 'er henta frå',
   },
   fagfornyelse: {
     frontpage: {
       heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
-      text:
-        'Hausten 2020 og 2021 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
+      text: 'Hausten 2020 og 2021 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
       blogHeading: 'Vil du vite meir?',
     },
     badge: {
@@ -716,16 +717,14 @@ const messages = {
   },
   frontPageToolbox: {
     heading: 'Verktøykassa',
-    text:
-      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I verktøykassa til NDLA finn du masse gode tips og råd!',
+    text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I verktøykassa til NDLA finn du masse gode tips og råd!',
     linkTextStudents: 'Sjå alle tipsa for elever her',
     linkTextTeachers: 'Sjå alle tipsa for lærarar her',
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfaglege tema',
-    text:
-      'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    text: 'Dei tre tverrfaglege temaa i læreplanverket tek utgangspunkt i aktuelle samfunnsutfordringar som krev engasjement og innsats frå einskildmenneske og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
     linkText: 'Sjå casar for tverrfaglege tema',
     publicHealthTopic: 'Folkehelse og livsmeistring',
     democracyTopic: 'Demokrati og medborgarskap',

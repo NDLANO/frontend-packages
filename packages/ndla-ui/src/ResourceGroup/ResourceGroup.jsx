@@ -22,16 +22,19 @@ const ResourceGroup = ({
   title,
   icon,
   resources,
-  toggleAdditionalResources,
   showAdditionalResources,
+  toggleAdditionalResources,
   resourceToLinkProps,
   contentType,
   invertedStyle,
+  unGrouped,
 }) => (
-  <section {...classes('', [contentType, showAdditionalResources ? 'showall' : ''])}>
-    <header {...classes('header', { invertedStyle })}>
-      <ResourcesTitle>{title}</ResourcesTitle>
-    </header>
+  <section {...classes('', [contentType, showAdditionalResources ? 'showall' : '', unGrouped ? 'un-grouped' : ''])}>
+    {title && (
+      <header {...classes('header', { invertedStyle })}>
+        <ResourcesTitle>{title}</ResourcesTitle>
+      </header>
+    )}
     {resources.length > 0 ? (
       <ResourceList
         title={title}
@@ -47,18 +50,18 @@ const ResourceGroup = ({
 
 ResourceGroup.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
-  contentType: ContentTypeShape.isRequired,
+  icon: PropTypes.node,
+  contentType: ContentTypeShape,
   resources: PropTypes.arrayOf(ResourceShape).isRequired,
+  showAdditionalResources: PropTypes.bool,
   toggleAdditionalResources: PropTypes.func.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   hideResourceToggleFilter: PropTypes.bool,
-  empty: PropTypes.bool,
-  showAdditionalResources: PropTypes.bool,
+  invertedStyle: PropTypes.bool,
+  unGrouped: PropTypes.bool,
 };
 
 ResourceGroup.defaultProps = {
-  hideResourceToggleFilter: false,
   showAdditionalResources: false,
 };
 

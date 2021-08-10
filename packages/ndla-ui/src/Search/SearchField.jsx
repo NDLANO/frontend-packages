@@ -21,7 +21,7 @@ import { ContentTypeResultShape } from '../shapes';
 
 const classes = new BEMHelper('c-search-field');
 
-const inputStyle = frontPageSearch => css`
+const inputStyle = (frontPageSearch) => css`
   width: 100%;
   height: 48px;
   line-height: 28px;
@@ -103,7 +103,7 @@ const SearchField = ({
         placeholder={placeholder}
         aria-label={placeholder}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
         onFocus={onFocus}
         onClick={onClick}

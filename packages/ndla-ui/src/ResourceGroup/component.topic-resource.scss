@@ -41,6 +41,24 @@
           font-weight: $font-weight-normal;
         }
       }
+      &.subject-material:before {
+        background-color: $subject-material-dark;
+      }
+      &.tasks-and-activities:before {
+        background-color: $tasks-and-activities-dark;
+      }
+      &.assessment-resources:before {
+        background-color: $assessment-resource-dark;
+      }
+      &.learning-path:before {
+        background-color: $learning-path-dark;
+      }
+      &.external-learning-resources:before {
+        background-color: $external-learning-resource-dark;
+      }
+      &.source-material:before {
+        background-color: $source-material-dark;
+      }
       &:before {
         @include mq(tablet) {
           content: '';
@@ -50,8 +68,21 @@
           height: $spacing--small;
           border-radius: 100%;
           transform: translate(-($spacing + $spacing--small), $spacing + 1);
+
+
         }
       }
+    }
+    &__icon {
+      display: flex;
+      align-items: center;
+    }
+    &__type {
+      font-family: $font;
+      @include font-size(14px, 18px);
+      font-weight: $font-weight-semibold;
+      color: $text-light-color;
+      text-align: right;
     }
   }
 
@@ -97,7 +128,9 @@
   &__icon {
     display: flex;
     text-align: center;
-    width: auto;
+    justify-content: center;
+    width: 42px;
+    box-sizing: content-box;
     padding-right: $spacing--small;
     @include mq(tablet) {
       padding-right: $spacing;

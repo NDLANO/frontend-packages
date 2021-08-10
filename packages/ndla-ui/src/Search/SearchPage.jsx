@@ -39,8 +39,7 @@ class SearchPage extends Component {
 
   checkScreenSize() {
     const currentBreakpoint = getCurrentBreakpoint();
-    const isNarrowScreen =
-      currentBreakpoint === breakpoints.mobile || currentBreakpoint === breakpoints.tablet;
+    const isNarrowScreen = currentBreakpoint === breakpoints.mobile || currentBreakpoint === breakpoints.tablet;
 
     /* eslint react/no-did-mount-set-state: 0 */
     if (isNarrowScreen !== this.state.isNarrowScreen) {
@@ -88,9 +87,7 @@ class SearchPage extends Component {
         {author}
         <div {...classes('filter-result-wrapper')}>
           <aside {...classes('filter-wrapper')}>
-            <h1 {...classes('filter-heading')}>
-              {t('searchPage.searchPageMessages.filterHeading')}
-            </h1>
+            <h1 {...classes('filter-heading')}>{t('searchPage.searchPageMessages.filterHeading')}</h1>
             <div {...classes('filters')}>{!this.state.isNarrowScreen && filters}</div>
           </aside>
           <div {...classes('result-wrapper')}>
@@ -107,10 +104,8 @@ class SearchPage extends Component {
                 animationDuration={150}
                 size="fullscreen"
                 backgroundColor="grey"
-                activateButton={
-                  <Button outline>{t('searchPage.searchPageMessages.filterHeading')}</Button>
-                }>
-                {onClose => (
+                activateButton={<Button outline>{t('searchPage.searchPageMessages.filterHeading')}</Button>}>
+                {(onClose) => (
                   <Fragment>
                     <ModalHeader modifier="white left-align">
                       <ModalCloseButton

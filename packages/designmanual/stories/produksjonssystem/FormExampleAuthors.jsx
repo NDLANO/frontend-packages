@@ -9,14 +9,7 @@
 import React, { Component, Fragment } from 'react';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
-import {
-  FieldHeader,
-  FieldSection,
-  Input,
-  Select,
-  FieldSplitter,
-  FieldRemoveButton,
-} from '@ndla/forms';
+import { FieldHeader, FieldSection, Input, Select, FieldSplitter, FieldRemoveButton } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 
 const roleExamples = [
@@ -51,7 +44,7 @@ class FormExampleAuthors extends Component {
   }
 
   handleAddAuthor() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { authors } = prevState;
       authors.push({ name: '', role: '', key: uuid(), focusOnMount: true });
       return {
@@ -61,7 +54,7 @@ class FormExampleAuthors extends Component {
   }
 
   handleUpdateRole(value, index) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { authors } = prevState;
       authors[index].role = value;
       return {
@@ -71,7 +64,7 @@ class FormExampleAuthors extends Component {
   }
 
   handleRemoveAuthor(index) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { authors } = prevState;
       authors.splice(index, 1);
       return {
@@ -81,7 +74,7 @@ class FormExampleAuthors extends Component {
   }
 
   handleInputChange(value, index) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { authors } = prevState;
       authors[index].name = value;
       return {
@@ -106,13 +99,11 @@ class FormExampleAuthors extends Component {
                   focusOnMount={author.focusOnMount}
                   placeholder="Skriv navn"
                   value={author.name}
-                  onChange={e => this.handleInputChange(e.target.value, index)}
+                  onChange={(e) => this.handleInputChange(e.target.value, index)}
                 />
-                <Select
-                  value={author.role}
-                  onChange={e => this.handleUpdateRole(e.target.value, index)}>
+                <Select value={author.role} onChange={(e) => this.handleUpdateRole(e.target.value, index)}>
                   <option value="">Tildel rolle</option>
-                  {roleExamples.map(titleRole => (
+                  {roleExamples.map((titleRole) => (
                     <option value={titleRole} key={titleRole}>
                       {titleRole}
                     </option>
@@ -121,9 +112,7 @@ class FormExampleAuthors extends Component {
               </FieldSplitter>
             </div>
             <div>
-              <FieldRemoveButton onClick={() => this.handleRemoveAuthor(index)}>
-                Ta bort
-              </FieldRemoveButton>
+              <FieldRemoveButton onClick={() => this.handleRemoveAuthor(index)}>Ta bort</FieldRemoveButton>
             </div>
           </FieldSection>
         ))}
@@ -133,12 +122,7 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <Input
-              iconRight={<SearchIcon />}
-              container="div"
-              type="text"
-              placeholder="Skriv navn"
-            />
+            <Input iconRight={<SearchIcon />} container="div" type="text" placeholder="Skriv navn" />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>

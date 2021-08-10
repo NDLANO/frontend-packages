@@ -34,7 +34,7 @@ const StyledForm = styled.form<StyledProps>`
   border: 2px solid ${colors.brand.greyLight};
   padding: ${spacing.xsmall} 8px;
   min-height: 58px;
-  ${props =>
+  ${(props) =>
     props.inputHasFocus &&
     `
       border-color: ${colors.brand.primary};
@@ -86,14 +86,7 @@ type Props = {
   };
 };
 
-const SearchFieldHeader: React.FC<Props & tType> = ({
-  value,
-  onSubmit,
-  onChange,
-  filters,
-  activeFilters,
-  t,
-}) => {
+const SearchFieldHeader: React.FC<Props & tType> = ({ value, onSubmit, onChange, filters, activeFilters, t }) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -125,13 +118,11 @@ const SearchFieldHeader: React.FC<Props & tType> = ({
         id="search"
         name="search"
         placeholder={
-          isNarrowScreen
-            ? t('searchPage.searchFieldPlaceholderShort')
-            : t('searchPage.searchFieldPlaceholder')
+          isNarrowScreen ? t('searchPage.searchFieldPlaceholderShort') : t('searchPage.searchFieldPlaceholder')
         }
         aria-label={t('searchPage.searchFieldPlaceholder')}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
       />

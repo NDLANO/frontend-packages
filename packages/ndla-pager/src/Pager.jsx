@@ -17,9 +17,9 @@ import { colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { stepNumbers } from './pagerHelpers';
 
-const createQueryString = obj =>
+const createQueryString = (obj) =>
   Object.keys(obj)
-    .map(key => `${key}=${obj[key]}`)
+    .map((key) => `${key}=${obj[key]}`)
     .join('&');
 
 const pageItemActiveStyle = css`
@@ -96,7 +96,7 @@ export default function Pager(props) {
 
   const steps = stepNumbers(page, lastPage);
 
-  const PageItems = steps.map(n => {
+  const PageItems = steps.map((n) => {
     if (n === page) {
       return (
         <span key={n} css={[pageItemStyle, pageItemActiveStyle]}>

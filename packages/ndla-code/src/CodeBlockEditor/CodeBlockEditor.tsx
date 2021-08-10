@@ -36,9 +36,7 @@ type Props = {
 };
 
 export const getTitleFromFormat = (format: string) => {
-  const selectedLanguage = languageOptions.find(
-    (item: ICodeLangugeOption) => item.format === format,
-  );
+  const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === format);
   if (selectedLanguage) {
     return selectedLanguage.title;
   }
@@ -85,9 +83,7 @@ const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null
 
   const handleChangeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
-    const selectedLanguage = languageOptions.find(
-      (item: ICodeLangugeOption) => item.format === value,
-    );
+    const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === value);
     if (selectedLanguage) {
       const { format } = selectedLanguage;
       setCodeContent((prev: CodeContentState) => {
@@ -101,9 +97,7 @@ const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null
   };
 
   const save = () => {
-    const selectedLanguage = languageOptions.find(
-      (item: ICodeLangugeOption) => item.format === codeContent.format,
-    );
+    const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === codeContent.format);
     if (selectedLanguage) {
       const titleValue = titleRef.current && titleRef.current.value;
       const { title, format } = selectedLanguage;
@@ -154,14 +148,11 @@ const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null
       <Editor
         className="editor"
         value={codeContent.code}
-        onValueChange={code => {
+        onValueChange={(code) => {
           setCodeContent({ ...codeContent, code });
         }}
-        highlight={code =>
-          hightlightWithLineNumbers(
-            code,
-            languages[codeContent.format] ? languages[codeContent.format] : '',
-          )
+        highlight={(code) =>
+          hightlightWithLineNumbers(code, languages[codeContent.format] ? languages[codeContent.format] : '')
         }
         padding={10}
         textareaId="codeArea"

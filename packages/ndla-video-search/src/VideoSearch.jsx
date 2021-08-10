@@ -104,8 +104,8 @@ class VideoSearch extends React.Component {
       },
       selectedType,
     )
-      .then(result => {
-        this.setState(prevState => ({
+      .then((result) => {
+        this.setState((prevState) => ({
           queryObject: {
             ...prevState.queryObject,
             offset: prevState.queryObject.offset + 10,
@@ -114,7 +114,7 @@ class VideoSearch extends React.Component {
           searching: false,
         }));
       })
-      .catch(err => {
+      .catch((err) => {
         onError(err);
         this.setState({ searching: false });
       });
@@ -136,9 +136,9 @@ class VideoSearch extends React.Component {
   searchVideos(queryObject, selectedType = this.state.selectedType) {
     const { searchVideos, onError } = this.props;
     searchVideos(queryObject, selectedType)
-      .then(result => {
+      .then((result) => {
         if (selectedType === this.state.selectedType) {
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             queryObject: {
               ...prevState.queryObject,
               query: queryObject.query,
@@ -152,7 +152,7 @@ class VideoSearch extends React.Component {
           }));
         }
       })
-      .catch(err => {
+      .catch((err) => {
         onError(err);
         this.setState({ searching: false });
       });
@@ -180,7 +180,7 @@ class VideoSearch extends React.Component {
       return <Pager page={page || 1} lastPage={lastPage} onClick={this.changeQueryPage} />;
     };
 
-    const searchListTabs = enabledSources.map(source => ({
+    const searchListTabs = enabledSources.map((source) => ({
       title: source,
       content: (
         <div {...classes('list')}>
@@ -208,11 +208,7 @@ class VideoSearch extends React.Component {
           searching={searching}
           translations={translations}
         />
-        <VideoTabs
-          searchTypes={selectedType}
-          tabs={searchListTabs}
-          onSearchTypeChange={this.onSearchTypeChange}
-        />
+        <VideoTabs searchTypes={selectedType} tabs={searchListTabs} onSearchTypeChange={this.onSearchTypeChange} />
         {paginationItem()}
       </div>
     );

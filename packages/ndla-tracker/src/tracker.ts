@@ -6,34 +6,68 @@
  *
  */
 
+import { History } from 'history';
+
 /* eslint-disable no-console */
 
-const pageViewHistory = [];
+declare global {
+  interface Window {
+    ga: any;
+    dataLayer: any;
+    google_tag_manager: any;
+    originalLocation: unknown;
+  }
+}
 
-function initializeGA(gaTrackingId) {
-  // prettier-ignore
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)}; //eslint-disable-line
+type PageViewHistoryType = {
+  url: string;
+  tracked: boolean;
+  debug: boolean;
+  resetDataLayer?: () => void;
+};
+
+const pageViewHistory: PageViewHistoryType[] = [];
+
+function initializeGA(gaTrackingId?: string) {
+  window.ga =
+    window.ga ||
+    function () {
+      // @ts-ignore
+      (ga.q = ga.q || []).push(arguments);
+    }; //eslint-disable-line
   window.ga.l = +new Date();
   window.ga('create', gaTrackingId, 'auto');
 }
 
-function resetDataLayer(googleTagManagerId) {
+function resetDataLayer(googleTagManagerId?: string) {
   if (window.dataLayer && window.google_tag_manager && googleTagManagerId) {
     window.google_tag_manager[googleTagManagerId].dataLayer.reset();
     window.dataLayer.push(window.originalLocation);
   }
 }
 
-export const configureTracker = ({ listen, debug, gaTrackingId, googleTagManagerId }) => {
+export type UnregisterCallback = () => void;
+
+export const configureTracker = ({
+  listen,
+  debug,
+  gaTrackingId,
+  googleTagManagerId,
+}: {
+  listen: History<any>['listen'];
+  debug?: boolean;
+  gaTrackingId?: string;
+  googleTagManagerId?: string;
+}) => {
   initializeGA(gaTrackingId);
   // Push current page and start listning
   pageViewHistory.push({
     url: `${location.pathname}${location.search}${location.hash}`,
     tracked: false,
-    debug,
+    debug: !!debug,
   });
 
-  listen(location => {
+  listen((location) => {
     if (debug) {
       console.info(`The current URL is ${location.pathname}${location.search}${location.hash}`);
     }
@@ -41,7 +75,7 @@ export const configureTracker = ({ listen, debug, gaTrackingId, googleTagManager
     pageViewHistory.push({
       url: `${location.pathname}${location.search}${location.hash}`,
       tracked: false,
-      debug,
+      debug: !!debug,
       resetDataLayer: () => resetDataLayer(googleTagManagerId),
     });
   });
@@ -49,7 +83,16 @@ export const configureTracker = ({ listen, debug, gaTrackingId, googleTagManager
 
 export const hasCurrentPageBeenTracked = () => pageViewHistory[pageViewHistory.length - 1].tracked;
 
-export const sendPageView = ({ title, dimensions }) => {
+export const sendPageView = ({
+  title,
+  dimensions,
+}: {
+  title: string;
+  dimensions?: {
+    ga: any;
+    gtm: any;
+  };
+}) => {
   const current = pageViewHistory[pageViewHistory.length - 1];
   current.tracked = true;
 

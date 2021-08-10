@@ -40,7 +40,7 @@ const DemoExample = () => (
           margin: 92,
         },
       ]}>
-      {autoSizedProps => (
+      {(autoSizedProps) => (
         <Carousel
           {...autoSizedProps}
           slideBackwardsLabel="tilbake"
@@ -110,8 +110,7 @@ const CarouselExample = () => (
         name: 'items',
         type: 'Array of nodes',
         default: 'Required',
-        description:
-          'Kortene som sendes vises i bildekarusellen. Alle må ha lik bredde (samme som columnWidth prop).',
+        description: 'Kortene som sendes vises i bildekarusellen. Alle må ha lik bredde (samme som columnWidth prop).',
       },
       {
         name: 'columnsPrSlide',
@@ -125,7 +124,7 @@ const CarouselExample = () => (
         type: 'Number',
         default: 'Required',
         description:
-          'Total utregnet lengde på hele bilde karusellen. (Tips: <CarouselAutosize /> hjelper deg å finne denne)',
+          'Total utregnet lengde på hele bildekarusellen. (Tips: <CarouselAutosize /> hjelper deg å finne denne)',
       },
       {
         name: 'distanceBetweenItems',
@@ -155,8 +154,7 @@ const CarouselExample = () => (
         name: 'margin',
         type: 'Number',
         default: '0',
-        description:
-          'Margin sides, good to use if you want the arrow buttons on the sides with fixed sizes.',
+        description: 'Margin sides, good to use if you want the arrow buttons on the sides with fixed sizes.',
       },
       {
         name: 'buttonClass',
@@ -179,8 +177,8 @@ const CarouselExample = () => (
     ]}
     status={2}>
     <p>
-      Carousel med (valgfritt) tilhørende hjelpe komponent for utregning av størrelser. Har swipe
-      funksjonalitet innebygget.
+      Carousel med (valgfritt) tilhørende hjelpe komponent for utregning av størrelser. Har swipe funksjonalitet
+      innebygget.
     </p>
     <h3>Med hjelpekomponent versjon:</h3>
     <DemoExample />

@@ -149,9 +149,7 @@ const ImageSearchWrapper = styled.div`
 
   .information {
     width: 50%;
-    padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${spacing.normal} ${
-  spacing.small
-};
+    padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${spacing.normal} ${spacing.small};
     word-break: initial;
     ${mq.range({ until: breakpoints.mobileWide })} {
       width: 100%;
@@ -313,10 +311,10 @@ class ImageSearch extends React.Component {
     const { selectedImage } = this.state;
     if (!selectedImage || image.id !== selectedImage.id) {
       fetchImage(image.id)
-        .then(result => {
+        .then((result) => {
           this.setState({ selectedImage: result });
         })
-        .catch(err => {
+        .catch((err) => {
           onError(err);
         });
     }
@@ -335,7 +333,7 @@ class ImageSearch extends React.Component {
     const { searchImages, onError, locale } = this.props;
     this.setState({ searching: true });
     searchImages(queryObject.query, queryObject.page, locale)
-      .then(result => {
+      .then((result) => {
         this.setState({
           queryObject: {
             query: queryObject.query,
@@ -347,7 +345,7 @@ class ImageSearch extends React.Component {
           searching: false,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         onError(err);
         this.setState({ searching: false });
       });
@@ -379,8 +377,8 @@ class ImageSearch extends React.Component {
           }
           container="div"
           value={queryString}
-          onChange={evt => this.setState({ queryString: evt.target.value })}
-          onKeyPress={evt => {
+          onChange={(evt) => this.setState({ queryString: evt.target.value })}
+          onKeyPress={(evt) => {
             if (evt.key === 'Enter') {
               evt.preventDefault();
               this.searchImages({ query: queryString, page: 1 });
@@ -389,7 +387,7 @@ class ImageSearch extends React.Component {
         />
         {noResultsFound && this.props.noResults}
         <div className="list">
-          {images.map(image => (
+          {images.map((image) => (
             <ImageSearchResult
               key={image.id}
               image={image}

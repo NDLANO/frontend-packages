@@ -14,6 +14,7 @@ import Tooltip from '@ndla/tooltip';
 import { Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import NoContentBox from '../NoContentBox';
+import ContentTypeBadge from '../ContentTypeBadge';
 import { ResourceShape } from '../shapes';
 
 const classes = new BEMHelper({
@@ -49,24 +50,24 @@ ResourceLink.defaultProps = {
   component: SafeLink,
 };
 
-const Resource = ({
-  t,
-  resource,
-  icon,
-  resourceToLinkProps,
-  showAdditionalResources,
-  id,
-  contentTypeDescription,
-}) => {
+const Resource = ({ t, resource, icon, resourceToLinkProps, showAdditionalResources, id, contentTypeDescription }) => {
   const hidden = resource.additional ? !showAdditionalResources : false;
+  if (icon === undefined) {
+    icon = <ContentTypeBadge type={resource.contentType} background border={false} />;
+  }
 
   return (
     <li
-      {...classes('item', {
-        hidden,
-        additional: resource.additional,
-        active: resource.active,
-      })}>
+      {...classes(
+        'item',
+        {
+          hidden,
+          additional: resource.additional,
+          active: resource.active,
+          spacer: resource.extraBottomMargin,
+        },
+        resource.contentType,
+      )}>
       <div {...classes('body o-flag__body')}>
         <ResourceLink
           component={resource.active ? 'div' : SafeLink}
@@ -77,10 +78,10 @@ const Resource = ({
           {...resourceToLinkProps(resource)}>
           {resource.name}
         </ResourceLink>
-        <span id={id} hidden>
-          {contentTypeDescription}
-        </span>
-        <div>
+        <div {...classes('item__icon')}>
+          <span id={id} hidden={resource.type === undefined} {...classes('item__type')}>
+            {resource.type}
+          </span>
           {resource.additional && (
             <Tooltip tooltip={contentTypeDescription} align="left">
               <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
@@ -99,12 +100,11 @@ const Resource = ({
 
 Resource.propTypes = {
   showAdditionalResources: PropTypes.bool,
-  icon: PropTypes.node.isRequired,
   resource: ResourceShape.isRequired,
   resourceToLinkProps: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   contentTypeDescription: PropTypes.string.isRequired,
-  currentPage: PropTypes.bool,
+  icon: PropTypes.node,
 };
 
 injectT(Resource);
@@ -112,8 +112,8 @@ injectT(Resource);
 const ResourceList = ({ resources, onClick, type, title, showAdditionalResources, t, ...rest }) => {
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
-    resources.filter(res => res.additional).length > 0 &&
-    resources.filter(res => !res.additional).length === 0;
+    resources.filter((res) => res.additional).length > 0 &&
+    resources.filter((res) => !res.additional).length === 0;
 
   return (
     <div>
@@ -128,9 +128,7 @@ const ResourceList = ({ resources, onClick, type, title, showAdditionalResources
             resource={resource}
             t={t}
             contentTypeDescription={
-              resource.additional
-                ? t('resource.tooltipAdditionalTopic')
-                : t('resource.tooltipCoreTopic')
+              resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')
             }
             id={`${resource.id}_${index}`}
           />
@@ -160,6 +158,7 @@ ResourceList.propTypes = {
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
+  icon: PropTypes.node,
 };
 
 export default injectT(ResourceList);

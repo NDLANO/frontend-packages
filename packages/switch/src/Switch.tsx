@@ -28,7 +28,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   display: inline-flex;
   min-height: ${spacing.normal};
   align-items: center;
-  ${props =>
+  ${(props) =>
     props.hasFocus &&
     css`
       ${utils.restoreOutline};
@@ -132,14 +132,7 @@ type Props = {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const Switch: React.FunctionComponent<Props> = ({
-  onChange,
-  checked,
-  disabled,
-  id,
-  label,
-  ...rest
-}) => {
+const Switch: React.FunctionComponent<Props> = ({ onChange, checked, disabled, id, label, ...rest }) => {
   const [hasFocus, setFocusState] = useState(false);
   return (
     <StyledSwitch {...rest} hasFocus={hasFocus}>

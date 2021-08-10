@@ -9,13 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  ResourcesWrapper,
-  ResourceGroup,
-  ResourcesTopicTitle,
-  ContentTypeBadge,
-  constants,
-} from '@ndla/ui';
+import { ResourcesWrapper, ResourceGroup, ResourcesTopicTitle, ContentTypeBadge, constants } from '@ndla/ui';
 import {
   learningPathResources,
   articleResources,
@@ -35,7 +29,7 @@ const resourceGroup1 = {
   id: 'type-learning-path',
   title: 'Læringsstier',
   contentType: contentTypes.LEARNING_PATH,
-  resources: learningPathResources,
+  resources: learningPathResources.map((r) => ({ ...r, type: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
@@ -43,7 +37,7 @@ const resourceGroup2 = {
   id: 'subject-material',
   title: 'Fagstoff',
   contentType: contentTypes.SUBJECT_MATERIAL,
-  resources: articleResources,
+  resources: articleResources.map((r) => ({ ...r, type: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for fagstoff.',
 };
 
@@ -51,7 +45,7 @@ const resourceGroup3 = {
   id: 'tasks-and-activities',
   title: 'Oppgaver og aktiviteter',
   contentType: contentTypes.TASKS_AND_ACTIVITIES,
-  resources: exerciseResources,
+  resources: exerciseResources.map((r) => ({ ...r, type: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for oppgaver og aktiviteter.',
 };
 
@@ -59,7 +53,7 @@ const resourceGroup4 = {
   id: 'assessment-resources',
   title: 'Vurderingsressurser',
   contentType: contentTypes.ASSESSMENT_RESOURCES,
-  resources: assessmentResources,
+  resources: assessmentResources.map((r) => ({ ...r, type: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
@@ -67,7 +61,7 @@ const resourceGroup5 = {
   id: 'source-material-resources',
   title: 'Kildemateriale',
   contentType: contentTypes.SOURCE_MATERIAL,
-  resources: sourceMaterialResources,
+  resources: sourceMaterialResources.map((r) => ({ ...r, type: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for kildemateriale.',
 };
 
@@ -75,18 +69,21 @@ const resourceGroup6 = {
   id: 'external-learning-resources',
   title: 'Eksterne læringsressurser',
   contentType: contentTypes.EXTERNAL_LEARNING_RESOURCES,
-  resources: externalLearningResources,
+  resources: externalLearningResources.map((r) => ({ ...r, type: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for eksterne læringssressurser.',
 };
 
-const resourceGroups = [
-  resourceGroup1,
-  resourceGroup2,
-  resourceGroup3,
-  resourceGroup4,
-  resourceGroup5,
-  resourceGroup6,
-];
+const resourceGroups = [resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4, resourceGroup5, resourceGroup6];
+
+const flattenResources = resourceGroups.flatMap((group) =>
+  group.resources.map((r) => {
+    return {
+      ...r,
+      type: group.title,
+      contentType: group.contentType,
+    };
+  }),
+);
 
 class Resources extends Component {
   constructor(props) {
@@ -100,33 +97,39 @@ class Resources extends Component {
   }
 
   toggleAdditionalResources() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showAdditionalResources: !prevState.showAdditionalResources,
     }));
   }
 
   toggleAdditionalDialog() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showAdditionalDialog: !prevState.showAdditionalDialog,
     }));
   }
 
   render() {
-    const { title, showActiveResource } = this.props;
+    const { title, showActiveResource, showUngrouped } = this.props;
     const { showAdditionalResources, showAdditionalDialog } = this.state;
-    const hasAdditionalResources = resourceGroups.some(group =>
-      group.resources.some(resource => resource.additional),
+    const hasAdditionalResources = resourceGroups.some((group) =>
+      group.resources.some((resource) => resource.additional),
     );
 
     if (!showActiveResource) {
-      resourceGroups.forEach(group => {
-        group.resources.forEach(resource => {
+      resourceGroups.forEach((group) => {
+        group.resources.forEach((resource) => {
           if (resource.active) {
             resource.active = false;
           }
         });
       });
     }
+
+    const allResources = showUngrouped
+      ? flattenResources.map((r, index) => {
+          return { ...r, extraBottomMargin: (index + 1) % 4 === 0 };
+        })
+      : [];
 
     return (
       <ResourcesWrapper
@@ -152,25 +155,28 @@ class Resources extends Component {
             showAdditionalDialog={showAdditionalDialog}
           />
         }>
-        {resourceGroups.map(group => (
+        {showUngrouped && (
           <ResourceGroup
-            key={group.id}
-            title={group.title}
-            resources={group.resources}
+            resources={allResources}
             showAdditionalResources={showAdditionalResources}
             toggleAdditionalResources={this.toggleAdditionalResources}
-            contentType={group.contentType}
-            icon={<ContentTypeBadge type={group.contentType} />}
-            messages={{
-              noContentBoxLabel: group.noContentLabel,
-              noContentBoxButtonText: 'Tilleggsstoff',
-              toggleFilterLabel: 'Tilleggsressurser',
-              coreTooltip: 'Kjernestoff er fagstoff som er på pensum',
-              additionalTooltip: 'Tilleggsstoff er ikke på pensum',
-            }}
             resourceToLinkProps={toLink}
+            unGrouped
           />
-        ))}
+        )}
+        {!showUngrouped &&
+          resourceGroups.map((group) => (
+            <ResourceGroup
+              key={group.id}
+              title={group.title}
+              resources={group.resources}
+              showAdditionalResources={showAdditionalResources}
+              toggleAdditionalResources={this.toggleAdditionalResources}
+              contentType={group.contentType}
+              icon={<ContentTypeBadge type={group.contentType} />}
+              resourceToLinkProps={toLink}
+            />
+          ))}
       </ResourcesWrapper>
     );
   }
@@ -179,11 +185,13 @@ class Resources extends Component {
 Resources.propTypes = {
   title: PropTypes.string,
   showActiveResource: PropTypes.bool,
+  showUngrouped: PropTypes.bool,
 };
 
 Resources.defaultProps = {
   title: 'Havbunnsløsninger',
   showActiveResource: true,
+  showUngrouped: false,
 };
 
 export default Resources;

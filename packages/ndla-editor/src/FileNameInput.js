@@ -24,9 +24,7 @@ class InputComponent extends Component {
   componentDidMount() {
     // Get position from props.forwardedRef.
     if (this.props.usePortal) {
-      const rect = this.props.forwardedRef.current.childNodes[
-        this.props.childIndex
-      ].firstChild.getBoundingClientRect();
+      const rect = this.props.forwardedRef.current.childNodes[this.props.childIndex].firstChild.getBoundingClientRect();
       this.inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
       this.inputRef.current.style.left = `${rect.left + spacing.spacingUnit * 0.75}px`;
       this.inputRef.current.style.width = `${rect.width - spacing.spacingUnit}px`;

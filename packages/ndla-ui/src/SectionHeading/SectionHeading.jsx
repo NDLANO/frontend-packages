@@ -4,9 +4,7 @@ import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper('c-section-heading');
 
-const SectionHeading = ({ children, large, className }) => (
-  <h1 {...classes('', { large }, className)}>{children}</h1>
-);
+const SectionHeading = ({ children, large, className }) => <h1 {...classes('', { large }, className)}>{children}</h1>;
 
 export default SectionHeading;
 

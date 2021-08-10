@@ -30,9 +30,7 @@ export const SearchResult = ({
   <Trans>
     {({ t }) => (
       <Fragment>
-        <h2 {...resultClasses('result-label')}>
-          {!hideResultText ? messages.resultHeading : '\u00A0'}
-        </h2>
+        <h2 {...resultClasses('result-label')}>{!hideResultText ? messages.resultHeading : '\u00A0'}</h2>
 
         <div {...resultClasses()}>
           {author || (
@@ -41,10 +39,7 @@ export const SearchResult = ({
                 {messages.searchStringLabel} <span>{searchString}</span>
               </h1>
               {competenceGoalsOpen && (
-                <Button
-                  link
-                  {...resultClasses('close-competencegoals-btn')}
-                  onClick={onToggleCompetenceGoals}>
+                <Button link {...resultClasses('close-competencegoals-btn')} onClick={onToggleCompetenceGoals}>
                   {t('competenceGoals.closeCompetenceGoals')}
                   <Cross className="c-icon--22 u-margin-left-tiny" />
                 </Button>
@@ -65,9 +60,7 @@ export const SearchResult = ({
               </Button>
             </p>
           )}
-          {competenceGoalsOpen && (
-            <div {...resultClasses('competence-goals')}>{competenceGoals}</div>
-          )}
+          {competenceGoalsOpen && <div {...resultClasses('competence-goals')}>{competenceGoals}</div>}
           {!competenceGoalsOpen && (
             <Fragment>
               <FilterTabs
@@ -168,37 +161,23 @@ export const SearchResultItem = ({ item, subjectsLabel, additionalContentToolip,
     <li key={item.id} {...searchResultItemClasses()}>
       <article>
         <header {...searchResultItemClasses('header')}>
-          <h1>
-            {item.url.href ? (
-              <a {...item.url}>{item.title}</a>
-            ) : (
-              <SafeLink to={item.url}>{item.title}</SafeLink>
-            )}
-          </h1>
+          <h1>{item.url.href ? <a {...item.url}>{item.title}</a> : <SafeLink to={item.url}>{item.title}</SafeLink>}</h1>
           <div {...searchResultItemClasses('content-type-wrapper')}>{item.contentTypeIcon}</div>
-          {item.contentTypeLabel && (
-            <div {...searchResultItemClasses('pills')}>{item.contentTypeLabel}</div>
-          )}
+          {item.contentTypeLabel && <div {...searchResultItemClasses('pills')}>{item.contentTypeLabel}</div>}
           {item.type && <div {...searchResultItemClasses('pills')}>{item.type}</div>}
-          {item.additional && (
-            <div {...searchResultItemClasses('pills')}>{additionalContentToolip}</div>
-          )}
+          {item.additional && <div {...searchResultItemClasses('pills')}>{additionalContentToolip}</div>}
           {children}
         </header>
         <div {...searchResultItemClasses('content')}>
-          <p
-            {...searchResultItemClasses('ingress')}
-            dangerouslySetInnerHTML={{ __html: item.ingress }}
-          />
+          <p {...searchResultItemClasses('ingress')} dangerouslySetInnerHTML={{ __html: item.ingress }} />
           {item.image}
         </div>
-        {(!item.subjects || item.subjects.length === 0) &&
-          itemBreadcrumb(item, searchResultItemClasses('breadcrumb'))}
+        {(!item.subjects || item.subjects.length === 0) && itemBreadcrumb(item, searchResultItemClasses('breadcrumb'))}
         {item.subjects && item.subjects.length !== 0 && (
           <div {...searchResultItemClasses('subjects')}>
             <span>{subjectsLabel}</span>
             <ul>
-              {item.subjects.map(subject => (
+              {item.subjects.map((subject) => (
                 <li key={uuid()}>
                   <Tooltip tooltip={itemBreadcrumb(subject)}>
                     {subject.url.href ? (
@@ -240,11 +219,9 @@ export const SearchResultList = ({ results, component: Component, loading }) => 
           </article>
         ) : (
           <ul className="c-search-result-list">
-            {results.map(item => (
+            {results.map((item) => (
               <Component
-                key={`search_result_item_${
-                  typeof item.url === 'object' ? item.url.href : item.url
-                }`}
+                key={`search_result_item_${typeof item.url === 'object' ? item.url.href : item.url}`}
                 item={item}
                 additionalContentToolip={t('resource.tooltipAdditionalTopic')}
                 subjectsLabel={t('searchPage.searchResultListMessages.subjectsLabel')}>

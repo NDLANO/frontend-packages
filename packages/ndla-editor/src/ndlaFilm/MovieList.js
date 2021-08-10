@@ -21,8 +21,7 @@ const Wrapper = styled.div`
 
 const ListWrapper = styled.ul`
   overflow: visible;
-  margin: 0 0
-    ${props => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;
@@ -90,7 +89,7 @@ class MovieList extends Component {
       },
       () => {
         // Add transitions
-        Array.from(this.wrapperRef.current.childNodes.values()).forEach(node => {
+        Array.from(this.wrapperRef.current.childNodes.values()).forEach((node) => {
           node.style.transition = 'transform 100ms ease';
         });
         this.DraggingFile.style.transition = 'box-shadow 100ms ease';
@@ -129,10 +128,7 @@ class MovieList extends Component {
 
   onDragging(e) {
     this.mouseMovement += e.movementY;
-    const currentPosition = Math.max(
-      Math.ceil((this.mouseMovement + MOVIE_HEIGHT / 2) / MOVIE_HEIGHT),
-      0,
-    );
+    const currentPosition = Math.max(Math.ceil((this.mouseMovement + MOVIE_HEIGHT / 2) / MOVIE_HEIGHT), 0);
     const addToPosition = this.initialPosition < currentPosition ? 1 : 0;
     const dragIndex = Math.min(this.props.movies.length, Math.max(currentPosition, 0));
     this.DraggingFile.style.transform = `translateY(${this.mouseMovement + MOVIE_HEIGHT}px)`;

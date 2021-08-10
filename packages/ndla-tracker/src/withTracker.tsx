@@ -10,11 +10,17 @@ import React, { Component } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import { hasCurrentPageBeenTracked, sendPageView } from './tracker';
 
-const mountedInstances = [];
+const mountedInstances: React.ComponentType<any>[] = [];
 
-const withTracker = WrappedComponent => {
-  const Tracker = class extends Component {
-    static trackPageView(props) {
+type TrackableComponent<P> = React.ComponentType<P> & {
+  getDocumentTitle: (p: P) => string;
+  getDimensions?: (p: P) => { ga: any; gtm: any };
+  willTrackPageView?: (callback: (p: P) => void, p: P) => void;
+};
+
+function withTracker<P>(WrappedComponent: TrackableComponent<P>): React.ComponentType<P> {
+  const Tracker = class extends Component<P> {
+    static trackPageView(props: P) {
       const lastMountedInstance = mountedInstances[mountedInstances.length - 1];
 
       if (hasCurrentPageBeenTracked() || lastMountedInstance !== WrappedComponent) {
@@ -22,19 +28,16 @@ const withTracker = WrappedComponent => {
       }
 
       const title = WrappedComponent.getDocumentTitle(props);
-      const dimensions = WrappedComponent.getDimensions
-        ? WrappedComponent.getDimensions(props)
-        : undefined;
+      const dimensions = WrappedComponent.getDimensions ? WrappedComponent.getDimensions(props) : undefined;
       sendPageView({ title, dimensions });
     }
 
     componentDidMount() {
       mountedInstances.push(WrappedComponent);
 
+      // Kept for js interop, but should not be hit in ts.
       if (!WrappedComponent.getDocumentTitle) {
-        throw new Error(
-          `Tracker expects a static getDocumentTitle function on the WrappedComponent.`,
-        );
+        throw new Error(`Tracker expects a static getDocumentTitle function on the WrappedComponent.`);
       }
 
       if (WrappedComponent.willTrackPageView) {
@@ -63,6 +66,6 @@ const withTracker = WrappedComponent => {
   };
 
   return hoistStatics(Tracker, WrappedComponent);
-};
+}
 
 export default withTracker;

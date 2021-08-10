@@ -1,8 +1,6 @@
 declare module 'react-swipeable' {
   import React from 'react';
-  export class Swipeable<T extends Element = HTMLElement> extends React.Component<
-    SwipeableProps<T>
-  > {}
+  export class Swipeable<T extends Element = HTMLElement> extends React.Component<SwipeableProps<T>> {}
 
   interface EventData<T extends Element = HTMLElement> {
     event: React.TouchEvent<T>;

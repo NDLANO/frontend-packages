@@ -11,12 +11,7 @@ import { subjectList, subjectConcepts } from './mockSubjects';
 import { firstBrightcoveList, secondBrightcoveList, brightCoveMockVideo } from './mockBrightcove';
 import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from './mockYouTube';
 
-import {
-  contentTypeResults,
-  searchTabOptions,
-  searchTabFilterOptions,
-  searchFilterOptions,
-} from './mockSearch';
+import { contentTypeResults, searchTabOptions, searchTabFilterOptions, searchFilterOptions } from './mockSearch';
 
 import { mockDownloadArticleText } from './mockDownloadArticleText';
 

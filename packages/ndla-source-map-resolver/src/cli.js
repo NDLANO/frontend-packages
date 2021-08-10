@@ -16,10 +16,8 @@ const args = {
       type: 'string',
     },
   },
-  usage:
-    'Usage: $0 --mapFiles <pathToMapFile1> <pathToMapFile2> --errorEventFile <pathToErrorEventFile>',
-  docs:
-    'Documentation:\nhttps://github.com/NDLANO/frontend-packages/tree/ndla-source-map-resolver/packages/ndla-source-map-resolver',
+  usage: 'Usage: $0 --mapFiles <pathToMapFile1> <pathToMapFile2> --errorEventFile <pathToErrorEventFile>',
+  docs: 'Documentation:\nhttps://github.com/NDLANO/frontend-packages/tree/ndla-source-map-resolver/packages/ndla-source-map-resolver',
 };
 
 async function run(programArgs) {

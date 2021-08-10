@@ -141,11 +141,7 @@ const FrontpageSubjectIllustration: React.FunctionComponent = () => (
             d="M697.7,68 C697.7,68 704.9,62.4 701.8,50.2 C698.6,37.2 693.8,32.9 692.1,28.7 C690.4,24.5 689.6,24 691.5,21.2"
             id="Path"
           />
-          <path
-            d="M4.5,20.6 C4.5,20.6 0.6,17.9 0.6,19.7 C0.6,21.5 4.5,24.2 4.5,24.2"
-            id="Path"
-            strokeLinecap="round"
-          />
+          <path d="M4.5,20.6 C4.5,20.6 0.6,17.9 0.6,19.7 C0.6,21.5 4.5,24.2 4.5,24.2" id="Path" strokeLinecap="round" />
           <path d="M384.5,81.2 L630.4,81.2" id="Path" strokeLinecap="round" />
         </g>
       </g>

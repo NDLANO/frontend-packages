@@ -76,7 +76,7 @@ const ProgrammeSubjects = ({ grades, onNavigate, preSelectedGradeIndex = 0 }: Pr
           </Button>
         ))}
       </GradesMenu>
-      {selectedGrade.categories.map(category => (
+      {selectedGrade.categories.map((category) => (
         <NavigationBox
           key={category.name}
           heading={category.name}

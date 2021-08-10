@@ -21,7 +21,7 @@ const StyledDropDownContainer = styled.div`
   border-radius: ${misc.borderRadius};
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
-  ${props => props.positionAbsolute && 'position: absolute; z-index: 1;'}
+  ${(props) => props.positionAbsolute && 'position: absolute; z-index: 99;'}
   width: 100%;
 `;
 
@@ -29,7 +29,7 @@ const StyledResultList = styled.div`
   overflow-y: scroll;
   ${animations.fadeInLeft(animations.durations.fast)};
   border-top: 1px solid ${colors.brand.greyLightest};
-  max-height: ${props => props.menuHeight}px;
+  max-height: ${(props) => props.menuHeight}px;
 `;
 
 const StyledCreateButton = styled.button`
@@ -89,13 +89,7 @@ const DropdownMenu = ({
           <DropdownMenuItem
             {...getItemProps({
               item,
-              isSelected: checkIfItemIsSelected(
-                item,
-                selectedItem,
-                selectedItems,
-                multiSelect,
-                idField,
-              ),
+              isSelected: checkIfItemIsSelected(item, selectedItem, selectedItems, multiSelect, idField),
             })}
             disableSelected={disableSelected}
             highlighted={highlightedIndex === index}
@@ -118,9 +112,7 @@ const DropdownMenu = ({
       )}
       {!hideTotalSearchCount && (
         <StyledResultFooter>
-          {loading
-            ? t('dropdown.searching')
-            : t('dropdown.numberHits', { hits: totalCount || items.length })}
+          {loading ? t('dropdown.searching') : t('dropdown.numberHits', { hits: totalCount || items.length })}
         </StyledResultFooter>
       )}
       {onCreate && (

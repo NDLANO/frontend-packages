@@ -68,12 +68,12 @@ const responseDataSource = [
   },
 ];
 
-const searchResults = responseDataSource.map(resourceType => {
+const searchResults = responseDataSource.map((resourceType) => {
   const filters = [];
-  resourceType.items.forEach(item => {
+  resourceType.items.forEach((item) => {
     if (item.labels) {
-      item.labels.forEach(label => {
-        if (!filters.some(filter => filter.name === label)) {
+      item.labels.forEach((label) => {
+        if (!filters.some((filter) => filter.name === label)) {
           filters.push({ id: label, name: label });
         }
       });
@@ -85,7 +85,7 @@ const searchResults = responseDataSource.map(resourceType => {
   return { ...resourceType, pageSize: PAGESIZE_ALL, filters };
 });
 
-const initialResourceResults = searchResults.map(res => {
+const initialResourceResults = searchResults.map((res) => {
   if (res.items.length > res.pageSize) {
     return {
       ...res,
@@ -98,7 +98,7 @@ const initialResourceResults = searchResults.map(res => {
 const resourcesReducer = (state, action) => {
   switch (action.type) {
     case 'RESOURCE_TYPE_LOADING':
-      return state.map(contextItem => {
+      return state.map((contextItem) => {
         if (contextItem.type === action.context) {
           return {
             ...contextItem,
@@ -109,7 +109,7 @@ const resourcesReducer = (state, action) => {
         }
       });
     case 'RESOURCE_TYPE_ADD_ITEMS':
-      return state.map(contextItem => {
+      return state.map((contextItem) => {
         if (contextItem.type === action.contextType) {
           return {
             ...contextItem,
@@ -122,7 +122,7 @@ const resourcesReducer = (state, action) => {
         }
       });
     case 'RESOURCE_TYPE_UPDATE':
-      return state.map(contextItem => {
+      return state.map((contextItem) => {
         if (contextItem.type === action.contextType) {
           return {
             ...contextItem,
@@ -136,7 +136,7 @@ const resourcesReducer = (state, action) => {
         }
       });
     case 'RESOURCE_TYPE_SELECTED':
-      return state.map(contextItem => {
+      return state.map((contextItem) => {
         if (action.contextTypes.indexOf(contextItem.type) > -1) {
           return {
             ...contextItem,
@@ -149,7 +149,7 @@ const resourcesReducer = (state, action) => {
         }
       });
     case 'RESOURCE_TYPE_ALL_SELECTED':
-      return state.map(contextItem => {
+      return state.map((contextItem) => {
         return { ...contextItem, pageSize: PAGESIZE_ALL, active: true };
       });
     default:
@@ -158,7 +158,7 @@ const resourcesReducer = (state, action) => {
 };
 
 const initNotionResult = () => {
-  return notionResults.map(item => {
+  return notionResults.map((item) => {
     if (item.media) {
       switch (item.media.type) {
         case 'video':
@@ -215,17 +215,17 @@ const initNotionResult = () => {
 };
 
 const mockSearchDelay = async () => {
-  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   await delay(200);
   return true;
 };
 
 const resourceItemsByTypeAndFilters = (type, filters = []) => {
-  const resources = searchResults.find(item => item.type === type);
+  const resources = searchResults.find((item) => item.type === type);
   if (!filters.length || filters.indexOf('Alle') > -1) {
     return resources.items;
   }
-  return resources.items.filter(item => item.labels.some(label => filters.includes(label)));
+  return resources.items.filter((item) => item.labels.some((label) => filters.includes(label)));
 };
 
 const SearchPageDemo = ({ t, showCompetenceGoals }) => {
@@ -251,36 +251,33 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
 
   const [subjectItems] = React.useState(subjectTypeResults);
 
-  const [resourceItems, dispatchResources] = React.useReducer(
-    resourcesReducer,
-    initialResourceResults,
-  );
+  const [resourceItems, dispatchResources] = React.useReducer(resourcesReducer, initialResourceResults);
 
   const handleFilterClick = (type, filterId) => {
     // For now changing filters does nothing except toggling on and of
     // Real examples to be implemented
     dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });
     mockSearchDelay().then(() => {
-      const resources = resourceItems.find(obj => {
+      const resources = resourceItems.find((obj) => {
         return obj.type === type;
       });
       const updateFilters = [...resources.filters];
-      const selectedFilter = updateFilters.find(item => filterId === item.id);
+      const selectedFilter = updateFilters.find((item) => filterId === item.id);
       if (filterId === 'all') {
-        updateFilters.forEach(filter => {
+        updateFilters.forEach((filter) => {
           filter.active = filter.id === 'all';
         });
       } else {
-        const allFilter = updateFilters.find(item => 'all' === item.id);
+        const allFilter = updateFilters.find((item) => 'all' === item.id);
         allFilter.active = false;
         // First flip active state of clicked element
         selectedFilter.active = !selectedFilter.active;
-        if (!resources.filters.some(item => item.active)) {
+        if (!resources.filters.some((item) => item.active)) {
           allFilter.active = true;
         }
       }
-      const activeFilters = updateFilters.filter(filter => filter.active);
-      const filterArray = activeFilters.map(filter => filter.name);
+      const activeFilters = updateFilters.filter((filter) => filter.active);
+      const filterArray = activeFilters.map((filter) => filter.name);
       const allFilteredItems = resourceItemsByTypeAndFilters(type, filterArray);
       const filteredItems = [...allFilteredItems.slice(0, resources.pageSize)];
 
@@ -303,14 +300,14 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
         contextTypes: selectedResourceTypes,
         resourceTypeItems: {},
       };
-      resourceItems.forEach(item => {
+      resourceItems.forEach((item) => {
         if (selectedResourceTypes.indexOf(item.type) > -1) {
           data.resourceTypeItems[item.type] = item;
           if (item.items.length >= PAGESIZE_SINGLE) {
             data.resourceTypeItems[item.type] = item;
           } else {
-            const activeFilters = item.filters.filter(filter => filter.active);
-            const filterArray = activeFilters.map(filter => filter.name);
+            const activeFilters = item.filters.filter((filter) => filter.active);
+            const filterArray = activeFilters.map((filter) => filter.name);
             const allFilteredItems = resourceItemsByTypeAndFilters(item.type, filterArray);
             data.resourceTypeItems[item.type] = {
               ...item,
@@ -323,27 +320,24 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
     }
   }, [selectedResourceTypes]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleShowMore = type => {
+  const handleShowMore = (type) => {
     dispatchResources({ type: 'RESOURCE_TYPE_LOADING', context: type });
     mockSearchDelay().then(() => {
-      const currentShown = resourceItems.find(item => item.type === type);
+      const currentShown = resourceItems.find((item) => item.type === type);
 
-      const activeFilters = currentShown.filters.filter(filter => filter.active);
-      const filterArray = activeFilters.map(filter => filter.name);
+      const activeFilters = currentShown.filters.filter((filter) => filter.active);
+      const filterArray = activeFilters.map((filter) => filter.name);
       const allFilteredItems = resourceItemsByTypeAndFilters(type, filterArray);
 
       const data = { contextType: type };
       data.items = [
-        ...allFilteredItems.slice(
-          currentShown.items.length,
-          currentShown.items.length + currentShown.pageSize,
-        ),
+        ...allFilteredItems.slice(currentShown.items.length, currentShown.items.length + currentShown.pageSize),
       ];
       dispatchResources({ type: 'RESOURCE_TYPE_ADD_ITEMS', ...data });
     });
   };
 
-  const handleSearchSubmit = e => {
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
     setSearchPhrase(searchValue);
     setSearchPhraseSuggestion('');
@@ -354,7 +348,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
     setCompetenceGoalFilter(competenceGoalFilter.filter(option => option !== value));
   };
 
-  const handleContentTypeFilterToggle = value => {
+  const handleContentTypeFilterToggle = (value) => {
     const index = selectedResourceTypes.indexOf(value);
     const updated = [...selectedResourceTypes];
     if (index > -1) {
@@ -366,8 +360,8 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
   };
 
   const activeSubjectFilters = [];
-  subjectCategories.forEach(category => {
-    category.subjects.forEach(subject => {
+  subjectCategories.forEach((category) => {
+    category.subjects.forEach((subject) => {
       if (subjectFilter.includes(subject.id)) {
         activeSubjectFilters.push({
           name: subject.name,
@@ -377,7 +371,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
       }
     });
   });
-  programmes.forEach(item => {
+  programmes.forEach((item) => {
     if (programmeFilter.includes(item.id)) {
       activeSubjectFilters.push({
         name: item.label,
@@ -403,7 +397,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
       buttonText: t('searchPage.searchFilterMessages.noValuesButtonText'),
     },
     programmes: {
-      options: programmes.map(item => ({ name: item.label, ...item })),
+      options: programmes.map((item) => ({ name: item.label, ...item })),
       values: programmeFilter,
       onProgrammeValuesChange: setProgrammeFilter,
     },
@@ -414,8 +408,8 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
     },
   };
 
-  const visibleResourceTypes = resourceItems.filter(item => item.active);
-  const contentTypeFilters = searchSubjectTypeOptions.map(item => {
+  const visibleResourceTypes = resourceItems.filter((item) => item.active);
+  const contentTypeFilters = searchSubjectTypeOptions.map((item) => {
     return {
       ...item,
       selected: selectedResourceTypes.indexOf(item.value) > -1,
@@ -436,7 +430,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
           () => console.log('search-phrase suggestion click') // eslint-disable-line no-console
         }
         searchValue={searchValue}
-        onSearchValueChange={value => setSearchValue(value)}
+        onSearchValueChange={(value) => setSearchValue(value)}
         onSubmit={handleSearchSubmit}
         activeFilters={{
           filters: activeSubjectFilters,
@@ -479,11 +473,11 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
           openFilter: t('searchPage.searchFilterMessages.resourceTypeFilter.button'),
         }}
       />
-      {visibleResourceTypes.map(item => (
+      {visibleResourceTypes.map((item) => (
         <SearchTypeResult
           key={`search-result-${item.type}`}
           filters={item.filters}
-          onFilterClick={id => handleFilterClick(item.type, id)}
+          onFilterClick={(id) => handleFilterClick(item.type, id)}
           items={item.items}
           type={item.type}
           totalCount={item.totalCount}

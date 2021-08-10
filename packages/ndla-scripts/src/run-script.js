@@ -14,9 +14,7 @@ function attemptResolve(...resolveArgs) {
 
 function handleSignal(result) {
   if (result.signal === 'SIGKILL' || result.signal === 'SIGTERM') {
-    console.log(
-      `The script "${script}" failed because the process exited too early with signal ${result.signal}.`,
-    );
+    console.log(`The script "${script}" failed because the process exited too early with signal ${result.signal}.`);
   }
   process.exit(1);
 }
@@ -46,7 +44,7 @@ if (script) {
   const scriptsPath = path.join(__dirname, 'scripts/');
   const scriptsAvailable = glob.sync(path.join(__dirname, 'scripts', '*'));
   const scriptsAvailableMessage = scriptsAvailable
-    .map(s => s.replace(scriptsPath, '').replace(/\.js$/, ''))
+    .map((s) => s.replace(scriptsPath, '').replace(/\.js$/, ''))
     .filter(Boolean)
     .join('\n  ')
     .trim();

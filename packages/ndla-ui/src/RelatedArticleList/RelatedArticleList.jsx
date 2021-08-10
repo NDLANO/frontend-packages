@@ -10,26 +10,14 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const RelatedArticle = ({
-  title,
-  introduction,
-  icon,
-  modifier,
-  to,
-  linkInfo = '',
-  target = '',
-}) => {
+export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkInfo = '', target = '' }) => {
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
     <article {...classes('item', modifier)}>
       <h1 {...classes('title')}>
         {iconWithClass}
         <span {...classes('link-wrapper')}>
-          <SafeLink
-            to={to}
-            {...classes('link')}
-            target={target}
-            rel={linkInfo ? 'noopener noreferrer' : null}>
+          <SafeLink to={to} {...classes('link')} target={target} rel={linkInfo ? 'noopener noreferrer' : null}>
             {title}
           </SafeLink>
         </span>
@@ -62,9 +50,7 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
 
   return (
     <section {...classes('')}>
-      <SectionHeading className={classes('component-title').className}>
-        {messages.title}
-      </SectionHeading>
+      <SectionHeading className={classes('component-title').className}>{messages.title}</SectionHeading>
       <div {...classes('articles')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {clonedChildren}
       </div>

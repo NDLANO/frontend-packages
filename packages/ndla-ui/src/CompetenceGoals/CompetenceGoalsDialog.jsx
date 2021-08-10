@@ -43,7 +43,7 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
         animation="slide-up"
         backgroundColor="light-gradient"
         narrow>
-        {close => (
+        {(close) => (
           <Fragment>
             <ModalHeader modifier="menu">
               <HeaderWrapper>

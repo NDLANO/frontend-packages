@@ -28,8 +28,7 @@ const StyledImage = styled.div<StyledImageProps>`
   justify-content: flex-end;
   align-items: center;
   min-height: 100px;
-  padding: ${spacing.spacingUnit}px ${spacing.medium} ${spacing.spacingUnit}px
-    ${spacing.spacingUnit}px;
+  padding: ${spacing.spacingUnit}px ${spacing.medium} ${spacing.spacingUnit}px ${spacing.spacingUnit}px;
 
   ${(props: StyledImageProps) =>
     props.imageUrl &&

@@ -19,7 +19,7 @@ export const getLastPage = (search, type) => {
   return 0;
 };
 
-export const youTubeDurationToSeconds = duration => {
+export const youTubeDurationToSeconds = (duration) => {
   const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
 
   const hours = parseInt(match[1], 10) || 0;
@@ -35,7 +35,7 @@ export const setLocaleDate = (date, locale) => {
   return newDate.toLocaleDateString(locale, options);
 };
 
-export const setYouTubeDuration = duration => {
+export const setYouTubeDuration = (duration) => {
   const seconds = youTubeDurationToSeconds(duration);
   if (seconds > 86400) {
     return `24h+ ${new Date(seconds * 1000).toISOString().substr(11, 8)}`;

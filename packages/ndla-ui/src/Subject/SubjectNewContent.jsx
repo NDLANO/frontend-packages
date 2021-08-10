@@ -12,7 +12,7 @@ const SubjectNewContent = ({ heading, content }) => (
     <SubjectSectionTitle className={classes('heading').className}>{heading}</SubjectSectionTitle>
     <nav {...classes('content')}>
       <ul {...classes('list')}>
-        {content.map(item => (
+        {content.map((item) => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
               <ContentTypeBadge type={item.contentType} size="x-small" background outline />

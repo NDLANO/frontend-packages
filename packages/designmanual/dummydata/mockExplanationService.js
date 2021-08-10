@@ -2,10 +2,8 @@ export const mockExplanationService = {
   items: [
     {
       name: 'Abbor',
-      description:
-        'Abboren er en rovfisk som tilhører piggfinnefiskfamilien. Den lever i ferskvann og brakkvann.',
-      longDescription:
-        'Abboren er en rovfisk som tilhører piggfinnefiskfamilien. Den lever i ferskvann og brakkvann.',
+      description: 'Abboren er en rovfisk som tilhører piggfinnefiskfamilien. Den lever i ferskvann og brakkvann.',
+      longDescription: 'Abboren er en rovfisk som tilhører piggfinnefiskfamilien. Den lever i ferskvann og brakkvann.',
       image: 'https://api.ndla.no/image-api/raw/id/40165',
       id: '100',
       category: [

@@ -27,7 +27,7 @@ const StyledStructureItem = styled.li`
   display: flex;
   flex-direction: column;
 
-  ${props =>
+  ${(props) =>
     props.greyedOut &&
     css`
       > div > button {
@@ -56,79 +56,74 @@ const Structure = ({
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
         <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
-          {structure.map(
-            ({ id, connectionId, name, topics, subtopics, loading, metadata, ...rest }) => {
-              const currentPathIds = [...currentPath, id];
-              const children = topics || subtopics;
-              const pathToString = currentPathIds.join('/');
-              const parentId = currentPath.slice(-1);
-              const isOpen = openedPaths.includes(pathToString);
-              const isNewMainActive = openedPaths.slice(-1).pop() === pathToString;
-              const greyedOut = highlightMainActive
-                ? !isNewMainActive && !isMainActive && openedPaths.length > 0
-                : !isOpen && isSubject && openedPaths.length > 0;
-              const isVisible = metadata !== undefined ? metadata.visible : true;
-              return (
-                <StyledStructureItem
-                  connectionId={connectionId}
-                  key={pathToString}
-                  greyedOut={greyedOut}>
-                  <ItemNameBar
-                    highlight={highlightMainActive ? isNewMainActive : isOpen && isSubject}
+          {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, ...rest }) => {
+            const currentPathIds = [...currentPath, id];
+            const children = topics || subtopics;
+            const pathToString = currentPathIds.join('/');
+            const parentId = currentPath.slice(-1);
+            const isOpen = openedPaths.includes(pathToString);
+            const isNewMainActive = openedPaths.slice(-1).pop() === pathToString;
+            const greyedOut = highlightMainActive
+              ? !isNewMainActive && !isMainActive && openedPaths.length > 0
+              : !isOpen && isSubject && openedPaths.length > 0;
+            const isVisible = metadata !== undefined ? metadata.visible : true;
+            return (
+              <StyledStructureItem connectionId={connectionId} key={pathToString} greyedOut={greyedOut}>
+                <ItemNameBar
+                  highlight={highlightMainActive ? isNewMainActive : isOpen && isSubject}
+                  isOpen={isOpen}
+                  title={name}
+                  level={currentPath.length}
+                  lastItemClickable={highlightMainActive}
+                  path={pathToString}
+                  id={id.includes('topic') ? `${parentId}/${id}` : id}
+                  hasSubtopics={!!children || isSubject}
+                  toggleOpen={() =>
+                    toggleOpen({
+                      path: pathToString,
+                      isSubject,
+                      id,
+                      parent: rest.parent,
+                    })
+                  }
+                  isSubject={isSubject}
+                  isVisible={isVisible}
+                  favoriteSubjectIds={favoriteSubjectIds}
+                  toggleFavorite={() => toggleFavorite(id)}>
+                  {renderListItems &&
+                    renderListItems({
+                      pathToString,
+                      isSubject,
+                      subjectId: currentPathIds[0],
+                      isOpen,
+                      id,
+                      name,
+                      metadata,
+                      isMainActive: isNewMainActive,
+                      ...rest,
+                    })}
+                </ItemNameBar>
+                {loading ? (
+                  <span>
+                    <Spinner size="normal" margin="4px 26px" />
+                  </span>
+                ) : (
+                  <Structure
+                    structure={children}
+                    currentPath={currentPathIds}
+                    openedPaths={openedPaths}
+                    toggleOpen={toggleOpen}
+                    renderListItems={renderListItems}
+                    highlightMainActive={highlightMainActive}
+                    isMainActive={isNewMainActive}
+                    DND={DND}
                     isOpen={isOpen}
-                    title={name}
-                    level={currentPath.length}
-                    lastItemClickable={highlightMainActive}
-                    path={pathToString}
-                    id={id.includes('topic') ? `${parentId}/${id}` : id}
-                    hasSubtopics={!!children || isSubject}
-                    toggleOpen={() =>
-                      toggleOpen({
-                        path: pathToString,
-                        isSubject,
-                        id,
-                        parent: rest.parent,
-                      })
-                    }
-                    isSubject={isSubject}
-                    isVisible={isVisible}
-                    favoriteSubjectIds={favoriteSubjectIds}
-                    toggleFavorite={() => toggleFavorite(id)}>
-                    {renderListItems &&
-                      renderListItems({
-                        pathToString,
-                        isSubject,
-                        subjectId: currentPathIds[0],
-                        isOpen,
-                        id,
-                        name,
-                        metadata,
-                        isMainActive: isNewMainActive,
-                        ...rest,
-                      })}
-                  </ItemNameBar>
-                  {loading ? (
-                    <span>
-                      <Spinner size="normal" margin="4px 26px" />
-                    </span>
-                  ) : (
-                    <Structure
-                      structure={children}
-                      currentPath={currentPathIds}
-                      openedPaths={openedPaths}
-                      toggleOpen={toggleOpen}
-                      renderListItems={renderListItems}
-                      highlightMainActive={highlightMainActive}
-                      isMainActive={isNewMainActive}
-                      DND={DND}
-                      isOpen={isOpen}
-                      onDragEnd={onDragEnd}
-                    />
-                  )}
-                </StyledStructureItem>
-              );
-            },
-          )}
+                    onDragEnd={onDragEnd}
+                  />
+                )}
+              </StyledStructureItem>
+            );
+          })}
         </MakeDNDList>
       </Fade>
     </StructureWrapper>
@@ -136,12 +131,12 @@ const Structure = ({
 };
 
 function lazyFunction(f) {
-  return function() {
+  return function () {
     return f.apply(this, arguments);
   };
 }
 
-const lazyItemShape = lazyFunction(function() {
+const lazyItemShape = lazyFunction(function () {
   return ItemShape;
 });
 

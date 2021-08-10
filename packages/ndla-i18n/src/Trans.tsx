@@ -23,8 +23,7 @@ interface TFunctionValue {
 
 const Trans = ({ children, prefix = '' }: Props, context: Context) =>
   children({
-    t: (id: string, value: TFunctionValue = {}): string =>
-      context.formatMessage(prefix + id, value),
+    t: (id: string, value: TFunctionValue = {}): string => context.formatMessage(prefix + id, value),
   });
 
 Trans.contextTypes = {

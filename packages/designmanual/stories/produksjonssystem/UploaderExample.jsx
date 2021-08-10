@@ -19,7 +19,7 @@ class UploadDropZoneExample extends Component {
       },
       () => {
         this.fakeTimer = setTimeout(() => {
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             addedFiles: prevState.addedFiles.concat(newFiles),
             uploading: false,
           }));
@@ -41,7 +41,7 @@ class UploadDropZoneExample extends Component {
           <strong>Dra og slipp</strong> eller trykk for å laste opp bilde(r)
         </UploadDropZone>
         <ul>
-          {addedFiles.map(file => (
+          {addedFiles.map((file) => (
             <li key={file.name}>{file.name}</li>
           ))}
         </ul>

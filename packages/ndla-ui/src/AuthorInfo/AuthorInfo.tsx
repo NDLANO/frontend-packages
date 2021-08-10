@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
+// @ts-ignore
 import Portrait from '../Portrait';
 
 const classes = new BEMHelper({
@@ -17,11 +18,17 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const AuthorInfo = ({ authorName, authorRole, email, image, phone }) => (
+interface Props {
+  authorName: string;
+  authorRole: string;
+  phone?: string;
+  email?: string;
+  image?: string;
+}
+
+const AuthorInfo = ({ authorName, authorRole, email, image, phone }: Props) => (
   <section {...classes('')}>
-    {image && (
-      <Portrait src={image} alt={authorName} modifier="large" {...classes('portrait-image')} />
-    )}
+    {image && <Portrait src={image} alt={authorName} modifier="large" {...classes('portrait-image')} />}
     <div>
       <h1 {...classes('heading')}>{authorName}</h1>
       <p>{authorRole}</p>

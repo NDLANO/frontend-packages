@@ -198,8 +198,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Follow us',
-      description:
-        'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
+      description: 'NDLA has several facebook- and twitter accounts. Find the one that suits you, and follow us!',
       mainLink: {
         name: 'Follow us',
       },
@@ -213,8 +212,7 @@ const messages = {
     },
     film: {
       header: 'NDLA film',
-      text:
-        'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
+      text: 'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
       textShort: 'Welcome to the world of cinema!',
       linkLabel: 'Go to NDLA film',
     },
@@ -279,6 +277,7 @@ const messages = {
     activateAdditionalResources: 'Show additional content',
     toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
+    allResources: 'Content',
     shortcutButtonText: 'Learning material',
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
     tooltipAdditionalTopic: 'Additional content is a subject that is not on the curriculum',
@@ -286,8 +285,7 @@ const messages = {
     shortcutsTooltip: 'Show {count} articles in this subject',
     dialogTooltip: 'What is core content and additional content?',
     dialogHeading: 'Core content and additional content',
-    dialogText1:
-      'As you learn the core content, you acquire the skills described in the curriculum for the subject.',
+    dialogText1: 'As you learn the core content, you acquire the skills described in the curriculum for the subject.',
     dialogText2:
       'Additional content is content in the subject that you can choose in addition to the core material. Through the additional subject, you can immerse yourself in a topic or approach yourself in a different way.',
     showLess: 'Show less',
@@ -454,6 +452,12 @@ const messages = {
     back: 'Go back',
     goToFrontPage: 'Go to frontpage',
   },
+  figure: {
+    button: {
+      synstolket: 'Switch to visually interpreted video',
+      original: 'Switch to original video',
+    },
+  },
   footer: {
     aboutNDLA: 'About NDLA',
     selectLanguage: 'Choose language (språk): ',
@@ -584,8 +588,7 @@ const messages = {
     about: {
       heading: 'About NDLA Film',
       more: 'Read more about NDLA film',
-      text:
-        'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+      text: 'Ndla film er ei nettbasert filmtjeneste for elever og lærere i videregående skole. Her finn du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
     search: {
       placeholder: 'Search on moviename',
@@ -686,15 +689,25 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
   },
+  editor: {
+    versionHistory: {
+      who: 'Who',
+      when: 'When',
+      message: 'Message',
+      status: 'Status',
+      inputLabel: 'Add message:',
+      inputPlaceholder: 'Write message',
+      buttonLabel: 'Save',
+    },
+  },
   createdBy: {
-    content: 'The article',
-    text: 'is created by',
+    content: 'The resource',
+    text: 'is retrieved from',
   },
   fagfornyelse: {
     frontpage: {
       heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
-      text:
-        'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
+      text: 'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
       blogHeading: 'Do you want to know more?',
     },
     badge: {
@@ -705,16 +718,14 @@ const messages = {
   },
   frontPageToolbox: {
     heading: 'Toolbox',
-    text:
-      'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
+    text: 'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
     linkTextStudents: 'See all tips for students here',
     linkTextTeachers: 'See all tips for teachers here',
     cursorText: 'Tip',
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Interdisciplinary subjects',
-    text:
-      'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
+    text: 'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
     linkText: 'See cases for multidisciplinary topics',
     publicHealthTopic: 'Public health and life management',
     democracyTopic: 'Democracy and citizenship',

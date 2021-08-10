@@ -32,9 +32,7 @@ export const TopicIntroduction = ({
   showAdditionalCores,
   id,
 }) => {
-  const contentTypeDescription = additional
-    ? messages.tooltipAdditionalTopic
-    : messages.tooltipCoreTopic;
+  const contentTypeDescription = additional ? messages.tooltipAdditionalTopic : messages.tooltipCoreTopic;
 
   return (
     <li

@@ -57,7 +57,7 @@ class NdlaFilmExample extends Component {
 
   onMoveTheme(index, direction) {
     if (index + direction >= 0 && this.state.themes.length > index + direction) {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         const { themes } = prevState;
         const moveTheme = themes[index];
         themes.splice(index, 1);
@@ -70,7 +70,7 @@ class NdlaFilmExample extends Component {
   }
 
   onDeleteTheme(index) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { themes } = prevState;
       themes.splice(index, 1);
       return {
@@ -80,8 +80,8 @@ class NdlaFilmExample extends Component {
   }
 
   onAddMovieToTheme(id, index) {
-    const movie = mockAllMovies.find(movie => movie.id === id);
-    this.setState(prevState => {
+    const movie = mockAllMovies.find((movie) => movie.id === id);
+    this.setState((prevState) => {
       const { themes } = prevState;
       themes[index].movies.push(movie);
       return {
@@ -91,8 +91,8 @@ class NdlaFilmExample extends Component {
   }
 
   onAddMovieToSlideshow(id) {
-    const movie = mockAllMovies.find(movie => movie.id === id);
-    this.setState(prevState => {
+    const movie = mockAllMovies.find((movie) => movie.id === id);
+    this.setState((prevState) => {
       const { mainMovies } = prevState;
       mainMovies.push(movie);
       return {
@@ -102,7 +102,7 @@ class NdlaFilmExample extends Component {
   }
 
   movieThemeUpdate(updates, index) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const { themes } = prevState;
       themes[index].movies = updates;
       return {
@@ -114,11 +114,8 @@ class NdlaFilmExample extends Component {
   renderAddMovieOptions(addedMovies) {
     return mockAllMovies
       .sort((a, b) => (a.title < b.title ? -1 : 1))
-      .map(movie => (
-        <option
-          key={movie.id}
-          value={movie.id}
-          disabled={addedMovies.some(addedMovie => addedMovie.id === movie.id)}>
+      .map((movie) => (
+        <option key={movie.id} value={movie.id} disabled={addedMovies.some((addedMovie) => addedMovie.id === movie.id)}>
           {movie.title}
         </option>
       ));
@@ -133,10 +130,7 @@ class NdlaFilmExample extends Component {
       <>
         <StyledSection>
           <h1>{t('ndlaFilm.editor.slideshowHeader')}</h1>
-          <FieldHeader
-            title={t('ndlaFilm.editor.slideshowTitle')}
-            subTitle={t('ndlaFilm.editor.slideshowSubTitle')}
-          />
+          <FieldHeader title={t('ndlaFilm.editor.slideshowTitle')} subTitle={t('ndlaFilm.editor.slideshowSubTitle')} />
           <MovieList
             id="slideshowId"
             movies={mainMovies}
@@ -144,13 +138,13 @@ class NdlaFilmExample extends Component {
               dragFilm: t('ndlaFilm.editor.changeOrder'),
               removeFilm: t('ndlaFilm.editor.removeMovieFromSlideshow'),
             }}
-            onUpdateMovies={updates => {
+            onUpdateMovies={(updates) => {
               this.setState({
                 mainMovies: updates,
               });
             }}
           />
-          <Select value="" onChange={e => this.onAddMovieToSlideshow(e.target.value)}>
+          <Select value="" onChange={(e) => this.onAddMovieToSlideshow(e.target.value)}>
             <option value="">{t('ndlaFilm.editor.addMovieToSlideshow')}</option>
             {this.renderAddMovieOptions(mainMovies)}
           </Select>
@@ -176,7 +170,7 @@ class NdlaFilmExample extends Component {
               });
             }}
             activateButton={<Button>Lag ny gruppe</Button>}>
-            {onClose => (
+            {(onClose) => (
               <NdlaFilmThemeEditorModal
                 onClose={onClose}
                 onEditName={() => {}}
@@ -192,9 +186,7 @@ class NdlaFilmExample extends Component {
           </Modal>
           {themes.map((theme, index) => (
             <StyledThemeWrapper key={theme.id}>
-              <FieldHeader
-                title={theme.name.nb}
-                subTitle={` | ${theme.name.nn} | ${theme.name.en}`}>
+              <FieldHeader title={theme.name.nb} subTitle={` | ${theme.name.nn} | ${theme.name.en}`}>
                 <Modal
                   narrow
                   onClick={() => {
@@ -213,17 +205,15 @@ class NdlaFilmExample extends Component {
                       },
                     });
                   }}
-                  wrapperFunctionForButton={activateButton => (
-                    <Tooltip tooltip={t('ndlaFilm.editor.editMovieGroupName')}>
-                      {activateButton}
-                    </Tooltip>
+                  wrapperFunctionForButton={(activateButton) => (
+                    <Tooltip tooltip={t('ndlaFilm.editor.editMovieGroupName')}>{activateButton}</Tooltip>
                   )}
                   activateButton={
                     <button css={FieldHeaderIconStyle} tabIndex={-1}>
                       <Pencil />
                     </button>
                   }>
-                  {onClose => (
+                  {(onClose) => (
                     <NdlaFilmThemeEditorModal
                       onClose={onClose}
                       onEditName={() => {}}
@@ -241,26 +231,17 @@ class NdlaFilmExample extends Component {
                   tooltip={t('ndlaFilm.editor.deleteMovieGroup', {
                     name: theme.name.nb,
                   })}>
-                  <button
-                    css={FieldHeaderIconStyle}
-                    tabIndex={-1}
-                    onClick={() => this.onDeleteTheme(index)}>
+                  <button css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onDeleteTheme(index)}>
                     <DeleteForever />
                   </button>
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupUp')}>
-                  <button
-                    css={FieldHeaderIconStyle}
-                    tabIndex={-1}
-                    onClick={() => this.onMoveTheme(index, -1)}>
+                  <button css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onMoveTheme(index, -1)}>
                     <ChevronUp />
                   </button>
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupDown')}>
-                  <button
-                    css={FieldHeaderIconStyle}
-                    tabIndex={-1}
-                    onClick={() => this.onMoveTheme(index, 1)}>
+                  <button css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onMoveTheme(index, 1)}>
                     <ChevronDown />
                   </button>
                 </Tooltip>
@@ -272,9 +253,9 @@ class NdlaFilmExample extends Component {
                   removeFilm: t('ndlaFilm.editor.removeMovieFromGroup'),
                 }}
                 id={theme.id}
-                onUpdateMovies={updates => this.movieThemeUpdate(updates, index)}
+                onUpdateMovies={(updates) => this.movieThemeUpdate(updates, index)}
               />
-              <Select value="" onChange={e => this.onAddMovieToTheme(e.target.value, index)}>
+              <Select value="" onChange={(e) => this.onAddMovieToTheme(e.target.value, index)}>
                 <option value="">
                   {t('ndlaFilm.editor.addMovieToGroup', {
                     name: theme.name.nb,

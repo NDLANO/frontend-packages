@@ -51,10 +51,7 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
                   <FooterHeaderIcon size="24px" style={{ marginRight: '20px' }} />
                   {'Utforsk læreplankoblinger'} {subjectName && ` \u2022 ${subjectName}`}
                 </HeadingWrapper>
-                <ModalCloseButton
-                  onClick={close}
-                  title={t('competenceGoals.competenceGoalClose')}
-                />
+                <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
               </HeaderWrapper>
             </ModalHeader>
             <ModalBody>

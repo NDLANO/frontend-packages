@@ -16,8 +16,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
                 url: '#',
               },
             ],
@@ -27,8 +26,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg1 studieforberedende utdanningsprogram (KV114)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1209)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1209)',
                 url: '#',
               },
             ],
@@ -43,8 +41,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
             goals: [
               {
-                text:
-                  'utføre arbeidsoppgaver knyttet til stell av dyr eller fisk basert på etiske retningslinjer og kunnskaper om orgamismens miljøkrav',
+                text: 'utføre arbeidsoppgaver knyttet til stell av dyr eller fisk basert på etiske retningslinjer og kunnskaper om orgamismens miljøkrav',
                 url: '#',
               },
             ],
@@ -54,8 +51,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg1 studieforberedende utdanningsprogram (KV114)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
                 url: '#',
               },
             ],
@@ -77,8 +73,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
                 url: '#',
               },
             ],
@@ -88,8 +83,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg1 studieforberedende utdanningsprogram (KV114)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1209)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1209)',
                 url: '#',
               },
             ],
@@ -104,8 +98,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
                 url: '#',
               },
             ],
@@ -115,8 +108,7 @@ const CompetenceGoalTabdata = [
             title: 'Vg1 studieforberedende utdanningsprogram (KV114)',
             goals: [
               {
-                text:
-                  'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1209)',
+                text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1209)',
                 url: '#',
               },
             ],

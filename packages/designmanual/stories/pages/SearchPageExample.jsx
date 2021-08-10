@@ -22,11 +22,7 @@ import {
 
 import { injectT } from '@ndla/i18n';
 
-import {
-  searchTabOptions,
-  searchTabFilterOptions,
-  searchFilterOptions,
-} from '../../dummydata/index';
+import { searchTabOptions, searchTabFilterOptions, searchFilterOptions } from '../../dummydata/index';
 
 const results = [
   {

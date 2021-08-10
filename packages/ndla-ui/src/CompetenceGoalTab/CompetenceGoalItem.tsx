@@ -63,10 +63,7 @@ const CompetenceGoalItem = ({ title, goals, t }: CompetenceGoalsItemType & tType
                 <div>{goal.text}</div>
                 {goal.url && (
                   <GoalSearchWrapper>
-                    <SearchButton
-                      to={goal.url}
-                      text={t('competenceGoals.competenceGoalResourceSearchText')}
-                    />
+                    <SearchButton to={goal.url} text={t('competenceGoals.competenceGoalResourceSearchText')} />
                   </GoalSearchWrapper>
                 )}
               </GoalListElementInnerWrapper>

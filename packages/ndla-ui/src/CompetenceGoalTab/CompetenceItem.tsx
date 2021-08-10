@@ -88,7 +88,7 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
       return (
         <>
           {groupedCompetenceGoals &&
-            groupedCompetenceGoals.map(group => (
+            groupedCompetenceGoals.map((group) => (
               <GroupedGoalsWrapper key={group.title}>
                 <GroupedGoalsTitleWrapper>
                   {group.title && (
@@ -103,13 +103,8 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
                 </GroupedGoalsTitleWrapper>
                 {group.elements.length > 0 && (
                   <Goals>
-                    {group.elements.map(goal => (
-                      <CompetenceGoalItem
-                        key={goal.id}
-                        id={goal.id}
-                        title={goal.title}
-                        goals={goal.goals}
-                      />
+                    {group.elements.map((goal) => (
+                      <CompetenceGoalItem key={goal.id} id={goal.id} title={goal.title} goals={goal.goals} />
                     ))}
                   </Goals>
                 )}

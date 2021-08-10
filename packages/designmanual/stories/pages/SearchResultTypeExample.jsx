@@ -233,19 +233,11 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
   const [searchValue, setSearchValue] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
   const [searchPhrase, setSearchPhrase] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
-  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(() =>
-    showCompetenceGoals ? '' : 'nynorsk',
-  );
-  const [subjectFilter, setSubjectFilter] = useState(() =>
-    showCompetenceGoals ? [] : ['programme_subject_5'],
-  );
-  const [programmeFilter, setProgrammeFilter] = useState(() =>
-    showCompetenceGoals ? [] : ['programme_9'],
-  );
+  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(() => (showCompetenceGoals ? '' : 'nynorsk'));
+  const [subjectFilter, setSubjectFilter] = useState(() => (showCompetenceGoals ? [] : ['programme_subject_5']));
+  const [programmeFilter, setProgrammeFilter] = useState(() => (showCompetenceGoals ? [] : ['programme_9']));
   // eslint-disable-next-line no-unused-vars
-  const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() =>
-    showCompetenceGoals ? ['KM1196'] : [],
-  );
+  const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() => (showCompetenceGoals ? ['KM1196'] : []));
 
   const [notionsItems] = React.useState(initNotionResult);
 
@@ -342,10 +334,10 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
     setSearchPhrase(searchValue);
     setSearchPhraseSuggestion('');
   };
-  const handleFilterRemove = value => {
-    setSubjectFilter(subjectFilter.filter(option => option !== value));
-    setProgrammeFilter(programmeFilter.filter(option => option !== value));
-    setCompetenceGoalFilter(competenceGoalFilter.filter(option => option !== value));
+  const handleFilterRemove = (value) => {
+    setSubjectFilter(subjectFilter.filter((option) => option !== value));
+    setProgrammeFilter(programmeFilter.filter((option) => option !== value));
+    setCompetenceGoalFilter(competenceGoalFilter.filter((option) => option !== value));
   };
 
   const handleContentTypeFilterToggle = (value) => {
@@ -380,7 +372,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
       });
     }
   });
-  competenceGoals.forEach(item => {
+  competenceGoals.forEach((item) => {
     if (competenceGoalFilter.includes(item.id)) {
       activeSubjectFilters.push({
         name: item.name,
@@ -417,8 +409,9 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
   });
 
   const searchPhraseText = competenceGoalFilter.length
-    ? `${t('competenceGoals.competenceGoal')} ${competenceGoalFilter.join(', ')} ${searchPhrase &&
-        ` - ${searchPhrase}`}`
+    ? `${t('competenceGoals.competenceGoal')} ${competenceGoalFilter.join(', ')} ${
+        searchPhrase && ` - ${searchPhrase}`
+      }`
     : searchPhrase;
 
   return (
@@ -444,8 +437,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
                 title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
                 goals: [
                   {
-                    text:
-                      'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                    text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
                   },
                 ],
               }
@@ -461,9 +453,7 @@ const SearchPageDemo = ({ t, showCompetenceGoals }) => {
           }}
         />
       )}
-      {!showCompetenceGoals && (
-        <SearchSubjectResult id="search-result-content" items={subjectItems} />
-      )}
+      {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
       <FilterButtons
         heading={t('searchPage.searchFilterMessages.resourceTypeFilter.heading')}
         items={contentTypeFilters}

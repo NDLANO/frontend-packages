@@ -121,11 +121,7 @@ const SearchHeader = ({
         <CompetenceGoalsWrapper>
           {competenceGoals && (
             <CompetenceGoalsList>
-              <CompetenceGoalItem
-                id={competenceGoals.id}
-                title={competenceGoals.title}
-                goals={competenceGoals.goals}
-              />
+              <CompetenceGoalItem id={competenceGoals.id} title={competenceGoals.title} goals={competenceGoals.goals} />
             </CompetenceGoalsList>
           )}
         </CompetenceGoalsWrapper>

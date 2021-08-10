@@ -174,7 +174,7 @@ class MastheadWithTopicMenu extends Component {
                       },
                     ]}
                     filterValues={this.state.filterMenuValues}
-                    onFilterClick={values => {
+                    onFilterClick={(values) => {
                       this.setState({
                         filterMenuValues: values,
                       });

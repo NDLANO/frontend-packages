@@ -45,7 +45,7 @@ const messages = {
     notSupported:
       'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
   },
-  subjectCagegories: {
+  subjectCategories: {
     [subjectCategories.ARCHIVE_SUBJECTS]: 'LK06-fag',
     [subjectCategories.BETA_SUBJECTS]: 'Betafag',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',

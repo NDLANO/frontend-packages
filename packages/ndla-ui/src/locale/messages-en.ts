@@ -45,7 +45,7 @@ const messages = {
     notSupported:
       'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
   },
-  subjectCagegories: {
+  subjectCategories: {
     [subjectCategories.ARCHIVE_SUBJECTS]: 'LK06-subjects',
     [subjectCategories.BETA_SUBJECTS]: 'Beta subjects',
     [subjectCategories.COMMON_SUBJECTS]: 'Common core subjects',

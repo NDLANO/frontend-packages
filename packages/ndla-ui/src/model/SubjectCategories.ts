@@ -8,6 +8,6 @@
 
 export const COMMON_SUBJECTS = 'common';
 export const PROGRAMME_SUBJECTS = 'programme';
-export const SPECIALIZED_SUBJECTS = 'specialised';
+export const SPECIALIZED_SUBJECTS = 'specialized';
 export const BETA_SUBJECTS = 'beta';
 export const ARCHIVE_SUBJECTS = 'archive';

@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes } = constants;
+export const { contentTypes, subjectCategories } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -44,6 +44,13 @@ const messages = {
     embed: 'Sett inn',
     notSupported:
       'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
+  },
+  subjectCategories: {
+    [subjectCategories.ARCHIVE_SUBJECTS]: 'LK06-fag',
+    [subjectCategories.BETA_SUBJECTS]: 'Betafag',
+    [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
+    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
+    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',

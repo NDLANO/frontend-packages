@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { ContentCard } from '@ndla/ui';
-import { spacing } from '@ndla/core';
+import { spacing, spacingUnit } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 import { SubjectSectionTitle } from './Subject';
 
@@ -30,41 +30,41 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
           columnsPrSlide: 2.25,
           distanceBetweenItems: 26,
           arrowOffset: 26,
-          margin: spacing.spacingUnit,
+          margin: spacingUnit,
         },
         {
           until: 'tabletWide',
           columnsPrSlide: 3.25,
           distanceBetweenItems: 26,
           arrowOffset: 26,
-          margin: spacing.spacingUnit * 1.25,
+          margin: spacingUnit * 1.25,
         },
         {
           until: 'desktop',
           columnsPrSlide: 4.25,
           distanceBetweenItems: 26,
           arrowOffset: 26,
-          margin: spacing.spacingUnit * 1.25,
+          margin: spacingUnit * 1.25,
         },
         {
           until: 'wide',
           columnsPrSlide: 4,
           distanceBetweenItems: 26,
           arrowOffset: 26,
-          margin: spacing.spacingUnit * 2.5,
+          margin: spacingUnit * 2.5,
         },
         {
           until: 'ultraWide',
           columnsPrSlide: 5,
           distanceBetweenItems: 26,
           arrowOffset: 26,
-          margin: spacing.spacingUnit * 2.5,
+          margin: spacingUnit * 2.5,
         },
         {
           columnsPrSlide: 7,
           distanceBetweenItems: 26,
           arrowOffset: 26,
-          margin: spacing.spacingUnit * 2.5,
+          margin: spacingUnit * 2.5,
           maxColumnWidth: 200,
         },
       ]}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing, mq, breakpoints } from '@ndla/core';
+import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const StyledWrapper = styled.div`
 
   ${mq.range({ from: breakpoints.tablet })} {
     flex-flow: row;
-    margin-top: ${spacing.spacingUnit * 3}px;
+    margin-top: ${spacingUnit * 3}px;
   }
 
   & > * {

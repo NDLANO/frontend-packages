@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, spacing, fonts } from '@ndla/core';
+import { colors, spacing, fonts, spacingUnit } from '@ndla/core';
 import { css } from '@emotion/core';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -10,9 +10,9 @@ interface Props {
 }
 
 const buttonStyle = css`
-  padding: ${spacing.spacingUnit / 8}px 0;
+  padding: ${spacingUnit / 8}px 0;
   white-space: nowrap;
-  margin: -${spacing.spacingUnit / 8}px 0;
+  margin: -${spacingUnit / 8}px 0;
 `;
 
 const linkStyle = css`

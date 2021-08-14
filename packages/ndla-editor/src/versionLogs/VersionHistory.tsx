@@ -46,13 +46,13 @@ const StyleLine = styled.hr`
 `;
 
 type Props = {
-  notes: Array<{
+  notes: {
     author: number;
     date: string;
     note: string;
     status: string;
     id: string;
-  }>;
+  }[];
   onComment(arg: string): void;
   current: boolean;
 };

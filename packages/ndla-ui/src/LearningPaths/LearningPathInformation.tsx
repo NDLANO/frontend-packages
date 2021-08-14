@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, spacing, breakpoints, mq } from '@ndla/core';
+import { fonts, spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;
@@ -26,10 +26,10 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
     font-family: ${fonts.serif};
   }
   max-width: 720px;
-  margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
+  margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
   ${mq.range({ from: breakpoints.desktop })} {
-    margin: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
-    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacing.spacingUnit * 4}px;
+    margin: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.xsmall} 0 !important;
+    padding: ${spacing.normal} ${spacing.large} ${spacing.large} ${spacingUnit * 4}px;
     ul {
       margin-left: ${spacing.normal};
     }
@@ -38,7 +38,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
     margin: 0;
     padding: ${spacing.small} ${spacing.normal};
     ul {
-      padding: 0 ${spacing.spacingUnit * 0.75}px;
+      padding: 0 ${spacingUnit * 0.75}px;
     }
   }
   ${mq.range({ from: breakpoints.tablet })} {

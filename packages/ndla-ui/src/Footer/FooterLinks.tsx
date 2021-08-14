@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
-import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
+import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import {
   Forward,
@@ -18,7 +18,7 @@ const StyledLinksWrapper = styled.div`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     section:first-of-type {
-      margin-right: ${spacing.spacingUnit * 4}px;
+      margin-right: ${spacingUnit * 4}px;
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {

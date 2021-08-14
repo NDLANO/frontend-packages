@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
-import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { LearningPathRead } from '@ndla/icons/contentType';
@@ -103,7 +103,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     width: 2px;
     background: ${colors.brand.greyLight};
     position: absolute;
-    transform: translate(29px, -${spacing.spacingUnit * 3}px);
+    transform: translate(29px, -${spacingUnit * 3}px);
   }
   ${(props) =>
     !props.afterCurrent &&
@@ -119,7 +119,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     &:after {
       width: 4px;
       background: ${colors.text.light};
-      transform: translate(28px, -${spacing.spacingUnit * 3}px);
+      transform: translate(28px, -${spacingUnit * 3}px);
     }
   `}
   ${(props) =>
@@ -141,7 +141,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
 const StyledContentType = styled.div`
   position: relative;
   z-index: 1;
-  margin-right: ${spacing.spacingUnit * 0.75}px;
+  margin-right: ${spacingUnit * 0.75}px;
   max-height: 36px;
 `;
 

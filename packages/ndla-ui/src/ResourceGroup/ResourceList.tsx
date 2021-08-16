@@ -34,6 +34,7 @@ type StyledListProps = {
 const StyledResourceList = styled.ul<StyledListProps>`
   list-style: none;
   margin: 0;
+  padding: 0;
   ${({ showAdditionalResources }) =>
     showAdditionalResources &&
     css`
@@ -60,22 +61,20 @@ const ResourceList = ({
 }: ResourceListProps & tType) => {
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
-    resources.filter(res => res.additional).length > 0 &&
-    resources.filter(res => !res.additional).length === 0;
+    resources.filter((res) => res.additional).length > 0 &&
+    resources.filter((res) => !res.additional).length === 0;
 
   return (
     <div>
       <StyledResourceList showAdditionalResources={showAdditionalResources}>
-        {resources.map(resource => (
+        {resources.map((resource) => (
           <ResourceItem
             key={resource.id}
             contentType={contentType}
             showAdditionalResources={showAdditionalResources}
             {...resource}
             contentTypeDescription={
-              resource.additional
-                ? t('resource.tooltipAdditionalTopic')
-                : t('resource.tooltipCoreTopic')
+              resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')
             }
           />
         ))}

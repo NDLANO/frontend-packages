@@ -47,17 +47,16 @@ const StyleLine = styled.hr`
 
 type Props = {
   notes: {
-    author: number;
+    author: string;
     date: string;
     note: string;
-    status: string;
+    status?: string;
     id: string;
   }[];
-  onComment(arg: string): void;
-  current: boolean;
 };
 
 const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
+  const hasStatus = notes.some((n) => n.status !== undefined);
   return (
     <StyledWrapper>
       <StyledTable>
@@ -66,7 +65,7 @@ const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
             <th>{t('editor.versionHistory.who')}</th>
             <th>{t('editor.versionHistory.when')}</th>
             <th>{t('editor.versionHistory.message')}</th>
-            <th>{t('editor.versionHistory.status')}</th>
+            {hasStatus && <th>{t('editor.versionHistory.status')}</th>}
           </tr>
         </thead>
         <tbody>
@@ -75,7 +74,7 @@ const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
               <td>{author}</td>
               <td>{date}</td>
               <td>{note}</td>
-              <td>{status}</td>
+              {hasStatus && <td>{status}</td>}
             </tr>
           ))}
         </tbody>

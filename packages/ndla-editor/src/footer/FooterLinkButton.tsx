@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 // @ts-ignore
 import Button from '@ndla/button';
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLButtonElement> {
   children: React.ReactNode;
   bold: boolean;
 }

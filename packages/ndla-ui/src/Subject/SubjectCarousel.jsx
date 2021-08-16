@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { ContentCard } from '@ndla/ui';
-import { spacing, spacingUnit } from '@ndla/core';
+import { spacingUnit } from '@ndla/core';
 import { injectT } from '@ndla/i18n';
 import { SubjectSectionTitle } from './Subject';
 

@@ -80,7 +80,7 @@ const ListElement = styled.li<ListElementProps>`
   align-items: center;
   padding-right: 1rem;
 
-  ${props =>
+  ${(props) =>
     props.additional &&
     css`
       border-style: dashed;
@@ -88,12 +88,12 @@ const ListElement = styled.li<ListElementProps>`
       animation-duration: 0.8s;
       animation-fill-mode: forwards;
     `}
-  ${props => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
+  ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
 
   * {
     transition: all ease-out 0.2s;
   }
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       &:before {
@@ -176,7 +176,7 @@ const Heading = styled.h2<ActiveProps>`
       box-shadow: ${colors.linkHover};
     }
   }
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       color: ${colors.brand.greyDark};

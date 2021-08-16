@@ -22,7 +22,7 @@ type StyledHeaderProps = {
 
 const StyledHeader = styled.header<StyledHeaderProps>`
   margin: ${spacing.small} 0 ${spacing.xsmall};
-  ${props => props.invertedStyle && `color: #fff`};
+  ${(props) => props.invertedStyle && `color: #fff`};
 `;
 
 const StyledHeading = styled.h1`

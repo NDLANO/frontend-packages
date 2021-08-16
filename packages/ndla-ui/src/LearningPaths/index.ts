@@ -15,9 +15,5 @@ export { LearningPathWrapper } from './LearningPathWrapper';
 export { LearningPathContent } from './LearningPathContent';
 export { LearningPathMenu, LearningPathLastStepNavigation, LearningPathMobileStepInfo };
 export { LearningPathInformation } from './LearningPathInformation';
-export {
-  LearningPathSticky,
-  LearningPathStickySibling,
-  LearningPathStickyPlaceholder,
-} from './LearningPathSticky';
+export { LearningPathSticky, LearningPathStickySibling, LearningPathStickyPlaceholder } from './LearningPathSticky';
 export { LearningPathMobileHeader };

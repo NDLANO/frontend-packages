@@ -76,10 +76,7 @@ export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Naviga
 
 export { default as Programme } from './Programme';
 
-export {
-  default as MultidisciplinarySubject,
-  MultidisciplinarySubjectHeader,
-} from './MultidisciplinarySubject';
+export { default as MultidisciplinarySubject, MultidisciplinarySubjectHeader } from './MultidisciplinarySubject';
 
 export {
   SearchTypeResult,
@@ -99,5 +96,12 @@ export { default as RadioButtonGroup } from './RadioButtonGroup';
 
 export { ToolboxInfo } from './ToolboxPage';
 export { default as Topic } from './Topic';
+export { default as Aside } from './Aside';
+export { default as AuthorInfo } from './AuthorInfo';
+
+export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
+
+export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
+export { i18nInstance } from './i18n';
 
 export { default as ResourceGroup } from './ResourceGroup';

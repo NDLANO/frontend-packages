@@ -51,7 +51,7 @@ class RadioButtonGroup extends Component<Props, State> {
       <section>
         <div role="radiogroup" {...classes('wrapper')}>
           {this.props.label && <h1 {...classes('label-heading')}>{this.props.label}</h1>}
-          {this.props.options.map(option => {
+          {this.props.options.map((option) => {
             const id = this.uuid ? `${this.uuid}_${option.value}` : option.value;
             return (
               <Fragment key={option.value}>

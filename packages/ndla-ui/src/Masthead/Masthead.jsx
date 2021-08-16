@@ -50,15 +50,7 @@ MastheadInfo.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const Masthead = ({
-  children,
-  fixed,
-  infoContent,
-  showLoaderWhenNeeded,
-  ndlaFilm,
-  skipToMainContentId,
-  t,
-}) => (
+export const Masthead = ({ children, fixed, infoContent, showLoaderWhenNeeded, ndlaFilm, skipToMainContentId, t }) => (
   <>
     {skipToMainContentId && (
       <a tabIndex={0} href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>

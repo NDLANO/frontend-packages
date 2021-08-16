@@ -20,7 +20,7 @@ const StyledFieldHeaderWrapper = styled.div`
   padding-bottom: ${spacing.xsmall};
   margin-top: ${spacing.normal};
   margin-bottom: ${spacing.small};
-  ${props =>
+  ${(props) =>
     css`
       width: ${props.wrapperWidth}%;
     `};

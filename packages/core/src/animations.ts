@@ -158,10 +158,7 @@ const animations = {
             opacity: 1;
           }
         }`,
-  toggledContentWithSwitchAnimation: (
-    duration?: string,
-    animationName = 'toggledContentWithSwitchAnimation',
-  ) => `
+  toggledContentWithSwitchAnimation: (duration?: string, animationName = 'toggledContentWithSwitchAnimation') => `
   animation-duration: ${duration || DURATION_DEFAULT};
     animation-name: ${animationName};
       @keyframes ${animationName} {

@@ -19,11 +19,7 @@ $ yarn add ndla-article-scripts
 ### Plain javascript (embed scripts)
 
 ```javascript
-import {
-  addEventListenerForResize,
-  updateIFrameDimensions,
-  addFactBoxClickListener,
-} from '@ndla/article-scripts';
+import { addEventListenerForResize, updateIFrameDimensions, addFactBoxClickListener } from '@ndla/article-scripts';
 
 window.onload = () => {
   // Invoke after article content has loaded

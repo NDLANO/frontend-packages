@@ -41,7 +41,7 @@ function isFork() {
 function getUrl(content) {
   const urls = content.match(urlRegex()) || [];
 
-  return urls.map(url => normalizeUrl(url.trim().replace(/\.+$/, '')))[0];
+  return urls.map((url) => normalizeUrl(url.trim().replace(/\.+$/, '')))[0];
 }
 
 function logError(message) {
@@ -58,11 +58,7 @@ function safeify(s, safed = []) {
   }
   safed.push(s);
   if (typeof s === 'string') {
-    return s
-      .split(nowToken)
-      .join('NOW_TOKEN')
-      .split(githubToken)
-      .join('GITHUB_TOKEN');
+    return s.split(nowToken).join('NOW_TOKEN').split(githubToken).join('GITHUB_TOKEN');
   }
   if (typeof s === 'object' && s !== null) {
     return Object.keys(s).reduce((acc, k) => {
@@ -74,12 +70,12 @@ function safeify(s, safed = []) {
 }
 
 function safeLog(...args) {
-  const safeArgs = args.map(s => safeify(s));
+  const safeArgs = args.map((s) => safeify(s));
   console.log(...safeArgs);
 }
 
 function safeError(...args) {
-  const safeArgs = args.map(s => safeify(s));
+  const safeArgs = args.map((s) => safeify(s));
   console.error(...safeArgs);
 }
 

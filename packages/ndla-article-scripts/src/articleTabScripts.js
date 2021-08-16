@@ -24,12 +24,12 @@ const changePanel = (currentPanel, nextPanel) => {
 };
 
 export const initArticleTabs = () => {
-  forEachElement('.c-tabs--article', el => {
+  forEachElement('.c-tabs--article', (el) => {
     const tabCount = parseInt(el.getAttribute('data-length'), 10);
 
     const tabs = el.querySelectorAll('.c-tabs__tab');
 
-    tabs.forEach(tab => {
+    tabs.forEach((tab) => {
       const index = parseInt(tab.getAttribute('data-index'), 10);
 
       tab.addEventListener('click', () => {
@@ -41,15 +41,15 @@ export const initArticleTabs = () => {
         changePanel(currentPanel, panel);
       });
 
-      tab.addEventListener('keydown', event => {
+      tab.addEventListener('keydown', (event) => {
         let newIndex = null;
 
-        if (leftKeys.some(key => key === event.key)) {
+        if (leftKeys.some((key) => key === event.key)) {
           newIndex = index - 1;
           if (newIndex < 0) {
             newIndex = tabCount - 1;
           }
-        } else if (rightKeys.some(key => key === event.key)) {
+        } else if (rightKeys.some((key) => key === event.key)) {
           newIndex = index + 1;
           if (newIndex > tabCount - 1) {
             newIndex = 0;

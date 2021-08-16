@@ -36,14 +36,14 @@ const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({ children, ite
     const items = Array.from(breadcrumbItemRefs).map(([key, value]) => value);
 
     // Clear max width on all items
-    items.forEach(el => {
+    items.forEach((el) => {
       el.setMaxWidth('none');
     });
 
     // Set maxWidth on breadcrumb text items iteratively until
     // the ordered list fits on a single line. It's on a single line
     // if the height of the list is less then 70.
-    items.forEach(el => {
+    items.forEach((el) => {
       if (olRef.current.offsetHeight > 70) {
         el.setMaxWidth('40px');
       }
@@ -56,7 +56,7 @@ const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({ children, ite
       <ol {...classes('list')} ref={olRef}>
         {items.map((item, i) => (
           <BreadcrumbItem
-            ref={element =>
+            ref={(element) =>
               element === null || i === 0 // skip first item which is never truncated
                 ? breadcrumbItemRefs.delete(item.to)
                 : breadcrumbItemRefs.set(item.to, element)

@@ -67,9 +67,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }: Props) =>
                       author.name
                     )}
                   </span>
-                  {author.licenses && (
-                    <span {...classes('', 'author-licenses')}>{author.licenses}</span>
-                  )}
+                  {author.licenses && <span {...classes('', 'author-licenses')}>{author.licenses}</span>}
                 </li>
               ))}
             </ul>
@@ -79,18 +77,8 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }: Props) =>
     );
   }
   // Show author
-  const {
-    image,
-    name,
-    shortName,
-    title,
-    role,
-    phone,
-    email,
-    introduction,
-    urlContributions,
-    urlAuthor,
-  } = authors[showAuthor !== null && showAuthor !== undefined ? showAuthor : 0];
+  const { image, name, shortName, title, role, phone, email, introduction, urlContributions, urlAuthor } =
+    authors[showAuthor !== null && showAuthor !== undefined ? showAuthor : 0];
 
   return (
     <Trans>
@@ -113,15 +101,9 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }: Props) =>
               {introduction && <p>{introduction}</p>}
               <div {...classes('link-container')}>
                 {urlContributions && (
-                  <SafeLink to={urlContributions}>
-                    {t('article.urlContributionsLabel', { name: shortName })}
-                  </SafeLink>
+                  <SafeLink to={urlContributions}>{t('article.urlContributionsLabel', { name: shortName })}</SafeLink>
                 )}
-                {urlAuthor && (
-                  <SafeLink to={urlAuthor}>
-                    {t('article.urlAuthorLabel', { name: shortName })}
-                  </SafeLink>
-                )}
+                {urlAuthor && <SafeLink to={urlAuthor}>{t('article.urlAuthorLabel', { name: shortName })}</SafeLink>}
               </div>
             </section>
           </div>

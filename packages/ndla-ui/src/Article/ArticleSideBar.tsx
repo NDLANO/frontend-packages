@@ -45,13 +45,7 @@ type Props = {
   copyPageUrlLink?: string;
   licenseBox?: React.ReactNode;
 };
-const ArticleSideBar = ({
-  linkToResources,
-  onLinkToResourcesClick,
-  copyPageUrlLink,
-  licenseBox,
-  t,
-}: Props & tType) => {
+const ArticleSideBar = ({ linkToResources, onLinkToResourcesClick, copyPageUrlLink, licenseBox, t }: Props & tType) => {
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
@@ -96,9 +90,7 @@ const ArticleSideBar = ({
           <LinkText>
             <SafeLink
               to={linkToResources}
-              onClick={(e: React.MouseEvent<HTMLElement>) =>
-                onLinkToResourcesClick && onLinkToResourcesClick(e)
-              }>
+              onClick={(e: React.MouseEvent<HTMLElement>) => onLinkToResourcesClick && onLinkToResourcesClick(e)}>
               Hopp til fagressursene
             </SafeLink>
           </LinkText>

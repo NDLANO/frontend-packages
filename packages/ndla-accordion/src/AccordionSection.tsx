@@ -39,7 +39,7 @@ const AccordionSection = (props: Props) => {
         panelId={id}
         hasError={hasError}
         title={title}
-        onClick={() => (onClick ? onClick() : setIsOpen(old => !old))}
+        onClick={() => (onClick ? onClick() : setIsOpen((old) => !old))}
         isOpen={isOpen}
         tiny={tiny}>
         {barChildren}
@@ -47,7 +47,7 @@ const AccordionSection = (props: Props) => {
       {isOpen && (
         <AccordionPanel id={id} hasError={hasError} isOpen={isOpen}>
           <div className={className}>
-            {Children.map(children, child => {
+            {Children.map(children, (child) => {
               if (React.isValidElement(child) && typeof child.type !== 'string') {
                 return React.cloneElement(child, {
                   setIsOpen: onClick ? onClick : setIsOpen,

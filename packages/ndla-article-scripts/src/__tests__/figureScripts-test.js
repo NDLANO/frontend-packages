@@ -9,7 +9,7 @@
 
 import { updateIFrameDimensions } from '../figureScripts';
 
-const byId = id => document.getElementById(id);
+const byId = (id) => document.getElementById(id);
 
 const iframe1Html = `
     <figure id="figure1" class="c-figure--resize">

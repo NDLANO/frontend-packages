@@ -34,9 +34,7 @@ class FilmFrontpage extends Component {
   }
 
   onChangeResourceType(resourceTypeSelected) {
-    const loadingPlaceholderHeight = `${
-      this.movieListRef.current.getBoundingClientRect().height
-    }px`;
+    const loadingPlaceholderHeight = `${this.movieListRef.current.getBoundingClientRect().height}px`;
 
     if (resourceTypeSelected) {
       this.props.onSelectedMovieByType(resourceTypeSelected);
@@ -49,15 +47,8 @@ class FilmFrontpage extends Component {
   }
 
   renderMovieGrid({ resourceTypeName }) {
-    const {
-      themes,
-      resourceTypes,
-      moviesByType,
-      fetchingMoviesByType,
-      resizeThumbnailImages,
-      language,
-      t,
-    } = this.props;
+    const { themes, resourceTypes, moviesByType, fetchingMoviesByType, resizeThumbnailImages, language, t } =
+      this.props;
     const { resourceTypeSelected, loadingPlaceholderHeight } = this.state;
     return (
       <CarouselAutosize
@@ -111,7 +102,7 @@ class FilmFrontpage extends Component {
             arrowOffset: 0,
           },
         ]}>
-        {autoSizedProps =>
+        {(autoSizedProps) =>
           resourceTypeSelected ? (
             <MovieGrid
               autoSizedProps={autoSizedProps}
@@ -125,7 +116,7 @@ class FilmFrontpage extends Component {
               }}
             />
           ) : (
-            themes.map(theme => (
+            themes.map((theme) => (
               <FilmMovieList
                 key={theme.name[language]}
                 name={theme.name[language]}
@@ -144,22 +135,13 @@ class FilmFrontpage extends Component {
   }
 
   render() {
-    const {
-      highlighted,
-      resourceTypes,
-      topics,
-      aboutNDLAVideo,
-      moreAboutNdlaFilm,
-      showingAll,
-      moviesByType,
-      id,
-    } = this.props;
+    const { highlighted, resourceTypes, topics, aboutNDLAVideo, moreAboutNdlaFilm, showingAll, moviesByType, id } =
+      this.props;
 
     const { resourceTypeSelected } = this.state;
 
     const resourceTypeName =
-      resourceTypeSelected &&
-      resourceTypes.find(resourceType => resourceType.id === resourceTypeSelected);
+      resourceTypeSelected && resourceTypes.find((resourceType) => resourceType.id === resourceTypeSelected);
 
     return (
       <div
@@ -182,11 +164,7 @@ class FilmFrontpage extends Component {
           css={css`
             margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
           `}>
-          {showingAll ? (
-            <AllMoviesAlphabetically movies={moviesByType} />
-          ) : (
-            this.renderMovieGrid({ resourceTypeName })
-          )}
+          {showingAll ? <AllMoviesAlphabetically movies={moviesByType} /> : this.renderMovieGrid({ resourceTypeName })}
         </div>
         <AboutNdlaFilm aboutNDLAVideo={aboutNDLAVideo} moreAboutNdlaFilm={moreAboutNdlaFilm} />
       </div>

@@ -19,22 +19,19 @@ class CompetenceGoalsExample extends Component {
         items: [
           {
             id: 'med-1',
-            name:
-              'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
+            name: 'Planlegge, produsere og presentere tekst, lyd, stillbilder, levende bilder og kombinasjoner av disse i aktuelle formater og standarder til trykte og elektroniske medier',
             url: '#1',
             text: 'demo',
           },
           {
             id: 'med-2',
-            name:
-              'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
+            name: 'bruke relevante metoder for kvalitetssikring av egen arbeidsprosess og eget produkt',
             url: '#2',
             text: 'demo',
           },
           {
             id: 'med-3',
-            name:
-              'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
+            name: 'bruke tidsmessig verktøy, programvare og annet teknisk utstyr på en forsvarlig måte',
             url: '#3',
             text: 'demo',
           },
@@ -91,7 +88,7 @@ class CompetenceGoalsExample extends Component {
         subjectName={menu ? subjectName : null}
         filterOptions={!search ? filterOptions : null}
         filterValues={!search ? this.state.filterValues : null}
-        onFilterClick={filterValues => {
+        onFilterClick={(filterValues) => {
           this.setState({ filterValues });
         }}
         description="Læreplan i medieuttrykk - felles programfag i utdanningsprogram for medier og kommunikasjon"
@@ -124,8 +121,7 @@ const CompetenceGoalTabdata = [
         elements: [
           {
             id: 'K15502',
-            name:
-              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+            name: 'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
           },
           {
             id: 'K17637',
@@ -142,8 +138,7 @@ const CompetenceGoalTabdata = [
         elements: [
           {
             id: 'K15502',
-            name:
-              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
+            name: 'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål',
           },
           {
             id: 'K17637',
@@ -167,8 +162,7 @@ const CompetenceGoalTabdata = [
         elements: [
           {
             id: 'K15504',
-            name:
-              'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+            name: 'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
           },
           {
             id: 'K176378',
@@ -197,8 +191,7 @@ const CompetenceGoalTabdata = [
             goals: [
               {
                 id: 'K15504',
-                name:
-                  'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+                name: 'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
               },
               {
                 id: 'K176378',
@@ -223,13 +216,11 @@ const CompetenceGoalTabdata = [
           {
             name: 'En tittel 1',
             id: 'tmpid6',
-            text:
-              'Elevene skal kunne reflektere kritisk over hva slags påvirkningskraft og troverdighet tekster har. De skal kunne bruke og variere språklige og retoriske virkemidler hensiktsmessig i egne muntlige og skriftlige tekster. De skal vise digital dømmekraft og opptre etisk og reflektert i kommunikasjon med andre.',
+            text: 'Elevene skal kunne reflektere kritisk over hva slags påvirkningskraft og troverdighet tekster har. De skal kunne bruke og variere språklige og retoriske virkemidler hensiktsmessig i egne muntlige og skriftlige tekster. De skal vise digital dømmekraft og opptre etisk og reflektert i kommunikasjon med andre.',
             goals: [
               {
                 id: 'K15504',
-                name:
-                  'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
+                name: 'gjøre rede for argumentasjonen i andres tekster og skrive egne argumenterende tekster på hovedmål og sidemål - 2',
               },
               {
                 id: 'K176378',

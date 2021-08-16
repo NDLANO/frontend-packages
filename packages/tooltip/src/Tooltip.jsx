@@ -53,8 +53,8 @@ const Fade = styled.div`
     }
   }
   animation-fill-mode: forwards;
-  animation-delay: ${props => props.delay}ms;
-  animation-name: ${props => (props.animateIn ? 'fadeInTooltip' : '')};
+  animation-delay: ${(props) => props.delay}ms;
+  animation-name: ${(props) => (props.animateIn ? 'fadeInTooltip' : '')};
   animation-duration: 300ms;
 `;
 
@@ -109,19 +109,18 @@ class Tooltip extends Component {
           moveHorizontal = Math.min(-(tooltipWidth / 2 - centeredLeft + 20), 0);
         }
         if (align === 'bottom') {
-          currentStyles.transform = `translate(calc(-50% + ${widthRef / 2 -
-            moveHorizontal}px), calc(${heightRef}px + ${spacing.xsmall}))`;
+          currentStyles.transform = `translate(calc(-50% + ${widthRef / 2 - moveHorizontal}px), calc(${heightRef}px + ${
+            spacing.xsmall
+          }))`;
         } else {
-          currentStyles.transform = `translate(calc(-50% + ${widthRef / 2 -
-            moveHorizontal}px), calc(-100% - ${spacing.xsmall}))`;
+          currentStyles.transform = `translate(calc(-50% + ${widthRef / 2 - moveHorizontal}px), calc(-100% - ${
+            spacing.xsmall
+          }))`;
         }
       } else if (align === 'left') {
-        currentStyles.transform = `translate(calc(-100% - ${
-          spacing.xsmall
-        }), calc(-50% + ${heightRef / 2}px))`;
+        currentStyles.transform = `translate(calc(-100% - ${spacing.xsmall}), calc(-50% + ${heightRef / 2}px))`;
       } else {
-        currentStyles.transform = `translate(calc(${widthRef}px + 0.25rem), calc(-50% + ${heightRef /
-          2}px))`;
+        currentStyles.transform = `translate(calc(${widthRef}px + 0.25rem), calc(-50% + ${heightRef / 2}px))`;
       }
     }
     return currentStyles;

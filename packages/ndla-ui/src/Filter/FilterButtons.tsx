@@ -87,14 +87,7 @@ type Props = {
   };
 };
 
-export const FilterButtons = ({
-  heading,
-  items,
-  onFilterToggle,
-  onRemoveAllFilters,
-  labels,
-  t,
-}: Props & tType) => {
+export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels, t }: Props & tType) => {
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
 
   useEffect(() => {
@@ -109,11 +102,11 @@ export const FilterButtons = ({
     };
   }, []);
 
-  const hasSelectedFilters = items.some(item => {
+  const hasSelectedFilters = items.some((item) => {
     return item.selected;
   });
 
-  const activeItems = items.filter(item => item.selected);
+  const activeItems = items.filter((item) => item.selected);
 
   return (
     <>

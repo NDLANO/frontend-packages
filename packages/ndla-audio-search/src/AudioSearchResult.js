@@ -18,25 +18,14 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export default function AudioSearchResult({
-  audio,
-  fetchAudio,
-  onError,
-  locale,
-  translations,
-  onAudioSelect,
-}) {
+export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <div key={audio.id} {...classes('list-item')}>
       <div {...classes('list-item-inner')}>
         <h2>{audio.title.title}</h2>
         <div {...classes('license')}>
-          {license.rights ? (
-            <LicenseByline licenseRights={license.rights} locale={locale} />
-          ) : (
-            license
-          )}
+          {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
         </div>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>

@@ -53,14 +53,7 @@ export type ListItemProps = {
   subjects?: string[];
 };
 
-const ListItem = ({
-  title,
-  introduction,
-  url,
-  image,
-  imageAlt = '',
-  subjects = [],
-}: ListItemProps) => (
+const ListItem = ({ title, introduction, url, image, imageAlt = '', subjects = [] }: ListItemProps) => (
   <ItemWrapper>
     <SafeLink to={url}>
       {image && <Image src={image} alt={imageAlt} />}
@@ -69,7 +62,7 @@ const ListItem = ({
         <Introduction>{introduction}</Introduction>
         {subjects.length && (
           <Subjects>
-            {subjects.map(subject => (
+            {subjects.map((subject) => (
               <Subject key={subject}>{subject}</Subject>
             ))}
           </Subjects>

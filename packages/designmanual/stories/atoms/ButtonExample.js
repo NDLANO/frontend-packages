@@ -29,13 +29,12 @@ const ButtonExample = () => {
     <div>
       <StoryIntro title="Knapper">
         <p>
-          Knapper er til å klikke på for å navigere på samme side, ikke for å lenke til en annen. De
-          skal altså brukes til interaktivitet på samme side. For å sende brukeren til en annen side
-          brukes vanlig lenke.
+          Knapper er til å klikke på for å navigere på samme side, ikke for å lenke til en annen. De skal altså brukes
+          til interaktivitet på samme side. For å sende brukeren til en annen side brukes vanlig lenke.
         </p>
         <p>
-          Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet,
-          kan fylt knapp benyttes. Som regel bør det ikke brukes mer enn 1 fylt knapp på en side.
+          Knapp med ramme brukes for de fleste knapper, men er det behov for ekstra oppmerksomhet, kan fylt knapp
+          benyttes. Som regel bør det ikke brukes mer enn 1 fylt knapp på en side.
         </p>
       </StoryIntro>
       <StoryBody>

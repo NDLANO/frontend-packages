@@ -54,10 +54,8 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm, t }) => {
         <div>
           <h1>{aboutNDLAVideo.title}</h1>
           <p>{aboutNDLAVideo.description}</p>
-          <Modal
-            size="fullscreen"
-            activateButton={<Button link>{t('ndlaFilm.about.more')}</Button>}>
-            {onClose => (
+          <Modal size="fullscreen" activateButton={<Button link>{t('ndlaFilm.about.more')}</Button>}>
+            {(onClose) => (
               <OneColumn cssModifier="medium">
                 <ModalHeader>
                   <ModalCloseButton onClick={onClose} title="Lukk" />

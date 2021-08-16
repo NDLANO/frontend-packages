@@ -10,7 +10,7 @@ import features from './featureList';
 
 export const generateFeatureChecks = () => {
   return features
-    .map(item => {
+    .map((item) => {
       if (item.test) {
         return `${item.test} || feats.push('${item.feature}');`;
       }

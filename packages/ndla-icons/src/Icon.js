@@ -1,18 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const IconBase = ({
-  children,
-  color,
-  size,
-  style,
-  title,
-  description,
-  width,
-  height,
-  className,
-  ...props
-}) => {
+const IconBase = ({ children, color, size, style, title, description, width, height, className, ...props }) => {
   const computedSize = size || '1em';
   const classes = className ? `c-icon ${className}` : 'c-icon';
   return (

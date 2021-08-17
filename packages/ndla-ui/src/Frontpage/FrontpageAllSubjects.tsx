@@ -71,12 +71,12 @@ const StyledLetterSpacing = styled.span`
 
 type subjectProps = {
   name: string;
-  path: string;
   url?: string;
+  path: string;
   id?: string;
 };
 type categoryProps = {
-  type: string;
+  type?: string;
   name?: string;
   subjects: subjectProps[];
 };

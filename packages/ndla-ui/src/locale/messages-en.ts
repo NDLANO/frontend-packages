@@ -685,8 +685,8 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Nyttige tips til nettundervisning',
-      externalLink: 'https://blogg.ndla.no/nettundervisning/',
+      text: 'En god skolestart',
+      externalLink: 'https://blogg.ndla.no/engodskolestart/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',

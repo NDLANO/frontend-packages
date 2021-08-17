@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
 import { ChevronRight } from '@ndla/icons/common';
-import { colors, spacing, fonts } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts } from '@ndla/core';
 import { openIndexesProps } from '../types';
 
 type StyledAccordionBarProps = {
@@ -82,7 +82,7 @@ const StyledButton = styled.button<ButtonProps>`
           svg {
             width: 16px;
             height: 16px;
-            margin-right: ${spacing.spacingUnit / 8}px;
+            margin-right: ${spacingUnit / 8}px;
           }
         `
       : css`

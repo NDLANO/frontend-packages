@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { spacing, shadows } from '@ndla/core';
+import { spacing, spacingUnit, shadows } from '@ndla/core';
 
 import MovieListItem from './MovieListItem';
 
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 
 const ListWrapper = styled.ul`
   overflow: visible;
-  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${MOVIE_HEIGHT + spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;

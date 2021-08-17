@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
+import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
@@ -38,7 +38,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   background: ${colors.brand.dark};
   overflow: hidden;
   z-index: 0;
-  ${(props) => props.addMargin && `margin-top: ${spacing.spacingUnit * 4}px;`}
+  ${(props) => props.addMargin && `margin-top: ${spacingUnit * 4}px;`}
 
   > div:first-of-type {
     position: relative;
@@ -63,8 +63,8 @@ const StyledFooterHeaderIcon = styled(FooterHeaderIcon)`
   width: ${spacing.large};
   height: ${spacing.large};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    width: ${spacing.spacingUnit * 3}px;
-    height: ${spacing.spacingUnit * 3}px;
+    width: ${spacingUnit * 3}px;
+    height: ${spacingUnit * 3}px;
   }
 `;
 
@@ -80,7 +80,7 @@ const StyledColumns = styled.div`
     flex-direction: row;
     align-items: flex-start;
     > div:first-of-type {
-      padding: ${spacing.normal} ${spacing.spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
+      padding: ${spacing.normal} ${spacingUnit * 1.75}px ${spacing.normal} ${spacing.large};
     }
   }
   ${mq.range({ from: breakpoints.desktop })} {
@@ -104,7 +104,7 @@ const StyledHr = styled.hr`
 `;
 
 const StyledLanguageWrapper = styled.div`
-  margin: ${spacing.large} 0 ${spacing.spacingUnit * 3}px;
+  margin: ${spacing.large} 0 ${spacingUnit * 3}px;
   display: flex;
   align-items: center;
   justify-content: center;

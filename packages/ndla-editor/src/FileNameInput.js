@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
-import { spacing, fonts, colors } from '@ndla/core';
+import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
 import { css } from '@emotion/core';
 import { InformationOutline } from '@ndla/icons/common';
@@ -26,8 +26,8 @@ class InputComponent extends Component {
     if (this.props.usePortal) {
       const rect = this.props.forwardedRef.current.childNodes[this.props.childIndex].firstChild.getBoundingClientRect();
       this.inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
-      this.inputRef.current.style.left = `${rect.left + spacing.spacingUnit * 0.75}px`;
-      this.inputRef.current.style.width = `${rect.width - spacing.spacingUnit}px`;
+      this.inputRef.current.style.left = `${rect.left + spacingUnit * 0.75}px`;
+      this.inputRef.current.style.width = `${rect.width - spacingUnit}px`;
     }
     this.inputRef.current.focus();
     this.inputRef.current.select();

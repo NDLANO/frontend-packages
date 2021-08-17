@@ -13,7 +13,7 @@ import { css } from '@emotion/core';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
-import { spacing, fonts, colors, shadows, animations } from '@ndla/core';
+import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';
 import { CheckboxItem } from '@ndla/forms';
 import FileNameInput from './FileNameInput';
 
@@ -63,7 +63,7 @@ const fileErrorCss = css`
 
 const ListWrapper = styled.ul`
   overflow: visible;
-  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacing.spacingUnit * 0.75}px` : '0')};
+  margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacingUnit * 0.75}px` : '0')};
   padding: 0;
   position: relative;
   list-style: none;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing, animations } from '@ndla/core';
+import { spacing, spacingUnit, animations } from '@ndla/core';
 // @ts-ignore
 import Spinner from '../Spinner';
 
@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
   }
   > div {
     ${animations.fadeIn('1000ms')};
-    transform: translateX(${spacing.spacingUnit * 1.5}px) translateY(-${spacing.xsmall});
+    transform: translateX(${spacingUnit * 1.5}px) translateY(-${spacing.xsmall});
   }
 `;
 

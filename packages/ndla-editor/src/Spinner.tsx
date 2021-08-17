@@ -43,7 +43,7 @@ const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted =
 };
 
 Spinner.propTypes = {
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'nsmall', 'normal', 'medium', 'large', 'spacingUnit']),
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'nsmall', 'normal', 'medium', 'large']),
   margin: PropTypes.string,
   inverted: PropTypes.bool,
 };

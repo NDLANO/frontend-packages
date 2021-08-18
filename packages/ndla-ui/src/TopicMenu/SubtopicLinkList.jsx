@@ -9,12 +9,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Back, ChevronRight } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
 import { Switch } from '@ndla/switch';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { mq, breakpoints, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
+import { withTranslation } from 'react-i18next';
 import { TopicShape } from '../shapes';
 import ContentTypeResult from '../Search/ContentTypeResult';
 import { renderAdditionalIcon } from './TopicMenu';
@@ -248,4 +248,4 @@ SubtopicLinkList.propTypes = {
   lastOpen: PropTypes.bool,
 };
 
-export default injectT(SubtopicLinkList);
+export default withTranslation()(SubtopicLinkList);

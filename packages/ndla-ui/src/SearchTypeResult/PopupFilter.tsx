@@ -8,7 +8,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
@@ -16,6 +15,7 @@ import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { Plus as PlusIcon } from '@ndla/icons/action';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { ToggleItem } from '../Filter';
 
@@ -102,7 +102,8 @@ export type PopupFilterProps = {
   subjectCategories?: SubjectCategoriesProps;
 };
 
-const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilterProps & tType) => {
+const PopupFilter = ({ messages, programmes, subjectCategories }: PopupFilterProps) => {
+  const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
   const [subjectValues, setSubjectValues] = useState<Array<string>>([]);
   const [programmesValues, setProgrammesValues] = useState<Array<string>>([]);
@@ -237,4 +238,4 @@ const PopupFilter = ({ messages, programmes, subjectCategories, t }: PopupFilter
   );
 };
 
-export default injectT(PopupFilter);
+export default PopupFilter;

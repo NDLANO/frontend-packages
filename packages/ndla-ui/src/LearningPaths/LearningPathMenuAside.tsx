@@ -9,11 +9,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
 import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 
 const infoTextCSS = css`
@@ -110,7 +110,7 @@ type Props = {
   };
 };
 
-const LearningPathMenuAside: React.FunctionComponent<Props & tType> = ({
+const LearningPathMenuAside: React.FunctionComponent<Props & WithTranslation> = ({
   lastUpdated,
   learningPathURL,
   copyright,
@@ -138,4 +138,4 @@ const LearningPathMenuAside: React.FunctionComponent<Props & tType> = ({
   </StyledAside>
 );
 
-export default injectT(LearningPathMenuAside);
+export default withTranslation()(LearningPathMenuAside);

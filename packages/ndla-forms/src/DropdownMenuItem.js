@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Check } from '@ndla/icons/editor';
@@ -116,7 +116,8 @@ const StyledItemButton = styled.button`
       `}
 `;
 
-const InfoPart = ({ isSelected, disabledText, t }) => {
+const InfoPart = ({ isSelected, disabledText }) => {
+  const { t } = useTranslation();
   if (isSelected) {
     return (
       <StyledisSelected>
@@ -135,7 +136,7 @@ const InfoPart = ({ isSelected, disabledText, t }) => {
   return null;
 };
 
-function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, ...rest }) {
+function DropdownMenuItem({ disableSelected, item, isSelected, highlighted, ...rest }) {
   return (
     <StyledItemButton
       key={item.id}
@@ -149,9 +150,9 @@ function DropdownMenuItem({ disableSelected, item, isSelected, t, highlighted, .
         <StyledTitle>{item.title}</StyledTitle>
         {item.description && <StyledDescription>{item.description}</StyledDescription>}
       </StyledText>
-      <InfoPart disabledText={item.disabledText} isSelected={isSelected} t={t} />
+      <InfoPart disabledText={item.disabledText} isSelected={isSelected} />
     </StyledItemButton>
   );
 }
 
-export default injectT(DropdownMenuItem);
+export default DropdownMenuItem;

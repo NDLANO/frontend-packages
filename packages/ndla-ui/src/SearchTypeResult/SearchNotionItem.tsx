@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -20,6 +19,7 @@ import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
+import { useTranslation } from 'react-i18next';
 
 type ItemWrapperProps = {
   hasMedia?: boolean;
@@ -118,15 +118,8 @@ export type SearchNotionItemProps = {
   renderMarkdown: (text: React.ReactNode) => string;
 };
 
-const SearchNotionItem = ({
-  title,
-  text,
-  image,
-  media,
-  labels = [],
-  renderMarkdown,
-  t,
-}: SearchNotionItemProps & tType) => {
+const SearchNotionItem = ({ title, text, image, media, labels = [], renderMarkdown }: SearchNotionItemProps) => {
+  const { t } = useTranslation();
   const hasMedia = !!(image || media);
   const ShowMediaButton = ({ type, element }: MediaProps) => {
     return (
@@ -194,4 +187,4 @@ const SearchNotionItem = ({
   );
 };
 
-export default injectT(SearchNotionItem);
+export default SearchNotionItem;

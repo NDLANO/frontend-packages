@@ -8,10 +8,10 @@
 
 import React from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { WithTranslation, withTranslation } from 'react-i18next';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
@@ -82,7 +82,7 @@ type Props = {
   totalCount: number;
   type?: ContentType;
 };
-const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props & tType) => (
+const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props & WithTranslation) => (
   <HeaderWrapper>
     <TypeWrapper>
       {type && <ContentTypeBadge type={type} background size="large" />}
@@ -112,4 +112,4 @@ const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props
     )}
   </HeaderWrapper>
 );
-export default React.memo(injectT(SearchTypeHeader));
+export default React.memo(withTranslation()(SearchTypeHeader));

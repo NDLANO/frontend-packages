@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 // @ts-ignore
@@ -12,6 +11,7 @@ import {
 import Button from '@ndla/button';
 import { colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
+import { useTranslation } from 'react-i18next';
 
 const GroupedGoalsWrapper = styled.div`
   margin: 24px 0 52px;
@@ -195,7 +195,8 @@ const CoreItemText = styled.p`
   line-height: 32px;
 `;
 
-const Item = ({ goal, t }: any) => {
+const Item = ({ goal }: any) => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const labelByType = (type: string) => {
     switch (type) {
@@ -302,7 +303,8 @@ export type ListItemProps = {
   item: ListItemProp;
 };
 
-const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
+const CompetenceItem = ({ item }: ListItemProps) => {
+  const { t } = useTranslation();
   const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
   switch (type) {
     case 'competenceGoals':
@@ -316,7 +318,7 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
                 {group.elements.length > 0 && (
                   <Goals>
                     {group.elements.map((goal: any) => (
-                      <Item key={goal.id} goal={goal} t={t} />
+                      <Item key={goal.id} goal={goal} />
                     ))}
                   </Goals>
                 )}
@@ -346,4 +348,4 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
   }
 };
 
-export default injectT(CompetenceItem);
+export default CompetenceItem;

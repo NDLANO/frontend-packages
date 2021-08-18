@@ -30,7 +30,6 @@
   "dependencies": {
     "@ndla/button": "^0.3.57",
     "@ndla/core": "^0.6.40",
-    "@ndla/i18n": "^0.5.6",
     "@ndla/icons": "^0.7.8",
     "@ndla/util": "^0.4.8",
     "@types/react-syntax-highlighter": "^11.0.4",

@@ -19,8 +19,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.6.40",
-    "@ndla/i18n": "^0.5.6"
+    "@ndla/core": "^0.6.40"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

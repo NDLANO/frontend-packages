@@ -12,8 +12,8 @@ import styled from '@emotion/styled';
 import { ChevronDown } from '@ndla/icons/common';
 // @ts-ignore
 import Button from '@ndla/button';
-import { injectT, tType } from '@ndla/i18n';
 import { spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 
 const ResultNav = styled.div`
   font-size: 14px;
@@ -42,7 +42,8 @@ export type PaginationType = {
   toCount: number;
 };
 
-const ResultNavigation = ({ onShowMore, totalCount, fromCount = 1, toCount, t }: PaginationType & tType) => {
+const ResultNavigation = ({ onShowMore, totalCount, fromCount = 1, toCount }: PaginationType) => {
+  const { t } = useTranslation();
   const isMore = toCount < totalCount;
   return (
     <ResultNav>
@@ -62,4 +63,4 @@ const ResultNavigation = ({ onShowMore, totalCount, fromCount = 1, toCount, t }:
   );
 };
 
-export default injectT(ResultNavigation);
+export default ResultNavigation;

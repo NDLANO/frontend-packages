@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 
 const NotionHeaderWrapper = styled.div`
@@ -56,20 +56,23 @@ export const NotionHeaderWithoutExitButton = ({ title, subTitle }) => (
   <NotionHeaderWrapper>{notionTitle(title, subTitle)}</NotionHeaderWrapper>
 );
 
-const NotionHeader = injectT(({ title, subTitle, onClose, t }) => (
-  <NotionHeaderWrapper>
-    {notionTitle(title, subTitle)}
-    {onClose ? (
-      <button type="button" onClick={onClose}>
-        {t('notions.closeNotion')}
-      </button>
-    ) : (
-      <button type="button" data-notion-close>
-        {t('notions.closeNotion')}
-      </button>
-    )}
-  </NotionHeaderWrapper>
-));
+const NotionHeader = ({ title, subTitle, onClose }) => {
+  const { t } = useTranslation();
+  return (
+    <NotionHeaderWrapper>
+      {notionTitle(title, subTitle)}
+      {onClose ? (
+        <button type="button" onClick={onClose}>
+          {t('notions.closeNotion')}
+        </button>
+      ) : (
+        <button type="button" data-notion-close>
+          {t('notions.closeNotion')}
+        </button>
+      )}
+    </NotionHeaderWrapper>
+  );
+};
 
 NotionHeader.propTypes = {
   title: PropTypes.string.isRequired,

@@ -7,28 +7,25 @@
  */
 
 import React from 'react';
-import IntlProvider, { formatNestedMessages } from '@ndla/i18n';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import { i18nInstance } from '../i18n';
 import { Locale } from '../types';
-
-import messagesNB from './messages-nb';
-import messagesNN from './messages-nn';
-import messagesEN from './messages-en';
-
-const messages = {
-  nb: formatNestedMessages(messagesNB),
-  nn: formatNestedMessages(messagesNN),
-  en: formatNestedMessages(messagesEN),
-};
 
 type Props = {
   locale: Locale;
   children: React.ReactNode;
 };
 
+const InitI18nWrapper = ({ locale, children }: Props) => {
+  const { i18n } = useTranslation();
+  i18n.language = locale;
+  return <>{children}</>;
+};
+
 const LocaleProvider = ({ locale, children }: Props) => (
-  <IntlProvider locale={locale} messages={messages[locale]}>
-    {children}
-  </IntlProvider>
+  <I18nextProvider i18n={i18nInstance}>
+    <InitI18nWrapper locale={locale}>{children}</InitI18nWrapper>
+  </I18nextProvider>
 );
 
 export default LocaleProvider;

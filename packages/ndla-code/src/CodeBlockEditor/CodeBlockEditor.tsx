@@ -8,7 +8,7 @@
 
 import React, { createRef, FC, useState } from 'react';
 import Editor from 'react-simple-code-editor';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { Code } from '@ndla/icons/editor';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -71,7 +71,8 @@ interface CodeContentState {
   format: string;
 }
 
-const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null }) => {
+const CodeBlockEditor: FC<Props> = ({ onSave, onAbort, content = null }) => {
+  const { t } = useTranslation();
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState<CodeContentState>({
     code: content ? content.code : '',
@@ -166,4 +167,4 @@ const CodeBlockEditor: FC<Props & tType> = ({ onSave, onAbort, t, content = null
   );
 };
 
-export default injectT(CodeBlockEditor);
+export default CodeBlockEditor;

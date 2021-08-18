@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -127,8 +127,8 @@ export const NavigationTopicAbout = ({
   invertedStyle,
   renderMarkdown,
   children,
-  t,
-}: Props & tType) => {
+}: Props) => {
+  const { t } = useTranslation();
   return (
     <StyledWrapper data-testid="nav-topic-about">
       <StyledH1 invertedStyle={invertedStyle}>
@@ -171,4 +171,4 @@ export const NavigationTopicAbout = ({
   );
 };
 
-export default injectT(NavigationTopicAbout);
+export default NavigationTopicAbout;

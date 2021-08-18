@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
 import { breakpoints, mq } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
 import FrontpageAllSubjects, { subjectsProps } from './FrontpageAllSubjects';
 
@@ -91,7 +91,8 @@ type Props = {
   subjectCategories: subjectsProps['categories'];
 };
 
-const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tType) => {
+const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
+  const { t } = useTranslation();
   const [showSubjects, setShowSubjects] = useState(false);
   const isWindowContext = typeof window !== 'undefined';
 
@@ -137,4 +138,4 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tT
   );
 };
 
-export default injectT(FrontpageProgramMenu);
+export default FrontpageProgramMenu;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -7,6 +6,7 @@ import Tooltip from '@ndla/tooltip';
 // @ts-ignore
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultType, Resource } from '../types';
@@ -57,7 +57,7 @@ type Props = {
   animateList?: number;
 };
 
-const ContentTypeResult: React.FC<Props & tType> = ({
+const ContentTypeResult: React.FC<Props> = ({
   contentTypeResult,
   onNavigate,
   defaultCount,
@@ -68,8 +68,8 @@ const ContentTypeResult: React.FC<Props & tType> = ({
   keyboardPathNavigation,
   inMenu,
   animateList,
-  t,
 }) => {
+  const { t } = useTranslation();
   const [showAll, toggleShowAll] = useState(false);
   const showAllRef = useRef<HTMLLIElement>(null);
 
@@ -163,4 +163,4 @@ const ContentTypeResult: React.FC<Props & tType> = ({
   );
 };
 
-export default injectT(ContentTypeResult);
+export default ContentTypeResult;

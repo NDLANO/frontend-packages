@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
+import { withTranslation } from 'react-i18next';
 
 import ListItem from './ListItem';
 
@@ -346,4 +346,4 @@ ListView.defaultProps = {
   selectedLetter: '',
 };
 
-export default injectT(ListView);
+export default withTranslation()(ListView);

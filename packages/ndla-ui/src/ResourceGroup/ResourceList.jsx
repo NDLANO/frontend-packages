@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import { Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
@@ -22,25 +22,27 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ResourceLink = ({ t, icon, children, active, component: Component, ...rest }) => (
-  <Component
-    {...classes('link o-flag o-flag--top', '', {
-      active,
-    })}
-    {...rest}>
-    <div {...classes('icon o-flag__img')}>{icon}</div>
-    <h2 {...classes('title')}>
-      <span>
-        {children}
-        {active && <small>{t('resource.youAreHere')}</small>}
-      </span>
-    </h2>
-  </Component>
-);
+const ResourceLink = ({ icon, children, active, component: Component, ...rest }) => {
+  const { t } = useTranslation();
+  return (
+    <Component
+      {...classes('link o-flag o-flag--top', '', {
+        active,
+      })}
+      {...rest}>
+      <div {...classes('icon o-flag__img')}>{icon}</div>
+      <h2 {...classes('title')}>
+        <span>
+          {children}
+          {active && <small>{t('resource.youAreHere')}</small>}
+        </span>
+      </h2>
+    </Component>
+  );
+};
 
 ResourceLink.propTypes = {
   children: PropTypes.node.isRequired,
-  t: PropTypes.func.isRequired,
   icon: PropTypes.node.isRequired,
   active: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
@@ -50,7 +52,8 @@ ResourceLink.defaultProps = {
   component: SafeLink,
 };
 
-const Resource = ({ t, resource, icon, resourceToLinkProps, showAdditionalResources, id, contentTypeDescription }) => {
+const Resource = ({ resource, icon, resourceToLinkProps, showAdditionalResources, id, contentTypeDescription }) => {
+  const { t } = useTranslation();
   const hidden = resource.additional ? !showAdditionalResources : false;
   if (icon === undefined) {
     icon = <ContentTypeBadge type={resource.contentType} background border={false} />;
@@ -107,9 +110,8 @@ Resource.propTypes = {
   icon: PropTypes.node,
 };
 
-injectT(Resource);
-
-const ResourceList = ({ resources, onClick, type, title, showAdditionalResources, t, ...rest }) => {
+const ResourceList = ({ resources, onClick, type, title, showAdditionalResources, ...rest }) => {
+  const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
     resources.filter((res) => res.additional).length > 0 &&
@@ -157,8 +159,7 @@ ResourceList.propTypes = {
   resourceToLinkProps: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  t: PropTypes.func.isRequired,
   icon: PropTypes.node,
 };
 
-export default injectT(ResourceList);
+export default ResourceList;

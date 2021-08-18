@@ -191,6 +191,11 @@ export const topicMenu = [
         name: 'Idéutvikling',
         contentUri: null,
         contentTypeResults: contentTypeResultsMenu,
+        metadata: {
+          customFields: {
+            'topic-resources': 'ungrouped',
+          },
+        },
       },
       {
         id: 'urn:topic:169397',

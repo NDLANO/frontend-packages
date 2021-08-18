@@ -21,25 +21,22 @@ const ArticleAdditional = () => (
     <Article
       article={{
         title: 'Artikkel Tilleggsstoff?',
-        introduction:
-          'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+        introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
         published: '24.04.2018',
         content: () => (
           <>
             <p>
-              Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere
-              filmen. Derfor er du avhengig av at noen tenner på idéen din og bestemmer seg for å
-              bruke ressurser på nettopp dette prosjektet.
+              Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du
+              avhengig av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette
+              prosjektet.
             </p>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
-              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
-              se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av
+              noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <table className="c-table o-wrapper--wide">
               <tbody>
@@ -67,10 +64,7 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>en av journalistenes mening om en ny film, bok, konsert e.l. </li>
-                      <li>
-                        skal være en bruksanvisning slik at målgruppen vet om produktet er noe for
-                        dem
-                      </li>
+                      <li>skal være en bruksanvisning slik at målgruppen vet om produktet er noe for dem</li>
                     </ul>
                   </td>
                 </tr>
@@ -89,10 +83,7 @@ const ArticleAdditional = () => (
                   <td>Kommentar og kronikk</td>
                   <td>
                     <ul>
-                      <li>
-                        kan skrives av en i redaksjonen, men gjerne også av en fagperson utenfor
-                        redaksjonen{' '}
-                      </li>
+                      <li>kan skrives av en i redaksjonen, men gjerne også av en fagperson utenfor redaksjonen </li>
                       <li>skal gi dybdekunnskap om et tema </li>
                     </ul>
                   </td>
@@ -136,9 +127,7 @@ const ArticleAdditional = () => (
                   <td>Notis</td>
                   <td>
                     <ul>
-                      <li>
-                        kort nyhetsmelding som gir grunnleggende informasjon om en aktuell hendelse
-                      </li>
+                      <li>kort nyhetsmelding som gir grunnleggende informasjon om en aktuell hendelse</li>
                       <li>gjerne bare 10–15 setninger</li>
                     </ul>
                   </td>
@@ -151,8 +140,7 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        hører til i objektiv-kategorien, men journalisten bruker alle sanser og
-                        litterære virkemidler{' '}
+                        hører til i objektiv-kategorien, men journalisten bruker alle sanser og litterære virkemidler{' '}
                       </li>
                       <li>går i dybden, gir leseren en større forståelse av et tema</li>
                     </ul>
@@ -164,8 +152,7 @@ const ArticleAdditional = () => (
                   <td>
                     <ul>
                       <li>
-                        hører til i objektiv-kategorien, men journalisten bruker alle sanser og
-                        litterære virkemidler{' '}
+                        hører til i objektiv-kategorien, men journalisten bruker alle sanser og litterære virkemidler{' '}
                       </li>
                       <li>gir leseren dybdekunnskap om en aktuell person i nyhetsbildet</li>
                     </ul>
@@ -174,25 +161,19 @@ const ArticleAdditional = () => (
               </tbody>
             </table>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
-              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
-              se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av
+              noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
           </>
         ),
         footNotes: '',
         copyright: {
           license: { license: 'CC-BY-SA-4.0' },
-          creators: [
-            { name: 'Cecilie Isaksen Eftedal' },
-            { name: 'Siv Mundal' },
-            { name: 'Pål Frønsdal' },
-          ],
+          creators: [{ name: 'Cecilie Isaksen Eftedal' }, { name: 'Siv Mundal' }, { name: 'Pål Frønsdal' }],
           rightsholders: [{ name: 'Riksarkivet' }],
         },
       }}
@@ -209,8 +190,7 @@ const ArticleAdditional = () => (
           {
             id: 1,
             title: 'And',
-            text:
-              'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
+            text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
             image: {
               url: 'https://api.ndla.no/image-api/raw/id/40164?width=660',
               alt: 'And',
@@ -234,7 +214,7 @@ const ArticleAdditional = () => (
             authors: [{ name: 'Fornavn Etternavn' }],
             license: 'CC-BY-SA-4.0',
             linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
-            onReferenceClick: e => console.log(e), // eslint-disable-line no-console
+            onReferenceClick: (e) => console.log(e), // eslint-disable-line no-console
           },
         ],
         related: [

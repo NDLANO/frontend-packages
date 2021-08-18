@@ -82,9 +82,7 @@ const Notion = ({
     <NotionContainer>
       <div>
         {HTMLReactParser(
-          renderMarkdown
-            ? renderMarkdown(`**${title}** &ndash; ${text}`)
-            : `<b>${title}</b> \u2013 ${text}`,
+          renderMarkdown ? renderMarkdown(`**${title}** &ndash; ${text}`) : `<b>${title}</b> \u2013 ${text}`,
         )}
       </div>
       {!!media && media}
@@ -93,7 +91,7 @@ const Notion = ({
           <p>
             {t('article.writtenBy', {
               authors: joinArrayWithConjunction(
-                authors.map(author => author.name),
+                authors.map((author) => author.name),
                 {
                   conjunction: ` ${t('article.conjunction')} `,
                 },

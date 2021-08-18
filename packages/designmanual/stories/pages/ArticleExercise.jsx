@@ -23,52 +23,41 @@ const ArticleExercise = () => (
     <Article
       article={{
         title: 'Artikkel fagstoff',
-        introduction:
-          'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
+        introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
         published: '24.04.2018',
         content: () => (
           <>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
-              eller kunde. I løpet av noen få minutter skal du få andre til å{' '}
-              <a href="#test">tenne på idéen din og se potensialet</a> i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av
+              noen få minutter skal du få andre til å <a href="#test">tenne på idéen din og se potensialet</a> i den.
             </p>
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
-              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
-              se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av
+              noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
             <FigureImage alt="" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
             <p>
-              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner
-              eller kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og
-              se potensialet i den.
+              En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av
+              noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
             </p>
             <p>
-              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-              historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-              eventuelt jobber sammen med i klassen.
+              Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
+              filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
             </p>
           </>
         ),
         footNotes: '',
         copyright: {
           license: { license: 'CC-BY-SA-4.0' },
-          creators: [
-            { name: 'Cecilie Isaksen Eftedal' },
-            { name: 'Siv Mundal' },
-            { name: 'Pål Frønsdal' },
-          ],
+          creators: [{ name: 'Cecilie Isaksen Eftedal' }, { name: 'Siv Mundal' }, { name: 'Pål Frønsdal' }],
           rightsholders: [{ name: 'Riksarkivet' }],
         },
       }}
@@ -85,8 +74,7 @@ const ArticleExercise = () => (
           {
             id: 1,
             title: 'And',
-            text:
-              'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
+            text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
             image: {
               url: 'https://api.ndla.no/image-api/raw/id/40164?width=660',
               alt: 'And',
@@ -110,7 +98,7 @@ const ArticleExercise = () => (
             authors: [{ name: 'Fornavn Etternavn' }],
             license: 'CC-BY-SA-4.0',
             linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
-            onReferenceClick: e => console.log(e), // eslint-disable-line no-console
+            onReferenceClick: (e) => console.log(e), // eslint-disable-line no-console
           },
         ],
         related: [

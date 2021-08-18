@@ -34,13 +34,11 @@ type ArticleWrapperProps = {
   children: ReactNode;
 };
 
-export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(
-  ({ children, modifier, id }, ref) => (
-    <article id={id} {...classes(undefined, modifier)} ref={ref}>
-      {children}
-    </article>
-  ),
-);
+export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
+  <article id={id} {...classes(undefined, modifier)} ref={ref}>
+    {children}
+  </article>
+));
 
 type ArticleTitleProps = {
   icon?: ReactNode;
@@ -154,8 +152,7 @@ export const Article = ({
       const handler = () => {
         if (wrapperRef && wrapperRef.current) {
           const offset =
-            wrapperRef.current.getBoundingClientRect().left +
-            wrapperRef.current.getBoundingClientRect().width;
+            wrapperRef.current.getBoundingClientRect().left + wrapperRef.current.getBoundingClientRect().width;
           setArticlePositionRight(offset);
         }
       };
@@ -186,15 +183,11 @@ export const Article = ({
     <div ref={wrapperRef}>
       <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
         <LayoutItem layout="center">
-          <ArticleHeaderWrapper
-            competenceGoals={competenceGoals}
-            competenceGoalTypes={competenceGoalTypes}>
+          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
             <ArticleTitle icon={icon} label={messages.label}>
               {title}
             </ArticleTitle>
-            <ArticleIntroduction renderMarkdown={renderMarkdown}>
-              {introduction}
-            </ArticleIntroduction>
+            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">

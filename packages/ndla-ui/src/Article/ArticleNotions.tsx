@@ -194,10 +194,7 @@ export const ArticleNotions = ({
     <ArticleNotionsContainer>
       <Modal
         activateButton={
-          <NotionsTrigger
-            role="button"
-            aria-label={t('article.notionsPrompt')}
-            style={{ left: leftOffset }}>
+          <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
             <span>{t('article.notionsPrompt')}</span>
@@ -216,7 +213,7 @@ export const ArticleNotions = ({
                 <h1>{t('article.notionsPrompt')}</h1>
               </ModalHeadingContainer>
               <NotionsContainer>
-                {notions.map(notion => (
+                {notions.map((notion) => (
                   <Notion
                     key={notion.id}
                     locale={locale}

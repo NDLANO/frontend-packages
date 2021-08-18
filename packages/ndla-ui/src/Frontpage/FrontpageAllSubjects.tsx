@@ -71,11 +71,13 @@ const StyledLetterSpacing = styled.span`
 
 type subjectProps = {
   name: string;
-  url: string;
+  url?: string;
+  path: string;
   id?: string;
 };
 type categoryProps = {
-  name: string;
+  type?: string;
+  name?: string;
   subjects: subjectProps[];
 };
 
@@ -156,7 +158,7 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.url}>
+                      to={subject.url || subject.path}>
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />
@@ -186,7 +188,7 @@ const FrontpageAllSubjects = ({
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);
     data.push({
-      title: category.name,
+      title: category.name || t(`subjectCategories.${category.type}`),
       content: renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
     });
   });

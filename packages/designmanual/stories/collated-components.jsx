@@ -492,8 +492,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser/launchpad">
         <p>
           Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om tilleggsstoff-filteret aktiveres, vil
-          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon, og mindre mettet
-          bakgrunnsfarge.{' '}
+          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon.
         </p>
         <p>
           Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren aktiverer

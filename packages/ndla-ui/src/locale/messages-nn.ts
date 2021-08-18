@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes } = constants;
+export const { contentTypes, subjectCategories } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -44,6 +44,13 @@ const messages = {
     embed: 'Sett inn',
     notSupported:
       'Det fungerte ikkje å setje inn innhaldet automatisk. Kopier kjeldekoden under for å setje han inn på sida di.',
+  },
+  subjectCategories: {
+    [subjectCategories.ARCHIVE_SUBJECTS]: 'LK06-fag',
+    [subjectCategories.BETA_SUBJECTS]: 'Betafag',
+    [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
+    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
+    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {{query}}',
@@ -677,8 +684,8 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Nyttige tips til nettundervisning',
-      externalLink: 'https://blogg.ndla.no/nettundervisning/',
+      text: 'Ein god skulestart',
+      externalLink: 'https://blogg.ndla.no/engodskolestart/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',

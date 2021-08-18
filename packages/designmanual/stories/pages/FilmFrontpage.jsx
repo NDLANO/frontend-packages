@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { spacing } from '@ndla/core';
+import { spacing, spacingUnit } from '@ndla/core';
 import { CarouselAutosize } from '@ndla/carousel';
 import { withTranslation } from 'react-i18next';
 import {
@@ -56,49 +56,49 @@ class FilmFrontpage extends Component {
           {
             until: 'mobile',
             columnsPrSlide: 1,
-            distanceBetweenItems: spacing.spacingUnit / 2,
-            margin: spacing.spacingUnit,
+            distanceBetweenItems: spacingUnit / 2,
+            margin: spacingUnit,
             arrowOffset: 13,
           },
           {
             until: 'mobileWide',
             columnsPrSlide: 2,
-            distanceBetweenItems: spacing.spacingUnit / 2,
-            margin: spacing.spacingUnit,
+            distanceBetweenItems: spacingUnit / 2,
+            margin: spacingUnit,
             arrowOffset: 13,
           },
           {
             until: 'tabletWide',
             columnsPrSlide: 3,
-            distanceBetweenItems: spacing.spacingUnit / 2,
-            margin: spacing.spacingUnit,
+            distanceBetweenItems: spacingUnit / 2,
+            margin: spacingUnit,
             arrowOffset: 13,
           },
           {
             until: 'desktop',
             columnsPrSlide: 4,
-            distanceBetweenItems: spacing.spacingUnit,
-            margin: spacing.spacingUnit * 2,
+            distanceBetweenItems: spacingUnit,
+            margin: spacingUnit * 2,
             arrowOffset: 0,
           },
           {
             until: 'wide',
             columnsPrSlide: 4,
-            distanceBetweenItems: spacing.spacingUnit,
-            margin: spacing.spacingUnit * 2,
+            distanceBetweenItems: spacingUnit,
+            margin: spacingUnit * 2,
             arrowOffset: 0,
           },
           {
             until: 'ultraWide',
             columnsPrSlide: 4,
-            distanceBetweenItems: spacing.spacingUnit,
-            margin: spacing.spacingUnit * 3.5,
+            distanceBetweenItems: spacingUnit,
+            margin: spacingUnit * 3.5,
             arrowOffset: 0,
           },
           {
             columnsPrSlide: 6,
-            distanceBetweenItems: spacing.spacingUnit,
-            margin: spacing.spacingUnit * 3.5,
+            distanceBetweenItems: spacingUnit,
+            margin: spacingUnit * 3.5,
             arrowOffset: 0,
           },
         ]}>
@@ -162,7 +162,7 @@ class FilmFrontpage extends Component {
           id={ARIA_FILMCATEGORY_ID}
           ref={this.movieListRef}
           css={css`
-            margin: ${spacing.spacingUnit * 3}px 0 ${spacing.spacingUnit * 4}px;
+            margin: ${spacingUnit * 3}px 0 ${spacingUnit * 4}px;
           `}>
           {showingAll ? <AllMoviesAlphabetically movies={moviesByType} /> : this.renderMovieGrid({ resourceTypeName })}
         </div>

@@ -11,7 +11,7 @@ import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import throttle from 'lodash/throttle';
-import { breakpoints, mq, spacing, colors, fonts, animations } from '@ndla/core';
+import { breakpoints, mq, spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
@@ -21,10 +21,10 @@ const IMAGE_WIDTH = 143;
 
 const StyledNewLetter = styled.h2`
   color: #fff;
-  margin: ${spacing.large} 0 ${spacing.spacingUnit * 0.75}px;
+  margin: ${spacing.large} 0 ${spacingUnit * 0.75}px;
   ${fonts.sizes(26, 1.1)};
   ${mq.range({ from: breakpoints.tablet })} {
-    text-indent: ${spacing.spacingUnit * 0.75}px;
+    text-indent: ${spacingUnit * 0.75}px;
   }
   &:after {
     content: '';
@@ -49,7 +49,7 @@ type MovieItemProps = {
 };
 
 const MovieItem = styled.div<MovieItemProps>`
-  margin: 0 0 ${spacing.spacingUnit * 0.75}px;
+  margin: 0 0 ${spacingUnit * 0.75}px;
   display: inline-flex;
   &:last-child {
     margin-bottom: ${spacing.large};
@@ -87,9 +87,9 @@ const MovieImage = styled.div<movieImageType>`
     `}
   background-size: cover;
   background-position: center center;
-  margin: 0 ${spacing.spacingUnit * 0.75}px 0 0;
+  margin: 0 ${spacingUnit * 0.75}px 0 0;
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacing.spacingUnit * 0.75}px;
+    margin-left: ${spacingUnit * 0.75}px;
     width: ${IMAGE_WIDTH}px;
     height: 90px;
   }

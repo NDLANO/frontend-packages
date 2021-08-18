@@ -67,20 +67,20 @@ const CarouselExample = () => (
   <ComponentInfo
     reactCode={`
       import  { Carousel, CarouselAutosize } from '@ndla/carousel';
-      import { spacing } from '@ndla/core';
+      import { spacing, spacingUnit } from '@ndla/core';
 
       <CarouselAutosize
         breakpoints={[
           {
             until: 'tablet',
             columnsPrSlide: 2,
-            distanceBetweenItems: spacing.spacingUnit,
-            arrowOffset: spacing.spacingUnit / 2,
+            distanceBetweenItems: spacingUnit,
+            arrowOffset: spacingUnit / 2,
           },
           {
             columnsPrSlide: 4,
-            distanceBetweenItems: spacing.spacingUnit,
-            arrowOffset: spacing.spacingUnit / 2,
+            distanceBetweenItems: spacingUnit,
+            arrowOffset: spacingUnit / 2,
           },
         ]}
       >

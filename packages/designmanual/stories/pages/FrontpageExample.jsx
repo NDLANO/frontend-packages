@@ -19,7 +19,7 @@ import {
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
-import BlogExampleImage2 from '../../images/blog/studereute.jpg';
+import BlogExampleImage2 from '../../images/blog/en-god-skolestart.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';

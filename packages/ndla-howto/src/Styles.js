@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors, fonts, mq, breakpoints } from '@ndla/core';
+import { spacing, spacingUnit, colors, fonts, mq, breakpoints } from '@ndla/core';
 
 const gridPush = css`
   ${mq.range({ from: breakpoints.tabletWide })} {
@@ -14,8 +14,8 @@ export const PushGrid = styled.div`
 `;
 
 export const Wrapper = styled.section`
-  margin: ${spacing.large} auto ${spacing.spacingUnit * 4}px;
-  max-width: calc(100vw - ${spacing.spacingUnit * 4}px);
+  margin: ${spacing.large} auto ${spacingUnit * 4}px;
+  max-width: calc(100vw - ${spacingUnit * 4}px);
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 800px;
   }

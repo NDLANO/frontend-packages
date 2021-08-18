@@ -9,14 +9,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, breakpoints, mq } from '@ndla/core';
+import { spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
 
 type PropStyledWrapper = {
   invertedStyle?: boolean;
 };
 
 const StyledWrapper = styled.section<PropStyledWrapper>`
-  max-width: ${1402 + spacing.spacingUnit}px;
+  max-width: ${1402 + spacingUnit}px;
   padding: 0 ${spacing.normal};
   margin: 0 auto;
   .o-wrapper {

@@ -7,10 +7,9 @@
  */
 
 import SlateBlockMenu from './SlateBlockMenu';
-import Spinner from './Spinner';
 import Structure from './structure/Structure';
 import FileListEditor from './FileListEditor';
 import MovieList from './ndlaFilm/MovieList';
 import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
-export { SlateBlockMenu, Structure, Spinner, MovieList, NdlaFilmThemeEditorModal, FileListEditor };
+export { SlateBlockMenu, Structure, MovieList, NdlaFilmThemeEditorModal, FileListEditor };

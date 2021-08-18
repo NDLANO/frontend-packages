@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, mq, breakpoints } from '@ndla/core';
+import { colors, spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import FrontpageHeaderIllustration from './illustrations/FrontpageHeaderIllustration';
@@ -23,7 +23,7 @@ const StyledHeader = styled.div`
 
 const StyledHeaderWrapper = styled.header`
   background: ${colors.brand.lighter};
-  margin-bottom: ${spacing.spacingUnit * 3}px;
+  margin-bottom: ${spacingUnit * 3}px;
 `;
 
 const StyledLogo = styled(SafeLink)`

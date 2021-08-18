@@ -10,8 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
-import { colors, spacing, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -50,7 +50,7 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     padding: 0 0 ${spacing.medium} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacing.spacingUnit + BORDER_WIDTH / 2}px;
+    margin-left: ${spacingUnit + BORDER_WIDTH / 2}px;
     margin-top: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {

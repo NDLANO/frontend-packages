@@ -304,31 +304,38 @@ export const TopicMenu = ({
                 lastOpen={!hasExpandedSubtopics}
               />
             )}
-            {currentlyExpandedSubTopics.map((subTopic, index) => (
-              <SubtopicLinkList
-                key={subTopic.id}
-                classes={classes}
-                className={classes('section', ['sub-topic', 'no-border']).className}
-                closeMenu={closeMenu}
-                topic={subTopic}
-                backLabel={
-                  index === 0
-                    ? topics.find((topic) => topic.id === expandedTopicId).name
-                    : currentlyExpandedSubTopics[index - 1].name
-                }
-                toTopic={toTopic}
-                expandedSubtopicId={
-                  currentlyExpandedSubTopics[index + 1] ? currentlyExpandedSubTopics[index + 1].id : 'no way'
-                }
-                onSubtopicExpand={(id) => {
-                  handleSubtopicExpand(id, index + 1);
-                }}
-                onGoBack={handleOnGoBack}
-                resourceToLinkProps={resourceToLinkProps}
-                lastOpen={sliderCounter === index + 2}
-                defaultCount={defaultCount}
-              />
-            ))}
+
+            {currentlyExpandedSubTopics.map((subTopic, index) => {
+              const { metadata } = subTopic;
+              const isUngrouped = metadata?.customFields['topic-resources'] === 'ungrouped' || false;
+
+              return (
+                <SubtopicLinkList
+                  isUngrouped={isUngrouped}
+                  key={subTopic.id}
+                  classes={classes}
+                  className={classes('section', ['sub-topic', 'no-border']).className}
+                  closeMenu={closeMenu}
+                  topic={subTopic}
+                  backLabel={
+                    index === 0
+                      ? topics.find((topic) => topic.id === expandedTopicId).name
+                      : currentlyExpandedSubTopics[index - 1].name
+                  }
+                  toTopic={toTopic}
+                  expandedSubtopicId={
+                    currentlyExpandedSubTopics[index + 1] ? currentlyExpandedSubTopics[index + 1].id : 'no way'
+                  }
+                  onSubtopicExpand={(id) => {
+                    handleSubtopicExpand(id, index + 1);
+                  }}
+                  onGoBack={handleOnGoBack}
+                  resourceToLinkProps={resourceToLinkProps}
+                  lastOpen={sliderCounter === index + 2}
+                  defaultCount={defaultCount}
+                />
+              );
+            })}
           </div>
         )}
       </div>

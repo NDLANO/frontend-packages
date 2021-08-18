@@ -76,7 +76,7 @@ type ArticleIntroductionProps = {
 
 export const ArticleIntroduction = ({
   children,
-  renderMarkdown = text => {
+  renderMarkdown = (text) => {
     return text;
   },
 }: ArticleIntroductionProps) => {

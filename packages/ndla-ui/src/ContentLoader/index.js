@@ -45,28 +45,13 @@ const ContentLoader = ({
 
         <linearGradient id={idGradient}>
           <stop offset="0%" stopColor={primaryColor}>
-            <animate
-              attributeName="offset"
-              values="-2; 1"
-              dur={`${speed}s`}
-              repeatCount="indefinite"
-            />
+            <animate attributeName="offset" values="-2; 1" dur={`${speed}s`} repeatCount="indefinite" />
           </stop>
           <stop offset="50%" stopColor={secondaryColor}>
-            <animate
-              attributeName="offset"
-              values="-1.5; 1.5"
-              dur={`${speed}s`}
-              repeatCount="indefinite"
-            />
+            <animate attributeName="offset" values="-1.5; 1.5" dur={`${speed}s`} repeatCount="indefinite" />
           </stop>
           <stop offset="100%" stopColor={primaryColor}>
-            <animate
-              attributeName="offset"
-              values="-1; 2"
-              dur={`${speed}s`}
-              repeatCount="indefinite"
-            />
+            <animate attributeName="offset" values="-1; 2" dur={`${speed}s`} repeatCount="indefinite" />
           </stop>
         </linearGradient>
       </defs>

@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const BlocksDark = (props: Props) => (
-  <Icon
-    title="BlocksDark"
-    viewBox="0 0 242 282"
-    data-license="CC-BY 4.0"
-    data-source="Labs."
-    {...props}>
+  <Icon title="BlocksDark" viewBox="0 0 242 282" data-license="CC-BY 4.0" data-source="Labs." {...props}>
     <g>
       <title>Blokker</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
@@ -30,10 +25,7 @@ const BlocksDark = (props: Props) => (
               fill="#FFFFFF"
               points="1.9 70.6 61.2 36.5 120.9 70.6 121.1 141.8 179.8 174.9 240.1 140.3 240.1 211.2 121.1 279 1.9 209.9 1.9 126.6"
             />
-            <polygon
-              fill="#E7D2FC"
-              points="121 3.1 240.1 71.6 240.1 141.4 180.8 175.4 121 141.4 121 71.9 61.9 38.1"
-            />
+            <polygon fill="#E7D2FC" points="121 3.1 240.1 71.6 240.1 141.4 180.8 175.4 121 141.4 121 71.9 61.9 38.1" />
             <line x1="179.8" y1="173.9" x2="179.8" y2="106.6" />
             <polygon points="121.9 140.8 121.9 140.9 122 140.9" />
             <polygon points="181.8 106.6 181.8 173.5 238.9 140.5 238.9 73.6" />

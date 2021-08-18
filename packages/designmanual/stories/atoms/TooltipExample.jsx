@@ -37,8 +37,8 @@ const TooltipExample = () => (
     status={2}
     messages={['Sjekk Aria før lansering!']}>
     <p>
-      Wrappes rundt elementer hvor man vil ha en enkel tooltip-tekst ved fokus / hover events. Skal
-      tilpasse seg nettleservindu ved behov. Ignoreres av mobil / tablets
+      Wrappes rundt elementer hvor man vil ha en enkel tooltip-tekst ved fokus / hover events. Skal tilpasse seg
+      nettleservindu ved behov. Ignoreres av mobil / tablets
     </p>
     <h3>Vanlig tooltip:</h3>
     <Tooltip tooltip="Eksempel basic">

@@ -23,11 +23,11 @@ const SelectWrapper = styled.select`
   -moz-appearance: none;
   appearance: none;
   transition: background-color 200ms ease;
-  background: url('data:image/svg+xml,%3Csvg fill="${
-    colors.text.primary
-  }" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design"%3E%3Cpath d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /%3E%3C/svg%3E')
+  background: url('data:image/svg+xml,%3Csvg fill="${colors.text
+      .primary}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" data-license="Apache License 2.0" data-source="Material Design"%3E%3Cpath d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /%3E%3C/svg%3E')
     calc(100% - 11px) / 30px no-repeat ${colors.brand.lighter};
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: ${colors.brand.light};
   }
 `;

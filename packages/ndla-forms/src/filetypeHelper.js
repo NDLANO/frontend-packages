@@ -6,20 +6,18 @@
  */
 
 export const illegalFormats = (files, allowedFiles) => {
-  return files.filter(file => {
+  return files.filter((file) => {
     const [type, subtype] = file.type.split('/');
 
     const fileTypeAllowed =
-      allowedFiles.includes(file.type) ||
-      allowedFiles.includes(`${type}/*`) ||
-      allowedFiles.includes(`.${subtype}`);
+      allowedFiles.includes(file.type) || allowedFiles.includes(`${type}/*`) || allowedFiles.includes(`.${subtype}`);
 
     return !fileTypeAllowed;
   });
 };
 
 export const illegalEndings = (files, allowedFiles) => {
-  return files.filter(file => {
+  return files.filter((file) => {
     const fileEnding = file.name.split('.').pop();
 
     const fileEndingAllowed = allowedFiles.includes(`.${fileEnding}`);

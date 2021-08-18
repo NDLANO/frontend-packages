@@ -9,8 +9,8 @@ const classes = BEMHelper('c-background-image');
 const BackgroundImage = ({ images, showOverlay }) => (
   <div {...classes('', showOverlay)}>
     {images &&
-      images.map(image =>
-        image.types.map(type => (
+      images.map((image) =>
+        image.types.map((type) => (
           <div
             key={`${image.url}${type}`}
             {...classes('background', type)}

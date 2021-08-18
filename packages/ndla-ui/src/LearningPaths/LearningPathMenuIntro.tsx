@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import { colors, spacing, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -26,7 +26,7 @@ const BORDER_WIDTH = 4;
 
 const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
   ${mq.range({ from: breakpoints.tablet })} {
-    ${props =>
+    ${(props) =>
       props.invertedStyle &&
       css`
         color: #fff;
@@ -50,16 +50,16 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     padding: 0 0 ${spacing.medium} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacing.spacingUnit + BORDER_WIDTH / 2}px;
+    margin-left: ${spacingUnit + BORDER_WIDTH / 2}px;
     margin-top: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-    ${props =>
+    ${(props) =>
       !props.isOpen &&
       css`
         display: none;
       `}
-    ${props =>
+    ${(props) =>
       props.isOpen &&
       css`
         animation-duration: ${animations.durations.superFast};
@@ -100,12 +100,7 @@ interface Props {
   name: string;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({
-  isOpen,
-  name,
-  invertedStyle,
-  t,
-}) => {
+const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({ isOpen, name, invertedStyle, t }) => {
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>

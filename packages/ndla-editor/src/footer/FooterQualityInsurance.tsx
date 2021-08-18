@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, typography, colors, fonts } from '@ndla/core';
+import { spacing, typography, colors, fonts, spacingUnit } from '@ndla/core';
 // @ts-ignore
 import { PopUpWrapper } from '@ndla/forms';
 
@@ -38,7 +38,7 @@ const FooterQualityInsurance: React.FC<Props> = ({ children, messages }) => {
     <PopUpWrapper
       label={messages.buttonLabel}
       verticalPosition="bottom"
-      offsetY={spacing.spacingUnit * 2}
+      offsetY={spacingUnit * 2}
       withCloseButton
       buttonStyle={css`
         cursor: pointer;

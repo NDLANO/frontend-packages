@@ -280,8 +280,7 @@ const topicResults = [
   {
     id: 23265,
     title: 'Skriftlig tekstskaping',
-    ingress:
-      'Øv deg på å skrive fagartikler, kreative tekster, argumenterende tekster og tekstanalyser.',
+    ingress: 'Øv deg på å skrive fagartikler, kreative tekster, argumenterende tekster og tekstanalyser.',
     url: '#23265',
     labels: [],
     img: {
@@ -360,8 +359,7 @@ const subjectMaterialResults = [
   {
     id: 12458,
     title: 'Doping',
-    ingress:
-      'Doping er bruk av medikamenter eller andre metoder for å øke prestasjonsevnen på en unaturlig måte.',
+    ingress: 'Doping er bruk av medikamenter eller andre metoder for å øke prestasjonsevnen på en unaturlig måte.',
     url: '#12458',
     labels: ['Fagstoff', 'Fagartikkel'],
     img: {
@@ -535,11 +533,7 @@ const subjectMaterialResults = [
         url: '#4',
       },
       {
-        breadcrumb: [
-          'Medieuttrykk og mediesamfunnet Vg2 og Vg3',
-          'Medieproduksjon',
-          'Videoproduksjon',
-        ],
+        breadcrumb: ['Medieuttrykk og mediesamfunnet Vg2 og Vg3', 'Medieproduksjon', 'Videoproduksjon'],
         url: '#5',
       },
     ],
@@ -708,8 +702,7 @@ const subjectMaterialResults = [
   {
     id: 12638,
     title: 'Stigningsløp',
-    ingress:
-      'Stigningsløp er en øvelse som passer godt som spesiell oppvarming til økter som inneholder løping.',
+    ingress: 'Stigningsløp er en øvelse som passer godt som spesiell oppvarming til økter som inneholder løping.',
     url: '#12638',
     labels: ['Fagstoff', 'Film og filmklipp'],
     img: null,
@@ -751,11 +744,7 @@ const subjectMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Brønnteknikk Vg2',
-          'Komplettering, produksjon og brønnvedlikehold',
-          'Brønndreping',
-        ],
+        breadcrumb: ['Brønnteknikk Vg2', 'Komplettering, produksjon og brønnvedlikehold', 'Brønndreping'],
         url: '#1',
       },
     ],
@@ -805,8 +794,7 @@ const resourcesTasksAndActivitiesResults = [
     id: 15,
     title: 'Oppsummering: nynorske pronomen',
     url: '#1',
-    ingress:
-      'Lag deg ei enkel oversikt over pronomena som er ulike i bokmål og nynorsk. Kjekt å ha!',
+    ingress: 'Lag deg ei enkel oversikt over pronomena som er ulike i bokmål og nynorsk. Kjekt å ha!',
     labels: ['Tilleggsstoff', 'Øvelse', 'Oppgave'],
     contexts: [{ breadcrumb: ['Språket som system', 'Nynorskkurs'], url: '#1' }],
   },
@@ -953,12 +941,7 @@ const resourcesExternalResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Elektro og datateknologi Vg1',
-          'Energisystemer',
-          'Elektro i boliger',
-          'Varme og varmestyring',
-        ],
+        breadcrumb: ['Elektro og datateknologi Vg1', 'Energisystemer', 'Elektro i boliger', 'Varme og varmestyring'],
         url: '#1',
       },
     ],
@@ -1039,19 +1022,11 @@ const resourcesExternalResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Naturfag Påbygg',
-          'Bærekraftig utvikling',
-          'Feltarbeid – vi undersøker et økosystem',
-        ],
+        breadcrumb: ['Naturfag Påbygg', 'Bærekraftig utvikling', 'Feltarbeid – vi undersøker et økosystem'],
         url: '#1',
       },
       {
-        breadcrumb: [
-          'Naturfag Påbygg',
-          'Bærekraftig utvikling',
-          'Feltarbeid – vi undersøker et økosystem',
-        ],
+        breadcrumb: ['Naturfag Påbygg', 'Bærekraftig utvikling', 'Feltarbeid – vi undersøker et økosystem'],
         url: '#2',
       },
       {
@@ -1117,11 +1092,7 @@ const resourcesSourceMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Religion og etikk',
-          'Metoder for utforsking og dialog',
-          'Metoder for utforskning',
-        ],
+        breadcrumb: ['Religion og etikk', 'Metoder for utforsking og dialog', 'Metoder for utforskning'],
         url: '#1',
       },
     ],
@@ -1167,8 +1138,7 @@ const resourcesSourceMaterialResults = [
     id: 21,
     title: 'Gjemt bak en e-post',
     url: '#1',
-    ingress:
-      'Den kritiske journalistikken angripes fra mange hold. Et av de farligste angrepene kommer som e-post.',
+    ingress: 'Den kritiske journalistikken angripes fra mange hold. Et av de farligste angrepene kommer som e-post.',
     labels: ['Kildemateriale', 'Litterære tekster'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/8576?width=600',
@@ -1176,11 +1146,7 @@ const resourcesSourceMaterialResults = [
     },
     contexts: [
       {
-        breadcrumb: [
-          'Medie- og informasjonskunnskap',
-          'Mediekritikk og medieforskning',
-          'Mediekritikk',
-        ],
+        breadcrumb: ['Medie- og informasjonskunnskap', 'Mediekritikk og medieforskning', 'Mediekritikk'],
         url: '#1',
       },
     ],
@@ -1311,8 +1277,7 @@ export const notionResults = [
   {
     id: 1,
     title: 'And',
-    text:
-      'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
+    text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
     image: {
       url: 'https://api.ndla.no/image-api/raw/id/40164?width=660',
       alt: 'And',
@@ -1325,8 +1290,7 @@ export const notionResults = [
   {
     id: 2,
     title: 'Breiflabb',
-    text:
-      'Hos breiflabben – eller marulken som den også kalles – utgjør det store hodet om lag halvparten av den totale lengden. Den finnes fra fjæra og ned til 600 meters dyp, der den gjemmer seg blant planter eller delvis nedgravd i sanden. Breiflabben lever hovedsakelig av fisk og skalldyr.',
+    text: 'Hos breiflabben – eller marulken som den også kalles – utgjør det store hodet om lag halvparten av den totale lengden. Den finnes fra fjæra og ned til 600 meters dyp, der den gjemmer seg blant planter eller delvis nedgravd i sanden. Breiflabben lever hovedsakelig av fisk og skalldyr.',
     image: {
       url: 'https://api.ndla.no/image-api/raw/id/9825?width=660',
       alt: 'Breiflabb',

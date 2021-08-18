@@ -12,13 +12,7 @@ import Button from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
 
-export default function ImageSearchResult({
-  image,
-  onImageClick,
-  selectedImage,
-  onSelectImage,
-  useImageTitle,
-}) {
+export default function ImageSearchResult({ image, onImageClick, selectedImage, onSelectImage, useImageTitle }) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
   return (
@@ -35,11 +29,7 @@ export default function ImageSearchResult({
         </Button>
       </div>
       {selectedImage && selectedImage.id === image.id ? (
-        <PreviewImage
-          image={selectedImage}
-          onSelectImage={onSelectImage}
-          useImageTitle={useImageTitle}
-        />
+        <PreviewImage image={selectedImage} onSelectImage={onSelectImage} useImageTitle={useImageTitle} />
       ) : (
         ''
       )}

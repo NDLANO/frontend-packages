@@ -366,10 +366,7 @@ function licenseByLocale(license: LicenseType, locale: Locale | string | undefin
   };
 }
 
-export function getLicenseByAbbreviation(
-  abbreviation: string,
-  locale: Locale | string | undefined,
-) {
+export function getLicenseByAbbreviation(abbreviation: string, locale: Locale | string | undefined) {
   switch (abbreviation) {
     case 'CC-BY-NC-ND-4.0':
       return licenseByLocale(byncnd, locale);
@@ -447,5 +444,4 @@ export function getLicenseByNBTitle(title: string, locale?: Locale | string) {
   }
 }
 
-export const isCreativeCommonsLicense = (licenseRights: string[]) =>
-  licenseRights.every(r => r !== COPYRIGHTED);
+export const isCreativeCommonsLicense = (licenseRights: string[]) => licenseRights.every((r) => r !== COPYRIGHTED);

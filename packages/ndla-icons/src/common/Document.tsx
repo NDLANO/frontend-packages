@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const Document = (props: Props) => (
-  <Icon
-    title="Document"
-    viewBox="0 0 78 77"
-    data-license="CC-BY 4.0"
-    data-source="Netlife"
-    {...props}>
+  <Icon title="Document" viewBox="0 0 78 77" data-license="CC-BY 4.0" data-source="Netlife" {...props}>
     <g>
       <circle fill="#FFF" cx="38.5" cy="38.9" r="38.3" />
       <g fill="none">

@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes } = constants;
+export const { contentTypes, subjectCategories } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -44,6 +44,13 @@ const messages = {
     embed: 'Sett inn',
     notSupported:
       'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
+  },
+  subjectCategories: {
+    [subjectCategories.ARCHIVE_SUBJECTS]: 'LK06-fag',
+    [subjectCategories.BETA_SUBJECTS]: 'Betafag',
+    [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
+    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
+    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',
@@ -199,8 +206,7 @@ const messages = {
     },
     socialMedia: {
       heading: 'Følg oss',
-      description:
-        'NDLA har mange Facebook- og Twitter-kontoer. Finn den som passer for deg, og følg oss!',
+      description: 'NDLA har mange Facebook- og Twitter-kontoer. Finn den som passer for deg, og følg oss!',
       mainLink: {
         name: 'Følg oss',
       },
@@ -215,16 +221,14 @@ const messages = {
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     film: {
       header: 'NDLA film',
-      text:
-        'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
+      text: 'NDLA film er en tjeneste i samarbeid med Norgesfilm. Denne tjenesten lar deg se en rekke spillefilmer, kortfilmer, dokumentarer og serier. Du kan også se undervisningsfilm og filmklipp. Velkommen inn i filmens verden!',
       textShort: 'Velkommen inn i filmens verden!',
       linkLabel: 'Gå til NDLA film',
     },
     blog: 'Fra bloggen',
   },
   meta: {
-    description:
-      'Kvalitetssikrede fritt tilgjengelige nettbaserte læremidler for videregående opplæring',
+    description: 'Kvalitetssikrede fritt tilgjengelige nettbaserte læremidler for videregående opplæring',
     keywords: 'læremiddel,fag,skole,videregående,lærling,pensum,fagstoff',
   },
   masthead: {
@@ -289,8 +293,7 @@ const messages = {
     shortcutsTooltip: 'Vis {count} artikler i dette emnet',
     dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
-    dialogText1:
-      'Når du lærer deg kjernestoffet, skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
+    dialogText1: 'Når du lærer deg kjernestoffet, skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
     dialogText2:
       'Tilleggsstoff er innhold i faget som du kan velge i tillegg til kjernestoffet. Gjennom tilleggsstoffet kan du fordype deg i et emne eller tilnærme deg emnet på en annen måte.',
     showLess: 'Vis mindre',
@@ -454,6 +457,12 @@ const messages = {
     back: 'Gå tilbake',
     goToFrontPage: 'Gå til forsiden',
   },
+  figure: {
+    button: {
+      synstolket: 'Bytt til synstolket',
+      original: 'Bytt til original video',
+    },
+  },
   footer: {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Velg språk (language): ',
@@ -584,8 +593,7 @@ const messages = {
     about: {
       heading: 'Om NDLA Film',
       more: 'Les mer om NDLA film',
-      text:
-        'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
+      text: 'Ndla film er en nettbasert filmtjeneste for elever og lærere i videregående skole. Her funner du spillefilmer, kortfilmer, dokumentarfilmer og TV-serier.',
     },
     search: {
       placeholder: 'Søk på filmnavn',
@@ -678,8 +686,8 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Nyttige tips til nettundervisning',
-      externalLink: 'https://blogg.ndla.no/nettundervisning/',
+      text: 'En god skolestart',
+      externalLink: 'https://blogg.ndla.no/engodskolestart/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',
@@ -697,14 +705,13 @@ const messages = {
     },
   },
   createdBy: {
-    content: 'Artikkelen',
-    text: 'er utarbeidet av',
+    content: 'Ressursen',
+    text: 'er hentet fra',
   },
   fagfornyelse: {
     frontpage: {
       heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
-      text:
-        'Høsten 2020 og 2021 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
+      text: 'Høsten 2020 og 2021 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
       blogHeading: 'Vil du vite mer?',
     },
     badge: {
@@ -715,16 +722,14 @@ const messages = {
   },
   frontPageToolbox: {
     heading: 'Verktøykassa',
-    text:
-      'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
+    text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
     linkTextStudents: 'Se alle tipsene for elever her',
     linkTextTeachers: 'Se alle tipsene for lærere her',
     cursorText: 'Tips',
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Tverrfaglige temaer',
-    text:
-      'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
+    text: 'De tre tverrfaglige temaene i læreplanverket tar utgangspunkt i aktuelle samfunnsutfordringer som krever engasjement og innsats fra enkeltmennesker og fellesskapet i lokalsamfunnet, nasjonalt og globalt.',
     linkText: 'Se caser for tverrfaglige temaer',
     publicHealthTopic: 'Folkehelse og livsmestring',
     democracyTopic: 'Demokrati og medborgerskap',

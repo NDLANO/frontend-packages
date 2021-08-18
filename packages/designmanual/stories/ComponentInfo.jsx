@@ -84,7 +84,7 @@ class ComponentInfo extends Component {
               </tr>
             </thead>
             <tbody>
-              {usesPropTypes.map(prop => (
+              {usesPropTypes.map((prop) => (
                 <tr key={uuid()}>
                   <td>{prop.name}</td>
                   <td>{prop.type}</td>
@@ -100,7 +100,7 @@ class ComponentInfo extends Component {
     if (messages) {
       tabContent.push({
         title: 'Annet',
-        content: messages.map(msg => <p key={uuid()}>{msg}</p>),
+        content: messages.map((msg) => <p key={uuid()}>{msg}</p>),
       });
     }
     if (children) {
@@ -111,9 +111,7 @@ class ComponentInfo extends Component {
     }
     return (
       <div {...classes('')}>
-        <p {...classes('status-label', statusMessages[status][1])}>
-          Status: {statusMessages[status][0]}
-        </p>
+        <p {...classes('status-label', statusMessages[status][1])}>Status: {statusMessages[status][0]}</p>
         <Tabs tabs={tabContent} />
       </div>
     );

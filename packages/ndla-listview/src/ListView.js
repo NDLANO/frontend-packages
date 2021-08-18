@@ -196,7 +196,7 @@ const ListView = ({
   onSelectItem,
   selectedItem,
   totalCount,
-  renderMarkdown = text => {
+  renderMarkdown = (text) => {
     return text;
   },
   t,
@@ -204,7 +204,7 @@ const ListView = ({
   <ListViewWrapper>
     {filters ? (
       <div {...filterClasses('wrapper-multiple-filters')}>
-        {filters.map(filter => (
+        {filters.map((filter) => (
           <FilterListPhone
             preid="list-view"
             key={filter.key}
@@ -219,7 +219,7 @@ const ListView = ({
               openFilter: t(`listview.filters.${filter.key}.openFilter`),
               closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
             }}
-            onChange={values => {
+            onChange={(values) => {
               filter.onChange(filter.key, values);
             }}
           />
@@ -263,17 +263,13 @@ const ListView = ({
 
       {selectedLetterCallback ? (
         <ul className={'alphabet'}>
-          {Object.keys(alphabet).map(letter => (
+          {Object.keys(alphabet).map((letter) => (
             <li key={`letter-${letter}`} className={'letter'}>
               <button
                 type="button"
-                className={`letter-button ${selectedLetter === letter && 'active'} ${!alphabet[
-                  letter
-                ] && 'disabled'}`}
+                className={`letter-button ${selectedLetter === letter && 'active'} ${!alphabet[letter] && 'disabled'}`}
                 onClick={() =>
-                  selectedLetter === letter
-                    ? selectedLetterCallback('')
-                    : selectedLetterCallback(letter)
+                  selectedLetter === letter ? selectedLetterCallback('') : selectedLetterCallback(letter)
                 }>
                 {letter}
               </button>
@@ -285,7 +281,7 @@ const ListView = ({
     <CountWrapper>{t('listview.hits', { count: totalCount })}</CountWrapper>
     <div className={'content-wrapper'}>
       <div className={`content ${viewStyle}`}>
-        {items.map(item => (
+        {items.map((item) => (
           <ListItem
             item={item}
             key={item.id}
@@ -309,10 +305,8 @@ const optionsShape = PropTypes.shape({
 });
 
 const filterShapes = PropTypes.shape({
-  options: PropTypes.oneOfType([
-    PropTypes.arrayOf(optionsShape),
-    PropTypes.arrayOf(PropTypes.arrayOf(optionsShape)),
-  ]).isRequired,
+  options: PropTypes.oneOfType([PropTypes.arrayOf(optionsShape), PropTypes.arrayOf(PropTypes.arrayOf(optionsShape))])
+    .isRequired,
   onChange: PropTypes.func.isRequired,
   filterValues: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   label: PropTypes.string,

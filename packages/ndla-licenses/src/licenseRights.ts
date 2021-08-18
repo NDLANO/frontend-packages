@@ -130,8 +130,7 @@ const cc0: RightType = {
   en: {
     title: 'Public Domain Dedication',
     userFriendlyTitle: 'Public Domain Dedication',
-    description:
-      'The work is given the public and the Creator has given up all rights, also attribution.',
+    description: 'The work is given the public and the Creator has given up all rights, also attribution.',
   },
 };
 
@@ -152,8 +151,7 @@ const copyrighted: RightType = {
   en: {
     title: 'Copyright',
     userFriendlyTitle: 'Copyright',
-    description:
-      'Only the creator can derive, publish, or license the work. It can not be shared without permission.',
+    description: 'Only the creator can derive, publish, or license the work. It can not be shared without permission.',
   },
 };
 
@@ -162,8 +160,7 @@ const cc: RightType = {
   nn: {
     title: 'Creative Commons',
     userFriendlyTitle: 'Opphavsrett',
-    description:
-      'Denne lisensen gjev deg rett til å dela og bruka dette innhaldet på visse vilkår.',
+    description: 'Denne lisensen gjev deg rett til å dela og bruka dette innhaldet på visse vilkår.',
   },
   nb: {
     title: 'Creative Commons',

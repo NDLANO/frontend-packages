@@ -9,13 +9,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems } from '@reach/menu-button';
-import {
-  SliderInput,
-  SliderTrack,
-  SliderRange,
-  SliderHandle,
-  SliderOrientation,
-} from '@reach/slider';
+import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';
 import { Play, Pause } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
@@ -170,7 +164,7 @@ const SpeedValueButton = styled(MenuItem)<SpeedValueButtonProps>`
     border-radius: 5px;
     color: ${colors.text.primary};
   }
-  ${props =>
+  ${(props) =>
     props.selected &&
     `
     color: ${colors.text.primary};
@@ -435,7 +429,7 @@ const Controls = ({ src, title, t }: Props & tType) => {
             <SpeedMenu as="div" portal={false}>
               <div>
                 <SpeedList as="div">
-                  {speedValues.map(speed => (
+                  {speedValues.map((speed) => (
                     <SpeedValueButton
                       type="button"
                       as="button"

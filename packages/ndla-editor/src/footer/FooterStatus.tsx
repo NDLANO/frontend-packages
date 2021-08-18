@@ -9,7 +9,7 @@
 import React, { useReducer } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, typography, colors, misc, fonts } from '@ndla/core';
+import { spacing, typography, colors, misc, fonts, spacingUnit } from '@ndla/core';
 // @ts-ignore
 import { PopUpWrapper } from '@ndla/forms';
 import FooterStatusSelect from './FooterStatusSelect';
@@ -25,7 +25,7 @@ const StyledWrapper = styled.section<StyledWrapperProp>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  ${props =>
+  ${(props) =>
     props.extended &&
     css`
       min-width: 500px;
@@ -43,7 +43,7 @@ const buttonStyle = css`
   color: ${colors.brand.primary};
   border: 0;
   ${fonts.sizes(18, 1.25)};
-  padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.spacingUnit * 0.75}px;
+  padding: ${spacing.small} ${spacing.small} ${spacing.small} ${spacingUnit * 0.75}px;
   margin-right: ${spacing.normal};
   border-radius: ${misc.borderRadius};
   transition: background-color 200ms ease;
@@ -152,8 +152,8 @@ const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
         label={messages.changeStatus}
         verticalPosition="bottom"
         position="right"
-        offsetX={spacing.spacingUnit * 1}
-        offsetY={spacing.spacingUnit * 2}
+        offsetX={spacingUnit * 1}
+        offsetY={spacingUnit * 2}
         withCloseButton
         onClose={() => dispatch({ type: 'reset' })}
         buttonStyle={buttonStyle}>

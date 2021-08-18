@@ -1,6 +1,6 @@
 {
   "name": "@ndla/i18n",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "NDLA's own i18n package based on react-intl",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,9 +32,12 @@
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.1",
     "hoist-non-react-statics": "^3.3.0",
+    "i18next": "^20.3.1",
+    "i18next-browser-languagedetector": "^6.1.1",
     "intl-format-cache": "^4.3.1",
     "intl-messageformat": "5.4.3",
-    "invariant": "^2.2.3"
+    "invariant": "^2.2.3",
+    "react-i18next": "^11.11.0"
   },
   "publishConfig": {
     "access": "public"

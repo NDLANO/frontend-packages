@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const By = (props: Props) => (
-  <Icon
-    title="By"
-    viewBox="5.5 -3.5 64 64"
-    data-license="CC-BY 4.0"
-    data-source="Creative Commons"
-    {...props}>
+  <Icon title="By" viewBox="5.5 -3.5 64 64" data-license="CC-BY 4.0" data-source="Creative Commons" {...props}>
     <g>
       <circle fill="none" cx="37.637" cy="28.806" r="28.276" />
       <g>

@@ -23,52 +23,59 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureCaption = ({
-  figureId,
-  id,
-  children,
-  caption,
-  authors,
-  reuseLabel,
-  licenseRights,
-  locale,
-  link,
-  hideFigcaption,
-}) => (
-  <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
-    {caption ? <div {...classes('info')}>{caption}</div> : null}
-    <footer {...classes('byline')}>
-      <div {...classes('byline-licenselist')}>
-        <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
-          <span {...classes('byline-authors')}>
-            {authors.map(author => author.name).join(', ')}
-          </span>
-          <button
-            type="button"
-            data-dialog-trigger-id={id}
-            data-dialog-source-id={figureId}
-            {...classes('captionbtn')}>
-            <span>{reuseLabel}</span>
-          </button>
-
-          {children}
-        </LicenseByline>
-        {link && (
-          <div {...classes('link-wrapper')}>
-            <SafeLink
-              to={link.url}
-              {...classes('link')}
-              target={link.external ? '_blank' : null}
-              rel={link.external ? 'noopener noreferrer' : null}>
-              <span {...classes('link-text')}>{link.text}</span>
-              <LinkIcon />
-            </SafeLink>
-            {link.description && <p {...classes('link-description')}>{link.description}</p>}
-          </div>
-        )}
-      </div>
-    </footer>
-  </figcaption>
+export const FigureCaption = injectT(
+  ({
+    figureId,
+    id,
+    children,
+    caption,
+    authors,
+    reuseLabel,
+    licenseRights,
+    locale,
+    link,
+    hideFigcaption,
+    hasLinkedVideo,
+    t,
+  }) => (
+    <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
+      {caption ? <div {...classes('info')}>{caption}</div> : null}
+      <footer {...classes('byline')}>
+        <div {...classes('byline-licenselist')}>
+          <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
+            <span {...classes('byline-authors')}>{authors.map((author) => author.name).join(', ')}</span>
+            <button
+              type="button"
+              data-dialog-trigger-id={id}
+              data-dialog-source-id={figureId}
+              {...classes('captionbtn')}>
+              <span>{reuseLabel}</span>
+            </button>
+            {hasLinkedVideo && (
+              <button type="button" {...classes('toggleSynstolket')}>
+                <span className="original">{t('figure.button.synstolket')}</span>
+                <span className="synstolket hidden">{t('figure.button.original')}</span>
+              </button>
+            )}
+            {children}
+          </LicenseByline>
+          {link && (
+            <div {...classes('link-wrapper')}>
+              <SafeLink
+                to={link.url}
+                {...classes('link')}
+                target={link.external ? '_blank' : null}
+                rel={link.external ? 'noopener noreferrer' : null}>
+                <span {...classes('link-text')}>{link.text}</span>
+                <LinkIcon />
+              </SafeLink>
+              {link.description && <p {...classes('link-description')}>{link.description}</p>}
+            </div>
+          )}
+        </div>
+      </footer>
+    </figcaption>
+  ),
 );
 
 FigureCaption.propTypes = {
@@ -91,6 +98,7 @@ FigureCaption.propTypes = {
   }),
   locale: PropTypes.string,
   hideFigcaption: PropTypes.bool,
+  hasLinkedVideo: PropTypes.bool,
 };
 
 FigureCaption.defaultProps = {

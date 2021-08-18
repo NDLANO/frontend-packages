@@ -55,7 +55,7 @@ const StyledLetterItem = styled.span<{ subjectViewType?: string }>`
   font-weight: ${fonts.weight.bold};
   color: ${colors.brand.primary};
   margin-bottom: 8px;
-  ${props => props.subjectViewType === 'checkbox' && `margin-left:37px;`}
+  ${(props) => props.subjectViewType === 'checkbox' && `margin-left:37px;`}
 `;
 
 const StyledSpacingElement = styled.span`
@@ -71,11 +71,13 @@ const StyledLetterSpacing = styled.span`
 
 type subjectProps = {
   name: string;
-  url: string;
+  url?: string;
+  path: string;
   id?: string;
 };
 type categoryProps = {
-  name: string;
+  type?: string;
+  name?: string;
   subjects: subjectProps[];
 };
 
@@ -134,11 +136,7 @@ const renderList = (
           {letter.items.map((subject: subjectProps, index: number) => (
             <React.Fragment key={subject.name}>
               <StyledListItem>
-                {index === 0 && (
-                  <StyledLetterItem subjectViewType={subjectViewType}>
-                    {letter.letter}
-                  </StyledLetterItem>
-                )}
+                {index === 0 && <StyledLetterItem subjectViewType={subjectViewType}>{letter.letter}</StyledLetterItem>}
                 {subjectViewType === 'checkbox' && subject.id ? (
                   <ToggleItem
                     id={subject.id}
@@ -160,7 +158,7 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.url}>
+                      to={subject.url || subject.path}>
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />
@@ -190,26 +188,14 @@ const FrontpageAllSubjects = ({
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);
     data.push({
-      title: category.name,
-      content: renderList(
-        category.subjects,
-        onNavigate,
-        onToggleSubject,
-        subjectViewType,
-        selectedSubjects,
-      ),
+      title: category.name || t(`subjectCategories.${category.type}`),
+      content: renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
     });
   });
 
   data.unshift({
     title: t('frontpageMenu.allsubjects'),
-    content: renderList(
-      allSubjects,
-      onNavigate,
-      onToggleSubject,
-      subjectViewType,
-      selectedSubjects,
-    ),
+    content: renderList(allSubjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
   });
 
   return (

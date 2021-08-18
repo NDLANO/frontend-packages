@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors, fonts, mq, breakpoints } from '@ndla/core';
+import { spacing, spacingUnit, colors, fonts, mq, breakpoints } from '@ndla/core';
 
 const gridPush = css`
   ${mq.range({ from: breakpoints.tabletWide })} {
@@ -14,8 +14,8 @@ export const PushGrid = styled.div`
 `;
 
 export const Wrapper = styled.section`
-  margin: ${spacing.large} auto ${spacing.spacingUnit * 4}px;
-  max-width: calc(100vw - ${spacing.spacingUnit * 4}px);
+  margin: ${spacing.large} auto ${spacingUnit * 4}px;
+  max-width: calc(100vw - ${spacingUnit * 4}px);
   ${mq.range({ from: breakpoints.tabletWide })} {
     max-width: 800px;
   }
@@ -31,13 +31,13 @@ export const Header = styled.div`
 `;
 
 export const Heading = styled.div`
-  margin: 0 0 ${props => (!props.inModal ? spacing.medium : '0 0')};
+  margin: 0 0 ${(props) => (!props.inModal ? spacing.medium : '0 0')};
   ${fonts.sizes(38, 1.4)};
   font-weight: ${fonts.weight.semibold};
   color: ${colors.text.primary};
-  ${props => !props.inModal && gridPush};
+  ${(props) => !props.inModal && gridPush};
   ${mq.range({ from: breakpoints.tabletWide })} {
-    padding-left: ${props => props.inModal && '8.33%'};
+    padding-left: ${(props) => props.inModal && '8.33%'};
   }
 `;
 

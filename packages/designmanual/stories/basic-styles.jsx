@@ -22,25 +22,21 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Farger på NDLA">
         <p>
-          Fargene til NDLA er laget for å skape god lesbarhet og flyt for brukerne. Fargene skal
-          alltid benyttes i design av brukergrensesnitt. Fargene skal ikke brukes på redaksjonelt
-          innhold som for eksempel illustrasjoner og elementer inne i H5P. Ved bruk av farger i
-          design skal det alltid være nok kontrast mellom elementer som f.eks bakgrunn og tekst.
-          Fargene skal til enhver tid oppfylle alle standarder for WCAG (Web Content Accessibility
-          Guidelines). Verktøy for å kontrollere kontrast mellom tekst og bakgrunn finnes her:{' '}
-          <a href="https://webaim.org/resources/contrastchecker/">
-            https://webaim.org/resources/contrastchecker/
-          </a>
+          Fargene til NDLA er laget for å skape god lesbarhet og flyt for brukerne. Fargene skal alltid benyttes i
+          design av brukergrensesnitt. Fargene skal ikke brukes på redaksjonelt innhold som for eksempel illustrasjoner
+          og elementer inne i H5P. Ved bruk av farger i design skal det alltid være nok kontrast mellom elementer som
+          f.eks bakgrunn og tekst. Fargene skal til enhver tid oppfylle alle standarder for WCAG (Web Content
+          Accessibility Guidelines). Verktøy for å kontrollere kontrast mellom tekst og bakgrunn finnes her:{' '}
+          <a href="https://webaim.org/resources/contrastchecker/">https://webaim.org/resources/contrastchecker/</a>
         </p>
       </StoryIntro>
       <StoryBody>
         <div>
           <h2 className="u-heading">NDLA-fargen</h2>
           <p>
-            NDLA fargen er en blå farge i forskjellige nyanser. Disse fargene er det mest av i
-            systemet. De brukes på klikkbare UI elementer, navigasjon, bakgrunner og gruppering av
-            innhold. I tillegg brukes de på fagsider, hoved- og underemne sidene. Dette for å skape
-            identitet og tydelig tilhørighet til NDLA universet.{' '}
+            NDLA fargen er en blå farge i forskjellige nyanser. Disse fargene er det mest av i systemet. De brukes på
+            klikkbare UI elementer, navigasjon, bakgrunner og gruppering av innhold. I tillegg brukes de på fagsider,
+            hoved- og underemne sidene. Dette for å skape identitet og tydelig tilhørighet til NDLA universet.{' '}
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
@@ -96,16 +92,12 @@ storiesOf('Grunnstiler', module)
         <div>
           <h2 className="u-heading">Tekst og systemikoner</h2>
           <p>
-            For å skape hierarki i innholdet finnes det to farger for tekst og systemikoner.
-            Vektleggingen skjer i samhandling med stilingen av typografien. Når teksten eller ikonet
-            er klikkbare linker skal man bruke NDLA-blå farge. Hvit tekst blir brukt på f.eks
-            knapper og navigasjonselememnter med mørke bakgunner. Fargen og størrelsen på teksten
-            skal til enhver tid kombineres med bakgrunner med nok kontrast og som oppfyller krav til
-            WCAG. Verktøy for å teste kontrast mellom tekst og bakgrunn finnes her:{' '}
-            <a
-              href="https://webaim.org/resources/contrastchecker/"
-              target="_blank"
-              rel="noopener noreferrer">
+            For å skape hierarki i innholdet finnes det to farger for tekst og systemikoner. Vektleggingen skjer i
+            samhandling med stilingen av typografien. Når teksten eller ikonet er klikkbare linker skal man bruke
+            NDLA-blå farge. Hvit tekst blir brukt på f.eks knapper og navigasjonselememnter med mørke bakgunner. Fargen
+            og størrelsen på teksten skal til enhver tid kombineres med bakgrunner med nok kontrast og som oppfyller
+            krav til WCAG. Verktøy for å teste kontrast mellom tekst og bakgrunn finnes her:{' '}
+            <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">
               https://webaim.org/resources/contrastchecker/
             </a>
           </p>
@@ -127,10 +119,7 @@ storiesOf('Grunnstiler', module)
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#FFFFFF', border: swatchBorder }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: '#FFFFFF', border: swatchBorder }} />
               <div className="o-list__label">
                 Tekst Hvit
                 <br />
@@ -151,17 +140,13 @@ storiesOf('Grunnstiler', module)
         <div>
           <h2 className="u-heading">Nøytrale farger</h2>
           <p>
-            Den nøytrale paletten består av toner og nyanser som er nyttige for gruppering av
-            innhold i NDLA systemet. Bruken av disse fargene varierer og er avhengig av
-            berøringspunkt og omliggende innhold. Brukes mest til bakgrunner og rammer for å
-            gruppere og skille innhold.
+            Den nøytrale paletten består av toner og nyanser som er nyttige for gruppering av innhold i NDLA systemet.
+            Bruken av disse fargene varierer og er avhengig av berøringspunkt og omliggende innhold. Brukes mest til
+            bakgrunner og rammer for å gruppere og skille innhold.
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: '#FFFFFF', border: swatchBorder }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: '#FFFFFF', border: swatchBorder }} />
               <div className="o-list__label">
                 Nøytral Hvit
                 <br />
@@ -201,14 +186,13 @@ storiesOf('Grunnstiler', module)
         <div>
           <h2 className="u-heading">Innholdstypefarger</h2>
           <p>
-            Innholdstyper har to farger, en mørk og en lys, knyttet til seg. Den lyse fargen er
-            brukt på bakgrunner og den mørke er brukt på ikonet tilknyttet innholdstypen. Noen av
-            innholdstypene har en tredje farge. Dette da det er behov for en egen bakgrunnsfarge på
-            ikonet og en annen på bakgrunnen i artikkelmalen.
+            Innholdstyper har to farger, en mørk og en lys, knyttet til seg. Den lyse fargen er brukt på bakgrunner og
+            den mørke er brukt på ikonet tilknyttet innholdstypen. Noen av innholdstypene har en tredje farge. Dette da
+            det er behov for en egen bakgrunnsfarge på ikonet og en annen på bakgrunnen i artikkelmalen.
           </p>
           <p>
-            Fargene er lette og duse i uttrykket for å la selve innholdet få fokus og poppe. I
-            tillegg skaper fargene tilhørighet og gjenkjennbarhet til innholdstypen.
+            Fargene er lette og duse i uttrykket for å la selve innholdet få fokus og poppe. I tillegg skaper fargene
+            tilhørighet og gjenkjennbarhet til innholdstypen.
           </p>
           <h3>Emner</h3>
           <ul className="o-list--colors">
@@ -378,10 +362,7 @@ storiesOf('Grunnstiler', module)
           <h3>Tilleggsstoff</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: 'rgba(221, 233, 208, 0.4)' }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(221, 233, 208, 0.4)' }} />
               <div className="o-list__label">
                 Tilleggsstoff Fagstoff
                 <br />
@@ -389,10 +370,7 @@ storiesOf('Grunnstiler', module)
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: 'rgba(208, 232, 222, 0.4)' }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(208, 232, 222, 0.4)' }} />
               <div className="o-list__label">
                 Tilleggsstoff ekstern Læringsressurs
                 <br />
@@ -400,10 +378,7 @@ storiesOf('Grunnstiler', module)
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: 'rgba(220, 229, 224, 0.4)' }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(220, 229, 224, 0.4)' }} />
               <div className="o-list__label">
                 Tilleggsstoff Kildemateriale
                 <br />
@@ -411,10 +386,7 @@ storiesOf('Grunnstiler', module)
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: 'rgba(251, 237, 220, 0.4)' }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(251, 237, 220, 0.4)' }} />
               <div className="o-list__label">
                 Tilleggsstoff Oppgaver og Aktiviteter
                 <br />
@@ -422,10 +394,7 @@ storiesOf('Grunnstiler', module)
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div
-                className="o-list__bgcolor"
-                style={{ backgroundColor: 'rgba(245, 231, 229, 0.4)' }}
-              />
+              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(245, 231, 229, 0.4)' }} />
               <div className="o-list__label">
                 Tilleggsstoff Vurderingsressurs
                 <br />
@@ -438,10 +407,9 @@ storiesOf('Grunnstiler', module)
         <div>
           <h2 className="u-heading">Support</h2>
           <p>
-            Supportfargene er valgt fordi de er konvensjonelle i sin kontekst. Selv om vi
-            anerkjenner at det er kulturelle forskjeller har enkelte farger iboende betydning for et
-            stort flertall brukere. For eksempel bruker vi rødt til å kommunisere en feil og grønt
-            for sukksess. Brukes med opacity 30 % på hvit bakgrunn.
+            Supportfargene er valgt fordi de er konvensjonelle i sin kontekst. Selv om vi anerkjenner at det er
+            kulturelle forskjeller har enkelte farger iboende betydning for et stort flertall brukere. For eksempel
+            bruker vi rødt til å kommunisere en feil og grønt for sukksess. Brukes med opacity 30 % på hvit bakgrunn.
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
@@ -507,8 +475,7 @@ storiesOf('Grunnstiler', module)
           Fonter
         </h2>
         <p>
-          NDLA bruker fontene{' '}
-          <a href="https://fonts.google.com/specimen/Source+Serif+Pro">Source Serif Pro</a>,{' '}
+          NDLA bruker fontene <a href="https://fonts.google.com/specimen/Source+Serif+Pro">Source Serif Pro</a>,{' '}
           <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Source Sans Pro</a> og{' '}
           <a href="https://fonts.google.com/specimen/Source+Code+Pro">Source Code Pro</a>.
         </p>
@@ -634,8 +601,8 @@ storiesOf('Grunnstiler', module)
         <code>{'<h1>Overskrift</h1>'}</code>
 
         <p>
-          Det er tre nivåer av overskrifter. Bruker man likevel overskrifts-tag for nivå 4, 5 osv,
-          vil de få samme stil som nivå 3 nedenfor:
+          Det er tre nivåer av overskrifter. Bruker man likevel overskrifts-tag for nivå 4, 5 osv, vil de få samme stil
+          som nivå 3 nedenfor:
         </p>
         <div className="c-bodybox">
           <div dangerouslySetInnerHTML={{ __html: heading('', 1) }} />
@@ -649,9 +616,8 @@ storiesOf('Grunnstiler', module)
         <div className="c-bodybox">
           <section className="article_introduction">
             <p className="article_introduction">
-              Idéutvikling er en viktig del av alt profesjonelt arbeid med medieuttrykk. I
-              verktøykassa si har medieprodusenten et knippe fortelleteknikker og virkemidler innen
-              design, tekst, lyd og bilde.
+              Idéutvikling er en viktig del av alt profesjonelt arbeid med medieuttrykk. I verktøykassa si har
+              medieprodusenten et knippe fortelleteknikker og virkemidler innen design, tekst, lyd og bilde.
             </p>
           </section>
         </div>
@@ -659,27 +625,23 @@ storiesOf('Grunnstiler', module)
           Avsnitt
         </h2>
         <p>
-          Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å lese. Dette betyr at
-          linjene ikke skal være for lange, og at vi bruker stor nok skriftsstørrelse. Mange tar
-          utgangspunkt i 16 punkter som en standard størrelse, men siden NDLA har mange teksttunge
-          sider, bruker vi 18 punkter.
+          Tekstavsnitt på <a href="//ndla.no">ndla.no</a> skal være lette å lese. Dette betyr at linjene ikke skal være
+          for lange, og at vi bruker stor nok skriftsstørrelse. Mange tar utgangspunkt i 16 punkter som en standard
+          størrelse, men siden NDLA har mange teksttunge sider, bruker vi 18 punkter.
         </p>
         <p>
-          En tekstlinje i full bredde skal utgjøre omtrent 50–75 tegn. Om{' '}
-          <span className="u-mark">*</span>-tegnene i setningen under kommer på samme linje, er den
-          for lang:
+          En tekstlinje i full bredde skal utgjøre omtrent 50–75 tegn. Om <span className="u-mark">*</span>-tegnene i
+          setningen under kommer på samme linje, er den for lang:
         </p>
         <div className="c-bodybox">
           <p className="u-serif">
             Lorem ipsum dolor sit amet, consectetur adip
-            <span className="u-mark">*</span>isicing elit, sed do eiusmod{' '}
-            <span className="u-mark">*</span>tempor incididunt ut labore et dolore magna aliqua.
+            <span className="u-mark">*</span>isicing elit, sed do eiusmod <span className="u-mark">*</span>tempor
+            incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
         <h2 className="u-heading">Kinesisk</h2>
-        <p>
-          Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar.
-        </p>
+        <p>Kinesisk har behov for egen skriftstørrelsedefinisjoner for at fonten skal være lesbar.</p>
         <table>
           <thead>
             <tr>
@@ -753,20 +715,17 @@ storiesOf('Grunnstiler', module)
           人人生而自由,在尊严和权利上一律平等。
         </p>
         <h3>Brødtekst</h3>
-        <p lang="zh-Hans">
-          人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。
-        </p>
+        <p lang="zh-Hans">人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。</p>
         <h2 id="lenker" className="u-heading">
           Lenker
         </h2>
         <p>
-          Lenker på <a href="http://www.ndla.no">ndla.no</a> bruker den vanlige konvensjonen med med
-          linje under teksten, og ndla-blå farge. Dette er et lett gjenkjennelig mønster for
-          brukerne.
+          Lenker på <a href="http://www.ndla.no">ndla.no</a> bruker den vanlige konvensjonen med med linje under
+          teksten, og ndla-blå farge. Dette er et lett gjenkjennelig mønster for brukerne.
         </p>
         <p>
-          Lenker kan enten være eksterne, interne eller vise til innhold på samme side ved hjelp av
-          en <code>id</code>-attributt på for eksempel en overskrift.
+          Lenker kan enten være eksterne, interne eller vise til innhold på samme side ved hjelp av en <code>id</code>
+          -attributt på for eksempel en overskrift.
         </p>
         <p>Det skal vurderes i framtiden om det er behov for markering av eksterne lenker.</p>
         <div className="c-bodybox">
@@ -786,8 +745,8 @@ storiesOf('Grunnstiler', module)
           Midtstilt tekst
         </h2>
         <p>
-          Noen informasjonstyper kan stå for seg selv og være midtstilt. Matematiske formler er ett
-          eksempel på midtstilt tekst.
+          Noen informasjonstyper kan stå for seg selv og være midtstilt. Matematiske formler er ett eksempel på
+          midtstilt tekst.
         </p>
         <p className="u-text-center">
           <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -812,22 +771,18 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Tabeller">
         <p>
-          Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det
-          anbefales å holde tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles
-          opp i flere tabeller.
+          Tabeller skal brukes til å presentere data (tabulære data), ikke til utforming. Det anbefales å holde
+          tabellene så enkle som mulig. Ved mer kompleksitet kan data heller deles opp i flere tabeller.
         </p>
         <p>
-          Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens stilsett, men gjøres
-          i redaktørgrensesnittet.
+          Tekstformatering, høyrestilling av tekst osv. angis ikke i tabellens stilsett, men gjøres i
+          redaktørgrensesnittet.
         </p>
         <p>
-          Titlene kan kuttes ut, plasseres som en topprad (thead), eller som første rad i en tabell
-          (innenfor tbody). De vil bli stilet etter plassering.
+          Titlene kan kuttes ut, plasseres som en topprad (thead), eller som første rad i en tabell (innenfor tbody). De
+          vil bli stilet etter plassering.
         </p>
-        <p>
-          Dersom du bruker titler både på rader og kolonner må du definere i koden hvilken vei
-          tittelen peker:
-        </p>
+        <p>Dersom du bruker titler både på rader og kolonner må du definere i koden hvilken vei tittelen peker:</p>
         <code>&lt;th scope=&quot;row&quot;&gt;</code>
         <p>
           Tabeller kan ha en tilknyttet tittel ved bruk av elementet: <code>&lt;caption&gt;</code>
@@ -1253,7 +1208,7 @@ storiesOf('Grunnstiler', module)
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3, 4].map(index => (
+            {[1, 2, 3, 4].map((index) => (
               <tr key={index}>
                 <td>Data</td>
                 <td>Data 1</td>
@@ -1274,7 +1229,7 @@ storiesOf('Grunnstiler', module)
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3, 4].map(index => (
+            {[1, 2, 3, 4].map((index) => (
               <tr key={index}>
                 <td>Data</td>
                 <td>Data 1</td>
@@ -1466,26 +1421,18 @@ storiesOf('Grunnstiler', module)
               <td>bruker de samme prinsippene for layout og komposisjon i begge annonsene</td>
               <td>bruker layout og komposisjon i annonsene</td>
               <td>
-                bruker til dels prinsipper for layout og komposisjon, men hvilke og hvor de er
-                brukt, kan være uklart
+                bruker til dels prinsipper for layout og komposisjon, men hvilke og hvor de er brukt, kan være uklart
               </td>
             </tr>
             <tr>
-              <td>
-                har reflekterte argumenter for hvorfor farger og fonter er valgt og prioritert
-              </td>
+              <td>har reflekterte argumenter for hvorfor farger og fonter er valgt og prioritert</td>
               <td>bruker farger og fonter som virkemidler i annonsene</td>
               <td>Noen designvalg er gode, andre er mindre gjennomført.</td>
             </tr>
             <tr>
               <td>Godt teknisk håndverk kjennetegner annonsene.</td>
-              <td>
-                Dette er bra, men noen elementer og piksler er upresist plassert eller på avveier.
-              </td>
-              <td>
-                Noen elementer er godt bearbeidet, men det gjenstår litt før annonsen er ferdig
-                designet.
-              </td>
+              <td>Dette er bra, men noen elementer og piksler er upresist plassert eller på avveier.</td>
+              <td>Noen elementer er godt bearbeidet, men det gjenstår litt før annonsen er ferdig designet.</td>
             </tr>
             <tr />
           </tbody>
@@ -1497,8 +1444,8 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Lister">
         <p>
-          Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å
-          organisere innholdet annerledes.
+          Lister bør ikke inneholde flere enn 10 punkter. Har du mye mer, bør du vurdere å organisere innholdet
+          annerledes.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -1609,8 +1556,8 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Oversettelser">
         <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse
-          tilfellene bruke en liste for oversettelser.
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse tilfellene bruke en
+          liste for oversettelser.
         </p>
         <p>Status: Ikke implementert på ndla.no eller i ED</p>
       </StoryIntro>
@@ -1644,16 +1591,15 @@ storiesOf('Grunnstiler', module)
     <div>
       <StoryIntro title="Sitater">
         <p>
-          Sitater som strekker seg inntil tre linjer i vanlig linjelengde kan markeres med
-          &laquo;&raquo;. Sitater som strekker seg over tre linjer i vanlig linjelengde taes ut som
-          et blokksitat.
+          Sitater som strekker seg inntil tre linjer i vanlig linjelengde kan markeres med &laquo;&raquo;. Sitater som
+          strekker seg over tre linjer i vanlig linjelengde taes ut som et blokksitat.
         </p>
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel på blokksitat</h2>
         <blockquote>
-          Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne, og hun viser oss at
-          det å tre ut av den typiske sildestimen alle absolutt skal følge, er kult. <br />
+          Vi elsker alle Noora i Skam. Vi ser opp til henne, vi vil være henne, og hun viser oss at det å tre ut av den
+          typiske sildestimen alle absolutt skal følge, er kult. <br />
           (Jente 19 år, Si;D, Aftenposten 23. mai 2016)
         </blockquote>
       </StoryBody>
@@ -1694,19 +1640,18 @@ storiesOf('Grunnstiler', module)
           </div>
         </div>
         <p>
-          Luft brukes for visuelt å gruppere elementer på en flate og føre oppmerksomheten mot de
-          riktige elementene. Har et element mye luft rundt seg, får det lettere oppmerksomhet. Har
-          to elementer lite luft mellom seg, oppfattes de gjerne som beslektet.
+          Luft brukes for visuelt å gruppere elementer på en flate og føre oppmerksomheten mot de riktige elementene.
+          Har et element mye luft rundt seg, får det lettere oppmerksomhet. Har to elementer lite luft mellom seg,
+          oppfattes de gjerne som beslektet.
         </p>
         <p>
-          Luft må også brukes for tilpassing til visning på ulike enheter. Vi ønsker å redusere
-          avstandene på mindre enheter slik at innholdet der tar mindre plass. Er det brukt stor
-          avstand et sted på store skjermer, blir det dermed reduseret til liten avstand på små
-          skjermer.
+          Luft må også brukes for tilpassing til visning på ulike enheter. Vi ønsker å redusere avstandene på mindre
+          enheter slik at innholdet der tar mindre plass. Er det brukt stor avstand et sted på store skjermer, blir det
+          dermed reduseret til liten avstand på små skjermer.
         </p>
         <p>
-          Når nye NDLA skal tas ut på nye flater, anbefales det å forholde seg til dette systemet,
-          slik at det blir konsistent.
+          Når nye NDLA skal tas ut på nye flater, anbefales det å forholde seg til dette systemet, slik at det blir
+          konsistent.
         </p>
       </StoryIntro>
     </div>

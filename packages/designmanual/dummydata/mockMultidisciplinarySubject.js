@@ -56,20 +56,17 @@ const resources = [
       'Planene om et vindkraftverk i kommunen skaper et heftig engasjement i befolkninga. Sett dere inn i konflikten, undersøk ulike interesser og utforsk mulige løsninger',
     image: 'https://api.ndla.no/image-api/raw/id/28404?width=600',
     imageAlt: 'Vindmølle i kulturlandskap. Foto.',
-    filters: [
-      'urn:filter:7ab1cc5c-4f79-4bb4-b1ab-bef7c41aed66',
-      'urn:filter:1e3b4fd0-3245-42b5-8685-db02c5592acc',
-    ],
+    filters: ['urn:filter:7ab1cc5c-4f79-4bb4-b1ab-bef7c41aed66', 'urn:filter:1e3b4fd0-3245-42b5-8685-db02c5592acc'],
     url: '#',
   },
 ];
 
 export const getResources = () => {
-  return resources.map(item => {
+  return resources.map((item) => {
     if (item.filters.length) {
       item.subjects = [];
-      item.filters.forEach(filterId => {
-        const subject = filters.find(filter => filter.id === filterId);
+      item.filters.forEach((filterId) => {
+        const subject = filters.find((filter) => filter.id === filterId);
         item.subjects.push(subject.label);
       });
     }

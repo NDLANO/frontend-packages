@@ -20,12 +20,7 @@ test('Image renderers correctly', () => {
 
 test('Lazyloaded image renderers correctly', () => {
   const component = renderer.create(
-    <Image
-      lazyLoad
-      lazyLoadSrc="https://example.com/blurry.png"
-      alt="example"
-      src="https://example.com/image.png"
-    />,
+    <Image lazyLoad lazyLoadSrc="https://example.com/blurry.png" alt="example" src="https://example.com/image.png" />,
   );
 
   expect(component.toJSON()).toMatchSnapshot();

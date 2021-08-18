@@ -9,12 +9,7 @@
 import React from 'react';
 
 const Illustration: React.FunctionComponent = () => (
-  <svg
-    width="90px"
-    height="90px"
-    viewBox="0 0 90 90"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg">
+  <svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <path
         d="M44,62.0697056 C44,62.0697056 41.634042,52.2742526 40.7199219,47.4586109 C40.6123784,46.8019325 20.7705945,46.9661021 19.1036696,47.2397181 C18.4046366,48.7719677 21.4696276,63 21.4696276,63"
@@ -78,13 +73,7 @@ const Illustration: React.FunctionComponent = () => (
         strokeWidth="0.5"
         strokeLinecap="round"
       />
-      <path
-        d="M66,61.6333945 L82,61.3666055"
-        id="Path"
-        stroke="#000000"
-        strokeWidth="0.5"
-        strokeLinecap="round"
-      />
+      <path d="M66,61.6333945 L82,61.3666055" id="Path" stroke="#000000" strokeWidth="0.5" strokeLinecap="round" />
     </g>
   </svg>
 );

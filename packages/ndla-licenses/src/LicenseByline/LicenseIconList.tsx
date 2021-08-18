@@ -77,9 +77,7 @@ const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
     <StyledLicenseIconItem>
       <StyledLicenseIconButton type="button">
         <LicenseIcon licenseRight={licenseRight} description={description} />
-        <span role="tooltip">
-          {getLicenseRightByAbbreviation(licenseRight, locale).description}
-        </span>
+        <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
       </StyledLicenseIconButton>
     </StyledLicenseIconItem>
   );
@@ -98,15 +96,9 @@ interface LicenseIconListProps {
   horizontal?: boolean;
 }
 
-const LicenseIconList = ({
-  licenseRights,
-  locale,
-  color,
-  marginRight,
-  horizontal,
-}: LicenseIconListProps) => (
+const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal }: LicenseIconListProps) => (
   <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
-    {licenseRights.map(licenseRight => (
+    {licenseRights.map((licenseRight) => (
       <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
   </StyledLicenseIconList>

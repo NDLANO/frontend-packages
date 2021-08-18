@@ -69,11 +69,7 @@ class AccordionExample2 extends Component {
         ]}
         status={2}>
         <h2>Eksempel</h2>
-        <AccordionSection
-          id="panel1"
-          title="Panel 1"
-          startOpen
-          barChildren={<div>Children in bar</div>}>
+        <AccordionSection id="panel1" title="Panel 1" startOpen barChildren={<div>Children in bar</div>}>
           <p>Innhold 1</p>
         </AccordionSection>
         <AccordionSection id="panel2" title="Panel 2" barChildren={<div>Children in bar</div>}>
@@ -122,25 +118,13 @@ class AccordionExample2 extends Component {
           onChange={this.handlePanelErrors}
         />
 
-        <AccordionSection
-          id="panel1"
-          title="Panel 1"
-          barChildren="Panel 1"
-          hasError={errorPanels.includes(0)}>
+        <AccordionSection id="panel1" title="Panel 1" barChildren="Panel 1" hasError={errorPanels.includes(0)}>
           <PanelComponent tekst="Innhold 1" />
         </AccordionSection>
-        <AccordionSection
-          id="panel2"
-          title="Panel 2"
-          barChildren="Panel 2"
-          hasError={errorPanels.includes(1)}>
+        <AccordionSection id="panel2" title="Panel 2" barChildren="Panel 2" hasError={errorPanels.includes(1)}>
           <PanelComponent tekst="Innhold 2" />
         </AccordionSection>
-        <AccordionSection
-          id="panel3"
-          title="Panel 3"
-          barChildren="Panel 3"
-          hasError={errorPanels.includes(2)}>
+        <AccordionSection id="panel3" title="Panel 3" barChildren="Panel 3" hasError={errorPanels.includes(2)}>
           <PanelComponent tekst="Innhold 3" />
         </AccordionSection>
         <AccordionSection

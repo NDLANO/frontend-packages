@@ -48,11 +48,7 @@ interface Props {
     altText: string;
   };
 }
-export const ErrorMessage: React.FunctionComponent<Props> = ({
-  children,
-  messages,
-  illustration,
-}) => (
+export const ErrorMessage: React.FunctionComponent<Props> = ({ children, messages, illustration }) => (
   <StyledErrorMessage>
     <Illustration src={illustration.url} alt={illustration.altText} />
     <h1>{messages.title}</h1>

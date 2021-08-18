@@ -14,13 +14,7 @@ const valueShape = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 const SubjectFilter = ({ label, options, values, onChange }) => (
   <div className={searchFilterClasses('', ['subject', 'background'])}>
-    <FilterList
-      onChange={onChange}
-      labelNotVisible
-      options={options}
-      label={label}
-      values={values}
-    />
+    <FilterList onChange={onChange} labelNotVisible options={options} label={label} values={values} />
   </div>
 );
 

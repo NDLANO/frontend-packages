@@ -55,11 +55,11 @@ const FooterExample = () => (
           buttonLabel: 'Kvalitetssikring',
           heading: 'Kvalitetssikring:',
         }}>
-        {optionsQualityInsurance.map(option => (
+        {optionsQualityInsurance.map((option) => (
           <FooterLinkButton
             key={option.name}
             bold
-            onClick={e => {
+            onClick={(e) => {
               option.onClick(e);
             }}>
             {option.name}

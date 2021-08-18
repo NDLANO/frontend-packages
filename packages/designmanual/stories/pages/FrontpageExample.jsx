@@ -19,7 +19,7 @@ import {
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
-import BlogExampleImage2 from '../../images/blog/studereute.jpg';
+import BlogExampleImage2 from '../../images/blog/en-god-skolestart.jpg';
 import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
@@ -40,7 +40,7 @@ const FrontpageExample = ({ showMessageBox, t }) => {
     setSearchFieldValue('');
   };
 
-  const onSearchFieldValueChange = value => {
+  const onSearchFieldValueChange = (value) => {
     if (typeof timeoutLoading === 'number') {
       clearInterval(timeoutLoading);
     }
@@ -77,10 +77,10 @@ const FrontpageExample = ({ showMessageBox, t }) => {
           logoTo="home"
           hideSearch={false}
           onSearchFieldChange={onSearchFieldValueChange}
-          onSearch={e => {
+          onSearch={(e) => {
             e.preventDefault();
           }}
-          resourceToLinkProps={res => ({ to: res.path })}
+          resourceToLinkProps={(res) => ({ to: res.path })}
           allResultUrl={`search?query=${searchFieldValue}`}
           onSearchInputFocus={onSearchInputFocus}
           onInputBlur={onSearchDeactivateFocusTrap}

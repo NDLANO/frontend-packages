@@ -60,8 +60,7 @@ export class Carousel extends Component<Props, State> {
 
     // Check if resize caused carousel to be scrolled to far.
     if (Math.floor(columnsPrSlide) - items.length > slideIndex) {
-      const adjustedSlideIndex =
-        slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
+      const adjustedSlideIndex = slideIndex + (Math.floor(columnsPrSlide) - items.length - slideIndex);
 
       if (items.length < columnsPrSlide) {
         return {
@@ -90,7 +89,7 @@ export class Carousel extends Component<Props, State> {
     );
     this.swipeDistance = 0;
     if (moved !== 0) {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         let slideIndex = prevState.slideIndex + moved;
         if (slideIndex > 0) {
           slideIndex = 0;
@@ -130,7 +129,7 @@ export class Carousel extends Component<Props, State> {
     const { columnsPrSlide, items } = this.props;
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
     if (roundedColumnsPrSlide < items.length) {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         let slideIndex = prevState.slideIndex + roundedColumnsPrSlide * direction;
 
         if (slideIndex > 0) {
@@ -197,12 +196,10 @@ export class Carousel extends Component<Props, State> {
               ref={this.slideshowRef}
               style={{
                 padding: `0 ${margin}px`,
-                width: `${items.length * columnWidth +
-                  distanceBetweenItems * (items.length - 1) +
-                  margin * 2}px`,
+                width: `${items.length * columnWidth + distanceBetweenItems * (items.length - 1) + margin * 2}px`,
                 transform: `translateX(${transformX}px)`,
               }}>
-              {items.map(item => item)}
+              {items.map((item) => item)}
             </StyledSlideContent>
           </div>
         </Swipeable>

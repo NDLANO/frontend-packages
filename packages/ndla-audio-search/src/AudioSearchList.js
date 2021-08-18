@@ -33,7 +33,7 @@ export default function AudioSearchList({
   }
   return (
     <div {...classes('list')}>
-      {audios.map(audio => (
+      {audios.map((audio) => (
         <AudioSearchResult
           key={audio.id}
           audio={audio}

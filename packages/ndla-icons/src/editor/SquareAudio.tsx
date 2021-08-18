@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const SquareAudio = (props: Props) => (
-  <Icon
-    title="SquareAudio"
-    viewBox="0 0 60 46"
-    data-license="CC-BY 4.0"
-    data-source="Knowit"
-    {...props}>
+  <Icon title="SquareAudio" viewBox="0 0 60 46" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path d="M58,0H2A2,2,0,0,0,0,2V44a2,2,0,0,0,2,2H58a2,2,0,0,0,2-2V2A2,2,0,0,0,58,0Zm0,44H2V2H58Z" />
       <path d="M34.2,33a1,1,0,0,0,1-1V15a.9.9,0,0,0-1-1,1,1,0,0,0-1,1V32A1.1,1.1,0,0,0,34.2,33Z" />

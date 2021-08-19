@@ -255,6 +255,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis flere kildematerialer',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis flere eksterne læringsressurser',
+        unGrouped: 'Vis flere ressurser',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
@@ -263,6 +264,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kildematerialer',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis færre eksterne læringsressurser',
+        unGrouped: 'Vis færre ressurser',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
@@ -271,6 +273,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kildematerialer',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Ingen eksterne læringsressurser',
+        unGrouped: 'Ingen ressurser',
       },
     },
   },

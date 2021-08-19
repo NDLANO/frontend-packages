@@ -142,6 +142,7 @@ class SubtopicLinkList extends Component {
       resourceToLinkProps,
       lastOpen,
       t,
+      isUngrouped,
     } = this.props;
 
     const { showAdditionalResources, animateUL } = this.state;
@@ -202,20 +203,42 @@ class SubtopicLinkList extends Component {
                 />
               )}
             </HeaderWrapper>
-            {topic.contentTypeResults.map((result) => (
+            {isUngrouped && (
               <ContentTypeResult
                 animateUL={animateUL}
                 resourceToLinkProps={resourceToLinkProps}
                 onNavigate={closeMenu}
-                key={result.title}
-                contentTypeResult={result}
-                messages={{
-                  noHit: t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
+                contentTypeResult={{
+                  resources: topic.contentTypeResults.flatMap((grouped) =>
+                    grouped.resources.map((res) => ({
+                      ...res,
+                      contentType: grouped.contentType,
+                    })),
+                  ),
                 }}
+                messages={{
+                  noHit: t(`masthead.menu.contentTypeResultsNoHit.unGrouped`),
+                }}
+                unGrouped={isUngrouped}
                 showAdditionalResources={showAdditionalResources}
                 inMenu
               />
-            ))}
+            )}
+            {!isUngrouped &&
+              topic.contentTypeResults.map((result) => (
+                <ContentTypeResult
+                  animateUL={animateUL}
+                  resourceToLinkProps={resourceToLinkProps}
+                  onNavigate={closeMenu}
+                  key={result.title}
+                  contentTypeResult={result}
+                  messages={{
+                    noHit: t(`masthead.menu.contentTypeResultsNoHit.${result.contentType}`),
+                  }}
+                  showAdditionalResources={showAdditionalResources}
+                  inMenu
+                />
+              ))}
             {someResourcesAreAdditional && (
               <Switch
                 id="showSomeAdditionalId"
@@ -246,6 +269,7 @@ SubtopicLinkList.propTypes = {
   defaultCount: PropTypes.number,
   t: PropTypes.func.isRequired,
   lastOpen: PropTypes.bool,
+  isUngrouped: PropTypes.bool,
 };
 
 export default injectT(SubtopicLinkList);

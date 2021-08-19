@@ -22,7 +22,7 @@ const StyledDropDownContainer = styled.div`
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
   ${(props) => props.positionAbsolute && 'position: absolute; z-index: 99;'}
-  width: 100%;
+  width: ${(props) => (props.wide ? '120%' : '100%')};
 `;
 
 const StyledResultList = styled.div`
@@ -75,6 +75,7 @@ const DropdownMenu = ({
   handlePageChange,
   page,
   highlightedIndex,
+  wide,
 }) => {
   if (!isOpen) {
     return null;
@@ -82,6 +83,7 @@ const DropdownMenu = ({
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}
+      wide={wide}
       {...getMenuProps({ isOpen })}
       data-testid="dropdown-items">
       <StyledResultList menuHeight={menuHeight}>
@@ -144,6 +146,7 @@ DropdownMenu.propTypes = {
   hideTotalSearchCount: PropTypes.bool,
   handlePageChange: PropTypes.func,
   page: PropTypes.number,
+  wide: PropTypes.bool,
 };
 
 DropdownMenu.defaultProps = {

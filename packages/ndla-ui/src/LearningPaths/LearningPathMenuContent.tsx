@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { injectT, tType } from '@ndla/i18n';
-import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { LearningPathRead } from '@ndla/icons/contentType';
@@ -55,20 +55,19 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     }
   }
   ${mq.range({ until: breakpoints.desktop })} {
-    ${props =>
+    ${(props) =>
       !props.isOpen &&
       `
       margin-bottom: -${spacing.xsmall};
       margin-top: -${spacing.xsmall};
       transition: margin ${animations.durations.superFast} ease;
     `}
-    ${props =>
+    ${(props) =>
       props.isOpen &&
       `
       a span {
         ${animations.fadeInLeftFromZero()}
-        animation-delay: ${parseInt(animations.durations.superFast) * 1.5 +
-          20 * props.indexNumber}ms;
+        animation-delay: ${parseInt(animations.durations.superFast) * 1.5 + 20 * props.indexNumber}ms;
       }
     `}
     &:first-of-type, &:last-of-type {
@@ -76,7 +75,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       margin-bottom: 0;
     }
   }
-  ${props =>
+  ${(props) =>
     props.current &&
     props.isOpen &&
     `
@@ -92,7 +91,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
       }
     }
   `}
-  ${props =>
+  ${(props) =>
     props.current &&
     `
       background: #fff;
@@ -104,9 +103,9 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     width: 2px;
     background: ${colors.brand.greyLight};
     position: absolute;
-    transform: translate(29px, -${spacing.spacingUnit * 3}px);
+    transform: translate(29px, -${spacingUnit * 3}px);
   }
-  ${props =>
+  ${(props) =>
     !props.afterCurrent &&
     `
     a {
@@ -120,10 +119,10 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
     &:after {
       width: 4px;
       background: ${colors.text.light};
-      transform: translate(28px, -${spacing.spacingUnit * 3}px);
+      transform: translate(28px, -${spacingUnit * 3}px);
     }
   `}
-  ${props =>
+  ${(props) =>
     !props.afterCurrent &&
     !props.current &&
     props.invertedStyle &&
@@ -142,7 +141,7 @@ const StyledMenuItem = styled.li<StyledMenuItemProps>`
 const StyledContentType = styled.div`
   position: relative;
   z-index: 1;
-  margin-right: ${spacing.spacingUnit * 0.75}px;
+  margin-right: ${spacingUnit * 0.75}px;
   max-height: 36px;
 `;
 
@@ -158,7 +157,7 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
     padding: 0;
   }
   margin-bottom: ${spacing.medium};
-  ${props =>
+  ${(props) =>
     !props.isOpen &&
     css`
       ${mq.range({ until: breakpoints.tablet })} {
@@ -241,9 +240,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
 }) => {
   const getContentTypeBadge = (type?: string) => {
     if (!type) {
-      return (
-        <ContentTypeBadge type={constants.contentTypes.LEARNING_PATH} background size="small" />
-      );
+      return <ContentTypeBadge type={constants.contentTypes.LEARNING_PATH} background size="small" />;
     }
     return <ContentTypeBadge type={type} background size="small" />;
   };

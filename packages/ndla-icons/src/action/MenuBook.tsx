@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const MenuBook = (props: Props) => (
-  <Icon
-    title="MenuBook"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon title="MenuBook" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <g>
         <rect fill="none" height="24" width="24" />

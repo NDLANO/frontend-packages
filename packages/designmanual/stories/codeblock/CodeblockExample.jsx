@@ -77,13 +77,7 @@ const CodeExample = () => (
       'Language options: https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/AVAILABLE_LANGUAGES_PRISM.MD',
     ]}>
     <p>Kodekomponent for visning av kodesnutter</p>
-    <Codeblock
-      actionButton={edCloseButton}
-      code={htmlCode}
-      format="markup"
-      title="HTML EKSEMPEL"
-      showCopy={true}
-    />
+    <Codeblock actionButton={edCloseButton} code={htmlCode} format="markup" title="HTML EKSEMPEL" showCopy={true} />
     <Codeblock code={cssCode} format="css" title="CSS EKSEMPEL" />
     <Codeblock code={jsCode} format="jsx" title="JS EKSEMPEL" />
     <Codeblock code="Pure text without highlighting and no title" format="text" />

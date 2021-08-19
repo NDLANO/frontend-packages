@@ -10,17 +10,17 @@ const StyledBanner = styled.div<BannerProps>`
   width: 100%;
   height: 120px;
   margin-top: 0px;
-  background-image: url(${props => props.image});
+  background-image: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center right;
   ${mq.range({ from: breakpoints.tablet })} {
     height: 190px;
-    ${props => props.negativeTopMargin && `margin-top: -30px;`}
+    ${(props) => props.negativeTopMargin && `margin-top: -30px;`}
   }
   ${mq.range({ from: breakpoints.desktop })} {
     height: 220px;
-    ${props => props.negativeTopMargin && `margin-top: -60px;`}
+    ${(props) => props.negativeTopMargin && `margin-top: -60px;`}
   }
 `;
 

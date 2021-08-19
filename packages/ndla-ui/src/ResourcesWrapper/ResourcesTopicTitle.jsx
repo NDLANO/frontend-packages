@@ -70,7 +70,7 @@ const ResourcesTopicTitle = ({
           />
           <Modal
             narrow
-            wrapperFunctionForButton={activateButton => (
+            wrapperFunctionForButton={(activateButton) => (
               <TooltipWrapper>
                 <Tooltip tooltip={t('resource.dialogTooltip')}>{activateButton}</Tooltip>
               </TooltipWrapper>
@@ -80,7 +80,7 @@ const ResourcesTopicTitle = ({
                 <HelpIcon invertedStyle={invertedStyle} />
               </TooltipButton>
             }>
-            {onClose => (
+            {(onClose) => (
               <Fragment>
                 <ModalHeader>
                   <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />

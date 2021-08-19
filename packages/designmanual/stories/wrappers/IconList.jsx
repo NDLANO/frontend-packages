@@ -47,9 +47,7 @@ class IconItem extends Component {
           {hover && (
             <Button
               stripped
-              onClick={() =>
-                copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)
-              }
+              onClick={() => copyTextToClipboard(`import { ${name} } from '@ndla/icons/${folder}';`)}
               style={{ float: 'right' }}
               title="Kopier import kode">
               <Copy />
@@ -69,7 +67,7 @@ IconItem.propTypes = {
 
 const IconList = ({ icons, folder }) => (
   <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
-    {Object.keys(icons).map(key => (
+    {Object.keys(icons).map((key) => (
       <IconItem key={key} name={key} icon={icons[key]} folder={folder} />
     ))}
   </ul>

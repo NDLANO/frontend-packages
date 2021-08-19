@@ -54,10 +54,7 @@ const MakeDndList = ({ disableDND, children, onDragEnd, dragHandle }: Props) => 
                   return null;
                 }
                 return (
-                  <Draggable
-                    key={child.props.id}
-                    draggableId={child.props.connectionId}
-                    index={index}>
+                  <Draggable key={child.props.id} draggableId={child.props.connectionId} index={index}>
                     {(providedInner: DraggableProvided, snapshotInner: DraggableStateSnapshot) => (
                       <div
                         ref={providedInner.innerRef}

@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { spacing, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
+import { spacing, spacingUnit, breakpoints, mq, misc, fonts, colors } from '@ndla/core';
 import { Search } from '@ndla/icons/common';
 import Button from '@ndla/button';
 
@@ -19,11 +19,11 @@ const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
   border: 0;
   display: flex;
   color: ${ndlaFilm ? '#fff' : colors.brand.primary};
-  padding: ${spacing.small} ${spacing.spacingUnit * 0.75}px ${spacing.small} ${spacing.normal};
+  padding: ${spacing.small} ${spacingUnit * 0.75}px ${spacing.small} ${spacing.normal};
   ${hideOnNarrowScreen &&
-    css`
-      display: none;
-    `}
+  css`
+    display: none;
+  `}
 
   align-items: center;
   margin-left: ${spacing.normal};
@@ -47,13 +47,7 @@ const style = (hideOnNarrowScreen, hideOnWideScreen, ndlaFilm) => css`
   }
 `;
 
-const ToggleSearchButton = ({
-  children,
-  ndlaFilm,
-  hideOnNarrowScreen,
-  hideOnWideScreen,
-  ...rest
-}) => (
+const ToggleSearchButton = ({ children, ndlaFilm, hideOnNarrowScreen, hideOnWideScreen, ...rest }) => (
   <Button type="button" css={style(hideOnNarrowScreen, hideOnWideScreen, ndlaFilm)} {...rest}>
     <span css={{ marginRight: spacing.normal, fontWeight: fonts.weight.normal }}>{children}</span>
     <Search />

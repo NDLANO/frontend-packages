@@ -66,7 +66,7 @@ type CompetenceButtonWrapperProps = {
 const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
   display: flex;
   align-items: center;
-  ${props => props.addSpace && `padding-left: 12px;`}
+  ${(props) => props.addSpace && `padding-left: 12px;`}
 `;
 
 type Props = {
@@ -89,9 +89,7 @@ class ArticleHeaderWrapper extends Component<Props, State> {
 
   componentDidMount() {
     if (isMobile) {
-      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll(
-        '.c-article__header',
-      );
+      const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll('.c-article__header');
       if (heroContentList.length === 1) {
         heroContentList[0].scrollIntoView(true);
         window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
@@ -134,19 +132,16 @@ class ArticleHeaderWrapper extends Component<Props, State> {
             {children}
             <CompetenceWrapper>
               {competenceGoalTypes &&
-                competenceGoalTypes.map(type => (
+                competenceGoalTypes.map((type) => (
                   <CompetenceBadge key={type}>
                     <FooterHeaderIcon />
                     <CompetenceBadgeText>{type}</CompetenceBadgeText>
                   </CompetenceBadge>
                 ))}
-              <CompetenceButtonWrapper
-                addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
+              <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
                 <OpenButton onClick={this.openDialog}>
                   <FooterHeaderIcon />
-                  <CompetenceBadgeText>
-                    {t('competenceGoals.showCompetenceGoals')}
-                  </CompetenceBadgeText>
+                  <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
                 </OpenButton>
               </CompetenceButtonWrapper>
             </CompetenceWrapper>

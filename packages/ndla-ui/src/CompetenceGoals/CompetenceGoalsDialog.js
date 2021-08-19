@@ -24,7 +24,7 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, modalProps })
         animation="slide-up"
         backgroundColor="light-gradient"
         narrow>
-        {close => (
+        {(close) => (
           <Fragment>
             <ModalHeader modifier="white modal-body">
               <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />

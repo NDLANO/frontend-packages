@@ -18,7 +18,7 @@ const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
 const winRegExp = new RegExp(/\\/g);
 
-const packagePatterns = getPackages().map(p => {
+const packagePatterns = getPackages().map((p) => {
   // Handle path formatting on Windows
   if (process.platform === 'win32' && process.argv.indexOf('--wincmd') < 0) {
     // On windows the seperator will become \\ and if ran on any terminal that is not
@@ -35,7 +35,7 @@ const watcher = chokidar.watch(packagePatterns, {
   ignored: [IGNORE_PATTERN],
 });
 
-const handleBuildFile = file => {
+const handleBuildFile = (file) => {
   buildFile(file, 'es');
   buildFile(file, 'lib', {
     override: {
@@ -50,7 +50,7 @@ watcher
     // Attach add event listner after initial scan is completed.
     watcher.on('add', handleBuildFile);
   })
-  .on('unlink', file => {
+  .on('unlink', (file) => {
     removeBuildFile(file, 'es');
     removeBuildFile(file, 'lib');
   });

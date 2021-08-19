@@ -21,7 +21,7 @@ class SubjectArchive extends Component {
   }
 
   handleToggleArchive() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const newState = {
         archiveOpen: !prevState.archiveOpen,
       };
@@ -42,7 +42,7 @@ class SubjectArchive extends Component {
     const section = this.state.archiveOpen ? (
       <nav id={archiveId} {...classes('archive')}>
         <ul {...classes('archive-articles')}>
-          {archiveArticles.map(article => (
+          {archiveArticles.map((article) => (
             <li key={article.heading}>
               <SafeLink to={article.url}>{article.heading}</SafeLink>
             </li>
@@ -67,7 +67,7 @@ class SubjectArchive extends Component {
           fixedWidth,
           animate: this.state.minHeight,
         })}
-        ref={ref => {
+        ref={(ref) => {
           this.wrapperRef = ref;
         }}>
         <SectionHeading large className={classes('section-heading').className}>

@@ -15,22 +15,8 @@ export {
 
 export { resourceTypes, getResourceTypeNamespace, metaTypes } from './CCRel';
 
-export {
-  BY,
-  SA,
-  NC,
-  ND,
-  PD,
-  CC0,
-  CC,
-  COPYRIGHTED,
-  getLicenseRightByAbbreviation,
-} from './licenseRights';
+export { BY, SA, NC, ND, PD, CC0, CC, COPYRIGHTED, getLicenseRightByAbbreviation } from './licenseRights';
 
-export {
-  getLicenseByAbbreviation,
-  getLicenseByNBTitle,
-  isCreativeCommonsLicense,
-} from './licenses';
+export { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense } from './licenses';
 
 export { LicenseByline, LicenseDescription } from './LicenseByline';

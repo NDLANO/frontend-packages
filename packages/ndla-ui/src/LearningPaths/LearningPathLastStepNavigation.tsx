@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
-import { fonts, spacing } from '@ndla/core';
+import { fonts, spacing, spacingUnit } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { OneColumn, LayoutItem } from '../index-javascript';
@@ -35,7 +35,7 @@ const StyledLinkWrapper = styled.div`
 
 const OneColumnCss = css`
   background: #fff;
-  padding-top: ${spacing.spacingUnit * 3}px;
+  padding-top: ${spacingUnit * 3}px;
   margin-top: -${spacing.normal};
 `;
 

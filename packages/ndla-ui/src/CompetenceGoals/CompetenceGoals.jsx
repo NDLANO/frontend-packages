@@ -72,7 +72,7 @@ class CompetenceGoals extends Component {
                     />
                   </Fragment>
                 )}
-                {topics.map(topic => (
+                {topics.map((topic) => (
                   <div
                     {...classes('topic', {
                       expandable: true,
@@ -86,7 +86,7 @@ class CompetenceGoals extends Component {
                         aria-expanded={this.state.expanded === topic.heading}
                         aria-controls={id}
                         onClick={() => {
-                          this.setState(prevState => {
+                          this.setState((prevState) => {
                             let expanded = null;
                             if (prevState.expanded !== topic.heading) {
                               expanded = topic.heading;

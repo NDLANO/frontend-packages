@@ -5,7 +5,7 @@ import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { Forward } from '@ndla/icons/common';
 import { injectT, tType } from '@ndla/i18n';
-import { spacing, colors, breakpoints, fonts, mq } from '@ndla/core';
+import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 
@@ -28,8 +28,7 @@ const StyledImage = styled.div<StyledImageProps>`
   justify-content: flex-end;
   align-items: center;
   min-height: 100px;
-  padding: ${spacing.spacingUnit}px ${spacing.medium} ${spacing.spacingUnit}px
-    ${spacing.spacingUnit}px;
+  padding: ${spacingUnit}px ${spacing.medium} ${spacingUnit}px ${spacingUnit}px;
 
   ${(props: StyledImageProps) =>
     props.imageUrl &&
@@ -60,7 +59,7 @@ const StyledText = styled.span<StyledTextProps>`
 
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('18px', '26px')};
-    padding-right: ${spacing.spacingUnit}px;
+    padding-right: ${spacingUnit}px;
     padding-left: 0;
     width: 66.6%;
   }

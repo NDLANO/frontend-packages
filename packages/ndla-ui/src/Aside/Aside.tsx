@@ -15,7 +15,16 @@ const classes = BEMHelper({
   name: 'aside',
 });
 
-const Aside = ({ children, narrowScreen, dangerouslySetInnerHTML, wideScreen }) => {
+interface Props {
+  dangerouslySetInnerHTML?: {
+    __html: string;
+  };
+  children?: React.ReactNode;
+  narrowScreen?: boolean;
+  wideScreen?: boolean;
+}
+
+const Aside = ({ children, narrowScreen = false, dangerouslySetInnerHTML, wideScreen = false }: Props) => {
   const modifiers = {
     narrowScreen,
     wideScreen,
@@ -36,11 +45,6 @@ Aside.propTypes = {
   children: PropTypes.node,
   narrowScreen: PropTypes.bool,
   wideScreen: PropTypes.bool,
-};
-
-Aside.defaultProps = {
-  narrowScreen: null,
-  wideScreen: null,
 };
 
 export default Aside;

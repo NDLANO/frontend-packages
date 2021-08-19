@@ -10,9 +10,7 @@ type Props = {
 
 type FadeType = 'fadeIn' | 'fadeInTop' | 'fadeInBottom' | 'fadeInScaled';
 
-const fadeOut = (
-  fadeIn: FadeType,
-): 'fadeOutTop' | 'fadeOutBottom' | 'fadeOutScaled' | 'fadeOut' => {
+const fadeOut = (fadeIn: FadeType): 'fadeOutTop' | 'fadeOutBottom' | 'fadeOutScaled' | 'fadeOut' => {
   if (fadeIn === 'fadeInTop') return 'fadeOutTop';
   if (fadeIn === 'fadeInBottom') return 'fadeOutBottom';
   if (fadeIn === 'fadeInScaled') return 'fadeOutScaled';

@@ -15,10 +15,7 @@ import FigureWithLicense from '../article/FigureWithLicense';
 import FigureImage from '../article/FigureImage';
 
 const Video = () => (
-  <FigureWithLicense
-    type="full-column"
-    resizeIframe
-    caption="Utholdenhet - animasjon av oksygentransporten">
+  <FigureWithLicense type="full-column" resizeIframe caption="Utholdenhet - animasjon av oksygentransporten">
     <iframe
       title="Video: Utholdenhet - animasjon av oksygentransporten"
       height="270"
@@ -31,18 +28,11 @@ const Video = () => (
 );
 
 const Image = () => (
-  <FigureImage
-    type="full-column"
-    alt="alt"
-    src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg"
-  />
+  <FigureImage type="full-column" alt="alt" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
 );
 
 const H5p = () => (
-  <FigureWithLicense
-    type="full-column"
-    resizeIframe
-    caption="Utholdenhet - animasjon av oksygentransporten">
+  <FigureWithLicense type="full-column" resizeIframe caption="Utholdenhet - animasjon av oksygentransporten">
     <iframe
       title="Ekskresjon"
       loading="lazy"

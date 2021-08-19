@@ -1,10 +1,11 @@
 {
   "name": "@ndla/editor",
-  "version": "0.9.15",
+  "version": "0.9.17",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-editor/"
@@ -12,14 +13,20 @@
   "keywords": [
     "ndla"
   ],
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "author": "ndla@knowit.no",
   "files": [
     "lib",
-    "es"
+    "es",
+    "types"
   ],
   "dependencies": {
-    "@ndla/core": "^0.6.39",
-    "@ndla/icons": "^0.7.7",
+    "@ndla/core": "^0.7.0",
+    "@ndla/icons": "^0.7.8",
     "@types/react-beautiful-dnd": "^11.0.3",
     "prismjs": "^1.22.0",
     "react-beautiful-dnd": "^12.0.0",

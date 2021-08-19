@@ -25,7 +25,7 @@ export const StyledList = styled.ul<Props>`
   padding: 0;
   margin: 0;
   display: flex;
-  ${p =>
+  ${(p) =>
     p.highlightCC
       ? css`
           & li:first-of-type {
@@ -38,25 +38,15 @@ export const StyledList = styled.ul<Props>`
           }
         `
       : ''};
-  flex-direction: ${p => (p.horizontal ? 'row' : 'column')};
-  color: ${p => p.color || 'black'};
-  fill: ${p => p.color || 'black'};
-  margin-right: ${p => (p.marginRight ? spacing.small : 0)};
+  flex-direction: ${(p) => (p.horizontal ? 'row' : 'column')};
+  color: ${(p) => p.color || 'black'};
+  fill: ${(p) => p.color || 'black'};
+  margin-right: ${(p) => (p.marginRight ? spacing.small : 0)};
 `;
 
-const StyledLicenseIconList = ({
-  highlightCC,
-  horizontal,
-  color,
-  marginRight,
-  children,
-}: Props) => {
+const StyledLicenseIconList = ({ highlightCC, horizontal, color, marginRight, children }: Props) => {
   return (
-    <StyledList
-      marginRight={marginRight}
-      color={color}
-      horizontal={horizontal}
-      highlightCC={highlightCC}>
+    <StyledList marginRight={marginRight} color={color} horizontal={horizontal} highlightCC={highlightCC}>
       {children}
     </StyledList>
   );

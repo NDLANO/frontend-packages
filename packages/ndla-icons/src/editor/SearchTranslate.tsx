@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const SearchTranslate = (props: Props) => (
-  <Icon
-    title="SearchTranslate"
-    viewBox="0 0 58.5 41"
-    data-license="CC-BY 4.0"
-    data-source="Knowit"
-    {...props}>
+  <Icon title="SearchTranslate" viewBox="0 0 58.5 41" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <clipPath>
         <path d="M15.2,12.1l.3-1.2c.4-1.1.7-2.4,1-3.5h.1c.2,1.1.6,2.4.9,3.5l.4,1.2Zm4.1,4.5h1.6L17.5,6.1H15.6L12.1,16.6h1.7l.8-3h3.8Z" />

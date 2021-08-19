@@ -17,7 +17,7 @@ const StyledWrapper = styled.section``;
 
 const StyledIngress = styled.div<InvertItProps>`
   max-width: 612px;
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       color: #fff;
@@ -28,9 +28,9 @@ const StyledH1 = styled.h1<InvertItProps>`
   ${fonts.sizes('24px', '28px')}
   margin: ${spacing.medium} ${spacing.normal} ${spacing.normal} 0;
   font-weight: ${fonts.weight.bold};
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
-  align-items:center;
+  align-items: center;
 
   ${mq.range({ from: breakpoints.tablet })} {
     margin: 40px ${spacing.normal} 18px 0;
@@ -41,7 +41,7 @@ const StyledH1 = styled.h1<InvertItProps>`
     margin: 50px ${spacing.normal} 24px 0;
     ${fonts.sizes('38px', '32px')};
   }
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       color: #fff;
@@ -49,7 +49,7 @@ const StyledH1 = styled.h1<InvertItProps>`
 `;
 
 const LoaderText = styled.p<InvertItProps>`
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       color: #fff;
@@ -80,7 +80,7 @@ const StyledButtonWrapper = styled.div<InvertItProps>`
   margin-top: ${spacing.small};
   padding: ${spacing.xsmall} 0 ${spacing.xsmall} ${spacing.medium};
   border-left: 6px solid ${colors.brand.light};
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       button {
@@ -98,7 +98,7 @@ const StyledContentWrapper = styled.div<InvertItProps>`
   margin-top: 0;
   border-left: 6px solid ${colors.brand.light};
 
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       background: #fff;
@@ -164,9 +164,7 @@ export const NavigationTopicAbout = ({
               </Button>
             </StyledButtonWrapper>
           </StyledIngress>
-          {showContent && (
-            <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>
-          )}
+          {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}
         </>
       )}
     </StyledWrapper>

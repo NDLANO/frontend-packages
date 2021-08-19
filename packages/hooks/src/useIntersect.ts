@@ -6,9 +6,7 @@ const DEFAULT_ROOT_MARGIN = '0px';
 const DEFAULT_THRESHOLD = [0];
 
 export type IntersectionObserverHookRefCallbackNode = Element | null;
-export type IntersectionObserverHookRefCallback = (
-  node: IntersectionObserverHookRefCallbackNode,
-) => void;
+export type IntersectionObserverHookRefCallback = (node: IntersectionObserverHookRefCallbackNode) => void;
 
 export type IntersectionObserverHookResult = [
   IntersectionObserverHookRefCallback,
@@ -16,11 +14,7 @@ export type IntersectionObserverHookResult = [
 ];
 
 const IntersectionObserverBrowserSupport = () =>
-  !(
-    typeof window === 'undefined' ||
-    !('IntersectionObserver' in window) ||
-    !('IntersectionObserverEntry' in window)
-  );
+  !(typeof window === 'undefined' || !('IntersectionObserver' in window) || !('IntersectionObserverEntry' in window));
 
 // For more info:
 // https://developers.google.com/web/updates/2016/04/intersectionobserver

@@ -6,7 +6,6 @@
  *
  */
 
-export { default as AuthorInfo } from './AuthorInfo';
 export { default as ContentCard } from './ContentCard';
 export { InfoBox } from './InfoBox';
 
@@ -35,7 +34,6 @@ export {
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
-export { default as Aside } from './Aside';
 export { default as FactBox } from './FactBox';
 export { default as FileList, File } from './FileList';
 
@@ -81,13 +79,7 @@ export { CompetenceGoalTab } from './CompetenceGoalTab';
 
 export { default as NoContentBox } from './NoContentBox';
 
-export {
-  default as ResourcesWrapper,
-  ResourcesTitle,
-  ResourcesTopicTitle,
-} from './ResourcesWrapper';
-export { default as ResourceGroup } from './ResourceGroup';
-export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
+export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,

@@ -136,7 +136,7 @@ export const topicList = [
   },
 ];
 
-export const topicListFilm = topicList.map(topic => ({
+export const topicListFilm = topicList.map((topic) => ({
   ...topic,
   metaImage: { url: 'http://placehold.it/200x160', alt: 'some image' },
 }));
@@ -179,11 +179,7 @@ export const subtopicList = [
   },
 ];
 
-const contentTypeResultsMenu = [
-  contentTypeResults[0],
-  contentTypeResults[1],
-  contentTypeResults[2],
-];
+const contentTypeResultsMenu = [contentTypeResults[0], contentTypeResults[1], contentTypeResults[2]];
 
 export const topicMenu = [
   {
@@ -195,6 +191,11 @@ export const topicMenu = [
         name: 'Idéutvikling',
         contentUri: null,
         contentTypeResults: contentTypeResultsMenu,
+        metadata: {
+          customFields: {
+            'topic-resources': 'ungrouped',
+          },
+        },
       },
       {
         id: 'urn:topic:169397',

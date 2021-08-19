@@ -14,15 +14,7 @@ import { uuid } from '@ndla/util';
 import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function FigureWithLicense({
-  children,
-  hasHiddenCaption,
-  messages,
-  resizeIframe,
-  caption,
-  type,
-  t,
-}) {
+function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe, caption, type, t }) {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });

@@ -41,7 +41,7 @@ class Popover extends Component {
           label={messages.filterLabel}
           values={this.state.values}
           modifiers="search-popover"
-          onChange={values => {
+          onChange={(values) => {
             this.setState({
               values,
             });
@@ -86,19 +86,13 @@ const PopoverFilter = ({ messages, values, onChange, ...rest }) => {
   );
   return (
     <Modal animation="slide-up" size="medium" activateButton={buttonContent}>
-      {onClose => (
+      {(onClose) => (
         <Fragment>
           <ModalHeader modifiers="white">
             <ModalCloseButton title="Lukk" onClick={onClose} />
           </ModalHeader>
           <ModalBody modifier="no-side-padding-mobile">
-            <Popover
-              close={onClose}
-              onChange={onChange}
-              messages={messages}
-              {...rest}
-              values={values}
-            />
+            <Popover close={onClose} onChange={onChange} messages={messages} {...rest} values={values} />
           </ModalBody>
         </Fragment>
       )}

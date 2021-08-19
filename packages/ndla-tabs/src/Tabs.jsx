@@ -34,7 +34,7 @@ class Tabs extends Component {
       // We only allow horisontal scrolling for phones..
       const widthTotal = this.tabRef.current.offsetWidth;
       let childrensWidthsTotal = 0;
-      this.tabRef.current.querySelectorAll('.c-tabs__list li').forEach(el => {
+      this.tabRef.current.querySelectorAll('.c-tabs__list li').forEach((el) => {
         childrensWidthsTotal += el.offsetWidth;
       });
       if (childrensWidthsTotal > widthTotal) {

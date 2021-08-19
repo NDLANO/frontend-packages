@@ -11,7 +11,7 @@ import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import throttle from 'lodash/throttle';
-import { breakpoints, mq, spacing, colors, fonts, animations } from '@ndla/core';
+import { breakpoints, mq, spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
@@ -21,10 +21,10 @@ const IMAGE_WIDTH = 143;
 
 const StyledNewLetter = styled.h2`
   color: #fff;
-  margin: ${spacing.large} 0 ${spacing.spacingUnit * 0.75}px;
+  margin: ${spacing.large} 0 ${spacingUnit * 0.75}px;
   ${fonts.sizes(26, 1.1)};
   ${mq.range({ from: breakpoints.tablet })} {
-    text-indent: ${spacing.spacingUnit * 0.75}px;
+    text-indent: ${spacingUnit * 0.75}px;
   }
   &:after {
     content: '';
@@ -49,7 +49,7 @@ type MovieItemProps = {
 };
 
 const MovieItem = styled.div<MovieItemProps>`
-  margin: 0 0 ${spacing.spacingUnit * 0.75}px;
+  margin: 0 0 ${spacingUnit * 0.75}px;
   display: inline-flex;
   &:last-child {
     margin-bottom: ${spacing.large};
@@ -87,9 +87,9 @@ const MovieImage = styled.div<movieImageType>`
     `}
   background-size: cover;
   background-position: center center;
-  margin: 0 ${spacing.spacingUnit * 0.75}px 0 0;
+  margin: 0 ${spacingUnit * 0.75}px 0 0;
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacing.spacingUnit * 0.75}px;
+    margin-left: ${spacingUnit * 0.75}px;
     width: ${IMAGE_WIDTH}px;
     height: 90px;
   }
@@ -137,7 +137,7 @@ type isIEProps = {
 const StyledSafeLink = styled(SafeLink)<isIEProps>`
   box-shadow: none;
   display: flex;
-  ${props =>
+  ${(props) =>
     props.isIE11 &&
     css`
       flex: 1;
@@ -169,7 +169,7 @@ type visibleImagesProps = {
 const hasForEachPolyfill = () => {
   // Polyfill for ie11
   if ('NodeList' in window && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = function(callback, thisArg) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
       thisArg = thisArg || window;
       for (var i = 0; i < this.length; i++) {
         callback.call(thisArg, this[i], i, this);
@@ -211,7 +211,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies, local
         }
       });
     }
-    setVisibleImages(visibleImages => ({ ...visibleImages, ...updates }));
+    setVisibleImages((visibleImages) => ({ ...visibleImages, ...updates }));
   };
 
   useEffect(() => {
@@ -233,8 +233,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies, local
     <StyledWrapper ref={wrapperRef}>
       {movies.map((movie: movieType, index: number) => {
         const currentLetter = movie.title.substr(0, 1);
-        const isNewLetter =
-          currentLetter.localeCompare(previousLetter, locale) === 1 && isLetter(movie.title);
+        const isNewLetter = currentLetter.localeCompare(previousLetter, locale) === 1 && isLetter(movie.title);
         previousLetter = currentLetter;
         const inView: boolean | null = visibleImages ? visibleImages[index] : null;
         return (

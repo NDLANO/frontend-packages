@@ -14,12 +14,10 @@ import { Spinner } from '@ndla/editor';
 import { Search } from '@ndla/icons/common';
 import { mockTypeahead } from '../../dummydata';
 
-const fetchData = lowerCaseValue => {
-  return new Promise(resolve => {
+const fetchData = (lowerCaseValue) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      const returnData = mockTypeahead.filter(
-        mock => mock.title.toLowerCase().indexOf(lowerCaseValue) !== -1,
-      );
+      const returnData = mockTypeahead.filter((mock) => mock.title.toLowerCase().indexOf(lowerCaseValue) !== -1);
       resolve(returnData);
     }, 500);
   });
@@ -61,7 +59,7 @@ class MultiSelectDropdownExample extends Component {
   }
 
   onChange(selected) {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       addedData: [...prevState.addedData, selected],
       value: '',
       isOpen: this.state.keepOpen !== '1',
@@ -82,30 +80,19 @@ class MultiSelectDropdownExample extends Component {
 
   removeItem(item) {
     console.log(item); // eslint-disable-line no-console
-    this.setState(prevState => ({
-      addedData: prevState.addedData.filter(it => it.title !== item),
+    this.setState((prevState) => ({
+      addedData: prevState.addedData.filter((it) => it.title !== item),
     }));
   }
 
   render() {
-    const {
-      addedData,
-      data,
-      loading,
-      useLayout,
-      useTags,
-      keepOpen,
-      isOpen,
-      showPagination,
-      value,
-    } = this.state;
+    const { addedData, data, loading, useLayout, useTags, keepOpen, isOpen, showPagination, value } = this.state;
 
     const dataFormatted = data.map((item, idx) => ({
       title: item.title,
       description: useLayout !== '4' && item.description,
       disabledText: idx === 0 ? 'Finnes allerede' : undefined,
-      image:
-        useLayout === '1' ? item.image : useLayout === '2' && <SubjectMaterialBadge background />,
+      image: useLayout === '1' ? item.image : useLayout === '2' && <SubjectMaterialBadge background />,
       alt: item.alt,
     }));
 
@@ -113,7 +100,7 @@ class MultiSelectDropdownExample extends Component {
       value,
       onChange: this.onSearch,
       placeholder: 'Type a name',
-      onKeyDown: async event => {
+      onKeyDown: async (event) => {
         if (event.key === 'ArrowDown') {
           await this.onSearch(event);
         }
@@ -134,7 +121,7 @@ class MultiSelectDropdownExample extends Component {
             { title: 'Kun tekst', value: '3' },
             { title: 'Kun tittel', value: '4' },
           ]}
-          onChange={useLayout => {
+          onChange={(useLayout) => {
             this.setState({
               useLayout,
             });
@@ -148,7 +135,7 @@ class MultiSelectDropdownExample extends Component {
             { title: 'Tags i input', value: '1' },
             { title: 'Tags utenfor input', value: '2' },
           ]}
-          onChange={useTags => {
+          onChange={(useTags) => {
             this.setState({
               useTags,
             });
@@ -162,7 +149,7 @@ class MultiSelectDropdownExample extends Component {
             { title: 'Lukk når lagt til', value: '1' },
             { title: 'Behold åpen etter valg', value: '2' },
           ]}
-          onChange={keepOpen => {
+          onChange={(keepOpen) => {
             this.setState({
               keepOpen,
             });
@@ -176,7 +163,7 @@ class MultiSelectDropdownExample extends Component {
             { title: 'Uten', value: '1' },
             { title: 'Med', value: '2' },
           ]}
-          onChange={showPagination => {
+          onChange={(showPagination) => {
             this.setState({
               showPagination,
             });
@@ -184,9 +171,9 @@ class MultiSelectDropdownExample extends Component {
         />
         {useTags !== '1' && (
           <FormPills
-            onClick={id => {
-              this.setState(prevState => ({
-                addedData: prevState.addedData.filter(addedItemId => addedItemId !== id),
+            onClick={(id) => {
+              this.setState((prevState) => ({
+                addedData: prevState.addedData.filter((addedItemId) => addedItemId !== id),
               }));
             }}
             labels={addedData}
@@ -195,7 +182,7 @@ class MultiSelectDropdownExample extends Component {
         <FieldHeader title="Countries" subTitle="in Europe" />
         <Downshift
           onChange={this.onChange}
-          itemToString={item => item?.title || ''}
+          itemToString={(item) => item?.title || ''}
           onStateChange={this.handleStateChange}
           isOpen={isOpen}>
           {({ getInputProps, getRootProps, getMenuProps, getItemProps, highlightedIndex }) => {

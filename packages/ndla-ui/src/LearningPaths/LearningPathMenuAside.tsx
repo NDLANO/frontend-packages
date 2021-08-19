@@ -13,7 +13,7 @@ import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
-import { colors, spacing, fonts, mq, breakpoints, animations } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 
 const infoTextCSS = css`
@@ -49,12 +49,12 @@ type StyledAsideProps = {
 
 const StyledAside = styled.aside<StyledAsideProps>`
   display: none;
-  padding-left: ${spacing.spacingUnit * 2.25}px;
+  padding-left: ${spacingUnit * 2.25}px;
   ${mq.range({ from: breakpoints.desktop })} {
     display: block;
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
-    ${props =>
+    ${(props) =>
       props.isOpen &&
       css`
         display: block;
@@ -66,10 +66,10 @@ const StyledAside = styled.aside<StyledAsideProps>`
   }
   ${mq.range({ until: breakpoints.tablet })} {
     display: block;
-    padding-left: ${spacing.spacingUnit * 1.25}px;
+    padding-left: ${spacingUnit * 1.25}px;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    ${props =>
+    ${(props) =>
       props.invertedStyle &&
       `
       color: #fff;
@@ -82,7 +82,7 @@ type StyledSafeLinkButtonProps = {
 };
 
 const StyledSafeLinkButton = styled(SafeLinkButton)<StyledSafeLinkButtonProps>`
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       ${mq.range({ from: breakpoints.tablet })} {

@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const SharedResource = (props: Props) => (
-  <Icon
-    title="SharedResource"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Keyteq"
-    {...props}>
+  <Icon title="SharedResource" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Keyteq" {...props}>
     <g>
       <title>Delte ressurser</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">

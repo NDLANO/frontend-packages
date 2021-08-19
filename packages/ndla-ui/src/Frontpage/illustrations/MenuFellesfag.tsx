@@ -9,12 +9,7 @@
 import React from 'react';
 
 const Illustration: React.FunctionComponent = () => (
-  <svg
-    width="940px"
-    height="175px"
-    viewBox="0 0 940 175"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg">
+  <svg width="940px" height="175px" viewBox="0 0 940 175" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="MenuOpen3" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="Group" transform="translate(-0.655172, 9.000000)" stroke="#000000">
         <path

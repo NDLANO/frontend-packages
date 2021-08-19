@@ -12,8 +12,8 @@ const classes = BEMHelper('c-subject-header');
 const SubjectHeader = ({ images, heading, showFFBadge }) => (
   <header {...classes()}>
     {images &&
-      images.map(image =>
-        image.types.map(type => (
+      images.map((image) =>
+        image.types.map((type) => (
           <div
             key={`${image.url}${type}`}
             {...classes('background', type)}

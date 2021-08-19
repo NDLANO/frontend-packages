@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, fonts, misc } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, misc } from '@ndla/core';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.xsmall};
@@ -72,8 +72,8 @@ const whiteCSS = css`
 const ComponentWrapper = styled.div`
   display: flex;
   label {
-    width: ${spacing.spacingUnit * 4}px;
-    max-width: ${spacing.spacingUnit * 4}px;
+    width: ${spacingUnit * 4}px;
+    max-width: ${spacingUnit * 4}px;
     padding: 20px ${spacing.small} ${spacing.small} 0;
     text-transform: uppercase;
     font-weight: ${fonts.weight.semibold};
@@ -85,10 +85,10 @@ const FormWarningText = styled.span`
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
-  ${props =>
+  ${(props) =>
     props.withLabel &&
     css`
-      padding-left: ${spacing.spacingUnit * 4}px;
+      padding-left: ${spacingUnit * 4}px;
     `}
 `;
 
@@ -158,30 +158,25 @@ class Input extends React.Component {
         <ComponentWrapper>
           {label && <label>{label}</label>}
           <Component
-            css={[
-              inputWrapperCSS,
-              this.state.hasFocus && hasFocusCSS,
-              white && whiteCSS,
-              customCSS && customCSS,
-            ]}
+            css={[inputWrapperCSS, this.state.hasFocus && hasFocusCSS, white && whiteCSS, customCSS && customCSS]}
             ref={this.wrapperRef}>
             {tags && tags}
             {iconLeft && !tags && iconLeft}
             <InputComponent
               ref={this.inputRef}
-              onChange={e => {
+              onChange={(e) => {
                 this.onCheckHeight();
                 if (onChange) {
                   onChange(e);
                 }
               }}
-              onFocus={e => {
+              onFocus={(e) => {
                 this.handleFocus();
                 if (onFocus) {
                   onFocus(e);
                 }
               }}
-              onBlur={e => {
+              onBlur={(e) => {
                 this.handleBlur();
                 if (onBlur) {
                   onBlur(e);

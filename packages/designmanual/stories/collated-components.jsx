@@ -60,8 +60,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Artikkel informasjonslinje">
         <p>
-          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk
-          av innhold, ikon hvis artikkel er tilleggsstoff og dato for forrige oppdatering.
+          Innholder informasjon om forfatter(e), lisensrettigheter, beskrivelse av regler ved bruk av innhold, ikon hvis
+          artikkel er tilleggsstoff og dato for forrige oppdatering.
         </p>
       </StoryIntro>
       <StoryBody layout="extend">
@@ -180,8 +180,8 @@ storiesOf('Sammensatte moduler', module)
       <Breadcrumb />
       <h2 className="u-heading">Brødsmulesti-blokkeksempel</h2>
       <p>
-        Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den ligger i header. På små
-        enheter vil blokkvarianten gjemmes. Brødsmulestien er fortsatt tilgjengelig øverst på siden.
+        Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den ligger i header. På små enheter vil
+        blokkvarianten gjemmes. Brødsmulestien er fortsatt tilgjengelig øverst på siden.
       </p>
       <BreadcrumbBlock />
     </Center>
@@ -201,17 +201,13 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Emneliste">
         <p>Emnelister brukes typisk innen et fag eller emne for å vise underliggende emner.</p>
         <p>
-          Ved klikk på emnetittel kommer brukerne til emneartikkelen for emnet de klikker på. Se
-          også siden for Emnebeskrivelse.
+          Ved klikk på emnetittel kommer brukerne til emneartikkelen for emnet de klikker på. Se også siden for
+          Emnebeskrivelse.
         </p>
       </StoryIntro>
       <StoryBody>
         <LanguageSelectorStory />
-        <TopicIntroductionList
-          toTopic={() => '#'}
-          topics={topicList}
-          toggleAdditionalCores={() => {}}
-        />
+        <TopicIntroductionList toTopic={() => '#'} topics={topicList} toggleAdditionalCores={() => {}} />
       </StoryBody>
     </div>
   ))
@@ -225,10 +221,9 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Kontrollerte faner</h2>
       <div className="o-wrapper--inner">
         <p>
-          Knapper kan også brukes til å kontrollere fanene. En mulighet her er f.eks. å ha en knapp
-          nederst inni en fane for å la brukeren gå til neste fane uten å først måtte scrolle opp
-          til fanetoppen. Dette benyttes ikke foreløpig, men kan brukes ved behov i senere
-          utvikling.
+          Knapper kan også brukes til å kontrollere fanene. En mulighet her er f.eks. å ha en knapp nederst inni en fane
+          for å la brukeren gå til neste fane uten å først måtte scrolle opp til fanetoppen. Dette benyttes ikke
+          foreløpig, men kan brukes ved behov i senere utvikling.
         </p>
         <TabsControlled />
       </div>
@@ -238,9 +233,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Filter">
         <p>
-          Alle elementer vises enten ingen eller alle filtervalg er valgt. Når brukeren klikker på
-          et filter, skal dette umiddelbart reflekteres i innholdet som filtreres, uten at siden
-          lastes på nytt.
+          Alle elementer vises enten ingen eller alle filtervalg er valgt. Når brukeren klikker på et filter, skal dette
+          umiddelbart reflekteres i innholdet som filtreres, uten at siden lastes på nytt.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -348,7 +342,7 @@ storiesOf('Sammensatte moduler', module)
                 { title: 'R2', value: 'R2' },
                 { title: 'S1', value: 'S1' },
               ]}
-              onChange={value => {
+              onChange={(value) => {
                 console.log('changed to', value); // eslint-disable-line no-console
               }}
             />
@@ -364,7 +358,7 @@ storiesOf('Sammensatte moduler', module)
               ]}
               uniqeIds
               label="Velg fag"
-              onChange={value => {
+              onChange={(value) => {
                 console.log('changed to', value); // eslint-disable-line no-console
               }}
             />
@@ -424,13 +418,7 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
-      <Pager
-        page={1}
-        lastPage={3}
-        query={{ query: 'Medier' }}
-        pageItemComponentClass="button"
-        pathname="#"
-      />
+      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
       <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
       <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
     </Center>
@@ -490,8 +478,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Bildekarusell">
         <p>
-          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av
-          størrelser, og selve bildekarusellen.
+          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av størrelser, og selve
+          bildekarusellen.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -503,14 +491,12 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Læringsressurser/launchpad">
         <p>
-          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om
-          tilleggsstoff-filteret aktiveres, vil ressursopplistingen utvides med tilleggsstoff.
-          Tilleggsstoff markeres med T-ikon, og mindre mettet bakgrunnsfarge.{' '}
+          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om tilleggsstoff-filteret aktiveres, vil
+          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon.
         </p>
         <p>
-          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren
-          aktiverer tilleggsstoff for Fagstoff, vil bare Fagstoff-listen oppdateres med
-          tilleggsstoff-elementer.
+          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren aktiverer
+          tilleggsstoff for Fagstoff, vil bare Fagstoff-listen oppdateres med tilleggsstoff-elementer.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -521,10 +507,7 @@ storiesOf('Sammensatte moduler', module)
   .add('Ugrupperte læringsressurser', () => (
     <div>
       <StoryIntro title="Ugrupperte ressurser">
-        <p>
-          Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i
-          ei liste.
-        </p>
+        <p>Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i ei liste.</p>
       </StoryIntro>
       <StoryBody>
         <Resources showUngrouped />
@@ -537,25 +520,21 @@ storiesOf('Sammensatte moduler', module)
       <StoryBody>
         <h2>Overskrift</h2>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <FileListExample />
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
         <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og
-          historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem du
-          eventuelt jobber sammen med i klassen.
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
       </StoryBody>
     </div>
@@ -564,8 +543,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Feilmelding">
         <p>
-          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når
-          det har oppstått en feil i systemet, f.eks. ved 404- eller 503-feil.
+          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
+          feil i systemet, f.eks. ved 404- eller 503-feil.
         </p>
       </StoryIntro>
       <ErrorMessage
@@ -588,8 +567,8 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <StoryIntro title="Oversettelse">
         <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse
-          tilfellene heller bruke en oversettelse-liste.
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse tilfellene heller
+          bruke en oversettelse-liste.
         </p>
       </StoryIntro>
       <StoryBody>
@@ -661,8 +640,8 @@ storiesOf('Sammensatte moduler', module)
     <PageContainer>
       <StoryIntro title="Meldingsboks">
         <p>
-          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom den er sticky så
-          vises den i toppen dersom man scroller forbi.
+          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom den er sticky så vises den i toppen
+          dersom man scroller forbi.
         </p>
       </StoryIntro>
       <Content>

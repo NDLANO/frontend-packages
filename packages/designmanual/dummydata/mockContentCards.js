@@ -3,8 +3,7 @@ const contentCards = [
     title: 'Holde presentasjon',
     type: 'Øvelse',
     text: 'Her finner du mange gode råd',
-    image:
-      'https://images.pexels.com/photos/7369/startup-photos.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
+    image: 'https://images.pexels.com/photos/7369/startup-photos.jpg?w=1260&h=750&auto=compress&cs=tinysrgb',
     toLinkProps: () => ({ to: '#1' }),
     id: '1',
   },
@@ -21,8 +20,7 @@ const contentCards = [
     title: 'Eksamen',
     type: 'Vertøy',
     text: 'Hvordan bør du forberede deg?',
-    image:
-      'https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
+    image: 'https://images.pexels.com/photos/256520/pexels-photo-256520.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
     toLinkProps: () => ({ to: '#3' }),
     id: '3',
   },
@@ -30,8 +28,7 @@ const contentCards = [
     title: 'Skisseteknikk',
     type: 'Fagartikkel',
     text: 'Skisseteknik for idéutvikling',
-    image:
-      'https://images.pexels.com/photos/820673/pexels-photo-820673.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
+    image: 'https://images.pexels.com/photos/820673/pexels-photo-820673.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb',
     toLinkProps: () => ({ to: '#4' }),
     id: '4',
   },

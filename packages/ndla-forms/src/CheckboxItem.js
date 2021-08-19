@@ -56,7 +56,7 @@ const CheckboxLabel = styled.label`
     padding: 0;
     background: #fff;
     border: 2px solid ${colors.brand.tertiary};
-    margin: 2px ${props => (props.hasLabel ? spacing.small : '3px')} 2px 3px;
+    margin: 2px ${(props) => (props.hasLabel ? spacing.small : '3px')} 2px 3px;
     border-radius: 2px;
     flex-shrink: 0;
 

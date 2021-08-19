@@ -8,7 +8,7 @@
 export const checkIfItemIsSelected = (item, selectedItem, selectedItems, multiSelect, idField) => {
   if (idField) {
     if (multiSelect) {
-      return !!selectedItems.find(selectedItem => selectedItem[idField] === item[idField]);
+      return !!selectedItems.find((selectedItem) => selectedItem[idField] === item[idField]);
     }
     if (selectedItem) {
       return selectedItem[idField] === item[idField];

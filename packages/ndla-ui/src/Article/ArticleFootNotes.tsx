@@ -9,8 +9,7 @@
 import React from 'react';
 import { FootNote as FootNoteType } from '../types';
 
-const citeDetailString = (description: string | undefined) =>
-  description ? `${description}. ` : '';
+const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : '');
 
 type FootNoteProps = {
   footNote: FootNoteType;
@@ -24,9 +23,9 @@ const FootNote = ({ footNote }: FootNoteProps) => (
           {footNote.ref}
         </a>
       </sup>
-      {`«${footNote.title}». ${footNote.authors.join(' ')}. ${citeDetailString(
-        footNote.edition,
-      )}${citeDetailString(footNote.publisher)}${footNote.year}. `}
+      {`«${footNote.title}». ${footNote.authors.join(' ')}. ${citeDetailString(footNote.edition)}${citeDetailString(
+        footNote.publisher,
+      )}${footNote.year}. `}
       {footNote.url ? (
         <a href={footNote.url}>
           {footNote.url}
@@ -43,7 +42,7 @@ type ArticleFootNotesProps = {
 
 const ArticleFootNotes = ({ footNotes }: ArticleFootNotesProps) => (
   <ol className="c-footnotes">
-    {footNotes.map(footNote => (
+    {footNotes.map((footNote) => (
       <FootNote key={footNote.ref} footNote={footNote} />
     ))}
   </ol>

@@ -50,14 +50,9 @@ interface LicenseIconDescriptionListProps {
   locale?: string;
 }
 
-const LicenseIconDescriptionList = ({
-  licenseRights,
-  locale,
-  color,
-  highlightCC,
-}: LicenseIconDescriptionListProps) => (
+const LicenseIconDescriptionList = ({ licenseRights, locale, color, highlightCC }: LicenseIconDescriptionListProps) => (
   <StyledLicenseIconList color={color} highlightCC={highlightCC}>
-    {licenseRights.map(licenseRight => (
+    {licenseRights.map((licenseRight) => (
       <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
     ))}
   </StyledLicenseIconList>

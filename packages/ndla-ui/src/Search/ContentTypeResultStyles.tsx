@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
+import { colors, spacing, spacingUnit, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
 
 export const highlightStyle = css`
   background: ${colors.brand.light};
@@ -22,6 +22,7 @@ export const noWidthhighlightStyle = css`
 type inMenuProps = {
   inMenu?: boolean;
   animateList?: number;
+  unGrouped?: boolean;
 };
 
 export const StyledNoHit = styled.p<inMenuProps>`
@@ -29,11 +30,11 @@ export const StyledNoHit = styled.p<inMenuProps>`
   margin: 0;
   font-style: italic;
   ${fonts.sizes(16, 1.1)};
-  ${props =>
+  ${(props) =>
     props.inMenu &&
     css`
       ${mq.range({ from: breakpoints.desktop })} {
-        margin-left: ${spacing.spacingUnit * 1.5}px;
+        margin-left: ${spacingUnit * 1.5}px;
       }
     `}
 `;
@@ -74,20 +75,20 @@ type StyledListItemProps = {
 };
 
 export const StyledListItem = styled.li<StyledListItemProps>`
-  ${props =>
+  ${(props) =>
     props.delayAnimation &&
     css`
-    ${animations.fadeInLeftFromZero()}
-    animation-delay: ${animations.durations.normal};
-  `}
-  ${props => !props.delayAnimation && animations.fadeInLeft()}
+      ${animations.fadeInLeftFromZero()}
+      animation-delay: ${animations.durations.normal};
+    `}
+  ${(props) => !props.delayAnimation && animations.fadeInLeft()}
 `;
 
 export const StyledList = styled.ul<inMenuProps>`
   list-style: none;
   padding: 0;
   margin: 0;
-  ${props => {
+  ${(props) => {
     if (props.animateList && props.animateList > 0) {
       return animations.toggledContentWithSwitchAnimation(
         animations.durations.normal,
@@ -98,6 +99,9 @@ export const StyledList = styled.ul<inMenuProps>`
   li {
     margin: 0 -${spacing.small};
     a {
+      > div {
+        margin-right: ${spacing.small};
+      }
       color: ${colors.brand.primary};
       box-shadow: none;
       display: inline-flex;
@@ -114,11 +118,11 @@ export const StyledList = styled.ul<inMenuProps>`
       &:focus {
         ${highlightStyle};
       }
-      ${props =>
+      ${(props) =>
         props.inMenu
           ? css`
               ${mq.range({ from: breakpoints.desktop })} {
-                margin-left: ${spacing.spacingUnit * 1.5}px;
+                margin-left: ${!props.unGrouped && spacingUnit * 1.5}px;
               }
               strong {
                 text-decoration: underline;
@@ -154,7 +158,7 @@ export const StyledTag = styled.span`
   height: ${spacing.normal};
   display: flex;
   align-items: center;
-  padding: 0 ${spacing.spacingUnit / 6}px;
+  padding: 0 ${spacingUnit / 6}px;
   ${mq.range({ until: breakpoints.desktop })} {
     display: none;
   }

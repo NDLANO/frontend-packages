@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { spacing, colors, fonts, animations } from '@ndla/core';
+import { spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 
@@ -36,7 +36,7 @@ const MovieListItem = ({
               draggable
               tabIndex={-1}
               type="button"
-              onMouseDown={e => onDragStart(e, index)}
+              onMouseDown={(e) => onDragStart(e, index)}
               onMouseUp={onDragEnd}>
               <DragHorizontal />
             </ButtonIcons>
@@ -46,7 +46,7 @@ const MovieListItem = ({
             draggable
             tabIndex={-1}
             type="button"
-            onMouseDown={e => onDragStart(e, index)}
+            onMouseDown={(e) => onDragStart(e, index)}
             onMouseUp={onDragEnd}>
             <DragHorizontal />
           </ButtonIcons>
@@ -87,7 +87,7 @@ const StyledMovieItem = styled.li`
       height: 18px;
     }
   }
-  ${props =>
+  ${(props) =>
     props.delete &&
     css`
       ${animations.fadeOut()}
@@ -96,7 +96,7 @@ const StyledMovieItem = styled.li`
 
 const StyledMovieImage = styled.img`
   width: ${MOVIE_HEIGHT * 1.33}px;
-  height: ${MOVIE_HEIGHT - spacing.spacingUnit / 2}px;
+  height: ${MOVIE_HEIGHT - spacingUnit / 2}px;
   object-fit: cover;
   margin-right: ${spacing.small};
 `;
@@ -118,7 +118,7 @@ const ButtonIcons = styled.button`
   &:focus {
     background: ${colors.brand.light};
   }
-  ${props =>
+  ${(props) =>
     props.delete &&
     css`
       color: ${colors.support.red};
@@ -127,7 +127,7 @@ const ButtonIcons = styled.button`
         background: ${colors.support.redLight};
       }
     `}
-  ${props =>
+  ${(props) =>
     props.draggable &&
     css`
       cursor: grabbing;

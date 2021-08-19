@@ -9,14 +9,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, breakpoints, mq } from '@ndla/core';
+import { spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
 
 type PropStyledWrapper = {
   invertedStyle?: boolean;
 };
 
 const StyledWrapper = styled.section<PropStyledWrapper>`
-  max-width: ${1402 + spacing.spacingUnit}px;
+  max-width: ${1402 + spacingUnit}px;
   padding: 0 ${spacing.normal};
   margin: 0 auto;
   .o-wrapper {
@@ -31,7 +31,7 @@ const StyledWrapper = styled.section<PropStyledWrapper>`
       display: flex;
     }
   }
-  ${props =>
+  ${(props) =>
     props.invertedStyle &&
     css`
       ${mq.range({ until: breakpoints.mobileWide })} {
@@ -45,7 +45,6 @@ interface Props {
   invertedStyle?: boolean;
 }
 
-export const LearningPathWrapper: React.FunctionComponent<Props> = ({
-  children,
-  invertedStyle,
-}) => <StyledWrapper invertedStyle={invertedStyle}>{children}</StyledWrapper>;
+export const LearningPathWrapper: React.FunctionComponent<Props> = ({ children, invertedStyle }) => (
+  <StyledWrapper invertedStyle={invertedStyle}>{children}</StyledWrapper>
+);

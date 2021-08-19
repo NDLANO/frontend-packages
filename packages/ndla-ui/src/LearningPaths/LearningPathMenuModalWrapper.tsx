@@ -37,11 +37,7 @@ type ModalWrapperProps = {
   children: (arg: VoidFunction) => ReactChild | ReactChildren | React.ReactNode;
 };
 
-const ModalWrapperComponent: React.FC<ModalWrapperProps & tType> = ({
-  innerWidth,
-  children,
-  t,
-}) => {
+const ModalWrapperComponent: React.FC<ModalWrapperProps & tType> = ({ innerWidth, children, t }) => {
   if (innerWidth < 601) {
     return (
       <Modal

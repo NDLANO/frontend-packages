@@ -103,3 +103,4 @@ export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
 export { i18nInstance, formatNestedMessages } from './i18n';
+export { default as ResourceGroup } from './ResourceGroup';

@@ -22,7 +22,7 @@ const StyledDropDownContainer = styled.div`
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
   ${(props) => props.positionAbsolute && 'position: absolute; z-index: 99;'}
-  width: ${props => props.wide ? '120%' : '100%'};
+  width: ${(props) => (props.wide ? '120%' : '100%')};
 `;
 
 const StyledResultList = styled.div`

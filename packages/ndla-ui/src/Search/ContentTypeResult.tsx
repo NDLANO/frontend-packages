@@ -55,6 +55,7 @@ type Props = {
   keyboardPathNavigation: HTMLElement | string | null;
   inMenu?: boolean;
   animateList?: number;
+  unGrouped?: boolean;
 };
 
 const ContentTypeResult: React.FC<Props> = ({
@@ -68,6 +69,7 @@ const ContentTypeResult: React.FC<Props> = ({
   keyboardPathNavigation,
   inMenu,
   animateList,
+  unGrouped,
 }) => {
   const { t } = useTranslation();
   const [showAll, toggleShowAll] = useState(false);
@@ -91,18 +93,21 @@ const ContentTypeResult: React.FC<Props> = ({
       });
     }
   }, [showAll]);
+
   return (
     <StyledWrapper>
-      <StyledHeader>
-        {!ignoreContentTypeBadge && contentTypeResult.contentType && (
-          <ContentTypeBadge type={contentTypeResult.contentType} size="x-small" background outline />
-        )}
-        <h1>
-          {contentTypeResult.title} <small>({results.length})</small>
-        </h1>
-      </StyledHeader>
+      {!unGrouped && (
+        <StyledHeader>
+          {!ignoreContentTypeBadge && contentTypeResult.contentType && (
+            <ContentTypeBadge type={contentTypeResult.contentType} size="x-small" background outline />
+          )}
+          <h1>
+            {contentTypeResult.title} <small>({results.length})</small>
+          </h1>
+        </StyledHeader>
+      )}
       {resources.length > 0 ? (
-        <StyledList inMenu={inMenu} animateList={animateList}>
+        <StyledList inMenu={inMenu} animateList={animateList} unGrouped={unGrouped}>
           {resources.map((resource) => {
             const { path, name, resourceTypes, subject, additional } = resource;
 
@@ -137,6 +142,9 @@ const ContentTypeResult: React.FC<Props> = ({
                       onNavigate();
                     }
                   }}>
+                  {unGrouped && !ignoreContentTypeBadge && (
+                    <ContentTypeBadge type={resource.contentType} size="x-small" background outline />
+                  )}
                   {linkContent}
                   {renderAdditionalIcon(t('resource.additionalTooltip'), additional)}
                 </SafeLink>

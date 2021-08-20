@@ -254,6 +254,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show more external learning resources',
+        unGrouped: 'Show more resources',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
@@ -262,6 +263,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show less external learning resources',
+        unGrouped: 'Show less resources',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
@@ -270,6 +272,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'No source materials',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'No external learning resources',
+        unGrouped: 'No resources',
       },
     },
   },

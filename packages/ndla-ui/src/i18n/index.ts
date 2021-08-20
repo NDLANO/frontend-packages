@@ -8,3 +8,4 @@
 
 export { i18nInstance } from './i18n';
 export { formatNestedMessages } from './formatNestedMessages';
+export { default as formatMessage } from './formatMessage';

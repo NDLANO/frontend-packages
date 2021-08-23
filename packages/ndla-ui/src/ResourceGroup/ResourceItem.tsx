@@ -233,7 +233,7 @@ const ResourceItem = ({
   contentTypeName,
   contentTypeDescription,
   name,
-  contentUri,
+  path,
   contentType,
   active,
   additional,
@@ -262,7 +262,7 @@ const ResourceItem = ({
           </Heading>
         </ActiveWrapper>
       ) : (
-        <ResourceLink to={contentUri}>
+        <ResourceLink to={path}>
           <IconWrapper>
             <ContentTypeBadge type={contentType} background border={false} />
           </IconWrapper>

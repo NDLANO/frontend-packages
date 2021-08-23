@@ -51,7 +51,7 @@ type Props = {
     date: string;
     note: string;
     status?: string;
-    id: string;
+    id: number;
   }[];
 };
 

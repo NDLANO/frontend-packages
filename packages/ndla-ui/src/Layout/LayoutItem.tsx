@@ -6,10 +6,15 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-export const LayoutItem = ({ children, layout }) => {
+interface Props {
+  children?: ReactNode;
+  layout?: string;
+}
+
+export const LayoutItem = ({ children, layout }: Props) => {
   switch (layout) {
     case 'extend': {
       return (

@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 
@@ -46,7 +46,7 @@ type Props = {
   onSelectTopic?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
 };
 
-const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t }: Props & tType) => (
+const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t }: Props & WithTranslation) => (
   <>
     <Heading>{title}</Heading>
     <Introduction>{introduction}</Introduction>
@@ -60,4 +60,4 @@ const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t }: Props & 
   </>
 );
 
-export default injectT(ToolboxInfo);
+export default withTranslation()(ToolboxInfo);

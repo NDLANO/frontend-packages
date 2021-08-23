@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
-import { injectT, tType } from '@ndla/i18n';
+import { withTranslation, WithTranslation } from 'react-i18next';
 import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
 const Wrapper = styled.div`
@@ -58,7 +58,7 @@ type Props = {
   renderMarkdown: (text: React.ReactNode) => string;
 };
 
-const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & tType) => (
+const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & WithTranslation) => (
   <Wrapper>
     <HeadingWrapper>
       <Heading>
@@ -75,4 +75,4 @@ const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }:
   </Wrapper>
 );
 
-export default injectT(SearchNotionsResult);
+export default withTranslation()(SearchNotionsResult);

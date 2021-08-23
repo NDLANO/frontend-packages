@@ -8,14 +8,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from '@ndla/util';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { initArticleScripts } from '@ndla/article-scripts';
 
 import { Figure, Image, FigureExpandButton, ImageLink } from '@ndla/ui';
 import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function ImageWrapper({ typeClass, src, hasHiddenCaption, children, t }) {
+function ImageWrapper({ typeClass, src, hasHiddenCaption, children }) {
+  const { t } = useTranslation();
   if (hasHiddenCaption) {
     return (
       <>
@@ -54,7 +55,8 @@ const calculateSizesFromType = (type) => {
   }
 };
 
-function FigureImage({ type, alt, src, caption, hasHiddenCaption, link, t }) {
+function FigureImage({ type, alt, src, caption, hasHiddenCaption, link }) {
+  const { t } = useTranslation();
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -71,7 +73,7 @@ function FigureImage({ type, alt, src, caption, hasHiddenCaption, link, t }) {
     <Figure id={figureId} type={type}>
       {({ typeClass }) => (
         <>
-          <ImageWrapper hasHiddenCaption={hasHiddenCaption} typeClass={typeClass} t={t} src={src}>
+          <ImageWrapper hasHiddenCaption={hasHiddenCaption} typeClass={typeClass} src={src}>
             <Image alt={alt} src={src} sizes={sizes} />
           </ImageWrapper>
           <FigureCaptionExample
@@ -110,4 +112,4 @@ FigureImage.defaultProps = {
   hasHiddenCaption: false,
 };
 
-export default injectT(FigureImage);
+export default FigureImage;

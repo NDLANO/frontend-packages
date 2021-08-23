@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
@@ -47,7 +47,7 @@ type Props = {
   urlTeachers: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({ urlStudents, urlTeachers, t }) => (
+const FrontpageToolbox: React.FunctionComponent<Props & WithTranslation> = ({ urlStudents, urlTeachers, t }) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
@@ -64,4 +64,4 @@ const FrontpageToolbox: React.FunctionComponent<Props & tType> = ({ urlStudents,
   </StyledSection>
 );
 
-export default injectT(FrontpageToolbox);
+export default withTranslation()(FrontpageToolbox);

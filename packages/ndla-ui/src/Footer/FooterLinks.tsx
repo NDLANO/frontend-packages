@@ -8,7 +8,7 @@ import {
   Launch,
   // @ts-ignore
 } from '@ndla/icons/common';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -99,7 +99,7 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, links }) => (
+const FooterLinks: React.FunctionComponent<FooterLinksProps & WithTranslation> = ({ t, links }) => (
   <>
     <StyledLinksWrapper>
       <section>
@@ -110,7 +110,7 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, lin
           {commonLinks.map((link) => (
             <div key={link.url}>
               <StyledSafeLink
-                key={t(`footer.ndlaLinks.${link.key}`)}
+                key={t<string>(`footer.ndlaLinks.${link.key}`)}
                 aria-label={t(`footer.ndlaLinks.${link.key}`)}
                 to={link.url}
                 target="_blank"
@@ -138,4 +138,4 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, lin
   </>
 );
 
-export default injectT(FooterLinks);
+export default withTranslation()(FooterLinks);

@@ -8,8 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 import { spacing, colors, fonts } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 const StyledWrapper = styled.div`
   padding: ${spacing.small} 0;
   width: 100%;
@@ -55,7 +55,8 @@ type Props = {
   }[];
 };
 
-const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
+const VersionHistory: React.FC<Props> = ({ notes, children }) => {
+  const { t } = useTranslation();
   const hasStatus = notes.some((n) => n.status !== undefined);
   return (
     <StyledWrapper>
@@ -85,4 +86,4 @@ const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
   );
 };
 
-export default injectT(VersionHistory);
+export default VersionHistory;

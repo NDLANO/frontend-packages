@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { keyframes } from '@emotion/core';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import NoContentBox from '../NoContentBox';
 import ResourceItem from './ResourceItem';
@@ -51,14 +51,8 @@ export type ResourceListProps = {
   showAdditionalResources?: boolean;
 };
 
-const ResourceList = ({
-  resources,
-  onClick,
-  contentType,
-  title,
-  showAdditionalResources,
-  t,
-}: ResourceListProps & tType) => {
+const ResourceList = ({ resources, onClick, contentType, title, showAdditionalResources }: ResourceListProps) => {
+  const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
     resources.filter((res) => res.additional).length > 0 &&
@@ -98,4 +92,4 @@ const ResourceList = ({
   );
 };
 
-export default injectT(ResourceList);
+export default ResourceList;

@@ -15,9 +15,10 @@ type Props = {
   currentLanguage: string;
   setInfoLocale(arg: string): void;
   infoLocale: string;
+  close: () => void;
 };
 
-const LanguageSelectorContent = ({ setInfoLocale, infoLocale }: Props) => {
+const LanguageSelectorContent = ({ setInfoLocale, infoLocale, close }: Props) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
   const languages = (i18n.options.supportedLngs as string[]).filter((l) => !l.includes('cimode'));
@@ -55,7 +56,10 @@ const LanguageSelectorContent = ({ setInfoLocale, infoLocale }: Props) => {
               <StyledSelectedButton>{t(`languages.${key}`)}</StyledSelectedButton>
             ) : (
               <StyledButton
-                onClick={() => i18n.changeLanguage(key)}
+                onClick={() => {
+                  i18n.changeLanguage(key);
+                  close();
+                }}
                 onMouseOver={() => {
                   setInfoLocale(key);
                 }}

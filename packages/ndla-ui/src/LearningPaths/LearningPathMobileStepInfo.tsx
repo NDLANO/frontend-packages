@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, typography } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 const StyledInfo = styled.div`
   ${typography.smallHeading}
@@ -24,7 +24,7 @@ type Props = {
   current: number;
 };
 
-const LearningPathMobileStepInfo: React.FunctionComponent<Props & tType> = ({ total, current, t }) => (
+const LearningPathMobileStepInfo: React.FunctionComponent<Props & WithTranslation> = ({ total, current, t }) => (
   <StyledInfo>
     {t('learningPath.mobileStepInfo', {
       totalPages: total,
@@ -33,4 +33,4 @@ const LearningPathMobileStepInfo: React.FunctionComponent<Props & tType> = ({ to
   </StyledInfo>
 );
 
-export default injectT(LearningPathMobileStepInfo);
+export default withTranslation()(LearningPathMobileStepInfo);

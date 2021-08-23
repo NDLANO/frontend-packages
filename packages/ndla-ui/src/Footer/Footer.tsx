@@ -8,8 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
 // @ts-ignore
@@ -125,7 +125,8 @@ type Props = {
   languageSelector?: React.ReactNode;
 };
 
-const Footer: React.FunctionComponent<Props & tType> = ({ lang, children, t, links, languageSelector }) => {
+const Footer: React.FunctionComponent<Props> = ({ lang, children, links, languageSelector }) => {
+  const { t } = useTranslation();
   const mainContent = (
     <>
       {children}
@@ -162,4 +163,4 @@ const Footer: React.FunctionComponent<Props & tType> = ({ lang, children, t, lin
   );
 };
 
-export default injectT(Footer);
+export default Footer;

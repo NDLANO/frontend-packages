@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { keyframes } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { Additional, Core } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
@@ -170,8 +170,7 @@ const Heading = styled.h2<ActiveProps>`
   }
 
   ${ResourceLink}:hover &,
-  ${ResourceLink}:focus &
-  {
+  ${ResourceLink}:focus & {
     span {
       box-shadow: ${colors.linkHover};
     }
@@ -188,7 +187,6 @@ const Heading = styled.h2<ActiveProps>`
         font-weight: ${fonts.weight.normal};
       }
     `}
-}
 `;
 
 const IconWrapper = styled.div`
@@ -241,8 +239,8 @@ const ResourceItem = ({
   additional,
   extraBottomMargin,
   showAdditionalResources,
-  t,
-}: Props & Resource & tType) => {
+}: Props & Resource) => {
+  const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
   return (
     <ListElement
@@ -294,4 +292,4 @@ const ResourceItem = ({
   );
 };
 
-export default injectT(ResourceItem);
+export default ResourceItem;

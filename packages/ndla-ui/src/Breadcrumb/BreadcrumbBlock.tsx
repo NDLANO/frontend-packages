@@ -9,7 +9,7 @@
 import React, { useRef } from 'react';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import BreadcrumbItem from './BreadcrumbItem';
 import { BreadcrumbItemI } from './Breadcrumb';
 
@@ -23,7 +23,8 @@ interface Props {
   items: BreadcrumbItemI[];
 }
 
-const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({ children, items, t }) => {
+const BreadcrumbBlock: React.FunctionComponent<Props> = ({ children, items }) => {
+  const { t } = useTranslation();
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);
   // No idiomatic way of dealing with sets of refs yet
@@ -76,4 +77,4 @@ const BreadcrumbBlock: React.FunctionComponent<Props & tType> = ({ children, ite
   );
 };
 
-export default injectT(BreadcrumbBlock);
+export default BreadcrumbBlock;

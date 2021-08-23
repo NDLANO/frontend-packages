@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Footer, FooterText, EditorName, LanguageSelector } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLanguageSelector }) => (
+const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLanguageSelector, i18n }) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -17,17 +17,8 @@ const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLangu
           center
           inverted={inverted}
           invertedOutlineLargeScreensOnly={invertedOutlineLargeScreensOnly}
-          options={{
-            nb: {
-              name: 'Bokmål',
-              url: '#',
-            },
-            nn: {
-              name: 'Nynorsk',
-              url: '#',
-            },
-          }}
-          currentLanguage="nb"
+          options={i18n.options.supportedLanguages}
+          currentLanguage={i18n.language}
         />
       )
     }>
@@ -46,4 +37,4 @@ FooterExample.propTypes = {
   hideLanguageSelector: PropTypes.bool,
 };
 
-export default injectT(FooterExample);
+export default withTranslation()(FooterExample);

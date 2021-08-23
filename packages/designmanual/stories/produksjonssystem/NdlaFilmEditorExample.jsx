@@ -14,7 +14,7 @@ import Modal from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
 import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 import { DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
@@ -271,4 +271,4 @@ class NdlaFilmExample extends Component {
   }
 }
 
-export default injectT(NdlaFilmExample);
+export default withTranslation()(NdlaFilmExample);

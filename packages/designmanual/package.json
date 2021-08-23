@@ -20,7 +20,8 @@
   "author": "ndla@knowit.no",
   "peerDependencies": {
     "prop-types": "^15.6.0",
-    "react": "^15.6.0 || ^16.0.0"
+    "react": "^15.6.0 || ^16.0.0",
+    "react-i18next": "^11.11.0"
   },
   "devDependencies": {
     "@emotion/core": "^10.0.35",

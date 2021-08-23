@@ -2,11 +2,12 @@ import React from 'react';
 import { AudioPlayer, Figure } from '@ndla/ui';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-const AudioExample = ({ t, showSubtitle, showDescription, showImage, showTextVersion }) => {
+const AudioExample = ({ showSubtitle, showDescription, showImage, showTextVersion }) => {
+  const { t } = useTranslation();
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -61,4 +62,4 @@ const AudioExample = ({ t, showSubtitle, showDescription, showImage, showTextVer
   );
 };
 
-export default injectT(AudioExample);
+export default AudioExample;

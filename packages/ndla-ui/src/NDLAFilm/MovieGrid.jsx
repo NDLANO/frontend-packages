@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { injectT } from '@ndla/i18n';
 import { css } from '@emotion/core';
+import { withTranslation } from 'react-i18next';
 import FilmContentCard from './FilmContentCard';
 
 const movieListClasses = new BEMHelper({
@@ -72,4 +72,4 @@ MovieGrid.propTypes = {
   loadingPlaceholderHeight: PropTypes.string,
 };
 
-export default injectT(MovieGrid);
+export default withTranslation()(MovieGrid);

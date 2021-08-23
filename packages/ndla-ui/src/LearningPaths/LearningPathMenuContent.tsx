@@ -9,7 +9,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT, tType } from '@ndla/i18n';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
@@ -228,7 +227,7 @@ const hasRead = (
   },
 ) => !!cookies[id];
 
-const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
+const LearningPathMenuContent: React.FunctionComponent<Props> = ({
   isOpen,
   currentIndex,
   cookies,
@@ -273,4 +272,4 @@ const LearningPathMenuContent: React.FunctionComponent<Props & tType> = ({
   );
 };
 
-export default injectT(LearningPathMenuContent);
+export default LearningPathMenuContent;

@@ -12,7 +12,7 @@ import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems } from '@reach/menu-
 import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';
 import { Play, Pause } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -316,7 +316,8 @@ type Props = {
   title: string;
 };
 
-const Controls = ({ src, title, t }: Props & tType) => {
+const Controls = ({ src, title }: Props) => {
+  const { t } = useTranslation();
   const [speedValue, setSpeedValue] = useState(1);
   const [volumeValue, setVolumeValue] = useState(100);
   const [sliderValue, setSliderValue] = useState(0);
@@ -498,4 +499,4 @@ const Controls = ({ src, title, t }: Props & tType) => {
   );
 };
 
-export default injectT(Controls);
+export default Controls;

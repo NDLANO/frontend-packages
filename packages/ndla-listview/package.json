@@ -21,7 +21,6 @@
   ],
   "dependencies": {
     "@ndla/core": "^0.7.0",
-    "@ndla/i18n": "^0.5.6",
     "@ndla/icons": "^0.7.8",
     "@ndla/ui": "^0.39.0"
   },
@@ -30,6 +29,7 @@
     "@emotion/styled": "^10.0.9",
     "prop-types": "^15.6.0",
     "react": "^16.4.2",
+    "react-i18next": "^11.11.0",
     "react-bem-helper": "^1.4.1",
     "react-prop-types": "0.4.0"
   },

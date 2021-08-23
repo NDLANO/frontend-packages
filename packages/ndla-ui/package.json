@@ -52,7 +52,6 @@
     "focus-trap-react": "^6.0.0",
     "hoist-non-react-statics": "^3.3.0",
     "html-react-parser": "^0.10.3",
-    "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
     "intl-format-cache": "^4.3.1",
     "intl-messageformat": "5.4.3",
@@ -72,6 +71,7 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
+    "i18next": "^20.3.1",
     "prop-types": "^15.6.0",
     "react": "^16.8.4",
     "react-i18next": "^11.11.0"

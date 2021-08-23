@@ -12,8 +12,7 @@ import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, spacingUnit } from '@ndla/core';
 import { injectT, tType } from '@ndla/i18n';
-// @ts-ignore
-import { OneColumn, LayoutItem } from '../index-javascript';
+import { OneColumn, LayoutItem } from '../index';
 
 const StyledHeader = styled.h1`
   display: flex;

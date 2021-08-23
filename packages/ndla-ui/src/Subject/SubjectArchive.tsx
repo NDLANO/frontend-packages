@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { ReactNode, Component, createRef, Fragment, RefObject } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
@@ -8,8 +8,27 @@ import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-subject-archive');
 
-class SubjectArchive extends Component {
-  constructor(props) {
+interface Props {
+  featuringArticle: {
+    media: ReactNode;
+    heading: string;
+    description: string;
+    url: string;
+  };
+  archiveArticles: { url: string; heading: string }[];
+  sectionHeading: string;
+  fixedWidth?: boolean;
+  messages: { archive: string; close: string };
+}
+
+interface State {
+  archiveOpen: boolean;
+  minHeight: number | null;
+}
+
+class SubjectArchive extends Component<Props, State> {
+  wrapperRef: RefObject<HTMLElement> | null = createRef<HTMLElement>();
+  constructor(props: Props) {
     super(props);
     this.state = {
       archiveOpen: false,
@@ -17,17 +36,17 @@ class SubjectArchive extends Component {
     };
 
     this.handleToggleArchive = this.handleToggleArchive.bind(this);
-    this.wrapperRef = null;
   }
 
   handleToggleArchive() {
     this.setState((prevState) => {
-      const newState = {
+      const newState: State = {
         archiveOpen: !prevState.archiveOpen,
+        minHeight: null,
       };
 
       if (!prevState.minHeight) {
-        newState.minHeight = this.wrapperRef.offsetHeight;
+        newState.minHeight = this.wrapperRef?.current?.offsetHeight ?? null;
       }
 
       return newState;
@@ -35,7 +54,7 @@ class SubjectArchive extends Component {
   }
 
   render() {
-    const { fixedWidth, featuringArticle, messages, sectionHeading, archiveArticles } = this.props;
+    const { fixedWidth = false, featuringArticle, messages, sectionHeading, archiveArticles } = this.props;
 
     const archiveId = 'subject-archive';
 
@@ -61,15 +80,12 @@ class SubjectArchive extends Component {
       </section>
     );
 
+    const subClasses = Object.entries({ fixedWidth, animate: !!this.state.minHeight })
+      .filter(([_, include]) => include)
+      .map(([className, _]) => className);
+
     return (
-      <section
-        {...classes('', {
-          fixedWidth,
-          animate: this.state.minHeight,
-        })}
-        ref={(ref) => {
-          this.wrapperRef = ref;
-        }}>
+      <section {...classes('', subClasses)} ref={this.wrapperRef}>
         <SectionHeading large className={classes('section-heading').className}>
           {sectionHeading}
         </SectionHeading>
@@ -95,30 +111,29 @@ class SubjectArchive extends Component {
       </section>
     );
   }
-}
-
-SubjectArchive.propTypes = {
-  featuringArticle: PropTypes.shape({
-    media: PropTypes.node.isRequired,
-    heading: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-  }).isRequired,
-  archiveArticles: PropTypes.arrayOf(
-    PropTypes.shape({
-      url: PropTypes.string.isRequired,
+  static propTypes = {
+    featuringArticle: PropTypes.shape({
+      media: PropTypes.node.isRequired,
       heading: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+    archiveArticles: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        heading: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    sectionHeading: PropTypes.string.isRequired,
+    fixedWidth: PropTypes.bool,
+    messages: PropTypes.shape({
+      archive: PropTypes.string.isRequired,
     }),
-  ).isRequired,
-  sectionHeading: PropTypes.string.isRequired,
-  fixedWidth: PropTypes.bool,
-  messages: PropTypes.shape({
-    archive: PropTypes.string.isRequired,
-  }),
-};
+  };
 
-SubjectArchive.defaultProps = {
-  fixedWidth: false,
-};
+  static defaultProps = {
+    fixedWidth: false,
+  };
+}
 
 export default SubjectArchive;

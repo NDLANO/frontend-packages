@@ -15,6 +15,7 @@ import {
 import { MenuBook } from '@ndla/icons/action';
 
 import * as contentTypes from '../model/ContentType';
+// @ts-ignore
 import { ContentTypeShape } from '../shapes';
 
 const classes = new BEMHelper({
@@ -22,7 +23,14 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const ContentTypeBadge = ({ type, background, size, border }) => {
+interface Props {
+  size: 'xx-small' | 'x-small' | 'small' | 'large';
+  type: string;
+  background?: boolean;
+  border?: boolean;
+}
+
+export const ContentTypeBadge = ({ type, background, size, border }: Props) => {
   const modifiers = [type, size];
 
   if (background) {
@@ -76,17 +84,23 @@ ContentTypeBadge.defaultProps = {
   border: true,
 };
 
-export const SubjectMaterialBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />;
-export const TasksAndActivitiesBadge = (props) => (
+export const SubjectMaterialBadge = (props: Omit<Props, 'type'>) => (
+  <ContentTypeBadge {...props} type={contentTypes.SUBJECT_MATERIAL} />
+);
+export const TasksAndActivitiesBadge = (props: Omit<Props, 'type'>) => (
   <ContentTypeBadge {...props} type={contentTypes.TASKS_AND_ACTIVITIES} />
 );
-export const AssessmentResourcesBadge = (props) => (
+export const AssessmentResourcesBadge = (props: Omit<Props, 'type'>) => (
   <ContentTypeBadge {...props} type={contentTypes.ASSESSMENT_RESOURCES} />
 );
-export const SubjectBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
-export const ExternalLearningResourcesBadge = (props) => (
+export const SubjectBadge = (props: Omit<Props, 'type'>) => <ContentTypeBadge {...props} type={contentTypes.SUBJECT} />;
+export const ExternalLearningResourcesBadge = (props: Omit<Props, 'type'>) => (
   <ContentTypeBadge {...props} type={contentTypes.EXTERNAL_LEARNING_RESOURCES} />
 );
-export const SourceMaterialBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />;
+export const SourceMaterialBadge = (props: Omit<Props, 'type'>) => (
+  <ContentTypeBadge {...props} type={contentTypes.SOURCE_MATERIAL} />
+);
 
-export const LearningPathBadge = (props) => <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />;
+export const LearningPathBadge = (props: Omit<Props, 'type'>) => (
+  <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
+);

@@ -99,7 +99,7 @@ const ContentTypeResult: React.FC<Props & tType> = ({
       {!unGrouped && (
         <StyledHeader>
           {!ignoreContentTypeBadge && contentTypeResult.contentType && (
-            <ContentTypeBadge type={contentTypeResult.contentType} size="x-small" background outline />
+            <ContentTypeBadge type={contentTypeResult.contentType} size="x-small" background border />
           )}
           <h1>
             {contentTypeResult.title} <small>({results.length})</small>
@@ -143,7 +143,7 @@ const ContentTypeResult: React.FC<Props & tType> = ({
                     }
                   }}>
                   {unGrouped && !ignoreContentTypeBadge && (
-                    <ContentTypeBadge type={resource.contentType} size="x-small" background outline />
+                    <ContentTypeBadge type={resource.contentType ?? ''} size="x-small" background border />
                   )}
                   {linkContent}
                   {renderAdditionalIcon(t('resource.additionalTooltip'), additional)}

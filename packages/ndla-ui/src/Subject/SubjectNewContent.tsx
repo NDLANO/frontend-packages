@@ -7,7 +7,17 @@ import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-new-content');
 
-const SubjectNewContent = ({ heading, content }) => (
+interface Props {
+  heading: string;
+  content: {
+    name: string;
+    url: string;
+    formattedDate: string;
+    contentType: string;
+  }[];
+}
+
+const SubjectNewContent = ({ heading, content }: Props) => (
   <section {...classes()}>
     <SubjectSectionTitle className={classes('heading').className}>{heading}</SubjectSectionTitle>
     <nav {...classes('content')}>
@@ -15,7 +25,7 @@ const SubjectNewContent = ({ heading, content }) => (
         {content.map((item) => (
           <li {...classes('item')} key={item.url}>
             <div {...classes('left-wrapper')}>
-              <ContentTypeBadge type={item.contentType} size="x-small" background outline />
+              <ContentTypeBadge type={item.contentType} size="x-small" background border />
               <div {...classes('content-link')}>
                 <div {...classes('date')}>{item.formattedDate}</div>
                 <SafeLink to={item.url} {...classes('link')}>

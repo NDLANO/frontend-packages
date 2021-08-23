@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-subject-about');
 
-const SubjectAbout = ({ fixedWidth, media, heading, description, wide }) => (
+interface Props {
+  fixedWidth?: boolean;
+  wide?: boolean;
+  media: ReactNode;
+  heading: string;
+  description: string;
+}
+
+const SubjectAbout = ({ fixedWidth = false, media, heading, description, wide = false }: Props) => (
   <section {...classes('', { fixedWidth, wide })}>
     <SectionHeading large className={classes('top-heading').className}>
       {heading}
@@ -28,6 +36,7 @@ SubjectAbout.propTypes = {
 
 SubjectAbout.defaultProps = {
   fixedWidth: false,
+  wide: false,
 };
 
 export default SubjectAbout;

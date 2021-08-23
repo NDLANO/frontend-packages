@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper('c-section-heading');
 
-const SectionHeading = ({ children, large, className }) => <h1 {...classes('', { large }, className)}>{children}</h1>;
+interface Props {
+  children: ReactNode;
+  large?: boolean;
+  className?: string;
+}
+const SectionHeading = ({ children, large = false, className }: Props) => (
+  <h1 {...classes('', { large }, className)}>{children}</h1>
+);
 
 export default SectionHeading;
 

@@ -12,7 +12,6 @@ import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core
 import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
-// @ts-ignore
 import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';

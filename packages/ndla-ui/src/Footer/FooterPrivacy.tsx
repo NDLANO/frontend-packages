@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import { OneColumn } from '../Layout';
 import { Locale } from '../types';
 

@@ -6,30 +6,7 @@
  *
  */
 
-export { default as ContentCard } from './ContentCard';
 export { InfoBox } from './InfoBox';
-
-export {
-  SubjectHeader,
-  SubjectContent,
-  SubjectTopics,
-  SubjectSidebarWrapper,
-  SubjectFlexWrapper,
-  SubjectFlexChild,
-  SubjectShortcuts,
-  SubjectLinks,
-  SubjectArchive,
-  SubjectCarousel,
-  SubjectSocialContent,
-  SubjectSocialSection,
-  SubjectSectionTitle,
-  SubjectChildContent,
-  SubjectFilter,
-  SubjectAbout,
-  SubjectSecondaryContent,
-  SubjectNewContent,
-  SubjectBanner,
-} from './Subject';
 
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';

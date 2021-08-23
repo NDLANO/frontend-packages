@@ -7,7 +7,6 @@
  */
 
 import React, { useEffect, useState } from 'react';
-// @ts-ignore
 import { SubjectBanner, ToolboxInfo, OneColumn, Topic, TopicProps } from '@ndla/ui';
 // @ts-ignore
 import { topics as toolboxTopics } from '../../dummydata/mockToolbox';
@@ -20,7 +19,12 @@ import backgroundToolbox from '../../images/banners/Verktoykasse.svg';
 
 import { Image, Video, H5p } from '../molecules/VisualElements';
 
-const dummyVisualElementOfTopic = () => {
+type VisualElementProps = {
+  type: 'image' | 'video' | 'other';
+  element: React.ReactNode;
+};
+
+const dummyVisualElementOfTopic = (): VisualElementProps => {
   const index = Math.floor(Math.random() * 3);
   switch (index) {
     case 0:

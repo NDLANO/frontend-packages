@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -16,7 +16,16 @@ const classes = BEMHelper({
   outputIsString: true,
 });
 
-export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding }) => {
+interface Props {
+  children?: ReactNode;
+  className?: string;
+  cssModifier?: string;
+  wide?: boolean;
+  noPadding?: boolean;
+  extraPadding?: boolean;
+}
+
+export const OneColumn = ({ children, className, cssModifier, wide, noPadding, extraPadding }: Props) => {
   const modifiers = [];
 
   if (cssModifier) {

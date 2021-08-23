@@ -62,7 +62,6 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
 } from './ContentTypeBadge';
-export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';

@@ -105,3 +105,5 @@ export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
 export { i18nInstance } from './i18n';
 
 export { default as ResourceGroup } from './ResourceGroup';
+
+export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';

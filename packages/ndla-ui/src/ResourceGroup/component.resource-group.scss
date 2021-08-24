@@ -1,0 +1,208 @@
+/**
+** RESOURCE GROUPS
+** List resource groups with different colors (and icons)
+**/
+
+@keyframes fakeLoadingAnimation {
+  0% {
+    opacity: 0.5;
+  }
+  99% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInAdditionals {
+  0% {
+    opacity: 0;
+    transform: translate3d(-10px, 0px, 0px);
+    position: absolute;
+  }
+  49% {
+    position: absolute;
+  }
+  50% {
+    position: static;
+    opacity: 0;
+    transform: translate3d(-10px, 0px, 0px);
+  }
+  100% {
+    position: static;
+    opacity: 1;
+    height: auto;
+  }
+}
+
+.c-resource-group {
+  &:before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  &--showall {
+    ul {
+      animation-name: fakeLoadingAnimation;
+      animation-duration: 0.4s;
+    }
+    .c-topic-resource__item--additional {
+      animation-name: fadeInAdditionals;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  ul {
+    margin-bottom: $spacing--small;
+  }
+
+  li {
+    background-color: rgba($brand-grey--light, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0);
+    .c-topic-resource__link {
+      min-height: 62px;
+      @include mq(tablet) {
+        min-height: 68px;
+      }
+      @include mq(desktop) {
+        min-height: 70px;
+      }
+    }
+    .c-topic-resource__icon {
+      padding-right: $spacing--small;
+      @include mq(tablet) {
+        padding-right: $spacing--small;
+        padding-left: $spacing--small / 2;
+      }
+      @include mq(desktop) {
+        padding-right: $spacing--small * 1.5;
+      }
+    }
+  }
+  .c-topic-resource__body {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+  }
+
+  &__header {
+    border-bottom: 2px solid $brand-grey--light;
+    margin-bottom: $spacing--small / 4;
+    &--invertedStyle {
+      color: #fff;
+    }
+  }
+
+  &--subject-material {
+    li {
+      background-color: $subject-material-light;
+    }
+    li:before {
+      background-color: $subject-material-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $subject-material-additional;
+      border: 1px dashed rgba($subject-material-dark, 0.4);
+    }
+  }
+
+  &--tasks-and-activities {
+    li {
+      background-color: $tasks-and-activities-light;
+    }
+    li:before {
+      background-color: $tasks-and-activities-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $tasks-and-activities-additional;
+      border: 1px dashed rgba($tasks-and-activities-dark, 0.4);
+    }
+  }
+
+  &--assessment-resources {
+    li {
+      background-color: $assessment-resource-light;
+    }
+    li:before {
+      background-color: $assessment-resource-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $assessment-resource-additional;
+      border: 1px dashed $assessment-resource-dark;
+    }
+  }
+
+  &--learning-path {
+    li {
+      background-color: $learning-path-background;
+    }
+    li:before {
+      background-color: $learning-path-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $learning-path-background-additional;
+      border: 1px dashed rgba($learning-path-dark, 0.4);
+    }
+  }
+
+  &--external-learning-resources {
+    li {
+      background-color: $external-learning-resource-background;
+    }
+    li:before {
+      background-color: $external-learning-resource-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $external-learning-resource-additional;
+      border: 1px dashed rgba($external-learning-resource-dark, 0.4);
+    }
+  }
+
+  &--source-material {
+    li {
+      background-color: $source-material-background;
+    }
+    li:before {
+      background-color: $source-material-dark;
+    }
+    .c-topic-resource__item--additional {
+      background-color: $source-material-additional;
+      border: 1px dashed rgba($source-material-dark, 0.4);
+    }
+  }
+  &--un-grouped {
+    li {
+      border: 1px solid #d1d6db;
+      border-radius: 5px;
+      background: none;
+      margin-bottom: $spacing--small / 2;
+      * {
+        transition: all 0.2s;
+      }
+      &.c-topic-resource__item--spacer {
+        margin-bottom: $spacing--medium;
+      }
+      a:hover .c-topic-resource__icon .c-content-type-badge {
+        width: 38px;
+        height: 38px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        &.c-content-type-badge--subject-material,
+        &.c-content-type-badge--learning-path,
+        &.c-content-type-badge--source-material,
+        &.c-content-type-badge--external-learning-resources {
+          svg {
+            width: 26px;
+            height: 26px;
+          }
+        }
+      }
+    }
+  }
+}

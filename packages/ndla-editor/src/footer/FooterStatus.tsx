@@ -94,7 +94,6 @@ type Props = {
     warningSavedWithoutComment: string;
     newStatusPrefix: string;
     statusLabel: string;
-    commentPlaceholder: string;
   };
   options: Array<optionProps>;
   onSave(comment: string, statusId: string): void;

@@ -12,13 +12,13 @@ interface Messages {
   [key: string]: string;
 }
 
-export default function formatMessage(
+export const formatMessage = (
   locale: string,
   messages: Messages,
   getMessageFormat: any,
   id: string,
   values: { [key: string]: any } = {},
-): string {
+): string => {
   // `id` is a required parameter.
   invariant(id, 'An `id` must be provided to format a message.');
 
@@ -58,4 +58,4 @@ export default function formatMessage(
   }
 
   return formattedMessage || message || id;
-}
+};

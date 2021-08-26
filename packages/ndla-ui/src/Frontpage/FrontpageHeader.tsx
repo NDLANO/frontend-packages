@@ -50,13 +50,11 @@ const HeaderIllustrationWrapper = styled.div`
 `;
 
 export type FrontPageHeaderProps = {
-  languageOptions: string;
   locale: string;
   showHeader: boolean;
 };
 
 const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps & WithTranslation> = ({
-  languageOptions,
   locale,
   showHeader = true,
   children,

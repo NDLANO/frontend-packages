@@ -87,7 +87,7 @@ const BottomCursor = styled(Cursor)`
 `;
 
 type Props = {
-  programItems: [ItemProps];
+  programItems: ItemProps[];
   subjectCategories: subjectsProps['categories'];
 };
 

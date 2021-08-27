@@ -15,6 +15,7 @@ import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
 import { injectT, tType } from '@ndla/i18n';
 import { Notion } from '../Notion';
+import { NotionProps } from '../Notion/Notion';
 
 const ArticleNotionsContainer = styled.div`
   margin-bottom: 26px;
@@ -151,21 +152,6 @@ const RelatedContentContainer = styled.ul`
   }
 `;
 
-export type NotionItem = {
-  id: string;
-  title: string;
-  text: string;
-  authors: {
-    name: string;
-  }[];
-  license: string;
-  image: {
-    url: string;
-    alt: string;
-  };
-  url: string;
-};
-
 export type NotionRelatedContent = {
   url: string;
   label: string;
@@ -173,7 +159,7 @@ export type NotionRelatedContent = {
 
 type ArticleNotionsProps = {
   locale: string;
-  notions: NotionItem[];
+  notions: NotionProps[];
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];
   renderMarkdown?: (text: string) => string;

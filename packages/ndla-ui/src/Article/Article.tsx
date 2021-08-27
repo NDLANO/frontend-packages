@@ -21,7 +21,8 @@ import ArticleByline from './ArticleByline';
 // @ts-ignore
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
-import ArticleNotions, { NotionItem, NotionRelatedContent } from './ArticleNotions';
+import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
+import { NotionProps } from '../Notion/Notion';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -105,7 +106,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink?: string;
   printUrl?: string;
-  notions?: { list: NotionItem[]; related: NotionRelatedContent[] };
+  notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
   onReferenceClick?: React.MouseEventHandler;
 };
 

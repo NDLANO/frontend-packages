@@ -14,7 +14,8 @@ import Resources from '../molecules/resources';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import FigureImage from '../article/FigureImage';
-import FigureWithLicense from '../article/FigureWithLicense';
+import LicenseBox from '../article/LicenseBox';
+import NotionExample from '../molecules/NotionExample';
 
 const { contentTypes } = constants;
 
@@ -61,6 +62,7 @@ const ArticleExercise = () => (
           rightsholders: [{ name: 'Riksarkivet' }],
         },
       }}
+      licenseBox={<LicenseBox />}
       competenceGoals={<CompetenceGoalListExample />}
       competenceGoalTypes={['LK20', 'LK06']}
       copyPageUrlLink={window.location.href}
@@ -70,42 +72,7 @@ const ArticleExercise = () => (
       messages={{ label: 'Fagstoff' }}
       modifier={contentTypes.TASKS_AND_ACTIVITIES}
       notions={{
-        list: [
-          {
-            id: 1,
-            title: 'And',
-            text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
-            image: {
-              url: 'https://api.ndla.no/image-api/raw/id/40164?width=660',
-              alt: 'And',
-            },
-            labels: ['Naturbruk Vg1'],
-            media: (
-              <FigureWithLicense
-                type="full-column"
-                resizeIframe
-                caption="Utholdenhet - animasjon av oksygentransporten">
-                <iframe
-                  title="Video: Utholdenhet - animasjon av oksygentransporten"
-                  height="270"
-                  width="480"
-                  frameBorder="0"
-                  src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
-                  allowFullScreen
-                />
-              </FigureWithLicense>
-            ),
-            authors: [{ name: 'Fornavn Etternavn' }],
-            license: 'CC-BY-SA-4.0',
-            linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
-            onReferenceClick: (e) => console.log(e), // eslint-disable-line no-console
-          },
-        ],
-        related: [
-          { url: '', label: 'Vis flere begreper til tema politikk' },
-          { url: '', label: 'Vis flere begreper til tema politikk' },
-          { url: '', label: 'Vis tilknyttede læringsressurser' },
-        ],
+        list: [NotionExample],
       }}
     />
     <LayoutItem layout="extend">

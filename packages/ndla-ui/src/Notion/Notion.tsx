@@ -52,7 +52,7 @@ const Label = styled.span`
   vertical-align: center;
 `;
 
-type NotionProps = {
+export type NotionProps = {
   authors?: { name: string }[];
   id: string;
   labels?: string[];

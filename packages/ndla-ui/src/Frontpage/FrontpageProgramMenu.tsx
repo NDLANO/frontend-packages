@@ -89,9 +89,10 @@ const BottomCursor = styled(Cursor)`
 type Props = {
   programItems: ItemProps[];
   subjectCategories: subjectsProps['categories'];
+  showBetaCursor?: boolean;
 };
 
-const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
+const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor }: Props) => {
   const { t } = useTranslation();
   const [showSubjects, setShowSubjects] = useState(false);
   const isWindowContext = typeof window !== 'undefined';
@@ -119,15 +120,17 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories }: Props) => {
         <Button onClick={() => toggleSubjects(true)} lighter={!showSubjects} size="medium" borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
-        <CursorPlaceholder>
-          <CursorWrapper>
-            <LeftCursor hide={showSubjects} />
-            <CursorTextWrapper>
-              <CursorText>{t('frontpageMenu.cursorText')}</CursorText>
-              <BottomCursor hide={!showSubjects} />
-            </CursorTextWrapper>
-          </CursorWrapper>
-        </CursorPlaceholder>
+        {showBetaCursor && (
+          <CursorPlaceholder>
+            <CursorWrapper>
+              <LeftCursor hide={showSubjects} />
+              <CursorTextWrapper>
+                <CursorText>{t('frontpageMenu.cursorText')}</CursorText>
+                <BottomCursor hide={!showSubjects} />
+              </CursorTextWrapper>
+            </CursorWrapper>
+          </CursorPlaceholder>
+        )}
       </StyledMenu>
       {showSubjects ? (
         <FrontpageAllSubjects categories={subjectCategories} />

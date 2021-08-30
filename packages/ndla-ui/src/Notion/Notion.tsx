@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import HTMLReactParser from 'html-react-parser';
 import React from 'react';
 
@@ -76,8 +76,8 @@ const Notion = ({
   renderMarkdown,
   text,
   title,
-  t,
-}: NotionProps & tType) => {
+}: NotionProps) => {
+  const { t } = useTranslation();
   return (
     <NotionContainer>
       <div>
@@ -118,4 +118,4 @@ const Notion = ({
   );
 };
 
-export default injectT(Notion);
+export default Notion;

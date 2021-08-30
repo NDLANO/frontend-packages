@@ -8,12 +8,12 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 
 // @ts-ignore
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
 import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
-import { injectT, tType } from '@ndla/i18n';
 import { Notion } from '../Notion';
 import { NotionProps } from '../Notion/Notion';
 
@@ -173,8 +173,8 @@ export const ArticleNotions = ({
   relatedContent = [],
   renderMarkdown,
   buttonOffsetRight,
-  t,
-}: ArticleNotionsProps & tType) => {
+}: ArticleNotionsProps) => {
+  const { t } = useTranslation();
   const leftOffset = `${buttonOffsetRight - 32}px`;
   return (
     <ArticleNotionsContainer>
@@ -226,4 +226,4 @@ export const ArticleNotions = ({
   );
 };
 
-export default injectT(ArticleNotions);
+export default ArticleNotions;

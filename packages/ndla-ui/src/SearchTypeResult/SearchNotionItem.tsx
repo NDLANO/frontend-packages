@@ -145,7 +145,6 @@ const SearchNotionItem = ({
   locale,
   onReferenceClick,
   renderMarkdown,
-  t,
 }: SearchNotionItemProps) => {
   const { t } = useTranslation();
   const hasMedia = !!(image || media);

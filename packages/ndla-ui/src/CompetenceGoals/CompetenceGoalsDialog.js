@@ -8,38 +8,37 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Trans } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { classes } from './CompetenceGoals';
 
-export const CompetenceGoalsDialog = ({ children, isOpen, onClose, modalProps }) => (
-  <Trans>
-    {({ t }) => (
-      <Modal
-        {...modalProps}
-        controllable
-        isOpen={isOpen}
-        onClose={onClose}
-        size="fullscreen"
-        animation="slide-up"
-        backgroundColor="light-gradient"
-        narrow>
-        {(close) => (
-          <Fragment>
-            <ModalHeader modifier="white modal-body">
-              <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
-            </ModalHeader>
-            <ModalBody>
-              <div {...classes()} className="c-competence-goals">
-                {children}
-              </div>
-            </ModalBody>
-          </Fragment>
-        )}
-      </Modal>
-    )}
-  </Trans>
-);
+export const CompetenceGoalsDialog = ({ children, isOpen, onClose, modalProps }) => {
+  const { t } = useTranslation();
+  return (
+    <Modal
+      {...modalProps}
+      controllable
+      isOpen={isOpen}
+      onClose={onClose}
+      size="fullscreen"
+      animation="slide-up"
+      backgroundColor="light-gradient"
+      narrow>
+      {(close) => (
+        <Fragment>
+          <ModalHeader modifier="white modal-body">
+            <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
+          </ModalHeader>
+          <ModalBody>
+            <div {...classes()} className="c-competence-goals">
+              {children}
+            </div>
+          </ModalBody>
+        </Fragment>
+      )}
+    </Modal>
+  );
+};
 
 CompetenceGoalsDialog.propTypes = {
   curriculums: PropTypes.arrayOf(

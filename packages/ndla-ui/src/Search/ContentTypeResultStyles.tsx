@@ -22,6 +22,7 @@ export const noWidthhighlightStyle = css`
 type inMenuProps = {
   inMenu?: boolean;
   animateList?: number;
+  unGrouped?: boolean;
 };
 
 export const StyledNoHit = styled.p<inMenuProps>`
@@ -98,6 +99,9 @@ export const StyledList = styled.ul<inMenuProps>`
   li {
     margin: 0 -${spacing.small};
     a {
+      > div {
+        margin-right: ${spacing.small};
+      }
       color: ${colors.brand.primary};
       box-shadow: none;
       display: inline-flex;
@@ -118,7 +122,7 @@ export const StyledList = styled.ul<inMenuProps>`
         props.inMenu
           ? css`
               ${mq.range({ from: breakpoints.desktop })} {
-                margin-left: ${spacingUnit * 1.5}px;
+                margin-left: ${!props.unGrouped && spacingUnit * 1.5}px;
               }
               strong {
                 text-decoration: underline;

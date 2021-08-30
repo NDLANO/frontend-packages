@@ -12,7 +12,7 @@ import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
@@ -22,13 +22,13 @@ import { getTitleFromFormat } from '../CodeBlockEditor';
 const Wrapper = styled.div`
   margin: 15px 0;
   code {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
-  [class^="language-"] { {
+  [class^='language-'] {
     & > span:first-of-type {
       margin-top: 10px;
-      display:block;
+      display: block;
     }
   }
 `;
@@ -80,7 +80,8 @@ type Props = {
   showCopy?: boolean;
 };
 
-export const Codeblock: FC<Props & tType> = ({ actionButton, code, format, showCopy = false, t, title }) => {
+export const Codeblock: FC<Props> = ({ actionButton, code, format, showCopy = false, title }) => {
+  const { t } = useTranslation();
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
@@ -125,4 +126,4 @@ export const Codeblock: FC<Props & tType> = ({ actionButton, code, format, showC
   );
 };
 
-export default injectT(Codeblock);
+export default Codeblock;

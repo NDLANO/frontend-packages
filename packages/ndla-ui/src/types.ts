@@ -78,7 +78,7 @@ export type SearchResult = {
 };
 
 export interface ContentTypeResultType {
-  title: string;
+  title?: string;
   contentType?: string;
   resources: Array<Resource>;
 }

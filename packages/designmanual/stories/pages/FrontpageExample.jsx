@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import {
   FrontpageHeader,
   FrontpageSearch,
@@ -24,7 +24,8 @@ import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
 
-const FrontpageExample = ({ showMessageBox, t }) => {
+const FrontpageExample = ({ showMessageBox }) => {
+  const { t } = useTranslation();
   const [searchFieldValue, setSearchFieldValue] = useState('');
   const [inputHasFocus, setInputHasFocus] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -326,7 +327,6 @@ const FrontpageExample = ({ showMessageBox, t }) => {
 
 FrontpageExample.propTypes = {
   showMessageBox: PropTypes.bool,
-  t: PropTypes.func.isRequired,
 };
 
-export default injectT(FrontpageExample);
+export default FrontpageExample;

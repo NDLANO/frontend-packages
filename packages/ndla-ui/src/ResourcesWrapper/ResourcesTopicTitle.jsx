@@ -4,10 +4,10 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';
+import { useTranslation } from 'react-i18next';
 
 import { classes } from './ResourcesWrapper';
 
@@ -44,8 +44,8 @@ const ResourcesTopicTitle = ({
   showAdditionalResources,
   messages,
   invertedStyle,
-  t,
 }) => {
+  const { t } = useTranslation();
   // Fix for heading while title not required when ready.
   let heading;
   if (title) {
@@ -107,11 +107,10 @@ ResourcesTopicTitle.propTypes = {
   hasAdditionalResources: PropTypes.bool.isRequired,
   showAdditionalResources: PropTypes.bool.isRequired,
   invertedStyle: PropTypes.bool,
-  t: PropTypes.func.isRequired,
   messages: PropTypes.shape({
     label: PropTypes.string.isRequired,
     additionalFilterLabel: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default injectT(ResourcesTopicTitle);
+export default ResourcesTopicTitle;

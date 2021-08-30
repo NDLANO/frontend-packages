@@ -20,10 +20,10 @@ import {
   LanguageSelector,
   OneColumn,
   Content,
+  i18nInstance,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
-
-import { Trans } from '@ndla/i18n';
+import { Translation as I18nTranslate } from 'react-i18next';
 import { StoryIntro, StoryBody } from './wrappers';
 import { Center } from './helpers';
 import ArticleLoader from './article/ArticleLoader';
@@ -424,8 +424,8 @@ storiesOf('Sammensatte moduler', module)
     </Center>
   ))
   .add('Relatert innhold', () => (
-    <Trans>
-      {({ t }) => (
+    <I18nTranslate>
+      {(t) => (
         <div>
           <StoryIntro title="Relatert innhold">
             <p>Kan brukes i slutten av artikler, eller midt i.</p>
@@ -443,7 +443,7 @@ storiesOf('Sammensatte moduler', module)
           </StoryBody>
         </div>
       )}
-    </Trans>
+    </I18nTranslate>
   ))
   .add('Sidefot', () => (
     <Center>
@@ -464,7 +464,7 @@ storiesOf('Sammensatte moduler', module)
                 url: '#',
               },
             }}
-            currentLanguage="nb"
+            currentLanguage={i18nInstance.language}
           />
         }>
         <FooterText>
@@ -492,8 +492,7 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Læringsressurser/launchpad">
         <p>
           Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om tilleggsstoff-filteret aktiveres, vil
-          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon, og mindre mettet
-          bakgrunnsfarge.{' '}
+          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon.
         </p>
         <p>
           Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren aktiverer

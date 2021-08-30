@@ -9,8 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 
 const StyledInfoHeader = styled.p`
@@ -86,6 +86,7 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
           animation-delay: ${animations.durations.superFast};
         }
       `}
+  }
 `;
 
 const StyledIntroHeader = styled.h1`
@@ -100,7 +101,8 @@ interface Props {
   name: string;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({ isOpen, name, invertedStyle, t }) => {
+const LearningPathMenuIntro: React.FunctionComponent<Props> = ({ isOpen, name, invertedStyle }) => {
+  const { t } = useTranslation();
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
@@ -111,4 +113,4 @@ const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({ isOpen,
   );
 };
 
-export default injectT(LearningPathMenuIntro);
+export default LearningPathMenuIntro;

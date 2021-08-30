@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { ContentCard } from '@ndla/ui';
+import { withTranslation } from 'react-i18next';
 import { spacingUnit } from '@ndla/core';
-import { injectT } from '@ndla/i18n';
 import { SubjectSectionTitle } from './Subject';
 
 const subjectCarouselClasses = BEMHelper('c-subject-carousel');
@@ -112,4 +112,4 @@ SubjectCarousel.defaultProps = {
   wideScreen: false,
 };
 
-export default injectT(SubjectCarousel);
+export default withTranslation()(SubjectCarousel);

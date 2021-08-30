@@ -7,7 +7,7 @@
  */
 
 import React, { useState, Children } from 'react';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import Button from '@ndla/button';
 
@@ -16,7 +16,8 @@ import AccordionSection from './AccordionSection';
 
 type Props = { tiny?: boolean; single?: boolean; children?: React.ReactNode };
 
-const Accordions = ({ tiny, single, t, children }: Props & tType) => {
+const Accordions = ({ tiny, single, children }: Props) => {
+  const { t } = useTranslation();
   const [panelIds] = useState<string[]>(getPanelIds(children));
   const [openPanels, setOpenPanels] = useState<string[]>(getOpenPanels(children));
 
@@ -59,4 +60,4 @@ const Accordions = ({ tiny, single, t, children }: Props & tType) => {
   );
 };
 
-export default injectT(Accordions);
+export default Accordions;

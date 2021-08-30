@@ -10,7 +10,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { History } from 'history';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 import {
   ChevronDown,
   ChevronUp,
@@ -22,6 +21,7 @@ import {
 } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
+import { useTranslation } from 'react-i18next';
 import ContentTypeResult from './ContentTypeResult';
 import { highlightStyle } from './ContentTypeResultStyles';
 import { ContentTypeResultType, Resource } from '../types';
@@ -120,8 +120,9 @@ const StyledScrollableContent = styled.div<StyledScrollableContentProps>`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  padding: ${(props) => (props.extendHeight ? spacing.normal : spacing.large)} ${spacing.large} ${spacing.large}
-    ${spacing.large};
+  // prettier-ignore
+  padding: ${(props) =>
+    props.extendHeight ? spacing.normal : spacing.large} ${spacing.large} ${spacing.large} ${spacing.large};
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
     max-height: calc(100vh - ${(props) => 200 - props.extendHeight});
   }
@@ -154,7 +155,7 @@ const StyledInstructions = styled.div`
     border: 1px solid ${colors.brand.grey};
     background: ${colors.brand.greyLight};
     border-radius: 2px;
-    margin-left 2px;
+    margin-left: 2px;
   }
   span {
     display: inline-flex;
@@ -227,7 +228,7 @@ type Props = {
   suggestionUrl: string;
 };
 
-const SearchResultSleeve: React.FC<Props & tType> = ({
+const SearchResultSleeve: React.FC<Props> = ({
   result,
   allResultUrl,
   resourceToLinkProps,
@@ -237,11 +238,11 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
   searchString,
   loading,
   frontpage,
-  t,
   history,
   suggestion,
   suggestionUrl,
 }) => {
+  const { t } = useTranslation();
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);
   const searchSuggestionRef = useRef<HTMLDivElement>(null);
@@ -376,4 +377,4 @@ const SearchResultSleeve: React.FC<Props & tType> = ({
   );
 };
 
-export default injectT(SearchResultSleeve);
+export default SearchResultSleeve;

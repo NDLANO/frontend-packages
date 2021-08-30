@@ -12,7 +12,7 @@ import {
 } from '@ndla/notion';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import { mockListView } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
 
@@ -218,4 +218,4 @@ ListViewExample.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default injectT(ListViewExample);
+export default withTranslation()(ListViewExample);

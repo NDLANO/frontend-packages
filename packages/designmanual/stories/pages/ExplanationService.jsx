@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import ListView, { activeAlphabet } from '@ndla/listview';
 import Tabs from '@ndla/tabs';
 import {
@@ -15,7 +14,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';
 import { DropdownInput, DropdownMenu } from '@ndla/forms';
@@ -90,7 +89,8 @@ const availableCategories = () => {
   return categories;
 };
 
-const ExplanationService = ({ t }) => {
+const ExplanationService = () => {
+  const { t } = useTranslation();
   const [detailedItem, setDetailedItem] = useState(null);
   const [viewStyle, setViewStyle] = useState('grid');
   const [searchValue, setSearchValue] = useState('');
@@ -448,8 +448,5 @@ const ExplanationService = ({ t }) => {
     </>
   );
 };
-ExplanationService.propTypes = {
-  t: PropTypes.func.isRequired,
-};
 
-export default injectT(ExplanationService);
+export default ExplanationService;

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { spacing, spacingUnit } from '@ndla/core';
 import { CarouselAutosize } from '@ndla/carousel';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import {
   FilmSlideshow,
   MovieGrid,
@@ -215,4 +215,4 @@ FilmFrontpage.defaultProps = {
   resizeThumbnailImages: true,
 };
 
-export default injectT(FilmFrontpage);
+export default withTranslation()(FilmFrontpage);

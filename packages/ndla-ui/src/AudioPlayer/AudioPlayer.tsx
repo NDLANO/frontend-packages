@@ -13,7 +13,7 @@ import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import shave from 'shave';
 import Controls from './Controls';
@@ -188,17 +188,8 @@ type Props = {
   staticRenderId?: string;
 };
 
-const AudioPlayer = ({
-  src,
-  title,
-  subtitle,
-  speech,
-  description,
-  img,
-  textVersion,
-  staticRenderId,
-  t,
-}: Props & tType) => {
+const AudioPlayer = ({ src, title, subtitle, speech, description, img, textVersion, staticRenderId }: Props) => {
+  const { t } = useTranslation();
   const [showTextVersion, setShowTextVersion] = useState(false);
 
   const descriptionRef = useRef<HTMLDivElement>(null);
@@ -289,4 +280,4 @@ const AudioPlayer = ({
   );
 };
 
-export default injectT(AudioPlayer);
+export default AudioPlayer;

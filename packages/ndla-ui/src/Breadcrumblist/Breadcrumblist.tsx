@@ -9,7 +9,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 
 import {
   School as SchoolIcon,
@@ -20,6 +19,7 @@ import {
   // @ts-ignore
 } from '@ndla/icons/action';
 import SafeLink from '@ndla/safelink';
+import { useTranslation } from 'react-i18next';
 
 type WrapperProps = {
   startOffset?: number;
@@ -225,8 +225,8 @@ const Breadcrumblist = ({
   leftAlign,
   hideOnNarrow,
   onNav,
-  t,
-}: BreadCrumbProps & tType) => {
+}: BreadCrumbProps) => {
+  const { t } = useTranslation();
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
   const [useScrollEvent, setUseScrollEvent] = useState(false);
 
@@ -305,4 +305,4 @@ const Breadcrumblist = ({
   );
 };
 
-export default injectT(Breadcrumblist);
+export default Breadcrumblist;

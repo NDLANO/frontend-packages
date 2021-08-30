@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 // @ts-ignore
@@ -22,6 +21,7 @@ import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
+import { useTranslation } from 'react-i18next';
 import { joinArrayWithConjunction } from '@ndla/util';
 import { NotionMedia } from '../types';
 
@@ -146,7 +146,8 @@ const SearchNotionItem = ({
   onReferenceClick,
   renderMarkdown,
   t,
-}: SearchNotionItemProps & tType) => {
+}: SearchNotionItemProps) => {
+  const { t } = useTranslation();
   const hasMedia = !!(image || media);
   const ShowMediaButton = ({ type, element }: NotionMedia) => {
     return (
@@ -237,4 +238,4 @@ const SearchNotionItem = ({
   );
 };
 
-export default injectT(SearchNotionItem);
+export default SearchNotionItem;

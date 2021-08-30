@@ -165,6 +165,7 @@ const LanguageSelector = ({
               currentLanguage={currentLanguage}
               setInfoLocale={setInfoLocale}
               infoLocale={infoLocale}
+              close={() => setIsOpen(false)}
             />
           </StyledModal>
         </FocusTrapReact>

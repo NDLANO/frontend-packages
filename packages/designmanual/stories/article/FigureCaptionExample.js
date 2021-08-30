@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { FigureCaption, FigureLicenseDialog } from '@ndla/ui';
 import Button from '@ndla/button';
 
@@ -21,8 +21,8 @@ function FigureCaptionExample({
   licenseAbbreviation,
   hasHiddenCaption,
   link,
-  t,
 }) {
+  const { t } = useTranslation();
   const license = getLicenseByAbbreviation(licenseAbbreviation, 'nb');
   const messages = {
     title: t('title'),
@@ -77,4 +77,4 @@ FigureCaptionExample.defaultProps = {
   hasHiddenCaption: false,
 };
 
-export default injectT(FigureCaptionExample);
+export default FigureCaptionExample;

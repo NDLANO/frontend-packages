@@ -1,7 +1,10 @@
 import { addDecorator } from '@storybook/react';
+import { i18nInstance } from '@ndla/ui';
 import { LanguageWrapper } from './LanguageWrapper';
 import RouterWrapper from './RouterWrapper';
 
+i18nInstance.language = 'nb';
+i18nInstance.options.lng = 'nb';
 addDecorator(RouterWrapper);
 addDecorator(LanguageWrapper);
 

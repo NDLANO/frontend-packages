@@ -12,7 +12,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { injectT } from '@ndla/i18n';
 import debounce from 'lodash/debounce';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
@@ -21,6 +20,7 @@ import { ModalHeader } from '@ndla/modal';
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
+import { useTranslation } from 'react-i18next';
 import SubtopicLinkList from './SubtopicLinkList';
 import { TopicShape } from '../shapes';
 
@@ -71,8 +71,8 @@ export const TopicMenu = ({
   subjectCategories,
   programmes,
   currentProgramme,
-  t,
 }) => {
+  const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(MENU_CURRENT_SUBJECT);
 
@@ -304,31 +304,38 @@ export const TopicMenu = ({
                 lastOpen={!hasExpandedSubtopics}
               />
             )}
-            {currentlyExpandedSubTopics.map((subTopic, index) => (
-              <SubtopicLinkList
-                key={subTopic.id}
-                classes={classes}
-                className={classes('section', ['sub-topic', 'no-border']).className}
-                closeMenu={closeMenu}
-                topic={subTopic}
-                backLabel={
-                  index === 0
-                    ? topics.find((topic) => topic.id === expandedTopicId).name
-                    : currentlyExpandedSubTopics[index - 1].name
-                }
-                toTopic={toTopic}
-                expandedSubtopicId={
-                  currentlyExpandedSubTopics[index + 1] ? currentlyExpandedSubTopics[index + 1].id : 'no way'
-                }
-                onSubtopicExpand={(id) => {
-                  handleSubtopicExpand(id, index + 1);
-                }}
-                onGoBack={handleOnGoBack}
-                resourceToLinkProps={resourceToLinkProps}
-                lastOpen={sliderCounter === index + 2}
-                defaultCount={defaultCount}
-              />
-            ))}
+
+            {currentlyExpandedSubTopics.map((subTopic, index) => {
+              const { metadata } = subTopic;
+              const isUngrouped = metadata?.customFields['topic-resources'] === 'ungrouped' || false;
+
+              return (
+                <SubtopicLinkList
+                  isUngrouped={isUngrouped}
+                  key={subTopic.id}
+                  classes={classes}
+                  className={classes('section', ['sub-topic', 'no-border']).className}
+                  closeMenu={closeMenu}
+                  topic={subTopic}
+                  backLabel={
+                    index === 0
+                      ? topics.find((topic) => topic.id === expandedTopicId).name
+                      : currentlyExpandedSubTopics[index - 1].name
+                  }
+                  toTopic={toTopic}
+                  expandedSubtopicId={
+                    currentlyExpandedSubTopics[index + 1] ? currentlyExpandedSubTopics[index + 1].id : 'no way'
+                  }
+                  onSubtopicExpand={(id) => {
+                    handleSubtopicExpand(id, index + 1);
+                  }}
+                  onGoBack={handleOnGoBack}
+                  resourceToLinkProps={resourceToLinkProps}
+                  lastOpen={sliderCounter === index + 2}
+                  defaultCount={defaultCount}
+                />
+              );
+            })}
           </div>
         )}
       </div>
@@ -394,4 +401,4 @@ TopicMenu.defaultProps = {
   defaultCount: 12,
 };
 
-export default injectT(TopicMenu);
+export default TopicMenu;

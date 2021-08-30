@@ -7,7 +7,6 @@
  */
 
 import React, { ReactChild, ReactChildren } from 'react';
-import { injectT, tType } from '@ndla/i18n';
 import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
@@ -16,6 +15,7 @@ import { css } from '@emotion/core';
 import Button from '@ndla/button';
 // @ts-ignore
 import { LearningPath } from '@ndla/icons/contentType';
+import { useTranslation } from 'react-i18next';
 
 const buttonToggleCss = css`
   ${mq.range({ from: breakpoints.tablet })} {
@@ -37,7 +37,8 @@ type ModalWrapperProps = {
   children: (arg: VoidFunction) => ReactChild | ReactChildren | React.ReactNode;
 };
 
-const ModalWrapperComponent: React.FC<ModalWrapperProps & tType> = ({ innerWidth, children, t }) => {
+const ModalWrapperComponent: React.FC<ModalWrapperProps> = ({ innerWidth, children }) => {
+  const { t } = useTranslation();
   if (innerWidth < 601) {
     return (
       <Modal
@@ -65,4 +66,4 @@ const ModalWrapperComponent: React.FC<ModalWrapperProps & tType> = ({ innerWidth
   return <>{children(() => {})}</>;
 };
 
-export default injectT(ModalWrapperComponent);
+export default ModalWrapperComponent;

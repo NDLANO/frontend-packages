@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
 // @ts-ignore
@@ -87,7 +87,8 @@ type Props = {
   };
 };
 
-export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels, t }: Props & tType) => {
+export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels }: Props) => {
+  const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
 
   useEffect(() => {
@@ -208,4 +209,4 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
   );
 };
 
-export default injectT(FilterButtons);
+export default FilterButtons;

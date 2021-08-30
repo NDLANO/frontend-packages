@@ -8,11 +8,11 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 import { breakpoints, mq, spacing } from '@ndla/core';
 
 // @ts-ignore
 import Button from '@ndla/button';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import { FilterProps } from './ActiveFilterContent';
 import ActiveFilters from './ActiveFilters';
 import SearchFieldHeader from './SearchFieldHeader';
@@ -73,7 +73,7 @@ const SearchHeader = ({
   activeFilters,
   filters,
   t,
-}: Props & tType) => (
+}: Props & WithTranslation) => (
   <Wrapper>
     <SearchInputWrapper>
       <SearchFieldHeader
@@ -111,4 +111,4 @@ const SearchHeader = ({
   </Wrapper>
 );
 
-export default injectT(SearchHeader);
+export default withTranslation()(SearchHeader);

@@ -8,13 +8,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { initArticleScripts } from '@ndla/article-scripts';
-import { injectT } from '@ndla/i18n';
 import { Figure } from '@ndla/ui';
 import { uuid } from '@ndla/util';
+import { useTranslation } from 'react-i18next';
 import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe, caption, type, t }) {
+function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe, caption, type }) {
+  const { t } = useTranslation();
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -62,4 +63,4 @@ FigureWithLicense.defaultProps = {
   hasHiddenCaption: false,
 };
 
-export default injectT(FigureWithLicense);
+export default FigureWithLicense;

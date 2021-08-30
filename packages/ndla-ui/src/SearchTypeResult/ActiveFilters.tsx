@@ -12,7 +12,7 @@ import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
 type StyledActiveFiltersProps = {
@@ -91,7 +91,8 @@ type Props = {
   customElements?: React.ReactElement[];
 };
 
-const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements, t }: Props & tType) => {
+const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements }: Props) => {
+  const { t } = useTranslation();
   if (filters && filters.length > 0) {
     const filterLength = filters.length;
 
@@ -127,4 +128,4 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customEleme
   return null;
 };
 
-export default injectT(ActiveFilters);
+export default ActiveFilters;

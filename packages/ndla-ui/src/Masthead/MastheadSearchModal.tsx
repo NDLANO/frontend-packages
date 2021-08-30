@@ -1,5 +1,4 @@
 import React, { ReactChild, ReactChildren } from 'react';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal from '@ndla/modal';
 // @ts-ignore
@@ -10,6 +9,7 @@ import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
+import { WithTranslation, withTranslation } from 'react-i18next';
 // @ts-ignore
 import ToggleSearchButton from '../Search/ToggleSearchButton';
 
@@ -112,7 +112,7 @@ const extraBackdrop = css`
   box-shadow: ${shadows.searchHeader};
 `;
 
-const MastheadSearchModal: React.FC<Props & tType> = ({
+const MastheadSearchModal: React.FC<Props & WithTranslation> = ({
   onClose: onSearchClose,
   children,
   hideOnNarrowScreen,
@@ -145,4 +145,4 @@ const MastheadSearchModal: React.FC<Props & tType> = ({
   </Modal>
 );
 
-export default injectT(MastheadSearchModal);
+export default withTranslation()(MastheadSearchModal);

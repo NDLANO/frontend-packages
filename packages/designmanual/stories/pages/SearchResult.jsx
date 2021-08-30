@@ -486,4 +486,4 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
   );
 };
 
-export default SearchPageDemo;
+export default SearchResult;

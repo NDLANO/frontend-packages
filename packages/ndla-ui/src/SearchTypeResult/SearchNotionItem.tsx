@@ -127,11 +127,11 @@ export type SearchNotionItemProps = {
   image?: { url: string; alt: string };
   media?: NotionMedia;
   labels?: string[];
+  renderMarkdown?: (text: React.ReactNode) => string;
   authors?: { name: string }[];
   license?: string;
   locale?: string;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
-  renderMarkdown: (text: React.ReactNode) => string;
 };
 
 const SearchNotionItem = ({

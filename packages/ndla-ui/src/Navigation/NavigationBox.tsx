@@ -4,10 +4,10 @@ import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 import { css } from '@emotion/core';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
+import { useTranslation } from 'react-i18next';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 34px;
@@ -180,8 +180,8 @@ export const NavigationBox = ({
   listDirection = 'horizontal',
   invertedStyle,
   onToggleAdditionalResources = () => {},
-  t,
-}: Props & tType) => {
+}: Props) => {
+  const { t } = useTranslation();
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
   return (
     <StyledWrapper>
@@ -243,4 +243,4 @@ export const NavigationBox = ({
   );
 };
 
-export default injectT(NavigationBox);
+export default NavigationBox;

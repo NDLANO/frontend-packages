@@ -10,8 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import SafeLink from '@ndla/safelink';
-import { injectT, tType } from '@ndla/i18n';
 import { spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 
 type ItemWrapperProps = {
   backgroundImage?: string;
@@ -57,7 +57,8 @@ export type SearchSubjecItemType = {
 type Props = {
   item: SearchSubjecItemType;
 };
-const SearchSubjectItem = ({ item, t }: Props & tType) => {
+const SearchSubjectItem = ({ item }: Props) => {
+  const { t } = useTranslation();
   const { title, url, img = null } = item; // img = null
 
   return (
@@ -72,4 +73,4 @@ const SearchSubjectItem = ({ item, t }: Props & tType) => {
   );
 };
 
-export default injectT(SearchSubjectItem);
+export default SearchSubjectItem;

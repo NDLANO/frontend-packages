@@ -8,7 +8,7 @@ import {
   constants,
   FilterButtons,
 } from '@ndla/ui';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 import {
   subjectTypeResults,
@@ -228,7 +228,8 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
   return resources.items.filter((item) => item.labels.some((label) => filters.includes(label)));
 };
 
-const SearchPageDemo = ({ t }) => {
+const SearchPageDemo = () => {
+  const { t } = useTranslation();
   const [selectedResourceTypes, setSelectedResourceTypes] = useState([]);
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
   const [searchValue, setSearchValue] = useState('nunorsk');
@@ -452,4 +453,4 @@ const SearchPageDemo = ({ t }) => {
   );
 };
 
-export default injectT(SearchPageDemo);
+export default SearchPageDemo;

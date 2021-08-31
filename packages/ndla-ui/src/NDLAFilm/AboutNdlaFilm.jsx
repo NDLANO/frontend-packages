@@ -5,7 +5,7 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button from '@ndla/button';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import VisualElement from './VisualElement';
 
 const StyledAside = styled.aside`
@@ -44,7 +44,8 @@ const StyledAside = styled.aside`
   }
 `;
 
-const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm, t }) => {
+const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm }) => {
+  const { t } = useTranslation();
   return (
     <div className="o-wrapper">
       <StyledAside>
@@ -82,4 +83,4 @@ AboutNdlaFilm.propTypes = {
   }),
 };
 
-export default injectT(AboutNdlaFilm);
+export default AboutNdlaFilm;

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
+import { withTranslation, WithTranslation } from 'react-i18next';
 import { spacingUnit } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 import { SafeLinkProps } from '@ndla/safelink';
 import { ContentCard } from '../index';
 import { SubjectSectionTitle } from './Subject';
@@ -30,7 +30,13 @@ const getSubclasses = (obj: Record<string, boolean>): string[] => {
     .map(([className, _]) => className);
 };
 
-const SubjectCarousel = ({ subjects = [], title = '', narrowScreen = false, wideScreen = false, t }: Props & tType) => (
+const SubjectCarousel = ({
+  subjects = [],
+  title = '',
+  narrowScreen = false,
+  wideScreen = false,
+  t,
+}: Props & WithTranslation) => (
   <section {...subjectCarouselClasses('', getSubclasses({ narrowScreen, wideScreen }))}>
     <CarouselAutosize
       breakpoints={[
@@ -142,4 +148,4 @@ SubjectCarousel.defaultProps = {
   wideScreen: false,
 };
 
-export default injectT(SubjectCarousel);
+export default withTranslation()(SubjectCarousel);

@@ -9,7 +9,7 @@
 /* eslint-env jest */
 import IntlMessageFormat from 'intl-messageformat';
 import memoizeIntlConstructor from 'intl-format-cache';
-import { formatMessage } from '..';
+import { formatMessage } from '../formatMessage';
 
 const getMessageFormat = memoizeIntlConstructor(IntlMessageFormat);
 const locale = 'nb';

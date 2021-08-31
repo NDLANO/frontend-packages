@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronDown } from '@ndla/icons/common';
-import { Trans } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import { FilterListPhone } from '../Filter';
 import CompetenceGoalList from './CompetenceGoalList';
 
@@ -32,88 +32,81 @@ class CompetenceGoals extends Component {
       filterValues,
       onFilterClick,
       description,
+      t,
     } = this.props;
 
     return (
-      <Trans>
-        {({ t }) => (
-          <div {...classes('', { menu, search })}>
-            {!menu && !search ? (
+      <div {...classes('', { menu, search })}>
+        {!menu && !search ? (
+          <Fragment>
+            <h1 id={headingId}>{messages.heading}</h1>
+            <hr />
+            <p>{description}</p>
+            <p>{messages.listDescription}</p>
+            <div {...classes('topic')}>
+              <CompetenceGoalList goals={topics[0].items} />
+            </div>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <h1 {...classes('subject-heading')}>{subjectName}</h1>
+            <h2 id={headingId} {...classes('heading')}>
+              {messages.heading}
+            </h2>
+            <p {...classes('description')}>{messages.listDescription}</p>
+            {filterOptions && filterOptions.length > 0 && (
               <Fragment>
-                <h1 id={headingId}>{messages.heading}</h1>
-                <hr />
-                <p>{description}</p>
-                <p>{messages.listDescription}</p>
-                <div {...classes('topic')}>
-                  <CompetenceGoalList goals={topics[0].items} />
-                </div>
-              </Fragment>
-            ) : (
-              <Fragment>
-                <h1 {...classes('subject-heading')}>{subjectName}</h1>
-                <h2 id={headingId} {...classes('heading')}>
-                  {messages.heading}
-                </h2>
-                <p {...classes('description')}>{messages.listDescription}</p>
-                {filterOptions && filterOptions.length > 0 && (
-                  <Fragment>
-                    <FilterListPhone
-                      preid="competence"
-                      label="Filtrer kompetansemål"
-                      options={filterOptions}
-                      alignedGroup
-                      values={filterValues}
-                      onChange={onFilterClick}
-                      messages={{
-                        openFilter: t('competenceGoals.openCompentenceGoalsFilter'),
-                        useFilter: t('competenceGoals.useCompentenceGoalsFilter'),
-                        closeFilter: t('competenceGoals.closeCompentenceGoalsFilter'),
-                      }}
-                    />
-                  </Fragment>
-                )}
-                {topics.map((topic) => (
-                  <div
-                    {...classes('topic', {
-                      expandable: true,
-                      expanded: this.state.expanded === topic.heading,
-                    })}
-                    key={topic.heading}>
-                    <h3 {...classes('topic-heading')}>
-                      <button
-                        {...classes('topic-heading-button')}
-                        type="button"
-                        aria-expanded={this.state.expanded === topic.heading}
-                        aria-controls={id}
-                        onClick={() => {
-                          this.setState((prevState) => {
-                            let expanded = null;
-                            if (prevState.expanded !== topic.heading) {
-                              expanded = topic.heading;
-                            }
-
-                            return {
-                              expanded,
-                            };
-                          });
-                        }}>
-                        {this.state.expanded === topic.heading ? <ChevronDown /> : <ChevronRight />}
-                        {topic.heading}
-                      </button>
-                    </h3>
-
-                    <CompetenceGoalList
-                      id={id}
-                      aria-hidden={this.state.expanded !== topic.heading}
-                      goals={topic.items}
-                    />
-                  </div>
-                ))}
+                <FilterListPhone
+                  preid="competence"
+                  label="Filtrer kompetansemål"
+                  options={filterOptions}
+                  alignedGroup
+                  values={filterValues}
+                  onChange={onFilterClick}
+                  messages={{
+                    openFilter: t('competenceGoals.openCompentenceGoalsFilter'),
+                    useFilter: t('competenceGoals.useCompentenceGoalsFilter'),
+                    closeFilter: t('competenceGoals.closeCompentenceGoalsFilter'),
+                  }}
+                />
               </Fragment>
             )}
-          </div>
+            {topics.map((topic) => (
+              <div
+                {...classes('topic', {
+                  expandable: true,
+                  expanded: this.state.expanded === topic.heading,
+                })}
+                key={topic.heading}>
+                <h3 {...classes('topic-heading')}>
+                  <button
+                    {...classes('topic-heading-button')}
+                    type="button"
+                    aria-expanded={this.state.expanded === topic.heading}
+                    aria-controls={id}
+                    onClick={() => {
+                      this.setState((prevState) => {
+                        let expanded = null;
+                        if (prevState.expanded !== topic.heading) {
+                          expanded = topic.heading;
+                        }
+
+                        return {
+                          expanded,
+                        };
+                      });
+                    }}>
+                    {this.state.expanded === topic.heading ? <ChevronDown /> : <ChevronRight />}
+                    {topic.heading}
+                  </button>
+                </h3>
+
+                <CompetenceGoalList id={id} aria-hidden={this.state.expanded !== topic.heading} goals={topic.items} />
+              </div>
+            ))}
+          </Fragment>
         )}
-      </Trans>
+      </div>
     );
   }
 }
@@ -156,4 +149,4 @@ CompetenceGoals.defaultProps = {
   search: false,
 };
 
-export default CompetenceGoals;
+export default withTranslation()(CompetenceGoals);

@@ -12,13 +12,13 @@ import parse from 'html-react-parser';
 // @ts-ignore
 import { ChevronRight, Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import Modal, { ModalCloseButton } from '@ndla/modal';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -217,7 +217,8 @@ type Props = {
   item: SearchItemType;
   type?: ContentType;
 };
-const SearchItem = ({ item, type, t }: Props & tType) => {
+const SearchItem = ({ item, type }: Props) => {
+  const { t } = useTranslation();
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
   const mainContext = contexts[0];
 
@@ -316,4 +317,4 @@ const SearchItem = ({ item, type, t }: Props & tType) => {
   );
 };
 
-export default injectT(SearchItem);
+export default SearchItem;

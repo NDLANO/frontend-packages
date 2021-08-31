@@ -10,7 +10,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntersectionObserver } from '@ndla/hooks';
 
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 import {
   Image,
@@ -144,8 +144,8 @@ const SubjectPage = ({
   subjectContentCards,
   subjectAboutHeading,
   subjectAboutDescription,
-  t,
 }) => {
+  const { t } = useTranslation();
   const [selectedMainTopic, setSelectedMainTopic] = useState(preSelectedMainTopic);
   const [selectedSubTopic, setSelectedSubTopic] = useState(preSelectedSubTopic);
   const [selectedSubSubTopic, setSelectedSubSubTopic] = useState(preSelectedSubSubTopic);
@@ -531,4 +531,4 @@ SubjectPage.propTypes = {
   subjectAboutDescription: PropTypes.string,
 };
 
-export default injectT(SubjectPage);
+export default SubjectPage;

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@ndla/tabs';
 import { uuid } from '@ndla/util';
 
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import {
   MediaList,
   MediaListItem,
@@ -452,26 +452,25 @@ LinkContent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-const LicenseBox = ({ t }) => (
-  <Fragment>
-    <h1>{t('license.heading')}</h1>
-    <Tabs
-      singleLine
-      tabs={[
-        { title: t('license.tabs.text'), content: <TextContent t={t} /> },
-        { title: t('license.tabs.images'), content: <ImageContent t={t} /> },
-        { title: t('license.tabs.video'), content: <VideoContent t={t} /> },
-        { title: t('license.tabs.audio'), content: <AudioContent t={t} /> },
-        { title: t('license.tabs.files'), content: <Files t={t} /> },
-        { title: t('license.tabs.embedlink'), content: <LinkContent t={t} /> },
-        { title: t('license.tabs.other'), content: <OtherContent t={t} /> },
-      ]}
-    />
-  </Fragment>
-);
-
-LicenseBox.propTypes = {
-  t: PropTypes.func.isRequired,
+const LicenseBox = () => {
+  const { t } = useTranslation();
+  return (
+    <Fragment>
+      <h1>{t('license.heading')}</h1>
+      <Tabs
+        singleLine
+        tabs={[
+          { title: t('license.tabs.text'), content: <TextContent t={t} /> },
+          { title: t('license.tabs.images'), content: <ImageContent t={t} /> },
+          { title: t('license.tabs.video'), content: <VideoContent t={t} /> },
+          { title: t('license.tabs.audio'), content: <AudioContent t={t} /> },
+          { title: t('license.tabs.files'), content: <Files t={t} /> },
+          { title: t('license.tabs.embedlink'), content: <LinkContent t={t} /> },
+          { title: t('license.tabs.other'), content: <OtherContent t={t} /> },
+        ]}
+      />
+    </Fragment>
+  );
 };
 
-export default injectT(LicenseBox);
+export default LicenseBox;

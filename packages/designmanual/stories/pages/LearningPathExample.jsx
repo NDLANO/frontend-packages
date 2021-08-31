@@ -9,7 +9,7 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
+
 import {
   LearningPathWrapper,
   LearningPathMenu,
@@ -117,7 +117,7 @@ const dataReducer = (state, action) => {
 const toLearningPathUrl = () => {
   return '';
 };
-const LearningPathExample = ({ invertedStyle, t }) => {
+const LearningPathExample = ({ invertedStyle }) => {
   const [currentState, dispatch] = useReducer(dataReducer, {});
   const [hideHelp, toggleHelp] = useState(true);
   const [learningPathId, updateLearningPathId] = useState(DEMO_LEARNING_PATH_ID);
@@ -351,4 +351,4 @@ const LearningPathExample = ({ invertedStyle, t }) => {
   );
 };
 
-export default injectT(LearningPathExample);
+export default LearningPathExample;

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { OneColumn } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import CategorySelect from './CategorySelect';
 
 import { topicShape } from './shapes';
@@ -63,4 +63,4 @@ FilmMovieSearch.defaultProps = {
   topics: [],
 };
 
-export default injectT(FilmMovieSearch);
+export default withTranslation()(FilmMovieSearch);

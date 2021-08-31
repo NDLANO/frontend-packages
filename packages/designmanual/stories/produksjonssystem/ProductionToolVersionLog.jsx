@@ -19,7 +19,7 @@ import { fonts, misc } from '@ndla/core';
 import { buttonStyle } from '@ndla/button';
 // @ts-ignore
 import { Cross } from '@ndla/icons/action';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 const paddingPanelStyleInside = css`
   background: ${colors.brand.greyLightest};
@@ -196,7 +196,8 @@ const versionsDummy = [
   },
 ];
 
-const ProductionToolVersionLog = ({ t }) => {
+const ProductionToolVersionLog = () => {
+  const { t } = useTranslation();
   const [versions, updateVersions] = useState(versionsDummy);
   const [commentValue, setCommentValue] = useState('');
   const [commentError, setCommentError] = useState(false);
@@ -312,4 +313,4 @@ const ProductionToolVersionLog = ({ t }) => {
   );
 };
 
-export default injectT(ProductionToolVersionLog);
+export default ProductionToolVersionLog;

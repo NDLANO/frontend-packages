@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
 import { breakpoints, mq } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
 import FrontpageAllSubjects, { subjectsProps } from './FrontpageAllSubjects';
 
@@ -87,11 +87,13 @@ const BottomCursor = styled(Cursor)`
 `;
 
 type Props = {
-  programItems: [ItemProps];
+  programItems: ItemProps[];
   subjectCategories: subjectsProps['categories'];
+  showBetaCursor?: boolean;
 };
 
-const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tType) => {
+const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor }: Props) => {
+  const { t } = useTranslation();
   const [showSubjects, setShowSubjects] = useState(false);
   const isWindowContext = typeof window !== 'undefined';
 
@@ -118,15 +120,17 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tT
         <Button onClick={() => toggleSubjects(true)} lighter={!showSubjects} size="medium" borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
-        <CursorPlaceholder>
-          <CursorWrapper>
-            <LeftCursor hide={showSubjects} />
-            <CursorTextWrapper>
-              <CursorText>{t('frontpageMenu.cursorText')}</CursorText>
-              <BottomCursor hide={!showSubjects} />
-            </CursorTextWrapper>
-          </CursorWrapper>
-        </CursorPlaceholder>
+        {showBetaCursor && (
+          <CursorPlaceholder>
+            <CursorWrapper>
+              <LeftCursor hide={showSubjects} />
+              <CursorTextWrapper>
+                <CursorText>{t('frontpageMenu.cursorText')}</CursorText>
+                <BottomCursor hide={!showSubjects} />
+              </CursorTextWrapper>
+            </CursorWrapper>
+          </CursorPlaceholder>
+        )}
       </StyledMenu>
       {showSubjects ? (
         <FrontpageAllSubjects categories={subjectCategories} />
@@ -137,4 +141,4 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, t }: Props & tT
   );
 };
 
-export default injectT(FrontpageProgramMenu);
+export default FrontpageProgramMenu;

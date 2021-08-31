@@ -16,9 +16,9 @@ import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
 // @ts-ignore
 import Button from '@ndla/button';
-import { injectT, tType } from '@ndla/i18n';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/core';
+import { useTranslation } from 'react-i18next';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
@@ -239,8 +239,8 @@ const Topic = ({
   isAdditionalTopic,
   frame,
   children,
-  t,
-}: TopicProps & tType) => {
+}: TopicProps) => {
+  const { t } = useTranslation();
   return (
     <Wrapper frame={frame} data-testid="nav-topic-about">
       {isLoading ? (
@@ -346,4 +346,4 @@ const Topic = ({
     </Wrapper>
   );
 };
-export default injectT(Topic);
+export default Topic;

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
 
 const StyledActiveFilters = styled('ul')`
@@ -73,7 +73,8 @@ const StyledActiveFilterWrapper = styled('li')`
 const getFilterLength = (filters) =>
   filters.filter((filter) => filter.filterName === 'filter_subjects' && filter.title).length;
 
-const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, t }) => {
+const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
+  const { t } = useTranslation();
   if (filters && filters.length > 0) {
     const filterLength = getFilterLength(filters);
 
@@ -132,4 +133,4 @@ ActiveFilters.propTypes = {
   onFilterRemove: PropTypes.func.isRequired,
 };
 
-export default injectT(ActiveFilters);
+export default ActiveFilters;

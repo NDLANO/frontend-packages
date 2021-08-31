@@ -14,7 +14,7 @@ import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing } from '@ndla/core';
 import Button from '@ndla/button';
 import { Input } from '@ndla/forms';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 
 const StyledInputWrapper = styled('div')`
   margin: ${spacing.normal} 0;
@@ -110,4 +110,4 @@ ThemeEditorModal.propTypes = {
   }).isRequired,
 };
 
-export default injectT(ThemeEditorModal);
+export default withTranslation()(ThemeEditorModal);

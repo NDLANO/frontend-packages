@@ -13,7 +13,7 @@ import { Cross } from '@ndla/icons/action';
 import { spacing, fonts } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 export const StyledActiveFilterTitle = styled.span`
   white-space: nowrap;
@@ -32,7 +32,7 @@ type Props = {
   onFilterRemove: (value: string, name: string) => void;
 };
 
-const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & tType) => (
+const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & WithTranslation) => (
   <Button
     aria-label={t('searchPage.searchFilterMessages.removeFilter', {
       filterName: filter.title,
@@ -46,4 +46,4 @@ const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & tType) => (
   </Button>
 );
 
-export default injectT(ActiveFilterContent);
+export default withTranslation()(ActiveFilterContent);

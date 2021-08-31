@@ -6,8 +6,8 @@
  *
  */
 
-import LanguageWrapper, { LanguageContext } from './LanguageWrapper';
+import LanguageWrapper from './LanguageWrapper';
 
 export { default as LanguageSelector } from './LanguageSelector';
 export { default as LanguageSelectorNonMessages } from './LanguageSelectorNonMessages';
-export { LanguageWrapper, LanguageContext };
+export { LanguageWrapper };

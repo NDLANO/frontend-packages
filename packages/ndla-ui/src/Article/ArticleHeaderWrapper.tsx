@@ -8,7 +8,7 @@
 
 import React, { Component, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Trans, tType } from '@ndla/i18n';
+import { withTranslation, WithTranslation } from 'react-i18next';
 // @ts-ignore
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';
@@ -79,8 +79,8 @@ interface State {
   isOpen: boolean;
 }
 
-class ArticleHeaderWrapper extends Component<Props, State> {
-  constructor(props: Props) {
+class ArticleHeaderWrapper extends Component<Props & WithTranslation, State> {
+  constructor(props: Props & WithTranslation) {
     super(props);
     this.state = { isOpen: false };
     this.closeDialog = this.closeDialog.bind(this);
@@ -106,7 +106,7 @@ class ArticleHeaderWrapper extends Component<Props, State> {
   }
 
   render() {
-    const { children, competenceGoals, competenceGoalTypes } = this.props;
+    const { children, competenceGoals, competenceGoalTypes, t } = this.props;
     if (!competenceGoals) {
       return <div {...classes('header')}>{children}</div>;
     }
@@ -126,31 +126,27 @@ class ArticleHeaderWrapper extends Component<Props, State> {
         </CompetenceGoalsDialog>
       );
     return (
-      <Trans>
-        {({ t }: tType) => (
-          <div {...classes('header')}>
-            {children}
-            <CompetenceWrapper>
-              {competenceGoalTypes &&
-                competenceGoalTypes.map((type) => (
-                  <CompetenceBadge key={type}>
-                    <FooterHeaderIcon />
-                    <CompetenceBadgeText>{type}</CompetenceBadgeText>
-                  </CompetenceBadge>
-                ))}
-              <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
-                <OpenButton onClick={this.openDialog}>
-                  <FooterHeaderIcon />
-                  <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
-                </OpenButton>
-              </CompetenceButtonWrapper>
-            </CompetenceWrapper>
-            {dialog}
-          </div>
-        )}
-      </Trans>
+      <div {...classes('header')}>
+        {children}
+        <CompetenceWrapper>
+          {competenceGoalTypes &&
+            competenceGoalTypes.map((type) => (
+              <CompetenceBadge key={type}>
+                <FooterHeaderIcon />
+                <CompetenceBadgeText>{type}</CompetenceBadgeText>
+              </CompetenceBadge>
+            ))}
+          <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
+            <OpenButton onClick={this.openDialog}>
+              <FooterHeaderIcon />
+              <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
+            </OpenButton>
+          </CompetenceButtonWrapper>
+        </CompetenceWrapper>
+        {dialog}
+      </div>
     );
   }
 }
 
-export default ArticleHeaderWrapper;
+export default withTranslation()(ArticleHeaderWrapper);

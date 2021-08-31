@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { Forward } from '@ndla/icons/common';
-import { injectT, tType } from '@ndla/i18n';
+import { withTranslation, WithTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
@@ -76,7 +76,7 @@ type Props = {
   imageUrl: string;
 };
 
-const FrontpageFilm: React.FunctionComponent<Props & tType> = ({ url, imageUrl, t }) => (
+const FrontpageFilm: React.FunctionComponent<Props & WithTranslation> = ({ url, imageUrl, t }) => (
   <StyledSection>
     <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
     <StyledImage imageUrl={imageUrl}>
@@ -92,4 +92,4 @@ const FrontpageFilm: React.FunctionComponent<Props & tType> = ({ url, imageUrl, 
   </StyledSection>
 );
 
-export default injectT(FrontpageFilm);
+export default withTranslation()(FrontpageFilm);

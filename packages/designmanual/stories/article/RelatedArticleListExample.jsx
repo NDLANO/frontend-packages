@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toggleRelatedArticles } from '@ndla/article-scripts';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import {
   RelatedArticleList,
   RelatedArticle,
@@ -151,4 +151,4 @@ ExpandExample.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default injectT(ExpandExample);
+export default withTranslation()(ExpandExample);

@@ -328,6 +328,10 @@ const messages = {
     conjunction: 'og',
     supplierLabel: 'Rettshavar:',
     multipleSuppliersLabel: 'Rettshavarar:',
+    writtenBy: 'Skrive av {authors}',
+    cite: 'Bruk innhald',
+    notionsPrompt: 'Kan du begrepa?',
+    citeNotion: 'Bruk forklaringa',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

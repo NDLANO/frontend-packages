@@ -12,6 +12,8 @@ import parse from 'html-react-parser';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
+import { getLicenseByAbbreviation } from '@ndla/licenses';
+// @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { Play } from '@ndla/icons/common';
@@ -20,6 +22,8 @@ import { ArrowExpand } from '@ndla/icons/editor';
 // @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
+import { joinArrayWithConjunction } from '@ndla/util';
+import { NotionMedia } from '../types';
 
 type ItemWrapperProps = {
   hasMedia?: boolean;
@@ -103,25 +107,48 @@ const ShowMediaButtonText = styled.span`
   margin-left: 4px;
 `;
 
-type MediaProps = {
-  type: 'video' | 'other';
-  element: React.ReactNode;
-};
+const AuthorsWrapper = styled.div`
+  margin: 1rem 0;
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  button {
+    margin-left: 1rem;
+  }
+`;
 
 export type SearchNotionItemProps = {
   id: string;
   title: string;
   text: React.ReactNode;
   image?: { url: string; alt: string };
-  media?: MediaProps;
+  media?: NotionMedia;
   labels?: string[];
+  authors?: { name: string }[];
+  license?: string;
+  locale?: string;
+  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   renderMarkdown: (text: React.ReactNode) => string;
 };
 
-const SearchNotionItem = ({ title, text, image, media, labels = [], renderMarkdown }: SearchNotionItemProps) => {
+const SearchNotionItem = ({
+  title,
+  text,
+  image,
+  media,
+  labels = [],
+  authors = [],
+  license,
+  locale,
+  onReferenceClick,
+  renderMarkdown,
+}: SearchNotionItemProps) => {
   const { t } = useTranslation();
   const hasMedia = !!(image || media);
-  const ShowMediaButton = ({ type, element }: MediaProps) => {
+  const ShowMediaButton = ({ type, element }: NotionMedia) => {
     return (
       <ShowMediaButtonWrapper>
         <Modal
@@ -162,8 +189,31 @@ const SearchNotionItem = ({ title, text, image, media, labels = [], renderMarkdo
     <ItemWrapper hasMedia={hasMedia}>
       <TextWrapper>
         <DescriptionWrapper>
-          {parse(renderMarkdown ? renderMarkdown(`**${title}** - ${text}`) : `<b>${title}</b> - ${text}`)}
+          {parse(renderMarkdown ? renderMarkdown(`**${title}** &ndash; ${text}`) : `<b>${title}</b> \u2013 ${text}`)}
         </DescriptionWrapper>
+        {(authors || license) && (
+          <AuthorsWrapper>
+            {
+              <p>
+                {authors.length > 0 &&
+                  t('article.writtenBy', {
+                    authors:
+                      joinArrayWithConjunction(
+                        authors.map((author) => author.name),
+                        { conjunction: ` ${t('article.conjunction')} ` },
+                      ) || '',
+                  })}
+                {authors.length > 0 && license && ' '}
+                {license && `(${getLicenseByAbbreviation(license, locale).abbreviation})`}
+                {onReferenceClick && (
+                  <Button link onClick={onReferenceClick}>
+                    {t('article.cite')}
+                  </Button>
+                )}
+              </p>
+            }
+          </AuthorsWrapper>
+        )}
         {labels.length > 0 && (
           <LabelsWrapper>
             <LabelsLabel>{t('searchPage.resultType.notionLabels')}:</LabelsLabel>

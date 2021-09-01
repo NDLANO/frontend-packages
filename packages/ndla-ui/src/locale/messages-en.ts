@@ -329,6 +329,10 @@ const messages = {
     conjunction: 'and',
     supplierLabel: 'Rightsholder:',
     multipleSuppliersLabel: 'Rightsholders:',
+    writtenBy: 'Written by {authors}',
+    cite: 'Cite content',
+    notionsPrompt: 'Do you know the notions?',
+    citeNotion: 'Cite this explanation',
   },
   competenceGoals: {
     title: 'Competence goals and curriculum ',

@@ -100,3 +100,8 @@ export type elementRectType = {
   fromY: number;
   fromScale: number;
 };
+
+export type NotionMedia = {
+  type: 'video' | 'other';
+  element: React.ReactNode;
+};

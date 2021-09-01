@@ -6,6 +6,8 @@
  *
  */
 
-import Topic from './Topic';
+import Topic, { TopicProps } from './Topic';
+
+export type { TopicProps };
 
 export default Topic;

@@ -9,8 +9,27 @@ import Fade from '../Animation/Fade';
 
 const classes = BEMHelper('c-subject-shortcuts');
 
-class SubjectShortcuts extends Component {
-  constructor(props) {
+interface Props {
+  links: {
+    url: string;
+    text: string;
+  }[];
+  messages: {
+    heading: string;
+    showMore: string;
+    showLess: string;
+  };
+  defaultVisableCount: number;
+}
+
+interface State {
+  visibleCount: number;
+}
+
+const defaultVisableCount = 6;
+
+class SubjectShortcuts extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       visibleCount: props.defaultVisableCount,
@@ -19,7 +38,7 @@ class SubjectShortcuts extends Component {
     this.handleOnExpand = this.handleOnExpand.bind(this);
   }
 
-  handleOnExpand(expanded) {
+  handleOnExpand(expanded: boolean) {
     const newVisibleCount = expanded ? this.props.links.length : this.props.defaultVisableCount;
 
     this.setState({
@@ -71,25 +90,24 @@ class SubjectShortcuts extends Component {
       </section>
     );
   }
+  static propTypes = {
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    messages: PropTypes.shape({
+      heading: PropTypes.string.isRequired,
+      showMore: PropTypes.string.isRequired,
+      showLess: PropTypes.string.isRequired,
+    }).isRequired,
+    defaultVisableCount: PropTypes.number,
+  };
+
+  static defaultProps = {
+    defaultVisableCount,
+  };
 }
-
-SubjectShortcuts.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  messages: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-    showMore: PropTypes.string.isRequired,
-    showLess: PropTypes.string.isRequired,
-  }).isRequired,
-  defaultVisableCount: PropTypes.number,
-};
-
-SubjectShortcuts.defaultProps = {
-  defaultVisableCount: 6,
-};
 
 export default SubjectShortcuts;

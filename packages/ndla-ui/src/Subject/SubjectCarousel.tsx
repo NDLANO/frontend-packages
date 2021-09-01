@@ -2,15 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
-import { ContentCard } from '@ndla/ui';
-import { withTranslation } from 'react-i18next';
+import { withTranslation, WithTranslation } from 'react-i18next';
 import { spacingUnit } from '@ndla/core';
+import { SafeLinkProps } from '@ndla/safelink';
+import { ContentCard } from '../index';
 import { SubjectSectionTitle } from './Subject';
 
 const subjectCarouselClasses = BEMHelper('c-subject-carousel');
 
-const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
-  <section {...subjectCarouselClasses('', { narrowScreen, wideScreen })}>
+interface Props {
+  subjects?: {
+    id: string;
+    title: string;
+    text: string;
+    type?: string | undefined | null;
+    image?: string | undefined | null;
+    toLinkProps: () => SafeLinkProps;
+  }[];
+  title?: string;
+  narrowScreen?: boolean;
+  wideScreen?: boolean;
+}
+
+const getSubclasses = (obj: Record<string, boolean>): string[] => {
+  return Object.entries(obj)
+    .filter(([_, value]) => !!value)
+    .map(([className, _]) => className);
+};
+
+const SubjectCarousel = ({
+  subjects = [],
+  title = '',
+  narrowScreen = false,
+  wideScreen = false,
+  t,
+}: Props & WithTranslation) => (
+  <section {...subjectCarouselClasses('', getSubclasses({ narrowScreen, wideScreen }))}>
     <CarouselAutosize
       breakpoints={[
         {
@@ -69,20 +96,28 @@ const SubjectCarousel = ({ subjects, title, narrowScreen, wideScreen, t }) => (
         },
       ]}
       centered
-      itemsLength={subjects.length}>
+      itemsLength={subjects?.length ?? 0}>
       {(autoSizedProps) => (
         <>
           <SubjectSectionTitle {...subjectCarouselClasses('title')}>{title}</SubjectSectionTitle>
           <Carousel
-            disableScroll={autoSizedProps.columnsPrSlide >= subjects.length}
+            {...autoSizedProps}
+            disableScroll={(autoSizedProps?.columnsPrSlide ?? 0) >= subjects.length}
             slideBackwardsLabel={t('carousel.back')}
             slideForwardsLabel={t('carousel.forward')}
             buttonClass="c-carousel__arrow"
             wrapperClass="c-carousel__wrapper"
+            columnWidth={autoSizedProps?.columnWidth ?? 0}
+            columnsPrSlide={autoSizedProps?.columnsPrSlide ?? 0}
             items={subjects.map((subject) => (
-              <ContentCard columnWidth={autoSizedProps.columnWidth} key={subject.id} {...subject} />
+              <ContentCard
+                {...subject}
+                columnWidth={autoSizedProps?.columnWidth ?? 0}
+                type={subject.type ?? ''}
+                image={subject.image ?? ''}
+                key={subject.id}
+              />
             ))}
-            {...autoSizedProps}
           />
         </>
       )}
@@ -95,11 +130,12 @@ SubjectCarousel.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      type: PropTypes.string,
       text: PropTypes.string.isRequired,
       image: PropTypes.string,
       toLinkProps: PropTypes.func.isRequired,
-    }),
-  ),
+    }).isRequired,
+  ).isRequired,
   title: PropTypes.string,
   narrowScreen: PropTypes.bool,
   wideScreen: PropTypes.bool,

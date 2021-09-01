@@ -252,7 +252,7 @@ const ResourceItem = ({
       {active ? (
         <ActiveWrapper>
           <IconWrapper>
-            <ContentTypeBadge type={contentType} background border={false} />
+            <ContentTypeBadge type={contentType ?? ''} background border={false} />
           </IconWrapper>
           <Heading active>
             <span>
@@ -264,7 +264,7 @@ const ResourceItem = ({
       ) : (
         <ResourceLink to={path}>
           <IconWrapper>
-            <ContentTypeBadge type={contentType} background border={false} />
+            <ContentTypeBadge type={contentType ?? ''} background border={false} />
           </IconWrapper>
           <Heading>
             <span>{name}</span>

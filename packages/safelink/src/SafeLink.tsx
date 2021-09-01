@@ -29,14 +29,10 @@ type Props = {
   showNewWindowIcon?: boolean;
 };
 
+export type SafeLinkProps = Props & LinkProps & React.HTMLAttributes<HTMLElement>;
+
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
-const SafeLink: React.FunctionComponent<Props & LinkProps & React.HTMLAttributes<HTMLElement>> = ({
-  to,
-  replace,
-  children,
-  showNewWindowIcon,
-  ...rest
-}) => {
+const SafeLink: React.FunctionComponent<SafeLinkProps> = ({ to, replace, children, showNewWindowIcon, ...rest }) => {
   const isMissingRouterContext = React.useContext(MissingRouterContext);
 
   if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {

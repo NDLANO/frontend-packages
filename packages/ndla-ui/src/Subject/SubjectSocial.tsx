@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { SubjectSectionTitle } from './Subject';
 
 const classes = BEMHelper('c-subject-social');
 
-export const SubjectSocialContent = ({ children }) => <div {...classes('content')}>{children}</div>;
+export const SubjectSocialContent = ({ children }: { children: ReactNode }) => (
+  <div {...classes('content')}>{children}</div>
+);
 
 SubjectSocialContent.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const SubjectSocialSection = ({ children, title }) => (
+export const SubjectSocialSection = ({ children, title }: { children: ReactNode; title?: string }) => (
   <section {...classes('section')}>
     <SubjectSectionTitle className={classes('title').className}>{title}</SubjectSectionTitle>
     {children}

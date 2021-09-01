@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -15,9 +15,21 @@ const classes = new BEMHelper({
   prefix: 'o-',
 });
 
-export const PageContainer = ({ children, background, backgroundWide, ndlaFilm, learningPath }) => (
-  <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })}>{children}</div>
-);
+interface Props {
+  children?: ReactNode;
+  background?: boolean;
+  backgroundWide?: boolean;
+  ndlaFilm?: boolean;
+  learningPath?: boolean;
+}
+
+export const PageContainer = ({
+  children,
+  background = false,
+  backgroundWide = false,
+  ndlaFilm = false,
+  learningPath = false,
+}: Props) => <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })}>{children}</div>;
 
 PageContainer.propTypes = {
   children: PropTypes.node,
@@ -30,6 +42,7 @@ PageContainer.defaultProps = {
   background: false,
   backgroundWide: false,
   ndlaFilm: false,
+  learningPath: false,
 };
 
 export default PageContainer;

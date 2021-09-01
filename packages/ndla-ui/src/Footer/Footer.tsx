@@ -12,7 +12,6 @@ import { useTranslation } from 'react-i18next';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
 // @ts-ignore
 import { FooterHeaderIcon } from '@ndla/icons/common';
-// @ts-ignore
 import { OneColumn } from '../Layout';
 import FooterLinks from './FooterLinks';
 import FooterPrivacy from './FooterPrivacy';

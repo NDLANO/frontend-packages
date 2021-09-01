@@ -6,13 +6,23 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import Fade from './Fade';
 
-export default class DisplayOnPageYOffset extends Component {
-  constructor(props) {
+interface Props {
+  yOffsetMin: number;
+  yOffsetMax?: number | null;
+  children: ReactNode;
+}
+
+interface State {
+  show: boolean;
+}
+
+export default class DisplayOnPageYOffset extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       show: props.yOffsetMin === 0,
@@ -36,7 +46,7 @@ export default class DisplayOnPageYOffset extends Component {
   handleScroll() {
     if (
       window.pageYOffset >= this.props.yOffsetMin &&
-      (this.props.yOffsetMax === null || window.pageYOffset <= this.props.yOffsetMax)
+      (this.props.yOffsetMax === null || window.pageYOffset <= (this.props.yOffsetMax ?? 0))
     ) {
       if (!this.state.show) {
         this.setState({ show: true });
@@ -49,14 +59,13 @@ export default class DisplayOnPageYOffset extends Component {
   render() {
     return <Fade in={this.state.show}>{this.props.children}</Fade>;
   }
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    yOffsetMin: PropTypes.number.isRequired,
+    yOffsetMax: PropTypes.number,
+  };
+
+  static defaultProps = {
+    yOffsetMax: null,
+  };
 }
-
-DisplayOnPageYOffset.propTypes = {
-  children: PropTypes.node.isRequired,
-  yOffsetMin: PropTypes.number.isRequired,
-  yOffsetMax: PropTypes.number,
-};
-
-DisplayOnPageYOffset.defaultProps = {
-  yOffsetMax: null,
-};

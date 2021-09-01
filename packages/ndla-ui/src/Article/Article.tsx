@@ -18,7 +18,6 @@ import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
-// @ts-ignore
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';

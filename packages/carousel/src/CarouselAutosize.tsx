@@ -23,7 +23,7 @@ export interface CaruselBreakpoint {
 }
 
 interface Props {
-  ndlaFilm: boolean;
+  ndlaFilm?: boolean;
   centered?: boolean;
   itemsLength: number;
   breakpoints: CaruselBreakpoint[];

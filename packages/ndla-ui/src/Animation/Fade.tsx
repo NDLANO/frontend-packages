@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
-const Fade = ({ children, delay, timeout, exitDelay, ...rest }) => (
+interface Props {
+  children: ReactNode;
+  delay?: number | undefined | null;
+  timeout?: number;
+  exitDelay?: number | undefined | null;
+}
+
+const defaultTimeout = 300;
+
+const Fade = ({
+  children,
+  delay = null,
+  timeout = defaultTimeout,
+  exitDelay = null,
+  ...rest
+}: Props & Omit<CSSTransitionProps, 'timeout' | 'unmountOnExit' | 'onEnter' | 'onExit'>) => (
   <CSSTransition
     classNames="u-fade"
     {...rest}
     timeout={timeout}
     unmountOnExit
-    onEnter={(node) => {
+    onEnter={(node: HTMLElement) => {
       const n = node;
       n.style.transitionDuration = `${timeout}ms`;
 
@@ -18,11 +34,11 @@ const Fade = ({ children, delay, timeout, exitDelay, ...rest }) => (
     }}
     onExit={
       exitDelay
-        ? (node) => {
+        ? (node: HTMLElement) => {
             const n = node;
             n.style.transitionDelay = `${exitDelay}ms`;
           }
-        : null
+        : undefined
     }>
     {children}
   </CSSTransition>
@@ -36,7 +52,7 @@ Fade.propTypes = {
 };
 
 Fade.defaultProps = {
-  timeout: 300,
+  timeout: defaultTimeout,
   delay: null,
   exitDelay: null,
 };

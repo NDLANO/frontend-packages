@@ -96,6 +96,7 @@ export { default as RadioButtonGroup } from './RadioButtonGroup';
 
 export { ToolboxInfo } from './ToolboxPage';
 export { default as Topic } from './Topic';
+export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 export { default as AuthorInfo } from './AuthorInfo';
 
@@ -104,3 +105,29 @@ export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
 export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
+
+export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
+
+export {
+  SubjectAbout,
+  SubjectArchive,
+  SubjectCarousel,
+  SubjectChildContent,
+  SubjectContent,
+  SubjectFilter,
+  SubjectFlexChild,
+  SubjectFlexWrapper,
+  SubjectHeader,
+  SubjectLinks,
+  SubjectNewContent,
+  SubjectSecondaryContent,
+  SubjectSectionTitle,
+  SubjectShortcuts,
+  SubjectSidebarWrapper,
+  SubjectSocialContent,
+  SubjectSocialSection,
+  SubjectTopics,
+  SubjectBanner,
+} from './Subject';
+
+export { default as ContentCard } from './ContentCard';

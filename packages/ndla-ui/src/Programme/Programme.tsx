@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
-// @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
 import { NavigationHeading } from '../Navigation';
 import ProgrammeSubjects from './ProgrammeSubjects';

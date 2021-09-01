@@ -3,10 +3,21 @@ import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { Play } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import type { SafeLinkProps } from '@ndla/safelink';
 
 const classes = BEMHelper('c-content-card');
 
-const ContentCard = ({ title, text, image, type, isFilm, toLinkProps, columnWidth }) => (
+interface Props {
+  title: string;
+  text: string;
+  type: string;
+  image: string;
+  isFilm?: boolean;
+  toLinkProps: () => SafeLinkProps;
+  columnWidth: number;
+}
+
+const ContentCard = ({ title, text, image, type, isFilm = false, toLinkProps, columnWidth }: Props) => (
   <article {...classes()} style={{ width: `${columnWidth}px` }}>
     <SafeLink {...toLinkProps()} title={title} {...classes('link')}>
       <header>

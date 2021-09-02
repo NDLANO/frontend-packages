@@ -82,7 +82,7 @@ const Notion = ({
     <NotionContainer>
       <div>
         {HTMLReactParser(
-          renderMarkdown ? renderMarkdown(`**${title}** &ndash; ${text}`) : `<b>${title}</b> \u2013 ${text}`,
+          renderMarkdown ? renderMarkdown(`**${title}** \u2013 ${text}`) : `<b>${title}</b> \u2013 ${text}`,
         )}
       </div>
       {!!media && media}

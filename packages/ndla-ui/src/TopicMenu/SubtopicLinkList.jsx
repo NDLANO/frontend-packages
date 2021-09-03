@@ -209,12 +209,14 @@ class SubtopicLinkList extends Component {
                 resourceToLinkProps={resourceToLinkProps}
                 onNavigate={closeMenu}
                 contentTypeResult={{
-                  resources: topic.contentTypeResults.flatMap((grouped) =>
-                    grouped.resources.map((res) => ({
-                      ...res,
-                      contentType: grouped.contentType,
-                    })),
-                  ),
+                  resources: topic.contentTypeResults
+                    .flatMap((grouped) =>
+                      grouped.resources.map((res) => ({
+                        ...res,
+                        contentType: grouped.contentType,
+                      })),
+                    )
+                    .sort((a, b) => a.rank - b.rank),
                 }}
                 messages={{
                   noHit: t(`masthead.menu.contentTypeResultsNoHit.unGrouped`),

@@ -12,7 +12,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { isFunction } from '@ndla/util';
+import { isFunction, parseMarkdown } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
@@ -39,7 +39,7 @@ export const FigureCaption = ({
   const { t } = useTranslation();
   return (
     <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
-      {caption ? <div {...classes('info')}>{caption}</div> : null}
+      {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
           <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>

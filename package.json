@@ -58,6 +58,7 @@
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-test-renderer": "^16.8.1",
+    "@types/remarkable": "^2.0.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "babel-plugin-emotion": "^10.0.33",

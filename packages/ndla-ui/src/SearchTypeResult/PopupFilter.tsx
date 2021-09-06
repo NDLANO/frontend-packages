@@ -153,7 +153,7 @@ const PopupFilter = ({ messages, programmes, subjectCategories }: PopupFilterPro
   };
 
   const buttonContent = (
-    <Button type="button" size="normal" light borderShape="rounded">
+    <Button type="button" size="normal" greyLighter borderShape="rounded">
       <FilterButtonText>{messages.buttonText}</FilterButtonText>
       <PlusIcon />
     </Button>

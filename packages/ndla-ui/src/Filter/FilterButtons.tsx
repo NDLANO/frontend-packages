@@ -181,7 +181,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                 <Button
                   type="button"
                   size="normal"
-                  greyLightest={!item.selected}
+                  greyLighter={!item.selected}
                   borderShape="rounded"
                   onClick={() => {
                     onFilterToggle(item.value);

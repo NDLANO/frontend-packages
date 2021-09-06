@@ -333,6 +333,7 @@ const messages = {
     cite: 'Cite content',
     notionsPrompt: 'Do you know the notions?',
     citeNotion: 'Cite this explanation',
+    printPage: 'Print',
   },
   competenceGoals: {
     title: 'Competence goals and curriculum ',

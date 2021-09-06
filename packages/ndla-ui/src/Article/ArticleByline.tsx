@@ -14,7 +14,6 @@ import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
-import { Print } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
@@ -135,8 +134,8 @@ const ArticleByline = ({ authors, suppliers, license, licenseBox, published, cop
           </CopyButton>
         )}
         {printUrl && (
-          <Button stripped onClick={() => printPage(printUrl)}>
-            <Print />
+          <Button size="small" borderShape="rounded" outline onClick={() => printPage(printUrl)}>
+            {t('article.printPage')}
           </Button>
         )}
       </ButtonWrapper>

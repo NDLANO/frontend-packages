@@ -19,6 +19,7 @@ export default function ImageSearchResult({
   onSelectImage,
   useImageTitle,
   showMetaImageCheckbox,
+  useAsMetaImageLabel,
 }) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
@@ -40,6 +41,7 @@ export default function ImageSearchResult({
           image={selectedImage}
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
+          useAsMetaImageLabel={useAsMetaImageLabel}
           showMetaImageCheckbox={showMetaImageCheckbox}
         />
       ) : (
@@ -61,4 +63,5 @@ ImageSearchResult.propTypes = {
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
   showMetaImageCheckbox: PropTypes.bool,
+  useAsMetaImageLabel: PropTypes.string,
 };

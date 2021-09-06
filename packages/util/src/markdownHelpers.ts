@@ -6,6 +6,7 @@
  *
  */
 
+//@ts-ignore
 import { Remarkable } from 'remarkable';
 import parse from 'html-react-parser';
 

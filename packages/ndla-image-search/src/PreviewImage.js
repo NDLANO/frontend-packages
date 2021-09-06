@@ -6,16 +6,20 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
+import { CheckboxItem } from '@ndla/forms';
+
 import { getSrcSets } from './util/imageUtil';
 
 const convertWithFallBack = (fieldName, value, fallback) =>
   value[fieldName] && value[fieldName][fieldName] ? value[fieldName][fieldName] : fallback;
 
-const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
+const PreviewImage = ({ image, onSelectImage, useImageTitle, showMetaImageCheckbox }) => {
+  const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
+
   const tags = convertWithFallBack('tags', image.tags, []);
   return (
     <div className="image-preview">
@@ -43,9 +47,20 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle }) => {
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
         </div>
-        <Button data-cy="use-image" onClick={() => onSelectImage(image)}>
+        <Button data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}
         </Button>
+        {showMetaImageCheckbox && (
+          <div>
+            <CheckboxItem
+              label={'Bruk som metabilde'}
+              checked={saveAsMetaImage}
+              value=""
+              id={'any'}
+              onChange={() => setSaveAsMetaImage((prev) => !prev)}
+            />
+          </div>
+        )}
       </div>
       <div className="clear" />
     </div>
@@ -77,6 +92,7 @@ PreviewImage.propTypes = {
   }).isRequired,
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
+  showMetaImageCheckbox: PropTypes.bool,
 };
 
 export default PreviewImage;

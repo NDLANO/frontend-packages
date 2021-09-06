@@ -320,9 +320,13 @@ class ImageSearch extends React.Component {
     }
   }
 
-  onSelectImage(image) {
+  onSelectImage(image, saveAsMetaImage) {
+    const { onImageSelect, onSaveAsMetaImage } = this.props;
     this.setState({ selectedImage: undefined });
-    this.props.onImageSelect(image);
+    onImageSelect(image);
+    if (saveAsMetaImage) {
+      onSaveAsMetaImage && onSaveAsMetaImage(image);
+    }
   }
 
   changeQueryPage(queryObject) {
@@ -352,7 +356,7 @@ class ImageSearch extends React.Component {
   }
 
   render() {
-    const { searchPlaceholder, searchButtonTitle, useImageTitle } = this.props;
+    const { searchPlaceholder, searchButtonTitle, useImageTitle, showMetaImageCheckbox } = this.props;
 
     const { queryObject, images, selectedImage, lastPage, searching, queryString } = this.state;
 
@@ -395,6 +399,7 @@ class ImageSearch extends React.Component {
               selectedImage={selectedImage}
               onSelectImage={this.onSelectImage}
               useImageTitle={useImageTitle}
+              showMetaImageCheckbox={showMetaImageCheckbox}
             />
           ))}
         </div>
@@ -422,6 +427,8 @@ ImageSearch.propTypes = {
   locale: PropTypes.string.isRequired,
   useImageTitle: PropTypes.string.isRequired,
   noResults: PropTypes.node,
+  onSaveAsMetaImage: PropTypes.func,
+  showMetaImageCheckbox: PropTypes.bool,
 };
 
 export default ImageSearch;

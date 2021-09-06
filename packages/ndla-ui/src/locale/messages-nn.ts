@@ -332,6 +332,7 @@ const messages = {
     cite: 'Bruk innhald',
     notionsPrompt: 'Kan du begrepa?',
     citeNotion: 'Bruk forklaringa',
+    printPage: 'Skriv ut',
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

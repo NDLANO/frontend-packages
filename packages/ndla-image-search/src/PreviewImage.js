@@ -17,7 +17,7 @@ import { getSrcSets } from './util/imageUtil';
 const convertWithFallBack = (fieldName, value, fallback) =>
   value[fieldName] && value[fieldName][fieldName] ? value[fieldName][fieldName] : fallback;
 
-const PreviewImage = ({ image, onSelectImage, useImageTitle, showMetaImageCheckbox, useAsMetaImageLabel }) => {
+const PreviewImage = ({ image, onSelectImage, useImageTitle, showMetaImageCheckbox, metaImageCheckboxLabel }) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   const tags = convertWithFallBack('tags', image.tags, []);
@@ -53,7 +53,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showMetaImageCheckb
         {showMetaImageCheckbox && (
           <div>
             <CheckboxItem
-              label={useAsMetaImageLabel}
+              label={metaImageCheckboxLabel}
               checked={saveAsMetaImage}
               onChange={() => setSaveAsMetaImage((prev) => !prev)}
             />
@@ -90,8 +90,8 @@ PreviewImage.propTypes = {
   }).isRequired,
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
-  showMetaImageCheckbox: PropTypes.bool,
-  useAsMetaImageLabel: PropTypes.string,
+  showMetaImageCheckbox: PropTypes.bool.isRequired,
+  metaImageCheckboxLabel: PropTypes.string,
 };
 
 export default PreviewImage;

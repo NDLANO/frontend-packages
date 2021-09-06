@@ -356,7 +356,7 @@ class ImageSearch extends React.Component {
   }
 
   render() {
-    const { searchPlaceholder, searchButtonTitle, useImageTitle, showMetaImageCheckbox, useAsMetaImageLabel } =
+    const { searchPlaceholder, searchButtonTitle, useImageTitle, showMetaImageCheckbox, metaImageCheckboxLabel } =
       this.props;
 
     const { queryObject, images, selectedImage, lastPage, searching, queryString } = this.state;
@@ -401,7 +401,7 @@ class ImageSearch extends React.Component {
               onSelectImage={this.onSelectImage}
               useImageTitle={useImageTitle}
               showMetaImageCheckbox={showMetaImageCheckbox}
-              useAsMetaImageLabel={useAsMetaImageLabel}
+              metaImageCheckboxLabel={metaImageCheckboxLabel}
             />
           ))}
         </div>
@@ -431,7 +431,11 @@ ImageSearch.propTypes = {
   noResults: PropTypes.node,
   onSaveAsMetaImage: PropTypes.func,
   showMetaImageCheckbox: PropTypes.bool,
-  useAsMetaImageLabel: PropTypes.string,
+  metaImageCheckboxLabel: PropTypes.string,
+};
+
+ImageSearch.defaultProps = {
+  showMetaImageCheckbox: false,
 };
 
 export default ImageSearch;

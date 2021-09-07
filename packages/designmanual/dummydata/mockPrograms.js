@@ -725,7 +725,7 @@ export const subjectCategories = [
     ],
   },
   {
-    name: 'LK06 fag',
+    name: 'Utgåtte',
     subjects: [
       { name: 'Matematikk 1P (LK06)', id: 'archived_subject_1', path: '#' },
       { name: 'Matematikk 1P-Y (LK06)', id: 'archived_subject_2', path: '#' },
@@ -742,7 +742,7 @@ export const subjectCategories = [
     ],
   },
   {
-    name: 'Betafag',
+    name: 'Kommende',
     subjects: [
       { name: 'Informasjonsteknologi Vg2 - 2021 BETA', id: 'beta_subject_1', path: '#' },
       { name: 'Yrkesfaglig fordypning (HS-HEA Vg2) - 2021 BETA', id: 'beta_subject_2', path: '#' },

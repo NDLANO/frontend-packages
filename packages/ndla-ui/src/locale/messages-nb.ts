@@ -54,6 +54,8 @@ const messages = {
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {{query}}',
+    noHitsShort: 'Ingen treff på søk: {{query}}',
+    removeFilterSuggestion: 'Prøv å fjerne filter',
     search: 'Søk',
     close: 'Lukk',
     abilities: 'Egenskaper',

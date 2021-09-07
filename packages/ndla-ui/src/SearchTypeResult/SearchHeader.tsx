@@ -61,6 +61,7 @@ type Props = {
   };
   onSearchValueChange: (value: string) => void;
   onSubmit: () => void;
+  noResults?: boolean;
 };
 
 const SearchHeader = ({
@@ -72,6 +73,7 @@ const SearchHeader = ({
   onSubmit,
   activeFilters,
   filters,
+  noResults,
   t,
 }: Props & WithTranslation) => (
   <Wrapper>
@@ -86,9 +88,16 @@ const SearchHeader = ({
     </SearchInputWrapper>
     <PhraseWrapper>
       {searchPhrase && (
-        <PhraseText>
-          {t('searchPage.resultType.showingSearchPhrase')} {searchPhrase}
-        </PhraseText>
+        <>
+          <PhraseText>
+            {noResults
+              ? t('searchPage.noHitsShort', { query: searchPhrase })
+              : `${t('searchPage.resultType.showingSearchPhrase')} ${searchPhrase}`}
+          </PhraseText>
+          {noResults && activeFilters?.filters.length ? (
+            <PhraseText>{t('searchPage.removeFilterSuggestion')}</PhraseText>
+          ) : null}
+        </>
       )}
       {searchPhraseSuggestion && (
         <PhraseSuggestionText>

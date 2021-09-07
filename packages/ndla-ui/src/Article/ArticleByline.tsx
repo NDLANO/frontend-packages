@@ -112,6 +112,7 @@ const ArticleByline = ({ authors, suppliers, license, licenseBox, published, cop
               </Button>
             }
             backgroundColor="white"
+            position="top"
             size="medium">
             {(onClose: void) => (
               <>

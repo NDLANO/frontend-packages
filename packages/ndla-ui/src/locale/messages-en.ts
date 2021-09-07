@@ -54,6 +54,8 @@ const messages = {
   },
   searchPage: {
     noHits: 'Your search - {{query}} - did not match any articles. ',
+    noHitsShort: 'No results for search: {{query}}',
+    removeFilterSuggestion: 'Try removing filters',
     close: 'Close',
     abilities: 'Abilities',
     search: 'Search',

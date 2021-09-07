@@ -46,8 +46,8 @@ const messages = {
       'Det fungerte ikkje å setje inn innhaldet automatisk. Kopier kjeldekoden under for å setje han inn på sida di.',
   },
   subjectCategories: {
-    [subjectCategories.ARCHIVE_SUBJECTS]: 'LK06-fag',
-    [subjectCategories.BETA_SUBJECTS]: 'Betafag',
+    [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
+    [subjectCategories.BETA_SUBJECTS]: 'Kommende',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',

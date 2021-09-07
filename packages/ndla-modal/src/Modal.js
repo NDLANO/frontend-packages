@@ -29,6 +29,7 @@ const Modal = ({
   narrow,
   controllable,
   isOpen: propsIsOpen,
+  position,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +84,9 @@ const Modal = ({
             ${narrow && narrowStyle};
           `}
           onAnimationEnd={onAnimationEnd}
-          className={`animation-container ${animation} ${animateIn && 'animateIn'} ${size} ${backgroundColor}`}>
+          className={`animation-container ${animation} ${
+            animateIn && 'animateIn'
+          } ${size} ${backgroundColor} ${position}`}>
           {children(closeModal)}
         </DialogContent>
       </StyledDialogOverlay>
@@ -111,6 +114,7 @@ Modal.propTypes = {
   controllable: PropTypes.bool,
   minHeight: PropTypes.string,
   isOpen: PropTypes.bool,
+  position: PropTypes.oneOf(['center', 'top', 'bottom']),
 };
 
 Modal.defaultProps = {
@@ -120,6 +124,7 @@ Modal.defaultProps = {
   animationDuration: 300,
   className: '',
   narrow: false,
+  position: 'center',
 };
 
 const modalAnimations = `
@@ -317,6 +322,15 @@ const animationContainer = css`
   }
   &.light-gradient {
     background: linear-gradient(90deg, #fafbfe 0%, #faf6f0 97.96%);
+  }
+  &.top {
+    align-self: start;
+    ${mq.range({ from: breakpoints.tabletWide })} {
+      margin-top: ${spacing.small};
+    }
+  }
+  &.bottom {
+    align-self: flex-end;
   }
 `;
 

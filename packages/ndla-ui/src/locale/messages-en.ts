@@ -787,7 +787,7 @@ const messages = {
       heading: 'Text version',
       close: 'Close text version',
     },
-    readMoreDescriptionLabel: 'show more',
+    readMoreDescriptionLabel: 'show description',
   },
   video: {
     download: 'Download video',

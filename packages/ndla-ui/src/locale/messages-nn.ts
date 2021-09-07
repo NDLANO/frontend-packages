@@ -786,7 +786,7 @@ const messages = {
       heading: 'Tekstversjon',
       close: 'Lukk tekstversjon',
     },
-    readMoreDescriptionLabel: 'vis meir',
+    readMoreDescriptionLabel: 'vis heile beskrivinga',
   },
   video: {
     download: 'Last ned video',

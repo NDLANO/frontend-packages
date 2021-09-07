@@ -75,49 +75,50 @@ const SearchHeader = ({
   filters,
   noResults,
   t,
-}: Props & WithTranslation) => (
-  <Wrapper>
-    <SearchInputWrapper>
-      <SearchFieldHeader
-        value={searchValue}
-        onChange={onSearchValueChange}
-        onSubmit={onSubmit}
-        activeFilters={activeFilters}
-        filters={filters}
-      />
-    </SearchInputWrapper>
-    <PhraseWrapper>
-      {searchPhrase && (
-        <>
-          <PhraseText>
-            {noResults
-              ? t('searchPage.noHitsShort', { query: searchPhrase })
-              : `${t('searchPage.resultType.showingSearchPhrase')} ${searchPhrase}`}
-          </PhraseText>
-          {noResults && activeFilters?.filters.length ? (
-            <PhraseText>{t('searchPage.removeFilterSuggestion')}</PhraseText>
-          ) : null}
-        </>
-      )}
-      {searchPhraseSuggestion && (
-        <PhraseSuggestionText>
-          {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
-          <Button link onClick={searchPhraseSuggestionOnClick}>
-            {searchPhraseSuggestion}
-          </Button>
-        </PhraseSuggestionText>
-      )}
-    </PhraseWrapper>
-    {activeFilters && (
-      <HideOnDesktopWrapper>
-        <ActiveFilters
-          {...activeFilters}
-          showOnSmallScreen
-          customElements={filters ? [<PopupFilter {...filters} />] : []}
+}: Props & WithTranslation) => {
+  const phraseText = noResults
+    ? t('searchPage.noHitsShort', { query: searchPhrase })
+    : `${t('searchPage.resultType.showingSearchPhrase')} ${searchPhrase}`;
+  const removeFilterSuggestion =
+    noResults && activeFilters?.filters.length ? t('searchPage.removeFilterSuggestion') : undefined;
+  return (
+    <Wrapper>
+      <SearchInputWrapper>
+        <SearchFieldHeader
+          value={searchValue}
+          onChange={onSearchValueChange}
+          onSubmit={onSubmit}
+          activeFilters={activeFilters}
+          filters={filters}
         />
-      </HideOnDesktopWrapper>
-    )}
-  </Wrapper>
-);
+      </SearchInputWrapper>
+      <PhraseWrapper>
+        {searchPhrase && (
+          <>
+            <PhraseText>{phraseText}</PhraseText>
+            {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
+          </>
+        )}
+        {searchPhraseSuggestion && (
+          <PhraseSuggestionText>
+            {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
+            <Button link onClick={searchPhraseSuggestionOnClick}>
+              {searchPhraseSuggestion}
+            </Button>
+          </PhraseSuggestionText>
+        )}
+      </PhraseWrapper>
+      {activeFilters && (
+        <HideOnDesktopWrapper>
+          <ActiveFilters
+            {...activeFilters}
+            showOnSmallScreen
+            customElements={filters ? [<PopupFilter {...filters} />] : []}
+          />
+        </HideOnDesktopWrapper>
+      )}
+    </Wrapper>
+  );
+};
 
 export default withTranslation()(SearchHeader);

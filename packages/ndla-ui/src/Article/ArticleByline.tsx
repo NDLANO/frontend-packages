@@ -111,6 +111,7 @@ const ArticleByline = ({ authors, suppliers, license, licenseBox, published, cop
                 {t('article.useContent')}
               </Button>
             }
+            backgroundColor="white"
             size="medium">
             {(onClose: void) => (
               <>

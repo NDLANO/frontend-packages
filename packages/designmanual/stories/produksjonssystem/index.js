@@ -117,9 +117,7 @@ storiesOf('Produksjonssystem', module)
   .add('Bildesøk', () => (
     <div>
       <StoryIntro title="Bildesøk">
-        <p>
-          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api.
-        </p>
+        <p>Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api.</p>
       </StoryIntro>
       <StoryBody>
         <ImageSearcher />
@@ -129,9 +127,7 @@ storiesOf('Produksjonssystem', module)
   .add('Lydsøk', () => (
     <div>
       <StoryIntro title="Lydsøk">
-        <p>
-          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api..
-        </p>
+        <p>Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api..</p>
       </StoryIntro>
       <StoryBody>
         <AudioSearcher />

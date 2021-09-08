@@ -5,7 +5,7 @@ export const articleResources = [
     name: 'Hva er en idé?',
     resourceTypes: [],
     contentUri: 'urn:article:339',
-    requiresAuth: true,
+    access: 'teacher',
     introduction:
       'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
@@ -28,7 +28,7 @@ export const articleResources = [
     name: 'Refleksjonsoppgave om ideer og idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:article:340',
-    requiresAuth: true,
+    access: 'teacher',
     active: true,
     introduction:
       'Idéutvikling og kreativt arbeid i mediebransjen handler om kommunikasjon, uansett om det dreier seg om utvikling av fortelleteknikker, teknologi eller det å kombinere kjente uttrykk på nye måter.',

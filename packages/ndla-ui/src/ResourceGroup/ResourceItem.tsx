@@ -21,6 +21,7 @@ import { Resource } from '../types';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
+import { HumanMaleBoard } from '@ndla/icons/common';
 
 const listElementActiveColor = (contentType?: string) => {
   switch (contentType) {
@@ -91,7 +92,7 @@ const ListElement = styled.li<ListElementProps>`
   ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
 
   * {
-    transition: all ease-out 0.2s;
+    transition: height ease-out 0.2s, width ease-out 0.2s;
   }
   ${(props) =>
     props.active &&
@@ -227,6 +228,7 @@ type Props = {
   contentTypeDescription?: string;
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
+  access?: 'teacher';
 };
 
 const ResourceItem = ({
@@ -239,6 +241,7 @@ const ResourceItem = ({
   additional,
   extraBottomMargin,
   showAdditionalResources,
+  access,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -273,6 +276,11 @@ const ResourceItem = ({
       )}
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
+        {access && access === 'teacher' && (
+          <Tooltip tooltip={t('article.access.onlyTeacher')} align="left">
+            <HumanMaleBoard className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+          </Tooltip>
+        )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (

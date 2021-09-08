@@ -9,7 +9,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
-// @ts-ignore
 import { HumanMaleBoard } from '@ndla/icons/common';
 
 const StyledMessage = styled.span`

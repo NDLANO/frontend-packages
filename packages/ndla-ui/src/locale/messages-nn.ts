@@ -335,6 +335,9 @@ const messages = {
     notionsPrompt: 'Kan du begrepa?',
     citeNotion: 'Bruk forklaringa',
     printPage: 'Skriv ut',
+    access: {
+      onlyTeacher: 'Denne ressursen er kun tilgjengelig for lærere som er pålogget i Feide',
+    },
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',

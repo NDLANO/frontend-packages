@@ -112,7 +112,7 @@ export default ${name};
 `,
     {
       ...prettierOptions,
-      parser: 'babylon',
+      parser: 'babel',
     },
   );
 }
@@ -128,7 +128,7 @@ ${autoNotice}
 ${exportsString}\n`;
     const formatedIconsModule = prettier.format(iconsModule, {
       ...prettierOptions,
-      parser: 'babylon',
+      parser: 'babel',
     });
     const fileName = path.join(rootDir, 'src', folder, 'index.ts');
     fs.writeFileSync(fileName, formatedIconsModule, 'utf-8');

@@ -37,6 +37,7 @@ export { default as Grid } from './Grid';
 export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';
+export { default as HumanMaleBoard } from './HumanMaleBoard';
 export { default as Information } from './Information';
 export { default as InformationOutline } from './InformationOutline';
 export { default as KeyboardReturn } from './KeyboardReturn';

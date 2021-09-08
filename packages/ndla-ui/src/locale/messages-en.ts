@@ -336,6 +336,9 @@ const messages = {
     notionsPrompt: 'Do you know the notions?',
     citeNotion: 'Cite this explanation',
     printPage: 'Print',
+    access: {
+      onlyTeacher: 'Denne ressursen er kun tilgjengelig for lærere som er pålogget i Feide',
+    },
   },
   competenceGoals: {
     title: 'Competence goals and curriculum ',

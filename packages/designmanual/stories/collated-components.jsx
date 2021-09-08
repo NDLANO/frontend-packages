@@ -398,7 +398,7 @@ storiesOf('Sammensatte moduler', module)
       </LayoutItem>
       <LayoutItem layout="center">
         <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureImage alt="" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
+        <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
       </LayoutItem>
     </Center>
   ))

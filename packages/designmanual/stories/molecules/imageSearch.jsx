@@ -9,37 +9,30 @@
 import React from 'react';
 
 import ImageSearch from '@ndla/image-search';
-import { headerWithAccessToken, getToken } from '../apiFunctions';
 
 const fetchImages = (query, page) => {
   const queryString = query ? `query=${query}&page=${page}&page-size=15` : `page=${page}&page-size=15`;
   return new Promise((resolve, reject) => {
-    getToken().then((token) => {
-      fetch(`https://test.api.ndla.no/image-api/v2/images/?${queryString}`, {
-        method: 'GET',
-        headers: headerWithAccessToken(token),
-      }).then((res) => {
-        if (res.ok) {
-          return resolve(res.json());
-        }
-        return res.json().then((json) => reject(json));
-      });
+    fetch(`https://api.test.ndla.no/image-api/v2/images/?${queryString}`, {
+      method: 'GET',
+    }).then((res) => {
+      if (res.ok) {
+        return resolve(res.json());
+      }
+      return res.json().then((json) => reject(json));
     });
   });
 };
 
 const fetchImage = (id) =>
   new Promise((resolve, reject) => {
-    getToken().then((token) => {
-      fetch(`https://test.api.ndla.no/image-api/v2/images/${id}`, {
-        method: 'GET',
-        headers: headerWithAccessToken(token),
-      }).then((res) => {
-        if (res.ok) {
-          return resolve(res.json());
-        }
-        return res.json().then((json) => reject(json));
-      });
+    fetch(`https://api.test.ndla.no/image-api/v2/images/${id}`, {
+      method: 'GET',
+    }).then((res) => {
+      if (res.ok) {
+        return resolve(res.json());
+      }
+      return res.json().then((json) => reject(json));
     });
   });
 

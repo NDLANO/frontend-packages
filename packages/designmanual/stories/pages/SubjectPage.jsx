@@ -40,7 +40,7 @@ import FigureImage from '../article/FigureImage';
 const subjectAbout = (label, description) => (
   <SubjectAbout
     wide
-    media={<Image alt="Forstørrelsesglass" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />}
+    media={<Image alt="Forstørrelsesglass" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />}
     heading={label}
     description={description}
   />

@@ -35,7 +35,7 @@ const ArticleLearningPaths = ({ title, description }) => (
           </ArticleHeaderWrapper>
         </LayoutItem>
         <LayoutItem layout="center">
-          <FigureImage src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" alt="Lupe" />
+          <FigureImage src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" alt="Lupe" />
           <p>
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du
             avhengig av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.

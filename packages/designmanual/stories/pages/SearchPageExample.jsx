@@ -58,7 +58,7 @@ const results = [
     contentTypeLabel: 'Fagstoff',
     contentTypeIcon: <SubjectMaterialBadge size="xx-small" background />,
     additional: true,
-    image: <Image alt="Forstørrelsesglass" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />,
+    image: <Image alt="Forstørrelsesglass" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />,
     subjects: [
       {
         url: '#1',

@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
           <div>
             <Image
               alt="Lyspære"
-              src="https://staging.api.ndla.no/image-api/raw/Ide.jpg"
+              src="https://api.staging.ndla.no/image-api/raw/Ide.jpg"
               lazyLoad
               lazyLoadSrc={`data:image/svg+xml;utf8,
       <svg xmlns="http://www.w3.org/2000/svg" height="400" width="100%">

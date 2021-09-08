@@ -117,7 +117,7 @@ export const learningPathResources = [
     name: 'Teknikker for idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:learningpath:30',
-    coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/tegner_ide.png',
+    coverPhotoUrl: 'http://api.test.ndla.no/image-api/raw/tegner_ide.png',
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Læringsstier',
@@ -134,7 +134,7 @@ export const learningPathResources = [
       },
     ],
     contentUri: 'urn:learningpath:91',
-    coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
+    coverPhotoUrl: 'http://api.test.ndla.no/image-api/raw/Ide.jpg',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
     additional: true,
   },
@@ -150,7 +150,7 @@ export const learningPathResources = [
       },
     ],
     contentUri: 'urn:learningpath:340',
-    coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
+    coverPhotoUrl: 'http://api.test.ndla.no/image-api/raw/Ide.jpg',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
     additional: true,
   },
@@ -163,7 +163,7 @@ export const exerciseResources = [
     name: 'Teknikker for idéutvikling',
     resourceTypes: [],
     contentUri: 'urn:exercises:30',
-    coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/tegner_ide.png',
+    coverPhotoUrl: 'http://api.test.ndla.no/image-api/raw/tegner_ide.png',
     introduction:
       'Evnen til å skape og utvikle ideer står sentralt i arbeidet med medieuttrykk og kommunikasjon. I denne læringsstien kan du lære deg ulike stategier og teknikker for idéutvikling.',
     type: 'Oppgaver og aktiviteter',
@@ -181,7 +181,7 @@ export const exerciseResources = [
       },
     ],
     contentUri: 'urn:exercises:91',
-    coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
+    coverPhotoUrl: 'http://api.test.ndla.no/image-api/raw/Ide.jpg',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
   },
   {
@@ -196,7 +196,7 @@ export const exerciseResources = [
       },
     ],
     contentUri: 'urn:exercises:340',
-    coverPhotoUrl: 'http://test.api.ndla.no/image-api/raw/Ide.jpg',
+    coverPhotoUrl: 'http://api.test.ndla.no/image-api/raw/Ide.jpg',
     introduction: 'Om ulike faser i idéskapningsprosessen.',
   },
 ];

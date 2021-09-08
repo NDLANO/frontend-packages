@@ -45,7 +45,7 @@ const AudioExample = ({ showSubtitle, showDescription, showImage, showTextVersio
   return (
     <Figure id={figureId} type="full-column">
       <AudioPlayer
-        src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
+        src="https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
         title="Den gode lydhistoria"
         subtitle={showSubtitle && { title: 'Serienavn', url: '#' }}
         description={showDescription && description}

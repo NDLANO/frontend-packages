@@ -572,6 +572,7 @@ const messages = {
     hits: '{{count}} treff',
   },
   notions: {
+    usedIn: 'Brukast i',
     closeNotion: 'Lukk',
   },
   carousel: {

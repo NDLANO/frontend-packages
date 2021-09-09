@@ -28,7 +28,7 @@ const Video = () => (
 );
 
 const Image = () => (
-  <FigureImage type="full-column" alt="alt" src="https://staging.api.ndla.no/image-api/raw/42-45210905.jpg" />
+  <FigureImage type="full-column" alt="alt" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
 );
 
 const H5p = () => (

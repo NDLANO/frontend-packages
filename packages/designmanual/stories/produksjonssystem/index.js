@@ -87,7 +87,7 @@ storiesOf('Produksjonssystem', module)
       </StoryIntro>
       <StoryBody>
         <h2>Orginalbilde</h2>
-        <Image alt="Mann med maske" src="https://test.api.ndla.no/image-api/raw/id/604" />
+        <Image alt="Mann med maske" src="https://api.test.ndla.no/image-api/raw/id/604" />
         <h2>Utsnitt</h2>
         <p>Et utsnitt fører til at kun en mindre del av bildet vises. </p>
         <Image
@@ -98,7 +98,7 @@ storiesOf('Produksjonssystem', module)
             startY: 20,
             endY: 100,
           }}
-          src="https://test.api.ndla.no/image-api/raw/id/604"
+          src="https://api.test.ndla.no/image-api/raw/id/604"
         />
         <h2>Fokuspunkt</h2>
         <p>Et fokuspunkt sikrer at ansikt/objekt er i fokus når bildet tilpasses for visning på mindre flater.</p>
@@ -109,7 +109,7 @@ storiesOf('Produksjonssystem', module)
             y: 45.28,
           }}
           sizes="(min-width: 320px) 320px"
-          src="https://test.api.ndla.no/image-api/raw/id/604"
+          src="https://api.test.ndla.no/image-api/raw/id/604"
         />
       </StoryBody>
     </div>
@@ -117,10 +117,7 @@ storiesOf('Produksjonssystem', module)
   .add('Bildesøk', () => (
     <div>
       <StoryIntro title="Bildesøk">
-        <p>
-          Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api. Denne modulen krever at det både finnes en token
-          og api url.
-        </p>
+        <p>Bildesøk som gjør det mulig å søke mot NDLA sitt bilde api.</p>
       </StoryIntro>
       <StoryBody>
         <ImageSearcher />
@@ -130,10 +127,7 @@ storiesOf('Produksjonssystem', module)
   .add('Lydsøk', () => (
     <div>
       <StoryIntro title="Lydsøk">
-        <p>
-          Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api. Denne modulen krever at det både finnes en token og
-          api url.
-        </p>
+        <p>Lydsøk som gjør det mulig å søke mot NDLA sitt lyd-api..</p>
       </StoryIntro>
       <StoryBody>
         <AudioSearcher />

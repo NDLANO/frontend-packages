@@ -24,12 +24,12 @@ const NDLAUrls = () => (
         <p>
           Staging:
           <br />
-          <SafeLink to="https://www.staging.api.ndla.no/">https://www.staging.api.ndla.no</SafeLink>
+          <SafeLink to="https://staging.ndla.no/">https://staging.ndla.no</SafeLink>
         </p>
         <p>
           Test:
           <br />
-          <SafeLink to="https://www.test.api.ndla.no/">https://www.test.api.ndla.no</SafeLink>
+          <SafeLink to="https://test.ndla.no/">https://test.ndla.no</SafeLink>
         </p>
         <h2>Editorial (ED)</h2>
         <p>
@@ -40,12 +40,12 @@ const NDLAUrls = () => (
         <p>
           Staging:
           <br />
-          <SafeLink to="https://ed.staging.api.ndla.no/">https://ed.staging.api.ndla.no</SafeLink>
+          <SafeLink to="https://ed.staging.ndla.no/">https://ed.staging.ndla.no</SafeLink>
         </p>
         <p>
           Test:
           <br />
-          <SafeLink to="https://ed.test.api.ndla.no/">https://ed.test.api.ndla.no</SafeLink>
+          <SafeLink to="https://ed.test.ndla.no/">https://ed.test.ndla.no</SafeLink>
         </p>
         <h2>API</h2>
         <p>

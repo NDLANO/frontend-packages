@@ -39,7 +39,7 @@ class AudioExample extends Component {
     return (
       <Figure id={figureId} type="full-column">
         <AudioPlayer
-          src="https://staging.api.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
+          src="https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
           type="audio/mpeg"
           title={caption}
           typeLabel="Hørespill"
@@ -99,7 +99,7 @@ const AudioPlayerExamples = () => (
           <td>å reise (rundt); å dra på tur; reise(liv)</td>
           <td>
             <AudioPlayer
-              src="https://staging.api.ndla.no/audio/files/shu3jia4.mp3"
+              src="https://api.staging.ndla.no/audio/files/shu3jia4.mp3"
               type="audio/mpeg"
               speech
               title="Oversettelse"

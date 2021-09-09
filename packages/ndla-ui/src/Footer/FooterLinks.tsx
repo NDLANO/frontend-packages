@@ -49,8 +49,6 @@ const commonLinks = [
   },
   { key: 'blog', url: 'https://blogg.ndla.no' },
   { key: 'tips', url: 'https://blogg.ndla.no/elever' },
-  { key: 'fyr', url: 'https://fyr.ndla.no' },
-  { key: 'sharing', url: 'https://deling.ndla.no' },
   { key: 'vacancies', url: 'https://om.ndla.no/jobb-for-ndla/' },
 ];
 

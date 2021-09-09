@@ -573,6 +573,7 @@ const messages = {
     hits: '{{count}} hits',
   },
   notions: {
+    usedIn: 'Used in',
     closeNotion: 'Close',
   },
   carousel: {

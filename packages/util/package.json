@@ -27,7 +27,8 @@
     "types"
   ],
   "dependencies": {
-    "defined": "1.0.0"
+    "defined": "1.0.0",
+    "remarkable": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"

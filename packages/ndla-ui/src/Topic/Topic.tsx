@@ -23,7 +23,7 @@ import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 // @ts-ignore
-import Image from '../Image';
+import { makeSrcQueryString } from '../Image';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -78,7 +78,7 @@ const VisualElementButton = styled(Button)`
   height: 100%;
 `;
 
-const TopicHeaderImage = styled(Image)`
+const TopicHeaderImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -266,7 +266,11 @@ const Topic = ({
                                 topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
                               }>
                               <TopicHeaderImage
-                                src={topic.image.url}
+                                src={`${topic.image.url}?${makeSrcQueryString(
+                                  400,
+                                  topic.image.crop,
+                                  topic.image.focalPoint,
+                                )}`}
                                 alt={topic.image.alt}
                                 crop={topic.image.crop}
                                 focalPoint={topic.image.focalPoint}
@@ -304,7 +308,7 @@ const Topic = ({
                     </>
                   ) : (
                     <TopicHeaderImage
-                      src={topic.image.url}
+                      src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
                       alt={topic.image.alt}
                       crop={topic.image.crop}
                       focalPoint={topic.image.focalPoint}

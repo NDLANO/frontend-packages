@@ -409,15 +409,15 @@ const Controls = ({ src, title }: Props) => {
             )}
           </span>
         </PlayButton>
-        <Forward15SecButton
+        <Back15SecButton
           type="button"
-          title={t('audio.controls.forward15sec')}
-          aria-label={t('audio.controls.forward15sec')}
+          title={t('audio.controls.rewind15sec')}
+          aria-label={t('audio.controls.rewind15sec')}
           onClick={() => {
-            onSeekSeconds(15);
+            onSeekSeconds(-15);
           }}>
           15
-        </Forward15SecButton>
+        </Back15SecButton>
         <SpeedWrapper>
           <Menu>
             <SpeedButton
@@ -447,15 +447,15 @@ const Controls = ({ src, title }: Props) => {
             </SpeedMenu>
           </Menu>
         </SpeedWrapper>
-        <Back15SecButton
+        <Forward15SecButton
           type="button"
-          title={t('audio.controls.rewind15sec')}
-          aria-label={t('audio.controls.rewind15sec')}
+          title={t('audio.controls.forward15sec')}
+          aria-label={t('audio.controls.forward15sec')}
           onClick={() => {
-            onSeekSeconds(-15);
+            onSeekSeconds(15);
           }}>
           15
-        </Back15SecButton>
+        </Forward15SecButton>
         <ProgressWrapper>
           <Time>{formatTime(currentTime)}</Time>
           <SliderWrapper>

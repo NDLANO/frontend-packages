@@ -12,7 +12,7 @@ import css from '@emotion/css';
 import { keyframes } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
-import { Additional, Core } from '@ndla/icons/common';
+import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 // @ts-ignore
@@ -21,7 +21,6 @@ import { Resource } from '../types';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
-import { HumanMaleBoard } from '@ndla/icons/common';
 
 const listElementActiveColor = (contentType?: string) => {
   switch (contentType) {

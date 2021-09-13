@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { OneColumn, LayoutItem, Article, SubjectMaterialBadge, constants } from '@ndla/ui';
 
@@ -17,7 +18,6 @@ import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import FigureImage from '../article/FigureImage';
 import LicenseBox from '../article/LicenseBox';
 import NotionExample from '../molecules/NotionExample';
-import { useTranslation } from 'react-i18next';
 
 const { contentTypes } = constants;
 

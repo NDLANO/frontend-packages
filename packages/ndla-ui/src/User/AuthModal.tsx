@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import Modal, { ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
 import Button from '@ndla/button';
-import { ChevronDown, Feide, FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
+import { FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
 import { fonts, spacing } from '@ndla/core';
 
 const StyledModalBody = styled.div`
@@ -37,23 +37,6 @@ const StyledHeading = styled.h2`
     width: 82px;
     height: 28px;
     color: #000000;
-  }
-`;
-
-type FeideWrapperProps = {
-  inverted: boolean;
-};
-
-const StyledButton = styled(Button)<FeideWrapperProps>`
-  .feide-icon svg {
-    color: ${(props) => (props.inverted ? `#ffffff` : `#000000`)};
-    width: 22px;
-    height: 22px;
-  }
-  &:hover {
-    .feide-icon svg {
-      color: #000000;
-    }
   }
 `;
 
@@ -81,38 +64,28 @@ const StyledButtonWrapper = styled.div`
   margin-top: ${spacing.normal};
 `;
 
-type Props = {
+export type AuthModalProps = {
   isAuthenticated?: boolean;
-  inverted?: boolean;
   showGeneralMessage?: boolean;
   authorizedRole?: string;
   authorizedCollectedInfo?: string[];
   onAuthenticateClick: () => void;
-  children: ReactNode;
+  activateButton: ReactNode;
+  children?: ReactNode;
 };
 
 const AuthModal = ({
   isAuthenticated,
-  inverted = false,
   showGeneralMessage = true,
   authorizedRole,
   authorizedCollectedInfo,
   onAuthenticateClick,
+  activateButton,
   children,
-}: Props) => {
+}: AuthModalProps) => {
   const { t } = useTranslation();
   return (
-    <Modal
-      backgroundColor="white"
-      activateButton={
-        <StyledButton inverted={inverted} ghostPill={!inverted} ghostPillInverted={inverted}>
-          <span className="feide-icon">
-            <Feide />
-          </span>
-          <ChevronDown />
-        </StyledButton>
-      }
-      position="top">
+    <Modal backgroundColor="white" activateButton={activateButton} position="top">
       {(onClose: void) => (
         <StyledModalBody>
           <StyledModalHeader>

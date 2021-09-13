@@ -63,6 +63,7 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
+export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
 export { default as AuthModal } from './User';
 
 export { default as CreatedBy } from './CreatedBy';

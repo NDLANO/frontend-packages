@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, ReactNode } from 'react';
+import React, { Component, ComponentType, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Trans, tType } from '@ndla/i18n';
 // @ts-ignore
@@ -70,7 +70,9 @@ const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
 `;
 
 type Props = {
-  competenceGoals?: Function | string[];
+  competenceGoals?:
+    | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
+    | null;
   competenceGoalTypes?: string[];
   children: ReactNode;
 };

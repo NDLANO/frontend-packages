@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ComponentType, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
@@ -96,7 +96,9 @@ type Props = {
   children: ReactNode;
   messages: Messages;
   locale: Locale;
-  competenceGoals?: Function | string[];
+  competenceGoals?:
+    | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
+    | null;
   competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;

@@ -70,7 +70,8 @@ export type AuthModalProps = {
   authorizedRole?: string;
   authorizedCollectedInfo?: string[];
   onAuthenticateClick: () => void;
-  activateButton: ReactNode;
+  position?: 'top' | 'bottom';
+  activateButton?: ReactNode;
   children?: ReactNode;
 };
 
@@ -80,12 +81,13 @@ const AuthModal = ({
   authorizedRole,
   authorizedCollectedInfo,
   onAuthenticateClick,
+  position = 'top',
   activateButton,
   children,
 }: AuthModalProps) => {
   const { t } = useTranslation();
   return (
-    <Modal backgroundColor="white" activateButton={activateButton} position="top">
+    <Modal backgroundColor="white" activateButton={activateButton} position={position}>
       {(onClose: void) => (
         <StyledModalBody>
           <StyledModalHeader>
@@ -95,7 +97,7 @@ const AuthModal = ({
             <ModalCloseButton onClick={onClose} title="Lukk" />
           </StyledModalHeader>
           <StyledModalContent>
-            {authorizedRole && <p>{t('user.modal.role', { role: authorizedRole })}</p>}
+            {authorizedRole && <p>{t('user.loggedInAs', { role: authorizedRole })}</p>}
             {authorizedCollectedInfo && authorizedCollectedInfo.length > 0 && (
               <div>
                 {t('user.modal.collectedInfo')}:
@@ -117,7 +119,7 @@ const AuthModal = ({
             )}
             <StyledButtonWrapper>
               <Button size="medium" onClick={onAuthenticateClick}>
-                {isAuthenticated ? t('user.modal.buttonLogOut') : t('user.modal.buttonLogIn')}
+                {isAuthenticated ? t('user.buttonLogOut') : t('user.buttonLogIn')}
                 <StyledLogInIconWrapper aria-hidden>
                   {isAuthenticated ? <LogOut className="c-icon--medium" /> : <LogIn className="c-icon--medium" />}
                 </StyledLogInIconWrapper>

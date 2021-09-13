@@ -21,6 +21,12 @@ import {
   OneColumn,
   PageContainer,
   Content,
+  LanguageSelector,
+  i18nInstance,
+  FooterText,
+  EditorName,
+  Footer,
+  FooterAuth,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -48,7 +54,7 @@ import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
 import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
 import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
-import { contentCards } from '../../dummydata';
+import { contentCards, mockFooterLinks } from '../../dummydata';
 import Toolbox from './Toolbox';
 
 storiesOf('Sidevisninger', module)
@@ -418,6 +424,76 @@ storiesOf('Fag- og emnesider', module)
       <div>
         <BannerList banners={banners} />
       </div>
+    </div>
+  ));
+storiesOf('Autentisering', module)
+  .add('Hovedhode/footer - utlogget', () => (
+    <div>
+      <MastheadWithTopicMenu />
+      <Footer
+        links={mockFooterLinks}
+        languageSelector={
+          <LanguageSelector
+            center
+            outline
+            alwaysVisible
+            options={{
+              nb: {
+                name: 'Bokmål',
+                url: '#',
+              },
+              nn: {
+                name: 'Nynorsk',
+                url: '#',
+              },
+            }}
+            currentLanguage={i18nInstance.language}
+          />
+        }
+        auth={<FooterAuth onAuthenticateClick={() => {}} />}>
+        <FooterText>
+          <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
+        </FooterText>
+        <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
+      </Footer>
+    </div>
+  ))
+  .add('Hovedhode/footer - innlogget', () => (
+    <div>
+      <MastheadWithTopicMenu isAuthed />
+      <Footer
+        links={mockFooterLinks}
+        languageSelector={
+          <LanguageSelector
+            center
+            outline
+            alwaysVisible
+            options={{
+              nb: {
+                name: 'Bokmål',
+                url: '#',
+              },
+              nn: {
+                name: 'Nynorsk',
+                url: '#',
+              },
+            }}
+            currentLanguage={i18nInstance.language}
+          />
+        }
+        auth={
+          <FooterAuth
+            isAuthenticated
+            authorizedRole="lærer"
+            authorizedCollectedInfo={['Lærer', 'Skole']}
+            onAuthenticateClick={() => {}}
+          />
+        }>
+        <FooterText>
+          <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
+        </FooterText>
+        <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
+      </Footer>
     </div>
   ));
 storiesOf('Ndla film', module)

@@ -39,7 +39,7 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
-export { Footer, EditorName, FooterText } from './Footer';
+export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
 export { LanguageSelector } from './LanguageSelector';
 

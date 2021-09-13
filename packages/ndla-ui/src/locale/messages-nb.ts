@@ -825,15 +825,16 @@ const messages = {
     showVideo: 'Vis video',
   },
   user: {
+    loggedInAs: 'Du er pålogget som {{role}}',
+    buttonLogIn: 'Logg inn med Feide',
+    buttonLogOut: 'Logg ut av Feide',
+    generalFooter:
+      'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere',
     modal: {
-      role: 'Du er pålogget som {{role}}',
       collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide',
       general:
         'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere. Disse vises med ikonet',
-      buttonLogIn: 'Logg inn med Feide',
-      buttonLogOut: 'Logg ut av Feide',
     },
-    authButtonLabel: '',
   },
 };
 

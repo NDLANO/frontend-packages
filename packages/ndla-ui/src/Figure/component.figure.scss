@@ -81,9 +81,6 @@
     color: $brand-color;
     padding: 0;
     @include font-size(14px);
-    &:hover {
-      box-shadow: $link;
-    }
 
     &.c-figure__captionbtn {
       box-shadow: $link;

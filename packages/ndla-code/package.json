@@ -1,6 +1,6 @@
 {
   "name": "@ndla/code",
-  "version": "0.1.26",
+  "version": "1.0.2",
   "description": "Code components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,11 +28,10 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^0.3.57",
-    "@ndla/core": "^0.6.40",
-    "@ndla/i18n": "^0.5.6",
-    "@ndla/icons": "^0.7.8",
-    "@ndla/util": "^0.4.8",
+    "@ndla/button": "^1.0.0",
+    "@ndla/core": "^0.7.0",
+    "@ndla/icons": "^1.0.0",
+    "@ndla/util": "^1.0.1",
     "@types/react-syntax-highlighter": "^11.0.4",
     "prismjs": "^1.22.0",
     "react-simple-code-editor": "^0.11.0",
@@ -41,7 +40,8 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
-    "react": "16.13.1"
+    "react": "16.13.1",
+    "react-i18next": "^11.11.0"
   },
   "publishConfig": {
     "access": "public"

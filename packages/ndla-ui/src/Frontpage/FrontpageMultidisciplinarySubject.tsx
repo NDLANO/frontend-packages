@@ -2,7 +2,7 @@ import React from 'react';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
+import { withTranslation, WithTranslation } from 'react-i18next';
 // @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
@@ -75,7 +75,7 @@ type Props = {
   topics?: { url: string; title: string; id: string }[];
 };
 
-const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> = ({ url, t, topics }) => (
+const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & WithTranslation> = ({ url, t, topics }) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
     <Wrapper>
@@ -104,4 +104,4 @@ const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & tType> 
   </StyledSection>
 );
 
-export default injectT(FrontpageMultidisciplinarySubject);
+export default withTranslation()(FrontpageMultidisciplinarySubject);

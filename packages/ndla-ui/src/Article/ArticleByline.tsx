@@ -8,14 +8,13 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
 import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
-import { Print } from '@ndla/icons/action';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -57,16 +56,8 @@ type Props = {
   printUrl?: string;
 };
 
-const ArticleByline = ({
-  authors,
-  suppliers,
-  license,
-  licenseBox,
-  published,
-  copyPageUrlLink,
-  printUrl,
-  t,
-}: Props & tType) => {
+const ArticleByline = ({ authors, suppliers, license, licenseBox, published, copyPageUrlLink, printUrl }: Props) => {
+  const { t } = useTranslation();
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
@@ -120,6 +111,8 @@ const ArticleByline = ({
                 {t('article.useContent')}
               </Button>
             }
+            backgroundColor="white"
+            position="top"
             size="medium">
             {(onClose: void) => (
               <>
@@ -143,8 +136,8 @@ const ArticleByline = ({
           </CopyButton>
         )}
         {printUrl && (
-          <Button stripped onClick={() => printPage(printUrl)}>
-            <Print />
+          <Button size="small" borderShape="rounded" outline onClick={() => printPage(printUrl)}>
+            {t('article.printPage')}
           </Button>
         )}
       </ButtonWrapper>
@@ -152,4 +145,4 @@ const ArticleByline = ({
   );
 };
 
-export default injectT(ArticleByline);
+export default ArticleByline;

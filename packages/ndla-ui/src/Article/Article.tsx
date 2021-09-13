@@ -6,19 +6,22 @@
  *
  */
 
-import React, { ComponentType, ReactNode } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
+import { useIntersectionObserver } from '@ndla/hooks';
+import { resizeObserver } from '@ndla/util';
 import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
-// @ts-ignore
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
+import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
+import { NotionProps } from '../Notion/Notion';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -31,11 +34,11 @@ type ArticleWrapperProps = {
   children: ReactNode;
 };
 
-export const ArticleWrapper = ({ children, modifier, id }: ArticleWrapperProps) => (
-  <article id={id} {...classes(undefined, modifier)}>
+export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
+  <article id={id} {...classes(undefined, modifier)} ref={ref}>
     {children}
   </article>
-);
+));
 
 type ArticleTitleProps = {
   icon?: ReactNode;
@@ -104,6 +107,19 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink?: string;
   printUrl?: string;
+  notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
+  onReferenceClick?: React.MouseEventHandler;
+};
+
+const getArticleContent = (content: any, locale: Locale) => {
+  switch (typeof content) {
+    case 'string':
+      return <ArticleContent content={content} locale={locale} />;
+    case 'function':
+      return content();
+    default:
+      return content;
+  }
 };
 
 export const Article = ({
@@ -113,14 +129,41 @@ export const Article = ({
   modifier,
   messages,
   children,
-  locale,
   competenceGoals,
   competenceGoalTypes,
-  id,
-  renderMarkdown,
   copyPageUrlLink,
+  id,
+  locale,
+  notions,
+  onReferenceClick,
   printUrl,
+  renderMarkdown,
 }: Props) => {
+  const [articleRef, { entry }] = useIntersectionObserver({
+    root: null,
+    rootMargin: '400px',
+    threshold: 0.25,
+  });
+  const [articlePositionRight, setArticlePositionRight] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const showExplainNotions = entry && entry.isIntersecting;
+
+  useEffect(() => {
+    if (wrapperRef && wrapperRef.current) {
+      const handler = () => {
+        if (wrapperRef && wrapperRef.current) {
+          const offset =
+            wrapperRef.current.getBoundingClientRect().left + wrapperRef.current.getBoundingClientRect().width;
+          setArticlePositionRight(offset);
+        }
+      };
+      handler();
+
+      return resizeObserver(document.body, handler);
+    }
+  }, [wrapperRef]);
+
   const {
     title,
     introduction,
@@ -139,34 +182,48 @@ export const Article = ({
   const suppliers = rightsholders.length ? rightsholders : undefined;
 
   return (
-    <ArticleWrapper modifier={modifier} id={id}>
-      <LayoutItem layout="center">
-        <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
-          <ArticleTitle icon={icon} label={messages.label}>
-            {title}
-          </ArticleTitle>
-          <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
-        </ArticleHeaderWrapper>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <ArticleContent content={content} locale={locale} />
-      </LayoutItem>
-      <LayoutItem layout="center">
-        {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
-        <ArticleByline
-          copyPageUrlLink={copyPageUrlLink}
-          {...{
-            authors,
-            suppliers,
-            published,
-            license,
-            licenseBox,
-            printUrl,
-          }}
-        />
-      </LayoutItem>
-      <LayoutItem layout="extend">{children}</LayoutItem>
-    </ArticleWrapper>
+    <div ref={wrapperRef}>
+      <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
+        <LayoutItem layout="center">
+          <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
+            <ArticleTitle icon={icon} label={messages.label}>
+              {title}
+            </ArticleTitle>
+            <ArticleIntroduction renderMarkdown={renderMarkdown}>{introduction}</ArticleIntroduction>
+          </ArticleHeaderWrapper>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          {notions && showExplainNotions && (
+            <>
+              <ArticleNotions
+                locale={locale}
+                notions={notions.list}
+                onReferenceClick={onReferenceClick}
+                relatedContent={notions.related}
+                renderMarkdown={renderMarkdown}
+                buttonOffsetRight={articlePositionRight}
+              />
+            </>
+          )}
+          {getArticleContent(content, locale)}
+        </LayoutItem>
+        <LayoutItem layout="center">
+          {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
+          <ArticleByline
+            copyPageUrlLink={copyPageUrlLink}
+            {...{
+              authors,
+              suppliers,
+              published,
+              license,
+              licenseBox,
+              printUrl,
+            }}
+          />
+        </LayoutItem>
+        <LayoutItem layout="extend">{children}</LayoutItem>
+      </ArticleWrapper>
+    </div>
   );
 };
 

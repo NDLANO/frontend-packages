@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
-import { spacing, colors, fonts, breakpoints, mq, misc } from '@ndla/core';
+import { spacing, colors, fonts, breakpoints, mq, misc, spacingUnit } from '@ndla/core';
 // @ts-ignore
 import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 // @ts-ignore
@@ -46,7 +46,7 @@ const StyledLicense = styled.span`
     right: ${spacing.xsmall};
   }
   ${mq.range({ until: breakpoints.tablet })} {
-    left: ${spacing.spacingUnit * 0.75}px;
+    left: ${spacingUnit * 0.75}px;
     bottom: ${spacing.small};
   }
 `;
@@ -101,7 +101,7 @@ const StyledBlog = styled.div<StyledBlogProps>`
 const StyledTag = styled.div`
   ${mq.range({ from: breakpoints.tablet })} {
     background: ${colors.brand.greyLightest};
-    padding: 0 ${spacing.spacingUnit / 6}px;
+    padding: 0 ${spacingUnit / 6}px;
     color: ${colors.text.primary};
     border-radius: ${misc.borderRadius};
     ${fonts.sizes(12, '20px')};

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
@@ -14,21 +14,22 @@ const StyledWrapper = styled.nav`
     margin: 0;
   }
   .c-tabs__list--subjects {
-    margin:0;
+    margin: 0;
   }
   .c-tabs__tab--subjects {
     ${mq.range({ until: breakpoints.tablet })} {
-      margin:0;
+      margin: 0;
       font-size: 12px;
-      padding-left:8px;
-      padding-right:8px;
+      padding-left: 8px;
+      padding-right: 8px;
       :first-of-type {
-        padding-left:0;
+        padding-left: 0;
       }
       :last-of-type {
-        padding-right:0;
+        padding-right: 0;
       }
     }
+  }
 `;
 
 const StyledList = styled.ul`
@@ -71,11 +72,13 @@ const StyledLetterSpacing = styled.span`
 
 type subjectProps = {
   name: string;
-  url: string;
+  url?: string;
+  path: string;
   id?: string;
 };
 type categoryProps = {
-  name: string;
+  type?: string;
+  name?: string;
   subjects: subjectProps[];
 };
 
@@ -156,7 +159,7 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.url}>
+                      to={subject.url || subject.path}>
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />
@@ -178,15 +181,15 @@ const FrontpageAllSubjects = ({
   onToggleSubject,
   subjectViewType,
   selectedSubjects,
-  t,
-}: subjectsProps & tType) => {
+}: subjectsProps) => {
   const allSubjects: subjectProps[] = [];
   const data: any = [];
+  const { t } = useTranslation();
 
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);
     data.push({
-      title: category.name,
+      title: category.name || t(`subjectCategories.${category.type}`),
       content: renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
     });
   });
@@ -203,4 +206,4 @@ const FrontpageAllSubjects = ({
   );
 };
 
-export default injectT(FrontpageAllSubjects);
+export default FrontpageAllSubjects;

@@ -6,7 +6,7 @@ import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { InformationOutline } from '@ndla/icons/common';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 type WrapperProps = {
   boxType?: 'info';
@@ -120,7 +120,14 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const MessageBox = ({ heading, type = 'info', sticky = true, onClose, children, t }: Props & tType) => (
+export const MessageBox = ({
+  heading,
+  type = 'info',
+  sticky = true,
+  onClose,
+  children,
+  t,
+}: Props & WithTranslation) => (
   <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9999 }}>
     <Wrapper boxType={type}>
       <InfoWrapper>
@@ -144,4 +151,4 @@ export const MessageBox = ({ heading, type = 'info', sticky = true, onClose, chi
   </Sticky>
 );
 
-export default injectT(MessageBox);
+export default withTranslation()(MessageBox);

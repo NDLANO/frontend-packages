@@ -12,7 +12,7 @@ import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
 // @ts-ignore
 import Button, { appearances } from '@ndla/button';
-import { spacing, misc, colors, mq, breakpoints, animations, fonts } from '@ndla/core';
+import { spacing, misc, colors, mq, breakpoints, animations, fonts, spacingUnit } from '@ndla/core';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
@@ -43,8 +43,8 @@ const StyledModal = styled.div<StyledModalProps>`
   position: absolute;
   z-index: 9999;
   right: 0;
-  top: ${-spacing.spacingUnit * 0.75}px;
-  padding: ${spacing.spacingUnit * 0.75}px ${spacing.normal} ${spacing.normal};
+  top: ${-spacingUnit * 0.75}px;
+  padding: ${spacingUnit * 0.75}px ${spacing.normal} ${spacing.normal};
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   border-radius: ${misc.borderRadius};
   display: flex;
@@ -83,7 +83,7 @@ const StyledModal = styled.div<StyledModalProps>`
       button {
         border: none;
         width: 100%;
-        padding: ${spacing.spacingUnit / 2 + 5}px ${spacing.spacingUnit * 2.5}px;
+        padding: ${spacingUnit / 2 + 5}px ${spacingUnit * 2.5}px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -165,6 +165,7 @@ const LanguageSelector = ({
               currentLanguage={currentLanguage}
               setInfoLocale={setInfoLocale}
               infoLocale={infoLocale}
+              close={() => setIsOpen(false)}
             />
           </StyledModal>
         </FocusTrapReact>

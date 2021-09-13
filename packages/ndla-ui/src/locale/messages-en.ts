@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes } = constants;
+export const { contentTypes, subjectCategories } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -45,8 +45,17 @@ const messages = {
     notSupported:
       'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
   },
+  subjectCategories: {
+    [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
+    [subjectCategories.BETA_SUBJECTS]: 'Coming',
+    [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
+    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
+    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
+  },
   searchPage: {
-    noHits: 'Your search - {query} - did not match any articles. ',
+    noHits: 'Your search - {{query}} - did not match any articles. ',
+    noHitsShort: 'No results for search: {{query}}',
+    removeFilterSuggestion: 'Try removing filters',
     close: 'Close',
     abilities: 'Abilities',
     search: 'Search',
@@ -82,7 +91,7 @@ const messages = {
     },
     searchResultMessages: {
       searchStringLabel: 'You searched for:',
-      subHeading: '{totalCount} hits in NDLA',
+      subHeading: '{{totalCount}} hits in NDLA',
     },
     searchResultListMessages: {
       subjectsLabel: 'Open in subject:',
@@ -92,9 +101,9 @@ const messages = {
     },
     searchPageMessages: {
       filterHeading: 'Filter',
-      resultHeading: '{totalCount} hits in NDLA',
-      resultHeadingByAuthor: '{totalCount} articles written by {author}',
-      narrowScreenFilterHeading: '{totalCount} hits on «{query}»',
+      resultHeading: '{{totalCount}} hits in NDLA',
+      resultHeadingByAuthor: '{{totalCount}} articles written by {{author}}',
+      narrowScreenFilterHeading: '{{totalCount}} hits on «{{query}}»',
       dropdownBtnLabel: 'More content types',
     },
     searchFilterMessages: {
@@ -105,7 +114,7 @@ const messages = {
       noValuesButtonText: 'Filter by subjects',
       useFilter: 'Use filter',
       closeFilter: 'Close filter',
-      removeFilter: 'Remove filter {filterName}',
+      removeFilter: 'Remove filter {{filterName}}',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
       resourceTypeFilter: {
@@ -114,12 +123,12 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Showing {fromCount} to {toCount} of {totalCount}',
+      showing: 'Showing {{fromCount}} to {{toCount}} of {{totalCount}}',
       showMore: 'Show more',
       showAll: 'Show all',
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
-      hits: '{count} hits',
+      hits: '{{count}} hits',
       showingSearchPhrase: 'Showing results for:',
       searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
@@ -129,7 +138,7 @@ const messages = {
       showNotion: 'Show notion',
     },
     contextModal: {
-      button: '+ {count} more contexts',
+      button: '+ {{count}} more contexts',
       heading: 'The resource is used in several contexts',
     },
   },
@@ -164,7 +173,7 @@ const messages = {
     },
     subjectIsBeta: {
       iconLabel: 'in beta',
-      dialogHeader: '{title} is under construction',
+      dialogHeader: '{{title}} is under construction',
       dialogText: 'Read more at',
     },
   },
@@ -247,6 +256,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show more assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show more source materials',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show more external learning resources',
+        unGrouped: 'Show more resources',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Show less subjects',
@@ -255,6 +265,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Show less assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'Show less source materials',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Show less external learning resources',
+        unGrouped: 'Show less resources',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'No subjects',
@@ -263,6 +274,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'No assessment resources',
         [contentTypes.SOURCE_MATERIAL]: 'No source materials',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'No external learning resources',
+        unGrouped: 'No resources',
       },
     },
   },
@@ -273,7 +285,7 @@ const messages = {
     errorDescription: 'Sorry, an error occurred while loading the topic resources.',
     error: 'Sorry, a part of the content could not be shown.',
     noCoreResourcesAvailableUnspecific: 'There is no core content available.',
-    noCoreResourcesAvailable: 'There is no core content available for {name}.',
+    noCoreResourcesAvailable: 'There is no core content available for {{name}}.',
     activateAdditionalResources: 'Show additional content',
     toggleFilterLabel: 'Show additional content',
     label: 'Learning content',
@@ -282,7 +294,7 @@ const messages = {
     tooltipCoreTopic: 'Core content is a subject that is on the curriculum',
     tooltipAdditionalTopic: 'Additional content is a subject that is not on the curriculum',
     additionalTooltip: 'Additional content is not on the curriculum',
-    shortcutsTooltip: 'Show {count} articles in this subject',
+    shortcutsTooltip: 'Show {{count}} articles in this subject',
     dialogTooltip: 'What is core content and additional content?',
     dialogHeading: 'Core content and additional content',
     dialogText1: 'As you learn the core content, you acquire the skills described in the curriculum for the subject.',
@@ -306,19 +318,24 @@ const messages = {
     closeLabel: 'Close',
     useContent: 'Cite or use',
     additionalLabel: 'Additional content',
-    urlContributionsLabel: 'See {name}`s contributions',
-    urlAuthorLabel: 'Read more about {name}',
+    urlContributionsLabel: 'See {{name}}`s contributions',
+    urlAuthorLabel: 'Read more about {{name}}',
     multipleAuthorsLabelAbbreviation: 'et al.',
     multipleAuthorsLabel: 'Text:',
-    multipleAuthorsLabelAria: 'Text: {names}',
+    multipleAuthorsLabelAria: 'Text: {{names}}',
     multipleAuthorsLabelAriaConjunction: 'and',
     singleAuthorsLabel: 'Text:',
-    singleAuthorsLabelAria: 'Text: {name}',
+    singleAuthorsLabelAria: 'Text: {{name}}',
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
     conjunction: 'and',
     supplierLabel: 'Rightsholder:',
     multipleSuppliersLabel: 'Rightsholders:',
+    writtenBy: 'Written by {{authors}}',
+    cite: 'Cite content',
+    notionsPrompt: 'Do you know the notions?',
+    citeNotion: 'Cite this explanation',
+    printPage: 'Print',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',
@@ -557,9 +574,10 @@ const messages = {
     relatedLinks: {
       label: 'Related articles',
     },
-    hits: '{count} hits',
+    hits: '{{count}} hits',
   },
   notions: {
+    usedIn: 'Used in',
     closeNotion: 'Close',
   },
   carousel: {
@@ -602,9 +620,9 @@ const messages = {
       slideshowSubTitle: 'on frontpage',
       movieGroupHeader: 'Movies themes:',
       addMovieToSlideshow: 'Add movie to slideshow',
-      addMovieToGroup: 'Add a movie to "{name}"',
+      addMovieToGroup: 'Add a movie to "{{name}}"',
       editMovieGroupName: 'Change the names on this movie group',
-      deleteMovieGroup: 'Delete "{name}"',
+      deleteMovieGroup: 'Delete "{{name}}"',
       moveMovieGroupUp: 'Move up',
       moveMovieGroupDown: 'Move down',
       changeOrder: 'Change order',
@@ -613,7 +631,7 @@ const messages = {
       createThemeGroup: 'Create new movie group',
       saveNameChanges: 'Save changes',
       cancel: 'Cancel',
-      groupNamePlaceholder: 'Write name in {lang}',
+      groupNamePlaceholder: 'Write name in {{lang}}',
       editGroupTitle: 'Change the name(s) in this movie group:',
       newGroupTitle: 'What shall we call the new movie group?',
     },
@@ -651,24 +669,24 @@ const messages = {
     createLearningPathButtonText: 'Go to learningpaths',
     lastUpdated: 'Last updated',
     youAreInALearningPath: 'You are now in a learningpath',
-    readTime: '{hours} schoolhours = {minutes} min',
+    readTime: '{{hours}} schoolhours = {{minutes}} min',
     pageOf: 'of',
     readTimeHour: 'hour',
     readTimeHour_plurals: 'hours',
     readTimeMinutesShort: 'min',
     lastStep: {
       heading: 'Last step of this learningpath',
-      headingSmall: 'You are now in the last step of the learningpath {learningPathName}',
+      headingSmall: 'You are now in the last step of the learningpath {{learningPathName}}',
       topicHeading: 'Go to topic:',
       subjectHeading: 'Go to subject:',
     },
     openMenuTooltip: 'Open menu',
-    mobileStepInfo: '{currentPage} out of {totalPages}',
+    mobileStepInfo: '{{currentPage}} out of {{totalPages}}',
     nextArrow: 'Next',
     previousArrow: 'Previous',
   },
   dropdown: {
-    numberHits: `Search returned {hits} hits`,
+    numberHits: `Search returned {{hits}} hits`,
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
@@ -682,8 +700,8 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Nyttige tips til nettundervisning',
-      externalLink: 'https://blogg.ndla.no/nettundervisning/',
+      text: 'En god skolestart',
+      externalLink: 'https://blogg.ndla.no/engodskolestart/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
@@ -45,11 +46,15 @@ const NotionDialogRelatedLinksWrapper = styled.div`
     padding-left: ${spacing.small};
   }
 `;
-export const NotionDialogTags = ({ tags }) =>
-  tags ? (
+export const NotionDialogTags = ({ tags }) => {
+  const { t } = useTranslation();
+  if (!tags) {
+    return null;
+  }
+  return (
     <NotionDialogTagWrapper>
       <div className={'tags'}>
-        {tags && <span>Brukes i:</span>}
+        {tags && <span>{`${t('notions.usedIn')}:`}</span>}
         {tags.map((tag) => (
           <span className={'tag'} key={`key-${tag}`}>
             {tag}
@@ -57,7 +62,8 @@ export const NotionDialogTags = ({ tags }) =>
         ))}
       </div>
     </NotionDialogTagWrapper>
-  ) : null;
+  );
+};
 
 NotionDialogTags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),

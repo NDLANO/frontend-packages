@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { History } from 'history';
-import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 // @ts-ignore
 import { noScroll } from '@ndla/util';
+import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { SearchField } from '../Search';
 import { SearchFieldForm } from '../Search/SearchFieldForm';
@@ -58,7 +58,6 @@ type Props = {
   searchResult: Array<ContentTypeResultType>;
   infoText: string;
   loading: boolean;
-  t(arg: string, obj?: { [key: string]: string | boolean | number }): string;
   history: History;
   suggestion: string;
   suggestionUrl: string;
@@ -77,11 +76,11 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   allResultUrl,
   searchResult,
   loading,
-  t,
   history,
   suggestion,
   suggestionUrl,
 }) => {
+  const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);
   const inputHasFocusRef = useRef(inputHasFocus);
@@ -206,4 +205,4 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   );
 };
 
-export default injectT(FrontpageSearch);
+export default FrontpageSearch;

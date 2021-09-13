@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
 
 const classes = new BEMHelper({
@@ -82,4 +82,4 @@ Masthead.defaultProps = {
   showLoaderWhenNeeded: true,
 };
 
-export default injectT(Masthead);
+export default withTranslation()(Masthead);

@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 
 import {
   Masthead,
@@ -118,8 +118,17 @@ class MastheadWithTopicMenu extends Component {
   };
 
   render() {
-    const { skipToMainContentId, ndlaFilm, beta, betaInfoContent, topicMenuProps, hideMenuButton, breadcrumbItems, t } =
-      this.props;
+    const {
+      skipToMainContentId,
+      ndlaFilm,
+      beta,
+      betaInfoContent,
+      topicMenuProps,
+      hideMenuButton,
+      breadcrumbItems,
+      t,
+      i18n,
+    } = this.props;
     return (
       <Masthead
         fixed
@@ -211,7 +220,7 @@ class MastheadWithTopicMenu extends Component {
         </MastheadItem>
         <MastheadItem right>
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
-            <LanguageSelector inverted={ndlaFilm} options={dummyLanguageOptions} currentLanguage="nb" />
+            <LanguageSelector inverted={ndlaFilm} options={dummyLanguageOptions} currentLanguage={i18n.language} />
           </DisplayOnPageYOffset>
           {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
@@ -249,4 +258,4 @@ MastheadWithTopicMenu.defaultProps = {
   ),
 };
 
-export default injectT(MastheadWithTopicMenu);
+export default withTranslation()(MastheadWithTopicMenu);

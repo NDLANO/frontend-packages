@@ -8,15 +8,15 @@
 
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { spacing, colors } from '@ndla/core';
+import { spacing, spacingUnit, colors } from '@ndla/core';
 
 export const FieldHeaderIconStyle = css`
   color: ${colors.brand.tertiary};
   width: ${spacing.normal};
   height: ${spacing.normal};
   padding: 0;
-  margin: 0 ${spacing.spacingUnit / 8}px -5px;
-  transform: translate(${spacing.spacingUnit / 8}px, -4px);
+  margin: 0 ${spacingUnit / 8}px -5px;
+  transform: translate(${spacingUnit / 8}px, -4px);
   border: 0;
   background: 0;
 
@@ -34,5 +34,5 @@ export const StyledButtonWrapper = styled.div`
   > button {
     margin-right: ${spacing.small};
   }
-  padding-left: ${(props) => (props.paddingLeft ? `${spacing.spacingUnit * 4}px` : 0)};
+  padding-left: ${(props) => (props.paddingLeft ? `${spacingUnit * 4}px` : 0)};
 `;

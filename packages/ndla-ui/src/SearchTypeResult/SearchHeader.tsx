@@ -8,11 +8,11 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 import { breakpoints, mq, spacing } from '@ndla/core';
 
 // @ts-ignore
 import Button from '@ndla/button';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import { FilterProps } from './ActiveFilterContent';
 import ActiveFilters from './ActiveFilters';
 import SearchFieldHeader from './SearchFieldHeader';
@@ -79,6 +79,7 @@ type Props = {
   competenceGoals?: CompetenceGoalsItemType;
   onSearchValueChange: (value: string) => void;
   onSubmit: () => void;
+  noResults?: boolean;
 };
 
 const SearchHeader = ({
@@ -91,52 +92,65 @@ const SearchHeader = ({
   activeFilters,
   filters,
   competenceGoals,
+  noResults,
   t,
-}: Props & tType) => (
-  <Wrapper>
-    <SearchInputWrapper>
-      <SearchFieldHeader
-        value={searchValue}
-        onChange={onSearchValueChange}
-        onSubmit={onSubmit}
-        activeFilters={activeFilters}
-        filters={filters}
-      />
-    </SearchInputWrapper>
-    <PhraseWrapper>
-      {searchPhrase && (
-        <PhraseText>
-          {t('searchPage.resultType.showingSearchPhrase')} {searchPhrase}
-        </PhraseText>
-      )}
-      {searchPhraseSuggestion && (
-        <PhraseSuggestionText>
-          {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
-          <Button link onClick={searchPhraseSuggestionOnClick}>
-            {searchPhraseSuggestion}
-          </Button>
-        </PhraseSuggestionText>
-      )}
-      {competenceGoals && (
-        <CompetenceGoalsWrapper>
-          {competenceGoals && (
-            <CompetenceGoalsList>
-              <CompetenceGoalItem id={competenceGoals.id} title={competenceGoals.title} goals={competenceGoals.goals} />
-            </CompetenceGoalsList>
-          )}
-        </CompetenceGoalsWrapper>
-      )}
-    </PhraseWrapper>
-    {activeFilters && (
-      <HideOnDesktopWrapper>
-        <ActiveFilters
-          {...activeFilters}
-          showOnSmallScreen
-          customElements={filters ? [<PopupFilter {...filters} />] : []}
+}: Props & WithTranslation) => {
+  const phraseText = noResults
+    ? t('searchPage.noHitsShort', { query: searchPhrase })
+    : `${t('searchPage.resultType.showingSearchPhrase')} ${searchPhrase}`;
+  const removeFilterSuggestion =
+    noResults && activeFilters?.filters.length ? t('searchPage.removeFilterSuggestion') : undefined;
+  return (
+    <Wrapper>
+      <SearchInputWrapper>
+        <SearchFieldHeader
+          value={searchValue}
+          onChange={onSearchValueChange}
+          onSubmit={onSubmit}
+          activeFilters={activeFilters}
+          filters={filters}
         />
-      </HideOnDesktopWrapper>
-    )}
-  </Wrapper>
-);
+      </SearchInputWrapper>
+      <PhraseWrapper>
+        {searchPhrase && (
+          <>
+            <PhraseText>{phraseText}</PhraseText>
+            {removeFilterSuggestion && <PhraseText>{removeFilterSuggestion}</PhraseText>}
+          </>
+        )}
+        {searchPhraseSuggestion && (
+          <PhraseSuggestionText>
+            {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
+            <Button link onClick={searchPhraseSuggestionOnClick}>
+              {searchPhraseSuggestion}
+            </Button>
+          </PhraseSuggestionText>
+        )}
+        {competenceGoals && (
+          <CompetenceGoalsWrapper>
+            {competenceGoals && (
+              <CompetenceGoalsList>
+                <CompetenceGoalItem
+                  id={competenceGoals.id}
+                  title={competenceGoals.title}
+                  goals={competenceGoals.goals}
+                />
+              </CompetenceGoalsList>
+            )}
+          </CompetenceGoalsWrapper>
+        )}
+      </PhraseWrapper>
+      {activeFilters && (
+        <HideOnDesktopWrapper>
+          <ActiveFilters
+            {...activeFilters}
+            showOnSmallScreen
+            customElements={filters ? [<PopupFilter {...filters} />] : []}
+          />
+        </HideOnDesktopWrapper>
+      )}
+    </Wrapper>
+  );
+};
 
-export default injectT(SearchHeader);
+export default withTranslation()(SearchHeader);

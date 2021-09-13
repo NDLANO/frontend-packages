@@ -9,9 +9,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
-import { colors, spacing, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
+import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -50,7 +50,7 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
     padding: 0 0 ${spacing.medium} ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    margin-left: ${spacing.spacingUnit + BORDER_WIDTH / 2}px;
+    margin-left: ${spacingUnit + BORDER_WIDTH / 2}px;
     margin-top: ${spacing.normal};
   }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
@@ -86,6 +86,7 @@ const StyledMenuIntro = styled.div<StyledMenuIntroProps>`
           animation-delay: ${animations.durations.superFast};
         }
       `}
+  }
 `;
 
 const StyledIntroHeader = styled.h1`
@@ -100,7 +101,8 @@ interface Props {
   name: string;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({ isOpen, name, invertedStyle, t }) => {
+const LearningPathMenuIntro: React.FunctionComponent<Props> = ({ isOpen, name, invertedStyle }) => {
+  const { t } = useTranslation();
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
@@ -111,4 +113,4 @@ const LearningPathMenuIntro: React.FunctionComponent<Props & tType> = ({ isOpen,
   );
 };
 
-export default injectT(LearningPathMenuIntro);
+export default LearningPathMenuIntro;

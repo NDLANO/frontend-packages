@@ -9,11 +9,12 @@
 import React, { useState } from 'react';
 
 import { Breadcrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { ArticleSideBar } from '@ndla/ui';
 import ArticleLoader from '../article/ArticleLoader';
 
-const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [], t }) => {
+const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [] }) => {
+  const { t } = useTranslation();
   const [article, setArticle] = useState(null);
   const [resourcesRef, setResourcesRef] = useState(null);
   const subjectsLinks = [];
@@ -93,4 +94,4 @@ const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [], t
   );
 };
 
-export default injectT(MultidisciplinarySubjectArticle);
+export default MultidisciplinarySubjectArticle;

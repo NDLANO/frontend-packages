@@ -6,30 +6,7 @@
  *
  */
 
-export { default as ContentCard } from './ContentCard';
 export { InfoBox } from './InfoBox';
-
-export {
-  SubjectHeader,
-  SubjectContent,
-  SubjectTopics,
-  SubjectSidebarWrapper,
-  SubjectFlexWrapper,
-  SubjectFlexChild,
-  SubjectShortcuts,
-  SubjectLinks,
-  SubjectArchive,
-  SubjectCarousel,
-  SubjectSocialContent,
-  SubjectSocialSection,
-  SubjectSectionTitle,
-  SubjectChildContent,
-  SubjectFilter,
-  SubjectAbout,
-  SubjectSecondaryContent,
-  SubjectNewContent,
-  SubjectBanner,
-} from './Subject';
 
 export { default as Logo } from './Logo';
 export { default as Table } from './Table';
@@ -62,7 +39,6 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
 } from './ContentTypeBadge';
-export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
 export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
@@ -78,7 +54,6 @@ export {
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
-export { default as ResourceGroup } from './ResourceGroup';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,

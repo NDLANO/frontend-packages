@@ -12,7 +12,7 @@ import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems } from '@reach/menu-
 import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';
 import { Play, Pause } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 
 const ControlsWrapper = styled.div`
   border: 1px solid ${colors.brand.lighter};
@@ -316,7 +316,8 @@ type Props = {
   title: string;
 };
 
-const Controls = ({ src, title, t }: Props & tType) => {
+const Controls = ({ src, title }: Props) => {
+  const { t } = useTranslation();
   const [speedValue, setSpeedValue] = useState(1);
   const [volumeValue, setVolumeValue] = useState(100);
   const [sliderValue, setSliderValue] = useState(0);
@@ -408,15 +409,15 @@ const Controls = ({ src, title, t }: Props & tType) => {
             )}
           </span>
         </PlayButton>
-        <Forward15SecButton
+        <Back15SecButton
           type="button"
-          title={t('audio.controls.forward15sec')}
-          aria-label={t('audio.controls.forward15sec')}
+          title={t('audio.controls.rewind15sec')}
+          aria-label={t('audio.controls.rewind15sec')}
           onClick={() => {
-            onSeekSeconds(15);
+            onSeekSeconds(-15);
           }}>
           15
-        </Forward15SecButton>
+        </Back15SecButton>
         <SpeedWrapper>
           <Menu>
             <SpeedButton
@@ -446,15 +447,15 @@ const Controls = ({ src, title, t }: Props & tType) => {
             </SpeedMenu>
           </Menu>
         </SpeedWrapper>
-        <Back15SecButton
+        <Forward15SecButton
           type="button"
-          title={t('audio.controls.rewind15sec')}
-          aria-label={t('audio.controls.rewind15sec')}
+          title={t('audio.controls.forward15sec')}
+          aria-label={t('audio.controls.forward15sec')}
           onClick={() => {
-            onSeekSeconds(-15);
+            onSeekSeconds(15);
           }}>
           15
-        </Back15SecButton>
+        </Forward15SecButton>
         <ProgressWrapper>
           <Time>{formatTime(currentTime)}</Time>
           <SliderWrapper>
@@ -498,4 +499,4 @@ const Controls = ({ src, title, t }: Props & tType) => {
   );
 };
 
-export default injectT(Controls);
+export default Controls;

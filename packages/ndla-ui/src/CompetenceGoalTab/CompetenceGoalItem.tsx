@@ -9,9 +9,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 import { CompetenceGoalsItemType } from '../types';
 import SearchButton from './SearchButton';
+import { useTranslation } from 'react-i18next';
 
 const GoalItem = styled.li`
   margin: ${spacing.medium} 0;
@@ -50,14 +50,15 @@ const GoalSearchWrapper = styled.div`
   margin-left: ${spacing.normal};
 `;
 
-const CompetenceGoalItem = ({ title, goals, t }: CompetenceGoalsItemType & tType) => {
+const CompetenceGoalItem = ({ title, goals }: CompetenceGoalsItemType) => {
+  const { t } = useTranslation();
   return (
     <GoalItem>
       <GoalWrapper>
         <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
         <GoalsHeading>{title}</GoalsHeading>
         <GoalList>
-          {goals.map((goal, index) => (
+          {goals.map((goal, index: number) => (
             <GoalListElement key={`${goal.text}${index}`}>
               <GoalListElementInnerWrapper>
                 <div>{goal.text}</div>
@@ -75,4 +76,4 @@ const CompetenceGoalItem = ({ title, goals, t }: CompetenceGoalsItemType & tType
   );
 };
 
-export default injectT(CompetenceGoalItem);
+export default CompetenceGoalItem;

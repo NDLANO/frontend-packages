@@ -12,8 +12,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { isFunction } from '@ndla/util';
-import { injectT } from '@ndla/i18n';
+import { isFunction, parseMarkdown } from '@ndla/util';
+import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
@@ -23,23 +23,23 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const FigureCaption = injectT(
-  ({
-    figureId,
-    id,
-    children,
-    caption,
-    authors,
-    reuseLabel,
-    licenseRights,
-    locale,
-    link,
-    hideFigcaption,
-    hasLinkedVideo,
-    t,
-  }) => (
+export const FigureCaption = ({
+  figureId,
+  id,
+  children,
+  caption,
+  authors,
+  reuseLabel,
+  licenseRights,
+  locale,
+  link,
+  hideFigcaption,
+  hasLinkedVideo,
+}) => {
+  const { t } = useTranslation();
+  return (
     <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
-      {caption ? <div {...classes('info')}>{caption}</div> : null}
+      {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
           <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
@@ -75,8 +75,8 @@ export const FigureCaption = injectT(
         </div>
       </footer>
     </figcaption>
-  ),
-);
+  );
+};
 
 FigureCaption.propTypes = {
   figureId: PropTypes.string.isRequired,
@@ -105,7 +105,7 @@ FigureCaption.defaultProps = {
   link: null,
 };
 
-const Figure = ({ children, type, resizeIframe, t, ...rest }) => {
+const Figure = ({ children, type, resizeIframe, ...rest }) => {
   const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   return (
     <figure data-sizetype={type} {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
@@ -135,4 +135,4 @@ Figure.defaultProps = {
   type: 'full',
 };
 
-export default injectT(Figure);
+export default Figure;

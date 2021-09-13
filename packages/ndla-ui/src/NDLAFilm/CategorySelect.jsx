@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 import { ChevronDown } from '@ndla/icons/common';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 
 const classes = new BEMHelper({
   name: 'film-moviesearch',
@@ -121,4 +121,4 @@ CategorySelect.propTypes = {
   ariaControlId: PropTypes.string,
 };
 
-export default injectT(CategorySelect);
+export default withTranslation()(CategorySelect);

@@ -4,10 +4,10 @@ import Button, { CopyButton } from '@ndla/button';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { fonts } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   width: 160px;
@@ -45,7 +45,8 @@ type Props = {
   copyPageUrlLink?: string;
   licenseBox?: React.ReactNode;
 };
-const ArticleSideBar = ({ linkToResources, onLinkToResourcesClick, copyPageUrlLink, licenseBox, t }: Props & tType) => {
+const ArticleSideBar = ({ linkToResources, onLinkToResourcesClick, copyPageUrlLink, licenseBox }: Props) => {
+  const { t } = useTranslation();
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
@@ -100,4 +101,4 @@ const ArticleSideBar = ({ linkToResources, onLinkToResourcesClick, copyPageUrlLi
   );
 };
 
-export default injectT(ArticleSideBar);
+export default ArticleSideBar;

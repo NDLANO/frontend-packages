@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { css } from '@emotion/core';
-import { injectT } from '@ndla/i18n';
 import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 
 import ActiveFilters from './ActiveFilters';
 import LoadingWrapper from './LoadingWrapper';
@@ -70,7 +70,6 @@ const SearchField = ({
   filters,
   small,
   onClick,
-  t,
   onFocus = () => {},
   onBlur = () => {},
   loading,
@@ -78,6 +77,7 @@ const SearchField = ({
   inputRef,
   frontPageSearch = false,
 }) => {
+  const { t } = useTranslation();
   const handleOnFilterRemove = (value, filterName) => {
     onFilterRemove(value, filterName);
     if (inputRef) {
@@ -155,4 +155,4 @@ SearchField.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default injectT(SearchField);
+export default SearchField;

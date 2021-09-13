@@ -11,10 +11,10 @@ import styled from '@emotion/styled';
 import { MovieList, NdlaFilmThemeEditorModal } from '@ndla/editor';
 import { FieldHeader, Select, FieldHeaderIconStyle } from '@ndla/forms';
 import Modal from '@ndla/modal';
-import { spacing } from '@ndla/core';
+import { spacing, spacingUnit } from '@ndla/core';
 import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 import { DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
@@ -22,7 +22,7 @@ import { Pencil } from '@ndla/icons/action';
 import { mockAllMovies, mockHighlightedMovies, movieThemes as themes } from '../../dummydata';
 
 const StyledSection = styled('section')`
-  margin-top: ${spacing.spacingUnit * 4}px;
+  margin-top: ${spacingUnit * 4}px;
 `;
 
 const StyledThemeWrapper = styled('div')`
@@ -271,4 +271,4 @@ class NdlaFilmExample extends Component {
   }
 }
 
-export default injectT(NdlaFilmExample);
+export default withTranslation()(NdlaFilmExample);

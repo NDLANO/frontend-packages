@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
-import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
+import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import {
   Forward,
   Launch,
   // @ts-ignore
 } from '@ndla/icons/common';
-import { injectT, tType } from '@ndla/i18n';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const StyledLinksWrapper = styled.div`
   }
   ${mq.range({ from: breakpoints.desktop })} {
     section:first-of-type {
-      margin-right: ${spacing.spacingUnit * 4}px;
+      margin-right: ${spacingUnit * 4}px;
     }
   }
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -49,8 +49,6 @@ const commonLinks = [
   },
   { key: 'blog', url: 'https://blogg.ndla.no' },
   { key: 'tips', url: 'https://blogg.ndla.no/elever' },
-  { key: 'fyr', url: 'https://fyr.ndla.no' },
-  { key: 'sharing', url: 'https://deling.ndla.no' },
   { key: 'vacancies', url: 'https://om.ndla.no/jobb-for-ndla/' },
 ];
 
@@ -99,7 +97,7 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, links }) => (
+const FooterLinks: React.FunctionComponent<FooterLinksProps & WithTranslation> = ({ t, links }) => (
   <>
     <StyledLinksWrapper>
       <section>
@@ -110,7 +108,7 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, lin
           {commonLinks.map((link) => (
             <div key={link.url}>
               <StyledSafeLink
-                key={t(`footer.ndlaLinks.${link.key}`)}
+                key={t<string>(`footer.ndlaLinks.${link.key}`)}
                 aria-label={t(`footer.ndlaLinks.${link.key}`)}
                 to={link.url}
                 target="_blank"
@@ -138,4 +136,4 @@ const FooterLinks: React.FunctionComponent<FooterLinksProps & tType> = ({ t, lin
   </>
 );
 
-export default injectT(FooterLinks);
+export default withTranslation()(FooterLinks);

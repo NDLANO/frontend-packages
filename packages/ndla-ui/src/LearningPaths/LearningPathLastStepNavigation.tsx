@@ -10,10 +10,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
-import { fonts, spacing } from '@ndla/core';
-import { injectT, tType } from '@ndla/i18n';
-// @ts-ignore
-import { OneColumn, LayoutItem } from '../index-javascript';
+import { withTranslation, WithTranslation } from 'react-i18next';
+import { fonts, spacing, spacingUnit } from '@ndla/core';
+import { OneColumn, LayoutItem } from '../index';
 
 const StyledHeader = styled.h1`
   display: flex;
@@ -35,7 +34,7 @@ const StyledLinkWrapper = styled.div`
 
 const OneColumnCss = css`
   background: #fff;
-  padding-top: ${spacing.spacingUnit * 3}px;
+  padding-top: ${spacingUnit * 3}px;
   margin-top: -${spacing.normal};
 `;
 
@@ -52,7 +51,7 @@ interface Props {
   learningPathName: string;
 }
 
-const LearningPathLastStepNavigation: React.FunctionComponent<Props & tType> = ({
+const LearningPathLastStepNavigation: React.FunctionComponent<Props & WithTranslation> = ({
   subject,
   topic,
   learningPathName,
@@ -86,4 +85,4 @@ const LearningPathLastStepNavigation: React.FunctionComponent<Props & tType> = (
   </OneColumn>
 );
 
-export default injectT(LearningPathLastStepNavigation);
+export default withTranslation()(LearningPathLastStepNavigation);

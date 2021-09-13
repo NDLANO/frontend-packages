@@ -8,8 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
 import { spacing, colors, fonts } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 const StyledWrapper = styled.div`
   padding: ${spacing.small} 0;
   width: 100%;
@@ -46,18 +46,18 @@ const StyleLine = styled.hr`
 `;
 
 type Props = {
-  notes: Array<{
-    author: number;
+  notes: {
+    author: string;
     date: string;
     note: string;
-    status: string;
-    id: string;
-  }>;
-  onComment(arg: string): void;
-  current: boolean;
+    status?: string;
+    id: number;
+  }[];
 };
 
-const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
+const VersionHistory: React.FC<Props> = ({ notes, children }) => {
+  const { t } = useTranslation();
+  const hasStatus = notes.some((n) => n.status !== undefined);
   return (
     <StyledWrapper>
       <StyledTable>
@@ -66,7 +66,7 @@ const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
             <th>{t('editor.versionHistory.who')}</th>
             <th>{t('editor.versionHistory.when')}</th>
             <th>{t('editor.versionHistory.message')}</th>
-            <th>{t('editor.versionHistory.status')}</th>
+            {hasStatus && <th>{t('editor.versionHistory.status')}</th>}
           </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@ const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
               <td>{author}</td>
               <td>{date}</td>
               <td>{note}</td>
-              <td>{status}</td>
+              {hasStatus && <td>{status}</td>}
             </tr>
           ))}
         </tbody>
@@ -86,4 +86,4 @@ const VersionHistory: React.FC<Props & tType> = ({ notes, t, children }) => {
   );
 };
 
-export default injectT(VersionHistory);
+export default VersionHistory;

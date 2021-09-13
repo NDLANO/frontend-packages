@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes } = constants;
+export const { contentTypes, subjectCategories } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -45,8 +45,17 @@ const messages = {
     notSupported:
       'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
   },
+  subjectCategories: {
+    [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
+    [subjectCategories.BETA_SUBJECTS]: 'Kommende',
+    [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
+    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
+    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
+  },
   searchPage: {
-    noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',
+    noHits: 'Ingen artikler samsvarte med søket ditt på: {{query}}',
+    noHitsShort: 'Ingen treff på søk: {{query}}',
+    removeFilterSuggestion: 'Prøv å fjerne filter',
     search: 'Søk',
     close: 'Lukk',
     abilities: 'Egenskaper',
@@ -82,7 +91,7 @@ const messages = {
     },
     searchResultMessages: {
       searchStringLabel: 'Du søkte på:',
-      subHeading: '{totalCount} treff i NDLA',
+      subHeading: '{{totalCount}} treff i NDLA',
     },
     searchResultListMessages: {
       subjectsLabel: 'Åpne i fag:',
@@ -92,9 +101,9 @@ const messages = {
     },
     searchPageMessages: {
       filterHeading: 'Filter',
-      resultHeading: '{totalCount} treff i NDLA',
-      resultHeadingByAuthor: '{totalCount} artikler skrevet av {author}',
-      narrowScreenFilterHeading: '{totalCount} treff på «{query}»',
+      resultHeading: '{{totalCount}} treff i NDLA',
+      resultHeadingByAuthor: '{{totalCount}} artikler skrevet av {{author}}',
+      narrowScreenFilterHeading: '{{totalCount}} treff på «{{query}}»',
       dropdownBtnLabel: 'Flere innholdstyper',
     },
     searchFilterMessages: {
@@ -105,7 +114,7 @@ const messages = {
       noValuesButtonText: 'Filtrer på fag',
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
-      removeFilter: 'Fjern filter {filterName}',
+      removeFilter: 'Fjern filter {{filterName}}',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -114,12 +123,12 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Viser {fromCount} til {toCount} av {totalCount}',
+      showing: 'Viser {{fromCount}} til {{toCount}} av {{totalCount}}',
       showMore: 'Vis mer',
       showAll: 'Vis alle',
       toSubjectPageLabel: 'Gå til fagsiden',
       all: 'Alle',
-      hits: '{count} Treff',
+      hits: '{{count}} Treff',
       showingSearchPhrase: 'Viser resultater for',
       showingCompetenceGoalSearchPhrase: 'Viser resultater for kompetansemål {text}',
       searchPhraseSuggestion: 'Søk i stedet for',
@@ -130,7 +139,7 @@ const messages = {
       showNotion: 'Se forklaring',
     },
     contextModal: {
-      button: '+ {count} flere steder',
+      button: '+ {{count}} flere steder',
       heading: 'Ressursen er brukt flere steder',
     },
   },
@@ -164,7 +173,7 @@ const messages = {
     },
     subjectIsBeta: {
       iconLabel: 'i arbeid',
-      dialogHeader: '{title} er under arbeid.',
+      dialogHeader: '{{title}} er under arbeid.',
       dialogText: 'Du kan lese mer om hva dette betyr på',
     },
   },
@@ -249,6 +258,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis flere vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis flere kildematerialer',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis flere eksterne læringsressurser',
+        unGrouped: 'Vis flere ressurser',
       },
       contentTypeResultsShowLess: {
         [contentTypes.SUBJECT_MATERIAL]: 'Vis mindre fagstoff',
@@ -257,6 +267,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Vis færre vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Vis færre kildematerialer',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Vis færre eksterne læringsressurser',
+        unGrouped: 'Vis færre ressurser',
       },
       contentTypeResultsNoHit: {
         [contentTypes.SUBJECT_MATERIAL]: 'Ikke noe fagstoff',
@@ -265,6 +276,7 @@ const messages = {
         [contentTypes.ASSESSMENT_RESOURCES]: 'Ingen vurderingsressurser',
         [contentTypes.SOURCE_MATERIAL]: 'Ingen kildematerialer',
         [contentTypes.EXTERNAL_LEARNING_RESOURCES]: 'Ingen eksterne læringsressurser',
+        unGrouped: 'Ingen ressurser',
       },
     },
   },
@@ -275,7 +287,7 @@ const messages = {
     errorDescription: 'Beklager, men en feil oppstod under lasting av emneressurser.',
     error: 'Beklager, en del av innholdet kunne ikke vises.',
     noCoreResourcesAvailableUnspecific: 'Det er ikke noe kjernestoff tilgjengelig.',
-    noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {name}.',
+    noCoreResourcesAvailable: 'Det er ikke noe kjernestoff for {{name}}.',
     activateAdditionalResources: 'Tilleggsstoff',
     toggleFilterLabel: 'Tilleggsressurser',
     label: 'Læringsressurser',
@@ -284,7 +296,7 @@ const messages = {
     tooltipCoreTopic: 'Kjernestoff',
     tooltipAdditionalTopic: 'Tilleggsstoff',
     additionalTooltip: 'Tilleggsstoff',
-    shortcutsTooltip: 'Vis {count} artikler i dette emnet',
+    shortcutsTooltip: 'Vis {{count}} artikler i dette emnet',
     dialogTooltip: 'Hva er kjernestoff og tilleggsstoff?',
     dialogHeading: 'Kjernestoff og tilleggsstoff',
     dialogText1: 'Når du lærer deg kjernestoffet, skaffer du deg den kompetansen som beskrives i læreplanen for faget.',
@@ -305,19 +317,24 @@ const messages = {
     useContent: 'Regler for bruk',
     closeLabel: 'Lukk',
     additionalLabel: 'Tilleggsstoff',
-    urlContributionsLabel: 'Se hva {name} har bidratt med',
+    urlContributionsLabel: 'Se hva {{name}} har bidratt med',
     urlAuthorLabel: 'Les mer om {name}',
     multipleAuthorsLabelAbbreviation: 'm. fl.',
     multipleAuthorsLabel: 'Tekst:',
-    multipleAuthorsLabelAria: 'Tekst: {names}',
+    multipleAuthorsLabelAria: 'Tekst: {{names}}',
     multipleAuthorsLabelAriaConjunction: 'og',
     singleAuthorsLabel: 'Tekst:',
-    singleAuthorsLabelAria: 'Tekst: {name}',
+    singleAuthorsLabelAria: 'Tekst: {{name}}',
     copyPageLink: 'Kopier lenke til siden',
     copyPageLinkCopied: 'Lenke kopiert',
     conjunction: 'og',
     supplierLabel: 'Rettighetshaver:',
     multipleSuppliersLabel: 'Rettighetshavere:',
+    writtenBy: 'Skrevet av {{authors}}',
+    cite: 'Bruk innhold',
+    notionsPrompt: 'Kan du begrepene?',
+    citeNotion: 'Bruk forklaringen',
+    printPage: 'Skriv ut',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -556,9 +573,10 @@ const messages = {
     relatedLinks: {
       label: 'Tilknyttede artikler',
     },
-    hits: '{count} treff',
+    hits: '{{count}} treff',
   },
   notions: {
+    usedIn: 'Brukes i',
     closeNotion: 'Lukk',
   },
   carousel: {
@@ -601,9 +619,9 @@ const messages = {
       slideshowSubTitle: 'på forsiden',
       movieGroupHeader: 'Film grupperinger:',
       addMovieToSlideshow: 'Legg til film i slideshow',
-      addMovieToGroup: 'Legg til film i "{name}"',
+      addMovieToGroup: 'Legg til film i "{{name}}"',
       editMovieGroupName: 'Endre navnene til filmgruppen',
-      deleteMovieGroup: 'Slett "{name}"',
+      deleteMovieGroup: 'Slett "{{name}}"',
       moveMovieGroupUp: 'Flytt opp',
       moveMovieGroupDown: 'Flytt ned',
       changeOrder: 'Endre rekkefølge',
@@ -612,7 +630,7 @@ const messages = {
       createThemeGroup: 'Opprett gruppe',
       saveNameChanges: 'Lagre endringer',
       cancel: 'Avbryt',
-      groupNamePlaceholder: 'Skriv navn på {lang}',
+      groupNamePlaceholder: 'Skriv navn på {{lang}}',
       editGroupTitle: 'Endre navn(ene) på filmgruppen:',
       newGroupTitle: 'Hva skal gruppen hete?',
     },
@@ -656,17 +674,17 @@ const messages = {
     pageOf: 'av',
     lastStep: {
       heading: 'Siste steg i læringsstien',
-      headingSmall: 'Du er nå på siste steget i læringsstien {learningPathName}',
+      headingSmall: 'Du er nå på siste steget i læringsstien {{learningPathName}}',
       topicHeading: 'Gå til emne:',
       subjectHeading: 'Gå til faget:',
     },
     openMenuTooltip: 'Vis læringssti',
-    mobileStepInfo: '{currentPage} av {totalPages}',
+    mobileStepInfo: '{{currentPage}} av {{totalPages}}',
     nextArrow: 'Neste',
     previousArrow: 'Forrige',
   },
   dropdown: {
-    numberHits: `Søket gav {hits} treff`,
+    numberHits: `Søket gav {{hits}} treff`,
     searching: 'Søker...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
@@ -680,8 +698,8 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'Nyttige tips til nettundervisning',
-      externalLink: 'https://blogg.ndla.no/nettundervisning/',
+      text: 'En god skolestart',
+      externalLink: 'https://blogg.ndla.no/engodskolestart/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',

@@ -78,7 +78,7 @@ export type SearchResult = {
 };
 
 export interface ContentTypeResultType {
-  title: string;
+  title?: string;
   contentType?: string;
   resources: Array<Resource>;
 }
@@ -109,4 +109,9 @@ export type CompetenceGoalsItemType = {
     url?: string;
   }[];
   selected?: boolean;
+};
+
+export type NotionMedia = {
+  type: 'video' | 'other';
+  element: React.ReactNode;
 };

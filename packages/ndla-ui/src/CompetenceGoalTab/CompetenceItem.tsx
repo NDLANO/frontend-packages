@@ -8,9 +8,13 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { injectT, tType } from '@ndla/i18n';
+// @ts-ignore
+import {
+  MenuBook,
+  // @ts-ignore
+} from '@ndla/icons/action';
 import { fonts } from '@ndla/core';
-import { MenuBook } from '@ndla/icons/action';
+import { useTranslation } from 'react-i18next';
 import CompetenceGoalItem from './CompetenceGoalItem';
 import { CompetenceGoalsItemType } from '../types';
 
@@ -81,7 +85,8 @@ export type ListItemProps = {
   item: ListItemProp;
 };
 
-const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
+const CompetenceItem = ({ item }: ListItemProps) => {
+  const { t } = useTranslation();
   const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
   switch (type) {
     case 'competenceGoals':
@@ -141,4 +146,4 @@ const CompetenceItem = ({ item, t }: ListItemProps & tType) => {
   }
 };
 
-export default injectT(CompetenceItem);
+export default CompetenceItem;

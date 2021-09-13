@@ -8,7 +8,6 @@
 
 import React from 'react';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-import { tType } from '@ndla/i18n';
 
 interface Props {
   children: Element;
@@ -19,7 +18,7 @@ interface Props {
   typeClass: string;
 }
 
-export const FigureBylineExpandButton = ({ children, messages, typeClass }: Props & tType) => {
+export const FigureBylineExpandButton = ({ children, messages, typeClass }: Props) => {
   return (
     <button
       className="c-figure__show-byline-btn"

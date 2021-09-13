@@ -1,6 +1,6 @@
 {
   "name": "@ndla/util",
-  "version": "0.4.8",
+  "version": "1.0.1",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,7 +27,8 @@
     "types"
   ],
   "dependencies": {
-    "defined": "1.0.0"
+    "defined": "1.0.0",
+    "remarkable": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"

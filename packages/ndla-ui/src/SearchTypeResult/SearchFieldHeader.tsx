@@ -14,8 +14,8 @@ import { Search as SearchIcon } from '@ndla/icons/common';
 import { spacing } from '@ndla/core';
 // @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
-import { injectT, tType } from '@ndla/i18n';
 
+import { useTranslation } from 'react-i18next';
 import ActiveFilters from './ActiveFilters';
 import PopupFilter, { PopupFilterProps } from './PopupFilter';
 import { FilterProps } from './ActiveFilterContent';
@@ -86,7 +86,8 @@ type Props = {
   };
 };
 
-const SearchFieldHeader: React.FC<Props & tType> = ({ value, onSubmit, onChange, filters, activeFilters, t }) => {
+const SearchFieldHeader: React.FC<Props> = ({ value, onSubmit, onChange, filters, activeFilters }) => {
+  const { t } = useTranslation();
   const [hasFocus, setHasFocus] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -129,7 +130,7 @@ const SearchFieldHeader: React.FC<Props & tType> = ({ value, onSubmit, onChange,
       {value && (
         <ClearButton
           type="button"
-          value={t('welcomePage.resetSearch')}
+          value={t<string>('welcomePage.resetSearch')}
           onClick={() => {
             onChange('');
             if (inputRef && inputRef.current) {
@@ -139,11 +140,11 @@ const SearchFieldHeader: React.FC<Props & tType> = ({ value, onSubmit, onChange,
           <CrossIcon style={{ width: '24px', height: '24px' }} />
         </ClearButton>
       )}
-      <SearchButton type="submit" value={t('searchPage.search')}>
+      <SearchButton type="submit" value={t<string>('searchPage.search')}>
         <SearchIcon style={{ width: '24px', height: '24px' }} />
       </SearchButton>
     </StyledForm>
   );
 };
 
-export default injectT(SearchFieldHeader);
+export default SearchFieldHeader;

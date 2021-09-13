@@ -1,9 +1,7 @@
 import React, { ReactChildren } from 'react';
-
-import { injectT, tType } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
-// @ts-ignore
 import LayoutItem, { OneColumn } from '../Layout';
 import List from './List';
 import { ListItemProps } from './ListItem';
@@ -94,7 +92,8 @@ type Props = {
   hideCards?: boolean;
 };
 
-export const MultidisciplinarySubject = ({ t, cards, children, totalCardCount, hideCards }: Props & tType) => {
+export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hideCards }: Props) => {
+  const { t } = useTranslation();
   return (
     <StyledWrapper>
       <StyledBackground>
@@ -122,4 +121,4 @@ export const MultidisciplinarySubject = ({ t, cards, children, totalCardCount, h
   );
 };
 
-export default injectT(MultidisciplinarySubject);
+export default MultidisciplinarySubject;

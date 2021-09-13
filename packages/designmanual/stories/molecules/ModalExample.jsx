@@ -9,12 +9,13 @@ import { HelpCircle } from '@ndla/icons/common';
 
 import ComponentInfo from '../ComponentInfo';
 
-const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifier }) => (
+const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifier, position }) => (
   <Modal
     narrow
     size={size}
     animation={animation}
     backgroundColor={backgroundColor}
+    position={position}
     activateButton={<Button outline>{title}</Button>}>
     {(onClose) => (
       <Fragment>
@@ -47,6 +48,7 @@ class ModalExample extends Component {
       backgroundColor: 'blue',
       headerColorModifier: 'blue',
       animation: 'zoom-in',
+      position: 'center',
     };
   }
 
@@ -133,6 +135,12 @@ class ModalExample extends Component {
             type: 'Bool',
             default: 'false',
             description: 'Hindrer autorendring av gjennomsiktlig bakgrunn.',
+          },
+          {
+            name: 'position',
+            type: 'String',
+            default: 'center',
+            description: `PropTypes.oneOf(['center', 'top', 'bottom']),`,
           },
           {
             name: 'wrapperFunctionForButton',
@@ -287,6 +295,21 @@ class ModalExample extends Component {
             });
           }}
         />
+        <h4>Velg posisjonering</h4>
+        <FilterList
+          labelNotVisible
+          options={[
+            { title: 'Midtstilt', value: 'center' },
+            { title: 'Topp', value: 'top' },
+            { title: 'Bunn', value: 'bottom' },
+          ]}
+          values={[this.state.position]}
+          onChange={(e) => {
+            this.setState({
+              position: e.pop(),
+            });
+          }}
+        />
         <br />
         <ModalDemo
           title="Åpne tilpasset modal"
@@ -294,6 +317,7 @@ class ModalExample extends Component {
           animation={this.state.animation}
           backgroundColor={this.state.backgroundColor}
           headerColorModifier={this.state.headerColorModifier}
+          position={this.state.position}
         />
       </ComponentInfo>
     );

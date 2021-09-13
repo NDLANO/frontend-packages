@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { injectT } from '@ndla/i18n';
+import { useTranslation } from 'react-i18next';
 import { colors, fonts, spacing, shadows, misc, animations } from '@ndla/core';
 import Pager from '@ndla/pager';
 import DropdownMenuItem from './DropdownMenuItem';
@@ -22,7 +22,7 @@ const StyledDropDownContainer = styled.div`
   box-shadow: ${shadows.levitate1};
   transition: height 100ms ease;
   ${(props) => props.positionAbsolute && 'position: absolute; z-index: 99;'}
-  width: 100%;
+  width: ${(props) => (props.wide ? '120%' : '100%')};
 `;
 
 const StyledResultList = styled.div`
@@ -62,7 +62,6 @@ const DropdownMenu = ({
   loading,
   getItemProps,
   getMenuProps,
-  t,
   maxRender,
   multiSelect,
   onCreate,
@@ -75,13 +74,16 @@ const DropdownMenu = ({
   handlePageChange,
   page,
   highlightedIndex,
+  wide,
 }) => {
+  const { t } = useTranslation();
   if (!isOpen) {
     return null;
   }
   return (
     <StyledDropDownContainer
       positionAbsolute={positionAbsolute}
+      wide={wide}
       {...getMenuProps({ isOpen })}
       data-testid="dropdown-items">
       <StyledResultList menuHeight={menuHeight}>
@@ -144,6 +146,7 @@ DropdownMenu.propTypes = {
   hideTotalSearchCount: PropTypes.bool,
   handlePageChange: PropTypes.func,
   page: PropTypes.number,
+  wide: PropTypes.bool,
 };
 
 DropdownMenu.defaultProps = {
@@ -152,4 +155,4 @@ DropdownMenu.defaultProps = {
   disableSelected: false,
 };
 
-export default injectT(DropdownMenu);
+export default DropdownMenu;

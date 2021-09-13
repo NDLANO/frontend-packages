@@ -6,7 +6,7 @@ import debounce from 'lodash/debounce';
 import { getCurrentBreakpoint, breakpoints } from '@ndla/util';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
-import { injectT } from '@ndla/i18n';
+import { withTranslation } from 'react-i18next';
 
 import SearchField from './SearchField';
 import ActiveFilters from './ActiveFilters';
@@ -175,4 +175,4 @@ SearchPage.defaultProps = {
   author: null,
 };
 
-export default injectT(SearchPage);
+export default withTranslation()(SearchPage);

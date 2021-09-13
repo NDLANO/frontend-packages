@@ -189,7 +189,7 @@ const SearchNotionItem = ({
     <ItemWrapper hasMedia={hasMedia}>
       <TextWrapper>
         <DescriptionWrapper>
-          {parse(renderMarkdown ? renderMarkdown(`**${title}** &ndash; ${text}`) : `<b>${title}</b> \u2013 ${text}`)}
+          {parse(renderMarkdown ? renderMarkdown(`**${title}** \u2013 ${text}`) : `<b>${title}</b> \u2013 ${text}`)}
         </DescriptionWrapper>
         {(authors || license) && (
           <AuthorsWrapper>

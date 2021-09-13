@@ -79,15 +79,17 @@
     border: none;
     cursor: pointer;
     color: $brand-color;
-    box-shadow: $link;
     padding: 0;
     @include font-size(14px);
-    &:hover {
-      box-shadow: $link--hover;
-    }
 
-    &.c-figure__captionbtn svg {
-      display: none;
+    &.c-figure__captionbtn {
+      box-shadow: $link;
+      &:hover {
+        box-shadow: $link--hover;
+      }
+      svg {
+        display: none;
+      }
     }
     &.c-figure__toggleSynstolket {
       margin-left: 10px;

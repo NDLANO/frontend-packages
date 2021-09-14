@@ -22,7 +22,7 @@ const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLangu
         />
       )
     }
-    auth={<FooterAuth isAuthenticated />}>
+    auth={<FooterAuth onAuthenticateClick={() => {}} />}>
     <FooterText>
       <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
       <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>

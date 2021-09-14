@@ -27,6 +27,7 @@ import {
   EditorName,
   Footer,
   FooterAuth,
+  ErrorResourceAccessDenied,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -495,6 +496,17 @@ storiesOf('Autentisering', module)
         <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
       </Footer>
     </div>
+  ))
+  .add('Ressurs uten tilgang', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <OneColumn cssModifier="clear">
+          <ErrorResourceAccessDenied onAuthenticateClick={() => {}} />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (

@@ -835,6 +835,9 @@ const messages = {
       general:
         'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere. Disse vises med ikonet',
     },
+    resource: {
+      accessDenied: 'Vi beklager, men denne ressursen er kun for lærere innlogget i Feide.',
+    },
   },
 };
 

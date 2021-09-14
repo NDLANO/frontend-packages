@@ -24,7 +24,7 @@ export {
   default as Article,
 } from './Article';
 
-export { default as ErrorMessage } from './ErrorMessage';
+export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 

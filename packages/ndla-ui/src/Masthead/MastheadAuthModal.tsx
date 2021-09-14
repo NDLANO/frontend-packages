@@ -41,7 +41,7 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props & AuthModalProps) => {
     <AuthModal
       {...rest}
       activateButton={
-        <StyledButton inverted={inverted} ghostPill={!inverted} ghostPillInverted={inverted}>
+        <StyledButton inverted={inverted} ghostPill={!inverted} ghostPillInverted={inverted} aria-label="Feide">
           <span className="feide-icon">
             <Feide />
           </span>

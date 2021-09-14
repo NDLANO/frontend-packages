@@ -46,7 +46,7 @@
     "@reach/menu-button": "^0.12.1",
     "@reach/slider": "^0.12.1",
     "@types/hoist-non-react-statics": "^3.3.1",
-    "@types/react-syntax-highlighter": "^11.0.4",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "classnames": "2.2.6",
     "focus-trap": "^4.0.2",
     "focus-trap-react": "^6.0.0",
@@ -64,7 +64,7 @@
     "react-prop-types": "0.4.0",
     "react-sticky-el": "^2.0.6",
     "react-swipeable": "^5.0.1",
-    "react-syntax-highlighter": "15.1.0",
+    "react-syntax-highlighter": "^15.4.4",
     "react-transition-group": "^2.5.3",
     "shave": "^2.5.10"
   },

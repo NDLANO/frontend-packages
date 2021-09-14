@@ -20,5 +20,6 @@ export const parseMarkdown = (embeddedCaption: string) => {
    * text within *italics* and *bold* to render properly.
    */
   const escapedMarkdown = markdown.render(caption.split(' ').join('\\ '));
-  return parse(escapedMarkdown.split('\\').join(''));
+  const parsed = parse(escapedMarkdown.split('\\').join(''));
+  return Array.isArray(parsed) ? parsed[0] : parsed;
 };

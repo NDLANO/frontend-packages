@@ -8,6 +8,7 @@ import { css } from '@emotion/core';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
+import { HumanMaleBoard } from '@ndla/icons/common';
 
 const StyledWrapper = styled.nav`
   margin: 20px 0 34px;
@@ -64,6 +65,7 @@ const StyledList = styled.ul<listProps>`
 `;
 type additionalResourceProps = {
   isAdditionalResource?: boolean;
+  isRestrictedResource?: boolean;
   lighter?: boolean;
   selected?: boolean;
   listDirection?: listProps['direction'];
@@ -84,10 +86,10 @@ const StyledListItem = styled.li<additionalResourceProps>`
 `;
 
 const StyledListElementWrapper = styled.div<additionalResourceProps>`
+  position: relative;
   ${(props) =>
     props.isAdditionalResource &&
     css`
-      position: relative;
       & > * {
         border: 1px dashed ${props.lighter && !props.selected ? `${colors.brand.tertiary}` : `${colors.brand.dark}`};
         background-clip: padding-box;
@@ -122,7 +124,28 @@ const StyledButtonContent = styled.span`
 `;
 
 const StyledButtonContentText = styled.span<additionalResourceProps>`
-  ${(props) => props.isAdditionalResource && `padding-left: 13px;`}
+  ${(props) => {
+    if (props.isAdditionalResource && props.isRestrictedResource) {
+      return `padding-left: ${spacing.medium};`;
+    }
+    if (props.isAdditionalResource || props.isRestrictedResource) {
+      return `padding-left: ${spacing.small};`;
+    }
+  }}
+`;
+
+const StyledMarksWrapper = styled.span`
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-left: ${spacing.xxsmall};
+  }
+  span:first-of-type {
+    margin-left: 0;
+  }
 `;
 const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
   color: ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
@@ -135,10 +158,11 @@ const StyledAdditionalResourceMark = styled.span<additionalResourceProps>`
   height: 20px;
   border: 1px solid ${(props) => (props.lighter && !props.selected ? `${colors.brand.dark}` : `${colors.white}`)};
   border-radius: 100px;
-  position: absolute;
-  left: 7px;
-  top: 6px;
   transition: ${misc.transition.default};
+`;
+
+const StyledHumanBoardIconWrapper = styled.span`
+  display: flex;
 `;
 const StyledButtonContentSelected = styled.span`
   width: 10px;
@@ -155,6 +179,7 @@ export type ItemProps = {
   id?: string;
   selected?: boolean;
   isAdditionalResource?: boolean;
+  isRestrictedResource?: boolean;
 };
 type Props = {
   heading?: string;
@@ -223,12 +248,20 @@ export const NavigationBox = ({
                 <StyledButtonContent>
                   <StyledButtonContentText
                     isAdditionalResource={item.isAdditionalResource}
+                    isRestrictedResource={item.isRestrictedResource}
                     lighter={colorMode === 'light'}>
-                    {item.isAdditionalResource && (
-                      <StyledAdditionalResourceMark lighter={colorMode === 'light'} selected={item.selected}>
-                        T
-                      </StyledAdditionalResourceMark>
-                    )}
+                    <StyledMarksWrapper>
+                      {item.isAdditionalResource && (
+                        <StyledAdditionalResourceMark lighter={colorMode === 'light'} selected={item.selected}>
+                          T
+                        </StyledAdditionalResourceMark>
+                      )}
+                      {item.isRestrictedResource && (
+                        <StyledHumanBoardIconWrapper>
+                          <HumanMaleBoard />
+                        </StyledHumanBoardIconWrapper>
+                      )}
+                    </StyledMarksWrapper>
                     {item.label}
                   </StyledButtonContentText>
                   {item.selected && <StyledButtonContentSelected />}

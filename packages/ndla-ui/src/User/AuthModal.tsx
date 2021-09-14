@@ -52,7 +52,6 @@ const StyledAuthorizedInfoList = styled.ul`
 `;
 
 const StyledHumanMaleBoardIconWrapper = styled.span`
-  color: #000000;
   margin-left: ${spacing.xsmall};
 `;
 
@@ -73,6 +72,8 @@ export type AuthModalProps = {
   position?: 'top' | 'bottom';
   activateButton?: ReactNode;
   children?: ReactNode;
+  isOpen?: boolean;
+  onClose?: () => void;
 };
 
 const AuthModal = ({
@@ -84,10 +85,18 @@ const AuthModal = ({
   position = 'top',
   activateButton,
   children,
+  isOpen,
+  onClose,
 }: AuthModalProps) => {
   const { t } = useTranslation();
   return (
-    <Modal backgroundColor="white" activateButton={activateButton} position={position}>
+    <Modal
+      backgroundColor="white"
+      activateButton={activateButton}
+      position={position}
+      isOpen={isOpen}
+      onClose={onClose}
+      controllable={!activateButton}>
       {(onClose: void) => (
         <StyledModalBody>
           <StyledModalHeader>

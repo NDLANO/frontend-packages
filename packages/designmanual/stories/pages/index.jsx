@@ -507,6 +507,23 @@ storiesOf('Autentisering', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Emner', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (

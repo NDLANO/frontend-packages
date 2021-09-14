@@ -834,6 +834,7 @@ const messages = {
       collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide',
       general:
         'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere. Disse vises med ikonet',
+      topic: 'Logg inn i Feide for å få tilgang til dette emnet',
     },
     resource: {
       accessDenied: 'Vi beklager, men denne ressursen er kun for lærere innlogget i Feide.',

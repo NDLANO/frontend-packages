@@ -258,6 +258,7 @@ export const topics = [
         id: 22719,
         url: '#',
         isAdditionalResource: true,
+        isRestrictedResource: true,
       },
     ],
   },
@@ -266,6 +267,7 @@ export const topics = [
     tags: ['Forretningsdrift'],
     url: '#',
     id: 22666,
+    isRestrictedResource: true,
   },
   {
     label: 'Sikkerhet',

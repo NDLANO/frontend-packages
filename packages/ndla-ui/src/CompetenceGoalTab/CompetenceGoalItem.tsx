@@ -9,9 +9,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import { CompetenceGoalsItemType } from '../types';
 import SearchButton from './SearchButton';
-import { useTranslation } from 'react-i18next';
 
 const GoalItem = styled.li`
   margin: ${spacing.medium} 0;

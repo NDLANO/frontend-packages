@@ -8,7 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ZoomOutMap, ArrowCollapse } from '@ndla/icons/common';
+import { ArrowCollapse } from '@ndla/icons/common';
+import { ExpandTwoArrows } from '@ndla/icons/action';
 
 export function FigureExpandButton({ children, messages, typeClass }) {
   return (
@@ -21,7 +22,7 @@ export function FigureExpandButton({ children, messages, typeClass }) {
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}>
       <ArrowCollapse className="expanded-icon" />
-      <ZoomOutMap className="contracted-icon" />
+      <ExpandTwoArrows className="contracted-icon" />
     </button>
   );
 }

@@ -22,6 +22,8 @@ import { useTranslation } from 'react-i18next';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
+// @ts-ignore
+import { makeSrcQueryString } from '../Image';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -211,6 +213,8 @@ export type TopicProps = {
     image?: {
       url: string;
       alt: string;
+      crop?: object;
+      focalPoint?: object;
     };
     visualElement?: VisualElementProps;
     resources?: React.ReactNode;
@@ -261,7 +265,16 @@ const Topic = ({
                               title={
                                 topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
                               }>
-                              <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
+                              <TopicHeaderImage
+                                src={`${topic.image.url}?${makeSrcQueryString(
+                                  400,
+                                  topic.image.crop,
+                                  topic.image.focalPoint,
+                                )}`}
+                                alt={topic.image.alt}
+                                crop={topic.image.crop}
+                                focalPoint={topic.image.focalPoint}
+                              />
                               <TopicHeaderOverlay />
                               <ExpandVisualElementButton>
                                 {topic.visualElement.type === 'image' && (
@@ -294,7 +307,12 @@ const Topic = ({
                       </ShowVisualElementWrapper>
                     </>
                   ) : (
-                    <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
+                    <TopicHeaderImage
+                      src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
+                      alt={topic.image.alt}
+                      crop={topic.image.crop}
+                      focalPoint={topic.image.focalPoint}
+                    />
                   )}
                 </TopicHeaderVisualElementWrapper>
               )}

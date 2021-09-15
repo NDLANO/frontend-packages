@@ -79,6 +79,7 @@ type subjectProps = {
 type categoryProps = {
   type?: string;
   name?: string;
+  visible?: boolean;
   subjects: subjectProps[];
 };
 
@@ -188,10 +189,11 @@ const FrontpageAllSubjects = ({
 
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);
-    data.push({
-      title: category.name || t(`subjectCategories.${category.type}`),
-      content: renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
-    });
+    category.visible &&
+      data.push({
+        title: category.name || t(`subjectCategories.${category.type}`),
+        content: renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
+      });
   });
 
   data.unshift({

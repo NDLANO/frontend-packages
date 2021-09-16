@@ -25,7 +25,7 @@ import {
   addCloseDialogClickListeners,
 } from './dialogScripts';
 
-import { addToggleAlternativeVideoListener } from './addToggleAlternativeVideoListener';
+import { addToggleAlternativeVideoListener } from './alternativeVideoPlugin';
 
 import { initTableScript, removeTableEventListeners } from './tableScripts';
 

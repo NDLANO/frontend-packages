@@ -827,6 +827,22 @@ const messages = {
     show: 'Show',
     showVideo: 'Show video',
   },
+  user: {
+    loggedInAs: 'Du er pålogget som {{role}}',
+    buttonLogIn: 'Logg inn med Feide',
+    buttonLogOut: 'Logg ut av Feide',
+    generalFooter:
+      'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere',
+    modal: {
+      collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide',
+      general:
+        'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere. Disse vises med ikonet',
+      topic: 'Logg inn i Feide for å få tilgang til dette emnet',
+    },
+    resource: {
+      accessDenied: 'Vi beklager, men denne ressursen er kun for lærere innlogget i Feide.',
+    },
+  },
 };
 
 export default messages;

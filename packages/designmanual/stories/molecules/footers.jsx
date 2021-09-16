@@ -6,7 +6,14 @@ import ZendeskButton from '@ndla/zendesk';
 import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLanguageSelector, i18n }) => (
+const FooterExample = ({
+  inverted,
+  invertedOutlineLargeScreensOnly,
+  t,
+  hideLanguageSelector,
+  i18n,
+  isAuthenticated,
+}) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -22,7 +29,14 @@ const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLangu
         />
       )
     }
-    auth={<FooterAuth onAuthenticateClick={() => {}} />}>
+    auth={
+      <FooterAuth
+        isAuthenticated={!!isAuthenticated}
+        authorizedRole="lærer"
+        authorizedCollectedInfo={['Lærer', 'Skole']}
+        onAuthenticateClick={() => {}}
+      />
+    }>
     <FooterText>
       <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
       <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>

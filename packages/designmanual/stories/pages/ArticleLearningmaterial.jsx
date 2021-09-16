@@ -21,7 +21,7 @@ import NotionExample from '../molecules/NotionExample';
 
 const { contentTypes } = constants;
 
-const ArticleLearningMaterial = () => {
+const ArticleLearningMaterial = ({ accessRestricted }) => {
   const { t } = useTranslation();
   return (
     <OneColumn>
@@ -84,7 +84,7 @@ const ArticleLearningMaterial = () => {
         notions={{
           list: [NotionExample],
         }}
-        accessMessage={t('article.access.onlyTeacher')}
+        accessMessage={accessRestricted && t('article.access.onlyTeacher')}
       />
       <LayoutItem layout="extend">
         <Resources showTopicHeading />

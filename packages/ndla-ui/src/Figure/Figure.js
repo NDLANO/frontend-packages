@@ -52,9 +52,9 @@ export const FigureCaption = ({
               <span>{reuseLabel}</span>
             </button>
             {hasLinkedVideo && (
-              <button type="button" {...classes('toggleSynstolket')}>
-                <span className="original">{t('figure.button.synstolket')}</span>
-                <span className="synstolket hidden">{t('figure.button.original')}</span>
+              <button type="button" {...classes('toggleAlternativeVideo')}>
+                <span className="original">{t('figure.button.alternative')}</span>
+                <span className="alternative hidden">{t('figure.button.original')}</span>
               </button>
             )}
             {children}

@@ -46,6 +46,7 @@ const messages = {
       'Det fungerte ikke å sette inn innholdet automatisk. Kopier kildekoden under for å sette inn på din side.',
   },
   subjectCategories: {
+    [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommende',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',

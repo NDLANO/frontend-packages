@@ -46,6 +46,7 @@ const messages = {
       'Det fungerte ikkje å setje inn innhaldet automatisk. Kopier kjeldekoden under for å setje han inn på sida di.',
   },
   subjectCategories: {
+    [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Komande',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',

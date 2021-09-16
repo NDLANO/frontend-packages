@@ -3,7 +3,7 @@ import { forEachElement } from './domHelpers';
 export const addToggleAlternativeVideoListener = () => {
   forEachElement('.c-figure', (el) => {
     const target = el;
-    const toggleButton = target.querySelector('.c-figure__toggleAlternative');
+    const toggleButton = target.querySelector('.c-figure__toggleAlternativeVideo');
     if (toggleButton) {
       toggleButton.onclick = () => {
         const buttonHiddenText = toggleButton.querySelector('span.hidden');

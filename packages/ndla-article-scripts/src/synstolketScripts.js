@@ -8,11 +8,14 @@ export const addToggleSynstolketListener = () => {
       toggleButton.onclick = () => {
         const buttonHiddenText = toggleButton.querySelector('span.hidden');
         const buttonText = toggleButton.querySelector('span:not(.hidden)');
-        const videos = target.querySelector('.brightcove-video');
-        const hiddenVideo = videos.querySelector('.hidden');
-        const shownVideo = videos.querySelector('iframe:not(.hidden)');
-        hiddenVideo.classList.remove('hidden');
-        shownVideo.classList.add('hidden');
+        const video = target.querySelector('iframe');
+        if (video.className === 'original') {
+          video.src = video.attributes['data-synstolket-src'].value;
+          video.className = 'synstolket';
+        } else {
+          video.src = video.attributes['data-original-src'].value;
+          video.className = 'original';
+        }
         buttonHiddenText.classList.remove('hidden');
         buttonText.classList.add('hidden');
       };

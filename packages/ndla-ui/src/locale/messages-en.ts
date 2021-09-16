@@ -46,6 +46,7 @@ const messages = {
       'It did not work to auto-insert the content. You can copy the source code and add it to your content.',
   },
   subjectCategories: {
+    [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
     [subjectCategories.BETA_SUBJECTS]: 'Coming',
     [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',

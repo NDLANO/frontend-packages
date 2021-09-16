@@ -466,7 +466,7 @@ const messages = {
   },
   figure: {
     button: {
-      synstolket: 'Bytt til synstolka',
+      alternative: 'Bytt til synstolka',
       original: 'Bytt til original video',
     },
   },

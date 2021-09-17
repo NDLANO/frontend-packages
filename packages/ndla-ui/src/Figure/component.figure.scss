@@ -51,6 +51,16 @@
     padding-bottom: $spacing--large;
     margin-bottom: 0;
   }
+  &.expanded {
+    .c-figure__caption--hidden-caption {
+      display: block;
+      opacity: 0;
+      animation-delay: 50ms;
+      animation-name: fadeIn;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+    }
+  }
 }
 
 .brightcove-video {
@@ -65,6 +75,10 @@
   padding: $spacing--small 0;
   display: block;
   border-bottom: 1px solid #D1D6DB;
+}
+
+.c-figure__caption--hidden-caption {
+  display: none;
 }
 
 .c-figure__licensetag {
@@ -123,10 +137,7 @@
   transition: all 0.3s ease-out;
   background: rgba($white, 0.65);
   border-radius: 100px;
-
-  ~ .c-figure__caption--hidden-caption {
-    display: none;
-  }
+  border: 0;
 
   .expanded-icon {
     display: none;
@@ -138,15 +149,6 @@
     }
     .expanded-icon {
       display: flex;
-    }
-    right: 34px;
-    ~ .c-figure__caption--hidden-caption {
-      display: block;
-      opacity: 0;
-      animation-delay: 50ms;
-      animation-name: fadeIn;
-      animation-duration: 0.2s;
-      animation-fill-mode: forwards;
     }
   }
 
@@ -177,15 +179,7 @@
   padding: $spacing--small;
   transition: all 0.3s ease-out;
   background: rgba($white, 0.2);
-
-  ~ .c-figure__caption--hidden-caption {
-    padding-top: 0;
-    padding-bottom: 0;
-    max-height: 0;
-    overflow: hidden;
-
-    transition: all 0.3s ease-in-out;
-  }
+  border:0;
 
   .expanded-icon {
     display: none;

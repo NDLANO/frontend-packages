@@ -13,6 +13,7 @@ import VersionLogTag from './versionLogs/VersionLogTag';
 export * from './index-javascript';
 
 export { VersionHistory, VersionLogTag };
+export { default as Structure } from './structure/Structure';
 export { default as Footer } from './footer/Footer';
 export { default as FooterQualityInsurance } from './footer/FooterQualityInsurance';
 export { default as FooterLinkButton } from './footer/FooterLinkButton';

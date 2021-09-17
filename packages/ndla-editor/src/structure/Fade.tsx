@@ -4,7 +4,7 @@ import css from '@emotion/css';
 
 type Props = {
   show?: boolean;
-  children: React.ReactChildren;
+  children: React.ReactNode;
   fadeType: FadeType;
 };
 

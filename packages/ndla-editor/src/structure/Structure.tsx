@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { DropResult } from 'react-beautiful-dnd';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -21,12 +21,16 @@ const StructureWrapper = styled.ul`
   padding: 0;
 `;
 
-const StyledStructureItem = styled.li`
+interface StyledStructureItemProps {
+  greyedOut?: boolean;
+  connectionId?: string;
+}
+
+const StyledStructureItem = styled.li<StyledStructureItemProps>`
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-
   ${(props) =>
     props.greyedOut &&
     css`
@@ -36,20 +40,81 @@ const StyledStructureItem = styled.li`
     `};
 `;
 
+interface Props {
+  structure?: StructureType[];
+  openedPaths: string[];
+  renderListItems: (props: RenderItemReturnProps) => React.ReactNode;
+  favoriteSubjectIds?: string[];
+  toggleFavorite?: (subjectId: string) => void;
+  isOpen?: boolean;
+  onDragEnd?: (result: DropResult) => void;
+  isMainActive?: boolean;
+  DND?: boolean;
+  toggleOpen: (subject: { path: string; isSubject: boolean; id: string }) => void;
+  highlightMainActive?: boolean;
+  currentPath?: string[];
+}
+
+interface MetaData {
+  grepCodes: string[];
+  visible: boolean;
+  customFields: Record<string, string>;
+}
+
+interface Topic {
+  id: string;
+  name: string;
+  metadata: MetaData;
+  contentUri: string;
+  isPrimary: boolean;
+  relevanceId?: string;
+  parent: string;
+  path: string;
+  connectionId?: string;
+  subtopics?: Topic[];
+  rank: number;
+}
+
+interface StructureType {
+  id: string;
+  name: string;
+  metadata: MetaData;
+  contentUri: string;
+  path: string;
+  loading?: boolean;
+  connectionId?: string;
+  topics?: Topic[];
+  subtopics?: Topic[];
+}
+
+interface RenderItemReturnProps {
+  pathToString: string;
+  isSubject: boolean;
+  subjectId: string;
+  isOpen: boolean;
+  id: string;
+  name: string;
+  metadata: MetaData;
+  isMainActive: boolean;
+  contentUri: string;
+  path: string;
+  parent?: string;
+}
+
 const Structure = ({
   renderListItems,
-  structure,
+  structure = [],
   openedPaths,
   toggleOpen,
   highlightMainActive,
-  currentPath,
+  currentPath = [],
   DND,
   isMainActive,
-  onDragEnd,
+  onDragEnd = (_) => {},
   isOpen,
   favoriteSubjectIds,
   toggleFavorite,
-}) => {
+}: Props) => {
   const isSubject = currentPath.length === 0;
   const enableDND = DND && isMainActive && structure.length > 1;
   return (
@@ -83,13 +148,12 @@ const Structure = ({
                       path: pathToString,
                       isSubject,
                       id,
-                      parent: rest.parent,
                     })
                   }
                   isSubject={isSubject}
                   isVisible={isVisible}
                   favoriteSubjectIds={favoriteSubjectIds}
-                  toggleFavorite={() => toggleFavorite(id)}>
+                  toggleFavorite={() => toggleFavorite?.(id)}>
                   {renderListItems &&
                     renderListItems({
                       pathToString,
@@ -128,45 +192,6 @@ const Structure = ({
       </Fade>
     </StructureWrapper>
   );
-};
-
-function lazyFunction(f) {
-  return function () {
-    return f.apply(this, arguments);
-  };
-}
-
-const lazyItemShape = lazyFunction(function () {
-  return ItemShape;
-});
-
-const ItemShape = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  // eslint-disable-next-line no-use-before-define
-  topics: PropTypes.arrayOf(lazyItemShape),
-}).isRequired;
-
-Structure.propTypes = {
-  structure: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      topics: PropTypes.arrayOf(ItemShape),
-      loading: PropTypes.bool,
-    }),
-  ),
-  openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
-  renderListItems: PropTypes.func,
-  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
-  toggleFavorite: PropTypes.func,
-};
-
-Structure.defaultProps = {
-  structure: [],
-  className: '',
-  isSubject: true,
-  currentPath: [],
 };
 
 export default Structure;

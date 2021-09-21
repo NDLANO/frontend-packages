@@ -335,7 +335,7 @@ const messages = {
     citeNotion: 'Bruk forklaringen',
     printPage: 'Skriv ut',
     access: {
-      onlyTeacher: 'Denne ressursen er kun tilgjengelig for lærere som er pålogget i Feide',
+      onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
   },
   competenceGoals: {
@@ -825,19 +825,18 @@ const messages = {
     showVideo: 'Vis video',
   },
   user: {
-    loggedInAs: 'Du er pålogget som {{role}}',
+    loggedInAs: 'Du er pålogget som {{role}}.',
+    loggedInAsButton: 'Du er pålogget som {{role}}',
     buttonLogIn: 'Logg inn med Feide',
-    buttonLogOut: 'Logg ut av Feide',
-    generalFooter:
-      'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere',
+    buttonLogOut: 'Logg ut',
+    generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',
     modal: {
-      collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide',
-      general:
-        'Når du er innlogget får du tilgang til enkelte ressurser som kun er tilgjengelig for påloggede lærere. Disse vises med ikonet',
-      topic: 'Logg inn i Feide for å få tilgang til dette emnet',
+      collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide:',
+      general: 'Ressursene som krever pålogging med Feide, vises med ikonet',
+      topic: 'Logg inn med Feide for å få tilgang til dette emnet.',
     },
     resource: {
-      accessDenied: 'Vi beklager, men denne ressursen er kun for lærere innlogget i Feide.',
+      accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
     },
   },
 };

@@ -83,7 +83,7 @@ const FooterAuth = ({ isAuthenticated, onAuthenticateClick, authorizedRole, ...r
             authorizedRole={authorizedRole}
             activateButton={
               <AuthedButton ghostPill size="medium">
-                {t('user.loggedInAs', { role: authorizedRole })}
+                {t('user.loggedInAsButton', { role: authorizedRole })}
                 <ChevronDown />
               </AuthedButton>
             }

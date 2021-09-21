@@ -109,7 +109,7 @@ const AuthModal = ({
             {authorizedRole && <p>{t('user.loggedInAs', { role: authorizedRole })}</p>}
             {authorizedCollectedInfo && authorizedCollectedInfo.length > 0 && (
               <div>
-                {t('user.modal.collectedInfo')}:
+                {t('user.modal.collectedInfo')}
                 <StyledAuthorizedInfoList>
                   {authorizedCollectedInfo.map((value) => (
                     <li key={value}>{value}</li>

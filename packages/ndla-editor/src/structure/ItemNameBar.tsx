@@ -7,13 +7,13 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
 import { Star } from '@ndla/icons/editor';
 import { MetaData } from './Structure';
+import { RenderBeforeFunction } from './Structure';
 
 const itemTitleArrow = css`
   &:before {
@@ -118,13 +118,16 @@ interface Props {
   isOpen?: boolean;
   lastItemClickable?: boolean;
   id: string;
-  isSubject?: boolean;
+  isSubject: boolean;
   isVisible?: boolean;
   favoriteSubjectIds?: string[];
   toggleFavorite: Function;
   highlight?: boolean;
   level?: number;
   metadata?: MetaData;
+  renderBeforeTitle?: RenderBeforeFunction;
+  contentUri?: string;
+  taxonomyId: string;
 }
 
 const ItemMetaData = styled.span`
@@ -152,6 +155,9 @@ const ItemNameBar = ({
   favoriteSubjectIds,
   toggleFavorite,
   metadata,
+  renderBeforeTitle,
+  contentUri,
+  taxonomyId,
 }: Props) => {
   const { t } = useTranslation();
 
@@ -179,6 +185,8 @@ const ItemNameBar = ({
           arrowDirection={isOpen ? 90 : 0}
           onClick={() => toggleOpen(path)}
           isVisible={isVisible}>
+          {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
+
           {title}
           <ItemMetaData>
             {metadata?.customFields?.forklaringsfag && (
@@ -188,7 +196,11 @@ const ItemNameBar = ({
           </ItemMetaData>
         </ItemTitleButton>
       ) : (
-        <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
+        <ItemTitleSpan isVisible={isVisible}>
+          {' '}
+          {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
+          {title}
+        </ItemTitleSpan>
       )}
       {children}
     </StyledItemBar>
@@ -204,25 +216,5 @@ interface RoundIconProps {
 const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & React.HTMLProps<HTMLButtonElement>) => (
   <StyledIcon {...rest}>{smallIcon}</StyledIcon>
 );
-
-RoundIcon.propTypes = {
-  smallIcon: PropTypes.node,
-  clicked: PropTypes.bool,
-};
-
-ItemNameBar.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  path: PropTypes.string.isRequired,
-  toggleOpen: PropTypes.func.isRequired,
-  hasSubtopics: PropTypes.bool.isRequired,
-  isOpen: PropTypes.bool,
-  lastItemClickable: PropTypes.bool,
-  id: PropTypes.string,
-  isSubject: PropTypes.bool,
-  isVisible: PropTypes.bool,
-  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
-  toggleFavorite: PropTypes.func,
-};
 
 export default ItemNameBar;

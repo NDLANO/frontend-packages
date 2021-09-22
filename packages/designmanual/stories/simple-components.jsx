@@ -237,7 +237,7 @@ storiesOf('Enkle komponenter', module)
           <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
           <AudioExample />
           <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
-          <div class="c-article">
+          <div class="c-article c-article--clean">
             <table>
               <thead>
                 <tr>

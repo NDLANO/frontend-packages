@@ -105,6 +105,7 @@ export const addEventListenerForFigureZoomButton = () => {
         target.setAttribute('aria-label', target.dataset.aria);
         target.classList.remove(`${elClass}--expanded`);
         parentFigure.classList.add(target.dataset.classtype);
+        parentFigure.classList.remove('expanded');
         delete target.dataset.expanded;
       } else if (sourceTag) {
         if (elClass === 'c-figure__fullscreen-btn') {
@@ -112,6 +113,7 @@ export const addEventListenerForFigureZoomButton = () => {
         }
         target.setAttribute('aria-label', target.dataset.ariaexpanded);
         parentFigure.classList.remove(target.dataset.classtype);
+        parentFigure.classList.add('expanded');
         target.classList.add(`${elClass}--expanded`);
         target.dataset.expanded = true;
       }

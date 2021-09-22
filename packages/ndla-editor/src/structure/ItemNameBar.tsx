@@ -186,7 +186,6 @@ const ItemNameBar = ({
           onClick={() => toggleOpen(path)}
           isVisible={isVisible}>
           {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
-
           {title}
           <ItemMetaData>
             {metadata?.customFields?.forklaringsfag && (
@@ -197,7 +196,6 @@ const ItemNameBar = ({
         </ItemTitleButton>
       ) : (
         <ItemTitleSpan isVisible={isVisible}>
-          {' '}
           {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
           {title}
         </ItemTitleSpan>

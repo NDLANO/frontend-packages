@@ -12,7 +12,7 @@ import css from '@emotion/css';
 import { keyframes } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
-import { Additional, Core } from '@ndla/icons/common';
+import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 // @ts-ignore
@@ -91,7 +91,7 @@ const ListElement = styled.li<ListElementProps>`
   ${(props) => props.extraBottomMargin && `margin-bottom: ${spacing.large};`}
 
   * {
-    transition: all ease-out 0.2s;
+    transition: height ease-out 0.2s, width ease-out 0.2s;
   }
   ${(props) =>
     props.active &&
@@ -227,6 +227,7 @@ type Props = {
   contentTypeDescription?: string;
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
+  access?: 'teacher';
 };
 
 const ResourceItem = ({
@@ -239,6 +240,7 @@ const ResourceItem = ({
   additional,
   extraBottomMargin,
   showAdditionalResources,
+  access,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -273,6 +275,11 @@ const ResourceItem = ({
       )}
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
+        {access && access === 'teacher' && (
+          <Tooltip tooltip={t('article.access.onlyTeacher')} align="left">
+            <HumanMaleBoard className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+          </Tooltip>
+        )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (

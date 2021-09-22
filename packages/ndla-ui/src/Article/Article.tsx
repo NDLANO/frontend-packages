@@ -22,6 +22,7 @@ import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import { NotionProps } from '../Notion/Notion';
+import ArticleAccessMessage from './ArticleAccessMessage';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -107,6 +108,7 @@ type Props = {
   printUrl?: string;
   notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
   onReferenceClick?: React.MouseEventHandler;
+  accessMessage?: string;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -136,6 +138,7 @@ export const Article = ({
   onReferenceClick,
   printUrl,
   renderMarkdown,
+  accessMessage,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -183,6 +186,7 @@ export const Article = ({
     <div ref={wrapperRef}>
       <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
         <LayoutItem layout="center">
+          {accessMessage && <ArticleAccessMessage message={accessMessage} />}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
             <ArticleTitle icon={icon} label={messages.label}>
               {title}

@@ -7,4 +7,6 @@
  */
 import ErrorMessage from './ErrorMessage';
 
+export { default as ErrorResourceAccessDenied } from './ErrorResourceAccessDenied';
+
 export default ErrorMessage;

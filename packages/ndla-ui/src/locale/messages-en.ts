@@ -337,6 +337,9 @@ const messages = {
     notionsPrompt: 'Do you know the notions?',
     citeNotion: 'Cite this explanation',
     printPage: 'Print',
+    access: {
+      onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
+    },
   },
   competenceGoals: {
     title: 'Competence goals and curriculum ',
@@ -824,6 +827,21 @@ const messages = {
   visualElement: {
     show: 'Show',
     showVideo: 'Show video',
+  },
+  user: {
+    loggedInAs: 'You are logged in as {{role}}.',
+    loggedInAsButton: 'You are logged in as {{role}}',
+    buttonLogIn: 'Log in with Feide',
+    buttonLogOut: 'Log out',
+    generalFooter: 'Some resources may only be accessed by teachers who are logged in.',
+    modal: {
+      collectedInfo: 'We have collected the following information about you from Feide:',
+      general: 'Resources that require logging in with Feide, are tagged with the icon',
+      topic: 'Log in with Feide to access this topic.',
+    },
+    resource: {
+      accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
+    },
   },
 };
 

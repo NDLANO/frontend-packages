@@ -23,6 +23,7 @@ import {
   TopicMenuButton,
   SearchFieldForm,
   BreadcrumbBlock,
+  MastheadAuthModal,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
@@ -127,9 +128,21 @@ class MastheadWithTopicMenu extends Component {
       topicMenuProps,
       hideMenuButton,
       breadcrumbItems,
+      isAuthed,
       t,
       i18n,
     } = this.props;
+
+    const authedProps = isAuthed
+      ? {
+          isAuthenticated: true,
+          authorizedRole: 'lærer',
+          authorizedCollectedInfo: ['Lærer', 'Skole'],
+          onAuthenticateClick: () => {},
+        }
+      : {
+          onAuthenticateClick: () => {},
+        };
     return (
       <Masthead
         fixed
@@ -226,6 +239,7 @@ class MastheadWithTopicMenu extends Component {
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <LanguageSelector inverted={ndlaFilm} options={dummyLanguageOptions} currentLanguage={i18n.language} />
           </DisplayOnPageYOffset>
+          <MastheadAuthModal inverted={ndlaFilm} {...authedProps} />
           {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
@@ -251,6 +265,7 @@ MastheadWithTopicMenu.propTypes = {
   ndlaFilm: PropTypes.bool,
   skipToMainContentId: PropTypes.string,
   breadcrumbItems: PropTypes.array,
+  isAuthed: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

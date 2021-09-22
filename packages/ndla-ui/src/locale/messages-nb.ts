@@ -335,6 +335,9 @@ const messages = {
     notionsPrompt: 'Kan du begrepene?',
     citeNotion: 'Bruk forklaringen',
     printPage: 'Skriv ut',
+    access: {
+      onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
+    },
   },
   competenceGoals: {
     title: 'Kompetansemål og læreplan',
@@ -821,6 +824,21 @@ const messages = {
   visualElement: {
     show: 'Vis',
     showVideo: 'Vis video',
+  },
+  user: {
+    loggedInAs: 'Du er pålogget som {{role}}.',
+    loggedInAsButton: 'Du er pålogget som {{role}}',
+    buttonLogIn: 'Logg inn med Feide',
+    buttonLogOut: 'Logg ut',
+    generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',
+    modal: {
+      collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide:',
+      general: 'Ressursene som krever pålogging med Feide, vises med ikonet',
+      topic: 'Logg inn med Feide for å få tilgang til dette emnet.',
+    },
+    resource: {
+      accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
+    },
   },
 };
 

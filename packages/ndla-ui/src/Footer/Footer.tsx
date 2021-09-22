@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
@@ -122,9 +122,10 @@ type Props = {
     },
   ];
   languageSelector?: React.ReactNode;
+  auth?: ReactNode;
 };
 
-const Footer: React.FunctionComponent<Props> = ({ lang, children, links, languageSelector }) => {
+const Footer: React.FunctionComponent<Props> = ({ lang, children, links, languageSelector, auth }) => {
   const { t } = useTranslation();
   const mainContent = (
     <>
@@ -158,6 +159,7 @@ const Footer: React.FunctionComponent<Props> = ({ lang, children, links, languag
         <OneColumn cssModifier="large">{footerContent}</OneColumn>
         <StyledBackground />
       </StyledFooter>
+      {auth}
     </>
   );
 };

@@ -71,7 +71,6 @@ const Modal = ({
 
   const modalButton =
     activateButton && (wrapperFunctionForButton ? wrapperFunctionForButton(clonedComponent) : clonedComponent);
-
   return (
     <>
       {modalButton}
@@ -79,7 +78,7 @@ const Modal = ({
         <DialogContent
           css={css`
             animation-duration: ${animationDuration}ms;
-            minheight: ${minHeight};
+            min-height: ${minHeight};
             ${dialogStyles};
             ${narrow && narrowStyle};
           `}

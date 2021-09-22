@@ -55,7 +55,7 @@ interface Props {
   currentPath?: string[];
 }
 
-interface MetaData {
+export interface MetaData {
   grepCodes: string[];
   visible: boolean;
   customFields: Record<string, string>;
@@ -151,6 +151,7 @@ const Structure = ({
                     })
                   }
                   isSubject={isSubject}
+                  metadata={metadata}
                   isVisible={isVisible}
                   favoriteSubjectIds={favoriteSubjectIds}
                   toggleFavorite={() => toggleFavorite?.(id)}>

@@ -842,6 +842,14 @@ const messages = {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
   },
+  structure: {
+    metadata: {
+      customFields: {
+        explanationSubject: 'Forklaringsfag',
+      },
+      expired: 'Utgått',
+    },
+  },
 };
 
 export default messages;

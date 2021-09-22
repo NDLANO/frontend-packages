@@ -840,6 +840,14 @@ const messages = {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
     },
   },
+  structure: {
+    metadata: {
+      customFields: {
+        explanationSubject: 'Forklaringsfag',
+      },
+      expired: 'Utgått',
+    },
+  },
 };
 
 export default messages;

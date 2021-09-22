@@ -8,10 +8,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
 import { Star } from '@ndla/icons/editor';
+import { MetaData } from './Structure';
 
 const itemTitleArrow = css`
   &:before {
@@ -122,7 +124,17 @@ interface Props {
   toggleFavorite: Function;
   highlight?: boolean;
   level?: number;
+  metadata?: MetaData;
 }
+
+const ItemMetaData = styled.span`
+  margin-left: ${spacing.small};
+  font-size: ${fonts.sizes(12, 1)};
+  em:not(:last-child)::after {
+    content: ', ';
+  }
+  color: ${colors.brand.greyMedium};
+`;
 
 const ItemNameBar = ({
   title,
@@ -139,38 +151,49 @@ const ItemNameBar = ({
   isVisible,
   favoriteSubjectIds,
   toggleFavorite,
-}: Props) => (
-  <StyledItemBar level={level} highlight={highlight}>
-    {favoriteSubjectIds && (
-      <RoundIcon
-        onClick={() => toggleFavorite()}
-        smallIcon={
-          favoriteSubjectIds.includes(id) ? (
-            <Star color={colors.favoriteColor} />
-          ) : (
-            <Star color={colors.brand.greyDark} />
-          )
-        }
-      />
-    )}
-    {lastItemClickable || hasSubtopics ? (
-      <ItemTitleButton
-        type="button"
-        id={id}
-        hasSubtopics={hasSubtopics}
-        isSubject={isSubject}
-        lastItemClickable={lastItemClickable}
-        arrowDirection={isOpen ? 90 : 0}
-        onClick={() => toggleOpen(path)}
-        isVisible={isVisible}>
-        {title}
-      </ItemTitleButton>
-    ) : (
-      <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
-    )}
-    {children}
-  </StyledItemBar>
-);
+  metadata,
+}: Props) => {
+  const { t } = useTranslation();
+
+  return (
+    <StyledItemBar level={level} highlight={highlight}>
+      {favoriteSubjectIds && (
+        <RoundIcon
+          onClick={() => toggleFavorite()}
+          smallIcon={
+            favoriteSubjectIds.includes(id) ? (
+              <Star color={colors.favoriteColor} />
+            ) : (
+              <Star color={colors.brand.greyDark} />
+            )
+          }
+        />
+      )}
+      {lastItemClickable || hasSubtopics ? (
+        <ItemTitleButton
+          type="button"
+          id={id}
+          hasSubtopics={hasSubtopics}
+          isSubject={isSubject}
+          lastItemClickable={lastItemClickable}
+          arrowDirection={isOpen ? 90 : 0}
+          onClick={() => toggleOpen(path)}
+          isVisible={isVisible}>
+          {title}
+          <ItemMetaData>
+            {metadata?.customFields?.forklaringsfag && (
+              <em>{t('structure.metadata.customFields.explanationSubject')}</em>
+            )}
+            {!metadata?.visible && <em>{t('structure.metadata.expired')}</em>}
+          </ItemMetaData>
+        </ItemTitleButton>
+      ) : (
+        <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
+      )}
+      {children}
+    </StyledItemBar>
+  );
+};
 
 interface RoundIconProps {
   smallIcon: React.ReactNode;

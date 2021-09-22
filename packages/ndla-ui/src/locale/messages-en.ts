@@ -843,6 +843,14 @@ const messages = {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
     },
   },
+  structure: {
+    metadata: {
+      customFields: {
+        explanationSubject: 'Explanation subject',
+      },
+      expired: 'Expired',
+    },
+  },
 };
 
 export default messages;

@@ -12,6 +12,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
 import { Star } from '@ndla/icons/editor';
+import { RenderBeforeFunction } from './Structure';
 
 const itemTitleArrow = css`
   &:before {
@@ -116,12 +117,15 @@ interface Props {
   isOpen?: boolean;
   lastItemClickable?: boolean;
   id: string;
-  isSubject?: boolean;
+  isSubject: boolean;
   isVisible?: boolean;
   favoriteSubjectIds?: string[];
   toggleFavorite: Function;
   highlight?: boolean;
   level?: number;
+  renderBeforeTitle?: RenderBeforeFunction;
+  contentUri?: string;
+  taxonomyId: string;
 }
 
 const ItemNameBar = ({
@@ -139,6 +143,9 @@ const ItemNameBar = ({
   isVisible,
   favoriteSubjectIds,
   toggleFavorite,
+  renderBeforeTitle,
+  contentUri,
+  taxonomyId,
 }: Props) => (
   <StyledItemBar level={level} highlight={highlight}>
     {favoriteSubjectIds && (
@@ -163,10 +170,14 @@ const ItemNameBar = ({
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}
         isVisible={isVisible}>
+        {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
         {title}
       </ItemTitleButton>
     ) : (
-      <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
+      <ItemTitleSpan isVisible={isVisible}>
+        {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
+        {title}
+      </ItemTitleSpan>
     )}
     {children}
   </StyledItemBar>

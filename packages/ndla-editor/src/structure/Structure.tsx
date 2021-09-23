@@ -40,6 +40,13 @@ const StyledStructureItem = styled.li<StyledStructureItemProps>`
     `};
 `;
 
+export type RenderBeforeFunction = (input: {
+  id: string;
+  title: string;
+  isSubject: boolean;
+  contentUri?: string;
+}) => React.ReactNode;
+
 interface Props {
   structure?: StructureType[];
   openedPaths: string[];
@@ -53,6 +60,7 @@ interface Props {
   toggleOpen: (subject: { path: string; isSubject: boolean; id: string }) => void;
   highlightMainActive?: boolean;
   currentPath?: string[];
+  renderBeforeTitles?: RenderBeforeFunction;
 }
 
 interface MetaData {
@@ -114,6 +122,7 @@ const Structure = ({
   isOpen,
   favoriteSubjectIds,
   toggleFavorite,
+  renderBeforeTitles,
 }: Props) => {
   const isSubject = currentPath.length === 0;
   const enableDND = DND && isMainActive && structure.length > 1;
@@ -121,7 +130,7 @@ const Structure = ({
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
         <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
-          {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, ...rest }) => {
+          {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, contentUri, ...rest }) => {
             const currentPathIds = [...currentPath, id];
             const children = topics || subtopics;
             const pathToString = currentPathIds.join('/');
@@ -135,6 +144,7 @@ const Structure = ({
             return (
               <StyledStructureItem connectionId={connectionId} key={pathToString} greyedOut={greyedOut}>
                 <ItemNameBar
+                  renderBeforeTitle={renderBeforeTitles}
                   highlight={highlightMainActive ? isNewMainActive : isOpen && isSubject}
                   isOpen={isOpen}
                   title={name}
@@ -143,6 +153,7 @@ const Structure = ({
                   path={pathToString}
                   id={id.includes('topic') ? `${parentId}/${id}` : id}
                   hasSubtopics={!!children || isSubject}
+                  contentUri={contentUri}
                   toggleOpen={() =>
                     toggleOpen({
                       path: pathToString,
@@ -153,6 +164,7 @@ const Structure = ({
                   isSubject={isSubject}
                   isVisible={isVisible}
                   favoriteSubjectIds={favoriteSubjectIds}
+                  taxonomyId={id}
                   toggleFavorite={() => toggleFavorite?.(id)}>
                   {renderListItems &&
                     renderListItems({
@@ -164,6 +176,7 @@ const Structure = ({
                       name,
                       metadata,
                       isMainActive: isNewMainActive,
+                      contentUri,
                       ...rest,
                     })}
                 </ItemNameBar>
@@ -183,6 +196,7 @@ const Structure = ({
                     DND={DND}
                     isOpen={isOpen}
                     onDragEnd={onDragEnd}
+                    renderBeforeTitles={renderBeforeTitles}
                   />
                 )}
               </StyledStructureItem>

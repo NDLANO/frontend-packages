@@ -14,9 +14,13 @@ import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
-export const StyledLicenseIconItem = styled.li`
+type StyledLicenseIconItemProps = {
+  horizontal?: boolean;
+};
+
+export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
   display: flex;
-  padding-bottom: 5px;
+  padding-bottom: ${(props) => (props.horizontal ? `0` : `5px`)};
   margin-bottom: 0;
   margin-right: 0.2em;
   line-height: 1.3rem;
@@ -38,9 +42,12 @@ export const StyledLicenseIconItem = styled.li`
   }
 
   svg {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
+    ${(props) =>
+      props.horizontal
+        ? `width: 18px;
+    height: 18px;`
+        : `width: 24px;
+    height: 24px;`};
   }
 `;
 export const StyledLicenseIconButton = styled.button`
@@ -48,14 +55,11 @@ export const StyledLicenseIconButton = styled.button`
   border: 0;
   margin: 0;
   padding: 0;
-  color: inherit;
+  color: ${colors.text.primary};
   background: transparent;
   &:hover,
   &:focus {
-    svg {
-      color: ${colors.brand.primary};
-    }
-
+    color: ${colors.text.light};
     span {
       display: block;
       opacity: 1;
@@ -68,13 +72,14 @@ export const StyledLicenseIconButton = styled.button`
 interface LicenseIconItemProps {
   licenseRight: string;
   locale?: string;
+  horizontal?: boolean;
 }
 
-const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
+const LicenseIconItem = ({ licenseRight, locale, horizontal }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem>
+    <StyledLicenseIconItem horizontal={horizontal}>
       <StyledLicenseIconButton type="button">
         <LicenseIcon licenseRight={licenseRight} description={description} />
         <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
@@ -99,7 +104,7 @@ interface LicenseIconListProps {
 const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal }: LicenseIconListProps) => (
   <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
     {licenseRights.map((licenseRight) => (
-      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} />
+      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} horizontal={horizontal} />
     ))}
   </StyledLicenseIconList>
 );

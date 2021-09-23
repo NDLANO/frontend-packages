@@ -15,21 +15,9 @@ import { Figure, Image, FigureExpandButton, ImageLink } from '@ndla/ui';
 import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function ImageWrapper({ typeClass, src, hasHiddenCaption, children }) {
-  const { t } = useTranslation();
+function ImageWrapper({ src, hasHiddenCaption, children }) {
   if (hasHiddenCaption) {
-    return (
-      <>
-        <FigureExpandButton
-          typeClass={typeClass}
-          messages={{
-            zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
-            zoomOutImageButtonLabel: t('license.images.itemImage.zoomOutImageButtonLabel'),
-          }}
-        />
-        {children}
-      </>
-    );
+    return <>{children}</>;
   }
 
   return (
@@ -69,12 +57,28 @@ function FigureImage({ type, alt, src, caption, hasHiddenCaption, link }) {
     download: t('image.download'),
     modelPermission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
   };
+
   return (
     <Figure id={figureId} type={type}>
       {({ typeClass }) => (
         <>
           <ImageWrapper hasHiddenCaption={hasHiddenCaption} typeClass={typeClass} src={src}>
-            <Image alt={alt} src={src} sizes={sizes} />
+            <Image
+              alt={alt}
+              src={src}
+              sizes={sizes}
+              expandButton={
+                hasHiddenCaption && (
+                  <FigureExpandButton
+                    typeClass={typeClass}
+                    messages={{
+                      zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
+                      zoomOutImageButtonLabel: t('license.images.itemImage.zoomOutImageButtonLabel'),
+                    }}
+                  />
+                )
+              }
+            />
           </ImageWrapper>
           <FigureCaptionExample
             id={id}

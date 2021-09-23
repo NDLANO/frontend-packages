@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
+import Button from '@ndla/button';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -43,21 +44,32 @@ export const FigureCaption = ({
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
           <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
-            <span {...classes('byline-authors')}>{authors.map((author) => author.name).join(', ')}</span>
-            <button
-              type="button"
-              data-dialog-trigger-id={id}
-              data-dialog-source-id={figureId}
-              {...classes('captionbtn')}>
-              <span>{reuseLabel}</span>
-            </button>
-            {hasLinkedVideo && (
-              <button type="button" {...classes('toggleAlternativeVideo')}>
-                <span className="original">{t('figure.button.alternative')}</span>
-                <span className="alternative hidden">{t('figure.button.original')}</span>
-              </button>
-            )}
-            {children}
+            <div {...classes('byline-author-buttons')}>
+              <span {...classes('byline-authors')}>{authors.map((author) => author.name).join(', ')}</span>
+              <div>
+                <Button
+                  borderShape="rounded"
+                  outline
+                  size="small"
+                  type="button"
+                  data-dialog-trigger-id={id}
+                  data-dialog-source-id={figureId}>
+                  {reuseLabel}
+                </Button>
+                {hasLinkedVideo && (
+                  <Button
+                    borderShape="rounded"
+                    outline
+                    size="small"
+                    type="button"
+                    {...classes('toggleAlternativeVideo')}>
+                    <span className="original">{t('figure.button.alternative')}</span>
+                    <span className="alternative hidden">{t('figure.button.original')}</span>
+                  </Button>
+                )}
+              </div>
+              {children}
+            </div>
           </LicenseByline>
           {link && (
             <div {...classes('link-wrapper')}>

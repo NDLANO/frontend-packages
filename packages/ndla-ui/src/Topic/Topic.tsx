@@ -163,13 +163,18 @@ const StyledAdditionalResource = styled.span`
   color: ${colors.brand.dark};
 `;
 
-const TopicIntroduction = styled.p`
+const TopicIntroduction = styled.div<InvertItProps>`
   font-weight: ${fonts.weight.light};
   max-width: 612px;
   margin-top: ${spacing.xsmall};
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('22px', '32px')};
   }
+  ${(props) =>
+    props.invertedStyle &&
+    css`
+      color: #fff;
+    `}
 `;
 
 const StyledButtonWrapper = styled.div<InvertItProps>`
@@ -325,7 +330,7 @@ const Topic = ({
                   </StyledAdditionalResource>
                 )}
               </TopicHeading>
-              <TopicIntroduction>
+              <TopicIntroduction invertedStyle={invertedStyle}>
                 {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
               </TopicIntroduction>
               {onToggleShowContent && (
@@ -354,6 +359,7 @@ const Topic = ({
                   heading={t('navigation.topics')}
                   items={subTopics}
                   onClick={onSubTopicSelected}
+                  invertedStyle={invertedStyle}
                 />
               )}
               {topic.resources}

@@ -70,6 +70,7 @@ const ShowVisualElementWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari fix */
 `;
 
 const VisualElementButton = styled(Button)`
@@ -81,7 +82,7 @@ const VisualElementButton = styled(Button)`
 const TopicHeaderImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: none;
   transition: transform ${animations.durations.fast};
   ${VisualElementButton}:hover & {
     transform: scale(1.1);
@@ -95,7 +96,6 @@ const ExpandVisualElementButton = styled.span`
   bottom: -4px;
   transition: all ${animations.durations.fast};
   ${VisualElementButton}:hover & {
-    color: ${colors.brand.primary};
     right: 10px;
   }
   ${mq.range({ from: breakpoints.mobileWide })} {
@@ -262,14 +262,14 @@ const Topic = ({
                 <TopicHeaderVisualElementWrapper>
                   {topic.visualElement ? (
                     <>
-                      <ShowVisualElementWrapper>
-                        <Modal
-                          activateButton={
-                            <VisualElementButton
-                              stripped
-                              title={
-                                topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
-                              }>
+                      <Modal
+                        activateButton={
+                          <VisualElementButton
+                            stripped
+                            title={
+                              topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
+                            }>
+                            <ShowVisualElementWrapper>
                               <TopicHeaderImage
                                 src={`${topic.image.url}?${makeSrcQueryString(
                                   400,
@@ -281,35 +281,35 @@ const Topic = ({
                                 focalPoint={topic.image.focalPoint}
                               />
                               <TopicHeaderOverlay />
-                              <ExpandVisualElementButton>
-                                {topic.visualElement.type === 'image' && (
-                                  <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
-                                )}
-                                {topic.visualElement.type === 'video' && (
-                                  <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
-                                )}
-                                {topic.visualElement.type === 'other' && (
-                                  <CursorClick style={{ width: '24px', height: '24px' }} />
-                                )}
-                              </ExpandVisualElementButton>
-                            </VisualElementButton>
-                          }
-                          animation="subtle"
-                          animationDuration={50}
-                          backgroundColor="white"
-                          size="large">
-                          {(onClose: () => void) => (
-                            <>
-                              <ModalHeader>
-                                <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                              </ModalHeader>
-                              <ModalBody modifier="no-side-padding-mobile">
-                                {topic.visualElement && topic.visualElement.element}
-                              </ModalBody>
-                            </>
-                          )}
-                        </Modal>
-                      </ShowVisualElementWrapper>
+                            </ShowVisualElementWrapper>
+                            <ExpandVisualElementButton>
+                              {topic.visualElement.type === 'image' && (
+                                <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
+                              )}
+                              {topic.visualElement.type === 'video' && (
+                                <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
+                              )}
+                              {topic.visualElement.type === 'other' && (
+                                <CursorClick style={{ width: '24px', height: '24px' }} />
+                              )}
+                            </ExpandVisualElementButton>
+                          </VisualElementButton>
+                        }
+                        animation="subtle"
+                        animationDuration={50}
+                        backgroundColor="white"
+                        size="large">
+                        {(onClose: () => void) => (
+                          <>
+                            <ModalHeader>
+                              <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
+                            </ModalHeader>
+                            <ModalBody modifier="no-side-padding-mobile">
+                              {topic.visualElement && topic.visualElement.element}
+                            </ModalBody>
+                          </>
+                        )}
+                      </Modal>
                     </>
                   ) : (
                     <TopicHeaderImage

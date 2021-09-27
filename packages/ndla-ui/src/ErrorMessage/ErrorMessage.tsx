@@ -45,8 +45,8 @@ interface Props {
     title: string;
     description?: string;
     linksTitle?: string;
-    back: string;
-    goToFrontPage: string;
+    back?: string;
+    goToFrontPage?: string;
   };
   illustration?: {
     url: string;

@@ -243,7 +243,7 @@ storiesOf('Fag- og emnesider', module)
   .add('2. Programside', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu hideMenuButton />
+        <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
         <ProgrammePage />
       </Content>
       <FooterExample />

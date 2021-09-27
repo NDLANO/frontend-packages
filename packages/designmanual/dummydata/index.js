@@ -1,4 +1,4 @@
-import { topicMenu, subtopicList, topicList, topicListChinese, topicListFilm } from './mockTopics';
+import { topicList, topicListFilm } from './mockTopics';
 import {
   learningPathResources,
   articleResources,
@@ -33,16 +33,13 @@ import { mockFooterLinks } from './mockFooter';
 import { dummyLanguageOptions } from './mockLanguages';
 
 export {
-  topicMenu,
   topicList,
-  topicListChinese,
   topicListFilm,
   subjectList,
   subjectConcepts,
   learningPathResources,
   articleResources,
   exerciseResources,
-  subtopicList,
   firstBrightcoveList,
   secondBrightcoveList,
   brightCoveMockVideo,

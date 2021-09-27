@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
+import _ from 'lodash';
 
 import {
   Masthead,
@@ -27,10 +28,9 @@ import {
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
-import { topicMenu, contentTypeResults, dummyLanguageOptions } from '../../dummydata';
+import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
-import CompetenceGoalsExample from '../organisms/CompetenceGoalsExample';
-import { programmes, programme, subjectCategories } from '../../dummydata/mockPrograms';
+import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -47,7 +47,6 @@ class MastheadWithTopicMenu extends Component {
       value: '',
       expandedTopicId: null,
       expandedSubtopicsId: [],
-      filterMenuValues: ['Medieuttrykk'],
     };
     this.inputRef = React.createRef();
     this.closeAllModals = [null, null];
@@ -129,6 +128,7 @@ class MastheadWithTopicMenu extends Component {
       hideMenuButton,
       breadcrumbItems,
       isAuthed,
+      menuProps,
       t,
       i18n,
     } = this.props;
@@ -143,6 +143,29 @@ class MastheadWithTopicMenu extends Component {
       : {
           onAuthenticateClick: () => {},
         };
+
+    const initialSelectedMenu = () => {
+      if (menuProps.hideSubject && menuProps.hideCurrentProgramme) {
+        return 'programmes';
+      }
+      if (menuProps.hideSubject) {
+        return 'programme';
+      }
+      return null;
+    };
+
+    const remapTopicProps = (value) => {
+      if (value.label) {
+        value.name = value.label;
+        if (value.subTopics) {
+          value.subtopics = value.subTopics;
+        }
+      }
+    };
+
+    // must add props to topic object that matches the TopicMenu component
+    const topicMenuValues = _.cloneDeepWith(topics, remapTopicProps);
+
     return (
       <Masthead
         fixed
@@ -170,41 +193,24 @@ class MastheadWithTopicMenu extends Component {
                 return (
                   <TopicMenu
                     close={onClose}
-                    isBeta={beta}
                     searchFieldComponent={this.renderSearchButtonView(false, ndlaFilm)}
-                    subjectTitle="Mediefag"
-                    toFrontpage={() =>
-                      '?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel'
-                    }
+                    subjectTitle={menuProps.hideSubject ? '' : 'Forretningsdrift (SR Vg1)'}
+                    toFrontpage={() => ''}
                     toSubject={() => '#'}
                     toTopic={() => '#'}
                     programmes={programmes}
                     subjectCategories={subjectCategories}
-                    currentProgramme={{
-                      name: programme.label,
-                      grades: programme.grades,
-                      selectedGradeIndex: 1,
-                    }}
-                    topics={topicMenu}
-                    filterOptions={[
-                      {
-                        title: 'Medieuttrykk',
-                        value: 'Medieuttrykk',
-                      },
-                      {
-                        title: 'Mediesamfunnet',
-                        value: 'Mediesamfunnet',
-                      },
-                    ]}
-                    filterValues={this.state.filterMenuValues}
-                    competenceGoals={
-                      <CompetenceGoalsExample menu subjectName="Mediefag" /> // Not required.
+                    currentProgramme={
+                      menuProps.hideCurrentProgramme
+                        ? null
+                        : {
+                            name: programme.label,
+                            grades: programme.grades,
+                            selectedGradeIndex: 0,
+                          }
                     }
-                    onFilterClick={(values) => {
-                      this.setState({
-                        filterMenuValues: values,
-                      });
-                    }}
+                    topics={topicMenuValues}
+                    initialSelectedMenu={initialSelectedMenu()}
                     resourceToLinkProps={(resource) => ({ to: resource.path })}
                     expandedTopicId={this.state.expandedTopicId}
                     expandedSubtopicsId={this.state.expandedSubtopicsId}
@@ -266,6 +272,10 @@ MastheadWithTopicMenu.propTypes = {
   skipToMainContentId: PropTypes.string,
   breadcrumbItems: PropTypes.array,
   isAuthed: PropTypes.bool,
+  menuProps: PropTypes.shape({
+    hideSubject: PropTypes.bool,
+    hideCurrentProgramme: PropTypes.bool,
+  }),
 };
 
 MastheadWithTopicMenu.defaultProps = {
@@ -275,6 +285,7 @@ MastheadWithTopicMenu.defaultProps = {
       <span>Du tester nå de nye nettsidene.</span> <SafeLink to="#">Les mer om nye NDLA.no</SafeLink>
     </>
   ),
+  menuProps: {},
 };
 
 export default withTranslation()(MastheadWithTopicMenu);

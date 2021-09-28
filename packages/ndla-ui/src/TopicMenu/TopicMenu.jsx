@@ -71,10 +71,11 @@ export const TopicMenu = ({
   subjectCategories,
   programmes,
   currentProgramme,
+  initialSelectedMenu,
 }) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState(MENU_CURRENT_SUBJECT);
+  const [selectedMenu, setSelectedMenu] = useState(() => initialSelectedMenu || MENU_CURRENT_SUBJECT);
 
   useEffect(() => {
     const setScreenSize = (initial = false) => {
@@ -178,13 +179,15 @@ export const TopicMenu = ({
         <div {...classes('subject')}>
           <div {...classes('subject__header')}>
             <div {...classes('subject__header__menu-filter')}>
-              <Button
-                onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
-                lighter={selectedMenu !== MENU_CURRENT_SUBJECT}
-                size="small"
-                borderShape="rounded">
-                {subjectTitle}
-              </Button>
+              {subjectTitle && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
+                  lighter={selectedMenu !== MENU_CURRENT_SUBJECT}
+                  size="small"
+                  borderShape="rounded">
+                  {subjectTitle}
+                </Button>
+              )}
               {currentProgramme && (
                 <Button
                   onClick={() => setSelectedMenu(MENU_CURRENT_PROGRAMME)}
@@ -395,6 +398,12 @@ TopicMenu.propTypes = {
     ).isRequired,
     selectedGradeIndex: PropTypes.number,
   }),
+  initialSelectedMenu: PropTypes.oneOf([
+    MENU_CURRENT_SUBJECT,
+    MENU_CURRENT_PROGRAMME,
+    MENU_PROGRAMMES,
+    MENU_ALL_SUBJECTS,
+  ]),
 };
 
 TopicMenu.defaultProps = {

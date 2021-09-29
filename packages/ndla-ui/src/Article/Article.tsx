@@ -143,7 +143,7 @@ export const Article = ({
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
     rootMargin: '400px',
-    threshold: 0.25,
+    threshold: 0.1,
   });
   const [articlePositionRight, setArticlePositionRight] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);

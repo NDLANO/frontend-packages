@@ -16,6 +16,7 @@ export const parseMarkdown = (embeddedCaption: string, parser: ParseType = 'capt
   const markdown = new Remarkable({ breaks: true, html: true });
   markdown.inline.ruler.enable(['sub', 'sup']);
   if (parser === 'caption') {
+    markdown.set({ html: false, breaks: false });
     markdown.block.ruler.disable([
       'table',
       'footnote',

@@ -404,6 +404,10 @@ const messages = {
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
     },
+    // TODO: Fix duplicate props. Used in VisualElementWrapper
+    image: {
+      rules: 'Reglar for bruk av biletet:',
+    },
     images: {
       heading: 'Slik bruker du bilete frå artikkelen',
       description: 'Hugs å kopiere teksten som skal leggjast ved biletet der du bruker det.',

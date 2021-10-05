@@ -393,6 +393,10 @@ const messages = {
       copyTitle: 'Copy link',
       hasCopiedTitle: 'Link copied',
     },
+    // TODO: Fix duplicate props. Used in VisualElementWrapper
+    image: {
+      rules: 'Rules for use of image:',
+    },
     images: {
       heading: 'How to use images from the article',
       description: 'Remember to copy the text to be attached to the image where you use it.',

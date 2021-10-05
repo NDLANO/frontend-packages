@@ -22,7 +22,6 @@ const forEachElement = (selector: string, callback: Function) => {
 
 const initAudioPlayers = (locale: Locale) => {
   forEachElement('[data-audio-player]', (el: HTMLElement) => {
-    console.log(el);
     const src = el.getAttribute('data-src');
     const title = el.getAttribute('data-title');
     const speech = el.getAttribute('data-speech');

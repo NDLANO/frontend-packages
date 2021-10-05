@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Footer, FooterText, EditorName, LanguageSelector } from '@ndla/ui';
+import { Footer, FooterText, EditorName, LanguageSelector, FooterAuth } from '@ndla/ui';
 import ZendeskButton from '@ndla/zendesk';
 import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLanguageSelector, i18n }) => (
+const FooterExample = ({
+  inverted,
+  invertedOutlineLargeScreensOnly,
+  t,
+  hideLanguageSelector,
+  i18n,
+  isAuthenticated,
+}) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -21,6 +28,14 @@ const FooterExample = ({ inverted, invertedOutlineLargeScreensOnly, t, hideLangu
           currentLanguage={i18n.language}
         />
       )
+    }
+    auth={
+      <FooterAuth
+        isAuthenticated={!!isAuthenticated}
+        authorizedRole="lærer"
+        authorizedCollectedInfo={['Lærer', 'Skole']}
+        onAuthenticateClick={() => {}}
+      />
     }>
     <FooterText>
       <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />

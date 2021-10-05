@@ -175,7 +175,28 @@ export const stories = {
   },
   MetaImage: {
     title: 'Metabilde',
-    lead: 'Dette bildet skal kunne benyttes som bilde på emnekortene (både som bannerbilde og lite bannerbilde), ved visning i sosiale medier og ved opplisting i søkemotorer. Bildet må ha god pikselbredde, som f.eks. Scanpix-bilder.',
+    body: [
+      {
+        type: 'text',
+        content:
+          'Dette bildet skal kunne benyttes som bilde på emnekortene (både som bannerbilde og lite bannerbilde), ved visning i sosiale medier og ved opplisting i søkemotorer. Bildet må ha god pikselbredde, som f.eks. Scanpix-bilder.',
+      },
+      {
+        type: 'text',
+        content:
+          'Metabilde kan settes forskjellig for hvert språk. Dersom metabilde ikke finnes vil det hentes automatisk fra et annet språk.',
+      },
+    ],
+  },
+  VisualElement: {
+    title: 'Visuelt element',
+    body: [
+      {
+        type: 'text',
+        content:
+          'Visuelt element kan settes forskjellig for hvert språk. Dersom visuelt element ikke finnes vil det hentes automatisk fra et annet språk.',
+      },
+    ],
   },
   TaxonomyContentTypes: {
     title: 'Innholdstyper',

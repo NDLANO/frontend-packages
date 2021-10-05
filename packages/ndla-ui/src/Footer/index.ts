@@ -9,5 +9,6 @@
 import Footer from './Footer';
 import { FooterText } from './FooterText';
 import { EditorName } from './EditorName';
+import FooterAuth from './FooterAuth';
 
-export { Footer, FooterText, EditorName };
+export { Footer, FooterText, EditorName, FooterAuth };

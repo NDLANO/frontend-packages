@@ -25,7 +25,7 @@ import {
   addCloseDialogClickListeners,
 } from './dialogScripts';
 
-import { addToggleSynstolketListener } from './synstolketScripts';
+import { addToggleAlternativeVideoListener } from './alternativeVideoPlugin';
 
 import { initTableScript, removeTableEventListeners } from './tableScripts';
 
@@ -47,7 +47,7 @@ export const initArticleScripts = () => {
   addFactBoxClickListener();
   addCopyToClipboardListeners();
   addShowDialogClickListeners();
-  addToggleSynstolketListener();
+  addToggleAlternativeVideoListener();
   addCloseDialogClickListeners();
   addShowConceptDefinitionClickListeners();
   toggleLicenseInfoBox();
@@ -72,7 +72,7 @@ export {
   addCopyToClipboardListeners,
   addShowConceptDefinitionClickListeners,
   addShowDialogClickListeners,
-  addToggleSynstolketListener,
+  addToggleAlternativeVideoListener,
   removeShowDialogClickListeners,
   addDetailsEventListeners,
   removeDetailsEventListeners,

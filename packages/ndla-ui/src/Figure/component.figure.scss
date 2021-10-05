@@ -51,6 +51,16 @@
     padding-bottom: $spacing--large;
     margin-bottom: 0;
   }
+  &.expanded {
+    .c-figure__caption--hidden-caption {
+      display: block;
+      opacity: 0;
+      animation-delay: 50ms;
+      animation-name: fadeIn;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+    }
+  }
 }
 
 .brightcove-video {
@@ -61,9 +71,14 @@
 
 /* 2. */
 .c-figure__caption {
-  background-color: $brand-grey--lightest;
-  padding-top: $spacing--small;
+  background-color: $white;
+  padding: $spacing--small 0;
   display: block;
+  border-bottom: 1px solid #D1D6DB;
+}
+
+.c-figure__caption--hidden-caption {
+  display: none;
 }
 
 .c-figure__licensetag {
@@ -71,49 +86,40 @@
 }
 .c-figure__byline {
   text-align: left;
-  display: flex;
-  align-items: center;
 
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: $brand-color;
-    padding: 0;
-    @include font-size(14px);
-
-    &.c-figure__captionbtn {
-      box-shadow: $link;
-      &:hover {
-        box-shadow: $link--hover;
-      }
-      svg {
-        display: none;
-      }
-    }
-    &.c-figure__toggleSynstolket {
-      margin-left: 10px;
-      span.hidden {
-        display: none;
-      }
+  .c-figure__toggleAlternativeVideo {
+    margin-left: 10px;
+    span.hidden {
+      display: none;
     }
   }
 }
 
+.c-figure__byline-author-buttons {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $primary-color;
+}
 .c-figure__byline-authors {
-  @include font-size(14px);
-  border-right: 1px solid $brand-grey--light;
-  padding-right: $spacing--small;
+  @include font-size(14px, 20px);
   margin-right: $spacing--small;
+  font-family: $font;
 }
 
 .c-figure__info {
   max-width: 650px;
   margin-bottom: $spacing--small;
-  @include inuit-font-size(14px, 22px);
+  font-family: $font;
+  color: $primary-color;
+  @include inuit-font-size(16px, 24px);
   @include mq($from: tablet) {
     flex: 2;
     margin-bottom: $spacing--small;
+  }
+  p {
+    margin:0;
   }
 }
 
@@ -121,15 +127,17 @@
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  bottom: 0;
-  right: 0;
-  padding: $spacing--small;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease-out;
-  background: rgba($white, 0.2);
-
-  ~ .c-figure__caption--hidden-caption {
-    display: none;
-  }
+  background: rgba($white, 0.65);
+  border-radius: 100px;
+  border: 0;
 
   .expanded-icon {
     display: none;
@@ -142,22 +150,14 @@
     .expanded-icon {
       display: flex;
     }
-    right: $spacing;
-    ~ .c-figure__caption--hidden-caption {
-      display: block;
-      opacity: 0;
-      animation-delay: 50ms;
-      animation-name: fadeIn;
-      animation-duration: 0.2s;
-      animation-fill-mode: forwards;
-    }
   }
 
   svg {
     transition: transform 0.4s ease-out;
-    width: 26px;
-    height: 26px;
+    width: 18px;
+    height: 18px;
     fill: $brand-color;
+    color: $brand-color;
   }
 }
 
@@ -179,15 +179,7 @@
   padding: $spacing--small;
   transition: all 0.3s ease-out;
   background: rgba($white, 0.2);
-
-  ~ .c-figure__caption--hidden-caption {
-    padding-top: 0;
-    padding-bottom: 0;
-    max-height: 0;
-    overflow: hidden;
-
-    transition: all 0.3s ease-in-out;
-  }
+  border:0;
 
   .expanded-icon {
     display: none;

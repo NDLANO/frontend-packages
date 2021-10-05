@@ -46,6 +46,7 @@ const messages = {
       'Det fungerte ikkje å setje inn innhaldet automatisk. Kopier kjeldekoden under for å setje han inn på sida di.',
   },
   subjectCategories: {
+    [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Komande',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
@@ -335,6 +336,9 @@ const messages = {
     notionsPrompt: 'Kan du begrepa?',
     citeNotion: 'Bruk forklaringa',
     printPage: 'Skriv ut',
+    access: {
+      onlyTeacher: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
+    },
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -470,7 +474,7 @@ const messages = {
   },
   figure: {
     button: {
-      synstolket: 'Bytt til synstolka',
+      alternative: 'Bytt til synstolka',
       original: 'Bytt til original video',
     },
   },
@@ -826,6 +830,21 @@ const messages = {
   visualElement: {
     show: 'Vis',
     showVideo: 'Vis video',
+  },
+  user: {
+    loggedInAs: 'Du er pålogga som {{role}}.',
+    loggedInAsButton: 'Du er pålogga som {{role}}',
+    buttonLogIn: 'Logg inn med Feide',
+    buttonLogOut: 'Logg ut',
+    generalFooter: 'Enkelte ressursar er berre tilgjengelege for pålogga lærarar.',
+    modal: {
+      collectedInfo: 'Vi har henta denne informasjonen om deg frå Feide:',
+      general: 'Ressursane som krev pålogging med Feide, vises med ikonet',
+      topic: ' Logg inn med Feide for å få tilgang til dette emnet.',
+    },
+    resource: {
+      accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
+    },
   },
 };
 

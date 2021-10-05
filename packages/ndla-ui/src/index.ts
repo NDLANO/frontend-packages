@@ -24,7 +24,7 @@ export {
   default as Article,
 } from './Article';
 
-export { default as ErrorMessage } from './ErrorMessage';
+export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
@@ -39,7 +39,7 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
-export { Footer, EditorName, FooterText } from './Footer';
+export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
 export { LanguageSelector } from './LanguageSelector';
 
@@ -63,6 +63,8 @@ export { default as ContentTypeResult } from './Search/ContentTypeResult';
 export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
+export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
+export { default as AuthModal } from './User';
 
 export { default as CreatedBy } from './CreatedBy';
 

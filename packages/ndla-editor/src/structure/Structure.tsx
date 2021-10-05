@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { DropResult } from 'react-beautiful-dnd';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -21,12 +21,16 @@ const StructureWrapper = styled.ul`
   padding: 0;
 `;
 
-const StyledStructureItem = styled.li`
+interface StyledStructureItemProps {
+  greyedOut?: boolean;
+  connectionId?: string;
+}
+
+const StyledStructureItem = styled.li<StyledStructureItemProps>`
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-
   ${(props) =>
     props.greyedOut &&
     css`
@@ -36,27 +40,97 @@ const StyledStructureItem = styled.li`
     `};
 `;
 
+export type RenderBeforeFunction = (input: {
+  id: string;
+  title: string;
+  isSubject: boolean;
+  contentUri?: string;
+}) => React.ReactNode;
+
+interface Props {
+  structure?: StructureType[];
+  openedPaths: string[];
+  renderListItems: (props: RenderItemReturnProps) => React.ReactNode;
+  favoriteSubjectIds?: string[];
+  toggleFavorite?: (subjectId: string) => void;
+  isOpen?: boolean;
+  onDragEnd?: (result: DropResult) => void;
+  isMainActive?: boolean;
+  DND?: boolean;
+  toggleOpen: (subject: { path: string; isSubject: boolean; id: string }) => void;
+  highlightMainActive?: boolean;
+  currentPath?: string[];
+  renderBeforeTitles?: RenderBeforeFunction;
+}
+
+interface MetaData {
+  grepCodes: string[];
+  visible: boolean;
+  customFields: Record<string, string>;
+}
+
+interface Topic {
+  id: string;
+  name: string;
+  metadata: MetaData;
+  contentUri: string;
+  isPrimary: boolean;
+  relevanceId?: string;
+  parent: string;
+  path: string;
+  connectionId?: string;
+  subtopics?: Topic[];
+  rank: number;
+}
+
+interface StructureType {
+  id: string;
+  name: string;
+  metadata: MetaData;
+  contentUri: string;
+  path: string;
+  loading?: boolean;
+  connectionId?: string;
+  topics?: Topic[];
+  subtopics?: Topic[];
+}
+
+interface RenderItemReturnProps {
+  pathToString: string;
+  isSubject: boolean;
+  subjectId: string;
+  isOpen: boolean;
+  id: string;
+  name: string;
+  metadata: MetaData;
+  isMainActive: boolean;
+  contentUri: string;
+  path: string;
+  parent?: string;
+}
+
 const Structure = ({
   renderListItems,
-  structure,
+  structure = [],
   openedPaths,
   toggleOpen,
   highlightMainActive,
-  currentPath,
+  currentPath = [],
   DND,
   isMainActive,
-  onDragEnd,
+  onDragEnd = (_) => {},
   isOpen,
   favoriteSubjectIds,
   toggleFavorite,
-}) => {
+  renderBeforeTitles,
+}: Props) => {
   const isSubject = currentPath.length === 0;
   const enableDND = DND && isMainActive && structure.length > 1;
   return (
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
         <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
-          {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, ...rest }) => {
+          {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, contentUri, ...rest }) => {
             const currentPathIds = [...currentPath, id];
             const children = topics || subtopics;
             const pathToString = currentPathIds.join('/');
@@ -70,6 +144,7 @@ const Structure = ({
             return (
               <StyledStructureItem connectionId={connectionId} key={pathToString} greyedOut={greyedOut}>
                 <ItemNameBar
+                  renderBeforeTitle={renderBeforeTitles}
                   highlight={highlightMainActive ? isNewMainActive : isOpen && isSubject}
                   isOpen={isOpen}
                   title={name}
@@ -78,18 +153,19 @@ const Structure = ({
                   path={pathToString}
                   id={id.includes('topic') ? `${parentId}/${id}` : id}
                   hasSubtopics={!!children || isSubject}
+                  contentUri={contentUri}
                   toggleOpen={() =>
                     toggleOpen({
                       path: pathToString,
                       isSubject,
                       id,
-                      parent: rest.parent,
                     })
                   }
                   isSubject={isSubject}
                   isVisible={isVisible}
                   favoriteSubjectIds={favoriteSubjectIds}
-                  toggleFavorite={() => toggleFavorite(id)}>
+                  taxonomyId={id}
+                  toggleFavorite={() => toggleFavorite?.(id)}>
                   {renderListItems &&
                     renderListItems({
                       pathToString,
@@ -100,6 +176,7 @@ const Structure = ({
                       name,
                       metadata,
                       isMainActive: isNewMainActive,
+                      contentUri,
                       ...rest,
                     })}
                 </ItemNameBar>
@@ -119,6 +196,7 @@ const Structure = ({
                     DND={DND}
                     isOpen={isOpen}
                     onDragEnd={onDragEnd}
+                    renderBeforeTitles={renderBeforeTitles}
                   />
                 )}
               </StyledStructureItem>
@@ -128,45 +206,6 @@ const Structure = ({
       </Fade>
     </StructureWrapper>
   );
-};
-
-function lazyFunction(f) {
-  return function () {
-    return f.apply(this, arguments);
-  };
-}
-
-const lazyItemShape = lazyFunction(function () {
-  return ItemShape;
-});
-
-const ItemShape = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  // eslint-disable-next-line no-use-before-define
-  topics: PropTypes.arrayOf(lazyItemShape),
-}).isRequired;
-
-Structure.propTypes = {
-  structure: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      topics: PropTypes.arrayOf(ItemShape),
-      loading: PropTypes.bool,
-    }),
-  ),
-  openedPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
-  renderListItems: PropTypes.func,
-  favoriteSubjectIds: PropTypes.arrayOf(PropTypes.string),
-  toggleFavorite: PropTypes.func,
-};
-
-Structure.defaultProps = {
-  structure: [],
-  className: '',
-  isSubject: true,
-  currentPath: [],
 };
 
 export default Structure;

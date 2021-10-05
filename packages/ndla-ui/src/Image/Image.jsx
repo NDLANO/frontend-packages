@@ -9,6 +9,7 @@
 import React from 'react';
 import defined from 'defined';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
 
 export const makeSrcQueryString = (width, crop, focalPoint) => {
@@ -25,25 +26,44 @@ const getSrcSet = (src, crop, focalPoint) => {
   return widths.map((width) => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(', ');
 };
 
-const Image = ({ alt, src, lazyLoad, lazyLoadSrc, crop, focalPoint, contentType, sizes, ...rest }) => {
+const StyledImageWrapper = styled.div`
+  position: relative;
+`;
+
+const Image = ({ alt, src, lazyLoad, lazyLoadSrc, crop, focalPoint, contentType, sizes, expandButton, ...rest }) => {
   const srcSet = defined(rest.srcSet, getSrcSet(src, crop, focalPoint));
   const fallbackWidth = defined(rest.fallbackWidth, 1024);
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
 
   if (contentType && contentType === 'image/gif') {
-    return <img alt={alt} src={`${src}`} {...rest} />;
+    return (
+      <StyledImageWrapper>
+        <img alt={alt} src={`${src}`} {...rest} />
+      </StyledImageWrapper>
+    );
   }
 
   if (lazyLoad) {
     return (
-      <LazyLoadImage alt={alt} src={`${src}?${queryString}`} srcSet={srcSet} sizes={sizes} lazyLoadSrc={lazyLoadSrc} />
+      <StyledImageWrapper>
+        <LazyLoadImage
+          alt={alt}
+          src={`${src}?${queryString}`}
+          srcSet={srcSet}
+          sizes={sizes}
+          lazyLoadSrc={lazyLoadSrc}
+        />
+      </StyledImageWrapper>
     );
   }
 
   return (
     <picture>
-      <source type={contentType} srcSet={srcSet} sizes={sizes} />
-      <img alt={alt} src={`${src}?${queryString}`} {...rest} />
+      <StyledImageWrapper>
+        <source type={contentType} srcSet={srcSet} sizes={sizes} />
+        <img alt={alt} src={`${src}?${queryString}`} {...rest} />
+        {expandButton}
+      </StyledImageWrapper>
     </picture>
   );
 };

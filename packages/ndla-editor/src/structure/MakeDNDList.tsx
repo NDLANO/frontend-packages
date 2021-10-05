@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
   DragDropContext,
   Droppable,
@@ -7,6 +7,7 @@ import {
   DroppableProvided,
   DroppableStateSnapshot,
   DraggableStateSnapshot,
+  DropResult,
 } from 'react-beautiful-dnd';
 import { colors } from '@ndla/core';
 import { css } from '@emotion/core';
@@ -30,14 +31,14 @@ const draggingStyle = css`
 
 type Props = {
   disableDND: boolean;
-  children: React.Component<{ id: string; connectionId: string }>;
-  onDragEnd: VoidFunction;
+  children: ReactElement<{ id: string; connectionId: string }>[];
+  onDragEnd: (result: DropResult) => void;
   dragHandle: boolean;
 };
 
 const MakeDndList = ({ disableDND, children, onDragEnd, dragHandle }: Props) => {
   if (disableDND) {
-    return children;
+    return <>{children}</>;
   }
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -46,10 +47,7 @@ const MakeDndList = ({ disableDND, children, onDragEnd, dragHandle }: Props) => 
           <div ref={provided.innerRef} css={snapshot.isDraggingOver && dropZone}>
             {React.Children.map(
               children,
-              (
-                child: React.Component<{ id: string; connectionId: string }>,
-                index: number,
-              ): React.ReactElement | null => {
+              (child: ReactElement<{ id: string; connectionId: string }>, index: number) => {
                 if (!child) {
                   return null;
                 }

@@ -12,6 +12,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
+import { AlertCircle } from '@ndla/icons/editor';
+import Tooltip from '@ndla/tooltip';
 import { subjectTopics, subjects, allFilters, favoriteSubjects } from '../../dummydata/mockTaxonomyStructure';
 
 function delay(t, v) {
@@ -173,6 +175,12 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const StyledWarnIcon = styled(AlertCircle)`
+  height: ${spacing.nsmall};
+  width: ${spacing.nsmall};
+  fill: ${colors.support.red};
+`;
+
 class StructureExample extends Component {
   constructor(props) {
     super(props);
@@ -184,6 +192,7 @@ class StructureExample extends Component {
       availableFilters: [],
     };
     this.renderListItems = this.renderListItems.bind(this);
+    this.renderBeforeTitles = this.renderBeforeTitles.bind(this);
     this.onOpenPath = this.onOpenPath.bind(this);
     this.toggleFavorite = this.toggleFavorite.bind(this);
   }
@@ -234,6 +243,17 @@ class StructureExample extends Component {
       fetchFavoriteSubjectIds = fetchFavoriteSubjectIds.filter((id) => id !== subjectId);
     }
     this.forceUpdate();
+  }
+
+  renderBeforeTitles({ id }) {
+    if (id !== 'urn:topic:1:183520') return null;
+
+    const text = 'Noe galt med dette emnet';
+    return (
+      <Tooltip tooltip={text}>
+        <StyledWarnIcon title={text} />
+      </Tooltip>
+    );
   }
 
   renderListItems({ subjectId, isSubject, isOpen }) {
@@ -306,6 +326,7 @@ class StructureExample extends Component {
           DND={this.props.structureEditor}
           openedPaths={this.state.openedPaths}
           highlightMainActive={this.props.structureEditor}
+          renderBeforeTitles={this.renderBeforeTitles}
           structure={structure}
           toggleOpen={({ path, id, isSubject }) => {
             this.setState((prevState) => {

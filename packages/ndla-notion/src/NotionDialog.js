@@ -10,7 +10,7 @@ import NotionBody from './NotionBody';
 const NotionDialogContentWrapper = styled.div`
   padding-bottom: ${spacing.normal};
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 export const NotionDialogContent = ({ children, ...rest }) => (

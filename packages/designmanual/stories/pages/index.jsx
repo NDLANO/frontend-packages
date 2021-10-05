@@ -21,6 +21,7 @@ import {
   OneColumn,
   PageContainer,
   Content,
+  ErrorResourceAccessDenied,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -242,7 +243,7 @@ storiesOf('Fag- og emnesider', module)
   .add('2. Programside', () => (
     <PageContainer>
       <Content>
-        <MastheadWithTopicMenu hideMenuButton />
+        <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
         <ProgrammePage />
       </Content>
       <FooterExample />
@@ -419,6 +420,65 @@ storiesOf('Fag- og emnesider', module)
         <BannerList banners={banners} />
       </div>
     </div>
+  ));
+storiesOf('Autentisering', module)
+  .add('Hovedhode/footer - utlogget', () => (
+    <div>
+      <MastheadWithTopicMenu />
+      <FooterExample />
+    </div>
+  ))
+  .add('Hovedhode/footer - innlogget', () => (
+    <div>
+      <MastheadWithTopicMenu isAuthed />
+      <FooterExample isAuthenticated />
+    </div>
+  ))
+  .add('Ressurs uten tilgang', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <OneColumn cssModifier="clear">
+          <ErrorResourceAccessDenied onAuthenticateClick={() => {}} />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Emner', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu />
+        <SubjectPage
+          topics={topics}
+          initialBreadcrumb={subjectBreadcrumb}
+          subjectName="Forretningsdrift (SR Vg1)"
+          bannerBackground={backgroundSSR}
+          subjectContentCards={contentCards}
+          subjectAboutHeading="Om salg, service og reiseliv"
+          subjectAboutDescription="Litt om faget"
+        />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('Læringsressurs - lærer', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu isAuthed skipToMainContentId="mainContentId" />
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLearningmaterial accessRestricted />
+      </Content>
+      <FooterExample isAuthenticated />
+    </PageContainer>
   ));
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (

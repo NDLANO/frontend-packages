@@ -29,6 +29,7 @@ import {
   ArticleIntroduction,
   ArticleWrapper,
   Topic,
+  AuthModal,
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
@@ -153,6 +154,8 @@ const SubjectPage = ({
   const [topicData, setTopicData] = useState(null);
   const [subTopicData, setSubTopicData] = useState(null);
   const [subSubTopicData, setSubSubTopicData] = useState(null);
+
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const [mainTopics, setMainTopics] = useState(() => {
     const { items, selectedItem } = prepareTopicData(topicsData, preSelectedMainTopic, setTopicData);
@@ -327,6 +330,12 @@ const SubjectPage = ({
 
   const onClickMainTopic = (e, id) => {
     e.preventDefault();
+    const { isRestrictedResource } = topicsData.find((item) => id === item.id);
+    if (isRestrictedResource) {
+      setShowLoginModal(true);
+      return;
+    }
+
     if (id !== selectedMainTopic) {
       setSelectedSubTopic(null);
       setSubTopics([]);
@@ -514,6 +523,15 @@ const SubjectPage = ({
       <OneColumn wide>
         <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />
       </OneColumn>
+      {showLoginModal && (
+        <AuthModal
+          showGeneralMessage={false}
+          onAuthenticateClick={() => {}}
+          onClose={() => setShowLoginModal(false)}
+          isOpen>
+          <p>{t('user.modal.topic')}</p>
+        </AuthModal>
+      )}
     </>
   );
 };

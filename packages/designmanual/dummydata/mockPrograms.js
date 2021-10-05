@@ -1,3 +1,5 @@
+import { contentTypeResults } from './mockSearch';
+
 export const programmes = [
   {
     label: 'Bygg- og anleggsteknikk',
@@ -200,12 +202,15 @@ export const programme = {
   ],
 };
 
+const contentTypeResultsMenu = [contentTypeResults[0], contentTypeResults[1], contentTypeResults[2]];
+
 export const topics = [
   {
     label: 'Lover og regler',
     id: 22661,
     tags: ['Forretningsdrift'],
     url: '#',
+    contentTypeResults: contentTypeResultsMenu,
   },
   {
     label: 'Organisering',
@@ -217,11 +222,13 @@ export const topics = [
         label: 'Organisasjonskart og ansvarsfordeling',
         id: 22830,
         url: '#',
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         label: 'Omstilling og utvikling',
         id: 20978,
         url: '#',
+        contentTypeResults: contentTypeResultsMenu,
       },
     ],
   },
@@ -240,6 +247,7 @@ export const topics = [
             label: 'Prissetting underemne',
             id: 22703,
             url: '#',
+            contentTypeResults: contentTypeResultsMenu,
           },
         ],
       },
@@ -247,17 +255,21 @@ export const topics = [
         label: 'Budsjett',
         id: 22718,
         url: '#',
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         label: 'Regnskap',
         id: 22716,
         url: '#',
+        contentTypeResults: contentTypeResultsMenu,
       },
       {
         label: 'Lønnsomhet',
         id: 22719,
         url: '#',
         isAdditionalResource: true,
+        isRestrictedResource: true,
+        contentTypeResults: contentTypeResultsMenu,
       },
     ],
   },
@@ -266,6 +278,8 @@ export const topics = [
     tags: ['Forretningsdrift'],
     url: '#',
     id: 22666,
+    isRestrictedResource: true,
+    contentTypeResults: contentTypeResultsMenu,
   },
   {
     label: 'Sikkerhet',
@@ -273,12 +287,14 @@ export const topics = [
     tags: ['Forretningsdrift'],
     url: '#',
     isAdditionalResource: true,
+    contentTypeResults: contentTypeResultsMenu,
   },
   {
     label: 'HMS',
     id: 22678,
     tags: ['Forretningsdrift'],
     url: '#',
+    contentTypeResults: contentTypeResultsMenu,
   },
 ];
 
@@ -726,6 +742,7 @@ export const subjectCategories = [
   },
   {
     name: 'Utgåtte',
+    visible: true,
     subjects: [
       { name: 'Matematikk 1P (LK06)', id: 'archived_subject_1', path: '#' },
       { name: 'Matematikk 1P-Y (LK06)', id: 'archived_subject_2', path: '#' },
@@ -743,6 +760,7 @@ export const subjectCategories = [
   },
   {
     name: 'Kommende',
+    visible: true,
     subjects: [
       { name: 'Informasjonsteknologi Vg2 - 2021 BETA', id: 'beta_subject_1', path: '#' },
       { name: 'Yrkesfaglig fordypning (HS-HEA Vg2) - 2021 BETA', id: 'beta_subject_2', path: '#' },

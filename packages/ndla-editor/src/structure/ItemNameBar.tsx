@@ -12,6 +12,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts } from '@ndla/core';
 import { Star } from '@ndla/icons/editor';
+import { RenderBeforeFunction } from './Structure';
 
 const itemTitleArrow = css`
   &:before {
@@ -40,7 +41,15 @@ const itemTitleLinked = css`
   }
 `;
 
-const ItemTitleButton = styled.button`
+interface ItemTitleButtonProps {
+  isVisible?: boolean;
+  hasSubtopics?: boolean;
+  lastItemClickable?: boolean;
+  isSubject?: boolean;
+  arrowDirection?: number;
+}
+
+const ItemTitleButton = styled.button<ItemTitleButtonProps>`
   ${fonts.sizes(16, 1)};
   font-weight: ${fonts.weight.semibold};
   border: 0;
@@ -79,7 +88,12 @@ const StyledIcon = styled.button`
   }
 `;
 
-const StyledItemBar = styled.div`
+interface StyledItemBarProps {
+  level?: number;
+  highlight?: boolean;
+}
+
+const StyledItemBar = styled.div<StyledItemBarProps>`
   display: flex;
   justify-content: space-between;
   padding: 0 ${spacing.small} 0 calc(${(props) => props.level} * 17px + ${spacing.small});
@@ -94,6 +108,26 @@ const StyledItemBar = styled.div`
 
 const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
+interface Props {
+  title: string;
+  children?: React.ReactNode;
+  path: string;
+  toggleOpen: Function;
+  hasSubtopics: boolean;
+  isOpen?: boolean;
+  lastItemClickable?: boolean;
+  id: string;
+  isSubject: boolean;
+  isVisible?: boolean;
+  favoriteSubjectIds?: string[];
+  toggleFavorite: Function;
+  highlight?: boolean;
+  level?: number;
+  renderBeforeTitle?: RenderBeforeFunction;
+  contentUri?: string;
+  taxonomyId: string;
+}
+
 const ItemNameBar = ({
   title,
   children,
@@ -105,11 +139,14 @@ const ItemNameBar = ({
   isSubject,
   lastItemClickable,
   id,
-  level,
+  level = 0,
   isVisible,
   favoriteSubjectIds,
   toggleFavorite,
-}) => (
+  renderBeforeTitle,
+  contentUri,
+  taxonomyId,
+}: Props) => (
   <StyledItemBar level={level} highlight={highlight}>
     {favoriteSubjectIds && (
       <RoundIcon
@@ -133,16 +170,28 @@ const ItemNameBar = ({
         arrowDirection={isOpen ? 90 : 0}
         onClick={() => toggleOpen(path)}
         isVisible={isVisible}>
+        {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
         {title}
       </ItemTitleButton>
     ) : (
-      <ItemTitleSpan isVisible={isVisible}>{title}</ItemTitleSpan>
+      <ItemTitleSpan isVisible={isVisible}>
+        {renderBeforeTitle?.({ id: taxonomyId, title, contentUri, isSubject })}
+        {title}
+      </ItemTitleSpan>
     )}
     {children}
   </StyledItemBar>
 );
 
-const RoundIcon = ({ smallIcon, ...rest }) => <StyledIcon {...rest}>{smallIcon}</StyledIcon>;
+interface RoundIconProps {
+  smallIcon: React.ReactNode;
+  clicked?: boolean;
+  type?: 'button' | 'reset' | 'submit';
+}
+
+const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & React.HTMLProps<HTMLButtonElement>) => (
+  <StyledIcon {...rest}>{smallIcon}</StyledIcon>
+);
 
 RoundIcon.propTypes = {
   smallIcon: PropTypes.node,

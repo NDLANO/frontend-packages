@@ -22,6 +22,8 @@ import { useTranslation } from 'react-i18next';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
+// @ts-ignore
+import { makeSrcQueryString } from '../Image';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -68,6 +70,7 @@ const ShowVisualElementWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari fix */
 `;
 
 const VisualElementButton = styled(Button)`
@@ -79,7 +82,7 @@ const VisualElementButton = styled(Button)`
 const TopicHeaderImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: none;
   transition: transform ${animations.durations.fast};
   ${VisualElementButton}:hover & {
     transform: scale(1.1);
@@ -93,7 +96,6 @@ const ExpandVisualElementButton = styled.span`
   bottom: -4px;
   transition: all ${animations.durations.fast};
   ${VisualElementButton}:hover & {
-    color: ${colors.brand.primary};
     right: 10px;
   }
   ${mq.range({ from: breakpoints.mobileWide })} {
@@ -161,13 +163,18 @@ const StyledAdditionalResource = styled.span`
   color: ${colors.brand.dark};
 `;
 
-const TopicIntroduction = styled.p`
+const TopicIntroduction = styled.div<InvertItProps>`
   font-weight: ${fonts.weight.light};
   max-width: 612px;
   margin-top: ${spacing.xsmall};
   ${mq.range({ from: breakpoints.tablet })} {
     ${fonts.sizes('22px', '32px')};
   }
+  ${(props) =>
+    props.invertedStyle &&
+    css`
+      color: #fff;
+    `}
 `;
 
 const StyledButtonWrapper = styled.div<InvertItProps>`
@@ -211,6 +218,8 @@ export type TopicProps = {
     image?: {
       url: string;
       alt: string;
+      crop?: object;
+      focalPoint?: object;
     };
     visualElement?: VisualElementProps;
     resources?: React.ReactNode;
@@ -253,48 +262,62 @@ const Topic = ({
                 <TopicHeaderVisualElementWrapper>
                   {topic.visualElement ? (
                     <>
-                      <ShowVisualElementWrapper>
-                        <Modal
-                          activateButton={
-                            <VisualElementButton
-                              stripped
-                              title={
-                                topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
-                              }>
-                              <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
+                      <Modal
+                        activateButton={
+                          <VisualElementButton
+                            stripped
+                            title={
+                              topic.visualElement.type === 'image' ? t('image.largeSize') : t('visualElement.show')
+                            }>
+                            <ShowVisualElementWrapper>
+                              <TopicHeaderImage
+                                src={`${topic.image.url}?${makeSrcQueryString(
+                                  400,
+                                  topic.image.crop,
+                                  topic.image.focalPoint,
+                                )}`}
+                                alt={topic.image.alt}
+                                crop={topic.image.crop}
+                                focalPoint={topic.image.focalPoint}
+                              />
                               <TopicHeaderOverlay />
-                              <ExpandVisualElementButton>
-                                {topic.visualElement.type === 'image' && (
-                                  <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
-                                )}
-                                {topic.visualElement.type === 'video' && (
-                                  <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
-                                )}
-                                {topic.visualElement.type === 'other' && (
-                                  <CursorClick style={{ width: '24px', height: '24px' }} />
-                                )}
-                              </ExpandVisualElementButton>
-                            </VisualElementButton>
-                          }
-                          animation="subtle"
-                          animationDuration={50}
-                          backgroundColor="white"
-                          size="large">
-                          {(onClose: () => void) => (
-                            <>
-                              <ModalHeader>
-                                <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
-                              </ModalHeader>
-                              <ModalBody modifier="no-side-padding-mobile">
-                                {topic.visualElement && topic.visualElement.element}
-                              </ModalBody>
-                            </>
-                          )}
-                        </Modal>
-                      </ShowVisualElementWrapper>
+                            </ShowVisualElementWrapper>
+                            <ExpandVisualElementButton>
+                              {topic.visualElement.type === 'image' && (
+                                <ExpandTwoArrows style={{ width: '24px', height: '24px' }} />
+                              )}
+                              {topic.visualElement.type === 'video' && (
+                                <PlayCircleFilled style={{ width: '24px', height: '24px' }} />
+                              )}
+                              {topic.visualElement.type === 'other' && (
+                                <CursorClick style={{ width: '24px', height: '24px' }} />
+                              )}
+                            </ExpandVisualElementButton>
+                          </VisualElementButton>
+                        }
+                        animation="subtle"
+                        animationDuration={50}
+                        backgroundColor="white"
+                        size="large">
+                        {(onClose: () => void) => (
+                          <>
+                            <ModalHeader>
+                              <ModalCloseButton onClick={onClose} title={t('modal.closeModal')} />
+                            </ModalHeader>
+                            <ModalBody modifier="no-side-padding-mobile">
+                              {topic.visualElement && topic.visualElement.element}
+                            </ModalBody>
+                          </>
+                        )}
+                      </Modal>
                     </>
                   ) : (
-                    <TopicHeaderImage src={topic.image.url} alt={topic.image.alt} />
+                    <TopicHeaderImage
+                      src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
+                      alt={topic.image.alt}
+                      crop={topic.image.crop}
+                      focalPoint={topic.image.focalPoint}
+                    />
                   )}
                 </TopicHeaderVisualElementWrapper>
               )}
@@ -307,7 +330,7 @@ const Topic = ({
                   </StyledAdditionalResource>
                 )}
               </TopicHeading>
-              <TopicIntroduction>
+              <TopicIntroduction invertedStyle={invertedStyle}>
                 {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
               </TopicIntroduction>
               {onToggleShowContent && (
@@ -336,6 +359,7 @@ const Topic = ({
                   heading={t('navigation.topics')}
                   items={subTopics}
                   onClick={onSubTopicSelected}
+                  invertedStyle={invertedStyle}
                 />
               )}
               {topic.resources}

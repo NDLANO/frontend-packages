@@ -40,6 +40,9 @@ const messages = {
   movedResourcePage: {
     title: 'The page has been moved, but you can find it here:',
   },
+  deletedTopic: {
+    title: 'Topic is deleted',
+  },
   lti: {
     embed: 'Embed',
     notSupported:

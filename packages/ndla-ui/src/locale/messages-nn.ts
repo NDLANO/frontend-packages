@@ -40,6 +40,9 @@ const messages = {
   movedResourcePage: {
     title: 'Sida har flytta, men du kan finne den her:',
   },
+  deletedTopic: {
+    title: 'Emne er sletta',
+  },
   lti: {
     embed: 'Sett inn',
     notSupported:

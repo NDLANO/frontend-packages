@@ -10,7 +10,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Image from '../Image';
+import Image, { makeSrcQueryString } from '../Image';
 
 test('Image renderers correctly', () => {
   const component = renderer.create(<Image alt="example" src="https://example.com/image.png" />);
@@ -45,4 +45,22 @@ test('Image with crop and focalpoint props renderers correctly', () => {
   );
 
   expect(component.toJSON()).toMatchSnapshot();
+});
+
+test('makeSrcQueryString renders correctly', () => {
+  const crop = {
+    startX: 14.59,
+    endX: 79.63,
+    startY: 20,
+    endY: 100,
+  };
+  const focalPoint = {
+    x: 65.08,
+    y: 45.28,
+  };
+  expect(makeSrcQueryString(undefined, undefined, undefined)).toMatch('');
+  expect(makeSrcQueryString(1024, undefined, undefined)).toMatch('width=1024');
+  expect(makeSrcQueryString(undefined, crop, undefined)).toMatchSnapshot();
+  expect(makeSrcQueryString(undefined, undefined, focalPoint)).toMatchSnapshot();
+  expect(makeSrcQueryString(1024, crop, focalPoint)).toMatchSnapshot();
 });

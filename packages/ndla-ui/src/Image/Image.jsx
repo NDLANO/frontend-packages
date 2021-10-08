@@ -13,12 +13,13 @@ import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
 
 export const makeSrcQueryString = (width, crop, focalPoint) => {
-  const cropParams = crop
-    ? `&cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`
-    : '';
-  const focalPointParams = focalPoint ? `&focalX=${focalPoint.x}&focalY=${focalPoint.y}` : '';
+  const widthParams = width && `width=${width}`;
+  const cropParams =
+    crop && `cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`;
+  const focalPointParams = focalPoint && `focalX=${focalPoint.x}&focalY=${focalPoint.y}`;
+  const params = [widthParams, cropParams, focalPointParams].filter((p) => p).join('&');
 
-  return `width=${width}${cropParams}${focalPointParams}`;
+  return params;
 };
 
 const getSrcSet = (src, crop, focalPoint) => {

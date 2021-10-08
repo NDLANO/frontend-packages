@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { AudioPlayer, Figure } from '@ndla/ui';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
@@ -12,10 +12,20 @@ const AudioExample = ({ showSubtitle, showDescription, showImage, showTextVersio
     initArticleScripts();
   });
 
+  const imageId = useRef(uuid());
+
   const messages = {
     rulesForUse: t('license.audio.rules'),
     reuse: t('audio.reuse'),
     download: t('audio.download'),
+  };
+
+  const imageMessages = {
+    rulesForUse: t('license.images.rules'),
+    zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
+    reuse: t('image.reuse'),
+    download: t('image.download'),
+    modelPermission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
   };
 
   const figureId = `figure-${id}`;
@@ -57,7 +67,22 @@ const AudioExample = ({ showSubtitle, showDescription, showImage, showTextVersio
         }
         textVersion={showTextVersion && TextVersion}
       />
-      <FigureCaptionExample figureId={figureId} id={id} messages={messages} />
+      <FigureCaptionExample
+        figureId={figureId}
+        id={id}
+        messages={messages}
+        authors={[{ type: 'Opphaver', name: 'Siri Knudsen' }]}
+      />
+      {showImage && (
+        <div id={imageId.current}>
+          <FigureCaptionExample
+            figureId={imageId.current}
+            id={imageId.current}
+            messages={imageMessages}
+            authors={[{ type: 'Opphaver', name: 'Maxim Usik' }]}
+          />
+        </div>
+      )}
     </Figure>
   );
 };

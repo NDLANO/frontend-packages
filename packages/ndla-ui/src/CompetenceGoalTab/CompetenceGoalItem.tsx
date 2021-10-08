@@ -27,11 +27,6 @@ const GoalWrapper = styled.div`
   padding-bottom: ${spacing.small};
 `;
 
-const GoalsLabel = styled.div`
-  ${fonts.sizes('16px', '32px')};
-  text-transform: uppercase;
-`;
-
 const GoalsHeading = styled.h3`
   margin-top: 0;
   font-weight: ${fonts.weight.semibold};
@@ -55,7 +50,6 @@ const CompetenceGoalItem = ({ title, goals }: CompetenceGoalsItemType) => {
   return (
     <GoalItem>
       <GoalWrapper>
-        <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
         <GoalsHeading>{title}</GoalsHeading>
         <GoalList>
           {goals.map((goal, index: number) => (

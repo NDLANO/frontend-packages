@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 // @ts-ignore
 import Button from '@ndla/button';
@@ -66,6 +66,11 @@ const HideOnDesktopWrapper = styled.div`
   }
 `;
 
+const GoalsLabel = styled.div`
+  ${fonts.sizes('16px', '32px')};
+  text-transform: uppercase;
+`;
+
 type Props = {
   searchPhrase?: string;
   searchPhraseSuggestion?: string;
@@ -76,7 +81,7 @@ type Props = {
     filters: FilterProps[];
     onFilterRemove: (value: string, name: string) => void;
   };
-  competenceGoals?: CompetenceGoalsItemType;
+  competenceGoals?: CompetenceGoalsItemType[];
   onSearchValueChange: (value: string) => void;
   onSubmit: () => void;
   noResults?: boolean;
@@ -126,16 +131,17 @@ const SearchHeader = ({
             </Button>
           </PhraseSuggestionText>
         )}
-        {competenceGoals && (
+        {!!competenceGoals?.length && (
           <CompetenceGoalsWrapper>
-            {competenceGoals && (
-              <CompetenceGoalsList>
-                <CompetenceGoalItem
-                  id={competenceGoals.id}
-                  title={competenceGoals.title}
-                  goals={competenceGoals.goals}
-                />
-              </CompetenceGoalsList>
+            {competenceGoals?.length && (
+              <>
+                <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
+                <CompetenceGoalsList>
+                  {competenceGoals.map((e) => (
+                    <CompetenceGoalItem key={e.id} id={e.id} title={e.title} goals={e.goals} />
+                  ))}
+                </CompetenceGoalsList>
+              </>
             )}
           </CompetenceGoalsWrapper>
         )}

@@ -433,15 +433,17 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
         filters={subjectFilterProps}
         competenceGoals={
           showCompetenceGoals && competenceGoalFilter.length
-            ? {
-                id: 'KV112',
-                title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
-                goals: [
-                  {
-                    text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
-                  },
-                ],
-              }
+            ? [
+                {
+                  id: 'KV112',
+                  title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
+                  goals: [
+                    {
+                      text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                    },
+                  ],
+                },
+              ]
             : undefined
         }
       />

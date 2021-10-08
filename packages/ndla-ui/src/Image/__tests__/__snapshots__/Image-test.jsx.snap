@@ -73,3 +73,9 @@ exports[`Lazyloaded image renderers correctly 1`] = `
   />
 </div>
 `;
+
+exports[`makeSrcQueryString renders correctly 1`] = `"cropStartX=14.59&cropEndX=79.63&cropStartY=20&cropEndY=100"`;
+
+exports[`makeSrcQueryString renders correctly 2`] = `"focalX=65.08&focalY=45.28"`;
+
+exports[`makeSrcQueryString renders correctly 3`] = `"width=1024&cropStartX=14.59&cropEndX=79.63&cropStartY=20&cropEndY=100&focalX=65.08&focalY=45.28"`;

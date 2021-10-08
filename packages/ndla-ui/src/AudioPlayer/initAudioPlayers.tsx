@@ -10,7 +10,6 @@ import ReactDOM from 'react-dom';
 
 import Controls from './Controls';
 import SpeechControl from './SpeechControl';
-import LocaleProvider from '../locale/LocaleProvider';
 import { Locale } from '../types';
 import { truncateDescription } from './AudioPlayer';
 
@@ -28,14 +27,9 @@ const initAudioPlayers = (locale: Locale) => {
     const speech = el.getAttribute('data-speech');
     if (src && title) {
       if (speech) {
-        ReactDOM.render(<SpeechControl src={src} title={title} />, el);
+        ReactDOM.hydrate(<SpeechControl src={src} title={title} />, el);
       } else {
-        ReactDOM.render(
-          <LocaleProvider locale={locale}>
-            <Controls src={src} title={title} />
-          </LocaleProvider>,
-          el,
-        );
+        ReactDOM.hydrate(<Controls src={src} title={title} />, el);
       }
     }
   });

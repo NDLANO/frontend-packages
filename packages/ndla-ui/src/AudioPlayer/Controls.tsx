@@ -234,6 +234,18 @@ const VolumeWrapper = styled.div`
   }
 `;
 
+const WardButtonWrapper = styled.div<{ order: number }>`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    ${(props) =>
+      `
+    order: ${props.order};
+  `}
+  }
+`;
+
 const VolumeButton = styled(MenuButton)`
   background-color: inherit;
   background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 10.6667C20.828 11.2877 21.5 12.0929 21.9628 13.0186C22.4257 13.9443 22.6667 14.9651 22.6667 16C22.6667 17.035 22.4257 18.0557 21.9628 18.9814C21.5 19.9071 20.828 20.7124 20 21.3334' stroke='%23184673' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M23.5999 6.66669C24.9918 7.79155 26.1145 9.21352 26.8858 10.8284C27.6571 12.4434 28.0574 14.2104 28.0574 16C28.0574 17.7897 27.6571 19.5567 26.8858 21.1716C26.1145 22.7865 24.9918 24.2085 23.5999 25.3334' stroke='%23184673' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 20H5.33333C4.97971 20 4.64057 19.8595 4.39052 19.6095C4.14048 19.3594 4 19.0203 4 18.6666V13.3333C4 12.9797 4.14048 12.6406 4.39052 12.3905C4.64057 12.1405 4.97971 12 5.33333 12H8L12.6667 5.99998C12.7832 5.77362 12.9769 5.59641 13.2127 5.50037C13.4484 5.40433 13.7108 5.3958 13.9523 5.47631C14.1939 5.55682 14.3986 5.72107 14.5296 5.93937C14.6607 6.15768 14.7093 6.41564 14.6667 6.66665V25.3333C14.7093 25.5843 14.6607 25.8423 14.5296 26.0606C14.3986 26.2789 14.1939 26.4431 13.9523 26.5237C13.7108 26.6042 13.4484 26.5956 13.2127 26.4996C12.9769 26.4036 12.7832 26.2263 12.6667 26L8 20Z' stroke='%23184673' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
@@ -409,15 +421,18 @@ const Controls = ({ src, title }: Props) => {
             )}
           </span>
         </PlayButton>
-        <Back15SecButton
-          type="button"
-          title={t('audio.controls.rewind15sec')}
-          aria-label={t('audio.controls.rewind15sec')}
-          onClick={() => {
-            onSeekSeconds(-15);
-          }}>
-          15
-        </Back15SecButton>
+        <WardButtonWrapper order={3}>
+          <Back15SecButton
+            type="button"
+            title={t('audio.controls.rewind15sec')}
+            aria-label={t('audio.controls.rewind15sec')}
+            onClick={() => {
+              onSeekSeconds(-15);
+            }}>
+            15
+          </Back15SecButton>
+        </WardButtonWrapper>
+
         <SpeedWrapper>
           <Menu>
             <SpeedButton
@@ -447,15 +462,17 @@ const Controls = ({ src, title }: Props) => {
             </SpeedMenu>
           </Menu>
         </SpeedWrapper>
-        <Forward15SecButton
-          type="button"
-          title={t('audio.controls.forward15sec')}
-          aria-label={t('audio.controls.forward15sec')}
-          onClick={() => {
-            onSeekSeconds(15);
-          }}>
-          15
-        </Forward15SecButton>
+        <WardButtonWrapper order={5}>
+          <Forward15SecButton
+            type="button"
+            title={t('audio.controls.forward15sec')}
+            aria-label={t('audio.controls.forward15sec')}
+            onClick={() => {
+              onSeekSeconds(15);
+            }}>
+            15
+          </Forward15SecButton>
+        </WardButtonWrapper>
         <ProgressWrapper>
           <Time>{formatTime(currentTime)}</Time>
           <SliderWrapper>

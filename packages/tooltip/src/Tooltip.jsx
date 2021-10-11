@@ -20,12 +20,11 @@ const TooltipWrapper = styled.div`
 const tooltipCss = css`
   display: block;
   color: #fff;
-  background: ${colors.brand.primary};
+  background: ${colors.text.primary};
   border-radius: 2px;
   padding: ${spacing.xsmall} ${spacing.small};
   font-family: ${fonts.sans};
   ${fonts.sizes(14, 1.2)} font-weight: ${fonts.weight.normal};
-  color: $white;
   text-align: center;
   white-space: nowrap;
   max-width: calc(100vw - #{${spacing.normal}});

@@ -15,7 +15,7 @@ import { colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { stepNumbers } from './pagerHelpers';
 
-const createQueryString = (obj: object) =>
+const createQueryString = (obj: Record<string, any>) =>
   Object.entries(obj)
     .filter(([_, value]) => value !== undefined && value !== '')
     .map(([key, value]) => `${key}=${value}`)

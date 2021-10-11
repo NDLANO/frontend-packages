@@ -59,4 +59,15 @@ storiesOf('Søk', module)
       </Content>
       <FooterExample />
     </PageContainer>
+  ))
+  .add('Søkeside kompetansemål', () => (
+    <PageContainer>
+      <Content>
+        <MastheadWithTopicMenu hideSearchButton hideMenuButton />
+        <OneColumn cssModifier="clear-desktop" wide>
+          <SearchResultTypeExample showCompetenceGoals />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
   ));

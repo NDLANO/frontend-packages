@@ -8,6 +8,7 @@ import Button from '@ndla/button';
 import { joinArrayWithConjunction } from '@ndla/util';
 import { colors, fonts } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { Locale } from '../types';
 
 const NotionContainer = styled.div`
   border-bottom: 1px solid ${colors.brand.greyLighter};
@@ -57,7 +58,7 @@ export type NotionProps = {
   id: string;
   labels?: string[];
   license?: string;
-  locale?: string;
+  locale?: Locale;
   media?: React.ReactNode;
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   renderMarkdown?: (text: string) => string;

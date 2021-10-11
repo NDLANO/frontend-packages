@@ -120,7 +120,10 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customEleme
     return (
       <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
         {filterItems}
-        {customElements && customElements.map((item) => <StyledActiveFilterWrapper>{item}</StyledActiveFilterWrapper>)}
+        {customElements &&
+          customElements.map((item, index) => (
+            <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
+          ))}
       </StyledActiveFilters>
     );
   }

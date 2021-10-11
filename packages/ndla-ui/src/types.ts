@@ -101,6 +101,17 @@ export type elementRectType = {
   fromScale: number;
 };
 
+export type CompetenceGoalsItemType = {
+  id: string;
+  title: string;
+  goals: {
+    text: string;
+    url?: string;
+    type: 'LK06' | 'LK20';
+  }[];
+  selected?: boolean;
+};
+
 export type NotionMedia = {
   type: 'video' | 'other';
   element: React.ReactNode;

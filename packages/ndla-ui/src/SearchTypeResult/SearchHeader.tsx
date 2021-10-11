@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 // @ts-ignore
 import Button from '@ndla/button';
@@ -17,6 +17,8 @@ import { FilterProps } from './ActiveFilterContent';
 import ActiveFilters from './ActiveFilters';
 import SearchFieldHeader from './SearchFieldHeader';
 import PopupFilter, { PopupFilterProps } from './PopupFilter';
+import { CompetenceGoalsItemType } from '../types';
+import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -37,6 +39,21 @@ const PhraseWrapper = styled.div`
   margin: ${spacing.normal} 0 ${spacing.medium};
 `;
 
+const CompetenceGoalsWrapper = styled.div`
+  font-size: 16px;
+  width: 100%;
+  margin-top: ${spacing.normal};
+`;
+
+const CompetenceGoalsList = styled.ul`
+  padding: 0;
+  margin: 0;
+  li {
+    border: 0;
+    margin: 0;
+  }
+`;
+
 const PhraseText = styled.div`
   margin-right: ${spacing.large};
 `;
@@ -49,6 +66,11 @@ const HideOnDesktopWrapper = styled.div`
   }
 `;
 
+const GoalsLabel = styled.div`
+  ${fonts.sizes('16px', '32px')};
+  text-transform: uppercase;
+`;
+
 type Props = {
   searchPhrase?: string;
   searchPhraseSuggestion?: string;
@@ -59,6 +81,7 @@ type Props = {
     filters: FilterProps[];
     onFilterRemove: (value: string, name: string) => void;
   };
+  competenceGoals?: CompetenceGoalsItemType[];
   onSearchValueChange: (value: string) => void;
   onSubmit: () => void;
   noResults?: boolean;
@@ -73,6 +96,7 @@ const SearchHeader = ({
   onSubmit,
   activeFilters,
   filters,
+  competenceGoals,
   noResults,
   t,
 }: Props & WithTranslation) => {
@@ -106,6 +130,20 @@ const SearchHeader = ({
               {searchPhraseSuggestion}
             </Button>
           </PhraseSuggestionText>
+        )}
+        {!!competenceGoals?.length && (
+          <CompetenceGoalsWrapper>
+            {competenceGoals?.length && (
+              <>
+                <GoalsLabel>{t('competenceGoals.competenceGoalItem.title')}</GoalsLabel>
+                <CompetenceGoalsList>
+                  {competenceGoals.map((e) => (
+                    <CompetenceGoalItem key={e.id} id={e.id} title={e.title} goals={e.goals} />
+                  ))}
+                </CompetenceGoalsList>
+              </>
+            )}
+          </CompetenceGoalsWrapper>
         )}
       </PhraseWrapper>
       {activeFilters && (

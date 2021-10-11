@@ -211,6 +211,22 @@ class MastheadWithTopicMenu extends Component {
                     }
                     topics={topicMenuValues}
                     initialSelectedMenu={initialSelectedMenu()}
+                    filterOptions={[
+                      {
+                        title: 'Medieuttrykk',
+                        value: 'Medieuttrykk',
+                      },
+                      {
+                        title: 'Mediesamfunnet',
+                        value: 'Mediesamfunnet',
+                      },
+                    ]}
+                    filterValues={this.state.filterMenuValues}
+                    onFilterClick={(values) => {
+                      this.setState({
+                        filterMenuValues: values,
+                      });
+                    }}
                     resourceToLinkProps={(resource) => ({ to: resource.path })}
                     expandedTopicId={this.state.expandedTopicId}
                     expandedSubtopicsId={this.state.expandedSubtopicsId}

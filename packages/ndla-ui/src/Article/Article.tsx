@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
@@ -99,7 +99,9 @@ type Props = {
   children: ReactNode;
   messages: Messages;
   locale: Locale;
-  competenceGoals?: Function | string[];
+  competenceGoals?:
+    | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
+    | null;
   competenceGoalTypes?: string[];
   id: string;
   renderMarkdown: (text: string) => string;

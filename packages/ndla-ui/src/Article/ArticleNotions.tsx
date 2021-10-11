@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
 import { mq, breakpoints, fonts, colors } from '@ndla/core';
 import { Explanation, NotionFlip } from '@ndla/icons/common';
+import { Locale } from '../types';
 import { Notion } from '../Notion';
 import { NotionProps } from '../Notion/Notion';
 
@@ -158,7 +159,7 @@ export type NotionRelatedContent = {
 };
 
 type ArticleNotionsProps = {
-  locale: string;
+  locale: Locale;
   notions: NotionProps[];
   onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];

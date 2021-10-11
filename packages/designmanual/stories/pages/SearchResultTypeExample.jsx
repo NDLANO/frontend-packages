@@ -23,7 +23,7 @@ import {
   resourcesSourceMaterialResults,
 } from '../../dummydata/mockSearchResultType';
 import FigureWithLicense from '../article/FigureWithLicense';
-import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
+import { competenceGoals, programmes, subjectCategories } from '../../dummydata/mockPrograms';
 
 const { contentTypes } = constants;
 
@@ -228,15 +228,17 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
   return resources.items.filter((item) => item.labels.some((label) => filters.includes(label)));
 };
 
-const SearchPageDemo = () => {
+const SearchPageDemo = ({ showCompetenceGoals }) => {
   const { t } = useTranslation();
   const [selectedResourceTypes, setSelectedResourceTypes] = useState([]);
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
-  const [searchValue, setSearchValue] = useState('nunorsk');
-  const [searchPhrase, setSearchPhrase] = useState('nunorsk');
-  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState('nynorsk');
-  const [subjectFilter, setSubjectFilter] = useState(['programme_subject_5']);
-  const [programmeFilter, setProgrammeFilter] = useState(['programme_9']);
+  const [searchValue, setSearchValue] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
+  const [searchPhrase, setSearchPhrase] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
+  const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(() => (showCompetenceGoals ? '' : 'nynorsk'));
+  const [subjectFilter, setSubjectFilter] = useState(() => (showCompetenceGoals ? [] : ['programme_subject_5']));
+  const [programmeFilter, setProgrammeFilter] = useState(() => (showCompetenceGoals ? [] : ['programme_9']));
+  // eslint-disable-next-line no-unused-vars
+  const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() => (showCompetenceGoals ? ['KM1196'] : []));
 
   const [notionsItems] = React.useState(initNotionResult);
 
@@ -336,6 +338,7 @@ const SearchPageDemo = () => {
   const handleFilterRemove = (value) => {
     setSubjectFilter(subjectFilter.filter((option) => option !== value));
     setProgrammeFilter(programmeFilter.filter((option) => option !== value));
+    setCompetenceGoalFilter(competenceGoalFilter.filter((option) => option !== value));
   };
 
   const handleContentTypeFilterToggle = (value) => {
@@ -370,6 +373,15 @@ const SearchPageDemo = () => {
       });
     }
   });
+  competenceGoals.forEach((item) => {
+    if (competenceGoalFilter.includes(item.id)) {
+      activeSubjectFilters.push({
+        name: item.name,
+        value: item.id,
+        title: item.name,
+      });
+    }
+  });
 
   const subjectFilterProps = {
     messages: {
@@ -397,10 +409,16 @@ const SearchPageDemo = () => {
     };
   });
 
+  const searchPhraseText = competenceGoalFilter.length
+    ? `${t('competenceGoals.competenceGoal')} ${competenceGoalFilter.join(', ')} ${
+        searchPhrase && ` - ${searchPhrase}`
+      }`
+    : searchPhrase;
+
   return (
     <>
       <SearchHeader
-        searchPhrase={searchPhrase}
+        searchPhrase={searchPhraseText}
         searchPhraseSuggestion={searchPhraseSuggestion}
         searchPhraseSuggestionOnClick={
           () => console.log('search-phrase suggestion click') // eslint-disable-line no-console
@@ -413,8 +431,23 @@ const SearchPageDemo = () => {
           onFilterRemove: handleFilterRemove,
         }}
         filters={subjectFilterProps}
+        competenceGoals={
+          showCompetenceGoals && competenceGoalFilter.length
+            ? [
+                {
+                  id: 'KV112',
+                  title: 'Vg2 yrkesfaglige utdanningsprogram (KV112)',
+                  goals: [
+                    {
+                      text: 'kombinere virkemidler og uttrykksformer kreativt i egen tekstskaping (KM1196)',
+                    },
+                  ],
+                },
+              ]
+            : undefined
+        }
       />
-      {!hideNotionsResult && (
+      {!hideNotionsResult && !showCompetenceGoals && (
         <SearchNotionsResult
           items={notionsItems}
           totalCount={notionsItems.length}
@@ -423,7 +456,7 @@ const SearchPageDemo = () => {
           }}
         />
       )}
-      <SearchSubjectResult id="search-result-content" items={subjectItems} />
+      {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
       <FilterButtons
         heading={t('searchPage.searchFilterMessages.resourceTypeFilter.heading')}
         items={contentTypeFilters}

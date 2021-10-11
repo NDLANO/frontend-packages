@@ -51,8 +51,6 @@ export {
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
-export { CompetenceGoalTab } from './CompetenceGoalTab';
-
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';

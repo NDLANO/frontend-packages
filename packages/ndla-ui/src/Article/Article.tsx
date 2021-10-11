@@ -8,7 +8,6 @@
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 
@@ -174,8 +173,6 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
-  const license = getLicenseByAbbreviation(licenseObj.license, locale).abbreviation;
-
   let authors = creators;
   if (Array.isArray(authors) && authors.length === 0) {
     authors = processors;
@@ -217,7 +214,7 @@ export const Article = ({
               authors,
               suppliers,
               published,
-              license,
+              license: licenseObj.license,
               licenseBox,
               printUrl,
             }}

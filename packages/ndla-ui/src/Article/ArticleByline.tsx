@@ -15,6 +15,8 @@ import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
+import LicenseByline from '@ndla/licenses/src/LicenseByline/LicenseByline';
+import { getLicenseByAbbreviation } from '@ndla/licenses';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -38,6 +40,10 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const AuthorsWrapper = styled.span`
+  margin-left: ${spacing.xxsmall};
+`;
+
 type AuthorProps = {
   name: string;
 };
@@ -54,9 +60,19 @@ type Props = {
   licenseBox?: React.ReactNode;
   copyPageUrlLink?: string;
   printUrl?: string;
+  locale?: string;
 };
 
-const ArticleByline = ({ authors, suppliers, license, licenseBox, published, copyPageUrlLink, printUrl }: Props) => {
+const ArticleByline = ({
+  authors,
+  suppliers,
+  license,
+  licenseBox,
+  published,
+  copyPageUrlLink,
+  printUrl,
+  locale,
+}: Props) => {
   const { t } = useTranslation();
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
@@ -64,26 +80,21 @@ const ArticleByline = ({ authors, suppliers, license, licenseBox, published, cop
     }
   };
 
-  const renderContributors = (contributors: SupplierProps[] | AuthorProps[]) => (
-    <>
-      {contributors.map((contributor, index) => {
-        let separator = ' ';
-        if (index > 0) {
-          if (index === contributors.length - 1) {
-            separator = ` ${t('article.conjunction')} `;
-          } else {
-            separator = ', ';
-          }
+  const renderContributors = (contributors: SupplierProps[] | AuthorProps[]) => {
+    const contributorsArray = contributors.map((contributor, index) => {
+      let separator = '';
+      if (index > 0) {
+        if (index === contributors.length - 1) {
+          separator = ` ${t('article.conjunction')} `;
+        } else {
+          separator = ', ';
         }
-        return (
-          <span key={contributor.name}>
-            {separator}
-            {contributor.name}
-          </span>
-        );
-      })}
-    </>
-  );
+      }
+      return `${separator}${contributor.name}`;
+    });
+    return contributorsArray.join('');
+  };
+  const licenseRights = getLicenseByAbbreviation(license, locale).rights;
 
   return (
     <Wrapper>
@@ -92,15 +103,16 @@ const ArticleByline = ({ authors, suppliers, license, licenseBox, published, cop
       </div>
       {authors && (
         <TextWrapper>
-          {authors.length > 1 ? t('article.multipleAuthorsLabel') : t('article.singleAuthorsLabel')}
-          {renderContributors(authors)}
-          <span>{` (${license})`}</span>
+          <LicenseByline licenseRights={licenseRights}>
+            <AuthorsWrapper>{t('article.authorsLabel', { names: renderContributors(authors) })}</AuthorsWrapper>
+          </LicenseByline>
         </TextWrapper>
       )}
       {suppliers && (
         <TextWrapper>
-          {suppliers.length > 1 ? t('article.multipleSuppliersLabel') : t('article.supplierLabel')}
-          {renderContributors(suppliers)}
+          {suppliers.length > 1
+            ? t('article.multipleSuppliersLabel', { names: renderContributors(suppliers) })
+            : t('article.supplierLabel', { name: renderContributors(suppliers) })}
         </TextWrapper>
       )}
       <ButtonWrapper>

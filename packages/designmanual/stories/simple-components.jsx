@@ -473,41 +473,24 @@ storiesOf('Enkle komponenter', module)
       </StoryBody>
     </div>
   ))
-  .add('Faktaboks og høyrespalte', () => (
+  .add('Faktaboks', () => (
     <div>
-      <StoryIntro title="Faktaboks og høyrespalte">
+      <StoryIntro title="Faktaboks">
         <p>
           For alt nytt innhold på ndla.no skal ikke flytende høyrespalte benyttes. I stedet benytter vi faktabokser
-          innenfor innholdsspalten. Høyrespalten fases ut, men vil for en tid eksistere på gamle artikler.
+          innenfor innholdsspalten.
         </p>
-        <p>Artikkelen nedenfor illustrerer både faktaboks og høyrespalte.</p>
       </StoryIntro>
       <StoryBody>
         <h1 className="c-article__title">Eksempelartikkel</h1>
         <p className="article_introduction">
           Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.
         </p>
-        <ArticleBylineExample />
         <section>
-          <Aside wideScreen>
-            <h1>Høyrespalte</h1>
-            <p>Høyrespalten skal fases ut.</p>
-            <p>
-              I en midlertidig fase under flytting av innhold fra gammelt til nytt nettsted kan høyrespalten likevel
-              brukes. Innholdet skal etter hvert flyttes til hovedspalten. Fakta kan legges i en faktaboks, annet
-              innhold kan bakes inn i artikkelteksten, eller slettes.
-            </p>
-            <p>Om artikkelen har et bilde under ingressen, må høyrespalten plasseres under denne.</p>
-            <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
-          </Aside>
           <p>
             Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du
             avhengig av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
           </p>
-          <ul>
-            <li>Test</li>
-            <li>Test</li>
-          </ul>
           <p>
             Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
             filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
@@ -532,7 +515,6 @@ storiesOf('Enkle komponenter', module)
             <p>På mobil skal høyrespalten alltid havne på slutten av artikkelen.</p>
           </Aside>
         </section>
-
         <FactBox>
           <h2>Faktaboks</h2>
           <p>En faktaboks kan inneholde punktlister eller korte fakta som er relevant for artikkelens innhold.</p>
@@ -554,6 +536,7 @@ storiesOf('Enkle komponenter', module)
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
           du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
+        <ArticleBylineExample />
       </StoryBody>
     </div>
   ))

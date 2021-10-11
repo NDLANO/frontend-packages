@@ -6,7 +6,7 @@
  *
  */
 
-export function getRange(current, last) {
+export function getRange(current: number, last: number): number[] {
   let r1 = current - 2;
   let r2 = current + 2;
 
@@ -21,14 +21,14 @@ export function getRange(current, last) {
   return [Math.max(r1, 1), Math.min(r2, last)];
 }
 
-export function stepNumbers(currentStep, lastStep) {
+export function stepNumbers(currentStep: number, lastStep: number): number[] {
   const [llim, rlim] = getRange(currentStep, lastStep);
 
   const offset = llim;
   const length = rlim - llim + 1;
 
-  const indexToStep = (i) => i + offset;
+  const indexToStep = (i: number) => i + offset;
   return Array(length)
-    .fill()
+    .fill(0)
     .map((_, i) => indexToStep(i));
 }

@@ -5,11 +5,11 @@ A pager component.
 ## Installation
 
 ```sh
-$ yarn add ndla-pager
+yarn add ndla-pager
 ```
 
 ```sh
-$ npm install ndla-pager
+npm install ndla-pager
 ```
 
 ## Usage

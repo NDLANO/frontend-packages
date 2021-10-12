@@ -5,11 +5,11 @@ Main UI component library for NDLA.
 ## Installation
 
 ```sh
-$ yarn add --save ndla-ui
+yarn add --save ndla-ui
 ```
 
 ```sh
-$ npm i --save ndla-ui
+npm i --save ndla-ui
 ```
 
 ### Optional dependencies

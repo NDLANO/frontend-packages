@@ -5,7 +5,7 @@ A Tooltip component that can be used to wrap any element. A tooltip is shown whe
 ## Installation
 
 ```sh
-$ yarn add @ndla/tooltip
+yarn add @ndla/tooltip
 ```
 
 ## Usage

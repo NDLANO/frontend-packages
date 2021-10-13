@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Image, ContentLoader } from '@ndla/ui';
 
 import { StoryIntro, StoryBody } from './wrappers';
+import ResourceStats from './molecules/ResourceStats';
 
 if (process.env.NODE_ENV === 'development') {
   storiesOf('Eksperimentelle komponenter', module)
@@ -60,6 +61,20 @@ if (process.env.NODE_ENV === 'development') {
             <rect x="100" y="970" rx="3" ry="3" width="800" height="20" />
             <rect x="100" y="1000" rx="3" ry="3" width="600" height="20" />
           </ContentLoader>
+        </StoryBody>
+      </div>
+    ))
+    .add('Statistikk', () => (
+      <div>
+        <StoryIntro title="Statistikk">
+          <p>
+            Hent ut csv-fil med data for i hvilke fag ressursene er brukt. Kommer på formatet:
+            <br /> "Artikkel", "Fag", "Artikkel-id", "Fag-id"
+          </p>
+          <p>Kun fag og artikler som er synlig blir eksportert.</p>
+        </StoryIntro>
+        <StoryBody>
+          <ResourceStats />
         </StoryBody>
       </div>
     ));

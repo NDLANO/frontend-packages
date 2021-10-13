@@ -49,7 +49,7 @@ const ResourceStats = () => {
     const encodedUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvString);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', 'NDLA_ressuerser.csv');
+    link.setAttribute('download', 'NDLA_ressurser_stats.csv');
     document.body.appendChild(link);
     link.click();
     setIsLoading(false);

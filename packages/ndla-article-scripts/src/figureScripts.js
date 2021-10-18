@@ -121,6 +121,37 @@ export const addEventListenerForFigureZoomButton = () => {
   });
 };
 
+export const addEventListenerForNotionExpandButton = () => {
+  forEachElement('button[data-notion-expand-media]', (el) => {
+    const target = el;
+    target.onclick = () => {
+      const id = target.getAttribute('data-notion-media-id');
+      const media = document.getElementById(id);
+      media.classList.add('expanded');
+      return;
+      const elClass = target.classList[0];
+      const parentFigure = target.closest('figure');
+      const sourceTag = parentFigure && parentFigure.getElementsByTagName('source')[0];
+      if (parentFigure && target.dataset.expanded) {
+        target.setAttribute('aria-label', target.dataset.aria);
+        target.classList.remove(`${elClass}--expanded`);
+        parentFigure.classList.add(target.dataset.classtype);
+        parentFigure.classList.remove('expanded');
+        delete target.dataset.expanded;
+      } else if (sourceTag) {
+        if (elClass === 'c-figure__fullscreen-btn') {
+          sourceTag.setAttribute('sizes', '(min-width: 1024px) 1024px, 100vw');
+        }
+        target.setAttribute('aria-label', target.dataset.ariaexpanded);
+        parentFigure.classList.remove(target.dataset.classtype);
+        parentFigure.classList.add('expanded');
+        target.classList.add(`${elClass}--expanded`);
+        target.dataset.expanded = true;
+      }
+    };
+  });
+};
+
 const handler = () => updateIFrameDimensions(false);
 
 export const addEventListenerForResize = () => {

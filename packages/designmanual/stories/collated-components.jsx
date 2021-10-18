@@ -54,6 +54,7 @@ import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
 import Frontpage from './pages/FrontpageExample';
 import FooterExample from './molecules/footers';
+import NotionBlockExample from './organisms/NotionBlockExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -190,6 +191,16 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <NotionExample />
     </Center>
+  ))
+  .add('Blokkvisning begrepsforklaring', () => (
+    <div>
+      <StoryIntro title="Blokkvisning begrepsforklaring">
+        <p>Brukes ved visning i artikkel og søk</p>
+      </StoryIntro>
+      <Center>
+        <NotionBlockExample />
+      </Center>
+    </div>
   ))
   .add('Emnebeskrivelse', () => (
     <Center>

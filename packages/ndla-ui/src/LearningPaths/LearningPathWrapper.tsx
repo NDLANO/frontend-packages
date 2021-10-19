@@ -34,7 +34,7 @@ const StyledWrapper = styled.section<PropStyledWrapper>`
   ${(props) =>
     props.invertedStyle &&
     css`
-      ${mq.range({ until: breakpoints.mobileWide })} {
+      ${mq.range({ until: breakpoints.tablet })} {
         background: #fff;
       }
     `}

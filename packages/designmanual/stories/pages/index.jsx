@@ -524,12 +524,12 @@ storiesOf('Ndla film', module)
     </PageContainer>
   ))
   .add('Læringssti (på NDLA film)', () => (
-    <PageContainer backgroundWide ndlaFilm learningPath>
+    <PageContainer backgroundWide ndlaFilm>
       <Content>
         <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <LearningPathExample invertedStyle />
       </Content>
-      <FooterExample invertedOutlineLargeScreensOnly />
+      <FooterExample inverted />
     </PageContainer>
   ));
 storiesOf('Forklaringstjenesten', module).add('Forklaringstjenesten', () => (

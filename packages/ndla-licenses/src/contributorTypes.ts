@@ -100,7 +100,7 @@ export const contributorTypes: ContributorTypes = {
     idea: 'Idé',
     compiler: 'Sammenstillar',
     correction: 'Korrektur',
-    rightsholder: 'Rettshaver',
+    rightsholder: 'Rettshavar',
     publisher: 'Forlag',
     distributor: 'Distributør',
     supplier: 'Leverandør',

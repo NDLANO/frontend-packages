@@ -232,7 +232,7 @@ const messages = {
     blog: 'Fra bloggen',
   },
   meta: {
-    description: 'Kvalitetssikrede fritt tilgjengelige nettbaserte læremidler for videregående opplæring',
+    description: 'Kvalitetssikrede og fritt tilgjengelige nettbaserte læremidler for videregående opplæring',
     keywords: 'læremiddel,fag,skole,videregående,lærling,pensum,fagstoff',
   },
   masthead: {

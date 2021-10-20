@@ -231,7 +231,7 @@ const messages = {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {
-    description: 'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
+    description: 'Kvalitetssikra og fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
     keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
   masthead: {

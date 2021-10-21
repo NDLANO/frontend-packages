@@ -207,6 +207,10 @@ const StyledContentWrapper = styled.div<InvertItProps>`
     `}
 `;
 
+const StyledNavigationBoxWrapper = styled.div`
+  padding-top: ${spacing.xxsmall};
+`;
+
 type VisualElementProps = {
   type: 'image' | 'video' | 'other';
   element: React.ReactNode;
@@ -355,13 +359,15 @@ const Topic = ({
               )}
               {showContent && <StyledContentWrapper invertedStyle={invertedStyle}>{children}</StyledContentWrapper>}
               {subTopics && subTopics.length !== 0 && (
-                <NavigationBox
-                  colorMode="light"
-                  heading={t('navigation.topics')}
-                  items={subTopics}
-                  onClick={onSubTopicSelected}
-                  invertedStyle={invertedStyle}
-                />
+                <StyledNavigationBoxWrapper>
+                  <NavigationBox
+                    colorMode="light"
+                    heading={t('navigation.topics')}
+                    items={subTopics}
+                    onClick={onSubTopicSelected}
+                    invertedStyle={invertedStyle}
+                  />
+                </StyledNavigationBoxWrapper>
               )}
               {topic.resources}
             </>

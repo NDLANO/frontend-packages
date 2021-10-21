@@ -75,7 +75,7 @@ const messages = {
       contentTypes: 'Fleire innhaldstypar',
       levels: 'Fleire nivå',
       languageFilter: 'Fleire språk',
-      subjects: 'Bytt fag',
+      subjects: 'Byt fag',
     },
     hideLabel: {
       contentTypes: 'Færre innhaldstypar',
@@ -471,8 +471,8 @@ const messages = {
   },
   figure: {
     button: {
-      alternative: 'Bytt til synstolka',
-      original: 'Bytt til original video',
+      alternative: 'Byt til synstolka video',
+      original: 'Byt til original video',
     },
   },
   footer: {

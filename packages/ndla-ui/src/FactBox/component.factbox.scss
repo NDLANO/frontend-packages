@@ -8,7 +8,6 @@ $padding-bottom: 17px;
   padding-bottom: $padding-bottom;
 
   @include inuit-font-size(16px);
-  padding-bottom: $padding-bottom;
 
   &__content {
     position: relative;
@@ -46,6 +45,16 @@ $padding-bottom: 17px;
     .ol-list--roman {
       @include mq(desktop) {
         margin-left: $spacing--large;
+      }
+    }
+  }
+
+  @media print {
+    overflow: visible;
+    &__content {
+      max-height: revert;
+      &:after {
+        display: none;
       }
     }
   }
@@ -106,6 +115,9 @@ $padding-bottom: 17px;
     &:hover,
     &:active {
       background: $brand-color--dark !important;
+    }
+    @media print {
+      display: none !important;
     }
   }
 

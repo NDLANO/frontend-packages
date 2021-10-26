@@ -804,6 +804,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Show concept description',
+    reuse: 'Use concept',
     error: {
       title: 'An error occurred',
       content: 'Could not load the description of the concept.',

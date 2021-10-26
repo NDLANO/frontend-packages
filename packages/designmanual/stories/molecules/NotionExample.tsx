@@ -30,7 +30,6 @@ const Notion = {
   authors: [{ name: 'Fornavn Etternavn' }],
   license: 'CC-BY-SA-4.0',
   linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
-  onReferenceClick: (e: any) => console.log(e), // eslint-disable-line no-console
 };
 
 export default Notion;

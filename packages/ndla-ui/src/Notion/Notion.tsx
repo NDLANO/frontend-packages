@@ -5,12 +5,9 @@ import React, { Fragment } from 'react';
 import { keyframes } from '@emotion/core';
 // @ts-ignore
 import Button from '@ndla/button';
-import { joinArrayWithConjunction } from '@ndla/util';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 import { CursorClick } from '@ndla/icons/action';
 import { Play, ArrowCollapse } from '@ndla/icons/common';
-import { Locale } from '../types';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
 
@@ -149,15 +146,6 @@ const MediaContainer = styled.div`
   }
 `;
 
-const AuthorsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: ${spacing.small} 0;
-  border-bottom: 1px solid #d1d6db;
-  ${fonts.sizes('14px', '24px')};
-  justify-content: space-between;
-`;
-
 const LabelsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -178,31 +166,25 @@ type VisualElementProps = {
 };
 
 export type NotionProps = {
-  authors?: { name: string }[];
   id: string | number;
   labels?: string[];
-  license?: string;
-  locale?: Locale;
-  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
   renderMarkdown?: (text: string) => string;
   text: React.ReactNode;
   title: string;
   visualElement?: VisualElementProps;
   imageElement?: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const Notion = ({
-  authors = [],
   id,
   labels = [],
-  license,
-  locale,
-  onReferenceClick,
   renderMarkdown,
   text,
   title,
   visualElement,
   imageElement,
+  children,
 }: NotionProps) => {
   const { t } = useTranslation();
 
@@ -229,7 +211,7 @@ const Notion = ({
                 {visualElement.type === 'other' && <CursorClick style={{ width: '24px', height: '24px' }} />}
               </ExpandIcon>
               <CollapseIcon>
-                <ArrowCollapse style={{ width: '24px', height: '24px' }}></ArrowCollapse>
+                <ArrowCollapse style={{ width: '24px', height: '24px' }} />
               </CollapseIcon>
             </ExpandVisualElementButton>
           </ImageWrapper>
@@ -253,27 +235,7 @@ const Notion = ({
         </TextWrapper>
         <ClearWrapper />
       </ContentWrapper>
-      {!!authors.length && (
-        <AuthorsContainer>
-          {license && (
-            <LicenseByline licenseRights={getLicenseByAbbreviation(license, locale).rights} marginRight>
-              {t('article.writtenBy', {
-                authors: joinArrayWithConjunction(
-                  authors.map((author) => author.name),
-                  {
-                    conjunction: ` ${t('article.conjunction')} `,
-                  },
-                ),
-              })}
-            </LicenseByline>
-          )}
-          {onReferenceClick && (
-            <Button size="small" borderShape="rounded" outline onClick={onReferenceClick}>
-              {t('article.citeNotion')}
-            </Button>
-          )}
-        </AuthorsContainer>
-      )}
+      {children}
       {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
     </NotionContainer>
   );

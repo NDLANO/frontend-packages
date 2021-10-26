@@ -803,6 +803,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Vis skildring av forklaringa',
+    reuse: 'Bruk forklaring',
     error: {
       title: 'Ein feil oppstod ikke',
       content: 'Kunne ikkje laste skildringa av forklaringa.',

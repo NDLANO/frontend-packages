@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // @ts-ignore
 import FigureWithLicense from '../article/FigureWithLicense';
@@ -14,32 +15,40 @@ import FigureWithLicense from '../article/FigureWithLicense';
 // @ts-ignore
 import FigureImage from '../article/FigureImage';
 
-const Video = () => (
-  <FigureWithLicense type="full-column" resizeIframe caption="Utholdenhet - animasjon av oksygentransporten">
-    <iframe
-      title="Video: Utholdenhet - animasjon av oksygentransporten"
-      height="270"
-      width="480"
-      frameBorder="0"
-      src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
-      allowFullScreen
-    />
-  </FigureWithLicense>
-);
+const Video = () => {
+  const { t } = useTranslation();
+
+  return (
+    <FigureWithLicense
+      type="full-column"
+      resizeIframe
+      caption="Velferdsteknologi"
+      messages={{ rulesForUse: t('license.video.rules'), reuse: t('video.reuse'), download: null }}>
+      <iframe
+        title="Video: Velferdsteknologi"
+        height="270"
+        width="480"
+        frameBorder="0"
+        src="https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6154610667001"
+        allowFullScreen
+      />
+    </FigureWithLicense>
+  );
+};
 
 const Image = () => (
   <FigureImage type="full-column" alt="alt" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
 );
 
 const H5p = () => (
-  <FigureWithLicense type="full-column" resizeIframe caption="Utholdenhet - animasjon av oksygentransporten">
+  <FigureWithLicense type="full-column" resizeIframe caption="Mikroskop" hasHiddenCaption>
     <iframe
-      title="Ekskresjon"
+      title="Mikroskop"
       loading="lazy"
       width="762"
       height="571.5"
       allowFullScreen
-      src="https://h5p.ndla.no/resource/d1816a8f-4641-483a-980b-743defd0f709?locale=nb-no"
+      src="https://h5p.ndla.no/resource/24f047a0-9282-46d2-ac28-860428708be8?locale=nb-no&cssUrl=https%3A%2F%2Fndla.no%2Fstatic%2Fh5p-custom-css.css"
       data-ratio="0.75"
     />
   </FigureWithLicense>

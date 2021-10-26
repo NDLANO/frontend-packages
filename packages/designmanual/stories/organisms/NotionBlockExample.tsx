@@ -7,21 +7,11 @@
  */
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { OneColumn } from '@ndla/ui';
-import { Notion } from '@ndla/ui';
-import { uuid } from '@ndla/util';
 
-import NotionExample from '../molecules/NotionExample';
-// @ts-ignore
-import FigureImage from '../article/FigureImage';
-import { H5p, Video } from '../molecules/VisualElements';
-
-// @ts-ignore
-import FigureWithLicense from '../article/FigureWithLicense';
+import NotionBlock from '../molecules/NotionBlock';
 
 const NotionBlockExample = () => {
-  const { t } = useTranslation();
   return (
     <OneColumn cssModifier="narrow">
       <p>
@@ -32,56 +22,21 @@ const NotionBlockExample = () => {
         En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen
         få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
       </p>
-      <FigureWithLicense
-        messages={{
-          title: t('title'),
-          close: t('close'),
-          learnAboutLicenses: t('license.learnMore'),
-          source: t('source'),
-          rulesForUse: t('license.concept.rules'),
-          reuse: t('concept.reuse'),
-          download: null,
-        }}>
-        <Notion
-          {...NotionExample}
-          imageElement={
-            <FigureImage
-              type="full-column"
-              hasHiddenCaption
-              caption="Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen."
-              alt="Forstørrelsesglass"
-              src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg"
-            />
-          }
-        />
-      </FigureWithLicense>
+      <NotionBlock type="image" />
       <p>
         Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
         planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
       </p>
-      <FigureWithLicense
-        messages={{
-          title: t('title'),
-          close: t('close'),
-          learnAboutLicenses: t('license.learnMore'),
-          source: t('source'),
-          rulesForUse: t('license.concept.rules'),
-          reuse: t('concept.reuse'),
-          download: null,
-        }}>
-        <Notion
-          {...NotionExample}
-          visualElement={{
-            metaImage: {
-              url: 'https://api.staging.ndla.no/image-api/raw/42-45210905.jpg',
-              alt: 'Normer i samfunnet',
-            },
-            type: 'other',
-            element: H5p(),
-          }}
-          id={uuid()}
-        />
-      </FigureWithLicense>
+      <NotionBlock type="video" />
+      <p>
+        Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+        planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+      </p>
+      <p>
+        Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
+        planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+      </p>
+      <NotionBlock type="H5P" />
       <p>
         Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
         av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
@@ -90,29 +45,6 @@ const NotionBlockExample = () => {
         En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen
         få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
       </p>
-      <FigureWithLicense
-        messages={{
-          title: t('title'),
-          close: t('close'),
-          learnAboutLicenses: t('license.learnMore'),
-          source: t('source'),
-          rulesForUse: t('license.concept.rules'),
-          reuse: t('concept.reuse'),
-          download: null,
-        }}>
-        <Notion
-          {...NotionExample}
-          visualElement={{
-            metaImage: {
-              url: 'https://api.staging.ndla.no/image-api/raw/42-45210905.jpg',
-              alt: 'Normer i samfunnet',
-            },
-            type: 'video',
-            element: Video(),
-          }}
-          id={uuid()}
-        />
-      </FigureWithLicense>
       <p>
         Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
         planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.

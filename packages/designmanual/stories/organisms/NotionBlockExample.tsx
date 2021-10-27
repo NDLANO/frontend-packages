@@ -14,41 +14,12 @@ import NotionBlock from '../molecules/NotionBlock';
 const NotionBlockExample = () => {
   return (
     <OneColumn cssModifier="narrow">
-      <p>
-        Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
-        av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-      </p>
-      <p>
-        En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen
-        få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
-      </p>
+      <h2>Begrep med visuelt element bilde</h2>
       <NotionBlock type="image" />
-      <p>
-        Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-        planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-      </p>
+      <h2>Begrep med visuelt element video</h2>
       <NotionBlock type="video" />
-      <p>
-        Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-        planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-      </p>
-      <p>
-        Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-        planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-      </p>
+      <h2>Begrep med visuelt element h5p</h2>
       <NotionBlock type="H5P" />
-      <p>
-        Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen. Derfor er du avhengig
-        av at noen tenner på idéen din og bestemmer seg for å bruke ressurser på nettopp dette prosjektet.
-      </p>
-      <p>
-        En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av noen
-        få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
-      </p>
-      <p>
-        Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen du
-        planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-      </p>
     </OneColumn>
   );
 };

@@ -15,15 +15,14 @@ import {
   subjectMaterialResults,
   searchSubjectTypeOptions,
   topicResults,
-  notionResults,
   resourcesTasksAndActivitiesResults,
   resourcesLearningPathResults,
   resourcesAssessmentResults,
   resourcesExternalResults,
   resourcesSourceMaterialResults,
 } from '../../dummydata/mockSearchResultType';
-import FigureWithLicense from '../article/FigureWithLicense';
 import { competenceGoals, programmes, subjectCategories } from '../../dummydata/mockPrograms';
+import NotionBlock from '../molecules/NotionBlock';
 
 const { contentTypes } = constants;
 
@@ -157,63 +156,6 @@ const resourcesReducer = (state, action) => {
   }
 };
 
-const initNotionResult = () => {
-  return notionResults.map((item) => {
-    if (item.media) {
-      switch (item.media.type) {
-        case 'video':
-          return {
-            ...item,
-            media: {
-              ...item.media,
-              element: (
-                <FigureWithLicense
-                  type="full-column"
-                  resizeIframe
-                  caption="Utholdenhet - animasjon av oksygentransporten">
-                  <iframe
-                    title="Video: Utholdenhet - animasjon av oksygentransporten"
-                    height="270"
-                    width="480"
-                    frameBorder="0"
-                    src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
-                    allowFullScreen
-                  />
-                </FigureWithLicense>
-              ),
-            },
-          };
-        case 'other':
-          return {
-            ...item,
-            media: {
-              ...item.media,
-              element: (
-                <FigureWithLicense
-                  type="full-column"
-                  resizeIframe
-                  caption="Utholdenhet - animasjon av oksygentransporten">
-                  <iframe
-                    title="Ekskresjon"
-                    loading="lazy"
-                    width="762"
-                    height="571.5"
-                    allowFullScreen="allowfullscreen"
-                    src="https://h5p.ndla.no/resource/d1816a8f-4641-483a-980b-743defd0f709?locale=nb-no"
-                    data-ratio="0.75"
-                  />
-                </FigureWithLicense>
-              ),
-            },
-          };
-        default:
-          return item;
-      }
-    }
-    return item;
-  });
-};
-
 const mockSearchDelay = async () => {
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   await delay(200);
@@ -239,8 +181,6 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
   const [programmeFilter, setProgrammeFilter] = useState(() => (showCompetenceGoals ? [] : ['programme_9']));
   // eslint-disable-next-line no-unused-vars
   const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() => (showCompetenceGoals ? ['KM1196'] : []));
-
-  const [notionsItems] = React.useState(initNotionResult);
 
   const [subjectItems] = React.useState(subjectTypeResults);
 
@@ -449,12 +389,13 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
       />
       {!hideNotionsResult && !showCompetenceGoals && (
         <SearchNotionsResult
-          items={notionsItems}
-          totalCount={notionsItems.length}
+          totalCount={2}
           onRemove={() => {
             setHideNotionsResult(true);
-          }}
-        />
+          }}>
+          <NotionBlock type="image" />
+          <NotionBlock type="video" />
+        </SearchNotionsResult>
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
       <FilterButtons

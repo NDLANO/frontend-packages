@@ -228,7 +228,7 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
   return resources.items.filter((item) => item.labels.some((label) => filters.includes(label)));
 };
 
-const SearchPageDemo = ({ showCompetenceGoals }) => {
+const SearchResult = ({ showCompetenceGoals }) => {
   const { t } = useTranslation();
   const [selectedResourceTypes, setSelectedResourceTypes] = useState([]);
   const [hideNotionsResult, setHideNotionsResult] = useState(false);

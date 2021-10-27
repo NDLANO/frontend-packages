@@ -31,9 +31,8 @@ storiesOf('Søk', module)
       <Content>
         <MastheadWithTopicMenu hideSearchButton hideMenuButton />
         <OneColumn cssModifier="clear-desktop" wide>
-          <SearchResultTypeExample showCompetenceGoals />
+          <SearchResult showCompetenceGoals />
         </OneColumn>
-        <MastheadWithTopicMenu searchFieldExpanded />
       </Content>
     </PageContainer>
   ));

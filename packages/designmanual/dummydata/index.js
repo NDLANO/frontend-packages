@@ -12,6 +12,7 @@ import { firstBrightcoveList, secondBrightcoveList, brightCoveMockVideo } from '
 import { firstYouTubeList, secondYouTubeList, youTubeMockVideo } from './mockYouTube';
 
 import { mockDownloadArticleText } from './mockDownloadArticleText';
+import { contentTypeResults } from './mockSearch';
 
 import contentCards from './mockContentCards';
 import { mockListView } from './mockListView';
@@ -60,4 +61,5 @@ export {
   mockFooterLinks,
   dummyLanguageOptions,
   mockExplanationService,
+  contentTypeResults,
 };

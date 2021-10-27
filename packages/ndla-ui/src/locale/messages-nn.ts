@@ -804,7 +804,7 @@ const messages = {
   concept: {
     showDescription: 'Vis skildring av forklaringa',
     error: {
-      title: 'Ein feil oppstod ikke',
+      title: 'Ein feil oppstod',
       content: 'Kunne ikkje laste skildringa av forklaringa.',
     },
   },

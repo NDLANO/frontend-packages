@@ -151,7 +151,7 @@ const LabelsContainer = styled.div`
   align-items: center;
   ${fonts.sizes('14px', '24px')};
   font-family: ${fonts.sans};
-  margin: ${spacing.normal} 0;
+  margin: ${spacing.small} 0;
 `;
 
 type VisualElementProps = {

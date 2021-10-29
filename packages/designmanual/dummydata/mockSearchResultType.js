@@ -33,7 +33,7 @@ const topicResults = [
     url: '#12627',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/43283?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/43283',
       alt: 'Kvinne jogger på gata. Foto.',
     },
     contexts: [{ breadcrumb: ['Kroppsøving', 'Øvingsbank', 'Oppvarming'], url: '#1' }],
@@ -56,7 +56,7 @@ const topicResults = [
     url: '#12451',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/43229?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/43229',
       alt: 'Ung jente holder en ispose på et skadet kne. Foto.',
     },
     contexts: [
@@ -72,7 +72,7 @@ const topicResults = [
     url: '#9009',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/193?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/193',
       alt: 'person med mange armer som gjør forskjellige ting samtidig. Foto.',
     },
     contexts: [
@@ -88,7 +88,7 @@ const topicResults = [
     url: '#10091',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/40927?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/40927',
       alt: 'Hoppe som koser med føllet sitt. Foto.',
     },
     contexts: [
@@ -104,7 +104,7 @@ const topicResults = [
     url: '#9177',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/6448?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/6448',
       alt: 'Symbolbilde for filmopplegg. Foto.',
     },
     contexts: [
@@ -126,7 +126,7 @@ const topicResults = [
     url: '#5660',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/6448?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/6448',
       alt: 'Symbolbilde for filmopplegg. Foto.',
     },
     contexts: [
@@ -148,7 +148,7 @@ const topicResults = [
     url: '#21346',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/45661?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/45661',
       alt: 'To smykker med samisk solgud. Foto.',
     },
     contexts: [{ breadcrumb: ['Håndverk, design og produktutvikling Vg1'], url: '#1' }],
@@ -161,7 +161,7 @@ const topicResults = [
     url: '#22813',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/24749?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/24749',
       alt: 'En globus ligger oppå søppel på en gate. Illustrasjon.',
     },
     contexts: [
@@ -179,7 +179,7 @@ const topicResults = [
     url: '#22572',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/43404?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/43404',
       alt: 'Glade venner med ulik etnisitet tar selfie. Foto.',
     },
     contexts: [
@@ -201,7 +201,7 @@ const topicResults = [
     url: '#24169',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/50093?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/50093',
       alt: ' Ung hund som spring gjennom en treningsbane. Foto.',
     },
     contexts: [{ breadcrumb: ['Naturbruk Vg1', 'Dyrefag'], url: '#1' }],
@@ -214,7 +214,7 @@ const topicResults = [
     url: '#689',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/4627?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/4627',
       alt: 'Drepemetode mosaikk. Illustrasjon.',
     },
     contexts: [
@@ -232,7 +232,7 @@ const topicResults = [
     url: '#1666',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/41134?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/41134',
       alt: 'En rød binders er brukt som et ledd i en metallenke.Foto.',
     },
     contexts: [{ breadcrumb: ['Salg, service og sikkerhet Vg2'], url: '#1' }],
@@ -245,7 +245,7 @@ const topicResults = [
     url: '#25319',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/11892?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/11892',
       alt: 'Elev som lager film. Foto.',
     },
     contexts: [
@@ -267,7 +267,7 @@ const topicResults = [
     url: '#24733',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/11892?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/11892',
       alt: 'Elev som lager film. Foto.',
     },
     contexts: [
@@ -284,7 +284,7 @@ const topicResults = [
     url: '#23265',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/42574?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/42574',
       alt: 'En kulepenn og skrivebok ligger oppå en datamaskin. Foto.',
     },
     contexts: [
@@ -300,7 +300,7 @@ const topicResults = [
     url: '#16750',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/42574?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/42574',
       alt: 'En kulepenn og skrivebok ligger oppå en bærbar datamaskin. Foto.',
     },
     contexts: [
@@ -318,7 +318,7 @@ const topicResults = [
     url: '#15548',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/24212?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/24212',
       alt: '',
     },
     contexts: [
@@ -335,7 +335,7 @@ const topicResults = [
     url: '#21736',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/51785?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/51785',
       alt: ' ',
     },
     contexts: [{ breadcrumb: ['Mediesamfunnet og medieuttrykk Vg1'], url: '#1' }],
@@ -348,7 +348,7 @@ const topicResults = [
     url: '#1157',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/41152?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/41152',
       alt: 'Shopping i nettbutikk på mobiltelefonen. Foto.',
     },
     contexts: [],

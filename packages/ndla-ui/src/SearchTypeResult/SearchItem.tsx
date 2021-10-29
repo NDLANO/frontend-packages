@@ -149,6 +149,9 @@ const ItemTitle = styled.h3`
   }
   ${ItemWrapper}:hover & a {
     box-shadow: inset 0 -1px;
+    &:hover {
+      box-shadow: none;
+    }
   }
 `;
 const ItemText = styled.p`

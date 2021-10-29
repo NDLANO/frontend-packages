@@ -10,18 +10,20 @@ import React from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { WithTranslation, withTranslation } from 'react-i18next';
+import { Cross } from '@ndla/icons/action';
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
 
+const Wrapper = styled.div`
+  margin: ${spacing.small} 0;
+`;
 const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  border-bottom: 2px solid #20588f;
   align-items: center;
-  margin: ${spacing.small} 0;
   justify-content: space-between;
   padding: 0 2px;
   ${mq.range({ until: breakpoints.tablet })} {
@@ -39,35 +41,35 @@ const TypeWrapper = styled.div`
 `;
 
 const SubjectName = styled.span`
-  font-size: 18px;
+  ${fonts.sizes('16px', '24px')};
   margin: 2px ${spacing.small};
   b {
-    font-size: 18px;
+    ${fonts.sizes('16px', '24px')};
     margin-right: 4px;
-    font-weight: 600;
+    text-transform: uppercase;
   }
 `;
 
 const Count = styled.span``;
 
-const CategoryTypeButtonWrapper = styled.div`
-  margin: 4px;
-`;
-
 const CategoryItems = styled.div`
   position: relative;
-  right: -4px;
   button {
     white-space: nowrap;
     max-height: 29px;
   }
   white-space: nowrap;
   display: flex;
-  justify-content: flex-end;
   flex-wrap: wrap;
-  ${mq.range({ until: breakpoints.tablet })} {
-    justify-content: flex-start;
-  }
+  margin: ${spacing.small} 0 0;
+`;
+
+const CategoryTypeButtonWrapper = styled.div`
+  margin: 4px;
+`;
+
+const CategoryTypeCrossWrapper = styled.span`
+  margin-left: ${spacing.xsmall};
 `;
 
 export type FilterOptionsType = {
@@ -83,21 +85,24 @@ type Props = {
   type?: ContentType;
 };
 const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props & WithTranslation) => (
-  <HeaderWrapper>
-    <TypeWrapper>
-      {type && <ContentTypeBadge type={type} background size="large" />}
-      <SubjectName>
-        {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
-        {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
-      </SubjectName>
-    </TypeWrapper>
-    {filters && (
+  <Wrapper>
+    <HeaderWrapper>
+      <TypeWrapper>
+        {type && <ContentTypeBadge type={type} background border={false} size="large" />}
+        <SubjectName>
+          {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
+          {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
+        </SubjectName>
+      </TypeWrapper>
+    </HeaderWrapper>
+    {filters.length > 0 && (
       <CategoryItems>
         {filters.map((option: FilterOptionsType) => (
           <CategoryTypeButtonWrapper key={option.id}>
             <Button
-              size="small"
-              lighter={!option.active}
+              size="xsmall"
+              borderShape="rounded"
+              greyLighter={!option.active}
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 if (e.currentTarget && option.active) {
                   e.currentTarget.blur();
@@ -105,11 +110,16 @@ const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props
                 onFilterClick(option.id);
               }}>
               {option.name}
+              {option.active && (
+                <CategoryTypeCrossWrapper>
+                  <Cross />
+                </CategoryTypeCrossWrapper>
+              )}
             </Button>
           </CategoryTypeButtonWrapper>
         ))}
       </CategoryItems>
     )}
-  </HeaderWrapper>
+  </Wrapper>
 );
 export default React.memo(withTranslation()(SearchTypeHeader));

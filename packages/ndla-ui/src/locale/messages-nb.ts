@@ -124,9 +124,11 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Viser {{fromCount}} til {{toCount}} av {{totalCount}}',
+      showing: 'Viser {{count}} av {{totalCount}} {{contentType}}',
+      showingAll: 'Viser alle',
       showMore: 'Vis mer',
       showAll: 'Vis alle',
+      toTopOfPage: 'Til toppen',
       toSubjectPageLabel: 'Gå til fagsiden',
       all: 'Alle',
       hits: '{{count}} Treff',

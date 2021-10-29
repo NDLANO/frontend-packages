@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 // @ts-ignore
@@ -45,7 +45,7 @@ const resourceTypeColor = (type: string) => {
     case contentTypes.LEARNING_PATH:
       return colors.learningPath.light;
     default:
-      return null;
+      return '';
   }
 };
 
@@ -53,26 +53,23 @@ type ItemTypeProps = {
   type?: ContentType;
 };
 
-const ItemWrapper = styled.div`
+const ItemWrapper = styled.div<ItemTypeProps>`
   flex-direction: column;
+  display: flex;
+  height: 350px;
+  border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
-const ItemHead = styled.div<ItemTypeProps>`
-  height: 200px;
+const ItemHead = styled.div`
+  background: ${colors.white};
   position: relative;
   a {
     box-shadow: none;
   }
-  ${mq.range({ from: breakpoints.tablet })} {
-    height: 160px;
-  }
-  ${mq.range({ from: breakpoints.desktop })} {
-    height: 100px;
-  }
-  border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
-  border-bottom: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  min-height: 40px;
+  flex: 1;
   img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -82,58 +79,58 @@ const ItemHead = styled.div<ItemTypeProps>`
   }
 `;
 
-const ItemIcon = styled.div<ItemTypeProps>`
-  height: 100%;
-  background: #ccc;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+const ContentTypeWrapper = styled.div<ItemTypeProps>`
+  height: 48px;
+  background: ${(props) => props.type && `${resourceTypeColor(props.type)}`};
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 ${spacing.normal};
+  ${fonts.sizes('12px', '16px')};
+  font-weight: ${fonts.weight.semibold};
+`;
+
+const ContentTypeIcon = styled.span<ItemTypeProps>`
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='23' viewBox='17 0 78 23' fill='none'%3E%3Cpath d='M35.6874 10.8284C37.0999 8.9889 38.405 7.28934 40 6C44.8452 2.08335 48.9078 0 56 0C63.0922 0 67.6548 2.5833 72.5 6.49995C74.0499 7.75284 75.2937 9.39082 76.6385 11.1617C80.0028 15.5921 83.9988 20.8545 95 23H17C27.9865 20.8573 32.1701 15.409 35.6874 10.8284ZM352' fill='${(
+    props,
+  ) => props.type && `${encodeURIComponent(resourceTypeColor(props.type))}`}'/%3E%3C/svg%3E");
+  background-position: top;
+  background-repeat: no-repeat;
+  left: 17px;
+  top: -23px;
+  height: 45px;
+  width: 78px;
   display: flex;
   justify-content: center;
   align-items: center;
-  ${(props) => props.type && `background: ${resourceTypeColor(props.type)};`}
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
-const ItemContent = styled.div<ItemTypeProps>`
-  border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
-  border-top: 0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: ${spacing.small};
-`;
-
-const ItemPillWrapper = styled.div`
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-`;
-const ItemPill = styled.div`
-  display: inline-block;
-  background: ${colors.brand.greyLightest};
-  padding: 2px 4px;
-  border-radius: 2px;
-  ${fonts.sizes('12px', '20px')};
-  font-weight: ${fonts.weight.semibold};
-  margin: 8px 4px 4px 0;
+const ItemContent = styled.div`
+  padding: 0 ${spacing.normal} ${spacing.small};
 `;
 
 const ItemTitle = styled.h3`
-  font-size: 18px;
-  line-height: 24px;
+  ${fonts.sizes('24px', '28px')};
   margin-top: ${spacing.small};
-  font-weight: 600;
+  font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
 `;
 const ItemText = styled.p`
-  font-size: 15px;
-  line-height: 20px;
-  margin-bottom: ${spacing.small};
+  ${fonts.sizes('16px', '24px')};
+  margin: ${spacing.small} 0;
   word-break: break-word;
   overflow-wrap: anywhere;
 `;
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};
-  font-size: 16px;
-  line-height: 24px;
+  ${fonts.sizes('14px', '20px')};
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -149,7 +146,7 @@ const BreadcrumbItem = styled.span`
 const ContextsWrapper = styled.div`
   margin-top: ${spacing.small};
   button {
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.sizes('14px', '20px')};
     box-shadow: none;
     &:hover {
       box-shadow: inset 0 -1px;
@@ -238,79 +235,82 @@ const SearchItem = ({ item, type }: Props) => {
 
   return (
     <>
-      <ItemWrapper>
-        <ItemHead type={type}>
-          {img ? (
+      <ItemWrapper type={type}>
+        <ItemHead>
+          {img && (
             <SafeLink to={url}>
               <img src={img.url} alt={img.alt} />
             </SafeLink>
-          ) : (
-            <SafeLink to={url}>
-              {type && (
-                <ItemIcon type={type}>
-                  <ContentTypeBadge type={type} size="small" border={false} />
-                </ItemIcon>
-              )}
-            </SafeLink>
           )}
         </ItemHead>
-        <ItemContent type={type}>
+        <ContentTypeWrapper type={type}>
+          <ContentTypeIcon type={type}>{type && <ContentTypeBadge type={type} border={false} />}</ContentTypeIcon>
           {labels.length > 0 && (
-            <ItemPillWrapper>
-              {labels.map((label) => (
-                <ItemPill key={label}>{label}</ItemPill>
+            <>
+              {labels.map((label, i) => (
+                <Fragment key={label}>
+                  {' '}
+                  {label}
+                  {i < labels?.length - 1 && <> &#8226;</>}
+                </Fragment>
               ))}
-            </ItemPillWrapper>
+            </>
           )}
+        </ContentTypeWrapper>
+        <ItemContent>
           <ItemTitle>
             <SafeLink to={url}>{title}</SafeLink>
           </ItemTitle>
           {item.children}
           <ItemText>{parse(ingress)}</ItemText>
-          {mainContext && <Breadcrumb breadcrumb={mainContext.breadcrumb} />}
-          {contexts.length > 1 && (
-            <ContextsWrapper>
-              <Modal
-                activateButton={
-                  <Button link>
-                    {t('searchPage.contextModal.button', {
-                      count: contexts.length - 1,
-                    })}
-                  </Button>
-                }
-                animation="subtle"
-                animationDuration={50}
-                backgroundColor="white"
-                size="medium">
-                {(onClose: () => void) => (
-                  <>
-                    <ModalHeader>
-                      <ModalHeading>{t('searchPage.contextModal.heading')}</ModalHeading>
-                      <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
-                    </ModalHeader>
-                    <ModalContent>
-                      <ContextList>
-                        {contexts.map((context) => (
-                          <ContextListItem key={context.url}>
-                            <SafeLink to={context.url}>{title}</SafeLink>
-                            <Breadcrumb breadcrumb={context.breadcrumb}>
-                              <IconWrapper>
-                                {context.isAdditional ? (
-                                  <Additional style={{ width: '22px', height: '22px' }} />
-                                ) : (
-                                  <Core style={{ width: '22px', height: '22px' }} />
-                                )}
-                              </IconWrapper>
-                            </Breadcrumb>
-                          </ContextListItem>
-                        ))}
-                      </ContextList>
-                    </ModalContent>
-                  </>
+          <ContextsWrapper>
+            {mainContext && (
+              <Breadcrumb breadcrumb={mainContext.breadcrumb}>
+                &nbsp;
+                {contexts.length > 1 && (
+                  <Modal
+                    activateButton={
+                      <Button link>
+                        {t('searchPage.contextModal.button', {
+                          count: contexts.length - 1,
+                        })}
+                      </Button>
+                    }
+                    animation="subtle"
+                    animationDuration={50}
+                    backgroundColor="white"
+                    size="medium">
+                    {(onClose: () => void) => (
+                      <>
+                        <ModalHeader>
+                          <ModalHeading>{t('searchPage.contextModal.heading')}</ModalHeading>
+                          <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
+                        </ModalHeader>
+                        <ModalContent>
+                          <ContextList>
+                            {contexts.map((context) => (
+                              <ContextListItem key={context.url}>
+                                <SafeLink to={context.url}>{title}</SafeLink>
+                                <Breadcrumb breadcrumb={context.breadcrumb}>
+                                  <IconWrapper>
+                                    {context.isAdditional ? (
+                                      <Additional style={{ width: '22px', height: '22px' }} />
+                                    ) : (
+                                      <Core style={{ width: '22px', height: '22px' }} />
+                                    )}
+                                  </IconWrapper>
+                                </Breadcrumb>
+                              </ContextListItem>
+                            ))}
+                          </ContextList>
+                        </ModalContent>
+                      </>
+                    )}
+                  </Modal>
                 )}
-              </Modal>
-            </ContextsWrapper>
-          )}
+              </Breadcrumb>
+            )}
+          </ContextsWrapper>
         </ItemContent>
       </ItemWrapper>
     </>

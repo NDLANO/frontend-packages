@@ -9,20 +9,22 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
-import { ChevronDown } from '@ndla/icons/common';
-// @ts-ignore
 import Button from '@ndla/button';
-import { spacing } from '@ndla/core';
+import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
 const ResultNav = styled.div`
   font-size: 14px;
   font-weight: 600;
-  margin: ${spacing.normal} 0;
+  margin: ${spacing.small} 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   button.nav {
-    margin-right: ${spacing.xsmall};
-    font-size: 18px;
     font-weight: 600;
+    border-width: 1px;
+    border-color: ${colors.brand.tertiary};
     &:disabled {
       opacity: 0.8;
     }
@@ -30,33 +32,69 @@ const ResultNav = styled.div`
 `;
 
 const NavInfo = styled.div`
-  font-size: 16px;
+  ${fonts.sizes('16px', '24px')};
   font-weight: 400;
   margin-bottom: ${spacing.small};
+`;
+
+const ProgressBar = styled.div`
+  width: 200px;
+  height: 2px;
+  background: ${colors.brand.tertiary};
+  margin: 0 0 ${spacing.small};
+`;
+
+type ProgressType = {
+  width: number;
+};
+const Progress = styled.span<ProgressType>`
+  display: block;
+  background: ${colors.brand.primary};
+  height: 2px;
+  width: ${(props) => props.width}%;
 `;
 
 export type PaginationType = {
   onShowMore: () => void;
   totalCount: number;
-  fromCount?: number;
   toCount: number;
+  contentType?: string;
 };
 
-const ResultNavigation = ({ onShowMore, totalCount, fromCount = 1, toCount }: PaginationType) => {
+const ResultNavigation = ({ onShowMore, totalCount, toCount, contentType = '' }: PaginationType) => {
   const { t } = useTranslation();
   const isMore = toCount < totalCount;
+  const progress = Math.ceil((toCount / totalCount) * 100);
+
+  const onToTopHandler = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <ResultNav>
       <NavInfo>
-        {t('searchPage.resultType.showing', {
-          fromCount,
-          toCount,
-          totalCount,
-        })}
+        {isMore
+          ? t('searchPage.resultType.showing', {
+              count: toCount,
+              totalCount,
+              contentType,
+            })
+          : t('searchPage.resultType.showingAll')}
       </NavInfo>
-      {isMore && (
-        <Button className="nav" link onClick={onShowMore}>
-          {t('searchPage.resultType.showMore')} <ChevronDown />
+      <ProgressBar>
+        <Progress width={progress} />
+      </ProgressBar>
+      {isMore ? (
+        <Button className="nav" outline onClick={onShowMore}>
+          {t('searchPage.resultType.showMore')}
+        </Button>
+      ) : (
+        <Button className="nav" outline onClick={onToTopHandler}>
+          {t('searchPage.resultType.toTopOfPage')}
         </Button>
       )}
     </ResultNav>

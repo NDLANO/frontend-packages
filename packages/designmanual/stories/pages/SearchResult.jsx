@@ -27,8 +27,8 @@ import { competenceGoals, programmes, subjectCategories } from '../../dummydata/
 
 const { contentTypes } = constants;
 
-const PAGESIZE_SINGLE = 8;
-const PAGESIZE_ALL = 4;
+const PAGESIZE_SINGLE = 12;
+const PAGESIZE_ALL = 6;
 
 const responseDataSource = [
   {
@@ -79,9 +79,9 @@ const searchResults = responseDataSource.map((resourceType) => {
       });
     }
   });
-  if (filters.length) {
+  /* if (filters.length) {
     filters.unshift({ id: 'all', name: 'Alle', active: true });
-  }
+  }*/
   return { ...resourceType, pageSize: PAGESIZE_ALL, filters };
 });
 
@@ -262,11 +262,13 @@ const SearchResult = ({ showCompetenceGoals }) => {
         });
       } else {
         const allFilter = updateFilters.find((item) => 'all' === item.id);
-        allFilter.active = false;
         // First flip active state of clicked element
         selectedFilter.active = !selectedFilter.active;
-        if (!resources.filters.some((item) => item.active)) {
-          allFilter.active = true;
+        if (allFilter) {
+          allFilter.active = false;
+          if (!resources.filters.some((item) => item.active)) {
+            allFilter.active = true;
+          }
         }
       }
       const activeFilters = updateFilters.filter((filter) => filter.active);

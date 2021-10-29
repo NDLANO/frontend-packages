@@ -30,11 +30,8 @@ const Container = styled.div<ContainerProps>`
     column-gap: ${spacing.normal};
     grid-template-columns: repeat(2, 1fr);
   }
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    grid-template-columns: repeat(3, 1fr);
-  }
   ${mq.range({ from: breakpoints.desktop })} {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 

@@ -124,9 +124,11 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Showing {{fromCount}} to {{toCount}} of {{totalCount}}',
+      showing: 'Showing {{count}} of {{totalCount}} {{contentType}}',
+      showingAll: 'Showing all',
       showMore: 'Show more',
       showAll: 'Show all',
+      toTopOfPage: 'To top of page',
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
       hits: '{{count}} hits',

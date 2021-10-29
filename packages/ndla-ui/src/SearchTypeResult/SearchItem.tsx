@@ -53,13 +53,28 @@ type ItemTypeProps = {
   type?: ContentType;
 };
 
+const Container = styled.div`
+  display: flex;
+  height: 350px;
+  align-items: center;
+  justify-content: center;
+`;
+
 const ItemWrapper = styled.div<ItemTypeProps>`
   flex-direction: column;
   display: flex;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
   border-radius: 5px;
   overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    margin-left: -2px;
+    margin-right: -2px;
+  }
 `;
 
 const ItemHead = styled.div`
@@ -107,8 +122,15 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
   align-items: center;
 
   svg {
+    transition: all 0.2s ease-in-out;
     width: 20px;
     height: 20px;
+  }
+  ${ItemWrapper}:hover & {
+    svg {
+      width: 26px;
+      height: 26px;
+    }
   }
 `;
 
@@ -121,6 +143,13 @@ const ItemTitle = styled.h3`
   margin-top: ${spacing.small};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
+  a {
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+  }
+  ${ItemWrapper}:hover & a {
+    box-shadow: inset 0 -1px;
+  }
 `;
 const ItemText = styled.p`
   ${fonts.sizes('16px', '24px')};
@@ -234,7 +263,7 @@ const SearchItem = ({ item, type }: Props) => {
   );
 
   return (
-    <>
+    <Container>
       <ItemWrapper type={type}>
         <ItemHead>
           {img && (
@@ -313,7 +342,7 @@ const SearchItem = ({ item, type }: Props) => {
           </ContextsWrapper>
         </ItemContent>
       </ItemWrapper>
-    </>
+    </Container>
   );
 };
 

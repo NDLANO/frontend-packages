@@ -109,6 +109,11 @@ const ContentTypeWrapper = styled.div<ItemTypeProps>`
   padding: 0 ${spacing.normal};
   ${fonts.sizes('12px', '16px')};
   font-weight: ${fonts.weight.semibold};
+
+  transition: all ${animations.durations.fast} ease-in-out;
+  ${ItemWrapper}:hover & {
+    padding: 0 calc(${spacing.normal} + 2px);
+  }
 `;
 
 const ContentTypeIcon = styled.span<ItemTypeProps>`
@@ -147,12 +152,11 @@ const ItemContent = styled.div<ItemTypeProps>`
   justify-content: space-between;
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {
-    padding-left: calc(${spacing.normal} + 2px);
-    padding-right: calc(${spacing.normal} + 2px);
+    padding: 0 calc(${spacing.normal} + 2px) calc(${spacing.small} + 2px);
   }
 `;
 
-const ItemTitle = styled.h3`
+const ItemTitle = styled.h3<ItemTypeProps>`
   ${fonts.sizes('24px', '28px')};
   margin-top: ${spacing.small};
   font-weight: ${fonts.weight.semibold};
@@ -166,6 +170,7 @@ const ItemTitle = styled.h3`
     &:hover {
       box-shadow: none;
     }
+    ${(props) => props.type === contentTypes.TOPIC && `padding-left:2px; padding-right: 2px;`};
   }
 `;
 const ItemText = styled.div`
@@ -196,7 +201,7 @@ const SearchItem = ({ item, type }: Props) => {
       <ItemWrapper type={type}>
         {type === contentTypes.TOPIC ? (
           <ItemTopicHeader image={img}>
-            <ItemTitle>
+            <ItemTitle type={type}>
               <SafeLink to={url}>{title}</SafeLink>
             </ItemTitle>
           </ItemTopicHeader>

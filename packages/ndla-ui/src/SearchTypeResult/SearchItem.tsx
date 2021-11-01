@@ -73,11 +73,13 @@ const ItemWrapper = styled.div<ItemTypeProps>`
       height: calc(100% + 4px);
       width: calc(100% + 4px);
     }
-    .topic-label svg {
-      width: 28px;
-      height: 28px;
-      margin-top: -2px;
-      margin-left: -2px;
+    .topic-label {
+      svg {
+        width: 28px;
+        height: 28px;
+        margin-top: -2px;
+        margin-left: -2px;
+      }
     }
   }
 `;
@@ -156,7 +158,14 @@ const ItemContent = styled.div<ItemTypeProps>`
   }
 `;
 
-const ItemTitle = styled.h3<ItemTypeProps>`
+const ItemTitleWrapper = styled.div<ItemTypeProps>`
+  transition: all ${animations.durations.fast} ease-in-out;
+  ${ItemWrapper}:hover & {
+    ${(props) => props.type === contentTypes.TOPIC && `padding-left:2px; padding-right: 2px;`};
+  }
+`;
+
+const ItemTitle = styled.h3`
   ${fonts.sizes('24px', '28px')};
   margin-top: ${spacing.small};
   font-weight: ${fonts.weight.semibold};
@@ -170,7 +179,6 @@ const ItemTitle = styled.h3<ItemTypeProps>`
     &:hover {
       box-shadow: none;
     }
-    ${(props) => props.type === contentTypes.TOPIC && `padding-left:2px; padding-right: 2px;`};
   }
 `;
 const ItemText = styled.div`
@@ -201,9 +209,11 @@ const SearchItem = ({ item, type }: Props) => {
       <ItemWrapper type={type}>
         {type === contentTypes.TOPIC ? (
           <ItemTopicHeader image={img}>
-            <ItemTitle type={type}>
-              <SafeLink to={url}>{title}</SafeLink>
-            </ItemTitle>
+            <ItemTitleWrapper type={type}>
+              <ItemTitle>
+                <SafeLink to={url}>{title}</SafeLink>
+              </ItemTitle>
+            </ItemTitleWrapper>
           </ItemTopicHeader>
         ) : (
           <>
@@ -232,9 +242,11 @@ const SearchItem = ({ item, type }: Props) => {
         )}
         <ItemContent type={type}>
           {type !== contentTypes.TOPIC && (
-            <ItemTitle>
-              <SafeLink to={url}>{title}</SafeLink>
-            </ItemTitle>
+            <ItemTitleWrapper type={type}>
+              <ItemTitle>
+                <SafeLink to={url}>{title}</SafeLink>
+              </ItemTitle>
+            </ItemTitleWrapper>
           )}
           {item.children}
           <ItemText>{parse(ingress)}</ItemText>

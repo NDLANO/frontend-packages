@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 import SafeLink from '@ndla/safelink';
 
-import { colors, fonts, spacing } from '@ndla/core';
+import { animations, colors, fonts, spacing } from '@ndla/core';
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
@@ -63,7 +63,7 @@ const ItemWrapper = styled.div<ItemTypeProps>`
   border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
   border-radius: 5px;
   overflow: hidden;
-  transition: all 0.2s ease-in-out;
+  transition: all ${animations.durations.fast} ease-in-out;
   &:hover {
     height: calc(100% + 4px);
     width: calc(100% + 4px);
@@ -127,7 +127,7 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
   align-items: center;
 
   svg {
-    transition: all 0.2s ease-in-out;
+    transition: all ${animations.durations.fast} ease-in-out;
     width: 20px;
     height: 20px;
   }
@@ -145,6 +145,11 @@ const ItemContent = styled.div<ItemTypeProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all ${animations.durations.fast} ease-in-out;
+  ${ItemWrapper}:hover & {
+    padding-left: calc(${spacing.normal} + 2px);
+    padding-right: calc(${spacing.normal} + 2px);
+  }
 `;
 
 const ItemTitle = styled.h3`
@@ -154,7 +159,7 @@ const ItemTitle = styled.h3`
   overflow-wrap: anywhere;
   a {
     box-shadow: none;
-    transition: all 0.2s ease-in-out;
+    transition: all ${animations.durations.fast} ease-in-out;
   }
   ${ItemWrapper}:hover & a {
     box-shadow: inset 0 -1px;
@@ -163,9 +168,8 @@ const ItemTitle = styled.h3`
     }
   }
 `;
-const ItemText = styled.p`
+const ItemText = styled.div`
   ${fonts.sizes('16px', '24px')};
-  margin: ${spacing.small} 0;
   word-break: break-word;
   overflow-wrap: anywhere;
 `;

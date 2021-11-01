@@ -41,6 +41,9 @@
     left: 0;
     right: 0;
     position: fixed;
+    @media print {
+      position: relative;
+    }
   }
 
   &--showLoaderWhenNeeded {
@@ -110,6 +113,9 @@
   &__placeholder {
     min-height: $masthead-height;
     width: 100%;
+    @media print {
+      min-height: revert;
+    }
   }
 
   &__content {

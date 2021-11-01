@@ -273,7 +273,7 @@ const LearningPathExample = ({ invertedStyle }) => {
                   license={currentLearningStep.license}
                 />
               )}
-              {articleId && <ArticleLoader hideForm hideResources articleId={articleId} />}
+              {articleId && <ArticleLoader hideForm hideResources articleId={articleId} articleModifier="clean" />}
               {isLastStep && (
                 <LearningPathLastStepNavigation
                   learningPathName={learningStepsData.title.title}

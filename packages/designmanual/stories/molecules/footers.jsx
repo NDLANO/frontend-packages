@@ -6,14 +6,7 @@ import ZendeskButton from '@ndla/zendesk';
 import { withTranslation } from 'react-i18next';
 import { mockFooterLinks } from '../../dummydata';
 
-const FooterExample = ({
-  inverted,
-  invertedOutlineLargeScreensOnly,
-  t,
-  hideLanguageSelector,
-  i18n,
-  isAuthenticated,
-}) => (
+const FooterExample = ({ inverted, t, hideLanguageSelector, i18n, isAuthenticated }) => (
   <Footer
     links={mockFooterLinks}
     languageSelector={
@@ -23,7 +16,6 @@ const FooterExample = ({
           outline
           center
           inverted={inverted}
-          invertedOutlineLargeScreensOnly={invertedOutlineLargeScreensOnly}
           options={i18n.options.supportedLanguages}
           currentLanguage={i18n.language}
         />

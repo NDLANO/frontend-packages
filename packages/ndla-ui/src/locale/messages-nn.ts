@@ -75,7 +75,7 @@ const messages = {
       contentTypes: 'Fleire innhaldstypar',
       levels: 'Fleire nivå',
       languageFilter: 'Fleire språk',
-      subjects: 'Bytt fag',
+      subjects: 'Byt fag',
     },
     hideLabel: {
       contentTypes: 'Færre innhaldstypar',
@@ -231,7 +231,7 @@ const messages = {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
   meta: {
-    description: 'Kvalitetssikra fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
+    description: 'Kvalitetssikra og fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
     keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',
   },
   masthead: {
@@ -471,8 +471,8 @@ const messages = {
   },
   figure: {
     button: {
-      alternative: 'Bytt til synstolka',
-      original: 'Bytt til original video',
+      alternative: 'Byt til synstolka video',
+      original: 'Byt til original video',
     },
   },
   footer: {
@@ -804,7 +804,7 @@ const messages = {
   concept: {
     showDescription: 'Vis skildring av forklaringa',
     error: {
-      title: 'Ein feil oppstod ikke',
+      title: 'Ein feil oppstod',
       content: 'Kunne ikkje laste skildringa av forklaringa.',
     },
   },

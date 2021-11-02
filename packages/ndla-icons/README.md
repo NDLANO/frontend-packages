@@ -68,7 +68,7 @@ _TLDR:_ Change/Add/Remove svg file(s). Run `node scripts/createIconComponents.js
 2. Run `node scripts/createTsIconComponents.js` from root folder.
 3. Commit changes.
 
-### Rename or adding new folders
+### Rename or add new folders
 
 1. Do changes.
 2. Run `node scripts/createTsIconComponents.js` from root folder.

@@ -106,7 +106,7 @@ $small-viewport: '(max-width: 600px)';
     line-height: 1;
   }
 
-  &__header svg {
+  &__header > svg {
     color: $brand-color;
     margin-left: 0.5rem;
     width: 1.5rem;

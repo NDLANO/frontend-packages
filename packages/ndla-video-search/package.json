@@ -30,6 +30,7 @@
     "@ndla/licenses": "^1.0.3",
     "@ndla/tabs": "^1.0.5",
     "@ndla/util": "^1.0.3",
+    "@ndla/icons": "^1.0.1",
     "react-bem-helper": "^1.4.1"
   },
   "publishConfig": {

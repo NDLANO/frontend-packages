@@ -842,6 +842,7 @@ const messages = {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
     },
   },
+  checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
 };
 
 export default messages;

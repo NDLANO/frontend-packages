@@ -185,5 +185,5 @@ const CompetenceGoalTabdata = [
 ];
 
 export const CompetenceGoalListExample = () => {
-  return <CompetenceGoalTab title="Helse- og oppvekstfag Vg1" list={CompetenceGoalTabdata} />;
+  return <CompetenceGoalTab title="Helse- og oppvekstfag Vg1" list={CompetenceGoalTabdata} highlightSearchBox />;
 };

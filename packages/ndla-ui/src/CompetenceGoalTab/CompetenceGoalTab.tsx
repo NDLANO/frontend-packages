@@ -8,7 +8,10 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { colors, spacing, mq, breakpoints } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
+// @ts-ignore
+import { ArrowFeatureTips  } from '@ndla/icons/common';
 // @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
@@ -17,12 +20,14 @@ import CompetenceItem, { ListItemProp } from './CompetenceItem';
 
 type CompetenceProps = {
   list: ListItemProp[];
+  highlightSearchBox?: boolean;
 };
 
 const Wrapper = styled.div`
   h2 {
     margin: 0 0 ${spacing.medium};
   }
+  position: relative;
 `;
 
 const TabWrapper = styled.div`
@@ -42,8 +47,52 @@ const LicenseIconsTextWrapper = styled.span`
   margin-left: 5px;
 `;
 
-const CompetenceGoalTab = ({ list }: CompetenceProps) => {
+const HighlightWrapper = styled.div`
+  position: absolute;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(150px, 50%);
+
+  svg {
+    width: 32px;
+    height: auto;
+    position: relative;
+    left: -38px;
+    margin-top: ${spacing.normal};
+  }
+  
+  ${mq.range({ until: breakpoints.wide })} {
+    transform: translate(95px, 35%);
+
+    svg {
+      transform: rotate(-16deg);
+      left: -24px;
+      margin-top: ${spacing.small};
+    }
+  }
+
+  ${mq.range({ until: breakpoints.desktop })} {
+    display: none;
+  }
+`;
+
+const HighlightText = styled.span`
+  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+  display: inline-block;
+  color: ${colors.text.light};
+  transform: rotate(14deg);
+  font-size: 20px;
+  max-width: 170px;
+  text-align: center;
+  font-family: 'Shadows Into Light Two', cursive;
+`;
+
+const CompetenceGoalTab = ({ list, highlightSearchBox }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
+  const { t } = useTranslation();
 
   return (
     <Wrapper>
@@ -62,6 +111,10 @@ const CompetenceGoalTab = ({ list }: CompetenceProps) => {
           );
         })}
       </TabWrapper>
+      { highlightSearchBox && <HighlightWrapper>
+        <HighlightText>{t('checkOutNewFeature')}</HighlightText>
+        <ArrowFeatureTips />
+      </HighlightWrapper> }
       <CompetenceItem item={currentTabItem} />
       <LicenseByline licenseRights={[CC, BY]}>
         <LicenseIconsTextWrapper>UDIR</LicenseIconsTextWrapper>

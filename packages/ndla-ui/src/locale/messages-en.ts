@@ -844,6 +844,7 @@ const messages = {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
     },
   },
+  checkOutNewFeature: 'New feature',
 };
 
 export default messages;

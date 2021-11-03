@@ -9,7 +9,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints } from '@ndla/core';
-import em from 'polished/lib/helpers/em';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { ArrowFeatureTips } from '@ndla/icons/common';
@@ -55,7 +54,7 @@ const HighlightWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translate(150px, 50%);
+  transform: translate(180px, 50%);
 
   svg {
     width: 32px;
@@ -66,16 +65,6 @@ const HighlightWrapper = styled.div`
   }
 
   ${mq.range({ until: breakpoints.wide })} {
-    transform: translate(95px, 35%);
-
-    svg {
-      transform: rotate(-16deg);
-      left: -24px;
-      margin-top: ${spacing.small};
-    }
-  }
-
-  ${mq.range({ until: em('1090px') })} {
     display: none;
   }
 `;

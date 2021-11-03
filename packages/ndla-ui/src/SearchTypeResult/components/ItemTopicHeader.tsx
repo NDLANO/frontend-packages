@@ -7,24 +7,38 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { animations, fonts, spacing } from '@ndla/core';
-import { Bookmark } from '@ndla/icons/action';
-// @ts-ignore
-import { makeSrcQueryString } from '../../Image';
+import { Subject } from '@ndla/icons/contentType';
+import SafeLink from '@ndla/safelink';
 
-const Wrapper = styled.div`
+import { SearchItemType } from '../SearchItem';
+
+const Wrapper = styled(SafeLink)`
   padding: ${spacing.small} ${spacing.normal};
+  box-shadow: none;
+  color: unset;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  min-height: 0;
+  flex: 1;
 `;
 
 const Label = styled.div`
   ${fonts.sizes('12px', '16px')};
   font-weight: ${fonts.weight.semibold};
+  height: 26px;
+  display: flex;
+  align-items: center;
+  margin-top: ${spacing.small};
+  transition: all ${animations.durations.fast} ease-in-out;
 
   svg {
     transition: all ${animations.durations.fast} ease-in-out;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     margin-right: ${spacing.xsmall};
   }
 `;
@@ -51,24 +65,22 @@ const TopicHeaderImage = styled.img`
 
 type Props = {
   children: React.ReactNode;
-  image?: { url: string; alt: string; crop?: object; focalPoint?: object } | null;
+  url: SearchItemType['url'];
+  image?: SearchItemType['img'] | null;
 };
-const ItemTopicHeader = ({ children, image }: Props) => {
+const ItemTopicHeader = ({ children, image, url }: Props) => {
+  const { t } = useTranslation();
   return (
-    <Wrapper>
-      <Label className="topic-label">
-        <Bookmark />
-        Emne
-      </Label>
+    <Wrapper to={url}>
       {image && (
         <TopicHeaderVisualElementWrapper>
-          <TopicHeaderImage
-            className="topic-header-image"
-            src={`${image.url}?${makeSrcQueryString(400, image.crop, image.focalPoint)}`}
-            alt={image.alt}
-          />
+          <TopicHeaderImage className="topic-header-image" src={image.url} alt={image.alt} />
         </TopicHeaderVisualElementWrapper>
       )}
+      <Label className="topic-label">
+        <Subject />
+        {t('contentTypes.topic-article')}
+      </Label>
       {children}
     </Wrapper>
   );

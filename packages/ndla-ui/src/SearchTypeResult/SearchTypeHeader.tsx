@@ -41,12 +41,11 @@ const TypeWrapper = styled.div`
 `;
 
 const SubjectName = styled.span`
-  ${fonts.sizes('16px', '24px')};
+  ${fonts.sizes('18px', '24px')};
   margin: 2px ${spacing.small};
   b {
-    ${fonts.sizes('16px', '24px')};
+    ${fonts.sizes('18px', '24px')};
     margin-right: 4px;
-    text-transform: uppercase;
   }
 `;
 

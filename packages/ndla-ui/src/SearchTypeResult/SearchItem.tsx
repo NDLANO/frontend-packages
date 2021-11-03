@@ -6,24 +6,23 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
-import SafeLink from '@ndla/safelink';
 
+import SafeLink from '@ndla/safelink';
 import { animations, colors, fonts, spacing } from '@ndla/core';
+
 import { ContentType } from './SearchTypeResult';
 // @ts-ignore
 import constants from '../model';
-
-// @ts-ignore
-import ContentTypeBadge from '../ContentTypeBadge';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
+import ItemResourceHeader from './components/ItemResourceHeader';
 
 const { contentTypes } = constants;
 
-const resourceTypeColor = (type: string) => {
+export const resourceTypeColor = (type: string) => {
   switch (type) {
     case contentTypes.SUBJECT_MATERIAL:
       return colors.subjectMaterial.light;
@@ -45,7 +44,7 @@ const resourceTypeColor = (type: string) => {
 };
 
 type ItemTypeProps = {
-  type?: ContentType;
+  contentType?: ContentType;
 };
 
 const Container = styled.div`
@@ -60,7 +59,7 @@ const ItemWrapper = styled.div<ItemTypeProps>`
   display: flex;
   width: 100%;
   height: 100%;
-  border: 1px solid ${(props) => props.type && `${resourceTypeColor(props.type)};`};
+  border: 1px solid ${(props) => props.contentType && `${resourceTypeColor(props.contentType)};`};
   border-radius: 5px;
   overflow: hidden;
   transition: all ${animations.durations.fast} ease-in-out;
@@ -74,117 +73,83 @@ const ItemWrapper = styled.div<ItemTypeProps>`
       width: calc(100% + 4px);
     }
     .topic-label {
+      margin-top: calc(${spacing.small} + 2px);
       svg {
-        width: 28px;
-        height: 28px;
-        margin-top: -2px;
-        margin-left: -2px;
+        width: 26px;
+        height: 26px;
+        margin-right: calc(${spacing.xsmall} - 2px);
+      }
+    }
+    .resource-type-wrapper {
+      padding: 0 calc(${spacing.normal} + 2px);
+      .resource-icon-wrapper {
+        left: 19px;
+        height: 47px;
+        svg {
+          width: 26px;
+          height: 26px;
+        }
       }
     }
   }
 `;
 
-const ItemHead = styled.div`
-  background: ${colors.white};
-  position: relative;
-  a {
-    box-shadow: none;
-  }
-  min-height: 40px;
-  flex: 1;
-  img {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const ContentTypeWrapper = styled.div<ItemTypeProps>`
-  height: 48px;
-  background: ${(props) => props.type && `${resourceTypeColor(props.type)}`};
-  flex: 0 0 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0 ${spacing.normal};
-  ${fonts.sizes('12px', '16px')};
-  font-weight: ${fonts.weight.semibold};
-
-  transition: all ${animations.durations.fast} ease-in-out;
-  ${ItemWrapper}:hover & {
-    padding: 0 calc(${spacing.normal} + 2px);
-  }
-`;
-
-const ContentTypeIcon = styled.span<ItemTypeProps>`
-  position: absolute;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='23' viewBox='17 0 78 23' fill='none'%3E%3Cpath d='M35.6874 10.8284C37.0999 8.9889 38.405 7.28934 40 6C44.8452 2.08335 48.9078 0 56 0C63.0922 0 67.6548 2.5833 72.5 6.49995C74.0499 7.75284 75.2937 9.39082 76.6385 11.1617C80.0028 15.5921 83.9988 20.8545 95 23H17C27.9865 20.8573 32.1701 15.409 35.6874 10.8284ZM352' fill='${(
-    props,
-  ) => props.type && `${encodeURIComponent(resourceTypeColor(props.type))}`}'/%3E%3C/svg%3E");
-  background-position: top;
-  background-repeat: no-repeat;
-  left: 17px;
-  top: -23px;
-  height: 45px;
-  width: 78px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    transition: all ${animations.durations.fast} ease-in-out;
-    width: 20px;
-    height: 20px;
-  }
-  ${ItemWrapper}:hover & {
-    svg {
-      width: 26px;
-      height: 26px;
-    }
-  }
-`;
-
-const ItemContent = styled.div<ItemTypeProps>`
+const ItemContentLink = styled(SafeLink)`
+  box-shadow: none;
+  color: unset;
+  text-decoration: none;
   padding: 0 ${spacing.normal} ${spacing.small};
-  ${(props) => props.type === contentTypes.TOPIC && `flex: 1 1 auto`};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {
-    padding: 0 calc(${spacing.normal} + 2px) calc(${spacing.small} + 2px);
+    padding: 0 calc(${spacing.normal} + 2px) ${spacing.small};
   }
 `;
 
 const ItemTitleWrapper = styled.div<ItemTypeProps>`
   transition: all ${animations.durations.fast} ease-in-out;
+  margin-top: ${spacing.small};
   ${ItemWrapper}:hover & {
-    ${(props) => props.type === contentTypes.TOPIC && `padding-left:2px; padding-right: 2px;`};
+    ${(props) => props.contentType === contentTypes.TOPIC && `padding-left:2px; padding-right: 2px;`};
   }
 `;
 
-const ItemTitle = styled.h3`
+const ItemTitle = styled.h3<ItemTypeProps>`
   ${fonts.sizes('24px', '28px')};
-  margin-top: ${spacing.small};
+  color: ${colors.brand.dark};
+  ${(props) => props.contentType === contentTypes.TOPIC && `margin-bottom: ${spacing.small};`};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
-  a {
-    box-shadow: none;
-    transition: all ${animations.durations.fast} ease-in-out;
-  }
-  ${ItemWrapper}:hover & a {
+  display: inline;
+  ${ItemWrapper}:hover & {
     box-shadow: inset 0 -1px;
-    &:hover {
-      box-shadow: none;
-    }
+    background-color: transparent;
   }
 `;
-const ItemText = styled.div`
+const ItemText = styled.div<ItemTypeProps>`
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
   overflow-wrap: anywhere;
+  transition: all ${animations.durations.fast} ease-in-out;
+  margin-top: ${spacing.small};
+  ${(props) =>
+    props.contentType === contentTypes.TOPIC &&
+    `
+    ${fonts.sizes('18px', '28px')};
+    ${ItemWrapper}:hover & {
+    padding-left: 2px;
+    padding-right: 2px;
+  }`};
+`;
+
+const ContextWrapper = styled.div`
+  padding: 0 ${spacing.normal} ${spacing.small};
+  transition: all ${animations.durations.fast} ease-in-out;
+  ${ItemWrapper}:hover & {
+    padding: 0 calc(${spacing.normal} + 2px) calc(${spacing.small} + 2px);
+  }
 `;
 
 export type SearchItemType = {
@@ -195,7 +160,6 @@ export type SearchItemType = {
   contexts: ItemContextsType['contexts'];
   img?: { url: string; alt: string };
   labels?: string[];
-  children?: React.ReactNode;
 };
 type Props = {
   item: SearchItemType;
@@ -206,52 +170,28 @@ const SearchItem = ({ item, type }: Props) => {
 
   return (
     <Container>
-      <ItemWrapper type={type}>
+      <ItemWrapper contentType={type}>
         {type === contentTypes.TOPIC ? (
-          <ItemTopicHeader image={img}>
-            <ItemTitleWrapper type={type}>
-              <ItemTitle>
-                <SafeLink to={url}>{title}</SafeLink>
-              </ItemTitle>
+          <ItemTopicHeader url={url} image={img}>
+            <ItemTitleWrapper contentType={type}>
+              <ItemTitle contentType={type}>{title}</ItemTitle>
             </ItemTitleWrapper>
+            <ItemText contentType={type}>{parse(ingress)}</ItemText>
           </ItemTopicHeader>
         ) : (
           <>
-            <ItemHead>
-              {img && (
-                <SafeLink to={url}>
-                  <img src={img.url} alt={img.alt} />
-                </SafeLink>
-              )}
-            </ItemHead>
-            <ContentTypeWrapper type={type}>
-              <ContentTypeIcon type={type}>{type && <ContentTypeBadge type={type} border={false} />}</ContentTypeIcon>
-              {labels.length > 0 && (
-                <>
-                  {labels.map((label, i) => (
-                    <Fragment key={label}>
-                      {' '}
-                      {label}
-                      {i < labels?.length - 1 && <> &#8226;</>}
-                    </Fragment>
-                  ))}
-                </>
-              )}
-            </ContentTypeWrapper>
+            <ItemResourceHeader url={url} labels={labels} img={img} type={type} />
+            <ItemContentLink to={url}>
+              <ItemTitleWrapper contentType={type}>
+                <ItemTitle contentType={type}>{title}</ItemTitle>
+              </ItemTitleWrapper>
+              <ItemText>{parse(ingress)}</ItemText>
+            </ItemContentLink>
           </>
         )}
-        <ItemContent type={type}>
-          {type !== contentTypes.TOPIC && (
-            <ItemTitleWrapper type={type}>
-              <ItemTitle>
-                <SafeLink to={url}>{title}</SafeLink>
-              </ItemTitle>
-            </ItemTitleWrapper>
-          )}
-          {item.children}
-          <ItemText>{parse(ingress)}</ItemText>
+        <ContextWrapper>
           <ItemContexts contexts={contexts} id={item.id} title={item.title} />
-        </ItemContent>
+        </ContextWrapper>
       </ItemWrapper>
     </Container>
   );

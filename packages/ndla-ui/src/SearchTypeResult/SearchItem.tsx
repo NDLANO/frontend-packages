@@ -61,7 +61,6 @@ const ItemWrapper = styled.div<ItemTypeProps>`
   height: 100%;
   border: 1px solid ${(props) => props.contentType && `${resourceTypeColor(props.contentType)};`};
   border-radius: 5px;
-  overflow: hidden;
   transition: all ${animations.durations.fast} ease-in-out;
   &:hover {
     height: calc(100% + 4px);
@@ -94,14 +93,19 @@ const ItemWrapper = styled.div<ItemTypeProps>`
   }
 `;
 
-const ItemContentLink = styled(SafeLink)`
+const ItemLink = styled(SafeLink)`
   box-shadow: none;
   color: unset;
   text-decoration: none;
-  padding: 0 ${spacing.normal} ${spacing.small};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  position: relative;
+  min-height: 0;
+  flex: 1;
+`;
+
+const TextWrapper = styled.div`
+  padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {
     padding: 0 calc(${spacing.normal} + 2px) ${spacing.small};
@@ -179,15 +183,15 @@ const SearchItem = ({ item, type }: Props) => {
             <ItemText contentType={type}>{parse(ingress)}</ItemText>
           </ItemTopicHeader>
         ) : (
-          <>
-            <ItemResourceHeader url={url} labels={labels} img={img} type={type} />
-            <ItemContentLink to={url}>
+          <ItemLink to={url}>
+            <ItemResourceHeader labels={labels} img={img} type={type} />
+            <TextWrapper>
               <ItemTitleWrapper contentType={type}>
                 <ItemTitle contentType={type}>{title}</ItemTitle>
               </ItemTitleWrapper>
               <ItemText>{parse(ingress)}</ItemText>
-            </ItemContentLink>
-          </>
+            </TextWrapper>
+          </ItemLink>
         )}
         <ContextWrapper>
           <ItemContexts contexts={contexts} id={item.id} title={item.title} />

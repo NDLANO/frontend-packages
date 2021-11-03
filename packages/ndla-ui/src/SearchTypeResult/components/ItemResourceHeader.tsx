@@ -10,7 +10,6 @@ import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 
 import { animations, colors, fonts, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 
 import { ContentType } from '../SearchTypeResult';
 import { resourceTypeColor, SearchItemType } from '../SearchItem';
@@ -21,26 +20,14 @@ type ItemTypeProps = {
   contentType?: ContentType;
 };
 
-const ItemLink = styled(SafeLink)`
-  box-shadow: none;
-  color: unset;
-  text-decoration: none;
-  display: block;
-  background: ${colors.white};
-  position: relative;
-  min-height: 0;
-`;
-
-const ItemLinkFlex = styled(ItemLink)`
-  flex: 1;
-`;
-
 const ImageElement = styled.img`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  flex: 1;
+  min-height: 40px;
 `;
 
 const ContentTypeWrapper = styled.div<ItemTypeProps>`
@@ -80,34 +67,31 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
 `;
 
 type Props = {
-  url: SearchItemType['url'];
   labels: SearchItemType['labels'];
   img?: SearchItemType['img'] | null;
   type?: ContentType;
 };
 
-const ItemResourceHeader = ({ url, labels = [], img, type }: Props) => {
+const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
   return (
     <>
-      <ItemLinkFlex to={url}>{img && <ImageElement src={img.url} alt={img.alt} />}</ItemLinkFlex>
-      <ItemLink to={url}>
-        <ContentTypeWrapper className="resource-type-wrapper" contentType={type}>
-          <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
-            {type && <ContentTypeBadge type={type} border={false} />}
-          </ContentTypeIcon>
-          {labels.length > 0 && (
-            <>
-              {labels.map((label, i) => (
-                <Fragment key={label}>
-                  {' '}
-                  {label}
-                  {i < labels?.length - 1 && <> &#8226;</>}
-                </Fragment>
-              ))}
-            </>
-          )}
-        </ContentTypeWrapper>
-      </ItemLink>
+      {img && <ImageElement src={img.url} alt={img.alt} />}
+      <ContentTypeWrapper className="resource-type-wrapper" contentType={type}>
+        <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
+          {type && <ContentTypeBadge type={type} border={false} />}
+        </ContentTypeIcon>
+        {labels.length > 0 && (
+          <>
+            {labels.map((label, i) => (
+              <Fragment key={label}>
+                {' '}
+                {label}
+                {i < labels?.length - 1 && <> &#8226;</>}
+              </Fragment>
+            ))}
+          </>
+        )}
+      </ContentTypeWrapper>
     </>
   );
 };

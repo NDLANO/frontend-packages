@@ -10,6 +10,7 @@
 export { default as Additional } from './Additional';
 export { default as ArrowCollapse } from './ArrowCollapse';
 export { default as ArrowDropDown } from './ArrowDropDown';
+export { default as ArrowFeatureTips } from './ArrowFeatureTips';
 export { default as Audio } from './Audio';
 export { default as Audiobook } from './Audiobook';
 export { default as AudioDocument } from './AudioDocument';

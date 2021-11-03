@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
+import { fonts, spacing, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { CompetenceGoalsItemType } from '../types';
 import SearchButton from './SearchButton';
@@ -40,9 +40,24 @@ const GoalListElement = styled.li`
 const GoalListElementInnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+  }
 `;
+
+const GoalListInnerTextWrapper = styled.div`
+  flex: 1;
+`;
+
 const GoalSearchWrapper = styled.div`
   margin-left: ${spacing.normal};
+  flex: 0 0 289px;
+
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin-left: 0;
+    margin-top: ${spacing.normal};
+    flex-basis: auto;
+  }
 `;
 
 const CompetenceGoalItem = ({ title, goals }: CompetenceGoalsItemType) => {
@@ -55,7 +70,7 @@ const CompetenceGoalItem = ({ title, goals }: CompetenceGoalsItemType) => {
           {goals.map((goal, index: number) => (
             <GoalListElement key={`${goal.text}${index}`}>
               <GoalListElementInnerWrapper>
-                <div>{goal.text}</div>
+                <GoalListInnerTextWrapper>{goal.text}</GoalListInnerTextWrapper>
                 {goal.url && goal.type !== 'LK06' && (
                   <GoalSearchWrapper>
                     <SearchButton to={goal.url} text={t('competenceGoals.competenceGoalResourceSearchText')} />

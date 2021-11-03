@@ -843,6 +843,7 @@ const messages = {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
   },
+  checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
 };
 
 export default messages;

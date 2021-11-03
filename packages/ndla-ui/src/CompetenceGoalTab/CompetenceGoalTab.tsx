@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
-import { ArrowFeatureTips  } from '@ndla/icons/common';
+import { ArrowFeatureTips } from '@ndla/icons/common';
 // @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
@@ -63,7 +63,7 @@ const HighlightWrapper = styled.div`
     left: -38px;
     margin-top: ${spacing.normal};
   }
-  
+
   ${mq.range({ until: breakpoints.wide })} {
     transform: translate(95px, 35%);
 
@@ -111,10 +111,12 @@ const CompetenceGoalTab = ({ list, highlightSearchBox }: CompetenceProps) => {
           );
         })}
       </TabWrapper>
-      { highlightSearchBox && <HighlightWrapper>
-        <HighlightText>{t('checkOutNewFeature')}</HighlightText>
-        <ArrowFeatureTips />
-      </HighlightWrapper> }
+      {highlightSearchBox && (
+        <HighlightWrapper>
+          <HighlightText>{t('checkOutNewFeature')}</HighlightText>
+          <ArrowFeatureTips />
+        </HighlightWrapper>
+      )}
       <CompetenceItem item={currentTabItem} />
       <LicenseByline licenseRights={[CC, BY]}>
         <LicenseIconsTextWrapper>UDIR</LicenseIconsTextWrapper>

@@ -47,7 +47,7 @@ const GoalListElementInnerWrapper = styled.div`
 
 const GoalListInnerTextWrapper = styled.div`
   flex: 1;
-`
+`;
 
 const GoalSearchWrapper = styled.div`
   margin-left: ${spacing.normal};

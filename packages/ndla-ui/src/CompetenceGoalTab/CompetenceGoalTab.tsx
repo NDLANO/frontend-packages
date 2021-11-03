@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints } from '@ndla/core';
+import em from 'polished/lib/helpers/em';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { ArrowFeatureTips } from '@ndla/icons/common';
@@ -74,7 +75,7 @@ const HighlightWrapper = styled.div`
     }
   }
 
-  ${mq.range({ until: breakpoints.desktop })} {
+  ${mq.range({ until: em('1090px') })} {
     display: none;
   }
 `;

@@ -797,7 +797,7 @@ const messages = {
   },
   video: {
     download: 'Last ned video',
-    reuse: 'Bruk video',
+    reuse: 'Bruk video d',
     error: 'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
   concept: {
@@ -830,6 +830,10 @@ const messages = {
   user: {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
+    role: {
+      employee: 'Lærer',
+      student: 'Elev',
+    },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
     generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',

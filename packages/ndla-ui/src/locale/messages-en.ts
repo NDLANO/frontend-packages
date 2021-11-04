@@ -832,6 +832,10 @@ const messages = {
   user: {
     loggedInAs: 'You are logged in as {{role}}.',
     loggedInAsButton: 'You are logged in as {{role}}',
+    role: {
+      employee: 'Teacher',
+      student: 'Student',
+    },
     buttonLogIn: 'Log in with Feide',
     buttonLogOut: 'Log out',
     generalFooter: 'Some resources may only be accessed by teachers who are logged in.',

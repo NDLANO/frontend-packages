@@ -87,13 +87,16 @@ yarn deploy
 ```
 
 ## Publishing alpha releases
+
 As an alternative to linking packages locally, alpha versions of packages can be published and used in other repositories.
 
 ### Add alpha packages to other repositories.
+
 - `yarn lerna publish --canary`. Will bump patch version and add current git sha to version. For example: `1.0.1-alpha.0+${SHA}`
 - Upgrade packages to alpha versions in the target repository.
 
 ### Merging and bumping alpha versions
+
 - Merge frontend-packages PR.
 - `yarn lerna version`: Now set packages to the desired major/minor/patch version.
 - `yarn lerna publish --from-git` Publishes versions generated in previous step.
@@ -102,4 +105,4 @@ As an alternative to linking packages locally, alpha versions of packages can be
 
 ### Upcoming updates to the designmanual can be previewed here.
 
-[Designmanual WIP](https://designmanual-ndla-keyteq.surge.sh)
+[Designmanual WIP](https://designmanual.ndla.no/?path=/story/velkommen--til-ndlas-designmanual)

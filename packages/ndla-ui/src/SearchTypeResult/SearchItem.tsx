@@ -90,6 +90,18 @@ const ItemWrapper = styled.div<ItemTypeProps>`
         }
       }
     }
+    .resource-no-image {
+      background-color: ${colors.brand.greyLightest};
+      .c-content-type-badge {
+        width: 26px;
+        height: 26px;
+        left: 45px;
+        margin-left: 0;
+        top: 100%;
+        margin-top: -13px;
+        opacity: 1;
+      }
+    }
   }
 `;
 

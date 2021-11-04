@@ -30,6 +30,32 @@ const ImageElement = styled.img`
   min-height: 40px;
 `;
 
+const NoImageElement = styled.div<ItemTypeProps>`
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  flex: 1;
+  min-height: 40px;
+  background: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
+  position: relative;
+  transition: background-color ${animations.durations.normal} ease-in-out;
+  .c-content-type-badge {
+    transition: all ${animations.durations.normal} ease-in-out;
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    left: 50%;
+    margin-left: -29px;
+    top: 50%;
+    margin-top: -18px;
+    opacity: 0.2;
+    z-index: 3;
+    svg {
+      width: 58px;
+      height: 58px;
+    }
+  }
+`;
+
 const ContentTypeWrapper = styled.div<ItemTypeProps>`
   height: 48px;
   background: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
@@ -58,6 +84,7 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
   justify-content: center;
   align-items: center;
   transition: all ${animations.durations.fast} ease-in-out;
+  z-index: 2;
 
   svg {
     transition: all ${animations.durations.fast} ease-in-out;
@@ -75,10 +102,16 @@ type Props = {
 const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
   return (
     <>
-      {img && <ImageElement src={img.url} alt={img.alt} />}
+      {img ? (
+        <ImageElement src={img.url} alt={img.alt} />
+      ) : (
+        <NoImageElement className="resource-no-image" contentType={type}>
+          {type && <ContentTypeBadge type={type} border={false} />}
+        </NoImageElement>
+      )}
       <ContentTypeWrapper className="resource-type-wrapper" contentType={type}>
         <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
-          {type && <ContentTypeBadge type={type} border={false} />}
+          {img && type && <ContentTypeBadge type={type} border={false} />}
         </ContentTypeIcon>
         {labels.length > 0 && (
           <>

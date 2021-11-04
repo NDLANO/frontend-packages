@@ -101,9 +101,16 @@ $small-viewport: '(max-width: 600px)';
     margin-top: 0.5rem;
   }
 
-  &__information h2 {
+  &__header {
     margin-top: 0;
     line-height: 1;
+  }
+
+  &__header > svg {
+    color: $brand-color;
+    margin-left: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   &__title {

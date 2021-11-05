@@ -797,7 +797,7 @@ const messages = {
   },
   video: {
     download: 'Last ned video',
-    reuse: 'Bruk video d',
+    reuse: 'Bruk video',
     error: 'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
   concept: {

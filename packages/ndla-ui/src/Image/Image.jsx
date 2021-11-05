@@ -59,13 +59,13 @@ const Image = ({ alt, src, lazyLoad, lazyLoadSrc, crop, focalPoint, contentType,
   }
 
   return (
-    <picture>
-      <StyledImageWrapper>
+    <StyledImageWrapper>
+      <picture>
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
         <img alt={alt} src={`${src}?${queryString}`} {...rest} />
-        {expandButton}
-      </StyledImageWrapper>
-    </picture>
+      </picture>
+      {expandButton}
+    </StyledImageWrapper>
   );
 };
 

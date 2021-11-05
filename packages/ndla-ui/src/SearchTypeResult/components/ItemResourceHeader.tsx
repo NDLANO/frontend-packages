@@ -94,8 +94,8 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
 `;
 
 type Props = {
-  labels: SearchItemType['labels'];
-  img?: SearchItemType['img'] | null;
+  labels: SearchItemType['item']['labels'];
+  img?: SearchItemType['item']['img'] | null;
   type?: ContentType;
 };
 

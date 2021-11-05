@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemType } from './SearchItem';
 import { ContentType } from './SearchTypeResult';
+import SearchItemList from './SearchItemList';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,32 +19,43 @@ const Wrapper = styled.div`
 `;
 
 type ContainerProps = {
-  itemCount: number;
-  type?: string;
+  viewType: Props['viewType'];
 };
 
 const Container = styled.div<ContainerProps>`
   display: grid;
   row-gap: ${spacing.normal};
   grid-template-columns: repeat(1, 1fr);
-  ${mq.range({ from: breakpoints.tablet })} {
+
+  ${(props) =>
+    props.viewType === 'grid' &&
+    `
+          ${mq.range({ from: breakpoints.tablet })} {
     column-gap: ${spacing.normal};
     grid-template-columns: repeat(2, 1fr);
   }
+
   ${mq.range({ from: breakpoints.desktop })} {
     grid-template-columns: repeat(3, 1fr);
-  }
+  }`}
 `;
 
 type Props = {
   items: SearchItemType[];
   type?: ContentType;
+  viewType?: 'grid' | 'list';
 };
-const SearchItems = ({ items, type }: Props) => (
+const SearchItems = ({ items, type, viewType = 'grid' }: Props) => (
   <Wrapper>
-    <Container itemCount={items.length} type={type}>
+    <Container viewType={viewType}>
       {items.map((item: any) => (
-        <SearchItem item={item} key={`${item.id}`} type={type} />
+        <>
+          {viewType === 'list' ? (
+            <SearchItemList item={item} key={`${item.id}`} type={type} />
+          ) : (
+            <SearchItem item={item} key={`${item.id}`} type={type} />
+          )}
+        </>
       ))}
     </Container>
   </Wrapper>

@@ -168,7 +168,7 @@ const ContextWrapper = styled.div`
   }
 `;
 
-export type SearchItemType = {
+type SearchItemProps = {
   id: string;
   title: string;
   url: string;
@@ -177,11 +177,11 @@ export type SearchItemType = {
   img?: { url: string; alt: string };
   labels?: string[];
 };
-type Props = {
-  item: SearchItemType;
+export type SearchItemType = {
+  item: SearchItemProps;
   type?: ContentType;
 };
-const SearchItem = ({ item, type }: Props) => {
+const SearchItem = ({ item, type }: SearchItemType) => {
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
 
   return (

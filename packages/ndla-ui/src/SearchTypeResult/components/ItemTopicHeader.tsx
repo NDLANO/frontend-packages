@@ -65,8 +65,8 @@ const TopicHeaderImage = styled.img`
 
 type Props = {
   children: React.ReactNode;
-  url: SearchItemType['url'];
-  image?: SearchItemType['img'] | null;
+  url: SearchItemType['item']['url'];
+  image?: SearchItemType['item']['img'] | null;
 };
 const ItemTopicHeader = ({ children, image, url }: Props) => {
   const { t } = useTranslation();

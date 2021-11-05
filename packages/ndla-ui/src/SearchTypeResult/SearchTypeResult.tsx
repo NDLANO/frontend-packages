@@ -59,6 +59,7 @@ type Props = {
   type?: ContentType;
   loading?: boolean;
   children?: React.ReactNode;
+  viewType?: 'grid' | 'list';
 };
 
 const SearchTypeResult = ({
@@ -69,6 +70,7 @@ const SearchTypeResult = ({
   pagination,
   type,
   loading,
+  viewType,
   children,
 }: Props) => (
   <Wrapper>
@@ -80,7 +82,7 @@ const SearchTypeResult = ({
       </>
     )}
     <SearchTypeHeader onFilterClick={onFilterClick} filters={filters} totalCount={totalCount} type={type} />
-    <SearchItems items={items} type={type} />
+    <SearchItems items={items} type={type} viewType={viewType} />
     {pagination && <ResultNavigation {...pagination} />}
     {children && children}
   </Wrapper>

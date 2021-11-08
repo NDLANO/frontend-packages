@@ -6,7 +6,7 @@ import {
   SearchNotionsResult,
   SearchSubjectResult,
   constants,
-  FilterButtons,
+  SearchFilterContent,
 } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 
@@ -232,6 +232,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
   const { t } = useTranslation();
   const [selectedResourceTypes, setSelectedResourceTypes] = useState([]);
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
+  const [listViewType, setListViewType] = useState('grid');
   const [searchValue, setSearchValue] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
   const [searchPhrase, setSearchPhrase] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
   const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(() => (showCompetenceGoals ? '' : 'nynorsk'));
@@ -265,10 +266,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
         // First flip active state of clicked element
         selectedFilter.active = !selectedFilter.active;
         if (allFilter) {
-          allFilter.active = false;
-          if (!resources.filters.some((item) => item.active)) {
-            allFilter.active = true;
-          }
+          allFilter.active = !resources.filters.some((item) => item.active);
         }
       }
       const activeFilters = updateFilters.filter((filter) => filter.active);
@@ -459,15 +457,14 @@ const SearchResult = ({ showCompetenceGoals }) => {
         />
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
-      <FilterButtons
-        heading={t('searchPage.searchFilterMessages.resourceTypeFilter.heading')}
+      <SearchFilterContent
         items={contentTypeFilters}
         onFilterToggle={handleContentTypeFilterToggle}
         onRemoveAllFilters={() => setSelectedResourceTypes([])}
-        labels={{
-          openFilter: t('searchPage.searchFilterMessages.resourceTypeFilter.button'),
-        }}
+        viewType={listViewType}
+        onChangeViewType={(viewType) => setListViewType(viewType)}
       />
+
       {visibleResourceTypes.map((item) => (
         <SearchTypeResult
           key={`search-result-${item.type}`}
@@ -482,6 +479,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
             toCount: item.items.length,
             onShowMore: () => handleShowMore(item.type),
           }}
+          viewType={listViewType}
         />
       ))}
     </>

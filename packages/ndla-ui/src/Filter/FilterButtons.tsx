@@ -77,8 +77,8 @@ export type ItemProps = {
   value: string;
   selected?: boolean;
 };
-type Props = {
-  heading: string;
+export type FilterButtonsProps = {
+  heading?: string;
   items: ItemProps[];
   onFilterToggle: (value: string) => void;
   onRemoveAllFilters: () => void;
@@ -87,7 +87,7 @@ type Props = {
   };
 };
 
-export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels }: Props) => {
+export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels }: FilterButtonsProps) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
 
@@ -174,7 +174,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
       )}
       {!isNarrowScreen && (
         <>
-          <StyledHeading>{heading}</StyledHeading>
+          {heading && <StyledHeading>{heading}</StyledHeading>}
           <StyledButtonsWrapper>
             {items.map((item: ItemProps) => (
               <StyledButtonElementWrapper key={item.value}>

@@ -88,6 +88,7 @@ export {
   SearchFieldHeader,
   SearchNotionsResult,
   SearchSubjectResult,
+  SearchFilterContent,
 } from './SearchTypeResult';
 
 export { default as constants } from './model';

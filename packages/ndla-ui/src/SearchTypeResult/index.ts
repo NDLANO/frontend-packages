@@ -11,5 +11,13 @@ import SearchHeader from './SearchHeader';
 import SearchFieldHeader from './SearchFieldHeader';
 import SearchNotionsResult from './SearchNotionsResult';
 import SearchSubjectResult from './SearchSubjectResult';
+import SearchFilterContent from './SearchFilterContent';
 
-export { SearchTypeResult, SearchHeader, SearchFieldHeader, SearchNotionsResult, SearchSubjectResult };
+export {
+  SearchTypeResult,
+  SearchHeader,
+  SearchFieldHeader,
+  SearchNotionsResult,
+  SearchSubjectResult,
+  SearchFilterContent,
+};

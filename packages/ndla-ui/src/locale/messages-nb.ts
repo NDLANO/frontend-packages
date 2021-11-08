@@ -830,6 +830,10 @@ const messages = {
   user: {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
+    role: {
+      employee: 'Lærer',
+      student: 'Elev',
+    },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
     generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',

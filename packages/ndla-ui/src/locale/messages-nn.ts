@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Bruk filter',
       removeFilter: 'Fjern filter {{filterName}}',
       closeFilter: 'Lukk filter',
+      additionalSubjectFilters: '+ {{count}} fag',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -139,6 +140,8 @@ const messages = {
       notionsRemove: 'Fjern',
       showVideo: 'Sjå video',
       showNotion: 'Sjå forklaring',
+      gridView: 'Gallerivisning',
+      listView: 'Listevisning',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',

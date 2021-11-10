@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Use filter',
       closeFilter: 'Close filter',
       removeFilter: 'Remove filter {{filterName}}',
+      additionalSubjectFilters: '+ {{count}} subjects',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
       resourceTypeFilter: {
@@ -139,6 +140,8 @@ const messages = {
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
       showNotion: 'Show notion',
+      gridView: 'Grid-view',
+      listView: 'List-view',
     },
     contextModal: {
       button: '+ {{count}} more contexts',

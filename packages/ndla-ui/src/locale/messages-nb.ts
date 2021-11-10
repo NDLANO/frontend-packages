@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
       removeFilter: 'Fjern filter {{filterName}}',
+      additionalSubjectFilters: '+ {{count}} fag',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -140,6 +141,8 @@ const messages = {
       notionsRemove: 'Fjern',
       showVideo: 'Se video',
       showNotion: 'Se forklaring',
+      gridView: 'Gallerivisning',
+      listView: 'Listevisning',
     },
     contextModal: {
       button: '+ {{count}} flere steder',

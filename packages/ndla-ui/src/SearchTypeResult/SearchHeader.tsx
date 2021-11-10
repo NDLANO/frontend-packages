@@ -6,19 +6,17 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-
 // @ts-ignore
 import Button from '@ndla/button';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { FilterProps } from './ActiveFilterContent';
-import ActiveFilters from './ActiveFilters';
+
 import SearchFieldHeader from './SearchFieldHeader';
-import PopupFilter, { PopupFilterProps } from './PopupFilter';
 import { CompetenceGoalsItemType } from '../types';
 import CompetenceGoalItem from '../CompetenceGoalTab/CompetenceGoalItem';
+import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -59,13 +57,6 @@ const PhraseText = styled.div`
 `;
 const PhraseSuggestionText = styled.div``;
 
-const HideOnDesktopWrapper = styled.div`
-  display: none;
-  ${mq.range({ until: breakpoints.desktop })} {
-    display: block;
-  }
-`;
-
 const GoalsLabel = styled.div`
   ${fonts.sizes('16px', '32px')};
   text-transform: uppercase;
@@ -76,11 +67,8 @@ type Props = {
   searchPhraseSuggestion?: string;
   searchPhraseSuggestionOnClick?: () => void;
   searchValue: string;
-  filters?: PopupFilterProps;
-  activeFilters?: {
-    filters: FilterProps[];
-    onFilterRemove: (value: string, name: string) => void;
-  };
+  filters: SubjectFilterProps['filters'];
+  activeFilters?: SubjectFilterProps['activeFilters'];
   competenceGoals?: CompetenceGoalsItemType[];
   onSearchValueChange: (value: string) => void;
   onSubmit: () => void;
@@ -100,6 +88,20 @@ const SearchHeader = ({
   noResults,
   t,
 }: Props & WithTranslation) => {
+  const [isNarrowScreen, setIsNarrowScreen] = useState<boolean | undefined>();
+
+  useEffect(() => {
+    const isNarrowScreenMatch = window.matchMedia(`(max-width: ${breakpoints.desktop})`);
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsNarrowScreen(e.matches);
+    };
+    isNarrowScreenMatch.addEventListener('change', handleChange);
+    handleChange(isNarrowScreenMatch);
+    return () => {
+      isNarrowScreenMatch.removeEventListener('change', handleChange);
+    };
+  }, []);
+
   const phraseText = noResults
     ? t('searchPage.noHitsShort', { query: searchPhrase })
     : `${t('searchPage.resultType.showingSearchPhrase')} ${searchPhrase}`;
@@ -114,6 +116,7 @@ const SearchHeader = ({
           onSubmit={onSubmit}
           activeFilters={activeFilters}
           filters={filters}
+          isNarrowScreen={isNarrowScreen}
         />
       </SearchInputWrapper>
       <PhraseWrapper>
@@ -125,7 +128,7 @@ const SearchHeader = ({
         )}
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
-            {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
+            {t('searchPage.resultType.searchPhraseSuggestion')} K
             <Button link onClick={searchPhraseSuggestionOnClick}>
               {searchPhraseSuggestion}
             </Button>
@@ -146,14 +149,8 @@ const SearchHeader = ({
           </CompetenceGoalsWrapper>
         )}
       </PhraseWrapper>
-      {activeFilters && (
-        <HideOnDesktopWrapper>
-          <ActiveFilters
-            {...activeFilters}
-            showOnSmallScreen
-            customElements={filters ? [<PopupFilter {...filters} />] : []}
-          />
-        </HideOnDesktopWrapper>
+      {isNarrowScreen && (
+        <SubjectFilters filters={filters} activeFilters={activeFilters} isNarrowScreen={isNarrowScreen} />
       )}
     </Wrapper>
   );

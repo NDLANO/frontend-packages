@@ -7,12 +7,14 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Tooltip from '@ndla/tooltip';
-import { useTranslation } from 'react-i18next';
+// @ts-ignore
+import Button from '@ndla/button';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
 type StyledActiveFiltersProps = {
@@ -89,14 +91,24 @@ type Props = {
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
   customElements?: React.ReactElement[];
+  onClickShowHiddenSubjects: () => void;
 };
 
-const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements }: Props) => {
+const ActiveFilters = ({
+  filters,
+  onFilterRemove,
+  showOnSmallScreen,
+  customElements,
+  onClickShowHiddenSubjects,
+}: Props) => {
   const { t } = useTranslation();
   if (filters && filters.length > 0) {
+    const showFilterCount = 3;
     const filterLength = filters.length;
 
-    const filterItems = filters.map((filter) => {
+    const visibleFilters = filterLength > showFilterCount ? filters.slice(0, showFilterCount - 1) : filters;
+
+    const filterItems = visibleFilters.map((filter) => {
       const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
 
       return (
@@ -120,6 +132,26 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customEleme
     return (
       <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
         {filterItems}
+        {filterLength > showFilterCount && (
+          <StyledActiveFilterWrapper>
+            <Tooltip delay={2000} align="bottom" tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
+              <Button
+                aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                  count: filterLength - showFilterCount + 1,
+                })}
+                type="button"
+                size="normal"
+                borderShape="rounded"
+                onClick={onClickShowHiddenSubjects}>
+                <StyledActiveFilterTitle>
+                  {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                    count: filterLength - showFilterCount + 1,
+                  })}
+                </StyledActiveFilterTitle>
+              </Button>
+            </Tooltip>
+          </StyledActiveFilterWrapper>
+        )}
         {customElements &&
           customElements.map((item, index) => (
             <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>

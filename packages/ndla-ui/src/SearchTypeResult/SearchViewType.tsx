@@ -14,6 +14,7 @@ import Button from '@ndla/button';
 import { Grid } from '@ndla/icons/common';
 import { ListCircle } from '@ndla/icons/editor';
 import { animations, colors } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: inline-flex;
@@ -67,6 +68,7 @@ export type SearchViewTypeProps = {
   onChangeViewType: (viewType: SearchViewTypeProps['viewType']) => void;
 };
 const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => {
+  const { t } = useTranslation();
   const onClickHandler = (viewTypeClicked: SearchViewTypeProps['viewType']) => {
     if (viewTypeClicked !== viewType) {
       onChangeViewType(viewTypeClicked);
@@ -75,16 +77,25 @@ const SearchViewType = ({ viewType, onChangeViewType }: SearchViewTypeProps) => 
   return (
     <Wrapper>
       <ButtonContainer>
-        <ButtonElement stripped type="button" size="normal" onClick={() => onClickHandler('grid')}>
+        <ButtonElement
+          stripped
+          type="button"
+          size="normal"
+          title={t('searchPage.resultType.gridView')}
+          onClick={() => onClickHandler('grid')}>
           <ButtonContent selected={viewType === 'grid'}>
-            <Grid />
+            <Grid aria-hidden title="" />
           </ButtonContent>
         </ButtonElement>
       </ButtonContainer>
       <ButtonContainer>
-        <ButtonElement stripped size="normal" onClick={() => onClickHandler('list')}>
+        <ButtonElement
+          stripped
+          size="normal"
+          title={t('searchPage.resultType.listView')}
+          onClick={() => onClickHandler('list')}>
           <ButtonContent selected={viewType === 'list'}>
-            <ListCircle />
+            <ListCircle aria-hidden title="" />
           </ButtonContent>
         </ButtonElement>
       </ButtonContainer>

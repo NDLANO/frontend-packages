@@ -87,7 +87,9 @@ const SearchFieldHeader: React.FC<Props & SubjectFilterProps> = ({
 
   return (
     <StyledForm action="/search/" inputHasFocus={hasFocus} onSubmit={onSubmit}>
-      {!isNarrowScreen && <SubjectFilters filters={filters} activeFilters={activeFilters} />}
+      {!isNarrowScreen && (
+        <SubjectFilters filters={filters} activeFilters={activeFilters} isNarrowScreen={isNarrowScreen} />
+      )}
       <SearchInput
         ref={inputRef}
         type="search"

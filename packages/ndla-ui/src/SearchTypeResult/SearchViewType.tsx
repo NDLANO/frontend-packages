@@ -13,13 +13,16 @@ import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { Grid } from '@ndla/icons/common';
 import { ListCircle } from '@ndla/icons/editor';
-import { animations, colors } from '@ndla/core';
+import { animations, breakpoints, colors, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
 `;
 
 const ButtonContainer = styled.div`

@@ -64,7 +64,7 @@ type Props = {
 };
 
 const ArticleByline = ({
-  authors,
+  authors = [],
   suppliers,
   license,
   licenseBox,
@@ -95,16 +95,17 @@ const ArticleByline = ({
     return contributorsArray.join('');
   };
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
-
   return (
     <Wrapper>
       <div>
         {t('article.lastUpdated')} {published}
       </div>
-      {authors && (
+      {(authors.length > 0 || licenseRights.length > 0) && (
         <TextWrapper>
           <LicenseByline licenseRights={licenseRights}>
-            <AuthorsWrapper>{t('article.authorsLabel', { names: renderContributors(authors) })}</AuthorsWrapper>
+            {authors.length > 0 && (
+              <AuthorsWrapper>{t('article.authorsLabel', { names: renderContributors(authors) })}</AuthorsWrapper>
+            )}
           </LicenseByline>
         </TextWrapper>
       )}

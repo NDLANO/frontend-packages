@@ -55,7 +55,7 @@ type Props = {
   items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
-  renderMarkdown: (text: React.ReactNode) => string;
+  renderMarkdown?: (text: React.ReactNode) => string;
 };
 
 const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & WithTranslation) => (

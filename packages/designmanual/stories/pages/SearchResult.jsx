@@ -71,11 +71,30 @@ const searchResults = responseDataSource.map((resourceType) => {
       });
     }
   });
-  /* if (filters.length) {
-    filters.unshift({ id: 'all', name: 'Alle', active: true });
-  }*/
   return { ...resourceType, pageSize: PAGESIZE_ALL, filters };
 });
+
+const unGroupSearchResults = () => {
+  const result = searchResults
+    .map((res) => {
+      return res.items.map((item) => ({
+        ...item,
+        type: res.type,
+      }));
+    })
+    .flat();
+
+  // Randomize the order
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = result[i];
+    result[i] = result[j];
+    result[j] = temp;
+  }
+  return result;
+};
+
+const unGroupedResourceResult = unGroupSearchResults();
 
 const initialResourceResults = searchResults.map((res) => {
   if (res.items.length > res.pageSize) {
@@ -177,6 +196,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
   const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() => (showCompetenceGoals ? ['KM1196'] : []));
 
   const [subjectItems] = React.useState(subjectTypeResults);
+  const [unGroupedResult, setUngroupedResult] = React.useState(() => unGroupedResourceResult.slice(0, PAGESIZE_SINGLE));
 
   const [resourceItems, dispatchResources] = React.useReducer(resourcesReducer, initialResourceResults);
 
@@ -261,6 +281,12 @@ const SearchResult = ({ showCompetenceGoals }) => {
       ];
       dispatchResources({ type: 'RESOURCE_TYPE_ADD_ITEMS', ...data });
     });
+  };
+
+  const handleShowMoreUnGroupedResult = () => {
+    const fromIndex = unGroupedResult.length;
+    const newItems = unGroupedResourceResult.slice(fromIndex, fromIndex + PAGESIZE_SINGLE);
+    setUngroupedResult([...unGroupedResult, ...newItems]);
   };
 
   const handleSearchSubmit = (e) => {
@@ -395,24 +421,38 @@ const SearchResult = ({ showCompetenceGoals }) => {
         viewType={listViewType}
         onChangeViewType={(viewType) => setListViewType(viewType)}
       />
-
-      {visibleResourceTypes.map((item) => (
+      {selectedResourceTypes.length > 0 ? (
+        <>
+          {visibleResourceTypes.map((item) => (
+            <SearchTypeResult
+              key={`search-result-${item.type}`}
+              filters={item.filters}
+              onFilterClick={(id) => handleFilterClick(item.type, id)}
+              items={item.items}
+              type={item.type}
+              totalCount={item.totalCount}
+              loading={item.loading}
+              pagination={{
+                totalCount: item.totalCount,
+                toCount: item.items.length,
+                onShowMore: () => handleShowMore(item.type),
+              }}
+              viewType={listViewType}
+            />
+          ))}
+        </>
+      ) : (
         <SearchTypeResult
-          key={`search-result-${item.type}`}
-          filters={item.filters}
-          onFilterClick={(id) => handleFilterClick(item.type, id)}
-          items={item.items}
-          type={item.type}
-          totalCount={item.totalCount}
-          loading={item.loading}
-          pagination={{
-            totalCount: item.totalCount,
-            toCount: item.items.length,
-            onShowMore: () => handleShowMore(item.type),
-          }}
+          items={unGroupedResult}
+          totalCount={unGroupedResourceResult.length}
           viewType={listViewType}
+          pagination={{
+            totalCount: unGroupedResourceResult.length,
+            toCount: unGroupedResult.length,
+            onShowMore: handleShowMoreUnGroupedResult,
+          }}
         />
-      ))}
+      )}
     </>
   );
 };

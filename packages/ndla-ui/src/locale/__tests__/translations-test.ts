@@ -11,7 +11,7 @@ import messagesNB from '../messages-nb';
 import messagesNN from '../messages-nn';
 import messagesEN from '../messages-en';
 
-test('language-keys', () => {
+test('That all translations has all language keys', () => {
   const anyMissing = validateTranslationFiles(
     [
       {

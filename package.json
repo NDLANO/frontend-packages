@@ -24,7 +24,7 @@
     "prebuild-storybook": "yarn bootstrap",
     "build-storybook": "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
     "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static",
-    "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest -t 'language-keys'"
+    "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest 'packages/ndla-ui/src/locale/__tests__/'"
   },
   "repository": {
     "type": "git",

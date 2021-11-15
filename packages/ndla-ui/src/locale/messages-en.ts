@@ -131,6 +131,7 @@ const messages = {
       all: 'All',
       hits: '{{count}} hits',
       showingSearchPhrase: 'Showing results for:',
+      showingCompetenceGoalSearchPhrase: 'Showing results for competence goals {text}',
       searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
       notionsHeading: 'Begrepsforklaring',

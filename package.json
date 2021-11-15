@@ -23,7 +23,8 @@
     "start-storybook": "node ./scripts/startStorybook.js",
     "prebuild-storybook": "yarn bootstrap",
     "build-storybook": "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
-    "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static"
+    "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static",
+    "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest -t 'language-keys'"
   },
   "repository": {
     "type": "git",
@@ -101,7 +102,6 @@
     "sinon": "^7.2.3",
     "string-length": "^2.0.0",
     "style-loader": "^0.23.1",
-    "translation-file-validator": "^1.0.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.1.3"
   },

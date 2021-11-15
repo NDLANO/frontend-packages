@@ -102,9 +102,13 @@ const SearchHeader = ({
     };
   }, []);
 
-  const phraseText = noResults
-    ? t('searchPage.noHitsShort', { query: searchPhrase })
-    : `${t('searchPage.resultType.showingSearchPhrase')} ${searchPhrase}`;
+  const phraseText = noResults ? (
+    t('searchPage.noHitsShort', { query: searchPhrase })
+  ) : (
+    <>
+      {t('searchPage.resultType.showingSearchPhrase')} <b>&ldquo;{searchPhrase}&rdquo;</b>
+    </>
+  );
   const removeFilterSuggestion =
     noResults && activeFilters?.filters.length ? t('searchPage.removeFilterSuggestion') : undefined;
   return (
@@ -128,9 +132,10 @@ const SearchHeader = ({
         )}
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
-            {t('searchPage.resultType.searchPhraseSuggestion')} K
+            {t('searchPage.resultType.searchPhraseSuggestion')}
+            {` `}
             <Button link onClick={searchPhraseSuggestionOnClick}>
-              {searchPhraseSuggestion}
+              [{searchPhraseSuggestion}]
             </Button>
           </PhraseSuggestionText>
         )}

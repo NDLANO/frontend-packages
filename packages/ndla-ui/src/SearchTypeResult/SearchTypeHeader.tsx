@@ -40,9 +40,13 @@ const TypeWrapper = styled.div`
   margin-bottom: ${spacing.xsmall};
 `;
 
+const BadgeWrapper = styled.span`
+  margin-right: ${spacing.small};
+`;
+
 const SubjectName = styled.span`
   ${fonts.sizes('18px', '24px')};
-  margin: 2px ${spacing.small};
+  margin: 2px 0;
   b {
     ${fonts.sizes('18px', '24px')};
     margin-right: 4px;
@@ -87,9 +91,13 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type, t }: 
   <Wrapper>
     <HeaderWrapper>
       <TypeWrapper>
-        {type && <ContentTypeBadge type={type} background border={false} size="large" />}
+        {type && (
+          <BadgeWrapper>
+            <ContentTypeBadge type={type} background border={false} size="large" />
+          </BadgeWrapper>
+        )}
         <SubjectName>
-          {type && <b>{t(`contentTypes.${type}`)}</b>}{' '}
+          <b>{type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}</b>{' '}
           {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
         </SubjectName>
       </TypeWrapper>

@@ -52,8 +52,8 @@ export type ContentType =
 
 type Props = {
   items: SearchItemType[];
-  filters: FilterOptionsType[];
-  onFilterClick: (id: string) => void;
+  filters?: FilterOptionsType[];
+  onFilterClick?: (id: string) => void;
   totalCount?: number;
   pagination?: PaginationType;
   type?: ContentType;

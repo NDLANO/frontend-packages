@@ -176,6 +176,7 @@ type SearchItemProps = {
   contexts: ItemContextsType['contexts'];
   img?: { url: string; alt: string };
   labels?: string[];
+  type?: ContentType;
 };
 export type SearchItemType = {
   item: SearchItemProps;

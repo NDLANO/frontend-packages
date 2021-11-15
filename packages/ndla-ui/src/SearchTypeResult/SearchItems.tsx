@@ -45,20 +45,25 @@ type Props = {
   type?: ContentType;
   viewType?: 'grid' | 'list';
 };
-const SearchItems = ({ items, type, viewType = 'grid' }: Props) => (
-  <Wrapper>
-    <Container viewType={viewType}>
-      {items.map((item: any) => (
-        <>
-          {viewType === 'list' ? (
-            <SearchItemList item={item} key={`${item.id}`} type={type} />
-          ) : (
-            <SearchItem item={item} key={`${item.id}`} type={type} />
-          )}
-        </>
-      ))}
-    </Container>
-  </Wrapper>
-);
+const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
+  return (
+    <Wrapper>
+      <Container viewType={viewType}>
+        {items.map((item: any) => {
+          const contentType = type || item.type;
+          return (
+            <>
+              {viewType === 'list' ? (
+                <SearchItemList item={item} key={`${item.id}`} type={contentType} />
+              ) : (
+                <SearchItem item={item} key={`${item.id}`} type={contentType} />
+              )}
+            </>
+          );
+        })}
+      </Container>
+    </Wrapper>
+  );
+};
 
 export default React.memo(SearchItems);

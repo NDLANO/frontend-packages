@@ -78,12 +78,12 @@ export type FilterOptionsType = {
 };
 
 type Props = {
-  filters: FilterOptionsType[];
-  onFilterClick: (id: string) => void;
+  filters?: FilterOptionsType[];
+  onFilterClick?: (id: string) => void;
   totalCount: number;
   type?: ContentType;
 };
-const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props & WithTranslation) => (
+const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type, t }: Props & WithTranslation) => (
   <Wrapper>
     <HeaderWrapper>
       <TypeWrapper>
@@ -106,7 +106,9 @@ const SearchTypeHeader = ({ filters, onFilterClick, totalCount, type, t }: Props
                 if (e.currentTarget && option.active) {
                   e.currentTarget.blur();
                 }
-                onFilterClick(option.id);
+                if (onFilterClick) {
+                  onFilterClick(option.id);
+                }
               }}>
               {option.name}
               {option.active && (

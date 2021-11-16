@@ -406,6 +406,14 @@ const SearchResult = ({ showCompetenceGoals }) => {
             : undefined
         }
       />
+      <SearchFilterContent
+        items={contentTypeFilters}
+        onFilterToggle={handleContentTypeFilterToggle}
+        onRemoveAllFilters={() => setSelectedResourceTypes([])}
+        viewType={listViewType}
+        onChangeViewType={(viewType) => setListViewType(viewType)}
+      />
+      
       {!hideNotionsResult && !showCompetenceGoals && (
         <NotionResult
           onHideNotionResults={() => {

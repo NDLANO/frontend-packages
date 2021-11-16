@@ -19,11 +19,14 @@ import { FilterButtonsProps } from '../Filter/FilterButtons';
 const Container = styled.div`
   display: flex;
   align-items: flex-start;
+  box-sizing: border-box;
+  overflow: hidden;
 `;
 
 const FilterButtonsWrapper = styled.div`
   padding-top: 2px;
   margin-right: ${spacing.small};
+  max-width: 100%;
 `;
 
 type Props = {

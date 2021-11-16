@@ -413,7 +413,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
         viewType={listViewType}
         onChangeViewType={(viewType) => setListViewType(viewType)}
       />
-      
+
       {!hideNotionsResult && !showCompetenceGoals && (
         <NotionResult
           onHideNotionResults={() => {

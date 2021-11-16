@@ -131,6 +131,7 @@ const messages = {
       all: 'Alle',
       hits: '{{count}} Treff',
       showingSearchPhrase: 'Viser resultat for',
+      showingCompetenceGoalSearchPhrase: 'Viser resultat for kompetansemål {text}',
       searchPhraseSuggestion: 'Søk i staden for',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',

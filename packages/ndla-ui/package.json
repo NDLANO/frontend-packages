@@ -87,7 +87,9 @@
     "mini-css-extract-plugin": "^0.5.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.0"
   },
   "publishConfig": {
     "access": "public"

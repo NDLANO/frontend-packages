@@ -81,8 +81,6 @@
     "@types/reach__dialog": "^0.1.0",
     "@types/react-sticky-el": "^1.0.2",
     "@types/react-transition-group": "^4.4.2",
-    "chalk": "^4.1.2",
-    "cli-table3": "^0.6.0",
     "css-loader": "^2.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",

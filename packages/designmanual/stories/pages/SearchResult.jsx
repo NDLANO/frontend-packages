@@ -447,6 +447,14 @@ const SearchResult = ({ showCompetenceGoals }) => {
             : undefined
         }
       />
+      <SearchFilterContent
+        items={contentTypeFilters}
+        onFilterToggle={handleContentTypeFilterToggle}
+        onRemoveAllFilters={() => setSelectedResourceTypes([])}
+        viewType={listViewType}
+        onChangeViewType={(viewType) => setListViewType(viewType)}
+      />
+      
       {!hideNotionsResult && !showCompetenceGoals && (
         <SearchNotionsResult
           items={notionsItems}
@@ -457,13 +465,6 @@ const SearchResult = ({ showCompetenceGoals }) => {
         />
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
-      <SearchFilterContent
-        items={contentTypeFilters}
-        onFilterToggle={handleContentTypeFilterToggle}
-        onRemoveAllFilters={() => setSelectedResourceTypes([])}
-        viewType={listViewType}
-        onChangeViewType={(viewType) => setListViewType(viewType)}
-      />
 
       {visibleResourceTypes.map((item) => (
         <SearchTypeResult

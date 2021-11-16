@@ -20,6 +20,7 @@ const Wrapper = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
   ${mq.range({ until: breakpoints.tablet })} {
     display: none;
   }

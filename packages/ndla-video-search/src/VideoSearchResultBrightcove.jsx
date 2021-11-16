@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { LicenseByline, getLicenseByNBTitle } from '@ndla/licenses';
-import { Rotation3D } from '@ndla/icons/common';
+import { PanoramaPhotosphere } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 import { LicenseShape, BrightcoveShape } from './shapes';
@@ -41,7 +41,7 @@ export default function VideoSearchResultBrightcove({
         <div {...classes('information')}>
           <h2 {...classes('header')}>
             {video.name || ''}
-            {is360video && <Rotation3D />}
+            {is360video && <PanoramaPhotosphere />}
           </h2>
           <div {...classes('copyright-author')}>
             {video.custom_fields && video.custom_fields.licenseinfo ? video.custom_fields.licenseinfo : ''}

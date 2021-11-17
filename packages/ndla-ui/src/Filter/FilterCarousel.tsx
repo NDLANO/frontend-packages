@@ -47,10 +47,10 @@ const Carousel = styled('div')<{
 `;
 
 const Inner = styled.div`
-  white-space: nowrap;
   flex-wrap: nowrap;
   transition: transform 0.3s;
   display: inline-flex;
+  padding: 4px;
 `;
 
 const NavButton = styled('button')<{

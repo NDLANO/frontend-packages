@@ -78,14 +78,7 @@ type Props = {
 // @ts-ignore
 const NotionResult = ({ onHideNotionResults }: Props) => {
   const items = notionsItems();
-  return (
-    <SearchNotionsResult
-      items={items}
-      totalCount={items.length}
-      onRemove={onHideNotionResults}
-      renderMarkdown={() => ''}
-    />
-  );
+  return <SearchNotionsResult items={items} totalCount={items.length} onRemove={onHideNotionResults} />;
 };
 
 export default NotionResult;

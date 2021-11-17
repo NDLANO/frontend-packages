@@ -18,7 +18,7 @@ import { FilterButtonsProps } from '../Filter/FilterButtons';
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
   max-width: 100%;
 `;

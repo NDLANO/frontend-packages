@@ -26,6 +26,7 @@ const Container = styled.div`
 const FilterButtonsWrapper = styled.div`
   padding-top: 2px;
   margin-right: ${spacing.small};
+  overflow-x: hidden;
 `;
 
 type Props = {

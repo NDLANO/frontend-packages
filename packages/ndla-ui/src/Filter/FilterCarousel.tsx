@@ -9,41 +9,9 @@ interface Props {
   children: React.ReactChild[];
 }
 
-const Carousel = styled('div')<{
-  paddingLeft?: boolean;
-  paddingRight?: boolean;
-}>`
+const Carousel = styled.div`
   overflow-x: hidden;
-  display: flex;
   position: relative;
-  box-sizing: border-box;
-
-  ${(props) =>
-    props.paddingLeft &&
-    `
-        &:before {
-            content:"";
-            background:#fff;
-            width: 24px;
-            height: 48px;
-            position: absolute;
-            z-index: 2;
-        }
-    `}
-
-  ${(props) =>
-    props.paddingRight &&
-    `
-        &:after {
-            content:"";
-            background:#fff;
-            width: 24px;
-            height: 48px;
-            position: absolute;
-            z-index: 2;
-            right: 0;
-        }
-    `}
 `;
 
 const Inner = styled.div`
@@ -117,7 +85,7 @@ const FilterCarousel: React.FC<Props> = ({ children }) => {
   useLayoutEffect(() => {
     if (carouselRef.current && innerRef.current) {
       const carouselWidth = carouselRef.current.offsetWidth || 0;
-      const innerWidth = innerRef.current.getBoundingClientRect().width;
+      const innerWidth = innerRef.current.scrollWidth;
       if (innerWidth <= carouselWidth) {
         setHideNext(true);
       } else {
@@ -133,12 +101,12 @@ const FilterCarousel: React.FC<Props> = ({ children }) => {
     const inner = innerRef.current;
     if (carousel && inner) {
       const carouselWidth = carousel.offsetWidth;
-      const innerPosition = inner.getBoundingClientRect();
-      const innerWidth = innerPosition.width;
+      const innerWidth = inner.scrollWidth;
       if (direction === 'NEXT') {
         // If we cannot move more than one carouselWidth then just adjust to show all of the concealed items
         if (carouselWidth + translateX + carouselWidth > innerWidth) {
-          setTranslateX(translateX + (carouselWidth - (carouselWidth * 2 + translateX - innerWidth)) + 40);
+          const newOffset = innerWidth - carouselWidth;
+          setTranslateX(translateX + newOffset);
           setHideNext(true);
         } else {
           if (hideNext) {
@@ -168,12 +136,12 @@ const FilterCarousel: React.FC<Props> = ({ children }) => {
 
   return (
     <div {...handlers} css={handlerWrapperCSS}>
-      <Carousel ref={carouselRef} paddingLeft={translateX > 0} paddingRight={!hideNext}>
+      <Carousel ref={carouselRef}>
         <Inner ref={innerRef} style={{ transform: `translateX(-${translateX}px)` }}>
           {children}
         </Inner>
       </Carousel>
-      <NavButton onClick={() => updateIndex('PREV')} hide={translateX < 20}>
+      <NavButton onClick={() => updateIndex('PREV')} hide={translateX < 1}>
         <ChevronLeft style={{ width: '18px', height: '18px' }} />
       </NavButton>
       <NavButton onClick={() => updateIndex('NEXT')} alignRight hide={hideNext}>

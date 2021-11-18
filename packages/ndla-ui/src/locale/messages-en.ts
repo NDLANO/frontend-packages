@@ -136,6 +136,7 @@ const messages = {
       hits: '{{count}} hits',
       showingSearchPhrase: 'Showing hits for',
       searchPhraseSuggestion: 'Search instead for',
+      showingCompetenceGoalSearchPhrase: 'Showing results for competence goals {text}',
       notionLabels: 'Used in',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Remove',
@@ -195,6 +196,8 @@ const messages = {
   },
   welcomePage: {
     search: 'Search',
+    searchDisclaimer:
+      'We are constantly working to improve ourselves! If you have comments to the search, please use the «spør NDLA» function in the bottom right corner.',
     resetSearch: 'Empty search',
     closeSearch: 'Close search',
     searchAllInfo: 'View all results',
@@ -316,11 +319,8 @@ const messages = {
     },
   },
   article: {
-    author: 'Author',
-    published: 'Published',
     edition: 'Edition',
     publisher: 'Publisher',
-    created: 'Created',
     lastUpdated: 'Last updated',
     closeLabel: 'Close',
     useContent: 'Cite or use',
@@ -838,6 +838,10 @@ const messages = {
   user: {
     loggedInAs: 'You are logged in as {{role}}.',
     loggedInAsButton: 'You are logged in as {{role}}',
+    role: {
+      employee: 'Teacher',
+      student: 'Student',
+    },
     buttonLogIn: 'Log in with Feide',
     buttonLogOut: 'Log out',
     generalFooter: 'Some resources may only be accessed by teachers who are logged in.',
@@ -850,6 +854,7 @@ const messages = {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
     },
   },
+  checkOutNewFeature: 'New feature',
 };
 
 export default messages;

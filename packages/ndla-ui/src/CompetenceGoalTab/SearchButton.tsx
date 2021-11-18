@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     padding: 10px 16px;
     box-shadow: none;
     transition: ${misc.transition.default};
-    display: flex;
+    display: inline-flex;
     &:hover {
       border: 2px solid ${colors.brand.primary};
       color: ${colors.white};

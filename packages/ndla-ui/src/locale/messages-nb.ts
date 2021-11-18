@@ -675,6 +675,7 @@ const messages = {
     createLearningPathButtonText: 'Gå til stier',
     lastUpdated: 'Sist oppdatert',
     youAreInALearningPath: 'Du er nå inne i en læringssti',
+    readTime: '{{hours}} Skoletimer = {{minutes}} min',
     readTimeHour: 'time',
     readTimeHour_plurals: 'timer',
     readTimeMinutesShort: 'min',
@@ -836,6 +837,10 @@ const messages = {
   user: {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
+    role: {
+      employee: 'Lærer',
+      student: 'Elev',
+    },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
     generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',
@@ -848,6 +853,7 @@ const messages = {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
     },
   },
+  checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
 };
 
 export default messages;

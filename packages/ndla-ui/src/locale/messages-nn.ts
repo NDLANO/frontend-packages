@@ -136,6 +136,7 @@ const messages = {
       hits: '{{count}} treff',
       showingSearchPhrase: 'Viser treff for',
       searchPhraseSuggestion: 'Søk heller',
+      showingCompetenceGoalSearchPhrase: 'Viser resultat for kompetansemål {text}',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
@@ -837,6 +838,10 @@ const messages = {
   user: {
     loggedInAs: 'Du er pålogga som {{role}}.',
     loggedInAsButton: 'Du er pålogga som {{role}}',
+    role: {
+      employee: 'Lærer',
+      student: 'Elev',
+    },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
     generalFooter: 'Enkelte ressursar er berre tilgjengelege for pålogga lærarar.',
@@ -849,6 +854,7 @@ const messages = {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
   },
+  checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
 };
 
 export default messages;

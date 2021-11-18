@@ -5,6 +5,10 @@
   margin: 0 auto;
   padding: 32px;
 
+  @include mq(mobile) {
+    padding: 0;
+  }
+
   &__dialog-wrapper {
     @include mq(tablet) {
       padding-left: $spacing;

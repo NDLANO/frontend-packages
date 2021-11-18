@@ -18,3 +18,4 @@ export { setCookie, getCookie, deleteCookie, isValidCookie } from './cookieHandl
 export { printPage } from './printPage';
 export { default as joinArrayWithConjunction } from './joinArrayWithConjunction';
 export { parseMarkdown } from './markdownHelpers';
+export { validateTranslationFiles } from './translationValidation';

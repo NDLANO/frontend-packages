@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { LicenseByline, getLicenseByNBTitle } from '@ndla/licenses';
+import { PanoramaPhotosphere } from '@ndla/icons/common';
 import BEMHelper from 'react-bem-helper';
 import PreviewVideo from './PreviewVideo';
 import { LicenseShape, BrightcoveShape } from './shapes';
@@ -31,12 +32,17 @@ export default function VideoSearchResultBrightcove({
   const license =
     video.custom_fields && video.custom_fields.license ? getLicenseByNBTitle(video.custom_fields.license, locale) : '';
   const thumbnailSource = video.images && video.images.thumbnail ? video.images.thumbnail.src : '';
+  const is360video = video.projection === 'equirectangular';
+
   return (
     <div key={video.id} {...classes('list-item', active)}>
       <div {...classes('list-item-inner')}>
         <img role="presentation" alt="presentation" src={thumbnailSource} />
         <div {...classes('information')}>
-          <h2>{video.name || ''}</h2>
+          <h2 {...classes('header')}>
+            {video.name || ''}
+            {is360video && <PanoramaPhotosphere />}
+          </h2>
           <div {...classes('copyright-author')}>
             {video.custom_fields && video.custom_fields.licenseinfo ? video.custom_fields.licenseinfo : ''}
           </div>

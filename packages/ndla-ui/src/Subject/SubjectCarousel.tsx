@@ -105,6 +105,7 @@ const SubjectCarousel = ({
             disableScroll={(autoSizedProps?.columnsPrSlide ?? 0) >= subjects.length}
             slideBackwardsLabel={t('carousel.back')}
             slideForwardsLabel={t('carousel.forward')}
+            distanceBetweenItems={0}
             buttonClass="c-carousel__arrow"
             wrapperClass="c-carousel__wrapper"
             columnWidth={autoSizedProps?.columnWidth ?? 0}

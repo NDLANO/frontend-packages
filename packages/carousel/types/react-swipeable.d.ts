@@ -1,4 +1,4 @@
-declare module 'react-swipeable' {
+/* declare module 'react-swipeable' {
   import React from 'react';
   export class Swipeable<T extends Element = HTMLElement> extends React.Component<SwipeableProps<T>> {}
 
@@ -28,4 +28,4 @@ declare module 'react-swipeable' {
     innerRef?: React.Ref<T>;
     children?: React.ReactNode;
   }
-}
+} */

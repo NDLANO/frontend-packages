@@ -6,12 +6,12 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import em from 'polished/lib/helpers/em';
 import { breakpoints as breakpointFromCore } from '@ndla/core';
 import { Breakpoint } from '@ndla/core/types';
-import { StyledWrapperAutosizer } from './Styles';
 import { CalculatedProps as CalculatedCarouselProps } from './Carousel';
+import { StyledWrapperAutosizer } from './Styles';
 
 export interface CaruselBreakpoint {
   until?: Breakpoint;
@@ -30,30 +30,20 @@ interface Props {
   children: (calculatedProps: CalculatedCarouselProps | null) => React.ReactNode;
 }
 
-interface State {
-  carouselBreakpoint?: CaruselBreakpoint;
-}
+export const CarouselAutosize: React.FC<Props> = ({
+  breakpoints: propsBreakpoints,
+  children,
+  centered,
+  itemsLength,
+}) => {
+  const [carouselBreakpoint, setCarouselBreakpoint] = useState<CaruselBreakpoint | null>(null);
+  const autosizeRef = useRef<HTMLDivElement>(null);
 
-export class CarouselAutosize extends Component<Props, State> {
-  static defaultProps = {
-    itemsLength: 999,
-  };
-  autosizeRef = React.createRef<HTMLDivElement>();
-  state: State = {};
-
-  componentDidMount() {
-    window.addEventListener('resize', this.updateSizes);
-    this.updateSizes();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateSizes);
-  }
-
-  updateSizes = () => {
-    const node = this.autosizeRef.current!;
+  // Update sizes when window resize changes
+  const updateSizes = () => {
+    const node = autosizeRef.current!;
     const wrapperWidthInEm = parseFloat(em(node.offsetWidth));
-    const breakpoints: CaruselBreakpoint[] = this.props.breakpoints;
+    const breakpoints: CaruselBreakpoint[] = propsBreakpoints;
 
     const useBreakpoint = breakpoints
       .filter((breakpointItem) => {
@@ -67,19 +57,18 @@ export class CarouselAutosize extends Component<Props, State> {
           : 1,
       );
 
-    this.setState({
-      carouselBreakpoint: useBreakpoint[0],
-    });
+    setCarouselBreakpoint(useBreakpoint[0]);
   };
 
-  calculateCarouselProps = (breakpoint: CaruselBreakpoint): CalculatedCarouselProps | null => {
-    if (!this.state.carouselBreakpoint || !this.autosizeRef.current) {
+  // Method that calculates the props for our carousel based on passed breakpoint value
+  const calculateCarouselProps = (breakpoint: CaruselBreakpoint): CalculatedCarouselProps | null => {
+    if (!carouselBreakpoint || !autosizeRef.current) {
       return null;
     }
     const { columnsPrSlide, distanceBetweenItems, arrowOffset, margin, maxColumnWidth } = breakpoint;
 
     const wrapperWidth =
-      this.autosizeRef.current.offsetWidth - (columnsPrSlide - 1) * distanceBetweenItems - (margin || 0) * 2;
+      autosizeRef.current.offsetWidth - (columnsPrSlide - 1) * distanceBetweenItems - (margin || 0) * 2;
 
     const columnWidthDynamic = wrapperWidth / columnsPrSlide;
     const columnWidth = maxColumnWidth ? Math.min(columnWidthDynamic, maxColumnWidth) : columnWidthDynamic;
@@ -87,37 +76,45 @@ export class CarouselAutosize extends Component<Props, State> {
     return {
       columnsPrSlide,
       columnWidth,
-      distanceBetweenItems,
+      distanceBetweenItems: distanceBetweenItems || 0,
       arrowOffset,
       margin: margin || 0,
     };
   };
 
-  render() {
-    const { carouselBreakpoint } = this.state;
-    const { children, centered, itemsLength } = this.props;
-    if (!carouselBreakpoint) {
-      return <div ref={this.autosizeRef} />;
-    }
-
-    const calculatedCarouselProps = this.calculateCarouselProps(carouselBreakpoint);
-
-    let wrapperWidth = 'auto';
-
-    if (centered && calculatedCarouselProps) {
-      wrapperWidth = `${
-        calculatedCarouselProps.columnWidth * Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
-        calculatedCarouselProps.distanceBetweenItems * (calculatedCarouselProps.columnsPrSlide - 1) +
-        (calculatedCarouselProps.margin || 0) * 2
-      }px`;
-    }
-
-    return (
-      <div ref={this.autosizeRef}>
-        {carouselBreakpoint && (
-          <StyledWrapperAutosizer width={wrapperWidth}>{children(calculatedCarouselProps)}</StyledWrapperAutosizer>
-        )}
-      </div>
-    );
+  // Hooks
+  useEffect(() => {
+    window.addEventListener('resize', updateSizes);
+    updateSizes();
+    return () => {
+      window.removeEventListener('resize', updateSizes);
+    };
+  }, [updateSizes]);
+  
+  if (!carouselBreakpoint) {
+    return <div ref={autosizeRef} />;
   }
-}
+
+  const calculatedCarouselProps = calculateCarouselProps(carouselBreakpoint);
+
+  let wrapperWidth = 'auto';
+
+  if (centered && calculatedCarouselProps) {
+    wrapperWidth = `${
+      calculatedCarouselProps.columnWidth * Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
+      // @ts-ignore
+      calculatedCarouselProps.distanceBetweenItems * (calculatedCarouselProps.columnsPrSlide - 1) +
+      (calculatedCarouselProps.margin || 0) * 2
+    }px`;
+  }
+
+  return (
+    <div ref={autosizeRef}>
+      {carouselBreakpoint && (
+        <StyledWrapperAutosizer width={wrapperWidth}>{children(calculatedCarouselProps)}</StyledWrapperAutosizer>
+      )}
+    </div>
+  );
+};
+
+export default CarouselAutosize;

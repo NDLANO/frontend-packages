@@ -7,6 +7,7 @@
  */
 
 import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 
 import { animations, fonts, spacing } from '@ndla/core';
@@ -100,6 +101,7 @@ type Props = {
 };
 
 const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
+  const { t } = useTranslation();
   return (
     <>
       {img ? (
@@ -113,13 +115,13 @@ const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
         <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
           {img && type && <ContentTypeBadge type={type} border={false} />}
         </ContentTypeIcon>
+        {type && t(`contentTypes.${type}`)}
         {labels.length > 0 && (
           <>
-            {labels.map((label, i) => (
+            {labels.map((label) => (
               <Fragment key={label}>
                 {' '}
-                {label}
-                {i < labels?.length - 1 && <> &#8226;</>}
+                <>&#8226;</> {label}
               </Fragment>
             ))}
           </>

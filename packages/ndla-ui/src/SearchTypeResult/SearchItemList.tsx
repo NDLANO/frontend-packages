@@ -7,6 +7,7 @@
  */
 
 import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
@@ -121,6 +122,7 @@ const ContextWrapper = styled.div`
 `;
 
 const SearchItemList = ({ item, type }: SearchItemType) => {
+  const { t } = useTranslation();
   const { id, title, url, ingress, contexts, img = null, labels = [] } = item;
   return (
     <Container contentType={type}>
@@ -131,13 +133,13 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
               <ContentTypeIconWrapper>
                 <ContentTypeBadge type={type} background border={false} />
               </ContentTypeIconWrapper>
+              {t(`contentTypes.${type}`)}
               {labels.length > 0 && (
                 <>
-                  {labels.map((label, i) => (
+                  {labels.map((label) => (
                     <Fragment key={label}>
                       {' '}
-                      {label}
-                      {i < labels?.length - 1 && <> &#8226;</>}
+                      <>&#8226;</> {label}
                     </Fragment>
                   ))}
                 </>

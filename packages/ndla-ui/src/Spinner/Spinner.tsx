@@ -7,19 +7,30 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { spacing, colors } from '@ndla/core';
+import { colors, spacing, SpacingNames } from '@ndla/core';
 
-const SpinnerDiv = styled('div')`
+interface Props {
+  size?: SpacingNames;
+  margin?: string;
+  inverted?: boolean;
+}
+
+interface SpinnerDivProps {
+  size: SpacingNames;
+  margin: string;
+  inverted: boolean;
+}
+
+const SpinnerDiv = styled('div')<SpinnerDivProps>`
   border: calc(${(props) => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);
   border-bottom-color: ${(props) => (props.inverted ? '#fff' : colors.brand.primary)};
   border-radius: 50%;
   animation: spinnerAnimation 0.7s linear infinite;
   height: ${(props) => spacing[props.size]};
   width: ${(props) => spacing[props.size]};
-  display: block;
   margin: ${(props) => props.margin};
+  display: block;
   @keyframes spinnerAnimation {
     0% {
       transform: rotate(0deg);
@@ -30,17 +41,8 @@ const SpinnerDiv = styled('div')`
   }
 `;
 
-const Spinner = ({ size, margin, inverted }) => <SpinnerDiv size={size} margin={margin} inverted={inverted} />;
-
-Spinner.propTypes = {
-  size: PropTypes.oneOf(['large', 'medium', 'normal']),
-  margin: PropTypes.string,
-  inverted: PropTypes.bool,
-};
-
-Spinner.defaultProps = {
-  size: 'large',
-  margin: `${spacing.normal} auto`,
-};
+const Spinner: React.FC<Props> = ({ size = 'large', margin = `${spacing.normal} auto`, inverted = false }) => (
+  <SpinnerDiv size={size} margin={margin} inverted={inverted} />
+);
 
 export default Spinner;

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import em from 'polished/lib/helpers/em';
 import { breakpoints as breakpointFromCore } from '@ndla/core';
 import { Breakpoint } from '@ndla/core/types';
@@ -40,7 +40,7 @@ export const CarouselAutosize: React.FC<Props> = ({
   const autosizeRef = useRef<HTMLDivElement>(null);
 
   // Update sizes when window resize changes
-  const updateSizes = () => {
+  const updateSizes = useCallback(() => {
     const node = autosizeRef.current!;
     const wrapperWidthInEm = parseFloat(em(node.offsetWidth));
     const breakpoints: CaruselBreakpoint[] = propsBreakpoints;
@@ -58,7 +58,7 @@ export const CarouselAutosize: React.FC<Props> = ({
       );
 
     setCarouselBreakpoint(useBreakpoint[0]);
-  };
+  }, [propsBreakpoints, setCarouselBreakpoint]);
 
   // Method that calculates the props for our carousel based on passed breakpoint value
   const calculateCarouselProps = (breakpoint: CaruselBreakpoint): CalculatedCarouselProps | null => {
@@ -90,7 +90,7 @@ export const CarouselAutosize: React.FC<Props> = ({
       window.removeEventListener('resize', updateSizes);
     };
   }, [updateSizes]);
-  
+
   if (!carouselBreakpoint) {
     return <div ref={autosizeRef} />;
   }

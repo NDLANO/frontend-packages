@@ -54,7 +54,7 @@ export const Carousel: React.FC<Props> = ({
   const slidePage = (direction: number) => {
     const roundedColumnsPrSlide = Math.floor(columnsPrSlide);
     if (roundedColumnsPrSlide < items.length) {
-      let newSlideIndex = slideIndex + roundedColumnsPrSlide + direction;
+      let newSlideIndex = slideIndex + roundedColumnsPrSlide * direction;
       if (newSlideIndex > 0) {
         newSlideIndex = 0;
       } else if (newSlideIndex < -(items.length - roundedColumnsPrSlide)) {

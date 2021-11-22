@@ -9,8 +9,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SwipeEventData, useSwipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
-import { OneColumn } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';
+import { OneColumn } from '../Layout';
 import Spinner from '../Spinner';
 import { IMovie } from './shapes';
 import NavigationArrow from './NavigationArrow';

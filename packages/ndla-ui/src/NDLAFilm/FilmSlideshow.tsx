@@ -57,7 +57,6 @@ const FilmSlideshow: React.FC<Props> = ({ autoSlide = false, slideshow = [], sli
     if (timer.current) {
       clearTimeout(timer.current);
     }
-    setSlideIndex(indexTarget);
     setSlideIndexTarget(indexTarget);
     setAnimationComplete(!useAnimation);
   }, []);
@@ -70,7 +69,7 @@ const FilmSlideshow: React.FC<Props> = ({ autoSlide = false, slideshow = [], sli
       }
 
       setAnimationComplete(true);
-      setSlideIndex(slideIndex);
+      setSlideIndex(slideIndexTarget);
     } else if (slideIndexTarget === -1) {
       if (slideRef.current) {
         // Go to last slide for continuous loop
@@ -132,7 +131,7 @@ const FilmSlideshow: React.FC<Props> = ({ autoSlide = false, slideshow = [], sli
     if (timer.current) {
       clearTimeout(timer.current);
     }
-    setSwipeDistance(-eventData.deltaX);
+    setSwipeDistance(eventData.deltaX);
     if (slideRef && slideRef.current) {
       slideRef.current.style.transition = 'none';
       slideRef.current.style.transform = getSlidePosition(slideIndexTarget);

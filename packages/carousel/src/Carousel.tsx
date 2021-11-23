@@ -66,7 +66,7 @@ export const Carousel: React.FC<Props> = ({
 
   // Swipe handler functions
   const onSwipe = (eventData: SwipeEventData) => {
-    const moved = -eventData.deltaX;
+    const moved = eventData.deltaX;
     if (Math.abs(moved) < 15 || eventData.dir === 'Up' || eventData.dir === 'Down') {
       return;
     }

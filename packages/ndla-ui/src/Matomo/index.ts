@@ -6,6 +6,6 @@
  *
  */
 
-import MatomoTracker from "./MatomoTracker";
+import MatomoTracker from './MatomoTracker';
 
 export default MatomoTracker;

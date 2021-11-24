@@ -67,6 +67,7 @@ const StyledButtonContentSelected = styled.span`
 
 const StyledRemoveWrapper = styled.div`
   margin-top: ${spacing.xsmall};
+  margin-left: 10px;
 `;
 
 const ButtonRemoveText = styled.span`

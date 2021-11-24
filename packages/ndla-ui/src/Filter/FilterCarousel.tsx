@@ -12,13 +12,14 @@ interface Props {
 const Carousel = styled.div`
   overflow-x: hidden;
   position: relative;
+  margin: 0 13px;
 `;
 
 const Inner = styled.div`
   flex-wrap: nowrap;
   transition: transform 0.3s;
   display: inline-flex;
-  padding: 4px;
+  padding: 8px 0;
 `;
 
 const NavButton = styled('button')<{
@@ -36,15 +37,16 @@ const NavButton = styled('button')<{
   transform: translate(0px, 0px, 1);
   position: absolute;
   bottom: 0;
-  top: 0;
+  top: 4px;
   z-index: 3;
+  left: 3px;
 
   svg {
     color: #20588f;
   }
 
   &:hover {
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
   }
 
@@ -58,7 +60,8 @@ const NavButton = styled('button')<{
   ${(props) =>
     props.alignRight &&
     `
-        right: 0;
+        right: 2px;
+        left: unset;
     `}
 
     ${(props) =>

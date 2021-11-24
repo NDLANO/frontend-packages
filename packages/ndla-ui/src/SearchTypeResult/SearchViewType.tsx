@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   ${mq.range({ until: breakpoints.tablet })} {
     display: none;
   }
+  padding-top: 8px;
 `;
 
 const ButtonContainer = styled.div`

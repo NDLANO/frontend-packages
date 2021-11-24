@@ -18,6 +18,9 @@ import SafeLink from '@ndla/safelink';
 import ContentTypeBadge from '../ContentTypeBadge';
 import ItemContexts from './components/ItemContexts';
 import { SearchItemType } from './SearchItem';
+// @ts-ignore
+import constants from '../model';
+const { contentTypes } = constants;
 
 const Container = styled.div`
   display: flex;
@@ -46,6 +49,8 @@ const ItemLink = styled(SafeLink)`
 `;
 
 const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.normal};
   max-width: 800px;
@@ -86,10 +91,10 @@ const ItemText = styled.div`
   ${fonts.sizes('16px', '24px')};
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<{ isTopic: boolean }>`
   float: right;
   position: relative;
-  width: 224px;
+  width: ${(props) => (props.isTopic ? `164px` : `224px`)};
   height: 164px;
   display: flex;
   justify-content: center;
@@ -97,18 +102,19 @@ const ImageWrapper = styled.div`
   margin: ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
   ${Container}:hover & {
-    width: 228px;
+    width: ${(props) => (props.isTopic ? `168px` : `228px`)};
     height: 168px;
   }
 `;
 
-const ImageElement = styled.img`
+const ImageElement = styled.img<{ isTopic: boolean }>`
   border-radius: 2px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all ${animations.durations.fast} ease-in-out;
   max-width: unset;
+  ${(props) => props.isTopic && `border-radius: 50%;`};
 `;
 
 const ContextWrapper = styled.div`
@@ -119,6 +125,7 @@ const ContextWrapper = styled.div`
 const SearchItemList = ({ item, type }: SearchItemType) => {
   const { t } = useTranslation();
   const { id, title, url, ingress, contexts, img = null, labels = [] } = item;
+  const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
   return (
     <Container>
       <ItemLink to={url}>
@@ -150,8 +157,8 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
           </ContextWrapper>
         </TextWrapper>
         {img && (
-          <ImageWrapper>
-            <ImageElement src={img.url} alt={img.alt} />
+          <ImageWrapper isTopic={isTopic}>
+            <ImageElement src={img.url} alt={img.alt} isTopic={isTopic} />
           </ImageWrapper>
         )}
       </ItemLink>

@@ -525,6 +525,7 @@ const messages = {
     'source-material': 'Kjeldemateriale',
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
+    'multidisciplinary-topic': 'Tverrfagleg case',
   },
   modal: {
     closeModal: 'Lukk',

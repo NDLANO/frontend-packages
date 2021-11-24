@@ -13,6 +13,7 @@ import {
   resourcesAssessmentResults,
   resourcesExternalResults,
   resourcesSourceMaterialResults,
+  multidiscinplinaryResults,
 } from '../../dummydata/mockSearchResultType';
 import { competenceGoals, programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NotionResult from '../search/NotionResult';
@@ -57,6 +58,11 @@ const responseDataSource = [
     items: resourcesSourceMaterialResults,
     totalCount: resourcesSourceMaterialResults.length,
     type: contentTypes.SOURCE_MATERIAL,
+  },
+  {
+    items: multidiscinplinaryResults,
+    totalCount: multidiscinplinaryResults.length,
+    type: contentTypes.MULTIDISCIPLINARY_TOPIC,
   },
 ];
 

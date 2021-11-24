@@ -10,6 +10,7 @@ import {
   ExternalLearningResource,
   SharedResource,
   LearningPath,
+  MultidisciplinaryTopic,
 } from '@ndla/icons/contentType';
 
 import { MenuBook } from '@ndla/icons/action';
@@ -66,6 +67,9 @@ export const ContentTypeBadge = ({ type, background, size, border }: Props) => {
     case contentTypes.TOPIC:
       icon = <Subject />;
       break;
+    case contentTypes.MULTIDISCIPLINARY_TOPIC:
+      icon = <MultidisciplinaryTopic />;
+      break;
     default:
       break;
   }
@@ -103,4 +107,8 @@ export const SourceMaterialBadge = (props: Omit<Props, 'type'>) => (
 
 export const LearningPathBadge = (props: Omit<Props, 'type'>) => (
   <ContentTypeBadge {...props} type={contentTypes.LEARNING_PATH} />
+);
+
+export const MultidisciplinaryTopicBadge = (props: Omit<Props, 'type'>) => (
+  <ContentTypeBadge {...props} type={contentTypes.MULTIDISCIPLINARY_TOPIC} />
 );

@@ -48,7 +48,8 @@ export type ContentType =
   | typeof constants.contentTypes.EXTERNAL_LEARNING_RESOURCES
   | typeof constants.contentTypes.SOURCE_MATERIAL
   | typeof constants.contentTypes.LEARNING_PATH
-  | typeof constants.contentTypes.TOPIC;
+  | typeof constants.contentTypes.TOPIC
+  | typeof constants.contentTypes.MULTIDISCIPLINARY_TOPIC;
 
 type Props = {
   items: SearchItemType[];

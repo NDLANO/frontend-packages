@@ -31,7 +31,7 @@ const topicResults = [
     title: 'Løping',
     ingress: 'Løping er ofte med som hovedaktivitet i den generelle oppvarmingen.',
     url: '#12627',
-    labels: [],
+    labels: ['En label', 'En annen label'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/43283',
       alt: 'Kvinne jogger på gata. Foto.',
@@ -1203,6 +1203,10 @@ const searchSubjectTypeOptions = [
   {
     label: 'Kildemateriale',
     value: 'source-material',
+  },
+  {
+    label: 'Tverrfaglig caser',
+    value: 'multidisciplinary-topic',
   },
 ];
 

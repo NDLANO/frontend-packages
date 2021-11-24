@@ -525,6 +525,7 @@ const messages = {
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
     topic: 'Topic',
+    'multidisciplinary-topic': 'Multidisciplinary case',
   },
   modal: {
     closeModal: 'Close',

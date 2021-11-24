@@ -16,20 +16,15 @@ import SafeLink from '@ndla/safelink';
 
 // @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
-import { resourceTypeColor, SearchItemType } from './SearchItem';
 import ItemContexts from './components/ItemContexts';
-import { ContentType } from './SearchTypeResult';
+import { SearchItemType } from './SearchItem';
 
-type ItemTypeProps = {
-  contentType?: ContentType;
-};
-
-const Container = styled.div<ItemTypeProps>`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 192px;
   height: 100%;
-  border: 1px solid ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
+  border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
   transition: all ${animations.durations.fast} ease-in-out;
   &:hover {
@@ -43,11 +38,14 @@ const ItemLink = styled(SafeLink)`
   box-shadow: none;
   color: unset;
   text-decoration: none;
+  display: flex;
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  justify-content: space-between;
 `;
 
 const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   flex: 1;
   margin: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.normal};
   max-width: 800px;
@@ -122,8 +120,8 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
   const { t } = useTranslation();
   const { id, title, url, ingress, contexts, img = null, labels = [] } = item;
   return (
-    <ItemLink to={url}>
-      <Container contentType={type}>
+    <Container>
+      <ItemLink to={url}>
         <TextWrapper>
           {type && (
             <ContentTypeWrapper>
@@ -148,7 +146,7 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
           </ItemTitleWrapper>
           <ItemText>{parse(ingress)}</ItemText>
           <ContextWrapper>
-            <ItemContexts contexts={contexts} id={id} title={title} />
+            {contexts.length > 0 && <ItemContexts contexts={contexts} id={id} title={title} />}
           </ContextWrapper>
         </TextWrapper>
         {img && (
@@ -156,8 +154,8 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
             <ImageElement src={img.url} alt={img.alt} />
           </ImageWrapper>
         )}
-      </Container>
-    </ItemLink>
+      </ItemLink>
+    </Container>
   );
 };
 

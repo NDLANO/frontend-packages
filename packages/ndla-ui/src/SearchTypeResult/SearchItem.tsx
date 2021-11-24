@@ -45,6 +45,7 @@ export const resourceTypeColor = (type: string) => {
 
 type ItemTypeProps = {
   contentType?: ContentType;
+  isTopic?: boolean;
 };
 
 const Container = styled.div`
@@ -54,12 +55,12 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const ItemWrapper = styled.div<ItemTypeProps>`
+const ItemWrapper = styled.div`
   flex-direction: column;
   display: flex;
   width: 100%;
   height: 100%;
-  border: 1px solid ${(props) => props.contentType && `${resourceTypeColor(props.contentType)};`};
+  border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
   transition: all ${animations.durations.fast} ease-in-out;
   &:hover {
@@ -68,16 +69,19 @@ const ItemWrapper = styled.div<ItemTypeProps>`
     margin-left: -2px;
     margin-right: -2px;
     .topic-header-image {
-      height: calc(100% + 4px);
-      width: calc(100% + 4px);
+      height: calc(100% + 6px);
+      width: calc(100% + 6px);
     }
     .topic-label {
       margin-top: calc(${spacing.small} + 2px);
+      margin-left: 2px;
       svg {
         width: 26px;
         height: 26px;
-        margin-right: calc(${spacing.xsmall} - 2px);
       }
+    }
+    .topic-label-list {
+      margin-left: 2px;
     }
     .resource-type-wrapper {
       padding: 0 calc(${spacing.normal} + 2px);
@@ -128,15 +132,16 @@ const TextWrapper = styled.div`
 const ItemTitleWrapper = styled.div<ItemTypeProps>`
   transition: all ${animations.durations.fast} ease-in-out;
   margin-top: ${spacing.small};
-  ${ItemWrapper}:hover & {
-    ${(props) => props.contentType === contentTypes.TOPIC && `padding-left:2px; padding-right: 2px;`};
-  }
+  ${(props) =>
+    props.isTopic &&
+    `${ItemWrapper}:hover & {
+    padding-left:2px; padding-right: 2px;}`};
 `;
 
 const ItemTitle = styled.h3<ItemTypeProps>`
   ${fonts.sizes('24px', '28px')};
   color: ${colors.brand.dark};
-  ${(props) => props.contentType === contentTypes.TOPIC && `margin-bottom: ${spacing.small};`};
+  ${(props) => props.isTopic && `margin-bottom: ${spacing.small};`};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
   display: inline;
@@ -152,7 +157,7 @@ const ItemText = styled.div<ItemTypeProps>`
   transition: all ${animations.durations.fast} ease-in-out;
   margin-top: ${spacing.small};
   ${(props) =>
-    props.contentType === contentTypes.TOPIC &&
+    props.isTopic &&
     `
     ${fonts.sizes('18px', '28px')};
     ${ItemWrapper}:hover & {
@@ -188,23 +193,25 @@ export type SearchItemType = {
 const SearchItem = ({ item, type }: SearchItemType) => {
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
 
+  const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
+
   return (
     <Container>
-      <ItemWrapper contentType={type}>
+      <ItemWrapper>
         <ItemLink to={url}>
-          {type === contentTypes.TOPIC ? (
-            <ItemTopicHeader image={img} labels={labels}>
-              <ItemTitleWrapper contentType={type}>
-                <ItemTitle contentType={type}>{title}</ItemTitle>
+          {isTopic ? (
+            <ItemTopicHeader image={img} labels={labels} type={type}>
+              <ItemTitleWrapper isTopic>
+                <ItemTitle isTopic>{title}</ItemTitle>
               </ItemTitleWrapper>
-              <ItemText contentType={type}>{parse(ingress)}</ItemText>
+              <ItemText isTopic>{parse(ingress)}</ItemText>
             </ItemTopicHeader>
           ) : (
             <>
               <ItemResourceHeader labels={labels} img={img} type={type} />
               <TextWrapper>
-                <ItemTitleWrapper contentType={type}>
-                  <ItemTitle contentType={type}>{title}</ItemTitle>
+                <ItemTitleWrapper>
+                  <ItemTitle>{title}</ItemTitle>
                 </ItemTitleWrapper>
                 <ItemText>{parse(ingress)}</ItemText>
               </TextWrapper>

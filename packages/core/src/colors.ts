@@ -30,6 +30,7 @@ const colors = {
     greyLighter: '#eff0f2',
     greyLightest: brandGreyLightest,
     greyDark: '#4d4d4d',
+    neutral7: '#D1D6DB',
   },
 
   /**

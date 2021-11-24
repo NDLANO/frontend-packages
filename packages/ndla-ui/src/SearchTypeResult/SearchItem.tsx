@@ -120,7 +120,8 @@ const TextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {
-    padding: 0 calc(${spacing.normal} + 2px) ${spacing.small};
+    padding-left: calc(${spacing.normal} + 2px);
+    padding-right: calc(${spacing.normal} + 2px);
   }
 `;
 
@@ -164,7 +165,9 @@ const ContextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {
-    padding: 0 calc(${spacing.normal} + 2px) calc(${spacing.small} + 2px);
+    padding-left: calc(${spacing.normal} + 2px);
+    padding-right: calc(${spacing.normal} + 2px);
+    padding-bottom: calc(${spacing.small} + 2px);
   }
 `;
 
@@ -188,27 +191,29 @@ const SearchItem = ({ item, type }: SearchItemType) => {
   return (
     <Container>
       <ItemWrapper contentType={type}>
-        {type === contentTypes.TOPIC ? (
-          <ItemTopicHeader url={url} image={img}>
-            <ItemTitleWrapper contentType={type}>
-              <ItemTitle contentType={type}>{title}</ItemTitle>
-            </ItemTitleWrapper>
-            <ItemText contentType={type}>{parse(ingress)}</ItemText>
-          </ItemTopicHeader>
-        ) : (
-          <ItemLink to={url}>
-            <ItemResourceHeader labels={labels} img={img} type={type} />
-            <TextWrapper>
+        <ItemLink to={url}>
+          {type === contentTypes.TOPIC ? (
+            <ItemTopicHeader image={img} labels={labels}>
               <ItemTitleWrapper contentType={type}>
                 <ItemTitle contentType={type}>{title}</ItemTitle>
               </ItemTitleWrapper>
-              <ItemText>{parse(ingress)}</ItemText>
-            </TextWrapper>
-          </ItemLink>
-        )}
-        <ContextWrapper>
-          <ItemContexts contexts={contexts} id={item.id} title={item.title} />
-        </ContextWrapper>
+              <ItemText contentType={type}>{parse(ingress)}</ItemText>
+            </ItemTopicHeader>
+          ) : (
+            <>
+              <ItemResourceHeader labels={labels} img={img} type={type} />
+              <TextWrapper>
+                <ItemTitleWrapper contentType={type}>
+                  <ItemTitle contentType={type}>{title}</ItemTitle>
+                </ItemTitleWrapper>
+                <ItemText>{parse(ingress)}</ItemText>
+              </TextWrapper>
+            </>
+          )}
+          <ContextWrapper>
+            {contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
+          </ContextWrapper>
+        </ItemLink>
       </ItemWrapper>
     </Container>
   );

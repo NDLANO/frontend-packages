@@ -6,9 +6,9 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import SafeLink from '@ndla/safelink';
-import { Additional, ChevronRight, Core } from '@ndla/icons/common';
+import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
@@ -18,24 +18,9 @@ import Button from '@ndla/button';
 import Modal, { ModalCloseButton } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 
-const ContextsWrapper = styled.div`
-  margin-top: ${spacing.small};
-  justify-self: flex-end;
-`;
-
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};
   ${fonts.sizes('14px', '20px')};
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const BreadcrumbItem = styled.span`
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  overflow-wrap: anywhere;
 `;
 
 const ModalButton = styled(Button)`
@@ -101,67 +86,61 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
   const mainContext = contexts[0];
   const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: React.ReactNode }) => (
     <BreadcrumbPath>
-      {breadcrumb.map((breadcrumbItem: string, i: number) => {
-        return (
-          <BreadcrumbItem key={`${breadcrumbItem}-${id}`}>
-            <span>{breadcrumbItem}</span>
-            {i !== breadcrumb.length - 1 && <ChevronRight />}
-          </BreadcrumbItem>
-        );
-      })}
+      {breadcrumb.map((breadcrumbItem: string, i: number) => (
+        <Fragment key={`${breadcrumbItem}-${id}`}>
+          {i > 0 && <> &rsaquo; </>}
+          {breadcrumbItem}
+        </Fragment>
+      ))}
       {children}
     </BreadcrumbPath>
   );
 
   return (
-    <ContextsWrapper>
-      {mainContext && (
-        <Breadcrumb breadcrumb={mainContext.breadcrumb}>
-          &nbsp;
-          {contexts.length > 1 && (
-            <Modal
-              activateButton={
-                <ModalButton link>
-                  {t('searchPage.contextModal.button', {
-                    count: contexts.length - 1,
-                  })}
-                </ModalButton>
-              }
-              animation="subtle"
-              animationDuration={50}
-              backgroundColor="white"
-              size="medium">
-              {(onClose: () => void) => (
-                <>
-                  <ModalHeader>
-                    <ModalHeading>{t('searchPage.contextModal.heading')}</ModalHeading>
-                    <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
-                  </ModalHeader>
-                  <ModalContent>
-                    <ContextList>
-                      {contexts.map((context) => (
-                        <ContextListItem key={context.url}>
-                          <SafeLink to={context.url}>{title}</SafeLink>
-                          <Breadcrumb breadcrumb={context.breadcrumb}>
-                            <IconWrapper>
-                              {context.isAdditional ? (
-                                <Additional style={{ width: '22px', height: '22px' }} />
-                              ) : (
-                                <Core style={{ width: '22px', height: '22px' }} />
-                              )}
-                            </IconWrapper>
-                          </Breadcrumb>
-                        </ContextListItem>
-                      ))}
-                    </ContextList>
-                  </ModalContent>
-                </>
-              )}
-            </Modal>
+    <Breadcrumb breadcrumb={mainContext.breadcrumb}>
+      &nbsp;
+      {contexts.length > 1 && (
+        <Modal
+          activateButton={
+            <ModalButton link>
+              {t('searchPage.contextModal.button', {
+                count: contexts.length - 1,
+              })}
+            </ModalButton>
+          }
+          animation="subtle"
+          animationDuration={50}
+          backgroundColor="white"
+          size="medium">
+          {(onClose: () => void) => (
+            <>
+              <ModalHeader>
+                <ModalHeading>{t('searchPage.contextModal.heading')}</ModalHeading>
+                <ModalCloseButton onClick={onClose} title={t('searchPage.close')} />
+              </ModalHeader>
+              <ModalContent>
+                <ContextList>
+                  {contexts.map((context) => (
+                    <ContextListItem key={context.url}>
+                      <SafeLink to={context.url}>{title}</SafeLink>
+                      <Breadcrumb breadcrumb={context.breadcrumb}>
+                        <IconWrapper>
+                          {context.isAdditional ? (
+                            <Additional style={{ width: '22px', height: '22px' }} />
+                          ) : (
+                            <Core style={{ width: '22px', height: '22px' }} />
+                          )}
+                        </IconWrapper>
+                      </Breadcrumb>
+                    </ContextListItem>
+                  ))}
+                </ContextList>
+              </ModalContent>
+            </>
           )}
-        </Breadcrumb>
+        </Modal>
       )}
-    </ContextsWrapper>
+    </Breadcrumb>
   );
 };
 

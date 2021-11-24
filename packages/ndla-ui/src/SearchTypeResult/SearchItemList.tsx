@@ -43,14 +43,11 @@ const ItemLink = styled(SafeLink)`
   box-shadow: none;
   color: unset;
   text-decoration: none;
-  display: flex;
-  position: relative;
-  min-height: 0;
-  flex: 1;
-  justify-content: space-between;
 `;
 
 const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.normal};
   max-width: 800px;
@@ -125,8 +122,8 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
   const { t } = useTranslation();
   const { id, title, url, ingress, contexts, img = null, labels = [] } = item;
   return (
-    <Container contentType={type}>
-      <ItemLink to={url}>
+    <ItemLink to={url}>
+      <Container contentType={type}>
         <TextWrapper>
           {type && (
             <ContentTypeWrapper>
@@ -159,8 +156,8 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
             <ImageElement src={img.url} alt={img.alt} />
           </ImageWrapper>
         )}
-      </ItemLink>
-    </Container>
+      </Container>
+    </ItemLink>
   );
 };
 

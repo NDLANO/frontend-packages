@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import { SearchTypeResult, SearchHeader, SearchSubjectResult, constants, SearchFilterContent } from '@ndla/ui';
+import {
+  SearchTypeResult,
+  SearchHeader,
+  SearchSubjectResult,
+  constants,
+  SearchFilterContent,
+  SearchNotionsResult,
+} from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -16,7 +23,7 @@ import {
   multidiscinplinaryResults,
 } from '../../dummydata/mockSearchResultType';
 import { competenceGoals, programmes, subjectCategories } from '../../dummydata/mockPrograms';
-import NotionResult from '../search/NotionResult';
+import NotionBlock from '../molecules/NotionBlock';
 
 const { contentTypes } = constants;
 
@@ -419,10 +426,13 @@ const SearchResult = ({ showCompetenceGoals }) => {
         }
       />
       {!hideNotionsResult && !showCompetenceGoals && (
-        <NotionResult
-          onHideNotionResults={() => {
+        <SearchNotionsResult
+          totalCount={2}
+          onRemove={() => {
             setHideNotionsResult(true);
           }}>
+          <NotionBlock type="image" />
+          <NotionBlock type="video" />
         </SearchNotionsResult>
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}

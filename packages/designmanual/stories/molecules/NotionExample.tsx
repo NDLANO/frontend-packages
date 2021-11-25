@@ -14,7 +14,7 @@ const Notion = {
   id: 1,
   title: 'And',
   text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
-  labels: ['Naturbruk Vg1'],
+  labels: ['Naturbruk Vg1', 'Naturbruk Vg2'],
   media: (
     <FigureWithLicense type="full-column" resizeIframe caption="Utholdenhet - animasjon av oksygentransporten">
       <iframe
@@ -30,7 +30,6 @@ const Notion = {
   authors: [{ name: 'Fornavn Etternavn' }],
   license: 'CC-BY-SA-4.0',
   linkedTo: [{ label: 'Fag' }, { label: 'Fag' }],
-  onReferenceClick: (e: any) => console.log(e), // eslint-disable-line no-console
 };
 
 export default Notion;

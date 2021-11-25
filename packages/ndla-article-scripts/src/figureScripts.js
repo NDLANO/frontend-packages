@@ -7,6 +7,7 @@
  */
 
 import { copyTextToClipboard } from '@ndla/util';
+import jump from 'jump.js';
 
 import { forEachElement } from './domHelpers';
 
@@ -116,6 +117,31 @@ export const addEventListenerForFigureZoomButton = () => {
         parentFigure.classList.add('expanded');
         target.classList.add(`${elClass}--expanded`);
         target.dataset.expanded = true;
+      }
+    };
+  });
+};
+
+export const addEventListenerForNotionExpandButton = () => {
+  forEachElement('button[data-notion-expand-media]', (el) => {
+    const target = el;
+    target.onclick = () => {
+      const id = target.getAttribute('data-notion-media-id');
+      const media = document.getElementById(id);
+      if (media && target.dataset.expanded) {
+        media.classList.remove('expanded');
+        media.classList.add('fadeOut');
+        target.classList.remove(`expanded`);
+        delete target.dataset.expanded;
+      } else if (media) {
+        target.classList.add(`expanded`);
+        media.classList.add('expanded');
+        media.classList.remove('fadeOut');
+        target.dataset.expanded = true;
+        jump(media, {
+          duration: 300,
+          offset: -150,
+        });
       }
     };
   });

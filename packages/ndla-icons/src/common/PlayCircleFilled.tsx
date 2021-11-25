@@ -17,7 +17,7 @@ interface Props extends IconProps {
 const PlayCircleFilled = (props: Props) => (
   <Icon
     title="PlayCircleFilled"
-    viewBox="0 0 24 24"
+    viewBox="0 0 20 20"
     data-license="Apache License 2.0"
     data-source="Material Design"
     {...props}>

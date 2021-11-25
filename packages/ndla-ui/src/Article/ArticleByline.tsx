@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   margin-top: ${spacing.normal};
   padding-top: ${spacing.normal};
   padding-bottom: ${spacing.xsmall};
-  border-top: 2px solid ${colors.brand.greyLighter};
+  border-top: 1px solid ${colors.brand.greyLight};
   ${fonts.sizes('14px', '18px')};
   font-family: ${fonts.sans};
   color: ${colors.brand.greyDark};

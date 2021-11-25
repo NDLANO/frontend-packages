@@ -422,8 +422,8 @@ const SearchResult = ({ showCompetenceGoals }) => {
         <NotionResult
           onHideNotionResults={() => {
             setHideNotionsResult(true);
-          }}
-        />
+          }}>
+        </SearchNotionsResult>
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
       <SearchFilterContent

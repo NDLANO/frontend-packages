@@ -108,7 +108,6 @@ type Props = {
   copyPageUrlLink?: string;
   printUrl?: string;
   notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
-  onReferenceClick?: React.MouseEventHandler;
   accessMessage?: string;
 };
 
@@ -136,7 +135,6 @@ export const Article = ({
   id,
   locale,
   notions,
-  onReferenceClick,
   printUrl,
   renderMarkdown,
   accessMessage,
@@ -197,9 +195,7 @@ export const Article = ({
           {notions && showExplainNotions && (
             <>
               <ArticleNotions
-                locale={locale}
                 notions={notions.list}
-                onReferenceClick={onReferenceClick}
                 relatedContent={notions.related}
                 renderMarkdown={renderMarkdown}
                 buttonOffsetRight={articlePositionRight}

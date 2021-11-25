@@ -7,12 +7,11 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { fonts, mq, breakpoints, spacing } from '@ndla/core';
+import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,13 +26,20 @@ const Wrapper = styled.div`
   ${mq.range({ from: breakpoints.desktop })} {
     padding: ${spacing.medium} 66px;
   }
+  & > .c-figure {
+    width: 100% !important;
+    padding: 0;
+    left: initial !important;
+    margin-bottom: 0;
+  }
 `;
 
 const HeadingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${spacing.small};
+  border-bottom: 2px solid ${colors.brand.light};
+  padding-bottom: ${spacing.small};
 `;
 const Heading = styled.h2`
   margin: 0;
@@ -52,27 +58,27 @@ const ButtonRemoveText = styled.span`
 `;
 
 type Props = {
-  items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
-  renderMarkdown?: (text: React.ReactNode) => string;
+  children: React.ReactNode;
 };
 
-const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & WithTranslation) => (
-  <Wrapper>
-    <HeadingWrapper>
-      <Heading>
-        {t(`searchPage.resultType.notionsHeading`)}
-        <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
-      </Heading>
-      <Button onClick={onRemove} link>
-        <ButtonRemoveText>{t(`searchPage.resultType.notionsRemove`)}</ButtonRemoveText>
-      </Button>
-    </HeadingWrapper>
-    {items.map((item) => (
-      <SearchNotionItem key={item.id} {...item} renderMarkdown={renderMarkdown} />
-    ))}
-  </Wrapper>
-);
+const SearchNotionsResult = ({ totalCount, onRemove, children }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <Wrapper>
+      <HeadingWrapper>
+        <Heading>
+          {t(`searchPage.resultType.notionsHeading`)}
+          <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
+        </Heading>
+        <Button onClick={onRemove} link>
+          <ButtonRemoveText>{t(`searchPage.resultType.notionsRemove`)}</ButtonRemoveText>
+        </Button>
+      </HeadingWrapper>
+      {children}
+    </Wrapper>
+  );
+};
 
-export default withTranslation()(SearchNotionsResult);
+export default SearchNotionsResult;

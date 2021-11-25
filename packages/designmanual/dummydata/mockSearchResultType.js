@@ -1171,6 +1171,26 @@ const multidiscinplinaryResults = [
         url: '#1',
       },
     ],
+    filters: ['Demokrati og medborgerskap', 'Bærekraftig utvikling'],
+  },
+  {
+    id: 22279,
+    title: 'Fuck fossils – en framtid du ikke vil ha',
+    ingress:
+      'Fuck fossils – en framtid du ikke vil ha er en fiksjonsfilm som handler om hvordan hverdagen vil kunne arte seg i år 2050',
+    url: '#22279',
+    labels: ['Norsk', 'Samfunnskunnskap', 'Mediefag', 'Politikk og menneskerettigheter'],
+    img: {
+      url: 'https://api.staging.ndla.no/image-api/raw/id/43699?width=600',
+      alt: 'Kvinne sitter foran stort kontrollpanel med berøringsskjerm. Foto.',
+    },
+    contexts: [
+      {
+        breadcrumb: ['Bærekraftig utvikling', 'Klimaendringer'],
+        url: '#1',
+      },
+    ],
+    filters: ['Demokrati og medborgerskap', 'Bærekraftig utvikling'],
   },
 ];
 
@@ -1205,7 +1225,7 @@ const searchSubjectTypeOptions = [
     value: 'source-material',
   },
   {
-    label: 'Tverrfaglig caser',
+    label: 'Tverrfaglig case',
     value: 'multidisciplinary-topic',
   },
 ];

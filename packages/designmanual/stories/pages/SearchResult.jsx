@@ -69,8 +69,9 @@ const responseDataSource = [
 const searchResults = responseDataSource.map((resourceType) => {
   const filters = [];
   resourceType.items.forEach((item) => {
-    if (item.labels) {
-      item.labels.forEach((label) => {
+    const itemFilters = item.filters || item.labels;
+    if (itemFilters) {
+      itemFilters.forEach((label) => {
         if (!filters.some((filter) => filter.name === label)) {
           filters.push({ id: label, name: label });
         }
@@ -185,7 +186,12 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
   if (!filters.length || filters.indexOf('Alle') > -1) {
     return resources.items;
   }
-  return resources.items.filter((item) => item.labels.some((label) => filters.includes(label)));
+  return resources.items.filter((item) => {
+    if (item.filters) {
+      return item.filters.some((label) => filters.includes(label));
+    }
+    return item.labels.some((label) => filters.includes(label));
+  });
 };
 
 const SearchResult = ({ showCompetenceGoals }) => {

@@ -89,6 +89,7 @@ const ItemTitle = styled.h3`
 
 const ItemText = styled.div`
   ${fonts.sizes('16px', '24px')};
+  flex: 1 auto;
 `;
 
 const ImageWrapper = styled.div<{ isTopic: boolean }>`
@@ -119,7 +120,6 @@ const ImageElement = styled.img<{ isTopic: boolean }>`
 
 const ContextWrapper = styled.div`
   transition: all ${animations.durations.fast} ease-in-out;
-  justify-self: flex-end;
 `;
 
 const SearchItemList = ({ item, type }: SearchItemType) => {

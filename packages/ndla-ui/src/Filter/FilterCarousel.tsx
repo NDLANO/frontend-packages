@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
@@ -79,6 +80,7 @@ const handlerWrapperCSS = css`
 `;
 
 const FilterCarousel: React.FC<Props> = ({ children }) => {
+  const { t } = useTranslation();
   const [hideNext, setHideNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
   const carouselRef: { current: HTMLDivElement | null } = useRef(null);
@@ -144,11 +146,11 @@ const FilterCarousel: React.FC<Props> = ({ children }) => {
           {children}
         </Inner>
       </Carousel>
-      <NavButton onClick={() => updateIndex('PREV')} hide={translateX < 1}>
-        <ChevronLeft style={{ width: '18px', height: '18px' }} />
+      <NavButton title={t('carousel.back')} onClick={() => updateIndex('PREV')} hide={translateX < 1}>
+        <ChevronLeft style={{ width: '18px', height: '18px' }} aria-hidden title="" />
       </NavButton>
-      <NavButton onClick={() => updateIndex('NEXT')} alignRight hide={hideNext}>
-        <ChevronRight style={{ width: '18px', height: '18px' }} />
+      <NavButton title={t('carousel.forward')} onClick={() => updateIndex('NEXT')} alignRight hide={hideNext}>
+        <ChevronRight style={{ width: '18px', height: '18px' }} aria-hidden title="" />
       </NavButton>
     </div>
   );

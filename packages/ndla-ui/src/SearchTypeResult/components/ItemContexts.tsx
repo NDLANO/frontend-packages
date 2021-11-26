@@ -21,6 +21,10 @@ import { useTranslation } from 'react-i18next';
 const BreadcrumbPath = styled.div`
   color: ${colors.text.light};
   ${fonts.sizes('14px', '20px')};
+
+  svg {
+    margin-left: ${spacing.small};
+  }
 `;
 
 const ModalButton = styled(Button)`
@@ -62,12 +66,6 @@ const ContextList = styled.ul`
 const ContextListItem = styled.li`
   margin-bottom: ${spacing.normal};
   ${fonts.sizes('16px', '28px')};
-`;
-
-const IconWrapper = styled.div`
-  margin-left: ${spacing.small};
-  display: flex;
-  align-items: center;
 `;
 
 type context = {
@@ -124,13 +122,11 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                     <ContextListItem key={context.url}>
                       <SafeLink to={context.url}>{title}</SafeLink>
                       <Breadcrumb breadcrumb={context.breadcrumb}>
-                        <IconWrapper>
-                          {context.isAdditional ? (
-                            <Additional style={{ width: '22px', height: '22px' }} />
-                          ) : (
-                            <Core style={{ width: '22px', height: '22px' }} />
-                          )}
-                        </IconWrapper>
+                        {context.isAdditional ? (
+                          <Additional style={{ width: '22px', height: '22px' }} />
+                        ) : (
+                          <Core style={{ width: '22px', height: '22px' }} />
+                        )}
                       </Breadcrumb>
                     </ContextListItem>
                   ))}

@@ -50,7 +50,7 @@ type ItemTypeProps = {
 
 const Container = styled.div`
   display: flex;
-  height: 350px;
+  height: 400px;
   align-items: center;
   justify-content: center;
 `;
@@ -200,7 +200,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
       <ItemWrapper>
         <ItemLink to={url}>
           {isTopic ? (
-            <ItemTopicHeader image={img} labels={labels} type={type}>
+            <ItemTopicHeader image={img} type={type}>
               <ItemTitleWrapper isTopic>
                 <ItemTitle isTopic>{title}</ItemTitle>
               </ItemTitleWrapper>

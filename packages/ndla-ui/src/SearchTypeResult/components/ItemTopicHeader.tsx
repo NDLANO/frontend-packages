@@ -46,20 +46,6 @@ const Label = styled.div`
   }
 `;
 
-const LabelsList = styled.ul`
-  ${fonts.sizes('12px', '16px')};
-  font-weight: ${fonts.weight.semibold};
-  margin: ${spacing.xsmall} 0 0;
-  padding: 0 0 0 23px;
-  list-style-image: none;
-  transition: all ${animations.durations.fast} ease-in-out;
-`;
-const LabelItem = styled.li`
-  ${fonts.sizes('12px', '16px')};
-  font-weight: ${fonts.weight.semibold};
-  margin-bottom: 0;
-`;
-
 const TopicHeaderVisualElementWrapper = styled.div`
   float: right;
   margin-left: ${spacing.small};
@@ -83,10 +69,9 @@ const TopicHeaderImage = styled.img`
 type Props = {
   children: React.ReactNode;
   image?: SearchItemType['item']['img'] | null;
-  labels?: string[];
   type?: ContentType;
 };
-const ItemTopicHeader = ({ children, image, labels = [], type }: Props) => {
+const ItemTopicHeader = ({ children, image, type }: Props) => {
   const { t } = useTranslation();
   return (
     <Wrapper>
@@ -103,13 +88,6 @@ const ItemTopicHeader = ({ children, image, labels = [], type }: Props) => {
           </>
         )}
       </Label>
-      {labels.length > 0 && (
-        <LabelsList className="topic-label-list">
-          {labels.map((item) => (
-            <LabelItem key={item}>{item}</LabelItem>
-          ))}
-        </LabelsList>
-      )}
       {children}
     </Wrapper>
   );

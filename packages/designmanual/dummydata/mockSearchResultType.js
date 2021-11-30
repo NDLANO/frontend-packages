@@ -1160,7 +1160,7 @@ const multidiscinplinaryResults = [
     ingress:
       'Klimaspørsmålet står sentralt i temaet bærekraftig utvikling. 16-årige Greta Thunberg startet sin kamp for klimaet med en skolestreik. Hva kan du gjøre?',
     url: '#22277',
-    labels: ['Norsk', 'Samfunnskunnskap', 'Mediefag', 'Politikk og menneskerettigheter'],
+    labels: [],
     img: {
       url: 'https://api.staging.ndla.no/image-api/raw/id/44263?width=600',
       alt: 'Greta Thunberg protesterer utenfor Sveriges Riksdag i august 2018. Foto.',
@@ -1179,7 +1179,7 @@ const multidiscinplinaryResults = [
     ingress:
       'Fuck fossils – en framtid du ikke vil ha er en fiksjonsfilm som handler om hvordan hverdagen vil kunne arte seg i år 2050',
     url: '#22279',
-    labels: ['Norsk', 'Samfunnskunnskap', 'Mediefag', 'Politikk og menneskerettigheter'],
+    labels: [],
     img: {
       url: 'https://api.staging.ndla.no/image-api/raw/id/43699?width=600',
       alt: 'Kvinne sitter foran stort kontrollpanel med berøringsskjerm. Foto.',

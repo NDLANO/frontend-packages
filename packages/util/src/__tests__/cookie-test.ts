@@ -11,7 +11,8 @@
 import { getCookie, isValidCookie } from '../index';
 
 const testCookieKey = 'COOKIE_KEY';
-const dummyCookies = 'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true};';
+const dummyCookies =
+  'COOKIE_KEY={"1":true,"2":true,"3":true}; OTHER_COOKIE_KEYS={"test":true}; THIRD_COOKIE=ONEWITH=IN;';
 
 test('test getCookie ', () => {
   expect(getCookie(testCookieKey, dummyCookies)).toBe('{"1":true,"2":true,"3":true}');
@@ -19,6 +20,10 @@ test('test getCookie ', () => {
 
 test('test getCookie new', () => {
   expect(getCookie('NEW_COOKIE_KEY', dummyCookies)).toBe(null);
+});
+
+test('test that cookies with = signs work', () => {
+  expect(getCookie('THIRD_COOKIE', dummyCookies)).toBe('ONEWITH=IN');
 });
 
 test('test isValidCookie existingCookie', () => {

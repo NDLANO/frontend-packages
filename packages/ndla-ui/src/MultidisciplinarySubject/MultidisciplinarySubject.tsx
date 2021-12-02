@@ -1,4 +1,4 @@
-import React, { ReactChildren } from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
@@ -87,7 +87,7 @@ const Illustration = styled.div`
 
 type Props = {
   cards: ListItemProps[];
-  children: ReactChildren;
+  children: ReactNode;
   totalCardCount: number;
   hideCards?: boolean;
 };

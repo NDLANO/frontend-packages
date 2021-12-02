@@ -45,16 +45,19 @@ export const getCookieString = ({
  * @param cookies string of cookies (usually `document.cookie` if in browser)
  */
 export const getCookie = (cookieName: string, cookies: string): string | undefined | null => {
-  const value = `; ${cookies}`;
-  const parts = value.split(`; ${cookieName}=`);
-  const cookiePart = parts.pop();
+  const parts = cookies.split(';').map((x) => x.trim());
+  const cookiePart = parts.find((x) => x.startsWith(cookieName));
   if (cookiePart) {
-    return cookiePart.split(';').shift();
+    const values = cookiePart.split('=');
+    return values.slice(1).join('=');
   }
   return null;
 };
 
-export const isValidCookie = (cookieName: string, cookies: string) => getCookie(cookieName, cookies) !== null;
+export const isValidCookie = (cookieName: string, cookies: string): boolean => {
+  const cookie = getCookie(cookieName, cookies);
+  return cookie !== null && cookie !== undefined;
+};
 
 /** Client/Browser only */
 export const deleteCookie = (cookieName: string) => {

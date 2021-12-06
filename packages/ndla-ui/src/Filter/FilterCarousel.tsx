@@ -79,7 +79,7 @@ const handlerWrapperCSS = css`
   overflow-x: hidden;
 `;
 
-const FilterCarousel: React.FC<Props> = ({ children }) => {
+const FilterCarousel = ({ children }: Props) => {
   const { t } = useTranslation();
   const [hideNext, setHideNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);

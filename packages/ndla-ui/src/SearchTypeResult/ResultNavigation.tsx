@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 const ResultNav = styled.div`
   font-size: 14px;
   font-weight: 600;
-  margin: ${spacing.small} 0;
+  margin: ${spacing.medium} 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,6 @@ const ResultNav = styled.div`
   button.nav {
     font-weight: 600;
     border-width: 1px;
-    border-color: ${colors.brand.tertiary};
     &:disabled {
       opacity: 0.8;
     }

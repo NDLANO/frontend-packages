@@ -132,8 +132,7 @@ const SearchHeader = ({
         )}
         {searchPhraseSuggestion && (
           <PhraseSuggestionText>
-            {t('searchPage.resultType.searchPhraseSuggestion')}
-            {` `}
+            {t('searchPage.resultType.searchPhraseSuggestion')}{' '}
             <Button link onClick={searchPhraseSuggestionOnClick}>
               [{searchPhraseSuggestion}]
             </Button>

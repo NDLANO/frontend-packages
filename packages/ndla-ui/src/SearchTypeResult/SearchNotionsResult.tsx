@@ -19,12 +19,12 @@ const Wrapper = styled.div`
   padding: ${spacing.medium} 0;
   ${mq.range({ from: breakpoints.tablet })} {
     padding: ${spacing.medium};
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.24);
-    border-radius: 5px;
+    border: 1px solid ${colors.brand.neutral7};
+    border-radius: 4px;
     margin: ${spacing.large} 0;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.medium} 66px;
+    padding: ${spacing.large};
   }
   & > .c-figure {
     width: 100% !important;

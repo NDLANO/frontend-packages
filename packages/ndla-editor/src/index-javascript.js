@@ -6,9 +6,8 @@
  *
  */
 
-import SlateBlockMenu from './SlateBlockMenu';
 import FileListEditor from './FileListEditor';
 import MovieList from './ndlaFilm/MovieList';
 import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
-export { SlateBlockMenu, MovieList, NdlaFilmThemeEditorModal, FileListEditor };
+export { MovieList, NdlaFilmThemeEditorModal, FileListEditor };

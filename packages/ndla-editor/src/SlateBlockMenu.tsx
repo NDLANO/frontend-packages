@@ -6,9 +6,8 @@
  *
  */
 
-import React from 'react';
-import { FocusOn } from 'react-focus-on';
-import PropTypes from 'prop-types';
+import React, { forwardRef, ReactNode } from 'react';
+import FocusTrap from 'focus-trap-react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, colors, fonts, shadows, animations } from '@ndla/core';
@@ -127,73 +126,56 @@ const buttonOpen = css`
   pointer-events: none;
 `;
 
-const FocusWrapper = ({ onToggleOpen, children }) => (
-  <FocusOn
-    onDeactivation={() => onToggleOpen(false)}
-    onClickOutside={() => onToggleOpen(false)}
-    onEscapeKey={() => onToggleOpen(false)}
-    scrollLock={false}>
-    {children}
-  </FocusOn>
-);
+interface Props {
+  isOpen: boolean;
+  onToggleOpen: (open: boolean) => void;
+  heading?: string;
+  clickItem: (data: any) => void;
+  actions: {
+    label: string;
+    icon?: ReactNode;
+    data: { type: string; object: string };
+    helpIcon?: ReactNode;
+  }[];
+  cy?: string;
+}
 
-FocusWrapper.propTypes = {
-  isOpen: PropTypes.bool,
-  onToggleOpen: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
-const SlateBlockMenu = React.forwardRef(({ heading, actions, clickItem, onToggleOpen, isOpen, cy }, ref) => (
-  <>
-    <div ref={ref} css={[buttonCSS, isOpen && buttonOpen]} data-cy={cy} onMouseDown={() => onToggleOpen(!isOpen)}>
-      <Plus />
-    </div>
-    {isOpen && (
-      <FocusWrapper onToggleOpen={onToggleOpen}>
-        <Wrapper>
-          <div cy="slate-block-picker-menu">
-            <HeaderLabel>{heading}</HeaderLabel>
-            {actions.map((action) => (
-              <Item key={action.data.object}>
-                <button
-                  css={itemButton}
-                  data-cy={`create-${action.data.object}`}
-                  type="button"
-                  onClick={() => clickItem(action.data)}>
-                  {action.icon && action.icon}
-                  <span>{action.label}</span>
-                </button>
-                {action.helpIcon}
-              </Item>
-            ))}
-          </div>
-        </Wrapper>
-      </FocusWrapper>
-    )}
-  </>
-));
-
-SlateBlockMenu.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onToggleOpen: PropTypes.func.isRequired,
-  heading: PropTypes.string,
-  clickItem: PropTypes.func.isRequired,
-  actions: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      icon: PropTypes.node,
-      data: PropTypes.shape({
-        type: PropTypes.string.isRequired,
-        object: PropTypes.string.isRequired,
-      }).isRequired,
-      helpIcon: PropTypes.node,
-    }),
+const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
+  ({ heading, actions, clickItem, onToggleOpen, isOpen, cy = 'slate-block-menu' }: Props, ref) => (
+    <>
+      <div ref={ref} css={[buttonCSS, isOpen && buttonOpen]} data-cy={cy} onMouseDown={() => onToggleOpen(!isOpen)}>
+        <Plus />
+      </div>
+      {isOpen && (
+        <FocusTrap
+          active
+          focusTrapOptions={{
+            onDeactivate: () => onToggleOpen(false),
+            clickOutsideDeactivates: true,
+            escapeDeactivates: true,
+          }}>
+          <Wrapper>
+            <div data-cy="slate-block-picker-menu">
+              <HeaderLabel>{heading}</HeaderLabel>
+              {actions.map((action) => (
+                <Item key={action.data.object}>
+                  <button
+                    css={itemButton}
+                    data-cy={`create-${action.data.object}`}
+                    type="button"
+                    onClick={() => clickItem(action.data)}>
+                    {action.icon && action.icon}
+                    <span>{action.label}</span>
+                  </button>
+                  {action.helpIcon}
+                </Item>
+              ))}
+            </div>
+          </Wrapper>
+        </FocusTrap>
+      )}
+    </>
   ),
-  cy: PropTypes.string,
-};
-
-SlateBlockMenu.defaultProps = {
-  cy: 'slate-block-picker',
-};
+);
 
 export default SlateBlockMenu;

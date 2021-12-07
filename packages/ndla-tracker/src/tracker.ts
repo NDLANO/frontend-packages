@@ -54,7 +54,7 @@ export const configureTracker = ({
   gaTrackingId,
   googleTagManagerId,
 }: {
-  listen: History<any>['listen'];
+  listen: History['listen'];
   debug?: boolean;
   gaTrackingId?: string;
   googleTagManagerId?: string;
@@ -67,7 +67,8 @@ export const configureTracker = ({
     debug: !!debug,
   });
 
-  listen((location) => {
+  listen((update) => {
+    const location = update.location;
     if (debug) {
       console.info(`The current URL is ${location.pathname}${location.search}${location.hash}`);
     }

@@ -11,13 +11,13 @@ import React, { useRef, useImperativeHandle } from 'react';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
-import * as H from 'history';
+import { To } from 'react-router-dom';
 
 interface Props {
   classes: BEMHelper<ReturnObject>;
   isCurrent: boolean;
   children: React.ReactNode;
-  to: H.LocationDescriptor;
+  to: To;
   home: boolean;
   name: string;
   invertedStyle: boolean;

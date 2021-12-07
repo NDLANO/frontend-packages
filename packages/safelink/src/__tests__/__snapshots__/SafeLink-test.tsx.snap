@@ -11,6 +11,19 @@ exports[`SafeLink defaults to normal link if to prop is an external link 1`] = `
 </div>
 `;
 
+exports[`SafeLink defaults to normal link if to prop is an old ndla link 1`] = `
+<div>
+  <div>
+    <a
+      href="/nb/node/54"
+    >
+      Snapshot should not contain onClick
+    </a>
+    ,
+  </div>
+</div>
+`;
+
 exports[`SafeLink renderers Link correctly if router context is present 1`] = `
 <div>
   <a

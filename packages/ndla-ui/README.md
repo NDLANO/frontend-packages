@@ -17,9 +17,6 @@ npm i --save ndla-ui
 The following dependencies are optional, but some components may be dependent on one or more of them.
 
 ```
-react-collapse
-react-height
-react-motion
 react-router
 ndla-article-scripts
 ndla-button

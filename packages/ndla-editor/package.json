@@ -27,16 +27,16 @@
   "dependencies": {
     "@ndla/core": "^0.7.2",
     "@ndla/icons": "^1.3.1",
-    "@types/react-beautiful-dnd": "^11.0.3",
+    "@types/react-beautiful-dnd": "^13.1.2",
     "prismjs": "^1.22.0",
-    "react-beautiful-dnd": "^12.0.0",
-    "react-focus-on": "^3.5.1",
+    "react-beautiful-dnd": "^13.1.0",
+    "focus-trap-react": "^8.1.1",
     "react-simple-code-editor": "^0.11.0"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
-    "react": "^16.4.2",
+    "react": "^17.0.2",
     "react-i18next": "^11.11.0",
     "react-prop-types": "0.4.0"
   },

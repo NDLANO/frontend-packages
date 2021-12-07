@@ -1,0 +1,493 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component/LinkPager page 1/1 1`] = `
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.emotion-0 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-0:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <span
+      class="emotion-0"
+    >
+      1
+    </span>
+  </div>
+</div>
+`;
+
+exports[`component/LinkPager page 1/5 1`] = `
+.emotion-6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.emotion-0 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-0:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-1 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+}
+
+.emotion-1:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+<div>
+  <div
+    class="emotion-6"
+  >
+    <span
+      class="emotion-0"
+    >
+      1
+    </span>
+    <a
+      class="emotion-1"
+      href="somepath?page=2"
+      tabindex="0"
+    >
+      2
+    </a>
+    <a
+      class="emotion-1"
+      href="somepath?page=3"
+      tabindex="0"
+    >
+      3
+    </a>
+    <a
+      class="emotion-1"
+      href="somepath?page=4"
+      tabindex="0"
+    >
+      4
+    </a>
+    <a
+      class="emotion-1"
+      href="somepath?page=5"
+      tabindex="0"
+    >
+      5
+    </a>
+    <a
+      class="emotion-1"
+      href="somepath?page=2"
+      tabindex="0"
+    >
+       
+      &gt;
+       
+    </a>
+  </div>
+</div>
+`;
+
+exports[`component/LinkPager page 3/5 1`] = `
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.emotion-3 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-3:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-0 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+}
+
+.emotion-0:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+<div>
+  <div
+    class="emotion-7"
+  >
+    <a
+      class="emotion-0"
+      href="somepath?page=2"
+      tabindex="0"
+    >
+       
+      &lt;
+       
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=1"
+      tabindex="0"
+    >
+      1
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=2"
+      tabindex="0"
+    >
+      2
+    </a>
+    <span
+      class="emotion-3"
+    >
+      3
+    </span>
+    <a
+      class="emotion-0"
+      href="somepath?page=4"
+      tabindex="0"
+    >
+      4
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=5"
+      tabindex="0"
+    >
+      5
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=4"
+      tabindex="0"
+    >
+       
+      &gt;
+       
+    </a>
+  </div>
+</div>
+`;
+
+exports[`component/LinkPager page 4/10 1`] = `
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.emotion-3 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-3:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-0 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+}
+
+.emotion-0:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+<div>
+  <div
+    class="emotion-7"
+  >
+    <a
+      class="emotion-0"
+      href="somepath?page=3"
+      tabindex="0"
+    >
+       
+      &lt;
+       
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=2"
+      tabindex="0"
+    >
+      2
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=3"
+      tabindex="0"
+    >
+      3
+    </a>
+    <span
+      class="emotion-3"
+    >
+      4
+    </span>
+    <a
+      class="emotion-0"
+      href="somepath?page=5"
+      tabindex="0"
+    >
+      5
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=6"
+      tabindex="0"
+    >
+      6
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=5"
+      tabindex="0"
+    >
+       
+      &gt;
+       
+    </a>
+  </div>
+</div>
+`;
+
+exports[`component/LinkPager page 19/19 1`] = `
+.emotion-6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.emotion-5 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-5:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+.emotion-0 {
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-top: 3px solid #e6e6e6;
+  padding: 1em 1.45em;
+  margin: 1em 0.3em 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: none;
+  color: #20588f;
+  cursor: pointer;
+}
+
+.emotion-0:hover {
+  border-top: 3px solid #20588f;
+  background-color: rgba(222,235,246,0.5);
+}
+
+<div>
+  <div
+    class="emotion-6"
+  >
+    <a
+      class="emotion-0"
+      href="somepath?page=18"
+      tabindex="0"
+    >
+       
+      &lt;
+       
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=15"
+      tabindex="0"
+    >
+      15
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=16"
+      tabindex="0"
+    >
+      16
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=17"
+      tabindex="0"
+    >
+      17
+    </a>
+    <a
+      class="emotion-0"
+      href="somepath?page=18"
+      tabindex="0"
+    >
+      18
+    </a>
+    <span
+      class="emotion-5"
+    >
+      19
+    </span>
+  </div>
+</div>
+`;

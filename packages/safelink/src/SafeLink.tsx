@@ -48,7 +48,8 @@ const SafeLink: React.FunctionComponent<SafeLinkProps> = ({ to, replace, childre
   }
 
   return (
-    <Link tabIndex={0} to={to} replace={replace} {...rest}>
+    // React Router 6 becomes mad if to is undefined. This fix is only here to fix shoddy data in Storybook.
+    <Link tabIndex={0} to={to ?? '/'} replace={replace} {...rest}>
       {children}
       {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
     </Link>

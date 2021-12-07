@@ -177,6 +177,7 @@ const messages = {
       dialogHeader: '{{title}} er under arbeid.',
       dialogText: 'Du kan lese mer om hva dette betyr på',
     },
+    archived: 'Dette er et utgått fag som ikke vedlikeholdes.',
   },
   subjectsPage: {
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
@@ -402,6 +403,9 @@ const messages = {
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
     },
+    image: {
+      rules: 'Regler for bruk av bildet:',
+    },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',
       description: 'Husk å kopiere teksten som skal legges ved bildet der du bruker det.',
@@ -528,7 +532,8 @@ const messages = {
     en: 'Engelsk',
     fr: 'Fransk',
     de: 'Tysk',
-    se: 'Samisk',
+    se: 'Nordsamisk',
+    sma: 'Sørsamisk',
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',

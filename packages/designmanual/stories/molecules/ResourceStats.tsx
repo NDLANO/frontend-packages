@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore

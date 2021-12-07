@@ -6,7 +6,7 @@
  *
  */
 
-import React, { createElement } from 'react';
+import { createElement } from 'react';
 import PropTypes from 'prop-types';
 import { classes } from './filterClasses';
 

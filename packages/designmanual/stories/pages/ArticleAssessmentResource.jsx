@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 import { OneColumn, LayoutItem, Article, AssessmentResourcesBadge, constants } from '@ndla/ui';
 
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';

@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import { DropResult } from 'react-beautiful-dnd';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -45,12 +45,12 @@ export type RenderBeforeFunction = (input: {
   title: string;
   isSubject: boolean;
   contentUri?: string;
-}) => React.ReactNode;
+}) => ReactNode;
 
 interface Props {
   structure?: StructureType[];
   openedPaths: string[];
-  renderListItems: (props: RenderItemReturnProps) => React.ReactNode;
+  renderListItems: (props: RenderItemReturnProps) => ReactNode;
   favoriteSubjectIds?: string[];
   toggleFavorite?: (subjectId: string) => void;
   isOpen?: boolean;

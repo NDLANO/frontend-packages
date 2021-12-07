@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ArticleByline } from '@ndla/ui';
 import LicenseBox from '../article/LicenseBox';

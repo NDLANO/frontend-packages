@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FilterList } from '@ndla/ui';
 
@@ -33,7 +33,7 @@ class LanguageSelectorNonMessages extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <h2 className="u-heading">Velg språk for labels</h2>
         <div className="c-filter u-margin-top">
           <FilterList
@@ -46,7 +46,7 @@ class LanguageSelectorNonMessages extends Component {
           />
         </div>
         {this.props.children({ lang: this.state.value })}
-      </Fragment>
+      </>
     );
   }
 }

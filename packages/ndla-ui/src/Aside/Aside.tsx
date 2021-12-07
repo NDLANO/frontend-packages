@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -19,7 +19,7 @@ interface Props {
   dangerouslySetInnerHTML?: {
     __html: string;
   };
-  children?: React.ReactNode;
+  children?: ReactNode;
   narrowScreen?: boolean;
   wideScreen?: boolean;
 }

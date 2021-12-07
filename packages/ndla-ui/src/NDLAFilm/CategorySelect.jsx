@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
@@ -10,7 +10,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class CategorySelect extends React.Component {
+class CategorySelect extends Component {
   constructor(props) {
     super(props);
     this.state = {

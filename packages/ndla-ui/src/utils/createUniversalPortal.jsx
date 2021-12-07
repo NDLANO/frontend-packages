@@ -8,7 +8,6 @@
 
 // N.B This helper is intended to be used in https://github.com/ndlano/article-converter. It is not a general soultion for using portals in SSR applications.
 
-import React from 'react';
 import ReactDOM from 'react-dom';
 
 function canUseDOM() {

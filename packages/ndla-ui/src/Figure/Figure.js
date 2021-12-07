@@ -9,7 +9,6 @@
 // N.B These component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { isFunction, parseMarkdown } from '@ndla/util';

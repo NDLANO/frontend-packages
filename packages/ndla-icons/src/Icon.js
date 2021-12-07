@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const IconBase = ({ children, color, size, style, title, description, width, height, className, ...props }) => {

@@ -6,13 +6,13 @@
  * FRI OG BEGRENSET
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
 import StyledLicenseByline from './StyledLicenseByline';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   licenseRights: string[];
   locale?: string;
   color?: string;

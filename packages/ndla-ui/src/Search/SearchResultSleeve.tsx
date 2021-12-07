@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { History } from 'history';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
@@ -228,7 +228,7 @@ type Props = {
   suggestionUrl: string;
 };
 
-const SearchResultSleeve: React.FC<Props> = ({
+const SearchResultSleeve = ({
   result,
   allResultUrl,
   resourceToLinkProps,
@@ -241,7 +241,7 @@ const SearchResultSleeve: React.FC<Props> = ({
   history,
   suggestion,
   suggestionUrl,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);

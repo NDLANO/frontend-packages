@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 
 // Lazyload image with lazysizes (https://github.com/aFarkas/lazysizes)

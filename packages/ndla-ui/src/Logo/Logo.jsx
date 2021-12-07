@@ -7,7 +7,6 @@
  */
 /* eslint-disable max-len */
 
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
@@ -30,9 +29,9 @@ export const Logo = ({ name, to, cssModifier, color, large, locale, label }) => 
       <SvgLogo name={name} color={color} locale={locale} />
     </SafeLink>
   ) : (
-    <Fragment>
+    <>
       <SvgLogo name={name} color={color} locale={locale} />
-    </Fragment>
+    </>
   );
   return <div {...logoClasses('', modifiers)}>{logo}</div>;
 };

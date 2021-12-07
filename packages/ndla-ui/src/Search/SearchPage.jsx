@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import { Component,  createRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { Back } from '@ndla/icons/common';
@@ -23,7 +23,7 @@ class SearchPage extends Component {
     };
 
     this.filterCloseButton = null;
-    this.inputRef = React.createRef();
+    this.inputRef = createRef();
     this.checkScreenSize = this.checkScreenSize.bind(this);
     this.checkScreenSizeDebounce = debounce(() => this.checkScreenSize(), 100);
   }
@@ -106,13 +106,13 @@ class SearchPage extends Component {
                 backgroundColor="grey"
                 activateButton={<Button outline>{t('searchPage.searchPageMessages.filterHeading')}</Button>}>
                 {(onClose) => (
-                  <Fragment>
+                  <>
                     <ModalHeader modifier="white left-align">
                       <ModalCloseButton
                         title={
-                          <Fragment>
+                          <>
                             <Back /> {messages.narrowScreenFilterHeading}
-                          </Fragment>
+                          </>
                         }
                         onClick={onClose}>
                         Close
@@ -126,7 +126,7 @@ class SearchPage extends Component {
                         </Button>
                       </div>
                     </ModalBody>
-                  </Fragment>
+                  </>
                 )}
               </Modal>
             </div>

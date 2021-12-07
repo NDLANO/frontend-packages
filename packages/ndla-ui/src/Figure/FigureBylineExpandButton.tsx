@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 
 interface Props {

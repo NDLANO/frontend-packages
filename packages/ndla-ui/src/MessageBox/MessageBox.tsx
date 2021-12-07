@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
@@ -117,7 +117,7 @@ type Props = {
   heading?: string;
   sticky?: boolean;
   onClose?: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const MessageBox = ({

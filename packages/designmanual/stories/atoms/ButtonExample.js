@@ -1,4 +1,3 @@
-import React from 'react';
 import Button, { MultiButton, StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown } from '@ndla/icons/common';

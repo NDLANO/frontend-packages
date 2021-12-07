@@ -6,7 +6,7 @@
  *
  */
 
-import React, { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
@@ -80,7 +80,7 @@ type Props = {
   showCopy?: boolean;
 };
 
-export const Codeblock: FC<Props> = ({ actionButton, code, format, showCopy = false, title }) => {
+export const Codeblock = ({ actionButton, code, format, showCopy = false, title }: Props) => {
   const { t } = useTranslation();
   const [isCopied, setIsCopied] = useState(false);
 

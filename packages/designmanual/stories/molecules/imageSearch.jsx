@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 import ImageSearch from '@ndla/image-search';
 
 const fetchImages = (query, page) => {

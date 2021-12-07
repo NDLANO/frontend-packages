@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';

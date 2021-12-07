@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
@@ -57,7 +57,7 @@ type Props = {
   suppliers?: SupplierProps[];
   published: string;
   license: string;
-  licenseBox?: React.ReactNode;
+  licenseBox?: ReactNode;
   copyPageUrlLink?: string;
   printUrl?: string;
   locale?: string;

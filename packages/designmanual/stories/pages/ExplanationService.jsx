@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ListView, { activeAlphabet } from '@ndla/listview';
 import Tabs from '@ndla/tabs';
 import {

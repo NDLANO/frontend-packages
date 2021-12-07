@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PrivacyNb: React.FunctionComponent = () => (
+const PrivacyNb = () => (
   <>
     <h1>Personvernerklæring</h1>
     <hr />

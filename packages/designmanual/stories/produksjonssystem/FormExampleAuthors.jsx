@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { FieldHeader, FieldSection, Input, Select, FieldSplitter, FieldRemoveButton } from '@ndla/forms';
@@ -86,7 +86,7 @@ class FormExampleAuthors extends Component {
   render() {
     const { authors } = this.state;
     return (
-      <Fragment>
+      <>
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         {authors.map((author, index) => (
           <FieldSection key={author.key}>
@@ -137,7 +137,7 @@ class FormExampleAuthors extends Component {
             <FieldRemoveButton>Ta bort</FieldRemoveButton>
           </div>
         </FieldSection>
-      </Fragment>
+      </>
     );
   }
 }

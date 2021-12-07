@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import  { Component  } from 'react';
 import { OneColumn, LayoutItem } from '@ndla/ui';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogImage, NotionDialogLicenses } from '@ndla/notion';
 import Tabs from '@ndla/tabs';
@@ -44,7 +44,7 @@ class NotionExample extends Component {
                       title="Sosialisering"
                       subTitle="forklaring"
                       content={
-                        <Fragment>
+                        <>
                           <NotionDialogContent>
                             <NotionDialogText>
                               Sosialisering, betegnelse for de sosiale prosessene som fører til at individer tar opp i
@@ -57,7 +57,7 @@ class NotionExample extends Component {
                             source="https://snl.no"
                             authors={['Gary Waters']}
                           />
-                        </Fragment>
+                        </>
                       }>
                       sosialisering
                     </Notion>{' '}
@@ -92,7 +92,7 @@ class NotionExample extends Component {
                     title="Sanksjon"
                     subTitle="forklaring"
                     content={
-                      <Fragment>
+                      <>
                         <NotionDialogContent>
                           <NotionDialogText>
                             Sanksjon, en negativ eller positiv reaksjon på noens atferd. I dagligtalen er det vanlig å
@@ -106,7 +106,7 @@ class NotionExample extends Component {
                           source="https://snl.no"
                           authors={['Gary Waters']}
                         />
-                      </Fragment>
+                      </>
                     }>
                     sanksjon
                   </Notion>{' '}
@@ -118,7 +118,7 @@ class NotionExample extends Component {
                     title="Norm"
                     subTitle="forklaring"
                     content={
-                      <Fragment>
+                      <>
                         <NotionDialogContent>
                           <Tabs
                             singleLine
@@ -126,7 +126,7 @@ class NotionExample extends Component {
                               {
                                 title: 'Forklaring',
                                 content: (
-                                  <Fragment>
+                                  <>
                                     <NotionDialogImage
                                       src="https://api.ndla.no/image-api/raw/futrue%20padawan.jpg?width=800"
                                       alt="Normer i samfunnet"
@@ -137,25 +137,25 @@ class NotionExample extends Component {
                                       gjelder for et mindre sosialt fellesskap og for samfunnet i sin helhet.
                                     </NotionDialogText>
                                     <NotionDialogLicenses license="CC-BY-ND-4.0" source="https://snl.no" />
-                                  </Fragment>
+                                  </>
                                 ),
                               },
                               {
                                 title: 'Ordbok',
                                 content: (
-                                  <Fragment>
+                                  <>
                                     <NotionDialogText>
                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                       incididunt ut labore et dolore magna aliqua.
                                     </NotionDialogText>
                                     <NotionDialogLicenses license="CC-BY-4.0" source="lipsum.com" />
-                                  </Fragment>
+                                  </>
                                 ),
                               },
                             ]}
                           />
                         </NotionDialogContent>
-                      </Fragment>
+                      </>
                     }>
                     norm
                   </Notion>{' '}
@@ -194,7 +194,7 @@ class NotionExample extends Component {
                     title="Usikker"
                     subTitle="forklaring"
                     content={
-                      <Fragment>
+                      <>
                         <NotionDialogContent>
                           <NotionDialogText>
                             De signalene andre mennesker sender ut, kan for et individ oppleves som forvirrende og i
@@ -209,7 +209,7 @@ class NotionExample extends Component {
                           source="https://snl.no"
                           authors={['Gary Waters']}
                         />
-                      </Fragment>
+                      </>
                     }>
                     usikker
                   </Notion>

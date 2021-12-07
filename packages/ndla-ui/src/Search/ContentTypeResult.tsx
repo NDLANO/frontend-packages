@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ReactElement } from 'react';
 // @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
@@ -24,7 +24,7 @@ import {
 } from './ContentTypeResultStyles';
 import { isPathToHighlight } from './IsPathToHighlight';
 
-const renderAdditionalIcon = (label: string, isAdditional?: boolean): React.ReactElement | null => {
+const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactElement | null => {
   if (isAdditional && label) {
     return (
       <Tooltip tooltip={label} align="top" css={tooltipStyle}>
@@ -58,7 +58,7 @@ type Props = {
   unGrouped?: boolean;
 };
 
-const ContentTypeResult: React.FC<Props> = ({
+const ContentTypeResult = ({
   contentTypeResult,
   onNavigate,
   defaultCount,
@@ -70,7 +70,7 @@ const ContentTypeResult: React.FC<Props> = ({
   inMenu,
   animateList,
   unGrouped,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const [showAll, toggleShowAll] = useState(false);
   const showAllRef = useRef<HTMLLIElement>(null);

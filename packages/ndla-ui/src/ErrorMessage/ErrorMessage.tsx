@@ -6,7 +6,6 @@
  *
  */
 
-import * as React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -41,6 +40,7 @@ const CustomElementWrapper = styled.div`
 `;
 
 interface Props {
+  children?: ReactNode;
   messages: {
     title: string;
     description?: string;
@@ -55,13 +55,7 @@ interface Props {
   illustrationElement?: ReactNode;
   customElement?: ReactNode;
 }
-export const ErrorMessage: React.FunctionComponent<Props> = ({
-  children,
-  messages,
-  illustration,
-  illustrationElement,
-  customElement,
-}) => (
+export const ErrorMessage = ({ children, messages, illustration, illustrationElement, customElement }: Props) => (
   <StyledErrorMessage>
     {illustration && (
       <IllustrationWrapper>

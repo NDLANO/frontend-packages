@@ -6,7 +6,6 @@
  *
  */
 
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
@@ -107,7 +106,7 @@ const CheckboxLabel = styled.label`
 const CheckboxItem = ({ label, checked, value, id, onChange, disabled }) => {
   const uniqueID = uuid();
   return (
-    <Fragment>
+    <>
       <CheckboxInput
         disabled={disabled}
         aria-checked={checked}
@@ -122,7 +121,7 @@ const CheckboxItem = ({ label, checked, value, id, onChange, disabled }) => {
         <span />
         <span>{label}</span>
       </CheckboxLabel>
-    </Fragment>
+    </>
   );
 };
 

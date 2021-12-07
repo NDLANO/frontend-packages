@@ -1,4 +1,4 @@
-import React, { Component, Fragment, Suspense } from 'react';
+import { Component, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -17,7 +17,7 @@ const statusMessages = {
 
 const classes = BEMHelper('c-componentinfo');
 
-const SyntaxHighlighter = React.lazy(() => import('./wrappers/SyntaxHiglighter'));
+const SyntaxHighlighter = lazy(() => import('./wrappers/SyntaxHiglighter'));
 
 class ComponentInfo extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class ComponentInfo extends Component {
       {
         title: 'Kode eksempel',
         content: (
-          <Fragment>
+          <>
             <Button
               onClick={() => {
                 copyTextToClipboard(reactCode);
@@ -60,15 +60,15 @@ class ComponentInfo extends Component {
               }}
               outline
               title="Kopier til clipboard">
-              <Fragment>
+              <>
                 <Copy /> {this.state.coping ? 'Kode kopiert!' : 'Kopier til clipboard'}
-              </Fragment>
+              </>
             </Button>
 
             <Suspense fallback={<Spinner />}>
               <SyntaxHighlighter code={reactCode} />
             </Suspense>
-          </Fragment>
+          </>
         ),
       },
       {

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, ReactChild, ReactChildren } from 'react';
+import { useState, ReactChild, ReactChildren } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { CSSPropertiesWithMultiValues } from '@emotion/serialize';
@@ -144,7 +144,7 @@ interface Props extends StyledOptionProps {
   onClose?: () => void;
 }
 
-const PopupWrapper: React.FC<Props> = ({
+const PopupWrapper = ({
   children,
   label,
   position,
@@ -156,7 +156,7 @@ const PopupWrapper: React.FC<Props> = ({
   onOpen,
   onClose,
   buttonStyle,
-}) => {
+}: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
     toggleIsOpen(!!newState);

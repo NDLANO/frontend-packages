@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { spacing } from '@ndla/core';
@@ -22,8 +22,8 @@ const FieldSplitterCSS = css`
 
 const FieldSplitter = ({ children }) => (
   <div css={FieldSplitterCSS}>
-    {React.Children.map(children, (child, i) =>
-      React.cloneElement(child, {
+    {Children.map(children, (child, i) =>
+      cloneElement(child, {
         css: {
           flexGrow: 1,
           flexBasis: 0,

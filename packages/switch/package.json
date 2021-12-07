@@ -29,7 +29,7 @@
     "@ndla/core": "^0.7.2"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.9",
+    "@emotion/core": "^10.1.0",
     "@emotion/styled": "^10.0.9",
     "react": "^17.0.2"
   },

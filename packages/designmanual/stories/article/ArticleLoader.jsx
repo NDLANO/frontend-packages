@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import format from 'date-fns/format';
@@ -67,7 +67,7 @@ class ArticleLoader extends Component {
       showAdditionalCores: false,
       article: undefined,
     };
-    this.resourcesRef = React.createRef();
+    this.resourcesRef = createRef();
     this.toggleAdditionalCores = this.toggleAdditionalCores.bind(this);
   }
 

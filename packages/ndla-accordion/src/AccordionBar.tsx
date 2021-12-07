@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
@@ -107,6 +107,7 @@ const StyledChildrenWrapper = styled.div<{ tiny?: boolean }>`
 `;
 
 type Props = {
+  children: ReactNode;
   title: string;
   panelId: openIndexesProps;
   onClick: () => void;
@@ -115,7 +116,7 @@ type Props = {
   tiny?: boolean;
 };
 
-export const AccordionBar: React.FC<Props> = ({ title, children, panelId, hasError, isOpen, onClick, tiny }) => (
+export const AccordionBar = ({ title, children, panelId, hasError, isOpen, onClick, tiny }: Props) => (
   <StyledAccordionBar isOpen={isOpen} hasError={hasError} tiny={tiny}>
     <StyledButton
       type="button"

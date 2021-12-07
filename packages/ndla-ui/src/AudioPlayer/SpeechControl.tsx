@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 // @ts-ignore

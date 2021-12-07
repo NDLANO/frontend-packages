@@ -1,4 +1,3 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { PageContainer, Content, OneColumn } from '@ndla/ui';

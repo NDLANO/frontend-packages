@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { spacing, breakpoints, mq } from '@ndla/core';
@@ -47,7 +46,7 @@ type Props = {
   urlTeachers: string;
 };
 
-const FrontpageToolbox: React.FunctionComponent<Props & WithTranslation> = ({ urlStudents, urlTeachers, t }) => (
+const FrontpageToolbox = ({ urlStudents, urlTeachers, t }: Props & WithTranslation) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
     <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>

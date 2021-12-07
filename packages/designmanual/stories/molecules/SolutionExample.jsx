@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Table } from '@ndla/ui';
 
 import { initArticleScripts } from '@ndla/article-scripts';

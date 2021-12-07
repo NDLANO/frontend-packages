@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { AudioPlayer, Figure } from '@ndla/ui';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';

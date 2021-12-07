@@ -7,7 +7,7 @@
  */
 
 import { css, Global } from '@emotion/core';
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@ndla/button';
 import { mq, breakpoints, spacing } from '@ndla/core';
@@ -25,7 +25,7 @@ const styling = css`
   }
 `;
 
-class ZendeskButton extends React.Component {
+class ZendeskButton extends Component {
   componentDidMount() {
     // Check if Zendesk is already loaded..
     if (window.zE) {

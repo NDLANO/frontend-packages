@@ -1,4 +1,3 @@
-import React from 'react';
 import { uuid } from '@ndla/util';
 import { getLicenseRightByAbbreviation, getLicenseByAbbreviation } from '@ndla/licenses';
 import { storiesOf } from '@storybook/react';

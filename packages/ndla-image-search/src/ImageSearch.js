@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -281,7 +281,7 @@ const searchIconCss = css`
   padding: 0;
 `;
 
-class ImageSearch extends React.Component {
+class ImageSearch extends Component {
   constructor() {
     super();
     this.state = {

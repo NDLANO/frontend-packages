@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 

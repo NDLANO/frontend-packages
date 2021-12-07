@@ -1,4 +1,3 @@
-import React from 'react';
 import 'lazysizes';
 
 import { storiesOf } from '@storybook/react';

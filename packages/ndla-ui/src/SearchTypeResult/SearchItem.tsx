@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 // @ts-ignore
@@ -208,10 +208,10 @@ export type SearchItemType = {
   url: string;
   ingress: string;
   contexts: context[];
-  image: React.ReactNode | null;
+  image: ReactNode | null;
   img?: { url: string; alt: string };
   labels?: string[];
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 type Props = {
   item: SearchItemType;
@@ -222,7 +222,7 @@ const SearchItem = ({ item, type }: Props) => {
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
   const mainContext = contexts[0];
 
-  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: React.ReactNode }) => (
+  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: ReactNode }) => (
     <BreadcrumbPath>
       {breadcrumb.map((breadcrumbItem: string, i: number) => {
         return (

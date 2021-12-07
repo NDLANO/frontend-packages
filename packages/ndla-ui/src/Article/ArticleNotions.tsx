@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { MouseEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 
@@ -161,7 +161,7 @@ export type NotionRelatedContent = {
 type ArticleNotionsProps = {
   locale: Locale;
   notions: NotionProps[];
-  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onReferenceClick?: MouseEventHandler<HTMLButtonElement>;
   relatedContent?: NotionRelatedContent[];
   renderMarkdown?: (text: string) => string;
   buttonOffsetRight: number;

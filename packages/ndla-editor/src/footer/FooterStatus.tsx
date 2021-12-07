@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, typography, colors, misc, fonts, spacingUnit } from '@ndla/core';
@@ -135,7 +135,7 @@ const footerReducer = (state: State, action: Action) => {
   }
 };
 
-const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
+const FooterStatus = ({ options, messages, onSave }: Props) => {
   const [state, dispatch] = useReducer(footerReducer, initialState);
   const { changeStatusTo, comment } = state;
   return (

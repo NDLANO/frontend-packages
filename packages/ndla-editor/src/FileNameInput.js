@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
@@ -18,7 +18,7 @@ import Tooltip from '@ndla/tooltip';
 class InputComponent extends Component {
   constructor(props) {
     super(props);
-    this.inputRef = React.createRef();
+    this.inputRef = createRef();
   }
 
   componentDidMount() {

@@ -9,7 +9,7 @@
 // Can be removed when updating to jsx-a11y 6.x
 /* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 1 */
 
-import React, { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
@@ -250,7 +250,7 @@ export const TopicMenu = ({
         {selectedMenu === MENU_CURRENT_SUBJECT && (
           <div {...classes('subject-navigation', `slide-${sliderCounter}`)}>
             {!disableMain && (
-              <Fragment>
+              <>
                 <div {...classes('section', 'main')}>
                   <SafeLink onClick={closeMenu} to={toSubject()} className={classes('link', 'big').className}>
                     <span {...classes('link-wrapper')}>
@@ -283,7 +283,7 @@ export const TopicMenu = ({
                     })}
                   </ul>
                 </div>
-              </Fragment>
+              </>
             )}
             {expandedTopic && !disableSubTopic && (
               <SubtopicLinkList

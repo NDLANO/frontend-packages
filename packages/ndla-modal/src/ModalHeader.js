@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import css from '@emotion/css';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';

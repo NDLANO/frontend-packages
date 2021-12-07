@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Switch } from '@ndla/switch';
 import { StoryBody, StoryIntro } from '../wrappers';
 import ComponentInfo from '../ComponentInfo';

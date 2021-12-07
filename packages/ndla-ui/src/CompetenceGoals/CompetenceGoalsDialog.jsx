@@ -6,7 +6,6 @@
  *
  */
 
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { fonts } from '@ndla/core';
@@ -44,7 +43,7 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
       backgroundColor="light-gradient"
       narrow>
       {(close) => (
-        <Fragment>
+        <>
           <ModalHeader modifier="menu">
             <HeaderWrapper>
               <HeadingWrapper>
@@ -59,7 +58,7 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
               {children}
             </div>
           </ModalBody>
-        </Fragment>
+        </>
       )}
     </Modal>
   );

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Children, useState, useEffect } from 'react';
+import { Children, useState, useEffect, ReactNode, isValidElement, cloneElement } from 'react';
 import { AccordionBar, AccordionPanel } from './';
 
 export interface Props {
@@ -15,11 +15,11 @@ export interface Props {
   hasError?: boolean;
   startOpen?: boolean;
   tiny?: boolean;
-  barChildren?: React.ReactNode;
+  barChildren?: ReactNode;
   open?: boolean;
   onClick?: () => void;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const AccordionSection = (props: Props) => {
@@ -48,8 +48,8 @@ const AccordionSection = (props: Props) => {
         <AccordionPanel id={id} hasError={hasError} isOpen={isOpen}>
           <div className={className}>
             {Children.map(children, (child) => {
-              if (React.isValidElement(child) && typeof child.type !== 'string') {
-                return React.cloneElement(child, {
+              if (isValidElement(child) && typeof child.type !== 'string') {
+                return cloneElement(child, {
                   setIsOpen: onClick ? onClick : setIsOpen,
                 });
               }

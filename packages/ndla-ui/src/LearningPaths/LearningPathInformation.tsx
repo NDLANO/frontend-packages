@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
 
@@ -61,12 +60,7 @@ interface Props {
   };
 }
 
-export const LearningPathInformation: React.FunctionComponent<Props> = ({
-  description,
-  title,
-  license,
-  invertedStyle,
-}) => (
+export const LearningPathInformation = ({ description, title, license, invertedStyle }: Props) => (
   <section className="o-wrapper">
     <StyledWrapper invertedStyle={invertedStyle} className="c-article">
       <div>

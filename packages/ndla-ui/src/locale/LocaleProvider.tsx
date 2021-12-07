@@ -6,14 +6,14 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import { i18nInstance } from '../i18n';
 import { Locale } from '../types';
 
 type Props = {
   locale: Locale;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const InitI18nWrapper = ({ locale, children }: Props) => {

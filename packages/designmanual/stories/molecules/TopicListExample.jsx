@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { SubjectFilter, TopicIntroductionList } from '@ndla/ui';
 import { topicList } from '../../dummydata/index';
 

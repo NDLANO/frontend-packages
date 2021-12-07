@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import { Structure, Spinner } from '@ndla/editor';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -321,7 +321,7 @@ class StructureExample extends Component {
     return !loadedEssentials ? (
       <Spinner />
     ) : (
-      <Fragment>
+      <>
         <Structure
           DND={this.props.structureEditor}
           openedPaths={this.state.openedPaths}
@@ -345,7 +345,7 @@ class StructureExample extends Component {
           favoriteSubjectIds={fetchFavoriteSubjectIds}
           children
         />
-      </Fragment>
+      </>
     );
   }
 }

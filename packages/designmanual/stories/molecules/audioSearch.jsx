@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import AudioSearch from '@ndla/audio-search';
 
 const fetchAudios = (queryObject) => {

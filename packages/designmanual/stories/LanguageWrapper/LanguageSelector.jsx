@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import { RadioButtonGroup } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 
@@ -20,7 +19,7 @@ const LANGUAGES = [
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
   return (
-    <Fragment>
+    <>
       <h2 className="u-heading">Velg språk for labels</h2>
       <div className="c-filter u-margin-top">
         <RadioButtonGroup
@@ -32,7 +31,7 @@ const LanguageSelector = () => {
           }}
         />
       </div>
-    </Fragment>
+    </>
   );
 };
 

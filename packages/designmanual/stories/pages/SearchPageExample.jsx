@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Core, Additional } from '@ndla/icons/common';
 
@@ -274,7 +274,7 @@ class SearchPageExample extends Component {
         }}
         resourceToLinkProps={() => {}}
         filters={
-          <Fragment>
+          <>
             <SearchFilterList
               label={t('searchPage.label.subjects')}
               noFilterSelectedLabel={t('searchPage.label.noFilter')}
@@ -355,7 +355,7 @@ class SearchPageExample extends Component {
                 this.setState({ filter_createdByFilter: values });
               }}
             />
-          </Fragment>
+          </>
         }>
         <SearchResult
           author={authorDesktop}

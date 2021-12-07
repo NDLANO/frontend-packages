@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 import { Article, OneColumn, LayoutItem, TasksAndActivitiesBadge, constants } from '@ndla/ui';
 
 import Resources from '../molecules/resources';

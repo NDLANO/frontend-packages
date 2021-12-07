@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight } from '@ndla/icons/common';
@@ -29,7 +29,7 @@ export const SearchResult = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <Fragment>
+    <>
       <h2 {...resultClasses('result-label')}>{!hideResultText ? messages.resultHeading : '\u00A0'}</h2>
 
       <div {...resultClasses()}>
@@ -62,7 +62,7 @@ export const SearchResult = ({
         )}
         {competenceGoalsOpen && <div {...resultClasses('competence-goals')}>{competenceGoals}</div>}
         {!competenceGoalsOpen && (
-          <Fragment>
+          <>
             <FilterTabs
               dropdownBtnLabel={t('searchPage.searchPageMessages.dropdownBtnLabel')}
               value={currentTab}
@@ -72,10 +72,10 @@ export const SearchResult = ({
               {children}
             </FilterTabs>
             <div {...resultClasses('narrow-result')}>{children}</div>
-          </Fragment>
+          </>
         )}
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -81,7 +80,7 @@ const ResourcesTopicTitle = ({
               </TooltipButton>
             }>
             {(onClose) => (
-              <Fragment>
+              <>
                 <ModalHeader>
                   <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
                 </ModalHeader>
@@ -91,7 +90,7 @@ const ResourcesTopicTitle = ({
                   <p>{t('resource.dialogText1')}</p>
                   <p>{t('resource.dialogText2')}</p>
                 </ModalBody>
-              </Fragment>
+              </>
             )}
           </Modal>
         </div>

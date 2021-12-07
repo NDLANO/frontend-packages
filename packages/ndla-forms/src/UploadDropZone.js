@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -163,8 +163,8 @@ class UploadDropZone extends Component {
     this.onDragEnter = this.onDragEnter.bind(this);
     this.onDragLeave = this.onDragLeave.bind(this);
     this.onDrop = this.onDrop.bind(this);
-    this.inputRef = React.createRef();
-    this.dropZoneRef = React.createRef();
+    this.inputRef = createRef();
+    this.dropZoneRef = createRef();
     this.errorTimer = null;
   }
 
@@ -228,7 +228,7 @@ class UploadDropZone extends Component {
     const { name, allowedFiles, multiple, useIcon, children, ariaLabel, loading } = this.props;
     const { dropAllowed, draggedOver, errorMessage } = this.state;
     return (
-      <Fragment>
+      <>
         <Wrapper css={[draggedOver && cssHover, loading && cssLoading]}>
           <DropZone dropAllowed={dropAllowed} ref={this.dropZoneRef}>
             <InputField
@@ -250,10 +250,10 @@ class UploadDropZone extends Component {
                   <Spinner />
                 </SpinnerWrapper>
               ) : (
-                <Fragment>
+                <>
                   {useIcon || <CloudUploadOutline />}
                   {children}
-                </Fragment>
+                </>
               )}
             </ContentWrapper>
           </DropZone>
@@ -264,7 +264,7 @@ class UploadDropZone extends Component {
             {errorMessage}
           </AlertMessages>
         )}
-      </Fragment>
+      </>
     );
   }
 }

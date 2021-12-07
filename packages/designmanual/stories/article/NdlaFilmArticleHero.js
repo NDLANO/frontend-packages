@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { OneColumn, NdlaFilmHero } from '@ndla/ui';
 import Breadcrumb from '../molecules/breadcrumbs';

@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 import { Programme } from '@ndla/ui';
 
 import { programme } from '../../dummydata/mockPrograms';

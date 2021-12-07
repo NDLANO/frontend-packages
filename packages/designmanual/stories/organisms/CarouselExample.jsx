@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/core';
 import { colors, misc, fonts, spacing } from '@ndla/core';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';

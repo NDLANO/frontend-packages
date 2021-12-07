@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { FileList } from '@ndla/ui';
 import { addFilelistTooltipListners } from '@ndla/article-scripts';
 

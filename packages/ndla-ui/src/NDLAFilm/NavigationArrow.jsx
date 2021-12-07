@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';

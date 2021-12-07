@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight, ChevronDown } from '@ndla/icons/common';
@@ -38,7 +38,7 @@ class CompetenceGoals extends Component {
     return (
       <div {...classes('', { menu, search })}>
         {!menu && !search ? (
-          <Fragment>
+          <>
             <h1 id={headingId}>{messages.heading}</h1>
             <hr />
             <p>{description}</p>
@@ -46,16 +46,16 @@ class CompetenceGoals extends Component {
             <div {...classes('topic')}>
               <CompetenceGoalList goals={topics[0].items} />
             </div>
-          </Fragment>
+          </>
         ) : (
-          <Fragment>
+          <>
             <h1 {...classes('subject-heading')}>{subjectName}</h1>
             <h2 id={headingId} {...classes('heading')}>
               {messages.heading}
             </h2>
             <p {...classes('description')}>{messages.listDescription}</p>
             {filterOptions && filterOptions.length > 0 && (
-              <Fragment>
+              <>
                 <FilterListPhone
                   preid="competence"
                   label="Filtrer kompetansemål"
@@ -69,7 +69,7 @@ class CompetenceGoals extends Component {
                     closeFilter: t('competenceGoals.closeCompentenceGoalsFilter'),
                   }}
                 />
-              </Fragment>
+              </>
             )}
             {topics.map((topic) => (
               <div
@@ -104,7 +104,7 @@ class CompetenceGoals extends Component {
                 <CompetenceGoalList id={id} aria-hidden={this.state.expanded !== topic.heading} goals={topic.items} />
               </div>
             ))}
-          </Fragment>
+          </>
         )}
       </div>
     );

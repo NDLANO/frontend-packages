@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactElement } from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
@@ -88,7 +88,7 @@ type Props = {
   filters: FilterProps[];
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
-  customElements?: React.ReactElement[];
+  customElements?: ReactElement[];
 };
 
 const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements }: Props) => {

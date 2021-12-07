@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';

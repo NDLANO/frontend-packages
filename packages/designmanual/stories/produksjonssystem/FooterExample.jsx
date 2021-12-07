@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Footer, FooterQualityInsurance, FooterStatus, FooterLinkButton } from '@ndla/editor';
 import Button from '@ndla/button';
 

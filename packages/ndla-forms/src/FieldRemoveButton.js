@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Cross } from '@ndla/icons/action';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import LayoutItem, { OneColumn } from '../Layout';

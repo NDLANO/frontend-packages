@@ -8,7 +8,6 @@
 
 /* eslint-env jest */
 
-import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { render } from '@testing-library/react';
 import Pager from '../Pager';

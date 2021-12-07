@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from '@ndla/ui';
 import styled from '@emotion/styled';

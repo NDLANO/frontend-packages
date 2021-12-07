@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 
@@ -123,15 +123,15 @@ const AuthorsWrapper = styled.div`
 export type SearchNotionItemProps = {
   id: string;
   title: string;
-  text: React.ReactNode;
+  text: ReactNode;
   image?: { url: string; alt: string };
   media?: NotionMedia;
   labels?: string[];
   authors?: { name: string }[];
   license?: string;
   locale?: string;
-  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
-  renderMarkdown: (text: React.ReactNode) => string;
+  onReferenceClick?: MouseEventHandler<HTMLButtonElement>;
+  renderMarkdown: (text: ReactNode) => string;
 };
 
 const SearchNotionItem = ({

@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 interface Props {
   trackerUrl: string;
   siteId: string;

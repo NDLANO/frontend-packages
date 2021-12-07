@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { ArrowDropDown } from '@ndla/icons/common';
@@ -24,8 +24,8 @@ class FilterTabs extends Component {
     this.liRefs = {};
     this.tabWidths = null;
     this.dropdownTabWidth = null;
-    this.dropdownTabRef = React.createRef();
-    this.containerRef = React.createRef();
+    this.dropdownTabRef = createRef();
+    this.containerRef = createRef();
     this.showSelectedTab = false;
   }
 

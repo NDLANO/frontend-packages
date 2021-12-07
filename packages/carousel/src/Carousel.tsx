@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef, ReactNode } from 'react';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import { Swipeable, EventData } from 'react-swipeable';
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
@@ -20,7 +20,7 @@ export interface CalculatedProps {
 }
 
 interface Props extends CalculatedProps {
-  items: React.ReactNode[];
+  items: ReactNode[];
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
   buttonClass: string;
@@ -45,7 +45,7 @@ export class Carousel extends Component<Props, State> {
 
   swipeDistance = 0;
   swipeSpeed = 0;
-  slideshowRef = React.createRef<HTMLDivElement>();
+  slideshowRef = createRef<HTMLDivElement>();
 
   state: State = {
     slideIndex: 0,

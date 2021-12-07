@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 import { OneColumn, LayoutItem, Article, ExternalLearningResourcesBadge, constants } from '@ndla/ui';
 
 import RelatedArticleListExample from '../article/RelatedArticleListExample';

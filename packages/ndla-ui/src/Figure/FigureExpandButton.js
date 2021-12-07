@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ArrowCollapse } from '@ndla/icons/common';
 import { ExpandTwoArrows } from '@ndla/icons/action';

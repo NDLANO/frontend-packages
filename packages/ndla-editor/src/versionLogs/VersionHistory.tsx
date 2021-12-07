@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -46,6 +46,7 @@ const StyleLine = styled.hr`
 `;
 
 type Props = {
+  children: ReactNode;
   notes: {
     author: string;
     date: string;
@@ -55,7 +56,7 @@ type Props = {
   }[];
 };
 
-const VersionHistory: React.FC<Props> = ({ notes, children }) => {
+const VersionHistory = ({ notes, children }: Props) => {
   const { t } = useTranslation();
   const hasStatus = notes.some((n) => n.status !== undefined);
   return (

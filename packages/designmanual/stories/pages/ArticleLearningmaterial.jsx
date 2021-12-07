@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { OneColumn, LayoutItem, Article, SubjectMaterialBadge, constants } from '@ndla/ui';

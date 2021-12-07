@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { uuid } from '@ndla/util';
 import { withTranslation, WithTranslation } from 'react-i18next';
@@ -25,12 +25,12 @@ export interface BreadcrumbItemI {
 }
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   items: BreadcrumbItemI[];
   invertedStyle: boolean;
 }
 
-const Breadcrumb: React.FunctionComponent<Props & WithTranslation> = ({ children, items, invertedStyle, t }) => (
+const Breadcrumb = ({ children, items, invertedStyle, t }: Props & WithTranslation) => (
   <nav aria-label={t('breadcrumb.breadcrumb')}>
     {children}
     <ol {...classes('list')}>

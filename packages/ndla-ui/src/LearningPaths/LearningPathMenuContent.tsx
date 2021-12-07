@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
@@ -227,7 +226,7 @@ const hasRead = (
   },
 ) => !!cookies[id];
 
-const LearningPathMenuContent: React.FunctionComponent<Props> = ({
+const LearningPathMenuContent = ({
   isOpen,
   currentIndex,
   cookies,
@@ -236,7 +235,7 @@ const LearningPathMenuContent: React.FunctionComponent<Props> = ({
   toLearningPathUrl,
   invertedStyle,
   onStepNavigate,
-}) => {
+}: Props) => {
   const getContentTypeBadge = (type?: string) => {
     if (!type) {
       return <ContentTypeBadge type={constants.contentTypes.LEARNING_PATH} background size="small" />;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { CompetenceGoalTab } from '@ndla/ui';
 
 const CompetenceGoalTabdata = [

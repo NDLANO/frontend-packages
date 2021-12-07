@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 
@@ -114,13 +114,13 @@ class FilterList extends Component {
               });
             }}>
             {this.state.visibleCount === defaultVisibleCount ? (
-              <Fragment>
+              <>
                 <span>{showLabel}</span> <ChevronDown />
-              </Fragment>
+              </>
             ) : (
-              <Fragment>
+              <>
                 <span>{hideLabel}</span> <ChevronUp />
-              </Fragment>
+              </>
             )}
           </button>
         )}

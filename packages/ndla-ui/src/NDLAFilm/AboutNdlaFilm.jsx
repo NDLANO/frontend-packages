@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { OneColumn } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';

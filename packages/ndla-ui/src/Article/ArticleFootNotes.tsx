@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { FootNote as FootNoteType } from '../types';
 
 const citeDetailString = (description: string | undefined) => (description ? `${description}. ` : '');

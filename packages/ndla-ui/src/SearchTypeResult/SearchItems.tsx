@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { memo } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemType } from './SearchItem';
@@ -52,4 +52,4 @@ const SearchItems = ({ items, type }: Props) => (
   </Wrapper>
 );
 
-export default React.memo(SearchItems);
+export default memo(SearchItems);

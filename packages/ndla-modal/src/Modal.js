@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState, cloneElement, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import em from 'polished/lib/helpers/em';
 
@@ -58,7 +58,7 @@ const Modal = ({
 
   let clonedComponent;
   if (activateButton) {
-    clonedComponent = React.cloneElement(activateButton, {
+    clonedComponent = cloneElement(activateButton, {
       onClick: (e) => {
         openModal();
         if (onClickEvent) {
@@ -102,7 +102,7 @@ Modal.propTypes = {
   backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue', 'light-gradient']),
   animationDuration: PropTypes.number,
   activateButton: (props, propName, componentName) => {
-    if (!props.controllable && typeof props[propName] !== 'string' && !React.isValidElement(props[propName])) {
+    if (!props.controllable && typeof props[propName] !== 'string' && !isValidElement(props[propName])) {
       return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`);
     }
     return null;

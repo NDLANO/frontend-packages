@@ -1,12 +1,12 @@
-import React from 'react';
+import { FormEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, mq, breakpoints } from '@ndla/core';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   inputHasFocus?: boolean;
-  onSubmit?: (event: React.FormEvent) => void;
+  onSubmit?: (event: FormEvent) => void;
 }
 
 type StyledProps = {
@@ -56,7 +56,7 @@ const StyledForm = styled.form<StyledProps>`
     `}
 `;
 
-export const SearchFieldForm: React.FC<Props> = ({ children, inputHasFocus, onSubmit }) => {
+export const SearchFieldForm = ({ children, inputHasFocus, onSubmit }: Props) => {
   return (
     <StyledForm action="/search/" inputHasFocus={inputHasFocus} onSubmit={onSubmit}>
       {children}

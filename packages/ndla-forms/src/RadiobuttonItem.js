@@ -6,7 +6,6 @@
  *
  */
 
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
@@ -67,7 +66,7 @@ const RadioLabel = styled.label`
 `;
 
 const RadiobuttonItem = ({ label, checked, value, id, onChange, disabled }) => (
-  <Fragment>
+  <>
     <RadioInput
       disabled={disabled}
       aria-checked={checked}
@@ -81,7 +80,7 @@ const RadiobuttonItem = ({ label, checked, value, id, onChange, disabled }) => (
     <RadioLabel htmlFor={id} hasLabel={label !== ''}>
       {label}
     </RadioLabel>
-  </Fragment>
+  </>
 );
 
 RadiobuttonItem.propTypes = {

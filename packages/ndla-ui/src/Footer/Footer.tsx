@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, fonts, mq, breakpoints, spacingUnit } from '@ndla/core';
@@ -110,22 +110,22 @@ const StyledLanguageWrapper = styled.div`
 `;
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   lang: Locale;
   links?: [
     {
       to: string;
       text: string;
-      icon: React.ReactNode;
+      icon: ReactNode;
       facebook: string;
       twitter: string;
     },
   ];
-  languageSelector?: React.ReactNode;
+  languageSelector?: ReactNode;
   auth?: ReactNode;
 };
 
-const Footer: React.FunctionComponent<Props> = ({ lang, children, links, languageSelector, auth }) => {
+const Footer = ({ lang, children, links, languageSelector, auth }: Props) => {
   const { t } = useTranslation();
   const mainContent = (
     <>

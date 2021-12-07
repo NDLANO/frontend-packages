@@ -6,9 +6,7 @@
  *
  */
 
-import React from 'react';
-
-const Illustration: React.FunctionComponent = () => (
+const Illustration = () => (
   <svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <path

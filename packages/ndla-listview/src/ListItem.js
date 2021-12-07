@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
@@ -151,10 +151,10 @@ class ListItem extends Component {
   renderItem() {
     const { item, renderMarkdown } = this.props;
     return (
-      <Fragment>
+      <>
         <h3 className={'item-name'}>{item.name}</h3>
         <p className={'item-description'}>{renderMarkdown(item.description)}</p>
-      </Fragment>
+      </>
     );
   }
 

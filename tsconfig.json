@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "target": "es5",
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     // isolatedModules and declaration are not allowed together at
     // the moment, We set isolatedModules to true here to prevent
     // accidental export of types. We disable it when we build the

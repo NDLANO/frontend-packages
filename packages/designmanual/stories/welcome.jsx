@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { Logo, PageContainer } from '@ndla/ui';

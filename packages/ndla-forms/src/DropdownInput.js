@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Spinner } from '@ndla/ui';
 import { Search } from '@ndla/icons/common';

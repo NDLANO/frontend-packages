@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import _ from 'lodash';
@@ -48,7 +48,7 @@ class MastheadWithTopicMenu extends Component {
       expandedTopicId: null,
       expandedSubtopicsId: [],
     };
-    this.inputRef = React.createRef();
+    this.inputRef = createRef();
     this.closeAllModals = [null, null];
   }
 

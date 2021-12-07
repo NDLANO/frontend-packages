@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode, MouseEvent } from 'react';
 // @ts-ignore
 import Button, { CopyButton } from '@ndla/button';
 import styled from '@emotion/styled';
@@ -41,9 +41,9 @@ const LinkText = styled.div`
 
 type Props = {
   linkToResources?: string;
-  onLinkToResourcesClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onLinkToResourcesClick?: (e: MouseEvent<HTMLElement>) => void;
   copyPageUrlLink?: string;
-  licenseBox?: React.ReactNode;
+  licenseBox?: ReactNode;
 };
 const ArticleSideBar = ({ linkToResources, onLinkToResourcesClick, copyPageUrlLink, licenseBox }: Props) => {
   const { t } = useTranslation();
@@ -91,7 +91,7 @@ const ArticleSideBar = ({ linkToResources, onLinkToResourcesClick, copyPageUrlLi
           <LinkText>
             <SafeLink
               to={linkToResources}
-              onClick={(e: React.MouseEvent<HTMLElement>) => onLinkToResourcesClick && onLinkToResourcesClick(e)}>
+              onClick={(e: MouseEvent<HTMLElement>) => onLinkToResourcesClick && onLinkToResourcesClick(e)}>
               Hopp til fagressursene
             </SafeLink>
           </LinkText>

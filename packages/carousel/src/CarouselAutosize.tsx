@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef, ReactNode } from 'react';
 import em from 'polished/lib/helpers/em';
 import { breakpoints as breakpointFromCore } from '@ndla/core';
 import { Breakpoint } from '@ndla/core/types';
@@ -27,7 +27,7 @@ interface Props {
   centered?: boolean;
   itemsLength: number;
   breakpoints: CaruselBreakpoint[];
-  children: (calculatedProps: CalculatedCarouselProps | null) => React.ReactNode;
+  children: (calculatedProps: CalculatedCarouselProps | null) => ReactNode;
 }
 
 interface State {
@@ -38,7 +38,7 @@ export class CarouselAutosize extends Component<Props, State> {
   static defaultProps = {
     itemsLength: 999,
   };
-  autosizeRef = React.createRef<HTMLDivElement>();
+  autosizeRef = createRef<HTMLDivElement>();
   state: State = {};
 
   componentDidMount() {

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Breadcrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';

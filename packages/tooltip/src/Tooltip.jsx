@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import  { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { isMobile, isIE } from 'react-device-detect';
 import styled from '@emotion/styled';
@@ -65,8 +65,8 @@ class Tooltip extends Component {
     };
     this.handleShowTooltip = this.handleShowTooltip.bind(this);
     this.handleHideTooltip = this.handleHideTooltip.bind(this);
-    this.contentRef = React.createRef();
-    this.tooltipRef = React.createRef();
+    this.contentRef = createRef();
+    this.tooltipRef = createRef();
   }
 
   getElementPosition() {

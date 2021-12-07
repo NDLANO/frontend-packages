@@ -24,7 +24,7 @@
     "react-i18next": "^11.11.0"
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.35",
+    "@emotion/core": "^10.1.0",
     "@emotion/styled": "^10.0.27",
     "@storybook/addon-a11y": "6.4.0",
     "@storybook/addon-actions": "6.4.0",

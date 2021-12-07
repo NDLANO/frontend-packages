@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing } from '@ndla/core';
@@ -50,6 +50,7 @@ export const StyledAccordionsPanelIconButton = styled.button`
 `;
 
 type Props = {
+  children: ReactNode;
   id: string;
   isOpen?: boolean;
   tiny?: boolean;
@@ -89,6 +90,6 @@ const StyledAccordionPanel = styled.section<Props>`
     `};
 `;
 
-export const AccordionPanel: React.FC<Props> = ({ children, ...rest }) => (
+export const AccordionPanel = ({ children, ...rest }: Props) => (
   <StyledAccordionPanel {...rest}>{children}</StyledAccordionPanel>
 );

@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import { FieldHeader, FieldHeaderIconStyle } from '@ndla/forms';
 import { InformationOutline } from '@ndla/icons/common';
 import { ArticleInModal } from '@ndla/howto';

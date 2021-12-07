@@ -68,7 +68,7 @@
     "shave": "^2.5.10"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.9",
+    "@emotion/core": "^10.1.0",
     "@emotion/styled": "^10.0.9",
     "i18next": "^20.3.1",
     "prop-types": "^15.6.0",

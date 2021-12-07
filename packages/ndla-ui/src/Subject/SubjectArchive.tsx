@@ -1,4 +1,4 @@
-import React, { ReactNode, Component, createRef, Fragment, RefObject } from 'react';
+import { ReactNode, Component, createRef, RefObject } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
@@ -98,13 +98,13 @@ class SubjectArchive extends Component<Props, State> {
             className={classes('archive-button').className}
             onClick={this.handleToggleArchive}>
             {this.state.archiveOpen ? (
-              <Fragment>
+              <>
                 <Cross /> <span>{messages.close}</span>
-              </Fragment>
+              </>
             ) : (
-              <Fragment>
+              <>
                 <Forward /> <span>{messages.archive}</span>
-              </Fragment>
+              </>
             )}
           </button>
         </div>

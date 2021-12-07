@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import { createRef, ReactNode, useEffect, useRef, useState } from 'react';
 import { SubjectBanner, ToolboxInfo, OneColumn, Topic, TopicProps } from '@ndla/ui';
 // @ts-ignore
 import { topics as toolboxTopics } from '../../dummydata/mockToolbox';
@@ -21,7 +21,7 @@ import { Image, Video, H5p } from '../molecules/VisualElements';
 
 type VisualElementProps = {
   type: 'image' | 'video' | 'other';
-  element: React.ReactNode;
+  element: ReactNode;
 };
 
 const dummyVisualElementOfTopic = (): VisualElementProps => {
@@ -71,8 +71,8 @@ const Toolbox = () => {
 
   const [selectedTopics, setSelectedTopics] = useState<(string | number)[]>([]);
 
-  const topicContentRef = React.useRef<HTMLDivElement>(null);
-  const topicRefs = topics.map(() => React.createRef<HTMLDivElement>());
+  const topicContentRef = useRef<HTMLDivElement>(null);
+  const topicRefs = topics.map(() => createRef<HTMLDivElement>());
 
   useEffect(() => {
     if (selectedTopics.length === 1) {

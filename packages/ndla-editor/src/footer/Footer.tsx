@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors } from '@ndla/core';
 
@@ -47,7 +46,7 @@ type Props = {
   children: JSX.Element;
 };
 
-const Footer: React.FC<Props> = ({ children }) => (
+const Footer = ({ children }: Props) => (
   <StyledFooter>
     <StyledContentWrapper>{children}</StyledContentWrapper>
   </StyledFooter>

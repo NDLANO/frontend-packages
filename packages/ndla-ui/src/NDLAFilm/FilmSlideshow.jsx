@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import  { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
@@ -47,8 +47,8 @@ class FilmSlideshow extends Component {
       animationComplete: true,
     };
     this.swipeDistance = 0;
-    this.slideRef = React.createRef();
-    this.slideText = React.createRef();
+    this.slideRef = createRef();
+    this.slideText = createRef();
     this.onSwipeEnd = this.onSwipeEnd.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
     this.gotoSlide = this.gotoSlide.bind(this);

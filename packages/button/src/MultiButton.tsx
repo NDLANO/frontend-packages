@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
@@ -149,7 +149,7 @@ type Props = {
   disabled?: boolean;
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
-  children?: () => React.ReactElement;
+  children?: () => ReactElement;
 };
 
 export const MultiButton = ({

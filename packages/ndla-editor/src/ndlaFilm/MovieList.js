@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, shadows } from '@ndla/core';
@@ -34,7 +34,7 @@ class MovieList extends Component {
       draggingIndex: -1,
       deleteIndex: -1,
     };
-    this.wrapperRef = React.createRef();
+    this.wrapperRef = createRef();
     this.onDragStart = this.onDragStart.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.onDragging = this.onDragging.bind(this);

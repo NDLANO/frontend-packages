@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactChild, ReactChildren } from 'react';
+import { ReactChild, ReactChildren, ReactNode } from 'react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 // @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
@@ -34,10 +34,10 @@ const buttonToggleCss = css`
 
 type ModalWrapperProps = {
   innerWidth: number;
-  children: (arg: VoidFunction) => ReactChild | ReactChildren | React.ReactNode;
+  children: (arg: VoidFunction) => ReactChild | ReactChildren | ReactNode;
 };
 
-const ModalWrapperComponent: React.FC<ModalWrapperProps> = ({ innerWidth, children }) => {
+const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
   const { t } = useTranslation();
   if (innerWidth < 601) {
     return (

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
 import { useTranslation } from 'react-i18next';
@@ -19,11 +19,11 @@ const classes: BEMHelper<ReturnObject> = BEMHelper({
 });
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   items: BreadcrumbItemI[];
 }
 
-const BreadcrumbBlock: React.FunctionComponent<Props> = ({ children, items }) => {
+const BreadcrumbBlock = ({ children, items }: Props) => {
   const { t } = useTranslation();
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);

@@ -6,8 +6,8 @@
  *
  */
 
-import React from 'react';
+import { createContext } from 'react';
 
-const MissingRouterContext = React.createContext(false);
+const MissingRouterContext = createContext(false);
 
 export default MissingRouterContext;

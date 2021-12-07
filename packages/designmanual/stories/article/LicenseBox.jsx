@@ -6,7 +6,6 @@
  *
  */
 
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@ndla/tabs';
 import { uuid } from '@ndla/util';
@@ -455,7 +454,7 @@ LinkContent.propTypes = {
 const LicenseBox = () => {
   const { t } = useTranslation();
   return (
-    <Fragment>
+    <>
       <h1>{t('license.heading')}</h1>
       <Tabs
         singleLine
@@ -469,7 +468,7 @@ const LicenseBox = () => {
           { title: t('license.tabs.other'), content: <OtherContent t={t} /> },
         ]}
       />
-    </Fragment>
+    </>
   );
 };
 

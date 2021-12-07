@@ -6,19 +6,19 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, ComponentType } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import { hasCurrentPageBeenTracked, sendPageView } from './tracker';
 
-const mountedInstances: React.ComponentType<any>[] = [];
+const mountedInstances: ComponentType<any>[] = [];
 
-type TrackableComponent<P> = React.ComponentType<P> & {
+type TrackableComponent<P> = ComponentType<P> & {
   getDocumentTitle: (p: P) => string;
   getDimensions?: (p: P) => { ga: any; gtm: any };
   willTrackPageView?: (callback: (p: P) => void, p: P) => void;
 };
 
-function withTracker<P>(WrappedComponent: TrackableComponent<P>): React.ComponentType<P> {
+function withTracker<P>(WrappedComponent: TrackableComponent<P>): ComponentType<P> {
   const Tracker = class extends Component<P> {
     static trackPageView(props: P) {
       const lastMountedInstance = mountedInstances[mountedInstances.length - 1];

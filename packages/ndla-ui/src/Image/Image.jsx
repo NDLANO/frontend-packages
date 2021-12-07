@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import defined from 'defined';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';

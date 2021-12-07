@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Tooltip from '@ndla/tooltip';
@@ -18,7 +18,7 @@ const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifie
     position={position}
     activateButton={<Button outline>{title}</Button>}>
     {(onClose) => (
-      <Fragment>
+      <>
         <ModalHeader modifier={headerColorModifier}>
           <ModalCloseButton title="Lukk" onClick={onClose} />
         </ModalHeader>
@@ -27,7 +27,7 @@ const ModalDemo = ({ title, size, animation, backgroundColor, headerColorModifie
           <hr />
           <p>Well done</p>
         </ModalBody>
-      </Fragment>
+      </>
     )}
   </Modal>
 );
@@ -164,7 +164,7 @@ class ModalExample extends Component {
         <h3>Enkel versjon:</h3>
         <Modal narrow activateButton={<Button outline>Åpne modal</Button>}>
           {(onClose) => (
-            <Fragment>
+            <>
               <ModalHeader>
                 <ModalCloseButton title="Lukk" onClick={onClose} />
               </ModalHeader>
@@ -175,7 +175,7 @@ class ModalExample extends Component {
                 <div className="u-horisontal-list">
                   <Modal narrow size="fullscreen" animation="slide-up" activateButton={<Button>Åpne ny modal</Button>}>
                     {(onClose2ndModal) => (
-                      <Fragment>
+                      <>
                         <ModalHeader>
                           <ModalCloseButton title="Lukk" onClick={onClose2ndModal} />
                         </ModalHeader>
@@ -187,7 +187,7 @@ class ModalExample extends Component {
                             ESCAPE-knappen
                           </p>
                         </ModalBody>
-                      </Fragment>
+                      </>
                     )}
                   </Modal>
                   <Button outline onClick={onClose}>
@@ -195,7 +195,7 @@ class ModalExample extends Component {
                   </Button>
                 </div>
               </ModalBody>
-            </Fragment>
+            </>
           )}
         </Modal>
         <h3>Eksempel med wrapper</h3>
@@ -213,7 +213,7 @@ class ModalExample extends Component {
             </Button>
           }>
           {(onClose) => (
-            <Fragment>
+            <>
               <ModalHeader>
                 <ModalCloseButton title="Lukk" onClick={onClose} />
               </ModalHeader>
@@ -222,7 +222,7 @@ class ModalExample extends Component {
                 <hr />
                 <p>Some modal content here..</p>
               </ModalBody>
-            </Fragment>
+            </>
           )}
         </Modal>
         <h3 className="u-heading">Prøv ulike varianter:</h3>

@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import { cloneElement, Children } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Button from '@ndla/button';
@@ -40,13 +40,13 @@ RelatedArticle.propTypes = {
 
 const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }) => {
   const clonedChildren = !dangerouslySetInnerHTML
-    ? React.Children.map(children, (article, i) =>
-        React.cloneElement(article, {
+    ? Children.map(children, (article, i) =>
+        cloneElement(article, {
           modifier: i >= 2 ? `${article.props.modifier} hidden` : article.props.modifier,
         }),
       )
     : null;
-  const childrenCount = articleCount || React.Children.count(children);
+  const childrenCount = articleCount || Children.count(children);
 
   return (
     <section {...classes('')}>

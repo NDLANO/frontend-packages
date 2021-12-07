@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import Tabs from '@ndla/tabs';
 import Button from '@ndla/button';

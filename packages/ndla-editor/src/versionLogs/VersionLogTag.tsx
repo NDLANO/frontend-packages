@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, misc } from '@ndla/core';
 
@@ -29,6 +28,6 @@ interface Props extends StyledTagProps {
   label: string;
 }
 
-const VersionLogTag: React.FC<Props> = ({ label, color }) => <StyledTag color={color}>{label}</StyledTag>;
+const VersionLogTag = ({ label, color }: Props) => <StyledTag color={color}>{label}</StyledTag>;
 
 export default VersionLogTag;

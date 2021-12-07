@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import ReactSyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light';

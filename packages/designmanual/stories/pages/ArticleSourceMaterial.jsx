@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 import { OneColumn, LayoutItem, Article, SourceMaterialBadge, constants } from '@ndla/ui';
 
 import FigureImage from '../article/FigureImage';

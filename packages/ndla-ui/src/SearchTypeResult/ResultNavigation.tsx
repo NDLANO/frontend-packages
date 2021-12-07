@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';

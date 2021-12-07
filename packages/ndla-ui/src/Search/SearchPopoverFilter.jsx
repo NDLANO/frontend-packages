@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 
-import React, { Fragment, Component } from 'react';
+import {  Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { ChevronRight } from '@ndla/icons/common';
@@ -34,7 +34,7 @@ class Popover extends Component {
     const { messages, close, options, onChange } = this.props;
 
     return (
-      <Fragment>
+      <>
         <FilterList
           preid="search-popover"
           options={options}
@@ -57,7 +57,7 @@ class Popover extends Component {
             {messages.confirmButton}
           </Button>
         </div>
-      </Fragment>
+      </>
     );
   }
 }
@@ -87,14 +87,14 @@ const PopoverFilter = ({ messages, values, onChange, ...rest }) => {
   return (
     <Modal animation="slide-up" size="medium" activateButton={buttonContent}>
       {(onClose) => (
-        <Fragment>
+        <>
           <ModalHeader modifiers="white">
             <ModalCloseButton title="Lukk" onClick={onClose} />
           </ModalHeader>
           <ModalBody modifier="no-side-padding-mobile">
             <Popover close={onClose} onChange={onChange} messages={messages} {...rest} values={values} />
           </ModalBody>
-        </Fragment>
+        </>
       )}
     </Modal>
   );

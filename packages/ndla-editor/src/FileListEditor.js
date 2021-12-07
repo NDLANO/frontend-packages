@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -108,7 +108,7 @@ class FileListEditor extends Component {
       draggingIndex: -1,
       deleteIndex: -1,
     };
-    this.filesWrapperRef = React.createRef();
+    this.filesWrapperRef = createRef();
     this.exitEditFileName = this.exitEditFileName.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.onDragging = this.onDragging.bind(this);

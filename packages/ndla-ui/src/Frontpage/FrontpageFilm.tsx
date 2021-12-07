@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
@@ -76,7 +75,7 @@ type Props = {
   imageUrl: string;
 };
 
-const FrontpageFilm: React.FunctionComponent<Props & WithTranslation> = ({ url, imageUrl, t }) => (
+const FrontpageFilm = ({ url, imageUrl, t }: Props & WithTranslation) => (
   <StyledSection>
     <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
     <StyledImage imageUrl={imageUrl}>

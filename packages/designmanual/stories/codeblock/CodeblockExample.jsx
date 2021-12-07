@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@ndla/button';
 import { Codeblock } from '@ndla/code';
 import { Cross } from '@ndla/icons/action';

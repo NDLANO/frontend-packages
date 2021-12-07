@@ -6,7 +6,6 @@
  *
  */
 
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -18,12 +17,12 @@ const classes = new BEMHelper({
 const TranslationLine = ({ children, lang, langName, isTerm }) => {
   const hasLang = langName && lang;
   const content = (
-    <Fragment>
+    <>
       <div {...classes('line-body')} lang={lang}>
         {children}
       </div>
       {hasLang && <div {...classes('line-lang')}>{langName}</div>}
-    </Fragment>
+    </>
   );
 
   if (isTerm) {

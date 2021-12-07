@@ -6,8 +6,6 @@
  *
  */
 
-import React from 'react';
-
 // @ts-ignore
 import FigureWithLicense from '../article/FigureWithLicense';
 

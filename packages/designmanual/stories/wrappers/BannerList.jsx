@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { breakpoints, copyTextToClipboard } from '@ndla/util';
 import { Copy } from '@ndla/icons/action';
@@ -76,9 +76,9 @@ class BannerList extends Component {
                 <CopyButton
                   style={{ margin: '13px' }}
                   copyNode={
-                    <Fragment>
+                    <>
                       <Copy /> Kopiert!
-                    </Fragment>
+                    </>
                   }
                   onClick={() => {
                     copyTextToClipboard(
@@ -88,17 +88,17 @@ class BannerList extends Component {
                   }}
                   outline
                   title="Kopier mobil banner til importskjema">
-                  <Fragment>
+                  <>
                     <Copy /> Kopier mobil banner
-                  </Fragment>
+                  </>
                 </CopyButton>
                 <CopyButton
                   style={{ margin: '13px' }}
                   outline
                   copyNode={
-                    <Fragment>
+                    <>
                       <Copy /> Kopiert!
-                    </Fragment>
+                    </>
                   }
                   onClick={() => {
                     copyTextToClipboard(
@@ -107,9 +107,9 @@ class BannerList extends Component {
                     );
                   }}
                   title="Kopier mobil banner til importskjema">
-                  <Fragment>
+                  <>
                     <Copy /> Kopier desktop banner
-                  </Fragment>
+                  </>
                 </CopyButton>
               </div>
             </div>

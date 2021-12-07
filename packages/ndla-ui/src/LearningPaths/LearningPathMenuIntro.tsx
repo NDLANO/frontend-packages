@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
@@ -101,7 +100,7 @@ interface Props {
   name: string;
 }
 
-const LearningPathMenuIntro: React.FunctionComponent<Props> = ({ isOpen, name, invertedStyle }) => {
+const LearningPathMenuIntro = ({ isOpen, name, invertedStyle }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>

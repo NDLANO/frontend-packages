@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import { Accordions, AccordionSection } from '@ndla/accordion';
 import Button from '@ndla/button';
 import { FilterList } from '@ndla/ui';

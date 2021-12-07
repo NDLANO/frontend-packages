@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
@@ -129,7 +129,7 @@ class FilterListPhone extends Component {
               </Button>
             }>
             {(onClose) => (
-              <Fragment>
+              <>
                 <ModalHeader modifier={['left-align']}>
                   <div {...classes('modal-header')}>
                     <div {...classes('modal-heading')}>
@@ -140,9 +140,9 @@ class FilterListPhone extends Component {
                     </div>
                     <ModalCloseButton
                       title={
-                        <Fragment>
+                        <>
                           <Cross /> {messages.closeFilter}
-                        </Fragment>
+                        </>
                       }
                       onClick={onClose}
                     />
@@ -195,7 +195,7 @@ class FilterListPhone extends Component {
                     </Button>
                   </div>
                 </ModalBody>
-              </Fragment>
+              </>
             )}
           </Modal>
         </div>
@@ -262,13 +262,13 @@ class FilterListPhone extends Component {
                   });
                 }}>
                 {this.state.visibleCount === defaultVisibleCount ? (
-                  <Fragment>
+                  <>
                     <span>{showLabel}</span> <ChevronDown />
-                  </Fragment>
+                  </>
                 ) : (
-                  <Fragment>
+                  <>
                     <span>{hideLabel}</span> <ChevronUp />
-                  </Fragment>
+                  </>
                 )}
               </button>
             )}

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
@@ -34,7 +34,7 @@ type FooterLinksProps = {
     {
       to: string;
       text: string;
-      icon: React.ReactNode;
+      icon: ReactNode;
       facebook: string;
       twitter: string;
     },
@@ -97,7 +97,7 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks: React.FunctionComponent<FooterLinksProps & WithTranslation> = ({ t, links }) => (
+const FooterLinks = ({ t, links }: FooterLinksProps & WithTranslation) => (
   <>
     <StyledLinksWrapper>
       <section>

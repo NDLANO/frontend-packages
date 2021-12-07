@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 // @ts-ignore
@@ -110,14 +109,14 @@ type Props = {
   };
 };
 
-const LearningPathMenuAside: React.FunctionComponent<Props & WithTranslation> = ({
+const LearningPathMenuAside = ({
   lastUpdated,
   learningPathURL,
   copyright,
   isOpen,
   invertedStyle,
   t,
-}) => (
+}: Props & WithTranslation) => (
   <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
     <div css={learningPathDetailsCSS}>
       <Time />

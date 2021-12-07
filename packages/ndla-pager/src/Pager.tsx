@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+import { ElementType, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -42,8 +42,8 @@ const pageItemStyle = css`
 `;
 
 interface PageItemProps {
-  pageItemComponentClass: React.ElementType;
-  children: React.ReactNode;
+  pageItemComponentClass: ElementType;
+  children: ReactNode;
   page: number;
   query: object;
   pathname: string;
@@ -95,7 +95,7 @@ interface Props {
   pathname?: string;
   query?: object;
   onClick?: (query: object) => void;
-  pageItemComponentClass?: React.ElementType;
+  pageItemComponentClass?: ElementType;
 }
 
 const Pager = ({

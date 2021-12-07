@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 
@@ -37,9 +37,9 @@ const StyledWrapper = styled.div`
 `;
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const FrontpageInfo: React.FunctionComponent<Props> = ({ children }) => <StyledWrapper>{children}</StyledWrapper>;
+const FrontpageInfo = ({ children }: Props) => <StyledWrapper>{children}</StyledWrapper>;
 
 export default FrontpageInfo;

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, ComponentType, ReactNode } from 'react';
+import { Component, ComponentType, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { withTranslation, WithTranslation } from 'react-i18next';
 // @ts-ignore

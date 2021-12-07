@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Cross } from '@ndla/icons/action';
@@ -12,7 +11,7 @@ const classes = BEMHelper({
 });
 
 const SearchOverlay = ({ close, isOpen, children }) => (
-  <Fragment>
+  <>
     <Fade in={isOpen}>
       <div className="o-backdrop" />
     </Fade>
@@ -26,7 +25,7 @@ const SearchOverlay = ({ close, isOpen, children }) => (
         </div>
       </div>
     </CSSTransition>
-  </Fragment>
+  </>
 );
 
 SearchOverlay.propTypes = {

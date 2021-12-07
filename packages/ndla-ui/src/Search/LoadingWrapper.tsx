@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, animations } from '@ndla/core';
 // @ts-ignore
@@ -26,7 +25,7 @@ type Props = {
   value: string;
 };
 
-const LoadingWrapper: React.FC<Props> = ({ value }) => (
+const LoadingWrapper = ({ value }: Props) => (
   <StyledWrapper>
     <span>{value}</span>
     <div>

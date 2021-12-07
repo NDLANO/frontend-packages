@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
@@ -39,7 +39,7 @@ const OneColumnCss = css`
 `;
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   subject?: {
     name: string;
     url: string;
@@ -51,13 +51,7 @@ interface Props {
   learningPathName: string;
 }
 
-const LearningPathLastStepNavigation: React.FunctionComponent<Props & WithTranslation> = ({
-  subject,
-  topic,
-  learningPathName,
-  children,
-  t,
-}) => (
+const LearningPathLastStepNavigation = ({ subject, topic, learningPathName, children, t }: Props & WithTranslation) => (
   <OneColumn css={OneColumnCss}>
     <LayoutItem layout="center">
       <StyledHeader className="c-article__title">

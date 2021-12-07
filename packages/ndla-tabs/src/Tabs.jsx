@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
 import { isMobile } from 'react-device-detect';
@@ -26,7 +26,7 @@ class Tabs extends Component {
       index: props.selectedIndex || 0,
       singleLineState: false,
     };
-    this.tabRef = React.createRef();
+    this.tabRef = createRef();
   }
 
   componentDidMount() {

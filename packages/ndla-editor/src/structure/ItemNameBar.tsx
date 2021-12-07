@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -110,7 +110,7 @@ const ItemTitleSpan = ItemTitleButton.withComponent('span');
 
 interface Props {
   title: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   path: string;
   toggleOpen: Function;
   hasSubtopics: boolean;
@@ -184,12 +184,12 @@ const ItemNameBar = ({
 );
 
 interface RoundIconProps {
-  smallIcon: React.ReactNode;
+  smallIcon: ReactNode;
   clicked?: boolean;
   type?: 'button' | 'reset' | 'submit';
 }
 
-const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & React.HTMLProps<HTMLButtonElement>) => (
+const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & HTMLProps<HTMLButtonElement>) => (
   <StyledIcon {...rest}>{smallIcon}</StyledIcon>
 );
 

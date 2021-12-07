@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
@@ -55,7 +55,7 @@ type Props = {
   items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
-  renderMarkdown: (text: React.ReactNode) => string;
+  renderMarkdown: (text: ReactNode) => string;
 };
 
 const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & WithTranslation) => (

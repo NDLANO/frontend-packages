@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Footer, FooterText, EditorName, LanguageSelector, FooterAuth } from '@ndla/ui';

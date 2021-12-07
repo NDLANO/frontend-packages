@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -28,7 +28,7 @@ const StyledBackdrop = styled('div')`
   animation-duration: ${(props) => props.animationDuration};
 `;
 
-export const Backdrop = React.forwardRef((props, ref) => {
+export const Backdrop = forwardRef((props, ref) => {
   return (
     <StyledBackdrop
       ref={ref}

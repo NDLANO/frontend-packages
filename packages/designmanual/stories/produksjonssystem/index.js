@@ -7,8 +7,6 @@
  */
 
 /* eslint max-len: 0 */
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
 import { Spinner } from '@ndla/editor';

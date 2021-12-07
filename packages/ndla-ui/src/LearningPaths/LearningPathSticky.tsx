@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -42,12 +42,10 @@ const StyledFooter = styled.nav`
 `;
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const LearningPathSticky: React.FunctionComponent<Props> = ({ children }) => (
-  <StyledFooter>{children}</StyledFooter>
-);
+export const LearningPathSticky = ({ children }: Props) => <StyledFooter>{children}</StyledFooter>;
 
 LearningPathSticky.propTypes = {
   children: PropTypes.node,
@@ -122,13 +120,7 @@ type PropsSiblings = {
   stepId: number;
 };
 
-export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> = ({
-  title,
-  toLearningPathUrl,
-  pathId,
-  stepId,
-  arrow,
-}) => (
+export const LearningPathStickySibling = ({ title, toLearningPathUrl, pathId, stepId, arrow }: PropsSiblings) => (
   <SafeLink to={toLearningPathUrl(pathId, stepId)} css={SafeLinkCSS}>
     {arrow === 'left' && <Back className="c-icon--medium" />}
     <div>
@@ -138,4 +130,4 @@ export const LearningPathStickySibling: React.FunctionComponent<PropsSiblings> =
   </SafeLink>
 );
 
-export const LearningPathStickyPlaceholder: React.FunctionComponent = () => <div css={SafeLinkCSS} />;
+export const LearningPathStickyPlaceholder = () => <div css={SafeLinkCSS} />;

@@ -6,14 +6,12 @@
  *
  */
 
-import React from 'react';
-
 type EditorNameProps = {
   title: string;
   name: string;
 };
 
-export const EditorName: React.FunctionComponent<EditorNameProps> = ({ title, name }) => (
+export const EditorName = ({ title, name }: EditorNameProps) => (
   <span>
     <strong>{title}</strong> {name}
   </span>

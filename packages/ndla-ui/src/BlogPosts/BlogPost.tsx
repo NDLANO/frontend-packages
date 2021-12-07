@@ -6,7 +6,6 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, colors, fonts, breakpoints, mq, misc, spacingUnit } from '@ndla/core';
@@ -160,16 +159,7 @@ type Props = {
   oneColumn?: boolean;
 };
 
-export const BlogPost: React.FunctionComponent<Props> = ({
-  text,
-  externalLink,
-  linkText,
-  image,
-  license,
-  licenseAuthor,
-  locale,
-  oneColumn,
-}) => {
+export const BlogPost = ({ text, externalLink, linkText, image, license, licenseAuthor, locale, oneColumn }: Props) => {
   const { rights } = getLicenseByAbbreviation(license || '', 'nb');
   return (
     <>

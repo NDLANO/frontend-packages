@@ -1,7 +1,5 @@
 /* eslint-disable no-alert */
 
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { LicenseDescription, BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import {

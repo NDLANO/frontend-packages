@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems } from '@reach/menu-button';
 import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';

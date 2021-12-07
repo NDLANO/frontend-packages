@@ -1,4 +1,3 @@
-import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { Play } from '@ndla/icons/common';

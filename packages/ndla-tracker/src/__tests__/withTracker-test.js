@@ -8,7 +8,7 @@
 
 /* eslint-env jest */
 /* eslint-disable react/no-multi-comp */
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
 import { createMemoryHistory } from 'history';

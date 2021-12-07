@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
 import { css } from '@emotion/core';

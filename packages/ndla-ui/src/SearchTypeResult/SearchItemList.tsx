@@ -76,7 +76,7 @@ const ItemTitleWrapper = styled.div`
 
 const ItemTitle = styled.h3`
   ${fonts.sizes('24px', '28px')};
-  color: ${colors.brand.dark};
+  color: ${colors.brand.primary};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;
   display: inline;

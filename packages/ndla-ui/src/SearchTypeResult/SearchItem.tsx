@@ -76,8 +76,7 @@ const ItemWrapper = styled.div`
       margin-top: calc(${spacing.small} + 2px);
       margin-left: 2px;
       svg {
-        width: 26px;
-        height: 26px;
+        transform: scale(1.2);
       }
     }
     .topic-label-list {
@@ -87,10 +86,8 @@ const ItemWrapper = styled.div`
       padding: 0 calc(${spacing.normal} + 2px);
       .resource-icon-wrapper {
         left: 19px;
-        height: 47px;
         svg {
-          width: 26px;
-          height: 26px;
+          transform: scale(1.2);
         }
       }
     }
@@ -140,7 +137,7 @@ const ItemTitleWrapper = styled.div<ItemTypeProps>`
 
 const ItemTitle = styled.h3<ItemTypeProps>`
   ${fonts.sizes('24px', '28px')};
-  color: ${colors.brand.dark};
+  color: ${colors.brand.primary};
   ${(props) => props.isTopic && `margin-bottom: ${spacing.small};`};
   font-weight: ${fonts.weight.semibold};
   overflow-wrap: anywhere;

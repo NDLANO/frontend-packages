@@ -247,7 +247,7 @@ const ResourceItem = ({
   return (
     <ListElement
       contentType={contentType}
-      hidden={hidden}
+      hidden={hidden && !active}
       active={active}
       additional={additional}
       extraBottomMargin={extraBottomMargin}>

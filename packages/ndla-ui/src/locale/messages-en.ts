@@ -327,6 +327,7 @@ const messages = {
     multipleAuthorsLabelAriaConjunction: 'and',
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
+    copyHeaderLink: 'Copy link to header',
     conjunction: 'and',
     supplierLabel: 'Rightsholder: {{name}}',
     multipleSuppliersLabel: 'Rightsholders: {{names}}',

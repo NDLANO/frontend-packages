@@ -135,3 +135,5 @@ export {
 } from './Subject';
 
 export { default as ContentCard } from './ContentCard';
+
+export { default as CopyParagraphButton } from './CopyParagraphButton';

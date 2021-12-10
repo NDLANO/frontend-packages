@@ -38,12 +38,10 @@ const SafeLink = ({ to, replace, children, showNewWindowIcon, ...rest }: SafeLin
   if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
     const href = typeof to === 'string' ? to : '#';
     return (
-      <>
-        <a href={href} {...rest}>
-          {children}
-          {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
-        </a>
-      </>
+      <a href={href} {...rest}>
+        {children}
+        {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+      </a>
     );
   }
 

@@ -39,7 +39,7 @@ exports[`component/LinkPager page 1/1 1`] = `
 
 <div>
   <div
-    class="emotion-1"
+    class="emotion-1 emotion-2"
   >
     <span
       class="emotion-0"
@@ -108,7 +108,7 @@ exports[`component/LinkPager page 1/5 1`] = `
 
 <div>
   <div
-    class="emotion-6"
+    class="emotion-6 emotion-7"
   >
     <span
       class="emotion-0"
@@ -117,35 +117,35 @@ exports[`component/LinkPager page 1/5 1`] = `
     </span>
     <a
       class="emotion-1"
-      href="somepath?page=2"
+      href="/somepath?page=2"
       tabindex="0"
     >
       2
     </a>
     <a
       class="emotion-1"
-      href="somepath?page=3"
+      href="/somepath?page=3"
       tabindex="0"
     >
       3
     </a>
     <a
       class="emotion-1"
-      href="somepath?page=4"
+      href="/somepath?page=4"
       tabindex="0"
     >
       4
     </a>
     <a
       class="emotion-1"
-      href="somepath?page=5"
+      href="/somepath?page=5"
       tabindex="0"
     >
       5
     </a>
     <a
       class="emotion-1"
-      href="somepath?page=2"
+      href="/somepath?page=2"
       tabindex="0"
     >
        
@@ -214,11 +214,11 @@ exports[`component/LinkPager page 3/5 1`] = `
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-7 emotion-8"
   >
     <a
       class="emotion-0"
-      href="somepath?page=2"
+      href="/somepath?page=2"
       tabindex="0"
     >
        
@@ -227,14 +227,14 @@ exports[`component/LinkPager page 3/5 1`] = `
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=1"
+      href="/somepath?page=1"
       tabindex="0"
     >
       1
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=2"
+      href="/somepath?page=2"
       tabindex="0"
     >
       2
@@ -246,21 +246,21 @@ exports[`component/LinkPager page 3/5 1`] = `
     </span>
     <a
       class="emotion-0"
-      href="somepath?page=4"
+      href="/somepath?page=4"
       tabindex="0"
     >
       4
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=5"
+      href="/somepath?page=5"
       tabindex="0"
     >
       5
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=4"
+      href="/somepath?page=4"
       tabindex="0"
     >
        
@@ -329,11 +329,11 @@ exports[`component/LinkPager page 4/10 1`] = `
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-7 emotion-8"
   >
     <a
       class="emotion-0"
-      href="somepath?page=3"
+      href="/somepath?page=3"
       tabindex="0"
     >
        
@@ -342,14 +342,14 @@ exports[`component/LinkPager page 4/10 1`] = `
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=2"
+      href="/somepath?page=2"
       tabindex="0"
     >
       2
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=3"
+      href="/somepath?page=3"
       tabindex="0"
     >
       3
@@ -361,21 +361,21 @@ exports[`component/LinkPager page 4/10 1`] = `
     </span>
     <a
       class="emotion-0"
-      href="somepath?page=5"
+      href="/somepath?page=5"
       tabindex="0"
     >
       5
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=6"
+      href="/somepath?page=6"
       tabindex="0"
     >
       6
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=5"
+      href="/somepath?page=5"
       tabindex="0"
     >
        
@@ -444,11 +444,11 @@ exports[`component/LinkPager page 19/19 1`] = `
 
 <div>
   <div
-    class="emotion-6"
+    class="emotion-6 emotion-7"
   >
     <a
       class="emotion-0"
-      href="somepath?page=18"
+      href="/somepath?page=18"
       tabindex="0"
     >
        
@@ -457,28 +457,28 @@ exports[`component/LinkPager page 19/19 1`] = `
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=15"
+      href="/somepath?page=15"
       tabindex="0"
     >
       15
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=16"
+      href="/somepath?page=16"
       tabindex="0"
     >
       16
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=17"
+      href="/somepath?page=17"
       tabindex="0"
     >
       17
     </a>
     <a
       class="emotion-0"
-      href="somepath?page=18"
+      href="/somepath?page=18"
       tabindex="0"
     >
       18

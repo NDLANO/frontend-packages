@@ -46,8 +46,10 @@ Array [
 
 exports[`withTracker HOC renderers Page correctly 1`] = `
 <div>
-  <h1>
-    Main Page
-  </h1>
+  <div>
+    <h1>
+      Main Page1
+    </h1>
+  </div>
 </div>
 `;

@@ -2,8 +2,7 @@ module.exports = {
   presets: [
     ['@babel/preset-env', { modules: false }],
     '@babel/preset-typescript',
-    '@babel/preset-react',
-    '@emotion/babel-preset-css-prop',
+    ['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/core' }],
   ],
   plugins: [
     'polished',
@@ -11,13 +10,7 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-optional-chaining',
-    [
-      '@babel/plugin-transform-react-jsx',
-      {
-        runtime: 'automatic',
-        importSource: '@emotion/core',
-      },
-    ],
+    ['babel-plugin-emotion', { cssPropOptimization: true }],
   ],
   env: {
     test: {

@@ -2,12 +2,14 @@
 
 exports[`SafeLink defaults to normal link if to prop is an external link 1`] = `
 <div>
-  <a
-    href="https://example.com"
-  >
-    Snapshot should not contain onClick
-  </a>
-  ,
+  <div>
+    <a
+      href="https://example.com"
+    >
+      Snapshot should not contain onClick
+    </a>
+    ,
+  </div>
 </div>
 `;
 
@@ -26,21 +28,24 @@ exports[`SafeLink defaults to normal link if to prop is an old ndla link 1`] = `
 
 exports[`SafeLink renderers Link correctly if router context is present 1`] = `
 <div>
-  <a
-    href="/my/path"
-    onClick={[Function]}
-    tabIndex={0}
-  >
-    Snapshot should contain onClick
-  </a>
-  ,
+  <div>
+    <a
+      href="/my/path"
+      tabindex="0"
+    >
+      Snapshot should contain onClick
+    </a>
+    ,
+  </div>
 </div>
 `;
 
 exports[`SafeLink renderers normal link correctly when router context is not present 1`] = `
-<a
-  href="/my/path"
->
-  No router context
-</a>
+<div>
+  <a
+    href="/my/path"
+  >
+    No router context
+  </a>
+</div>
 `;

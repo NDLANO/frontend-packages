@@ -9,6 +9,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+//@ts-ignored
 import warning from 'warning';
 import withTracker from './withTracker';
 

@@ -8,9 +8,8 @@
 
 /* eslint-env jest */
 /* eslint-disable react/no-multi-comp */
-import { Component } from 'react';
-import PropTypes from 'prop-types';
-import renderer from 'react-test-renderer';
+import { useRef } from 'react';
+import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import sinon from 'sinon';
 import withTracker from '../withTracker';
@@ -20,49 +19,39 @@ window.dataLayer = [];
 const history = createMemoryHistory();
 tracker.configureTracker({ listen: history.listen });
 
-class Page extends Component {
-  static getDocumentTitle(props) {
-    return `Hello ${props.world}`;
-  }
+let idCounter = 1;
 
-  render() {
-    return (
-      <div>
-        <h1>Main Page</h1>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-Page.propTypes = {
-  world: PropTypes.string,
-  children: PropTypes.node,
+const Page = ({ children }) => {
+  const id = useRef(idCounter++);
+  const content = `Main Page${id.current}`;
+  return (
+    <div>
+      <h1>{content}</h1>
+      {children}
+    </div>
+  );
+};
+Page.getDocumentTitle = (props) => {
+  return `Hello ${props.world}`;
 };
 
-class ChildPage extends Component {
-  static getDocumentTitle(props) {
-    return `Hello ${props.world} from child page`;
-  }
+const ChildPage = () => {
+  return (
+    <div>
+      <h1>Child Page </h1>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <h1>Child Page</h1>
-      </div>
-    );
-  }
-}
-
-ChildPage.propTypes = {
-  world: PropTypes.string,
+ChildPage.getDocumentTitle = (props) => {
+  return `Hello ${props.world} from child page`;
 };
 
 test('withTracker HOC renderers Page correctly', () => {
   const PageWithTracker = withTracker(Page);
-  const component = renderer.create(<PageWithTracker />);
+  const { container } = render(<PageWithTracker />);
 
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });
 
 test('sendPageView is called on component mounth ', () => {
@@ -70,7 +59,7 @@ test('sendPageView is called on component mounth ', () => {
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test');
-  renderer.create(<PageWithTracker world="world" />);
+  render(<PageWithTracker world="world" />);
 
   expect(spy.calledOnce).toBe(true);
   expect(spy.args[0]).toMatchSnapshot();
@@ -82,9 +71,9 @@ test('sendPageView is called on component update if url is untracked', () => {
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test1');
-  const component = renderer.create(<PageWithTracker world="world" />);
+  const { rerender } = render(<PageWithTracker world="world" />);
   history.push('/test2');
-  component.getInstance().forceUpdate();
+  rerender(<PageWithTracker world="world" />);
 
   expect(spy.calledTwice).toBe(true);
   expect(spy.args).toMatchSnapshot();
@@ -96,9 +85,8 @@ test('sendPageView is not called on component update if url is tracked', () => {
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test1');
-  const component = renderer.create(<PageWithTracker world="world" />);
-  component.getInstance().forceUpdate();
-
+  const { rerender } = render(<PageWithTracker world="world" />);
+  rerender(<PageWithTracker world="world" />);
   expect(spy.calledOnce).toBe(true);
   expect(spy.args[0]).toMatchSnapshot();
   spy.restore();
@@ -110,7 +98,7 @@ test('sendPageView is called from child component if two page tracking componten
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test');
-  renderer.create(
+  render(
     <PageWithTracker world="world">
       <ChildPageWithTracker world="world" />
     </PageWithTracker>,

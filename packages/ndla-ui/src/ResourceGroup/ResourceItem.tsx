@@ -7,11 +7,11 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { keyframes } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
-import { useTranslation } from 'react-i18next';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 

@@ -327,6 +327,7 @@ const messages = {
     multipleAuthorsLabelAriaConjunction: 'og',
     copyPageLink: 'Kopier lenke til sida',
     copyPageLinkCopied: 'Lenke kopiert',
+    copyHeaderLink: 'Kopier lenke til overskrifta',
     conjunction: 'og',
     supplierLabel: 'Rettshavar: {{name}}',
     multipleSuppliersLabel: 'Rettshavarar: {{names}}',

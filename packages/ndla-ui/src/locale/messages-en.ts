@@ -178,6 +178,7 @@ const messages = {
       dialogHeader: '{{title}} is under construction',
       dialogText: 'Read more at',
     },
+    archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
     chooseSubject: 'Choose subject',
@@ -391,6 +392,9 @@ const messages = {
       copyTitle: 'Copy link',
       hasCopiedTitle: 'Link copied',
     },
+    image: {
+      rules: 'Rules for use of image:',
+    },
     images: {
       heading: 'How to use images from the article',
       description: 'Remember to copy the text to be attached to the image where you use it.',
@@ -529,7 +533,8 @@ const messages = {
     en: 'English',
     fr: 'French',
     de: 'German',
-    se: 'Sami',
+    se: 'Northern Sami',
+    sma: 'Southern Sami',
     es: 'Spanish',
     zh: 'Chinese',
     unknown: 'Unknown',

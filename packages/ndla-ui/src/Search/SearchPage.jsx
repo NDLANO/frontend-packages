@@ -1,4 +1,4 @@
-import { Component,  createRef } from 'react';
+import { Component, createRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import PropTypes from 'prop-types';
 import { Back } from '@ndla/icons/common';

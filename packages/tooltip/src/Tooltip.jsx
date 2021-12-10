@@ -6,7 +6,7 @@
  *
  */
 
-import  { Component, createRef } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { isMobile, isIE } from 'react-device-detect';
 import styled from '@emotion/styled';

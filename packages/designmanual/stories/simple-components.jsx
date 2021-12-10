@@ -1,4 +1,3 @@
-
 import { storiesOf } from '@storybook/react';
 import * as licenseIcons from '@ndla/icons/licenses';
 import * as contentTypeIcons from '@ndla/icons/contentType';

@@ -6,7 +6,7 @@
  *
  */
 
-import  { Component, createRef } from 'react';
+import { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';

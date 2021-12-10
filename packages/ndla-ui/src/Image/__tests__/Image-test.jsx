@@ -8,17 +8,17 @@
 
 /* eslint-env jest */
 
-import {render} from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Image, { makeSrcQueryString } from '../Image';
 
 test('Image renderers correctly', () => {
-  const {container} = render(<Image alt="example" src="https://example.com/image.png" />);
+  const { container } = render(<Image alt="example" src="https://example.com/image.png" />);
 
   expect(container).toMatchSnapshot();
 });
 
 test('Lazyloaded image renderers correctly', () => {
-  const {container} = render(
+  const { container } = render(
     <Image lazyLoad lazyLoadSrc="https://example.com/blurry.png" alt="example" src="https://example.com/image.png" />,
   );
 
@@ -26,7 +26,7 @@ test('Lazyloaded image renderers correctly', () => {
 });
 
 test('Image with crop and focalpoint props renderers correctly', () => {
-  const {container} = render(
+  const { container } = render(
     <Image
       crop={{
         startX: 14.59,

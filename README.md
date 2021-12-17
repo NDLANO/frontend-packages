@@ -100,7 +100,7 @@ As an alternative to linking packages locally, alpha versions of packages can be
 
 - Merge frontend-packages PR.
 - `yarn lerna version`: Now set packages to the desired major/minor/patch version.
-- `yarn lerna publish --from-git` Publishes versions generated in previous step.
+- `yarn lerna publish from-git` Publishes versions generated in previous step.
 
 ## Upcoming features and updates
 

@@ -101,7 +101,7 @@ const ImageSearchWrapper = styled.div`
     border-width: ${spacing.normal};
     margin-left: -${spacing.normal};
   }
-}
+
 
 .image-preview {
   animation: fadeInSearchPreview 300ms ease;
@@ -321,11 +321,11 @@ class ImageSearch extends React.Component {
   }
 
   onSelectImage(image, saveAsMetaImage) {
-    const { onImageSelect, onSaveAsMetaImage } = this.props;
+    const { onImageSelect, checkboxAction } = this.props;
     this.setState({ selectedImage: undefined });
     onImageSelect(image);
     if (saveAsMetaImage) {
-      onSaveAsMetaImage && onSaveAsMetaImage(image);
+      checkboxAction && checkboxAction(image);
     }
   }
 
@@ -356,8 +356,7 @@ class ImageSearch extends React.Component {
   }
 
   render() {
-    const { searchPlaceholder, searchButtonTitle, useImageTitle, showMetaImageCheckbox, metaImageCheckboxLabel } =
-      this.props;
+    const { searchPlaceholder, searchButtonTitle, useImageTitle, showCheckbox, checkboxLabel } = this.props;
 
     const { queryObject, images, selectedImage, lastPage, searching, queryString } = this.state;
 
@@ -400,8 +399,8 @@ class ImageSearch extends React.Component {
               selectedImage={selectedImage}
               onSelectImage={this.onSelectImage}
               useImageTitle={useImageTitle}
-              showMetaImageCheckbox={showMetaImageCheckbox}
-              metaImageCheckboxLabel={metaImageCheckboxLabel}
+              showCheckbox={showCheckbox}
+              checkboxLabel={checkboxLabel}
             />
           ))}
         </div>
@@ -429,13 +428,13 @@ ImageSearch.propTypes = {
   locale: PropTypes.string.isRequired,
   useImageTitle: PropTypes.string.isRequired,
   noResults: PropTypes.node,
-  onSaveAsMetaImage: PropTypes.func,
-  showMetaImageCheckbox: PropTypes.bool,
-  metaImageCheckboxLabel: PropTypes.string,
+  checkboxAction: PropTypes.func,
+  showCheckbox: PropTypes.bool,
+  checkboxLabel: PropTypes.string,
 };
 
 ImageSearch.defaultProps = {
-  showMetaImageCheckbox: false,
+  showCheckbox: false,
 };
 
 export default ImageSearch;

@@ -18,8 +18,8 @@ export default function ImageSearchResult({
   selectedImage,
   onSelectImage,
   useImageTitle,
-  showMetaImageCheckbox,
-  metaImageCheckboxLabel,
+  showCheckbox,
+  checkboxLabel,
 }) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
@@ -41,8 +41,8 @@ export default function ImageSearchResult({
           image={selectedImage}
           onSelectImage={onSelectImage}
           useImageTitle={useImageTitle}
-          metaImageCheckboxLabel={metaImageCheckboxLabel}
-          showMetaImageCheckbox={showMetaImageCheckbox}
+          checkboxLabel={checkboxLabel}
+          showCheckbox={showCheckbox}
         />
       ) : (
         ''
@@ -62,6 +62,6 @@ ImageSearchResult.propTypes = {
   }),
   onSelectImage: PropTypes.func.isRequired,
   useImageTitle: PropTypes.string.isRequired,
-  showMetaImageCheckbox: PropTypes.bool.isRequired,
+  showCheckbox: PropTypes.bool.isRequired,
   useAsMetaImageLabel: PropTypes.string,
 };

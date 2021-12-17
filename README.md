@@ -90,12 +90,13 @@ yarn deploy
 
 As an alternative to linking packages locally, alpha versions of packages can be published and used in other repositories.
 
-### Add alpha packages to other repositories.
+### Creating alpha version and using it
 
 - `yarn lerna publish --canary`. Will bump patch version and add current git sha to version. For example: `1.0.1-alpha.0+${SHA}`
-- Upgrade packages to alpha versions in the target repository.
+- The scripts fails sometimes, but the alpha version should be released. You have to manually commit the new version in package.json.
+- Upgrade packages to alpha versions in your repository. Add the full version number to package.json manually and run `yarn install --force` or install it using `yarn upgrade @ndla/my-package@<version-number>`.
 
-### Merging and bumping alpha versions
+### Merging and bumping alpha versions to latest.
 
 - Merge frontend-packages PR.
 - `yarn lerna version`: Now set packages to the desired major/minor/patch version.

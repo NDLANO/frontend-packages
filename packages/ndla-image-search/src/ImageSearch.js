@@ -101,7 +101,7 @@ const ImageSearchWrapper = styled.div`
     border-width: ${spacing.normal};
     margin-left: -${spacing.normal};
   }
-}
+
 
 .image-preview {
   animation: fadeInSearchPreview 300ms ease;

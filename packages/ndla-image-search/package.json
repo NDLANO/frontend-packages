@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "1.1.29",
+  "version": "1.1.30-alpha.0+d3002abed",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -35,5 +35,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "b4aebae76ed5808f9647b61ea27d6e0bb9968148"
+  "gitHead": "d3002abed3fc6c91accfe003a21557e5536258e8"
 }

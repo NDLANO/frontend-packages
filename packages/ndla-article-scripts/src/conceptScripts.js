@@ -70,6 +70,16 @@ export const addShowConceptDefinitionClickListeners = () => {
       window.removeEventListener('mousedown', checkClickOutside, true);
 
       if (wasHidden) {
+        const { body } = document;
+        const html = document.documentElement;
+        const documentHeight = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.clientHeight,
+          html.scrollHeight,
+          html.offsetHeight,
+        );
+
         popup.classList.add('visible');
         popup.setAttribute('aria-hidden', false);
         const parentOffset = getElementOffset(popup.offsetParent).top;
@@ -81,24 +91,15 @@ export const addShowConceptDefinitionClickListeners = () => {
 
         let offset = 0;
 
-        const { body } = document;
-        const html = document.documentElement;
-        const documentHeight = Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.clientHeight,
-          html.scrollHeight,
-          html.offsetHeight,
-        );
-
         if (popupTop + popupHeight < documentHeight) {
           offset = -((viewportHeight - popupHeight) / 2);
         } else {
           offset = popupHeight;
         }
         if (popupTop + popupHeight > documentHeight) {
-          popup.childNodes[1].style.overflowY = 'scroll';
-          popup.childNodes[1].style.height = '100vh';
+          const maxHeight = documentHeight - popupTop;
+          popup.style.overflowY = 'scroll';
+          popup.style.height = `${maxHeight}px`;
         }
         if (inIframe() && window.parent) {
           window.parent.postMessage(

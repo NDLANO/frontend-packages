@@ -7,7 +7,6 @@
  */
 
 import jump from 'jump.js';
-import NotionBody from '../../ndla-notion/lib/NotionBody';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
 
@@ -78,10 +77,8 @@ export const addShowConceptDefinitionClickListeners = () => {
         popup.style.top = `${openBtnBottom + 10}px`;
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const popupHeight = popup.offsetHeight;
-        console.log('heigth of popup: ', popupHeight);
         const popupTop = getElementOffset(popup).top;
-        console.log('Margin to top ', popupTop);
-        console.log(popup);
+
         let offset = 0;
 
         const { body } = document;
@@ -96,13 +93,10 @@ export const addShowConceptDefinitionClickListeners = () => {
 
         if (popupTop + popupHeight < documentHeight) {
           offset = -((viewportHeight - popupHeight) / 2);
-
-          console.log('popup and height bigger than window');
         } else {
           offset = popupHeight;
         }
         if (popupTop + popupHeight > documentHeight) {
-          console.log('popup and height smaller than window');
           popup.childNodes[1].style.overflowY = 'scroll';
           popup.childNodes[1].style.height = '100vh';
         }

@@ -134,7 +134,7 @@ const messages = {
       showingCompetenceGoalSearchPhrase: 'Showing results for competence goals {text}',
       searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
-      notionsHeading: 'Begrepsforklaring',
+      notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
       showNotion: 'Show notion',

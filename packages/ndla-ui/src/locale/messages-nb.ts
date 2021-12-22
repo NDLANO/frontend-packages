@@ -765,8 +765,8 @@ const messages = {
     showLongerDescription: 'Vis hele emnebeskrivelsen',
     showShorterDescription: 'Skjul emnebeskrivelsen',
     topics: 'Emner',
-    additionalTopic: 'Tillegsemne',
-    additionalTopics: 'Tillegsemner',
+    additionalTopic: 'Tilleggsemne',
+    additionalTopics: 'Tilleggsemner',
     loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {

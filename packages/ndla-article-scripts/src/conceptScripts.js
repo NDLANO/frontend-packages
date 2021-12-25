@@ -98,8 +98,13 @@ export const addShowConceptDefinitionClickListeners = () => {
         }
         if (popupTop + popupHeight > documentHeight) {
           const maxHeight = documentHeight - popupTop;
-          popup.style.overflowY = 'scroll';
-          popup.style.height = `${maxHeight}px`;
+
+          if (maxHeight < 200) {
+            popup.style.height = `auto`;
+          } else {
+            popup.style.height = `${maxHeight}px`;
+            popup.style.overflowY = 'scroll';
+          }
         }
         if (inIframe() && window.parent) {
           window.parent.postMessage(

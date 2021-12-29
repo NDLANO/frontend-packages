@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "3.1.1-alpha.10+71f547c21",
+  "version": "3.1.1-alpha.12+81c538bdb",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -92,5 +92,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "71f547c2193dc61553cacdebddfb88b8e7feaaa9"
+  "gitHead": "81c538bdbc617c26548311bda390502139f68f0d"
 }

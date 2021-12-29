@@ -19,7 +19,8 @@ const forEachElement = (selector: string, callback: Function) => {
 const initCopyParagraphButtons = () => {
   forEachElement('[data-header-copy-container]', (el: HTMLElement) => {
     const title = el.getAttribute('data-title');
-    ReactDOM.hydrate(<CopyParagraphButton title={title} />, el);
+    const children = el.children;
+    ReactDOM.hydrate(<CopyParagraphButton title={title}>{children}</CopyParagraphButton>, el);
   });
 };
 

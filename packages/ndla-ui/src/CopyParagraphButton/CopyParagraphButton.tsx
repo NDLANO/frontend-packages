@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
 import { Link } from '@ndla/icons/common';
@@ -46,10 +46,10 @@ const ContainerDiv = styled.div`
 
 interface Props {
   title?: string | null;
-  children: ReactNode;
+  content?: string | null;
 }
 
-const CopyParagraphButton = ({ title, children }: Props) => {
+const CopyParagraphButton = ({ title, content }: Props) => {
   const { t } = useTranslation();
   const [hasCopied, setHasCopied] = useState(false);
   useEffect(() => {
@@ -80,9 +80,7 @@ const CopyParagraphButton = ({ title, children }: Props) => {
           <Link title={''} />
         </Tooltip>
       </IconButton>
-      <h2 id={sanitizedTitle} tabIndex={0}>
-        {children}
-      </h2>
+      <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
     </ContainerDiv>
   );
 };

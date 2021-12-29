@@ -1,6 +1,6 @@
 {
   "name": "@ndla/forms",
-  "version": "1.0.35-alpha.12+81c538bdb",
+  "version": "1.0.35-alpha.13+a107d8a2e",
   "description": "Forms components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@ndla/core": "^0.7.2",
     "@ndla/icons": "^1.3.1",
-    "@ndla/ui": "^3.1.1-alpha.12+81c538bdb"
+    "@ndla/ui": "^3.1.1-alpha.13+a107d8a2e"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
@@ -32,5 +32,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "81c538bdbc617c26548311bda390502139f68f0d"
+  "gitHead": "a107d8a2e1064e49834d15188e956bb6af67d3fb"
 }

@@ -6,8 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, MutableRefObject, ReactNode } from 'react';
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
 import { isMobile } from 'react-device-detect';
 import { isFunction } from '@ndla/util';
@@ -18,9 +17,34 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class Tabs extends Component {
-  constructor(props) {
-    super();
+type TabType = {
+  key?: string;
+  title: string;
+  content: () => ReactNode | ReactNode;
+  disabled?: boolean;
+};
+
+interface Props {
+  tabs: TabType[];
+  singleLine?: boolean;
+  onSelect?: (index: number, last: number) => void;
+  modifier?: string;
+  forceRenderTabPanel?: boolean;
+  selectedIndex?: number;
+}
+
+interface State {
+  index: number;
+  singleLineState: boolean;
+}
+
+const assertIsFunction = (maybeFunc: () => ReactNode | ReactNode): maybeFunc is () => ReactNode =>
+  isFunction(maybeFunc);
+
+class Tabs extends Component<Props, State> {
+  tabRef: MutableRefObject<HTMLDivElement | null>;
+  constructor(props: Props) {
+    super(props);
     this.handleSelect = this.handleSelect.bind(this);
     this.state = {
       index: props.selectedIndex || 0,
@@ -32,9 +56,9 @@ class Tabs extends Component {
   componentDidMount() {
     if (this.props.singleLine && isMobile) {
       // We only allow horisontal scrolling for phones..
-      const widthTotal = this.tabRef.current.offsetWidth;
+      const widthTotal = this.tabRef.current?.offsetWidth ?? 0;
       let childrensWidthsTotal = 0;
-      this.tabRef.current.querySelectorAll('.c-tabs__list li').forEach((el) => {
+      this.tabRef.current?.querySelectorAll<HTMLLIElement>('.c-tabs__list li').forEach((el) => {
         childrensWidthsTotal += el.offsetWidth;
       });
       if (childrensWidthsTotal > widthTotal) {
@@ -45,14 +69,14 @@ class Tabs extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_: Props, __: State) {
     const { index } = this.state;
     if (this.props.selectedIndex !== undefined && this.props.selectedIndex !== index) {
       this.setState({ index: this.props.selectedIndex });
     }
   }
 
-  handleSelect(index, last) {
+  handleSelect(index: number, last: number) {
     this.setState({
       index,
     });
@@ -66,6 +90,8 @@ class Tabs extends Component {
     const { tabs, forceRenderTabPanel, modifier } = this.props;
     const { index } = this.state;
 
+    const baseClass = modifier ? { [modifier]: modifier } : {};
+
     return (
       <div ref={this.tabRef}>
         <ReactTabs
@@ -75,15 +101,15 @@ class Tabs extends Component {
           forceRenderTabPanel={forceRenderTabPanel}>
           <TabList
             {...classes('list', {
-              [modifier]: modifier,
+              ...baseClass,
               singleLine: this.state.singleLineState,
             })}>
             {tabs.map((tab, i) => (
               <Tab
                 {...classes('tab', {
                   selected: i === index,
-                  disabled: tab.disabled,
-                  [modifier]: modifier,
+                  disabled: !!tab.disabled,
+                  ...baseClass,
                 })}
                 key={tab.key ? tab.key : i}
                 disabled={tab.disabled}
@@ -94,7 +120,7 @@ class Tabs extends Component {
           </TabList>
           {tabs.map((tab, i) => (
             <TabPanel {...classes('panel', modifier)} key={tab.key ? tab.key : i}>
-              {isFunction(tab.content) ? tab.content() : tab.content}
+              {assertIsFunction(tab.content) ? tab.content() : tab.content}
             </TabPanel>
           ))}
         </ReactTabs>
@@ -102,21 +128,5 @@ class Tabs extends Component {
     );
   }
 }
-
-Tabs.propTypes = {
-  tabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string,
-      title: PropTypes.string.isRequired,
-      content: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
-      disabled: PropTypes.string.bool,
-    }),
-  ),
-  singleLine: PropTypes.bool,
-  onSelect: PropTypes.func,
-  modifier: PropTypes.string,
-  forceRenderTabPanel: PropTypes.bool,
-  selectedIndex: PropTypes.number,
-};
 
 export default Tabs;

@@ -6,8 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, MutableRefObject, ReactNode } from 'react';
 import { isMobile, isIE } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -30,7 +29,11 @@ const tooltipCss = css`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
-const Fade = styled.div`
+interface FadeProps {
+  delay: number;
+  animateIn?: boolean;
+}
+const Fade = styled.div<FadeProps>`
   opacity: 0;
   position: absolute;
   z-index: 9999;
@@ -57,8 +60,26 @@ const Fade = styled.div`
   animation-duration: 300ms;
 `;
 
-class Tooltip extends Component {
-  constructor(props) {
+interface Props {
+  children: ReactNode;
+  tooltip: string;
+  delay?: number;
+  disabled?: boolean;
+  align?: 'left' | 'right' | 'top' | 'bottom';
+  className?: string;
+  tooltipContainerClass?: string;
+}
+
+interface State {
+  showTooltip: boolean;
+}
+
+class Tooltip extends Component<Props, State> {
+  static defaultProps: Partial<Props>;
+  focusableChild: HTMLAnchorElement | null | undefined;
+  contentRef: MutableRefObject<HTMLDivElement | null>;
+  tooltipRef: MutableRefObject<HTMLSpanElement | null>;
+  constructor(props: Props) {
     super(props);
     this.state = {
       showTooltip: false,
@@ -78,24 +99,24 @@ class Tooltip extends Component {
       };
     }
     return {
-      widthRef: this.contentRef.current.offsetWidth,
-      heightRef: this.contentRef.current.offsetHeight,
-      elementRect: this.contentRef.current.getBoundingClientRect(),
+      widthRef: this.contentRef.current!.offsetWidth,
+      heightRef: this.contentRef.current!.offsetHeight,
+      elementRect: this.contentRef.current!.getBoundingClientRect(),
     };
   }
 
   getPosition() {
-    const currentStyles = {};
+    const currentStyles: Record<string, string> = {};
     const { align } = this.props;
     if (this.state.showTooltip) {
       const { widthRef, heightRef, elementRect } = this.getElementPosition();
       const leftRef = elementRect.left;
-      const tooltipWidth = this.tooltipRef.current.offsetWidth;
+      const tooltipWidth = this.tooltipRef.current!.offsetWidth;
 
       if (isIE) {
         // IE is bad with transform % + px..
-        currentStyles.left = `-${(this.tooltipRef.current.offsetWidth - widthRef) / 2}px`;
-        currentStyles.top = `-${this.tooltipRef.current.offsetHeight + 10}px`;
+        currentStyles.left = `-${(this.tooltipRef.current!.offsetWidth - widthRef) / 2}px`;
+        currentStyles.top = `-${this.tooltipRef.current!.offsetHeight + 10}px`;
       } else if (
         align === 'top' ||
         align === 'bottom' ||
@@ -126,7 +147,7 @@ class Tooltip extends Component {
   }
 
   componentDidMount() {
-    this.focusableChild = this.contentRef.current.querySelector('a, button, [role="button"]');
+    this.focusableChild = this.contentRef.current?.querySelector('a, button, [role="button"]');
     if (this.focusableChild) {
       this.focusableChild.addEventListener('focusin', this.handleShowTooltip);
       this.focusableChild.addEventListener('focusout', this.handleHideTooltip);
@@ -149,7 +170,7 @@ class Tooltip extends Component {
   }
 
   render() {
-    const { tooltipContainerClass, className, delay, tooltip, children, rest } = this.props;
+    const { tooltipContainerClass, className, delay, tooltip, children, ...rest } = this.props;
     // If phone ignore all tooltips //
     if (isMobile) {
       return (
@@ -161,7 +182,7 @@ class Tooltip extends Component {
 
     return (
       <TooltipWrapper className={tooltipContainerClass} {...rest}>
-        <Fade animateIn={this.state.showTooltip} delay={delay}>
+        <Fade animateIn={this.state.showTooltip} delay={delay!}>
           <span role="tooltip" css={tooltipCss} style={this.getPosition()} ref={this.tooltipRef}>
             {tooltip}
           </span>
@@ -178,16 +199,6 @@ class Tooltip extends Component {
     );
   }
 }
-
-Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
-  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  delay: PropTypes.number,
-  disabled: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  className: PropTypes.string,
-  tooltipContainerClass: PropTypes.string,
-};
 
 Tooltip.defaultProps = {
   align: 'top',

@@ -7,9 +7,14 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { spacing, colors, SpacingNames } from '@ndla/core';
+
+interface Props {
+  size: SpacingNames;
+  margin: string;
+  inverted: boolean;
+}
 
 const SpinnerDiv = styled('div')<Props>`
   border: calc(${(props) => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);
@@ -30,25 +35,8 @@ const SpinnerDiv = styled('div')<Props>`
   }
 `;
 
-interface Props {
-  size: SpacingNames;
-  margin: string;
-  inverted: boolean;
-}
-
 const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted }: Partial<Props>) => (
   <SpinnerDiv size={size} margin={margin} inverted={!!inverted} />
 );
-
-Spinner.propTypes = {
-  size: PropTypes.oneOf(['large', 'medium', 'normal']),
-  margin: PropTypes.string,
-  inverted: PropTypes.bool,
-};
-
-Spinner.defaultProps = {
-  size: 'large',
-  margin: `${spacing.normal} auto`,
-};
 
 export default Spinner;

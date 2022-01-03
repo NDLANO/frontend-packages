@@ -46,9 +46,10 @@ const ContainerDiv = styled.div`
 
 interface Props {
   title?: string | null;
+  content?: string | null;
 }
 
-const CopyParagraphButton = ({ title }: Props) => {
+const CopyParagraphButton = ({ title, content }: Props) => {
   const { t } = useTranslation();
   const [hasCopied, setHasCopied] = useState(false);
   useEffect(() => {
@@ -79,9 +80,7 @@ const CopyParagraphButton = ({ title }: Props) => {
           <Link title={''} />
         </Tooltip>
       </IconButton>
-      <h2 id={sanitizedTitle} tabIndex={0}>
-        {title}
-      </h2>
+      <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
     </ContainerDiv>
   );
 };

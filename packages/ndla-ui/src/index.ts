@@ -41,6 +41,17 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
+export {
+  SubjectMaterialHero,
+  TasksAndActivitiesHero,
+  AssessmentResourcesHero,
+  SubjectHero,
+  ExternalLearningResourcesHero,
+  SourceMaterialHero,
+  Hero,
+  NdlaFilmHero,
+} from './Hero';
+
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
 export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';

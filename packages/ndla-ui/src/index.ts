@@ -34,6 +34,8 @@ export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
 export { default as Logo } from './Logo';
 
+export { default as InfoWidget } from './InfoWidget';
+
 export {
   FrontpageInfo,
   FrontpageFilm,

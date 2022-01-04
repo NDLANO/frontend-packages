@@ -93,19 +93,18 @@ class FilterTabs extends Component<Props, State> {
 
   updateTabSizes() {
     const firstLi = this.liRefs[Object.keys(this.liRefs)[0]];
-    //@ts-ignore No way to know that parentNode has offsetWidth
-    if (!this.tabWidths && firstLi?.parentNode?.offsetWidth !== 0) {
+    if (!this.tabWidths && firstLi?.parentElement?.offsetWidth !== 0) {
       // Get all tabs widths
       this.tabWidths = [];
       let widestNode = 0;
       this.props.options.forEach((option, counter) => {
-        //@ts-ignore
-        const nodeWidth = this.liRefs[option.value]?.parentNode?.offsetWidth;
+        const nodeWidth = this.liRefs[option.value]?.parentElement?.offsetWidth ?? 0;
         widestNode = Math.max(nodeWidth, widestNode);
-        this.tabWidths![counter] = nodeWidth;
+        if (this.tabWidths) {
+          this.tabWidths[counter] = nodeWidth;
+        }
       });
-      //@ts-ignore
-      this.dropdownTabWidth = Math.max(this.dropdownTabRef.current?.parentNode?.offsetWidth, widestNode);
+      this.dropdownTabWidth = Math.max(this.dropdownTabRef.current?.parentElement?.offsetWidth ?? 0, widestNode);
     }
   }
 
@@ -148,7 +147,9 @@ class FilterTabs extends Component<Props, State> {
           focusOnSelected: true,
         },
         () => {
-          this.props.onChange(this.props.options[mainTabSelected!].value);
+          if (mainTabSelected) {
+            this.props.onChange(this.props.options[mainTabSelected].value);
+          }
         },
       );
     }

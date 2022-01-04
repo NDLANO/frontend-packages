@@ -82,8 +82,6 @@ export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 
-export { default as ContentLoader } from './ContentLoader';
-
 export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';

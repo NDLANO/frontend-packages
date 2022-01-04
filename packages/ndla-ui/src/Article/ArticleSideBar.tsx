@@ -22,7 +22,10 @@ const ButtonWrapper = styled.div`
   width: 100%;
 `;
 
-const CursorWrapper = styled.div`
+type CursorWrapperProps = {
+  hide: boolean;
+};
+const CursorWrapper = styled.div<CursorWrapperProps>`
   @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
   width: 120px;
   font-family: 'Shadows Into Light Two', cursive;
@@ -73,7 +76,7 @@ const ArticleSideBar = ({
         setHide(false);
       }
     };
-  }, []);
+  });
 
   return (
     <Wrapper>

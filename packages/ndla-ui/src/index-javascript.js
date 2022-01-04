@@ -71,8 +71,6 @@ export { default as Portrait } from './Portrait';
 
 export { DisplayOnPageYOffset } from './Animation';
 
-export { default as InfoWidget } from './InfoWidget';
-
 export {
   FilmSlideshow,
   MovieGrid,

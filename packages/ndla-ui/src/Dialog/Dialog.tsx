@@ -9,10 +9,9 @@
 // N.B These component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-
+//@ts-ignore
 import { createUniversalPortal } from '../utils/createUniversalPortal';
 
 const classes = new BEMHelper({
@@ -20,18 +19,32 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+interface Props {
+  id: string;
+  labelledby?: string;
+  label?: string;
+  hidden?: boolean;
+  children?: ReactNode;
+  messages?: {
+    close: string;
+  };
+  modifier?: string | string[];
+  disablePortal?: boolean;
+  onClose?: () => void;
+}
+
 export const Dialog = ({
   children,
-  messages,
+  messages = { close: 'Lukk' },
   id,
   labelledby,
   label,
   modifier,
-  disablePortal,
-  hidden,
+  disablePortal = false,
+  hidden = true,
   onClose,
   ...rest
-}) => {
+}: Props) => {
   const content = (
     <div
       {...classes('', modifier)}
@@ -63,29 +76,4 @@ export const Dialog = ({
   }
 
   return createUniversalPortal(content, 'body');
-};
-
-Dialog.propTypes = {
-  id: PropTypes.string.isRequired,
-  labelledby: PropTypes.string,
-  label: PropTypes.string,
-  hidden: PropTypes.bool,
-  children: PropTypes.node,
-  messages: PropTypes.shape({
-    close: PropTypes.string.isRequired,
-  }),
-  modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  disablePortal: PropTypes.bool,
-  onClose: PropTypes.func,
-};
-
-Dialog.defaultProps = {
-  disablePortal: false,
-  labelledby: null,
-  label: null,
-  hidden: true,
-  onClose: null,
-  messages: {
-    close: 'Lukk',
-  },
 };

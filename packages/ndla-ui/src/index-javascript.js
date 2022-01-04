@@ -12,7 +12,6 @@ export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
 export { default as FactBox } from './FactBox';
-export { default as FileList, File } from './FileList';
 
 export {
   SearchOverlay,
@@ -54,18 +53,7 @@ export {
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
-export {
-  SubjectMaterialHero,
-  TasksAndActivitiesHero,
-  AssessmentResourcesHero,
-  SubjectHero,
-  ExternalLearningResourcesHero,
-  SourceMaterialHero,
-  Hero,
-  NdlaFilmHero,
-} from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
 export {
   MediaList,
   MediaListItem,
@@ -78,9 +66,6 @@ export {
 export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';
 
 export { default as Portrait } from './Portrait';
-export { Translation, TranslationLine, TranslationBox } from './Translation';
-
-export { default as ContentLoader } from './ContentLoader';
 
 export { DisplayOnPageYOffset } from './Animation';
 
@@ -94,5 +79,3 @@ export {
   FilmMovieList,
   AllMoviesAlphabetically,
 } from './NDLAFilm';
-
-export { default as Spinner } from './Spinner';

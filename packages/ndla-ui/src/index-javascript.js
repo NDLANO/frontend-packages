@@ -53,7 +53,6 @@ export {
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
-export { default as Masthead, MastheadItem } from './Masthead';
 export {
   MediaList,
   MediaListItem,

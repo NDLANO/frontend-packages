@@ -24,6 +24,8 @@ export {
   default as Article,
 } from './Article';
 
+export { default as Masthead, MastheadItem } from './Masthead';
+
 export { default as ContentLoader } from './ContentLoader';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';

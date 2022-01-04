@@ -80,7 +80,6 @@ export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embed
 export { default as Image, ImageLink } from './Image';
 export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
-export { Translation, TranslationLine, TranslationBox } from './Translation';
 
 export { default as ContentLoader } from './ContentLoader';
 
@@ -96,5 +95,3 @@ export {
   FilmMovieList,
   AllMoviesAlphabetically,
 } from './NDLAFilm';
-
-export { default as Spinner } from './Spinner';

@@ -54,16 +54,6 @@ export {
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
-export {
-  SubjectMaterialHero,
-  TasksAndActivitiesHero,
-  AssessmentResourcesHero,
-  SubjectHero,
-  ExternalLearningResourcesHero,
-  SourceMaterialHero,
-  Hero,
-  NdlaFilmHero,
-} from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
 export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
 export {

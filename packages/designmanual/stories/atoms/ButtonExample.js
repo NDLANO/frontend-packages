@@ -16,6 +16,7 @@ const MultiButtonData = {
     {
       label: 'Lagre og ny versjon',
       value: 'lagreogny',
+      alwaysEnable: true,
     },
     {
       label: 'Lagre og avslutt',
@@ -401,6 +402,7 @@ const ButtonExample = () => {
             }}
             mainButton={MultiButtonData.mainButton}
             secondaryButtons={MultiButtonData.secondaryButtons}
+            enableSecondary={true}
           />
         </InlineContainer>
         <InlineContainer>

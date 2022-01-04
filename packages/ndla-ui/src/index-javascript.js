@@ -8,7 +8,6 @@
 
 export { InfoBox } from './InfoBox';
 
-export { default as Logo } from './Logo';
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
 export { default as FactBox } from './FactBox';

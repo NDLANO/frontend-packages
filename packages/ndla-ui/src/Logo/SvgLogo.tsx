@@ -8,10 +8,9 @@
 /* eslint-disable max-len */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { logoClasses } from './Logo';
 
-const LogoText = (locale) => {
+const LogoText = (locale?: string) => {
   if (locale === 'en') {
     return (
       <path
@@ -26,7 +25,13 @@ const LogoText = (locale) => {
   );
 };
 
-export const SvgLogo = ({ name, color, locale }) => (
+interface Props {
+  name?: boolean;
+  color?: string;
+  locale?: string;
+}
+
+export const SvgLogo = ({ name = true, color = '#000000', locale }: Props) => (
   <svg
     {...logoClasses('graphic')}
     xmlns="http://www.w3.org/2000/svg"
@@ -40,16 +45,5 @@ export const SvgLogo = ({ name, color, locale }) => (
     {name && LogoText(locale)}
   </svg>
 );
-
-SvgLogo.propTypes = {
-  name: PropTypes.bool,
-  color: PropTypes.string,
-  locale: PropTypes.string,
-};
-
-SvgLogo.defaultProps = {
-  name: true,
-  color: '#000000',
-};
 
 export default SvgLogo;

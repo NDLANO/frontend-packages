@@ -3,6 +3,17 @@ import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper('c-background-image');
 
+type ImageType = 'mobile' | 'tablet' | 'desktop' | 'wide';
+
+interface Props {
+  showOverlay?: boolean;
+  className?: string;
+  images: {
+    url: string;
+    types: ImageType[];
+  }[];
+}
+
 const BackgroundImage = ({ images, showOverlay = false }: Props) => (
   <div {...classes('', { showOverlay })}>
     {images &&
@@ -17,16 +28,5 @@ const BackgroundImage = ({ images, showOverlay = false }: Props) => (
       )}
   </div>
 );
-
-type ImageType = 'mobile' | 'tablet' | 'desktop' | 'wide';
-
-interface Props {
-  showOverlay?: boolean;
-  className?: string;
-  images: {
-    url: string;
-    types: ImageType[];
-  }[];
-}
 
 export default BackgroundImage;

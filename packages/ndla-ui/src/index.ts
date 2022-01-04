@@ -32,6 +32,8 @@ export { default as FileList, File } from './FileList';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
+export { InfoBox } from './InfoBox';
+
 export {
   FrontpageInfo,
   FrontpageFilm,

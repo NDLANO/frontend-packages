@@ -538,7 +538,7 @@ const messages = {
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
-    prefixChangeLanguage: 'Velg målform',
+    prefixChangeLanguage: 'Velg språk',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',

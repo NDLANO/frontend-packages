@@ -24,6 +24,8 @@ export {
   default as Article,
 } from './Article';
 
+export { default as ContentLoader } from './ContentLoader';
+
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
 export { default as FileList, File } from './FileList';

@@ -69,8 +69,6 @@ export { default as Image, ImageLink } from './Image';
 export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 
-export { default as ContentLoader } from './ContentLoader';
-
 export { DisplayOnPageYOffset } from './Animation';
 
 export { default as InfoWidget } from './InfoWidget';

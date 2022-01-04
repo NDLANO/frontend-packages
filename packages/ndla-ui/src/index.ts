@@ -26,6 +26,8 @@ export {
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
+export { default as FileList, File } from './FileList';
+
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
 export {

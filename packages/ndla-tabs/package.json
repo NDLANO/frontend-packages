@@ -25,10 +25,13 @@
     "react": "^16.5.2",
     "react-bem-helper": "^1.4.1"
   },
+  "devDependencies": {
+    "@types/react-tabs": "^2.3.4"
+  },
   "dependencies": {
     "@ndla/core": "^0.7.2",
     "@ndla/util": "^2.0.0",
-    "react-tabs": "^3.0.0"
+    "react-tabs": "^3.2.3"
   },
   "publishConfig": {
     "access": "public"

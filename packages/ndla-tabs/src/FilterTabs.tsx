@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import React, { Component, MutableRefObject, ReactNode, KeyboardEvent } from 'react';
 import BEMHelper from 'react-bem-helper';
-import PropTypes from 'prop-types';
 import { ArrowDropDown } from '@ndla/icons/common';
 import debounce from 'lodash/debounce';
+import { DebouncedFunc } from 'lodash';
 
 const classes = BEMHelper('c-tabs');
 
@@ -11,8 +19,36 @@ const rightKeys = ['ArrowRight', 'Right', 'ArrowDown', 'Down'];
 const tabKeys = ['Tab'];
 const escKeys = ['Escape'];
 
-class FilterTabs extends Component {
-  constructor(props) {
+interface Option {
+  title: string;
+  value: string;
+}
+interface Props {
+  options: Option[];
+  dropdownBtnLabel: string;
+  contentId: string;
+  value: string;
+  children: ReactNode;
+  onChange: (newTab: string) => void;
+}
+
+interface State {
+  options: Option[];
+  visibleTabsCounter: number;
+  focusOnSelected: boolean;
+  showDropdown?: boolean;
+}
+
+class FilterTabs extends Component<Props, State> {
+  containerRef: MutableRefObject<HTMLUListElement | null>;
+  dropdownTabRef: MutableRefObject<HTMLButtonElement | null>;
+  dropdownTabWidth: number | null;
+  showSelectedTab: boolean;
+  liRefs: Record<string, HTMLButtonElement | null>;
+  tabWidths: number[] | null;
+  checkTabSizesDebounce: DebouncedFunc<() => void>;
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       options: props.options,
@@ -35,7 +71,7 @@ class FilterTabs extends Component {
     this.checkTabSizes();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevState.options !== this.state.options) {
       this.tabWidths = null;
       // It's fine: https://reactjs.org/docs/react-component.html#componentdidupdate
@@ -47,7 +83,7 @@ class FilterTabs extends Component {
     }
     this.updateTabSizes();
     if (this.state.focusOnSelected) {
-      this.liRefs[this.props.value].focus();
+      this.liRefs[this.props.value]?.focus();
     }
   }
 
@@ -56,16 +92,19 @@ class FilterTabs extends Component {
   }
 
   updateTabSizes() {
-    if (!this.tabWidths && this.liRefs[Object.keys(this.liRefs)[0]].parentNode.offsetWidth !== 0) {
+    const firstLi = this.liRefs[Object.keys(this.liRefs)[0]];
+    if (!this.tabWidths && firstLi?.parentElement?.offsetWidth !== 0) {
       // Get all tabs widths
       this.tabWidths = [];
       let widestNode = 0;
       this.props.options.forEach((option, counter) => {
-        const nodeWidth = this.liRefs[option.value].parentNode.offsetWidth;
+        const nodeWidth = this.liRefs[option.value]?.parentElement?.offsetWidth ?? 0;
         widestNode = Math.max(nodeWidth, widestNode);
-        this.tabWidths[counter] = nodeWidth;
+        if (this.tabWidths) {
+          this.tabWidths[counter] = nodeWidth;
+        }
       });
-      this.dropdownTabWidth = Math.max(this.dropdownTabRef.current.parentNode.offsetWidth, widestNode);
+      this.dropdownTabWidth = Math.max(this.dropdownTabRef.current?.parentElement?.offsetWidth ?? 0, widestNode);
     }
   }
 
@@ -74,7 +113,7 @@ class FilterTabs extends Component {
       this.updateTabSizes();
     }
     if (this.tabWidths) {
-      const containerWidth = this.containerRef.current.offsetWidth - this.dropdownTabWidth;
+      const containerWidth = (this.containerRef.current?.offsetWidth ?? 0) - (this.dropdownTabWidth ?? 0);
       let visibleTabsTotalWidth = 0;
       let visibleTabsCounter = -1;
       for (let i = 0; i <= this.tabWidths.length && visibleTabsTotalWidth < containerWidth; i += 1) {
@@ -87,8 +126,8 @@ class FilterTabs extends Component {
     }
   }
 
-  changeMainTabs({ currentMainTab, event }) {
-    let mainTabSelected = null;
+  changeMainTabs(currentMainTab: number, event: KeyboardEvent<HTMLButtonElement>) {
+    let mainTabSelected: number | null = null;
 
     if (rightKeys.some((key) => key === event.key)) {
       mainTabSelected = currentMainTab + 1;
@@ -108,7 +147,9 @@ class FilterTabs extends Component {
           focusOnSelected: true,
         },
         () => {
-          this.props.onChange(this.props.options[mainTabSelected].value);
+          if (mainTabSelected) {
+            this.props.onChange(this.props.options[mainTabSelected].value);
+          }
         },
       );
     }
@@ -155,7 +196,7 @@ class FilterTabs extends Component {
               this.liRefs[option.value] = ref;
             }}
             onKeyDown={(event) => {
-              this.changeMainTabs({ currentMainTab: mainTabIndex, event });
+              this.changeMainTabs(mainTabIndex, event);
             }}>
             {option.title}
           </button>
@@ -183,8 +224,8 @@ class FilterTabs extends Component {
       if (mainTabIndex < this.state.visibleTabsCounter) {
         return null;
       }
-      if (this.tabWidths[mainTabIndex] > minimumWidthDropdownContainer) {
-        minimumWidthDropdownContainer = this.tabWidths[mainTabIndex] + 1;
+      if ((this.tabWidths?.[mainTabIndex] ?? 0) > minimumWidthDropdownContainer) {
+        minimumWidthDropdownContainer = this.tabWidths![mainTabIndex] + 1;
       }
       const tabIndex = option.value === value ? 0 : -1;
       return (
@@ -220,7 +261,7 @@ class FilterTabs extends Component {
                   showDropdown: false,
                 });
               } else {
-                this.changeMainTabs({ currentMainTab: mainTabIndex, event });
+                this.changeMainTabs(mainTabIndex, event);
               }
             }}>
             {option.title}
@@ -290,18 +331,5 @@ class FilterTabs extends Component {
     );
   }
 }
-FilterTabs.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  dropdownBtnLabel: PropTypes.string.isRequired,
-  contentId: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 export default FilterTabs;

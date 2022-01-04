@@ -1,17 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/**
+ * Copyright (c) 2018-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper('c-tabs');
 
-const ArticleTabs = ({ tabs }) => {
-  const tabElements = [];
-  const tabPanels = [];
+type TabType = {
+  id: string;
+  title: string;
+  content: () => ReactNode | ReactNode;
+};
+interface Props {
+  tabs: TabType[];
+}
+
+const ArticleTabs = ({ tabs }: Props) => {
+  const tabElements: ReactNode[] = [];
+  const tabPanels: ReactNode[] = [];
 
   tabs.forEach((tab, index) => {
     const selected = index === 0;
-    let modifiers = null;
-    let tabIndex = null;
+    let modifiers: string[] | undefined = undefined;
+    let tabIndex: number | undefined = undefined;
 
     if (selected) {
       modifiers = ['selected'];
@@ -54,16 +70,6 @@ const ArticleTabs = ({ tabs }) => {
       {tabPanels}
     </div>
   );
-};
-
-ArticleTabs.propTypes = {
-  tabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      content: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
-    }),
-  ),
 };
 
 export default ArticleTabs;

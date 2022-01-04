@@ -9,14 +9,14 @@
 // N.B This component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import React, { ReactNode } from 'react';
+//@ts-ignore
 import Dialog from '../Dialog';
-import { ContributorShape, LicenseShape } from '../shapes';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from './FigureLicense';
+import { FigureLicense } from './Figure';
+import { Contributor } from '../types';
 
-export const FigureLicenseDialog = ({ children, messages, id, authors, origin, title, locale, license }) => {
+export const FigureLicenseDialog = ({ children, messages, id, authors, origin, title, locale, license }: Props) => {
   const headingLabelId = `heading-${id}`;
   return (
     <Dialog id={id} labelledby={headingLabelId} messages={messages}>
@@ -33,20 +33,20 @@ export const FigureLicenseDialog = ({ children, messages, id, authors, origin, t
   );
 };
 
-FigureLicenseDialog.propTypes = {
-  id: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  origin: PropTypes.string,
-  authors: PropTypes.arrayOf(ContributorShape),
-  messages: PropTypes.shape({
-    modelPremission: PropTypes.string,
-    close: PropTypes.string.isRequired,
-    rulesForUse: PropTypes.string.isRequired,
-    source: PropTypes.string.isRequired,
-    learnAboutLicenses: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  title: PropTypes.string,
-  license: LicenseShape.isRequired,
-  locale: PropTypes.string.isRequired,
-};
+interface Props {
+  id: string;
+  children?: ReactNode;
+  origin?: string;
+  authors?: Contributor[];
+  messages: {
+    modelPremission?: string;
+    close: string;
+    rulesForUse: string;
+    source: string;
+    learnAboutLicenses: string;
+    title: string;
+  };
+  title?: string;
+  license: FigureLicense;
+  locale: string;
+}

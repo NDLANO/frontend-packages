@@ -6,8 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -15,15 +14,22 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const TranslationLine = ({ children, lang, langName, isTerm }) => {
+interface Props {
+  isTerm?: boolean;
+  children: ReactNode;
+  lang?: string;
+  langName?: string;
+}
+
+const TranslationLine = ({ children, lang, langName, isTerm = false }: Props) => {
   const hasLang = langName && lang;
   const content = (
-    <Fragment>
+    <>
       <div {...classes('line-body')} lang={lang}>
         {children}
       </div>
       {hasLang && <div {...classes('line-lang')}>{langName}</div>}
-    </Fragment>
+    </>
   );
 
   if (isTerm) {
@@ -31,19 +37,6 @@ const TranslationLine = ({ children, lang, langName, isTerm }) => {
   }
 
   return <dd {...classes('line', hasLang ? 'lang' : '')}>{content}</dd>;
-};
-
-TranslationLine.propTypes = {
-  isTerm: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  lang: PropTypes.string,
-  langName: PropTypes.string,
-};
-
-TranslationLine.defaultProps = {
-  isTerm: false,
-  lang: undefined,
-  langName: undefined,
 };
 
 export default TranslationLine;

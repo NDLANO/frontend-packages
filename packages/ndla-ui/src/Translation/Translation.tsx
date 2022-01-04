@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -15,16 +14,16 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Translation = ({ children, index }) => (
+interface Props {
+  children: ReactNode;
+  index: number;
+}
+
+const Translation = ({ children, index }: Props) => (
   <div {...classes('')}>
     <div {...classes('index')}>{index}</div>
     <dl {...classes('wrapper')}>{children}</dl>
   </div>
 );
-
-Translation.propTypes = {
-  index: PropTypes.number.isRequired,
-  children: PropTypes.node.isRequired,
-};
 
 export default Translation;

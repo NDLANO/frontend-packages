@@ -39,6 +39,8 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
+export { default as FactBox } from './FactBox';
+
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
 export { LanguageSelector } from './LanguageSelector';

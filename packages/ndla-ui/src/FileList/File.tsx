@@ -42,6 +42,11 @@ const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id:
   );
 };
 
+interface Props {
+  id: string;
+  file: FileType;
+}
+
 const File = ({ file, id }: Props) => {
   const formatLinks = file.formats.map((format, index) =>
     renderFormat(format, file.title, index === 0, id, !file.fileExists),
@@ -53,10 +58,5 @@ const File = ({ file, id }: Props) => {
     </li>
   );
 };
-
-interface Props {
-  id: string;
-  file: FileType;
-}
 
 export default File;

@@ -39,6 +39,9 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
+export { default as Image, ImageLink } from './Image';
+export { makeSrcQueryString } from './Image';
+
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
 export { LanguageSelector } from './LanguageSelector';

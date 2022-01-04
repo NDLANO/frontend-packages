@@ -24,6 +24,7 @@ import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
+import { ImageCrop, ImageFocalPoint } from '../types';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -223,8 +224,8 @@ export type TopicProps = {
     image?: {
       url: string;
       alt: string;
-      crop?: object;
-      focalPoint?: object;
+      crop?: ImageCrop;
+      focalPoint?: ImageFocalPoint;
     };
     visualElement?: VisualElementProps;
     resources?: React.ReactNode;

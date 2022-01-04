@@ -6,17 +6,24 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { makeSrcQueryString } from './Image';
-import { FocalPointShape, CropShape } from './shapes';
+import { ImageCrop, ImageFocalPoint } from '../types';
 
 const StyledLink = styled.a`
   box-shadow: inset 0 0;
 `;
 
-export function ImageLink({ src, crop, children, ...rest }) {
+interface Props {
+  src: string;
+  children: ReactNode;
+  sizes?: string;
+  crop?: ImageCrop;
+  focalPoint?: ImageFocalPoint;
+}
+
+export function ImageLink({ src, crop, children, ...rest }: Props) {
   return (
     <StyledLink
       target="_blank"
@@ -27,11 +34,3 @@ export function ImageLink({ src, crop, children, ...rest }) {
     </StyledLink>
   );
 }
-
-ImageLink.propTypes = {
-  src: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  sizes: PropTypes.string,
-  crop: CropShape,
-  focalPoint: FocalPointShape,
-};

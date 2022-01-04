@@ -77,8 +77,6 @@ export {
 
 export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';
 
-export { default as Image, ImageLink } from './Image';
-export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 

@@ -6,7 +6,7 @@ exports[`Image renderers correctly 1`] = `
 }
 
 <div
-  className="emotion-0 emotion-1"
+  className="emotion-0"
 >
   <picture>
     <source
@@ -27,7 +27,7 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 }
 
 <div
-  className="emotion-0 emotion-1"
+  className="emotion-0"
 >
   <picture>
     <source
@@ -48,7 +48,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
 }
 
 <div
-  className="emotion-0 emotion-1"
+  className="emotion-0"
 >
   <noscript>
     <img
@@ -58,6 +58,7 @@ exports[`Lazyloaded image renderers correctly 1`] = `
       srcSet="https://example.com/image.png?width=2720 2720w, https://example.com/image.png?width=2080 2080w, https://example.com/image.png?width=1760 1760w, https://example.com/image.png?width=1440 1440w, https://example.com/image.png?width=1120 1120w, https://example.com/image.png?width=1000 1000w, https://example.com/image.png?width=960 960w, https://example.com/image.png?width=800 800w, https://example.com/image.png?width=640 640w, https://example.com/image.png?width=480 480w, https://example.com/image.png?width=320 320w, https://example.com/image.png?width=240 240w, https://example.com/image.png?width=180 180w"
     />
   </noscript>
+  ,
   <img
     alt="example"
     className="lazyload"

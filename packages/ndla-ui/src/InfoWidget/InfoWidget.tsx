@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
 
@@ -9,7 +8,24 @@ import SectionHeading from '../SectionHeading';
 
 const classes = BEMHelper('c-info-widget');
 
-const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
+interface Props {
+  heading: string;
+  description: string;
+  mainLink: {
+    name: string;
+    url?: string;
+    href?: string;
+  };
+  iconLinks: {
+    name: string;
+    url?: string;
+    href?: string;
+    icon: ReactNode;
+  }[];
+  center?: boolean;
+}
+
+const InfoWidget = ({ heading, description, mainLink, iconLinks, center = false }: Props) => (
   <section {...classes('', { center })}>
     <SectionHeading large className={classes('heading').className}>
       {heading}
@@ -54,28 +70,5 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center }) => (
     </div>
   </section>
 );
-
-InfoWidget.propTypes = {
-  heading: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  mainLink: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    url: PropTypes.string,
-    href: PropTypes.string,
-  }).isRequired,
-  iconLinks: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      url: PropTypes.string,
-      href: PropTypes.string,
-      icon: PropTypes.node.isRequired,
-    }),
-  ),
-  center: PropTypes.bool,
-};
-
-InfoWidget.defaultProps = {
-  center: false,
-};
 
 export default InfoWidget;

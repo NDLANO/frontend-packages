@@ -9,23 +9,34 @@
 // N.B This component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
 import { LicenseDescription } from '@ndla/licenses';
-import { ContributorShape, LicenseShape } from '../shapes';
+import { FigureLicense } from './Figure';
+import { Contributor } from '../types';
 
 export const classLicenses = new BEMHelper({
   name: 'figure-license',
   prefix: 'c-',
 });
 
-export const FigureLicenseCta = ({ children, messages, authors, origin, title }) => (
+interface FigureLicenseCtaProps {
+  children?: ReactNode;
+  origin?: string;
+  authors?: Contributor[];
+  messages: {
+    source: string;
+    title: string;
+  };
+  title?: string;
+}
+
+export const FigureLicenseCta = ({ children, messages, authors, origin, title }: FigureLicenseCtaProps) => (
   <div {...classLicenses('cta-wrapper')}>
     <ul {...classLicenses('list')}>
       {title && <li {...classLicenses('item')}>{`${messages.title}: ${title}`}</li>}
-      {authors.map((author) => (
+      {authors?.map((author) => (
         <li key={uuid()} {...classLicenses('item')}>{`${author.type}: ${author.name}`}</li>
       ))}
       {origin && (
@@ -45,29 +56,20 @@ export const FigureLicenseCta = ({ children, messages, authors, origin, title })
   </div>
 );
 
-FigureLicenseCta.propTypes = {
-  children: PropTypes.node,
-  origin: PropTypes.string,
-  authors: PropTypes.arrayOf(ContributorShape),
-  messages: PropTypes.shape({
-    source: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  title: PropTypes.string,
-};
+interface Props {
+  messages: {
+    modelPremission?: string;
+    learnAboutLicenses: string;
+  };
+  license: FigureLicense;
+  locale: string;
+}
 
-export const FigureLicenseByline = ({ messages, license, locale }) => [
-  <LicenseDescription key="byline" highlightCC locale={locale} messages={messages} licenseRights={license.rights} />,
-  <a key="link" {...classLicenses('link')} target="_blank" rel="noopener noreferrer" href={license.url}>
-    {license.linkText}
-  </a>,
-];
-
-FigureLicenseByline.propTypes = {
-  messages: PropTypes.shape({
-    modelPremission: PropTypes.string,
-    learnAboutLicenses: PropTypes.string.isRequired,
-  }).isRequired,
-  license: LicenseShape.isRequired,
-  locale: PropTypes.string.isRequired,
-};
+export const FigureLicenseByline = ({ messages, license, locale }: Props) => (
+  <>
+    <LicenseDescription key="byline" highlightCC locale={locale} messages={messages} licenseRights={license.rights} />,
+    <a key="link" {...classLicenses('link')} target="_blank" rel="noopener noreferrer" href={license.url}>
+      {license.linkText}
+    </a>
+  </>
+);

@@ -65,7 +65,6 @@ export {
   NdlaFilmHero,
 } from './Hero';
 export { default as Masthead, MastheadItem } from './Masthead';
-export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
 export {
   MediaList,
   MediaListItem,

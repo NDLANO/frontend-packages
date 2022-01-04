@@ -41,6 +41,8 @@ export {
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
+export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
+
 export { LanguageSelector } from './LanguageSelector';
 
 export {

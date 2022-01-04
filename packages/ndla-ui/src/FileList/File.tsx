@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Download } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import { FileFormat, FileType } from './FileList';
 
 const classes = BEMHelper('c-file-list');
 
-const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
+const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id: string, isDeadLink: boolean) => {
   const titleWithFormat = `${title} (${format.fileType.toUpperCase()})`;
 
   const formatId = `${id}_${format.fileType}`;
@@ -42,7 +42,12 @@ const renderFormat = (format, title, isPrimary, id, isDeadLink) => {
   );
 };
 
-const File = ({ file, id }) => {
+interface Props {
+  id: string;
+  file: FileType;
+}
+
+const File = ({ file, id }: Props) => {
   const formatLinks = file.formats.map((format, index) =>
     renderFormat(format, file.title, index === 0, id, !file.fileExists),
   );
@@ -52,21 +57,6 @@ const File = ({ file, id }) => {
       {formatLinks}
     </li>
   );
-};
-
-File.propTypes = {
-  id: PropTypes.string.isRequired,
-  file: PropTypes.shape({
-    fileExists: PropTypes.bool,
-    title: PropTypes.string.isRequired,
-    formats: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        fileType: PropTypes.string.isRequired,
-        tooltip: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-  }),
 };
 
 export default File;

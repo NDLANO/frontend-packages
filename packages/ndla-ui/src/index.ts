@@ -55,6 +55,9 @@ export {
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
 } from './LearningPaths';
+export { Translation, TranslationLine, TranslationBox } from './Translation';
+
+export { default as Spinner } from './Spinner';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/listview",
-  "version": "1.0.36-alpha.5+17b732739",
+  "version": "1.0.36-alpha.8+dbf0f57f4",
   "description": "Listview components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@ndla/core": "^0.7.2",
     "@ndla/icons": "^1.3.1",
-    "@ndla/ui": "^3.2.1-alpha.5+17b732739"
+    "@ndla/ui": "^3.2.1-alpha.8+dbf0f57f4"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
@@ -36,5 +36,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "17b7327392ad2fe9c3bec949912f0c521ca560c5"
+  "gitHead": "dbf0f57f403ab8964c5fd14f4c8405cf5ab5d0e1"
 }

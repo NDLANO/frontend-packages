@@ -809,7 +809,7 @@ const messages = {
     error: 'Orsak, ein feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
   other: {
-    download: 'Last ned inhald',
+    download: 'Last ned innhald',
     reuse: 'Bruk innhald',
   },
   concept: {

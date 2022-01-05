@@ -808,7 +808,7 @@ const messages = {
     error: 'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
   other: {
-    download: 'Last ned inhold',
+    download: 'Last ned innhold',
     reuse: 'Bruk innhold',
   },
   concept: {

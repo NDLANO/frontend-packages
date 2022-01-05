@@ -6,8 +6,6 @@
  *
  */
 
-export { InfoBox } from './InfoBox';
-
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
 export { default as FactBox } from './FactBox';
@@ -52,7 +50,6 @@ export {
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
-export { default as Masthead, MastheadItem } from './Masthead';
 export {
   MediaList,
   MediaListItem,
@@ -64,8 +61,6 @@ export {
 
 export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';
 
-export { default as Image, ImageLink } from './Image';
-export { makeSrcQueryString } from './Image';
 export { default as Portrait } from './Portrait';
 
 export { DisplayOnPageYOffset } from './Animation';

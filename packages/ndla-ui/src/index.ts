@@ -24,6 +24,8 @@ export {
   default as Article,
 } from './Article';
 
+export { default as Masthead, MastheadItem } from './Masthead';
+
 export { default as ContentLoader } from './ContentLoader';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
@@ -33,6 +35,8 @@ export { default as FileList, File } from './FileList';
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
 export { default as Logo } from './Logo';
+
+export { InfoBox } from './InfoBox';
 
 export { default as InfoWidget } from './InfoWidget';
 
@@ -46,6 +50,9 @@ export {
   FrontpageSearch,
   FrontpageProgramMenu,
 } from './Frontpage';
+
+export { default as Image, ImageLink } from './Image';
+export { makeSrcQueryString } from './Image';
 
 export {
   SubjectMaterialHero,

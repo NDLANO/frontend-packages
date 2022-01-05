@@ -34,6 +34,8 @@ export { default as Portrait } from './Portrait';
 
 export { default as ContentLoader } from './ContentLoader';
 
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
+
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
 export { default as FileList, File } from './FileList';

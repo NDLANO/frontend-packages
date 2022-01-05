@@ -808,6 +808,10 @@ const messages = {
     reuse: 'Bruk video',
     error: 'Orsak, ein feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
+  other: {
+    download: 'Last ned inhald',
+    reuse: 'Bruk innhald',
+  },
   concept: {
     showDescription: 'Vis skildring av forklaringa',
     error: {

@@ -807,6 +807,10 @@ const messages = {
     reuse: 'Bruk video',
     error: 'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
+  other: {
+    download: 'Last ned inhold',
+    reuse: 'Bruk innhold',
+  },
   concept: {
     showDescription: 'Vis beskrivelsen av forklaringen.',
     error: {

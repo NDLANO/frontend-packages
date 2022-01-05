@@ -12,7 +12,6 @@ import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
-// @ts-ignore
 import Portrait from '../Portrait';
 
 const classes = new BEMHelper({

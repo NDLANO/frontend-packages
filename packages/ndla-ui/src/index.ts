@@ -26,6 +26,8 @@ export {
 
 export { default as Masthead, MastheadItem } from './Masthead';
 
+export { default as Portrait } from './Portrait';
+
 export { default as ContentLoader } from './ContentLoader';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';

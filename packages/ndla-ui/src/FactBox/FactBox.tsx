@@ -11,8 +11,8 @@ import BEMHelper from 'react-bem-helper';
 //@ts-ignore
 import Button from '@ndla/button';
 
-const toggleFactBox = (event: MouseEvent) => {
-  const button = event.target as HTMLButtonElement;
+const toggleFactBox = (event: MouseEvent<HTMLButtonElement>) => {
+  const button = event.currentTarget;
   const aside = button?.previousSibling?.parentElement;
   aside?.classList?.toggle('expanded');
 };

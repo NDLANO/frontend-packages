@@ -46,6 +46,9 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
+export { default as Image, ImageLink } from './Image';
+export { makeSrcQueryString } from './Image';
+
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,

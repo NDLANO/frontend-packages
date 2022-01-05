@@ -7,8 +7,7 @@
  */
 /* eslint-disable max-len */
 
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
 import SvgLogo from './SvgLogo';
@@ -18,8 +17,24 @@ export const logoClasses = new BEMHelper({
   prefix: 'c-',
 });
 
-export const Logo = ({ name, to, cssModifier, color, large, locale, label }) => {
-  const modifiers = { large };
+interface Props {
+  to?:
+    | string
+    | {
+        pathname: string;
+        search?: string;
+        hash?: string;
+      };
+  label: string;
+  locale?: string;
+  cssModifier?: string;
+  large?: boolean;
+  name?: boolean;
+  color?: string;
+}
+
+export const Logo = ({ name = true, to, cssModifier, color, large = false, locale, label }: Props) => {
+  const modifiers: Record<string, boolean> = { large };
 
   if (cssModifier) {
     modifiers[cssModifier] = true;
@@ -30,33 +45,11 @@ export const Logo = ({ name, to, cssModifier, color, large, locale, label }) => 
       <SvgLogo name={name} color={color} locale={locale} />
     </SafeLink>
   ) : (
-    <Fragment>
+    <>
       <SvgLogo name={name} color={color} locale={locale} />
-    </Fragment>
+    </>
   );
   return <div {...logoClasses('', modifiers)}>{logo}</div>;
-};
-
-Logo.propTypes = {
-  to: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      search: PropTypes.string,
-      hash: PropTypes.string,
-    }),
-  ]),
-  label: PropTypes.string.isRequired,
-  locale: PropTypes.string,
-  cssModifier: PropTypes.string,
-  large: PropTypes.bool,
-  name: PropTypes.bool,
-  color: PropTypes.string,
-};
-
-Logo.defaultProps = {
-  name: true,
-  large: false,
 };
 
 export default Logo;

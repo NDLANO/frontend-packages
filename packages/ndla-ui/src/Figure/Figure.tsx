@@ -9,15 +9,16 @@
 // N.B These component is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { isFunction, parseMarkdown } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
+//@ts-ignore
 import Button from '@ndla/button';
+import { License } from '../types';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -36,16 +37,16 @@ export const FigureCaption = ({
   link,
   hideFigcaption,
   hasLinkedVideo,
-}) => {
+}: FigureCaptionProps) => {
   const { t } = useTranslation();
   return (
-    <figcaption {...classes('caption', hideFigcaption && 'hidden-caption')}>
+    <figcaption {...classes('caption', hideFigcaption ? 'hidden-caption' : undefined)}>
       {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>
           <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
             <div {...classes('byline-author-buttons')}>
-              <span {...classes('byline-authors')}>{authors.map((author) => author.name).join(', ')}</span>
+              <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
               <div>
                 <Button
                   borderShape="rounded"
@@ -76,8 +77,8 @@ export const FigureCaption = ({
               <SafeLink
                 to={link.url}
                 {...classes('link')}
-                target={link.external ? '_blank' : null}
-                rel={link.external ? 'noopener noreferrer' : null}>
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}>
                 <span {...classes('link-text')}>{link.text}</span>
                 <LinkIcon />
               </SafeLink>
@@ -90,61 +91,50 @@ export const FigureCaption = ({
   );
 };
 
-FigureCaption.propTypes = {
-  figureId: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  reuseLabel: PropTypes.string.isRequired,
-  licenseRights: PropTypes.arrayOf(PropTypes.string).isRequired,
-  children: PropTypes.node,
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
-  ),
-  link: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    external: PropTypes.bool,
-  }),
-  locale: PropTypes.string,
-  hideFigcaption: PropTypes.bool,
-  hasLinkedVideo: PropTypes.bool,
-};
+export interface FigureLicense extends License {
+  short: string;
+  title: string;
+  userFriendlyTitle: string;
+  description: string;
+  rights: string[];
+  linkText?: string;
+  url?: string;
+}
 
-FigureCaption.defaultProps = {
-  link: null,
-};
+interface FigureCaptionProps {
+  figureId: string;
+  id: string;
+  caption?: string;
+  reuseLabel: string;
+  licenseRights: string[];
+  children?: ReactNode;
+  authors?: { name: string }[];
+  link?: {
+    url: string;
+    text: string;
+    description?: string;
+    external?: boolean;
+  };
+  locale?: string;
+  hideFigcaption?: boolean;
+  hasLinkedVideo?: boolean;
+}
 
-const Figure = ({ children, type, resizeIframe, ...rest }) => {
+const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {
   const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
   return (
-    <figure data-sizetype={type} {...classes('', { resize: resizeIframe }, typeClass)} {...rest}>
+    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe }, typeClass)} {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
 };
 
-Figure.propTypes = {
-  id: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.node.isRequired, PropTypes.func.isRequired]).isRequired,
-  type: PropTypes.oneOf([
-    'full',
-    'full-column',
-    'left',
-    'small-left',
-    'right',
-    'small-right',
-    'xsmall-right',
-    'xsmall-left',
-  ]),
-  resizeIframe: PropTypes.bool,
-  noFigcaption: PropTypes.bool,
-};
-
-Figure.defaultProps = {
-  type: 'full',
-};
+interface Props {
+  id: string;
+  children: (params: { typeClass: string }) => ReactNode | ReactNode;
+  type: 'full' | 'full-column' | 'left' | 'small-left' | 'right' | 'small-right' | 'xsmall-right' | 'xsmall-left';
+  resizeIframe?: boolean;
+  noFigcaption?: boolean;
+}
 
 export default Figure;

@@ -6,13 +6,13 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import defined from 'defined';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
+import { ImageCrop, ImageFocalPoint } from '../types';
 
-export const makeSrcQueryString = (width, crop, focalPoint) => {
+export const makeSrcQueryString = (width: number | undefined, crop?: ImageCrop, focalPoint?: ImageFocalPoint) => {
   const widthParams = width && `width=${width}`;
   const cropParams =
     crop && `cropStartX=${crop.startX}&cropEndX=${crop.endX}&cropStartY=${crop.startY}&cropEndY=${crop.endY}`;
@@ -22,7 +22,7 @@ export const makeSrcQueryString = (width, crop, focalPoint) => {
   return params;
 };
 
-const getSrcSet = (src, crop, focalPoint) => {
+const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFocalPoint | undefined) => {
   const widths = [2720, 2080, 1760, 1440, 1120, 1000, 960, 800, 640, 480, 320, 240, 180];
   return widths.map((width) => `${src}?${makeSrcQueryString(width, crop, focalPoint)} ${width}w`).join(', ');
 };
@@ -31,7 +31,32 @@ const StyledImageWrapper = styled.div`
   position: relative;
 `;
 
-const Image = ({ alt, src, lazyLoad, lazyLoadSrc, crop, focalPoint, contentType, sizes, expandButton, ...rest }) => {
+interface Props {
+  alt: string;
+  src: string;
+  sizes?: string;
+  fallbackWidth?: number;
+  contentType?: string;
+  srcSet?: string;
+  lazyLoad?: boolean;
+  lazyLoadSrc?: string;
+  expandButton?: ReactNode;
+  crop?: ImageCrop;
+  focalPoint?: ImageFocalPoint;
+}
+
+const Image = ({
+  alt,
+  src,
+  lazyLoad,
+  lazyLoadSrc,
+  crop,
+  focalPoint,
+  contentType,
+  sizes = '(min-width: 1024px) 1024px, 100vw',
+  expandButton,
+  ...rest
+}: Props) => {
   const srcSet = defined(rest.srcSet, getSrcSet(src, crop, focalPoint));
   const fallbackWidth = defined(rest.fallbackWidth, 1024);
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
@@ -67,31 +92,6 @@ const Image = ({ alt, src, lazyLoad, lazyLoadSrc, crop, focalPoint, contentType,
       {expandButton}
     </StyledImageWrapper>
   );
-};
-
-Image.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  sizes: PropTypes.string,
-  fallbackWidth: PropTypes.number,
-  contentType: PropTypes.string,
-  srcSet: PropTypes.string,
-  lazyLoad: PropTypes.bool,
-  lazyLoadSrc: PropTypes.string,
-  crop: PropTypes.shape({
-    startX: PropTypes.number.isRequired,
-    startY: PropTypes.number.isRequired,
-    endX: PropTypes.number.isRequired,
-    endY: PropTypes.number.isRequired,
-  }),
-  focalPoint: PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
-  }),
-};
-
-Image.defaultProps = {
-  sizes: '(min-width: 1024px) 1024px, 100vw',
 };
 
 export default Image;

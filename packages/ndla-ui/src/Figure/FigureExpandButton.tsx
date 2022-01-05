@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ArrowCollapse } from '@ndla/icons/common';
 import { ExpandTwoArrows } from '@ndla/icons/action';
 
-export function FigureExpandButton({ children, messages, typeClass }) {
+export function FigureExpandButton({ messages, typeClass }: Props) {
   return (
     <button
       className="c-figure__fullscreen-btn"
@@ -27,10 +26,10 @@ export function FigureExpandButton({ children, messages, typeClass }) {
   );
 }
 
-FigureExpandButton.propTypes = {
-  messages: PropTypes.shape({
-    zoomImageButtonLabel: PropTypes.string.isRequired,
-    zoomOutImageButtonLabel: PropTypes.string.isRequired,
-  }),
-  typeClass: PropTypes.string.isRequired,
-};
+interface Props {
+  messages: {
+    zoomImageButtonLabel: string;
+    zoomOutImageButtonLabel: string;
+  };
+  typeClass: string;
+}

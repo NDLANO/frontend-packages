@@ -47,8 +47,6 @@ export {
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
-export { default as NoContentBox } from './NoContentBox';
-
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 export {
   MediaList,

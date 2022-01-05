@@ -6,15 +6,15 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode, MouseEvent } from 'react';
 import BEMHelper from 'react-bem-helper';
+//@ts-ignore
 import Button from '@ndla/button';
 
-const toggleFactBox = (event) => {
-  const button = event.target;
-  const aside = button.previousSibling.parentNode;
-  aside.classList.toggle('expanded');
+const toggleFactBox = (event: MouseEvent<HTMLButtonElement>) => {
+  const button = event.currentTarget;
+  const aside = button?.previousSibling?.parentElement;
+  aside?.classList?.toggle('expanded');
 };
 
 const classes = new BEMHelper({
@@ -22,7 +22,12 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const FactBox = ({ children, dangerouslySetInnerHTML }) => (
+interface Props {
+  dangerouslySetInnerHTML?: { __html: string };
+  children?: ReactNode;
+}
+
+const FactBox = ({ children, dangerouslySetInnerHTML }: Props) => (
   <aside {...classes()}>
     <div {...classes('content')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
       {children}
@@ -30,12 +35,5 @@ const FactBox = ({ children, dangerouslySetInnerHTML }) => (
     <Button {...classes('button')} onClick={toggleFactBox} />
   </aside>
 );
-
-FactBox.propTypes = {
-  dangerouslySetInnerHTML: PropTypes.shape({
-    __html: PropTypes.string.isRequired,
-  }),
-  children: PropTypes.node,
-};
 
 export default FactBox;

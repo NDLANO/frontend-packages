@@ -8,7 +8,6 @@
 
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
-export { default as FactBox } from './FactBox';
 
 export {
   SearchOverlay,

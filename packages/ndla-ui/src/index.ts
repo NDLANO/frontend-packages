@@ -59,6 +59,8 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
+export { default as FactBox } from './FactBox';
+
 export { default as Image, ImageLink } from './Image';
 export { makeSrcQueryString } from './Image';
 

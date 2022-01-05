@@ -50,7 +50,7 @@ type Props = {
   onLinkToResourcesClick?: (e: React.MouseEvent<HTMLElement>) => void;
   copyPageUrlLink?: string;
   licenseBox?: React.ReactNode;
-  resourcesRef?: any;
+  resourcesRef?: RefObject<HTMLElement>;
 };
 const ArticleSideBar = ({
   linkToResources,

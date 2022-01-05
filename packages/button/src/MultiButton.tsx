@@ -182,6 +182,7 @@ export const MultiButton = ({
     clippedButtonAttachment: true,
     clippedButtonAttachmentOutline: false,
   };
+
   if (outline) {
     clippedButtonProps.clippedButton = false;
     clippedButtonProps.clippedButtonOutline = true;

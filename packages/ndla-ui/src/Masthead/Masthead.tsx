@@ -6,11 +6,11 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
+//@ts-ignore
 import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
-import { withTranslation } from 'react-i18next';
+import { WithTranslation, withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
 
 const classes = new BEMHelper({
@@ -18,7 +18,13 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const MastheadItem = ({ children, className, left, right }) => {
+interface MastheadItemProps {
+  children?: ReactNode;
+  className?: string;
+  right?: boolean;
+  left?: boolean;
+}
+export const MastheadItem = ({ children, className, left = false, right = false }: MastheadItemProps) => {
   const itemClassNames = classNames(
     { [classes('left').className]: left },
     { [classes('right').className]: right },
@@ -28,37 +34,42 @@ export const MastheadItem = ({ children, className, left, right }) => {
   return <div className={itemClassNames}>{children}</div>;
 };
 
-MastheadItem.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  right: PropTypes.bool,
-  left: PropTypes.bool,
-};
+interface MastheadInfoProps {
+  children?: ReactNode;
+}
 
-MastheadItem.defaultProps = {
-  right: false,
-  left: false,
-};
-
-const MastheadInfo = ({ children }) => (
+const MastheadInfo = ({ children }: MastheadInfoProps) => (
   <div {...classes('info')}>
     <div {...classes('info-content')}>{children}</div>
   </div>
 );
 
-MastheadInfo.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+interface Props {
+  children?: ReactNode;
+  fixed?: boolean;
+  showLoaderWhenNeeded?: boolean;
+  infoContent?: ReactNode;
+  ndlaFilm?: boolean;
+  skipToMainContentId?: string;
+}
 
-export const Masthead = ({ children, fixed, infoContent, showLoaderWhenNeeded, ndlaFilm, skipToMainContentId, t }) => (
+export const Masthead = ({
+  children,
+  fixed,
+  infoContent,
+  showLoaderWhenNeeded = true,
+  ndlaFilm,
+  skipToMainContentId,
+  t,
+}: Props & WithTranslation) => (
   <>
     {skipToMainContentId && (
       <a tabIndex={0} href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
         {t('masthead.skipToContent')}
       </a>
     )}
-    <div {...classes('placeholder', { infoContent })} />
-    <div {...classes('', { fixed, infoContent, showLoaderWhenNeeded, ndlaFilm })}>
+    <div {...classes('placeholder', { infoContent: !!infoContent })} />
+    <div {...classes('', { fixed: !!fixed, infoContent: !!infoContent, showLoaderWhenNeeded, ndlaFilm: !!ndlaFilm })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>
@@ -68,18 +79,5 @@ export const Masthead = ({ children, fixed, infoContent, showLoaderWhenNeeded, n
     </div>
   </>
 );
-
-Masthead.propTypes = {
-  children: PropTypes.node,
-  fixed: PropTypes.bool,
-  showLoaderWhenNeeded: PropTypes.bool,
-  infoContent: PropTypes.node,
-  ndlaFilm: PropTypes.bool,
-  skipToMainContentId: PropTypes.string,
-};
-
-Masthead.defaultProps = {
-  showLoaderWhenNeeded: true,
-};
 
 export default withTranslation()(Masthead);

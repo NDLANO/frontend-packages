@@ -139,13 +139,12 @@ const StyledIcon = styled(ChevronDown)<StyledIconProps>`
 type ButtonProps = {
   label: string;
   value: string;
-  alwaysEnable?: boolean;
+  enable?: boolean;
 };
 
 type Props = {
   mainButton: ButtonProps;
   secondaryButtons: Array<ButtonProps>;
-  enableSecondary?: boolean;
   onClick: (value: string) => void;
   outline?: boolean;
   disabled?: boolean;
@@ -157,7 +156,6 @@ type Props = {
 export const MultiButton = ({
   mainButton,
   secondaryButtons,
-  enableSecondary,
   onClick,
   outline,
   disabled,
@@ -179,7 +177,7 @@ export const MultiButton = ({
   };
 
   const clippedButtonAttachmentOutline = {
-    disabled: enableSecondary ? false : disabled,
+    disabled: secondaryButtons.find((button) => button.enable) ? false : disabled,
     large: large,
     clippedButtonAttachment: true,
     clippedButtonAttachmentOutline: false,
@@ -225,7 +223,7 @@ export const MultiButton = ({
                         {secondaryButtons.map((button) => (
                           <MenuItem key={button.value} outline={outline}>
                             <ButtonItem
-                              disabled={button.alwaysEnable ? false : disabled}
+                              disabled={button.enable ?? disabled}
                               outline={outline}
                               large={large}
                               onClick={() => {

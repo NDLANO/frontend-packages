@@ -59,8 +59,6 @@ export {
 
 export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';
 
-export { default as Portrait } from './Portrait';
-
 export { DisplayOnPageYOffset } from './Animation';
 
 export {

@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -15,22 +14,17 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const Portrait = ({ src, alt, modifier, className }) => (
+interface Props {
+  src: string;
+  alt: string;
+  className?: string;
+  modifier?: 'small' | 'large';
+}
+
+const Portrait = ({ src, alt, modifier, className }: Props) => (
   <div {...classes('', modifier, className)}>
     <span role="img" aria-label={alt} style={{ backgroundImage: `url(${src})` }} />
   </div>
 );
-
-Portrait.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  modifier: PropTypes.oneOf(['small', 'large']),
-};
-
-Portrait.defaultProps = {
-  className: null,
-  modifier: null,
-};
 
 export default Portrait;

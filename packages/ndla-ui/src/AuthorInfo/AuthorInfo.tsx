@@ -10,7 +10,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
-// @ts-ignore
 import Portrait from '../Portrait';
 
 const classes = new BEMHelper({

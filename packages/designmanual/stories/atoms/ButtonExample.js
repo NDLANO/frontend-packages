@@ -411,6 +411,24 @@ const ButtonExample = () => {
               action('clicked');
             }}
             mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtons}
+          />
+        </InlineContainer>
+        <InlineContainer>
+          <MultiButton
+            onClick={() => {
+              action('clicked');
+            }}
+            menuPosition="bottom"
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
+          />{' '}
+          <MultiButton
+            disabled
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
             secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
           />
         </InlineContainer>

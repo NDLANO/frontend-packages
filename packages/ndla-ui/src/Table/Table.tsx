@@ -22,6 +22,9 @@ interface Props {
     expandButtonLabel: string;
   };
   children?: ReactNode;
+  dangerouslySetInnerHTML?: {
+    __html: string;
+  };
 }
 
 const Table = ({ children, messages, id, ...rest }: Props) => {

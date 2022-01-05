@@ -16,7 +16,17 @@ const MultiButtonData = {
     {
       label: 'Lagre og ny versjon',
       value: 'lagreogny',
-      alwaysEnable: true,
+    },
+    {
+      label: 'Lagre og avslutt',
+      value: 'lagreogavslutt',
+    },
+  ],
+  secondaryButtonsWithOverride: [
+    {
+      label: 'Lagre og ny versjon',
+      value: 'lagreogny',
+      enable: true,
     },
     {
       label: 'Lagre og avslutt',
@@ -401,8 +411,7 @@ const ButtonExample = () => {
               action('clicked');
             }}
             mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-            enableSecondary={true}
+            secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
           />
         </InlineContainer>
         <InlineContainer>

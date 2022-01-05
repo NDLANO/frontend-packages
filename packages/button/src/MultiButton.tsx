@@ -223,7 +223,7 @@ export const MultiButton = ({
                         {secondaryButtons.map((button) => (
                           <MenuItem key={button.value} outline={outline}>
                             <ButtonItem
-                              disabled={button.enable ?? disabled}
+                              disabled={!(button.enable ?? !disabled)}
                               outline={outline}
                               large={large}
                               onClick={() => {

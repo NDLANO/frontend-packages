@@ -9,10 +9,6 @@
 export { default as Table } from './Table';
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
 
-export { default as FileList, File } from './FileList';
-
-export { default as FactBox } from './FactBox';
-
 export {
   SearchOverlay,
   SearchField,

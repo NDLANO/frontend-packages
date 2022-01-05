@@ -34,7 +34,10 @@ export { default as FileList, File } from './FileList';
 
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
 
+export { default as Logo } from './Logo';
+
 export { InfoBox } from './InfoBox';
+
 export { default as InfoWidget } from './InfoWidget';
 
 export {

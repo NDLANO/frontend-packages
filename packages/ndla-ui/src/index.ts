@@ -28,6 +28,8 @@ export { default as Masthead, MastheadItem } from './Masthead';
 
 export { default as ContentLoader } from './ContentLoader';
 
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
+
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
 export { default as FileList, File } from './FileList';

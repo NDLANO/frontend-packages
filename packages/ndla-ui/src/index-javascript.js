@@ -35,10 +35,8 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
 } from './ContentTypeBadge';
-export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
-export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
 export {
   default as CompetenceGoals,
   CompetenceGoalList,

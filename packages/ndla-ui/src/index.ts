@@ -26,6 +26,8 @@ export {
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 
+export { createUniversalPortal } from './utils/createUniversalPortal';
+
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as Masthead, MastheadItem } from './Masthead';
@@ -33,6 +35,8 @@ export { default as Masthead, MastheadItem } from './Masthead';
 export { default as Portrait } from './Portrait';
 
 export { default as ContentLoader } from './ContentLoader';
+
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
 
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 

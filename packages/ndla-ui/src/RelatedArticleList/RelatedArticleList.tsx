@@ -1,6 +1,6 @@
-import React, { cloneElement } from 'react';
-import PropTypes from 'prop-types';
+import React, { cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
+//@ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
@@ -10,14 +10,32 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkInfo = '', target = '' }) => {
+interface RelatedArticleProps {
+  icon: ReactElement;
+  title: string;
+  modifier?: string;
+  introduction: string;
+  to: string;
+  linkInfo?: string;
+  target?: string;
+}
+
+export const RelatedArticle = ({
+  title,
+  introduction,
+  icon,
+  modifier,
+  to,
+  linkInfo = '',
+  target = '',
+}: RelatedArticleProps) => {
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
     <article {...classes('item', modifier)}>
       <h1 {...classes('title')}>
         {iconWithClass}
         <span {...classes('link-wrapper')}>
-          <SafeLink to={to} {...classes('link')} target={target} rel={linkInfo ? 'noopener noreferrer' : null}>
+          <SafeLink to={to} {...classes('link')} target={target} rel={linkInfo ? 'noopener noreferrer' : undefined}>
             {title}
           </SafeLink>
         </span>
@@ -28,24 +46,27 @@ export const RelatedArticle = ({ title, introduction, icon, modifier, to, linkIn
   );
 };
 
-RelatedArticle.propTypes = {
-  icon: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  modifier: PropTypes.string,
-  introduction: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  linkInfo: PropTypes.string,
-  target: PropTypes.string,
-};
-
-const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }) => {
-  const clonedChildren = !dangerouslySetInnerHTML
-    ? React.Children.map(children, (article, i) =>
-        React.cloneElement(article, {
-          modifier: i >= 2 ? `${article.props.modifier} hidden` : article.props.modifier,
-        }),
-      )
-    : null;
+interface Props {
+  messages: {
+    title: string;
+    showMore: string;
+    showLess: string;
+  };
+  children?: ReactElement;
+  dangerouslySetInnerHTML?: {
+    __html: string;
+  };
+  articleCount?: number;
+}
+const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }: Props) => {
+  const clonedChildren =
+    !dangerouslySetInnerHTML && children
+      ? React.Children.map(children, (article, i) =>
+          React.cloneElement(article, {
+            modifier: i >= 2 ? `${article.props.modifier} hidden` : article.props.modifier,
+          }),
+        )
+      : null;
   const childrenCount = articleCount || React.Children.count(children);
 
   return (
@@ -67,12 +88,4 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
   );
 };
 
-RelatedArticleList.propTypes = {
-  children: PropTypes.node,
-  messages: PropTypes.shape({ title: PropTypes.string.isRequired }),
-  dangerouslySetInnerHTML: PropTypes.shape({
-    __html: PropTypes.string.isRequired,
-  }),
-  articleCount: PropTypes.number,
-};
 export default RelatedArticleList;

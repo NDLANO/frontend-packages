@@ -808,6 +808,10 @@ const messages = {
     reuse: 'Use video',
     error: 'Sorry, an error occurred while loading the video or metadata about the video.',
   },
+  other: {
+    download: 'Download content',
+    reuse: 'Use content',
+  },
   concept: {
     showDescription: 'Show concept description',
     error: {

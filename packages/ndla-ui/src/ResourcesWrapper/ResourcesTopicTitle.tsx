@@ -11,7 +11,10 @@ import { useTranslation } from 'react-i18next';
 
 import { classes } from './ResourcesWrapper';
 
-const HelpIcon = ({ invertedStyle }: { invertedStyle: boolean }) => (
+interface HelpIconProps {
+  invertedStyle: boolean;
+}
+const HelpIcon = ({ invertedStyle }: HelpIconProps) => (
   <div {...classes('topic-title-icon', { invertedStyle })}>
     <HelpCircleDual className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`} />
   </div>

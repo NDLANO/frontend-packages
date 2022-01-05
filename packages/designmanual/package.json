@@ -47,8 +47,6 @@
     "webpack": "^4.46.0"
   },
   "dependencies": {
-    "@ndla/forms": "^1.0.34",
-    "@ndla/safelink": "^1.0.5",
     "downshift": "^3.2.2"
   }
 }

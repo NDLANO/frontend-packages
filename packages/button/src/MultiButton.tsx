@@ -177,7 +177,7 @@ export const MultiButton = ({
   };
 
   const clippedButtonAttachmentOutline = {
-    disabled: false,
+    disabled: secondaryButtons.find((button) => button.enable) ? false : disabled,
     large: large,
     clippedButtonAttachment: true,
     clippedButtonAttachmentOutline: false,

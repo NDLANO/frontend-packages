@@ -7,8 +7,8 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+//@ts-ignore
 import Button from '@ndla/button';
 
 const classes = new BEMHelper({
@@ -16,7 +16,12 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const NoContentBox = ({ buttonText, text, onClick }) => (
+interface Props {
+  onClick?: () => void;
+  buttonText?: string;
+  text: string;
+}
+export const NoContentBox = ({ buttonText, text, onClick }: Props) => (
   <div {...classes('additional-resources-trigger')}>
     <span>
       <div>
@@ -30,16 +35,5 @@ export const NoContentBox = ({ buttonText, text, onClick }) => (
     </span>
   </div>
 );
-
-NoContentBox.propTypes = {
-  onClick: PropTypes.func,
-  buttonText: PropTypes.string,
-  text: PropTypes.string.isRequired,
-};
-
-NoContentBox.defaultProps = {
-  onClick: null,
-  buttonText: undefined,
-};
 
 export default NoContentBox;

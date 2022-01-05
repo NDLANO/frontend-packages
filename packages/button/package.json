@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "1.0.6",
+  "version": "1.0.7-alpha.37+22d6282b4",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -33,5 +33,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "22d6282b4577a1106562213c096e5f26f2525e97"
 }

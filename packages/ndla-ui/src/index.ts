@@ -24,6 +24,8 @@ export {
   default as Article,
 } from './Article';
 
+export { createUniversalPortal } from './utils/createUniversalPortal';
+
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as Masthead, MastheadItem } from './Masthead';

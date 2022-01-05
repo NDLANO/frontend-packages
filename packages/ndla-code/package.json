@@ -1,6 +1,6 @@
 {
   "name": "@ndla/code",
-  "version": "1.0.14-alpha.23+1c15ee767",
+  "version": "1.0.14-alpha.25+17b732739",
   "description": "Code components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^1.0.7-alpha.26+1c15ee767",
+    "@ndla/button": "^1.0.7-alpha.28+17b732739",
     "@ndla/core": "^0.7.2",
     "@ndla/icons": "^1.3.1",
     "@ndla/util": "^2.0.0",
@@ -46,5 +46,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "1c15ee767bf22877c3b1176a00117a75496293e9"
+  "gitHead": "17b7327392ad2fe9c3bec949912f0c521ca560c5"
 }

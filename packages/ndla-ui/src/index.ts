@@ -24,6 +24,8 @@ export {
   default as Article,
 } from './Article';
 
+export { default as Table } from './Table';
+
 export { default as NoContentBox } from './NoContentBox';
 
 export { default as Masthead, MastheadItem } from './Masthead';

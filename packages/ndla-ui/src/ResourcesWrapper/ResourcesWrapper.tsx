@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 
 export const classes = new BEMHelper({
@@ -15,22 +14,18 @@ export const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const ResourcesWrapper = ({ children, header, subjectPage, id }) => (
+interface Props {
+  header?: ReactNode;
+  children: ReactNode;
+  subjectPage?: boolean;
+  id?: string;
+}
+
+const ResourcesWrapper = ({ children, header, subjectPage = false, id }: Props) => (
   <section {...classes('', { subjectPage })} id={id}>
     {header}
     <div {...classes('content')}>{children}</div>
   </section>
 );
-
-ResourcesWrapper.propTypes = {
-  header: PropTypes.node,
-  children: PropTypes.node.isRequired,
-  subjectPage: PropTypes.bool,
-  id: PropTypes.string,
-};
-
-ResourcesWrapper.defaultProps = {
-  subjectPage: false,
-};
 
 export default ResourcesWrapper;

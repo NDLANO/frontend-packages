@@ -44,7 +44,6 @@ export {
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
-export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 export {
   MediaList,
   MediaListItem,

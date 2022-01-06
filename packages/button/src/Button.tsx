@@ -50,7 +50,6 @@ interface Props extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
   ghostPill?: boolean;
   ghostPillInverted?: boolean;
   loading?: boolean;
-  onClick?: () => void;
   safelink?: string;
   appearance?: Appearance;
   size?: Size;

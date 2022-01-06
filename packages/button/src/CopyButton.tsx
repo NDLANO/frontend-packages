@@ -6,12 +6,26 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, ReactNode, MouseEvent } from 'react';
 import { Button } from './Button';
 
-class CopyButton extends Component {
-  constructor(props) {
+interface Props {
+  children: ReactNode;
+  copyNode: ReactNode;
+  onClick: (e?: MouseEvent<HTMLButtonElement>) => void;
+  showCopyTimer: number;
+}
+
+interface State {
+  showCopyState: boolean;
+}
+
+class CopyButton extends Component<Props, State> {
+  static defaultProps = {
+    showCopyTimer: 4000,
+  };
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       showCopyState: false,
@@ -21,8 +35,12 @@ class CopyButton extends Component {
     this.exitCopyState = this.exitCopyState.bind(this);
   }
 
+  timer: NodeJS.Timeout | null;
+
   componentWillUnmount() {
-    clearTimeout(this.timer);
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
 
   exitCopyState() {
@@ -31,7 +49,7 @@ class CopyButton extends Component {
     });
   }
 
-  handleCopy(e) {
+  handleCopy(e?: MouseEvent<HTMLButtonElement>) {
     this.props.onClick(e);
     if (!this.state.showCopyState) {
       this.setState(
@@ -55,26 +73,5 @@ class CopyButton extends Component {
     );
   }
 }
-
-CopyButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  copyNode: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-  onClick: PropTypes.func,
-  showCopyTimer: (props, propName, componentName) => {
-    if (typeof props[propName] !== 'number' || props[propName] < 100) {
-      return new Error(
-        `Invalid prop ${propName} supplied to ${componentName}. Must be a number above 100. (ms to be in copied state after clicked)`,
-      );
-    }
-    return null;
-  },
-};
-
-CopyButton.defaultProps = {
-  showCopyTimer: 4000,
-  onClick: () => {
-    console.log('Clicked CopyButton'); //eslint-disable-line
-  },
-};
 
 export default CopyButton;

@@ -6,11 +6,71 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, spacingUnit, misc, fonts, animations, breakpoints, mq } from '@ndla/core';
+
+type Appearance =
+  | 'outline'
+  | 'link'
+  | 'stripped'
+  | 'lighter'
+  | 'inverted'
+  | 'invertedOutline'
+  | 'ghostPill'
+  | 'ghostPillInverted'
+  | 'ghostPillOutline'
+  | 'ghostPillOutlineInverted'
+  | 'large'
+  | 'clippedButton'
+  | 'clippedButtonOutline'
+  | 'clippedButtonAttachment'
+  | 'clippedButtonAttachmentOutline'
+  | 'clippedButtonLarge'
+  | 'clippedButtonOutlineLarge'
+  | 'clippedButtonAttachmentLarge'
+  | 'clippedButtonAttachmentOutlineLarge';
+
+type Size = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
+type Border = 'normal' | 'rounded' | 'sharpened';
+type Width = 'auto' | 'full';
+type TextAlign = 'center' | 'left' | 'right';
+type ButtonType = 'button' | 'submit' | 'reset';
+
+interface Props extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
+  className?: string;
+  disabled?: boolean;
+  outline?: boolean;
+  link?: boolean;
+  large?: boolean;
+  stripped?: boolean;
+  light?: boolean;
+  lighter?: boolean;
+  ghostPill?: boolean;
+  ghostPillInverted?: boolean;
+  loading?: boolean;
+  onClick?: () => void;
+  safelink?: string;
+  appearance?: Appearance;
+  size?: Size;
+  borderShape?: Border;
+  width?: Width;
+  textAlign?: TextAlign;
+  darker?: boolean;
+  greyLighter?: boolean;
+  greyLightest?: boolean;
+  submit?: boolean;
+  type?: ButtonType;
+  ghostPillOutline?: boolean;
+  ghostPillOutlineInverted?: boolean;
+  clippedButton?: boolean;
+  clippedButtonOutline?: boolean;
+  clippedButtonAttachment?: boolean;
+  clippedButtonAttachmentOutline?: boolean;
+  inverted?: boolean;
+  invertedOutline?: boolean;
+}
 
 export const strippedStyle = css`
   transition: background-color none;
@@ -76,7 +136,7 @@ export const outlineStyle = css`
   }
 `;
 
-const outlineWithSize = (size) =>
+const outlineWithSize = (size?: Size) =>
   css`
     ${outlineStyle}
     ${(size === 'xsmall' || size === 'small') &&
@@ -181,7 +241,7 @@ export const borderShapes = {
   normal: () => css`
     border-radius: ${misc.borderRadius};
   `,
-  rounded: (size) => css`
+  rounded: (size?: Size) => css`
     border-radius: 32px;
     font-weight: ${fonts.weight.semibold};
     padding-left: 20px;
@@ -209,7 +269,7 @@ export const borderShapes = {
       }`
       : null}
   `,
-  sharpened: (size) => css`
+  sharpened: (size?: Size) => css`
     border-radius: 2px;
     font-weight: ${fonts.weight.semibold};
     ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null};
@@ -465,7 +525,7 @@ export const buttonStyle = css`
   }
 `;
 
-export const ButtonStyles = (p) =>
+export const ButtonStyles = (p: Props) =>
   css`
     ${buttonStyle}
     ${p.appearance ? appearances[p.appearance] : null}
@@ -481,15 +541,13 @@ export const ButtonStyles = (p) =>
   ${p.light ? appearances['light'] : null}
   `;
 
-export const StyledButton = styled('button')`
+export const StyledButton = styled('button')<Props>`
   ${(p) => ButtonStyles(p)}
 `;
 
 // Reverse the array to find the last element first
-const modifierToApperance = (modifiers) =>
-  Object.keys(modifiers)
-    .reverse()
-    .find((key) => modifiers[key]);
+const modifierToApperance = (modifiers: Record<Appearance, boolean | undefined>) =>
+  (Object.keys(modifiers) as Appearance[]).reverse().find((key) => modifiers[key]);
 
 export const Button = ({
   outline,
@@ -514,12 +572,12 @@ export const Button = ({
   clippedButtonAttachment,
   clippedButtonAttachmentOutline,
   ...rest
-}) => {
+}: Props) => {
   const clippedButtonLarge = clippedButton && large;
   const clippedButtonOutlineLarge = clippedButtonOutline && large;
   const clippedButtonAttachmentLarge = clippedButtonAttachment && large;
   const clippedButtonAttachmentOutlineLarge = clippedButtonAttachmentOutline && large;
-  const modifiers = {
+  const modifiers: Record<Appearance, boolean | undefined> = {
     link,
     large,
     outline,
@@ -554,50 +612,4 @@ export const Button = ({
       {children}
     </StyledButton>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  outline: PropTypes.bool,
-  link: PropTypes.bool,
-  large: PropTypes.bool,
-  stripped: PropTypes.bool,
-  light: PropTypes.bool,
-  lighter: PropTypes.bool,
-  ghostPill: PropTypes.bool,
-  ghostPillInverted: PropTypes.bool,
-  loading: PropTypes.bool,
-  onClick: PropTypes.func,
-  safelink: PropTypes.string,
-  appearance: PropTypes.oneOf([
-    'outline',
-    'link',
-    'stripped',
-    'lighter',
-    'inverted',
-    'invertedOutline',
-    'ghostPill',
-    'ghostPillInverted',
-    'ghostPillOutline',
-    'large',
-  ]),
-  size: PropTypes.oneOf(['xsmall', 'small', 'normal', 'medium', 'large']),
-  borderShape: PropTypes.oneOf(['normal', 'rounded', 'sharpened']),
-  width: PropTypes.oneOf(['auto', 'full']),
-  textAlign: PropTypes.oneOf(['center', 'left', 'right']),
-  darker: PropTypes.bool,
-  greyLighter: PropTypes.bool,
-  greyLightest: PropTypes.bool,
-  /**
-   * Applies the submit attribute to the button for use in forms. This overrides the type
-   */
-  submit: PropTypes.bool,
-  /**
-   * Defines HTML button type Attribute
-   * @type {("button"|"reset"|"submit")}
-   * @defaultValue 'button'
-   */
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };

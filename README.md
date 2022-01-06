@@ -90,7 +90,7 @@ yarn deploy
 
 As an alternative to linking packages locally, alpha versions of packages can be published and used in other repositories.
 
-_READ FIRST:_ This guide is not fully functional. When merging and bumping alpha versions in the second step, the released package is not necessarily correct. The guide has to be updated to resolve this issue.
+**READ FIRST:** This guide is not fully functional. When merging and bumping alpha versions in the second step, the released package is not necessarily correct. The guide has to be updated to resolve this issue.
 
 ### Creating alpha version and using it
 

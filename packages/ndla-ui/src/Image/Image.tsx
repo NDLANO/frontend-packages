@@ -10,7 +10,17 @@ import React, { ReactNode } from 'react';
 import defined from 'defined';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
-import { ImageCrop, ImageFocalPoint } from '../types';
+export interface ImageCrop {
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+}
+
+export interface ImageFocalPoint {
+  x: number;
+  y: number;
+}
 
 export const makeSrcQueryString = (width: number | undefined, crop?: ImageCrop, focalPoint?: ImageFocalPoint) => {
   const widthParams = width && `width=${width}`;

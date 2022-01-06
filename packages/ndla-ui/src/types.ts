@@ -45,18 +45,6 @@ export interface License {
   license: string;
 }
 
-export interface ImageCrop {
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-}
-
-export interface ImageFocalPoint {
-  x: number;
-  y: number;
-}
-
 export interface Copyright {
   license: License;
   creators: Array<Contributor>;

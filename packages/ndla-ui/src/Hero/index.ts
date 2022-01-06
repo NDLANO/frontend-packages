@@ -16,3 +16,5 @@ export {
   Hero,
   NdlaFilmHero,
 } from './Hero';
+
+export type { HeroContentType } from './Hero';

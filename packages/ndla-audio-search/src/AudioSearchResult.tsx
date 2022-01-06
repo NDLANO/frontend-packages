@@ -7,10 +7,11 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
+//@ts-ignore
 import Button from '@ndla/button';
+import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
 import AudioBar from './AudioBar';
 
 const classes = new BEMHelper({
@@ -18,12 +19,21 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }) {
+interface Props {
+  audio: IAudioSummary;
+  translations: { useAudio: string };
+  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
+  onError: (err: any) => void;
+  locale?: string;
+  onAudioSelect: (audio: IAudioSummary) => void;
+}
+
+export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <div key={audio.id} {...classes('list-item')}>
       <div {...classes('list-item-inner')}>
-        <h2>{audio.title.title}</h2>
+        <h2>{audio.title?.title}</h2>
         <div {...classes('license')}>
           {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
         </div>
@@ -35,20 +45,3 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
     </div>
   );
 }
-
-AudioSearchResult.propTypes = {
-  audio: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      language: PropTypes.string.isRequired,
-    }),
-  }),
-  translations: PropTypes.shape({
-    useAudio: PropTypes.string.isRequired,
-  }),
-  fetchAudio: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
-  onAudioSelect: PropTypes.func.isRequired,
-};

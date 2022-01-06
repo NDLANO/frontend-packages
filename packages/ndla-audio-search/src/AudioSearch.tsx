@@ -7,7 +7,8 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from '@ndla/types-audio-api';
+//@ts-ignore
 import Pager from '@ndla/pager';
 import BEMHelper from 'react-bem-helper';
 import AudioSearchForm from './AudioSearchForm';
@@ -18,8 +19,37 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class AudioSearch extends Component {
-  constructor(props) {
+interface Props {
+  queryObject: QueryObject;
+  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
+  searchAudios: (queryObject: QueryObject) => Promise<IAudioSummarySearchResult>;
+  onError: (err: any) => void;
+  translations: {
+    searchPlaceholder: string;
+    searchButtonTitle: string;
+    useAudio: string;
+    noResults: string;
+  };
+  onAudioSelect: (audio: IAudioSummary) => void;
+}
+
+export interface QueryObject {
+  query?: string;
+  audioType?: string;
+  page: number;
+  pageSize: number;
+  locale: string;
+}
+
+interface State {
+  queryObject: QueryObject;
+  audios: IAudioSummary[];
+  lastPage: number;
+  searching: boolean;
+}
+
+class AudioSearch extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       queryObject: props.queryObject,
@@ -36,7 +66,7 @@ class AudioSearch extends Component {
     this.searchAudios(this.state.queryObject);
   }
 
-  submitAudioSearchQuery(queryObject) {
+  submitAudioSearchQuery(queryObject: QueryObject) {
     this.searchAudios({
       query: queryObject.query,
       page: 1,
@@ -46,7 +76,7 @@ class AudioSearch extends Component {
     });
   }
 
-  searchAudios(queryObject) {
+  searchAudios(queryObject: QueryObject) {
     this.setState({ searching: true });
     this.props
       .searchAudios(queryObject)
@@ -73,7 +103,7 @@ class AudioSearch extends Component {
   render() {
     const { fetchAudio, onError, translations, onAudioSelect } = this.props;
     const { queryObject, audios, lastPage, searching } = this.state;
-    const { page, locale } = queryObject;
+    const { page, locale } = queryObject ?? {};
 
     return (
       <div {...classes()}>
@@ -93,7 +123,7 @@ class AudioSearch extends Component {
           onAudioSelect={onAudioSelect}
         />
         <Pager
-          page={page ? parseInt(page, 10) : 1}
+          page={page ?? 1}
           pathname=""
           lastPage={lastPage}
           query={queryObject}
@@ -104,25 +134,5 @@ class AudioSearch extends Component {
     );
   }
 }
-
-AudioSearch.propTypes = {
-  queryObject: PropTypes.shape({
-    query: PropTypes.string,
-    audioType: PropTypes.string,
-    page: PropTypes.number.isRequired,
-    pageSize: PropTypes.number.isRequired,
-    locale: PropTypes.string.isRequired,
-  }),
-  fetchAudio: PropTypes.func.isRequired,
-  searchAudios: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired,
-  translations: PropTypes.shape({
-    searchPlaceholder: PropTypes.string.isRequired,
-    searchButtonTitle: PropTypes.string.isRequired,
-    useAudio: PropTypes.string.isRequired,
-    noResults: PropTypes.string.isRequired,
-  }),
-  onAudioSelect: PropTypes.func.isRequired,
-};
 
 export default AudioSearch;

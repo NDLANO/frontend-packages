@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { makeSrcQueryString } from './Image';
-import { ImageCrop, ImageFocalPoint } from '../types';
+import { ImageCrop, ImageFocalPoint } from '.';
 
 const StyledLink = styled.a`
   box-shadow: inset 0 0;

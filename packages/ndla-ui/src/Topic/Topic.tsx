@@ -22,9 +22,7 @@ import { useTranslation } from 'react-i18next';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
-// @ts-ignore
-import { makeSrcQueryString } from '../Image';
-import { ImageCrop, ImageFocalPoint } from '../types';
+import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
 
 type InvertItProps = {
   invertedStyle?: boolean;

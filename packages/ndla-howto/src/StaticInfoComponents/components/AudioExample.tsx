@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { AudioPlayer, Figure, FigureCaption, FigureLicenseDialog } from '@ndla/ui';
+//@ts-ignore
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
+//@ts-ignore
 import { addCloseDialogClickListeners, addShowDialogClickListeners } from '@ndla/article-scripts';
 
-class AudioExample extends Component {
-  constructor(props) {
+interface Props {
+  runScripts?: boolean;
+}
+class AudioExample extends Component<Props> {
+  id: string;
+  constructor(props: Props) {
     super(props);
     this.id = uuid();
   }
@@ -38,14 +43,10 @@ class AudioExample extends Component {
 
     return (
       <Figure id={figureId} type="full-column">
-        <AudioPlayer
-          src="https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3"
-          type="audio/mpeg"
-          title={caption}
-          typeLabel="Hørespill"
-        />
+        <AudioPlayer src="https://api.staging.ndla.no/audio/files/Alltid_Nyheter_nrk128kps.mp3" title={caption} />
         <FigureLicenseDialog
           id={this.id}
+          locale="nb"
           key="details"
           license={license}
           authors={authors}
@@ -69,10 +70,6 @@ class AudioExample extends Component {
     );
   }
 }
-
-AudioExample.propTypes = {
-  runScripts: PropTypes.bool,
-};
 
 const AudioPlayerExamples = () => (
   <div>
@@ -98,12 +95,7 @@ const AudioPlayerExamples = () => (
           <td>v/n</td>
           <td>å reise (rundt); å dra på tur; reise(liv)</td>
           <td>
-            <AudioPlayer
-              src="https://api.staging.ndla.no/audio/files/shu3jia4.mp3"
-              type="audio/mpeg"
-              speech
-              title="Oversettelse"
-            />
+            <AudioPlayer src="https://api.staging.ndla.no/audio/files/shu3jia4.mp3" speech title="Oversettelse" />
           </td>
         </tr>
       </tbody>

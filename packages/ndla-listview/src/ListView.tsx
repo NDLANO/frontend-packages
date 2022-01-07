@@ -1,13 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
+//@ts-ignore
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
-import { withTranslation } from 'react-i18next';
-
+import { WithTranslation, withTranslation } from 'react-i18next';
 import ListItem from './ListItem';
 
 const ListViewWrapper = styled.div`
@@ -156,39 +155,70 @@ const CountWrapper = styled.h2`
   font-size: 20px;
 `;
 
-const categoryShape = PropTypes.shape({
-  title: PropTypes.string,
-  value: PropTypes.string,
-});
+export interface Category {
+  title?: string;
+  value?: string;
+}
 
-const listItemShape = PropTypes.shape({
-  name: PropTypes.string,
-  text: PropTypes.string,
-  image: PropTypes.string,
-  id: PropTypes.string,
-  subject: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      value: PropTypes.string,
-    }),
-  ),
-  category: PropTypes.oneOfType([PropTypes.arrayOf(categoryShape), categoryShape]),
-  source: PropTypes.string,
-  license: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
-});
+export interface ListItemType {
+  id?: string;
+  name: string;
+  description: string;
+  text?: string;
+  image?: string;
+  subject?: { title?: string; value?: string }[];
+  category?: Category | Category[];
+  source?: string;
+  tags?: string[];
+}
 
 const filterClasses = BEMHelper('c-filter');
 const searchFieldClasses = new BEMHelper('c-search-field');
 
+interface Option {
+  title: string;
+  value: string | number;
+  icon: Function;
+  noResults?: boolean;
+  disabled?: boolean;
+}
+
+interface Filter {
+  options: Option[] | Option[][];
+  onChange: (key: string, values: string[]) => void;
+  filterValues?: (string | number)[];
+  label?: string;
+  key: 'subject' | 'category' | 'default';
+  isGroupedOptions?: boolean;
+}
+
+interface Props extends WithTranslation {
+  items: ListItemType[];
+  filters?: Filter[];
+  selectedLetterCallback?: (letter: string) => void;
+  selectedLetter?: string;
+  viewStyle?: 'grid' | 'list';
+  viewStyleToggleable?: boolean;
+  disableSearch?: boolean;
+  disableViewOption?: boolean;
+  onChangedViewStyle?: (e: { viewStyle: 'grid' | 'list' }) => void;
+  alphabet?: Record<string, boolean>;
+  onChangedSearchValue?: (event: ChangeEvent<HTMLInputElement>) => void;
+  searchValue?: string;
+  onSelectItem: (item: ListItemType) => void;
+  selectedItem?: ReactNode;
+  renderMarkdown: (text: string) => ReactNode;
+  totalCount: number;
+}
+
 const ListView = ({
   items,
-  selectedLetter,
+  selectedLetter = '',
   selectedLetterCallback,
   disableSearch,
   disableViewOption,
   onChangedViewStyle,
-  viewStyle,
+  viewStyle = 'grid',
   filters,
   searchValue,
   onChangedSearchValue,
@@ -200,7 +230,7 @@ const ListView = ({
     return text;
   },
   t,
-}) => (
+}: Props) => (
   <ListViewWrapper>
     {filters ? (
       <div {...filterClasses('wrapper-multiple-filters')}>
@@ -219,7 +249,7 @@ const ListView = ({
               openFilter: t(`listview.filters.${filter.key}.openFilter`),
               closeFilter: t(`listview.filters.${filter.key}.closeFilter`),
             }}
-            onChange={(values) => {
+            onChange={(values: string[]) => {
               filter.onChange(filter.key, values);
             }}
           />
@@ -249,19 +279,19 @@ const ListView = ({
           <button
             type="button"
             className={`style-button ${viewStyle === 'list' && 'active'}`}
-            onClick={() => onChangedViewStyle({ viewStyle: 'list' })}>
+            onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}>
             <ListIcon />
           </button>
           <button
             type="button"
             className={`style-button ${viewStyle === 'grid' && 'active'}`}
-            onClick={() => onChangedViewStyle({ viewStyle: 'grid' })}>
+            onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}>
             <GridIcon />
           </button>
         </div>
       )}
 
-      {selectedLetterCallback ? (
+      {selectedLetterCallback && alphabet ? (
         <ul className={'alphabet'}>
           {Object.keys(alphabet).map((letter) => (
             <li key={`letter-${letter}`} className={'letter'}>
@@ -295,55 +325,5 @@ const ListView = ({
     {selectedItem}
   </ListViewWrapper>
 );
-
-const optionsShape = PropTypes.shape({
-  title: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  icon: PropTypes.func,
-  noResults: PropTypes.bool,
-  disabled: PropTypes.bool,
-});
-
-const filterShapes = PropTypes.shape({
-  options: PropTypes.oneOfType([PropTypes.arrayOf(optionsShape), PropTypes.arrayOf(PropTypes.arrayOf(optionsShape))])
-    .isRequired,
-  onChange: PropTypes.func.isRequired,
-  filterValues: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  label: PropTypes.string,
-  key: PropTypes.oneOf(['subject', 'category', 'default']),
-  isGroupedOptions: PropTypes.bool,
-});
-
-ListView.propTypes = {
-  items: PropTypes.arrayOf(listItemShape).isRequired,
-  filters: PropTypes.arrayOf(filterShapes),
-  selectedLetterCallback: PropTypes.func,
-  selectedLetter: PropTypes.string,
-  viewStyle: PropTypes.oneOf(['grid', 'list']),
-  viewStyleToggleable: PropTypes.bool,
-  disableSearch: PropTypes.bool,
-  disableViewOption: PropTypes.bool,
-  onChangedViewStyle: (props, propName, componentName) => {
-    if (props.disableViewOption !== true && typeof props[propName] !== 'function') {
-      return new Error(
-        `Invalid prop ${propName} supplied to ${componentName}. Must be a function when disableViewOption !== true.`,
-      );
-    }
-    return null;
-  },
-  alphabet: PropTypes.objectOf(PropTypes.bool),
-  onChangedSearchValue: PropTypes.func,
-  searchValue: PropTypes.string,
-  onSelectItem: PropTypes.func.isRequired,
-  selectedItem: PropTypes.node,
-  renderMarkdown: PropTypes.func.isRequired,
-  totalCount: PropTypes.number.isRequired,
-  t: PropTypes.func.isRequired,
-};
-
-ListView.defaultProps = {
-  viewStyle: 'grid',
-  selectedLetter: '',
-};
 
 export default withTranslation()(ListView);

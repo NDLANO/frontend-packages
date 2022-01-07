@@ -6,9 +6,8 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import React, { ReactNode } from 'react';
+import { css, InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
@@ -53,27 +52,26 @@ const NotionCSS = css`
   }
 `;
 
-const Notion = ({ id, ariaLabel, content, children, ...rest }) => (
+interface Props {
+  id: string;
+  title: string;
+  ariaLabel: string;
+  children?: ReactNode;
+  content?: ReactNode;
+  customCSS?: InterpolationWithTheme<any>;
+}
+const Notion = ({ id, ariaLabel, content, children, title, customCSS }: Props) => (
   <span css={NotionCSS} id={id} data-notion>
     <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
       {children}
     </button>
     {createUniversalPortal(
-      <NotionDialog {...rest} id={id}>
+      <NotionDialog id={id} title={title} customCSS={customCSS}>
         {content}
       </NotionDialog>,
       'body',
     )}
   </span>
 );
-
-Notion.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  title: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  content: PropTypes.node,
-  customCSS: PropTypes.object,
-};
 
 export default Notion;

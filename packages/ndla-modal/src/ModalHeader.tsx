@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import css from '@emotion/css';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 
@@ -87,7 +86,11 @@ const headerStyles = css`
   }
 `;
 
-const ModalHeader = ({ children, modifier }) => (
+interface Props {
+  children?: ReactNode;
+  modifier?: string | string[];
+}
+const ModalHeader = ({ children, modifier }: Props) => (
   <div
     data-cy="modal-header"
     css={headerStyles}
@@ -95,10 +98,5 @@ const ModalHeader = ({ children, modifier }) => (
     {children}
   </div>
 );
-
-ModalHeader.propTypes = {
-  children: PropTypes.node,
-  modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-};
 
 export default ModalHeader;

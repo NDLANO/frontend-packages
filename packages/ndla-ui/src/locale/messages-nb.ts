@@ -706,8 +706,8 @@ const messages = {
       licenseAuthor: 'Scanpix.no',
     },
     blog2: {
-      text: 'En god skolestart',
-      externalLink: 'https://blogg.ndla.no/engodskolestart/',
+      text: 'Aktiviser elevene med digitale verktøy',
+      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
       license: 'CC-BY-NC-SA-4.0',
       licenseAuthor: 'Scanpix.no',

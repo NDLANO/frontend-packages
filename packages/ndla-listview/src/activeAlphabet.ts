@@ -1,5 +1,7 @@
-const activeAlphabet = (items) => {
-  const letters = {};
+import { ListItemType } from './ListView';
+
+const activeAlphabet = (items: ListItemType[]) => {
+  const letters: Record<string, boolean> = {};
   'abcdefghijklmnopqrstuvxyzæøå'.split('').forEach((letter) => {
     letters[letter] = false;
   });

@@ -67,7 +67,7 @@ interface Props {
 
 export const FigureLicenseByline = ({ messages, license, locale }: Props) => (
   <>
-    <LicenseDescription key="byline" highlightCC locale={locale} messages={messages} licenseRights={license.rights} />,
+    <LicenseDescription key="byline" highlightCC locale={locale} messages={messages} licenseRights={license.rights} />
     <a key="link" {...classLicenses('link')} target="_blank" rel="noopener noreferrer" href={license.url}>
       {license.linkText}
     </a>

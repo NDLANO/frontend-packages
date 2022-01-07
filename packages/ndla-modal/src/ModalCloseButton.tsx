@@ -6,24 +6,20 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
+//@ts-ignore
 import Button from '@ndla/button';
 
-const ModalClose = ({ title, onClick, className }) => (
+interface Props {
+  title: ReactNode;
+  onClick: () => void;
+  className?: string;
+}
+
+const ModalClose = ({ title, onClick, className = '' }: Props) => (
   <Button data-cy="close-modal-button" onClick={onClick} link className={className}>
     {title}
   </Button>
 );
-
-ModalClose.propTypes = {
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  onClick: PropTypes.func.isRequired,
-  className: PropTypes.string,
-};
-
-ModalClose.defaultProps = {
-  className: '',
-};
 
 export default ModalClose;

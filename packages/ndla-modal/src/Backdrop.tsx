@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-const StyledBackdrop = styled('div')`
+const StyledBackdrop = styled('div')<Props>`
   position: fixed;
   z-index: 9000;
   top: 0;
@@ -28,7 +27,11 @@ const StyledBackdrop = styled('div')`
   animation-duration: ${(props) => props.animationDuration};
 `;
 
-export const Backdrop = React.forwardRef((props, ref) => {
+interface Props {
+  animateIn?: boolean;
+  animationDuration?: string;
+}
+export const Backdrop = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
     <StyledBackdrop
       ref={ref}
@@ -42,11 +45,7 @@ export const Backdrop = React.forwardRef((props, ref) => {
   );
 });
 
-Backdrop.propTypes = {
-  animateIn: PropTypes.bool,
-};
-
-Backdrop.defaultProp = {
+Backdrop.defaultProps = {
   animateIn: false,
   animationDuration: '400ms',
 };

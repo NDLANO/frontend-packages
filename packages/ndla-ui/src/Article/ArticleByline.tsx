@@ -127,7 +127,7 @@ const ArticleByline = ({
             backgroundColor="white"
             position="top"
             size="medium">
-            {(onClose: void) => (
+            {(onClose: () => void) => (
               <>
                 <ModalHeader modifier="no-bottom-padding">
                   <ModalCloseButton onClick={onClose} title="Lukk" />

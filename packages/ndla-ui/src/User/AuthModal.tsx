@@ -97,7 +97,7 @@ const AuthModal = ({
       isOpen={isOpen}
       onClose={onClose}
       controllable={!activateButton}>
-      {(onClose: void) => (
+      {(onClose: () => void) => (
         <StyledModalBody>
           <StyledModalHeader>
             <StyledHeading aria-label="Feide">

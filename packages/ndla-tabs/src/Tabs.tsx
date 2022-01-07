@@ -20,7 +20,7 @@ const classes = new BEMHelper({
 type TabType = {
   key?: string;
   title: string;
-  content: () => ReactNode | ReactNode;
+  content: (() => ReactNode) | ReactNode;
   disabled?: boolean;
 };
 
@@ -38,7 +38,7 @@ interface State {
   singleLineState: boolean;
 }
 
-const assertIsFunction = (maybeFunc: () => ReactNode | ReactNode): maybeFunc is () => ReactNode =>
+const assertIsFunction = (maybeFunc: (() => ReactNode) | ReactNode): maybeFunc is () => ReactNode =>
   isFunction(maybeFunc);
 
 class Tabs extends Component<Props, State> {

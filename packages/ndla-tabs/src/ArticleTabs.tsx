@@ -14,7 +14,7 @@ const classes = BEMHelper('c-tabs');
 type TabType = {
   id: string;
   title: string;
-  content: () => ReactNode | ReactNode;
+  content: (() => ReactNode) | ReactNode;
 };
 interface Props {
   tabs: TabType[];

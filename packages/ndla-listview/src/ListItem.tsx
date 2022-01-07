@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 
 import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
 import { DocumentDetails } from '@ndla/icons/common';
+import { Category, ListItemType } from './ListView';
 
 const ListItemWrapper = styled.div`
   padding: ${spacing.small};
@@ -68,7 +68,6 @@ const ListItemWrapper = styled.div`
   .item-description {
     ${fonts.sizes('14px', 1.3)};
     margin: 0;
-    color: ${colors.brand.text};
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -113,94 +112,53 @@ const ListItemWrapper = styled.div`
   }
 `;
 
-const categoryShape = PropTypes.shape({
-  title: PropTypes.string,
-  value: PropTypes.string,
-});
+interface Props {
+  item: ListItemType;
+  clickCallback?: Function;
+  nextItem?: {};
+  previousItem?: {};
+  viewStyle: 'grid' | 'list';
+  renderMarkdown: Function;
+}
+const ListItem = ({ item, clickCallback, nextItem, previousItem, viewStyle, renderMarkdown }: Props) => {
+  const handleClick = () => clickCallback?.(item);
 
-const listItemShape = PropTypes.shape({
-  name: PropTypes.string,
-  text: PropTypes.string,
-  image: PropTypes.string,
-  id: PropTypes.string,
-  category: PropTypes.oneOfType([PropTypes.arrayOf(categoryShape), categoryShape]),
-  source: PropTypes.string,
-  license: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
-});
-
-class ListItem extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-  }
-
-  handleClick() {
-    if (this.props.clickCallback) {
-      this.props.clickCallback(this.props.item, this.props.itemIndex);
-    }
-  }
-
-  handleKeyUp(evt) {
+  const handleKeyUp = (evt: KeyboardEvent<HTMLDivElement>) => {
     if (evt.key === 'Enter') {
-      this.props.clickCallback(this.props.item, this.props.itemIndex);
+      clickCallback?.(item);
     }
-  }
+  };
 
-  renderItem() {
-    const { item, renderMarkdown } = this.props;
-    return (
-      <Fragment>
-        <h3 className={'item-name'}>{item.name}</h3>
-        <p className={'item-description'}>{renderMarkdown(item.description)}</p>
-      </Fragment>
-    );
-  }
+  const renderItem = () => (
+    <>
+      <h3 className={'item-name'}>{item.name}</h3>
+      <p className={'item-description'}>{renderMarkdown(item.description)}</p>
+    </>
+  );
 
-  renderNoImage() {
-    return (
-      <div className={'no-image-wrapper'}>
-        <div className={'no-image'}>
-          <DocumentDetails className={`c-icon--large`} />
-        </div>
+  const renderNoImage = () => (
+    <div className={'no-image-wrapper'}>
+      <div className={'no-image'}>
+        <DocumentDetails className={`c-icon--large`} />
       </div>
-    );
-  }
+    </div>
+  );
 
-  renderCategory(category) {
+  const renderCategory = (category: Category | Category[]) => {
     const values = !Array.isArray(category) ? [category] : category;
     return <span className={'item-category'}>{values[0].title}</span>;
-  }
+  };
 
-  render() {
-    const { item, viewStyle } = this.props;
-    const { category } = item;
-    return (
-      <ListItemWrapper
-        onClick={this.handleClick}
-        onKeyUp={this.handleKeyUp}
-        role="button"
-        className={viewStyle}
-        tabIndex={0}>
-        <div className={'item-image'}>
-          {item.image ? <img src={item.image} alt={item.description} /> : this.renderNoImage()}
-          {category && this.renderCategory(category)}
-        </div>
-        {viewStyle === 'grid' ? this.renderItem() : <div>{this.renderItem()}</div>}
-      </ListItemWrapper>
-    );
-  }
-}
-
-ListItem.propTypes = {
-  item: listItemShape,
-  clickCallback: PropTypes.func,
-  nextItem: PropTypes.shape(),
-  previousItem: PropTypes.shape(),
-  itemIndex: PropTypes.number,
-  viewStyle: PropTypes.oneOf(['grid', 'list']).isRequired,
-  renderMarkdown: PropTypes.func.isRequired,
+  const { category } = item;
+  return (
+    <ListItemWrapper onClick={handleClick} onKeyUp={handleKeyUp} role="button" className={viewStyle} tabIndex={0}>
+      <div className={'item-image'}>
+        {item.image ? <img src={item.image} alt={item.description} /> : renderNoImage()}
+        {category && renderCategory(category)}
+      </div>
+      {viewStyle === 'grid' ? renderItem() : <div>{renderItem()}</div>}
+    </ListItemWrapper>
+  );
 };
 
 export default ListItem;

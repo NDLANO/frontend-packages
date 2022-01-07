@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, spacingUnit, misc, fonts, animations, breakpoints, mq } from '@ndla/core';
 
-type Appearance =
+export type ButtonAppearance =
   | 'outline'
   | 'link'
   | 'stripped'
@@ -32,11 +32,11 @@ type Appearance =
   | 'clippedButtonAttachmentLarge'
   | 'clippedButtonAttachmentOutlineLarge';
 
-type Size = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
-type Border = 'normal' | 'rounded' | 'sharpened';
-type Width = 'auto' | 'full';
-type TextAlign = 'center' | 'left' | 'right';
-type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
+export type ButtonBorder = 'normal' | 'rounded' | 'sharpened';
+export type ButtonWidth = 'auto' | 'full';
+export type ButtonTextAlign = 'center' | 'left' | 'right';
+export type ButtonType = 'button' | 'submit' | 'reset';
 
 interface Props extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
   className?: string;
@@ -51,11 +51,11 @@ interface Props extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
   ghostPillInverted?: boolean;
   loading?: boolean;
   safelink?: string;
-  appearance?: Appearance;
-  size?: Size;
-  borderShape?: Border;
-  width?: Width;
-  textAlign?: TextAlign;
+  appearance?: ButtonAppearance;
+  size?: ButtonSize;
+  borderShape?: ButtonBorder;
+  width?: ButtonWidth;
+  textAlign?: ButtonTextAlign;
   darker?: boolean;
   greyLighter?: boolean;
   greyLightest?: boolean;
@@ -135,7 +135,7 @@ export const outlineStyle = css`
   }
 `;
 
-const outlineWithSize = (size?: Size) =>
+const outlineWithSize = (size?: ButtonSize) =>
   css`
     ${outlineStyle}
     ${(size === 'xsmall' || size === 'small') &&
@@ -240,7 +240,7 @@ export const borderShapes = {
   normal: () => css`
     border-radius: ${misc.borderRadius};
   `,
-  rounded: (size?: Size) => css`
+  rounded: (size?: ButtonSize) => css`
     border-radius: 32px;
     font-weight: ${fonts.weight.semibold};
     padding-left: 20px;
@@ -268,7 +268,7 @@ export const borderShapes = {
       }`
       : null}
   `,
-  sharpened: (size?: Size) => css`
+  sharpened: (size?: ButtonSize) => css`
     border-radius: 2px;
     font-weight: ${fonts.weight.semibold};
     ${size === 'medium' ? `padding-left:20px;padding-right:20px;` : null};
@@ -545,8 +545,8 @@ export const StyledButton = styled('button')<Props>`
 `;
 
 // Reverse the array to find the last element first
-const modifierToApperance = (modifiers: Record<Appearance, boolean | undefined>) =>
-  (Object.keys(modifiers) as Appearance[]).reverse().find((key) => modifiers[key]);
+const modifierToApperance = (modifiers: Record<ButtonAppearance, boolean | undefined>) =>
+  (Object.keys(modifiers) as ButtonAppearance[]).reverse().find((key) => modifiers[key]);
 
 export const Button = ({
   outline,
@@ -576,7 +576,7 @@ export const Button = ({
   const clippedButtonOutlineLarge = clippedButtonOutline && large;
   const clippedButtonAttachmentLarge = clippedButtonAttachment && large;
   const clippedButtonAttachmentOutlineLarge = clippedButtonAttachmentOutline && large;
-  const modifiers: Record<Appearance, boolean | undefined> = {
+  const modifiers: Record<ButtonAppearance, boolean | undefined> = {
     link,
     large,
     outline,

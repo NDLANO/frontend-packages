@@ -1,9 +1,27 @@
+import { ComponentType } from 'react';
 import AudioPlayerExamples from './components/AudioExample';
 import FactBoxExample from './components/FactBoxExample';
 import SolutionExample from './components/SolutionExample';
 import Markdown from './components/Markdown';
 
-export const stories = {
+interface Story {
+  title?: string;
+  lead?: string;
+  imageUrl?: string;
+  body?: (ImageBody | ComponentBody | TextBody | LinkBody)[];
+}
+
+interface Body<Type extends string, Content> {
+  type: Type;
+  content: Content;
+}
+
+type ImageBody = Body<'image', string>;
+type ComponentBody = Body<'component', ComponentType>;
+type TextBody = Body<'text', string>;
+type LinkBody = Body<'link', { href: string; text: string }>;
+
+export const stories: Record<string, Story> = {
   Paragraph: {
     title: 'Paragraf',
     lead: 'Dette lager en ny seksjon i teksten. Det skiller seg fra et hard linjeskrift..',

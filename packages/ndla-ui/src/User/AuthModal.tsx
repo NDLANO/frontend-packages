@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
@@ -70,7 +70,7 @@ export type AuthModalProps = {
   authorizedCollectedInfo?: string[];
   onAuthenticateClick: () => void;
   position?: 'top' | 'bottom';
-  activateButton?: ReactNode;
+  activateButton?: ReactElement;
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;

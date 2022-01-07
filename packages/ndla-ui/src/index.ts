@@ -24,6 +24,8 @@ export {
   default as Article,
 } from './Article';
 
+export { default as Table } from './Table';
+
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 
 export { createUniversalPortal } from './utils/createUniversalPortal';

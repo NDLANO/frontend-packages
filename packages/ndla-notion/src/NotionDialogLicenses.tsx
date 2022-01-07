@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors } from '@ndla/core';
 import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
@@ -26,16 +25,20 @@ const NotionDialogLicensesWrapper = styled.div`
   }
 `;
 
-const NotionDialogLicenses = ({ license, authors, source, locale, licenseBox }) => {
-  const licenseRights = getLicenseByAbbreviation(license, locale).rights;
+interface Props {
+  license?: string;
+  authors?: string[];
+  source?: string;
+  licenseBox?: ReactNode;
+  locale?: string;
+}
+
+const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBox }: Props) => {
+  const licenseRights = license ? getLicenseByAbbreviation(license, locale).rights : [];
   const authorsLength = authors.length;
-  const wrapLink = (source) => {
+  const wrapLink = (source?: string) => {
     if (source?.startsWith('http')) {
-      return (
-        <a href={source} alt={source}>
-          {source}
-        </a>
-      );
+      return <a href={source}>{source}</a>;
     }
     return source;
   };
@@ -59,18 +62,6 @@ const NotionDialogLicenses = ({ license, authors, source, locale, licenseBox }) 
       {licenseBox && <span>{licenseBox}</span>}
     </NotionDialogLicensesWrapper>
   );
-};
-
-NotionDialogLicenses.propTypes = {
-  license: PropTypes.string,
-  authors: PropTypes.arrayOf(PropTypes.string),
-  source: PropTypes.string,
-  licenseBox: PropTypes.node,
-  locale: PropTypes.string,
-};
-
-NotionDialogLicenses.defaultProps = {
-  authors: [],
 };
 
 export { NotionDialogLicenses as default };

@@ -1,25 +1,25 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
+//@ts-ignore
 import Modal from '@ndla/modal';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';
 
-const NotionDialogWrapper = ({ title, children, closeCallback, subTitle }) => (
+interface Props {
+  title: string;
+  children?: ReactNode;
+  closeCallback?: () => void;
+  subTitle?: string;
+}
+
+const NotionDialogWrapper = ({ title, children, closeCallback, subTitle }: Props) => (
   <Modal backgroundColor="white" controllable isOpen animation="subtle" onClose={closeCallback}>
-    {(onCloseModal) => (
-      <Fragment>
+    {(onCloseModal: () => void) => (
+      <>
         <NotionHeader title={title} subTitle={subTitle} onClose={onCloseModal} />
         <NotionBody>{children}</NotionBody>
-      </Fragment>
+      </>
     )}
   </Modal>
 );
-
-NotionDialogWrapper.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  closeCallback: PropTypes.func,
-  subTitle: PropTypes.string,
-};
 
 export default NotionDialogWrapper;

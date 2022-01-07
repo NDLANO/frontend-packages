@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { spacing, colors, fonts, misc } from '@ndla/core';
@@ -46,17 +45,25 @@ const NotionHeaderWrapper = styled.div`
   }
 `;
 
-const notionTitle = (title, subTitle) => (
+const notionTitle = (title: string, subTitle?: string) => (
   <h1>
     {title} {subTitle ? <small>{subTitle}</small> : null}
   </h1>
 );
 
-export const NotionHeaderWithoutExitButton = ({ title, subTitle }) => (
+interface NotionHeaderProps {
+  title: string;
+  subTitle?: string;
+  onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
+}
+
+type NotionHeaderWithoutExitButtonProps = Omit<NotionHeaderProps, 'onClose'>;
+
+export const NotionHeaderWithoutExitButton = ({ title, subTitle }: NotionHeaderWithoutExitButtonProps) => (
   <NotionHeaderWrapper>{notionTitle(title, subTitle)}</NotionHeaderWrapper>
 );
 
-const NotionHeader = ({ title, subTitle, onClose }) => {
+const NotionHeader = ({ title, subTitle, onClose }: NotionHeaderProps) => {
   const { t } = useTranslation();
   return (
     <NotionHeaderWrapper>
@@ -72,17 +79,6 @@ const NotionHeader = ({ title, subTitle, onClose }) => {
       )}
     </NotionHeaderWrapper>
   );
-};
-
-NotionHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
-  onClose: PropTypes.func,
-};
-
-NotionHeaderWithoutExitButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
 };
 
 export { NotionHeader as default };

@@ -102,7 +102,7 @@ export interface FigureLicense {
 
 interface FigureCaptionProps {
   figureId: string;
-  id: string;
+  id?: string;
   caption?: string;
   reuseLabel: string;
   licenseRights: string[];
@@ -133,9 +133,9 @@ const isFunction = (children: Function | ReactNode): children is Function => {
 };
 
 interface Props {
-  id: string;
+  id?: string;
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
-  type: 'full' | 'full-column' | 'left' | 'small-left' | 'right' | 'small-right' | 'xsmall-right' | 'xsmall-left';
+  type?: 'full' | 'full-column' | 'left' | 'small-left' | 'right' | 'small-right' | 'xsmall-right' | 'xsmall-left';
   resizeIframe?: boolean;
   noFigcaption?: boolean;
 }

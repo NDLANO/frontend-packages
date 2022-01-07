@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 //@ts-ignore
 import Modal from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
@@ -64,7 +64,7 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
 
 interface Props {
   pageId: string;
-  activateButton: ReactNode;
+  activateButton: ReactElement;
   tooltip?: string;
 }
 

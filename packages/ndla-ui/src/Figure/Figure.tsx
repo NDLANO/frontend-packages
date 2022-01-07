@@ -11,14 +11,13 @@
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { isFunction, parseMarkdown } from '@ndla/util';
+import { isFunction as isFunctionHelper, parseMarkdown } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
 //@ts-ignore
 import Button from '@ndla/button';
-import { License } from '../types';
 
 const classes = new BEMHelper({
   name: 'figure',
@@ -91,7 +90,7 @@ export const FigureCaption = ({
   );
 };
 
-export interface FigureLicense extends License {
+export interface FigureLicense {
   short: string;
   title: string;
   userFriendlyTitle: string;
@@ -129,9 +128,13 @@ const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {
   );
 };
 
+const isFunction = (children: Function | ReactNode): children is Function => {
+  return isFunctionHelper(children);
+};
+
 interface Props {
   id: string;
-  children: (params: { typeClass: string }) => ReactNode | ReactNode;
+  children: ReactNode | ((params: { typeClass: string }) => ReactNode);
   type: 'full' | 'full-column' | 'left' | 'small-left' | 'right' | 'small-right' | 'xsmall-right' | 'xsmall-left';
   resizeIframe?: boolean;
   noFigcaption?: boolean;

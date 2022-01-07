@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, ReactNode } from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';
+//@ts-ignore
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';
@@ -11,7 +11,10 @@ import { useTranslation } from 'react-i18next';
 
 import { classes } from './ResourcesWrapper';
 
-const HelpIcon = ({ invertedStyle }) => (
+interface HelpIconProps {
+  invertedStyle: boolean;
+}
+const HelpIcon = ({ invertedStyle }: HelpIconProps) => (
   <div {...classes('topic-title-icon', { invertedStyle })}>
     <HelpCircleDual className={`c-icon--22 u-margin-left-tiny ${classes('icon').className}`} />
   </div>
@@ -37,14 +40,25 @@ const TooltipButton = styled.button`
   cursor: pointer;
 `;
 
+interface Props {
+  title?: string;
+  toggleAdditionalResources: () => void;
+  hasAdditionalResources: boolean;
+  showAdditionalResources: boolean;
+  invertedStyle?: boolean;
+  messages: {
+    label: string;
+    additionalFilterLabel: string;
+  };
+}
 const ResourcesTopicTitle = ({
   title,
   hasAdditionalResources,
   toggleAdditionalResources,
   showAdditionalResources,
   messages,
-  invertedStyle,
-}) => {
+  invertedStyle = false,
+}: Props) => {
   const { t } = useTranslation();
   // Fix for heading while title not required when ready.
   let heading;
@@ -70,7 +84,7 @@ const ResourcesTopicTitle = ({
           />
           <Modal
             narrow
-            wrapperFunctionForButton={(activateButton) => (
+            wrapperFunctionForButton={(activateButton: ReactNode) => (
               <TooltipWrapper>
                 <Tooltip tooltip={t('resource.dialogTooltip')}>{activateButton}</Tooltip>
               </TooltipWrapper>
@@ -80,8 +94,8 @@ const ResourcesTopicTitle = ({
                 <HelpIcon invertedStyle={invertedStyle} />
               </TooltipButton>
             }>
-            {(onClose) => (
-              <Fragment>
+            {(onClose: () => void) => (
+              <>
                 <ModalHeader>
                   <ModalCloseButton title={t('modal.closeModal')} onClick={onClose} />
                 </ModalHeader>
@@ -91,26 +105,13 @@ const ResourcesTopicTitle = ({
                   <p>{t('resource.dialogText1')}</p>
                   <p>{t('resource.dialogText2')}</p>
                 </ModalBody>
-              </Fragment>
+              </>
             )}
           </Modal>
         </div>
       )}
     </header>
   );
-};
-
-/* eslint-disable no-console */
-ResourcesTopicTitle.propTypes = {
-  title: PropTypes.string, // Should be required
-  toggleAdditionalResources: PropTypes.func.isRequired,
-  hasAdditionalResources: PropTypes.bool.isRequired,
-  showAdditionalResources: PropTypes.bool.isRequired,
-  invertedStyle: PropTypes.bool,
-  messages: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    additionalFilterLabel: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default ResourcesTopicTitle;

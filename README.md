@@ -90,6 +90,8 @@ yarn deploy
 
 As an alternative to linking packages locally, alpha versions of packages can be published and used in other repositories.
 
+**READ FIRST:** This guide is not fully functional. When merging and bumping alpha versions in the second step, the released package is not necessarily correct. The guide has to be updated to resolve this issue.
+
 ### Creating alpha version and using it
 
 - `yarn lerna publish --canary`. Will bump patch version and add current git sha to version. For example: `1.0.1-alpha.0+${SHA}`

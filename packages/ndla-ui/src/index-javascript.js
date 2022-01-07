@@ -7,7 +7,6 @@
  */
 
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
-export { default as FactBox } from './FactBox';
 
 export {
   SearchOverlay,
@@ -34,10 +33,8 @@ export {
   ExternalLearningResourcesBadge,
   SourceMaterialBadge,
 } from './ContentTypeBadge';
-export { createUniversalPortal } from './utils/createUniversalPortal';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
-export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
 export {
   default as CompetenceGoals,
   CompetenceGoalList,
@@ -46,7 +43,6 @@ export {
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
-export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
 export {
   MediaList,
   MediaListItem,

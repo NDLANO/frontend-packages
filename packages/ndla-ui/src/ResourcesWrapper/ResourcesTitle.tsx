@@ -6,20 +6,18 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { classes } from './ResourcesWrapper';
 import { SubjectBadge } from '../ContentTypeBadge';
 
-const ResourceTitle = ({ children }) => (
+interface Props {
+  children: ReactNode;
+}
+const ResourceTitle = ({ children }: Props) => (
   <div {...classes('title-wrapper')}>
     <SubjectBadge size="large" background />
     <h1 {...classes('title')}>{children}</h1>
   </div>
 );
-
-ResourceTitle.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default ResourceTitle;

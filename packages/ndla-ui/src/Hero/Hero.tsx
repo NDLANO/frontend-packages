@@ -16,20 +16,22 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
+export type HeroContentType =
+  | 'subject-material'
+  | 'tasks-and-activities'
+  | 'assessment-resources'
+  | 'subject'
+  | 'external-learning-resources'
+  | 'source-material'
+  | 'learning-path'
+  | 'topic'
+  | 'beta'
+  | 'ndla-film'
+  | 'ndla-film has-image';
+
 interface HeroProps {
   children?: ReactNode;
-  contentType:
-    | 'subject-material'
-    | 'tasks-and-activities'
-    | 'assessment-resources'
-    | 'subject'
-    | 'external-learning-resources'
-    | 'source-material'
-    | 'learning-path'
-    | 'topic'
-    | 'beta'
-    | 'ndla-film'
-    | 'ndla-film has-image';
+  contentType?: HeroContentType;
 }
 
 export const Hero = ({ children, contentType }: HeroProps) => (

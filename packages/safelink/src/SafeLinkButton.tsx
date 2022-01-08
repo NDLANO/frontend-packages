@@ -8,16 +8,13 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-// @ts-ignore
-import { appearances, ButtonStyles } from '@ndla/button';
+import { appearances, ButtonStyles, ButtonAppearance } from '@ndla/button';
 import SafeLink from './SafeLink';
 
-interface StylesProps {
-  [key: string]: boolean | undefined;
-}
+type StylesProps = Record<ButtonAppearance, boolean | undefined>;
 
-const getStyles = (modifiers: StylesProps) =>
-  Object.keys(modifiers)
+const getStyles = (modifiers: Partial<StylesProps>) =>
+  (Object.keys(modifiers) as ButtonAppearance[])
     .map((key) => (modifiers[key] ? appearances[key] : undefined))
     .filter((appearance) => !!appearance);
 

@@ -132,10 +132,20 @@ const isFunction = (children: Function | ReactNode): children is Function => {
   return isFunctionHelper(children);
 };
 
+export type FigureType =
+  | 'full'
+  | 'full-column'
+  | 'left'
+  | 'small-left'
+  | 'right'
+  | 'small-right'
+  | 'xsmall-right'
+  | 'xsmall-left';
+
 interface Props {
   id?: string;
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
-  type?: 'full' | 'full-column' | 'left' | 'small-left' | 'right' | 'small-right' | 'xsmall-right' | 'xsmall-left';
+  type?: FigureType;
   resizeIframe?: boolean;
   noFigcaption?: boolean;
 }

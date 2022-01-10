@@ -177,9 +177,10 @@ interface Props {
   ariaHidden?: boolean;
   children?: ReactNode;
   customCSS: InterpolationWithTheme<any>;
+  headerContent?: ReactNode;
 }
 
-const NotionDialog = ({ title, children, id, subTitle, ariaHidden = true, customCSS }: Props) => (
+const NotionDialog = ({ title, children, id, subTitle, ariaHidden = true, customCSS, headerContent }: Props) => (
   <NotionDialogStyledWrapper
     aria-hidden={ariaHidden}
     role="dialog"
@@ -187,7 +188,7 @@ const NotionDialog = ({ title, children, id, subTitle, ariaHidden = true, custom
     aria-labelledby={id}
     aria-describedby={id}
     css={customCSS}>
-    <NotionHeader title={title} subTitle={subTitle} />
+    <NotionHeader title={title} subTitle={subTitle} children={headerContent} />
     <NotionBody>{children}</NotionBody>
   </NotionDialogStyledWrapper>
 );

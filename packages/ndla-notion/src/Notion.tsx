@@ -56,18 +56,19 @@ interface Props {
   id: string;
   title: string;
   ariaLabel: string;
+  subTitle?: string;
   children?: ReactNode;
   content?: ReactNode;
   headerContent?: ReactNode;
   customCSS?: InterpolationWithTheme<any>;
 }
-const Notion = ({ id, ariaLabel, content, children, title, customCSS, headerContent }: Props) => (
+const Notion = ({ id, ariaLabel, content, children, title, subTitle, customCSS, headerContent }: Props) => (
   <span css={NotionCSS} id={id} data-notion>
     <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
       {children}
     </button>
     {createUniversalPortal(
-      <NotionDialog id={id} title={title} customCSS={customCSS} headerContent={headerContent}>
+      <NotionDialog id={id} title={title} subTitle={subTitle} customCSS={customCSS} headerContent={headerContent}>
         {content}
       </NotionDialog>,
       'body',

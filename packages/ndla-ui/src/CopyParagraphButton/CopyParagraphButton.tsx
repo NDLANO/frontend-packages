@@ -101,7 +101,7 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
           <Link title={''} />
         </Tooltip>
       </IconButton>
-      <h2 tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
+      <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
     </WrapperComponent>
   );
 };

@@ -46,13 +46,6 @@ const ContainerDiv = styled.div`
   }
 `;
 
-const AnchorDiv = styled.div`
-  display: block;
-  position: absolute;
-  top: -100px;
-  visibility: hidden;
-`;
-
 interface Props {
   title?: string | null;
   content?: string | null;
@@ -108,7 +101,6 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
           <Link title={''} />
         </Tooltip>
       </IconButton>
-      <AnchorDiv id={sanitizedTitle} />
       <h2 tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
     </WrapperComponent>
   );

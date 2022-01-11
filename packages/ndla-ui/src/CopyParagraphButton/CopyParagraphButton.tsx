@@ -33,8 +33,6 @@ const IconButton = styled.button`
 `;
 
 const ContainerDiv = styled.div`
-  position: relative;
-
   &:hover button {
     cursor: pointer;
     opacity: 0.5;

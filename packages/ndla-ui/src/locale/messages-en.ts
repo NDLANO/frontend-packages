@@ -700,11 +700,11 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
       text: 'Aktiviser elevane med digitale verktøy',

@@ -21,8 +21,11 @@ type StyledBlogProps = {
   oneColumn?: boolean;
 };
 
-const StyledLicense = styled.span`
-  color: #fff;
+interface StyledLicenseProps {
+  textColor?: string;
+}
+const StyledLicense = styled.span<StyledLicenseProps>`
+  color: ${(p) => (p.textColor ? p.textColor : '#fff')};
   position: absolute !important;
   background: rgba(0, 0, 0, 0.2);
   bottom: ${spacing.xsmall};
@@ -158,6 +161,8 @@ type Props = {
     url: string;
   };
   oneColumn?: boolean;
+  iconColor?: string;
+  textColor?: string;
 };
 
 export const BlogPost: React.FunctionComponent<Props> = ({
@@ -169,6 +174,8 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   licenseAuthor,
   locale,
   oneColumn,
+  iconColor = '#fff',
+  textColor,
 }) => {
   const { rights } = getLicenseByAbbreviation(license || '', 'nb');
   return (
@@ -182,8 +189,8 @@ export const BlogPost: React.FunctionComponent<Props> = ({
               <LaunchIcon />
             </span>
           </StyledSafeLink>
-          <StyledLicense>
-            <LicenseByline locale={locale} color="#fff" licenseRights={rights} />
+          <StyledLicense textColor={textColor}>
+            <LicenseByline locale={locale} color="#fff" licenseRights={rights} iconColor={iconColor} />
             {licenseAuthor}
           </StyledLicense>
         </StyledBlog>

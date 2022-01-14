@@ -50,12 +50,16 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
     height: 24px;`};
   }
 `;
-export const StyledLicenseIconButton = styled.button`
+
+interface StyledLicenseIconButtonprops {
+  iconColor?: string;
+}
+export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprops>`
   display: flex;
   border: 0;
   margin: 0;
   padding: 0;
-  color: ${colors.text.primary};
+  color: ${(p) => (p.iconColor ? p.iconColor : colors.text.primary)};
   background: transparent;
   &:hover,
   &:focus {
@@ -73,14 +77,15 @@ interface LicenseIconItemProps {
   licenseRight: string;
   locale?: string;
   horizontal?: boolean;
+  iconColor?: string;
 }
 
-const LicenseIconItem = ({ licenseRight, locale, horizontal }: LicenseIconItemProps) => {
+const LicenseIconItem = ({ licenseRight, locale, horizontal, iconColor }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
     <StyledLicenseIconItem horizontal={horizontal}>
-      <StyledLicenseIconButton type="button">
+      <StyledLicenseIconButton type="button" iconColor={iconColor}>
         <LicenseIcon licenseRight={licenseRight} description={description} />
         <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
       </StyledLicenseIconButton>
@@ -97,14 +102,28 @@ interface LicenseIconListProps {
   licenseRights: string[];
   locale?: string;
   color?: string;
+  iconColor?: string;
   marginRight?: boolean;
   horizontal?: boolean;
 }
 
-const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal }: LicenseIconListProps) => (
+const LicenseIconList = ({
+  licenseRights,
+  locale,
+  color,
+  marginRight,
+  horizontal,
+  iconColor,
+}: LicenseIconListProps) => (
   <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
     {licenseRights.map((licenseRight) => (
-      <LicenseIconItem key={licenseRight} licenseRight={licenseRight} locale={locale} horizontal={horizontal} />
+      <LicenseIconItem
+        key={licenseRight}
+        licenseRight={licenseRight}
+        locale={locale}
+        horizontal={horizontal}
+        iconColor={iconColor}
+      />
     ))}
   </StyledLicenseIconList>
 );

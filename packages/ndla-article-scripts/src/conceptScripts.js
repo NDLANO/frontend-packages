@@ -70,16 +70,6 @@ export const addShowConceptDefinitionClickListeners = () => {
       window.removeEventListener('mousedown', checkClickOutside, true);
 
       if (wasHidden) {
-        popup.classList.add('visible');
-        popup.setAttribute('aria-hidden', false);
-        const parentOffset = getElementOffset(popup.offsetParent).top;
-        const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        popup.style.top = `${openBtnBottom + 10}px`;
-        const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        const popupHeight = popup.offsetHeight;
-        const popupTop = getElementOffset(popup).top;
-        let offset = 0;
-
         const { body } = document;
         const html = document.documentElement;
         const documentHeight = Math.max(
@@ -90,10 +80,31 @@ export const addShowConceptDefinitionClickListeners = () => {
           html.offsetHeight,
         );
 
+        popup.classList.add('visible');
+        popup.setAttribute('aria-hidden', false);
+        const parentOffset = getElementOffset(popup.offsetParent).top;
+        const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
+        popup.style.top = `${openBtnBottom + 10}px`;
+        const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        const popupHeight = popup.offsetHeight;
+        const popupTop = getElementOffset(popup).top;
+
+        let offset = 0;
+
         if (popupTop + popupHeight < documentHeight) {
           offset = -((viewportHeight - popupHeight) / 2);
         } else {
           offset = popupHeight;
+        }
+        if (popupTop + popupHeight > documentHeight) {
+          const maxHeight = documentHeight - popupTop;
+
+          if (maxHeight < 200) {
+            popup.style.height = `auto`;
+          } else {
+            popup.style.height = `${maxHeight}px`;
+            popup.style.overflowY = 'scroll';
+          }
         }
         if (inIframe() && window.parent) {
           window.parent.postMessage(

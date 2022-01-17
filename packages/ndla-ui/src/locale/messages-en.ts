@@ -359,7 +359,7 @@ const messages = {
     competenceTopicSearchText: 'Find resources',
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
-    competenceGoalTitle: 'The goal is for the student to be able to:',
+    competenceGoalTitle: 'The pupil is expected to be able to:',
     competenceTabLK06label: 'Competence goal (LK06)',
     competenceTabLK20label: 'Competence goal (LK20)',
     competenceTabCorelabel: 'Core element',

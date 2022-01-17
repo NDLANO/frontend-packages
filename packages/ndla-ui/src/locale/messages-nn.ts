@@ -359,7 +359,7 @@ const messages = {
     competenceTopicSearchText: 'Søk ressursar for tema',
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
-    competenceGoalTitle: 'Målet er at eleven skal kunna:',
+    competenceGoalTitle: 'Målet er at eleven skal kunne:',
     competenceTabLK06label: 'Kompetansemål (LK06)',
     competenceTabLK20label: 'Kompetansemål (LK20)',
     competenceTabCorelabel: 'Kjerneelement',

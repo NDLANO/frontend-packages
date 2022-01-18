@@ -6,7 +6,7 @@
 
 .c-table {
   $scrollbar-height: 8px;
-  margin: 0;
+  margin: 0 0 $spacing--medium 0;
 
   &::-webkit-scrollbar {
     height: $scrollbar-height;
@@ -84,22 +84,12 @@
 
   &__left-shadow {
     left: 0;
-    background: radial-gradient(
-        ellipse at left,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0) 75%
-      )
-      0 center;
+    background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center;
   }
 
   &__right-shadow {
     right: 0;
-    background: radial-gradient(
-        ellipse at right,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0) 75%
-      )
-      0 center;
+    background: radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center;
   }
 }
 

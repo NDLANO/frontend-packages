@@ -844,6 +844,7 @@ const messages = {
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
       employee: 'Teacher',
+      staff: 'Staff',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',

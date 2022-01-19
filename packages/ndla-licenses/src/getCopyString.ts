@@ -1,5 +1,4 @@
 import { TFunction } from 'i18next';
-import { LocaleType } from './types';
 import { Contributor } from './contributorTypes';
 
 export const getLicenseCredits = (copyright?: {
@@ -14,14 +13,14 @@ export const getLicenseCredits = (copyright?: {
   };
 };
 
-const makeCreditCopyString = (roles: Contributor[], locale: LocaleType, t: TFunction) => {
+const makeCreditCopyString = (roles: Contributor[], t: TFunction) => {
   if (!roles?.length) {
     return '';
   }
   return (
     roles
       .map((creator) => {
-        const type = creator.type && t(locale, `${creator.type.toLowerCase()}`);
+        const type = creator.type && t(`${creator.type.toLowerCase()}`);
         return `${type}: ${creator.name?.trim()}`;
       })
       .join(', ') + '. '
@@ -55,15 +54,14 @@ export const getCopyString = (
         processors?: Contributor[];
       }
     | undefined,
-  locale: LocaleType,
   ndlaFrontendDomain: string | undefined,
   t: TFunction,
 ): string => {
   const credits = getLicenseCredits(copyright);
-  const creators = makeCreditCopyString(credits.creators, locale, t);
-  const processors = makeCreditCopyString(credits.processors, locale, t);
-  const rightsholders = makeCreditCopyString(credits.rightsholders, locale, t);
-  const titleString = getValueOrFallback(title, t(locale, 'license.copyText.noTitle')) + ' ';
+  const creators = makeCreditCopyString(credits.creators, t);
+  const processors = makeCreditCopyString(credits.processors, t);
+  const rightsholders = makeCreditCopyString(credits.rightsholders, t);
+  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = path ? ndlaFrontendDomain + path : src;
   const date = makeDateString();
 
@@ -72,12 +70,12 @@ export const getCopyString = (
     creators +
     processors +
     titleString +
-    t(locale, 'license.copyText.internet') +
+    t('license.copyText.internet') +
     rightsholders +
-    t(locale, 'license.copyText.downloadedFrom') +
+    t('license.copyText.downloadedFrom') +
     url +
     ' ' +
-    t(locale, 'license.copyText.readDate') +
+    t('license.copyText.readDate') +
     date
   );
 };

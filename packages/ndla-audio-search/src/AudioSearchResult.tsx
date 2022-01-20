@@ -24,7 +24,7 @@ interface Props {
   translations: { useAudio: string };
   fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
   onError: (err: any) => void;
-  locale?: string;
+  locale: string;
   onAudioSelect: (audio: IAudioSummary) => void;
 }
 

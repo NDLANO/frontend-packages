@@ -18,8 +18,8 @@ const classes = new BEMHelper({
 
 interface Props {
   audios: IAudioSummary[];
-  searching?: boolean;
-  locale?: string;
+  searching: boolean;
+  locale: string;
   translations: {
     noResults: string;
     useAudio: string;

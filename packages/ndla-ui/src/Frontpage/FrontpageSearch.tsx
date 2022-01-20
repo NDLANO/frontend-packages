@@ -53,7 +53,6 @@ type Props = {
     to: string;
   };
   onSearch: (event: React.FormEvent) => void;
-  messages: { closeSearchLabel: string };
   allResultUrl: string;
   searchResult: Array<ContentTypeResultType>;
   infoText: string;
@@ -72,7 +71,6 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   onInputBlur,
   onSearchInputFocus,
   onSearch,
-  messages,
   allResultUrl,
   searchResult,
   loading,
@@ -180,7 +178,6 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
             value={searchFieldValue}
             onChange={onSearchFieldChange}
             placeholder={searchFieldPlaceholder}
-            messages={messages}
             loading={loading}
             onBlur={onBlur}
           />

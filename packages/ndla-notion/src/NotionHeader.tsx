@@ -6,13 +6,15 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { MouseEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 
-const NotionHeaderWrapper = styled.div`
+interface NotionHeaderWrapperProps {
+  hasChildren?: boolean;
+}
+const NotionHeaderWrapper = styled.div<NotionHeaderWrapperProps>`
   margin: ${spacing.normal} ${spacing.normal} ${spacing.small};
   padding-bottom: ${spacing.small};
   display: flex;
@@ -21,7 +23,7 @@ const NotionHeaderWrapper = styled.div`
   border-bottom: 2px solid ${colors.brand.tertiary};
   h1 {
     margin: 0;
-    flex-grow: 1;
+    flex-grow: ${(p) => (p.hasChildren ? 0 : 1)};
     font-weight: ${fonts.weight.bold};
     ${fonts.sizes('22px', 1.2)};
     color: ${colors.text.primary};
@@ -39,6 +41,7 @@ const NotionHeaderWrapper = styled.div`
     background: none;
     color: ${colors.brand.primary};
     box-shadow: ${misc.textLinkBoxShadow};
+    cursor: pointer;
     &:hover,
     &:focus {
       box-shadow: none;
@@ -46,21 +49,31 @@ const NotionHeaderWrapper = styled.div`
   }
 `;
 
-const notionTitle = (title, subTitle) => (
+const notionTitle = (title: string, subTitle?: string) => (
   <h1>
     {title} {subTitle ? <small>{subTitle}</small> : null}
   </h1>
 );
 
-export const NotionHeaderWithoutExitButton = ({ title, subTitle }) => (
+interface NotionHeaderProps {
+  title: string;
+  subTitle?: string;
+  onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
+  children?: ReactNode;
+}
+
+type NotionHeaderWithoutExitButtonProps = Omit<NotionHeaderProps, 'onClose'>;
+
+export const NotionHeaderWithoutExitButton = ({ title, subTitle }: NotionHeaderWithoutExitButtonProps) => (
   <NotionHeaderWrapper>{notionTitle(title, subTitle)}</NotionHeaderWrapper>
 );
 
-const NotionHeader = ({ title, subTitle, onClose }) => {
+const NotionHeader = ({ title, subTitle, onClose, children }: NotionHeaderProps) => {
   const { t } = useTranslation();
   return (
-    <NotionHeaderWrapper>
+    <NotionHeaderWrapper hasChildren={!!children}>
       {notionTitle(title, subTitle)}
+      {children}
       {onClose ? (
         <button type="button" onClick={onClose}>
           {t('notions.closeNotion')}
@@ -72,17 +85,6 @@ const NotionHeader = ({ title, subTitle, onClose }) => {
       )}
     </NotionHeaderWrapper>
   );
-};
-
-NotionHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
-  onClose: PropTypes.func,
-};
-
-NotionHeaderWithoutExitButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
 };
 
 export { NotionHeader as default };

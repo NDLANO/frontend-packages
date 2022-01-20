@@ -31,7 +31,7 @@ export type HeroContentType =
 
 interface HeroProps {
   children?: ReactNode;
-  contentType: HeroContentType;
+  contentType?: HeroContentType;
 }
 
 export const Hero = ({ children, contentType }: HeroProps) => (

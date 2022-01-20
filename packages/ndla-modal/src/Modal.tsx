@@ -6,8 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement, ReactNode, useState, MouseEvent } from 'react';
 import em from 'polished/lib/helpers/em';
 
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
@@ -15,23 +14,41 @@ import { DialogContent } from '@reach/dialog';
 import css from '@emotion/css';
 import { StyledDialogOverlay } from './StyledDialogOverlay';
 
+interface Props {
+  children: (closeModal: () => void) => ReactNode;
+  onClick?: () => void;
+  onClose?: () => void;
+  animation?: 'slide-up' | 'slide-down' | 'zoom-in' | 'subtle';
+  size?: 'regular' | 'medium' | 'large' | 'fullscreen' | 'full-width' | 'custom';
+  backgroundColor?: 'white' | 'grey' | 'grey-dark' | 'blue' | 'light-gradient';
+  animationDuration?: number;
+  activateButton?: ReactElement;
+  controllable?: boolean;
+  wrapperFunctionForButton?: (button: ReactElement) => ReactNode;
+  className?: string;
+  narrow?: boolean;
+  minHeight?: string;
+  isOpen?: boolean;
+  position?: 'center' | 'top' | 'bottom';
+}
+
 const Modal = ({
   activateButton,
   wrapperFunctionForButton,
   onClose,
   onClick: onClickEvent,
-  animationDuration,
-  animation,
-  size,
+  animationDuration = 300,
+  animation = 'zoom-in',
+  size = 'regular',
   minHeight,
-  backgroundColor,
+  backgroundColor = 'blue',
   children,
-  narrow,
+  narrow = false,
   controllable,
   isOpen: propsIsOpen,
-  position,
-  ...rest
-}) => {
+  position = 'center',
+  className = '',
+}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [animateIn, setAnimateIn] = useState(!!controllable);
   const showDialog = controllable ? propsIsOpen : isOpen;
@@ -56,25 +73,22 @@ const Modal = ({
     }
   };
 
-  let clonedComponent;
+  let clonedComponent: ReactElement | undefined;
   if (activateButton) {
     clonedComponent = React.cloneElement(activateButton, {
-      onClick: (e) => {
+      onClick: (e: MouseEvent<HTMLButtonElement>) => {
         openModal();
-        if (onClickEvent) {
-          onClickEvent();
-        }
+        onClickEvent?.();
         e.preventDefault();
       },
     });
   }
 
-  const modalButton =
-    activateButton && (wrapperFunctionForButton ? wrapperFunctionForButton(clonedComponent) : clonedComponent);
+  const modalButton = clonedComponent && (wrapperFunctionForButton?.(clonedComponent) ?? clonedComponent);
   return (
     <>
       {modalButton}
-      <StyledDialogOverlay isOpen={showDialog} animateIn={animateIn} onDismiss={closeModal} {...rest}>
+      <StyledDialogOverlay isOpen={!!showDialog} animateIn={animateIn} onDismiss={closeModal} className={className}>
         <DialogContent
           css={css`
             animation-duration: ${animationDuration}ms;
@@ -91,39 +105,6 @@ const Modal = ({
       </StyledDialogOverlay>
     </>
   );
-};
-
-Modal.propTypes = {
-  children: PropTypes.func.isRequired,
-  onClick: PropTypes.func,
-  onClose: PropTypes.func,
-  animation: PropTypes.oneOf(['slide-up', 'slide-down', 'zoom-in', 'subtle']),
-  size: PropTypes.oneOf(['regular', 'medium', 'large', 'fullscreen', 'full-width', 'custom']),
-  backgroundColor: PropTypes.oneOf(['white', 'grey', 'grey-dark', 'blue', 'light-gradient']),
-  animationDuration: PropTypes.number,
-  activateButton: (props, propName, componentName) => {
-    if (!props.controllable && typeof props[propName] !== 'string' && !React.isValidElement(props[propName])) {
-      return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`);
-    }
-    return null;
-  },
-  wrapperFunctionForButton: PropTypes.func,
-  className: PropTypes.string,
-  narrow: PropTypes.bool,
-  controllable: PropTypes.bool,
-  minHeight: PropTypes.string,
-  isOpen: PropTypes.bool,
-  position: PropTypes.oneOf(['center', 'top', 'bottom']),
-};
-
-Modal.defaultProps = {
-  animation: 'zoom-in',
-  size: 'regular',
-  backgroundColor: 'blue',
-  animationDuration: 300,
-  className: '',
-  narrow: false,
-  position: 'center',
 };
 
 const modalAnimations = `

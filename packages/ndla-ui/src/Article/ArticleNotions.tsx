@@ -189,7 +189,7 @@ export const ArticleNotions = ({
         }
         size="large"
         backgroundColor="white">
-        {(onClose: void) => (
+        {(onClose: () => void) => (
           <div>
             <ModalHeader modifier="notions-modal-header no-padding">
               <ModalCloseButton onClick={onClose} title="Lukk" />

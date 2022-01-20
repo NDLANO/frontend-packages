@@ -30,7 +30,11 @@ export const Header = styled.div`
   }
 `;
 
-export const Heading = styled.div`
+interface HeadingProps {
+  inModal?: boolean;
+}
+
+export const Heading = styled.div<HeadingProps>`
   margin: 0 0 ${(props) => (!props.inModal ? spacing.medium : '0 0')};
   ${fonts.sizes(38, 1.4)};
   font-weight: ${fonts.weight.semibold};

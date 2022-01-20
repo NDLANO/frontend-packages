@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ZoomOutMap } from '@ndla/icons/common';
 
@@ -16,7 +15,19 @@ import Dialog from '../Dialog';
 
 const classes = BEMHelper('c-table');
 
-const Table = ({ children, messages, id, ...rest }) => {
+interface Props {
+  id?: string;
+  messages: {
+    dialogCloseButton: string;
+    expandButtonLabel: string;
+  };
+  children?: ReactNode;
+  dangerouslySetInnerHTML?: {
+    __html: string;
+  };
+}
+
+const Table = ({ children, messages, id, ...rest }: Props) => {
   const tableId = id || uuid();
   const dialogId = `dialog-${tableId}`;
 
@@ -53,15 +64,6 @@ const Table = ({ children, messages, id, ...rest }) => {
       </Dialog>
     </div>
   );
-};
-
-Table.propTypes = {
-  id: PropTypes.string,
-  messages: PropTypes.shape({
-    dialogCloseButton: PropTypes.string.isRequired,
-    expandButtonLabel: PropTypes.string.isRequired,
-  }).isRequired,
-  children: PropTypes.node,
 };
 
 export default Table;

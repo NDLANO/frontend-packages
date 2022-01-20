@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { HTMLProps, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
+import { InterpolationWithTheme } from '@emotion/core';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -13,7 +13,10 @@ const NotionDialogContentWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const NotionDialogContent = ({ children, ...rest }) => (
+interface NotionDialogContentProps extends HTMLProps<HTMLDivElement> {
+  children?: ReactNode;
+}
+export const NotionDialogContent = ({ children, ...rest }: NotionDialogContentProps) => (
   <NotionDialogContentWrapper {...rest}>{children}</NotionDialogContentWrapper>
 );
 
@@ -46,7 +49,11 @@ const NotionDialogRelatedLinksWrapper = styled.div`
     padding-left: ${spacing.small};
   }
 `;
-export const NotionDialogTags = ({ tags }) => {
+
+interface NotionDialogTagsProps {
+  tags?: string[];
+}
+export const NotionDialogTags = ({ tags }: NotionDialogTagsProps) => {
   const { t } = useTranslation();
   if (!tags) {
     return null;
@@ -65,41 +72,25 @@ export const NotionDialogTags = ({ tags }) => {
   );
 };
 
-NotionDialogTags.propTypes = {
-  tags: PropTypes.arrayOf(PropTypes.string),
-  useContent: PropTypes.shape({
-    label: PropTypes.string,
-    href: PropTypes.string,
-    ariaLabel: PropTypes.string,
-  }),
-};
-
-export const NotionDialogRelatedLinks = ({ links, label }) =>
+interface NotionDialogRelatedLinksProps {
+  links?: {
+    label?: string;
+    href?: string;
+  }[];
+  label?: string;
+}
+export const NotionDialogRelatedLinks = ({ links, label }: NotionDialogRelatedLinksProps) =>
   links ? (
     <NotionDialogRelatedLinksWrapper>
       {label}:
       {links.map((link, index) => (
         <span className={'link'} key={`key-${link.href}`}>
-          <SafeLink to={link.href}>{link.label}</SafeLink>
+          <SafeLink to={link.href ?? ''}>{link.label}</SafeLink>
           {links[index + 1] && ' - '}
         </span>
       ))}
     </NotionDialogRelatedLinksWrapper>
   ) : null;
-
-NotionDialogRelatedLinks.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string,
-      href: PropTypes.string,
-    }),
-  ),
-  label: PropTypes.string,
-};
-
-NotionDialogContent.propTypes = {
-  children: PropTypes.node,
-};
 
 const Paragraph = styled.p`
   font-weight: ${fonts.weight.normal};
@@ -108,11 +99,10 @@ const Paragraph = styled.p`
   font-family: ${fonts.serif};
 `;
 
-export const NotionDialogText = ({ children }) => <Paragraph>{children}</Paragraph>;
-
-NotionDialogText.propTypes = {
-  children: PropTypes.node,
-};
+interface NotionDialogTextProps {
+  children?: ReactNode;
+}
+export const NotionDialogText = ({ children }: NotionDialogTextProps) => <Paragraph>{children}</Paragraph>;
 
 const NotionDialogImageWrapper = styled.div`
   display: flex;
@@ -122,16 +112,15 @@ const NotionDialogImageWrapper = styled.div`
   flex-grow: 1;
   margin: ${spacing.xsmall} 0;
 `;
-export const NotionDialogImage = ({ alt, src }) => (
+interface NotionDialogImageProps {
+  alt?: string;
+  src?: string;
+}
+export const NotionDialogImage = ({ alt, src }: NotionDialogImageProps) => (
   <NotionDialogImageWrapper>
     <img src={src} alt={alt} />
   </NotionDialogImageWrapper>
 );
-
-NotionDialogImage.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-};
 
 export const NotionDialogStyledWrapper = styled.div`
   @keyframes animateIn {
@@ -180,7 +169,18 @@ export const NotionDialogStyledWrapper = styled.div`
   }
 `;
 
-const NotionDialog = ({ title, children, id, subTitle, ariaHidden, customCSS }) => (
+interface Props {
+  id: string;
+  title: string;
+  closeCallback?: () => void;
+  subTitle?: string;
+  ariaHidden?: boolean;
+  children?: ReactNode;
+  customCSS: InterpolationWithTheme<any>;
+  headerContent?: ReactNode;
+}
+
+const NotionDialog = ({ title, children, id, subTitle, ariaHidden = true, customCSS, headerContent }: Props) => (
   <NotionDialogStyledWrapper
     aria-hidden={ariaHidden}
     role="dialog"
@@ -188,22 +188,9 @@ const NotionDialog = ({ title, children, id, subTitle, ariaHidden, customCSS }) 
     aria-labelledby={id}
     aria-describedby={id}
     css={customCSS}>
-    <NotionHeader title={title} subTitle={subTitle} />
+    <NotionHeader title={title} subTitle={subTitle} children={headerContent} />
     <NotionBody>{children}</NotionBody>
   </NotionDialogStyledWrapper>
 );
-
-NotionDialog.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  title: PropTypes.string,
-  closeCallback: PropTypes.func,
-  subTitle: PropTypes.string,
-  ariaHidden: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-};
-
-NotionDialog.defaultProps = {
-  ariaHidden: true,
-};
 
 export default NotionDialog;

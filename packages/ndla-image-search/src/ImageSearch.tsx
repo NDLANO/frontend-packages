@@ -6,12 +6,13 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
+import { IImageMetaInformationV2, ISearchResult, IImageMetaSummary, ISearchParams } from '@ndla/types-image-api';
+//@ts-ignore
 import { Input } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
@@ -281,9 +282,32 @@ const searchIconCss = css`
   padding: 0;
 `;
 
-class ImageSearch extends React.Component {
-  constructor() {
-    super();
+interface Props {
+  onImageSelect: (image: IImageMetaInformationV2) => void;
+  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResult>;
+  fetchImage: (id: number) => Promise<IImageMetaInformationV2>;
+  onError: (err: any) => void;
+  searchPlaceholder: string;
+  searchButtonTitle: string;
+  locale: string;
+  useImageTitle: string;
+  noResults?: ReactNode;
+  checkboxAction?: (image: IImageMetaInformationV2) => void;
+  showCheckbox?: boolean;
+  checkboxLabel?: string;
+}
+
+interface State {
+  queryObject: ISearchParams;
+  images: IImageMetaSummary[];
+  selectedImage?: IImageMetaInformationV2;
+  lastPage: number;
+  searching: boolean;
+  queryString?: string;
+}
+class ImageSearch extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = {
       queryObject: {
         query: undefined,
@@ -296,7 +320,6 @@ class ImageSearch extends React.Component {
       searching: false,
     };
 
-    this.changeQueryPage = this.changeQueryPage.bind(this);
     this.searchImages = this.searchImages.bind(this);
     this.onImageClick = this.onImageClick.bind(this);
     this.onSelectImage = this.onSelectImage.bind(this);
@@ -306,11 +329,11 @@ class ImageSearch extends React.Component {
     this.searchImages(this.state.queryObject);
   }
 
-  onImageClick(image) {
+  onImageClick(image: IImageMetaSummary) {
     const { onError, fetchImage } = this.props;
     const { selectedImage } = this.state;
     if (!selectedImage || image.id !== selectedImage.id) {
-      fetchImage(image.id)
+      fetchImage(parseInt(image.id))
         .then((result) => {
           this.setState({ selectedImage: result });
         })
@@ -320,7 +343,7 @@ class ImageSearch extends React.Component {
     }
   }
 
-  onSelectImage(image, saveAsMetaImage) {
+  onSelectImage(image: IImageMetaInformationV2, saveAsMetaImage: boolean) {
     const { onImageSelect, checkboxAction } = this.props;
     this.setState({ selectedImage: undefined });
     onImageSelect(image);
@@ -329,14 +352,10 @@ class ImageSearch extends React.Component {
     }
   }
 
-  changeQueryPage(queryObject) {
-    this.searchImages(queryObject);
-  }
-
-  searchImages(queryObject) {
-    const { searchImages, onError, locale } = this.props;
+  searchImages(queryObject: ISearchParams) {
+    const { searchImages, onError } = this.props;
     this.setState({ searching: true });
-    searchImages(queryObject.query, queryObject.page, locale)
+    searchImages(queryObject.query, queryObject.page)
       .then((result) => {
         this.setState({
           queryObject: {
@@ -381,8 +400,8 @@ class ImageSearch extends React.Component {
           }
           container="div"
           value={queryString}
-          onChange={(evt) => this.setState({ queryString: evt.target.value })}
-          onKeyPress={(evt) => {
+          onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
+          onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {
             if (evt.key === 'Enter') {
               evt.preventDefault();
               this.searchImages({ query: queryString, page: 1 });
@@ -399,42 +418,22 @@ class ImageSearch extends React.Component {
               selectedImage={selectedImage}
               onSelectImage={this.onSelectImage}
               useImageTitle={useImageTitle}
-              showCheckbox={showCheckbox}
+              showCheckbox={!!showCheckbox}
               checkboxLabel={checkboxLabel}
             />
           ))}
         </div>
         <Pager
-          page={page ? parseInt(page, 10) : 1}
+          page={page ?? 1}
           pathname=""
           lastPage={lastPage}
           query={queryObject}
           onClick={this.searchImages}
           pageItemComponentClass="button"
-          type="button"
         />
       </ImageSearchWrapper>
     );
   }
 }
-
-ImageSearch.propTypes = {
-  onImageSelect: PropTypes.func.isRequired,
-  searchImages: PropTypes.func.isRequired,
-  fetchImage: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired,
-  searchPlaceholder: PropTypes.string.isRequired,
-  searchButtonTitle: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
-  useImageTitle: PropTypes.string.isRequired,
-  noResults: PropTypes.node,
-  checkboxAction: PropTypes.func,
-  showCheckbox: PropTypes.bool,
-  checkboxLabel: PropTypes.string,
-};
-
-ImageSearch.defaultProps = {
-  showCheckbox: false,
-};
 
 export default ImageSearch;

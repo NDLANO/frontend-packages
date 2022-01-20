@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import css from '@emotion/css';
 import { spacing, breakpoints, mq, colors } from '@ndla/core';
 
@@ -64,15 +63,15 @@ const bodyStyles = css`
   }
 `;
 
-const ModalBody = ({ children, modifier }) => (
+const ModalBody = ({ children, modifier }: Props) => (
   <div data-cy="modal-body" css={bodyStyles} className={`modal-body ${modifier}`}>
     {children}
   </div>
 );
 
-ModalBody.propTypes = {
-  children: PropTypes.node,
-  modifier: PropTypes.oneOfType([PropTypes.string, PropTypes.shape]),
-};
+interface Props {
+  children?: ReactNode;
+  modifier?: string;
+}
 
 export default ModalBody;

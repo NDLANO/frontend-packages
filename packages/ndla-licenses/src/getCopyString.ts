@@ -1,4 +1,3 @@
-import { TFunction } from 'react-i18next';
 import { Contributor } from './contributorTypes';
 
 export const getLicenseCredits = (copyright?: {
@@ -13,7 +12,9 @@ export const getLicenseCredits = (copyright?: {
   };
 };
 
-const makeCreditCopyString = (roles: Contributor[], t: TFunction) => {
+type TranslationFunction = (id: string) => string;
+
+const makeCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
   if (!roles?.length) {
     return '';
   }
@@ -55,7 +56,7 @@ export const getCopyString = (
       }
     | undefined,
   ndlaFrontendDomain: string | undefined,
-  t: TFunction,
+  t: TranslationFunction,
 ): string => {
   const credits = getLicenseCredits(copyright);
   const creators = makeCreditCopyString(credits.creators, t);

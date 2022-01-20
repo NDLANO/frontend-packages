@@ -17,11 +17,10 @@ interface Props {
   locale?: string;
   color?: string;
   marginRight?: boolean;
-  iconColor?: string;
-  textColor?: string;
+  light?: boolean;
 }
 
-const LicenseByline = ({ children, licenseRights, locale, color, marginRight, iconColor, textColor }: Props) => {
+const LicenseByline = ({ children, licenseRights, locale, color, marginRight, light = false }: Props) => {
   return (
     <StyledLicenseByline>
       <LicenseIconList
@@ -29,7 +28,7 @@ const LicenseByline = ({ children, licenseRights, locale, color, marginRight, ic
         locale={locale}
         color={color}
         marginRight={marginRight}
-        iconColor={iconColor}
+        light={light}
         horizontal
       />
       {children}

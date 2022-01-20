@@ -52,14 +52,14 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
 `;
 
 interface StyledLicenseIconButtonprops {
-  iconColor?: string;
+  light?: boolean;
 }
 export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprops>`
   display: flex;
   border: 0;
   margin: 0;
   padding: 0;
-  color: ${(p) => (p.iconColor ? p.iconColor : colors.text.primary)};
+  color: ${(p) => (p.light ? colors.white : colors.text.primary)};
   background: transparent;
   &:hover,
   &:focus {
@@ -77,15 +77,15 @@ interface LicenseIconItemProps {
   licenseRight: string;
   locale?: string;
   horizontal?: boolean;
-  iconColor?: string;
+  light?: boolean;
 }
 
-const LicenseIconItem = ({ licenseRight, locale, horizontal, iconColor }: LicenseIconItemProps) => {
+const LicenseIconItem = ({ licenseRight, locale, horizontal, light }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
     <StyledLicenseIconItem horizontal={horizontal}>
-      <StyledLicenseIconButton type="button" iconColor={iconColor}>
+      <StyledLicenseIconButton type="button" light={light}>
         <LicenseIcon licenseRight={licenseRight} description={description} />
         <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
       </StyledLicenseIconButton>
@@ -102,19 +102,12 @@ interface LicenseIconListProps {
   licenseRights: string[];
   locale?: string;
   color?: string;
-  iconColor?: string;
   marginRight?: boolean;
   horizontal?: boolean;
+  light?: boolean;
 }
 
-const LicenseIconList = ({
-  licenseRights,
-  locale,
-  color,
-  marginRight,
-  horizontal,
-  iconColor,
-}: LicenseIconListProps) => (
+const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal, light }: LicenseIconListProps) => (
   <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
     {licenseRights.map((licenseRight) => (
       <LicenseIconItem
@@ -122,7 +115,7 @@ const LicenseIconList = ({
         licenseRight={licenseRight}
         locale={locale}
         horizontal={horizontal}
-        iconColor={iconColor}
+        light={light}
       />
     ))}
   </StyledLicenseIconList>

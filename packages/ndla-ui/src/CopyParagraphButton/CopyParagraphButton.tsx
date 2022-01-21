@@ -16,8 +16,7 @@ import Tooltip from '@ndla/tooltip';
 import { copyTextToClipboard } from '@ndla/util';
 
 const IconButton = styled.button`
-  float: left;
-  position: relative;
+  position: absolute;
   left: -3em;
   top: 0.1em;
   background: none;
@@ -33,14 +32,10 @@ const IconButton = styled.button`
 `;
 
 const ContainerDiv = styled.div`
+  position: relative;
   &:hover button {
     cursor: pointer;
     opacity: 0.5;
-  }
-
-  & h2 {
-    position: relative;
-    left: -2em;
   }
 `;
 

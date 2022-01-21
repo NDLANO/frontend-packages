@@ -63,7 +63,7 @@ export const getCopyString = (
   const processors = makeCreditCopyString(credits.processors, t);
   const rightsholders = makeCreditCopyString(credits.rightsholders, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
-  const url = path ? ndlaFrontendDomain + path : src;
+  const url = (path ? ndlaFrontendDomain + path : src) + ' ';
   const date = makeDateString();
 
   // Ex: Fotograf: Ola Nordmann. Tittel [Internett]. Opphaver: NTB. Hentet fra: www.ndla.no/urn:resource:123 Lest: 04.05.2021
@@ -75,7 +75,6 @@ export const getCopyString = (
     rightsholders +
     t('license.copyText.downloadedFrom') +
     url +
-    ' ' +
     t('license.copyText.readDate') +
     date
   );

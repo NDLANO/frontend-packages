@@ -55,7 +55,6 @@ type Props = {
   onSearch: (event: React.FormEvent) => void;
   allResultUrl: string;
   searchResult: Array<ContentTypeResultType>;
-  infoText: string;
   loading: boolean;
   history: History;
   suggestion: string;

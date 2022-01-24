@@ -28,8 +28,6 @@ export interface RightType {
   en: RightLocaleInfo;
 }
 
-export type LocaleType = 'nb' | 'nn' | 'en';
-
 const locales = ['nb', 'nn', 'en'] as const;
 export type Locale = typeof locales[number];
 

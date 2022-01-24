@@ -63,7 +63,7 @@ export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprop
   background: transparent;
   &:hover,
   &:focus {
-    color: ${colors.text.light};
+    color: ${(p) => (p.light ? colors.brand.light : colors.text.light)};
     span {
       display: block;
       opacity: 1;

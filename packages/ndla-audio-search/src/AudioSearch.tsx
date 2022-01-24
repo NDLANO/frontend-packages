@@ -8,7 +8,6 @@
 
 import React, { Component } from 'react';
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from '@ndla/types-audio-api';
-//@ts-ignore
 import Pager from '@ndla/pager';
 import BEMHelper from 'react-bem-helper';
 import AudioSearchForm from './AudioSearchForm';

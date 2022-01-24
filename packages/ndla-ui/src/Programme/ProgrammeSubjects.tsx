@@ -27,22 +27,16 @@ const GradesMenu = styled.div`
 `;
 
 export type GradesProps = {
-  grades: [
-    {
+  grades: {
+    name: string;
+    categories: {
       name: string;
-      categories: [
-        {
-          name: string;
-          subjects: [
-            {
-              label: string;
-              url: string;
-            },
-          ];
-        },
-      ];
-    },
-  ];
+      subjects: {
+        label: string;
+        url: string;
+      }[];
+    }[];
+  }[];
 };
 
 type Props = GradesProps & {

@@ -26,11 +26,12 @@ const classes = new BEMHelper({
 interface Props {
   size: 'xx-small' | 'x-small' | 'small' | 'large';
   type: string;
+  title?: string;
   background?: boolean;
   border?: boolean;
 }
 
-export const ContentTypeBadge = ({ type, background, size, border }: Props) => {
+export const ContentTypeBadge = ({ type, background, title, size='small', border=true }: Props) => {
   const modifiers = [type, size];
 
   if (background) {
@@ -43,28 +44,28 @@ export const ContentTypeBadge = ({ type, background, size, border }: Props) => {
   let icon = null;
   switch (type) {
     case contentTypes.SUBJECT_MATERIAL:
-      icon = <SubjectMaterial />;
+      icon = <SubjectMaterial title={title} />;
       break;
     case contentTypes.TASKS_AND_ACTIVITIES:
-      icon = <TasksAndActivities />;
+      icon = <TasksAndActivities title={title}/>;
       break;
     case contentTypes.ASSESSMENT_RESOURCES:
-      icon = <AssessmentResource />;
+      icon = <AssessmentResource title={title}/>;
       break;
     case contentTypes.SUBJECT:
-      icon = <MenuBook />;
+      icon = <MenuBook title={title}/>;
       break;
     case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      icon = <ExternalLearningResource />;
+      icon = <ExternalLearningResource title={title}/>;
       break;
     case contentTypes.SOURCE_MATERIAL:
-      icon = <SharedResource />;
+      icon = <SharedResource title={title}/>;
       break;
     case contentTypes.LEARNING_PATH:
-      icon = <LearningPath />;
+      icon = <LearningPath title={title}/>;
       break;
     case contentTypes.TOPIC:
-      icon = <Subject />;
+      icon = <Subject title={title}/>;
       break;
     default:
       break;
@@ -75,6 +76,7 @@ export const ContentTypeBadge = ({ type, background, size, border }: Props) => {
 ContentTypeBadge.propTypes = {
   size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'large']),
   type: ContentTypeShape,
+  title: PropTypes.string,
   background: PropTypes.bool,
   border: PropTypes.bool,
 };

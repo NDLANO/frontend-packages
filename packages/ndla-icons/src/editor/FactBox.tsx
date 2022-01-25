@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const FactBox = (props: Props) => (
-  <Icon title="FactBox" viewBox="0 0 30 23" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 30 23" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path
         fill="#444"

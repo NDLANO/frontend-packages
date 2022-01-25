@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const LearningResource = (props: Props) => (
-  <Icon title="LearningResource" viewBox="0 0 47 55" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 47 55" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path d="M45,55H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0H45a2,2,0,0,1,2,2V53A2,2,0,0,1,45,55ZM2,2V53H45V2Z" />
       <path d="M39,25H8V23H39Zm0-7H8V16H39Zm0-7H8V9H39Z" />

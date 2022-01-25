@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const TopicArticle = (props: Props) => (
-  <Icon title="TopicArticle" viewBox="0 0 47 55" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 47 55" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path d="M45,0H2A2,2,0,0,0,0,2V53a2,2,0,0,0,2,2H45a2,2,0,0,0,2-2V2A2,2,0,0,0,45,0Zm0,53H2V2H45Z" />
       <rect x="8.8" y="34.1" width="29.5" height="2" />

@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const SearchSaved = (props: Props) => (
-  <Icon title="SearchSaved" viewBox="0 0 58 40.7" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 58 40.7" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <path d="M6.8,16.4H28.2V6.8H6.8ZM8.6,8.6H26.4v6H8.6Z" />
       <path d="M19,21.6a6.7,6.7,0,0,0-6.8,6.7,6.8,6.8,0,1,0,13.5,0A6.7,6.7,0,0,0,19,21.6Zm3.5,10.2A4.7,4.7,0,0,1,19,33.3a5,5,0,0,1-5-5,5,5,0,0,1,5-5,5,5,0,0,1,3.5,8.5Z" />

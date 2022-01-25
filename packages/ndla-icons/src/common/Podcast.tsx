@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Podcast = (props: Props) => (
-  <Icon title="Podcast" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <g>
         <path d="M0,0h24v24H0V0z" fill="none" />

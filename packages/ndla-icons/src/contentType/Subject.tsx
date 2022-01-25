@@ -15,9 +15,8 @@ interface Props extends IconProps {
 }
 
 const Subject = (props: Props) => (
-  <Icon title="Subject" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <title>Emne</title>
       <defs />
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <g fill="currentColor">

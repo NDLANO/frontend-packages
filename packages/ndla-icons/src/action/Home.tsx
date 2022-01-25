@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Home = (props: Props) => (
-  <Icon title="Home" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
     </g>

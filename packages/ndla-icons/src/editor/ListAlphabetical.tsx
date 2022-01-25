@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const ListAlphabetical = (props: Props) => (
-  <Icon title="ListAlphabetical" viewBox="0 0 38.4 32.3" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 38.4 32.3" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <g>
         <rect x="10.4" y="2.1" width="28" height="4" />

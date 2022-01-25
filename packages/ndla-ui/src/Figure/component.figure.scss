@@ -37,7 +37,7 @@
   position: relative;
 
   @include mq($from: desktop) {
-    margin: $spacing--large 0 $spacing--large;
+    margin: $spacing 0 $spacing--large;
     @include grids-expand(4, 6, 2);
   }
   transition: transform 0.4s, width 0.4s, height 0.4s;
@@ -50,6 +50,9 @@
     padding-right: 0;
     padding-bottom: $spacing--large;
     margin-bottom: 0;
+  }
+  &--left {
+    @include grids-expand(4, 6, 2, true);
   }
   &.expanded {
     .c-figure__caption--hidden-caption {
@@ -74,7 +77,7 @@
   background-color: $white;
   padding: $spacing--small 0;
   display: block;
-  border-bottom: 1px solid #D1D6DB;
+  border-bottom: 1px solid #d1d6db;
 }
 
 .c-figure__caption--hidden-caption {
@@ -119,7 +122,7 @@
     margin-bottom: $spacing--small;
   }
   p {
-    margin:0;
+    margin: 0;
   }
 }
 
@@ -179,7 +182,7 @@
   padding: $spacing--small;
   transition: all 0.3s ease-out;
   background: rgba($white, 0.2);
-  border:0;
+  border: 0;
 
   .expanded-icon {
     display: none;

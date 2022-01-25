@@ -37,7 +37,7 @@
   position: relative;
 
   @include mq($from: desktop) {
-    margin: $spacing 0 $spacing--large;
+    margin: $spacing--large 0 $spacing--large;
     @include grids-expand(4, 6, 2);
   }
   transition: transform 0.4s, width 0.4s, height 0.4s;
@@ -52,7 +52,7 @@
     margin-bottom: 0;
   }
   &--right {
-    @include grids-expand(4, 6, 2, false);
+    @include grids-expand(4, 6, 2, true);
   }
   &.expanded {
     .c-figure__caption--hidden-caption {

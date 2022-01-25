@@ -121,9 +121,9 @@ interface FigureCaptionProps {
 
 const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {
   const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
-  const left = ['small-right', 'xsmall-right'].includes(type);
+  const right = ['small-right', 'xsmall-right'].includes(type);
   return (
-    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe, left }, typeClass)} {...rest}>
+    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe, right }, typeClass)} {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );

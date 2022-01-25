@@ -2,19 +2,13 @@ $numerator: auto;
 $denominator: auto;
 
 // Expand item
-@mixin grids-expand($numerator, $denominator, $expand, $right-aligned: false) {
+@mixin grids-expand($numerator, $denominator, $expand) {
   $unit: $numerator / $denominator * 100%;
   $width: ($numerator / $denominator) * 100%;
   position: relative !important;
-  @if $right-aligned {
-    left: auto !important;
-    float: right;
-    right: -($denominator - $numerator - $expand/2) / $denominator * 100% !important;
-  } @else {
-    right: auto !important;
-    float: left;
-    left: -($denominator - $numerator - $expand/2) / $denominator * 100% !important;
-  }
+  float: none;
+  right: 0%;
+  left: -($denominator - $numerator - $expand/2) / $denominator * 100%;
   width: $width + $unit !important;
   padding-left: $spacing;
   padding-right: $spacing;
@@ -34,7 +28,7 @@ $extra-margin: 10px;
       float: left;
       clear: left;
       width: ($cols-tablet/$maxcols) * 100% !important;
-      left: auto !important;
+      left: 0%;
       padding: 0;
       margin: $spacing ($spacing + $extra-margin) 35px 0;
     }
@@ -48,7 +42,7 @@ $extra-margin: 10px;
       float: right;
       clear: right;
       width: ($cols-tablet/$maxcols) * 100% !important;
-      left: auto !important;
+      left: 0%;
       padding: 0;
       margin: 0 0 35px ($spacing + $extra-margin);
     }

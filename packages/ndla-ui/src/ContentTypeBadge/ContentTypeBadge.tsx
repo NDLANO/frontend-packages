@@ -31,7 +31,7 @@ interface Props {
   border?: boolean;
 }
 
-export const ContentTypeBadge = ({ type, background, title, size='small', border=true }: Props) => {
+export const ContentTypeBadge = ({ type, background, title, size = 'small', border = true }: Props) => {
   const modifiers = [type, size];
 
   if (background) {
@@ -47,25 +47,25 @@ export const ContentTypeBadge = ({ type, background, title, size='small', border
       icon = <SubjectMaterial title={title} />;
       break;
     case contentTypes.TASKS_AND_ACTIVITIES:
-      icon = <TasksAndActivities title={title}/>;
+      icon = <TasksAndActivities title={title} />;
       break;
     case contentTypes.ASSESSMENT_RESOURCES:
-      icon = <AssessmentResource title={title}/>;
+      icon = <AssessmentResource title={title} />;
       break;
     case contentTypes.SUBJECT:
-      icon = <MenuBook title={title}/>;
+      icon = <MenuBook title={title} />;
       break;
     case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      icon = <ExternalLearningResource title={title}/>;
+      icon = <ExternalLearningResource title={title} />;
       break;
     case contentTypes.SOURCE_MATERIAL:
-      icon = <SharedResource title={title}/>;
+      icon = <SharedResource title={title} />;
       break;
     case contentTypes.LEARNING_PATH:
-      icon = <LearningPath title={title}/>;
+      icon = <LearningPath title={title} />;
       break;
     case contentTypes.TOPIC:
-      icon = <Subject title={title}/>;
+      icon = <Subject title={title} />;
       break;
     default:
       break;

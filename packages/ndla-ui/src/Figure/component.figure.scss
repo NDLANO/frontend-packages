@@ -23,7 +23,7 @@
     float: right;
     right: -(6 - 4 - 2/2) / 4 * 100%;
     left: 0%;
-    margin-top: 48px;
+    margin: 0 -25% 35px 34px;
   }
 
   99% {
@@ -33,7 +33,7 @@
     float: none;
     left: 16.6%;
     right: 0%;
-    margin-top: 24px;
+    margin: 24px 0 48px;
   }
 }
 
@@ -60,7 +60,7 @@
     margin: $spacing--large 0 $spacing--large;
     @include grids-expand(4, 6, 2);
   }
-  transition: transform 0.4s, width 0.4s, height 0.4s, margin 0.4s;
+  transition: transform 0.4s, width 0.4s, height 0.4s;
 
   &--full-column {
     left: auto !important;
@@ -71,10 +71,15 @@
     padding-bottom: $spacing--large;
     margin-bottom: 0;
   }
-
+  &--right {
+    &.expanded {
+      @include mq($from: desktop) {
+        animation-name: rightFloatTransition;
+        animation-duration: 0.4s;
+      }
+    }
+  }
   &.expanded {
-    animation-name: rightFloatTransition;
-    animation-duration: 0.4s;
     .c-figure__caption--hidden-caption {
       display: block;
       opacity: 0;

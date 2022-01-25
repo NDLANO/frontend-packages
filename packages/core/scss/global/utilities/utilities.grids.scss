@@ -6,8 +6,7 @@ $denominator: auto;
   $unit: $numerator / $denominator * 100%;
   $width: ($numerator / $denominator) * 100%;
   position: relative !important;
-  float: none;
-  right: 0%;
+  right: auto;
   left: -($denominator - $numerator - $expand/2) / $denominator * 100%;
   width: $width + $unit !important;
   padding-left: $spacing;
@@ -28,7 +27,7 @@ $extra-margin: 10px;
       float: left;
       clear: left;
       width: ($cols-tablet/$maxcols) * 100% !important;
-      left: 0%;
+      left: auto !important;
       padding: 0;
       margin: $spacing ($spacing + $extra-margin) 35px 0;
     }
@@ -42,7 +41,7 @@ $extra-margin: 10px;
       float: right;
       clear: right;
       width: ($cols-tablet/$maxcols) * 100% !important;
-      left: 0%;
+      left: auto !important;
       padding: 0;
       margin: 0 0 35px ($spacing + $extra-margin);
     }

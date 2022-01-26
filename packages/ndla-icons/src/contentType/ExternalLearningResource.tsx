@@ -15,14 +15,8 @@ interface Props extends IconProps {
 }
 
 const ExternalLearningResource = (props: Props) => (
-  <Icon
-    title="ExternalLearningResource"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <title>Eksterne ressurser</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <g>
           <g>

@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const KeyboardReturn = (props: Props) => (
-  <Icon
-    title="KeyboardReturn"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path d="M19,7V11H5.83L9.41,7.41L8,6L2,12L8,18L9.41,16.58L5.83,13H21V7H19Z" />
     </g>

@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const ExpandMore = (props: Props) => (
-  <Icon
-    title="ExpandMore"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
     </g>

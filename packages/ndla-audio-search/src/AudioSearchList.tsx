@@ -6,8 +6,8 @@
  *
  */
 
+import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import AudioSearchResult from './AudioSearchResult';
 
@@ -15,6 +15,19 @@ const classes = new BEMHelper({
   name: 'audio-search-list',
   prefix: 'c-',
 });
+
+interface Props {
+  audios: IAudioSummary[];
+  searching: boolean;
+  locale: string;
+  translations: {
+    noResults: string;
+    useAudio: string;
+  };
+  onError: (err: any) => void;
+  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
+  onAudioSelect: (audio: IAudioSummary) => void;
+}
 
 export default function AudioSearchList({
   audios,
@@ -24,16 +37,16 @@ export default function AudioSearchList({
   onError,
   fetchAudio,
   onAudioSelect,
-}) {
+}: Props) {
   if ((!audios || audios.length === 0) && !searching) {
     return <p>{translations.noResults}</p>;
   }
-  if (searching && !(audios.length > 0)) {
+  if (searching && !((audios?.length ?? 0) > 0)) {
     return <div {...classes('result-spinner')} />;
   }
   return (
     <div {...classes('list')}>
-      {audios.map((audio) => (
+      {audios?.map((audio) => (
         <AudioSearchResult
           key={audio.id}
           audio={audio}
@@ -47,24 +60,3 @@ export default function AudioSearchList({
     </div>
   );
 }
-
-AudioSearchList.propTypes = {
-  audios: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        language: PropTypes.string.isRequired,
-      }),
-    }),
-  ),
-  searching: PropTypes.bool.isRequired,
-  locale: PropTypes.string.isRequired,
-  translations: PropTypes.shape({
-    noResults: PropTypes.string.isRequired,
-    useAudio: PropTypes.string.isRequired,
-  }),
-  onError: PropTypes.func.isRequired,
-  fetchAudio: PropTypes.func.isRequired,
-  onAudioSelect: PropTypes.func.isRequired,
-};

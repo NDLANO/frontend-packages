@@ -15,9 +15,8 @@ interface Props extends IconProps {
 }
 
 const FeideText = (props: Props) => (
-  <Icon title="FeideText" viewBox="0 0 113.71 39" data-license="CC-BY 4.0" data-source="Feide" {...props}>
+  <Icon viewBox="0 0 113.71 39" data-license="CC-BY 4.0" data-source="Feide" {...props}>
     <g>
-      <title>Feide-logo</title>
       <rect x="27.99" y="20.34" width="4.24" height="10.18" className="cls-1" />
       <polygon
         points="18.23 23.31 13.99 23.31 13.99 34.76 4.24 34.76 4.24 20.34 0 20.34 0 35.61 0.02 35.61 0.02 39 32.23 39 32.23 34.76 18.23 34.76 18.23 23.31"

@@ -15,9 +15,8 @@ interface Props extends IconProps {
 }
 
 const Additional = (props: Props) => (
-  <Icon title="Additional" viewBox="0 0 23 23" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
+  <Icon viewBox="0 0 23 23" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
-      <title>Tilleggstoff</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <g transform="translate(1.000000, 1.000000)" fillRule="nonzero">
           <circle stroke="#184673" cx="10.5" cy="10.5" r="10.5" />

@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Concept = (props: Props) => (
-  <Icon title="Concept" viewBox="0 0 47 54.9" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 47 54.9" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <rect x="9" y="30" width="29" height="2" />
       <rect x="9" y="21" width="29" height="2" />

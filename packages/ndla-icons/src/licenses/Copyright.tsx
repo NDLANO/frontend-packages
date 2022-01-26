@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Copyright = (props: Props) => (
-  <Icon title="Copyright" viewBox="0 0 64 64" data-license="CC-BY 4.0" data-source="Creative Commons" {...props}>
+  <Icon viewBox="0 0 64 64" data-license="CC-BY 4.0" data-source="Creative Commons" {...props}>
     <g>
       <path
         d="M31.9,0c9,0,16.6,3.1,22.9,9.4c3,3,5.3,6.4,6.9,10.3c1.6,3.9,2.3,8,2.3,12.3c0,4.4-0.8,8.5-2.3,12.3s-3.8,7.2-6.8,10.1

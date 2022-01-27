@@ -137,8 +137,6 @@ export const Article = ({
   licenseBox,
   modifier,
   messages,
-  messagebox,
-  messageForBox,
   messageBoxLinks,
   children,
   competenceGoals,

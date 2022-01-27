@@ -89,7 +89,7 @@ export const Programme = ({ heading, image, grades, messageBox }: Props) => {
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
-              {messageBox && <MessageBox>{messages.messageBoxInfo.noContent}</MessageBox>}
+              {messageBox && <MessageBox>{t('messages.messageBoxInfo.noContent')}</MessageBox>}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} preSelectedGradeIndex={showGradeIndex} />
               </SubjectsWrapper>

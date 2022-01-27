@@ -6,7 +6,6 @@ import { NavigationHeading } from '../Navigation';
 import ProgrammeSubjects from './ProgrammeSubjects';
 import { GradesProps } from './ProgrammeSubjects';
 import MessageBox from '../MessageBox/MessageBox';
-import messages from '@ndla/ui/lib/locale/messages-nb';
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;

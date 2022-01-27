@@ -71,9 +71,9 @@ export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, cent
     return {
       columnsPrSlide,
       columnWidth,
-      distanceBetweenItems: distanceBetweenItems || 0,
+      distanceBetweenItems: distanceBetweenItems,
       arrowOffset,
-      margin: margin || 0,
+      margin: margin,
     };
   };
 
@@ -96,8 +96,7 @@ export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, cent
   if (centered && calculatedCarouselProps) {
     wrapperWidth = `${
       calculatedCarouselProps.columnWidth * Math.min(calculatedCarouselProps.columnsPrSlide, itemsLength) +
-      // @ts-ignore
-      calculatedCarouselProps.distanceBetweenItems * (calculatedCarouselProps.columnsPrSlide - 1) +
+      (calculatedCarouselProps.distanceBetweenItems || 0) * (calculatedCarouselProps.columnsPrSlide - 1) +
       (calculatedCarouselProps.margin || 0) * 2
     }px`;
   }

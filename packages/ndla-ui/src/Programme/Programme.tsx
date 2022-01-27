@@ -68,6 +68,7 @@ type Props = GradesProps & {
 };
 
 export const Programme = ({ heading, image, grades, messageBox }: Props) => {
+  const { t } = useTranslation();
   const [showGradeIndex, setShowGradeIndex] = useState(0);
   const isWindowContext = typeof window !== 'undefined';
 

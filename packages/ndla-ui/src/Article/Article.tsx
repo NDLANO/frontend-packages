@@ -198,9 +198,9 @@ export const Article = ({
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
 
-          {messagebox && (
+          {messages.messageBox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks}>{messageForBox}</MessageBox>
+              <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>

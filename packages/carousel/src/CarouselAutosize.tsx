@@ -30,12 +30,7 @@ interface Props {
   children: (calculatedProps: CalculatedCarouselProps | null) => React.ReactNode;
 }
 
-export const CarouselAutosize: React.FC<Props> = ({
-  breakpoints: propsBreakpoints,
-  children,
-  centered,
-  itemsLength,
-}) => {
+export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, centered, itemsLength }: Props) => {
   const [carouselBreakpoint, setCarouselBreakpoint] = useState<CaruselBreakpoint | null>(null);
   const autosizeRef = useRef<HTMLDivElement>(null);
 
@@ -82,7 +77,6 @@ export const CarouselAutosize: React.FC<Props> = ({
     };
   };
 
-  // Hooks
   useEffect(() => {
     window.addEventListener('resize', updateSizes);
     updateSizes();

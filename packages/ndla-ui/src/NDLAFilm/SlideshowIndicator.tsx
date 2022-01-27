@@ -8,10 +8,10 @@
 
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { IMovie } from './shapes';
+import { NDLAMovie } from './interfaces';
 
 interface Props {
-  slideshow: Array<IMovie>;
+  slideshow: Array<NDLAMovie>;
   activeSlide: number;
   gotoSlide: Function;
 }
@@ -21,12 +21,12 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const SlideshowIndicator: React.FC<Props> = ({ slideshow, activeSlide, gotoSlide }) => {
+const SlideshowIndicator = ({ slideshow, activeSlide, gotoSlide }: Props) => {
   return (
     <div {...classes('indicator-wrapper')}>
       {slideshow.map((slide, index) => (
         <button
-          key={`indicator_${index}`} // eslint-disable-line react/no-array-index-key
+          key={`indicator_${index}`}
           type="button"
           {...classes('indicator-dot', index === activeSlide ? 'active' : '')}
           onClick={() => gotoSlide(index, true)}>

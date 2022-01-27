@@ -28,7 +28,7 @@ interface Props extends CalculatedProps {
   disableScroll: boolean;
 }
 
-export const Carousel: React.FC<Props> = ({
+export const Carousel = ({
   items = [],
   columnWidth,
   columnsPrSlide,
@@ -40,7 +40,7 @@ export const Carousel: React.FC<Props> = ({
   margin = 0,
   buttonClass = '',
   wrapperClass = '',
-}) => {
+}: Props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [swiping, setSwiping] = useState(false);
   const [swipeDistance, setSwipeDistance] = useState(0);

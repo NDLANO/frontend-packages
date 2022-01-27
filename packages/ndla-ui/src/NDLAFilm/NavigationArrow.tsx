@@ -22,7 +22,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-const NavigationArrow: React.FC<Props> = ({ slideIndexTarget, gotoSlide, rightArrow }) => {
+const NavigationArrow = ({ slideIndexTarget, gotoSlide, rightArrow }: Props) => {
   const Chevron = rightArrow ? ChevronRight : ChevronLeft;
 
   return (

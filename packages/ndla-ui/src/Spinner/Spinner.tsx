@@ -16,13 +16,11 @@ interface Props {
   inverted?: boolean;
 }
 
-interface SpinnerDivProps {
+interface StyledProps extends Props {
   size: SpacingNames;
-  margin: string;
-  inverted: boolean;
 }
 
-const SpinnerDiv = styled('div')<SpinnerDivProps>`
+const SpinnerDiv = styled('div')<StyledProps>`
   border: calc(${(props) => spacing[props.size]} / 6.5) solid rgba(0, 0, 0, 0.1);
   border-bottom-color: ${(props) => (props.inverted ? '#fff' : colors.brand.primary)};
   border-radius: 50%;
@@ -41,7 +39,7 @@ const SpinnerDiv = styled('div')<SpinnerDivProps>`
   }
 `;
 
-const Spinner: React.FC<Props> = ({ size = 'large', margin = `${spacing.normal} auto`, inverted = false }) => (
+const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted = false }: Props) => (
   <SpinnerDiv size={size} margin={margin} inverted={inverted} />
 );
 

@@ -12,14 +12,14 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
 import { OneColumn } from '../Layout';
 import Spinner from '../Spinner';
-import { IMovie } from './shapes';
+import { NDLAMovie } from './interfaces';
 import NavigationArrow from './NavigationArrow';
 import SlideshowIndicator from './SlideshowIndicator';
 
 interface Props {
   autoSlide: boolean;
   randomStart: boolean;
-  slideshow: Array<IMovie>;
+  slideshow: Array<NDLAMovie>;
   slideInterval: number;
 }
 
@@ -43,7 +43,7 @@ const renderSlideItem = (slide: any) => (
   />
 );
 
-const FilmSlideshow: React.FC<Props> = ({ autoSlide = false, slideshow = [], slideInterval = 5000 }) => {
+const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000 }: Props) => {
   const [swipeDistance, setSwipeDistance] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const [slideIndexTarget, setSlideIndexTarget] = useState(0);
@@ -178,7 +178,6 @@ const FilmSlideshow: React.FC<Props> = ({ autoSlide = false, slideshow = [], sli
     }
   }, [autoSlide, gotoSlide, slideInterval, slideIndex]);
 
-  // Hooks
   useEffect(() => {
     initTimer();
   }, [initTimer]);

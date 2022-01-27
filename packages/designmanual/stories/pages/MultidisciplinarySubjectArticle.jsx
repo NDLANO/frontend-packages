@@ -77,6 +77,7 @@ const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [] })
               copyPageUrlLink={window.location.href}
               onLinkToResourcesClick={onToResourcesClick}
               linkToResources="#"
+              resourcesRef={resourcesRef}
             />
           </Breadcrumblist>
           <MultidisciplinarySubjectHeader subjects={subjects} subjectsLinks={subjectsLinks} />

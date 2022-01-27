@@ -39,8 +39,8 @@ const SpinnerDiv = styled('div')<StyledProps>`
   }
 `;
 
-const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted = false }: Props) => (
-  <SpinnerDiv size={size} margin={margin} inverted={inverted} />
+const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted }: Partial<Props>) => (
+  <SpinnerDiv size={size} margin={margin} inverted={!!inverted} />
 );
 
 export default Spinner;

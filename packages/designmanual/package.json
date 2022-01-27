@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "2.1.25",
+  "version": "2.1.32",
   "description": "Storybook for NDLA ui component library.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -47,8 +47,6 @@
     "webpack": "^4.46.0"
   },
   "dependencies": {
-    "@ndla/forms": "^1.0.29",
-    "@ndla/safelink": "^1.0.5",
     "downshift": "^3.2.2"
   }
 }

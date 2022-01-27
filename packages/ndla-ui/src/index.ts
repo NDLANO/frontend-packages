@@ -24,9 +24,33 @@ export {
   default as Article,
 } from './Article';
 
+export { default as Table } from './Table';
+
+export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
+
+export { createUniversalPortal } from './utils/createUniversalPortal';
+
+export { default as NoContentBox } from './NoContentBox';
+
+export { default as Masthead, MastheadItem } from './Masthead';
+
+export { default as Portrait } from './Portrait';
+
+export { default as ContentLoader } from './ContentLoader';
+
+export { default as RelatedArticleList, RelatedArticle } from './RelatedArticleList';
+
 export { ErrorResourceAccessDenied, default as ErrorMessage } from './ErrorMessage';
 
+export { default as FileList, File } from './FileList';
+
 export { BlogPost, BlogPostWrapper } from './BlogPosts';
+
+export { default as Logo } from './Logo';
+
+export { InfoBox } from './InfoBox';
+
+export { default as InfoWidget } from './InfoWidget';
 
 export {
   FrontpageInfo,
@@ -39,7 +63,25 @@ export {
   FrontpageProgramMenu,
 } from './Frontpage';
 
+export { default as FactBox } from './FactBox';
+
+export { default as Image, ImageLink } from './Image';
+export { makeSrcQueryString } from './Image';
+
+export {
+  SubjectMaterialHero,
+  TasksAndActivitiesHero,
+  AssessmentResourcesHero,
+  SubjectHero,
+  ExternalLearningResourcesHero,
+  SourceMaterialHero,
+  Hero,
+  NdlaFilmHero,
+} from './Hero';
+
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
+
+export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
 
@@ -55,6 +97,9 @@ export {
   LearningPathMobileStepInfo,
   LearningPathMobileHeader,
 } from './LearningPaths';
+export { Translation, TranslationLine, TranslationBox } from './Translation';
+
+export { default as Spinner } from './Spinner';
 
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 
@@ -135,3 +180,5 @@ export {
 } from './Subject';
 
 export { default as ContentCard } from './ContentCard';
+
+export { default as CopyParagraphButton } from './CopyParagraphButton';

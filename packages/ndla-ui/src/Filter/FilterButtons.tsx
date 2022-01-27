@@ -143,7 +143,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                 </Button>
               </StyledButtonElementWrapper>
             }>
-            {(onClose: void) => (
+            {(onClose: () => void) => (
               <>
                 <ModalHeader modifier={['left-align']}>
                   <h1>{heading}</h1>

@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const ImageXsmall = (props: Props) => (
-  <Icon
-    title="ImageXsmall"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path
         transform="translate(1.000000, 3.000000)"

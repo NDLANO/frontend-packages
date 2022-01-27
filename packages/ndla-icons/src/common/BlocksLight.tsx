@@ -15,9 +15,8 @@ interface Props extends IconProps {
 }
 
 const BlocksLight = (props: Props) => (
-  <Icon title="BlocksLight" viewBox="0 0 243 282" data-license="CC-BY 4.0" data-source="Labs." {...props}>
+  <Icon viewBox="0 0 243 282" data-license="CC-BY 4.0" data-source="Labs." {...props}>
     <g>
-      <title>Blokker</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <g>
           <g>

@@ -134,7 +134,7 @@ const messages = {
       showingCompetenceGoalSearchPhrase: 'Showing results for competence goals {text}',
       searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
-      notionsHeading: 'Begrepsforklaring',
+      notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
       showNotion: 'Show notion',
@@ -178,6 +178,7 @@ const messages = {
       dialogHeader: '{{title}} is under construction',
       dialogText: 'Read more at',
     },
+    archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
     chooseSubject: 'Choose subject',
@@ -326,6 +327,7 @@ const messages = {
     multipleAuthorsLabelAriaConjunction: 'and',
     copyPageLink: 'Copy page-link',
     copyPageLinkCopied: 'Link copied',
+    copyHeaderLink: 'Copy link to header',
     conjunction: 'and',
     supplierLabel: 'Rightsholder: {{name}}',
     multipleSuppliersLabel: 'Rightsholders: {{names}}',
@@ -357,7 +359,7 @@ const messages = {
     competenceTopicSearchText: 'Find resources',
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
-    competenceGoalTitle: 'The goal is for the student to be able to:',
+    competenceGoalTitle: 'The pupil is expected to be able to:',
     competenceTabLK06label: 'Competence goal (LK06)',
     competenceTabLK20label: 'Competence goal (LK20)',
     competenceTabCorelabel: 'Core element',
@@ -390,6 +392,9 @@ const messages = {
       description: 'This url shows the article without menu and footer',
       copyTitle: 'Copy link',
       hasCopiedTitle: 'Link copied',
+    },
+    image: {
+      rules: 'Rules for use of image:',
     },
     images: {
       heading: 'How to use images from the article',
@@ -529,7 +534,8 @@ const messages = {
     en: 'English',
     fr: 'French',
     de: 'German',
-    se: 'Sami',
+    se: 'Northern Sami',
+    sma: 'Southern Sami',
     es: 'Spanish',
     zh: 'Chinese',
     unknown: 'Unknown',
@@ -694,18 +700,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'En god skolestart',
-      externalLink: 'https://blogg.ndla.no/engodskolestart/',
+      text: 'Aktiviser elevane med digitale verktøy',
+      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -802,6 +808,10 @@ const messages = {
     reuse: 'Use video',
     error: 'Sorry, an error occurred while loading the video or metadata about the video.',
   },
+  other: {
+    download: 'Download content',
+    reuse: 'Use content',
+  },
   concept: {
     showDescription: 'Show concept description',
     error: {
@@ -834,6 +844,7 @@ const messages = {
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
       employee: 'Teacher',
+      staff: 'Staff',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',

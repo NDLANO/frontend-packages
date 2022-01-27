@@ -20,3 +20,5 @@ export { BY, SA, NC, ND, PD, CC0, CC, COPYRIGHTED, getLicenseRightByAbbreviation
 export { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense } from './licenses';
 
 export { LicenseByline, LicenseDescription } from './LicenseByline';
+
+export { getCopyString, getLicenseCredits } from './getCopyString';

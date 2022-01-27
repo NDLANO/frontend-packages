@@ -177,6 +177,7 @@ const messages = {
       dialogHeader: '{{title}} er under arbeid.',
       dialogText: 'Du kan lese mer om hva dette betyr på',
     },
+    archived: 'Dette er et utgått fag som ikke vedlikeholdes.',
   },
   subjectsPage: {
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
@@ -325,6 +326,7 @@ const messages = {
     multipleAuthorsLabelAriaConjunction: 'og',
     copyPageLink: 'Kopier lenke til siden',
     copyPageLinkCopied: 'Lenke kopiert',
+    copyHeaderLink: 'Kopier lenke til overskriften',
     conjunction: 'og',
     supplierLabel: 'Rettighetshaver: {{name}}',
     multipleSuppliersLabel: 'Rettighetshavere: {{names}}',
@@ -401,6 +403,9 @@ const messages = {
       description: 'Denne lenken viser artikkelen uten kontekst(meny og bunntekst)',
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
+    },
+    image: {
+      rules: 'Regler for bruk av bildet:',
     },
     images: {
       heading: 'Slik bruker du bilder fra artikkelen',
@@ -528,11 +533,12 @@ const messages = {
     en: 'Engelsk',
     fr: 'Fransk',
     de: 'Tysk',
-    se: 'Samisk',
+    se: 'Nordsamisk',
+    sma: 'Sørsamisk',
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
-    prefixChangeLanguage: 'Velg målform',
+    prefixChangeLanguage: 'Velg språk',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',
@@ -693,18 +699,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'En god skolestart',
-      externalLink: 'https://blogg.ndla.no/engodskolestart/',
+      text: 'Aktiviser elevene med digitale verktøy',
+      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -759,8 +765,8 @@ const messages = {
     showLongerDescription: 'Vis hele emnebeskrivelsen',
     showShorterDescription: 'Skjul emnebeskrivelsen',
     topics: 'Emner',
-    additionalTopic: 'Tillegsemne',
-    additionalTopics: 'Tillegsemner',
+    additionalTopic: 'Tilleggsemne',
+    additionalTopics: 'Tilleggsemner',
     loadingText: 'Laster emne',
   },
   multidisciplinarySubject: {
@@ -801,6 +807,10 @@ const messages = {
     reuse: 'Bruk video',
     error: 'Beklager, en feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
+  other: {
+    download: 'Last ned innhold',
+    reuse: 'Bruk innhold',
+  },
   concept: {
     showDescription: 'Vis beskrivelsen av forklaringen.',
     error: {
@@ -833,6 +843,7 @@ const messages = {
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
       employee: 'Lærer',
+      staff: 'Ansatt',
       student: 'Elev',
     },
     buttonLogIn: 'Logg inn med Feide',

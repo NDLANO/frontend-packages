@@ -80,7 +80,7 @@ const MessageBoxExample = () => {
                   <MessageHeader>Ghost variant</MessageHeader>
                   <p>
                     Denne er mer nedtonet og brukes f.eks for informasjon om at ressursen kun er for lærere innlogget
-                    med feide Informasjonen som er plassert og kan ikke klikkes vekk. Ikonet kan byttes ut med et annet
+                    med feide. Informasjonen er plassert og kan ikke klikkes vekk. Ikonet kan byttes ut med et annet
                     når og hvis behovet dukker opp
                   </p>
                   <MessageBoxWrapper>

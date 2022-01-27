@@ -9,7 +9,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors } from '@ndla/core';
-
 import {
   School as SchoolIcon,
   MenuBook as MenuBookIcon,
@@ -31,7 +30,17 @@ type WrapperProps = {
 type InvertItProps = {
   invertedStyle?: boolean;
 };
-
+const MiniMesssage = styled.div`
+  background-color: #f9f4c8;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+`;
 const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: flex-start;
@@ -87,7 +96,7 @@ const Heading = styled.div<InvertItProps>`
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
-  padding: 0 0 18px 10px;
+  padding: 0 0 10px 10px;
   ${(props) =>
     props.invertedStyle &&
     `
@@ -214,6 +223,7 @@ type BreadCrumbProps = {
   leftAlign?: boolean;
   hideOnNarrow?: boolean;
   onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
+  messageBoxMini?: string;
 };
 
 const Breadcrumblist = ({
@@ -225,6 +235,7 @@ const Breadcrumblist = ({
   leftAlign,
   hideOnNarrow,
   onNav,
+  messageBoxMini,
 }: BreadCrumbProps) => {
   const { t } = useTranslation();
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
@@ -274,6 +285,7 @@ const Breadcrumblist = ({
         {items.length > 0 && (
           <>
             <Heading invertedStyle={invertedStyle}>{t('breadcrumb.youAreHere')}</Heading>
+            {messageBoxMini && <MiniMesssage>{messageBoxMini}</MiniMesssage>}
             <List data-testid="breadcrumb-list">
               {items.map((item: BreadcrumbItemProps) => {
                 const { id, label, url, typename, icon, isCurrent = false } = item;

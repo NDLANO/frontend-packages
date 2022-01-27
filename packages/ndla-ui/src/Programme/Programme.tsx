@@ -5,7 +5,8 @@ import LayoutItem, { OneColumn } from '../Layout';
 import { NavigationHeading } from '../Navigation';
 import ProgrammeSubjects from './ProgrammeSubjects';
 import { GradesProps } from './ProgrammeSubjects';
-
+import MessageBox from '../MessageBox/MessageBox';
+import messages from '@ndla/ui/lib/locale/messages-nb';
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,9 +64,10 @@ const SubjectsWrapper = styled.div`
 type Props = GradesProps & {
   heading?: string;
   image?: string;
+  messageBox?: boolean;
 };
 
-export const Programme = ({ heading, image, grades }: Props) => {
+export const Programme = ({ heading, image, grades, messageBox }: Props) => {
   const [showGradeIndex, setShowGradeIndex] = useState(0);
   const isWindowContext = typeof window !== 'undefined';
 
@@ -86,6 +88,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
+              {messageBox && <MessageBox>{messages.messageBoxInfo.noContent}</MessageBox>}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} preSelectedGradeIndex={showGradeIndex} />
               </SubjectsWrapper>

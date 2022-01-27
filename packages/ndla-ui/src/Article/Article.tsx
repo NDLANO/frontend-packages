@@ -10,6 +10,7 @@ import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 're
 import BEMHelper from 'react-bem-helper';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
+import styled from '@emotion/styled';
 
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
@@ -22,6 +23,7 @@ import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import { NotionProps } from '../Notion/Notion';
 import ArticleAccessMessage from './ArticleAccessMessage';
+import { MessageBox } from '../MessageBox/MessageBox';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -90,6 +92,9 @@ export const ArticleIntroduction = ({
 type Messages = {
   label: string;
 };
+const MSGboxWrapper = styled.div`
+  margin-bottom: 50px;
+`;
 
 type Props = {
   article: ArticleType;
@@ -99,6 +104,9 @@ type Props = {
   children: ReactNode;
   messages: Messages;
   locale: Locale;
+  messagebox?: Boolean;
+  messageForBox?: string;
+  messageBoxLinks?: [];
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | null;
@@ -129,6 +137,9 @@ export const Article = ({
   licenseBox,
   modifier,
   messages,
+  messagebox,
+  messageForBox,
+  messageBoxLinks,
   children,
   competenceGoals,
   competenceGoalTypes,
@@ -186,6 +197,12 @@ export const Article = ({
       <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
+
+          {messagebox && (
+            <MSGboxWrapper>
+              <MessageBox links={messageBoxLinks}>{messageForBox}</MessageBox>
+            </MSGboxWrapper>
+          )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
             <ArticleTitle icon={icon} label={messages.label}>
               {title}
@@ -208,6 +225,7 @@ export const Article = ({
           )}
           {getArticleContent(content, locale)}
         </LayoutItem>
+
         <LayoutItem layout="center">
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline

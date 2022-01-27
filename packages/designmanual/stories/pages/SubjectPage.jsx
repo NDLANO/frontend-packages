@@ -9,7 +9,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntersectionObserver } from '@ndla/hooks';
-
+import MessageBox from '@ndla/ui/src/MessageBox/MessageBox';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -141,6 +141,8 @@ const SubjectPage = ({
   topics: topicsData,
   initialBreadcrumb = [],
   subjectName,
+  messagebox: message,
+  messageBoxMini: messageBoxMini,
   bannerBackground,
   subjectContentCards,
   subjectAboutHeading,
@@ -418,6 +420,7 @@ const SubjectPage = ({
       <div ref={containerRef}>
         <OneColumn>
           <LayoutItem layout="extend">
+            {message && <MessageBox>{message}</MessageBox>}
             <NavigationHeading>{subjectName}</NavigationHeading>
             <div ref={mainTopicRef}>
               <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
@@ -439,20 +442,6 @@ const SubjectPage = ({
                   {topicData.content}
                 </Topic>
 
-                <div ref={subTopicRef}>
-                  {subTopics.length ? (
-                    <NavigationBox
-                      colorMode="light"
-                      heading={t('navigation.topics')}
-                      hasAdditionalResources={subTopics.some((item) => item.isAdditionalResource)}
-                      showAdditionalResources={showSubTopicAdditionalTopics}
-                      items={getSubTopics()}
-                      onToggleAdditionalResources={() => setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)}
-                      onClick={onClickSubTopic}
-                    />
-                  ) : null}
-                  {currentLevel === 'Topic' && <Resources title={topicData.label} showActiveResource={false} />}
-                </div>
                 {subTopicData && (
                   <Topic
                     renderMarkdown={(text) => text}
@@ -515,13 +504,23 @@ const SubjectPage = ({
           </LayoutItem>
         </OneColumn>
       </div>
+      {/* Stored for later. 
       {bannerBackground && <SubjectBanner image={bannerBackground} negativeTopMargin={moveBannerUp} />}
       {subjectAboutHeading && <OneColumn wide>{subjectAbout(subjectAboutHeading, subjectAboutDescription)}</OneColumn>}
       {subjectContentCards && (
         <SubjectCarousel wideScreen subjects={subjectContentCards} title="Litt forskjellig fra faget" subjectPage />
-      )}
+      )} */}
+
       <OneColumn wide>
-        <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />
+        {message && (
+          <Breadcrumblist
+            isVisible={showBreadCrumb}
+            items={breadcrumbItems}
+            onNav={handleNav}
+            messageBoxMini={messageBoxMini}
+          />
+        )}
+        {!message && <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />}
       </OneColumn>
       {showLoginModal && (
         <AuthModal

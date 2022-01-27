@@ -54,6 +54,7 @@ import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
 import Frontpage from './pages/FrontpageExample';
 import FooterExample from './molecules/footers';
+import MessageBox from './molecules/MessageBoxExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -641,11 +642,11 @@ storiesOf('Sammensatte moduler', module)
       <StoryIntro title="Meldingsboks">
         <p>
           Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom den er sticky så vises den i toppen
-          dersom man scroller forbi.
+          dersom man scroller forbi. Her kan du se forskjellige typer meldings- og infobokser.
         </p>
       </StoryIntro>
       <Content>
-        <Frontpage showMessageBox />
+        <MessageBox />
       </Content>
       <FooterExample />
     </PageContainer>

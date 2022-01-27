@@ -5,35 +5,61 @@ import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-import { InformationOutline } from '@ndla/icons/common';
+import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
+import { ThemeContext } from '@emotion/core';
 
 type WrapperProps = {
-  boxType?: 'info';
+  boxType?: 'ghost' | 'fullpage' | 'medium';
 };
 
-const colorsByType = (type: WrapperProps['boxType']) => {
-  const colors = {
-    color: '#551700',
-    backgroundColor: '#FEEFB3',
-  };
+const StyleByType = (type: WrapperProps['boxType']) => {
+  const styles = {
+    margin: '1px',
+    color: '#444444',
+    backgroundColor: '#f9f4c8',
+    border: 'none',
+    display: 'flex',
+    width: 'auto',
+    position: 'relative',
+    transform: 'auto',
+    left: 'auto',
+  }; //Different CSS properties for different types of message-boxes
   switch (type) {
-    case 'info':
-    default:
+    case 'fullpage':
+      styles.margin = '0 auto';
+      styles.display = 'none';
+      styles.width = '100vw';
+      styles.position = 'absolute';
+      styles.left = '50%';
+      styles.transform = 'translateX(-50%)';
+      break;
+    case 'medium':
+      styles.margin = '0px';
+      break;
+    case 'ghost':
+      styles.backgroundColor = 'transparent';
+      styles.border = '1px solid #D1D6DB';
+      styles.color = '#444444';
       break;
   }
-  return colors;
+  return styles;
 };
 
 const Wrapper = styled.div<WrapperProps>`
-  background: ${(props) => colorsByType(props.boxType).backgroundColor};
-  color: ${(props) => colorsByType(props.boxType).color};
+  background: ${(props) => StyleByType(props.boxType).backgroundColor};
+  color: ${(props) => StyleByType(props.boxType).color};
   font-size: 18px;
   line-height: 32px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
   display: flex;
   padding: ${spacing.small};
-  position: relative;
+  position: ${(props) => StyleByType(props.boxType).position};
+  border: ${(props) => StyleByType(props.boxType).border};
+  border-radius: 5px;
+  transform: ${(props) => StyleByType(props.boxType).transform};
+  left: ${(props) => StyleByType(props.boxType).left};
+  z-index: 1000;
+  width: ${(props) => StyleByType(props.boxType).width};
 `;
 
 const Label = styled.label`
@@ -46,9 +72,9 @@ const Label = styled.label`
   }
 `;
 
-const InfoWrapper = styled.div`
-  margin: 0 auto;
-  padding: 0 100px;
+const InfoWrapper = styled.div<WrapperProps>`
+  margin: ${(props) => StyleByType(props.boxType).margin};
+  padding: 10px;
   display: flex;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: 0 90px 0 0;
@@ -67,15 +93,14 @@ const TextWrapper = styled.div`
   }
 `;
 
-const IconWrapper = styled.div`
+const IconWrapper = styled.div<WrapperProps>`
   padding-right: ${spacing.small};
-  display: flex;
+  display: ${(props) => StyleByType(props.boxType).display};
   align-items: flex-start;
   ${mq.range({ from: breakpoints.tabletWide })} {
     padding-top: 4px;
   }
 `;
-
 const CloseButtonWrapper = styled.div`
   position: absolute;
   top: 13px;
@@ -93,9 +118,9 @@ const CloseButton = styled(Button)`
   align-items: center;
   font-weight: ${fonts.weight.semibold};
   font-size: 16px;
-  color: ${(props) => colorsByType(props.boxType).color};
+  color: ${(props) => StyleByType(props.boxType).color};
   &:hover {
-    color: ${(props) => colorsByType(props.boxType).color};
+    color: ${(props) => StyleByType(props.boxType).color};
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
     flex-direction: column-reverse;
@@ -111,28 +136,36 @@ const CloseButtonText = styled.span`
     font-weight: ${fonts.weight.normal};
   }
 `;
+const LinkWrapper = styled.div`
+  display: block;
+  width: 100%;
+  background-color: #f9f4c8;
+  padding-bottom: 20px;
+  padding-left: 56px;
+`;
+const Link = styled.a`
+  color: blue;
+  font-size: 16px;
+  padding-bottom: 5px;
+  margin: 0px 50px 1px 5px;
+`;
 
 type Props = {
   type?: WrapperProps['boxType'];
   heading?: string;
   sticky?: boolean;
   onClose?: () => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  links?: []; //Takes and object with a name and a link. Eks: {'link1', 'www.link.no'}
 };
 
-export const MessageBox = ({
-  heading,
-  type = 'info',
-  sticky = true,
-  onClose,
-  children,
-  t,
-}: Props & WithTranslation) => (
+export const MessageBox = ({ heading, type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => (
   <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9999 }}>
     <Wrapper boxType={type}>
-      <InfoWrapper>
-        <IconWrapper>
-          <InformationOutline style={{ width: '24px', height: '24px' }} />
+      <InfoWrapper boxType={type}>
+        <IconWrapper boxType={type}>
+          {type == 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
+          {type != 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
         </IconWrapper>
         <TextWrapper>
           {heading && <Label>{heading}</Label>}
@@ -148,6 +181,15 @@ export const MessageBox = ({
         </CloseButtonWrapper>
       )}
     </Wrapper>
+
+    {links && (
+      //loops through the links passed in as properties if there are any and creates a working link for each of them
+      <LinkWrapper>
+        {links.map((x) => (
+          <Link href={x['href']}>{x['name']}</Link>
+        ))}
+      </LinkWrapper>
+    )}
   </Sticky>
 );
 

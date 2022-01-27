@@ -1,11 +1,17 @@
 {
   "name": "@ndla/modal",
-  "version": "1.1.10",
+  "version": "1.1.15",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
@@ -19,9 +25,9 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^1.0.6",
+    "@ndla/button": "^1.1.1",
     "@ndla/core": "^0.7.2",
-    "@ndla/util": "^1.1.1",
+    "@ndla/util": "^2.0.1",
     "@reach/dialog": "^0.2.9"
   },
   "peerDependencies": {
@@ -35,5 +41,6 @@
   },
   "devDependencies": {
     "@types/reach__dialog": "^0.1.0"
-  }
+  },
+  "gitHead": "22d6282b4577a1106562213c096e5f26f2525e97"
 }

@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Italic = (props: Props) => (
-  <Icon title="Italic" viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z" />
     </g>

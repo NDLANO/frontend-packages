@@ -19,3 +19,4 @@ export { default as FooterQualityInsurance } from './footer/FooterQualityInsuran
 export { default as FooterLinkButton } from './footer/FooterLinkButton';
 export { default as FooterStatus } from './footer/FooterStatus';
 export { default as Spinner } from './Spinner';
+export { default as SlateBlockMenu } from './SlateBlockMenu';

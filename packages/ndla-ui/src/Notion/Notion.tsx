@@ -17,7 +17,7 @@ import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core'
 import { CursorClick } from '@ndla/icons/action';
 import { Play, ArrowCollapse } from '@ndla/icons/common';
 // @ts-ignore
-import { makeSrcQueryString } from '../Image';
+import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
 
 const NotionContainer = styled.div``;
 
@@ -168,8 +168,8 @@ type VisualElementProps = {
   metaImage: {
     url: string;
     alt: string;
-    crop?: object;
-    focalPoint?: object;
+    crop?: ImageCrop;
+    focalPoint?: ImageFocalPoint;
   };
 };
 

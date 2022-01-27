@@ -183,6 +183,7 @@ const messages = {
       dialogHeader: '{{title}} er under arbeid.',
       dialogText: 'Du kan lese meir om kva dette betyr på',
     },
+    archived: 'Dette er eit utgått fag som ikkje blir halde ved like.',
   },
   subjectsPage: {
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
@@ -332,6 +333,7 @@ const messages = {
     multipleAuthorsLabelAriaConjunction: 'og',
     copyPageLink: 'Kopier lenke til sida',
     copyPageLinkCopied: 'Lenke kopiert',
+    copyHeaderLink: 'Kopier lenke til overskrifta',
     conjunction: 'og',
     supplierLabel: 'Rettshavar: {{name}}',
     multipleSuppliersLabel: 'Rettshavarar: {{names}}',
@@ -363,7 +365,7 @@ const messages = {
     competenceTopicSearchText: 'Søk ressursar for tema',
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
-    competenceGoalTitle: 'Målet er at eleven skal kunna:',
+    competenceGoalTitle: 'Målet er at eleven skal kunne:',
     competenceTabLK06label: 'Kompetansemål (LK06)',
     competenceTabLK20label: 'Kompetansemål (LK20)',
     competenceTabCorelabel: 'Kjerneelement',
@@ -408,6 +410,9 @@ const messages = {
       description: 'Denne lenka viser artikkelen utan kontekst(meny og botntekst)',
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
+    },
+    image: {
+      rules: 'Reglar for bruk av biletet:',
     },
     images: {
       heading: 'Slik bruker du bilete frå artikkelen',
@@ -536,11 +541,12 @@ const messages = {
     en: 'Engelsk',
     fr: 'Fransk',
     de: 'Tysk',
-    se: 'Samisk',
+    se: 'Nordsamisk',
+    sma: 'Sørsamisk',
     es: 'Spansk',
     zh: 'Kinesisk',
     unknown: 'Ukjent',
-    prefixChangeLanguage: 'Vel målform',
+    prefixChangeLanguage: 'Vel språk',
   },
   changeLanguage: {
     nb: 'Endre språk til bokmål',
@@ -701,18 +707,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Kva skjer med fagfornyinga på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'Ein god skulestart',
-      externalLink: 'https://blogg.ndla.no/engodskolestart/',
+      text: 'Aktiviser elevane med digitale verktøy',
+      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -809,6 +815,10 @@ const messages = {
     reuse: 'Bruk video',
     error: 'Orsak, ein feil oppstod ved lasting av videoen eller metadata om videoen.',
   },
+  other: {
+    download: 'Last ned innhald',
+    reuse: 'Bruk innhald',
+  },
   concept: {
     showDescription: 'Vis skildring av forklaringa',
     reuse: 'Bruk forklaring',
@@ -841,7 +851,8 @@ const messages = {
     loggedInAs: 'Du er pålogga som {{role}}.',
     loggedInAsButton: 'Du er pålogga som {{role}}',
     role: {
-      employee: 'Lærer',
+      employee: 'Lærar',
+      staff: 'Tilsett',
       student: 'Elev',
     },
     buttonLogIn: 'Logg inn med Feide',

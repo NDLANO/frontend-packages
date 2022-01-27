@@ -2,8 +2,11 @@ import React from 'react';
 import { DialogOverlay } from '@reach/dialog';
 import { css } from '@emotion/core';
 interface Props {
+  className: string;
   animateIn: boolean;
-  animationDuration: string;
+  animationDuration?: string;
+  isOpen: boolean;
+  onDismiss: () => void;
 }
 
 const dialogStyles = css`

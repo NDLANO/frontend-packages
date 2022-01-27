@@ -13,6 +13,7 @@ import {
   // @ts-ignore
 } from '@ndla/article-scripts';
 import { initAudioPlayers } from '../AudioPlayer';
+import { initCopyParagraphButtons } from '../CopyParagraphButton';
 import { Locale } from '../types';
 
 type Props = {
@@ -24,6 +25,7 @@ const ArticleContent = ({ content, locale, ...rest }: Props) => {
     removeEventListenerForResize();
     initArticleScripts();
     initAudioPlayers(locale);
+    initCopyParagraphButtons();
     return () => {
       removeEventListenerForResize();
     };

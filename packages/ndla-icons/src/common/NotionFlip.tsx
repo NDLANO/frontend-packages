@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const NotionFlip = (props: Props) => (
-  <Icon title="NotionFlip" viewBox="0 0 41 54" data-license="CC-BY 4.0" data-source="Labs AS" {...props}>
+  <Icon viewBox="0 0 41 54" data-license="CC-BY 4.0" data-source="Labs AS" {...props}>
     <g>
       <path d="M36.5 47.085L32.5 52.485V1.51501L36.5 6.91501V47.085Z" fill="#638B98" stroke="#638B98" />
       <path d="M1 27C1 15.9543 9.95431 7 21 7H37V47H21C9.95431 47 1 38.0457 1 27Z" fill="#DEF1ED" />

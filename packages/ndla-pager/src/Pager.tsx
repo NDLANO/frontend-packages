@@ -15,7 +15,7 @@ import { colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { stepNumbers } from './pagerHelpers';
 
-const createQueryString = (obj: Record<string, any>) =>
+const createQueryString = (obj: Query) =>
   Object.entries(obj)
     .filter(([_, value]) => value !== undefined && value !== '')
     .map(([key, value]) => `${key}=${value}`)
@@ -42,17 +42,19 @@ const pageItemStyle = css`
   }
 `;
 
-interface PageItemProps {
+type Query = Record<string, any>;
+
+interface PageItemProps<T extends Query> {
   pageItemComponentClass: React.ElementType;
   children: React.ReactNode;
   page: number;
-  query: object;
+  query: T;
   pathname: string;
-  onClick: (query: object) => void;
+  onClick: (query: T & { page: number }) => void;
   type?: string;
 }
 
-export const PageItem = ({
+export const PageItem = <T extends Query>({
   children,
   page,
   query: currentQuery,
@@ -60,7 +62,7 @@ export const PageItem = ({
   onClick,
   pageItemComponentClass: Component,
   type,
-}: PageItemProps) => {
+}: PageItemProps<T>) => {
   const query = { ...currentQuery, page };
   const linkToPage = {
     pathname,
@@ -90,23 +92,23 @@ const StyledPager = styled.div`
   margin-top: 1em;
 `;
 
-interface Props {
+interface Props<T extends Query> {
   page: number;
   lastPage: number;
   pathname?: string;
-  query?: object;
-  onClick?: (query: object) => void;
+  query: T;
+  onClick?: (query: T & { page: number }) => void;
   pageItemComponentClass?: React.ElementType;
 }
 
-const Pager = ({
+const Pager = <T extends Query>({
   page,
   lastPage,
   onClick = (_) => {},
   pageItemComponentClass = SafeLink,
-  query = {},
+  query,
   pathname = '',
-}: Props) => {
+}: Props<T>) => {
   const steps = stepNumbers(page, lastPage);
 
   const rest = { onClick, pageItemComponentClass, query, pathname };

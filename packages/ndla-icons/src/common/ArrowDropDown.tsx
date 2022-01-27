@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const ArrowDropDown = (props: Props) => (
-  <Icon
-    title="ArrowDropDown"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <path d="M7 10l5 5 5-5z" />
       <path d="M0 0h24v24H0z" fill="none" />

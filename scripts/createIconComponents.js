@@ -93,7 +93,6 @@ import Icon from '../Icon';
 
 const ${name} = props => (
   <Icon
-    title="${name}"
     viewBox="${viewBox}"
     data-license="${license}"
     data-source="${source}"

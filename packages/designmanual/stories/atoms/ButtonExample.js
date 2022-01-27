@@ -22,6 +22,17 @@ const MultiButtonData = {
       value: 'lagreogavslutt',
     },
   ],
+  secondaryButtonsWithOverride: [
+    {
+      label: 'Lagre og ny versjon',
+      value: 'lagreogny',
+      enable: true,
+    },
+    {
+      label: 'Lagre og avslutt',
+      value: 'lagreogavslutt',
+    },
+  ],
 };
 
 const ButtonExample = () => {
@@ -401,6 +412,24 @@ const ButtonExample = () => {
             }}
             mainButton={MultiButtonData.mainButton}
             secondaryButtons={MultiButtonData.secondaryButtons}
+          />
+        </InlineContainer>
+        <InlineContainer>
+          <MultiButton
+            onClick={() => {
+              action('clicked');
+            }}
+            menuPosition="bottom"
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
+          />{' '}
+          <MultiButton
+            disabled
+            onClick={() => {
+              action('clicked');
+            }}
+            mainButton={MultiButtonData.mainButton}
+            secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
           />
         </InlineContainer>
         <InlineContainer>

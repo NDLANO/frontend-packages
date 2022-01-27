@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -27,6 +27,8 @@ const GradesMenu = styled.div`
 `;
 
 export type GradesProps = {
+  selectedGrade?: string;
+  onChangeGrade: (newGrade: string) => void;
   grades: {
     name: string;
     categories: {
@@ -40,47 +42,27 @@ export type GradesProps = {
 };
 
 type Props = GradesProps & {
-  preSelectedGradeIndex?: number;
   onNavigate?: () => void;
 };
 
-const ProgrammeSubjects = ({ grades, onNavigate, preSelectedGradeIndex = 0 }: Props) => {
-  const [showGradeIndex, setShowGradeIndex] = useState(preSelectedGradeIndex);
-  const isWindowContext = typeof window !== 'undefined';
-
-  const toggleGradeIndex = (index: number) => {
-    setShowGradeIndex(index);
-    if (isWindowContext) {
-      window.localStorage.setItem('programmeShowGradeIndex', `${index}`);
-    }
-  };
-
-  const selectedGrade = grades[showGradeIndex];
+const ProgrammeSubjects = ({ grades, onNavigate, onChangeGrade, selectedGrade = 'vg1' }: Props) => {
+  const grade = grades.find((grade) => grade.name.toLowerCase() === selectedGrade) ?? grades[0];
   return (
     <>
       <GradesMenu>
-        {grades.map((item, index) => (
+        {grades.map((item) => (
           <Button
             key={item.name}
-            onClick={() => toggleGradeIndex(index)}
-            lighter={showGradeIndex !== index}
+            onClick={() => onChangeGrade(item.name.toLowerCase())}
+            lighter={item !== grade}
             size="normal"
             borderShape="rounded">
             {item.name}
           </Button>
         ))}
       </GradesMenu>
-      {selectedGrade.categories.map((category) => (
-        <NavigationBox
-          key={category.name}
-          heading={category.name}
-          items={category.subjects}
-          onClick={() => {
-            if (onNavigate) {
-              onNavigate();
-            }
-          }}
-        />
+      {grade.categories.map((category) => (
+        <NavigationBox key={category.name} heading={category.name} items={category.subjects} onClick={onNavigate} />
       ))}
     </>
   );

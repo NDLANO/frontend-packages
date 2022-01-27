@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import LayoutItem, { OneColumn } from '../Layout';
@@ -65,19 +65,7 @@ type Props = GradesProps & {
   image?: string;
 };
 
-export const Programme = ({ heading, image, grades }: Props) => {
-  const [showGradeIndex, setShowGradeIndex] = useState(0);
-  const isWindowContext = typeof window !== 'undefined';
-
-  useEffect(() => {
-    if (isWindowContext) {
-      const rememberGradeIndex = window.localStorage.getItem('programmeShowGradeIndex') || '0';
-      if (grades.length > Number(rememberGradeIndex)) {
-        setShowGradeIndex(Number(rememberGradeIndex));
-      }
-    }
-  }, [isWindowContext, grades]);
-
+export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade }: Props) => {
   return (
     <StyledWrapper>
       <StyledBackground image={image} />
@@ -87,7 +75,7 @@ export const Programme = ({ heading, image, grades }: Props) => {
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
               <SubjectsWrapper>
-                <ProgrammeSubjects grades={grades} preSelectedGradeIndex={showGradeIndex} />
+                <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
               </SubjectsWrapper>
             </StyledContentWrapper>
           </LayoutItem>

@@ -56,7 +56,7 @@ const MessageBoxExample = () => {
                     <MessageHeader>Gul versjon</MessageHeader>
                     <p>
                       Hoved varianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som
-                      kan klikes vekk eller ikke.
+                      kan klikkes vekk eller ikke.
                     </p>
                     <MessageBox type="medium">
                       <span>{messages.messageBoxInfo.noContent}</span>

@@ -215,7 +215,12 @@ export const MultiButton = ({
               escapeDeactivates: true,
             }}>
             <div>
-              <Button {...clippedButtonAttachmentOutline} onClick={() => setPopupState(!isOpen)} aria-haspopup="true" aria-expanded={isOpen} aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}>
+              <Button
+                {...clippedButtonAttachmentOutline}
+                onClick={() => setPopupState(!isOpen)}
+                aria-haspopup="true"
+                aria-expanded={isOpen}
+                aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}>
                 <StyledIcon rotate={isOpen ? 180 : 0} aria-hidden="true" />
               </Button>
               {isOpen && (

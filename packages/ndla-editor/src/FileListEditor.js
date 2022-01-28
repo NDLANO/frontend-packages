@@ -234,7 +234,10 @@ class FileListEditor extends Component {
     const { editFileIndex, draggingIndex, deleteIndex } = this.state;
 
     return (
-      <ListWrapper ref={this.filesWrapperRef} draggingIndex={draggingIndex}>
+      <ListWrapper
+        ref={this.filesWrapperRef}
+        draggingIndex={draggingIndex}
+        aria-dropeffect={draggingIndex > -1 ? 'move' : null}>
         {files.map((file, index) => {
           const isMissing = !!(missingFilePaths || []).find((mp) => mp === file.path);
           return (
@@ -245,7 +248,8 @@ class FileListEditor extends Component {
                 deleteIndex === index && fadeOutAnimation,
                 editFileIndex !== index && file.title === '' && fileErrorCss,
               ]}
-              onAnimationEnd={deleteIndex === index ? this.executeDeleteFile : undefined}>
+              onAnimationEnd={deleteIndex === index ? this.executeDeleteFile : undefined}
+              aria-grabbed={draggingIndex === index}>
               <FileNameInput
                 messages={messages}
                 isMissing={isMissing}
@@ -280,8 +284,12 @@ class FileListEditor extends Component {
               )}
               <div>
                 <Tooltip tooltip={messages.changeName}>
-                  <ButtonIcons tabIndex={-1} type="button" onClick={(e) => this.editFile(e, index)}>
-                    <Pencil />
+                  <ButtonIcons
+                    tabIndex={-1}
+                    type="button"
+                    onClick={(e) => this.editFile(e, index)}
+                    aria-label={messages.changeName}>
+                    <Pencil aria-hidden="true" />
                   </ButtonIcons>
                 </Tooltip>
                 {files.length > 1 &&
@@ -292,8 +300,9 @@ class FileListEditor extends Component {
                         tabIndex={-1}
                         type="button"
                         onMouseDown={(e) => this.onDragStart(e, index)}
-                        onMouseUp={this.onDragEnd}>
-                        <DragHorizontal />
+                        onMouseUp={this.onDragEnd}
+                        aria-label={messages.changeOrder}>
+                        <DragHorizontal aria-hidden="true" />
                       </ButtonIcons>
                     </Tooltip>
                   ) : (
@@ -303,12 +312,17 @@ class FileListEditor extends Component {
                       type="button"
                       onMouseDown={(e) => this.onDragStart(e, index)}
                       onMouseUp={this.onDragEnd}>
-                      <DragHorizontal />
+                      <DragHorizontal aria-hidden="true" />
                     </ButtonIcons>
                   ))}
                 <Tooltip tooltip={messages.removeFile}>
-                  <ButtonIcons tabIndex={-1} type="button" onClick={() => this.deleteFile(index)} delete>
-                    <DeleteForever />
+                  <ButtonIcons
+                    tabIndex={-1}
+                    type="button"
+                    onClick={() => this.deleteFile(index)}
+                    delete
+                    aria-label={messages.removeFile}>
+                    <DeleteForever aria-hidden="true" />
                   </ButtonIcons>
                 </Tooltip>
               </div>

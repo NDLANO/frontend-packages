@@ -7,13 +7,12 @@
  */
 
 import React, { useState, ReactChild, ReactChildren } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { CSSPropertiesWithMultiValues } from '@emotion/serialize';
 import FocusTrapReact from 'focus-trap-react';
-// @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
-// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 
 import { spacing, misc, animations, colors } from '@ndla/core';
@@ -158,6 +157,7 @@ const PopupWrapper: React.FC<Props> = ({
   buttonStyle,
 }) => {
   const [isOpen, toggleIsOpen] = useState(false);
+  const { t } = useTranslation();
   const setPopupState = (newState?: boolean) => {
     toggleIsOpen(!!newState);
     if (newState && onOpen) {
@@ -166,6 +166,7 @@ const PopupWrapper: React.FC<Props> = ({
       onClose();
     }
   };
+  console.log(t('close'));
   return (
     <StyledWrapper>
       <FocusTrapReact
@@ -176,8 +177,8 @@ const PopupWrapper: React.FC<Props> = ({
           escapeDeactivates: true,
         }}>
         <div>
-          <button type="button" css={buttonStyle} onClick={() => setPopupState(!isOpen)}>
-            {label} <StyledIcon rotate={isOpen ? 180 : 0} />
+          <button type="button" css={buttonStyle} onClick={() => setPopupState(!isOpen)} aria-label={label}>
+            {label} <StyledIcon rotate={isOpen ? 180 : 0} aria-hidden="true" />
           </button>
           {isOpen && (
             <StyledOptionWrapperAnimation
@@ -188,8 +189,8 @@ const PopupWrapper: React.FC<Props> = ({
               <StyledOptionWrapper background={background}>
                 <StyledOptionContent>
                   {withCloseButton && (
-                    <StyledCloseButton type="button" onClick={() => setPopupState(false)}>
-                      <Cross />
+                    <StyledCloseButton type="button" onClick={() => setPopupState(false)} aria-label={t('close')}>
+                      <Cross aria-hidden="true" />
                     </StyledCloseButton>
                   )}
                   {children(setPopupState)}

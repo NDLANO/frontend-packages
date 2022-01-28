@@ -55,7 +55,7 @@ const getButtonComponent = (file, isMissing, messages) => {
           {file.title === '' ? messages.missingTitle : file.title}
           {` `}
           <span>
-            ({file.type}) {<InformationOutline />}
+            ({file.type}) {<InformationOutline aria-hidden="true" />}
           </span>
         </LinkButton>
       </Tooltip>
@@ -87,7 +87,7 @@ const FileNameInput = ({ editMode, useRef, file, isMissing, messages, ...rest })
     );
   return (
     <div>
-      <div>
+      <div aria-hidden="true">
         <Download />
       </div>
       {getButtonComponent(file, isMissing, messages)}

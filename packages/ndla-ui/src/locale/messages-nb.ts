@@ -772,6 +772,10 @@ const messages = {
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innen',
   },
+  multibutton: {
+    open: 'Åpne meny',
+    close: 'Lukk meny',
+  },
   close: 'Lukk',
   title: 'Tittel',
   image: {

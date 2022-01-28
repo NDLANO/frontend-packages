@@ -166,7 +166,6 @@ const PopupWrapper: React.FC<Props> = ({
       onClose();
     }
   };
-  console.log(t('close'));
   return (
     <StyledWrapper>
       <FocusTrapReact

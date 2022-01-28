@@ -177,7 +177,7 @@ export class Carousel extends Component<Props, State> {
                   arrowOffset={arrowOffset}
                   dontShow={slideIndex === 0 || hideButtons}
                   onClick={() => this.slidePage(1)}>
-                  <ChevronLeft />
+                  <ChevronLeft aria-hidden="true" />
                 </StyledButton>
                 <StyledButton
                   type="button"
@@ -187,7 +187,7 @@ export class Carousel extends Component<Props, State> {
                   next
                   arrowOffset={arrowOffset}
                   onClick={() => this.slidePage(-1)}>
-                  <ChevronRight />
+                  <ChevronRight aria-hidden="true" />
                 </StyledButton>
               </>
             )}

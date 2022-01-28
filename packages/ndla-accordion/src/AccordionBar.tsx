@@ -9,7 +9,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// @ts-ignore
 import { ChevronRight } from '@ndla/icons/common';
 import { colors, spacing, spacingUnit, fonts } from '@ndla/core';
 import { openIndexesProps } from '../types';
@@ -125,7 +124,7 @@ export const AccordionBar: React.FC<Props> = ({ title, children, panelId, hasErr
       onClick={onClick}
       tiny={tiny}
       isOpen={isOpen}>
-      <ChevronRight />
+      <ChevronRight aria-hidden="true" />
       <span>{title}</span>
     </StyledButton>
     <StyledChildrenWrapper tiny={tiny}>{children}</StyledChildrenWrapper>

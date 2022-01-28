@@ -591,10 +591,6 @@ storiesOf('Enkle komponenter', module)
           <a href="https://sokogskriv.no/kildebruk-og-referanser/referansestiler/apa-6th/">APA-stilen</a> for utlisting
           nederst på siden.
         </p>
-        <p>
-          I teksten brukes en enkel nummerering for å henvise til referanse. Tallet lenkes til den aktuelle referansen.
-        </p>
-        <p>I referanselisten nederst lenkes hver referanse igjen til hvor de opptrer i teksten.</p>
       </StoryIntro>
       <StoryBody>
         <FootnotesExample />

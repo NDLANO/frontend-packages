@@ -105,11 +105,7 @@ class FootnotesExample extends Component {
         <ol className="c-footnotes">
           <li className="c-footnotes__item">
             <cite className="c-footnotes__cite" id="note1">
-              <sup>
-                <a href="#ref1" target="_self">
-                  1
-                </a>
-              </sup>{' '}
+              {' '}
               Røyrane, «Hanseatene kommer tilbake». Røyrane, Eva. «Hanseatene kommer tilbake.» Bergens Tidende.
               11.05.2003.{' '}
               <a href="http://www.bt.no/nyheter/lokalt/Hanseatene-kommer-tilbake-2419472.html">
@@ -120,11 +116,7 @@ class FootnotesExample extends Component {
           </li>
           <li className="c-footnotes__item">
             <cite className="c-footnotes__cite" id="note2">
-              <sup>
-                <a href="#ref2" target="_self">
-                  2
-                </a>
-              </sup>{' '}
+              {' '}
               Nærø, «Ketil Bjørnstad.» Nærø, Sturle Scholz. «Ingen tok Ketil Bjørnstad på alvor.» Aftenposten.
               25.01.2013.
             </cite>

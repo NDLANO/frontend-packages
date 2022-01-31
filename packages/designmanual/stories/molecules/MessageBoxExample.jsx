@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import messages from '@ndla/ui/lib/locale/messages-nb';
 import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';

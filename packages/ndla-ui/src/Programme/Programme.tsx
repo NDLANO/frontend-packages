@@ -66,21 +66,8 @@ type Props = GradesProps & {
   messageBox?: boolean;
 };
 
-export const Programme = ({ heading, image, grades, messageBox }: Props) => {
-  const [showGradeIndex, setShowGradeIndex] = useState(0);
-  const isWindowContext = typeof window !== 'undefined';
-
-  useEffect(() => {
-    if (isWindowContext) {
-      const rememberGradeIndex = window.localStorage.getItem('programmeShowGradeIndex') || '0';
-      if (grades.length > Number(rememberGradeIndex)) {
-        setShowGradeIndex(Number(rememberGradeIndex));
-      }
-    }
-  }, [isWindowContext, grades]);
-
-
-export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBox }: Props) => {  return (
+export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBox }: Props) => {
+  return (
     <StyledWrapper>
       <StyledBackground image={image} />
       <OneColumn>

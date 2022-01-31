@@ -80,7 +80,7 @@ const VersionHistory: React.FC<Props> = ({ notes, children }) => {
           ))}
         </tbody>
       </StyledTable>
-      <StyleLine />
+      <StyleLine aria-hidden={true} />
       {children}
     </StyledWrapper>
   );

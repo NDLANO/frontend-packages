@@ -144,7 +144,7 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
   ({ heading, actions, clickItem, onToggleOpen, isOpen, cy = 'slate-block-menu' }: Props, ref) => (
     <>
       <div ref={ref} css={[buttonCSS, isOpen && buttonOpen]} data-cy={cy} onMouseDown={() => onToggleOpen(!isOpen)}>
-        <Plus />
+        <Plus aria-label="Plus" />
       </div>
       {isOpen && (
         <FocusTrap

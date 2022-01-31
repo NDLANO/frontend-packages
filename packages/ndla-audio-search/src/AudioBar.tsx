@@ -8,11 +8,22 @@
 
 /* eslint jsx-a11y/media-has-caption: 0 */
 
+import { IAudioMetaInformation } from '@ndla/types-audio-api';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
-class AudioBar extends Component {
-  constructor(props) {
+interface Props {
+  audio: { id: number };
+  fetchAudio: (id: number) => Promise<IAudioMetaInformation>;
+  onError: (err: any) => void;
+}
+
+interface State {
+  audioSource?: string;
+  audioType?: string;
+}
+
+class AudioBar extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       audioSource: undefined,
@@ -45,13 +56,5 @@ class AudioBar extends Component {
     return <audio controls>{audioSource && <source src={audioSource} type={audioType} />}</audio>;
   }
 }
-
-AudioBar.propTypes = {
-  audio: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-  }),
-  fetchAudio: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired,
-};
 
 export default AudioBar;

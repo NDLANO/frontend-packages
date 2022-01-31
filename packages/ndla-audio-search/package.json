@@ -1,10 +1,16 @@
 {
   "name": "@ndla/audio-search",
-  "version": "1.0.14",
+  "version": "1.0.20",
   "description": "A simple library for searching for audio files from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn build:types",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepublish": "yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"
@@ -16,13 +22,18 @@
   "files": [
     "scss",
     "lib",
-    "es"
+    "es",
+    "types"
   ],
   "dependencies": {
-    "@ndla/button": "^1.1.1",
+    "@ndla/button": "^1.1.2",
     "@ndla/core": "^0.7.2",
-    "@ndla/licenses": "^1.0.7",
-    "@ndla/util": "^2.0.0"
+    "@ndla/licenses": "^1.1.4",
+    "@ndla/pager": "^1.0.11",
+    "@ndla/util": "^2.0.1"
+  },
+  "devDependencies": {
+    "@ndla/types-audio-api": "^0.0.10"
   },
   "peerDependencies": {
     "classnames": "^2.2.5",

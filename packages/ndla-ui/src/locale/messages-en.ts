@@ -373,7 +373,7 @@ const messages = {
     competenceTopicSearchText: 'Find resources',
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
-    competenceGoalTitle: 'The goal is for the student to be able to:',
+    competenceGoalTitle: 'The pupil is expected to be able to:',
     competenceTabLK06label: 'Competence goal (LK06)',
     competenceTabLK20label: 'Competence goal (LK20)',
     competenceTabCorelabel: 'Core element',
@@ -714,18 +714,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
       text: 'Aktiviser elevane med digitale verktøy',
       externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -858,6 +858,7 @@ const messages = {
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
       employee: 'Teacher',
+      staff: 'Staff',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',

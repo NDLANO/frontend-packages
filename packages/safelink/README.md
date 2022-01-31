@@ -34,7 +34,7 @@ import { MissingRouterContext } from '@ndla/safelink';
 </MissingRouterContext.Provider>;
 ```
 
-and use SafeLink as this:
+and use SafeLink like this:
 
 ```js
 import Safelink from '@ndla/safelink';

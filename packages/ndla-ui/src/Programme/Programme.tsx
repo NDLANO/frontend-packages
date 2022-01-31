@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import LayoutItem, { OneColumn } from '../Layout';
@@ -79,7 +79,8 @@ export const Programme = ({ heading, image, grades, messageBox }: Props) => {
     }
   }, [isWindowContext, grades]);
 
-  return (
+
+export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBox }: Props) => {  return (
     <StyledWrapper>
       <StyledBackground image={image} />
       <OneColumn>
@@ -91,7 +92,7 @@ export const Programme = ({ heading, image, grades, messageBox }: Props) => {
                 <MessageBox>Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.</MessageBox>
               )}
               <SubjectsWrapper>
-                <ProgrammeSubjects grades={grades} preSelectedGradeIndex={showGradeIndex} />
+                <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
               </SubjectsWrapper>
             </StyledContentWrapper>
           </LayoutItem>

@@ -7,10 +7,22 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import { IImageMetaSummary, IImageMetaInformationV2 } from '@ndla/types-image-api';
+//@ts-ignore
 import Button from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
+
+interface Props {
+  image: IImageMetaSummary;
+  onImageClick: (image: IImageMetaSummary) => void;
+  selectedImage?: IImageMetaInformationV2;
+  onSelectImage: (image: IImageMetaInformationV2, saveAsMetaImage: boolean) => void;
+  useImageTitle: string;
+  showCheckbox: boolean;
+  checkboxLabel?: string;
+  useAsMetaImageLabel?: string;
+}
 
 export default function ImageSearchResult({
   image,
@@ -20,7 +32,7 @@ export default function ImageSearchResult({
   useImageTitle,
   showCheckbox,
   checkboxLabel,
-}) {
+}: Props) {
   const active = selectedImage && selectedImage.id === image.id ? 'active' : '';
 
   return (
@@ -50,18 +62,3 @@ export default function ImageSearchResult({
     </div>
   );
 }
-
-ImageSearchResult.propTypes = {
-  image: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    previewUrl: PropTypes.string.isRequired,
-  }),
-  onImageClick: PropTypes.func.isRequired,
-  selectedImage: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }),
-  onSelectImage: PropTypes.func.isRequired,
-  useImageTitle: PropTypes.string.isRequired,
-  showCheckbox: PropTypes.bool.isRequired,
-  useAsMetaImageLabel: PropTypes.string,
-};

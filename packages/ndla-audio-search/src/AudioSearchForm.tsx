@@ -6,18 +6,33 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
+//@ts-ignore
 import Button from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
+import { QueryObject } from './AudioSearch';
 
 const classes = new BEMHelper({
   name: 'audio-search',
   prefix: 'c-',
 });
 
-class AudioSearchForm extends Component {
-  constructor(props) {
+interface Props {
+  queryObject: QueryObject;
+  translations: {
+    searchPlaceholder: string;
+    searchButtonTitle: string;
+  };
+  searching: boolean;
+  onSearchQuerySubmit: (query: QueryObject) => void;
+}
+
+interface State {
+  queryObject: QueryObject;
+}
+
+class AudioSearchForm extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       queryObject: props.queryObject,
@@ -27,13 +42,13 @@ class AudioSearchForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onKeyPress(evt) {
+  onKeyPress(evt: KeyboardEvent<HTMLInputElement>) {
     if (evt.key === 'Enter') {
       this.handleSubmit(evt);
     }
   }
 
-  handleQueryChange({ target: { value } }) {
+  handleQueryChange({ target: { value } }: ChangeEvent<HTMLInputElement>) {
     this.setState((prevState) => ({
       queryObject: {
         ...prevState.queryObject,
@@ -42,7 +57,7 @@ class AudioSearchForm extends Component {
     }));
   }
 
-  handleSubmit(evt) {
+  handleSubmit(evt: KeyboardEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>) {
     evt.preventDefault();
     this.props.onSearchQuerySubmit(this.state.queryObject);
   }
@@ -57,7 +72,7 @@ class AudioSearchForm extends Component {
           type="text"
           onChange={this.handleQueryChange}
           onKeyPress={this.onKeyPress}
-          value={this.state.queryObject.query}
+          value={this.state.queryObject?.query}
           placeholder={translations.searchPlaceholder}
         />
         <Button {...classes('form-button')} onClick={this.handleSubmit} loading={searching}>
@@ -67,21 +82,5 @@ class AudioSearchForm extends Component {
     );
   }
 }
-
-AudioSearchForm.propTypes = {
-  queryObject: PropTypes.shape({
-    query: PropTypes.string,
-    page: PropTypes.number.isRequired,
-    pageSize: PropTypes.number.isRequired,
-    locale: PropTypes.string.isRequired,
-    audioType: PropTypes.string.isRequired,
-  }),
-  translations: PropTypes.shape({
-    searchPlaceholder: PropTypes.string.isRequired,
-    searchButtonTitle: PropTypes.string.isRequired,
-  }),
-  searching: PropTypes.bool.isRequired,
-  onSearchQuerySubmit: PropTypes.func.isRequired,
-};
 
 export default AudioSearchForm;

@@ -15,14 +15,8 @@ interface Props extends IconProps {
 }
 
 const AssessmentResource = (props: Props) => (
-  <Icon
-    title="AssessmentResource"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Keyteq"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Keyteq" {...props}>
     <g>
-      <title>Vurderingsressurs</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <g>
           <g>

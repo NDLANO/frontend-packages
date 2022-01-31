@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Keyhole = (props: Props) => (
-  <Icon title="Keyhole" viewBox="0 0 24 24" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
       <g transform="translate(2.000000, 2.000000)">
         <path

@@ -7,20 +7,27 @@
  */
 
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+//@ts-ignore
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
+//@ts-ignore
 import { CheckboxItem } from '@ndla/forms';
+import { IImageMetaInformationV2 } from '@ndla/types-image-api';
 
 import { getSrcSets } from './util/imageUtil';
 
-const convertWithFallBack = (fieldName, value, fallback) =>
-  value[fieldName] && value[fieldName][fieldName] ? value[fieldName][fieldName] : fallback;
-
-const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }) => {
+interface Props {
+  image: IImageMetaInformationV2;
+  onSelectImage: (image: IImageMetaInformationV2, saveAsMetaImage: boolean) => void;
+  useImageTitle: string;
+  showCheckbox: boolean;
+  checkboxLabel?: string;
+}
+const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
-  const tags = convertWithFallBack('tags', image.tags, []);
+  const tags = image.tags.tags ?? [];
+  const title = image.title.title ?? '';
   return (
     <div className="image-preview">
       <div className="image">
@@ -33,7 +40,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
         />
       </div>
       <div className="information">
-        <h2 className="title">{convertWithFallBack('title', image.title, '')}</h2>
+        <h2 className="title">{title}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
             <span className="text right">{image.copyright.creators.map((creator) => creator.name).join(', ')}</span>
@@ -63,35 +70,6 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
       <div className="clear" />
     </div>
   );
-};
-
-PreviewImage.propTypes = {
-  image: PropTypes.shape({
-    imageUrl: PropTypes.string.isRequired,
-    title: PropTypes.shape({
-      title: PropTypes.string,
-      language: PropTypes.string,
-    }),
-    tags: PropTypes.shape({
-      tags: PropTypes.arrayOf(PropTypes.string),
-      language: PropTypes.string,
-    }),
-    copyright: PropTypes.shape({
-      license: PropTypes.shape({
-        description: PropTypes.string.isRequired,
-      }),
-      creators: PropTypes.arrayOf(
-        PropTypes.shape({
-          type: PropTypes.string.isRequired,
-          name: PropTypes.string.isRequired,
-        }),
-      ),
-    }).isRequired,
-  }).isRequired,
-  onSelectImage: PropTypes.func.isRequired,
-  useImageTitle: PropTypes.string.isRequired,
-  showCheckbox: PropTypes.bool.isRequired,
-  checkboxLabel: PropTypes.string,
 };
 
 export default PreviewImage;

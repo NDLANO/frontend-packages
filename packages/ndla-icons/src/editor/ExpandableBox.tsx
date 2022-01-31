@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const ExpandableBox = (props: Props) => (
-  <Icon title="ExpandableBox" viewBox="0 0 23 29" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 23 29" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <g fill="none" stroke="#343434" transform="translate(.667 1)">
         <rect width="20.5" height="18.5" x=".75" y="3.75" />

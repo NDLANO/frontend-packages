@@ -415,9 +415,9 @@ const Controls = ({ src, title }: Props) => {
         <PlayButton type="button" onClick={togglePlay} title="play" aria-label="play">
           <span aria-hidden>
             {playing ? (
-              <Pause role="img" aria-label="pause" title="play" />
+              <Pause role="img" aria-label="Pause" title="Pause" />
             ) : (
-              <Play role="img" aria-label="play" title="play" />
+              <Play role="img" aria-label="Play" title="Play" />
             )}
           </span>
         </PlayButton>

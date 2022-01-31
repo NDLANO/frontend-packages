@@ -23,7 +23,7 @@ import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import { NotionProps } from '../Notion/Notion';
 import ArticleAccessMessage from './ArticleAccessMessage';
-import { MessageBox } from '../MessageBox/MessageBox';
+import MessageBox from '../MessageBox/MessageBox';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -138,6 +138,7 @@ export const Article = ({
   modifier,
   messages,
   messageBoxLinks,
+  messagebox, //Not the same as messages.
   children,
   competenceGoals,
   competenceGoalTypes,
@@ -196,9 +197,9 @@ export const Article = ({
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
 
-          {messages.messageBox && (
+          {messagebox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
+              <MessageBox links={messageBoxLinks}>{messages.label}</MessageBox>
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>

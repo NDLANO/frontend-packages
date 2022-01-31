@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import LayoutItem, { OneColumn } from '../Layout';
-import { NavigationHeading } from '../Navigation';
 import ProgrammeSubjects from './ProgrammeSubjects';
 import { GradesProps } from './ProgrammeSubjects';
 import MessageBox from '../MessageBox/MessageBox';
+import { NavigationHeading } from '..';
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,7 +67,6 @@ type Props = GradesProps & {
 };
 
 export const Programme = ({ heading, image, grades, messageBox }: Props) => {
-  const { t } = useTranslation();
   const [showGradeIndex, setShowGradeIndex] = useState(0);
   const isWindowContext = typeof window !== 'undefined';
 
@@ -88,7 +87,9 @@ export const Programme = ({ heading, image, grades, messageBox }: Props) => {
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
-              {messageBox && <MessageBox>{t('messages.messageBoxInfo.noContent')}</MessageBox>}
+              {messageBox && (
+                <MessageBox>Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.</MessageBox>
+              )}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} preSelectedGradeIndex={showGradeIndex} />
               </SubjectsWrapper>

@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
+import messages from '@ndla/ui/lib/locale/messages-nb';
 import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';
-import { useTranslation } from 'react-i18next';
 import Tabs from '@ndla/tabs';
 import MessageBoxTabs from '../molecules/MessageBoxTabs';
-import messages from '@ndla/ui/lib/locale/messages-nb';
 
 import Table from '../molecules/TableExample';
-import { Tab } from 'react-tabs';
 
 const Wrapper = styled.div`
   width: 70%;
@@ -80,8 +78,8 @@ const MessageBoxExample = () => {
                   <MessageHeader>Ghost variant</MessageHeader>
                   <p>
                     Denne er mer nedtonet og brukes f.eks for informasjon om at ressursen kun er for lærere innlogget
-                    med feide. Informasjonen er plassert og kan ikke klikkes vekk. Ikonet kan byttes ut med et annet
-                    når og hvis behovet dukker opp
+                    med feide. Informasjonen er plassert og kan ikke klikkes vekk. Ikonet kan byttes ut med et annet når
+                    og hvis behovet dukker opp
                   </p>
                   <MessageBoxWrapper>
                     <MessageBox type="ghost">

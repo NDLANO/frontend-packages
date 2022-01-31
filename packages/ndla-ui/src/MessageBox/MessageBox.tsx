@@ -7,7 +7,6 @@ import Button from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
-import { ThemeContext } from '@emotion/core';
 
 type WrapperProps = {
   boxType?: 'ghost' | 'fullpage' | 'medium';
@@ -164,8 +163,8 @@ export const MessageBox = ({ heading, type, sticky = false, onClose, children, l
     <Wrapper boxType={type}>
       <InfoWrapper boxType={type}>
         <IconWrapper boxType={type}>
-          {type == 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
-          {type != 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
+          {type === 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
+          {type !== 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
         </IconWrapper>
         <TextWrapper>
           {heading && <Label>{heading}</Label>}
@@ -175,7 +174,7 @@ export const MessageBox = ({ heading, type, sticky = false, onClose, children, l
       {onClose && (
         <CloseButtonWrapper>
           <CloseButton link onClick={onClose}>
-            <CloseButtonText>{t('close')}</CloseButtonText>
+            <CloseButtonText>{'close'}</CloseButtonText>
             <Cross style={{ width: '24px', height: '24px' }} />
           </CloseButton>
         </CloseButtonWrapper>

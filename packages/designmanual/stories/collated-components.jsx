@@ -52,7 +52,6 @@ import ComponentInfo from './ComponentInfo';
 import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
-import Frontpage from './pages/FrontpageExample';
 import FooterExample from './molecules/footers';
 import MessageBox from './molecules/MessageBoxExample';
 

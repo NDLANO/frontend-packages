@@ -13,14 +13,10 @@ import MessageBox from '@ndla/ui/src/MessageBox/MessageBox';
 import { useTranslation } from 'react-i18next';
 
 import {
-  Image,
   LayoutItem,
   NavigationBox,
   NavigationHeading,
   OneColumn,
-  SubjectAbout,
-  SubjectBanner,
-  SubjectCarousel,
   Breadcrumblist,
   ArticleHeaderWrapper,
   ArticleByline,
@@ -38,6 +34,7 @@ import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 import FigureImage from '../article/FigureImage';
 
+/* Stored for later 
 const subjectAbout = (label, description) => (
   <SubjectAbout
     wide
@@ -45,7 +42,7 @@ const subjectAbout = (label, description) => (
     heading={label}
     description={description}
   />
-);
+); */
 
 const loadArticle = async (articleId) => {
   try {
@@ -142,7 +139,7 @@ const SubjectPage = ({
   initialBreadcrumb = [],
   subjectName,
   messagebox: message,
-  messageBoxMini: messageBoxMini,
+  messageBoxMini,
   bannerBackground,
   subjectContentCards,
   subjectAboutHeading,
@@ -359,6 +356,7 @@ const SubjectPage = ({
     }
   };
 
+  /* Stored for later
   const onClickSubTopic = (e, id) => {
     e.preventDefault();
     if (id !== selectedSubTopic) {
@@ -375,7 +373,7 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
+ */
   const onClickSubSubTopic = (e, id) => {
     e.preventDefault();
     setSelectedSubSubTopic(id);
@@ -394,7 +392,7 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
+  /* Stored for later
   const moveBannerUp = !topicData;
 
   const getSubTopics = () => {
@@ -402,7 +400,7 @@ const SubjectPage = ({
       return subTopics;
     }
     return subTopics.filter((item) => !item.isAdditionalResource);
-  };
+  }; */
 
   // show/hide breadcrumb based on intersection
   const [containerRef, { entry }] = useIntersectionObserver({

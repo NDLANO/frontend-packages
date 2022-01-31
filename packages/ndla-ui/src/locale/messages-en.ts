@@ -314,7 +314,7 @@ const messages = {
     },
   },
   messageBoxInfo: {
-    outdated:
+    outdatedCoursePlan:
       'This course is not updated to the current curriculum. Follow this link to find the updated version of the course: ',
     updateBrowser:
       'Your browser is outdated. Update it, or find a safe and updated browser on https://browsehappy.com.',

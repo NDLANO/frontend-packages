@@ -314,7 +314,8 @@ const messages = {
     },
   },
   messageBoxInfo: {
-    outdated: 'Dette faget følgjer ein utgått læreplan. Gå til faget som er oppdatert etter gjeldande læreplan: ',
+    outdatedCoursePlan:
+      'Dette faget følgjer ein utgått læreplan. Gå til faget som er oppdatert etter gjeldande læreplan: ',
     updateBrowser:
       'Nettlesaren din er utdatert. Oppdater han, eller finn ein trygg og oppdatert nettlesar på https://browsehappy.com. ',
     noContent: 'Vi har dessverre ikkje nokon programfag enno.',

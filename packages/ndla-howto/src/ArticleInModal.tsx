@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 //@ts-ignore
 import Modal from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
@@ -7,6 +8,8 @@ import { Cross } from '@ndla/icons/action';
 import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, IconButton, PushGrid } from './Styles';
 
 import { stories } from './StaticInfoComponents';
+//@ts-ignore
+import { NotionDialogStyledWrapper } from 'packages/ndla-notion/src/NotionDialog';
 
 interface ModalContentProps {
   pageId: string;
@@ -14,17 +17,19 @@ interface ModalContentProps {
 }
 
 const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
+  const { t } = useTranslation();
   const useStory = stories[pageId] || {
     title: `Fant ingen veiledningstekster "${pageId}"`,
     lead: 'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
   };
   return (
     <Wrapper>
+      {console.log(t('close'))}
       <div>
         <InModalHeader>
           <InformationOutline style={{ position: 'absolute' }} />
           <Heading inModal>{useStory.title}</Heading>
-          <IconButton type="button" onClick={onClose}>
+          <IconButton type="button" onClick={onClose} aria-label={t('close')}>
             <Cross />
           </IconButton>
         </InModalHeader>

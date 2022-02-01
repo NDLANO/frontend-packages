@@ -280,13 +280,13 @@ const ListView = ({
             type="button"
             className={`style-button ${viewStyle === 'list' && 'active'}`}
             onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}>
-            <ListIcon />
+            <ListIcon aria-hidden={true} />
           </button>
           <button
             type="button"
             className={`style-button ${viewStyle === 'grid' && 'active'}`}
             onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}>
-            <GridIcon />
+            <GridIcon aria-hidden={true} />
           </button>
         </div>
       )}

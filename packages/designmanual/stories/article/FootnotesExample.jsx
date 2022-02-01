@@ -11,9 +11,8 @@ class FootnotesExample extends Component {
       <div>
         <p>
           Når du pitcher, blir idéen og historien i den filmen du planlegger å lage, tydeligere for både deg selv og dem
-          du eventuelt jobber sammen med i klassen. 
-            Målgruppen for Hansaspillet er både fastboende og turister. Pitching er også en god måte å bevisstgjøre seg
-            selv på.
+          du eventuelt jobber sammen med i klassen. Målgruppen for Hansaspillet er både fastboende og turister. Pitching
+          er også en god måte å bevisstgjøre seg selv på.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
@@ -43,8 +42,9 @@ class FootnotesExample extends Component {
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
           du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
         </p>
-        <p>Forfatteren, komponisten og musikeren foreslo flere samarbeidsprosjekter for å løfte frem Munchs ukjente
-            tekstarv.
+        <p>
+          Forfatteren, komponisten og musikeren foreslo flere samarbeidsprosjekter for å løfte frem Munchs ukjente
+          tekstarv.
         </p>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen

@@ -11,9 +11,9 @@ import BEMHelper from 'react-bem-helper';
 import { NDLAMovie } from './interfaces';
 
 interface Props {
-  slideshow: Array<NDLAMovie>;
+  slideshow: NDLAMovie[];
   activeSlide: number;
-  gotoSlide: Function;
+  gotoSlide: (indexTarget: number, useAnimation: boolean) => void;
 }
 
 const classes = new BEMHelper({

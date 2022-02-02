@@ -13,7 +13,7 @@ import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 interface Props {
   slideIndexTarget: number;
   slideshowLength?: number;
-  gotoSlide: Function;
+  gotoSlide: (indexTarget: number, useAnimation: boolean) => void;
   rightArrow?: boolean;
 }
 

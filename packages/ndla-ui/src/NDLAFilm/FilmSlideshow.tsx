@@ -19,7 +19,7 @@ import SlideshowIndicator from './SlideshowIndicator';
 interface Props {
   autoSlide: boolean;
   randomStart: boolean;
-  slideshow: Array<NDLAMovie>;
+  slideshow: NDLAMovie[];
   slideInterval: number;
 }
 
@@ -31,7 +31,7 @@ const classes = new BEMHelper({
 const defaultTransitionSwipeEnd = 'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
 const defaultTransitionText = 'opacity 600ms ease';
 
-const renderSlideItem = (slide: any) => (
+const renderSlideItem = (slide: NDLAMovie) => (
   <div
     {...classes('item')}
     key={slide.id}

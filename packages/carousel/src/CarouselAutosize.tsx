@@ -71,9 +71,9 @@ export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, cent
     return {
       columnsPrSlide,
       columnWidth,
-      distanceBetweenItems: distanceBetweenItems,
+      distanceBetweenItems,
       arrowOffset,
-      margin: margin,
+      margin,
     };
   };
 

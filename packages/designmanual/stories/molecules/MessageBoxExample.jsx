@@ -8,7 +8,7 @@ import MessageBoxTabs from '../molecules/MessageBoxTabs';
 import Table from '../molecules/TableExample';
 
 const Wrapper = styled.div`
-  width: 70%;
+  width: 50%;
   margin: 0 auto;
 `;
 const Code = styled.div`
@@ -23,10 +23,13 @@ const MiniMesssage = styled.div`
   display: inline-block;
   padding: 5px;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 14px;
+  border-radius: 5px;
 `;
-const MessageHeader = styled.h2``;
+const MessageHeader = styled.h2`
+  border-bottom: #a5bcd3 2px solid; ;
+`;
 const MessageBoxWrapper = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;

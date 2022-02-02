@@ -36,10 +36,11 @@ const MiniMesssage = styled.div`
   display: inline-block;
   padding: 5px;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 14px;
   margin-left: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
 `;
 const Wrapper = styled.div<WrapperProps>`
   display: flex;
@@ -60,7 +61,6 @@ const Wrapper = styled.div<WrapperProps>`
     ${(props) =>
       props.startOffset &&
       `
-        position: absolute;
         top: calc(${props.startOffset}px + 85px); 
     `}
   }

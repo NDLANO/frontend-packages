@@ -636,12 +636,12 @@ storiesOf('Sammensatte moduler', module)
     </PageContainer>
   ))
 
-  .add('Meldingsboks', () => (
+  .add('Meldings- og infoboks', () => (
     <PageContainer>
-      <StoryIntro title="Meldingsboks">
+      <StoryIntro title="Meldings- og infoboks">
         <p>
-          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom den er sticky så vises den i toppen
-          dersom man scroller forbi. Her kan du se forskjellige typer meldings- og infobokser.
+          Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og
+          forteller brukeren om at det foregår noe utenom det vanlige.
         </p>
       </StoryIntro>
       <Content>

@@ -10,7 +10,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 import Tabs from '@ndla/tabs';
-import { Article, OneColumn, TasksAndActivitiesBadge, constants, PageContainer, Content } from '@ndla/ui';
+import { Article, OneColumn, TasksAndActivitiesBadge, constants, Content } from '@ndla/ui';
 import MessageBoxSiteExample from '../pages/MessageBoxSiteExample';
 
 import MastheadWithTopicMenu from '../molecules/mastheads';
@@ -25,7 +25,16 @@ import FigureImage from '../article/FigureImage';
 import LicenseBox from '../article/LicenseBox';
 import NotionExample from '../molecules/NotionExample';
 const Wrapper = styled.div`
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+`;
+const Wrapper2 = styled.div`
   margin-top: 200px;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  font-family: sans-serif;
 `;
 
 const { contentTypes } = constants;
@@ -37,21 +46,21 @@ const MessageBoxTabs = () => {
           {
             title: 'Utdanningsprogram',
             content: (
-              <>
+              <Wrapper>
                 <MessageBoxSiteExample
                   sticky={true}
                   type="fullpage"
                   message={
                     'Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på https://browsehappy.com.'
                   }></MessageBoxSiteExample>
-              </>
+              </Wrapper>
             ),
           },
 
           {
             title: 'Med lenke',
             content: (
-              <Wrapper>
+              <Wrapper2>
                 <OneColumn cssModifier="narrow">
                   <Article
                     //These props will display the messagebox in an article
@@ -133,31 +142,29 @@ const MessageBoxTabs = () => {
                     }}
                   />
                 </OneColumn>
-              </Wrapper>
+              </Wrapper2>
             ),
           },
           {
             title: 'Læringsressurs',
             content: (
-              <>
-                <PageContainer>
-                  <Content>
-                    <MastheadWithTopicMenu />
+              <Wrapper>
+                <Content>
+                  <MastheadWithTopicMenu />
 
-                    <SubjectPage
-                      topics={topics}
-                      messagebox={'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.'} //pass this prop to display a messagebox
-                      initialBreadcrumb={subjectBreadcrumb}
-                      subjectName="Forretningsdrift (SR Vg1)"
-                      bannerBackground={backgroundSSR}
-                      subjectContentCards={contentCards}
-                      subjectAboutHeading="Om salg, service og reiseliv"
-                      subjectAboutDescription="Litt om faget"
-                      messageBoxMini="Beta" //Pass this prop to display a tag in the breadcrumblist
-                    />
-                  </Content>
-                </PageContainer>
-              </>
+                  <SubjectPage
+                    topics={topics}
+                    messagebox={'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.'} //pass this prop to display a messagebox
+                    initialBreadcrumb={subjectBreadcrumb}
+                    subjectName="Forretningsdrift (SR Vg1)"
+                    bannerBackground={backgroundSSR}
+                    subjectContentCards={contentCards}
+                    subjectAboutHeading="Om salg, service og reiseliv"
+                    subjectAboutDescription="Litt om faget"
+                    messageBoxMini="Beta" //Pass this prop to display a tag in the breadcrumblist
+                  />
+                </Content>
+              </Wrapper>
             ),
           },
         ]}

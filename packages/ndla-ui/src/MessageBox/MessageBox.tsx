@@ -143,7 +143,7 @@ const LinkWrapper = styled.div`
   padding-left: 56px;
 `;
 const Link = styled.a`
-  color: blue;
+  color: #20588f;
   font-size: 16px;
   padding-bottom: 5px;
   margin: 0px 50px 1px 5px;
@@ -175,7 +175,7 @@ export const MessageBox = ({ heading, type, sticky = false, onClose, children, l
         <CloseButtonWrapper>
           <CloseButton link onClick={onClose}>
             <CloseButtonText>{'close'}</CloseButtonText>
-            <Cross style={{ width: '24px', height: '24px' }} />
+            <Cross style={{ width: '24px', height: '24px' }} aria-hidden={true} />
           </CloseButton>
         </CloseButtonWrapper>
       )}

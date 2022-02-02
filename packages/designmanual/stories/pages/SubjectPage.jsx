@@ -516,6 +516,7 @@ const SubjectPage = ({
             items={breadcrumbItems}
             onNav={handleNav}
             messageBoxMini={messageBoxMini}
+            startOffset={100}
           />
         )}
         {!message && <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />}

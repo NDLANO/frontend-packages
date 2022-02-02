@@ -275,18 +275,20 @@ const ListView = ({
         </div>
       )}
       {!disableViewOption && (
-        <div className={'list-style'}>
+        <div className={'list-style'} aria-hidden="true">
           <button
             type="button"
             className={`style-button ${viewStyle === 'list' && 'active'}`}
-            onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}>
-            <ListIcon aria-hidden={true} />
+            onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}
+          >
+            <ListIcon />
           </button>
           <button
             type="button"
             className={`style-button ${viewStyle === 'grid' && 'active'}`}
-            onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}>
-            <GridIcon aria-hidden={true} />
+            onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}
+          >
+            <GridIcon />
           </button>
         </div>
       )}

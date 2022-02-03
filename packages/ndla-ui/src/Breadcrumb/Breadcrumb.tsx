@@ -43,7 +43,7 @@ const Breadcrumb: React.FunctionComponent<Props & WithTranslation> = ({ children
           isCurrent={i === items.length - 1}
           to={item.to}
           name={item.name}>
-          {i === 0 ? <Home className="c-icon--20" /> : item.name}
+          {i === 0 ? <Home className="c-icon--20" title={item.name} /> : item.name}
         </BreadcrumbItem>
       ))}
     </ol>

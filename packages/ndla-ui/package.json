@@ -63,7 +63,7 @@
     "react-facebook": "^6.0.15",
     "react-prop-types": "0.4.0",
     "react-sticky-el": "^2.0.6",
-    "react-swipeable": "^5.0.1",
+    "react-swipeable": "^6.2.0",
     "react-syntax-highlighter": "^15.4.4",
     "react-transition-group": "^2.5.3",
     "shave": "^2.5.10"

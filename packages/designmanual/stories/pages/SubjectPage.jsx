@@ -228,7 +228,7 @@ const SubjectPage = ({
   /*const breadcrumbItems = [
     { ...programs[11], typename: 'Subjecttype' },
     { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
-  ];*/
+*/
 
   const breadcrumbItems = initialBreadcrumb.map((item) => ({
     ...item,
@@ -355,8 +355,6 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
-  /* Stored for later
   const onClickSubTopic = (e, id) => {
     e.preventDefault();
     if (id !== selectedSubTopic) {
@@ -373,7 +371,7 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
- */
+
   const onClickSubSubTopic = (e, id) => {
     e.preventDefault();
     setSelectedSubSubTopic(id);
@@ -383,7 +381,6 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
   const handleNav = (e, item) => {
     e.preventDefault();
     if (currentLevel !== item.typename) {
@@ -394,13 +391,13 @@ const SubjectPage = ({
   };
   /* Stored for later
   const moveBannerUp = !topicData;
-
+*/
   const getSubTopics = () => {
     if (showSubTopicAdditionalTopics) {
       return subTopics;
     }
     return subTopics.filter((item) => !item.isAdditionalResource);
-  }; */
+  };
 
   // show/hide breadcrumb based on intersection
   const [containerRef, { entry }] = useIntersectionObserver({
@@ -439,7 +436,20 @@ const SubjectPage = ({
                   showContent={showMainTopicContent}>
                   {topicData.content}
                 </Topic>
-
+                <div ref={subTopicRef}>
+                  {subTopics.length ? (
+                    <NavigationBox
+                      colorMode="light"
+                      heading={t('navigation.topics')}
+                      hasAdditionalResources={subTopics.some((item) => item.isAdditionalResource)}
+                      showAdditionalResources={showSubTopicAdditionalTopics}
+                      items={getSubTopics()}
+                      onToggleAdditionalResources={() => setShowSubTopicAdditionalTopics(!showSubTopicAdditionalTopics)}
+                      onClick={onClickSubTopic}
+                    />
+                  ) : null}
+                  {currentLevel === 'Topic' && <Resources title={topicData.label} showActiveResource={false} />}
+                </div>
                 {subTopicData && (
                   <Topic
                     renderMarkdown={(text) => text}

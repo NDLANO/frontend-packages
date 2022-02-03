@@ -58,7 +58,7 @@ const MessageBoxTabs = () => {
           },
 
           {
-            title: 'Med lenke',
+            title: 'Læringsressurs',
             content: (
               <Wrapper2>
                 <OneColumn cssModifier="narrow">
@@ -74,7 +74,7 @@ const MessageBoxTabs = () => {
                       { name: 'link3', href: 'www.facebook.com' },
                     ]}
                     article={{
-                      title: 'Fagforside',
+                      title: 'Artikkel fagstoff',
                       introduction:
                         'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
                       published: '24.04.2018',
@@ -133,8 +133,7 @@ const MessageBoxTabs = () => {
                     id="mainContentId"
                     locale="nb"
                     messages={{
-                      label:
-                        'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her:',
+                      label: 'Fagstoff',
                     }}
                     modifier={contentTypes.TASKS_AND_ACTIVITIES}
                     notions={{
@@ -146,7 +145,7 @@ const MessageBoxTabs = () => {
             ),
           },
           {
-            title: 'Læringsressurs',
+            title: 'Fagforside',
             content: (
               <Wrapper>
                 <Content>

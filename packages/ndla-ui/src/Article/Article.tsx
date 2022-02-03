@@ -199,7 +199,9 @@ export const Article = ({
 
           {messagebox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks}>{messages.label}</MessageBox>
+              <MessageBox links={messageBoxLinks}>
+                Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her:
+              </MessageBox>
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>

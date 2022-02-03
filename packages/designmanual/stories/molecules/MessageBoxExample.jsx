@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { breakpoints, mq } from '@ndla/core';
 import messages from '@ndla/ui/lib/locale/messages-nb';
 import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';
 import Tabs from '@ndla/tabs';
@@ -10,6 +11,9 @@ import Table from '../molecules/TableExample';
 const Wrapper = styled.div`
   width: 50%;
   margin: 0 auto;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    width: calc(100% - 40px);
+  }
 `;
 const Code = styled.div`
   padding: 20px;
@@ -45,8 +49,8 @@ const MessageBoxExample = () => {
             title: 'Komponenter',
             content: (
               <>
-                <MessageHeader>Full skjerm variant = trenger mye oppmerksomhet</MessageHeader>
-                <p>Brukes i toppen av nettleseren i full skjerm global i systemet.</p>
+                <MessageHeader>Full bredde topp</MessageHeader>
+                <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
 
                 <p>
                   <MessageBox sticky={true} type="fullpage" onClose>
@@ -56,7 +60,7 @@ const MessageBoxExample = () => {
                   <MessageBoxWrapper>
                     <MessageHeader>Gul versjon</MessageHeader>
                     <p>
-                      Hoved varianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som
+                      Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som
                       kan klikkes vekk eller ikke.
                     </p>
                     <MessageBox type="medium">
@@ -81,15 +85,13 @@ const MessageBoxExample = () => {
                   <MessageHeader>Ghost variant</MessageHeader>
                   <p>
                     Denne er mer nedtonet og brukes f.eks for informasjon om at ressursen kun er for lærere innlogget
-                    med feide. Informasjonen er plassert og kan ikke klikkes vekk. Ikonet kan byttes ut med et annet når
-                    og hvis behovet dukker opp
+                    med feide.
                   </p>
                   <MessageBoxWrapper>
                     <MessageBox type="ghost">
                       <span>{messages.messageBoxInfo.feide}</span>
                     </MessageBox>
                   </MessageBoxWrapper>
-                  <MessageHeader>Meldingsboks med lenker</MessageHeader>
                   <MessageHeader>Tags</MessageHeader>
                   <MessageBoxWrapper>
                     <MiniMesssage>Beta</MiniMesssage>

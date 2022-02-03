@@ -23,6 +23,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
     position: 'relative',
     transform: 'auto',
     left: 'auto',
+    top: 'auto',
   }; //Different CSS properties for different types of message-boxes
   switch (type) {
     case 'fullpage':
@@ -50,6 +51,8 @@ const Wrapper = styled.div<WrapperProps>`
   color: ${(props) => StyleByType(props.boxType).color};
   font-size: 18px;
   line-height: 32px;
+  font-family: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU, DFKai-SB, 標楷體,
+    SongTi, 宋体, sans-serif;
   display: flex;
   padding: ${spacing.small};
   position: ${(props) => StyleByType(props.boxType).position};
@@ -57,6 +60,7 @@ const Wrapper = styled.div<WrapperProps>`
   border-radius: 5px;
   transform: ${(props) => StyleByType(props.boxType).transform};
   left: ${(props) => StyleByType(props.boxType).left};
+  top: ${(props) => StyleByType(props.boxType).top};
   z-index: 1000;
   width: ${(props) => StyleByType(props.boxType).width};
 `;
@@ -79,7 +83,8 @@ const InfoWrapper = styled.div<WrapperProps>`
     padding: 0 90px 0 0;
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
-    padding: 0 50px 0 0;
+    padding: 0 5px 0 0;
+    font-size: 16px;
   }
 `;
 const TextWrapper = styled.div`
@@ -140,13 +145,22 @@ const LinkWrapper = styled.div`
   width: 100%;
   background-color: #f9f4c8;
   padding-bottom: 20px;
+  margin-top: -2px;
   padding-left: 56px;
+  border-radius: 0px 0px 5px 5px;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    padding-left: 45px;
+  }
 `;
 const Link = styled.a`
   color: #20588f;
   font-size: 16px;
   padding-bottom: 5px;
   margin: 0px 50px 1px 5px;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin: 0px 15px 1px 5px;
+    box-shadow: none;
+  }
 `;
 
 type Props = {

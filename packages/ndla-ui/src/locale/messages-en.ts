@@ -867,6 +867,10 @@ const messages = {
     },
   },
   checkOutNewFeature: 'New feature',
+  slateBlockMenu: {
+    open: 'Open menu',
+    close: 'Close menu',
+  },
 };
 
 export default messages;

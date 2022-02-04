@@ -29,7 +29,8 @@
     "@emotion/styled": "^10.0.9",
     "prop-types": "^15.6.0",
     "react": "^16.9.0",
-    "react-bem-helper": "^1.4.1"
+    "react-bem-helper": "^1.4.1",
+    "react-i18next": "^11.15.3"
   },
   "publishConfig": {
     "access": "public"

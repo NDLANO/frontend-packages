@@ -866,6 +866,10 @@ const messages = {
     },
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
+  slateBlockMenu: {
+    open: 'Åpne meny',
+    close: 'Lukk meny',
+  },
 };
 
 export default messages;

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
+// @ts-ignore
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
 import { WithTranslation, withTranslation } from 'react-i18next';
@@ -278,15 +279,13 @@ const ListView = ({
           <button
             type="button"
             className={`style-button ${viewStyle === 'list' && 'active'}`}
-            onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}
-          >
+            onClick={() => onChangedViewStyle?.({ viewStyle: 'list' })}>
             <ListIcon />
           </button>
           <button
             type="button"
             className={`style-button ${viewStyle === 'grid' && 'active'}`}
-            onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}
-          >
+            onClick={() => onChangedViewStyle?.({ viewStyle: 'grid' })}>
             <GridIcon />
           </button>
         </div>
@@ -303,8 +302,7 @@ const ListView = ({
                   selectedLetter === letter ? selectedLetterCallback('') : selectedLetterCallback(letter)
                 }
                 aria-pressed={selectedLetter === letter}
-                aria-label={t('listview.filters.alphabet.letterFilter', { letter: letter })}
-              >
+                aria-label={t('listview.filters.alphabet.letterFilter', { letter: letter })}>
                 {letter}
               </button>
             </li>

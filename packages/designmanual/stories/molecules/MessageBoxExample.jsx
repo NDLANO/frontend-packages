@@ -53,7 +53,7 @@ const MessageBoxExample = () => {
                 <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
 
                 <p>
-                  <MessageBox sticky={true} type="fullpage" onClose>
+                  <MessageBox type="fullpage" onClose>
                     {messages.messageBoxInfo.updateBrowser}
                   </MessageBox>
                   <br></br> <br></br>

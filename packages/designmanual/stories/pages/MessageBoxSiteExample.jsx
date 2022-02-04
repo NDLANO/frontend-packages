@@ -21,8 +21,8 @@ const MessageBoxSiteExample = ({ type, message, sticky }) => {
         <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
 
         <MessageBox sticky={sticky} type={type}>
-          Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på
-          https://browsehappy.com.
+          Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på:
+          <a href="https://browsehappy.com"> https://browsehappy.com.</a>
         </MessageBox>
 
         <Programme messageBox={true} heading={programme.label} grades={programme.grades} image={programme.image} />

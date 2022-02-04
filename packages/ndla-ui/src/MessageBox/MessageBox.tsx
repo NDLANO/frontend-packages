@@ -23,7 +23,6 @@ const StyleByType = (type: WrapperProps['boxType']) => {
     position: 'relative',
     transform: 'auto',
     left: 'auto',
-    top: 'auto',
   }; //Different CSS properties for different types of message-boxes
   switch (type) {
     case 'fullpage':
@@ -60,8 +59,7 @@ const Wrapper = styled.div<WrapperProps>`
   border-radius: 5px;
   transform: ${(props) => StyleByType(props.boxType).transform};
   left: ${(props) => StyleByType(props.boxType).left};
-  top: ${(props) => StyleByType(props.boxType).top};
-  z-index: 1000;
+  z-index: 10;
   width: ${(props) => StyleByType(props.boxType).width};
 `;
 
@@ -173,7 +171,8 @@ type Props = {
 };
 
 export const MessageBox = ({ heading, type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => (
-  <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9999 }}>
+  //StickyStyle top:84 makes sure that the messagebox sits beneath the masthead (header ) and the topOffsett sets it so that it applies when reaching the top of the messagebox
+  <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9998, top: 84 }} topOffset={-84}>
     <Wrapper boxType={type}>
       <InfoWrapper boxType={type}>
         <IconWrapper boxType={type}>

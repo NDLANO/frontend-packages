@@ -576,6 +576,9 @@ const messages = {
         closeFilter: 'Lukk filter',
         heading: 'Filter',
       },
+      alphabet: {
+        letterFilter: 'Hvis innhald på (bokstaven) {{letter}}.',
+      },
     },
     relatedLinks: {
       label: 'Tilknyttede artikler',

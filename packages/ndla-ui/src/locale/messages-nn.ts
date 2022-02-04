@@ -577,6 +577,9 @@ const messages = {
         closeFilter: 'Lukk filter',
         heading: 'Filter',
       },
+      alphabet: {
+        letterFilter: 'Vis innhold på {{letter}}.',
+      },
     },
     relatedLinks: {
       label: 'Tilknytta artiklar',

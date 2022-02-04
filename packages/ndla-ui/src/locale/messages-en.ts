@@ -577,6 +577,9 @@ const messages = {
         closeFilter: 'Close filter',
         heading: 'Filter',
       },
+      alphabet: {
+        letterFilter: 'Filter content by the letter {{letter}}.',
+      },
     },
     relatedLinks: {
       label: 'Related articles',

@@ -5,11 +5,9 @@ import Modal from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
-import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, IconButton, PushGrid } from './Styles';
 
+import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, IconButton, PushGrid } from './Styles';
 import { stories } from './StaticInfoComponents';
-//@ts-ignore
-import { NotionDialogStyledWrapper } from 'packages/ndla-notion/src/NotionDialog';
 
 interface ModalContentProps {
   pageId: string;
@@ -24,7 +22,6 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
   };
   return (
     <Wrapper>
-      {console.log(t('close'))}
       <div>
         <InModalHeader>
           <InformationOutline style={{ position: 'absolute' }} />

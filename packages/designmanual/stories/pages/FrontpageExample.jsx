@@ -14,7 +14,6 @@ import {
   BlogPost,
   BlogPostWrapper,
   FrontpageProgramMenu,
-  MessageBox,
 } from '@ndla/ui';
 import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
 import { dummyLanguageOptions } from '../../dummydata/index';
@@ -24,13 +23,12 @@ import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
 
-const FrontpageExample = ({ showMessageBox }) => {
+const FrontpageExample = () => {
   const { t } = useTranslation();
   const [searchFieldValue, setSearchFieldValue] = useState('');
   const [inputHasFocus, setInputHasFocus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [timeoutLoading, setTimeoutLoading] = useState(undefined);
-  const [hideMessageBox, setHideMessageBox] = useState(false);
 
   const onSearchInputFocus = () => {
     setInputHasFocus(true);
@@ -57,20 +55,8 @@ const FrontpageExample = ({ showMessageBox }) => {
     setTimeoutLoading(timeoutId);
   };
 
-  const onCloseMessageBox = () => {
-    setHideMessageBox(true);
-  };
-
   return (
     <>
-      {showMessageBox && !hideMessageBox && (
-        <MessageBox onClose={onCloseMessageBox} heading="Nettleseren din er utdatert">
-          <span>
-            Bytt til en annen nettleser og få bedre ytelse:{' '}
-            <a href="https://updatemybrowser.org/">updatemybrowser.org</a>
-          </span>
-        </MessageBox>
-      )}
       <FrontpageHeader locale="nb" languageOptions={dummyLanguageOptions}>
         <FrontpageSearch
           locale="nb"

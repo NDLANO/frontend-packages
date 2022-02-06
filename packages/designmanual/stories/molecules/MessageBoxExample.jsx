@@ -39,6 +39,7 @@ const MessageBoxWrapper = styled.div`
   margin-bottom: 20px;
   width: auto%;
 `;
+
 const MessageBoxExample = () => {
   return (
     <Wrapper>
@@ -51,19 +52,18 @@ const MessageBoxExample = () => {
               <>
                 <MessageHeader>Full bredde topp</MessageHeader>
                 <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
-
                 <p>
                   <MessageBox type="fullpage" onClose>
                     {messages.messageBoxInfo.updateBrowser}
                   </MessageBox>
-                  <br></br> <br></br>
+
                   <MessageBoxWrapper>
                     <MessageHeader>Gul versjon</MessageHeader>
                     <p>
                       Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som
                       kan klikkes vekk eller ikke.
                     </p>
-                    <MessageBox type="medium">
+                    <MessageBox type="medium" onClose>
                       <span>{messages.messageBoxInfo.noContent}</span>
                     </MessageBox>
                   </MessageBoxWrapper>
@@ -78,7 +78,8 @@ const MessageBoxExample = () => {
                         { name: 'link1', href: 'www.facebook.com' },
                         { name: 'link2', href: 'www.facebook.com' },
                         { name: 'link3', href: 'www.facebook.com' },
-                      ]}>
+                      ]}
+                      onClose>
                       {messages.messageBoxInfo.newVersion}
                     </MessageBox>
                   </MessageBoxWrapper>

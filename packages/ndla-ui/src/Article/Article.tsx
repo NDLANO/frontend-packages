@@ -199,7 +199,7 @@ export const Article = ({
 
           {messagebox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks}>
+              <MessageBox links={messageBoxLinks} onClose>
                 Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her:
               </MessageBox>
             </MSGboxWrapper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
@@ -9,7 +9,7 @@ import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
 type WrapperProps = {
-  boxType?: 'ghost' | 'fullpage' | 'medium';
+  boxType?: 'ghost' | 'fullpage' | 'medium' | 'hide';
 };
 
 const StyleByType = (type: WrapperProps['boxType']) => {
@@ -29,7 +29,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.margin = '0 auto';
       styles.display = 'none';
       styles.width = '100vw';
-      styles.position = 'absolute';
+      styles.position = 'relative';
       styles.left = '50%';
       styles.transform = 'translateX(-50%)';
       break;
@@ -40,6 +40,10 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.backgroundColor = 'transparent';
       styles.border = '1px solid #D1D6DB';
       styles.color = '#444444';
+
+      break;
+    case 'hide':
+      styles.display = 'none';
       break;
   }
   return styles;
@@ -129,15 +133,6 @@ const CloseButton = styled(Button)`
   }
 `;
 
-const CloseButtonText = styled.span`
-  margin-right: ${spacing.small};
-  line-height: 1;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    margin-right: 0;
-    ${fonts.sizes('14px', '18px')};
-    font-weight: ${fonts.weight.normal};
-  }
-`;
 const LinkWrapper = styled.div`
   display: block;
   width: 100%;
@@ -155,54 +150,61 @@ const Link = styled.a`
   font-size: 16px;
   padding-bottom: 5px;
   margin: 0px 50px 1px 5px;
+  font-family: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU, DFKai-SB, 標楷體,
+    SongTi, 宋体, sans-serif;
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0px 15px 1px 5px;
     box-shadow: none;
   }
 `;
-
 type Props = {
   type?: WrapperProps['boxType'];
   heading?: string;
   sticky?: boolean;
-  onClose?: () => void;
+  onClose?: boolean;
   children?: React.ReactNode;
   links?: []; //Takes and object with a name and a link. Eks: {'link1', 'www.link.no'}
 };
 
-export const MessageBox = ({ heading, type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => (
-  //StickyStyle top:84 makes sure that the messagebox sits beneath the masthead (header ) and the topOffsett sets it so that it applies when reaching the top of the messagebox
-  <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9998, top: 84 }} topOffset={-84}>
-    <Wrapper boxType={type}>
-      <InfoWrapper boxType={type}>
-        <IconWrapper boxType={type}>
-          {type === 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
-          {type !== 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
-        </IconWrapper>
-        <TextWrapper>
-          {heading && <Label>{heading}</Label>}
-          {children}
-        </TextWrapper>
-      </InfoWrapper>
-      {onClose && (
-        <CloseButtonWrapper>
-          <CloseButton link onClick={onClose}>
-            <CloseButtonText>{'close'}</CloseButtonText>
-            <Cross style={{ width: '24px', height: '24px' }} aria-hidden={true} />
-          </CloseButton>
-        </CloseButtonWrapper>
-      )}
-    </Wrapper>
+export const MessageBox = ({ heading, type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => {
+  const [hideMessageBox, setHideMessageBox] = useState(false);
+  const onCloseMessageBox = () => {
+    setHideMessageBox(true);
+  };
 
-    {links && (
-      //loops through the links passed in as properties if there are any and creates a working link for each of them
-      <LinkWrapper>
-        {links.map((x) => (
-          <Link href={x['href']}>{x['name']}</Link>
-        ))}
-      </LinkWrapper>
-    )}
-  </Sticky>
-);
+  return (
+    //StickyStyle top:84 makes sure that the messagebox sits beneath the masthead (header ) and the topOffsett sets it so that it applies when reaching the top of the messagebox
+    <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9998, top: 84 }} topOffset={-84}>
+      <Wrapper boxType={type} style={{ display: hideMessageBox ? 'none' : 'flex' }}>
+        <InfoWrapper boxType={type}>
+          <IconWrapper boxType={type}>
+            {type === 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
+            {type !== 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
+          </IconWrapper>
+          <TextWrapper>
+            {heading && <Label>{heading}</Label>}
+            {children}
+          </TextWrapper>
+        </InfoWrapper>
+        {onClose && (
+          <CloseButtonWrapper>
+            <CloseButton link onClick={onCloseMessageBox}>
+              <Cross style={{ width: '24px', height: '24px' }} aria-hidden={true} />
+            </CloseButton>
+          </CloseButtonWrapper>
+        )}
+      </Wrapper>
+
+      {links && (
+        //loops through the links passed in as properties if there are any and creates a working link for each of them
+        <LinkWrapper style={{ display: hideMessageBox ? 'none' : 'flex' }}>
+          {links.map((x) => (
+            <Link href={x['href']}>{x['name']}</Link>
+          ))}
+        </LinkWrapper>
+      )}
+    </Sticky>
+  );
+};
 
 export default withTranslation()(MessageBox);

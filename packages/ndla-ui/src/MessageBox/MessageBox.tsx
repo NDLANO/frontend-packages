@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Sticky from 'react-sticky-el';
@@ -9,7 +17,7 @@ import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
 type WrapperProps = {
-  boxType?: 'ghost' | 'fullpage' | 'medium' | 'hide';
+  boxType?: 'ghost' | 'fullpage' | 'medium';
 };
 
 const StyleByType = (type: WrapperProps['boxType']) => {
@@ -41,9 +49,6 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.border = '1px solid #D1D6DB';
       styles.color = '#444444';
 
-      break;
-    case 'hide':
-      styles.display = 'none';
       break;
   }
   return styles;
@@ -148,8 +153,8 @@ const LinkWrapper = styled.div`
 const Link = styled.a`
   color: #20588f;
   font-size: 16px;
-  padding-bottom: 5px;
-  margin: 0px 50px 1px 5px;
+  padding-bottom: 1px;
+  margin: 0px 40px 1px 2px;
   font-family: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU, DFKai-SB, 標楷體,
     SongTi, 宋体, sans-serif;
   ${mq.range({ until: breakpoints.mobileWide })} {

@@ -63,10 +63,10 @@ const SubjectsWrapper = styled.div`
 type Props = GradesProps & {
   heading?: string;
   image?: string;
-  messageBox?: boolean;
+  messageBoxText?: string;
 };
 
-export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBox }: Props) => {
+export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBoxText }: Props) => {
   return (
     <StyledWrapper>
       <StyledBackground image={image} />
@@ -75,9 +75,7 @@ export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
-              {messageBox && (
-                <MessageBox>Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.</MessageBox>
-              )}
+              {messageBoxText && <MessageBox>{messageBoxText}</MessageBox>}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
               </SubjectsWrapper>

@@ -25,7 +25,12 @@ const MessageBoxSiteExample = ({ type, message, sticky }) => {
           <a href="https://browsehappy.com"> https://browsehappy.com.</a>
         </MessageBox>
 
-        <Programme messageBox={true} heading={programme.label} grades={programme.grades} image={programme.image} />
+        <Programme
+          messageBoxText={'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.'}
+          heading={programme.label}
+          grades={programme.grades}
+          image={programme.image}
+        />
       </Content>
     </PageContainer>
   );

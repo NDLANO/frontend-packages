@@ -91,6 +91,7 @@ export const ArticleIntroduction = ({
 
 type Messages = {
   label: string;
+  messageBox?: string;
 };
 const MSGboxWrapper = styled.div`
   margin-bottom: 50px;
@@ -104,8 +105,6 @@ type Props = {
   children: ReactNode;
   messages: Messages;
   locale: Locale;
-  messagebox?: Boolean;
-  messageForBox?: string;
   messageBoxLinks?: [];
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
@@ -138,7 +137,6 @@ export const Article = ({
   modifier,
   messages,
   messageBoxLinks,
-  messagebox, //Not the same as messages.
   children,
   competenceGoals,
   competenceGoalTypes,
@@ -197,10 +195,10 @@ export const Article = ({
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
 
-          {messagebox && (
+          {messages.messageBox && (
             <MSGboxWrapper>
               <MessageBox links={messageBoxLinks} onClose>
-                Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her:
+                {messages.messageBox}
               </MessageBox>
             </MSGboxWrapper>
           )}

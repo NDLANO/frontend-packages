@@ -1,5 +1,4 @@
 import React from 'react';
-//@ts-ignore
 import { FactBox } from '@ndla/ui';
 import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 

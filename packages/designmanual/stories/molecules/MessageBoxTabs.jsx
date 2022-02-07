@@ -64,8 +64,11 @@ const MessageBoxTabs = () => {
                 <OneColumn cssModifier="narrow">
                   <Article
                     //These props will display the messagebox in an article
-                    messagebox={true}
-                    messageForBox={'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.'}
+
+                    messages={{
+                      label: 'Fagstoff',
+                      messageBox: 'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.',
+                    }}
                     messageBoxLinks={[
                       //optional if you want links
                       //first prop is the name, second is the link
@@ -132,9 +135,6 @@ const MessageBoxTabs = () => {
                     icon={<TasksAndActivitiesBadge background size="large" />}
                     id="mainContentId"
                     locale="nb"
-                    messages={{
-                      label: 'Fagstoff',
-                    }}
                     modifier={contentTypes.TASKS_AND_ACTIVITIES}
                     notions={{
                       list: [NotionExample],

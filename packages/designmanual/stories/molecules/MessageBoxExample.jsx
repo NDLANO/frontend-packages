@@ -15,6 +15,7 @@ import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';
 import Tabs from '@ndla/tabs';
 import MessageBoxTabs from '../molecules/MessageBoxTabs';
 import Table from '../molecules/TableExample';
+import { MessageBoxType } from '@ndla/ui/src/MessageBox/MessageBox';
 
 const Wrapper = styled.div`
   width: 50%;
@@ -51,7 +52,7 @@ const MessageBoxExample = () => {
                 <MessageHeader>Full bredde topp</MessageHeader>
                 <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
                 <p>
-                  <MessageBox type="fullpage" onClose>
+                  <MessageBox type={MessageBoxType.fullpage} onClose>
                     {messages.messageBoxInfo.updateBrowser}
                   </MessageBox>
 
@@ -61,12 +62,12 @@ const MessageBoxExample = () => {
                       Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som
                       kan klikkes vekk eller ikke.
                     </p>
-                    <MessageBox type="medium" onClose>
+                    <MessageBox type={MessageBoxType.medium} onClose>
                       <span>{messages.messageBoxInfo.noContent}</span>
                     </MessageBox>
                   </MessageBoxWrapper>
                   <MessageBoxWrapper>
-                    <MessageBox type="medium">
+                    <MessageBox type={MessageBoxType.medium}>
                       <span>{messages.messageBoxInfo.outdatedSubject}</span>
                     </MessageBox>
                   </MessageBoxWrapper>
@@ -87,7 +88,7 @@ const MessageBoxExample = () => {
                     med feide.
                   </p>
                   <MessageBoxWrapper>
-                    <MessageBox type="ghost">
+                    <MessageBox type={MessageBoxType.ghost}>
                       <span>{messages.messageBoxInfo.feide}</span>
                     </MessageBox>
                   </MessageBoxWrapper>

@@ -16,8 +16,13 @@ import { Cross } from '@ndla/icons/action';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
+export enum MessageBoxType {
+  ghost = 'ghost',
+  fullpage = 'fullpage',
+  medium = 'medium',
+}
 type WrapperProps = {
-  boxType?: 'ghost' | 'fullpage' | 'medium';
+  boxType?: MessageBoxType;
 };
 
 const StyleByType = (type: WrapperProps['boxType']) => {

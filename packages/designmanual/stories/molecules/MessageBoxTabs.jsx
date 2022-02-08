@@ -12,11 +12,8 @@ import styled from '@emotion/styled';
 import Tabs from '@ndla/tabs';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, Content } from '@ndla/ui';
 import MessageBoxSiteExample from '../pages/MessageBoxSiteExample';
-
 import MastheadWithTopicMenu from '../molecules/mastheads';
-
 import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
-
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
 import { contentCards } from '../../dummydata';
 import SubjectPage from '../pages/SubjectPage';
@@ -72,9 +69,9 @@ const MessageBoxTabs = () => {
                     messageBoxLinks={[
                       //optional if you want links
                       //first prop is the name, second is the link
-                      { name: 'link1', href: 'www.facebook.com' },
-                      { name: 'link2', href: 'www.facebook.com' },
-                      { name: 'link3', href: 'www.facebook.com' },
+                      { text: 'link1', href: 'www.facebook.com' },
+                      { text: 'link2', href: 'www.facebook.com' },
+                      { text: 'link3', href: 'www.facebook.com' },
                     ]}
                     article={{
                       title: 'Artikkel fagstoff',

@@ -9,7 +9,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntersectionObserver } from '@ndla/hooks';
-import MessageBox from '@ndla/ui/src/MessageBox/MessageBox';
+import MessageBox from '@ndla/ui/lib/MessageBox/MessageBox';
 import { useTranslation } from 'react-i18next';
 
 import {

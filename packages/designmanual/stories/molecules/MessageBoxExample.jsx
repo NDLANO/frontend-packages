@@ -11,11 +11,11 @@ import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import MessageBoxTag from '@ndla/ui/lib/MessageBox/MessageBoxTag';
 import messages from '@ndla/ui/lib/locale/messages-nb';
+import { MessageBoxType } from '@ndla/ui/lib/MessageBox/MessageBox';
 import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';
 import Tabs from '@ndla/tabs';
 import MessageBoxTabs from '../molecules/MessageBoxTabs';
 import Table from '../molecules/TableExample';
-import { MessageBoxType } from '@ndla/ui/src/MessageBox/MessageBox';
 
 const Wrapper = styled.div`
   width: 50%;

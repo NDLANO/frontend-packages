@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { PageContainer, Content } from '@ndla/ui';
-import { Programme } from '@ndla/ui/src/Programme/Programme';
+import { Programme } from '@ndla/ui/lib/Programme/Programme';
 import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';
 import MastheadWithTopicMenu from '../molecules/mastheads';
 

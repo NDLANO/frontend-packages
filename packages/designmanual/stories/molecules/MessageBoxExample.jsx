@@ -1,11 +1,19 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
+import MessageBoxTag from '@ndla/ui/lib/MessageBox/MessageBoxTag';
 import messages from '@ndla/ui/lib/locale/messages-nb';
 import { MessageBox } from '@ndla/ui/lib/MessageBox/MessageBox';
 import Tabs from '@ndla/tabs';
 import MessageBoxTabs from '../molecules/MessageBoxTabs';
-
 import Table from '../molecules/TableExample';
 
 const Wrapper = styled.div`
@@ -21,16 +29,6 @@ const Code = styled.div`
   background: #ccc;
 `;
 
-const MiniMesssage = styled.div`
-  background-color: #f9f4c8;
-  text-align: center;
-  display: inline-block;
-  padding: 5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 5px;
-`;
 const MessageHeader = styled.h2`
   border-bottom: #a5bcd3 2px solid; ;
 `;
@@ -75,9 +73,9 @@ const MessageBoxExample = () => {
                   <MessageBoxWrapper>
                     <MessageBox
                       links={[
-                        { name: 'link1', href: 'www.facebook.com' },
-                        { name: 'link2', href: 'www.facebook.com' },
-                        { name: 'link3', href: 'www.facebook.com' },
+                        { text: 'link1', href: 'www.facebook.com' },
+                        { text: 'link2', href: 'www.facebook.com' },
+                        { text: 'link3', href: 'www.facebook.com' },
                       ]}
                       onClose>
                       {messages.messageBoxInfo.newVersion}
@@ -95,13 +93,13 @@ const MessageBoxExample = () => {
                   </MessageBoxWrapper>
                   <MessageHeader>Tags</MessageHeader>
                   <MessageBoxWrapper>
-                    <MiniMesssage>Beta</MiniMesssage>
+                    <MessageBoxTag tagMessage="Beta" />
                   </MessageBoxWrapper>
                   <MessageBoxWrapper>
-                    <MiniMesssage>Utgått</MiniMesssage>
+                    <MessageBoxTag tagMessage="Utgått" />
                   </MessageBoxWrapper>
                   <MessageBoxWrapper>
-                    <MiniMesssage>Kommer</MiniMesssage>
+                    <MessageBoxTag tagMessage="Kommer" />
                   </MessageBoxWrapper>
                 </p>
               </>

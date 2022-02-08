@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import LayoutItem, { OneColumn } from '../Layout';
 import ProgrammeSubjects from './ProgrammeSubjects';
 import { GradesProps } from './ProgrammeSubjects';
@@ -67,6 +68,7 @@ type Props = GradesProps & {
 };
 
 export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBoxText }: Props) => {
+  const { t } = useTranslation();
   return (
     <StyledWrapper>
       <StyledBackground image={image} />
@@ -75,7 +77,7 @@ export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
-              {messageBoxText && <MessageBox>{messageBoxText}</MessageBox>}
+              {messageBoxText && <MessageBox>{t(messageBoxText)}</MessageBox>}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
               </SubjectsWrapper>

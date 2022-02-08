@@ -160,7 +160,7 @@ const MessageBoxTabs = () => {
                     subjectContentCards={contentCards}
                     subjectAboutHeading="Om salg, service og reiseliv"
                     subjectAboutDescription="Litt om faget"
-                    messageBoxMini="Beta" //Pass this prop to display a tag in the breadcrumblist
+                    messageBoxTagMessage="Beta" //Pass this prop to display a tag in the breadcrumblist
                   />
                 </Content>
               </Wrapper>

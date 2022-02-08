@@ -139,7 +139,7 @@ const SubjectPage = ({
   initialBreadcrumb = [],
   subjectName,
   messagebox: message,
-  messageBoxMini,
+  messageBoxTagMessage,
   bannerBackground,
   subjectContentCards,
   subjectAboutHeading,
@@ -525,7 +525,7 @@ const SubjectPage = ({
             isVisible={showBreadCrumb}
             items={breadcrumbItems}
             onNav={handleNav}
-            messageBoxMini={messageBoxMini}
+            messageBoxTagMessage={messageBoxTagMessage}
             startOffset={100}
           />
         )}

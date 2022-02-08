@@ -59,8 +59,7 @@ const Wrapper = styled.div<WrapperProps>`
   color: ${(props) => StyleByType(props.boxType).color};
   font-size: 18px;
   line-height: 32px;
-  font-family: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU, DFKai-SB, 標楷體,
-    SongTi, 宋体, sans-serif;
+  font-family: ${fonts.sans};
   display: flex;
   padding: ${spacing.small};
   position: ${(props) => StyleByType(props.boxType).position};
@@ -155,20 +154,24 @@ const Link = styled.a`
   font-size: 16px;
   padding-bottom: 1px;
   margin: 0px 40px 1px 2px;
-  font-family: 'Source Sans Pro', Helvetica, Arial, STKaiti, 华文楷体, KaiTi, SimKai, 楷体, KaiU, DFKai-SB, 標楷體,
-    SongTi, 宋体, sans-serif;
+  font-family: ${fonts.sans};
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0px 15px 1px 5px;
     box-shadow: none;
   }
 `;
+
+type LinkProps = {
+  href?: string;
+  text?: string;
+};
 type Props = {
   type?: WrapperProps['boxType'];
   heading?: string;
   sticky?: boolean;
   onClose?: boolean;
-  children?: React.ReactNode;
-  links?: []; //Takes and object with a name and a link. Eks: {'link1', 'www.link.no'}
+  children?: string;
+  links?: LinkProps[];
 };
 
 export const MessageBox = ({ heading, type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => {
@@ -204,7 +207,7 @@ export const MessageBox = ({ heading, type, sticky = false, onClose, children, l
         //loops through the links passed in as properties if there are any and creates a working link for each of them
         <LinkWrapper style={{ display: hideMessageBox ? 'none' : 'flex' }}>
           {links.map((x) => (
-            <Link href={x['href']}>{x['name']}</Link>
+            <Link href={x.href}>{x.text}</Link>
           ))}
         </LinkWrapper>
       )}

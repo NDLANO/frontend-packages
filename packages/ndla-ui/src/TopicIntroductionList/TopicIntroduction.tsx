@@ -7,13 +7,13 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
+import { useTranslation } from 'react-i18next';
 import { Additional, Core } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
 import SafeLink from '@ndla/safelink';
-import { TopicShape, ShortcutShape } from '../shapes';
 import TopicIntroductionShortcuts from './TopicIntroductionShortcuts';
+import { Shortcut, Topic } from './TopicIntroductionList';
 
 const topicClasses = new BEMHelper({
   prefix: 'c-',
@@ -21,23 +21,35 @@ const topicClasses = new BEMHelper({
   outputIsString: true,
 });
 
+interface Props {
+  additional?: boolean;
+  showAdditionalCores?: boolean;
+  topic: Topic;
+  toTopic: Function;
+  subjectPage?: boolean;
+  shortcuts?: Shortcut[];
+  twoColumns?: boolean;
+  shortcutAlwaysExpanded?: boolean;
+  id: string;
+}
+
 export const TopicIntroduction = ({
   toTopic,
   topic,
   subjectPage,
   shortcuts,
-  messages,
   shortcutAlwaysExpanded,
-  additional,
-  showAdditionalCores,
+  additional = false,
+  showAdditionalCores = false,
   id,
-}) => {
-  const contentTypeDescription = additional ? messages.tooltipAdditionalTopic : messages.tooltipCoreTopic;
+}: Props) => {
+  const { t } = useTranslation();
+  const contentTypeDescription = t(additional ? 'resource.tooltipAdditionalTopic' : 'resource.tooltipCoreTopic');
 
   return (
     <li
       className={topicClasses('item', {
-        subjectPage,
+        subjectPage: !!subjectPage,
         additional,
         showAdditionalCores,
       })}>
@@ -52,12 +64,12 @@ export const TopicIntroduction = ({
             {contentTypeDescription}
           </span>
           {additional && (
-            <Tooltip tooltip={messages.tooltipAdditionalTopic} align="left">
+            <Tooltip tooltip={t('resource.tooltipAdditionalTopic')} align="left">
               <Additional className="c-icon--20 u-margin-left-tiny" />
             </Tooltip>
           )}
           {!additional && showAdditionalCores && (
-            <Tooltip tooltip={messages.tooltipCoreTopic} align="left">
+            <Tooltip tooltip={t('resource.tooltipCoreTopic')} align="left">
               <Core className="c-icon--20 u-margin-left-tiny" />
             </Tooltip>
           )}
@@ -73,9 +85,6 @@ export const TopicIntroduction = ({
                 alwaysExpanded={shortcutAlwaysExpanded}
                 id={`${topic.id}_shortcuts`}
                 shortcuts={shortcuts}
-                messages={{
-                  toggleButtonText: messages.shortcutButtonText,
-                }}
               />
             )}
           </div>
@@ -88,26 +97,4 @@ export const TopicIntroduction = ({
       </article>
     </li>
   );
-};
-
-TopicIntroduction.propTypes = {
-  additional: PropTypes.bool,
-  showAdditionalCores: PropTypes.bool,
-  messages: PropTypes.shape({
-    shortcutButtonText: PropTypes.string.isRequired,
-    tooltipAdditionalTopic: PropTypes.string,
-    tooltipCoreTopic: PropTypes.string,
-  }),
-  topic: TopicShape.isRequired,
-  toTopic: PropTypes.func.isRequired,
-  subjectPage: PropTypes.bool,
-  shortcuts: PropTypes.arrayOf(ShortcutShape),
-  twoColumns: PropTypes.bool,
-  shortcutAlwaysExpanded: PropTypes.bool,
-  id: PropTypes.string.isRequired,
-};
-
-TopicIntroduction.defaultProps = {
-  showAdditionalCores: false,
-  additional: false,
 };

@@ -65,7 +65,7 @@ interface MediaListItemBodyProps {
   locale: string;
   resourceUrl?: string;
   resourceType?: 'video' | 'image' | 'audio' | 'text' | 'h5p';
-  messages: {
+  messages?: {
     modelPremission?: string;
   };
   title?: string;
@@ -137,7 +137,7 @@ interface MediaListItemMetaProps {
   items?: {
     label: string;
     description: string;
-    metaType: 'author' | 'copyrightHolder' | 'contributor' | 'title' | 'other';
+    metaType: string;
   }[];
 }
 

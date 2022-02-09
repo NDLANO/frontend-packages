@@ -158,6 +158,37 @@ export { default as ResourceGroup } from './ResourceGroup';
 export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
 
 export {
+  FilmSlideshow,
+  MovieGrid,
+  AboutNdlaFilm,
+  FilmMovieSearch,
+  FilmMovieList,
+  AllMoviesAlphabetically,
+} from './NDLAFilm';
+
+export { DisplayOnPageYOffset } from './Animation';
+
+export {
+  MediaList,
+  MediaListItem,
+  MediaListItemBody,
+  MediaListItemActions,
+  MediaListItemImage,
+  MediaListItemMeta,
+} from './MediaList';
+
+export {
+  default as ContentTypeBadge,
+  SubjectMaterialBadge,
+  TasksAndActivitiesBadge,
+  AssessmentResourcesBadge,
+  LearningPathBadge,
+  SubjectBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
+} from './ContentTypeBadge';
+
+export {
   SubjectAbout,
   SubjectArchive,
   SubjectCarousel,

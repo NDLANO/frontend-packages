@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { OneColumn } from '@ndla/ui';
+import { OneColumn } from '..';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 //@ts-ignore

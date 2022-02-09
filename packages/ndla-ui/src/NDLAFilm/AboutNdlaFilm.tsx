@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { OneColumn } from '@ndla/ui';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
+//@ts-ignore
 import Button from '@ndla/button';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
@@ -44,7 +44,20 @@ const StyledAside = styled.aside`
   }
 `;
 
-const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm }) => {
+interface Props {
+  aboutNDLAVideo: {
+    title: string;
+    description: string;
+    visualElement: {
+      alt?: string;
+      url: string;
+      type: string;
+    };
+  };
+  moreAboutNdlaFilm: ReactNode;
+}
+
+const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm }: Props) => {
   const { t } = useTranslation();
   return (
     <div className="o-wrapper">
@@ -69,18 +82,6 @@ const AboutNdlaFilm = ({ aboutNDLAVideo, moreAboutNdlaFilm }) => {
       </StyledAside>
     </div>
   );
-};
-
-AboutNdlaFilm.propTypes = {
-  aboutNDLAVideo: PropTypes.shape({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    visualElement: PropTypes.shape({
-      url: PropTypes.string,
-      alt: PropTypes.string,
-      type: PropTypes.string,
-    }),
-  }),
 };
 
 export default AboutNdlaFilm;

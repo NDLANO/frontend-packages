@@ -1,5 +1,4 @@
-/**
- * Copyright (c) 2016-present, NDLA.
+/** * Copyright (c) 2016-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,31 +6,42 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { Carousel } from '@ndla/carousel';
 import FilmContentCard from './FilmContentCard';
-import { movieShape } from './shapes';
+import { CalculatedProps } from '../../../carousel/src/Carousel';
+import { MovieResourceType, MovieType } from './types';
 
 const classes = new BEMHelper({
   name: 'film-movielist',
   prefix: 'c-',
 });
 
+interface Props {
+  movies: MovieType[];
+  name: string;
+  slideBackwardsLabel: string;
+  slideForwardsLabel: string;
+  resourceTypes: MovieResourceType[];
+  autoSizedProps: CalculatedProps;
+  resizeThumbnailImages?: boolean;
+}
+
 const FilmMovieList = ({
   name,
-  movies,
+  movies = [],
   slideBackwardsLabel,
   slideForwardsLabel,
-  resourceTypes,
+  resourceTypes = [],
   autoSizedProps,
   resizeThumbnailImages,
-}) => (
+}: Props) => (
   <section {...classes()}>
     <h1 {...classes('heading')} style={{ marginLeft: `${autoSizedProps.margin}px` }}>
       {name}
     </h1>
     <Carousel
+      disableScroll={false}
       slideBackwardsLabel={slideBackwardsLabel}
       slideForwardsLabel={slideForwardsLabel}
       buttonClass="c-film-movielist__carousel-buttons"
@@ -49,24 +59,5 @@ const FilmMovieList = ({
     />
   </section>
 );
-
-FilmMovieList.propTypes = {
-  movies: PropTypes.arrayOf(movieShape),
-  name: PropTypes.string.isRequired,
-  slideBackwardsLabel: PropTypes.string.isRequired,
-  slideForwardsLabel: PropTypes.string.isRequired,
-  resourceTypes: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      id: PropTypes.id,
-    }),
-  ),
-  autoSizedProps: PropTypes.shape({}),
-};
-
-FilmMovieList.defaultProps = {
-  movies: [],
-  resourceTypes: [],
-};
 
 export default FilmMovieList;

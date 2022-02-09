@@ -1,28 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
 import { ChevronDown } from '@ndla/icons/common';
-import { withTranslation } from 'react-i18next';
+import { WithTranslation, withTranslation } from 'react-i18next';
+import { MovieResourceType } from './types';
 
 const classes = new BEMHelper({
   name: 'film-moviesearch',
   prefix: 'c-',
 });
 
-class CategorySelect extends React.Component {
-  constructor(props) {
+interface Props extends WithTranslation {
+  resourceTypes: MovieResourceType[];
+  resourceTypeSelected?: MovieResourceType;
+  ariaControlId?: string;
+  onChangeResourceType: (resourceId?: string) => void;
+}
+
+interface State {
+  resourceTypesIsOpen: boolean;
+}
+class CategorySelect extends Component<Props, State> {
+  references: Record<string, HTMLButtonElement | null>;
+  constructor(props: Props) {
     super(props);
     this.state = {
       resourceTypesIsOpen: false,
     };
+    this.references = {};
     this.createRef = this.createRef.bind(this);
     this.openSelect = this.openSelect.bind(this);
     this.onSelect = this.onSelect.bind(this);
   }
 
-  createRef(el, name) {
-    this[name] = el;
+  createRef(el: HTMLButtonElement | null, name: string) {
+    this.references[name] = el;
   }
 
   openSelect() {
@@ -32,14 +44,14 @@ class CategorySelect extends React.Component {
         resourceTypesIsOpen: true,
       },
       () => {
-        if (resourceTypeSelected && this[resourceTypeSelected.id]) {
-          this[resourceTypeSelected.id].focus();
+        if (resourceTypeSelected && this.references[resourceTypeSelected.id]) {
+          this.references[resourceTypeSelected.id]?.focus();
         }
       },
     );
   }
 
-  onSelect(val) {
+  onSelect(val?: string) {
     this.props.onChangeResourceType(val);
     this.setState({
       resourceTypesIsOpen: false,
@@ -97,7 +109,7 @@ class CategorySelect extends React.Component {
                   ref={(el) => this.createRef(el, resourceType.id)}
                   onClick={() => this.onSelect(resourceType.id)}
                   {...classes('dropdown-button', {
-                    selected: resourceTypeSelected && resourceTypeSelected.id === resourceType.id,
+                    selected: !!resourceTypeSelected && resourceTypeSelected.id === resourceType.id,
                   })}
                   data-id={resourceType.id}
                   key={resourceType.id}>
@@ -111,14 +123,5 @@ class CategorySelect extends React.Component {
     );
   }
 }
-
-CategorySelect.propTypes = {
-  resourceTypes: PropTypes.arrayOf(PropTypes.object),
-  resourceTypeSelected: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-  }),
-  ariaControlId: PropTypes.string,
-};
 
 export default withTranslation()(CategorySelect);

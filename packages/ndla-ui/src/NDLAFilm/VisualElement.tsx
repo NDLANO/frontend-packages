@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Image } from '@ndla/ui';
+import Image from '../Image';
 import styled from '@emotion/styled';
 
 const StylediFrame = styled.iframe`

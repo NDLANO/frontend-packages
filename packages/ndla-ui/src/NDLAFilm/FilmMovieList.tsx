@@ -7,9 +7,8 @@
 
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { Carousel } from '@ndla/carousel';
+import { Carousel, CalculatedCarouselProps } from '@ndla/carousel';
 import FilmContentCard from './FilmContentCard';
-import { CalculatedProps } from '../../../carousel/src/Carousel';
 import { MovieResourceType, MovieType } from './types';
 
 const classes = new BEMHelper({
@@ -23,7 +22,7 @@ interface Props {
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
   resourceTypes: MovieResourceType[];
-  autoSizedProps: CalculatedProps;
+  autoSizedProps: CalculatedCarouselProps;
   resizeThumbnailImages?: boolean;
 }
 

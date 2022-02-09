@@ -1,9 +1,9 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { css } from '@emotion/core';
+import { CalculatedCarouselProps } from '@ndla/carousel';
 import { useTranslation } from 'react-i18next';
 import FilmContentCard from './FilmContentCard';
-import { CalculatedProps } from '../../../carousel/src/Carousel';
 import { MovieResourceType, MovieType } from './types';
 
 const movieListClasses = new BEMHelper({
@@ -12,7 +12,7 @@ const movieListClasses = new BEMHelper({
 });
 
 interface Props {
-  autoSizedProps: CalculatedProps;
+  autoSizedProps: CalculatedCarouselProps;
   resourceTypeName?: MovieResourceType;
   fetchingMoviesByType: boolean;
   moviesByType: MovieType[];

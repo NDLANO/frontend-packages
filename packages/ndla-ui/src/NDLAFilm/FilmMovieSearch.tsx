@@ -8,11 +8,11 @@
 
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { OneColumn } from '@ndla/ui';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
 import CategorySelect from './CategorySelect';
 import { MovieResourceType } from './types';
+import { OneColumn } from '..';
 
 const classes = new BEMHelper({
   name: 'film-moviesearch',

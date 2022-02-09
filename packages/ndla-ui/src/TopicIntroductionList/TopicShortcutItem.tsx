@@ -14,10 +14,14 @@ const classes = new BEMHelper({
 interface Props {
   shortcut: Shortcut;
 }
-const ShortcutItem = ({ shortcut: { tooltip, contentType, url, count } }: Props) => {
+const ShortcutItem = ({ shortcut: { id, tooltip, contentType, url, count } }: Props) => {
   const { t } = useTranslation();
   return (
-    <Tooltip tooltip={t('resource.shortcutsTooltip', { count })} delay={100} align="bottom">
+    <Tooltip
+      id={`shortcut-tooltip-${id}`}
+      tooltip={t('resource.shortcutsTooltip', { count })}
+      delay={100}
+      align="bottom">
       <SafeLink {...classes('item-link')} aria-label={tooltip} to={url}>
         <ContentTypeBadge type={contentType} size="x-small" background />
         <span {...classes('count')}>{count}</span>

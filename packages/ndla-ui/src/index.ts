@@ -115,7 +115,7 @@ export { default as CreatedBy } from './CreatedBy';
 
 export { default as Breadcrumblist } from './Breadcrumblist';
 
-export { MessageBox } from './MessageBox';
+export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 

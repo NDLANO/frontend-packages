@@ -9,7 +9,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntersectionObserver } from '@ndla/hooks';
-import MessageBox from '@ndla/ui/lib/MessageBox/MessageBox';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -26,6 +25,7 @@ import {
   ArticleWrapper,
   Topic,
   AuthModal,
+  MessageBox,
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 

@@ -76,16 +76,6 @@ const Wrapper = styled.div<WrapperProps>`
   width: ${(props) => StyleByType(props.boxType).width};
 `;
 
-const Label = styled.label`
-  font-weight: ${fonts.weight.bold};
-  display: inline-block;
-  margin-right: ${spacing.small};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    font-size: 18px;
-    font-weight: ${fonts.weight.semibold};
-  }
-`;
-
 const InfoWrapper = styled.div<WrapperProps>`
   margin: ${(props) => StyleByType(props.boxType).margin};
   padding: 10px;
@@ -98,7 +88,7 @@ const InfoWrapper = styled.div<WrapperProps>`
     font-size: 16px;
   }
 `;
-const TextWrapper = styled.div`
+const TextWrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -118,8 +108,8 @@ const IconWrapper = styled.div<WrapperProps>`
 `;
 const CloseButtonWrapper = styled.div`
   position: absolute;
-  top: 13px;
-  right: ${spacing.small};
+  top: 1px;
+  right: -1px;
   display: flex;
   justify-content: flex-end;
   ${mq.range({ from: breakpoints.tabletWide })} {
@@ -131,11 +121,16 @@ const CloseButton = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
+  border: none;
   font-weight: ${fonts.weight.semibold};
   font-size: 16px;
   color: ${(props) => StyleByType(props.boxType).color};
   &:hover {
     color: ${(props) => StyleByType(props.boxType).color};
+    background-color: transparent;
+    border: none;
+    font-size: 16;
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
     flex-direction: column-reverse;
@@ -148,7 +143,7 @@ const LinkWrapper = styled.div`
   background-color: #f9f4c8;
   padding-bottom: 20px;
   margin-top: -2px;
-  padding-left: 56px;
+  padding-left: 58px;
   border-radius: 0px 0px 5px 5px;
   ${mq.range({ until: breakpoints.mobileWide })} {
     padding-left: 45px;
@@ -172,14 +167,13 @@ type LinkProps = {
 };
 type Props = {
   type?: WrapperProps['boxType'];
-  heading?: string;
   sticky?: boolean;
   onClose?: boolean;
   children?: string;
   links?: LinkProps[];
 };
 
-export const MessageBox = ({ heading, type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => {
+export const MessageBox = ({ type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
@@ -194,14 +188,11 @@ export const MessageBox = ({ heading, type, sticky = false, onClose, children, l
             {type === 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
             {type !== 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
           </IconWrapper>
-          <TextWrapper>
-            {heading && <Label>{heading}</Label>}
-            {children}
-          </TextWrapper>
+          <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>
         {onClose && (
           <CloseButtonWrapper>
-            <CloseButton link onClick={onCloseMessageBox}>
+            <CloseButton onClick={onCloseMessageBox}>
               <Cross style={{ width: '24px', height: '24px' }} aria-hidden={true} />
             </CloseButton>
           </CloseButtonWrapper>

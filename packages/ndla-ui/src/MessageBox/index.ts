@@ -7,5 +7,7 @@
  */
 
 import MessageBox from './MessageBox';
+import MessageBoxTag from './MessageBoxTag';
+import { MessageBoxType } from './MessageBox';
 
-export { MessageBox };
+export { MessageBox, MessageBoxTag, MessageBoxType };

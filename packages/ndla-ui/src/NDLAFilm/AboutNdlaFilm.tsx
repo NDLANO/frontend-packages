@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import { OneColumn } from '..';
+import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
 //@ts-ignore
 import Button from '@ndla/button';
-import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
+import { OneColumn } from '..';
 import VisualElement from './VisualElement';
 
 const StyledAside = styled.aside`

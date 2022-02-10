@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { HTMLProps, MutableRefObject, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
@@ -14,36 +14,38 @@ import { Download } from '@ndla/icons/common';
 import { css } from '@emotion/core';
 import { InformationOutline } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
+import { File, FileListMessages } from './FileListEditor';
 
-class InputComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
-
-  componentDidMount() {
-    // Get position from props.forwardedRef.
-    if (this.props.usePortal) {
-      const rect = this.props.forwardedRef.current.childNodes[this.props.childIndex].firstChild.getBoundingClientRect();
-      this.inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
-      this.inputRef.current.style.left = `${rect.left + spacingUnit * 0.75}px`;
-      this.inputRef.current.style.width = `${rect.width - spacingUnit}px`;
-    }
-    this.inputRef.current.focus();
-    this.inputRef.current.select();
-  }
-
-  render() {
-    const { forwardedRef, usePortal, ...rest } = this.props;
-
-    if (!usePortal) {
-      return <StyledInput ref={this.inputRef} {...rest} />;
-    }
-    return createUniversalPortal(<StyledInput ref={this.inputRef} {...rest} />, 'body');
-  }
+interface InputComponentProps extends HTMLProps<HTMLInputElement> {
+  forwardedRef: MutableRefObject<HTMLUListElement | null>;
+  usePortal?: boolean;
+  childIndex: number;
 }
+const InputComponent = ({ usePortal, forwardedRef, childIndex, ...rest }: InputComponentProps) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-const getButtonComponent = (file, isMissing, messages) => {
+  useEffect(() => {
+    if (usePortal && inputRef.current) {
+      const element = forwardedRef.current?.childNodes[childIndex].firstChild as HTMLDivElement | undefined;
+      const rect = element?.getBoundingClientRect();
+      if (rect) {
+        inputRef.current.style.top = `${rect.top + window.scrollY - 15}px`;
+        inputRef.current.style.left = `${rect.left + spacingUnit * 0.75}px`;
+        inputRef.current.style.width = `${rect.width - spacingUnit}px`;
+      }
+    }
+    inputRef.current?.focus();
+    inputRef.current?.select();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!usePortal) {
+    return <StyledInput ref={inputRef} {...rest} />;
+  }
+  return createUniversalPortal(<StyledInput ref={inputRef} {...rest} />, 'body');
+};
+
+const getButtonComponent = (file: File, isMissing: boolean, messages: FileListMessages) => {
   if (isMissing) {
     return (
       <Tooltip tooltip={messages.missingFileTooltip}>
@@ -78,7 +80,19 @@ const getButtonComponent = (file, isMissing, messages) => {
   }
 };
 
-const FileNameInput = ({ editMode, useRef, file, isMissing, messages, ...rest }) => {
+interface Props extends HTMLProps<HTMLInputElement> {
+  editMode: boolean;
+  useRef: MutableRefObject<HTMLUListElement | null>;
+  isMissing: boolean;
+  file: File;
+  value: string;
+  childIndex: number;
+  usePortal?: boolean;
+  type: string;
+  placeholder: string;
+  messages: FileListMessages;
+}
+const FileNameInput = ({ editMode, useRef, file, isMissing, messages, ...rest }: Props) => {
   if (editMode)
     return (
       <div>

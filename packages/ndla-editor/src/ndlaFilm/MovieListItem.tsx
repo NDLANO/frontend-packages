@@ -1,25 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { MouseEvent } from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
+import { Movie, MovieListMessages } from './MovieList';
 
 const MOVIE_HEIGHT = 69;
 const MOVIE_MARGIN = 4;
 
+interface Props {
+  deleteIndex: number;
+  movie: Movie;
+  messages: MovieListMessages;
+  index: number;
+  executeDeleteFile: () => void;
+  showDragTooltip: boolean;
+  onDragEnd: () => void;
+  onDragStart: (event: MouseEvent<HTMLButtonElement>, dragIndex: number) => void;
+  deleteFile: (deleteIndex: number) => void;
+}
 const MovieListItem = ({
   movie,
   deleteIndex,
   messages: { removeFilm, dragFilm },
   index,
-  showDragTooptil,
+  showDragTooltip,
   executeDeleteFile,
   onDragEnd,
   onDragStart,
   deleteFile,
-}) => {
+}: Props) => {
   return (
     <StyledMovieItem
       key={movie.id}
@@ -30,7 +41,7 @@ const MovieListItem = ({
         {movie.title}
       </div>
       <div>
-        {showDragTooptil ? (
+        {showDragTooltip ? (
           <Tooltip tooltip={dragFilm}>
             <ButtonIcons
               draggable
@@ -61,7 +72,11 @@ const MovieListItem = ({
   );
 };
 
-const StyledMovieItem = styled.li`
+interface StyledMovieItemProps {
+  delete?: boolean;
+}
+
+const StyledMovieItem = styled.li<StyledMovieItemProps>`
   margin: ${MOVIE_MARGIN}px 0 0;
   padding: 0;
   background: ${colors.brand.greyLighter};
@@ -101,7 +116,11 @@ const StyledMovieImage = styled.img`
   margin-right: ${spacing.small};
 `;
 
-const ButtonIcons = styled.button`
+interface ButtonIconsProps {
+  delete?: boolean;
+  draggable?: boolean;
+}
+const ButtonIcons = styled.button<ButtonIconsProps>`
   border: 0;
   background: none;
   color: ${colors.brand.primary};
@@ -133,21 +152,5 @@ const ButtonIcons = styled.button`
       cursor: grabbing;
     `};
 `;
-
-MovieListItem.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-  }),
-  deleteIndex: PropTypes.number,
-  removeFilm: PropTypes.string,
-  dragFilm: PropTypes.string,
-  index: PropTypes.number,
-  showDragTooptil: PropTypes.bool,
-  executeDeleteFile: PropTypes.func,
-  onDragEnd: PropTypes.func,
-  onDragStart: PropTypes.func,
-  deleteFile: PropTypes.func,
-};
 
 export default MovieListItem;

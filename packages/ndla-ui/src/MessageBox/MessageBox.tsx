@@ -185,8 +185,7 @@ export const MessageBox = ({ type, sticky = false, onClose, children, links, t }
       <Wrapper boxType={type} style={{ display: hideMessageBox ? 'none' : 'flex' }}>
         <InfoWrapper boxType={type}>
           <IconWrapper boxType={type}>
-            {type === 'ghost' && <HumanMaleBoard style={{ width: '24px', height: '24px' }} />}
-            {type !== 'ghost' && <InformationOutline style={{ width: '24px', height: '24px' }} />}
+            <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
           <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>

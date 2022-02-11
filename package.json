@@ -79,7 +79,7 @@
     "jest-emotion": "^10.0.9",
     "lerna": "^3.11.1",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "prettier": "^2.3.2",
     "prop-types": "15.7.2",
     "react": "^16.13.1",

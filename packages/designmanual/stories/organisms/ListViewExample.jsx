@@ -130,7 +130,7 @@ class ListViewExample extends Component {
               {(onClose) => (
                 <>
                   <ModalHeader modifier="no-bottom-padding">
-                    <ModalCloseButton onClick={onClose} title="lukk" />
+                    <ModalCloseButton onClick={onClose} />
                   </ModalHeader>
                   <ModalBody>
                     <>

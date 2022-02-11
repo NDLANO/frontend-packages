@@ -7,6 +7,7 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+// @ts-ignore
 import { SwipeEventData, useSwipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';

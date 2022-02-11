@@ -178,7 +178,7 @@ export const MessageBox = ({ type, sticky = false, onClose, children, links, t }
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
   };
-    const Icon = type === 'ghost' ? <HumanMaleBoard> : <InformationOutline>;
+  const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (
     //StickyStyle top:84 makes sure that the messagebox sits beneath the masthead (header ) and the topOffsett sets it so that it applies when reaching the top of the messagebox
     <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9998, top: 84 }} topOffset={-84}>

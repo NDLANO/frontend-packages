@@ -117,6 +117,7 @@ export { default as Breadcrumblist } from './Breadcrumblist';
 
 export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
+export { CloseButton } from './CloseButton';
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
 export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';

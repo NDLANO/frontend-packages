@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 //@ts-ignore
-import Modal from '@ndla/modal';
+import Modal, { ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
-import { Cross } from '@ndla/icons/action';
-import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, IconButton, PushGrid } from './Styles';
+
+import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
 
 import { stories } from './StaticInfoComponents';
 
@@ -24,9 +24,7 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
         <InModalHeader>
           <InformationOutline style={{ position: 'absolute' }} />
           <Heading inModal>{useStory.title}</Heading>
-          <IconButton type="button" onClick={onClose}>
-            <Cross />
-          </IconButton>
+          <ModalCloseButton onClick={onClose} />
         </InModalHeader>
         {useStory.imageUrl && (
           <ImageWrapper>

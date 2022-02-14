@@ -120,7 +120,7 @@ const AuthorsWrapper = styled.div`
 `;
 
 export type SearchNotionItemProps = {
-  id: string;
+  id: string | number;
   title: string;
   text: React.ReactNode;
   image?: { url: string; alt: string };

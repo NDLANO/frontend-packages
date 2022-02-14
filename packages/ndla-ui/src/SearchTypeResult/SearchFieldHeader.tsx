@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
@@ -76,8 +76,8 @@ const SearchInput = styled.input`
 `;
 
 type Props = {
-  onSubmit: (event: {}) => void;
-  value: string;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  value?: string;
   onChange: (value: string) => void;
   filters?: PopupFilterProps;
   activeFilters?: {

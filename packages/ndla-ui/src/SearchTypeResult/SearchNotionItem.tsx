@@ -48,7 +48,6 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
 const TextWrapper = styled.div``;
 const DescriptionWrapper = styled.div`
   ${fonts.sizes('18px', '26px')};
-  font-family: ${fonts.serif};
 `;
 
 const MediaWrapper = styled.div`

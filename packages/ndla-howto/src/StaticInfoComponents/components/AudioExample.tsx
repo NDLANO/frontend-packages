@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { AudioPlayer, Figure, FigureCaption, FigureLicenseDialog } from '@ndla/ui';
 //@ts-ignore
 import Button from '@ndla/button';

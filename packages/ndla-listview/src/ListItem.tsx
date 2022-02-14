@@ -8,7 +8,6 @@ import { Category, ListItemType } from './ListView';
 const ListItemWrapper = styled.div`
   padding: ${spacing.small};
   animation: fadeIn 150ms ease;
-
   &:hover,
   &:focus {
     cursor: pointer;

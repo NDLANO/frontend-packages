@@ -10,11 +10,9 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-// @ts-ignore
-import Button from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
+import { CloseButton } from '../CloseButton';
 
 export enum MessageBoxType {
   ghost = 'ghost',
@@ -106,36 +104,6 @@ const IconWrapper = styled.div<WrapperProps>`
     padding-top: 4px;
   }
 `;
-const CloseButtonWrapper = styled.div`
-  position: absolute;
-  top: 1px;
-  right: -1px;
-  display: flex;
-  justify-content: flex-end;
-  ${mq.range({ from: breakpoints.tabletWide })} {
-    top: 16px;
-  }
-`;
-
-const CloseButton = styled(Button)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  font-weight: ${fonts.weight.semibold};
-  font-size: 16px;
-  color: ${(props) => StyleByType(props.boxType).color};
-  &:hover {
-    color: ${(props) => StyleByType(props.boxType).color};
-    background-color: transparent;
-    border: none;
-    font-size: 16;
-  }
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    flex-direction: column-reverse;
-  }
-`;
 
 const LinkWrapper = styled.div`
   display: block;
@@ -189,13 +157,7 @@ export const MessageBox = ({ type, sticky = false, onClose, children, links, t }
           </IconWrapper>
           <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>
-        {onClose && (
-          <CloseButtonWrapper>
-            <CloseButton onClick={onCloseMessageBox}>
-              <Cross style={{ width: '24px', height: '24px' }} aria-hidden={true} />
-            </CloseButton>
-          </CloseButtonWrapper>
-        )}
+        {onClose && <CloseButton onClick={onCloseMessageBox} color="#444444" />}
       </Wrapper>
 
       {links && (

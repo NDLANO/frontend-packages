@@ -121,7 +121,7 @@ const AuthorsWrapper = styled.div`
 `;
 
 export type SearchNotionItemProps = {
-  id: string;
+  id: string | number;
   title: string;
   text: React.ReactNode;
   image?: { url: string; alt: string };
@@ -225,7 +225,7 @@ const SearchNotionItem = ({
       </TextWrapper>
       {hasMedia && (
         <MediaWrapper>
-          {image && <Image src={image.url} alt={image.alt} />}
+          {image?.url && <Image src={image.url} alt={image.alt} />}
           {media && (
             <ShowMediaWrapper>
               <ShowMediaButton type={media.type} element={media.element} />

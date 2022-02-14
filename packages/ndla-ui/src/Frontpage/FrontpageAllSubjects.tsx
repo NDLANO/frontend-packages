@@ -73,7 +73,7 @@ const StyledLetterSpacing = styled.span`
 type subjectProps = {
   name: string;
   url?: string;
-  path: string;
+  path?: string;
   id?: string;
 };
 type categoryProps = {
@@ -160,7 +160,7 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.url || subject.path}>
+                      to={subject.url || subject.path || ''}>
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />

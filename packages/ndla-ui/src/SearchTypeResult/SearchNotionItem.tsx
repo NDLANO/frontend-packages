@@ -225,7 +225,7 @@ const SearchNotionItem = ({
       </TextWrapper>
       {hasMedia && (
         <MediaWrapper>
-          {image?.url && <Image src={image.url} alt={image.alt} />}
+          {image && <Image src={image.url} alt={image.alt} />}
           {media && (
             <ShowMediaWrapper>
               <ShowMediaButton type={media.type} element={media.element} />

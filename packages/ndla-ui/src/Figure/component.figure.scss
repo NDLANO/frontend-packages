@@ -20,39 +20,19 @@
 
 @keyframes rightFloatTransition {
   0% {
-    float: right;
-    right: -25%;
-    left: 0%;
-    margin: 0 -25% 35px 34px;
-  }
-
-  99.99% {
-    float: right;
+    left: 75%;
   }
   100% {
-    float: none;
-    left: 16.6%;
-    right: 0%;
-    margin: 24px 0 48px;
+    left: -16.6%;
   }
 }
 
 @keyframes smallRightFloatTransition {
   0% {
-    float: right;
-    right: -0%;
-    left: 0%;
-    margin: 0 0 35px 34px;
-  }
-
-  99.99% {
-    float: right;
+    left: 78.5%;
   }
   100% {
-    float: none;
-    left: 16.6%;
-    right: 0%;
-    margin: 24px 0 48px;
+    left: -16.6%;
   }
 }
 

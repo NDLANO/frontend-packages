@@ -23,16 +23,6 @@ export {
   ToggleSearchButton,
 } from './Search';
 
-export {
-  default as ContentTypeBadge,
-  SubjectMaterialBadge,
-  TasksAndActivitiesBadge,
-  AssessmentResourcesBadge,
-  LearningPathBadge,
-  SubjectBadge,
-  ExternalLearningResourcesBadge,
-  SourceMaterialBadge,
-} from './ContentTypeBadge';
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
 export {
@@ -43,24 +33,4 @@ export {
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
 
-export {
-  MediaList,
-  MediaListItem,
-  MediaListItemBody,
-  MediaListItemActions,
-  MediaListItemImage,
-  MediaListItemMeta,
-} from './MediaList';
-
 export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';
-
-export { DisplayOnPageYOffset } from './Animation';
-
-export {
-  FilmSlideshow,
-  MovieGrid,
-  AboutNdlaFilm,
-  FilmMovieSearch,
-  FilmMovieList,
-  AllMoviesAlphabetically,
-} from './NDLAFilm';

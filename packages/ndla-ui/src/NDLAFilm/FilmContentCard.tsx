@@ -1,11 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { spacing, colors, fonts, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
 import FilmContentCardTags from './FilmContentCardTags';
+import { MovieResourceType, MovieType } from './types';
+
+interface Props {
+  movie: MovieType;
+  columnWidth: number;
+  distanceBetweenItems?: number;
+  resourceTypes: MovieResourceType[];
+  resizeThumbnailImages?: boolean;
+  hideTags?: boolean;
+}
 
 const FilmContentCard = ({
   movie: { metaImage, resourceTypes: movieResourceTypes, title, id, path },
@@ -13,8 +22,8 @@ const FilmContentCard = ({
   distanceBetweenItems,
   resourceTypes,
   resizeThumbnailImages,
-  hideTags,
-}) => {
+  hideTags = false,
+}: Props) => {
   let backgroundImage = `${(metaImage && metaImage.url) || ''}`;
   if (resizeThumbnailImages && metaImage) {
     backgroundImage += '?width=480';
@@ -55,7 +64,10 @@ const StyledMovieTitle = styled.h2`
   }
 `;
 
-const StyledImage = styled.div`
+interface StyledImageProps {
+  columnWidth: number;
+}
+const StyledImage = styled.div<StyledImageProps>`
   height: ${(props) => props.columnWidth * 0.5625}px;
   background-size: cover;
   background-color: ${colors.ndlaFilm.filmColorLight};
@@ -78,7 +90,11 @@ const StyledImage = styled.div`
   }
 `;
 
-const StyledSlideWrapper = styled.div`
+interface StyledSlideWrapperProps {
+  columnWidth: number;
+}
+
+const StyledSlideWrapper = styled.div<StyledSlideWrapperProps>`
   width: ${(props) => props.columnWidth}px;
   color: #fff;
   box-shadow: none;
@@ -97,21 +113,5 @@ const StyledSlideWrapper = styled.div`
     }
   }
 `;
-
-FilmContentCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string,
-    url: PropTypes.string,
-  }).isRequired,
-  columnWidth: PropTypes.number,
-  distanceBetweenItems: PropTypes.number,
-  resourceTypes: PropTypes.arrayOf(PropTypes.object),
-  resizeThumbnailImages: PropTypes.bool,
-  hideTags: PropTypes.bool,
-};
-
-FilmContentCard.defaultProps = {
-  hideTags: false,
-};
 
 export default FilmContentCard;

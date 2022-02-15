@@ -8,10 +8,10 @@
 
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
-import { NDLAMovie } from './interfaces';
+import { MovieType } from './types';
 
 interface Props {
-  slideshow: NDLAMovie[];
+  slideshow: MovieType[];
   activeSlide: number;
   gotoSlide: (indexTarget: number, useAnimation: boolean) => void;
 }

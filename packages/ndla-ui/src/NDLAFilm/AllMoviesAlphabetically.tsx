@@ -15,7 +15,7 @@ import { breakpoints, mq, spacing, spacingUnit, colors, fonts, animations } from
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import { makeSrcQueryString } from '../Image';
-import { movieType } from './types';
+import { MovieType } from './types';
 import { isLetter } from './isLetter';
 const IMAGE_WIDTH = 143;
 
@@ -158,7 +158,7 @@ const StyledSafeLink = styled(SafeLink)<isIEProps>`
 `;
 
 interface Props {
-  movies: movieType[];
+  movies: MovieType[];
   locale: string;
 }
 
@@ -231,7 +231,7 @@ const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies, local
 
   return (
     <StyledWrapper ref={wrapperRef}>
-      {movies.map((movie: movieType, index: number) => {
+      {movies.map((movie: MovieType, index: number) => {
         const currentLetter = movie.title.substr(0, 1);
         const isNewLetter = currentLetter.localeCompare(previousLetter, locale) === 1 && isLetter(movie.title);
         previousLetter = currentLetter;

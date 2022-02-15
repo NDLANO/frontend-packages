@@ -38,7 +38,7 @@ export interface Topic {
 }
 
 interface Props {
-  toTopic: Function;
+  toTopic: (id: string) => string;
   topics: Topic[];
   twoColumns?: boolean;
   shortcutAlwaysExpanded?: boolean;

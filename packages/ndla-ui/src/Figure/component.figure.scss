@@ -21,12 +21,31 @@
 @keyframes rightFloatTransition {
   0% {
     float: right;
-    right: -(6 - 4 - 2/2) / 4 * 100%;
+    right: -25%;
     left: 0%;
     margin: 0 -25% 35px 34px;
   }
 
-  99% {
+  99.99% {
+    float: right;
+  }
+  100% {
+    float: none;
+    left: 16.6%;
+    right: 0%;
+    margin: 24px 0 48px;
+  }
+}
+
+@keyframes smallRightFloatTransition {
+  0% {
+    float: right;
+    right: -0%;
+    left: 0%;
+    margin: 0 0 35px 34px;
+  }
+
+  99.99% {
     float: right;
   }
   100% {
@@ -76,6 +95,13 @@
       @include mq($from: desktop) {
         animation-name: rightFloatTransition;
         animation-duration: 0.4s;
+      }
+
+      &[data-sizetype='xsmall-right'] {
+        @include mq($from: desktop) {
+          animation-name: smallRightFloatTransition;
+          animation-duration: 0.4s;
+        }
       }
     }
   }

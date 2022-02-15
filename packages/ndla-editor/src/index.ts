@@ -8,10 +8,11 @@
 
 import VersionHistory from './versionLogs/VersionHistory';
 import VersionLogTag from './versionLogs/VersionLogTag';
+import FileListEditor from './FileListEditor';
+import MovieList from './ndlaFilm/MovieList';
+import NdlaFilmThemeEditorModal from './ndlaFilm/ThemeEditorModal';
 
-// @ts-ignore
-export * from './index-javascript';
-
+export { MovieList, NdlaFilmThemeEditorModal, FileListEditor };
 export { VersionHistory, VersionLogTag };
 export { default as Structure } from './structure/Structure';
 export { default as Footer } from './footer/Footer';

@@ -12,4 +12,6 @@ import SearchFieldHeader from './SearchFieldHeader';
 import SearchNotionsResult from './SearchNotionsResult';
 import SearchSubjectResult from './SearchSubjectResult';
 
+export type { ContentType } from './SearchTypeResult';
+
 export { SearchTypeResult, SearchHeader, SearchFieldHeader, SearchNotionsResult, SearchSubjectResult };

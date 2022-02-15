@@ -10,7 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing } from '@ndla/core';
 // @ts-ignore
-import Button from '@ndla/button';
+import { ModalCloseButton } from '@ndla/modal';
+// @ts-ignore
 import { withTranslation, WithTranslation } from 'react-i18next';
 import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
@@ -47,10 +48,6 @@ const HeadingCount = styled.span`
   text-transform: lowercase;
 `;
 
-const ButtonRemoveText = styled.span`
-  ${fonts.sizes('18px', '22px')};
-`;
-
 type Props = {
   items: SearchNotionItemProps[];
   totalCount: number;
@@ -65,9 +62,7 @@ const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }:
         {t(`searchPage.resultType.notionsHeading`)}
         <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
       </Heading>
-      <Button onClick={onRemove} link>
-        <ButtonRemoveText>{t(`searchPage.resultType.notionsRemove`)}</ButtonRemoveText>
-      </Button>
+      <ModalCloseButton onClick={onRemove} />
     </HeadingWrapper>
     {items.map((item) => (
       <SearchNotionItem key={item.id} {...item} renderMarkdown={renderMarkdown} />

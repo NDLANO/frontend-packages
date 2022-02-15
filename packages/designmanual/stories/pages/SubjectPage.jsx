@@ -9,18 +9,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntersectionObserver } from '@ndla/hooks';
-
 import { useTranslation } from 'react-i18next';
 
 import {
-  Image,
   LayoutItem,
   NavigationBox,
   NavigationHeading,
   OneColumn,
-  SubjectAbout,
-  SubjectBanner,
-  SubjectCarousel,
   Breadcrumblist,
   ArticleHeaderWrapper,
   ArticleByline,
@@ -30,6 +25,7 @@ import {
   ArticleWrapper,
   Topic,
   AuthModal,
+  MessageBox,
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
@@ -38,6 +34,7 @@ import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 import FigureImage from '../article/FigureImage';
 
+/* Stored for later 
 const subjectAbout = (label, description) => (
   <SubjectAbout
     wide
@@ -45,7 +42,7 @@ const subjectAbout = (label, description) => (
     heading={label}
     description={description}
   />
-);
+); */
 
 const loadArticle = async (articleId) => {
   try {
@@ -141,6 +138,8 @@ const SubjectPage = ({
   topics: topicsData,
   initialBreadcrumb = [],
   subjectName,
+  messagebox: message,
+  messageBoxTagMessage,
   bannerBackground,
   subjectContentCards,
   subjectAboutHeading,
@@ -229,7 +228,7 @@ const SubjectPage = ({
   /*const breadcrumbItems = [
     { ...programs[11], typename: 'Subjecttype' },
     { ...subject, typename: 'Subject', isCurrent: currentLevel === 'Subject' },
-  ];*/
+*/
 
   const breadcrumbItems = initialBreadcrumb.map((item) => ({
     ...item,
@@ -356,7 +355,6 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
   const onClickSubTopic = (e, id) => {
     e.preventDefault();
     if (id !== selectedSubTopic) {
@@ -383,7 +381,6 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
   const handleNav = (e, item) => {
     e.preventDefault();
     if (currentLevel !== item.typename) {
@@ -392,9 +389,9 @@ const SubjectPage = ({
       scrollToCurrentLevel();
     }
   };
-
+  /* Stored for later
   const moveBannerUp = !topicData;
-
+*/
   const getSubTopics = () => {
     if (showSubTopicAdditionalTopics) {
       return subTopics;
@@ -418,6 +415,7 @@ const SubjectPage = ({
       <div ref={containerRef}>
         <OneColumn>
           <LayoutItem layout="extend">
+            {message && <MessageBox>{message}</MessageBox>}
             <NavigationHeading>{subjectName}</NavigationHeading>
             <div ref={mainTopicRef}>
               <NavigationBox items={mainTopics} onClick={onClickMainTopic} />
@@ -438,7 +436,6 @@ const SubjectPage = ({
                   showContent={showMainTopicContent}>
                   {topicData.content}
                 </Topic>
-
                 <div ref={subTopicRef}>
                   {subTopics.length ? (
                     <NavigationBox
@@ -515,13 +512,24 @@ const SubjectPage = ({
           </LayoutItem>
         </OneColumn>
       </div>
+      {/* Stored for later. 
       {bannerBackground && <SubjectBanner image={bannerBackground} negativeTopMargin={moveBannerUp} />}
       {subjectAboutHeading && <OneColumn wide>{subjectAbout(subjectAboutHeading, subjectAboutDescription)}</OneColumn>}
       {subjectContentCards && (
         <SubjectCarousel wideScreen subjects={subjectContentCards} title="Litt forskjellig fra faget" subjectPage />
-      )}
+      )} */}
+
       <OneColumn wide>
-        <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />
+        {message && (
+          <Breadcrumblist
+            isVisible={showBreadCrumb}
+            items={breadcrumbItems}
+            onNav={handleNav}
+            messageBoxTagMessage={messageBoxTagMessage}
+            startOffset={100}
+          />
+        )}
+        {!message && <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />}
       </OneColumn>
       {showLoginModal && (
         <AuthModal

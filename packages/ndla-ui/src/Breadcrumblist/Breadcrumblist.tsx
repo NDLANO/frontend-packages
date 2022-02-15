@@ -9,7 +9,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors } from '@ndla/core';
-
 import {
   School as SchoolIcon,
   MenuBook as MenuBookIcon,
@@ -20,6 +19,7 @@ import {
 } from '@ndla/icons/action';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
+import MessageBoxTag from '../MessageBox/MessageBoxTag';
 
 type WrapperProps = {
   startOffset?: number;
@@ -51,7 +51,6 @@ const Wrapper = styled.div<WrapperProps>`
     ${(props) =>
       props.startOffset &&
       `
-        position: absolute;
         top: calc(${props.startOffset}px + 85px); 
     `}
   }
@@ -87,7 +86,7 @@ const Heading = styled.div<InvertItProps>`
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
-  padding: 0 0 18px 10px;
+  padding: 0 0 10px 10px;
   ${(props) =>
     props.invertedStyle &&
     `
@@ -214,6 +213,7 @@ type BreadCrumbProps = {
   leftAlign?: boolean;
   hideOnNarrow?: boolean;
   onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
+  messageBoxTagMessage?: string;
 };
 
 const Breadcrumblist = ({
@@ -225,6 +225,7 @@ const Breadcrumblist = ({
   leftAlign,
   hideOnNarrow,
   onNav,
+  messageBoxTagMessage,
 }: BreadCrumbProps) => {
   const { t } = useTranslation();
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
@@ -274,6 +275,7 @@ const Breadcrumblist = ({
         {items.length > 0 && (
           <>
             <Heading invertedStyle={invertedStyle}>{t('breadcrumb.youAreHere')}</Heading>
+            {messageBoxTagMessage && <MessageBoxTag tagMessage={messageBoxTagMessage} />}
             <List data-testid="breadcrumb-list">
               {items.map((item: BreadcrumbItemProps) => {
                 const { id, label, url, typename, icon, isCurrent = false } = item;

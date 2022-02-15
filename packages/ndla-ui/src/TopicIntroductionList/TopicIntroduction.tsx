@@ -25,7 +25,7 @@ interface Props {
   additional?: boolean;
   showAdditionalCores?: boolean;
   topic: Topic;
-  toTopic: Function;
+  toTopic: (id: string) => string;
   subjectPage?: boolean;
   shortcuts?: Shortcut[];
   twoColumns?: boolean;

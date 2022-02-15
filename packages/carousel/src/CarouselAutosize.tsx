@@ -27,7 +27,7 @@ interface Props {
   centered?: boolean;
   itemsLength: number;
   breakpoints: CaruselBreakpoint[];
-  children: (calculatedProps: CalculatedCarouselProps | null) => React.ReactNode;
+  children: (calculatedProps: CalculatedCarouselProps) => React.ReactNode;
 }
 
 export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, centered, itemsLength }: Props) => {
@@ -104,7 +104,9 @@ export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, cent
   return (
     <div ref={autosizeRef}>
       {carouselBreakpoint && (
-        <StyledWrapperAutosizer width={wrapperWidth}>{children(calculatedCarouselProps)}</StyledWrapperAutosizer>
+        <StyledWrapperAutosizer width={wrapperWidth}>
+          {calculatedCarouselProps ? children(calculatedCarouselProps) : undefined}
+        </StyledWrapperAutosizer>
       )}
     </div>
   );

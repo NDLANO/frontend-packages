@@ -6,7 +6,7 @@ $denominator: auto;
   $unit: $numerator / $denominator * 100%;
   $width: ($numerator / $denominator) * 100%;
   position: relative !important;
-  right: auto;
+  right: auto !important;
   left: -($denominator - $numerator - $expand/2) / $denominator * 100%;
   width: $width + $unit !important;
   padding-left: $spacing;

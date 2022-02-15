@@ -7,20 +7,10 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { History } from 'history';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import {
-  ChevronDown,
-  ChevronUp,
-  Esc,
-  KeyboardReturn,
-  Search as SearchIcon,
-  Wrench,
-  // @ts-ignore
-} from '@ndla/icons/common';
+import { ChevronDown, ChevronUp, Esc, KeyboardReturn, Search as SearchIcon, Wrench } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-// @ts-ignore
 import { useTranslation } from 'react-i18next';
 import ContentTypeResult from './ContentTypeResult';
 import { highlightStyle } from './ContentTypeResultStyles';
@@ -218,14 +208,13 @@ type Props = {
     to: string;
   };
   onNavigate?: VoidFunction;
-  infoText: string;
-  ignoreContentTypeBadge: boolean;
+  infoText?: string;
+  ignoreContentTypeBadge?: boolean;
   searchString: string;
   loading: boolean;
   frontpage?: boolean;
-  history: History;
-  suggestion: string;
-  suggestionUrl: string;
+  suggestion?: string;
+  suggestionUrl?: string;
 };
 
 const SearchResultSleeve: React.FC<Props> = ({
@@ -238,7 +227,6 @@ const SearchResultSleeve: React.FC<Props> = ({
   searchString,
   loading,
   frontpage,
-  history,
   suggestion,
   suggestionUrl,
 }) => {
@@ -332,7 +320,7 @@ const SearchResultSleeve: React.FC<Props> = ({
               <strong ref={searchAllRef}>{searchString}</strong>
               <small>{t('welcomePage.searchAllInfo')}</small>
             </StyledSearchLink>
-            {suggestion && (
+            {suggestion && suggestionUrl && (
               <StyledSearchLink css={keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle} to={suggestionUrl}>
                 <SearchIcon className="c-icon--22" />
                 <small>{t('searchPage.resultType.searchPhraseSuggestion')}</small>
@@ -342,7 +330,7 @@ const SearchResultSleeve: React.FC<Props> = ({
           </SearchLinkContainer>
           {result.map((contentTypeResult: ContentTypeResultType) => (
             <ContentTypeResult
-              ignoreContentTypeBadge={ignoreContentTypeBadge}
+              ignoreContentTypeBadge={!!ignoreContentTypeBadge}
               onNavigate={onNavigate}
               contentTypeResult={contentTypeResult}
               resourceToLinkProps={resourceToLinkProps}

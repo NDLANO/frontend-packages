@@ -14,7 +14,6 @@ import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
 import { colors, spacing, misc, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import { ArrowExpandRight, ArrowExpandLeft } from '@ndla/icons/action';
 import LearningPathMenuModalWrapper from './LearningPathMenuModalWrapper';
 import LearningPathMenuAside from './LearningPathMenuAside';

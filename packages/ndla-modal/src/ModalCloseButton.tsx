@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-//@ts-ignore
 import styled from '@emotion/styled';
 
 import { useTranslation } from 'react-i18next';

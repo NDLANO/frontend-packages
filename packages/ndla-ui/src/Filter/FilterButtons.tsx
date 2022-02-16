@@ -12,9 +12,7 @@ import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
-// @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 
 // @ts-ignore

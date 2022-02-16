@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { HTMLAttributes, ReactNode, useContext } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
@@ -27,13 +27,14 @@ const LaunchIcon = styled(Launch)`
 
 type Props = {
   showNewWindowIcon?: boolean;
+  children?: ReactNode;
 };
 
-export type SafeLinkProps = Props & LinkProps & React.HTMLAttributes<HTMLElement>;
+export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
-const SafeLink: React.FunctionComponent<SafeLinkProps> = ({ to, replace, children, showNewWindowIcon, ...rest }) => {
-  const isMissingRouterContext = React.useContext(MissingRouterContext);
+const SafeLink = ({ to, replace, children, showNewWindowIcon, ...rest }: SafeLinkProps) => {
+  const isMissingRouterContext = useContext(MissingRouterContext);
 
   if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
     const href = typeof to === 'string' ? to : '#';

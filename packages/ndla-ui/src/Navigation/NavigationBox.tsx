@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent, ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 // @ts-ignore
@@ -186,12 +186,12 @@ type Props = {
   colorMode?: 'dark' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
-  onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
+  onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
   listDirection?: listProps['direction'];
   invertedStyle?: boolean;
-  onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
+  onToggleAdditionalResources?: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const NavigationBox = ({
@@ -240,7 +240,7 @@ export const NavigationBox = ({
                 borderShape="sharpened"
                 width="full"
                 textAlign="left"
-                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                onClick={(e: MouseEvent<HTMLElement>) => {
                   if (onClick) {
                     onClick(e, item.id);
                   }

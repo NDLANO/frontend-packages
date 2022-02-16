@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, MutableRefObject, ReactNode } from 'react';
+import React, { Component, createRef, MutableRefObject, ReactNode } from 'react';
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from 'react-tabs';
 import { isMobile } from 'react-device-detect';
 import { isFunction } from '@ndla/util';
@@ -50,7 +50,7 @@ class Tabs extends Component<Props, State> {
       index: props.selectedIndex || 0,
       singleLineState: false,
     };
-    this.tabRef = React.createRef();
+    this.tabRef = createRef();
   }
 
   componentDidMount() {

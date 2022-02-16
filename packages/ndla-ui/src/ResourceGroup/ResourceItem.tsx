@@ -14,11 +14,8 @@ import { keyframes } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { Resource } from '../types';
-// @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
 

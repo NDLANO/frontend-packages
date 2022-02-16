@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -92,14 +92,14 @@ const FormWarningText = styled.span`
     `}
 `;
 
-class Input extends React.Component {
+class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hasFocus: false,
     };
-    this.wrapperRef = React.createRef();
-    this.inputRef = React.createRef();
+    this.wrapperRef = createRef();
+    this.inputRef = createRef();
   }
 
   componentDidMount() {

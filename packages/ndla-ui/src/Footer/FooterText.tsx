@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, mq, breakpoints } from '@ndla/core';
 
@@ -33,9 +33,7 @@ const StyledFooterText = styled.p`
 `;
 
 type FooterTextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export const FooterText: React.FunctionComponent<FooterTextProps> = ({ children }) => (
-  <StyledFooterText>{children}</StyledFooterText>
-);
+export const FooterText = ({ children }: FooterTextProps) => <StyledFooterText>{children}</StyledFooterText>;

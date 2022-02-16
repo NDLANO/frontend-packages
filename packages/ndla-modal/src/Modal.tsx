@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactElement, ReactNode, useState, MouseEvent } from 'react';
+import React, { ReactElement, ReactNode, useState, MouseEvent, cloneElement } from 'react';
 import em from 'polished/lib/helpers/em';
 
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
@@ -75,7 +75,7 @@ const Modal = ({
 
   let clonedComponent: ReactElement | undefined;
   if (activateButton) {
-    clonedComponent = React.cloneElement(activateButton, {
+    clonedComponent = cloneElement(activateButton, {
       onClick: (e: MouseEvent<HTMLButtonElement>) => {
         openModal();
         onClickEvent?.();

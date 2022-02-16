@@ -11,7 +11,6 @@ import { LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-// @ts-ignore
 import Logo from '../Logo';
 
 const Container = styled.div`

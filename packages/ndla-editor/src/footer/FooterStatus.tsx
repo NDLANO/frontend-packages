@@ -135,7 +135,7 @@ const footerReducer = (state: State, action: Action) => {
   }
 };
 
-const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
+const FooterStatus = ({ options, messages, onSave }: Props) => {
   const [state, dispatch] = useReducer(footerReducer, initialState);
   const { changeStatusTo, comment } = state;
   return (
@@ -183,7 +183,7 @@ const FooterStatus: React.FC<Props> = ({ options, messages, onSave }) => {
                   dispatch({ type: 'reset' });
                   onClosePopup();
                 }}
-                onChangeComment={(e: React.ChangeEvent<HTMLInputElement>) => {
+                onChangeComment={(e: ChangeEvent<HTMLInputElement>) => {
                   dispatch({ type: 'comment', payload: e.target.value });
                 }}
                 changeStatusTo={changeStatusTo}

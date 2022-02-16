@@ -85,7 +85,7 @@
     "react": "^16.13.1",
     "react-bem-helper": "1.4.1",
     "react-collapse": "^4.0.3",
-    "react-device-detect": "^1.6.2",
+    "react-device-detect": "^2.1.2",
     "react-dom": "^16.13.1",
     "react-height": "3.0.1",
     "react-helmet": "^5.2.0",

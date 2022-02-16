@@ -29,6 +29,7 @@
     "@ndla/button": "^1.1.5",
     "@ndla/core": "^0.7.3",
     "@ndla/forms": "^1.0.58",
+    "@ndla/icons": "^1.4.1",
     "@ndla/licenses": "^1.1.7",
     "@ndla/pager": "^1.0.14",
     "@ndla/util": "^2.0.1"

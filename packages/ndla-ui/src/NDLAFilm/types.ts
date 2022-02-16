@@ -1,13 +1,16 @@
-export interface movieType {
+export interface MovieType {
   id: string;
   metaDescription: string;
+  resourceTypes: MovieResourceType[];
   metaImage: {
     alt: string;
     url: string;
   };
-  movieTypes: {
-    [key: string]: boolean;
-  };
   path: string;
   title: string;
+}
+
+export interface MovieResourceType {
+  id: string;
+  name: string;
 }

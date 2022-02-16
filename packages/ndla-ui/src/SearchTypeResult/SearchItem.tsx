@@ -174,11 +174,11 @@ const ContextWrapper = styled.div`
 `;
 
 type SearchItemProps = {
-  id: string;
+  id: string | number;
   title: string;
   url: string;
   ingress: string;
-  contexts: ItemContextsType['contexts'];
+  contexts?: ItemContextsType['contexts'];
   img?: { url: string; alt: string };
   labels?: string[];
   type?: ContentType;
@@ -215,7 +215,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
             </>
           )}
           <ContextWrapper>
-            {contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
+            {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
           </ContextWrapper>
         </ItemLink>
       </ItemWrapper>

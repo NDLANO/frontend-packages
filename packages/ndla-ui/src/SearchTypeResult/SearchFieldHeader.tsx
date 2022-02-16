@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-import React, { useRef, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 // @ts-ignore
@@ -67,8 +66,8 @@ const SearchInput = styled.input`
 `;
 
 type Props = {
-  onSubmit: (event: {}) => void;
-  value: string;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  value?: string;
   onChange: (value: string) => void;
   isNarrowScreen?: boolean;
 };

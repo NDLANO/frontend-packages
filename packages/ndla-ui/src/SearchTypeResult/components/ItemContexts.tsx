@@ -75,7 +75,7 @@ type context = {
 };
 export type ItemContextsType = {
   contexts: context[];
-  id: string;
+  id: string | number;
   title: string;
 };
 

@@ -23,9 +23,9 @@ type ResourceTypes = {
 };
 
 export type Resource = {
-  id: string;
+  id: string | number;
   name: string;
-  contentUri: string;
+  contentUri?: string;
   path: string;
   primary?: boolean;
   rank?: number;

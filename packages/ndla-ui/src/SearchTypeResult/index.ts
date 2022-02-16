@@ -13,6 +13,8 @@ import SearchNotionsResult from './SearchNotionsResult';
 import SearchSubjectResult from './SearchSubjectResult';
 import SearchFilterContent from './SearchFilterContent';
 
+export type { ContentType } from './SearchTypeResult';
+
 export {
   SearchTypeResult,
   SearchHeader,

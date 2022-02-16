@@ -11,7 +11,10 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
 // @ts-ignore
-import Button from '@ndla/button';
+import { ModalCloseButton } from '@ndla/modal';
+// @ts-ignore
+import { withTranslation, WithTranslation } from 'react-i18next';
+// import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,17 +56,13 @@ const HeadingCount = styled.span`
   text-transform: lowercase;
 `;
 
-const ButtonRemoveText = styled.span`
-  ${fonts.sizes('18px', '22px')};
-`;
-
 type Props = {
   totalCount: number;
   onRemove: () => void;
   children: React.ReactNode;
 };
 
-const SearchNotionsResult = ({ totalCount, onRemove, children }: Props) => {
+const SearchNotionsResult = ({ totalCount, onRemove, children }: Props & WithTranslation) => {
   const { t } = useTranslation();
   return (
     <Wrapper>
@@ -72,13 +71,11 @@ const SearchNotionsResult = ({ totalCount, onRemove, children }: Props) => {
           {t(`searchPage.resultType.notionsHeading`)}
           <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
         </Heading>
-        <Button onClick={onRemove} link>
-          <ButtonRemoveText>{t(`searchPage.resultType.notionsRemove`)}</ButtonRemoveText>
-        </Button>
+        <ModalCloseButton onClick={onRemove} title={t(`searchPage.resultType.notionsRemove`)} />
       </HeadingWrapper>
       {children}
     </Wrapper>
   );
 };
 
-export default SearchNotionsResult;
+export default withTranslation()(SearchNotionsResult);

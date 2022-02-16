@@ -17,6 +17,25 @@
 **/
 
 /* 1. */
+
+@keyframes rightFloatTransition {
+  0% {
+    left: 75%;
+  }
+  100% {
+    left: -16.6%;
+  }
+}
+
+@keyframes smallRightFloatTransition {
+  0% {
+    left: 78.5%;
+  }
+  100% {
+    left: -16.6%;
+  }
+}
+
 .c-figure {
   img {
     width: 100%;
@@ -50,6 +69,21 @@
     padding-right: 0;
     padding-bottom: $spacing--large;
     margin-bottom: 0;
+  }
+  &--right {
+    &.expanded {
+      @include mq($from: desktop) {
+        animation-name: rightFloatTransition;
+        animation-duration: 0.4s;
+      }
+
+      &[data-sizetype='xsmall-right'] {
+        @include mq($from: desktop) {
+          animation-name: smallRightFloatTransition;
+          animation-duration: 0.4s;
+        }
+      }
+    }
   }
   &.expanded {
     .c-figure__caption--hidden-caption {
@@ -119,7 +153,7 @@
     margin-bottom: $spacing--small;
   }
   p {
-    margin:0;
+    margin: 0;
   }
 }
 
@@ -179,7 +213,7 @@
   padding: $spacing--small;
   transition: all 0.3s ease-out;
   background: rgba($white, 0.2);
-  border:0;
+  border: 0;
 
   .expanded-icon {
     display: none;

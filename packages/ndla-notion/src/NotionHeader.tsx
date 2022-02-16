@@ -8,8 +8,9 @@
 
 import React, { MouseEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
 import { spacing, colors, fonts, misc } from '@ndla/core';
+
+import { Cross } from '@ndla/icons/action';
 
 interface NotionHeaderWrapperProps {
   hasChildren?: boolean;
@@ -69,18 +70,17 @@ export const NotionHeaderWithoutExitButton = ({ title, subTitle }: NotionHeaderW
 );
 
 const NotionHeader = ({ title, subTitle, onClose, children }: NotionHeaderProps) => {
-  const { t } = useTranslation();
   return (
     <NotionHeaderWrapper hasChildren={!!children}>
       {notionTitle(title, subTitle)}
       {children}
       {onClose ? (
         <button type="button" onClick={onClose}>
-          {t('notions.closeNotion')}
+          <Cross style={{ width: '24px', height: '24px' }} />
         </button>
       ) : (
         <button type="button" data-notion-close>
-          {t('notions.closeNotion')}
+          <Cross style={{ width: '24px', height: '24px' }} />
         </button>
       )}
     </NotionHeaderWrapper>

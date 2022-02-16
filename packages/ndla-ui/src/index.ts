@@ -115,8 +115,9 @@ export { default as CreatedBy } from './CreatedBy';
 
 export { default as Breadcrumblist } from './Breadcrumblist';
 
-export { MessageBox } from './MessageBox';
+export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
+export { CloseButton } from './CloseButton';
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
 export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';
@@ -157,6 +158,37 @@ export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
+
+export {
+  FilmSlideshow,
+  MovieGrid,
+  AboutNdlaFilm,
+  FilmMovieSearch,
+  FilmMovieList,
+  AllMoviesAlphabetically,
+} from './NDLAFilm';
+
+export { DisplayOnPageYOffset } from './Animation';
+
+export {
+  MediaList,
+  MediaListItem,
+  MediaListItemBody,
+  MediaListItemActions,
+  MediaListItemImage,
+  MediaListItemMeta,
+} from './MediaList';
+
+export {
+  default as ContentTypeBadge,
+  SubjectMaterialBadge,
+  TasksAndActivitiesBadge,
+  AssessmentResourcesBadge,
+  LearningPathBadge,
+  SubjectBadge,
+  ExternalLearningResourcesBadge,
+  SourceMaterialBadge,
+} from './ContentTypeBadge';
 
 export {
   SubjectAbout,

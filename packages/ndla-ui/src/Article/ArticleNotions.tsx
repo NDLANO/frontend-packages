@@ -24,6 +24,7 @@ const ArticleNotionsContainer = styled.div`
     margin-bottom: 0;
   }
 `;
+/* Stored for later 
 
 const NotionsTrigger = styled.div`
   padding: 0 16px;
@@ -32,7 +33,7 @@ const NotionsTrigger = styled.div`
   background-color: ${colors.brand.greyLighter};
   border-radius: 4px;
   cursor: pointer;
-
+ 
   ${mq.range({ from: breakpoints.tablet })} {
     position: fixed;
     border: none;
@@ -80,7 +81,7 @@ const NotionsTrigger = styled.div`
     }
   }
 `;
-
+*/
 const ModalHeadingContainer = styled.div`
   display: flex;
   align-items: center;
@@ -171,17 +172,19 @@ export const ArticleNotions = ({
   buttonOffsetRight,
 }: ArticleNotionsProps) => {
   const { t } = useTranslation();
-  const leftOffset = `${buttonOffsetRight - 32}px`;
+  //const leftOffset = `${buttonOffsetRight - 32}px`;
   return (
     <ArticleNotionsContainer>
       <Modal
-        activateButton={
+        /* Stored for later
+    
+    activateButton={
           <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
             <span>{t('article.notionsPrompt')}</span>
           </NotionsTrigger>
-        }
+        } */
         size="large"
         backgroundColor="white">
         {(onClose: () => void) => (

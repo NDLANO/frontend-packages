@@ -6,14 +6,14 @@
  *
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefObject } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';
+//@ts-ignore
 import { CheckboxItem } from '@ndla/forms';
 import FileNameInput from './FileNameInput';
 
@@ -61,7 +61,11 @@ const fileErrorCss = css`
   }
 `;
 
-const ListWrapper = styled.ul`
+interface ListWrapperProps {
+  draggingIndex: number;
+}
+
+const ListWrapper = styled.ul<ListWrapperProps>`
   overflow: visible;
   margin: 0 0 ${(props) => (props.draggingIndex > -1 ? `${FILE_HEIGHT + spacingUnit * 0.75}px` : '0')};
   padding: 0;
@@ -69,7 +73,11 @@ const ListWrapper = styled.ul`
   list-style: none;
 `;
 
-const ButtonIcons = styled.button`
+interface ButtonIconsProps {
+  delete?: boolean;
+  draggable?: boolean;
+}
+const ButtonIcons = styled.button<ButtonIconsProps>`
   border: 0;
   background: none;
   color: ${(props) => (props.delete ? colors.support.red : colors.brand.primary)};
@@ -100,22 +108,66 @@ const checkboxStyle = css`
   }
 `;
 
-class FileListEditor extends Component {
-  constructor(props) {
+export interface File {
+  path: string;
+  title: string;
+  type: string;
+  display?: string;
+  url: string;
+}
+
+export interface FileListMessages {
+  placeholder: string;
+  changeName: string;
+  changeOrder: string;
+  removeFile: string;
+  missingFileTooltip: string;
+  missingTitle: string;
+  checkboxLabel: string;
+  checkboxTooltip: string;
+}
+
+interface Props {
+  files: File[];
+  missingFilePaths: string[];
+  sortable?: boolean;
+  showRenderInlineCheckbox?: boolean;
+  onEditFileName: (index: number, value: string) => void;
+  onDeleteFile: (indexToDelete: number) => void;
+  onMovedFile: (fromIndex: number, toIndex: number) => void;
+  onToggleRenderInline: (index: number) => void;
+  usePortal?: boolean;
+  messages: FileListMessages;
+}
+
+interface State {
+  editFileIndex: number;
+  draggingIndex: number;
+  deleteIndex: number;
+}
+
+class FileListEditor extends Component<Props, State> {
+  filesWrapperRef: MutableRefObject<HTMLUListElement | null>;
+  initialPosition: number;
+  mouseMovement: number;
+  DraggingFile: HTMLLIElement | undefined;
+  constructor(props: Props) {
     super(props);
     this.state = {
       editFileIndex: -1,
       draggingIndex: -1,
       deleteIndex: -1,
     };
-    this.filesWrapperRef = React.createRef();
+    this.mouseMovement = 0;
+    this.initialPosition = -1;
+    this.filesWrapperRef = createRef();
     this.exitEditFileName = this.exitEditFileName.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.onDragging = this.onDragging.bind(this);
     this.executeDeleteFile = this.executeDeleteFile.bind(this);
   }
 
-  deleteFile(deleteIndex) {
+  deleteFile(deleteIndex: number) {
     this.setState({
       deleteIndex,
     });
@@ -128,7 +180,7 @@ class FileListEditor extends Component {
     });
   }
 
-  editFile(e, editFileIndex) {
+  editFile(e: ReactMouseEvent<HTMLButtonElement>, editFileIndex: number) {
     e.preventDefault();
     e.stopPropagation();
     this.setState({
@@ -142,8 +194,9 @@ class FileListEditor extends Component {
     });
   }
 
-  updateTransforms(dragIndex) {
-    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node, index) => {
+  updateTransforms(dragIndex: number) {
+    const childNodes = this.filesWrapperRef.current?.childNodes as NodeListOf<HTMLLIElement> | undefined;
+    childNodes?.forEach((node, index) => {
       if (index !== this.initialPosition) {
         const value = index >= dragIndex ? FILE_HEIGHT : 0;
         node.style.transform = `translateY(${value}px)`;
@@ -151,19 +204,23 @@ class FileListEditor extends Component {
     });
   }
 
-  onDragStart(e, dragIndex) {
+  onDragStart(e: ReactMouseEvent<HTMLButtonElement>, dragIndex: number) {
     e.preventDefault();
     this.mouseMovement = -FILE_HEIGHT + dragIndex * FILE_HEIGHT;
     this.initialPosition = dragIndex;
     this.updateTransforms(dragIndex);
 
-    this.DraggingFile = this.filesWrapperRef.current.childNodes[dragIndex];
-    this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
-    this.DraggingFile.style.position = 'absolute';
-    this.DraggingFile.style.top = 0;
-    this.DraggingFile.style.zIndex = 9999;
-    this.DraggingFile.style.boxShadow = shadows.levitate1;
-    this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
+    const childNodes = this.filesWrapperRef.current?.childNodes as NodeListOf<HTMLLIElement> | undefined;
+
+    this.DraggingFile = childNodes?.[dragIndex];
+    if (this.DraggingFile) {
+      this.DraggingFile.style.width = `${this.DraggingFile.getBoundingClientRect().width}px`;
+      this.DraggingFile.style.position = 'absolute';
+      this.DraggingFile.style.top = '0';
+      this.DraggingFile.style.zIndex = '9999';
+      this.DraggingFile.style.boxShadow = shadows.levitate1;
+      this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
+    }
 
     this.setState(
       {
@@ -171,10 +228,12 @@ class FileListEditor extends Component {
       },
       () => {
         // Add transitions
-        Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node) => {
+        childNodes?.forEach((node) => {
           node.style.transition = 'transform 100ms ease';
         });
-        this.DraggingFile.style.transition = 'box-shadow 100ms ease';
+        if (this.DraggingFile) {
+          this.DraggingFile.style.transition = 'box-shadow 100ms ease';
+        }
       },
     );
 
@@ -185,6 +244,7 @@ class FileListEditor extends Component {
   onDragEnd() {
     window.removeEventListener('mousemove', this.onDragging);
     window.removeEventListener('mouseup', this.onDragEnd);
+    const childNodes = this.filesWrapperRef.current?.childNodes as NodeListOf<HTMLLIElement> | undefined;
 
     if (this.state.draggingIndex !== -1) {
       this.props.onMovedFile(this.initialPosition, this.state.draggingIndex);
@@ -194,27 +254,31 @@ class FileListEditor extends Component {
       draggingIndex: -1,
     });
 
-    Array.from(this.filesWrapperRef.current.childNodes.values()).forEach((node) => {
+    childNodes?.forEach((node) => {
       node.style.transition = 'none';
       node.style.transform = 'none';
     });
-
-    this.DraggingFile.style.width = 'auto';
-    this.DraggingFile.style.position = 'static';
-    this.DraggingFile.style.zIndex = 0;
-    this.DraggingFile.style.boxShadow = 'none';
+    if (this.DraggingFile) {
+      this.DraggingFile.style.width = 'auto';
+      this.DraggingFile.style.position = 'static';
+      this.DraggingFile.style.zIndex = '0';
+      this.DraggingFile.style.boxShadow = 'none';
+    }
   }
 
-  onDragging(e) {
+  onDragging(e: MouseEvent) {
     this.mouseMovement += e.movementY;
     const currentPosition = Math.max(Math.ceil((this.mouseMovement + FILE_HEIGHT / 2) / FILE_HEIGHT), 0);
     const addToPosition = this.initialPosition < currentPosition ? 1 : 0;
     const dragIndex = Math.min(this.props.files.length, Math.max(currentPosition, 0));
-    this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
+    if (this.DraggingFile) {
+      this.DraggingFile.style.transform = `translateY(${this.mouseMovement + FILE_HEIGHT}px)`;
+    }
     this.updateTransforms(dragIndex + addToPosition);
     this.setState((prevState) => {
       if (prevState.draggingIndex !== dragIndex) {
         return {
+          ...prevState,
           draggingIndex: dragIndex,
         };
       }
@@ -258,11 +322,11 @@ class FileListEditor extends Component {
                 type="text"
                 placeholder={messages.placeholder}
                 onChange={(e) => {
-                  onEditFileName(index, e.target.value);
+                  onEditFileName(index, e.currentTarget.value);
                 }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
-                    e.target.blur();
+                    e.currentTarget.blur();
                   }
                 }}
                 onBlur={this.exitEditFileName}
@@ -274,7 +338,7 @@ class FileListEditor extends Component {
                     checked={file.display === 'block'}
                     value=""
                     id={index}
-                    onChange={(i) => onToggleRenderInline(i)}
+                    onChange={(i: number) => onToggleRenderInline(i)}
                   />
                 </Tooltip>
               )}
@@ -319,23 +383,5 @@ class FileListEditor extends Component {
     );
   }
 }
-
-FileListEditor.propTypes = {
-  files: PropTypes.arrayOf(
-    PropTypes.shape({
-      path: PropTypes.string,
-      title: PropTypes.string,
-      type: PropTypes.string,
-    }),
-  ),
-  missingFilePaths: PropTypes.arrayOf(PropTypes.string),
-  sortable: PropTypes.bool,
-  showRenderInlineCheckbox: PropTypes.bool,
-  onEditFileName: PropTypes.func.isRequired,
-  onDeleteFile: PropTypes.func.isRequired,
-  onMovedFile: PropTypes.func.isRequired,
-  onToggleRenderInline: PropTypes.func,
-  usePortal: PropTypes.bool,
-};
 
 export default FileListEditor;

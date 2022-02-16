@@ -8,3 +8,4 @@
 
 export { Carousel } from './Carousel';
 export { CarouselAutosize } from './CarouselAutosize';
+export type { CalculatedProps as CalculatedCarouselProps } from './Carousel';

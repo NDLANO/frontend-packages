@@ -7,11 +7,9 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { useTranslation } from 'react-i18next';
 import NoContentBox from '../NoContentBox';
-import { TopicShape } from '../shapes';
 import { TopicIntroduction } from './TopicIntroduction';
 
 const topicClasses = new BEMHelper({
@@ -20,14 +18,42 @@ const topicClasses = new BEMHelper({
   outputIsString: true,
 });
 
+export interface Shortcut {
+  id: string | number;
+  tooltip: string;
+  contentType: string;
+  url: string;
+  count: number;
+}
+export interface Topic {
+  name: string;
+  id: string;
+  additional?: boolean;
+  shortcuts?: Shortcut[];
+  introduction: string;
+  metaImage?: {
+    url?: string;
+    alt?: string;
+  };
+}
+
+interface Props {
+  toTopic: (id: string) => string;
+  topics: Topic[];
+  twoColumns?: boolean;
+  shortcutAlwaysExpanded?: boolean;
+  showAdditionalCores?: boolean;
+  toggleAdditionalCores?: () => void;
+}
+
 const TopicIntroductionList = ({
   topics,
-  twoColumns,
-  shortcutAlwaysExpanded,
-  showAdditionalCores,
+  twoColumns = false,
+  shortcutAlwaysExpanded = false,
+  showAdditionalCores = false,
   toggleAdditionalCores,
   ...rest
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const renderAdditionalTopicsTrigger =
     !showAdditionalCores &&
@@ -47,11 +73,6 @@ const TopicIntroductionList = ({
             additional={additional}
             showAdditionalCores={showAdditionalCores}
             shortcutAlwaysExpanded={shortcutAlwaysExpanded}
-            messages={{
-              shortcutButtonText: t('resource.label'),
-              tooltipAdditionalTopic: t('resource.tooltipAdditionalTopic'),
-              tooltipCoreTopic: t('resource.tooltipCoreTopic'),
-            }}
             id={`${topic.id}_${index}`}
           />
         );
@@ -67,21 +88,6 @@ const TopicIntroductionList = ({
       )}
     </ul>
   );
-};
-
-TopicIntroductionList.propTypes = {
-  toTopic: PropTypes.func.isRequired,
-  topics: PropTypes.arrayOf(TopicShape).isRequired,
-  twoColumns: PropTypes.bool,
-  shortcutAlwaysExpanded: PropTypes.bool,
-  showAdditionalCores: PropTypes.bool,
-  toggleAdditionalCores: PropTypes.func.isRequired,
-};
-
-TopicIntroductionList.defaultProps = {
-  twoColumns: false,
-  shortcutAlwaysExpanded: false,
-  showAdditionalCores: false,
 };
 
 export default TopicIntroductionList;

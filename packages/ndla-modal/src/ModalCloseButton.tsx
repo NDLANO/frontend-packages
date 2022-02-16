@@ -7,19 +7,34 @@
  */
 
 import React, { ReactNode } from 'react';
-//@ts-ignore
-import Button from '@ndla/button';
+import styled from '@emotion/styled';
+
+import { useTranslation } from 'react-i18next';
+import { Cross } from '@ndla/icons/action';
 
 interface Props {
-  title: ReactNode;
+  title?: ReactNode;
   onClick: () => void;
   className?: string;
 }
 
-const ModalClose = ({ title, onClick, className = '' }: Props) => (
-  <Button data-cy="close-modal-button" onClick={onClick} link className={className}>
-    {title}
-  </Button>
-);
+const CloseBut = styled.button`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  color: #20588f;
+  &hover {
+    color: #444;
+  }
+`;
+
+const ModalClose = ({ title, onClick, className = '' }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <CloseBut onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('lukk')}>
+      <Cross style={{ width: '24px', height: '24px' }} />
+    </CloseBut>
+  );
+};
 
 export default ModalClose;

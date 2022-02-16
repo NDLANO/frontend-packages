@@ -577,7 +577,7 @@ const messages = {
         heading: 'Filter',
       },
       alphabet: {
-        letterFilter: 'Hvis innhald på (bokstaven) {{letter}}.',
+        letterFilter: 'Vis innhald på (bokstaven) {{letter}}.',
       },
     },
     relatedLinks: {

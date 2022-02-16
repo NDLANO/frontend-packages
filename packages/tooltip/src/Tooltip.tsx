@@ -61,6 +61,7 @@ const Fade = styled.div<FadeProps>`
 `;
 
 interface Props {
+  id?: string;
   children: ReactNode;
   tooltip: string;
   delay?: number;

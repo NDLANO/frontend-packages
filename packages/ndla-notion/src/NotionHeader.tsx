@@ -9,8 +9,7 @@
 import React, { MouseEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts, misc } from '@ndla/core';
-
-import { Cross } from '@ndla/icons/action';
+import { CloseButton } from '@ndla/ui';
 
 interface NotionHeaderWrapperProps {
   hasChildren?: boolean;
@@ -74,15 +73,7 @@ const NotionHeader = ({ title, subTitle, onClose, children }: NotionHeaderProps)
     <NotionHeaderWrapper hasChildren={!!children}>
       {notionTitle(title, subTitle)}
       {children}
-      {onClose ? (
-        <button type="button" onClick={onClose}>
-          <Cross style={{ width: '24px', height: '24px' }} />
-        </button>
-      ) : (
-        <button type="button" data-notion-close>
-          <Cross style={{ width: '24px', height: '24px' }} />
-        </button>
-      )}
+      {onClose ? <CloseButton onClick={onClose} /> : <CloseButton />}
     </NotionHeaderWrapper>
   );
 };

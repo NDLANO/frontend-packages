@@ -128,6 +128,11 @@ const Link = styled.a`
     box-shadow: none;
   }
 `;
+const CloseButtonWrapper = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 1px;
+`;
 
 type LinkProps = {
   href?: string;
@@ -157,7 +162,11 @@ export const MessageBox = ({ type, sticky = false, onClose, children, links, t }
           </IconWrapper>
           <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>
-        {onClose && <CloseButton onClick={onCloseMessageBox} color="#444444" />}
+        {onClose && (
+          <CloseButtonWrapper>
+            <CloseButton onClick={onCloseMessageBox} />
+          </CloseButtonWrapper>
+        )}
       </Wrapper>
 
       {links && (

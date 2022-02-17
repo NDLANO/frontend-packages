@@ -32,7 +32,7 @@ const ModalClose = ({ title, onClick, className = '' }: Props) => {
   const { t } = useTranslation();
   return (
     <CloseBut onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('lukk')}>
-      <Cross style={{ width: '24px', height: '24px' }} />
+      <Cross style={{ width: '24px', height: '24px' }} title={title?.toString()} />
     </CloseBut>
   );
 };

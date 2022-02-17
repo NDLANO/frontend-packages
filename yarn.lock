@@ -4770,10 +4770,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-beautiful-dnd@^10.1.5":
-  version "10.1.5"
-  resolved "https://registry.yarnpkg.com/@types/react-beautiful-dnd/-/react-beautiful-dnd-10.1.5.tgz#eb720fbde0563d37d71c6155adb08dc67676a9e7"
-  integrity sha512-JD/GR5Y3wdzdD+qAgjWGwoydZrCPX9vSgWrq4RHtnNinS6zgCMnWI1Ch/H3jB3uucORI1eePQ280obfWn1CoFA==
+"@types/react-beautiful-dnd@^13.1.2":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-beautiful-dnd/-/react-beautiful-dnd-13.1.2.tgz#510405abb09f493afdfd898bf83995dc6385c130"
+  integrity sha512-+OvPkB8CdE/bGdXKyIhc/Lm2U7UAYCCJgsqmopFmh9gbAudmslkI8eOrPDjg4JhwSE6wytz4a3/wRjKtovHVJg==
   dependencies:
     "@types/react" "*"
 

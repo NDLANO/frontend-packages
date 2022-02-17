@@ -28,7 +28,7 @@
     "@ndla/core": "^0.7.3",
     "@ndla/icons": "^1.4.1",
     "@ndla/modal": "^1.1.20",
-    "@types/react-beautiful-dnd": "^10.1.5",
+    "@types/react-beautiful-dnd": "^13.1.2",
     "focus-trap-react": "^6.0.0",
     "prismjs": "^1.22.0",
     "react-beautiful-dnd": "^13.1.0",

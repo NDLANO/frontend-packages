@@ -474,6 +474,7 @@ const messages = {
     embed: 'Embed',
     embedCopied: 'Copied embed code!',
     copyText: {
+      by: 'by',
       internet: '[Internet]. ',
       noTitle: 'No title',
       downloadedFrom: 'Downloaded from: ',

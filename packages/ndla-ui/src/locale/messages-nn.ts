@@ -396,6 +396,7 @@ const messages = {
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',
     copyText: {
+      by: 'av',
       internet: '[Internett]. ',
       noTitle: 'Utan tittel',
       downloadedFrom: 'Henta frå: ',

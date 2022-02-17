@@ -1,4 +1,4 @@
-import { Contributor } from './contributorTypes';
+import { Contributor, CopyrightType } from './contributorTypes';
 
 export const getLicenseCredits = (copyright?: {
   creators?: Contributor[];
@@ -14,7 +14,7 @@ export const getLicenseCredits = (copyright?: {
 
 type TranslationFunction = (id: string) => string;
 
-const makeCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
+const _oldMakeCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
   if (!roles?.length) {
     return '';
   }
@@ -26,6 +26,21 @@ const makeCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
       })
       .join(', ') + '. '
   );
+};
+
+const creditString = (roles: Contributor[], t: TranslationFunction) => {
+  if (!roles?.length) {
+    return '';
+  }
+  const credits = roles
+    .map((creator) => {
+      const [lastName, ...names] = creator.name.split(' ').reverse();
+      const initials = names.length ? ', ' + names.map((name) => name[0] + '.') : '.';
+      return lastName + initials;
+    })
+    .join(', ');
+
+  return `${t('license.copyText.by')} ${credits} `;
 };
 
 const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
@@ -44,6 +59,24 @@ const makeDateString = () => {
   return `${dd}.${mm}.${yyyy}`;
 };
 
+export const inlineFigureApa7CopyString = (
+  title: string | undefined,
+  src: string | undefined,
+  path: string | undefined,
+  copyright: Partial<CopyrightType> | undefined,
+  ndlaFrontendDomain: string | undefined,
+  t: TranslationFunction,
+): string => {
+  const credits = getLicenseCredits(copyright);
+  const creators = creditString([...credits.creators, ...credits.processors, ...credits.rightsholders], t);
+  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
+  const url = `(${path ? ndlaFrontendDomain + path : src}). `;
+  const license = copyright?.license?.license ? copyright.license.license + '.' : '';
+
+  // Ex: Tittel, <år>, av Nordmann, O. NDLA. (https://ndla.no/urn:resource:123). CC-BY-SA-4.0.
+  return titleString + creators + 'NDLA. ' + url + license;
+};
+
 export const getCopyString = (
   title: string | undefined,
   src: string | undefined,
@@ -59,9 +92,9 @@ export const getCopyString = (
   t: TranslationFunction,
 ): string => {
   const credits = getLicenseCredits(copyright);
-  const creators = makeCreditCopyString(credits.creators, t);
-  const processors = makeCreditCopyString(credits.processors, t);
-  const rightsholders = makeCreditCopyString(credits.rightsholders, t);
+  const creators = _oldMakeCreditCopyString(credits.creators, t);
+  const processors = _oldMakeCreditCopyString(credits.processors, t);
+  const rightsholders = _oldMakeCreditCopyString(credits.rightsholders, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = (path ? ndlaFrontendDomain + path : src) + ' ';
   const date = makeDateString();

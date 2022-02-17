@@ -217,7 +217,7 @@ type Props = {
   suggestionUrl?: string;
 };
 
-const SearchResultSleeve: React.FC<Props> = ({
+const SearchResultSleeve = ({
   result,
   allResultUrl,
   resourceToLinkProps,
@@ -229,7 +229,7 @@ const SearchResultSleeve: React.FC<Props> = ({
   frontpage,
   suggestion,
   suggestionUrl,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const contentRef = useRef<HTMLDivElement>(null);
   const searchAllRef = useRef<HTMLDivElement>(null);

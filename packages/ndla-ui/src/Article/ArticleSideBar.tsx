@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { MouseEvent, ReactNode, RefObject, useEffect, useState } from 'react';
 // @ts-ignore
 import Button, { CopyButton } from '@ndla/button';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
 import { fonts } from '@ndla/core';
-// @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
@@ -47,10 +46,10 @@ const LinkText = styled.div`
 
 type Props = {
   linkToResources?: string;
-  onLinkToResourcesClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onLinkToResourcesClick?: (e: MouseEvent<HTMLElement>) => void;
   copyPageUrlLink?: string;
-  licenseBox?: React.ReactNode;
-  resourcesRef?: React.RefObject<HTMLElement>;
+  licenseBox?: ReactNode;
+  resourcesRef?: RefObject<HTMLElement>;
 };
 const ArticleSideBar = ({
   linkToResources,
@@ -66,8 +65,8 @@ const ArticleSideBar = ({
     }
   };
 
-  const [hide, setHide] = React.useState(Boolean(false));
-  React.useEffect(() => {
+  const [hide, setHide] = useState(Boolean(false));
+  useEffect(() => {
     window.onscroll = function () {
       if (!resourcesRef?.current) {
         return;
@@ -119,7 +118,7 @@ const ArticleSideBar = ({
           <LinkText>
             <SafeLink
               to={linkToResources}
-              onClick={(e: React.MouseEvent<HTMLElement>) => onLinkToResourcesClick && onLinkToResourcesClick(e)}>
+              onClick={(e: MouseEvent<HTMLElement>) => onLinkToResourcesClick && onLinkToResourcesClick(e)}>
               Hopp til fagressursene
             </SafeLink>
           </LinkText>

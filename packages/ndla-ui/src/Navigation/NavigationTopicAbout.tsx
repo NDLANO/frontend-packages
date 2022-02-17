@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
 // @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 
@@ -114,7 +113,7 @@ type Props = {
   isAdditionalTopic?: boolean;
   invertedStyle?: boolean;
   renderMarkdown: (text: string) => string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const NavigationTopicAbout = ({

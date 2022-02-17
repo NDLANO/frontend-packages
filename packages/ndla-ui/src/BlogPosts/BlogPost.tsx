@@ -10,9 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { LinkProps } from 'react-router-dom';
 import { spacing, colors, fonts, breakpoints, mq, misc, spacingUnit } from '@ndla/core';
-// @ts-ignore
 import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
-// @ts-ignore
 import { Launch as LaunchIcon } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 
@@ -164,7 +162,7 @@ type Props = {
   lightLicense?: boolean;
 };
 
-export const BlogPost: React.FunctionComponent<Props> = ({
+export const BlogPost = ({
   text,
   externalLink,
   linkText,
@@ -174,7 +172,7 @@ export const BlogPost: React.FunctionComponent<Props> = ({
   locale,
   oneColumn,
   lightLicense = true,
-}) => {
+}: Props) => {
   const { rights } = getLicenseByAbbreviation(license || '', 'nb');
   return (
     <>

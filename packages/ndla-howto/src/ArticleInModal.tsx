@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-//@ts-ignore
 import Modal, { ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';

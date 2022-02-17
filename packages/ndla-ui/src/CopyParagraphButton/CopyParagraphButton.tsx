@@ -6,12 +6,11 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, MouseEvent } from 'react';
 
 import styled from '@emotion/styled';
 import { Link } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { copyTextToClipboard } from '@ndla/util';
 
@@ -73,7 +72,7 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
 
   if (!title) return null;
 
-  const onCopyClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+  const onCopyClick = (event: MouseEvent<HTMLButtonElement>): void => {
     setHasCopied(true);
     const copyId = event.currentTarget.getAttribute('data-title');
     const { location } = window;

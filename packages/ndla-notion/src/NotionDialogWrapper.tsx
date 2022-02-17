@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-//@ts-ignore
 import Modal from '@ndla/modal';
 import NotionHeader from './NotionHeader';
 import NotionBody from './NotionBody';

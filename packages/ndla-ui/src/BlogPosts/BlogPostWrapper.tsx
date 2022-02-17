@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, mq, breakpoints } from '@ndla/core';
 
@@ -38,11 +38,11 @@ const StyledGrid = styled.div<StyledGridProps>`
 `;
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   oneColumn?: boolean;
 }
 
-export const BlogPostWrapper: React.FunctionComponent<Props> = ({ children, oneColumn }) => (
+export const BlogPostWrapper = ({ children, oneColumn }: Props) => (
   <StyledGrid oneColumn={oneColumn}>{children}</StyledGrid>
 );
 

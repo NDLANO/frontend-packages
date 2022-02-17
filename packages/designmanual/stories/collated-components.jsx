@@ -52,8 +52,8 @@ import ComponentInfo from './ComponentInfo';
 import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
-import Frontpage from './pages/FrontpageExample';
 import FooterExample from './molecules/footers';
+import MessageBox from './molecules/MessageBoxExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -636,16 +636,16 @@ storiesOf('Sammensatte moduler', module)
     </PageContainer>
   ))
 
-  .add('Meldingsboks', () => (
+  .add('Meldings- og infoboks', () => (
     <PageContainer>
-      <StoryIntro title="Meldingsboks">
+      <StoryIntro title="Meldings- og infoboks">
         <p>
-          Statusmelding som kan være sticky. Kan brukes på hele siden, og dersom den er sticky så vises den i toppen
-          dersom man scroller forbi.
+          Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og
+          forteller brukeren om at det foregår noe utenom det vanlige.
         </p>
       </StoryIntro>
       <Content>
-        <Frontpage showMessageBox />
+        <MessageBox />
       </Content>
       <FooterExample />
     </PageContainer>

@@ -313,6 +313,20 @@ const messages = {
       h5p: 'Interactive',
     },
   },
+  messageBoxInfo: {
+    outdatedCoursePlan:
+      'This course is not updated to the current curriculum. Follow this link to find the updated version of the course: ',
+    updateBrowser:
+      'Your browser is outdated. Update it, or find a safe and updated browser on https://browsehappy.com.',
+    noContent: 'We are sorry, but we do not yet offer any program courses.',
+    feide: 'This resource is accessible only to teachers who are logged in with Feide.',
+    resources:
+      'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
+    beta: 'This course is in beta.',
+    outdatedSubject: 'This topic is part of a course that is not updated to the current curriculum.',
+    newVersion:
+      'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
+  },
   article: {
     edition: 'Edition',
     publisher: 'Publisher',
@@ -359,7 +373,7 @@ const messages = {
     competenceTopicSearchText: 'Find resources',
     competenceSubjectSearchText: 'Go to topic page',
     competenceGoalClose: 'Close',
-    competenceGoalTitle: 'The goal is for the student to be able to:',
+    competenceGoalTitle: 'The pupil is expected to be able to:',
     competenceTabLK06label: 'Competence goal (LK06)',
     competenceTabLK20label: 'Competence goal (LK20)',
     competenceTabCorelabel: 'Core element',
@@ -700,18 +714,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
       text: 'Aktiviser elevane med digitale verktøy',
       externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -844,6 +858,7 @@ const messages = {
     loggedInAsButton: 'You are logged in as {{role}}',
     role: {
       employee: 'Teacher',
+      staff: 'Staff',
       student: 'Student',
     },
     buttonLogIn: 'Log in with Feide',

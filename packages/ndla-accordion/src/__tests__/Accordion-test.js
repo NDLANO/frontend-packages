@@ -6,8 +6,8 @@
  *
  */
 
-import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import React, { Fragment } from 'react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '../';
 
@@ -16,7 +16,7 @@ const AccordionExample = (props) => (
     {({ getPanelProps, handleItemClick }) => (
       <AccordionWrapper>
         {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-          <React.Fragment key={item}>
+          <Fragment key={item}>
             <AccordionBar
               panelId={`panel-${index}`}
               title={`Panel ${index}`}
@@ -29,7 +29,7 @@ const AccordionExample = (props) => (
                 <p>{item}</p>
               </div>
             </AccordionPanel>
-          </React.Fragment>
+          </Fragment>
         ))}
       </AccordionWrapper>
     )}

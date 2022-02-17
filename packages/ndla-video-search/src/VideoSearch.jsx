@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import Pager from '@ndla/pager';
@@ -21,7 +21,7 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-class VideoSearch extends React.Component {
+class VideoSearch extends Component {
   constructor() {
     super();
     this.state = {

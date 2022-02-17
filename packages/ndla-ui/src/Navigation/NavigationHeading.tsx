@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { breakpoints, fonts, mq } from '@ndla/core';
@@ -43,7 +43,7 @@ const StyledSubText = styled.span`
 
 type Props = {
   subHeading?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   invertedStyle?: boolean;
 };
 

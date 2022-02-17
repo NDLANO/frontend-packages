@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const LogIn = (props: Props) => (
-  <Icon title="LogIn" viewBox="0 0 24 24" data-license="CC-BY 4.0" data-source="Labs AS" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="CC-BY 4.0" data-source="Labs AS" {...props}>
     <g>
       <path
         d="M19 3H13C12.45 3 12 3.45 12 4C12 4.55 12.45 5 13 5H19V19H13C12.45 19 12 19.45 12 20C12 20.55 12.45 21 13 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"

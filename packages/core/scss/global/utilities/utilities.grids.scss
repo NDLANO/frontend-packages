@@ -7,7 +7,7 @@ $denominator: auto;
   $width: ($numerator / $denominator) * 100%;
   position: relative !important;
   right: auto !important;
-  left: -($denominator - $numerator - $expand/2) / $denominator * 100% !important;
+  left: -($denominator - $numerator - $expand/2) / $denominator * 100%;
   width: $width + $unit !important;
   padding-left: $spacing;
   padding-right: $spacing;
@@ -26,13 +26,13 @@ $extra-margin: 10px;
     @include mq(tablet) {
       float: left;
       clear: left;
-      width: ($cols-tablet/$maxcols)*100% !important;
+      width: ($cols-tablet/$maxcols) * 100% !important;
       left: auto !important;
       padding: 0;
       margin: $spacing ($spacing + $extra-margin) 35px 0;
     }
     @include mq(desktop) {
-      width: ($cols/$maxcols)*100% !important;
+      width: ($cols/$maxcols) * 100% !important;
       margin: 0 ($spacing + $extra-margin) 35px -25%;
     }
   }
@@ -40,13 +40,13 @@ $extra-margin: 10px;
     @include mq(tablet) {
       float: right;
       clear: right;
-      width: ($cols-tablet/$maxcols)*100% !important;
+      width: ($cols-tablet/$maxcols) * 100% !important;
       left: auto !important;
       padding: 0;
       margin: 0 0 35px ($spacing + $extra-margin);
     }
     @include mq(desktop) {
-      width: ($cols/$maxcols)*100% !important;
+      width: ($cols/$maxcols) * 100% !important;
       margin: 0 -25% 35px ($spacing + $extra-margin);
     }
   }

@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import defined from 'defined';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
 export interface ImageCrop {
@@ -67,8 +66,8 @@ const Image = ({
   expandButton,
   ...rest
 }: Props) => {
-  const srcSet = defined(rest.srcSet, getSrcSet(src, crop, focalPoint));
-  const fallbackWidth = defined(rest.fallbackWidth, 1024);
+  const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
+  const fallbackWidth = rest.fallbackWidth ?? 1024;
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
 
   if (contentType && contentType === 'image/gif') {

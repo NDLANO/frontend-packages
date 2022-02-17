@@ -121,8 +121,9 @@ interface FigureCaptionProps {
 
 const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {
   const typeClass = type === 'full-column' ? 'c-figure--full-column' : `u-float-${type}`;
+  const right = ['small-right', 'xsmall-right'].includes(type);
   return (
-    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe }, typeClass)} {...rest}>
+    <figure data-sizetype={type} {...classes('', { resize: !!resizeIframe, right }, typeClass)} {...rest}>
       {isFunction(children) ? children({ typeClass }) : children}
     </figure>
   );
@@ -132,10 +133,20 @@ const isFunction = (children: Function | ReactNode): children is Function => {
   return isFunctionHelper(children);
 };
 
+export type FigureType =
+  | 'full'
+  | 'full-column'
+  | 'left'
+  | 'small-left'
+  | 'right'
+  | 'small-right'
+  | 'xsmall-right'
+  | 'xsmall-left';
+
 interface Props {
   id?: string;
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
-  type?: 'full' | 'full-column' | 'left' | 'small-left' | 'right' | 'small-right' | 'xsmall-right' | 'xsmall-left';
+  type?: FigureType;
   resizeIframe?: boolean;
   noFigcaption?: boolean;
 }

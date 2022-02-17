@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const Subscript = (props: Props) => (
-  <Icon
-    title="Subscript"
-    viewBox="0 0 24 24"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <g>
         <rect fill="none" height="24" width="24" />

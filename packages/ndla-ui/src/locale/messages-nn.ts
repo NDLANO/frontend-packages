@@ -313,6 +313,20 @@ const messages = {
       h5p: 'Interaktiv',
     },
   },
+  messageBoxInfo: {
+    outdatedCoursePlan:
+      'Dette faget følgjer ein utgått læreplan. Gå til faget som er oppdatert etter gjeldande læreplan: ',
+    updateBrowser:
+      'Nettlesaren din er utdatert. Oppdater han, eller finn ein trygg og oppdatert nettlesar på https://browsehappy.com. ',
+    noContent: 'Vi har dessverre ikkje nokon programfag enno.',
+    feide: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
+    resources:
+      'Dette er ikkje eit komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan vere nyttig for deg.',
+    beta: 'Dette faget er i betaversjon.',
+    outdatedSubject: 'Dette emnet høyrer til eit fag som ikkje er oppdatert etter gjeldande læreplan.',
+    newVersion:
+      'Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ',
+  },
   article: {
     lastUpdated: 'Sist oppdatert',
     edition: 'Utgåve',
@@ -359,7 +373,7 @@ const messages = {
     competenceTopicSearchText: 'Søk ressursar for tema',
     competenceSubjectSearchText: 'Gå til fagsiden',
     competenceGoalClose: 'Lukk',
-    competenceGoalTitle: 'Målet er at eleven skal kunna:',
+    competenceGoalTitle: 'Målet er at eleven skal kunne:',
     competenceTabLK06label: 'Kompetansemål (LK06)',
     competenceTabLK20label: 'Kompetansemål (LK20)',
     competenceTabCorelabel: 'Kjerneelement',
@@ -700,18 +714,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Kva skjer med fagfornyinga på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
       text: 'Aktiviser elevane med digitale verktøy',
       externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -843,7 +857,8 @@ const messages = {
     loggedInAs: 'Du er pålogga som {{role}}.',
     loggedInAsButton: 'Du er pålogga som {{role}}',
     role: {
-      employee: 'Lærer',
+      employee: 'Lærar',
+      staff: 'Tilsett',
       student: 'Elev',
     },
     buttonLogIn: 'Logg inn med Feide',

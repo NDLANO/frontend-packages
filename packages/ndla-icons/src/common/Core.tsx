@@ -15,9 +15,8 @@ interface Props extends IconProps {
 }
 
 const Core = (props: Props) => (
-  <Icon title="Core" viewBox="0 0 23 23" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
+  <Icon viewBox="0 0 23 23" data-license="CC-BY 4.0" data-source="Keyteq" {...props}>
     <g>
-      <title>Kjernestoff</title>
       <g stroke="none" fill="none" strokeWidth="1" fillRule="evenodd">
         <circle stroke="#20588F" fill="#20588F" cx="11.5" cy="11.5" r="10.5" fillRule="nonzero" />
         <polygon

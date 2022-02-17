@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { FormEvent } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
@@ -75,7 +75,7 @@ type Props = {
   searchPhrase?: string;
   searchPhraseSuggestion?: string;
   searchPhraseSuggestionOnClick?: () => void;
-  searchValue: string;
+  searchValue?: string;
   filters?: PopupFilterProps;
   activeFilters?: {
     filters: FilterProps[];
@@ -83,7 +83,7 @@ type Props = {
   };
   competenceGoals?: CompetenceGoalsItemType[];
   onSearchValueChange: (value: string) => void;
-  onSubmit: () => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   noResults?: boolean;
 };
 

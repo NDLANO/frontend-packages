@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const DetailSearch = (props: Props) => (
-  <Icon title="DetailSearch" viewBox="0 0 55.9 47" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
+  <Icon viewBox="0 0 55.9 47" data-license="CC-BY 4.0" data-source="Knowit" {...props}>
     <g>
       <polygon points="27.7 17.7 20 17.9 19.8 10.2 19.8 9.9 17.8 9.9 17.8 10.2 18 17.9 10.3 18.1 10 18.1 10 20.1 10.3 20.1 18 19.9 18.2 27.6 18.2 27.9 20.2 27.9 20.2 27.6 20 19.9 27.7 19.7 28 19.7 28 17.7 27.7 17.7" />
       <path

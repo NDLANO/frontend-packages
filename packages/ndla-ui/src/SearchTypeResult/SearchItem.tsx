@@ -6,24 +6,19 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
-// @ts-ignore
 import { ChevronRight, Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 // @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import Modal, { ModalCloseButton } from '@ndla/modal';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ContentType } from './SearchTypeResult';
-// @ts-ignore
 import constants from '../model';
-
-// @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 
 const { contentTypes } = constants;
@@ -203,15 +198,14 @@ type context = {
 };
 
 export type SearchItemType = {
-  id: string;
+  id: string | number;
   title: string;
   url: string;
   ingress: string;
-  contexts: context[];
-  image: React.ReactNode | null;
+  contexts?: context[];
   img?: { url: string; alt: string };
   labels?: string[];
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 type Props = {
   item: SearchItemType;
@@ -220,9 +214,9 @@ type Props = {
 const SearchItem = ({ item, type }: Props) => {
   const { t } = useTranslation();
   const { title, url, ingress, contexts, img = null, labels = [] } = item;
-  const mainContext = contexts[0];
+  const mainContext = contexts?.[0];
 
-  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: React.ReactNode }) => (
+  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: ReactNode }) => (
     <BreadcrumbPath>
       {breadcrumb.map((breadcrumbItem: string, i: number) => {
         return (
@@ -268,7 +262,7 @@ const SearchItem = ({ item, type }: Props) => {
           {item.children}
           <ItemText>{parse(ingress)}</ItemText>
           {mainContext && <Breadcrumb breadcrumb={mainContext.breadcrumb} />}
-          {contexts.length > 1 && (
+          {contexts && contexts.length > 1 && (
             <ContextsWrapper>
               <Modal
                 activateButton={

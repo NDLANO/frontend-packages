@@ -6,10 +6,11 @@
  *
  */
 
-import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef, MouseEventHandler } from 'react';
 import BEMHelper from 'react-bem-helper';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
+import styled from '@emotion/styled';
 
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
@@ -22,6 +23,7 @@ import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import { NotionProps } from '../Notion/Notion';
 import ArticleAccessMessage from './ArticleAccessMessage';
+import MessageBox from '../MessageBox/MessageBox';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -34,7 +36,7 @@ type ArticleWrapperProps = {
   children: ReactNode;
 };
 
-export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
+export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
   <article id={id} {...classes(undefined, modifier)} ref={ref}>
     {children}
   </article>
@@ -89,7 +91,11 @@ export const ArticleIntroduction = ({
 
 type Messages = {
   label: string;
+  messageBox?: string;
 };
+const MSGboxWrapper = styled.div`
+  margin-bottom: 50px;
+`;
 
 type Props = {
   article: ArticleType;
@@ -99,6 +105,7 @@ type Props = {
   children: ReactNode;
   messages: Messages;
   locale: Locale;
+  messageBoxLinks?: [];
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
     | null;
@@ -108,7 +115,7 @@ type Props = {
   copyPageUrlLink?: string;
   printUrl?: string;
   notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
-  onReferenceClick?: React.MouseEventHandler;
+  onReferenceClick?: MouseEventHandler;
   accessMessage?: string;
 };
 
@@ -129,6 +136,7 @@ export const Article = ({
   licenseBox,
   modifier,
   messages,
+  messageBoxLinks,
   children,
   competenceGoals,
   competenceGoalTypes,
@@ -186,6 +194,14 @@ export const Article = ({
       <ArticleWrapper modifier={modifier} id={id} ref={articleRef}>
         <LayoutItem layout="center">
           {accessMessage && <ArticleAccessMessage message={accessMessage} />}
+
+          {messages.messageBox && (
+            <MSGboxWrapper>
+              <MessageBox links={messageBoxLinks} onClose>
+                {messages.messageBox}
+              </MessageBox>
+            </MSGboxWrapper>
+          )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
             <ArticleTitle icon={icon} label={messages.label}>
               {title}
@@ -208,6 +224,7 @@ export const Article = ({
           )}
           {getArticleContent(content, locale)}
         </LayoutItem>
+
         <LayoutItem layout="center">
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline

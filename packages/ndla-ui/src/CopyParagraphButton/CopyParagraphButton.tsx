@@ -6,18 +6,16 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, MouseEvent } from 'react';
 
 import styled from '@emotion/styled';
 import { Link } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { copyTextToClipboard } from '@ndla/util';
 
 const IconButton = styled.button`
-  float: left;
-  position: relative;
+  position: absolute;
   left: -3em;
   top: 0.1em;
   background: none;
@@ -33,23 +31,37 @@ const IconButton = styled.button`
 `;
 
 const ContainerDiv = styled.div`
+  position: relative;
   &:hover button {
     cursor: pointer;
     opacity: 0.5;
-  }
-
-  & h2 {
-    position: relative;
-    left: -2em;
   }
 `;
 
 interface Props {
   title?: string | null;
   content?: string | null;
+  hydrate?: boolean;
 }
 
-const CopyParagraphButton = ({ title, content }: Props) => {
+interface WrapperProps {
+  title: string;
+  hydrate?: boolean;
+  children: ReactNode;
+}
+
+const WrapperComponent = ({ title, hydrate, children }: WrapperProps) => {
+  if (hydrate) {
+    return <>{children}</>;
+  }
+  return (
+    <ContainerDiv data-header-copy-container data-title={title}>
+      {children}
+    </ContainerDiv>
+  );
+};
+
+const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
   const { t } = useTranslation();
   const [hasCopied, setHasCopied] = useState(false);
   useEffect(() => {
@@ -60,7 +72,7 @@ const CopyParagraphButton = ({ title, content }: Props) => {
 
   if (!title) return null;
 
-  const onCopyClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+  const onCopyClick = (event: MouseEvent<HTMLButtonElement>): void => {
     setHasCopied(true);
     const copyId = event.currentTarget.getAttribute('data-title');
     const { location } = window;
@@ -73,15 +85,16 @@ const CopyParagraphButton = ({ title, content }: Props) => {
 
   const sanitizedTitle = encodeURIComponent(title.replace(/ /g, '-'));
   const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
+
   return (
-    <ContainerDiv data-header-copy-container data-title={title}>
+    <WrapperComponent hydrate={hydrate} title={title}>
       <IconButton onClick={onCopyClick} data-title={sanitizedTitle}>
         <Tooltip tooltip={tooltip}>
           <Link title={''} />
         </Tooltip>
       </IconButton>
       <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
-    </ContainerDiv>
+    </WrapperComponent>
   );
 };
 

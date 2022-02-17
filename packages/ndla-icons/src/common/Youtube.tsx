@@ -15,12 +15,7 @@ interface Props extends IconProps {
 }
 
 const Youtube = (props: Props) => (
-  <Icon
-    title="Youtube"
-    viewBox="0 0 256 256"
-    data-license="Apache License 2.0"
-    data-source="Material Design"
-    {...props}>
+  <Icon viewBox="0 0 256 256" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
       <defs>
         <clipPath clipPathUnits="userSpaceOnUse">

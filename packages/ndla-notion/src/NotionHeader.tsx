@@ -6,12 +6,16 @@
  *
  */
 
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 
-const NotionHeaderWrapper = styled.div`
+import { Cross } from '@ndla/icons/action';
+
+interface NotionHeaderWrapperProps {
+  hasChildren?: boolean;
+}
+const NotionHeaderWrapper = styled.div<NotionHeaderWrapperProps>`
   margin: ${spacing.normal} ${spacing.normal} ${spacing.small};
   padding-bottom: ${spacing.small};
   display: flex;
@@ -20,7 +24,7 @@ const NotionHeaderWrapper = styled.div`
   border-bottom: 2px solid ${colors.brand.tertiary};
   h1 {
     margin: 0;
-    flex-grow: 1;
+    flex-grow: ${(p) => (p.hasChildren ? 0 : 1)};
     font-weight: ${fonts.weight.bold};
     ${fonts.sizes('22px', 1.2)};
     color: ${colors.text.primary};
@@ -56,6 +60,7 @@ interface NotionHeaderProps {
   title: string;
   subTitle?: string;
   onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
+  children?: ReactNode;
 }
 
 type NotionHeaderWithoutExitButtonProps = Omit<NotionHeaderProps, 'onClose'>;
@@ -64,18 +69,18 @@ export const NotionHeaderWithoutExitButton = ({ title, subTitle }: NotionHeaderW
   <NotionHeaderWrapper>{notionTitle(title, subTitle)}</NotionHeaderWrapper>
 );
 
-const NotionHeader = ({ title, subTitle, onClose }: NotionHeaderProps) => {
-  const { t } = useTranslation();
+const NotionHeader = ({ title, subTitle, onClose, children }: NotionHeaderProps) => {
   return (
-    <NotionHeaderWrapper>
+    <NotionHeaderWrapper hasChildren={!!children}>
       {notionTitle(title, subTitle)}
+      {children}
       {onClose ? (
         <button type="button" onClick={onClose}>
-          {t('notions.closeNotion')}
+          <Cross style={{ width: '24px', height: '24px' }} />
         </button>
       ) : (
         <button type="button" data-notion-close>
-          {t('notions.closeNotion')}
+          <Cross style={{ width: '24px', height: '24px' }} />
         </button>
       )}
     </NotionHeaderWrapper>

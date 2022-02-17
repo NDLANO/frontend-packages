@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { HTMLProps, ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { appearances, ButtonStyles, ButtonAppearance } from '@ndla/button';
 import SafeLink from './SafeLink';
@@ -18,14 +18,14 @@ const getStyles = (modifiers: Partial<StylesProps>) =>
     .map((key) => (modifiers[key] ? appearances[key] : undefined))
     .filter((appearance) => !!appearance);
 
-interface Props {
+interface Props extends HTMLProps<HTMLAnchorElement> {
   outline?: boolean;
   stripped?: boolean;
   link?: boolean;
   lighter?: boolean;
   inverted?: boolean;
   invertedOutline?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   to: string;
   className?: string;
   buttonSize?: 'normal' | 'medium' | 'large';
@@ -37,7 +37,7 @@ interface Props {
   greyLightest?: boolean;
 }
 
-const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchorElement>> = ({
+const SafeLinkButton = ({
   outline,
   stripped,
   link,
@@ -54,7 +54,7 @@ const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchor
   greyLighter,
   greyLightest,
   ...rest
-}) => {
+}: Props) => {
   const modifierStyles = getStyles({
     link,
     outline,

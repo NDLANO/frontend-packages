@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
 import { OneColumn } from '../Layout';
@@ -68,7 +67,7 @@ const StyledFooterText = styled.div`
   }
 `;
 
-const FooterPrivacy: React.FunctionComponent<FooterPrivacyProps> = ({ lang, label }) => (
+const FooterPrivacy = ({ lang, label }: FooterPrivacyProps) => (
   <StyledFooterText>
     <Modal activateButton={<StyledPrivacyButton type="button">{label}</StyledPrivacyButton>} size="fullscreen">
       {(onClose: () => void) => (

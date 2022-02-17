@@ -60,6 +60,8 @@ const Welcome = () => (
         <code>@import '~@ndla/ui/src/main';</code>
         <br />
         Osv.
+        <h3>Utkommentert funksjonalitet</h3>
+        <p>Utkommentert funksjonalitet kan finnes ved å søke på "Stored for later". </p>
       </StoryBody>
     </div>
   </PageContainer>

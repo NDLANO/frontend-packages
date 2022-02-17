@@ -120,6 +120,7 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor 
         <Button onClick={() => toggleSubjects(true)} lighter={!showSubjects} size="medium" borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
+
         {showBetaCursor && (
           <CursorPlaceholder>
             <CursorWrapper>

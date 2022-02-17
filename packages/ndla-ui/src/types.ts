@@ -6,6 +6,8 @@
  *
  */
 
+import { ReactNode } from 'react';
+
 const locales = ['nb', 'nn', 'en'] as const;
 export type Locale = typeof locales[number];
 
@@ -23,9 +25,9 @@ type ResourceTypes = {
 };
 
 export type Resource = {
-  id: string;
+  id: string | number;
   name: string;
-  contentUri: string;
+  contentUri?: string;
   path: string;
   primary?: boolean;
   rank?: number;
@@ -114,5 +116,5 @@ export type CompetenceGoalsItemType = {
 
 export type NotionMedia = {
   type: 'video' | 'other';
-  element: React.ReactNode;
+  element: ReactNode;
 };

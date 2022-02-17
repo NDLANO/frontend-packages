@@ -312,6 +312,20 @@ const messages = {
       h5p: 'Interaktiv',
     },
   },
+  messageBoxInfo: {
+    outdatedCoursePlan:
+      'Dette faget følger en utgått læreplan. Gå til faget som er oppdatert etter gjeldende læreplan:',
+    updateBrowser:
+      'Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på https://browsehappy.com.',
+    noContent: 'Vi har dessverre ikke noen programfag ennå.',
+    feide: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
+    resources:
+      'Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.',
+    beta: 'Dette faget er i betaversjon.',
+    outdatedSubject: 'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.',
+    newVersion:
+      'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
+  },
   article: {
     lastUpdated: 'Sist oppdatert',
     edition: 'Utgave',
@@ -699,18 +713,18 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Hva skjer med fagfornyelsen på NDLA?',
-      externalLink: 'https://blogg.ndla.no/2019/11/hva-skjer-med-fagfornyelsen-pa-ndla/',
+      text: 'Nye fag på NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
       text: 'Aktiviser elevene med digitale verktøy',
       externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
       linkText: 'Fagblogg',
-      license: 'CC-BY-NC-SA-4.0',
-      licenseAuthor: 'Scanpix.no',
+      license: 'CC-BY-SA-4.0',
+      licenseAuthor: 'Tom Knudsen',
     },
   },
   editor: {
@@ -843,6 +857,7 @@ const messages = {
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
       employee: 'Lærer',
+      staff: 'Ansatt',
       student: 'Elev',
     },
     buttonLogIn: 'Logg inn med Feide',

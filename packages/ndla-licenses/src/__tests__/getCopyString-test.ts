@@ -8,11 +8,17 @@
 
 /* eslint-env jest */
 
-import { getCopyString, figureApa7CopyString, webpageReferenceApa7CopyString } from '../getCopyString';
+import {
+  getCopyString,
+  figureApa7CopyString,
+  webpageReferenceApa7CopyString,
+  podcastEpisodeApa7CopyString,
+} from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
 import { i18nInstance } from '../../../ndla-ui';
-const t = i18nInstance.getFixedT('nb');
+const tNB = i18nInstance.getFixedT('nb');
+const tEN = i18nInstance.getFixedT('en');
 
 test('figureApa7CopyString return correct content', () => {
   const copyright = {
@@ -24,10 +30,42 @@ test('figureApa7CopyString return correct content', () => {
     processors: [{ name: 'Celine', type: 'writer' }],
   };
 
-  const copyString = figureApa7CopyString('Tittel', 2010, undefined, '/path/123', copyright, 'https://test.ndla.no', t);
+  const copyString = figureApa7CopyString(
+    'Tittel',
+    2010,
+    undefined,
+    '/path/123',
+    copyright,
+    'https://test.ndla.no',
+    tNB,
+  );
+
+  expect(copyString).toEqual('Tittel, 2010, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
+});
+
+test('podcastEpisodeApa7CopyString return correct content', () => {
+  const copyright = {
+    license: {
+      license: 'CC-BY-SA-4.0',
+    },
+    creators: [{ name: 'Anna Etternavn', type: 'writer' }],
+    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+    processors: [{ name: 'Celine', type: 'writer' }],
+  };
+
+  const copyString = podcastEpisodeApa7CopyString(
+    'Tittel',
+    '2017-06-05T14:25:14Z',
+    '10',
+    '2',
+    copyright,
+    'no',
+    'https://test.ndla.no',
+    tNB,
+  );
 
   expect(copyString).toEqual(
-    'Tittel, 2010, av Etternavn, A., Celine., Person, B. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.',
+    'Etternavn, A. (Forfatter). (2017, 5. juni). Tittel [Audio podkast episode]. NDLA. https://test.ndla.no/podkast/10#episode-2',
   );
 });
 
@@ -38,8 +76,6 @@ test('webpageReferenceApa7CopyString return correct content', () => {
     processors: [{ name: 'Celine', type: 'writer' }],
   };
 
-  const tEnglish = i18nInstance.getFixedT('en');
-
   const englishCopyString = webpageReferenceApa7CopyString(
     'Title',
     undefined,
@@ -48,7 +84,7 @@ test('webpageReferenceApa7CopyString return correct content', () => {
     copyright,
     'en',
     'https://test.ndla.no',
-    tEnglish,
+    tEN,
   );
 
   const norwegianCopyString = webpageReferenceApa7CopyString(
@@ -59,7 +95,7 @@ test('webpageReferenceApa7CopyString return correct content', () => {
     copyright,
     'nb',
     'https://test.ndla.no',
-    t,
+    tNB,
   );
 
   expect(englishCopyString).toEqual('Etternavn, A. (2017, June 5). Title. NDLA. https://test.ndla.no/path/123');
@@ -72,7 +108,7 @@ test('getCopyString returns correct content', () => {
     rightsholders: [{ name: 'Person2', type: 'artist' }],
     processors: [{ name: 'Person3', type: 'writer' }],
   };
-  const copyString = getCopyString('Tittel', undefined, '/path/123', copyright, 'https://test.ndla.no', t);
+  const copyString = getCopyString('Tittel', undefined, '/path/123', copyright, 'https://test.ndla.no', tNB);
 
   expect(copyString).toContain(' Lest: ');
 

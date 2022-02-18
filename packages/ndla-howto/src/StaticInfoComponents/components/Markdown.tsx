@@ -1,7 +1,6 @@
 import React from 'react';
 //@ts-ignore
 import { Remarkable } from 'remarkable';
-//@ts-ignore
 import { Table } from '@ndla/ui';
 
 const md = new Remarkable();

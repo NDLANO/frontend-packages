@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
 
-class EmbeddedTwitter extends React.Component {
+class EmbeddedTwitter extends Component {
   static removeChildren(node) {
     if (node) {
       while (node.firstChild) {
@@ -51,7 +51,7 @@ class EmbeddedTwitter extends React.Component {
   }
 
   render() {
-    return React.createElement('div', {
+    return createElement('div', {
       ref: (c) => {
         this.widgetWrapper = c;
       },

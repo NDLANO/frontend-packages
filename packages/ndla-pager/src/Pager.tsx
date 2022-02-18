@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ElementType, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -45,8 +45,8 @@ const pageItemStyle = css`
 type Query = Record<string, any>;
 
 interface PageItemProps<T extends Query> {
-  pageItemComponentClass: React.ElementType;
-  children: React.ReactNode;
+  pageItemComponentClass: ElementType;
+  children: ReactNode;
   page: number;
   query: T;
   pathname: string;
@@ -98,7 +98,7 @@ interface Props<T extends Query> {
   pathname?: string;
   query: T;
   onClick?: (query: T & { page: number }) => void;
-  pageItemComponentClass?: React.ElementType;
+  pageItemComponentClass?: ElementType;
 }
 
 const Pager = <T extends Query>({

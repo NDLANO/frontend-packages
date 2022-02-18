@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';

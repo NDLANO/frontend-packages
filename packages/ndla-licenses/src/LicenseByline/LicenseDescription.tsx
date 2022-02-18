@@ -6,7 +6,7 @@
  * FRI OG BEGRENSET
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { colors, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 import LicenseIconDescriptionList from './LicenseIconDescriptionList';
@@ -24,7 +24,7 @@ const StyledModelpermission = styled.div`
 `;
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   licenseRights: string[];
   messages?: {
     modelPremission?: string;

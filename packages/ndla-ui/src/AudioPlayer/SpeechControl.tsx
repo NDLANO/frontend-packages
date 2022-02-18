@@ -9,7 +9,6 @@
 import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-// @ts-ignore
 import { VolumeUp } from '@ndla/icons/common';
 
 const SpeechPlayButton = styled.button`

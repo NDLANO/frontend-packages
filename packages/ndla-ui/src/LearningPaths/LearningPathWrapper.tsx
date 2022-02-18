@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
@@ -41,10 +41,10 @@ const StyledWrapper = styled.section<PropStyledWrapper>`
 `;
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   invertedStyle?: boolean;
 }
 
-export const LearningPathWrapper: React.FunctionComponent<Props> = ({ children, invertedStyle }) => (
+export const LearningPathWrapper = ({ children, invertedStyle }: Props) => (
   <StyledWrapper invertedStyle={invertedStyle}>{children}</StyledWrapper>
 );

@@ -11,9 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { CSSPropertiesWithMultiValues } from '@emotion/serialize';
 import FocusTrapReact from 'focus-trap-react';
-// @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
-// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 
 import { spacing, misc, animations, colors } from '@ndla/core';
@@ -144,7 +142,7 @@ interface Props extends StyledOptionProps {
   onClose?: () => void;
 }
 
-const PopupWrapper: React.FC<Props> = ({
+const PopupWrapper = ({
   children,
   label,
   position,
@@ -156,7 +154,7 @@ const PopupWrapper: React.FC<Props> = ({
   onOpen,
   onClose,
   buttonStyle,
-}) => {
+}: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const setPopupState = (newState?: boolean) => {
     toggleIsOpen(!!newState);

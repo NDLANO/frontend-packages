@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import SafeLink from '@ndla/safelink';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';

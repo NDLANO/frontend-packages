@@ -25,7 +25,7 @@ const StyledMiniHeader = styled.span`
   ${fonts.sizes(16, 1.1)};
 `;
 
-const LearningPathMobileHeader: React.FunctionComponent<WithTranslation> = ({ t }) => (
+const LearningPathMobileHeader = ({ t }: WithTranslation) => (
   <StyledWrapper>
     <LearningPathBadge size="xx-small" background />
     <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>

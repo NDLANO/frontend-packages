@@ -34,6 +34,7 @@
     "react-prop-types": "0.4.0"
   },
   "dependencies": {
+    "@ndla/button": "^1.1.5",
     "@ndla/core": "^0.7.3"
   },
   "publishConfig": {

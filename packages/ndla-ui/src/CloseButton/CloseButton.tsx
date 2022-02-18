@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { MouseEvent } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
@@ -24,14 +24,10 @@ const StyledCross = styled(Cross)`
   color: ${colors.text.primary};
 `;
 
-type Props = {
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-};
-
-export const CloseButton = ({ onClick }: Props) => {
+export const CloseButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { t } = useTranslation();
   return (
-    <StyledButton onClick={onClick} aria-label={t('close')}>
+    <StyledButton aria-label={t('close')} {...props}>
       <StyledCross />
     </StyledButton>
   );

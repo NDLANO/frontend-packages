@@ -15,6 +15,8 @@ import {
   podcastEpisodeApa7CopyString,
   podcastSeriesApa7CopyString,
   getCreditString,
+  getDateString,
+  getYearString,
 } from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
@@ -23,7 +25,7 @@ const tNB = i18nInstance.getFixedT('nb');
 const tEN = i18nInstance.getFixedT('en');
 
 // Utils
-test('creditString returns correct content', () => {
+test('getCreditString returns correct content', () => {
   const roles = [
     { name: 'Anna Etternavn', type: 'photographer' },
     { name: 'Bendik Person', type: 'artist' },
@@ -44,6 +46,39 @@ test('creditString returns correct content', () => {
 
   const creditStringWithPrefix = getCreditString(roles.slice(0, 2), true, false, tNB);
   expect(creditStringWithPrefix).toEqual('av Etternavn, A. & Person, B. ');
+});
+
+test('getDateString returns correct content', () => {
+  const date = '2017-06-05T14:25:14Z';
+  const invalidDate = '123abc';
+  const dateNO = getDateString('nb', date);
+  expect(dateNO).toEqual('2017, 5. juni');
+
+  const dateEN = getDateString('en', date);
+  expect(dateEN).toEqual('2017, June 5');
+
+  const dateWithInvalidInput = getDateString('nb', invalidDate);
+  expect(dateWithInvalidInput).toMatch(/\d{4}, \d{1,2}. [a-zA-Z]+/);
+
+  const dateWithNoInput = getDateString('en');
+  expect(dateWithNoInput).toMatch(/\d{4}, [a-zA-Z]+ \d{1,2}/);
+});
+
+test('getYearString return correct content', () => {
+  const start = '2019';
+  const end = '2020';
+
+  const yearWithStart = getYearString(start, undefined, tNB);
+  expect(yearWithStart).toEqual('(2019-nå). ');
+
+  const yearWithStartAndEnd = getYearString(start, end, tNB);
+  expect(yearWithStartAndEnd).toEqual('(2019-2020). ');
+
+  const yearWithNoInput = getYearString(undefined, undefined, tNB);
+  expect(yearWithNoInput).toEqual('');
+
+  const yearWithEqualStartAndEnd = getYearString(start, start, tNB);
+  expect(yearWithEqualStartAndEnd).toEqual('(2019). ');
 });
 
 // Get functions
@@ -122,7 +157,7 @@ test('podcastSeriesApa7CopyString return correct content', () => {
   );
 
   expect(copyStringWithStart).toEqual(
-    'Etternavn, A. (Forfatter). (2019). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+    'Etternavn, A. (Forfatter). (2019-nå). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
   );
 
   expect(copyStringWithNoYear).toEqual(

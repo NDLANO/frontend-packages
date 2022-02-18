@@ -64,7 +64,7 @@ const getSimpleDateString = () => {
   return `${dd}.${mm}.${yyyy}`;
 };
 
-const getDateString = (locale: string, date?: string) => {
+export const getDateString = (locale: string, date?: string) => {
   const getLocale = (locale?: string) => {
     if (locale === 'en') {
       return 'EN-us';
@@ -89,18 +89,25 @@ const getDateString = (locale: string, date?: string) => {
 
   if (date) {
     const dateObject = new Date(date);
-    if (dateObject) {
+    if (dateObject && !isNaN(dateObject.getTime())) {
       return formatDate(dateObject, locale);
     }
   }
-  return new Date().toLocaleDateString(getLocale(locale), { year: 'numeric', month: 'long', day: 'numeric' });
+  return formatDate(new Date(), locale);
 };
 
-const getYearString = (start: string | number | undefined, end: string | number | undefined) => {
+export const getYearString = (
+  start: string | number | undefined,
+  end: string | number | undefined,
+  t: TranslationFunction,
+) => {
   if (!start) {
     return '';
   }
-  if (!end || start === end) {
+  if (!end) {
+    return `(${start}-${t('license.copyText.now')}). `;
+  }
+  if (start === end) {
     return `(${start}). `;
   }
   return `(${start}-${end}). `;
@@ -156,7 +163,7 @@ export const podcastSeriesApa7CopyString = (
   const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
-  const yearString = getYearString(startYear, endYear);
+  const yearString = getYearString(startYear, endYear, t);
   const metaString = `[Audio ${t('license.copyText.podcast')}]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast]. https://ndla.no/podkast/1

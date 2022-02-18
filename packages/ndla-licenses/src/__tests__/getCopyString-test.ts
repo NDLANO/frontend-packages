@@ -32,10 +32,18 @@ test('creditString returns correct content', () => {
 
   const creditStringWithOnePerson = getCreditString([roles[0]], false, false, tNB);
   expect(creditStringWithOnePerson).toEqual('Etternavn, A. ');
+
   const creditStringWithTwoPeople = getCreditString(roles.slice(0, 2), false, false, tNB);
   expect(creditStringWithTwoPeople).toEqual('Etternavn, A. & Person, B. ');
+
   const creditStringWithMultiplePeople = getCreditString(roles, false, false, tNB);
   expect(creditStringWithMultiplePeople).toEqual('Etternavn, A., Person, B. & Test, B. ');
+
+  const creditStringWithRoles = getCreditString(roles.slice(0, 2), false, true, tNB);
+  expect(creditStringWithRoles).toEqual('Etternavn, A. (Fotograf) & Person, B. (Kunstner). ');
+
+  const creditStringWithPrefix = getCreditString(roles.slice(0, 2), true, false, tNB);
+  expect(creditStringWithPrefix).toEqual('av Etternavn, A. & Person, B. ');
 });
 
 // Get functions

@@ -73,7 +73,7 @@ const NotionHeader = ({ title, subTitle, onClose, children }: NotionHeaderProps)
     <NotionHeaderWrapper hasChildren={!!children}>
       {notionTitle(title, subTitle)}
       {children}
-      {onClose ? <CloseButton onClick={onClose} /> : <CloseButton />}
+      {onClose && <CloseButton onClick={onClose} />}
     </NotionHeaderWrapper>
   );
 };

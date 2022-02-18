@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Feide } from '@ndla/icons/common';
 
@@ -16,7 +15,7 @@ import AuthModal from '../User';
 import { AuthModalProps } from '../User/AuthModal';
 
 type FeideWrapperProps = {
-  inverted: boolean;
+  inverted?: boolean;
 };
 
 const StyledButton = styled(Button)<FeideWrapperProps>`

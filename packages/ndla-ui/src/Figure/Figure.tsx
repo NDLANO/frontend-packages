@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
-//@ts-ignore
 import Button from '@ndla/button';
 
 const classes = new BEMHelper({

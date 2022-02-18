@@ -7,7 +7,6 @@
  */
 
 import React, { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
-//@ts-ignore
 import Button from '@ndla/button';
 import BEMHelper from 'react-bem-helper';
 import { QueryObject } from './AudioSearch';

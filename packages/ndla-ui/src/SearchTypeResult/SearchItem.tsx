@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 import { ChevronRight, Additional, Core } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
-// @ts-ignore
 import Button from '@ndla/button';
 import Modal, { ModalCloseButton } from '@ndla/modal';
 

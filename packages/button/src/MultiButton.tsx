@@ -13,7 +13,6 @@ import FocusTrapReact from 'focus-trap-react';
 import { css } from '@emotion/core';
 import { ChevronDown } from '@ndla/icons/common';
 
-// @ts-ignore
 import { Button, buttonStyle, outlineStyle, largeStyle } from './Button';
 
 const StyledWrapper = styled.div`

@@ -7,9 +7,9 @@
  */
 
 import React, { Component, ReactNode, MouseEvent } from 'react';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
-interface Props {
+interface Props extends ButtonProps {
   children: ReactNode;
   copyNode: ReactNode;
   onClick: (e?: MouseEvent<HTMLButtonElement>) => void;

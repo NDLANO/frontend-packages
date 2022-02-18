@@ -1,5 +1,4 @@
 import React, { MouseEvent, ReactNode, RefObject, useEffect, useState } from 'react';
-// @ts-ignore
 import Button, { CopyButton } from '@ndla/button';
 import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';

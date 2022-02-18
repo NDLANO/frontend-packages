@@ -36,9 +36,8 @@ export type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
 export type ButtonBorder = 'normal' | 'rounded' | 'sharpened';
 export type ButtonWidth = 'auto' | 'full';
 export type ButtonTextAlign = 'center' | 'left' | 'right';
-export type ButtonType = 'button' | 'submit' | 'reset';
 
-interface Props extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   disabled?: boolean;
   outline?: boolean;
@@ -60,7 +59,6 @@ interface Props extends Partial<ButtonHTMLAttributes<HTMLButtonElement>> {
   greyLighter?: boolean;
   greyLightest?: boolean;
   submit?: boolean;
-  type?: ButtonType;
   ghostPillOutline?: boolean;
   ghostPillOutlineInverted?: boolean;
   clippedButton?: boolean;
@@ -524,7 +522,7 @@ export const buttonStyle = css`
   }
 `;
 
-export const ButtonStyles = (p: Props) =>
+export const ButtonStyles = (p: ButtonProps) =>
   css`
     ${buttonStyle}
     ${p.appearance ? appearances[p.appearance] : null}
@@ -540,7 +538,7 @@ export const ButtonStyles = (p: Props) =>
   ${p.light ? appearances['light'] : null}
   `;
 
-export const StyledButton = styled('button')<Props>`
+export const StyledButton = styled('button')<ButtonProps>`
   ${(p) => ButtonStyles(p)}
 `;
 
@@ -571,7 +569,7 @@ export const Button = ({
   clippedButtonAttachment,
   clippedButtonAttachmentOutline,
   ...rest
-}: Props) => {
+}: ButtonProps) => {
   const clippedButtonLarge = clippedButton && large;
   const clippedButtonOutlineLarge = clippedButtonOutline && large;
   const clippedButtonAttachmentLarge = clippedButtonAttachment && large;

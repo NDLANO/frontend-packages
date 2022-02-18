@@ -6,10 +6,11 @@
  *
  */
 
-import React, { HTMLProps, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { appearances, ButtonStyles, ButtonAppearance } from '@ndla/button';
 import SafeLink from './SafeLink';
+import { SafeLinkProps } from '.';
 
 type StylesProps = Record<ButtonAppearance, boolean | undefined>;
 
@@ -18,7 +19,7 @@ const getStyles = (modifiers: Partial<StylesProps>) =>
     .map((key) => (modifiers[key] ? appearances[key] : undefined))
     .filter((appearance) => !!appearance);
 
-interface Props extends HTMLProps<HTMLAnchorElement> {
+interface Props extends SafeLinkProps {
   outline?: boolean;
   stripped?: boolean;
   link?: boolean;

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { MouseEvent, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts, misc } from '@ndla/core';
 import { CloseButton } from '@ndla/ui';
@@ -58,7 +58,7 @@ const notionTitle = (title: string, subTitle?: string) => (
 interface NotionHeaderProps {
   title: string;
   subTitle?: string;
-  onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClose?: () => void;
   children?: ReactNode;
 }
 

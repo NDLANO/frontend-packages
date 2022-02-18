@@ -13,6 +13,7 @@ import {
   figureApa7CopyString,
   webpageReferenceApa7CopyString,
   podcastEpisodeApa7CopyString,
+  podcastSeriesApa7CopyString,
 } from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
@@ -41,6 +42,70 @@ test('figureApa7CopyString return correct content', () => {
   );
 
   expect(copyString).toEqual('Tittel, 2010, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
+});
+
+test('podcastSeriesApa7CopyString return correct content', () => {
+  const copyright = {
+    license: {
+      license: 'CC-BY-SA-4.0',
+    },
+    creators: [{ name: 'Anna Etternavn', type: 'writer' }],
+    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+    processors: [{ name: 'Celine', type: 'writer' }],
+  };
+
+  const copyStringWithStartAndEnd = podcastSeriesApa7CopyString(
+    'Tittel',
+    '2019',
+    '2020',
+    '5',
+    copyright,
+    'https://test.ndla.no',
+    tNB,
+  );
+  const copyStringWithStart = podcastSeriesApa7CopyString(
+    'Tittel',
+    '2019',
+    undefined,
+    '5',
+    copyright,
+    'https://test.ndla.no',
+    tNB,
+  );
+  const copyStringWithNoYear = podcastSeriesApa7CopyString(
+    'Tittel',
+    undefined,
+    undefined,
+    '5',
+    copyright,
+    'https://test.ndla.no',
+    tNB,
+  );
+  const copyStringWithEqualYears = podcastSeriesApa7CopyString(
+    'Tittel',
+    '2019',
+    '2019',
+    '5',
+    copyright,
+    'https://test.ndla.no',
+    tNB,
+  );
+
+  expect(copyStringWithStartAndEnd).toEqual(
+    'Etternavn, A. (Forfatter). (2019-2020). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+  );
+
+  expect(copyStringWithStart).toEqual(
+    'Etternavn, A. (Forfatter). (2019). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+  );
+
+  expect(copyStringWithNoYear).toEqual(
+    'Etternavn, A. (Forfatter). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+  );
+
+  expect(copyStringWithEqualYears).toEqual(
+    'Etternavn, A. (Forfatter). (2019). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+  );
 });
 
 test('podcastEpisodeApa7CopyString return correct content', () => {

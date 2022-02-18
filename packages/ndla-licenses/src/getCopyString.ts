@@ -94,17 +94,14 @@ const makeDateString = (locale: string, date?: string) => {
   return new Date().toLocaleDateString(getLocale(locale), { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
-const makeYearString = (
-  start: string | number | undefined,
-  end: string | number | undefined,
-  t: TranslationFunction,
-) => {
+const makeYearString = (start: string | number | undefined, end: string | number | undefined) => {
   if (!start) {
     return '';
   }
-  if (!end) {
-    return '()';
+  if (!end || start === end) {
+    return `(${start}). `;
   }
+  return `(${start}-${end}). `;
 };
 
 export const figureApa7CopyString = (
@@ -151,14 +148,13 @@ export const podcastSeriesApa7CopyString = (
   endYear: string | number | undefined,
   seriesId: string | number,
   copyright: Partial<CopyrightType> | undefined,
-  locale: string,
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
   const creators = creditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
-  const yearString = makeYearString(startYear, endYear, t);
+  const yearString = makeYearString(startYear, endYear);
   const metaString = `[Audio ${t('license.copyText.podcast')}]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast]. https://ndla.no/podkast/1

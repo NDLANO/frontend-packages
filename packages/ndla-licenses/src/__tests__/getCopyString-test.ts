@@ -113,8 +113,12 @@ test('podcastEpisodeApa7CopyString return correct content', () => {
     license: {
       license: 'CC-BY-SA-4.0',
     },
-    creators: [{ name: 'Anna Etternavn', type: 'writer' }],
-    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+    creators: [
+      { name: 'Anna Etternavn', type: 'writer' },
+      { name: 'Bendik Person', type: 'artist' },
+      { name: 'Lars Nordmann', type: 'artist' },
+    ],
+    rightsholders: [{ name: 'Bendik Test', type: 'artist' }],
     processors: [{ name: 'Celine', type: 'writer' }],
   };
 
@@ -130,7 +134,7 @@ test('podcastEpisodeApa7CopyString return correct content', () => {
   );
 
   expect(copyString).toEqual(
-    'Etternavn, A. (Forfatter). (2017, 5. juni). Tittel [Audio podkast episode]. NDLA. https://test.ndla.no/podkast/10#episode-2',
+    'Etternavn, A. (Forfatter), Person, B. (Kunstner) & Nordmann, L. (Kunstner). (2017, 5. juni). Tittel [Audio podkast episode]. NDLA. https://test.ndla.no/podkast/10#episode-2',
   );
 });
 

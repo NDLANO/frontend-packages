@@ -32,18 +32,20 @@ const creditString = (roles: Contributor[], byPrefix: boolean, withRole: boolean
   if (!roles?.length) {
     return '';
   }
-  const credits = roles
-    .map((creator) => {
-      const [lastName, ...names] = creator.name.split(' ').reverse();
-      const initials = names.length ? ', ' + names.map((name) => name[0] + '.') : '.';
-      const role = withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
-      return lastName + initials + role;
-    })
-    .join(', ');
+  const credits = roles.map((creator) => {
+    const [lastName, ...names] = creator.name.split(' ').reverse();
+    const initials = names.length ? ', ' + names.map((name) => name[0] + '.') : '.';
+    const role = withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
+    return lastName + initials + role;
+  });
+
+  const lastCredit = credits.pop();
+
+  const formattedCredits = credits.length ? credits.join(', ') + ' & ' + lastCredit : lastCredit;
 
   const prefix = byPrefix ? t('license.copyText.by') + ' ' : '';
   const punctuation = withRole ? '.' : '';
-  return prefix + credits + punctuation + ' ';
+  return prefix + formattedCredits + punctuation + ' ';
 };
 
 const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
@@ -53,7 +55,7 @@ const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
   return value;
 };
 
-const _oldMakeDateString = () => {
+const makeSimpleDateString = () => {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const dd = String(today.getDate()).padStart(2, '0');
@@ -201,7 +203,7 @@ export const getCopyString = (
   const rightsholders = _oldMakeCreditCopyString(credits.rightsholders, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = (path ? ndlaFrontendDomain + path : src) + ' ';
-  const date = _oldMakeDateString();
+  const date = makeSimpleDateString();
 
   // Ex: Fotograf: Ola Nordmann. Tittel [Internett]. Opphaver: NTB. Hentet fra: www.ndla.no/urn:resource:123 Lest: 04.05.2021
   return (

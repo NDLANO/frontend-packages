@@ -14,7 +14,7 @@ export const getLicenseCredits = (copyright?: {
 
 type TranslationFunction = (id: string) => string;
 
-const _oldMakeCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
+const _oldGetCreditCopyString = (roles: Contributor[], t: TranslationFunction) => {
   if (!roles?.length) {
     return '';
   }
@@ -28,7 +28,7 @@ const _oldMakeCreditCopyString = (roles: Contributor[], t: TranslationFunction) 
   );
 };
 
-export const creditString = (roles: Contributor[], byPrefix: boolean, withRole: boolean, t: TranslationFunction) => {
+export const getCreditString = (roles: Contributor[], byPrefix: boolean, withRole: boolean, t: TranslationFunction) => {
   if (!roles?.length) {
     return '';
   }
@@ -55,7 +55,7 @@ const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
   return value;
 };
 
-const makeSimpleDateString = () => {
+const getSimpleDateString = () => {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const dd = String(today.getDate()).padStart(2, '0');
@@ -64,7 +64,7 @@ const makeSimpleDateString = () => {
   return `${dd}.${mm}.${yyyy}`;
 };
 
-const makeDateString = (locale: string, date?: string) => {
+const getDateString = (locale: string, date?: string) => {
   const getLocale = (locale?: string) => {
     if (locale === 'en') {
       return 'EN-us';
@@ -96,7 +96,7 @@ const makeDateString = (locale: string, date?: string) => {
   return new Date().toLocaleDateString(getLocale(locale), { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
-const makeYearString = (start: string | number | undefined, end: string | number | undefined) => {
+const getYearString = (start: string | number | undefined, end: string | number | undefined) => {
   if (!start) {
     return '';
   }
@@ -117,7 +117,7 @@ export const figureApa7CopyString = (
 ): string => {
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
   const yearString = year ? `${year}, ` : '';
-  const creators = creditString(copyright?.creators || copyright?.rightsholders || [], true, false, t);
+  const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], true, false, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
   const license = copyright?.license?.license ? copyright.license.license + '.' : '';
 
@@ -135,10 +135,10 @@ export const webpageReferenceApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ): string => {
-  const creators = creditString(copyright?.creators || copyright?.rightsholders || [], false, false, t);
+  const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], false, false, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + '. ';
   const url = `${path ? ndlaFrontendDomain + path : src}`;
-  const dateString = `(${makeDateString(locale, lastUpdated)}). `;
+  const dateString = `(${getDateString(locale, lastUpdated)}). `;
 
   // Ex: Nordmann, O. (2020, 11. januar). Tittel. NDLA. https://ndla.no/urn:resource:123
   return creators + dateString + titleString + 'NDLA. ' + url;
@@ -153,10 +153,10 @@ export const podcastSeriesApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
-  const creators = creditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
+  const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
-  const yearString = makeYearString(startYear, endYear);
+  const yearString = getYearString(startYear, endYear);
   const metaString = `[Audio ${t('license.copyText.podcast')}]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast]. https://ndla.no/podkast/1
@@ -173,10 +173,10 @@ export const podcastEpisodeApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
-  const creators = creditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
+  const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}#episode-${episodeId}`;
-  const dateString = `(${makeDateString(locale, date)}). `;
+  const dateString = `(${getDateString(locale, date)}). `;
   const metaString = `[Audio ${t('license.copyText.podcast')} episode]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast episode]. https://ndla.no/podkast/1#episode-14
@@ -198,12 +198,12 @@ export const getCopyString = (
   t: TranslationFunction,
 ): string => {
   const credits = getLicenseCredits(copyright);
-  const creators = _oldMakeCreditCopyString(credits.creators, t);
-  const processors = _oldMakeCreditCopyString(credits.processors, t);
-  const rightsholders = _oldMakeCreditCopyString(credits.rightsholders, t);
+  const creators = _oldGetCreditCopyString(credits.creators, t);
+  const processors = _oldGetCreditCopyString(credits.processors, t);
+  const rightsholders = _oldGetCreditCopyString(credits.rightsholders, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = (path ? ndlaFrontendDomain + path : src) + ' ';
-  const date = makeSimpleDateString();
+  const date = getSimpleDateString();
 
   // Ex: Fotograf: Ola Nordmann. Tittel [Internett]. Opphaver: NTB. Hentet fra: www.ndla.no/urn:resource:123 Lest: 04.05.2021
   return (

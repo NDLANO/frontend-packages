@@ -14,7 +14,7 @@ import {
   webpageReferenceApa7CopyString,
   podcastEpisodeApa7CopyString,
   podcastSeriesApa7CopyString,
-  creditString,
+  getCreditString,
 } from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
@@ -30,11 +30,11 @@ test('creditString returns correct content', () => {
     { name: 'Bendik Test', type: 'artist' },
   ];
 
-  const creditStringWithOnePerson = creditString([roles[0]], false, false, tNB);
+  const creditStringWithOnePerson = getCreditString([roles[0]], false, false, tNB);
   expect(creditStringWithOnePerson).toEqual('Etternavn, A. ');
-  const creditStringWithTwoPeople = creditString(roles.slice(0, 2), false, false, tNB);
+  const creditStringWithTwoPeople = getCreditString(roles.slice(0, 2), false, false, tNB);
   expect(creditStringWithTwoPeople).toEqual('Etternavn, A. & Person, B. ');
-  const creditStringWithMultiplePeople = creditString(roles, false, false, tNB);
+  const creditStringWithMultiplePeople = getCreditString(roles, false, false, tNB);
   expect(creditStringWithMultiplePeople).toEqual('Etternavn, A., Person, B. & Test, B. ');
 });
 

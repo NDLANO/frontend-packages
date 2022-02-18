@@ -8,13 +8,13 @@
 
 /* eslint-env jest */
 
-import { getCopyString, inlineFigureApa7CopyString } from '../getCopyString';
+import { getCopyString, figureApa7CopyString, webpageReferenceApa7CopyString } from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
 import { i18nInstance } from '../../../ndla-ui';
 const t = i18nInstance.getFixedT('nb');
 
-test('inlineFigureApa7CopyString return correct content', () => {
+test('figureApa7CopyString return correct content', () => {
   const copyright = {
     license: {
       license: 'CC-BY-SA-4.0',
@@ -24,11 +24,46 @@ test('inlineFigureApa7CopyString return correct content', () => {
     processors: [{ name: 'Celine', type: 'writer' }],
   };
 
-  const copyString = inlineFigureApa7CopyString('Tittel', undefined, '/path/123', copyright, 'https://test.ndla.no', t);
+  const copyString = figureApa7CopyString('Tittel', 2010, undefined, '/path/123', copyright, 'https://test.ndla.no', t);
 
   expect(copyString).toEqual(
-    'Tittel, av Etternavn, A., Celine., Person, B. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.',
+    'Tittel, 2010, av Etternavn, A., Celine., Person, B. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.',
   );
+});
+
+test('webpageReferenceApa7CopyString return correct content', () => {
+  const copyright = {
+    creators: [{ name: 'Anna Etternavn', type: 'photographer' }],
+    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+    processors: [{ name: 'Celine', type: 'writer' }],
+  };
+
+  const tEnglish = i18nInstance.getFixedT('en');
+
+  const englishCopyString = webpageReferenceApa7CopyString(
+    'Title',
+    undefined,
+    '2017-06-05T14:25:14Z',
+    '/path/123',
+    copyright,
+    'en',
+    'https://test.ndla.no',
+    tEnglish,
+  );
+
+  const norwegianCopyString = webpageReferenceApa7CopyString(
+    'Tittel',
+    undefined,
+    '2017-06-05T14:25:14Z',
+    '/path/123',
+    copyright,
+    'nb',
+    'https://test.ndla.no',
+    t,
+  );
+
+  expect(englishCopyString).toEqual('Etternavn, A. (2017, June 5). Title. NDLA. https://test.ndla.no/path/123');
+  expect(norwegianCopyString).toEqual('Etternavn, A. (2017, 5. juni). Tittel. NDLA. https://test.ndla.no/path/123');
 });
 
 test('getCopyString returns correct content', () => {

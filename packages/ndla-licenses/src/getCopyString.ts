@@ -28,7 +28,7 @@ const _oldMakeCreditCopyString = (roles: Contributor[], t: TranslationFunction) 
   );
 };
 
-const creditString = (roles: Contributor[], t: TranslationFunction) => {
+const creditString = (roles: Contributor[], byPrefix: boolean, t: TranslationFunction) => {
   if (!roles?.length) {
     return '';
   }
@@ -40,7 +40,8 @@ const creditString = (roles: Contributor[], t: TranslationFunction) => {
     })
     .join(', ');
 
-  return `${t('license.copyText.by')} ${credits} `;
+  const prefix = byPrefix ? t('license.copyText.by') + ' ' : '';
+  return prefix + credits + ' ';
 };
 
 const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
@@ -50,7 +51,7 @@ const getValueOrFallback = <T>(value: T | undefined, fallback: T): T => {
   return value;
 };
 
-const makeDateString = () => {
+const _oldMakeDateString = () => {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const dd = String(today.getDate()).padStart(2, '0');
@@ -59,22 +60,76 @@ const makeDateString = () => {
   return `${dd}.${mm}.${yyyy}`;
 };
 
-export const inlineFigureApa7CopyString = (
+const makeDateString = (locale: string, date?: string) => {
+  const getLocale = (locale?: string) => {
+    if (locale === 'en') {
+      return 'EN-us';
+    } else if (locale === 'nn') {
+      return 'NO-nn';
+    }
+    return 'NO-nb';
+  };
+
+  const formatDate = (dateObject: Date, locale: string) => {
+    if (locale === 'en') {
+      const year = dateObject.getFullYear();
+      const month = dateObject.toLocaleDateString(getLocale(locale), { month: 'long' });
+      const day = dateObject.getDate();
+      return `${year}, ${month} ${day}`;
+    }
+    const year = dateObject.getFullYear();
+    const month = dateObject.toLocaleDateString(getLocale(locale), { month: 'long' });
+    const day = dateObject.getDate();
+    return `${year}, ${day}. ${month}`;
+  };
+
+  if (date) {
+    const dateObject = new Date(date);
+    if (dateObject) {
+      return formatDate(dateObject, locale);
+    }
+  }
+  return new Date().toLocaleDateString(getLocale(locale), { year: 'numeric', month: 'long', day: 'numeric' });
+};
+
+export const figureApa7CopyString = (
   title: string | undefined,
+  year: number | string | undefined,
   src: string | undefined,
   path: string | undefined,
   copyright: Partial<CopyrightType> | undefined,
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ): string => {
-  const credits = getLicenseCredits(copyright);
-  const creators = creditString([...credits.creators, ...credits.processors, ...credits.rightsholders], t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
+  const yearString = year ? `${year}, ` : '';
+  const credits = getLicenseCredits(copyright);
+  const creators = creditString([...credits.creators, ...credits.processors, ...credits.rightsholders], true, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
   const license = copyright?.license?.license ? copyright.license.license + '.' : '';
 
-  // Ex: Tittel, <år>, av Nordmann, O. NDLA. (https://ndla.no/urn:resource:123). CC-BY-SA-4.0.
-  return titleString + creators + 'NDLA. ' + url + license;
+  // Ex: Tittel, 1914, av Nordmann, O. NDLA. (https://ndla.no/urn:resource:123). CC-BY-SA-4.0.
+  return titleString + yearString + creators + 'NDLA. ' + url + license;
+};
+
+export const webpageReferenceApa7CopyString = (
+  title: string | undefined,
+  src: string | undefined,
+  lastUpdated: string | undefined,
+  path: string | undefined,
+  copyright: Partial<CopyrightType> | undefined,
+  locale: string,
+  ndlaFrontendDomain: string | undefined,
+  t: TranslationFunction,
+): string => {
+  const credits = getLicenseCredits(copyright);
+  const creators = creditString(credits.creators, false, t);
+  const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + '. ';
+  const url = `${path ? ndlaFrontendDomain + path : src}`;
+  const dateString = `(${makeDateString(locale, lastUpdated)}). `;
+
+  // Ex: Nordmann, O. (2020, 11. januar). Tittel. NDLA. https://ndla.no/urn:resource:123
+  return creators + dateString + titleString + 'NDLA. ' + url;
 };
 
 export const getCopyString = (
@@ -97,7 +152,7 @@ export const getCopyString = (
   const rightsholders = _oldMakeCreditCopyString(credits.rightsholders, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = (path ? ndlaFrontendDomain + path : src) + ' ';
-  const date = makeDateString();
+  const date = _oldMakeDateString();
 
   // Ex: Fotograf: Ola Nordmann. Tittel [Internett]. Opphaver: NTB. Hentet fra: www.ndla.no/urn:resource:123 Lest: 04.05.2021
   return (

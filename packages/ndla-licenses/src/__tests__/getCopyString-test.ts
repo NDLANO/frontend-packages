@@ -14,6 +14,7 @@ import {
   webpageReferenceApa7CopyString,
   podcastEpisodeApa7CopyString,
   podcastSeriesApa7CopyString,
+  creditString,
 } from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
@@ -21,6 +22,23 @@ import { i18nInstance } from '../../../ndla-ui';
 const tNB = i18nInstance.getFixedT('nb');
 const tEN = i18nInstance.getFixedT('en');
 
+// Utils
+test('creditString returns correct content', () => {
+  const roles = [
+    { name: 'Anna Etternavn', type: 'photographer' },
+    { name: 'Bendik Person', type: 'artist' },
+    { name: 'Bendik Test', type: 'artist' },
+  ];
+
+  const creditStringWithOnePerson = creditString([roles[0]], false, false, tNB);
+  expect(creditStringWithOnePerson).toEqual('Etternavn, A. ');
+  const creditStringWithTwoPeople = creditString(roles.slice(0, 2), false, false, tNB);
+  expect(creditStringWithTwoPeople).toEqual('Etternavn, A. & Person, B. ');
+  const creditStringWithMultiplePeople = creditString(roles, false, false, tNB);
+  expect(creditStringWithMultiplePeople).toEqual('Etternavn, A., Person, B. & Test, B. ');
+});
+
+// Get functions
 test('figureApa7CopyString return correct content', () => {
   const copyright = {
     license: {

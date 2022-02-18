@@ -28,7 +28,7 @@ const _oldMakeCreditCopyString = (roles: Contributor[], t: TranslationFunction) 
   );
 };
 
-const creditString = (roles: Contributor[], byPrefix: boolean, withRole: boolean, t: TranslationFunction) => {
+export const creditString = (roles: Contributor[], byPrefix: boolean, withRole: boolean, t: TranslationFunction) => {
   if (!roles?.length) {
     return '';
   }

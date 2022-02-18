@@ -140,7 +140,10 @@ test('podcastEpisodeApa7CopyString return correct content', () => {
 
 test('webpageReferenceApa7CopyString return correct content', () => {
   const copyright = {
-    creators: [{ name: 'Anna Etternavn', type: 'photographer' }],
+    creators: [
+      { name: 'Anna Etternavn', type: 'photographer' },
+      { name: 'Bendik Person', type: 'artist' },
+    ],
     rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
     processors: [{ name: 'Celine', type: 'writer' }],
   };
@@ -167,8 +170,12 @@ test('webpageReferenceApa7CopyString return correct content', () => {
     tNB,
   );
 
-  expect(englishCopyString).toEqual('Etternavn, A. (2017, June 5). Title. NDLA. https://test.ndla.no/path/123');
-  expect(norwegianCopyString).toEqual('Etternavn, A. (2017, 5. juni). Tittel. NDLA. https://test.ndla.no/path/123');
+  expect(englishCopyString).toEqual(
+    'Etternavn, A. & Person, B. (2017, June 5). Title. NDLA. https://test.ndla.no/path/123',
+  );
+  expect(norwegianCopyString).toEqual(
+    'Etternavn, A. & Person, B. (2017, 5. juni). Tittel. NDLA. https://test.ndla.no/path/123',
+  );
 });
 
 test('getCopyString returns correct content', () => {

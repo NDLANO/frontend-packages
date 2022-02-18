@@ -153,7 +153,7 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
           </ItemTitleWrapper>
           <ItemText>{parse(ingress)}</ItemText>
           <ContextWrapper>
-            {contexts.length > 0 && <ItemContexts contexts={contexts} id={id} title={title} />}
+            {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={id} title={title} />}
           </ContextWrapper>
         </TextWrapper>
         {img && (

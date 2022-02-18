@@ -10,9 +10,9 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+// @ts-ignore
 import { ChevronLeft, ChevronRight } from '@ndla/icons/common';
-
-import { useSwipeable } from '../../node_modules/react-swipeable';
+import { useSwipeable } from 'react-swipeable';
 
 interface Props {
   children: React.ReactChild[];

@@ -12,8 +12,9 @@ import { useTranslation } from 'react-i18next';
 
 // @ts-ignore
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
-import { mq, breakpoints, fonts, colors } from '@ndla/core';
-import { Explanation, NotionFlip } from '@ndla/icons/common';
+import { mq, breakpoints } from '@ndla/core';
+// @ts-ignore
+import { Explanation } from '@ndla/icons/common';
 import { Notion } from '../Notion';
 import { NotionProps } from '../Notion/Notion';
 

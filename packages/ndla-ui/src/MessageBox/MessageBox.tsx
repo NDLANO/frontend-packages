@@ -141,12 +141,19 @@ type LinkProps = {
 type Props = {
   type?: WrapperProps['boxType'];
   sticky?: boolean;
-  onClose?: boolean;
   children?: string;
   links?: LinkProps[];
+  hideCloseButton?: boolean;
 };
 
-export const MessageBox = ({ type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => {
+export const MessageBox = ({
+  type,
+  sticky = false,
+  children,
+  links,
+  t,
+  hideCloseButton = false,
+}: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
@@ -162,7 +169,7 @@ export const MessageBox = ({ type, sticky = false, onClose, children, links, t }
           </IconWrapper>
           <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>
-        {onClose && (
+        {!hideCloseButton && (
           <CloseButtonWrapper>
             <CloseButton onClick={onCloseMessageBox} />
           </CloseButtonWrapper>

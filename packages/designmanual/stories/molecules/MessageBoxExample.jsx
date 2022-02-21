@@ -40,9 +40,7 @@ const MessageBoxExample = () => {
               <MessageHeader>Full bredde topp</MessageHeader>
               <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
               <p>
-                <MessageBox type={MessageBoxType.fullpage} onClose>
-                  {messagesNB.messageBoxInfo.updateBrowser}
-                </MessageBox>
+                <MessageBox type={MessageBoxType.fullpage}>{messagesNB.messageBoxInfo.updateBrowser}</MessageBox>
 
                 <MessageBoxWrapper>
                   <MessageHeader>Gul versjon</MessageHeader>
@@ -50,12 +48,12 @@ const MessageBoxExample = () => {
                     Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som kan
                     klikkes vekk eller ikke.
                   </p>
-                  <MessageBox type={MessageBoxType.medium} onClose>
+                  <MessageBox type={MessageBoxType.medium}>
                     <span>{messagesNB.messageBoxInfo.noContent}</span>
                   </MessageBox>
                 </MessageBoxWrapper>
                 <MessageBoxWrapper>
-                  <MessageBox type={MessageBoxType.medium}>
+                  <MessageBox type={MessageBoxType.medium} hideCloseButton={true}>
                     <span>{messagesNB.messageBoxInfo.outdatedSubject}</span>
                   </MessageBox>
                 </MessageBoxWrapper>
@@ -97,12 +95,12 @@ const MessageBoxExample = () => {
           reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBoxType } from '@ndla/ui';
   
 //Direkte kall på fullpage sticky meldingsboks
-<MessageBox type={MessageBoxType.fullpage} onClose sticky={true}>
+<MessageBox type={MessageBoxType.fullpage} sticky={true}>
 {messagesNB.messageBoxInfo.updateBrowser}
 </MessageBox>
 
 //Direkte kall på standard meldingsboks
-<MessageBox type={MessageBoxType.medium} onClose>
+<MessageBox type={MessageBoxType.medium} hideCloseButton={true}>
 <span>{messagesNB.messageBoxInfo.noContent}</span>
 </MessageBox>
 
@@ -112,8 +110,7 @@ links={[
   { text: 'link1', href: 'www.facebook.com' },
   { text: 'link2', href: 'www.facebook.com' },
   { text: 'link3', href: 'www.facebook.com' },
-]}
-onClose>
+]}>
 {messagesNB.messageBoxInfo.newVersion}
 </MessageBox>
 
@@ -168,10 +165,10 @@ messageBoxTagMessage="Beta"
               description: 'Sticky gjør at meldingsboksen blir sticky og følger etter på scroll.',
             },
             {
-              name: 'onClose',
-              type: 'function',
+              name: 'hideCloseButton',
+              type: 'boolean',
               default: 'Undefined',
-              description: 'Setter på en kryss-knapp som lar brukeren trykke bort meldingsboksen',
+              description: 'Property som fjerne lukkeknappen',
             },
             {
               name: 'children',

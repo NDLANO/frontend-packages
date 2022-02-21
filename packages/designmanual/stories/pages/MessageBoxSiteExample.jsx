@@ -19,7 +19,7 @@ const MessageBoxSiteExample = ({ type, message, sticky }) => {
       <Content>
         <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
 
-        <MessageBox sticky={sticky} type={type} onClose>
+        <MessageBox sticky={sticky} type={type}>
           Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på:
           <a href="https://browsehappy.com"> https://browsehappy.com.</a>
         </MessageBox>

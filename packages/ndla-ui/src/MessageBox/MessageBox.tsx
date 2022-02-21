@@ -143,17 +143,10 @@ type Props = {
   sticky?: boolean;
   children?: string;
   links?: LinkProps[];
-  hideCloseButton?: boolean;
+  showCloseButton?: boolean;
 };
 
-export const MessageBox = ({
-  type,
-  sticky = false,
-  children,
-  links,
-  t,
-  hideCloseButton = false,
-}: Props & WithTranslation) => {
+export const MessageBox = ({ type, sticky = false, children, links, t, showCloseButton }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
@@ -169,7 +162,7 @@ export const MessageBox = ({
           </IconWrapper>
           <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>
-        {!hideCloseButton && (
+        {showCloseButton && (
           <CloseButtonWrapper>
             <CloseButton onClick={onCloseMessageBox} />
           </CloseButtonWrapper>

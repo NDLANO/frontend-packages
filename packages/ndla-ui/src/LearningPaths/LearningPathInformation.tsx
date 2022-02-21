@@ -56,8 +56,6 @@ interface Props {
   invertedStyle?: boolean;
   license?: {
     license: string;
-    description: string;
-    url: string;
   };
 }
 

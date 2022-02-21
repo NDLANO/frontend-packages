@@ -44,6 +44,7 @@ export { default as HumanMaleBoard } from './HumanMaleBoard';
 export { default as Information } from './Information';
 export { default as InformationOutline } from './InformationOutline';
 export { default as KeyboardReturn } from './KeyboardReturn';
+export { default as Language } from './Language';
 export { default as Launch } from './Launch';
 export { default as Link } from './Link';
 export { default as LogIn } from './LogIn';

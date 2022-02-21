@@ -65,24 +65,15 @@ const getSimpleDateString = () => {
 };
 
 export const getDateString = (locale: string, date?: string) => {
-  const getLocale = (locale?: string) => {
-    if (locale === 'en') {
-      return 'EN-us';
-    } else if (locale === 'nn') {
-      return 'NO-nn';
-    }
-    return 'NO-nb';
-  };
-
   const formatDate = (dateObject: Date, locale: string) => {
     if (locale === 'en') {
       const year = dateObject.getFullYear();
-      const month = dateObject.toLocaleDateString(getLocale(locale), { month: 'long' });
+      const month = dateObject.toLocaleDateString(locale, { month: 'long' });
       const day = dateObject.getDate();
       return `${year}, ${month} ${day}`;
     }
     const year = dateObject.getFullYear();
-    const month = dateObject.toLocaleDateString(getLocale(locale), { month: 'long' });
+    const month = dateObject.toLocaleDateString(locale, { month: 'long' });
     const day = dateObject.getDate();
     return `${year}, ${day}. ${month}`;
   };

@@ -1,8 +1,8 @@
 export interface MovieType {
-  id: string;
+  id: number | string;
   metaDescription: string;
   resourceTypes: MovieResourceType[];
-  metaImage: {
+  metaImage?: {
     alt: string;
     url: string;
   };

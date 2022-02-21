@@ -119,6 +119,7 @@ export const figureApa7CopyString = (
   src: string | undefined,
   path: string | undefined,
   copyright: Partial<CopyrightType> | undefined,
+  license: string | undefined,
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ): string => {
@@ -126,10 +127,10 @@ export const figureApa7CopyString = (
   const yearString = year ? `${year}, ` : '';
   const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], true, false, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
-  const license = copyright?.license?.license ? copyright.license.license + '.' : '';
+  const licenseString = license ? license + '.' : '';
 
   // Ex: Tittel, 1914, av Nordmann, O. NDLA. (https://ndla.no/urn:resource:123). CC-BY-SA-4.0.
-  return titleString + yearString + creators + 'NDLA. ' + url + license;
+  return titleString + yearString + creators + 'NDLA. ' + url + licenseString;
 };
 
 export const webpageReferenceApa7CopyString = (

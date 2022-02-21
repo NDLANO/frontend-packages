@@ -84,9 +84,6 @@ test('getYearString return correct content', () => {
 // Get functions
 test('figureApa7CopyString return correct content', () => {
   const copyright = {
-    license: {
-      license: 'CC-BY-SA-4.0',
-    },
     creators: [{ name: 'Anna Etternavn', type: 'photographer' }],
     rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
     processors: [{ name: 'Celine', type: 'writer' }],
@@ -98,6 +95,7 @@ test('figureApa7CopyString return correct content', () => {
     undefined,
     '/path/123',
     copyright,
+    'CC-BY-SA-4.0',
     'https://test.ndla.no',
     tNB,
   );

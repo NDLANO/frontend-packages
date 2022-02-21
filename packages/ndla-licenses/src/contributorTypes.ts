@@ -113,11 +113,6 @@ export interface Contributor {
 }
 
 export interface CopyrightType {
-  license: {
-    license: string;
-    description?: string;
-    url?: string;
-  };
   creators: Contributor[];
   processors: Contributor[];
   rightsholders: Contributor[];

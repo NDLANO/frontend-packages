@@ -8,12 +8,10 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 // @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { Plus as PlusIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore

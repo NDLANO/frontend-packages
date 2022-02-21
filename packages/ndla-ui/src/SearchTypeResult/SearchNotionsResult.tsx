@@ -6,12 +6,10 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing } from '@ndla/core';
-// @ts-ignore
 import { ModalCloseButton } from '@ndla/modal';
-// @ts-ignore
 import { withTranslation, WithTranslation } from 'react-i18next';
 import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
@@ -52,7 +50,7 @@ type Props = {
   items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
-  renderMarkdown: (text: React.ReactNode) => string;
+  renderMarkdown: (text: ReactNode) => string;
 };
 
 const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & WithTranslation) => (

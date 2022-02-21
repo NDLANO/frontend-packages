@@ -61,12 +61,7 @@ interface Props {
   };
 }
 
-export const LearningPathInformation: React.FunctionComponent<Props> = ({
-  description,
-  title,
-  license,
-  invertedStyle,
-}) => (
+export const LearningPathInformation = ({ description, title, license, invertedStyle }: Props) => (
   <section className="o-wrapper">
     <StyledWrapper invertedStyle={invertedStyle} className="c-article">
       <div>

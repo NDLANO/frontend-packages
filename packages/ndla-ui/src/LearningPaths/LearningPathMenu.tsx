@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
 import { colors, spacing, misc, mq, breakpoints } from '@ndla/core';
@@ -105,7 +104,7 @@ interface Props {
   showLearningPathButton: Object;
 }
 
-const LearningPathMenu: React.FunctionComponent<Props> = ({
+const LearningPathMenu = ({
   learningsteps,
   currentIndex,
   name,
@@ -116,7 +115,7 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
   learningPathURL,
   invertedStyle,
   cookies,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);

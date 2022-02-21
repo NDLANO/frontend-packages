@@ -10,7 +10,6 @@
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
 import React, { ReactNode } from 'react';
-//@ts-ignore
 import Dialog from '../Dialog';
 import { classLicenses, FigureLicenseByline, FigureLicenseCta } from './FigureLicense';
 import { FigureLicense } from './Figure';

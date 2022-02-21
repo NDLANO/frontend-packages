@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { keyframes } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import NoContentBox from '../NoContentBox';
 import ResourceItem from './ResourceItem';
 import { Resource } from '../types';

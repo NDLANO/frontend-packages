@@ -24,7 +24,7 @@ type Props = {
   current: number;
 };
 
-const LearningPathMobileStepInfo: React.FunctionComponent<Props & WithTranslation> = ({ total, current, t }) => (
+const LearningPathMobileStepInfo = ({ total, current, t }: Props & WithTranslation) => (
   <StyledInfo>
     {t('learningPath.mobileStepInfo', {
       totalPages: total,

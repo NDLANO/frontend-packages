@@ -73,7 +73,7 @@ export const getDateString = (locale: string, date?: string) => {
       return `${year}, ${month} ${day}`;
     }
     const year = dateObject.getFullYear();
-    const month = dateObject.toLocaleDateString(locale, { month: 'long' });
+    const month = dateObject.toLocaleDateString('no', { month: 'long' });
     const day = dateObject.getDate();
     return `${year}, ${day}. ${month}`;
   };

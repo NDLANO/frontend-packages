@@ -197,7 +197,7 @@ export const Article = ({
 
           {messages.messageBox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks} onClose>
+              <MessageBox links={messageBoxLinks} showCloseButton>
                 {messages.messageBox}
               </MessageBox>
             </MSGboxWrapper>

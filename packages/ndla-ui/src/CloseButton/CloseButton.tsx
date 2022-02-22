@@ -5,35 +5,31 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
-const CloseButtonWrapper = styled.div`
-  position: relative;
-  top: 1px;
-  right: 1px;
-`;
+import { colors } from '@ndla/core';
 
-const CloseBut = styled.button`
+const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   display: flex;
+  cursor: pointer;
 `;
 
-type Props = {
-  onClick: () => void;
-  color: string;
-};
+const StyledCross = styled(Cross)`
+  height: 24px;
+  width: 24px;
+  color: ${colors.text.primary};
+`;
 
-export const CloseButton = ({ onClick, color }: Props) => {
+export const CloseButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { t } = useTranslation();
   return (
-    <CloseButtonWrapper aria-label={t('lukk')}>
-      <CloseBut onClick={onClick}>
-        <Cross style={{ width: '24px', height: '24px', color: color }} />
-      </CloseBut>
-    </CloseButtonWrapper>
+    <StyledButton aria-label={t('close')} {...props}>
+      <StyledCross />
+    </StyledButton>
   );
 };
 

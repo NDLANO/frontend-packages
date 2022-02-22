@@ -128,6 +128,11 @@ const Link = styled.a`
     box-shadow: none;
   }
 `;
+const CloseButtonWrapper = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 1px;
+`;
 
 type LinkProps = {
   href?: string;
@@ -136,12 +141,12 @@ type LinkProps = {
 type Props = {
   type?: WrapperProps['boxType'];
   sticky?: boolean;
-  onClose?: boolean;
   children?: string;
   links?: LinkProps[];
+  showCloseButton?: boolean;
 };
 
-export const MessageBox = ({ type, sticky = false, onClose, children, links, t }: Props & WithTranslation) => {
+export const MessageBox = ({ type, sticky = false, children, links, t, showCloseButton }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
@@ -157,7 +162,11 @@ export const MessageBox = ({ type, sticky = false, onClose, children, links, t }
           </IconWrapper>
           <TextWrapper>{children}</TextWrapper>
         </InfoWrapper>
-        {onClose && <CloseButton onClick={onCloseMessageBox} color="#444444" />}
+        {showCloseButton && (
+          <CloseButtonWrapper>
+            <CloseButton onClick={onCloseMessageBox} />
+          </CloseButtonWrapper>
+        )}
       </Wrapper>
 
       {links && (

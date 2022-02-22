@@ -117,6 +117,8 @@ export { default as Breadcrumblist } from './Breadcrumblist';
 
 export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
+export { Notion } from './Notion';
+
 export { default as CloseButton } from './CloseButton';
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 

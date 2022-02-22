@@ -9,7 +9,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Cross as CrossIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';

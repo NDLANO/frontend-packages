@@ -10,7 +10,6 @@ import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { css } from '@emotion/core';
-// @ts-ignore
 import Button from '@ndla/button';
 import { LearningPath } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';

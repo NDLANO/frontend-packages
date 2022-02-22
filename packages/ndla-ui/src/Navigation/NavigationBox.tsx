@@ -1,7 +1,6 @@
 import React, { MouseEvent, ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
-// @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
@@ -230,7 +229,7 @@ export const NavigationBox = ({
               lighter={colorMode === 'light'}
               selected={item.selected}>
               <ListElementType
-                to={item.url}
+                to={item.url ?? ''}
                 lighter={!item.selected && colorMode === 'light'}
                 greyLighter={!item.selected && colorMode === 'greyLighter'}
                 greyLightest={!item.selected && colorMode === 'greyLightest'}

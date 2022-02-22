@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react';
-// @ts-ignore
 import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';

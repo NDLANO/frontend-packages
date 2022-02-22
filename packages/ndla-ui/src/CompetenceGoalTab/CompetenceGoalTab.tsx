@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { ArrowFeatureTips } from '@ndla/icons/common';
-// @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import { BY, CC, LicenseByline } from '@ndla/licenses';

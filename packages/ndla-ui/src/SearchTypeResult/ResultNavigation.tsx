@@ -9,7 +9,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { ChevronDown } from '@ndla/icons/common';
-// @ts-ignore
 import Button from '@ndla/button';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';

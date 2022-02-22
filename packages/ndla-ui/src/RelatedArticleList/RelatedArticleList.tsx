@@ -1,6 +1,5 @@
 import React, { Children, cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
-//@ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';

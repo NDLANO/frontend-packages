@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { spacing, spacingUnit, colors, fonts, misc } from '@ndla/core';
 import styled from '@emotion/styled';
+import { MovieResourceType } from './types';
 
 const StyledWrapperDiv = styled.div`
   transition: opacity 200ms ease;
@@ -22,8 +22,12 @@ const StyledMovieTags = styled.span`
   margin-bottom: ${spacingUnit / 8}px;
 `;
 
-const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
-  const resources = {};
+interface Props {
+  movieResourceTypes: MovieResourceType[];
+  resourceTypes: MovieResourceType[];
+}
+const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }: Props) => {
+  const resources: Record<string, boolean> = {};
   movieResourceTypes.forEach((movieResourceType) => {
     const resource = resourceTypes.find((resourceType) => resourceType.id === movieResourceType.id);
     if (resource) {
@@ -37,10 +41,6 @@ const FilmContentCardTags = ({ movieResourceTypes, resourceTypes }) => {
       ))}
     </StyledWrapperDiv>
   );
-};
-
-FilmContentCardTags.propTypes = {
-  resourceTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default FilmContentCardTags;

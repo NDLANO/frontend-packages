@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors, spacing, spacingUnit } from '@ndla/core';
 
@@ -27,9 +27,7 @@ const StyledContent = styled.div`
 `;
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const LearningPathContent: React.FunctionComponent<Props> = ({ children }) => (
-  <StyledContent>{children}</StyledContent>
-);
+export const LearningPathContent = ({ children }: Props) => <StyledContent>{children}</StyledContent>;

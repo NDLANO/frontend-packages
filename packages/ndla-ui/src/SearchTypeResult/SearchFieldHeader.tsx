@@ -6,13 +6,11 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, breakpoints, mq } from '@ndla/core';
-// @ts-ignore
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { spacing } from '@ndla/core';
-// @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
 
 import { useTranslation } from 'react-i18next';
@@ -76,8 +74,8 @@ const SearchInput = styled.input`
 `;
 
 type Props = {
-  onSubmit: (event: {}) => void;
-  value: string;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  value?: string;
   onChange: (value: string) => void;
   filters?: PopupFilterProps;
   activeFilters?: {
@@ -86,7 +84,7 @@ type Props = {
   };
 };
 
-const SearchFieldHeader: React.FC<Props> = ({ value, onSubmit, onChange, filters, activeFilters }) => {
+const SearchFieldHeader = ({ value, onSubmit, onChange, filters, activeFilters }: Props) => {
   const { t } = useTranslation();
   const [hasFocus, setHasFocus] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);

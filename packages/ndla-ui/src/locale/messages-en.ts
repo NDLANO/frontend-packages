@@ -313,6 +313,20 @@ const messages = {
       h5p: 'Interactive',
     },
   },
+  messageBoxInfo: {
+    outdatedCoursePlan:
+      'This course is not updated to the current curriculum. Follow this link to find the updated version of the course: ',
+    updateBrowser:
+      'Your browser is outdated. Update it, or find a safe and updated browser on https://browsehappy.com.',
+    noContent: 'We are sorry, but we do not yet offer any program courses.',
+    feide: 'This resource is accessible only to teachers who are logged in with Feide.',
+    resources:
+      'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
+    beta: 'This course is in beta.',
+    outdatedSubject: 'This topic is part of a course that is not updated to the current curriculum.',
+    newVersion:
+      'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
+  },
   article: {
     edition: 'Edition',
     publisher: 'Publisher',

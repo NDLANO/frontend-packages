@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { DialogOverlay } from '@reach/dialog';
 import { css } from '@emotion/core';
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   animationDuration?: string;
   isOpen: boolean;
   onDismiss: () => void;
+  children?: ReactNode;
 }
 
 const dialogStyles = css`
@@ -23,12 +24,7 @@ const dialogStyles = css`
   min-height: 100vh;
 `;
 
-export const StyledDialogOverlay: React.FC<Props> = ({
-  animateIn,
-  animationDuration = '400ms',
-  children,
-  ...props
-}) => {
+export const StyledDialogOverlay = ({ animateIn, animationDuration = '400ms', children, ...props }: Props) => {
   return (
     <DialogOverlay
       css={css`

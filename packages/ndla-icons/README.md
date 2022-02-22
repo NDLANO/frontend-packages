@@ -38,7 +38,7 @@ import { Audio } from '@ndla/icons/lib/common/Audio';
 <Audio />;
 ```
 
-### Icons are currently grouped into three folders
+### Icons are currently grouped into four folders
 
 - common
 - license

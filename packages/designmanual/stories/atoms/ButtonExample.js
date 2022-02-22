@@ -2,9 +2,9 @@ import React from 'react';
 import Button, { MultiButton, StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown } from '@ndla/icons/common';
+import { CloseButton } from '@ndla/ui';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
-
 const AnchorButton = StyledButton.withComponent('a');
 
 const MultiButtonData = {
@@ -459,6 +459,10 @@ const ButtonExample = () => {
             <span>Velg språk(language): Bokmål</span>
             <ChevronDown />
           </Button>
+        </InlineContainer>
+        <h2 className="u-heading">Lukkeknapp</h2>
+        <InlineContainer>
+          <CloseButton />
         </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">

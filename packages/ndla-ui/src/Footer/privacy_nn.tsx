@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PrivacyNn: React.FunctionComponent = () => (
+const PrivacyNn = () => (
   <>
     <h2>Cookies og lovtekst</h2>
     <p>

@@ -6,20 +6,19 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, colors } from '@ndla/core';
-
 import {
   School as SchoolIcon,
   MenuBook as MenuBookIcon,
   Bookmark as BookmarkIcon,
   Class as ClassIcon,
   Home as HomeIcon,
-  // @ts-ignore
 } from '@ndla/icons/action';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
+import MessageBoxTag from '../MessageBox/MessageBoxTag';
 
 type WrapperProps = {
   startOffset?: number;
@@ -51,7 +50,6 @@ const Wrapper = styled.div<WrapperProps>`
     ${(props) =>
       props.startOffset &&
       `
-        position: absolute;
         top: calc(${props.startOffset}px + 85px); 
     `}
   }
@@ -87,7 +85,7 @@ const Heading = styled.div<InvertItProps>`
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
-  padding: 0 0 18px 10px;
+  padding: 0 0 10px 10px;
   ${(props) =>
     props.invertedStyle &&
     `
@@ -202,18 +200,19 @@ export type BreadcrumbItemProps = {
   url: string;
   typename?: 'Subjecttype' | 'Subject' | 'Topic' | 'Subtopic' | 'SubSubtopic' | 'Home';
   isCurrent?: boolean | false;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 };
 
 type BreadCrumbProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   items: BreadcrumbItemProps[];
   startOffset?: number;
   isVisible?: boolean;
   invertedStyle?: boolean;
   leftAlign?: boolean;
   hideOnNarrow?: boolean;
-  onNav?: (e: React.MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
+  onNav?: (e: MouseEvent<HTMLElement>, item: BreadcrumbItemProps) => void;
+  messageBoxTagMessage?: string;
 };
 
 const Breadcrumblist = ({
@@ -225,6 +224,7 @@ const Breadcrumblist = ({
   leftAlign,
   hideOnNarrow,
   onNav,
+  messageBoxTagMessage,
 }: BreadCrumbProps) => {
   const { t } = useTranslation();
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
@@ -274,6 +274,7 @@ const Breadcrumblist = ({
         {items.length > 0 && (
           <>
             <Heading invertedStyle={invertedStyle}>{t('breadcrumb.youAreHere')}</Heading>
+            {messageBoxTagMessage && <MessageBoxTag tagMessage={messageBoxTagMessage} />}
             <List data-testid="breadcrumb-list">
               {items.map((item: BreadcrumbItemProps) => {
                 const { id, label, url, typename, icon, isCurrent = false } = item;
@@ -283,7 +284,7 @@ const Breadcrumblist = ({
                     <SafeLink
                       className="linkitem"
                       to={url}
-                      onClick={(e: React.MouseEvent<HTMLElement>) => {
+                      onClick={(e: MouseEvent<HTMLElement>) => {
                         onNav && onNav(e, item);
                       }}
                       aria-label={label}>

@@ -312,6 +312,20 @@ const messages = {
       h5p: 'Interaktiv',
     },
   },
+  messageBoxInfo: {
+    outdatedCoursePlan:
+      'Dette faget følger en utgått læreplan. Gå til faget som er oppdatert etter gjeldende læreplan:',
+    updateBrowser:
+      'Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på https://browsehappy.com.',
+    noContent: 'Vi har dessverre ikke noen programfag ennå.',
+    feide: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
+    resources:
+      'Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.',
+    beta: 'Dette faget er i betaversjon.',
+    outdatedSubject: 'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.',
+    newVersion:
+      'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
+  },
   article: {
     lastUpdated: 'Sist oppdatert',
     edition: 'Utgave',

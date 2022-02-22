@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { ChevronRight } from '@ndla/icons/common';
@@ -112,9 +112,10 @@ type Props = {
   hasError?: boolean;
   isOpen?: boolean;
   tiny?: boolean;
+  children?: ReactNode;
 };
 
-export const AccordionBar: React.FC<Props> = ({ title, children, panelId, hasError, isOpen, onClick, tiny }) => (
+export const AccordionBar = ({ title, children, panelId, hasError, isOpen, onClick, tiny }: Props) => (
   <StyledAccordionBar isOpen={isOpen} hasError={hasError} tiny={tiny}>
     <StyledButton
       type="button"

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
@@ -73,7 +72,7 @@ const StyledLetterSpacing = styled.span`
 type subjectProps = {
   name: string;
   url?: string;
-  path: string;
+  path?: string;
   id?: string;
 };
 type categoryProps = {
@@ -134,9 +133,9 @@ const renderList = (
   <StyledList>
     {sortAlphabetically(subjects).map((letter: any) => {
       return (
-        <React.Fragment key={letter.letter}>
+        <Fragment key={letter.letter}>
           {letter.items.map((subject: subjectProps, index: number) => (
-            <React.Fragment key={subject.name}>
+            <Fragment key={subject.name}>
               <StyledListItem>
                 {index === 0 && <StyledLetterItem subjectViewType={subjectViewType}>{letter.letter}</StyledLetterItem>}
                 {subjectViewType === 'checkbox' && subject.id ? (
@@ -160,7 +159,7 @@ const renderList = (
                           onNavigate();
                         }
                       }}
-                      to={subject.url || subject.path}>
+                      to={subject.url || subject.path || ''}>
                       {subject.name}
                     </SafeLink>
                     <StyledSpacingElement />
@@ -168,9 +167,9 @@ const renderList = (
                 )}
                 {letter.items.length - 1 === index && <StyledLetterSpacing />}
               </StyledListItem>
-            </React.Fragment>
+            </Fragment>
           ))}
-        </React.Fragment>
+        </Fragment>
       );
     })}
   </StyledList>

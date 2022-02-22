@@ -1,15 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { FormEvent, useEffect, useRef } from 'react';
 import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
-import { History } from 'history';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
-// @ts-ignore
 import { noScroll } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { SearchField } from '../Search';
 import { SearchFieldForm } from '../Search/SearchFieldForm';
-// @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';
 
@@ -52,16 +49,15 @@ type Props = {
   resourceToLinkProps: (resource: Resource) => {
     to: string;
   };
-  onSearch: (event: React.FormEvent) => void;
+  onSearch: (event: FormEvent) => void;
   allResultUrl: string;
-  searchResult: Array<ContentTypeResultType>;
+  searchResult?: Array<ContentTypeResultType>;
   loading: boolean;
-  history: History;
-  suggestion: string;
-  suggestionUrl: string;
+  suggestion?: string;
+  suggestionUrl?: string;
 };
 
-const FrontpageSearch: React.FunctionComponent<Props> = ({
+const FrontpageSearch = ({
   resourceToLinkProps,
   inputHasFocus,
   searchFieldValue,
@@ -73,10 +69,9 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   allResultUrl,
   searchResult,
   loading,
-  history,
   suggestion,
   suggestionUrl,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);
@@ -190,7 +185,6 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
               allResultUrl={allResultUrl}
               resourceToLinkProps={resourceToLinkProps}
               infoText={t('welcomePage.searchDisclaimer')}
-              history={history}
               suggestion={suggestion}
               suggestionUrl={suggestionUrl}
             />

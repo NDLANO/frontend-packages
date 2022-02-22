@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import LayoutItem, { OneColumn } from '../Layout';
-import { NavigationHeading } from '../Navigation';
 import ProgrammeSubjects from './ProgrammeSubjects';
 import { GradesProps } from './ProgrammeSubjects';
-
+import MessageBox from '../MessageBox/MessageBox';
+import { NavigationHeading } from '..';
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,9 +64,11 @@ const SubjectsWrapper = styled.div`
 type Props = GradesProps & {
   heading?: string;
   image?: string;
+  messageBoxText?: string;
 };
 
-export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade }: Props) => {
+export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade, messageBoxText }: Props) => {
+  const { t } = useTranslation();
   return (
     <StyledWrapper>
       <StyledBackground image={image} />
@@ -74,6 +77,7 @@ export const Programme = ({ heading, image, grades, selectedGrade, onChangeGrade
           <LayoutItem layout="extend">
             <StyledContentWrapper>
               <NavigationHeading>{heading}</NavigationHeading>
+              {messageBoxText && <MessageBox>{t(messageBoxText)}</MessageBox>}
               <SubjectsWrapper>
                 <ProgrammeSubjects grades={grades} selectedGrade={selectedGrade} onChangeGrade={onChangeGrade} />
               </SubjectsWrapper>

@@ -1,4 +1,4 @@
-import React, { Component, Fragment, Suspense } from 'react';
+import React, { Component, Fragment, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -17,7 +17,7 @@ const statusMessages = {
 
 const classes = BEMHelper('c-componentinfo');
 
-const SyntaxHighlighter = React.lazy(() => import('./wrappers/SyntaxHiglighter'));
+const SyntaxHighlighter = lazy(() => import('./wrappers/SyntaxHiglighter'));
 
 class ComponentInfo extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class ComponentInfo extends Component {
   }
 
   render() {
-    const { reactCode, messages, status, usesPropTypes, children } = this.props;
+    const { reactCode, messages, status, usesPropTypes, children, onSite, components } = this.props;
     const tabContent = [
       {
         title: 'Kode eksempel',
@@ -103,12 +103,25 @@ class ComponentInfo extends Component {
         content: messages.map((msg) => <p key={uuid()}>{msg}</p>),
       });
     }
+    if (onSite) {
+      tabContent.push({
+        title: 'På side',
+        content: onSite,
+      });
+    }
     if (children) {
       tabContent.unshift({
         title: 'Eksempel',
         content: children,
       });
     }
+    if (components) {
+      tabContent.unshift({
+        title: 'Komponenter',
+        content: components,
+      });
+    }
+
     return (
       <div {...classes('')}>
         <p {...classes('status-label', statusMessages[status][1])}>Status: {statusMessages[status][0]}</p>

@@ -143,7 +143,7 @@ interface Props extends StyledOptionProps {
   onClose?: () => void;
 }
 
-const PopupWrapper: React.FC<Props> = ({
+const PopupWrapper = ({
   children,
   label,
   position,
@@ -155,7 +155,7 @@ const PopupWrapper: React.FC<Props> = ({
   onOpen,
   onClose,
   buttonStyle,
-}) => {
+}: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const { t } = useTranslation();
   const setPopupState = (newState?: boolean) => {

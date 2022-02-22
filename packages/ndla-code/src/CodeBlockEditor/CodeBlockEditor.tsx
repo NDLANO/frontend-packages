@@ -6,7 +6,7 @@
  *
  */
 
-import React, { createRef, FC, useState } from 'react';
+import React, { ChangeEvent, createRef, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { useTranslation } from 'react-i18next';
 import { Code } from '@ndla/icons/editor';
@@ -71,7 +71,7 @@ interface CodeContentState {
   format: string;
 }
 
-const CodeBlockEditor: FC<Props> = ({ onSave, onAbort, content = null }) => {
+const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
   const { t } = useTranslation();
   const [defaultLang] = languageOptions;
   const [codeContent, setCodeContent] = useState<CodeContentState>({
@@ -82,7 +82,7 @@ const CodeBlockEditor: FC<Props> = ({ onSave, onAbort, content = null }) => {
 
   const titleRef = createRef<HTMLInputElement>();
 
-  const handleChangeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     const selectedLanguage = languageOptions.find((item: ICodeLangugeOption) => item.format === value);
     if (selectedLanguage) {

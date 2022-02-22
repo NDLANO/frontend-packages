@@ -1,12 +1,9 @@
 import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-//@ts-ignore
-import Modal from '@ndla/modal';
+import Modal, { ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
-import { Cross } from '@ndla/icons/action';
 
-import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, IconButton, PushGrid } from './Styles';
+import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
 import { stories } from './StaticInfoComponents';
 
 interface ModalContentProps {
@@ -15,7 +12,6 @@ interface ModalContentProps {
 }
 
 const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
-  const { t } = useTranslation();
   const useStory = stories[pageId] || {
     title: `Fant ingen veiledningstekster "${pageId}"`,
     lead: 'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
@@ -26,9 +22,7 @@ const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
         <InModalHeader>
           <InformationOutline style={{ position: 'absolute' }} />
           <Heading inModal>{useStory.title}</Heading>
-          <IconButton type="button" onClick={onClose} aria-label={t('close')}>
-            <Cross />
-          </IconButton>
+          <ModalCloseButton onClick={onClose} />
         </InModalHeader>
         {useStory.imageUrl && (
           <ImageWrapper>

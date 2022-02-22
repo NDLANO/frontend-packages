@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { openIndexesProps } from '../types';
@@ -38,10 +38,10 @@ type Props = {
   openIndexes: Array<openIndexesProps>;
   single?: boolean;
   tiny?: boolean;
-  children: (arg: childrenProps) => React.ReactElement;
+  children: (arg: childrenProps) => ReactElement;
 };
 
-export const Accordion: React.FC<Props> = ({ openIndexes, single, tiny, children }) => {
+export const Accordion = ({ openIndexes, single, tiny, children }: Props) => {
   const [currentOpenedIndexes, setOpenIndexes] = useState(openIndexes || []);
 
   const togglePanel = (index: openIndexesProps) => {

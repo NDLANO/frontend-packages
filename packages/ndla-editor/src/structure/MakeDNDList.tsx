@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Children, ReactElement } from 'react';
 import {
   DragDropContext,
   Droppable,
@@ -11,7 +11,6 @@ import {
 } from 'react-beautiful-dnd';
 import { colors } from '@ndla/core';
 import { css } from '@emotion/core';
-// @ts-ignore
 import { DragHorizontal } from '@ndla/icons/editor';
 
 const dropZone = css`
@@ -43,34 +42,31 @@ const MakeDndList = ({ disableDND, children, onDragEnd, dragHandle }: Props) => 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
-        {(provided: DroppableProvided, snapshot: DroppableStateSnapshot): React.ReactElement => (
+        {(provided: DroppableProvided, snapshot: DroppableStateSnapshot): ReactElement => (
           <div ref={provided.innerRef} css={snapshot.isDraggingOver && dropZone}>
-            {React.Children.map(
-              children,
-              (child: ReactElement<{ id: string; connectionId: string }>, index: number) => {
-                if (!child) {
-                  return null;
-                }
-                return (
-                  <Draggable key={child.props.id} draggableId={child.props.connectionId} index={index}>
-                    {(providedInner: DraggableProvided, snapshotInner: DraggableStateSnapshot) => (
-                      <div
-                        ref={providedInner.innerRef}
-                        {...providedInner.draggableProps}
-                        {...(dragHandle ? {} : providedInner.dragHandleProps)}
-                        css={[dragHandleWrapperStyle, snapshotInner.isDragging && draggingStyle]}>
-                        {dragHandle && (
-                          <div css={{ position: 'absolute' }} {...providedInner.dragHandleProps}>
-                            <DragHorizontal aria-hidden={true} />
-                          </div>
-                        )}
-                        {child}
-                      </div>
-                    )}
-                  </Draggable>
-                );
-              },
-            )}
+            {Children.map(children, (child: ReactElement<{ id: string; connectionId: string }>, index: number) => {
+              if (!child) {
+                return null;
+              }
+              return (
+                <Draggable key={child.props.id} draggableId={child.props.connectionId} index={index}>
+                  {(providedInner: DraggableProvided, snapshotInner: DraggableStateSnapshot) => (
+                    <div
+                      ref={providedInner.innerRef}
+                      {...providedInner.draggableProps}
+                      {...(dragHandle ? {} : providedInner.dragHandleProps)}
+                      css={[dragHandleWrapperStyle, snapshotInner.isDragging && draggingStyle]}>
+                      {dragHandle && (
+                        <div css={{ position: 'absolute' }} {...providedInner.dragHandleProps}>
+                          <DragHorizontal aria-hidden={true} />
+                        </div>
+                      )}
+                      {child}
+                    </div>
+                  )}
+                </Draggable>
+              );
+            })}
             {provided.placeholder}
           </div>
         )}

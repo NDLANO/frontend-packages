@@ -12,15 +12,15 @@ import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
 import { OneColumn } from '../Layout';
 import Spinner from '../Spinner';
-import { NDLAMovie } from './interfaces';
 import NavigationArrow from './NavigationArrow';
 import SlideshowIndicator from './SlideshowIndicator';
+import { MovieType } from './types';
 
 interface Props {
-  autoSlide: boolean;
-  randomStart: boolean;
-  slideshow: NDLAMovie[];
-  slideInterval: number;
+  autoSlide?: boolean;
+  randomStart?: boolean;
+  slideshow: MovieType[];
+  slideInterval?: number;
 }
 
 const classes = new BEMHelper({
@@ -31,7 +31,7 @@ const classes = new BEMHelper({
 const defaultTransitionSwipeEnd = 'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
 const defaultTransitionText = 'opacity 600ms ease';
 
-const renderSlideItem = (slide: NDLAMovie) => (
+const renderSlideItem = (slide: MovieType) => (
   <div
     {...classes('item')}
     key={slide.id}
@@ -205,6 +205,8 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
     activeSlide = 0;
   }
 
+  const backgroundImage = slideshow[activeSlide].metaImage;
+
   return (
     <section {...classes('')} {...handlers}>
       <>
@@ -237,9 +239,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
             role="img"
             onAnimationEnd={onChangedSlide}
             style={{
-              backgroundImage: `url(${
-                (slideshow[activeSlide].metaImage && slideshow[activeSlide].metaImage.url) || ''
-              })`,
+              backgroundImage: `url(${(backgroundImage && backgroundImage.url) || ''})`,
             }}
           />
         )}

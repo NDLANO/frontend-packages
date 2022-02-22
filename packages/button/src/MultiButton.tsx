@@ -6,13 +6,12 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
 import { css } from '@emotion/core';
-// @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
 
 // @ts-ignore
@@ -151,7 +150,7 @@ type Props = {
   disabled?: boolean;
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
-  children?: () => React.ReactElement;
+  children?: () => ReactElement;
 };
 
 export const MultiButton = ({

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "0.2.49",
+  "version": "0.2.51",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,13 +26,13 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.7.2"
+    "@ndla/core": "^0.7.3"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
     "react": "^16.4.2",
-    "react-device-detect": "^1.6.1",
+    "react-device-detect": "^2.1.2",
     "react-prop-types": "0.4.0"
   },
   "publishConfig": {

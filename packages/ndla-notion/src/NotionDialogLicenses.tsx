@@ -40,8 +40,8 @@ const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBo
   const licenseRights = license ? getLicenseByAbbreviation(license, locale).rights : [];
   const authorsLength = authors.length;
   const wrapLink = (source?: ReactNode) => {
-    if (source?.toString().startsWith('http')) {
-      return <a href={source.toString()}>{source}</a>;
+    if (typeof source === 'string' && source?.startsWith('http')) {
+      return <a href={source}>{source}</a>;
     }
     return source;
   };

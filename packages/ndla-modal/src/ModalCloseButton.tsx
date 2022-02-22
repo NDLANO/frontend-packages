@@ -6,14 +6,14 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
 import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
 
 interface Props {
-  title?: ReactNode;
+  title?: string;
   onClick: () => void;
   className?: string;
 }
@@ -32,7 +32,7 @@ const ModalClose = ({ title, onClick, className = '' }: Props) => {
   const { t } = useTranslation();
   return (
     <CloseBut onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('lukk')}>
-      <Cross style={{ width: '24px', height: '24px' }} title={title?.toString()} />
+      <Cross style={{ width: '24px', height: '24px' }} title={title} />
     </CloseBut>
   );
 };

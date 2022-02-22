@@ -40,7 +40,7 @@ const MessageBoxExample = () => {
               <MessageHeader>Full bredde topp</MessageHeader>
               <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
               <p>
-                <MessageBox type={MessageBoxType.fullpage} onClose>
+                <MessageBox type={MessageBoxType.fullpage} showCloseButton>
                   {messagesNB.messageBoxInfo.updateBrowser}
                 </MessageBox>
 
@@ -50,7 +50,7 @@ const MessageBoxExample = () => {
                     Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som kan
                     klikkes vekk eller ikke.
                   </p>
-                  <MessageBox type={MessageBoxType.medium} onClose>
+                  <MessageBox type={MessageBoxType.medium} showCloseButton>
                     <span>{messagesNB.messageBoxInfo.noContent}</span>
                   </MessageBox>
                 </MessageBoxWrapper>
@@ -66,7 +66,7 @@ const MessageBoxExample = () => {
                       { text: 'link2', href: 'www.facebook.com' },
                       { text: 'link3', href: 'www.facebook.com' },
                     ]}
-                    onClose>
+                    showCloseButton>
                     {messagesNB.messageBoxInfo.newVersion}
                   </MessageBox>
                 </MessageBoxWrapper>
@@ -97,12 +97,12 @@ const MessageBoxExample = () => {
           reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBoxType } from '@ndla/ui';
   
 //Direkte kall på fullpage sticky meldingsboks
-<MessageBox type={MessageBoxType.fullpage} onClose sticky={true}>
+<MessageBox type={MessageBoxType.fullpage} showCloseButton sticky={true}>
 {messagesNB.messageBoxInfo.updateBrowser}
 </MessageBox>
 
 //Direkte kall på standard meldingsboks
-<MessageBox type={MessageBoxType.medium} onClose>
+<MessageBox type={MessageBoxType.medium} showCloseButton>
 <span>{messagesNB.messageBoxInfo.noContent}</span>
 </MessageBox>
 
@@ -112,8 +112,7 @@ links={[
   { text: 'link1', href: 'www.facebook.com' },
   { text: 'link2', href: 'www.facebook.com' },
   { text: 'link3', href: 'www.facebook.com' },
-]}
-onClose>
+]}>
 {messagesNB.messageBoxInfo.newVersion}
 </MessageBox>
 
@@ -157,7 +156,7 @@ messageBoxTagMessage="Beta"
             {
               name: 'type',
               type: 'WrapperProps["boxType"]',
-              default: 'Undefined',
+              default: 'undefined',
               description:
                 'Enum som kan settes til "ghost", "fullpage" eller "medium" for å toggle mellom de forskjellige boksene',
             },
@@ -168,21 +167,21 @@ messageBoxTagMessage="Beta"
               description: 'Sticky gjør at meldingsboksen blir sticky og følger etter på scroll.',
             },
             {
-              name: 'onClose',
-              type: 'function',
-              default: 'Undefined',
+              name: 'showCloseButton',
+              type: 'boolean',
+              default: 'undefined',
               description: 'Setter på en kryss-knapp som lar brukeren trykke bort meldingsboksen',
             },
             {
               name: 'children',
               type: 'reference',
-              default: 'Undefined',
+              default: 'undefined',
               description: 'Innholdet i meldingsboksen',
             },
             {
               name: 'links',
               type: 'LinkProps[]',
-              default: 'Undefined',
+              default: 'undefined',
               description: 'list tar inn objekter med to streng properties, text og href',
             },
             {

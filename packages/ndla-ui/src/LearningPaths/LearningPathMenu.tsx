@@ -71,17 +71,14 @@ const StyledToggleMenubutton = styled.button`
 
 export type StepProps = {
   title: string;
-  metaUrl: string;
   type: string;
   id: number;
-  current?: boolean;
 };
 
 interface Props {
   learningsteps: StepProps[];
   name: string;
   lastUpdated: string;
-  language: string;
   copyright: {
     contributors: {
       type: string;
@@ -89,8 +86,6 @@ interface Props {
     }[];
     license: {
       license: string;
-      description: string;
-      url: string;
     };
   };
   learningPathURL: string;
@@ -101,7 +96,6 @@ interface Props {
   };
   learningPathId: number;
   toLearningPathUrl(pathId: number, stepId: number): string;
-  showLearningPathButton: Object;
 }
 
 const LearningPathMenu = ({

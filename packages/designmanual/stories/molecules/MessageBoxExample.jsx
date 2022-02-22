@@ -66,7 +66,7 @@ const MessageBoxExample = () => {
                       { text: 'link2', href: 'www.facebook.com' },
                       { text: 'link3', href: 'www.facebook.com' },
                     ]}
-                    onClose>
+                    showCloseButton>
                     {messagesNB.messageBoxInfo.newVersion}
                   </MessageBox>
                 </MessageBoxWrapper>

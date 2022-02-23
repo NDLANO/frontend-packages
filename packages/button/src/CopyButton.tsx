@@ -35,7 +35,7 @@ class CopyButton extends Component<Props, State> {
     this.exitCopyState = this.exitCopyState.bind(this);
   }
 
-  timer: NodeJS.Timeout | null;
+  timer: ReturnType<typeof setTimeout> | null;
 
   componentWillUnmount() {
     if (this.timer) {

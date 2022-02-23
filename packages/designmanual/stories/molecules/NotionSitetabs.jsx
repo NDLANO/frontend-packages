@@ -379,7 +379,7 @@ const NotionSiteTabs = () => {
                             notionBlocks={[{ type: 'image' }, { type: 'H5P' }, { type: 'video' }]}></NotionListExample>
                           <p>
                             En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
-                            kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
+                            kunde. I løpet av noend få minutter skal du få andre til å tenne på idéen din og se
                             potensialet i den.
                           </p>
                           <p>

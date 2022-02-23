@@ -202,13 +202,7 @@ export const ArticleNotions = ({
               </ModalHeadingContainer>
               <NotionsContainer>
                 {notions.map((notion) => (
-                  <Notion
-                    key={notion.id}
-                    locale={locale}
-                    onReferenceClick={onReferenceClick}
-                    renderMarkdown={renderMarkdown}
-                    {...notion}
-                  />
+                  <Notion key={notion.id} renderMarkdown={renderMarkdown} {...notion} />
                 ))}
               </NotionsContainer>
               {relatedContent.length > 0 && (

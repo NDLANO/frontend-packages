@@ -6,15 +6,13 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
 import { css } from '@emotion/core';
-// @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
 
-// @ts-ignore
 import { Button, buttonStyle, outlineStyle, largeStyle } from './Button';
 
 const StyledWrapper = styled.div`
@@ -150,7 +148,7 @@ type Props = {
   disabled?: boolean;
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
-  children?: () => React.ReactElement;
+  children?: () => ReactElement;
 };
 
 export const MultiButton = ({

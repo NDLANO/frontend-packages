@@ -9,7 +9,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// @ts-ignore
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
 import { WithTranslation, withTranslation } from 'react-i18next';
@@ -104,20 +103,18 @@ type Props = {
     }[];
     license: {
       license: string;
-      description: string;
-      url: string;
     };
   };
 };
 
-const LearningPathMenuAside: React.FunctionComponent<Props & WithTranslation> = ({
+const LearningPathMenuAside = ({
   lastUpdated,
   learningPathURL,
   copyright,
   isOpen,
   invertedStyle,
   t,
-}) => (
+}: Props & WithTranslation) => (
   <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
     <div css={learningPathDetailsCSS}>
       <Time />

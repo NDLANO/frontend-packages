@@ -45,10 +45,10 @@ Get component name of a React component. Useful in HOCs.
 import { getComponentName } from '@ndla/util';
 
 const withHOC = (WrappedComponent) => {
-  class NameOfHoc extends React.Component {
+  class NameOfHoc extends Component {
     ....
     render() {
-      return React.createElement(WrappedComponent, nextProps);
+      return createElement(WrappedComponent, nextProps);
     }
   }
 

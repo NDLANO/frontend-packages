@@ -6,14 +6,13 @@
  *
  */
 
-import React, { FC, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
@@ -80,7 +79,7 @@ type Props = {
   showCopy?: boolean;
 };
 
-export const Codeblock: FC<Props> = ({ actionButton, code, format, showCopy = false, title }) => {
+export const Codeblock = ({ actionButton, code, format, showCopy = false, title }: Props) => {
   const { t } = useTranslation();
   const [isCopied, setIsCopied] = useState(false);
 

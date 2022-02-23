@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component, MutableRefObject, ReactNode, KeyboardEvent } from 'react';
+import React, { Component, MutableRefObject, ReactNode, KeyboardEvent, createRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ArrowDropDown } from '@ndla/icons/common';
 import debounce from 'lodash/debounce';
@@ -60,8 +60,8 @@ class FilterTabs extends Component<Props, State> {
     this.liRefs = {};
     this.tabWidths = null;
     this.dropdownTabWidth = null;
-    this.dropdownTabRef = React.createRef();
-    this.containerRef = React.createRef();
+    this.dropdownTabRef = createRef();
+    this.containerRef = createRef();
     this.showSelectedTab = false;
   }
 

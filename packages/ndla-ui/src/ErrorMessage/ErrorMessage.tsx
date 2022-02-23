@@ -54,14 +54,9 @@ interface Props {
   };
   illustrationElement?: ReactNode;
   customElement?: ReactNode;
+  children?: ReactNode;
 }
-export const ErrorMessage: React.FunctionComponent<Props> = ({
-  children,
-  messages,
-  illustration,
-  illustrationElement,
-  customElement,
-}) => (
+export const ErrorMessage = ({ children, messages, illustration, illustrationElement, customElement }: Props) => (
   <StyledErrorMessage>
     {illustration && (
       <IllustrationWrapper>

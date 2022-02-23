@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
@@ -36,7 +36,7 @@ type ArticleWrapperProps = {
   children: ReactNode;
 };
 
-export const ArticleWrapper = React.forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
+export const ArticleWrapper = forwardRef<HTMLElement, ArticleWrapperProps>(({ children, modifier, id }, ref) => (
   <article id={id} {...classes(undefined, modifier)} ref={ref}>
     {children}
   </article>
@@ -195,7 +195,7 @@ export const Article = ({
 
           {messages.messageBox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks} onClose>
+              <MessageBox links={messageBoxLinks} showCloseButton>
                 {messages.messageBox}
               </MessageBox>
             </MSGboxWrapper>

@@ -401,6 +401,9 @@ const messages = {
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',
     copyText: {
+      now: 'nå',
+      podcast: 'podkast',
+      by: 'av',
       internet: '[Internett]. ',
       noTitle: 'Uten tittel',
       downloadedFrom: 'Hentet fra: ',

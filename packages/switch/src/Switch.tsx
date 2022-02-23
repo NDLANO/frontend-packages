@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { ChangeEventHandler, ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, fonts, spacing, spacingUnit, utils } from '@ndla/core';
@@ -129,10 +129,11 @@ type Props = {
   label: string;
   id: string;
   disabled?: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  children?: ReactNode;
 };
 
-const Switch: React.FunctionComponent<Props> = ({ onChange, checked, disabled, id, label, ...rest }) => {
+const Switch = ({ onChange, checked, disabled, id, label, ...rest }: Props) => {
   const [hasFocus, setFocusState] = useState(false);
   return (
     <StyledSwitch {...rest} hasFocus={hasFocus}>

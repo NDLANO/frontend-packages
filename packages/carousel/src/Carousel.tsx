@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import { SwipeEventData, useSwipeable } from 'react-swipeable';
 import { slideWrapperCSS, StyledButton, StyledSlideContent } from './Styles';
@@ -20,7 +20,7 @@ export interface CalculatedProps {
 }
 
 interface Props extends CalculatedProps {
-  items: React.ReactNode[];
+  items: ReactNode[];
   slideBackwardsLabel: string;
   slideForwardsLabel: string;
   buttonClass: string;

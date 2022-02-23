@@ -9,7 +9,6 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-// @ts-ignore
 import Button from '@ndla/button';
 
 import SearchFieldHeader from './SearchFieldHeader';

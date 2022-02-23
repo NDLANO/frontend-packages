@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
 import { WithTranslation, withTranslation } from 'react-i18next';
@@ -43,7 +43,7 @@ type Props = {
   title: string;
   introduction: string;
   topics: ItemProps[];
-  onSelectTopic?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
+  onSelectTopic?: (event: MouseEvent<HTMLElement>, id?: string) => void;
 };
 
 const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t }: Props & WithTranslation) => (

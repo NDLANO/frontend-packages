@@ -6,13 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
-// @ts-ignore
 import { ModalCloseButton } from '@ndla/modal';
-// @ts-ignore
 import { withTranslation, WithTranslation } from 'react-i18next';
 // import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
@@ -59,7 +57,7 @@ const HeadingCount = styled.span`
 type Props = {
   totalCount: number;
   onRemove: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const SearchNotionsResult = ({ totalCount, onRemove, children }: Props & WithTranslation) => {

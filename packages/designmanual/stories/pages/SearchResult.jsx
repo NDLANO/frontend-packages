@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 
 import {
   SearchTypeResult,
@@ -217,7 +217,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
   const [subjectItems] = React.useState(subjectTypeResults);
   const [unGroupedResult, setUngroupedResult] = React.useState(() => unGroupedResourceResult.slice(0, PAGESIZE_SINGLE));
 
-  const [resourceItems, dispatchResources] = React.useReducer(resourcesReducer, initialResourceResults);
+  const [resourceItems, dispatchResources] = useReducer(resourcesReducer, initialResourceResults);
 
   const handleFilterClick = (type, filterId) => {
     // For now changing filters does nothing except toggling on and of

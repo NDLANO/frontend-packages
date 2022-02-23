@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { memo } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import SearchItem, { SearchItemType } from './SearchItem';
@@ -66,4 +66,4 @@ const SearchItems = ({ items, type, viewType = 'grid' }: Props) => {
   );
 };
 
-export default React.memo(SearchItems);
+export default memo(SearchItems);

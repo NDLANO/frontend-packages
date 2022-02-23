@@ -3,7 +3,6 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';
-//@ts-ignore
 import Modal, { ModalBody, ModalHeader, ModalCloseButton } from '@ndla/modal';
 import Tooltip from '@ndla/tooltip';
 import { Switch } from '@ndla/switch';

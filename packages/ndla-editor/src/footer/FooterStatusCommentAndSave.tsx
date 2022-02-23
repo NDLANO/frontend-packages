@@ -6,16 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors } from '@ndla/core';
-// @ts-ignore
 import { Back } from '@ndla/icons/common';
-// @ts-ignore
 import { Check } from '@ndla/icons/editor';
-// @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { checkItemStyle } from './FooterStatus';
 
 const StyledButtonWrapper = styled.div`
@@ -57,7 +53,7 @@ type Props = {
   goBack(): void;
   onCancel(): void;
   onSave(): void;
-  onChangeComment(event: React.ChangeEvent<HTMLInputElement>): void;
+  onChangeComment(event: ChangeEvent<HTMLInputElement>): void;
   messages: {
     back: string;
     newStatusPrefix: string;
@@ -76,7 +72,7 @@ type Props = {
   comment: string;
 };
 
-const FooterStatusCommentAndSave: React.FC<Props> = ({
+const FooterStatusCommentAndSave = ({
   goBack,
   onCancel,
   onSave,
@@ -85,7 +81,7 @@ const FooterStatusCommentAndSave: React.FC<Props> = ({
   changeStatusTo,
   warn,
   comment,
-}) => (
+}: Props) => (
   <>
     <StyledBackButton onClick={goBack}>
       <Back />

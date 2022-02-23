@@ -7,9 +7,7 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { Spinner } from '@ndla/ui';
 
 const ResourceStats = () => {

@@ -6,8 +6,7 @@
  *
  */
 
-import React, { useRef, useImperativeHandle } from 'react';
-// @ts-ignore
+import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
@@ -16,14 +15,14 @@ import * as H from 'history';
 interface Props {
   classes: BEMHelper<ReturnObject>;
   isCurrent: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   to: H.LocationDescriptor;
   home: boolean;
   name: string;
   invertedStyle: boolean;
 }
 
-const BreadcrumbItem = React.forwardRef<any, Props>(
+const BreadcrumbItem = forwardRef<any, Props>(
   ({ to, children, classes, isCurrent, home, invertedStyle, name }, ref) => {
     const liRef = useRef<any>();
     useImperativeHandle(ref, () => ({

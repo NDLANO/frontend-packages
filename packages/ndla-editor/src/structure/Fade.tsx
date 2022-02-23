@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { animations } from '@ndla/core';
 import css from '@emotion/css';
 
 type Props = {
   show?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   fadeType: FadeType;
 };
 
@@ -17,7 +17,7 @@ const fadeOut = (fadeIn: FadeType): 'fadeOutTop' | 'fadeOutBottom' | 'fadeOutSca
   return 'fadeOut';
 };
 
-const Fade: React.FC<Props> = ({ show = true, fadeType, children }) => {
+const Fade = ({ show = true, fadeType, children }: Props) => {
   const [shouldRender, setRender] = useState(show);
 
   useEffect(() => {

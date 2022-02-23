@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import FrontpageHeaderIllustration from './illustrations/FrontpageHeaderIllustration';
-// @ts-ignore
 import SvgLogo from '../Logo/SvgLogo';
 
 const StyledHeader = styled.div`
@@ -52,14 +51,10 @@ const HeaderIllustrationWrapper = styled.div`
 export type FrontPageHeaderProps = {
   locale: string;
   showHeader: boolean;
+  children?: ReactNode;
 };
 
-const FrontpageHeader: React.FunctionComponent<FrontPageHeaderProps & WithTranslation> = ({
-  locale,
-  showHeader = true,
-  children,
-  t,
-}) => (
+const FrontpageHeader = ({ locale, showHeader = true, children, t }: FrontPageHeaderProps & WithTranslation) => (
   <StyledHeaderWrapper>
     <StyledHeader>
       <StyledLogo to="/" aria-label={t('logo.altText')}>

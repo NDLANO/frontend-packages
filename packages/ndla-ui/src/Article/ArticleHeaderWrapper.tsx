@@ -9,7 +9,6 @@
 import React, { Component, ComponentType, ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { withTranslation, WithTranslation } from 'react-i18next';
-// @ts-ignore
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';
 import { fonts, colors } from '@ndla/core';

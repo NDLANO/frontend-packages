@@ -6,14 +6,13 @@
  *
  */
 
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, RefObject, useEffect, useRef, useState } from 'react';
 import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import throttle from 'lodash/throttle';
 import { breakpoints, mq, spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-// @ts-ignore
 import { makeSrcQueryString } from '../Image';
 import { MovieType } from './types';
 import { isLetter } from './isLetter';
@@ -178,11 +177,11 @@ const hasForEachPolyfill = () => {
   }
 };
 
-const AllMoviesAlphabetically: React.FunctionComponent<Props> = ({ movies, locale }) => {
+const AllMoviesAlphabetically = ({ movies, locale }: Props) => {
   const isIE11 = isIE && parseInt(browserVersion) < 12;
   // Split into Letters.
   let previousLetter = '';
-  const wrapperRef: React.RefObject<HTMLElement> = React.useRef(null);
+  const wrapperRef: RefObject<HTMLElement> = useRef(null);
   const [visibleImages, setVisibleImages] = useState<visibleImagesProps>({});
 
   const scrollEvent = () => {

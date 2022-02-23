@@ -10,10 +10,8 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-// @ts-ignore
 import Button, { appearances } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts, spacingUnit } from '@ndla/core';
-// @ts-ignore
 import { ChevronDown } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import LanguageSelectorContent from './LanguageSelectorContent';

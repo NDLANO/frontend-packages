@@ -6,12 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 // @ts-ignore
 import Button from '@ndla/button';
@@ -90,7 +89,7 @@ type Props = {
   filters: FilterProps[];
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
-  customElements?: React.ReactElement[];
+  customElements?: ReactElement[];
   onClickShowHiddenSubjects: () => void;
 };
 

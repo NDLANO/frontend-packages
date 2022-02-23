@@ -7,7 +7,6 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-// @ts-ignore
 import { SwipeEventData, useSwipeable } from 'react-swipeable';
 import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
@@ -206,6 +205,8 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
     activeSlide = 0;
   }
 
+  const backgroundImage = slideshow[activeSlide].metaImage;
+
   return (
     <section {...classes('')} {...handlers}>
       <>
@@ -238,9 +239,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
             role="img"
             onAnimationEnd={onChangedSlide}
             style={{
-              backgroundImage: `url(${
-                (slideshow[activeSlide].metaImage && slideshow[activeSlide].metaImage.url) || ''
-              })`,
+              backgroundImage: `url(${(backgroundImage && backgroundImage.url) || ''})`,
             }}
           />
         )}

@@ -1,14 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { FormEvent, useEffect, useRef } from 'react';
 import { isIE, browserVersion, isMobileSafari } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
-// @ts-ignore
 import { noScroll } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { SearchField } from '../Search';
 import { SearchFieldForm } from '../Search/SearchFieldForm';
-// @ts-ignore
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';
 
@@ -51,7 +49,7 @@ type Props = {
   resourceToLinkProps: (resource: Resource) => {
     to: string;
   };
-  onSearch: (event: React.FormEvent) => void;
+  onSearch: (event: FormEvent) => void;
   allResultUrl: string;
   searchResult?: Array<ContentTypeResultType>;
   loading: boolean;
@@ -59,7 +57,7 @@ type Props = {
   suggestionUrl?: string;
 };
 
-const FrontpageSearch: React.FunctionComponent<Props> = ({
+const FrontpageSearch = ({
   resourceToLinkProps,
   inputHasFocus,
   searchFieldValue,
@@ -73,7 +71,7 @@ const FrontpageSearch: React.FunctionComponent<Props> = ({
   loading,
   suggestion,
   suggestionUrl,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
   const searchFieldRef = useRef<HTMLDivElement>(null);

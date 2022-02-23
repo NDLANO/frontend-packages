@@ -8,11 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
-import {
-  MenuBook,
-  // @ts-ignore
-} from '@ndla/icons/action';
+import { MenuBook } from '@ndla/icons/action';
 import { fonts } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import CompetenceGoalItem from './CompetenceGoalItem';

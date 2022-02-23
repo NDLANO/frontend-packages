@@ -9,7 +9,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import Portrait from '../Portrait';

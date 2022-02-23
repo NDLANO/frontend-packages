@@ -8,10 +8,8 @@
 import React, { FormEvent, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-// @ts-ignore
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { spacing } from '@ndla/core';
-// @ts-ignore
 import { Cross as CrossIcon } from '@ndla/icons/action';
 
 import { useTranslation } from 'react-i18next';
@@ -72,14 +70,14 @@ type Props = {
   isNarrowScreen?: boolean;
 };
 
-const SearchFieldHeader: React.FC<Props & SubjectFilterProps> = ({
+const SearchFieldHeader = ({
   value,
   onSubmit,
   onChange,
   filters,
   activeFilters,
   isNarrowScreen,
-}) => {
+}: Props & SubjectFilterProps) => {
   const { t } = useTranslation();
   const [hasFocus, setHasFocus] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);

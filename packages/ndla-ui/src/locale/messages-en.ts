@@ -480,6 +480,9 @@ const messages = {
     embed: 'Embed',
     embedCopied: 'Copied embed code!',
     copyText: {
+      now: 'now',
+      podcast: 'podcast',
+      by: 'by',
       internet: '[Internet]. ',
       noTitle: 'No title',
       downloadedFrom: 'Downloaded from: ',

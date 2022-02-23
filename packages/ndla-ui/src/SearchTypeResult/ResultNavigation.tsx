@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';

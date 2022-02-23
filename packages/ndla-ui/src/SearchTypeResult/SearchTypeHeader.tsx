@@ -6,14 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { MouseEvent, memo } from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
-// @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
 
@@ -110,7 +108,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type, t }: 
               size="xsmall"
               borderShape="rounded"
               greyLighter={!option.active}
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              onClick={(e: MouseEvent<HTMLButtonElement>) => {
                 if (e.currentTarget && option.active) {
                   e.currentTarget.blur();
                 }
@@ -132,4 +130,4 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type, t }: 
   </Wrapper>
 );
 
-export default React.memo(withTranslation()(SearchTypeHeader));
+export default memo(withTranslation()(SearchTypeHeader));

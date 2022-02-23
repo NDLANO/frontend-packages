@@ -6,11 +6,9 @@
  *
  */
 
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-
-// @ts-ignore
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
 import { mq, breakpoints } from '@ndla/core';
 // @ts-ignore

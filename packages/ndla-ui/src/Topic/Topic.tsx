@@ -6,15 +6,13 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 
 import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
-// @ts-ignore
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
-// @ts-ignore
 import Button from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/core';
@@ -212,7 +210,7 @@ const StyledNavigationBoxWrapper = styled.div`
 
 type VisualElementProps = {
   type: 'image' | 'video' | 'other';
-  element: React.ReactNode;
+  element: ReactNode;
 };
 
 export type TopicProps = {
@@ -226,10 +224,10 @@ export type TopicProps = {
       focalPoint?: ImageFocalPoint;
     };
     visualElement?: VisualElementProps;
-    resources?: React.ReactNode;
+    resources?: ReactNode;
   };
   subTopics?: ItemProps[] | null | undefined;
-  onSubTopicSelected?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
+  onSubTopicSelected?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   isLoading?: boolean;
   renderMarkdown?: (text: string) => string;
   invertedStyle?: boolean;
@@ -237,7 +235,7 @@ export type TopicProps = {
   showContent?: boolean;
   isAdditionalTopic?: boolean;
   frame?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const Topic = ({
@@ -281,8 +279,6 @@ const Topic = ({
                                   topic.image.focalPoint,
                                 )}`}
                                 alt={topic.image.alt}
-                                crop={topic.image.crop}
-                                focalPoint={topic.image.focalPoint}
                               />
                               <TopicHeaderOverlay />
                             </ShowVisualElementWrapper>
@@ -319,8 +315,6 @@ const Topic = ({
                     <TopicHeaderImage
                       src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
                       alt={topic.image.alt}
-                      crop={topic.image.crop}
-                      focalPoint={topic.image.focalPoint}
                     />
                   )}
                 </TopicHeaderVisualElementWrapper>

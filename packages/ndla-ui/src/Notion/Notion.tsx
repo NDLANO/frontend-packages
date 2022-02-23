@@ -9,14 +9,12 @@
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import HTMLReactParser from 'html-react-parser';
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { keyframes } from '@emotion/core';
-// @ts-ignore
 import Button from '@ndla/button';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { CursorClick } from '@ndla/icons/action';
 import { Play, ArrowCollapse } from '@ndla/icons/common';
-// @ts-ignore
 import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
 
 const NotionContainer = styled.div``;
@@ -177,7 +175,7 @@ export type NotionProps = {
   id: string | number;
   labels?: string[];
   renderMarkdown?: (text: string) => string;
-  text: React.ReactNode;
+  text: ReactNode;
   title: string;
   visualElement?: VisualElementProps;
   imageElement?: React.ReactNode;

@@ -1,9 +1,6 @@
-import React, { ReactChild, ReactChildren } from 'react';
-// @ts-ignore
+import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import Modal from '@ndla/modal';
-// @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
@@ -15,7 +12,7 @@ import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;
-  children: (arg: Function) => ReactChild | ReactChildren | React.ReactNode;
+  children: (arg: Function) => ReactChild | ReactChildren | ReactNode;
   hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
 }
@@ -112,13 +109,13 @@ const extraBackdrop = css`
   box-shadow: ${shadows.searchHeader};
 `;
 
-const MastheadSearchModal: React.FC<Props & WithTranslation> = ({
+const MastheadSearchModal = ({
   onClose: onSearchClose,
   children,
   hideOnNarrowScreen,
   ndlaFilm,
   t,
-}) => (
+}: Props & WithTranslation) => (
   <Modal
     backgroundColor="grey"
     animation="slide-down"

@@ -6,10 +6,9 @@
  *
  */
 
-import React from 'react';
+import React, { memo, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-// @ts-ignore
 import Spinner from '../Spinner';
 import constants from '../model';
 import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
@@ -59,7 +58,7 @@ type Props = {
   pagination?: PaginationType;
   type?: ContentType;
   loading?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
   viewType?: 'grid' | 'list';
 };
 
@@ -89,4 +88,4 @@ const SearchTypeResult = ({
   </Wrapper>
 );
 
-export default React.memo(SearchTypeResult);
+export default memo(SearchTypeResult);

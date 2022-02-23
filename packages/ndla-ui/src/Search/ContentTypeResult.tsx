@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-// @ts-ignore
+import React, { useState, useEffect, useRef, ReactElement } from 'react';
 import Button from '@ndla/button';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
-// @ts-ignore
 import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultType, Resource } from '../types';
 import {
@@ -24,7 +20,7 @@ import {
 } from './ContentTypeResultStyles';
 import { isPathToHighlight } from './IsPathToHighlight';
 
-const renderAdditionalIcon = (label: string, isAdditional?: boolean): React.ReactElement | null => {
+const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactElement | null => {
   if (isAdditional && label) {
     return (
       <Tooltip tooltip={label} align="top" css={tooltipStyle}>
@@ -58,7 +54,7 @@ type Props = {
   unGrouped?: boolean;
 };
 
-const ContentTypeResult: React.FC<Props> = ({
+const ContentTypeResult = ({
   contentTypeResult,
   onNavigate,
   defaultCount,
@@ -70,7 +66,7 @@ const ContentTypeResult: React.FC<Props> = ({
   inMenu,
   animateList,
   unGrouped,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const [showAll, toggleShowAll] = useState(false);
   const showAllRef = useRef<HTMLLIElement>(null);

@@ -3,7 +3,6 @@ import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { withTranslation, WithTranslation } from 'react-i18next';
-// @ts-ignore
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
@@ -75,7 +74,7 @@ type Props = {
   topics?: { url: string; title: string; id: string }[];
 };
 
-const FrontpageMultidisciplinarySubject: React.FunctionComponent<Props & WithTranslation> = ({ url, t, topics }) => (
+const FrontpageMultidisciplinarySubject = ({ url, t, topics }: Props & WithTranslation) => (
   <StyledSection>
     <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
     <Wrapper>

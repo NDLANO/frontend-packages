@@ -11,7 +11,6 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
-//@ts-ignore
 import Button from '@ndla/button';
 //@ts-ignore
 import { Input } from '@ndla/forms';

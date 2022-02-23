@@ -14,7 +14,6 @@ import SafeLink from '@ndla/safelink';
 import { animations, colors, fonts, spacing } from '@ndla/core';
 
 import { ContentType } from './SearchTypeResult';
-// @ts-ignore
 import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';

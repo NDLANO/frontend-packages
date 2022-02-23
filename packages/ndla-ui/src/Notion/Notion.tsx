@@ -9,9 +9,9 @@
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import HTMLReactParser from 'html-react-parser';
-        
+
 // @ts-ignore MouseEventHandler, ReactNode
-import React, { Fragment, MouseEventHandler, ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import { keyframes } from '@emotion/core';
 import Button from '@ndla/button';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';

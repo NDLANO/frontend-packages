@@ -8,6 +8,8 @@
 
 /* eslint-env jest */
 
+// Adding @ndla/ui to package.json would cause circular dependency.
+import { i18nInstance } from '@ndla/ui';
 import {
   getCopyString,
   figureApa7CopyString,
@@ -18,9 +20,6 @@ import {
   getDateString,
   getYearString,
 } from '../getCopyString';
-
-// Adding @ndla/ui to package.json would cause circular dependency.
-import { i18nInstance } from '@ndla/ui';
 const tNB = i18nInstance.getFixedT('nb');
 const tEN = i18nInstance.getFixedT('en');
 

@@ -93,7 +93,17 @@ export const getDateString = (locale: string, date?: string) => {
   return formatDate(new Date(), locale);
 };
 
-export const getYearString = (
+export const getYearString = (date: string) => {
+  if (date) {
+    const dateObject = new Date(date);
+    if (dateObject && !isNaN(dateObject.getTime())) {
+      return dateObject.getFullYear() + ', ';
+    }
+  }
+  return '';
+};
+
+export const getYearDurationString = (
   start: string | number | undefined,
   end: string | number | undefined,
   t: TranslationFunction,
@@ -112,7 +122,7 @@ export const getYearString = (
 
 export const figureApa7CopyString = (
   title: string | undefined,
-  year: number | string | undefined,
+  date: string | undefined,
   src: string | undefined,
   path: string | undefined,
   copyright: Partial<CopyrightType> | undefined,
@@ -121,7 +131,7 @@ export const figureApa7CopyString = (
   t: TranslationFunction,
 ): string => {
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
-  const yearString = year ? `${year}, ` : '';
+  const yearString = date ? getYearString(date) : '';
   const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], true, false, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
   const licenseString = license ? license + '.' : '';
@@ -161,7 +171,7 @@ export const podcastSeriesApa7CopyString = (
   const creators = getCreditString(copyright?.creators || copyright?.rightsholders || [], false, true, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
-  const yearString = getYearString(startYear, endYear, t);
+  const yearString = getYearDurationString(startYear, endYear, t);
   const metaString = `[Audio ${t('license.copyText.podcast')}]. `;
 
   // Ex: Nordmann, O. (Rolle). (2020, 11. januar). Tittel [Audio podkast]. https://ndla.no/podkast/1

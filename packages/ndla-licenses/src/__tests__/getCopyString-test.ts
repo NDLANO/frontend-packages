@@ -27,25 +27,25 @@ const tEN = i18nInstance.getFixedT('en');
 // Utils
 test('getCreditString returns correct content', () => {
   const roles = [
-    { name: 'Anna Etternavn', type: 'photographer' },
+    { name: 'Anna Langt Etternavn', type: 'photographer' },
     { name: 'Bendik Person', type: 'artist' },
     { name: 'Bendik Test', type: 'artist' },
   ];
 
   const creditStringWithOnePerson = getCreditString([roles[0]], false, false, tNB);
-  expect(creditStringWithOnePerson).toEqual('Etternavn, A. ');
+  expect(creditStringWithOnePerson).toEqual('Etternavn, A. L. ');
 
   const creditStringWithTwoPeople = getCreditString(roles.slice(0, 2), false, false, tNB);
-  expect(creditStringWithTwoPeople).toEqual('Etternavn, A. & Person, B. ');
+  expect(creditStringWithTwoPeople).toEqual('Etternavn, A. L. & Person, B. ');
 
   const creditStringWithMultiplePeople = getCreditString(roles, false, false, tNB);
-  expect(creditStringWithMultiplePeople).toEqual('Etternavn, A., Person, B. & Test, B. ');
+  expect(creditStringWithMultiplePeople).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
 
   const creditStringWithRoles = getCreditString(roles.slice(0, 2), false, true, tNB);
-  expect(creditStringWithRoles).toEqual('Etternavn, A. (Fotograf) & Person, B. (Kunstner). ');
+  expect(creditStringWithRoles).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
 
   const creditStringWithPrefix = getCreditString(roles.slice(0, 2), true, false, tNB);
-  expect(creditStringWithPrefix).toEqual('av Etternavn, A. & Person, B. ');
+  expect(creditStringWithPrefix).toEqual('av Etternavn, A. L. & Person, B. ');
 });
 
 test('getDateString returns correct content', () => {

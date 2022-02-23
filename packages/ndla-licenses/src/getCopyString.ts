@@ -34,7 +34,13 @@ export const getCreditString = (roles: Contributor[], byPrefix: boolean, withRol
   }
   const credits = roles.map((creator) => {
     const [lastName, ...names] = creator.name.split(' ').reverse();
-    const initials = names.length ? ', ' + names.map((name) => name[0] + '.') : '.';
+    const initials = names.length
+      ? ', ' +
+        names
+          .reverse()
+          .map((name) => name[0] + '.')
+          .join(' ')
+      : '.';
     const role = withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
     return lastName + initials + role;
   });

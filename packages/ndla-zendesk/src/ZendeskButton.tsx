@@ -7,9 +7,8 @@
  */
 
 import { css, Global } from '@emotion/core';
-import React, { HTMLProps, ReactNode, useState } from 'react';
-//@ts-ignore
-import Button from '@ndla/button';
+import React, { ReactNode, useState } from 'react';
+import Button, { ButtonProps } from '@ndla/button';
 import { mq, breakpoints, spacing } from '@ndla/core';
 
 const styling = css`
@@ -25,7 +24,7 @@ const styling = css`
   }
 `;
 
-interface Props extends HTMLProps<HTMLButtonElement> {
+interface Props extends ButtonProps {
   children: ReactNode;
   locale: string;
   widgetKey: string;

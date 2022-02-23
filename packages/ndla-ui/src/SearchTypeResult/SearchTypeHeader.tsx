@@ -8,7 +8,6 @@
 
 import React, { MouseEvent, memo } from 'react'; // useMemo , { Children }
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { WithTranslation, withTranslation } from 'react-i18next';

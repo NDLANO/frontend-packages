@@ -9,7 +9,6 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-// @ts-ignore
 import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';

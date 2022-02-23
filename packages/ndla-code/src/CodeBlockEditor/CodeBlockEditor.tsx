@@ -10,7 +10,6 @@ import React, { ChangeEvent, createRef, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { useTranslation } from 'react-i18next';
 import { Code } from '@ndla/icons/editor';
-// @ts-ignore
 import Button from '@ndla/button';
 // @ts-ignore
 import { highlight, languages } from 'prismjs/components/prism-core';

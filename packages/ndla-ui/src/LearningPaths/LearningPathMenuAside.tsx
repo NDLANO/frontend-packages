@@ -103,8 +103,6 @@ type Props = {
     }[];
     license: {
       license: string;
-      description: string;
-      url: string;
     };
   };
 };

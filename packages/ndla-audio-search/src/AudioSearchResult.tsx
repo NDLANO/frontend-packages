@@ -9,7 +9,6 @@
 import React from 'react';
 import BEMHelper from 'react-bem-helper';
 import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
-//@ts-ignore
 import Button from '@ndla/button';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
 import AudioBar from './AudioBar';

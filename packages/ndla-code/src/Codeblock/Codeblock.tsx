@@ -13,7 +13,6 @@ import { colors } from '@ndla/core';
 import styled from '@emotion/styled';
 import { copyTextToClipboard } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';

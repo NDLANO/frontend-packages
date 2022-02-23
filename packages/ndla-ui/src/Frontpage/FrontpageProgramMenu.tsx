@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { fonts } from '@ndla/core';
 import { breakpoints, mq } from '@ndla/core';

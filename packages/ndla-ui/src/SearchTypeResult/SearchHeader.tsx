@@ -10,7 +10,6 @@ import React, { FormEvent } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
-// @ts-ignore
 import Button from '@ndla/button';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { FilterProps } from './ActiveFilterContent';

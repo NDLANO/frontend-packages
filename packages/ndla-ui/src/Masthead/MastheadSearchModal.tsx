@@ -1,6 +1,5 @@
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import Modal from '@ndla/modal';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';

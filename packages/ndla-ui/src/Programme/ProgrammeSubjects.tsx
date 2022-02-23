@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, mq } from '@ndla/core';
 import { NavigationBox } from '../Navigation';

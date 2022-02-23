@@ -19,7 +19,7 @@ import Accordion, { AccordionWrapper, AccordionPanel, AccordionBar } from '@ndla
   {({ openIndexes, handleItemClick }) => (
     <AccordionWrapper>
       {['Innhold 1', 'Innhold 2', 'Innhold 3'].map((item, index) => (
-        <React.Fragment key={item}>
+        <Fragment key={item}>
           <AccordionBar
             panelId={`panel-${index}`}
             ariaTitle={`Panel ${index + 1}`}
@@ -30,7 +30,7 @@ import Accordion, { AccordionWrapper, AccordionPanel, AccordionBar } from '@ndla
           <AccordionPanel id={`panel-${index}`} isOpen={openIndexes.includes(index)}>
             <p>{item}</p>
           </AccordionPanel>
-        </React.Fragment>
+        </Fragment>
       ))}
     </AccordionWrapper>
   )}

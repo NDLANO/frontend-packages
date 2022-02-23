@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 
 import {
   SearchTypeResult,
@@ -240,11 +240,11 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
   // eslint-disable-next-line no-unused-vars
   const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() => (showCompetenceGoals ? ['KM1196'] : []));
 
-  const [notionsItems] = React.useState(initNotionResult);
+  const [notionsItems] = useState(initNotionResult);
 
-  const [subjectItems] = React.useState(subjectTypeResults);
+  const [subjectItems] = useState(subjectTypeResults);
 
-  const [resourceItems, dispatchResources] = React.useReducer(resourcesReducer, initialResourceResults);
+  const [resourceItems, dispatchResources] = useReducer(resourcesReducer, initialResourceResults);
 
   const handleFilterClick = (type, filterId) => {
     // For now changing filters does nothing except toggling on and of

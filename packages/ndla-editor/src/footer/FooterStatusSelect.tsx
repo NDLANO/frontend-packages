@@ -10,7 +10,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, typography, colors } from '@ndla/core';
 import { css } from '@emotion/core';
-// @ts-ignore
 import { Check } from '@ndla/icons/editor';
 import { optionProps, checkItemStyle } from './FooterStatus';
 
@@ -58,7 +57,7 @@ type Props = {
   onSelectStatus(option: optionProps): void;
 };
 
-const FooterStatusSelect: React.FC<Props> = ({ onSelectStatus, heading, options }) => (
+const FooterStatusSelect = ({ onSelectStatus, heading, options }: Props) => (
   <>
     <h1 css={changeStatusStyle}>{heading}</h1>
     <StyledList>

@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-//@ts-ignore
 import { ArticleTabs } from '@ndla/tabs';
 
 interface Props {

@@ -8,10 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import { Cross } from '@ndla/icons/action';
 import { spacing, fonts } from '@ndla/core';
-// @ts-ignore
 import Button from '@ndla/button';
 import { WithTranslation, withTranslation } from 'react-i18next';
 

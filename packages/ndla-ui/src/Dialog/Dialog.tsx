@@ -11,7 +11,6 @@
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-//@ts-ignore
 import { createUniversalPortal } from '../utils/createUniversalPortal';
 
 const classes = new BEMHelper({

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { spacing, spacingUnit } from '@ndla/core';
@@ -30,7 +30,7 @@ class FilmFrontpage extends Component {
       resourceTypeSelected: null,
     };
     this.onChangeResourceType = this.onChangeResourceType.bind(this);
-    this.movieListRef = React.createRef();
+    this.movieListRef = createRef();
   }
 
   onChangeResourceType(resourceTypeSelected) {

@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 
 import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
+import { colors } from '@ndla/core';
 
 interface Props {
   title?: string;
@@ -18,22 +19,28 @@ interface Props {
   className?: string;
 }
 
-const CloseBut = styled.button`
+const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   display: flex;
-  color: #20588f;
-  &hover {
-    color: #444;
+  color: ${colors.brand.primary};
+  cursor: pointer;
+  &:hover {
+    color: ${colors.brand.grey};
   }
+`;
+
+const StyledCross = styled(Cross)`
+  height: 24px;
+  width: 24px;
 `;
 
 const ModalClose = ({ title, onClick, className = '' }: Props) => {
   const { t } = useTranslation();
   return (
-    <CloseBut onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('lukk')}>
-      <Cross style={{ width: '24px', height: '24px' }} title={title} />
-    </CloseBut>
+    <StyledButton onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('close')}>
+      <StyledCross title={title} />
+    </StyledButton>
   );
 };
 

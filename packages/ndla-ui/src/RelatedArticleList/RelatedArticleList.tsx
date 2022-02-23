@@ -1,6 +1,5 @@
-import React, { cloneElement, ReactElement } from 'react';
+import React, { Children, cloneElement, ReactElement } from 'react';
 import BEMHelper from 'react-bem-helper';
-//@ts-ignore
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
@@ -61,13 +60,13 @@ interface Props {
 const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }: Props) => {
   const clonedChildren =
     !dangerouslySetInnerHTML && children
-      ? React.Children.map(children, (article, i) =>
-          React.cloneElement(article, {
+      ? Children.map(children, (article, i) =>
+          cloneElement(article, {
             modifier: i >= 2 ? `${article.props.modifier} hidden` : article.props.modifier,
           }),
         )
       : null;
-  const childrenCount = articleCount || React.Children.count(children);
+  const childrenCount = articleCount || Children.count(children);
 
   return (
     <section {...classes('')}>

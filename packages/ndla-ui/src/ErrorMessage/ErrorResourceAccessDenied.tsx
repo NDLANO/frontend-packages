@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HumanMaleBoard, LogIn } from '@ndla/icons/common';
-// @ts-ignore
 import Button from '@ndla/button';
 
 import ErrorMessage from './ErrorMessage';

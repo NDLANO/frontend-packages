@@ -1,4 +1,4 @@
-import React, { Component, Fragment, Suspense } from 'react';
+import React, { Component, Fragment, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -17,7 +17,7 @@ const statusMessages = {
 
 const classes = BEMHelper('c-componentinfo');
 
-const SyntaxHighlighter = React.lazy(() => import('./wrappers/SyntaxHiglighter'));
+const SyntaxHighlighter = lazy(() => import('./wrappers/SyntaxHiglighter'));
 
 class ComponentInfo extends Component {
   constructor(props) {

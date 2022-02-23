@@ -6,15 +6,14 @@
  *
  */
 
-import React, { useState, Children } from 'react';
+import React, { useState, Children, ReactNode, isValidElement, cloneElement } from 'react';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Button from '@ndla/button';
 
 import { getPanelIds, getOpenPanels } from './accordionUtil';
 import AccordionSection from './AccordionSection';
 
-type Props = { tiny?: boolean; single?: boolean; children?: React.ReactNode };
+type Props = { tiny?: boolean; single?: boolean; children?: ReactNode };
 
 const Accordions = ({ tiny, single, children }: Props) => {
   const { t } = useTranslation();
@@ -46,9 +45,9 @@ const Accordions = ({ tiny, single, children }: Props) => {
         </div>
       )}
       {Children.map(children, (child) => {
-        if (React.isValidElement(child) && child.type === AccordionSection) {
+        if (isValidElement(child) && child.type === AccordionSection) {
           const { id } = child.props;
-          return React.cloneElement(child, {
+          return cloneElement(child, {
             open: openPanels.includes(id),
             onClick: () => toggleOpen(id),
             tiny,

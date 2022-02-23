@@ -57,7 +57,7 @@ or you can customize when the tracking should be done and add dimensions:
 import Helmet from 'react-helmet'
 import { withTracker } from 'ndla-tracker';
 
-class SomeTrackableComponent extends React.Component {
+class SomeTrackableComponent extends Component {
   static getDocumentTitle(currentProps) {
     return currentProps.title;
   }

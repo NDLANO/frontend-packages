@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-ignore
 import { User } from '@ndla/icons/common';
 import { spacing, fonts } from '@ndla/core';
 
@@ -37,13 +36,11 @@ type Props = {
     }[];
     license: {
       license: string;
-      description: string;
-      url: string;
     };
   };
 };
 
-const LearningPathMenuAsideCopyright: React.FunctionComponent<Props> = ({ copyright }) => (
+const LearningPathMenuAsideCopyright = ({ copyright }: Props) => (
   <StyledLearningPathDetails>
     <User />
     <p>

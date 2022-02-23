@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import HTMLReactParser from 'html-react-parser';
-import React from 'react';
-
-// @ts-ignore
+import React, { MouseEventHandler, ReactNode } from 'react';
 import Button from '@ndla/button';
 import { joinArrayWithConjunction } from '@ndla/util';
 import { colors, fonts } from '@ndla/core';
@@ -59,10 +57,10 @@ export type NotionProps = {
   labels?: string[];
   license?: string;
   locale?: Locale;
-  media?: React.ReactNode;
-  onReferenceClick?: React.MouseEventHandler<HTMLButtonElement>;
+  media?: ReactNode;
+  onReferenceClick?: MouseEventHandler<HTMLButtonElement>;
   renderMarkdown?: (text: string) => string;
-  text: React.ReactNode;
+  text: ReactNode;
   title: string;
 };
 

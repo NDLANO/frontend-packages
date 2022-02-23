@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { animations, colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown, FeideText, LogIn, LogOut } from '@ndla/icons/common';
-// @ts-ignore
 import Button from '@ndla/button';
 
 import { AuthModalProps } from '../User/AuthModal';

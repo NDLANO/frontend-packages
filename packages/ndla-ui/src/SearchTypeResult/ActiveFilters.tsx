@@ -6,11 +6,10 @@
  *
  */
 
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
@@ -88,7 +87,7 @@ type Props = {
   filters: FilterProps[];
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
-  customElements?: React.ReactElement[];
+  customElements?: ReactElement[];
 };
 
 const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements }: Props) => {

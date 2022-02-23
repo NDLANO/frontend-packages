@@ -9,9 +9,7 @@
 import React, { ReactElement, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Modal, { ModalCloseButton } from '@ndla/modal';
-// @ts-ignore
 import Button from '@ndla/button';
 import { FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
 import { fonts, spacing } from '@ndla/core';

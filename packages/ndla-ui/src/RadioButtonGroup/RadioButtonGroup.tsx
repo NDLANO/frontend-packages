@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, Component, ChangeEvent } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from '@ndla/util';
 
@@ -39,7 +39,7 @@ class RadioButtonGroup extends Component<Props, State> {
     this.uuid = this.props.uniqeIds ? uuid() : undefined;
   }
 
-  handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+  handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     this.setState({
       selected: e.target.value,
     });

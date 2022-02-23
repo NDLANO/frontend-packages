@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, typography, colors, fonts, spacingUnit } from '@ndla/core';
@@ -24,16 +24,16 @@ const StyledWrapper = styled.section`
 type Props = {
   options: Array<{
     name: string;
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   }>;
   messages: {
     buttonLabel: string;
     heading: string;
   };
-  children: (f: VoidFunction) => React.ReactNode;
+  children: (f: VoidFunction) => ReactNode;
 };
 
-const FooterQualityInsurance: React.FC<Props> = ({ children, messages }) => {
+const FooterQualityInsurance = ({ children, messages }: Props) => {
   return (
     <PopUpWrapper
       label={messages.buttonLabel}

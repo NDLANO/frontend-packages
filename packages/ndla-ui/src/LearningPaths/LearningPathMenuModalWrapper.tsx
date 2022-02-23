@@ -6,14 +6,11 @@
  *
  */
 
-import React, { ReactChild, ReactChildren } from 'react';
+import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import { spacing, mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { css } from '@emotion/core';
-// @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import { LearningPath } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 
@@ -34,10 +31,10 @@ const buttonToggleCss = css`
 
 type ModalWrapperProps = {
   innerWidth: number;
-  children: (arg: VoidFunction) => ReactChild | ReactChildren | React.ReactNode;
+  children: (arg: VoidFunction) => ReactChild | ReactChildren | ReactNode;
 };
 
-const ModalWrapperComponent: React.FC<ModalWrapperProps> = ({ innerWidth, children }) => {
+const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
   const { t } = useTranslation();
   if (innerWidth < 601) {
     return (

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { MouseEvent, ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
-// @ts-ignore
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
@@ -186,12 +185,12 @@ type Props = {
   colorMode?: 'dark' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
-  onClick?: (event: React.MouseEvent<HTMLElement>, id?: string) => void;
+  onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
   hasAdditionalResources?: boolean;
   showAdditionalResources?: boolean;
   listDirection?: listProps['direction'];
   invertedStyle?: boolean;
-  onToggleAdditionalResources?: React.ChangeEventHandler<HTMLInputElement>;
+  onToggleAdditionalResources?: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const NavigationBox = ({
@@ -230,7 +229,7 @@ export const NavigationBox = ({
               lighter={colorMode === 'light'}
               selected={item.selected}>
               <ListElementType
-                to={item.url}
+                to={item.url ?? ''}
                 lighter={!item.selected && colorMode === 'light'}
                 greyLighter={!item.selected && colorMode === 'greyLighter'}
                 greyLightest={!item.selected && colorMode === 'greyLightest'}
@@ -240,7 +239,7 @@ export const NavigationBox = ({
                 borderShape="sharpened"
                 width="full"
                 textAlign="left"
-                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                onClick={(e: MouseEvent<HTMLElement>) => {
                   if (onClick) {
                     onClick(e, item.id);
                   }

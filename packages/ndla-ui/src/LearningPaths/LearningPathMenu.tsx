@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
 import { colors, spacing, misc, mq, breakpoints } from '@ndla/core';
@@ -72,17 +71,14 @@ const StyledToggleMenubutton = styled.button`
 
 export type StepProps = {
   title: string;
-  metaUrl: string;
   type: string;
   id: number;
-  current?: boolean;
 };
 
 interface Props {
   learningsteps: StepProps[];
   name: string;
   lastUpdated: string;
-  language: string;
   copyright: {
     contributors: {
       type: string;
@@ -90,8 +86,6 @@ interface Props {
     }[];
     license: {
       license: string;
-      description: string;
-      url: string;
     };
   };
   learningPathURL: string;
@@ -102,10 +96,9 @@ interface Props {
   };
   learningPathId: number;
   toLearningPathUrl(pathId: number, stepId: number): string;
-  showLearningPathButton: Object;
 }
 
-const LearningPathMenu: React.FunctionComponent<Props> = ({
+const LearningPathMenu = ({
   learningsteps,
   currentIndex,
   name,
@@ -116,7 +109,7 @@ const LearningPathMenu: React.FunctionComponent<Props> = ({
   learningPathURL,
   invertedStyle,
   cookies,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
   const [isOpen, toggleOpenState] = useState(false);
   const { innerWidth } = useWindowSize(100);

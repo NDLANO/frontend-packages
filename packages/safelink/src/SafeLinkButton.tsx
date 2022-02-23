@@ -6,29 +6,27 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { css } from '@emotion/core';
-// @ts-ignore
-import { appearances, ButtonStyles } from '@ndla/button';
+import { appearances, ButtonStyles, ButtonAppearance } from '@ndla/button';
 import SafeLink from './SafeLink';
+import { SafeLinkProps } from '.';
 
-interface StylesProps {
-  [key: string]: boolean | undefined;
-}
+type StylesProps = Record<ButtonAppearance, boolean | undefined>;
 
-const getStyles = (modifiers: StylesProps) =>
-  Object.keys(modifiers)
+const getStyles = (modifiers: Partial<StylesProps>) =>
+  (Object.keys(modifiers) as ButtonAppearance[])
     .map((key) => (modifiers[key] ? appearances[key] : undefined))
     .filter((appearance) => !!appearance);
 
-interface Props {
+interface Props extends SafeLinkProps {
   outline?: boolean;
   stripped?: boolean;
   link?: boolean;
   lighter?: boolean;
   inverted?: boolean;
   invertedOutline?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   to: string;
   className?: string;
   buttonSize?: 'normal' | 'medium' | 'large';
@@ -40,7 +38,7 @@ interface Props {
   greyLightest?: boolean;
 }
 
-const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchorElement>> = ({
+const SafeLinkButton = ({
   outline,
   stripped,
   link,
@@ -57,7 +55,7 @@ const SafeLinkButton: React.FunctionComponent<Props & React.HTMLProps<HTMLAnchor
   greyLighter,
   greyLightest,
   ...rest
-}) => {
+}: Props) => {
   const modifierStyles = getStyles({
     link,
     outline,

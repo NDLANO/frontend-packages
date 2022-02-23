@@ -8,7 +8,6 @@
 
 import React, { ReactNode, MouseEvent } from 'react';
 import BEMHelper from 'react-bem-helper';
-//@ts-ignore
 import Button from '@ndla/button';
 
 const toggleFactBox = (event: MouseEvent<HTMLButtonElement>) => {

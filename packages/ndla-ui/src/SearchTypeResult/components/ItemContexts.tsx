@@ -6,15 +6,12 @@
  *
  */
 
-import React, { Fragment } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-
-// @ts-ignore
 import Button from '@ndla/button';
-// @ts-ignore
 import Modal, { ModalCloseButton } from '@ndla/modal';
 import { useTranslation } from 'react-i18next';
 
@@ -82,7 +79,7 @@ export type ItemContextsType = {
 const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
   const { t } = useTranslation();
   const mainContext = contexts[0];
-  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: React.ReactNode }) => (
+  const Breadcrumb = ({ breadcrumb, children }: { breadcrumb: string[]; children?: ReactNode }) => (
     <BreadcrumbPath>
       {breadcrumb.map((breadcrumbItem: string, i: number) => (
         <Fragment key={`${breadcrumbItem}-${id}`}>

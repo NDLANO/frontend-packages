@@ -8,8 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-
-// @ts-ignore
 import Button from '@ndla/button';
 import { Grid } from '@ndla/icons/common';
 import { ListCircle } from '@ndla/icons/editor';

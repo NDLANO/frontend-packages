@@ -14,11 +14,9 @@ import styled from '@emotion/styled';
 import { animations, colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 
-// @ts-ignore
 import ContentTypeBadge from '../ContentTypeBadge';
 import ItemContexts from './components/ItemContexts';
 import { SearchItemType } from './SearchItem';
-// @ts-ignore
 import constants from '../model';
 const { contentTypes } = constants;
 

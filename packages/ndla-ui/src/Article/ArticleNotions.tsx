@@ -6,12 +6,11 @@
  *
  */
 
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
 import { mq, breakpoints } from '@ndla/core';
-// @ts-ignore
 import { Explanation } from '@ndla/icons/common';
 import { Notion } from '../Notion';
 import { NotionProps } from '../Notion/Notion';

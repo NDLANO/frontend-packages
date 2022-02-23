@@ -9,7 +9,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Plus as PlusIcon } from '@ndla/icons/action';
 
@@ -115,17 +114,14 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
 
   const ActiveFiltersElement = ({ showModalButton }: { showModalButton?: boolean }) => {
     const customElements = showModalButton ? [OpenModalButton()] : [];
+    if (!activeFilters) return null;
     return (
-      <>
-        {activeFilters && (
-          <ActiveFilters
-            {...activeFilters}
-            showOnSmallScreen={isNarrowScreen}
-            onClickShowHiddenSubjects={handlePopupOpen}
-            customElements={customElements}
-          />
-        )}
-      </>
+      <ActiveFilters
+        {...activeFilters}
+        showOnSmallScreen={isNarrowScreen}
+        onClickShowHiddenSubjects={handlePopupOpen}
+        customElements={customElements}
+      />
     );
   };
 
@@ -133,17 +129,12 @@ const SubjectFilters = ({ filters, activeFilters, isNarrowScreen }: SubjectFilte
     <>
       {isNarrowScreen ? (
         <ActiveFiltersElement showModalButton />
-      ) : (
+      ) : isNarrowScreen === false ? (
         <>
-          {isNarrowScreen === false && (
-            <>
-              <OpenModalButton />
-              <ActiveFiltersElement />
-            </>
-          )}
+          <OpenModalButton />
+          <ActiveFiltersElement />
         </>
-      )}
-
+      ) : undefined}
       <PopupFilter
         programmes={programmes}
         subjectCategories={subjectCategories}

@@ -162,7 +162,7 @@ const LabelsContainer = styled.div`
 
 type VisualElementProps = {
   type: 'video' | 'other';
-  element: React.ReactNode;
+  element: ReactNode;
   metaImage: {
     url: string;
     alt: string;
@@ -178,8 +178,8 @@ export type NotionProps = {
   text: ReactNode;
   title: string;
   visualElement?: VisualElementProps;
-  imageElement?: React.ReactNode;
-  children?: React.ReactNode;
+  imageElement?: ReactNode;
+  children?: ReactNode;
 };
 
 const Notion = ({

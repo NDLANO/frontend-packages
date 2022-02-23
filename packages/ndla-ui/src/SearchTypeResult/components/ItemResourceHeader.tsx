@@ -14,7 +14,6 @@ import { animations, fonts, spacing } from '@ndla/core';
 
 import { ContentType } from '../SearchTypeResult';
 import { resourceTypeColor, SearchItemType } from '../SearchItem';
-// @ts-ignore
 import ContentTypeBadge from '../../ContentTypeBadge';
 
 type ItemTypeProps = {

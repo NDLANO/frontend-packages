@@ -6,13 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { animations, colors, fonts, spacing } from '@ndla/core';
 
 import { SearchItemType } from '../SearchItem';
-// @ts-ignore
 import ContentTypeBadge from '../../ContentTypeBadge';
 import { ContentType } from '../SearchTypeResult';
 
@@ -67,7 +66,7 @@ const TopicHeaderImage = styled.img`
 `;
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   image?: SearchItemType['item']['img'] | null;
   type?: ContentType;
 };

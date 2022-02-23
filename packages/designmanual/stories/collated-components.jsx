@@ -33,7 +33,7 @@ import MastheadWithTopicMenu, { MastheadWithLogo } from './molecules/mastheads';
 import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
-import NotionExample from './organisms/NotionExample';
+import NotionSiteExample from './organisms/NotionSiteExample';
 import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
@@ -188,7 +188,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Begrepsforklaring', () => (
     <Center>
-      <NotionExample />
+      <NotionSiteExample />
     </Center>
   ))
   .add('Emnebeskrivelse', () => (

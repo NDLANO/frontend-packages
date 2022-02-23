@@ -240,7 +240,7 @@ const Notion = ({
         </TextWrapper>
         <ClearWrapper />
       </ContentWrapper>
-      {children}
+      {children && children}
       {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
     </NotionContainer>
   );

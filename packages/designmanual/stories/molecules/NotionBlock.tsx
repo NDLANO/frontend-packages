@@ -53,7 +53,6 @@ const NotionBlock = ({ type }: Props) => {
           id={notionId}
           title="And"
           text="Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand."
-          labels={['Naturbruk Vg1', 'Naturbruk Vg2']}
           imageElement={
             <FigureImage
               type="full-column"
@@ -71,7 +70,6 @@ const NotionBlock = ({ type }: Props) => {
           id={notionId}
           title="Velferdsteknologi"
           text="I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi»."
-          labels={['Elektro og data']}
           visualElement={{
             metaImage: {
               url: 'https://api.staging.ndla.no/image-api/raw/id/52535',
@@ -88,7 +86,6 @@ const NotionBlock = ({ type }: Props) => {
           id={notionId}
           title="Mikroskop"
           text="er et instrument som brukes for å oppnå forstørrede bilder av objekter som er for små til å kunne betraktes med det blotte øye."
-          labels={['Elektro og data']}
           visualElement={{
             metaImage: {
               url: 'https://api.staging.ndla.no/image-api/raw/optisk_mikroskop-sy029b6c_klipt.jpg',

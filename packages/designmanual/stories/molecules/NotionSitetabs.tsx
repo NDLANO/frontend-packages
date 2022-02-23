@@ -5,17 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-import styled from '@emotion/styled';
 import React, { Fragment } from 'react';
-import { OneColumn, LayoutItem, Article, TasksAndActivitiesBadge, constants } from '@ndla/ui';
+import { Article, OneColumn, LayoutItem, TasksAndActivitiesBadge, constants } from '@ndla/ui';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogImage, NotionDialogLicenses } from '@ndla/notion';
 import Tabs from '@ndla/tabs';
+import styled from '@emotion/styled';
 //@ts-ignore
 import ArticleBylineExample from './ArticleBylineExample';
 //@ts-ignore
 import FigureImage from '../article/FigureImage';
-import {} from '@ndla/ui';
 //@ts-ignore
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 //@ts-ignore
@@ -376,7 +374,9 @@ const NotionSiteTabs = () => {
                             eventuelt jobber sammen med i klassen.
                           </p>
                           <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-                          <NotionListExample></NotionListExample>
+                          <NotionListExample
+                            title="Liste med forklaringer"
+                            notionBlocks={[{ type: 'image' }, { type: 'H5P' }, { type: 'video' }]}></NotionListExample>
                           <p>
                             En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
                             kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
@@ -389,7 +389,6 @@ const NotionSiteTabs = () => {
                           </p>
                         </>
                       ),
-                      footNotes: '',
                       copyright: {
                         license: { license: 'CC-BY-SA-4.0' },
                         creators: [
@@ -401,7 +400,6 @@ const NotionSiteTabs = () => {
                       },
                     }}
                     licenseBox={<LicenseBox />}
-                    competenceGoals={<CompetenceGoalListExample />}
                     competenceGoalTypes={['LK20', 'LK06']}
                     copyPageUrlLink={window.location.href}
                     printUrl={window.location.href}

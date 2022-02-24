@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import HTMLReactParser from 'html-react-parser';
 
 // @ts-ignore MouseEventHandler, ReactNode
-import React, { Fragment } from 'react';
+import React, { ReactNode, Fragment } from 'react';
 import { keyframes } from '@emotion/core';
 import Button from '@ndla/button';
 import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
@@ -19,8 +19,6 @@ import { CursorClick } from '@ndla/icons/action';
 import { Play, ArrowCollapse } from '@ndla/icons/common';
 // @ts-ignore
 import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
-
-const NotionContainer = styled.div``;
 
 const ContentWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -93,10 +91,10 @@ const ImageWrapper = styled.div`
 
 const ExpandVisualElementButton = styled(Button)`
   position: absolute;
-  right: 8px;
-  bottom: 8px;
+  right: ${spacing.xxsmall};
+  bottom: ${spacing.xxsmall};
   transition: all ${animations.durations.normal};
-  &,
+  background-color: rgba(255, 255, 255, 0.65);
   &:focus,
   &:active {
     background-color: rgba(255, 255, 255, 0.65);
@@ -162,7 +160,7 @@ const LabelsContainer = styled.div`
 
 type VisualElementProps = {
   type: 'video' | 'other';
-  element: React.ReactNode;
+  element: ReactNode;
   metaImage: {
     url: string;
     alt: string;
@@ -175,11 +173,11 @@ export type NotionProps = {
   id: string | number;
   labels?: string[];
   renderMarkdown?: (text: string) => string;
-  text: React.ReactNode;
+  text: ReactNode;
   title: string;
   visualElement?: VisualElementProps;
-  imageElement?: React.ReactNode;
-  children?: React.ReactNode;
+  imageElement?: ReactNode;
+  children?: ReactNode;
 };
 
 const Notion = ({
@@ -195,7 +193,7 @@ const Notion = ({
   const { t } = useTranslation();
 
   return (
-    <NotionContainer>
+    <div>
       <ContentWrapper>
         {imageElement}
         {visualElement && (
@@ -241,9 +239,9 @@ const Notion = ({
         </TextWrapper>
         <ClearWrapper />
       </ContentWrapper>
-      {children && children}
+      {children}
       {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
-    </NotionContainer>
+    </div>
   );
 };
 export default Notion;

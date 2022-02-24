@@ -8,9 +8,8 @@
 
 import React, { MouseEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
 import { spacing, colors, fonts, misc } from '@ndla/core';
-
+import { CloseButton } from '@ndla/ui';
 interface NotionHeaderWrapperProps {
   hasChildren?: boolean;
 }
@@ -69,20 +68,11 @@ export const NotionHeaderWithoutExitButton = ({ title, subTitle }: NotionHeaderW
 );
 
 const NotionHeader = ({ title, subTitle, onClose, children }: NotionHeaderProps) => {
-  const { t } = useTranslation();
   return (
     <NotionHeaderWrapper hasChildren={!!children}>
       {notionTitle(title, subTitle)}
       {children}
-      {onClose ? (
-        <button type="button" onClick={onClose}>
-          {t('notions.closeNotion')}
-        </button>
-      ) : (
-        <button type="button" data-notion-close>
-          {t('notions.closeNotion')}
-        </button>
-      )}
+      {onClose ? <CloseButton onClick={onClose} /> : <CloseButton data-notion-close />}
     </NotionHeaderWrapper>
   );
 };

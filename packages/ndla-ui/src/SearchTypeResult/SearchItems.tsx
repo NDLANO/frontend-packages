@@ -9,7 +9,7 @@
 import React, { memo } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
-import SearchItem, { SearchItemType } from './SearchItem';
+import SearchItem, { SearchItemProps } from './SearchItem';
 import { ContentType } from './SearchTypeResult';
 import SearchItemList from './SearchItemList';
 
@@ -41,7 +41,7 @@ const Container = styled.div<ContainerProps>`
 `;
 
 type Props = {
-  items: SearchItemType[];
+  items: SearchItemProps[];
   type?: ContentType;
   viewType?: 'grid' | 'list';
 };

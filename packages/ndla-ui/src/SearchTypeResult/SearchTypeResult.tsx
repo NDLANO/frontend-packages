@@ -13,7 +13,7 @@ import Spinner from '../Spinner';
 import constants from '../model';
 import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
 import SearchItems from './SearchItems';
-import { SearchItemType } from './SearchItem';
+import { SearchItemProps } from './SearchItem';
 import ResultNavigation, { PaginationType } from './ResultNavigation';
 
 const Wrapper = styled.div`
@@ -51,7 +51,7 @@ export type ContentType =
   | typeof constants.contentTypes.MULTIDISCIPLINARY_TOPIC;
 
 type Props = {
-  items: SearchItemType[];
+  items: SearchItemProps[];
   filters?: FilterOptionsType[];
   onFilterClick?: (id: string) => void;
   totalCount?: number;

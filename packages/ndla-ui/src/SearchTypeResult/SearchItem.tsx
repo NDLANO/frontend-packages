@@ -172,7 +172,7 @@ const ContextWrapper = styled.div`
   }
 `;
 
-type SearchItemProps = {
+export type SearchItemProps = {
   id: string | number;
   title: string;
   url: string;

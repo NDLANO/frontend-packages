@@ -773,7 +773,7 @@ const messages = {
     cursorText: 'Tip',
   },
   frontpageMultidisciplinarySubject: {
-    heading: 'Interdisciplinary subjects',
+    heading: 'Interdisciplinary topics',
     text: 'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
     linkText: 'See cases for multidisciplinary topics',
     publicHealthTopic: 'Public health and life management',

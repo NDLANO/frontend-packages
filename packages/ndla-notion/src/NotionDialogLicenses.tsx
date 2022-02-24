@@ -22,13 +22,16 @@ const NotionDialogLicensesWrapper = styled.div`
       padding-right: ${spacing.xsmall};
       border-right: 1px solid ${colors.brand.greyLight};
     }
+    p {
+      margin: 0;
+    }
   }
 `;
 
 interface Props {
   license?: string;
   authors?: string[];
-  source?: string;
+  source?: ReactNode;
   licenseBox?: ReactNode;
   locale?: string;
 }
@@ -36,12 +39,13 @@ interface Props {
 const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBox }: Props) => {
   const licenseRights = license ? getLicenseByAbbreviation(license, locale).rights : [];
   const authorsLength = authors.length;
-  const wrapLink = (source?: string) => {
-    if (source?.startsWith('http')) {
+  const wrapLink = (source?: ReactNode) => {
+    if (typeof source === 'string' && source?.startsWith('http')) {
       return <a href={source}>{source}</a>;
     }
     return source;
   };
+  const sourceElem = React.isValidElement(source) ? source : <span>{wrapLink(source)}</span>;
   return (
     <NotionDialogLicensesWrapper>
       {licenseRights.length > 0 && (
@@ -58,7 +62,7 @@ const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBo
           ))}
         </span>
       )}
-      <span key={source}>{wrapLink(source)}</span>
+      {source && sourceElem}
       {licenseBox && <span>{licenseBox}</span>}
     </NotionDialogLicensesWrapper>
   );

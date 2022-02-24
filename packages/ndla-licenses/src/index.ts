@@ -21,4 +21,11 @@ export { getLicenseByAbbreviation, getLicenseByNBTitle, isCreativeCommonsLicense
 
 export { LicenseByline, LicenseDescription } from './LicenseByline';
 
-export { getCopyString, getLicenseCredits } from './getCopyString';
+export {
+  getCopyString,
+  getLicenseCredits,
+  figureApa7CopyString,
+  podcastSeriesApa7CopyString,
+  podcastEpisodeApa7CopyString,
+  webpageReferenceApa7CopyString,
+} from './getCopyString';

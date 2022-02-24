@@ -12,7 +12,6 @@ import parse from 'html-react-parser';
 
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Play } from '@ndla/icons/common';
 import { ArrowExpand } from '@ndla/icons/editor';

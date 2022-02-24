@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
 import { useTranslation } from 'react-i18next';
@@ -14,7 +14,7 @@ import { Cross } from '@ndla/icons/action';
 import { colors } from '@ndla/core';
 
 interface Props {
-  title?: ReactNode;
+  title?: string;
   onClick: () => void;
   className?: string;
 }
@@ -39,7 +39,7 @@ const ModalClose = ({ title, onClick, className = '' }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledButton onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('close')}>
-      <StyledCross />
+      <StyledCross title={title} />
     </StyledButton>
   );
 };

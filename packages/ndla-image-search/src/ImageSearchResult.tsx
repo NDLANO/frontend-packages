@@ -8,7 +8,6 @@
 
 import React from 'react';
 import { IImageMetaSummary, IImageMetaInformationV2 } from '@ndla/types-image-api';
-//@ts-ignore
 import Button from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';

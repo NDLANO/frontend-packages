@@ -7,7 +7,6 @@
  */
 
 import React, { useState } from 'react';
-// @ts-ignore
 import Button from '@ndla/button';
 import { Spinner } from '@ndla/ui';
 

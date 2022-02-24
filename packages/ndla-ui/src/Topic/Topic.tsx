@@ -13,7 +13,6 @@ import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core'
 import parse from 'html-react-parser';
 import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
-// @ts-ignore
 import Button from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
 import { css } from '@emotion/core';
@@ -81,7 +80,7 @@ const TopicHeaderImage = styled.img`
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  object-fit: none;
+  object-fit: cover;
   transition: transform ${animations.durations.fast};
   ${VisualElementButton}:hover & {
     transform: scale(1.1);
@@ -280,8 +279,6 @@ const Topic = ({
                                   topic.image.focalPoint,
                                 )}`}
                                 alt={topic.image.alt}
-                                crop={topic.image.crop}
-                                focalPoint={topic.image.focalPoint}
                               />
                               <TopicHeaderOverlay />
                             </ShowVisualElementWrapper>
@@ -318,8 +315,6 @@ const Topic = ({
                     <TopicHeaderImage
                       src={`${topic.image.url}?${makeSrcQueryString(400, topic.image.crop, topic.image.focalPoint)}`}
                       alt={topic.image.alt}
-                      crop={topic.image.crop}
-                      focalPoint={topic.image.focalPoint}
                     />
                   )}
                 </TopicHeaderVisualElementWrapper>

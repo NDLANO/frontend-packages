@@ -8,7 +8,6 @@
 
 import React, { useState, Children, ReactNode, isValidElement, cloneElement } from 'react';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import Button from '@ndla/button';
 
 import { getPanelIds, getOpenPanels } from './accordionUtil';

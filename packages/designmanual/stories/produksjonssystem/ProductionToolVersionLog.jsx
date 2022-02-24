@@ -14,7 +14,6 @@ import { uuid } from '@ndla/util';
 import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
 import { fonts, misc } from '@ndla/core';
-// @ts-ignore
 import { buttonStyle } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';

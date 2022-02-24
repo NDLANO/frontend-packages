@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import { spacing, colors } from '@ndla/core';
 import { Back } from '@ndla/icons/common';
 import { Check } from '@ndla/icons/editor';
-// @ts-ignore
 import Button from '@ndla/button';
 import { checkItemStyle } from './FooterStatus';
 

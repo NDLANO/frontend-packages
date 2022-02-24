@@ -9,6 +9,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+// @ts-ignore
 import { Figure, Notion } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
@@ -42,7 +43,6 @@ const NotionBlock = ({ type }: Props) => {
     source: t('source'),
     rulesForUse: t('license.concept.rules'),
     reuse: t('concept.reuse'),
-    videoReuse: t('video.reuse'),
     download: null,
   };
 
@@ -62,7 +62,7 @@ const NotionBlock = ({ type }: Props) => {
               src="https://api.staging.ndla.no/image-api/raw/20081209-095942-ag_0.jpg"
             />
           }>
-          <FigureCaptionExample id={id} figureId={figureId} messages={messages.reuse} />
+          <FigureCaptionExample id={id} figureId={figureId} messages={messages} />
         </Notion>
       )}
       {type === 'video' && (
@@ -78,7 +78,7 @@ const NotionBlock = ({ type }: Props) => {
             type: 'video',
             element: <Video />,
           }}>
-          <FigureCaptionExample id={id} figureId={figureId} messages={messages.reuse} />
+          <FigureCaptionExample id={id} figureId={figureId} messages={messages} />
         </Notion>
       )}
       {type === 'H5P' && (
@@ -94,7 +94,7 @@ const NotionBlock = ({ type }: Props) => {
             type: 'other',
             element: <H5p />,
           }}>
-          <FigureCaptionExample id={id} figureId={figureId} messages={messages.reuse} />
+          <FigureCaptionExample id={id} figureId={figureId} messages={messages} />
         </Notion>
       )}
     </Figure>

@@ -191,7 +191,6 @@ const Notion = ({
   children,
 }: NotionProps) => {
   const { t } = useTranslation();
-
   return (
     <div>
       <ContentWrapper>

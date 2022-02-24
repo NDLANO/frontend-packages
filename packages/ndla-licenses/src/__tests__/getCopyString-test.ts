@@ -16,7 +16,7 @@ import {
   podcastSeriesApa7CopyString,
   getCreditString,
   getDateString,
-  getYearString,
+  getYearDurationString,
 } from '../getCopyString';
 
 // Adding @ndla/ui to package.json would cause circular dependency.
@@ -27,25 +27,25 @@ const tEN = i18nInstance.getFixedT('en');
 // Utils
 test('getCreditString returns correct content', () => {
   const roles = [
-    { name: 'Anna Etternavn', type: 'photographer' },
+    { name: 'Anna Langt Etternavn', type: 'photographer' },
     { name: 'Bendik Person', type: 'artist' },
     { name: 'Bendik Test', type: 'artist' },
   ];
 
   const creditStringWithOnePerson = getCreditString([roles[0]], false, false, tNB);
-  expect(creditStringWithOnePerson).toEqual('Etternavn, A. ');
+  expect(creditStringWithOnePerson).toEqual('Etternavn, A. L. ');
 
   const creditStringWithTwoPeople = getCreditString(roles.slice(0, 2), false, false, tNB);
-  expect(creditStringWithTwoPeople).toEqual('Etternavn, A. & Person, B. ');
+  expect(creditStringWithTwoPeople).toEqual('Etternavn, A. L. & Person, B. ');
 
   const creditStringWithMultiplePeople = getCreditString(roles, false, false, tNB);
-  expect(creditStringWithMultiplePeople).toEqual('Etternavn, A., Person, B. & Test, B. ');
+  expect(creditStringWithMultiplePeople).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
 
   const creditStringWithRoles = getCreditString(roles.slice(0, 2), false, true, tNB);
-  expect(creditStringWithRoles).toEqual('Etternavn, A. (Fotograf) & Person, B. (Kunstner). ');
+  expect(creditStringWithRoles).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
 
   const creditStringWithPrefix = getCreditString(roles.slice(0, 2), true, false, tNB);
-  expect(creditStringWithPrefix).toEqual('av Etternavn, A. & Person, B. ');
+  expect(creditStringWithPrefix).toEqual('av Etternavn, A. L. & Person, B. ');
 });
 
 test('getDateString returns correct content', () => {
@@ -68,16 +68,16 @@ test('getYearString return correct content', () => {
   const start = '2019';
   const end = '2020';
 
-  const yearWithStart = getYearString(start, undefined, tNB);
+  const yearWithStart = getYearDurationString(start, undefined, tNB);
   expect(yearWithStart).toEqual('(2019-nå). ');
 
-  const yearWithStartAndEnd = getYearString(start, end, tNB);
+  const yearWithStartAndEnd = getYearDurationString(start, end, tNB);
   expect(yearWithStartAndEnd).toEqual('(2019-2020). ');
 
-  const yearWithNoInput = getYearString(undefined, undefined, tNB);
+  const yearWithNoInput = getYearDurationString(undefined, undefined, tNB);
   expect(yearWithNoInput).toEqual('');
 
-  const yearWithEqualStartAndEnd = getYearString(start, start, tNB);
+  const yearWithEqualStartAndEnd = getYearDurationString(start, start, tNB);
   expect(yearWithEqualStartAndEnd).toEqual('(2019). ');
 });
 
@@ -88,10 +88,11 @@ test('figureApa7CopyString return correct content', () => {
     rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
     processors: [{ name: 'Celine', type: 'writer' }],
   };
+  const date = '2017-06-05T14:25:14Z';
 
   const copyString = figureApa7CopyString(
     'Tittel',
-    2010,
+    date,
     undefined,
     '/path/123',
     copyright,
@@ -100,7 +101,7 @@ test('figureApa7CopyString return correct content', () => {
     tNB,
   );
 
-  expect(copyString).toEqual('Tittel, 2010, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
+  expect(copyString).toEqual('Tittel, 2017, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
 });
 
 test('podcastSeriesApa7CopyString return correct content', () => {

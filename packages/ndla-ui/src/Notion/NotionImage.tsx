@@ -14,7 +14,7 @@ interface Props {
   id: string;
   src: string;
   alt: string;
-  imageCopyright?: Copyright;
+  imageCopyright?: Partial<Copyright>;
 }
 export const NotionImage = ({ id, src, alt, imageCopyright }: Props) => {
   const { t } = useTranslation();
@@ -29,7 +29,7 @@ export const NotionImage = ({ id, src, alt, imageCopyright }: Props) => {
       id={imageId}
       title={alt}
       copyright={imageCopyright}
-      licenseString={imageCopyright?.license.license ?? ''}
+      licenseString={imageCopyright?.license?.license ?? ''}
       type={'image'}>
       {({ typeClass }) => (
         <Image

@@ -16,7 +16,7 @@ import { Copyright } from '../types';
 
 export interface ConceptNotionType {
   id: number;
-  copyright: Copyright;
+  copyright?: Partial<Copyright>;
   title: string;
   text: string;
   subjectNames?: string[];

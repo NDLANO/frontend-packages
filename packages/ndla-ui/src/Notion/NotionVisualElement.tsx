@@ -13,8 +13,8 @@ export type NotionVisualElementType = {
   resource?: string;
   title?: string;
   url?: string;
-  copyright?: Copyright;
-  image: {
+  copyright?: Partial<Copyright>;
+  image?: {
     src: string;
     alt?: string;
   };
@@ -40,7 +40,7 @@ const NotionVisualElement = ({ visualElement }: Props) => {
       figureId={figureId}
       title={visualElement.title ?? ''}
       copyright={visualElement.copyright}
-      licenseString={visualElement.copyright?.license.license ?? ''}
+      licenseString={visualElement.copyright?.license?.license ?? ''}
       type={type}>
       <iframe title={visualElement.title} src={visualElement.url} />
     </FigureNotion>

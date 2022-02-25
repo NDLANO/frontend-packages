@@ -18,7 +18,7 @@ interface Props {
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
   id: string;
   title: string;
-  copyright?: Copyright;
+  copyright?: Partial<Copyright>;
   licenseString: string;
   type: 'video' | 'h5p' | 'image' | 'concept';
   hideFigCaption?: boolean;

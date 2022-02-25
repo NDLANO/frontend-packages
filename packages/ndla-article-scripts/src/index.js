@@ -25,9 +25,7 @@ import {
   addCloseDialogClickListeners,
 } from './dialogScripts';
 
-import {
-  addEventListenerForNotions
-} from './notionScripts';
+import { addEventListenerForNotions } from './notionScripts';
 
 import { addToggleAlternativeVideoListener } from './alternativeVideoPlugin';
 

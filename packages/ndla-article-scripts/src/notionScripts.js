@@ -13,7 +13,6 @@ export const addEventListenerForNotions = () => {
     const target = el;
     target.onclick = () => {
       const notionMedia = document.getElementById(el.getAttribute('data-notion-media-id'));
-      console.log(notionMedia);
       notionMedia?.classList.toggle('expanded');
     };
   });

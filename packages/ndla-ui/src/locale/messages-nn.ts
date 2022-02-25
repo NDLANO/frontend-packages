@@ -313,6 +313,7 @@ const messages = {
       h5p: 'Interaktiv',
     },
   },
+
   messageBoxInfo: {
     outdatedCoursePlan:
       'Dette faget følgjer ein utgått læreplan. Gå til faget som er oppdatert etter gjeldande læreplan: ',
@@ -326,6 +327,11 @@ const messages = {
     outdatedSubject: 'Dette emnet høyrer til eit fag som ikkje er oppdatert etter gjeldande læreplan.',
     newVersion:
       'Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ',
+    frontPageBeta:
+      'Betafag er fag under arbeid. Vi håper likevel at læringsressursane i betafaga kan vere nyttige allereie no.',
+    frontPageExpired:
+      'Utgåtte fag blir det ikkje undervist i lenger, men det kan framleis vere mogleg å ta eksamen i faget som privatist.',
+    frontPageRevised: 'Kommande fag er tilpassa ny læreplan som gjeld frå hausten 2022.',
   },
   article: {
     lastUpdated: 'Sist oppdatert',
@@ -777,7 +783,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Sjå smakebitar frå nye ressursar i Vg2-faga som kjem i haust',
+    cursorText: 'Sjå smakebitar frå fag som kjem hausten 2022.',
   },
   navigation: {
     showLongerDescription: 'Vis heile emneskildringa',

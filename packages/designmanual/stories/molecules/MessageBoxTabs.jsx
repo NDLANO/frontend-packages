@@ -164,6 +164,10 @@ const MessageBoxTabs = () => {
               </Wrapper>
             ),
           },
+          {
+            title: 'Forside',
+            content: <Wrapper></Wrapper>,
+          },
         ]}
       />
     </>

@@ -313,6 +313,7 @@ const messages = {
       h5p: 'Interactive',
     },
   },
+
   messageBoxInfo: {
     outdatedCoursePlan:
       'This course is not updated to the current curriculum. Follow this link to find the updated version of the course: ',
@@ -326,6 +327,12 @@ const messages = {
     outdatedSubject: 'This topic is part of a course that is not updated to the current curriculum.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
+    frontPageBeta:
+      'Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
+    frontPageExpired:
+      'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
+    frontPageRevised:
+      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022.',
   },
   article: {
     edition: 'Edition',
@@ -777,7 +784,7 @@ const messages = {
   frontpageMenu: {
     program: 'Education programme',
     allsubjects: 'All subjects',
-    cursorText: 'Preview new resources from Vg2-subjects to be released this autumn',
+    cursorText: 'Have a look at some new learning resources from our revised subjects!',
   },
   navigation: {
     showLongerDescription: 'Show topic description',

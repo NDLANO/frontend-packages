@@ -67,7 +67,6 @@ const Cursor = styled.div<CursorProps>`
   ${(props) =>
     props.hide &&
     `
-      visibility: hidden;
     `}
 `;
 
@@ -119,14 +118,12 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor 
         <Button onClick={() => toggleSubjects(true)} lighter={!showSubjects} size="medium" borderShape="rounded">
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
-
         {showBetaCursor && (
           <CursorPlaceholder>
             <CursorWrapper>
               <LeftCursor hide={showSubjects} />
               <CursorTextWrapper>
                 <CursorText>{t('frontpageMenu.cursorText')}</CursorText>
-                <BottomCursor hide={!showSubjects} />
               </CursorTextWrapper>
             </CursorWrapper>
           </CursorPlaceholder>

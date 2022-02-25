@@ -21,9 +21,9 @@ import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
-import { NotionProps } from '../Notion/Notion';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../MessageBox/MessageBox';
+import { ConceptNotionType } from '../Notion/ConceptNotion';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -114,7 +114,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink?: string;
   printUrl?: string;
-  notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
+  notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
 };
 
@@ -209,14 +209,11 @@ export const Article = ({
         </LayoutItem>
         <LayoutItem layout="center">
           {notions && showExplainNotions && (
-            <>
-              <ArticleNotions
-                notions={notions.list}
-                relatedContent={notions.related}
-                renderMarkdown={renderMarkdown}
-                buttonOffsetRight={articlePositionRight}
-              />
-            </>
+            <ArticleNotions
+              notions={notions.list}
+              relatedContent={notions.related}
+              buttonOffsetRight={articlePositionRight}
+            />
           )}
           {getArticleContent(content, locale)}
         </LayoutItem>

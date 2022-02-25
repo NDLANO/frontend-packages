@@ -103,69 +103,60 @@ const PopupFilter = ({
       isOpen={isOpen}
       size="fullscreen">
       {() => (
-        <>
-          <ModalBody>
-            <ModalWrapper>
-              <ModalContent>
-                <ModalHeaderWrapper>
-                  <ModalHeading>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
-                  <ModalCloseButton
-                    onClick={() => {
-                      onClose();
-                    }}
-                    title={t('searchPage.close')}
-                  />
-                </ModalHeaderWrapper>
-                {subjectCategories && programmes && (
-                  <MainFilterButtonWrapper>
-                    <Button
-                      onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                      lighter={selectedMenu !== MENU_ALL_SUBJECTS}
-                      size="normal"
-                      borderShape="rounded">
-                      {t('frontpageMenu.allsubjects')}
-                    </Button>
-                  </MainFilterButtonWrapper>
-                )}
-                {programmes && (
+        <ModalBody>
+          <ModalWrapper>
+            <ModalContent>
+              <ModalHeaderWrapper>
+                <ModalHeading>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
+                <ModalCloseButton onClick={() => onClose()} title={t('searchPage.close')} />
+              </ModalHeaderWrapper>
+              {subjectCategories && programmes && (
+                <MainFilterButtonWrapper>
                   <Button
-                    onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                    lighter={selectedMenu !== MENU_PROGRAMMES}
+                    onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                    lighter={selectedMenu !== MENU_ALL_SUBJECTS}
                     size="normal"
                     borderShape="rounded">
-                    {t('frontpageMenu.program')}
+                    {t('frontpageMenu.allsubjects')}
                   </Button>
-                )}
-                {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
-                  <FrontpageAllSubjects
-                    categories={subjectCategories.categories}
-                    selectedSubjects={subjectValues}
-                    onToggleSubject={onToggleSubject}
-                    subjectViewType="checkbox"
-                  />
-                )}
-                {selectedMenu === MENU_PROGRAMMES && programmes && (
-                  <StyledList>
-                    {programmes.options.map((item: ProgrammeOptionProps) => (
-                      <StyledListItem key={item.id}>
-                        <ToggleItem
-                          id={item.id}
-                          value={item.id}
-                          checked={programmesValues.includes(item.id)}
-                          label={item.name}
-                          component="div"
-                          onChange={() => {
-                            onToggleProgramme(item.id);
-                          }}
-                        />
-                      </StyledListItem>
-                    ))}
-                  </StyledList>
-                )}
-              </ModalContent>
-            </ModalWrapper>
-          </ModalBody>
-        </>
+                </MainFilterButtonWrapper>
+              )}
+              {programmes && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  size="normal"
+                  borderShape="rounded">
+                  {t('frontpageMenu.program')}
+                </Button>
+              )}
+              {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
+                <FrontpageAllSubjects
+                  categories={subjectCategories.categories}
+                  selectedSubjects={subjectValues}
+                  onToggleSubject={onToggleSubject}
+                  subjectViewType="checkbox"
+                />
+              )}
+              {selectedMenu === MENU_PROGRAMMES && programmes && (
+                <StyledList>
+                  {programmes.options.map((item: ProgrammeOptionProps) => (
+                    <StyledListItem key={item.id}>
+                      <ToggleItem
+                        id={item.id}
+                        value={item.id}
+                        checked={programmesValues.includes(item.id)}
+                        label={item.name}
+                        component="div"
+                        onChange={() => onToggleProgramme(item.id)}
+                      />
+                    </StyledListItem>
+                  ))}
+                </StyledList>
+              )}
+            </ModalContent>
+          </ModalWrapper>
+        </ModalBody>
       )}
     </Modal>
   );

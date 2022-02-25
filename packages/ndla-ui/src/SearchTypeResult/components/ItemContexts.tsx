@@ -76,6 +76,8 @@ export type ItemContextsType = {
   title: string;
 };
 
+const iconStyle = { width: '22px', height: '22px' };
+
 const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
   const { t } = useTranslation();
   const mainContext = contexts[0];
@@ -119,11 +121,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
                     <ContextListItem key={context.url}>
                       <SafeLink to={context.url}>{title}</SafeLink>
                       <Breadcrumb breadcrumb={context.breadcrumb}>
-                        {context.isAdditional ? (
-                          <Additional style={{ width: '22px', height: '22px' }} />
-                        ) : (
-                          <Core style={{ width: '22px', height: '22px' }} />
-                        )}
+                        {context.isAdditional ? <Additional style={iconStyle} /> : <Core style={iconStyle} />}
                       </Breadcrumb>
                     </ContextListItem>
                   ))}

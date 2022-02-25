@@ -10,10 +10,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import Modal, { ModalHeader, ModalCloseButton, ModalBody } from '@ndla/modal';
-import { mq, breakpoints } from '@ndla/core';
-import { Explanation } from '@ndla/icons/common';
-import { Notion } from '../Notion';
-import { NotionProps } from '../Notion/Notion';
+import { mq, breakpoints, fonts, colors } from '@ndla/core';
+import { Explanation, NotionFlip } from '@ndla/icons/common';
+import { ConceptNotion } from '../Notion';
+import { ConceptNotionType } from '../Notion/ConceptNotion';
 
 const ArticleNotionsContainer = styled.div`
   margin-bottom: 26px;
@@ -22,7 +22,6 @@ const ArticleNotionsContainer = styled.div`
     margin-bottom: 0;
   }
 `;
-/* Stored for later 
 
 const NotionsTrigger = styled.div`
   padding: 0 16px;
@@ -31,7 +30,7 @@ const NotionsTrigger = styled.div`
   background-color: ${colors.brand.greyLighter};
   border-radius: 4px;
   cursor: pointer;
- 
+
   ${mq.range({ from: breakpoints.tablet })} {
     position: fixed;
     border: none;
@@ -79,7 +78,7 @@ const NotionsTrigger = styled.div`
     }
   }
 `;
-*/
+
 const ModalHeadingContainer = styled.div`
   display: flex;
   align-items: center;
@@ -157,32 +156,24 @@ export type NotionRelatedContent = {
 };
 
 type ArticleNotionsProps = {
-  notions: NotionProps[];
+  notions: ConceptNotionType[];
   relatedContent?: NotionRelatedContent[];
-  renderMarkdown?: (text: string) => string;
   buttonOffsetRight: number;
 };
 
-export const ArticleNotions = ({
-  notions,
-  relatedContent = [],
-  renderMarkdown,
-  buttonOffsetRight,
-}: ArticleNotionsProps) => {
+export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight }: ArticleNotionsProps) => {
   const { t } = useTranslation();
-  //const leftOffset = `${buttonOffsetRight - 32}px`;
+  const leftOffset = `${buttonOffsetRight - 32}px`;
   return (
     <ArticleNotionsContainer>
       <Modal
-        /* Stored for later
-    
-    activateButton={
+        activateButton={
           <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
             <span>{t('article.notionsPrompt')}</span>
           </NotionsTrigger>
-        } */
+        }
         size="large"
         backgroundColor="white">
         {(onClose: () => void) => (
@@ -197,7 +188,7 @@ export const ArticleNotions = ({
               </ModalHeadingContainer>
               <NotionsContainer>
                 {notions.map((notion) => (
-                  <Notion key={notion.id} renderMarkdown={renderMarkdown} {...notion} />
+                  <ConceptNotion key={notion.id} concept={notion} />
                 ))}
               </NotionsContainer>
               {relatedContent.length > 0 && (

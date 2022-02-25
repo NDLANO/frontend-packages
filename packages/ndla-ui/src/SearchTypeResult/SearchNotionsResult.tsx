@@ -12,7 +12,6 @@ import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
 import { ModalCloseButton } from '@ndla/modal';
 import { withTranslation, WithTranslation } from 'react-i18next';
-// import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
 const Wrapper = styled.div`
   display: flex;

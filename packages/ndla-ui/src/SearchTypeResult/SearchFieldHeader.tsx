@@ -108,9 +108,7 @@ const SearchFieldHeader = ({
           value={t<string>('welcomePage.resetSearch')}
           onClick={() => {
             onChange('');
-            if (inputRef && inputRef.current) {
-              inputRef.current.focus();
-            }
+            inputRef.current?.focus();
           }}>
           <CrossIcon style={{ width: '24px', height: '24px' }} />
         </ClearButton>

@@ -112,9 +112,7 @@ const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type, t }: 
                 if (e.currentTarget && option.active) {
                   e.currentTarget.blur();
                 }
-                if (onFilterClick) {
-                  onFilterClick(option.id);
-                }
+                onFilterClick?.(option.id);
               }}>
               {option.name}
               {option.active && (

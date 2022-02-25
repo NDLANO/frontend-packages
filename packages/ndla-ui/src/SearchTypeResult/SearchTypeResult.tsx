@@ -75,16 +75,14 @@ const SearchTypeResult = ({
 }: Props) => (
   <Wrapper>
     {loading && (
-      <>
-        <Overlay>
-          <Spinner />
-        </Overlay>
-      </>
+      <Overlay>
+        <Spinner />
+      </Overlay>
     )}
     <SearchTypeHeader onFilterClick={onFilterClick} filters={filters} totalCount={totalCount} type={type} />
     <SearchItems items={items} type={type} viewType={viewType} />
     {pagination && <ResultNavigation {...pagination} />}
-    {children && children}
+    {children}
   </Wrapper>
 );
 

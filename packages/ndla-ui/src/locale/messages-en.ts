@@ -827,6 +827,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'show more',
   },
+  h5p: {
+    reuse: 'Use H5P',
+  },
   video: {
     download: 'Download video',
     reuse: 'Use video',

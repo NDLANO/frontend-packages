@@ -826,6 +826,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'vis mer',
   },
+  h5p: {
+    reuse: 'Bruk H5P',
+  },
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',

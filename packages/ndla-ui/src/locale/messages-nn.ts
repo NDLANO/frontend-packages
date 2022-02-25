@@ -827,6 +827,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'vis meir',
   },
+  h5p: {
+    reuse: 'Bruk H5P',
+  },
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',

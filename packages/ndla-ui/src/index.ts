@@ -216,4 +216,4 @@ export { default as ContentCard } from './ContentCard';
 
 export { default as CopyParagraphButton } from './CopyParagraphButton';
 
-export { Notion } from './Notion';
+export { Notion, ConceptNotion } from './Notion';

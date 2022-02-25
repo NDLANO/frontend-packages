@@ -163,7 +163,7 @@ const LabelsContainer = styled.div`
 type VisualElementProps = {
   type: 'video' | 'other';
   element: ReactNode;
-  metaImage: {
+  metaImage?: {
     url: string;
     alt: string;
     crop?: ImageCrop;
@@ -198,7 +198,7 @@ const Notion = ({
     <NotionContainer>
       <ContentWrapper>
         {imageElement}
-        {visualElement && (
+        {visualElement && visualElement.metaImage && (
           <ImageWrapper>
             <ImageElement
               src={`${visualElement.metaImage.url}?${makeSrcQueryString(

@@ -12,7 +12,6 @@ import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-// @ts-ignore
 import Button from '@ndla/button';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
@@ -101,65 +100,61 @@ const ActiveFilters = ({
   onClickShowHiddenSubjects,
 }: Props) => {
   const { t } = useTranslation();
-  if (filters && filters.length > 0) {
-    const showFilterCount = 3;
-    const filterLength = filters.length;
+  if (!filters || filters.length < 1) return null;
+  const showFilterCount = 3;
+  const filterLength = filters.length;
 
-    const visibleFilters = filterLength > showFilterCount ? filters.slice(0, showFilterCount - 1) : filters;
+  const visibleFilters = filterLength > showFilterCount ? filters.slice(0, showFilterCount - 1) : filters;
 
-    const filterItems = visibleFilters.map((filter) => {
-      const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
-
-      return (
-        <StyledActiveFilterWrapper key={filterKey}>
-          {filterLength > 1 ? (
-            <Tooltip
-              delay={2000}
-              align="bottom"
-              tooltip={t('searchPage.searchFilterMessages.removeFilter', {
-                filterName: filter.title,
-              })}>
-              <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
-            </Tooltip>
-          ) : (
-            <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
-          )}
-        </StyledActiveFilterWrapper>
-      );
-    });
+  const filterItems = visibleFilters.map((filter) => {
+    const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
 
     return (
-      <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
-        {filterItems}
-        {filterLength > showFilterCount && (
-          <StyledActiveFilterWrapper>
-            <Tooltip delay={2000} align="bottom" tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
-              <Button
-                aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+      <StyledActiveFilterWrapper key={filterKey}>
+        {filterLength > 1 ? (
+          <Tooltip
+            delay={2000}
+            align="bottom"
+            tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+              filterName: filter.title,
+            })}>
+            <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
+          </Tooltip>
+        ) : (
+          <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
+        )}
+      </StyledActiveFilterWrapper>
+    );
+  });
+
+  return (
+    <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
+      {filterItems}
+      {filterLength > showFilterCount && (
+        <StyledActiveFilterWrapper>
+          <Tooltip delay={2000} align="bottom" tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
+            <Button
+              aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                count: filterLength - showFilterCount + 1,
+              })}
+              type="button"
+              size="normal"
+              borderShape="rounded"
+              onClick={onClickShowHiddenSubjects}>
+              <StyledActiveFilterTitle>
+                {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
                   count: filterLength - showFilterCount + 1,
                 })}
-                type="button"
-                size="normal"
-                borderShape="rounded"
-                onClick={onClickShowHiddenSubjects}>
-                <StyledActiveFilterTitle>
-                  {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
-                    count: filterLength - showFilterCount + 1,
-                  })}
-                </StyledActiveFilterTitle>
-              </Button>
-            </Tooltip>
-          </StyledActiveFilterWrapper>
-        )}
-        {customElements &&
-          customElements.map((item, index) => (
-            <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
-          ))}
-      </StyledActiveFilters>
-    );
-  }
-
-  return null;
+              </StyledActiveFilterTitle>
+            </Button>
+          </Tooltip>
+        </StyledActiveFilterWrapper>
+      )}
+      {customElements?.map((item, index) => (
+        <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
+      ))}
+    </StyledActiveFilters>
+  );
 };
 
 export default ActiveFilters;

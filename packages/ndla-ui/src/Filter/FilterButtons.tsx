@@ -158,9 +158,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                           checked={item.selected}
                           label={item.label}
                           component="div"
-                          onChange={() => {
-                            onFilterToggle(item.value);
-                          }}
+                          onChange={() => onFilterToggle(item.value)}
                         />
                       </StyledListItem>
                     ))}
@@ -182,9 +180,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                   size="normal"
                   greyLighter={!item.selected}
                   borderShape="rounded"
-                  onClick={() => {
-                    onFilterToggle(item.value);
-                  }}>
+                  onClick={() => onFilterToggle(item.value)}>
                   <StyledButtonContent>{item.label}</StyledButtonContent>
                   {item.selected && (
                     <StyledButtonContentSelected>

@@ -9,6 +9,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+// @ts-ignore
 import { Figure, Notion } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
@@ -42,7 +43,6 @@ const NotionBlock = ({ type }: Props) => {
     source: t('source'),
     rulesForUse: t('license.concept.rules'),
     reuse: t('concept.reuse'),
-    videoReuse: t('video.reuse'),
     download: null,
   };
 

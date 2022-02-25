@@ -10,12 +10,10 @@ import PropTypes from 'prop-types';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { Figure } from '@ndla/ui';
 import { uuid } from '@ndla/util';
-import { useTranslation } from 'react-i18next';
-import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
 function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe, caption, type }) {
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -25,7 +23,7 @@ function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe,
   return (
     <Figure id={figureId} resizeIframe={resizeIframe} type={type}>
       {children}
-      {!hasHiddenCaption && (
+      {/*       {!hasHiddenCaption && (
         <FigureCaptionExample
           id={id}
           figureId={figureId}
@@ -33,7 +31,7 @@ function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe,
           messages={messages || { reuse: t('video.reuse'), modelPermission: null }}
           hasHiddenCaption={hasHiddenCaption}
         />
-      )}
+      )} */}
     </Figure>
   );
 }

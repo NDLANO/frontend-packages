@@ -25,6 +25,8 @@ import {
   addCloseDialogClickListeners,
 } from './dialogScripts';
 
+import { addEventListenerForNotions } from './notionScripts';
+
 import { addToggleAlternativeVideoListener } from './alternativeVideoPlugin';
 
 import { initTableScript, removeTableEventListeners } from './tableScripts';
@@ -58,6 +60,7 @@ export const initArticleScripts = () => {
   addFilelistTooltipListners();
   initArticleTabs();
   addEventListenerForFigureZoomButton();
+  addEventListenerForNotions();
 };
 
 export {
@@ -82,4 +85,5 @@ export {
   addFilelistTooltipListners,
   initArticleTabs,
   addEventListenerForFigureZoomButton,
+  addEventListenerForNotions,
 };

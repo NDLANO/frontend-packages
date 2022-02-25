@@ -48,7 +48,7 @@ const TextWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
-  font-family: ${fonts.serif};
+  font-family: ${fonts.sans};
   ${fonts.sizes('18px', '28px')};
   ${ContentWrapper} .c-figure.expanded + & {
     width: 100%;
@@ -148,6 +148,9 @@ const MediaContainer = styled.div`
     animation-name: ${fadeOutMediaKeyframe};
     animation-duration: 2.8s;
   }
+  iframe {
+    background-color: ${colors.brand.grey};
+  }
 `;
 
 const LabelsContainer = styled.div`
@@ -191,11 +194,12 @@ const Notion = ({
   children,
 }: NotionProps) => {
   const { t } = useTranslation();
-
   return (
     <div>
+      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
       <ContentWrapper>
         {imageElement}
+
         {visualElement && (
           <ImageWrapper>
             <ImageElement
@@ -220,6 +224,7 @@ const Notion = ({
             </ExpandVisualElementButton>
           </ImageWrapper>
         )}
+
         <TextWrapper>
           {HTMLReactParser(
             renderMarkdown ? renderMarkdown(`**${title}** \u2013 ${text}`) : `<b>${title}</b> \u2013 ${text}`,
@@ -240,7 +245,6 @@ const Notion = ({
         <ClearWrapper />
       </ContentWrapper>
       {children}
-      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
     </div>
   );
 };

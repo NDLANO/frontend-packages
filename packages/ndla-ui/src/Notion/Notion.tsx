@@ -111,7 +111,7 @@ const ExpandVisualElementButton = styled(Button)`
     transition: transform ${animations.durations.normal} ease-out;
   }
   ${ContentWrapper}:hover & {
-    background-color: #fff;
+    background-color: ${colors.white};
     svg {
       transform: scale(1.2);
     }

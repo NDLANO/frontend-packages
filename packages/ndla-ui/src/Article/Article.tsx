@@ -184,7 +184,7 @@ export const Article = ({
   } = article;
 
   let authors = creators;
-  if (Array.isArray(authors) && authors.length === 0 && !rightsholders.length) {
+  if (Array.isArray(authors) && authors.length === 0 && rightsholders.length === 0) {
     authors = processors;
   }
   const suppliers = rightsholders.length ? rightsholders : undefined;

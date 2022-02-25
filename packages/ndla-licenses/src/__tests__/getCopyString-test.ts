@@ -32,20 +32,57 @@ test('getCreditString returns correct content', () => {
     { name: 'Bendik Test', type: 'artist' },
   ];
 
-  const creditStringWithOnePerson = getCreditString([roles[0]], false, false, tNB);
+  const creditStringWithOnePerson = getCreditString({ creators: [roles[0]] }, false, false, tNB);
   expect(creditStringWithOnePerson).toEqual('Etternavn, A. L. ');
 
-  const creditStringWithTwoPeople = getCreditString(roles.slice(0, 2), false, false, tNB);
+  const creditStringWithTwoPeople = getCreditString({ creators: roles.slice(0, 2) }, false, false, tNB);
   expect(creditStringWithTwoPeople).toEqual('Etternavn, A. L. & Person, B. ');
 
-  const creditStringWithMultiplePeople = getCreditString(roles, false, false, tNB);
+  const creditStringWithMultiplePeople = getCreditString({ creators: roles }, false, false, tNB);
   expect(creditStringWithMultiplePeople).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
 
-  const creditStringWithRoles = getCreditString(roles.slice(0, 2), false, true, tNB);
+  const creditStringWithRoles = getCreditString({ creators: roles.slice(0, 2) }, false, true, tNB);
   expect(creditStringWithRoles).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
 
-  const creditStringWithPrefix = getCreditString(roles.slice(0, 2), true, false, tNB);
+  const creditStringWithPrefix = getCreditString({ creators: roles.slice(0, 2) }, true, false, tNB);
   expect(creditStringWithPrefix).toEqual('av Etternavn, A. L. & Person, B. ');
+
+  const creditStringWithRightsholders = getCreditString(
+    {
+      rightsholders: [
+        { type: 'distributor', name: 'Stor Bedrift' },
+        { type: 'distributor', name: 'Liten Bedrift' },
+        { type: 'distributor', name: 'Organisasjon' },
+      ],
+    },
+    false,
+    false,
+    tNB,
+  );
+  expect(creditStringWithRightsholders).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
+});
+
+test('getCreditString picks correct order of role type', () => {
+  const creators = [{ name: 'Anna Etternavn', type: 'photographer' }];
+  const rightsholders = [{ name: 'Stor Bedrift', type: 'distributor' }];
+  const processors = [{ name: 'Celine', type: 'writer' }];
+  const copyright = {
+    creators,
+    rightsholders,
+    processors,
+  };
+
+  const creditStringWithAll = getCreditString(copyright, false, false, tNB);
+  expect(creditStringWithAll).toEqual('Etternavn, A. ');
+
+  const creditStringWithoutCreators = getCreditString({ rightsholders, processors }, false, false, tNB);
+  expect(creditStringWithoutCreators).toEqual('Stor Bedrift. ');
+
+  const creditStringWithoutRightsholders = getCreditString({ creators, processors }, false, false, tNB);
+  expect(creditStringWithoutRightsholders).toEqual('Etternavn, A. ');
+
+  const creditStringWithoutProcessors = getCreditString({ creators, rightsholders }, false, false, tNB);
+  expect(creditStringWithoutProcessors).toEqual('Etternavn, A. ');
 });
 
 test('getDateString returns correct content', () => {

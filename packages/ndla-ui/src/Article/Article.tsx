@@ -184,7 +184,7 @@ export const Article = ({
   } = article;
 
   let authors = creators;
-  if (Array.isArray(authors) && authors.length === 0) {
+  if (Array.isArray(authors) && authors.length === 0 && rightsholders.length === 0) {
     authors = processors;
   }
   const suppliers = rightsholders.length ? rightsholders : undefined;
@@ -229,14 +229,12 @@ export const Article = ({
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline
             copyPageUrlLink={copyPageUrlLink}
-            {...{
-              authors,
-              suppliers,
-              published,
-              license: licenseObj.license,
-              licenseBox,
-              printUrl,
-            }}
+            authors={authors}
+            suppliers={suppliers}
+            published={published}
+            license={licenseObj.license}
+            licenseBox={licenseBox}
+            printUrl={printUrl}
           />
         </LayoutItem>
         <LayoutItem layout="extend">{children}</LayoutItem>

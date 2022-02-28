@@ -88,7 +88,6 @@ type Props = {
   programItems: ItemProps[];
   subjectCategories: subjectsProps['categories'];
   showBetaCursor?: boolean;
-  messageBox: boolean;
 };
 
 const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor }: Props) => {

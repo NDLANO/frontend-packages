@@ -32,19 +32,19 @@ test('getCreditString returns correct content', () => {
     { name: 'Bendik Test', type: 'artist' },
   ];
 
-  const creditStringWithOnePerson = getCreditString({ creators: [roles[0]] }, false, false, tNB);
+  const creditStringWithOnePerson = getCreditString({ creators: [roles[0]] }, {}, tNB);
   expect(creditStringWithOnePerson).toEqual('Etternavn, A. L. ');
 
-  const creditStringWithTwoPeople = getCreditString({ creators: roles.slice(0, 2) }, false, false, tNB);
+  const creditStringWithTwoPeople = getCreditString({ creators: roles.slice(0, 2) }, {}, tNB);
   expect(creditStringWithTwoPeople).toEqual('Etternavn, A. L. & Person, B. ');
 
-  const creditStringWithMultiplePeople = getCreditString({ creators: roles }, false, false, tNB);
+  const creditStringWithMultiplePeople = getCreditString({ creators: roles }, {}, tNB);
   expect(creditStringWithMultiplePeople).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
 
-  const creditStringWithRoles = getCreditString({ creators: roles.slice(0, 2) }, false, true, tNB);
+  const creditStringWithRoles = getCreditString({ creators: roles.slice(0, 2) }, { withRole: true }, tNB);
   expect(creditStringWithRoles).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
 
-  const creditStringWithPrefix = getCreditString({ creators: roles.slice(0, 2) }, true, false, tNB);
+  const creditStringWithPrefix = getCreditString({ creators: roles.slice(0, 2) }, { byPrefix: true }, tNB);
   expect(creditStringWithPrefix).toEqual('av Etternavn, A. L. & Person, B. ');
 
   const creditStringWithRightsholders = getCreditString(
@@ -55,8 +55,7 @@ test('getCreditString returns correct content', () => {
         { type: 'distributor', name: 'Organisasjon' },
       ],
     },
-    false,
-    false,
+    {},
     tNB,
   );
   expect(creditStringWithRightsholders).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
@@ -72,16 +71,16 @@ test('getCreditString picks correct order of role type', () => {
     processors,
   };
 
-  const creditStringWithAll = getCreditString(copyright, false, false, tNB);
+  const creditStringWithAll = getCreditString(copyright, {}, tNB);
   expect(creditStringWithAll).toEqual('Etternavn, A. ');
 
-  const creditStringWithoutCreators = getCreditString({ rightsholders, processors }, false, false, tNB);
+  const creditStringWithoutCreators = getCreditString({ rightsholders, processors }, {}, tNB);
   expect(creditStringWithoutCreators).toEqual('Stor Bedrift. ');
 
-  const creditStringWithoutRightsholders = getCreditString({ creators, processors }, false, false, tNB);
+  const creditStringWithoutRightsholders = getCreditString({ creators, processors }, {}, tNB);
   expect(creditStringWithoutRightsholders).toEqual('Etternavn, A. ');
 
-  const creditStringWithoutProcessors = getCreditString({ creators, rightsholders }, false, false, tNB);
+  const creditStringWithoutProcessors = getCreditString({ creators, rightsholders }, {}, tNB);
   expect(creditStringWithoutProcessors).toEqual('Etternavn, A. ');
 });
 

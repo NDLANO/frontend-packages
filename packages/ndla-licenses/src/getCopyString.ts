@@ -30,8 +30,10 @@ const _oldGetCreditCopyString = (roles: Contributor[], t: TranslationFunction) =
 
 export const getCreditString = (
   copyright: Partial<CopyrightType> | undefined,
-  byPrefix: boolean,
-  withRole: boolean,
+  config: {
+    byPrefix?: boolean;
+    withRole?: boolean;
+  },
   t: TranslationFunction,
 ) => {
   const formatNames = (credits: string[], forcePunctuation?: boolean) => {
@@ -39,8 +41,8 @@ export const getCreditString = (
 
     const formattedCredits = credits.length ? credits.join(', ') + ' & ' + lastCredit : lastCredit;
 
-    const prefix = byPrefix ? t('license.copyText.by') + ' ' : '';
-    const punctuation = forcePunctuation || withRole ? '.' : '';
+    const prefix = config.byPrefix ? t('license.copyText.by') + ' ' : '';
+    const punctuation = forcePunctuation || config.withRole ? '.' : '';
     return prefix + formattedCredits + punctuation + ' ';
   };
   const makeInitialsString = (roles: Contributor[]) => {
@@ -53,7 +55,7 @@ export const getCreditString = (
             .map((name) => name[0] + '.')
             .join(' ')
         : '.';
-      const role = withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
+      const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
       return lastName + initials + role;
     });
     return formatNames(credits);
@@ -61,7 +63,7 @@ export const getCreditString = (
 
   const makeRegularString = (roles: Contributor[]) => {
     const credits = roles.map((creator) => {
-      const role = withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
+      const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
       return creator.name + role;
     });
     return formatNames(credits, true);
@@ -163,7 +165,7 @@ export const figureApa7CopyString = (
 ): string => {
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
   const yearString = date ? getYearString(date) : '';
-  const creators = getCreditString(copyright, true, false, t);
+  const creators = getCreditString(copyright, { byPrefix: true }, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
   const licenseString = license ? license + '.' : '';
 
@@ -181,7 +183,7 @@ export const webpageReferenceApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ): string => {
-  const creators = getCreditString(copyright, false, false, t);
+  const creators = getCreditString(copyright, {}, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + '. ';
   const url = `${path ? ndlaFrontendDomain + path : src}`;
   const dateString = `(${getDateString(locale, lastUpdated)}). `;
@@ -199,7 +201,7 @@ export const podcastSeriesApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
-  const creators = getCreditString(copyright, false, true, t);
+  const creators = getCreditString(copyright, { withRole: true }, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
   const yearString = getYearDurationString(startYear, endYear, t);
@@ -219,7 +221,7 @@ export const podcastEpisodeApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
-  const creators = getCreditString(copyright, false, true, t);
+  const creators = getCreditString(copyright, { withRole: true }, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}#episode-${episodeId}`;
   const dateString = `(${getDateString(locale, date)}). `;

@@ -24,30 +24,49 @@ import { i18nInstance } from '../../../ndla-ui';
 const tNB = i18nInstance.getFixedT('nb');
 const tEN = i18nInstance.getFixedT('en');
 
-// Utils
-test('getCreditString returns correct content', () => {
-  const roles = [
-    { name: 'Anna Langt Etternavn', type: 'photographer' },
-    { name: 'Bendik Person', type: 'artist' },
-    { name: 'Bendik Test', type: 'artist' },
-  ];
+// function getCreditString
+const roles = [
+  { name: 'Anna Langt Etternavn', type: 'photographer' },
+  { name: 'Bendik Person', type: 'artist' },
+  { name: 'Bendik Test', type: 'artist' },
+];
 
-  const creditStringWithOnePerson = getCreditString({ creators: [roles[0]] }, {}, tNB);
-  expect(creditStringWithOnePerson).toEqual('Etternavn, A. L. ');
+const creators = [{ name: 'Anna Etternavn', type: 'photographer' }];
+const rightsholders = [{ name: 'Stor Bedrift', type: 'distributor' }];
+const processors = [{ name: 'Celine', type: 'writer' }];
+const copyright = {
+  creators,
+  rightsholders,
+  processors,
+};
 
-  const creditStringWithTwoPeople = getCreditString({ creators: roles.slice(0, 2) }, {}, tNB);
-  expect(creditStringWithTwoPeople).toEqual('Etternavn, A. L. & Person, B. ');
+test('getCreditString returns correct string for one person', () => {
+  const creditString = getCreditString({ creators: [roles[0]] }, {}, tNB);
+  expect(creditString).toEqual('Etternavn, A. L. ');
+});
 
-  const creditStringWithMultiplePeople = getCreditString({ creators: roles }, {}, tNB);
-  expect(creditStringWithMultiplePeople).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
+test('getCreditString returns correct string for two people', () => {
+  const creditString = getCreditString({ creators: roles.slice(0, 2) }, {}, tNB);
+  expect(creditString).toEqual('Etternavn, A. L. & Person, B. ');
+});
 
-  const creditStringWithRoles = getCreditString({ creators: roles.slice(0, 2) }, { withRole: true }, tNB);
-  expect(creditStringWithRoles).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
+test('getCreditString returns correct string for three people', () => {
+  const creditString = getCreditString({ creators: roles }, {}, tNB);
+  expect(creditString).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
+});
 
-  const creditStringWithPrefix = getCreditString({ creators: roles.slice(0, 2) }, { byPrefix: true }, tNB);
-  expect(creditStringWithPrefix).toEqual('av Etternavn, A. L. & Person, B. ');
+test('getCreditString returns correct content with withRoles param', () => {
+  const creditString = getCreditString({ creators: roles.slice(0, 2) }, { withRole: true }, tNB);
+  expect(creditString).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
+});
 
-  const creditStringWithRightsholders = getCreditString(
+test('getCreditString returns correct content with byPrefix param', () => {
+  const creditString = getCreditString({ creators: roles.slice(0, 2) }, { byPrefix: true }, tNB);
+  expect(creditString).toEqual('av Etternavn, A. L. & Person, B. ');
+});
+
+test('getCreditString returns correct content when using rightsholders', () => {
+  const creditString = getCreditString(
     {
       rightsholders: [
         { type: 'distributor', name: 'Stor Bedrift' },
@@ -58,62 +77,73 @@ test('getCreditString returns correct content', () => {
     {},
     tNB,
   );
-  expect(creditStringWithRightsholders).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
+  expect(creditString).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
 });
 
-test('getCreditString picks correct order of role type', () => {
-  const creators = [{ name: 'Anna Etternavn', type: 'photographer' }];
-  const rightsholders = [{ name: 'Stor Bedrift', type: 'distributor' }];
-  const processors = [{ name: 'Celine', type: 'writer' }];
-  const copyright = {
-    creators,
-    rightsholders,
-    processors,
-  };
-
+test('getCreditString uses correct role when all are present', () => {
   const creditStringWithAll = getCreditString(copyright, {}, tNB);
   expect(creditStringWithAll).toEqual('Etternavn, A. ');
+});
 
+test('getCreditString uses correct role when creators is missing', () => {
   const creditStringWithoutCreators = getCreditString({ rightsholders, processors }, {}, tNB);
   expect(creditStringWithoutCreators).toEqual('Stor Bedrift. ');
+});
 
+test('getCreditString uses correct role when rightsholders is missing', () => {
   const creditStringWithoutRightsholders = getCreditString({ creators, processors }, {}, tNB);
   expect(creditStringWithoutRightsholders).toEqual('Etternavn, A. ');
+});
 
+test('getCreditString uses correct role when processors is missing', () => {
   const creditStringWithoutProcessors = getCreditString({ creators, rightsholders }, {}, tNB);
   expect(creditStringWithoutProcessors).toEqual('Etternavn, A. ');
 });
 
-test('getDateString returns correct content', () => {
-  const date = '2017-06-05T14:25:14Z';
-  const invalidDate = '123abc';
+// getDateString
+const date = '2017-06-05T14:25:14Z';
+const invalidDate = '123abc';
+
+test('getDateString returns correct date when using valid date and NB locale', () => {
   const dateNO = getDateString('nb', date);
   expect(dateNO).toEqual('2017, 5. juni');
+});
 
+test('getDateString returns correct date when using valid date and EN locale', () => {
   const dateEN = getDateString('en', date);
   expect(dateEN).toEqual('2017, June 5');
+});
 
+test('getDateString returns correct date (current) when using invalid date', () => {
   const dateWithInvalidInput = getDateString('nb', invalidDate);
   expect(dateWithInvalidInput).toMatch(/\d{4}, \d{1,2}. [a-zA-Z]+/);
+});
 
+test('getDateString returns correct date when given no input', () => {
   const dateWithNoInput = getDateString('en');
   expect(dateWithNoInput).toMatch(/\d{4}, [a-zA-Z]+ \d{1,2}/);
 });
 
-test('getYearString return correct content', () => {
-  const start = '2019';
-  const end = '2020';
-
-  const yearWithStart = getYearDurationString(start, undefined, tNB);
+// function getYearString
+const startYear = '2019';
+const endYear = '2020';
+test('getYearString returns correct string with only startYear param', () => {
+  const yearWithStart = getYearDurationString(startYear, undefined, tNB);
   expect(yearWithStart).toEqual('(2019-nå). ');
+});
 
-  const yearWithStartAndEnd = getYearDurationString(start, end, tNB);
+test('getYearString returns correct string with both params', () => {
+  const yearWithStartAndEnd = getYearDurationString(startYear, endYear, tNB);
   expect(yearWithStartAndEnd).toEqual('(2019-2020). ');
+});
 
+test('getYearString returns empty string when no params are used', () => {
   const yearWithNoInput = getYearDurationString(undefined, undefined, tNB);
   expect(yearWithNoInput).toEqual('');
+});
 
-  const yearWithEqualStartAndEnd = getYearDurationString(start, start, tNB);
+test('getYearString return corrct string when start and end is identical', () => {
+  const yearWithEqualStartAndEnd = getYearDurationString(startYear, startYear, tNB);
   expect(yearWithEqualStartAndEnd).toEqual('(2019). ');
 });
 

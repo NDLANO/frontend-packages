@@ -229,7 +229,7 @@ const FrontpageExample = () => {
       </FrontpageHeader>
       <main>
         <OneColumn extraPadding>
-          <FrontpageProgramMenu programItems={programmes} subjectCategories={subjectCategories} />
+          <FrontpageProgramMenu programItems={programmes} subjectCategories={subjectCategories} showBetaCursor={true} />
         </OneColumn>
         <OneColumn wide>
           <FrontpageMultidisciplinarySubject

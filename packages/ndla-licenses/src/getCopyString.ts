@@ -48,7 +48,7 @@ export const getCreditString = (
       const [lastName, ...names] = creator.name.split(' ').reverse();
       const initials = names.length
         ? ', ' +
-          names
+          [...names]
             .reverse()
             .map((name) => name[0] + '.')
             .join(' ')

@@ -45,7 +45,6 @@
     "@ndla/util": "^2.0.2",
     "@reach/menu-button": "^0.12.1",
     "@reach/slider": "^0.12.1",
-    "classnames": "2.2.6",
     "focus-trap-react": "^6.0.0",
     "html-react-parser": "^0.10.3",
     "i18next-browser-languagedetector": "^6.1.1",

@@ -28,7 +28,6 @@
     "types"
   ],
   "peerDependencies": {
-    "classnames": "^2.2.5",
     "react": "^15.6.0 || ^16.0.0",
     "react-helmet": "^5.2.0"
   },

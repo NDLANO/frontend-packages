@@ -7,8 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-//@ts-ignore
-import classNames from 'classnames';
 import BEMHelper from 'react-bem-helper';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
@@ -25,11 +23,8 @@ interface MastheadItemProps {
   left?: boolean;
 }
 export const MastheadItem = ({ children, className, left = false, right = false }: MastheadItemProps) => {
-  const itemClassNames = classNames(
-    { [classes('left').className]: left },
-    { [classes('right').className]: right },
-    className,
-  );
+  const itemClassName = left ? 'left' : right ? 'right' : undefined;
+  const itemClassNames = itemClassName ? classes(itemClassName).className : undefined;
 
   return <div className={itemClassNames}>{children}</div>;
 };

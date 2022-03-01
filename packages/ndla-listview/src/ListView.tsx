@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
-//@ts-ignore
+// @ts-ignore
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
 import { WithTranslation, withTranslation } from 'react-i18next';
@@ -275,7 +275,7 @@ const ListView = ({
         </div>
       )}
       {!disableViewOption && (
-        <div className={'list-style'}>
+        <div className={'list-style'} aria-hidden="true">
           <button
             type="button"
             className={`style-button ${viewStyle === 'list' && 'active'}`}
@@ -300,7 +300,9 @@ const ListView = ({
                 className={`letter-button ${selectedLetter === letter && 'active'} ${!alphabet[letter] && 'disabled'}`}
                 onClick={() =>
                   selectedLetter === letter ? selectedLetterCallback('') : selectedLetterCallback(letter)
-                }>
+                }
+                aria-pressed={selectedLetter === letter}
+                aria-label={t('listview.filters.alphabet.letterFilter', { letter: letter })}>
                 {letter}
               </button>
             </li>

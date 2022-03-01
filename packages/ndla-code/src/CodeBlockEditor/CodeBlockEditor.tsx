@@ -111,7 +111,7 @@ const CodeBlockEditor = ({ onSave, onAbort, content = null }: Props) => {
           {t('codeEditor.title')}
           <br />
           <b>
-            <Code />
+            <Code aria-hidden="true" />
             &nbsp;{t('codeEditor.subtitle')}
           </b>
         </FlexElement>

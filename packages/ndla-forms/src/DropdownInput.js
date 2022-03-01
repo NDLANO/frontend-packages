@@ -24,7 +24,7 @@ const DropdownInput = ({
   ...rest
 }) => (
   <Input
-    iconRight={loading ? <Spinner size="normal" margin="0" /> : <Search />}
+    iconRight={loading ? <Spinner size="normal" margin="0" aria-hidden="true" /> : <Search aria-hidden="true" />}
     {...rest}
     tags={
       multiSelect &&

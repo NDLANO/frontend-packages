@@ -54,6 +54,7 @@ export default function ImageSearchResult({
           useImageTitle={useImageTitle}
           checkboxLabel={checkboxLabel}
           showCheckbox={showCheckbox}
+          aria-hidden={true}
         />
       ) : (
         ''

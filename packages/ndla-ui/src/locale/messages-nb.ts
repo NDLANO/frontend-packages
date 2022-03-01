@@ -599,6 +599,9 @@ const messages = {
         closeFilter: 'Lukk filter',
         heading: 'Filter',
       },
+      alphabet: {
+        letterFilter: 'Vis innhald på (bokstaven) {{letter}}.',
+      },
     },
     relatedLinks: {
       label: 'Tilknyttede artikler',
@@ -795,6 +798,10 @@ const messages = {
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innen',
   },
+  multibutton: {
+    open: 'Åpne meny',
+    close: 'Lukk meny',
+  },
   close: 'Lukk',
   title: 'Tittel',
   image: {
@@ -882,6 +889,10 @@ const messages = {
     },
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
+  slateBlockMenu: {
+    open: 'Åpne meny',
+    close: 'Lukk meny',
+  },
 };
 
 export default messages;

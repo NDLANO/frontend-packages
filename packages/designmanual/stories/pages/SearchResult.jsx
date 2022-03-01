@@ -433,7 +433,7 @@ const SearchResult = ({ showCompetenceGoals }) => {
           }}>
           <NotionBlock type="image" />
           <NotionBlock type="video" />
-          <NotionBlock type="H5P"/>
+          <NotionBlock type="H5P" />
         </SearchNotionsResult>
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}

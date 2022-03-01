@@ -601,6 +601,9 @@ const messages = {
         closeFilter: 'Close filter',
         heading: 'Filter',
       },
+      alphabet: {
+        letterFilter: 'Filter content by the letter {{letter}}.',
+      },
     },
     relatedLinks: {
       label: 'Related articles',
@@ -797,6 +800,10 @@ const messages = {
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case in',
   },
+  multibutton: {
+    open: 'Open menu',
+    close: 'Close menu',
+  },
   close: 'Close',
   title: 'Title',
   image: {
@@ -884,6 +891,10 @@ const messages = {
     },
   },
   checkOutNewFeature: 'New feature',
+  slateBlockMenu: {
+    open: 'Open menu',
+    close: 'Close menu',
+  },
 };
 
 export default messages;

@@ -244,14 +244,14 @@ class UploadDropZone extends Component {
               ref={this.inputRef}
               disabled={loading}
             />
-            <ContentWrapper>
+            <ContentWrapper aria-live="polite" aria-busy={loading}>
               {loading ? (
-                <SpinnerWrapper>
+                <SpinnerWrapper aria-hidden="true">
                   <Spinner />
                 </SpinnerWrapper>
               ) : (
                 <Fragment>
-                  {useIcon || <CloudUploadOutline />}
+                  {useIcon || <CloudUploadOutline aria-hidden="true" />}
                   {children}
                 </Fragment>
               )}
@@ -260,7 +260,7 @@ class UploadDropZone extends Component {
         </Wrapper>
         {!dropAllowed && (
           <AlertMessages>
-            <AlertCircle />
+            <AlertCircle aria-hidden="true" />
             {errorMessage}
           </AlertMessages>
         )}

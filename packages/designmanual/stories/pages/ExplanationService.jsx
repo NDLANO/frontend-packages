@@ -401,10 +401,10 @@ const ExplanationService = () => {
                   labelField="title"
                   iconRight={
                     categoryFilterOpen ? (
-                      <Search />
+                      <Search aria-hidden="true" />
                     ) : (
                       <span onClick={onCategoryFilterSearchFocus}>
-                        <ChevronDown />
+                        <ChevronDown aria-hidden="true" />
                       </span>
                     )
                   }

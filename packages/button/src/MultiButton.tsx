@@ -6,7 +6,8 @@
  *
  */
 
-import React, { ReactElement, useState } from 'react';
+import React, { useState, ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
@@ -162,6 +163,7 @@ export const MultiButton = ({
   children,
 }: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
+  const { t } = useTranslation();
   const setPopupState = (newState?: boolean) => {
     toggleIsOpen(!!newState);
   };
@@ -211,16 +213,21 @@ export const MultiButton = ({
               escapeDeactivates: true,
             }}>
             <div>
-              <Button {...clippedButtonAttachmentOutline} onClick={() => setPopupState(!isOpen)}>
-                <StyledIcon rotate={isOpen ? 180 : 0} />
+              <Button
+                {...clippedButtonAttachmentOutline}
+                onClick={() => setPopupState(!isOpen)}
+                aria-haspopup="true"
+                aria-expanded={isOpen}
+                aria-label={isOpen ? t('multibutton.close') : t('multibutton.open')}>
+                <StyledIcon rotate={isOpen ? 180 : 0} aria-hidden="true" />
               </Button>
               {isOpen && (
                 <StyledOptionWrapperAnimation offsetY={popUpOffsetY} verticalPosition={verticalPosition}>
                   <StyledOptionWrapper>
                     <StyledOptionContent>
-                      <PopUpMenu>
+                      <PopUpMenu role="menu">
                         {secondaryButtons.map((button) => (
-                          <MenuItem key={button.value} outline={outline}>
+                          <MenuItem key={button.value} outline={outline} role="menuitem">
                             <ButtonItem
                               disabled={!(button.enable ?? !disabled)}
                               outline={outline}

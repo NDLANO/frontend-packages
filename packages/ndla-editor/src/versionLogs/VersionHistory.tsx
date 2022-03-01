@@ -81,7 +81,7 @@ const VersionHistory = ({ notes, children }: Props) => {
           ))}
         </tbody>
       </StyledTable>
-      <StyleLine />
+      <StyleLine aria-hidden={true} />
       {children}
     </StyledWrapper>
   );

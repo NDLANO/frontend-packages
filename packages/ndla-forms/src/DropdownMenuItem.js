@@ -122,14 +122,14 @@ const InfoPart = ({ isSelected, disabledText }) => {
     return (
       <StyledisSelected>
         {t('dropdown.isSelectedItem')}
-        <Check />
+        <Check aria-hidden={true} />
       </StyledisSelected>
     );
   } else if (disabledText) {
     return (
       <StyledIsDisabled>
         {disabledText}
-        <Information />
+        <Information aria-hidden={true} />
       </StyledIsDisabled>
     );
   }

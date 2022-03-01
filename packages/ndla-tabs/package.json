@@ -35,7 +35,6 @@
     "@types/react-tabs": "^2.3.4"
   },
   "dependencies": {
-    "@ndla/core": "^0.7.3",
     "@ndla/icons": "^1.5.0",
     "@ndla/util": "^2.0.2",
     "react-tabs": "^3.2.3"

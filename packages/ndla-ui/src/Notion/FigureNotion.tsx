@@ -74,7 +74,7 @@ const FigureNotion = ({
                 learnAboutLicenses: t('license.learnMore'),
                 title: t('title'),
               }}>
-              <Button outline>{t('license.copyTitle')}</Button>
+              {type === 'image' && <Button outline>{t('license.copyTitle')}</Button>}
             </FigureLicenseDialog>
           </FigureCaption>
         </>

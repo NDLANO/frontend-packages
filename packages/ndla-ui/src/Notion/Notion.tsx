@@ -196,6 +196,7 @@ const Notion = ({
 
   return (
     <NotionContainer>
+      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
       <ContentWrapper>
         {imageElement}
         {visualElement && visualElement.metaImage && (
@@ -242,7 +243,6 @@ const Notion = ({
         <ClearWrapper />
       </ContentWrapper>
       {children}
-      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
     </NotionContainer>
   );
 };

@@ -119,6 +119,7 @@ const ItemLink = styled(SafeLink)`
 const TextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
+  overflow: hidden;
   ${ItemWrapper}:hover & {
     padding-left: calc(${spacing.normal} + 2px);
     padding-right: calc(${spacing.normal} + 2px);

@@ -26,7 +26,7 @@ const MessageHeader = styled.h2`
 const MessageBoxWrapper = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
-  width: auto%;
+  width: auto;
 `;
 
 const MessageBoxExample = () => {

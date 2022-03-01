@@ -33,7 +33,6 @@
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "react": "16.13.1",
-    "react-bem-helper": "^1.4.1",
     "react-router-dom": "^5.2.0"
   },
   "publishConfig": {

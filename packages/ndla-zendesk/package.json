@@ -27,10 +27,8 @@
   ],
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
-    "@emotion/styled": "^10.0.9",
     "classnames": "^2.2.6",
-    "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1"
+    "react": "^16.4.2"
   },
   "dependencies": {
     "@ndla/button": "^1.1.9",

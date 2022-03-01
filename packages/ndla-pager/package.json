@@ -32,8 +32,11 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
-    "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1"
+    "react": "^16.4.2"
+  },
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1"
   },
   "publishConfig": {
     "access": "public"

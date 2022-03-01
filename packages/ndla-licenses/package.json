@@ -31,8 +31,7 @@
   },
   "dependencies": {
     "@ndla/core": "^0.7.3",
-    "@ndla/icons": "^1.5.0",
-    "react-bem-helper": "1.4.1"
+    "@ndla/icons": "^1.5.0"
   },
   "publishConfig": {
     "access": "public"

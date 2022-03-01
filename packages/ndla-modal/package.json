@@ -25,10 +25,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^1.1.9",
     "@ndla/core": "^0.7.3",
     "@ndla/icons": "^1.5.0",
-    "@ndla/util": "^2.0.2",
     "@reach/dialog": "^0.2.9"
   },
   "peerDependencies": {

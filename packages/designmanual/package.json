@@ -41,7 +41,6 @@
     "postcss-loader": "^3.0.0",
     "react-bem-helper": "1.4.1",
     "react-helmet": "5.2.0",
-    "react-prop-types": "0.4.0",
     "react-syntax-highlighter": "^15.4.4",
     "sass-loader": "^7.1.0",
     "webpack": "^4.46.0"

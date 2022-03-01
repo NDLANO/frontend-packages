@@ -33,8 +33,7 @@
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
     "react": "^16.4.2",
-    "react-bem-helper": "^1.4.1",
-    "react-prop-types": "0.4.0"
+    "react-bem-helper": "^1.4.1"
   },
   "publishConfig": {
     "access": "public"

@@ -61,7 +61,6 @@
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.1.2",
     "react-facebook": "^6.0.15",
-    "react-prop-types": "0.4.0",
     "react-sticky-el": "^2.0.6",
     "react-swipeable": "^6.2.0",
     "react-syntax-highlighter": "^15.4.4",

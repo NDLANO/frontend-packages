@@ -6,12 +6,12 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { uuid } from '@ndla/util';
-import { useTranslation } from 'react-i18next';
 import { initArticleScripts } from '@ndla/article-scripts';
-
 import { Figure, Image, FigureExpandButton, ImageLink } from '@ndla/ui';
+import FigureCaptionExample from './FigureCaptionExample';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
 function ImageWrapper({ src, hasHiddenCaption, children }) {
@@ -42,20 +42,20 @@ const calculateSizesFromType = (type) => {
   }
 };
 
-function FigureImage({ type, alt, src, caption, hasHiddenCaption, link }) {
+function FigureImage({ type, alt, src, caption, hasHiddenCaption, link, hideLicence }) {
   const { t } = useTranslation();
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
   const figureId = `figure-${id}`;
   const sizes = calculateSizesFromType(type);
-  /*   const messages = {
+  const messages = {
     rulesForUse: t('license.images.rules'),
     zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
     reuse: t('image.reuse'),
     download: t('image.download'),
     modelPermission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
-  }; */
+  };
 
   return (
     <Figure id={figureId} type={type}>
@@ -79,14 +79,17 @@ function FigureImage({ type, alt, src, caption, hasHiddenCaption, link }) {
               }
             />
           </ImageWrapper>
-          {/*   <FigureCaptionExample
-            id={id}
-            figureId={figureId}
-            caption={caption}
-            hasHiddenCaption={hasHiddenCaption}
-            link={link}
-            messages={messages}
-          /> */}
+
+          {hideLicence !== true && (
+            <FigureCaptionExample
+              id={id}
+              figureId={figureId}
+              caption={caption}
+              hasHiddenCaption={hasHiddenCaption}
+              link={link}
+              messages={messages}
+            />
+          )}
         </>
       )}
     </Figure>

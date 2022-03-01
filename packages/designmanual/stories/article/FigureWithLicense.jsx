@@ -6,14 +6,16 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { Figure } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { useRunOnlyOnce } from './useRunOnlyOnce';
 
-function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe, caption, type }) {
-  //const { t } = useTranslation();
+import FigureCaptionExample from './FigureCaptionExample';
+function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe, caption, type, hideLicence }) {
+  const { t } = useTranslation();
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -21,18 +23,26 @@ function FigureWithLicense({ children, hasHiddenCaption, messages, resizeIframe,
   const figureId = `figure-${id}`;
 
   return (
-    <Figure id={figureId} resizeIframe={resizeIframe} type={type}>
-      {children}
-      {/*       {!hasHiddenCaption && (
-        <FigureCaptionExample
-          id={id}
-          figureId={figureId}
-          caption={caption}
-          messages={messages || { reuse: t('video.reuse'), modelPermission: null }}
-          hasHiddenCaption={hasHiddenCaption}
-        />
-      )} */}
-    </Figure>
+    <>
+      {hideLicence !== true ? (
+        <Figure id={figureId} resizeIframe={resizeIframe} type={type}>
+          {children}
+          {!hasHiddenCaption && (
+            <FigureCaptionExample
+              id={id}
+              figureId={figureId}
+              caption={caption}
+              messages={messages || { reuse: t('video.reuse'), modelPermission: null }}
+              hasHiddenCaption={hasHiddenCaption}
+            />
+          )}
+        </Figure>
+      ) : (
+        <Figure id={figureId} resizeIframe={resizeIframe} type={type}>
+          {children}
+        </Figure>
+      )}
+    </>
   );
 }
 

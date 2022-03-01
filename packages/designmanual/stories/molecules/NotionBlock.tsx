@@ -55,6 +55,7 @@ const NotionBlock = ({ type }: Props) => {
           text="Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand."
           imageElement={
             <FigureImage
+              hideLicence={true}
               type="full-column"
               hasHiddenCaption
               caption="Stokkand"
@@ -76,7 +77,7 @@ const NotionBlock = ({ type }: Props) => {
               alt: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',
             },
             type: 'video',
-            element: <Video />,
+            element: <Video hideLicence={true} />,
           }}>
           <FigureCaptionExample id={id} figureId={figureId} messages={messages.reuse} />
         </Notion>
@@ -92,7 +93,7 @@ const NotionBlock = ({ type }: Props) => {
               alt: 'Mikroskop med fire objektiv. Foto.',
             },
             type: 'other',
-            element: <H5p />,
+            element: <H5p hideLicence={true} />,
           }}>
           <FigureCaptionExample id={id} figureId={figureId} messages={messages.reuse} />
         </Notion>

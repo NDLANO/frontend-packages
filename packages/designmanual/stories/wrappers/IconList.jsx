@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { copyTextToClipboard } from '@ndla/util';
 import { Copy } from '@ndla/icons/action';
 import Button from '@ndla/button';
-import elementType from 'react-prop-types/lib/elementType';
 
 class IconItem extends Component {
   constructor(props) {
@@ -60,7 +59,7 @@ class IconItem extends Component {
 }
 
 IconItem.propTypes = {
-  icon: elementType.isRequired, // eslint-disable-line react/forbid-prop-types
+  icon: PropTypes.string.isRequired, // eslint-disable-line react/forbid-prop-types
   folder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

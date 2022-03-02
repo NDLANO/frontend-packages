@@ -183,8 +183,7 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
-  const authors = creators || rightsholders || processors;
-  const suppliers = creators.length ? rightsholders : undefined;
+  const authors = creators.length || rightsholders.length ? creators : processors;
 
   return (
     <div ref={wrapperRef}>
@@ -227,7 +226,7 @@ export const Article = ({
           <ArticleByline
             copyPageUrlLink={copyPageUrlLink}
             authors={authors}
-            suppliers={suppliers}
+            suppliers={rightsholders}
             published={published}
             license={licenseObj.license}
             licenseBox={licenseBox}

@@ -9,14 +9,14 @@
 import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import { To } from 'react-router';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
-import * as H from 'history';
 
 interface Props {
   classes: BEMHelper<ReturnObject>;
   isCurrent: boolean;
   children: ReactNode;
-  to: H.LocationDescriptor;
+  to: To;
   home: boolean;
   name: string;
   invertedStyle: boolean;

@@ -6,7 +6,7 @@
  *
  */
 
-import { History } from 'history';
+import { Location } from 'history';
 
 /* eslint-disable no-console */
 
@@ -48,13 +48,15 @@ function resetDataLayer(googleTagManagerId?: string) {
 
 export type UnregisterCallback = () => void;
 
+type ListenFunc = (callback: Location) => void;
+
 export const configureTracker = ({
   listen,
   debug,
   gaTrackingId,
   googleTagManagerId,
 }: {
-  listen: History<any>['listen'];
+  listen: (callback: ListenFunc) => void;
   debug?: boolean;
   gaTrackingId?: string;
   googleTagManagerId?: string;

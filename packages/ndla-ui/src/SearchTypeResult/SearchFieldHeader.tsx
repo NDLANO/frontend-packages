@@ -140,7 +140,7 @@ const SearchFieldHeader = ({ value, onSubmit, onChange, filters, activeFilters }
               inputRef.current.focus();
             }
           }}>
-          <CrossIcon style={iconStyle} title={t<string>('welcomePage.resetSearch')}/>
+          <CrossIcon style={iconStyle} title={t<string>('welcomePage.resetSearch')} />
         </ClearButton>
       )}
       <SearchButton type="submit" value={t<string>('searchPage.search')}>

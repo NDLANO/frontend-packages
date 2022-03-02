@@ -149,7 +149,7 @@ type Props = {
   disabled?: boolean;
   large?: boolean;
   menuPosition?: 'top' | 'bottom';
-  children?: () => ReactElement;
+  children?: ReactElement;
 };
 
 export const MultiButton = ({

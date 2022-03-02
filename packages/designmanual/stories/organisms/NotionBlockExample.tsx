@@ -6,6 +6,7 @@
  *
  */
 
+import styled from '@emotion/styled';
 import React, { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
@@ -15,6 +16,15 @@ import NotionBlock from '../molecules/NotionBlock';
 import ComponentInfo from '../ComponentInfo';
 //@ts-ignore
 import NotionSiteTabs from '../molecules/NotionSiteTabs';
+
+const ContentWrapper = styled.div`
+  position: relative !important;
+  right: auto !important;
+  left: -16.6666666667%;
+  width: 133.3333333333% !important;
+  padding-left: 24px;
+  padding-right: 24px;
+`;
 
 class NotionBlockExample extends Component {
   componentDidMount() {
@@ -27,11 +37,17 @@ class NotionBlockExample extends Component {
         status={3}
         components={
           <OneColumn>
-            <h2>Begrep med visuelt element bilde</h2>
+            <ContentWrapper>
+              <h2>Begrep med visuelt element bilde</h2>
+            </ContentWrapper>
             <NotionBlock type="image" />
-            <h2>Begrep med visuelt element video</h2>
+            <ContentWrapper>
+              <h2>Begrep med visuelt element video</h2>
+            </ContentWrapper>
             <NotionBlock type="video" />
-            <h2>Begrep med visuelt element h5p</h2>
+            <ContentWrapper>
+              <h2>Begrep med visuelt element h5p</h2>
+            </ContentWrapper>
             <NotionBlock type="H5P" />
           </OneColumn>
         }

@@ -46,7 +46,7 @@
     "@reach/menu-button": "^0.12.1",
     "@reach/slider": "^0.12.1",
     "focus-trap-react": "^6.0.0",
-    "html-react-parser": "^1.4.8",
+    "html-react-parser": "^0.14.1",
     "i18next-browser-languagedetector": "^6.1.1",
     "intl-format-cache": "^4.3.1",
     "intl-messageformat": "5.4.3",

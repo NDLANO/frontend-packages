@@ -183,11 +183,8 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
-  let authors = creators;
-  if (Array.isArray(authors) && authors.length === 0 && rightsholders.length === 0) {
-    authors = processors;
-  }
-  const suppliers = rightsholders.length ? rightsholders : undefined;
+  const authors = creators || rightsholders || processors;
+  const suppliers = creators.length ? rightsholders : undefined;
 
   return (
     <div ref={wrapperRef}>

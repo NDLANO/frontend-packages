@@ -15,6 +15,7 @@ import { copyTextToClipboard, printPage } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
 import { LicenseByline } from '@ndla/licenses';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { TFunction } from 'i18next';
 
 const Wrapper = styled.div`
   margin-top: ${spacing.normal};
@@ -38,7 +39,7 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const AuthorsWrapper = styled.span`
+const PrimaryContributorsWrapper = styled.span`
   margin-left: ${spacing.xxsmall};
 `;
 
@@ -61,9 +62,33 @@ type Props = {
   locale?: string;
 };
 
+const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
+  const contributorsArray = contributors.map((contributor, index) => {
+    let separator = '';
+    if (index > 0) {
+      if (index === contributors.length - 1) {
+        separator = ` ${t('article.conjunction')} `;
+      } else {
+        separator = ', ';
+      }
+    }
+    return `${separator}${contributor.name}`;
+  });
+  return contributorsArray.join('');
+};
+
+const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
+  if (suppliers.length === 0) {
+    return '';
+  }
+  return suppliers.length > 1
+    ? t('article.multipleSuppliersLabel', { names: renderContributors(suppliers, t) })
+    : t('article.supplierLabel', { name: renderContributors(suppliers, t) });
+};
+
 const ArticleByline = ({
   authors = [],
-  suppliers,
+  suppliers = [],
   license,
   licenseBox,
   published,
@@ -78,42 +103,30 @@ const ArticleByline = ({
     }
   };
 
-  const renderContributors = (contributors: SupplierProps[] | AuthorProps[]) => {
-    const contributorsArray = contributors.map((contributor, index) => {
-      let separator = '';
-      if (index > 0) {
-        if (index === contributors.length - 1) {
-          separator = ` ${t('article.conjunction')} `;
-        } else {
-          separator = ', ';
-        }
-      }
-      return `${separator}${contributor.name}`;
-    });
-    return contributorsArray.join('');
-  };
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
+
+  const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
+  const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
+
   return (
     <Wrapper>
       <div>
         {t('article.lastUpdated')} {published}
       </div>
-      {(authors.length > 0 || licenseRights.length > 0) && (
+      {(showPrimaryContributors || licenseRights.length > 0) && (
         <TextWrapper>
           <LicenseByline licenseRights={licenseRights}>
-            {authors.length > 0 && (
-              <AuthorsWrapper>{t('article.authorsLabel', { names: renderContributors(authors) })}</AuthorsWrapper>
+            {showPrimaryContributors && (
+              <PrimaryContributorsWrapper>
+                {authors.length > 0
+                  ? t('article.authorsLabel', { names: renderContributors(authors, t) })
+                  : getSuppliersText(suppliers, t)}
+              </PrimaryContributorsWrapper>
             )}
           </LicenseByline>
         </TextWrapper>
       )}
-      {suppliers && (
-        <TextWrapper>
-          {suppliers.length > 1
-            ? t('article.multipleSuppliersLabel', { names: renderContributors(suppliers) })
-            : t('article.supplierLabel', { name: renderContributors(suppliers) })}
-        </TextWrapper>
-      )}
+      {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
       <ButtonWrapper>
         {licenseBox && (
           <Modal

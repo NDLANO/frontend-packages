@@ -64,15 +64,9 @@ type Props = {
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
   const contributorsArray = contributors.map((contributor, index) => {
-    let separator = '';
-    if (index > 0) {
-      if (index === contributors.length - 1) {
-        separator = ` ${t('article.conjunction')} `;
-      } else {
-        separator = ', ';
-      }
-    }
-    return `${separator}${contributor.name}`;
+    if (index < 1) return contributor.name;
+    const sep = index === contributors.length - 1 ? ` ${t('article.conjunction')} ` : ', ';
+    return `${sep}${contributor.name}`;
   });
   return contributorsArray.join('');
 };

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ElementType, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
@@ -9,8 +9,10 @@ interface Props {
   large?: boolean;
   className?: string;
 }
-const SectionHeading = ({ children, large = false, className }: Props) =>
-  large ? <h1 {...classes('', { large }, className)}>{children}</h1> : <h2 {...classes('', className)}>{children}</h2>;
+const SectionHeading = ({ children, large = false, className }: Props) => {
+  const Wrapper: ElementType = large ? 'h1' : 'h2';
+  return <Wrapper {...classes('', { large: !!large }, className)}>{children}</Wrapper>;
+};
 
 export default SectionHeading;
 

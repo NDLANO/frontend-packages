@@ -35,6 +35,7 @@
   "bugs": {
     "url": "https://github.com/NDLANO/frontend-packages/issues"
   },
+  "packageManager": "yarn@1.22.17",
   "homepage": "https://github.com/NDLANO/frontend-packages",
   "author": "ndla@knowit.no",
   "license": "GPL-3.0",

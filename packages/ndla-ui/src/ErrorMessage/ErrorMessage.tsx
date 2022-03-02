@@ -6,11 +6,10 @@
  *
  */
 
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, mq } from '@ndla/core';
+import { colors, spacing, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { ReactNode } from 'react';
 
 const StyledErrorMessage = styled.article`
   text-align: center;
@@ -23,18 +22,19 @@ const StyledErrorMessage = styled.article`
   }
 `;
 
-const IllustrationWrapper = styled('div')(
-  mq.tablet({
-    marginBottom: spacing.normal,
-    marginTop: [null, spacing.large],
-  }),
-);
+const IllustrationWrapper = styled('div')`
+  margin-bottom: ${spacing.normal};
+  @media (min-width: ${breakpoints.tablet}) {
+    margin-top: ${spacing.large};
+  }
+`;
 
-const Description = styled('p')(
-  mq.tablet({
-    marginBottom: [spacing.normal, spacing.large],
-  }),
-);
+const Description = styled('p')`
+  margin-bottom: ${spacing.normal};
+  @media (min-width: ${breakpoints.tablet}) {
+    margin-bottom: ${spacing.large};
+  }
+`;
 
 const CustomElementWrapper = styled.div`
   margin: ${spacing.large} 0;

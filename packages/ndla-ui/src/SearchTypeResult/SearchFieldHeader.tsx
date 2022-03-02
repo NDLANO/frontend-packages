@@ -73,6 +73,11 @@ const SearchInput = styled.input`
   margin-left: 3px;
 `;
 
+const iconStyle = {
+  width: '24px',
+  height: '24px',
+};
+
 type Props = {
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   value?: string;
@@ -135,11 +140,11 @@ const SearchFieldHeader = ({ value, onSubmit, onChange, filters, activeFilters }
               inputRef.current.focus();
             }
           }}>
-          <CrossIcon style={{ width: '24px', height: '24px' }} />
+          <CrossIcon style={iconStyle} title={t<string>('welcomePage.resetSearch')}/>
         </ClearButton>
       )}
       <SearchButton type="submit" value={t<string>('searchPage.search')}>
-        <SearchIcon style={{ width: '24px', height: '24px' }} />
+        <SearchIcon style={iconStyle} title={t<string>('searchPage.search')} />
       </SearchButton>
     </StyledForm>
   );

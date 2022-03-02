@@ -9,9 +9,8 @@ interface Props {
   large?: boolean;
   className?: string;
 }
-const SectionHeading = ({ children, large = false, className }: Props) => (
-  <h1 {...classes('', { large }, className)}>{children}</h1>
-);
+const SectionHeading = ({ children, large = false, className }: Props) =>
+  large ? <h1 {...classes('', { large }, className)}>{children}</h1> : <h2 {...classes('', className)}>{children}</h2>;
 
 export default SectionHeading;
 

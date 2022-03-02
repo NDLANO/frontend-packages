@@ -31,14 +31,14 @@ export const RelatedArticle = ({
   const iconWithClass = cloneElement(icon, { className: 'c-icon--medium' });
   return (
     <article {...classes('item', modifier)}>
-      <h1 {...classes('title')}>
+      <h3 {...classes('title')}>
         {iconWithClass}
         <span {...classes('link-wrapper')}>
           <SafeLink to={to} {...classes('link')} target={target} rel={linkInfo ? 'noopener noreferrer' : undefined}>
             {title}
           </SafeLink>
         </span>
-      </h1>
+      </h3>
       <p {...classes('description')} dangerouslySetInnerHTML={{ __html: introduction }} />
       {linkInfo && <p {...classes('link-info')}>{linkInfo}</p>}
     </article>

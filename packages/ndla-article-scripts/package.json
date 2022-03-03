@@ -6,6 +6,10 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "sideEffects": false,
+  "scripts": {
+    "build": "yarn transpile",
+    "transpile": "node ../../scripts/build.js package"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NDLANO/frontend-packages.git/ndla-ui/"

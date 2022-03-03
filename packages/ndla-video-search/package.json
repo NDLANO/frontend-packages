@@ -10,6 +10,10 @@
     "url": "https://github.com/NDLANO/frontend-packages.git",
     "directory": "packages/ndla-video-search"
   },
+  "scripts": {
+    "build": "yarn transpile ",
+    "transpile": "node ../../scripts/build.js package"
+  },
   "keywords": [
     "ndla"
   ],

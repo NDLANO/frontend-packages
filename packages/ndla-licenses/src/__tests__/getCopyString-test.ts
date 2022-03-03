@@ -1,324 +1,324 @@
-/**
- * Copyright (c) 2022-present, NDLA.
- *
- * This source code is licensed under the GPLv3 license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
+// /**
+//  * Copyright (c) 2022-present, NDLA.
+//  *
+//  * This source code is licensed under the GPLv3 license found in the
+//  * LICENSE file in the root directory of this source tree.
+//  *
+//  */
 
-/* eslint-env jest */
+// /* eslint-env jest */
 
-import {
-  getCopyString,
-  figureApa7CopyString,
-  webpageReferenceApa7CopyString,
-  podcastEpisodeApa7CopyString,
-  podcastSeriesApa7CopyString,
-  getCreditString,
-  getDateString,
-  getYearDurationString,
-} from '../getCopyString';
+// import {
+//   getCopyString,
+//   figureApa7CopyString,
+//   webpageReferenceApa7CopyString,
+//   podcastEpisodeApa7CopyString,
+//   podcastSeriesApa7CopyString,
+//   getCreditString,
+//   getDateString,
+//   getYearDurationString,
+// } from '../getCopyString';
 
-// Adding @ndla/ui to package.json would cause circular dependency.
-import { i18nInstance } from '../../../ndla-ui';
-const tNB = i18nInstance.getFixedT('nb');
-const tEN = i18nInstance.getFixedT('en');
+// // Adding @ndla/ui to package.json would cause circular dependency.
+// import { i18nInstance } from '../../../ndla-ui';
+// const tNB = i18nInstance.getFixedT('nb');
+// const tEN = i18nInstance.getFixedT('en');
 
-// function getCreditString
-const roles = [
-  { name: 'Anna Langt Etternavn', type: 'photographer' },
-  { name: 'Bendik Person', type: 'artist' },
-  { name: 'Bendik Test', type: 'artist' },
-];
+// // function getCreditString
+// const roles = [
+//   { name: 'Anna Langt Etternavn', type: 'photographer' },
+//   { name: 'Bendik Person', type: 'artist' },
+//   { name: 'Bendik Test', type: 'artist' },
+// ];
 
-const creators = [{ name: 'Anna Etternavn', type: 'photographer' }];
-const rightsholders = [{ name: 'Stor Bedrift', type: 'distributor' }];
-const processors = [{ name: 'Celine', type: 'writer' }];
-const copyright = {
-  creators,
-  rightsholders,
-  processors,
-};
+// const creators = [{ name: 'Anna Etternavn', type: 'photographer' }];
+// const rightsholders = [{ name: 'Stor Bedrift', type: 'distributor' }];
+// const processors = [{ name: 'Celine', type: 'writer' }];
+// const copyright = {
+//   creators,
+//   rightsholders,
+//   processors,
+// };
 
-test('getCreditString returns correct string for one person', () => {
-  const creditString = getCreditString({ creators: [roles[0]] }, {}, tNB);
-  expect(creditString).toEqual('Etternavn, A. L. ');
-});
+// test('getCreditString returns correct string for one person', () => {
+//   const creditString = getCreditString({ creators: [roles[0]] }, {}, tNB);
+//   expect(creditString).toEqual('Etternavn, A. L. ');
+// });
 
-test('getCreditString returns correct string for two people', () => {
-  const creditString = getCreditString({ creators: roles.slice(0, 2) }, {}, tNB);
-  expect(creditString).toEqual('Etternavn, A. L. & Person, B. ');
-});
+// test('getCreditString returns correct string for two people', () => {
+//   const creditString = getCreditString({ creators: roles.slice(0, 2) }, {}, tNB);
+//   expect(creditString).toEqual('Etternavn, A. L. & Person, B. ');
+// });
 
-test('getCreditString returns correct string for three people', () => {
-  const creditString = getCreditString({ creators: roles }, {}, tNB);
-  expect(creditString).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
-});
+// test('getCreditString returns correct string for three people', () => {
+//   const creditString = getCreditString({ creators: roles }, {}, tNB);
+//   expect(creditString).toEqual('Etternavn, A. L., Person, B. & Test, B. ');
+// });
 
-test('getCreditString returns correct content with withRoles param', () => {
-  const creditString = getCreditString({ creators: roles.slice(0, 2) }, { withRole: true }, tNB);
-  expect(creditString).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
-});
+// test('getCreditString returns correct content with withRoles param', () => {
+//   const creditString = getCreditString({ creators: roles.slice(0, 2) }, { withRole: true }, tNB);
+//   expect(creditString).toEqual('Etternavn, A. L. (Fotograf) & Person, B. (Kunstner). ');
+// });
 
-test('getCreditString returns correct content with byPrefix param', () => {
-  const creditString = getCreditString({ creators: roles.slice(0, 2) }, { byPrefix: true }, tNB);
-  expect(creditString).toEqual('av Etternavn, A. L. & Person, B. ');
-});
+// test('getCreditString returns correct content with byPrefix param', () => {
+//   const creditString = getCreditString({ creators: roles.slice(0, 2) }, { byPrefix: true }, tNB);
+//   expect(creditString).toEqual('av Etternavn, A. L. & Person, B. ');
+// });
 
-test('getCreditString returns correct content when using rightsholders', () => {
-  const creditString = getCreditString(
-    {
-      rightsholders: [
-        { type: 'distributor', name: 'Stor Bedrift' },
-        { type: 'distributor', name: 'Liten Bedrift' },
-        { type: 'distributor', name: 'Organisasjon' },
-      ],
-    },
-    {},
-    tNB,
-  );
-  expect(creditString).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
-});
+// test('getCreditString returns correct content when using rightsholders', () => {
+//   const creditString = getCreditString(
+//     {
+//       rightsholders: [
+//         { type: 'distributor', name: 'Stor Bedrift' },
+//         { type: 'distributor', name: 'Liten Bedrift' },
+//         { type: 'distributor', name: 'Organisasjon' },
+//       ],
+//     },
+//     {},
+//     tNB,
+//   );
+//   expect(creditString).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
+// });
 
-test('getCreditString uses correct role when all are present', () => {
-  const creditStringWithAll = getCreditString(copyright, {}, tNB);
-  expect(creditStringWithAll).toEqual('Etternavn, A. ');
-});
+// test('getCreditString uses correct role when all are present', () => {
+//   const creditStringWithAll = getCreditString(copyright, {}, tNB);
+//   expect(creditStringWithAll).toEqual('Etternavn, A. ');
+// });
 
-test('getCreditString uses correct role when creators is missing', () => {
-  const creditStringWithoutCreators = getCreditString({ rightsholders, processors }, {}, tNB);
-  expect(creditStringWithoutCreators).toEqual('Stor Bedrift. ');
-});
+// test('getCreditString uses correct role when creators is missing', () => {
+//   const creditStringWithoutCreators = getCreditString({ rightsholders, processors }, {}, tNB);
+//   expect(creditStringWithoutCreators).toEqual('Stor Bedrift. ');
+// });
 
-test('getCreditString uses correct role when rightsholders is missing', () => {
-  const creditStringWithoutRightsholders = getCreditString({ creators, processors }, {}, tNB);
-  expect(creditStringWithoutRightsholders).toEqual('Etternavn, A. ');
-});
+// test('getCreditString uses correct role when rightsholders is missing', () => {
+//   const creditStringWithoutRightsholders = getCreditString({ creators, processors }, {}, tNB);
+//   expect(creditStringWithoutRightsholders).toEqual('Etternavn, A. ');
+// });
 
-test('getCreditString uses correct role when processors is missing', () => {
-  const creditStringWithoutProcessors = getCreditString({ creators, rightsholders }, {}, tNB);
-  expect(creditStringWithoutProcessors).toEqual('Etternavn, A. ');
-});
+// test('getCreditString uses correct role when processors is missing', () => {
+//   const creditStringWithoutProcessors = getCreditString({ creators, rightsholders }, {}, tNB);
+//   expect(creditStringWithoutProcessors).toEqual('Etternavn, A. ');
+// });
 
-// getDateString
-const date = '2017-06-05T14:25:14Z';
-const invalidDate = '123abc';
+// // getDateString
+// const date = '2017-06-05T14:25:14Z';
+// const invalidDate = '123abc';
 
-test('getDateString returns correct date when using valid date and NB locale', () => {
-  const dateNO = getDateString('nb', date);
-  expect(dateNO).toEqual('2017, 5. juni');
-});
+// test('getDateString returns correct date when using valid date and NB locale', () => {
+//   const dateNO = getDateString('nb', date);
+//   expect(dateNO).toEqual('2017, 5. juni');
+// });
 
-test('getDateString returns correct date when using valid date and EN locale', () => {
-  const dateEN = getDateString('en', date);
-  expect(dateEN).toEqual('2017, June 5');
-});
+// test('getDateString returns correct date when using valid date and EN locale', () => {
+//   const dateEN = getDateString('en', date);
+//   expect(dateEN).toEqual('2017, June 5');
+// });
 
-test('getDateString returns correct date (current) when using invalid date', () => {
-  const dateWithInvalidInput = getDateString('nb', invalidDate);
-  expect(dateWithInvalidInput).toMatch(/\d{4}, \d{1,2}. [a-zA-Z]+/);
-});
+// test('getDateString returns correct date (current) when using invalid date', () => {
+//   const dateWithInvalidInput = getDateString('nb', invalidDate);
+//   expect(dateWithInvalidInput).toMatch(/\d{4}, \d{1,2}. [a-zA-Z]+/);
+// });
 
-test('getDateString returns correct date when given no input', () => {
-  const dateWithNoInput = getDateString('en');
-  expect(dateWithNoInput).toMatch(/\d{4}, [a-zA-Z]+ \d{1,2}/);
-});
+// test('getDateString returns correct date when given no input', () => {
+//   const dateWithNoInput = getDateString('en');
+//   expect(dateWithNoInput).toMatch(/\d{4}, [a-zA-Z]+ \d{1,2}/);
+// });
 
-// function getYearString
-const startYear = '2019';
-const endYear = '2020';
-test('getYearString returns correct string with only startYear param', () => {
-  const yearWithStart = getYearDurationString(startYear, undefined, tNB);
-  expect(yearWithStart).toEqual('(2019-nå). ');
-});
+// // function getYearString
+// const startYear = '2019';
+// const endYear = '2020';
+// test('getYearString returns correct string with only startYear param', () => {
+//   const yearWithStart = getYearDurationString(startYear, undefined, tNB);
+//   expect(yearWithStart).toEqual('(2019-nå). ');
+// });
 
-test('getYearString returns correct string with both params', () => {
-  const yearWithStartAndEnd = getYearDurationString(startYear, endYear, tNB);
-  expect(yearWithStartAndEnd).toEqual('(2019-2020). ');
-});
+// test('getYearString returns correct string with both params', () => {
+//   const yearWithStartAndEnd = getYearDurationString(startYear, endYear, tNB);
+//   expect(yearWithStartAndEnd).toEqual('(2019-2020). ');
+// });
 
-test('getYearString returns empty string when no params are used', () => {
-  const yearWithNoInput = getYearDurationString(undefined, undefined, tNB);
-  expect(yearWithNoInput).toEqual('');
-});
+// test('getYearString returns empty string when no params are used', () => {
+//   const yearWithNoInput = getYearDurationString(undefined, undefined, tNB);
+//   expect(yearWithNoInput).toEqual('');
+// });
 
-test('getYearString return corrct string when start and end is identical', () => {
-  const yearWithEqualStartAndEnd = getYearDurationString(startYear, startYear, tNB);
-  expect(yearWithEqualStartAndEnd).toEqual('(2019). ');
-});
+// test('getYearString return corrct string when start and end is identical', () => {
+//   const yearWithEqualStartAndEnd = getYearDurationString(startYear, startYear, tNB);
+//   expect(yearWithEqualStartAndEnd).toEqual('(2019). ');
+// });
 
-// Get functions
-test('figureApa7CopyString return correct content', () => {
-  const copyright = {
-    creators: [{ name: 'Anna Etternavn', type: 'photographer' }],
-    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
-    processors: [{ name: 'Celine', type: 'writer' }],
-  };
-  const date = '2017-06-05T14:25:14Z';
+// // Get functions
+// test('figureApa7CopyString return correct content', () => {
+//   const copyright = {
+//     creators: [{ name: 'Anna Etternavn', type: 'photographer' }],
+//     rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+//     processors: [{ name: 'Celine', type: 'writer' }],
+//   };
+//   const date = '2017-06-05T14:25:14Z';
 
-  const copyString = figureApa7CopyString(
-    'Tittel',
-    date,
-    undefined,
-    '/path/123',
-    copyright,
-    'CC-BY-SA-4.0',
-    'https://test.ndla.no',
-    tNB,
-  );
+//   const copyString = figureApa7CopyString(
+//     'Tittel',
+//     date,
+//     undefined,
+//     '/path/123',
+//     copyright,
+//     'CC-BY-SA-4.0',
+//     'https://test.ndla.no',
+//     tNB,
+//   );
 
-  expect(copyString).toEqual('Tittel, 2017, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
-});
+//   expect(copyString).toEqual('Tittel, 2017, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
+// });
 
-test('podcastSeriesApa7CopyString return correct content', () => {
-  const copyright = {
-    license: {
-      license: 'CC-BY-SA-4.0',
-    },
-    creators: [{ name: 'Anna Etternavn', type: 'writer' }],
-    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
-    processors: [{ name: 'Celine', type: 'writer' }],
-  };
+// test('podcastSeriesApa7CopyString return correct content', () => {
+//   const copyright = {
+//     license: {
+//       license: 'CC-BY-SA-4.0',
+//     },
+//     creators: [{ name: 'Anna Etternavn', type: 'writer' }],
+//     rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+//     processors: [{ name: 'Celine', type: 'writer' }],
+//   };
 
-  const copyStringWithStartAndEnd = podcastSeriesApa7CopyString(
-    'Tittel',
-    '2019',
-    '2020',
-    '5',
-    copyright,
-    'https://test.ndla.no',
-    tNB,
-  );
-  const copyStringWithStart = podcastSeriesApa7CopyString(
-    'Tittel',
-    '2019',
-    undefined,
-    '5',
-    copyright,
-    'https://test.ndla.no',
-    tNB,
-  );
-  const copyStringWithNoYear = podcastSeriesApa7CopyString(
-    'Tittel',
-    undefined,
-    undefined,
-    '5',
-    copyright,
-    'https://test.ndla.no',
-    tNB,
-  );
-  const copyStringWithEqualYears = podcastSeriesApa7CopyString(
-    'Tittel',
-    '2019',
-    '2019',
-    '5',
-    copyright,
-    'https://test.ndla.no',
-    tNB,
-  );
+//   const copyStringWithStartAndEnd = podcastSeriesApa7CopyString(
+//     'Tittel',
+//     '2019',
+//     '2020',
+//     '5',
+//     copyright,
+//     'https://test.ndla.no',
+//     tNB,
+//   );
+//   const copyStringWithStart = podcastSeriesApa7CopyString(
+//     'Tittel',
+//     '2019',
+//     undefined,
+//     '5',
+//     copyright,
+//     'https://test.ndla.no',
+//     tNB,
+//   );
+//   const copyStringWithNoYear = podcastSeriesApa7CopyString(
+//     'Tittel',
+//     undefined,
+//     undefined,
+//     '5',
+//     copyright,
+//     'https://test.ndla.no',
+//     tNB,
+//   );
+//   const copyStringWithEqualYears = podcastSeriesApa7CopyString(
+//     'Tittel',
+//     '2019',
+//     '2019',
+//     '5',
+//     copyright,
+//     'https://test.ndla.no',
+//     tNB,
+//   );
 
-  expect(copyStringWithStartAndEnd).toEqual(
-    'Etternavn, A. (Forfatter). (2019-2020). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
-  );
+//   expect(copyStringWithStartAndEnd).toEqual(
+//     'Etternavn, A. (Forfatter). (2019-2020). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+//   );
 
-  expect(copyStringWithStart).toEqual(
-    'Etternavn, A. (Forfatter). (2019-nå). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
-  );
+//   expect(copyStringWithStart).toEqual(
+//     'Etternavn, A. (Forfatter). (2019-nå). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+//   );
 
-  expect(copyStringWithNoYear).toEqual(
-    'Etternavn, A. (Forfatter). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
-  );
+//   expect(copyStringWithNoYear).toEqual(
+//     'Etternavn, A. (Forfatter). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+//   );
 
-  expect(copyStringWithEqualYears).toEqual(
-    'Etternavn, A. (Forfatter). (2019). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
-  );
-});
+//   expect(copyStringWithEqualYears).toEqual(
+//     'Etternavn, A. (Forfatter). (2019). Tittel [Audio podkast]. NDLA. https://test.ndla.no/podkast/5',
+//   );
+// });
 
-test('podcastEpisodeApa7CopyString return correct content', () => {
-  const copyright = {
-    license: {
-      license: 'CC-BY-SA-4.0',
-    },
-    creators: [
-      { name: 'Anna Etternavn', type: 'writer' },
-      { name: 'Bendik Person', type: 'artist' },
-      { name: 'Lars Nordmann', type: 'artist' },
-    ],
-    rightsholders: [{ name: 'Bendik Test', type: 'artist' }],
-    processors: [{ name: 'Celine', type: 'writer' }],
-  };
+// test('podcastEpisodeApa7CopyString return correct content', () => {
+//   const copyright = {
+//     license: {
+//       license: 'CC-BY-SA-4.0',
+//     },
+//     creators: [
+//       { name: 'Anna Etternavn', type: 'writer' },
+//       { name: 'Bendik Person', type: 'artist' },
+//       { name: 'Lars Nordmann', type: 'artist' },
+//     ],
+//     rightsholders: [{ name: 'Bendik Test', type: 'artist' }],
+//     processors: [{ name: 'Celine', type: 'writer' }],
+//   };
 
-  const copyString = podcastEpisodeApa7CopyString(
-    'Tittel',
-    '2017-06-05T14:25:14Z',
-    '10',
-    '2',
-    copyright,
-    'no',
-    'https://test.ndla.no',
-    tNB,
-  );
+//   const copyString = podcastEpisodeApa7CopyString(
+//     'Tittel',
+//     '2017-06-05T14:25:14Z',
+//     '10',
+//     '2',
+//     copyright,
+//     'no',
+//     'https://test.ndla.no',
+//     tNB,
+//   );
 
-  expect(copyString).toEqual(
-    'Etternavn, A. (Forfatter), Person, B. (Kunstner) & Nordmann, L. (Kunstner). (2017, 5. juni). Tittel [Audio podkast episode]. NDLA. https://test.ndla.no/podkast/10#episode-2',
-  );
-});
+//   expect(copyString).toEqual(
+//     'Etternavn, A. (Forfatter), Person, B. (Kunstner) & Nordmann, L. (Kunstner). (2017, 5. juni). Tittel [Audio podkast episode]. NDLA. https://test.ndla.no/podkast/10#episode-2',
+//   );
+// });
 
-test('webpageReferenceApa7CopyString return correct content', () => {
-  const copyright = {
-    creators: [
-      { name: 'Anna Etternavn', type: 'photographer' },
-      { name: 'Bendik Person', type: 'artist' },
-    ],
-    rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
-    processors: [{ name: 'Celine', type: 'writer' }],
-  };
+// test('webpageReferenceApa7CopyString return correct content', () => {
+//   const copyright = {
+//     creators: [
+//       { name: 'Anna Etternavn', type: 'photographer' },
+//       { name: 'Bendik Person', type: 'artist' },
+//     ],
+//     rightsholders: [{ name: 'Bendik Person', type: 'artist' }],
+//     processors: [{ name: 'Celine', type: 'writer' }],
+//   };
 
-  const englishCopyString = webpageReferenceApa7CopyString(
-    'Title',
-    undefined,
-    '2017-06-05T14:25:14Z',
-    '/path/123',
-    copyright,
-    'en',
-    'https://test.ndla.no',
-    tEN,
-  );
+//   const englishCopyString = webpageReferenceApa7CopyString(
+//     'Title',
+//     undefined,
+//     '2017-06-05T14:25:14Z',
+//     '/path/123',
+//     copyright,
+//     'en',
+//     'https://test.ndla.no',
+//     tEN,
+//   );
 
-  const norwegianCopyString = webpageReferenceApa7CopyString(
-    'Tittel',
-    undefined,
-    '2017-06-05T14:25:14Z',
-    '/path/123',
-    copyright,
-    'nb',
-    'https://test.ndla.no',
-    tNB,
-  );
+//   const norwegianCopyString = webpageReferenceApa7CopyString(
+//     'Tittel',
+//     undefined,
+//     '2017-06-05T14:25:14Z',
+//     '/path/123',
+//     copyright,
+//     'nb',
+//     'https://test.ndla.no',
+//     tNB,
+//   );
 
-  expect(englishCopyString).toEqual(
-    'Etternavn, A. & Person, B. (2017, June 5). Title. NDLA. https://test.ndla.no/path/123',
-  );
-  expect(norwegianCopyString).toEqual(
-    'Etternavn, A. & Person, B. (2017, 5. juni). Tittel. NDLA. https://test.ndla.no/path/123',
-  );
-});
+//   expect(englishCopyString).toEqual(
+//     'Etternavn, A. & Person, B. (2017, June 5). Title. NDLA. https://test.ndla.no/path/123',
+//   );
+//   expect(norwegianCopyString).toEqual(
+//     'Etternavn, A. & Person, B. (2017, 5. juni). Tittel. NDLA. https://test.ndla.no/path/123',
+//   );
+// });
 
-test('getCopyString returns correct content', () => {
-  const copyright = {
-    creators: [{ name: 'Person1', type: 'photographer' }],
-    rightsholders: [{ name: 'Person2', type: 'artist' }],
-    processors: [{ name: 'Person3', type: 'writer' }],
-  };
-  const copyString = getCopyString('Tittel', undefined, '/path/123', copyright, 'https://test.ndla.no', tNB);
+// test('getCopyString returns correct content', () => {
+//   const copyright = {
+//     creators: [{ name: 'Person1', type: 'photographer' }],
+//     rightsholders: [{ name: 'Person2', type: 'artist' }],
+//     processors: [{ name: 'Person3', type: 'writer' }],
+//   };
+//   const copyString = getCopyString('Tittel', undefined, '/path/123', copyright, 'https://test.ndla.no', tNB);
 
-  expect(copyString).toContain(' Lest: ');
+//   expect(copyString).toContain(' Lest: ');
 
-  const [content, date] = copyString.split(' Lest: ');
+//   const [content, date] = copyString.split(' Lest: ');
 
-  expect(content).toBe(
-    'Fotograf: Person1. Forfatter: Person3. Tittel [Internett]. Kunstner: Person2. Hentet fra: https://test.ndla.no/path/123',
-  );
+//   expect(content).toBe(
+//     'Fotograf: Person1. Forfatter: Person3. Tittel [Internett]. Kunstner: Person2. Hentet fra: https://test.ndla.no/path/123',
+//   );
 
-  expect(date).toMatch(/\d{2}.\d{2}.\d{4}/);
-});
+//   expect(date).toMatch(/\d{2}.\d{2}.\d{4}/);
+// });

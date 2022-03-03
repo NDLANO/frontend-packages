@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import warning from 'warning';
+import warning from 'tiny-warning';
 import withTracker from './withTracker';
 
 interface Props {

@@ -8,7 +8,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems } from '@reach/menu-button';
+import { Menu, MenuButton, MenuItem, MenuPopover, MenuItems, MenuItemProps } from '@reach/menu-button';
 import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderOrientation } from '@reach/slider';
 import { Play, Pause } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
@@ -140,9 +140,10 @@ const SpeedList = styled(MenuItems)`
   align-items: stretch;
 `;
 
-type SpeedValueButtonProps = {
+interface SpeedValueButtonProps extends MenuItemProps {
   selected?: boolean;
-};
+}
+
 const SpeedValueButton = styled(MenuItem)<SpeedValueButtonProps>`
   height: 28px;
   position: relative;
@@ -448,6 +449,7 @@ const Controls = ({ src, title }: Props) => {
                   {speedValues.map((speed) => (
                     <SpeedValueButton
                       type="button"
+                      //@ts-ignore
                       as="button"
                       key={speed}
                       selected={speed === speedValue}

@@ -81,7 +81,7 @@
     "mkdirp": "^0.5.1",
     "sass": "^1.49.7",
     "prettier": "^2.3.2",
-    "prop-types": "15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^16.13.1",
     "react-bem-helper": "1.4.1",
     "react-device-detect": "^2.1.2",

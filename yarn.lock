@@ -9848,20 +9848,19 @@ focus-lock@^0.10.2:
   dependencies:
     tslib "^2.0.3"
 
-focus-trap-react@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-6.0.0.tgz#3f5a9f68447dd374d22388fb4c50018be83e74a5"
-  integrity sha512-mvEYxmP75PMx0vOqoIAmJHO/qUEvdTAdz6gLlEZyxxODnuKQdnKea2RWTYxghAPrV+ibiIq2o/GTSgQycnAjcw==
+focus-trap-react@^8.9.2:
+  version "8.9.2"
+  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.9.2.tgz#af19c6d65bedeba925859d7ec51c41d8d2c30855"
+  integrity sha512-m6TQQHLcqkisc6Qq92q1yYzzOaxo34Szh5FQOXzky7028PXFEhuUxScTbT7EG9qL0QG7B+oR2ZbxyU0lK4kIwQ==
   dependencies:
-    focus-trap "^4.0.2"
+    focus-trap "^6.7.3"
 
-focus-trap@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-4.0.2.tgz#4ee2b96547c9ea0e4252a2d4b2cca68944194663"
-  integrity sha512-HtLjfAK7Hp2qbBtLS6wEznID1mPT+48ZnP2nkHzgjpL4kroYHg0CdqJ5cTXk+UO5znAxF5fRUkhdyfgrhh8Lzw==
+focus-trap@^6.7.3:
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-6.7.3.tgz#b5dc195b49c90001f08a63134471d1e6dd381ddd"
+  integrity sha512-8xCEKndV4KrseGhFKKKmczVA14yx1/hnmFICPOjcFjToxCJYj/NHH43tPc3YE/PLnLRNZoFug0EcWkGQde/miQ==
   dependencies:
-    tabbable "^3.1.2"
-    xtend "^4.0.1"
+    tabbable "^5.2.1"
 
 fontkit@^1.8.0:
   version "1.8.1"
@@ -14889,6 +14888,15 @@ prop-types@15.7.2, prop-types@>=15.7.2, prop-types@^15.0.0, prop-types@^15.5.0, 
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
+prop-types@^15.8.1:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 propagate@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/propagate/-/propagate-1.0.0.tgz#00c2daeedda20e87e3782b344adba1cddd6ad709"
@@ -17362,15 +17370,15 @@ symbol.prototype.description@^1.0.0:
     es-abstract "^1.17.0-next.1"
     has-symbols "^1.0.1"
 
-tabbable@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-3.1.2.tgz#f2d16cccd01f400e38635c7181adfe0ad965a4a2"
-  integrity sha512-wjB6puVXTYO0BSFtCmWQubA/KIn7Xvajw0x0l6eJUudMG/EAiJvIUnyNX6xO4NpGrJ16lbD0eUseB9WxW0vlpQ==
-
 tabbable@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-4.0.0.tgz#5bff1d1135df1482cf0f0206434f15eadbeb9261"
   integrity sha512-H1XoH1URcBOa/rZZWxLxHCtOdVUEev+9vo5YdYhC9tCY4wnybX+VQrCYuy9ubkg69fCBxCONJOSLGfw0DWMffQ==
+
+tabbable@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.2.1.tgz#e3fda7367ddbb172dcda9f871c0fdb36d1c4cd9c"
+  integrity sha512-40pEZ2mhjaZzK0BnI+QGNjJO8UYx9pP5v7BGe17SORTO0OEuuaAwQTkAp8whcZvqon44wKFOikD+Al11K3JICQ==
 
 table@^6.0.4:
   version "6.0.7"

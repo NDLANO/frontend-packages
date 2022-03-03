@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@ndla/util": "^2.0.2",
-    "focus-trap": "^4.0.2",
+    "focus-trap": "^6.7.3",
     "jump.js": "^1.0.2",
     "lodash": "^4.17.20"
   },

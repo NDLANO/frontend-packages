@@ -19,7 +19,7 @@
   },
   "author": "ndla@knowit.no",
   "peerDependencies": {
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.8.1",
     "react": "^15.6.0 || ^16.0.0",
     "react-i18next": "^11.11.0"
   },

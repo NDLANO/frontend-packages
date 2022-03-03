@@ -28,8 +28,6 @@
     "types"
   ],
   "dependencies": {
-    "@types/facepaint": "^1.2.1",
-    "facepaint": "^1.2.1",
     "inuitcss": "6.0.0",
     "polished": "^4.1.3",
     "sass-mq": "^5.0.1"

@@ -48,7 +48,7 @@ const messages = {
   subjectCategories: {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
-    [subjectCategories.BETA_SUBJECTS]: 'Coming',
+    [subjectCategories.BETA_SUBJECTS]: 'Revised',
     [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
@@ -328,7 +328,7 @@ const messages = {
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
-      'Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
+      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022. Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
     frontPageExpired:
       'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
     frontPageRevised:
@@ -777,7 +777,7 @@ const messages = {
   },
   frontpageMultidisciplinarySubject: {
     heading: 'Interdisciplinary topics',
-    text: 'The three interdisciplinary subjects in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
+    text: 'The three interdisciplinary topics in the curriculum are based on current societal challenges that require the involvement and efforts of individuals and the community in the local community, nationally and globally.',
     linkText: 'See cases for multidisciplinary topics',
     publicHealthTopic: 'Public health and life management',
     democracyTopic: 'Democracy and citizenship',

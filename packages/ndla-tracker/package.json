@@ -28,7 +28,7 @@
     "types"
   ],
   "peerDependencies": {
-    "react": "^15.6.0 || ^16.0.0",
+    "react": "^15.6.0 || ^16.0.0 || ^17.0.0",
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {

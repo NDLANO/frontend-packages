@@ -62,3 +62,18 @@ ol > li {
     font-size: 16px;
   }
 }
+blockquote > ol > li {
+  &:before {
+    position: relative;
+    left: -5px;
+    margin-right: 5px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  blockquote > ol > li {
+    &:before {
+      left: -55px;
+      position: absolute;
+    }
+  }
+}

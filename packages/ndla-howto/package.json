@@ -37,7 +37,7 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
-    "react": "^16.7.0"
+    "react": "^16.7.0 || ^17.0.0"
   },
   "publishConfig": {
     "access": "public"

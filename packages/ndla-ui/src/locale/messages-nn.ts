@@ -48,7 +48,7 @@ const messages = {
   subjectCategories: {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
-    [subjectCategories.BETA_SUBJECTS]: 'Komande',
+    [subjectCategories.BETA_SUBJECTS]: 'Kommande',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',

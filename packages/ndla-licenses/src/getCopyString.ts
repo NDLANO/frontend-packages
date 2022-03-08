@@ -1,4 +1,4 @@
-import { getLicenseByAbbreviation } from './licenses';
+import { getLicenseByAbbreviation } from '.';
 import { Contributor, CopyrightType } from './contributorTypes';
 
 export const getLicenseCredits = (copyright?: {
@@ -176,10 +176,15 @@ export const figureApa7CopyString = (
   const yearString = date ? getYearString(date) : '';
   const creators = getCreditString(copyright, { byPrefix: true, combineCreatorsAndRightsholders: true }, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
-  const licenseString = license ? getLicenseByAbbreviation(license, locale).abbreviation + '.' : '';
+
+  const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
+  const isCreativeCommonsLicense = licenseAbbreviation && licenseAbbreviation.slice(0, 3) === 'CC ';
+  const licenseString =
+    licenseAbbreviation && isCreativeCommonsLicense ? licenseAbbreviation + ' 4.0' : licenseAbbreviation;
+  const punctuation = license ? '.' : '';
 
   // Ex: Tittel, 1914, av Nordmann, O. (https://ndla.no/urn:resource:123). CC BY-SA 4.0.
-  return titleString + yearString + creators + url + licenseString;
+  return titleString + yearString + creators + url + licenseString + punctuation;
 };
 
 export const webpageReferenceApa7CopyString = (

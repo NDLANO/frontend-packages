@@ -77,7 +77,7 @@ test('getCreditString returns correct content when using rightsholders', () => {
     {},
     tNB,
   );
-  expect(creditString).toEqual('Stor Bedrift, Liten Bedrift & Organisasjon. ');
+  expect(creditString).toEqual('Stor Bedrift, Liten Bedrift, Organisasjon. ');
 });
 
 test('getCreditString uses correct role when all are present', () => {
@@ -165,9 +165,10 @@ test('figureApa7CopyString return correct content', () => {
     'CC-BY-SA-4.0',
     'https://test.ndla.no',
     tNB,
+    'nb',
   );
 
-  expect(copyString).toEqual('Tittel, 2017, av Etternavn, A. NDLA. (https://test.ndla.no/path/123). CC-BY-SA-4.0.');
+  expect(copyString).toEqual('Tittel, 2017, av Etternavn, A. (https://test.ndla.no/path/123). CC BY-SA 4.0.');
 });
 
 test('podcastSeriesApa7CopyString return correct content', () => {

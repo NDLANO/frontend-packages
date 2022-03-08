@@ -1,3 +1,4 @@
+import { getLicenseByAbbreviation } from './licenses';
 import { Contributor, CopyrightType } from './contributorTypes';
 
 export const getLicenseCredits = (copyright?: {
@@ -37,9 +38,10 @@ export const getCreditString = (
   t: TranslationFunction,
 ) => {
   const formatNames = (credits: string[], forcePunctuation?: boolean) => {
+    const lastSeparator = !copyright?.creators?.length && copyright?.rightsholders?.length ? ', ' : ' & ';
     const lastCredit = credits.pop();
 
-    const formattedCredits = credits.length ? credits.join(', ') + ' & ' + lastCredit : lastCredit;
+    const formattedCredits = credits.length ? credits.join(', ') + lastSeparator + lastCredit : lastCredit;
 
     const prefix = config.byPrefix ? t('license.copyText.by') + ' ' : '';
     const punctuation = forcePunctuation || config.withRole ? '.' : '';
@@ -162,15 +164,16 @@ export const figureApa7CopyString = (
   license: string | undefined,
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
+  locale: string,
 ): string => {
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
   const yearString = date ? getYearString(date) : '';
   const creators = getCreditString(copyright, { byPrefix: true }, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
-  const licenseString = license ? license + '.' : '';
+  const licenseString = license ? getLicenseByAbbreviation(license, locale).abbreviation + '.' : '';
 
-  // Ex: Tittel, 1914, av Nordmann, O. NDLA. (https://ndla.no/urn:resource:123). CC-BY-SA-4.0.
-  return titleString + yearString + creators + 'NDLA. ' + url + licenseString;
+  // Ex: Tittel, 1914, av Nordmann, O. (https://ndla.no/urn:resource:123). CC BY-SA 4.0.
+  return titleString + yearString + creators + url + licenseString;
 };
 
 export const webpageReferenceApa7CopyString = (

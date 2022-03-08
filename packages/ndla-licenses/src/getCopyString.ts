@@ -178,7 +178,7 @@ export const figureApa7CopyString = (
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
 
   const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
-  const isCreativeCommonsLicense = licenseAbbreviation && licenseAbbreviation.slice(0, 3) === 'CC ';
+  const isCreativeCommonsLicense = licenseAbbreviation?.startsWith('CC ');
   const licenseString =
     licenseAbbreviation && isCreativeCommonsLicense ? licenseAbbreviation + ' 4.0' : licenseAbbreviation;
   const punctuation = license ? '.' : '';

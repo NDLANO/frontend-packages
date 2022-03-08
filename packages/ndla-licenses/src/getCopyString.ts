@@ -1,3 +1,4 @@
+import { getLicenseByAbbreviation } from '.';
 import { Contributor, CopyrightType } from './contributorTypes';
 
 export const getLicenseCredits = (copyright?: {
@@ -33,19 +34,18 @@ export const getCreditString = (
   config: {
     byPrefix?: boolean;
     withRole?: boolean;
+    combineCreatorsAndRightsholders?: boolean;
   },
   t: TranslationFunction,
 ) => {
   const formatNames = (credits: string[], forcePunctuation?: boolean) => {
-    const lastCredit = credits.pop();
-
-    const formattedCredits = credits.length ? credits.join(', ') + ' & ' + lastCredit : lastCredit;
+    const formattedCredits = credits.join(', ');
 
     const prefix = config.byPrefix ? t('license.copyText.by') + ' ' : '';
     const punctuation = forcePunctuation || config.withRole ? '.' : '';
     return prefix + formattedCredits + punctuation + ' ';
   };
-  const makeInitialsString = (roles: Contributor[]) => {
+  const getInitialsList = (roles: Contributor[]) => {
     const credits = roles.map((creator) => {
       const [lastName, ...names] = creator.name.split(' ').reverse();
       const initials = names.length
@@ -58,15 +58,15 @@ export const getCreditString = (
       const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
       return lastName + initials + role;
     });
-    return formatNames(credits);
+    return credits;
   };
 
-  const makeRegularString = (roles: Contributor[]) => {
+  const getFullNamesList = (roles: Contributor[]) => {
     const credits = roles.map((creator) => {
       const role = config.withRole && creator.type ? ` (${t(creator.type.toLowerCase())})` : '';
       return creator.name + role;
     });
-    return formatNames(credits, true);
+    return credits;
   };
 
   if (!copyright) {
@@ -74,14 +74,22 @@ export const getCreditString = (
   }
   const { creators, rightsholders, processors } = copyright;
 
+  if (config.combineCreatorsAndRightsholders && creators?.length && rightsholders?.length) {
+    const credits = [...getInitialsList(creators), ...getFullNamesList(rightsholders)];
+    return formatNames(credits, true);
+  }
+
   if (creators?.length) {
-    return makeInitialsString(creators);
+    const credits = getInitialsList(creators);
+    return formatNames(credits);
   }
   if (rightsholders?.length) {
-    return makeRegularString(rightsholders);
+    const credits = getFullNamesList(rightsholders);
+    return formatNames(credits, true);
   }
   if (processors?.length) {
-    return makeInitialsString(processors);
+    const credits = getInitialsList(processors);
+    return formatNames(credits);
   }
 
   return '';
@@ -162,15 +170,21 @@ export const figureApa7CopyString = (
   license: string | undefined,
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
+  locale: string,
 ): string => {
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
   const yearString = date ? getYearString(date) : '';
-  const creators = getCreditString(copyright, { byPrefix: true }, t);
+  const creators = getCreditString(copyright, { byPrefix: true, combineCreatorsAndRightsholders: true }, t);
   const url = `(${path ? ndlaFrontendDomain + path : src}). `;
-  const licenseString = license ? license + '.' : '';
 
-  // Ex: Tittel, 1914, av Nordmann, O. NDLA. (https://ndla.no/urn:resource:123). CC-BY-SA-4.0.
-  return titleString + yearString + creators + 'NDLA. ' + url + licenseString;
+  const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
+  const isCreativeCommonsLicense = licenseAbbreviation?.startsWith('CC ');
+  const licenseString =
+    licenseAbbreviation && isCreativeCommonsLicense ? licenseAbbreviation + ' 4.0' : licenseAbbreviation;
+  const punctuation = license ? '.' : '';
+
+  // Ex: Tittel, 1914, av Nordmann, O. (https://ndla.no/urn:resource:123). CC BY-SA 4.0.
+  return titleString + yearString + creators + url + licenseString + punctuation;
 };
 
 export const webpageReferenceApa7CopyString = (
@@ -183,7 +197,7 @@ export const webpageReferenceApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ): string => {
-  const creators = getCreditString(copyright, {}, t);
+  const creators = getCreditString(copyright, { combineCreatorsAndRightsholders: true }, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + '. ';
   const url = `${path ? ndlaFrontendDomain + path : src}`;
   const dateString = `(${getDateString(locale, lastUpdated)}). `;
@@ -201,7 +215,7 @@ export const podcastSeriesApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
-  const creators = getCreditString(copyright, { withRole: true }, t);
+  const creators = getCreditString(copyright, { withRole: true, combineCreatorsAndRightsholders: true }, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}`;
   const yearString = getYearDurationString(startYear, endYear, t);
@@ -221,7 +235,7 @@ export const podcastEpisodeApa7CopyString = (
   ndlaFrontendDomain: string | undefined,
   t: TranslationFunction,
 ) => {
-  const creators = getCreditString(copyright, { withRole: true }, t);
+  const creators = getCreditString(copyright, { withRole: true, combineCreatorsAndRightsholders: true }, t);
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ' ';
   const url = `${ndlaFrontendDomain}/podkast/${seriesId}#episode-${episodeId}`;
   const dateString = `(${getDateString(locale, date)}). `;

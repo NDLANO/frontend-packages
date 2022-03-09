@@ -5,11 +5,11 @@ Link component.
 ## Installation
 
 ```sh
-$ yarn add --save ndla-safelink
+yarn add --save @ndla/safelink
 ```
 
 ```sh
-$ npm install ndla-safelink --save
+npm install @ndla/safelink --save
 ```
 
 ## Usage

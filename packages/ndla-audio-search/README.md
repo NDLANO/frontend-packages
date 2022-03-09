@@ -5,7 +5,11 @@ A simple library for selecting NDLA audio files.
 ## Installation
 
 ```sh
-$ npm install ndla-audio-search
+yarn add @ndla/audio-search
+```
+
+```sh
+npm install @ndla/audio-search
 ```
 
 ## Usage
@@ -14,7 +18,7 @@ $ npm install ndla-audio-search
 
 ```scss
 /* Your project's main .scss import file */
-@import '~ndla-audio-search/scss/audio-search'; // with webpack and sass-loader
+@import '~@ndla/audio-search/scss/audio-search'; // with webpack and sass-loader
 @import '../path/to/node_modules/ndla-audio-search/scss/audio-search'; // direct reference
 ```
 

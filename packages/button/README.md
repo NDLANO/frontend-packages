@@ -5,11 +5,11 @@ Button component.
 ## Installation
 
 ```sh
-$ yarn add --save @ndla/button
+yarn add --save @ndla/button
 ```
 
 ```sh
-$ npm install @ndla/button --save
+npm install @ndla/button --save
 ```
 
 ## Usage

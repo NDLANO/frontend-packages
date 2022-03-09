@@ -454,7 +454,7 @@ const messages = {
       heading: 'How to use other content from the article',
       description: 'You will find guidelines for use of other content in the asset',
       itemImage: {
-        ariaLabel: 'Open video in new window',
+        ariaLabel: 'Open in new window',
       },
     },
     h5p: {

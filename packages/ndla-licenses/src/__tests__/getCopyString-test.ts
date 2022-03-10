@@ -54,6 +54,11 @@ test('getLicenseString returns no content for PD license', () => {
   expect(creditString).toEqual('');
 });
 
+test('getLicenseString returns no content for N/A license', () => {
+  const creditString = getLicenseString('N/A', 'nb');
+  expect(creditString).toEqual('');
+});
+
 test('getLicenseString returns correct content for copyrighted license', () => {
   const creditString = getLicenseString('COPYRIGHTED', 'nb');
   expect(creditString).toEqual('COPYRIGHTED');

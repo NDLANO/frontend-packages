@@ -162,7 +162,7 @@ export const getYearDurationString = (
 };
 
 export const getLicenseString = (license: string | undefined, locale: string) => {
-  if (license === 'PD') {
+  if (license === 'PD' || license === 'N/A') {
     return '';
   }
 

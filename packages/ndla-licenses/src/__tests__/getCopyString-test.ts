@@ -208,7 +208,7 @@ test('figureApa7CopyString return correct content when no license in param', () 
     'nb',
   );
 
-  expect(copyString).toEqual('Tittel, 2017, av Etternavn, A., Stor Bedrift. (https://test.ndla.no/path/123). ');
+  expect(copyString).toEqual('Tittel, 2017, av Etternavn, A., Stor Bedrift. (https://test.ndla.no/path/123).');
 });
 
 // function podcastSeriesApa7CopyString

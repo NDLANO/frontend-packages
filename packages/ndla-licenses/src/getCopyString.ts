@@ -189,13 +189,13 @@ export const figureApa7CopyString = (
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
   const yearString = date ? getYearString(date) : '';
   const creators = getCreditString(copyright, { byPrefix: true, combineCreatorsAndRightsholders: true }, t);
-  const url = `(${path ? ndlaFrontendDomain + path : src}). `;
+  const url = `(${path ? ndlaFrontendDomain + path : src}).`;
 
-  const licenseString = getLicenseString(license, locale);
-  const punctuation = licenseString ? '.' : '';
+  const parsedLicense = getLicenseString(license, locale);
+  const licenseString = parsedLicense ? ` ${parsedLicense}.` : '';
 
   // Ex: Tittel, 1914, av Nordmann, O. (https://ndla.no/urn:resource:123). CC BY-SA 4.0.
-  return titleString + yearString + creators + url + licenseString + punctuation;
+  return titleString + yearString + creators + url + licenseString;
 };
 
 export const webpageReferenceApa7CopyString = (

@@ -161,9 +161,9 @@ export const getYearDurationString = (
   return `(${start}-${end}). `;
 };
 
-const getLicenseString = (license: string | undefined, locale: string) => {
+export const getLicenseString = (license: string | undefined, locale: string) => {
   if (license === 'PD') {
-    return;
+    return '';
   }
 
   const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
@@ -172,7 +172,7 @@ const getLicenseString = (license: string | undefined, locale: string) => {
     return `${licenseAbbreviation} 4.0`;
   }
 
-  return licenseAbbreviation;
+  return licenseAbbreviation ?? '';
 };
 
 export const figureApa7CopyString = (

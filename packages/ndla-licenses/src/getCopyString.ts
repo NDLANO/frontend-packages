@@ -161,6 +161,20 @@ export const getYearDurationString = (
   return `(${start}-${end}). `;
 };
 
+export const getLicenseString = (license: string | undefined, locale: string) => {
+  if (license === 'PD' || license === 'N/A') {
+    return '';
+  }
+
+  const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
+
+  if (licenseAbbreviation?.startsWith('CC ')) {
+    return `${licenseAbbreviation} 4.0`;
+  }
+
+  return licenseAbbreviation ?? '';
+};
+
 export const figureApa7CopyString = (
   title: string | undefined,
   date: string | undefined,
@@ -175,16 +189,13 @@ export const figureApa7CopyString = (
   const titleString = getValueOrFallback(title, t('license.copyText.noTitle')) + ', ';
   const yearString = date ? getYearString(date) : '';
   const creators = getCreditString(copyright, { byPrefix: true, combineCreatorsAndRightsholders: true }, t);
-  const url = `(${path ? ndlaFrontendDomain + path : src}). `;
+  const url = `(${path ? ndlaFrontendDomain + path : src}).`;
 
-  const licenseAbbreviation = license && getLicenseByAbbreviation(license, locale).abbreviation;
-  const isCreativeCommonsLicense = licenseAbbreviation?.startsWith('CC ');
-  const licenseString =
-    licenseAbbreviation && isCreativeCommonsLicense ? licenseAbbreviation + ' 4.0' : licenseAbbreviation;
-  const punctuation = license ? '.' : '';
+  const parsedLicense = getLicenseString(license, locale);
+  const licenseString = parsedLicense ? ` ${parsedLicense}.` : '';
 
   // Ex: Tittel, 1914, av Nordmann, O. (https://ndla.no/urn:resource:123). CC BY-SA 4.0.
-  return titleString + yearString + creators + url + licenseString + punctuation;
+  return titleString + yearString + creators + url + licenseString;
 };
 
 export const webpageReferenceApa7CopyString = (

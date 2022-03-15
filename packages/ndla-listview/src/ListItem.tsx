@@ -1,6 +1,5 @@
 import React, { KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
-
 import { spacing, fonts, colors, misc, mq, breakpoints } from '@ndla/core';
 import { DocumentDetails } from '@ndla/icons/common';
 import { Category, ListItemType } from './ListView';
@@ -136,7 +135,7 @@ const ListItem = ({ item, clickCallback, nextItem, previousItem, viewStyle, rend
   );
 
   const renderNoImage = () => (
-    <div className={'no-image-wrapper'}>
+    <div className={'no-image-wrapper'} aria-hidden="true">
       <div className={'no-image'}>
         <DocumentDetails className={`c-icon--large`} />
       </div>

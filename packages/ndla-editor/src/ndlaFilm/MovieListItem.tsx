@@ -49,17 +49,18 @@ const MovieListItem = ({
               type="button"
               onMouseDown={(e) => onDragStart(e, index)}
               onMouseUp={onDragEnd}>
-              <DragHorizontal />
+              <DragHorizontal aria-hidden={true} />
             </ButtonIcons>
           </Tooltip>
         ) : (
           <ButtonIcons
+            aria-label={dragFilm}
             draggable
             tabIndex={-1}
             type="button"
             onMouseDown={(e) => onDragStart(e, index)}
             onMouseUp={onDragEnd}>
-            <DragHorizontal />
+            <DragHorizontal aria-hidden={true} />
           </ButtonIcons>
         )}
         <Tooltip tooltip={removeFilm}>

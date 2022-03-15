@@ -5,7 +5,11 @@ A simple library for retrieving license information by abbreviation (and locale)
 ## Installation
 
 ```sh
-$ npm install ndla-licenses
+yarn add @ndla/licenses
+```
+
+```sh
+npm install @ndla/licenses
 ```
 
 ## Usage

@@ -4,7 +4,6 @@ import Tooltip from '@ndla/tooltip';
 import { InformationOutline } from '@ndla/icons/common';
 
 import { Wrapper, InModalHeader, Heading, Lead, ImageWrapper, PushGrid } from './Styles';
-
 import { stories } from './StaticInfoComponents';
 
 interface ModalContentProps {

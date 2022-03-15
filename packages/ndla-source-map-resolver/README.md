@@ -5,7 +5,7 @@ Source map resolver for errors logged via ndla-error-reporter.
 ## Installation
 
 ```sh
-$ npm install ndla-source-map-resolver
+npm install @ndla/source-map-resolver
 ```
 
 ## Usage

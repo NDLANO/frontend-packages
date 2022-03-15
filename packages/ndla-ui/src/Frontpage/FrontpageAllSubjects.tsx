@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
+import { MessageBox } from '../MessageBox';
 // @ts-ignore
 import { ToggleItem } from '../Filter';
 
@@ -67,6 +68,10 @@ const StyledSpacingElement = styled.span`
 const StyledLetterSpacing = styled.span`
   display: block;
   height: 16px;
+`;
+
+const MessageBoxWrapper = styled.div`
+  padding-top: 20px;
 `;
 
 type subjectProps = {
@@ -191,7 +196,23 @@ const FrontpageAllSubjects = ({
     category.visible &&
       data.push({
         title: category.name || t(`subjectCategories.${category.type}`),
-        content: renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
+        content: (
+          <>
+            {/* Should be persistent til fall 2022 */}
+            {category.name === t('subjectCategories.beta') && (
+              <MessageBoxWrapper>
+                <MessageBox>{t('messageBoxInfo.frontPageBeta')}</MessageBox>
+              </MessageBoxWrapper>
+            )}
+            {category.name === t('subjectCategories.archive') && (
+              <MessageBoxWrapper>
+                <MessageBox>{t('messageBoxInfo.frontPageExpired')}</MessageBox>
+              </MessageBoxWrapper>
+            )}
+
+            {renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects)}
+          </>
+        ),
       });
   });
 

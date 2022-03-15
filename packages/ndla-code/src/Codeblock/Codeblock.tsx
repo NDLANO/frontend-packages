@@ -118,7 +118,8 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
             copyTextToClipboard(code);
             setIsCopied(true);
           }}>
-          {isCopied ? <Done /> : <Copy />} {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
+          {isCopied ? <Done aria-hidden="true" /> : <Copy aria-hidden="true" />}{' '}
+          {isCopied ? t('codeBlock.copiedCode') : t('codeBlock.copyCode')}
         </Button>
       )}
     </Wrapper>

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tabs",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,16 +27,14 @@
     "es"
   ],
   "peerDependencies": {
-    "classnames": "^2.2.6",
-    "react": "^16.5.2",
+    "react": "^16.5.2 || ^17.0.0",
     "react-bem-helper": "^1.4.1"
   },
   "devDependencies": {
     "@types/react-tabs": "^2.3.4"
   },
   "dependencies": {
-    "@ndla/core": "^0.7.3",
-    "@ndla/icons": "^1.5.0",
+    "@ndla/icons": "^1.6.0",
     "@ndla/util": "^2.0.2",
     "react-tabs": "^3.2.3"
   },

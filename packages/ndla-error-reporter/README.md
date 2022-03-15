@@ -7,7 +7,11 @@ N.B. Number of messages is limited to 10 per session (reset by browser refresh).
 ## Installation
 
 ```sh
-$ npm install ndla-error-reporter
+yarn add @ndla/error-reporter
+```
+
+```sh
+npm install @ndla/error-reporter
 ```
 
 A polyfill for [fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) is needed for cross-browser support.
@@ -15,7 +19,7 @@ A polyfill for [fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) 
 ## Usage
 
 ```js
-import ErrorReporter from 'ndla-error-reporter');
+import ErrorReporter from '@ndla/error-reporter');
 
 const reduxStore = configureStore();
 
@@ -33,7 +37,7 @@ ReactDOM.render(
 
 ```js
 // After initial instantiation
-import ErrorReporter from 'ndla-error-reporter');
+import ErrorReporter from '@ndla/error-reporter');
 
 ErrorReporter.getInstance().captureMessage('Testing');
 ```

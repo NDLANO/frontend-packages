@@ -181,11 +181,7 @@ export const Article = ({
     copyright: { license: licenseObj, creators, rightsholders, processors },
   } = article;
 
-  let authors = creators;
-  if (Array.isArray(authors) && authors.length === 0) {
-    authors = processors;
-  }
-  const suppliers = rightsholders.length ? rightsholders : undefined;
+  const authors = creators.length || rightsholders.length ? creators : processors;
 
   return (
     <div ref={wrapperRef}>
@@ -222,14 +218,12 @@ export const Article = ({
           {footNotes && footNotes.length > 0 && <ArticleFootNotes footNotes={footNotes} />}
           <ArticleByline
             copyPageUrlLink={copyPageUrlLink}
-            {...{
-              authors,
-              suppliers,
-              published,
-              license: licenseObj.license,
-              licenseBox,
-              printUrl,
-            }}
+            authors={authors}
+            suppliers={rightsholders}
+            published={published}
+            license={licenseObj.license}
+            licenseBox={licenseBox}
+            printUrl={printUrl}
           />
         </LayoutItem>
         <LayoutItem layout="extend">{children}</LayoutItem>

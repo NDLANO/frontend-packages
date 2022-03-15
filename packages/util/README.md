@@ -5,7 +5,11 @@ Collection of util functions used by NDLA
 ## Installation
 
 ```sh
-$ npm install ndla-util
+yarn add @ndla/util
+```
+
+```sh
+npm install @ndla/util
 ```
 
 ## Usage

@@ -21,6 +21,7 @@ import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import FigureImage from '../article/FigureImage';
 import LicenseBox from '../article/LicenseBox';
 import NotionExample from '../molecules/NotionExample';
+import FrontpageExample from '../pages/FrontpageExample';
 const Wrapper = styled.div`
   width: 100vw;
   position: relative;
@@ -161,6 +162,14 @@ const MessageBoxTabs = () => {
                     messageBoxTagMessage="Beta" //Pass this prop to display a tag in the breadcrumblist
                   />
                 </Content>
+              </Wrapper>
+            ),
+          },
+          {
+            title: 'Forside',
+            content: (
+              <Wrapper>
+                <FrontpageExample></FrontpageExample>
               </Wrapper>
             ),
           },

@@ -36,6 +36,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
           srcSet={getSrcSets(image.imageUrl)}
           sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
           src={image.imageUrl}
+          aria-label={title}
         />
       </div>
       <div className="information">

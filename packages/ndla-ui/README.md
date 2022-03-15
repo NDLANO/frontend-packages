@@ -5,25 +5,25 @@ Main UI component library for NDLA.
 ## Installation
 
 ```sh
-yarn add --save ndla-ui
+yarn add --save @ndla/ui
 ```
 
 ```sh
-npm i --save ndla-ui
+npm i --save @ndla/ui
 ```
 
 ### Optional dependencies
 
 The following dependencies are optional, but some components may depend on one or more of them.
 
-```
+```js
 react-router
-ndla-article-scripts
-ndla-button
-ndla-licenses
-ndla-icons
-ndla-tabs
-ndla-util
+@ndla/article-scripts
+@ndla/button
+@ndla/licenses
+@ndla/icons
+@ndla/tabs
+@ndla/util
 ```
 
 See: [package.json](package.json) for version requirements
@@ -36,7 +36,7 @@ See: [package.json](package.json) for version requirements
 
 ```scss
 /* Your project's main .scss import file */
-@import '~ndla-ui/scss/main'; // with webpack and sass-loader
+@import '~@ndla/ui/scss/main'; // with webpack and sass-loader
 @import '../path/to/node_modules/ndla-ui/scss/main'; // direct reference
 ```
 
@@ -71,7 +71,7 @@ const MyPage = ({ topicPath, topic, article }) => {
 ### Only import specific components
 
 ```jsx
-import Hero from 'ndla-ui/es/hero/Hero';
+import Hero from '@ndla/ui/es/hero/Hero';
 
 const MyPage = () => {
   return (

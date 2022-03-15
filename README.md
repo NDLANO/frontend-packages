@@ -1,14 +1,8 @@
 # NDLA frontend packages
 
-[Monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) containing a set of packages used to build UIs at NDLA.
+[Monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) containing a set of packages used to build UIs at NDLA. By definition this repo is maintained using [yarn](https://classic.yarnpkg.com/en/).
 
 ## Installation
-
-```js
-npm install [package-name]
-```
-
-or
 
 ```js
 yarn add [package-name]
@@ -74,7 +68,7 @@ yarn
 
 ## Publishing
 
-### Publish packages to npm
+### Publish packages to npmjs
 
 ```js
 yarn run publish

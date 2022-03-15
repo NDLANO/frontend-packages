@@ -5,11 +5,11 @@ A simple tabs component. Mainly a wrapper for [react-tabs](https://github.com/re
 ## Installation
 
 ```sh
-$ yarn add --save ndla-tabs
+yarn add --save @ndla/tabs
 ```
 
 ```sh
-$ npm install ndla-tabs --save
+npm install @ndla/tabs --save
 ```
 
 ## Usage

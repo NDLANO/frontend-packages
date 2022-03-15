@@ -47,7 +47,7 @@ const buttonCSS = css`
 const FieldRemoveButton = ({ children, type, ...rest }) => (
   // eslint-disable-next-line
   <button css={buttonCSS} type={type} {...rest}>
-    <Cross className="c-icon--medium" />
+    <Cross className="c-icon--medium" aria-hidden={true} />
     <span>{children}</span>
   </button>
 );

@@ -318,6 +318,7 @@ const messages = {
       h5p: 'Interaktiv',
     },
   },
+
   messageBoxInfo: {
     outdatedCoursePlan:
       'Dette faget følger en utgått læreplan. Gå til faget som er oppdatert etter gjeldende læreplan:',
@@ -331,6 +332,11 @@ const messages = {
     outdatedSubject: 'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.',
     newVersion:
       'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
+    frontPageBeta:
+      'Kommende fag er tilpassa ny læreplan som gjelder fra høsten 2022. Betafag er fag under arbeid. Vi håper likevel at læringsressursene i betafaga kan være nyttige allerede nå.',
+    frontPageExpired:
+      'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
+    frontPageRevised: 'Kommende fag er tilpassa ny læreplan som gjelder fra høsten 2022.',
   },
   article: {
     lastUpdated: 'Sist oppdatert',
@@ -600,6 +606,9 @@ const messages = {
         closeFilter: 'Lukk filter',
         heading: 'Filter',
       },
+      alphabet: {
+        letterFilter: 'Vis innhald på (bokstaven) {{letter}}.',
+      },
     },
     relatedLinks: {
       label: 'Tilknyttede artikler',
@@ -783,7 +792,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Se smakebiter fra nye ressurser i Vg2-fagene som kommer i høst',
+    cursorText: 'Se smakebiter fra fag som kommer høsten 2022.',
   },
   navigation: {
     showLongerDescription: 'Vis hele emnebeskrivelsen',
@@ -795,6 +804,10 @@ const messages = {
   },
   multidisciplinarySubject: {
     subjectsLinksDescription: 'Case innen',
+  },
+  multibutton: {
+    open: 'Åpne meny',
+    close: 'Lukk meny',
   },
   close: 'Lukk',
   title: 'Tittel',
@@ -887,6 +900,10 @@ const messages = {
     },
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
+  slateBlockMenu: {
+    open: 'Åpne meny',
+    close: 'Lukk meny',
+  },
 };
 
 export default messages;

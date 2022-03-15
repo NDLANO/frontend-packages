@@ -4,12 +4,12 @@ NDLA's tracker for google tag manager.
 
 ## Installation
 
-```shell
-# Using npm:
-$ npm install ndla-tracker --save
-
+```sh
 # Using yarn:
-$ yarn add ndla-tracker
+yarn add @ndla/tracker
+
+# Using npm:
+npm install @ndla/tracker --save
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ To use the tracker you need to configure the tracker with correct google analyti
 
 ```javascript
 import { createBrowserHistory } from 'history';
-import { configureTracker } from 'ndla-tracker';
+import { configureTracker } from '@ndla/tracker';
 
 const browserHistory = createBrowserHistory();
 
@@ -37,7 +37,7 @@ ReactDOM.render(
 Tracking can be used in two different ways. Either with a default React component called `HelmetWithTracker`:
 
 ```javascript
-import { HelmetWithTracker } from 'ndla-tracker';
+import { HelmetWithTracker } from '@ndla/tracker';
 
 const SomeTrackableComponent = ({ title }) => {
   return (
@@ -55,7 +55,7 @@ or you can customize when the tracking should be done and add dimensions:
 
 ```javascript
 import Helmet from 'react-helmet'
-import { withTracker } from 'ndla-tracker';
+import { withTracker } from '@ndla/tracker';
 
 class SomeTrackableComponent extends Component {
   static getDocumentTitle(currentProps) {
@@ -101,7 +101,7 @@ export default withTracker(SomeTrackableComponent);
 
 ## PropTypes
 
-###### PropTypes for HelmetWithTracker
+### PropTypes for HelmetWithTracker
 
 | Props |  Type  | Required | Description                          |
 | ----- | :----: | :------: | :----------------------------------- |

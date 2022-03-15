@@ -54,6 +54,7 @@ import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
 import FooterExample from './molecules/footers';
 import MessageBox from './molecules/MessageBoxExample';
+import ReferenceBoxExample from './pages/ReferenceBoxExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -633,6 +634,18 @@ storiesOf('Sammensatte moduler', module)
       <OneColumn>
         <ListViewExample />
       </OneColumn>
+    </PageContainer>
+  ))
+
+  .add('Referanseboks', () => (
+    <PageContainer>
+      <StoryIntro title="Referanseboks">
+        <p>Her kan du se forskjellige typer referansebokser. De brukes gjerne i artikler for å lenke til en ressurs.</p>
+      </StoryIntro>
+      <Content>
+        <ReferenceBoxExample />
+      </Content>
+      <FooterExample />
     </PageContainer>
   ))
 

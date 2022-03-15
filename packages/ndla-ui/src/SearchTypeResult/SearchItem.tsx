@@ -66,8 +66,6 @@ const ItemWrapper = styled.div`
   &:hover {
     height: calc(100% + 4px);
     width: calc(100% + 4px);
-    margin-left: -2px;
-    margin-right: -2px;
     .topic-header-image {
       height: calc(100% + 6px);
       width: calc(100% + 6px);

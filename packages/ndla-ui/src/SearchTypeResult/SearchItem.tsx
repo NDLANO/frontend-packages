@@ -56,6 +56,7 @@ const Container = styled.div`
 
 const ItemWrapper = styled.div`
   flex-direction: column;
+  overflow: hidden;
   display: flex;
   width: 100%;
   height: 100%;
@@ -72,8 +73,6 @@ const ItemWrapper = styled.div`
       width: calc(100% + 6px);
     }
     .topic-label {
-      margin-top: calc(${spacing.small} + 2px);
-      margin-left: 2px;
       svg {
         transform: scale(1.2);
       }
@@ -119,7 +118,6 @@ const ItemLink = styled(SafeLink)`
 const TextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
-  overflow: hidden;
   ${ItemWrapper}:hover & {
     padding-left: calc(${spacing.normal} + 2px);
     padding-right: calc(${spacing.normal} + 2px);
@@ -148,6 +146,7 @@ const ItemTitle = styled.h3<ItemTypeProps>`
   }
 `;
 const ItemText = styled.div<ItemTypeProps>`
+  overflow: hidden;
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -164,6 +163,8 @@ const ItemText = styled.div<ItemTypeProps>`
 `;
 
 const ContextWrapper = styled.div`
+  background: white;
+  z-index: 1;
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {

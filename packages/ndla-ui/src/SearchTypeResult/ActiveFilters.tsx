@@ -19,20 +19,27 @@ type StyledActiveFiltersProps = {
   showOnSmallScreen?: boolean;
   filterLength?: number;
 };
+
 const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
   margin: 0;
   padding: 0;
   display: none;
-
-  ${({ showOnSmallScreen }) =>
-    showOnSmallScreen &&
-    `
-    ${mq.range({ until: breakpoints.desktop })} {
+  ${(props: StyledActiveFiltersProps) =>
+    props.showOnSmallScreen &&
+    css`
+      ${StyledActiveFilterTitle} {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-right: ${spacing.small};
+        display: block;
+        /* max-width: 200px; */
+      }
+      ${mq.range({ until: breakpoints.desktop })} {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
       }
-    ${mq.range({ until: breakpoints.tablet })} {
+      ${mq.range({ until: breakpoints.tablet })} {
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -100,7 +107,7 @@ const ActiveFilters = ({
   onClickShowHiddenSubjects,
 }: Props) => {
   const { t } = useTranslation();
-  if (!filters || filters.length < 1) return null;
+  if (!filters) return null;
   const showFilterCount = 3;
   const filterLength = filters.length;
 

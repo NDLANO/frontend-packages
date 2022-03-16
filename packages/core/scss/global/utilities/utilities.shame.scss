@@ -6,7 +6,7 @@
 *
 */
 body {
-  overflow-x: hidden;
+  contain: paint;
   -webkit-overflow-scrolling: touch;
   input {
     appearance: none !important;

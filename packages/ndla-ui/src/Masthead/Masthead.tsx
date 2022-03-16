@@ -46,6 +46,7 @@ interface Props {
   infoContent?: ReactNode;
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
+  infoBoxes?: ReactNode;
 }
 
 export const Masthead = ({
@@ -55,6 +56,7 @@ export const Masthead = ({
   showLoaderWhenNeeded = true,
   ndlaFilm,
   skipToMainContentId,
+  infoBoxes,
   t,
 }: Props & WithTranslation) => (
   <>
@@ -63,14 +65,16 @@ export const Masthead = ({
         {t('masthead.skipToContent')}
       </a>
     )}
-    <div {...classes('placeholder', { infoContent: !!infoContent })} />
-    <div {...classes('', { fixed: !!fixed, infoContent: !!infoContent, showLoaderWhenNeeded, ndlaFilm: !!ndlaFilm })}>
+    <div
+      id="masthead"
+      {...classes('', { fixed: !!fixed, infoContent: !!infoContent, showLoaderWhenNeeded, ndlaFilm: !!ndlaFilm })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>
         </DisplayOnPageYOffset>
       )}
       <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
+      {infoBoxes}
     </div>
   </>
 );

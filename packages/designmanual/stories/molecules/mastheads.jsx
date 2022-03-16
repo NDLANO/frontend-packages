@@ -25,6 +25,9 @@ import {
   SearchFieldForm,
   BreadcrumbBlock,
   MastheadAuthModal,
+  messagesNB,
+  MessageBox,
+  MessageBoxType,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
@@ -39,6 +42,14 @@ export const MastheadWithLogo = ({ skipToMainContentId }) => (
     </MastheadItem>
   </Masthead>
 );
+
+const InfoBoxes = () => {
+  return (
+    <MessageBox type={MessageBoxType.fullpage} showCloseButton>
+      {messagesNB.messageBoxInfo.updateBrowser}
+    </MessageBox>
+  );
+};
 
 class MastheadWithTopicMenu extends Component {
   constructor(props) {
@@ -129,6 +140,7 @@ class MastheadWithTopicMenu extends Component {
       breadcrumbItems,
       isAuthed,
       menuProps,
+      showInfoboxes,
       t,
       i18n,
     } = this.props;
@@ -171,7 +183,8 @@ class MastheadWithTopicMenu extends Component {
         fixed
         skipToMainContentId={skipToMainContentId}
         ndlaFilm={ndlaFilm}
-        infoContent={beta && betaInfoContent}>
+        infoContent={beta && betaInfoContent}
+        infoBoxes={showInfoboxes && <InfoBoxes />}>
         <MastheadItem left>
           {!hideMenuButton && (
             <Modal
@@ -292,6 +305,7 @@ MastheadWithTopicMenu.propTypes = {
     hideSubject: PropTypes.bool,
     hideCurrentProgramme: PropTypes.bool,
   }),
+  showInfoboxes: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

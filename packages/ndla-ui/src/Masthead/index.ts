@@ -7,7 +7,8 @@
  */
 
 import Masthead, { MastheadItem } from './Masthead';
+import { getMastheadHeight } from './utils';
 
-export { MastheadItem };
+export { MastheadItem, getMastheadHeight };
 
 export default Masthead;

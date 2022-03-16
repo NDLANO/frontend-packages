@@ -16,7 +16,8 @@
     height: 1px;
     overflow: hidden;
     z-index: -999;
-    &:focus, &:active {
+    &:focus,
+    &:active {
       color: #fff;
       background: $brand-color;
       left: auto;
@@ -38,9 +39,7 @@
 
   &--fixed {
     top: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
+    position: sticky;
     @media print {
       position: relative;
     }
@@ -107,14 +106,6 @@
     .c-breadcrumb-block__item span,
     .c-breadcrumb-block__item .c-icon {
       color: #fff;
-    }
-  }
-
-  &__placeholder {
-    min-height: $masthead-height;
-    width: 100%;
-    @media print {
-      min-height: revert;
     }
   }
 

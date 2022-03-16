@@ -42,7 +42,7 @@ const ReferenceBoxExample = () => {
                   den.
                 </p>
                 <ResourceBox
-                  heading="Medie Historie"
+                  heading="Mediehistorie"
                   text="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
                   image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"></ResourceBox>
                 <p>

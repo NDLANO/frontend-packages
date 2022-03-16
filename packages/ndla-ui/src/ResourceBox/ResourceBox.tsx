@@ -40,6 +40,9 @@ const BoxWrapper = styled.div`
 const BoxHeading = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin-top: 35px;
+  }
 `;
 
 const BoxText = styled.p`
@@ -56,7 +59,7 @@ const StyledButtonDiv = styled.div`
   text-align: center;
   ${mq.range({ until: breakpoints.tabletWide })} {
     bottom: 5%;
-    left: 5%;
+    left: 8%;
   }
 `;
 const NewStyledButton = styled(StyledButton)`
@@ -64,7 +67,7 @@ const NewStyledButton = styled(StyledButton)`
   position: aboslute;
   border: 1px solid #184673;
   ${mq.range({ until: breakpoints.mobileWide })} {
-    width: 250px;
+    width: 230px;
   }
 `;
 const NewLaunchIcon = styled(Launch)`
@@ -83,7 +86,7 @@ const BoxImage = styled(Image)`
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 250px;
     height: 250px;
-    margin-top: 10%;
+    margin-top: 20%;
   }
 `;
 

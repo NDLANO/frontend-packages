@@ -33,7 +33,7 @@ type Props = {
 export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
-const SafeLink = ({ to, replace, children, showNewWindowIcon, ...rest }: SafeLinkProps) => {
+const SafeLink = ({ to, replace, children, showNewWindowIcon, tabIndex, ...rest }: SafeLinkProps) => {
   const isMissingRouterContext = useContext(MissingRouterContext);
 
   if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
@@ -49,7 +49,7 @@ const SafeLink = ({ to, replace, children, showNewWindowIcon, ...rest }: SafeLin
   }
 
   return (
-    <Link tabIndex={0} to={to} replace={replace} {...rest}>
+    <Link tabIndex={0 || tabIndex} to={to} replace={replace} {...rest}>
       {children}
       {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
     </Link>

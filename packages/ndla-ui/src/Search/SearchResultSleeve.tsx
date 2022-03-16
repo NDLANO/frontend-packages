@@ -315,13 +315,19 @@ const SearchResultSleeve = ({
         )}
         <div>
           <SearchLinkContainer>
-            <StyledSearchLink css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle} to={allResultUrl}>
+            <StyledSearchLink
+              css={keyboardPathNavigation === GO_TO_SEARCHPAGE && highlightStyle}
+              to={allResultUrl}
+              tabIndex={-1}>
               <SearchIcon className="c-icon--22" />
               <strong ref={searchAllRef}>{searchString}</strong>
               <small>{t('welcomePage.searchAllInfo')}</small>
             </StyledSearchLink>
             {suggestion && suggestionUrl && (
-              <StyledSearchLink css={keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle} to={suggestionUrl}>
+              <StyledSearchLink
+                css={keyboardPathNavigation === GO_TO_SUGGESTION && highlightStyle}
+                to={suggestionUrl}
+                tabIndex={-1}>
                 <SearchIcon className="c-icon--22" />
                 <small>{t('searchPage.resultType.searchPhraseSuggestion')}</small>
                 <strong ref={searchSuggestionRef}>{suggestion}</strong>

@@ -16,7 +16,6 @@ exports[`SafeLink renderers Link correctly if router context is present 1`] = `
   <a
     href="/my/path"
     onClick={[Function]}
-    tabIndex={0}
   >
     Snapshot should contain onClick
   </a>

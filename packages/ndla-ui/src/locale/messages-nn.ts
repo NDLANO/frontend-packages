@@ -894,6 +894,10 @@ const messages = {
     open: 'Åpne meny',
     close: 'Lukk meny',
   },
+  factbox: {
+    open: 'Åpne faktaboks',
+    close: 'Lukk faktaboks',
+  },
 };
 
 export default messages;

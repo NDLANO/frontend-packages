@@ -46,7 +46,7 @@ interface Props {
   infoContent?: ReactNode;
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
-  infoBoxes?: ReactNode;
+  messageBoxes?: ReactNode;
 }
 
 export const Masthead = ({
@@ -56,7 +56,7 @@ export const Masthead = ({
   showLoaderWhenNeeded = true,
   ndlaFilm,
   skipToMainContentId,
-  infoBoxes,
+  messageBoxes,
   t,
 }: Props & WithTranslation) => (
   <>
@@ -74,7 +74,7 @@ export const Masthead = ({
         </DisplayOnPageYOffset>
       )}
       <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
-      {infoBoxes}
+      {messageBoxes}
     </div>
   </>
 );

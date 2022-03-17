@@ -43,7 +43,7 @@ export const MastheadWithLogo = ({ skipToMainContentId }) => (
   </Masthead>
 );
 
-const InfoBoxes = () => {
+const Messageboxes = () => {
   return (
     <MessageBox type={MessageBoxType.fullpage} showCloseButton>
       {messagesNB.messageBoxInfo.updateBrowser}
@@ -140,7 +140,7 @@ class MastheadWithTopicMenu extends Component {
       breadcrumbItems,
       isAuthed,
       menuProps,
-      showInfoboxes,
+      showMessageboxes,
       t,
       i18n,
     } = this.props;
@@ -184,7 +184,7 @@ class MastheadWithTopicMenu extends Component {
         skipToMainContentId={skipToMainContentId}
         ndlaFilm={ndlaFilm}
         infoContent={beta && betaInfoContent}
-        infoBoxes={showInfoboxes && <InfoBoxes />}>
+        messageboxes={showMessageboxes && <Messageboxes />}>
         <MastheadItem left>
           {!hideMenuButton && (
             <Modal
@@ -305,7 +305,7 @@ MastheadWithTopicMenu.propTypes = {
     hideSubject: PropTypes.bool,
     hideCurrentProgramme: PropTypes.bool,
   }),
-  showInfoboxes: PropTypes.bool,
+  showMEssageboxes: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

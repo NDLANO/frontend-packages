@@ -384,7 +384,7 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Hovedhode med meldingsboks', () => (
     <div>
-      <MastheadWithTopicMenu showInfoboxes={true} />
+      <MastheadWithTopicMenu showMessageboxes={true} />
     </div>
   ))
   .add('Lisensikoner', () => (

@@ -305,7 +305,7 @@ MastheadWithTopicMenu.propTypes = {
     hideSubject: PropTypes.bool,
     hideCurrentProgramme: PropTypes.bool,
   }),
-  showMEssageboxes: PropTypes.bool,
+  showMessageboxes: PropTypes.bool,
 };
 
 MastheadWithTopicMenu.defaultProps = {

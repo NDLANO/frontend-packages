@@ -5,11 +5,11 @@ A package containing icons used in NDLA frontends.
 ## Installation
 
 ```sh
-$ npm install ndla-icons --save
+yarn add @ndla/icons
 ```
 
 ```sh
-$ yarn add ndla-icons
+npm install @ndla/icons --save
 ```
 
 ## Usage

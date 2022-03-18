@@ -5,7 +5,11 @@ A simple library for selecting NDLA videos.
 ## Installation
 
 ```sh
-$ npm install ndla-video-search
+yarn add @ndla/video-search
+```
+
+```sh
+npm install @ndla/video-search
 ```
 
 ## Example usage
@@ -14,7 +18,7 @@ $ npm install ndla-video-search
 
 ```scss
 /* Your project's main .scss import file */
-@import '~ndla-video-search/scss/video-search'; // with webpack and sass-loader
+@import '~@ndla/video-search/scss/video-search'; // with webpack and sass-loader
 @import '../path/to/node_modules/ndla-video-search/scss/video-search'; // direct reference
 ```
 

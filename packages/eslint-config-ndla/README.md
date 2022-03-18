@@ -8,6 +8,11 @@ Overrides some settings to better suit NDLA.
 
 ```bash
 # Install
+yarn add --save-dev eslint-config-ndla
+```
+
+```bash
+# Install
 npm install --save-dev eslint-config-ndla
 ```
 

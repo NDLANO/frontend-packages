@@ -5,11 +5,11 @@ ndla-core contains common styling for all NDLA components. It includes all globa
 ## Installation
 
 ```sh
-$ yarn add --save ndla-core
+yarn add --save @ndla/core
 ```
 
 ```sh
-$ npm i --save ndla-core
+npm i --save @ndla/core
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ $ npm i --save ndla-core
 Utilities are located in a seperate file and should be imported last (after component styling)
 
 ```scss
-@import '~ndla-core/scss/core';
+@import '~@ndla/core/scss/core';
 @import 'my-awesome-component';
-@import '~ndla-core/scss/utilities';
+@import '~@ndla/core/scss/utilities';
 ```

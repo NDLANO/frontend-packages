@@ -31,9 +31,9 @@ const topicResults = [
     title: 'Løping',
     ingress: 'Løping er ofte med som hovedaktivitet i den generelle oppvarmingen.',
     url: '#12627',
-    labels: [],
+    labels: ['En label', 'En annen label'],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/43283?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/43283',
       alt: 'Kvinne jogger på gata. Foto.',
     },
     contexts: [{ breadcrumb: ['Kroppsøving', 'Øvingsbank', 'Oppvarming'], url: '#1' }],
@@ -56,7 +56,7 @@ const topicResults = [
     url: '#12451',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/43229?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/43229',
       alt: 'Ung jente holder en ispose på et skadet kne. Foto.',
     },
     contexts: [
@@ -72,7 +72,7 @@ const topicResults = [
     url: '#9009',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/193?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/193',
       alt: 'person med mange armer som gjør forskjellige ting samtidig. Foto.',
     },
     contexts: [
@@ -88,7 +88,7 @@ const topicResults = [
     url: '#10091',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/40927?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/40927',
       alt: 'Hoppe som koser med føllet sitt. Foto.',
     },
     contexts: [
@@ -104,7 +104,7 @@ const topicResults = [
     url: '#9177',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/6448?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/6448',
       alt: 'Symbolbilde for filmopplegg. Foto.',
     },
     contexts: [
@@ -126,7 +126,7 @@ const topicResults = [
     url: '#5660',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/6448?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/6448',
       alt: 'Symbolbilde for filmopplegg. Foto.',
     },
     contexts: [
@@ -148,7 +148,7 @@ const topicResults = [
     url: '#21346',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/45661?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/45661',
       alt: 'To smykker med samisk solgud. Foto.',
     },
     contexts: [{ breadcrumb: ['Håndverk, design og produktutvikling Vg1'], url: '#1' }],
@@ -161,7 +161,7 @@ const topicResults = [
     url: '#22813',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/24749?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/24749',
       alt: 'En globus ligger oppå søppel på en gate. Illustrasjon.',
     },
     contexts: [
@@ -179,7 +179,7 @@ const topicResults = [
     url: '#22572',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/43404?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/43404',
       alt: 'Glade venner med ulik etnisitet tar selfie. Foto.',
     },
     contexts: [
@@ -201,7 +201,7 @@ const topicResults = [
     url: '#24169',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/50093?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/50093',
       alt: ' Ung hund som spring gjennom en treningsbane. Foto.',
     },
     contexts: [{ breadcrumb: ['Naturbruk Vg1', 'Dyrefag'], url: '#1' }],
@@ -214,7 +214,7 @@ const topicResults = [
     url: '#689',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/4627?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/4627',
       alt: 'Drepemetode mosaikk. Illustrasjon.',
     },
     contexts: [
@@ -232,7 +232,7 @@ const topicResults = [
     url: '#1666',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/41134?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/41134',
       alt: 'En rød binders er brukt som et ledd i en metallenke.Foto.',
     },
     contexts: [{ breadcrumb: ['Salg, service og sikkerhet Vg2'], url: '#1' }],
@@ -245,7 +245,7 @@ const topicResults = [
     url: '#25319',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/11892?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/11892',
       alt: 'Elev som lager film. Foto.',
     },
     contexts: [
@@ -267,7 +267,7 @@ const topicResults = [
     url: '#24733',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/11892?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/11892',
       alt: 'Elev som lager film. Foto.',
     },
     contexts: [
@@ -284,7 +284,7 @@ const topicResults = [
     url: '#23265',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/42574?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/42574',
       alt: 'En kulepenn og skrivebok ligger oppå en datamaskin. Foto.',
     },
     contexts: [
@@ -300,7 +300,7 @@ const topicResults = [
     url: '#16750',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/42574?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/42574',
       alt: 'En kulepenn og skrivebok ligger oppå en bærbar datamaskin. Foto.',
     },
     contexts: [
@@ -318,7 +318,7 @@ const topicResults = [
     url: '#15548',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/24212?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/24212',
       alt: '',
     },
     contexts: [
@@ -335,7 +335,7 @@ const topicResults = [
     url: '#21736',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/51785?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/51785',
       alt: ' ',
     },
     contexts: [{ breadcrumb: ['Mediesamfunnet og medieuttrykk Vg1'], url: '#1' }],
@@ -348,7 +348,7 @@ const topicResults = [
     url: '#1157',
     labels: [],
     img: {
-      url: 'https://api.ndla.no/image-api/raw/id/41152?width=600',
+      url: 'https://api.ndla.no/image-api/raw/id/41152',
       alt: 'Shopping i nettbutikk på mobiltelefonen. Foto.',
     },
     contexts: [],
@@ -361,7 +361,7 @@ const subjectMaterialResults = [
     title: 'Doping',
     ingress: 'Doping er bruk av medikamenter eller andre metoder for å øke prestasjonsevnen på en unaturlig måte.',
     url: '#12458',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/20509?width=600',
       alt: '',
@@ -383,7 +383,7 @@ const subjectMaterialResults = [
     ingress:
       'Verdens antidopingbyrå har laget en liste over forbudte prestasjonsfremmende stoffer. Dersom du bruker medikamenter som står på denne lista, doper du deg.',
     url: '#12459',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: null,
     contexts: [
       {
@@ -402,7 +402,7 @@ const subjectMaterialResults = [
     ingress:
       'Hvis behandlingen er god, klarer de fleste idrettsutøvere å trene og konkurrere igjen noen uker etter en akutt ankelskade.',
     url: '#12447',
-    labels: ['Fagstoff', 'Film og filmklipp'],
+    labels: ['Film og filmklipp'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/38156?width=600',
       alt: '',
@@ -424,7 +424,7 @@ const subjectMaterialResults = [
     ingress:
       'Til bresering bruker vi kjøtt fra kam, mørbrad, lår eller bog. Damping brukes til steker, kjøttpudding, rull, tunge, svineribbe og pinnekjøtt.',
     url: '#17764',
-    labels: ['Fagstoff', 'Forelesning og presentasjon'],
+    labels: ['Forelesning og presentasjon'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/29233?width=600',
       alt: 'Reinsdyrstek. Foto.',
@@ -442,7 +442,7 @@ const subjectMaterialResults = [
     ingress:
       'For å gjenoppta aktiviteten så fort som mulig etter en «lårhøne» kan utøveren legge aktivitetsteip på skadestedet.',
     url: '#12448',
-    labels: ['Fagstoff', 'Film og filmklipp'],
+    labels: ['Film og filmklipp'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/37860?width=600',
       alt: '',
@@ -463,7 +463,7 @@ const subjectMaterialResults = [
     title: 'Kontinuitetsklipping ',
     ingress: 'Her får du en innføring i ulike klippeteknikker.',
     url: '#21001',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/40605?width=600',
       alt: 'Filmrull og saks. foto.',
@@ -485,7 +485,7 @@ const subjectMaterialResults = [
     ingress:
       'DNA-typing vil si å sammenligne DNA fra to eller flere prøver. Formålet er å finne ut hvor sannsynlig det er at prøvene stammer fra samme person.',
     url: '#14054',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/43883?width=600',
       alt: 'Forsker undersøker utskrift med resultat av DNA-test. Foto.',
@@ -502,7 +502,7 @@ const subjectMaterialResults = [
     title: 'Klipping',
     ingress: 'En innføring i ulike klippeteknikker.',
     url: '#5109',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/40605?width=600',
       alt: 'Filmrull og saks. Illustrasjon.',
@@ -543,7 +543,7 @@ const subjectMaterialResults = [
     title: 'Rettskrivingsregler for pinyin',
     ingress: 'Her lærer du hvordan du skriver pinyin riktig.',
     url: '#3135',
-    labels: ['Fagstoff', 'Forelesning og presentasjon'],
+    labels: ['Forelesning og presentasjon'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/5772?width=600',
       alt: 'Kinesiske tegn. Betydning: uttale. Illustrasjon.',
@@ -556,7 +556,7 @@ const subjectMaterialResults = [
     ingress:
       'Rekkefølgen som bildene vises i avgjør hvordan vi oppfatter en filmsekvens. Klipperytmen er også et viktig fortellerelement.',
     url: '#5108',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/40605?width=600',
       alt: 'Filmrull og saks. Illustrasjon.',
@@ -582,7 +582,7 @@ const subjectMaterialResults = [
     ingress:
       'I denne bildeserien viser vi hvordan vi støper gulv på grunn. Forarbeidet med byggegrunn, isolering, forskaling og armering er gjort på forhånd.',
     url: '#9577',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/8275?width=600',
       alt: 'Bil leverer betong som betongarbeidere legger ut som gulv. Foto.',
@@ -600,7 +600,7 @@ const subjectMaterialResults = [
     ingress:
       'Støping av betong starter med transporten av den ferske betongen fra betongfabrikken til forskalinga på byggeplassen. ',
     url: '#9571',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/3272?width=600',
       alt: 'Betongbil. Foto',
@@ -618,7 +618,7 @@ const subjectMaterialResults = [
     ingress:
       '&ndash; Det er mange som doper seg. Gutta på skolen som trener styrke, snakker ofte om hva de bruker, sier en 17 år gammel gutt på en videregående skole i Oslo.',
     url: '#12460',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/17953?width=600',
       alt: '',
@@ -640,7 +640,7 @@ const subjectMaterialResults = [
     ingress:
       'Lance Armstrong, en av idrettens mest beundrede, hyllede og anerkjente legende er avslørt som tidenes juksemaker.',
     url: '#12461',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/17922?width=600',
       alt: '',
@@ -661,7 +661,7 @@ const subjectMaterialResults = [
     title: 'Terminering av RJ45-plugg',
     ingress: 'Her lærer du hvordan du terminerer en nettverkskabel med 8-pin-plugg (RJ-45).',
     url: '#20614',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/49935?width=600',
       alt: 'Terminering av nettverkskabel i plugg (RJ-45). Foto.',
@@ -683,7 +683,7 @@ const subjectMaterialResults = [
     ingress:
       'Når du skal støpe med flytende leire, må du først lage en form til å støpe i. Gips er et godt materiale til å lage en slik avstøpning med.',
     url: '#14443',
-    labels: ['Fagstoff', 'Veiledning'],
+    labels: ['Veiledning'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/13982?width=600',
       alt: 'Tre bilder som viser hvordan du kan lage ei gipsform ut fra et annet produkt. Foto. ',
@@ -704,7 +704,7 @@ const subjectMaterialResults = [
     title: 'Stigningsløp',
     ingress: 'Stigningsløp er en øvelse som passer godt som spesiell oppvarming til økter som inneholder løping.',
     url: '#12638',
-    labels: ['Fagstoff', 'Film og filmklipp'],
+    labels: ['Film og filmklipp'],
     img: null,
     contexts: [
       {
@@ -719,7 +719,7 @@ const subjectMaterialResults = [
     ingress:
       'Overnattingsstedet, enten det er et hotell eller en campingplass, er sentralt for gjestenes videre planlegging av oppholdet.',
     url: '#13223',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/28348?width=600',
       alt: 'Bilde fra fiskteur ved Florø',
@@ -737,7 +737,7 @@ const subjectMaterialResults = [
     ingress:
       'Dreping av produksjonsbrønn kan forårsake skade på formasjonen. Vi må beregne de grenseverdiene som er viktige.',
     url: '#691',
-    labels: ['Fagstoff', 'Fagartikkel'],
+    labels: ['Fagartikkel'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/4643?width=600',
       alt: 'Pumping, starttrykk og sikkerhetsmargin. Illustrasjon.',
@@ -754,7 +754,7 @@ const subjectMaterialResults = [
     title: 'Håndsirkelsag',
     ingress: 'Lær deg sikker bruk av ei håndsirkelsag. Saga brukes både til kapping og kløyving. ',
     url: '#26897',
-    labels: ['Fagstoff', 'Film og filmklipp'],
+    labels: ['Film og filmklipp'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/4509?width=600',
       alt: 'Plate kuttes med håndsirkelsag. Foto.',
@@ -778,7 +778,7 @@ const resourcesTasksAndActivitiesResults = [
     title: 'Utforme informasjon til nettsidene',
     url: '#1',
     ingress: 'Oppgave til fagstoff om å utforme informasjon til nettsider.',
-    labels: ['Oppgaver og aktiviteter', 'Oppgave'],
+    labels: ['Oppgave'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/43541?width=600',
       alt: 'Solnedgang over campingplass. Foto.',
@@ -879,7 +879,7 @@ const resourcesAssessmentResults = [
     title: 'Hva kan du om armering?',
     url: '#1',
     ingress: 'Quiz om armering i betong.',
-    labels: ['Vurderingsressurs', 'Egenvurdering'],
+    labels: ['Egenvurdering'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/10866?width=600',
       alt: 'Skjøtearmering til ringmur. Foto.',
@@ -896,7 +896,7 @@ const resourcesAssessmentResults = [
     title: 'Informasjonsfilm mot nettmobbing – vurderingsskjema',
     url: '#1',
     ingress: 'Forslag til vurderingskriterier for et praktisk arbeidsoppdrag.',
-    labels: ['Vurderingsressurs', 'Egenvurdering'],
+    labels: ['Egenvurdering'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/22186?width=600',
       alt: 'Jente som huker av for grønt. Manipulert foto.',
@@ -934,7 +934,7 @@ const resourcesExternalResults = [
     title: 'Veggmonterte panelovner',
     ingress: 'Lær om veggmonterte panelovner, som finnes i de fleste norsk hjem.',
     url: '#10810',
-    labels: ['Ekstern læringsressurs', 'Ekstern lenke'],
+    labels: ['Ekstern lenke'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/51711?width=600',
       alt: 'Panelovn montert ved gulvet under vinduet. Foto.',
@@ -952,7 +952,7 @@ const resourcesExternalResults = [
     ingress:
       'Dette er en tverrfaglig ressurs i fagene norsk og produksjon på design og håndverk. I denne oppgaven skal du jobbe med kostyme.',
     url: '#14422',
-    labels: ['Ekstern læringsressurs', 'FYR-ressurs'],
+    labels: ['FYR-ressurs'],
     img: null,
     contexts: [
       {
@@ -971,7 +971,7 @@ const resourcesExternalResults = [
     ingress:
       'Dette er en tverrfaglig ressurs i fagene norsk og produksjon på desing og håndverk. I oppgaven skal du lage illustrasjon til et bokomslag.',
     url: '#14421',
-    labels: ['Ekstern læringsressurs', 'FYR-ressurs'],
+    labels: ['FYR-ressurs'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/4656?width=600',
       alt: 'En mann som måler og tegner. Bilde.',
@@ -993,7 +993,7 @@ const resourcesExternalResults = [
     ingress:
       'Dette er en tverrfaglig ressurs i fagene norsk og kvalitet og dokumentasjon på design og håndverk. Oppgaven handler om å presentere et produkt ved å lage en film.',
     url: '#14420',
-    labels: ['Ekstern læringsressurs', 'FYR-ressurs'],
+    labels: ['FYR-ressurs'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/10311?width=600',
       alt: 'Film',
@@ -1015,7 +1015,7 @@ const resourcesExternalResults = [
     ingress:
       'På denne siden finner du lenker til oppslagsverk du kan bruke når du skal finne navn på og lese om ulike arter.',
     url: '#13694',
-    labels: ['Ekstern læringsressurs', 'Delt læringsressurs'],
+    labels: ['Delt læringsressurs'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/40884?width=600',
       alt: 'En ung kvinne ser på en plante i et forstørrelsesglass. Foto.',
@@ -1068,7 +1068,7 @@ const resourcesSourceMaterialResults = [
     url: '#1',
     ingress:
       'The Program handler om sykkelsport, doping og kritisk sportsjournalistikk. Etter å ha overlevd kreft vant Lance Armstrong Tour de France sju ganger.',
-    labels: ['Kildemateriale', 'Dokumentarfilm'],
+    labels: ['Dokumentarfilm'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/1209?width=600',
       alt: 'Utsnitt fra filmen The Program.',
@@ -1085,7 +1085,7 @@ const resourcesSourceMaterialResults = [
     title: 'Bibelens skapelsesberetning',
     url: '#1',
     ingress: 'Eirin Edvardsen forteller Bibelens skapelsesberetning.',
-    labels: ['Kildemateriale', 'Kortfilm', 'Tilleggsstoff'],
+    labels: ['Kortfilm', 'Tilleggsstoff'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/36701?width=600',
       alt: 'Detalj fra adams tilblivelse av michelangelo.maleri.',
@@ -1117,7 +1117,7 @@ const resourcesSourceMaterialResults = [
     url: '#1',
     ingress:
       'Den norske handelsflåten ble hardt rammet av tyskernes ubåtkrig i 1. verdenskrig. Omtrent 2000 norske sjømenn mistet livet.',
-    labels: ['Kildemateriale', 'Historisk materiale'],
+    labels: ['Historisk materiale'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/9471?width=600',
       alt: 'Skip som blir torpedert av ubåt',
@@ -1139,7 +1139,7 @@ const resourcesSourceMaterialResults = [
     title: 'Gjemt bak en e-post',
     url: '#1',
     ingress: 'Den kritiske journalistikken angripes fra mange hold. Et av de farligste angrepene kommer som e-post.',
-    labels: ['Kildemateriale', 'Litterære tekster'],
+    labels: ['Litterære tekster'],
     img: {
       url: 'https://api.ndla.no/image-api/raw/id/8576?width=600',
       alt: 'øye som titter ut av a-tegnet i alfakrøll. Foto.',
@@ -1150,6 +1150,47 @@ const resourcesSourceMaterialResults = [
         url: '#1',
       },
     ],
+  },
+];
+
+const multidiscinplinaryResults = [
+  {
+    id: 22277,
+    title: 'Kan ungdommen redde klimaet?',
+    ingress:
+      'Klimaspørsmålet står sentralt i temaet bærekraftig utvikling. 16-årige Greta Thunberg startet sin kamp for klimaet med en skolestreik. Hva kan du gjøre?',
+    url: '#22277',
+    labels: [],
+    img: {
+      url: 'https://api.staging.ndla.no/image-api/raw/id/44263?width=600',
+      alt: 'Greta Thunberg protesterer utenfor Sveriges Riksdag i august 2018. Foto.',
+    },
+    contexts: [
+      {
+        breadcrumb: ['Bærekraftig utvikling', 'Klimaendringer'],
+        url: '#1',
+      },
+    ],
+    filters: ['Demokrati og medborgerskap', 'Bærekraftig utvikling'],
+  },
+  {
+    id: 22279,
+    title: 'Fuck fossils – en framtid du ikke vil ha',
+    ingress:
+      'Fuck fossils – en framtid du ikke vil ha er en fiksjonsfilm som handler om hvordan hverdagen vil kunne arte seg i år 2050',
+    url: '#22279',
+    labels: [],
+    img: {
+      url: 'https://api.staging.ndla.no/image-api/raw/id/43699?width=600',
+      alt: 'Kvinne sitter foran stort kontrollpanel med berøringsskjerm. Foto.',
+    },
+    contexts: [
+      {
+        breadcrumb: ['Bærekraftig utvikling', 'Klimaendringer'],
+        url: '#1',
+      },
+    ],
+    filters: ['Demokrati og medborgerskap', 'Bærekraftig utvikling'],
   },
 ];
 
@@ -1182,6 +1223,10 @@ const searchSubjectTypeOptions = [
   {
     label: 'Kildemateriale',
     value: 'source-material',
+  },
+  {
+    label: 'Tverrfaglig case',
+    value: 'multidisciplinary-topic',
   },
 ];
 
@@ -1273,35 +1318,6 @@ export const searchFilterOptions = {
   ],
 };
 
-export const notionResults = [
-  {
-    id: 1,
-    title: 'And',
-    text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
-    image: {
-      url: 'https://api.ndla.no/image-api/raw/id/40164?width=660',
-      alt: 'And',
-    },
-    labels: ['Naturbruk Vg1'],
-    media: {
-      type: 'video',
-    },
-  },
-  {
-    id: 2,
-    title: 'Breiflabb',
-    text: 'Hos breiflabben – eller marulken som den også kalles – utgjør det store hodet om lag halvparten av den totale lengden. Den finnes fra fjæra og ned til 600 meters dyp, der den gjemmer seg blant planter eller delvis nedgravd i sanden. Breiflabben lever hovedsakelig av fisk og skalldyr.',
-    image: {
-      url: 'https://api.ndla.no/image-api/raw/id/9825?width=660',
-      alt: 'Breiflabb',
-    },
-    labels: ['Naturbruk Vg1'],
-    media: {
-      type: 'other',
-    },
-  },
-];
-
 export {
   topicResults,
   subjectMaterialResults,
@@ -1312,4 +1328,5 @@ export {
   resourcesAssessmentResults,
   resourcesExternalResults,
   resourcesSourceMaterialResults,
+  multidiscinplinaryResults,
 };

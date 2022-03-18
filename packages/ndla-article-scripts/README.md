@@ -5,13 +5,13 @@ A collection of functions for making article content responsive (and interactive
 ## Installation
 
 ```sh
-$ npm install ndla-article-scripts
+npm install @ndla/article-scripts
 ```
 
 or
 
 ```sh
-$ yarn add ndla-article-scripts
+yarn add @ndla/article-scripts
 ```
 
 ## Usage

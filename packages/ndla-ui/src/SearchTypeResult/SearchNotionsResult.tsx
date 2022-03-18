@@ -7,11 +7,11 @@
  */
 
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { fonts, mq, breakpoints, spacing } from '@ndla/core';
+import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
 import { ModalCloseButton } from '@ndla/modal';
 import { withTranslation, WithTranslation } from 'react-i18next';
-import SearchNotionItem, { SearchNotionItemProps } from './SearchNotionItem';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,12 +19,18 @@ const Wrapper = styled.div`
   padding: ${spacing.medium} 0;
   ${mq.range({ from: breakpoints.tablet })} {
     padding: ${spacing.medium};
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.24);
-    border-radius: 5px;
+    border: 1px solid ${colors.brand.neutral7};
+    border-radius: 4px;
     margin: ${spacing.large} 0;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    padding: ${spacing.medium} 66px;
+    padding: ${spacing.large};
+  }
+  & > .c-figure {
+    width: 100% !important;
+    padding: 0;
+    left: initial !important;
+    margin-bottom: 0;
   }
 `;
 
@@ -32,7 +38,8 @@ const HeadingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${spacing.small};
+  border-bottom: 2px solid ${colors.brand.light};
+  padding-bottom: ${spacing.small};
 `;
 const Heading = styled.h2`
   margin: 0;
@@ -47,25 +54,25 @@ const HeadingCount = styled.span`
 `;
 
 type Props = {
-  items: SearchNotionItemProps[];
   totalCount: number;
   onRemove: () => void;
-  renderMarkdown: (text: ReactNode) => string;
+  children: ReactNode;
 };
 
-const SearchNotionsResult = ({ items, totalCount, onRemove, renderMarkdown, t }: Props & WithTranslation) => (
-  <Wrapper>
-    <HeadingWrapper>
-      <Heading>
-        {t(`searchPage.resultType.notionsHeading`)}
-        <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
-      </Heading>
-      <ModalCloseButton onClick={onRemove} />
-    </HeadingWrapper>
-    {items.map((item) => (
-      <SearchNotionItem key={item.id} {...item} renderMarkdown={renderMarkdown} />
-    ))}
-  </Wrapper>
-);
+const SearchNotionsResult = ({ totalCount, onRemove, children }: Props & WithTranslation) => {
+  const { t } = useTranslation();
+  return (
+    <Wrapper>
+      <HeadingWrapper>
+        <Heading>
+          {t(`searchPage.resultType.notionsHeading`)}
+          <HeadingCount>{t(`searchPage.resultType.hits`, { count: totalCount })}</HeadingCount>
+        </Heading>
+        <ModalCloseButton onClick={onRemove} title={t(`searchPage.resultType.notionsRemove`)} />
+      </HeadingWrapper>
+      {children}
+    </Wrapper>
+  );
+};
 
 export default withTranslation()(SearchNotionsResult);

@@ -15,6 +15,7 @@ import Resources from '../molecules/resources';
 import FigureImage from '../article/FigureImage';
 import LicenseBox from '../article/LicenseBox';
 import NotionExample from '../molecules/NotionExample';
+import NotionBlock from '../molecules/NotionBlock';
 
 const { contentTypes } = constants;
 
@@ -49,6 +50,7 @@ const ArticleAssessmentResource = () => (
               En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet av
               noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
             </p>
+            <NotionBlock type="video" />
             <p>
               Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
               filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.

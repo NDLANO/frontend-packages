@@ -5,9 +5,9 @@ Switch button for NDLA
 ## Installation
 
 ```sh
-$ yarn add ndla-switch
+yarn add @ndla/switch
 ```
 
 ```sh
-$ npm i --save ndla-switch
+npm i --save @ndla/switch
 ```

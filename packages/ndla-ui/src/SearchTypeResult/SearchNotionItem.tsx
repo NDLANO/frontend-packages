@@ -148,18 +148,11 @@ const SearchNotionItem = ({
         <Modal
           activateButton={
             <Button lighter size="xsmall" borderShape="rounded">
-              {type === 'video' && (
-                <>
-                  <Play />
-                  <ShowMediaButtonText>{t('searchPage.resultType.showVideo')}</ShowMediaButtonText>
-                </>
-              )}
-              {type === 'other' && (
-                <>
-                  <ArrowExpand />
-                  <ShowMediaButtonText>{t('searchPage.resultType.showNotion')}</ShowMediaButtonText>
-                </>
-              )}
+              <>
+                {type === 'video' && <Play />}
+                {type === 'other' && <ArrowExpand />}
+                <ShowMediaButtonText>{t('searchPage.resultType.showVideo')}</ShowMediaButtonText>
+              </>
             </Button>
           }
           animation="subtle"

@@ -53,8 +53,7 @@ const sa: RightType = {
   en: {
     title: 'Del likt',
     userFriendlyTitle: 'Share with same license',
-    description:
-      'You should share only under a license identical ("not more restrictive") to the license that governs the original work.',
+    description: 'You should share only under a license identical to the license that governs the original work.',
   },
 };
 

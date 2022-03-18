@@ -1,14 +1,14 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "2.1.38",
+  "version": "2.1.39",
   "description": "Storybook for NDLA ui component library.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
-    "start": "npm run storybook",
+    "start": "yarn run storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o ../../.out"
   },
@@ -20,7 +20,7 @@
   "author": "ndla@knowit.no",
   "peerDependencies": {
     "prop-types": "^15.8.1",
-    "react": "^15.6.0 || ^16.0.0",
+    "react": "^15.6.0 || ^16.0.0 || ^17.0.0",
     "react-i18next": "^11.11.0"
   },
   "devDependencies": {

@@ -55,7 +55,7 @@ function FigureCaptionExample({
         locale="nb"
         messages={messages}>
         <Button outline>{t('license.copyTitle')}</Button>
-        <Button outline>{messages.download}</Button>
+        {messages.download && <Button outline>{messages.download}</Button>}
       </FigureLicenseDialog>
     </FigureCaption>
   );

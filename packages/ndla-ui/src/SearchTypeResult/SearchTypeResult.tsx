@@ -13,7 +13,7 @@ import Spinner from '../Spinner';
 import constants from '../model';
 import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
 import SearchItems from './SearchItems';
-import { SearchItemType } from './SearchItem';
+import { SearchItemProps } from './SearchItem';
 import ResultNavigation, { PaginationType } from './ResultNavigation';
 
 const Wrapper = styled.div`
@@ -47,17 +47,19 @@ export type ContentType =
   | typeof constants.contentTypes.EXTERNAL_LEARNING_RESOURCES
   | typeof constants.contentTypes.SOURCE_MATERIAL
   | typeof constants.contentTypes.LEARNING_PATH
-  | typeof constants.contentTypes.TOPIC;
+  | typeof constants.contentTypes.TOPIC
+  | typeof constants.contentTypes.MULTIDISCIPLINARY_TOPIC;
 
 type Props = {
-  items: SearchItemType[];
-  filters: FilterOptionsType[];
-  onFilterClick: (id: string) => void;
+  items: SearchItemProps[];
+  filters?: FilterOptionsType[];
+  onFilterClick?: (id: string) => void;
   totalCount?: number;
   pagination?: PaginationType;
   type?: ContentType;
   loading?: boolean;
   children?: ReactNode;
+  viewType?: 'grid' | 'list';
 };
 
 const SearchTypeResult = ({
@@ -68,20 +70,19 @@ const SearchTypeResult = ({
   pagination,
   type,
   loading,
+  viewType,
   children,
 }: Props) => (
   <Wrapper>
     {loading && (
-      <>
-        <Overlay>
-          <Spinner />
-        </Overlay>
-      </>
+      <Overlay>
+        <Spinner />
+      </Overlay>
     )}
     <SearchTypeHeader onFilterClick={onFilterClick} filters={filters} totalCount={totalCount} type={type} />
-    <SearchItems items={items} type={type} />
+    <SearchItems items={items} type={type} viewType={viewType} />
     {pagination && <ResultNavigation {...pagination} />}
-    {children && children}
+    {children}
   </Wrapper>
 );
 

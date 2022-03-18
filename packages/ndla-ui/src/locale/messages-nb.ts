@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
       removeFilter: 'Fjern filter {{filterName}}',
+      additionalSubjectFilters: '+ {{count}} fag',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -124,20 +125,25 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Viser {{fromCount}} til {{toCount}} av {{totalCount}}',
+      showing: 'Viser {{count}} av {{totalCount}} {{contentType}}',
+      showingAll: 'Viser alle',
       showMore: 'Vis mer',
       showAll: 'Vis alle',
+      toTopOfPage: 'Til toppen',
       toSubjectPageLabel: 'Gå til fagsiden',
       all: 'Alle',
-      hits: '{{count}} Treff',
-      showingSearchPhrase: 'Viser resultater for',
+      allContentTypes: 'Alle innholdstyper',
+      hits: '{{count}} treff',
+      showingSearchPhrase: 'Viser treff for',
       showingCompetenceGoalSearchPhrase: 'Viser resultater for kompetansemål {text}',
-      searchPhraseSuggestion: 'Søk i stedet for',
+      searchPhraseSuggestion: 'Søk heller',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Se video',
       showNotion: 'Se forklaring',
+      gridView: 'Gallerivisning',
+      listView: 'Listevisning',
     },
     contextModal: {
       button: '+ {{count}} flere steder',
@@ -546,6 +552,7 @@ const messages = {
     'source-material': 'Kildemateriale',
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
+    'multidisciplinary-topic': 'Tverrfaglig case',
   },
   modal: {
     closeModal: 'Lukk',
@@ -832,6 +839,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'vis mer',
   },
+  h5p: {
+    reuse: 'Bruk H5P',
+  },
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',
@@ -843,6 +853,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Vis beskrivelsen av forklaringen.',
+    reuse: 'Bruk forklaring',
     error: {
       title: 'En feil oppstod',
       content: 'Kunne ikke laste beskrivelsen av forklaringen.',

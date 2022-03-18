@@ -52,6 +52,7 @@ export interface Copyright {
   creators: Array<Contributor>;
   rightsholders: Array<Contributor>;
   processors: Array<Contributor>;
+  origin?: string;
 }
 
 export interface FootNote {

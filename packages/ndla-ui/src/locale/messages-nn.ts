@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Bruk filter',
       removeFilter: 'Fjern filter {{filterName}}',
       closeFilter: 'Lukk filter',
+      additionalSubjectFilters: '+ {{count}} fag',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -124,20 +125,25 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Viser {{fromCount}} til {{toCount}} av {{totalCount}}',
+      showing: 'Viser {{count}} av {{totalCount}} {{contentType}}',
+      showingAll: 'Viser alle',
       showMore: 'Vis meir',
       showAll: 'Vis alle',
+      toTopOfPage: 'Til toppen',
       toSubjectPageLabel: 'Gå til fagsida',
       all: 'Alle',
-      hits: '{{count}} Treff',
-      showingSearchPhrase: 'Viser resultat for',
+      allContentTypes: 'Alle innhaldstyper',
+      hits: '{{count}} treff',
+      showingSearchPhrase: 'Viser treff for',
+      searchPhraseSuggestion: 'Søk heller',
       showingCompetenceGoalSearchPhrase: 'Viser resultat for kompetansemål {text}',
-      searchPhraseSuggestion: 'Søk i staden for',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Sjå video',
       showNotion: 'Sjå forklaring',
+      gridView: 'Gallerivisning',
+      listView: 'Listevisning',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',
@@ -547,6 +553,7 @@ const messages = {
     'source-material': 'Kjeldemateriale',
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
+    'multidisciplinary-topic': 'Tverrfagleg case',
   },
   modal: {
     closeModal: 'Lukk',
@@ -833,6 +840,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'vis meir',
   },
+  h5p: {
+    reuse: 'Bruk H5P',
+  },
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',
@@ -844,6 +854,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Vis skildring av forklaringa',
+    reuse: 'Bruk forklaring',
     error: {
       title: 'Ein feil oppstod',
       content: 'Kunne ikkje laste skildringa av forklaringa.',

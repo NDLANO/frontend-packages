@@ -53,6 +53,7 @@ import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
 import FooterExample from './molecules/footers';
+import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
 
 storiesOf('Sammensatte moduler', module)
@@ -190,6 +191,16 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <NotionExample />
     </Center>
+  ))
+  .add('Blokkvisning begrepsforklaring', () => (
+    <div>
+      <StoryIntro title="Blokkvisning begrepsforklaring">
+        <p>Brukes ved visning i artikkel og søk</p>
+      </StoryIntro>
+      <Center>
+        <NotionBlockExample />
+      </Center>
+    </div>
   ))
   .add('Emnebeskrivelse', () => (
     <Center>

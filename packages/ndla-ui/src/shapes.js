@@ -78,6 +78,7 @@ export const ContentTypeShape = PropTypes.oneOf([
   contentTypes.SOURCE_MATERIAL,
   contentTypes.LEARNING_PATH,
   contentTypes.TOPIC,
+  contentTypes.MULTIDISCIPLINARY_TOPIC,
   'beta',
   'ndla-film',
   'ndla-film has-image',

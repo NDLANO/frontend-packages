@@ -7,31 +7,39 @@
  */
 
 import React, { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { useTranslation } from 'react-i18next';
+import Button from '@ndla/button';
 import ActiveFilterContent, { FilterProps, StyledActiveFilterTitle } from './ActiveFilterContent';
 
 type StyledActiveFiltersProps = {
   showOnSmallScreen?: boolean;
   filterLength?: number;
 };
+
 const StyledActiveFilters = styled.ul<StyledActiveFiltersProps>`
   margin: 0;
   padding: 0;
   display: none;
-
-  ${({ showOnSmallScreen }) =>
-    showOnSmallScreen &&
-    `
-    ${mq.range({ until: breakpoints.desktop })} {
+  ${(props: StyledActiveFiltersProps) =>
+    props.showOnSmallScreen &&
+    css`
+      ${StyledActiveFilterTitle} {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-right: ${spacing.small};
+        display: block;
+        /* max-width: 200px; */
+      }
+      ${mq.range({ until: breakpoints.desktop })} {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
       }
-    ${mq.range({ until: breakpoints.tablet })} {
+      ${mq.range({ until: breakpoints.tablet })} {
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -88,46 +96,72 @@ type Props = {
   onFilterRemove: (value: string, name: string) => void;
   showOnSmallScreen?: boolean;
   customElements?: ReactElement[];
+  onClickShowHiddenSubjects: () => void;
 };
 
-const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen, customElements }: Props) => {
+const ActiveFilters = ({
+  filters,
+  onFilterRemove,
+  showOnSmallScreen,
+  customElements,
+  onClickShowHiddenSubjects,
+}: Props) => {
   const { t } = useTranslation();
-  if (filters && filters.length > 0) {
-    const filterLength = filters.length;
+  if (!filters) return null;
+  const showFilterCount = 3;
+  const filterLength = filters.length;
 
-    const filterItems = filters.map((filter) => {
-      const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
+  const visibleFilters = filterLength > showFilterCount ? filters.slice(0, showFilterCount - 1) : filters;
 
-      return (
-        <StyledActiveFilterWrapper key={filterKey}>
-          {filterLength > 1 ? (
-            <Tooltip
-              delay={2000}
-              align="bottom"
-              tooltip={t('searchPage.searchFilterMessages.removeFilter', {
-                filterName: filter.title,
-              })}>
-              <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
-            </Tooltip>
-          ) : (
-            <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
-          )}
-        </StyledActiveFilterWrapper>
-      );
-    });
+  const filterItems = visibleFilters.map((filter) => {
+    const filterKey = filter.name ? `${filter.name}${filter.value}` : filter.value;
 
     return (
-      <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
-        {filterItems}
-        {customElements &&
-          customElements.map((item, index) => (
-            <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
-          ))}
-      </StyledActiveFilters>
+      <StyledActiveFilterWrapper key={filterKey}>
+        {filterLength > 1 ? (
+          <Tooltip
+            delay={2000}
+            align="bottom"
+            tooltip={t('searchPage.searchFilterMessages.removeFilter', {
+              filterName: filter.title,
+            })}>
+            <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
+          </Tooltip>
+        ) : (
+          <ActiveFilterContent filter={filter} onFilterRemove={onFilterRemove} />
+        )}
+      </StyledActiveFilterWrapper>
     );
-  }
+  });
 
-  return null;
+  return (
+    <StyledActiveFilters showOnSmallScreen={showOnSmallScreen} filterLength={filterLength}>
+      {filterItems}
+      {filterLength > showFilterCount && (
+        <StyledActiveFilterWrapper>
+          <Tooltip delay={2000} align="bottom" tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
+            <Button
+              aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                count: filterLength - showFilterCount + 1,
+              })}
+              type="button"
+              size="normal"
+              borderShape="rounded"
+              onClick={onClickShowHiddenSubjects}>
+              <StyledActiveFilterTitle>
+                {t('searchPage.searchFilterMessages.additionalSubjectFilters', {
+                  count: filterLength - showFilterCount + 1,
+                })}
+              </StyledActiveFilterTitle>
+            </Button>
+          </Tooltip>
+        </StyledActiveFilterWrapper>
+      )}
+      {customElements?.map((item, index) => (
+        <StyledActiveFilterWrapper key={index}>{item}</StyledActiveFilterWrapper>
+      ))}
+    </StyledActiveFilters>
+  );
 };
 
 export default ActiveFilters;

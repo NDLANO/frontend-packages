@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core/src';
+import { colors } from '@ndla/core';
 
 const Wrapper = styled.div`
   position: fixed;

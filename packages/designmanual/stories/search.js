@@ -21,10 +21,8 @@ storiesOf('Søk', module)
   ))
   .add('Søkefelt', () => (
     <PageContainer>
-      <MastheadWithTopicMenu hideSearchButton menuProps={{ hideSubject: true, hideCurrentProgramme: true }} />
-      <Content>
-        <MastheadWithTopicMenu searchFieldExpanded />
-      </Content>
+      <MastheadWithTopicMenu searchFieldExpanded />
+      <Content></Content>
     </PageContainer>
   ))
   .add('Søkeside kompetansemål', () => (

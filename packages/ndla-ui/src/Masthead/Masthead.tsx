@@ -64,10 +64,10 @@ export const Masthead = ({
         {t('masthead.skipToContent')}
       </a>
     )}
-    {messages?.map((message) => (
-      <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
-    ))}
     <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
+      {messages?.map((message) => (
+        <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+      ))}
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>

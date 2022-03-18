@@ -11,15 +11,14 @@ import SearchResultTypeExample from './pages/SearchResultTypeExample';
 storiesOf('Søk', module)
   .add('Søkefelt', () => (
     <PageContainer>
-      <Content>
-        <MastheadWithTopicMenu searchFieldExpanded />
-      </Content>
+      <MastheadWithTopicMenu searchFieldExpanded />
+      <Content></Content>
     </PageContainer>
   ))
   .add('Søkeside', () => (
     <PageContainer background>
+      <MastheadWithTopicMenu hideSearchButton />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample />
         </OneColumn>
@@ -29,8 +28,8 @@ storiesOf('Søk', module)
   ))
   .add('Søk kompetansemål', () => (
     <PageContainer background>
+      <MastheadWithTopicMenu hideSearchButton hideMenu />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton hideMenu />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample competenceGoals />
         </OneColumn>
@@ -40,8 +39,8 @@ storiesOf('Søk', module)
   ))
   .add('Søkeside opphaver', () => (
     <PageContainer background>
+      <MastheadWithTopicMenu hideSearchButton />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchPageExample showAuthor />
         </OneColumn>
@@ -51,8 +50,8 @@ storiesOf('Søk', module)
   ))
   .add('Søkeside re-design', () => (
     <PageContainer>
+      <MastheadWithTopicMenu hideSearchButton menuProps={{ hideSubject: true, hideCurrentProgramme: true }} />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton menuProps={{ hideSubject: true, hideCurrentProgramme: true }} />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchResultTypeExample />
         </OneColumn>
@@ -62,8 +61,8 @@ storiesOf('Søk', module)
   ))
   .add('Søkeside kompetansemål', () => (
     <PageContainer>
+      <MastheadWithTopicMenu hideSearchButton hideMenuButton />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton hideMenuButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchResultTypeExample showCompetenceGoals />
         </OneColumn>

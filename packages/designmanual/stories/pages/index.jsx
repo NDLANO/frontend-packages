@@ -22,6 +22,7 @@ import {
   PageContainer,
   Content,
   ErrorResourceAccessDenied,
+  ContentPlaceholder,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -57,6 +58,7 @@ storiesOf('Sidevisninger', module)
     <PageContainer>
       <Content>
         <MastheadWithTopicMenu />
+        <ContentPlaceholder />
       </Content>
       <FooterExample />
     </PageContainer>

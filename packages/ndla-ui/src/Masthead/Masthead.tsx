@@ -42,7 +42,6 @@ const MastheadInfo = ({ children }: MastheadInfoProps) => (
 interface Props {
   children?: ReactNode;
   fixed?: boolean;
-  showLoaderWhenNeeded?: boolean;
   infoContent?: ReactNode;
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
@@ -52,7 +51,6 @@ export const Masthead = ({
   children,
   fixed,
   infoContent,
-  showLoaderWhenNeeded = true,
   ndlaFilm,
   skipToMainContentId,
   t,
@@ -64,7 +62,7 @@ export const Masthead = ({
       </a>
     )}
     <div {...classes('placeholder', { infoContent: !!infoContent })} />
-    <div {...classes('', { fixed: !!fixed, infoContent: !!infoContent, showLoaderWhenNeeded, ndlaFilm: !!ndlaFilm })}>
+    <div {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>

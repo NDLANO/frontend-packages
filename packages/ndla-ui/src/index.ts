@@ -214,3 +214,5 @@ export {
 export { default as ContentCard } from './ContentCard';
 
 export { default as CopyParagraphButton } from './CopyParagraphButton';
+
+export { default as ContentPlaceholder } from './ContentPlaceholder';

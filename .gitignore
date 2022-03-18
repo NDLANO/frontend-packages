@@ -9,6 +9,7 @@ dist/
 storybook-static/
 .DS_Store
 *.iml
+packages/*/tsconfig.build.tsbuildinfo
 /.idea
 *.iml
 .eslintcache

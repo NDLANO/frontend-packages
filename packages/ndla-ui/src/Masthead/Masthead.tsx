@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
@@ -57,25 +57,47 @@ export const Masthead = ({
   skipToMainContentId,
   messages,
   t,
-}: Props & WithTranslation) => (
-  <>
-    {skipToMainContentId && (
-      <a tabIndex={0} href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
-        {t('masthead.skipToContent')}
-      </a>
-    )}
-    <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
-      {messages?.map((message) => (
-        <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
-      ))}
-      {infoContent && (
-        <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
-          <MastheadInfo>{infoContent}</MastheadInfo>
-        </DisplayOnPageYOffset>
+}: Props & WithTranslation) => {
+  const mastheadRef = useRef<HTMLDivElement>(null);
+  const focusHandler = (evt: FocusEvent) => {
+    const mastheadHeight = (mastheadRef.current && mastheadRef.current.offsetHeight) || 0;
+    const { target } = evt;
+    const rect = (target as HTMLElement).getBoundingClientRect();
+    // Focused target is hidden behind Masthead
+    if (rect.y < mastheadHeight) {
+      window.scrollTo(window.scrollX, window.scrollY - (mastheadHeight + 10));
+    }
+  };
+
+  useEffect(() => {
+    if (fixed) {
+      document.addEventListener('focusin', focusHandler);
+      return () => {
+        document.removeEventListener('focusin', focusHandler);
+      };
+    }
+  }, [fixed]);
+
+  return (
+    <>
+      {skipToMainContentId && (
+        <a tabIndex={0} href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
+          {t('masthead.skipToContent')}
+        </a>
       )}
-      <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
-    </div>
-  </>
-);
+      <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
+        {messages?.map((message) => (
+          <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+        ))}
+        {infoContent && (
+          <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
+            <MastheadInfo>{infoContent}</MastheadInfo>
+          </DisplayOnPageYOffset>
+        )}
+        <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
+      </div>
+    </>
+  );
+};
 
 export default withTranslation()(Masthead);

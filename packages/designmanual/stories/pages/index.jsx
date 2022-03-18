@@ -126,8 +126,8 @@ storiesOf('Sidevisninger', module)
 storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">

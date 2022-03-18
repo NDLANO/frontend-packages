@@ -10,6 +10,7 @@ import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
+import { MessageBox, MessageBoxType } from '../MessageBox';
 
 const classes = new BEMHelper({
   name: 'masthead',
@@ -45,6 +46,7 @@ interface Props {
   infoContent?: ReactNode;
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
+  messages?: string[];
 }
 
 export const Masthead = ({
@@ -53,6 +55,7 @@ export const Masthead = ({
   infoContent,
   ndlaFilm,
   skipToMainContentId,
+  messages,
   t,
 }: Props & WithTranslation) => (
   <>
@@ -61,7 +64,9 @@ export const Masthead = ({
         {t('masthead.skipToContent')}
       </a>
     )}
-    <div {...classes('placeholder', { infoContent: !!infoContent })} />
+    {messages?.map((message) => (
+      <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+    ))}
     <div {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>

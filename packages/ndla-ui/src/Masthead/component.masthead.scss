@@ -61,14 +61,6 @@
     }
   }
 
-  &__placeholder {
-    min-height: $masthead-height;
-    width: 100%;
-    @media print {
-      min-height: revert;
-    }
-  }
-
   &__content {
     justify-content: center;
     align-items: center;

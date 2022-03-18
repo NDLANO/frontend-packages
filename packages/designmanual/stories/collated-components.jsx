@@ -382,6 +382,15 @@ storiesOf('Sammensatte moduler', module)
       <MastheadWithTopicMenu />
     </div>
   ))
+  .add('Hovedhode med meldingsboks', () => (
+    <I18nTranslate>
+      {(t) => (
+        <div>
+          <MastheadWithTopicMenu messages={[t('messageBoxInfo.updateBrowser')]} />
+        </div>
+      )}
+    </I18nTranslate>
+  ))
   .add('Lisensikoner', () => (
     <Center>
       <LayoutItem layout="center">

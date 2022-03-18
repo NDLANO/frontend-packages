@@ -131,6 +131,7 @@ class MastheadWithTopicMenu extends Component {
       menuProps,
       t,
       i18n,
+      messages,
     } = this.props;
 
     const authedProps = isAuthed
@@ -171,7 +172,8 @@ class MastheadWithTopicMenu extends Component {
         fixed
         skipToMainContentId={skipToMainContentId}
         ndlaFilm={ndlaFilm}
-        infoContent={beta && betaInfoContent}>
+        infoContent={beta && betaInfoContent}
+        messages={messages}>
         <MastheadItem left>
           {!hideMenuButton && (
             <Modal
@@ -292,6 +294,7 @@ MastheadWithTopicMenu.propTypes = {
     hideSubject: PropTypes.bool,
     hideCurrentProgramme: PropTypes.bool,
   }),
+  messages: PropTypes.arrayOf(PropTypes.string),
 };
 
 MastheadWithTopicMenu.defaultProps = {

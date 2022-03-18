@@ -52,31 +52,33 @@ const FigureNotion = ({
       {({ typeClass }) => (
         <>
           {typeof children === 'function' ? children({ typeClass }) : children}
-          <FigureCaption
-            hideFigcaption={hideFigCaption}
-            figureId={figureId}
-            id={id}
-            caption={title}
-            reuseLabel={t(`${type}.reuse`)}
-            authors={contributors}
-            licenseRights={license.rights}>
-            <FigureLicenseDialog
+          {copyright?.license?.license && (
+            <FigureCaption
+              hideFigcaption={hideFigCaption}
+              figureId={figureId}
               id={id}
+              caption={title}
+              reuseLabel={t(`${type}.reuse`)}
               authors={contributors}
-              locale={i18n.language}
-              title={title}
-              origin={copyright?.origin}
-              license={license}
-              messages={{
-                close: t('close'),
-                rulesForUse: t('license.concept.rules'),
-                source: t('source'),
-                learnAboutLicenses: t('license.learnMore'),
-                title: t('title'),
-              }}>
-              {type === 'image' && <Button outline>{t('license.copyTitle')}</Button>}
-            </FigureLicenseDialog>
-          </FigureCaption>
+              licenseRights={license.rights}>
+              <FigureLicenseDialog
+                id={id}
+                authors={contributors}
+                locale={i18n.language}
+                title={title}
+                origin={copyright?.origin}
+                license={license}
+                messages={{
+                  close: t('close'),
+                  rulesForUse: t('license.concept.rules'),
+                  source: t('source'),
+                  learnAboutLicenses: t('license.learnMore'),
+                  title: t('title'),
+                }}>
+                {type === 'image' && <Button outline>{t('license.copyTitle')}</Button>}
+              </FigureLicenseDialog>
+            </FigureCaption>
+          )}
         </>
       )}
     </Figure>

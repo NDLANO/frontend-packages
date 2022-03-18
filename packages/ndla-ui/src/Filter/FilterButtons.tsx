@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Button from '@ndla/button';
@@ -15,6 +14,7 @@ import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 // @ts-ignore
 import ToggleItem from './ToggleItem';
+import FilterCarousel from './FilterCarousel';
 
 const StyledHeading = styled.h3`
   ${fonts.sizes('16px', '32px')};
@@ -25,12 +25,14 @@ const StyledHeading = styled.h3`
 
 const StyledButtonsWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  position: relative;
 `;
 
 const StyledButtonElementWrapper = styled.div`
   margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
   break-inside: avoid;
+  flex: 1 0 auto;
 `;
 
 const StyledList = styled.ul`
@@ -61,6 +63,7 @@ const StyledButtonContentSelected = styled.span`
 
 const StyledRemoveWrapper = styled.div`
   margin-top: ${spacing.xsmall};
+  margin-left: 10px;
 `;
 
 const ButtonRemoveText = styled.span`
@@ -73,8 +76,8 @@ export type ItemProps = {
   value: string;
   selected?: boolean;
 };
-type Props = {
-  heading: string;
+export type FilterButtonsProps = {
+  heading?: string;
   items: ItemProps[];
   onFilterToggle: (value: string) => void;
   onRemoveAllFilters: () => void;
@@ -83,7 +86,7 @@ type Props = {
   };
 };
 
-export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels }: Props) => {
+export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilters, labels }: FilterButtonsProps) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
 
@@ -155,9 +158,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                           checked={item.selected}
                           label={item.label}
                           component="div"
-                          onChange={() => {
-                            onFilterToggle(item.value);
-                          }}
+                          onChange={() => onFilterToggle(item.value)}
                         />
                       </StyledListItem>
                     ))}
@@ -170,18 +171,16 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
       )}
       {!isNarrowScreen && (
         <>
-          <StyledHeading>{heading}</StyledHeading>
-          <StyledButtonsWrapper>
+          {heading && <StyledHeading>{heading}</StyledHeading>}
+          <FilterCarousel>
             {items.map((item: ItemProps) => (
               <StyledButtonElementWrapper key={item.value}>
                 <Button
                   type="button"
                   size="normal"
-                  greyLightest={!item.selected}
+                  greyLighter={!item.selected}
                   borderShape="rounded"
-                  onClick={() => {
-                    onFilterToggle(item.value);
-                  }}>
+                  onClick={() => onFilterToggle(item.value)}>
                   <StyledButtonContent>{item.label}</StyledButtonContent>
                   {item.selected && (
                     <StyledButtonContentSelected>
@@ -191,7 +190,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
                 </Button>
               </StyledButtonElementWrapper>
             ))}
-          </StyledButtonsWrapper>
+          </FilterCarousel>
           <StyledRemoveWrapper>
             {hasSelectedFilters && (
               <Button onClick={onRemoveAllFilters} link>

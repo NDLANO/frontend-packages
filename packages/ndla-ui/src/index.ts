@@ -134,6 +134,7 @@ export {
   SearchFieldHeader,
   SearchNotionsResult,
   SearchSubjectResult,
+  SearchFilterContent,
 } from './SearchTypeResult';
 
 export { default as constants } from './model';
@@ -214,3 +215,5 @@ export {
 export { default as ContentCard } from './ContentCard';
 
 export { default as CopyParagraphButton } from './CopyParagraphButton';
+
+export { Notion, ConceptNotion } from './Notion';

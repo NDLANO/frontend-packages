@@ -19,6 +19,11 @@ export const StyledActiveFilterTitle = styled.span`
   font-weight: ${fonts.weight.semibold};
 `;
 
+const StyledButton = styled(Button)`
+  display: grid;
+  grid-template-columns: 1fr auto;
+`;
+
 export type FilterProps = {
   value: string;
   title: string;
@@ -31,7 +36,7 @@ type Props = {
 };
 
 const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & WithTranslation) => (
-  <Button
+  <StyledButton
     aria-label={t('searchPage.searchFilterMessages.removeFilter', {
       filterName: filter.title,
     })}
@@ -41,7 +46,7 @@ const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & WithTranslat
     onClick={() => onFilterRemove(filter.value, filter.name)}>
     <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
     <Cross />
-  </Button>
+  </StyledButton>
 );
 
 export default withTranslation()(ActiveFilterContent);

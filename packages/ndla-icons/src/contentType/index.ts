@@ -17,6 +17,7 @@ export { default as LearningPathRead } from './LearningPathRead';
 export { default as LearningPathSummary } from './LearningPathSummary';
 export { default as LearningPathTask } from './LearningPathTask';
 export { default as LearningPath } from './LearningPath';
+export { default as MultidisciplinaryTopic } from './MultidisciplinaryTopic';
 export { default as SharedResource } from './SharedResource';
 export { default as SubjectMaterial } from './SubjectMaterial';
 export { default as Subject } from './Subject';

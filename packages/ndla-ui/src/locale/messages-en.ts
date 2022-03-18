@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Use filter',
       closeFilter: 'Close filter',
       removeFilter: 'Remove filter {{filterName}}',
+      additionalSubjectFilters: '+ {{count}} subjects',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
       resourceTypeFilter: {
@@ -124,20 +125,25 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Showing {{fromCount}} to {{toCount}} of {{totalCount}}',
+      showing: 'Showing {{count}} of {{totalCount}} {{contentType}}',
+      showingAll: 'Showing all',
       showMore: 'Show more',
       showAll: 'Show all',
+      toTopOfPage: 'To top of page',
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
+      allContentTypes: 'All content-types',
       hits: '{{count}} hits',
-      showingSearchPhrase: 'Showing results for:',
+      showingSearchPhrase: 'Showing hits for',
+      searchPhraseSuggestion: 'Search instead for',
       showingCompetenceGoalSearchPhrase: 'Showing results for competence goals {text}',
-      searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
       notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
       showNotion: 'Show notion',
+      gridView: 'Grid-view',
+      listView: 'List-view',
     },
     contextModal: {
       button: '+ {{count}} more contexts',
@@ -548,6 +554,7 @@ const messages = {
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
     topic: 'Topic',
+    'multidisciplinary-topic': 'Multidisciplinary case',
   },
   modal: {
     closeModal: 'Close',
@@ -834,6 +841,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'show more',
   },
+  h5p: {
+    reuse: 'Use H5P',
+  },
   video: {
     download: 'Download video',
     reuse: 'Use video',
@@ -845,6 +855,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Show concept description',
+    reuse: 'Use concept',
     error: {
       title: 'An error occurred',
       content: 'Could not load the description of the concept.',

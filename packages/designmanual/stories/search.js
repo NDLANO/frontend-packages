@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PageContainer, Content, OneColumn } from '@ndla/ui';
+import { PageContainer, Content, OneColumn, ContentPlaceholder } from '@ndla/ui';
 
 import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
@@ -22,7 +22,9 @@ storiesOf('Søk', module)
   .add('Søkefelt', () => (
     <PageContainer>
       <MastheadWithTopicMenu searchFieldExpanded />
-      <Content></Content>
+      <Content>
+        <ContentPlaceholder />
+      </Content>
     </PageContainer>
   ))
   .add('Søkeside kompetansemål', () => (

@@ -54,6 +54,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.color = '#444444';
       break;
     case 'masthead':
+      styles.margin = '0 auto';
       styles.display = 'none';
       break;
   }

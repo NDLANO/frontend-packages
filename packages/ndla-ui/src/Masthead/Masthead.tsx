@@ -67,7 +67,12 @@ export const Masthead = ({
     )}
     <div
       id="masthead"
-      {...classes('', { fixed: !!fixed, infoContent: !!infoContent, showLoaderWhenNeeded, ndlaFilm: !!ndlaFilm })}>
+      {...classes('', {
+        fixed: !!fixed,
+        infoContent: !!infoContent,
+        showLoaderWhenNeeded,
+        ndlaFilm: !!ndlaFilm,
+      })}>
       {infoContent && (
         <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
           <MastheadInfo>{infoContent}</MastheadInfo>

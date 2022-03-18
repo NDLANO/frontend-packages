@@ -45,7 +45,7 @@ export const MastheadWithLogo = ({ skipToMainContentId }) => (
 
 const Messageboxes = () => {
   return (
-    <MessageBox type={MessageBoxType.fullpage} showCloseButton>
+    <MessageBox type={MessageBoxType.masthead} showCloseButton>
       {messagesNB.messageBoxInfo.updateBrowser}
     </MessageBox>
   );

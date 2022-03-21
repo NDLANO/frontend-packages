@@ -56,7 +56,6 @@ const Container = styled.div`
 
 const ItemWrapper = styled.div`
   flex-direction: column;
-  overflow: hidden;
   display: flex;
   width: 100%;
   height: 100%;

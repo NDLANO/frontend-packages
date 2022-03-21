@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { BY, NC, ND } from '@ndla/licenses';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox } from '@ndla/ui';
 import LicenseBox from '../article/LicenseBox';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
@@ -17,10 +18,6 @@ const { contentTypes } = constants;
 const ReferenceBoxExample = () => {
   const Wrapper = styled.div`
     margin-top: 200px;
-    width: 100vw;
-    position: relative;
-    left: calc(-50vw + 50%);
-    font-family: sans-serif;
   `;
 
   return (
@@ -42,6 +39,8 @@ const ReferenceBoxExample = () => {
                   den.
                 </p>
                 <ResourceBox
+                  authors={[{ Peter: 'Peter' }, { Dennis: 'Dennis' }]}
+                  licenseRights={[BY, NC, ND]}
                   heading="Mediehistorie"
                   text="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
                   image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"></ResourceBox>

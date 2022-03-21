@@ -16,9 +16,8 @@ import { programme } from '../../dummydata/mockPrograms';
 const MessageBoxSiteExample = ({ type, message, sticky }) => {
   return (
     <PageContainer>
+      <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
       <Content>
-        <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
-
         <MessageBox sticky={sticky} type={type} showCloseButton>
           Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på:
           <a href="https://browsehappy.com"> https://browsehappy.com.</a>

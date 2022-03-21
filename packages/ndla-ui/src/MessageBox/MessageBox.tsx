@@ -18,6 +18,7 @@ export enum MessageBoxType {
   ghost = 'ghost',
   fullpage = 'fullpage',
   medium = 'medium',
+  masthead = 'masthead',
 }
 type WrapperProps = {
   boxType?: MessageBoxType;
@@ -51,7 +52,10 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.backgroundColor = 'transparent';
       styles.border = '1px solid #D1D6DB';
       styles.color = '#444444';
-
+      break;
+    case 'masthead':
+      styles.margin = '0 auto';
+      styles.display = 'none';
       break;
   }
   return styles;

@@ -10,6 +10,7 @@ import React, { ReactNode, useEffect, useRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
+import { MessageBox, MessageBoxType } from '../MessageBox';
 
 const classes = new BEMHelper({
   name: 'masthead',
@@ -42,19 +43,19 @@ const MastheadInfo = ({ children }: MastheadInfoProps) => (
 interface Props {
   children?: ReactNode;
   fixed?: boolean;
-  showLoaderWhenNeeded?: boolean;
   infoContent?: ReactNode;
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
+  messages?: string[];
 }
 
 export const Masthead = ({
   children,
   fixed,
   infoContent,
-  showLoaderWhenNeeded = true,
   ndlaFilm,
   skipToMainContentId,
+  messages,
   t,
 }: Props & WithTranslation) => {
   const mastheadRef = useRef<HTMLDivElement>(null);
@@ -84,10 +85,10 @@ export const Masthead = ({
           {t('masthead.skipToContent')}
         </a>
       )}
-      <div {...classes('placeholder', { infoContent: !!infoContent })} />
-      <div
-        {...classes('', { fixed: !!fixed, infoContent: !!infoContent, showLoaderWhenNeeded, ndlaFilm: !!ndlaFilm })}
-        ref={mastheadRef}>
+      <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
+        {messages?.map((message) => (
+          <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+        ))}
         {infoContent && (
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
             <MastheadInfo>{infoContent}</MastheadInfo>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { PageContainer, Content, OneColumn } from '@ndla/ui';
+import { PageContainer, Content, OneColumn, ContentPlaceholder } from '@ndla/ui';
 
 import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
@@ -10,8 +10,8 @@ import SearchResult from './pages/SearchResult';
 storiesOf('Søk', module)
   .add('Søkeside', () => (
     <PageContainer>
+      <MastheadWithTopicMenu hideSearchButton hideMenuButton />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton hideMenuButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchResult />
         </OneColumn>
@@ -21,15 +21,16 @@ storiesOf('Søk', module)
   ))
   .add('Søkefelt', () => (
     <PageContainer>
+      <MastheadWithTopicMenu searchFieldExpanded />
       <Content>
-        <MastheadWithTopicMenu searchFieldExpanded />
+        <ContentPlaceholder />
       </Content>
     </PageContainer>
   ))
   .add('Søkeside kompetansemål', () => (
     <PageContainer>
+      <MastheadWithTopicMenu hideSearchButton hideMenuButton />
       <Content>
-        <MastheadWithTopicMenu hideSearchButton hideMenuButton />
         <OneColumn cssModifier="clear-desktop" wide>
           <SearchResult showCompetenceGoals />
         </OneColumn>

@@ -32,7 +32,7 @@ export { createUniversalPortal } from './utils/createUniversalPortal';
 
 export { default as NoContentBox } from './NoContentBox';
 
-export { default as Masthead, MastheadItem } from './Masthead';
+export { default as Masthead, MastheadItem, getMastheadHeight } from './Masthead';
 
 export { default as Portrait } from './Portrait';
 
@@ -216,4 +216,5 @@ export { default as ContentCard } from './ContentCard';
 
 export { default as CopyParagraphButton } from './CopyParagraphButton';
 
+export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';

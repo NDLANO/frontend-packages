@@ -10,7 +10,6 @@ import { breakpoints, fonts, mq, colors } from '@ndla/core';
 import BEMHelper from 'react-bem-helper';
 import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
-import Button from '@ndla/button';
 import { LicenseByline } from '@ndla/licenses';
 import styled from '@emotion/styled';
 import Image from '../Image';
@@ -163,10 +162,8 @@ type Props = {
   authors?: { name: string }[];
   locale?: string;
   url: string;
-
-  hasLinkedVideo?: boolean;
 };
-export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, hasLinkedVideo, url }: Props) => {
+export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, url }: Props) => {
   const { t } = useTranslation();
   return (
     <BoxWrapper>
@@ -187,14 +184,6 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight fill="#184673">
           <div {...classes('byline-author-buttons')}>
             <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(' ')}</span>
-            <div>
-              {hasLinkedVideo && (
-                <Button borderShape="rounded" outline size="small" type="button" {...classes('toggleAlternativeVideo')}>
-                  <span className="original">{t('figure.button.alternative')}</span>
-                  <span className="alternative hidden">{t('figure.button.original')}</span>
-                </Button>
-              )}
-            </div>
           </div>
         </LicenseByline>
       </LincenseWrapper>

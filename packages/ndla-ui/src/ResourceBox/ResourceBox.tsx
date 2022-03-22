@@ -5,14 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ReactNode } from 'react';
-import { breakpoints, fonts, mq } from '@ndla/core';
-import Button, { StyledButton } from '@ndla/button';
+import React from 'react';
+import { breakpoints, fonts, mq, colors } from '@ndla/core';
 import BEMHelper from 'react-bem-helper';
-import { useTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
+import Button from '@ndla/button';
 import { LicenseByline } from '@ndla/licenses';
-import { messagesNB } from '@ndla/ui';
 import styled from '@emotion/styled';
 import Image from '../Image';
 
@@ -43,7 +42,7 @@ const BoxWrapper = styled.div`
   }
 `;
 
-const BoxHeading = styled.h3`
+const Boxtitle = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -51,7 +50,7 @@ const BoxHeading = styled.h3`
   }
 `;
 
-const BoxText = styled.p`
+const Boxcaption = styled.p`
   font-size: ${fonts.sizes(14)};
   ${mq.range({ until: breakpoints.tabletWide })} {
     line-height: 22px;
@@ -68,12 +67,35 @@ const StyledButtonDiv = styled.div`
     left: 8%;
   }
 `;
-const NewStyledButton = styled(StyledButton)`
+const NewStyledButton = styled.a`
+  display: inline-block;
+  padding: 4px 13px;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: 16px;
+  font-size: 0.8888888888888888rem;
+  line-height: 1.625;
+  font-family: ${fonts.sans};
+  font-weight: 700;
+  -webkit-transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  color: ${colors.brand.primary};
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 32px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: -10px;
   position: aboslute;
   border: 1px solid #184673;
+  :hover {
+    background-color: #20588f;
+    color: white;
+  }
   ${mq.range({ until: breakpoints.mobileWide })} {
-    width: 230px;
+    width: 210px;
   }
 `;
 const NewLaunchIcon = styled(Launch)`
@@ -96,7 +118,7 @@ const BoxImage = styled(Image)`
   }
 `;
 
-const TextSectionWrapper = styled.div`
+const CaptionSectionWrapper = styled.div`
   height: 80%;
   float: left;
   width: 70%;
@@ -135,38 +157,29 @@ const LincenseWrapper = styled.div`
 
 type Props = {
   image: string;
-  heading: string;
-  text: string;
-  children?: ReactNode;
+  title: string;
+  caption: string;
   licenseRights: string[];
   authors?: { name: string }[];
   locale?: string;
+  url: string;
 
   hasLinkedVideo?: boolean;
 };
-export const ResourceBox = ({
-  image,
-  heading,
-  text,
-  children,
-  licenseRights,
-  locale,
-  authors,
-  hasLinkedVideo,
-}: Props & WithTranslation) => {
+export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, hasLinkedVideo, url }: Props) => {
   const { t } = useTranslation();
   return (
     <BoxWrapper>
       <ImageSectionWrapper>
-        <BoxImage alt={t(heading)} src={image} sizes="25, 25" />
+        <BoxImage alt={title} src={image} sizes="25, 25" />
       </ImageSectionWrapper>
-      <TextSectionWrapper>
-        <BoxHeading>{t(heading)}</BoxHeading>
-        <BoxText>{t(text)}</BoxText>
-      </TextSectionWrapper>
+      <CaptionSectionWrapper>
+        <Boxtitle>{title}</Boxtitle>
+        <Boxcaption>{caption}</Boxcaption>
+      </CaptionSectionWrapper>
       <StyledButtonDiv>
-        <NewStyledButton outline borderShape="rounded">
-          {t(messagesNB.license.other.itemImage.ariaLabel)}
+        <NewStyledButton href={url} target="_blank">
+          {t('license.other.itemImage.ariaLabel')}
           <NewLaunchIcon aria-hidden />
         </NewStyledButton>
       </StyledButtonDiv>
@@ -182,7 +195,6 @@ export const ResourceBox = ({
                 </Button>
               )}
             </div>
-            {children}
           </div>
         </LicenseByline>
       </LincenseWrapper>

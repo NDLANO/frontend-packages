@@ -39,11 +39,12 @@ const ReferenceBoxExample = () => {
                   den.
                 </p>
                 <ResourceBox
-                  authors={[{ Peter: 'Peter' }, { Dennis: 'Dennis' }]}
                   licenseRights={[BY, NC, ND]}
-                  heading="Mediehistorie"
-                  text="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
-                  image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"></ResourceBox>
+                  title="Mediehistorie"
+                  caption="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
+                  image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"
+                  url="https://www.ndla.no"></ResourceBox>
+
                 <p>
                   En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet
                   av noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
@@ -53,7 +54,6 @@ const ReferenceBoxExample = () => {
                   filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i
                   klassen.
                 </p>
-
                 <p>
                   Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
                   filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i

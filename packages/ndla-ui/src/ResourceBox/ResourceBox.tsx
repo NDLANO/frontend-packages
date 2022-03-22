@@ -7,17 +7,12 @@
  */
 import React from 'react';
 import { breakpoints, fonts, mq, colors } from '@ndla/core';
-import BEMHelper from 'react-bem-helper';
 import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import styled from '@emotion/styled';
 import Image from '../Image';
 
-const classes = new BEMHelper({
-  name: 'figure',
-  prefix: 'c-',
-});
 const BoxWrapper = styled.div`
   height: 192px;
   border-radius: 5px;
@@ -63,20 +58,17 @@ const StyledButtonDiv = styled.div`
   text-align: center;
   ${mq.range({ until: breakpoints.tabletWide })} {
     bottom: 5%;
-    left: 8%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 `;
 const NewStyledButton = styled.a`
   display: inline-block;
-  padding: 4px 13px;
   cursor: pointer;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: 16px;
   font-size: 0.8888888888888888rem;
-  line-height: 1.625;
   font-family: ${fonts.sans};
-  font-weight: 700;
   -webkit-transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
   transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
   color: ${colors.brand.primary};
@@ -101,8 +93,6 @@ const NewLaunchIcon = styled(Launch)`
   margin-left: 8px;
   height: 15px;
   width: 15px;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-  }
 `;
 
 const BoxImage = styled(Image)`
@@ -122,7 +112,7 @@ const CaptionSectionWrapper = styled.div`
   float: left;
   width: 70%;
   ${mq.range({ until: breakpoints.tabletWide })} {
-    height: 60%;
+    height: 50%;
     width: 100%;
     display: block;
   }
@@ -182,8 +172,8 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
       </StyledButtonDiv>
       <LincenseWrapper>
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight fill="#184673">
-          <div {...classes('byline-author-buttons')}>
-            <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(' ')}</span>
+          <div className="c-figure-byline-author-buttons">
+            <span className="c-figure-byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
           </div>
         </LicenseByline>
       </LincenseWrapper>

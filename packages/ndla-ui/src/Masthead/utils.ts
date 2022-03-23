@@ -6,7 +6,28 @@
  *
  */
 
+import { useState } from 'react';
+import { resizeObserver } from '@ndla/util';
+
 export const getMastheadHeight = (): number | undefined => {
   const masthead = document.getElementById('masthead');
   return masthead?.getBoundingClientRect().height;
+};
+
+export const useMastheadHeight = () => {
+  const [height, setHeight] = useState<number>();
+  const masthead = document.getElementById('masthead');
+
+  const handleHeightChange = (el: HTMLElement) => {
+    const newHeight = el.getBoundingClientRect().height;
+    setHeight(newHeight);
+  };
+
+  if (masthead) {
+    resizeObserver(masthead, handleHeightChange);
+  }
+
+  return {
+    height,
+  };
 };

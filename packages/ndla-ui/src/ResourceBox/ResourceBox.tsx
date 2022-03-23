@@ -10,6 +10,7 @@ import { breakpoints, fonts, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
+import { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import Image from '../Image';
 
@@ -64,25 +65,10 @@ const StyledButtonDiv = styled.div`
     width: 100%;
   }
 `;
-const NewStyledButton = styled.a`
-  display: inline-block;
-  cursor: pointer;
-  font-size: 0.8888888888888888rem;
-  font-family: ${fonts.sans};
-  -webkit-transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
-  transition: all 0.2s cubic-bezier(0.17, 0.04, 0.03, 0.94);
-  color: ${colors.brand.primary};
-  background-color: transparent;
-  box-shadow: none;
-  border-radius: 32px;
-  font-weight: 600;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: -10px;
-  position: aboslute;
-  border: 1px solid #184673;
+const NewStyledButton = styled(SafeLinkButton)`
+  border: 1px solid ${colors.brand.tertiary};
   :hover {
-    background-color: #20588f;
+    background-color: ${colors.brand.primary};
     color: white;
   }
   ${mq.range({ until: breakpoints.mobileWide })} {
@@ -165,15 +151,15 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
         <Boxcaption>{caption}</Boxcaption>
       </CaptionSectionWrapper>
       <StyledButtonDiv>
-        <NewStyledButton href={url} target="_blank">
+        <NewStyledButton to={url} target="_blank" outline borderShape="rounded">
           {t('license.other.itemImage.ariaLabel')}
           <NewLaunchIcon aria-hidden />
         </NewStyledButton>
       </StyledButtonDiv>
       <LincenseWrapper>
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight fill="#184673">
-          <div className="c-figure-byline-author-buttons">
-            <span className="c-figure-byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
+          <div className="c-figure__byline-author-buttons">
+            <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
           </div>
         </LicenseByline>
       </LincenseWrapper>

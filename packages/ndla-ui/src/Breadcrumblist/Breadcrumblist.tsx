@@ -19,12 +19,14 @@ import {
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
 import MessageBoxTag from '../MessageBox/MessageBoxTag';
+import { useMastheadHeight } from '../Masthead';
 
 type WrapperProps = {
   startOffset?: number;
   isVisible?: boolean;
   leftAlign?: boolean;
   hideOnNarrow?: boolean;
+  mastheadHeight?: number;
 };
 
 type InvertItProps = {
@@ -46,11 +48,11 @@ const Wrapper = styled.div<WrapperProps>`
     width: 240px;
     position: fixed;
     left: 22px;
-    top: 85px;
+    top: ${(props) => props.mastheadHeight || 85}px;
     ${(props) =>
       props.startOffset &&
       `
-        top: calc(${props.startOffset}px + 85px); 
+        top: calc(${props.startOffset}px + ${props.mastheadHeight || 85}px); 
     `}
   }
   ${mq.range({ from: breakpoints.wide })} {
@@ -230,6 +232,8 @@ const Breadcrumblist = ({
   const [wrapperOffset, setWrapperOffset] = useState(startOffset);
   const [useScrollEvent, setUseScrollEvent] = useState(false);
 
+  const { height: mastheadHeight } = useMastheadHeight();
+
   useEffect(() => {
     const handleScroll = () => {
       let position = 0;
@@ -270,7 +274,12 @@ const Breadcrumblist = ({
 
   return (
     <>
-      <Wrapper leftAlign={leftAlign} startOffset={wrapperOffset} hideOnNarrow={hideOnNarrow} isVisible={isVisible}>
+      <Wrapper
+        leftAlign={leftAlign}
+        startOffset={wrapperOffset}
+        hideOnNarrow={hideOnNarrow}
+        isVisible={isVisible}
+        mastheadHeight={mastheadHeight}>
         {items.length > 0 && (
           <>
             <Heading invertedStyle={invertedStyle}>{t('breadcrumb.youAreHere')}</Heading>

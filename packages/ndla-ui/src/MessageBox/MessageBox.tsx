@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { HTMLAttributes, useState } from 'react';
 import styled from '@emotion/styled';
 import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
@@ -25,13 +25,15 @@ type WrapperProps = {
 };
 
 const StyleByType = (type: WrapperProps['boxType']) => {
-  const styles = {
+  const styles: HTMLAttributes<HTMLElement>['style'] = {
     margin: '1px',
     color: '#444444',
     backgroundColor: '#f9f4c8',
     border: 'none',
     display: 'flex',
+    padding: '10px',
     width: 'auto',
+    borderRadius: '5px',
     position: 'relative',
     transform: 'auto',
     left: 'auto',
@@ -56,6 +58,8 @@ const StyleByType = (type: WrapperProps['boxType']) => {
     case 'masthead':
       styles.margin = '0 auto';
       styles.display = 'none';
+      styles.padding = '0';
+      styles.borderRadius = '0';
       break;
   }
   return styles;
@@ -71,7 +75,7 @@ const Wrapper = styled.div<WrapperProps>`
   padding: ${spacing.small};
   position: ${(props) => StyleByType(props.boxType).position};
   border: ${(props) => StyleByType(props.boxType).border};
-  border-radius: 5px;
+  border-radius: ${(props) => StyleByType(props.boxType).borderRadius};
   transform: ${(props) => StyleByType(props.boxType).transform};
   left: ${(props) => StyleByType(props.boxType).left};
   z-index: 10;
@@ -80,7 +84,7 @@ const Wrapper = styled.div<WrapperProps>`
 
 const InfoWrapper = styled.div<WrapperProps>`
   margin: ${(props) => StyleByType(props.boxType).margin};
-  padding: 10px;
+  padding: ${(props) => StyleByType(props.boxType).padding};
   display: flex;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: 0 90px 0 0;

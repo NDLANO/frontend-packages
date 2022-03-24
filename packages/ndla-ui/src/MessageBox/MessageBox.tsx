@@ -33,6 +33,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
     display: 'flex',
     padding: '10px',
     width: 'auto',
+    borderRadius: '5px',
     position: 'relative',
     transform: 'auto',
     left: 'auto',
@@ -58,6 +59,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.margin = '0 auto';
       styles.display = 'none';
       styles.padding = '0';
+      styles.borderRadius = '0';
       break;
   }
   return styles;
@@ -73,7 +75,7 @@ const Wrapper = styled.div<WrapperProps>`
   padding: ${spacing.small};
   position: ${(props) => StyleByType(props.boxType).position};
   border: ${(props) => StyleByType(props.boxType).border};
-  border-radius: 5px;
+  border-radius: ${(props) => StyleByType(props.boxType).borderRadius};
   transform: ${(props) => StyleByType(props.boxType).transform};
   left: ${(props) => StyleByType(props.boxType).left};
   z-index: 10;

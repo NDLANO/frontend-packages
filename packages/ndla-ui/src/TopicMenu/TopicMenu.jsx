@@ -28,6 +28,7 @@ import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
 import NavigationBox from '../Navigation/NavigationBox';
 import { ProgrammeSubjects } from '../Programme';
+import { MessageBox, MessageBoxType } from '../MessageBox';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -72,6 +73,7 @@ export const TopicMenu = ({
   programmes,
   currentProgramme,
   initialSelectedMenu,
+  messages,
 }) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
@@ -148,6 +150,9 @@ export const TopicMenu = ({
 
   return (
     <nav>
+      {messages?.map((message) => (
+        <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+      ))}
       <ModalHeader modifier={['white', 'menu']}>
         <div {...classes('masthead-left')}>
           <button type="button" {...classes('close-button')} onClick={closeMenu}>

@@ -6,26 +6,38 @@
  *
  */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { resizeObserver } from '@ndla/util';
 
 export const getMastheadHeight = (): number | undefined => {
-  const masthead = document && document.getElementById('masthead');
-  return masthead?.getBoundingClientRect().height;
+  if (typeof window !== 'undefined') {
+    const masthead = document.getElementById('masthead');
+    return masthead?.getBoundingClientRect().height;
+  }
 };
 
 export const useMastheadHeight = () => {
   const [height, setHeight] = useState<number>();
-  const masthead = document && document.getElementById('masthead');
+  const [mounted, setMounted] = useState(false);
 
-  const handleHeightChange = (el: HTMLElement) => {
-    const newHeight = el.getBoundingClientRect().height;
-    setHeight(newHeight);
-  };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  if (masthead) {
-    resizeObserver(masthead, handleHeightChange);
-  }
+  useEffect(() => {
+    if (mounted) {
+      const masthead = document.getElementById('masthead');
+
+      const handleHeightChange = (el: HTMLElement) => {
+        const newHeight = el.getBoundingClientRect().height;
+        setHeight(newHeight);
+      };
+
+      if (masthead) {
+        resizeObserver(masthead, handleHeightChange);
+      }
+    }
+  }, [mounted]);
 
   return {
     height,

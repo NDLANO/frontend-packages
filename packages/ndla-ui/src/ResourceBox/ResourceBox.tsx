@@ -1,4 +1,5 @@
 /**
+ *
  * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -15,67 +16,69 @@ import styled from '@emotion/styled';
 import Image from '../Image';
 
 const BoxWrapper = styled.div`
-  height: 192px;
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #deebf6;
+  border: 1px solid ${colors.brand.light};
   position: relative;
-  right: auto;
   left: -16.6666666667%;
   width: 133.3333333333%;
-
+  align-items: stretch;
   margin-bottom: 24px;
   font-family: ${fonts.sans};
   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
-  ${mq.range({ until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.desktop })} {
+    flex-direction: column;
     margin: 0 auto;
     width: 80%;
     left: 0;
     padding-left: 24px;
     padding-right: 24px;
+    padding-bottom: 0;
     margin-bottom: 24px;
-    height: 500px;
+    min-height: 500px;
+    height: auto;
   }
 `;
 
 const Boxtitle = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    margin-top: 35px;
+  margin-top: 0;
+  ${mq.range({ until: breakpoints.desktop })} {
+    display: inline-block;
   }
 `;
 
 const Boxcaption = styled.p`
   font-size: ${fonts.sizes(14)};
-  ${mq.range({ until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     line-height: 22px;
   }
 `;
 
 const StyledButtonDiv = styled.div`
-  position: absolute;
-  bottom: 18%;
-  left: 25%;
-  text-align: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    bottom: 5%;
-    left: 0;
+  align-items: flex-start;
+
+  width: 80%;
+  ${mq.range({ until: breakpoints.desktop })} {
     display: flex;
     justify-content: center;
     width: 100%;
   }
 `;
-const NewStyledButton = styled(SafeLinkButton)`
+const ResourceBoxStyledButton = styled(SafeLinkButton)`
   border: 1px solid ${colors.brand.tertiary};
   :hover {
     background-color: ${colors.brand.primary};
     color: white;
   }
-  ${mq.range({ until: breakpoints.mobileWide })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     width: 210px;
   }
 `;
-const NewLaunchIcon = styled(Launch)`
+const ResourceBoxLaunchIcon = styled(Launch)`
   margin-left: 8px;
   height: 15px;
   width: 15px;
@@ -83,50 +86,66 @@ const NewLaunchIcon = styled(Launch)`
 
 const BoxImage = styled(Image)`
   object-fit: cover;
-  width: 130px;
+  width: 134px;
+  height: 134px;
   border-radius: 5px;
-  height: 130px;
-  ${mq.range({ until: breakpoints.tabletWide })} {
+
+  ${mq.range({ until: breakpoints.desktop })} {
     width: 250px;
     height: 250px;
-    margin-top: 20%;
+  }
+`;
+const ImageSectionWrapper = styled.div`
+  width: 20%;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  ${mq.range({ until: breakpoints.desktop })} {
+    height: auto;
+    max-height: 48%;
+    width: 100%;
   }
 `;
 
 const CaptionSectionWrapper = styled.div`
-  height: 80%;
-  float: left;
-  width: 70%;
-  ${mq.range({ until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     height: 50%;
     width: 100%;
-    display: block;
   }
 `;
 
-const ImageSectionWrapper = styled.div`
-  height: 100%;
-  width: 25%;
-  margin: 0 auto;
-  float: left;
+const CenterItems = styled.div`
   display: flex;
-  align-items: center;
+  width: 75%;
   justify-content: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    height: 50%;
+  align-items: flex-start;
+  margin-left: 1px;
+  flex-flow: column;
+  ${mq.range({ until: breakpoints.desktop })} {
     width: 100%;
+    text-align: center;
+  }
+`;
+
+const TitleAndLicence = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${mq.range({ until: breakpoints.desktop })} {
+    display: inline-block;
+
+    margin-top: 10px;
   }
 `;
 
 const LincenseWrapper = styled.div`
-  position: absolute;
-  right: 0;
-  top: 30px;
-  svg {
-    fill: 'blue';
+  ul {
+    margin-right: 0;
   }
-  ${mq.range({ until: breakpoints.mobileWide })} {
+
+  ${mq.range({ until: breakpoints.desktop })} {
     top: 1px;
+    position: absolute;
+    right: 1px;
   }
 `;
 
@@ -146,23 +165,28 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
       <ImageSectionWrapper>
         <BoxImage alt={title} src={image} sizes="25, 25" />
       </ImageSectionWrapper>
-      <CaptionSectionWrapper>
-        <Boxtitle>{title}</Boxtitle>
-        <Boxcaption>{caption}</Boxcaption>
-      </CaptionSectionWrapper>
-      <StyledButtonDiv>
-        <NewStyledButton to={url} target="_blank" outline borderShape="rounded">
-          {t('license.other.itemImage.ariaLabel')}
-          <NewLaunchIcon aria-hidden />
-        </NewStyledButton>
-      </StyledButtonDiv>
-      <LincenseWrapper>
-        <LicenseByline licenseRights={licenseRights} locale={locale} marginRight fill="#184673">
-          <div className="c-figure__byline-author-buttons">
-            <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
-          </div>
-        </LicenseByline>
-      </LincenseWrapper>
+      <CenterItems>
+        <CaptionSectionWrapper>
+          <TitleAndLicence>
+            <Boxtitle>{title}</Boxtitle>
+            <LincenseWrapper>
+              <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
+                <div className="c-figure__byline-author-buttons">
+                  <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
+                </div>
+              </LicenseByline>
+            </LincenseWrapper>
+          </TitleAndLicence>
+          <Boxcaption>{caption}</Boxcaption>
+        </CaptionSectionWrapper>
+
+        <StyledButtonDiv>
+          <ResourceBoxStyledButton to={url} target="_blank" outline borderShape="rounded">
+            {t('license.other.itemImage.ariaLabel')}
+            <ResourceBoxLaunchIcon aria-hidden />
+          </ResourceBoxStyledButton>
+        </StyledButtonDiv>
+      </CenterItems>
     </BoxWrapper>
   );
 };

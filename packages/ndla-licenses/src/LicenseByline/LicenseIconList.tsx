@@ -61,7 +61,7 @@ export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprop
   border: 0;
   margin: 0;
   padding: 0;
-  color: '${(p) => (p.light ? colors.white : colors.text.primary)}';
+  color: ${(p) => (p.light ? colors.white : colors.text.primary)};
   background: transparent;
   &:hover,
   &:focus {
@@ -80,14 +80,14 @@ interface LicenseIconItemProps {
   locale?: string;
   horizontal?: boolean;
   light?: boolean;
-  fill?: string;
+  color?: string;
 }
 
-const LicenseIconItem = ({ licenseRight, locale, horizontal, light, fill }: LicenseIconItemProps) => {
+const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem horizontal={horizontal} fill={fill}>
+    <StyledLicenseIconItem horizontal={horizontal} fill={color}>
       <StyledLicenseIconButton type="button" light={light}>
         <LicenseIcon licenseRight={licenseRight} description={description} />
         <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
@@ -108,18 +108,9 @@ interface LicenseIconListProps {
   marginRight?: boolean;
   horizontal?: boolean;
   light?: boolean;
-  fill?: string;
 }
 
-const LicenseIconList = ({
-  licenseRights,
-  locale,
-  color,
-  marginRight,
-  horizontal,
-  light,
-  fill,
-}: LicenseIconListProps) => (
+const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal, light }: LicenseIconListProps) => (
   <StyledLicenseIconList marginRight={marginRight} color={color} horizontal={horizontal}>
     {licenseRights.map((licenseRight) => (
       <LicenseIconItem
@@ -128,7 +119,7 @@ const LicenseIconList = ({
         locale={locale}
         horizontal={horizontal}
         light={light}
-        fill={fill}
+        color={color}
       />
     ))}
   </StyledLicenseIconList>

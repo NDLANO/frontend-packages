@@ -40,8 +40,7 @@ const ConceptNotion = ({ concept, disableScripts }: Props) => {
     if (!disableScripts) {
       initArticleScripts();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [disableScripts]);
   return (
     <FigureNotion
       id={figureId}

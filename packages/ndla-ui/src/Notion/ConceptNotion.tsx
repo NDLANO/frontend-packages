@@ -28,16 +28,19 @@ export interface ConceptNotionType {
 }
 interface Props {
   concept: ConceptNotionType;
+  disableScripts?: boolean;
 }
 
-const ConceptNotion = ({ concept }: Props) => {
+const ConceptNotion = ({ concept, disableScripts }: Props) => {
   const notionId = `notion-${concept.id}`;
   const figureId = `notion-figure-${concept.id}`;
   const visualElementId = `visual-element-${concept.id}`;
 
   useEffect(() => {
-    initArticleScripts();
-  }, []);
+    if (!disableScripts) {
+      initArticleScripts();
+    }
+  }, [disableScripts]);
   return (
     <FigureNotion
       id={figureId}

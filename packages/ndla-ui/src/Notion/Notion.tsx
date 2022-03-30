@@ -42,8 +42,8 @@ const ContentWrapper = styled.div`
     }
   }
 `;
-const TextWrapper = styled.div`
-  width: 75%;
+const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
+  width: ${(props) => (props.hasVisualElement ? '75%' : '100%')};
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
@@ -223,7 +223,7 @@ const Notion = ({
             </ExpandVisualElementButton>
           </ImageWrapper>
         )}
-        <TextWrapper>
+        <TextWrapper hasVisualElement={!!(imageElement || visualElement?.metaImage)}>
           {HTMLReactParser(
             renderMarkdown ? renderMarkdown(`**${title}** \u2013 ${text}`) : `<b>${title}</b> \u2013 ${text}`,
           )}

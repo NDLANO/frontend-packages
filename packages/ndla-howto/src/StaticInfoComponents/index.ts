@@ -287,7 +287,7 @@ export const stories: Record<string, Story> = {
     body: [
       {
         type: 'text',
-        content: 'Legg til en liste av forklaringer i artikkel. Velges basert på tags.',
+        content: 'Legg til en liste av forklaringer i artikkel.',
       },
     ],
   },

@@ -271,4 +271,24 @@ export const stories: Record<string, Story> = {
       },
     ],
   },
+  Concept: {
+    title: 'Forklaring',
+    lead: 'Legg til forklaring.',
+    body: [
+      {
+        type: 'text',
+        content: 'Søk opp og legg til forklaring i artikkel.',
+      },
+    ],
+  },
+  ConceptList: {
+    title: 'Forklaringsliste',
+    lead: 'Legg til forklaringsliste.',
+    body: [
+      {
+        type: 'text',
+        content: 'Legg til en liste av forklaringer i artikkel.',
+      },
+    ],
+  },
 };

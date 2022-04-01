@@ -328,8 +328,8 @@ const messages = {
     feide: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     resources:
       'Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.',
-    beta: 'Dette faget er i betaversjon.',
-    outdatedSubject: 'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.',
+    subjectOutdated: 'Dette faget følger en utgått læreplan.',
+    subjectBeta: 'Dette faget er i betaversjon.',
     newVersion:
       'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
     frontPageBeta:

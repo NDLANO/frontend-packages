@@ -329,8 +329,8 @@ const messages = {
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
     resources:
       'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
-    beta: 'This course is in beta.',
-    outdatedSubject: 'This topic is part of a course that is not updated to the current curriculum.',
+    subjectOutdated: 'This course is not updated to the current curriculum.',
+    subjectBeta: 'This course is in beta.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:

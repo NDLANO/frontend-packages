@@ -115,10 +115,6 @@ const ItemLink = styled(SafeLink)`
 const TextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
-  ${ItemWrapper}:hover & {
-    padding-left: calc(${spacing.normal} + 2px);
-    padding-right: calc(${spacing.normal} + 2px);
-  }
 `;
 
 const ItemTitleWrapper = styled.div<ItemTypeProps>`
@@ -153,10 +149,7 @@ const ItemText = styled.div<ItemTypeProps>`
     props.isTopic &&
     `
     ${fonts.sizes('18px', '28px')};
-    ${ItemWrapper}:hover & {
-    padding-left: 2px;
-    padding-right: 2px;
-  }`};
+    `};
 `;
 
 const ContextWrapper = styled.div`

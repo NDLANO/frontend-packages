@@ -9,6 +9,7 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { WithTranslation, withTranslation } from 'react-i18next';
+import { Remarkable } from 'remarkable';
 import { DisplayOnPageYOffset } from '../Animation';
 import { MessageBox, MessageBoxType } from '../MessageBox';
 
@@ -56,6 +57,10 @@ interface Props {
   onCloseAlert?: (id: number) => void;
 }
 
+const markdown = new Remarkable({ breaks: true });
+markdown.inline.ruler.enable(['sub', 'sup']);
+markdown.block.ruler.disable(['list', 'table']);
+
 export const Masthead = ({
   children,
   fixed,
@@ -98,7 +103,8 @@ export const Masthead = ({
           <MessageBox
             type={MessageBoxType.masthead}
             showCloseButton={message.closable}
-            onClose={() => onCloseAlert && onCloseAlert(message.number)}>
+            onClose={() => onCloseAlert && onCloseAlert(message.number)}
+            renderMarkdown={(content) => markdown.render(content)}>
             {message.content}
           </MessageBox>
         ))}

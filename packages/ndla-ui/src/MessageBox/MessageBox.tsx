@@ -102,6 +102,9 @@ const TextWrapper = styled.div<WrapperProps>`
     line-height: 24px;
     font-size: 16px;
   }
+  & p {
+    margin: 0;
+  }
 `;
 
 const IconWrapper = styled.div<WrapperProps>`
@@ -153,16 +156,18 @@ type Props = {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
+  renderMarkdown?: (text: string) => string;
 };
 
 export const MessageBox = ({
   type,
   sticky = false,
-  children,
+  children = '',
   links,
   t,
   showCloseButton,
   onClose,
+  renderMarkdown,
 }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
@@ -180,7 +185,8 @@ export const MessageBox = ({
           <IconWrapper boxType={type}>
             <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
-          <TextWrapper>{children}</TextWrapper>
+          <TextWrapper
+            dangerouslySetInnerHTML={{ __html: renderMarkdown ? renderMarkdown(children) : children }}></TextWrapper>
         </InfoWrapper>
         {showCloseButton && (
           <CloseButtonWrapper>

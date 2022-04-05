@@ -98,8 +98,7 @@ export const Masthead = ({
           <MessageBox
             type={MessageBoxType.masthead}
             showCloseButton={message.closable}
-            onClose={() => onCloseAlert && onCloseAlert(message.number)}
-            renderMarkdown={true}>
+            onClose={() => onCloseAlert?.(message.number)}>
             {message.content}
           </MessageBox>
         ))}

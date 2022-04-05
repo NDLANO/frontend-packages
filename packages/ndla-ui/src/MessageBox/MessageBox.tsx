@@ -160,7 +160,6 @@ type Props = {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
-  renderMarkdown?: boolean;
 };
 
 const markdown = new Remarkable({ breaks: true });
@@ -174,14 +173,11 @@ export const MessageBox = ({
   links,
   showCloseButton,
   onClose,
-  renderMarkdown,
 }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
-    if (onClose) {
-      onClose();
-    }
+    onClose?.();
   };
   const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (
@@ -192,8 +188,7 @@ export const MessageBox = ({
           <IconWrapper boxType={type}>
             <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
-          <TextWrapper
-            dangerouslySetInnerHTML={{ __html: renderMarkdown ? markdown.render(children) : children }}></TextWrapper>
+          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }}></TextWrapper>
         </InfoWrapper>
         {showCloseButton && (
           <CloseButtonWrapper>

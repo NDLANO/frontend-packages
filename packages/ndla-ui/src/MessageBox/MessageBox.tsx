@@ -152,12 +152,24 @@ type Props = {
   children?: string;
   links?: LinkProps[];
   showCloseButton?: boolean;
+  onClose?: () => void;
 };
 
-export const MessageBox = ({ type, sticky = false, children, links, t, showCloseButton }: Props & WithTranslation) => {
+export const MessageBox = ({
+  type,
+  sticky = false,
+  children,
+  links,
+  t,
+  showCloseButton,
+  onClose,
+}: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
+    if (onClose) {
+      onClose();
+    }
   };
   const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (

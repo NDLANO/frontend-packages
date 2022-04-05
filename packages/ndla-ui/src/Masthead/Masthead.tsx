@@ -43,6 +43,7 @@ const MastheadInfo = ({ children }: MastheadInfoProps) => (
 interface Alert {
   content: string;
   closable?: boolean;
+  number: number;
 }
 
 interface Props {
@@ -52,6 +53,7 @@ interface Props {
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
   messages?: Alert[];
+  onCloseAlert?: (id: number) => void;
 }
 
 export const Masthead = ({
@@ -61,6 +63,7 @@ export const Masthead = ({
   ndlaFilm,
   skipToMainContentId,
   messages,
+  onCloseAlert,
   t,
 }: Props & WithTranslation) => {
   const mastheadRef = useRef<HTMLDivElement>(null);
@@ -92,7 +95,10 @@ export const Masthead = ({
       )}
       <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
         {messages?.map((message) => (
-          <MessageBox type={MessageBoxType.masthead} showCloseButton={message.closable}>
+          <MessageBox
+            type={MessageBoxType.masthead}
+            showCloseButton={message.closable}
+            onClose={() => onCloseAlert && onCloseAlert(message.number)}>
             {message.content}
           </MessageBox>
         ))}

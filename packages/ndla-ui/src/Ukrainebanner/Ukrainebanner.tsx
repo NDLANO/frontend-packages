@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import styled from '@emotion/styled';
 import React from 'react';
 import { colors, fonts } from '@ndla/core';
@@ -59,8 +67,11 @@ const TitleText = styled.h2`
 
 type BannerProps = {
   link: string;
+  norwegian: string;
+  ukrainian: string;
+  english: string;
 };
-const UkraineBanner = ({ link }: BannerProps) => {
+export const Ukrainebanner = ({ link, norwegian, ukrainian, english }: BannerProps) => {
   return (
     <BannerWrapper>
       <FlagWrapper>
@@ -70,12 +81,12 @@ const UkraineBanner = ({ link }: BannerProps) => {
         />
       </FlagWrapper>
       <TextWrapper>
-        <TitleText>Lær om det norske samfunn - på ukrainsk</TitleText>
-        <RegularText>Дізнайтеся про норвезьке суспільство – українською</RegularText>
-        <EnglishText href={link}>Learn about Norwegian society - in Ukrainian</EnglishText>
+        <TitleText>{norwegian}</TitleText>
+        <RegularText>{ukrainian}</RegularText>
+        <EnglishText href={link}>{english}</EnglishText>
       </TextWrapper>
     </BannerWrapper>
   );
 };
 
-export default UkraineBanner;
+export default Ukrainebanner;

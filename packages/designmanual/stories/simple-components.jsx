@@ -20,7 +20,7 @@ import ButtonExample from './atoms/ButtonExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
-import UkraineBanner from './molecules/UkraineBanner';
+import UkraineBannerExample from './molecules/UkraineBannerExample';
 
 const floatVideo = (left) => (
   <Fragment>
@@ -725,7 +725,7 @@ storiesOf('Enkle komponenter', module)
         <p>Banner for læringsressurser på Ukrainsk.</p>
       </StoryIntro>
       <OneColumn>
-        <UkraineBanner></UkraineBanner>
+        <UkraineBannerExample />
       </OneColumn>
     </div>
   ));

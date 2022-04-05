@@ -73,7 +73,6 @@
     "@types/reach__dialog": "^0.1.0",
     "@types/react-sticky-el": "^1.0.2",
     "@types/react-transition-group": "^4.4.2",
-    "@types/remarkable": "^2.0.3",
     "css-loader": "^2.1.0",
     "mini-css-extract-plugin": "^0.5.0",
     "sass-loader": "^7.1.0",

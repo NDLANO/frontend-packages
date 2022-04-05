@@ -12,6 +12,9 @@ import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
+
+// @ts-ignore
+import { Remarkable } from 'remarkable';
 import { CloseButton } from '../CloseButton';
 
 export enum MessageBoxType {
@@ -45,6 +48,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.width = '100vw';
       styles.position = 'relative';
       styles.left = '50%';
+      styles.padding = '0';
       styles.transform = 'translateX(-50%)';
       break;
     case 'medium':
@@ -156,15 +160,18 @@ type Props = {
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
-  renderMarkdown?: (text: string) => string;
+  renderMarkdown?: boolean;
 };
+
+const markdown = new Remarkable({ breaks: true });
+markdown.inline.ruler.enable(['sub', 'sup']);
+markdown.block.ruler.disable(['list', 'table']);
 
 export const MessageBox = ({
   type,
   sticky = false,
   children = '',
   links,
-  t,
   showCloseButton,
   onClose,
   renderMarkdown,
@@ -186,7 +193,7 @@ export const MessageBox = ({
             <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
           <TextWrapper
-            dangerouslySetInnerHTML={{ __html: renderMarkdown ? renderMarkdown(children) : children }}></TextWrapper>
+            dangerouslySetInnerHTML={{ __html: renderMarkdown ? markdown.render(children) : children }}></TextWrapper>
         </InfoWrapper>
         {showCloseButton && (
           <CloseButtonWrapper>

@@ -6,6 +6,6 @@
  *
  */
 
-import Ukrainebanner from './Ukrainebanner';
+import BannerCard from './BannerCard';
 
-export { Ukrainebanner };
+export { BannerCard };

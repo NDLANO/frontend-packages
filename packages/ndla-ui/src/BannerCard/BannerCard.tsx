@@ -7,9 +7,9 @@
  */
 import React from 'react';
 import { colors, fonts, breakpoints, mq } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { Image } from '..';
-import SafeLink from '@ndla/safelink';
 
 const BannerWrapper = styled.div`
   display: flex;

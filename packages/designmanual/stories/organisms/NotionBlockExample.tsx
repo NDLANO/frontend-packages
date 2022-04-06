@@ -49,6 +49,10 @@ class NotionBlockExample extends Component {
               <h2>Begrep med visuelt element h5p</h2>
             </ContentWrapper>
             <NotionBlock type="H5P" />
+            <ContentWrapper>
+              <h2>Begrep med visuelt element iframe/external</h2>
+            </ContentWrapper>
+            <NotionBlock type="external" />
           </OneColumn>
         }
         onSite={[<NotionSiteTabs></NotionSiteTabs>]}

@@ -118,7 +118,7 @@ const prepareTopicData = (topics, selectedId, setDataCallback) => {
   let selectedItem = null;
   topics.forEach((item) => {
     const newItem = { ...item };
-    newItem.selected = newItem.id === selectedId;
+    newItem.selected = parseInt(newItem.id) === selectedId;
     if (newItem.selected) {
       if (!newItem.content && setDataCallback) {
         newItem.loadingContent = true;

@@ -57,7 +57,6 @@ const FigureNotion = ({
               hideFigcaption={hideFigCaption}
               figureId={figureId}
               id={id}
-              caption={title}
               reuseLabel={t(`${type}.reuse`)}
               authors={contributors}
               licenseRights={license.rights}>

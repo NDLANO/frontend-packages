@@ -9,6 +9,7 @@ import React from 'react';
 import { colors, fonts, breakpoints, mq } from '@ndla/core';
 import styled from '@emotion/styled';
 import { Image } from '..';
+import SafeLink from '@ndla/safelink';
 
 const BannerWrapper = styled.div`
   display: flex;
@@ -34,9 +35,7 @@ const ImageWrapper = styled.div`
     display: block;
   }
 `;
-const ImageElement = styled(Image)`
-  height: 20vh;
-`;
+const ImageElement = styled(Image)``;
 
 const TextWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -52,7 +51,7 @@ const ContentText = styled.p`
   padding-top: 10px;
   padding-bottom: 10px;
 `;
-const LinkText = styled.a`
+const LinkText = styled(SafeLink)`
   font-size: ${fonts.sizes(16)};
   color: ${colors.brand.grey};
 `;
@@ -84,7 +83,9 @@ export const BannerCard = ({ link, title, content, linkText, image }: BannerProp
       <TextWrapper>
         <TitleText>{title}</TitleText>
         <ContentText>{content}</ContentText>
-        <LinkText href={link}>{linkText}</LinkText>
+        <LinkText target="_blank" to={link}>
+          {linkText}
+        </LinkText>
       </TextWrapper>
     </BannerWrapper>
   );

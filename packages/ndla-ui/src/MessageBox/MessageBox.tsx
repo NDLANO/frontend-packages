@@ -12,6 +12,9 @@ import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
+
+// @ts-ignore
+import { Remarkable } from 'remarkable';
 import { CloseButton } from '../CloseButton';
 
 export enum MessageBoxType {
@@ -45,6 +48,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.width = '100vw';
       styles.position = 'relative';
       styles.left = '50%';
+      styles.padding = '0';
       styles.transform = 'translateX(-50%)';
       break;
     case 'medium':
@@ -102,6 +106,9 @@ const TextWrapper = styled.div<WrapperProps>`
     line-height: 24px;
     font-size: 16px;
   }
+  & p {
+    margin: 0;
+  }
 `;
 
 const IconWrapper = styled.div<WrapperProps>`
@@ -152,12 +159,25 @@ type Props = {
   children?: string;
   links?: LinkProps[];
   showCloseButton?: boolean;
+  onClose?: () => void;
 };
 
-export const MessageBox = ({ type, sticky = false, children, links, t, showCloseButton }: Props & WithTranslation) => {
+const markdown = new Remarkable({ breaks: true });
+markdown.inline.ruler.enable(['sub', 'sup']);
+markdown.block.ruler.disable(['list', 'table']);
+
+export const MessageBox = ({
+  type,
+  sticky = false,
+  children = '',
+  links,
+  showCloseButton,
+  onClose,
+}: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
+    onClose?.();
   };
   const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (
@@ -168,7 +188,7 @@ export const MessageBox = ({ type, sticky = false, children, links, t, showClose
           <IconWrapper boxType={type}>
             <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
-          <TextWrapper>{children}</TextWrapper>
+          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }}></TextWrapper>
         </InfoWrapper>
         {showCloseButton && (
           <CloseButtonWrapper>

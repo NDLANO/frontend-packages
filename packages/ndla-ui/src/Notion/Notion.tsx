@@ -16,6 +16,7 @@ import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core'
 import { CursorClick } from '@ndla/icons/action';
 import { Play, ArrowCollapse } from '@ndla/icons/common';
 import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
+import { parseMarkdown } from '@ndla/util';
 
 const NotionContainer = styled.div``;
 
@@ -174,7 +175,6 @@ type VisualElementProps = {
 export type NotionProps = {
   id: string | number;
   labels?: string[];
-  renderMarkdown?: (text: string) => string;
   text: ReactNode;
   title: string;
   visualElement?: VisualElementProps;
@@ -182,16 +182,7 @@ export type NotionProps = {
   children?: ReactNode;
 };
 
-const Notion = ({
-  id,
-  labels = [],
-  renderMarkdown,
-  text,
-  title,
-  visualElement,
-  imageElement,
-  children,
-}: NotionProps) => {
+const Notion = ({ id, labels = [], text, title, visualElement, imageElement, children }: NotionProps) => {
   const { t } = useTranslation();
 
   return (
@@ -224,9 +215,7 @@ const Notion = ({
           </ImageWrapper>
         )}
         <TextWrapper hasVisualElement={!!(imageElement || visualElement?.metaImage)}>
-          {HTMLReactParser(
-            renderMarkdown ? renderMarkdown(`**${title}** \u2013 ${text}`) : `<b>${title}</b> \u2013 ${text}`,
-          )}
+          {parseMarkdown(`**${title}** \u2013 ${text}`)}
           {!!labels.length && (
             <LabelsContainer>
               {t('searchPage.resultType.notionLabels')}

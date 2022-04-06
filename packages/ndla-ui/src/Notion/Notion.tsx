@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import HTMLReactParser from 'html-react-parser';
+import { parseMarkdown } from '@ndla/util';
 import React, { Fragment, ReactNode } from 'react';
 import { keyframes } from '@emotion/core';
 import Button from '@ndla/button';
@@ -16,7 +16,6 @@ import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core'
 import { CursorClick } from '@ndla/icons/action';
 import { Play, ArrowCollapse } from '@ndla/icons/common';
 import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
-import { parseMarkdown } from '@ndla/util';
 
 const NotionContainer = styled.div``;
 

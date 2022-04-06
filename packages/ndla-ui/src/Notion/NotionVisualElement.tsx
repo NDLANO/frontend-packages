@@ -24,7 +24,7 @@ interface Props {
   visualElement: NotionVisualElementType;
 }
 
-const supportedEmbedTypes = ['brightcove', 'h5p'];
+const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external'];
 const NotionVisualElement = ({ visualElement }: Props) => {
   const id = '1';
   const figureId = 'figure-1';

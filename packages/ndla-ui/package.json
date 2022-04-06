@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "6.2.2",
+  "version": "7.0.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -57,8 +57,8 @@
     "react-sticky-el": "^2.0.6",
     "react-swipeable": "^6.2.0",
     "react-transition-group": "^2.5.3",
-    "shave": "^2.5.10",
-    "remarkable": "^2.0.1"
+    "remarkable": "^2.0.1",
+    "shave": "^2.5.10"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

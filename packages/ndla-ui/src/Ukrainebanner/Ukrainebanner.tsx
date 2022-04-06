@@ -1,16 +1,14 @@
 /**
- * Copyright (c) 2019-present, NDLA.
+ * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-import styled from '@emotion/styled';
 import React from 'react';
-import { colors, fonts } from '@ndla/core';
-import { Image } from '@ndla/ui';
-import { breakpoints, mq } from '@ndla/core';
+import { colors, fonts, breakpoints, mq } from '@ndla/core';
+import styled from '@emotion/styled';
+import { Image } from '..';
 
 const BannerWrapper = styled.div`
   height: 223px;

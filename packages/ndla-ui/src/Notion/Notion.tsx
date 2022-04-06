@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import HTMLReactParser from 'html-react-parser';
+import { parseMarkdown } from '@ndla/util';
 import React, { Fragment, ReactNode } from 'react';
 import { keyframes } from '@emotion/core';
 import Button from '@ndla/button';
@@ -174,7 +174,6 @@ type VisualElementProps = {
 export type NotionProps = {
   id: string | number;
   labels?: string[];
-  renderMarkdown?: (text: string) => string;
   text: ReactNode;
   title: string;
   visualElement?: VisualElementProps;
@@ -182,16 +181,7 @@ export type NotionProps = {
   children?: ReactNode;
 };
 
-const Notion = ({
-  id,
-  labels = [],
-  renderMarkdown,
-  text,
-  title,
-  visualElement,
-  imageElement,
-  children,
-}: NotionProps) => {
+const Notion = ({ id, labels = [], text, title, visualElement, imageElement, children }: NotionProps) => {
   const { t } = useTranslation();
 
   return (
@@ -224,9 +214,7 @@ const Notion = ({
           </ImageWrapper>
         )}
         <TextWrapper hasVisualElement={!!(imageElement || visualElement?.metaImage)}>
-          {HTMLReactParser(
-            renderMarkdown ? renderMarkdown(`**${title}** \u2013 ${text}`) : `<b>${title}</b> \u2013 ${text}`,
-          )}
+          {parseMarkdown(`**${title}** \u2013 ${text}`)}
           {!!labels.length && (
             <LabelsContainer>
               {t('searchPage.resultType.notionLabels')}

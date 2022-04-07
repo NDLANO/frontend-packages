@@ -28,7 +28,9 @@ const BoxWrapper = styled.div`
   margin-bottom: 24px;
   font-family: ${fonts.sans};
   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
+  gap: 40px;
   ${mq.range({ until: breakpoints.desktop })} {
+    gap: 1px;
     flex-direction: column;
     margin: 0 auto;
     width: 80%;
@@ -37,7 +39,6 @@ const BoxWrapper = styled.div`
     padding-right: 24px;
     padding-bottom: 0;
     margin-bottom: 24px;
-    min-height: 500px;
     height: auto;
   }
 `;
@@ -47,12 +48,12 @@ const Boxtitle = styled.h3`
   font-size: ${fonts.sizes(18)};
   margin-top: 0;
   ${mq.range({ until: breakpoints.desktop })} {
-    display: inline-block;
   }
 `;
 
 const Boxcaption = styled.p`
   font-size: ${fonts.sizes(14)};
+
   ${mq.range({ until: breakpoints.desktop })} {
     line-height: 22px;
   }
@@ -60,12 +61,8 @@ const Boxcaption = styled.p`
 
 const StyledButtonDiv = styled.div`
   align-items: flex-start;
-
-  width: 80%;
   ${mq.range({ until: breakpoints.desktop })} {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    padding-bottom: 10px;
   }
 `;
 const ResourceBoxStyledButton = styled(SafeLinkButton)`
@@ -91,35 +88,31 @@ const BoxImage = styled(Image)`
   border-radius: 5px;
 
   ${mq.range({ until: breakpoints.desktop })} {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
 `;
 const ImageSectionWrapper = styled.div`
-  width: 20%;
   align-items: flex-start;
   display: flex;
   justify-content: center;
+  margin-left: 20px;
   ${mq.range({ until: breakpoints.desktop })} {
-    height: auto;
-    max-height: 48%;
-    width: 100%;
+    margin: 0 auto;
+    padding-top: 10px;
   }
 `;
 
 const CaptionSectionWrapper = styled.div`
+  max-width: 600px;
   ${mq.range({ until: breakpoints.desktop })} {
-    height: 50%;
-    width: 100%;
   }
 `;
 
 const CenterItems = styled.div`
   display: flex;
-  width: 75%;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 1px;
   flex-flow: column;
   ${mq.range({ until: breakpoints.desktop })} {
     width: 100%;
@@ -131,21 +124,19 @@ const TitleAndLicence = styled.div`
   display: flex;
   justify-content: space-between;
   ${mq.range({ until: breakpoints.desktop })} {
-    display: inline-block;
-
+    text-align: center;
     margin-top: 10px;
+    flex-direction: column;
+    max-width: 200px;
   }
 `;
 
 const LincenseWrapper = styled.div`
+  top: 9px;
+  position: absolute;
+  right: 1px;
   ul {
     margin-right: 0;
-  }
-
-  ${mq.range({ until: breakpoints.desktop })} {
-    top: 1px;
-    position: absolute;
-    right: 1px;
   }
 `;
 

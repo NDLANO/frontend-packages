@@ -28,15 +28,11 @@ const BannerWrapper = styled.div`
 const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
-
   flex: 0 0 40%;
-  justify-content: center;
   ${mq.range({ until: breakpoints.tabletWide })} {
     display: block;
   }
 `;
-const ImageElement = styled(Image)``;
-
 const TextWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     margin-left: 0;
@@ -78,12 +74,12 @@ export const BannerCard = ({ link, title, content, linkText, image }: BannerProp
   return (
     <BannerWrapper>
       <ImageWrapper>
-        <ImageElement alt={image.altText} src={image.imageSrc} />
+        <Image alt={image.altText} src={image.imageSrc} />
       </ImageWrapper>
       <TextWrapper>
         <TitleText>{title}</TitleText>
         <ContentText>{content}</ContentText>
-        <LinkText target="_blank" to={link}>
+        <LinkText target="_self" to={link}>
           {linkText}
         </LinkText>
       </TextWrapper>

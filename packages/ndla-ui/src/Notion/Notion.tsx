@@ -214,7 +214,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
           </ImageWrapper>
         )}
         <TextWrapper hasVisualElement={!!(imageElement || visualElement?.metaImage)}>
-          {parseMarkdown(`**${title}** \u2013 ${text}`)}
+          {parseMarkdown(`**${title}** \u2013 ${text}`, 'body')}
           {!!labels.length && (
             <LabelsContainer>
               {t('searchPage.resultType.notionLabels')}

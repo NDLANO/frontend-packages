@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { MovieType } from './types';
 
 interface Props {
@@ -16,24 +17,65 @@ interface Props {
   gotoSlide: (indexTarget: number, useAnimation: boolean) => void;
 }
 
-const classes = new BEMHelper({
-  name: 'film-slideshow',
-  prefix: 'c-',
-});
+const SlideshowIndicatorWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: ${spacing.small} 0;
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    margin: ${spacing.normal} 0;
+  }
+`;
+
+interface SlideshowIndicatorDotProps {
+  active?: boolean;
+}
+
+const SlideshowIndicatorDot = styled.button<SlideshowIndicatorDotProps>`
+  border: 0;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  span {
+    background: ${(props) => (props.active ? '#fff' : colors.ndlaFilm.filmColorBright)};
+    transition: background 100ms ease;
+    height: 8px;
+    width: 8px;
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      height: 10px;
+      width: 10px;
+    }
+    ${mq.range({ from: breakpoints.tablet })} {
+      height: ${spacing.small};
+      width: ${spacing.small};
+    }
+    border-radius: 100%;
+  }
+  padding: ${spacing.xsmall};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.small};
+  }
+  &:hover,
+  &:focus {
+    span {
+      background: #fff;
+    }
+  }
+`;
 
 const SlideshowIndicator = ({ slideshow, activeSlide, gotoSlide }: Props) => {
   return (
-    <div {...classes('indicator-wrapper')}>
-      {slideshow.map((slide, index) => (
-        <button
+    <SlideshowIndicatorWrapper>
+      {slideshow.map((_, index) => (
+        <SlideshowIndicatorDot
+          active={index === activeSlide}
           key={`indicator_${index}`}
           type="button"
-          {...classes('indicator-dot', index === activeSlide ? 'active' : '')}
           onClick={() => gotoSlide(index, true)}>
           <span />
-        </button>
+        </SlideshowIndicatorDot>
       ))}
-    </div>
+    </SlideshowIndicatorWrapper>
   );
 };
 

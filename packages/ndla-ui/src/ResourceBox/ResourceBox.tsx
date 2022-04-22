@@ -29,6 +29,7 @@ const BoxWrapper = styled.div`
   font-family: ${fonts.sans};
   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
   gap: 40px;
+
   ${mq.range({ until: breakpoints.desktop })} {
     gap: 1px;
     flex-direction: column;
@@ -40,6 +41,7 @@ const BoxWrapper = styled.div`
     padding-bottom: 0;
     margin-bottom: 24px;
     height: auto;
+    text-align: center;
   }
 `;
 
@@ -47,7 +49,9 @@ const Boxtitle = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
   margin-top: 0;
-  ${mq.range({ until: breakpoints.desktop })} {
+  ${mq.range({ until: breakpoints.tablet })} {
+    text-align: center;
+    width: 100%;
   }
 `;
 
@@ -63,6 +67,7 @@ const StyledButtonDiv = styled.div`
   align-items: flex-start;
   ${mq.range({ until: breakpoints.desktop })} {
     padding-bottom: 10px;
+    margin: 0 auto;
   }
 `;
 const ResourceBoxStyledButton = styled(SafeLinkButton)`
@@ -106,6 +111,7 @@ const ImageSectionWrapper = styled.div`
 const CaptionSectionWrapper = styled.div`
   max-width: 600px;
   ${mq.range({ until: breakpoints.desktop })} {
+    margin: 0 auto;
   }
 `;
 
@@ -116,7 +122,6 @@ const CenterItems = styled.div`
   flex-flow: column;
   ${mq.range({ until: breakpoints.desktop })} {
     width: 100%;
-    text-align: center;
   }
 `;
 
@@ -125,9 +130,9 @@ const TitleAndLicence = styled.div`
   justify-content: space-between;
   ${mq.range({ until: breakpoints.desktop })} {
     text-align: center;
-    margin-top: 10px;
-    flex-direction: column;
+    padding-top: 10px;
     max-width: 200px;
+    margin: 0 auto;
   }
 `;
 

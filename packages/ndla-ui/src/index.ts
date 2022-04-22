@@ -218,3 +218,4 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
+export { BannerCard } from './BannerCard';

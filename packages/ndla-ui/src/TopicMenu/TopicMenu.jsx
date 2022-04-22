@@ -74,6 +74,8 @@ export const TopicMenu = ({
   currentProgramme,
   initialSelectedMenu,
   messages,
+  selectedGrade,
+  onGradeChange,
 }) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
@@ -242,7 +244,8 @@ export const TopicMenu = ({
           <div {...classes('all-subjects')}>
             <ProgrammeSubjects
               grades={currentProgramme.grades}
-              preSelectedGradeIndex={currentProgramme.selectedGradeIndex ? currentProgramme.selectedGradeIndex : 0}
+              selectedGrade={selectedGrade}
+              onChangeGrade={onGradeChange}
               onNavigate={closeMenu}
             />
           </div>

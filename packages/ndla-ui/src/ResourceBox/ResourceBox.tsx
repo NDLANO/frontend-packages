@@ -49,7 +49,7 @@ const Boxtitle = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
   margin-top: 0;
-  ${mq.range({ until: breakpoints.tablet })} {
+  ${mq.range({ until: breakpoints.desktop })} {
     text-align: center;
     width: 100%;
   }

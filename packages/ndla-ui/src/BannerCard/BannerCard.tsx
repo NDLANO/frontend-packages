@@ -13,6 +13,7 @@ import { Image } from '..';
 
 const BannerWrapper = styled.div`
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
   max-width: 669px;
   border-radius: 8px;
@@ -27,12 +28,20 @@ const BannerWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   display: flex;
-  align-items: center;
   flex: 0 0 40%;
   ${mq.range({ until: breakpoints.tabletWide })} {
     display: block;
+    text-align: center;
+    width: 100%;
   }
 `;
+
+const StyledImage = styled(Image)`
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    max-height: 150px;
+  }
+`;
+
 const TextWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     margin-left: 0;
@@ -74,7 +83,7 @@ export const BannerCard = ({ link, title, content, linkText, image }: BannerProp
   return (
     <BannerWrapper>
       <ImageWrapper>
-        <Image alt={image.altText} src={image.imageSrc} />
+        <StyledImage alt={image.altText} src={image.imageSrc} />
       </ImageWrapper>
       <TextWrapper>
         <TitleText>{title}</TitleText>

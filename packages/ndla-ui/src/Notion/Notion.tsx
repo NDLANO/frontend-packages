@@ -117,7 +117,7 @@ const ExpandVisualElementButton = styled(Button)`
   color: ${colors.brand.primary};
   border-radius: 50%;
   border: 0;
-  width: 40px;
+  width: 40px !important;
   height: 40px;
   display: inline-flex;
   justify-content: center;

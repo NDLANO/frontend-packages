@@ -12,6 +12,7 @@ import { ConceptNotion } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
+import { breakpoints, mq } from '@ndla/core';
 //@ts-ignore
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
 
@@ -23,6 +24,17 @@ const ContentWrapper = styled.div`
   padding-left: 24px;
   padding-right: 24px;
   border-bottom: 1px solid rgba(209, 214, 219, 1);
+  & button {
+    width: 100%;
+  }
+  & .iconify--ic {
+    //Hides the underline icon when in a notionblock
+    display: none;
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100% !important;
+    left: 0 !important;
+  }
 `;
 
 type Props = {

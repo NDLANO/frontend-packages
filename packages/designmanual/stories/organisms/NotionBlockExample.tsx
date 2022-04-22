@@ -11,6 +11,7 @@ import React, { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 import { OneColumn } from '@ndla/ui';
+import { breakpoints, mq } from '@ndla/core';
 import NotionBlock from '../molecules/NotionBlock';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
@@ -24,6 +25,10 @@ const ContentWrapper = styled.div`
   width: 133.3333333333% !important;
   padding-left: 24px;
   padding-right: 24px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100% !important;
+    left: 0 !important;
+  }
 `;
 
 class NotionBlockExample extends Component {

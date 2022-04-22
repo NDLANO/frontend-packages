@@ -11,6 +11,9 @@ const NotionBody = styled.div`
     animation-name: fadeInLeft;
     animation-duration: 500ms;
   }
+  iframe {
+    height: 400px;
+  }
 `;
 
 export { NotionBody as default };

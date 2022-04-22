@@ -188,7 +188,7 @@ export const MessageBox = ({
           <IconWrapper boxType={type}>
             <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
-          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }}></TextWrapper>
+          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children || '') }}></TextWrapper>
         </InfoWrapper>
         {showCloseButton && (
           <CloseButtonWrapper>

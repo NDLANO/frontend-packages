@@ -23,8 +23,8 @@ export type NotionVisualElementType = {
 interface Props {
   visualElement: NotionVisualElementType;
 }
+const supportedEmbedTypes = ['brightcove', 'H5P', 'iframe', 'external'];
 
-const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external'];
 const NotionVisualElement = ({ visualElement }: Props) => {
   const id = '1';
   const figureId = 'figure-1';
@@ -32,7 +32,7 @@ const NotionVisualElement = ({ visualElement }: Props) => {
     return <p>Embed type is not supported!</p>;
   }
 
-  const type = visualElement.resource === 'brightcove' ? 'video' : 'h5p';
+  const type = visualElement.resource === 'brightcove' ? 'video' : 'H5P';
   return (
     <FigureNotion
       resizeIframe

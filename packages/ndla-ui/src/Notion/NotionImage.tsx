@@ -6,10 +6,29 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
+import { animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Image, FigureExpandButton } from '..';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
+
+const StyledImageWrapper = styled.div`
+  overflow: hidden;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+
+  max-height: 162px;
+  transition: transform ${animations.durations.fast};
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1.1;
+    transition-duration: 0.5s;
+  }
+`;
+
 interface Props {
   id: string;
   src: string;
@@ -32,19 +51,21 @@ export const NotionImage = ({ id, src, alt, imageCopyright }: Props) => {
       licenseString={imageCopyright?.license?.license ?? ''}
       type={'image'}>
       {({ typeClass }) => (
-        <Image
-          alt={alt}
-          src={src}
-          expandButton={
-            <FigureExpandButton
-              typeClass={typeClass}
-              messages={{
-                zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
-                zoomOutImageButtonLabel: t('license.image.itemImage.zoomOutImageButtonLabel'),
-              }}
-            />
-          }
-        />
+        <StyledImageWrapper>
+          <StyledImage
+            alt={alt}
+            src={src}
+            expandButton={
+              <FigureExpandButton
+                typeClass={typeClass}
+                messages={{
+                  zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
+                  zoomOutImageButtonLabel: t('license.image.itemImage.zoomOutImageButtonLabel'),
+                }}
+              />
+            }
+          />
+        </StyledImageWrapper>
       )}
     </FigureNotion>
   );

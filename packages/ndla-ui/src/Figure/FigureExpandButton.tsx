@@ -15,8 +15,6 @@ export function FigureExpandButton({ messages, typeClass }: Props) {
     <button
       className="c-figure__fullscreen-btn"
       type="button"
-      data-figure-button
-      data-classtype={typeClass}
       data-aria={messages.zoomImageButtonLabel}
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}>

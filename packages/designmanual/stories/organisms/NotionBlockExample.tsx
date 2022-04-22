@@ -34,7 +34,7 @@ class NotionBlockExample extends Component {
   render() {
     return (
       <ComponentInfo
-        status={3}
+        status={1}
         components={
           <OneColumn>
             <ContentWrapper>

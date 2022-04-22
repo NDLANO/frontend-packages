@@ -26,9 +26,9 @@ const ContentWrapper = styled.div`
   }
   .c-figure {
     margin: 0;
-    position: relative !important;
-    left: 0 !important;
-    width: 25% !important;
+    position: relative;
+    left: 0;
+    width: 25%;
     padding: 0 0 0 20px;
     float: right;
     &.expanded {
@@ -44,17 +44,28 @@ const ContentWrapper = styled.div`
 `;
 const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   width: ${(props) => (props.hasVisualElement ? '75%' : '100%')};
+  text-align: initial;
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
-  font-family: ${fonts.serif};
+  font-family: ${fonts.sans};
   ${fonts.sizes('18px', '28px')};
   ${ContentWrapper} .c-figure.expanded + & {
     width: 100%;
   }
 `;
 
-const ImageElement = styled.img``;
+const ImageElement = styled.img`
+  object-fit: cover;
+  box-sizing: inherit;
+  height: 162px;
+  transition: transform ${animations.durations.fast};
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1.1;
+    transition-duration: 0.5s;
+  }
+`;
 
 const fadeInMediaKeyframe = keyframes`
   0% {
@@ -77,9 +88,12 @@ const fadeOutMediaKeyframe = keyframes`
   }
 `;
 
+const ImageOverflowWrapper = styled.div`
+  overflow: hidden;
+`;
 const ImageWrapper = styled.div`
   float: right;
-  width: 25%;
+  min-width: 262px;
   padding-left: ${spacing.normal};
   position: relative;
 
@@ -161,7 +175,7 @@ const LabelsContainer = styled.div`
 `;
 
 type VisualElementProps = {
-  type: 'video' | 'other';
+  type: 'video' | 'H5P';
   element: ReactNode;
   metaImage?: {
     url: string;
@@ -187,25 +201,25 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
   return (
     <NotionContainer>
       {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
+
       <ContentWrapper>
         {imageElement}
         {visualElement && visualElement.metaImage && (
           <ImageWrapper>
-            <ImageElement
-              src={`${visualElement.metaImage.url}?${makeSrcQueryString(
-                400,
-                visualElement.metaImage.crop,
-                visualElement.metaImage.focalPoint,
-              )}`}
-              alt={visualElement.metaImage.alt}
-            />
-            <ExpandVisualElementButton
-              stripped
-              data-notion-expand-media={true}
-              data-notion-media-id={`notion-media-${id}`}>
+            <ImageOverflowWrapper>
+              <ImageElement
+                src={`${visualElement.metaImage.url}?${makeSrcQueryString(
+                  400,
+                  visualElement.metaImage.crop,
+                  visualElement.metaImage.focalPoint,
+                )}`}
+                alt={visualElement.metaImage.alt}
+              />
+            </ImageOverflowWrapper>
+            <ExpandVisualElementButton data-notion-media-id={`notion-media-${id}`}>
               <ExpandIcon>
                 {visualElement.type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
-                {visualElement.type === 'other' && <CursorClick style={{ width: '24px', height: '24px' }} />}
+                {visualElement.type === 'H5P' && <CursorClick style={{ width: '24px', height: '24px' }} />}
               </ExpandIcon>
               <CollapseIcon>
                 <ArrowCollapse style={{ width: '24px', height: '24px' }} />

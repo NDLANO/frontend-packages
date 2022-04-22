@@ -7,11 +7,22 @@
  */
 
 import React, { ReactNode } from 'react';
+import styled from '@emotion/styled';
 import { css, InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
+import { Icon } from '@iconify/react';
 
+const BaselineIcon = styled(Icon)`
+  content: '';
+  display: inline-block;
+  position: absolute;
+  margin: calc(0.5em + 4px) auto 0;
+  left: 0;
+  color: rgba(165, 188, 211, 1);
+  transition: transform 0.1s ease;
+`;
 const NotionCSS = css`
   display: inline;
   .link {
@@ -24,8 +35,8 @@ const NotionCSS = css`
     margin-bottom: -4px;
     text-decoration: none;
     color: #000;
-    border-bottom: 1px solid ${colors.brand.tertiary};
     position: relative;
+
     cursor: pointer;
     &:after {
       content: '';
@@ -36,9 +47,6 @@ const NotionCSS = css`
       right: 0;
       width: 0;
       height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid ${colors.brand.primary};
       transition: transform 0.1s ease;
     }
     &:hover,
@@ -61,12 +69,25 @@ interface Props {
   content?: ReactNode;
   headerContent?: ReactNode;
   customCSS?: InterpolationWithTheme<any>;
+  hideBaselineIcon?: boolean;
 }
-const Notion = ({ id, ariaLabel, content, children, title, subTitle, customCSS, headerContent }: Props) => (
+const Notion = ({
+  id,
+  ariaLabel,
+  content,
+  children,
+  title,
+  subTitle,
+  customCSS,
+  headerContent,
+  hideBaselineIcon,
+}: Props) => (
   <span css={NotionCSS} id={id} data-notion>
     <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
       {children}
+      {!hideBaselineIcon && <BaselineIcon icon="ic:baseline-short-text" />}
     </button>
+
     {createUniversalPortal(
       <NotionDialog id={id} title={title} subTitle={subTitle} customCSS={customCSS} headerContent={headerContent}>
         {content}

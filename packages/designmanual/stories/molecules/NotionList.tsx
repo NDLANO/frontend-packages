@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, mq, fonts } from '@ndla/core';
 import NotionBlock from '../molecules/NotionBlock';
 
 const NotionListTitleWrapper = styled.div`
@@ -27,8 +27,12 @@ const NotionListTitleWrapper = styled.div`
 const NotionListTitle = styled.h2`
   font-size: 24px;
   color: #444444;
-  border-bottom: 1px solid #d1d6db;
-  padding-bottom: 24px;
+  font-family: ${fonts.sans};
+  margin: 0;
+`;
+
+const NotionList = styled.ul`
+  list-style: none;
 `;
 type Notions = {
   type: 'image' | 'video' | 'H5P';
@@ -46,9 +50,13 @@ const NotionListExample = ({ title, children }: Props) => {
           <NotionListTitleWrapper>
             <NotionListTitle>{title}</NotionListTitle>
           </NotionListTitleWrapper>
-          {children.map((x) => (
-            <NotionBlock type={x.type}></NotionBlock>
-          ))}
+          <NotionList>
+            {children.map((x) => (
+              <li>
+                <NotionBlock type={x.type}></NotionBlock>
+              </li>
+            ))}
+          </NotionList>
         </>
       )}
     </>

@@ -17,10 +17,10 @@ interface Props {
   figureId: string;
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
   id: string;
-  title: string;
+  title?: string;
   copyright?: Partial<Copyright>;
   licenseString: string;
-  type: 'video' | 'h5p' | 'image' | 'concept';
+  type: 'video' | 'H5P' | 'image' | 'concept';
   hideFigCaption?: boolean;
 }
 
@@ -48,7 +48,7 @@ const FigureNotion = ({
   ).map((i) => ({ name: i.description, type: i.label }));
 
   return (
-    <Figure resizeIframe={resizeIframe} id={figureId} type={'full-column'}>
+    <Figure id={figureId} type={'full-column'}>
       {({ typeClass }) => (
         <>
           {typeof children === 'function' ? children({ typeClass }) : children}
@@ -73,9 +73,7 @@ const FigureNotion = ({
                   source: t('source'),
                   learnAboutLicenses: t('license.learnMore'),
                   title: t('title'),
-                }}>
-                {type === 'image' && <Button outline>{t('license.copyTitle')}</Button>}
-              </FigureLicenseDialog>
+                }}></FigureLicenseDialog>
             </FigureCaption>
           )}
         </>

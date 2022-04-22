@@ -39,9 +39,11 @@ const NotionHeaderWrapper = styled.div<NotionHeaderWrapperProps>`
     border: none;
     background: none;
     color: ${colors.brand.primary};
-    box-shadow: ${misc.textLinkBoxShadow};
     cursor: pointer;
-    &:hover,
+    &:hover {
+      box-shadow: ${misc.textLinkBoxShadow};
+    }
+
     &:focus {
       box-shadow: none;
     }

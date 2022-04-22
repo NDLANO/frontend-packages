@@ -1,14 +1,109 @@
 import React, { Component } from 'react';
-import BEMHelper from 'react-bem-helper';
 import FocusTrapReact from 'focus-trap-react';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { MovieResourceType } from './types';
 
-const classes = new BEMHelper({
-  name: 'film-moviesearch',
-  prefix: 'c-',
-});
+const zoomInSelect = keyframes`
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    transform: scale3d(0.95, 0.95, 0.95);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+  margin: 0 0 ${spacing.normal};
+`;
+
+const DropdownButton = styled.button`
+  border-radius: 4px;
+  ${fonts.sizes('22px', '26px')};
+  border: 0;
+  text-transform: uppercase;
+  background: ${colors.ndlaFilm.filmColorBright};
+  color: #fff;
+  padding: ${spacing.small} ${spacing.nsmall};
+  font-weight: ${fonts.weight.semibold};
+  display: flex;
+  align-items: center;
+  text-align: left;
+  justify-content: space-between;
+  width: 100%;
+  letter-spacing: 0.05em;
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.small} ${spacing.normal};
+  }
+  div:first-child {
+    ${mq.range({ until: breakpoints.tablet })} {
+      display: flex;
+      flex-direction: column;
+      small {
+        padding: 0;
+      }
+    }
+  }
+  small {
+    text-transform: none;
+    padding-left: ${spacing.small};
+    font-weight: normal;
+  }
+`;
+
+interface DropdownWrapperProps {
+  offsetDropdown: number;
+}
+
+const DropdownWrapper = styled.div<DropdownWrapperProps>`
+  top: -${(props) => props.offsetDropdown * 52 + 13}px;
+  ${DropdownButton} {
+    border-radius: 0;
+    text-transform: 0;
+    letter-spacing: 0;
+  }
+  display: flex;
+  flex-direction: column;
+  padding: $spacing--small 0;
+  background: #deebf6;
+  border-radius: 4px;
+  left: 0;
+  right: 0;
+  animation: ${zoomInSelect} 200ms ease;
+  box-shadow: 0 0 30px rgba(${colors.black}, 0.6);
+  position: absolute;
+  z-index: 9999;
+  button,
+  a {
+    color: ${colors.text.primary};
+    border: 0;
+    outline: 0;
+    text-align: left;
+    background: transparent;
+    padding: ${spacing.small};
+    padding-left: ${spacing.normal};
+    font-weight: ${fonts.weight.semibold};
+    text-decoration: none;
+    box-shadow: none;
+    transition: background 200ms ease;
+    &:hover,
+    &:focus {
+      color: ${colors.brand.primary};
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+`;
 
 interface Props extends WithTranslation {
   resourceTypes: MovieResourceType[];
@@ -66,12 +161,11 @@ class CategorySelect extends Component<Props, State> {
       : 0;
 
     return (
-      <div {...classes('dropdown-container', '', 'u-12/12')}>
-        <button
+      <DropdownContainer className="u-12/12">
+        <DropdownButton
           aria-expanded={!resourceTypesIsOpen}
           aria-controls="selectCategory"
           type="button"
-          {...classes('dropdown-button', 'toggleButton')}
           tabIndex={resourceTypesIsOpen ? -1 : 0}
           onClick={this.openSelect}>
           <div>
@@ -83,7 +177,7 @@ class CategorySelect extends Component<Props, State> {
           <div>
             <ChevronDown className="c-icon--22" />
           </div>
-        </button>
+        </DropdownButton>
         {resourceTypesIsOpen && (
           <FocusTrapReact
             active={resourceTypesIsOpen}
@@ -94,32 +188,25 @@ class CategorySelect extends Component<Props, State> {
               clickOutsideDeactivates: true,
               escapeDeactivates: true,
             }}>
-            <div id="selectCategory" {...classes('dropdown-wrapper')} style={{ top: `-${offsetDropDown * 52 + 13}px` }}>
-              <button
-                aria-controls={ariaControlId}
-                type="button"
-                onClick={() => this.onSelect()}
-                {...classes('dropdown-button')}>
+            <DropdownWrapper id="selectCategory" offsetDropdown={offsetDropDown}>
+              <DropdownButton aria-controls={ariaControlId} type="button" onClick={() => this.onSelect()}>
                 <span>{t('ndlaFilm.search.categoryFromNdla')}</span>
-              </button>
+              </DropdownButton>
               {resourceTypes.map((resourceType) => (
-                <button
+                <DropdownButton
                   aria-controls={ariaControlId}
                   type="button"
                   ref={(el) => this.createRef(el, resourceType.id)}
                   onClick={() => this.onSelect(resourceType.id)}
-                  {...classes('dropdown-button', {
-                    selected: !!resourceTypeSelected && resourceTypeSelected.id === resourceType.id,
-                  })}
                   data-id={resourceType.id}
                   key={resourceType.id}>
                   <span>{resourceType.name}</span>
-                </button>
+                </DropdownButton>
               ))}
-            </div>
+            </DropdownWrapper>
           </FocusTrapReact>
         )}
-      </div>
+      </DropdownContainer>
     );
   }
 }

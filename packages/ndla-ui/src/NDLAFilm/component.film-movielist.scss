@@ -7,52 +7,6 @@
 }
 
 .c-film-movielist {
-  margin-bottom: $spacing;
-  @include mq(tablet) {
-    margin-bottom: $spacing--large;
-  }
-  &__heading {
-    @include font-size(22px, 26px);
-    font-weight: $font-weight-semibold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #fff;
-    margin: $spacing--small 0;
-    small {
-      font-weight: normal;
-      padding-left: $spacing--small;
-      color: $brand-grey--light;
-    }
-  }
-  &__movie-listing {
-    display: flex;
-    flex-wrap: wrap;
-    margin: $spacing--small 0;
-    @include set-animations();
-    > div {
-      opacity: 0;
-      animation-fill-mode: forwards;
-      animation-name: fadeIn;
-      animation-duration: 300ms;
-    }
-  }
-  &__movie-item {
-    box-shadow: none;
-    padding: $spacing--small / 2;
-    @include mq(tablet) {
-      margin-bottom: $spacing--large;
-    }
-    @include mq($from: tablet) {
-      width: 25%;
-    }
-    @include mq($from: mobileWide, $until: tablet) {
-      width: 33.3%;
-    }
-    @include mq($until: mobileWide) {
-      width: 50%;
-    }
-  }
-
   &__carousel-wrapper-buttons {
     > div {
       @include set-animations();

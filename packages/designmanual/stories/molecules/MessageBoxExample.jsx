@@ -94,8 +94,8 @@ const MessageBoxExample = () => {
           onSite={[<MessageBoxTabs></MessageBoxTabs>]}
           reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBoxType } from '@ndla/ui';
   
-//Direkte kall på fullpage sticky meldingsboks
-<MessageBox type={MessageBoxType.fullpage} showCloseButton sticky={true}>
+//Direkte kall på fullpage meldingsboks
+<MessageBox type={MessageBoxType.fullpage} showCloseButton >
 {messagesNB.messageBoxInfo.updateBrowser}
 </MessageBox>
 
@@ -157,12 +157,6 @@ messageBoxTagMessage="Beta"
               default: 'undefined',
               description:
                 'Enum som kan settes til "ghost", "fullpage" eller "medium" for å toggle mellom de forskjellige boksene',
-            },
-            {
-              name: 'sticky',
-              type: 'boolean',
-              default: 'false',
-              description: 'Sticky gjør at meldingsboksen blir sticky og følger etter på scroll.',
             },
             {
               name: 'showCloseButton',

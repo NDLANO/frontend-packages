@@ -83,7 +83,7 @@ export const MediaListItemBody = ({
   const license = getLicenseByAbbreviation(licenseAbbreviation, locale);
   const containerProps = isCreativeCommonsLicense(license.rights)
     ? {
-        ...oClasses('body', undefined, cClasses('body').className),
+        ...oClasses('', undefined, cClasses('body').className),
         'xmlns:cc': 'https://creativecommons.org/ns#',
         'xmlns:dct': 'http://purl.org/dc/terms/',
         about: resourceUrl,

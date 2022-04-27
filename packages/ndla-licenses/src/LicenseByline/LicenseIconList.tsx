@@ -30,6 +30,7 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
     z-index: 1;
     opacity: 0;
     display: none;
+    margin-right: -300px;
     max-width: 300px;
     position: absolute;
     background: ${colors.brand.primary};
@@ -38,7 +39,7 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
     border-radius: 2px;
     padding: ${spacing.small};
     font-family: ${fonts.sans};
-    transform: translate(0, calc(-100% - 6px));
+    transform: translate(0, calc(-100% - 30px));
     ${fonts.sizes('14px', '18px')};
   }
 
@@ -57,12 +58,13 @@ interface StyledLicenseIconButtonprops {
   light?: boolean;
 }
 export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprops>`
-  display: flex;
+  display: inline-block;
   border: 0;
   margin: 0;
   padding: 0;
   color: ${(p) => (p.light ? colors.white : colors.text.primary)};
   background: transparent;
+  position: relative;
   &:hover,
   &:focus {
     color: ${(p) => (p.light ? colors.brand.light : colors.text.light)};

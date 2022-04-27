@@ -167,7 +167,7 @@ class ArticleLoader extends Component {
 
     const messages = {
       label,
-      messageBox: showOutdatedWarning ? 'Innholdet i denne artikkelen kan være utdatert' : undefined,
+      messageBox: showOutdatedWarning ? 'Artikkelen er foreldet.' : undefined,
     };
 
     return (

@@ -364,7 +364,7 @@ const messages = {
     access: {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
-    possiblyOutdated: 'Innholdet i denne artikkelen kan være utdatert',
+    possiblyOutdated: 'Artikkelen er foreldet.',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',

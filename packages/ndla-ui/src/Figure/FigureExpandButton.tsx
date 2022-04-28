@@ -29,7 +29,7 @@ export function FigureExpandButton({ messages, typeClass, type }: Props) {
 }
 
 interface Props {
-  type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+  type?: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;

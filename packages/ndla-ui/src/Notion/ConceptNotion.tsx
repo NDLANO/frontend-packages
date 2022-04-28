@@ -68,7 +68,7 @@ export interface ConceptNotionType {
   };
 }
 interface Props {
-  type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+  type?: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
   concept: ConceptNotionType;
   disableScripts?: boolean;
   hideIconsAndAuthors?: boolean;

@@ -159,7 +159,7 @@ type ArticleNotionsProps = {
   notions: ConceptNotionType[];
   relatedContent?: NotionRelatedContent[];
   buttonOffsetRight: number;
-  type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+  type?: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
 };
 
 export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight, type }: ArticleNotionsProps) => {

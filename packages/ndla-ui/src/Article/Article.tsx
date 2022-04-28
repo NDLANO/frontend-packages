@@ -191,9 +191,7 @@ export const Article = ({
 
           {messages.messageBox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks} showCloseButton>
-                {messages.messageBox}
-              </MessageBox>
+              <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>

@@ -92,6 +92,24 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
+  .add('En side med varsel om utdatert artikkel', () => (
+    <PageContainer backgroundWide>
+      <MastheadWithTopicMenu />
+      <Content>
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLoader articleId="744" showOutdatedWarning />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
   .add('En side med feilmelding', () => (
     <PageContainer>
       <MastheadWithTopicMenu />

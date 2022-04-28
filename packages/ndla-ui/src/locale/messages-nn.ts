@@ -365,6 +365,7 @@ const messages = {
     access: {
       onlyTeacher: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     },
+    possiblyOutdated: 'Artikkelen er foreldet.',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',

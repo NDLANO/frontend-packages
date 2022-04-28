@@ -366,6 +366,7 @@ const messages = {
     access: {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
+    possiblyOutdated: 'The article is outdated',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',

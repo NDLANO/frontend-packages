@@ -7,150 +7,80 @@
  */
 
 import React from 'react';
-import styled from '@emotion/styled';
 import { ConceptNotion } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
-import { breakpoints, mq } from '@ndla/core';
 //@ts-ignore
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
-
-const ContentWrapper = styled.div<{ inSearchResults?: boolean }>`
-  position: relative !important;
-  right: auto !important;
-  left: ${(props) => (props.inSearchResults ? '0%' : '-16.6666666667%')};
-  width: ${(props) => (props.inSearchResults ? '100%' : '133.3333333333%')};
-  padding-left: 24px;
-  padding-right: 24px;
-  & button {
-    width: 100%;
-  }
-  & .iconify--ic {
-    //Hides the underline icon when in a notionblock
-    display: none;
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100% !important;
-    left: 0 !important;
-  }
-`;
 
 type Props = {
   type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
 
   hideIconsAndAuthors?: boolean; //hides the licenseicons
-  inSearchResults?: boolean; //adjusts the width and left alignment of the block to fit in searchresults
+  adjustSizeToFitWiderPage?: boolean; //adjusts the width and left alignment of the block to fit in searchresults
 };
 
-const NotionBlock = ({ type, hideIconsAndAuthors, inSearchResults }: Props) => {
+const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Props) => {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
 
   if (type === 'image') {
     return (
-      <ContentWrapper inSearchResults={inSearchResults}>
-        <ConceptNotion
-          hideIconsAndAuthors={hideIconsAndAuthors}
-          type={type}
-          concept={{
-            id,
-            title: 'And',
-            text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
-            subjectNames: ['Naturbruk Vg1', 'Naturbruk Vg2'],
+      <ConceptNotion
+        adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}
+        hideIconsAndAuthors={hideIconsAndAuthors}
+        type={type}
+        concept={{
+          id,
+          title: 'And',
+          text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
+          subjectNames: ['Naturbruk Vg1', 'Naturbruk Vg2'],
+          copyright: {
+            license: {
+              license: 'CC-BY-NC-SA-4.0',
+            },
+            creators: [{ name: 'En skaper', type: 'Writer' }],
+            processors: [{ name: 'Totaltekst', type: 'Correction' }],
+            rightsholders: [],
+          },
+          visualElement: {
             copyright: {
               license: {
                 license: 'CC-BY-NC-SA-4.0',
               },
-              creators: [{ name: 'En skaper', type: 'Writer' }],
-              processors: [{ name: 'Totaltekst', type: 'Correction' }],
-              rightsholders: [],
+              creators: [],
+              processors: [],
+              rightsholders: [{ name: 'NTB Scanpix', type: 'Supplier' }],
+              origin: 'http://www.scanpix.no',
             },
-            visualElement: {
-              copyright: {
-                license: {
-                  license: 'CC-BY-NC-SA-4.0',
-                },
-                creators: [],
-                processors: [],
-                rightsholders: [{ name: 'NTB Scanpix', type: 'Supplier' }],
-                origin: 'http://www.scanpix.no',
-              },
-              resource: 'image',
-              image: {
-                src: 'https://api.staging.ndla.no/image-api/raw/20081209-095942-ag_0.jpg',
-                alt: 'Stokkand. Foto.',
-              },
-            },
+            resource: 'image',
             image: {
-              src: 'https://api.test.ndla.no/image-api/raw/id/40164',
+              src: 'https://api.staging.ndla.no/image-api/raw/20081209-095942-ag_0.jpg',
               alt: 'Stokkand. Foto.',
             },
-          }}
-        />
-      </ContentWrapper>
+          },
+          image: {
+            src: 'https://api.test.ndla.no/image-api/raw/id/40164',
+            alt: 'Stokkand. Foto.',
+          },
+        }}
+      />
     );
   } else if (type === 'video') {
     return (
-      <ContentWrapper inSearchResults={inSearchResults}>
-        <ConceptNotion
-          hideIconsAndAuthors={hideIconsAndAuthors}
-          type={type}
-          concept={{
-            id,
-            text: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',
-            title: 'Velferdsteknologi',
-            image: {
-              src: 'https://api.test.ndla.no/image-api/raw/id/52535',
-              alt: 'Foto. Klasseromsrobot som gjør det mulig å være på skolen uten å være fysisk til stede.',
-            },
-            subjectNames: ['Elektro og data'],
-            copyright: {
-              license: {
-                license: 'CC-BY-SA-4.0',
-              },
-              creators: [
-                {
-                  name: 'Bjørnar Mortensen Vik',
-                  type: 'Writer',
-                },
-              ],
-              processors: [],
-              rightsholders: [],
-            },
-            visualElement: {
-              title: 'Velferdsteknologi gir frihet',
-              resource: 'brightcove',
-              url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6154610667001',
-              copyright: {
-                license: {
-                  license: 'CC-BY-NC-SA-4.0',
-                },
-                creators: [],
-                processors: [],
-                rightsholders: [
-                  {
-                    name: 'film_konsulentene',
-                    type: 'supplier',
-                  },
-                ],
-              },
-            },
-          }}
-        />
-      </ContentWrapper>
-    );
-  } else if (type === 'external' || type === 'iframe') {
-    return (
       <ConceptNotion
+        adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}
+        hideIconsAndAuthors={hideIconsAndAuthors}
+        type={type}
         concept={{
           id,
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          title: 'Statistikk om matvaner',
+          text: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',
+          title: 'Velferdsteknologi',
           image: {
-            src: 'https://api.test.ndla.no/image-api/raw/id/45298',
-            alt: 'Foto. Frokost.',
+            src: 'https://api.test.ndla.no/image-api/raw/id/52535',
+            alt: 'Foto. Klasseromsrobot som gjør det mulig å være på skolen uten å være fysisk til stede.',
           },
           subjectNames: ['Elektro og data'],
           copyright: {
@@ -159,7 +89,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, inSearchResults }: Props) => {
             },
             creators: [
               {
-                name: 'Fornavn Etternavn',
+                name: 'Bjørnar Mortensen Vik',
                 type: 'Writer',
               },
             ],
@@ -167,9 +97,75 @@ const NotionBlock = ({ type, hideIconsAndAuthors, inSearchResults }: Props) => {
             rightsholders: [],
           },
           visualElement: {
-            title: 'Statistikk om matvaner',
-            resource: 'external',
-            url: 'https://public.flourish.studio/visualisation/2152346/embed',
+            title: 'Velferdsteknologi gir frihet',
+            resource: 'brightcove',
+            url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6154610667001',
+            copyright: {
+              license: {
+                license: 'CC-BY-NC-SA-4.0',
+              },
+              creators: [],
+              processors: [],
+              rightsholders: [
+                {
+                  name: 'film_konsulentene',
+                  type: 'supplier',
+                },
+              ],
+            },
+          },
+        }}
+      />
+    );
+  } else if (type === 'external' || type === 'iframe' || type === 'H5P') {
+    return (
+      <ConceptNotion
+        adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}
+        hideIconsAndAuthors={hideIconsAndAuthors}
+        type={type}
+        concept={{
+          id,
+          title: '6-akset robotarm',
+          text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
+          image: {
+            src: 'https://api.test.ndla.no/image-api/raw/id/23425',
+            alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
+          },
+          copyright: {
+            license: {
+              license: 'CC-BY-SA-4.0',
+            },
+            creators: [
+              {
+                name: 'Haldor Hove',
+                type: 'writer',
+              },
+            ],
+            processors: [
+              {
+                name: 'Totaltekst',
+                type: 'correction',
+              },
+            ],
+            rightsholders: [],
+          },
+          visualElement: {
+            title: 'Viper 6-akset robot',
+            resource: 'H5P',
+            url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
+            copyright: {
+              license: {
+                license: 'CC-BY-NC-SA-4.0',
+              },
+              creators: [],
+              processors: [],
+              rightsholders: [
+                {
+                  name: 'Omron Electronics Norway AS',
+                  type: 'supplier',
+                },
+              ],
+            },
           },
         }}
       />
@@ -177,32 +173,52 @@ const NotionBlock = ({ type, hideIconsAndAuthors, inSearchResults }: Props) => {
   } else {
     return (
       <ConceptNotion
+        type="H5P"
+        adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}
+        hideIconsAndAuthors={hideIconsAndAuthors}
         concept={{
           id,
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          title: 'Statistikk om matvaner',
+          title: '6-akset robotarm',
+          text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
           image: {
-            src: 'https://api.test.ndla.no/image-api/raw/id/45298',
-            alt: 'Foto. Frokost.',
+            src: 'https://api.test.ndla.no/image-api/raw/id/23425',
+            alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
           },
-          subjectNames: ['Elektro og data'],
           copyright: {
             license: {
               license: 'CC-BY-SA-4.0',
             },
             creators: [
               {
-                name: 'Fornavn Etternavn',
-                type: 'Writer',
+                name: 'Haldor Hove',
+                type: 'writer',
               },
             ],
-            processors: [],
+            processors: [
+              {
+                name: 'Totaltekst',
+                type: 'correction',
+              },
+            ],
             rightsholders: [],
           },
           visualElement: {
-            title: 'Statistikk om matvaner',
-            resource: 'external',
-            url: 'https://public.flourish.studio/visualisation/2152346/embed',
+            title: 'Viper 6-akset robot',
+            resource: 'brightcove',
+            url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
+            copyright: {
+              license: {
+                license: 'CC-BY-NC-SA-4.0',
+              },
+              creators: [],
+              processors: [],
+              rightsholders: [
+                {
+                  name: 'Omron Electronics Norway AS',
+                  type: 'supplier',
+                },
+              ],
+            },
           },
         }}
       />

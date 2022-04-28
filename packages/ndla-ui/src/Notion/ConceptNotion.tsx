@@ -23,6 +23,26 @@ import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElem
 import FigureNotion from './FigureNotion';
 import { Copyright } from '../types';
 
+const ContentWrapper = styled.div<{ adjustSizeToFitWiderPage?: boolean }>`
+  position: relative;
+  right: auto;
+  left: ${(props) => (props.adjustSizeToFitWiderPage ? '0%' : '-16.6666666667%')};
+  width: ${(props) => (props.adjustSizeToFitWiderPage ? '100%' : '133.3333333333%')};
+  padding-left: 24px;
+  padding-right: 24px;
+  & button {
+    width: 100%;
+  }
+  & .iconify--ic {
+    //Hides the underline icon when in a notionblock
+    display: none;
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100%;
+    left: 0;
+  }
+`;
+
 const ImageWrapper = styled.div`
   float: right;
   padding-left: ${spacing.normal};
@@ -48,13 +68,14 @@ export interface ConceptNotionType {
   };
 }
 interface Props {
-  type?: 'H5P' | 'image' | 'video';
+  type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
   concept: ConceptNotionType;
   disableScripts?: boolean;
   hideIconsAndAuthors?: boolean;
+  adjustSizeToFitWiderPage?: boolean;
 }
 
-const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: Props) => {
+const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Props) => {
   const notionId = `notion-${concept.id}`;
   const figureId = `notion-figure-${concept.id}`;
   const visualElementId = `visual-element-${concept.id}`;
@@ -66,86 +87,91 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
   }, [disableScripts]);
 
   return (
-    <FigureNotion
-      id={figureId}
-      figureId={visualElementId}
-      copyright={concept.copyright}
-      licenseString={concept.copyright?.license?.license ?? ''}
-      type="concept"
-      hideIconsAndAuthors={hideIconsAndAuthors}>
-      <Notion
-        id={notionId}
-        title={concept.title}
-        text={concept.text}
-        imageElement={
-          concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-            <ImageWrapper>
-              <NotionDialog
-                id={notionId}
-                ariaLabel="Vis begrep beskrivelse"
-                title={concept.title}
-                subTitle="forklaring"
-                content={
-                  <Fragment>
-                    <NotionDialogContent>
-                      {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-                        <NotionDialogImage
-                          src={concept.visualElement.image.src}
-                          alt={concept.visualElement.image.alt ?? ''}
-                        />
-                      ) : undefined}
+    <ContentWrapper adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}>
+      <FigureNotion
+        id={figureId}
+        figureId={visualElementId}
+        copyright={concept.copyright}
+        licenseString={concept.copyright?.license?.license ?? ''}
+        type="concept"
+        hideIconsAndAuthors={hideIconsAndAuthors}>
+        <Notion
+          id={notionId}
+          title={concept.title}
+          text={concept.text}
+          imageElement={
+            concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
+              <ImageWrapper>
+                <NotionDialog
+                  id={notionId}
+                  ariaLabel="Vis begrep beskrivelse"
+                  title={concept.title}
+                  subTitle="forklaring"
+                  content={
+                    <Fragment>
+                      <NotionDialogContent>
+                        {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
+                          <NotionDialogImage
+                            src={concept.visualElement.image.src}
+                            alt={concept.visualElement.image.alt ?? ''}
+                          />
+                        ) : undefined}
 
-                      <NotionDialogText>{concept.text}</NotionDialogText>
-                    </NotionDialogContent>
-                  </Fragment>
-                }>
-                <NotionImage
-                  type={type}
-                  id={visualElementId}
-                  src={concept.visualElement.image.src}
-                  alt={concept.visualElement.image.alt ?? ''}
-                  imageCopyright={concept.visualElement.copyright}
-                />
-              </NotionDialog>
-            </ImageWrapper>
-          ) : undefined
-        }
-        visualElement={
-          concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url ? (
-            <ImageWrapper>
-              <NotionDialog
-                id={notionId}
-                ariaLabel="Vis begrep beskrivelse"
-                title={concept.title}
-                subTitle="forklaring"
-                content={
-                  <Fragment>
-                    <NotionDialogContent>
-                      {concept.visualElement &&
-                      concept.visualElement?.resource !== 'image' &&
-                      concept.visualElement.url ? (
-                        <NotionVisualElement visualElement={concept.visualElement} />
-                      ) : undefined}
+                        <NotionDialogText>{concept.text}</NotionDialogText>
+                      </NotionDialogContent>
+                    </Fragment>
+                  }>
+                  <NotionImage
+                    type={type}
+                    id={visualElementId}
+                    src={concept.visualElement.image.src}
+                    alt={concept.visualElement.image.alt ?? ''}
+                    imageCopyright={concept.visualElement.copyright}
+                  />
+                </NotionDialog>
+              </ImageWrapper>
+            ) : undefined
+          }
+          visualElement={
+            concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url ? (
+              <ImageWrapper>
+                <NotionDialog
+                  id={notionId}
+                  ariaLabel="Vis begrep beskrivelse"
+                  title={concept.title}
+                  subTitle="forklaring"
+                  content={
+                    <Fragment>
+                      <NotionDialogContent>
+                        {concept.visualElement &&
+                        concept.visualElement?.resource !== 'image' &&
+                        concept.visualElement.url ? (
+                          <NotionVisualElement visualElement={concept.visualElement} />
+                        ) : undefined}
 
-                      <NotionDialogText>{concept.text}</NotionDialogText>
-                    </NotionDialogContent>
-                    <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source="https://snl.no" />
-                  </Fragment>
-                }>
-                <NotionImage
-                  type={type}
-                  id={visualElementId}
-                  src={concept.image?.src as string}
-                  alt={concept.image?.alt ?? ''}
-                  imageCopyright={concept.visualElement.copyright}
-                />
-              </NotionDialog>
-            </ImageWrapper>
-          ) : undefined
-        }>
-        {' '}
-      </Notion>{' '}
-    </FigureNotion>
+                        <NotionDialogText>{concept.text}</NotionDialogText>
+                      </NotionDialogContent>
+                      <NotionDialogLicenses
+                        license={concept.copyright?.license?.license ?? ''}
+                        source="https://snl.no"
+                      />
+                    </Fragment>
+                  }>
+                  <NotionImage
+                    type={type}
+                    id={visualElementId}
+                    src={concept.image?.src as string}
+                    alt={concept.image?.alt ?? ''}
+                    imageCopyright={concept.visualElement.copyright}
+                  />
+                </NotionDialog>
+              </ImageWrapper>
+            ) : undefined
+          }>
+          {' '}
+        </Notion>{' '}
+      </FigureNotion>
+    </ContentWrapper>
   );
 };
 

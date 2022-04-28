@@ -20,14 +20,14 @@ export function FigureExpandButton({ messages, typeClass, type }: Props) {
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}>
       {type === 'image' && <ExpandTwoArrows className="contracted-icon" />}
-      {type === 'H5P' && <CursorClick style={{ width: '24px', height: '24px' }} />}
+      {type === 'H5P' || 'external' || ('iframe' && <CursorClick style={{ width: '24px', height: '24px' }} />)}
       {type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
     </button>
   );
 }
 
 interface Props {
-  type?: 'H5P' | 'image' | 'video';
+  type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;

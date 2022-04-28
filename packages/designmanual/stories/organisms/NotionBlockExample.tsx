@@ -63,7 +63,7 @@ class NotionBlockExample extends Component {
         onSite={[<NotionSiteTabs></NotionSiteTabs>]}
         reactCode={`
   //Enkel forklaringsblokk
-  <NotionBlock type="H5P" hideIconsAndAuthors inSearchResults></NotionBlock>
+  <NotionBlock type="H5P" hideIconsAndAuthors adjustSizeToFitWiderPage></NotionBlock>
   //Liste med forklaringsblokker
   <NotionListExample
   title="Liste med forklaringer"
@@ -86,7 +86,7 @@ class NotionBlockExample extends Component {
           },
 
           {
-            name: 'inSearchResults',
+            name: ' adjustSizeToFitWiderPage',
             type: 'boolean',
             default: '',
             description: 'Justerer bredden er til blokken for å passe inn på søkesiden',

@@ -12,7 +12,6 @@ import { useTranslation } from 'react-i18next';
 import { parseMarkdown } from '@ndla/util';
 
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import HTMLReactParser from 'html-react-parser';
 import { keyframes } from '@emotion/core';
 import { NotionVisualElementType } from './NotionVisualElement';
 

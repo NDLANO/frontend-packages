@@ -170,59 +170,6 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         }}
       />
     );
-  } else {
-    return (
-      <ConceptNotion
-        type="H5P"
-        adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}
-        hideIconsAndAuthors={hideIconsAndAuthors}
-        concept={{
-          id,
-          title: '6-akset robotarm',
-          text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
-          image: {
-            src: 'https://api.test.ndla.no/image-api/raw/id/23425',
-            alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
-          },
-          copyright: {
-            license: {
-              license: 'CC-BY-SA-4.0',
-            },
-            creators: [
-              {
-                name: 'Haldor Hove',
-                type: 'writer',
-              },
-            ],
-            processors: [
-              {
-                name: 'Totaltekst',
-                type: 'correction',
-              },
-            ],
-            rightsholders: [],
-          },
-          visualElement: {
-            title: 'Viper 6-akset robot',
-            resource: 'brightcove',
-            url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
-            copyright: {
-              license: {
-                license: 'CC-BY-NC-SA-4.0',
-              },
-              creators: [],
-              processors: [],
-              rightsholders: [
-                {
-                  name: 'Omron Electronics Norway AS',
-                  type: 'supplier',
-                },
-              ],
-            },
-          },
-        }}
-      />
-    );
   }
 };
 export default NotionBlock;

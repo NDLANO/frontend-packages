@@ -35,57 +35,108 @@ export const FigureCaption = ({
   link,
   hideFigcaption,
   hasLinkedVideo,
+  hideIconsAndAuthors,
 }: FigureCaptionProps) => {
   const { t } = useTranslation();
   return (
-    <figcaption {...classes('caption', hideFigcaption ? 'hidden-caption' : undefined)}>
-      {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
-      <footer {...classes('byline')}>
-        <div {...classes('byline-licenselist')}>
-          <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
-            <div {...classes('byline-author-buttons')}>
-              <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
-              <div>
-                <Button
-                  borderShape="rounded"
-                  outline
-                  size="small"
-                  type="button"
-                  data-dialog-trigger-id={id}
-                  data-dialog-source-id={figureId}>
-                  {reuseLabel}
-                </Button>
-                {hasLinkedVideo && (
+    <>
+      {!hideIconsAndAuthors ? (
+        <figcaption {...classes('caption', hideFigcaption ? 'hidden-caption' : undefined)}>
+          {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
+          <footer {...classes('byline')}>
+            <div {...classes('byline-licenselist')}>
+              <LicenseByline licenseRights={licenseRights} locale={locale} marginRight>
+                <div {...classes('byline-author-buttons')}>
+                  <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
+                  <div>
+                    <Button
+                      borderShape="rounded"
+                      outline
+                      size="small"
+                      type="button"
+                      data-dialog-trigger-id={id}
+                      data-dialog-source-id={figureId}>
+                      {reuseLabel}
+                    </Button>
+                    {hasLinkedVideo && (
+                      <Button
+                        borderShape="rounded"
+                        outline
+                        size="small"
+                        type="button"
+                        {...classes('toggleAlternativeVideo')}>
+                        <span className="original">{t('figure.button.alternative')}</span>
+                        <span className="alternative hidden">{t('figure.button.original')}</span>
+                      </Button>
+                    )}
+                  </div>{' '}
+                  {children}
+                </div>
+              </LicenseByline>
+              {link && (
+                <div {...classes('link-wrapper')}>
+                  <SafeLink
+                    to={link.url}
+                    {...classes('link')}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}>
+                    <span {...classes('link-text')}>{link.text}</span>
+                    <LinkIcon />
+                  </SafeLink>
+                  {link.description && <p {...classes('link-description')}>{link.description}</p>}
+                </div>
+              )}
+            </div>
+          </footer>
+        </figcaption>
+      ) : (
+        <figcaption {...classes('caption', hideFigcaption ? 'hidden-caption' : undefined)}>
+          {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
+          <footer {...classes('byline')}>
+            <div {...classes('byline-licenselist')}>
+              <div {...classes('byline-author-buttons-alone')}>
+                <div>
                   <Button
                     borderShape="rounded"
                     outline
                     size="small"
                     type="button"
-                    {...classes('toggleAlternativeVideo')}>
-                    <span className="original">{t('figure.button.alternative')}</span>
-                    <span className="alternative hidden">{t('figure.button.original')}</span>
+                    data-dialog-trigger-id={id}
+                    data-dialog-source-id={figureId}>
+                    {reuseLabel}
                   </Button>
-                )}
+                  {hasLinkedVideo && (
+                    <Button
+                      borderShape="rounded"
+                      outline
+                      size="small"
+                      type="button"
+                      {...classes('toggleAlternativeVideo')}>
+                      <span className="original">{t('figure.button.alternative')}</span>
+                      <span className="alternative hidden">{t('figure.button.original')}</span>
+                    </Button>
+                  )}
+                </div>{' '}
+                {children}
               </div>
-              {children}
+              {link && (
+                <div {...classes('link-wrapper')}>
+                  <SafeLink
+                    to={link.url}
+                    {...classes('link')}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}>
+                    <span {...classes('link-text')}>{link.text}</span>
+                    <LinkIcon />
+                  </SafeLink>
+                  {link.description && <p {...classes('link-description')}>{link.description}</p>}
+                </div>
+              )}
             </div>
-          </LicenseByline>
-          {link && (
-            <div {...classes('link-wrapper')}>
-              <SafeLink
-                to={link.url}
-                {...classes('link')}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}>
-                <span {...classes('link-text')}>{link.text}</span>
-                <LinkIcon />
-              </SafeLink>
-              {link.description && <p {...classes('link-description')}>{link.description}</p>}
-            </div>
-          )}
-        </div>
-      </footer>
-    </figcaption>
+          </footer>
+        </figcaption>
+      )}
+    </>
   );
 };
 
@@ -116,6 +167,7 @@ interface FigureCaptionProps {
   locale?: string;
   hideFigcaption?: boolean;
   hasLinkedVideo?: boolean;
+  hideIconsAndAuthors?: boolean;
 }
 
 const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {

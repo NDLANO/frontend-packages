@@ -8,11 +8,11 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { Icon } from '@iconify/react';
 import { css, InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
-import { Icon } from '@iconify/react';
 
 const BaselineIcon = styled(Icon)`
   content: '';

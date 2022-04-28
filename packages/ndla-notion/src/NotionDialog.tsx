@@ -96,7 +96,7 @@ const Paragraph = styled.p`
   font-weight: ${fonts.weight.normal};
   ${fonts.sizes('18px', 1.3)};
   color: ${colors.text.primary};
-  font-family: ${fonts.serif};
+  font-family: ${fonts.sans};
 `;
 
 interface NotionDialogTextProps {

@@ -16,14 +16,13 @@ import { breakpoints, mq } from '@ndla/core';
 //@ts-ignore
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ inSearchResults?: boolean }>`
   position: relative !important;
   right: auto !important;
-  left: -16.6666666667%;
-  width: 133.3333333333% !important;
+  left: ${(props) => (props.inSearchResults ? '0%' : '-16.6666666667%')};
+  width: ${(props) => (props.inSearchResults ? '100%' : '133.3333333333%')};
   padding-left: 24px;
   padding-right: 24px;
-  border-bottom: 1px solid rgba(209, 214, 219, 1);
   & button {
     width: 100%;
   }
@@ -39,17 +38,22 @@ const ContentWrapper = styled.div`
 
 type Props = {
   type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+
+  hideIconsAndAuthors?: boolean; //hides the licenseicons
+  inSearchResults?: boolean; //adjusts the width and left alignment of the block to fit in searchresults
 };
 
-const NotionBlock = ({ type }: Props) => {
+const NotionBlock = ({ type, hideIconsAndAuthors, inSearchResults }: Props) => {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
 
   if (type === 'image') {
     return (
-      <ContentWrapper>
+      <ContentWrapper inSearchResults={inSearchResults}>
         <ConceptNotion
+          hideIconsAndAuthors={hideIconsAndAuthors}
+          type={type}
           concept={{
             id,
             title: 'And',
@@ -89,8 +93,10 @@ const NotionBlock = ({ type }: Props) => {
     );
   } else if (type === 'video') {
     return (
-      <ContentWrapper>
+      <ContentWrapper inSearchResults={inSearchResults}>
         <ConceptNotion
+          hideIconsAndAuthors={hideIconsAndAuthors}
+          type={type}
           concept={{
             id,
             text: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',

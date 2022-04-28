@@ -431,9 +431,9 @@ const SearchResult = ({ showCompetenceGoals }) => {
           onRemove={() => {
             setHideNotionsResult(true);
           }}>
-          <NotionBlock type="image" />
-          <NotionBlock type="video" />
-          <NotionBlock type="H5P" />
+          <NotionBlock type="image" inSearchResults />
+          <NotionBlock type="video" inSearchResults />
+          <NotionBlock type="H5P" inSearchResults />
         </SearchNotionsResult>
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}

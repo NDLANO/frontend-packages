@@ -5,11 +5,14 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
+import { ImageCrop, ImageFocalPoint } from '../Image';
 
 export type NotionVisualElementType = {
+  element?: ReactNode;
+  type?: 'video' | 'H5P';
   resource?: string;
   title?: string;
   url?: string;
@@ -17,6 +20,8 @@ export type NotionVisualElementType = {
   image?: {
     src: string;
     alt?: string;
+    crop?: ImageCrop;
+    focalPoint?: ImageFocalPoint;
   };
 };
 

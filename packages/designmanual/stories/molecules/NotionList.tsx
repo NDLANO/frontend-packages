@@ -53,7 +53,7 @@ const NotionListExample = ({ title, children }: Props) => {
           <NotionList>
             {children.map((x) => (
               <li>
-                <NotionBlock type={x.type}></NotionBlock>
+                <NotionBlock type={x.type} hideIconsAndAuthors></NotionBlock>
               </li>
             ))}
           </NotionList>

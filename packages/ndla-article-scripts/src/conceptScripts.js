@@ -84,7 +84,7 @@ export const addShowConceptDefinitionClickListeners = () => {
         popup.setAttribute('aria-hidden', false);
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        popup.style.top = `${openBtnBottom + 10}px`;
+        popup.style.top = `${openBtnBottom + 20}px`;
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const popupHeight = popup.offsetHeight;
         const popupTop = getElementOffset(popup).top;

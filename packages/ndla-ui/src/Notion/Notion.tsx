@@ -5,17 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
+import React, { Fragment, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
+
 import { parseMarkdown } from '@ndla/util';
-import React, { Fragment, ReactNode } from 'react';
+
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import HTMLReactParser from 'html-react-parser';
 import { keyframes } from '@emotion/core';
-import Button from '@ndla/button';
-import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { CursorClick } from '@ndla/icons/action';
-import { Play, ArrowCollapse } from '@ndla/icons/common';
-import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
+import { NotionVisualElementType } from './NotionVisualElement';
 
 const NotionContainer = styled.div``;
 
@@ -55,18 +54,6 @@ const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   }
 `;
 
-const ImageElement = styled.img`
-  object-fit: cover;
-  box-sizing: inherit;
-  height: 162px;
-  transition: transform ${animations.durations.fast};
-  &:hover {
-    transform: scale(1.1);
-    opacity: 1.1;
-    transition-duration: 0.5s;
-  }
-`;
-
 const fadeInMediaKeyframe = keyframes`
   0% {
     opacity: 0;
@@ -85,64 +72,6 @@ const fadeOutMediaKeyframe = keyframes`
     opacity: 0;
     height:0;
     overflow: hidden;
-  }
-`;
-
-const ImageOverflowWrapper = styled.div`
-  overflow: hidden;
-`;
-const ImageWrapper = styled.div`
-  float: right;
-  min-width: 262px;
-  padding-left: ${spacing.normal};
-  position: relative;
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100%;
-    padding-left: 0;
-  }
-`;
-
-const ExpandVisualElementButton = styled(Button)`
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  transition: all ${animations.durations.normal};
-  &,
-  &:focus,
-  &:active {
-    background-color: rgba(255, 255, 255, 0.65);
-  }
-
-  color: ${colors.brand.primary};
-  border-radius: 50%;
-  border: 0;
-  width: 40px !important;
-  height: 40px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    transition: transform ${animations.durations.normal} ease-out;
-  }
-  ${ContentWrapper}:hover & {
-    background-color: #fff;
-    svg {
-      transform: scale(1.2);
-    }
-  }
-`;
-
-const ExpandIcon = styled.span`
-  ${ExpandVisualElementButton}.expanded & {
-    display: none;
-  }
-`;
-const CollapseIcon = styled.span`
-  display: none;
-  ${ExpandVisualElementButton}.expanded & {
-    display: inline-block;
   }
 `;
 
@@ -174,23 +103,12 @@ const LabelsContainer = styled.div`
   margin: ${spacing.small} 0;
 `;
 
-type VisualElementProps = {
-  type: 'video' | 'H5P';
-  element: ReactNode;
-  metaImage?: {
-    url: string;
-    alt: string;
-    crop?: ImageCrop;
-    focalPoint?: ImageFocalPoint;
-  };
-};
-
 export type NotionProps = {
   id: string | number;
   labels?: string[];
   text: ReactNode;
   title: string;
-  visualElement?: VisualElementProps;
+  visualElement?: NotionVisualElementType;
   imageElement?: ReactNode;
   children?: ReactNode;
 };
@@ -204,30 +122,8 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
 
       <ContentWrapper>
         {imageElement}
-        {visualElement && visualElement.metaImage && (
-          <ImageWrapper>
-            <ImageOverflowWrapper>
-              <ImageElement
-                src={`${visualElement.metaImage.url}?${makeSrcQueryString(
-                  400,
-                  visualElement.metaImage.crop,
-                  visualElement.metaImage.focalPoint,
-                )}`}
-                alt={visualElement.metaImage.alt}
-              />
-            </ImageOverflowWrapper>
-            <ExpandVisualElementButton data-notion-media-id={`notion-media-${id}`}>
-              <ExpandIcon>
-                {visualElement.type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
-                {visualElement.type === 'H5P' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-              </ExpandIcon>
-              <CollapseIcon>
-                <ArrowCollapse style={{ width: '24px', height: '24px' }} />
-              </CollapseIcon>
-            </ExpandVisualElementButton>
-          </ImageWrapper>
-        )}
-        <TextWrapper hasVisualElement={!!(imageElement || visualElement?.metaImage)}>
+        {visualElement}
+        <TextWrapper hasVisualElement={!!(imageElement || visualElement?.image)}>
           {parseMarkdown(`**${title}** \u2013 ${text}`, 'body')}
           {!!labels.length && (
             <LabelsContainer>

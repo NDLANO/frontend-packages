@@ -4,24 +4,24 @@
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree. *
  */
+import styled from '@emotion/styled';
 
 import React, { useEffect, Fragment } from 'react';
 //@ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
-import { Notion } from '.';
+
 import NotionDialog, {
   NotionDialogContent,
   NotionDialogText,
   NotionDialogImage,
   NotionDialogLicenses,
 } from '@ndla/notion';
-import styled from '@emotion/styled';
+import { breakpoints, mq, spacing } from '@ndla/core';
+import { Notion } from '.';
 import { NotionImage } from './NotionImage';
-import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
 import FigureNotion from './FigureNotion';
 import { Copyright } from '../types';
-import { Figure } from '../Figure';
 
 const ImageWrapper = styled.div`
   float: right;
@@ -48,11 +48,13 @@ export interface ConceptNotionType {
   };
 }
 interface Props {
+  type?: 'H5P' | 'image' | 'video';
   concept: ConceptNotionType;
   disableScripts?: boolean;
+  hideIconsAndAuthors?: boolean;
 }
 
-const ConceptNotion = ({ concept, disableScripts }: Props) => {
+const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: Props) => {
   const notionId = `notion-${concept.id}`;
   const figureId = `notion-figure-${concept.id}`;
   const visualElementId = `visual-element-${concept.id}`;
@@ -64,64 +66,86 @@ const ConceptNotion = ({ concept, disableScripts }: Props) => {
   }, [disableScripts]);
 
   return (
-    <NotionDialog
-      id={notionId}
-      ariaLabel="Vis begrep beskrivelse"
-      title={concept.title}
-      subTitle="forklaring"
-      content={
-        <Fragment>
-          <NotionDialogContent>
-            {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-              <NotionDialogImage src={concept.visualElement.image.src} alt={concept.visualElement.image.alt ?? ''} />
-            ) : undefined}
-            {concept.visualElement && concept.visualElement?.resource !== 'image' && concept.visualElement.url ? (
-              <NotionVisualElement visualElement={concept.visualElement} />
-            ) : undefined}
+    <FigureNotion
+      id={figureId}
+      figureId={visualElementId}
+      copyright={concept.copyright}
+      licenseString={concept.copyright?.license?.license ?? ''}
+      type="concept"
+      hideIconsAndAuthors={hideIconsAndAuthors}>
+      <Notion
+        id={notionId}
+        title={concept.title}
+        text={concept.text}
+        imageElement={
+          concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
+            <ImageWrapper>
+              <NotionDialog
+                id={notionId}
+                ariaLabel="Vis begrep beskrivelse"
+                title={concept.title}
+                subTitle="forklaring"
+                content={
+                  <Fragment>
+                    <NotionDialogContent>
+                      {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
+                        <NotionDialogImage
+                          src={concept.visualElement.image.src}
+                          alt={concept.visualElement.image.alt ?? ''}
+                        />
+                      ) : undefined}
 
-            <NotionDialogText>{concept.text}</NotionDialogText>
-          </NotionDialogContent>
-          <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source="https://snl.no" />
-        </Fragment>
-      }>
-      <FigureNotion
-        id={figureId}
-        figureId={visualElementId}
-        copyright={concept.copyright}
-        licenseString={concept.copyright?.license?.license ?? ''}
-        type="concept"
-        hideFigCaption>
-        <Notion
-          id={notionId}
-          title={concept.title}
-          text={concept.text}
-          imageElement={
-            concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-              <ImageWrapper>
+                      <NotionDialogText>{concept.text}</NotionDialogText>
+                    </NotionDialogContent>
+                  </Fragment>
+                }>
                 <NotionImage
+                  type={type}
                   id={visualElementId}
                   src={concept.visualElement.image.src}
                   alt={concept.visualElement.image.alt ?? ''}
                   imageCopyright={concept.visualElement.copyright}
                 />
-              </ImageWrapper>
-            ) : undefined
-          }
-          visualElement={
-            concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url
-              ? {
-                  type: concept.visualElement.resource === 'brightcove' ? 'video' : 'H5P',
-                  metaImage: concept.image && {
-                    url: concept.image.src,
-                    alt: concept.image.alt,
-                  },
+              </NotionDialog>
+            </ImageWrapper>
+          ) : undefined
+        }
+        visualElement={
+          concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url ? (
+            <ImageWrapper>
+              <NotionDialog
+                id={notionId}
+                ariaLabel="Vis begrep beskrivelse"
+                title={concept.title}
+                subTitle="forklaring"
+                content={
+                  <Fragment>
+                    <NotionDialogContent>
+                      {concept.visualElement &&
+                      concept.visualElement?.resource !== 'image' &&
+                      concept.visualElement.url ? (
+                        <NotionVisualElement visualElement={concept.visualElement} />
+                      ) : undefined}
 
-                  element: <NotionVisualElement visualElement={concept.visualElement} />,
-                }
-              : undefined
-          }></Notion>
-      </FigureNotion>
-    </NotionDialog>
+                      <NotionDialogText>{concept.text}</NotionDialogText>
+                    </NotionDialogContent>
+                    <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source="https://snl.no" />
+                  </Fragment>
+                }>
+                <NotionImage
+                  type={type}
+                  id={visualElementId}
+                  src={concept.image?.src as string}
+                  alt={concept.image?.alt ?? ''}
+                  imageCopyright={concept.visualElement.copyright}
+                />
+              </NotionDialog>
+            </ImageWrapper>
+          ) : undefined
+        }>
+        {' '}
+      </Notion>{' '}
+    </FigureNotion>
   );
 };
 

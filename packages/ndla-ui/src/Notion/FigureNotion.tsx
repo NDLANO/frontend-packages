@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-import Button from '@ndla/button';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,6 +21,7 @@ interface Props {
   licenseString: string;
   type: 'video' | 'H5P' | 'image' | 'concept';
   hideFigCaption?: boolean;
+  hideIconsAndAuthors?: boolean;
 }
 
 const FigureNotion = ({
@@ -34,6 +34,7 @@ const FigureNotion = ({
   title,
   type,
   hideFigCaption,
+  hideIconsAndAuthors,
 }: Props) => {
   const { t, i18n } = useTranslation();
   const license = getLicenseByAbbreviation(licenseString, i18n.language);
@@ -59,7 +60,8 @@ const FigureNotion = ({
               id={id}
               reuseLabel={t(`${type}.reuse`)}
               authors={contributors}
-              licenseRights={license.rights}>
+              licenseRights={license.rights}
+              hideIconsAndAuthors={hideIconsAndAuthors}>
               <FigureLicenseDialog
                 id={id}
                 authors={contributors}

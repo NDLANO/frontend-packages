@@ -45,15 +45,15 @@ class NotionBlockExample extends Component {
             <ContentWrapper>
               <h2>Begrep med visuelt element bilde</h2>
             </ContentWrapper>
-            <NotionBlock type="image" />
+            <NotionBlock type="image" hideIconsAndAuthors />
             <ContentWrapper>
               <h2>Begrep med visuelt element video</h2>
             </ContentWrapper>
-            <NotionBlock type="video" />
+            <NotionBlock type="video" hideIconsAndAuthors />
             <ContentWrapper>
               <h2>Begrep med visuelt element h5p</h2>
             </ContentWrapper>
-            <NotionBlock type="H5P" />
+            <NotionBlock type="H5P" hideIconsAndAuthors />
             <ContentWrapper>
               <h2>Begrep med visuelt element iframe/external</h2>
             </ContentWrapper>
@@ -63,7 +63,7 @@ class NotionBlockExample extends Component {
         onSite={[<NotionSiteTabs></NotionSiteTabs>]}
         reactCode={`
   //Enkel forklaringsblokk
-  <NotionBlock type="H5P"></NotionBlock>
+  <NotionBlock type="H5P" hideIconsAndAuthors inSearchResults></NotionBlock>
   //Liste med forklaringsblokker
   <NotionListExample
   title="Liste med forklaringer"
@@ -76,6 +76,20 @@ class NotionBlockExample extends Component {
             type: '"image" ,"H5P", "video"',
             default: 'Required',
             description: 'Velger embeded type innhold for forklaringsboksen',
+          },
+
+          {
+            name: 'hideIconsAndAuthors ',
+            type: 'boolean',
+            default: '',
+            description: 'Fjerner lisensikonene og forfatterne',
+          },
+
+          {
+            name: 'inSearchResults',
+            type: 'boolean',
+            default: '',
+            description: 'Justerer bredden er til blokken for å passe inn på søkesiden',
           },
 
           {

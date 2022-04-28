@@ -7,10 +7,11 @@
  */
 
 import React from 'react';
-import { ArrowCollapse } from '@ndla/icons/common';
+import { Play } from '@ndla/icons/common';
 import { ExpandTwoArrows } from '@ndla/icons/action';
+import { CursorClick } from '@ndla/icons/action';
 
-export function FigureExpandButton({ messages, typeClass }: Props) {
+export function FigureExpandButton({ messages, typeClass, type }: Props) {
   return (
     <button
       className="c-figure__fullscreen-btn"
@@ -18,13 +19,15 @@ export function FigureExpandButton({ messages, typeClass }: Props) {
       data-aria={messages.zoomImageButtonLabel}
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}>
-      <ArrowCollapse className="expanded-icon" />
-      <ExpandTwoArrows className="contracted-icon" />
+      {type === 'image' && <ExpandTwoArrows className="contracted-icon" />}
+      {type === 'H5P' && <CursorClick style={{ width: '24px', height: '24px' }} />}
+      {type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
     </button>
   );
 }
 
 interface Props {
+  type?: 'H5P' | 'image' | 'video';
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;

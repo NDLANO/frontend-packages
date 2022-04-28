@@ -7,8 +7,10 @@
  */
 
 import React, { ReactNode } from 'react';
+import { breakpoints, mq } from '@ndla/core';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
+
 export interface ImageCrop {
   startX: number;
   startY: number;
@@ -38,6 +40,10 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
 
 const StyledImageWrapper = styled.div`
   position: relative;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 interface Props {

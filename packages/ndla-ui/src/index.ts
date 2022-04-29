@@ -220,4 +220,17 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
+
+export {
+  NotionDialogContent,
+  NotionDialogText,
+  NotionDialogImage,
+  NotionDialog,
+  NotionDialogTags,
+  NotionDialogWrapper,
+  NotionDialogLicenses,
+  NotionDialogRelatedLinks,
+  NotionHeaderWithoutExitButton,
+} from './Notionblock';
+
 export { BannerCard } from './BannerCard';

@@ -10,13 +10,13 @@ import React, { useEffect, Fragment } from 'react';
 //@ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 
+import { breakpoints, mq, spacing } from '@ndla/core';
 import NotionDialog, {
   NotionDialogContent,
   NotionDialogText,
   NotionDialogImage,
   NotionDialogLicenses,
-} from '@ndla/notion';
-import { breakpoints, mq, spacing } from '@ndla/core';
+} from '../Notionblock';
 import { Notion } from '.';
 import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';

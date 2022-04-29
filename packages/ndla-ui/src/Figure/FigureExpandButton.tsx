@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { Play } from '@ndla/icons/common';
+import { Play, ArrowCollapse } from '@ndla/icons/common';
 import { ExpandTwoArrows } from '@ndla/icons/action';
 import { CursorClick } from '@ndla/icons/action';
 
@@ -19,8 +19,10 @@ export function FigureExpandButton({ messages, typeClass, type }: Props) {
       data-aria={messages.zoomImageButtonLabel}
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}>
-      {type === 'image' && <ExpandTwoArrows className="contracted-icon" />}
-      {type === 'H5P' && <CursorClick style={{ width: '24px', height: '24px' }} />}
+      {type === 'image' && <ExpandTwoArrows className="contracted-icon" /> && (
+        <ArrowCollapse className="expanded-icon" />
+      )}
+      {type === 'h5p' && <CursorClick style={{ width: '24px', height: '24px' }} />}
       {type === 'iframe' && <CursorClick style={{ width: '24px', height: '24px' }} />}
       {type === 'external' && <CursorClick style={{ width: '24px', height: '24px' }} />}
       {type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
@@ -29,7 +31,7 @@ export function FigureExpandButton({ messages, typeClass, type }: Props) {
 }
 
 interface Props {
-  type?: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;

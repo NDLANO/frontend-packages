@@ -12,7 +12,7 @@ import { ImageCrop, ImageFocalPoint } from '../Image';
 
 export type NotionVisualElementType = {
   element?: ReactNode;
-  type?: 'video' | 'H5P';
+  type?: 'video' | 'h5p';
   resource?: string;
   title?: string;
   url?: string;
@@ -28,7 +28,7 @@ export type NotionVisualElementType = {
 interface Props {
   visualElement: NotionVisualElementType;
 }
-const supportedEmbedTypes = ['brightcove', 'H5P', 'iframe', 'external'];
+const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external'];
 
 const NotionVisualElement = ({ visualElement }: Props) => {
   const id = '1';
@@ -37,7 +37,7 @@ const NotionVisualElement = ({ visualElement }: Props) => {
     return <p>Embed type is not supported!</p>;
   }
 
-  const type = visualElement.resource === 'brightcove' ? 'video' : 'H5P';
+  const type = visualElement.resource === 'brightcove' ? 'video' : 'h5p';
   return (
     <FigureNotion
       resizeIframe

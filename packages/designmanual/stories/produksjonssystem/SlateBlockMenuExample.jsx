@@ -95,9 +95,9 @@ const actions = [
   },
   {
     data: { type: 'embed', object: 'h5p' },
-    label: 'H5P',
+    label: 'h5p',
     icon: <PresentationPlay />,
-    helpIcon: renderArticleInModal('H5P'),
+    helpIcon: renderArticleInModal('h5p'),
   },
 
   {

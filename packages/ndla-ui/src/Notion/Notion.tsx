@@ -8,7 +8,6 @@
 import React, { Fragment, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-
 import { parseMarkdown } from '@ndla/util';
 
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
@@ -24,11 +23,7 @@ const ContentWrapper = styled.div`
   }
   .c-figure {
     margin: 0;
-    position: relative;
-    left: 0;
-    width: 25%;
     padding: 0 0 0 20px;
-    float: right;
     &.expanded {
       width: 100% !important;
       padding: 0;
@@ -42,7 +37,7 @@ const ContentWrapper = styled.div`
 `;
 const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   width: ${(props) => (props.hasVisualElement ? '75%' : '100%')};
-  text-align: initial;
+
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }

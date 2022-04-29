@@ -53,7 +53,7 @@ class NotionBlockExample extends Component {
             <ContentWrapper>
               <h2>Begrep med visuelt element h5p</h2>
             </ContentWrapper>
-            <NotionBlock type="H5P" hideIconsAndAuthors />
+            <NotionBlock type="h5p" hideIconsAndAuthors />
             <ContentWrapper>
               <h2>Begrep med visuelt element iframe/external</h2>
             </ContentWrapper>
@@ -67,7 +67,7 @@ class NotionBlockExample extends Component {
   //Liste med forklaringsblokker
   <NotionListExample
   title="Liste med forklaringer"
-  children={[{ type: 'image' }, { type: 'H5P' }, { type: 'video' }]}>
+  children={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}>
   </NotionListExample>
               `}
         usesPropTypes={[

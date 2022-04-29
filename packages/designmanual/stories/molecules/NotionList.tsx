@@ -35,7 +35,7 @@ const NotionList = styled.ul`
   list-style: none;
 `;
 type Notions = {
-  type: 'image' | 'video' | 'H5P';
+  type: 'image' | 'video' | 'h5p';
 };
 type Props = {
   children: Notions[];
@@ -51,9 +51,9 @@ const NotionListExample = ({ title, children }: Props) => {
             <NotionListTitle>{title}</NotionListTitle>
           </NotionListTitleWrapper>
           <NotionList>
-            {children.map((x) => (
+            {children.map((child) => (
               <li>
-                <NotionBlock type={x.type} hideIconsAndAuthors></NotionBlock>
+                <NotionBlock type={child.type} hideIconsAndAuthors></NotionBlock>
               </li>
             ))}
           </NotionList>

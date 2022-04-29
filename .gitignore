@@ -19,3 +19,4 @@ packages/*/.vscode
 .cache
 .vscode
 .yarn/*
+package-lock.json

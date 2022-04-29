@@ -119,7 +119,6 @@ export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
 export { ResourceBox } from './ResourceBox';
 
-export { default as CloseButton } from './CloseButton';
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
 export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';
@@ -220,17 +219,5 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
-
-export {
-  NotionDialogContent,
-  NotionDialogText,
-  NotionDialogImage,
-  NotionDialog,
-  NotionDialogTags,
-  NotionDialogWrapper,
-  NotionDialogLicenses,
-  NotionDialogRelatedLinks,
-  NotionHeaderWithoutExitButton,
-} from './Notionblock';
 
 export { BannerCard } from './BannerCard';

@@ -19,7 +19,7 @@ interface Props {
   title?: string;
   copyright?: Partial<Copyright>;
   licenseString: string;
-  type: 'video' | 'H5P' | 'image' | 'concept';
+  type: 'video' | 'h5p' | 'image' | 'concept';
   hideFigCaption?: boolean;
   hideIconsAndAuthors?: boolean;
 }

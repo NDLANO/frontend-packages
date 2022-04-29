@@ -15,10 +15,10 @@ import { uuid } from '@ndla/util';
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
 
 type Props = {
-  type: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+  type: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
 
-  hideIconsAndAuthors?: boolean; //hides the licenseicons
-  adjustSizeToFitWiderPage?: boolean; //adjusts the width and left alignment of the block to fit in searchresults
+  hideIconsAndAuthors?: boolean;
+  adjustSizeToFitWiderPage?: boolean;
 };
 
 const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Props) => {
@@ -34,6 +34,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         type={type}
         concept={{
           id,
+          authors: [],
           title: 'And',
           text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
           subjectNames: ['Naturbruk Vg1', 'Naturbruk Vg2'],
@@ -76,6 +77,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         type={type}
         concept={{
           id,
+          authors: [],
           text: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',
           title: 'Velferdsteknologi',
           image: {
@@ -117,7 +119,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         }}
       />
     );
-  } else if (type === 'external' || type === 'iframe' || type === 'H5P') {
+  } else if (type === 'external' || type === 'iframe' || type === 'h5p') {
     return (
       <ConceptNotion
         adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}
@@ -125,6 +127,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         type={type}
         concept={{
           id,
+          authors: [],
           title: '6-akset robotarm',
           text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
           image: {
@@ -151,7 +154,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
           },
           visualElement: {
             title: 'Viper 6-akset robot',
-            resource: 'H5P',
+            resource: 'h5p',
             url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
             copyright: {
               license: {
@@ -178,6 +181,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         type={type}
         concept={{
           id,
+          authors: [],
           title: '6-akset robotarm',
           text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
           image: {
@@ -204,7 +208,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
           },
           visualElement: {
             title: 'Viper 6-akset robot',
-            resource: 'H5P',
+            resource: 'h5p',
             url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
             copyright: {
               license: {

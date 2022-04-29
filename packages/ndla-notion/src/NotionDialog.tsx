@@ -176,7 +176,7 @@ interface Props {
   subTitle?: string;
   ariaHidden?: boolean;
   children?: ReactNode;
-  customCSS: InterpolationWithTheme<any>;
+  customCSS?: InterpolationWithTheme<any>;
   headerContent?: ReactNode;
 }
 

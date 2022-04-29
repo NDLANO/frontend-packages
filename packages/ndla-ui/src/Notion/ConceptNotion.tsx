@@ -11,13 +11,8 @@ import React, { useEffect, Fragment } from 'react';
 import { initArticleScripts } from '@ndla/article-scripts';
 
 import { breakpoints, mq, spacing } from '@ndla/core';
-import NotionDialog, {
-  NotionDialogContent,
-  NotionDialogText,
-  NotionDialogImage,
-  NotionDialogLicenses,
-} from '../Notionblock';
-import { Notion } from '.';
+import Notion, { NotionDialogContent, NotionDialogText, NotionDialogImage, NotionDialogLicenses } from '@ndla/notion';
+import { Notion as UINotion } from '.';
 import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
 import FigureNotion from './FigureNotion';
@@ -68,7 +63,7 @@ export interface ConceptNotionType {
   };
 }
 interface Props {
-  type?: 'image' | 'video' | 'H5P' | 'iframe' | 'external';
+  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
   concept: ConceptNotionType;
   disableScripts?: boolean;
   hideIconsAndAuthors?: boolean;
@@ -95,14 +90,14 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
         licenseString={concept.copyright?.license?.license ?? ''}
         type="concept"
         hideIconsAndAuthors={hideIconsAndAuthors}>
-        <Notion
+        <UINotion
           id={notionId}
           title={concept.title}
           text={concept.text}
           imageElement={
             concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
               <ImageWrapper>
-                <NotionDialog
+                <Notion
                   id={notionId}
                   ariaLabel="Vis begrep beskrivelse"
                   title={concept.title}
@@ -128,14 +123,14 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                     alt={concept.visualElement.image.alt ?? ''}
                     imageCopyright={concept.visualElement.copyright}
                   />
-                </NotionDialog>
+                </Notion>
               </ImageWrapper>
             ) : undefined
           }
           visualElement={
             concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url ? (
               <ImageWrapper>
-                <NotionDialog
+                <Notion
                   id={notionId}
                   ariaLabel="Vis begrep beskrivelse"
                   title={concept.title}
@@ -164,12 +159,12 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                     alt={concept.image?.alt ?? ''}
                     imageCopyright={concept.visualElement.copyright}
                   />
-                </NotionDialog>
+                </Notion>
               </ImageWrapper>
             ) : undefined
           }>
           {' '}
-        </Notion>{' '}
+        </UINotion>{' '}
       </FigureNotion>
     </ContentWrapper>
   );

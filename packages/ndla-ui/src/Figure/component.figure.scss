@@ -136,11 +136,9 @@
   justify-content: space-between;
   color: $primary-color;
 }
-.c-figure__byline-author-buttons--noSiblings {
+.c-figure__byline-author-buttons--no-siblings {
   //styling for button in licensewrapper when there are no other elements in it. Places the button to the right
   flex-direction: row-reverse;
-  flex: 1 1 auto;
-  display: flex;
 }
 .c-figure__byline-authors {
   @include font-size(14px, 20px);

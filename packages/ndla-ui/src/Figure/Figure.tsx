@@ -39,24 +39,14 @@ export const FigureCaption = ({
 }: FigureCaptionProps) => {
   const { t } = useTranslation();
 
-  let classNameButton = '';
-  let changableLicenseRights: string[];
-  if (hideIconsAndAuthors) {
-    classNameButton = 'byline-author-buttons--noSiblings';
-    changableLicenseRights = [];
-  } else {
-    classNameButton = 'byline-author-buttons';
-    changableLicenseRights = licenseRights;
-  }
-
   return (
     <>
       <figcaption {...classes('caption', hideFigcaption ? 'hidden-caption' : undefined)}>
         {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
         <footer {...classes('byline')}>
           <div {...classes('byline-licenselist')}>
-            <LicenseByline licenseRights={changableLicenseRights} locale={locale} marginRight>
-              <div {...classes(classNameButton)}>
+            <LicenseByline licenseRights={hideIconsAndAuthors ? [] : licenseRights} locale={locale} marginRight>
+              <span {...classes('byline-author-buttons', hideIconsAndAuthors ? 'no-siblings' : undefined)}>
                 {!hideIconsAndAuthors && (
                   <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
                 )}
@@ -83,7 +73,7 @@ export const FigureCaption = ({
                   )}
                 </div>{' '}
                 {children}
-              </div>
+              </span>
             </LicenseByline>
 
             {link && (

@@ -66,7 +66,7 @@ blockquote > ol {
   position: relative;
   left: 50px;
 }
-@media only screen and (max-width: 1000px) {
+@include mq($until: desktop) {
   blockquote > ol {
     left: -20px;
   }

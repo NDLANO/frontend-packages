@@ -6,9 +6,6 @@
  *
  */
 
-import Table from 'cli-table3';
-import chalk from 'chalk';
-
 const getAllKeys = (o: object, prev: string = ''): string[] => {
   const keys: string[] = [];
   Object.entries(o).forEach(([key, value]: [string, unknown]) => {
@@ -31,17 +28,12 @@ const getUniqueKeys = (o: object): string[] => {
 };
 
 const logTable = (langs: { languageName: string; missingKeys: string[] }[]) => {
-  const table = new Table({});
-  table.push([chalk.bold('Language'), chalk.bold('Missing translation keys')]);
-
+  const table: {}[] = [];
   langs.forEach((l) => {
-    const tableContent =
-      l.missingKeys.length > 0 ? chalk.yellow(l.missingKeys.join('\n')) : chalk.green('No missing keys');
-    table.push([l.languageName, tableContent]);
+    l.missingKeys.forEach((key) => table.push({ language: l.languageName, missing: key }));
   });
-
   // eslint-disable-next-line no-console
-  console.log(table.toString());
+  console.table(table);
 };
 
 const getMissingLanguages = (languages: { languageName: string; translationObject: object }[]) => {

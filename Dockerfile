@@ -15,4 +15,4 @@ COPY scripts $APP_PATH/scripts
 WORKDIR $APP_PATH
 RUN yarn run build-storybook
 EXPOSE 5000
-CMD ["npm", "run", "serve-storybook"]
+CMD ["yarn", "run", "serve-storybook"]

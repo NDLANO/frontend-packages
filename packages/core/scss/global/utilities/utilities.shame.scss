@@ -6,13 +6,16 @@
 *
 */
 body {
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
   input {
     appearance: none !important;
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
   }
+}
+
+// Overflow hidden from reach/dialog and react-remove-scroll causes issues with sticky masthead
+html body {
+  overflow: visible !important;
 }
 
 /* IE-10+ fix for footer */

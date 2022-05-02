@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef, MouseEventHandler } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import isString from 'lodash/isString';
 import parse from 'html-react-parser';
@@ -21,9 +21,9 @@ import ArticleByline from './ArticleByline';
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
-import { NotionProps } from '../Notion/Notion';
 import ArticleAccessMessage from './ArticleAccessMessage';
 import MessageBox from '../MessageBox/MessageBox';
+import { ConceptNotionType } from '../Notion/ConceptNotion';
 
 const classes = new BEMHelper({
   name: 'article',
@@ -114,8 +114,7 @@ type Props = {
   renderMarkdown: (text: string) => string;
   copyPageUrlLink?: string;
   printUrl?: string;
-  notions?: { list: NotionProps[]; related: NotionRelatedContent[] };
-  onReferenceClick?: MouseEventHandler;
+  notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
 };
 
@@ -144,7 +143,6 @@ export const Article = ({
   id,
   locale,
   notions,
-  onReferenceClick,
   printUrl,
   renderMarkdown,
   accessMessage,
@@ -193,9 +191,7 @@ export const Article = ({
 
           {messages.messageBox && (
             <MSGboxWrapper>
-              <MessageBox links={messageBoxLinks} showCloseButton>
-                {messages.messageBox}
-              </MessageBox>
+              <MessageBox links={messageBoxLinks}>{messages.messageBox}</MessageBox>
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
@@ -207,16 +203,11 @@ export const Article = ({
         </LayoutItem>
         <LayoutItem layout="center">
           {notions && showExplainNotions && (
-            <>
-              <ArticleNotions
-                locale={locale}
-                notions={notions.list}
-                onReferenceClick={onReferenceClick}
-                relatedContent={notions.related}
-                renderMarkdown={renderMarkdown}
-                buttonOffsetRight={articlePositionRight}
-              />
-            </>
+            <ArticleNotions
+              notions={notions.list}
+              relatedContent={notions.related}
+              buttonOffsetRight={articlePositionRight}
+            />
           )}
           {getArticleContent(content, locale)}
         </LayoutItem>

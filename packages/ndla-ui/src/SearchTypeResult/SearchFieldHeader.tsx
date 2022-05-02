@@ -5,18 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { colors, breakpoints, mq } from '@ndla/core';
+import { colors } from '@ndla/core';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { spacing } from '@ndla/core';
 import { Cross as CrossIcon } from '@ndla/icons/action';
 
 import { useTranslation } from 'react-i18next';
-import ActiveFilters from './ActiveFilters';
-import PopupFilter, { PopupFilterProps } from './PopupFilter';
-import { FilterProps } from './ActiveFilterContent';
+import SubjectFilters, { SubjectFilterProps } from './components/SubjectFilters';
 
 type StyledProps = {
   inputHasFocus?: boolean;
@@ -39,13 +36,6 @@ const StyledForm = styled.form<StyledProps>`
     `}
   &:hover {
     border-color: ${colors.brand.primary};
-  }
-`;
-
-const HideOnNarrowScreen = styled.div`
-  display: none;
-  ${mq.range({ from: breakpoints.desktop })} {
-    display: block;
   }
 `;
 
@@ -82,39 +72,26 @@ type Props = {
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   value?: string;
   onChange: (value: string) => void;
-  filters?: PopupFilterProps;
-  activeFilters?: {
-    filters: FilterProps[];
-    onFilterRemove: (value: string, name: string) => void;
-  };
+  isNarrowScreen?: boolean;
 };
 
-const SearchFieldHeader = ({ value, onSubmit, onChange, filters, activeFilters }: Props) => {
+const SearchFieldHeader = ({
+  value,
+  onSubmit,
+  onChange,
+  filters,
+  activeFilters,
+  isNarrowScreen,
+}: Props & SubjectFilterProps) => {
   const { t } = useTranslation();
   const [hasFocus, setHasFocus] = useState(false);
-  const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const isNarrowScreenMatch = window.matchMedia(`(max-width: ${breakpoints.tablet})`);
-    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-      setIsNarrowScreen(e.matches);
-    };
-    isNarrowScreenMatch.addEventListener('change', handleChange);
-    handleChange(isNarrowScreenMatch);
-    return () => {
-      isNarrowScreenMatch.removeEventListener('change', handleChange);
-    };
-  }, []);
 
   return (
     <StyledForm action="/search/" inputHasFocus={hasFocus} onSubmit={onSubmit}>
-      {filters && (
-        <HideOnNarrowScreen>
-          <PopupFilter {...filters} />
-        </HideOnNarrowScreen>
+      {!isNarrowScreen && (
+        <SubjectFilters filters={filters} activeFilters={activeFilters} isNarrowScreen={isNarrowScreen} />
       )}
-      {activeFilters && <ActiveFilters {...activeFilters} />}
       <SearchInput
         ref={inputRef}
         type="search"
@@ -136,9 +113,7 @@ const SearchFieldHeader = ({ value, onSubmit, onChange, filters, activeFilters }
           value={t<string>('welcomePage.resetSearch')}
           onClick={() => {
             onChange('');
-            if (inputRef && inputRef.current) {
-              inputRef.current.focus();
-            }
+            inputRef.current?.focus();
           }}>
           <CrossIcon style={iconStyle} title={t<string>('welcomePage.resetSearch')} />
         </ClearButton>

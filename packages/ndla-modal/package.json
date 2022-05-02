@@ -1,6 +1,6 @@
 {
   "name": "@ndla/modal",
-  "version": "1.1.26",
+  "version": "1.2.3",
   "description": "A smart Modal NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,14 +25,14 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^0.7.3",
-    "@ndla/icons": "^1.5.0",
+    "@ndla/core": "^2.0.1",
+    "@ndla/icons": "^1.6.1",
     "@reach/dialog": "^0.16.2"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
-    "react": "^16.4.2"
+    "react": "^16.4.2 || ^17.0.0"
   },
   "publishConfig": {
     "access": "public"

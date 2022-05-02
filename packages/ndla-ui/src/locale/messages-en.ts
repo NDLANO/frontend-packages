@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Use filter',
       closeFilter: 'Close filter',
       removeFilter: 'Remove filter {{filterName}}',
+      additionalSubjectFilters: '+ {{count}} subjects',
       coreRelevance: 'Core content',
       supplementaryRelevance: 'Supplementary content',
       resourceTypeFilter: {
@@ -124,20 +125,25 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Showing {{fromCount}} to {{toCount}} of {{totalCount}}',
+      showing: 'Showing {{count}} of {{totalCount}} {{contentType}}',
+      showingAll: 'Showing all',
       showMore: 'Show more',
       showAll: 'Show all',
+      toTopOfPage: 'To top of page',
       toSubjectPageLabel: 'Go to subject page',
       all: 'All',
+      allContentTypes: 'All content-types',
       hits: '{{count}} hits',
-      showingSearchPhrase: 'Showing results for:',
+      showingSearchPhrase: 'Showing hits for',
+      searchPhraseSuggestion: 'Search instead for',
       showingCompetenceGoalSearchPhrase: 'Showing results for competence goals {text}',
-      searchPhraseSuggestion: 'Search instead for:',
       notionLabels: 'Used in',
       notionsHeading: 'Explanations',
       notionsRemove: 'Remove',
       showVideo: 'Watch video',
       showNotion: 'Show notion',
+      gridView: 'Grid-view',
+      listView: 'List-view',
     },
     contextModal: {
       button: '+ {{count}} more contexts',
@@ -323,8 +329,8 @@ const messages = {
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
     resources:
       'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
-    beta: 'This course is in beta.',
-    outdatedSubject: 'This topic is part of a course that is not updated to the current curriculum.',
+    subjectOutdated: 'This course is not updated to the current curriculum.',
+    subjectBeta: 'This course is in beta.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
@@ -360,6 +366,7 @@ const messages = {
     access: {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
+    possiblyOutdated: 'The article is outdated',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',
@@ -454,7 +461,7 @@ const messages = {
       heading: 'How to use other content from the article',
       description: 'You will find guidelines for use of other content in the asset',
       itemImage: {
-        ariaLabel: 'Open video in new window',
+        ariaLabel: 'Open in new window',
       },
     },
     h5p: {
@@ -548,6 +555,7 @@ const messages = {
     'source-material': 'Source material',
     'assessment-resources': 'Assessment resource',
     topic: 'Topic',
+    'multidisciplinary-topic': 'Multidisciplinary case',
   },
   modal: {
     closeModal: 'Close',
@@ -834,6 +842,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'show more',
   },
+  h5p: {
+    reuse: 'Use H5P',
+  },
   video: {
     download: 'Download video',
     reuse: 'Use video',
@@ -845,6 +856,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Show concept description',
+    reuse: 'Use concept',
     error: {
       title: 'An error occurred',
       content: 'Could not load the description of the concept.',
@@ -894,6 +906,10 @@ const messages = {
   slateBlockMenu: {
     open: 'Open menu',
     close: 'Close menu',
+  },
+  factbox: {
+    open: 'Open fact box',
+    close: 'Close fact box',
   },
 };
 

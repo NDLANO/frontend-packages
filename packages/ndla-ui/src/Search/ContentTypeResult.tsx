@@ -130,6 +130,7 @@ const ContentTypeResult = ({
             return (
               <StyledListItem key={path} delayAnimation={delayAnimation}>
                 <SafeLink
+                  tabIndex={-1}
                   css={shouldHighlight && highlightStyle}
                   data-highlighted={shouldHighlight || false}
                   {...linkProps}
@@ -153,7 +154,8 @@ const ContentTypeResult = ({
                 ghostPill
                 css={[showAllButtonStyle, shouldHighlightShowAllButton && noWidthhighlightStyle]}
                 data-highlighted={shouldHighlightShowAllButton}
-                onClick={() => toggleShowAll(!showAll)}>
+                onClick={() => toggleShowAll(!showAll)}
+                tabIndex={-1}>
                 {showAll ? messages.showLessResultLabel : messages.allResultLabel}
                 {showAll ? <ChevronUp /> : <ChevronDown />}
               </Button>

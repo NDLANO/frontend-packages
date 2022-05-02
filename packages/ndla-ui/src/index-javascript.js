@@ -32,5 +32,3 @@ export {
   CompetenceGoal,
   CompetenceGoalsDialog,
 } from './CompetenceGoals';
-
-export { EmbeddedTwitter, EmbeddedFacebook, EmbeddedFacebookPage } from './Embedded';

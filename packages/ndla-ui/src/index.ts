@@ -32,7 +32,7 @@ export { createUniversalPortal } from './utils/createUniversalPortal';
 
 export { default as NoContentBox } from './NoContentBox';
 
-export { default as Masthead, MastheadItem } from './Masthead';
+export { default as Masthead, MastheadItem, getMastheadHeight, useMastheadHeight } from './Masthead';
 
 export { default as Portrait } from './Portrait';
 
@@ -117,6 +117,8 @@ export { default as Breadcrumblist } from './Breadcrumblist';
 
 export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
+export { ResourceBox } from './ResourceBox';
+
 export { default as CloseButton } from './CloseButton';
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
@@ -134,6 +136,7 @@ export {
   SearchFieldHeader,
   SearchNotionsResult,
   SearchSubjectResult,
+  SearchFilterContent,
 } from './SearchTypeResult';
 
 export { default as constants } from './model';
@@ -214,3 +217,7 @@ export {
 export { default as ContentCard } from './ContentCard';
 
 export { default as CopyParagraphButton } from './CopyParagraphButton';
+
+export { default as ContentPlaceholder } from './ContentPlaceholder';
+export { Notion, ConceptNotion } from './Notion';
+export { BannerCard } from './BannerCard';

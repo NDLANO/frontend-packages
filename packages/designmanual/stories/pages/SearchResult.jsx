@@ -3,10 +3,10 @@ import React, { useEffect, useState, useReducer } from 'react';
 import {
   SearchTypeResult,
   SearchHeader,
-  SearchNotionsResult,
   SearchSubjectResult,
   constants,
-  FilterButtons,
+  SearchFilterContent,
+  SearchNotionsResult,
 } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 
@@ -15,20 +15,20 @@ import {
   subjectMaterialResults,
   searchSubjectTypeOptions,
   topicResults,
-  notionResults,
   resourcesTasksAndActivitiesResults,
   resourcesLearningPathResults,
   resourcesAssessmentResults,
   resourcesExternalResults,
   resourcesSourceMaterialResults,
+  multidiscinplinaryResults,
 } from '../../dummydata/mockSearchResultType';
-import FigureWithLicense from '../article/FigureWithLicense';
 import { competenceGoals, programmes, subjectCategories } from '../../dummydata/mockPrograms';
+import NotionBlock from '../molecules/NotionBlock';
 
 const { contentTypes } = constants;
 
-const PAGESIZE_SINGLE = 8;
-const PAGESIZE_ALL = 4;
+const PAGESIZE_SINGLE = 12;
+const PAGESIZE_ALL = 6;
 
 const responseDataSource = [
   {
@@ -66,24 +66,49 @@ const responseDataSource = [
     totalCount: resourcesSourceMaterialResults.length,
     type: contentTypes.SOURCE_MATERIAL,
   },
+  {
+    items: multidiscinplinaryResults,
+    totalCount: multidiscinplinaryResults.length,
+    type: contentTypes.MULTIDISCIPLINARY_TOPIC,
+  },
 ];
 
 const searchResults = responseDataSource.map((resourceType) => {
   const filters = [];
   resourceType.items.forEach((item) => {
-    if (item.labels) {
-      item.labels.forEach((label) => {
+    const itemFilters = item.filters || item.labels;
+    if (itemFilters) {
+      itemFilters.forEach((label) => {
         if (!filters.some((filter) => filter.name === label)) {
           filters.push({ id: label, name: label });
         }
       });
     }
   });
-  if (filters.length) {
-    filters.unshift({ id: 'all', name: 'Alle', active: true });
-  }
   return { ...resourceType, pageSize: PAGESIZE_ALL, filters };
 });
+
+const unGroupSearchResults = () => {
+  const result = searchResults
+    .map((res) => {
+      return res.items.map((item) => ({
+        ...item,
+        type: res.type,
+      }));
+    })
+    .flat();
+
+  // Randomize the order
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = result[i];
+    result[i] = result[j];
+    result[j] = temp;
+  }
+  return result;
+};
+
+const unGroupedResourceResult = unGroupSearchResults();
 
 const initialResourceResults = searchResults.map((res) => {
   if (res.items.length > res.pageSize) {
@@ -157,63 +182,6 @@ const resourcesReducer = (state, action) => {
   }
 };
 
-const initNotionResult = () => {
-  return notionResults.map((item) => {
-    if (item.media) {
-      switch (item.media.type) {
-        case 'video':
-          return {
-            ...item,
-            media: {
-              ...item.media,
-              element: (
-                <FigureWithLicense
-                  type="full-column"
-                  resizeIframe
-                  caption="Utholdenhet - animasjon av oksygentransporten">
-                  <iframe
-                    title="Video: Utholdenhet - animasjon av oksygentransporten"
-                    height="270"
-                    width="480"
-                    frameBorder="0"
-                    src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
-                    allowFullScreen
-                  />
-                </FigureWithLicense>
-              ),
-            },
-          };
-        case 'other':
-          return {
-            ...item,
-            media: {
-              ...item.media,
-              element: (
-                <FigureWithLicense
-                  type="full-column"
-                  resizeIframe
-                  caption="Utholdenhet - animasjon av oksygentransporten">
-                  <iframe
-                    title="Ekskresjon"
-                    loading="lazy"
-                    width="762"
-                    height="571.5"
-                    allowFullScreen="allowfullscreen"
-                    src="https://h5p.ndla.no/resource/d1816a8f-4641-483a-980b-743defd0f709?locale=nb-no"
-                    data-ratio="0.75"
-                  />
-                </FigureWithLicense>
-              ),
-            },
-          };
-        default:
-          return item;
-      }
-    }
-    return item;
-  });
-};
-
 const mockSearchDelay = async () => {
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   await delay(200);
@@ -225,13 +193,19 @@ const resourceItemsByTypeAndFilters = (type, filters = []) => {
   if (!filters.length || filters.indexOf('Alle') > -1) {
     return resources.items;
   }
-  return resources.items.filter((item) => item.labels.some((label) => filters.includes(label)));
+  return resources.items.filter((item) => {
+    if (item.filters) {
+      return item.filters.some((label) => filters.includes(label));
+    }
+    return item.labels.some((label) => filters.includes(label));
+  });
 };
 
-const SearchPageDemo = ({ showCompetenceGoals }) => {
+const SearchResult = ({ showCompetenceGoals }) => {
   const { t } = useTranslation();
   const [selectedResourceTypes, setSelectedResourceTypes] = useState([]);
   const [hideNotionsResult, setHideNotionsResult] = useState(false);
+  const [listViewType, setListViewType] = useState('grid');
   const [searchValue, setSearchValue] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
   const [searchPhrase, setSearchPhrase] = useState(() => (showCompetenceGoals ? '' : 'nunorsk'));
   const [searchPhraseSuggestion, setSearchPhraseSuggestion] = useState(() => (showCompetenceGoals ? '' : 'nynorsk'));
@@ -240,9 +214,8 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
   // eslint-disable-next-line no-unused-vars
   const [competenceGoalFilter, setCompetenceGoalFilter] = useState(() => (showCompetenceGoals ? ['KM1196'] : []));
 
-  const [notionsItems] = useState(initNotionResult);
-
-  const [subjectItems] = useState(subjectTypeResults);
+  const [subjectItems] = React.useState(subjectTypeResults);
+  const [unGroupedResult, setUngroupedResult] = React.useState(() => unGroupedResourceResult.slice(0, PAGESIZE_SINGLE));
 
   const [resourceItems, dispatchResources] = useReducer(resourcesReducer, initialResourceResults);
 
@@ -262,11 +235,10 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
         });
       } else {
         const allFilter = updateFilters.find((item) => 'all' === item.id);
-        allFilter.active = false;
         // First flip active state of clicked element
         selectedFilter.active = !selectedFilter.active;
-        if (!resources.filters.some((item) => item.active)) {
-          allFilter.active = true;
+        if (allFilter) {
+          allFilter.active = !resources.filters.some((item) => item.active);
         }
       }
       const activeFilters = updateFilters.filter((filter) => filter.active);
@@ -328,6 +300,12 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
       ];
       dispatchResources({ type: 'RESOURCE_TYPE_ADD_ITEMS', ...data });
     });
+  };
+
+  const handleShowMoreUnGroupedResult = () => {
+    const fromIndex = unGroupedResult.length;
+    const newItems = unGroupedResourceResult.slice(fromIndex, fromIndex + PAGESIZE_SINGLE);
+    setUngroupedResult([...unGroupedResult, ...newItems]);
   };
 
   const handleSearchSubmit = (e) => {
@@ -449,41 +427,57 @@ const SearchPageDemo = ({ showCompetenceGoals }) => {
       />
       {!hideNotionsResult && !showCompetenceGoals && (
         <SearchNotionsResult
-          items={notionsItems}
-          totalCount={notionsItems.length}
+          totalCount={2}
           onRemove={() => {
             setHideNotionsResult(true);
-          }}
-        />
+          }}>
+          <NotionBlock type="image" />
+          <NotionBlock type="video" />
+          <NotionBlock type="H5P" />
+        </SearchNotionsResult>
       )}
       {!showCompetenceGoals && <SearchSubjectResult id="search-result-content" items={subjectItems} />}
-      <FilterButtons
-        heading={t('searchPage.searchFilterMessages.resourceTypeFilter.heading')}
+      <SearchFilterContent
         items={contentTypeFilters}
         onFilterToggle={handleContentTypeFilterToggle}
         onRemoveAllFilters={() => setSelectedResourceTypes([])}
-        labels={{
-          openFilter: t('searchPage.searchFilterMessages.resourceTypeFilter.button'),
-        }}
+        viewType={listViewType}
+        onChangeViewType={(viewType) => setListViewType(viewType)}
       />
-      {visibleResourceTypes.map((item) => (
+      {selectedResourceTypes.length > 0 ? (
+        <>
+          {visibleResourceTypes.map((item) => (
+            <SearchTypeResult
+              key={`search-result-${item.type}`}
+              filters={item.filters}
+              onFilterClick={(id) => handleFilterClick(item.type, id)}
+              items={item.items}
+              type={item.type}
+              totalCount={item.totalCount}
+              loading={item.loading}
+              pagination={{
+                totalCount: item.totalCount,
+                toCount: item.items.length,
+                onShowMore: () => handleShowMore(item.type),
+              }}
+              viewType={listViewType}
+            />
+          ))}
+        </>
+      ) : (
         <SearchTypeResult
-          key={`search-result-${item.type}`}
-          filters={item.filters}
-          onFilterClick={(id) => handleFilterClick(item.type, id)}
-          items={item.items}
-          type={item.type}
-          totalCount={item.totalCount}
-          loading={item.loading}
+          items={unGroupedResult}
+          totalCount={unGroupedResourceResult.length}
+          viewType={listViewType}
           pagination={{
-            totalCount: item.totalCount,
-            toCount: item.items.length,
-            onShowMore: () => handleShowMore(item.type),
+            totalCount: unGroupedResourceResult.length,
+            toCount: unGroupedResult.length,
+            onShowMore: handleShowMoreUnGroupedResult,
           }}
         />
-      ))}
+      )}
     </>
   );
 };
 
-export default SearchPageDemo;
+export default SearchResult;

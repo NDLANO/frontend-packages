@@ -16,6 +16,8 @@ import {
   RelatedArticle,
   Keyhole,
   Code,
+  Concept,
+  ListCircle,
 } from '@ndla/icons/editor';
 import { ArticleInModal } from '@ndla/howto';
 import { VolumeUp, Download, InformationOutline } from '@ndla/icons/common';
@@ -121,6 +123,18 @@ const actions = [
     label: 'Kodeblokk',
     icon: <Code />,
     helpIcon: renderArticleInModal('CodeBlock'),
+  },
+  {
+    data: { type: 'concept', object: 'concept' },
+    label: 'Forklaring',
+    icon: <Concept />,
+    helpIcon: renderArticleInModal('Concept'),
+  },
+  {
+    data: { type: 'concept-list', object: 'conceptList' },
+    label: 'Forklaringsliste',
+    icon: <ListCircle />,
+    helpIcon: renderArticleInModal('ConceptList'),
   },
 ];
 

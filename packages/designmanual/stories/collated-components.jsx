@@ -53,7 +53,9 @@ import ListViewExample from './organisms/ListViewExample';
 import CarouselExample from './organisms/CarouselExample';
 import SwitchExample from './atoms/SwitchExample';
 import FooterExample from './molecules/footers';
+import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
+import ResourceBoxExample from './pages/ResourceBoxExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -190,6 +192,16 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <NotionExample />
     </Center>
+  ))
+  .add('Blokkvisning begrepsforklaring', () => (
+    <div>
+      <StoryIntro title="Blokkvisning begrepsforklaring">
+        <p>Brukes ved visning i artikkel og søk</p>
+      </StoryIntro>
+      <Center>
+        <NotionBlockExample />
+      </Center>
+    </div>
   ))
   .add('Emnebeskrivelse', () => (
     <Center>
@@ -381,6 +393,15 @@ storiesOf('Sammensatte moduler', module)
     <div>
       <MastheadWithTopicMenu />
     </div>
+  ))
+  .add('Hovedhode med meldingsboks', () => (
+    <I18nTranslate>
+      {(t) => (
+        <div>
+          <MastheadWithTopicMenu messages={[t('messageBoxInfo.updateBrowser')]} />
+        </div>
+      )}
+    </I18nTranslate>
   ))
   .add('Lisensikoner', () => (
     <Center>
@@ -633,6 +654,18 @@ storiesOf('Sammensatte moduler', module)
       <OneColumn>
         <ListViewExample />
       </OneColumn>
+    </PageContainer>
+  ))
+
+  .add('Ressurs fra lenke', () => (
+    <PageContainer>
+      <StoryIntro title="Ressurs fra lenke">
+        <p>Her kan du se forskjellige typer referansebokser. De brukes gjerne i artikler for å lenke til en ressurs.</p>
+      </StoryIntro>
+      <Content>
+        <ResourceBoxExample />
+      </Content>
+      <FooterExample />
     </PageContainer>
   ))
 

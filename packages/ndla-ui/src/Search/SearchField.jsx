@@ -123,7 +123,8 @@ const SearchField = ({
             if (inputRef) {
               inputRef.current.focus();
             }
-          }}>
+          }}
+          onBlur={onBlur}>
           {t('welcomePage.resetSearch')}
         </button>
       )}

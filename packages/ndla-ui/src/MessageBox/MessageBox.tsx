@@ -6,31 +6,36 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { HTMLAttributes, useState } from 'react';
 import styled from '@emotion/styled';
-import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
+
+// @ts-ignore
+import { Remarkable } from 'remarkable';
 import { CloseButton } from '../CloseButton';
 
 export enum MessageBoxType {
   ghost = 'ghost',
   fullpage = 'fullpage',
   medium = 'medium',
+  masthead = 'masthead',
 }
 type WrapperProps = {
   boxType?: MessageBoxType;
 };
 
 const StyleByType = (type: WrapperProps['boxType']) => {
-  const styles = {
+  const styles: HTMLAttributes<HTMLElement>['style'] = {
     margin: '1px',
     color: '#444444',
     backgroundColor: '#f9f4c8',
     border: 'none',
     display: 'flex',
+    padding: '10px',
     width: 'auto',
+    borderRadius: '5px',
     position: 'relative',
     transform: 'auto',
     left: 'auto',
@@ -42,6 +47,7 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.width = '100vw';
       styles.position = 'relative';
       styles.left = '50%';
+      styles.padding = '0';
       styles.transform = 'translateX(-50%)';
       break;
     case 'medium':
@@ -51,7 +57,12 @@ const StyleByType = (type: WrapperProps['boxType']) => {
       styles.backgroundColor = 'transparent';
       styles.border = '1px solid #D1D6DB';
       styles.color = '#444444';
-
+      break;
+    case 'masthead':
+      styles.margin = '0 auto';
+      styles.display = 'none';
+      styles.padding = '0';
+      styles.borderRadius = '0';
       break;
   }
   return styles;
@@ -67,16 +78,15 @@ const Wrapper = styled.div<WrapperProps>`
   padding: ${spacing.small};
   position: ${(props) => StyleByType(props.boxType).position};
   border: ${(props) => StyleByType(props.boxType).border};
-  border-radius: 5px;
+  border-radius: ${(props) => StyleByType(props.boxType).borderRadius};
   transform: ${(props) => StyleByType(props.boxType).transform};
   left: ${(props) => StyleByType(props.boxType).left};
-  z-index: 10;
   width: ${(props) => StyleByType(props.boxType).width};
 `;
 
 const InfoWrapper = styled.div<WrapperProps>`
   margin: ${(props) => StyleByType(props.boxType).margin};
-  padding: 10px;
+  padding: ${(props) => StyleByType(props.boxType).padding};
   display: flex;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: 0 90px 0 0;
@@ -93,6 +103,9 @@ const TextWrapper = styled.div<WrapperProps>`
   ${mq.range({ until: breakpoints.tabletWide })} {
     line-height: 24px;
     font-size: 16px;
+  }
+  & p {
+    margin: 0;
   }
 `;
 
@@ -140,27 +153,31 @@ type LinkProps = {
 };
 type Props = {
   type?: WrapperProps['boxType'];
-  sticky?: boolean;
   children?: string;
   links?: LinkProps[];
   showCloseButton?: boolean;
+  onClose?: () => void;
 };
 
-export const MessageBox = ({ type, sticky = false, children, links, t, showCloseButton }: Props & WithTranslation) => {
+const markdown = new Remarkable({ breaks: true });
+markdown.inline.ruler.enable(['sub', 'sup']);
+markdown.block.ruler.disable(['list', 'table']);
+
+export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
+    onClose?.();
   };
   const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (
-    //StickyStyle top:84 makes sure that the messagebox sits beneath the masthead (header ) and the topOffsett sets it so that it applies when reaching the top of the messagebox
-    <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9998, top: 84 }} topOffset={-84}>
+    <>
       <Wrapper boxType={type} style={{ display: hideMessageBox ? 'none' : 'flex' }}>
         <InfoWrapper boxType={type}>
           <IconWrapper boxType={type}>
             <Icon style={{ width: '24px', height: '24px' }} />
           </IconWrapper>
-          <TextWrapper>{children}</TextWrapper>
+          <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }}></TextWrapper>
         </InfoWrapper>
         {showCloseButton && (
           <CloseButtonWrapper>
@@ -177,7 +194,7 @@ export const MessageBox = ({ type, sticky = false, children, links, t, showClose
           ))}
         </LinkWrapper>
       )}
-    </Sticky>
+    </>
   );
 };
 

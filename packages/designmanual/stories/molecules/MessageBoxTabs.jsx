@@ -46,7 +46,6 @@ const MessageBoxTabs = () => {
             content: (
               <Wrapper>
                 <MessageBoxSiteExample
-                  sticky={true}
                   type="fullpage"
                   message={
                     'Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på https://browsehappy.com.'
@@ -147,9 +146,8 @@ const MessageBoxTabs = () => {
             title: 'Fagforside',
             content: (
               <Wrapper>
+                <MastheadWithTopicMenu />
                 <Content>
-                  <MastheadWithTopicMenu />
-
                   <SubjectPage
                     topics={topics}
                     messagebox={'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.'} //pass this prop to display a messagebox

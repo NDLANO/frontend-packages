@@ -16,6 +16,7 @@ import StyledLicenseIconList from './StyledLicenseIconList';
 
 type StyledLicenseIconItemProps = {
   horizontal?: boolean;
+  fill?: string;
 };
 
 export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
@@ -42,6 +43,7 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
   }
 
   svg {
+    fill: ${(props) => props.fill};
     ${(props) =>
       props.horizontal
         ? `width: 18px;
@@ -78,13 +80,14 @@ interface LicenseIconItemProps {
   locale?: string;
   horizontal?: boolean;
   light?: boolean;
+  color?: string;
 }
 
-const LicenseIconItem = ({ licenseRight, locale, horizontal, light }: LicenseIconItemProps) => {
+const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem horizontal={horizontal}>
+    <StyledLicenseIconItem horizontal={horizontal} fill={color}>
       <StyledLicenseIconButton type="button" light={light}>
         <LicenseIcon licenseRight={licenseRight} description={description} />
         <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
@@ -116,6 +119,7 @@ const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal
         locale={locale}
         horizontal={horizontal}
         light={light}
+        color={color}
       />
     ))}
   </StyledLicenseIconList>

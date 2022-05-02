@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tracker",
-  "version": "0.5.2",
+  "version": "0.6.1",
   "description": "A simple library for tracking NDLA applications",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
     "types"
   ],
   "peerDependencies": {
-    "react": "^15.6.0 || ^16.0.0",
+    "react": "^15.6.0 || ^16.0.0 || ^17.0.0",
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {

@@ -22,6 +22,7 @@ import {
   PageContainer,
   Content,
   ErrorResourceAccessDenied,
+  ContentPlaceholder,
 } from '@ndla/ui';
 import { StoryIntro, BannerList } from '../wrappers';
 
@@ -55,16 +56,17 @@ import Toolbox from './Toolbox';
 storiesOf('Sidevisninger', module)
   .add('En side, laster innhold (helt tom)', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
+        <ContentPlaceholder />
       </Content>
       <FooterExample />
     </PageContainer>
   ))
   .add('En side uten innhold', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <OneColumn cssModifier="clear">
           <div>En side uten innhold</div>
         </OneColumn>
@@ -74,8 +76,8 @@ storiesOf('Sidevisninger', module)
   ))
   .add('En side med innhold', () => (
     <PageContainer backgroundWide>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -90,10 +92,28 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
+  .add('En side med varsel om utdatert artikkel', () => (
+    <PageContainer backgroundWide>
+      <MastheadWithTopicMenu />
+      <Content>
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <Breadcrumb />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLoader articleId="744" showOutdatedWarning />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
   .add('En side med feilmelding', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <OneColumn cssModifier="clear">
           <ErrorMessage
             illustration={{
@@ -114,8 +134,8 @@ storiesOf('Sidevisninger', module)
   ))
   .add('Læringssti', () => (
     <PageContainer backgroundWide>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <LearningPathExample />
       </Content>
       <FooterExample />
@@ -124,8 +144,8 @@ storiesOf('Sidevisninger', module)
 storiesOf('Læringsressurser', module)
   .add('Fagstoff', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -142,8 +162,8 @@ storiesOf('Læringsressurser', module)
   ))
   .add('Oppgaver og aktiviteter', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <TasksAndActivitiesHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -160,8 +180,8 @@ storiesOf('Læringsressurser', module)
   ))
   .add('Vurderingsressurs', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <AssessmentResourcesHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -178,8 +198,8 @@ storiesOf('Læringsressurser', module)
   ))
   .add('Ekstern læringsressurs', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <ExternalLearningResourcesHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -196,8 +216,8 @@ storiesOf('Læringsressurser', module)
   ))
   .add('Kildemateriale', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SourceMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -214,8 +234,8 @@ storiesOf('Læringsressurser', module)
   ))
   .add('Tilleggsstoff', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -242,8 +262,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('2. Programside', () => (
     <PageContainer>
+      <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
       <Content>
-        <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
         <ProgrammePage />
       </Content>
       <FooterExample />
@@ -251,8 +271,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('3. Fagside', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <SubjectPage
           topics={topics}
           initialBreadcrumb={subjectBreadcrumb}
@@ -268,8 +288,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('4. Hovedemne', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <SubjectPage
           topics={topics}
           initialBreadcrumb={subjectBreadcrumb}
@@ -286,8 +306,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('5. Underemne', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <SubjectPage
           topics={topics}
           initialBreadcrumb={subjectBreadcrumb}
@@ -305,8 +325,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('6. Underemne med underemne', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <SubjectPage
           topics={topics}
           initialBreadcrumb={subjectBreadcrumb}
@@ -325,8 +345,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Verktøykassa', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <Toolbox />
       </Content>
       <FooterExample />
@@ -334,8 +354,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglige tema', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <MultidisciplinarySubjectPage />
       </Content>
       <FooterExample />
@@ -343,8 +363,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - bærekraftig utvikling', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['climate']} articleId="22220" />
       </Content>
       <FooterExample />
@@ -352,8 +372,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - folkehelse og livsmestring', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['publicHealth']} articleId="22844" />
       </Content>
       <FooterExample />
@@ -361,8 +381,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - demokrati og medborgerskap', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['democracy']} articleId="22727" />
       </Content>
       <FooterExample />
@@ -370,8 +390,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - demokrati og klima', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['climate', 'democracy']} articleId="22222" />
       </Content>
       <FooterExample />
@@ -379,8 +399,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - demokrati og folkehelse', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['publicHealth', 'democracy']} articleId="21045" />
       </Content>
       <FooterExample />
@@ -388,8 +408,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - klima og folkehelse', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['publicHealth', 'climate']} articleId="20655" />
       </Content>
       <FooterExample />
@@ -397,8 +417,8 @@ storiesOf('Fag- og emnesider', module)
   ))
   .add('Tverrfaglig emne - alle tema', () => (
     <PageContainer>
+      <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu skipToMainContentId="mainContentId" />
         <MultidisciplinarySubjectArticle subjects={['climate', 'democracy', 'publicHealth']} articleId="22277" />
       </Content>
       <FooterExample />
@@ -436,8 +456,8 @@ storiesOf('Autentisering', module)
   ))
   .add('Ressurs uten tilgang', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <OneColumn cssModifier="clear">
           <ErrorResourceAccessDenied onAuthenticateClick={() => {}} />
         </OneColumn>
@@ -447,8 +467,8 @@ storiesOf('Autentisering', module)
   ))
   .add('Emner', () => (
     <PageContainer>
+      <MastheadWithTopicMenu />
       <Content>
-        <MastheadWithTopicMenu />
         <SubjectPage
           topics={topics}
           initialBreadcrumb={subjectBreadcrumb}
@@ -464,8 +484,8 @@ storiesOf('Autentisering', module)
   ))
   .add('Læringsressurs - lærer', () => (
     <PageContainer>
+      <MastheadWithTopicMenu isAuthed skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu isAuthed skipToMainContentId="mainContentId" />
         <SubjectMaterialHero>
           <OneColumn>
             <div className="c-hero__content">
@@ -483,8 +503,8 @@ storiesOf('Autentisering', module)
 storiesOf('Ndla film', module)
   .add('NDLA Film forside', () => (
     <PageContainer ndlaFilm>
+      <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <NdlaFilmFrontpage id="mainContentId" />
       </Content>
       <FooterExample inverted />
@@ -492,8 +512,8 @@ storiesOf('Ndla film', module)
   ))
   .add('Film (emne side)', () => (
     <PageContainer backgroundWide ndlaFilm>
+      <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <ArticleLoader
           id="mainContentId"
           articleId="3683"
@@ -508,8 +528,8 @@ storiesOf('Ndla film', module)
   ))
   .add('Film emne (over film)', () => (
     <PageContainer backgroundWide ndlaFilm>
+      <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <ArticleLoader
           id="mainContentId"
           articleId="4824"
@@ -525,8 +545,8 @@ storiesOf('Ndla film', module)
   ))
   .add('Læringssti (på NDLA film)', () => (
     <PageContainer backgroundWide ndlaFilm>
+      <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
       <Content>
-        <MastheadWithTopicMenu ndlaFilm skipToMainContentId="mainContentId" />
         <LearningPathExample invertedStyle />
       </Content>
       <FooterExample inverted />

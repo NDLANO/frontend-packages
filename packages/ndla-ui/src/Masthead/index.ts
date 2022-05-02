@@ -8,6 +8,8 @@
 
 import Masthead, { MastheadItem } from './Masthead';
 
-export { MastheadItem };
+import { getMastheadHeight, useMastheadHeight } from './utils';
+
+export { MastheadItem, getMastheadHeight, useMastheadHeight };
 
 export default Masthead;

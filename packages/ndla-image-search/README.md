@@ -5,7 +5,11 @@ A simple library for selecting images from NDLA
 ## Installation
 
 ```sh
-$ npm install ndla-image-search
+yarn add @ndla/image-search
+```
+
+```sh
+npm install @ndla/image-search
 ```
 
 ### Get image with the image selector

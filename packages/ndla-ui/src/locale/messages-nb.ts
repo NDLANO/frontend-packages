@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Bruk filter',
       closeFilter: 'Lukk filter',
       removeFilter: 'Fjern filter {{filterName}}',
+      additionalSubjectFilters: '+ {{count}} fag',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -124,20 +125,25 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Viser {{fromCount}} til {{toCount}} av {{totalCount}}',
+      showing: 'Viser {{count}} av {{totalCount}} {{contentType}}',
+      showingAll: 'Viser alle',
       showMore: 'Vis mer',
       showAll: 'Vis alle',
+      toTopOfPage: 'Til toppen',
       toSubjectPageLabel: 'Gå til fagsiden',
       all: 'Alle',
-      hits: '{{count}} Treff',
-      showingSearchPhrase: 'Viser resultater for',
+      allContentTypes: 'Alle innholdstyper',
+      hits: '{{count}} treff',
+      showingSearchPhrase: 'Viser treff for',
       showingCompetenceGoalSearchPhrase: 'Viser resultater for kompetansemål {text}',
-      searchPhraseSuggestion: 'Søk i stedet for',
+      searchPhraseSuggestion: 'Søk heller',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Se video',
       showNotion: 'Se forklaring',
+      gridView: 'Gallerivisning',
+      listView: 'Listevisning',
     },
     contextModal: {
       button: '+ {{count}} flere steder',
@@ -322,8 +328,8 @@ const messages = {
     feide: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     resources:
       'Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.',
-    beta: 'Dette faget er i betaversjon.',
-    outdatedSubject: 'Dette emnet hører til et fag som ikke er oppdatert etter gjeldende læreplan.',
+    subjectOutdated: 'Dette faget følger en utgått læreplan.',
+    subjectBeta: 'Dette faget er i betaversjon.',
     newVersion:
       'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
     frontPageBeta:
@@ -358,6 +364,7 @@ const messages = {
     access: {
       onlyTeacher: 'Denne ressursen er bare tilgjengelig for lærere som er pålogget med Feide.',
     },
+    possiblyOutdated: 'Artikkelen er foreldet.',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -546,6 +553,7 @@ const messages = {
     'source-material': 'Kildemateriale',
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
+    'multidisciplinary-topic': 'Tverrfaglig case',
   },
   modal: {
     closeModal: 'Lukk',
@@ -832,6 +840,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'vis mer',
   },
+  h5p: {
+    reuse: 'Bruk H5P',
+  },
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',
@@ -843,6 +854,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Vis beskrivelsen av forklaringen.',
+    reuse: 'Bruk forklaring',
     error: {
       title: 'En feil oppstod',
       content: 'Kunne ikke laste beskrivelsen av forklaringen.',
@@ -892,6 +904,10 @@ const messages = {
   slateBlockMenu: {
     open: 'Åpne meny',
     close: 'Lukk meny',
+  },
+  factbox: {
+    open: 'Åpne faktaboks',
+    close: 'Lukk faktaboks',
   },
 };
 

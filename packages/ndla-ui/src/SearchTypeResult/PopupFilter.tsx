@@ -6,12 +6,11 @@
  *
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
-import { Plus as PlusIcon } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { ToggleItem } from '../Filter';
@@ -36,12 +35,6 @@ const ModalHeading = styled.h1`
 const ModalContent = styled.div`
   max-width: 1040px;
   flex-grow: 1;
-`;
-
-const FilterButtonText = styled.span`
-  display: inline-block;
-  font-weight: 600;
-  margin-right: 10px;
 `;
 
 const MainFilterButtonWrapper = styled.div`
@@ -71,165 +64,99 @@ const StyledListItem = styled.li`
 const MENU_PROGRAMMES = 'programmes';
 const MENU_ALL_SUBJECTS = 'allSubjects';
 
-type messagesProps = {
-  buttonText: string;
-  closeButton: string;
-  filterLabel: string;
-};
-
 type ProgrammeOptionProps = {
   name: string;
   id: string;
 };
-type ProgrammeProps = {
-  options: ProgrammeOptionProps[];
-  values: string[];
-  onProgrammeValuesChange: (values: string[]) => void;
-};
-
-type SubjectCategoriesProps = {
-  categories: subjectsProps['categories'];
-  values: string[];
-  onSubjectValuesChange: (values: string[]) => void;
-};
 
 export type PopupFilterProps = {
-  messages: messagesProps;
-  programmes?: ProgrammeProps;
-  subjectCategories?: SubjectCategoriesProps;
+  programmes?: { options: ProgrammeOptionProps[] };
+  subjectCategories?: { categories: subjectsProps['categories'] };
+  subjectValues: string[];
+  programmesValues: string[];
+  onClose: () => void;
+  onToggleSubject: (value: string) => void;
+  onToggleProgramme: (value: string) => void;
+  isOpen: boolean;
 };
 
-const PopupFilter = ({ messages, programmes, subjectCategories }: PopupFilterProps) => {
+const PopupFilter = ({
+  programmes,
+  subjectCategories,
+  subjectValues,
+  programmesValues,
+  onToggleSubject,
+  onToggleProgramme,
+  onClose,
+  isOpen,
+}: PopupFilterProps) => {
   const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
-  const [subjectValues, setSubjectValues] = useState<Array<string>>([]);
-  const [programmesValues, setProgrammesValues] = useState<Array<string>>([]);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const prevIsOpenRef = useRef<boolean>();
-  useEffect(() => {
-    prevIsOpenRef.current = isOpen;
-  });
-  const prevIsOpen = prevIsOpenRef.current;
-
-  useEffect(() => {
-    if (isOpen && isOpen !== prevIsOpen) {
-      if (subjectCategories) {
-        setSubjectValues([...subjectCategories.values]);
-      }
-      if (programmes) {
-        setProgrammesValues([...programmes.values]);
-      }
-    }
-  }, [isOpen, prevIsOpen, subjectCategories, programmes]);
-
-  const onToggleSubject = (subjectId: string) => {
-    let updatedFilter = [...subjectValues];
-    if (updatedFilter.includes(subjectId)) {
-      updatedFilter = subjectValues.filter((option) => option !== subjectId);
-    } else {
-      updatedFilter.push(subjectId);
-    }
-    setSubjectValues(updatedFilter);
-    if (subjectCategories) {
-      subjectCategories.onSubjectValuesChange(updatedFilter);
-    }
-  };
-
-  const onToggleProgramme = (programmeId: string) => {
-    let updatedFilter = [...programmesValues];
-    if (updatedFilter.includes(programmeId)) {
-      updatedFilter = programmesValues.filter((option) => option !== programmeId);
-    } else {
-      updatedFilter.push(programmeId);
-    }
-    setProgrammesValues(updatedFilter);
-    if (programmes) {
-      programmes.onProgrammeValuesChange(updatedFilter);
-    }
-  };
-
-  const buttonContent = (
-    <Button type="button" size="normal" light borderShape="rounded">
-      <FilterButtonText>{messages.buttonText}</FilterButtonText>
-      <PlusIcon />
-    </Button>
-  );
 
   return (
     <Modal
-      activateButton={buttonContent}
+      controllable
       backgroundColor="white"
       animation="subtle"
       animationDuration={50}
-      onClick={() => setIsOpen(true)}
-      onClose={() => setIsOpen(false)}
+      onClose={onClose}
+      isOpen={isOpen}
       size="fullscreen">
-      {(onClose: () => void) => (
-        <>
-          <ModalBody>
-            <ModalWrapper>
-              <ModalContent>
-                <ModalHeaderWrapper>
-                  <ModalHeading>{messages.filterLabel}</ModalHeading>
-                  <ModalCloseButton
-                    onClick={() => {
-                      setIsOpen(false);
-                      onClose();
-                    }}
-                    title={messages.closeButton}
-                  />
-                </ModalHeaderWrapper>
-                {subjectCategories && programmes && (
-                  <MainFilterButtonWrapper>
-                    <Button
-                      onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                      lighter={selectedMenu !== MENU_ALL_SUBJECTS}
-                      size="normal"
-                      borderShape="rounded">
-                      {t('frontpageMenu.allsubjects')}
-                    </Button>
-                  </MainFilterButtonWrapper>
-                )}
-                {programmes && (
+      {() => (
+        <ModalBody>
+          <ModalWrapper>
+            <ModalContent>
+              <ModalHeaderWrapper>
+                <ModalHeading>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
+                <ModalCloseButton onClick={() => onClose()} title={t('searchPage.close')} />
+              </ModalHeaderWrapper>
+              {subjectCategories && programmes && (
+                <MainFilterButtonWrapper>
                   <Button
-                    onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                    lighter={selectedMenu !== MENU_PROGRAMMES}
+                    onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
+                    lighter={selectedMenu !== MENU_ALL_SUBJECTS}
                     size="normal"
                     borderShape="rounded">
-                    {t('frontpageMenu.program')}
+                    {t('frontpageMenu.allsubjects')}
                   </Button>
-                )}
-                {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
-                  <FrontpageAllSubjects
-                    categories={subjectCategories.categories}
-                    selectedSubjects={subjectValues}
-                    onToggleSubject={onToggleSubject}
-                    subjectViewType="checkbox"
-                  />
-                )}
-                {selectedMenu === MENU_PROGRAMMES && programmes && (
-                  <StyledList>
-                    {programmes.options.map((item: ProgrammeOptionProps) => (
-                      <StyledListItem key={item.id}>
-                        <ToggleItem
-                          id={item.id}
-                          value={item.id}
-                          checked={programmesValues.includes(item.id)}
-                          label={item.name}
-                          component="div"
-                          onChange={() => {
-                            onToggleProgramme(item.id);
-                          }}
-                        />
-                      </StyledListItem>
-                    ))}
-                  </StyledList>
-                )}
-              </ModalContent>
-            </ModalWrapper>
-          </ModalBody>
-        </>
+                </MainFilterButtonWrapper>
+              )}
+              {programmes && (
+                <Button
+                  onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
+                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  size="normal"
+                  borderShape="rounded">
+                  {t('frontpageMenu.program')}
+                </Button>
+              )}
+              {selectedMenu === MENU_ALL_SUBJECTS && subjectCategories && (
+                <FrontpageAllSubjects
+                  categories={subjectCategories.categories}
+                  selectedSubjects={subjectValues}
+                  onToggleSubject={onToggleSubject}
+                  subjectViewType="checkbox"
+                />
+              )}
+              {selectedMenu === MENU_PROGRAMMES && programmes && (
+                <StyledList>
+                  {programmes.options.map((item: ProgrammeOptionProps) => (
+                    <StyledListItem key={item.id}>
+                      <ToggleItem
+                        id={item.id}
+                        value={item.id}
+                        checked={programmesValues.includes(item.id)}
+                        label={item.name}
+                        component="div"
+                        onChange={() => onToggleProgramme(item.id)}
+                      />
+                    </StyledListItem>
+                  ))}
+                </StyledList>
+              )}
+            </ModalContent>
+          </ModalWrapper>
+        </ModalBody>
       )}
     </Modal>
   );

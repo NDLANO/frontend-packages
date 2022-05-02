@@ -33,12 +33,12 @@ function fallbackResizeObserver(element: HTMLElement, handler: (el: HTMLElement)
 
 function resizeObserverWrapper(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   // @ts-ignore ResizeObserver
-  let resizeObserver = new ResizeObserver(() => {
+  let resizeObserver: ResizeObserver | null = new ResizeObserver(() => {
     handler(element);
   });
   resizeObserver.observe(element);
   return () => {
-    resizeObserver.disconnect(element);
+    resizeObserver?.disconnect();
     resizeObserver = null;
   };
 }

@@ -48,7 +48,7 @@ const messages = {
   subjectCategories: {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
-    [subjectCategories.BETA_SUBJECTS]: 'Komande',
+    [subjectCategories.BETA_SUBJECTS]: 'Kommande',
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
@@ -116,6 +116,7 @@ const messages = {
       useFilter: 'Bruk filter',
       removeFilter: 'Fjern filter {{filterName}}',
       closeFilter: 'Lukk filter',
+      additionalSubjectFilters: '+ {{count}} fag',
       coreRelevance: 'Kjernestoff',
       supplementaryRelevance: 'Tilleggsstoff',
       resourceTypeFilter: {
@@ -124,20 +125,25 @@ const messages = {
       },
     },
     resultType: {
-      showing: 'Viser {{fromCount}} til {{toCount}} av {{totalCount}}',
+      showing: 'Viser {{count}} av {{totalCount}} {{contentType}}',
+      showingAll: 'Viser alle',
       showMore: 'Vis meir',
       showAll: 'Vis alle',
+      toTopOfPage: 'Til toppen',
       toSubjectPageLabel: 'Gå til fagsida',
       all: 'Alle',
-      hits: '{{count}} Treff',
-      showingSearchPhrase: 'Viser resultat for',
+      allContentTypes: 'Alle innhaldstyper',
+      hits: '{{count}} treff',
+      showingSearchPhrase: 'Viser treff for',
+      searchPhraseSuggestion: 'Søk heller',
       showingCompetenceGoalSearchPhrase: 'Viser resultat for kompetansemål {text}',
-      searchPhraseSuggestion: 'Søk i staden for',
       notionLabels: 'Brukes i',
       notionsHeading: 'Begrepsforklaring',
       notionsRemove: 'Fjern',
       showVideo: 'Sjå video',
       showNotion: 'Sjå forklaring',
+      gridView: 'Gallerivisning',
+      listView: 'Listevisning',
     },
     contextModal: {
       button: '+ {{count}} fleire stader',
@@ -323,8 +329,8 @@ const messages = {
     feide: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     resources:
       'Dette er ikkje eit komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan vere nyttig for deg.',
-    beta: 'Dette faget er i betaversjon.',
-    outdatedSubject: 'Dette emnet høyrer til eit fag som ikkje er oppdatert etter gjeldande læreplan.',
+    subjectOutdated: 'Dette faget følgjer ein utgått læreplan.',
+    subjectBeta: 'Dette faget er i betaversjon.',
     newVersion:
       'Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ',
     frontPageBeta:
@@ -359,6 +365,7 @@ const messages = {
     access: {
       onlyTeacher: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     },
+    possiblyOutdated: 'Artikkelen er foreldet.',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -547,6 +554,7 @@ const messages = {
     'source-material': 'Kjeldemateriale',
     'assessment-resources': 'Vurderingsressurs',
     topic: 'Emne',
+    'multidisciplinary-topic': 'Tverrfagleg case',
   },
   modal: {
     closeModal: 'Lukk',
@@ -833,6 +841,9 @@ const messages = {
     },
     readMoreDescriptionLabel: 'vis meir',
   },
+  h5p: {
+    reuse: 'Bruk H5P',
+  },
   video: {
     download: 'Last ned video',
     reuse: 'Bruk video',
@@ -844,6 +855,7 @@ const messages = {
   },
   concept: {
     showDescription: 'Vis skildring av forklaringa',
+    reuse: 'Bruk forklaring',
     error: {
       title: 'Ein feil oppstod',
       content: 'Kunne ikkje laste skildringa av forklaringa.',
@@ -893,6 +905,10 @@ const messages = {
   slateBlockMenu: {
     open: 'Åpne meny',
     close: 'Lukk meny',
+  },
+  factbox: {
+    open: 'Åpne faktaboks',
+    close: 'Lukk faktaboks',
   },
 };
 

@@ -51,6 +51,7 @@ export { default as LogIn } from './LogIn';
 export { default as LogOut } from './LogOut';
 export { default as Menu } from './Menu';
 export { default as NotionFlip } from './NotionFlip';
+export { default as ShortText } from './ShortText';
 export { default as PanoramaPhotosphere } from './PanoramaPhotosphere';
 export { default as Pause } from './Pause';
 export { default as Play } from './Play';

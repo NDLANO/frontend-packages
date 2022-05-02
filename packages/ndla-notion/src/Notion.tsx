@@ -8,13 +8,13 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { Icon } from '@iconify/react';
+import { ShortText } from '@ndla/icons/src/common/ShortText';
 import { css, InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
 
-const BaselineIcon = styled(Icon)`
+const BaselineIcon = styled(ShortText)`
   content: '';
   display: inline-block;
   position: absolute;
@@ -85,7 +85,7 @@ const Notion = ({
   <span css={NotionCSS} id={id} data-notion>
     <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
       {children}
-      {!hideBaselineIcon && <BaselineIcon icon="ic:baseline-short-text" />}
+      {!hideBaselineIcon && <BaselineIcon />}
     </button>
 
     {createUniversalPortal(

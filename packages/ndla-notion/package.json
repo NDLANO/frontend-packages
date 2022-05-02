@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@ndla/core": "^2.0.1",
+    "@ndla/icons": "^1.6.1",
     "@ndla/licenses": "^4.0.3",
     "@ndla/modal": "^1.2.3"
   },

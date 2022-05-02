@@ -18,5 +18,3 @@ packages/*/.vscode
 *.code-workspace
 .cache
 .vscode
-.yarn/*
-package-lock.json

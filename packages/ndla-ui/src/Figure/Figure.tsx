@@ -42,7 +42,7 @@ export const FigureCaption = ({
   let classNameButton = '';
   let changableLicenseRights: string[];
   if (hideIconsAndAuthors) {
-    classNameButton = 'byline-author-buttons-alone';
+    classNameButton = 'byline-author-buttons--noSiblings';
     changableLicenseRights = [];
   } else {
     classNameButton = 'byline-author-buttons';

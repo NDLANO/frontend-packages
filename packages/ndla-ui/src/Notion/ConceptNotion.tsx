@@ -102,6 +102,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                   ariaLabel="Vis begrep beskrivelse"
                   title={concept.title}
                   subTitle="forklaring"
+                  hideBaselineIcon
                   content={
                     <Fragment>
                       <NotionDialogContent>
@@ -135,6 +136,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                   ariaLabel="Vis begrep beskrivelse"
                   title={concept.title}
                   subTitle="forklaring"
+                  hideBaselineIcon
                   content={
                     <Fragment>
                       <NotionDialogContent>

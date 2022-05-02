@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import ShortText from '@ndla/icons/src/common/ShortText';
+import { ShortText } from '@ndla/icons/common';
 import { css, InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';

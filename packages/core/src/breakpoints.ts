@@ -1,14 +1,13 @@
-import em from 'polished/lib/helpers/em';
 import { Breakpoints } from '../types';
 
 const breakpoints: Breakpoints = {
-  mobile: em('320px'),
-  mobileWide: em('476px'),
-  tablet: em('601px'),
-  tabletWide: em('768px'),
-  desktop: em('981px'),
-  wide: em('1301px'),
-  ultraWide: em('1601px'),
+  mobile: '20em',
+  mobileWide: '29.75em',
+  tablet: '37.5625em',
+  tabletWide: '48em',
+  desktop: '61.3125em',
+  wide: '81.3125em',
+  ultraWide: '100.0625em',
 };
 
 export default breakpoints;

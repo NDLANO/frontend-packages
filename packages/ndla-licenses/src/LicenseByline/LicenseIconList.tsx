@@ -25,6 +25,7 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
   margin-bottom: 0;
   margin-right: 0.2em;
   line-height: 1.3rem;
+  color: #444;
 
   span {
     z-index: 1;

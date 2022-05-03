@@ -11,7 +11,7 @@ import React, { useEffect, Fragment } from 'react';
 import { initArticleScripts } from '@ndla/article-scripts';
 
 import { breakpoints, mq, spacing } from '@ndla/core';
-import Notion, { NotionDialogContent, NotionDialogText, NotionDialogImage, NotionDialogLicenses } from '@ndla/notion';
+import Notion, { NotionDialogContent, NotionDialogText, NotionDialogLicenses } from '@ndla/notion';
 import { Notion as UINotion } from '.';
 import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
@@ -107,14 +107,15 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                     <Fragment>
                       <NotionDialogContent>
                         {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-                          <NotionDialogImage
-                            src={concept.visualElement.image.src}
-                            alt={concept.visualElement.image.alt ?? ''}
-                          />
+                          <NotionVisualElement visualElement={concept.visualElement} />
                         ) : undefined}
 
                         <NotionDialogText>{concept.text}</NotionDialogText>
-                      </NotionDialogContent>
+                      </NotionDialogContent>{' '}
+                      <NotionDialogLicenses
+                        license={concept.copyright?.license?.license ?? ''}
+                        source="https://www.snl.no"
+                      />
                     </Fragment>
                   }>
                   {concept.visualElement.image && (
@@ -152,7 +153,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                       </NotionDialogContent>
                       <NotionDialogLicenses
                         license={concept.copyright?.license?.license ?? ''}
-                        source="https://snl.no"
+                        source="https://www.snl.no"
                       />
                     </Fragment>
                   }>

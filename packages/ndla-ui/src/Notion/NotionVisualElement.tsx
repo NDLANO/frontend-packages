@@ -12,7 +12,7 @@ import { ImageCrop, ImageFocalPoint } from '../Image';
 
 export type NotionVisualElementType = {
   element?: ReactNode;
-  type?: 'video' | 'h5p';
+  type?: 'video' | 'image' | 'h5p';
   resource?: string;
   title?: string;
   url?: string;
@@ -28,7 +28,7 @@ export type NotionVisualElementType = {
 interface Props {
   visualElement: NotionVisualElementType;
 }
-const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external'];
+const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external', 'image'];
 
 const NotionVisualElement = ({ visualElement }: Props) => {
   const id = '1';
@@ -36,8 +36,10 @@ const NotionVisualElement = ({ visualElement }: Props) => {
   if (!visualElement.resource || !supportedEmbedTypes.includes(visualElement.resource)) {
     return <p>Embed type is not supported!</p>;
   }
+  let type = visualElement.type;
+  visualElement.resource === 'brightcove' ? (type = 'video') : (type = 'h5p');
+  visualElement.resource === 'image' && (type = 'image');
 
-  const type = visualElement.resource === 'brightcove' ? 'video' : 'h5p';
   return (
     <FigureNotion
       resizeIframe
@@ -47,7 +49,11 @@ const NotionVisualElement = ({ visualElement }: Props) => {
       copyright={visualElement.copyright}
       licenseString={visualElement.copyright?.license?.license ?? ''}
       type={type}>
-      <iframe title={visualElement.title} src={visualElement.url} />
+      {visualElement.image?.src ? (
+        <img src={visualElement.image?.src} alt={visualElement.image.alt} />
+      ) : (
+        <iframe title={visualElement.title} src={visualElement.url} />
+      )}
     </FigureNotion>
   );
 };

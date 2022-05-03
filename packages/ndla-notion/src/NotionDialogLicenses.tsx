@@ -14,10 +14,11 @@ const NotionDialogLicensesWrapper = styled.div`
     color: ${colors.text.light};
     ${fonts.sizes('14px', 1.1)};
     padding-bottom: ${spacing.xsmall};
-    font-family: ${fonts.serif};
+    font-family: ${fonts.sans};
     padding-bottom: 3px;
     padding-top: 3px;
     margin-top: -4px;
+
     &:not(:last-child) {
       padding-right: ${spacing.xsmall};
       border-right: 1px solid ${colors.brand.greyLight};
@@ -48,9 +49,7 @@ const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBo
   const sourceElem = React.isValidElement(source) ? source : <span>{wrapLink(source)}</span>;
   return (
     <NotionDialogLicensesWrapper>
-      {licenseRights.length > 0 && (
-        <LicenseByline locale={locale} marginRight color={colors.brand.grey} licenseRights={licenseRights} />
-      )}
+      {licenseRights.length > 0 && <LicenseByline locale={locale} marginRight licenseRights={licenseRights} />}
       {authorsLength > 0 && (
         <span>
           {authors.map((author, index) => (

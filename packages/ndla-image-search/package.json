@@ -1,6 +1,6 @@
 {
   "name": "@ndla/image-search",
-  "version": "2.1.19",
+  "version": "2.1.20",
   "description": "A simple library for searching images from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,12 +26,12 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^2.1.3",
-    "@ndla/core": "^2.0.1",
-    "@ndla/forms": "^1.1.19",
+    "@ndla/button": "^2.1.4",
+    "@ndla/core": "^2.1.0",
+    "@ndla/forms": "^1.1.20",
     "@ndla/icons": "^1.6.1",
-    "@ndla/pager": "^1.1.4",
-    "@ndla/util": "^2.0.4"
+    "@ndla/pager": "^1.1.5",
+    "@ndla/util": "^2.0.5"
   },
   "devDependencies": {
     "@ndla/types-image-api": "^0.0.4"

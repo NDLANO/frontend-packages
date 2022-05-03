@@ -5,6 +5,19 @@ exports[`Image renderers correctly 1`] = `
   position: relative;
 }
 
+@media (max-width:48em) {
+  .emotion-0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
 <div
   className="emotion-0"
 >
@@ -26,6 +39,19 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
   position: relative;
 }
 
+@media (max-width:48em) {
+  .emotion-0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
 <div
   className="emotion-0"
 >
@@ -45,6 +71,19 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+}
+
+@media (max-width:48em) {
+  .emotion-0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
 }
 
 <div

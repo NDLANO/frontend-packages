@@ -27,8 +27,6 @@
     "types"
   ],
   "dependencies": {
-    "chalk": "^4.1.2",
-    "cli-table3": "^0.6.0",
     "remarkable": "^2.0.1"
   },
   "publishConfig": {

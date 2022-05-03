@@ -62,3 +62,10 @@ ol > li {
     font-size: 16px;
   }
 }
+blockquote > ol {
+  position: relative;
+  left: 50px;
+  @include mq($until: desktop) {
+    left: -20px;
+  }
+}

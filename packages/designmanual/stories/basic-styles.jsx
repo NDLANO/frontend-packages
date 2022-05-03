@@ -1602,6 +1602,14 @@ storiesOf('Grunnstiler', module)
           typiske sildestimen alle absolutt skal følge, er kult. <br />
           (Jente 19 år, Si;D, Aftenposten 23. mai 2016)
         </blockquote>
+        <h2>Sitat i liste</h2>
+        <blockquote>
+          <ol>
+            <li>Første</li>
+            <li>Andre</li>
+            <li>Tredje</li>
+          </ol>
+        </blockquote>
       </StoryBody>
     </div>
   ))

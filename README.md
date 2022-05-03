@@ -98,6 +98,16 @@ As an alternative to linking packages locally, alpha versions of packages can be
 - `yarn lerna version`: Now set packages to the desired major/minor/patch version.
 - `yarn lerna publish from-git` Publishes versions generated in previous step.
 
+## New Icons
+
+### Download icon
+
+As mentioned on https://designmanual.ndla.no/?path=/story/enkle-komponenter--ikoner, new icons are downloaded from https://material.io/icons/. Find the icon needed and download it. Afterwards copy it to the best matching sub-folder in `frontend-packages/packages/ndla-icons/svg/`. Edit the svg and add license information matching the other svg files.
+
+### Generate typescript component file
+
+Navigate to the root of frontend-packages and run `node scripts/createTsIconComponents.js`. This will generate typescript files for all the svg files, including the newly added one. When finished, create a PR with the new files (should only be svg and ts files). Make sure to publish frontend-packages for the new icons to be available.
+
 ## Upcoming features and updates
 
 ### Upcoming updates to the designmanual can be previewed here.

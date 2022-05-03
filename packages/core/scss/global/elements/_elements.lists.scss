@@ -65,9 +65,7 @@ ol > li {
 blockquote > ol {
   position: relative;
   left: 50px;
-}
-@include mq($until: desktop) {
-  blockquote > ol {
+  @include mq($until: desktop) {
     left: -20px;
   }
 }

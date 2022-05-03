@@ -46,7 +46,7 @@ export const FigureCaption = ({
         <footer {...classes('byline')}>
           <div {...classes('byline-licenselist')}>
             <LicenseByline licenseRights={hideIconsAndAuthors ? [] : licenseRights} locale={locale} marginRight>
-              <span {...classes('byline-author-buttons', hideIconsAndAuthors ? 'no-siblings' : undefined)}>
+              <div {...classes('byline-author-buttons', hideIconsAndAuthors ? 'no-siblings' : undefined)}>
                 {!hideIconsAndAuthors && (
                   <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
                 )}
@@ -73,7 +73,7 @@ export const FigureCaption = ({
                   )}
                 </div>{' '}
                 {children}
-              </span>
+              </div>
             </LicenseByline>
 
             {link && (

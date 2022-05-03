@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import { Play, ArrowCollapse } from '@ndla/icons/common';
+import { ArrowCollapse } from '@ndla/icons/common';
 import { ExpandTwoArrows } from '@ndla/icons/action';
-import { CursorClick } from '@ndla/icons/action';
 
-export function FigureExpandButton({ messages, typeClass, type }: Props) {
+export function FigureExpandButton({ messages, typeClass }: Props) {
   return (
     <button
       className="c-figure__fullscreen-btn"
@@ -21,28 +20,15 @@ export function FigureExpandButton({ messages, typeClass, type }: Props) {
       aria-label={messages.zoomImageButtonLabel}
       data-figure-button
       data-classtype={typeClass}>
-      {!type && (
-        <>
-          <ExpandTwoArrows className="contracted-icon" />
-          <ArrowCollapse className="expanded-icon" />
-        </>
-      )}
-      {type === 'image' && (
-        <>
-          <ExpandTwoArrows className="contracted-icon" />
-          <ArrowCollapse className="expanded-icon" />
-        </>
-      )}
-      {type === 'h5p' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-      {type === 'iframe' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-      {type === 'external' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-      {type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
+      <>
+        <ExpandTwoArrows className="contracted-icon" />
+        <ArrowCollapse className="expanded-icon" />
+      </>
     </button>
   );
 }
 
 interface Props {
-  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
   messages: {
     zoomImageButtonLabel: string;
     zoomOutImageButtonLabel: string;

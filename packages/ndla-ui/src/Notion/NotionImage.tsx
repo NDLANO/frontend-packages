@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Image, FigureExpandButton } from '..';
+import { Image, FigureOpenDialogButton } from '..';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
 
@@ -65,9 +65,8 @@ export const NotionImage = ({ id, src, alt, imageCopyright, type }: Props) => {
             alt={alt}
             src={src}
             expandButton={
-              <FigureExpandButton
+              <FigureOpenDialogButton
                 type={type}
-                typeClass={typeClass}
                 messages={{
                   zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
                   zoomOutImageButtonLabel: t('license.image.itemImage.zoomOutImageButtonLabel'),

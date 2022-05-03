@@ -20,10 +20,8 @@ export function FigureExpandButton({ messages, typeClass }: Props) {
       aria-label={messages.zoomImageButtonLabel}
       data-figure-button
       data-classtype={typeClass}>
-      <>
-        <ExpandTwoArrows className="contracted-icon" />
-        <ArrowCollapse className="expanded-icon" />
-      </>
+      <ExpandTwoArrows className="contracted-icon" />
+      <ArrowCollapse className="expanded-icon" />
     </button>
   );
 }

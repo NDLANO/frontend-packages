@@ -117,13 +117,15 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                       </NotionDialogContent>
                     </Fragment>
                   }>
-                  <NotionImage
-                    type={type}
-                    id={visualElementId}
-                    src={concept.visualElement.image.src}
-                    alt={concept.visualElement.image.alt ?? ''}
-                    imageCopyright={concept.visualElement.copyright}
-                  />
+                  {concept.visualElement.image && (
+                    <NotionImage
+                      type={type}
+                      id={visualElementId}
+                      src={concept.visualElement.image.src}
+                      alt={concept.visualElement.image.alt ?? ''}
+                      imageCopyright={concept.visualElement.copyright}
+                    />
+                  )}
                 </Notion>
               </ImageWrapper>
             ) : undefined
@@ -135,6 +137,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                   id={notionId}
                   ariaLabel="Vis begrep beskrivelse"
                   title={concept.title}
+                  hideBaselineIcon
                   subTitle="forklaring"
                   content={
                     <Fragment>
@@ -153,13 +156,15 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                       />
                     </Fragment>
                   }>
-                  <NotionImage
-                    type={type}
-                    id={visualElementId}
-                    src={concept.image?.src as string}
-                    alt={concept.image?.alt ?? ''}
-                    imageCopyright={concept.visualElement.copyright}
-                  />
+                  {concept.image && (
+                    <NotionImage
+                      type={type}
+                      id={visualElementId}
+                      src={concept.image?.src as string}
+                      alt={concept.image?.alt ?? ''}
+                      imageCopyright={concept.visualElement.copyright}
+                    />
+                  )}
                 </Notion>
               </ImageWrapper>
             ) : undefined

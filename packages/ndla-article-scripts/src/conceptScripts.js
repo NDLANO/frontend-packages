@@ -18,13 +18,9 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
       let iframe_tag = popup.querySelector('iframe');
-      let video_tag = popup.querySelector('video');
       if (iframe_tag) {
         let iframeSrc = iframe_tag.src;
         iframe_tag.src = iframeSrc;
-      }
-      if (video_tag) {
-        video_tag.pause();
       }
 
       if (returnFocusToParent) {
@@ -167,6 +163,11 @@ export const addShowConceptDefinitionClickListeners = () => {
       popup.setAttribute('aria-hidden', true);
       window.removeEventListener('keyup', ESCKeyListener, true);
       openBtn.focus();
+      let iframe_tag = popup.querySelector('iframe');
+      if (iframe_tag) {
+        let iframeSrc = iframe_tag.src;
+        iframe_tag.src = iframeSrc;
+      }
     };
   });
 };

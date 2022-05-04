@@ -94,7 +94,14 @@ export const addShowConceptDefinitionClickListeners = () => {
         popup.setAttribute('aria-hidden', false);
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        popup.style.top = `${openBtnBottom + 20}px`;
+        const image = popup.querySelector('img');
+        const iframe = popup.querySelector('iframe');
+        if (iframe || image) {
+          popup.style.top = `${openBtnBottom - 500}px`;
+        } else {
+          popup.style.top = `${openBtnBottom + 20}px`;
+        }
+
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const popupHeight = popup.offsetHeight;
         const popupTop = getElementOffset(popup).top;
@@ -102,7 +109,10 @@ export const addShowConceptDefinitionClickListeners = () => {
         let offset = 0;
 
         if (popupTop + popupHeight < documentHeight) {
-          offset = -((viewportHeight - popupHeight) / 2);
+          jump(popup, {
+            offset: -((viewportHeight - popupHeight) / 2),
+            duration: 300,
+          });
         } else {
           offset = popupHeight;
         }

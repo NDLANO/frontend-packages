@@ -27,24 +27,29 @@ export type NotionVisualElementType = {
 
 interface Props {
   visualElement: NotionVisualElementType;
+  id?: string;
+  figureId?: string;
 }
 const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external', 'image'];
 
-const NotionVisualElement = ({ visualElement }: Props) => {
-  const id = '1';
-  const figureId = 'figure-1';
+const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
   if (!visualElement.resource || !supportedEmbedTypes.includes(visualElement.resource)) {
     return <p>Embed type is not supported!</p>;
   }
-  let type = visualElement.type;
-  visualElement.resource === 'brightcove' ? (type = 'video') : (type = 'h5p');
-  visualElement.resource === 'image' && (type = 'image');
+
+  const getType = (type = visualElement.type) => {
+    visualElement.resource === 'brightcove' ? (type = 'video') : (type = 'h5p');
+    visualElement.resource === 'image' && (type = 'image');
+    return type;
+  };
+
+  const type = getType(visualElement.type);
 
   return (
     <FigureNotion
       resizeIframe
-      id={id}
-      figureId={figureId}
+      id={id as string}
+      figureId={figureId as string}
       title={visualElement.title ?? ''}
       copyright={visualElement.copyright}
       licenseString={visualElement.copyright?.license?.license ?? ''}

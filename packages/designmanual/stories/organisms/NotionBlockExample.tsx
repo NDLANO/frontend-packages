@@ -39,7 +39,7 @@ class NotionBlockExample extends Component {
   render() {
     return (
       <ComponentInfo
-        status={1}
+        status={3}
         components={
           <OneColumn>
             <ContentWrapper>
@@ -55,7 +55,7 @@ class NotionBlockExample extends Component {
             </ContentWrapper>
             <NotionBlock type="h5p" hideIconsAndAuthors />
             <ContentWrapper>
-              <h2>Begrep med visuelt element iframe/external</h2>
+              <h2>Begrep med forfatter og lisensikoner</h2>
             </ContentWrapper>
             <NotionBlock type="external" />
           </OneColumn>

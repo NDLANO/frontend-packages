@@ -38,18 +38,7 @@ const NotionCSS = css`
     position: relative;
 
     cursor: pointer;
-    &:after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      margin: calc(1em + 4px) auto 0;
-      left: 0;
-      right: 0;
-      width: 0;
-      height: 0;
-      transition: transform 0.1s ease;
-    }
-    &:hover,
+
     &:focus {
       border-color: ${colors.brand.primary};
       outline: none;

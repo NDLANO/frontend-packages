@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 import React, { useEffect, Fragment } from 'react';
 //@ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
-
+import { useTranslation } from 'react-i18next';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogLicenses } from '@ndla/notion';
 import { Notion as UINotion } from '.';
@@ -28,10 +28,7 @@ const ContentWrapper = styled.div<{ adjustSizeToFitWiderPage?: boolean }>`
   & button {
     width: 100%;
   }
-  & .iconify--ic {
-    //Hides the underline icon when in a notionblock
-    display: none;
-  }
+
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
     left: 0;
@@ -57,6 +54,7 @@ export interface ConceptNotionType {
   subjectNames?: string[];
   visualElement?: NotionVisualElementType;
   authors: string[];
+  source?: string;
   image?: {
     src: string;
     alt: string;
@@ -74,6 +72,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
   const notionId = `notion-${concept.id}`;
   const figureId = `notion-figure-${concept.id}`;
   const visualElementId = `visual-element-${concept.id}`;
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!disableScripts) {
@@ -99,7 +98,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
               <ImageWrapper>
                 <Notion
                   id={notionId}
-                  ariaLabel="Vis begrep beskrivelse"
+                  ariaLabel={t('messages.ariaLabel')}
                   title={concept.title}
                   subTitle="forklaring"
                   hideBaselineIcon
@@ -107,14 +106,18 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                     <Fragment>
                       <NotionDialogContent>
                         {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-                          <NotionVisualElement visualElement={concept.visualElement} />
+                          <NotionVisualElement
+                            visualElement={concept.visualElement}
+                            id={notionId}
+                            figureId={figureId}
+                          />
                         ) : undefined}
 
                         <NotionDialogText>{concept.text}</NotionDialogText>
                       </NotionDialogContent>{' '}
                       <NotionDialogLicenses
                         license={concept.copyright?.license?.license ?? ''}
-                        source="https://www.snl.no"
+                        source={concept.source}
                       />
                     </Fragment>
                   }>
@@ -136,7 +139,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
               <ImageWrapper>
                 <Notion
                   id={notionId}
-                  ariaLabel="Vis begrep beskrivelse"
+                  ariaLabel={t('messages.ariaLabel')}
                   title={concept.title}
                   hideBaselineIcon
                   subTitle="forklaring"
@@ -146,14 +149,18 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                         {concept.visualElement &&
                         concept.visualElement?.resource !== 'image' &&
                         concept.visualElement.url ? (
-                          <NotionVisualElement visualElement={concept.visualElement} />
+                          <NotionVisualElement
+                            visualElement={concept.visualElement}
+                            id={notionId}
+                            figureId={figureId}
+                          />
                         ) : undefined}
 
                         <NotionDialogText>{concept.text}</NotionDialogText>
                       </NotionDialogContent>
                       <NotionDialogLicenses
                         license={concept.copyright?.license?.license ?? ''}
-                        source="https://www.snl.no"
+                        source={concept.source}
                       />
                     </Fragment>
                   }>

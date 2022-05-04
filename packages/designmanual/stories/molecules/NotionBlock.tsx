@@ -36,6 +36,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
           id,
           authors: [],
           title: 'And',
+          source: 'https://www.snl.no',
           text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
           subjectNames: ['Naturbruk Vg1', 'Naturbruk Vg2'],
           copyright: {
@@ -80,6 +81,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
           authors: [],
           text: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',
           title: 'Velferdsteknologi',
+          source: 'https://www.snl.no',
           image: {
             src: 'https://api.test.ndla.no/image-api/raw/id/52535',
             alt: 'Foto. Klasseromsrobot som gjør det mulig å være på skolen uten å være fysisk til stede.',
@@ -134,6 +136,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
             src: 'https://api.test.ndla.no/image-api/raw/id/23425',
             alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
           },
+          source: 'https://www.snl.no',
           copyright: {
             license: {
               license: 'CC-BY-SA-4.0',
@@ -183,6 +186,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
           id,
           authors: [],
           title: '6-akset robotarm',
+          source: 'https://www.snl.no',
           text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
           image: {
             src: 'https://api.test.ndla.no/image-api/raw/id/23425',

@@ -17,6 +17,16 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
     if (popup.classList.contains('visible')) {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
+      let iframe_tag = popup.querySelector('iframe');
+      let video_tag = popup.querySelector('video');
+      if (iframe_tag) {
+        let iframeSrc = iframe_tag.src;
+        iframe_tag.src = iframeSrc;
+      }
+      if (video_tag) {
+        video_tag.pause();
+      }
+
       if (returnFocusToParent) {
         const openBtn = item.querySelector('[data-notion-link]');
         openBtn.focus();

@@ -518,7 +518,7 @@ const messages = {
     footerInfo: 'Nettstedet er utarbeidet av NDLA med åpen kildekode.',
     footerEditiorInChief: 'Ansvarlig redaktør: ',
     footerManagingEditor: 'Utgaveansvarlig: ',
-    footerPrivacyLink: 'Personvernerklæring',
+    footerPrivacyLink: 'Personvernerklæring og cookies',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',

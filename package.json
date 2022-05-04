@@ -63,7 +63,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "babel-plugin-emotion": "^10.0.33",
-    "babel-plugin-polished": "^1.1.0",
     "babel-preset-es2015": "6.24.1",
     "camelcase": "^5.0.0",
     "chalk": "^2.4.2",

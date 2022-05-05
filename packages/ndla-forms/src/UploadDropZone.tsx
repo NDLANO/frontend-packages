@@ -201,7 +201,7 @@ const UploadDropZone = ({
     const { files } = e.target;
     if (files) {
       // Impossible to select illegal files so skip check.
-      onAddedFiles([...Array(files)], e);
+      onAddedFiles(Array.from(files), e);
     }
     e.target.value = '';
   };

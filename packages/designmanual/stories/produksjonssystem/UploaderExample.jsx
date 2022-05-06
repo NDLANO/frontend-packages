@@ -33,7 +33,15 @@ class UploadDropZoneExample extends Component {
     return (
       <div>
         <UploadDropZone
-          allowedFiles={['application/pdf', 'image/*', '.js']}
+          allowedFiles={[
+            'application/pdf',
+            'image/gif',
+            'image/png',
+            'image/jpeg',
+            'image/jpg',
+            'image/svg+xml',
+            '.js',
+          ]}
           onAddedFiles={this.addedFiles}
           multiple
           ariaLabel="Upload example"

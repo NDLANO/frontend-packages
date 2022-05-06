@@ -6,13 +6,13 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState, useRef, ChangeEvent, DragEvent, SyntheticEvent } from 'react';
+import React, { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Spinner } from '@ndla/ui';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
-import { getDraggedFiles, getIllegalFiles } from './filetypeHelper';
+import { getIllegalFiles } from './filetypeHelper';
 
 const SpinnerWrapper = styled.div`
   margin: -${spacing.small} 0;
@@ -54,7 +54,7 @@ const DropZone = styled.div<{ draggedOver?: boolean }>`
     content: '';
     display: block;
     position: absolute;
-    background: red;
+    background: ${colors.support.red};
     top: 0;
     left: 0;
     right: 0;
@@ -118,7 +118,7 @@ const Wrapper = styled.div`
 const InputField = styled.input`
   background: ${colors.brand.primary};
   border: 0;
-  color: #fff;
+  color: ${colors.white};
 `;
 
 const AlertMessages = styled.div`
@@ -157,8 +157,7 @@ const UploadDropZone = ({
   loading,
   children,
 }: Props) => {
-  const [dropAllowed, setDropAllowed] = useState(true);
-  const [draggedOver, setDraggedOver] = useState(false);
+  const [draggedInside, setDraggedInside] = useState(false);
   const [error, setError] = useState<string>();
   const [errorTimer, setErrorTimer] = useState<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -167,6 +166,7 @@ const UploadDropZone = ({
   useEffect(() => {
     // update size of input.
     const dropZoneWidth = (dropZoneRef?.current?.getBoundingClientRect().width || 0) - 6;
+    console.log(dropZoneWidth);
     if (inputRef.current) {
       inputRef.current.style.width = `${dropZoneWidth}px`;
     }
@@ -189,39 +189,37 @@ const UploadDropZone = ({
 
       if (illegalFiles.length > 0) {
         const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf('/') + 1)).toString();
-        setError(`Filetype(s) not supported: ${illegalFileTypes}`);
+        setError(errorMessage || `Filetype(s) not supported: ${illegalFileTypes}`);
         if (errorTimer) {
           clearTimeout(errorTimer);
         }
         setErrorTimer(
           setTimeout(() => {
-            setDropAllowed(true);
+            setError(undefined);
           }, 5000),
         );
-        setDropAllowed(false);
       } else {
         onAddedFiles(files);
-        setDropAllowed(true);
         setError(undefined);
       }
     }
 
-    setDraggedOver(false);
+    setDraggedInside(false);
     e.target.value = '';
   };
 
   const onDragEnter = () => {
-    setDropAllowed(true);
-    setDraggedOver(true);
+    setError(undefined);
+    setDraggedInside(true);
   };
 
   const onDragLeave = () => {
-    setDraggedOver(false);
+    setDraggedInside(false);
   };
 
   return (
     <>
-      <Wrapper css={[draggedOver && cssHover, loading && cssLoading]}>
+      <Wrapper css={[draggedInside && cssHover, loading && cssLoading]}>
         <DropZone ref={dropZoneRef}>
           <InputField
             type="file"
@@ -249,7 +247,7 @@ const UploadDropZone = ({
           </ContentWrapper>
         </DropZone>
       </Wrapper>
-      {!dropAllowed && (
+      {error && (
         <AlertMessages>
           <AlertCircle aria-hidden="true" />
           {error}

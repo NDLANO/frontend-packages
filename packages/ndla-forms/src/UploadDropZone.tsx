@@ -6,14 +6,13 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState, useRef, ChangeEvent, DragEvent } from 'react';
-import { compact } from 'lodash';
+import React, { ReactNode, useEffect, useState, useRef, ChangeEvent, DragEvent, SyntheticEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Spinner } from '@ndla/ui';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
-import { getIllegalFiles } from './filetypeHelper';
+import { getDraggedFiles, getIllegalFiles } from './filetypeHelper';
 
 const SpinnerWrapper = styled.div`
   margin: -${spacing.small} 0;
@@ -135,23 +134,6 @@ const AlertMessages = styled.div`
   ${fonts.sizes(14, 1.1)};
 `;
 
-const getFiles = (e: DragEvent<HTMLInputElement>): File[] => {
-  const files = [];
-  let i;
-  if (e.dataTransfer.items) {
-    for (i = 0; i < e.dataTransfer.items.length; i++) {
-      if (e.dataTransfer.items[i].kind === 'file') {
-        files.push(e.dataTransfer.items[i].getAsFile());
-      }
-    }
-  } else {
-    for (i = 0; i < e.dataTransfer.files.length; i++) {
-      files.push(e.dataTransfer.files[i]);
-    }
-  }
-  return compact(files);
-};
-
 interface Props {
   name: string;
   allowedFiles: string[];
@@ -198,11 +180,33 @@ const UploadDropZone = ({
   }, []);
 
   const onChangeField = (e: ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
-    if (files) {
-      // Impossible to select illegal files so skip check.
-      onAddedFiles(Array.from(files), e);
+    const nativeFiles = e.target.files;
+
+    if (nativeFiles) {
+      const files = Array.from(nativeFiles);
+
+      const illegalFiles = getIllegalFiles(files, allowedFiles);
+
+      if (illegalFiles.length > 0) {
+        const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf('/') + 1)).toString();
+        setError(`Filetype(s) not supported: ${illegalFileTypes}`);
+        if (errorTimer) {
+          clearTimeout(errorTimer);
+        }
+        setErrorTimer(
+          setTimeout(() => {
+            setDropAllowed(true);
+          }, 5000),
+        );
+        setDropAllowed(false);
+      } else {
+        onAddedFiles(files);
+        setDropAllowed(true);
+        setError(undefined);
+      }
     }
+
+    setDraggedOver(false);
     e.target.value = '';
   };
 
@@ -216,7 +220,7 @@ const UploadDropZone = ({
   };
 
   const onDrop = (e: DragEvent<HTMLInputElement>) => {
-    const files = getFiles(e);
+    const files = getDraggedFiles(e);
     const illegalFiles = getIllegalFiles(files, allowedFiles);
     const hasIllegalFiles = illegalFiles.length > 0;
     let newError;

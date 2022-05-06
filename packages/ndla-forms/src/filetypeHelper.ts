@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
+import { compact } from 'lodash';
+import { DragEvent } from 'react';
+
 export const illegalFormats = (files: File[], allowedFiles: string[]) => {
   return files.filter((file) => {
     const [type, subtype] = file.type.split('/');
@@ -29,4 +32,21 @@ export const illegalEndings = (files: File[], allowedFiles: string[]) => {
 export const getIllegalFiles = (files: File[], allowedFiles: string[]) => {
   const illegal = illegalFormats(files, allowedFiles);
   return illegalEndings(illegal, allowedFiles);
+};
+
+export const getDraggedFiles = (e: DragEvent<HTMLInputElement>): File[] => {
+  const files = [];
+  let i;
+  if (e.dataTransfer.items) {
+    for (i = 0; i < e.dataTransfer.items.length; i++) {
+      if (e.dataTransfer.items[i].kind === 'file') {
+        files.push(e.dataTransfer.items[i].getAsFile());
+      }
+    }
+  } else {
+    for (i = 0; i < e.dataTransfer.files.length; i++) {
+      files.push(e.dataTransfer.files[i]);
+    }
+  }
+  return compact(files);
 };

@@ -57,7 +57,7 @@ class NotionBlockExample extends Component {
             <ContentWrapper>
               <h2>Begrep med forfatter og lisensikoner</h2>
             </ContentWrapper>
-            <NotionBlock type="external" />
+            <NotionBlock type="image" />
           </OneColumn>
         }
         onSite={[<NotionSiteTabs></NotionSiteTabs>]}

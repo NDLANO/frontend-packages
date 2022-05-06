@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 
 const NotionBody = styled.div`
   margin: 0 ${spacing.normal} ${spacing.small};
@@ -12,7 +12,10 @@ const NotionBody = styled.div`
     animation-duration: 500ms;
   }
   iframe {
-    height: 400px;
+    height: 619px;
+    ${mq.range({ until: breakpoints.tabletWide })} {
+      height: 300px;
+    }
   }
 `;
 

@@ -12,7 +12,6 @@ import { parseMarkdown } from '@ndla/util';
 
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { keyframes } from '@emotion/core';
-import { NotionVisualElementType } from './NotionVisualElement';
 
 const NotionContainer = styled.div``;
 
@@ -102,7 +101,7 @@ export type NotionProps = {
   labels?: string[];
   text: ReactNode;
   title: string;
-  visualElement?: NotionVisualElementType;
+  visualElement: ReactNode;
   imageElement?: ReactNode;
   children?: ReactNode;
 };
@@ -112,12 +111,12 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
 
   return (
     <NotionContainer>
-      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
+      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement}</MediaContainer>}
 
       <ContentWrapper>
         {imageElement}
         {visualElement}
-        <TextWrapper hasVisualElement={!!(imageElement || visualElement?.image)}>
+        <TextWrapper hasVisualElement={!!(imageElement || visualElement)}>
           {parseMarkdown(`**${title}** \u2013 ${text}`, 'body')}
           {!!labels.length && (
             <LabelsContainer>

@@ -6,7 +6,7 @@
  */
 import styled from '@emotion/styled';
 
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 //@ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { useTranslation } from 'react-i18next';
@@ -98,12 +98,12 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
               <ImageWrapper>
                 <Notion
                   id={notionId}
-                  ariaLabel={t('messages.ariaLabel')}
+                  ariaLabel={t('factbox.open')}
                   title={concept.title}
                   subTitle="forklaring"
                   hideBaselineIcon
                   content={
-                    <Fragment>
+                    <>
                       <NotionDialogContent>
                         {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
                           <NotionVisualElement
@@ -112,14 +112,13 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                             figureId={figureId}
                           />
                         ) : undefined}
-
                         <NotionDialogText>{concept.text}</NotionDialogText>
                       </NotionDialogContent>{' '}
                       <NotionDialogLicenses
                         license={concept.copyright?.license?.license ?? ''}
                         source={concept.source}
                       />
-                    </Fragment>
+                    </>
                   }>
                   {concept.visualElement.image && (
                     <NotionImage
@@ -139,12 +138,12 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
               <ImageWrapper>
                 <Notion
                   id={notionId}
-                  ariaLabel={t('messages.ariaLabel')}
+                  ariaLabel={t('factbox.open')}
                   title={concept.title}
                   hideBaselineIcon
                   subTitle="forklaring"
                   content={
-                    <Fragment>
+                    <>
                       <NotionDialogContent>
                         {concept.visualElement &&
                         concept.visualElement?.resource !== 'image' &&
@@ -162,13 +161,13 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                         license={concept.copyright?.license?.license ?? ''}
                         source={concept.source}
                       />
-                    </Fragment>
+                    </>
                   }>
                   {concept.image && (
                     <NotionImage
                       type={type}
                       id={visualElementId}
-                      src={concept.image?.src as string}
+                      src={concept.image?.src}
                       alt={concept.image?.alt ?? ''}
                       imageCopyright={concept.visualElement.copyright}
                     />

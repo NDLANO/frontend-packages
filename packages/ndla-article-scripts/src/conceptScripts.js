@@ -88,40 +88,46 @@ export const addShowConceptDefinitionClickListeners = () => {
 
         popup.classList.add('visible');
         popup.setAttribute('aria-hidden', false);
+
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        const image = popup.querySelector('img');
-        const iframe = popup.querySelector('iframe');
-        if (iframe || image) {
-          popup.style.top = `${openBtnBottom - 500}px`;
-        } else {
-          popup.style.top = `${openBtnBottom + 20}px`;
-        }
-
+        popup.style.top = `${openBtnBottom - 500}px`;
+        const conceptNotionIdentifier = popup.querySelector('figcaption');
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        const popupHeight = popup.offsetHeight;
         const popupTop = getElementOffset(popup).top;
-
+        const popupHeight = popup.offsetHeight;
         let offset = 0;
 
-        if (popupTop + popupHeight < documentHeight) {
+        if (conceptNotionIdentifier) {
+          //checks if it is part of a notionblock
+          if (popupTop + popupHeight > documentHeight) {
+            //Positions the popup so that it does not expand the page
+            popup.style.top = `${openBtnBottom - 900}px`;
+          }
           jump(popup, {
             offset: -((viewportHeight - popupHeight) / 2),
             duration: 300,
           });
         } else {
-          offset = popupHeight;
-        }
-        if (popupTop + popupHeight > documentHeight) {
-          const maxHeight = documentHeight - popupTop;
+          popup.style.top = `${openBtnBottom + 20}px`;
 
-          if (maxHeight < 200) {
-            popup.style.height = `auto`;
+          if (popupTop + popupHeight < documentHeight) {
+            offset = -((viewportHeight - popupHeight) / 2);
           } else {
-            popup.style.height = `${maxHeight}px`;
-            popup.style.overflowY = 'scroll';
+            offset = popupHeight;
+          }
+          if (popupTop + popupHeight > documentHeight) {
+            const maxHeight = documentHeight - popupTop;
+
+            if (maxHeight < 200) {
+              popup.style.height = `auto`;
+            } else {
+              popup.style.height = `${maxHeight}px`;
+              popup.style.overflowY = 'scroll';
+            }
           }
         }
+
         if (inIframe() && window.parent) {
           window.parent.postMessage(
             {

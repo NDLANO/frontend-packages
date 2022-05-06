@@ -137,7 +137,7 @@ const AlertMessages = styled.div`
 interface Props {
   name: string;
   allowedFiles: string[];
-  onAddedFiles: Function;
+  onAddedFiles: (files: FileList, e: ChangeEvent<HTMLInputElement>) => void;
   multiple?: boolean;
   useIcon: ReactNode;
   ariaLabel: string;
@@ -192,7 +192,7 @@ const UploadDropZone = ({
           }, 5000),
         );
       } else {
-        onAddedFiles(files);
+        onAddedFiles(nativeFiles, e);
         setError(undefined);
       }
     }

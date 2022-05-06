@@ -216,30 +216,7 @@ const UploadDropZone = ({
   };
 
   const onDragLeave = () => {
-    setDraggedOver(true);
-  };
-
-  const onDrop = (e: DragEvent<HTMLInputElement>) => {
-    const files = getDraggedFiles(e);
-    const illegalFiles = getIllegalFiles(files, allowedFiles);
-    const hasIllegalFiles = illegalFiles.length > 0;
-    let newError;
-    if (hasIllegalFiles) {
-      const illegalFileTypes = files.map((file) => file.type.substr(file.type.indexOf('/') + 1)).toString();
-      newError = `Filetype(s) not supported: ${illegalFileTypes}`;
-      if (errorTimer) {
-        clearTimeout(errorTimer);
-      }
-      setErrorTimer(
-        setTimeout(() => {
-          setDropAllowed(true);
-        }, 5000),
-      );
-      e.preventDefault();
-    }
-    setDropAllowed(!hasIllegalFiles);
     setDraggedOver(false);
-    setError(errorMessage || newError);
   };
 
   return (
@@ -253,7 +230,6 @@ const UploadDropZone = ({
             accept={allowedFiles.toString()}
             multiple={multiple}
             onChange={onChangeField}
-            onDrop={onDrop}
             onDragEnter={onDragEnter}
             onDragLeave={onDragLeave}
             ref={inputRef}

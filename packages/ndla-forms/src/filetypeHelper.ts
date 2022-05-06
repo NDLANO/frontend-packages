@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
-export const illegalFormats = (files, allowedFiles) => {
+export const illegalFormats = (files: File[], allowedFiles: string[]) => {
   return files.filter((file) => {
     const [type, subtype] = file.type.split('/');
 
@@ -16,7 +16,7 @@ export const illegalFormats = (files, allowedFiles) => {
   });
 };
 
-export const illegalEndings = (files, allowedFiles) => {
+export const illegalEndings = (files: File[], allowedFiles: string[]) => {
   return files.filter((file) => {
     const fileEnding = file.name.split('.').pop();
 
@@ -26,7 +26,7 @@ export const illegalEndings = (files, allowedFiles) => {
   });
 };
 
-export const getIllegalFiles = (files, allowedFiles) => {
+export const getIllegalFiles = (files: File[], allowedFiles: string[]) => {
   const illegal = illegalFormats(files, allowedFiles);
   return illegalEndings(illegal, allowedFiles);
 };

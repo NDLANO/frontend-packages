@@ -49,7 +49,7 @@ const FigureNotion = ({
   ).map((i) => ({ name: i.description, type: i.label }));
 
   return (
-    <Figure id={figureId} type={'full-column'}>
+    <Figure id={figureId} type={'full-column'} resizeIframe>
       {({ typeClass }) => (
         <>
           {typeof children === 'function' ? children({ typeClass }) : children}

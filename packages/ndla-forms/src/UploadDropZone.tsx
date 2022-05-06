@@ -164,13 +164,6 @@ const UploadDropZone = ({
   const dropZoneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // update size of input.
-    const dropZoneWidth = (dropZoneRef?.current?.getBoundingClientRect().width || 0) - 6;
-    console.log(dropZoneWidth);
-    if (inputRef.current) {
-      inputRef.current.style.width = `${dropZoneWidth}px`;
-    }
-
     return () => {
       if (errorTimer) {
         clearTimeout(errorTimer);

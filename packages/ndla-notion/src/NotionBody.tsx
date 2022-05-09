@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { spacing } from '@ndla/core';
 
 const NotionBody = styled.div`
   margin: 0 ${spacing.normal} ${spacing.small};

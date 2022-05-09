@@ -25,9 +25,6 @@ const ContentWrapper = styled.div<{ adjustSizeToFitWiderPage?: boolean }>`
   width: ${(props) => (props.adjustSizeToFitWiderPage ? '100%' : '133.3333333333%')};
   padding-left: 24px;
   padding-right: 24px;
-  & button {
-    width: 100%;
-  }
 
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
@@ -83,6 +80,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
   return (
     <ContentWrapper adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}>
       <FigureNotion
+        resizeIframe
         id={figureId}
         figureId={visualElementId}
         copyright={concept.copyright}
@@ -100,7 +98,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                   id={notionId}
                   ariaLabel={t('factbox.open')}
                   title={concept.title}
-                  subTitle="forklaring"
+                  subTitle={t('searchPage.resultType.notionsHeading')}
                   hideBaselineIcon
                   content={
                     <>
@@ -113,7 +111,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                           />
                         ) : undefined}
                         <NotionDialogText>{concept.text}</NotionDialogText>
-                      </NotionDialogContent>{' '}
+                      </NotionDialogContent>
                       <NotionDialogLicenses
                         license={concept.copyright?.license?.license ?? ''}
                         source={concept.source}
@@ -141,7 +139,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                   ariaLabel={t('factbox.open')}
                   title={concept.title}
                   hideBaselineIcon
-                  subTitle="forklaring"
+                  subTitle={t('searchPage.resultType.notionsHeading')}
                   content={
                     <>
                       <NotionDialogContent>
@@ -175,9 +173,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
                 </Notion>
               </ImageWrapper>
             ) : undefined
-          }>
-          {' '}
-        </UINotion>{' '}
+          }></UINotion>
       </FigureNotion>
     </ContentWrapper>
   );

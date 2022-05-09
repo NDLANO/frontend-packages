@@ -4,11 +4,14 @@
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree. *
  */
-
+import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
-import { ImageCrop, ImageFocalPoint } from '../Image';
+
+const StyledIframe = styled.iframe`
+  min-height: 400px;
+`;
 
 export type NotionVisualElementType = {
   element?: ReactNode;
@@ -20,8 +23,6 @@ export type NotionVisualElementType = {
   image?: {
     src: string;
     alt?: string;
-    crop?: ImageCrop;
-    focalPoint?: ImageFocalPoint;
   };
 };
 
@@ -61,7 +62,7 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (
-        <iframe src={visualElement.url} title={visualElement.title} />
+        <StyledIframe src={visualElement.url} title={visualElement.title} />
       )}
     </FigureNotion>
   );

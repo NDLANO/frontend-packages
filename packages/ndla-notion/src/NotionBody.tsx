@@ -13,6 +13,9 @@ const NotionBody = styled.div`
   }
   iframe {
     height: 619px;
+    ${mq.range({ until: breakpoints.desktop })} {
+      height: 400px;
+    }
     ${mq.range({ until: breakpoints.tabletWide })} {
       height: 300px;
     }

@@ -9,9 +9,7 @@ import React, { Fragment, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { parseMarkdown } from '@ndla/util';
-
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { keyframes } from '@emotion/core';
 
 const NotionContainer = styled.div``;
 
@@ -47,45 +45,8 @@ const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   }
 `;
 
-const fadeInMediaKeyframe = keyframes`
-  0% {
-    opacity: 0;
-    height: auto;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-const fadeOutMediaKeyframe = keyframes`
-  0% {
-    opacity: 1;
-    height: auto;
-  }
-  100% {
-    opacity: 0;
-    height:0;
-    overflow: hidden;
-  }
-`;
-
 const ClearWrapper = styled.div`
   clear: both;
-`;
-
-const MediaContainer = styled.div`
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  &.expanded {
-    animation-name: ${fadeInMediaKeyframe};
-    animation-duration: 2.8s;
-    opacity: 1;
-    height: auto;
-  }
-  &.fadeOut {
-    animation-name: ${fadeOutMediaKeyframe};
-    animation-duration: 2.8s;
-  }
 `;
 
 const LabelsContainer = styled.div`
@@ -111,8 +72,6 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
 
   return (
     <NotionContainer>
-      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement}</MediaContainer>}
-
       <ContentWrapper>
         {imageElement}
         {visualElement}

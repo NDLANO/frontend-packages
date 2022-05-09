@@ -61,7 +61,7 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (
-        <iframe title={visualElement.title} src={visualElement.url} />
+        <iframe src={visualElement.url} title={visualElement.title} />
       )}
     </FigureNotion>
   );

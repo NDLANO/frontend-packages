@@ -13,7 +13,7 @@ import ComponentInfo from '../ComponentInfo';
 export const MyNdla = () => {
   <ComponentInfo
     status={3}
-    components={}
+    components={<ResourcesView></ResourcesView>}
     onSite={[]}
     reactCode={`
 

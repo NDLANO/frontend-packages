@@ -23,6 +23,7 @@ import {
 } from '@ndla/ui';
 import { StoryIntro } from './wrappers';
 import FooterExample from './molecules/footers';
+import MyNdla from './pages/MyNdla';
 import MessageBox from './molecules/MessageBoxExample';
 
 storiesOf('Min NDLA', module).add('Meldings- og infoboks', () => (
@@ -34,7 +35,7 @@ storiesOf('Min NDLA', module).add('Meldings- og infoboks', () => (
       </p>
     </StoryIntro>
     <Content>
-      <MessageBox />
+      <MyNdla />
     </Content>
     <FooterExample />
   </PageContainer>

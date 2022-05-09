@@ -71,7 +71,7 @@ export const FigureCaption = ({
                       <span className="alternative hidden">{t('figure.button.original')}</span>
                     </Button>
                   )}
-                </div>{' '}
+                </div>
                 {children}
               </div>
             </LicenseByline>

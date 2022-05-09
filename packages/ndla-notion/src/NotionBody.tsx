@@ -11,15 +11,6 @@ const NotionBody = styled.div`
     animation-name: fadeInLeft;
     animation-duration: 500ms;
   }
-  iframe {
-    height: 619px;
-    ${mq.range({ until: breakpoints.desktop })} {
-      height: 400px;
-    }
-    ${mq.range({ until: breakpoints.tabletWide })} {
-      height: 300px;
-    }
-  }
 `;
 
 export { NotionBody as default };

@@ -13,9 +13,11 @@ import ResourceElement from './ResourceElement';
 const ResourcesWrapper = styled.div``;
 
 export const ResourcesView = () => {
-  <ResourcesWrapper>
-    <ResourceElement type="folder" title="Folder"></ResourceElement>
-  </ResourcesWrapper>;
+  return (
+    <ResourcesWrapper>
+      <ResourceElement type="folder" title="folder" />;
+    </ResourcesWrapper>
+  );
 };
 
 export default ResourcesView;

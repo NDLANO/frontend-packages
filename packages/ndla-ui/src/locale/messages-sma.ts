@@ -909,6 +909,17 @@ const messages = {
     open: 'Åpne faktaboks',
     close: 'Lukk faktaboks',
   },
+  myNdla: {
+    resources: 'Ressurser',
+    folders: 'Mapper',
+    folder: 'Mappe',
+    myFolders: 'Mine mapper',
+    myTags: 'Mine tags',
+    newFolder: 'Ny mappe',
+    myAccount: 'Min konto',
+    favourites: 'Favoritter',
+    help: 'Hjelp',
+  },
 };
 
 export default messages;

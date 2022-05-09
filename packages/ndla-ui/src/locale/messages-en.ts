@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories } = constants;
+export const { contentTypes, subjectCategories, subjectTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -52,6 +52,10 @@ const messages = {
     [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
+  },
+  subjectTypes: {
+    [subjectTypes.SUBJECT]: 'Subject',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
   },
   searchPage: {
     noHits: 'Your search - {{query}} - did not match any articles. ',

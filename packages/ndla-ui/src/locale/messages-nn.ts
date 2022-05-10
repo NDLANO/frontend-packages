@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories } = constants;
+export const { contentTypes, subjectCategories, subjectTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -52,6 +52,10 @@ const messages = {
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
+  },
+  subjectTypes: {
+    [subjectTypes.SUBJECT]: 'Fag',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {{query}}',

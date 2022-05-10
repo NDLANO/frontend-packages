@@ -39,6 +39,7 @@
     "@ndla/licenses": "^4.1.0",
     "@ndla/modal": "^1.2.6",
     "@ndla/safelink": "^1.1.7",
+    "@ndla/notion": "^3.0.0",
     "@ndla/switch": "^0.1.5",
     "@ndla/tabs": "^1.1.4",
     "@ndla/tooltip": "^0.3.5",

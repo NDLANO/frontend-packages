@@ -11,14 +11,16 @@ import { ResourcesView } from '@ndla/ui';
 import ComponentInfo from '../ComponentInfo';
 
 export const MyNdla = () => {
-  <ComponentInfo
-    status={3}
-    components={<ResourcesView></ResourcesView>}
-    onSite={[]}
-    reactCode={`
+  return (
+    <ComponentInfo
+      status={3}
+      components={<ResourcesView></ResourcesView>}
+      onSite={[]}
+      reactCode={`
 
           `}
-    usesPropTypes={[]}></ComponentInfo>;
+      usesPropTypes={[]}></ComponentInfo>
+  );
 };
 
 export default MyNdla;

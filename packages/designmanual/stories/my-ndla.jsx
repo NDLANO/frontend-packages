@@ -24,11 +24,10 @@ import {
 import { StoryIntro } from './wrappers';
 import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
-import MessageBox from './molecules/MessageBoxExample';
 
-storiesOf('Min NDLA', module).add('Meldings- og infoboks', () => (
+storiesOf('Min NDLA', module).add('Ressurs-dashboard', () => (
   <PageContainer>
-    <StoryIntro title="Meldings- og infoboks">
+    <StoryIntro title="Ressurs dashboard">
       <p>
         Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og forteller
         brukeren om at det foregår noe utenom det vanlige.

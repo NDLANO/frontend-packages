@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next';
 const ResourceElementWrapper = styled.div`
   width: 960px;
   height: 56px;
+  border: 1px solid rgba(209, 214, 219, 1);
+  border-radius: 2px;
 `;
 
 const ResourceIconWrapper = styled.div``;

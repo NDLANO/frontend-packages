@@ -20,7 +20,7 @@ const ResourceElementWrapper = styled.div<ResourceElementWrapperProp>`
   padding: 0.5rem;
   border: 1px solid rgba(209, 214, 219, 1);
   border-radius: 2px;
-  background: ${({ type }) => type === 'folder' ? '#fafaf9' : '#fff'};
+  background: ${({ type }) => (type === 'folder' ? '#fafaf9' : '#fff')};
 `;
 
 type ResourceElementProps = {
@@ -36,17 +36,13 @@ const ResourceElement = ({ type, title, description, leftSide, rightSide, childr
   // const { t } = useTranslation();
   return (
     <ResourceElementWrapper type={type}>
-      <div>
-        {leftSide}
-      </div>
+      <div>{leftSide}</div>
       <div>
         <h1>{title}</h1>
         <p>{description}</p>
         {children}
       </div>
-      <div>
-        {rightSide}
-      </div>
+      <div>{rightSide}</div>
     </ResourceElementWrapper>
   );
 };

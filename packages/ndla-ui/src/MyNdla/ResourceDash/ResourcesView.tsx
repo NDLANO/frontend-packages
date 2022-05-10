@@ -24,8 +24,7 @@ export const ResourcesView = () => {
         title="Example folder"
         leftSide={<img src="http://placekitten.com/200/200" />}
         rightSide={<span>#tag</span>}
-        description="some description"
-      >
+        description="some description">
         <p>Im a child.. insert content</p>
       </ResourceElement>
       <ResourceElement
@@ -33,8 +32,7 @@ export const ResourcesView = () => {
         title="Example Resource"
         leftSide={<img src="http://placekitten.com/200/200" />}
         rightSide={<span>#tag</span>}
-        description="some description"
-      >
+        description="some description">
         <p>Im a child.. insert content</p>
       </ResourceElement>
     </ResourcesWrapper>

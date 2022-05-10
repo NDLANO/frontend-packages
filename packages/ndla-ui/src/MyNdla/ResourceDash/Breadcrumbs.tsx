@@ -21,7 +21,9 @@ type BreadcrumbsProps = {
 export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
   <BreadcrumbsWrapper>
     {items.map(({ title, url }) => (
-      <a key={url} href={url}>{title}</a>
+      <a key={url} href={url}>
+        {title}
+      </a>
     ))}
   </BreadcrumbsWrapper>;
 };

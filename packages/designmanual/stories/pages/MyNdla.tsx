@@ -8,6 +8,6 @@
 import React from 'react';
 import { ResourcesView } from '@ndla/ui';
 
-export const MyNdla = () => (<ResourcesView />);
+export const MyNdla = () => <ResourcesView />;
 
 export default MyNdla;

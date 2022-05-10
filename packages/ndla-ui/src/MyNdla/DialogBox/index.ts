@@ -1,5 +1,3 @@
 import DialogBox from './DialogBox';
 
-export {
-  DialogBox,
-}
+export { DialogBox };

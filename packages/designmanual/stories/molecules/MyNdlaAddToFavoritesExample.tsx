@@ -8,19 +8,18 @@
 
 import React, { useState } from 'react';
 import { DialogBox } from '@ndla/ui';
+import { FavoriteButton } from '@ndla/button';
 
 const MyNdlaDialogExample = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <h1>hello dialog!</h1>
-      <button onClick={() => setIsOpen(!isOpen)}>open dialog</button>
+      <FavoriteButton onClick={() => setIsOpen(!isOpen)} aria-label="Legg i favoritter" />
       {isOpen && (
         <DialogBox title="Hello dialog" isOpen={isOpen} closeCallback={() => setIsOpen(!isOpen)}>
           <p>content of dialog..</p>
         </DialogBox>
       )}
-      opened {isOpen ? 'true' : 'false'}
     </div>
   );
 };

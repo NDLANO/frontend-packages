@@ -2,7 +2,8 @@ import React from 'react';
 import Button, { MultiButton, StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown } from '@ndla/icons/common';
-import { CloseButton } from '@ndla/button';
+import { CloseButton, FavoriteButton } from '@ndla/button';
+import { FavoriteHeart } from '@ndla/icons/action';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
@@ -206,7 +207,7 @@ const ButtonExample = () => {
             Medium knapp
           </Button>{' '}
           <Button borderShape="rounded" light size="large" onClick={action('clicked')}>
-            Stor knapp
+            <FavoriteHeart />
           </Button>
         </InlineContainer>
         <InlineContainer>
@@ -463,6 +464,10 @@ const ButtonExample = () => {
         <h2 className="u-heading">Lukkeknapp</h2>
         <InlineContainer>
           <CloseButton />
+        </InlineContainer>
+        <h2 className="u-heading">Legg i favoritter knapp</h2>
+        <InlineContainer>
+          <FavoriteButton aria-label="hello" />
         </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">

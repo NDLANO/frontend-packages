@@ -15,7 +15,7 @@ import { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import Image from '../Image';
 
-const BoxWrapper = styled.div`
+const ResourceBoxContainer = styled.div`
   display: flex;
   padding: 20px;
   border-radius: 5px;
@@ -41,6 +41,7 @@ const Title = styled.h3`
 
 const Caption = styled.p`
   font-size: ${fonts.sizes(14)};
+  max-width: 600px;
 
   ${mq.range({ until: breakpoints.desktop })} {
     line-height: 22px;
@@ -61,6 +62,7 @@ const StyledButton = styled(SafeLinkButton)`
   border: 1px solid ${colors.brand.tertiary};
   :hover {
     background-color: ${colors.brand.primary};
+    border: 1px solid ${colors.brand.primary};
     color: white;
   }
 `;
@@ -72,10 +74,6 @@ const StyledLaunchIcon = styled(Launch)`
 `;
 
 const ImageWrapper = styled.div`
-  align-items: flex-start;
-  display: flex;
-  justify-content: center;
-
   img {
     object-fit: cover;
     width: 134px;
@@ -87,10 +85,6 @@ const ImageWrapper = styled.div`
       height: 200px;
     }
   }
-`;
-
-const CaptionWrapper = styled.div`
-  max-width: 600px;
 `;
 
 const LincenseWrapper = styled.div`
@@ -114,7 +108,7 @@ type Props = {
 export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, url }: Props) => {
   const { t } = useTranslation();
   return (
-    <BoxWrapper>
+    <ResourceBoxContainer>
       <LincenseWrapper>
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
           <div className="c-figure__byline-author-buttons">
@@ -123,20 +117,18 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
         </LicenseByline>
       </LincenseWrapper>
       <ImageWrapper>
-        <Image alt={title} src={image} sizes="25, 25" />
+        <Image alt={title} src={image} />
       </ImageWrapper>
       <TextWrapper>
         <Title>{title}</Title>
-        <CaptionWrapper>
-          <Caption>{caption}</Caption>
-        </CaptionWrapper>
+        <Caption>{caption}</Caption>
 
         <StyledButton to={url} target="_blank" outline borderShape="rounded">
           {t('license.other.itemImage.ariaLabel')}
           <StyledLaunchIcon aria-hidden />
         </StyledButton>
       </TextWrapper>
-    </BoxWrapper>
+    </ResourceBoxContainer>
   );
 };
 

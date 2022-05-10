@@ -277,7 +277,7 @@ const Topic = ({
                             <ShowVisualElementWrapper>
                               <TopicHeaderImage
                                 src={`${topic.image.url}?${makeSrcQueryString(
-                                  400,
+                                  800,
                                   topic.image.crop,
                                   topic.image.focalPoint,
                                 )}`}

@@ -9,6 +9,7 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
+
 export interface ImageCrop {
   startX: number;
   startY: number;
@@ -39,7 +40,6 @@ const getSrcSet = (src: string, crop: ImageCrop | undefined, focalPoint: ImageFo
 const StyledImageWrapper = styled.div`
   position: relative;
 `;
-
 interface Props {
   alt: string;
   src: string;

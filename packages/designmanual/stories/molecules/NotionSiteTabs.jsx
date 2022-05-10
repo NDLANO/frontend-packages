@@ -72,7 +72,7 @@ const NotionSiteTabs = () => {
                             eventuelt jobber sammen med i klassen.
                           </p>
                           <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-                          <NotionBlock type="image"></NotionBlock>
+                          <NotionBlock type="image" hideIconsAndAuthors></NotionBlock>
                           <p>
                             En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
                             kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
@@ -154,7 +154,7 @@ const NotionSiteTabs = () => {
                           <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
                           <NotionList
                             title="Liste med forklaringer"
-                            children={[{ type: 'image' }, { type: 'H5P' }, { type: 'video' }]}></NotionList>
+                            children={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}></NotionList>
                           <p>
                             En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
                             kunde. I løpet av noend få minutter skal du få andre til å tenne på idéen din og se

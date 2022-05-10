@@ -426,7 +426,7 @@ const messages = {
       images: 'Bilder',
       audio: 'Lyd',
       video: 'Video',
-      h5p: 'H5P',
+      h5p: 'h5p',
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',

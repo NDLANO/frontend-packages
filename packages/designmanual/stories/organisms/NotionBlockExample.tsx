@@ -11,6 +11,8 @@ import React, { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 import { OneColumn } from '@ndla/ui';
+import Helmet from 'react-helmet';
+import { breakpoints, mq } from '@ndla/core';
 import NotionBlock from '../molecules/NotionBlock';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
@@ -24,6 +26,10 @@ const ContentWrapper = styled.div`
   width: 133.3333333333% !important;
   padding-left: 24px;
   padding-right: 24px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100% !important;
+    left: 0 !important;
+  }
 `;
 
 class NotionBlockExample extends Component {
@@ -33,66 +39,85 @@ class NotionBlockExample extends Component {
 
   render() {
     return (
-      <ComponentInfo
-        status={3}
-        components={
-          <OneColumn>
-            <ContentWrapper>
-              <h2>Begrep med visuelt element bilde</h2>
-            </ContentWrapper>
-            <NotionBlock type="image" />
-            <ContentWrapper>
-              <h2>Begrep med visuelt element video</h2>
-            </ContentWrapper>
-            <NotionBlock type="video" />
-            <ContentWrapper>
-              <h2>Begrep med visuelt element h5p</h2>
-            </ContentWrapper>
-            <NotionBlock type="H5P" />
-            <ContentWrapper>
-              <h2>Begrep med visuelt element iframe/external</h2>
-            </ContentWrapper>
-            <NotionBlock type="external" />
-          </OneColumn>
-        }
-        onSite={[<NotionSiteTabs></NotionSiteTabs>]}
-        reactCode={`
+      <>
+        <Helmet>
+          <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" />
+        </Helmet>
+        <ComponentInfo
+          status={3}
+          components={
+            <OneColumn>
+              <ContentWrapper>
+                <h2>Begrep med visuelt element bilde</h2>
+              </ContentWrapper>
+              <NotionBlock type="image" hideIconsAndAuthors />
+              <ContentWrapper>
+                <h2>Begrep med visuelt element video</h2>
+              </ContentWrapper>
+              <NotionBlock type="video" hideIconsAndAuthors />
+              <ContentWrapper>
+                <h2>Begrep med visuelt element h5p</h2>
+              </ContentWrapper>
+              <NotionBlock type="h5p" hideIconsAndAuthors />
+              <ContentWrapper>
+                <h2>Begrep med forfatter og lisensikoner</h2>
+              </ContentWrapper>
+              <NotionBlock type="image" />
+            </OneColumn>
+          }
+          onSite={[<NotionSiteTabs></NotionSiteTabs>]}
+          reactCode={`
   //Enkel forklaringsblokk
-  <NotionBlock type="H5P"></NotionBlock>
+  <NotionBlock type="H5P" hideIconsAndAuthors adjustSizeToFitWiderPage></NotionBlock>
   //Liste med forklaringsblokker
   <NotionListExample
   title="Liste med forklaringer"
-  children={[{ type: 'image' }, { type: 'H5P' }, { type: 'video' }]}>
+  children={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}>
   </NotionListExample>
               `}
-        usesPropTypes={[
-          {
-            name: 'Type',
-            type: '"image" ,"H5P", "video"',
-            default: 'Required',
-            description: 'Velger embeded type innhold for forklaringsboksen',
-          },
+          usesPropTypes={[
+            {
+              name: 'Type',
+              type: '"image" ,"H5P", "video"',
+              default: 'Required',
+              description: 'Velger embeded type innhold for forklaringsboksen',
+            },
 
-          {
-            name: 'I liste: ',
-            type: '',
-            default: '',
-            description: '',
-          },
+            {
+              name: 'hideIconsAndAuthors ',
+              type: 'boolean',
+              default: '',
+              description: 'Fjerner lisensikonene og forfatterne',
+            },
 
-          {
-            name: 'title',
-            type: 'ReactNode',
-            default: 'Required',
-            description: 'Tittel for listen av forklaringsblokker',
-          },
-          {
-            name: 'children',
-            type: 'NotionBlock[]',
-            default: 'Required',
-            description: 'Tar inn en liste med Notionsblocks',
-          },
-        ]}></ComponentInfo>
+            {
+              name: ' adjustSizeToFitWiderPage',
+              type: 'boolean',
+              default: '',
+              description: 'Justerer bredden er til blokken for å passe inn på søkesiden',
+            },
+
+            {
+              name: 'I liste: ',
+              type: '',
+              default: '',
+              description: '',
+            },
+
+            {
+              name: 'title',
+              type: 'ReactNode',
+              default: 'Required',
+              description: 'Tittel for listen av forklaringsblokker',
+            },
+            {
+              name: 'children',
+              type: 'NotionBlock[]',
+              default: 'Required',
+              description: 'Tar inn en liste med Notionsblocks',
+            },
+          ]}></ComponentInfo>
+      </>
     );
   }
 }

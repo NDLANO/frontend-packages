@@ -81,7 +81,7 @@ export {
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
-export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton } from './Figure';
+export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton, FigureOpenDialogButton } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
 
@@ -119,7 +119,6 @@ export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
 
 export { ResourceBox } from './ResourceBox';
 
-export { default as CloseButton } from './CloseButton';
 export { default as AudioPlayer, initAudioPlayers } from './AudioPlayer';
 
 export { NavigationHeading, NavigationBox, NavigationTopicAbout } from './Navigation';
@@ -220,4 +219,5 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
+
 export { BannerCard } from './BannerCard';

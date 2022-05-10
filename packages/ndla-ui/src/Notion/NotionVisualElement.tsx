@@ -4,12 +4,24 @@
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree. *
  */
-
-import React from 'react';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import React, { ReactNode } from 'react';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
 
+const StyledIframe = styled.iframe<{ type: string }>`
+  ${(props) =>
+    props.type === 'video'
+      ? css`
+          min-height: 400px;
+        `
+      : ''}
+`;
+
 export type NotionVisualElementType = {
+  element?: ReactNode;
+  type?: 'video' | 'image' | 'h5p';
   resource?: string;
   title?: string;
   url?: string;
@@ -22,17 +34,28 @@ export type NotionVisualElementType = {
 
 interface Props {
   visualElement: NotionVisualElementType;
+  id: string;
+  figureId: string;
 }
+const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external', 'image'];
 
-const supportedEmbedTypes = ['brightcove', 'h5p', 'iframe', 'external'];
-const NotionVisualElement = ({ visualElement }: Props) => {
-  const id = '1';
-  const figureId = 'figure-1';
+const getType = (resource: string) => {
+  if (resource === 'brightcove') {
+    return 'video';
+  }
+  if (resource === 'image') {
+    return 'image';
+  }
+  return 'h5p';
+};
+
+const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
   if (!visualElement.resource || !supportedEmbedTypes.includes(visualElement.resource)) {
     return <p>Embed type is not supported!</p>;
   }
 
-  const type = visualElement.resource === 'brightcove' ? 'video' : 'h5p';
+  const type = getType(visualElement.resource);
+
   return (
     <FigureNotion
       resizeIframe
@@ -42,7 +65,11 @@ const NotionVisualElement = ({ visualElement }: Props) => {
       copyright={visualElement.copyright}
       licenseString={visualElement.copyright?.license?.license ?? ''}
       type={type}>
-      <iframe title={visualElement.title} src={visualElement.url} />
+      {visualElement.image?.src ? (
+        <img src={visualElement.image?.src} alt={visualElement.image.alt} />
+      ) : (
+        <StyledIframe type={type} src={visualElement.url} title={visualElement.title} />
+      )}
     </FigureNotion>
   );
 };

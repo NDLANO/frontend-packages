@@ -413,7 +413,7 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
-      h5p: 'H5P',
+      h5p: 'h5p',
       files: 'Files',
       embedlink: 'Embedded link',
       other: 'Other content',

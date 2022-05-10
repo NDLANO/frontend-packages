@@ -26,9 +26,10 @@
   ],
   "dependencies": {
     "@ndla/core": "^2.1.1",
+    "@ndla/icons": "^1.6.1",
     "@ndla/licenses": "^4.0.5",
     "@ndla/modal": "^1.2.5",
-    "@ndla/ui": "^8.2.5"
+    "@ndla/safelink": "1.1.4"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

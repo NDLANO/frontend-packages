@@ -17,13 +17,10 @@ import Image from '../Image';
 
 const BoxWrapper = styled.div`
   display: flex;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   border-radius: 5px;
   border: 1px solid ${colors.brand.light};
   position: relative;
-  left: -16.6666666667%;
-  width: 133.3333333333%;
   align-items: stretch;
   margin-bottom: 24px;
   font-family: ${fonts.sans};
@@ -31,16 +28,11 @@ const BoxWrapper = styled.div`
   gap: 40px;
 
   ${mq.range({ until: breakpoints.desktop })} {
-    gap: 1px;
+    gap: 0;
     flex-direction: column;
-    margin: 0 auto;
-    width: 80%;
-    left: 0;
     padding-left: 24px;
     padding-right: 24px;
     padding-bottom: 0;
-    margin-bottom: 24px;
-    height: auto;
     text-align: center;
   }
 `;
@@ -101,7 +93,6 @@ const ImageSectionWrapper = styled.div`
   align-items: flex-start;
   display: flex;
   justify-content: center;
-  margin-left: 20px;
   ${mq.range({ until: breakpoints.desktop })} {
     margin: 0 auto;
     padding-top: 10px;

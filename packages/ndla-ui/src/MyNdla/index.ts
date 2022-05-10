@@ -1,6 +1,6 @@
 import { ResourceElement } from './ResourceDash';
 import { ResourcesView } from './ResourceDash';
 import { Breadcrumbs } from './ResourceDash';
-import { DialogBox } from './DialogBox';
+import { MyNdlaFavoritesDialog } from './MyNdlaFavoritesDialog';
 
-export { ResourceElement, ResourcesView, Breadcrumbs, DialogBox };
+export { ResourceElement, ResourcesView, Breadcrumbs, MyNdlaFavoritesDialog };

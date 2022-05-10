@@ -17,7 +17,7 @@ type Props = {
   isOpen: boolean;
 };
 
-const DialogBox = ({ isOpen, title, closeCallback, children }: Props) => {
+const MyNdlaFavoritesDialog = ({ isOpen, title, closeCallback, children }: Props) => {
   const { t } = useTranslation();
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
@@ -36,4 +36,4 @@ const DialogBox = ({ isOpen, title, closeCallback, children }: Props) => {
   );
 };
 
-export default DialogBox;
+export default MyNdlaFavoritesDialog;

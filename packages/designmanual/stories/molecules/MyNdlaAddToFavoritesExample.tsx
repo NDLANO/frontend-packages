@@ -7,7 +7,7 @@
  */
 
 import React, { useState } from 'react';
-import { DialogBox } from '@ndla/ui';
+import { MyNdlaFavoritesDialog } from '@ndla/ui';
 import { FavoriteButton } from '@ndla/button';
 
 const MyNdlaDialogExample = () => {
@@ -16,9 +16,9 @@ const MyNdlaDialogExample = () => {
     <div>
       <FavoriteButton onClick={() => setIsOpen(!isOpen)} aria-label="Legg i favoritter" />
       {isOpen && (
-        <DialogBox title="Hello dialog" isOpen={isOpen} closeCallback={() => setIsOpen(!isOpen)}>
+        <MyNdlaFavoritesDialog title="Hello dialog" isOpen={isOpen} closeCallback={() => setIsOpen(!isOpen)}>
           <p>content of dialog..</p>
-        </DialogBox>
+        </MyNdlaFavoritesDialog>
       )}
     </div>
   );

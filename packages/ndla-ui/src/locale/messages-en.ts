@@ -915,6 +915,17 @@ const messages = {
     open: 'Open fact box',
     close: 'Close fact box',
   },
+  myNdla: {
+    resources: 'resources',
+    folders: 'folders',
+    folder: 'folder',
+    myFolders: 'My folders',
+    myTags: 'My tags',
+    newFolder: 'New folder',
+    myAccount: 'My account',
+    favourites: 'Favourites',
+    help: 'Help',
+  },
 };
 
 export default messages;

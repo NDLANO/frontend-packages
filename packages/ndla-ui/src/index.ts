@@ -220,3 +220,5 @@ export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 
 export { BannerCard } from './BannerCard';
+
+export { ResourcesView, ResourceElement, Breadcrumbs } from './MyNdla';

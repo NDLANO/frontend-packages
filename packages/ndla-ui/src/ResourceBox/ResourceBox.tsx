@@ -30,14 +30,12 @@ const BoxWrapper = styled.div`
   ${mq.range({ until: breakpoints.desktop })} {
     gap: 0;
     flex-direction: column;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 0;
+    padding-top: 30px;
     text-align: center;
   }
 `;
 
-const Boxtitle = styled.h3`
+const Title = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
   margin-top: 0;
@@ -47,7 +45,7 @@ const Boxtitle = styled.h3`
   }
 `;
 
-const Boxcaption = styled.p`
+const Caption = styled.p`
   font-size: ${fonts.sizes(14)};
 
   ${mq.range({ until: breakpoints.desktop })} {
@@ -55,14 +53,7 @@ const Boxcaption = styled.p`
   }
 `;
 
-const StyledButtonDiv = styled.div`
-  align-items: flex-start;
-  ${mq.range({ until: breakpoints.desktop })} {
-    padding-bottom: 10px;
-    margin: 0 auto;
-  }
-`;
-const ResourceBoxStyledButton = styled(SafeLinkButton)`
+const StyledButton = styled(SafeLinkButton)`
   border: 1px solid ${colors.brand.tertiary};
   :hover {
     background-color: ${colors.brand.primary};
@@ -72,13 +63,14 @@ const ResourceBoxStyledButton = styled(SafeLinkButton)`
     width: 210px;
   }
 `;
-const ResourceBoxLaunchIcon = styled(Launch)`
+
+const StyledLaunchIcon = styled(Launch)`
   margin-left: 8px;
   height: 15px;
   width: 15px;
 `;
 
-const BoxImage = styled(Image)`
+const StyledImage = styled(Image)`
   object-fit: cover;
   width: 134px;
   height: 134px;
@@ -89,34 +81,21 @@ const BoxImage = styled(Image)`
     height: 200px;
   }
 `;
-const ImageSectionWrapper = styled.div`
+
+const ImageWrapper = styled.div`
   align-items: flex-start;
   display: flex;
   justify-content: center;
-  ${mq.range({ until: breakpoints.desktop })} {
-    margin: 0 auto;
-    padding-top: 10px;
-  }
 `;
 
-const CaptionSectionWrapper = styled.div`
+const CaptionWrapper = styled.div`
   max-width: 600px;
   ${mq.range({ until: breakpoints.desktop })} {
     margin: 0 auto;
   }
 `;
 
-const CenterItems = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-flow: column;
-  ${mq.range({ until: breakpoints.desktop })} {
-    width: 100%;
-  }
-`;
-
-const TitleAndLicence = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   ${mq.range({ until: breakpoints.desktop })} {
@@ -149,31 +128,29 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
   const { t } = useTranslation();
   return (
     <BoxWrapper>
-      <ImageSectionWrapper>
-        <BoxImage alt={title} src={image} sizes="25, 25" />
-      </ImageSectionWrapper>
-      <CenterItems>
-        <CaptionSectionWrapper>
-          <TitleAndLicence>
-            <Boxtitle>{title}</Boxtitle>
-            <LincenseWrapper>
-              <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
-                <div className="c-figure__byline-author-buttons">
-                  <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
-                </div>
-              </LicenseByline>
-            </LincenseWrapper>
-          </TitleAndLicence>
-          <Boxcaption>{caption}</Boxcaption>
-        </CaptionSectionWrapper>
+      <LincenseWrapper>
+        <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
+          <div className="c-figure__byline-author-buttons">
+            <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
+          </div>
+        </LicenseByline>
+      </LincenseWrapper>
+      <ImageWrapper>
+        <StyledImage alt={title} src={image} sizes="25, 25" />
+      </ImageWrapper>
+      <div>
+        <CaptionWrapper>
+          <TitleWrapper>
+            <Title>{title}</Title>
+          </TitleWrapper>
+          <Caption>{caption}</Caption>
+        </CaptionWrapper>
 
-        <StyledButtonDiv>
-          <ResourceBoxStyledButton to={url} target="_blank" outline borderShape="rounded">
-            {t('license.other.itemImage.ariaLabel')}
-            <ResourceBoxLaunchIcon aria-hidden />
-          </ResourceBoxStyledButton>
-        </StyledButtonDiv>
-      </CenterItems>
+        <StyledButton to={url} target="_blank" outline borderShape="rounded">
+          {t('license.other.itemImage.ariaLabel')}
+          <StyledLaunchIcon aria-hidden />
+        </StyledButton>
+      </div>
     </BoxWrapper>
   );
 };

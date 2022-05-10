@@ -9,7 +9,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { animations, breakpoints, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Image, FigureOpenDialogButton } from '..';
+import Image from '../Image';
+import { FigureOpenDialogButton } from '../Figure';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
 

@@ -8,7 +8,7 @@
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Figure, FigureCaption, FigureLicenseDialog } from '..';
+import { Figure, FigureCaption, FigureLicenseDialog } from '../Figure';
 import { Copyright } from '../types';
 
 interface Props {

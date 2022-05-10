@@ -7,20 +7,7 @@
  */
 import React from 'react';
 import { ResourcesView } from '@ndla/ui';
-//@ts-ignore
-import ComponentInfo from '../ComponentInfo';
 
-export const MyNdla = () => {
-  return (
-    <ComponentInfo
-      status={3}
-      components={<ResourcesView></ResourcesView>}
-      onSite={[]}
-      reactCode={`
-
-          `}
-      usesPropTypes={[]}></ComponentInfo>
-  );
-};
+export const MyNdla = () => (<ResourcesView />);
 
 export default MyNdla;

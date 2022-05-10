@@ -3,39 +3,26 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { LicenseDescription, BY, SA, NC, ND, PD, CC0, COPYRIGHTED } from '@ndla/licenses';
 import {
-  ErrorMessage,
-  FilterList,
-  Footer,
-  TopicIntroductionList,
   PageContainer,
-  LayoutItem,
-  Translation,
-  TranslationLine,
-  ArticleByline,
-  RadioButtonGroup,
-  EditorName,
-  FooterText,
-  LanguageSelector,
-  OneColumn,
   Content,
+  OneColumn,
+  ContentPlaceholder,
 } from '@ndla/ui';
-import { StoryIntro } from './wrappers';
+import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
+import { StoryIntro } from './wrappers';
 import MyNdla from './pages/MyNdla';
 
-storiesOf('Min NDLA', module).add('Ressurs-dashboard', () => (
-  <PageContainer>
-    <StoryIntro title="Ressurs dashboard">
-      <p>
-        Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og forteller
-        brukeren om at det foregår noe utenom det vanlige.
-      </p>
-    </StoryIntro>
-    <Content>
-      <MyNdla />
-    </Content>
-    <FooterExample />
-  </PageContainer>
-));
+storiesOf('Min NDLA', module)
+  .add('Dashboard', () => (
+    <PageContainer>
+      <MastheadWithTopicMenu />
+      <Content>
+        <OneColumn cssModifier="clear-desktop" wide>
+          <MyNdla />
+        </OneColumn>
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ));

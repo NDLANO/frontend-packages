@@ -7,60 +7,46 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-const ResourceElementWrapper = styled.div`
-  width: 960px;
-  height: 56px;
-  border: 1px solid rgba(209, 214, 219, 1);
-  border-radius: 2px;
-`;
+import React, { ReactElement } from 'react';
+// import { useTranslation } from 'react-i18next';
 
-const ResourceIconWrapper = styled.div``;
-
-const ResourceIcon = styled.svg``;
-
-const Title = styled.h2``;
-
-const SubFolderWrapper = styled.div``;
-
-const SubIcon = styled.svg``;
-
-const SubText = styled.p``;
-
-const SubResourcesWrapper = styled.div``;
-
-const DotIcon = styled.svg``;
-
-export type ResourceProps = {
+type ResourceElementWrapperProp = {
   type: 'folder' | 'resource';
-  title: string;
-  tags?: string[];
-  subFolders?: number;
-  subResources?: number;
 };
 
-const ResourceElement = ({ type, title, tags, subFolders, subResources }: ResourceProps) => {
-  const { t } = useTranslation();
+const ResourceElementWrapper = styled.div<ResourceElementWrapperProp>`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border: 1px solid rgba(209, 214, 219, 1);
+  border-radius: 2px;
+  background: ${({ type }) => type === 'folder' ? '#fafaf9' : '#fff'};
+`;
+
+type ResourceElementProps = {
+  type: 'folder' | 'resource';
+  title: string;
+  rightSide?: ReactElement;
+  leftSide?: ReactElement;
+  description?: string;
+  children?: ReactElement;
+};
+
+const ResourceElement = ({ type, title, description, leftSide, rightSide, children }: ResourceElementProps) => {
+  // const { t } = useTranslation();
   return (
-    <ResourceElementWrapper>
-      <ResourceIconWrapper>
-        <ResourceIcon />
-      </ResourceIconWrapper>
-      <Title>{title}</Title>
-      <SubFolderWrapper>
-        <SubIcon />
-        <SubText>
-          {subFolders} {t('myNdla.folders')}{' '}
-        </SubText>
-      </SubFolderWrapper>
-      <SubResourcesWrapper>
-        <SubIcon />
-        <SubText>
-          {subResources} {t('myNdla.resources')}{' '}
-        </SubText>
-      </SubResourcesWrapper>
-      <DotIcon />
+    <ResourceElementWrapper type={type}>
+      <div>
+        {leftSide}
+      </div>
+      <div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        {children}
+      </div>
+      <div>
+        {rightSide}
+      </div>
     </ResourceElementWrapper>
   );
 };

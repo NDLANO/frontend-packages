@@ -11,8 +11,19 @@ import React from 'react';
 
 const BreadcrumbsWrapper = styled.div``;
 
-export const Breadcrumbs = () => {
-  <BreadcrumbsWrapper></BreadcrumbsWrapper>;
+type BreadcrumbsProps = {
+  items: {
+    title: string;
+    url: string;
+  }[];
+};
+
+export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
+  <BreadcrumbsWrapper>
+    {items.map(({ title, url }) => (
+      <a key={url} href={url}>{title}</a>
+    ))}
+  </BreadcrumbsWrapper>;
 };
 
 export default Breadcrumbs;

@@ -21,8 +21,6 @@ const BoxWrapper = styled.div`
   border-radius: 5px;
   border: 1px solid ${colors.brand.light};
   position: relative;
-  align-items: stretch;
-  margin-bottom: 24px;
   font-family: ${fonts.sans};
   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
   gap: 40px;
@@ -39,10 +37,6 @@ const Title = styled.h3`
   font-weight: ${fonts.weight.bold};
   font-size: ${fonts.sizes(18)};
   margin-top: 0;
-  ${mq.range({ until: breakpoints.desktop })} {
-    text-align: center;
-    width: 100%;
-  }
 `;
 
 const Caption = styled.p`
@@ -53,14 +47,21 @@ const Caption = styled.p`
   }
 `;
 
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  ${mq.range({ until: breakpoints.desktop })} {
+    align-items: center;
+    padding-top: 10px;
+  }
+`;
+
 const StyledButton = styled(SafeLinkButton)`
   border: 1px solid ${colors.brand.tertiary};
   :hover {
     background-color: ${colors.brand.primary};
     color: white;
-  }
-  ${mq.range({ until: breakpoints.desktop })} {
-    width: 210px;
   }
 `;
 
@@ -70,40 +71,26 @@ const StyledLaunchIcon = styled(Launch)`
   width: 15px;
 `;
 
-const StyledImage = styled(Image)`
-  object-fit: cover;
-  width: 134px;
-  height: 134px;
-  border-radius: 5px;
-
-  ${mq.range({ until: breakpoints.desktop })} {
-    width: 200px;
-    height: 200px;
-  }
-`;
-
 const ImageWrapper = styled.div`
   align-items: flex-start;
   display: flex;
   justify-content: center;
+
+  img {
+    object-fit: cover;
+    width: 134px;
+    height: 134px;
+    border-radius: 5px;
+
+    ${mq.range({ until: breakpoints.desktop })} {
+      width: 200px;
+      height: 200px;
+    }
+  }
 `;
 
 const CaptionWrapper = styled.div`
   max-width: 600px;
-  ${mq.range({ until: breakpoints.desktop })} {
-    margin: 0 auto;
-  }
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  ${mq.range({ until: breakpoints.desktop })} {
-    text-align: center;
-    padding-top: 10px;
-    max-width: 200px;
-    margin: 0 auto;
-  }
 `;
 
 const LincenseWrapper = styled.div`
@@ -136,13 +123,11 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
         </LicenseByline>
       </LincenseWrapper>
       <ImageWrapper>
-        <StyledImage alt={title} src={image} sizes="25, 25" />
+        <Image alt={title} src={image} sizes="25, 25" />
       </ImageWrapper>
-      <div>
+      <TextWrapper>
+        <Title>{title}</Title>
         <CaptionWrapper>
-          <TitleWrapper>
-            <Title>{title}</Title>
-          </TitleWrapper>
           <Caption>{caption}</Caption>
         </CaptionWrapper>
 
@@ -150,7 +135,7 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
           {t('license.other.itemImage.ariaLabel')}
           <StyledLaunchIcon aria-hidden />
         </StyledButton>
-      </div>
+      </TextWrapper>
     </BoxWrapper>
   );
 };

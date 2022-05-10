@@ -22,7 +22,7 @@ export const ResourcesView = () => {
       <ResourceElement
         type="folder"
         title="Example folder"
-        leftSide={<img src="http://placekitten.com/200/200" />}
+        leftSide={<img src="http://placekitten.com/200/200" alt="Mjaoo" />}
         rightSide={<span>#tag</span>}
         description="some description">
         <p>Im a child.. insert content</p>
@@ -30,7 +30,7 @@ export const ResourcesView = () => {
       <ResourceElement
         type="resource"
         title="Example Resource"
-        leftSide={<img src="http://placekitten.com/200/200" />}
+        leftSide={<img src="http://placekitten.com/200/200" alt="Brrr" />}
         rightSide={<span>#tag</span>}
         description="some description">
         <p>Im a child.. insert content</p>

@@ -4,13 +4,19 @@
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree. *
  */
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import { Copyright } from '../types';
 import FigureNotion from './FigureNotion';
 
-const StyledIframe = styled.iframe`
-  min-height: 400px;
+const StyledIframe = styled.iframe<{ type: string }>`
+  ${(props) =>
+    props.type === 'video'
+      ? css`
+          min-height: 400px;
+        `
+      : ''}
 `;
 
 export type NotionVisualElementType = {
@@ -62,7 +68,7 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (
-        <StyledIframe src={visualElement.url} title={visualElement.title} />
+        <StyledIframe type={type} src={visualElement.url} title={visualElement.title} />
       )}
     </FigureNotion>
   );

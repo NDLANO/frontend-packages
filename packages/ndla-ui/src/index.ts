@@ -65,8 +65,7 @@ export {
 
 export { default as FactBox } from './FactBox';
 
-export { default as Image, ImageLink } from './Image';
-export { makeSrcQueryString } from './Image';
+export { default as Image, ImageLink, makeSrcQueryString } from './Image';
 
 export {
   SubjectMaterialHero,

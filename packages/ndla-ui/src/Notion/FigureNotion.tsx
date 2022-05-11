@@ -5,11 +5,18 @@
  * LICENSE file in the root directory of this source tree. *
  */
 
+import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Figure, FigureCaption, FigureLicenseDialog } from '../Figure';
 import { Copyright } from '../types';
+
+const BottomBorder = styled.div`
+  margin-top: ${spacing.normal};
+  border-bottom: 1px solid ${colors.brand.greyLight};
+`;
 
 interface Props {
   resizeIframe?: boolean;
@@ -53,7 +60,7 @@ const FigureNotion = ({
       {({ typeClass }) => (
         <>
           {typeof children === 'function' ? children({ typeClass }) : children}
-          {copyright?.license?.license && (
+          {copyright?.license?.license ? (
             <FigureCaption
               hideFigcaption={hideFigCaption}
               figureId={figureId}
@@ -77,6 +84,8 @@ const FigureNotion = ({
                   title: t('title'),
                 }}></FigureLicenseDialog>
             </FigureCaption>
+          ) : (
+            <BottomBorder />
           )}
         </>
       )}

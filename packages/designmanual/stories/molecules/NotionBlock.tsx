@@ -145,9 +145,6 @@ const conceptData = {
       alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
     },
     copyright: {
-      license: {
-        license: 'CC-BY-SA-4.0',
-      },
       creators: [
         {
           name: 'Haldor Hove',
@@ -194,12 +191,12 @@ const getType = (type: string) => {
 
 type Props = {
   type: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
-
   hideIconsAndAuthors?: boolean;
+  data?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'other';
   adjustSizeToFitWiderPage?: boolean;
 };
 
-const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Props) => {
+const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage, data }: Props) => {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -210,7 +207,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Pr
         <ConceptNotion
           hideIconsAndAuthors={hideIconsAndAuthors}
           type={type}
-          concept={{ ...conceptData[getType(type)], id }}
+          concept={{ ...conceptData[getType(data || type)], id }}
         />
       </Figure>
     );

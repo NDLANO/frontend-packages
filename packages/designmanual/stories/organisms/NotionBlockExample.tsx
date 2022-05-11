@@ -6,31 +6,16 @@
  *
  */
 
-import styled from '@emotion/styled';
 import React, { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 import { OneColumn } from '@ndla/ui';
 import Helmet from 'react-helmet';
-import { breakpoints, mq } from '@ndla/core';
 import NotionBlock from '../molecules/NotionBlock';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
 //@ts-ignore
 import NotionSiteTabs from '../molecules/NotionSiteTabs';
-
-const ContentWrapper = styled.div`
-  position: relative !important;
-  right: auto !important;
-  left: -16.6666666667%;
-  width: 133.3333333333% !important;
-  padding-left: 24px;
-  padding-right: 24px;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100% !important;
-    left: 0 !important;
-  }
-`;
 
 class NotionBlockExample extends Component {
   componentDidMount() {
@@ -47,22 +32,16 @@ class NotionBlockExample extends Component {
           status={3}
           components={
             <OneColumn>
-              <ContentWrapper>
-                <h2>Begrep med visuelt element bilde</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element bilde</h2>
               <NotionBlock type="image" hideIconsAndAuthors adjustSizeToFitWiderPage />
-              <ContentWrapper>
-                <h2>Begrep med visuelt element video</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element video</h2>
               <NotionBlock type="video" hideIconsAndAuthors adjustSizeToFitWiderPage />
-              <ContentWrapper>
-                <h2>Begrep med visuelt element h5p</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element h5p</h2>
               <NotionBlock type="h5p" hideIconsAndAuthors adjustSizeToFitWiderPage />
-              <ContentWrapper>
-                <h2>Begrep med forfatter og lisensikoner</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med forfatter og lisensikoner</h2>
               <NotionBlock type="image" adjustSizeToFitWiderPage />
+              <h2 className="u-heading">Begrep med manglende lisens</h2>
+              <NotionBlock type="image" data="other" adjustSizeToFitWiderPage />
             </OneColumn>
           }
           onSite={[<NotionSiteTabs></NotionSiteTabs>]}

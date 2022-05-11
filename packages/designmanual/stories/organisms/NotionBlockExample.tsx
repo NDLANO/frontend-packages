@@ -50,19 +50,19 @@ class NotionBlockExample extends Component {
               <ContentWrapper>
                 <h2>Begrep med visuelt element bilde</h2>
               </ContentWrapper>
-              <NotionBlock type="image" hideIconsAndAuthors />
+              <NotionBlock type="image" hideIconsAndAuthors adjustSizeToFitWiderPage />
               <ContentWrapper>
                 <h2>Begrep med visuelt element video</h2>
               </ContentWrapper>
-              <NotionBlock type="video" hideIconsAndAuthors />
+              <NotionBlock type="video" hideIconsAndAuthors adjustSizeToFitWiderPage />
               <ContentWrapper>
                 <h2>Begrep med visuelt element h5p</h2>
               </ContentWrapper>
-              <NotionBlock type="h5p" hideIconsAndAuthors />
+              <NotionBlock type="h5p" hideIconsAndAuthors adjustSizeToFitWiderPage />
               <ContentWrapper>
                 <h2>Begrep med forfatter og lisensikoner</h2>
               </ContentWrapper>
-              <NotionBlock type="image" />
+              <NotionBlock type="image" adjustSizeToFitWiderPage />
             </OneColumn>
           }
           onSite={[<NotionSiteTabs></NotionSiteTabs>]}

@@ -6,7 +6,7 @@
  *
  */
 import React, { Fragment } from 'react';
-import { Article, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
+import { Article, OneColumn, TasksAndActivitiesBadge, constants, Figure } from '@ndla/ui';
 import Tabs from '@ndla/tabs';
 import styled from '@emotion/styled';
 //@ts-ignore
@@ -72,7 +72,9 @@ const NotionSiteTabs = () => {
                             eventuelt jobber sammen med i klassen.
                           </p>
                           <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-                          <NotionBlock type="image" hideIconsAndAuthors></NotionBlock>
+                          <Figure type="full">
+                            <NotionBlock type="image" hideIconsAndAuthors></NotionBlock>
+                          </Figure>
                           <p>
                             En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
                             kunde. I løpet av noen få minutter skal du få andre til å tenne på idéen din og se
@@ -152,9 +154,12 @@ const NotionSiteTabs = () => {
                             eventuelt jobber sammen med i klassen.
                           </p>
                           <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-                          <NotionList
-                            title="Liste med forklaringer"
-                            children={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}></NotionList>
+
+                          <Figure type="full">
+                            <NotionList
+                              title="Liste med forklaringer"
+                              notions={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}></NotionList>
+                          </Figure>
                           <p>
                             En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller
                             kunde. I løpet av noend få minutter skal du få andre til å tenne på idéen din og se

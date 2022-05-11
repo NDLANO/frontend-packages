@@ -57,42 +57,40 @@ export const addCopyToClipboardListeners = () => {
   });
 };
 
+export const resizeIframeElement = (el, init = false) => {
+  console.log('will resize iframe....', el);
+  const iframe = el;
+  const parent = iframe.parentNode;
+  let ratio = 0.5625;
+  const computedStyle = window.getComputedStyle(parent);
+  const paddingLeft = parseFloat(computedStyle.paddingLeft);
+  const paddingRight = parseFloat(computedStyle.paddingRight);
+  const parentWidth = parent.clientWidth - paddingLeft - paddingRight;
+
+  if (init && iframe.width && iframe.height) {
+    ratio = iframe.height / iframe.width;
+    el.setAttribute('data-ratio', ratio);
+  } else {
+    const ratioAttr = el.getAttribute('data-ratio');
+    if (ratioAttr) {
+      ratio = parseFloat(ratioAttr);
+    }
+  }
+
+  const newHeight = parentWidth * ratio;
+
+  // fix for elements not visible
+  if (newHeight > 0) {
+    iframe.height = newHeight;
+  }
+
+  if (parentWidth > 0) {
+    iframe.width = parentWidth;
+  }
+};
+
 export const updateIFrameDimensions = (init = true, topNode = null) => {
-  forEachElement(
-    '.c-figure--resize iframe',
-    (el) => {
-      const iframe = el;
-      const parent = iframe.parentNode;
-      let ratio = 0.5625;
-
-      const computedStyle = window.getComputedStyle(parent);
-      const paddingLeft = parseFloat(computedStyle.paddingLeft);
-      const paddingRight = parseFloat(computedStyle.paddingRight);
-      const parentWidth = parent.clientWidth - paddingLeft - paddingRight;
-
-      if (init && iframe.width && iframe.height) {
-        ratio = iframe.height / iframe.width;
-        el.setAttribute('data-ratio', ratio);
-      } else {
-        const ratioAttr = el.getAttribute('data-ratio');
-        if (ratioAttr) {
-          ratio = parseFloat(ratioAttr);
-        }
-      }
-
-      const newHeight = parentWidth * ratio;
-
-      // fix for elements not visible
-      if (newHeight > 0) {
-        iframe.height = newHeight;
-      }
-
-      if (parentWidth > 0) {
-        iframe.width = parentWidth;
-      }
-    },
-    topNode,
-  );
+  forEachElement('.c-figure--resize iframe', (el) => resizeIframeElement(el, init), topNode);
 };
 
 export const addEventListenerForFigureZoomButton = () => {

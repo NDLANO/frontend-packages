@@ -58,7 +58,6 @@ export const addCopyToClipboardListeners = () => {
 };
 
 export const resizeIframeElement = (el, init = false) => {
-  console.log('will resize iframe....', el);
   const iframe = el;
   const parent = iframe.parentNode;
   let ratio = 0.5625;

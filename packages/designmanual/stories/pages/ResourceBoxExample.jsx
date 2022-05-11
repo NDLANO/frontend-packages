@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { BY, NC, ND } from '@ndla/licenses';
-import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox } from '@ndla/ui';
+import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox, Figure } from '@ndla/ui';
 import LicenseBox from '../article/LicenseBox';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import NotionExample from '../molecules/NotionExample';
@@ -38,12 +38,14 @@ const ReferenceBoxExample = () => {
                   av noen få minutter skal du få andre til å <a href="#test">tenne på idéen din og se potensialet</a> i
                   den.
                 </p>
-                <ResourceBox
-                  licenseRights={[BY, NC, ND]}
-                  title="Mediehistorie"
-                  caption="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
-                  image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"
-                  url="https://www.ndla.no"></ResourceBox>
+                <Figure type={'full'}>
+                  <ResourceBox
+                    licenseRights={[BY, NC, ND]}
+                    title="Mediehistorie"
+                    caption="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
+                    image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"
+                    url="https://www.ndla.no"></ResourceBox>
+                </Figure>
 
                 <p>
                   En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet

@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories } = constants;
+export const { contentTypes, subjectCategories, subjectTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -52,6 +52,10 @@ const messages = {
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
+  },
+  subjectTypes: {
+    [subjectTypes.SUBJECT]: 'Fag',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
   },
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {{query}}',
@@ -422,7 +426,7 @@ const messages = {
       images: 'Bilder',
       audio: 'Lyd',
       video: 'Video',
-      h5p: 'H5P',
+      h5p: 'h5p',
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',
@@ -908,6 +912,17 @@ const messages = {
   factbox: {
     open: 'Åpne faktaboks',
     close: 'Lukk faktaboks',
+  },
+  myNdla: {
+    resources: 'Ressurser',
+    folders: 'Mapper',
+    folder: 'Mappe',
+    myFolders: 'Mine mapper',
+    myTags: 'Mine tags',
+    newFolder: 'Ny mappe',
+    myAccount: 'Min konto',
+    favourites: 'Favoritter',
+    help: 'Hjelp',
   },
 };
 

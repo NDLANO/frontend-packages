@@ -14,7 +14,7 @@ import { WithTranslation, withTranslation } from 'react-i18next';
 
 // @ts-ignore
 import { Remarkable } from 'remarkable';
-import { CloseButton } from '../CloseButton';
+import { CloseButton } from '@ndla/button';
 
 export enum MessageBoxType {
   ghost = 'ghost',

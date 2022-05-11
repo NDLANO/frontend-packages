@@ -9,7 +9,7 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories } = constants;
+export const { contentTypes, subjectCategories, subjectTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
@@ -52,6 +52,10 @@ const messages = {
     [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
+  },
+  subjectTypes: {
+    [subjectTypes.SUBJECT]: 'Subject',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
   },
   searchPage: {
     noHits: 'Your search - {{query}} - did not match any articles. ',
@@ -409,7 +413,7 @@ const messages = {
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
-      h5p: 'H5P',
+      h5p: 'h5p',
       files: 'Files',
       embedlink: 'Embedded link',
       other: 'Other content',
@@ -910,6 +914,17 @@ const messages = {
   factbox: {
     open: 'Open fact box',
     close: 'Close fact box',
+  },
+  myNdla: {
+    resources: 'resources',
+    folders: 'folders',
+    folder: 'folder',
+    myFolders: 'My folders',
+    myTags: 'My tags',
+    newFolder: 'New folder',
+    myAccount: 'My account',
+    favourites: 'Favourites',
+    help: 'Help',
   },
 };
 

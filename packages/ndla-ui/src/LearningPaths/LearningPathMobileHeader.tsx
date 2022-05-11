@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import React from 'react';
 import { WithTranslation, withTranslation } from 'react-i18next';
-import { LearningPathBadge } from '../';
+import { LearningPathBadge } from '../ContentTypeBadge';
 
 const StyledWrapper = styled.div`
   display: flex;

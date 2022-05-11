@@ -17,6 +17,12 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
     if (popup.classList.contains('visible')) {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
+      let iframe_tag = popup.querySelector('iframe');
+      if (iframe_tag) {
+        let iframeSrc = iframe_tag.src;
+        iframe_tag.src = iframeSrc;
+      }
+
       if (returnFocusToParent) {
         const openBtn = item.querySelector('[data-notion-link]');
         openBtn.focus();
@@ -82,30 +88,46 @@ export const addShowConceptDefinitionClickListeners = () => {
 
         popup.classList.add('visible');
         popup.setAttribute('aria-hidden', false);
+
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        popup.style.top = `${openBtnBottom + 10}px`;
+        popup.style.top = `${openBtnBottom - 500}px`;
+        const conceptNotionIdentifier = popup.querySelector('figcaption');
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        const popupHeight = popup.offsetHeight;
         const popupTop = getElementOffset(popup).top;
-
+        const popupHeight = popup.offsetHeight;
         let offset = 0;
 
-        if (popupTop + popupHeight < documentHeight) {
-          offset = -((viewportHeight - popupHeight) / 2);
+        if (conceptNotionIdentifier) {
+          //checks if it is part of a notionblock
+          if (popupTop + popupHeight > documentHeight) {
+            //Positions the popup so that it does not expand the page
+            popup.style.top = `${openBtnBottom - 900}px`;
+          }
+          jump(popup, {
+            offset: -((viewportHeight - popupHeight) / 2),
+            duration: 300,
+          });
         } else {
-          offset = popupHeight;
-        }
-        if (popupTop + popupHeight > documentHeight) {
-          const maxHeight = documentHeight - popupTop;
+          popup.style.top = `${openBtnBottom + 20}px`;
 
-          if (maxHeight < 200) {
-            popup.style.height = `auto`;
+          if (popupTop + popupHeight < documentHeight) {
+            offset = -((viewportHeight - popupHeight) / 2);
           } else {
-            popup.style.height = `${maxHeight}px`;
-            popup.style.overflowY = 'scroll';
+            offset = popupHeight;
+          }
+          if (popupTop + popupHeight > documentHeight) {
+            const maxHeight = documentHeight - popupTop;
+
+            if (maxHeight < 200) {
+              popup.style.height = `auto`;
+            } else {
+              popup.style.height = `${maxHeight}px`;
+              popup.style.overflowY = 'scroll';
+            }
           }
         }
+
         if (inIframe() && window.parent) {
           window.parent.postMessage(
             {
@@ -147,6 +169,11 @@ export const addShowConceptDefinitionClickListeners = () => {
       popup.setAttribute('aria-hidden', true);
       window.removeEventListener('keyup', ESCKeyListener, true);
       openBtn.focus();
+      let iframe_tag = popup.querySelector('iframe');
+      if (iframe_tag) {
+        let iframeSrc = iframe_tag.src;
+        iframe_tag.src = iframeSrc;
+      }
     };
   });
 };

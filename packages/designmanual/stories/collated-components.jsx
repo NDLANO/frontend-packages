@@ -176,6 +176,30 @@ storiesOf('Sammensatte moduler', module)
       </StoryBody>
     </div>
   ))
+
+  .add('Bildekarusell', () => (
+    <div>
+      <StoryIntro title="Bildekarusell">
+        <p>
+          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av størrelser, og selve
+          bildekarusellen.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <CarouselExample />
+      </StoryBody>
+    </div>
+  ))
+  .add('Blokkvisning begrepsforklaring', () => (
+    <div>
+      <StoryIntro title="Blokkvisning begrepsforklaring">
+        <p>Brukes ved visning i artikkel og søk</p>
+      </StoryIntro>
+      <Center>
+        <NotionBlockExample />
+      </Center>
+    </div>
+  ))
   .add('Brødsmulesti', () => (
     <Center>
       <h2 className="u-heading">Brødsmulesti eksempel</h2>
@@ -192,16 +216,6 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <NotionExample />
     </Center>
-  ))
-  .add('Blokkvisning begrepsforklaring', () => (
-    <div>
-      <StoryIntro title="Blokkvisning begrepsforklaring">
-        <p>Brukes ved visning i artikkel og søk</p>
-      </StoryIntro>
-      <Center>
-        <NotionBlockExample />
-      </Center>
-    </div>
   ))
   .add('Emnebeskrivelse', () => (
     <Center>
@@ -241,6 +255,31 @@ storiesOf('Sammensatte moduler', module)
       </div>
     </Center>
   ))
+
+  .add('Feilmelding', () => (
+    <div>
+      <StoryIntro title="Feilmelding">
+        <p>
+          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
+          feil i systemet, f.eks. ved 404- eller 503-feil.
+        </p>
+      </StoryIntro>
+      <ErrorMessage
+        illustration={{
+          url: Oops,
+          altText: 'Systemfeil',
+        }}
+        messages={{
+          title: 'Oisann, her gikk noe galt',
+          description: 'En kort beskrivelse av feilen som oppsto.',
+          linksTitle: 'Kom igang:',
+          back: 'Gå tilbake',
+          goToFrontPage: 'Gå til forsiden',
+        }}
+      />
+    </div>
+  ))
+
   .add('Filter', () => (
     <div>
       <StoryIntro title="Filter">
@@ -303,6 +342,200 @@ storiesOf('Sammensatte moduler', module)
       </StoryBody>
     </div>
   ))
+
+  .add('Hovedhode', () => (
+    <div>
+      <MastheadWithLogo />
+    </div>
+  ))
+  .add('Hovedhode med innhold', () => (
+    <div>
+      <MastheadWithTopicMenu />
+    </div>
+  ))
+  .add('Hovedhode med meldingsboks', () => (
+    <I18nTranslate>
+      {(t) => (
+        <div>
+          <MastheadWithTopicMenu messages={[t('messageBoxInfo.updateBrowser')]} />
+        </div>
+      )}
+    </I18nTranslate>
+  ))
+  .add('Lisensikoner', () => (
+    <Center>
+      <LayoutItem layout="center">
+        <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
+        <div className="o-wrapper--inner">
+          <LicenseDescription
+            locale="nb"
+            messages={{
+              modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
+            }}
+            licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
+          />
+        </div>
+      </LayoutItem>
+      <LayoutItem layout="center">
+        <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
+        <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
+      </LayoutItem>
+    </Center>
+  ))
+  .add('Lisensboks', () => (
+    <PageContainer>
+      <LayoutItem layout="wide">
+        <h2 className="u-heading">Lisensboks</h2>
+        <article className="article">
+          <LayoutItem layout="center">
+            <LicenseBox headingId="licenseBox-headingId" />
+          </LayoutItem>
+        </article>
+      </LayoutItem>
+    </PageContainer>
+  ))
+  .add('Listevisning', () => (
+    <PageContainer>
+      <StoryIntro title="Listevisning" />
+      <OneColumn>
+        <ListViewExample />
+      </OneColumn>
+    </PageContainer>
+  ))
+
+  .add('Læringsressurser', () => (
+    <div>
+      <StoryIntro title="Læringsressurser/launchpad">
+        <p>
+          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om tilleggsstoff-filteret aktiveres, vil
+          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon.
+        </p>
+        <p>
+          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren aktiverer
+          tilleggsstoff for Fagstoff, vil bare Fagstoff-listen oppdateres med tilleggsstoff-elementer.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <Resources />
+      </StoryBody>
+    </div>
+  ))
+
+  .add('Nedlasting av filer', () => (
+    <div>
+      <StoryIntro title="Nedlasting av filer" />
+      <StoryBody>
+        <h2>Overskrift</h2>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+        </p>
+        <FileListExample />
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+        </p>
+        <p>
+          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
+          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
+        </p>
+      </StoryBody>
+    </div>
+  ))
+
+  .add('Meldings- og infoboks', () => (
+    <PageContainer>
+      <StoryIntro title="Meldings- og infoboks">
+        <p>
+          Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og
+          forteller brukeren om at det foregår noe utenom det vanlige.
+        </p>
+      </StoryIntro>
+      <Content>
+        <MessageBox />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+
+  .add('Modalboks', () => (
+    <div>
+      <StoryIntro title="Modalboks">
+        <p>Some tekst</p>
+      </StoryIntro>
+      <StoryBody>
+        <ModalExample />
+      </StoryBody>
+    </div>
+  ))
+
+  .add('Oversettelse', () => (
+    <div>
+      <StoryIntro title="Oversettelse">
+        <p>
+          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse tilfellene heller
+          bruke en oversettelse-liste.
+        </p>
+      </StoryIntro>
+      <StoryBody>
+        <h2 className="u-heading">Oversettelseliste enkel</h2>
+        <Translation index={1}>
+          <TranslationLine>你叫什么名字？//你叫什麼名字？</TranslationLine>
+          <TranslationLine>
+            Nǐ jiào <strong>shénme</strong> míngzi?
+          </TranslationLine>
+          <TranslationLine>Hva heter du?</TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine>你是学生。//你是學生。</TranslationLine>
+          <TranslationLine>Nǐ shì xuésheng.</TranslationLine>
+          <TranslationLine>Du er student.</TranslationLine>
+        </Translation>
+      </StoryBody>
+      <StoryBody>
+        <h2 className="u-heading">Oversettelseliste (Med props lang og langName definert)</h2>
+        <Translation index={1}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你叫什么名字？//你叫什麼名字？
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ jiào shénme míngzi?
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Hva heter du?
+          </TranslationLine>
+        </Translation>
+        <Translation index={2}>
+          <TranslationLine lang="cn" langName="Kinesisk">
+            你是学生。//你是學生。
+          </TranslationLine>
+          <TranslationLine lang="pn" langName="Pinyin">
+            Nǐ shì xuésheng.
+          </TranslationLine>
+          <TranslationLine lang="nb" langName="Norsk">
+            Du er student.
+          </TranslationLine>
+        </Translation>
+        <h2 className="u-heading">Språkvelger</h2>
+        <TranslationBoxExample />
+      </StoryBody>
+    </div>
+  ))
+
+  .add('Paginering', () => (
+    <Center>
+      <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
+      <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
+      <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
+    </Center>
+  ))
+
   .add('Radiobuttons', () => (
     <div>
       <StoryIntro title="Filter">
@@ -379,71 +612,7 @@ storiesOf('Sammensatte moduler', module)
       </StoryBody>
     </div>
   ))
-  .add('Switch kontroller', () => (
-    <div>
-      <SwitchExample />
-    </div>
-  ))
-  .add('Hovedhode', () => (
-    <div>
-      <MastheadWithLogo />
-    </div>
-  ))
-  .add('Hovedhode med innhold', () => (
-    <div>
-      <MastheadWithTopicMenu />
-    </div>
-  ))
-  .add('Hovedhode med meldingsboks', () => (
-    <I18nTranslate>
-      {(t) => (
-        <div>
-          <MastheadWithTopicMenu messages={[t('messageBoxInfo.updateBrowser')]} />
-        </div>
-      )}
-    </I18nTranslate>
-  ))
-  .add('Lisensikoner', () => (
-    <Center>
-      <LayoutItem layout="center">
-        <h2 className="u-heading">Lisensikoner og -merking med beskrivelse</h2>
-        <div className="o-wrapper--inner">
-          <LicenseDescription
-            locale="nb"
-            messages={{
-              modelPremission: 'Personen(e) på bildet har godkjent at det kan brukes videre.',
-            }}
-            licenseRights={[BY, SA, NC, ND, PD, CC0, COPYRIGHTED]}
-          />
-        </div>
-      </LayoutItem>
-      <LayoutItem layout="center">
-        <h2 className="u-heading">Lisensikoner på enkeltelementer</h2>
-        <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
-      </LayoutItem>
-    </Center>
-  ))
-  .add('Lisensboks', () => (
-    <PageContainer>
-      <LayoutItem layout="wide">
-        <h2 className="u-heading">Lisensboks</h2>
-        <article className="article">
-          <LayoutItem layout="center">
-            <LicenseBox headingId="licenseBox-headingId" />
-          </LayoutItem>
-        </article>
-      </LayoutItem>
-    </PageContainer>
-  ))
-  .add('Paginering', () => (
-    <Center>
-      <Pager page={3} lastPage={10} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={4} lastPage={4} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={3} query={{ query: 'Medier' }} pageItemComponentClass="button" pathname="#" />
-      <Pager page={3} lastPage={3} query={{ query: 'Medier' }} pathname="#" />
-      <Pager page={1} lastPage={1} query={{ query: 'Medier' }} pathname="#" />
-    </Center>
-  ))
+
   .add('Relatert innhold', () => (
     <I18nTranslate>
       {(t) => (
@@ -495,166 +664,10 @@ storiesOf('Sammensatte moduler', module)
       </Footer>
     </Center>
   ))
-  .add('Bildekarusell', () => (
+  .add('Switch kontroller', () => (
     <div>
-      <StoryIntro title="Bildekarusell">
-        <p>
-          Bildekarusell består av 2 komponenter. En Wrapper komponent for automatisk utregning av størrelser, og selve
-          bildekarusellen.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <CarouselExample />
-      </StoryBody>
+      <SwitchExample />
     </div>
-  ))
-  .add('Læringsressurser', () => (
-    <div>
-      <StoryIntro title="Læringsressurser/launchpad">
-        <p>
-          Når ressurser listes opp, vises i utgangspunktet kun kjernestoff. Om tilleggsstoff-filteret aktiveres, vil
-          ressursopplistingen utvides med tilleggsstoff. Tilleggsstoff markeres med T-ikon.
-        </p>
-        <p>
-          Tilleggsstoff-filteret skal kun påvirke ressurstypen den er tilknyttet. Så hvis brukeren aktiverer
-          tilleggsstoff for Fagstoff, vil bare Fagstoff-listen oppdateres med tilleggsstoff-elementer.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <Resources />
-      </StoryBody>
-    </div>
-  ))
-  .add('Ugrupperte læringsressurser', () => (
-    <div>
-      <StoryIntro title="Ugrupperte ressurser">
-        <p>Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i ei liste.</p>
-      </StoryIntro>
-      <StoryBody>
-        <Resources showUngrouped />
-      </StoryBody>
-    </div>
-  ))
-  .add('Nedlasting av filer', () => (
-    <div>
-      <StoryIntro title="Nedlasting av filer" />
-      <StoryBody>
-        <h2>Overskrift</h2>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <FileListExample />
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-        <p>
-          Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen
-          du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i klassen.
-        </p>
-      </StoryBody>
-    </div>
-  ))
-  .add('Feilmelding', () => (
-    <div>
-      <StoryIntro title="Feilmelding">
-        <p>
-          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
-          feil i systemet, f.eks. ved 404- eller 503-feil.
-        </p>
-      </StoryIntro>
-      <ErrorMessage
-        illustration={{
-          url: Oops,
-          altText: 'Systemfeil',
-        }}
-        messages={{
-          title: 'Oisann, her gikk noe galt',
-          description: 'En kort beskrivelse av feilen som oppsto.',
-          linksTitle: 'Kom igang:',
-          back: 'Gå tilbake',
-          goToFrontPage: 'Gå til forsiden',
-        }}
-      />
-    </div>
-  ))
-
-  .add('Oversettelse', () => (
-    <div>
-      <StoryIntro title="Oversettelse">
-        <p>
-          Ved oversettelser kan det bli lite oversiktlig å bruke tabeller, derfor kan man i disse tilfellene heller
-          bruke en oversettelse-liste.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <h2 className="u-heading">Oversettelseliste enkel</h2>
-        <Translation index={1}>
-          <TranslationLine>你叫什么名字？//你叫什麼名字？</TranslationLine>
-          <TranslationLine>
-            Nǐ jiào <strong>shénme</strong> míngzi?
-          </TranslationLine>
-          <TranslationLine>Hva heter du?</TranslationLine>
-        </Translation>
-        <Translation index={2}>
-          <TranslationLine>你是学生。//你是學生。</TranslationLine>
-          <TranslationLine>Nǐ shì xuésheng.</TranslationLine>
-          <TranslationLine>Du er student.</TranslationLine>
-        </Translation>
-      </StoryBody>
-      <StoryBody>
-        <h2 className="u-heading">Oversettelseliste (Med props lang og langName definert)</h2>
-        <Translation index={1}>
-          <TranslationLine lang="cn" langName="Kinesisk">
-            你叫什么名字？//你叫什麼名字？
-          </TranslationLine>
-          <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ jiào shénme míngzi?
-          </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">
-            Hva heter du?
-          </TranslationLine>
-        </Translation>
-        <Translation index={2}>
-          <TranslationLine lang="cn" langName="Kinesisk">
-            你是学生。//你是學生。
-          </TranslationLine>
-          <TranslationLine lang="pn" langName="Pinyin">
-            Nǐ shì xuésheng.
-          </TranslationLine>
-          <TranslationLine lang="nb" langName="Norsk">
-            Du er student.
-          </TranslationLine>
-        </Translation>
-        <h2 className="u-heading">Språkvelger</h2>
-        <TranslationBoxExample />
-      </StoryBody>
-    </div>
-  ))
-
-  .add('Modalboks', () => (
-    <div>
-      <StoryIntro title="Modalboks">
-        <p>Some tekst</p>
-      </StoryIntro>
-      <StoryBody>
-        <ModalExample />
-      </StoryBody>
-    </div>
-  ))
-
-  .add('Listevisning', () => (
-    <PageContainer>
-      <StoryIntro title="Listevisning" />
-      <OneColumn>
-        <ListViewExample />
-      </OneColumn>
-    </PageContainer>
   ))
 
   .add('Ressurs fra lenke', () => (
@@ -677,9 +690,15 @@ storiesOf('Sammensatte moduler', module)
           forteller brukeren om at det foregår noe utenom det vanlige.
         </p>
       </StoryIntro>
-      <Content>
-        <MessageBox />
-      </Content>
-      <FooterExample />
     </PageContainer>
+  ))
+  .add('Ugrupperte læringsressurser', () => (
+    <div>
+      <StoryIntro title="Ugrupperte ressurser">
+        <p>Brukere av ed kan spesifisere at ressurser skal vises ugruppert. Da vises alle ressurser i ei liste.</p>
+      </StoryIntro>
+      <StoryBody>
+        <Resources showUngrouped />
+      </StoryBody>
+    </div>
   ));

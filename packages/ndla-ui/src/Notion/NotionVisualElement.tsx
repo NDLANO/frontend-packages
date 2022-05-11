@@ -53,7 +53,8 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
   const [h5pReady, setH5pReady] = useState(false);
   const iframeRef = useRef(null);
   useEffect(() => {
-    const resizeObserver = new ResizeObserver((e) => {
+    // @ts-ignore
+    const resizeObserver = new ResizeObserver((e: ResizeObserverEntry[]) => {
       setH5pReady(e[0].contentRect.height > 0);
     });
     const iframeRefTemp = iframeRef.current;

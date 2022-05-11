@@ -18,8 +18,8 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: ${spacing.large};
-  width: ${spacing.large};
+  height: ${spacing.medium};
+  width: ${spacing.medium};
   border-radius: 50%;
   transition: ${misc.transition.default};
   > span {
@@ -39,8 +39,8 @@ const StyledButton = styled.button`
 `;
 
 const StyledHeart = styled(FavoriteHeart)`
-  height: 24px;
-  width: 24px;
+  height: ${spacing.normal};
+  width: ${spacing.normal};
   color: ${colors.text.primary};
 `;
 

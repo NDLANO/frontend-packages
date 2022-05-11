@@ -34,9 +34,7 @@ export interface ConceptNotionType {
   copyright?: Partial<Copyright>;
   title: string;
   text: string;
-  subjectNames?: string[];
   visualElement?: NotionVisualElementType;
-  authors: string[];
   source?: string;
   image?: {
     src: string;

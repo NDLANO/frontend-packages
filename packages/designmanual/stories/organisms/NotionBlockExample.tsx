@@ -38,6 +38,8 @@ class NotionBlockExample extends Component {
               <NotionBlock type="video" hideIconsAndAuthors />
               <h2 className="u-heading">Begrep med visuelt element h5p</h2>
               <NotionBlock type="h5p" hideIconsAndAuthors />
+              <h2 className="u-heading">Begrep med visuelt element iframe</h2>
+              <NotionBlock type="iframe" hideIconsAndAuthors />
               <h2 className="u-heading">Begrep med forfatter og lisensikoner</h2>
               <NotionBlock type="image" />
               <h2 className="u-heading">Begrep med manglende lisens</h2>

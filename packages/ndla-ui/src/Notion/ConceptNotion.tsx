@@ -17,6 +17,7 @@ import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
 import FigureNotion from './FigureNotion';
 import { Copyright } from '../types';
+import { parseMarkdown } from '../../../util/src';
 
 const ImageWrapper = styled.div`
   float: right;
@@ -88,7 +89,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
                       {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
                         <NotionVisualElement visualElement={concept.visualElement} id={notionId} figureId={figureId} />
                       ) : undefined}
-                      <NotionDialogText>{concept.text}</NotionDialogText>
+                      <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
                     </NotionDialogContent>
                     <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source={concept.source} />
                   </>
@@ -124,7 +125,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
                         <NotionVisualElement visualElement={concept.visualElement} id={notionId} figureId={figureId} />
                       ) : undefined}
 
-                      <NotionDialogText>{concept.text}</NotionDialogText>
+                      <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
                     </NotionDialogContent>
                     <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source={concept.source} />
                   </>

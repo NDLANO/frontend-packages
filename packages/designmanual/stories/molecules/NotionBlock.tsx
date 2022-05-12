@@ -16,7 +16,6 @@ import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
 
 const conceptData = {
   image: {
-    authors: [],
     title: 'And',
     source: 'https://www.snl.no',
     text: 'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk. Ender ble husdyr i middelhavslandene kort tid før Kristi fødsel. Hos hannen, andriken, er de fire midtre halefjærene bøyd oppover. Som ofte ellers i fugleriket har hannen finere farger enn hunnen. Det finnes en rekke raser og krysninger. På bildet ser vi tamme ender, pekinand.',
@@ -51,7 +50,6 @@ const conceptData = {
     },
   },
   video: {
-    authors: [],
     text: 'I videoen kan du se en introduksjon til hva vi for eksempel mener når vi prater om «velferdsteknologi».',
     title: 'Velferdsteknologi',
     source: 'https://www.snl.no',
@@ -92,8 +90,49 @@ const conceptData = {
       },
     },
   },
+  iframe: {
+    title: 'Blodtyper',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    image: {
+      src: 'https://api.test.ndla.no/image-api/raw/id/32570',
+      alt: 'Blodtyper.',
+    },
+    copyright: {
+      license: {
+        license: 'CC-BY-SA-4.0',
+      },
+      creators: [
+        {
+          name: 'Fornavn Etternavn',
+          type: 'writer',
+        },
+      ],
+      processors: [
+        {
+          name: 'Et Byrå',
+          type: 'correction',
+        },
+      ],
+      rightsholders: [],
+    },
+    visualElement: {
+      resource: 'iframe',
+      title: 'Statistikk',
+      url: 'https://public.flourish.studio/visualisation/2152346/embed',
+      copyright: {
+        license: {
+          license: 'CC-BY-NC-SA-4.0',
+        },
+        creators: [
+          {
+            name: 'Vilkårlig Person',
+            type: 'Writer',
+          },
+        ],
+      },
+    },
+  },
   h5p: {
-    authors: [],
     title: 'Verdensrom og romskip',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     image: {
@@ -136,7 +175,6 @@ const conceptData = {
     },
   },
   other: {
-    authors: [],
     title: '6-akset robotarm',
     source: 'https://www.snl.no',
     text: 'En 6-akset robotarm betyr at den kan bevege seg i seks retninger. I akkurat denne konfigurasjonen eller løsningen kommer den sjette bevegelsesretningen av det robotarmen står på. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
@@ -179,7 +217,6 @@ const conceptData = {
     },
   },
   richtext: {
-    authors: [],
     title: '6-akset robotarm',
     source: 'https://www.snl.no',
     text: 'En 6-akset **robotarm** betyr at den kan bevege seg i seks `retninger`. I akkurat _denne_ konfigurasjonen eller løsningen kommer den ^sjette^ ~bevegelsesretningen~ av det robotarmen står på.\n1. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her.\n2. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
@@ -188,6 +225,9 @@ const conceptData = {
       alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
     },
     copyright: {
+      license: {
+        license: 'CC-BY-SA-4.0',
+      },
       creators: [
         {
           name: 'Haldor Hove',
@@ -224,9 +264,9 @@ const conceptData = {
 };
 
 const getType = (type: string) => {
-  if (type === 'image' || type === 'video' || type === 'richtext') {
+  if (type === 'image' || type === 'video' || type === 'richtext' || type === 'iframe') {
     return type;
-  } else if (['iframe', 'h5p', 'external'].includes(type)) {
+  } else if (['h5p', 'external'].includes(type)) {
     return 'h5p';
   }
   return 'other';

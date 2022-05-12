@@ -1,3 +1,5 @@
+import React from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { addDecorator } from '@storybook/react';
 import { i18nInstance } from '@ndla/ui';
 import { LanguageWrapper } from './LanguageWrapper';
@@ -7,6 +9,8 @@ i18nInstance.language = 'nb';
 i18nInstance.options.lng = 'nb';
 addDecorator(RouterWrapper);
 addDecorator(LanguageWrapper);
+addDecorator((storyFn) => <HelmetProvider>{storyFn()}</HelmetProvider>);
+// addDecorator(HelmetProvider);
 
 require('./welcome');
 require('./concepts');

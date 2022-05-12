@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`parseMarkdown does not render richText when type=caption. 1`] = `
+exports[`parseMarkdown does not render block level elements when type=caption. 1`] = `
 Array [
   <p>
     ### Header

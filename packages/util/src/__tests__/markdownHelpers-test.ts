@@ -19,7 +19,7 @@ test('parseMarkdown renders body correctly.', () => {
   expect(parsed).toMatchSnapshot();
 });
 
-test('parseMarkdown does not render richText when type=caption.', () => {
+test('parseMarkdown does not render block level elements when type=caption.', () => {
   const parsed = parseMarkdown(richMarkdown, 'caption');
 
   expect(parsed).toMatchSnapshot();

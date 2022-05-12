@@ -9,33 +9,38 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import ResourceElement from './ResourceElement';
-
-const ResourcesWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; 0;
-`;
+import FolderElement from './Folderelement';
+import DashOptions from './DashOptions';
+const ResourcesWrapper = styled.div``;
 
 export const ResourcesView = () => {
   return (
-    <ResourcesWrapper>
-      <ResourceElement
-        type="folder"
-        title="Example folder"
-        leftSide={<img src="http://placekitten.com/200/200" alt="Mjaoo" />}
-        rightSide={<span>#tag</span>}
-        description="some description">
-        <p>Im a child.. insert content</p>
-      </ResourceElement>
-      <ResourceElement
-        type="resource"
-        title="Example Resource"
-        leftSide={<img src="http://placekitten.com/200/200" alt="Brrr" />}
-        rightSide={<span>#tag</span>}
-        description="some description">
-        <p>Im a child.. insert content</p>
-      </ResourceElement>
-    </ResourcesWrapper>
+    <>
+      <DashOptions></DashOptions>
+      <ResourcesWrapper>
+        <FolderElement title="My folder" subFolders={3} subResources={3} link="" />
+        <ResourceElement
+          title="My Resource"
+          topic="Oppgave"
+          tags={['tag', 'tag', 'tag']}
+          resourceImage={{
+            alt: 'alt',
+            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          }}
+          link=""
+        />
+        <ResourceElement
+          title="My Resource"
+          topic="Oppgave"
+          tags={['tag', 'tag', 'tag']}
+          resourceImage={{
+            alt: 'alt',
+            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          }}
+          link=""
+        />
+      </ResourcesWrapper>
+    </>
   );
 };
 

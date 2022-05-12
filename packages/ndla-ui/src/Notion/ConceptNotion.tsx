@@ -11,13 +11,13 @@ import React, { useEffect } from 'react';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { useTranslation } from 'react-i18next';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { parseMarkdown } from '@ndla/util';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogLicenses } from '@ndla/notion';
 import { Notion as UINotion } from '.';
 import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
 import FigureNotion from './FigureNotion';
 import { Copyright } from '../types';
-import { parseMarkdown } from '../../../util/src';
 
 const ImageWrapper = styled.div`
   float: right;

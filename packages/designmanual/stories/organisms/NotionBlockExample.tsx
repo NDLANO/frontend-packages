@@ -33,21 +33,23 @@ class NotionBlockExample extends Component {
           components={
             <OneColumn>
               <h2 className="u-heading">Begrep med visuelt element bilde</h2>
-              <NotionBlock type="image" hideIconsAndAuthors adjustSizeToFitWiderPage />
+              <NotionBlock type="image" hideIconsAndAuthors />
               <h2 className="u-heading">Begrep med visuelt element video</h2>
-              <NotionBlock type="video" hideIconsAndAuthors adjustSizeToFitWiderPage />
+              <NotionBlock type="video" hideIconsAndAuthors />
               <h2 className="u-heading">Begrep med visuelt element h5p</h2>
-              <NotionBlock type="h5p" hideIconsAndAuthors adjustSizeToFitWiderPage />
+              <NotionBlock type="h5p" hideIconsAndAuthors />
               <h2 className="u-heading">Begrep med forfatter og lisensikoner</h2>
-              <NotionBlock type="image" adjustSizeToFitWiderPage />
+              <NotionBlock type="image" />
               <h2 className="u-heading">Begrep med manglende lisens</h2>
-              <NotionBlock type="image" data="other" adjustSizeToFitWiderPage />
+              <NotionBlock type="image" data="other" />
+              <h2 className="u-heading">Begrep med markdown-innhold</h2>
+              <NotionBlock type="image" data="richtext" />
             </OneColumn>
           }
           onSite={[<NotionSiteTabs></NotionSiteTabs>]}
           reactCode={`
   //Enkel forklaringsblokk
-  <NotionBlock type="H5P" hideIconsAndAuthors adjustSizeToFitWiderPage></NotionBlock>
+  <NotionBlock type="H5P" hideIconsAndAuthors></NotionBlock>
   //Liste med forklaringsblokker
   <NotionListExample
   title="Liste med forklaringer"

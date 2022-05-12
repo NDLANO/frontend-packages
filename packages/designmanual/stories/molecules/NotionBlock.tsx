@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { ConceptNotion, Figure } from '@ndla/ui';
+import { ConceptNotion } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
@@ -178,10 +178,53 @@ const conceptData = {
       },
     },
   },
+  richtext: {
+    authors: [],
+    title: '6-akset robotarm',
+    source: 'https://www.snl.no',
+    text: 'En 6-akset **robotarm** betyr at den kan bevege seg i seks `retninger`. I akkurat _denne_ konfigurasjonen eller løsningen kommer den ^sjette^ ~bevegelsesretningen~ av det robotarmen står på.\n1. I en slik løsning med transportband vil robotarmen ha større fleksibilitet og kan gjøre flere operasjoner raskere, for eksempel "pick and place" (plukk og plasser), som blir simulert her.\n2. Da kan man sortere ut varer eller enkeltprodukter på et samlebånd svært effektivt.',
+    image: {
+      src: 'https://api.test.ndla.no/image-api/raw/id/23425',
+      alt: 'Robotarmer i robotceller og på mobile enheter. Foto.',
+    },
+    copyright: {
+      creators: [
+        {
+          name: 'Haldor Hove',
+          type: 'writer',
+        },
+      ],
+      processors: [
+        {
+          name: 'Totaltekst',
+          type: 'correction',
+        },
+      ],
+      rightsholders: [],
+    },
+    visualElement: {
+      title: 'Viper 6-akset robot',
+      resource: 'h5p',
+      url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
+      copyright: {
+        license: {
+          license: 'CC-BY-NC-SA-4.0',
+        },
+        creators: [],
+        processors: [],
+        rightsholders: [
+          {
+            name: 'Omron Electronics Norway AS',
+            type: 'supplier',
+          },
+        ],
+      },
+    },
+  },
 };
 
 const getType = (type: string) => {
-  if (type === 'image' || type === 'video') {
+  if (type === 'image' || type === 'video' || type === 'richtext') {
     return type;
   } else if (['iframe', 'h5p', 'external'].includes(type)) {
     return 'h5p';
@@ -192,32 +235,19 @@ const getType = (type: string) => {
 type Props = {
   type: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
   hideIconsAndAuthors?: boolean;
-  data?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'other';
-  adjustSizeToFitWiderPage?: boolean;
+  data?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'other' | 'richtext';
 };
 
-const NotionBlock = ({ type, hideIconsAndAuthors, adjustSizeToFitWiderPage, data }: Props) => {
+const NotionBlock = ({ type, hideIconsAndAuthors, data }: Props) => {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
-
-  if (adjustSizeToFitWiderPage) {
-    return (
-      <Figure type="full">
-        <ConceptNotion
-          hideIconsAndAuthors={hideIconsAndAuthors}
-          type={type}
-          concept={{ ...conceptData[getType(data || type)], id }}
-        />
-      </Figure>
-    );
-  }
 
   return (
     <ConceptNotion
       hideIconsAndAuthors={hideIconsAndAuthors}
       type={type}
-      concept={{ ...conceptData[getType(type)], id }}
+      concept={{ ...conceptData[getType(data || type)], id }}
     />
   );
 };

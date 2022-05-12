@@ -923,6 +923,7 @@ const messages = {
     myAccount: 'Min konto',
     favourites: 'Favoritter',
     help: 'Hjelp',
+    more: 'Flere valg',
   },
 };
 

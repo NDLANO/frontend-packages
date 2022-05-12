@@ -924,6 +924,7 @@ const messages = {
     myAccount: 'Min konto',
     favourites: 'Favorittar',
     help: 'Hjelp',
+    more: 'Fleire val',
   },
 };
 

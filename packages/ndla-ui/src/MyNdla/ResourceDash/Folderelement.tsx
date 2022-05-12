@@ -8,7 +8,8 @@
 
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
-import { Folder, Paragraph } from '@ndla/icons/editor';
+import { Folder } from '@ndla/icons/editor';
+import { HorizontalMenu } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -67,6 +68,9 @@ const FolderIconLeft = styled(Folder)`
   height: 100%;
   margin-right: ${spacing.small};
   margin-left: ${spacing.small};
+  stroke: rgba(68, 68, 68, 1);
+  stroke-width: 2;
+  fill: transparent;
 `;
 const FolderLeftSide = styled.div`
   height: 100%;
@@ -87,6 +91,9 @@ const FoldersWrapper = styled.div`
 `;
 const FolderIconRight = styled(Folder)`
   height: 100%;
+  stroke: rgba(68, 68, 68, 1);
+  stroke-width: 2;
+  fill: white;
   margin-right: ${spacing.xsmall};
 `;
 
@@ -95,15 +102,17 @@ const FileIcon = styled(FileDocumentOutline)`
   margin-right: ${spacing.xsmall};
 `;
 
-const MoreIcon = styled(Paragraph)`
+const MoreIcon = styled(HorizontalMenu)`
   height: 100%;
   margin-right: ${spacing.small};
   fill: ${colors.brand.grey};
+  transform: scale(1.5);
 `;
 
 const FoldersText = styled.p`
   margin: 0;
   height: 100%;
+  font-size: ${fonts.sizes(16)};
   display: flex;
   align-items: center;
   margin-right: ${spacing.medium};
@@ -141,7 +150,7 @@ const FolderElement = ({ link, title, subFolders, subResources, children }: Fold
           <FoldersText>
             {subResources} {t('myNdla.resources')}
           </FoldersText>
-          <MoreIcon />
+          <MoreIcon aria-label={t('myNdla.more')} />
         </FoldersWrapper>
       </FolderRightSide>
     </FolderElementWrapper>

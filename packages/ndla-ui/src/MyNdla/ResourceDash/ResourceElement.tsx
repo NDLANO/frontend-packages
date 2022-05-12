@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
-import { Paragraph } from '@ndla/icons/editor';
+import { HorizontalMenu } from '@ndla/icons/contentType';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -105,10 +105,11 @@ const TagsList = styled.div`
   }
 `;
 
-const MoreIcon = styled(Paragraph)`
+const MoreIcon = styled(HorizontalMenu)`
   height: 100%;
   margin-right: ${spacing.small};
-  fill: ${colors.brand.grey};
+  fill: ${colors.brand.tertiary};
+  transform: scale(1.5);
 `;
 
 type ResourceImageProps = {
@@ -145,7 +146,7 @@ const ResourceElement = ({ link, title, tags, children, resourceImage, topic }: 
             <li> #{tag}</li>
           ))}
         </TagsList>
-        <MoreIcon />
+        <MoreIcon aria-label={t('myNdla.more')} />
       </ResourceRightSide>
     </ResourceElementWrapper>
   );

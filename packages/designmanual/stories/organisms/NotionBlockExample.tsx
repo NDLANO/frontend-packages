@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 import { OneColumn } from '@ndla/ui';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import NotionBlock from '../molecules/NotionBlock';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';

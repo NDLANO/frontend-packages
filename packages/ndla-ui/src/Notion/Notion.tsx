@@ -29,16 +29,6 @@ const ContentWrapper = styled.div`
       padding: 0;
     }
   }
-  ${mq.range({ from: breakpoints.desktop })} {
-    ul,
-    ol {
-      margin: 12px 0;
-      padding: 0 1rem 0 2rem;
-    }
-    ol > li {
-      margin-left: 24px;
-    }
-  }
 `;
 const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   width: ${(props) => (props.hasVisualElement ? '75%' : '100%')};
@@ -50,6 +40,16 @@ const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   ${fonts.sizes('18px', '28px')};
   ${ContentWrapper} .c-figure.expanded + & {
     width: 100%;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    ul,
+    ol {
+      margin: 12px 0;
+      padding: 0 1rem 0 2rem;
+    }
+    ol > li {
+      margin-left: 24px;
+    }
   }
 `;
 

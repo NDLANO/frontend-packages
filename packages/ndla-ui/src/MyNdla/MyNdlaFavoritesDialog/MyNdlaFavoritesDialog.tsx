@@ -27,7 +27,7 @@ const MyNdlaFavoritesDialog = ({ isOpen, title, closeCallback, children }: Props
             {t('modal.closeModal')} <ModalCloseButton title="Lukk" onClick={onCloseModal} />
           </ModalHeader>
           <ModalBody>
-            <h1>{title}</h1>
+            <h1>{t(title)}</h1>
             {children}
           </ModalBody>
         </>

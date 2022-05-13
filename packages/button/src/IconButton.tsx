@@ -6,9 +6,8 @@
  *
  */
 
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, ReactElement } from 'react';
 import styled from '@emotion/styled';
-import { FavoriteHeart } from '@ndla/icons/action';
 import { colors, spacing, misc } from '@ndla/core';
 
 const StyledButton = styled.button`
@@ -22,36 +21,26 @@ const StyledButton = styled.button`
   width: ${spacing.medium};
   border-radius: 50%;
   transition: ${misc.transition.default};
-  > span {
-    box-shadow: none;
-  }
   &:hover,
   &:focus {
     background-color: ${colors.brand.light};
     box-shadow: none;
-    > span {
-      box-shadow: none;
-    }
   }
   &:active {
     transform: translate(1px, 1px);
   }
 `;
 
-const StyledHeart = styled(FavoriteHeart)`
-  height: ${spacing.normal};
-  width: ${spacing.normal};
-  color: ${colors.text.primary};
-`;
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  ariaLabel: string;
+  children: ReactElement;
+  onClick?: React.MouseEventHandler;
+}
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  'aria-label': string;
-};
-
-export const FavoriteButton = (props: Props) => (
-  <StyledButton {...props}>
-    <StyledHeart />
+export const IconButton = ({ ariaLabel, children, onClick }: Props) => (
+  <StyledButton onClick={onClick} aria-label={ariaLabel}>
+    {children}
   </StyledButton>
 );
 
-export default FavoriteButton;
+export default IconButton;

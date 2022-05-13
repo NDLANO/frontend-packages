@@ -7,14 +7,21 @@
  */
 
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 import { MyNdlaFavoritesDialog } from '@ndla/ui';
-import { FavoriteButton } from '@ndla/button';
+import { IconButton } from '@ndla/button';
+import { FavoriteHeart } from '@ndla/icons/action';
 
+const StyledFavoriteHeart = styled(FavoriteHeart)`
+  transform: scale(1.5);
+`;
 const MyNdlaDialogExample = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <FavoriteButton onClick={() => setIsOpen(!isOpen)} aria-label="Legg i favoritter" />
+      <IconButton ariaLabel="Legg i favoritter" onClick={() => setIsOpen(!isOpen)}>
+        <StyledFavoriteHeart />
+      </IconButton>
       {isOpen && (
         <MyNdlaFavoritesDialog title="Hello dialog" isOpen={isOpen} closeCallback={() => setIsOpen(!isOpen)}>
           <p>content of dialog..</p>

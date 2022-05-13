@@ -2,7 +2,7 @@ import React from 'react';
 import Button, { MultiButton, StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown } from '@ndla/icons/common';
-import { CloseButton, FavoriteButton } from '@ndla/button';
+import { CloseButton, IconButton } from '@ndla/button';
 import { FavoriteHeart } from '@ndla/icons/action';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
@@ -467,7 +467,7 @@ const ButtonExample = () => {
         </InlineContainer>
         <h2 className="u-heading">Legg i favoritter knapp</h2>
         <InlineContainer>
-          <FavoriteButton aria-label="hello" />
+          <IconButton aria-label="hello" />
         </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">

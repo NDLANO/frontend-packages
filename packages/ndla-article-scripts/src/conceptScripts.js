@@ -9,6 +9,7 @@
 import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
+import { resetIframeElement, resizeIframeElement } from './figureScripts';
 
 const closeAllVisibleNotions = (returnFocusToParent) => {
   forEachElement('[data-notion]', (item) => {
@@ -17,12 +18,11 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
     if (popup.classList.contains('visible')) {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
-      let iframe_tag = popup.querySelector('iframe');
-      if (iframe_tag) {
-        let iframeSrc = iframe_tag.src;
-        iframe_tag.src = iframeSrc;
+      const iframe = popup.querySelector('iframe');
+      const src = iframe.src;
+      if (src.match(/brightcove|youtube|youtu.be/g)) {
+        resetIframeElement(iframe);
       }
-
       if (returnFocusToParent) {
         const openBtn = item.querySelector('[data-notion-link]');
         openBtn.focus();
@@ -137,6 +137,7 @@ export const addShowConceptDefinitionClickListeners = () => {
             },
             '*',
           );
+          popup.querySelectorAll('iframe').forEach((iframe) => resizeIframeElement(iframe));
         } else {
           jump(popup, {
             duration: 300,

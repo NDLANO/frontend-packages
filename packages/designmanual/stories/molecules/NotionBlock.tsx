@@ -188,7 +188,7 @@ const conceptData = {
     },
     visualElement: {
       title: 'Viper 6-akset robot',
-      resource: 'h5p',
+      resource: 'video',
       url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
       copyright: {
         license: {
@@ -233,7 +233,7 @@ const conceptData = {
     },
     visualElement: {
       title: 'Viper 6-akset robot',
-      resource: 'h5p',
+      resource: 'video',
       url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
       copyright: {
         license: {
@@ -274,6 +274,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, data }: Props) => {
 
   return (
     <ConceptNotion
+      disableScripts
       hideIconsAndAuthors={hideIconsAndAuthors}
       type={type}
       concept={{ ...conceptData[getType(data || type)], id }}

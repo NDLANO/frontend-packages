@@ -9,7 +9,6 @@
 import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
-import { resizeIframeElement } from './figureScripts';
 
 const closeAllVisibleNotions = (returnFocusToParent) => {
   forEachElement('[data-notion]', (item) => {
@@ -139,7 +138,6 @@ export const addShowConceptDefinitionClickListeners = () => {
             '*',
           );
           // Add resize listener?
-          popup.querySelectorAll('iframe[type="h5p"]').forEach((iframe) => resizeIframeElement(iframe, true));
         } else {
           jump(popup, {
             duration: 300,

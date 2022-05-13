@@ -52,20 +52,22 @@ const getType = (resource: string) => {
 const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
   const [h5pReady, setH5pReady] = useState(false);
   const iframeRef = useRef(null);
+
   useEffect(() => {
-    // @ts-ignore
-    const resizeObserver = new ResizeObserver((e: ResizeObserverEntry[]) => {
-      setH5pReady(e[0].contentRect.height > 0);
-    });
-    const iframeRefTemp = iframeRef.current;
-    if (visualElement.resource === 'h5p' && iframeRefTemp) {
-      resizeObserver.observe(iframeRefTemp);
-    }
-    return () => {
-      if (iframeRefTemp) {
-        resizeObserver.unobserve(iframeRefTemp);
+    if (visualElement.resource === 'h5p') {
+      const resizeObserver = new ResizeObserver((e: ResizeObserverEntry[]) => {
+        setH5pReady(e[0].contentRect.height > 0);
+      });
+      const iframeRefTemp = iframeRef.current;
+      if (visualElement.resource === 'h5p' && iframeRefTemp) {
+        resizeObserver.observe(iframeRefTemp);
       }
-    };
+      return () => {
+        if (iframeRefTemp) {
+          resizeObserver.unobserve(iframeRefTemp);
+        }
+      };
+    }
   }, [iframeRef, visualElement.resource]);
 
   if (!visualElement.resource || !supportedEmbedTypes.includes(visualElement.resource)) {
@@ -86,13 +88,12 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (
-        <div ref={iframeRef}>
-          <StyledIframe
-            src={type !== 'h5p' || h5pReady ? visualElement.url : undefined}
-            type={type}
-            title={visualElement.title}
-          />
-        </div>
+        <StyledIframe
+          ref={iframeRef}
+          src={type !== 'h5p' || h5pReady ? visualElement.url : undefined}
+          type={type}
+          title={visualElement.title}
+        />
       )}
     </FigureNotion>
   );

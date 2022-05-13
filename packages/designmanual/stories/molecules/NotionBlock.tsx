@@ -119,17 +119,6 @@ const conceptData = {
       resource: 'iframe',
       title: 'Statistikk',
       url: 'https://public.flourish.studio/visualisation/2152346/embed',
-      copyright: {
-        license: {
-          license: 'CC-BY-NC-SA-4.0',
-        },
-        creators: [
-          {
-            name: 'Vilkårlig Person',
-            type: 'Writer',
-          },
-        ],
-      },
     },
   },
   h5p: {

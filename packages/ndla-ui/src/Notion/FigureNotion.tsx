@@ -26,7 +26,7 @@ interface Props {
   title?: string;
   copyright?: Partial<Copyright>;
   licenseString: string;
-  type: 'video' | 'h5p' | 'image' | 'concept';
+  type: 'video' | 'h5p' | 'image' | 'concept' | 'other';
   hideFigCaption?: boolean;
   hideIconsAndAuthors?: boolean;
 }

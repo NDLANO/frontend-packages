@@ -137,7 +137,7 @@ export const addShowConceptDefinitionClickListeners = () => {
             },
             '*',
           );
-          popup.querySelectorAll('iframe').forEach((iframe) => resizeIframeElement(iframe));
+          popup.querySelectorAll('iframe').forEach((iframe) => resizeIframeElement(iframe, false, true));
         } else {
           jump(popup, {
             duration: 300,
@@ -170,10 +170,12 @@ export const addShowConceptDefinitionClickListeners = () => {
       popup.setAttribute('aria-hidden', true);
       window.removeEventListener('keyup', ESCKeyListener, true);
       openBtn.focus();
-      let iframe_tag = popup.querySelector('iframe');
-      if (iframe_tag) {
-        let iframeSrc = iframe_tag.src;
-        iframe_tag.src = iframeSrc;
+      let iframe = popup.querySelector('iframe');
+      if (iframe) {
+        const src = iframe.src;
+        if (src.match(/brightcove|youtube|youtu.be/g)) {
+          resetIframeElement(iframe);
+        }
       }
     };
   });

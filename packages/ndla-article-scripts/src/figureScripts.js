@@ -57,9 +57,7 @@ export const addCopyToClipboardListeners = () => {
   });
 };
 
-export const resizeIframeElement = (el, init = false) => {
-  const iframe = el;
-
+export const resizeIframeElement = (iframe, init = false, onOpen = false) => {
   const parent = iframe.parentNode;
   let ratio = 0.5625;
   const computedStyle = window.getComputedStyle(parent);
@@ -69,9 +67,9 @@ export const resizeIframeElement = (el, init = false) => {
 
   if (init && iframe.width && iframe.height) {
     ratio = iframe.height / iframe.width;
-    el.setAttribute('data-ratio', ratio);
+    iframe.setAttribute('data-ratio', ratio);
   } else {
-    const ratioAttr = el.getAttribute('data-ratio');
+    const ratioAttr = iframe.getAttribute('data-ratio');
     if (ratioAttr) {
       ratio = parseFloat(ratioAttr);
     }
@@ -79,9 +77,8 @@ export const resizeIframeElement = (el, init = false) => {
 
   const newHeight = parentWidth * ratio;
   const type = iframe.getAttribute('type');
-  if (type === 'h5p') {
-    console.log(iframe);
-    resetIframeElement(iframe);
+  if (type === 'h5p' && onOpen) {
+    resetIframeElement(iframe, true);
   }
 
   // fix for elements not visible
@@ -94,9 +91,18 @@ export const resizeIframeElement = (el, init = false) => {
   }
 };
 
-export const resetIframeElement = (el) => {
-  const iframe = el;
+export const resetIframeElement = (iframe, runOnce = false) => {
   if (iframe) {
+    if (runOnce) {
+      const reset = iframe.getAttribute('data-reset');
+      if (reset === 'true') {
+        return;
+      }
+      iframe.setAttribute('data-reset', 'true');
+    }
+
+    console.log('reset');
+
     const src = iframe.src;
     iframe.src = src;
   }

@@ -253,10 +253,8 @@ const conceptData = {
 };
 
 const getType = (type: string) => {
-  if (type === 'image' || type === 'video' || type === 'richtext' || type === 'iframe') {
+  if (type === 'image' || type === 'video' || type === 'richtext' || type === 'iframe' || type === 'h5p') {
     return type;
-  } else if (['h5p', 'external'].includes(type)) {
-    return 'h5p';
   }
   return 'other';
 };

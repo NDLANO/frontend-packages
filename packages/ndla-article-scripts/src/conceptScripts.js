@@ -9,7 +9,7 @@
 import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
-import { resetIframeElement, resizeIframeElement } from './figureScripts';
+import { resetIframeElement, initOpenedIframe } from './figureScripts';
 
 const closeAllVisibleNotions = (returnFocusToParent) => {
   forEachElement('[data-notion]', (item) => {
@@ -137,7 +137,10 @@ export const addShowConceptDefinitionClickListeners = () => {
             },
             '*',
           );
-          popup.querySelectorAll('iframe').forEach((iframe) => resizeIframeElement(iframe, false, true));
+
+          popup.querySelectorAll('iframe').forEach((iframe) => {
+            initOpenedIframe(iframe);
+          });
         } else {
           jump(popup, {
             duration: 300,

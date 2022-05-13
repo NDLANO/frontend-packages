@@ -3,7 +3,6 @@ import Button, { MultiButton, StyledButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown } from '@ndla/icons/common';
 import { CloseButton, IconButton } from '@ndla/button';
-import { FavoriteHeart } from '@ndla/icons/action';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
@@ -207,7 +206,7 @@ const ButtonExample = () => {
             Medium knapp
           </Button>{' '}
           <Button borderShape="rounded" light size="large" onClick={action('clicked')}>
-            <FavoriteHeart />
+            Stor Knapp
           </Button>
         </InlineContainer>
         <InlineContainer>

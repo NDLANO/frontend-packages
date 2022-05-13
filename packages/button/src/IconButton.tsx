@@ -8,39 +8,77 @@
 
 import React, { ButtonHTMLAttributes, ReactElement } from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, misc } from '@ndla/core';
+import { misc } from '@ndla/core';
+import Tooltip from '@ndla/tooltip';
 
-const StyledButton = styled.button`
-  background-color: transparent;
-  border: none;
+const StyledButton = styled.button<Props>`
+  background-color: ${(p: Props) => p.button?.backgroundColor};
+  border: ${(p: Props) => p.button?.border};
+  color: ${(p: Props) => p.button?.color};
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: ${spacing.medium};
-  width: ${spacing.medium};
-  border-radius: 50%;
+  height: ${(p: Props) => p.button?.height};
+  width: ${(p: Props) => p.button?.width};
+  border-radius: ${(p: Props) => p.button?.borderRadius};
   transition: ${misc.transition.default};
+  font-size: ${(p: Props) => p.size};
   &:hover,
   &:focus {
-    background-color: ${colors.brand.light};
+    background-color: ${(p: Props) => p.button?.hoverBackground};
+    color: ${(p: Props) => p.button?.hoverColor};
     box-shadow: none;
   }
   &:active {
-    transform: translate(1px, 1px);
+  }
+
+  svg {
+    fill: ${(p: Props) => p.svg?.fill};
+    stroke: ${(p: Props) => p.svg?.stroke};
+    stroke-width: ${(p: Props) => p.svg?.strokeWidth};
+    height: ${(p: Props) => p.size};
+    width: ${(p: Props) => p.size};
+    &:hover,
+    &:focus {
+      fill: ${(p: Props) => p.svg?.hoverFill};
+      box-shadow: none;
+    }
   }
 `;
 
+type SvgProps = {
+  fill?: string;
+  stroke?: string;
+  strokeWidth?: string;
+  hoverFill?: string;
+};
+
+type ButtonProps = {
+  width?: string;
+  height?: string;
+  color?: string;
+  backgroundColor?: string;
+  border?: string;
+  borderRadius?: string;
+  hoverColor?: string;
+  hoverBackground?: string;
+};
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  ariaLabel: string;
   children: ReactElement;
   onClick?: React.MouseEventHandler;
+  button?: ButtonProps;
+  svg?: SvgProps;
+  toolTip?: string;
+  size?: string;
 }
 
-export const IconButton = ({ ariaLabel, children, onClick }: Props) => (
-  <StyledButton onClick={onClick} aria-label={ariaLabel}>
-    {children}
-  </StyledButton>
+export const IconButton = ({ children, onClick, svg, button, toolTip, size, ...rest }: Props) => (
+  <Tooltip tooltip={toolTip}>
+    <StyledButton onClick={onClick} svg={svg} button={button} size={size}>
+      {children}
+    </StyledButton>
+  </Tooltip>
 );
 
 export default IconButton;

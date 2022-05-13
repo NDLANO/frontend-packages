@@ -7,20 +7,27 @@
  */
 
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
 import { MyNdlaFavoritesDialog } from '@ndla/ui';
 import { IconButton } from '@ndla/button';
 import { FavoriteHeart } from '@ndla/icons/action';
+import { colors } from '@ndla/core';
 
-const StyledFavoriteHeart = styled(FavoriteHeart)`
-  transform: scale(1.5);
-`;
 const MyNdlaDialogExample = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <IconButton ariaLabel="Legg i favoritter" onClick={() => setIsOpen(!isOpen)}>
-        <StyledFavoriteHeart />
+      <IconButton
+        toolTip="Favoritter" //Har translation i en annen PR, fikser når det merges
+        size="1.5em"
+        onClick={() => setIsOpen(!isOpen)}
+        button={{ border: 'none', backgroundColor: 'transparent' }}
+        svg={{
+          stroke: colors.brand.primary,
+          fill: 'white',
+          hoverFill: colors.brand.primary,
+          strokeWidth: '1.5',
+        }}>
+        <FavoriteHeart />
       </IconButton>
       {isOpen && (
         <MyNdlaFavoritesDialog title="Hello dialog" isOpen={isOpen} closeCallback={() => setIsOpen(!isOpen)}>

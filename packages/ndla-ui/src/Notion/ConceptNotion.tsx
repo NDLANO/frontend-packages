@@ -100,7 +100,6 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
                     id={visualElementId}
                     src={concept.visualElement.image.src}
                     alt={concept.visualElement.image.alt ?? ''}
-                    imageCopyright={concept.visualElement.copyright}
                   />
                 )}
               </Notion>
@@ -136,7 +135,6 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
                     id={visualElementId}
                     src={concept.image?.src}
                     alt={concept.image?.alt ?? ''}
-                    imageCopyright={concept.visualElement.copyright}
                   />
                 )}
               </Notion>

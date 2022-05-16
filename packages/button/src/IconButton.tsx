@@ -8,37 +8,70 @@
 
 import React, { ButtonHTMLAttributes, ReactElement } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { misc } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
+import { colors } from '@ndla/core';
 
-const StyledButton = styled.button<Props>`
-  background-color: ${(p: Props) => p.button?.backgroundColor};
-  border: ${(p: Props) => p.button?.border};
-  color: ${(p: Props) => p.button?.color};
+export type IconSize = 'small' | 'medium' | 'large';
+export type IconColor = 'primary' | 'secondary' | 'tertiary';
+export type IconHoverFill = 'primary' | 'secondary' | 'tertiary';
+export type IconType = 'favorite' | 'primary';
+
+export const Theme = {
+  heartIcon: {
+    fill: colors.brand.primary,
+    backgroundColor: 'transparent',
+    hover: colors.brand.primary,
+    heightWidthSize: '1.5em',
+  },
+  primaryIcon: {
+    colors: 'red',
+  },
+};
+
+export const StyledButton = styled.button<Props>`
+  size: ${(props) => {
+    if (props.size === 'small') {
+      return '1.5em';
+    }
+
+    if (props.size === 'medium') {
+      return '1.5em';
+    }
+  }};
+  color: ${(props) => {
+    if (props.svg?.fill === 'primary') {
+      return colors.brand.primary;
+    }
+  }};
+  ${(props) =>
+    props.iconType === 'favorite' &&
+    css`
+      font-size: size;
+
+      svg {
+        height: size;
+        width: size;
+        fill: colors;
+      }
+    `}
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: ${(p: Props) => p.button?.height};
-  width: ${(p: Props) => p.button?.width};
   border-radius: ${(p: Props) => p.button?.borderRadius};
   transition: ${misc.transition.default};
-  font-size: ${(p: Props) => p.size};
   &:hover,
   &:focus {
     background-color: ${(p: Props) => p.button?.hoverBackground};
     color: ${(p: Props) => p.button?.hoverColor};
     box-shadow: none;
   }
-  &:active {
-  }
 
   svg {
-    fill: ${(p: Props) => p.svg?.fill};
-    stroke: ${(p: Props) => p.svg?.stroke};
     stroke-width: ${(p: Props) => p.svg?.strokeWidth};
-    height: ${(p: Props) => p.size};
-    width: ${(p: Props) => p.size};
+
     &:hover,
     &:focus {
       fill: ${(p: Props) => p.svg?.hoverFill};
@@ -55,8 +88,6 @@ type SvgProps = {
 };
 
 type ButtonProps = {
-  width?: string;
-  height?: string;
   color?: string;
   backgroundColor?: string;
   border?: string;
@@ -64,13 +95,15 @@ type ButtonProps = {
   hoverColor?: string;
   hoverBackground?: string;
 };
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactElement;
   onClick?: React.MouseEventHandler;
   button?: ButtonProps;
   svg?: SvgProps;
   toolTip?: string;
-  size?: string;
+  size?: IconSize;
+  iconType?: IconType;
 }
 
 export const IconButton = ({ children, onClick, svg, button, toolTip, size, ...rest }: Props) => (

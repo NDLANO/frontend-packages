@@ -11,8 +11,6 @@ import { useTranslation } from 'react-i18next';
 import { parseMarkdown } from '@ndla/util';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
-const NotionContainer = styled.div``;
-
 const ContentWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     display: flex;
@@ -81,7 +79,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
   const { t } = useTranslation();
 
   return (
-    <NotionContainer>
+    <div>
       <ContentWrapper>
         {imageElement}
         {visualElement}
@@ -103,7 +101,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
         <ClearWrapper />
       </ContentWrapper>
       {children}
-    </NotionContainer>
+    </div>
   );
 };
 

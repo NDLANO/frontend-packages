@@ -11,6 +11,7 @@ import React, { useEffect } from 'react';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { useTranslation } from 'react-i18next';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { parseMarkdown } from '@ndla/util';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogLicenses } from '@ndla/notion';
 import { Notion as UINotion } from '.';
 import { NotionImage } from './NotionImage';
@@ -88,7 +89,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
                       {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
                         <NotionVisualElement visualElement={concept.visualElement} id={notionId} figureId={figureId} />
                       ) : undefined}
-                      <NotionDialogText>{concept.text}</NotionDialogText>
+                      <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
                     </NotionDialogContent>
                     <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source={concept.source} />
                   </>
@@ -124,7 +125,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
                         <NotionVisualElement visualElement={concept.visualElement} id={notionId} figureId={figureId} />
                       ) : undefined}
 
-                      <NotionDialogText>{concept.text}</NotionDialogText>
+                      <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
                     </NotionDialogContent>
                     <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source={concept.source} />
                   </>

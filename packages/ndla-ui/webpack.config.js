@@ -18,19 +18,6 @@ module.exports = {
         test: /.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
-      {
-        test: /\.woff(2)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: './font/[hash].[ext]',
-              mimetype: 'application/font-woff',
-            },
-          },
-        ],
-      },
     ],
   },
 

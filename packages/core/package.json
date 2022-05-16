@@ -28,10 +28,6 @@
     "types"
   ],
   "dependencies": {
-    "@fontsource/source-sans-pro": "^4.5.9",
-    "@fontsource/source-code-pro": "^4.5.9",
-    "@fontsource/source-serif-pro": "^4.5.7",
-    "@fontsource/shadows-into-light-two": "^4.5.8",
     "inuitcss": "6.0.0",
     "sass-mq": "^5.0.1"
   },

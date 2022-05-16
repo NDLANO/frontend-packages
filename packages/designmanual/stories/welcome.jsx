@@ -45,7 +45,36 @@ const Welcome = () => (
         <br />
         <code>yarn add @ndla/ui -S</code>
         <h3>Fonter</h3>
-          <p>Fonter hentes automatisk ved importering av css fra <code>@ndla/ui</code> eller <code>@ndla/core</code>.</p>
+        <p>
+          Vi henter fonter ved hjelp av <a href="https://github.com/fontsource/fontsource">Fontsource</a>. Installer
+          fontene du trenger, og importer deretter fontene du trenger i inngangspunktet til appen.{' '}
+        </p>
+        <p>Følgende fonter tas i bruk: </p>
+        <code>import '@fontsource/shadows-into-light-two/index.css';</code>
+        <br />
+        <code>import '@fontsource/source-sans-pro/index.css';</code>
+        <br />
+        <code>import '@fontsource/source-sans-pro/400-italic.css';</code>
+        <br />
+        <code>import '@fontsource/source-sans-pro/300.css';</code>
+        <br />
+        <code>import '@fontsource/source-sans-pro/300-italic.css';</code>
+        <br />
+        <code>import '@fontsource/source-sans-pro/600.css';</code>
+        <br />
+        <code>import '@fontsource/source-sans-pro/700.css';</code>
+        <br />
+        <code>import '@fontsource/source-code-pro/index.css';</code>
+        <br />
+        <code>import '@fontsource/source-code-pro/400-italic.css';</code>
+        <br />
+        <code>import '@fontsource/source-code-pro/700.css';</code>
+        <br />
+        <code>import '@fontsource/source-serif-pro/index.css';</code>
+        <br />
+        <code>import '@fontsource/source-serif-pro/400-italic.css';</code>
+        <br />
+        <code>import '@fontsource/source-serif-pro/700.css';</code>
         <h3>Hente inn stilark</h3>
         <code>@import '^@ndla/ui/lib/all.css';</code>
         <br />

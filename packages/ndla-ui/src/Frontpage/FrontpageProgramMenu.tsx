@@ -36,7 +36,8 @@ const CursorPlaceholder = styled.div`
 `;
 
 const CursorWrapper = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+  font-family: 'Shadows Into Light Two';
+  font-display: swap;
   position: absolute;
   top: -55px;
   left: 38px;

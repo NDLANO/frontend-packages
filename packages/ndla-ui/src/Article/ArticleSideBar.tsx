@@ -24,7 +24,8 @@ type CursorWrapperProps = {
   hide: boolean;
 };
 const CursorWrapper = styled.div<CursorWrapperProps>`
-  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+  font-family: 'Shadows Into Light Two';
+  font-display: swap;
   width: 120px;
   font-family: 'Shadows Into Light Two', cursive;
   margin-top: 40px;

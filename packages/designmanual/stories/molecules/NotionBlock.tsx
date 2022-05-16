@@ -188,7 +188,7 @@ const conceptData = {
     },
     visualElement: {
       title: 'Viper 6-akset robot',
-      resource: 'video',
+      resource: 'brightcove',
       url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
       copyright: {
         license: {
@@ -233,7 +233,7 @@ const conceptData = {
     },
     visualElement: {
       title: 'Viper 6-akset robot',
-      resource: 'video',
+      resource: 'brightcove',
       url: 'https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6268441758001',
       copyright: {
         license: {

@@ -43,9 +43,9 @@ class NotionBlockExample extends Component {
               <h2 className="u-heading">Begrep med forfatter og lisensikoner</h2>
               <NotionBlock type="image" />
               <h2 className="u-heading">Begrep med manglende lisens</h2>
-              <NotionBlock type="image" data="other" />
+              <NotionBlock type="video" data="other" />
               <h2 className="u-heading">Begrep med markdown-innhold</h2>
-              <NotionBlock type="image" data="richtext" />
+              <NotionBlock type="video" data="richtext" />
             </OneColumn>
           }
           onSite={[<NotionSiteTabs></NotionSiteTabs>]}

@@ -57,7 +57,7 @@ $inuit-wrapper-width: 1024px;
 @import 'global/objects/objects.content';
 @import 'global/objects/objects.backdrop';
 
-// @include ShadowsIntoLightTwo.fontFace($fontDir: '~@fontsource/shadows-into-light-two/files');
+// FONTS
 @import '~@fontsource/shadows-into-light-two/index.css';
 @import '~@fontsource/source-sans-pro/index.css';
 @import '~@fontsource/source-sans-pro/400-italic.css';

@@ -48,7 +48,7 @@ const checkClickOutside = (e) => {
   let { target } = e;
   let clickedInside = false;
   while (target.nodeName !== 'BODY' && !clickedInside) {
-    if (target.getAttribute('data-concept-id')) {
+    if (target.getAttribute('data-concept-id') || target.getAttribute('data-dialog-id')) {
       clickedInside = true;
     } else {
       target = target.parentNode;

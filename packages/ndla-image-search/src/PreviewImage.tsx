@@ -7,6 +7,8 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import prettyBytes from 'pretty-bytes';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 //@ts-ignore
@@ -23,10 +25,13 @@ interface Props {
   checkboxLabel?: string;
 }
 const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, checkboxLabel }: Props) => {
+  const { t } = useTranslation();
   const [saveAsMetaImage, setSaveAsMetaImage] = useState(false);
 
   const tags = image.tags.tags ?? [];
   const title = image.title.title ?? '';
+  const altText = image.alttext.alttext ?? '';
+  const caption = image.caption.caption ?? '';
   return (
     <div className="image-preview">
       <div className="image">
@@ -46,13 +51,27 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
             <span className="text right">{image.copyright.creators.map((creator) => creator.name).join(', ')}</span>
           </div>
         ) : null}
-        <div className="license">
+        <div className="info">
+          <span className="text right">{`${t('image.caption')}: ${caption}`}</span>
+        </div>
+        <div className="info">
+          <span className="text right">{`${t('image.altText')}: ${altText}`}</span>
+        </div>
+        <div className="info">
           <span className="text right">{image.copyright.license.description}</span>
         </div>
         <div className="tags">
           {tags.map((tag) => (
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>
           ))}
+        </div>
+        <div className="info">
+          <span className="text right">{`${t('image.modelReleased.label')}: ${t(
+            'image.modelReleased.' + image.modelRelease,
+          )}`}</span>
+        </div>
+        <div className="info">
+          <span className="text right">{`${image.contentType} (${prettyBytes(image.size)})`}</span>
         </div>
         <Button data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}

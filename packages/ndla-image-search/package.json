@@ -31,7 +31,9 @@
     "@ndla/forms": "^2.0.0",
     "@ndla/icons": "^1.7.0",
     "@ndla/pager": "^1.1.7",
-    "@ndla/util": "^3.0.0"
+    "@ndla/ui": "^11.0.0",
+    "@ndla/util": "^3.0.0",
+    "pretty-bytes": "^6.0.0"
   },
   "devDependencies": {
     "@ndla/types-image-api": "^0.0.4"

@@ -6,112 +6,57 @@
  *
  */
 
-import React, { ButtonHTMLAttributes, ReactElement } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { misc } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
-import { colors } from '@ndla/core';
+import { spacingUnit } from '@ndla/core';
+import { Button, ButtonSize, ButtonProps } from './Button';
 
-export type IconSize = 'small' | 'medium' | 'large';
-export type IconColor = 'primary' | 'secondary' | 'tertiary';
-export type IconHoverFill = 'primary' | 'secondary' | 'tertiary';
-export type IconType = 'favorite' | 'primary';
-
-export const Theme = {
-  heartIcon: {
-    fill: colors.brand.primary,
-    backgroundColor: 'transparent',
-    hover: colors.brand.primary,
-    heightWidthSize: '1.5em',
-  },
-  primaryIcon: {
-    colors: 'red',
-  },
+export interface IconButtonProps extends ButtonProps {
+  ['aria-label']: string;
 };
 
-export const StyledButton = styled.button<Props>`
-  size: ${(props) => {
-    if (props.size === 'small') {
-      return '1.5em';
-    }
+interface StyledButtonProps extends ButtonProps {
+  svgSize: number;
+};
 
-    if (props.size === 'medium') {
-      return '1.5em';
-    }
-  }};
-  color: ${(props) => {
-    if (props.svg?.fill === 'primary') {
-      return colors.brand.primary;
-    }
-  }};
-  ${(props) =>
-    props.iconType === 'favorite' &&
-    css`
-      font-size: size;
-
-      svg {
-        height: size;
-        width: size;
-        fill: colors;
-      }
-    `}
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: ${(p: Props) => p.button?.borderRadius};
-  transition: ${misc.transition.default};
-  &:hover,
-  &:focus {
-    background-color: ${(p: Props) => p.button?.hoverBackground};
-    color: ${(p: Props) => p.button?.hoverColor};
-    box-shadow: none;
-  }
-
+const StyledButton = styled(Button)<StyledButtonProps>`
+  border-radius: 100%;
+  padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.5 : 0.25)}px;
+  line-height: 1;
+  border-color: transparent;
   svg {
-    stroke-width: ${(p: Props) => p.svg?.strokeWidth};
-
-    &:hover,
-    &:focus {
-      fill: ${(p: Props) => p.svg?.hoverFill};
-      box-shadow: none;
-    }
+    width: ${({ svgSize }) => svgSize}px;
+    height: ${({ svgSize }) => svgSize}px;
+    margin: 0;
+  }
+  &:active {
+    transform: translate(0, 1px) scale(0.98);
   }
 `;
 
-type SvgProps = {
-  fill?: string;
-  stroke?: string;
-  strokeWidth?: string;
-  hoverFill?: string;
-};
-
-type ButtonProps = {
-  color?: string;
-  backgroundColor?: string;
-  border?: string;
-  borderRadius?: string;
-  hoverColor?: string;
-  hoverBackground?: string;
-};
-
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactElement;
-  onClick?: React.MouseEventHandler;
-  button?: ButtonProps;
-  svg?: SvgProps;
-  toolTip?: string;
-  size?: IconSize;
-  iconType?: IconType;
+const convertSizeForSVG = (size: ButtonSize) => {
+  if (size === 'xsmall') {
+    return spacingUnit * 0.75;
+  }
+  if (size === 'small') {
+    return spacingUnit * 1;
+  }
+  if (size === 'normal') {
+    return spacingUnit * 1.25;
+  }
+  if (size === 'medium') {
+    return spacingUnit * 2;
+  }
+  if (size === 'large') {
+    return spacingUnit * 2.5;
+  }
+  return spacingUnit;
 }
 
-export const IconButton = ({ children, onClick, svg, button, toolTip, size, ...rest }: Props) => (
-  <Tooltip tooltip={toolTip}>
-    <StyledButton onClick={onClick} svg={svg} button={button} size={size}>
-      {children}
-    </StyledButton>
-  </Tooltip>
+export const IconButton = ({ children, size, ...rest }: IconButtonProps) => (
+  <StyledButton svgSize={convertSizeForSVG(size || 'normal')} {...rest}>
+    <span aria-hidden="true">{children}</span>
+  </StyledButton>
 );
 
 export default IconButton;

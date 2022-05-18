@@ -1,8 +1,10 @@
 import React from 'react';
-import Button, { MultiButton, StyledButton } from '@ndla/button';
+import Button, { MultiButton, StyledButton, IconButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
-import { ChevronDown } from '@ndla/icons/common';
-import { CloseButton, IconButton } from '@ndla/button';
+import { ChevronDown, Wrench } from '@ndla/icons/common';
+import { Heart, Pencil, Print } from '@ndla/icons/action';
+import { Star } from '@ndla/icons/editor';
+import { CloseButton } from '@ndla/button';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
@@ -206,7 +208,7 @@ const ButtonExample = () => {
             Medium knapp
           </Button>{' '}
           <Button borderShape="rounded" light size="large" onClick={action('clicked')}>
-            Stor Knapp
+            Stor knapp
           </Button>
         </InlineContainer>
         <InlineContainer>
@@ -464,9 +466,125 @@ const ButtonExample = () => {
         <InlineContainer>
           <CloseButton />
         </InlineContainer>
-        <h2 className="u-heading">Legg i favoritter knapp</h2>
+        <h2 className="u-heading">Ikon knapper</h2>
         <InlineContainer>
-          <IconButton aria-label="hello" />
+          <IconButton size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <IconButton outline size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Heart />
+          </IconButton>{' '}
+          <IconButton outline size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Heart />
+          </IconButton>{' '}
+          <IconButton outline size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Heart />
+          </IconButton>{' '}
+          <IconButton outline size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Heart />
+          </IconButton>{' '}
+          <IconButton outline size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Heart />
+          </IconButton>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <IconButton light size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton light size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton light size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton light size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+          <IconButton light size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <ChevronDown />
+          </IconButton>{' '}
+        </InlineContainer>
+        <InlineContainer>
+          <IconButton lighter size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Wrench />
+          </IconButton>{' '}
+          <IconButton lighter size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Wrench />
+          </IconButton>{' '}
+          <IconButton lighter size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Wrench />
+          </IconButton>{' '}
+          <IconButton lighter size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Wrench />
+          </IconButton>{' '}
+          <IconButton lighter size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Wrench />
+          </IconButton>{' '}
+        </InlineContainer>
+         <InlineContainer>
+          <IconButton greyLighter size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Star />
+          </IconButton>{' '}
+          <IconButton greyLighter size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Star />
+          </IconButton>{' '}
+          <IconButton greyLighter size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Star />
+          </IconButton>{' '}
+          <IconButton greyLighter size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Star />
+          </IconButton>{' '}
+          <IconButton greyLighter size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Star />
+          </IconButton>{' '}
+        </InlineContainer>
+         <InlineContainer>
+          <IconButton greyLightest size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Pencil />
+          </IconButton>{' '}
+          <IconButton greyLightest size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Pencil />
+          </IconButton>{' '}
+          <IconButton greyLightest size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Pencil />
+          </IconButton>{' '}
+          <IconButton greyLightest size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Pencil />
+          </IconButton>{' '}
+          <IconButton greyLightest size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Pencil />
+          </IconButton>{' '}
+        </InlineContainer>
+         <InlineContainer>
+          <IconButton ghostPill size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Print />
+          </IconButton>{' '}
+          <IconButton ghostPill size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Print />
+          </IconButton>{' '}
+          <IconButton ghostPill size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Print />
+          </IconButton>{' '}
+          <IconButton ghostPill size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Print />
+          </IconButton>{' '}
+          <IconButton ghostPill size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
+            <Print />
+          </IconButton>{' '}
         </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">

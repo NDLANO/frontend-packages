@@ -11,5 +11,6 @@ export { default as CopyButton } from './CopyButton';
 export { default as MultiButton } from './MultiButton';
 export { default as CloseButton } from './CloseButton';
 export { default as IconButton } from './IconButton';
+export { default as IconButtonDualStates } from './IconButtonDualStates';
 
 export type { ButtonAppearance, ButtonBorder, ButtonSize, ButtonTextAlign, ButtonWidth, ButtonProps } from './Button';

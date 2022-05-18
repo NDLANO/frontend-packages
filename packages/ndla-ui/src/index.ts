@@ -221,4 +221,7 @@ export { Notion, ConceptNotion } from './Notion';
 
 export { BannerCard } from './BannerCard';
 
-export { ResourcesView, ResourceElement, Breadcrumbs, MyNdlaFavoritesDialog } from './MyNdla';
+export { ResourcesView, ResourceElement, Breadcrumbs } from './MyNdla';
+
+export type { TagProp } from './TagSelector';
+export { TagSelector } from './TagSelector';

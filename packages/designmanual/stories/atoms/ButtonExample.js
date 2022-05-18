@@ -535,7 +535,7 @@ const ButtonExample = () => {
             <Wrench />
           </IconButton>{' '}
         </InlineContainer>
-         <InlineContainer>
+        <InlineContainer>
           <IconButton greyLighter size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
             <Star />
           </IconButton>{' '}
@@ -552,7 +552,7 @@ const ButtonExample = () => {
             <Star />
           </IconButton>{' '}
         </InlineContainer>
-         <InlineContainer>
+        <InlineContainer>
           <IconButton greyLightest size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
             <Pencil />
           </IconButton>{' '}
@@ -569,7 +569,7 @@ const ButtonExample = () => {
             <Pencil />
           </IconButton>{' '}
         </InlineContainer>
-         <InlineContainer>
+        <InlineContainer>
           <IconButton ghostPill size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
             <Print />
           </IconButton>{' '}

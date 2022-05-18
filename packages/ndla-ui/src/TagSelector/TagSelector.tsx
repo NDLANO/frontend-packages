@@ -9,7 +9,7 @@ import { Input } from '@ndla/forms';
 export interface TagProp {
   name: string;
   id: string;
-};
+}
 
 interface Props {
   tags: TagProp[];
@@ -22,7 +22,7 @@ const TagsContainer = styled.div`
   max-height: 16rem;
   overflow-y: scroll;
   display: flex;
-  gap: ${spacing.xsmall}
+  gap: ${spacing.xsmall};
 `;
 
 const TagSelector = ({ tags, tagsSelected, onCreateTag, onTagsUpdate }: Props) => {
@@ -34,8 +34,8 @@ const TagSelector = ({ tags, tagsSelected, onCreateTag, onTagsUpdate }: Props) =
         placeholder="legg til"
         onChange={(e: KeyboardEvent) => {
           const target = e.target as HTMLInputElement;
-          setInputValue(target.value)}
-        }
+          setInputValue(target.value);
+        }}
         onKeyDown={(e: KeyboardEvent) => {
           if (e.key === 'Enter') {
             e.preventDefault();
@@ -54,22 +54,27 @@ const TagSelector = ({ tags, tagsSelected, onCreateTag, onTagsUpdate }: Props) =
         size="small"
         onClick={() => setShowAllTags(!showAllTags)}
       />
-      {showAllTags && <TagsContainer>
-        {tags.map(({ name, id }) => {
-          const tagIsSelected = tagsSelected.some((idSelected) => id === idSelected);
-          return (
-            <Button
-              onClick={() => onTagsUpdate(tagIsSelected ? tagsSelected.filter((idSelected) => id !== idSelected) : [...tagsSelected, id])}
-              lighter={!tagIsSelected}
-              borderShape='rounded'
-              key={id}
-              size="xsmall"
-            >
-              # {name}
-            </Button>
-          );
-        })}
-      </TagsContainer>}
+      {showAllTags && (
+        <TagsContainer>
+          {tags.map(({ name, id }) => {
+            const tagIsSelected = tagsSelected.some((idSelected) => id === idSelected);
+            return (
+              <Button
+                onClick={() =>
+                  onTagsUpdate(
+                    tagIsSelected ? tagsSelected.filter((idSelected) => id !== idSelected) : [...tagsSelected, id],
+                  )
+                }
+                lighter={!tagIsSelected}
+                borderShape="rounded"
+                key={id}
+                size="xsmall">
+                # {name}
+              </Button>
+            );
+          })}
+        </TagsContainer>
+      )}
     </div>
   );
 };

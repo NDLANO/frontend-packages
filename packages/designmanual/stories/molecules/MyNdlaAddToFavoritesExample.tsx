@@ -38,7 +38,11 @@ type Props = {
 
 const DialogExample = ({ isOpen, title, toggleIsFavorite, closeCallback }: Props) => {
   const { t } = useTranslation();
-  const [tags, setTags] = useState<TagProp[]>([{ name: 'tag1', id: '1' }, { name: 'tag2', id: '2' }, { name: 'tag3', id: '3' }]);
+  const [tags, setTags] = useState<TagProp[]>([
+    { name: 'tag1', id: '1' },
+    { name: 'tag2', id: '2' },
+    { name: 'tag3', id: '3' },
+  ]);
   const [tagsSelected, setTagsSelected] = useState<string[]>([]);
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
@@ -65,10 +69,11 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, closeCallback }: Props
               <Button outline onClick={onCloseModal}>
                 Avbryt
               </Button>
-              <Button onClick={() => {
-                toggleIsFavorite();
-                onCloseModal();
-              }}>
+              <Button
+                onClick={() => {
+                  toggleIsFavorite();
+                  onCloseModal();
+                }}>
                 Lagre
               </Button>
             </DialogFooter>
@@ -78,7 +83,6 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, closeCallback }: Props
     </Modal>
   );
 };
-
 
 const MyNdlaAddToFavoritesExample = () => {
   const [isOpen, setIsOpen] = useState(false);

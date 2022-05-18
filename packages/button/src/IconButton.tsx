@@ -13,11 +13,11 @@ import { Button, ButtonSize, ButtonProps } from './Button';
 
 export interface IconButtonProps extends ButtonProps {
   ['aria-label']: string;
-};
+}
 
 interface StyledButtonProps extends ButtonProps {
   svgSize: number;
-};
+}
 
 const StyledButton = styled(Button)<StyledButtonProps>`
   border-radius: 100%;
@@ -51,7 +51,7 @@ const convertSizeForSVG = (size: ButtonSize) => {
     return spacingUnit * 2.5;
   }
   return spacingUnit;
-}
+};
 
 export const IconButton = ({ children, size, ...rest }: IconButtonProps) => (
   <StyledButton svgSize={convertSizeForSVG(size || 'normal')} {...rest}>

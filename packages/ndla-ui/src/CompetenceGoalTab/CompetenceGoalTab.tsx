@@ -68,7 +68,8 @@ const HighlightWrapper = styled.div`
 `;
 
 const HighlightText = styled.span`
-  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+  font-family: 'Shadows Into Light Two';
+  font-display: swap;
   display: inline-block;
   color: ${colors.text.light};
   transform: rotate(14deg);

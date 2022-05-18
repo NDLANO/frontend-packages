@@ -10,7 +10,8 @@ type CursorStyleProps = {
 };
 
 const Wrapper = styled.div<CursorStyleProps>`
-  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+  font-family: 'Shadows Into Light Two';
+  font-display: swap;
   position: absolute;
   top: -5px;
   max-width: 155px;

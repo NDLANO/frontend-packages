@@ -49,25 +49,25 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
         <h2 className="title">{title}</h2>
         {image.copyright.creators && image.copyright.creators.length > 0 ? (
           <div className="copyright-author">
-            <span className="text right">{image.copyright.creators.map((creator) => creator.name).join(', ')}</span>
+            <span className="text">{image.copyright.creators.map((creator) => creator.name).join(', ')}</span>
           </div>
         ) : null}
         <div className="info">
-          <span className="text right">{`${t('image.caption')}: ${caption}`}</span>
+          <span className="text">{image.copyright.license.description}</span>
         </div>
         <div className="info">
-          <span className="text right">{`${t('image.altText')}: ${altText}`}</span>
+          <span className="text">{`${t('image.caption')}: ${caption}`}</span>
         </div>
         <div className="info">
-          <span className="text right">{image.copyright.license.description}</span>
+          <span className="text">{`${t('image.altText')}: ${altText}`}</span>
         </div>
         <div className="info">
-          <span className="text right">{`${t('image.modelReleased.label')}: ${t(
+          <span className="text">{`${t('image.modelReleased.label')}: ${t(
             'image.modelReleased.' + image.modelRelease,
           )}`}</span>
         </div>
         <div className="info">
-          <span className="tex--right">{`${image.contentType} - ${prettyBytes(image.size)} - ${height}x${width} px`}</span>
+          <span className="text">{`${image.contentType} - ${prettyBytes(image.size)} - ${height}x${width} px`}</span>
         </div>
         <div className="tags">
           {tags.map((tag) => (

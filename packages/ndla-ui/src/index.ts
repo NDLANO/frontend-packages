@@ -221,4 +221,4 @@ export { Notion, ConceptNotion } from './Notion';
 
 export { BannerCard } from './BannerCard';
 
-export { ResourcesView, ResourceElement, Breadcrumbs } from './MyNdla';
+export { ResourcesView, ResourceElement, Breadcrumbs, FolderElement } from './MyNdla';

@@ -6,8 +6,24 @@
  *
  */
 import React from 'react';
-import { ResourcesView } from '@ndla/ui';
+import { ResourcesView, ResourceElement, FolderElement } from '@ndla/ui';
 
-export const MyNdla = () => <ResourcesView />;
+const layout = 'block';
+export const MyNdla = () => (
+  <ResourcesView layout={layout}>
+    <ResourceElement
+      layout={layout}
+      title="My Resource"
+      topics={['Oppgave', 'Video', 'Interaktiv']}
+      tags={['tag', 'tag', 'tag']}
+      resourceImage={{
+        alt: 'alt',
+        src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+      }}
+      link=""
+    />
+    <FolderElement layout={layout} title="My folder" subFolders={3} subResources={3} link="" />
+  </ResourcesView>
+);
 
 export default MyNdla;

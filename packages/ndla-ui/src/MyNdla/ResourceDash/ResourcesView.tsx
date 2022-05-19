@@ -7,39 +7,31 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactElement } from 'react';
+import { css } from '@emotion/core';
 import ResourceElement from './ResourceElement';
-import FolderElement from './Folderelement';
+import FolderElement from './FolderElement';
 import DashOptions from './DashOptions';
-const ResourcesWrapper = styled.div``;
+const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
+  ${(props) =>
+    props.layout === 'block' &&
+    css`
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    `}
+`;
 
-export const ResourcesView = () => {
+export interface ViewProps {
+  children?: ReactElement[];
+  layout: LayoutProps;
+}
+type LayoutProps = 'list' | 'listLarger' | 'block';
+
+export const ResourcesView = ({ layout, children }: ViewProps) => {
   return (
     <>
       <DashOptions></DashOptions>
-      <ResourcesWrapper>
-        <FolderElement title="My folder" subFolders={3} subResources={3} link="" />
-        <ResourceElement
-          title="My Resource"
-          topic="Oppgave"
-          tags={['tag', 'tag', 'tag']}
-          resourceImage={{
-            alt: 'alt',
-            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
-          }}
-          link=""
-        />
-        <ResourceElement
-          title="My Resource"
-          topic="Oppgave"
-          tags={['tag', 'tag', 'tag']}
-          resourceImage={{
-            alt: 'alt',
-            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
-          }}
-          link=""
-        />
-      </ResourcesWrapper>
+      <ResourcesWrapper layout={layout}>{children}</ResourcesWrapper>
     </>
   );
 };

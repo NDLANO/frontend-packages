@@ -9,5 +9,6 @@
 import Breadcrumbs from './Breadcrumbs';
 import ResourceElement from './ResourceElement';
 import ResourcesView from './ResourcesView';
+import FolderElement from './FolderElement';
 
-export { ResourcesView, ResourceElement, Breadcrumbs };
+export { ResourcesView, ResourceElement, Breadcrumbs, FolderElement };

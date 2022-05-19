@@ -10,27 +10,38 @@ import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import SafeLink from '@ndla/safelink';
+import { mq, breakpoints } from '@ndla/core';
+import { css } from '@emotion/core';
 import { fonts, spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import Image from '../../Image';
 
-const ResourceTitle = styled.h2`
+const ResourceTitle = styled.h2<{ layout: LayoutProps }>`
   height: 100%;
   display: flex;
   flex-direction: column;
   font-size: ${fonts.sizes('18')};
-  font-weight: 400;
+  font-weight: 700;
   justify-content: center;
   margin: 0;
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      height: auto;
+    `}
 `;
 
-const ResourceElementWrapper = styled(SafeLink)`
+const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      min-height: 129px;
+    `}
   display: flex;
   align-items: center;
   padding: 0.5rem;
   border: 1px solid rgba(209, 214, 219, 1);
   border-radius: 2px;
-  height: 64px;
   margin-top: 8px;
   margin-bottom: 8px;
   font-family: ${fonts.sans};
@@ -53,23 +64,54 @@ const ResourceElementWrapper = styled(SafeLink)`
   &active {
     text-decoration: none;
   }
-`;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    min-height: 80px;
+    flex-direction: row;
+  }
 
-const ResourceTopic = styled.p`
+  height: 64px;
+`;
+const ResourceTopic = styled.ul`
   display: flex;
   margin: 0;
   font-size: ${fonts.sizes('12')};
   margin-top: -5px;
+  list-style: none;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    padding: 0;
+  }
+  li {
+    margin-right: ${spacing.xsmall};
+    margin-bottom: 0;
+  }
 `;
+const ResourceTopicText = styled.p`
+  display: flex;
+  margin: 0;
+  font-size: ${fonts.sizes('16')};
+`;
+
 const ResourceInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: ${spacing.medium};
   margin-left: ${spacing.small};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    min-width: 56px;
+    justify-content: center;
+  }
 `;
-const ResourceImageWrapper = styled.div`
-  height: 40px;
+const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
   width: 56px;
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      min-width: 136px;
+    `}
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    min-width: 56px;
+    height: 100%;
+  }
 `;
 const ResourceImage = styled(Image)`
   border-radius: 2px;
@@ -79,6 +121,10 @@ const ResourceLeftSide = styled.div`
   display: flex;
   flex-direction: row;
   width: 30%;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100%;
+    height: 50%;
+  }
 `;
 const ResourceRightSide = styled.div`
   height: 100%;
@@ -86,13 +132,52 @@ const ResourceRightSide = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   width: 70%;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100%;
+  }
 `;
-const TagsList = styled.div`
+const Halfwrapper = styled.div<{ layout: LayoutProps }>`
+  width: 100%;
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      margin-top: ${spacing.xxsmall};
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    `}
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin-top: 0;
+    margin-top: ${spacing.xxsmall};
+  }
+`;
+
+const Tophalf = styled.div<{ layout: LayoutProps }>`
+  display: flex;
+  flex-direction: row;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+  }
+`;
+
+const Bottomhalf = styled.div`
+  margin-left: ${spacing.small};
+  margin-right: ${spacing.small};
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const TagsList = styled.div<{ layout: LayoutProps }>`
   height: 100%;
   display: flex;
   list-style: none;
   margin-right: ${spacing.medium};
   display: flex;
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      align-items: flex-start;
+    `}
 
   li {
     display: flex;
@@ -103,51 +188,87 @@ const TagsList = styled.div`
     color: ${colors.brand.grey};
     font-size: ${fonts.sizes(14)};
   }
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin-right: ${spacing.small};
+  }
 `;
 
-const MoreIcon = styled(HorizontalMenu)`
+const MoreIcon = styled(HorizontalMenu)<{ layout: LayoutProps }>`
   height: 100%;
   margin-right: ${spacing.small};
   fill: ${colors.brand.tertiary};
   transform: scale(1.5);
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin-right: ${spacing.xsmall};
+    margin-top: ${spacing.xsmall};
+  }
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      height: 30%;
+    `}
 `;
 
 type ResourceImageProps = {
   alt: string;
   src: string;
 };
-type ResourceElementProps = {
+interface ResourceElementProps {
   link: string;
   title: string;
   resourceImage: ResourceImageProps;
-  topic: string;
+  topics: string[];
   tags?: string[];
   description?: string;
   children?: ReactElement;
-};
+  layout: LayoutProps;
+}
+type LayoutProps = 'list' | 'listLarger' | 'block';
 
-const ResourceElement = ({ link, title, tags, children, resourceImage, topic }: ResourceElementProps) => {
+const ResourceElement = ({ link, title, tags, children, resourceImage, topics, layout }: ResourceElementProps) => {
   const { t } = useTranslation();
   return (
-    <ResourceElementWrapper to={link}>
-      <ResourceLeftSide>
-        <ResourceImageWrapper>
-          <ResourceImage alt={resourceImage.alt} src={resourceImage.src} />
-        </ResourceImageWrapper>
-        <ResourceInfoWrapper>
-          <ResourceTitle>{title}</ResourceTitle>
-          <ResourceTopic>{topic}</ResourceTopic>
-        </ResourceInfoWrapper>
-        {children}
-      </ResourceLeftSide>
-      <ResourceRightSide>
-        <TagsList>
-          {tags?.map((tag) => (
-            <li> #{tag}</li>
-          ))}
-        </TagsList>
-        <MoreIcon aria-label={t('myNdla.more')} />
-      </ResourceRightSide>
+    <ResourceElementWrapper to={link} layout={layout}>
+      <ResourceImageWrapper layout={layout}>
+        <ResourceImage alt={resourceImage.alt} src={resourceImage.src} />
+      </ResourceImageWrapper>
+
+      <Halfwrapper layout={layout}>
+        <Tophalf layout={layout}>
+          <ResourceLeftSide>
+            <ResourceInfoWrapper>
+              <ResourceTitle layout={layout}>{title}</ResourceTitle>
+              <ResourceTopic>
+                {' '}
+                {topics?.map((topic) => (
+                  <>
+                    <li> {topic}</li>
+                    <span></span>
+                  </>
+                ))}
+              </ResourceTopic>
+            </ResourceInfoWrapper>
+            {children}
+          </ResourceLeftSide>
+          <ResourceRightSide>
+            <TagsList layout={layout}>
+              {tags?.map((tag) => (
+                <li> #{tag}</li>
+              ))}
+            </TagsList>
+            <MoreIcon layout={layout} aria-label={t('myNdla.more')} />
+          </ResourceRightSide>
+        </Tophalf>
+        <Bottomhalf>
+          {layout === 'listLarger' && (
+            <ResourceTopicText>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to mak
+            </ResourceTopicText>
+          )}
+        </Bottomhalf>
+      </Halfwrapper>
     </ResourceElementWrapper>
   );
 };

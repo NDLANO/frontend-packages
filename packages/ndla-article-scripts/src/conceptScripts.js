@@ -19,13 +19,15 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
       const iframe = popup.querySelector('iframe');
-      const src = iframe.src;
-      if (src.match(/brightcove|youtube|youtu.be/g)) {
-        resetIframeElement(iframe);
-      }
-      if (returnFocusToParent) {
-        const openBtn = item.querySelector('[data-notion-link]');
-        openBtn.focus();
+      if (iframe) {
+        const src = iframe.src;
+        if (src.match(/brightcove|youtube|youtu.be/g)) {
+          resetIframeElement(iframe);
+        }
+        if (returnFocusToParent) {
+          const openBtn = item.querySelector('[data-notion-link]');
+          openBtn.focus();
+        }
       }
     }
   });

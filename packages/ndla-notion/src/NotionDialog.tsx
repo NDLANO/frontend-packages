@@ -167,8 +167,8 @@ export const NotionDialogStyledWrapper = styled.div`
     margin-left: -250px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    width: 880px;
-    margin-left: -440px;
+    width: 720px;
+    margin-left: -360px;
     left: 50%;
   }
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);

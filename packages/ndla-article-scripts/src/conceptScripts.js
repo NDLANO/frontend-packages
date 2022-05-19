@@ -24,10 +24,10 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
         if (src.match(/brightcove|youtube|youtu.be/g)) {
           resetIframeElement(iframe);
         }
-        if (returnFocusToParent) {
-          const openBtn = item.querySelector('[data-notion-link]');
-          openBtn.focus();
-        }
+      }
+      if (returnFocusToParent) {
+        const openBtn = item.querySelector('[data-notion-link]');
+        openBtn.focus();
       }
     }
   });

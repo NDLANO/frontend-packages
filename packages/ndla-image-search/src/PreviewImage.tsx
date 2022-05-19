@@ -61,18 +61,18 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
         <div className="info">
           <span className="text right">{image.copyright.license.description}</span>
         </div>
-        <div className="tags">
-          {tags.map((tag) => (
-            <span key={uuid()} className="tag_item">{`#${tag}`}</span>
-          ))}
-        </div>
         <div className="info">
           <span className="text right">{`${t('image.modelReleased.label')}: ${t(
             'image.modelReleased.' + image.modelRelease,
           )}`}</span>
         </div>
         <div className="info">
-          <span className="text right">{`${image.contentType} (${prettyBytes(image.size)}) ${height}/${width}`}</span>
+          <span className="tex--right">{`${image.contentType} - ${prettyBytes(image.size)} - ${height}x${width} px`}</span>
+        </div>
+        <div className="tags">
+          {tags.map((tag) => (
+            <span key={uuid()} className="tag_item">{`#${tag}`}</span>
+          ))}
         </div>
         <Button data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}

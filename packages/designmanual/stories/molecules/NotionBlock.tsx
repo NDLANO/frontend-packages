@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { ConceptNotion } from '@ndla/ui';
+import { FigureType } from '@ndla/ui/src/Figure';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
@@ -263,9 +264,10 @@ type Props = {
   type: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
   hideIconsAndAuthors?: boolean;
   data?: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | 'other' | 'richtext';
+  figureType?: FigureType;
 };
 
-const NotionBlock = ({ type, hideIconsAndAuthors, data }: Props) => {
+const NotionBlock = ({ type, hideIconsAndAuthors, data, figureType }: Props) => {
   const id = useRunOnlyOnce(uuid(), () => {
     initArticleScripts();
   });
@@ -275,6 +277,7 @@ const NotionBlock = ({ type, hideIconsAndAuthors, data }: Props) => {
       disableScripts
       hideIconsAndAuthors={hideIconsAndAuthors}
       type={type}
+      figureType={figureType}
       concept={{ ...conceptData[getType(data || type)], id }}
     />
   );

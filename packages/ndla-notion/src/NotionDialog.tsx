@@ -162,12 +162,12 @@ export const NotionDialogStyledWrapper = styled.div`
     z-index: 9999;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    max-width: 500px;
+    width: 500px;
     left: 50%;
     margin-left: -250px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    max-width: 880px;
+    width: 880px;
     margin-left: -440px;
     left: 50%;
   }

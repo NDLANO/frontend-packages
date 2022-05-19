@@ -99,9 +99,9 @@ export const addShowConceptDefinitionClickListeners = () => {
         const popupHeight = popup.offsetHeight;
         let offset = 0;
 
-        // checks if it is part of a notionblock
         const plainId = id.split('-')[1];
         const conceptNotionIdentifier = openBtn.closest(`#visual-element-${plainId}`);
+        // checks if it is part of a notionblock
         if (conceptNotionIdentifier?.contains(openBtn)) {
           // Positions the popup so that it does not expand the page
           if (popupTop + popupHeight > documentHeight) {

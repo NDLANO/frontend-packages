@@ -32,6 +32,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
   const title = image.title.title ?? '';
   const altText = image.alttext.alttext ?? '';
   const caption = image.caption.caption ?? '';
+  const { width = 0, height = 0 } = image.imageDimensions || {};
   return (
     <div className="image-preview">
       <div className="image">
@@ -71,7 +72,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
           )}`}</span>
         </div>
         <div className="info">
-          <span className="text right">{`${image.contentType} (${prettyBytes(image.size)})`}</span>
+          <span className="text right">{`${image.contentType} (${prettyBytes(image.size)}) ${height}/${width}`}</span>
         </div>
         <Button data-cy="use-image" onClick={() => onSelectImage(image, saveAsMetaImage)}>
           {useImageTitle}

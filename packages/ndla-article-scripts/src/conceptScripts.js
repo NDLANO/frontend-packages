@@ -129,7 +129,7 @@ export const addShowConceptDefinitionClickListeners = () => {
           }
         }
 
-        if (inIframe() && window.parent) {
+        if (!conceptNotionIdentifier && inIframe() && window.parent) {
           window.parent.postMessage(
             {
               event: 'scrollTo',

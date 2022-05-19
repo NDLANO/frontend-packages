@@ -137,16 +137,16 @@ export const addShowConceptDefinitionClickListeners = () => {
             },
             '*',
           );
-
-          popup.querySelectorAll('iframe').forEach((iframe) => {
-            initOpenedIframe(iframe);
-          });
         } else {
           jump(popup, {
             duration: 300,
             offset,
           });
         }
+        popup.querySelectorAll('iframe').forEach((iframe) => {
+          initOpenedIframe(iframe);
+        });
+
         window.addEventListener('keyup', ESCKeyListener, true);
         window.addEventListener('mousedown', checkClickOutside, true);
         closeBtn.focus();

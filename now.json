@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "packages/designmanual/storybook-static/**",
-      "use": "@now/static"
+      "use": "@vercel/static"
     }
   ],
   "routes": [

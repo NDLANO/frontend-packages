@@ -24,7 +24,7 @@ const {
   GITHUB_SERVER_URL,
   GITHUB_SHA,
 } = process.env;
-const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
+const { VERCEL_TOKEN: vercelToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
 const ghRepo = client.repo(GITHUB_REPOSITORY);
 const providedArgs = process.argv.slice(2);
@@ -62,7 +62,7 @@ function safeify(s, safed = []) {
   }
   safed.push(s);
   if (typeof s === 'string') {
-    return s.split(nowToken).join('NOW_TOKEN').split(githubToken).join('GITHUB_TOKEN');
+    return s.split(vercelToken).join('VERCEL_TOKEN').split(githubToken).join('GITHUB_TOKEN');
   }
   if (typeof s === 'object' && s !== null) {
     return Object.keys(s).reduce((acc, k) => {
@@ -93,7 +93,7 @@ function onError(sha, err) {
   safeError(err);
   updateStatus(sha, {
     state: 'error',
-    description: `▲ Now deployment failed. See github-actions logs for details.`,
+    description: `▲ Vercel deployment failed. See github-actions logs for details.`,
   });
 }
 
@@ -107,10 +107,10 @@ function getAliasUrl() {
 
 async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
-  const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
-  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
+  const cliArgs = ['alias', '--token', vercelToken, deployUrl, newUrl];
+  safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
   try {
-    await spawn('now', cliArgs);
+    await spawn('vercel', cliArgs);
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -119,10 +119,10 @@ async function spawnAlias(sha, deployUrl) {
 }
 
 async function spawnDeploy(sha) {
-  const cliArgs = ['--token', nowToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
-  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
+  const cliArgs = ['--token', vercelToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
+  safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
   try {
-    const result = await spawn('now', cliArgs);
+    const result = await spawn('vercel', cliArgs);
     return result.toString();
   } catch (error) {
     onError(sha, error);
@@ -132,7 +132,7 @@ async function spawnDeploy(sha) {
 
 async function deploy(sha) {
   if (isFork()) {
-    console.log(`▲ Now deployment is skipped for forks...`);
+    console.log(`▲ Vercel deployment is skipped for forks...`);
     return;
   }
 
@@ -140,15 +140,15 @@ async function deploy(sha) {
     throw new Error('Missing required environment variable GH_TOKEN');
   }
 
-  if (!nowToken) {
-    throw new Error('Missing required environment variable NOW_TOKEN');
+  if (!vercelToken) {
+    throw new Error('Missing required environment variable VERCEL_TOKEN');
   }
   let targetUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'pending',
-    description: `▲ Now deployment starting`,
+    description: `▲ Vercel deployment starting`,
   });
 
   console.log(`🤠 Alrighty, deploy starting.`);
@@ -161,7 +161,7 @@ async function deploy(sha) {
   updateStatus(sha, {
     target_url: `${targetUrl}`,
     state: 'pending',
-    description: `▲ Aliasing now deployment...`,
+    description: `▲ Aliasing vercel deployment...`,
   });
 
   targetUrl = await spawnAlias(sha, targetUrl);
@@ -171,7 +171,7 @@ async function deploy(sha) {
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'success',
-    description: `▲ Now deployment complete`,
+    description: `▲ Vercel deployment complete`,
   });
 
   console.log('🏁 All done!');
@@ -191,6 +191,6 @@ switch (GITHUB_EVENT_NAME) {
     break;
   }
   default: {
-    console.log(`${GITHUB_EVENT_NAME} is not supported by now-github`);
+    console.log(`${GITHUB_EVENT_NAME} is not supported by vercel-github`);
   }
 }

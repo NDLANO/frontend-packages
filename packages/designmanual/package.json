@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "designmanual",
-  "version": "2.1.55",
+  "version": "2.1.56",
   "description": "Storybook for NDLA ui component library.",
   "license": "GPL-3.0",
   "main": "lib/index.js",

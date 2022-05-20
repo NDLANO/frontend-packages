@@ -18,6 +18,7 @@ import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
 import FigureNotion from './FigureNotion';
 import { Copyright } from '../types';
+import { FigureType } from '../Figure';
 
 const ImageWrapper = styled.div`
   float: right;
@@ -47,9 +48,10 @@ interface Props {
   concept: ConceptNotionType;
   disableScripts?: boolean;
   hideIconsAndAuthors?: boolean;
+  figureType?: FigureType;
 }
 
-const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: Props) => {
+const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, figureType }: Props) => {
   const notionId = `notion-${concept.id}`;
   const figureId = `notion-figure-${concept.id}`;
   const visualElementId = `visual-element-${concept.id}`;
@@ -69,7 +71,8 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors }: P
       copyright={concept.copyright}
       licenseString={concept.copyright?.license?.license ?? ''}
       type="concept"
-      hideIconsAndAuthors={hideIconsAndAuthors}>
+      hideIconsAndAuthors={hideIconsAndAuthors}
+      figureType={figureType}>
       <UINotion
         id={notionId}
         title={concept.title}

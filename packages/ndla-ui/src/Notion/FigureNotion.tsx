@@ -10,7 +10,7 @@ import { colors, spacing } from '@ndla/core';
 import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Figure, FigureCaption, FigureLicenseDialog } from '../Figure';
+import { Figure, FigureCaption, FigureLicenseDialog, FigureType } from '../Figure';
 import { Copyright } from '../types';
 
 const BottomBorder = styled.div`
@@ -29,6 +29,7 @@ interface Props {
   type: 'video' | 'h5p' | 'image' | 'concept' | 'other';
   hideFigCaption?: boolean;
   hideIconsAndAuthors?: boolean;
+  figureType?: FigureType;
 }
 
 const FigureNotion = ({
@@ -42,6 +43,7 @@ const FigureNotion = ({
   type,
   hideFigCaption,
   hideIconsAndAuthors,
+  figureType,
 }: Props) => {
   const { t, i18n } = useTranslation();
   const license = getLicenseByAbbreviation(licenseString, i18n.language);
@@ -56,7 +58,7 @@ const FigureNotion = ({
   ).map((i) => ({ name: i.description, type: i.label }));
 
   return (
-    <Figure resizeIframe={resizeIframe} id={figureId} type={'full-column'}>
+    <Figure resizeIframe={resizeIframe} id={figureId} type={figureType || 'full-column'}>
       {({ typeClass }) => (
         <>
           {typeof children === 'function' ? children({ typeClass }) : children}

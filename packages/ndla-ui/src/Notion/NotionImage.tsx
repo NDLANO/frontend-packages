@@ -19,17 +19,19 @@ const StyledImageWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     margin: 0 auto;
   }
+  &:hover {
+    img {
+      transform: scale(1.1);
+      opacity: 1.1;
+      transition-duration: 0.5s;
+    }
+  }
 `;
 
 const StyledImage = styled(Image)`
   object-fit: cover;
   max-height: 162px;
   transition: transform ${animations.durations.fast};
-  &:hover {
-    transform: scale(1.1);
-    opacity: 1.1;
-    transition-duration: 0.5s;
-  }
   ${mq.range({ until: breakpoints.tabletWide })} {
     min-width: 260px;
   }

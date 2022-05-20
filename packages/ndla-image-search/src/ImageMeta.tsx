@@ -30,7 +30,7 @@ const ImageMeta = ({ contentType, fileSize, imageDimensions }: Props) => {
   const { width = 0, height = 0 } = imageDimensions || {};
   return (
     <StyledDiv>
-      <StyledSpan>{`${contentType} - ${prettyBytes(fileSize)} - ${height}x${width} px`}</StyledSpan>
+      <StyledSpan>{`${contentType} - ${prettyBytes(fileSize)} - ${width}x${height} px`}</StyledSpan>
     </StyledDiv>
   );
 };

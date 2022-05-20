@@ -16,6 +16,7 @@ import { CheckboxItem } from '@ndla/forms';
 import { IImageMetaInformationV2 } from '@ndla/types-image-api';
 
 import { getSrcSets } from './util/imageUtil';
+import ImageMeta from './ImageMeta';
 
 interface Props {
   image: IImageMetaInformationV2;
@@ -66,9 +67,7 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
             'image.modelReleased.' + image.modelRelease,
           )}`}</span>
         </div>
-        <div className="info">
-          <span className="text">{`${image.contentType} - ${prettyBytes(image.size)} - ${height}x${width} px`}</span>
-        </div>
+        <ImageMeta contentType={image.contentType} fileSize={image.size} imageDimensions={image.imageDimensions} />
         <div className="tags">
           {tags.map((tag) => (
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>

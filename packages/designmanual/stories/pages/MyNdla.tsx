@@ -6,24 +6,67 @@
  *
  */
 import React from 'react';
-import { ResourcesView, ResourceElement, FolderElement } from '@ndla/ui';
+import { ResourcesView } from '@ndla/ui';
 
-const layout = 'block';
 export const MyNdla = () => (
-  <ResourcesView layout={layout}>
-    <ResourceElement
-      layout={layout}
-      title="My Resource"
-      topics={['Oppgave', 'Video', 'Interaktiv']}
-      tags={['tag', 'tag', 'tag']}
-      resourceImage={{
-        alt: 'alt',
-        src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
-      }}
-      link=""
-    />
-    <FolderElement layout={layout} title="My folder" subFolders={3} subResources={3} link="" />
-  </ResourcesView>
+  <ResourcesView
+    folders={[
+      { title: 'name', link: 'hey' },
+      { title: 'Ny mappe', link: '' },
+      { title: 'Eldre mappe', link: '' },
+      { title: 'Eldre mappe', link: '' },
+    ]}
+    resources={[
+      {
+        title: 'My Resource',
+        link: '',
+        topics: ['Oppgave', 'Norsk', 'Muntlig'],
+        tags: ['tag', 'tag', 'tag'],
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+        resourceImage: {
+          src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          alt: 'alt',
+        },
+      },
+      {
+        title: 'My Resource',
+        link: '',
+        topics: ['Oppgave', 'Norsk', 'Muntlig'],
+        tags: ['tag', 'tag', 'tag'],
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+        resourceImage: {
+          src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          alt: 'alt',
+        },
+      },
+      {
+        title: 'My Resource',
+        link: '',
+        topics: ['Oppgave', 'Norsk', 'Muntlig'],
+        tags: ['tag', 'tag', 'tag'],
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+        resourceImage: {
+          src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          alt: 'alt',
+        },
+      },
+      {
+        title: 'My Resource',
+        link: '',
+        topics: ['Oppgave', 'Norsk', 'Muntlig'],
+        tags: ['tag', 'tag', 'tag'],
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+        resourceImage: {
+          src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          alt: 'alt',
+        },
+      },
+    ]}
+  />
 );
 
 export default MyNdla;

@@ -18,15 +18,20 @@ import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 
 const FolderTitle = styled.h2`
+  position: relative;
+  top: 25%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   font-size: ${fonts.sizes('18')};
   font-weight: 400;
-  justify-content: center;
   margin: 0;
   margin-right: ${spacing.medium};
   margin-left: ${spacing.small};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
   ${mq.range({ from: breakpoints.tabletWide })} {
     margin-left: ${spacing.xxsmall};
   }
@@ -44,7 +49,6 @@ const FolderIconCircle = styled.div<{ layout: LayoutProps }>`
   }
 `;
 const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
-  ${(props) => props.layout === 'block' && css``}
   display: flex;
   align-items: center;
   padding: 0.5rem;
@@ -90,7 +94,7 @@ const FolderLeftSide = styled.div<{ layout: LayoutProps }>`
   height: 100%;
   display: flex;
   flex-direction: row;
-  width: 30%;
+  width: 60%;
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 70%;
   }
@@ -105,7 +109,7 @@ const FolderRightSide = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 70%;
+  width: 40%;
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 30%;
   }

@@ -7,17 +7,11 @@
  */
 
 import React, { useState } from 'react';
-import { SnackBar } from '@ndla/ui';
+import { SnackBar, SnackBarItemProp } from '@ndla/ui';
 import Button from '@ndla/button';
 
-interface SnackProp {
-  snackbarItemId?: string;
-  type?: 'info' | 'success' | 'error';
-  children?: React.ReactNode;
-}
-
 const SnackBarExample = () => {
-  const [snack, setSnack] = useState<SnackProp | undefined>({});
+  const [snack, setSnack] = useState<SnackBarItemProp>({});
   const snackAriaId = 'snack-id';
   return (
     <div>
@@ -49,16 +43,16 @@ const SnackBarExample = () => {
       </div>
       <SnackBar
         id={snackAriaId}
-        key={snack?.snackbarItemId}
-        type={snack?.type}
-        snackbarId={snack?.snackbarItemId}
-        closeLabel="Lukk"
-        onKill={(id: string) => {
+        key={snack.snackbarItemId}
+        type={snack.type}
+        snackbarItemId={snack.snackbarItemId}
+        closeAriaLabel="Lukk"
+        onKill={(id: string | undefined) => {
           // eslint-disable-next-line
-          console.log(`snack with id ${id} removed`);
+          console.log(`snack with id ${id || 'unknown'} removed`);
           setSnack({});
         }}>
-        {snack?.children || null}
+        {snack.children}
       </SnackBar>
     </div>
   );

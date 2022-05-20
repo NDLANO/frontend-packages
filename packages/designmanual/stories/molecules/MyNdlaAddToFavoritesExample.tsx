@@ -11,9 +11,11 @@ import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
-import { TagSelector, TagProp } from '@ndla/ui';
+import { TagSelector, TagProp, SnackBar, SnackBarItemProp } from '@ndla/ui';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+
+const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
 const MyNdlaFolder = styled.div`
   height: 100px;
@@ -29,14 +31,23 @@ const DialogFooter = styled.div`
   justify-content: flex-end;
 `;
 
-type Props = {
+type DialogExampleProps = {
   title: string;
   closeCallback?: () => void;
   toggleIsFavorite: () => void;
+  isFavorite: boolean;
   isOpen: boolean;
+  setSnackBarMessage: (params: SnackBarItemProp) => void;
 };
 
-const DialogExample = ({ isOpen, title, toggleIsFavorite, closeCallback }: Props) => {
+const DialogExample = ({
+  isOpen,
+  title,
+  toggleIsFavorite,
+  isFavorite,
+  closeCallback,
+  setSnackBarMessage,
+}: DialogExampleProps) => {
   const { t } = useTranslation();
   const [tags, setTags] = useState<TagProp[]>([
     { name: 'tag1', id: '1' },
@@ -70,7 +81,13 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, closeCallback }: Props
                 Avbryt
               </Button>
               <Button
+                aria-controls={SNACKBAR_ID_ADD_TO_FAVORITES}
                 onClick={() => {
+                  setSnackBarMessage({
+                    snackbarItemId: Math.random().toString(),
+                    type: 'info',
+                    children: <>{isFavorite ? 'Fjernet fra favoritter' : 'Lagt til i favoritter!'}</>,
+                  });
                   toggleIsFavorite();
                   onCloseModal();
                 }}>
@@ -87,6 +104,7 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, closeCallback }: Props
 const MyNdlaAddToFavoritesExample = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [snackBarMessage, setSnackBarMessage] = useState<SnackBarItemProp>({});
   return (
     <div>
       <IconButtonDualStates
@@ -101,12 +119,27 @@ const MyNdlaAddToFavoritesExample = () => {
       />
       {isOpen && (
         <DialogExample
+          isFavorite={isFavorite}
           toggleIsFavorite={() => setIsFavorite(!isFavorite)}
           title="Legg ressurs i Min NDLA"
           isOpen={isOpen}
           closeCallback={() => setIsOpen(!isOpen)}
+          setSnackBarMessage={setSnackBarMessage}
         />
       )}
+      <SnackBar
+        id={SNACKBAR_ID_ADD_TO_FAVORITES}
+        key={snackBarMessage.snackbarItemId}
+        type={snackBarMessage.type}
+        snackbarItemId={snackBarMessage?.snackbarItemId}
+        closeAriaLabel="Lukk"
+        onKill={(id: string | undefined) => {
+          // eslint-disable-next-line
+          console.log(`snack with id ${id || 'unknown'} removed`);
+          setSnackBarMessage({});
+        }}>
+        {snackBarMessage.children}
+      </SnackBar>
     </div>
   );
 };

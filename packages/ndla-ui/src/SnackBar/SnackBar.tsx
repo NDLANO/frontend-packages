@@ -5,7 +5,7 @@ import { spacing, shadows, misc, fonts } from '@ndla/core';
 import { Cross } from '@ndla/icons/action';
 
 interface StyledProps {
-  type: 'success' | 'error' | 'info';
+  type?: 'success' | 'error' | 'info';
   expired?: boolean;
 }
 
@@ -55,16 +55,19 @@ const StyledNotification = styled.div<StyledProps>`
   font-family: ${fonts.sans};
 `;
 
-interface Props {
-  id: string;
-  closeAriaLabel?: string;
-  snackbarItemId: string;
-  onKill: (id: string) => void;
-  type: 'success' | 'error' | 'info';
-  children: ReactElement;
+export interface SnackBarItemProp {
+  type?: 'success' | 'error' | 'info';
+  children?: ReactElement;
+  snackbarItemId?: string;
 }
 
-const SnackBar = ({ onKill, type, children, snackbarItemId, closeAriaLabel, id }: Props) => {
+export interface SnackBarProps extends SnackBarItemProp {
+  id: string;
+  closeAriaLabel?: string;
+  onKill?: (id: string | undefined) => void;
+}
+
+const SnackBar = ({ onKill, type, children, snackbarItemId, closeAriaLabel, id }: SnackBarProps) => {
   const [expired, setExpired] = useState(false);
   const timeoutId = useRef<null | ReturnType<typeof setTimeout>>();
   useEffect(() => {
@@ -85,7 +88,7 @@ const SnackBar = ({ onKill, type, children, snackbarItemId, closeAriaLabel, id }
       aria-live="polite"
       type={type}
       expired={expired || !children}
-      onAnimationEnd={() => expired && onKill(snackbarItemId)}>
+      onAnimationEnd={() => expired && onKill && onKill(snackbarItemId)}>
       {children && (
         <>
           <div>{children}</div>

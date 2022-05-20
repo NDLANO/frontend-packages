@@ -58,6 +58,7 @@ import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
 import TagSelectorExample from './molecules/TagSelectorExample';
+import SnackBarExample from './molecules/SnackbarExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -680,6 +681,18 @@ storiesOf('Sammensatte moduler', module)
       <Content>
         <ResourceBoxExample />
       </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+
+  .add('Snackbar meldingsboks', () => (
+    <PageContainer>
+      <StoryIntro title="Snackbar" />
+      <StoryBody>
+        <Center>
+          <SnackBarExample />
+        </Center>
+      </StoryBody>
       <FooterExample />
     </PageContainer>
   ))

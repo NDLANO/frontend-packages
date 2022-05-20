@@ -8,7 +8,6 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import prettyBytes from 'pretty-bytes';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 //@ts-ignore
@@ -33,7 +32,6 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
   const title = image.title.title ?? '';
   const altText = image.alttext.alttext ?? '';
   const caption = image.caption.caption ?? '';
-  const { width = 0, height = 0 } = image.imageDimensions || {};
   return (
     <div className="image-preview">
       <div className="image">

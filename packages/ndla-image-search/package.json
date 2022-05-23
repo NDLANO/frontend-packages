@@ -33,7 +33,7 @@
     "@ndla/pager": "^1.1.7",
     "@ndla/ui": "^11.1.1",
     "@ndla/util": "^3.0.0",
-    "pretty-bytes": "^6.0.0"
+    "pretty-bytes": "^5.6.0"
   },
   "devDependencies": {
     "@ndla/types-image-api": "^0.0.5"

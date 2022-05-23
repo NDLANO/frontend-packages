@@ -225,3 +225,6 @@ export { ResourcesView, ResourceElement, Breadcrumbs } from './MyNdla';
 
 export type { TagProp } from './TagSelector';
 export { TagSelector } from './TagSelector';
+
+export type { SnackBarProps, SnackBarItemProp } from './SnackBar';
+export { SnackBar } from './SnackBar';

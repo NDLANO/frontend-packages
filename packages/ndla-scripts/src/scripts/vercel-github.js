@@ -122,7 +122,7 @@ async function spawnDeploy(sha) {
   const cliArgs = ['--token', vercelToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
   safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
   try {
-    const result = await spawn('vercel', cliArgs);
+    const result = await spawn('vercel', cliArgs, { logger: safeLog });
     return result.toString();
   } catch (error) {
     onError(sha, error);

@@ -109,7 +109,7 @@ const FolderIconLeft = styled(Folder)`
   margin-right: ${spacing.small};
   margin-left: ${spacing.small};
   stroke: rgba(68, 68, 68, 1);
-  stroke-width: 2;
+  stroke-width: 1.5;
   fill: transparent;
 `;
 const FolderLeftSide = styled.div<{ layout: LayoutProps }>`
@@ -140,7 +140,7 @@ const FolderRightSide = styled.div`
 const FolderIconRight = styled(Folder)`
   height: 100%;
   stroke: rgba(68, 68, 68, 1);
-  stroke-width: 2;
+  stroke-width: 1.5;
   fill: white;
   margin-right: ${spacing.xsmall};
   ${mq.range({ until: breakpoints.tabletWide })} {

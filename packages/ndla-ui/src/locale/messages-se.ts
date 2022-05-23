@@ -924,6 +924,9 @@ const messages = {
     favourites: 'Favoritter',
     help: 'Hjelp',
     more: 'Flere valg',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
   },
 };
 

@@ -327,11 +327,9 @@ const ResourceElement = ({
             <ResourceInfoWrapper>
               <ResourceTitle layout={layout}>{title}</ResourceTitle>
               <ResourceTopic>
-                {' '}
                 {topics?.map((topic) => (
                   <>
                     <li> {topic}</li>
-                    <span></span>
                   </>
                 ))}
               </ResourceTopic>

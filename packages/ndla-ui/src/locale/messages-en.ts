@@ -926,6 +926,9 @@ const messages = {
     favourites: 'Favourites',
     help: 'Help',
     more: 'More options',
+    listView: 'List view',
+    detailView: 'Detailed listview',
+    shortView: 'Short view',
   },
 };
 

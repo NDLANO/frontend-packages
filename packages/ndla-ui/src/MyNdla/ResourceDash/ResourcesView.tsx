@@ -17,6 +17,7 @@ import { IconButton } from '@ndla/button/src/IconButton';
 import { ViewListBlack, NewFolder } from '@ndla/icons/contentType';
 import { Grid, FourlineHamburger } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
+import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import FolderElement from './Folderelement';
 import ResourceElement from './ResourceElement';
@@ -148,7 +149,7 @@ const Filterbutton = styled(IconButton)`
   background-color: transparent;
   border: none;
   display: flex;
-  margin-left: ${spacing.small};
+  margin-left: ${spacing.xsmall};
   padding: 10px;
   svg {
   }
@@ -182,7 +183,7 @@ const FileIcon = styled(FileDocumentOutline)`
 const FolderIcon = styled(Folder)`
   height: 100%;
   stroke: rgba(68, 68, 68, 1);
-  stroke-width: 2;
+  stroke-width: 1.5;
   fill: white;
   margin-right: ${spacing.xsmall};
 `;
@@ -247,15 +248,21 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>
-            <Filterbutton onClick={() => setLayout('list')} size="xsmall" aria-label="List">
-              <StyledLearningPath />
-            </Filterbutton>
-            <Filterbutton onClick={() => setLayout('listLarger')} size="xsmall" aria-label="ListLarge">
-              <StyledViewList />
-            </Filterbutton>
-            <Filterbutton onClick={() => setLayout('block')} size="xsmall" aria-label="Grid">
-              <StyledGridView />
-            </Filterbutton>
+            <Tooltip tooltip={t('myNdla.listView')} align="bottom">
+              <Filterbutton onClick={() => setLayout('list')} size="xsmall" aria-label={t('myNdla.listView')}>
+                <StyledLearningPath />
+              </Filterbutton>
+            </Tooltip>
+            <Tooltip tooltip={t('myNdla.detailView')} align="bottom">
+              <Filterbutton onClick={() => setLayout('listLarger')} size="xsmall" aria-label={t('myNdla.detailView')}>
+                <StyledViewList />
+              </Filterbutton>
+            </Tooltip>
+            <Tooltip tooltip={t('myNdla.shortView')} align="bottom">
+              <Filterbutton onClick={() => setLayout('block')} size="xsmall" aria-label={t('myNdla.shortView')}>
+                <StyledGridView />
+              </Filterbutton>
+            </Tooltip>
           </DashRightSide>
         )}
       </DashOptionWrapper>

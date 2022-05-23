@@ -27,10 +27,10 @@ interface Props {
 }
 
 const ImageMeta = ({ contentType, fileSize, imageDimensions }: Props) => {
-  const { width = 0, height = 0 } = imageDimensions || {};
+  const dimensions = imageDimensions ? ` - ${imageDimensions.width}x${imageDimensions.height} px` : '';
   return (
     <StyledDiv>
-      <StyledSpan>{`${contentType} - ${prettyBytes(fileSize)} - ${width}x${height} px`}</StyledSpan>
+      <StyledSpan>{`${contentType} - ${prettyBytes(fileSize)}${dimensions}`}</StyledSpan>
     </StyledDiv>
   );
 };

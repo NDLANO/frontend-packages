@@ -7,9 +7,10 @@
  */
 
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
+import { useWindowSize } from '@ndla/hooks';
 import { LearningPathSummary, ViewListBlack, NewFolder } from '@ndla/icons/contentType';
 import { GridView } from '@ndla/icons/common';
 import { colors, spacing, fonts } from '@ndla/core';
@@ -156,13 +157,12 @@ type LayoutProps = 'list' | 'listLarger' | 'block';
 export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
   const [layout, setLayout] = useState('list' as LayoutProps);
-  const SetLayoutToScreenSize = (changeLayout: LayoutProps) => {
-    if (window.innerWidth < 1000) {
-      setLayout('listLarger');
-    } else {
-      setLayout(changeLayout);
+  const windowSize = useWindowSize(1000);
+  useEffect(() => {
+    if (windowSize.innerWidth < 1000) {
+      setLayout('list');
     }
-  };
+  }, [windowSize]);
 
   return (
     <>
@@ -175,13 +175,13 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>
-            <Filterbutton onClick={() => SetLayoutToScreenSize('list')}>
+            <Filterbutton onClick={() => setLayout('list')}>
               <StyledLearningPath />
             </Filterbutton>
-            <Filterbutton onClick={() => SetLayoutToScreenSize('listLarger')}>
+            <Filterbutton onClick={() => setLayout('listLarger')}>
               <StyledViewList />
             </Filterbutton>
-            <Filterbutton onClick={() => SetLayoutToScreenSize('block')}>
+            <Filterbutton onClick={() => setLayout('block')}>
               <StyledGridView />
             </Filterbutton>
           </DashRightSide>
@@ -195,7 +195,14 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         )}
         <FoldersWrapper layout={layout}>
           {folders?.map((folder) => (
-            <FolderElement layout={layout} title={folder.title} link={folder.link} subFolders={3} subResources={3} />
+            <FolderElement
+              layout={layout}
+              title={folder.title}
+              link={folder.link}
+              subFolders={3}
+              subResources={3}
+              key={folder.link}
+            />
           ))}
         </FoldersWrapper>
         <ResourcesWrapper layout={layout}>
@@ -211,6 +218,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 src: resource.resourceImage.src,
               }}
               link={resource.link}
+              key={resource.link}
             />
           ))}
         </ResourcesWrapper>

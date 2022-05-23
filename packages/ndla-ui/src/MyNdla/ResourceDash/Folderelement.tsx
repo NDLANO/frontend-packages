@@ -36,6 +36,10 @@ const FolderTitle = styled.h2`
     margin-left: ${spacing.xxsmall};
   }
 `;
+const FoldersWrapper = styled.div<{ layout: LayoutProps }>`
+  height: 100%;
+  display: flex;
+`;
 const FolderIconCircle = styled.div<{ layout: LayoutProps }>`
   border-radius: 25px;
   background-color: ${colors.brand.greyLighter};
@@ -74,12 +78,30 @@ const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
       background-color: ${colors.brand.light};
       transition-duration: 0.5s;
     }
+    ${FoldersWrapper} {
+      ${(props) =>
+        props.layout === 'block' &&
+        css`
+          opacity: 1;
+        `}
+    }
   }
   &active {
   }
   box-shadow: none;
   text-decoration: none;
   color: ${colors.brand.greyDark};
+  ${FoldersWrapper} {
+    ${(props) =>
+      props.layout === 'block' &&
+      css`
+        opacity: 0;
+        margin-right: 5px;
+        p {
+          margin-right: 0px;
+        }
+      `}
+  }
 `;
 
 const FolderIconLeft = styled(Folder)`
@@ -114,10 +136,7 @@ const FolderRightSide = styled.div`
     width: 30%;
   }
 `;
-const FoldersWrapper = styled.div`
-  height: 100%;
-  display: flex;
-`;
+
 const FolderIconRight = styled(Folder)`
   height: 100%;
   stroke: rgba(68, 68, 68, 1);
@@ -137,22 +156,38 @@ const FileIcon = styled(FileDocumentOutline)`
   }
 `;
 
-const MoreIcon = styled(HorizontalMenu)`
+const MoreIcon = styled(HorizontalMenu)<{ layout: LayoutProps }>`
   height: 100%;
   margin-right: ${spacing.small};
   fill: ${colors.brand.grey};
   transform: scale(1.5);
+  ${(props) =>
+    props.layout === 'block' &&
+    css`
+      margin-left: 10px;
+    `}
 `;
 
-const FoldersText = styled.p`
+const FoldersText = styled.p<{ layout: LayoutProps }>`
   margin: 0;
   height: 100%;
   font-size: ${fonts.sizes(16)};
   display: flex;
   align-items: center;
   margin-right: ${spacing.medium};
+  span {
+    margin-left: ${spacing.xsmall};
+  }
+
   ${mq.range({ until: breakpoints.tabletWide })} {
     display: none;
+  }
+  span {
+    ${(props) =>
+      props.layout === 'block' &&
+      css`
+        display: none;
+      `}
   }
 `;
 
@@ -180,23 +215,21 @@ const FolderElement = ({ link, title, subFolders, subResources, children, layout
         {children}
       </FolderLeftSide>
       <FolderRightSide>
-        {layout !== 'block' && (
-          <>
-            <FoldersWrapper>
-              <FolderIconRight aria-label={t('myNdla.folders')} />
-              <FoldersText>
-                {subFolders} {t('myNdla.folders')}
-              </FoldersText>
-            </FoldersWrapper>
-            <FoldersWrapper>
-              <FileIcon aria-label={t('myNdla.resources')} />
-              <FoldersText>
-                {subResources} {t('myNdla.resources')}
-              </FoldersText>
-            </FoldersWrapper>
-          </>
-        )}
-        <MoreIcon aria-label={t('myNdla.more')} />
+        <FoldersWrapper layout={layout}>
+          <FolderIconRight aria-label={t('myNdla.folders')} />
+          <FoldersText layout={layout}>
+            {subFolders} <span>{t('myNdla.folders')}</span>
+          </FoldersText>
+        </FoldersWrapper>
+        <FoldersWrapper layout={layout}>
+          <FileIcon aria-label={t('myNdla.resources')} />
+          <FoldersText layout={layout}>
+            {subResources}
+            <span>{t('myNdla.resources')}</span>
+          </FoldersText>
+        </FoldersWrapper>
+
+        <MoreIcon layout={layout} aria-label={t('myNdla.more')} />
       </FolderRightSide>
     </FolderElementWrapper>
   );

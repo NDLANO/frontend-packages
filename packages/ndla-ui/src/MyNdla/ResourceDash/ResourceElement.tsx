@@ -195,6 +195,11 @@ const ResourceRightSide = styled.div<{ layout: LayoutProps }>`
     css`
       align-items: center;
     `}
+    ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      height: 50%;
+    `}
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
@@ -281,11 +286,6 @@ const MoreIcon = styled(HorizontalMenu)<{ layout: LayoutProps }>`
     margin-right: ${spacing.xsmall};
     margin-top: ${spacing.xsmall};
   }
-  ${(props) =>
-    props.layout === 'listLarger' &&
-    css`
-      height: 30%;
-    `}
 `;
 
 type ResourceImageProps = {

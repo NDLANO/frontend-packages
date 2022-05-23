@@ -119,10 +119,10 @@ async function spawnAlias(sha, deployUrl) {
 }
 
 async function spawnDeploy(sha) {
-  const cliArgs = ['--token', vercelToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
+  const cliArgs = ['--token', vercelToken, '--no-clipboard', '--regions', 'bru1', '--confirm', ...providedArgs];
   safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
   try {
-    const result = await spawn('vercel', cliArgs, { logger: safeLog });
+    const result = await spawn('vercel', cliArgs);
     return result.toString();
   } catch (error) {
     onError(sha, error);

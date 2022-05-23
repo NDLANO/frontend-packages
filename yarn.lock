@@ -3526,10 +3526,10 @@
   resolved "https://registry.yarnpkg.com/@ndla/types-audio-api/-/types-audio-api-0.0.10.tgz#008cbd2c420fb7993133b42489b24dc3b7b034c8"
   integrity sha512-M40Za9h7L1FIFgw4LYU1CsLWRRJ2QWdnD+22xBAKyhDHrWmaRVg/Vqu5QWRHWjcSmZEtUnT/fs7g6HNKR26Yog==
 
-"@ndla/types-image-api@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@ndla/types-image-api/-/types-image-api-0.0.4.tgz#f5efe62b8cb97e857d07e4f967d246d71d1335c1"
-  integrity sha512-VTdQww63erpGg4tIysNxv1mvbIVMC6/mG5dEqL4xKJPmjgJGuGAoO2iJuBFOCR0m6NXAG7v9bk/qn1/pwPCEsw==
+"@ndla/types-image-api@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@ndla/types-image-api/-/types-image-api-0.0.5.tgz#0579e4e14225bfffdeb4df6849d5a683f9fab52e"
+  integrity sha512-3S6wtAQkoiGUlUK00KI7Cx9rul0Xi+L5UZ56EdZaBtu/t1cbZ61LsHNcvGwd0QJDbOWXMezICLZbrZnMrgc0QA==
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -14655,6 +14655,11 @@ prettier@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
   integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
+
+pretty-bytes@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
+  integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
 pretty-error@^2.1.1:
   version "2.1.1"

@@ -57,6 +57,8 @@ import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
+import TagSelectorExample from './molecules/TagSelectorExample';
+
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
     <div>
@@ -677,6 +679,18 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <Content>
         <ResourceBoxExample />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+
+  .add('Velg tag', () => (
+    <PageContainer>
+      <StoryIntro title="Tag-velger">
+        <p>Komponent for å tagge noe, primært tiltenkt Min NDLA</p>
+      </StoryIntro>
+      <Content>
+        <TagSelectorExample />
       </Content>
       <FooterExample />
     </PageContainer>

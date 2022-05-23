@@ -11,11 +11,11 @@ import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
+import { IconButton } from '@ndla/button/src/IconButton';
 import { LearningPathSummary, ViewListBlack, NewFolder } from '@ndla/icons/contentType';
 import { GridView } from '@ndla/icons/common';
 import { colors, spacing, fonts } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@ndla/button/src/Button';
 import FolderElement from './Folderelement';
 import ResourceElement from './ResourceElement';
 
@@ -72,6 +72,7 @@ const DashRightSide = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: flex-end;
   width: 70%;
   svg {
     margin-left: ${spacing.xsmall};
@@ -88,15 +89,26 @@ const DashLeftSide = styled.div`
   display: flex;
   flex-direction: row;
   width: 30%;
+  align-items: flex-end;
 `;
 
-const AddButton = styled(Button)`
+const AddButton = styled(IconButton)`
   background-color: transparent;
   border: none;
   display: flex;
+  span {
+    display: flex;
+    align-items: center;
+  }
   :hover {
     background-color: transparent;
     margin: 0;
+    border: none;
+  }
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
   }
 `;
 const AddFolder = styled.p`
@@ -106,6 +118,7 @@ const AddFolder = styled.p`
   padding-left: ${spacing.small};
   align-items: center;
   display: flex;
+  font-weight: 400;
 `;
 
 const AddNewFolder = styled(NewFolder)`
@@ -118,21 +131,30 @@ const AddNewFolder = styled(NewFolder)`
 `;
 
 const StyledLearningPath = styled(LearningPathSummary)`
-  stroke: ${colors.brand.primary};
+  stroke: transparent;
   fill: ${colors.brand.primary};
 `;
 const StyledViewList = styled(ViewListBlack)`
-  stroke: ${colors.brand.primary};
-  fill: white;
+  stroke: transparent;
+  fill: ${colors.brand.primary};
 `;
 const StyledGridView = styled(GridView)`
   fill: ${colors.brand.primary};
 `;
 
-const Filterbutton = styled(Button)`
+const Filterbutton = styled(IconButton)`
   background-color: transparent;
   border: none;
   display: flex;
+  svg {
+  }
+  &:hover {
+    background-color: ${colors.brand.greyLighter};
+  }
+  &:focus,
+  &:active {
+    background-color: transparent;
+  }
 `;
 
 type FolderProps = {
@@ -168,20 +190,20 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
     <>
       <DashOptionWrapper>
         <DashLeftSide>
-          <AddButton>
+          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
             <AddNewFolder />
             <AddFolder>{t('myNdla.newFolder')}</AddFolder>
           </AddButton>
         </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>
-            <Filterbutton onClick={() => setLayout('list')}>
+            <Filterbutton onClick={() => setLayout('list')} size="xsmall" aria-label="List">
               <StyledLearningPath />
             </Filterbutton>
-            <Filterbutton onClick={() => setLayout('listLarger')}>
+            <Filterbutton onClick={() => setLayout('listLarger')} size="xsmall" aria-label="ListLarge">
               <StyledViewList />
             </Filterbutton>
-            <Filterbutton onClick={() => setLayout('block')}>
+            <Filterbutton onClick={() => setLayout('block')} size="xsmall" aria-label="Grid">
               <StyledGridView />
             </Filterbutton>
           </DashRightSide>

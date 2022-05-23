@@ -9,7 +9,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, spacing, spacingUnit, misc, fonts, animations, breakpoints, mq } from '@ndla/core';
+import { colors, spacing, spacingUnit, misc, fonts, breakpoints, mq } from '@ndla/core';
 
 export type ButtonAppearance =
   | 'outline'
@@ -96,7 +96,6 @@ export const strippedStyle = css`
 export const pillStyle = css`
   padding: ${spacing.small} ${spacingUnit * 0.75}px;
   border-radius: ${spacing.normal};
-  transition: background-color ${animations.durations.fast} ease-in-out;
   color: ${colors.brand.primary};
   ${fonts.sizes('16px', '18px')};
   background-color: transparent;

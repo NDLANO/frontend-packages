@@ -159,7 +159,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const [layout, setLayout] = useState('list' as LayoutProps);
   const windowSize = useWindowSize(1000);
   useEffect(() => {
-    if (windowSize.innerWidth < 1000) {
+    if (windowSize.innerWidth < 500) {
       setLayout('list');
     }
   }, [windowSize]);

@@ -19,6 +19,7 @@ export { default as ExpandMore } from './ExpandMore';
 export { default as ExpandTwoArrows } from './ExpandTwoArrows';
 export { default as FileCompare } from './FileCompare';
 export { default as ForwardArrow } from './ForwardArrow';
+export { default as FourlineHamburger } from './FourlineHamburger';
 export { default as Grid } from './Grid';
 export { default as Heart } from './Heart';
 export { default as HeartOutline } from './HeartOutline';

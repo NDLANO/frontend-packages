@@ -11,9 +11,11 @@ import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
+import { Folder } from '@ndla/icons/editor';
+import { FileDocumentOutline } from '@ndla/icons/common';
 import { IconButton } from '@ndla/button/src/IconButton';
-import { LearningPathSummary, ViewListBlack, NewFolder } from '@ndla/icons/contentType';
-import { GridView } from '@ndla/icons/common';
+import { ViewListBlack, NewFolder } from '@ndla/icons/contentType';
+import { Grid, FourlineHamburger } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import FolderElement from './Folderelement';
@@ -130,7 +132,7 @@ const AddNewFolder = styled(NewFolder)`
   transform: scale(1.5);
 `;
 
-const StyledLearningPath = styled(LearningPathSummary)`
+const StyledLearningPath = styled(FourlineHamburger)`
   stroke: transparent;
   fill: ${colors.brand.primary};
 `;
@@ -138,7 +140,7 @@ const StyledViewList = styled(ViewListBlack)`
   stroke: transparent;
   fill: ${colors.brand.primary};
 `;
-const StyledGridView = styled(GridView)`
+const StyledGridView = styled(Grid)`
   fill: ${colors.brand.primary};
 `;
 
@@ -146,15 +148,48 @@ const Filterbutton = styled(IconButton)`
   background-color: transparent;
   border: none;
   display: flex;
+  margin-left: ${spacing.small};
+  padding: 10px;
   svg {
   }
   &:hover {
     background-color: ${colors.brand.greyLighter};
+    border: none;
   }
   &:focus,
   &:active {
     background-color: transparent;
+    border: none;
   }
+`;
+
+const FoldersText = styled.p`
+  margin: 0;
+  height: 100%;
+  font-size: ${fonts.sizes(16)};
+  display: flex;
+  align-items: center;
+  margin-right: ${spacing.medium};
+  span {
+    margin-left: ${spacing.xsmall};
+  }
+`;
+
+const FileIcon = styled(FileDocumentOutline)`
+  height: 100%;
+  margin-right: ${spacing.xsmall};
+`;
+const FolderIcon = styled(Folder)`
+  height: 100%;
+  stroke: rgba(68, 68, 68, 1);
+  stroke-width: 2;
+  fill: white;
+  margin-right: ${spacing.xsmall};
+`;
+
+const ResourceCountWrapper = styled.div`
+  height: 100%;
+  display: flex;
 `;
 
 type FolderProps = {
@@ -188,6 +223,21 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
 
   return (
     <>
+      <DashOptionWrapper>
+        <ResourceCountWrapper>
+          <FolderIcon aria-label={t('myNdla.folders')} />
+          <FoldersText>
+            {folders?.length} <span>{t('myNdla.folders')}</span>
+          </FoldersText>
+        </ResourceCountWrapper>
+        <ResourceCountWrapper>
+          <FileIcon aria-label={t('myNdla.resources')} />
+          <FoldersText>
+            {resources?.length}
+            <span>{t('myNdla.resources')}</span>
+          </FoldersText>
+        </ResourceCountWrapper>
+      </DashOptionWrapper>
       <DashOptionWrapper>
         <DashLeftSide>
           <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>

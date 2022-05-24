@@ -41,8 +41,8 @@ const TagSelectorExample = () => {
   const [exampleTagsSelected, setExampleTagsSelected] = useState(['6']);
   return (
     <Container>
-      <h3>Tag an animal:</h3>
       <TagSelector
+        label="Tag an animal:"
         tags={exampleTags}
         tagsSelected={exampleTagsSelected}
         onToggleTag={(id: string) => {
@@ -60,6 +60,7 @@ const TagSelectorExample = () => {
           setExampleTags((prevTags) => [{ id: newId, name: newTagName }, ...prevTags]);
           setExampleTagsSelected((prevSelectedTags) => [newId, ...prevSelectedTags]);
         }}
+        absolutePositionSuggestions={true}
       />
     </Container>
   );

@@ -22,10 +22,12 @@ export interface TagProp {
 }
 
 interface Props {
+  label: string;
   tags: TagProp[];
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
+  absolutePositionSuggestions?: boolean;
 }
 
 const SuggestionInputContainer = styled.div`
@@ -55,10 +57,14 @@ const StyledInputWrapper = styled.div`
   }
 `;
 
-const SuggestionsWrapper = styled.div`
+interface SuggestionsWrapperProps {
+  absolutePosition?: boolean;
+}
+
+const SuggestionsWrapper = styled.div<SuggestionsWrapperProps>`
   position: relative;
   > div {
-    position: absolute;
+    position: ${({ absolutePosition }) => (absolutePosition ? 'absolute' : 'static')};
     z-index: 99999;
     right: 0;
     left: 0;
@@ -118,7 +124,7 @@ const SuggestionButton = styled.button<SuggestionButtonProps>`
   }
 `;
 
-type SuggestionInputProps = {
+interface SuggestionInputProps {
   suggestions: TagProp[];
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -129,7 +135,10 @@ type SuggestionInputProps = {
   setInputValue: (value: string) => void;
   onCreateTag: (tagName: string) => void;
   addedTags: TagProp[];
-};
+  absolutePositionSuggestions?: boolean;
+  name: string;
+  id: string;
+}
 
 const SuggestionInput = ({
   suggestions,
@@ -141,6 +150,7 @@ const SuggestionInput = ({
   tags,
   setExpanded,
   expanded,
+  absolutePositionSuggestions,
   ...props
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
@@ -246,7 +256,7 @@ const SuggestionInput = ({
       </StyledInputWrapper>
       <div id={SUGGESTION_ID} aria-live="polite">
         {(hasFocus || expanded) && suggestions.length > 0 ? (
-          <SuggestionsWrapper>
+          <SuggestionsWrapper absolutePosition={absolutePositionSuggestions}>
             <div>
               <div role="listbox">
                 {suggestions.map(({ id, name }, index: number) => {
@@ -289,9 +299,11 @@ const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 };
 
-const TagSelector = ({ tags, tagsSelected, onCreateTag, onToggleTag }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, absolutePositionSuggestions }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
+
+  const INPUT_ID = 'INPUT_ID';
 
   useEffect(() => {
     setExpanded(false);
@@ -299,6 +311,7 @@ const TagSelector = ({ tags, tagsSelected, onCreateTag, onToggleTag }: Props) =>
 
   return (
     <div>
+      <label htmlFor={INPUT_ID}>{label}</label>
       <SuggestionInput
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
@@ -314,6 +327,9 @@ const TagSelector = ({ tags, tagsSelected, onCreateTag, onToggleTag }: Props) =>
         addedTags={sortedTags(tags, tagsSelected, true)}
         expanded={expanded}
         setExpanded={setExpanded}
+        absolutePositionSuggestions={absolutePositionSuggestions}
+        name={INPUT_ID}
+        id={INPUT_ID}
       />
     </div>
   );

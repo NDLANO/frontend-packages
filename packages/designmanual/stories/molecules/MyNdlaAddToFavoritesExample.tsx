@@ -67,8 +67,8 @@ const DialogExample = ({
             <MyNdlaResource />
             <h3>Mine mapper</h3>
             <MyNdlaFolder />
-            <h3>Mine tags</h3>
             <TagSelector
+              label="Mine tags"
               tags={tags}
               tagsSelected={tagsSelected}
               onCreateTag={(name: string) => {
@@ -83,6 +83,7 @@ const DialogExample = ({
                   setTagsSelected([...tagsSelected, id]);
                 }
               }}
+              absolutePositionSuggestions={false} // TODO: Should prob be automated.
             />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>

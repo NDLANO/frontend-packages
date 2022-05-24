@@ -55,8 +55,8 @@ const TagSelectorExample = () => {
             return [id, ...prevSelected];
           });
         }}
-        onCreateTag={(newTagName) => {
-          const newId = Math.random();
+        onCreateTag={(newTagName: string) => {
+          const newId = Math.random().toString();
           setExampleTags((prevTags) => [{ id: newId, name: newTagName }, ...prevTags]);
           setExampleTagsSelected((prevSelectedTags) => [newId, ...prevSelectedTags]);
         }}

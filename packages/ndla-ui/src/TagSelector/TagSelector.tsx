@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Ref } from 'react';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
@@ -25,14 +25,7 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-}
-
-const TagsContainer = styled.div`
-  max-height: 16rem;
-  overflow-y: scroll;
-  display: flex;
-  gap: ${spacing.xsmall};
-`;
+};
 
 const SuggestionInputContainer = styled.div`
   margin-bottom: ${spacing.large};
@@ -88,7 +81,12 @@ const SuggestionsWrapper = styled.div`
   }
 `;
 
-const SuggestionButton = styled.button`
+
+interface SuggestionButtonProps {
+  isHighlighted: boolean;
+}
+
+const SuggestionButton = styled.button<SuggestionButtonProps>`
   display: flex;
   align-items: space-between;
   justify-content: space-between;
@@ -120,6 +118,20 @@ const SuggestionButton = styled.button`
   }
 `;
 
+type SuggestionInputProps = {
+  suggestions: TagProp[];
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  tags: TagProp[];
+  setExpanded: (expanded: boolean) => void;
+  expanded: boolean;
+  onToggleTag: (id: string) => void;
+  setInputValue: (value: string) => void;
+  onCreateTag: (tagName: string) => void;
+  addedTags: TagProp[];
+}
+
 const SuggestionInput = ({
   suggestions,
   value,
@@ -131,18 +143,18 @@ const SuggestionInput = ({
   setExpanded,
   expanded,
   ...props
-}) => {
+}: SuggestionInputProps) => {
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
   const [hasFocus, setHasFocus] = useState(false);
-  const inputRef = useRef();
-  const containerRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCurrentHighlightedIndex(0);
   }, [suggestions]);
 
   useEffect(() => {
-    inputRef.current.focus();
+    inputRef.current?.focus();
   }, [addedTags]);
 
   const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
@@ -167,7 +179,7 @@ const SuggestionInput = ({
             setHasFocus(false);
             requestAnimationFrame(() => {
               // Check if the new focused element is a child of the original container
-              if (!containerRef.current.contains(document.activeElement)) {
+              if (!containerRef.current?.contains(document.activeElement)) {
                 // Do blur logic here!
                 setExpanded(false);
               }
@@ -175,7 +187,7 @@ const SuggestionInput = ({
           }}
           onFocus={() => setHasFocus(true)}
           ref={inputRef}
-          onKeyDown={(e: KeyboardEvent) => {
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               setExpanded(false);
             }
@@ -222,7 +234,7 @@ const SuggestionInput = ({
             onClick={() => {
               setInputValue('');
               setExpanded(!expanded);
-              inputRef.current.focus();
+              inputRef.current?.focus();
             }}
           />
         </Tooltip>
@@ -231,7 +243,7 @@ const SuggestionInput = ({
         <SuggestionsWrapper>
           <div>
             <div>
-              {suggestions.map(({ id, name }, index) => {
+              {suggestions.map(({ id, name }, index: number) => {
                 const alreadyAdded = hasBeenAdded(id);
                 return (
                   <SuggestionButton
@@ -252,7 +264,7 @@ const SuggestionInput = ({
   );
 };
 
-const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProps[] =>
+const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
   tags
     .filter(({ id }) => selectedTags.some((idSelected) => (idSelected === id) === selected))
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
@@ -279,7 +291,7 @@ const TagSelector = ({ tags, tagsSelected, onCreateTag, onToggleTag }: Props) =>
     <div>
       <SuggestionInput
         placeholder="Tilknytt tag"
-        onChange={(e: KeyboardEvent) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);
           setExpanded(false);

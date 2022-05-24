@@ -6,7 +6,8 @@
  *
  */
 
-import React, { useState, useRef, useEffect, Ref } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
@@ -121,7 +122,6 @@ type SuggestionInputProps = {
   suggestions: TagProp[];
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
   tags: TagProp[];
   setExpanded: (expanded: boolean) => void;
   expanded: boolean;
@@ -143,6 +143,7 @@ const SuggestionInput = ({
   expanded,
   ...props
 }: SuggestionInputProps) => {
+  const { t } = useTranslation();
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
   const [hasFocus, setHasFocus] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -163,7 +164,7 @@ const SuggestionInput = ({
       <StyledInputWrapper>
         {addedTags.map(({ id, name }) => (
           <Button
-            aria-label={`Ta vekk tilknyttning til ${name}`}
+            aria-label={t('tagSelector.removeTag', { name })}
             onClick={() => onToggleTag(id)}
             light
             borderShape="rounded"
@@ -173,6 +174,7 @@ const SuggestionInput = ({
           </Button>
         ))}
         <input
+          placeholder={t('tagSelector.placeholder')}
           value={value}
           onBlur={() => {
             setHasFocus(false);
@@ -222,10 +224,10 @@ const SuggestionInput = ({
           }}
           {...props}
         />
-        <Tooltip tooltip={expanded ? 'Skjul alle tagger' : 'Se alle tagger'}>
+        <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
           <IconButtonDualStates
-            ariaLabelActive="Se alle tagger"
-            ariaLabelInActive="Skjul alle tagger"
+            ariaLabelActive={t('tagSelector.showAllTags')}
+            ariaLabelInActive={t('tagSelector.hideAllTags')}
             active={expanded}
             inactiveIcon={<ChevronDown />}
             activeIcon={<ChevronUp />}
@@ -289,7 +291,6 @@ const TagSelector = ({ tags, tagsSelected, onCreateTag, onToggleTag }: Props) =>
   return (
     <div>
       <SuggestionInput
-        placeholder="Tilknytt tag"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);

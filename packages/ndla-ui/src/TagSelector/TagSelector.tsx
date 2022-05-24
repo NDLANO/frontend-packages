@@ -149,6 +149,8 @@ const SuggestionInput = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const SUGGESTION_ID = 'SUGGESTION_ID';
+
   useEffect(() => {
     setCurrentHighlightedIndex(0);
   }, [suggestions]);
@@ -233,6 +235,7 @@ const SuggestionInput = ({
             inactiveIcon={<ChevronDown />}
             activeIcon={<ChevronUp />}
             size="small"
+            aria-controls={SUGGESTION_ID}
             onClick={() => {
               setInputValue('');
               setExpanded(!expanded);
@@ -241,27 +244,32 @@ const SuggestionInput = ({
           />
         </Tooltip>
       </StyledInputWrapper>
-      {(hasFocus || expanded) && suggestions.length > 0 ? (
-        <SuggestionsWrapper>
-          <div>
+      <div id={SUGGESTION_ID} aria-live="polite">
+        {(hasFocus || expanded) && suggestions.length > 0 ? (
+          <SuggestionsWrapper>
             <div>
-              {suggestions.map(({ id, name }, index: number) => {
-                const alreadyAdded = hasBeenAdded(id);
-                return (
-                  <SuggestionButton
-                    disabled={alreadyAdded}
-                    isHighlighted={index === currentHighlightedIndex}
-                    onClick={() => onToggleTag(id)}
-                    key={id}>
-                    <span>{name}</span>
-                    {alreadyAdded && <Check />}
-                  </SuggestionButton>
-                );
-              })}
+              <div role="listbox">
+                {suggestions.map(({ id, name }, index: number) => {
+                  const alreadyAdded = hasBeenAdded(id);
+                  const selected = index === currentHighlightedIndex;
+                  return (
+                    <SuggestionButton
+                      role="option"
+                      aria-selected={selected}
+                      disabled={alreadyAdded}
+                      isHighlighted={selected}
+                      onClick={() => onToggleTag(id)}
+                      key={id}>
+                      <span>{name}</span>
+                      {alreadyAdded && <Check />}
+                    </SuggestionButton>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </SuggestionsWrapper>
-      ) : null}
+          </SuggestionsWrapper>
+        ) : null}
+      </div>
     </SuggestionInputContainer>
   );
 };

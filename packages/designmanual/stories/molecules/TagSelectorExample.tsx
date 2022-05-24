@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { TagSelector, TagSelectorProp } from '@ndla/ui';
+import { TagProp, TagSelector } from '@ndla/ui';
 
 const dummyData = [
   { id: '1', name: 'Cat' },
@@ -37,7 +37,7 @@ const Container = styled.div`
 `;
 
 const TagSelectorExample = () => {
-  const [exampleTags, setExampleTags] = useState<TagSelectorProp[]>(dummyData);
+  const [exampleTags, setExampleTags] = useState<TagProp[]>(dummyData);
   const [exampleTagsSelected, setExampleTagsSelected] = useState(['2']);
   return (
     <Container>

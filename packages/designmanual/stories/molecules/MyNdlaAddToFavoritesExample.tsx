@@ -50,9 +50,9 @@ const DialogExample = ({
 }: DialogExampleProps) => {
   const { t } = useTranslation();
   const [tags, setTags] = useState<TagProp[]>([
-    { name: 'tag1', id: '1' },
-    { name: 'tag2', id: '2' },
-    { name: 'tag3', id: '3' },
+    { name: 'Matte', id: '1' },
+    { name: 'Norsk', id: '2' },
+    { name: 'Til eksamen', id: '3' },
   ]);
   const [tagsSelected, setTagsSelected] = useState<string[]>([]);
   return (
@@ -70,11 +70,17 @@ const DialogExample = ({
             <h3>Mine tags</h3>
             <TagSelector
               tags={tags}
-              onTagsUpdate={(tagsUpdate: string[]) => setTagsSelected(tagsUpdate)}
+              tagsSelected={tagsSelected}
               onCreateTag={(newTagname: string) => {
                 setTags([...tags, { name: newTagname, id: Math.random().toString() }]);
               }}
-              tagsSelected={tagsSelected}
+              onToggleTag={(id: string) => {
+                if (tagsSelected.includes(id)) {
+                  setTagsSelected(tagsSelected.filter((tagId) => tagId !== id));
+                } else {
+                  setTagsSelected([...tagsSelected, id]);
+                }
+              }}
             />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>

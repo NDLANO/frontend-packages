@@ -25,7 +25,7 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-};
+}
 
 const SuggestionInputContainer = styled.div`
   margin-bottom: ${spacing.large};
@@ -81,7 +81,6 @@ const SuggestionsWrapper = styled.div`
   }
 `;
 
-
 interface SuggestionButtonProps {
   isHighlighted: boolean;
 }
@@ -130,7 +129,7 @@ type SuggestionInputProps = {
   setInputValue: (value: string) => void;
   onCreateTag: (tagName: string) => void;
   addedTags: TagProp[];
-}
+};
 
 const SuggestionInput = ({
   suggestions,

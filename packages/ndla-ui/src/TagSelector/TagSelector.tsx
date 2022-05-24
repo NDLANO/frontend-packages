@@ -13,6 +13,7 @@ import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { Check } from '@ndla/icons/editor';
 import { spacing, spacingUnit, colors, misc, animations, fonts, shadows } from '@ndla/core';
+import Tooltip from '@ndla/tooltip';
 
 export interface TagProp {
   name: string;
@@ -61,15 +62,21 @@ const StyledInputWrapper = styled.div`
 `;
 
 const SuggestionsWrapper = styled.div`
+  position: relative;
   > div {
+    position: absolute;
+    z-index: 99999;
+    right: 0;
+    left: 0;
     box-shadow: ${shadows.levitate1};
     margin: 0 ${spacing.small};
     padding: ${spacing.small} 0;
     overflow-y: scroll;
-    max-height: 300px;
+    scroll-behavior: smooth;
+    max-height: 240px;
     border-radius: ${misc.borderRadius};
     background: #fff;
-    ${animations.fadeIn(animations.durations.superFast)}
+    ${animations.fadeIn(animations.durations.fast)}
     > div {
       opacity: 0;
       ${animations.fadeInBottom()}
@@ -87,7 +94,7 @@ const SuggestionButton = styled.button`
   justify-content: space-between;
   border: 0;
   outline: 0;
-  background: ${({ isHighlighted }) => isHighlighted ? colors.brand.lighter : 'transparent'};
+  background: ${({ isHighlighted }) => (isHighlighted ? colors.brand.lighter : 'transparent')};
   width: 100%;
   padding: ${spacing.small};
   ${fonts.sizes(18)};
@@ -114,29 +121,38 @@ const SuggestionButton = styled.button`
 `;
 
 const SuggestionInput = ({
-  onExpandContract,
-  expanded,
   suggestions,
   value,
   setInputValue,
   onCreateTag,
   onToggleTag,
   addedTags,
+  tags,
+  setExpanded,
+  expanded,
   ...props
 }) => {
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
   const [hasFocus, setHasFocus] = useState(false);
   const inputRef = useRef();
+  const containerRef = useRef();
 
   useEffect(() => {
     setCurrentHighlightedIndex(0);
   }, [suggestions]);
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [addedTags]);
+
+  const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
+
   return (
-    <SuggestionInputContainer>
+    <SuggestionInputContainer ref={containerRef}>
       <StyledInputWrapper>
         {addedTags.map(({ id, name }) => (
           <Button
+            aria-label={`Ta vekk tilknyttning til ${name}`}
             onClick={() => onToggleTag(id)}
             light
             borderShape="rounded"
@@ -147,44 +163,82 @@ const SuggestionInput = ({
         ))}
         <input
           value={value}
-          onBlur={() => setHasFocus(false)}
+          onBlur={() => {
+            setHasFocus(false);
+            requestAnimationFrame(() => {
+              // Check if the new focused element is a child of the original container
+              if (!containerRef.current.contains(document.activeElement)) {
+                // Do blur logic here!
+                setExpanded(false);
+              }
+            });
+          }}
           onFocus={() => setHasFocus(true)}
           ref={inputRef}
           onKeyDown={(e: KeyboardEvent) => {
-            const preventDefaultIf = ['Enter', 'Tab', 'ArrowUp', 'ArrowDown'];
-            if (preventDefaultIf.includes(e.key)) {
-              e.preventDefault();
+            if (e.key === 'Escape') {
+              setExpanded(false);
             }
             if (e.key === 'Enter' || e.key === 'Tab') {
-              if (suggestions.length > 0) {
-                onToggleTag(suggestions[currentHighlightedIndex].id);
-                setInputValue('');
-              } else {
-                onCreateTag(value);
-                setInputValue('');
+              if (value !== '' || expanded) {
+                if (suggestions.length > 0) {
+                  if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
+                    onToggleTag(suggestions[currentHighlightedIndex].id);
+                  }
+                  setInputValue('');
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                  }
+                } else {
+                  onCreateTag(value);
+                  setInputValue('');
+                  e.preventDefault();
+                }
+              } else if (e.key === 'Enter') {
+                e.preventDefault();
               }
             } else if (e.key === 'ArrowUp') {
-              setCurrentHighlightedIndex(currentHighlightedIndex - 1 < 0 ? suggestions.length - 1 : currentHighlightedIndex - 1);
+              setCurrentHighlightedIndex(
+                currentHighlightedIndex - 1 < 0 ? suggestions.length - 1 : currentHighlightedIndex - 1,
+              );
+              e.preventDefault();
             } else if (e.key === 'ArrowDown') {
-              setCurrentHighlightedIndex(currentHighlightedIndex + 1 >= suggestions.length ? 0 : currentHighlightedIndex + 1);
+              setCurrentHighlightedIndex(
+                currentHighlightedIndex + 1 >= suggestions.length ? 0 : currentHighlightedIndex + 1,
+              );
+              e.preventDefault();
             }
           }}
           {...props}
         />
+        <Tooltip tooltip={expanded ? 'Skjul alle tagger' : 'Se alle tagger'}>
+          <IconButtonDualStates
+            ariaLabelActive="Se alle tagger"
+            ariaLabelInActive="Skjul alle tagger"
+            active={expanded}
+            inactiveIcon={<ChevronDown />}
+            activeIcon={<ChevronUp />}
+            size="small"
+            onClick={() => {
+              setInputValue('');
+              setExpanded(!expanded);
+              inputRef.current.focus();
+            }}
+          />
+        </Tooltip>
       </StyledInputWrapper>
-      {(hasFocus && suggestions.length > 0) ? (
+      {(hasFocus || expanded) && suggestions.length > 0 ? (
         <SuggestionsWrapper>
           <div>
             <div>
               {suggestions.map(({ id, name }, index) => {
-                const alreadyAdded = addedTags.some(({ id: idAdded }) => idAdded === id);
+                const alreadyAdded = hasBeenAdded(id);
                 return (
                   <SuggestionButton
                     disabled={alreadyAdded}
                     isHighlighted={index === currentHighlightedIndex}
                     onClick={() => onToggleTag(id)}
-                    key={id}
-                  >
+                    key={id}>
                     <span>{name}</span>
                     {alreadyAdded && <Check />}
                   </SuggestionButton>
@@ -194,24 +248,14 @@ const SuggestionInput = ({
           </div>
         </SuggestionsWrapper>
       ) : null}
-      <IconButtonDualStates
-        ariaLabelActive="Se alle tagger"
-        ariaLabelInActive="Skjul alle tagger"
-        active={expanded}
-        inactiveIcon={<ChevronDown />}
-        activeIcon={<ChevronUp />}
-        size="small"
-        onClick={onExpandContract}
-      />
     </SuggestionInputContainer>
   );
 };
 
-const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProps[] => (
+const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProps[] =>
   tags
-    .filter(({ id }) => selectedTags.some((idSelected) => idSelected === id === selected))
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-);
+    .filter(({ id }) => selectedTags.some((idSelected) => (idSelected === id) === selected))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 
 const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
   if (inputValue === '') {
@@ -220,50 +264,36 @@ const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
   const inputLowercase = inputValue.toLowerCase();
   return tags
     .filter(({ name }) => name.toLowerCase().startsWith(inputLowercase))
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-}
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+};
 
 const TagSelector = ({ tags, tagsSelected, onCreateTag, onToggleTag }: Props) => {
   const [inputValue, setInputValue] = useState('');
-  const [showAllTags, setShowAllTags] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [tagsSelected]);
+
   return (
     <div>
-      {tags.map((tag) => (
-        <p key={tag.id}>
-          {tag.name} (selected: {tagsSelected.some(idSelected => idSelected === tag.id) ? 'Ja' : 'Nope'})
-        </p>
-      ))}
       <SuggestionInput
-        placeholder="legg til"
+        placeholder="Tilknytt tag"
         onChange={(e: KeyboardEvent) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);
+          setExpanded(false);
         }}
-        suggestions={getSuggestions(tags, inputValue)}
+        tags={tags.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))}
+        suggestions={expanded ? tags : getSuggestions(tags, inputValue)}
         value={inputValue}
         onCreateTag={onCreateTag}
         onToggleTag={onToggleTag}
         setInputValue={setInputValue}
-        onExpandContract={() => setShowAllTags(!showAllTags)}
-        expanded={showAllTags}
         addedTags={sortedTags(tags, tagsSelected, true)}
+        expanded={expanded}
+        setExpanded={setExpanded}
       />
-      {showAllTags && (
-        <TagsContainer>
-          {sortedTags(tags, tagsSelected, false).map(({ name, id }) => (
-            <Button
-              onClick={() =>
-                onToggleTag(id)
-              }
-              lighter
-              borderShape="rounded"
-              key={id}
-              size="xsmall">
-              #{name}
-            </Button>
-          ))}
-        </TagsContainer>
-      )}
     </div>
   );
 };

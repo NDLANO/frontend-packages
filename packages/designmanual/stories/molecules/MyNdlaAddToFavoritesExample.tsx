@@ -71,8 +71,10 @@ const DialogExample = ({
             <TagSelector
               tags={tags}
               tagsSelected={tagsSelected}
-              onCreateTag={(newTagname: string) => {
-                setTags([...tags, { name: newTagname, id: Math.random().toString() }]);
+              onCreateTag={(name: string) => {
+                const newId = Math.random().toString();
+                setTags((prevTags) => [{ id: newId, name }, ...prevTags]);
+                setTagsSelected((prevSelectedTags) => [newId, ...prevSelectedTags]);
               }}
               onToggleTag={(id: string) => {
                 if (tagsSelected.includes(id)) {

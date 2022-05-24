@@ -188,23 +188,20 @@ const SuggestionInput = ({
         <input
           placeholder={t('tagSelector.placeholder')}
           value={value}
-          onBlur={() => {
-            setHasFocus(false);
-            requestAnimationFrame(() => {
-              // Check if the new focused element is a child of the original container
-              if (!containerRef.current?.contains(document.activeElement)) {
-                // Do blur logic here!
-                setExpanded(false);
-              }
-            });
+          onBlur={(e) => {
+            const relatedTarget = e.relatedTarget as HTMLElement;
+            if (!relatedTarget?.dataset?.suggestionbutton) {
+              setExpanded(false);
+              setHasFocus(false);
+            }
           }}
           onFocus={() => setHasFocus(true)}
           ref={inputRef}
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               setExpanded(false);
-            }
-            if (e.key === 'Enter' || e.key === 'Tab') {
+              e.preventDefault();
+            } else if (e.key === 'Enter' || e.key === 'Tab') {
               if (value !== '' || expanded) {
                 if (suggestions.length > 0) {
                   if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
@@ -238,6 +235,7 @@ const SuggestionInput = ({
         />
         <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
           <IconButtonDualStates
+            data-suggestionButton
             ariaLabelActive={t('tagSelector.showAllTags')}
             ariaLabelInActive={t('tagSelector.hideAllTags')}
             active={expanded}
@@ -264,6 +262,7 @@ const SuggestionInput = ({
                   const selected = index === currentHighlightedIndex;
                   return (
                     <SuggestionButton
+                      data-suggestionButton
                       role="option"
                       aria-selected={selected}
                       disabled={alreadyAdded}

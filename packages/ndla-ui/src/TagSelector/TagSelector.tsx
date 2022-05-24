@@ -229,6 +229,7 @@ const SuggestionInput = ({
             ariaLabelActive={t('tagSelector.showAllTags')}
             ariaLabelInActive={t('tagSelector.hideAllTags')}
             active={expanded}
+            greyLighter
             inactiveIcon={<ChevronDown />}
             activeIcon={<ChevronUp />}
             size="small"

@@ -38,7 +38,7 @@ const Container = styled.div`
 
 const TagSelectorExample = () => {
   const [exampleTags, setExampleTags] = useState<TagProp[]>(dummyData);
-  const [exampleTagsSelected, setExampleTagsSelected] = useState(['2']);
+  const [exampleTagsSelected, setExampleTagsSelected] = useState(['6']);
   return (
     <Container>
       <h3>Tag an animal:</h3>

@@ -37,7 +37,7 @@ export const MyNdla = () => (
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
         resourceImage: {
-          src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          src: 'https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg',
           alt: 'alt',
         },
       },
@@ -49,7 +49,7 @@ export const MyNdla = () => (
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
         resourceImage: {
-          src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+          src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9YBKL8UUmH3-VklAvsuDv7D1I4KrNRFswqOwIhEcmx5NnMfUUUuNCAYB6flaehu4Jnbw&usqp=CAU',
           alt: 'alt',
         },
       },

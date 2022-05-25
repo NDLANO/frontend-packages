@@ -11,18 +11,16 @@ import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
-import { Folder } from '@ndla/icons/editor';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { IconButton } from '@ndla/button/src/IconButton';
-import { ViewListBlack, NewFolder } from '@ndla/icons/contentType';
-import { Grid, FourlineHamburger } from '@ndla/icons/action';
+import { NewFolder, FolderOutlined } from '@ndla/icons/contentType';
+import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import FolderElement from './Folderelement';
 import ResourceElement from './ResourceElement';
 
-const ElementsWrapper = styled.div<{ layout: LayoutProps }>``;
 const NoFolders = styled.div`
   width: 100%;
   height: 50vh;
@@ -32,7 +30,7 @@ const NoFolders = styled.div`
   h1 {
     color: ${colors.brand.greyMedium};
     font-weight: 400;
-    font-size: ${fonts.sizes(34)};
+    ${fonts.sizes(34)};
   }
 `;
 
@@ -40,12 +38,10 @@ const FoldersWrapper = styled.div<{ layout: LayoutProps }>`
   ${(props) =>
     props.layout === 'block' &&
     css`
-      width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 2fr);
       column-gap: 35px;
       row-gap: 5px;
-      margin-bottom: 5px;
       div {
         max-width: 345px;
       }
@@ -55,7 +51,6 @@ const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
   ${(props) =>
     props.layout === 'block' &&
     css`
-      width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 2fr);
       gap: 35px;
@@ -68,30 +63,23 @@ const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
 const DashOptionWrapper = styled.div`
   height: 56px;
   display: flex;
+  justify-content: space-between;
+  margin: ${spacing.xsmall};
 `;
 
 const DashRightSide = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
-  width: 70%;
-  svg {
-    margin-left: ${spacing.xsmall};
-    margin-right: ${spacing.xsmall};
-    transform: scale(1.5);
-    height: 100%;
-  }
+
   ${mq.range({ until: breakpoints.tabletWide })} {
     display: none;
   }
 `;
 const DashLeftSide = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: row;
-  width: 30%;
   align-items: flex-end;
 `;
 
@@ -99,12 +87,15 @@ const AddButton = styled(IconButton)`
   background-color: transparent;
   border: none;
   display: flex;
+  border-radius: 5px;
+
   span {
     display: flex;
     align-items: center;
+    gap: 10px;
   }
   :hover {
-    background-color: transparent;
+    background-color: ${colors.brand.light};
     margin: 0;
     border: none;
   }
@@ -115,82 +106,49 @@ const AddButton = styled(IconButton)`
   }
 `;
 const AddFolder = styled.p`
-  height: 100%;
   color: ${colors.brand.primary};
   margin: 0;
-  padding-left: ${spacing.small};
   align-items: center;
   display: flex;
-  font-weight: 400;
-`;
-
-const AddNewFolder = styled(NewFolder)`
-  height: 100%;
-  stroke: ${colors.brand.primary};
-  stroke-width: 1.5;
-  fill: white;
-  margin-left: ${spacing.xsmall};
-  transform: scale(1.5);
-`;
-
-const StyledLearningPath = styled(FourlineHamburger)`
-  stroke: transparent;
-  fill: ${colors.brand.primary};
-`;
-const StyledViewList = styled(ViewListBlack)`
-  stroke: transparent;
-  fill: ${colors.brand.primary};
-`;
-const StyledGridView = styled(Grid)`
-  fill: ${colors.brand.primary};
-`;
-
-const Filterbutton = styled(IconButton)`
-  background-color: transparent;
-  border: none;
-  display: flex;
-  margin-left: ${spacing.xsmall};
-  padding: 10px;
-  svg {
-  }
-  &:hover {
-    background-color: ${colors.brand.greyLighter};
-    border: none;
-  }
-  &:focus,
-  &:active {
-    background-color: transparent;
-    border: none;
-  }
+  font-weight: 600;
 `;
 
 const FoldersText = styled.p`
   margin: 0;
-  height: 100%;
-  font-size: ${fonts.sizes(16)};
+  ${fonts.sizes(16)};
   display: flex;
   align-items: center;
-  margin-right: ${spacing.medium};
-  span {
-    margin-left: ${spacing.xsmall};
-  }
-`;
-
-const FileIcon = styled(FileDocumentOutline)`
-  height: 100%;
-  margin-right: ${spacing.xsmall};
-`;
-const FolderIcon = styled(Folder)`
-  height: 100%;
-  stroke: rgba(68, 68, 68, 1);
-  stroke-width: 1.5;
-  fill: white;
-  margin-right: ${spacing.xsmall};
+  gap: 5px;
 `;
 
 const ResourceCountWrapper = styled.div`
-  height: 100%;
   display: flex;
+  gap: 30px;
+`;
+
+const CountWrapper = styled.div`
+  display: flex;
+  justify-content: column;
+  gap: 5px;
+  align-items: center;
+`;
+
+const StyledIconButton = styled(IconButton)`
+  svg {
+    fill: ${colors.brand.light};
+  }
+  &:focus {
+    background-color: transparent;
+    svg {
+      fill: ${colors.brand.primary};
+    }
+  }
+  :hover,
+  :active {
+    svg {
+      fill: ${colors.brand.primary};
+    }
+  }
 `;
 
 type FolderProps = {
@@ -224,84 +182,87 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
 
   return (
     <>
-      <DashOptionWrapper>
-        <ResourceCountWrapper>
-          <FolderIcon aria-label={t('myNdla.folders')} />
+      <ResourceCountWrapper>
+        <CountWrapper>
+          <FolderOutlined aria-label={t('myNdla.folders')} />
           <FoldersText>
-            {folders?.length} <span>{t('myNdla.folders')}</span>
+            <span>{folders?.length}</span> {t('myNdla.folders')}
           </FoldersText>
-        </ResourceCountWrapper>
-        <ResourceCountWrapper>
-          <FileIcon aria-label={t('myNdla.resources')} />
+        </CountWrapper>
+        <CountWrapper>
+          <FileDocumentOutline aria-label={t('myNdla.resources')} />
           <FoldersText>
-            {resources?.length}
-            <span>{t('myNdla.resources')}</span>
+            <span> {resources?.length}</span>
+            {t('myNdla.resources')}
           </FoldersText>
-        </ResourceCountWrapper>
-      </DashOptionWrapper>
+        </CountWrapper>
+      </ResourceCountWrapper>
       <DashOptionWrapper>
         <DashLeftSide>
           <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
-            <AddNewFolder />
+            <NewFolder />
             <AddFolder>{t('myNdla.newFolder')}</AddFolder>
           </AddButton>
         </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>
             <Tooltip tooltip={t('myNdla.listView')} align="bottom">
-              <Filterbutton onClick={() => setLayout('list')} size="xsmall" aria-label={t('myNdla.listView')}>
-                <StyledLearningPath />
-              </Filterbutton>
+              <StyledIconButton
+                ghostPill
+                onClick={() => setLayout('list')}
+                size="small"
+                aria-label={t('myNdla.listView')}>
+                <FourlineHamburger />
+              </StyledIconButton>
             </Tooltip>
             <Tooltip tooltip={t('myNdla.detailView')} align="bottom">
-              <Filterbutton onClick={() => setLayout('listLarger')} size="xsmall" aria-label={t('myNdla.detailView')}>
-                <StyledViewList />
-              </Filterbutton>
+              <StyledIconButton
+                ghostPill
+                onClick={() => setLayout('listLarger')}
+                size="small"
+                aria-label={t('myNdla.detailView')}>
+                <List />
+              </StyledIconButton>
             </Tooltip>
             <Tooltip tooltip={t('myNdla.shortView')} align="bottom">
-              <Filterbutton onClick={() => setLayout('block')} size="xsmall" aria-label={t('myNdla.shortView')}>
-                <StyledGridView />
-              </Filterbutton>
+              <StyledIconButton
+                ghostPill
+                onClick={() => setLayout('block')}
+                size="small"
+                aria-label={t('myNdla.shortView')}>
+                <GridListView />
+              </StyledIconButton>
             </Tooltip>
           </DashRightSide>
         )}
       </DashOptionWrapper>
-      <ElementsWrapper layout={layout}>
-        {(!folders || !resources) && (
-          <NoFolders>
-            <h1>Illustrasjon tom mappe</h1>
-          </NoFolders>
-        )}
-        <FoldersWrapper layout={layout}>
-          {folders?.map((folder) => (
-            <FolderElement
-              layout={layout}
-              title={folder.title}
-              link={folder.link}
-              subFolders={3}
-              subResources={3}
-              key={folder.link}
-            />
-          ))}
-        </FoldersWrapper>
-        <ResourcesWrapper layout={layout}>
-          {resources?.map((resource) => (
-            <ResourceElement
-              layout={layout}
-              title={resource.title}
-              topics={resource.topics}
-              tags={resource.tags}
-              description={resource.description}
-              resourceImage={{
-                alt: resource.resourceImage.alt,
-                src: resource.resourceImage.src,
-              }}
-              link={resource.link}
-              key={resource.link}
-            />
-          ))}
-        </ResourcesWrapper>
-      </ElementsWrapper>
+      {(!folders || !resources) && (
+        <NoFolders>
+          <h1>Illustrasjon tom mappe</h1>
+        </NoFolders>
+      )}
+      <FoldersWrapper layout={layout}>
+        {folders?.map(({ title, link }) => (
+          <FolderElement layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
+        ))}
+      </FoldersWrapper>
+      <ResourcesWrapper layout={layout}>
+        {resources?.map(({ title, topics, tags, description, resourceImage, link }) => (
+          <ResourceElement
+            layout={layout}
+            title={title}
+            topics={topics}
+            tags={tags}
+            description={description}
+            resourceImage={{
+              alt: resourceImage.alt,
+              src: resourceImage.src,
+            }}
+            link={link}
+            key={link}
+          />
+        ))}
+      </ResourcesWrapper>
     </>
   );
 };

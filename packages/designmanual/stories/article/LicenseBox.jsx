@@ -39,7 +39,7 @@ const bysaLicenseAbbreviation = 'CC-BY-SA-4.0';
 
 const VideoContent = ({ t }) => (
   <div>
-    <h2>{t('license.video.heading')}</h2>
+    <strong>{t('license.video.heading')}</strong>
     <p>{t('license.video.description')}</p>
     <MediaList>
       {[
@@ -60,7 +60,7 @@ const VideoContent = ({ t }) => (
             </a>
           </MediaListItemImage>
           <div className="o-media__body c-medialist__body">
-            <h3 className="c-medialist__title">{t('license.video.rules')}</h3>
+            <strong className="c-medialist__title">{t('license.video.rules')}</strong>
             <p>Oppsøk innholdsobjektet for å finne regler for gjenbruk.</p>
             <a
               className="c-figure-license__link"
@@ -96,7 +96,7 @@ VideoContent.propTypes = {
 export const TextContent = ({ t }) => (
   <div>
     <div className="u-introduction">
-      <h2>{t('license.text.heading')}</h2>
+      <strong>{t('license.text.heading')}</strong>
       <p>{t('license.text.description')}</p>
     </div>
     <MediaList>
@@ -166,7 +166,7 @@ TextContent.propTypes = {
 const AudioContent = ({ t }) => (
   <div>
     <div className="u-introduction">
-      <h2>{t('license.audio.heading')}</h2>
+      <strong>{t('license.audio.heading')}</strong>
       <p>{t('license.audio.description')}</p>
     </div>
     <MediaList>
@@ -225,7 +225,7 @@ AudioContent.propTypes = {
 export const ImageContent = ({ t }) => (
   <div>
     <div className="u-introduction">
-      <h2>{t('license.images.heading')}</h2>
+      <strong>{t('license.images.heading')}</strong>
       <p>{t('license.images.description')}</p>
     </div>
     <MediaList>
@@ -333,7 +333,7 @@ ImageContent.propTypes = {
 const OtherContent = ({ t }) => (
   <div>
     <div className="u-introduction">
-      <h2>{t('license.other.heading')}</h2>
+      <strong>{t('license.other.heading')}</strong>
       <p>{t('license.other.description')}</p>
     </div>
     <MediaList>
@@ -385,7 +385,7 @@ OtherContent.propTypes = {
 const Files = ({ t }) => (
   <div>
     <div className="u-introduction">
-      <h2>{t('license.files.heading')}</h2>
+      <strong>{t('license.files.heading')}</strong>
       <p>{t('license.files.description')}</p>
     </div>
     <MediaList>
@@ -439,7 +439,7 @@ Files.propTypes = {
 export const LinkContent = ({ t }) => (
   <div>
     <div className="u-introduction">
-      <h2>{t('license.embedlink.heading')}</h2>
+      <strong>{t('license.embedlink.heading')}</strong>
       <p>{t('license.embedlink.description')}</p>
     </div>
     <CopyButton outline copyNode={t('license.embedlink.hasCopiedTitle')}>
@@ -456,7 +456,7 @@ const LicenseBox = () => {
   const { t } = useTranslation();
   return (
     <Fragment>
-      <h1>{t('license.heading')}</h1>
+      <strong>{t('license.heading')}</strong>
       <Tabs
         singleLine
         tabs={[

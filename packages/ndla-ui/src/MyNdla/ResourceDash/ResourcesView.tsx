@@ -21,6 +21,11 @@ import { useTranslation } from 'react-i18next';
 import FolderElement from './Folderelement';
 import ResourceElement from './ResourceElement';
 
+const Dash = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+`;
+
 const NoFolders = styled.div`
   width: 100%;
   height: 50vh;
@@ -64,7 +69,7 @@ const DashOptionWrapper = styled.div`
   height: 56px;
   display: flex;
   justify-content: space-between;
-  margin: ${spacing.xsmall};
+  margin-bottom: ${spacing.xsmall};
 `;
 
 const DashRightSide = styled.div`
@@ -88,7 +93,9 @@ const AddButton = styled(IconButton)`
   border: none;
   display: flex;
   border-radius: 5px;
-
+  svg {
+    fill: ${colors.brand.primary};
+  }
   span {
     display: flex;
     align-items: center;
@@ -135,7 +142,7 @@ const CountWrapper = styled.div`
 
 const StyledIconButton = styled(IconButton)`
   svg {
-    fill: ${colors.brand.light};
+    fill: ${colors.brand.tertiary};
   }
   &:focus {
     background-color: transparent;
@@ -181,7 +188,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
   }, [windowSize]);
 
   return (
-    <>
+    <Dash>
       <ResourceCountWrapper>
         <CountWrapper>
           <FolderOutlined aria-label={t('myNdla.folders')} />
@@ -263,7 +270,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
           />
         ))}
       </ResourcesWrapper>
-    </>
+    </Dash>
   );
 };
 

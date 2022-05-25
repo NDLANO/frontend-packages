@@ -9,32 +9,31 @@ const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
 const urlRegex = require('url-regex');
 
-if (!process.env.CI || !process.env.GITHUB_ACTIONS) {
-  throw new Error('Could not detect Github Actions CI environment');
+if (!process.env.CI || !process.env.TRAVIS) {
+  throw new Error('Could not detect Travis CI environment');
 }
 
 const {
-  GH_PR_NUMBER,
-  GH_PR_REPO,
-  GH_PR_SHA,
-  GITHUB_EVENT_NAME,
-  GITHUB_REF,
-  GITHUB_REPOSITORY,
-  GITHUB_RUN_ID,
-  GITHUB_SERVER_URL,
-  GITHUB_SHA,
+  TRAVIS_BUILD_ID,
+  TRAVIS_EVENT_TYPE,
+  TRAVIS_PULL_REQUEST_SHA,
+  TRAVIS_PULL_REQUEST,
+  TRAVIS_COMMIT,
+  TRAVIS_REPO_SLUG,
+  TRAVIS_PULL_REQUEST_SLUG,
+  TRAVIS_BRANCH,
 } = process.env;
-const { NOW_TOKEN: nowToken, GH_TOKEN: githubToken } = process.env;
+const { VERCEL_TOKEN: vercelToken, GH_TOKEN: githubToken } = process.env;
 const client = github.client(githubToken);
-const ghRepo = client.repo(GITHUB_REPOSITORY);
+const ghRepo = client.repo(process.env.TRAVIS_REPO_SLUG);
 const providedArgs = process.argv.slice(2);
 
 function isFork() {
-  if (!GH_PR_REPO) {
+  if (!TRAVIS_PULL_REQUEST_SLUG) {
     return false;
   }
-  const [prOwner] = GH_PR_REPO.split('/');
-  const [owner] = GITHUB_REPOSITORY.split('/');
+  const [prOwner] = TRAVIS_PULL_REQUEST_SLUG.split('/');
+  const [owner] = TRAVIS_REPO_SLUG.split('/');
 
   return owner !== prOwner;
 }
@@ -48,10 +47,7 @@ function getUrl(content) {
 function logError(message) {
   return function logIfError(error) {
     if (error) {
-      const util = require('util');
-      console.log(util.inspect(message, false, null, true));
-      console.log(util.inspect(error, false, null, true));
-      // console.log(message, error);
+      console.log(message, error);
     }
   };
 }
@@ -62,7 +58,7 @@ function safeify(s, safed = []) {
   }
   safed.push(s);
   if (typeof s === 'string') {
-    return s.split(nowToken).join('NOW_TOKEN').split(githubToken).join('GITHUB_TOKEN');
+    return s.split(vercelToken).join('VERCEL_TOKEN').split(githubToken).join('GITHUB_TOKEN');
   }
   if (typeof s === 'object' && s !== null) {
     return Object.keys(s).reduce((acc, k) => {
@@ -93,24 +89,24 @@ function onError(sha, err) {
   safeError(err);
   updateStatus(sha, {
     state: 'error',
-    description: `▲ Now deployment failed. See github-actions logs for details.`,
+    description: `▲ Vercel deployment failed. See Travis logs for details.`,
   });
 }
 
 function getAliasUrl() {
-  const repoName = GITHUB_REPOSITORY.split('/')[1];
-  if (GH_PR_NUMBER === '') {
+  const repoName = TRAVIS_REPO_SLUG.split('/')[1];
+  if (TRAVIS_PULL_REQUEST === 'false') {
     return `https://${repoName}-master.ndla.sh`;
   }
-  return `https://${repoName}-pr-${GH_PR_NUMBER}.ndla.sh`;
+  return `https://${repoName}-pr-${TRAVIS_PULL_REQUEST}.ndla.sh`;
 }
 
 async function spawnAlias(sha, deployUrl) {
   const newUrl = getAliasUrl();
-  const cliArgs = ['alias', '--token', nowToken, deployUrl, newUrl];
-  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
+  const cliArgs = ['alias', '--token', vercelToken, deployUrl, newUrl];
+  safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
   try {
-    await spawn('now', cliArgs);
+    await spawn('vercel', cliArgs);
   } catch (error) {
     onError(sha, error);
     throw error;
@@ -119,10 +115,10 @@ async function spawnAlias(sha, deployUrl) {
 }
 
 async function spawnDeploy(sha) {
-  const cliArgs = ['--token', nowToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
-  safeLog('spawning shell with command:', `now ${cliArgs.join(' ')}`);
+  const cliArgs = ['--token', vercelToken, '--no-clipboard', '--regions', 'bru1', ...providedArgs];
+  safeLog('spawning shell with command:', `vercel ${cliArgs.join(' ')}`);
   try {
-    const result = await spawn('now', cliArgs);
+    const result = await spawn('vercel', cliArgs);
     return result.toString();
   } catch (error) {
     onError(sha, error);
@@ -132,7 +128,7 @@ async function spawnDeploy(sha) {
 
 async function deploy(sha) {
   if (isFork()) {
-    console.log(`▲ Now deployment is skipped for forks...`);
+    console.log(`▲ Vercel deployment is skipped for forks...`);
     return;
   }
 
@@ -140,15 +136,15 @@ async function deploy(sha) {
     throw new Error('Missing required environment variable GH_TOKEN');
   }
 
-  if (!nowToken) {
-    throw new Error('Missing required environment variable NOW_TOKEN');
+  if (!vercelToken) {
+    throw new Error('Missing required environment variable VERCEL_TOKEN');
   }
-  let targetUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
+  let targetUrl = `https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}`;
 
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'pending',
-    description: `▲ Now deployment starting`,
+    description: `▲ Vercel deployment starting`,
   });
 
   console.log(`🤠 Alrighty, deploy starting.`);
@@ -161,7 +157,7 @@ async function deploy(sha) {
   updateStatus(sha, {
     target_url: `${targetUrl}`,
     state: 'pending',
-    description: `▲ Aliasing now deployment...`,
+    description: `▲ Aliasing vercel deployment...`,
   });
 
   targetUrl = await spawnAlias(sha, targetUrl);
@@ -171,26 +167,26 @@ async function deploy(sha) {
   updateStatus(sha, {
     target_url: targetUrl,
     state: 'success',
-    description: `▲ Now deployment complete`,
+    description: `▲ Vercel deployment complete`,
   });
 
   console.log('🏁 All done!');
 }
 
-switch (GITHUB_EVENT_NAME) {
+switch (TRAVIS_EVENT_TYPE) {
   case 'pull_request': {
-    deploy(GH_PR_SHA);
+    deploy(TRAVIS_PULL_REQUEST_SHA);
     break;
   }
   case 'push': {
-    if (GITHUB_REF === 'refs/heads/master') {
-      deploy(GITHUB_SHA);
+    if (TRAVIS_PULL_REQUEST !== 'false' || TRAVIS_BRANCH === 'master') {
+      deploy(TRAVIS_COMMIT);
     } else {
       console.log(`Skip deploy of commits not updating a PR`);
     }
     break;
   }
   default: {
-    console.log(`${GITHUB_EVENT_NAME} is not supported by now-github`);
+    console.log(`${TRAVIS_EVENT_TYPE} is not supported by vercel-travis`);
   }
 }

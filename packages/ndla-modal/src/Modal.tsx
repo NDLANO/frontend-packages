@@ -238,8 +238,8 @@ const animationContainer = css`
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   }
   &.large {
-    max-width: '60.625em';
-    width: '60.625em';
+    max-width: 60.625em;
+    width: 60.625em;
     max-height: 85vh;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     ${mq.range({ until: '60.625em' })} {
@@ -251,8 +251,8 @@ const animationContainer = css`
     }
   }
   &.medium {
-    max-width: '49.375em';
-    width: '49.375em';
+    max-width: 49.375em;
+    width: 49.375em;
     max-height: 85vh;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     ${mq.range({ until: '49.375em' })} {
@@ -271,8 +271,8 @@ const animationContainer = css`
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
       width: 90%;
       max-height: 85vh;
-      max-width: '38.3125em';
-      min-width: '38.3125em';
+      max-width: 38.3125em;
+      min-width: 38.3125em;
     }
   }
   &.medium,

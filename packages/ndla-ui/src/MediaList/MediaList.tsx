@@ -98,7 +98,7 @@ export const MediaListItemBody = ({
     <div {...containerProps}>
       {/* @ts-ignore */}
       {metaResourceType && <span rel="dct:type" href={metaResourceType} style={{ display: 'none' }} />}
-      {title ? <h3 className="c-medialist__title">{title} </h3> : null}
+      {title ? <strong className="c-medialist__title">{title} </strong> : null}
       <LicenseDescription locale={locale} messages={messages} licenseRights={license.rights} highlightCC />
       <MediaListCCLink url={license.url}>{license.linkText}</MediaListCCLink>
       {children}

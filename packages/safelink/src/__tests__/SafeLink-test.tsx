@@ -10,13 +10,12 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { StaticRouter } from 'react-router';
+import { StaticRouter } from 'react-router-dom/server.js';
 import Safelink, { isOldNdlaLink } from '../SafeLink';
-import MissingRouterContext from '../MissingRouterContext';
 
 test('SafeLink renderers Link correctly if router context is present', () => {
   const component = renderer.create(
-    <StaticRouter location="foo" context={{}}>
+    <StaticRouter location="foo">
       <div>
         <Safelink to="/my/path">Snapshot should contain onClick</Safelink>,
       </div>
@@ -30,7 +29,7 @@ test('SafeLink renderers Link correctly if router context is present', () => {
 
 test('SafeLink defaults to normal link if to prop is an external link', () => {
   const component = renderer.create(
-    <StaticRouter location="foo" context={{}}>
+    <StaticRouter location="foo">
       <div>
         <Safelink to="https://example.com">Snapshot should not contain onClick</Safelink>,
       </div>
@@ -44,7 +43,7 @@ test('SafeLink defaults to normal link if to prop is an external link', () => {
 
 test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
   const component = renderer.create(
-    <StaticRouter location="foo" context={{}}>
+    <StaticRouter location="foo">
       <div>
         <Safelink to="/nb/node/54">Snapshot should not contain onClick</Safelink>,
       </div>
@@ -56,11 +55,7 @@ test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
 });
 
 test('SafeLink renderers normal link correctly when router context is not present', () => {
-  const component = renderer.create(
-    <MissingRouterContext.Provider value={true}>
-      <Safelink to="/my/path">No router context</Safelink>
-    </MissingRouterContext.Provider>,
-  );
+  const component = renderer.create(<Safelink to="/my/path">No router context</Safelink>);
 
   expect(component.toJSON()).toMatchSnapshot();
 });

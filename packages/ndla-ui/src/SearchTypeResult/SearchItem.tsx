@@ -194,7 +194,6 @@ const SearchItem = ({ item, type }: SearchItemType) => {
                 <ItemTitle isTopic>{title}</ItemTitle>
               </ItemTitleWrapper>
               <ItemText isTopic>{parse(ingress)}</ItemText>
-              {children}
             </ItemTopicHeader>
           ) : (
             <>
@@ -204,7 +203,6 @@ const SearchItem = ({ item, type }: SearchItemType) => {
                   <ItemTitle>{title}</ItemTitle>
                 </ItemTitleWrapper>
                 <ItemText>{parse(ingress)}</ItemText>
-                {children}
               </TextWrapper>
             </>
           )}
@@ -212,6 +210,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
             {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
           </ContextWrapper>
         </ItemLink>
+        {children}
       </ItemWrapper>
     </Container>
   );

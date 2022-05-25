@@ -42,6 +42,10 @@ const FolderIconCircle = styled.div<{ layout: LayoutProps }>`
   min-height: 40px;
   min-width: 40px;
   background-color: ${colors.brand.greyLighter};
+  svg {
+    width: 18px;
+    height: 18px;
+  }
   ${(props) =>
     props.layout === 'block' &&
     css`
@@ -62,11 +66,12 @@ const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
   margin-bottom: ${spacing.xsmall};
   font-family: ${fonts.sans};
   transition-duration: 0.5s;
+  gap: 5px;
   &visited {
     text-decoration: none;
   }
   &:hover {
-    box-shadow: 1px 1px 6px 2px ${colors.brand.lightest};
+    box-shadow: 1px 1px 6px 2px ${colors.brand.neutral7};
     transition-duration: 0.5s;
     ${FolderTitle} {
       transition-duration: 0.5s;
@@ -107,12 +112,20 @@ const FolderLeftSide = styled.div<{ layout: LayoutProps }>`
   align-items: center;
   gap: 10px;
 `;
-const FolderRightSide = styled.div`
+const FolderRightSide = styled.div<{ layout: LayoutProps }>`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
+  :last-child {
+    gap: 10px;
+  }
+  ${(props) =>
+    props.layout === 'block' &&
+    css`
+      gap: 5px;
+    `}
 `;
 
 const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
@@ -120,6 +133,7 @@ const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
   display: flex;
   justify-content: center;
   border: none;
+
   &:hover,
   :active,
   :focus {
@@ -129,14 +143,13 @@ const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
   }
   svg {
     fill: ${colors.brand.light};
-    transform: scale(1.5);
     &:hover {
       fill: ${colors.brand.primary};
     }
     ${(props) =>
       props.layout === 'block' &&
       css`
-        margin-left: 10px;
+        padding: 0;
       `}
   }
 `;
@@ -186,7 +199,7 @@ const FolderElement = ({ link, title, subFolders, subResources, children, layout
         <FolderTitle>{title}</FolderTitle>
         {children}
       </FolderLeftSide>
-      <FolderRightSide>
+      <FolderRightSide layout={layout}>
         <FoldersWrapper layout={layout}>
           <FolderOutlined aria-label={t('myNdla.folders')} />
           <FoldersText layout={layout}>

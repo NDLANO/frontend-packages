@@ -72,14 +72,13 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
     text-decoration: none;
   }
   &:hover {
-    box-shadow: 1px 1px 6px 2px ${colors.brand.lightest};
+    box-shadow: 1px 1px 6px 2px ${colors.brand.neutral7};
     transition-duration: 0.5s;
     ${ResourceTitle} {
       color: ${colors.brand.primary};
       text-decoration: underline;
     }
     ${ResourceTopicText} {
-      height: 50px;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -97,10 +96,16 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
       min-height: 232px;
       flex-direction: column;
       padding: 0;
+      gap: 0;
 
       ${ResourceTopicText} {
         height: 0;
         transition: height 0.2s ease-out;
+      }
+      &:hover {
+        ${ResourceTopicText} {
+          height: 50px;
+        }
       }
     `}
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -206,6 +211,22 @@ const ResourceRightSide = styled.div<{ layout: LayoutProps }>`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+
+  ${(props) =>
+    props.layout === 'list' &&
+    css`
+      :last-child {
+        gap: 10px;
+      }
+    `}
+
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      :last-child {
+        gap: 5px;
+      }
+    `}
 `;
 const Halfwrapper = styled.div<{ layout: LayoutProps }>`
   width: 100%;
@@ -251,7 +272,6 @@ const Bottomhalf = styled.div<{ layout: LayoutProps }>`
 const TagsList = styled.div<{ layout: LayoutProps }>`
   display: flex;
   list-style: none;
-  margin-right: ${spacing.medium};
   display: flex;
   ${(props) =>
     props.layout === 'listLarger' &&
@@ -293,7 +313,6 @@ const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
   }
   svg {
     fill: ${colors.brand.light};
-    transform: scale(1.5);
     &:hover {
       fill: ${colors.brand.primary};
     }

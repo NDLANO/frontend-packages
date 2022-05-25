@@ -925,6 +925,7 @@ const messages = {
     myAccount: 'My account',
     favourites: 'Favourites',
     help: 'Help',
+    myPage: 'My page',
   },
 };
 

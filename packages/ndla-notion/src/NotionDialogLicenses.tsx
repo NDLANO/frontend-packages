@@ -56,7 +56,7 @@ const NotionDialogLicenses = ({ license, authors = [], source, locale, licenseBo
       {authorsLength > 0 && (
         <span>
           {authors.reduceRight((acc, curr, i) => {
-            if (i === 0) {
+            if (i === authorsLength - 2) {
               return curr + ` ${t('article.conjunction')} ` + acc;
             }
             return curr + ', ' + acc;

@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import { LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -30,7 +29,7 @@ const Text = styled.div`
   ${fonts.sizes('20px', '20px')};
 `;
 
-const StyledSafeLink = styled(SafeLink)<LinkProps>`
+const StyledSafeLink = styled(SafeLink)`
   color: ${colors.text.light};
 `;
 

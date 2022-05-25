@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { LinkProps } from 'react-router-dom';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Forward, Launch } from '@ndla/icons/common';
@@ -57,7 +56,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledSafeLink = styled(SafeLink)<LinkProps>`
+const StyledSafeLink = styled(SafeLink)`
   color: #fff;
   ${fonts.sizes(16, 1.5)};
   svg {

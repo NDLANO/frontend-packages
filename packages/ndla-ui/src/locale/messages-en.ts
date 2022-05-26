@@ -929,6 +929,7 @@ const messages = {
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Short view',
+    myPage: 'My page',
   },
 };
 

@@ -928,6 +928,7 @@ const messages = {
     listView: 'Listevisning',
     detailView: 'Detaljrik listevisning',
     shortView: 'Kort visning',
+    myPage: 'Min side',
   },
 };
 

@@ -65,14 +65,14 @@ const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
   height: 64px;
   margin-bottom: ${spacing.xsmall};
   font-family: ${fonts.sans};
-  transition-duration: 0.5s;
+  transition-duration: 0.2s;
   gap: 5px;
   &visited {
     text-decoration: none;
   }
   &:hover {
     box-shadow: 1px 1px 6px 2px ${colors.brand.neutral7};
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
     ${FolderTitle} {
       transition-duration: 0.5s;
       color: ${colors.brand.primary};

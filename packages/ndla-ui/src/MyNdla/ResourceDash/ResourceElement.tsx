@@ -73,7 +73,7 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
   }
   &:hover {
     box-shadow: 1px 1px 6px 2px ${colors.brand.neutral7};
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
     ${ResourceTitle} {
       color: ${colors.brand.primary};
       text-decoration: underline;

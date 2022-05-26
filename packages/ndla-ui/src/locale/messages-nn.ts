@@ -924,6 +924,10 @@ const messages = {
     myAccount: 'Min konto',
     favourites: 'Favorittar',
     help: 'Hjelp',
+    more: 'Fleire val',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
     myPage: 'Min side',
   },
 };

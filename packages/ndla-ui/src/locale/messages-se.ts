@@ -923,6 +923,10 @@ const messages = {
     myAccount: 'Min konto',
     favourites: 'Favoritter',
     help: 'Hjelp',
+    more: 'Flere valg',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
     myPage: 'Min side',
   },
 };

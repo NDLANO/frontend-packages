@@ -20,7 +20,7 @@ export const StyledHeadingH1 = styled.h1<StyledHeadingProps>`
   font-weight: ${fonts.weight.semibold};
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #fff;
+  color: ${colors.white};
   margin: ${spacing.small} 0;
   margin-left: ${(props) => props.marginLeft && `${props.marginLeft}px`};
   small {

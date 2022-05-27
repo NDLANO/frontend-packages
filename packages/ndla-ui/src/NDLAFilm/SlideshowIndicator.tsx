@@ -37,7 +37,7 @@ const SlideshowIndicatorDot = styled.button<SlideshowIndicatorDotProps>`
   justify-content: center;
   background: transparent;
   span {
-    background: ${(props) => (props.active ? '#fff' : colors.ndlaFilm.filmColorBright)};
+    background: ${(props) => (props.active ? colors.white : colors.ndlaFilm.filmColorBright)};
     transition: background 100ms ease;
     height: 8px;
     width: 8px;
@@ -58,7 +58,7 @@ const SlideshowIndicatorDot = styled.button<SlideshowIndicatorDotProps>`
   &:hover,
   &:focus {
     span {
-      background: #fff;
+      background: ${colors.white};
     }
   }
 `;

@@ -167,7 +167,7 @@ const SlideshowInfo = styled.div`
   }
 
   p {
-    color: #fff;
+    color: ${colors.white};
     display: inline-block;
     margin: 0;
     padding: 0;

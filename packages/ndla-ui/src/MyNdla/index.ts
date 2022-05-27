@@ -3,5 +3,5 @@ import { ResourcesView } from './ResourceDash';
 import { Breadcrumbs } from './ResourceDash';
 import { FolderElement } from './ResourceDash';
 import { VerticalNavigation } from './Navigation';
-
-export { ResourceElement, ResourcesView, Breadcrumbs, VerticalNavigation, FolderElement };
+import { MyPage } from './MyPage';
+export { ResourceElement, ResourcesView, Breadcrumbs, FolderElement, VerticalNavigation, MyPage };

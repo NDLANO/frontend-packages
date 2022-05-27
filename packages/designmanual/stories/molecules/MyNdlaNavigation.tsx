@@ -11,7 +11,7 @@ import React from 'react';
 import { VerticalNavigation } from '@ndla/ui';
 
 const MyNdlaNavigation = () => {
-  return <VerticalNavigation />;
+  return <VerticalNavigation myFoldersLink="" myPageLink="" myTagsLink="" />;
 };
 
 export default MyNdlaNavigation;

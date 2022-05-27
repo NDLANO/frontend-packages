@@ -929,6 +929,11 @@ const messages = {
     detailView: 'Detaljrik listevisning',
     shortView: 'Kort visning',
     myPage: 'Min side',
+    deleteAccount: 'Slett konto',
+    hello: 'Hei',
+    welcome: 'Vi har henta følgjande informasjon om deg fra Feide:',
+    read: 'Les våre',
+    terms: 'vilkår for bruk',
   },
 };
 

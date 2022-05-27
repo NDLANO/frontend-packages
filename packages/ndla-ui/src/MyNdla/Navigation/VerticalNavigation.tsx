@@ -10,13 +10,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Folder } from '@ndla/icons/editor';
-import SafeLink from '@ndla/safelink';
+import { Tag, Person } from '@ndla/icons/common';
+import { FolderOutlined } from '@ndla/icons/contentType';
+import SafeLinkButton from '@ndla/safelink';
 
 const NavigationWrapper = styled.div`
   position: absolute;
   left: 0;
-  width: 363px;
+  width: auto;
   border-right: 1px solid ${colors.brand.greyLighter};
   height: 100%;
 `;
@@ -25,45 +26,73 @@ const Navigation = styled.div`
   padding: ${spacing.large};
 `;
 
-const NavigationElement = styled.div`
+const NavigationElementText = styled.p`
+  color: ${colors.text.primary};
+  margin: 0;
+`;
+
+const NavigationElement = styled(SafeLinkButton)`
   display: flex;
+  align-items: center;
   gap: 11.33px;
   height: 30px;
+  box-shadow: none;
   &:hover {
     background-color: ${colors.brand.lighter};
     border-radius: 5%;
+    svg {
+      fill: ${colors.brand.primary};
+    }
+    ${NavigationElementText} {
+      color: ${colors.brand.primary};
+    }
+  }
+  &:focus {
+    svg {
+      fill: ${colors.brand.primary};
+    }
+    ${NavigationElementText} {
+      color: ${colors.brand.primary};
+    }
   }
 `;
 
-const NavigationElementIcon = styled.div``;
-
-const NavigationElementText = styled(SafeLink)`
-  color: ${colors.text.primary};
-  box-shadow: none;
+const NavigationElementIcon = styled.div`
+  svg {
+    fill: ${colors.text.primary};
+    height: 20px;
+    width: 20px;
+    vertical-align: text-top !important;
+  }
 `;
 
-export const VerticalNavigation = () => {
+type NavProps = {
+  myPageLink: string;
+  myFoldersLink: string;
+  myTagsLink: string;
+};
+export const VerticalNavigation = ({ myPageLink, myFoldersLink, myTagsLink }: NavProps) => {
   const { t } = useTranslation();
   return (
     <NavigationWrapper>
       <Navigation>
-        <NavigationElement>
+        <NavigationElement to={myPageLink}>
           <NavigationElementIcon>
-            <Folder />
+            <Person />
           </NavigationElementIcon>
-          <NavigationElementText to="">{t('myNdla.myFolders')}</NavigationElementText>
+          <NavigationElementText>{t('myNdla.myPage')}</NavigationElementText>
         </NavigationElement>
-        <NavigationElement>
+        <NavigationElement to={myFoldersLink}>
           <NavigationElementIcon>
-            <Folder />
+            <FolderOutlined />
           </NavigationElementIcon>
-          <NavigationElementText to="">{t('myNdla.myTags')}</NavigationElementText>
+          <NavigationElementText>{t('myNdla.myFolders')}</NavigationElementText>
         </NavigationElement>
-        <NavigationElement>
+        <NavigationElement to={myTagsLink}>
           <NavigationElementIcon>
-            <Folder />
+            <Tag />
           </NavigationElementIcon>
-          <NavigationElementText to="">{t('myNdla.myPage')}</NavigationElementText>
+          <NavigationElementText>{t('myNdla.myTags')}</NavigationElementText>
         </NavigationElement>
       </Navigation>
     </NavigationWrapper>

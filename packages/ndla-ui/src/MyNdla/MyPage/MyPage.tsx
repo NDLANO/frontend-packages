@@ -39,6 +39,10 @@ const Terms = styled.div`
   align-items: center;
   gap: 5px;
   font-weight: 600;
+  a {
+    text-decoration: underline;
+    box-shadow: none;
+  }
   p {
     margin: 0;
   }
@@ -55,6 +59,12 @@ const DeleteButton = styled(Button)`
   color: ${colors.support.red};
   border: 1px solid ${colors.support.red};
   background-color: transparent;
+  &:hover,
+  :focus {
+    background-color: ${colors.support.red};
+    color: white;
+    border: 1px solid white;
+  }
 `;
 type MyPageProps = {
   name: { firstName: string; lastName: string };
@@ -98,7 +108,7 @@ export const MyPage = ({ name, title, school, courses }: MyPageProps) => {
         <p>{t('myNdla.read')} </p> <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
       </Terms>
       <ButtonsWrapper>
-        <Button>{t('user.buttonLogOut')}</Button>
+        <Button outline>{t('user.buttonLogOut')}</Button>
         <DeleteButton>{t('myNdla.deleteAccount')}</DeleteButton>
       </ButtonsWrapper>
     </MyPageWrapper>

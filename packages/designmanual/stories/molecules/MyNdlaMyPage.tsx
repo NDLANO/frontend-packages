@@ -13,6 +13,32 @@ import { MyPage } from '@ndla/ui';
 const MyNdlaMyPage = () => {
   return (
     <MyPage
+      recentFavorites={[
+        {
+          title: 'My Resource',
+          link: '',
+          topics: ['Oppgave', 'Norsk', 'Muntlig'],
+          tags: ['tag', 'tag', 'tag'],
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+          resourceImage: {
+            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+            alt: 'alt',
+          },
+        },
+        {
+          title: 'My Resource',
+          link: '',
+          topics: ['Oppgave', 'Norsk', 'Muntlig'],
+          tags: ['tag', 'tag', 'tag'],
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+          resourceImage: {
+            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+            alt: 'alt',
+          },
+        },
+      ]}
       name={{ firstName: 'Peter', lastName: 'Rolfsen' }}
       title="utvikler"
       courses={['Matte', 'Gym']}

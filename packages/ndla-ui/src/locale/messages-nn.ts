@@ -934,6 +934,7 @@ const messages = {
     welcome: 'Vi har henta følgjande informasjon om deg fra Feide:',
     read: 'Les våre',
     terms: 'vilkår for bruk',
+    newFavourite: 'Nylig favorittmerka',
   },
 };
 

@@ -933,6 +933,7 @@ const messages = {
     welcome: 'Vi har hentet følgende informasjon om deg fra Feide:',
     read: 'Les våre',
     terms: 'vilkår for bruk',
+    newFavourite: 'Nylig favorittmerkede',
   },
 };
 

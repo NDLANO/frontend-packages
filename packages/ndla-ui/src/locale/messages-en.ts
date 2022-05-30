@@ -935,6 +935,7 @@ const messages = {
     welcome: 'We have gathered the following information about you from Feide:',
     read: 'Read our',
     terms: 'terms of use',
+    newFavourite: 'Recently favourited',
   },
 };
 

@@ -13,12 +13,29 @@ import Button from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
+
+import { ResourceElement } from '../ResourceDash';
+
 const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   ${fonts.sizes('16')};
 `;
+
+const Resources = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  margin-top: ${spacing.large};
+  margin-bottom: ${spacing.large};
+  h2 {
+    ${fonts.sizes('18')}
+    font-weight: 700;
+    margin: 0;
+  }
+`;
+
 const Header = styled.div`
   h1 {
     font-weight: 700;
@@ -66,14 +83,24 @@ const DeleteButton = styled(Button)`
     border: 1px solid white;
   }
 `;
+type ResourceProps = {
+  title: string;
+  topics: string[];
+  tags?: string[];
+  resourceImage: { alt: string; src: string };
+  link: string;
+  description?: string;
+};
+
 type MyPageProps = {
   name: { firstName: string; lastName: string };
   title: string;
   school: string;
   courses: string[];
+  recentFavorites?: ResourceProps[];
 };
 
-export const MyPage = ({ name, title, school, courses }: MyPageProps) => {
+export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPageProps) => {
   const { t } = useTranslation();
   return (
     <MyPageWrapper>
@@ -103,10 +130,28 @@ export const MyPage = ({ name, title, school, courses }: MyPageProps) => {
           </li>
         </ul>
       </SchoolInfo>
-      <Terms></Terms>
       <Terms>
         <p>{t('myNdla.read')} </p> <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
       </Terms>
+      <Resources>
+        <h2>{t('myNdla.newFavourite')}</h2>
+        {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
+          <ResourceElement
+            layout="list"
+            title={title}
+            topics={topics}
+            tags={tags}
+            description={description}
+            resourceImage={{
+              alt: resourceImage.alt,
+              src: resourceImage.src,
+            }}
+            link={link}
+            key={link}
+          />
+        ))}
+      </Resources>
+
       <ButtonsWrapper>
         <Button outline>{t('user.buttonLogOut')}</Button>
         <DeleteButton>{t('myNdla.deleteAccount')}</DeleteButton>

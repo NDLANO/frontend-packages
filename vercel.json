@@ -1,6 +1,4 @@
 {
-  "version": 2,
-
   "builds": [
     {
       "packages/designmanual/storybook-static/**": {},

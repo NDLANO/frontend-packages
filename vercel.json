@@ -1,21 +1,34 @@
 {
   "version": 2,
+
   "builds": [
     {
-      "src": "packages/designmanual/storybook-static/**",
-      "use": "@vercel/static"
+      "packages/designmanual/storybook-static/**": {},
+      "packages/designmanual/storybook-static/**/*": {}
     }
   ],
-  "routes": [
+  "rewrites": [
+    { "source": "/", "destination": "packages/designmanual/storybook-static/index.html" },
+    { "source": "/(.*)", "destination": "packages/designmanual/storybook-static/$1" }
+  ],
+  "headers": [
     {
-      "src": "/",
-      "headers": { "cache-control": "s-maxage=1000" },
-      "dest": "packages/designmanual/storybook-static/index.html"
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=1000"
+        }
+      ]
     },
     {
-      "src": "/(.*)",
-      "headers": { "cache-control": "s-maxage=86400" },
-      "dest": "packages/designmanual/storybook-static/$1"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
     }
   ]
 }

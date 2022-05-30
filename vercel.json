@@ -1,10 +1,4 @@
 {
-  "builds": [
-    {
-      "packages/designmanual/storybook-static/**": {},
-      "packages/designmanual/storybook-static/**/*": {}
-    }
-  ],
   "rewrites": [
     { "source": "/", "destination": "packages/designmanual/storybook-static/index.html" },
     { "source": "/(.*)", "destination": "packages/designmanual/storybook-static/$1" }

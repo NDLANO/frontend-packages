@@ -86,7 +86,6 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
           setInputValue(target.value);
           setExpanded(false);
         }}
-        tags={tags.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))}
         suggestions={expanded ? tags : getSuggestions(tags, inputValue)}
         value={inputValue}
         onCreateTag={onCreateTag}

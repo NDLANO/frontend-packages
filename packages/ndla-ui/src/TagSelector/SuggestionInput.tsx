@@ -126,7 +126,6 @@ interface SuggestionInputProps {
   suggestions: TagProp[];
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  tags: TagProp[];
   setExpanded: (expanded: boolean) => void;
   expanded: boolean;
   onToggleTag: (id: string) => void;
@@ -145,9 +144,9 @@ const SuggestionInput = ({
   value,
   setInputValue,
   onCreateTag,
+  onChange,
   onToggleTag,
   addedTags,
-  tags,
   setExpanded,
   expanded,
   dropdownMaxHeight,
@@ -213,6 +212,7 @@ const SuggestionInput = ({
                 setHasFocus(false);
               }
             }}
+            onChange={onChange}
             onFocus={() => setHasFocus(true)}
             ref={inputRef}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -252,7 +252,7 @@ const SuggestionInput = ({
           />
           <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
             <IconButtonDualStates
-              data-suggestionButton
+              data-suggestionbutton
               ariaLabelActive={t('tagSelector.showAllTags')}
               ariaLabelInActive={t('tagSelector.hideAllTags')}
               active={expanded}
@@ -280,7 +280,7 @@ const SuggestionInput = ({
                   const selected = index === currentHighlightedIndex;
                   return (
                     <SuggestionButton
-                      data-suggestionButton
+                      data-suggestionbutton
                       role="option"
                       aria-selected={selected}
                       disabled={alreadyAdded}

@@ -84,7 +84,6 @@ const DialogExample = ({
                   setTagsSelected([...tagsSelected, id]);
                 }
               }}
-              absolutePositionSuggestions={false} // TODO: Should prob be automated.
             />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>

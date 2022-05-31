@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect, InputHTMLAttributes } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';

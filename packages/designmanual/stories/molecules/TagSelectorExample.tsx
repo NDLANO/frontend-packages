@@ -61,7 +61,6 @@ const TagSelectorExample = () => {
           setExampleTags((prevTags) => [{ id: newId, name: newTagName }, ...prevTags]);
           setExampleTagsSelected((prevSelectedTags) => [newId, ...prevSelectedTags]);
         }}
-        absolutePositionSuggestions={true}
       />
     </Container>
   );

@@ -53,12 +53,13 @@ const CombinedInputAndDropdownWrapper = styled.div`
 
 interface SuggestionsWrapperProps {
   dropdownMaxHeight: string;
+  inline?: boolean;
 }
 
 const SuggestionsWrapper = styled.div<SuggestionsWrapperProps>`
   position: relative;
   > div {
-    position: absolute;
+    position: ${({ inline }) => (inline ? 'static' : 'absolute')};
     z-index: 99999;
     right: 0;
     left: 0;
@@ -133,6 +134,7 @@ interface SuggestionInputProps {
   id: string;
   dropdownMaxHeight: string;
   prefix?: string | React.ReactNode;
+  inline?: boolean;
 }
 
 const SuggestionInput = ({
@@ -147,6 +149,7 @@ const SuggestionInput = ({
   expanded,
   dropdownMaxHeight,
   prefix,
+  inline,
   ...props
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
@@ -188,6 +191,7 @@ const SuggestionInput = ({
           <input
             placeholder={t('tagSelector.placeholder')}
             value={value}
+            autoComplete="off"
             onBlur={(e) => {
               const relatedTarget = e.relatedTarget as HTMLElement;
               if (!relatedTarget?.dataset?.suggestionbutton) {
@@ -255,7 +259,7 @@ const SuggestionInput = ({
       </StyledInputWrapper>
       <div id={SUGGESTION_ID} aria-live="polite">
         {(hasFocus || expanded) && suggestions.length > 0 ? (
-          <SuggestionsWrapper dropdownMaxHeight={dropdownMaxHeight}>
+          <SuggestionsWrapper inline={inline} dropdownMaxHeight={dropdownMaxHeight}>
             <div>
               <div role="listbox">
                 {suggestions.map(({ id, name }, index: number) => {

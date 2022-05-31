@@ -24,6 +24,7 @@ interface Props {
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
   prefix?: string | React.ReactNode;
+  inline?: boolean;
 }
 
 const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
@@ -41,7 +42,7 @@ const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 };
 
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
   const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
@@ -55,7 +56,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
 
   useEffect(() => {
     const setMaxDropdownMaxHeight = () => {
-      if (containerRef.current && typeof window !== 'undefined') {
+      if (!inline && containerRef.current && typeof window !== 'undefined') {
         // Calculate distance from bottom of container to bottom of viewport
         const containerBottom = containerRef.current.getBoundingClientRect().bottom;
         const viewportBottom = window.innerHeight;
@@ -63,7 +64,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
         setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
       }
     };
-    if (typeof window !== 'undefined') {
+    if (!inline && typeof window !== 'undefined') {
       if (expanded) {
         setMaxDropdownMaxHeight();
         window.addEventListener('resize', setMaxDropdownMaxHeight);
@@ -74,7 +75,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
     return () => {
       typeof window !== 'undefined' && window.removeEventListener('resize', setMaxDropdownMaxHeight);
     };
-  }, [expanded]);
+  }, [expanded, inline]);
 
   return (
     <div ref={containerRef}>
@@ -97,6 +98,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
         dropdownMaxHeight={dropdownMaxHeight}
         name={INPUT_ID}
         id={INPUT_ID}
+        inline={inline}
       />
     </div>
   );

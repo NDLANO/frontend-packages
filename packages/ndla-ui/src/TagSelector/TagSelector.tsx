@@ -31,7 +31,7 @@ interface Props {
 const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
   tags
     .filter(({ id }) => selectedTags.some((idSelected) => (idSelected === id) === selected))
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 
 const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
   if (inputValue === '') {
@@ -40,7 +40,7 @@ const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
   const inputLowercase = inputValue.toLowerCase();
   return tags
     .filter(({ name }) => name.toLowerCase().startsWith(inputLowercase))
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 };
 
 const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline }: Props) => {
@@ -98,6 +98,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         name={inputIdRef.current}
         id={inputIdRef.current}
         inline={inline}
+        scrollAnchorElement={containerRef}
       />
     </div>
   );

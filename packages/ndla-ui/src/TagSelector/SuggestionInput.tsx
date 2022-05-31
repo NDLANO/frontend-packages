@@ -7,6 +7,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
@@ -137,6 +138,7 @@ interface SuggestionInputProps {
   dropdownMaxHeight: string;
   prefix?: string | React.ReactNode;
   inline?: boolean;
+  scrollAnchorElement: React.RefObject<HTMLDivElement>;
 }
 
 const SuggestionInput = ({
@@ -152,6 +154,7 @@ const SuggestionInput = ({
   dropdownMaxHeight,
   prefix,
   inline,
+  scrollAnchorElement,
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
@@ -213,7 +216,15 @@ const SuggestionInput = ({
               }
             }}
             onChange={onChange}
-            onFocus={() => setHasFocus(true)}
+            onFocus={() => {
+              if (isMobile || true) {
+                scrollAnchorElement?.current?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              }
+              setHasFocus(true);
+            }}
             ref={inputRef}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
               if (e.key === 'Escape') {
@@ -285,13 +296,8 @@ const SuggestionInput = ({
                       aria-selected={selected}
                       disabled={alreadyAdded}
                       isHighlighted={selected}
-                      onClick={(e) => {
+                      onMouseDown={() => {
                         onToggleTag(id);
-                        e.preventDefault();
-                      }}
-                      onTouchStart={(e) => {
-                        onToggleTag(id);
-                        e.preventDefault();
                       }}
                       key={id}>
                       <span>{name}</span>

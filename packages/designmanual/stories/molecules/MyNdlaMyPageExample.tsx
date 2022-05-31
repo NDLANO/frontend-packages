@@ -8,12 +8,11 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing, fonts } from '@ndla/core';
+import { spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
-
 import { ResourceElement } from '@ndla/ui';
 
 const MyPageWrapper = styled.div`
@@ -23,12 +22,15 @@ const MyPageWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   ${fonts.sizes('16')};
+
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    width: 100%;
+  }
 `;
 
 const Resources = styled.div`
   display: flex;
   flex-direction: column;
-
   margin: ${spacing.large} 0;
 `;
 
@@ -93,6 +95,7 @@ type MyPageProps = {
 
 export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPageProps) => {
   const { t } = useTranslation();
+
   return (
     <MyPageWrapper>
       <Header>

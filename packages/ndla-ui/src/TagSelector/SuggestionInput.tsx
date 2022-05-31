@@ -285,7 +285,14 @@ const SuggestionInput = ({
                       aria-selected={selected}
                       disabled={alreadyAdded}
                       isHighlighted={selected}
-                      onClick={() => onToggleTag(id)}
+                      onClick={(e) => {
+                        onToggleTag(id);
+                        e.preventDefault();
+                      }}
+                      onTouchStart={(e) => {
+                        onToggleTag(id);
+                        e.preventDefault();
+                      }}
                       key={id}>
                       <span>{name}</span>
                       {alreadyAdded && <CheckedIcon />}

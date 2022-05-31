@@ -68,7 +68,6 @@ const DialogExample = ({
             <h3>Mine mapper</h3>
             <MyNdlaFolder />
             <TagSelector
-              inline
               prefix="#"
               label="Mine tags"
               tags={tags}

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, InputHTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
@@ -15,9 +15,16 @@ import { Cross } from '@ndla/icons/action';
 import { Check } from '@ndla/icons/editor';
 import { spacing, spacingUnit, colors, misc, animations, fonts, shadows } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
+import { uuid } from '@ndla/util';
 import type { TagProp } from './TagSelector';
 
 const ABSOLUTE_DROPDOWN_MAXHEIGHT = '360px';
+
+const CheckedIcon = styled(Check)`
+  width: ${spacingUnit}px;
+  height: ${spacingUnit}px;
+  fill: ${colors.brand.light};
+`;
 
 const SuggestionInputContainer = styled.div`
   margin-bottom: ${spacing.large};
@@ -56,30 +63,31 @@ interface SuggestionsWrapperProps {
   inline?: boolean;
 }
 
-const SuggestionsWrapper = styled.div<SuggestionsWrapperProps>`
+const SuggestionsWrapper = styled.div`
   position: relative;
+`;
+
+const Suggestions = styled.div<SuggestionsWrapperProps>`
+  position: ${({ inline }) => (inline ? 'static' : 'absolute')};
+  z-index: 99999;
+  right: 0;
+  left: 0;
+  box-shadow: ${shadows.levitate1};
+  margin: 0 ${spacing.small};
+  padding: ${spacing.small} 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  max-height: min(${({ dropdownMaxHeight }) => dropdownMaxHeight}, ${ABSOLUTE_DROPDOWN_MAXHEIGHT});
+  border-radius: ${misc.borderRadius};
+  background: ${colors.white};
+  ${animations.fadeIn(animations.durations.fast)}
   > div {
-    position: ${({ inline }) => (inline ? 'static' : 'absolute')};
-    z-index: 99999;
-    right: 0;
-    left: 0;
-    box-shadow: ${shadows.levitate1};
-    margin: 0 ${spacing.small};
-    padding: ${spacing.small} 0;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    max-height: min(${({ dropdownMaxHeight }) => dropdownMaxHeight}, ${ABSOLUTE_DROPDOWN_MAXHEIGHT});
-    border-radius: ${misc.borderRadius};
-    background: ${colors.white};
-    ${animations.fadeIn(animations.durations.fast)}
-    > div {
-      opacity: 0;
-      ${animations.fadeInBottom()}
-      animation-delay: ${animations.durations.fast};
-      animation-fill-mode: forwards;
-      display: flex;
-      flex-direction: column;
-    }
+    opacity: 0;
+    ${animations.fadeInBottom()}
+    animation-delay: ${animations.durations.fast};
+    animation-fill-mode: forwards;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -104,11 +112,6 @@ const SuggestionButton = styled.button<SuggestionButtonProps>`
     &:hover {
       background: ${colors.brand.lighter};
     }
-  }
-  svg {
-    width: ${spacingUnit}px;
-    height: ${spacingUnit}px;
-    fill: ${colors.brand.light};
   }
   &:disabled {
     &:hover {
@@ -150,15 +153,13 @@ const SuggestionInput = ({
   dropdownMaxHeight,
   prefix,
   inline,
-  ...props
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
   const [hasFocus, setHasFocus] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const SUGGESTION_ID = 'SUGGESTION_ID';
+  const suggestionIdRef = useRef<string>(uuid());
 
   useEffect(() => {
     setCurrentHighlightedIndex(0);
@@ -167,6 +168,19 @@ const SuggestionInput = ({
   useEffect(() => {
     inputRef.current?.focus();
   }, [addedTags]);
+
+  useEffect(() => {
+    const selectedSuggestionElement = document
+      .getElementById(suggestionIdRef.current)
+      ?.querySelector('[aria-selected="true"]');
+    if (selectedSuggestionElement) {
+      // Do we need to scroll this into view?
+      selectedSuggestionElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
+  }, [currentHighlightedIndex]);
 
   const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
 
@@ -235,7 +249,6 @@ const SuggestionInput = ({
                 e.preventDefault();
               }
             }}
-            {...props}
           />
           <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
             <IconButtonDualStates
@@ -247,7 +260,7 @@ const SuggestionInput = ({
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}
               size="small"
-              aria-controls={SUGGESTION_ID}
+              aria-controls={suggestionIdRef.current}
               onClick={() => {
                 setInputValue('');
                 setExpanded(!expanded);
@@ -257,10 +270,10 @@ const SuggestionInput = ({
           </Tooltip>
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
-      <div id={SUGGESTION_ID} aria-live="polite">
+      <div id={suggestionIdRef.current} aria-live="polite">
         {(hasFocus || expanded) && suggestions.length > 0 ? (
-          <SuggestionsWrapper inline={inline} dropdownMaxHeight={dropdownMaxHeight}>
-            <div>
+          <SuggestionsWrapper>
+            <Suggestions inline={inline} dropdownMaxHeight={dropdownMaxHeight}>
               <div role="listbox">
                 {suggestions.map(({ id, name }, index: number) => {
                   const alreadyAdded = hasBeenAdded(id);
@@ -275,12 +288,12 @@ const SuggestionInput = ({
                       onClick={() => onToggleTag(id)}
                       key={id}>
                       <span>{name}</span>
-                      {alreadyAdded && <Check />}
+                      {alreadyAdded && <CheckedIcon />}
                     </SuggestionButton>
                   );
                 })}
               </div>
-            </div>
+            </Suggestions>
           </SuggestionsWrapper>
         ) : null}
       </div>

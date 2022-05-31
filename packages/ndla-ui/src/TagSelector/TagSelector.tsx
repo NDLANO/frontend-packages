@@ -8,6 +8,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { spacingUnit } from '@ndla/core';
+import { uuid } from '@ndla/util';
 import SuggestionInput from './SuggestionInput';
 
 const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
@@ -47,8 +48,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
   const [expanded, setExpanded] = useState(false);
   const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const INPUT_ID = 'INPUT_ID';
+  const inputIdRef = useRef<string>(uuid());
 
   useEffect(() => {
     setExpanded(false);
@@ -59,7 +59,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
       if (!inline && containerRef.current && typeof window !== 'undefined') {
         // Calculate distance from bottom of container to bottom of viewport
         const containerBottom = containerRef.current.getBoundingClientRect().bottom;
-        const viewportBottom = window.innerHeight;
+        const viewportBottom = document.documentElement.scrollHeight;
         const maxDropdownHeight = viewportBottom - containerBottom;
         setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
       }
@@ -79,7 +79,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
 
   return (
     <div ref={containerRef}>
-      <label htmlFor={INPUT_ID}>{label}</label>
+      <label htmlFor={inputIdRef.current}>{label}</label>
       <SuggestionInput
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
@@ -96,8 +96,8 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         expanded={expanded}
         setExpanded={setExpanded}
         dropdownMaxHeight={dropdownMaxHeight}
-        name={INPUT_ID}
-        id={INPUT_ID}
+        name={inputIdRef.current}
+        id={inputIdRef.current}
         inline={inline}
       />
     </div>

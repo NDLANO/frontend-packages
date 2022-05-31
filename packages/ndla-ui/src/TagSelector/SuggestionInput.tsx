@@ -36,6 +36,9 @@ const StyledInputWrapper = styled.div`
     background: transparent;
     ${fonts.sizes(18)};
   }
+  button {
+    min-height: 42px;
+  }
   transition: border-color ${animations.durations.normal} ease;
   border-radius: ${misc.borderRadius};
   &:focus-within {
@@ -129,6 +132,7 @@ interface SuggestionInputProps {
   name: string;
   id: string;
   dropdownMaxHeight: string;
+  prefix?: string | React.ReactNode;
 }
 
 const SuggestionInput = ({
@@ -142,6 +146,7 @@ const SuggestionInput = ({
   setExpanded,
   expanded,
   dropdownMaxHeight,
+  prefix,
   ...props
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
@@ -173,7 +178,10 @@ const SuggestionInput = ({
             borderShape="rounded"
             key={id}
             size="small">
-            #{name} <Cross />
+            {prefix}
+            {name}
+            {` `}
+            <Cross />
           </Button>
         ))}
         <CombinedInputAndDropdownWrapper>

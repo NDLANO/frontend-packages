@@ -23,6 +23,7 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
+  prefix?: string | React.ReactNode;
 }
 
 const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
@@ -54,7 +55,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
 
   useEffect(() => {
     const setMaxDropdownMaxHeight = () => {
-      if (containerRef.current && typeof window) {
+      if (containerRef.current && typeof window !== 'undefined') {
         // Calculate distance from bottom of container to bottom of viewport
         const containerBottom = containerRef.current.getBoundingClientRect().bottom;
         const viewportBottom = window.innerHeight;
@@ -62,7 +63,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
         setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
       }
     };
-    if (typeof window) {
+    if (typeof window !== 'undefined') {
       if (expanded) {
         setMaxDropdownMaxHeight();
         window.addEventListener('resize', setMaxDropdownMaxHeight);
@@ -71,7 +72,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Pr
       }
     }
     return () => {
-      typeof window && window.removeEventListener('resize', setMaxDropdownMaxHeight);
+      typeof window !== 'undefined' && window.removeEventListener('resize', setMaxDropdownMaxHeight);
     };
   }, [expanded]);
 

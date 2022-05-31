@@ -42,6 +42,7 @@ const TagSelectorExample = () => {
   return (
     <Container>
       <TagSelector
+        prefix="#"
         label="Tag an animal:"
         tags={exampleTags}
         tagsSelected={exampleTagsSelected}

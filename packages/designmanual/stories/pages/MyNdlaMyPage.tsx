@@ -8,11 +8,11 @@
 
 import React from 'react';
 
-import { MyPage } from '@ndla/ui';
+import MyNdlaPageExample from '../molecules/MyNdlaMyPageExample';
 
 const MyNdlaMyPage = () => {
   return (
-    <MyPage
+    <MyNdlaPageExample
       recentFavorites={[
         {
           title: 'My Resource',

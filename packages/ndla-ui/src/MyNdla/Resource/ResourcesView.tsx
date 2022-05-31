@@ -62,7 +62,7 @@ const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
       div {
         max-width: 345px;
       }
-    `}
+    `};
 `;
 
 const DashOptionWrapper = styled.div`

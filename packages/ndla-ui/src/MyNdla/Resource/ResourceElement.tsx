@@ -61,8 +61,7 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: ${spacing.xsmall};
   font-family: ${fonts.sans};
   box-shadow: none;
   text-decoration: none;

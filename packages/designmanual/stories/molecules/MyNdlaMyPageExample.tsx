@@ -8,15 +8,17 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing, fonts } from '@ndla/core';
-import Button from '@ndla/button';
+import { spacing, fonts } from '@ndla/core';
+import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
 
-import { ResourceElement } from '../ResourceDash';
+import { ResourceElement } from '@ndla/ui';
 
 const MyPageWrapper = styled.div`
+  width: 960px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -26,22 +28,21 @@ const MyPageWrapper = styled.div`
 const Resources = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  margin-top: ${spacing.large};
-  margin-bottom: ${spacing.large};
-  h2 {
-    ${fonts.sizes('18')}
-    font-weight: 700;
-    margin: 0;
-  }
+
+  margin: ${spacing.large} 0;
 `;
 
-const Header = styled.div`
-  h1 {
-    font-weight: 700;
-    ${fonts.sizes('20')};
-  }
+const StyledH2 = styled.h2`
+  ${fonts.sizes('18')}
+  font-weight: 700;
+  margin: 0;
 `;
+const StyledH1 = styled.h1`
+  font-weight: 700;
+  ${fonts.sizes('20')};
+`;
+const Header = styled.div``;
+
 const SchoolInfo = styled.div`
   font-weight: 600;
   margin-left: ${spacing.normal};
@@ -72,17 +73,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
   gap: 10px;
 `;
-const DeleteButton = styled(Button)`
-  color: ${colors.support.red};
-  border: 1px solid ${colors.support.red};
-  background-color: transparent;
-  &:hover,
-  :focus {
-    background-color: ${colors.support.red};
-    color: white;
-    border: 1px solid white;
-  }
-`;
+
 type ResourceProps = {
   title: string;
   topics: string[];
@@ -105,11 +96,8 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
   return (
     <MyPageWrapper>
       <Header>
-        <h1> {t('myNdla.myPage')}</h1>
-        <p>
-          {' '}
-          {t('myNdla.hello')}, {name.firstName}! {t('myNdla.welcome')}
-        </p>
+        <StyledH1> {t('myNdla.myPage')}</StyledH1>
+        <p>{t('myNdla.welcome', { name })}</p>
       </Header>
       <Styledfeide />
       <SchoolInfo>
@@ -118,7 +106,7 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
             {name.firstName} {name.lastName}
           </li>
           <li>{title}</li>
-          <li> {school}</li>
+          <li>{school}</li>
           <li>
             {courses.map((course, i, { length }) => {
               if (length - 1 === i) {
@@ -134,7 +122,7 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
         <p>{t('myNdla.read')} </p> <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
       </Terms>
       <Resources>
-        <h2>{t('myNdla.newFavourite')}</h2>
+        <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
         {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
           <ResourceElement
             layout="list"

@@ -1,7 +1,6 @@
-import { ResourceElement } from './ResourceDash';
-import { ResourcesView } from './ResourceDash';
-import { Breadcrumbs } from './ResourceDash';
-import { FolderElement } from './ResourceDash';
+import { ResourceElement } from './Resource';
+import { ResourcesView } from './Resource';
+import { Breadcrumbs } from './Resource';
+import { FolderElement } from './Resource';
 import { VerticalNavigation } from './Navigation';
-import { MyPage } from './MyPage';
-export { ResourceElement, ResourcesView, Breadcrumbs, FolderElement, VerticalNavigation, MyPage };
+export { ResourceElement, ResourcesView, Breadcrumbs, FolderElement, VerticalNavigation };

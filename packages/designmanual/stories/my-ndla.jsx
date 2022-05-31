@@ -9,7 +9,7 @@ import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
 import MyNdlaNavigation from './molecules/MyNdlaNavigation';
-import MyNdlaMyPage from './molecules/MyNdlaMyPage';
+import MyNdlaMyPage from './pages/MyNdlaMyPage';
 
 storiesOf('Min NDLA', module).add('Dashboard', () => (
   <PageContainer>

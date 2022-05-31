@@ -18,8 +18,7 @@ import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import FolderElement from './Folderelement';
-import ResourceElement from './ResourceElement';
+import { FolderElement, ResourceElement } from '@ndla/ui';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -59,6 +58,8 @@ const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
       display: grid;
       grid-template-columns: repeat(3, 2fr);
       gap: 35px;
+
+      margin-top: ${spacing.xsmall};
       div {
         max-width: 345px;
       }

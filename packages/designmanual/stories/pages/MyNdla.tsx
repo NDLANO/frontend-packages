@@ -6,10 +6,10 @@
  *
  */
 import React from 'react';
-import { ResourcesView } from '@ndla/ui';
+import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 export const MyNdla = () => (
   <>
-    <ResourcesView
+    <MyNdlaResourceView
       folders={[
         { title: 'name', link: 'hey' },
         { title: 'Ny mappe', link: '' },

@@ -7,14 +7,10 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from '@emotion/styled';
-import Button, { IconButtonDualStates } from '@ndla/button';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { Cross } from '@ndla/icons/action';
-import { Check } from '@ndla/icons/editor';
-import { spacing, spacingUnit, colors, misc, animations, fonts, shadows } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
+import { spacingUnit } from '@ndla/core';
+import SuggestionInput from './SuggestionInput';
+
+const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
 
 export interface TagProp {
   name: string;
@@ -27,261 +23,7 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-  absolutePositionSuggestions?: boolean;
 }
-
-const SuggestionInputContainer = styled.div`
-  margin-bottom: ${spacing.large};
-`;
-
-const StyledInputWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${spacing.xsmall};
-  padding: ${spacing.small};
-  border: 1px solid ${colors.brand.greyLighter};
-  input {
-    flex-grow: 1;
-    border: 0;
-    outline: none;
-    background: transparent;
-    ${fonts.sizes(18)};
-  }
-  button {
-    min-height: 42px;
-  }
-  transition: border-color ${animations.durations.normal} ease;
-  border-radius: ${misc.borderRadius};
-  &:focus-within {
-    border-color: ${colors.brand.primary};
-  }
-`;
-
-interface SuggestionsWrapperProps {
-  absolutePosition?: boolean;
-}
-
-const SuggestionsWrapper = styled.div<SuggestionsWrapperProps>`
-  position: relative;
-  > div {
-    position: ${({ absolutePosition }) => (absolutePosition ? 'absolute' : 'static')};
-    z-index: 99999;
-    right: 0;
-    left: 0;
-    box-shadow: ${shadows.levitate1};
-    margin: 0 ${spacing.small};
-    padding: ${spacing.small} 0;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    max-height: 240px;
-    border-radius: ${misc.borderRadius};
-    background: #fff;
-    ${animations.fadeIn(animations.durations.fast)}
-    > div {
-      opacity: 0;
-      ${animations.fadeInBottom()}
-      animation-delay: ${animations.durations.fast};
-      animation-fill-mode: forwards;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-`;
-
-interface SuggestionButtonProps {
-  isHighlighted: boolean;
-}
-
-const SuggestionButton = styled.button<SuggestionButtonProps>`
-  display: flex;
-  align-items: space-between;
-  justify-content: space-between;
-  border: 0;
-  outline: 0;
-  background: ${({ isHighlighted }) => (isHighlighted ? colors.brand.lighter : 'transparent')};
-  width: 100%;
-  padding: ${spacing.small};
-  ${fonts.sizes(18)};
-  transition: ${misc.transition.default};
-  &:not(:disabled) {
-    cursor: pointer;
-    color: ${colors.brand.primary};
-    &:hover {
-      background: ${colors.brand.lighter};
-    }
-  }
-  svg {
-    width: ${spacingUnit}px;
-    height: ${spacingUnit}px;
-    fill: ${colors.brand.light};
-  }
-  &:disabled {
-    &:hover {
-      svg {
-        fill: ${colors.brand.greyLight};
-      }
-    }
-  }
-`;
-
-interface SuggestionInputProps {
-  suggestions: TagProp[];
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  tags: TagProp[];
-  setExpanded: (expanded: boolean) => void;
-  expanded: boolean;
-  onToggleTag: (id: string) => void;
-  setInputValue: (value: string) => void;
-  onCreateTag: (tagName: string) => void;
-  addedTags: TagProp[];
-  absolutePositionSuggestions?: boolean;
-  name: string;
-  id: string;
-}
-
-const SuggestionInput = ({
-  suggestions,
-  value,
-  setInputValue,
-  onCreateTag,
-  onToggleTag,
-  addedTags,
-  tags,
-  setExpanded,
-  expanded,
-  absolutePositionSuggestions,
-  ...props
-}: SuggestionInputProps) => {
-  const { t } = useTranslation();
-  const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
-  const [hasFocus, setHasFocus] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const SUGGESTION_ID = 'SUGGESTION_ID';
-
-  useEffect(() => {
-    setCurrentHighlightedIndex(0);
-  }, [suggestions]);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, [addedTags]);
-
-  const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
-
-  return (
-    <SuggestionInputContainer ref={containerRef}>
-      <StyledInputWrapper>
-        {addedTags.map(({ id, name }) => (
-          <Button
-            aria-label={t('tagSelector.removeTag', { name })}
-            onClick={() => onToggleTag(id)}
-            light
-            borderShape="rounded"
-            key={id}
-            size="small">
-            #{name} <Cross />
-          </Button>
-        ))}
-        <input
-          placeholder={t('tagSelector.placeholder')}
-          value={value}
-          onBlur={(e) => {
-            const relatedTarget = e.relatedTarget as HTMLElement;
-            if (!relatedTarget?.dataset?.suggestionbutton) {
-              setExpanded(false);
-              setHasFocus(false);
-            }
-          }}
-          onFocus={() => setHasFocus(true)}
-          ref={inputRef}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Escape') {
-              setExpanded(false);
-              e.preventDefault();
-            } else if (e.key === 'Enter' || e.key === 'Tab') {
-              if (value !== '' || expanded) {
-                if (suggestions.length > 0) {
-                  if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
-                    onToggleTag(suggestions[currentHighlightedIndex].id);
-                  }
-                  setInputValue('');
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                  }
-                } else {
-                  onCreateTag(value);
-                  setInputValue('');
-                  e.preventDefault();
-                }
-              } else if (e.key === 'Enter') {
-                e.preventDefault();
-              }
-            } else if (e.key === 'ArrowUp') {
-              setCurrentHighlightedIndex(
-                currentHighlightedIndex - 1 < 0 ? suggestions.length - 1 : currentHighlightedIndex - 1,
-              );
-              e.preventDefault();
-            } else if (e.key === 'ArrowDown') {
-              setCurrentHighlightedIndex(
-                currentHighlightedIndex + 1 >= suggestions.length ? 0 : currentHighlightedIndex + 1,
-              );
-              e.preventDefault();
-            }
-          }}
-          {...props}
-        />
-        <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
-          <IconButtonDualStates
-            data-suggestionButton
-            ariaLabelActive={t('tagSelector.showAllTags')}
-            ariaLabelInActive={t('tagSelector.hideAllTags')}
-            active={expanded}
-            greyLighter
-            inactiveIcon={<ChevronDown />}
-            activeIcon={<ChevronUp />}
-            size="small"
-            aria-controls={SUGGESTION_ID}
-            onClick={() => {
-              setInputValue('');
-              setExpanded(!expanded);
-              inputRef.current?.focus();
-            }}
-          />
-        </Tooltip>
-      </StyledInputWrapper>
-      <div id={SUGGESTION_ID} aria-live="polite">
-        {(hasFocus || expanded) && suggestions.length > 0 ? (
-          <SuggestionsWrapper absolutePosition={absolutePositionSuggestions}>
-            <div>
-              <div role="listbox">
-                {suggestions.map(({ id, name }, index: number) => {
-                  const alreadyAdded = hasBeenAdded(id);
-                  const selected = index === currentHighlightedIndex;
-                  return (
-                    <SuggestionButton
-                      data-suggestionButton
-                      role="option"
-                      aria-selected={selected}
-                      disabled={alreadyAdded}
-                      isHighlighted={selected}
-                      onClick={() => onToggleTag(id)}
-                      key={id}>
-                      <span>{name}</span>
-                      {alreadyAdded && <Check />}
-                    </SuggestionButton>
-                  );
-                })}
-              </div>
-            </div>
-          </SuggestionsWrapper>
-        ) : null}
-      </div>
-    </SuggestionInputContainer>
-  );
-};
 
 const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
   tags
@@ -298,9 +40,11 @@ const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 };
 
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, absolutePositionSuggestions }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
+  const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const INPUT_ID = 'INPUT_ID';
 
@@ -308,8 +52,31 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, abso
     setExpanded(false);
   }, [tagsSelected]);
 
+  useEffect(() => {
+    const setMaxDropdownMaxHeight = () => {
+      if (containerRef.current && typeof window) {
+        // Calculate distance from bottom of container to bottom of viewport
+        const containerBottom = containerRef.current.getBoundingClientRect().bottom;
+        const viewportBottom = window.innerHeight;
+        const maxDropdownHeight = viewportBottom - containerBottom;
+        setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
+      }
+    };
+    if (typeof window) {
+      if (expanded) {
+        setMaxDropdownMaxHeight();
+        window.addEventListener('resize', setMaxDropdownMaxHeight);
+      } else {
+        window.removeEventListener('resize', setMaxDropdownMaxHeight);
+      }
+    }
+    return () => {
+      typeof window && window.removeEventListener('resize', setMaxDropdownMaxHeight);
+    };
+  }, [expanded]);
+
   return (
-    <div>
+    <div ref={containerRef}>
       <label htmlFor={INPUT_ID}>{label}</label>
       <SuggestionInput
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -326,7 +93,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, abso
         addedTags={sortedTags(tags, tagsSelected, true)}
         expanded={expanded}
         setExpanded={setExpanded}
-        absolutePositionSuggestions={absolutePositionSuggestions}
+        dropdownMaxHeight={dropdownMaxHeight}
         name={INPUT_ID}
         id={INPUT_ID}
       />

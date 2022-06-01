@@ -1,4 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
+import styled from '@emotion/styled';
+import { Spinner } from '@ndla/editor';
+import { spacing, colors, misc } from '@ndla/core';
+
+const InputWrapper = styled.div<{ loading?: boolean }>`
+  display: flex;
+  border: 1px solid ${({ loading }) => loading ? colors.brand.lighter : colors.brand.primary};
+  border-style: dashed;
+  border-radius: ${misc.borderRadius};
+  padding: ${spacing.small};
+  input {
+    flex-shrink: 1;
+    border: 0;
+    outline: none;
+    padding: ${spacing.small};
+    background: transparent;
+  }
+`;
 
 interface FolderNameInputProps {
   onSaveNewFolder: (props: { value: string; cancel: boolean }) => void;
@@ -14,7 +32,7 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
   }, [inputRef.current]);
 
   return (
-    <div>
+    <InputWrapper loading={loading}>
       <input
         disabled={loading}
         ref={inputRef}
@@ -31,7 +49,8 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
           setValue(target.value);
         }}
       />
-    </div>
+      {loading && <Spinner size='xsmall' />}
+    </InputWrapper>
   );
 };
 

@@ -6,9 +6,11 @@
  *
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
 import FolderNameInput from './FolderNameInput';
 import FolderItem from './FolderItem';
+import TreeStructureWrapper from './TreeStructureWrapper';
 
 const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -29,6 +31,7 @@ interface CommonFolderProps {
   editable?: boolean;
   idPaths: number[];
   loading?: boolean;
+  openOnFolderClick?: boolean;
 }
 
 export interface FoldersProps extends CommonFolderProps {
@@ -41,19 +44,26 @@ type onSaveNewFolderProp = ({ value, cancel }: { value: string; cancel: boolean 
 
 interface FolderItemsProps extends CommonFolderProps {
   onToggleOpen: (id: string) => void;
+  onSaveNewFolder: onSaveNewFolderProp;
   onCreateNewFolder: onCreateNewFolderProp;
   newFolder: NewFolderProps | undefined;
-  openFolders: string[];
-  markedFolderId: string;
+  openFolders: Set<string>;
+  markedFolderId?: string;
+  onMarkFolder: (id: string) => void;
 }
+
+const NewFolderWrapper = styled.div<{ withPadding?: boolean }>`
+  padding-left: ${({ withPadding }) => withPadding ? '1rem' : '0'};
+`;
 
 interface NewFolderOptionProp {
   editing: boolean;
   loading?: boolean;
   parentId: string;
-  idPaths: string[];
+  idPaths: number[];
   onSaveNewFolder: onSaveNewFolderProp;
   onCreateNewFolder: onCreateNewFolderProp;
+  withPadding?: boolean;
 }
 
 const NewFolderOption = ({
@@ -63,12 +73,12 @@ const NewFolderOption = ({
   loading,
   parentId,
   idPaths,
-}: NewFolderOptionProp) => {
-  if (editing) {
-    return <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />;
-  }
-  return <button onClick={() => onCreateNewFolder({ parentId, idPaths })}>new folder</button>;
-};
+  withPadding,
+}: NewFolderOptionProp) => (
+  <NewFolderWrapper withPadding={withPadding}>
+    {editing ? <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} /> : <button onClick={() => onCreateNewFolder({ parentId, idPaths })}>new folder</button>}
+  </NewFolderWrapper>
+);
 
 const FolderItems = ({
   loading,
@@ -82,6 +92,7 @@ const FolderItems = ({
   openFolders,
   markedFolderId,
   onMarkFolder,
+  openOnFolderClick,
 }: FolderItemsProps) => (
   <ul>
     {data.map(({ name, data: dataChildren, id }, _index) => {
@@ -91,6 +102,7 @@ const FolderItems = ({
         <li key={id}>
           <div>
             <FolderItem
+              openOnFolderClick={openOnFolderClick}
               loading={loading}
               isOpen={isOpen}
               id={id}
@@ -102,6 +114,7 @@ const FolderItems = ({
           </div>
           {editable && isOpen && newIdPaths.length < MAX_LEVEL_FOR_FOLDERS && (
             <NewFolderOption
+              withPadding
               editing={newFolder?.parentId === id}
               loading={loading}
               parentId={id}
@@ -123,6 +136,7 @@ const FolderItems = ({
               onSaveNewFolder={onSaveNewFolder}
               markedFolderId={markedFolderId}
               onMarkFolder={onMarkFolder}
+              openOnFolderClick={openOnFolderClick}
             />
           )}
         </li>
@@ -131,7 +145,7 @@ const FolderItems = ({
   </ul>
 );
 
-const TreeStructure = ({ data, label, editable, loading, onNewFolder }: FoldersProps) => {
+const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick }: FoldersProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set([]));
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>();
@@ -177,24 +191,28 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder }: FoldersP
   return (
     <div>
       <h1>
-        {label} {loading ? 'wait...' : ''}
+        {label}
       </h1>
-      <button onClick={() => onCreateNewFolder({ idPaths: [] })}>new folder</button>
-      {newFolder && newFolder.parentId === undefined && (
-        <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />
-      )}
-      <FolderItems
-        idPaths={[]}
-        data={data}
-        editable={editable}
-        onToggleOpen={onToggleOpen}
-        newFolder={newFolder}
-        onCreateNewFolder={onCreateNewFolder}
-        onSaveNewFolder={onSaveNewFolder}
-        openFolders={openFolders}
-        markedFolderId={markedFolderId}
-        onMarkFolder={onMarkFolder}
-      />
+      <TreeStructureWrapper>
+        <button onClick={() => onCreateNewFolder({ idPaths: [] })}>new folder</button>
+        {newFolder && newFolder.parentId === undefined && (
+          <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />
+        )}
+        <FolderItems
+          idPaths={[]}
+          data={data}
+          editable={editable}
+          onToggleOpen={onToggleOpen}
+          newFolder={newFolder}
+          onCreateNewFolder={onCreateNewFolder}
+          onSaveNewFolder={onSaveNewFolder}
+          openFolders={openFolders}
+          markedFolderId={markedFolderId}
+          onMarkFolder={onMarkFolder}
+          openOnFolderClick={openOnFolderClick}
+          loading={loading}
+        />
+      </TreeStructureWrapper>
     </div>
   );
 };

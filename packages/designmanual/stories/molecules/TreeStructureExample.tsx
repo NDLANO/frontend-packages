@@ -64,6 +64,7 @@ const TreeStructureExample = () => {
     <TreeStructure
       label="Hello from other side"
       editable
+      openOnFolderClick
       onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
         // Just as an example, pretend to save to database and update the structure
         setLoading(true);

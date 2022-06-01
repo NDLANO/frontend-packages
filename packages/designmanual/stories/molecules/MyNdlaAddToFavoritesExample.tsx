@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
-import { TagSelector, TagProp, SnackBar, SnackBarItemProp } from '@ndla/ui';
+import { SnackBar, SnackBarItemProp } from '@ndla/ui';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
@@ -49,12 +49,6 @@ const DialogExample = ({
   setSnackBarMessage,
 }: DialogExampleProps) => {
   const { t } = useTranslation();
-  const [tags, setTags] = useState<TagProp[]>([
-    { name: 'Matte', id: '1' },
-    { name: 'Norsk', id: '2' },
-    { name: 'Til eksamen', id: '3' },
-  ]);
-  const [tagsSelected, setTagsSelected] = useState<string[]>([]);
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
       {(onCloseModal: () => void) => (
@@ -67,24 +61,6 @@ const DialogExample = ({
             <MyNdlaResource />
             <h3>Mine mapper</h3>
             <MyNdlaFolder />
-            <TagSelector
-              prefix="#"
-              label="Mine tags"
-              tags={tags}
-              tagsSelected={tagsSelected}
-              onCreateTag={(name: string) => {
-                const newId = Math.random().toString();
-                setTags((prevTags) => [{ id: newId, name }, ...prevTags]);
-                setTagsSelected((prevSelectedTags) => [newId, ...prevSelectedTags]);
-              }}
-              onToggleTag={(id: string) => {
-                if (tagsSelected.includes(id)) {
-                  setTagsSelected(tagsSelected.filter((tagId) => tagId !== id));
-                } else {
-                  setTagsSelected([...tagsSelected, id]);
-                }
-              }}
-            />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>
                 Avbryt

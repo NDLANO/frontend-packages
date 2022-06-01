@@ -33,6 +33,7 @@ const ResourceTitle = styled.h2<{ layout: LayoutProps }>`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  line-height: 1;
   -webkit-line-clamp: 1; /* number of lines to show */
   line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -71,7 +72,7 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
     text-decoration: none;
   }
   &:hover {
-    box-shadow: 1px 1px 6px 2px ${colors.brand.neutral7};
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
     ${ResourceTitle} {
       color: ${colors.brand.primary};
@@ -117,9 +118,11 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
 `;
 const ResourceTopic = styled.ul`
   display: flex;
+  align-items: center;
   margin: 0;
   ${fonts.sizes('12')};
   list-style: none;
+  line-height: 0;
   gap: 5px;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: 0;
@@ -135,23 +138,40 @@ const ResourceTopic = styled.ul`
   }
 `;
 
-const ResourceInfoWrapper = styled.div`
+const ResourceInfoWrapper = styled.div<{ layout: LayoutProps }>`
   display: flex;
   flex-direction: column;
+
+  ${(props) =>
+    props.layout === 'listLarger' &&
+    css`
+      gap: 8px;
+    `}
+  ${(props) =>
+    props.layout === 'list' &&
+    css`
+      gap: 5px;
+    `}
+    ${(props) =>
+    props.layout === 'block' &&
+    css`
+      gap: 5px;
+    `}
   ${mq.range({ until: breakpoints.tabletWide })} {
     min-width: 56px;
     justify-content: center;
   }
 `;
 const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
-  width: 56px;
-
+  border-radius: 2px;
   overflow: hidden;
-
+  display: flex;
+  align-items: center;
   ${(props) =>
     props.layout === 'list' &&
     css`
-      height: 40px;
+      width: 61px;
+      height: 45px;
       object-fit: cover;
     `}
   ${(props) =>
@@ -159,18 +179,23 @@ const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
     css`
       min-width: 136px;
       max-height: 96px;
-      object-fit: cover;
+      object-fit: contain;
     `}
   ${(props) =>
     props.layout === 'block' &&
     css`
-      height: 50%;
+      height: 60%;
       width: 100%;
+      div {
+        width: 100%;
+      }
     `}
   ${mq.range({ until: breakpoints.tabletWide })} {
     min-width: 56px;
     object-fit: cover;
     height: 100%;
+    display: flex;
+    align-items: flex-start;
     div {
       max-height: 40px;
       overflow: hidden;
@@ -179,16 +204,17 @@ const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
 `;
 const ResourceImage = styled(Image)<{ layout: LayoutProps }>`
   border-radius: 2px;
-
   ${(props) =>
     props.layout === 'list' &&
     css`
-      min-height: 40px;
+      width: 56px;
+      height: 40px;
+      object-fit: cover;
     `}
   ${(props) =>
     props.layout === 'listLarger' &&
     css`
-      min-height: 96px;
+      height: 96px;
       min-width: 136px;
     `}
   ${(props) =>
@@ -222,6 +248,7 @@ const ResourceRightSide = styled.div<{ layout: LayoutProps }>`
   ${(props) =>
     props.layout === 'listLarger' &&
     css`
+      height: 15px;
       :last-child {
         gap: 5px;
       }
@@ -238,6 +265,7 @@ const Halfwrapper = styled.div<{ layout: LayoutProps }>`
       margin-top: ${spacing.xxsmall};
       display: flex;
       flex-direction: column;
+      gap: 8px;
     `}
   ${(props) =>
     props.layout === 'block' &&
@@ -256,9 +284,8 @@ const Tophalf = styled.div<{ layout: LayoutProps }>`
     css`
       flex-direction: column;
     `}
-  ${mq.range({ until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.mobileWide })} {
     flex-direction: column;
-    margin-top: ${spacing.xsmall};
   }
 `;
 
@@ -292,9 +319,6 @@ const TagsList = styled.div<{ layout: LayoutProps }>`
     color: ${colors.brand.grey};
     ${fonts.sizes(14)};
   }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    margin-right: ${spacing.small};
-  }
 `;
 
 const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
@@ -327,7 +351,7 @@ type ResourceImageProps = {
   alt: string;
   src: string;
 };
-interface ResourceElementProps {
+export interface ResourceElementProps {
   link: string;
   title: string;
   resourceImage: ResourceImageProps;
@@ -350,7 +374,7 @@ const ResourceElement = ({ link, title, tags, resourceImage, topics, layout, des
       <Halfwrapper layout={layout}>
         <Tophalf layout={layout}>
           <ResourceLeftSide layout={layout}>
-            <ResourceInfoWrapper>
+            <ResourceInfoWrapper layout={layout}>
               <ResourceTitle layout={layout}>{title}</ResourceTitle>
               <ResourceTopic>
                 {topics?.map((topic) => (

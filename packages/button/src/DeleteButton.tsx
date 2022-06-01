@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ReactElement } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { Button } from './Button';
@@ -21,10 +21,8 @@ const StyledDeleteButton = styled(Button)`
     border: 1px solid white;
   }
 `;
-interface DeleteButtonProps {
-  children?: ReactElement;
-}
-export const DeleteButton = ({ children }: DeleteButtonProps) => {
+
+export const DeleteButton = ({ children, ...rest }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return <StyledDeleteButton>{children}</StyledDeleteButton>;
 };
 

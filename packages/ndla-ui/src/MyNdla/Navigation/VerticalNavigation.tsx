@@ -6,18 +6,16 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { Tag, Person } from '@ndla/icons/common';
-import { FolderOutlined } from '@ndla/icons/contentType';
 import SafeLinkButton from '@ndla/safelink';
 
 const NavigationWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  max-width: 362px;
   border-right: 1px solid ${colors.brand.greyLighter};
   height: 100%;
 `;
@@ -62,38 +60,28 @@ const NavigationElementIcon = styled.div`
     fill: ${colors.text.primary};
     height: 20px;
     width: 20px;
-    vertical-align: text-top !important;
   }
 `;
 
 type NavProps = {
-  myPageLink: string;
-  myFoldersLink: string;
-  myTagsLink: string;
+  navElements?: {
+    icon: ReactNode;
+    url: string;
+    name: string;
+  }[];
 };
-export const VerticalNavigation = ({ myPageLink, myFoldersLink, myTagsLink }: NavProps) => {
-  const { t } = useTranslation();
+export const VerticalNavigation = ({ navElements }: NavProps) => {
   return (
     <NavigationWrapper>
       <Navigation>
-        <NavigationElement to={myPageLink}>
-          <NavigationElementIcon>
-            <Person />
-          </NavigationElementIcon>
-          <NavigationElementText>{t('myNdla.myPage')}</NavigationElementText>
-        </NavigationElement>
-        <NavigationElement to={myFoldersLink}>
-          <NavigationElementIcon>
-            <FolderOutlined />
-          </NavigationElementIcon>
-          <NavigationElementText>{t('myNdla.myFolders')}</NavigationElementText>
-        </NavigationElement>
-        <NavigationElement to={myTagsLink}>
-          <NavigationElementIcon>
-            <Tag />
-          </NavigationElementIcon>
-          <NavigationElementText>{t('myNdla.myTags')}</NavigationElementText>
-        </NavigationElement>
+        {navElements?.map((element) => {
+          return (
+            <NavigationElement to={element.url}>
+              <NavigationElementIcon>{element.icon}</NavigationElementIcon>
+              <NavigationElementText>{element.name}</NavigationElementText>
+            </NavigationElement>
+          );
+        })}
       </Navigation>
     </NavigationWrapper>
   );

@@ -12,8 +12,9 @@ import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
+import { Plus } from '@ndla/icons/action';
 import { IconButton } from '@ndla/button/src/IconButton';
-import { NewFolder, FolderOutlined } from '@ndla/icons/contentType';
+import { FolderOutlined } from '@ndla/icons/contentType';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
@@ -44,8 +45,8 @@ const FoldersWrapper = styled.div<{ layout: LayoutProps }>`
     css`
       display: grid;
       grid-template-columns: repeat(3, 2fr);
-      column-gap: 35px;
-      row-gap: 5px;
+      gap: 25px 32px;
+      margin-top: ${spacing.normal};
       div {
         max-width: 345px;
       }
@@ -57,9 +58,8 @@ const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
     css`
       display: grid;
       grid-template-columns: repeat(3, 2fr);
-      gap: 35px;
-
-      margin-top: ${spacing.xsmall};
+      gap: 25px 32px;
+      margin-top: ${spacing.normal};
       div {
         max-width: 345px;
       }
@@ -113,6 +113,17 @@ const AddButton = styled(IconButton)`
     border: none;
   }
 `;
+
+const AddIconBorder = styled.div`
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${colors.brand.tertiary};
+  border-radius: 50%;
+`;
+
 const AddFolder = styled.p`
   color: ${colors.brand.primary};
   margin: 0;
@@ -208,7 +219,10 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
       <DashOptionWrapper>
         <DashLeftSide>
           <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
-            <NewFolder />
+            <AddIconBorder>
+              <Plus />
+            </AddIconBorder>
+
             <AddFolder>{t('myNdla.newFolder')}</AddFolder>
           </AddButton>
         </DashLeftSide>

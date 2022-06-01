@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
 import { ResourceElement } from '@ndla/ui';
+import { ResourceElementProps } from '@ndla/ui/src/MyNdla/Resource/ResourceElement';
 
 const MyPageWrapper = styled.div`
   width: 960px;
@@ -31,7 +32,7 @@ const MyPageWrapper = styled.div`
 const Resources = styled.div`
   display: flex;
   flex-direction: column;
-  margin: ${spacing.large} 0;
+  margin: ${spacing.medium} 0;
 `;
 
 const StyledH2 = styled.h2`
@@ -53,7 +54,7 @@ const SchoolInfo = styled.div`
   }
 `;
 
-const Terms = styled.div`
+const Terms = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -67,7 +68,7 @@ const Terms = styled.div`
     margin: 0;
   }
 `;
-const Styledfeide = styled(FeideText)`
+const StyledFeide = styled(FeideText)`
   height: 21px;
   width: 60px;
 `;
@@ -76,22 +77,13 @@ const ButtonsWrapper = styled.div`
   gap: 10px;
 `;
 
-type ResourceProps = {
-  title: string;
-  topics: string[];
-  tags?: string[];
-  resourceImage: { alt: string; src: string };
-  link: string;
-  description?: string;
-};
-
-type MyPageProps = {
+interface MyPageProps {
   name: { firstName: string; lastName: string };
   title: string;
   school: string;
   courses: string[];
-  recentFavorites?: ResourceProps[];
-};
+  recentFavorites?: ResourceElementProps[];
+}
 
 export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPageProps) => {
   const { t } = useTranslation();
@@ -102,7 +94,7 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
         <StyledH1> {t('myNdla.myPage')}</StyledH1>
         <p>{t('myNdla.welcome', { name })}</p>
       </Header>
-      <Styledfeide />
+      <StyledFeide />
       <SchoolInfo>
         <ul>
           <li>
@@ -110,25 +102,17 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
           </li>
           <li>{title}</li>
           <li>{school}</li>
-          <li>
-            {courses.map((course, i, { length }) => {
-              if (length - 1 === i) {
-                return <>{course}</>;
-              } else {
-                return <>{course}, </>;
-              }
-            })}
-          </li>
+          <li>{courses.join(', ')}</li>
         </ul>
       </SchoolInfo>
       <Terms>
-        <p>{t('myNdla.read')} </p> <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
+        {t('myNdla.read')} <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
       </Terms>
       <Resources>
         <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
-        {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
+        {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link, layout }) => (
           <ResourceElement
-            layout="list"
+            layout={layout}
             title={title}
             topics={topics}
             tags={tags}

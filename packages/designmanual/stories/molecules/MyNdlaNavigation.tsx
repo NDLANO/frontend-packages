@@ -8,10 +8,22 @@
 
 import React from 'react';
 
+import { Tag, Person } from '@ndla/icons/common';
+import { FolderOutlined } from '@ndla/icons/contentType';
 import { VerticalNavigation } from '@ndla/ui';
+import { useTranslation } from 'react-i18next';
 
 const MyNdlaNavigation = () => {
-  return <VerticalNavigation myFoldersLink="" myPageLink="" myTagsLink="" />;
+  const { t } = useTranslation();
+  return (
+    <VerticalNavigation
+      navElements={[
+        { name: t('myNdla.myFolders'), url: '', icon: <FolderOutlined /> },
+        { name: t('myNdla.myTags'), url: '', icon: <Tag /> },
+        { name: t('myNdla.myPage'), url: '', icon: <Person /> },
+      ]}
+    />
+  );
 };
 
 export default MyNdlaNavigation;

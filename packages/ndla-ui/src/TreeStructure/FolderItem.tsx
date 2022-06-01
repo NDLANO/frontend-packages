@@ -10,28 +10,35 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
-import { colors, spacing } from '@ndla/core';
+import { colors, spacing, misc } from '@ndla/core';
 
 const OpenButton = styled.button<{isOpen: boolean}>`
   background: transparent;
   border: 0;
   transform: rotate(${({ isOpen }) => isOpen ? '0' : '-90'}deg);
+  padding: ${spacing.xsmall} ${spacing.small};
+  margin: -${spacing.xxsmall};
 `;
 
 const Wrapper = styled.div<{marked: boolean}>`
   display: flex;
-  gap: ${spacing.small};
   align-items: center;
 `;
 
 const FolderNameButton = styled.button<{marked: boolean}>`
   background: ${({ marked }) => marked ? colors.brand.lighter : 'transparent'};
+  &:hover {
+    background: ${({ marked }) => marked ? colors.brand.light : colors.brand.lighter};
+  }
   border: 0;
+  border-radius: ${misc.borderRadius}
   padding: ${spacing.small};
   display: flex;
-  gap: ${spacing.small};
+  gap: ${spacing.xxsmall};
   align-items: center;
   cursor: pointer;
+  padding: ${spacing.xsmall};
+  margin: -${spacing.xxsmall};
 `;
 
 interface Props {
@@ -47,10 +54,10 @@ interface Props {
 
 const FolderItem = ({ loading, name, id, onToggleOpen, onMarkFolder, isOpen, marked, openOnFolderClick }: Props) => (
   <Wrapper marked={marked}>
-    <OpenButton isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
+    <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
       <ArrowDropDown />
     </OpenButton>
-    <FolderNameButton marked={marked} disabled={loading} onClick={() => {
+    <FolderNameButton tabIndex={-1} marked={marked} disabled={loading} onClick={() => {
       onMarkFolder(id);
       if (openOnFolderClick) {
         onToggleOpen(id);

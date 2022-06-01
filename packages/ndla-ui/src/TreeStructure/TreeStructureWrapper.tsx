@@ -8,6 +8,7 @@ const TreeStructureWrapper = styled.div`
   border: 1px solid ${colors.brand.greyLighter};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.small};
+  transition: ${misc.transition.default};
   ul {
     list-style: none;
     margin: 0;
@@ -16,6 +17,9 @@ const TreeStructureWrapper = styled.div`
       margin: 0;
       padding: 0;
     }
+  }
+  &:focus-within {
+    border-color: ${colors.brand.primary};
   }
 `;
 

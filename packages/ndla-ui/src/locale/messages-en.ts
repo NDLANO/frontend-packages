@@ -14,6 +14,12 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  tagSelector: {
+    placeholder: 'Add to tag',
+    removeTag: 'Remove tag {{name}}',
+    hideAllTags: 'Hide all tags',
+    showAllTags: 'Show all tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Frontpage${titleTemplate}`,

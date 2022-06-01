@@ -24,7 +24,6 @@ export {
 } from './Search';
 
 export { default as TopicIntroductionList } from './TopicIntroductionList';
-export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
 export {
   default as CompetenceGoals,
   CompetenceGoalList,

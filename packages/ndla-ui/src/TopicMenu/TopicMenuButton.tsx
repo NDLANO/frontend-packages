@@ -6,12 +6,11 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { spacing, fonts, colors } from '@ndla/core';
 import { Menu } from '@ndla/icons/common';
-import Button from '@ndla/button';
+import Button, { ButtonProps } from '@ndla/button';
 
 const style = css`
   position: relative;
@@ -40,15 +39,15 @@ const style = css`
   }
 `;
 
-const TopicMenuButton = ({ ndlaFilm, children, ...rest }) => (
+interface Props extends ButtonProps {
+  children: ReactNode;
+  ndlaFilm?: boolean;
+}
+
+const TopicMenuButton = ({ ndlaFilm, children, ...rest }: Props) => (
   <Button invertedOutline={ndlaFilm} outline={!ndlaFilm} css={style} {...rest}>
     <Menu /> {children}
   </Button>
 );
-
-TopicMenuButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  ndlaFilm: PropTypes.bool,
-};
 
 export default TopicMenuButton;

@@ -6,11 +6,12 @@
  *
  */
 
-import React, { HTMLAttributes, ReactNode } from 'react';
-import { Link, LinkProps, useInRouterContext } from 'react-router-dom';
+import React, { HTMLAttributes, ReactNode, useContext } from 'react';
+import { Link, LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
 import isString from 'lodash/isString';
+import MissingRouterContext from './MissingRouterContext';
 
 const isExternalLink = (to?: LinkProps['to']) =>
   to && isString(to) && (to.startsWith('https://') || to.startsWith('http://'));
@@ -33,9 +34,9 @@ export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 const SafeLink = ({ to, replace, children, showNewWindowIcon, tabIndex, ...rest }: SafeLinkProps) => {
-  const inRouterContext = useInRouterContext();
+  const isMissingRouterContext = useContext(MissingRouterContext);
 
-  if (!inRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
+  if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
     const href = typeof to === 'string' ? to : '#';
     return (
       <>

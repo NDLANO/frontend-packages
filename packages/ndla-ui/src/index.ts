@@ -158,6 +158,7 @@ export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
+export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
 
 export {
   FilmSlideshow,

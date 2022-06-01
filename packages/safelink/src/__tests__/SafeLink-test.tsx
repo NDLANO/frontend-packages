@@ -12,6 +12,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { StaticRouter } from 'react-router-dom/server.js';
 import Safelink, { isOldNdlaLink } from '../SafeLink';
+import MissingRouterContext from '../MissingRouterContext';
 
 test('SafeLink renderers Link correctly if router context is present', () => {
   const component = renderer.create(
@@ -55,7 +56,11 @@ test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
 });
 
 test('SafeLink renderers normal link correctly when router context is not present', () => {
-  const component = renderer.create(<Safelink to="/my/path">No router context</Safelink>);
+  const component = renderer.create(
+    <MissingRouterContext.Provider value={true}>
+      <Safelink to="/my/path">No router context</Safelink>
+    </MissingRouterContext.Provider>,
+  );
 
   expect(component.toJSON()).toMatchSnapshot();
 });

@@ -12,33 +12,34 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc } from '@ndla/core';
 
-const OpenButton = styled.button<{isOpen: boolean}>`
+const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
   border: 0;
-  transform: rotate(${({ isOpen }) => isOpen ? '0' : '-90'}deg);
-  padding: ${spacing.xsmall} ${spacing.small};
-  margin: -${spacing.xxsmall};
+  transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
+  padding: ${spacing.xsmall} ${spacing.xsmall};
+  margin: 0;
 `;
 
-const Wrapper = styled.div<{marked: boolean}>`
+const Wrapper = styled.div<{ marked: boolean }>`
   display: flex;
   align-items: center;
+  height: ${spacing.normal};
 `;
 
-const FolderNameButton = styled.button<{marked: boolean}>`
-  background: ${({ marked }) => marked ? colors.brand.lighter : 'transparent'};
+const FolderNameButton = styled.button<{ marked: boolean }>`
+  background: ${({ marked }) => (marked ? colors.brand.lighter : 'transparent')};
   &:hover {
-    background: ${({ marked }) => marked ? colors.brand.light : colors.brand.lighter};
+    background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lighter)};
   }
   border: 0;
-  border-radius: ${misc.borderRadius}
+  border-radius: ${misc.borderRadius};
   padding: ${spacing.small};
   display: flex;
   gap: ${spacing.xxsmall};
   align-items: center;
   cursor: pointer;
   padding: ${spacing.xsmall};
-  margin: -${spacing.xxsmall};
+  margin: 0;
 `;
 
 interface Props {
@@ -57,13 +58,18 @@ const FolderItem = ({ loading, name, id, onToggleOpen, onMarkFolder, isOpen, mar
     <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
       <ArrowDropDown />
     </OpenButton>
-    <FolderNameButton tabIndex={-1} marked={marked} disabled={loading} onClick={() => {
-      onMarkFolder(id);
-      if (openOnFolderClick) {
-        onToggleOpen(id);
-      }
-    }}>
-      <FolderOutlined />{name}
+    <FolderNameButton
+      tabIndex={-1}
+      marked={marked}
+      disabled={loading}
+      onClick={() => {
+        onMarkFolder(id);
+        if (openOnFolderClick) {
+          onToggleOpen(id);
+        }
+      }}>
+      <FolderOutlined />
+      {name}
     </FolderNameButton>
   </Wrapper>
 );

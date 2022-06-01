@@ -8,6 +8,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 import FolderNameInput from './FolderNameInput';
 import FolderItem from './FolderItem';
 import TreeStructureWrapper from './TreeStructureWrapper';
@@ -40,7 +41,13 @@ export interface FoldersProps extends CommonFolderProps {
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
 }
 
-export type onCreateNewFolderProp = ({ idPaths, parentId }: { idPaths: number[]; parentId: string | undefined }) => void;
+export type onCreateNewFolderProp = ({
+  idPaths,
+  parentId,
+}: {
+  idPaths: number[];
+  parentId: string | undefined;
+}) => void;
 type onSaveNewFolderProp = ({ value, cancel }: { value: string; cancel: boolean }) => void;
 
 interface FolderItemsProps extends CommonFolderProps {
@@ -54,7 +61,7 @@ interface FolderItemsProps extends CommonFolderProps {
 }
 
 const NewFolderWrapper = styled.div<{ withPadding?: boolean }>`
-  padding-left: ${({ withPadding }) => withPadding ? '1rem' : '0'};
+  padding-left: ${({ withPadding }) => (withPadding ? spacing.medium : '0')};
 `;
 
 interface NewFolderOptionProp {
@@ -79,7 +86,16 @@ const NewFolderOption = ({
   tabIndex,
 }: NewFolderOptionProp) => (
   <NewFolderWrapper withPadding={withPadding}>
-    {editing ? <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} /> : <NewFolderButton tabIndex={tabIndex} onCreateNewFolder={onCreateNewFolder} parentId={parentId} idPaths={idPaths} />}
+    {editing ? (
+      <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />
+    ) : (
+      <NewFolderButton
+        tabIndex={tabIndex}
+        onCreateNewFolder={onCreateNewFolder}
+        parentId={parentId}
+        idPaths={idPaths}
+      />
+    )}
   </NewFolderWrapper>
 );
 
@@ -193,13 +209,11 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
 
   return (
     <div>
-      <h1>
-        {label}
-      </h1>
-      <TreeStructureWrapper aria-label="Menu" role="tree">
+      <h1>{label}</h1>
+      <TreeStructureWrapper aria-label="Menu tree" role="tree">
         {editable && (
           <NewFolderOption
-            editing={(newFolder && newFolder.parentId === undefined) ? true : false}
+            editing={newFolder && newFolder.parentId === undefined ? true : false}
             loading={loading}
             idPaths={[]}
             onSaveNewFolder={onSaveNewFolder}

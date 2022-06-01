@@ -12,7 +12,7 @@ const TreeStructureWrapper = styled.div`
   ul {
     list-style: none;
     margin: 0;
-    padding: 0 0 0 ${spacing.small};
+    padding: 0 0 0 ${spacing.xsmall};
     li {
       margin: 0;
       padding: 0;

@@ -7,7 +7,14 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
+
+const OpenButton = styled.button<{isOpen: boolean}>`
+  background: transparent;
+  border: 0;
+  transform: rotate(${({ isOpen }) => isOpen ? '0' : '-90'}deg);
+`;
 
 interface Props {
   name: string;
@@ -21,10 +28,9 @@ interface Props {
 
 const FolderItem = ({ loading, name, id, onToggleOpen, onMarkFolder, isOpen, marked }: Props) => (
   <div>
-    <ArrowDropDown />
-    <button disabled={loading} onClick={() => onToggleOpen(id)}>
-      {isOpen ? 'close' : 'open'}
-    </button>
+    <OpenButton isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
+      <ArrowDropDown />
+    </OpenButton>
     <button disabled={loading} onClick={() => onMarkFolder(id)}>
       {name} {marked ? 'y' : ''}
     </button>

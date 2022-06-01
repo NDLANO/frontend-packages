@@ -7,7 +7,6 @@
  */
 
 import React, { useEffect, useState, useRef } from 'react';
-import styled from '@emotion/styled';
 import FolderNameInput from './FolderNameInput';
 import FolderItem from './FolderItem';
 

@@ -9,7 +9,8 @@
 // Can be removed when updating to jsx-a11y 6.x
 /* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 1 */
 
-import React, { KeyboardEvent, ReactNode, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 
@@ -21,6 +22,7 @@ import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import SubtopicLinkList from './SubtopicLinkList';
+import { TopicShape } from '../shapes';
 
 import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
@@ -33,10 +35,10 @@ const classes = new BEMHelper({
   prefix: 'c-',
 });
 
-export const renderAdditionalIcon = (isAdditional: boolean, label: string) => {
+export const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
     return (
-      <Tooltip tooltip={label} tooltipContainerClass="c-topic-menu__tooltipContainer">
+      <Tooltip tooltip={label} stooltipContainerClass="c-topic-menu__tooltipContainer">
         <Additional className="c-icon--20" />
       </Tooltip>
     );
@@ -52,79 +54,6 @@ const MENU_CURRENT_PROGRAMME = 'programme';
 const MENU_PROGRAMMES = 'programmes';
 const MENU_ALL_SUBJECTS = 'allSubjects';
 
-interface Props {
-  messages?: string[];
-  close: () => void;
-  toFrontpage: () => string;
-  toTopic: (topicId: string) => string;
-  toSubject: () => string;
-  defaultCount?: number;
-  subjectTitle?: string;
-  resourceToLinkProps: (res: TopicResource) => { to: string };
-  onNavigate: (topicId?: string, subTopicId?: string, index?: number) => void;
-  expandedTopicId?: string;
-  expandedSubtopicIds: string[];
-  hideSearch?: boolean;
-  searchFieldComponent?: ReactNode;
-  locale?: string;
-  subjectCategories: {
-    name: string;
-    subjects: {
-      name: string;
-      url: string;
-    }[];
-  }[];
-  programmes?: {
-    label: string;
-    url: string;
-  }[];
-  currentProgramme?: {
-    name: string;
-    url: string;
-    grades: {
-      name: string;
-      categories: {
-        missingProgrammeSubjects?: boolean;
-        name: string;
-        subjects: {
-          label: string;
-          url: string;
-        }[];
-      }[];
-    }[];
-  };
-  initialSelectedMenu?: string;
-  selectedGrade?: string;
-  onGradeChange: (newGrade: string) => void;
-  topics: Topic[];
-}
-
-export interface TopicResource {
-  id: string;
-  contentUri?: string;
-  path: string;
-  name: string;
-  subject?: string;
-  additional?: boolean;
-  resourceTypes?: { name: string }[];
-  rank?: number;
-}
-
-export interface Topic {
-  id: string;
-  name: string;
-  additional?: boolean;
-  metadata: {
-    customFields: Record<string, string>;
-  };
-  contentTypeResults: {
-    contentType?: string;
-    resources: TopicResource[];
-    title: string;
-  }[];
-  subtopics: Topic[];
-}
-
 export const TopicMenu = ({
   topics,
   toTopic,
@@ -132,10 +61,10 @@ export const TopicMenu = ({
   toSubject,
   close: closeMenu,
   expandedTopicId,
-  expandedSubtopicIds,
+  expandedSubtopicsId,
   resourceToLinkProps,
   hideSearch,
-  defaultCount = 12,
+  defaultCount,
   searchFieldComponent,
   toFrontpage,
   locale,
@@ -147,7 +76,7 @@ export const TopicMenu = ({
   messages,
   selectedGrade,
   onGradeChange,
-}: Props) => {
+}) => {
   const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(() => initialSelectedMenu || MENU_CURRENT_SUBJECT);
@@ -169,41 +98,41 @@ export const TopicMenu = ({
     };
   }, []);
 
-  const handleClick = (topicId: string) => {
-    onNavigate(topicId);
+  const handleClick = (event, topicId) => {
+    onNavigate(topicId, null);
   };
 
-  const handleSubtopicExpand = (subtopicId: string, index: number) => {
+  const handleSubtopicExpand = (subtopicId, index) => {
     onNavigate(expandedTopicId, subtopicId, index);
   };
 
   const handleOnGoBack = () => {
-    onNavigate(expandedSubtopicIds.length ? expandedTopicId : undefined, undefined);
+    onNavigate(expandedSubtopicsId.length ? expandedTopicId : null, null);
   };
 
-  const handleBtnKeyPress = (event: KeyboardEvent<HTMLButtonElement>, topicId: string) => {
+  const handleBtnKeyPress = (event, topicId) => {
     if (event.charCode === 32 || event.charCode === 13) {
       // space or enter
       event.preventDefault();
-      onNavigate(topicId);
+      onNavigate(topicId, null);
     }
   };
 
   const expandedTopic = topics.find((topic) => topic.id === expandedTopicId);
 
-  const currentlyExpandedSubTopics: Topic[] = [];
+  const currentlyExpandedSubTopics = [];
   if (expandedTopic) {
-    let currentSubtopic: Topic | undefined;
-    let foundMatch: number | undefined;
-    expandedSubtopicIds.forEach((id, index) => {
+    let currentSubtopic;
+    let foundMatch;
+    expandedSubtopicsId.forEach((id, index) => {
       if (index === 0) {
         currentSubtopic = expandedTopic.subtopics.find((topic) => topic.id === id);
         foundMatch = currentSubtopic ? 0 : undefined;
-      } else if (currentSubtopic && foundMatch !== undefined) {
-        currentSubtopic = currentSubtopic?.subtopics.find((topic) => topic.id === id);
+      } else {
+        currentSubtopic = currentSubtopic.subtopics.find((topic) => topic.id === id);
         foundMatch += currentSubtopic ? 1 : 0;
       }
-      if (foundMatch === index && currentSubtopic) {
+      if (foundMatch === index) {
         currentlyExpandedSubTopics[index] = currentSubtopic;
       }
     });
@@ -219,7 +148,7 @@ export const TopicMenu = ({
   const disableMain = isNarrowScreen && expandedTopic;
   const disableSubTopic = disableMain && hasExpandedSubtopics;
 
-  const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicIds.length + 1;
+  const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
 
   return (
     <nav>
@@ -329,7 +258,7 @@ export const TopicMenu = ({
         {selectedMenu === MENU_CURRENT_SUBJECT && (
           <div {...classes('subject-navigation', `slide-${sliderCounter}`)}>
             {!disableMain && (
-              <>
+              <Fragment>
                 <div {...classes('section', 'main')}>
                   <SafeLink onClick={closeMenu} to={toSubject()} className={classes('link', 'big').className}>
                     <span {...classes('link-wrapper')}>
@@ -342,18 +271,18 @@ export const TopicMenu = ({
                   </SafeLink>
                   <ul {...classes('list')}>
                     {topics.map((topic) => {
-                      const active = topic.id === expandedTopicId ? 'active' : undefined;
+                      const active = topic.id === expandedTopicId ? 'active' : null;
 
                       return (
                         <li {...classes('topic-item', active)} key={topic.id}>
                           <button
                             type="button"
                             {...classes('link')}
-                            onClick={() => handleClick(topic.id)}
+                            onClick={(event) => handleClick(event, topic.id)}
                             onKeyPress={(event) => handleBtnKeyPress(event, topic.id)}>
                             <span>
                               {topic.name}
-                              {renderAdditionalIcon(!!topic.additional, t('resource.additionalTooltip'))}
+                              {renderAdditionalIcon(topic.additional, t('resource.additionalTooltip'))}
                             </span>
                             <ChevronRight />
                           </button>
@@ -362,7 +291,7 @@ export const TopicMenu = ({
                     })}
                   </ul>
                 </div>
-              </>
+              </Fragment>
             )}
             {expandedTopic && !disableSubTopic && (
               <SubtopicLinkList
@@ -371,10 +300,11 @@ export const TopicMenu = ({
                 closeMenu={closeMenu}
                 topic={expandedTopic}
                 backLabel={
-                  !hasExpandedSubtopics && subjectTitle
+                  !hasExpandedSubtopics
                     ? subjectTitle
                     : currentlyExpandedSubTopics[currentlyExpandedSubTopics.length - 1].name
                 }
+                goToTitle={t('masthead.menu.goTo')}
                 toTopic={toTopic}
                 expandedSubtopicId={currentlyExpandedSubTopics[0] && currentlyExpandedSubTopics[0].id}
                 onSubtopicExpand={(id) => {
@@ -400,7 +330,7 @@ export const TopicMenu = ({
                   topic={subTopic}
                   backLabel={
                     index === 0
-                      ? topics.find((topic) => topic.id === expandedTopicId)?.name!
+                      ? topics.find((topic) => topic.id === expandedTopicId).name
                       : currentlyExpandedSubTopics[index - 1].name
                   }
                   toTopic={toTopic}
@@ -422,6 +352,70 @@ export const TopicMenu = ({
       </div>
     </nav>
   );
+};
+
+TopicMenu.propTypes = {
+  topics: PropTypes.arrayOf(TopicShape).isRequired,
+  toFrontpage: PropTypes.func.isRequired,
+  toTopic: PropTypes.func,
+  toSubject: PropTypes.func,
+  close: PropTypes.func,
+  defaultCount: PropTypes.number,
+  subjectTitle: PropTypes.string,
+  resourceToLinkProps: PropTypes.func.isRequired,
+  onNavigate: PropTypes.func.isRequired,
+  expandedTopicId: PropTypes.string,
+  expandedSubtopicsId: PropTypes.arrayOf(PropTypes.string).isRequired,
+  hideSearch: PropTypes.bool,
+  searchFieldComponent: PropTypes.node,
+  locale: PropTypes.string,
+  subjectCategories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      subjects: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          url: PropTypes.string.isRequired,
+        }),
+      ),
+    }),
+  ),
+  programmes: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }),
+  ),
+  currentProgramme: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    grades: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        categories: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string,
+            subjects: PropTypes.arrayOf(
+              PropTypes.shape({
+                label: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired,
+              }),
+            ),
+          }),
+        ),
+      }),
+    ).isRequired,
+    selectedGradeIndex: PropTypes.number,
+  }),
+  initialSelectedMenu: PropTypes.oneOf([
+    MENU_CURRENT_SUBJECT,
+    MENU_CURRENT_PROGRAMME,
+    MENU_PROGRAMMES,
+    MENU_ALL_SUBJECTS,
+  ]),
+};
+
+TopicMenu.defaultProps = {
+  defaultCount: 12,
 };
 
 export default TopicMenu;

@@ -5,57 +5,100 @@ import { uuid } from '@ndla/util';
 const STRUCTURE_EXAMPLE = [
   {
     id: uuid(),
-    name: 'Mappe navn',
-    isOpen: true,
-    children: [
+    name: 'Mine favoritter',
+    status: 'private',
+    isFavorite: false,
+    data: [],
+  },
+  {
+    id: uuid(),
+    name: 'Matematikk',
+    status: 'private',
+    isFavorite: false,
+    data: [
       {
         id: uuid(),
-        name: 'Mappe navn',
-        isOpen: true,
-        children: [
+        name: 'Eksamen',
+        status: 'private',
+        isFavorite: false,
+        data: [
           {
             id: uuid(),
-            name: 'Mappe navn',
-            isOpen: false,
-          }
-        ]
+            name: 'Eksamens oppgaver',
+            status: 'private',
+            isFavorite: false,
+            data: [],
+          },
+          {
+            id: uuid(),
+            name: 'Eksamen 2022',
+            status: 'private',
+            isFavorite: false,
+            data: [],
+          },
+        ],
       },
       {
         id: uuid(),
-        name: 'Mappe navn',
-        isOpen: false,
-        children: []
+        name: 'Oppgaver',
+        status: 'private',
+        isFavorite: false,
+        data: [],
       },
-      {
-        id: uuid(),
-        name: 'Mappe navn',
-        isOpen: false,
-        children: [],
-        selectedByDefault: true,
-      }
     ],
-  }
+  },
 ];
 
+const generateNewFolder = (name: string, id: string) => ({
+  id,
+  name,
+  status: 'private',
+  isFavorite: false,
+  data: [],
+});
 
 const TreeStructureExample = () => {
   const [structure, setStructure] = useState(STRUCTURE_EXAMPLE);
   const [loading, setLoading] = useState(false);
   return (
     <TreeStructure
-      onCreateFolder={async ({ parentId, name }: { parentId: string; name: string }) => {
-        await setLoading(true);
+      label="Hello from other side"
+      editable
+      onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
+        // Just as an example, pretend to save to database and update the structure
+        setLoading(true);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setLoading(false);
+        const newFolderId = uuid();
         await setStructure((oldStructure) => {
-          return [...oldStructure, {
-            id: uuid(),
-            name,
-            isOpen: false,
-            children: [],
-            selectedByDefault: true,
-          }]
+          const newStructure = [...oldStructure];
+          let updateFolderObject = newStructure;
+          idPaths?.forEach((dataIndex, _index) => {
+            updateFolderObject = updateFolderObject[dataIndex].data;
+          });
+          // toggle open
+          updateFolderObject.unshift(generateNewFolder(value, newFolderId));
+          return newStructure;
+        });
+        return newFolderId;
+      }}
+      onToggleOpen={(idPaths: number[]) => {
+        setStructure((oldStructure) => {
+          const newStructure = [...oldStructure];
+          let updateFolderObject = newStructure;
+          idPaths.forEach((dataIndex, _index) => {
+            if (_index === 0) {
+              updateFolderObject = updateFolderObject[dataIndex];
+            } else {
+              updateFolderObject = updateFolderObject.data[dataIndex];
+            }
+          });
+          // toggle open
+          updateFolderObject.isOpen = !updateFolderObject.isOpen;
+          return newStructure;
         });
       }}
-      structure={structure}
+      data={structure}
       loading={loading}
     />
   );

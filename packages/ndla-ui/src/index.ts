@@ -229,4 +229,4 @@ export { TagSelector } from './TagSelector';
 export type { SnackBarProps, SnackBarItemProp } from './SnackBar';
 export { SnackBar } from './SnackBar';
 
-export { TreeStructure, TreeStructureLogic } from './TreeStructure';
+export { TreeStructure } from './TreeStructure';

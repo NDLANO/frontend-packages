@@ -6,13 +6,12 @@
  *
  */
 
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
-import Button, { IconButtonDualStates } from '@ndla/button';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { spacing } from '@ndla/core';
-// @ts-ignore
-import { Input } from '@ndla/forms';
+import React, { useState, useRef, useEffect } from 'react';
+import { spacingUnit } from '@ndla/core';
+import { uuid } from '@ndla/util';
+import SuggestionInput from './SuggestionInput';
+
+const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
 
 export interface TagProp {
   name: string;
@@ -20,69 +19,87 @@ export interface TagProp {
 }
 
 interface Props {
+  label: string;
   tags: TagProp[];
   tagsSelected: string[];
-  onTagsUpdate: (tags: string[]) => void;
+  onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
+  prefix?: string | React.ReactNode;
+  inline?: boolean;
 }
 
-const TagsContainer = styled.div`
-  max-height: 16rem;
-  overflow-y: scroll;
-  display: flex;
-  gap: ${spacing.xsmall};
-`;
+const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
+  tags
+    .filter(({ id }) => selectedTags.some((idSelected) => (idSelected === id) === selected))
+    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 
-const TagSelector = ({ tags, tagsSelected, onCreateTag, onTagsUpdate }: Props) => {
+const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
+  if (inputValue === '') {
+    return [];
+  }
+  const inputLowercase = inputValue.toLowerCase();
+  return tags
+    .filter(({ name }) => name.toLowerCase().startsWith(inputLowercase))
+    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
+};
+
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline }: Props) => {
   const [inputValue, setInputValue] = useState('');
-  const [showAllTags, setShowAllTags] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputIdRef = useRef<string>(uuid());
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [tagsSelected]);
+
+  useEffect(() => {
+    const setMaxDropdownMaxHeight = () => {
+      if (!inline && containerRef.current && typeof window !== 'undefined') {
+        // Calculate distance from bottom of container to bottom of viewport
+        const containerBottom = containerRef.current.getBoundingClientRect().bottom;
+        const viewportBottom = document.documentElement.scrollHeight;
+        const maxDropdownHeight = viewportBottom - containerBottom;
+        setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
+      }
+    };
+    if (!inline && typeof window !== 'undefined') {
+      if (expanded) {
+        setMaxDropdownMaxHeight();
+        window.addEventListener('resize', setMaxDropdownMaxHeight);
+      } else {
+        window.removeEventListener('resize', setMaxDropdownMaxHeight);
+      }
+    }
+    return () => {
+      typeof window !== 'undefined' && window.removeEventListener('resize', setMaxDropdownMaxHeight);
+    };
+  }, [expanded, inline]);
+
   return (
-    <div>
-      <Input
-        placeholder="legg til"
-        onChange={(e: KeyboardEvent) => {
+    <div ref={containerRef}>
+      <label htmlFor={inputIdRef.current}>{label}</label>
+      <SuggestionInput
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);
+          setExpanded(false);
         }}
-        onKeyDown={(e: KeyboardEvent) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            onCreateTag(inputValue);
-            setInputValue('');
-          }
-        }}
+        suggestions={expanded ? tags : getSuggestions(tags, inputValue)}
         value={inputValue}
+        onCreateTag={onCreateTag}
+        onToggleTag={onToggleTag}
+        setInputValue={setInputValue}
+        addedTags={sortedTags(tags, tagsSelected, true)}
+        expanded={expanded}
+        setExpanded={setExpanded}
+        dropdownMaxHeight={dropdownMaxHeight}
+        name={inputIdRef.current}
+        id={inputIdRef.current}
+        inline={inline}
+        scrollAnchorElement={containerRef}
       />
-      <IconButtonDualStates
-        ariaLabelActive="Se alle tagger"
-        ariaLabelInActive="Skjul alle tagger"
-        active={showAllTags}
-        inactiveIcon={<ChevronDown />}
-        activeIcon={<ChevronUp />}
-        size="small"
-        onClick={() => setShowAllTags(!showAllTags)}
-      />
-      {showAllTags && (
-        <TagsContainer>
-          {tags.map(({ name, id }) => {
-            const tagIsSelected = tagsSelected.some((idSelected) => id === idSelected);
-            return (
-              <Button
-                onClick={() =>
-                  onTagsUpdate(
-                    tagIsSelected ? tagsSelected.filter((idSelected) => id !== idSelected) : [...tagsSelected, id],
-                  )
-                }
-                lighter={!tagIsSelected}
-                borderShape="rounded"
-                key={id}
-                size="xsmall">
-                # {name}
-              </Button>
-            );
-          })}
-        </TagsContainer>
-      )}
     </div>
   );
 };

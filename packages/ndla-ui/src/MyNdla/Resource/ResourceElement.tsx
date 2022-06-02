@@ -25,7 +25,7 @@ const ResourceTopicText = styled.p`
   ${fonts.sizes('16')};
 `;
 
-const ResourceTitle = styled.h2<{ layout: LayoutProps }>`
+const ResourceTitle = styled.h2<{ layout: layoutType }>`
   ${fonts.sizes('18')};
   font-weight: 700;
   justify-content: center;
@@ -50,7 +50,7 @@ const ResourceTitle = styled.h2<{ layout: LayoutProps }>`
     `}
 `;
 
-const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
+const ResourceElementWrapper = styled(SafeLink)<{ layout: layoutType }>`
   ${(props) =>
     props.layout === 'listLarger' &&
     css`
@@ -145,31 +145,16 @@ const ResourceTopic = styled.ul`
   }
 `;
 
-const ResourceInfoWrapper = styled.div<{ layout: LayoutProps }>`
+const ResourceInfoWrapper = styled.div<{ layout: layoutType }>`
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  ${(props) =>
-    props.layout === 'listLarger' &&
-    css`
-      gap: 8px;
-    `}
-  ${(props) =>
-    props.layout === 'list' &&
-    css`
-      gap: 5px;
-    `}
-    ${(props) =>
-    props.layout === 'block' &&
-    css`
-      gap: 5px;
-    `}
+  gap: ${(p) => (p.layout === 'listLarger' ? '8px' : '5px')};
   ${mq.range({ until: breakpoints.tabletWide })} {
     min-width: 56px;
     justify-content: center;
   }
 `;
-const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
+const ResourceImageWrapper = styled.div<{ layout: layoutType }>`
   border-radius: 2px;
   overflow: hidden;
   display: flex;
@@ -220,7 +205,7 @@ const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
       }
     `}
 `;
-const ResourceImage = styled(Image)<{ layout: LayoutProps }>`
+const ResourceImage = styled(Image)<{ layout: layoutType }>`
   border-radius: 2px;
   ${(props) =>
     props.layout === 'list' &&
@@ -251,11 +236,11 @@ const ResourceImage = styled(Image)<{ layout: LayoutProps }>`
     width: 96px;
   }
 `;
-const ResourceLeftSide = styled.div<{ layout: LayoutProps }>`
+const ResourceLeftSide = styled.div<{ layout: layoutType }>`
   display: flex;
   flex-direction: row;
 `;
-const ResourceRightSide = styled.div<{ layout: LayoutProps }>`
+const ResourceRightSide = styled.div<{ layout: layoutType }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -279,7 +264,7 @@ const ResourceRightSide = styled.div<{ layout: LayoutProps }>`
       }
     `}
 `;
-const Halfwrapper = styled.div<{ layout: LayoutProps }>`
+const Halfwrapper = styled.div<{ layout: layoutType }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -301,7 +286,7 @@ const Halfwrapper = styled.div<{ layout: LayoutProps }>`
     `}
 `;
 
-const Tophalf = styled.div<{ layout: LayoutProps }>`
+const Tophalf = styled.div<{ layout: layoutType }>`
   display: flex;
   flex-direction: row;
   ${(props) =>
@@ -314,13 +299,13 @@ const Tophalf = styled.div<{ layout: LayoutProps }>`
   }
 `;
 
-const Bottomhalf = styled.div<{ layout: LayoutProps }>`
+const Bottomhalf = styled.div<{ layout: layoutType }>`
   overflow: hidden;
   text-overflow: ellipsis;
   transition-duration: 0.5s;
 `;
 
-const TagsList = styled.div<{ layout: LayoutProps }>`
+const TagsList = styled.div<{ layout: layoutType }>`
   display: flex;
   list-style: none;
   display: flex;
@@ -346,7 +331,7 @@ const TagsList = styled.div<{ layout: LayoutProps }>`
   }
 `;
 
-const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
+const MoreIcon = styled(IconButton)<{ layout: layoutType }>`
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -372,10 +357,10 @@ const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
   }
 `;
 
-type ResourceImageProps = {
+interface ResourceImageProps {
   alt: string;
   src: string;
-};
+}
 export interface ResourceElementProps {
   link: string;
   title: string;
@@ -384,9 +369,9 @@ export interface ResourceElementProps {
   tags?: string[];
   description?: string;
   children?: ReactElement;
-  layout: LayoutProps;
+  layout: layoutType;
 }
-type LayoutProps = 'list' | 'listLarger' | 'block' | 'dialogue';
+type layoutType = 'list' | 'listLarger' | 'block' | 'dialogue';
 
 const ResourceElement = ({ link, title, tags, resourceImage, topics, layout, description }: ResourceElementProps) => {
   const { t } = useTranslation();

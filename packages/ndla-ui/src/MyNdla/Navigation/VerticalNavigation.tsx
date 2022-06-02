@@ -55,7 +55,7 @@ const NavigationElement = styled(SafeLinkButton)`
   }
 `;
 
-const NavigationElementIcon = styled.div`
+const IconWrapper = styled.div`
   svg {
     fill: ${colors.text.primary};
     height: 20px;
@@ -63,13 +63,13 @@ const NavigationElementIcon = styled.div`
   }
 `;
 
-type NavProps = {
+interface NavProps {
   navElements?: {
     icon: ReactNode;
     url: string;
     name: string;
   }[];
-};
+}
 export const VerticalNavigation = ({ navElements }: NavProps) => {
   return (
     <NavigationWrapper>
@@ -77,7 +77,7 @@ export const VerticalNavigation = ({ navElements }: NavProps) => {
         {navElements?.map((element) => {
           return (
             <NavigationElement to={element.url}>
-              <NavigationElementIcon>{element.icon}</NavigationElementIcon>
+              <IconWrapper>{element.icon}</IconWrapper>
               <NavigationElementText>{element.name}</NavigationElementText>
             </NavigationElement>
           );

@@ -28,13 +28,13 @@ const FolderTitle = styled.h2`
   line-clamp: 1;
   -webkit-box-orient: vertical;
 `;
-const FoldersWrapper = styled.div<{ layout: LayoutProps }>`
+const FoldersWrapper = styled.div<{ layout: layoutType }>`
   height: 100%;
   display: flex;
   align-items: center;
   gap: 5px;
 `;
-const FolderIconCircle = styled.div<{ layout: LayoutProps }>`
+const FolderIconCircle = styled.div<{ layout: layoutType }>`
   border-radius: 100%;
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@ const FolderIconCircle = styled.div<{ layout: LayoutProps }>`
     background-color: transparent;
   }
 `;
-const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
+const FolderElementWrapper = styled(SafeLink)<{ layout: layoutType }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,13 +106,13 @@ const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
   }
 `;
 
-const FolderLeftSide = styled.div<{ layout: LayoutProps }>`
+const FolderLeftSide = styled.div<{ layout: layoutType }>`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
 `;
-const FolderRightSide = styled.div<{ layout: LayoutProps }>`
+const FolderRightSide = styled.div<{ layout: layoutType }>`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -128,7 +128,7 @@ const FolderRightSide = styled.div<{ layout: LayoutProps }>`
     `}
 `;
 
-const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
+const MoreIcon = styled(IconButton)<{ layout: layoutType }>`
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -154,7 +154,7 @@ const MoreIcon = styled(IconButton)<{ layout: LayoutProps }>`
   }
 `;
 
-const FoldersText = styled.p<{ layout: LayoutProps }>`
+const FoldersText = styled.p<{ layout: layoutType }>`
   margin: 0;
   ${fonts.sizes(16)};
   display: flex;
@@ -183,10 +183,10 @@ type FolderElementProps = {
   description?: string;
   children?: ReactElement;
   link: string;
-  layout: LayoutProps;
+  layout: layoutType;
 };
 
-type LayoutProps = 'list' | 'listLarger' | 'block';
+type layoutType = 'list' | 'listLarger' | 'block';
 
 const FolderElement = ({ link, title, subFolders, subResources, children, layout }: FolderElementProps) => {
   const { t } = useTranslation();

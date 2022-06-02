@@ -12,41 +12,50 @@ const STRUCTURE_EXAMPLE = [
   },
   {
     id: uuid(),
-    name: 'Matematikk',
+    name: 'Mine mapper',
     status: 'private',
     isFavorite: false,
+    openAsDefault: true,
     data: [
       {
         id: uuid(),
-        name: 'Eksamen',
+        name: 'Matematikk',
         status: 'private',
         isFavorite: false,
         data: [
           {
             id: uuid(),
-            name: 'Eksamens oppgaver',
+            name: 'Eksamen',
             status: 'private',
             isFavorite: false,
-            data: [],
+            data: [
+              {
+                id: uuid(),
+                name: 'Eksamens oppgaver',
+                status: 'private',
+                isFavorite: false,
+                data: [],
+              },
+              {
+                id: uuid(),
+                name: 'Eksamen 2022',
+                status: 'private',
+                isFavorite: false,
+                data: [],
+              },
+            ],
           },
           {
             id: uuid(),
-            name: 'Eksamen 2022',
+            name: 'Oppgaver',
             status: 'private',
             isFavorite: false,
             data: [],
           },
         ],
       },
-      {
-        id: uuid(),
-        name: 'Oppgaver',
-        status: 'private',
-        isFavorite: false,
-        data: [],
-      },
     ],
-  },
+  }
 ];
 
 const generateNewFolder = (name: string, id: string) => ({
@@ -57,13 +66,13 @@ const generateNewFolder = (name: string, id: string) => ({
   data: [],
 });
 
-const TreeStructureExample = () => {
+const TreeStructureExampleComponent = ({ label, editable }) => {
   const [structure, setStructure] = useState(STRUCTURE_EXAMPLE);
   const [loading, setLoading] = useState(false);
   return (
     <TreeStructure
-      label="Hello from other side"
-      editable
+      label={label}
+      editable={editable}
       openOnFolderClick
       onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
         // Just as an example, pretend to save to database and update the structure
@@ -104,5 +113,15 @@ const TreeStructureExample = () => {
     />
   );
 };
+
+const TreeStructureExample = () => (
+  <div>
+    <h1>TreeStructure editable:</h1>
+    <TreeStructureExampleComponent label="Editable" editable />
+    <hr />
+    <h1>TreeStructure non-editable:</h1>
+    <TreeStructureExampleComponent label="Static" editable={false} />
+  </div>
+)
 
 export default TreeStructureExample;

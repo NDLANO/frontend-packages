@@ -6,13 +6,15 @@ import type { onCreateNewFolderProp } from './TreeStructure';
 
 const StyledButton = styled.button`
   cursor: pointer;
-  gap: ${spacing.xxsmall};
+  gap: ${spacing.xsmall};
   display: flex;
   align-items: center;
   border: 0;
   background: transparent;
   padding: ${spacing.xsmall} ${spacing.xsmall};
   border-radius: ${misc.borderRadius};
+  margin-left: -8px;
+  color: ${colors.brand.primary};
   &:hover {
     background: ${colors.brand.lighter};
   }

@@ -7,15 +7,19 @@ const TreeStructureWrapper = styled.div`
   scroll-behavior: smooth;
   border: 1px solid ${colors.brand.greyLighter};
   border-radius: ${misc.borderRadius};
-  padding: ${spacing.small};
   transition: ${misc.transition.default};
+  padding: ${spacing.small};
   ul {
     list-style: none;
     margin: 0;
-    padding: 0 0 0 ${spacing.xsmall};
+    padding: 0;
+    margin-left: -${spacing.xsmall};
     li {
       margin: 0;
       padding: 0;
+      > ul {
+        margin-left: ${spacing.normal};
+      }
     }
   }
   &:focus-within {

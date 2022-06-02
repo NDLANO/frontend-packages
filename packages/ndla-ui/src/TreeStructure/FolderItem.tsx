@@ -16,17 +16,20 @@ const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
   border: 0;
   transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
-  padding: ${spacing.xsmall} ${spacing.xsmall};
+  padding: ${spacing.xsmall};
+  margin-right: -${spacing.small};
+  display: flex;
+  align-items: center;
   margin: 0;
 `;
 
 const Wrapper = styled.div<{ marked: boolean }>`
   display: flex;
   align-items: center;
-  height: ${spacing.normal};
+  height: ${spacing.medium};
 `;
 
-const FolderNameButton = styled.button<{ marked: boolean }>`
+const FolderNameButton = styled.button<{ marked: boolean, noArrow?: boolean }>`
   background: ${({ marked }) => (marked ? colors.brand.lighter : 'transparent')};
   &:hover {
     background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lighter)};
@@ -40,6 +43,7 @@ const FolderNameButton = styled.button<{ marked: boolean }>`
   cursor: pointer;
   padding: ${spacing.xsmall};
   margin: 0;
+  margin-left: ${({ noArrow }) => noArrow ? '-1px' : `-${spacing.xxsmall}`};
 `;
 
 interface Props {
@@ -51,14 +55,16 @@ interface Props {
   marked: boolean;
   loading?: boolean;
   openOnFolderClick?: boolean;
+  hideArrow?: boolean;
 }
 
-const FolderItem = ({ loading, name, id, onToggleOpen, onMarkFolder, isOpen, marked, openOnFolderClick }: Props) => (
+const FolderItem = ({ hideArrow, loading, name, id, onToggleOpen, onMarkFolder, isOpen, marked, openOnFolderClick }: Props) => (
   <Wrapper marked={marked}>
-    <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
+    {!hideArrow && (<OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
       <ArrowDropDown />
-    </OpenButton>
+    </OpenButton>)}
     <FolderNameButton
+      noArrow={hideArrow}
       tabIndex={-1}
       marked={marked}
       disabled={loading}

@@ -21,6 +21,7 @@ export interface FolderStructureProps {
   name: string;
   isOpen?: boolean;
   data?: FolderStructureProps;
+  openAsDefault?: boolean;
 }
 
 interface NewFolderProps {
@@ -129,6 +130,7 @@ const FolderItems = ({
               marked={markedFolderId === id}
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
+              hideArrow={!editable && dataChildren?.length === 0 || (newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS)}
             />
           </div>
           {editable && isOpen && newIdPaths.length < MAX_LEVEL_FOR_FOLDERS && (
@@ -164,9 +166,25 @@ const FolderItems = ({
   </ul>
 );
 
+const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
+  const openFolders: string[] = [];
+  const getOpen = (children: FolderStructureProps[]) => {
+    children.forEach((folder: FolderStructureProps) => {
+      if (folder.openAsDefault) {
+        openFolders.push(folder.id);
+      }
+      if (folder.data?.length > 0) {
+        getOpen(folder.data);
+      }
+    });
+  };
+  getOpen(data);
+  return openFolders;
+}
+
 const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick }: FoldersProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
-  const [openFolders, setOpenFolders] = useState<Set<string>>(new Set([]));
+  const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>();
 
   useEffect(() => {

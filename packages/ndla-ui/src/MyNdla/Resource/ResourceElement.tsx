@@ -113,6 +113,13 @@ const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutProps }>`
     flex-direction: row;
     padding: ${spacing.xsmall};
   }
+  ${(props) =>
+    props.layout === 'dialogue' &&
+    css`
+      ${mq.range({ until: breakpoints.tabletWide })} {
+        min-height: 64px;
+      }
+    `}
 
   height: 64px;
 `;
@@ -141,7 +148,7 @@ const ResourceTopic = styled.ul`
 const ResourceInfoWrapper = styled.div<{ layout: LayoutProps }>`
   display: flex;
   flex-direction: column;
-
+  gap: 5px;
   ${(props) =>
     props.layout === 'listLarger' &&
     css`
@@ -174,6 +181,7 @@ const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
       height: 45px;
       object-fit: cover;
     `}
+
   ${(props) =>
     props.layout === 'listLarger' &&
     css`
@@ -201,11 +209,28 @@ const ResourceImageWrapper = styled.div<{ layout: LayoutProps }>`
       overflow: hidden;
     }
   }
+  ${(props) =>
+    props.layout === 'dialogue' &&
+    css`
+      width: 61px;
+      height: 45px;
+      object-fit: cover;
+      ${mq.range({ until: breakpoints.tabletWide })} {
+        align-items: center;
+      }
+    `}
 `;
 const ResourceImage = styled(Image)<{ layout: LayoutProps }>`
   border-radius: 2px;
   ${(props) =>
     props.layout === 'list' &&
+    css`
+      width: 56px;
+      height: 40px;
+      object-fit: cover;
+    `}
+  ${(props) =>
+    props.layout === 'dialogue' &&
     css`
       width: 56px;
       height: 40px;
@@ -361,7 +386,7 @@ export interface ResourceElementProps {
   children?: ReactElement;
   layout: LayoutProps;
 }
-type LayoutProps = 'list' | 'listLarger' | 'block';
+type LayoutProps = 'list' | 'listLarger' | 'block' | 'dialogue';
 
 const ResourceElement = ({ link, title, tags, resourceImage, topics, layout, description }: ResourceElementProps) => {
   const { t } = useTranslation();
@@ -389,16 +414,18 @@ const ResourceElement = ({ link, title, tags, resourceImage, topics, layout, des
           <Bottomhalf layout={layout}>
             {layout === 'block' && <ResourceTopicText>{description}</ResourceTopicText>}
           </Bottomhalf>
-          <ResourceRightSide layout={layout}>
-            <TagsList layout={layout}>
-              {tags?.map((tag) => (
-                <li> #{tag}</li>
-              ))}
-            </TagsList>
-            <MoreIcon layout={layout} aria-label={t('myNdla.more')} size="xsmall">
-              <HorizontalMenu />
-            </MoreIcon>
-          </ResourceRightSide>
+          {layout !== 'dialogue' && (
+            <ResourceRightSide layout={layout}>
+              <TagsList layout={layout}>
+                {tags?.map((tag) => (
+                  <li> #{tag}</li>
+                ))}
+              </TagsList>
+              <MoreIcon layout={layout} aria-label={t('myNdla.more')} size="xsmall">
+                <HorizontalMenu />
+              </MoreIcon>
+            </ResourceRightSide>
+          )}
         </Tophalf>
         <Bottomhalf layout={layout}>
           {layout === 'listLarger' && <ResourceTopicText>{description}</ResourceTopicText>}

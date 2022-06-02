@@ -25,7 +25,7 @@ const ResourceTopicText = styled.p`
   ${fonts.sizes('16')};
 `;
 
-const ResourceTitle = styled.h2<{ layout: layoutType }>`
+const ResourceTitle = styled.h2<{ layout: LayoutType }>`
   ${fonts.sizes('18')};
   font-weight: 700;
   justify-content: center;
@@ -50,7 +50,7 @@ const ResourceTitle = styled.h2<{ layout: layoutType }>`
     `}
 `;
 
-const ResourceElementWrapper = styled(SafeLink)<{ layout: layoutType }>`
+const ResourceElementWrapper = styled(SafeLink)<{ layout: LayoutType }>`
   ${(props) =>
     props.layout === 'listLarger' &&
     css`
@@ -145,7 +145,7 @@ const ResourceTopic = styled.ul`
   }
 `;
 
-const ResourceInfoWrapper = styled.div<{ layout: layoutType }>`
+const ResourceInfoWrapper = styled.div<{ layout: LayoutType }>`
   display: flex;
   flex-direction: column;
   gap: ${(p) => (p.layout === 'listLarger' ? '8px' : '5px')};
@@ -154,7 +154,7 @@ const ResourceInfoWrapper = styled.div<{ layout: layoutType }>`
     justify-content: center;
   }
 `;
-const ResourceImageWrapper = styled.div<{ layout: layoutType }>`
+const ResourceImageWrapper = styled.div<{ layout: LayoutType }>`
   border-radius: 2px;
   overflow: hidden;
   display: flex;
@@ -205,7 +205,7 @@ const ResourceImageWrapper = styled.div<{ layout: layoutType }>`
       }
     `}
 `;
-const ResourceImage = styled(Image)<{ layout: layoutType }>`
+const ResourceImage = styled(Image)<{ layout: LayoutType }>`
   border-radius: 2px;
   ${(props) =>
     props.layout === 'list' &&
@@ -236,11 +236,11 @@ const ResourceImage = styled(Image)<{ layout: layoutType }>`
     width: 96px;
   }
 `;
-const ResourceLeftSide = styled.div<{ layout: layoutType }>`
+const ResourceLeftSide = styled.div<{ layout: LayoutType }>`
   display: flex;
   flex-direction: row;
 `;
-const ResourceRightSide = styled.div<{ layout: layoutType }>`
+const ResourceRightSide = styled.div<{ layout: LayoutType }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -264,7 +264,7 @@ const ResourceRightSide = styled.div<{ layout: layoutType }>`
       }
     `}
 `;
-const Halfwrapper = styled.div<{ layout: layoutType }>`
+const Halfwrapper = styled.div<{ layout: LayoutType }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -286,7 +286,7 @@ const Halfwrapper = styled.div<{ layout: layoutType }>`
     `}
 `;
 
-const Tophalf = styled.div<{ layout: layoutType }>`
+const Tophalf = styled.div<{ layout: LayoutType }>`
   display: flex;
   flex-direction: row;
   ${(props) =>
@@ -299,13 +299,13 @@ const Tophalf = styled.div<{ layout: layoutType }>`
   }
 `;
 
-const Bottomhalf = styled.div<{ layout: layoutType }>`
+const Bottomhalf = styled.div<{ layout: LayoutType }>`
   overflow: hidden;
   text-overflow: ellipsis;
   transition-duration: 0.5s;
 `;
 
-const TagsList = styled.div<{ layout: layoutType }>`
+const TagsList = styled.div<{ layout: LayoutType }>`
   display: flex;
   list-style: none;
   display: flex;
@@ -331,7 +331,7 @@ const TagsList = styled.div<{ layout: layoutType }>`
   }
 `;
 
-const MoreIcon = styled(IconButton)<{ layout: layoutType }>`
+const MoreIcon = styled(IconButton)<{ layout: LayoutType }>`
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -369,9 +369,9 @@ export interface ResourceElementProps {
   tags?: string[];
   description?: string;
   children?: ReactElement;
-  layout: layoutType;
+  layout: LayoutType;
 }
-type layoutType = 'list' | 'listLarger' | 'block' | 'dialogue';
+type LayoutType = 'list' | 'listLarger' | 'block' | 'dialogue';
 
 const ResourceElement = ({ link, title, tags, resourceImage, topics, layout, description }: ResourceElementProps) => {
   const { t } = useTranslation();

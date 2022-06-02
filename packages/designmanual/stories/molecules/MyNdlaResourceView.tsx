@@ -39,7 +39,7 @@ const NoFolders = styled.div`
   }
 `;
 
-const FoldersWrapper = styled.div<{ layout: layoutType }>`
+const FoldersWrapper = styled.div<{ layout: LayoutType }>`
   ${(props) =>
     props.layout === 'block' &&
     css`
@@ -52,7 +52,7 @@ const FoldersWrapper = styled.div<{ layout: layoutType }>`
       }
     `}
 `;
-const ResourcesWrapper = styled.div<{ layout: layoutType }>`
+const ResourcesWrapper = styled.div<{ layout: LayoutType }>`
   ${(props) =>
     props.layout === 'block' &&
     css`
@@ -185,13 +185,13 @@ type ResourceProps = {
 export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
-  layout?: layoutType;
+  layout?: LayoutType;
 }
-type layoutType = 'list' | 'listLarger' | 'block';
+type LayoutType = 'list' | 'listLarger' | 'block';
 
 export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
-  const [layout, setLayout] = useState('list' as layoutType);
+  const [layout, setLayout] = useState('list' as LayoutType);
   const windowSize = useWindowSize(1000);
   useEffect(() => {
     if (windowSize.innerWidth < 1000) {

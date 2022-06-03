@@ -17,10 +17,10 @@ import Image from '../Image';
 
 const ResourceBoxContainer = styled.div`
   display: flex;
+  position: relative;
   padding: ${spacing.nsmall};
   border-radius: 5px;
   border: 1px solid ${colors.brand.light};
-  position: relative;
   font-family: ${fonts.sans};
   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
   gap: ${spacing.medium};
@@ -82,9 +82,9 @@ const StyledImage = styled(Image)`
 `;
 
 const LincenseWrapper = styled.div`
-  top: 9px;
   position: absolute;
-  right: 1px;
+  top: 9px;
+  right: 0;
 `;
 
 interface ImageMeta {

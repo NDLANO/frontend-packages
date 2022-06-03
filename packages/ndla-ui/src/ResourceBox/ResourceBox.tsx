@@ -96,15 +96,21 @@ const LincenseWrapper = styled.div`
   }
 `;
 
-type Props = {
-  image: string;
+interface ImageMeta {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  image: ImageMeta;
   title: string;
   caption: string;
   licenseRights: string[];
-  authors?: { name: string }[];
+  authors?: string[];
   locale?: string;
   url: string;
-};
+}
+
 export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, url }: Props) => {
   const { t } = useTranslation();
   return (
@@ -112,12 +118,12 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
       <LincenseWrapper>
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
           <div className="c-figure__byline-author-buttons">
-            <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
+            <span className="c-figure__byline-authors">{authors?.join(' ')}</span>
           </div>
         </LicenseByline>
       </LincenseWrapper>
       <ImageWrapper>
-        <Image alt={title} src={image} />
+        <Image src={image.src} alt={image.alt} />
       </ImageWrapper>
       <TextWrapper>
         <Title>{title}</Title>

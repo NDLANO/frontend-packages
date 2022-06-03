@@ -43,7 +43,7 @@ const Caption = styled.p`
   font-size: ${fonts.sizes(14)};
 `;
 
-const TextWrapper = styled.div`
+const ContentWrapper = styled.div`
   flex-basis: 0;
   flex-grow: 1;
   display: flex;
@@ -116,7 +116,7 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
         </LicenseByline>
       </LincenseWrapper>
       <StyledImage src={image.src} alt={image.alt} />
-      <TextWrapper>
+      <ContentWrapper>
         <Title>{title}</Title>
         <Caption>{caption}</Caption>
 
@@ -124,7 +124,7 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
           {t('license.other.itemImage.ariaLabel')}
           <Launch aria-hidden />
         </StyledButton>
-      </TextWrapper>
+      </ContentWrapper>
     </ResourceBoxContainer>
   );
 };

@@ -44,6 +44,8 @@ const Caption = styled.p`
 `;
 
 const TextWrapper = styled.div`
+  flex-basis: 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -61,7 +63,7 @@ const StyledButton = styled(SafeLinkButton)`
   :hover {
     background-color: ${colors.brand.primary};
     border: 1px solid ${colors.brand.primary};
-    color: white;
+    color: ${colors.white};
   }
 `;
 
@@ -114,9 +116,7 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
           </div>
         </LicenseByline>
       </LincenseWrapper>
-      <div>
-        <StyledImage src={image.src} alt={image.alt} />
-      </div>
+      <StyledImage src={image.src} alt={image.alt} />
       <TextWrapper>
         <Title>{title}</Title>
         <Caption>{caption}</Caption>

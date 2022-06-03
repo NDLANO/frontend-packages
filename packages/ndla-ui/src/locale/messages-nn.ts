@@ -519,7 +519,7 @@ const messages = {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Vel språk (language): ',
     vision: 'Saman skapar vi framtidas læring',
-    footerLinksHeader: 'Andre NDLA nettstader',
+    footerLinksHeader: 'Andre NDLA-nettstader',
     footerInfo: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
     footerEditiorInChief: 'Ansvarleg redaktør: ',
     footerManagingEditor: 'Utgåveansvarleg: ',

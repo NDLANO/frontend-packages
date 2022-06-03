@@ -85,9 +85,6 @@ const LincenseWrapper = styled.div`
   top: 9px;
   position: absolute;
   right: 1px;
-  ul {
-    margin-right: 0;
-  }
 `;
 
 interface ImageMeta {
@@ -111,9 +108,11 @@ export const ResourceBox = ({ image, title, caption, licenseRights, locale, auth
     <ResourceBoxContainer>
       <LincenseWrapper>
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
-          <div className="c-figure__byline-author-buttons">
-            <span className="c-figure__byline-authors">{authors?.join(' ')}</span>
-          </div>
+          {authors && authors.length > 0 && (
+            <div className="c-figure__byline-author-buttons">
+              <span className="c-figure__byline-authors">{authors.join(' ')}</span>
+            </div>
+          )}
         </LicenseByline>
       </LincenseWrapper>
       <StyledImage src={image.src} alt={image.alt} />

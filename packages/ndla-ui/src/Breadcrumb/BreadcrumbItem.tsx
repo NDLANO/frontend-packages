@@ -10,10 +10,9 @@ import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import BEMHelper, { ReturnObject } from 'react-bem-helper';
-import * as H from 'history';
 
 export interface Item {
-  to: string;
+  to: string | Partial<Location>;
   name: string;
   index: number;
 }

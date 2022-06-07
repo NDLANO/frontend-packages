@@ -18,11 +18,6 @@ const classes: BEMHelper<ReturnObject> = BEMHelper({
   prefix: 'c-',
 });
 
-export interface BreadcrumbItemI {
-  to: string;
-  name: string;
-}
-
 interface Props extends WithTranslation {
   children?: ReactNode;
   items: BreadcrumbItemI[];
@@ -38,6 +33,7 @@ const Breadcrumb = ({ children, items, invertedStyle, t }: Props) => (
           invertedStyle={invertedStyle}
           classes={classes}
           home={i === 0}
+          index={i}
           key={uuid()}
           isCurrent={i === items.length - 1}
           to={item.to}

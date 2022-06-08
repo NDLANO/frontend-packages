@@ -6,43 +6,41 @@
  *
  */
 
-import React, { ReactNode } from 'react';
-import BEMHelper, { ReturnObject } from 'react-bem-helper';
+import React from 'react';
+import styled from '@emotion/styled';
 import { uuid } from '@ndla/util';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { Home } from '@ndla/icons/common';
-import BreadcrumbItem from './BreadcrumbItem';
+import { useTranslation } from 'react-i18next';
+import BreadcrumbItem, { BreadcrumbItemI } from './BreadcrumbItem';
 
-const classes: BEMHelper<ReturnObject> = BEMHelper({
-  name: 'breadcrumb',
-  prefix: 'c-',
-});
+const BreadcrumbList = styled.ol`
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  list-style: none;
+`;
 
-interface Props extends WithTranslation {
-  children?: ReactNode;
+interface Props {
   items: BreadcrumbItemI[];
-  invertedStyle: boolean;
 }
 
-const Breadcrumb = ({ children, items, invertedStyle, t }: Props) => (
-  <nav aria-label={t('breadcrumb.breadcrumb')}>
-    {children}
-    <ol {...classes('list')}>
-      {items.map((item, i) => (
-        <BreadcrumbItem
-          invertedStyle={invertedStyle}
-          classes={classes}
-          home={i === 0}
-          index={i}
-          key={uuid()}
-          isCurrent={i === items.length - 1}
-          to={item.to}
-          name={item.name}>
-          {i === 0 ? <Home className="c-icon--20" title={item.name} /> : item.name}
-        </BreadcrumbItem>
-      ))}
-    </ol>
-  </nav>
-);
-
-export default withTranslation()(Breadcrumb);
+const Breadcrumb = ({ items }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <nav aria-label={t('breadcrumb.breadcrumb')}>
+      <BreadcrumbList>
+        {items.map((item, index) => (
+          <BreadcrumbItem
+            key={uuid()}
+            totalCount={items.length}
+            item={{
+              ...item,
+              index,
+            }}
+          />
+        ))}
+      </BreadcrumbList>
+    </nav>
+  );
+};
+export default Breadcrumb;

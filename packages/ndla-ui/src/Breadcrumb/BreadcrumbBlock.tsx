@@ -6,24 +6,30 @@
  *
  */
 
-import React, { ReactNode, useRef } from 'react';
-import BEMHelper, { ReturnObject } from 'react-bem-helper';
+import React, { useRef } from 'react';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
+import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import BreadcrumbItem from './BreadcrumbItem';
-import { BreadcrumbItemI } from './Breadcrumb';
-
-const classes: BEMHelper<ReturnObject> = BEMHelper({
-  name: 'breadcrumb-block',
-  prefix: 'c-',
-});
+import { BreadcrumbItemI } from './BreadcrumbItem';
+import { uuid } from '../../../util/src';
 
 interface Props {
-  children?: ReactNode;
   items: BreadcrumbItemI[];
+  disableScripts?: boolean;
 }
 
-const BreadcrumbBlock = ({ children, items }: Props) => {
+const BreadcrumbNav = styled.nav``;
+
+const StyledList = styled.ol`
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  list-style: none;
+`;
+
+const BreadcrumbBlock = ({ items, disableScripts }: Props) => {
   const { t } = useTranslation();
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,6 +39,9 @@ const BreadcrumbBlock = ({ children, items }: Props) => {
   const size = useComponentSize(containerRef);
 
   useIsomorphicLayoutEffect(() => {
+    if (!disableScripts) {
+      return;
+    }
     // Create an array of all breadcrumb item refs
     const items = Array.from(breadcrumbItemRefs).map(([key, value]) => value);
 
@@ -52,28 +61,21 @@ const BreadcrumbBlock = ({ children, items }: Props) => {
   }, [size]);
 
   return (
-    <nav {...classes('')} ref={containerRef} aria-label={t('breadcrumb.breadcrumb')}>
-      {children}
-      <ol {...classes('list')} ref={olRef}>
-        {items.map((item, i) => (
+    <BreadcrumbNav ref={containerRef} aria-label={t('breadcrumb.breadcrumb')}>
+      <StyledList ref={olRef}>
+        {items.map((item, index) => (
           <BreadcrumbItem
             ref={(element) =>
-              element === null || i === 0 // skip first item which is never truncated
+              element === null || index === 0 // skip first item which is never truncated
                 ? breadcrumbItemRefs.delete(item.to)
                 : breadcrumbItemRefs.set(item.to, element)
             }
-            classes={classes}
-            key={item.to}
-            isCurrent={i === items.length - 1}
-            to={item.to}
-            name={item.name}
-            home={false}
-            invertedStyle={false}>
-            {item.name}
-          </BreadcrumbItem>
+            key={uuid()}
+            totalCount={items.length}
+            item={{ ...item, index }}></BreadcrumbItem>
         ))}
-      </ol>
-    </nav>
+      </StyledList>
+    </BreadcrumbNav>
   );
 };
 

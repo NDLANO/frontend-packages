@@ -7,166 +7,14 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import FolderNameInput from './FolderNameInput';
-import FolderItem from './FolderItem';
 import TreeStructureWrapper from './TreeStructureWrapper';
-import NewFolderButton from './NewFolderButton';
+import FolderItems from './FolderItems';
+import AddFolder from './AddFolder';
+import {
+  FolderStructureProps, NewFolderProps, FoldersProps,
+} from './TreeStructure.types';
 
-const MAX_LEVEL_FOR_FOLDERS = 4;
-
-export interface FolderStructureProps {
-  id: string;
-  name: string;
-  isOpen?: boolean;
-  data?: FolderStructureProps[];
-  isFavorite?: boolean;
-  status?: string;
-  openAsDefault?: boolean;
-}
-
-interface NewFolderProps {
-  parentId?: string;
-  idPaths: number[];
-}
-
-interface CommonFolderProps {
-  data: FolderStructureProps[];
-  editable?: boolean;
-  loading?: boolean;
-  openOnFolderClick?: boolean;
-}
-
-export interface FoldersProps extends CommonFolderProps {
-  label: string;
-  onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
-}
-
-export type onCreateNewFolderProp = ({
-  idPaths,
-  parentId,
-}: {
-  idPaths: number[];
-  parentId: string | undefined;
-}) => void;
-type onSaveNewFolderProp = ({ value, cancel }: { value: string; cancel: boolean }) => void;
-
-interface FolderItemsProps extends CommonFolderProps {
-  onToggleOpen: (id: string) => void;
-  onSaveNewFolder: onSaveNewFolderProp;
-  onCreateNewFolder: onCreateNewFolderProp;
-  newFolder: NewFolderProps | undefined;
-  openFolders: Set<string>;
-  markedFolderId?: string;
-  onMarkFolder: (id: string) => void;
-  idPaths: number[];
-}
-
-const NewFolderWrapper = styled.div<{ withPadding?: boolean }>`
-  padding-left: ${({ withPadding }) => (withPadding ? spacing.medium : '0')};
-`;
-
-interface NewFolderOptionProp {
-  editing: boolean;
-  loading?: boolean;
-  parentId?: string;
-  idPaths: number[];
-  onSaveNewFolder: onSaveNewFolderProp;
-  onCreateNewFolder: onCreateNewFolderProp;
-  withPadding?: boolean;
-  tabIndex?: 0 | undefined;
-}
-
-const NewFolderOption = ({
-  editing,
-  onSaveNewFolder,
-  onCreateNewFolder,
-  loading,
-  parentId,
-  idPaths,
-  withPadding,
-  tabIndex,
-}: NewFolderOptionProp) => (
-  <NewFolderWrapper withPadding={withPadding}>
-    {editing ? (
-      <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />
-    ) : (
-      <NewFolderButton
-        tabIndex={tabIndex}
-        onCreateNewFolder={onCreateNewFolder}
-        parentId={parentId}
-        idPaths={idPaths}
-      />
-    )}
-  </NewFolderWrapper>
-);
-
-const FolderItems = ({
-  loading,
-  data,
-  idPaths,
-  editable,
-  onToggleOpen,
-  onCreateNewFolder,
-  onSaveNewFolder,
-  newFolder,
-  openFolders,
-  markedFolderId,
-  onMarkFolder,
-  openOnFolderClick,
-}: FolderItemsProps) => (
-  <ul role="group">
-    {data.map(({ name, data: dataChildren, id }, _index) => {
-      const newIdPaths = [...idPaths, _index];
-      const isOpen = openFolders?.has(id);
-      return (
-        <li key={id} role="treeitem">
-          <div>
-            <FolderItem
-              openOnFolderClick={openOnFolderClick}
-              loading={loading}
-              isOpen={isOpen}
-              id={id}
-              name={name}
-              marked={markedFolderId === id}
-              onToggleOpen={onToggleOpen}
-              onMarkFolder={onMarkFolder}
-              hideArrow={(!editable && dataChildren?.length === 0) || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
-            />
-          </div>
-          {editable && isOpen && newIdPaths.length < MAX_LEVEL_FOR_FOLDERS && (
-            <NewFolderOption
-              withPadding
-              editing={newFolder?.parentId === id}
-              loading={loading}
-              parentId={id}
-              idPaths={newIdPaths}
-              onSaveNewFolder={onSaveNewFolder}
-              onCreateNewFolder={onCreateNewFolder}
-            />
-          )}
-          {dataChildren && isOpen && (
-            <FolderItems
-              loading={loading}
-              newFolder={newFolder}
-              openFolders={openFolders}
-              idPaths={newIdPaths}
-              editable={editable}
-              data={dataChildren}
-              onToggleOpen={onToggleOpen}
-              onCreateNewFolder={onCreateNewFolder}
-              onSaveNewFolder={onSaveNewFolder}
-              markedFolderId={markedFolderId}
-              onMarkFolder={onMarkFolder}
-              openOnFolderClick={openOnFolderClick}
-            />
-          )}
-        </li>
-      );
-    })}
-  </ul>
-);
+export const MAX_LEVEL_FOR_FOLDERS = 4;
 
 const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
   const openFolders: string[] = [];
@@ -228,11 +76,14 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
   };
 
   return (
-    <div>
+    <div onFocus={() => console.log('focus')}
+    onBlur={() => console.log('onBlur')}
+    onFocusCapture={() => console.log('focus capture?')}
+    >
       <h1>{label}</h1>
       <TreeStructureWrapper aria-label="Menu tree" role="tree">
         {editable && (
-          <NewFolderOption
+          <AddFolder
             editing={newFolder && newFolder.parentId === undefined ? true : false}
             loading={loading}
             idPaths={[]}

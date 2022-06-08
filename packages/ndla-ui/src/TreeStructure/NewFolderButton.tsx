@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { NewFolder } from '@ndla/icons/contentType';
 import { spacing, colors, misc } from '@ndla/core';
-import type { onCreateNewFolderProp } from './TreeStructure';
+import { onCreateNewFolderProp } from './TreeStructure.types';
 
 const StyledButton = styled.button`
   cursor: pointer;

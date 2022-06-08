@@ -227,4 +227,4 @@ export type { SnackBarProps, SnackBarItemProp } from './SnackBar';
 export { SnackBar } from './SnackBar';
 
 export { TreeStructure } from './TreeStructure';
-export type { FolderStructureProps } from './TreeStructure';
+export type { FolderStructureProps, TreeStructureProps } from './TreeStructure';

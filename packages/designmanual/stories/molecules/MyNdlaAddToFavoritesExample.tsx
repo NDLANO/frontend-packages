@@ -65,7 +65,7 @@ const DialogExample = ({
             <MyNdlaResource />
             <TreeStructureExampleComponent
               folderIdMarkedByDefault={folderIdMarkedByDefault}
-              label="Mine mapper"
+              label="Mine mapper:"
               editable
               framed
               structure={STRUCTURE_EXAMPLE(folderIdMarkedByDefault)}

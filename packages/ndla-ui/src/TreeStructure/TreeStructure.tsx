@@ -115,8 +115,8 @@ const TreeStructure = ({
           });
         }
       }}>
-      <h3>{label}</h3>
-      <TreeStructureWrapper aria-label="Menu tree" role="tree" framed={framed}>
+      <label htmlFor={rootLevelId}>{label}</label>
+      <TreeStructureWrapper id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         {editable && (
           <AddFolder
             editing={newFolder && newFolder.parentId === undefined ? true : false}

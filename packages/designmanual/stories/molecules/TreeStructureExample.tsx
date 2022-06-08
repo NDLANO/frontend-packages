@@ -7,9 +7,15 @@
  */
 
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { User } from '@ndla/icons/common';
+
+const Container = styled.div`
+  margin: 40px auto;
+  max-width: 600px;
+`;
 
 export const STRUCTURE_EXAMPLE = (firstId?: string) => [
   {
@@ -109,35 +115,37 @@ export const TreeStructureExampleComponent = ({
   const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
-    <TreeStructure
-      framed={framed}
-      label={label}
-      editable={editable}
-      openOnFolderClick
-      folderIdMarkedByDefault={folderIdMarkedByDefault}
-      onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
-        // Just as an example, pretend to save to database and update the structure
-        // eslint-disable-next-line no-console
-        console.log(`Example, create new folder under ${parentId} with name ${value}`);
-        setLoading(true);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        setLoading(false);
-        const newFolderId = uuid();
-        await setStructure((oldStructure) => {
-          const newStructure = [...oldStructure];
-          let updateFolderObject = newStructure;
-          idPaths?.forEach((dataIndex, _index) => {
-            updateFolderObject = updateFolderObject[dataIndex].data as FolderStructureProps[];
+    <Container>
+      <TreeStructure
+        framed={framed}
+        label={label}
+        editable={editable}
+        openOnFolderClick
+        folderIdMarkedByDefault={folderIdMarkedByDefault}
+        onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
+          // Just as an example, pretend to save to database and update the structure
+          // eslint-disable-next-line no-console
+          console.log(`Example, create new folder under ${parentId} with name ${value}`);
+          setLoading(true);
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          setLoading(false);
+          const newFolderId = uuid();
+          await setStructure((oldStructure) => {
+            const newStructure = [...oldStructure];
+            let updateFolderObject = newStructure;
+            idPaths?.forEach((dataIndex, _index) => {
+              updateFolderObject = updateFolderObject[dataIndex].data as FolderStructureProps[];
+            });
+            // toggle open
+            updateFolderObject.unshift(generateNewFolder(value, newFolderId));
+            return newStructure;
           });
-          // toggle open
-          updateFolderObject.unshift(generateNewFolder(value, newFolderId));
-          return newStructure;
-        });
-        return newFolderId;
-      }}
-      data={structure}
-      loading={loading}
-    />
+          return newFolderId;
+        }}
+        data={structure}
+        loading={loading}
+      />
+    </Container>
   );
 };
 

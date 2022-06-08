@@ -14,8 +14,7 @@ import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
 import { ResourceElement } from '@ndla/ui';
-import { ResourceElementProps } from '@ndla/ui/src/MyNdla/Resource/ResourceElement';
-
+import { ResourceElementProps } from '@ndla/ui';
 const MyPageWrapper = styled.div`
   width: 960px;
   margin: 0 auto;
@@ -92,7 +91,7 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
     <MyPageWrapper>
       <Header>
         <StyledH1> {t('myNdla.myPage')}</StyledH1>
-        <p>{t('myNdla.welcome', { name })}</p>
+        <p>{t('myNdla.welcome', { name: name.firstName })}</p>
       </Header>
       <StyledFeide />
       <SchoolInfo>
@@ -110,9 +109,8 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
       </Terms>
       <Resources>
         <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
-        {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link, layout }) => (
+        {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
           <ResourceElement
-            layout={layout}
             title={title}
             topics={topics}
             tags={tags}

@@ -11,7 +11,7 @@ import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample
 import MyNdlaNavigation from './molecules/MyNdlaNavigation';
 import MyNdlaMyPage from './pages/MyNdlaMyPage';
 
-storiesOf('Min NDLA', module).add('Dashboard', () => (
+storiesOf('Min NDLA', module).add('Elementer', () => (
   <PageContainer>
     <MastheadWithTopicMenu />
     <Content>

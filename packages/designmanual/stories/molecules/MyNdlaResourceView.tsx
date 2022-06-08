@@ -13,13 +13,14 @@ import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { Plus } from '@ndla/icons/action';
-import { IconButton } from '@ndla/button/src/IconButton';
+import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { FolderElement, ResourceElement } from '@ndla/ui';
+import { FolderElement, ResourceElement, BlockElement, ListElement } from '@ndla/ui';
+import { LayoutType } from '@ndla/ui/src/MyNdla/Resource/FolderElement';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -89,31 +90,6 @@ const DashLeftSide = styled.div`
   align-items: flex-end;
 `;
 
-const AddButton = styled(IconButton)`
-  background-color: transparent;
-  border: none;
-  display: flex;
-  border-radius: 5px;
-  svg {
-    fill: ${colors.brand.primary};
-  }
-  span {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  :hover {
-    background-color: ${colors.brand.light};
-    margin: 0;
-    border: none;
-  }
-  &:focus,
-  &:active {
-    background-color: transparent;
-    border: none;
-  }
-`;
-
 const AddIconBorder = styled.div`
   height: 40px;
   width: 40px;
@@ -124,12 +100,39 @@ const AddIconBorder = styled.div`
   border-radius: 50%;
 `;
 
+const AddButton = styled(Button)`
+  display: flex;
+  gap: ${spacing.small};
+  svg {
+    fill: ${colors.brand.primary};
+    width: 24px;
+    height: 24px;
+  }
+  :hover {
+    background-color: transparent;
+    margin: 0;
+    border: none;
+    svg {
+      fill: white;
+    }
+    div {
+      background-color: ${colors.brand.primary};
+    }
+  }
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
+  }
+`;
+
 const AddFolder = styled.p`
   color: ${colors.brand.primary};
   margin: 0;
   align-items: center;
   display: flex;
   font-weight: 600;
+  ${fonts.sizes('16')}
 `;
 
 const FoldersText = styled.p`
@@ -152,8 +155,12 @@ const CountWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledIconButton = styled(IconButton)`
+const StyledIconButton = styled(Button)`
+  padding: 10px;
   svg {
+    margin: 0;
+    width: 24px;
+    height: 24px;
     fill: ${colors.brand.tertiary};
   }
   &:focus {
@@ -187,7 +194,6 @@ export interface ViewProps {
   resources?: ResourceProps[];
   layout?: LayoutType;
 }
-type LayoutType = 'list' | 'listLarger' | 'block';
 
 export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
@@ -218,11 +224,10 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
       </ResourceCountWrapper>
       <DashOptionWrapper>
         <DashLeftSide>
-          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
+          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill>
             <AddIconBorder>
               <Plus />
             </AddIconBorder>
-
             <AddFolder>{t('myNdla.newFolder')}</AddFolder>
           </AddButton>
         </DashLeftSide>
@@ -269,21 +274,56 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         ))}
       </FoldersWrapper>
       <ResourcesWrapper layout={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }) => (
-          <ResourceElement
-            layout={layout}
-            title={title}
-            topics={topics}
-            tags={tags}
-            description={description}
-            resourceImage={{
-              alt: resourceImage.alt,
-              src: resourceImage.src,
-            }}
-            link={link}
-            key={link}
-          />
-        ))}
+        {resources?.map(({ title, topics, tags, description, resourceImage, link }) => {
+          if (layout === 'block') {
+            return (
+              <BlockElement
+                title={title}
+                topics={topics}
+                tags={tags}
+                description={description}
+                resourceImage={{
+                  alt: resourceImage.alt,
+                  src: resourceImage.src,
+                }}
+                link={link}
+                key={link}
+              />
+            );
+          } else if (layout === 'listLarger') {
+            return (
+              <ListElement
+                title={title}
+                topics={topics}
+                tags={tags}
+                description={description}
+                resourceImage={{
+                  alt: resourceImage.alt,
+                  src: resourceImage.src,
+                }}
+                link={link}
+                key={link}
+              />
+            );
+          } else if (layout === 'list') {
+            return (
+              <ResourceElement
+                title={title}
+                topics={topics}
+                tags={tags}
+                description={description}
+                resourceImage={{
+                  alt: resourceImage.alt,
+                  src: resourceImage.src,
+                }}
+                link={link}
+                key={link}
+              />
+            );
+          } else {
+            return null;
+          }
+        })}
       </ResourcesWrapper>
     </Dash>
   );

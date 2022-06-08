@@ -10,29 +10,32 @@ import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import SafeLinkButton from '@ndla/safelink';
+import { mq, breakpoints } from '@ndla/core';
 
 const NavigationWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   margin: 0;
-  max-width: 362px;
+  max-width: 20vw;
   border-right: 1px solid ${colors.brand.greyLighter};
   height: 100%;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
 `;
 
 const Navigation = styled.div`
   padding: ${spacing.large};
 `;
 
-const NavigationElementText = styled.p`
+const NavigationElementText = styled.div`
   color: ${colors.text.primary};
-  margin: 0;
 `;
 
 const NavigationElement = styled(SafeLinkButton)`
   display: flex;
   align-items: center;
-  gap: 11.33px;
+  gap: 11px;
   height: 30px;
   box-shadow: none;
   &:hover {

@@ -929,7 +929,7 @@ const messages = {
     shortView: 'Kort visning',
     myPage: 'Min side',
     deleteAccount: 'Slett konto',
-    welcome: 'Hei, {{name.firstName}}. Vi har hentet følgende informasjon om deg fra Feide:',
+    welcome: 'Hei, {{name}}. Vi har hentet følgende informasjon om deg fra Feide:',
     read: 'Les våre',
     terms: 'vilkår for bruk',
     newFavourite: 'Nylig favorittmerkede',

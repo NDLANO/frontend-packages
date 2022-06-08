@@ -931,7 +931,7 @@ const messages = {
     shortView: 'Short view',
     myPage: 'My page',
     deleteAccount: 'Delete account',
-    welcome: 'Hello, {{name.firstName}}. We have gathered the following information about you from Feide:',
+    welcome: 'Hello, {{name}}. We have gathered the following information about you from Feide:',
     read: 'Read our',
     terms: 'terms of use',
     newFavourite: 'Recently favourited',

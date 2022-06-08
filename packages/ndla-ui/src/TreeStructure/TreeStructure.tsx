@@ -57,7 +57,8 @@ const TreeStructure = ({
       const currentElement = document.querySelector(`[data-add-folder-id="${rootLevelId}"]`) as HTMLButtonElement;
       currentElement?.focus();
     }
-  }, [keyNavigationId, editable, rootLevelId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keyNavigationId]);
 
   useEffect(() => {
     if (!loading) {

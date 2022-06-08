@@ -14,6 +14,12 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Create folder',
+    newFolder: {
+      placeholder: 'Add foldername',
+    },
+  },
   tagSelector: {
     placeholder: 'Add to tag',
     removeTag: 'Remove tag {{name}}',

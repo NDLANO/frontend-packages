@@ -33,7 +33,6 @@ const keyboardNavigation = ({
     parent?: FolderStructureProps[];
     parentId?: string;
     isOpen?: boolean;
-    url?: string;
   } = {
     paths: [],
     index: 0,
@@ -52,7 +51,6 @@ const keyboardNavigation = ({
         elementWithkeyFocus.data = childData;
         elementWithkeyFocus.parent = parent;
         elementWithkeyFocus.parentId = parentId;
-        elementWithkeyFocus.url = parent.find(({ id }) => id === dataId)?.url;
         return true;
       }
       return childData ? getPaths(childData, [...paths, _index], [...childData], dataId) : false;
@@ -67,7 +65,11 @@ const keyboardNavigation = ({
   }
   // on up or down key press we want to move focus to the next folder
   if (e.key === 'ArrowRight') {
-    if ((editable || elementWithkeyFocus.data?.length) && id && !elementWithkeyFocus.url && elementWithkeyFocus.paths.length < MAX_LEVEL_FOR_FOLDERS - 1) {
+    if (
+      (editable || elementWithkeyFocus.data?.length) &&
+      id &&
+      elementWithkeyFocus.paths.length < MAX_LEVEL_FOR_FOLDERS - 1
+    ) {
       setOpenFolders((prev) => {
         prev.add(id);
         return new Set(prev);
@@ -84,7 +86,7 @@ const keyboardNavigation = ({
     }
     return;
   }
-  
+
   e.preventDefault();
   e.stopPropagation();
 
@@ -128,24 +130,8 @@ const keyboardNavigation = ({
     return;
   }
 
-  if (elementWithkeyFocus.isOpen) {
-    // Move to add folder OR its first child in sub tree if isFolder === false or already in isFolder mode
-    if (!isFolder && editable) {
-      setKeyNavigationId({ id, isFolder: true });
-    } else if (elementWithkeyFocus.data?.length) {
-      setKeyNavigationId({ id: elementWithkeyFocus.data[0].id });
-    }
-    return;
-  }
-  if (elementWithkeyFocus.parent && elementWithkeyFocus.index < elementWithkeyFocus.parent?.length - 1) {
-    // Move downwards to the next child
-    setKeyNavigationId({ id: elementWithkeyFocus.parent[elementWithkeyFocus.index + 1].id });
-    return;
-  }
-
   // Traverse upwards, incase parent is last element of its parent..
   const traverseUpwards = (inital: FolderStructureProps[]) => {
-    // elementWithkeyFocus.paths.pop();
     let findParent = inital;
     const parentNextIds: (string | false)[] = [];
     elementWithkeyFocus.paths.forEach((index) => {
@@ -153,13 +139,35 @@ const keyboardNavigation = ({
       parentNextIds.push(nextParent?.id || false);
       findParent = findParent[index].data as FolderStructureProps[];
     });
+    if (!parentNextIds.length) {
+      parentNextIds.push(findParent[elementWithkeyFocus.index + 1]?.id || false);
+    }
     // We use a reversed version of parentNextIds, filtered out falses, to find the next element
     // No newId? We are at the end of the tree so we wont update.
-    const newId = parentNextIds.reverse().filter(id => id)[0];
+    const newId = parentNextIds.reverse().filter((id) => id)[0];
     if (newId) {
       setKeyNavigationId({ id: newId });
     }
   };
+
+  if (elementWithkeyFocus.isOpen) {
+    // Move to add folder OR its first child in sub tree if isFolder === false or already in isFolder mode
+    if (!isFolder && editable) {
+      setKeyNavigationId({ id, isFolder: true });
+    } else if (elementWithkeyFocus.data?.length) {
+      setKeyNavigationId({ id: elementWithkeyFocus.data[0].id });
+    } else {
+      // move to next child of parent if any... need new traverse :-/
+      traverseUpwards(data);
+    }
+    return;
+  }
+
+  if (elementWithkeyFocus.parent && elementWithkeyFocus.index < elementWithkeyFocus.parent?.length - 1) {
+    // Move downwards to the next child
+    setKeyNavigationId({ id: elementWithkeyFocus.parent[elementWithkeyFocus.index + 1].id });
+    return;
+  }
 
   traverseUpwards(data);
   return;

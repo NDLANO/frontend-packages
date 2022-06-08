@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface FolderStructureProps {
   id: string;
   name: string;
@@ -6,6 +8,8 @@ export interface FolderStructureProps {
   isFavorite?: boolean;
   status?: string;
   openAsDefault?: boolean;
+  url?: string;
+  icon?: React.ReactNode;
 }
 
 export interface NewFolderProps {
@@ -23,6 +27,7 @@ interface CommonFolderProps {
 export interface TreeStructureProps extends CommonFolderProps {
   framed?: boolean;
   label: string;
+  folderIdMarkedByDefault?: string;
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
 }
 
@@ -59,6 +64,7 @@ export interface FolderItemsProps extends CommonFolderProps {
   setKeyNavigationId: SetKeyNavigationId;
   firstLevel: boolean;
   keyNavigationIsFolder?: boolean;
+  icon?: React.ReactElement;
 }
 
 export interface NewFolderOptionProp {

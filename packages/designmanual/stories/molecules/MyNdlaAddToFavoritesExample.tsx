@@ -7,6 +7,7 @@
  */
 
 import React, { useState } from 'react';
+import { uuid } from '@ndla/util';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';
@@ -14,6 +15,8 @@ import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
 import { SnackBar, SnackBarItemProp } from '@ndla/ui';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
@@ -49,6 +52,7 @@ const DialogExample = ({
   setSnackBarMessage,
 }: DialogExampleProps) => {
   const { t } = useTranslation();
+  const folderIdMarkedByDefault = uuid();
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
       {(onCloseModal: () => void) => (
@@ -59,7 +63,13 @@ const DialogExample = ({
           <ModalBody>
             <h1>{title}</h1>
             <MyNdlaResource />
-            <h3>Mine mapper</h3>
+            <TreeStructureExampleComponent
+              folderIdMarkedByDefault={folderIdMarkedByDefault}
+              label="Mine mapper"
+              editable
+              framed
+              structure={STRUCTURE_EXAMPLE(folderIdMarkedByDefault)}
+            />
             <MyNdlaFolder />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>

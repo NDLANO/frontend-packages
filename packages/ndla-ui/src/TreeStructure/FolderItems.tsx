@@ -1,8 +1,18 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import { animations } from '@ndla/core';
 import FolderItem from './FolderItem';
 import AddFolder from './AddFolder';
 import { FolderItemsProps } from './TreeStructure.types';
 import { MAX_LEVEL_FOR_FOLDERS } from './TreeStructure';
+
+const StyledUL = styled.ul`
+  ${animations.fadeInLeft(animations.durations.fast)};
+  animation-fill-mode: forwards;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
 
 const FolderItems = ({
   loading,
@@ -22,7 +32,7 @@ const FolderItems = ({
   setKeyNavigationId,
   firstLevel,
 }: FolderItemsProps) => (
-  <ul role="group">
+  <StyledUL role="group">
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
@@ -30,8 +40,8 @@ const FolderItems = ({
         <li key={id} role="treeitem">
           <div>
             <FolderItem
-              url={url}
               icon={icon}
+              url={url}
               openOnFolderClick={openOnFolderClick}
               loading={loading}
               isOpen={isOpen}
@@ -83,7 +93,7 @@ const FolderItems = ({
         </li>
       );
     })}
-  </ul>
+  </StyledUL>
 );
 
 export default FolderItems;

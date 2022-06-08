@@ -32,11 +32,20 @@ const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
   return openFolders;
 };
 
-const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick, framed }: TreeStructureProps) => {
+const TreeStructure = ({
+  data,
+  label,
+  editable,
+  loading,
+  onNewFolder,
+  openOnFolderClick,
+  framed,
+  folderIdMarkedByDefault,
+}: TreeStructureProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
   const [keyNavigationId, setKeyNavigationId] = useState<{ id: string; isFolder?: boolean } | undefined>();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>();
+  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault);
   const rootLevelId = uuid();
 
   useEffect(() => {
@@ -107,7 +116,6 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
       }}>
       <h3>{label}</h3>
       <TreeStructureWrapper aria-label="Menu tree" role="tree" framed={framed}>
-        <h1>over</h1>
         {editable && (
           <AddFolder
             editing={newFolder && newFolder.parentId === undefined ? true : false}
@@ -137,7 +145,6 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
           setKeyNavigationId={setKeyNavigationId}
           firstLevel
         />
-        <h1>under</h1>
       </TreeStructureWrapper>
     </div>
   );

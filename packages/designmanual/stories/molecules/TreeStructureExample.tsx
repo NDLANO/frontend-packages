@@ -4,9 +4,9 @@ import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { User } from '@ndla/icons/common';
 
-const STRUCTURE_EXAMPLE = () => [
+export const STRUCTURE_EXAMPLE = (firstId?: string) => [
   {
-    id: uuid(),
+    id: firstId || uuid(),
     name: 'Mine favoritter',
     status: 'private',
     isFavorite: false,
@@ -60,25 +60,23 @@ const STRUCTURE_EXAMPLE = () => [
   },
 ];
 
-const STRUCTURE_EXAMPLE_WRAPPED = () => (
-  [
-    {
-      id: uuid(),
-      name: 'Min NDLA',
-      url: 'https://ndla.no',
-      icon: <User />,
-      data: [],
-    },
-    ...STRUCTURE_EXAMPLE(),
-    {
-      id: uuid(),
-      name: 'Mine tagger',
-      url: 'https://ndla.no',
-      icon: <User />,
-      data: [],
-    },
-  ]
-)
+const STRUCTURE_EXAMPLE_WRAPPED = () => [
+  {
+    id: uuid(),
+    name: 'Min NDLA',
+    url: 'https://ndla.no',
+    icon: <User />,
+    data: [],
+  },
+  ...STRUCTURE_EXAMPLE(),
+  {
+    id: uuid(),
+    name: 'Mine tagger',
+    url: 'https://ndla.no',
+    icon: <User />,
+    data: [],
+  },
+];
 
 const generateNewFolder = (name: string, id: string) => ({
   id,
@@ -88,7 +86,19 @@ const generateNewFolder = (name: string, id: string) => ({
   data: [],
 });
 
-const TreeStructureExampleComponent = ({ structure: initalStructure, label, editable, framed }: { structure: FolderStructureProps[]; label: string; editable: boolean; framed: boolean }) => {
+export const TreeStructureExampleComponent = ({
+  structure: initalStructure,
+  label,
+  editable,
+  framed,
+  folderIdMarkedByDefault,
+}: {
+  structure: FolderStructureProps[];
+  label: string;
+  editable: boolean;
+  framed: boolean;
+  folderIdMarkedByDefault?: string;
+}) => {
   const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
@@ -97,6 +107,7 @@ const TreeStructureExampleComponent = ({ structure: initalStructure, label, edit
       label={label}
       editable={editable}
       openOnFolderClick
+      folderIdMarkedByDefault={folderIdMarkedByDefault}
       onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
         // Just as an example, pretend to save to database and update the structure
         // eslint-disable-next-line no-console
@@ -129,10 +140,15 @@ const TreeStructureExample = () => (
     <TreeStructureExampleComponent label="Editable" editable framed structure={STRUCTURE_EXAMPLE()} />
     <hr />
     <h1>TreeStructure non-editable:</h1>
-    <TreeStructureExampleComponent label="Static" editable={false} framed structure={STRUCTURE_EXAMPLE()}/>
+    <TreeStructureExampleComponent label="Static" editable={false} framed structure={STRUCTURE_EXAMPLE()} />
     <hr />
     <h1>TreeStructure without frame</h1>
-    <TreeStructureExampleComponent label="Static" editable={false} framed={false} structure={STRUCTURE_EXAMPLE_WRAPPED()} />
+    <TreeStructureExampleComponent
+      label="Static"
+      editable={false}
+      framed={false}
+      structure={STRUCTURE_EXAMPLE_WRAPPED()}
+    />
   </div>
 );
 

@@ -57,7 +57,7 @@ const TreeStructure = ({
       const currentElement = document.querySelector(`[data-add-folder-id="${rootLevelId}"]`) as HTMLButtonElement;
       currentElement?.focus();
     }
-  }, [keyNavigationId]);
+  }, [keyNavigationId, editable, rootLevelId]);
 
   useEffect(() => {
     if (!loading) {

@@ -7,7 +7,6 @@
  */
 
 import React, { ElementType, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors } from '@ndla/core';
@@ -70,7 +69,7 @@ export const PageItem = <T extends Query>({
 
   const handleClick = () => onClick(query);
 
-  if (Component === SafeLink || Component === Link) {
+  if (Component === SafeLink) {
     return (
       <SafeLink css={pageItemStyle} onClick={handleClick} to={linkToPage}>
         {children}

@@ -139,7 +139,7 @@ const ImageSearchWrapper = styled.div`
     }
   }
 
-  .license {
+  .info {
     ${fonts.sizes('16px', 1.3)}
   }
 

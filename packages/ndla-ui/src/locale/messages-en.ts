@@ -14,6 +14,12 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  tagSelector: {
+    placeholder: 'Add to tag',
+    removeTag: 'Remove tag {{name}}',
+    hideAllTags: 'Hide all tags',
+    showAllTags: 'Show all tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Frontpage${titleTemplate}`,
@@ -819,6 +825,20 @@ const messages = {
   close: 'Close',
   title: 'Title',
   image: {
+    altText: 'Alt-text',
+    caption: 'Caption',
+    type: 'File type',
+    width: 'Width',
+    height: 'Height',
+    size: 'Size (bytes)',
+    modelReleased: {
+      label: 'Model released',
+      yes: 'Yes',
+      no: 'No',
+      'not-applicable': 'Not applicable',
+      'not-set': 'Not set',
+      description: 'Whether the image is model released or not:',
+    },
     download: 'Download image',
     reuse: 'Use image',
     largeSize: 'View original',

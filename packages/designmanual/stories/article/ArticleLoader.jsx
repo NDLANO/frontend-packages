@@ -8,7 +8,7 @@
 
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import format from 'date-fns/format';
 import { OneColumn, Article, ResourcesWrapper, ResourcesTopicTitle, TopicIntroductionList } from '@ndla/ui';
 import Button from '@ndla/button';

@@ -14,6 +14,12 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  tagSelector: {
+    placeholder: 'Tilknytt tag',
+    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    hideAllTags: 'Skjul alle tagger',
+    showAllTags: 'Vis alle tagger',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Framsida${titleTemplate}`,
@@ -519,7 +525,7 @@ const messages = {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Vel språk (language): ',
     vision: 'Saman skapar vi framtidas læring',
-    footerLinksHeader: 'Andre NDLA nettstader',
+    footerLinksHeader: 'Andre NDLA-nettstader',
     footerInfo: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
     footerEditiorInChief: 'Ansvarleg redaktør: ',
     footerManagingEditor: 'Utgåveansvarleg: ',
@@ -818,6 +824,20 @@ const messages = {
   close: 'Lukk',
   title: 'Tittel',
   image: {
+    altText: 'Alt-tekst',
+    caption: 'Bilettekst',
+    type: 'Filtype',
+    width: 'Breidde',
+    height: 'Høgde',
+    size: 'Størrelse (bytes)',
+    modelReleased: {
+      label: 'Modellklarert',
+      yes: 'Ja',
+      no: 'Nei',
+      'not-applicable': 'Ikkje relevant',
+      'not-set': 'Ikkje valgt',
+      description: 'Om bildet er modellklarert eller ikkje:',
+    },
     download: 'Last ned biletet',
     reuse: 'Bruk biletet',
     largeSize: 'Sjå stor utgave av biletet',

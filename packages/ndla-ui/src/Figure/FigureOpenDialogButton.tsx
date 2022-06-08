@@ -19,11 +19,10 @@ interface Props {
   };
 }
 
-export function FigureOpenDialogButton({ messages, type }: Props) {
+export const FigureOpenDialogButton = ({ messages, type }: Props) => {
   return (
-    <button
+    <div
       className="c-figure__fullscreen-btn"
-      type="button"
       data-aria={messages.zoomImageButtonLabel}
       data-ariaexpanded={messages.zoomOutImageButtonLabel}
       aria-label={messages.zoomImageButtonLabel}>
@@ -32,6 +31,6 @@ export function FigureOpenDialogButton({ messages, type }: Props) {
       {type === 'iframe' && <CursorClick style={{ width: '24px', height: '24px' }} />}
       {type === 'external' && <CursorClick style={{ width: '24px', height: '24px' }} />}
       {type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
-    </button>
+    </div>
   );
-}
+};

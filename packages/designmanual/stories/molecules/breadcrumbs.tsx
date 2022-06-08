@@ -128,3 +128,5 @@ export const BreadcrumbWithHome = () => {
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;
 };
+
+export default BreadcrumbDefault;

@@ -258,7 +258,7 @@ const LearningPathExample = ({ invertedStyle }) => {
       <LearningPathWrapper invertedStyle={invertedStyle}>
         <div className="c-hero__content">
           <section>
-            <Breadcrumb invertedStyle={invertedStyle} />
+            <Breadcrumb />
           </section>
         </div>
         <LearningPathContent>

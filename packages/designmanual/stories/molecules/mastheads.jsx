@@ -23,14 +23,22 @@ import {
   MastheadSearchModal,
   TopicMenuButton,
   SearchFieldForm,
-  BreadcrumbBlock,
   MastheadAuthModal,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
+import styled from '@emotion/styled';
+import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
+import { BreadcrumbWithHeader } from './breadcrumbs';
+
+const BreadcrumbWrapper = styled.div`
+  ${mq.range({ until: breakpoints.desktop })} {
+    display: block;
+  }
+`;
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -255,7 +263,9 @@ class MastheadWithTopicMenu extends Component {
           )}
           {breadcrumbItems && (
             <DisplayOnPageYOffset yOffsetMin={150}>
-              <BreadcrumbBlock items={breadcrumbItems} />
+              <BreadcrumbWrapper>
+                <BreadcrumbWithHeader items={breadcrumbItems} />
+              </BreadcrumbWrapper>
             </DisplayOnPageYOffset>
           )}
         </MastheadItem>

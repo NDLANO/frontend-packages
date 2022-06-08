@@ -10,7 +10,7 @@ import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core/src';
+import { spacing } from '@ndla/core/src';
 
 export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
@@ -41,7 +41,7 @@ const StyledChevron = styled(ChevronRight)`
 `;
 
 const StyledSafeLink = styled(SafeLink)`
-  color: ${colors.text.primary};
+  color: inherit;
 `;
 
 interface Props {

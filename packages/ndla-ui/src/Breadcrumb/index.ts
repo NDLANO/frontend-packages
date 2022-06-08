@@ -8,6 +8,6 @@
 
 import Breadcrumb from './Breadcrumb';
 
-export { default as BreadcrumbBlock } from './BreadcrumbBlock';
+export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './BreadcrumbItem';
 
 export default Breadcrumb;

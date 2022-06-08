@@ -10,34 +10,48 @@ import React, { useRef, useImperativeHandle, ReactNode, forwardRef } from 'react
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
+import { colors, spacing } from '@ndla/core/src';
 
-export interface BreadcrumbItemI {
+export interface SimpleBreadcrumbItem {
   to: string | Partial<Location>;
   name: string;
+}
+
+export interface IndexedBreadcrumbItem extends SimpleBreadcrumbItem {
   index: number;
 }
 
-const StyledBreadcrumbItem = styled.li`
+export interface BreadcrumbRenderProps {
+  item: IndexedBreadcrumbItem;
+  totalCount: number;
+}
+
+const StyledListItem = styled.li`
   margin-bottom: 0;
   margin-left: 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   :before {
     display: none;
   }
 `;
 
 const StyledChevron = styled(ChevronRight)`
-  margin: 5px;
+  margin: ${spacing.xxsmall};
+`;
+
+const StyledSafeLink = styled(SafeLink)`
+  color: ${colors.text.primary};
 `;
 
 interface Props {
-  item: BreadcrumbItemI;
+  item: IndexedBreadcrumbItem;
   totalCount: number;
-  renderItem?: (item: BreadcrumbItemI, totalCount: number) => ReactNode;
-  renderSeparator?: (item: BreadcrumbItemI, totalCount: number) => ReactNode;
+  renderItem?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
+  renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
 
-const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, item, totalCount }, ref) => {
+const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, renderSeparator, item, totalCount }, ref) => {
   const liRef = useRef<any>();
   useImperativeHandle(ref, () => ({
     setMaxWidth: (maxWidth: number) => {
@@ -47,18 +61,18 @@ const BreadcrumbItem = forwardRef<any, Props>(({ renderItem, item, totalCount },
   const { to, name, index } = item;
   const isLast = index === totalCount - 1;
   return (
-    <StyledBreadcrumbItem ref={liRef}>
+    <StyledListItem ref={liRef}>
       {renderItem ? (
         renderItem(item, totalCount)
       ) : isLast ? (
         <span>{name}</span>
       ) : (
-        <SafeLink to={to}>
+        <StyledSafeLink to={to}>
           <span>{name}</span>
-        </SafeLink>
+        </StyledSafeLink>
       )}
-      {!isLast && <StyledChevron />}
-    </StyledBreadcrumbItem>
+      {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <StyledChevron />}
+    </StyledListItem>
   );
 });
 

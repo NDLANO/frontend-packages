@@ -34,7 +34,7 @@ import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import NotionExample from './organisms/NotionExample';
-import { BreadcrumbDefault, BreadcrumbWithHeader, BreadCrumbWithHome } from './molecules/breadcrumbs';
+import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -207,7 +207,7 @@ storiesOf('Sammensatte moduler', module)
       <h2 className="u-heading">Brødsmulesti med header og spesiell styling</h2>
       <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
-      <BreadCrumbWithHome />
+      <BreadcrumbWithHome />
     </Center>
   ))
   .add('Begrepsforklaring', () => (

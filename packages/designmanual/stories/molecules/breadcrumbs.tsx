@@ -80,7 +80,7 @@ export const BreadcrumbWithHeader = () => {
   );
 };
 
-export const BreadCrumbWithHome = () => {
+export const BreadcrumbWithHome = () => {
   const StyledSeparator = styled.div`
     ${fonts.sizes('14px')};
     margin: 0 ${spacing.small};

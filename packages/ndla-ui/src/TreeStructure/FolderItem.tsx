@@ -22,6 +22,11 @@ const OpenButton = styled.button<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   margin: 0;
+  color: ${colors.brand.secondary};
+  cursor: pointer;
+  &:hover {
+    color: ${colors.brand.primary};
+  }
 `;
 
 const Wrapper = styled.div`

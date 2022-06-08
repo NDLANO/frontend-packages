@@ -10,9 +10,8 @@ import React, { useEffect, useState } from 'react';
 import TreeStructureWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import AddFolder from './AddFolder';
-import {
-  FolderStructureProps, NewFolderProps, FoldersProps,
-} from './TreeStructure.types';
+import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation';
+import { FolderStructureProps, NewFolderProps, FoldersProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -35,7 +34,17 @@ const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
 const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick }: FoldersProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
+  const [keyNavigationId, setKeyNavigationId] = useState<string | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (keyNavigationId) {
+      const currentElement = document.querySelector(
+        `[data-tree-structure-id="${keyNavigationId}"]`,
+      ) as HTMLButtonElement;
+      currentElement?.focus();
+    }
+  }, [keyNavigationId]);
 
   useEffect(() => {
     if (!loading) {
@@ -65,6 +74,7 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
       const newFolderId = await onNewFolder({ ...newFolder, value });
       if (newFolderId) {
         setMarkedFolderId(newFolderId);
+        setKeyNavigationId(newFolderId);
       }
     } else {
       setNewFolder(undefined);
@@ -73,13 +83,24 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
 
   const onMarkFolder = (id: string) => {
     setMarkedFolderId(id);
+    setKeyNavigationId(id);
   };
 
   return (
-    <div onFocus={() => console.log('focus')}
-    onBlur={() => console.log('onBlur')}
-    onFocusCapture={() => console.log('focus capture?')}
-    >
+    <div
+      onKeyDown={(e) => {
+        if (KEYBOARD_KEYS_OF_INTEREST.includes(e.key)) {
+          keyboardNavigation({
+            e,
+            data,
+            setKeyNavigationId,
+            keyNavigationId,
+            onMarkFolder,
+            setOpenFolders,
+            openFolders,
+          });
+        }
+      }}>
       <h1>{label}</h1>
       <TreeStructureWrapper aria-label="Menu tree" role="tree">
         {editable && (
@@ -89,7 +110,7 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
             idPaths={[]}
             onSaveNewFolder={onSaveNewFolder}
             onCreateNewFolder={onCreateNewFolder}
-            tabIndex={0}
+            tabIndex={keyNavigationId ? -1 : 0}
           />
         )}
         <FolderItems
@@ -105,6 +126,9 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
           onMarkFolder={onMarkFolder}
           openOnFolderClick={openOnFolderClick}
           loading={loading}
+          keyNavigationId={keyNavigationId}
+          setKeyNavigationId={setKeyNavigationId}
+          firstLevel
         />
       </TreeStructureWrapper>
     </div>

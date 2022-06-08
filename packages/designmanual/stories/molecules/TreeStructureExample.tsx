@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 
-const STRUCTURE_EXAMPLE = [
+const STRUCTURE_EXAMPLE = () => [
   {
     id: uuid(),
     name: 'Mine favoritter',
@@ -68,7 +68,7 @@ const generateNewFolder = (name: string, id: string) => ({
 });
 
 const TreeStructureExampleComponent = ({ label, editable }: { label: string; editable: boolean }) => {
-  const [structure, setStructure] = useState<FolderStructureProps[]>(STRUCTURE_EXAMPLE);
+  const [structure, setStructure] = useState<FolderStructureProps[]>(STRUCTURE_EXAMPLE());
   const [loading, setLoading] = useState(false);
   return (
     <TreeStructure

@@ -24,13 +24,11 @@ interface Props {
   onCreateNewFolder: onCreateNewFolderProp;
   parentId?: string;
   idPaths: number[];
-  tabIndex?: 0 | undefined;
+  tabIndex?: 0 | -1;
 }
 
 const NewFolderButton = ({ onCreateNewFolder, parentId, idPaths, tabIndex }: Props) => (
-  <StyledButton
-    tabIndex={tabIndex === undefined ? -1 : tabIndex}
-    onClick={() => onCreateNewFolder({ parentId, idPaths })}>
+  <StyledButton tabIndex={tabIndex} onClick={() => onCreateNewFolder({ parentId, idPaths })}>
     <NewFolder />
     <span>Ny mappe</span>
   </StyledButton>

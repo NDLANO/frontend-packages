@@ -17,6 +17,9 @@ const FolderItems = ({
   markedFolderId,
   onMarkFolder,
   openOnFolderClick,
+  keyNavigationId,
+  setKeyNavigationId,
+  firstLevel,
 }: FolderItemsProps) => (
   <ul role="group">
     {data.map(({ name, data: dataChildren, id }, _index) => {
@@ -34,7 +37,11 @@ const FolderItems = ({
               marked={markedFolderId === id}
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
+              highlightedByKeyBoardNavigation={
+                keyNavigationId === id || (firstLevel && keyNavigationId === undefined && !editable)
+              }
               hideArrow={(!editable && dataChildren?.length === 0) || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
+              setKeyNavigationId={setKeyNavigationId}
             />
           </div>
           {editable && isOpen && newIdPaths.length < MAX_LEVEL_FOR_FOLDERS && (
@@ -62,6 +69,9 @@ const FolderItems = ({
               markedFolderId={markedFolderId}
               onMarkFolder={onMarkFolder}
               openOnFolderClick={openOnFolderClick}
+              keyNavigationId={keyNavigationId}
+              setKeyNavigationId={setKeyNavigationId}
+              firstLevel={false}
             />
           )}
         </li>

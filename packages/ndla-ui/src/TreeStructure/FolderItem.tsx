@@ -23,7 +23,7 @@ const OpenButton = styled.button<{ isOpen: boolean }>`
   margin: 0;
 `;
 
-const Wrapper = styled.div<{ marked: boolean }>`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   height: ${spacing.medium};
@@ -56,6 +56,8 @@ interface Props {
   loading?: boolean;
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
+  highlightedByKeyBoardNavigation: boolean;
+  setKeyNavigationId: (id: string) => void;
 }
 
 const FolderItem = ({
@@ -68,8 +70,10 @@ const FolderItem = ({
   isOpen,
   marked,
   openOnFolderClick,
+  highlightedByKeyBoardNavigation,
+  setKeyNavigationId,
 }: Props) => (
-  <Wrapper marked={marked}>
+  <Wrapper>
     {!hideArrow && (
       <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
         <ArrowDropDown />
@@ -77,9 +81,13 @@ const FolderItem = ({
     )}
     <FolderNameButton
       noArrow={hideArrow}
-      tabIndex={-1}
+      tabIndex={highlightedByKeyBoardNavigation ? 0 : -1}
       marked={marked}
       disabled={loading}
+      onFocus={() => {
+        setKeyNavigationId(id);
+      }}
+      data-tree-structure-id={id}
       onClick={() => {
         onMarkFolder(id);
         if (openOnFolderClick) {

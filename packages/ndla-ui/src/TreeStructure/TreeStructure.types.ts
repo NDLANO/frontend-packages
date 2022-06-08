@@ -1,4 +1,3 @@
-
 export interface FolderStructureProps {
   id: string;
   name: string;
@@ -44,6 +43,9 @@ export interface FolderItemsProps extends CommonFolderProps {
   markedFolderId?: string;
   onMarkFolder: (id: string) => void;
   idPaths: number[];
+  keyNavigationId: string | undefined;
+  setKeyNavigationId: (id: string | undefined) => void;
+  firstLevel: boolean;
 }
 
 export interface NewFolderOptionProp {
@@ -54,5 +56,5 @@ export interface NewFolderOptionProp {
   onSaveNewFolder: onSaveNewFolderProp;
   onCreateNewFolder: onCreateNewFolderProp;
   withPadding?: boolean;
-  tabIndex?: 0 | undefined;
+  tabIndex?: 0 | -1;
 }

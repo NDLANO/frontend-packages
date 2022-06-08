@@ -20,7 +20,9 @@ export interface FolderStructureProps {
   id: string;
   name: string;
   isOpen?: boolean;
-  data?: FolderStructureProps;
+  data?: FolderStructureProps[];
+  isFavorite?: boolean;
+  status?: string;
   openAsDefault?: boolean;
 }
 
@@ -32,7 +34,6 @@ interface NewFolderProps {
 interface CommonFolderProps {
   data: FolderStructureProps[];
   editable?: boolean;
-  idPaths: number[];
   loading?: boolean;
   openOnFolderClick?: boolean;
 }
@@ -59,6 +60,7 @@ interface FolderItemsProps extends CommonFolderProps {
   openFolders: Set<string>;
   markedFolderId?: string;
   onMarkFolder: (id: string) => void;
+  idPaths: number[];
 }
 
 const NewFolderWrapper = styled.div<{ withPadding?: boolean }>`
@@ -130,7 +132,7 @@ const FolderItems = ({
               marked={markedFolderId === id}
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
-              hideArrow={!editable && dataChildren?.length === 0 || (newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS)}
+              hideArrow={(!editable && dataChildren?.length === 0) || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
             />
           </div>
           {editable && isOpen && newIdPaths.length < MAX_LEVEL_FOR_FOLDERS && (
@@ -173,14 +175,14 @@ const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
       if (folder.openAsDefault) {
         openFolders.push(folder.id);
       }
-      if (folder.data?.length > 0) {
+      if (folder.data && folder.data?.length > 0) {
         getOpen(folder.data);
       }
     });
   };
   getOpen(data);
   return openFolders;
-}
+};
 
 const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick }: FoldersProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
@@ -209,7 +211,7 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
   };
 
   const onSaveNewFolder = async ({ value, cancel }: { value: string; cancel: boolean }) => {
-    if (!cancel) {
+    if (!cancel && newFolder) {
       // We would like to create a new folder with the name of value.
       // Its location in structure is based on newFolder object
       const newFolderId = await onNewFolder({ ...newFolder, value });

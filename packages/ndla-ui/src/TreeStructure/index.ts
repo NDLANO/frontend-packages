@@ -7,5 +7,7 @@
  */
 
 import TreeStructure from './TreeStructure';
+import type { FolderStructureProps } from './TreeStructure';
 
+export type { FolderStructureProps };
 export { TreeStructure };

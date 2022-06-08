@@ -125,7 +125,7 @@ const FolderRightSide = styled.div<{ layout?: LayoutType }>`
   align-items: center;
   gap: ${spacing.normal};
   :last-child {
-    gap: ${spacing.small};
+    gap: ${spacing.xsmall};
   }
   ${(props) =>
     props.layout === 'block' &&

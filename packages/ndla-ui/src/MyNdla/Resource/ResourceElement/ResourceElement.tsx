@@ -148,7 +148,7 @@ const ResourceRightSide = styled.div`
   justify-content: flex-end;
   align-items: center;
   :last-child {
-    gap: ${spacing.nsmall};
+    gap: ${spacing.xsmall};
   }
 `;
 const Halfwrapper = styled.div`

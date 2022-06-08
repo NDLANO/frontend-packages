@@ -18,6 +18,7 @@ const AddFolder = ({
   idPaths,
   withPadding,
   tabIndex,
+  rootLevelId,
 }: NewFolderOptionProp) => (
   <NewFolderWrapper withPadding={withPadding}>
     {editing ? (
@@ -28,6 +29,7 @@ const AddFolder = ({
         onCreateNewFolder={onCreateNewFolder}
         parentId={parentId}
         idPaths={idPaths}
+        rootLevelId={rootLevelId}
       />
     )}
   </NewFolderWrapper>

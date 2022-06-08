@@ -18,6 +18,7 @@ const FolderItems = ({
   onMarkFolder,
   openOnFolderClick,
   keyNavigationId,
+  keyNavigationIsFolder,
   setKeyNavigationId,
   firstLevel,
 }: FolderItemsProps) => (
@@ -38,7 +39,8 @@ const FolderItems = ({
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
               highlightedByKeyBoardNavigation={
-                keyNavigationId === id || (firstLevel && keyNavigationId === undefined && !editable)
+                (keyNavigationId === id && !keyNavigationIsFolder) ||
+                (firstLevel && keyNavigationId === undefined && !editable)
               }
               hideArrow={(!editable && dataChildren?.length === 0) || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
               setKeyNavigationId={setKeyNavigationId}
@@ -53,6 +55,7 @@ const FolderItems = ({
               idPaths={newIdPaths}
               onSaveNewFolder={onSaveNewFolder}
               onCreateNewFolder={onCreateNewFolder}
+              tabIndex={keyNavigationId === id && keyNavigationIsFolder ? 0 : -1}
             />
           )}
           {dataChildren && isOpen && (
@@ -72,6 +75,7 @@ const FolderItems = ({
               keyNavigationId={keyNavigationId}
               setKeyNavigationId={setKeyNavigationId}
               firstLevel={false}
+              keyNavigationIsFolder={keyNavigationIsFolder}
             />
           )}
         </li>

@@ -34,6 +34,17 @@ export type onCreateNewFolderProp = ({
 }) => void;
 type onSaveNewFolderProp = ({ value, cancel }: { value: string; cancel: boolean }) => void;
 
+export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<Set<string>>>;
+export type SetKeyNavigationId = React.Dispatch<
+  React.SetStateAction<
+    | {
+        id: string;
+        isFolder?: boolean | undefined;
+      }
+    | undefined
+  >
+>;
+
 export interface FolderItemsProps extends CommonFolderProps {
   onToggleOpen: (id: string) => void;
   onSaveNewFolder: onSaveNewFolderProp;
@@ -44,8 +55,9 @@ export interface FolderItemsProps extends CommonFolderProps {
   onMarkFolder: (id: string) => void;
   idPaths: number[];
   keyNavigationId: string | undefined;
-  setKeyNavigationId: (id: string | undefined) => void;
+  setKeyNavigationId: SetKeyNavigationId;
   firstLevel: boolean;
+  keyNavigationIsFolder?: boolean;
 }
 
 export interface NewFolderOptionProp {
@@ -57,4 +69,5 @@ export interface NewFolderOptionProp {
   onCreateNewFolder: onCreateNewFolderProp;
   withPadding?: boolean;
   tabIndex?: 0 | -1;
+  rootLevelId?: string;
 }

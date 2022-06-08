@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc } from '@ndla/core';
+import { SetKeyNavigationId } from './TreeStructure.types';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
@@ -57,7 +58,7 @@ interface Props {
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
   highlightedByKeyBoardNavigation: boolean;
-  setKeyNavigationId: (id: string) => void;
+  setKeyNavigationId: SetKeyNavigationId;
 }
 
 const FolderItem = ({
@@ -85,7 +86,7 @@ const FolderItem = ({
       marked={marked}
       disabled={loading}
       onFocus={() => {
-        setKeyNavigationId(id);
+        setKeyNavigationId({ id, isFolder: false });
       }}
       data-tree-structure-id={id}
       onClick={() => {

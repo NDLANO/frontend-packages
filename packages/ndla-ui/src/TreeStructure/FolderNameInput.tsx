@@ -4,12 +4,12 @@ import { Spinner } from '@ndla/editor';
 import { spacing, colors, misc } from '@ndla/core';
 
 const InputWrapper = styled.div<{ loading?: boolean }>`
-  margin: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} ${spacing.small};
+  margin: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} 0;
   display: flex;
   border: 1px solid ${({ loading }) => (loading ? colors.brand.lighter : colors.brand.primary)};
   border-style: dashed;
   border-radius: ${misc.borderRadius};
-  padding: 0;
+  padding-right: ${spacing.normal};
   input {
     flex-grow: 1;
     border: 0;
@@ -51,7 +51,7 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
           setValue(target.value);
         }}
       />
-      {loading && <Spinner size="xsmall" />}
+      {loading && <Spinner size="small" />}
     </InputWrapper>
   );
 };

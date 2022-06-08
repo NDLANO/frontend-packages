@@ -25,10 +25,14 @@ interface Props {
   parentId?: string;
   idPaths: number[];
   tabIndex?: 0 | -1;
+  rootLevelId?: string;
 }
 
-const NewFolderButton = ({ onCreateNewFolder, parentId, idPaths, tabIndex }: Props) => (
-  <StyledButton tabIndex={tabIndex} onClick={() => onCreateNewFolder({ parentId, idPaths })}>
+const NewFolderButton = ({ onCreateNewFolder, parentId, idPaths, tabIndex, rootLevelId }: Props) => (
+  <StyledButton
+    data-add-folder-id={parentId || rootLevelId}
+    tabIndex={tabIndex}
+    onClick={() => onCreateNewFolder({ parentId, idPaths })}>
     <NewFolder />
     <span>Ny mappe</span>
   </StyledButton>

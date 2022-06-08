@@ -7,6 +7,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { uuid } from '@ndla/util';
 import TreeStructureWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import AddFolder from './AddFolder';
@@ -34,14 +35,17 @@ const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
 const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick }: FoldersProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
-  const [keyNavigationId, setKeyNavigationId] = useState<string | undefined>();
+  const [keyNavigationId, setKeyNavigationId] = useState<{ id: string; isFolder?: boolean } | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>();
+  const rootLevelId = uuid();
 
   useEffect(() => {
-    if (keyNavigationId) {
-      const currentElement = document.querySelector(
-        `[data-tree-structure-id="${keyNavigationId}"]`,
-      ) as HTMLButtonElement;
+    if (keyNavigationId?.id) {
+      const dataProp = keyNavigationId.isFolder ? 'data-add-folder-id' : 'data-tree-structure-id';
+      const currentElement = document.querySelector(`[${dataProp}="${keyNavigationId.id}"]`) as HTMLButtonElement;
+      currentElement?.focus();
+    } else if (editable) {
+      const currentElement = document.querySelector(`[data-add-folder-id="${rootLevelId}"]`) as HTMLButtonElement;
       currentElement?.focus();
     }
   }, [keyNavigationId]);
@@ -74,7 +78,7 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
       const newFolderId = await onNewFolder({ ...newFolder, value });
       if (newFolderId) {
         setMarkedFolderId(newFolderId);
-        setKeyNavigationId(newFolderId);
+        setKeyNavigationId({ id: newFolderId, isFolder: false });
       }
     } else {
       setNewFolder(undefined);
@@ -83,7 +87,7 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
 
   const onMarkFolder = (id: string) => {
     setMarkedFolderId(id);
-    setKeyNavigationId(id);
+    setKeyNavigationId({ id, isFolder: false });
   };
 
   return (
@@ -94,14 +98,14 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
             e,
             data,
             setKeyNavigationId,
-            keyNavigationId,
-            onMarkFolder,
+            keyNavigationId: keyNavigationId,
             setOpenFolders,
             openFolders,
+            editable: editable,
           });
         }
       }}>
-      <h1>{label}</h1>
+      <h3>{label}</h3>
       <TreeStructureWrapper aria-label="Menu tree" role="tree">
         {editable && (
           <AddFolder
@@ -110,7 +114,8 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
             idPaths={[]}
             onSaveNewFolder={onSaveNewFolder}
             onCreateNewFolder={onCreateNewFolder}
-            tabIndex={keyNavigationId ? -1 : 0}
+            tabIndex={keyNavigationId?.id ? -1 : 0}
+            rootLevelId={rootLevelId}
           />
         )}
         <FolderItems
@@ -126,7 +131,8 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
           onMarkFolder={onMarkFolder}
           openOnFolderClick={openOnFolderClick}
           loading={loading}
-          keyNavigationId={keyNavigationId}
+          keyNavigationId={keyNavigationId?.id}
+          keyNavigationIsFolder={keyNavigationId?.isFolder}
           setKeyNavigationId={setKeyNavigationId}
           firstLevel
         />

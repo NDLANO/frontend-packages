@@ -73,6 +73,8 @@ const FolderItem = ({
   openOnFolderClick,
   highlightedByKeyBoardNavigation,
   setKeyNavigationId,
+  url,
+  icon,
 }: Props) => (
   <Wrapper>
     {!hideArrow && (
@@ -95,7 +97,7 @@ const FolderItem = ({
           onToggleOpen(id);
         }
       }}>
-      <FolderOutlined />
+      {icon || <FolderOutlined />}
       {name}
     </FolderNameButton>
   </Wrapper>

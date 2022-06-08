@@ -23,13 +23,15 @@ const FolderItems = ({
   firstLevel,
 }: FolderItemsProps) => (
   <ul role="group">
-    {data.map(({ name, data: dataChildren, id }, _index) => {
+    {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
       return (
         <li key={id} role="treeitem">
           <div>
             <FolderItem
+              url={url}
+              icon={icon}
               openOnFolderClick={openOnFolderClick}
               loading={loading}
               isOpen={isOpen}

@@ -12,7 +12,7 @@ import TreeStructureWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import AddFolder from './AddFolder';
 import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation';
-import { FolderStructureProps, NewFolderProps, FoldersProps } from './TreeStructure.types';
+import { FolderStructureProps, NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -32,7 +32,7 @@ const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
   return openFolders;
 };
 
-const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick }: FoldersProps) => {
+const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFolderClick, framed }: TreeStructureProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
   const [keyNavigationId, setKeyNavigationId] = useState<{ id: string; isFolder?: boolean } | undefined>();
@@ -106,7 +106,8 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
         }
       }}>
       <h3>{label}</h3>
-      <TreeStructureWrapper aria-label="Menu tree" role="tree">
+      <TreeStructureWrapper aria-label="Menu tree" role="tree" framed={framed}>
+        <h1>over</h1>
         {editable && (
           <AddFolder
             editing={newFolder && newFolder.parentId === undefined ? true : false}
@@ -136,6 +137,7 @@ const TreeStructure = ({ data, label, editable, loading, onNewFolder, openOnFold
           setKeyNavigationId={setKeyNavigationId}
           firstLevel
         />
+        <h1>under</h1>
       </TreeStructureWrapper>
     </div>
   );

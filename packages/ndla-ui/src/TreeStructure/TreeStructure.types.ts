@@ -20,7 +20,8 @@ interface CommonFolderProps {
   openOnFolderClick?: boolean;
 }
 
-export interface FoldersProps extends CommonFolderProps {
+export interface TreeStructureProps extends CommonFolderProps {
+  framed?: boolean;
   label: string;
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
 }

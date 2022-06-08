@@ -1,14 +1,18 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { colors, misc, spacing } from '@ndla/core';
 
-const TreeStructureWrapper = styled.div`
-  max-height: 400px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  border: 1px solid ${colors.brand.greyLighter};
-  border-radius: ${misc.borderRadius};
+const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
+  padding: ${spacing.xsmall};
+  ${({ framed }) => framed ? css`
+    border: 1px solid ${colors.brand.greyLighter};
+    border-radius: ${misc.borderRadius};
+    max-height: 400px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: ${spacing.small};
+  ` : ''}
   transition: ${misc.transition.default};
-  padding: ${spacing.small};
   ul {
     list-style: none;
     margin: 0;

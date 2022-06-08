@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
+import { User } from '@ndla/icons/common';
 
 const STRUCTURE_EXAMPLE = () => [
   {
@@ -59,6 +60,26 @@ const STRUCTURE_EXAMPLE = () => [
   },
 ];
 
+const STRUCTURE_EXAMPLE_WRAPPED = () => (
+  [
+    {
+      id: uuid(),
+      name: 'Min NDLA',
+      url: 'https://ndla.no',
+      icon: <User />,
+      data: [],
+    },
+    ...STRUCTURE_EXAMPLE(),
+    {
+      id: uuid(),
+      name: 'Mine tagger',
+      url: 'https://ndla.no',
+      icon: <User />,
+      data: [],
+    },
+  ]
+)
+
 const generateNewFolder = (name: string, id: string) => ({
   id,
   name,
@@ -67,11 +88,12 @@ const generateNewFolder = (name: string, id: string) => ({
   data: [],
 });
 
-const TreeStructureExampleComponent = ({ label, editable }: { label: string; editable: boolean }) => {
-  const [structure, setStructure] = useState<FolderStructureProps[]>(STRUCTURE_EXAMPLE());
+const TreeStructureExampleComponent = ({ structure: initalStructure, label, editable, framed }: { structure: FolderStructureProps[]; label: string; editable: boolean; framed: boolean }) => {
+  const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
     <TreeStructure
+      framed={framed}
       label={label}
       editable={editable}
       openOnFolderClick
@@ -104,10 +126,13 @@ const TreeStructureExampleComponent = ({ label, editable }: { label: string; edi
 const TreeStructureExample = () => (
   <div>
     <h1>TreeStructure editable:</h1>
-    <TreeStructureExampleComponent label="Editable" editable />
+    <TreeStructureExampleComponent label="Editable" editable framed structure={STRUCTURE_EXAMPLE()} />
     <hr />
     <h1>TreeStructure non-editable:</h1>
-    <TreeStructureExampleComponent label="Static" editable={false} />
+    <TreeStructureExampleComponent label="Static" editable={false} framed structure={STRUCTURE_EXAMPLE()}/>
+    <hr />
+    <h1>TreeStructure without frame</h1>
+    <TreeStructureExampleComponent label="Static" editable={false} framed={false} structure={STRUCTURE_EXAMPLE_WRAPPED()} />
   </div>
 );
 

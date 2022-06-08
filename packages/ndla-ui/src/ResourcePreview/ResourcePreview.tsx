@@ -11,8 +11,8 @@ import React, { ReactElement } from 'react';
 import SafeLink from '@ndla/safelink';
 import { mq, breakpoints } from '@ndla/core';
 import { fonts, spacing, colors } from '@ndla/core';
-import Image from '../../../Image';
-import MoreButton from '../../MoreButton';
+import { MoreButton } from '@ndla/button';
+import Image from '../Image';
 
 const ResourceElementWrapper = styled(SafeLink)`
   display: flex;

@@ -16,7 +16,6 @@ const MyNdlaMyPage = () => {
       recentFavorites={[
         {
           title: 'My Resource',
-          layout: 'list',
           link: '',
           topics: ['Oppgave', 'Norsk', 'Muntlig'],
           tags: ['tag', 'tag', 'tag'],
@@ -30,7 +29,6 @@ const MyNdlaMyPage = () => {
         {
           title: 'My Resource',
           link: '',
-          layout: 'list',
           topics: ['Oppgave', 'Norsk', 'Muntlig'],
           tags: ['tag', 'tag', 'tag'],
           description:

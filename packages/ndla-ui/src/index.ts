@@ -219,17 +219,10 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
-export {
-  ResourceElement,
-  Breadcrumbs,
-  VerticalNavigation,
-  FolderElement,
-  MoreButton,
-  BlockElement,
-  DialogueElement,
-  ListElement,
-} from './MyNdla';
-export type { ResourceElementProps } from './MyNdla';
+export { Breadcrumbs, VerticalNavigation, FolderPreview } from './MyNdla';
+export type { LayoutType } from './MyNdla';
+export { BlockView, DialogueView, ListView, ResourcePreview } from './ResourcePreview';
+export type { ResourceElementProps } from './ResourcePreview';
 export type { TagProp } from './TagSelector';
 export { TagSelector } from './TagSelector';
 

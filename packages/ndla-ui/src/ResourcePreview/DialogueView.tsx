@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { mq, breakpoints } from '@ndla/core';
-import Image from '../../../Image';
+import Image from '../Image';
 
 import {
   ResourceElementWrapper,
@@ -17,7 +17,7 @@ import {
   ResourceTopic,
   ResourceImageWrapper,
   ResourceInfoWrapper,
-} from './ResourceElement';
+} from './ResourcePreview';
 
 const DialogueElementWrapper = styled(ResourceElementWrapper)`
   min-height: 64px;

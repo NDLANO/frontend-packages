@@ -7,11 +7,7 @@
  */
 
 import Breadcrumbs from './Breadcrumbs';
-import ResourceElement from './ResourceElement/ResourceElement';
-import BlockElement from './ResourceElement/BlockElement';
-import DialogueElement from './ResourceElement/DialogueElement';
-import FolderElement from './FolderElement';
-import ListElement from './ResourceElement/ListElement';
-import { ResourceElementProps } from './ResourceElement';
-export { ResourceElement, Breadcrumbs, FolderElement, BlockElement, DialogueElement, ListElement };
-export type { ResourceElementProps };
+import FolderPreview from './FolderPreview';
+import { LayoutType } from './FolderPreview';
+export type { LayoutType };
+export { Breadcrumbs, FolderPreview };

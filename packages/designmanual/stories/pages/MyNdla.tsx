@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { ResourceElement, FolderElement, BlockElement, DialogueElement, ListElement } from '@ndla/ui';
+import { ResourcePreview, FolderPreview, BlockView, DialogueView, ListView } from '@ndla/ui';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -16,7 +16,6 @@ import ComponentInfo from '../ComponentInfo';
 const Wrapper = styled.div`
   max-width: 960px;
   margin: 0 auto;
-  margin-top: 100px;
 `;
 
 export const MyNdla = () => {
@@ -28,7 +27,7 @@ export const MyNdla = () => {
           <>
             <h2> Ressurser </h2>
             <h3> Standard Ressurs</h3>
-            <ResourceElement
+            <ResourcePreview
               title="Title"
               topics={['Matte', 'Naturfag']}
               tags={['tag', 'tag', 'tag']}
@@ -41,7 +40,7 @@ export const MyNdla = () => {
               key={''}
             />
             <h3> Ressurs i utvidet listevisning </h3>
-            <ListElement
+            <ListView
               title="Title"
               topics={['Matte', 'Naturfag']}
               tags={['tag', 'tag', 'tag']}
@@ -56,7 +55,7 @@ export const MyNdla = () => {
               key={''}
             />
             <h3> Ressurs i blokkvisning </h3>
-            <BlockElement
+            <BlockView
               title="Title"
               topics={['Matte', 'Naturfag']}
               tags={['tag', 'tag', 'tag']}
@@ -69,7 +68,7 @@ export const MyNdla = () => {
               key={''}
             />
             <h3> Ressurs i dialogvisning</h3>
-            <DialogueElement
+            <DialogueView
               title="Title"
               topics={['Matte', 'Naturfag']}
               tags={['tag', 'tag', 'tag']}
@@ -82,7 +81,7 @@ export const MyNdla = () => {
               key={''}
             />
             <h2> Mappevisning </h2>
-            <FolderElement layout="list" title="Title" link="" subFolders={3} subResources={3} key={''} />
+            <FolderPreview layout="list" title="Title" link="" subFolders={3} subResources={3} key={''} />
           </>
         }
         onSite={[

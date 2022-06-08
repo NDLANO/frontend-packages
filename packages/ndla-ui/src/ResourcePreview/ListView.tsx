@@ -10,8 +10,8 @@ import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { mq, breakpoints } from '@ndla/core';
 import { spacing } from '@ndla/core';
-import Image from '../../../Image';
-import MoreButton from '../../MoreButton';
+import { MoreButton } from '@ndla/button';
+import Image from '../Image';
 import {
   ResourceElementWrapper,
   ResourceTitle,
@@ -21,7 +21,7 @@ import {
   ResourceRightSide,
   ResourceInfoWrapper,
   TagsList,
-} from './ResourceElement';
+} from './ResourcePreview';
 
 const ResourceListTitle = styled(ResourceTitle)`
   height: auto;
@@ -31,9 +31,6 @@ const ResourceListElementWrapper = styled(ResourceElementWrapper)`
   min-height: 129px;
   ${ResourceListTitle}:hover & {
     text-decoration: underline;
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    height: 172px;
   }
 `;
 const ResourceListInfoWrapper = styled(ResourceInfoWrapper)`

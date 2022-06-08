@@ -9,8 +9,9 @@
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { mq, spacing, breakpoints } from '@ndla/core';
-import Image from '../../../Image';
-import MoreButton from '../../MoreButton';
+import { MoreButton } from '@ndla/button';
+import Image from '../Image';
+
 import {
   ResourceElementWrapper,
   ResourceTitle,
@@ -24,7 +25,7 @@ import {
   TagsList,
   Halfwrapper,
   Tophalf,
-} from './ResourceElement';
+} from './ResourcePreview';
 
 const BlockTopicText = styled(ResourceTopicText)`
   height: 0;

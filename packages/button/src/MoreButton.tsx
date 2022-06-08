@@ -11,7 +11,7 @@ import React from 'react';
 import { spacing, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { HorizontalMenu } from '@ndla/icons/contentType';
-import Button from '@ndla/button';
+import Button from './';
 
 const MoreIcon = styled(Button)`
   display: flex;

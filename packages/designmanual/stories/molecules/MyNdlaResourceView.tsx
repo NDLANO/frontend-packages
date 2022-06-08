@@ -12,15 +12,13 @@ import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { Plus } from '@ndla/icons/action';
+import { Plus, GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
-import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { FolderElement, ResourceElement, BlockElement, ListElement } from '@ndla/ui';
-import { LayoutType } from '@ndla/ui/src/MyNdla/Resource/FolderElement';
+import { FolderPreview, ResourcePreview, BlockView, ListView, LayoutType } from '@ndla/ui';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -270,14 +268,14 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
       )}
       <FoldersWrapper layout={layout}>
         {folders?.map(({ title, link }) => (
-          <FolderElement layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
+          <FolderPreview layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
         ))}
       </FoldersWrapper>
       <ResourcesWrapper layout={layout}>
         {resources?.map(({ title, topics, tags, description, resourceImage, link }) => {
           if (layout === 'block') {
             return (
-              <BlockElement
+              <BlockView
                 title={title}
                 topics={topics}
                 tags={tags}
@@ -292,7 +290,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
             );
           } else if (layout === 'listLarger') {
             return (
-              <ListElement
+              <ListView
                 title={title}
                 topics={topics}
                 tags={tags}
@@ -307,7 +305,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
             );
           } else if (layout === 'list') {
             return (
-              <ResourceElement
+              <ResourcePreview
                 title={title}
                 topics={topics}
                 tags={tags}

@@ -10,12 +10,11 @@ import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { fonts, spacing, colors } from '@ndla/core';
-import { mq, breakpoints } from '@ndla/core';
+import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/core';
+import { MoreButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
-import MoreButton from '../MoreButton';
 
 const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutType }>`
   display: flex;

@@ -13,8 +13,7 @@ import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
-import { ResourceElement } from '@ndla/ui';
-import { ResourceElementProps } from '@ndla/ui';
+import { ResourcePreview, ResourceElementProps } from '@ndla/ui';
 const MyPageWrapper = styled.div`
   width: 960px;
   margin: 0 auto;
@@ -110,7 +109,7 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
       <Resources>
         <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
         {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
-          <ResourceElement
+          <ResourcePreview
             title={title}
             topics={topics}
             tags={tags}

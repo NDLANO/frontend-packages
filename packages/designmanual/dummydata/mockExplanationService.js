@@ -30,7 +30,7 @@ export const mockExplanationService = {
           value: 'Naturbruk Vg1',
         },
       ],
-      authors: ['Ola Nordmann', 'Kari Nordmann'],
+      authors: ['Ola Nordmann', 'Kari Nordmann', 'Per Nordmann', 'Randi Nordmann'],
       source: 'snl.no',
       license: 'by-nc-nd',
       tags: ['Naturbruk Vg1'],

@@ -20,6 +20,11 @@ const ReferenceBoxExample = () => {
     margin-top: 200px;
   `;
 
+  const image = {
+    src: 'https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg',
+    alt: 'Henrik Ibsen',
+  };
+
   return (
     <Wrapper>
       <OneColumn cssModifier="narrow">
@@ -43,7 +48,7 @@ const ReferenceBoxExample = () => {
                     licenseRights={[BY, NC, ND]}
                     title="Mediehistorie"
                     caption="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
-                    image="https://media.snl.no/media/27960/standard_Schaarwa_chter_Henrik_Ibsen_cropped.jpg"
+                    image={image}
                     url="https://www.ndla.no"></ResourceBox>
                 </Figure>
 

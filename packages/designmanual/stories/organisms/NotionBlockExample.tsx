@@ -6,31 +6,16 @@
  *
  */
 
-import styled from '@emotion/styled';
 import React, { Component } from 'react';
 //@ts-ignore
 import { addShowConceptDefinitionClickListeners } from '@ndla/article-scripts';
 import { OneColumn } from '@ndla/ui';
-import Helmet from 'react-helmet';
-import { breakpoints, mq } from '@ndla/core';
+import { Helmet } from 'react-helmet-async';
 import NotionBlock from '../molecules/NotionBlock';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
 //@ts-ignore
 import NotionSiteTabs from '../molecules/NotionSiteTabs';
-
-const ContentWrapper = styled.div`
-  position: relative !important;
-  right: auto !important;
-  left: -16.6666666667%;
-  width: 133.3333333333% !important;
-  padding-left: 24px;
-  padding-right: 24px;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100% !important;
-    left: 0 !important;
-  }
-`;
 
 class NotionBlockExample extends Component {
   componentDidMount() {
@@ -47,28 +32,26 @@ class NotionBlockExample extends Component {
           status={3}
           components={
             <OneColumn>
-              <ContentWrapper>
-                <h2>Begrep med visuelt element bilde</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element bilde</h2>
               <NotionBlock type="image" hideIconsAndAuthors />
-              <ContentWrapper>
-                <h2>Begrep med visuelt element video</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element video</h2>
               <NotionBlock type="video" hideIconsAndAuthors />
-              <ContentWrapper>
-                <h2>Begrep med visuelt element h5p</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element h5p</h2>
               <NotionBlock type="h5p" hideIconsAndAuthors />
-              <ContentWrapper>
-                <h2>Begrep med forfatter og lisensikoner</h2>
-              </ContentWrapper>
+              <h2 className="u-heading">Begrep med visuelt element iframe</h2>
+              <NotionBlock type="iframe" hideIconsAndAuthors />
+              <h2 className="u-heading">Begrep med forfatter og lisensikoner</h2>
               <NotionBlock type="image" />
+              <h2 className="u-heading">Begrep med manglende lisens</h2>
+              <NotionBlock type="video" data="other" />
+              <h2 className="u-heading">Begrep med markdown-innhold</h2>
+              <NotionBlock type="video" data="richtext" />
             </OneColumn>
           }
           onSite={[<NotionSiteTabs></NotionSiteTabs>]}
           reactCode={`
   //Enkel forklaringsblokk
-  <NotionBlock type="H5P" hideIconsAndAuthors adjustSizeToFitWiderPage></NotionBlock>
+  <NotionBlock type="H5P" hideIconsAndAuthors></NotionBlock>
   //Liste med forklaringsblokker
   <NotionListExample
   title="Liste med forklaringer"

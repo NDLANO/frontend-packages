@@ -9,6 +9,7 @@
 import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
+import { resetIframeElement, initOpenedIframe } from './figureScripts';
 
 const closeAllVisibleNotions = (returnFocusToParent) => {
   forEachElement('[data-notion]', (item) => {
@@ -17,12 +18,13 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
     if (popup.classList.contains('visible')) {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
-      let iframe_tag = popup.querySelector('iframe');
-      if (iframe_tag) {
-        let iframeSrc = iframe_tag.src;
-        iframe_tag.src = iframeSrc;
+      const iframe = popup.querySelector('iframe');
+      if (iframe) {
+        const src = iframe.src;
+        if (src.match(/brightcove|youtube|youtu.be/g)) {
+          resetIframeElement(iframe);
+        }
       }
-
       if (returnFocusToParent) {
         const openBtn = item.querySelector('[data-notion-link]');
         openBtn.focus();
@@ -47,8 +49,8 @@ const checkClickOutside = (e) => {
   // click out side will close concept box.
   let { target } = e;
   let clickedInside = false;
-  while (target.nodeName !== 'BODY' && !clickedInside) {
-    if (target.getAttribute('data-concept-id')) {
+  while (target && target.nodeName !== 'BODY' && !clickedInside) {
+    if (target.getAttribute('data-concept-id') || target.getAttribute('data-dialog-id')) {
       clickedInside = true;
     } else {
       target = target.parentNode;
@@ -92,22 +94,21 @@ export const addShowConceptDefinitionClickListeners = () => {
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
         popup.style.top = `${openBtnBottom - 500}px`;
-        const conceptNotionIdentifier = popup.querySelector('figcaption');
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const popupTop = getElementOffset(popup).top;
         const popupHeight = popup.offsetHeight;
         let offset = 0;
 
-        if (conceptNotionIdentifier) {
-          //checks if it is part of a notionblock
+        const plainId = id.split('notion-')[1];
+        const conceptNotionIdentifier = openBtn.closest(`#visual-element-${plainId}`);
+        // checks if it is part of a notionblock
+        if (conceptNotionIdentifier?.contains(openBtn)) {
+          // Positions the popup so that it does not expand the page
           if (popupTop + popupHeight > documentHeight) {
-            //Positions the popup so that it does not expand the page
-            popup.style.top = `${openBtnBottom - 900}px`;
+            popup.style.top = `${openBtnBottom - popupHeight}px`;
           }
-          jump(popup, {
-            offset: -((viewportHeight - popupHeight) / 2),
-            duration: 300,
-          });
+
+          offset = -((viewportHeight - popupHeight) / 2);
         } else {
           popup.style.top = `${openBtnBottom + 20}px`;
 
@@ -128,7 +129,7 @@ export const addShowConceptDefinitionClickListeners = () => {
           }
         }
 
-        if (inIframe() && window.parent) {
+        if (!conceptNotionIdentifier && inIframe() && window.parent) {
           window.parent.postMessage(
             {
               event: 'scrollTo',
@@ -143,6 +144,10 @@ export const addShowConceptDefinitionClickListeners = () => {
             offset,
           });
         }
+        popup.querySelectorAll('iframe').forEach((iframe) => {
+          initOpenedIframe(iframe);
+        });
+
         window.addEventListener('keyup', ESCKeyListener, true);
         window.addEventListener('mousedown', checkClickOutside, true);
         closeBtn.focus();
@@ -169,10 +174,12 @@ export const addShowConceptDefinitionClickListeners = () => {
       popup.setAttribute('aria-hidden', true);
       window.removeEventListener('keyup', ESCKeyListener, true);
       openBtn.focus();
-      let iframe_tag = popup.querySelector('iframe');
-      if (iframe_tag) {
-        let iframeSrc = iframe_tag.src;
-        iframe_tag.src = iframeSrc;
+      let iframe = popup.querySelector('iframe');
+      if (iframe) {
+        const src = iframe.src;
+        if (src.match(/brightcove|youtube|youtu.be/g)) {
+          resetIframeElement(iframe);
+        }
       }
     };
   });

@@ -12,7 +12,7 @@ import parse from 'html-react-parser';
 
 export type ParseType = 'caption' | 'body';
 
-export const parseMarkdown = (embeddedCaption: string, parser: ParseType = 'caption') => {
+export const parseMarkdown = (content: string, parser: ParseType = 'caption') => {
   const markdown = new Remarkable({ breaks: true, html: true });
   markdown.inline.ruler.enable(['sub', 'sup']);
   if (parser === 'caption') {
@@ -44,13 +44,8 @@ export const parseMarkdown = (embeddedCaption: string, parser: ParseType = 'capt
       'text',
     ]);
   }
-  const caption = embeddedCaption || '';
-  /**
-   * Whitespace must be escaped in order for ^superscript^ and ~subscript~
-   * to render properly. Superfluous whitespace must be escaped in order for
-   * text within *italics* and *bold* to render properly.
-   */
-  const escapedMarkdown = markdown.render(caption.split(' ').join('\\ '));
-  const parsed = parse(escapedMarkdown.split('\\').join(''));
-  return Array.isArray(parsed) ? parsed[0] : parsed;
+  const rendered = markdown.render(content);
+  const parsed = parse(rendered);
+
+  return parsed;
 };

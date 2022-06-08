@@ -115,7 +115,7 @@ const FolderItem = ({
             }
           }}>
           {icon || <FolderOutlined />}
-          {name} {url}
+          {name}
         </FolderNameLink>
       ) : (
         <FolderName

@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
-import { User } from '@ndla/icons/common';
+import { User, HashTag } from '@ndla/icons/common';
 
 const Container = styled.div`
   margin: 40px auto;
@@ -86,7 +86,7 @@ const STRUCTURE_EXAMPLE_WRAPPED = () => [
     id: uuid(),
     name: 'Mine tagger',
     url: 'https://ndla.no',
-    icon: <User />,
+    icon: <HashTag />,
     data: [],
   },
 ];

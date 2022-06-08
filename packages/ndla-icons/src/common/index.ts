@@ -38,6 +38,7 @@ export { default as Forward } from './Forward';
 export { default as Fullscreen } from './Fullscreen';
 export { default as Grid } from './Grid';
 export { default as GridView } from './GridView';
+export { default as HashTag } from './HashTag';
 export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
 export { default as Home } from './Home';

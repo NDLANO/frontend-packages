@@ -15,7 +15,7 @@ import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
 import { SnackBar, SnackBarItemProp } from '@ndla/ui';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-
+import TagSelectorExample from './TagSelectorExample';
 import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
@@ -70,6 +70,7 @@ const DialogExample = ({
               framed
               structure={STRUCTURE_EXAMPLE(folderIdMarkedByDefault)}
             />
+            <TagSelectorExample />
             <MyNdlaFolder />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>

@@ -15,7 +15,7 @@ interface Props extends IconProps {
 }
 
 const Instagram = (props: Props) => (
-  <Icon viewBox="0 0 24 24" data-license="Pictogrammers Free License" data-source="Material Design Icons" {...props}>
+  <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design Icons" {...props}>
     <g>
       <path
         fill="currentColor"

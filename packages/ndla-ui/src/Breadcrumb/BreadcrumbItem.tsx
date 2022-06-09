@@ -53,7 +53,7 @@ const StyledChevron = styled(ChevronRight)`
   margin: ${spacing.xxsmall};
 `;
 
-const StyledSafeLink = styled(SafeLink)`
+export const BreadcrumbSafeLink = styled(SafeLink)`
   color: inherit;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -86,9 +86,9 @@ const BreadcrumbItem = forwardRef<any, Props>(
         ) : isLast ? (
           <span>{name}</span>
         ) : (
-          <StyledSafeLink to={to}>
+          <BreadcrumbSafeLink to={to}>
             <span>{name}</span>
-          </StyledSafeLink>
+          </BreadcrumbSafeLink>
         )}
         {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <StyledChevron />}
       </StyledListItem>

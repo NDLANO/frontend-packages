@@ -10,9 +10,10 @@ import React from 'react';
 import { Breadcrumb, IndexedBreadcrumbItem } from '@ndla/ui';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
 import { ChevronRight } from '@ndla/icons/src/common';
 import { Home } from '@ndla/icons/lib/common';
+import { BreadcrumbSafeLink } from '@ndla/ui/src/Breadcrumb';
+import SafeLink from '../../../safelink/src';
 
 const items = [
   {
@@ -28,7 +29,7 @@ const items = [
     to: '#3',
   },
   {
-    name: 'Tittel på side/ressurseqwe wqe wqe wqe wqe qwe wqe n',
+    name: 'Tittel på side/ressurs',
     to: '#4',
   },
 ];
@@ -58,7 +59,7 @@ const StyledBlueRightChevron = styled(ChevronRight)`
 const StyledBlueSpan = styled.span`
   color: ${colors.brand.primary};
 `;
-const StyledBlueSafeLink = styled(SafeLink)`
+const StyledBlueSafeLink = styled(BreadcrumbSafeLink)`
   color: ${colors.brand.primary};
 `;
 
@@ -103,7 +104,7 @@ const StyledDarkRightChevron = styled(ChevronRight)`
 const StyledDarkSpan = styled.span`
   color: ${colors.text.primary};
 `;
-const StyledDarkSafeLink = styled(SafeLink)`
+const StyledDarkSafeLink = styled(BreadcrumbSafeLink)`
   color: ${colors.text.primary};
 `;
 
@@ -153,7 +154,7 @@ const StyledWhiteRightChevron = styled(ChevronRight)`
 const StyledWhiteSpan = styled.span`
   color: ${colors.white};
 `;
-const StyledWhiteSafeLink = styled(SafeLink)`
+const StyledWhiteSafeLink = styled(BreadcrumbSafeLink)`
   color: ${colors.white};
 `;
 

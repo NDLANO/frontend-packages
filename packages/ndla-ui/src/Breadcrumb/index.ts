@@ -10,4 +10,6 @@ import Breadcrumb from './Breadcrumb';
 
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './BreadcrumbItem';
 
+export { BreadcrumbSafeLink } from './BreadcrumbItem';
+
 export default Breadcrumb;

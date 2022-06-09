@@ -53,7 +53,13 @@ const HeaderBreadcrumb = ({ items }: Props) => {
   return (
     <>
       <StyledHeaderSafeLink to={items[0].to}>{items[0].name}</StyledHeaderSafeLink>
-      <Breadcrumb items={items.slice(1)} renderItem={renderItem} renderSeparator={renderSeparator} autoCollapse />
+      <Breadcrumb
+        items={items.slice(1)}
+        renderItem={renderItem}
+        renderSeparator={renderSeparator}
+        autoCollapse
+        collapseFirst
+      />
     </>
   );
 };

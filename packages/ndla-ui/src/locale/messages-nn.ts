@@ -435,7 +435,7 @@ const messages = {
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i anna innhald',
-      description: 'Denne lenka viser artikkelen utan kontekst(meny og botntekst)',
+      description: 'Denne lenka viser artikkelen utan kontekst (meny og botntekst)',
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
     },
@@ -488,6 +488,12 @@ const messages = {
       rules: 'Reglar for bruk av H5P:',
     },
     concept: {
+      embedlink: {
+        heading: 'Slik viser du forklaringa i anna innhald',
+        description: 'Denne lenka viser forklaringa utan kontekst (meny og botntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
       heading: 'Slik bruker du forklaringar frå artikkelen',
       description: 'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
       rules: 'Reglar for bruk av forklaring:',
@@ -501,6 +507,11 @@ const messages = {
         ariaLabel: 'Opne i nytt vindauge',
       },
     },
+    title: 'Tittel',
+    originator: 'Opphavar',
+    rightsholder: 'Rettshavar',
+    source: 'Kjelde',
+    published: 'Publiseringsdato',
   },
   errorMessage: {
     title: 'Ops, noko gjekk gale',
@@ -595,15 +606,19 @@ const messages = {
     search: {
       placeholder: 'Søk',
     },
+    embedlink: {
+      copyTitle: 'Kopier innbyggingskode',
+      hasCopiedTitle: 'Innbyggingskode kopiert',
+    },
     filters: {
       subject: {
         useFilter: 'Bruk filter',
-        openFilter: 'Velg fag',
+        openFilter: 'Vel fag',
         closeFilter: 'Lukk filter',
       },
       category: {
         useFilter: 'Bruk filter',
-        openFilter: 'Velg liste',
+        openFilter: 'Vel liste',
         closeFilter: 'Lukk filter',
       },
       default: {
@@ -611,6 +626,7 @@ const messages = {
         openFilter: 'Filtrer',
         closeFilter: 'Lukk filter',
         heading: 'Filter',
+        filteredBy: 'Filtrert på',
       },
       alphabet: {
         letterFilter: 'Vis innhold på {{letter}}.',
@@ -766,6 +782,14 @@ const messages = {
   createdBy: {
     content: 'Ressursen',
     text: 'er henta frå',
+    concept: {
+      content: 'Forklaringa',
+      text: 'er utarbeida av',
+    },
+    listing: {
+      content: 'Lista',
+      text: 'er utarbeida av',
+    },
   },
   fagfornyelse: {
     frontpage: {
@@ -937,6 +961,21 @@ const messages = {
     newFolder: 'Ny mappe',
     myAccount: 'Min konto',
     favourites: 'Favorittar',
+    help: 'Hjelp',
+  },
+  labels: {
+    category: 'Kategori',
+    subject: 'Fag',
+    other: 'Anna',
+  },
+  listingPage: {
+    or: 'eller',
+    noFilters: 'Har ikkje noko å filtrera',
+    loadMore: 'Last meir',
+  },
+  siteNav: {
+    search: 'Søk',
+    contact: 'Kontakt',
     help: 'Hjelp',
   },
 };

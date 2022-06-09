@@ -434,7 +434,7 @@ const messages = {
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i annet innhold',
-      description: 'Denne lenken viser artikkelen uten kontekst(meny og bunntekst)',
+      description: 'Denne lenken viser artikkelen uten kontekst (meny og bunntekst)',
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
     },
@@ -491,6 +491,12 @@ const messages = {
       description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
+      embedlink: {
+        heading: 'Slik viser du forklaringen i annet innhold',
+        description: 'Denne lenken viser forklaringen uten kontekst (meny og bunntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
     },
     files: {
       heading: 'Slik bruker du filer fra artikkelen',
@@ -500,6 +506,11 @@ const messages = {
         ariaLabel: 'Åpne i nytt vindu',
       },
     },
+    title: 'Tittel',
+    originator: 'Opphaver',
+    published: 'Publiseringsdato',
+    rightsholder: 'Rettighetshaver',
+    source: 'Kilde',
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',
@@ -594,6 +605,10 @@ const messages = {
     search: {
       placeholder: 'Søk',
     },
+    embedlink: {
+      copyTitle: 'Kopier innbyggingskode',
+      hasCopiedTitle: 'Innbyggingskode kopiert',
+    },
     filters: {
       subject: {
         useFilter: 'Bruk filter',
@@ -610,6 +625,7 @@ const messages = {
         openFilter: 'Filtrer',
         closeFilter: 'Lukk filter',
         heading: 'Filter',
+        filteredBy: 'Filtrert på',
       },
       alphabet: {
         letterFilter: 'Vis innhald på (bokstaven) {{letter}}.',
@@ -765,6 +781,14 @@ const messages = {
   createdBy: {
     content: 'Ressursen',
     text: 'er hentet fra',
+    concept: {
+      content: 'Forklaringen',
+      text: 'er utarbeidet av',
+    },
+    listing: {
+      content: 'Listen',
+      text: 'er utarbeidet av',
+    },
   },
   fagfornyelse: {
     frontpage: {
@@ -936,6 +960,21 @@ const messages = {
     newFolder: 'Ny mappe',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
+    help: 'Hjelp',
+  },
+  labels: {
+    category: 'Kategori',
+    subject: 'Fag',
+    other: 'Annet',
+  },
+  listingPage: {
+    or: 'eller',
+    noFilters: 'Har ingenting å filtrere',
+    loadMore: 'Last mer',
+  },
+  siteNav: {
+    search: 'Søk',
+    contact: 'Kontakt',
     help: 'Hjelp',
   },
 };

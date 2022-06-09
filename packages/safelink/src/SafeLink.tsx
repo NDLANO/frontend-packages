@@ -49,7 +49,7 @@ const SafeLink = ({ to, replace, children, showNewWindowIcon, tabIndex, ...rest 
   }
 
   return (
-    <Link tabIndex={tabIndex ?? 0} to={to} replace={replace} {...rest}>
+    <Link tabIndex={tabIndex ?? 0} to={to || ''} replace={replace} {...rest}>
       {children}
       {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
     </Link>

@@ -16,6 +16,7 @@ import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './B
 interface Props {
   items: SimpleBreadcrumbItem[];
   autoCollapse?: boolean;
+  collapseFirst?: boolean;
   renderItem?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
   renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
@@ -30,7 +31,7 @@ const StyledList = styled.ol`
   list-style: none;
 `;
 
-const Breadcrumb = ({ items, autoCollapse, renderItem, renderSeparator }: Props) => {
+const Breadcrumb = ({ items, autoCollapse, renderItem, renderSeparator, collapseFirst }: Props) => {
   const { t } = useTranslation();
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,7 +71,7 @@ const Breadcrumb = ({ items, autoCollapse, renderItem, renderSeparator }: Props)
             renderItem={renderItem}
             renderSeparator={renderSeparator}
             ref={(element) =>
-              element === null || index === 0 // skip first item which is never truncated
+              element === null || (!collapseFirst && index === 0) // skip first item which is never truncated
                 ? breadcrumbItemRefs.delete(item.to)
                 : breadcrumbItemRefs.set(item.to, element)
             }

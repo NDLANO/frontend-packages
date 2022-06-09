@@ -27,11 +27,11 @@ export interface BreadcrumbRenderProps {
   totalCount: number;
 }
 
-interface StyledListItemprops {
+interface AutoCollapseProps {
   autoCollapse?: boolean;
 }
 
-const StyledListItem = styled.li<StyledListItemprops>`
+const StyledListItem = styled.li<AutoCollapseProps>`
   margin-bottom: 0;
   margin-left: 0;
   display: inline-flex;
@@ -49,16 +49,24 @@ const StyledListItem = styled.li<StyledListItemprops>`
     `}
 `;
 
+const CollapseContainer = styled.div<AutoCollapseProps>`
+  display: inline-block;
+  ${({ autoCollapse }) =>
+    autoCollapse &&
+    css`
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    `}
+`;
+
 const StyledChevron = styled(ChevronRight)`
   margin: ${spacing.xxsmall};
 `;
 
-export const BreadcrumbSafeLink = styled(SafeLink)`
+const StyledSafeLink = styled(SafeLink)`
   color: inherit;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
 `;
 
 interface Props {
@@ -83,15 +91,17 @@ const BreadcrumbItem = forwardRef<any, Props>(
     const isLast = index === totalCount - 1;
     return (
       <StyledListItem ref={liRef} autoCollapse={autoCollapse}>
-        {renderItem ? (
-          renderItem(item, totalCount)
-        ) : isLast ? (
-          <span>{name}</span>
-        ) : (
-          <BreadcrumbSafeLink to={to}>
+        <CollapseContainer autoCollapse={autoCollapse}>
+          {renderItem ? (
+            renderItem(item, totalCount)
+          ) : isLast ? (
             <span>{name}</span>
-          </BreadcrumbSafeLink>
-        )}
+          ) : (
+            <StyledSafeLink to={to}>
+              <span>{name}</span>
+            </StyledSafeLink>
+          )}
+        </CollapseContainer>
         {renderSeparator ? renderSeparator(item, totalCount) : !isLast && <StyledChevron />}
       </StyledListItem>
     );

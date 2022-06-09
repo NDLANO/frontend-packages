@@ -9,11 +9,10 @@
 import React from 'react';
 import { Breadcrumb, IndexedBreadcrumbItem } from '@ndla/ui';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ChevronRight } from '@ndla/icons/src/common';
 import { Home } from '@ndla/icons/lib/common';
-import { BreadcrumbSafeLink } from '@ndla/ui/src/Breadcrumb';
-import SafeLink from '../../../safelink/src';
+import SafeLink from '@ndla/safelink';
 
 const items = [
   {
@@ -59,7 +58,7 @@ const StyledBlueRightChevron = styled(ChevronRight)`
 const StyledBlueSpan = styled.span`
   color: ${colors.brand.primary};
 `;
-const StyledBlueSafeLink = styled(BreadcrumbSafeLink)`
+const StyledBlueSafeLink = styled(SafeLink)`
   color: ${colors.brand.primary};
 `;
 
@@ -90,6 +89,9 @@ const StyledSeparator = styled.div`
   ${fonts.sizes('14px')};
   margin: 0 ${spacing.small};
   user-select: none;
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
 `;
 const StyledHome = styled(Home)`
   width: 20px;
@@ -103,7 +105,7 @@ const StyledDarkRightChevron = styled(ChevronRight)`
 const StyledDarkSpan = styled.span`
   color: ${colors.text.primary};
 `;
-const StyledDarkSafeLink = styled(BreadcrumbSafeLink)`
+const StyledDarkSafeLink = styled(SafeLink)`
   color: ${colors.text.primary};
 `;
 
@@ -140,6 +142,9 @@ const StyledWhiteSeparator = styled.div`
   margin: 0 ${spacing.small};
   user-select: none;
   color: ${colors.white};
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
 `;
 const StyledWhiteHome = styled(Home)`
   width: 20px;
@@ -153,7 +158,7 @@ const StyledWhiteRightChevron = styled(ChevronRight)`
 const StyledWhiteSpan = styled.span`
   color: ${colors.white};
 `;
-const StyledWhiteSafeLink = styled(BreadcrumbSafeLink)`
+const StyledWhiteSafeLink = styled(SafeLink)`
   color: ${colors.white};
 `;
 

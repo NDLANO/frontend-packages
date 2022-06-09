@@ -72,11 +72,13 @@ interface Props {
 const BreadcrumbItem = forwardRef<any, Props>(
   ({ renderItem, renderSeparator, item, totalCount, autoCollapse }, ref) => {
     const liRef = useRef<any>();
+
     useImperativeHandle(ref, () => ({
       setMaxWidth: (maxWidth: number) => {
         liRef.current.children[0].style.maxWidth = maxWidth;
       },
     }));
+
     const { to, name, index } = item;
     const isLast = index === totalCount - 1;
     return (

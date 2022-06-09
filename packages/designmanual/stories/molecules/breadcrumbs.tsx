@@ -86,8 +86,7 @@ export const BreadcrumbWithHeader = () => {
   );
 };
 
-const StyledPipeSeparator = styled.div`
-  content: '|';
+const StyledSeparator = styled.div`
   ${fonts.sizes('14px')};
   margin: 0 ${spacing.small};
   user-select: none;
@@ -128,7 +127,7 @@ export const BreadcrumbWithHome = () => {
       return null;
     }
     if (item.index === 0) {
-      return <StyledPipeSeparator />;
+      return <StyledSeparator>|</StyledSeparator>;
     }
     return <StyledDarkRightChevron />;
   };

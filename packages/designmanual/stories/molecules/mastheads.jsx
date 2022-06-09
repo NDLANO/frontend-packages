@@ -24,6 +24,7 @@ import {
   TopicMenuButton,
   SearchFieldForm,
   MastheadAuthModal,
+  HeaderBreadcrumb,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
@@ -32,7 +33,6 @@ import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
-import { BreadcrumbWithHeader } from './breadcrumbs';
 
 const BreadcrumbWrapper = styled.div`
   ${mq.range({ until: breakpoints.desktop })} {
@@ -264,7 +264,7 @@ class MastheadWithTopicMenu extends Component {
           {breadcrumbItems && (
             <DisplayOnPageYOffset yOffsetMin={150}>
               <BreadcrumbWrapper>
-                <BreadcrumbWithHeader items={breadcrumbItems} />
+                <HeaderBreadcrumb items={breadcrumbItems} />
               </BreadcrumbWrapper>
             </DisplayOnPageYOffset>
           )}

@@ -80,6 +80,7 @@ export const BreadcrumbWithHeader = () => {
 };
 
 const StyledPipeSeparator = styled.div`
+  content: '|';
   ${fonts.sizes('14px')};
   margin: 0 ${spacing.small};
   user-select: none;
@@ -120,7 +121,7 @@ export const BreadcrumbWithHome = () => {
       return null;
     }
     if (item.index === 0) {
-      return <StyledPipeSeparator>|</StyledPipeSeparator>;
+      return <StyledPipeSeparator />;
     }
     return <StyledDarkRightChevron />;
   };
@@ -150,7 +151,7 @@ const StyledWhiteSafeLink = styled(SafeLink)`
   color: ${colors.white};
 `;
 
-export const BreadcrumbWhite = () => {
+export const BreadcrumbWhiteWithHome = () => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return <StyledWhiteSpan>{item.name}</StyledWhiteSpan>;

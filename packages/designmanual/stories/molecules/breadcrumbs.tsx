@@ -45,31 +45,30 @@ const StyledIconSafeLink = styled(SafeLink)`
   box-shadow: none;
   border-bottom: none;
 `;
+const StyledBlueRightChevron = styled(ChevronRight)`
+  color: ${colors.brand.primary};
+  margin: ${spacing.xxsmall};
+`;
+const StyledBlueSpan = styled.span`
+  color: ${colors.brand.primary};
+`;
+const StyledBlueSafeLink = styled(SafeLink)`
+  color: ${colors.brand.primary};
+`;
 
 export const BreadcrumbWithHeader = () => {
-  const StyledRightChevron = styled(ChevronRight)`
-    color: ${colors.brand.primary};
-    margin: ${spacing.xxsmall};
-  `;
-  const StyledBreadcrumbSpan = styled.span`
-    color: ${colors.brand.primary};
-  `;
-  const StyledBreadcrumbSafeLink = styled(SafeLink)`
-    color: ${colors.brand.primary};
-  `;
-
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
-      return <StyledBreadcrumbSpan>{item.name}</StyledBreadcrumbSpan>;
+      return <StyledBlueSpan>{item.name}</StyledBlueSpan>;
     }
-    return <StyledBreadcrumbSafeLink to={item.to}>{item.name}</StyledBreadcrumbSafeLink>;
+    return <StyledBlueSafeLink to={item.to}>{item.name}</StyledBlueSafeLink>;
   };
 
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return null;
     }
-    return <StyledRightChevron />;
+    return <StyledBlueRightChevron />;
   };
 
   return (
@@ -80,31 +79,31 @@ export const BreadcrumbWithHeader = () => {
   );
 };
 
-export const BreadcrumbWithHome = () => {
-  const StyledSeparator = styled.div`
-    ${fonts.sizes('14px')};
-    margin: 0 ${spacing.small};
-    user-select: none;
-  `;
-  const StyledHome = styled(Home)`
-    width: 20px;
-    height: 20px;
-    color: ${colors.text.primary};
-  `;
-  const StyledRightChevron = styled(ChevronRight)`
-    color: ${colors.text.primary};
-    margin: ${spacing.xxsmall};
-  `;
-  const StyledBreadcrumbSpan = styled.span`
-    color: ${colors.text.primary};
-  `;
-  const StyledBreadcrumbSafeLink = styled(SafeLink)`
-    color: ${colors.text.primary};
-  `;
+const StyledPipeSeparator = styled.div`
+  ${fonts.sizes('14px')};
+  margin: 0 ${spacing.small};
+  user-select: none;
+`;
+const StyledHome = styled(Home)`
+  width: 20px;
+  height: 20px;
+  color: ${colors.text.primary};
+`;
+const StyledDarkRightChevron = styled(ChevronRight)`
+  color: ${colors.text.primary};
+  margin: ${spacing.xxsmall};
+`;
+const StyledDarkSpan = styled.span`
+  color: ${colors.text.primary};
+`;
+const StyledDarkSafeLink = styled(SafeLink)`
+  color: ${colors.text.primary};
+`;
 
+export const BreadcrumbWithHome = () => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
-      return <StyledBreadcrumbSpan>{item.name}</StyledBreadcrumbSpan>;
+      return <StyledDarkSpan>{item.name}</StyledDarkSpan>;
     }
     if (item.index === 0) {
       return (
@@ -113,7 +112,7 @@ export const BreadcrumbWithHome = () => {
         </StyledIconSafeLink>
       );
     }
-    return <StyledBreadcrumbSafeLink to={item.to}>{item.name}</StyledBreadcrumbSafeLink>;
+    return <StyledDarkSafeLink to={item.to}>{item.name}</StyledDarkSafeLink>;
   };
 
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
@@ -121,9 +120,9 @@ export const BreadcrumbWithHome = () => {
       return null;
     }
     if (item.index === 0) {
-      return <StyledSeparator>|</StyledSeparator>;
+      return <StyledPipeSeparator>|</StyledPipeSeparator>;
     }
-    return <StyledRightChevron />;
+    return <StyledDarkRightChevron />;
   };
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;

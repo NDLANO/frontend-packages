@@ -16,12 +16,12 @@ export const mockFooterLinks = [
   },
   {
     to: 'https://instagram.com/ndla_no/',
-    text: t('footer.socialMediaLinks.instagram'),
+    text: 'NDLA på Instagram',
     icon: <Instagram />,
   },
   {
     to: 'https://www.linkedin.com/company/ndla/',
-    text: t('footer.socialMediaLinks.linkedin'),
+    text: 'NDLA på LinkedIn',
     icon: <LinkedIn />,
   },
   {

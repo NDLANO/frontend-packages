@@ -28,12 +28,18 @@ const items = [
     to: '#3',
   },
   {
-    name: 'Tittel på side/ressursen',
+    name: 'Tittel på side/ressurseqwe wqe wqe wqe wqe qwe wqe n',
     to: '#4',
   },
 ];
 
-export const BreadcrumbDefault = () => <Breadcrumb items={items} />;
+interface BreadcrumbDefaultProps {
+  autoCollapse?: boolean;
+}
+
+export const BreadcrumbDefault = ({ autoCollapse }: BreadcrumbDefaultProps) => (
+  <Breadcrumb autoCollapse={autoCollapse} items={[...items]} />
+);
 
 const StyledHeaderSafeLink = styled(SafeLink)`
   ${fonts.sizes(14)};
@@ -74,7 +80,7 @@ export const BreadcrumbWithHeader = () => {
   return (
     <>
       <StyledHeaderSafeLink to={items[0].to}>{items[0].name}</StyledHeaderSafeLink>
-      <Breadcrumb items={items.slice(1)} renderItem={renderItem} renderSeparator={renderSeparator} />
+      <Breadcrumb items={items.slice(1)} renderItem={renderItem} renderSeparator={renderSeparator} autoCollapse />
     </>
   );
 };

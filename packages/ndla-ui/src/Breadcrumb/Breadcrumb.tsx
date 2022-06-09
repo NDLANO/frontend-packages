@@ -15,7 +15,7 @@ import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './B
 
 interface Props {
   items: SimpleBreadcrumbItem[];
-  disableCollapse?: boolean;
+  autoCollapse?: boolean;
   renderItem?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
   renderSeparator?: (item: IndexedBreadcrumbItem, totalCount: number) => ReactNode;
 }
@@ -30,7 +30,7 @@ const StyledList = styled.ol`
   list-style: none;
 `;
 
-const Breadcrumb = ({ items, disableCollapse, renderItem, renderSeparator }: Props) => {
+const Breadcrumb = ({ items, autoCollapse, renderItem, renderSeparator }: Props) => {
   const { t } = useTranslation();
   const olRef = useRef<any>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ const Breadcrumb = ({ items, disableCollapse, renderItem, renderSeparator }: Pro
   const size = useComponentSize(containerRef);
 
   useIsomorphicLayoutEffect(() => {
-    if (!disableCollapse) {
+    if (!autoCollapse) {
       return;
     }
     // Create an array of all breadcrumb item refs
@@ -55,7 +55,7 @@ const Breadcrumb = ({ items, disableCollapse, renderItem, renderSeparator }: Pro
     // the ordered list fits on a single line. It's on a single line
     // if the height of the list is less then 70.
     items.forEach((el) => {
-      if (olRef.current.offsetHeight > 70) {
+      if (olRef.current.offsetHeight > 60) {
         el.setMaxWidth('40px');
       }
     });
@@ -66,6 +66,7 @@ const Breadcrumb = ({ items, disableCollapse, renderItem, renderSeparator }: Pro
       <StyledList ref={olRef}>
         {items.map((item, index) => (
           <BreadcrumbItem
+            autoCollapse={autoCollapse}
             renderItem={renderItem}
             renderSeparator={renderSeparator}
             ref={(element) =>

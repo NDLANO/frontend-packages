@@ -617,7 +617,9 @@ storiesOf('Enkle komponenter', module)
             License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her:{' '}
             <a href="https://material.io/icons/">https://material.io/icons/</a> og hvis det ikke finnes et passende ikon
             i denne pakken kan man lage nye ikoner ved å bruke disse retningslinjene:{' '}
-            <a href="https://material.io/guidelines/">https://material.io/guidelines/</a>
+            <a href="https://material.io/guidelines/">https://material.io/guidelines/</a>. Ikoner kan i nød også hentes
+            fra: <a href="https://materialdesignicons.com">https://materialdesignicons.com</a>, som også er Apache
+            License Version 2.0.
           </p>
         </LayoutItem>
 

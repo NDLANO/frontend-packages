@@ -35,8 +35,8 @@ import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
 
 const BreadcrumbWrapper = styled.div`
-  ${mq.range({ until: breakpoints.desktop })} {
-    display: block;
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
   }
 `;
 

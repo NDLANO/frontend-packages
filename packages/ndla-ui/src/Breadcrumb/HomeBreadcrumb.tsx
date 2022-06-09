@@ -8,8 +8,8 @@
 
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { ChevronRight, Home } from '@ndla/icons/src/common';
-import SafeLink from '@ndla/safelink/src';
+import { ChevronRight, Home } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 import React from 'react';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
@@ -61,7 +61,7 @@ const HomeBreadcrumb = ({ items, light }: Props) => {
     if (item.index === 0) {
       return (
         <StyledIconSafeLink to={item.to}>
-          <StyledWhiteHome light={light} />
+          <StyledWhiteHome title={item.name} light={light} />
         </StyledIconSafeLink>
       );
     }

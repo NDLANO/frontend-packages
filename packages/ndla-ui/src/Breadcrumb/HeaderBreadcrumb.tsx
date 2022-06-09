@@ -8,8 +8,8 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { ChevronRight } from '@ndla/icons/src/common';
-import SafeLink from '@ndla/safelink/src';
+import { ChevronRight } from '@ndla/icons/common';
+import SafeLink from '@ndla/safelink';
 import React from 'react';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
@@ -51,8 +51,8 @@ const HeaderBreadcrumb = ({ items }: Props) => {
   };
 
   return (
-    <>
-      <StyledHeaderSafeLink to={items[0].to}>{items[0].name}</StyledHeaderSafeLink>
+    <div>
+      <StyledHeaderSafeLink to={items[0]?.to}>{items[0]?.name}</StyledHeaderSafeLink>
       <Breadcrumb
         items={items.slice(1)}
         renderItem={renderItem}
@@ -60,7 +60,7 @@ const HeaderBreadcrumb = ({ items }: Props) => {
         autoCollapse
         collapseFirst
       />
-    </>
+    </div>
   );
 };
 

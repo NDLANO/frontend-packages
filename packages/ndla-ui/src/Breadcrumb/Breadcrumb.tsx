@@ -77,7 +77,8 @@ const Breadcrumb = ({ items, autoCollapse, renderItem, renderSeparator, collapse
             }
             key={uuid()}
             totalCount={items.length}
-            item={{ ...item, index }}></BreadcrumbItem>
+            item={{ ...item, index }}
+          />
         ))}
       </StyledList>
     </BreadcrumbNav>

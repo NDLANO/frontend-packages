@@ -427,7 +427,7 @@ const messages = {
       images: 'Bilete',
       audio: 'Lyd',
       video: 'Video',
-      h5p: 'h5p',
+      h5p: 'H5P',
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       other: 'Anna innhald',

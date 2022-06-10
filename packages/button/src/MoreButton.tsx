@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React from 'react';
-import { spacing, colors } from '@ndla/core';
+import { colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import Button from './';
@@ -16,7 +16,6 @@ import Button from './';
 const MoreIcon = styled(Button)`
   display: flex;
   justify-content: center;
-  padding: ${spacing.xsmall};
   &:hover,
   &:active,
   &:focus {

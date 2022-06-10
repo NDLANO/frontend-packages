@@ -18,7 +18,8 @@ import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { FolderPreview, ResourcePreview, BlockView, ListView, LayoutType } from '@ndla/ui';
+import { FolderPreview, ListResource, BlockResource, LayoutType } from '@ndla/ui';
+import { MoreButton } from '@ndla/button';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -52,6 +53,9 @@ const FoldersWrapper = styled.div<{ layout: LayoutType }>`
     `}
 `;
 const ResourcesWrapper = styled.div<{ layout: LayoutType }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xsmall};
   ${(props) =>
     props.layout === 'block' &&
     css`
@@ -275,7 +279,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         {resources?.map(({ title, topics, tags, description, resourceImage, link }) => {
           if (layout === 'block') {
             return (
-              <BlockView
+              <BlockResource
                 title={title}
                 topics={topics}
                 tags={tags}
@@ -286,11 +290,12 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 }}
                 link={link}
                 key={link}
+                actionMenu={<MoreButton />}
               />
             );
           } else if (layout === 'listLarger') {
             return (
-              <ListView
+              <ListResource
                 title={title}
                 topics={topics}
                 tags={tags}
@@ -301,21 +306,22 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 }}
                 link={link}
                 key={link}
+                actionMenu={<MoreButton />}
               />
             );
           } else if (layout === 'list') {
             return (
-              <ResourcePreview
+              <ListResource
                 title={title}
                 topics={topics}
                 tags={tags}
-                description={description}
                 resourceImage={{
                   alt: resourceImage.alt,
                   src: resourceImage.src,
                 }}
                 link={link}
                 key={link}
+                actionMenu={<MoreButton />}
               />
             );
           } else {

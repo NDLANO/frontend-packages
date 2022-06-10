@@ -7,7 +7,8 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { ResourcePreview, FolderPreview, BlockView, DialogueView, ListView } from '@ndla/ui';
+import { ListResource, BlockResource, FolderPreview } from '@ndla/ui';
+import { MoreButton } from '@ndla/button';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -26,59 +27,55 @@ export const MyNdla = () => {
         components={
           <>
             <h2> Ressurser </h2>
+            <h3>Blokkressurs</h3>
+            <BlockResource
+              title="Helt Vanlig Tittel"
+              topics={['Matte', 'Naturfag']}
+              tags={['tag', 'tag', 'tag']}
+              description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
+              resourceImage={{
+                src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                alt: 'alt',
+              }}
+              link={''}
+              actionMenu={<MoreButton />}
+            />
             <h3> Standard Ressurs</h3>
-            <ResourcePreview
-              title="Title"
+            <ListResource
+              title="Titler kan også kuttes av"
               topics={['Matte', 'Naturfag']}
-              tags={['tag', 'tag', 'tag']}
-              description={'Dette er en fagbeskrivelse, her kan du trykke det videre for å komme videre til et fag.'}
+              tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
+              description={'En helt vanlig beskrivelse.'}
               resourceImage={{
                 src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
                 alt: 'alt',
               }}
               link={''}
-              key={''}
+              actionMenu={<MoreButton />}
             />
-            <h3> Ressurs i utvidet listevisning </h3>
-            <ListView
-              title="Title"
+            <h3>Ressurs uten beskrivelse</h3>
+            <ListResource
+              title="Min Tittel"
               topics={['Matte', 'Naturfag']}
+              description={''}
               tags={['tag', 'tag', 'tag']}
-              description={
-                'Dette er en fagbeskrivelse, her kan du trykke det videre for å komme videre til et fag. Dette er en fagbeskrivelse, her kan du trykke det videre for å komme videre til et fag. Dette er en fagbeskrivelse, her kan du trykke det videre for å komme videre til et fag.'
-              }
               resourceImage={{
                 src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
                 alt: 'alt',
               }}
               link={''}
-              key={''}
+              actionMenu={<MoreButton />}
             />
-            <h3> Ressurs i blokkvisning </h3>
-            <BlockView
-              title="Title"
+            <h3>Ressurs uten beskrivelse, tags og meny</h3>
+            <ListResource
+              title="Minimal ressurs"
               topics={['Matte', 'Naturfag']}
-              tags={['tag', 'tag', 'tag']}
-              description={'Dette er en fagbeskrivelse, her kan du trykke det videre for å komme videre til et fag.'}
               resourceImage={{
                 src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
                 alt: 'alt',
               }}
               link={''}
-              key={''}
-            />
-            <h3> Ressurs i dialogvisning</h3>
-            <DialogueView
-              title="Title"
-              topics={['Matte', 'Naturfag']}
-              tags={['tag', 'tag', 'tag']}
-              description={'Dette er en fagbeskrivelse, her kan du trykke det videre for å komme videre til et fag.'}
-              resourceImage={{
-                src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-              key={''}
+              actionMenu={<MoreButton />}
             />
             <h2> Mappevisning </h2>
             <FolderPreview layout="list" title="Title" link="" subFolders={3} subResources={3} key={''} />

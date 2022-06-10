@@ -221,8 +221,8 @@ export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
 export { Breadcrumbs, VerticalNavigation, FolderPreview } from './MyNdla';
 export type { LayoutType } from './MyNdla';
-export { BlockView, DialogueView, ListView, ResourcePreview } from './ResourcePreview';
-export type { ResourceElementProps } from './ResourcePreview';
+export { ListResource, BlockResource } from './Resource';
+export type { ListResourceProps } from './Resource';
 export type { TagProp } from './TagSelector';
 export { TagSelector } from './TagSelector';
 

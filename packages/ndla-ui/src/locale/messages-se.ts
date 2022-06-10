@@ -442,7 +442,7 @@ const messages = {
       rules: 'Regler for bruk av bildet:',
     },
     images: {
-      heading: 'Slik bruker du bilder fra artikkelen',
+      heading: 'Slik gjenbruker du bilder',
       description: 'Husk å kopiere teksten som skal legges ved bildet der du bruker det.',
       rules: 'Regler for bruk av bildet:',
       itemImage: {
@@ -456,18 +456,18 @@ const messages = {
       title: 'Tittel',
     },
     text: {
-      heading: 'Slik bruker du tekst fra artikkelen',
+      heading: 'Slik gjenbruker du teksten',
       description: 'Husk å henvise til kilden når du gjenbruker tekst.',
       rules: 'Regler for bruk av teksten:',
       published: 'Publiseringsdato',
     },
     audio: {
-      heading: 'Slik bruker du lydfiler',
+      heading: 'Slik gjenbruker du lydfiler',
       description: 'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
       rules: 'Regler for bruk av lydfilen:',
     },
     video: {
-      heading: 'Slik bruker du video fra artikkelen',
+      heading: 'Slik gjenbruker du videoer',
       description: 'Husk å kopiere teksten som skal legges ved videoen der du bruker den.',
       rules: 'Regler for bruk av videoen:',
       itemImage: {
@@ -475,31 +475,42 @@ const messages = {
       },
     },
     other: {
-      heading: 'Slik bruker du annet innhold fra artikkelen',
+      heading: 'Slik gjenbruker du annet innhold',
       description: 'Du finner retningslinjene for bruk av innholdet i innholdselementet',
       itemImage: {
         ariaLabel: 'Åpne i nytt vindu',
       },
     },
     h5p: {
-      heading: 'Slik bruker du H5P-innhold fra artikkelen',
+      heading: 'Slik gjenbruker du H5P-innhold',
       description: 'Du finner retningslinjene for bruk av innholdet i H5P-elementet',
       rules: 'Regler for bruk av H5P:',
     },
     concept: {
-      heading: 'Slik bruker du forklaringer fra artikkelen',
+      heading: 'Slik gjenbruker du forklaringer',
       description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
+      embedlink: {
+        heading: 'Slik viser du forklaringen i annet innhold',
+        description: 'Denne lenken viser forklaringen uten kontekst (meny og bunntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
     },
     files: {
-      heading: 'Slik bruker du filer fra artikkelen',
+      heading: 'Slik gjenbruker du filer fra artikkelen',
       description: 'Husk å kopier teksten som skal legges ved filen der du bruker den.',
       rules: 'Regler for bruk av filen:',
       itemImage: {
         ariaLabel: 'Åpne i nytt vindu',
       },
     },
+    title: 'Tittel',
+    originator: 'Opphaver',
+    published: 'Publiseringsdato',
+    rightsholder: 'Rettighetshaver',
+    source: 'Kilde',
   },
   errorMessage: {
     title: 'Ops, noe gikk galt',
@@ -594,6 +605,10 @@ const messages = {
     search: {
       placeholder: 'Søk',
     },
+    embedlink: {
+      copyTitle: 'Kopier innbyggingskode',
+      hasCopiedTitle: 'Innbyggingskode kopiert',
+    },
     filters: {
       subject: {
         useFilter: 'Bruk filter',
@@ -610,6 +625,7 @@ const messages = {
         openFilter: 'Filtrer',
         closeFilter: 'Lukk filter',
         heading: 'Filter',
+        filteredBy: 'Filtrert på',
       },
       alphabet: {
         letterFilter: 'Vis innhald på (bokstaven) {{letter}}.',
@@ -765,6 +781,14 @@ const messages = {
   createdBy: {
     content: 'Ressursen',
     text: 'er hentet fra',
+    concept: {
+      content: 'Forklaringen',
+      text: 'er utarbeidet av',
+    },
+    listing: {
+      content: 'Listen',
+      text: 'er utarbeidet av',
+    },
   },
   fagfornyelse: {
     frontpage: {
@@ -936,6 +960,21 @@ const messages = {
     newFolder: 'Ny mappe',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
+    help: 'Hjelp',
+  },
+  labels: {
+    category: 'Kategori',
+    subject: 'Fag',
+    other: 'Annet',
+  },
+  listingPage: {
+    or: 'eller',
+    noFilters: 'Har ingenting å filtrere',
+    loadMore: 'Last mer',
+  },
+  siteNav: {
+    search: 'Søk',
+    contact: 'Kontakt',
     help: 'Hjelp',
   },
 };

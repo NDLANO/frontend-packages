@@ -18,7 +18,7 @@ interface ThemeProps {
   light: boolean | undefined;
 }
 
-const StyledWhiteSeparator = styled.div<ThemeProps>`
+const StyledSeparator = styled.div<ThemeProps>`
   ${fonts.sizes('14px')};
   margin: 0 ${spacing.small};
   user-select: none;
@@ -32,19 +32,19 @@ const StyledIconSafeLink = styled(SafeLink)`
   box-shadow: none;
   border-bottom: none;
 `;
-const StyledWhiteHome = styled(Home)<ThemeProps>`
+const StyledHome = styled(Home)<ThemeProps>`
   width: 20px;
   height: 20px;
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
 `;
-const StyledWhiteRightChevron = styled(ChevronRight)<ThemeProps>`
+const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
   margin: ${spacing.xxsmall};
 `;
-const StyledWhiteSpan = styled.span<ThemeProps>`
+const StyledSpan = styled.span<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
 `;
-const StyledWhiteSafeLink = styled(SafeLink)<ThemeProps>`
+const StyledSafeLink = styled(SafeLink)<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
 `;
 
@@ -56,19 +56,19 @@ interface Props {
 const HomeBreadcrumb = ({ items, light }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
-      return <StyledWhiteSpan light={light}>{item.name}</StyledWhiteSpan>;
+      return <StyledSpan light={light}>{item.name}</StyledSpan>;
     }
     if (item.index === 0) {
       return (
-        <StyledIconSafeLink to={item.to}>
-          <StyledWhiteHome title={item.name} light={light} />
+        <StyledIconSafeLink aria-label={item.name} to={item.to}>
+          <StyledHome title={item.name} light={light} />
         </StyledIconSafeLink>
       );
     }
     return (
-      <StyledWhiteSafeLink light={light} to={item.to}>
+      <StyledSafeLink light={light} to={item.to}>
         {item.name}
-      </StyledWhiteSafeLink>
+      </StyledSafeLink>
     );
   };
 
@@ -77,9 +77,9 @@ const HomeBreadcrumb = ({ items, light }: Props) => {
       return null;
     }
     if (item.index === 0) {
-      return <StyledWhiteSeparator light={light}>|</StyledWhiteSeparator>;
+      return <StyledSeparator light={light}>|</StyledSeparator>;
     }
-    return <StyledWhiteRightChevron light={light} />;
+    return <StyledRightChevron light={light} />;
   };
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;

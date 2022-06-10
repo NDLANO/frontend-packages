@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Breadcrumb } from '@ndla/ui';
-import { HeaderBreadcrumb, HomeBreadcrumb } from '@ndla/ui/src';
+import { HeaderBreadcrumb, HomeBreadcrumb } from '@ndla/ui';
 
 const items = [
   {

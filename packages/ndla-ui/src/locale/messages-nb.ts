@@ -442,7 +442,7 @@ const messages = {
       rules: 'Regler for bruk av bildet:',
     },
     images: {
-      heading: 'Slik bruker du bilder fra artikkelen',
+      heading: 'Slik gjenbruker du bilder',
       description: 'Husk å kopiere teksten som skal legges ved bildet der du bruker det.',
       rules: 'Regler for bruk av bildet:',
       itemImage: {
@@ -456,18 +456,18 @@ const messages = {
       title: 'Tittel',
     },
     text: {
-      heading: 'Slik bruker du tekst fra artikkelen',
+      heading: 'Slik gjenbruker du teksten',
       description: 'Husk å henvise til kilden når du gjenbruker tekst.',
       rules: 'Regler for bruk av teksten:',
       published: 'Publiseringsdato',
     },
     audio: {
-      heading: 'Slik bruker du lydfiler',
+      heading: 'Slik gjenbruker du lydfiler',
       description: 'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
       rules: 'Regler for bruk av lydfilen:',
     },
     video: {
-      heading: 'Slik bruker du video fra artikkelen',
+      heading: 'Slik gjenbruker du videoer',
       description: 'Husk å kopiere teksten som skal legges ved videoen der du bruker den.',
       rules: 'Regler for bruk av videoen:',
       itemImage: {
@@ -475,19 +475,19 @@ const messages = {
       },
     },
     other: {
-      heading: 'Slik bruker du annet innhold fra artikkelen',
+      heading: 'Slik gjenbruker du annet innhold',
       description: 'Du finner retningslinjene for bruk av innholdet i innholdselementet',
       itemImage: {
         ariaLabel: 'Åpne i nytt vindu',
       },
     },
     h5p: {
-      heading: 'Slik bruker du H5P-innhold fra artikkelen',
+      heading: 'Slik gjenbruker du H5P-innhold',
       description: 'Du finner retningslinjene for bruk av innholdet i H5P-elementet',
       rules: 'Regler for bruk av H5P:',
     },
     concept: {
-      heading: 'Slik bruker du forklaringer fra artikkelen',
+      heading: 'Slik gjenbruker du forklaringer',
       description: 'Du finner retningslinjene for bruk av innholdet i forklaring-elementet',
       rules: 'Regler for bruk av forklaring:',
       title: 'Tittel',
@@ -499,7 +499,7 @@ const messages = {
       },
     },
     files: {
-      heading: 'Slik bruker du filer fra artikkelen',
+      heading: 'Slik gjenbruker du filer',
       description: 'Husk å kopier teksten som skal legges ved filen der du bruker den.',
       rules: 'Regler for bruk av filen:',
       itemImage: {

@@ -429,7 +429,7 @@ const messages = {
       rules: 'Rules for use of image:',
     },
     images: {
-      heading: 'How to use images from the article',
+      heading: 'How to reuse images',
       description: 'Remember to copy the text to be attached to the image where you use it.',
       rules: 'Rules for use of image:',
       itemImage: {
@@ -443,18 +443,18 @@ const messages = {
       title: 'Title',
     },
     text: {
-      heading: 'How to use text from the article',
+      heading: 'How to reuse the text',
       description: 'Remember to refer to the source when reusing text.',
       rules: 'Rules for use of text:',
       published: 'Published',
     },
     audio: {
-      heading: 'How to use audio files from the article',
+      heading: 'How to reuse audio files',
       description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
     },
     video: {
-      heading: 'How to use videos from the article',
+      heading: 'How to reuse videos',
       description: 'Remember to copy the text to be attached to the video where you use it.',
       rules: 'Rules for use of video files:',
       itemImage: {
@@ -462,19 +462,19 @@ const messages = {
       },
     },
     other: {
-      heading: 'How to use other content from the article',
+      heading: 'How to reuse other content',
       description: 'You will find guidelines for use of other content in the asset',
       itemImage: {
         ariaLabel: 'Open in new window',
       },
     },
     h5p: {
-      heading: 'How to use H5P content from the article',
+      heading: 'How to reuse H5P content',
       description: 'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5P:',
     },
     concept: {
-      heading: 'How to use concept content from the article',
+      heading: 'How to reuse concept content',
       description: 'You will find guidelines for use of concept content in the asset',
       rules: 'Rules for use of concept:',
       title: 'Title',
@@ -486,7 +486,7 @@ const messages = {
       },
     },
     files: {
-      heading: 'How to use files from the article',
+      heading: 'How to reuse files',
       description: 'Remember to copy the text to be attached to the file where you use it.',
       rules: 'Rules for use of file:',
       itemImage: {

@@ -801,7 +801,7 @@ const messages = {
   frontpageMenu: {
     program: 'Education programme',
     allsubjects: 'All subjects',
-    cursorText: 'Have a look at some new learning resources from our revised subjects!',
+    cursorText: 'Have a look at some new learning resources from our new subjects!',
   },
   navigation: {
     showLongerDescription: 'Show topic description',

@@ -799,7 +799,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Se smakebiter fra fag som kommer høsten 2022.',
+    cursorText: 'Se smakebiter fra fag under utvikling.',
   },
   navigation: {
     showLongerDescription: 'Vis hele emnebeskrivelsen',

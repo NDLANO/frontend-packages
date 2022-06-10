@@ -800,7 +800,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Sjå smakebitar frå fag som kjem hausten 2022.',
+    cursorText: 'Sjå smakebitar frå fag under utvikling.',
   },
   navigation: {
     showLongerDescription: 'Vis heile emneskildringa',

@@ -6,14 +6,14 @@
  *
  */
 
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
+import { useId } from '@reach/auto-id';
 import Tooltip from '@reach/tooltip';
 import '@reach/tooltip/styles.css';
-import React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-const tooltipStyling = css`
+const StyledTooltip = styled(Tooltip)`
   color: #fff;
   background: ${colors.text.primary};
   border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
@@ -31,18 +31,14 @@ interface Props {
   id?: string;
   children: ReactNode;
   tooltip: string;
-  delay?: number; // No longer used
-  disabled?: boolean; // No longer used
-  align?: 'left' | 'right' | 'top' | 'bottom'; // No longer used
-  className?: string; // No longer used
-  tooltipContainerClass?: string; // No longer used
 }
 
 const CustomTooltip = ({ id, children, tooltip }: Props) => {
+  const deterministicId = useId(id);
   return (
-    <Tooltip id={id} label={tooltip} css={tooltipStyling} aria-label={tooltip}>
+    <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
       <span>{children}</span>
-    </Tooltip>
+    </StyledTooltip>
   );
 };
 export default CustomTooltip;

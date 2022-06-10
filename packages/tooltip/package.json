@@ -27,7 +27,8 @@
   ],
   "dependencies": {
     "@ndla/core": "^2.1.1",
-    "@reach/tooltip": "^0.17.0"
+    "@reach/tooltip": "^0.17.0",
+    "@reach/auto-id": "^0.17.0"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

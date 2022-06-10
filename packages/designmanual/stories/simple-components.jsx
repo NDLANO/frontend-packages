@@ -681,6 +681,7 @@ storiesOf('Enkle komponenter', module)
     <div>
       <StoryIntro title="Tooltip">
         <p>Når en brukers mus eller fokus hviler på et element, vil et ikke-interaktivt element vises i nærheten.</p>
+        <p>Tooltip plasseres automatisk der det er plass.</p>
         Tips for bruk av tooltips:
         <ul>
           <li>

@@ -231,10 +231,12 @@ const ListView = ({
   },
   t,
 }: Props) => {
-  const allOptions = filters?.flatMap((f) => f.options.flatMap((opt) => opt)) ?? [];
+  const hasOption = filters?.some((f) =>
+    f.options.some((opt: Option | Option[]) => (Array.isArray(opt) ? opt.length > 0 : true)),
+  );
   return (
     <ListViewWrapper>
-      {filters && allOptions.length > 0 ? (
+      {filters && hasOption ? (
         <div {...filterClasses('wrapper-multiple-filters')}>
           {filters.map((filter) => (
             <FilterListPhone

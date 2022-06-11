@@ -951,7 +951,7 @@ const messages = {
     myPage: 'Min side',
     resource: {
       addToFavorite: 'Legg i Min NDLA',
-      removeFromFavorite: 'Lagt i Min NDLA'
+      removeFromFavorite: 'Lagt i Min NDLA',
     },
   },
 };

@@ -952,7 +952,7 @@ const messages = {
     myPage: 'My page',
     resource: {
       addToFavorite: 'Add to My NDLA',
-      removeFromFavorite: 'Added to My NDLA'
+      removeFromFavorite: 'Added to My NDLA',
     },
   },
 };

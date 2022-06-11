@@ -48,7 +48,8 @@ export type ResourceListProps = {
   contentType?: string;
   title?: string;
   showAdditionalResources?: boolean;
-  onToggleAddToFavorites: (id: string | number, add: boolean) => void;
+  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  hideAddToFavoriteButton?: boolean;
 };
 
 const ResourceList = ({
@@ -58,6 +59,7 @@ const ResourceList = ({
   contentType,
   title,
   showAdditionalResources,
+  hideAddToFavoriteButton,
 }: ResourceListProps) => {
   const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
@@ -76,6 +78,7 @@ const ResourceList = ({
             showAdditionalResources={showAdditionalResources}
             addToFavoritesLabel={t('myNdla.resource.addToFavorite')}
             removeFromFavoritesLabel={t('myNdla.resource.removeFromFavorite')}
+            hideAddToFavoriteButton={hideAddToFavoriteButton}
             onToggleAddToFavorites={onToggleAddToFavorites}
             {...resource}
             contentTypeDescription={

@@ -12,6 +12,7 @@ import ArticleContent from './ArticleContent';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleSideBar from './ArticleSideBar';
+import ArticleFavoritesButton from './ArticleFavoritesButton';
 
 export {
   ArticleByline,
@@ -22,5 +23,6 @@ export {
   ArticleTitle,
   ArticleIntroduction,
   ArticleWrapper,
+  ArticleFavoritesButton,
 };
 export default Article;

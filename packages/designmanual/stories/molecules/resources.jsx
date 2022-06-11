@@ -29,7 +29,7 @@ const resourceGroup1 = {
   id: 'type-learning-path',
   title: 'Læringsstier',
   contentType: contentTypes.LEARNING_PATH,
-  resources: learningPathResources.map((r) => ({ ...r, type: '' })),
+  resources: learningPathResources.map((r) => ({ ...r, type: '', path: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
@@ -37,7 +37,7 @@ const resourceGroup2 = {
   id: 'subject-material',
   title: 'Fagstoff',
   contentType: contentTypes.SUBJECT_MATERIAL,
-  resources: articleResources.map((r) => ({ ...r, type: '' })),
+  resources: articleResources.map((r) => ({ ...r, type: '', path: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for fagstoff.',
 };
 
@@ -45,7 +45,7 @@ const resourceGroup3 = {
   id: 'tasks-and-activities',
   title: 'Oppgaver og aktiviteter',
   contentType: contentTypes.TASKS_AND_ACTIVITIES,
-  resources: exerciseResources.map((r) => ({ ...r, type: '' })),
+  resources: exerciseResources.map((r) => ({ ...r, type: '', path: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for oppgaver og aktiviteter.',
 };
 
@@ -53,7 +53,7 @@ const resourceGroup4 = {
   id: 'assessment-resources',
   title: 'Vurderingsressurser',
   contentType: contentTypes.ASSESSMENT_RESOURCES,
-  resources: assessmentResources.map((r) => ({ ...r, type: '' })),
+  resources: assessmentResources.map((r) => ({ ...r, type: '', path: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for læringsstier.',
 };
 
@@ -61,7 +61,7 @@ const resourceGroup5 = {
   id: 'source-material-resources',
   title: 'Kildemateriale',
   contentType: contentTypes.SOURCE_MATERIAL,
-  resources: sourceMaterialResources.map((r) => ({ ...r, type: '' })),
+  resources: sourceMaterialResources.map((r) => ({ ...r, type: '', path: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for kildemateriale.',
 };
 
@@ -69,7 +69,7 @@ const resourceGroup6 = {
   id: 'external-learning-resources',
   title: 'Eksterne læringsressurser',
   contentType: contentTypes.EXTERNAL_LEARNING_RESOURCES,
-  resources: externalLearningResources.map((r) => ({ ...r, type: '' })),
+  resources: externalLearningResources.map((r) => ({ ...r, type: '', path: '' })),
   noContentLabel: 'Det er ikke noe kjernestoff for eksterne læringssressurser.',
 };
 

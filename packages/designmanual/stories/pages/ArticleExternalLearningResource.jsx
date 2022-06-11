@@ -23,6 +23,7 @@ const { contentTypes } = constants;
 const ArticleExternalLearningResource = () => (
   <OneColumn>
     <Article
+      hideAddToFavoriteButton
       article={{
         title: 'Artikkel delte læringsressurser',
         introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',

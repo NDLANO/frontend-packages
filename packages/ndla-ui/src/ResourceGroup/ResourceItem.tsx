@@ -15,8 +15,7 @@ import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { IconButtonDualStates } from '@ndla/button';
-import { Heart, HeartOutline } from '@ndla/icons/action';
+import { ArticleFavoritesButton } from '../Article';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
@@ -222,7 +221,7 @@ const ContentTypeName = styled.span`
 `;
 
 type Props = {
-  id: string | number;
+  id: string;
   showContentTypeDescription?: boolean;
   contentTypeName?: string;
   contentTypeDescription?: string;
@@ -230,9 +229,10 @@ type Props = {
   showAdditionalResources?: boolean;
   access?: 'teacher';
   isFavorite?: boolean;
-  onToggleAddToFavorites: (id: string | number, add: boolean) => void;
+  onToggleAddToFavorites: (id: string, add: boolean) => void;
   addToFavoritesLabel: string;
   removeFromFavoritesLabel: string;
+  hideAddToFavoriteButton?: boolean;
 };
 
 const ResourceItem = ({
@@ -251,6 +251,7 @@ const ResourceItem = ({
   addToFavoritesLabel,
   removeFromFavoritesLabel,
   isFavorite,
+  hideAddToFavoriteButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -304,18 +305,15 @@ const ResourceItem = ({
             )}
           </>
         )}
-        <Tooltip tooltip={isFavorite ? 'removeFromFavoritesLabel' : 'addToFavoritesLabel'}>
-          <IconButtonDualStates
-            ariaLabelActive={'addToFavoritesLabel'}
-            ariaLabelInActive={'removeFromFavoritesLabel'}
-            activeIcon={<Heart />}
-            inactiveIcon={<HeartOutline />}
-            active={!!isFavorite}
-            size="small"
-            ghostPill
-            onClick={() => onToggleAddToFavorites(id, !isFavorite)}
+        {!hideAddToFavoriteButton && (
+          <ArticleFavoritesButton
+            isFavorite={isFavorite}
+            articleId={id}
+            removeFromFavoritesLabel={removeFromFavoritesLabel}
+            addToFavoritesLabel={addToFavoritesLabel}
+            onToggleAddToFavorites={() => onToggleAddToFavorites(id, true)}
           />
-        </Tooltip>
+        )}
       </TypeWrapper>
     </ListElement>
   );

@@ -22,6 +22,10 @@ const { contentTypes } = constants;
 const ArticleAssessmentResource = () => (
   <OneColumn cssModifier="narrow">
     <Article
+      onAddToFavorites={() => console.log('add to favorites')}
+      addToFavoritesLabel="Legg til i favoritter"
+      removeFromFavoritesLabel="Fjern fra favoritter"
+      isFavorite
       article={{
         title: 'Portal for vurdering, engelsk fellesfag',
         introduction:

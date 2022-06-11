@@ -104,7 +104,7 @@ const FolderItem = ({
           marked={marked}
           href={loading ? undefined : url}
           onFocus={() => {
-            setKeyNavigationId({ id, isFolder: false });
+            setKeyNavigationId({ id, currentFocusIsCreateFolderButton: false });
           }}
           data-tree-structure-id={id}
           onClick={() => {
@@ -123,7 +123,7 @@ const FolderItem = ({
           marked={marked}
           disabled={loading}
           onFocus={() => {
-            setKeyNavigationId({ id, isFolder: false });
+            setKeyNavigationId({ id, currentFocusIsCreateFolderButton: false });
           }}
           data-tree-structure-id={id}
           onClick={() => {

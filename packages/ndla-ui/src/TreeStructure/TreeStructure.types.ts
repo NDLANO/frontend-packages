@@ -53,7 +53,7 @@ export type SetKeyNavigationId = React.Dispatch<
   React.SetStateAction<
     | {
         id: string;
-        isFolder?: boolean | undefined;
+        currentFocusIsCreateFolderButton?: boolean | undefined;
       }
     | undefined
   >
@@ -71,7 +71,7 @@ export interface FolderItemsProps extends CommonFolderProps {
   keyNavigationId: string | undefined;
   setKeyNavigationId: SetKeyNavigationId;
   firstLevel: boolean;
-  keyNavigationIsFolder?: boolean;
+  keyNavigationFocusIsCreateFolderButton?: boolean;
   icon?: React.ReactElement;
 }
 

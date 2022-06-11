@@ -47,7 +47,7 @@ const FolderItems = ({
   onMarkFolder,
   openOnFolderClick,
   keyNavigationId,
-  keyNavigationIsFolder,
+  keyNavigationFocusIsCreateFolderButton,
   setKeyNavigationId,
   firstLevel,
 }: FolderItemsProps) => (
@@ -55,7 +55,6 @@ const FolderItems = ({
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
-      console.log(`${name} isOpen: ${isOpen}`, openFolders.size);
       return (
         <li key={id} role="treeitem">
           <div>
@@ -71,7 +70,7 @@ const FolderItems = ({
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
               highlightedByKeyBoardNavigation={
-                (keyNavigationId === id && !keyNavigationIsFolder) ||
+                (keyNavigationId === id && !keyNavigationFocusIsCreateFolderButton) ||
                 (firstLevel && keyNavigationId === undefined && !editable)
               }
               hideArrow={(!editable && dataChildren?.length === 0) || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
@@ -87,7 +86,7 @@ const FolderItems = ({
               idPaths={newIdPaths}
               onSaveNewFolder={onSaveNewFolder}
               onCreateNewFolder={onCreateNewFolder}
-              tabIndex={keyNavigationId === id && keyNavigationIsFolder ? 0 : -1}
+              tabIndex={keyNavigationId === id && keyNavigationFocusIsCreateFolderButton ? 0 : -1}
             />
           )}
           {dataChildren && isOpen && (
@@ -107,7 +106,7 @@ const FolderItems = ({
               keyNavigationId={keyNavigationId}
               setKeyNavigationId={setKeyNavigationId}
               firstLevel={false}
-              keyNavigationIsFolder={keyNavigationIsFolder}
+              keyNavigationFocusIsCreateFolderButton={keyNavigationFocusIsCreateFolderButton}
             />
           )}
         </li>

@@ -11,7 +11,7 @@ import { uuid } from '@ndla/util';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import AddFolder from './AddFolder';
-import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation';
+import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation/keyboardNavigation';
 import { FolderStructureProps, NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
@@ -44,7 +44,9 @@ const TreeStructure = ({
 }: TreeStructureProps) => {
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
-  const [keyNavigationId, setKeyNavigationId] = useState<{ id: string; isFolder?: boolean } | undefined>();
+  const [keyNavigationId, setKeyNavigationId] = useState<
+    { id: string; currentFocusIsCreateFolderButton?: boolean } | undefined
+  >();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault);
   const treestructureRef = useRef<HTMLDivElement>(null);
   const prevDataValue = useRef<string[]>(getDefaultOpenFolders(data));
@@ -53,7 +55,9 @@ const TreeStructure = ({
   useEffect(() => {
     if (treestructureRef.current) {
       if (keyNavigationId?.id) {
-        const dataProp = keyNavigationId.isFolder ? 'data-add-folder-id' : 'data-tree-structure-id';
+        const dataProp = keyNavigationId.currentFocusIsCreateFolderButton
+          ? 'data-add-folder-id'
+          : 'data-tree-structure-id';
         const currentElement = treestructureRef.current.querySelector(
           `[${dataProp}="${keyNavigationId.id}"]`,
         ) as HTMLButtonElement;
@@ -120,7 +124,7 @@ const TreeStructure = ({
       const newFolderId = await onNewFolder({ ...newFolder, value });
       if (newFolderId) {
         setMarkedFolderId(newFolderId);
-        setKeyNavigationId({ id: newFolderId, isFolder: false });
+        setKeyNavigationId({ id: newFolderId, currentFocusIsCreateFolderButton: false });
       }
     } else {
       setNewFolder(undefined);
@@ -129,7 +133,7 @@ const TreeStructure = ({
 
   const onMarkFolder = (id: string) => {
     setMarkedFolderId(id);
-    setKeyNavigationId({ id, isFolder: false });
+    setKeyNavigationId({ id, currentFocusIsCreateFolderButton: false });
   };
 
   return (
@@ -141,7 +145,7 @@ const TreeStructure = ({
             e,
             data,
             setKeyNavigationId,
-            keyNavigationId: keyNavigationId,
+            keyNavigationId,
             setOpenFolders,
             openFolders,
             editable: editable,
@@ -175,7 +179,7 @@ const TreeStructure = ({
           openOnFolderClick={openOnFolderClick}
           loading={loading}
           keyNavigationId={keyNavigationId?.id}
-          keyNavigationIsFolder={keyNavigationId?.isFolder}
+          keyNavigationFocusIsCreateFolderButton={keyNavigationId?.currentFocusIsCreateFolderButton}
           setKeyNavigationId={setKeyNavigationId}
           firstLevel
         />

@@ -97,6 +97,7 @@ class Resources extends Component {
   }
 
   onToggleAddToFavorites(id, add) {
+    // eslint-disable-next-line no-console
     console.log(`${add ? 'Legg til' : 'Ta vekk'} ressursen ${id}`);
   }
 

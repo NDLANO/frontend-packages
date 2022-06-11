@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { animations } from '@ndla/core';
+import { animations, spacing } from '@ndla/core';
 import FolderItem from './FolderItem';
 import AddFolder from './AddFolder';
 import { FolderItemsProps } from './TreeStructure.types';
@@ -19,6 +19,17 @@ const StyledUL = styled.ul`
   animation-fill-mode: forwards;
   @media (prefers-reduced-motion: reduce) {
     animation: none;
+  }
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -${spacing.xsmall};
+  li {
+    margin: 0;
+    padding: 0;
+    > ul {
+      margin-left: ${spacing.normal};
+    }
   }
 `;
 
@@ -44,6 +55,7 @@ const FolderItems = ({
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
+      console.log(`${name} isOpen: ${isOpen}`, openFolders.size);
       return (
         <li key={id} role="treeitem">
           <div>

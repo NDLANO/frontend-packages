@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
@@ -28,16 +28,17 @@ const InputWrapper = styled.div<{ loading?: boolean }>`
   border-radius: ${misc.borderRadius};
   padding-right: ${spacing.normal};
   padding-left: ${spacing.xsmall};
-  input {
-    flex-grow: 1;
-    border: 0;
-    outline: none;
-    padding: ${spacing.small};
-    padding-left: ${spacing.xsmall};
-    background: transparent;
-    color: ${colors.text.primary};
-  }
   color: ${colors.brand.primary};
+`;
+
+const StyledInput = styled.input`
+  flex-grow: 1;
+  border: 0;
+  outline: none;
+  padding: ${spacing.small};
+  padding-left: ${spacing.xsmall};
+  background: transparent;
+  color: ${colors.text.primary};
 `;
 
 interface FolderNameInputProps {
@@ -47,20 +48,16 @@ interface FolderNameInputProps {
 
 const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => {
   const [value, setValue] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
 
   return (
     <InputWrapper loading={loading}>
       <ArrowRight />
       <FolderOutlined />
-      <input
+      <StyledInput
+        autoFocus
         placeholder={t('treeStructure.newFolder.placeholder')}
         disabled={loading}
-        ref={inputRef}
         value={value}
         onBlur={() => onSaveNewFolder({ value, cancel: true })}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {

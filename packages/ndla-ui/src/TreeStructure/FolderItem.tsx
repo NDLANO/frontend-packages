@@ -32,7 +32,6 @@ const OpenButton = styled.button<{ isOpen: boolean }>`
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  height: ${spacing.medium};
 `;
 
 const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
@@ -134,7 +133,7 @@ const FolderItem = ({
             }
           }}>
           {icon || <FolderOutlined />}
-          {name} {url}
+          {name}
         </FolderName>
       )}
     </Wrapper>

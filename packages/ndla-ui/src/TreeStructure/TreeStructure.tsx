@@ -6,9 +6,9 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { uuid } from '@ndla/util';
-import TreeStructureWrapper from './TreeStructureWrapper';
+import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import AddFolder from './AddFolder';
 import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation';
@@ -16,19 +16,19 @@ import { FolderStructureProps, NewFolderProps, TreeStructureProps } from './Tree
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
-const getDefaultOpenFolders = (data: FolderStructureProps[]): string[] => {
+const getDefaultOpenFolders = (data: FolderStructureProps[], getAll?: boolean): string[] => {
   const openFolders: string[] = [];
-  const getOpen = (children: FolderStructureProps[]) => {
+  const getOpen = (children: FolderStructureProps[], collectAll?: boolean) => {
     children.forEach((folder: FolderStructureProps) => {
-      if (folder.openAsDefault) {
+      if (folder.openAsDefault || collectAll) {
         openFolders.push(folder.id);
       }
       if (folder.data && folder.data?.length > 0) {
-        getOpen(folder.data);
+        getOpen(folder.data, collectAll);
       }
     });
   };
-  getOpen(data);
+  getOpen(data, getAll);
   return openFolders;
 };
 
@@ -46,19 +46,51 @@ const TreeStructure = ({
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
   const [keyNavigationId, setKeyNavigationId] = useState<{ id: string; isFolder?: boolean } | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault);
-  const rootLevelId = uuid();
+  const treestructureRef = useRef<HTMLDivElement>(null);
+  const prevDataValue = useRef<string[]>(getDefaultOpenFolders(data));
+  const rootLevelId = uuid(); // TODO: use useId hook when we update to React 18
 
   useEffect(() => {
-    if (keyNavigationId?.id) {
-      const dataProp = keyNavigationId.isFolder ? 'data-add-folder-id' : 'data-tree-structure-id';
-      const currentElement = document.querySelector(`[${dataProp}="${keyNavigationId.id}"]`) as HTMLButtonElement;
-      currentElement?.focus();
-    } else if (editable) {
-      const currentElement = document.querySelector(`[data-add-folder-id="${rootLevelId}"]`) as HTMLButtonElement;
-      currentElement?.focus();
+    if (treestructureRef.current) {
+      if (keyNavigationId?.id) {
+        const dataProp = keyNavigationId.isFolder ? 'data-add-folder-id' : 'data-tree-structure-id';
+        const currentElement = treestructureRef.current.querySelector(
+          `[${dataProp}="${keyNavigationId.id}"]`,
+        ) as HTMLButtonElement;
+        currentElement?.focus();
+      } else if (editable) {
+        const currentElement = document.querySelector(`[data-add-folder-id="${rootLevelId}"]`) as HTMLButtonElement;
+        currentElement?.focus();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyNavigationId]);
+
+  useEffect(() => {
+    if (prevDataValue?.current) {
+      // Compare previous data with current data, find new folders and check if they are open and add them to the openFolders
+      const newFolders: string[] = [];
+      const getOpen = (children: FolderStructureProps[], set: string[], collectOnlyIfDefaultPropIsOpen: boolean) => {
+        children.forEach(({ id, data: childData, openAsDefault }) => {
+          if (!collectOnlyIfDefaultPropIsOpen || (openAsDefault && !prevDataValue.current.includes(id))) {
+            set.push(id);
+          }
+          if (childData && childData?.length > 0) {
+            getOpen(childData, set, collectOnlyIfDefaultPropIsOpen);
+          }
+        });
+      };
+      getOpen(data, newFolders, true);
+      if (newFolders.length > 0) {
+        setOpenFolders((alreadyOpenedFolders) => {
+          newFolders.forEach((id) => {
+            alreadyOpenedFolders.add(id);
+          });
+          return new Set(alreadyOpenedFolders);
+        });
+      }
+    }
+  }, [data]);
 
   useEffect(() => {
     if (!loading) {
@@ -102,6 +134,7 @@ const TreeStructure = ({
 
   return (
     <div
+      ref={treestructureRef}
       onKeyDown={(e) => {
         if (KEYBOARD_KEYS_OF_INTEREST.includes(e.key)) {
           keyboardNavigation({
@@ -116,7 +149,7 @@ const TreeStructure = ({
         }
       }}>
       <label htmlFor={rootLevelId}>{label}</label>
-      <TreeStructureWrapper id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
+      <TreeStructureStyledWrapper id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         {editable && (
           <AddFolder
             editing={newFolder && newFolder.parentId === undefined ? true : false}
@@ -146,7 +179,7 @@ const TreeStructure = ({
           setKeyNavigationId={setKeyNavigationId}
           firstLevel
         />
-      </TreeStructureWrapper>
+      </TreeStructureStyledWrapper>
     </div>
   );
 };

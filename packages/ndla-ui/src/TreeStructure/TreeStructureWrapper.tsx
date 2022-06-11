@@ -24,19 +24,6 @@ const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
         `
       : ''}
   transition: ${misc.transition.default};
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-left: -${spacing.xsmall};
-    li {
-      margin: 0;
-      padding: 0;
-      > ul {
-        margin-left: ${spacing.normal};
-      }
-    }
-  }
   &:focus-within {
     border-color: ${colors.brand.primary};
   }

@@ -97,6 +97,7 @@ const generateNewFolder = (name: string, id: string) => ({
   status: 'private',
   isFavorite: false,
   data: [],
+  openAsDefault: true,
 });
 
 export const TreeStructureExampleComponent = ({

@@ -950,6 +950,10 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Short view',
     myPage: 'My page',
+    resource: {
+      addToFavorite: 'Add to favorites',
+      removeFromFavorite: 'Remove from favorites',
+    },
   },
 };
 

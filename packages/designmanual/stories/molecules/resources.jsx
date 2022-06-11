@@ -96,6 +96,10 @@ class Resources extends Component {
     this.toggleAdditionalDialog = this.toggleAdditionalDialog.bind(this);
   }
 
+  onToggleAddToFavorites(id, add) {
+    console.log(`${add ? 'Legg til' : 'Ta vekk'} ressursen ${id}`);
+  }
+
   toggleAdditionalResources() {
     this.setState((prevState) => ({
       showAdditionalResources: !prevState.showAdditionalResources,
@@ -162,6 +166,7 @@ class Resources extends Component {
             toggleAdditionalResources={this.toggleAdditionalResources}
             resourceToLinkProps={toLink}
             unGrouped
+            onToggleAddToFavorites={this.onToggleAddToFavorites}
           />
         )}
         {!showUngrouped &&
@@ -175,6 +180,7 @@ class Resources extends Component {
               contentType={group.contentType}
               icon={<ContentTypeBadge type={group.contentType} />}
               resourceToLinkProps={toLink}
+              onToggleAddToFavorites={this.onToggleAddToFavorites}
             />
           ))}
       </ResourcesWrapper>

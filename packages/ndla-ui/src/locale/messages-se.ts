@@ -948,6 +948,10 @@ const messages = {
     detailView: 'Detaljrik listevisning',
     shortView: 'Kort visning',
     myPage: 'Min side',
+    resource: {
+      addToFavorite: 'Legg til i favorittar',
+      removeFromFavorite: 'Fjern fra favorittar',
+    },
   },
 };
 

@@ -15,6 +15,8 @@ import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
+import { IconButtonDualStates } from '@ndla/button';
+import { Heart, HeartOutline } from '@ndla/icons/action';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
@@ -208,6 +210,7 @@ const IconWrapper = styled.div`
 const TypeWrapper = styled.div`
   display: flex;
   align-items: center;
+  gap: ${spacing.xsmall};
 `;
 
 const ContentTypeName = styled.span`
@@ -219,15 +222,21 @@ const ContentTypeName = styled.span`
 `;
 
 type Props = {
+  id: string | number;
   showContentTypeDescription?: boolean;
   contentTypeName?: string;
   contentTypeDescription?: string;
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
   access?: 'teacher';
+  isFavorite?: boolean;
+  onToggleAddToFavorites: (id: string | number, add: boolean) => void;
+  addToFavoritesLabel: string;
+  removeFromFavoritesLabel: string;
 };
 
 const ResourceItem = ({
+  id,
   contentTypeName,
   contentTypeDescription,
   name,
@@ -238,6 +247,10 @@ const ResourceItem = ({
   extraBottomMargin,
   showAdditionalResources,
   access,
+  onToggleAddToFavorites,
+  addToFavoritesLabel,
+  removeFromFavoritesLabel,
+  isFavorite,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -291,6 +304,18 @@ const ResourceItem = ({
             )}
           </>
         )}
+        <Tooltip tooltip={isFavorite ? 'removeFromFavoritesLabel' : 'addToFavoritesLabel'}>
+          <IconButtonDualStates
+            ariaLabelActive={'addToFavoritesLabel'}
+            ariaLabelInActive={'removeFromFavoritesLabel'}
+            activeIcon={<Heart />}
+            inactiveIcon={<HeartOutline />}
+            active={!!isFavorite}
+            size="small"
+            ghostPill
+            onClick={() => onToggleAddToFavorites(id, !isFavorite)}
+          />
+        </Tooltip>
       </TypeWrapper>
     </ListElement>
   );

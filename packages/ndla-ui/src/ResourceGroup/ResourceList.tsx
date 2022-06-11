@@ -48,9 +48,17 @@ export type ResourceListProps = {
   contentType?: string;
   title?: string;
   showAdditionalResources?: boolean;
+  onToggleAddToFavorites: (id: string | number, add: boolean) => void;
 };
 
-const ResourceList = ({ resources, onClick, contentType, title, showAdditionalResources }: ResourceListProps) => {
+const ResourceList = ({
+  resources,
+  onClick,
+  onToggleAddToFavorites,
+  contentType,
+  title,
+  showAdditionalResources,
+}: ResourceListProps) => {
   const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
@@ -60,11 +68,15 @@ const ResourceList = ({ resources, onClick, contentType, title, showAdditionalRe
   return (
     <div>
       <StyledResourceList showAdditionalResources={showAdditionalResources}>
-        {resources.map((resource) => (
+        {resources.map(({ id, ...resource }) => (
           <ResourceItem
-            key={resource.id}
+            id={id}
+            key={id}
             contentType={contentType}
             showAdditionalResources={showAdditionalResources}
+            addToFavoritesLabel={t('myNdla.resource.addToFavorite')}
+            removeFromFavoritesLabel={t('myNdla.resource.removeFromFavorite')}
+            onToggleAddToFavorites={onToggleAddToFavorites}
             {...resource}
             contentTypeDescription={
               resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')

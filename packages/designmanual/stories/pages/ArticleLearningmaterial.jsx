@@ -27,6 +27,7 @@ const ArticleLearningMaterial = ({ accessRestricted }) => {
   return (
     <OneColumn>
       <Article
+        // eslint-disable-next-line no-console
         onAddToFavorites={() => console.log('add to favorites')}
         addToFavoritesLabel="Legg til i favoritter"
         removeFromFavoritesLabel="Fjern fra favoritter"

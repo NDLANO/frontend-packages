@@ -950,8 +950,8 @@ const messages = {
     shortView: 'Kort visning',
     myPage: 'Min side',
     resource: {
-      addToFavorite: 'Legg til i favoritter',
-      removeFromFavorite: 'Fjern frå favoritter',
+      addToFavorite: 'Legg i Min NDLA',
+      removeFromFavorite: 'Lagt i Min NDLA'
     },
   },
 };

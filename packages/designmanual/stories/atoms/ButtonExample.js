@@ -3,8 +3,9 @@ import Button, { MultiButton, StyledButton, IconButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown, Wrench } from '@ndla/icons/common';
 import { Heart, Pencil, Print } from '@ndla/icons/action';
-import { Star } from '@ndla/icons/editor';
-import { CloseButton } from '@ndla/button';
+import { Folder, Star, Link } from '@ndla/icons/editor';
+
+import { CloseButton, MenuButton } from '@ndla/button';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
@@ -617,6 +618,18 @@ const ButtonExample = () => {
               rel="noopener noreferrer">
               Link stylet som knapp
             </AnchorButton>
+          </InlineContainer>,
+          <h2 key="MenuButton" className="u-heading">
+            Meny-knapp
+          </h2>,
+          <InlineContainer>
+            <MenuButton
+              menuItems={[
+                { icon: <Folder />, text: 'Legg til mappe/tag', onClick: {} },
+                { icon: <Link />, text: 'Kopier lenke til siden', onClick: {} },
+                { icon: <Folder />, text: 'Fjern', onClick: {} },
+              ]}
+            />
           </InlineContainer>,
         ]}
       </StoryBody>

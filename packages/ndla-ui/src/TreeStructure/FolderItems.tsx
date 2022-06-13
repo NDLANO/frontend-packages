@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { animations, spacing } from '@ndla/core';
 import FolderItem from './FolderItem';
-import AddFolder from './AddFolder';
+import FolderNameInput from './FolderNameInput';
 import { FolderItemsProps } from './TreeStructure.types';
 import { MAX_LEVEL_FOR_FOLDERS } from './TreeStructure';
 
@@ -73,21 +73,12 @@ const FolderItems = ({
                 (keyNavigationId === id && !keyNavigationFocusIsCreateFolderButton) ||
                 (firstLevel && keyNavigationId === undefined && !editable)
               }
-              hideArrow={(!editable && dataChildren?.length === 0) || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
+              hideArrow={dataChildren?.length === 0 || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
               setKeyNavigationId={setKeyNavigationId}
             />
           </div>
-          {editable && isOpen && newIdPaths.length < MAX_LEVEL_FOR_FOLDERS && (
-            <AddFolder
-              withPadding
-              editing={newFolder?.parentId === id}
-              loading={loading}
-              parentId={id}
-              idPaths={newIdPaths}
-              onSaveNewFolder={onSaveNewFolder}
-              onCreateNewFolder={onCreateNewFolder}
-              tabIndex={keyNavigationId === id && keyNavigationFocusIsCreateFolderButton ? 0 : -1}
-            />
+          {newFolder?.parentId === id && (
+            <FolderNameInput withPadding={firstLevel} loading={loading} onSaveNewFolder={onSaveNewFolder} />
           )}
           {dataChildren && isOpen && (
             <FolderItems

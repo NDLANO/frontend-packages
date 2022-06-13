@@ -11,12 +11,21 @@ import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
 import { Spinner } from '@ndla/editor';
-import { spacing, colors, misc } from '@ndla/core';
+import { spacing, colors, misc, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};
   transform: rotate(-90deg);
+`;
+
+const NewFolderWrapper = styled.div<{ withPadding?: boolean }>`
+  padding-left: ${({ withPadding }) => (withPadding ? spacing.normal : '0px')};
+  ${animations.fadeInLeft(animations.durations.fast)};
+  animation-fill-mode: forwards;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 const InputWrapper = styled.div<{ loading?: boolean }>`
@@ -44,35 +53,38 @@ const StyledInput = styled.input`
 interface FolderNameInputProps {
   onSaveNewFolder: (props: { value: string; cancel: boolean }) => void;
   loading?: boolean;
+  withPadding?: boolean;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => {
+const FolderNameInput = ({ onSaveNewFolder, loading, withPadding }: FolderNameInputProps) => {
   const [value, setValue] = useState('');
   const { t } = useTranslation();
 
   return (
-    <InputWrapper loading={loading}>
-      <ArrowRight />
-      <FolderOutlined />
-      <StyledInput
-        autoFocus
-        placeholder={t('treeStructure.newFolder.placeholder')}
-        disabled={loading}
-        value={value}
-        onBlur={() => onSaveNewFolder({ value, cancel: true })}
-        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (e.key === 'Enter' || e.key === 'Tab' || e.key === 'Escape') {
-            onSaveNewFolder({ value, cancel: e.key === 'Escape' });
-            e.preventDefault();
-          }
-        }}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const target = e.target as HTMLInputElement;
-          setValue(target.value);
-        }}
-      />
-      {loading && <Spinner size="small" />}
-    </InputWrapper>
+    <NewFolderWrapper withPadding>
+      <InputWrapper loading={loading}>
+        <ArrowRight />
+        <FolderOutlined />
+        <StyledInput
+          autoFocus
+          placeholder={t('treeStructure.newFolder.placeholder')}
+          disabled={loading}
+          value={value}
+          onBlur={() => onSaveNewFolder({ value, cancel: true })}
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === 'Enter' || e.key === 'Tab' || e.key === 'Escape') {
+              onSaveNewFolder({ value, cancel: e.key === 'Escape' });
+              e.preventDefault();
+            }
+          }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const target = e.target as HTMLInputElement;
+            setValue(target.value);
+          }}
+        />
+        {loading && <Spinner size="small" />}
+      </InputWrapper>
+    </NewFolderWrapper>
   );
 };
 

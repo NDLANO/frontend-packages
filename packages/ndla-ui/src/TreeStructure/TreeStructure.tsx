@@ -10,27 +10,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { uuid } from '@ndla/util';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
-import AddFolder from './AddFolder';
+import { getIdPathsOfFolder, getPathOfFolder, getDefaultOpenFolders } from './helperFunctions';
 import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation/keyboardNavigation';
 import { FolderStructureProps, NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
-
-const getDefaultOpenFolders = (data: FolderStructureProps[], getAll?: boolean): string[] => {
-  const openFolders: string[] = [];
-  const getOpen = (children: FolderStructureProps[], collectAll?: boolean) => {
-    children.forEach((folder: FolderStructureProps) => {
-      if (folder.openAsDefault || collectAll) {
-        openFolders.push(folder.id);
-      }
-      if (folder.data && folder.data?.length > 0) {
-        getOpen(folder.data, collectAll);
-      }
-    });
-  };
-  getOpen(data, getAll);
-  return openFolders;
-};
 
 const TreeStructure = ({
   data,
@@ -47,7 +31,9 @@ const TreeStructure = ({
   const [keyNavigationId, setKeyNavigationId] = useState<
     { id: string; currentFocusIsCreateFolderButton?: boolean } | undefined
   >();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault);
+  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(
+    folderIdMarkedByDefault || editable ? data[0].id : undefined,
+  );
   const treestructureRef = useRef<HTMLDivElement>(null);
   const prevDataValue = useRef<string[]>(getDefaultOpenFolders(data));
   const rootLevelId = uuid(); // TODO: use useId hook when we update to React 18
@@ -106,6 +92,18 @@ const TreeStructure = ({
     setOpenFolders((prev) => {
       if (prev.has(id)) {
         prev.delete(id);
+        // Did we just closed a folder with a marked folder inside it?
+        // If so, we need to mark the folder we just closed.
+        if (markedFolderId) {
+          const closingFolderPath = getPathOfFolder(data, id);
+          const markedFolderPath = getPathOfFolder(data, markedFolderId);
+          const markedFolderIsSubPath = closingFolderPath.every(
+            (folderId, _index) => markedFolderPath[_index] === folderId,
+          );
+          if (markedFolderIsSubPath) {
+            setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+          }
+        }
       } else {
         prev.add(id);
       }
@@ -125,6 +123,13 @@ const TreeStructure = ({
       if (newFolderId) {
         setMarkedFolderId(newFolderId);
         setKeyNavigationId({ id: newFolderId, currentFocusIsCreateFolderButton: false });
+        // Open current folder in case it was closed..
+        setOpenFolders((prev) => {
+          if (newFolder.parentId) {
+            prev.add(newFolder.parentId);
+          }
+          return new Set(prev);
+        });
       }
     } else {
       setNewFolder(undefined);
@@ -154,17 +159,6 @@ const TreeStructure = ({
       }}>
       <label htmlFor={rootLevelId}>{label}</label>
       <TreeStructureStyledWrapper id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
-        {editable && (
-          <AddFolder
-            editing={newFolder && newFolder.parentId === undefined ? true : false}
-            loading={loading}
-            idPaths={[]}
-            onSaveNewFolder={onSaveNewFolder}
-            onCreateNewFolder={onCreateNewFolder}
-            tabIndex={keyNavigationId?.id ? -1 : 0}
-            rootLevelId={rootLevelId}
-          />
-        )}
         <FolderItems
           idPaths={[]}
           data={data}
@@ -184,6 +178,20 @@ const TreeStructure = ({
           firstLevel
         />
       </TreeStructureStyledWrapper>
+      {editable && (
+        <>
+          <button
+            disabled={markedFolderId === undefined}
+            onClick={() => {
+              const paths = getPathOfFolder(data, markedFolderId || '');
+              const idPaths = getIdPathsOfFolder(data, markedFolderId || '');
+              setNewFolder({ idPaths, parentId: paths[paths.length - 1] });
+            }}>
+            ny folder
+          </button>
+          <span>{markedFolderId}</span>
+        </>
+      )}
     </div>
   );
 };

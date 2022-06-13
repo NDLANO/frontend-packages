@@ -22,7 +22,9 @@ const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
           scroll-behavior: smooth;
           padding: ${spacing.small};
         `
-      : ''}
+      : css`
+          margin-left: -${spacing.medium};
+        `}
   transition: ${misc.transition.default};
   &:focus-within {
     border-color: ${colors.brand.primary};

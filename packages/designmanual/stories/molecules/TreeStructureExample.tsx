@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
+import { FolderOutlined } from '@ndla/icons/contentType';
 
 const Container = styled.div`
   margin: 40px auto;
@@ -19,18 +20,11 @@ const Container = styled.div`
 
 export const STRUCTURE_EXAMPLE = (firstId?: string) => [
   {
-    id: firstId || uuid(),
-    name: 'Mine favoritter',
-    status: 'private',
-    isFavorite: false,
-    data: [],
-  },
-  {
     id: uuid(),
     name: 'Mine mapper',
     status: 'private',
     isFavorite: false,
-    openAsDefault: true,
+    openAsDefault: false,
     data: [
       {
         id: uuid(),
@@ -78,7 +72,7 @@ const STRUCTURE_EXAMPLE_WRAPPED = () => [
     id: uuid(),
     name: 'Min NDLA',
     url: 'https://ndla.no',
-    icon: <User />,
+    icon: <FolderOutlined />,
     data: [],
   },
   ...STRUCTURE_EXAMPLE(),
@@ -121,7 +115,7 @@ export const TreeStructureExampleComponent = ({
         framed={framed}
         label={label}
         editable={editable}
-        openOnFolderClick
+        openOnFolderClick={false} // False is chrome bookmark way, might not be the best solution for phones? (Tiny hitarea?)
         folderIdMarkedByDefault={folderIdMarkedByDefault}
         onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
           // Just as an example, pretend to save to database and update the structure
@@ -152,6 +146,22 @@ export const TreeStructureExampleComponent = ({
 
 const TreeStructureExample = () => (
   <div>
+    <h1>TreeStructure new user:</h1>
+    <TreeStructureExampleComponent
+      label="Editable"
+      editable
+      framed
+      structure={[
+        {
+          id: uuid(),
+          name: 'Mine mapper',
+          status: 'private',
+          isFavorite: false,
+          openAsDefault: false,
+          data: [],
+        },
+      ]}
+    />
     <h1>TreeStructure editable:</h1>
     <TreeStructureExampleComponent label="Editable" editable framed structure={STRUCTURE_EXAMPLE()} />
     <hr />

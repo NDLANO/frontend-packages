@@ -16,9 +16,9 @@ import { SetKeyNavigationId } from './TreeStructure.types';
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
   border: 0;
+  transform-origin: center center;
   transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
   padding: ${spacing.xsmall};
-  margin-right: -${spacing.small};
   display: flex;
   align-items: center;
   margin: 0;
@@ -26,6 +26,11 @@ const OpenButton = styled.button<{ isOpen: boolean }>`
   cursor: pointer;
   &:hover {
     color: ${colors.brand.primary};
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+    transform: ${({ isOpen }) => (isOpen ? 'translateX(3px)' : 'translateY(3px)')};
   }
 `;
 
@@ -52,8 +57,9 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   align-items: center;
   cursor: pointer;
   padding: ${spacing.xsmall};
+  padding-left: ${spacing.xsmall};
   margin: 0;
-  margin-left: ${({ noArrow }) => (noArrow ? '-1px' : `-${spacing.xxsmall}`)};
+  margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
   box-shadow: none;
 `;
 

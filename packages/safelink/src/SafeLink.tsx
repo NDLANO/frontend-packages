@@ -49,7 +49,8 @@ const SafeLink = ({ to, replace, children, showNewWindowIcon, tabIndex, ...rest 
   }
 
   return (
-    <Link tabIndex={tabIndex ?? 0} to={to} replace={replace} {...rest}>
+    // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
+    <Link tabIndex={tabIndex ?? 0} to={to ?? ''} replace={replace} {...rest}>
       {children}
       {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
     </Link>

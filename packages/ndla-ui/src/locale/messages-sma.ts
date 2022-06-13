@@ -934,8 +934,10 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
-    resources: 'Ressurser',
-    folders: 'Mapper',
+    resources: '{{count}} Ressurs',
+    resources_plural: '{{count}} Ressursar',
+    folders: '{{count}} Mappe',
+    folders_plural: '{{count}} Mappar',
     folder: 'Mappe',
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',

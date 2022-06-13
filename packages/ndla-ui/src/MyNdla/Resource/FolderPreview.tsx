@@ -7,196 +7,136 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactElement } from 'react';
+import React, { ReactNode } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
+import { fonts, spacing, colors } from '@ndla/core';
 import { css } from '@emotion/core';
-import { MoreButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 
-const FolderElementWrapper = styled(SafeLink)<{ layout: LayoutType }>`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: ${spacing.small};
-  border: 1px solid ${colors.brand.light};
-  border-radius: 2px;
-  height: 64px;
-  margin-bottom: ${spacing.xsmall};
-  font-family: ${fonts.sans};
-  transition-duration: 0.2s;
-  gap: 5px;
-  &visited {
-    text-decoration: none;
-  }
-  &:hover {
-    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
-    transition-duration: 0.2s;
-  }
-  box-shadow: none;
-  text-decoration: none;
-  color: ${colors.brand.greyDark};
-`;
-const FoldersWrapper = styled.div<{ layout?: LayoutType }>`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+interface FolderIconWrapperProps {
+  type?: LayoutType;
+}
 
-  ${(props) =>
-    props.layout === 'block' &&
-    css`
-      opacity: 0;
-      margin-right: 5px;
-      p {
-        margin-right: 0px;
-      }
-    `}
-  ${FolderElementWrapper}:hover & {
-    ${(props) =>
-      props.layout === 'block' &&
-      css`
-        opacity: 1;
-      `}
-  }
-`;
-
-const FolderIconCircle = styled.div<{ layout?: LayoutType }>`
+const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
+  display: flex;
   border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  min-width: 40px;
+  padding: 11px;
   background-color: ${colors.brand.greyLighter};
   svg {
     width: 18px;
     height: 18px;
   }
-  ${(props) =>
-    props.layout === 'block' &&
+  ${(p) =>
+    p.type === 'block' &&
     css`
-      background-color: transparent;
-    `}
-
-  ${FolderElementWrapper}:hover & {
-    ${(props) =>
-      props.layout === 'block' &&
-      css`
-        background-color: ${colors.brand.light};
-        transition-duration: 0.5s;
-      `}
-  }
-  ${mq.range({ until: breakpoints.tabletWide })} {
     background-color: transparent;
-  }
+    ${FolderWrapper}:hover & {
+      background-color: ${colors.brand.light};
+      transition-duration 0.5s;
+    }
+  `};
 `;
 
-const FolderTitle = styled.h2<{ layout: LayoutType }>`
-  ${fonts.sizes('18')};
-  font-weight: 400;
+const FolderTitle = styled.h2`
+  ${fonts.sizes(18)};
+  font-weight: ${fonts.weight.normal};
   margin: 0;
+  flex: 1;
+
   overflow: hidden;
-  display: -webkit-box;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 1; /* number of lines to show */
+  // Unfortunate css needed for multi-line text overflow ellipsis.
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
-  ${FolderElementWrapper}:hover & {
-    transition-duration: 0.5s;
-    color: ${colors.brand.primary};
-    text-decoration: underline;
-  }
 `;
 
-const FolderLeftSide = styled.div<{ layout?: LayoutType }>`
+const FolderWrapper = styled(SafeLink)`
   display: flex;
-  flex-direction: row;
   align-items: center;
+  padding: ${spacing.small};
+  border: 1px solid ${colors.brand.light};
+  border-radius: 2px;
+  box-shadow: none;
+  text-decoration: none;
+  color: ${colors.brand.greyDark};
+  font-family: ${fonts.sans};
+  transition-duration: 0.2s;
   gap: ${spacing.small};
-`;
-const FolderRightSide = styled.div<{ layout?: LayoutType }>`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  gap: ${spacing.normal};
-  :last-child {
-    gap: ${spacing.xsmall};
-  }
-  ${(props) =>
-    props.layout === 'block' &&
-    css`
-      gap: ${spacing.xxsmall};
-    `}
-`;
-
-const FoldersText = styled.p<{ layout: LayoutType }>`
-  margin: 0;
-  ${fonts.sizes(16)};
-  display: flex;
-  align-items: center;
-  gap: ${spacing.xsmall};
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    span {
-      display: none;
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    transition-duration: 0.2s;
+    ${FolderTitle} {
+      color: ${colors.brand.primary};
+      text-decoration: underline;
     }
   }
-
-  span {
-    ${(props) =>
-      props.layout === 'block' &&
-      css`
-        display: none;
-      `}
-  }
 `;
 
-interface FolderElementProps {
+interface Props {
   title: string;
   subFolders?: number;
   subResources?: number;
   description?: string;
-  children?: ReactElement;
   link: string;
-  layout: LayoutType;
+  type: LayoutType;
+  actionMenu?: ReactNode;
 }
 
-export type LayoutType = 'list' | 'listLarger' | 'block';
+interface IconCountProps {
+  type: 'resource' | 'folder';
+  count?: number;
+  layoutType: LayoutType;
+}
 
-const FolderElement = ({ link, title, subFolders, subResources, children, layout }: FolderElementProps) => {
+interface IconCountWrapperProps {
+  type: LayoutType;
+}
+const IconCountWrapper = styled.div<IconCountWrapperProps>`
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  ${fonts.sizes(16)};
+  ${(p) =>
+    p.type === 'block' &&
+    css`
+      opacity: 0;
+      ${FolderWrapper}:hover & {
+        opacity: 1;
+      }
+    `};
+`;
+const IconCount = ({ type, count, layoutType }: IconCountProps) => {
+  const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
   const { t } = useTranslation();
+  if (!count) return null;
+
   return (
-    <FolderElementWrapper to={link} layout={layout}>
-      <FolderLeftSide layout={layout}>
-        <FolderIconCircle layout={layout}>
-          <FolderOutlined aria-label={t('myNdla.folders')} />
-        </FolderIconCircle>
-        <FolderTitle layout={layout}>{title}</FolderTitle>
-        {children}
-      </FolderLeftSide>
-      <FolderRightSide layout={layout}>
-        <FoldersWrapper layout={layout}>
-          <FolderOutlined aria-label={t('myNdla.folders')} />
-          <FoldersText layout={layout}>
-            {subFolders}
-            <span>{t('myNdla.folders')}</span>
-          </FoldersText>
-        </FoldersWrapper>
-        <FoldersWrapper layout={layout}>
-          <FileDocumentOutline aria-label={t('myNdla.resources')} />
-          <FoldersText layout={layout}>
-            {subResources}
-            <span>{t('myNdla.resources')}</span>
-          </FoldersText>
-        </FoldersWrapper>
-        <MoreButton />
-      </FolderRightSide>
-    </FolderElementWrapper>
+    <IconCountWrapper type={layoutType}>
+      <Icon aria-label={t(`myNdla.${type}s`)} />
+      <span>{layoutType === 'block' ? count : t(`myNdla.${type}s`, { count: 3 })}</span>
+    </IconCountWrapper>
   );
 };
 
-export default FolderElement;
+type LayoutType = 'list' | 'block';
+
+const Folder = ({ link, title, subFolders, subResources, type = 'list', actionMenu }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <FolderWrapper to={link}>
+      <FolderIconWrapper type={type}>
+        <FolderOutlined aria-label={t('myNdla.folder')} />
+      </FolderIconWrapper>
+      <FolderTitle>{title}</FolderTitle>
+      <IconCount layoutType={type} type={'folder'} count={subFolders} />
+      <IconCount layoutType={type} type={'resource'} count={subResources} />
+      {actionMenu}
+    </FolderWrapper>
+  );
+};
+
+export default Folder;

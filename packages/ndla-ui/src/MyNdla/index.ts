@@ -1,6 +1,4 @@
 import { Breadcrumbs } from './Resource';
-import { FolderPreview } from './Resource';
+import Folder from './Resource/FolderPreview';
 import { VerticalNavigation } from './Navigation';
-import { LayoutType } from './Resource';
-export type { LayoutType };
-export { Breadcrumbs, FolderPreview, VerticalNavigation };
+export { Breadcrumbs, VerticalNavigation, Folder };

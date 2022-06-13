@@ -122,8 +122,8 @@ const TagList = ({ tags }: TagListProps) => {
   if (!tags) return null;
   return (
     <StyledTagList>
-      {tags.map((tag) => (
-        <StyledTagListElement key={tag}>{tag}</StyledTagListElement>
+      {tags.map((tag, i) => (
+        <StyledTagListElement key={`tag-${i}`}>{tag}</StyledTagListElement>
       ))}
     </StyledTagList>
   );
@@ -264,6 +264,9 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   width: 100%;
   overflow: hidden;
   align-items: center;
+  div {
+    min-width: 100%;
+  }
   img {
     min-width: 100%;
   }

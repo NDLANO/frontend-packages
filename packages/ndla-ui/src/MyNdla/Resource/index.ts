@@ -7,7 +7,5 @@
  */
 
 import Breadcrumbs from './Breadcrumbs';
-import FolderPreview from './FolderPreview';
-import { LayoutType } from './FolderPreview';
-export type { LayoutType };
-export { Breadcrumbs, FolderPreview };
+import Folder from './FolderPreview';
+export { Breadcrumbs, Folder };

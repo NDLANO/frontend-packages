@@ -7,7 +7,8 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { ListResource, BlockResource, FolderPreview } from '@ndla/ui';
+import { spacing } from '@ndla/core';
+import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MoreButton } from '@ndla/button';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
@@ -19,6 +20,11 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
+const BlockFolderWrapper = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+`;
+
 export const MyNdla = () => {
   return (
     <Wrapper>
@@ -26,9 +32,50 @@ export const MyNdla = () => {
         status={1}
         components={
           <>
+            <h2>Folder</h2>
+            <Folder
+              key={'listFolder'}
+              link={''}
+              title={'Dette er min tittel'}
+              subFolders={3}
+              subResources={3}
+              actionMenu={<MoreButton />}
+              type={'list'}
+            />
+            <h2>Blokkvisning av folder</h2>
+            <BlockFolderWrapper>
+              <Folder
+                key={'blockFolder'}
+                link={''}
+                title={'Dette er min tittel'}
+                subFolders={3}
+                subResources={3}
+                actionMenu={<MoreButton />}
+                type={'block'}
+              />
+              <Folder
+                key={'blockFolder2'}
+                link={''}
+                title={'Dette er min tittel'}
+                subFolders={3}
+                subResources={3}
+                actionMenu={<MoreButton />}
+                type={'block'}
+              />
+              <Folder
+                key={'blockFolder3'}
+                link={''}
+                title={'Dette er min tittel'}
+                subFolders={3}
+                subResources={3}
+                actionMenu={<MoreButton />}
+                type={'block'}
+              />
+            </BlockFolderWrapper>
             <h2> Ressurser </h2>
             <h3>Blokkressurs</h3>
             <BlockResource
+              key={'blockResource'}
               title="Helt Vanlig Tittel"
               topics={['Matte', 'Naturfag']}
               tags={['tag', 'tag', 'tag']}
@@ -42,6 +89,7 @@ export const MyNdla = () => {
             />
             <h3> Standard Ressurs</h3>
             <ListResource
+              key={'defaultResource'}
               title="Titler kan også kuttes av"
               topics={['Matte', 'Naturfag']}
               tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
@@ -53,8 +101,9 @@ export const MyNdla = () => {
               link={''}
               actionMenu={<MoreButton />}
             />
-            <h3>Ressurs uten beskrivelse</h3>
+            <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
+              key={'withoutDescription'}
               title="Min Tittel"
               topics={['Matte', 'Naturfag']}
               description={''}
@@ -68,6 +117,7 @@ export const MyNdla = () => {
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource
+              key={'minimalResource'}
               title="Minimal ressurs"
               topics={['Matte', 'Naturfag']}
               resourceImage={{
@@ -77,8 +127,6 @@ export const MyNdla = () => {
               link={''}
               actionMenu={<MoreButton />}
             />
-            <h2> Mappevisning </h2>
-            <FolderPreview layout="list" title="Title" link="" subFolders={3} subResources={3} key={''} />
           </>
         }
         onSite={[

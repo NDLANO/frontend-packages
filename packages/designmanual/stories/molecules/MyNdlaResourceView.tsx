@@ -18,7 +18,7 @@ import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { FolderPreview, ListResource, BlockResource, LayoutType } from '@ndla/ui';
+import { Folder, ListResource, BlockResource } from '@ndla/ui';
 import { MoreButton } from '@ndla/button';
 
 const Dash = styled.div`
@@ -39,25 +39,13 @@ const NoFolders = styled.div`
   }
 `;
 
-const FoldersWrapper = styled.div<{ layout: LayoutType }>`
-  ${(props) =>
-    props.layout === 'block' &&
-    css`
-      display: grid;
-      grid-template-columns: repeat(3, 2fr);
-      gap: 25px 32px;
-      margin-top: ${spacing.normal};
-      div {
-        max-width: 345px;
-      }
-    `}
-`;
-const ResourcesWrapper = styled.div<{ layout: LayoutType }>`
+const BlockWrapper = styled.div<{ type: string }>`
   display: flex;
   flex-direction: column;
   gap: ${spacing.xsmall};
+  padding-bottom: ${spacing.xsmall};
   ${(props) =>
-    props.layout === 'block' &&
+    props.type === 'block' &&
     css`
       display: grid;
       grid-template-columns: repeat(3, 2fr);
@@ -194,34 +182,31 @@ type ResourceProps = {
 export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
-  layout?: LayoutType;
+  type?: 'list' | 'block';
 }
 
 export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
-  const [layout, setLayout] = useState('list' as LayoutType);
+  const [layout, setLayout] = useState('list');
   const windowSize = useWindowSize(1000);
   useEffect(() => {
     if (windowSize.innerWidth < 1000) {
       setLayout('list');
     }
   }, [windowSize]);
+  const Resource = layout === 'block' ? BlockResource : ListResource;
+  const viewType = layout === 'block' ? 'block' : 'list';
 
   return (
     <Dash>
       <ResourceCountWrapper>
         <CountWrapper>
           <FolderOutlined aria-label={t('myNdla.folders')} />
-          <FoldersText>
-            <span>{folders?.length}</span> {t('myNdla.folders')}
-          </FoldersText>
+          <FoldersText>{t('myNdla.folders', { count: folders?.length })}</FoldersText>
         </CountWrapper>
         <CountWrapper>
           <FileDocumentOutline aria-label={t('myNdla.resources')} />
-          <FoldersText>
-            <span> {resources?.length}</span>
-            {t('myNdla.resources')}
-          </FoldersText>
+          <FoldersText>{t('myNdla.resources', { count: resources?.length })}</FoldersText>
         </CountWrapper>
       </ResourceCountWrapper>
       <DashOptionWrapper>
@@ -270,65 +255,36 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
           <h1>Illustrasjon tom mappe</h1>
         </NoFolders>
       )}
-      <FoldersWrapper layout={layout}>
-        {folders?.map(({ title, link }) => (
-          <FolderPreview layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
+      <BlockWrapper type={layout}>
+        {folders?.map(({ title, link }, i) => (
+          <Folder
+            key={`folder-${i}`}
+            type={viewType}
+            title={title}
+            link={link}
+            subFolders={3}
+            subResources={3}
+            actionMenu={<MoreButton />}
+          />
         ))}
-      </FoldersWrapper>
-      <ResourcesWrapper layout={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }) => {
-          if (layout === 'block') {
-            return (
-              <BlockResource
-                title={title}
-                topics={topics}
-                tags={tags}
-                description={description}
-                resourceImage={{
-                  alt: resourceImage.alt,
-                  src: resourceImage.src,
-                }}
-                link={link}
-                key={link}
-                actionMenu={<MoreButton />}
-              />
-            );
-          } else if (layout === 'listLarger') {
-            return (
-              <ListResource
-                title={title}
-                topics={topics}
-                tags={tags}
-                description={description}
-                resourceImage={{
-                  alt: resourceImage.alt,
-                  src: resourceImage.src,
-                }}
-                link={link}
-                key={link}
-                actionMenu={<MoreButton />}
-              />
-            );
-          } else if (layout === 'list') {
-            return (
-              <ListResource
-                title={title}
-                topics={topics}
-                tags={tags}
-                resourceImage={{
-                  alt: resourceImage.alt,
-                  src: resourceImage.src,
-                }}
-                link={link}
-                key={link}
-                actionMenu={<MoreButton />}
-              />
-            );
-          } else {
-            return null;
-          }
-        })}
-      </ResourcesWrapper>
+      </BlockWrapper>
+      <BlockWrapper type={layout}>
+        {resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
+          <Resource
+            key={`resource-${i}`}
+            title={title}
+            topics={topics}
+            tags={tags}
+            description={layout !== 'list' ? description : undefined}
+            resourceImage={{
+              alt: resourceImage.alt,
+              src: resourceImage.src,
+            }}
+            link={link}
+            actionMenu={<MoreButton />}
+          />
+        ))}
+      </BlockWrapper>
     </Dash>
   );
 };

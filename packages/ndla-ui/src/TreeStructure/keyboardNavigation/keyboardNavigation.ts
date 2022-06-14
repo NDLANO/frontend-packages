@@ -85,7 +85,7 @@ const keyboardNavigation = ({
   if (e.key === 'ArrowRight') {
     if (
       !elementWithKeyFocus.isOpen &&
-      elementWithKeyFocus.data?.length &&
+      (elementWithKeyFocus.data?.length) &&
       id &&
       elementWithKeyFocus.paths.length < MAX_LEVEL_FOR_FOLDERS - 1
     ) {

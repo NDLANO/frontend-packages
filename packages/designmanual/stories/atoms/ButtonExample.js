@@ -12,9 +12,9 @@ const AnchorButton = StyledButton.withComponent('a');
 
 const menuButtonSizes = ['xsmall', 'small', 'normal', 'medium', 'large'];
 const menuItems = [
-  { icon: <Folder />, text: 'Legg til mappe/tag', onClick: () => console.log('clicked') }, // eslint-disable-line no-console
-  { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => console.log('clicked') }, // eslint-disable-line no-console
-  { icon: <Folder />, text: 'Fjern', onClick: () => console.log('clicked') }, // eslint-disable-line no-console
+  { icon: <Folder />, text: 'Legg til mappe/tag', onClick: () => {} },
+  { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => {} },
+  { icon: <Folder />, text: 'Fjern', onClick: () => {} },
 ];
 
 const MultiButtonData = {

@@ -7,5 +7,6 @@
  */
 
 import AuthModal from './AuthModal';
-
-export default AuthModal;
+import { UserInfo } from './UserInfo';
+export { AuthModal, UserInfo };
+export type { FeideGroupType, FeideMembershipType, FeideUser, FeideUserWithGroups } from './types';

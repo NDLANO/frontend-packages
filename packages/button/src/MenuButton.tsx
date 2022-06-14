@@ -45,7 +45,7 @@ const StyledMenuButton = styled(MenuButton)<StyledButtonProps>`
 const StyledMenuList = styled(MenuList)`
   border: none;
   background-color: white;
-  padding: ${spacing.nsmall};
+  padding: ${spacing.small};
   border-radius: 4px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1), 0px 0px 20px rgba(0, 0, 0, 0.1);
 `;

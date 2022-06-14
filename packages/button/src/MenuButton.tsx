@@ -11,7 +11,9 @@ import React, { MouseEventHandler, ReactElement } from 'react';
 import { colors, spacingUnit, spacing } from '@ndla/core';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
-import { ButtonSize, ButtonProps } from './';
+import { useTranslation } from 'react-i18next';
+import { ButtonProps } from './';
+import { convertSizeForSVG } from './IconButton';
 
 interface StyledButtonProps {
   svgSize: number;
@@ -23,7 +25,6 @@ const StyledMenuButton = styled(MenuButton)<StyledButtonProps>`
   display: flex;
   justify-content: center;
   border-radius: 50px;
-
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.2 : 0.25)}px;
   &:hover,
   &:active,
@@ -35,7 +36,6 @@ const StyledMenuButton = styled(MenuButton)<StyledButtonProps>`
   svg {
     fill: ${colors.brand.secondary};
     margin: 0;
-
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
   }
@@ -60,33 +60,18 @@ const StyledMenuItem = styled(MenuItem)<MenuItemProps>`
     flex-direction: row;
     align-items: center;
   }
-
   svg {
     fill: ${(prop) => prop.color};
   }
+  :hover {
+    color: ${colors.brand.primary};
+  }
 `;
-const convertSizeForSVG = (size: ButtonSize) => {
-  if (size === 'xsmall') {
-    return spacingUnit * 0.75;
-  }
-  if (size === 'small') {
-    return spacingUnit * 1;
-  }
-  if (size === 'normal') {
-    return spacingUnit * 1.25;
-  }
-  if (size === 'medium') {
-    return spacingUnit * 2;
-  }
-  if (size === 'large') {
-    return spacingUnit * 2.5;
-  }
-  return spacingUnit;
-};
+
 interface MenuItemProps {
   icon?: ReactElement;
   text?: string;
-  onClick?: MouseEventHandler;
+  onClick?: (id: string) => void;
   color?: string;
 }
 interface MultiButtonProps extends ButtonProps {
@@ -94,16 +79,17 @@ interface MultiButtonProps extends ButtonProps {
   menuItems?: MenuItemProps[];
 }
 export const MoreButton = ({ menuItems, size }: MultiButtonProps) => {
+  const { t } = useTranslation();
   return (
     <>
-      <Menu>
+      <Menu aria-label={t('myNdla.more')}>
         <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
           <HorizontalMenu />
         </StyledMenuButton>
         <StyledMenuList>
           {menuItems?.map((item) => {
             return (
-              <StyledMenuItem onSelect={() => item.onClick} color={item.color}>
+              <StyledMenuItem onSelect={() => item.onClick} color={item.color} aria-label={item.text}>
                 <div> {item.icon}</div>
                 <div>{item.text}</div>
               </StyledMenuItem>

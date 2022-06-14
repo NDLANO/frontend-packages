@@ -22,6 +22,7 @@ babelOptions.babelrc = false;
 const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
+const STORYBOOK_PATTERN = '**/*.stories*';
 const OK = chalk.reset.inverse.bold.green(' DONE ');
 
 const adjustToTerminalWidth = (str) => {
@@ -92,7 +93,7 @@ function buildNodePackage(p) {
   const pattern = path.resolve(srcDir, JS_FILES_PATTERN);
   const files = glob.sync(pattern, {
     nodir: true,
-    ignore: [IGNORE_PATTERN],
+    ignore: [IGNORE_PATTERN, STORYBOOK_PATTERN],
   });
 
   process.stdout.write(adjustToTerminalWidth(`${path.basename(p)}`));

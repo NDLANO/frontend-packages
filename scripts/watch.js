@@ -16,6 +16,7 @@ const babelOptions = require('../babel.config');
 const SRC_DIR = 'src';
 const JS_FILES_PATTERN = '**/*(*.js|*.jsx|*.ts|*.tsx)';
 const IGNORE_PATTERN = '**/__tests__/**';
+const STORYBOOK_PATTERN = '**/*.stories*';
 const winRegExp = new RegExp(/\\/g);
 
 const packagePatterns = getPackages().map((p) => {
@@ -32,7 +33,7 @@ const packagePatterns = getPackages().map((p) => {
 
 // Initialize watcher
 const watcher = chokidar.watch(packagePatterns, {
-  ignored: [IGNORE_PATTERN],
+  ignored: [IGNORE_PATTERN, STORYBOOK_PATTERN],
 });
 
 const handleBuildFile = (file) => {

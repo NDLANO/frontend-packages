@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ChangeEventHandler, ReactNode, useState } from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, fonts, spacing, spacingUnit, utils } from '@ndla/core';
@@ -36,7 +36,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   label {
     cursor: pointer;
     &:after {
-      content "";
+      content: '';
       display: block;
       width: ${SIZE}px;
       height: ${SIZE}px;
@@ -50,7 +50,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       cursor: pointer;
     }
     &:before {
-      content "";
+      content: '';
       display: block;
       position: absolute;
       right: 0;
@@ -130,13 +130,12 @@ type Props = {
   id: string;
   disabled?: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  children?: ReactNode;
 };
 
-const Switch = ({ onChange, checked, disabled, id, label, ...rest }: Props) => {
+const Switch = ({ onChange, checked, disabled, id, label }: Props) => {
   const [hasFocus, setFocusState] = useState(false);
   return (
-    <StyledSwitch {...rest} hasFocus={hasFocus}>
+    <StyledSwitch hasFocus={hasFocus}>
       <input
         onFocus={() => setFocusState(true)}
         onBlur={() => setFocusState(false)}

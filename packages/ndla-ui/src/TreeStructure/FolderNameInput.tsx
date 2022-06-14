@@ -19,8 +19,8 @@ const ArrowRight = styled(ArrowDropDownRaw)`
   transform: rotate(-90deg);
 `;
 
-const NewFolderWrapper = styled.div<{ withPadding?: boolean }>`
-  padding-left: ${({ withPadding }) => (withPadding ? spacing.normal : '0px')};
+const NewFolderWrapper = styled.div`
+  padding-left: ${spacing.normal};
   ${animations.fadeInLeft(animations.durations.fast)};
   animation-fill-mode: forwards;
   @media (prefers-reduced-motion: reduce) {
@@ -53,15 +53,14 @@ const StyledInput = styled.input`
 interface FolderNameInputProps {
   onSaveNewFolder: (props: { value: string; cancel: boolean }) => void;
   loading?: boolean;
-  withPadding?: boolean;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, loading, withPadding }: FolderNameInputProps) => {
+const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => {
   const [value, setValue] = useState('');
   const { t } = useTranslation();
 
   return (
-    <NewFolderWrapper withPadding>
+    <NewFolderWrapper>
       <InputWrapper loading={loading}>
         <ArrowRight />
         <FolderOutlined />

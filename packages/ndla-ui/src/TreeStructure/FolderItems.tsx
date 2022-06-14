@@ -68,17 +68,12 @@ const FolderItems = ({
               marked={markedFolderId === id}
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
-              highlightedByKeyBoardNavigation={
-                keyNavigationId === id || (firstLevel && keyNavigationId === undefined && !editable)
-              }
               hideArrow={dataChildren?.length === 0 || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
               noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
               setKeyNavigationId={setKeyNavigationId}
             />
           </div>
-          {newFolder?.parentId === id && (
-            <FolderNameInput withPadding={firstLevel} loading={loading} onSaveNewFolder={onSaveNewFolder} />
-          )}
+          {newFolder?.parentId === id && <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />}
           {dataChildren && isOpen && (
             <FolderItems
               loading={loading}

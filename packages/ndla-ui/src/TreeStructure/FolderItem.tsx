@@ -75,7 +75,6 @@ interface Props {
   loading?: boolean;
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
-  highlightedByKeyBoardNavigation: boolean;
   setKeyNavigationId: SetKeyNavigationId;
   url?: string;
   icon?: React.ReactNode;
@@ -92,7 +91,6 @@ const FolderItem = ({
   isOpen,
   marked,
   openOnFolderClick,
-  highlightedByKeyBoardNavigation,
   setKeyNavigationId,
   icon,
   url,
@@ -108,7 +106,7 @@ const FolderItem = ({
       {url ? (
         <FolderNameLink
           noArrow={hideArrow}
-          tabIndex={highlightedByKeyBoardNavigation ? 0 : -1}
+          tabIndex={marked ? 0 : -1}
           marked={marked}
           href={loading ? undefined : url}
           onFocus={() => {
@@ -127,7 +125,7 @@ const FolderItem = ({
       ) : (
         <FolderName
           noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
-          tabIndex={highlightedByKeyBoardNavigation ? 0 : -1}
+          tabIndex={marked ? 0 : -1}
           marked={marked}
           disabled={loading}
           onFocus={() => {

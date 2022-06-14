@@ -13,6 +13,8 @@ import Modal, { ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import { FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
 import { fonts, spacing } from '@ndla/core';
+import { UserInfo } from './UserInfo';
+import { FeideUserWithGroups } from './types';
 
 const StyledModalBody = styled.div`
   padding: ${spacing.normal} ${spacing.medium} ${spacing.medium};
@@ -38,17 +40,6 @@ const StyledHeading = styled.h2`
   }
 `;
 
-const StyledAuthorizedInfoList = styled.ul`
-  margin: 0;
-  padding: 0 0 0 ${spacing.normal};
-  list-style-image: unset;
-
-  li {
-    margin: 0;
-    font-weight: ${fonts.weight.semibold};
-  }
-`;
-
 const StyledHumanMaleBoardIconWrapper = styled.span`
   margin-left: ${spacing.xsmall};
 `;
@@ -63,9 +54,8 @@ const StyledButtonWrapper = styled.div`
 
 export type AuthModalProps = {
   isAuthenticated?: boolean;
+  user?: FeideUserWithGroups;
   showGeneralMessage?: boolean;
-  authorizedRole?: string;
-  authorizedCollectedInfo?: string[];
   onAuthenticateClick: () => void;
   position?: 'top' | 'bottom';
   activateButton?: ReactElement;
@@ -76,9 +66,8 @@ export type AuthModalProps = {
 
 const AuthModal = ({
   isAuthenticated,
+  user,
   showGeneralMessage = true,
-  authorizedRole,
-  authorizedCollectedInfo,
   onAuthenticateClick,
   position = 'top',
   activateButton,
@@ -104,17 +93,7 @@ const AuthModal = ({
             <ModalCloseButton onClick={onClose} title="Lukk" />
           </StyledModalHeader>
           <StyledModalContent>
-            {authorizedRole && <p>{t('user.loggedInAs', { role: authorizedRole })}</p>}
-            {authorizedCollectedInfo && authorizedCollectedInfo.length > 0 && (
-              <div>
-                {t('user.modal.collectedInfo')}
-                <StyledAuthorizedInfoList>
-                  {authorizedCollectedInfo.map((value) => (
-                    <li key={value}>{value}</li>
-                  ))}
-                </StyledAuthorizedInfoList>
-              </div>
-            )}
+            {user && <UserInfo user={user} />}
             {children}
             {showGeneralMessage && (
               <p>

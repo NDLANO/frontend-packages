@@ -141,7 +141,6 @@ const MyNdlaAddToFavoritesExample = () => {
         key={snackBarMessage.snackbarItemId}
         type={snackBarMessage.type}
         snackbarItemId={snackBarMessage?.snackbarItemId}
-        closeAriaLabel="Lukk"
         onKill={(id: string | undefined) => {
           // eslint-disable-next-line
           console.log(`snack with id ${id || 'unknown'} removed`);

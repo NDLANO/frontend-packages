@@ -7,7 +7,6 @@
  */
 
 import React, { useState } from 'react';
-import { uuid } from '@ndla/util';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';

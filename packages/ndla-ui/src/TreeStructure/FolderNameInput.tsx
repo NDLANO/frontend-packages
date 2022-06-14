@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState, useRef, RefObject } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';

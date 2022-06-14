@@ -18,6 +18,7 @@ const messages = {
     createFolder: 'Create folder',
     newFolder: {
       placeholder: 'Add foldername',
+      defaultName: 'New folder',
     },
   },
   tagSelector: {

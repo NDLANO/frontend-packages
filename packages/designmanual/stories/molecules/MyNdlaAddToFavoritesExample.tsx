@@ -52,7 +52,6 @@ const DialogExample = ({
   setSnackBarMessage,
 }: DialogExampleProps) => {
   const { t } = useTranslation();
-  const folderIdMarkedByDefault = uuid();
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
       {(onCloseModal: () => void) => (
@@ -64,11 +63,10 @@ const DialogExample = ({
             <h1>{title}</h1>
             <MyNdlaResource />
             <TreeStructureExampleComponent
-              folderIdMarkedByDefault={folderIdMarkedByDefault}
-              label="Mine mapper:"
+              label="Velg plassering"
               editable
               framed
-              structure={STRUCTURE_EXAMPLE(folderIdMarkedByDefault)}
+              structure={STRUCTURE_EXAMPLE(true, true)}
               openOnFolderClick={false}
             />
             <TagSelectorExample />

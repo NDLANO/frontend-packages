@@ -45,7 +45,7 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   color: ${colors.text.primary};
   &:hover,
   &:focus {
-    background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lighter)};
+    background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lightest)};
     color: ${colors.brand.primary};
   }
   transition: ${animations.durations.superFast};
@@ -61,6 +61,7 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   margin: 0;
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
   box-shadow: none;
+  flex-grow: 1;
 `;
 
 const FolderNameLink = FolderName.withComponent('a');

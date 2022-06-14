@@ -18,6 +18,7 @@ const messages = {
     createFolder: 'Lag mappe',
     newFolder: {
       placeholder: 'Skriv navn på mappe',
+      defaultName: 'Ny mappe',
     },
   },
   tagSelector: {

@@ -12,7 +12,7 @@ import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { spacing, fonts } from '@ndla/core';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { getIdPathsOfFolder, getPathOfFolder, getDefaultOpenFolders, getFolderName } from './helperFunctions';
@@ -20,6 +20,10 @@ import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigat
 import { FolderStructureProps, NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
+
+const StyledLabel = styled.label`
+  font-weight: ${fonts.weight.semibold};
+`;
 
 const AddFolderWrapper = styled.div`
   display: flex;
@@ -164,7 +168,7 @@ const TreeStructure = ({
           });
         }
       }}>
-      <label htmlFor={rootLevelId}>{label}</label>
+      <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>
       <TreeStructureStyledWrapper id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
           idPaths={[]}

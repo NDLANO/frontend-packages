@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef, RefObject } from 'react';
 import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
@@ -56,8 +56,13 @@ interface FolderNameInputProps {
 }
 
 const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => {
-  const [value, setValue] = useState('');
   const { t } = useTranslation();
+  const [value, setValue] = useState<string>(t('treeStructure.newFolder.defaultName'));
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current && inputRef.current.select();
+  }, []);
 
   return (
     <NewFolderWrapper>
@@ -65,6 +70,7 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
         <ArrowRight />
         <FolderOutlined />
         <StyledInput
+          ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
           disabled={loading}

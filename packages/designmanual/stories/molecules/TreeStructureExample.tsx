@@ -17,50 +17,52 @@ const Container = styled.div`
   max-width: 600px;
 `;
 
-export const STRUCTURE_EXAMPLE = (firstId?: string) => [
+export const STRUCTURE_EXAMPLE = (newUser?: boolean, openAsDefault?: boolean) => [
   {
     id: uuid(),
     name: 'Mine mapper',
     status: 'private',
     isFavorite: false,
-    openAsDefault: false,
+    openAsDefault,
     data: [
       {
         id: uuid(),
-        name: 'Matematikk',
+        name: 'Mine favoritter',
         status: 'private',
         isFavorite: false,
-        data: [
-          {
-            id: uuid(),
-            name: 'Eksamen',
-            status: 'private',
-            isFavorite: false,
-            data: [
+        data: newUser
+          ? []
+          : [
               {
                 id: uuid(),
-                name: 'Eksamens oppgaver',
+                name: 'Eksamen',
                 status: 'private',
                 isFavorite: false,
-                data: [],
+                data: [
+                  {
+                    id: uuid(),
+                    name: 'Eksamens oppgaver',
+                    status: 'private',
+                    isFavorite: false,
+                    data: [],
+                  },
+                  {
+                    id: uuid(),
+                    name: 'Eksamen 2022',
+                    status: 'private',
+                    isFavorite: false,
+                    data: [],
+                  },
+                ],
               },
               {
                 id: uuid(),
-                name: 'Eksamen 2022',
+                name: 'Oppgaver',
                 status: 'private',
                 isFavorite: false,
                 data: [],
               },
             ],
-          },
-          {
-            id: uuid(),
-            name: 'Oppgaver',
-            status: 'private',
-            isFavorite: false,
-            data: [],
-          },
-        ],
       },
     ],
   },
@@ -74,7 +76,7 @@ const STRUCTURE_EXAMPLE_WRAPPED = () => [
     icon: <User />,
     data: [],
   },
-  ...STRUCTURE_EXAMPLE(),
+  ...STRUCTURE_EXAMPLE(false, false),
   {
     id: uuid(),
     name: 'Mine tagger',
@@ -153,16 +155,7 @@ const TreeStructureExample = () => (
       label="Editable"
       editable
       framed
-      structure={[
-        {
-          id: uuid(),
-          name: 'Mine mapper',
-          status: 'private',
-          isFavorite: false,
-          openAsDefault: false,
-          data: [],
-        },
-      ]}
+      structure={STRUCTURE_EXAMPLE(true, true)}
     />
     <h1>TreeStructure editable:</h1>
     <TreeStructureExampleComponent
@@ -170,7 +163,7 @@ const TreeStructureExample = () => (
       openOnFolderClick={false}
       editable
       framed
-      structure={STRUCTURE_EXAMPLE()}
+      structure={STRUCTURE_EXAMPLE(false, true)}
     />
     <hr />
     <h1>TreeStructure non-editable:</h1>
@@ -179,7 +172,7 @@ const TreeStructureExample = () => (
       openOnFolderClick
       editable={false}
       framed
-      structure={STRUCTURE_EXAMPLE()}
+      structure={STRUCTURE_EXAMPLE(false, true)}
     />
     <hr />
     <h1>TreeStructure without frame</h1>

@@ -100,12 +100,14 @@ export const TreeStructureExampleComponent = ({
   editable,
   framed,
   folderIdMarkedByDefault,
+  openOnFolderClick,
 }: {
   structure: FolderStructureProps[];
   label: string;
   editable: boolean;
   framed: boolean;
   folderIdMarkedByDefault?: string;
+  openOnFolderClick: boolean;
 }) => {
   const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
@@ -115,7 +117,7 @@ export const TreeStructureExampleComponent = ({
         framed={framed}
         label={label}
         editable={editable}
-        openOnFolderClick={false} // False is chrome bookmark way, might not be the best solution for phones? (Tiny hitarea?)
+        openOnFolderClick={openOnFolderClick} // False is chrome bookmark way, might not be the best solution for phones? (Tiny hitarea?)
         folderIdMarkedByDefault={folderIdMarkedByDefault}
         onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
           // Just as an example, pretend to save to database and update the structure
@@ -148,6 +150,7 @@ const TreeStructureExample = () => (
   <div>
     <h1>TreeStructure new user:</h1>
     <TreeStructureExampleComponent
+      openOnFolderClick={false}
       label="Editable"
       editable
       framed
@@ -163,16 +166,29 @@ const TreeStructureExample = () => (
       ]}
     />
     <h1>TreeStructure editable:</h1>
-    <TreeStructureExampleComponent label="Editable" editable framed structure={STRUCTURE_EXAMPLE()} />
+    <TreeStructureExampleComponent
+      label="Editable"
+      openOnFolderClick={false}
+      editable
+      framed
+      structure={STRUCTURE_EXAMPLE()}
+    />
     <hr />
     <h1>TreeStructure non-editable:</h1>
-    <TreeStructureExampleComponent label="Static" editable={false} framed structure={STRUCTURE_EXAMPLE()} />
+    <TreeStructureExampleComponent
+      label="Static"
+      openOnFolderClick
+      editable={false}
+      framed
+      structure={STRUCTURE_EXAMPLE()}
+    />
     <hr />
     <h1>TreeStructure without frame</h1>
     <TreeStructureExampleComponent
       label="Static"
       editable={false}
       framed={false}
+      openOnFolderClick
       structure={STRUCTURE_EXAMPLE_WRAPPED()}
     />
   </div>

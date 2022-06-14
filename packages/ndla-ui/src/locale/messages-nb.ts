@@ -932,6 +932,7 @@ const messages = {
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',
+    newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
     help: 'Hjelp',

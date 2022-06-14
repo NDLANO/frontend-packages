@@ -934,6 +934,7 @@ const messages = {
     myFolders: 'My folders',
     myTags: 'My tags',
     newFolder: 'New folder',
+    newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',
     help: 'Help',

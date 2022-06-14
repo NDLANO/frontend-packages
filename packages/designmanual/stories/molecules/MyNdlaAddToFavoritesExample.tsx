@@ -69,6 +69,7 @@ const DialogExample = ({
               editable
               framed
               structure={STRUCTURE_EXAMPLE(folderIdMarkedByDefault)}
+              openOnFolderClick={false}
             />
             <TagSelectorExample />
             <MyNdlaFolder />

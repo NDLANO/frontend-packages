@@ -40,17 +40,12 @@ const traverseUpwards = (
 const keyboardNavigation = ({
   e,
   data,
-  setOpenFolders,
+  onToggleOpen,
   setKeyNavigationId,
   keyNavigationId,
   openFolders,
-  editable,
 }: KeyboardNavigationProps): string | undefined => {
-  const { id, currentFocusIsCreateFolderButton } = keyNavigationId || {};
-
-  if (currentFocusIsCreateFolderButton && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
-    return;
-  }
+  const { id } = keyNavigationId || {};
 
   // We are navigating in the tree.
   // We need to find the next folder in the tree
@@ -69,7 +64,7 @@ const keyboardNavigation = ({
       if (dataId === id) {
         elementWithKeyFocus.paths = paths;
         elementWithKeyFocus.index = _index;
-        elementWithKeyFocus.isOpen = openFolders.has(dataId);
+        elementWithKeyFocus.isOpen = openFolders.has(dataId) && childData && childData.length > 0;
         elementWithKeyFocus.data = childData;
         elementWithKeyFocus.parent = parent;
         elementWithKeyFocus.parentId = parentId;
@@ -80,7 +75,7 @@ const keyboardNavigation = ({
   if (!updatePathToElementWithKeyFocus(data, [], data)) {
     // Could find its location in the tree.
     // This should not happen, reset its value to root.
-    setKeyNavigationId(!editable || e.key === 'ArrowDown' ? { id: data[0].id } : undefined);
+    setKeyNavigationId(e.key === 'ArrowDown' ? { id: data[0].id } : undefined);
     return;
   }
   e.preventDefault();
@@ -89,29 +84,24 @@ const keyboardNavigation = ({
   // on up or down key press we want to move focus to the next folder
   if (e.key === 'ArrowRight') {
     if (
-      (editable || elementWithKeyFocus.data?.length) &&
+      !elementWithKeyFocus.isOpen &&
+      elementWithKeyFocus.data?.length &&
       id &&
       elementWithKeyFocus.paths.length < MAX_LEVEL_FOR_FOLDERS - 1
     ) {
-      setOpenFolders((prev) => {
-        prev.add(id);
-        return new Set(prev);
-      });
+      onToggleOpen(id);
     }
     return;
   }
   if (e.key === 'ArrowLeft') {
-    if (id) {
-      setOpenFolders((prev) => {
-        prev.delete(id);
-        return new Set(prev);
-      });
+    if (id && elementWithKeyFocus.isOpen) {
+      onToggleOpen(id);
     }
     return;
   }
 
   if (!id && direction === 1) {
-    setKeyNavigationId({ id: data[0].id, currentFocusIsCreateFolderButton: false });
+    setKeyNavigationId({ id: data[0].id });
     return;
   }
   if (!id) {
@@ -119,11 +109,7 @@ const keyboardNavigation = ({
   }
   // Move up
   if (direction === -1) {
-    if (currentFocusIsCreateFolderButton) {
-      setKeyNavigationId({
-        id,
-      });
-    } else if (elementWithKeyFocus.index > 0) {
+    if (elementWithKeyFocus.index > 0) {
       // Move upwards to the parent folder
       setKeyNavigationId(
         elementWithKeyFocus.parent
@@ -141,20 +127,13 @@ const keyboardNavigation = ({
       const parentsCurrentIndex = findParent.findIndex(({ id }) => id === elementWithKeyFocus.parentId);
       setKeyNavigationId({
         id: findParent[parentsCurrentIndex].id,
-        currentFocusIsCreateFolderButton: editable,
       });
-    } else if (editable) {
-      // Move to the root
-      setKeyNavigationId(undefined);
     }
     return;
   }
 
   if (elementWithKeyFocus.isOpen) {
-    // Move to add folder OR its first child in sub tree if currentFocusIsCreateFolderButton === false or already in currentFocusIsCreateFolderButton mode
-    if (!currentFocusIsCreateFolderButton && editable) {
-      setKeyNavigationId({ id, currentFocusIsCreateFolderButton: true });
-    } else if (elementWithKeyFocus.data?.length) {
+    if (elementWithKeyFocus.data?.length) {
       setKeyNavigationId({ id: elementWithKeyFocus.data[0].id });
     } else {
       // move to next child of parent if any... need new traverse :-/

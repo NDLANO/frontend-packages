@@ -79,6 +79,7 @@ interface Props {
   setKeyNavigationId: SetKeyNavigationId;
   url?: string;
   icon?: React.ReactNode;
+  noPaddingWhenArrowIsHidden?: boolean;
 }
 
 const FolderItem = ({
@@ -95,6 +96,7 @@ const FolderItem = ({
   setKeyNavigationId,
   icon,
   url,
+  noPaddingWhenArrowIsHidden,
 }: Props) => {
   return (
     <Wrapper>
@@ -110,7 +112,7 @@ const FolderItem = ({
           marked={marked}
           href={loading ? undefined : url}
           onFocus={() => {
-            setKeyNavigationId({ id, currentFocusIsCreateFolderButton: false });
+            setKeyNavigationId({ id });
           }}
           data-tree-structure-id={id}
           onClick={() => {
@@ -124,12 +126,12 @@ const FolderItem = ({
         </FolderNameLink>
       ) : (
         <FolderName
-          noArrow={hideArrow}
+          noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
           tabIndex={highlightedByKeyBoardNavigation ? 0 : -1}
           marked={marked}
           disabled={loading}
           onFocus={() => {
-            setKeyNavigationId({ id, currentFocusIsCreateFolderButton: false });
+            setKeyNavigationId({ id });
           }}
           data-tree-structure-id={id}
           onClick={() => {

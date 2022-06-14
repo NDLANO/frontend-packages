@@ -46,4 +46,23 @@ const getIdPathsOfFolder = (data: FolderStructureProps[], findId: string): numbe
   return currentPath;
 };
 
-export { getPathOfFolder, getDefaultOpenFolders, getIdPathsOfFolder };
+const getFolderName = (data: FolderStructureProps[], findId: string | undefined): string | undefined => {
+  if (!findId) {
+    return undefined;
+  }
+  let folderName: string | undefined;
+  const paths = (dataChildren: FolderStructureProps[]) => {
+    dataChildren.some(({ id, name, data: dataChildrenSub }, _index) => {
+      if (id === findId) {
+        folderName = name;
+        return true;
+      } else if (dataChildrenSub?.length) {
+        return paths(dataChildrenSub);
+      }
+    });
+  };
+  paths(data);
+  return folderName;
+};
+
+export { getPathOfFolder, getDefaultOpenFolders, getIdPathsOfFolder, getFolderName };

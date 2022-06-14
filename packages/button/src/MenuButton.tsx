@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { MouseEventHandler, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { colors, spacingUnit, spacing } from '@ndla/core';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
@@ -20,11 +20,12 @@ interface StyledButtonProps {
 }
 
 const StyledMenuButton = styled(MenuButton)<StyledButtonProps>`
+  cursor: pointer;
   background-color: transparent;
   border: none;
   display: flex;
   justify-content: center;
-  border-radius: 50px;
+  border-radius: 100%;
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.2 : 0.25)}px;
   &:hover,
   &:active,
@@ -49,7 +50,7 @@ const StyledMenuList = styled(MenuList)`
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1), 0px 0px 20px rgba(0, 0, 0, 0.1);
 `;
 
-const StyledMenuItem = styled(MenuItem)<MenuItemProps>`
+const StyledMenuItem = styled(MenuItem)`
   gap: ${spacing.small};
   padding: ${spacing.xxsmall};
   display: flex;
@@ -71,7 +72,7 @@ const StyledMenuItem = styled(MenuItem)<MenuItemProps>`
 interface MenuItemProps {
   icon?: ReactElement;
   text?: string;
-  onClick?: (id: string) => void;
+  onClick: () => void;
   color?: string;
 }
 interface MultiButtonProps extends ButtonProps {
@@ -87,11 +88,11 @@ export const MoreButton = ({ menuItems, size }: MultiButtonProps) => {
           <HorizontalMenu />
         </StyledMenuButton>
         <StyledMenuList>
-          {menuItems?.map((item) => {
+          {menuItems?.map(({ color, text, icon, onClick }) => {
             return (
-              <StyledMenuItem onSelect={() => item.onClick} color={item.color} aria-label={item.text}>
-                <div> {item.icon}</div>
-                <div>{item.text}</div>
+              <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
+                <div> {icon}</div>
+                <div>{text}</div>
               </StyledMenuItem>
             );
           })}

@@ -10,6 +10,13 @@ import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
 
+const menuButtonSizes = ['xsmall', 'small', 'normal', 'medium', 'large'];
+const menuItems = [
+  { icon: <Folder />, text: 'Legg til mappe/tag', onClick: () => console.log('clicked') }, // eslint-disable-line no-console
+  { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => console.log('clicked') }, // eslint-disable-line no-console
+  { icon: <Folder />, text: 'Fjern', onClick: () => console.log('clicked') }, // eslint-disable-line no-console
+];
+
 const MultiButtonData = {
   mainButton: {
     label: 'Lagre',
@@ -623,64 +630,9 @@ const ButtonExample = () => {
             Meny-knapp
           </h2>,
           <InlineContainer>
-            <MenuButton
-              size="xsmall"
-              menuItems={[
-                { icon: <Folder />, text: 'Legg til mappe/tag', onClick: {} },
-                { icon: <Link />, text: 'Kopier lenke til siden', onClick: {} },
-                { icon: <Folder />, text: 'Fjern', onClick: {} },
-              ]}
-            />
-            <MenuButton
-              size="small"
-              menuItems={[
-                { icon: <Folder />, text: 'Legg til mappe/tag', onClick: {} },
-                { icon: <Link />, text: 'Kopier lenke til siden', onClick: {} },
-                { icon: <Folder />, text: 'Fjern', onClick: {} },
-              ]}
-            />
-            <MenuButton
-              size="normal"
-              menuItems={[
-                { icon: <Folder />, text: 'Legg til mappe/tag', onClick: {} },
-                { icon: <Link />, text: 'Kopier lenke til siden', onClick: {} },
-                { icon: <Folder />, text: 'Fjern', onClick: {} },
-              ]}
-            />
-            <MenuButton
-              size="medium"
-              menuItems={[
-                { icon: <Folder />, text: 'Legg til mappe/tag', onClick: {} },
-                { icon: <Link />, text: 'Kopier lenke til siden', onClick: {} },
-                { icon: <Folder />, text: 'Fjern', onClick: {} },
-              ]}
-            />
-            <MenuButton
-              size="large"
-              menuItems={[
-                {
-                  icon: <Folder />,
-                  text: 'Legg til mappe/tag',
-                  onClick: () => {
-                    console.log('hello');
-                  },
-                },
-                {
-                  icon: <Link />,
-                  text: 'Kopier lenke til siden',
-                  onClick: () => {
-                    console.log('hello');
-                  },
-                },
-                {
-                  icon: <Folder />,
-                  text: 'Fjern',
-                  onClick: () => {
-                    console.log('hello');
-                  },
-                },
-              ]}
-            />
+            {menuButtonSizes.map((size) => (
+              <MenuButton key={size} size={size} menuItems={menuItems} />
+            ))}
           </InlineContainer>,
         ]}
       </StoryBody>

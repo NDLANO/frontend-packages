@@ -72,7 +72,7 @@ const StyledMenuItem = styled(MenuItem)`
 interface MenuItemProps {
   icon?: ReactElement;
   text?: string;
-  onClick: void;
+  onClick: () => void;
   color?: string;
 }
 interface MultiButtonProps extends ButtonProps {
@@ -90,7 +90,7 @@ export const MoreButton = ({ menuItems, size }: MultiButtonProps) => {
         <StyledMenuList>
           {menuItems?.map(({ color, text, icon, onClick }) => {
             return (
-              <StyledMenuItem onSelect={() => onClick()} color={color} aria-label={text}>
+              <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
                 <div> {icon}</div>
                 <div>{text}</div>
               </StyledMenuItem>

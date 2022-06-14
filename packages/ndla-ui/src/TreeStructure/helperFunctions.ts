@@ -59,6 +59,7 @@ const getFolderName = (data: FolderStructureProps[], findId: string | undefined)
       } else if (dataChildrenSub?.length) {
         return paths(dataChildrenSub);
       }
+      return false;
     });
   };
   paths(data);

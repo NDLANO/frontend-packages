@@ -11,7 +11,6 @@ import styled from '@emotion/styled';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
-import { FolderOutlined } from '@ndla/icons/contentType';
 
 const Container = styled.div`
   margin: 40px auto;
@@ -72,7 +71,7 @@ const STRUCTURE_EXAMPLE_WRAPPED = () => [
     id: uuid(),
     name: 'Min NDLA',
     url: 'https://ndla.no',
-    icon: <FolderOutlined />,
+    icon: <User />,
     data: [],
   },
   ...STRUCTURE_EXAMPLE(),

@@ -630,12 +630,8 @@ const ButtonExample = () => {
             Meny-knapp
           </h2>,
           <InlineContainer>
-            {menuButtonSizes.map(size => (
-               <MenuButton
-                key={size}
-                size={size}
-                menuItems={menuItems}
-              />
+            {menuButtonSizes.map((size) => (
+              <MenuButton key={size} size={size} menuItems={menuItems} />
             ))}
           </InlineContainer>,
         ]}

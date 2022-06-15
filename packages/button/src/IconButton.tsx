@@ -34,7 +34,7 @@ const StyledButton = styled(Button)<StyledButtonProps>`
   }
 `;
 
-const convertSizeForSVG = (size: ButtonSize) => {
+export const convertSizeForSVG = (size: ButtonSize) => {
   if (size === 'xsmall') {
     return spacingUnit * 0.75;
   }

@@ -3,11 +3,19 @@ import Button, { MultiButton, StyledButton, IconButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown, Wrench } from '@ndla/icons/common';
 import { Heart, Pencil, Print } from '@ndla/icons/action';
-import { Star } from '@ndla/icons/editor';
-import { CloseButton } from '@ndla/button';
+import { Folder, Star, Link } from '@ndla/icons/editor';
+
+import { CloseButton, MenuButton } from '@ndla/button';
 import { InlineContainer } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
+
+const menuButtonSizes = ['xsmall', 'small', 'normal', 'medium', 'large'];
+const menuItems = [
+  { icon: <Folder />, text: 'Legg til mappe/tag', onClick: () => {} },
+  { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => {} },
+  { icon: <Folder />, text: 'Fjern', onClick: () => {} },
+];
 
 const MultiButtonData = {
   mainButton: {
@@ -586,39 +594,43 @@ const ButtonExample = () => {
             <Print />
           </IconButton>{' '}
         </InlineContainer>
-        {process.env.NODE_ENV === 'development' && [
-          <h2 key="alternative-button-heading" className="u-heading">
-            Alternativer når UU krever en knapp
-          </h2>,
-          <InlineContainer key="buttons">
-            <Button link onClick={action('clicked')}>
-              Knapp stylet som link
+        <h2 className="u-heading">Meny-knapp</h2>
+        <InlineContainer>
+          {menuButtonSizes.map((size) => (
+            <MenuButton key={size} size={size} menuItems={menuItems} />
+          ))}
+        </InlineContainer>
+        <h2 key="alternative-link-heading" className="u-heading">
+          Alternativer når UU krever en link
+        </h2>
+        <InlineContainer key="buttons-2">
+          <AnchorButton href="https://ndla.no" target="_blank" rel="noopener noreferrer">
+            Link stylet som knapp
+          </AnchorButton>{' '}
+          <AnchorButton
+            style={{ width: '250px' }}
+            appearance="outline"
+            href="https://ndla.no"
+            target="_blank"
+            rel="noopener noreferrer">
+            Link stylet som knapp
+          </AnchorButton>
+        </InlineContainer>
+        <h2 key="alternative-button-heading" className="u-heading">
+          Alternativer når UU krever en knapp
+        </h2>
+        <InlineContainer key="buttons">
+          <Button link onClick={action('clicked')}>
+            Knapp stylet som link
+          </Button>{' '}
+          <p>
+            Ser{' '}
+            <Button stripped onClick={action('clicked')}>
+              dette
             </Button>{' '}
-            <p>
-              Ser{' '}
-              <Button stripped onClick={action('clicked')}>
-                dette
-              </Button>{' '}
-              ut som en knapp
-            </p>
-          </InlineContainer>,
-          <h2 key="alternative-link-heading" className="u-heading">
-            Alternativer når UU krever en link
-          </h2>,
-          <InlineContainer key="buttons-2">
-            <AnchorButton href="https://ndla.no" target="_blank" rel="noopener noreferrer">
-              Link stylet som knapp
-            </AnchorButton>{' '}
-            <AnchorButton
-              style={{ width: '250px' }}
-              appearance="outline"
-              href="https://ndla.no"
-              target="_blank"
-              rel="noopener noreferrer">
-              Link stylet som knapp
-            </AnchorButton>
-          </InlineContainer>,
-        ]}
+            ut som en knapp
+          </p>
+        </InlineContainer>
       </StoryBody>
     </div>
   );

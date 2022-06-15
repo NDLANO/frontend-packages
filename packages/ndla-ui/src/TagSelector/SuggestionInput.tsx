@@ -153,10 +153,9 @@ const SuggestionInput = ({
             }}
             onChange={onChange}
             onFocus={() => {
-              if (isMobile) {
-                scrollAnchorElement?.current?.scrollIntoView({
+              if (isMobile && scrollAnchorElement?.current) {
+                scrollAnchorElement.current.scrollIntoView({
                   behavior: 'smooth',
-                  block: 'start',
                 });
               }
               setHasFocus(true);

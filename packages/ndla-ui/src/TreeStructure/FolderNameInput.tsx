@@ -49,6 +49,7 @@ const StyledInput = styled.input`
   padding-left: ${spacing.xsmall};
   background: transparent;
   color: ${colors.text.primary};
+  scroll-margin-top: 100px;
 `;
 
 interface FolderNameInputProps {
@@ -62,7 +63,12 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inputRef.current && inputRef.current.select();
+    if (inputRef.current) {
+      inputRef.current.select();
+      if (!isMobile) {
+        inputRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }, []);
 
   return (
@@ -86,12 +92,6 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const target = e.target as HTMLInputElement;
             setValue(target.value);
-          }}
-          onFocus={() => {
-            // scroll to if on mobile device
-            if (isMobile) {
-              inputRef.current && inputRef.current.scrollIntoView({ behavior: 'smooth' });
-            }
           }}
         />
         {loading && <Spinner size="small" />}

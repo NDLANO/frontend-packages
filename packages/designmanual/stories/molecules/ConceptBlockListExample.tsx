@@ -6,7 +6,9 @@
  *
  */
 
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
+// @ts-ignore
+import { Remarkable } from 'remarkable';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, Figure } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
@@ -21,22 +23,28 @@ import NotionList from './NotionList';
 const { contentTypes } = constants;
 
 const ConceptBlockListExample = () => {
+  const markdown = useMemo(() => {
+    const md = new Remarkable({ breaks: true });
+    md.inline.ruler.enable(['sub', 'sup']);
+    md.block.ruler.disable(['list']);
+    return md;
+  }, []);
+
   useEffect(() => {
     initArticleScripts();
   }, []);
   return (
     <OneColumn cssModifier="narrow">
       <Article
-        //These props will display the messagebox in an article
-
         messages={{
           label: 'Fagstoff',
         }}
+        renderMarkdown={(text: string) => markdown.render(text)}
         article={{
           title: 'Artikkel fagstoff',
           introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
           published: '24.04.2018',
-          content: () => (
+          content: (
             <>
               <p>
                 En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet
@@ -75,6 +83,7 @@ const ConceptBlockListExample = () => {
               </p>
             </>
           ),
+          footNotes: [],
           copyright: {
             license: { license: 'CC-BY-SA-4.0' },
             creators: [

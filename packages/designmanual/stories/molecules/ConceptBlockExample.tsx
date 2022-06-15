@@ -6,8 +6,10 @@
  *
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants } from '@ndla/ui';
+// @ts-ignore
+import { Remarkable } from 'remarkable';
 
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
@@ -23,6 +25,13 @@ import NotionBlock from './NotionBlock';
 const { contentTypes } = constants;
 
 const ConceptBlockExample = () => {
+  const markdown = useMemo(() => {
+    const md = new Remarkable({ breaks: true });
+    md.inline.ruler.enable(['sub', 'sup']);
+    md.block.ruler.disable(['list']);
+    return md;
+  }, []);
+
   useEffect(() => {
     initArticleScripts();
   }, []);
@@ -30,8 +39,7 @@ const ConceptBlockExample = () => {
   return (
     <OneColumn cssModifier="narrow">
       <Article
-        //These props will display the messagebox in an article
-
+        renderMarkdown={(text: string) => markdown.render(text)}
         messages={{
           label: 'Fagstoff',
         }}
@@ -39,7 +47,7 @@ const ConceptBlockExample = () => {
           title: 'Artikkel fagstoff',
           introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
           published: '24.04.2018',
-          content: () => (
+          content: (
             <>
               <p>
                 En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet
@@ -73,15 +81,20 @@ const ConceptBlockExample = () => {
               </p>
             </>
           ),
-          footNotes: '',
+          footNotes: [],
           copyright: {
             license: { license: 'CC-BY-SA-4.0' },
-            creators: [{ name: 'Cecilie Isaksen Eftedal' }, { name: 'Siv Mundal' }, { name: 'Pål Frønsdal' }],
-            rightsholders: [{ name: 'Riksarkivet' }],
+            creators: [
+              { name: 'Cecilie Isaksen Eftedal', type: 'author' },
+              { name: 'Siv Mundal', type: 'author' },
+              { name: 'Pål Frønsdal', type: 'author' },
+            ],
+            rightsholders: [{ name: 'Riksarkivet', type: 'rightsholder' }],
+            processors: [],
           },
         }}
         licenseBox={<LicenseBox />}
-        competenceGoals={<CompetenceGoalListExample />}
+        competenceGoals={() => <CompetenceGoalListExample />}
         competenceGoalTypes={['LK20', 'LK06']}
         copyPageUrlLink={window.location.href}
         printUrl={window.location.href}
@@ -91,6 +104,7 @@ const ConceptBlockExample = () => {
         modifier={contentTypes.TASKS_AND_ACTIVITIES}
         notions={{
           list: [NotionExample],
+          related: [],
         }}
       />
     </OneColumn>

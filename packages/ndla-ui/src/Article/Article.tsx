@@ -102,7 +102,7 @@ type Props = {
   icon?: ReactNode;
   licenseBox?: ReactNode;
   modifier?: string;
-  children: ReactNode;
+  children?: ReactNode;
   messages: Messages;
   locale: Locale;
   messageBoxLinks?: [];

@@ -407,13 +407,13 @@ const messages = {
     openAll: 'Open all',
   },
   license: {
-    heading: 'Howto reuse content',
+    heading: 'How to reuse content',
     tabs: {
       text: 'Text',
       images: 'Images',
       audio: 'Audio',
       video: 'Video',
-      h5p: 'h5p',
+      h5p: 'H5P',
       files: 'Files',
       embedlink: 'Embedded link',
       other: 'Other content',
@@ -429,7 +429,7 @@ const messages = {
       rules: 'Rules for use of image:',
     },
     images: {
-      heading: 'How to use images from the article',
+      heading: 'How to reuse images',
       description: 'Remember to copy the text to be attached to the image where you use it.',
       rules: 'Rules for use of image:',
       itemImage: {
@@ -443,44 +443,50 @@ const messages = {
       title: 'Title',
     },
     text: {
-      heading: 'How to use text from the article',
+      heading: 'How to reuse the text',
       description: 'Remember to refer to the source when reusing text.',
       rules: 'Rules for use of text:',
       published: 'Published',
     },
     audio: {
-      heading: 'How to use audio files from the article',
+      heading: 'How to reuse audio files',
       description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
     },
     video: {
-      heading: 'How to use videos from the article',
+      heading: 'How to reuse videos',
       description: 'Remember to copy the text to be attached to the video where you use it.',
-      rules: 'Rules for use of audio file:',
+      rules: 'Rules for use of video files:',
       itemImage: {
         ariaLabel: 'Open video in new window',
       },
     },
     other: {
-      heading: 'How to use other content from the article',
+      heading: 'How to reuse other content',
       description: 'You will find guidelines for use of other content in the asset',
       itemImage: {
         ariaLabel: 'Open in new window',
       },
     },
     h5p: {
-      heading: 'How to use H5P content from the article',
+      heading: 'How to reuse H5P content',
       description: 'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5P:',
     },
     concept: {
-      heading: 'How to use concept content from the article',
+      heading: 'How to reuse concept content',
       description: 'You will find guidelines for use of concept content in the asset',
       rules: 'Rules for use of concept:',
       title: 'Title',
+      embedlink: {
+        heading: 'How to show the concept in other content',
+        description: 'This url shows the concept without menu and footer',
+        copyTitle: 'Copy embed link',
+        hasCopiedTitle: 'Embed link copied',
+      },
     },
     files: {
-      heading: 'How to use files from the article',
+      heading: 'How to reuse files',
       description: 'Remember to copy the text to be attached to the file where you use it.',
       rules: 'Rules for use of file:',
       itemImage: {
@@ -502,6 +508,11 @@ const messages = {
     },
     hasCopiedTitle: 'Copied!',
     download: 'Download',
+    title: 'Title',
+    originator: 'Originator',
+    rightsholder: 'Rightsholder',
+    source: 'Source',
+    published: 'Published',
   },
   errorMessage: {
     title: 'Oops, something went wrong',
@@ -532,8 +543,10 @@ const messages = {
       newsletterAria: 'Sign up for our Newsletter',
       youtube: 'NDLA on YouTube',
       youtubeAria: 'NDLA on YouTube',
-      twitter: 'NDLA on Twitter',
-      twitterAria: 'Follow NDLA on Twitter',
+      linkedin: 'NDLA on LinkedIn',
+      linkedinAria: 'Visit NDLA on LinkedIn',
+      instagram: 'NDLA on Instagram',
+      instagramAria: 'Visit NDLA on Instagram',
       sharePage: 'Share this page',
       sharePageAria: 'Share this page',
     },
@@ -596,6 +609,10 @@ const messages = {
     search: {
       placeholder: 'Search',
     },
+    embedlink: {
+      copyTitle: 'Copy embed code',
+      hasCopiedTitle: 'Embed code copied',
+    },
     filters: {
       subject: {
         useFilter: 'Use filter',
@@ -612,6 +629,7 @@ const messages = {
         openFilter: 'Filter',
         closeFilter: 'Close filter',
         heading: 'Filter',
+        filteredBy: 'Filtered by',
       },
       alphabet: {
         letterFilter: 'Filter content by the letter {{letter}}.',
@@ -767,6 +785,14 @@ const messages = {
   createdBy: {
     content: 'The resource',
     text: 'is retrieved from',
+    concept: {
+      content: 'The concept',
+      text: 'is created by',
+    },
+    listing: {
+      content: 'The list',
+      text: 'is created by',
+    },
   },
   fagfornyelse: {
     frontpage: {
@@ -799,7 +825,7 @@ const messages = {
   frontpageMenu: {
     program: 'Education programme',
     allsubjects: 'All subjects',
-    cursorText: 'Have a look at some new learning resources from our revised subjects!',
+    cursorText: 'Have a look at some new learning resources from our new subjects!',
   },
   navigation: {
     showLongerDescription: 'Show topic description',
@@ -938,6 +964,21 @@ const messages = {
     newFolder: 'New folder',
     myAccount: 'My account',
     favourites: 'Favourites',
+    help: 'Help',
+  },
+  labels: {
+    category: 'Category',
+    subject: 'Subject',
+    other: 'Other',
+  },
+  listingPage: {
+    or: 'or',
+    noFilters: 'Have nothing to filter',
+    loadMore: 'Load more',
+  },
+  siteNav: {
+    search: 'Search',
+    contact: 'Contact',
     help: 'Help',
   },
 };

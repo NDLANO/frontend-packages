@@ -36,6 +36,24 @@ export const mockExplanationService = {
       tags: ['Naturbruk Vg1'],
     },
     {
+      name: 'forvitring',
+      description:
+        'Ordet forvitring kommer fra det tyske ordet «Wetter», som betyr vær. På engelsk heter forvitring «weathering».',
+      longDescription:
+        'Ordet forvitring kommer fra det tyske ordet «Wetter», som betyr vær. På engelsk heter forvitring «weathering». Forvitring er nedbryting av bergarter på grunn av vær, vann, vind og temperatur. Når fjell forvitrer, blir det dannet sandpartikler, som fraktes bort med regn, vind og elver.',
+      image: 'https://api.ndla.no/image-api/raw/0Ji8GO0Z.jpg',
+      id: '55',
+      category: [
+        {
+          title: 'Geologi',
+          value: 'geologi',
+        },
+      ],
+      authors: ['Sissel Paaske'],
+      license: 'by-nc-nd',
+      tags: ['Brønnfag'],
+    },
+    {
       name: 'And',
       description:
         'Ender tilhører andefamilien. I Norge har det vært vanlig å dele endene inn i tre grupper etter levevis: Gressender som spiser planter på grunt vann, dykkender som dykker etter virvelløse dyr, og fiskeender som spiser fisk.',

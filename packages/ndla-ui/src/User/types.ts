@@ -12,6 +12,7 @@ type OrgType =
   | 'primary_and_lower_secondary_owner'
   | 'upper_secondary'
   | 'upper_secondary_owner';
+
 type AffiliationType = 'student' | 'faculty' | 'staff' | 'affiliate' | 'employee';
 
 export interface FeideMembershipType {
@@ -22,14 +23,33 @@ export interface FeideMembershipType {
   displayName?: string;
 }
 
-export interface FeideGroupType {
+export interface FeideBaseGroup {
   id: string;
   displayName: string;
-  eduOrgLegalName: string;
   membership: FeideMembershipType;
+  type: 'fc:gogroup' | 'fc:org';
+}
+
+export interface GoGroup extends FeideBaseGroup {
+  type: 'fc:gogroup';
+  notBefore: string;
+  notAfter: string;
+  go_type: 'b' | 'u' | 'a';
+  parent: string;
+  go_type_displayName: string;
+}
+
+export type GoGroupType = 'basic' | 'teaching' | 'other';
+
+export interface FeideGroupType extends FeideBaseGroup {
+  type: 'fc:org';
+  eduOrgLegalName: string;
   orgType: OrgType[];
   parent?: string;
+  groups: Record<GoGroupType, GoGroup[]>;
 }
+
+export type FeideGroup = GoGroup | FeideGroupType;
 
 export interface FeideUser {
   uid: string;
@@ -39,6 +59,6 @@ export interface FeideUser {
 }
 
 export interface FeideUserWithGroups extends FeideUser {
-  groups: FeideGroupType[];
+  groups: FeideGroup[];
   primarySchool?: FeideGroupType;
 }

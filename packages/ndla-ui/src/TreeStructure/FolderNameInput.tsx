@@ -13,6 +13,7 @@ import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
 import { Spinner } from '@ndla/editor';
 import { spacing, colors, misc, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
+import { isMobile } from 'react-device-detect';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};
@@ -40,7 +41,9 @@ const InputWrapper = styled.div<{ loading?: boolean }>`
   color: ${colors.brand.primary};
 `;
 
-const StyledInput = styled.input`
+// enterKeyHint is missing in is-prop-valid
+// more info: https://issuemode.com/issues/emotion-js/emotion/11306450
+const StyledInput = styled.input<{ enterKeyHint?: string }>`
   flex-grow: 1;
   border: 0;
   outline: none;
@@ -85,6 +88,13 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const target = e.target as HTMLInputElement;
             setValue(target.value);
+          }}
+          enterKeyHint="Lag mappe"
+          onFocus={() => {
+            // scroll to if on mobile device
+            if (isMobile) {
+              inputRef.current && inputRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
           }}
         />
         {loading && <Spinner size="small" />}

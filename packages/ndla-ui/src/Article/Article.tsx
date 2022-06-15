@@ -136,8 +136,6 @@ type Props = {
   accessMessage?: string;
   isFavorite?: boolean;
   onToggleAddToFavorites: (id: string, add: boolean) => void;
-  addToFavoritesLabel: string;
-  removeFromFavoritesLabel: string;
   hideAddToFavoriteButton?: boolean;
 };
 
@@ -171,8 +169,6 @@ export const Article = ({
   accessMessage,
   onToggleAddToFavorites,
   isFavorite,
-  removeFromFavoritesLabel,
-  addToFavoritesLabel,
   hideAddToFavoriteButton,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
@@ -229,8 +225,6 @@ export const Article = ({
                   articleId={id}
                   isFavorite={isFavorite}
                   onToggleAddToFavorites={onToggleAddToFavorites}
-                  removeFromFavoritesLabel={removeFromFavoritesLabel}
-                  addToFavoritesLabel={addToFavoritesLabel}
                 />
               </ArticleFavoritesButtonWrapper>
             )}

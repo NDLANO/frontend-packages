@@ -10,34 +10,32 @@ import React from 'react';
 import { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Tooltip from '@ndla/tooltip';
+import { useTranslation } from 'react-i18next';
 
 export interface Props {
   isFavorite?: boolean;
   onToggleAddToFavorites: (id: string, add: boolean) => void;
-  addToFavoritesLabel: string;
-  removeFromFavoritesLabel: string;
   articleId: string;
 }
 
-export const ArticleFavoritesButton = ({
-  isFavorite,
-  onToggleAddToFavorites,
-  articleId,
-  removeFromFavoritesLabel,
-  addToFavoritesLabel,
-}: Props) => (
-  <Tooltip tooltip={isFavorite ? removeFromFavoritesLabel : addToFavoritesLabel}>
-    <IconButtonDualStates
-      ariaLabelActive={addToFavoritesLabel}
-      ariaLabelInActive={removeFromFavoritesLabel}
-      activeIcon={<Heart />}
-      inactiveIcon={<HeartOutline />}
-      active={!!isFavorite}
-      size="small"
-      ghostPill
-      onClick={() => onToggleAddToFavorites(articleId, !isFavorite)}
-    />
-  </Tooltip>
-);
+export const ArticleFavoritesButton = ({ isFavorite, onToggleAddToFavorites, articleId }: Props) => {
+  const { t } = useTranslation();
+  const removeFromFavoritesLabel = t('myNdla.resource.addToMyNdla');
+  const addToFavoritesLabel = t('myNdla.resource.removeFromMyNdla');
+  return (
+    <Tooltip tooltip={isFavorite ? removeFromFavoritesLabel : addToFavoritesLabel}>
+      <IconButtonDualStates
+        ariaLabelActive={addToFavoritesLabel}
+        ariaLabelInActive={removeFromFavoritesLabel}
+        activeIcon={<Heart />}
+        inactiveIcon={<HeartOutline />}
+        active={!!isFavorite}
+        size="small"
+        ghostPill
+        onClick={() => onToggleAddToFavorites(articleId, !isFavorite)}
+      />
+    </Tooltip>
+  );
+};
 
 export default ArticleFavoritesButton;

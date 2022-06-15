@@ -230,8 +230,6 @@ type Props = {
   access?: 'teacher';
   isFavorite?: boolean;
   onToggleAddToFavorites: (id: string, add: boolean) => void;
-  addToFavoritesLabel: string;
-  removeFromFavoritesLabel: string;
   hideAddToFavoriteButton?: boolean;
 };
 
@@ -248,8 +246,6 @@ const ResourceItem = ({
   showAdditionalResources,
   access,
   onToggleAddToFavorites,
-  addToFavoritesLabel,
-  removeFromFavoritesLabel,
   isFavorite,
   hideAddToFavoriteButton,
 }: Props & Resource) => {
@@ -309,8 +305,6 @@ const ResourceItem = ({
           <ArticleFavoritesButton
             isFavorite={isFavorite}
             articleId={id}
-            removeFromFavoritesLabel={removeFromFavoritesLabel}
-            addToFavoritesLabel={addToFavoritesLabel}
             onToggleAddToFavorites={() => onToggleAddToFavorites(id, true)}
           />
         )}

@@ -594,6 +594,12 @@ const ButtonExample = () => {
             <Print />
           </IconButton>{' '}
         </InlineContainer>
+        <h2 className="u-heading">Meny-knapp</h2>,
+        <InlineContainer>
+          {menuButtonSizes.map((size) => (
+            <MenuButton key={size} size={size} menuItems={menuItems} />
+          ))}
+        </InlineContainer>
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">
             Alternativer når UU krever en knapp
@@ -625,14 +631,6 @@ const ButtonExample = () => {
               rel="noopener noreferrer">
               Link stylet som knapp
             </AnchorButton>
-          </InlineContainer>,
-          <h2 key="MenuButton" className="u-heading">
-            Meny-knapp
-          </h2>,
-          <InlineContainer>
-            {menuButtonSizes.map((size) => (
-              <MenuButton key={size} size={size} menuItems={menuItems} />
-            ))}
           </InlineContainer>,
         ]}
       </StoryBody>

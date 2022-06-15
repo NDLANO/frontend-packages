@@ -950,6 +950,10 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Short view',
     myPage: 'My page',
+    resource: {
+      addToMyNdla: 'Add to My NDLA',
+      removeFromMyNdla: 'Added to My NDLA',
+    },
   },
   snackbar: {
     close: 'Close notification',

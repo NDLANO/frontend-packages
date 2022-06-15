@@ -14,10 +14,12 @@ import styled from '@emotion/styled';
 
 import { useIntersectionObserver } from '@ndla/hooks';
 import { resizeObserver } from '@ndla/util';
+import { spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
+import ArticleFavoritesButton from './ArticleFavoritesButton';
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
@@ -97,6 +99,22 @@ const MSGboxWrapper = styled.div`
   margin-bottom: 50px;
 `;
 
+const ArticleFavoritesButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  transform: translate(${spacing.xsmall}, -${spacing.normal});
+  height: 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    transform: translate(${spacing.normal}, -${spacing.medium});
+  }
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    transform: translate(${spacing.large}, -${spacing.medium});
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    transform: translate(${spacingUnit * 5.5}px, -${spacing.medium});
+  }
+`;
+
 type Props = {
   article: ArticleType;
   icon?: ReactNode;
@@ -116,6 +134,9 @@ type Props = {
   printUrl?: string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
+  isFavorite?: boolean;
+  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  hideAddToFavoriteButton?: boolean;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -146,6 +167,9 @@ export const Article = ({
   printUrl,
   renderMarkdown,
   accessMessage,
+  onToggleAddToFavorites,
+  isFavorite,
+  hideAddToFavoriteButton,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -195,6 +219,15 @@ export const Article = ({
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
+            {!hideAddToFavoriteButton && (
+              <ArticleFavoritesButtonWrapper>
+                <ArticleFavoritesButton
+                  articleId={id}
+                  isFavorite={isFavorite}
+                  onToggleAddToFavorites={onToggleAddToFavorites}
+                />
+              </ArticleFavoritesButtonWrapper>
+            )}
             <ArticleTitle icon={icon} label={messages.label}>
               {title}
             </ArticleTitle>

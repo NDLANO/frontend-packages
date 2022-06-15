@@ -948,6 +948,10 @@ const messages = {
     detailView: 'Detaljrik listevisning',
     shortView: 'Kort visning',
     myPage: 'Min side',
+    resource: {
+      addToMyNdla: 'Legg i Min NDLA',
+      removeFromMyNdla: 'Lagt i Min NDLA',
+    },
   },
   snackbar: {
     close: 'Lukk melding',

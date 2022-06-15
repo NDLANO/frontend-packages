@@ -25,7 +25,7 @@ type ResourceTypes = {
 };
 
 export type Resource = {
-  id: string | number;
+  id: string;
   name: string;
   contentUri?: string;
   path: string;

@@ -20,9 +20,13 @@ import NotionExample from '../molecules/NotionExample';
 
 const { contentTypes } = constants;
 
-const ArticleSourceMaterial = () => (
+const ArticleSourceMaterial = ({ addToFavoritesLabel, removeFromFavoritesLabel, onAddToFavorites, isFavorite }) => (
   <OneColumn>
     <Article
+      addToFavoritesLabel={addToFavoritesLabel}
+      removeFromFavoritesLabel={removeFromFavoritesLabel}
+      onAddToFavorites={onAddToFavorites}
+      isFavorite={isFavorite}
       article={{
         title: 'Artikkel kildemateriale',
         introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',

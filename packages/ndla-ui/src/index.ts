@@ -22,6 +22,7 @@ export {
   ArticleHeaderWrapper,
   ArticleSideBar,
   default as Article,
+  ArticleFavoritesButton,
 } from './Article';
 
 export { default as Table } from './Table';

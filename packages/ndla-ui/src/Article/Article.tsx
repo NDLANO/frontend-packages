@@ -102,13 +102,13 @@ const MSGboxWrapper = styled.div`
 const ArticleFavoritesButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  transform: translate(${spacing.xsmall});
+  transform: translate(${spacing.xsmall}, -${spacing.normal});
   height: 0;
   ${mq.range({ from: breakpoints.tablet })} {
-    transform: translate(${spacing.normal});
+    transform: translate(${spacing.normal}, -${spacing.medium});
   }
   ${mq.range({ from: breakpoints.tabletWide })} {
-    transform: translate(${spacing.large});
+    transform: translate(${spacing.large}, -${spacing.medium});
   }
   ${mq.range({ from: breakpoints.desktop })} {
     transform: translate(${spacingUnit * 5.5}px, -${spacing.medium});

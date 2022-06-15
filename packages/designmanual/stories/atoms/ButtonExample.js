@@ -603,7 +603,6 @@ const ButtonExample = () => {
         <h2 key="alternative-link-heading" className="u-heading">
           Alternativer når UU krever en link
         </h2>
-        ,
         <InlineContainer key="buttons-2">
           <AnchorButton href="https://ndla.no" target="_blank" rel="noopener noreferrer">
             Link stylet som knapp
@@ -617,7 +616,6 @@ const ButtonExample = () => {
             Link stylet som knapp
           </AnchorButton>
         </InlineContainer>
-        ,
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">
             Alternativer når UU krever en knapp

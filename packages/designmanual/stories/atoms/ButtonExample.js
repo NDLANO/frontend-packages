@@ -600,6 +600,24 @@ const ButtonExample = () => {
             <MenuButton key={size} size={size} menuItems={menuItems} />
           ))}
         </InlineContainer>
+        <h2 key="alternative-link-heading" className="u-heading">
+          Alternativer når UU krever en link
+        </h2>
+        ,
+        <InlineContainer key="buttons-2">
+          <AnchorButton href="https://ndla.no" target="_blank" rel="noopener noreferrer">
+            Link stylet som knapp
+          </AnchorButton>{' '}
+          <AnchorButton
+            style={{ width: '250px' }}
+            appearance="outline"
+            href="https://ndla.no"
+            target="_blank"
+            rel="noopener noreferrer">
+            Link stylet som knapp
+          </AnchorButton>
+        </InlineContainer>
+        ,
         {process.env.NODE_ENV === 'development' && [
           <h2 key="alternative-button-heading" className="u-heading">
             Alternativer når UU krever en knapp
@@ -615,22 +633,6 @@ const ButtonExample = () => {
               </Button>{' '}
               ut som en knapp
             </p>
-          </InlineContainer>,
-          <h2 key="alternative-link-heading" className="u-heading">
-            Alternativer når UU krever en link
-          </h2>,
-          <InlineContainer key="buttons-2">
-            <AnchorButton href="https://ndla.no" target="_blank" rel="noopener noreferrer">
-              Link stylet som knapp
-            </AnchorButton>{' '}
-            <AnchorButton
-              style={{ width: '250px' }}
-              appearance="outline"
-              href="https://ndla.no"
-              target="_blank"
-              rel="noopener noreferrer">
-              Link stylet som knapp
-            </AnchorButton>
           </InlineContainer>,
         ]}
       </StoryBody>

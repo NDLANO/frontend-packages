@@ -89,7 +89,7 @@ export const MenuButton = ({ menuItems, size }: MenuButtonProps) => {
         {menuItems?.map(({ color, text, icon, onClick }) => {
           return (
             <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
-              <span> {icon}</span>
+              <span>{icon}</span>
               <span>{text}</span>
             </StyledMenuItem>
           );

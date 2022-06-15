@@ -46,6 +46,7 @@ const TreeStructure = ({
   const [keyNavigationId, setKeyNavigationId] = useState<{ id: string } | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0].id);
   const treestructureRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const prevDataValue = useRef<string[]>(getDefaultOpenFolders(data));
   const rootLevelId = uuid(); // TODO: use useId hook when we update to React 18
 
@@ -157,7 +158,7 @@ const TreeStructure = ({
     <div
       ref={treestructureRef}
       onKeyDown={(e) => {
-        if (KEYBOARD_KEYS_OF_INTEREST.includes(e.key)) {
+        if (wrapperRef.current?.contains(document.activeElement) && KEYBOARD_KEYS_OF_INTEREST.includes(e.key)) {
           keyboardNavigation({
             e,
             data,
@@ -169,7 +170,7 @@ const TreeStructure = ({
         }
       }}>
       <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>
-      <TreeStructureStyledWrapper id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
+      <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
           idPaths={[]}
           data={data}

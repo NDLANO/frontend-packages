@@ -28,9 +28,9 @@ interface Props {
   inline?: boolean;
 }
 
-const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
+const sortedTags = (tags: TagProp[], selectedTags: string[]): TagProp[] =>
   tags
-    .filter(({ id }) => selectedTags.some((idSelected) => (idSelected === id) === selected))
+    .filter(({ id }) => selectedTags.some((idSelected) => idSelected === id))
     .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 
 const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
@@ -91,7 +91,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         onCreateTag={onCreateTag}
         onToggleTag={onToggleTag}
         setInputValue={setInputValue}
-        addedTags={sortedTags(tags, tagsSelected, true)}
+        addedTags={sortedTags(tags, tagsSelected)}
         expanded={expanded}
         setExpanded={setExpanded}
         dropdownMaxHeight={dropdownMaxHeight}

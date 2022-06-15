@@ -6,7 +6,7 @@ import { Heart, Pencil, Print } from '@ndla/icons/action';
 import { Folder, Star, Link } from '@ndla/icons/editor';
 
 import { CloseButton, MenuButton } from '@ndla/button';
-import { InlineContainer } from '../helpers';
+import { InlineContainer, GapHelper } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
 
@@ -476,129 +476,75 @@ const ButtonExample = () => {
         </InlineContainer>
         <h2 className="u-heading">Ikon knapper</h2>
         <InlineContainer>
-          <IconButton size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <ChevronDown />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <InlineContainer>
-          <IconButton outline size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Heart />
-          </IconButton>{' '}
-          <IconButton outline size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Heart />
-          </IconButton>{' '}
-          <IconButton outline size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Heart />
-          </IconButton>{' '}
-          <IconButton outline size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Heart />
-          </IconButton>{' '}
-          <IconButton outline size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Heart />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} outline size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <Heart />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <InlineContainer>
-          <IconButton light size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton light size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton light size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton light size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
-          <IconButton light size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <ChevronDown />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} light size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <ChevronDown />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <InlineContainer>
-          <IconButton lighter size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Wrench />
-          </IconButton>{' '}
-          <IconButton lighter size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Wrench />
-          </IconButton>{' '}
-          <IconButton lighter size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Wrench />
-          </IconButton>{' '}
-          <IconButton lighter size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Wrench />
-          </IconButton>{' '}
-          <IconButton lighter size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Wrench />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} lighter size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <Wrench />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <InlineContainer>
-          <IconButton greyLighter size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Star />
-          </IconButton>{' '}
-          <IconButton greyLighter size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Star />
-          </IconButton>{' '}
-          <IconButton greyLighter size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Star />
-          </IconButton>{' '}
-          <IconButton greyLighter size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Star />
-          </IconButton>{' '}
-          <IconButton greyLighter size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Star />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} greyLighter size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <Star />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <InlineContainer>
-          <IconButton greyLightest size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Pencil />
-          </IconButton>{' '}
-          <IconButton greyLightest size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Pencil />
-          </IconButton>{' '}
-          <IconButton greyLightest size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Pencil />
-          </IconButton>{' '}
-          <IconButton greyLightest size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Pencil />
-          </IconButton>{' '}
-          <IconButton greyLightest size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Pencil />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} greyLightest size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <Pencil />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <InlineContainer>
-          <IconButton ghostPill size="xsmall" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Print />
-          </IconButton>{' '}
-          <IconButton ghostPill size="small" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Print />
-          </IconButton>{' '}
-          <IconButton ghostPill size="normal" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Print />
-          </IconButton>{' '}
-          <IconButton ghostPill size="medium" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Print />
-          </IconButton>{' '}
-          <IconButton ghostPill size="large" aria-label="Eksempel knapp" onClick={action('clicked')}>
-            <Print />
-          </IconButton>{' '}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <IconButton key={size} ghostPill size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
+                <Print />
+              </IconButton>
+            ))}
+          </GapHelper>
         </InlineContainer>
         <h2 className="u-heading">Meny-knapp</h2>
         <InlineContainer>
-          {menuButtonSizes.map((size) => (
-            <MenuButton key={size} size={size} menuItems={menuItems} />
-          ))}
+          <GapHelper>
+            {menuButtonSizes.map((size) => (
+              <MenuButton key={size} size={size} menuItems={menuItems} />
+            ))}
+          </GapHelper>
         </InlineContainer>
         <h2 key="alternative-link-heading" className="u-heading">
           Alternativer når UU krever en link

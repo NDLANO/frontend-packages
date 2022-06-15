@@ -56,7 +56,6 @@ const WrapperForButtons = styled.div`
 `;
 
 interface StyledProps {
-  type?: 'success' | 'error' | 'info';
   expired?: boolean;
 }
 
@@ -123,12 +122,11 @@ const StyledNotification = styled.div<StyledProps>`
 `;
 
 export interface SnackBarItemProp {
-  type?: 'success' | 'error' | 'info';
   children?: ReactElement;
   snackbarItemId?: string;
 }
 
-export interface SnackBarProps extends SnackBarItemProp {
+interface SnackBarProps extends SnackBarItemProp {
   id: string;
   onKill?: (id: string | undefined) => void;
   actionButtons?: {

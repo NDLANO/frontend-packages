@@ -14,45 +14,56 @@ import React from 'react';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
 
-const StyledHeaderSafeLink = styled(SafeLink)`
+interface ThemeProps {
+  light: boolean | undefined;
+}
+
+const StyledHeaderSafeLink = styled(SafeLink)<ThemeProps>`
   ${fonts.sizes(14)};
   font-weight: ${fonts.weight.bold};
-  color: ${colors.brand.primary};
+  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
 `;
 
-const StyledBlueRightChevron = styled(ChevronRight)`
-  color: ${colors.brand.primary};
+const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
+  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
   margin: ${spacing.xxsmall};
 `;
-const StyledBlueSpan = styled.span`
-  color: ${colors.brand.primary};
+const StyledSpan = styled.span<ThemeProps>`
+  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
 `;
-const StyledBlueSafeLink = styled(SafeLink)`
-  color: ${colors.brand.primary};
+const StyledSafeLink = styled(SafeLink)<ThemeProps>`
+  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
 `;
 
 interface Props {
   items: SimpleBreadcrumbItem[];
+  light?: boolean;
 }
 
-const HeaderBreadcrumb = ({ items }: Props) => {
+const HeaderBreadcrumb = ({ items, light }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
-      return <StyledBlueSpan>{item.name}</StyledBlueSpan>;
+      return <StyledSpan light={light}>{item.name}</StyledSpan>;
     }
-    return <StyledBlueSafeLink to={item.to}>{item.name}</StyledBlueSafeLink>;
+    return (
+      <StyledSafeLink light={light} to={item.to}>
+        {item.name}
+      </StyledSafeLink>
+    );
   };
 
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return null;
     }
-    return <StyledBlueRightChevron />;
+    return <StyledRightChevron light={light} />;
   };
 
   return (
     <div>
-      <StyledHeaderSafeLink to={items[0]?.to}>{items[0]?.name}</StyledHeaderSafeLink>
+      <StyledHeaderSafeLink light={light} to={items[0]?.to}>
+        {items[0]?.name}
+      </StyledHeaderSafeLink>
       <Breadcrumb
         items={items.slice(1)}
         renderItem={renderItem}

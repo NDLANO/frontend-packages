@@ -18,21 +18,19 @@ interface ThemeProps {
   light: boolean | undefined;
 }
 
-const StyledHeaderSafeLink = styled(SafeLink)<ThemeProps>`
-  ${fonts.sizes(14)};
-  font-weight: ${fonts.weight.bold};
+const HeaderBreadcrumbWrapper = styled.div<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
 `;
 
-const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
+const StyledHeaderSafeLink = styled(SafeLink)`
+  ${fonts.sizes(14)};
+  font-weight: ${fonts.weight.bold};
+  color: inherit;
+`;
+
+const StyledRightChevron = styled(ChevronRight)`
   margin: ${spacing.xxsmall};
-`;
-const StyledSpan = styled.span<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
-`;
-const StyledSafeLink = styled(SafeLink)<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.brand.primary)};
+  color: inherit;
 `;
 
 interface Props {
@@ -41,37 +39,18 @@ interface Props {
 }
 
 const HeaderBreadcrumb = ({ items, light }: Props) => {
-  const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
-    if (item.index === totalCount - 1) {
-      return <StyledSpan light={light}>{item.name}</StyledSpan>;
-    }
-    return (
-      <StyledSafeLink light={light} to={item.to}>
-        {item.name}
-      </StyledSafeLink>
-    );
-  };
-
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return null;
     }
-    return <StyledRightChevron light={light} />;
+    return <StyledRightChevron />;
   };
 
   return (
-    <div>
-      <StyledHeaderSafeLink light={light} to={items[0]?.to}>
-        {items[0]?.name}
-      </StyledHeaderSafeLink>
-      <Breadcrumb
-        items={items.slice(1)}
-        renderItem={renderItem}
-        renderSeparator={renderSeparator}
-        autoCollapse
-        collapseFirst
-      />
-    </div>
+    <HeaderBreadcrumbWrapper light={light}>
+      <StyledHeaderSafeLink to={items[0]?.to}>{items[0]?.name}</StyledHeaderSafeLink>
+      <Breadcrumb items={items.slice(1)} renderSeparator={renderSeparator} autoCollapse collapseFirst />
+    </HeaderBreadcrumbWrapper>
   );
 };
 

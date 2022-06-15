@@ -10,7 +10,7 @@ import { FolderStructureProps, SetKeyNavigationId } from '../TreeStructure.types
 import { KeyboardNavigationProps, ElementWithKeyFocusProps } from './keyboardNavigation.types';
 import { MAX_LEVEL_FOR_FOLDERS } from '../TreeStructure';
 
-export const KEYBOARD_KEYS_OF_INTEREST = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'];
+export const KEYBOARD_KEYS_OF_INTEREST = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft', ' '];
 
 // Traverse upwards, incase parent is last element of its parent..
 const traverseUpwards = (
@@ -60,7 +60,7 @@ const keyboardNavigation = ({
     parent: FolderStructureProps[],
     parentId?: string,
   ): boolean =>
-    data.some(({ data: childData, id: dataId }, _index) => {
+    data.some(({ data: childData, id: dataId, url }, _index) => {
       if (dataId === id) {
         elementWithKeyFocus.paths = paths;
         elementWithKeyFocus.index = _index;
@@ -68,18 +68,30 @@ const keyboardNavigation = ({
         elementWithKeyFocus.data = childData;
         elementWithKeyFocus.parent = parent;
         elementWithKeyFocus.parentId = parentId;
+        elementWithKeyFocus.url = url;
         return true;
       }
       return childData ? updatePathToElementWithKeyFocus(childData, [...paths, _index], [...childData], dataId) : false;
     });
   if (!updatePathToElementWithKeyFocus(data, [], data)) {
-    // Could find its location in the tree.
+    // Couldn't find its location in the tree.
     // This should not happen, reset its value to root.
     setKeyNavigationId(e.key === 'ArrowDown' ? { id: data[0].id } : undefined);
     return;
   }
   e.preventDefault();
   e.stopPropagation();
+
+  if (e.key === ' ') {
+    const simulatedEvent = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    });
+    document.activeElement && document.activeElement.dispatchEvent(simulatedEvent);
+    return;
+  }
+
   const direction = e.key === 'ArrowUp' ? -1 : 1;
   // on up or down key press we want to move focus to the next folder
   if (e.key === 'ArrowRight') {

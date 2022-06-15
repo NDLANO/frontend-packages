@@ -24,4 +24,5 @@ export interface ElementWithKeyFocusProps {
   parent?: FolderStructureProps[];
   parentId?: string;
   isOpen?: boolean;
+  url?: string;
 }

@@ -75,7 +75,6 @@ interface MenuItemProps {
   color?: string;
 }
 interface MenuButtonProps extends ButtonProps {
-  svgSize: StyledButtonProps;
   menuItems?: MenuItemProps[];
 }
 export const MenuButton = ({ menuItems, size }: MenuButtonProps) => {

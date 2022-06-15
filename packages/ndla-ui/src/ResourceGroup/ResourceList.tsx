@@ -76,8 +76,8 @@ const ResourceList = ({
             key={id}
             contentType={contentType}
             showAdditionalResources={showAdditionalResources}
-            addToFavoritesLabel={t('myNdla.resource.addToFavorite')}
-            removeFromFavoritesLabel={t('myNdla.resource.removeFromFavorite')}
+            addToFavoritesLabel={t('myNdla.resource.addToMyNdla')}
+            removeFromFavoritesLabel={t('myNdla.resource.removeFromMyNdla')}
             hideAddToFavoriteButton={hideAddToFavoriteButton}
             onToggleAddToFavorites={onToggleAddToFavorites}
             {...resource}

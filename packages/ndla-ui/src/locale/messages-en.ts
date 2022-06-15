@@ -951,8 +951,8 @@ const messages = {
     shortView: 'Short view',
     myPage: 'My page',
     resource: {
-      addToFavorite: 'Add to My NDLA',
-      removeFromFavorite: 'Added to My NDLA',
+      addToMyNdla: 'Add to My NDLA',
+      removeFromMyNdla: 'Added to My NDLA',
     },
   },
 };

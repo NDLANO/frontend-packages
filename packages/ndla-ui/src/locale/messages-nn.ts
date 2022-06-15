@@ -950,8 +950,8 @@ const messages = {
     shortView: 'Kort visning',
     myPage: 'Min side',
     resource: {
-      addToFavorite: 'Legg i Min NDLA',
-      removeFromFavorite: 'Lagt i Min NDLA',
+      addToMyNdla: 'Legg i Min NDLA',
+      removeFromMyNdla: 'Lagt i Min NDLA',
     },
   },
 };

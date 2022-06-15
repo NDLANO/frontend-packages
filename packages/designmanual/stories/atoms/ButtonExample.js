@@ -616,23 +616,21 @@ const ButtonExample = () => {
             Link stylet som knapp
           </AnchorButton>
         </InlineContainer>
-        {process.env.NODE_ENV === 'development' && [
-          <h2 key="alternative-button-heading" className="u-heading">
-            Alternativer når UU krever en knapp
-          </h2>,
-          <InlineContainer key="buttons">
-            <Button link onClick={action('clicked')}>
-              Knapp stylet som link
+        <h2 key="alternative-button-heading" className="u-heading">
+          Alternativer når UU krever en knapp
+        </h2>
+        <InlineContainer key="buttons">
+          <Button link onClick={action('clicked')}>
+            Knapp stylet som link
+          </Button>{' '}
+          <p>
+            Ser{' '}
+            <Button stripped onClick={action('clicked')}>
+              dette
             </Button>{' '}
-            <p>
-              Ser{' '}
-              <Button stripped onClick={action('clicked')}>
-                dette
-              </Button>{' '}
-              ut som en knapp
-            </p>
-          </InlineContainer>,
-        ]}
+            ut som en knapp
+          </p>
+        </InlineContainer>
       </StoryBody>
     </div>
   );

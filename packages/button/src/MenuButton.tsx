@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
-import { colors, spacingUnit, spacing } from '@ndla/core';
+import { colors, spacingUnit, spacing, shadows } from '@ndla/core';
 import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
@@ -47,7 +47,7 @@ const StyledMenuList = styled(MenuList)`
   background-color: white;
   padding: ${spacing.small};
   border-radius: 4px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1), 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: ${shadows.levitate1}; ;
 `;
 
 const StyledMenuItem = styled(MenuItem)`
@@ -86,14 +86,12 @@ export const MenuButton = ({ menuItems, size }: MenuButtonProps) => {
         <HorizontalMenu />
       </StyledMenuButton>
       <StyledMenuList>
-        {menuItems?.map(({ color, text, icon, onClick }) => {
-          return (
-            <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
-              <span>{icon}</span>
-              <span>{text}</span>
-            </StyledMenuItem>
-          );
-        })}
+        {menuItems?.map(({ color, text, icon, onClick }) => (
+          <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
+            <span>{icon}</span>
+            <span>{text}</span>
+          </StyledMenuItem>
+        ))}
       </StyledMenuList>
     </Menu>
   );

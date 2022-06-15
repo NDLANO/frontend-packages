@@ -594,7 +594,7 @@ const ButtonExample = () => {
             <Print />
           </IconButton>{' '}
         </InlineContainer>
-        <h2 className="u-heading">Meny-knapp</h2>,
+        <h2 className="u-heading">Meny-knapp</h2>
         <InlineContainer>
           {menuButtonSizes.map((size) => (
             <MenuButton key={size} size={size} menuItems={menuItems} />

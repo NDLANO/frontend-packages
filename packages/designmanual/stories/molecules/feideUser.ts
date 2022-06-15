@@ -6,7 +6,9 @@
  *
  */
 
-export const feideUser = {
+import { FeideUserResponse } from '@ndla/ui';
+
+export const feideUserLaerer: FeideUserResponse = {
   cn: ['David LærerVGS Jonsen'],
   displayName: 'David LærerVGS Jonsen',
   eduPersonAffiliation: ['member', 'employee', 'faculty'],
@@ -152,5 +154,52 @@ export const feideUser = {
       primarySchool: true,
     },
     orgType: ['primary_and_lower_secondary'],
+  },
+};
+
+export const feideUserForeleser: FeideUserResponse = {
+  cn: ['Frank Foreleser Føllesen'],
+  displayName: 'Frank Foreleser Føllesen',
+  eduPersonAffiliation: ['member', 'employee', 'faculty'],
+  eduPersonPrimaryAffiliation: 'employee',
+  eduPersonPrincipalName: 'frank_foreleser@spusers.feide.no',
+  givenName: ['Frank Foreleser'],
+  mail: ['noreply@feide.no'],
+  schacHomeOrganization: 'spusers.feide.no',
+  sn: ['Føllesen'],
+  uid: ['frank_foreleser'],
+  groups: [
+    {
+      id: 'fc:org:spusers.feide.no',
+      displayName: 'Univsersitetet i Rogn',
+      type: 'fc:org',
+      public: false,
+      membership: {
+        basic: 'admin',
+        affiliation: ['member', 'employee', 'faculty'],
+        primaryAffiliation: 'employee',
+        displayName: 'Akademisk ansatt',
+      },
+      orgType: ['primary_and_lower_secondary_owner', 'upper_secondary_owner', 'higher_education'],
+      norEduOrgNIN: 'NO856326505',
+      mail: 'support@feide.no',
+      eduOrgLegalName: 'Univsersitetet i Rogn',
+    },
+  ],
+  primarySchool: {
+    id: 'fc:org:spusers.feide.no',
+    displayName: 'Univsersitetet i Rogn',
+    type: 'fc:org',
+    public: false,
+    membership: {
+      basic: 'admin',
+      affiliation: ['member', 'employee', 'faculty'],
+      primaryAffiliation: 'employee',
+      displayName: 'Akademisk ansatt',
+    },
+    orgType: ['primary_and_lower_secondary_owner', 'upper_secondary_owner', 'higher_education'],
+    norEduOrgNIN: 'NO856326505',
+    mail: 'support@feide.no',
+    eduOrgLegalName: 'Univsersitetet i Rogn',
   },
 };

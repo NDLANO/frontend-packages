@@ -13,52 +13,62 @@ type OrgType =
   | 'upper_secondary'
   | 'upper_secondary_owner';
 
-type AffiliationType = 'student' | 'faculty' | 'staff' | 'affiliate' | 'employee';
+type AffiliationType = 'member' | 'student' | 'faculty' | 'staff' | 'affiliate' | 'employee';
 
 export interface FeideMembershipType {
   basic: 'member' | 'admin' | 'owner'; // Basic membership role of user.
-  affiliation: AffiliationType[] | AffiliationType;
+  affiliation?: AffiliationType[] | AffiliationType;
   primarySchool?: boolean;
   primaryAffiliation?: AffiliationType;
   displayName?: string;
 }
 
-export interface FeideBaseGroup {
+interface FeideBaseGroup {
   id: string;
+  type: 'fc:org' | 'fc:gogroup';
   displayName: string;
   membership: FeideMembershipType;
-  type: 'fc:gogroup' | 'fc:org';
 }
 
-export interface GoGroup extends FeideBaseGroup {
+export interface FeideOrg extends FeideBaseGroup {
+  type: 'fc:org';
+  orgType: OrgType[];
+  norEduOrgNIN?: string;
+  eduOrgLegalName?: string;
+  mail?: string;
+  parent?: string;
+  public: boolean;
+}
+
+export interface FeideGoGroup extends FeideBaseGroup {
   type: 'fc:gogroup';
   notBefore: string;
   notAfter: string;
   go_type: 'b' | 'u' | 'a';
   parent: string;
   go_type_displayName: string;
+  grep?: {
+    displayName: string;
+    code: string;
+  };
 }
 
-export type GoGroupType = 'basic' | 'teaching' | 'other';
+export type FeideGroup = FeideOrg | FeideGoGroup;
 
-export interface FeideGroupType extends FeideBaseGroup {
-  type: 'fc:org';
-  eduOrgLegalName: string;
-  orgType: OrgType[];
-  parent?: string;
-  groups: Record<GoGroupType, GoGroup[]>;
-}
-
-export type FeideGroup = GoGroup | FeideGroupType;
-
-export interface FeideUser {
-  uid: string;
+interface FeideUser {
+  cn: string[];
   displayName: string;
+  eduPersonAffiliation: AffiliationType[] | AffiliationType;
   eduPersonPrimaryAffiliation: string;
+  eduPersonPrincipalName: string;
+  givenName: string[];
   mail?: string[];
+  schacHomeOrganization?: string;
+  sn: string[];
+  uid: string[];
 }
 
-export interface FeideUserWithGroups extends FeideUser {
+export interface FeideUserApiType extends FeideUser {
   groups: FeideGroup[];
-  primarySchool?: FeideGroupType;
+  primarySchool?: FeideGroup;
 }

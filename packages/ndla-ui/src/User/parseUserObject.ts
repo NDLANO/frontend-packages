@@ -1,5 +1,7 @@
 import { groupBy } from 'lodash';
-import { FeideGroup, FeideGroupType, FeideUserWithGroups, GoGroup, GoGroupType } from './types';
+import { FeideGoGroup, FeideGroup, FeideOrg, FeideUserResponse } from './apiTypes';
+
+type GoGroupType = 'basic' | 'teaching' | 'other';
 
 const goGroupTypeMap: Record<'a' | 'b' | 'u', GoGroupType> = {
   a: 'basic',
@@ -7,8 +9,8 @@ const goGroupTypeMap: Record<'a' | 'b' | 'u', GoGroupType> = {
   u: 'other',
 };
 
-const createGroupings = (groups: GoGroup[]) => {
-  return groups.reduce<Record<GoGroupType, GoGroup[]>>(
+const createGroupings = (groups: FeideGoGroup[]) => {
+  return groups.reduce<Record<GoGroupType, FeideGoGroup[]>>(
     (acc, curr) => {
       const type = goGroupTypeMap[curr.go_type];
       acc[type] = acc[type].concat(curr);
@@ -23,7 +25,7 @@ const createGroupings = (groups: GoGroup[]) => {
 };
 
 const parseOrgs = (groups: FeideGroup[]) => {
-  const [roots, children] = groups.reduce<[FeideGroupType[], GoGroup[]]>(
+  const [roots, children] = groups.reduce<[FeideOrg[], FeideGoGroup[]]>(
     (acc, curr) => {
       if (curr.type === 'fc:org') {
         return [acc[0].concat(curr), acc[1]];
@@ -43,7 +45,7 @@ const parseOrgs = (groups: FeideGroup[]) => {
   }));
 };
 
-export const parseUserObject = (user: FeideUserWithGroups) => {
+export const parseUserObject = (user: FeideUserResponse) => {
   const orgs = parseOrgs(user.groups);
 
   return {

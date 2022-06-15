@@ -945,6 +945,14 @@ const messages = {
     resource: {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
     },
+    primarySchool: 'Primary School',
+    name: 'Name',
+    mail: 'Mail',
+    groupTypes: {
+      basic: 'Basic group',
+      teaching: 'Teaching group',
+      other: 'Other groups',
+    },
   },
   checkOutNewFeature: 'New feature',
   slateBlockMenu: {

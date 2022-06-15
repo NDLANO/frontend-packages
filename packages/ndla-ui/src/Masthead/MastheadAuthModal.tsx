@@ -30,9 +30,9 @@ const StyledButton = styled(Button)<FeideWrapperProps>`
   }
 `;
 
-type Props = {
+interface Props extends AuthModalProps {
   inverted?: boolean;
-} & AuthModalProps;
+}
 
 const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
   return (

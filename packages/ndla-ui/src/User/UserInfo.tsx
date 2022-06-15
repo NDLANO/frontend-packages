@@ -7,10 +7,10 @@
 
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
-import { compact } from 'lodash';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FeideUserWithGroups } from './types';
+import { FeideUserApiType } from './apiTypes';
+import { parseUserObject } from './parseUserObject';
 
 const InfoList = styled.ul`
   margin: 0;
@@ -18,45 +18,69 @@ const InfoList = styled.ul`
 
   li {
     margin: 0;
-    font-weight: ${fonts.weight.semibold};
   }
 `;
 
+const BoldSpan = styled.span`
+  font-weight: ${fonts.weight.semibold};
+`;
+
 interface Props {
-  user: FeideUserWithGroups;
+  user: FeideUserApiType;
 }
+
+const ShortInfoDiv = styled.div`
+  margin: 2rem auto;
+`;
 
 export const UserInfo = ({ user }: Props) => {
   const { t } = useTranslation();
 
-  const { mail, displayName, eduPersonPrimaryAffiliation: affiliationRole, primarySchool } = user;
-
-  const collectedInfo: string[] = compact([
-    primarySchool?.displayName,
-    t(`user.role.${affiliationRole}`) as string,
-    displayName,
-    ...(mail ? mail : []),
-  ]);
+  const parsedUser = parseUserObject(user);
 
   return (
     <div>
-      {affiliationRole && (
+      {
         <p>
           {t('user.loggedInAs', {
-            role: affiliationRole,
+            role: parsedUser.primaryAffiliation,
           })}
         </p>
-      )}
-      {collectedInfo && collectedInfo.length > 0 && (
-        <>
-          {t('user.modal.collectedInfo')}
-          <InfoList>
-            {collectedInfo.map((value) => (
-              <li key={value}>{value}</li>
-            ))}
-          </InfoList>
-        </>
-      )}
+      }
+      <ShortInfoDiv>
+        <div>
+          ID: <BoldSpan>{user.uid}</BoldSpan>
+        </div>
+        <div>
+          {t('user.name')}: <BoldSpan>{user.displayName}</BoldSpan>
+        </div>
+        <div>
+          {t('user.mail')}: <BoldSpan>{user.mail?.join(', ')}</BoldSpan>
+        </div>
+      </ShortInfoDiv>
+      {t('user.modal.collectedInfo')}
+      <InfoList>
+        {parsedUser.organizations.map((org) => (
+          <li key={org.id}>
+            <div>{`${org.displayName}${org.membership.primarySchool ? ` (${t('user.primarySchool')})` : ''}`}</div>
+            <InfoList>
+              {Object.entries(org.children).map(([key, val]) => {
+                if (val.length < 1) return null;
+                return (
+                  <li key={key}>
+                    <div>{t(`user.groupTypes.${key}`)}</div>
+                    <InfoList>
+                      {val.map((group) => (
+                        <li key={group.id}>{`${group.displayName}${group.grep ? ` (${group.grep.code})` : ''}`}</li>
+                      ))}
+                    </InfoList>
+                  </li>
+                );
+              })}
+            </InfoList>
+          </li>
+        ))}
+      </InfoList>
     </div>
   );
 };

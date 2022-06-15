@@ -14,7 +14,7 @@ import Button from '@ndla/button';
 import { FeideText, LogIn, LogOut, HumanMaleBoard } from '@ndla/icons/common';
 import { fonts, spacing } from '@ndla/core';
 import { UserInfo } from './UserInfo';
-import { FeideUserWithGroups } from './types';
+import { FeideUserApiType } from './apiTypes';
 
 const StyledModalBody = styled.div`
   padding: ${spacing.normal} ${spacing.medium} ${spacing.medium};
@@ -54,7 +54,7 @@ const StyledButtonWrapper = styled.div`
 
 export type AuthModalProps = {
   isAuthenticated?: boolean;
-  user?: FeideUserWithGroups;
+  user?: FeideUserApiType;
   showGeneralMessage?: boolean;
   onAuthenticateClick: () => void;
   position?: 'top' | 'bottom';

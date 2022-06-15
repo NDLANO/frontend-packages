@@ -951,6 +951,9 @@ const messages = {
     shortView: 'Short view',
     myPage: 'My page',
   },
+  snackbar: {
+    close: 'Close notification',
+  },
 };
 
 export default messages;

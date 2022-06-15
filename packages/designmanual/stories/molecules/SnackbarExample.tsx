@@ -46,10 +46,18 @@ const SnackBarExample = () => {
         key={snack.snackbarItemId}
         type={snack.type}
         snackbarItemId={snack.snackbarItemId}
-        closeAriaLabel="Lukk"
+        actionButtons={[
+          {
+            text: 'Vis',
+            ariaLabel: 'Console.log onClick event',
+            onClick: () => {
+              console.log('Vis'); // eslint-disable-line no-console
+            },
+          },
+        ]}
         onKill={(id: string | undefined) => {
           // eslint-disable-next-line
-          console.log(`snack with id ${id || 'unknown'} removed`);
+          console.log(`snack with id ${id || 'unknown'} removed`); // eslint-disable-line no-console
           setSnack({});
         }}>
         {snack.children}

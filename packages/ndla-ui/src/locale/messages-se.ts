@@ -949,6 +949,9 @@ const messages = {
     shortView: 'Kort visning',
     myPage: 'Min side',
   },
+  snackbar: {
+    close: 'Lukk melding',
+  },
 };
 
 export default messages;

@@ -41,9 +41,7 @@ const InputWrapper = styled.div<{ loading?: boolean }>`
   color: ${colors.brand.primary};
 `;
 
-// enterKeyHint is missing in is-prop-valid
-// more info: https://issuemode.com/issues/emotion-js/emotion/11306450
-const StyledInput = styled.input<{ enterKeyHint?: string }>`
+const StyledInput = styled.input`
   flex-grow: 1;
   border: 0;
   outline: none;
@@ -89,7 +87,6 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
             const target = e.target as HTMLInputElement;
             setValue(target.value);
           }}
-          enterKeyHint="Lag mappe"
           onFocus={() => {
             // scroll to if on mobile device
             if (isMobile) {

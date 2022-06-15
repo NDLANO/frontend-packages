@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 import { colors, spacingUnit, spacing } from '@ndla/core';
-import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
+import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 import { ButtonProps } from './';
@@ -19,7 +19,7 @@ interface StyledButtonProps {
   svgSize: number;
 }
 
-const StyledMenuButton = styled(MenuButton)<StyledButtonProps>`
+const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -56,9 +56,8 @@ const StyledMenuItem = styled(MenuItem)`
   display: flex;
   cursor: pointer;
   color: ${(prop) => prop.color};
-  div {
+  span {
     display: flex;
-    flex-direction: row;
     align-items: center;
   }
   svg {
@@ -75,31 +74,29 @@ interface MenuItemProps {
   onClick: () => void;
   color?: string;
 }
-interface MultiButtonProps extends ButtonProps {
+interface MenuButtonProps extends ButtonProps {
   svgSize: StyledButtonProps;
   menuItems?: MenuItemProps[];
 }
-export const MoreButton = ({ menuItems, size }: MultiButtonProps) => {
+export const MenuButton = ({ menuItems, size }: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
-    <>
-      <Menu aria-label={t('myNdla.more')}>
-        <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
-          <HorizontalMenu />
-        </StyledMenuButton>
-        <StyledMenuList>
-          {menuItems?.map(({ color, text, icon, onClick }) => {
-            return (
-              <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
-                <div> {icon}</div>
-                <div>{text}</div>
-              </StyledMenuItem>
-            );
-          })}
-        </StyledMenuList>
-      </Menu>
-    </>
+    <Menu aria-label={t('myNdla.more')}>
+      <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
+        <HorizontalMenu />
+      </StyledMenuButton>
+      <StyledMenuList>
+        {menuItems?.map(({ color, text, icon, onClick }) => {
+          return (
+            <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
+              <span> {icon}</span>
+              <span>{text}</span>
+            </StyledMenuItem>
+          );
+        })}
+      </StyledMenuList>
+    </Menu>
   );
 };
 
-export default MoreButton;
+export default MenuButton;

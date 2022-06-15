@@ -136,7 +136,7 @@ interface SnackBarProps extends SnackBarItemProp {
   }[];
 }
 
-const SnackBar = ({ onKill, type, children, snackbarItemId, id, actionButtons }: SnackBarProps) => {
+const SnackBar = ({ onKill, children, snackbarItemId, id, actionButtons }: SnackBarProps) => {
   const { t } = useTranslation();
   const [expired, setExpired] = useState(false);
   const timeoutId = useRef<null | ReturnType<typeof setTimeout>>();
@@ -157,7 +157,6 @@ const SnackBar = ({ onKill, type, children, snackbarItemId, id, actionButtons }:
       <StyledNotification
         id={id}
         aria-live="polite"
-        type={type}
         expired={expired || !children}
         onAnimationEnd={() => expired && onKill && onKill(snackbarItemId)}>
         {children && (

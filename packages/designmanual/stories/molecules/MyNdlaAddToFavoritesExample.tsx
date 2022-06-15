@@ -94,7 +94,6 @@ const DialogExample = ({
                 onClick={() => {
                   setSnackBarMessage({
                     snackbarItemId: Math.random().toString(),
-                    type: 'info',
                     children: <>{isFavorite ? 'Fjernet fra favoritter' : 'Lagt til i favoritter!'}</>,
                   });
                   toggleIsFavorite();
@@ -139,7 +138,6 @@ const MyNdlaAddToFavoritesExample = () => {
       <SnackBar
         id={SNACKBAR_ID_ADD_TO_FAVORITES}
         key={snackBarMessage.snackbarItemId}
-        type={snackBarMessage.type}
         snackbarItemId={snackBarMessage?.snackbarItemId}
         onKill={(id: string | undefined) => {
           // eslint-disable-next-line

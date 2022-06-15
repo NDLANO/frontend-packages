@@ -35,7 +35,6 @@ const SnackBarExample = () => {
                   <strong>{author}: </strong>"{text}"
                 </div>
               ),
-              type: 'info',
             });
           }}>
           Generate random snack
@@ -44,7 +43,6 @@ const SnackBarExample = () => {
       <SnackBar
         id={snackAriaId}
         key={snack.snackbarItemId}
-        type={snack.type}
         snackbarItemId={snack.snackbarItemId}
         actionButtons={[
           {

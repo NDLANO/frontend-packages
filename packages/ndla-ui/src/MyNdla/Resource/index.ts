@@ -7,5 +7,5 @@
  */
 
 import Breadcrumbs from './Breadcrumbs';
-import Folder from './FolderPreview';
+import Folder from './Folder';
 export { Breadcrumbs, Folder };

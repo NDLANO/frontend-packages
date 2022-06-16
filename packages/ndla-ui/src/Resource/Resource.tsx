@@ -55,7 +55,6 @@ const ResourceWrapper = styled(SafeLink)`
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
-  font-family: ${fonts.sans};
   gap: ${spacing.small};
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
@@ -209,6 +208,18 @@ interface BlockElementWrapperProps {
   maxHeight: string;
 }
 
+const BlockElementWrapper = styled(SafeLink)<BlockElementWrapperProps>`
+  display: flex;
+  text-decoration: none;
+  box-shadow: none;
+  flex-direction: column;
+  max-width: ${(p) => p.maxWidth};
+  max-height: ${(p) => p.maxHeight};
+  border: 1px solid ${colors.brand.light};
+  border-radius: 2px;
+  color: ${colors.brand.greyDark};
+`;
+
 const BlockDescription = styled.p`
   display: -webkit-box;
   line-clamp: 2;
@@ -218,28 +229,12 @@ const BlockDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
-`;
-
-const BlockElementWrapper = styled(SafeLink)<BlockElementWrapperProps>`
-  display: flex;
-  text-decoration: none;
-  box-shadow: none;
-  flex-direction: column;
-  max-width: ${(p) => p.maxWidth};
-  max-height: ${(p) => p.maxHeight};
-  font-family: ${fonts.sans};
-  border: 1px solid ${colors.brand.light};
-  border-radius: 2px;
-  color: ${colors.brand.greyDark};
-  &:hover {
-    p {
-      // babel throws an error when BlockDescription is selected directly.
-      // Unfortunate css needed for multi-line text overflow ellipsis.
-      height: 3.1em;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
+  ${() => BlockElementWrapper}:hover & {
+    // Unfortunate css needed for multi-line text overflow ellipsis.
+    height: 3.1em;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 `;
 

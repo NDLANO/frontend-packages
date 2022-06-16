@@ -74,7 +74,7 @@ const FigureNotion = ({
                 license={license}
                 messages={{
                   close: t('close'),
-                  rulesForUse: t('license.concept.rules'),
+                  rulesForUse: t(`license.${type}.rules`),
                   source: t('source'),
                   learnAboutLicenses: t('license.learnMore'),
                   title: t('title'),

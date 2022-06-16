@@ -9,5 +9,7 @@
 import AuthModal from './AuthModal';
 import { UserInfo } from './UserInfo';
 import type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './apiTypes';
-export { AuthModal, UserInfo };
+
+export { UserInfo };
 export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType };
+export default AuthModal;

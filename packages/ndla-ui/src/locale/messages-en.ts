@@ -947,7 +947,7 @@ const messages = {
     },
     primarySchool: 'Primary School',
     name: 'Name',
-    mail: 'Mail',
+    mail: 'E-mail',
     groupTypes: {
       basic: 'Basic group',
       teaching: 'Teaching group',

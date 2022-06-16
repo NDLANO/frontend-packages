@@ -33,7 +33,7 @@ import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
-import { feideUser } from './feideUser';
+import { feideUserLaerer } from './feideUser';
 
 const BreadcrumbWrapper = styled.div`
   ${mq.range({ until: breakpoints.tablet })} {
@@ -146,7 +146,7 @@ class MastheadWithTopicMenu extends Component {
     const authedProps = isAuthed
       ? {
           isAuthenticated: true,
-          ...feideUser,
+          ...feideUserLaerer,
           onAuthenticateClick: () => {},
         }
       : {

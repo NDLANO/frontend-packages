@@ -6,23 +6,14 @@
  */
 
 import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
+import { spacing } from '@ndla/core';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FeideUserApiType } from './apiTypes';
 import { parseUserObject } from './parseUserObject';
 
 const InfoList = styled.ul`
-  margin: 0;
   padding: 0 0 0 ${spacing.normal};
-
-  li {
-    margin: 0;
-  }
-`;
-
-const BoldSpan = styled.span`
-  font-weight: ${fonts.weight.semibold};
 `;
 
 interface Props {
@@ -43,32 +34,35 @@ export const UserInfo = ({ user }: Props) => {
       {
         <p>
           {t('user.loggedInAs', {
-            role: parsedUser.primaryAffiliation,
+            role: t(`user.role.${parsedUser.primaryAffiliation}`),
           })}
         </p>
       }
+
       <ShortInfoDiv>
         <div>
-          ID: <BoldSpan>{user.uid}</BoldSpan>
+          brukernavn: <b>{user.uid}</b>
         </div>
         <div>
-          {t('user.name')}: <BoldSpan>{user.displayName}</BoldSpan>
+          {t('user.name')}: <b>{user.displayName}</b>
         </div>
         <div>
-          {t('user.mail')}: <BoldSpan>{user.mail?.join(', ')}</BoldSpan>
+          {t('user.mail')}: <b>{user.mail?.join(', ')}</b>
         </div>
       </ShortInfoDiv>
+
       {t('user.modal.collectedInfo')}
+
       <InfoList>
         {parsedUser.organizations.map((org) => (
           <li key={org.id}>
-            <div>{`${org.displayName}${org.membership.primarySchool ? ` (${t('user.primarySchool')})` : ''}`}</div>
+            {`${org.displayName}${org.membership.primarySchool ? ` (${t('user.primarySchool')})` : ''}`}
             <InfoList>
-              {Object.entries(org.children).map(([key, val]) => {
+              {Object.entries(org.children).map(([groupType, val]) => {
                 if (val.length < 1) return null;
                 return (
-                  <li key={key}>
-                    <div>{t(`user.groupTypes.${key}`)}</div>
+                  <li key={groupType}>
+                    <div>{t(`user.groupTypes.${groupType}`)}</div>
                     <InfoList>
                       {val.map((group) => (
                         <li key={group.id}>{`${group.displayName}${group.grep ? ` (${group.grep.code})` : ''}`}</li>

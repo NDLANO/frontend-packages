@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { uuid } from '@ndla/util';
 import Button from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
@@ -15,9 +15,9 @@ import styled from '@emotion/styled';
 import { spacing, fonts } from '@ndla/core';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
-import { getIdPathsOfFolder, getPathOfFolder, getDefaultOpenFolders, getFolderName } from './helperFunctions';
+import { getIdPathsOfFolder, getPathOfFolder, getFolderName } from './helperFunctions';
 import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation/keyboardNavigation';
-import { FolderStructureProps, NewFolderProps, TreeStructureProps } from './TreeStructure.types';
+import { NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -39,23 +39,30 @@ const TreeStructure = ({
   openOnFolderClick,
   framed,
   folderIdMarkedByDefault,
+  defaultOpenFolders,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
-  const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(getDefaultOpenFolders(data)));
-  const [keyNavigationId, setKeyNavigationId] = useState<{ id: string } | undefined>();
+  const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(defaultOpenFolders || []));
+  const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0].id);
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const prevDataValue = useRef<string[]>(getDefaultOpenFolders(data));
-  const rootLevelId = uuid(); // TODO: use useId hook when we update to React 18
+  const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18
+
+  useEffect(() => {
+    setOpenFolders((prev) => {
+      defaultOpenFolders?.forEach(id => prev.add(id));
+      return new Set(prev);
+    });
+  }, [defaultOpenFolders]);
 
   useEffect(() => {
     if (treestructureRef.current) {
-      if (keyNavigationId?.id) {
+      if (focusedFolderId) {
         const dataProp = 'data-tree-structure-id';
         const currentElement = treestructureRef.current.querySelector(
-          `[${dataProp}="${keyNavigationId.id}"]`,
+          `[${dataProp}="${focusedFolderId}"]`,
         ) as HTMLButtonElement;
         currentElement?.focus();
       } else if (editable) {
@@ -64,33 +71,7 @@ const TreeStructure = ({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keyNavigationId]);
-
-  useEffect(() => {
-    if (prevDataValue?.current) {
-      // Compare previous data with current data, find new folders and check if they are open and add them to the openFolders
-      const newFolders: string[] = [];
-      const getOpen = (children: FolderStructureProps[], set: string[], collectOnlyIfDefaultPropIsOpen: boolean) => {
-        children.forEach(({ id, data: childData, openAsDefault }) => {
-          if (!collectOnlyIfDefaultPropIsOpen || (openAsDefault && !prevDataValue.current.includes(id))) {
-            set.push(id);
-          }
-          if (childData && childData?.length > 0) {
-            getOpen(childData, set, collectOnlyIfDefaultPropIsOpen);
-          }
-        });
-      };
-      getOpen(data, newFolders, true);
-      if (newFolders.length > 0) {
-        setOpenFolders((alreadyOpenedFolders) => {
-          newFolders.forEach((id) => {
-            alreadyOpenedFolders.add(id);
-          });
-          return new Set(alreadyOpenedFolders);
-        });
-      }
-    }
-  }, [data]);
+  }, [focusedFolderId]);
 
   useEffect(() => {
     if (!loading) {
@@ -125,14 +106,14 @@ const TreeStructure = ({
     setNewFolder(props);
   };
 
-  const onSaveNewFolder = async ({ value, cancel }: { value: string; cancel: boolean }) => {
-    if (!cancel && newFolder) {
+  const onSaveNewFolder = async (value: string) => {
+    if (newFolder) {
       // We would like to create a new folder with the name of value.
       // Its location in structure is based on newFolder object
       const newFolderId = await onNewFolder({ ...newFolder, value });
       if (newFolderId) {
         setMarkedFolderId(newFolderId);
-        setKeyNavigationId({ id: newFolderId });
+        setFocusedFolderId(newFolderId);
         // Open current folder in case it was closed..
         setOpenFolders((prev) => {
           if (newFolder.parentId) {
@@ -141,14 +122,16 @@ const TreeStructure = ({
           return new Set(prev);
         });
       }
-    } else {
-      setNewFolder(undefined);
     }
+  };
+
+  const onCancelNewFolder = () => {
+    setNewFolder(undefined);
   };
 
   const onMarkFolder = (id: string) => {
     setMarkedFolderId(id);
-    setKeyNavigationId({ id });
+    setFocusedFolderId(id);
   };
 
   const disableAddFolderButton =
@@ -162,8 +145,8 @@ const TreeStructure = ({
           keyboardNavigation({
             e,
             data,
-            setKeyNavigationId,
-            keyNavigationId,
+            setFocusedFolderId,
+            focusedFolderId,
             onToggleOpen,
             openFolders,
           });
@@ -178,14 +161,15 @@ const TreeStructure = ({
           onToggleOpen={onToggleOpen}
           newFolder={newFolder}
           onCreateNewFolder={onCreateNewFolder}
+          onCancelNewFolder={onCancelNewFolder}
           onSaveNewFolder={onSaveNewFolder}
           openFolders={openFolders}
           markedFolderId={markedFolderId}
           onMarkFolder={onMarkFolder}
           openOnFolderClick={openOnFolderClick}
           loading={loading}
-          keyNavigationId={keyNavigationId?.id}
-          setKeyNavigationId={setKeyNavigationId}
+          focusedFolderId={focusedFolderId}
+          setFocusedFolderId={setFocusedFolderId}
           firstLevel
         />
       </TreeStructureStyledWrapper>
@@ -198,7 +182,6 @@ const TreeStructure = ({
               folderName: getFolderName(data, markedFolderId),
             })}>
             <Button
-              aria-label="Add folder"
               size="small"
               light
               disabled={disableAddFolderButton}

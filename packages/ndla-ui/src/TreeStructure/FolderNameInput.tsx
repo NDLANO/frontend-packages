@@ -53,11 +53,12 @@ const StyledInput = styled.input`
 `;
 
 interface FolderNameInputProps {
-  onSaveNewFolder: (props: { value: string; cancel: boolean }) => void;
+  onSaveNewFolder: (value: string) => void;
+  onCancelNewFolder: () => void;
   loading?: boolean;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => {
+const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: FolderNameInputProps) => {
   const { t } = useTranslation();
   const [value, setValue] = useState<string>(t('treeStructure.newFolder.defaultName'));
   const inputRef = useRef<HTMLInputElement>(null);
@@ -82,12 +83,17 @@ const FolderNameInput = ({ onSaveNewFolder, loading }: FolderNameInputProps) => 
           placeholder={t('treeStructure.newFolder.placeholder')}
           disabled={loading}
           value={value}
-          onBlur={() => onSaveNewFolder({ value, cancel: true })}
+          onBlur={() => onCancelNewFolder()}
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Enter' || e.key === 'Tab' || e.key === 'Escape') {
-              onSaveNewFolder({ value, cancel: e.key === 'Escape' });
+            if (e.key === 'Escape') {
+              onCancelNewFolder();
+              return;
+            }
+            if (e.key === 'Enter' || e.key === 'Tab') {
+              onSaveNewFolder(value);
               e.preventDefault();
             }
+            return;
           }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const target = e.target as HTMLInputElement;

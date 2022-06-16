@@ -14,7 +14,7 @@ import FolderNameInput from './FolderNameInput';
 import { FolderItemsProps } from './TreeStructure.types';
 import { MAX_LEVEL_FOR_FOLDERS } from './TreeStructure';
 
-const StyledUL = styled.ul`
+const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   ${animations.fadeInLeft(animations.durations.fast)};
   animation-fill-mode: forwards;
   @media (prefers-reduced-motion: reduce) {
@@ -23,13 +23,13 @@ const StyledUL = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -${spacing.xsmall};
+  margin-left: ${({ firstLevel }) => firstLevel ? -spacing.xsmall : spacing.normal};
+`;
+
+const StyledLI = styled.li`
   li {
     margin: 0;
     padding: 0;
-    > ul {
-      margin-left: ${spacing.normal};
-    }
   }
 `;
 
@@ -40,22 +40,23 @@ const FolderItems = ({
   editable,
   onToggleOpen,
   onCreateNewFolder,
+  onCancelNewFolder,
   onSaveNewFolder,
   newFolder,
   openFolders,
   markedFolderId,
   onMarkFolder,
   openOnFolderClick,
-  keyNavigationId,
-  setKeyNavigationId,
+  focusedFolderId,
+  setFocusedFolderId,
   firstLevel,
 }: FolderItemsProps) => (
-  <StyledUL role="group">
+  <StyledUL role="group" firstLevel={firstLevel}>
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
       return (
-        <li key={id} role="treeitem">
+        <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
               icon={icon}
@@ -70,10 +71,10 @@ const FolderItems = ({
               onMarkFolder={onMarkFolder}
               hideArrow={dataChildren?.length === 0 || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
               noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
-              setKeyNavigationId={setKeyNavigationId}
+              setFocusedFolderId={setFocusedFolderId}
             />
           </div>
-          {newFolder?.parentId === id && <FolderNameInput loading={loading} onSaveNewFolder={onSaveNewFolder} />}
+          {newFolder?.parentId === id && <FolderNameInput loading={loading} onCancelNewFolder={onCancelNewFolder} onSaveNewFolder={onSaveNewFolder} />}
           {dataChildren && isOpen && (
             <FolderItems
               loading={loading}
@@ -85,15 +86,16 @@ const FolderItems = ({
               onToggleOpen={onToggleOpen}
               onCreateNewFolder={onCreateNewFolder}
               onSaveNewFolder={onSaveNewFolder}
+              onCancelNewFolder={onCancelNewFolder}
               markedFolderId={markedFolderId}
               onMarkFolder={onMarkFolder}
               openOnFolderClick={openOnFolderClick}
-              keyNavigationId={keyNavigationId}
-              setKeyNavigationId={setKeyNavigationId}
+              focusedFolderId={focusedFolderId}
+              setFocusedFolderId={setFocusedFolderId}
               firstLevel={false}
             />
           )}
-        </li>
+        </StyledLI>
       );
     })}
   </StyledUL>

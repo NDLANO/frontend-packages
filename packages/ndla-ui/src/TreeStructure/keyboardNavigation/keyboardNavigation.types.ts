@@ -6,15 +6,15 @@
  *
  */
 
-import { FolderStructureProps, SetKeyNavigationId } from '../TreeStructure.types';
+import { FolderStructureProps, SetFocusedFolderId } from '../TreeStructure.types';
 
 export interface KeyboardNavigationProps {
   e: React.KeyboardEvent<HTMLElement>;
   data: FolderStructureProps[];
-  setKeyNavigationId: SetKeyNavigationId;
+  setFocusedFolderId: SetFocusedFolderId;
   openFolders: Set<string>;
   onToggleOpen: (id: string) => void;
-  keyNavigationId: { id: string; currentFocusIsCreateFolderButton?: boolean } | undefined;
+  focusedFolderId: string | undefined;
 }
 
 export interface ElementWithKeyFocusProps {

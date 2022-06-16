@@ -37,6 +37,7 @@ export interface TreeStructureProps extends CommonFolderProps {
   label: string;
   folderIdMarkedByDefault?: string;
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
+  defaultOpenFolders?: string[];
 }
 
 export type onCreateNewFolderProp = ({
@@ -46,43 +47,28 @@ export type onCreateNewFolderProp = ({
   idPaths: number[];
   parentId: string | undefined;
 }) => void;
-type onSaveNewFolderProp = ({ value, cancel }: { value: string; cancel: boolean }) => void;
 
 export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<Set<string>>>;
-export type SetKeyNavigationId = React.Dispatch<
+export type SetFocusedFolderId = React.Dispatch<
   React.SetStateAction<
-    | {
-        id: string;
-        currentFocusIsCreateFolderButton?: boolean | undefined;
-      }
+    | string
     | undefined
   >
 >;
 
 export interface FolderItemsProps extends CommonFolderProps {
   onToggleOpen: (id: string) => void;
-  onSaveNewFolder: onSaveNewFolderProp;
+  onSaveNewFolder: (value: string) => void;
+  onCancelNewFolder: () => void;
   onCreateNewFolder: onCreateNewFolderProp;
   newFolder: NewFolderProps | undefined;
   openFolders: Set<string>;
   markedFolderId?: string;
   onMarkFolder: (id: string) => void;
   idPaths: number[];
-  keyNavigationId: string | undefined;
-  setKeyNavigationId: SetKeyNavigationId;
+  focusedFolderId: string | undefined;
+  setFocusedFolderId: SetFocusedFolderId;
   firstLevel: boolean;
   keyNavigationFocusIsCreateFolderButton?: boolean;
   icon?: React.ReactElement;
-}
-
-export interface NewFolderOptionProp {
-  editing: boolean;
-  loading?: boolean;
-  parentId?: string;
-  idPaths: number[];
-  onSaveNewFolder: onSaveNewFolderProp;
-  onCreateNewFolder: onCreateNewFolderProp;
-  withPadding?: boolean;
-  tabIndex?: 0 | -1;
-  rootLevelId?: string;
 }

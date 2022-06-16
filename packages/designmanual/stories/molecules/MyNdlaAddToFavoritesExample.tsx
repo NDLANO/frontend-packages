@@ -15,7 +15,7 @@ import { SnackBar, SnackBarItemProp } from '@ndla/ui';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
-import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE } from './TreeStructureExample';
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
@@ -65,7 +65,8 @@ const DialogExample = ({
               label="Velg plassering"
               editable
               framed
-              structure={STRUCTURE_EXAMPLE(true, true)}
+              structure={STRUCTURE_EXAMPLE(true)}
+              defaultOpenFolders={[MY_FOLDERS_ID]}
               openOnFolderClick={false}
             />
             <TagSelectorExample />

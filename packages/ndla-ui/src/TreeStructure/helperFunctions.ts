@@ -1,34 +1,17 @@
 import { FolderStructureProps } from './TreeStructure.types';
 
-const getDefaultOpenFolders = (data: FolderStructureProps[], getAll?: boolean): string[] => {
-  const openFolders: string[] = [];
-  const getOpen = (children: FolderStructureProps[], collectAll?: boolean) => {
-    children.forEach((folder: FolderStructureProps) => {
-      if (folder.openAsDefault || collectAll) {
-        openFolders.push(folder.id);
-      }
-      if (folder.data && folder.data?.length > 0) {
-        getOpen(folder.data, collectAll);
-      }
-    });
-  };
-  getOpen(data, getAll);
-  return openFolders;
-};
-
 const getPathOfFolder = (data: FolderStructureProps[], findId: string): string[] => {
-  let currentPath: string[] = [];
-  const paths = (dataChildren: FolderStructureProps[], path: string[]) => {
-    dataChildren.forEach(({ id, data: dataChildrenSub }) => {
+  const paths = (dataChildren: FolderStructureProps[], path: string[]): string[] => {
+    for (const { id, data: dataChildrenSub } of dataChildren) {
       if (id === findId) {
-        currentPath = [...path, id];
+        return [...path, id];
       } else if (dataChildrenSub?.length) {
-        paths(dataChildrenSub, [...path, id]);
+        return paths(dataChildrenSub, [...path, id]);
       }
-    });
+    }
+    return [];
   };
-  paths(data, []);
-  return currentPath;
+  return paths(data, []);
 };
 
 const getIdPathsOfFolder = (data: FolderStructureProps[], findId: string): number[] => {
@@ -66,4 +49,4 @@ const getFolderName = (data: FolderStructureProps[], findId: string | undefined)
   return folderName;
 };
 
-export { getPathOfFolder, getDefaultOpenFolders, getIdPathsOfFolder, getFolderName };
+export { getPathOfFolder, getIdPathsOfFolder, getFolderName };

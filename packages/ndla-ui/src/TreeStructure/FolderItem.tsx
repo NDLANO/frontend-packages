@@ -11,16 +11,14 @@ import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
-import { SetKeyNavigationId } from './TreeStructure.types';
+import { SetFocusedFolderId } from './TreeStructure.types';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
   border: 0;
-  transform-origin: center center;
   transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
   padding: ${spacing.xsmall};
   display: flex;
-  align-items: center;
   margin: 0;
   color: ${colors.brand.secondary};
   cursor: pointer;
@@ -34,7 +32,7 @@ const OpenButton = styled.button<{ isOpen: boolean }>`
   }
 `;
 
-const Wrapper = styled.div`
+const FolderItemWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -51,16 +49,13 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   transition: ${animations.durations.superFast};
   border: 0;
   border-radius: ${misc.borderRadius};
-  padding: ${spacing.small};
   display: flex;
   gap: ${spacing.xxsmall};
   align-items: center;
   cursor: pointer;
   padding: ${spacing.xsmall};
-  padding-left: ${spacing.xsmall};
   margin: 0;
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
-  box-shadow: none;
   flex-grow: 1;
 `;
 
@@ -76,7 +71,7 @@ interface Props {
   loading?: boolean;
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
-  setKeyNavigationId: SetKeyNavigationId;
+  setFocusedFolderId: SetFocusedFolderId;
   url?: string;
   icon?: React.ReactNode;
   noPaddingWhenArrowIsHidden?: boolean;
@@ -92,13 +87,13 @@ const FolderItem = ({
   isOpen,
   marked,
   openOnFolderClick,
-  setKeyNavigationId,
+  setFocusedFolderId,
   icon,
   url,
   noPaddingWhenArrowIsHidden,
 }: Props) => {
   return (
-    <Wrapper>
+    <FolderItemWrapper>
       {!hideArrow && (
         <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
           <ArrowDropDown />
@@ -111,7 +106,7 @@ const FolderItem = ({
           marked={marked}
           href={loading ? undefined : url}
           onFocus={() => {
-            setKeyNavigationId({ id });
+            setFocusedFolderId(id);
           }}
           data-tree-structure-id={id}
           onClick={() => {
@@ -130,7 +125,7 @@ const FolderItem = ({
           marked={marked}
           disabled={loading}
           onFocus={() => {
-            setKeyNavigationId({ id });
+            setFocusedFolderId(id);
           }}
           data-tree-structure-id={id}
           onClick={() => {
@@ -143,7 +138,7 @@ const FolderItem = ({
           {name}
         </FolderName>
       )}
-    </Wrapper>
+    </FolderItemWrapper>
   );
 };
 

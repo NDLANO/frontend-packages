@@ -6,7 +6,7 @@
  *
  */
 
-import { FolderStructureProps, SetKeyNavigationId } from '../TreeStructure.types';
+import { FolderStructureProps, SetFocusedFolderId } from '../TreeStructure.types';
 import { KeyboardNavigationProps, ElementWithKeyFocusProps } from './keyboardNavigation.types';
 import { MAX_LEVEL_FOR_FOLDERS } from '../TreeStructure';
 
@@ -15,7 +15,7 @@ export const KEYBOARD_KEYS_OF_INTEREST = ['ArrowDown', 'ArrowUp', 'ArrowRight', 
 // Traverse upwards, incase parent is last element of its parent..
 const traverseUpwards = (
   inital: FolderStructureProps[],
-  setKeyNavigationId: SetKeyNavigationId,
+  setFocusedFolderId: SetFocusedFolderId,
   paths: number[],
   index: number,
 ) => {
@@ -33,7 +33,7 @@ const traverseUpwards = (
   // No newId? We are at the end of the tree so we wont update.
   const newId = parentNextIds.reverse().filter((id) => id)[0];
   if (newId) {
-    setKeyNavigationId({ id: newId });
+    setFocusedFolderId(newId);
   }
 };
 
@@ -41,11 +41,13 @@ const keyboardNavigation = ({
   e,
   data,
   onToggleOpen,
-  setKeyNavigationId,
-  keyNavigationId,
+  setFocusedFolderId,
+  focusedFolderId: id,
   openFolders,
 }: KeyboardNavigationProps): string | undefined => {
-  const { id } = keyNavigationId || {};
+  if (e.key === ' ' && document.activeElement?.nodeName === 'INPUT') {
+    return;
+  }
 
   // We are navigating in the tree.
   // We need to find the next folder in the tree
@@ -76,7 +78,7 @@ const keyboardNavigation = ({
   if (!updatePathToElementWithKeyFocus(data, [], data)) {
     // Couldn't find its location in the tree.
     // This should not happen, reset its value to root.
-    setKeyNavigationId(e.key === 'ArrowDown' ? { id: data[0].id } : undefined);
+    setFocusedFolderId(e.key === 'ArrowDown' ? data[0].id : undefined);
     return;
   }
   e.preventDefault();
@@ -92,8 +94,6 @@ const keyboardNavigation = ({
     return;
   }
 
-  const direction = e.key === 'ArrowUp' ? -1 : 1;
-  // on up or down key press we want to move focus to the next folder
   if (e.key === 'ArrowRight') {
     if (
       !elementWithKeyFocus.isOpen &&
@@ -112,23 +112,20 @@ const keyboardNavigation = ({
     return;
   }
 
-  if (!id && direction === 1) {
-    setKeyNavigationId({ id: data[0].id });
+  if (!id && e.key === 'ArrowDown') {
+    setFocusedFolderId(data[0].id);
     return;
   }
   if (!id) {
     return;
   }
   // Move up
-  if (direction === -1) {
+  if (e.key === 'ArrowUp') {
     if (elementWithKeyFocus.index > 0) {
       // Move upwards to the parent folder
-      setKeyNavigationId(
+      setFocusedFolderId(
         elementWithKeyFocus.parent
-          ? {
-              id: elementWithKeyFocus.parent[elementWithKeyFocus.index - 1].id,
-            }
-          : undefined,
+          ? elementWithKeyFocus.parent[elementWithKeyFocus.index - 1].id : undefined,
       );
     } else if (elementWithKeyFocus.paths.length > 0) {
       elementWithKeyFocus.paths.pop();
@@ -137,30 +134,28 @@ const keyboardNavigation = ({
         findParent = findParent[index].data as FolderStructureProps[];
       });
       const parentsCurrentIndex = findParent.findIndex(({ id }) => id === elementWithKeyFocus.parentId);
-      setKeyNavigationId({
-        id: findParent[parentsCurrentIndex].id,
-      });
+      setFocusedFolderId(findParent[parentsCurrentIndex].id);
     }
     return;
   }
 
   if (elementWithKeyFocus.isOpen) {
     if (elementWithKeyFocus.data?.length) {
-      setKeyNavigationId({ id: elementWithKeyFocus.data[0].id });
+      setFocusedFolderId(elementWithKeyFocus.data[0].id);
     } else {
       // move to next child of parent if any... need new traverse :-/
-      traverseUpwards(data, setKeyNavigationId, elementWithKeyFocus.paths, elementWithKeyFocus.index);
+      traverseUpwards(data, setFocusedFolderId, elementWithKeyFocus.paths, elementWithKeyFocus.index);
     }
     return;
   }
 
   if (elementWithKeyFocus.parent && elementWithKeyFocus.index < elementWithKeyFocus.parent?.length - 1) {
     // Move downwards to the next child
-    setKeyNavigationId({ id: elementWithKeyFocus.parent[elementWithKeyFocus.index + 1].id });
+    setFocusedFolderId(elementWithKeyFocus.parent[elementWithKeyFocus.index + 1].id);
     return;
   }
 
-  traverseUpwards(data, setKeyNavigationId, elementWithKeyFocus.paths, elementWithKeyFocus.index);
+  traverseUpwards(data, setFocusedFolderId, elementWithKeyFocus.paths, elementWithKeyFocus.index);
   return;
 };
 

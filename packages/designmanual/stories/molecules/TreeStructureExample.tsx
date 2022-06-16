@@ -17,13 +17,14 @@ const Container = styled.div`
   max-width: 600px;
 `;
 
-export const STRUCTURE_EXAMPLE = (newUser?: boolean, openAsDefault?: boolean) => [
+export const MY_FOLDERS_ID = 'MY_FOLDERS_ID';
+
+export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
   {
-    id: uuid(),
+    id: MY_FOLDERS_ID,
     name: 'Mine mapper',
     status: 'private',
     isFavorite: false,
-    openAsDefault,
     data: [
       {
         id: uuid(),
@@ -76,7 +77,7 @@ const STRUCTURE_EXAMPLE_WRAPPED = () => [
     icon: <User />,
     data: [],
   },
-  ...STRUCTURE_EXAMPLE(false, false),
+  ...STRUCTURE_EXAMPLE(false),
   {
     id: uuid(),
     name: 'Mine tagger',
@@ -102,6 +103,7 @@ export const TreeStructureExampleComponent = ({
   framed,
   folderIdMarkedByDefault,
   openOnFolderClick,
+  defaultOpenFolders,
 }: {
   structure: FolderStructureProps[];
   label: string;
@@ -109,6 +111,7 @@ export const TreeStructureExampleComponent = ({
   framed: boolean;
   folderIdMarkedByDefault?: string;
   openOnFolderClick: boolean;
+  defaultOpenFolders?: string[];
 }) => {
   const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
@@ -118,8 +121,9 @@ export const TreeStructureExampleComponent = ({
         framed={framed}
         label={label}
         editable={editable}
-        openOnFolderClick={openOnFolderClick} // False is chrome bookmark way, might not be the best solution for phones? (Tiny hitarea?)
+        openOnFolderClick={openOnFolderClick}
         folderIdMarkedByDefault={folderIdMarkedByDefault}
+        defaultOpenFolders={defaultOpenFolders}
         onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
           // Just as an example, pretend to save to database and update the structure
           // eslint-disable-next-line no-console
@@ -155,7 +159,8 @@ const TreeStructureExample = () => (
       label="Editable"
       editable
       framed
-      structure={STRUCTURE_EXAMPLE(true, true)}
+      structure={STRUCTURE_EXAMPLE(true)}
+      defaultOpenFolders={[MY_FOLDERS_ID]}
     />
     <h1>TreeStructure editable:</h1>
     <TreeStructureExampleComponent
@@ -163,7 +168,8 @@ const TreeStructureExample = () => (
       openOnFolderClick={false}
       editable
       framed
-      structure={STRUCTURE_EXAMPLE(false, true)}
+      structure={STRUCTURE_EXAMPLE(false)}
+      defaultOpenFolders={[MY_FOLDERS_ID]}
     />
     <hr />
     <h1>TreeStructure non-editable:</h1>
@@ -172,7 +178,8 @@ const TreeStructureExample = () => (
       openOnFolderClick
       editable={false}
       framed
-      structure={STRUCTURE_EXAMPLE(false, true)}
+      structure={STRUCTURE_EXAMPLE(false)}
+      defaultOpenFolders={[MY_FOLDERS_ID]}
     />
     <hr />
     <h1>TreeStructure without frame</h1>

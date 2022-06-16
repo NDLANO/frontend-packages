@@ -95,8 +95,6 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         expanded={expanded}
         setExpanded={setExpanded}
         dropdownMaxHeight={dropdownMaxHeight}
-        name={inputIdRef.current}
-        id={inputIdRef.current}
         inline={inline}
         scrollAnchorElement={containerRef}
       />

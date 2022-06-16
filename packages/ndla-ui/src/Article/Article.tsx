@@ -136,7 +136,7 @@ type Props = {
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
   isFavorite?: boolean;
-  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  onToggleAddToFavorites?: (id: string, add: boolean) => void;
   hideAddToFavoriteButton?: boolean;
 };
 
@@ -220,7 +220,7 @@ export const Article = ({
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
-            {!hideAddToFavoriteButton && (
+            {!hideAddToFavoriteButton && onToggleAddToFavorites && (
               <ArticleFavoritesButtonWrapper>
                 <ArticleFavoritesButton
                   articleId={id}

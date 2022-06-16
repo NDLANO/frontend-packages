@@ -6,34 +6,34 @@
  *
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, ReactNode } from 'react';
 import { spacingUnit } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import SuggestionInput from './SuggestionInput';
 
 const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
 
-export interface TagProp {
+export interface TagStyle {
   name: string;
   id: string;
 }
 
 interface Props {
   label: string;
-  tags: TagProp[];
+  tags: TagStyle[];
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-  prefix?: string | React.ReactNode;
+  prefix?: string | ReactNode;
   inline?: boolean;
 }
 
-const sortedTags = (tags: TagProp[], selectedTags: string[], selected: boolean): TagProp[] =>
+const sortedTags = (tags: TagStyle[], selectedTags: string[]): TagStyle[] =>
   tags
-    .filter(({ id }) => selectedTags.some((idSelected) => (idSelected === id) === selected))
+    .filter(({ id }) => selectedTags.some((idSelected) => idSelected === id))
     .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 
-const getSuggestions = (tags: TagProp[], inputValue: string): TagProp[] => {
+const getSuggestions = (tags: TagStyle[], inputValue: string): TagStyle[] => {
   if (inputValue === '') {
     return [];
   }
@@ -91,12 +91,10 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         onCreateTag={onCreateTag}
         onToggleTag={onToggleTag}
         setInputValue={setInputValue}
-        addedTags={sortedTags(tags, tagsSelected, true)}
+        addedTags={sortedTags(tags, tagsSelected)}
         expanded={expanded}
         setExpanded={setExpanded}
         dropdownMaxHeight={dropdownMaxHeight}
-        name={inputIdRef.current}
-        id={inputIdRef.current}
         inline={inline}
         scrollAnchorElement={containerRef}
       />

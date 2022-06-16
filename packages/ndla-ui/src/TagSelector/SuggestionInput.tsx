@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, ReactNode, RefObject, ChangeEvent, KeyboardEvent } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
@@ -17,7 +17,7 @@ import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { uuid } from '@ndla/util';
 import Suggestions from './Suggestions';
-import type { TagProp } from './TagSelector';
+import type { TagStyle } from './TagSelector';
 
 const Cross = styled(CrossRaw)`
   margin-left: ${spacing.xxsmall};
@@ -27,22 +27,19 @@ const SuggestionInputContainer = styled.div`
   margin-bottom: ${spacing.large};
 `;
 
+const StyledInput = styled.input`
+  flex-grow: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  ${fonts.sizes(18)};
+`;
 const StyledInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${spacing.xsmall};
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.greyLighter};
-  input {
-    flex-grow: 1;
-    border: 0;
-    outline: none;
-    background: transparent;
-    ${fonts.sizes(18)};
-  }
-  button {
-    min-height: 42px;
-  }
   transition: border-color ${animations.durations.normal} ease;
   border-radius: ${misc.borderRadius};
   &:focus-within {
@@ -56,21 +53,19 @@ const CombinedInputAndDropdownWrapper = styled.div`
 `;
 
 interface SuggestionInputProps {
-  suggestions: TagProp[];
+  suggestions: TagStyle[];
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   setExpanded: (expanded: boolean) => void;
   expanded: boolean;
   onToggleTag: (id: string) => void;
   setInputValue: (value: string) => void;
   onCreateTag: (tagName: string) => void;
-  addedTags: TagProp[];
-  name: string;
-  id: string;
+  addedTags: TagStyle[];
   dropdownMaxHeight: string;
-  prefix?: string | React.ReactNode;
+  prefix?: string | ReactNode;
   inline?: boolean;
-  scrollAnchorElement: React.RefObject<HTMLDivElement>;
+  scrollAnchorElement: RefObject<HTMLDivElement>;
 }
 
 const SuggestionInput = ({
@@ -135,7 +130,7 @@ const SuggestionInput = ({
           </Button>
         ))}
         <CombinedInputAndDropdownWrapper>
-          <input
+          <StyledInput
             placeholder={t('tagSelector.placeholder')}
             value={value}
             autoComplete="off"
@@ -157,7 +152,7 @@ const SuggestionInput = ({
               setHasFocus(true);
             }}
             ref={inputRef}
-            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
               if (e.key === 'Escape') {
                 setExpanded(false);
                 e.preventDefault();

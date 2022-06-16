@@ -19,6 +19,10 @@ Center.propTypes = {
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
+export const GapHelper = ({ children }) => (
+  <div style={{ gap: '12px', display: 'flex', alignItems: 'center' }}>{children}</div>
+);
+
 export const InlineContainer = ({ children }) => <div className="inline-container">{children}</div>;
 
 InlineContainer.propTypes = {

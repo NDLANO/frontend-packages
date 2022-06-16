@@ -1,42 +1,50 @@
 /**
- * Copyright (c) 2017-present, NDLA.
+ * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-
-import { OneColumn, LayoutItem, Article, SubjectMaterialBadge, constants } from '@ndla/ui';
-
-import RelatedArticleListExample from '../article/RelatedArticleListExample';
-import Resources from '../molecules/resources';
-
-import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
+import React, { useEffect, useMemo } from 'react';
+// @ts-ignore
+import { Remarkable } from 'remarkable';
+import { Article, OneColumn, TasksAndActivitiesBadge, constants, Figure } from '@ndla/ui';
+// @ts-ignore
+import { initArticleScripts } from '@ndla/article-scripts';
+//@ts-ignore
 import FigureImage from '../article/FigureImage';
+//@ts-ignore
+import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
+//@ts-ignore
 import LicenseBox from '../article/LicenseBox';
-import NotionExample from '../molecules/NotionExample';
-import NotionBlock from '../molecules/NotionBlock';
-
+import NotionExample from './NotionExample';
+import NotionList from './NotionList';
 const { contentTypes } = constants;
 
-const ArticleLearningMaterial = ({ accessRestricted }) => {
-  const { t } = useTranslation();
+const ConceptBlockListExample = () => {
+  const markdown = useMemo(() => {
+    const md = new Remarkable({ breaks: true });
+    md.inline.ruler.enable(['sub', 'sup']);
+    md.block.ruler.disable(['list']);
+    return md;
+  }, []);
+
+  useEffect(() => {
+    initArticleScripts();
+  }, []);
   return (
-    <OneColumn>
+    <OneColumn cssModifier="narrow">
       <Article
-        // eslint-disable-next-line no-console
-        onAddToFavorites={() => console.log('add to favorites')}
-        addToFavoritesLabel="Legg til i favoritter"
-        removeFromFavoritesLabel="Fjern fra favoritter"
-        isFavorite={false}
+        messages={{
+          label: 'Fagstoff',
+        }}
+        renderMarkdown={(text: string) => markdown.render(text)}
         article={{
           title: 'Artikkel fagstoff',
           introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
           published: '24.04.2018',
-          content: () => (
+          content: (
             <>
               <p>
                 En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet
@@ -58,24 +66,33 @@ const ArticleLearningMaterial = ({ accessRestricted }) => {
                 klassen.
               </p>
               <FigureImage alt="" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />
+
+              <Figure type="full">
+                <NotionList
+                  title="Liste med forklaringer"
+                  notions={[{ type: 'image' }, { type: 'h5p' }, { type: 'video' }]}></NotionList>
+              </Figure>
               <p>
                 En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet
-                av noen få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
+                av noend få minutter skal du få andre til å tenne på idéen din og se potensialet i den.
               </p>
-              <NotionBlock type="image" />
               <p>
                 Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den
                 filmen du planlegger å lage, tydeligere for både deg selv og dem du eventuelt jobber sammen med i
                 klassen.
               </p>
-              <RelatedArticleListExample />
             </>
           ),
-          footNotes: '',
+          footNotes: [],
           copyright: {
             license: { license: 'CC-BY-SA-4.0' },
-            creators: [{ name: 'Cecilie Isaksen Eftedal' }, { name: 'Siv Mundal' }, { name: 'Pål Frønsdal' }],
-            rightsholders: [{ name: 'Riksarkivet' }],
+            creators: [
+              { name: 'Cecilie Isaksen Eftedal', type: 'author' },
+              { name: 'Siv Mundal', type: 'author' },
+              { name: 'Pål Frønsdal', type: 'author' },
+            ],
+            processors: [],
+            rightsholders: [{ name: 'Riksarkivet', type: 'owner' }],
           },
         }}
         licenseBox={<LicenseBox />}
@@ -83,21 +100,17 @@ const ArticleLearningMaterial = ({ accessRestricted }) => {
         competenceGoalTypes={['LK20', 'LK06']}
         copyPageUrlLink={window.location.href}
         printUrl={window.location.href}
-        icon={<SubjectMaterialBadge background size="large" />}
+        icon={<TasksAndActivitiesBadge background size="large" />}
         id="mainContentId"
         locale="nb"
-        messages={{ label: 'Fagstoff' }}
-        modifier={contentTypes.SUBJECT_MATERIAL}
+        modifier={contentTypes.TASKS_AND_ACTIVITIES}
         notions={{
           list: [NotionExample],
+          related: [],
         }}
-        accessMessage={accessRestricted && t('article.access.onlyTeacher')}
       />
-      <LayoutItem layout="extend">
-        <Resources showTopicHeading />
-      </LayoutItem>
     </OneColumn>
   );
 };
 
-export default ArticleLearningMaterial;
+export default ConceptBlockListExample;

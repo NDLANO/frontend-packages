@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
-import { TagSelector, TagProp, SnackBar, SnackBarItemProp } from '@ndla/ui';
+import { TagSelector, TagStyle, SnackBar, SnackBarItem } from '@ndla/ui';
 import { spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
@@ -37,7 +37,7 @@ type DialogExampleProps = {
   toggleIsFavorite: () => void;
   isFavorite: boolean;
   isOpen: boolean;
-  setSnackBarMessage: (params: SnackBarItemProp) => void;
+  setSnackBarMessage: (params: SnackBarItem) => void;
 };
 
 const DialogExample = ({
@@ -49,7 +49,7 @@ const DialogExample = ({
   setSnackBarMessage,
 }: DialogExampleProps) => {
   const { t } = useTranslation();
-  const [tags, setTags] = useState<TagProp[]>([
+  const [tags, setTags] = useState<TagStyle[]>([
     { name: 'Matte', id: '1' },
     { name: 'Norsk', id: '2' },
     { name: 'Til eksamen', id: '3' },
@@ -94,7 +94,6 @@ const DialogExample = ({
                 onClick={() => {
                   setSnackBarMessage({
                     snackbarItemId: Math.random().toString(),
-                    type: 'info',
                     children: <>{isFavorite ? 'Fjernet fra favoritter' : 'Lagt til i favoritter!'}</>,
                   });
                   toggleIsFavorite();
@@ -113,7 +112,7 @@ const DialogExample = ({
 const MyNdlaAddToFavoritesExample = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [snackBarMessage, setSnackBarMessage] = useState<SnackBarItemProp>({});
+  const [snackBarMessage, setSnackBarMessage] = useState<SnackBarItem>({});
   return (
     <div>
       <IconButtonDualStates
@@ -139,9 +138,7 @@ const MyNdlaAddToFavoritesExample = () => {
       <SnackBar
         id={SNACKBAR_ID_ADD_TO_FAVORITES}
         key={snackBarMessage.snackbarItemId}
-        type={snackBarMessage.type}
         snackbarItemId={snackBarMessage?.snackbarItemId}
-        closeAriaLabel="Lukk"
         onKill={(id: string | undefined) => {
           // eslint-disable-next-line
           console.log(`snack with id ${id || 'unknown'} removed`);

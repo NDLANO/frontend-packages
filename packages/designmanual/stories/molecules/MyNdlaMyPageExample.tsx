@@ -83,6 +83,12 @@ interface MyPageProps {
   recentFavorites?: ListResourceProps[];
 }
 
+const StyledResourceList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xsmall};
+`;
+
 export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPageProps) => {
   const { t } = useTranslation();
 
@@ -108,20 +114,22 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
       </Terms>
       <Resources>
         <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
-        {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
-          <ListResource
-            title={title}
-            topics={topics}
-            tags={tags}
-            description={description}
-            resourceImage={{
-              alt: resourceImage.alt,
-              src: resourceImage.src,
-            }}
-            link={link}
-            key={link}
-          />
-        ))}
+        <StyledResourceList>
+          {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
+            <ListResource
+              title={title}
+              topics={topics}
+              tags={tags}
+              description={description}
+              resourceImage={{
+                alt: resourceImage.alt,
+                src: resourceImage.src,
+              }}
+              link={link}
+              key={link}
+            />
+          ))}
+        </StyledResourceList>
       </Resources>
 
       <ButtonsWrapper>

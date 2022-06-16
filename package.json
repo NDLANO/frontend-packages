@@ -88,6 +88,7 @@
     "react-router-dom": "^6.3.0",
     "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.1",
+    "remarkable": "^2.0.1",
     "rimraf": "2.6.3",
     "sass": "^1.49.7",
     "serve": "^10.1.2",

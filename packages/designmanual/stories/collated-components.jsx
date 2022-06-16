@@ -34,7 +34,7 @@ import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import NotionExample from './organisms/NotionExample';
-import Breadcrumb, { BreadcrumbBlock } from './molecules/breadcrumbs';
+import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -205,14 +205,14 @@ storiesOf('Sammensatte moduler', module)
   ))
   .add('Brødsmulesti', () => (
     <Center>
-      <h2 className="u-heading">Brødsmulesti eksempel</h2>
-      <Breadcrumb />
-      <h2 className="u-heading">Brødsmulesti-blokkeksempel</h2>
-      <p>
-        Blokkvarianten av brødsmulestien følger brukeren nedover siden. Den ligger i header. På små enheter vil
-        blokkvarianten gjemmes. Brødsmulestien er fortsatt tilgjengelig øverst på siden.
-      </p>
-      <BreadcrumbBlock />
+      <h2 className="u-heading">Enkel brødsmulesti</h2>
+      <BreadcrumbDefault />
+      <h2 className="u-heading">Enkel brødsmulesti. Automatisk redusering av bredde</h2>
+      <BreadcrumbDefault autoCollapse />
+      <h2 className="u-heading">Brødsmulesti med header og styling</h2>
+      <BreadcrumbWithHeader />
+      <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
+      <BreadcrumbWithHome />
     </Center>
   ))
   .add('Begrepsforklaring', () => (

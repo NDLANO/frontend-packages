@@ -13,7 +13,7 @@ export interface IconButtonDualStatesProps extends Props {
   inactiveIcon: ReactElement;
 }
 
-interface StyledIconButtonProps extends IconButtonProps {
+interface StyledIconButtonProps {
   active: boolean;
 }
 

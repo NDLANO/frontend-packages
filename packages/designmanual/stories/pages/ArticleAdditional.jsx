@@ -20,6 +20,7 @@ const { contentTypes } = constants;
 const ArticleAdditional = () => (
   <OneColumn>
     <Article
+      hideAddToFavoriteButton
       article={{
         title: 'Artikkel Tilleggsstoff?',
         introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',

@@ -9,14 +9,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Check } from '@ndla/icons/editor';
-import { spacing, spacingUnit, colors, misc, animations, fonts, shadows } from '@ndla/core';
-import type { TagProp } from './TagSelector';
+import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
+import Button from '@ndla/button';
+import type { TagStyle } from './TagSelector';
 
 const ABSOLUTE_DROPDOWN_MAXHEIGHT = '360px';
 
 const CheckedIcon = styled(Check)`
-  width: ${spacingUnit}px;
-  height: ${spacingUnit}px;
+  width: ${spacing.normal};
+  height: ${spacing.normal};
   fill: ${colors.brand.light};
 `;
 
@@ -45,38 +46,26 @@ const Suggestions = styled.div<SuggestionsWrapperProps>`
   ${animations.fadeIn(animations.durations.fast)}
 `;
 
-const SuggestionItem = styled.div`
+const SuggestionList = styled.div`
   opacity: 0;
   ${animations.fadeInBottom()}
   animation-delay: ${animations.durations.fast};
   animation-fill-mode: forwards;
-  display: flex;
-  flex-direction: column;
 `;
 
 interface SuggestionButtonProps {
   isHighlighted: boolean;
 }
 
-const SuggestionButton = styled.button<SuggestionButtonProps>`
+const SuggestionButton = styled(Button)<SuggestionButtonProps>`
   display: flex;
-  align-items: space-between;
   justify-content: space-between;
-  border: 0;
-  outline: 0;
-  background: ${({ isHighlighted }) => (isHighlighted ? colors.brand.lighter : 'transparent')};
-  width: 100%;
-  padding: ${spacing.small};
   ${fonts.sizes(18)};
   transition: ${misc.transition.default};
-  &:not(:disabled) {
-    cursor: pointer;
-    color: ${colors.brand.primary};
-    &:hover {
-      background: ${colors.brand.lighter};
-    }
-  }
+  font-weight: 400;
+
   &:disabled {
+    color: ${colors.brand.greyMedium};
     &:hover {
       svg {
         fill: ${colors.brand.greyLight};
@@ -88,7 +77,7 @@ const SuggestionButton = styled.button<SuggestionButtonProps>`
 interface Props {
   inline?: boolean;
   dropdownMaxHeight: string;
-  suggestions: TagProp[];
+  suggestions: TagStyle[];
   currentHighlightedIndex: number;
   onToggleTag: (id: string) => void;
   hasBeenAdded: (id: string) => boolean;
@@ -104,12 +93,16 @@ const TagSuggestions = ({
 }: Props) => (
   <SuggestionsWrapper>
     <Suggestions inline={inline} dropdownMaxHeight={dropdownMaxHeight}>
-      <SuggestionItem role="listbox">
+      <SuggestionList role="listbox">
         {suggestions.map(({ id, name }, index: number) => {
           const alreadyAdded = hasBeenAdded(id);
           const selected = index === currentHighlightedIndex;
           return (
             <SuggestionButton
+              borderShape="sharpened"
+              ghostPill
+              width="full"
+              textAlign="left"
               data-suggestionbutton
               role="option"
               aria-selected={selected}
@@ -124,7 +117,7 @@ const TagSuggestions = ({
             </SuggestionButton>
           );
         })}
-      </SuggestionItem>
+      </SuggestionList>
     </Suggestions>
   </SuggestionsWrapper>
 );

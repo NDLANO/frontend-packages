@@ -30,7 +30,7 @@ import { Cross } from '@ndla/icons/action';
 import { useWindowSize } from '@ndla/hooks';
 import Resources from '../molecules/resources';
 import ArticleLoader from '../article/ArticleLoader';
-import Breadcrumb from '../molecules/breadcrumbs';
+import { BreadcrumbWhiteWithHome, BreadcrumbWithHome } from '../molecules/breadcrumbs';
 
 async function fetchLearningPathArticle({ learningPathId, stepId }) {
   return await fetch(
@@ -257,9 +257,7 @@ const LearningPathExample = ({ invertedStyle }) => {
     <>
       <LearningPathWrapper invertedStyle={invertedStyle}>
         <div className="c-hero__content">
-          <section>
-            <Breadcrumb invertedStyle={invertedStyle} />
-          </section>
+          <section>{invertedStyle ? <BreadcrumbWhiteWithHome /> : <BreadcrumbWithHome />}</section>
         </div>
         <LearningPathContent>
           {mobileView ? <LearningPathMobileHeader /> : learningPathMenu}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021-present, NDLA.
+ * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,29 +8,87 @@
 
 import React, { ReactElement, useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { IconButton } from '@ndla/button';
-import { spacing, shadows, misc, fonts } from '@ndla/core';
+import Button, { IconButton } from '@ndla/button';
+import { spacing, spacingUnit, shadows, misc, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { Cross } from '@ndla/icons/action';
+import { useTranslation } from 'react-i18next';
+
+const StyledActionButton = styled(Button)`
+  color: ${colors.white};
+  padding: ${spacing.xsmall} ${spacing.small};
+  box-shadow: none;
+  &:focus,
+  &:hover {
+    color: ${colors.brand.greyLightest};
+    background: ${colors.brand.greyDark};
+    &:after {
+      opacity: 0;
+    }
+  }
+  &:after {
+    content: '';
+    display: flex;
+    height: 1px;
+    width: 100%;
+    background: ${colors.white};
+    transform: translateY(-2px);
+  }
+`;
+
+const StyledIconButton = styled(IconButton)`
+  svg {
+    color: ${colors.brand.greyMedium};
+  }
+  &:hover,
+  &:focus {
+    background: ${colors.brand.greyDark};
+    svg {
+      color: ${colors.brand.greyLightest};
+    }
+  }
+`;
+
+const WrapperForButtons = styled.div`
+  display: flex;
+  ${mq.range({ from: breakpoints.tablet })} {
+    gap: ${spacing.xxsmall};
+  }
+`;
 
 interface StyledProps {
-  type?: 'success' | 'error' | 'info';
   expired?: boolean;
 }
 
-const StyledNotification = styled.div<StyledProps>`
-  background: ${(props) => '#C8E4D2'};
+const Wrapper = styled.div`
   position: fixed;
   z-index: 99999;
-  box-shadow: ${shadows.levitate1};
   bottom: ${spacing.small};
   left: ${spacing.small};
   right: ${spacing.small};
-  padding: ${spacing.small} ${spacing.medium};
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledNotification = styled.div<StyledProps>`
+  max-width: 960px;
+  ${fonts.sizes(18, 1.25)};
+  background: ${colors.text.primary};
+  color: ${colors.white};
+  box-shadow: ${shadows.levitate1};
+  padding: ${spacing.small};
+  padding-right: ${spacing.xsmall};
+  gap: ${spacing.medium};
+  ${mq.range({ from: breakpoints.tablet })} {
+    gap: ${spacing.large};
+    padding: ${spacing.small} ${spacing.normal} ${spacing.small} ${spacing.medium};
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    gap: ${spacingUnit * 3};
+  }
   display: flex;
   align-items: center;
   > div:first-of-type {
     flex-grow: 1;
-    padding-left: ${spacing.medium};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,19 +121,23 @@ const StyledNotification = styled.div<StyledProps>`
   font-family: ${fonts.sans};
 `;
 
-export interface SnackBarItemProp {
-  type?: 'success' | 'error' | 'info';
+export interface SnackBarItem {
   children?: ReactElement;
   snackbarItemId?: string;
 }
 
-export interface SnackBarProps extends SnackBarItemProp {
+interface SnackBarProps extends SnackBarItem {
   id: string;
-  closeAriaLabel?: string;
   onKill?: (id: string | undefined) => void;
+  actionButtons?: {
+    text: string;
+    onClick: () => void;
+    ariaLabel: string;
+  }[];
 }
 
-const SnackBar = ({ onKill, type, children, snackbarItemId, closeAriaLabel, id }: SnackBarProps) => {
+const SnackBar = ({ onKill, children, snackbarItemId, id, actionButtons }: SnackBarProps) => {
+  const { t } = useTranslation();
   const [expired, setExpired] = useState(false);
   const timeoutId = useRef<null | ReturnType<typeof setTimeout>>();
   useEffect(() => {
@@ -91,23 +153,30 @@ const SnackBar = ({ onKill, type, children, snackbarItemId, closeAriaLabel, id }
     };
   }, [snackbarItemId, timeoutId]);
   return (
-    <StyledNotification
-      id={id}
-      aria-live="polite"
-      type={type}
-      expired={expired || !children}
-      onAnimationEnd={() => expired && onKill && onKill(snackbarItemId)}>
-      {children && (
-        <>
-          <div>{children}</div>
-          <div>
-            <IconButton aria-label={closeAriaLabel || 'lukk'} size="xsmall" outline onClick={() => setExpired(true)}>
-              <Cross />
-            </IconButton>
-          </div>
-        </>
-      )}
-    </StyledNotification>
+    <Wrapper>
+      <StyledNotification
+        id={id}
+        aria-live="polite"
+        expired={expired || !children}
+        onAnimationEnd={() => expired && onKill && onKill(snackbarItemId)}>
+        {children && (
+          <>
+            <div>{children}</div>
+            <WrapperForButtons>
+              {actionButtons &&
+                actionButtons.map(({ onClick, text, ariaLabel }) => (
+                  <StyledActionButton key={text} link aria-label={ariaLabel} onClick={onClick}>
+                    {text}
+                  </StyledActionButton>
+                ))}
+              <StyledIconButton aria-label={t('snackbar.close')} size="xsmall" outline onClick={() => setExpired(true)}>
+                <Cross />
+              </StyledIconButton>
+            </WrapperForButtons>
+          </>
+        )}
+      </StyledNotification>
+    </Wrapper>
   );
 };
 

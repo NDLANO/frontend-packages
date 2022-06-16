@@ -7,11 +7,16 @@
  */
 
 import React, { useState, useRef, useEffect, ReactNode } from 'react';
-import { spacingUnit } from '@ndla/core';
+import styled from '@emotion/styled';
+import { spacingUnit, fonts } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import SuggestionInput from './SuggestionInput';
 
 const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
+
+const StyledLabel = styled.label`
+  font-weight: ${fonts.weight.semibold};
+`;
 
 export interface TagStyle {
   name: string;
@@ -79,7 +84,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
 
   return (
     <div ref={containerRef}>
-      <label htmlFor={inputIdRef.current}>{label}</label>
+      <StyledLabel htmlFor={inputIdRef.current}>{label}</StyledLabel>
       <SuggestionInput
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;

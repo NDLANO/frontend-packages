@@ -14,13 +14,12 @@ interface Props extends IconProps {
   children?: ReactNode;
 }
 
-const ViewListBlack = (props: Props) => (
+const HashTag = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <rect fill="none" height="24" width="24" />
-      <path d="M3,14h4v-4H3V14z M3,19h4v-4H3V19z M3,9h4V5H3V9z M8,14h13v-4H8V14z M8,19h13v-4H8V19z M8,5v4h13V5H8z" />
+      <path d="M20 10V8H16V4H14V8H10V4H8V8H4V10H8V14H4V16H8V20H10V16H14V20H16V16H20V14H16V10H20ZM14 14H10V10H14V14Z" />
     </g>
   </Icon>
 );
 
-export default ViewListBlack;
+export default HashTag;

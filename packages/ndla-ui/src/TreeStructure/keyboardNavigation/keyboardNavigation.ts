@@ -19,12 +19,12 @@ const traverseUpwards = (
   paths: number[],
   index: number,
 ) => {
-  let findParent = inital;
+  let findParent: FolderStructureProps[] = inital;
   const parentNextIds: (string | false)[] = [];
   paths.forEach((pathIndex) => {
-    const nextParent = findParent[pathIndex + 1];
+    const nextParent = findParent ? findParent[pathIndex + 1] : undefined;
     parentNextIds.push(nextParent?.id || false);
-    findParent = findParent[pathIndex].data as FolderStructureProps[];
+    findParent = findParent[pathIndex].data || [];
   });
   if (!parentNextIds.length) {
     parentNextIds.push(findParent[index + 1]?.id || false);
@@ -45,7 +45,6 @@ const keyboardNavigation = ({
   focusedFolderId: id,
   openFolders,
 }: KeyboardNavigationProps): string | undefined => {
-
   if (e.key === ' ' && document.activeElement?.nodeName === 'INPUT') {
     return;
   }

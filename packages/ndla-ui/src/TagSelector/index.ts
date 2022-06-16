@@ -6,8 +6,8 @@
  *
  */
 
-import TagSelector, { TagProp } from './TagSelector';
+import TagSelector, { TagStyle } from './TagSelector';
 
-export type { TagProp };
+export type { TagStyle };
 
 export { TagSelector };

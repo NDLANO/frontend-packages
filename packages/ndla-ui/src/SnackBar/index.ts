@@ -8,6 +8,6 @@
 
 import SnackBar from './SnackBar';
 
-export type { SnackBarItemProp } from './SnackBar';
+export type { SnackBarItem } from './SnackBar';
 
 export { SnackBar };

@@ -7,11 +7,11 @@
  */
 
 import React, { useState } from 'react';
-import { SnackBar, SnackBarItemProp } from '@ndla/ui';
+import { SnackBar, SnackBarItem } from '@ndla/ui';
 import Button from '@ndla/button';
 
 const SnackBarExample = () => {
-  const [snack, setSnack] = useState<SnackBarItemProp>({});
+  const [snack, setSnack] = useState<SnackBarItem>({});
   const snackAriaId = 'snack-id';
   return (
     <div>

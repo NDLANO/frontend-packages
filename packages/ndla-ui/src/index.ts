@@ -221,8 +221,8 @@ export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
 export { ResourcesView, ResourceElement, Breadcrumbs, VerticalNavigation, FolderElement } from './MyNdla';
-export type { TagProp } from './TagSelector';
+export type { TagStyle } from './TagSelector';
 export { TagSelector } from './TagSelector';
 
-export type { SnackBarItemProp } from './SnackBar';
+export type { SnackBarItem } from './SnackBar';
 export { SnackBar } from './SnackBar';

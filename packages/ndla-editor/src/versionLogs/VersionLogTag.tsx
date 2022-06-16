@@ -10,11 +10,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts, misc } from '@ndla/core';
 
-type StyledTagProps = {
+type StyledTagStyles = {
   color: 'yellow' | 'green' | 'red';
 };
 
-const StyledTag = styled.span<StyledTagProps>`
+const StyledTag = styled.span<StyledTagStyles>`
   display: flex;
   background: ${(props) => colors.support[props.color]};
   ${fonts.sizes(16, 1.1)};
@@ -25,7 +25,7 @@ const StyledTag = styled.span<StyledTagProps>`
   margin-left: ${spacing.small};
 `;
 
-interface Props extends StyledTagProps {
+interface Props extends StyledTagStyles {
   label: string;
 }
 

@@ -121,12 +121,12 @@ const StyledNotification = styled.div<StyledProps>`
   font-family: ${fonts.sans};
 `;
 
-export interface SnackBarItemProp {
+export interface SnackBarItem {
   children?: ReactElement;
   snackbarItemId?: string;
 }
 
-interface SnackBarProps extends SnackBarItemProp {
+interface SnackBarProps extends SnackBarItem {
   id: string;
   onKill?: (id: string | undefined) => void;
   actionButtons?: {

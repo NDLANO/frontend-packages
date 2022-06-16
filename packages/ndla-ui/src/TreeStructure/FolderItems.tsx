@@ -55,7 +55,6 @@ const FolderItems = ({
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
-      console.log('focusedFolderId', focusedFolderId);
       return (
         <StyledLI key={id} role="treeitem">
           <div>

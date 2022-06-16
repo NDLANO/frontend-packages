@@ -121,7 +121,6 @@ const TreeStructure = ({
   const disableAddFolderButton =
     markedFolderId === undefined || getPathOfFolder(data, markedFolderId).length >= MAX_LEVEL_FOR_FOLDERS;
 
-  console.log('!!!', focusedFolderId);
   return (
     <div
       ref={treestructureRef}

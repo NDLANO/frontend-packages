@@ -45,7 +45,7 @@ const keyboardNavigation = ({
   focusedFolderId: id,
   openFolders,
 }: KeyboardNavigationProps): string | undefined => {
-  console.log('key', id);
+
   if (e.key === ' ' && document.activeElement?.nodeName === 'INPUT') {
     return;
   }

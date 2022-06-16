@@ -299,7 +299,8 @@ export const topics = [
 
 export const subjectCategories = [
   {
-    name: 'Fellesfag',
+    name: 'Aktive',
+    visible: true,
     subjects: [
       { name: 'Samfunnsfag (Vg2)', id: 'common_subject_1', path: '#', url: '#' },
       { name: 'Samfunnskunnskap', id: 'common_subject_2', path: '#', url: '#' },
@@ -400,11 +401,6 @@ export const subjectCategories = [
         url: '#',
       },
       { name: 'Naturfag (SF)', id: 'common_subject_64', path: '#', url: '#' },
-    ],
-  },
-  {
-    name: 'Yrkesfag',
-    subjects: [
       { name: 'Sikkerhet (SS-SSS Vg2)', id: 'programme_subject_1', path: '#', url: '#' },
       {
         name: 'Økonomi og administrasjon (SS-SSS Vg2)',
@@ -709,11 +705,6 @@ export const subjectCategories = [
         path: '#',
         url: '#',
       },
-    ],
-  },
-  {
-    name: 'Programfag SF',
-    subjects: [
       { name: 'Biologi 1', id: 'study_specialization_subject_1', path: '#', url: '#' },
       { name: 'Kinesisk 1', id: 'study_specialization_subject_2', path: '#', url: '#' },
       { name: 'Kinesisk 2', id: 'study_specialization_subject_3', path: '#', url: '#' },

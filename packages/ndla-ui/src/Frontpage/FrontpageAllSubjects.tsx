@@ -216,7 +216,7 @@ const FrontpageAllSubjects = ({
       });
   });
 
-  data.unshift({
+  data.push({
     title: t('frontpageMenu.allsubjects'),
     content: renderList(allSubjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects),
   });

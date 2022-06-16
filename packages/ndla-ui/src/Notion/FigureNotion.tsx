@@ -7,7 +7,7 @@
 
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { getGroupedContributorDescriptionList, getLicenseByAbbreviation } from '@ndla/licenses';
+import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Figure, FigureCaption, FigureLicenseDialog, FigureType } from '../Figure';
@@ -47,15 +47,9 @@ const FigureNotion = ({
 }: Props) => {
   const { t, i18n } = useTranslation();
   const license = getLicenseByAbbreviation(licenseString, i18n.language);
-  const { creators, processors, rightsholders } = copyright ?? {};
-  const contributors = getGroupedContributorDescriptionList(
-    {
-      creators: creators ?? [],
-      processors: processors ?? [],
-      rightsholders: rightsholders ?? [],
-    },
-    i18n.language,
-  ).map((i) => ({ name: i.description, type: i.label }));
+  const { creators, rightsholders, processors } = getLicenseCredits(copyright);
+
+  const authors = creators.length || rightsholders.length ? [...creators, ...rightsholders] : [...processors];
 
   return (
     <Figure resizeIframe={resizeIframe} id={figureId} type={figureType || 'full-column'}>
@@ -68,12 +62,12 @@ const FigureNotion = ({
               figureId={figureId}
               id={id}
               reuseLabel={t(`${type}.reuse`)}
-              authors={contributors}
+              authors={authors}
               licenseRights={license.rights}
               hideIconsAndAuthors={hideIconsAndAuthors}>
               <FigureLicenseDialog
                 id={id}
-                authors={contributors}
+                authors={authors}
                 locale={i18n.language}
                 title={title}
                 origin={copyright?.origin}

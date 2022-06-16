@@ -12,6 +12,7 @@ import { initArticleScripts } from '@ndla/article-scripts';
 import { useTranslation } from 'react-i18next';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { parseMarkdown } from '@ndla/util';
+import { getLicenseCredits } from '@ndla/licenses';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogLicenses } from '@ndla/notion';
 import { Notion as UINotion } from '.';
 import { NotionImage } from './NotionImage';
@@ -57,6 +58,12 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
   const visualElementId = `visual-element-${concept.id}`;
   const { t } = useTranslation();
 
+  const { creators, rightsholders, processors } = getLicenseCredits(concept.copyright);
+
+  const authors = (creators.length || rightsholders.length ? [...creators, ...rightsholders] : [...processors]).map(
+    (author) => author.name,
+  );
+
   useEffect(() => {
     if (!disableScripts) {
       initArticleScripts();
@@ -94,7 +101,11 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
                       ) : undefined}
                       <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
                     </NotionDialogContent>
-                    <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source={concept.source} />
+                    <NotionDialogLicenses
+                      authors={authors}
+                      license={concept.copyright?.license?.license ?? ''}
+                      source={concept.source}
+                    />
                   </>
                 }>
                 {concept.visualElement.image && (
@@ -129,7 +140,11 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
 
                       <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
                     </NotionDialogContent>
-                    <NotionDialogLicenses license={concept.copyright?.license?.license ?? ''} source={concept.source} />
+                    <NotionDialogLicenses
+                      authors={authors}
+                      license={concept.copyright?.license?.license ?? ''}
+                      source={concept.source}
+                    />
                   </>
                 }>
                 {concept.image && (

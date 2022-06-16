@@ -47,7 +47,7 @@ const ConceptBlockExample = () => {
           title: 'Artikkel fagstoff',
           introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',
           published: '24.04.2018',
-          content: (
+          content: () => (
             <>
               <p>
                 En pitch er en kortvarig framføring av en idé for en potensiell samarbeidspartner eller kunde. I løpet
@@ -94,7 +94,7 @@ const ConceptBlockExample = () => {
           },
         }}
         licenseBox={<LicenseBox />}
-        competenceGoals={() => <CompetenceGoalListExample />}
+        competenceGoals={<CompetenceGoalListExample />}
         competenceGoalTypes={['LK20', 'LK06']}
         copyPageUrlLink={window.location.href}
         printUrl={window.location.href}

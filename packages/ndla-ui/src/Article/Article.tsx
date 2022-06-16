@@ -108,6 +108,7 @@ type Props = {
   messageBoxLinks?: [];
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
+    | ReactNode
     | null;
   competenceGoalTypes?: string[];
   id: string;

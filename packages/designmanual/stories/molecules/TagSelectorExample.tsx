@@ -43,7 +43,7 @@ const TagSelectorExample = () => {
     <Container>
       <TagSelector
         prefix="#"
-        label="Tag an animal:"
+        label="Tilknytt tagger"
         tags={exampleTags}
         tagsSelected={exampleTagsSelected}
         onToggleTag={(id: string) => {

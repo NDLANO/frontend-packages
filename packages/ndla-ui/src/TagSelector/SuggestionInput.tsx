@@ -86,6 +86,7 @@ const SuggestionInput = ({
   const { t } = useTranslation();
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
   const [hasFocus, setHasFocus] = useState(false);
+  const initalRender = useRef(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const suggestionIdRef = useRef<string>(uuid());
@@ -95,7 +96,11 @@ const SuggestionInput = ({
   }, [suggestions]);
 
   useEffect(() => {
-    inputRef.current?.focus();
+    if (!initalRender.current) {
+      inputRef.current?.focus();
+    } else {
+      initalRender.current = false;
+    }
   }, [addedTags]);
 
   useEffect(() => {
@@ -143,10 +148,9 @@ const SuggestionInput = ({
             }}
             onChange={onChange}
             onFocus={() => {
-              if (isMobile) {
-                scrollAnchorElement?.current?.scrollIntoView({
+              if (isMobile && scrollAnchorElement?.current) {
+                scrollAnchorElement.current.scrollIntoView({
                   behavior: 'smooth',
-                  block: 'start',
                 });
               }
               setHasFocus(true);

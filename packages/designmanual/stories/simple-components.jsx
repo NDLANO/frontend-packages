@@ -22,6 +22,7 @@ import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
+import TreeStructureExample from './molecules/TreeStructureExample';
 
 const floatVideo = (left) => (
   <Fragment>
@@ -730,6 +731,17 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
       <OneColumn>
         <UkraineBannerExample />
+      </OneColumn>
+    </div>
+  ))
+
+  .add('Treestruktur komponent', () => (
+    <div>
+      <StoryIntro title="Trestruktur komponent">
+        <p>Tree struktur</p>
+      </StoryIntro>
+      <OneColumn>
+        <TreeStructureExample />
       </OneColumn>
     </div>
   ));

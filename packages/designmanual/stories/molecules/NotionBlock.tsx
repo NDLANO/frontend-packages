@@ -107,6 +107,10 @@ const conceptData = {
           name: 'Fornavn Etternavn',
           type: 'writer',
         },
+        {
+          name: 'Annen Person',
+          type: 'writer',
+        },
       ],
       processors: [
         {
@@ -114,7 +118,12 @@ const conceptData = {
           type: 'correction',
         },
       ],
-      rightsholders: [],
+      rightsholders: [
+        {
+          name: 'Stort Selskap',
+          type: 'supplier',
+        },
+      ],
     },
     visualElement: {
       resource: 'iframe',

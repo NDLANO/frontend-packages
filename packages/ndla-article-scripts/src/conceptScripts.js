@@ -93,29 +93,33 @@ export const addShowConceptDefinitionClickListeners = () => {
 
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        popup.style.top = `${openBtnBottom - 500}px`;
+        popup.style.top = `${openBtnBottom - 200}px`;
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const popupTop = getElementOffset(popup).top;
         const popupHeight = popup.offsetHeight;
-        let offset = 0;
+        let scrollOffset = 0;
+
+        let mastheadHeight = 84;
+        if (typeof window !== 'undefined') {
+          const masthead = document.getElementById('masthead');
+          const height = masthead?.getBoundingClientRect().height;
+          if (height) {
+            mastheadHeight = height;
+          }
+        }
 
         const plainId = id.split('notion-')[1];
         const conceptNotionIdentifier = openBtn.closest(`#visual-element-${plainId}`);
         // checks if it is part of a notionblock
         if (conceptNotionIdentifier?.contains(openBtn)) {
-          // Positions the popup so that it does not expand the page
-          if (popupTop + popupHeight > documentHeight) {
-            popup.style.top = `${openBtnBottom - popupHeight}px`;
-          }
-
-          offset = -((viewportHeight - popupHeight) / 2);
+          scrollOffset = -(mastheadHeight + 50);
         } else {
           popup.style.top = `${openBtnBottom + 20}px`;
 
           if (popupTop + popupHeight < documentHeight) {
-            offset = -((viewportHeight - popupHeight) / 2);
+            scrollOffset = -((viewportHeight - popupHeight) / 2);
           } else {
-            offset = popupHeight;
+            scrollOffset = popupHeight;
           }
           if (popupTop + popupHeight > documentHeight) {
             const maxHeight = documentHeight - popupTop;
@@ -141,7 +145,7 @@ export const addShowConceptDefinitionClickListeners = () => {
         } else {
           jump(popup, {
             duration: 300,
-            offset,
+            offset: scrollOffset,
           });
         }
         popup.querySelectorAll('iframe').forEach((iframe) => {

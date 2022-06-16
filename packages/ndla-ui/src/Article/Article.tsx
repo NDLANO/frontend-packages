@@ -102,12 +102,13 @@ type Props = {
   icon?: ReactNode;
   licenseBox?: ReactNode;
   modifier?: string;
-  children: ReactNode;
+  children?: ReactNode;
   messages: Messages;
   locale: Locale;
   messageBoxLinks?: [];
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
+    | ReactNode
     | null;
   competenceGoalTypes?: string[];
   id: string;

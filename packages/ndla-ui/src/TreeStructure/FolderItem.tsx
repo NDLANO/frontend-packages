@@ -57,6 +57,7 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   margin: 0;
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
   flex-grow: 1;
+  box-shadow: none;
 `;
 
 const FolderNameLink = FolderName.withComponent('a');

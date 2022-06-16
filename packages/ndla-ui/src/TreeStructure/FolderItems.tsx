@@ -23,14 +23,12 @@ const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: ${({ firstLevel }) => (firstLevel ? -spacing.xsmall : spacing.normal)};
+  margin-left: ${({ firstLevel }) => (firstLevel ? `-${spacing.xsmall}` : spacing.normal)};
 `;
 
 const StyledLI = styled.li`
-  li {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
 `;
 
 const FolderItems = ({

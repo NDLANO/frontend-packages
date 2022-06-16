@@ -66,7 +66,7 @@ const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: Folder
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.select();
-      if (!isMobile) {
+      if (isMobile) {
         inputRef.current.scrollIntoView({ behavior: 'smooth' });
       }
     }

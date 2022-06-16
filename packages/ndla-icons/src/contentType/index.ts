@@ -25,4 +25,3 @@ export { default as SharedResource } from './SharedResource';
 export { default as SubjectMaterial } from './SubjectMaterial';
 export { default as Subject } from './Subject';
 export { default as TasksAndActivities } from './TasksAndActivities';
-export { default as ViewListBlack } from './ViewListBlack';

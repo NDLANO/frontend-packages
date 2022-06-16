@@ -14,6 +14,13 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Lag mappe',
+    newFolder: {
+      placeholder: 'Skriv navn på mappe',
+      defaultName: 'Ny mappe',
+    },
+  },
   tagSelector: {
     placeholder: 'Legg til tag',
     removeTag: 'Ta vekk tilknytninga til {{name}}',
@@ -968,6 +975,7 @@ const messages = {
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',
+    newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
     help: 'Hjelp',

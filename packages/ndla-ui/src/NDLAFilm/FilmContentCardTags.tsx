@@ -5,7 +5,7 @@ import { MovieResourceType } from './types';
 
 const StyledWrapperDiv = styled.div`
   transition: opacity 200ms ease;
-  padding: ${spacing.xsmall} ${spacing.xsmall};
+  padding: ${spacing.xsmall}
   opacity: 0;
   display: relative;
   z-index: 1;

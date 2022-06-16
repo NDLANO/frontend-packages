@@ -6,9 +6,9 @@
  *
  */
 
-import { FeideUserResponse } from '@ndla/ui';
+import { FeideUserApiType } from '@ndla/ui';
 
-export const feideUserLaerer: FeideUserResponse = {
+export const feideUserLaerer: FeideUserApiType = {
   cn: ['David LærerVGS Jonsen'],
   displayName: 'David LærerVGS Jonsen',
   eduPersonAffiliation: ['member', 'employee', 'faculty'],
@@ -157,7 +157,7 @@ export const feideUserLaerer: FeideUserResponse = {
   },
 };
 
-export const feideUserForeleser: FeideUserResponse = {
+export const feideUserForeleser: FeideUserApiType = {
   cn: ['Frank Foreleser Føllesen'],
   displayName: 'Frank Foreleser Føllesen',
   eduPersonAffiliation: ['member', 'employee', 'faculty'],

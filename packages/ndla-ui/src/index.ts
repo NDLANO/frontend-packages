@@ -108,7 +108,8 @@ export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
 export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
-export { AuthModal, UserInfo } from './User';
+export { UserInfo } from './User';
+export { default as AuthModal } from './User';
 export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './User';
 
 export { default as CreatedBy } from './CreatedBy';

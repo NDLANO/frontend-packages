@@ -1,18 +1,35 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import { groupBy } from 'lodash';
-import { FeideGoGroup, FeideGroup, FeideOrg, FeideUserResponse } from './apiTypes';
+import { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './apiTypes';
 
 type GoGroupType = 'basic' | 'teaching' | 'other';
 
+/**
+ * The keys come from:
+ *  https://docs.feide.no/reference/apis/groups_api/groups_data_model/primary_and_secondary_education_groups.html?highlight=gogroup#specific-attributes-for-fc-gogroup
+ */
 const goGroupTypeMap: Record<'a' | 'b' | 'u', GoGroupType> = {
-  a: 'basic',
-  b: 'teaching',
-  u: 'other',
+  a: 'other',
+  b: 'basic',
+  u: 'teaching',
 };
 
+/**
+ * @param groups GoGroups to be mapped to specific GoGroupType
+ * @returns GoGroups mapped to GoGroupType. basic, teaching and other..
+ */
 const createGroupings = (groups: FeideGoGroup[]) => {
   return groups.reduce<Record<GoGroupType, FeideGoGroup[]>>(
     (acc, curr) => {
       const type = goGroupTypeMap[curr.go_type];
+      if (!acc[type]) return acc;
+
       acc[type] = acc[type].concat(curr);
       return acc;
     },
@@ -24,6 +41,10 @@ const createGroupings = (groups: FeideGoGroup[]) => {
   );
 };
 
+/**
+ * @param groups GoGroups to be mapped to root/child relations.
+ * @returns An object containing root groups mapped with children.
+ */
 const parseOrgs = (groups: FeideGroup[]) => {
   const [roots, children] = groups.reduce<[FeideOrg[], FeideGoGroup[]]>(
     (acc, curr) => {
@@ -45,7 +66,11 @@ const parseOrgs = (groups: FeideGroup[]) => {
   }));
 };
 
-export const parseUserObject = (user: FeideUserResponse) => {
+/**
+ * @param user A user object coming from the API
+ * @returns A user object parsed in a presentable way to be handled by i.e UserInfo component.
+ */
+export const parseUserObject = (user: FeideUserApiType) => {
   const orgs = parseOrgs(user.groups);
 
   return {

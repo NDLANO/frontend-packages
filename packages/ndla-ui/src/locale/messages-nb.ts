@@ -946,6 +946,7 @@ const messages = {
     primarySchool: 'Hovedskole',
     name: 'Navn',
     mail: 'E-post',
+    username: 'Brukernavn',
     groupTypes: {
       basic: 'Basisgruppe',
       teaching: 'Undervisningsgruppe',

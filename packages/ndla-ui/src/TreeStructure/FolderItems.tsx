@@ -23,7 +23,7 @@ const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: ${({ firstLevel }) => firstLevel ? -spacing.xsmall : spacing.normal};
+  margin-left: ${({ firstLevel }) => (firstLevel ? -spacing.xsmall : spacing.normal)};
 `;
 
 const StyledLI = styled.li`
@@ -55,6 +55,7 @@ const FolderItems = ({
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.has(id);
+      console.log('focusedFolderId', focusedFolderId);
       return (
         <StyledLI key={id} role="treeitem">
           <div>
@@ -66,7 +67,8 @@ const FolderItems = ({
               isOpen={isOpen}
               id={id}
               name={name}
-              marked={markedFolderId === id}
+              markedFolderId={markedFolderId}
+              focusedFolderId={focusedFolderId}
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
               hideArrow={dataChildren?.length === 0 || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
@@ -74,7 +76,13 @@ const FolderItems = ({
               setFocusedFolderId={setFocusedFolderId}
             />
           </div>
-          {newFolder?.parentId === id && <FolderNameInput loading={loading} onCancelNewFolder={onCancelNewFolder} onSaveNewFolder={onSaveNewFolder} />}
+          {newFolder?.parentId === id && (
+            <FolderNameInput
+              loading={loading}
+              onCancelNewFolder={onCancelNewFolder}
+              onSaveNewFolder={onSaveNewFolder}
+            />
+          )}
           {dataChildren && isOpen && (
             <FolderItems
               loading={loading}

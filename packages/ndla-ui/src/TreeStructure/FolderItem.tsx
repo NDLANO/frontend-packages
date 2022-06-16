@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
@@ -67,7 +67,8 @@ interface Props {
   onToggleOpen: (id: string) => void;
   onMarkFolder: (id: string) => void;
   isOpen: boolean;
-  marked: boolean;
+  markedFolderId?: string;
+  focusedFolderId?: string;
   loading?: boolean;
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
@@ -85,13 +86,26 @@ const FolderItem = ({
   onToggleOpen,
   onMarkFolder,
   isOpen,
-  marked,
+  markedFolderId,
+  focusedFolderId,
   openOnFolderClick,
   setFocusedFolderId,
   icon,
   url,
   noPaddingWhenArrowIsHidden,
 }: Props) => {
+  const folderNameLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const folderNameButtonRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    if (focusedFolderId === id) {
+      if (url && folderNameLinkRef.current) {
+        folderNameLinkRef.current.focus();
+      } else if (folderNameButtonRef.current) {
+        folderNameButtonRef.current.focus();
+      }
+    }
+  }, [focusedFolderId, folderNameLinkRef, folderNameButtonRef, url, id]);
+  const marked = markedFolderId === id;
   return (
     <FolderItemWrapper>
       {!hideArrow && (
@@ -101,6 +115,7 @@ const FolderItem = ({
       )}
       {url ? (
         <FolderNameLink
+          ref={folderNameLinkRef}
           noArrow={hideArrow}
           tabIndex={marked ? 0 : -1}
           marked={marked}
@@ -108,7 +123,6 @@ const FolderItem = ({
           onFocus={() => {
             setFocusedFolderId(id);
           }}
-          data-tree-structure-id={id}
           onClick={() => {
             onMarkFolder(id);
             if (openOnFolderClick) {
@@ -120,6 +134,7 @@ const FolderItem = ({
         </FolderNameLink>
       ) : (
         <FolderName
+          ref={folderNameButtonRef}
           noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
           tabIndex={marked ? 0 : -1}
           marked={marked}
@@ -127,7 +142,6 @@ const FolderItem = ({
           onFocus={() => {
             setFocusedFolderId(id);
           }}
-          data-tree-structure-id={id}
           onClick={() => {
             onMarkFolder(id);
             if (openOnFolderClick) {

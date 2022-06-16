@@ -49,12 +49,7 @@ export type onCreateNewFolderProp = ({
 }) => void;
 
 export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<Set<string>>>;
-export type SetFocusedFolderId = React.Dispatch<
-  React.SetStateAction<
-    | string
-    | undefined
-  >
->;
+export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | undefined>>;
 
 export interface FolderItemsProps extends CommonFolderProps {
   onToggleOpen: (id: string) => void;

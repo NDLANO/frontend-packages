@@ -45,6 +45,7 @@ const keyboardNavigation = ({
   focusedFolderId: id,
   openFolders,
 }: KeyboardNavigationProps): string | undefined => {
+  console.log('key', id);
   if (e.key === ' ' && document.activeElement?.nodeName === 'INPUT') {
     return;
   }
@@ -124,8 +125,7 @@ const keyboardNavigation = ({
     if (elementWithKeyFocus.index > 0) {
       // Move upwards to the parent folder
       setFocusedFolderId(
-        elementWithKeyFocus.parent
-          ? elementWithKeyFocus.parent[elementWithKeyFocus.index - 1].id : undefined,
+        elementWithKeyFocus.parent ? elementWithKeyFocus.parent[elementWithKeyFocus.index - 1].id : undefined,
       );
     } else if (elementWithKeyFocus.paths.length > 0) {
       elementWithKeyFocus.paths.pop();

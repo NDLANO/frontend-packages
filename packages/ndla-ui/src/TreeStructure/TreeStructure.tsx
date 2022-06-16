@@ -52,26 +52,10 @@ const TreeStructure = ({
 
   useEffect(() => {
     setOpenFolders((prev) => {
-      defaultOpenFolders?.forEach(id => prev.add(id));
+      defaultOpenFolders?.forEach((id) => prev.add(id));
       return new Set(prev);
     });
   }, [defaultOpenFolders]);
-
-  useEffect(() => {
-    if (treestructureRef.current) {
-      if (focusedFolderId) {
-        const dataProp = 'data-tree-structure-id';
-        const currentElement = treestructureRef.current.querySelector(
-          `[${dataProp}="${focusedFolderId}"]`,
-        ) as HTMLButtonElement;
-        currentElement?.focus();
-      } else if (editable) {
-        const currentElement = document.querySelector(`[data-add-folder-id="${rootLevelId}"]`) as HTMLButtonElement;
-        currentElement?.focus();
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [focusedFolderId]);
 
   useEffect(() => {
     if (!loading) {
@@ -137,6 +121,7 @@ const TreeStructure = ({
   const disableAddFolderButton =
     markedFolderId === undefined || getPathOfFolder(data, markedFolderId).length >= MAX_LEVEL_FOR_FOLDERS;
 
+  console.log('!!!', focusedFolderId);
   return (
     <div
       ref={treestructureRef}

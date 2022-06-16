@@ -51,6 +51,7 @@ const StyledListItem = styled.li<AutoCollapseProps>`
 
 const CollapseContainer = styled.div<AutoCollapseProps>`
   display: inline-block;
+  color: inherit;
   ${({ autoCollapse }) =>
     autoCollapse &&
     css`
@@ -63,6 +64,7 @@ const CollapseContainer = styled.div<AutoCollapseProps>`
 
 const StyledChevron = styled(ChevronRight)`
   margin: ${spacing.xxsmall};
+  color: inherit;
 `;
 
 const StyledSafeLink = styled(SafeLink)`

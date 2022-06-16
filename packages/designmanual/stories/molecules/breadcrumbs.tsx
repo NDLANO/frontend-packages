@@ -41,6 +41,10 @@ export const BreadcrumbWithHeader = () => {
   return <HeaderBreadcrumb items={items} />;
 };
 
+export const BreadcrumbWhiteWithHeader = () => {
+  return <HeaderBreadcrumb light items={items} />;
+};
+
 export const BreadcrumbWithHome = () => {
   return <HomeBreadcrumb items={items} />;
 };

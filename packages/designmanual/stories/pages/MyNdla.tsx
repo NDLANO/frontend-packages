@@ -15,6 +15,7 @@ export const MyNdla = () => (
       { title: 'Ny mappe', link: '' },
       { title: 'Eldre mappe', link: '' },
       { title: 'Eldre mappe', link: '' },
+      { title: 'Eldre mappe', link: '' },
     ]}
     resources={[
       {

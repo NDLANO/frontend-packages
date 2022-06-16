@@ -7,7 +7,7 @@
  *
  */
 import React from 'react';
-import { breakpoints, fonts, mq, colors } from '@ndla/core';
+import { breakpoints, fonts, mq, colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
@@ -17,18 +17,18 @@ import Image from '../Image';
 
 const ResourceBoxContainer = styled.div`
   display: flex;
-  padding: 20px;
+  position: relative;
+  padding: ${spacing.nsmall};
   border-radius: 5px;
   border: 1px solid ${colors.brand.light};
-  position: relative;
   font-family: ${fonts.sans};
   box-shadow: 0px 20px 35px -15px rgba(32, 88, 143, 0.15);
-  gap: 40px;
+  gap: ${spacing.medium};
 
   ${mq.range({ until: breakpoints.desktop })} {
     gap: 0;
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: ${spacing.medium};
     text-align: center;
   }
 `;
@@ -41,40 +41,34 @@ const Title = styled.h3`
 
 const Caption = styled.p`
   font-size: ${fonts.sizes(14)};
-  max-width: 600px;
-
-  ${mq.range({ until: breakpoints.desktop })} {
-    line-height: 22px;
-  }
 `;
 
-const TextWrapper = styled.div`
+const ContentWrapper = styled.div`
+  flex-basis: 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   ${mq.range({ until: breakpoints.desktop })} {
     align-items: center;
-    padding-top: 10px;
+    padding-top: ${spacing.small};
   }
 `;
 
 const StyledButton = styled(SafeLinkButton)`
+  display: flex;
+  gap: ${spacing.xxsmall};
+  align-items: center;
   border: 1px solid ${colors.brand.tertiary};
   :hover {
     background-color: ${colors.brand.primary};
     border: 1px solid ${colors.brand.primary};
-    color: white;
+    color: ${colors.white};
   }
 `;
 
-const StyledLaunchIcon = styled(Launch)`
-  margin-left: 8px;
-  height: 15px;
-  width: 15px;
-`;
-
-const ImageWrapper = styled.div`
-  img {
+const StyledImage = styled(Image)`
+  && {
     object-fit: cover;
     width: 134px;
     height: 134px;
@@ -88,46 +82,49 @@ const ImageWrapper = styled.div`
 `;
 
 const LincenseWrapper = styled.div`
-  top: 9px;
   position: absolute;
-  right: 1px;
-  ul {
-    margin-right: 0;
-  }
+  top: 9px;
+  right: 0;
 `;
 
-type Props = {
-  image: string;
+interface ImageMeta {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  image: ImageMeta;
   title: string;
   caption: string;
   licenseRights: string[];
-  authors?: { name: string }[];
+  authors?: string[];
   locale?: string;
   url: string;
-};
+}
+
 export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, url }: Props) => {
   const { t } = useTranslation();
   return (
     <ResourceBoxContainer>
       <LincenseWrapper>
         <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
-          <div className="c-figure__byline-author-buttons">
-            <span className="c-figure__byline-authors">{authors?.map((author) => author.name).join(' ')}</span>
-          </div>
+          {authors && authors.length > 0 && (
+            <div className="c-figure__byline-author-buttons">
+              <span className="c-figure__byline-authors">{authors.join(' ')}</span>
+            </div>
+          )}
         </LicenseByline>
       </LincenseWrapper>
-      <ImageWrapper>
-        <Image alt={title} src={image} />
-      </ImageWrapper>
-      <TextWrapper>
+      <StyledImage src={image.src} alt={image.alt} />
+      <ContentWrapper>
         <Title>{title}</Title>
         <Caption>{caption}</Caption>
 
         <StyledButton to={url} target="_blank" outline borderShape="rounded">
           {t('license.other.itemImage.ariaLabel')}
-          <StyledLaunchIcon aria-hidden />
+          <Launch aria-hidden />
         </StyledButton>
-      </TextWrapper>
+      </ContentWrapper>
     </ResourceBoxContainer>
   );
 };

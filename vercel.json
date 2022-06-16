@@ -1,0 +1,26 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "packages/designmanual/storybook-static/index.html" },
+    { "source": "/(.*)", "destination": "packages/designmanual/storybook-static/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=1000"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
+  ]
+}

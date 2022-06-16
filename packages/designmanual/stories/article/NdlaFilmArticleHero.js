@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { OneColumn, NdlaFilmHero } from '@ndla/ui';
-import Breadcrumb from '../molecules/breadcrumbs';
+import { BreadcrumbWhiteWithHome } from '../molecules/breadcrumbs';
 
 const NdlaFilmArticleHero = ({ withBackgroundImage, article }) => {
   const backgroundImage = article && article.metaImage && article.metaImage.url;
@@ -16,7 +16,7 @@ const NdlaFilmArticleHero = ({ withBackgroundImage, article }) => {
       <OneColumn>
         <div className="c-hero__content">
           <section>
-            <Breadcrumb />
+            <BreadcrumbWhiteWithHome />
           </section>
         </div>
       </OneColumn>

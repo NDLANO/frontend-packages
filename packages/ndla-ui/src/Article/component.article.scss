@@ -24,6 +24,10 @@
   @include font-size(18px, 29px);
   position: relative;
 
+  mjx-stretchy-v > mjx-ext > mjx-c {
+    transform: scaleY(100) translateY(0.075em);
+  }
+
   > section > p {
     &:not([class]) {
       margin-bottom: 29px;
@@ -117,7 +121,7 @@
   }
 
   &--multidisciplinary-topic {
-    margin-top:0;
+    margin-top: 0;
     padding: $spacing--small;
     @include mq(tablet) {
       padding: 0;
@@ -206,4 +210,3 @@
     }
   }
 }
-

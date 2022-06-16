@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import parse from 'html-react-parser';
 
@@ -173,13 +173,14 @@ export type SearchItemProps = {
   img?: { url: string; alt: string };
   labels?: string[];
   type?: ContentType;
+  children?: ReactNode;
 };
 export type SearchItemType = {
   item: SearchItemProps;
   type?: ContentType;
 };
 const SearchItem = ({ item, type }: SearchItemType) => {
-  const { title, url, ingress, contexts, img = null, labels = [] } = item;
+  const { title, url, ingress, contexts, img = null, labels = [], children } = item;
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
 
@@ -209,6 +210,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
             {contexts && contexts.length > 0 && <ItemContexts contexts={contexts} id={item.id} title={item.title} />}
           </ContextWrapper>
         </ItemLink>
+        {children}
       </ItemWrapper>
     </Container>
   );

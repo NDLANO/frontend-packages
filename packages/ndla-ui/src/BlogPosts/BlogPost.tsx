@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { LinkProps } from 'react-router-dom';
 import { spacing, colors, fonts, breakpoints, mq, misc, spacingUnit } from '@ndla/core';
 import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 import { Launch as LaunchIcon } from '@ndla/icons/common';
@@ -116,7 +115,7 @@ const StyledTag = styled.div`
   }
 `;
 
-const StyledSafeLink = styled(SafeLink)<LinkProps>`
+const StyledSafeLink = styled(SafeLink)`
   padding: ${spacing.xsmall} 0 ${spacing.small};
   ${fonts.sizes(22, 1.1)};
   font-weight: ${fonts.weight.bold};

@@ -102,7 +102,7 @@ As an alternative to linking packages locally, alpha versions of packages can be
 
 ### Download icon
 
-As mentioned on https://designmanual.ndla.no/?path=/story/enkle-komponenter--ikoner, new icons are downloaded from https://material.io/icons/. Find the icon needed and download it. Afterwards copy it to the best matching sub-folder in `frontend-packages/packages/ndla-icons/svg/`. Edit the svg and add license information matching the other svg files.
+As mentioned on https://designmanual.ndla.no/?path=/story/enkle-komponenter--ikoner, new icons are downloaded from https://material.io/icons/. Find the icon needed and download it. Missing icons can in need be fetched from https://materialdesignicons.com or created from scratch. Afterwards copy it to the best matching sub-folder in `frontend-packages/packages/ndla-icons/svg/`. Edit the svg and add license information matching the other svg files.
 
 ### Generate typescript component file
 

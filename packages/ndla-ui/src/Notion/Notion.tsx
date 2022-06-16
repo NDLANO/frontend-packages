@@ -11,8 +11,6 @@ import { useTranslation } from 'react-i18next';
 import { parseMarkdown } from '@ndla/util';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
-const NotionContainer = styled.div``;
-
 const ContentWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     display: flex;
@@ -43,6 +41,16 @@ const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   ${ContentWrapper} .c-figure.expanded + & {
     width: 100%;
   }
+  ${mq.range({ from: breakpoints.desktop })} {
+    ul,
+    ol {
+      margin: 12px 0;
+      padding: 0 1rem 0 2rem;
+    }
+    ol > li {
+      margin-left: 24px;
+    }
+  }
 `;
 
 const ClearWrapper = styled.div`
@@ -71,7 +79,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
   const { t } = useTranslation();
 
   return (
-    <NotionContainer>
+    <div>
       <ContentWrapper>
         {imageElement}
         {visualElement}
@@ -93,7 +101,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
         <ClearWrapper />
       </ContentWrapper>
       {children}
-    </NotionContainer>
+    </div>
   );
 };
 

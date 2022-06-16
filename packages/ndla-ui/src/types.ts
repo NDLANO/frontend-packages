@@ -25,7 +25,7 @@ type ResourceTypes = {
 };
 
 export type Resource = {
-  id: string | number;
+  id: string;
   name: string;
   contentUri?: string;
   path: string;
@@ -68,7 +68,7 @@ export interface FootNote {
 export interface Article {
   title: string;
   introduction: string;
-  content: string;
+  content: string | (() => ReactNode) | ReactNode;
   footNotes: Array<FootNote>;
   copyright: Copyright;
   published: string;

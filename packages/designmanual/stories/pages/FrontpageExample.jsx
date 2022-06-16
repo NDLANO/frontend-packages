@@ -15,7 +15,7 @@ import {
   BlogPostWrapper,
   FrontpageProgramMenu,
 } from '@ndla/ui';
-import { EmailOutline, Facebook, Twitter } from '@ndla/icons/common';
+import { EmailOutline, Facebook, Instagram, LinkedIn } from '@ndla/icons/common';
 import { dummyLanguageOptions } from '../../dummydata/index';
 import BlogExampleImage1 from '../../images/blog/fagfornyelse-blog.jpg';
 import BlogExampleImage2 from '../../images/blog/en-god-skolestart.jpg';
@@ -298,9 +298,14 @@ const FrontpageExample = () => {
                   icon: <Facebook />,
                 },
                 {
-                  name: 'Twitter',
+                  name: 'Instagram',
                   url: '#4',
-                  icon: <Twitter />,
+                  icon: <Instagram />,
+                },
+                {
+                  name: 'LinkedIn',
+                  url: '#5',
+                  icon: <LinkedIn />,
                 },
               ]}
             />

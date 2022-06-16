@@ -11,26 +11,15 @@ import React, { useEffect } from 'react';
 import { initArticleScripts } from '@ndla/article-scripts';
 import { useTranslation } from 'react-i18next';
 import { breakpoints, mq, spacing } from '@ndla/core';
+import { parseMarkdown } from '@ndla/util';
+import { getLicenseCredits } from '@ndla/licenses';
 import Notion, { NotionDialogContent, NotionDialogText, NotionDialogLicenses } from '@ndla/notion';
 import { Notion as UINotion } from '.';
 import { NotionImage } from './NotionImage';
 import NotionVisualElement, { NotionVisualElementType } from './NotionVisualElement';
 import FigureNotion from './FigureNotion';
 import { Copyright } from '../types';
-
-const ContentWrapper = styled.div<{ adjustSizeToFitWiderPage?: boolean }>`
-  position: relative;
-  right: auto;
-  left: ${(props) => (props.adjustSizeToFitWiderPage ? '0%' : '-16.6666666667%')};
-  width: ${(props) => (props.adjustSizeToFitWiderPage ? '100%' : '133.3333333333%')};
-  padding-left: 24px;
-  padding-right: 24px;
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100%;
-    left: 0;
-  }
-`;
+import { FigureType } from '../Figure';
 
 const ImageWrapper = styled.div`
   float: right;
@@ -48,9 +37,7 @@ export interface ConceptNotionType {
   copyright?: Partial<Copyright>;
   title: string;
   text: string;
-  subjectNames?: string[];
   visualElement?: NotionVisualElementType;
-  authors: string[];
   source?: string;
   image?: {
     src: string;
@@ -62,14 +49,20 @@ interface Props {
   concept: ConceptNotionType;
   disableScripts?: boolean;
   hideIconsAndAuthors?: boolean;
-  adjustSizeToFitWiderPage?: boolean;
+  figureType?: FigureType;
 }
 
-const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adjustSizeToFitWiderPage }: Props) => {
+const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, figureType }: Props) => {
   const notionId = `notion-${concept.id}`;
   const figureId = `notion-figure-${concept.id}`;
   const visualElementId = `visual-element-${concept.id}`;
   const { t } = useTranslation();
+
+  const { creators, rightsholders, processors } = getLicenseCredits(concept.copyright);
+
+  const authors = (creators.length || rightsholders.length ? [...creators, ...rightsholders] : [...processors]).map(
+    (author) => author.name,
+  );
 
   useEffect(() => {
     if (!disableScripts) {
@@ -78,104 +71,95 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, adj
   }, [disableScripts]);
 
   return (
-    <ContentWrapper adjustSizeToFitWiderPage={adjustSizeToFitWiderPage}>
-      <FigureNotion
-        resizeIframe
-        id={figureId}
-        figureId={visualElementId}
-        copyright={concept.copyright}
-        licenseString={concept.copyright?.license?.license ?? ''}
-        type="concept"
-        hideIconsAndAuthors={hideIconsAndAuthors}>
-        <UINotion
-          id={notionId}
-          title={concept.title}
-          text={concept.text}
-          imageElement={
-            concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-              <ImageWrapper>
-                <Notion
-                  id={notionId}
-                  ariaLabel={t('factbox.open')}
-                  title={concept.title}
-                  subTitle={t('searchPage.resultType.notionsHeading')}
-                  hideBaselineIcon
-                  content={
-                    <>
-                      <NotionDialogContent>
-                        {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
-                          <NotionVisualElement
-                            visualElement={concept.visualElement}
-                            id={notionId}
-                            figureId={figureId}
-                          />
-                        ) : undefined}
-                        <NotionDialogText>{concept.text}</NotionDialogText>
-                      </NotionDialogContent>
-                      <NotionDialogLicenses
-                        license={concept.copyright?.license?.license ?? ''}
-                        source={concept.source}
-                      />
-                    </>
-                  }>
-                  {concept.visualElement.image && (
-                    <NotionImage
-                      type={type}
-                      id={visualElementId}
-                      src={concept.visualElement.image.src}
-                      alt={concept.visualElement.image.alt ?? ''}
-                      imageCopyright={concept.visualElement.copyright}
+    <FigureNotion
+      resizeIframe
+      id={figureId}
+      figureId={visualElementId}
+      copyright={concept.copyright}
+      licenseString={concept.copyright?.license?.license ?? ''}
+      type="concept"
+      hideIconsAndAuthors={hideIconsAndAuthors}
+      figureType={figureType}>
+      <UINotion
+        id={notionId}
+        title={concept.title}
+        text={concept.text}
+        imageElement={
+          concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
+            <ImageWrapper>
+              <Notion
+                id={notionId}
+                ariaLabel={t('factbox.open')}
+                title={concept.title}
+                subTitle={t('searchPage.resultType.notionsHeading')}
+                hideBaselineIcon
+                content={
+                  <>
+                    <NotionDialogContent>
+                      {concept.visualElement?.resource === 'image' && concept.visualElement.image ? (
+                        <NotionVisualElement visualElement={concept.visualElement} id={notionId} figureId={figureId} />
+                      ) : undefined}
+                      <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
+                    </NotionDialogContent>
+                    <NotionDialogLicenses
+                      authors={authors}
+                      license={concept.copyright?.license?.license ?? ''}
+                      source={concept.source}
                     />
-                  )}
-                </Notion>
-              </ImageWrapper>
-            ) : undefined
-          }
-          visualElement={
-            concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url ? (
-              <ImageWrapper>
-                <Notion
-                  id={notionId}
-                  ariaLabel={t('factbox.open')}
-                  title={concept.title}
-                  hideBaselineIcon
-                  subTitle={t('searchPage.resultType.notionsHeading')}
-                  content={
-                    <>
-                      <NotionDialogContent>
-                        {concept.visualElement &&
-                        concept.visualElement?.resource !== 'image' &&
-                        concept.visualElement.url ? (
-                          <NotionVisualElement
-                            visualElement={concept.visualElement}
-                            id={notionId}
-                            figureId={figureId}
-                          />
-                        ) : undefined}
+                  </>
+                }>
+                {concept.visualElement.image && (
+                  <NotionImage
+                    type={type}
+                    id={visualElementId}
+                    src={concept.visualElement.image.src}
+                    alt={concept.visualElement.image.alt ?? ''}
+                  />
+                )}
+              </Notion>
+            </ImageWrapper>
+          ) : undefined
+        }
+        visualElement={
+          concept.visualElement && concept.visualElement.resource !== 'image' && concept.visualElement.url ? (
+            <ImageWrapper>
+              <Notion
+                id={notionId}
+                ariaLabel={t('factbox.open')}
+                title={concept.title}
+                hideBaselineIcon
+                subTitle={t('searchPage.resultType.notionsHeading')}
+                content={
+                  <>
+                    <NotionDialogContent>
+                      {concept.visualElement &&
+                      concept.visualElement?.resource !== 'image' &&
+                      concept.visualElement.url ? (
+                        <NotionVisualElement visualElement={concept.visualElement} id={notionId} figureId={figureId} />
+                      ) : undefined}
 
-                        <NotionDialogText>{concept.text}</NotionDialogText>
-                      </NotionDialogContent>
-                      <NotionDialogLicenses
-                        license={concept.copyright?.license?.license ?? ''}
-                        source={concept.source}
-                      />
-                    </>
-                  }>
-                  {concept.image && (
-                    <NotionImage
-                      type={type}
-                      id={visualElementId}
-                      src={concept.image?.src}
-                      alt={concept.image?.alt ?? ''}
-                      imageCopyright={concept.visualElement.copyright}
+                      <NotionDialogText>{parseMarkdown(concept.text, 'body')}</NotionDialogText>
+                    </NotionDialogContent>
+                    <NotionDialogLicenses
+                      authors={authors}
+                      license={concept.copyright?.license?.license ?? ''}
+                      source={concept.source}
                     />
-                  )}
-                </Notion>
-              </ImageWrapper>
-            ) : undefined
-          }></UINotion>
-      </FigureNotion>
-    </ContentWrapper>
+                  </>
+                }>
+                {concept.image && (
+                  <NotionImage
+                    type={type}
+                    id={visualElementId}
+                    src={concept.image?.src}
+                    alt={concept.image?.alt ?? ''}
+                  />
+                )}
+              </Notion>
+            </ImageWrapper>
+          ) : undefined
+        }></UINotion>
+    </FigureNotion>
   );
 };
 

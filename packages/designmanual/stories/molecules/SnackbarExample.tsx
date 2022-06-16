@@ -7,11 +7,11 @@
  */
 
 import React, { useState } from 'react';
-import { SnackBar, SnackBarItemProp } from '@ndla/ui';
+import { SnackBar, SnackBarItem } from '@ndla/ui';
 import Button from '@ndla/button';
 
 const SnackBarExample = () => {
-  const [snack, setSnack] = useState<SnackBarItemProp>({});
+  const [snack, setSnack] = useState<SnackBarItem>({});
   const snackAriaId = 'snack-id';
   return (
     <div>
@@ -35,7 +35,6 @@ const SnackBarExample = () => {
                   <strong>{author}: </strong>"{text}"
                 </div>
               ),
-              type: 'info',
             });
           }}>
           Generate random snack
@@ -44,12 +43,19 @@ const SnackBarExample = () => {
       <SnackBar
         id={snackAriaId}
         key={snack.snackbarItemId}
-        type={snack.type}
         snackbarItemId={snack.snackbarItemId}
-        closeAriaLabel="Lukk"
+        actionButtons={[
+          {
+            text: 'Vis',
+            ariaLabel: 'Console.log onClick event',
+            onClick: () => {
+              console.log('Vis'); // eslint-disable-line no-console
+            },
+          },
+        ]}
         onKill={(id: string | undefined) => {
           // eslint-disable-next-line
-          console.log(`snack with id ${id || 'unknown'} removed`);
+          console.log(`snack with id ${id || 'unknown'} removed`); // eslint-disable-line no-console
           setSnack({});
         }}>
         {snack.children}

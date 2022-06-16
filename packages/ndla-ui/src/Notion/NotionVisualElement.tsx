@@ -43,10 +43,10 @@ const getType = (resource: string) => {
   if (resource === 'brightcove') {
     return 'video';
   }
-  if (resource === 'image') {
-    return 'image';
+  if (resource === 'image' || resource === 'h5p') {
+    return resource;
   }
-  return 'h5p';
+  return 'other';
 };
 
 const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {

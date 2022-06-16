@@ -22,6 +22,7 @@ export {
   ArticleHeaderWrapper,
   ArticleSideBar,
   default as Article,
+  ArticleFavoritesButton,
 } from './Article';
 
 export { default as Table } from './Table';
@@ -151,7 +152,8 @@ export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 export { default as AuthorInfo } from './AuthorInfo';
 
-export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
+export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from './Breadcrumb';
+export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
 export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
@@ -220,10 +222,10 @@ export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
 export { ResourcesView, ResourceElement, Breadcrumbs, VerticalNavigation, FolderElement } from './MyNdla';
-export type { TagProp } from './TagSelector';
+export type { TagStyle } from './TagSelector';
 export { TagSelector } from './TagSelector';
 
-export type { SnackBarProps, SnackBarItemProp } from './SnackBar';
+export type { SnackBarItem } from './SnackBar';
 export { SnackBar } from './SnackBar';
 
 export { TreeStructure } from './TreeStructure';

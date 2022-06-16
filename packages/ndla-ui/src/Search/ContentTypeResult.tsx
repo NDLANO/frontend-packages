@@ -47,8 +47,8 @@ type Props = {
     showLessResultLabel?: string;
     noHit: string;
   };
-  ignoreContentTypeBadge: boolean;
-  keyboardPathNavigation: HTMLElement | string | null;
+  ignoreContentTypeBadge?: boolean;
+  keyboardPathNavigation?: HTMLElement | string | null;
   inMenu?: boolean;
   animateList?: number;
   unGrouped?: boolean;

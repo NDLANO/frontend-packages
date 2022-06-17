@@ -9,6 +9,7 @@ export interface ResourceImageProps {
 
 export const ResourceTitle = styled.h2`
   ${fonts.sizes(18)};
+  min-width: 50px;
   font-weight: ${fonts.weight.bold};
   margin: 0;
   flex: 1;
@@ -28,6 +29,7 @@ const StyledTagList = styled.ul`
   margin: 0;
   padding: 0;
   gap: ${spacing.xsmall};
+  overflow: hidden;
 `;
 
 const StyledTagListElement = styled.li`
@@ -44,6 +46,7 @@ const StyledTopicList = styled.ul`
   display: flex;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 `;
 
 const StyledTopicListElement = styled.li`
@@ -61,6 +64,7 @@ const StyledTopicDivider = styled.span`
 export const Row = styled.div`
   display: flex;
   align-items: center;
+  gap: ${spacing.xsmall};
 `;
 
 interface TagListProps {

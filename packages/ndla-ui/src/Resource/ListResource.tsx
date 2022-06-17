@@ -29,7 +29,8 @@ const ResourceDescription = styled.p`
 `;
 
 const ResourceWrapper = styled(SafeLink)`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   text-decoration: none;
   box-shadow: none;
   padding: ${spacing.small};
@@ -51,6 +52,8 @@ const ResourceInfoWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
 `;
 
 interface StyledImageProps {

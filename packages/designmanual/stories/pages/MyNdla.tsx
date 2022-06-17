@@ -9,6 +9,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
+import { MenuButton } from '@ndla/button';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -23,6 +24,10 @@ const BlockFolderWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};
 `;
+
+const tags = ['tag', 'tag', 'tag'];
+
+const topics = ['Matte', 'Naturfag'];
 
 export const MyNdla = () => {
   return (
@@ -72,20 +77,21 @@ export const MyNdla = () => {
             <BlockResource
               key={'blockResource'}
               title="Helt Vanlig Tittel"
-              topics={['Matte', 'Naturfag']}
-              tags={['tag', 'tag', 'tag']}
+              topics={topics}
+              tags={tags}
               description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
               resourceImage={{
                 src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
                 alt: 'alt',
               }}
               link={''}
+              actionMenu={<MenuButton size="xsmall" />}
             />
             <h3> Standard Ressurs</h3>
             <ListResource
               key={'defaultResource'}
               title="Titler kan også kuttes av"
-              topics={['Matte', 'Naturfag']}
+              topics={topics}
               tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
               description={'En helt vanlig beskrivelse.'}
               resourceImage={{
@@ -93,25 +99,27 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
+              actionMenu={<MenuButton size="xsmall" />}
             />
             <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
               key={'withoutDescription'}
               title="Min Tittel"
-              topics={['Matte', 'Naturfag']}
+              topics={topics}
               description={''}
-              tags={['tag', 'tag', 'tag']}
+              tags={tags}
               resourceImage={{
                 src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
                 alt: 'alt',
               }}
               link={''}
+              actionMenu={<MenuButton size="xsmall" />}
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource
               key={'minimalResource'}
               title="Minimal ressurs"
-              topics={['Matte', 'Naturfag']}
+              topics={topics}
               resourceImage={{
                 src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
                 alt: 'alt',

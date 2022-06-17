@@ -19,6 +19,7 @@ import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import { Folder, ListResource, BlockResource } from '@ndla/ui';
+import { MenuButton } from '@ndla/button';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -272,6 +273,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
               src: resourceImage.src,
             }}
             link={link}
+            actionMenu={<MenuButton size="xsmall" />}
           />
         ))}
       </BlockWrapper>

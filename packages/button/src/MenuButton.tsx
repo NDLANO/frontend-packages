@@ -68,7 +68,7 @@ const StyledMenuItem = styled(MenuItem)`
   }
 `;
 
-interface MenuItemProps {
+export interface MenuItemProps {
   icon?: ReactElement;
   text?: string;
   onClick: () => void;

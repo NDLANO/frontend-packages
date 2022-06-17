@@ -152,7 +152,7 @@ export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 export { default as AuthorInfo } from './AuthorInfo';
 
-export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb } from './Breadcrumb';
+export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
@@ -221,7 +221,9 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
-export { ResourcesView, ResourceElement, Breadcrumbs, VerticalNavigation, FolderElement } from './MyNdla';
+export { Breadcrumbs, VerticalNavigation, Folder } from './MyNdla';
+export { ListResource, BlockResource } from './Resource';
+export type { ListResourceProps } from './Resource';
 export type { TagStyle } from './TagSelector';
 export { TagSelector } from './TagSelector';
 

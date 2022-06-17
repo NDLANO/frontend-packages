@@ -6,65 +6,85 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
-import { Folder } from '@ndla/icons/editor';
-import SafeLink from '@ndla/safelink';
+import SafeLinkButton from '@ndla/safelink';
+import { mq, breakpoints } from '@ndla/core';
 
 const NavigationWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  width: 363px;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  max-width: 20vw;
   border-right: 1px solid ${colors.brand.greyLighter};
   height: 100%;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
 `;
 
 const Navigation = styled.div`
   padding: ${spacing.large};
 `;
 
-const NavigationElement = styled.div`
+const NavigationElementText = styled.div`
+  color: ${colors.text.primary};
+`;
+
+const NavigationElement = styled(SafeLinkButton)`
   display: flex;
-  gap: 11.33px;
+  align-items: center;
+  gap: 11px;
   height: 30px;
+  box-shadow: none;
   &:hover {
     background-color: ${colors.brand.lighter};
     border-radius: 5%;
+    svg {
+      fill: ${colors.brand.primary};
+    }
+    ${NavigationElementText} {
+      color: ${colors.brand.primary};
+    }
+  }
+  &:focus {
+    svg {
+      fill: ${colors.brand.primary};
+    }
+    ${NavigationElementText} {
+      color: ${colors.brand.primary};
+    }
   }
 `;
 
-const NavigationElementIcon = styled.div``;
-
-const NavigationElementText = styled(SafeLink)`
-  color: ${colors.text.primary};
-  box-shadow: none;
+const IconWrapper = styled.div`
+  svg {
+    fill: ${colors.text.primary};
+    height: 20px;
+    width: 20px;
+  }
 `;
 
-export const VerticalNavigation = () => {
-  const { t } = useTranslation();
+interface NavProps {
+  navElements?: {
+    icon: ReactNode;
+    url: string;
+    name: string;
+  }[];
+}
+export const VerticalNavigation = ({ navElements }: NavProps) => {
   return (
     <NavigationWrapper>
       <Navigation>
-        <NavigationElement>
-          <NavigationElementIcon>
-            <Folder />
-          </NavigationElementIcon>
-          <NavigationElementText to="">{t('myNdla.myFolders')}</NavigationElementText>
-        </NavigationElement>
-        <NavigationElement>
-          <NavigationElementIcon>
-            <Folder />
-          </NavigationElementIcon>
-          <NavigationElementText to="">{t('myNdla.myTags')}</NavigationElementText>
-        </NavigationElement>
-        <NavigationElement>
-          <NavigationElementIcon>
-            <Folder />
-          </NavigationElementIcon>
-          <NavigationElementText to="">{t('myNdla.myPage')}</NavigationElementText>
-        </NavigationElement>
+        {navElements?.map((element) => {
+          return (
+            <NavigationElement to={element.url}>
+              <IconWrapper>{element.icon}</IconWrapper>
+              <NavigationElementText>{element.name}</NavigationElementText>
+            </NavigationElement>
+          );
+        })}
       </Navigation>
     </NavigationWrapper>
   );

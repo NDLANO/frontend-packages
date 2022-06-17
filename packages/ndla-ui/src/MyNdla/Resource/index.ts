@@ -7,8 +7,5 @@
  */
 
 import Breadcrumbs from './Breadcrumbs';
-import ResourceElement from './ResourceElement';
-import ResourcesView from './ResourcesView';
-import FolderElement from './Folderelement';
-
-export { ResourcesView, ResourceElement, Breadcrumbs, FolderElement };
+import Folder from './Folder';
+export { Breadcrumbs, Folder };

@@ -12,14 +12,14 @@ import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { IconButton } from '@ndla/button/src/IconButton';
-import { NewFolder, FolderOutlined } from '@ndla/icons/contentType';
-import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
+import { Plus, GridListView, FourlineHamburger, List } from '@ndla/icons/action';
+import { Button } from '@ndla/button/src/Button';
+import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import FolderElement from './Folderelement';
-import ResourceElement from './ResourceElement';
+import { Folder, ListResource, BlockResource } from '@ndla/ui';
+import { MenuButton } from '@ndla/button';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -39,30 +39,22 @@ const NoFolders = styled.div`
   }
 `;
 
-const FoldersWrapper = styled.div<{ layout: LayoutProps }>`
+const BlockWrapper = styled.div<{ type: string }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xsmall};
+  padding-bottom: ${spacing.xsmall};
   ${(props) =>
-    props.layout === 'block' &&
+    props.type === 'block' &&
     css`
       display: grid;
       grid-template-columns: repeat(3, 2fr);
-      column-gap: 35px;
-      row-gap: 5px;
+      gap: 25px 32px;
+      margin-top: ${spacing.normal};
       div {
         max-width: 345px;
       }
-    `}
-`;
-const ResourcesWrapper = styled.div<{ layout: LayoutProps }>`
-  ${(props) =>
-    props.layout === 'block' &&
-    css`
-      display: grid;
-      grid-template-columns: repeat(3, 2fr);
-      gap: 35px;
-      div {
-        max-width: 345px;
-      }
-    `}
+    `};
 `;
 
 const DashOptionWrapper = styled.div`
@@ -88,23 +80,34 @@ const DashLeftSide = styled.div`
   align-items: flex-end;
 `;
 
-const AddButton = styled(IconButton)`
-  background-color: transparent;
-  border: none;
+const AddIconBorder = styled.div`
+  height: 40px;
+  width: 40px;
   display: flex;
-  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${colors.brand.tertiary};
+  border-radius: 50%;
+`;
+
+const AddButton = styled(Button)`
+  display: flex;
+  gap: ${spacing.small};
   svg {
     fill: ${colors.brand.primary};
-  }
-  span {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    width: 24px;
+    height: 24px;
   }
   :hover {
-    background-color: ${colors.brand.light};
+    background-color: transparent;
     margin: 0;
     border: none;
+    svg {
+      fill: white;
+    }
+    div {
+      background-color: ${colors.brand.primary};
+    }
   }
   &:focus,
   &:active {
@@ -112,12 +115,14 @@ const AddButton = styled(IconButton)`
     border: none;
   }
 `;
+
 const AddFolder = styled.p`
   color: ${colors.brand.primary};
   margin: 0;
   align-items: center;
   display: flex;
   font-weight: 600;
+  ${fonts.sizes('16')}
 `;
 
 const FoldersText = styled.p`
@@ -140,8 +145,12 @@ const CountWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledIconButton = styled(IconButton)`
+const StyledIconButton = styled(Button)`
+  padding: 10px;
   svg {
+    margin: 0;
+    width: 24px;
+    height: 24px;
     fill: ${colors.brand.tertiary};
   }
   &:focus {
@@ -173,41 +182,39 @@ type ResourceProps = {
 export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
-  layout?: LayoutProps;
+  type?: 'list' | 'block';
 }
-type LayoutProps = 'list' | 'listLarger' | 'block';
 
 export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
-  const [layout, setLayout] = useState('list' as LayoutProps);
+  const [layout, setLayout] = useState('list');
   const windowSize = useWindowSize(1000);
   useEffect(() => {
     if (windowSize.innerWidth < 1000) {
       setLayout('list');
     }
   }, [windowSize]);
+  const Resource = layout === 'block' ? BlockResource : ListResource;
+  const viewType = layout === 'block' ? 'block' : 'list';
 
   return (
     <Dash>
       <ResourceCountWrapper>
         <CountWrapper>
           <FolderOutlined aria-label={t('myNdla.folders')} />
-          <FoldersText>
-            <span>{folders?.length}</span> {t('myNdla.folders')}
-          </FoldersText>
+          <FoldersText>{t('myNdla.folders', { count: folders?.length })}</FoldersText>
         </CountWrapper>
         <CountWrapper>
           <FileDocumentOutline aria-label={t('myNdla.resources')} />
-          <FoldersText>
-            <span> {resources?.length}</span>
-            {t('myNdla.resources')}
-          </FoldersText>
+          <FoldersText>{t('myNdla.resources', { count: resources?.length })}</FoldersText>
         </CountWrapper>
       </ResourceCountWrapper>
       <DashOptionWrapper>
         <DashLeftSide>
-          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
-            <NewFolder />
+          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill>
+            <AddIconBorder>
+              <Plus />
+            </AddIconBorder>
             <AddFolder>{t('myNdla.newFolder')}</AddFolder>
           </AddButton>
         </DashLeftSide>
@@ -248,28 +255,28 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
           <h1>Illustrasjon tom mappe</h1>
         </NoFolders>
       )}
-      <FoldersWrapper layout={layout}>
-        {folders?.map(({ title, link }) => (
-          <FolderElement layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
+      <BlockWrapper type={layout}>
+        {folders?.map(({ title, link }, i) => (
+          <Folder key={`folder-${i}`} type={viewType} title={title} link={link} subFolders={3} subResources={3} />
         ))}
-      </FoldersWrapper>
-      <ResourcesWrapper layout={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }) => (
-          <ResourceElement
-            layout={layout}
+      </BlockWrapper>
+      <BlockWrapper type={layout}>
+        {resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
+          <Resource
+            key={`resource-${i}`}
             title={title}
             topics={topics}
             tags={tags}
-            description={description}
+            description={layout !== 'list' ? description : undefined}
             resourceImage={{
               alt: resourceImage.alt,
               src: resourceImage.src,
             }}
             link={link}
-            key={link}
+            actionMenu={<MenuButton size="xsmall" />}
           />
         ))}
-      </ResourcesWrapper>
+      </BlockWrapper>
     </Dash>
   );
 };

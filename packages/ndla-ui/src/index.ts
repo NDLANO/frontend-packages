@@ -221,7 +221,7 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
-export { Breadcrumbs, VerticalNavigation, Folder } from './MyNdla';
+export { VerticalNavigation, Folder } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagStyle } from './TagSelector';

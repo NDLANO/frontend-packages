@@ -6,6 +6,5 @@
  *
  */
 
-import Breadcrumbs from './Breadcrumbs';
 import Folder from './Folder';
-export { Breadcrumbs, Folder };
+export { Folder };

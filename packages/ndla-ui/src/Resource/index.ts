@@ -1,4 +1,4 @@
-import { ListResource, BlockResource } from './Resource';
-import { ListResourceProps } from './Resource';
+import { ListResourceProps } from './ListResource';
 export type { ListResourceProps };
-export { ListResource, BlockResource };
+export { default as ListResource } from './ListResource';
+export { default as BlockResource } from './BlockResource';

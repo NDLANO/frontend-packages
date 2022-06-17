@@ -14,8 +14,9 @@ import React, { ReactNode } from 'react';
 
 const StyledTooltip = styled(Tooltip)`
   color: #fff;
+  border: 0;
   background: ${colors.text.primary};
-  border-radius: ${misc.borderRadius} 0 0 ${misc.borderRadius};
+  border-radius: ${misc.borderRadius};
   padding: ${spacing.xsmall} ${spacing.small};
   font-family: ${fonts.sans};
   font-size: 14;

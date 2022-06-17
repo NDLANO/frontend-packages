@@ -62,7 +62,7 @@ export const UserInfo = ({ user }: Props) => {
                 if (val.length < 1) return null;
                 return (
                   <li key={groupType}>
-                    <div>{t(`user.groupTypes.${groupType}`)}</div>
+                    {t(`user.groupTypes.${groupType}`)}
                     <InfoList>
                       {val.map((group) => (
                         <li key={group.id}>{`${group.displayName}${group.grep ? ` (${group.grep.code})` : ''}`}</li>

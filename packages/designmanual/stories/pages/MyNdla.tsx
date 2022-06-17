@@ -9,7 +9,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
-import { MoreButton } from '@ndla/button';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -39,7 +38,6 @@ export const MyNdla = () => {
               title={'Dette er min tittel'}
               subFolders={3}
               subResources={3}
-              actionMenu={<MoreButton />}
               type={'list'}
             />
             <h2>Blokkvisning av folder</h2>
@@ -50,7 +48,6 @@ export const MyNdla = () => {
                 title={'Dette er min tittel'}
                 subFolders={3}
                 subResources={3}
-                actionMenu={<MoreButton />}
                 type={'block'}
               />
               <Folder
@@ -59,7 +56,6 @@ export const MyNdla = () => {
                 title={'Dette er min tittel'}
                 subFolders={3}
                 subResources={3}
-                actionMenu={<MoreButton />}
                 type={'block'}
               />
               <Folder
@@ -68,7 +64,6 @@ export const MyNdla = () => {
                 title={'Dette er min tittel'}
                 subFolders={3}
                 subResources={3}
-                actionMenu={<MoreButton />}
                 type={'block'}
               />
             </BlockFolderWrapper>
@@ -85,7 +80,6 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MoreButton />}
             />
             <h3> Standard Ressurs</h3>
             <ListResource
@@ -99,7 +93,6 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MoreButton />}
             />
             <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
@@ -113,7 +106,6 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MoreButton />}
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource
@@ -125,7 +117,6 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MoreButton />}
             />
           </>
         }

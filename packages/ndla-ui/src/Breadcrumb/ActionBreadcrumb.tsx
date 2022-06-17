@@ -23,6 +23,8 @@ interface ThemeProps {
 const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
   margin: ${spacing.xxsmall};
+  height: 24px;
+  width: 24px;
 `;
 const StyledSpan = styled.span<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
@@ -40,8 +42,13 @@ const LastElementWrapper = styled.span<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 10px;
+  gap: ${spacing.small};
+
+  p,
+  button {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 interface Props {
@@ -55,8 +62,9 @@ const ActionBreadcrumb = ({ items, light, actionItems }: Props) => {
     if (item.index === totalCount - 1) {
       return (
         <LastElementWrapper light>
-          <StyledSpan light={light}>{item.name}</StyledSpan>
-          <MenuButton menuItems={actionItems}></MenuButton>
+          <MenuButton menuItems={actionItems}>
+            <StyledSpan light={light}>{item.name}</StyledSpan>
+          </MenuButton>
         </LastElementWrapper>
       );
     }

@@ -762,7 +762,7 @@ const messages = {
       licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'Aktiviser elevene med digitale verktøy',
+      text: 'Huskeliste for kontaktlærere',
       externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',

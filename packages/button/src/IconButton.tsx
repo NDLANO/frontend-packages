@@ -29,9 +29,6 @@ const StyledButton = styled(Button)<StyledButtonProps>`
     height: ${({ svgSize }) => svgSize}px;
     margin: 0;
   }
-  &:active {
-    transform: translate(0, 1px) scale(0.98);
-  }
 `;
 
 export const convertSizeForSVG = (size: ButtonSize) => {

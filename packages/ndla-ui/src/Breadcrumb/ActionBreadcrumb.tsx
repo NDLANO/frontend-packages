@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import React from 'react';
@@ -16,38 +16,22 @@ import { MenuItemProps } from '@ndla/button';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
 
-interface ThemeProps {
-  light: boolean | undefined;
-}
-
-const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+const StyledRightChevron = styled(ChevronRight)`
+  color: ${colors.text.primary};
   margin: ${spacing.xxsmall};
   height: 24px;
   width: 24px;
 `;
-const StyledSpan = styled.span<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
-  font-weight: 700;
+const StyledSpan = styled.span`
+  color: ${colors.text.primary};
+  font-weight: ${fonts.weight.bold};
 `;
-const StyledSafeLink = styled(SafeLink)<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
+const StyledSafeLink = styled(SafeLink)`
+  color: ${colors.text.primary};
   box-shadow: none;
-  font-weight: 700;
+  font-weight: ${fonts.weight.bold};
   :hover {
     color: ${colors.brand.primary};
-  }
-`;
-const LastElementWrapper = styled.span<ThemeProps>`
-  color: ${({ light }) => (light ? colors.white : colors.text.primary)};
-  display: flex;
-  flex-direction: row;
-  gap: ${spacing.small};
-
-  p,
-  button {
-    margin: 0;
-    padding: 0;
   }
 `;
 
@@ -57,22 +41,16 @@ interface Props {
   actionItems: MenuItemProps[];
 }
 
-const ActionBreadcrumb = ({ items, light, actionItems }: Props) => {
+const ActionBreadcrumb = ({ items, actionItems }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return (
-        <LastElementWrapper light>
-          <MenuButton menuItems={actionItems}>
-            <StyledSpan light={light}>{item.name}</StyledSpan>
-          </MenuButton>
-        </LastElementWrapper>
+        <MenuButton menuItems={actionItems}>
+          <StyledSpan>{item.name}</StyledSpan>
+        </MenuButton>
       );
     }
-    return (
-      <StyledSafeLink light={light} to={item.to}>
-        {item.name}
-      </StyledSafeLink>
-    );
+    return <StyledSafeLink to={item.to}>{item.name}</StyledSafeLink>;
   };
 
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
@@ -80,7 +58,7 @@ const ActionBreadcrumb = ({ items, light, actionItems }: Props) => {
       return null;
     }
 
-    return <StyledRightChevron light={light} />;
+    return <StyledRightChevron />;
   };
 
   return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;

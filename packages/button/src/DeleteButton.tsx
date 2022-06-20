@@ -12,18 +12,19 @@ import { Button } from './Button';
 
 const StyledDeleteButton = styled(Button)`
   color: ${colors.support.red};
-  border: 1px solid ${colors.support.red};
-  background-color: transparent;
+  border-color: ${colors.support.red};
   &:hover,
   :focus {
     background-color: ${colors.support.red};
-    color: white;
-    border: 1px solid white;
   }
 `;
 
 export const DeleteButton = ({ children, ...rest }: ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return <StyledDeleteButton>{children}</StyledDeleteButton>;
+  return (
+    <StyledDeleteButton outline {...rest}>
+      {children}
+    </StyledDeleteButton>
+  );
 };
 
 export default DeleteButton;

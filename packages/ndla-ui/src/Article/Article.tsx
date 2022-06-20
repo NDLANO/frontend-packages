@@ -137,7 +137,6 @@ type Props = {
   accessMessage?: string;
   isFavorite?: boolean;
   onToggleAddToFavorites?: (id: string, add: boolean) => void;
-  hideAddToFavoriteButton?: boolean;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -170,7 +169,6 @@ export const Article = ({
   accessMessage,
   onToggleAddToFavorites,
   isFavorite,
-  hideAddToFavoriteButton,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -220,7 +218,7 @@ export const Article = ({
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
-            {!hideAddToFavoriteButton && onToggleAddToFavorites && (
+            {onToggleAddToFavorites && (
               <ArticleFavoritesButtonWrapper>
                 <ArticleFavoritesButton
                   articleId={id}

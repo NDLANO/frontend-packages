@@ -160,8 +160,6 @@ const TreeStructure = ({
       {editable && (
         <AddFolderWrapper>
           <Tooltip
-            align="right"
-            disabled={disableAddFolderButton}
             tooltip={t('myNdla.newFolderUnder', {
               folderName: getFolderName(data, markedFolderId),
             })}>

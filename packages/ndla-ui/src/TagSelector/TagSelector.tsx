@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect, ReactNode, ChangeEvent } from 'react';
+import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit, fonts } from '@ndla/core';
 import { uuid } from '@ndla/util';
@@ -30,6 +30,7 @@ interface Props {
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
   inline?: boolean;
+  prefix?: string;
 }
 
 const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] =>
@@ -47,7 +48,7 @@ const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
     .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 };
 
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline, prefix }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
   const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
@@ -101,6 +102,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         dropdownMaxHeight={dropdownMaxHeight}
         inline={inline}
         scrollAnchorElement={containerRef}
+        prefix={prefix}
       />
     </div>
   );

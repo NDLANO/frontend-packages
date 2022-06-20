@@ -220,7 +220,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>
-            <Tooltip tooltip={t('myNdla.listView')} align="bottom">
+            <Tooltip tooltip={t('myNdla.listView')}>
               <StyledIconButton
                 ghostPill
                 onClick={() => setLayout('list')}
@@ -229,7 +229,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 <FourlineHamburger />
               </StyledIconButton>
             </Tooltip>
-            <Tooltip tooltip={t('myNdla.detailView')} align="bottom">
+            <Tooltip tooltip={t('myNdla.detailView')}>
               <StyledIconButton
                 ghostPill
                 onClick={() => setLayout('listLarger')}
@@ -238,7 +238,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 <List />
               </StyledIconButton>
             </Tooltip>
-            <Tooltip tooltip={t('myNdla.shortView')} align="bottom">
+            <Tooltip tooltip={t('myNdla.shortView')}>
               <StyledIconButton
                 ghostPill
                 onClick={() => setLayout('block')}

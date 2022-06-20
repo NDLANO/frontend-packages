@@ -22,7 +22,6 @@ const { contentTypes } = constants;
 const ArticleExercise = () => (
   <OneColumn cssModifier="narrow">
     <Article
-      hideAddToFavoriteButton
       article={{
         title: 'Artikkel fagstoff',
         introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',

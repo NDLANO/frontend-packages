@@ -944,6 +944,15 @@ const messages = {
     resource: {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
+    primarySchool: 'Hovudskule',
+    name: 'Namn',
+    mail: 'E-post',
+    username: 'Brukarnamn',
+    groupTypes: {
+      basic: 'Basisgruppe',
+      teaching: 'Undervisningsgruppe',
+      other: 'Andre grupper',
+    },
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {

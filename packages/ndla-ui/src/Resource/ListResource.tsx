@@ -45,6 +45,10 @@ const ResourceWrapper = styled(SafeLink)`
       color: ${colors.brand.primary};
       text-decoration: underline;
     }
+    a {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 

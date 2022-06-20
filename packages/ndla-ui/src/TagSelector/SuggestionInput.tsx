@@ -17,7 +17,7 @@ import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { uuid } from '@ndla/util';
 import Suggestions from './Suggestions';
-import type { TagStyle } from './TagSelector';
+import type { TagType } from './TagSelector';
 
 const Cross = styled(CrossRaw)`
   margin-left: ${spacing.xxsmall};
@@ -53,7 +53,7 @@ const CombinedInputAndDropdownWrapper = styled.div`
 `;
 
 interface SuggestionInputProps {
-  suggestions: TagStyle[];
+  suggestions: TagType[];
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   setExpanded: (expanded: boolean) => void;
@@ -61,7 +61,7 @@ interface SuggestionInputProps {
   onToggleTag: (id: string) => void;
   setInputValue: (value: string) => void;
   onCreateTag: (tagName: string) => void;
-  addedTags: TagStyle[];
+  addedTags: TagType[];
   dropdownMaxHeight: string;
   prefix?: string | ReactNode;
   inline?: boolean;

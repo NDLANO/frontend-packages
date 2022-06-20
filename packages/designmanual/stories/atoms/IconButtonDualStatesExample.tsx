@@ -9,11 +9,14 @@ import { StoryIntro, StoryBody } from '../wrappers';
 interface Props {
   activeIcon: ReactElement;
   inactiveIcon: ReactElement;
-  size: 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
+  size: IconSize;
   ghostPill?: boolean;
   greyLightest?: boolean;
 }
 
+type IconSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
+
+const sizes: IconSize[] = ['xsmall', 'small', 'normal', 'medium', 'large'];
 const WrapperForExample = ({ activeIcon, inactiveIcon, ...rest }: Props) => {
   const [active, setActive] = useState(false);
   return (
@@ -39,18 +42,14 @@ const IconButtonDualStatesExample = () => (
     <StoryBody>
       <h2 className="u-heading">Eksempel</h2>
       <InlineContainer>
-        <WrapperForExample size="xsmall" greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />
-        <WrapperForExample size="small" greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />
-        <WrapperForExample size="normal" greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />
-        <WrapperForExample size="medium" greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />
-        <WrapperForExample size="large" greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />
+        {sizes.map((size) => {
+          return <WrapperForExample size={size} greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />;
+        })}
       </InlineContainer>
       <InlineContainer>
-        <WrapperForExample size="xsmall" ghostPill activeIcon={<Cross />} inactiveIcon={<Plus />} />
-        <WrapperForExample size="small" ghostPill activeIcon={<Cross />} inactiveIcon={<Plus />} />
-        <WrapperForExample size="normal" ghostPill activeIcon={<Cross />} inactiveIcon={<Plus />} />
-        <WrapperForExample size="medium" ghostPill activeIcon={<Cross />} inactiveIcon={<Plus />} />
-        <WrapperForExample size="large" ghostPill activeIcon={<Cross />} inactiveIcon={<Plus />} />
+        {sizes.map((size) => {
+          return <WrapperForExample size={size} greyLightest activeIcon={<Cross />} inactiveIcon={<Plus />} />;
+        })}
       </InlineContainer>
     </StoryBody>
   </div>

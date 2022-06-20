@@ -29,9 +29,8 @@ export const ArticleFavoritesButton = ({ isFavorite, onToggleAddToFavorites, art
         ariaLabelInActive={removeFromFavoritesLabel}
         activeIcon={<Heart />}
         inactiveIcon={<HeartOutline />}
-        active={!!isFavorite}
+        active={isFavorite}
         size="small"
-        ghostPill
         onClick={() => onToggleAddToFavorites(articleId, !isFavorite)}
       />
     </Tooltip>

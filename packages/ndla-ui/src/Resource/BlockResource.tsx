@@ -20,23 +20,16 @@ interface BlockResourceProps {
   topics: string[];
   tags?: string[];
   description?: string;
-  maxWidth?: string;
-  maxHeight?: string;
   actionMenu?: ReactNode;
 }
 
-interface BlockElementWrapperProps {
-  maxWidth: string;
-  maxHeight: string;
-}
-
-const BlockElementWrapper = styled(SafeLink)<BlockElementWrapperProps>`
+const BlockElementWrapper = styled(SafeLink)`
   display: flex;
   text-decoration: none;
   box-shadow: none;
   flex-direction: column;
-  max-width: ${(p) => p.maxWidth};
-  max-height: ${(p) => p.maxHeight};
+  max-width: 300px;
+  max-height: 240px;
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
@@ -71,13 +64,8 @@ const BlockInfoWrapper = styled.div`
   gap: ${spacing.xxsmall};
 `;
 
-interface ImageWrapperProps {
-  maxWidth: string;
-}
-
-const ImageWrapper = styled.div<ImageWrapperProps>`
+const ImageWrapper = styled.div`
   display: flex;
-  max-width: ${(p) => p.maxWidth};
   width: 100%;
   overflow: hidden;
   align-items: center;
@@ -89,20 +77,10 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `;
 
-const BlockResource = ({
-  link,
-  title,
-  tags,
-  resourceImage,
-  topics,
-  description,
-  actionMenu,
-  maxWidth = '300px',
-  maxHeight = '235px',
-}: BlockResourceProps) => {
+const BlockResource = ({ link, title, tags, resourceImage, topics, description, actionMenu }: BlockResourceProps) => {
   return (
-    <BlockElementWrapper maxWidth={maxWidth} maxHeight={maxHeight} to={link}>
-      <ImageWrapper maxWidth={maxWidth}>
+    <BlockElementWrapper to={link}>
+      <ImageWrapper>
         <Image alt={resourceImage.alt} src={resourceImage.src} />
       </ImageWrapper>
       <BlockInfoWrapper>

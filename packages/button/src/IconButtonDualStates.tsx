@@ -16,7 +16,7 @@ type Props = Omit<IconButtonProps, 'aria-label'>;
 export interface IconButtonDualStatesProps extends Props {
   ariaLabelActive: string;
   ariaLabelInActive: string;
-  active: boolean;
+  active?: boolean;
   activeIcon: ReactElement;
   inactiveIcon: ReactElement;
 }
@@ -46,7 +46,7 @@ export const IconButtonDualStates = ({
   inactiveIcon,
   ...props
 }: IconButtonDualStatesProps) => (
-  <StyledIconButton active={active} aria-label={active ? ariaLabelActive : ariaLabelInActive} {...props}>
+  <StyledIconButton active={!!active} aria-label={active ? ariaLabelActive : ariaLabelInActive} {...props}>
     {activeIcon}
     {inactiveIcon}
   </StyledIconButton>

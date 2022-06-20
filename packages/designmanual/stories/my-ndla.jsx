@@ -9,8 +9,9 @@ import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
 import MyNdlaNavigation from './molecules/MyNdlaNavigation';
+import MyNdlaMyPage from './pages/MyNdlaMyPage';
 
-storiesOf('Min NDLA', module).add('Dashboard', () => (
+storiesOf('Min NDLA', module).add('Elementer', () => (
   <PageContainer>
     <MastheadWithTopicMenu />
     <Content>
@@ -40,6 +41,18 @@ storiesOf('Min NDLA', module).add('Vertikal navigasjonsmeny', () => (
     <Content>
       <OneColumn cssModifier="clear-desktop" wide>
         <MyNdlaNavigation />
+      </OneColumn>
+    </Content>
+    <FooterExample />
+  </PageContainer>
+));
+
+storiesOf('Min NDLA', module).add('Min side', () => (
+  <PageContainer>
+    <MastheadWithTopicMenu />
+    <Content>
+      <OneColumn cssModifier="clear-desktop" wide>
+        <MyNdlaMyPage />
       </OneColumn>
     </Content>
     <FooterExample />

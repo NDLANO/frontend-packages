@@ -120,8 +120,6 @@ const ActiveFilters = ({
       <StyledActiveFilterWrapper key={filterKey}>
         {filterLength > 1 ? (
           <Tooltip
-            delay={2000}
-            align="bottom"
             tooltip={t('searchPage.searchFilterMessages.removeFilter', {
               filterName: filter.title,
             })}>
@@ -139,7 +137,7 @@ const ActiveFilters = ({
       {filterItems}
       {filterLength > showFilterCount && (
         <StyledActiveFilterWrapper>
-          <Tooltip delay={2000} align="bottom" tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
+          <Tooltip tooltip={t('searchPage.searchFilterMessages.noValuesButtonText')}>
             <Button
               aria-label={t('searchPage.searchFilterMessages.additionalSubjectFilters', {
                 count: filterLength - showFilterCount + 1,

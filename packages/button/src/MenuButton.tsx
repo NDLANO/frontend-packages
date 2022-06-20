@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { colors, spacingUnit, spacing, shadows } from '@ndla/core';
 import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
@@ -27,8 +27,12 @@ const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
   justify-content: center;
   align-items: center;
   gap: ${spacing.small};
-  border-radius: 100%;
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.2 : 0.25)}px;
+  &:hover *,
+  &:active *,
+  &:focus * {
+    color: ${colors.brand.primary};
+  }
 
   svg {
     fill: ${colors.brand.secondary};
@@ -38,20 +42,12 @@ const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
   }
 `;
 const StyledHorizontalMenu = styled(HorizontalMenu)`
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: ${spacing.small};
   border-radius: 100%;
   &:hover,
   &:active,
-  &:focus {
+  &:focus,
+  ${() => StyledMenuButton}:active, ${() => StyledMenuButton}:focus, ${() => StyledMenuButton}:hover & {
     background-color: ${colors.brand.light};
-    border: none;
-    box-shadow: none;
   }
 `;
 
@@ -60,7 +56,7 @@ const StyledMenuList = styled(MenuList)`
   background-color: white;
   padding: ${spacing.small};
   border-radius: 4px;
-  box-shadow: ${shadows.levitate1}; ;
+  box-shadow: ${shadows.levitate1};
 `;
 
 const StyledMenuItem = styled(MenuItem)`
@@ -80,10 +76,6 @@ const StyledMenuItem = styled(MenuItem)`
     color: ${colors.brand.primary};
   }
 `;
-const StyledButtonText = styled.p`
-  display: flex;
-  align-items: center;
-`;
 
 export interface MenuItemProps {
   icon?: ReactElement;
@@ -94,13 +86,14 @@ export interface MenuItemProps {
 interface MenuButtonProps extends ButtonProps {
   menuItems?: MenuItemProps[];
   children?: ReactElement;
+  menuButtonPrefix?: ReactNode;
 }
 export const MenuButton = ({ menuItems, size, children }: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
     <Menu aria-label={t('myNdla.more')}>
       <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
-        <StyledButtonText>{children}</StyledButtonText>
+        {children}
         <StyledHorizontalMenu />
       </StyledMenuButton>
       <StyledMenuList>

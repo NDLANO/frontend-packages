@@ -993,7 +993,7 @@ const messages = {
     newFavourite: 'Recently favourited',
     resource: {
       addToMyNdla: 'Add to My NDLA',
-      removeFromMyNdla: 'Added to My NDLA',
+      addedToMyNdla: 'Added to My NDLA',
     },
   },
   snackbar: {

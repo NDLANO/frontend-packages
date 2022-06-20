@@ -224,7 +224,7 @@ export { BannerCard } from './BannerCard';
 export { VerticalNavigation, Folder } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
-export type { TagStyle } from './TagSelector';
+export type { TagType } from './TagSelector';
 export { TagSelector } from './TagSelector';
 
 export type { SnackBarItem } from './SnackBar';

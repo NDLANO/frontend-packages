@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect, ReactNode } from 'react';
+import React, { useState, useRef, useEffect, ReactNode, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit, fonts } from '@ndla/core';
 import { uuid } from '@ndla/util';
@@ -18,27 +18,26 @@ const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
 `;
 
-export interface TagStyle {
+export interface TagType {
   name: string;
   id: string;
 }
 
 interface Props {
   label: string;
-  tags: TagStyle[];
+  tags: TagType[];
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-  prefix?: string | ReactNode;
   inline?: boolean;
 }
 
-const sortedTags = (tags: TagStyle[], selectedTags: string[]): TagStyle[] =>
+const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] =>
   tags
     .filter(({ id }) => selectedTags.some((idSelected) => idSelected === id))
     .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 
-const getSuggestions = (tags: TagStyle[], inputValue: string): TagStyle[] => {
+const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
   if (inputValue === '') {
     return [];
   }
@@ -86,7 +85,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
     <div ref={containerRef}>
       <StyledLabel htmlFor={inputIdRef.current}>{label}</StyledLabel>
       <SuggestionInput
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);
           setExpanded(false);

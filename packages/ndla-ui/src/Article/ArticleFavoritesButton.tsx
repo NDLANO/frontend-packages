@@ -21,7 +21,7 @@ export interface Props {
 export const ArticleFavoritesButton = ({ isFavorite, onToggleAddToFavorites, articleId }: Props) => {
   const { t } = useTranslation();
   const removeFromFavoritesLabel = t('myNdla.resource.addToMyNdla');
-  const addToFavoritesLabel = t('myNdla.resource.removeFromMyNdla');
+  const addToFavoritesLabel = t('myNdla.resource.addedToMyNdla');
   return (
     <Tooltip tooltip={isFavorite ? removeFromFavoritesLabel : addToFavoritesLabel}>
       <IconButtonDualStates

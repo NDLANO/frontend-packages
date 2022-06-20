@@ -992,7 +992,7 @@ const messages = {
     newFavourite: 'Nylig favorittmerka',
     resource: {
       addToMyNdla: 'Legg i Min NDLA',
-      removeFromMyNdla: 'Lagt i Min NDLA',
+      addedToMyNdla: 'Lagt i Min NDLA',
     },
   },
   snackbar: {

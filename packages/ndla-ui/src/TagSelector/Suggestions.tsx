@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { Check } from '@ndla/icons/editor';
 import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
 import Button from '@ndla/button';
-import type { TagStyle } from './TagSelector';
+import type { TagType } from './TagSelector';
 
 const ABSOLUTE_DROPDOWN_MAXHEIGHT = '360px';
 
@@ -77,7 +77,7 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
 interface Props {
   inline?: boolean;
   dropdownMaxHeight: string;
-  suggestions: TagStyle[];
+  suggestions: TagType[];
   currentHighlightedIndex: number;
   onToggleTag: (id: string) => void;
   hasBeenAdded: (id: string) => boolean;

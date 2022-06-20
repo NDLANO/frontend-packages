@@ -74,6 +74,7 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
     <FigureNotion
       resizeIframe
       id={figureId}
+      title={concept.title}
       figureId={visualElementId}
       copyright={concept.copyright}
       licenseString={concept.copyright?.license?.license ?? ''}

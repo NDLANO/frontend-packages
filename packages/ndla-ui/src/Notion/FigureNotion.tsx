@@ -7,7 +7,7 @@
 
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
+import { getGroupedContributorDescriptionList, getLicenseByAbbreviation, getLicenseCredits } from '@ndla/licenses';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Figure, FigureCaption, FigureLicenseDialog, FigureType } from '../Figure';
@@ -23,7 +23,7 @@ interface Props {
   figureId: string;
   children: ReactNode | ((params: { typeClass: string }) => ReactNode);
   id: string;
-  title?: string;
+  title: string;
   copyright?: Partial<Copyright>;
   licenseString: string;
   type: 'video' | 'h5p' | 'image' | 'concept' | 'other';
@@ -47,9 +47,15 @@ const FigureNotion = ({
 }: Props) => {
   const { t, i18n } = useTranslation();
   const license = getLicenseByAbbreviation(licenseString, i18n.language);
-  const { creators, rightsholders, processors } = getLicenseCredits(copyright);
+  const licenseCredits = getLicenseCredits(copyright);
+  const { creators, rightsholders, processors } = licenseCredits;
 
   const authors = creators.length || rightsholders.length ? [...creators, ...rightsholders] : [...processors];
+
+  const groupedAuthors = getGroupedContributorDescriptionList(licenseCredits, i18n.language).map((item) => ({
+    name: item.description,
+    type: item.label,
+  }));
 
   return (
     <Figure resizeIframe={resizeIframe} id={figureId} type={figureType || 'full-column'}>
@@ -67,18 +73,19 @@ const FigureNotion = ({
               hideIconsAndAuthors={hideIconsAndAuthors}>
               <FigureLicenseDialog
                 id={id}
-                authors={authors}
+                authors={groupedAuthors}
                 locale={i18n.language}
                 title={title}
                 origin={copyright?.origin}
                 license={license}
                 messages={{
                   close: t('close'),
-                  rulesForUse: t('license.concept.rules'),
+                  rulesForUse: t(`license.${type}.rules`),
                   source: t('source'),
                   learnAboutLicenses: t('license.learnMore'),
                   title: t('title'),
-                }}></FigureLicenseDialog>
+                }}
+              />
             </FigureCaption>
           ) : (
             <BottomBorder />

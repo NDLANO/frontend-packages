@@ -283,19 +283,19 @@ const ResourceItem = ({
       <TypeWrapper>
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
-          <Tooltip tooltip={t('article.access.onlyTeacher')} align="left">
+          <Tooltip tooltip={t('article.access.onlyTeacher')}>
             <HumanMaleBoard className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
-              <Tooltip tooltip={contentTypeDescription} align="left">
+              <Tooltip tooltip={contentTypeDescription}>
                 <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
               </Tooltip>
             )}
             {!additional && (
-              <Tooltip tooltip={contentTypeDescription} align="left">
+              <Tooltip tooltip={contentTypeDescription}>
                 <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
               </Tooltip>
             )}

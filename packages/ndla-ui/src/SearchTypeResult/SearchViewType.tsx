@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: inline-flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   flex: 1;
   ${mq.range({ until: breakpoints.tablet })} {

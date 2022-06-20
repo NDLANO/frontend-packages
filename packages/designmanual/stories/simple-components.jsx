@@ -683,7 +683,16 @@ storiesOf('Enkle komponenter', module)
   .add('Tooltip', () => (
     <div>
       <StoryIntro title="Tooltip">
-        <p>Tooltip tekst</p>
+        <p>Når en brukers mus eller fokus hviler på et element, vil et ikke-interaktivt element vises i nærheten.</p>
+        <p>Tooltip plasseres automatisk der det er plass.</p>
+        Tips for bruk av tooltips:
+        <ul>
+          <li>
+            Ikke bruk for informasjon essensiell for å fullføre en oppgave. Elementene tooltip er knyttet til burde gi
+            mening på egenhånd, men tooltip kan gi ytterligere informasjon.
+          </li>
+          <li>Hold innholdet minimalt, - burde ikke inneholde viktige ting.</li>
+        </ul>
       </StoryIntro>
       <StoryBody>
         <TooltipExample />

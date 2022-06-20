@@ -5,7 +5,8 @@
 @import '~@ndla/core/scss/utilities';
 @import '~@ndla/audio-search/scss/audio-search';
 @import '~@ndla/video-search/scss/video-search';
-@import '@ndla/button/src/all.scss';
+@import '~@ndla/button/src/all.scss';
+@import '~@ndla/tooltip/src/all.css';
 
 .c-componentinfo {
   > .c-tabs {

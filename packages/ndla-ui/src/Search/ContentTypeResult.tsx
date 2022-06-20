@@ -1,29 +1,28 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react';
 import Button from '@ndla/button';
-import Tooltip from '@ndla/tooltip';
-import { Additional, ChevronUp, ChevronDown } from '@ndla/icons/common';
+import { Additional, ChevronDown, ChevronUp } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import Tooltip from '@ndla/tooltip';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentTypeResultType, Resource } from '../types';
 import {
   highlightStyle,
-  showAllButtonStyle,
-  tooltipStyle,
-  StyledNoHit,
-  StyledWrapper,
-  StyledHeader,
-  StyledListItem,
-  StyledList,
-  StyledTag,
   noWidthhighlightStyle,
+  showAllButtonStyle,
+  StyledHeader,
+  StyledList,
+  StyledListItem,
+  StyledNoHit,
+  StyledTag,
+  StyledWrapper,
 } from './ContentTypeResultStyles';
 import { isPathToHighlight } from './IsPathToHighlight';
 
 const renderAdditionalIcon = (label: string, isAdditional?: boolean): ReactElement | null => {
   if (isAdditional && label) {
     return (
-      <Tooltip tooltip={label} align="top" css={tooltipStyle}>
+      <Tooltip tooltip={label}>
         <Additional className="c-icon--20" />
       </Tooltip>
     );

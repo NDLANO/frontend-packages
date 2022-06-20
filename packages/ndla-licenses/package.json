@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@ndla/core": "^2.1.1",
-    "@ndla/icons": "^1.7.1"
+    "@ndla/icons": "^1.7.1",
+    "@ndla/tooltip": "^0.3.5"
   },
   "publishConfig": {
     "access": "public"

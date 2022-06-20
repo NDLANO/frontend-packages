@@ -58,6 +58,7 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
 interface StyledLicenseIconButtonprops {
   light?: boolean;
 }
+
 export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprops>`
   display: flex;
   border: 0;

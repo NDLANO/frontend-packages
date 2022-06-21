@@ -10,6 +10,7 @@ export const articleResources = [
       'Det kan være vanskelig å begripe hva en idé er. Ideer er tett knyttet til tanker og hjernearbeid, de er nesten i slekt med drømmer. Det er vanskelig å sette ord på hva ideen handler om, og hvorfor den er god. ',
     tag: 'Illustrasjoner',
     type: 'Fagstoff',
+    isFavorite: true,
   },
   {
     topicId: 'urn:topic:170363',
@@ -212,6 +213,7 @@ export const assessmentResources = [
   {
     id: 'urn:resource:883281e0-c5ec-42d8-8365-a2bc',
     name: 'Vurderingsressurs 2',
+    isFavorite: true,
   },
   {
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dce',
@@ -241,6 +243,7 @@ export const externalLearningResources = [
     id: 'urn:resource:883281e0-c5ec-42d8-8365-abx',
     name: 'Ekstern læringsressurs 1',
     additional: true,
+    isFavorite: true,
   },
   {
     id: 'urn:resource:116ce6b7-2abe-4977-9fa9-dcb',

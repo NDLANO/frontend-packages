@@ -14,6 +14,19 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Lag mappe',
+    newFolder: {
+      placeholder: 'Skriv navn på mappe',
+      defaultName: 'Ny mappe',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Legg til tag',
+    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    hideAllTags: 'Skjul alla tags',
+    showAllTags: 'Vis alla tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Forsiden${titleTemplate}`,
@@ -963,15 +976,35 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
-    resources: 'Ressurser',
-    folders: 'Mapper',
+    resources: '{{count}} Ressurs',
+    resources_plural: '{{count}} Ressursar',
+    folders: '{{count}} Mappe',
+    folders_plural: '{{count}} Mappar',
     folder: 'Mappe',
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',
+    newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
     help: 'Hjelp',
+    more: 'Flere valg',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
+    myPage: 'Min side',
+    deleteAccount: 'Slett konto',
+    welcome: 'Hei, {{name}}. Vi har hentet følgende informasjon om deg fra Feide:',
+    read: 'Les våre',
+    terms: 'vilkår for bruk',
+    newFavourite: 'Nylig favorittmerkede',
+    resource: {
+      addToMyNdla: 'Legg i Min NDLA',
+      addedToMyNdla: 'Lagt i Min NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Lukk melding',
   },
   labels: {
     category: 'Kategori',

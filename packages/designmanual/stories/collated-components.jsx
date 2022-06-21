@@ -34,7 +34,12 @@ import Tabs, { TabsControlled } from './molecules/tabs';
 import Resources from './molecules/resources';
 import LicenseBox from './article/LicenseBox';
 import NotionExample from './organisms/NotionExample';
-import { BreadcrumbDefault, BreadcrumbWithHeader, BreadcrumbWithHome } from './molecules/breadcrumbs';
+import {
+  BreadcrumbDefault,
+  BreadcrumbWithHeader,
+  BreadcrumbWithHome,
+  BreadcrumbWithAction,
+} from './molecules/breadcrumbs';
 import RelatedArticleListExample, {
   RelatedArticleExerciseList,
   RelatedArticleMixedList,
@@ -56,6 +61,9 @@ import FooterExample from './molecules/footers';
 import NotionBlockExample from './organisms/NotionBlockExample';
 import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
+
+import TagSelectorExample from './molecules/TagSelectorExample';
+import SnackBarExample from './molecules/SnackbarExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -210,6 +218,8 @@ storiesOf('Sammensatte moduler', module)
       <BreadcrumbWithHeader />
       <h2 className="u-heading">Brødsmulesti med forskjellige ikoner</h2>
       <BreadcrumbWithHome />
+      <h2 className="u-heading">Brødsmulesti med Menuknapp</h2>
+      <BreadcrumbWithAction />
     </Center>
   ))
   .add('Begrepsforklaring', () => (
@@ -677,6 +687,30 @@ storiesOf('Sammensatte moduler', module)
       </StoryIntro>
       <Content>
         <ResourceBoxExample />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+
+  .add('Snackbar meldingsboks', () => (
+    <PageContainer>
+      <StoryIntro title="Snackbar" />
+      <StoryBody>
+        <Center>
+          <SnackBarExample />
+        </Center>
+      </StoryBody>
+      <FooterExample />
+    </PageContainer>
+  ))
+
+  .add('Velg tag', () => (
+    <PageContainer>
+      <StoryIntro title="Tag-velger">
+        <p>Komponent for å tagge noe, primært tiltenkt Min NDLA</p>
+      </StoryIntro>
+      <Content>
+        <TagSelectorExample />
       </Content>
       <FooterExample />
     </PageContainer>

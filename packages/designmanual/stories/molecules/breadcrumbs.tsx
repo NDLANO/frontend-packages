@@ -8,7 +8,9 @@
 
 import React from 'react';
 import { Breadcrumb } from '@ndla/ui';
-import { HeaderBreadcrumb, HomeBreadcrumb } from '@ndla/ui';
+import { DeleteForever, Link } from '@ndla/icons/editor';
+import { FolderOutlined } from '@ndla/icons/contentType';
+import { HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from '@ndla/ui';
 
 const items = [
   {
@@ -51,6 +53,19 @@ export const BreadcrumbWithHome = () => {
 
 export const BreadcrumbWhiteWithHome = () => {
   return <HomeBreadcrumb items={items} light />;
+};
+
+export const BreadcrumbWithAction = () => {
+  return (
+    <ActionBreadcrumb
+      items={items}
+      actionItems={[
+        { icon: <FolderOutlined />, text: 'Legg til mappe/tag', onClick: () => {} },
+        { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => {} },
+        { icon: <DeleteForever />, text: 'Fjern', onClick: () => {}, color: 'red' },
+      ]}
+    />
+  );
 };
 
 export default BreadcrumbDefault;

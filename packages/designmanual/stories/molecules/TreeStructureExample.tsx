@@ -69,7 +69,7 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
   },
 ];
 
-const STRUCTURE_EXAMPLE_WRAPPED = () => [
+export const STRUCTURE_EXAMPLE_WRAPPED = () => [
   {
     id: uuid(),
     name: 'Min NDLA',

@@ -32,4 +32,3 @@ storiesOf('Min NDLA', module).add('Add to favorites', () => (
     <FooterExample />
   </PageContainer>
 ));
-

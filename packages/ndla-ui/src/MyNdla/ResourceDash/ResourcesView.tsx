@@ -192,94 +192,92 @@ export const ResourcesView = ({ folders, resources, aside }: ViewProps) => {
 
   return (
     <Grid>
-      <Aside>
-        {aside}
-      </Aside>
-    <Main>
-    <Dash>
-      <ResourceCountWrapper>
-        <CountWrapper>
-          <FolderOutlined aria-label={t('myNdla.folders')} />
-          <FoldersText>
-            <span>{folders?.length}</span> {t('myNdla.folders')}
-          </FoldersText>
-        </CountWrapper>
-        <CountWrapper>
-          <FileDocumentOutline aria-label={t('myNdla.resources')} />
-          <FoldersText>
-            <span> {resources?.length}</span>
-            {t('myNdla.resources')}
-          </FoldersText>
-        </CountWrapper>
-      </ResourceCountWrapper>
-      <DashOptionWrapper>
-        <DashLeftSide>
-          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
-            <NewFolder />
-            <AddFolder>{t('myNdla.newFolder')}</AddFolder>
-          </AddButton>
-        </DashLeftSide>
-        {(folders || resources) && (
-          <DashRightSide>
-            <Tooltip tooltip={t('myNdla.listView')} align="bottom">
-              <StyledIconButton
-                ghostPill
-                onClick={() => setLayout('list')}
-                size="small"
-                aria-label={t('myNdla.listView')}>
-                <FourlineHamburger />
-              </StyledIconButton>
-            </Tooltip>
-            <Tooltip tooltip={t('myNdla.detailView')} align="bottom">
-              <StyledIconButton
-                ghostPill
-                onClick={() => setLayout('listLarger')}
-                size="small"
-                aria-label={t('myNdla.detailView')}>
-                <List />
-              </StyledIconButton>
-            </Tooltip>
-            <Tooltip tooltip={t('myNdla.shortView')} align="bottom">
-              <StyledIconButton
-                ghostPill
-                onClick={() => setLayout('block')}
-                size="small"
-                aria-label={t('myNdla.shortView')}>
-                <GridListView />
-              </StyledIconButton>
-            </Tooltip>
-          </DashRightSide>
-        )}
-      </DashOptionWrapper>
-      {(!folders || !resources) && (
-        <NoFolders>
-          <h1>Illustrasjon tom mappe</h1>
-        </NoFolders>
-      )}
-      <FoldersWrapper layout={layout}>
-        {folders?.map(({ title, link }) => (
-          <FolderElement layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
-        ))}
-      </FoldersWrapper>
-      <ResourcesWrapper layout={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }) => (
-          <ResourceElement
-            layout={layout}
-            title={title}
-            topics={topics}
-            tags={tags}
-            description={description}
-            resourceImage={{
-              alt: resourceImage.alt,
-              src: resourceImage.src,
-            }}
-            link={link}
-            key={link}
-          />
-        ))}
-      </ResourcesWrapper>
-    </Dash>
-    </Main>
+      <Aside>{aside}</Aside>
+      <Main>
+        <Dash>
+          <ResourceCountWrapper>
+            <CountWrapper>
+              <FolderOutlined aria-label={t('myNdla.folders')} />
+              <FoldersText>
+                <span>{folders?.length}</span> {t('myNdla.folders')}
+              </FoldersText>
+            </CountWrapper>
+            <CountWrapper>
+              <FileDocumentOutline aria-label={t('myNdla.resources')} />
+              <FoldersText>
+                <span> {resources?.length}</span>
+                {t('myNdla.resources')}
+              </FoldersText>
+            </CountWrapper>
+          </ResourceCountWrapper>
+          <DashOptionWrapper>
+            <DashLeftSide>
+              <AddButton size="xsmall" aria-label={t('myNdla.newFolder')}>
+                <NewFolder />
+                <AddFolder>{t('myNdla.newFolder')}</AddFolder>
+              </AddButton>
+            </DashLeftSide>
+            {(folders || resources) && (
+              <DashRightSide>
+                <Tooltip tooltip={t('myNdla.listView')} align="bottom">
+                  <StyledIconButton
+                    ghostPill
+                    onClick={() => setLayout('list')}
+                    size="small"
+                    aria-label={t('myNdla.listView')}>
+                    <FourlineHamburger />
+                  </StyledIconButton>
+                </Tooltip>
+                <Tooltip tooltip={t('myNdla.detailView')} align="bottom">
+                  <StyledIconButton
+                    ghostPill
+                    onClick={() => setLayout('listLarger')}
+                    size="small"
+                    aria-label={t('myNdla.detailView')}>
+                    <List />
+                  </StyledIconButton>
+                </Tooltip>
+                <Tooltip tooltip={t('myNdla.shortView')} align="bottom">
+                  <StyledIconButton
+                    ghostPill
+                    onClick={() => setLayout('block')}
+                    size="small"
+                    aria-label={t('myNdla.shortView')}>
+                    <GridListView />
+                  </StyledIconButton>
+                </Tooltip>
+              </DashRightSide>
+            )}
+          </DashOptionWrapper>
+          {(!folders || !resources) && (
+            <NoFolders>
+              <h1>Illustrasjon tom mappe</h1>
+            </NoFolders>
+          )}
+          <FoldersWrapper layout={layout}>
+            {folders?.map(({ title, link }) => (
+              <FolderElement layout={layout} title={title} link={link} subFolders={3} subResources={3} key={link} />
+            ))}
+          </FoldersWrapper>
+          <ResourcesWrapper layout={layout}>
+            {resources?.map(({ title, topics, tags, description, resourceImage, link }) => (
+              <ResourceElement
+                layout={layout}
+                title={title}
+                topics={topics}
+                tags={tags}
+                description={description}
+                resourceImage={{
+                  alt: resourceImage.alt,
+                  src: resourceImage.src,
+                }}
+                link={link}
+                key={link}
+              />
+            ))}
+          </ResourcesWrapper>
+        </Dash>
+      </Main>
     </Grid>
   );
 };

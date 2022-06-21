@@ -34,7 +34,7 @@ interface CommonFolderProps {
 
 export interface TreeStructureProps extends CommonFolderProps {
   framed?: boolean;
-  label: string;
+  label?: string;
   folderIdMarkedByDefault?: string;
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
   defaultOpenFolders?: string[];

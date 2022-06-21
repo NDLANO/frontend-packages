@@ -7,16 +7,13 @@
  */
 import React from 'react';
 import { ResourcesView } from '@ndla/ui';
-import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from '../molecules/TreeStructureExample';
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE_WRAPPED } from '../molecules/TreeStructureExample';
 
 export const MyNdla = () => (
   <ResourcesView
     aside={
       <TreeStructureExampleComponent
-        label="Velg plassering"
-        editable
-        framed
-        structure={STRUCTURE_EXAMPLE(true)}
+        structure={STRUCTURE_EXAMPLE_WRAPPED()}
         defaultOpenFolders={[]}
         openOnFolderClick={false}
       />

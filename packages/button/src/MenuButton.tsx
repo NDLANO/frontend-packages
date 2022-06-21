@@ -20,14 +20,14 @@ interface StyledButtonProps {
 }
 
 const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: ${spacing.small};
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.2 : 0.25)}px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
   &:hover *,
   &:active *,
   &:focus * {
@@ -35,10 +35,10 @@ const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
   }
 
   svg {
-    fill: ${colors.brand.secondary};
     margin: 0;
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
+    fill: ${colors.brand.secondary};
   }
 `;
 const StyledHorizontalMenu = styled(HorizontalMenu)`
@@ -53,28 +53,23 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
 `;
 
 const StyledMenuList = styled(MenuList)`
-  border: none;
+  overflow: hidden;
+  padding: 0;
   background-color: white;
-  padding: ${spacing.small};
+  border: none;
   border-radius: 4px;
   box-shadow: ${shadows.levitate1};
 `;
 
 const StyledMenuItem = styled(MenuItem)`
-  gap: ${spacing.small};
-  padding: ${spacing.xxsmall};
   display: flex;
+  align-items: center;
+  gap: ${spacing.small};
+  padding: ${spacing.small};
   cursor: pointer;
-  color: ${(prop) => prop.color};
-  span {
-    display: flex;
-    align-items: center;
-  }
-  svg {
-    fill: ${(prop) => prop.color};
-  }
-  :hover {
-    color: ${colors.brand.primary};
+  color: ${({ color }) => color === 'red' && colors.support.red};
+  &[data-selected] {
+    background: ${colors.brand.secondary};
   }
 `;
 
@@ -82,8 +77,9 @@ export interface MenuItemProps {
   icon?: ReactElement;
   text?: string;
   onClick: () => void;
-  color?: string;
+  color?: 'red';
 }
+
 interface MenuButtonProps extends ButtonProps {
   menuItems?: MenuItemProps[];
   children?: ReactElement;
@@ -100,8 +96,8 @@ export const MenuButton = ({ menuItems, size, children }: MenuButtonProps) => {
       <StyledMenuList>
         {menuItems?.map(({ color, text, icon, onClick }) => (
           <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
-            <span>{icon}</span>
-            <span>{text}</span>
+            {icon}
+            {text}
           </StyledMenuItem>
         ))}
       </StyledMenuList>

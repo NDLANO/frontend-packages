@@ -23,7 +23,7 @@ const StyledTooltip = styled(Tooltip)`
   line-height: 1.2;
   font-weight: ${fonts.weight.normal};
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 

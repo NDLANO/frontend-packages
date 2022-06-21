@@ -1,7 +1,8 @@
-import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import { Download } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
+import Tooltip from '@ndla/tooltip';
+import React from 'react';
+import BEMHelper from 'react-bem-helper';
 import { FileFormat, FileType } from './FileList';
 
 const classes = BEMHelper('c-file-list');
@@ -16,9 +17,6 @@ const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id:
       <span key={format.url}>
         <Download />
         <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-        <span {...classes('tooltip')} aria-hidden role="tooltip" id={formatId}>
-          <span {...classes('tooltip-text')}>{format.tooltip}</span>
-        </span>
       </span>
     );
   }
@@ -32,12 +30,11 @@ const renderFormat = (format: FileFormat, title: string, isPrimary: boolean, id:
       aria-label={titleWithFormat}
       aria-describedby={formatId}>
       <Download />
-      <span {...classes('link-text')}>
-        <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
-      </span>
-      <span {...classes('tooltip')} aria-hidden role="tooltip" id={formatId}>
-        <span {...classes('tooltip-text')}>{format.tooltip}</span>
-      </span>
+      <Tooltip tooltip={format.tooltip}>
+        <span {...classes('link-text')}>
+          <span>{isPrimary ? titleWithFormat : `(${format.fileType.toUpperCase()})`}</span>
+        </span>
+      </Tooltip>
     </SafeLink>
   );
 };

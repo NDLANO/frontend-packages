@@ -90,16 +90,13 @@ const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: Lic
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <Tooltip
-      tooltip={description}
-      children={
-        <StyledLicenseIconItem horizontal={horizontal} fill={color}>
-          <StyledLicenseIconButton type="button" light={light}>
-            <LicenseIcon licenseRight={licenseRight} description={description} />
-          </StyledLicenseIconButton>
-        </StyledLicenseIconItem>
-      }
-    />
+    <Tooltip tooltip={description}>
+      <StyledLicenseIconItem horizontal={horizontal} fill={color}>
+        <StyledLicenseIconButton type="button" light={light}>
+          <LicenseIcon licenseRight={licenseRight} description={description} />
+        </StyledLicenseIconButton>
+      </StyledLicenseIconItem>
+    </Tooltip>
   );
 };
 

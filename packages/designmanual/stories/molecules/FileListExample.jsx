@@ -15,6 +15,7 @@ class FileListExample extends Component {
         files={[
           {
             title: 'Kontrast og balanse i grafisk design',
+            fileExists: true,
             formats: [
               {
                 url: '#1',
@@ -30,11 +31,23 @@ class FileListExample extends Component {
           },
           {
             title: 'Lorum ipsum',
+            fileExists: true,
             formats: [
               {
                 url: '#1',
                 fileType: 'pdf',
                 tooltip: 'Last ned fil: lorumipsum.pdf  (10 MB)',
+              },
+            ],
+          },
+          {
+            title: 'En vakker dag i skogen',
+            fileExists: false,
+            formats: [
+              {
+                url: '#3',
+                fileType: 'pdf',
+                tooltip: 'Last ned fil: vakker_dag_i_skogen.pdf  (1337 MB)',
               },
             ],
           },

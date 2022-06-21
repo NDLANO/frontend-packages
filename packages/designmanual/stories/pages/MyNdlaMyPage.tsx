@@ -13,6 +13,7 @@ import MyNdlaPageExample from '../molecules/MyNdlaMyPageExample';
 const MyNdlaMyPage = () => {
   return (
     <MyNdlaPageExample
+      headerPic={{ src: 'https://cdn.mos.cms.futurecdn.net/2dgsUd3Yi8yUeccvoAdAYD.jpg', alt: '' }}
       recentFavorites={[
         {
           title: 'My Resource',

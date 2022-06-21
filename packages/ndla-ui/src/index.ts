@@ -231,6 +231,6 @@ export { TagSelector } from './TagSelector';
 
 export type { SnackBarItem } from './SnackBar';
 export { SnackBar } from './SnackBar';
-
+export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
 export type { FolderStructureProps, TreeStructureProps } from './TreeStructure';

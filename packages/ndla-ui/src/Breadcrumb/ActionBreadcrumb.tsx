@@ -22,10 +22,12 @@ const StyledRightChevron = styled(ChevronRight)`
   height: 24px;
   width: 24px;
 `;
+
 const StyledSpan = styled.span`
   color: ${colors.text.primary};
   font-weight: ${fonts.weight.bold};
 `;
+
 const StyledSafeLink = styled(SafeLink)`
   color: ${colors.text.primary};
   box-shadow: none;
@@ -37,7 +39,6 @@ const StyledSafeLink = styled(SafeLink)`
 
 interface Props {
   items: SimpleBreadcrumbItem[];
-  light?: boolean;
   actionItems: MenuItemProps[];
 }
 
@@ -45,7 +46,7 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
       return (
-        <MenuButton menuItems={actionItems}>
+        <MenuButton menuItems={actionItems} size="small">
           <StyledSpan>{item.name}</StyledSpan>
         </MenuButton>
       );

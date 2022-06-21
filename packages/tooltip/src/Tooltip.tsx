@@ -41,4 +41,5 @@ const CustomTooltip = ({ id, children, tooltip }: Props) => {
     </StyledTooltip>
   );
 };
+
 export default CustomTooltip;

@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { ReactElement, ReactNode } from 'react';
-import { colors, spacingUnit, spacing, shadows } from '@ndla/core';
+import { colors, spacingUnit, spacing, shadows, misc } from '@ndla/core';
 import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
@@ -43,6 +43,7 @@ const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
 `;
 const StyledHorizontalMenu = styled(HorizontalMenu)`
   border-radius: 100%;
+  transition: ${misc.transition.default};
   &:hover,
   &:active,
   &:focus,

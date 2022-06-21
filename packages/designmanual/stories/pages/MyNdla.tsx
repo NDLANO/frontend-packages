@@ -7,9 +7,20 @@
  */
 import React from 'react';
 import { ResourcesView } from '@ndla/ui';
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from '../molecules/TreeStructureExample';
 
 export const MyNdla = () => (
   <ResourcesView
+    aside={
+      <TreeStructureExampleComponent
+        label="Velg plassering"
+        editable
+        framed
+        structure={STRUCTURE_EXAMPLE(true)}
+        defaultOpenFolders={[]}
+        openOnFolderClick={false}
+      />
+    }
     folders={[
       { title: 'name', link: 'hey' },
       { title: 'Ny mappe', link: '' },

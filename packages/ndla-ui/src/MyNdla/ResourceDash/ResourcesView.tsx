@@ -20,10 +20,12 @@ import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import FolderElement from './Folderelement';
 import ResourceElement from './ResourceElement';
+import { Grid, Aside, Main } from './Layout';
 
 const Dash = styled.div`
   max-width: 960px;
   margin: 0 auto;
+  width: 100%;
 `;
 
 const NoFolders = styled.div`
@@ -174,10 +176,11 @@ export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
   layout?: LayoutProps;
+  aside?: React.ReactNode;
 }
 type LayoutProps = 'list' | 'listLarger' | 'block';
 
-export const ResourcesView = ({ folders, resources }: ViewProps) => {
+export const ResourcesView = ({ folders, resources, aside }: ViewProps) => {
   const { t } = useTranslation();
   const [layout, setLayout] = useState('list' as LayoutProps);
   const windowSize = useWindowSize(1000);
@@ -188,6 +191,11 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
   }, [windowSize]);
 
   return (
+    <Grid>
+      <Aside>
+        {aside}
+      </Aside>
+    <Main>
     <Dash>
       <ResourceCountWrapper>
         <CountWrapper>
@@ -271,6 +279,8 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         ))}
       </ResourcesWrapper>
     </Dash>
+    </Main>
+    </Grid>
   );
 };
 

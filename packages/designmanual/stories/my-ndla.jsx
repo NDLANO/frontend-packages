@@ -13,7 +13,7 @@ storiesOf('Min NDLA', module).add('Dashboard', () => (
   <PageContainer>
     <MastheadWithTopicMenu />
     <Content>
-      <OneColumn cssModifier="clear-desktop" wide>
+      <OneColumn cssModifier="clear-desktop" fullscreen>
         <MyNdla />
       </OneColumn>
     </Content>

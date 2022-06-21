@@ -8,7 +8,6 @@ import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
-import MyNdlaNavigation from './molecules/MyNdlaNavigation';
 import MyNdlaMyPage from './pages/MyNdlaMyPage';
 
 storiesOf('Min NDLA', module).add('Elementer', () => (
@@ -29,18 +28,6 @@ storiesOf('Min NDLA', module).add('Add to favorites', () => (
     <Content>
       <OneColumn cssModifier="clear-desktop" wide>
         <MyNdlaAddToFavoritesExample />
-      </OneColumn>
-    </Content>
-    <FooterExample />
-  </PageContainer>
-));
-
-storiesOf('Min NDLA', module).add('Vertikal navigasjonsmeny', () => (
-  <PageContainer>
-    <MastheadWithTopicMenu />
-    <Content>
-      <OneColumn cssModifier="clear-desktop" wide>
-        <MyNdlaNavigation />
       </OneColumn>
     </Content>
     <FooterExample />

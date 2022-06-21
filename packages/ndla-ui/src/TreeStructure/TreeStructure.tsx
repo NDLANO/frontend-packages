@@ -136,7 +136,7 @@ const TreeStructure = ({
           });
         }
       }}>
-      <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>
+      {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
           idPaths={[]}

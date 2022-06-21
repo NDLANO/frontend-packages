@@ -13,9 +13,18 @@ import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { FeideText } from '@ndla/icons/common';
-import { ListResource, ListResourceProps } from '@ndla/ui';
+import {
+  ListResource,
+  ListResourceProps,
+  LayoutWithSidebarAside,
+  LayoutWithSidebarMain,
+  LayoutWithSidebarWrapper,
+} from '@ndla/ui';
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE_WRAPPED } from './TreeStructureExample';
+
 const MyPageWrapper = styled.div`
-  width: 960px;
+  width: 100%;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -93,50 +102,62 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
   const { t } = useTranslation();
 
   return (
-    <MyPageWrapper>
-      <Header>
-        <StyledH1> {t('myNdla.myPage')}</StyledH1>
-        <p>{t('myNdla.welcome', { name: name.firstName })}</p>
-      </Header>
-      <StyledFeide />
-      <SchoolInfo>
-        <ul>
-          <li>
-            {name.firstName} {name.lastName}
-          </li>
-          <li>{title}</li>
-          <li>{school}</li>
-          <li>{courses.join(', ')}</li>
-        </ul>
-      </SchoolInfo>
-      <Terms>
-        {t('myNdla.read')} <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
-      </Terms>
-      <Resources>
-        <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
-        <StyledResourceList>
-          {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
-            <ListResource
-              title={title}
-              topics={topics}
-              tags={tags}
-              description={description}
-              resourceImage={{
-                alt: resourceImage.alt,
-                src: resourceImage.src,
-              }}
-              link={link}
-              key={link}
-            />
-          ))}
-        </StyledResourceList>
-      </Resources>
+    <LayoutWithSidebarWrapper>
+      <LayoutWithSidebarAside>
+        <TreeStructureExampleComponent
+          editable={false}
+          framed={false}
+          openOnFolderClick
+          structure={STRUCTURE_EXAMPLE_WRAPPED()}
+        />
+      </LayoutWithSidebarAside>
+      <LayoutWithSidebarMain>
+        <MyPageWrapper>
+          <Header>
+            <StyledH1> {t('myNdla.myPage')}</StyledH1>
+            <p>{t('myNdla.welcome', { name: name.firstName })}</p>
+          </Header>
+          <StyledFeide />
+          <SchoolInfo>
+            <ul>
+              <li>
+                {name.firstName} {name.lastName}
+              </li>
+              <li>{title}</li>
+              <li>{school}</li>
+              <li>{courses.join(', ')}</li>
+            </ul>
+          </SchoolInfo>
+          <Terms>
+            {t('myNdla.read')} <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
+          </Terms>
+          <Resources>
+            <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
+            <StyledResourceList>
+              {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
+                <ListResource
+                  title={title}
+                  topics={topics}
+                  tags={tags}
+                  description={description}
+                  resourceImage={{
+                    alt: resourceImage.alt,
+                    src: resourceImage.src,
+                  }}
+                  link={link}
+                  key={link}
+                />
+              ))}
+            </StyledResourceList>
+          </Resources>
 
-      <ButtonsWrapper>
-        <Button outline>{t('user.buttonLogOut')}</Button>
-        <DeleteButton>{t('myNdla.deleteAccount')}</DeleteButton>
-      </ButtonsWrapper>
-    </MyPageWrapper>
+          <ButtonsWrapper>
+            <Button outline>{t('user.buttonLogOut')}</Button>
+            <DeleteButton>{t('myNdla.deleteAccount')}</DeleteButton>
+          </ButtonsWrapper>
+        </MyPageWrapper>
+      </LayoutWithSidebarMain>
+    </LayoutWithSidebarWrapper>
   );
 };
 

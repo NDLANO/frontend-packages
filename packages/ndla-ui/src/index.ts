@@ -161,7 +161,15 @@ export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
 export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
-export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
+export {
+  default as LayoutItem,
+  OneColumn,
+  PageContainer,
+  Content,
+  LayoutWithSidebarWrapper,
+  LayoutWithSidebarMain,
+  LayoutWithSidebarAside,
+} from './Layout';
 
 export {
   FilmSlideshow,
@@ -223,7 +231,7 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
-export { VerticalNavigation, Folder } from './MyNdla';
+export { Folder } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';

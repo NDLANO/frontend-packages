@@ -17,3 +17,4 @@ export { default as FieldSplitter } from './FieldSplitter';
 export { default as FieldRemoveButton } from './FieldRemoveButton';
 export { default as Radiobuttonitem } from './RadiobuttonItem';
 export { default as Select } from './Select';
+export { StyledButtonWrapper, FieldHeaderIconStyle } from './Styles';

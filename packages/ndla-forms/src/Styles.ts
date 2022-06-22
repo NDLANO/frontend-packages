@@ -26,7 +26,11 @@ export const FieldHeaderIconStyle = css`
   }
 `;
 
-export const StyledButtonWrapper = styled.div`
+interface StyledButtonWrapperProps {
+  paddingLeft?: boolean;
+}
+
+export const StyledButtonWrapper = styled.div<StyledButtonWrapperProps>`
   display: flex;
   justify-content: flex-end;
   margin-top: ${spacing.medium};

@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { HTMLProps, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, fonts } from '@ndla/core';
 
@@ -32,11 +31,10 @@ const SelectWrapper = styled.select`
   }
 `;
 
-const Select = ({ children, ...rest }) => <SelectWrapper {...rest}>{children}</SelectWrapper>;
+interface Props extends HTMLProps<HTMLSelectElement> {
+  children?: ReactNode;
+}
 
-Select.propTypes = {
-  children: PropTypes.node,
-  onChange: PropTypes.func.isRequired,
-};
+const Select = ({ children, ...rest }: Props) => <SelectWrapper {...rest}>{children}</SelectWrapper>;
 
 export default Select;

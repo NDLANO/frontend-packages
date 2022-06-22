@@ -1,4 +1,3 @@
-import Select from './Select';
 import { FormPill, FormPills } from './FormPill';
 import CheckboxItem from './CheckboxItem';
 import UploadDropZone from './UploadDropZone';
@@ -13,7 +12,6 @@ export {
   UploadDropZone,
   FieldHeaderIconStyle,
   StyledButtonWrapper,
-  Select,
   DropdownInput,
   DropdownMenu,
 };

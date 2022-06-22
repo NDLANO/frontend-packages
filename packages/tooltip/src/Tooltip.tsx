@@ -29,16 +29,35 @@ const StyledTooltip = styled(Tooltip)`
 
 interface Props {
   id?: string;
-  children: ReactNode;
+  children?: ReactNode;
+  dangerousHTML?: string;
   tooltip: string;
 }
 
-const CustomTooltip = ({ id, children, tooltip }: Props) => {
+const CustomTooltip = ({ id, children, tooltip, dangerousHTML }: Props) => {
   const deterministicId = useId(id);
+
+  const TooltipWrapper = ({ children }: { children: ReactNode }) => (
+    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={tooltip}>
+      <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
+        {children}
+      </StyledTooltip>
+    </div>
+  );
+
+  // Article Converter needs hydration due to SSR removing all dynamics
+  if (dangerousHTML) {
+    return (
+      <TooltipWrapper>
+        <span data-tooltip-children dangerouslySetInnerHTML={{ __html: dangerousHTML }} />
+      </TooltipWrapper>
+    );
+  }
+
   return (
-    <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
-      <span>{children}</span>
-    </StyledTooltip>
+    <TooltipWrapper>
+      <span data-tooltip-children>{children}</span>
+    </TooltipWrapper>
   );
 };
 export default CustomTooltip;

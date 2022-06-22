@@ -7,7 +7,6 @@
  */
 
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
 import { uuid } from '@ndla/util';
@@ -38,7 +37,11 @@ const CheckboxInput = styled.input`
   }
 `;
 
-const CheckboxLabel = styled.label`
+interface CheckboxLabelProps {
+  hasLabel?: boolean;
+}
+
+const CheckboxLabel = styled.label<CheckboxLabelProps>`
   font-family: ${fonts.sans};
   ${fonts.sizes(16, 1.75)};
   color: ${colors.brand.primary};
@@ -104,10 +107,19 @@ const CheckboxLabel = styled.label`
   }
 `;
 
-const CheckboxItem = ({ label, checked, value, id, onChange, disabled }) => {
+interface Props {
+  disabled?: boolean;
+  checked?: boolean;
+  value: string | number;
+  onChange: (id: string) => void;
+  id: string;
+  label?: string;
+}
+
+const CheckboxItem = ({ label = '', checked, value, id, onChange, disabled }: Props) => {
   const uniqueID = uuid();
   return (
-    <Fragment>
+    <>
       <CheckboxInput
         disabled={disabled}
         aria-checked={checked}
@@ -122,21 +134,8 @@ const CheckboxItem = ({ label, checked, value, id, onChange, disabled }) => {
         <span />
         <span>{label}</span>
       </CheckboxLabel>
-    </Fragment>
+    </>
   );
-};
-
-CheckboxItem.propTypes = {
-  disabled: PropTypes.bool,
-  checked: PropTypes.bool,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  onChange: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string,
-};
-
-CheckboxItem.defaultProps = {
-  label: '',
 };
 
 export default CheckboxItem;

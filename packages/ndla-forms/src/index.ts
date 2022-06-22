@@ -19,3 +19,5 @@ export { default as Radiobuttonitem } from './RadiobuttonItem';
 export { default as Select } from './Select';
 export { StyledButtonWrapper, FieldHeaderIconStyle } from './Styles';
 export { FormPill, FormPills } from './FormPill';
+export { default as CheckboxItem } from './CheckboxItem';
+export { default as UploadDropZone } from './UploadDropZone';

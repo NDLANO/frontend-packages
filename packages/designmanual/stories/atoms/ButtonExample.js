@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 import Button, { MultiButton, StyledButton, IconButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown, Wrench } from '@ndla/icons/common';
@@ -6,7 +8,6 @@ import { Heart, Pencil, Print } from '@ndla/icons/action';
 import { Folder, Star, Link } from '@ndla/icons/editor';
 
 import { CloseButton, MenuButton } from '@ndla/button';
-import { InlineContainer, GapHelper } from '../helpers';
 import { StoryIntro, StoryBody } from '../wrappers';
 const AnchorButton = StyledButton.withComponent('a');
 
@@ -45,9 +46,58 @@ const MultiButtonData = {
   ],
 };
 
+const StyledButtonRow = styled.div`
+  display: flex;
+  margin: ${spacing.xsmall} 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: ${spacing.xsmall};
+`;
+
+const sizeNameMap = {
+  xsmall: 'Liten knapp',
+  small: 'Liten knapp',
+  normal: 'Normal knapp',
+  medium: 'Medium knapp',
+  large: 'Stor knapp',
+};
+
+const ButtonRow = (buttonProps) => {
+  return (
+    <StyledButtonRow>
+      {menuButtonSizes.map((size, i) => (
+        <Button size={size} key={i} onClick={action('clicked')} {...buttonProps}>
+          {sizeNameMap[size]}
+        </Button>
+      ))}
+    </StyledButtonRow>
+  );
+};
+
+const IconButtonRow = ({ component: Component, ...buttonProps }) => {
+  return (
+    <StyledButtonRow>
+      {menuButtonSizes.map((size, i) => (
+        <IconButton key={i} size={size} onClick={() => action('clicked')} {...buttonProps}>
+          <Component />
+        </IconButton>
+      ))}
+    </StyledButtonRow>
+  );
+};
+
+const MultiButtonHelper = ({ ...props }) => (
+  <MultiButton
+    onClick={() => action('clicked')}
+    mainButton={MultiButtonData.mainButton}
+    secondaryButtons={MultiButtonData.secondaryButtons}
+    {...props}
+  />
+);
+
 const ButtonExample = () => {
   return (
-    <div>
+    <>
       <StoryIntro title="Knapper">
         <p>
           Knapper er til å klikke på for å navigere på samme side, ikke for å lenke til en annen. De skal altså brukes
@@ -60,499 +110,81 @@ const ButtonExample = () => {
       </StoryIntro>
       <StoryBody>
         <h2 className="u-heading">Eksempel</h2>
-        <InlineContainer>
-          <Button size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
+        <ButtonRow />
         <h3>Knapp med ramme(outline)</h3>
-        <InlineContainer>
-          <Button outline size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button outline size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button outline size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button outline size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button outline size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
+        <ButtonRow outline />
         <h3>Lys versjon(light)</h3>
-        <InlineContainer>
-          <Button size="xsmall" light onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" light onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" light onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" light onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" light onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
+        <ButtonRow light />
         <h3>Lysere versjon(lighter)</h3>
-        <InlineContainer>
-          <Button size="xsmall" lighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" lighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" lighter onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" lighter onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" lighter onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
+        <ButtonRow lighter />
         <h3>Lys grå versjon(greyLighter)</h3>
-        <InlineContainer>
-          <Button size="xsmall" greyLighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" greyLighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" greyLighter onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" greyLighter onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" greyLighter onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
+        <ButtonRow greyLighter />
         <h3>Lysere grå versjon(greyLightest)</h3>
-        <InlineContainer>
-          <Button size="xsmall" greyLightest onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" greyLightest onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" greyLightest onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" greyLightest onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" greyLightest onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
+        <ButtonRow greyLightest />
         <h3>Rundet knapp</h3>
-        <InlineContainer>
-          <Button borderShape="rounded" size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button borderShape="rounded" size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button borderShape="rounded" size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
-        <InlineContainer>
-          <Button borderShape="rounded" outline size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" outline size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" outline size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button borderShape="rounded" outline size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button borderShape="rounded" outline size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
-        <InlineContainer>
-          <Button borderShape="rounded" light size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" light size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" light size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button borderShape="rounded" light size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button borderShape="rounded" light size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
-        <InlineContainer>
-          <Button borderShape="rounded" lighter size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" lighter size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" lighter size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button borderShape="rounded" lighter size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button borderShape="rounded" lighter size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
-        <InlineContainer>
-          <Button borderShape="rounded" greyLighter size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLighter size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLighter size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLighter size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLighter size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
-        <InlineContainer>
-          <Button borderShape="rounded" greyLightest size="xsmall" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLightest size="small" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLightest size="normal" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLightest size="medium" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button borderShape="rounded" greyLightest size="large" onClick={action('clicked')}>
-            Stor knapp
-          </Button>
-        </InlineContainer>
+        <ButtonRow borderShape="rounded" />
+        <ButtonRow borderShape="rounded" outline />
+        <ButtonRow borderShape="rounded" light />
+        <ButtonRow borderShape="rounded" lighter />
+        <ButtonRow borderShape="rounded" greyLighter />
+        <ButtonRow borderShape="rounded" greyLightest />
         <h3>Firkantet knapp</h3>
-        <InlineContainer>
-          <Button size="xsmall" borderShape="sharpened" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" borderShape="sharpened" onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" borderShape="sharpened" onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" borderShape="sharpened" onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" borderShape="sharpened" onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
-        <InlineContainer>
-          <Button size="xsmall" borderShape="sharpened" outline onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" borderShape="sharpened" outline onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" borderShape="sharpened" outline onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" borderShape="sharpened" outline onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" borderShape="sharpened" outline onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
-        <InlineContainer>
-          <Button size="xsmall" borderShape="sharpened" light onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" borderShape="sharpened" light onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" borderShape="sharpened" light onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" borderShape="sharpened" light onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" borderShape="sharpened" light onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
-        <InlineContainer>
-          <Button size="xsmall" borderShape="sharpened" lighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" borderShape="sharpened" lighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" borderShape="sharpened" lighter onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" borderShape="sharpened" lighter onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" borderShape="sharpened" lighter onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
-        <InlineContainer>
-          <Button size="xsmall" borderShape="sharpened" greyLighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" borderShape="sharpened" greyLighter onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" borderShape="sharpened" greyLighter onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" borderShape="sharpened" greyLighter onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" borderShape="sharpened" greyLighter onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
-        <InlineContainer>
-          <Button size="xsmall" borderShape="sharpened" greyLightest onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="small" borderShape="sharpened" greyLightest onClick={action('clicked')}>
-            Liten knapp
-          </Button>{' '}
-          <Button size="normal" borderShape="sharpened" greyLightest onClick={action('clicked')}>
-            Normal knapp
-          </Button>{' '}
-          <Button size="medium" borderShape="sharpened" greyLightest onClick={action('clicked')}>
-            Medium knapp
-          </Button>{' '}
-          <Button size="large" borderShape="sharpened" greyLightest onClick={action('clicked')}>
-            Stor knapp
-          </Button>{' '}
-        </InlineContainer>
+        <ButtonRow borderShape="sharpened" />
+        <ButtonRow borderShape="sharpened" outline />
+        <ButtonRow borderShape="sharpened" light />
+        <ButtonRow borderShape="sharpened" lighter />
+        <ButtonRow borderShape="sharpened" greyLighter />
+        <ButtonRow borderShape="sharpened" greyLightest />
         <h3>Deaktiverte knapper</h3>
-        <InlineContainer>
-          <Button disabled onClick={action('clicked')}>
-            Knapp deaktivert
-          </Button>{' '}
-          <Button disabled size="medium" onClick={action('clicked')}>
-            Knapp deaktivert
-          </Button>{' '}
-          <Button disabled size="large" onClick={action('clicked')}>
-            Knapp deaktivert
-          </Button>
-        </InlineContainer>
+        <ButtonRow disabled />
         <h2 className="u-heading">Multiknapper</h2>
         <p>Undermeny kan vises over eller under hovedknappen</p>
-        <InlineContainer>
-          <MultiButton
-            outline
-            onClick={() => {
-              action('clicked');
-            }}
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-          />{' '}
-          <MultiButton
-            outline
-            disabled
-            onClick={() => {
-              action('clicked');
-            }}
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-          />
-        </InlineContainer>
-        <InlineContainer>
-          <MultiButton
-            onClick={() => {
-              action('clicked');
-            }}
-            menuPosition="bottom"
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-          />{' '}
-          <MultiButton
-            disabled
-            onClick={() => {
-              action('clicked');
-            }}
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-          />
-        </InlineContainer>
-        <InlineContainer>
-          <MultiButton
-            onClick={() => {
-              action('clicked');
-            }}
-            menuPosition="bottom"
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
-          />{' '}
-          <MultiButton
-            disabled
-            onClick={() => {
-              action('clicked');
-            }}
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtonsWithOverride}
-          />
-        </InlineContainer>
-        <InlineContainer>
-          <MultiButton
-            large
-            onClick={() => {
-              action('clicked');
-            }}
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-          />{' '}
-          <MultiButton
-            large
-            outline
-            onClick={() => {
-              action('clicked');
-            }}
-            mainButton={MultiButtonData.mainButton}
-            secondaryButtons={MultiButtonData.secondaryButtons}
-          />
-        </InlineContainer>
+        <StyledButtonRow>
+          <MultiButtonHelper outline />
+          <MultiButtonHelper outline disabled />
+        </StyledButtonRow>
+        <StyledButtonRow>
+          <MultiButtonHelper menuPosition="bottom" />
+          <MultiButtonHelper disabled />
+        </StyledButtonRow>
+        <StyledButtonRow>
+          <MultiButtonHelper menuPosition="bottom" secondaryButtons={MultiButtonData.secondaryButtonsWithOverride} />
+          <MultiButtonHelper disabled secondaryButtons={MultiButtonData.secondaryButtonsWithOverride} />
+        </StyledButtonRow>
+        <StyledButtonRow>
+          <MultiButtonHelper large />
+          <MultiButtonHelper large outline />
+        </StyledButtonRow>
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <InlineContainer>
-          <Button ghostPill onClick={action('clicked')}>
-            <span>Velg språk(language): Bokmål</span>
-            <ChevronDown />
-          </Button>
-        </InlineContainer>
+        <Button ghostPill onClick={action('clicked')}>
+          <span>Velg språk(language): Bokmål</span>
+          <ChevronDown />
+        </Button>
         <h2 className="u-heading">Lukkeknapp</h2>
-        <InlineContainer>
-          <CloseButton />
-        </InlineContainer>
+        <CloseButton />
         <h2 className="u-heading">Ikon knapper</h2>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <ChevronDown />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} outline size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <Heart />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} light size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <ChevronDown />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} lighter size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <Wrench />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} greyLighter size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <Star />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} greyLightest size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <Pencil />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <IconButton key={size} ghostPill size={size} aria-label="Eksempel knapp" onClick={action('clicked')}>
-                <Print />
-              </IconButton>
-            ))}
-          </GapHelper>
-        </InlineContainer>
+        <IconButtonRow aria-label="Eksempel knapp" component={ChevronDown}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" outline component={Heart}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" light component={ChevronDown}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" lighter component={Wrench}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" greyLighter component={Star}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" greyLightest component={Pencil}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" ghostPill component={Print}></IconButtonRow>
         <h2 className="u-heading">Meny-knapp</h2>
-        <InlineContainer>
-          <GapHelper>
-            {menuButtonSizes.map((size) => (
-              <MenuButton key={size} size={size} menuItems={menuItems} />
-            ))}
-          </GapHelper>
-        </InlineContainer>
+        <StyledButtonRow>
+          {menuButtonSizes.map((size) => (
+            <MenuButton key={size} size={size} menuItems={menuItems} />
+          ))}
+        </StyledButtonRow>
         <h2 key="alternative-link-heading" className="u-heading">
           Alternativer når UU krever en link
         </h2>
-        <InlineContainer key="buttons-2">
+        <StyledButtonRow key="buttons-2">
           <AnchorButton href="https://ndla.no" target="_blank" rel="noopener noreferrer">
             Link stylet som knapp
-          </AnchorButton>{' '}
+          </AnchorButton>
           <AnchorButton
             style={{ width: '250px' }}
             appearance="outline"
@@ -561,24 +193,15 @@ const ButtonExample = () => {
             rel="noopener noreferrer">
             Link stylet som knapp
           </AnchorButton>
-        </InlineContainer>
+        </StyledButtonRow>
         <h2 key="alternative-button-heading" className="u-heading">
           Alternativer når UU krever en knapp
         </h2>
-        <InlineContainer key="buttons">
-          <Button link onClick={action('clicked')}>
-            Knapp stylet som link
-          </Button>{' '}
-          <p>
-            Ser{' '}
-            <Button stripped onClick={action('clicked')}>
-              dette
-            </Button>{' '}
-            ut som en knapp
-          </p>
-        </InlineContainer>
+        <Button link onClick={action('clicked')}>
+          Knapp stylet som link
+        </Button>
       </StoryBody>
-    </div>
+    </>
   );
 };
 

@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { colors, fonts, spacing, spacingUnit, misc } from '@ndla/core';
@@ -49,35 +48,29 @@ const StyledPillsWrapper = styled.div`
   margin: ${spacing.normal} 0 ${spacing.normal} -${spacing.xsmall};
 `;
 
-export const FormPill = ({ label, id, onClick }) => (
+interface FormPillProps {
+  label: string;
+  id: string;
+  onClick?: (id: string) => void;
+}
+export const FormPill = ({ label, id, onClick }: FormPillProps) => (
   <StyledPill>
     <button type="button">
-      <Cross onClick={() => onClick(id)} />
+      <Cross onClick={() => onClick?.(id)} />
       <span>{label}</span>
     </button>
   </StyledPill>
 );
 
-FormPill.propTypes = {
-  id: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-};
+interface FormPillsProps {
+  labels: string[];
+  onClick?: (id: string) => void;
+}
 
-export const FormPills = ({ labels, onClick }) => (
+export const FormPills = ({ labels, onClick }: FormPillsProps) => (
   <StyledPillsWrapper>
     {labels.map((label) => (
       <FormPill label={label} key={label} onClick={onClick} id={label} />
     ))}
   </StyledPillsWrapper>
 );
-
-FormPills.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  labels: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};

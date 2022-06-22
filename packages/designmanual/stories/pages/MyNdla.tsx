@@ -14,6 +14,7 @@ import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
+import { FolderInput } from '@ndla/ui/src';
 
 const Wrapper = styled.div`
   max-width: 960px;
@@ -45,6 +46,8 @@ export const MyNdla = () => {
               subResources={3}
               type={'list'}
             />
+            <h2>Legg til mappe</h2>
+            <FolderInput onAddFolder={() => {}} onClose={() => {}} />
             <h2>Blokkvisning av folder</h2>
             <BlockFolderWrapper>
               <Folder

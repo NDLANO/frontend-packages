@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing } from '@ndla/core';
@@ -42,10 +41,10 @@ const siblingCSS = css`
   }
 `;
 
-const FieldSection = ({ children }) => <Wrapper css={siblingCSS}>{children}</Wrapper>;
+interface Props {
+  children?: ReactNode;
+}
 
-FieldSection.propTypes = {
-  children: PropTypes.node,
-};
+const FieldSection = ({ children }: Props) => <Wrapper css={siblingCSS}>{children}</Wrapper>;
 
 export default FieldSection;

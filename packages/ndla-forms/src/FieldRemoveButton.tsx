@@ -6,8 +6,7 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { HTMLProps, ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { Cross } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
@@ -44,21 +43,15 @@ const buttonCSS = css`
   }
 `;
 
-const FieldRemoveButton = ({ children, type, ...rest }) => (
-  // eslint-disable-next-line
+interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'type'> {
+  children?: ReactNode;
+  type?: 'submit' | 'reset' | 'button';
+}
+const FieldRemoveButton = ({ children, type = 'button', ...rest }: Props) => (
   <button css={buttonCSS} type={type} {...rest}>
     <Cross className="c-icon--medium" aria-hidden={true} />
     <span>{children}</span>
   </button>
 );
-
-FieldRemoveButton.propTypes = {
-  children: PropTypes.node,
-  type: PropTypes.string,
-};
-
-FieldRemoveButton.defaultProps = {
-  type: 'button',
-};
 
 export default FieldRemoveButton;

@@ -6,8 +6,7 @@
  *
  */
 
-import React, { Children, cloneElement } from 'react';
-import PropTypes from 'prop-types';
+import React, { Children, cloneElement, ReactElement } from 'react';
 import { css } from '@emotion/core';
 import { spacing } from '@ndla/core';
 
@@ -20,7 +19,10 @@ const FieldSplitterCSS = css`
   }
 `;
 
-const FieldSplitter = ({ children }) => (
+interface Props {
+  children: ReactElement;
+}
+const FieldSplitter = ({ children }: Props) => (
   <div css={FieldSplitterCSS}>
     {Children.map(children, (child, i) =>
       cloneElement(child, {
@@ -33,9 +35,5 @@ const FieldSplitter = ({ children }) => (
     )}
   </div>
 );
-
-FieldSplitter.propTypes = {
-  children: PropTypes.node,
-};
 
 export default FieldSplitter;

@@ -6,7 +6,8 @@
  *
  */
 
-// @ts-ignore
+/** @ts-ignore */
 export * from './index-javascript';
 
 export { default as PopUpWrapper } from './PopupWrapper';
+export { Input, TextArea } from './Input';

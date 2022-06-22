@@ -9,8 +9,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Spinner } from '@ndla/ui';
 import { Search } from '@ndla/icons/common';
-import { Input, FormPill } from '@ndla/forms';
 import { getFieldValue } from './dropdownHelper';
+import { Input, FormPill } from '.';
 
 const DropdownInput = ({
   multiSelect,
@@ -38,7 +38,6 @@ const DropdownInput = ({
       ))
     }
     data-testid={testid}
-    container="div"
   />
 );
 

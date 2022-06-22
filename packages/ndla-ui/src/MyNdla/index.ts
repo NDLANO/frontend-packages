@@ -1,5 +1,3 @@
-import { ResourceElement } from './ResourceDash';
-import { ResourcesView } from './ResourceDash';
-import { Breadcrumbs } from './ResourceDash';
-
-export { ResourceElement, ResourcesView, Breadcrumbs };
+import Folder from './Resource/Folder';
+import { VerticalNavigation } from './Navigation';
+export { VerticalNavigation, Folder };

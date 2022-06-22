@@ -25,7 +25,7 @@ const conceptData = {
       license: {
         license: 'CC-BY-NC-SA-4.0',
       },
-      creators: [{ name: 'En skaper', type: 'Writer' }],
+      creators: [{ name: 'En skaper', type: 'writer' }],
       processors: [{ name: 'Totaltekst', type: 'Correction' }],
       rightsholders: [],
     },
@@ -66,7 +66,7 @@ const conceptData = {
       creators: [
         {
           name: 'Bjørnar Mortensen Vik',
-          type: 'Writer',
+          type: 'writer',
         },
       ],
       processors: [],
@@ -107,6 +107,10 @@ const conceptData = {
           name: 'Fornavn Etternavn',
           type: 'writer',
         },
+        {
+          name: 'Annen Person',
+          type: 'writer',
+        },
       ],
       processors: [
         {
@@ -114,7 +118,12 @@ const conceptData = {
           type: 'correction',
         },
       ],
-      rightsholders: [],
+      rightsholders: [
+        {
+          name: 'Stort Selskap',
+          type: 'supplier',
+        },
+      ],
     },
     visualElement: {
       resource: 'iframe',
@@ -158,7 +167,7 @@ const conceptData = {
         creators: [
           {
             name: 'Vilkårlig Person',
-            type: 'Writer',
+            type: 'writer',
           },
         ],
       },

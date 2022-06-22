@@ -23,14 +23,23 @@ import {
   MastheadSearchModal,
   TopicMenuButton,
   SearchFieldForm,
-  BreadcrumbBlock,
   MastheadAuthModal,
+  HeaderBreadcrumb,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import SafeLink from '@ndla/safelink';
+import styled from '@emotion/styled';
+import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
 
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
+import { feideUserLaerer } from './feideUser';
+
+const BreadcrumbWrapper = styled.div`
+  ${mq.range({ until: breakpoints.tablet })} {
+    display: none;
+  }
+`;
 
 export const MastheadWithLogo = ({ skipToMainContentId }) => (
   <Masthead fixed skipToMainContentId={skipToMainContentId}>
@@ -137,8 +146,7 @@ class MastheadWithTopicMenu extends Component {
     const authedProps = isAuthed
       ? {
           isAuthenticated: true,
-          authorizedRole: 'lærer',
-          authorizedCollectedInfo: ['Lærer', 'Skole'],
+          ...feideUserLaerer,
           onAuthenticateClick: () => {},
         }
       : {
@@ -255,7 +263,9 @@ class MastheadWithTopicMenu extends Component {
           )}
           {breadcrumbItems && (
             <DisplayOnPageYOffset yOffsetMin={150}>
-              <BreadcrumbBlock items={breadcrumbItems} />
+              <BreadcrumbWrapper>
+                <HeaderBreadcrumb items={breadcrumbItems} />
+              </BreadcrumbWrapper>
             </DisplayOnPageYOffset>
           )}
         </MastheadItem>

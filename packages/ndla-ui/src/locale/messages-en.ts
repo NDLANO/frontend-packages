@@ -14,6 +14,19 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Create folder',
+    newFolder: {
+      placeholder: 'Add foldername',
+      defaultName: 'New folder',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Add to tag',
+    removeTag: 'Remove tag {{name}}',
+    hideAllTags: 'Hide all tags',
+    showAllTags: 'Show all tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Frontpage${titleTemplate}`,
@@ -757,15 +770,15 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Nye fag på NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
+      text: 'Forslag til årsplaner fra NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'Aktiviser elevane med digitale verktøy',
-      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
+      text: 'Huskeliste for kontaktlærere',
+      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Tom Knudsen',
@@ -945,6 +958,15 @@ const messages = {
     resource: {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
     },
+    primarySchool: 'Primary School',
+    name: 'Name',
+    mail: 'E-mail',
+    username: 'Username',
+    groupTypes: {
+      basic: 'Basic group',
+      teaching: 'Teaching group',
+      other: 'Other groups',
+    },
   },
   checkOutNewFeature: 'New feature',
   slateBlockMenu: {
@@ -956,15 +978,35 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
-    resources: 'resources',
-    folders: 'folders',
-    folder: 'folder',
+    resources: '{{count}} Resource',
+    resources_plural: '{{count}} Resources',
+    folders: '{{count}} Folder',
+    folders_plural: '{{count}} Folders',
+    folder: 'Folder',
     myFolders: 'My folders',
     myTags: 'My tags',
     newFolder: 'New folder',
+    newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',
     help: 'Help',
+    more: 'More options',
+    listView: 'List view',
+    detailView: 'Detailed listview',
+    shortView: 'Short view',
+    myPage: 'My page',
+    deleteAccount: 'Delete account',
+    welcome: 'Hello, {{name}}. We have gathered the following information about you from Feide:',
+    read: 'Read our',
+    terms: 'terms of use',
+    newFavourite: 'Recently favourited',
+    resource: {
+      addToMyNdla: 'Add to My NDLA',
+      addedToMyNdla: 'Added to My NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Close notification',
   },
   labels: {
     category: 'Category',

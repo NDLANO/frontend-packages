@@ -27,6 +27,11 @@ const ArticleLearningMaterial = ({ accessRestricted }) => {
   return (
     <OneColumn>
       <Article
+        // eslint-disable-next-line no-console
+        onAddToFavorites={() => console.log('add to favorites')}
+        addToFavoritesLabel="Legg til i favoritter"
+        removeFromFavoritesLabel="Fjern fra favoritter"
+        isFavorite={false}
         article={{
           title: 'Artikkel fagstoff',
           introduction: 'Du har en kjempegod idé til en kortfilm. Men det koster mange penger å produsere filmen.',

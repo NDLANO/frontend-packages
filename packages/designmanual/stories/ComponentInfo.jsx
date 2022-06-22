@@ -43,7 +43,7 @@ class ComponentInfo extends Component {
     const { reactCode, messages, status, usesPropTypes, children, onSite, components } = this.props;
     const tabContent = [
       {
-        title: 'Kode eksempel',
+        title: 'Kodeeksempel',
         content: (
           <Fragment>
             <Button

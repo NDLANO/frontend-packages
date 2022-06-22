@@ -14,6 +14,19 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Lag mappe',
+    newFolder: {
+      placeholder: 'Skriv navn på mappe',
+      defaultName: 'Ny mappe',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Tilknytt tag',
+    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    hideAllTags: 'Skjul alle tagger',
+    showAllTags: 'Vis alle tagger',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Framsida${titleTemplate}`,
@@ -756,15 +769,15 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Nye fag på NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
+      text: 'Forslag til årsplaner fra NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'Aktiviser elevane med digitale verktøy',
-      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
+      text: 'Huskeliste for kontaktlærere',
+      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Tom Knudsen',
@@ -944,6 +957,15 @@ const messages = {
     resource: {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
+    primarySchool: 'Hovudskule',
+    name: 'Namn',
+    mail: 'E-post',
+    username: 'Brukarnamn',
+    groupTypes: {
+      basic: 'Basisgruppe',
+      teaching: 'Undervisningsgruppe',
+      other: 'Andre grupper',
+    },
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {
@@ -955,15 +977,35 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
-    resources: 'Ressursar',
-    folders: 'Mapper',
+    resources: '{{count}} ressurs',
+    resources_plural: '{{count}} ressursar',
+    folders: '{{count}} mappe',
+    folders_plural: '{{count}} mapper',
     folder: 'Mappe',
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',
+    newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favorittar',
     help: 'Hjelp',
+    more: 'Fleire val',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
+    myPage: 'Mi side',
+    deleteAccount: 'Slett konto',
+    welcome: 'Hei, {{name}}. Vi har henta følgande informasjon om deg frå Feide:',
+    read: 'Les våre',
+    terms: 'vilkår for bruk',
+    newFavourite: 'Nyleg favorittmerka',
+    resource: {
+      addToMyNdla: 'Legg i Min NDLA',
+      addedToMyNdla: 'Lagt i Min NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Lukk melding',
   },
   labels: {
     category: 'Kategori',

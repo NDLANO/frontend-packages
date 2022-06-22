@@ -36,6 +36,7 @@ const StyledHeading = styled.h1`
 type Props = {
   invertedStyle?: boolean;
   toggleAdditionalResources: () => void;
+  onToggleAddToFavorites: (id: string | number, add: string) => void;
 };
 
 const ResourceGroup = ({
@@ -45,6 +46,7 @@ const ResourceGroup = ({
   toggleAdditionalResources,
   contentType,
   invertedStyle,
+  onToggleAddToFavorites,
 }: Props & ResourceListProps) => (
   <Wrapper>
     {title && (
@@ -59,6 +61,7 @@ const ResourceGroup = ({
         showAdditionalResources={showAdditionalResources}
         contentType={contentType}
         resources={resources}
+        onToggleAddToFavorites={onToggleAddToFavorites}
       />
     ) : null}
   </Wrapper>

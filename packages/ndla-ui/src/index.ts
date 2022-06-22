@@ -22,6 +22,7 @@ export {
   ArticleHeaderWrapper,
   ArticleSideBar,
   default as Article,
+  ArticleFavoritesButton,
 } from './Article';
 
 export { default as Table } from './Table';
@@ -108,7 +109,9 @@ export { SearchFieldForm } from './Search/SearchFieldForm';
 
 export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
 export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
+export { UserInfo } from './User';
 export { default as AuthModal } from './User';
+export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './User';
 
 export { default as CreatedBy } from './CreatedBy';
 
@@ -151,7 +154,8 @@ export type { TopicProps } from './Topic';
 export { default as Aside } from './Aside';
 export { default as AuthorInfo } from './AuthorInfo';
 
-export { default as Breadcrumb, BreadcrumbBlock } from './Breadcrumb';
+export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
+export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
 export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
@@ -218,7 +222,15 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
-
 export { BannerCard } from './BannerCard';
+export { VerticalNavigation, Folder } from './MyNdla';
+export { ListResource, BlockResource } from './Resource';
+export type { ListResourceProps } from './Resource';
+export type { TagType } from './TagSelector';
+export { TagSelector } from './TagSelector';
 
-export { ResourcesView, ResourceElement, Breadcrumbs } from './MyNdla';
+export type { SnackBarItem } from './SnackBar';
+export { SnackBar } from './SnackBar';
+
+export { TreeStructure } from './TreeStructure';
+export type { FolderStructureProps, TreeStructureProps } from './TreeStructure';

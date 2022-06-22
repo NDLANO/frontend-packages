@@ -68,7 +68,7 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />
       ) : (
-        <StyledIframe type={type} src={visualElement.url} title={visualElement.title} />
+        <StyledIframe allowFullScreen type={type} src={visualElement.url} title={visualElement.title} />
       )}
     </FigureNotion>
   );

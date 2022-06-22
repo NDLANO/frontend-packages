@@ -6,15 +6,13 @@
  *
  */
 
-import React from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import Button from '@ndla/button';
 import { animations, colors, fonts, spacing } from '@ndla/core';
 import { ChevronDown, FeideText, LogIn, LogOut } from '@ndla/icons/common';
-import Button from '@ndla/button';
-
-import { AuthModalProps } from '../User/AuthModal';
-import AuthModal from '../User';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import AuthModal, { AuthModalProps } from '../User/AuthModal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -66,7 +64,7 @@ const AuthedButton = styled(Button)`
   }
 `;
 
-const FooterAuth = ({ isAuthenticated, onAuthenticateClick, authorizedRole, ...rest }: AuthModalProps) => {
+const FooterAuth = ({ isAuthenticated, user, onAuthenticateClick, ...rest }: AuthModalProps) => {
   const { t } = useTranslation();
   return (
     <Wrapper>
@@ -78,11 +76,11 @@ const FooterAuth = ({ isAuthenticated, onAuthenticateClick, authorizedRole, ...r
           <AuthModal
             {...rest}
             isAuthenticated={isAuthenticated}
+            user={user}
             onAuthenticateClick={onAuthenticateClick}
-            authorizedRole={authorizedRole}
             activateButton={
               <AuthedButton ghostPill size="medium">
-                {t('user.loggedInAsButton', { role: authorizedRole })}
+                {t('user.loggedInAsButton', { role: user?.eduPersonPrimaryAffiliation })}
                 <ChevronDown />
               </AuthedButton>
             }

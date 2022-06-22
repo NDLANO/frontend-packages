@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, colors } from '@ndla/core';
+import { MenuButton } from '@ndla/button';
 import Image from '../Image';
 import { ResourceImageProps, ResourceTitle, Row, TagList, TopicList } from './resourceComponents';
 
@@ -73,6 +74,17 @@ const StyledImage = styled(Image)<StyledImageProps>`
   height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
 `;
 
+const TagCounterWrapper = styled.p`
+  color: ${colors.brand.primary};
+  box-shadow: none;
+  margin: 0;
+  font-weight: 600;
+  ${fonts.sizes(16)}
+  &hover {
+    color: grey;
+  }
+`;
+
 export interface ListResourceProps {
   link: string;
   title: string;
@@ -85,14 +97,37 @@ export interface ListResourceProps {
 
 const ListResource = ({ link, title, tags, resourceImage, topics, description, actionMenu }: ListResourceProps) => {
   const showDescription = description !== undefined;
+
+  function CheckTagsLength(tags: string[]) {
+    if (tags.length > 3) {
+      return (
+        <>
+          <TagList tags={tags.slice(0, 3)} />{' '}
+          <MenuButton
+            hideMenuIcon={true}
+            menuItems={tags.slice(3, tags.length).map((tag) => {
+              return {
+                text: '#' + tag,
+                onClick: () => {},
+              };
+            })}>
+            <TagCounterWrapper>+ {tags?.length - 3}</TagCounterWrapper>
+          </MenuButton>
+        </>
+      );
+    } else {
+      return <TagList tags={tags} />;
+    }
+  }
+
   return (
     <ResourceWrapper to={link}>
       <StyledImage alt={resourceImage.alt} src={resourceImage.src} imageSize={showDescription ? 'normal' : 'compact'} />
       <ResourceInfoWrapper>
         <Row>
           <ResourceTitle>{title}</ResourceTitle>
-          <TagList tags={tags} />
-          {actionMenu}
+          {tags && CheckTagsLength(tags)}
+          <MenuButton size="small" />
         </Row>
         <Row>
           <TopicList topics={topics} />

@@ -64,8 +64,8 @@ const StyledMenuList = styled(MenuList)`
 const StyledMenuItem = styled(MenuItem)`
   display: flex;
   align-items: center;
-  gap: ${spacing.small};
-  padding: ${spacing.small};
+  gap: ${spacing.xsmall};
+  padding: ${spacing.xsmall};
   cursor: pointer;
   color: ${({ color }) => color === 'red' && colors.support.red};
   &[data-selected] {
@@ -84,14 +84,15 @@ interface MenuButtonProps extends ButtonProps {
   menuItems?: MenuItemProps[];
   children?: ReactElement;
   menuButtonPrefix?: ReactNode;
+  hideMenuIcon?: boolean;
 }
-export const MenuButton = ({ menuItems, size, children }: MenuButtonProps) => {
+export const MenuButton = ({ menuItems, size, children, hideMenuIcon }: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
     <Menu aria-label={t('myNdla.more')}>
       <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
         {children}
-        <StyledHorizontalMenu />
+        {!hideMenuIcon ? <StyledHorizontalMenu /> : <></>}
       </StyledMenuButton>
       <StyledMenuList>
         {menuItems?.map(({ color, text, icon, onClick }) => (

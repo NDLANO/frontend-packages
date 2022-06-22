@@ -6,8 +6,7 @@
  *
  */
 
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, utils } from '@ndla/core';
 
@@ -36,7 +35,11 @@ const RadioInput = styled.input`
   }
 `;
 
-const RadioLabel = styled.label`
+interface RadioLabelProps {
+  hasLabel?: boolean;
+}
+
+const RadioLabel = styled.label<RadioLabelProps>`
   font-family: ${fonts.sans};
   ${fonts.sizes(16, 1.75)};
   color: ${colors.brand.primary};
@@ -66,8 +69,16 @@ const RadioLabel = styled.label`
   }
 `;
 
-const RadiobuttonItem = ({ label, checked, value, id, onChange, disabled }) => (
-  <Fragment>
+interface Props {
+  label?: string;
+  id: string;
+  onChange: (id: string) => void;
+  checked?: boolean;
+  disabled?: boolean;
+  value: string | number;
+}
+const RadiobuttonItem = ({ label = '', checked, value, id, onChange, disabled }: Props) => (
+  <>
     <RadioInput
       disabled={disabled}
       aria-checked={checked}
@@ -81,20 +92,7 @@ const RadiobuttonItem = ({ label, checked, value, id, onChange, disabled }) => (
     <RadioLabel htmlFor={id} hasLabel={label !== ''}>
       {label}
     </RadioLabel>
-  </Fragment>
+  </>
 );
-
-RadiobuttonItem.propTypes = {
-  disabled: PropTypes.bool,
-  checked: PropTypes.bool,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  onChange: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string,
-};
-
-RadiobuttonItem.defaultProps = {
-  label: '',
-};
 
 export default RadiobuttonItem;

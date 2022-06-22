@@ -110,9 +110,9 @@ const CheckboxLabel = styled.label<CheckboxLabelProps>`
 interface Props {
   disabled?: boolean;
   checked?: boolean;
-  value: string | number;
-  onChange: (id: string) => void;
-  id: string;
+  value?: string | number;
+  onChange?: (id?: number) => void;
+  id?: number;
   label?: string;
 }
 
@@ -127,8 +127,8 @@ const CheckboxItem = ({ label = '', checked, value, id, onChange, disabled }: Pr
         type="checkbox"
         value={value}
         id={uniqueID}
-        name={id}
-        onChange={() => onChange(id)}
+        name={id?.toString()}
+        onChange={() => onChange?.(id)}
       />
       <CheckboxLabel htmlFor={uniqueID} hasLabel={label !== ''}>
         <span />

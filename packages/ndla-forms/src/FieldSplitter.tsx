@@ -20,7 +20,7 @@ const FieldSplitterCSS = css`
 `;
 
 interface Props {
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }
 const FieldSplitter = ({ children }: Props) => (
   <div css={FieldSplitterCSS}>

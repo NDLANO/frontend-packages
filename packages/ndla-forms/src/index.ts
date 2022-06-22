@@ -9,6 +9,7 @@
 /** @ts-ignore */
 export * from './index-javascript';
 
+export type { InputProps, TextAreaProps } from './Input';
 export { default as PopUpWrapper } from './PopupWrapper';
 export { Input, TextArea } from './Input';
 export { default as FieldHeader } from './FieldHeader';

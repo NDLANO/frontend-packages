@@ -109,7 +109,7 @@ const BaseInput = ({ iconRight, iconLeft, tags, white, warningText, label, child
   );
 };
 
-interface InputProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLInputElement> {}
+export interface InputProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLInputElement> {}
 
 export const Input = ({
   iconRight,
@@ -136,7 +136,7 @@ export const Input = ({
   );
 };
 
-interface TextAreaProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLTextAreaElement> {}
+export interface TextAreaProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLTextAreaElement> {}
 
 export const TextArea = ({
   iconRight,

@@ -8,26 +8,31 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { spacing, fonts, colors, breakpoints, mq } from '@ndla/core';
+import { spacing, fonts, colors } from '@ndla/core';
 
-const StyledDiv = styled.div`
+const InfoBlockWrapper = styled.div`
   border-bottom: 1px solid ${colors.brand.neutral7};
   padding: ${spacing.small} 0;
-  p {
-    ${fonts.sizes(18)}
-  }
+`;
+
+const IconWrapper = styled.div`
+  align-items: flex-start;
+  display: flex;
+
   svg {
     height: 25px;
     width: 25px;
   }
 `;
+
+const StyledTextWrapper = styled.div`
+  ${fonts.sizes(18)}
+`;
+
 const TitleWrapper = styled.div`
   display: flex;
-  align-items: center;
+
   gap: ${spacing.small};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    align-items: flex-start;
-  }
 `;
 
 const StyledTitle = styled.h2`
@@ -43,13 +48,13 @@ interface InfoBlockProps {
 }
 export const InfoBlock = ({ icon, title, children }: InfoBlockProps) => {
   return (
-    <StyledDiv>
+    <InfoBlockWrapper>
       <TitleWrapper>
-        {icon}
+        <IconWrapper>{icon}</IconWrapper>
         <StyledTitle>{title}</StyledTitle>
       </TitleWrapper>
-      {children}
-    </StyledDiv>
+      <StyledTextWrapper>{children}</StyledTextWrapper>
+    </InfoBlockWrapper>
   );
 };
 

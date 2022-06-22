@@ -55,7 +55,7 @@ const StyledButtonRow = styled.div`
 `;
 
 const sizeNameMap = {
-  xsmall: 'Liten knapp',
+  xsmall: 'Minst knapp',
   small: 'Liten knapp',
   normal: 'Normal knapp',
   medium: 'Medium knapp',

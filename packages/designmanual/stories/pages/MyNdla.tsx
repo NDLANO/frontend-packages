@@ -25,7 +25,7 @@ const BlockFolderWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
-const tags = ['tag', 'tag', 'tag'];
+const tags = ['tag', 'tag', 'tag', 'tag', 'tag'];
 
 const topics = ['Matte', 'Naturfag'];
 

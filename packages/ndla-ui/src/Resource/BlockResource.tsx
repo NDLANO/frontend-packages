@@ -10,9 +10,9 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
+import { MenuButton } from '@ndla/button';
 import Image from '../Image';
 import { ResourceImageProps, ResourceTitle, Row, TagList, TopicList } from './resourceComponents';
-import { MenuButton } from '@ndla/button';
 
 interface BlockResourceProps {
   link: string;

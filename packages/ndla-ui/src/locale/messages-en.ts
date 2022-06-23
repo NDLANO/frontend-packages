@@ -994,15 +994,35 @@ const messages = {
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Short view',
-    myPage: 'My page',
-    deleteAccount: 'Delete account',
-    welcome: 'Hello, {{name}}. We have gathered the following information about you from Feide:',
-    read: 'Read our',
-    terms: 'terms of use',
-    newFavourite: 'Recently favourited',
-    resource: {
-      addToMyNdla: 'Add to My NDLA',
-      addedToMyNdla: 'Added to My NDLA',
+    myPage: {
+      myPage: 'My page',
+      logout: 'Log out of My NDLA',
+      deleteAccount: 'Delete My NDLA',
+      welcome:
+        'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
+      read: { our: 'Read our', ours: 'Read our' },
+      privacy: 'privacy statement',
+      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      wishToDelete: 'Do you wish to delete your account?',
+      terms: 'terms of use',
+      feide: 'We have retrieved this information from Feide',
+      newFavourite: 'Recently favourited',
+      resource: {
+        addToMyNdla: 'Add to My NDLA',
+        addedToMyNdla: 'Added to My NDLA',
+      },
+      storageInfo: {
+        title: 'How to save your favourite resources from NDLA',
+        text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
+      },
+      folderInfo: {
+        title: 'How to organise your favourite resources in folders',
+        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+      },
+      tagInfo: {
+        title: 'How to tag your favourite resources',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+      },
     },
   },
   snackbar: {

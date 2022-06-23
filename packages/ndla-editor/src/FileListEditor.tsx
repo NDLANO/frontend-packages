@@ -13,7 +13,6 @@ import Tooltip from '@ndla/tooltip';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';
-//@ts-ignore
 import { CheckboxItem } from '@ndla/forms';
 import FileNameInput from './FileNameInput';
 

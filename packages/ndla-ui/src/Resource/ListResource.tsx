@@ -11,7 +11,7 @@ import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, colors } from '@ndla/core';
 import Image from '../Image';
-import { ResourceImageProps, ResourceTitle, Row, TagList, TopicList } from './resourceComponents';
+import { CompressTagsLength, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
 
 const ResourceDescription = styled.p`
   line-clamp: 2;
@@ -85,13 +85,14 @@ export interface ListResourceProps {
 
 const ListResource = ({ link, title, tags, resourceImage, topics, description, actionMenu }: ListResourceProps) => {
   const showDescription = description !== undefined;
+
   return (
     <ResourceWrapper to={link}>
       <StyledImage alt={resourceImage.alt} src={resourceImage.src} imageSize={showDescription ? 'normal' : 'compact'} />
       <ResourceInfoWrapper>
         <Row>
           <ResourceTitle>{title}</ResourceTitle>
-          <TagList tags={tags} />
+          {tags && CompressTagsLength(tags)}
           {actionMenu}
         </Row>
         <Row>

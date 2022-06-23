@@ -14,6 +14,7 @@ import { fonts, spacing, colors } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
+import { MenuButton } from '@ndla/button';
 
 interface FolderIconWrapperProps {
   type?: LayoutType;
@@ -134,7 +135,7 @@ const Folder = ({ link, title, subFolders, subResources, type = 'list', actionMe
       <FolderTitle>{title}</FolderTitle>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />
       <IconCount layoutType={type} type={'resource'} count={subResources} />
-      {actionMenu}
+      <MenuButton size="small" />
     </FolderWrapper>
   );
 };

@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { IconButton } from '@ndla/button/src';
+import { IconButton } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { Cross } from '@ndla/icons/action';
 import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';

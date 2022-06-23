@@ -55,7 +55,7 @@ export interface FeideGoGroup extends FeideBaseGroup {
 
 export type FeideGroup = FeideOrg | FeideGoGroup;
 
-interface FeideUser {
+export interface FeideUser {
   cn: string[];
   displayName: string;
   eduPersonAffiliation: AffiliationType[] | AffiliationType;

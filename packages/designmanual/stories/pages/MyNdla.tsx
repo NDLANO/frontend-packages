@@ -47,7 +47,12 @@ export const MyNdla = () => {
               type={'list'}
             />
             <h2>Legg til mappe</h2>
-            <FolderInput onAddFolder={() => {}} onClose={() => {}} />
+            {/* eslint-disable-next-line no-console */}
+            <FolderInput
+              autoFocus
+              onAddFolder={() => console.log('onAddFolder')}
+              onClose={() => console.log('onClose')}
+            />
             <h2>Blokkvisning av folder</h2>
             <BlockFolderWrapper>
               <Folder

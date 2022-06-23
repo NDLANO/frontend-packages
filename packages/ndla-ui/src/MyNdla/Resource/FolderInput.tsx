@@ -53,10 +53,10 @@ const StyledInput = styled.input`
 interface Props {
   onAddFolder: (name: string) => void;
   onClose: () => void;
-  autoSelect?: boolean;
+  autoFocus?: boolean;
 }
 
-const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
+const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
   const { t } = useTranslation();
   const newFolderText = t('treeStructure.newFolder.defaultName');
   const [input, setInput] = useState<string>(newFolderText);
@@ -75,12 +75,12 @@ const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
   };
 
   useEffect(() => {
-    if (mounted && autoSelect) {
+    if (mounted && autoFocus) {
       inputRef.current?.select();
     } else {
       setMounted(true);
     }
-  }, [mounted, autoSelect]);
+  }, [mounted, autoFocus]);
 
   return (
     <FolderInputWrapper>

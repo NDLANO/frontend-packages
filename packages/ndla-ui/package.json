@@ -34,6 +34,7 @@
     "@ndla/button": "^2.3.0",
     "@ndla/carousel": "^1.2.8",
     "@ndla/core": "^2.1.1",
+    "@ndla/editor": "^1.2.9",
     "@ndla/hooks": "^1.1.4",
     "@ndla/icons": "^1.8.0",
     "@ndla/licenses": "^4.1.4",

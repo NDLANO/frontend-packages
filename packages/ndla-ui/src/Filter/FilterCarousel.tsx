@@ -99,8 +99,12 @@ const FilterCarousel = ({ children }: Props) => {
   }, [children]);
 
   useEffect(() => {
-    window.addEventListener('resize', showButtons);
-    return () => window.removeEventListener('resize', showButtons);
+    const resetTranslateX = () => {
+      setTranslateX(0);
+      showButtons();
+    };
+    window.addEventListener('resize', resetTranslateX);
+    return () => window.removeEventListener('resize', resetTranslateX);
   }, []);
 
   const updateIndex = (direction: string) => {

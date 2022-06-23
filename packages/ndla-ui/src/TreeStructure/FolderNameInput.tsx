@@ -10,10 +10,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
-import { Spinner } from '@ndla/editor';
 import { spacing, colors, misc, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
+import Spinner from '../Spinner';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};

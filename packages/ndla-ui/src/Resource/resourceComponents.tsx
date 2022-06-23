@@ -115,7 +115,7 @@ export const CompressTagsLength = (tags: string[]) => {
       <TagList tags={slicedTags} />
       {remainingTags.length > 0 && (
         <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
-          <TagCounterWrapper>+ {tagCounter}</TagCounterWrapper>
+          <TagCounterWrapper>+{tagCounter}</TagCounterWrapper>
         </MenuButton>
       )}
     </>

@@ -113,7 +113,7 @@ export const CompressTagsLength = (tags: string[]) => {
   return (
     <>
       <TagList tags={slicedTags} />
-      {remainingTags && (
+      {remainingTags.length > 0 && (
         <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
           <TagCounterWrapper>+ {tagCounter}</TagCounterWrapper>
         </MenuButton>

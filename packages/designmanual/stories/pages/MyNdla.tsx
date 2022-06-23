@@ -10,11 +10,11 @@ import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MenuButton } from '@ndla/button';
+import { FolderInput } from '@ndla/ui';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
-import { FolderInput } from '@ndla/ui/src';
 
 const Wrapper = styled.div`
   max-width: 960px;

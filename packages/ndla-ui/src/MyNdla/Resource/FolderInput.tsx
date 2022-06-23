@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { IconButton } from '@ndla/button/src';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { Cross } from '@ndla/icons/action';
-import React, { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
 
@@ -43,6 +43,7 @@ const StyledInput = styled.input`
   outline: none;
   border: none;
   margin-right: auto;
+  line-height: 1.75em;
 
   ::selection {
     background: ${colors.brand.lighter};
@@ -57,7 +58,9 @@ interface Props {
 
 const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
   const { t } = useTranslation();
-  const [input, setInput] = useState('Ny mappe');
+  const newFolderText = t('treeStructure.newFolder.defaultName');
+  const [input, setInput] = useState<string>(newFolderText);
+  const [mounted, setMounted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -72,22 +75,26 @@ const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
   };
 
   useEffect(() => {
-    if (autoSelect) {
+    if (mounted) {
       inputRef.current?.select();
+    } else {
+      setMounted(true);
     }
-  }, [autoSelect]);
-
-  const onFocus = (event: FocusEvent<HTMLInputElement>) => {
-    event.target.select();
-  };
+  }, [mounted]);
 
   return (
     <FolderInputWrapper>
       <StyledFolderIcon>
         <FolderOutlined />
       </StyledFolderIcon>
-      <StyledInput ref={inputRef} value={input} onChange={handleInputChange} onKeyDown={onKeydown} onFocus={onFocus} />
-      <IconButton aria-label="temp" size="small" ghostPill onClick={onClose}>
+      <StyledInput
+        ref={inputRef}
+        value={input}
+        onChange={handleInputChange}
+        onKeyDown={onKeydown}
+        aria-label={newFolderText}
+      />
+      <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
         <Cross />
       </IconButton>
     </FolderInputWrapper>

@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MenuButton } from '@ndla/button';
+import { FolderInput } from '@ndla/ui';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -44,6 +45,14 @@ export const MyNdla = () => {
               subFolders={3}
               subResources={3}
               type={'list'}
+            />
+            <h2>Legg til mappe</h2>
+            <FolderInput
+              autoFocus
+              // eslint-disable-next-line no-console
+              onAddFolder={() => console.log('onAddFolder')}
+              // eslint-disable-next-line no-console
+              onClose={() => console.log('onClose')}
             />
             <h2>Blokkvisning av folder</h2>
             <BlockFolderWrapper>

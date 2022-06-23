@@ -23,7 +23,7 @@ interface FolderIconWrapperProps {
 const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
   display: flex;
   border-radius: 100%;
-  padding: 11px;
+  padding: ${spacing.small};
   background-color: ${colors.brand.greyLighter};
   svg {
     width: 18px;
@@ -96,6 +96,7 @@ interface IconCountProps {
 interface IconCountWrapperProps {
   type: LayoutType;
 }
+
 const IconCountWrapper = styled.div<IconCountWrapperProps>`
   display: flex;
   align-items: center;
@@ -110,6 +111,7 @@ const IconCountWrapper = styled.div<IconCountWrapperProps>`
       }
     `};
 `;
+
 const IconCount = ({ type, count, layoutType }: IconCountProps) => {
   const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
   const { t } = useTranslation();

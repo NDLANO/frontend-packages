@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { fonts, spacing, colors } from '@ndla/core';
+import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
@@ -110,6 +110,10 @@ const IconCountWrapper = styled.div<IconCountWrapperProps>`
         opacity: 1;
       }
     `};
+
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
 `;
 
 const IconCount = ({ type, count, layoutType }: IconCountProps) => {

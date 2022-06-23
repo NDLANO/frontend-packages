@@ -9,7 +9,8 @@
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
-import { fonts, spacing, colors } from '@ndla/core';
+import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
+import { isMobile } from 'react-device-detect';
 import Image from '../Image';
 import { CompressTagsLength, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
 
@@ -60,6 +61,19 @@ const ResourceInfoWrapper = styled.div`
   overflow: hidden;
 `;
 
+const TagsandActionMenu = styled.div`
+  display: flex;
+  align-items: center;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
+`;
+const TagsandActionMenuMobile = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 interface StyledImageProps {
   imageSize: 'normal' | 'compact';
 }
@@ -69,8 +83,11 @@ const StyledImage = styled(Image)<StyledImageProps>`
   border-radius: 2px;
   object-fit: cover;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  min-width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    max-width: 54px;
+    height: 40px;
+  }
 `;
 
 export interface ListResourceProps {
@@ -92,8 +109,10 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
       <ResourceInfoWrapper>
         <Row>
           <ResourceTitle>{title}</ResourceTitle>
-          {tags && CompressTagsLength(tags)}
-          {actionMenu}
+          <TagsandActionMenu>
+            {tags && CompressTagsLength(tags)}
+            {actionMenu}
+          </TagsandActionMenu>
         </Row>
         <Row>
           <TopicList topics={topics} />
@@ -102,6 +121,12 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
           <Row>
             <ResourceDescription>{description}</ResourceDescription>
           </Row>
+        )}
+        {isMobile && (
+          <TagsandActionMenuMobile>
+            {tags && CompressTagsLength(tags)}
+            {actionMenu}
+          </TagsandActionMenuMobile>
         )}
       </ResourceInfoWrapper>
     </ResourceWrapper>

@@ -30,7 +30,7 @@ const FolderInputWrapper = styled.div`
 
 const StyledFolderIcon = styled.span`
   display: flex;
-  padding: 11px;
+  padding: ${spacing.small};
   svg {
     color: ${colors.brand.primary};
     height: 20px;

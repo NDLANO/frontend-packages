@@ -22,7 +22,7 @@ interface FolderIconWrapperProps {
 const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
   display: flex;
   border-radius: 100%;
-  padding: 11px;
+  padding: ${spacing.small};
   background-color: ${colors.brand.greyLighter};
   svg {
     width: 18px;

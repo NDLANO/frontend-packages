@@ -92,7 +92,7 @@ export const MenuButton = ({ menuItems, size, children, hideMenuIcon }: MenuButt
     <Menu aria-label={t('myNdla.more')}>
       <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
         {children}
-        {!hideMenuIcon ? <StyledHorizontalMenu /> : <></>}
+        {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
       <StyledMenuList>
         {menuItems?.map(({ color, text, icon, onClick }) => (

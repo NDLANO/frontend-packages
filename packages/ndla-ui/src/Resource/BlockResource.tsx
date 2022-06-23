@@ -10,9 +10,8 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
-import { MenuButton } from '@ndla/button';
 import Image from '../Image';
-import { ResourceImageProps, ResourceTitle, Row, TagList, TopicList } from './resourceComponents';
+import { CompressTagsLength, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
 
 interface BlockResourceProps {
   link: string;
@@ -78,40 +77,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const TagCounterWrapper = styled.p`
-  color: ${colors.brand.primary};
-  box-shadow: none;
-  margin: 0;
-  font-weight: 600;
-  ${fonts.sizes(16)}
-  &hover {
-    color: grey;
-  }
-`;
-
 const BlockResource = ({ link, title, tags, resourceImage, topics, description, actionMenu }: BlockResourceProps) => {
-  function CheckTagsLength(tags: string[]) {
-    if (tags.length > 3) {
-      return (
-        <>
-          <TagList tags={tags.slice(0, 3)} />{' '}
-          <MenuButton
-            hideMenuIcon={true}
-            menuItems={tags.slice(3, tags.length).map((tag) => {
-              return {
-                text: '#' + tag,
-                onClick: () => {},
-              };
-            })}>
-            <TagCounterWrapper>+ {tags?.length - 3}</TagCounterWrapper>
-          </MenuButton>
-        </>
-      );
-    } else {
-      return <TagList tags={tags} />;
-    }
-  }
-
   return (
     <BlockElementWrapper to={link}>
       <ImageWrapper>
@@ -124,7 +90,7 @@ const BlockResource = ({ link, title, tags, resourceImage, topics, description, 
         <TopicList topics={topics} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
-          {tags && CheckTagsLength(tags)}
+          {tags && CompressTagsLength(tags)}
           {actionMenu}
         </RightRow>
       </BlockInfoWrapper>

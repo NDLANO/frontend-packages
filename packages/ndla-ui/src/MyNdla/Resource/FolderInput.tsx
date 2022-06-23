@@ -75,12 +75,12 @@ const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
   };
 
   useEffect(() => {
-    if (mounted) {
+    if (mounted && autoSelect) {
       inputRef.current?.select();
     } else {
       setMounted(true);
     }
-  }, [mounted]);
+  }, [mounted, autoSelect]);
 
   return (
     <FolderInputWrapper>

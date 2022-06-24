@@ -69,8 +69,11 @@ const ResourceWrapper = styled(SafeLink)`
 const TagsandActionMenu = styled.div`
   grid-area: tags;
   display: flex;
+  width: 100%;
+  overflow: hidden;
   gap: ${spacing.small};
   align-self: flex-start;
+  justify-self: flex-end;
   align-items: center;
 `;
 
@@ -92,6 +95,7 @@ const StyledImage = styled(Image)`
 
 const TopicAndTitle = styled.div`
   grid-area: topicAndTitle;
+  margin-top: ${spacing.xxsmall};
 `;
 
 interface StyledImageProps {

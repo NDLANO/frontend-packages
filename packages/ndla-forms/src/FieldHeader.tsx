@@ -6,13 +6,15 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, fonts, typography } from '@ndla/core';
 
-const StyledFieldHeaderWrapper = styled.div`
+interface StyledFieldHeaderWrapperProps {
+  wrapperWidth: number;
+}
+const StyledFieldHeaderWrapper = styled.div<StyledFieldHeaderWrapperProps>`
   display: flex;
   align-items: center;
   border-bottom: 2px solid ${colors.brand.light};
@@ -49,8 +51,15 @@ const StyledTitle = styled.h2`
   }
 `;
 
-const FieldHeader = ({ title, subTitle, width, children, ...rest }) => (
-  <StyledFieldHeaderWrapper wrapperWidth={width * 100} {...rest}>
+interface Props {
+  title: string;
+  subTitle?: string;
+  width?: number;
+  children?: ReactNode;
+}
+
+const FieldHeader = ({ title, subTitle, width = 1, children }: Props) => (
+  <StyledFieldHeaderWrapper wrapperWidth={width * 100}>
     <StyledTitle>
       {title}
       {subTitle && <span>{subTitle}</span>}
@@ -58,16 +67,5 @@ const FieldHeader = ({ title, subTitle, width, children, ...rest }) => (
     <div>{children}</div>
   </StyledFieldHeaderWrapper>
 );
-
-FieldHeader.propTypes = {
-  width: PropTypes.number,
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
-  children: PropTypes.node,
-};
-
-FieldHeader.defaultProps = {
-  width: 1,
-};
 
 export default FieldHeader;

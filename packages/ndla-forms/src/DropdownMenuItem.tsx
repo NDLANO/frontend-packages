@@ -6,14 +6,14 @@
  *
  */
 
-import React from 'react';
+import React, { HTMLProps, ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Check } from '@ndla/icons/editor';
 import { Information } from '@ndla/icons/common';
-import { DropdownMenuImage } from './DropdownMenuImage';
+import DropdownMenuImage from './DropdownMenuImage';
 
 const StyledDescription = styled.span`
   ${fonts.sizes(14, 1.1)};
@@ -77,7 +77,12 @@ const StyledIsDisabled = styled.div`
   text-transform: uppercase;
 `;
 
-const StyledItemButton = styled.button`
+interface StyledItemButtonProps {
+  highlighted?: boolean;
+  isSelected?: boolean;
+  disabled?: boolean;
+}
+const StyledItemButton = styled.button<StyledItemButtonProps>`
   border: 0;
   border-bottom: 1px solid ${colors.brand.greyLightest};
   padding: ${spacing.small};
@@ -116,7 +121,12 @@ const StyledItemButton = styled.button`
       `}
 `;
 
-const InfoPart = ({ isSelected, disabledText }) => {
+interface InfoPartProps {
+  isSelected?: boolean;
+  disabledText?: string;
+}
+
+const InfoPart = ({ isSelected, disabledText }: InfoPartProps) => {
   const { t } = useTranslation();
   if (isSelected) {
     return (
@@ -136,13 +146,30 @@ const InfoPart = ({ isSelected, disabledText }) => {
   return null;
 };
 
-function DropdownMenuItem({ disableSelected, item, isSelected, highlighted, ...rest }) {
+interface ItemType {
+  id: string | number;
+  disabledText?: string;
+  image?: string | ReactNode;
+  alt?: string;
+  description?: string;
+  title: string;
+}
+
+interface DropdownMenuItemProps extends HTMLProps<HTMLButtonElement> {
+  disableSelected?: boolean;
+  isSelected?: boolean;
+  highlighted?: boolean;
+  item: ItemType;
+}
+
+function DropdownMenuItem({ disableSelected, item, isSelected, highlighted, ...rest }: DropdownMenuItemProps) {
   return (
     <StyledItemButton
       key={item.id}
-      type="button"
+      //@ts-ignore Emotion uses string instead of union for type prop
+      type={'button'}
       isSelected={isSelected}
-      disabled={item.disabledText || (disableSelected && isSelected)}
+      disabled={!!item.disabledText || (disableSelected && isSelected)}
       highlighted={highlighted}
       {...rest}>
       {<DropdownMenuImage image={item.image} alt={item.alt} />}

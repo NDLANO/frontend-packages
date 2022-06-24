@@ -31,6 +31,7 @@ export const ResourceTitle = styled.h2`
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
+  grid-area: resourceTitle;
 `;
 
 const StyledTagList = styled.ul`
@@ -57,6 +58,7 @@ const StyledTopicList = styled.ul`
   margin: 0;
   padding: 0;
   overflow: hidden;
+  grid-area: topicList;
 `;
 
 const StyledTopicListElement = styled.li`
@@ -100,9 +102,8 @@ export const TagList = ({ tags }: TagListProps) => {
   );
 };
 
-export const CompressTagsLength = (tags: string[]) => {
-  const tagCounter = tags?.length - 3;
-  const slicedTags = tags.slice(0, 3);
+export const CompressedTags = (tags: string[]) => {
+  const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {
       text: '#' + tag,
@@ -112,10 +113,10 @@ export const CompressTagsLength = (tags: string[]) => {
 
   return (
     <>
-      <TagList tags={slicedTags} />
+      <TagList tags={visibleTags} />
       {remainingTags.length > 0 && (
         <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
-          <TagCounterWrapper>+{tagCounter}</TagCounterWrapper>
+          <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>
         </MenuButton>
       )}
     </>
@@ -132,10 +133,8 @@ export const TopicList = ({ topics }: TopicListProps) => {
     <StyledTopicList>
       {topics.map((topic, i) => (
         <StyledTopicListElement key={topic}>
-          <>
-            {topic}
-            {i !== topics.length - 1 && <StyledTopicDivider>•</StyledTopicDivider>}
-          </>
+          {topic}
+          {i !== topics.length - 1 && <StyledTopicDivider>•</StyledTopicDivider>}
         </StyledTopicListElement>
       ))}
     </StyledTopicList>

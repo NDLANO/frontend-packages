@@ -9,11 +9,12 @@
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
-import { fonts, spacing, colors } from '@ndla/core';
+import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import Image from '../Image';
-import { CompressTagsLength, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
+import { CompressedTags, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
 
 const ResourceDescription = styled.p`
+  grid-area: description;
   line-clamp: 2;
   line-height: 1em;
   height: 3.1em;
@@ -30,14 +31,26 @@ const ResourceDescription = styled.p`
 
 const ResourceWrapper = styled(SafeLink)`
   display: grid;
-  grid-template-columns: auto 1fr;
+  flex: 1;
+  grid-template-areas:
+    'image  topicAndTitle   tags'
+    'image  description     description';
+  grid-template-columns: auto 1fr auto;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'image                topicAndTitle'
+      'description          description'
+      'tags                 tags';
+  }
+
   text-decoration: none;
   box-shadow: none;
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
-  gap: ${spacing.small};
+  gap: 0 ${spacing.small};
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
@@ -52,26 +65,42 @@ const ResourceWrapper = styled(SafeLink)`
   }
 `;
 
-const ResourceInfoWrapper = styled.div`
-  flex: 1;
+const TagsandActionMenu = styled.div`
+  grid-area: tags;
   display: flex;
-  flex-direction: column;
-  max-width: 100%;
+  align-items: center;
+  width: 100%;
   overflow: hidden;
+  gap: ${spacing.small};
+  align-self: flex-start;
+  justify-self: flex-end;
+  justify-content: flex-end;
+`;
+
+const StyledImageWrapper = styled.div<StyledImageProps>`
+  grid-area: image;
+  width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
+  height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    width: 54px;
+    height: 40px;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  display: flex;
+  border-radius: 2px;
+  object-fit: cover;
+`;
+
+const TopicAndTitle = styled.div`
+  grid-area: topicAndTitle;
+  margin-top: ${spacing.xxsmall};
 `;
 
 interface StyledImageProps {
   imageSize: 'normal' | 'compact';
 }
-
-const StyledImage = styled(Image)<StyledImageProps>`
-  display: flex;
-  border-radius: 2px;
-  object-fit: cover;
-  width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  min-width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
-`;
 
 export interface ListResourceProps {
   link: string;
@@ -88,22 +117,18 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
 
   return (
     <ResourceWrapper to={link}>
-      <StyledImage alt={resourceImage.alt} src={resourceImage.src} imageSize={showDescription ? 'normal' : 'compact'} />
-      <ResourceInfoWrapper>
-        <Row>
-          <ResourceTitle>{title}</ResourceTitle>
-          {tags && CompressTagsLength(tags)}
-          {actionMenu}
-        </Row>
-        <Row>
-          <TopicList topics={topics} />
-        </Row>
-        {showDescription && (
-          <Row>
-            <ResourceDescription>{description}</ResourceDescription>
-          </Row>
-        )}
-      </ResourceInfoWrapper>
+      <StyledImageWrapper imageSize={showDescription ? 'normal' : 'compact'}>
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} />
+      </StyledImageWrapper>
+      <TopicAndTitle>
+        <ResourceTitle>{title}</ResourceTitle>
+        <TopicList topics={topics} />
+      </TopicAndTitle>
+      {showDescription && <ResourceDescription>{description}</ResourceDescription>}
+      <TagsandActionMenu>
+        {tags && CompressedTags(tags)}
+        {actionMenu}
+      </TagsandActionMenu>
     </ResourceWrapper>
   );
 };

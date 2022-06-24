@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { ReactElement, ReactNode } from 'react';
-import { colors, spacingUnit, spacing, shadows, misc } from '@ndla/core';
+import { colors, spacing, shadows, misc } from '@ndla/core';
 import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
@@ -24,7 +24,7 @@ const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
   justify-content: center;
   align-items: center;
   gap: ${spacing.small};
-  padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.2 : 0.25)}px;
+  padding: 0;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -86,11 +86,11 @@ interface MenuButtonProps extends ButtonProps {
   menuButtonPrefix?: ReactNode;
   hideMenuIcon?: boolean;
 }
-export const MenuButton = ({ menuItems, size, children, hideMenuIcon }: MenuButtonProps) => {
+export const MenuButton = ({ menuItems, size, children, hideMenuIcon, className }: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
     <Menu aria-label={t('myNdla.more')}>
-      <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
+      <StyledMenuButton className={className} svgSize={convertSizeForSVG(size || 'normal')}>
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>

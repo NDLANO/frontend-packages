@@ -47,11 +47,15 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
     if (item.index === totalCount - 1) {
       return (
         <MenuButton menuItems={actionItems} size="small">
-          <StyledSpan>{item.name}</StyledSpan>
+          <StyledSpan title={item.name}>{item.name}</StyledSpan>
         </MenuButton>
       );
     }
-    return <StyledSafeLink to={item.to}>{item.name}</StyledSafeLink>;
+    return (
+      <StyledSafeLink title={item.name} to={item.to}>
+        {item.name}
+      </StyledSafeLink>
+    );
   };
 
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {

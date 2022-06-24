@@ -1005,10 +1005,6 @@ const messages = {
       terms: 'vilkår for bruk',
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg fra Feide',
-      resource: {
-        addToMyNdla: 'Legg i Min NDLA',
-        addedToMyNdla: 'Lagt i Min NDLA',
-      },
       storageInfo: {
         title: 'Slik lagrer du dine favorittressurser fra NDLA',
         text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til høyre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
@@ -1021,6 +1017,10 @@ const messages = {
         title: 'Slik tagger du dine favorittressurser',
         text: 'Når du lagrer en ressurs får du mulighet til å tagge ressursen med et nøkkelord. Du kan senere bruke taggene til å finne tilbake til ressurser på tvers av mapper.  Ved å velge mine tagger i venstremenyen får du oversikt over alle taggene du har brukt og du kan også her se hvilke ressurser som du har tagget med det bestemte nøkkelordet.',
       },
+    },
+    resource: {
+      addToMyNdla: 'Legg i Min NDLA',
+      addedToMyNdla: 'Lagt i Min NDLA',
     },
   },
   snackbar: {

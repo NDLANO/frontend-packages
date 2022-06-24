@@ -1007,10 +1007,6 @@ const messages = {
       terms: 'terms of use',
       feide: 'We have retrieved this information from Feide',
       newFavourite: 'Recently favourited',
-      resource: {
-        addToMyNdla: 'Add to My NDLA',
-        addedToMyNdla: 'Added to My NDLA',
-      },
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
         text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
@@ -1023,6 +1019,10 @@ const messages = {
         title: 'How to tag your favourite resources',
         text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
+    },
+    resource: {
+      addToMyNdla: 'Add to My NDLA',
+      addedToMyNdla: 'Added to My NDLA',
     },
   },
   snackbar: {

@@ -50,7 +50,7 @@ const ResourceWrapper = styled(SafeLink)`
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
-  gap: ${spacing.small};
+  gap: 0 ${spacing.small};
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
@@ -74,6 +74,7 @@ const TagsandActionMenu = styled.div`
   gap: ${spacing.small};
   align-self: flex-start;
   justify-self: flex-end;
+  justify-content: flex-end;
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`

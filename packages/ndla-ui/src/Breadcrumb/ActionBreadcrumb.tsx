@@ -62,7 +62,15 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
     return <StyledRightChevron />;
   };
 
-  return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;
+  return (
+    <Breadcrumb
+      autoCollapse
+      collapseLast={false}
+      items={items}
+      renderItem={renderItem}
+      renderSeparator={renderSeparator}
+    />
+  );
 };
 
 export default ActionBreadcrumb;

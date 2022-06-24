@@ -14,6 +14,7 @@ import Image from '../Image';
 import { CompressTagsLength, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
 
 const ResourceDescription = styled.p`
+  grid-area: description;
   line-clamp: 2;
   line-height: 1em;
   height: 3.1em;
@@ -26,12 +27,25 @@ const ResourceDescription = styled.p`
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
-  grid-area: resourceDescription;
 `;
 
 const ResourceWrapper = styled(SafeLink)`
   display: grid;
-  grid-template-columns: auto 1fr;
+  flex: 1;
+  grid-template-areas:
+    'image  topicAndTitle   tags'
+    'image  description     description';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'image                topicAndTitle'
+      'description          description'
+      'tags                 tags';
+  }
+
+  /* align: flex-start; */
   text-decoration: none;
   box-shadow: none;
   padding: ${spacing.small};
@@ -53,45 +67,31 @@ const ResourceWrapper = styled(SafeLink)`
   }
 `;
 const TagsandActionMenu = styled.div`
+  grid-area: tags;
   display: flex;
+  gap: ${spacing.small};
+  align-self: flex-start;
   align-items: center;
-  grid-area: tagsandaction;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    justify-content: flex-end;
-  }
 `;
 
-const StyledImage = styled(Image)<StyledImageProps>`
-  display: flex;
-  border-radius: 2px;
-  object-fit: cover;
+const StyledImageWrapper = styled.div<StyledImageProps>`
+  grid-area: image;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
-  grid-area: styledImage;
-  ${mq.range({ until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.mobileWide })} {
     max-width: 54px;
     height: 40px;
   }
 `;
 
-const TopicAndTitle = styled.div`
-  grid-area: topicandtitle;
+const StyledImage = styled(Image)`
+  display: flex;
+  border-radius: 2px;
+  object-fit: cover;
 `;
 
-const ResourceInfoWrapper = styled.div`
-  display: grid;
-  max-width: 100%;
-  overflow: hidden;
-  align-items: baseline;
-  grid-template-areas: 'styledImage tresourceDescription   resourceDescription';
-  grid-template-columns: 2fr 4fr 3fr;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    grid-template-columns: auto;
-    grid-template-areas:
-      'styledImage topicandtitle'
-      'resourceDescription  resourceDescription  '
-      ' tagsandaction  tagsandaction';
-  }
+const TopicAndTitle = styled.div`
+  grid-area: topicAndTitle;
 `;
 
 interface StyledImageProps {
@@ -113,22 +113,18 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
 
   return (
     <ResourceWrapper to={link}>
-      <ResourceInfoWrapper>
-        <StyledImage
-          alt={resourceImage.alt}
-          src={resourceImage.src}
-          imageSize={showDescription ? 'normal' : 'compact'}
-        />
-        <TopicAndTitle>
-          <ResourceTitle>{title}</ResourceTitle>
-          <TopicList topics={topics} />
-        </TopicAndTitle>
-        {showDescription && <ResourceDescription>{description}</ResourceDescription>}
-        <TagsandActionMenu>
-          {tags && CompressTagsLength(tags)}
-          {actionMenu}
-        </TagsandActionMenu>
-      </ResourceInfoWrapper>
+      <StyledImageWrapper imageSize={showDescription ? 'normal' : 'compact'}>
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} />
+      </StyledImageWrapper>
+      <TopicAndTitle>
+        <ResourceTitle>{title}</ResourceTitle>
+        <TopicList topics={topics} />
+      </TopicAndTitle>
+      {showDescription && <ResourceDescription>{description}</ResourceDescription>}
+      <TagsandActionMenu>
+        {tags && CompressTagsLength(tags)}
+        {actionMenu}
+      </TagsandActionMenu>
     </ResourceWrapper>
   );
 };

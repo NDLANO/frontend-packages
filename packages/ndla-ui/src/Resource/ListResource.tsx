@@ -11,7 +11,7 @@ import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import Image from '../Image';
-import { CompressTagsLength, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
+import { CompressedTags, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
 
 const ResourceDescription = styled.p`
   grid-area: description;
@@ -36,7 +36,6 @@ const ResourceWrapper = styled(SafeLink)`
     'image  topicAndTitle   tags'
     'image  description     description';
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 1fr;
   ${mq.range({ until: breakpoints.mobileWide })} {
     grid-template-columns: auto 1fr;
     grid-template-areas:
@@ -45,7 +44,6 @@ const ResourceWrapper = styled(SafeLink)`
       'tags                 tags';
   }
 
-  /* align: flex-start; */
   text-decoration: none;
   box-shadow: none;
   padding: ${spacing.small};
@@ -66,15 +64,16 @@ const ResourceWrapper = styled(SafeLink)`
     }
   }
 `;
+
 const TagsandActionMenu = styled.div`
   grid-area: tags;
   display: flex;
+  align-items: center;
   width: 100%;
   overflow: hidden;
   gap: ${spacing.small};
   align-self: flex-start;
   justify-self: flex-end;
-  align-items: center;
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`
@@ -82,7 +81,7 @@ const StyledImageWrapper = styled.div<StyledImageProps>`
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
-    max-width: 54px;
+    width: 54px;
     height: 40px;
   }
 `;
@@ -126,7 +125,7 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
       </TopicAndTitle>
       {showDescription && <ResourceDescription>{description}</ResourceDescription>}
       <TagsandActionMenu>
-        {tags && CompressTagsLength(tags)}
+        {tags && CompressedTags(tags)}
         {actionMenu}
       </TagsandActionMenu>
     </ResourceWrapper>

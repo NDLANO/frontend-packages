@@ -64,7 +64,7 @@ const ResourceInfoWrapper = styled.div`
 const TagsandActionMenu = styled.div`
   display: flex;
   align-items: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
+  ${mq.range({ until: breakpoints.mobileWide })} {
     display: none;
   }
 `;

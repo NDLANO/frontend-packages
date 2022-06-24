@@ -37,6 +37,7 @@ type Props = {
   invertedStyle?: boolean;
   toggleAdditionalResources: () => void;
   onToggleAddToFavorites: (id: string | number, add: string) => void;
+  showAddToFavoriteButton: boolean;
 };
 
 const ResourceGroup = ({
@@ -47,6 +48,7 @@ const ResourceGroup = ({
   contentType,
   invertedStyle,
   onToggleAddToFavorites,
+  showAddToFavoriteButton = false
 }: Props & ResourceListProps) => (
   <Wrapper>
     {title && (
@@ -62,6 +64,7 @@ const ResourceGroup = ({
         contentType={contentType}
         resources={resources}
         onToggleAddToFavorites={onToggleAddToFavorites}
+        showAddToFavoriteButton={showAddToFavoriteButton}
       />
     ) : null}
   </Wrapper>

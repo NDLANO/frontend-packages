@@ -31,6 +31,7 @@ export const ResourceTitle = styled.h2`
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
+  grid-area: resourceTitle;
 `;
 
 const StyledTagList = styled.ul`
@@ -57,6 +58,7 @@ const StyledTopicList = styled.ul`
   margin: 0;
   padding: 0;
   overflow: hidden;
+  grid-area: topicList;
 `;
 
 const StyledTopicListElement = styled.li`

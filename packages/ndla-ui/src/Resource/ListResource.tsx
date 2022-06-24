@@ -10,9 +10,8 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
-import { isMobile } from 'react-device-detect';
 import Image from '../Image';
-import { CompressTagsLength, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
+import { CompressTagsLength, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
 
 const ResourceDescription = styled.p`
   line-clamp: 2;
@@ -27,6 +26,7 @@ const ResourceDescription = styled.p`
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
+  grid-area: resourceDescription;
 `;
 
 const ResourceWrapper = styled(SafeLink)`
@@ -52,26 +52,31 @@ const ResourceWrapper = styled(SafeLink)`
     }
   }
 `;
-
-const ResourceInfoWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  overflow: hidden;
-`;
-
 const TagsandActionMenu = styled.div`
   display: flex;
   align-items: center;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    display: none;
+  grid-area: tagsandaction;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    justify-content: flex-end;
   }
 `;
-const TagsandActionMenuMobile = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+const ResourceInfoWrapper = styled.div`
+  display: grid;
+  max-width: 100%;
+  overflow: hidden;
+  align-items: baseline;
+  grid-template-areas:
+    'resourceTitle tagsandaction'
+    'topicList topicList'
+    'resourceDescription resourceDescription';
+  grid-template-columns: 7fr 3fr;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    grid-template-areas:
+      'resourceTitle resourceTitle'
+      'topicList topicList'
+      'resourceDescription resourceDescription'
+      'tagsandaction tagsandaction';
+  }
 `;
 
 interface StyledImageProps {
@@ -107,27 +112,13 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
     <ResourceWrapper to={link}>
       <StyledImage alt={resourceImage.alt} src={resourceImage.src} imageSize={showDescription ? 'normal' : 'compact'} />
       <ResourceInfoWrapper>
-        <Row>
-          <ResourceTitle>{title}</ResourceTitle>
-          <TagsandActionMenu>
-            {tags && CompressTagsLength(tags)}
-            {actionMenu}
-          </TagsandActionMenu>
-        </Row>
-        <Row>
-          <TopicList topics={topics} />
-        </Row>
-        {showDescription && (
-          <Row>
-            <ResourceDescription>{description}</ResourceDescription>
-          </Row>
-        )}
-        {isMobile && (
-          <TagsandActionMenuMobile>
-            {tags && CompressTagsLength(tags)}
-            {actionMenu}
-          </TagsandActionMenuMobile>
-        )}
+        <ResourceTitle>{title}</ResourceTitle>
+        <TagsandActionMenu>
+          {tags && CompressTagsLength(tags)}
+          {actionMenu}
+        </TagsandActionMenu>
+        <TopicList topics={topics} />
+        {showDescription && <ResourceDescription>{description}</ResourceDescription>}
       </ResourceInfoWrapper>
     </ResourceWrapper>
   );

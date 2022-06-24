@@ -1022,7 +1022,6 @@ const messages = {
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
     },
-
   },
   snackbar: {
     close: 'Lukk melding',

@@ -1024,7 +1024,6 @@ const messages = {
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
     },
-
   },
   snackbar: {
     close: 'Close notification',

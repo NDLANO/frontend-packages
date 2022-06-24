@@ -10,6 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, colors, spacing } from '@ndla/core';
 
+import { MenuButton } from '@ndla/button';
+
 export interface ResourceImageProps {
   alt: string;
   src: string;
@@ -75,6 +77,14 @@ export const Row = styled.div`
   gap: ${spacing.xsmall};
 `;
 
+const TagCounterWrapper = styled.p`
+  color: ${colors.brand.primary};
+  box-shadow: none;
+  margin: 0;
+  font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes(16)}
+`;
+
 interface TagListProps {
   tags?: string[];
 }
@@ -87,6 +97,28 @@ export const TagList = ({ tags }: TagListProps) => {
         <StyledTagListElement key={`tag-${i}`}>{tag}</StyledTagListElement>
       ))}
     </StyledTagList>
+  );
+};
+
+export const CompressTagsLength = (tags: string[]) => {
+  const tagCounter = tags?.length - 3;
+  const slicedTags = tags.slice(0, 3);
+  const remainingTags = tags.slice(3, tags.length).map((tag) => {
+    return {
+      text: '#' + tag,
+      onClick: () => {},
+    };
+  });
+
+  return (
+    <>
+      <TagList tags={slicedTags} />
+      {remainingTags.length > 0 && (
+        <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
+          <TagCounterWrapper>+{tagCounter}</TagCounterWrapper>
+        </MenuButton>
+      )}
+    </>
   );
 };
 

@@ -14,6 +14,7 @@ import { fonts, spacing, colors } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
+import { MenuButton } from '@ndla/button';
 
 interface FolderIconWrapperProps {
   type?: LayoutType;
@@ -22,7 +23,7 @@ interface FolderIconWrapperProps {
 const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
   display: flex;
   border-radius: 100%;
-  padding: 11px;
+  padding: ${spacing.small};
   background-color: ${colors.brand.greyLighter};
   svg {
     width: 18px;
@@ -95,6 +96,7 @@ interface IconCountProps {
 interface IconCountWrapperProps {
   type: LayoutType;
 }
+
 const IconCountWrapper = styled.div<IconCountWrapperProps>`
   display: flex;
   align-items: center;
@@ -109,6 +111,7 @@ const IconCountWrapper = styled.div<IconCountWrapperProps>`
       }
     `};
 `;
+
 const IconCount = ({ type, count, layoutType }: IconCountProps) => {
   const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
   const { t } = useTranslation();
@@ -134,7 +137,7 @@ const Folder = ({ link, title, subFolders, subResources, type = 'list', actionMe
       <FolderTitle>{title}</FolderTitle>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />
       <IconCount layoutType={type} type={'resource'} count={subResources} />
-      {actionMenu}
+      <MenuButton size="small" />
     </FolderWrapper>
   );
 };

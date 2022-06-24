@@ -6,23 +6,33 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Spinner } from '@ndla/ui';
 import { Search } from '@ndla/icons/common';
+//@ts-ignore
 import { getFieldValue } from './dropdownHelper';
-import { Input, FormPill } from '.';
+import { Input, FormPill, InputProps } from '.';
 
-const DropdownInput = ({
+type StringObject<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T];
+interface Props<T extends object> extends InputProps {
+  multiSelect?: boolean;
+  removeItem: (id: string) => void;
+  idField?: keyof T;
+  labelField?: keyof StringObject<T>;
+  name?: string;
+  loading?: boolean;
+  values?: T[];
+  testid?: string;
+}
+const DropdownInput = <T extends object>({
   multiSelect,
   testid,
-  onToggleMenu,
-  loading,
-  values,
+  loading = false,
+  values = [],
   removeItem,
   idField,
   labelField,
   ...rest
-}) => (
+}: Props<T>) => (
   <Input
     iconRight={loading ? <Spinner size="normal" margin="0" aria-hidden="true" /> : <Search aria-hidden="true" />}
     {...rest}
@@ -30,7 +40,8 @@ const DropdownInput = ({
       multiSelect &&
       values.map((value) => (
         <FormPill
-          label={getFieldValue(value, labelField)}
+          //@ts-ignore
+          label={labelField ? value[labelField] : ''}
           key={getFieldValue(value, idField)}
           id={getFieldValue(value, idField)}
           onClick={removeItem}
@@ -40,27 +51,5 @@ const DropdownInput = ({
     data-testid={testid}
   />
 );
-
-DropdownInput.propTypes = {
-  multiSelect: PropTypes.bool,
-  removeItem: PropTypes.func.isRequired,
-  idField: PropTypes.string,
-  labelField: PropTypes.string,
-  name: PropTypes.string,
-  loading: PropTypes.bool,
-  values: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
-  inputProps: PropTypes.shape({
-    value: PropTypes.string,
-    ref: PropTypes.func,
-    onChange: PropTypes.func,
-    onKeyDown: PropTypes.func,
-    onFocus: PropTypes.func,
-  }),
-};
-
-DropdownInput.defaultProps = {
-  values: [],
-  loading: false,
-};
 
 export default DropdownInput;

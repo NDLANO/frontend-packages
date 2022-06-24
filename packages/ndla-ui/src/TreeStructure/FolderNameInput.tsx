@@ -13,7 +13,7 @@ import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
 import { spacing, colors, misc, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
-import { Spinner } from '../';
+import Spinner from '../Spinner';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};

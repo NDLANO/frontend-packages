@@ -111,7 +111,7 @@ export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
 export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
 export { UserInfo } from './User';
 export { default as AuthModal } from './User';
-export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './User';
+export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser } from './User';
 
 export { default as CreatedBy } from './CreatedBy';
 
@@ -223,7 +223,7 @@ export { default as CopyParagraphButton } from './CopyParagraphButton';
 export { default as ContentPlaceholder } from './ContentPlaceholder';
 export { Notion, ConceptNotion } from './Notion';
 export { BannerCard } from './BannerCard';
-export { VerticalNavigation, Folder } from './MyNdla';
+export { VerticalNavigation, Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';
@@ -231,6 +231,6 @@ export { TagSelector } from './TagSelector';
 
 export type { SnackBarItem } from './SnackBar';
 export { SnackBar } from './SnackBar';
-
+export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
 export type { FolderStructureProps, TreeStructureProps } from './TreeStructure';

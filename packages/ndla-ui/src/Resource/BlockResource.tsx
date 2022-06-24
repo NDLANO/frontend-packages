@@ -11,7 +11,7 @@ import React, { ReactNode } from 'react';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
 import Image from '../Image';
-import { ResourceImageProps, ResourceTitle, Row, TagList, TopicList } from './resourceComponents';
+import { CompressTagsLength, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
 
 interface BlockResourceProps {
   link: string;
@@ -90,7 +90,7 @@ const BlockResource = ({ link, title, tags, resourceImage, topics, description, 
         <TopicList topics={topics} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
-          <TagList tags={tags} />
+          {tags && CompressTagsLength(tags)}
           {actionMenu}
         </RightRow>
       </BlockInfoWrapper>

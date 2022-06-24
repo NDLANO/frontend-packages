@@ -12,16 +12,19 @@ import { spacing, fonts, mq, breakpoints } from '@ndla/core';
 import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
-import { FeideText } from '@ndla/icons/common';
-import { ListResource, ListResourceProps } from '@ndla/ui';
+import { Feide, HashTag } from '@ndla/icons/common';
+import { ListResource, ListResourceProps, InfoBlock } from '@ndla/ui';
+import { Image } from '@ndla/ui';
+import { HeartOutline } from '@ndla/icons/action';
+import { FolderOutlined } from '@ndla/icons/contentType';
+
 const MyPageWrapper = styled.div`
   width: 960px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${spacing.small};
   ${fonts.sizes('16')};
-
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
@@ -42,12 +45,29 @@ const StyledH1 = styled.h1`
   font-weight: 700;
   ${fonts.sizes('20')};
 `;
-const Header = styled.div``;
+const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: ${spacing.large};
+  align-items: center;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    flex-direction: column;
+    gap: 0;
+  }
+`;
+const RoundedImage = styled(Image)`
+  border-radius: 50%;
+  height: 160px;
+  max-width: 160px;
+`;
 
 const SchoolInfo = styled.div`
   font-weight: 600;
   margin-left: ${spacing.normal};
   li {
+    margin: 0;
+  }
+  ${mq.range({ until: breakpoints.tabletWide })} {
     margin: 0;
   }
 `;
@@ -56,8 +76,9 @@ const Terms = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: ${spacing.xsmall};
   font-weight: 600;
+  margin: ${spacing.small};
   a {
     text-decoration: underline;
     box-shadow: none;
@@ -66,61 +87,53 @@ const Terms = styled.p`
     margin: 0;
   }
 `;
-const StyledFeide = styled(FeideText)`
-  height: 21px;
-  width: 60px;
-`;
+
 const ButtonsWrapper = styled.div`
-  display: flex;
-  gap: 10px;
+  padding: ${spacing.small} 0;
 `;
 
+const StyledResourceList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.xsmall};
+  padding: ${spacing.small} 0;
+`;
+
+const StyledBottomDiv = styled.div`
+  padding: ${spacing.small} 0;
+  p {
+    ${fonts.sizes(16)}
+  }
+`;
 interface MyPageProps {
   name: { firstName: string; lastName: string };
   title: string;
   school: string;
   courses: string[];
   recentFavorites?: ListResourceProps[];
+  headerPic: {
+    src: string;
+    alt: string;
+  };
 }
 
-const StyledResourceList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing.xsmall};
-`;
-
-export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPageProps) => {
+export const MyPage = ({ name, title, school, courses, recentFavorites, headerPic }: MyPageProps) => {
   const { t } = useTranslation();
-
   return (
     <MyPageWrapper>
+      <StyledH1> {t('myNdla.myPage.myPage')}</StyledH1>
       <Header>
-        <StyledH1> {t('myNdla.myPage')}</StyledH1>
-        <p>{t('myNdla.welcome', { name: name.firstName })}</p>
+        <StyledH1>{t('myNdla.myPage.welcome')}</StyledH1>
+        <RoundedImage src={headerPic.src} alt={headerPic.alt} />
       </Header>
-      <StyledFeide />
-      <SchoolInfo>
-        <ul>
-          <li>
-            {name.firstName} {name.lastName}
-          </li>
-          <li>{title}</li>
-          <li>{school}</li>
-          <li>{courses.join(', ')}</li>
-        </ul>
-      </SchoolInfo>
-      <Terms>
-        {t('myNdla.read')} <SafeLink to=""> {t('myNdla.terms')}</SafeLink>
-      </Terms>
       <Resources>
-        <StyledH2>{t('myNdla.newFavourite')}</StyledH2>
+        <StyledH2>{t('myNdla.myPage.newFavourite')}</StyledH2>
         <StyledResourceList>
-          {recentFavorites?.map(({ title, topics, tags, description, resourceImage, link }) => (
+          {recentFavorites?.map(({ title, topics, tags, resourceImage, link }) => (
             <ListResource
               title={title}
               topics={topics}
               tags={tags}
-              description={description}
               resourceImage={{
                 alt: resourceImage.alt,
                 src: resourceImage.src,
@@ -131,11 +144,45 @@ export const MyPage = ({ name, title, school, courses, recentFavorites }: MyPage
           ))}
         </StyledResourceList>
       </Resources>
+      <InfoBlock icon={<HeartOutline />} title={t('myNdla.myPage.storageInfo.title')}>
+        <p>{t('myNdla.myPage.storageInfo.text')}</p>
+      </InfoBlock>
+      <InfoBlock icon={<FolderOutlined />} title={t('myNdla.myPage.folderInfo.title')}>
+        <p>{t('myNdla.myPage.folderInfo.text')}</p>
+      </InfoBlock>
+      <InfoBlock icon={<HashTag />} title={t('myNdla.myPage.tagInfo.title')}>
+        <p>{t('myNdla.myPage.tagInfo.text')}</p>
+      </InfoBlock>
 
-      <ButtonsWrapper>
-        <Button outline>{t('user.buttonLogOut')}</Button>
-        <DeleteButton>{t('myNdla.deleteAccount')}</DeleteButton>
-      </ButtonsWrapper>
+      <InfoBlock icon={<Feide />} title={t('myNdla.myPage.feide')}>
+        <SchoolInfo>
+          <ul>
+            <li>
+              {name.firstName} {name.lastName}
+            </li>
+            <li>{title}</li>
+            <li>{school}</li>
+            <li>{courses.join(', ')}</li>
+          </ul>
+        </SchoolInfo>
+      </InfoBlock>
+      <StyledBottomDiv>
+        <Terms>
+          {t('myNdla.myPage.read.our')} <SafeLink to=""> {t('myNdla.myPage.terms')}</SafeLink>
+        </Terms>
+        <Terms>
+          {t('myNdla.myPage.read.ours')} <SafeLink to=""> {t('myNdla.myPage.privacy')}</SafeLink>
+        </Terms>
+        <Terms>
+          {t('myNdla.myPage.questions.question')} <SafeLink to=""> {t('myNdla.myPage.questions.ask')}</SafeLink>
+        </Terms>
+
+        <ButtonsWrapper>
+          <Button outline>{t('user.buttonLogOut')}</Button>
+          <p>{t('myNdla.myPage.wishToDelete')}</p>
+          <DeleteButton>{t('myNdla.myPage.deleteAccount')}</DeleteButton>
+        </ButtonsWrapper>
+      </StyledBottomDiv>
     </MyPageWrapper>
   );
 };

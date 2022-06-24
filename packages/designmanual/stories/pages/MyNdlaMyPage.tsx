@@ -13,6 +13,10 @@ import MyNdlaPageExample from '../molecules/MyNdlaMyPageExample';
 const MyNdlaMyPage = () => {
   return (
     <MyNdlaPageExample
+      headerPic={{
+        src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+        alt: '',
+      }}
       recentFavorites={[
         {
           title: 'My Resource',
@@ -22,7 +26,7 @@ const MyNdlaMyPage = () => {
           description:
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
           resourceImage: {
-            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: 'alt',
           },
         },
@@ -34,7 +38,7 @@ const MyNdlaMyPage = () => {
           description:
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
           resourceImage: {
-            src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: 'alt',
           },
         },

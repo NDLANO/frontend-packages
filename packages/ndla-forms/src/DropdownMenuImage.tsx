@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, misc } from '@ndla/core';
 
@@ -23,7 +23,12 @@ const StyledImageContainer = styled.div`
   margin-right: ${spacing.small};
 `;
 
-export function DropdownMenuImage({ image, alt }) {
+interface Props {
+  image: string | ReactNode;
+  alt?: string;
+}
+
+const DropdownMenuImage = ({ image, alt }: Props) => {
   if (!image) {
     return null;
   }
@@ -32,4 +37,6 @@ export function DropdownMenuImage({ image, alt }) {
       {typeof image === 'string' ? <StyledImage src={image} alt={alt} /> : image}
     </StyledImageContainer>
   );
-}
+};
+
+export default DropdownMenuImage;

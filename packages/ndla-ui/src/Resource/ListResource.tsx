@@ -60,28 +60,6 @@ const TagsandActionMenu = styled.div`
     justify-content: flex-end;
   }
 `;
-const ResourceInfoWrapper = styled.div`
-  display: grid;
-  max-width: 100%;
-  overflow: hidden;
-  align-items: baseline;
-  grid-template-areas:
-    'resourceTitle tagsandaction'
-    'topicList topicList'
-    'resourceDescription resourceDescription';
-  grid-template-columns: 7fr 3fr;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    grid-template-areas:
-      'resourceTitle resourceTitle'
-      'topicList topicList'
-      'resourceDescription resourceDescription'
-      'tagsandaction tagsandaction';
-  }
-`;
-
-interface StyledImageProps {
-  imageSize: 'normal' | 'compact';
-}
 
 const StyledImage = styled(Image)<StyledImageProps>`
   display: flex;
@@ -89,11 +67,36 @@ const StyledImage = styled(Image)<StyledImageProps>`
   object-fit: cover;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
+  grid-area: styledImage;
   ${mq.range({ until: breakpoints.tabletWide })} {
     max-width: 54px;
     height: 40px;
   }
 `;
+
+const TopicAndTitle = styled.div`
+  grid-area: topicandtitle;
+`;
+
+const ResourceInfoWrapper = styled.div`
+  display: grid;
+  max-width: 100%;
+  overflow: hidden;
+  align-items: baseline;
+  grid-template-areas: 'styledImage tresourceDescription   resourceDescription';
+  grid-template-columns: 2fr 4fr 3fr;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    grid-template-columns: auto;
+    grid-template-areas:
+      'styledImage topicandtitle'
+      'resourceDescription  resourceDescription  '
+      ' tagsandaction  tagsandaction';
+  }
+`;
+
+interface StyledImageProps {
+  imageSize: 'normal' | 'compact';
+}
 
 export interface ListResourceProps {
   link: string;
@@ -110,15 +113,21 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
 
   return (
     <ResourceWrapper to={link}>
-      <StyledImage alt={resourceImage.alt} src={resourceImage.src} imageSize={showDescription ? 'normal' : 'compact'} />
       <ResourceInfoWrapper>
-        <ResourceTitle>{title}</ResourceTitle>
+        <StyledImage
+          alt={resourceImage.alt}
+          src={resourceImage.src}
+          imageSize={showDescription ? 'normal' : 'compact'}
+        />
+        <TopicAndTitle>
+          <ResourceTitle>{title}</ResourceTitle>
+          <TopicList topics={topics} />
+        </TopicAndTitle>
+        {showDescription && <ResourceDescription>{description}</ResourceDescription>}
         <TagsandActionMenu>
           {tags && CompressTagsLength(tags)}
           {actionMenu}
         </TagsandActionMenu>
-        <TopicList topics={topics} />
-        {showDescription && <ResourceDescription>{description}</ResourceDescription>}
       </ResourceInfoWrapper>
     </ResourceWrapper>
   );

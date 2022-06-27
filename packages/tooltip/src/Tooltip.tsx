@@ -55,4 +55,5 @@ const CustomTooltip = ({ id, children, tooltip, dangerousHTML }: Props) => {
     </div>
   );
 };
+
 export default CustomTooltip;

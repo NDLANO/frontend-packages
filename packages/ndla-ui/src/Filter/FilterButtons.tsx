@@ -24,15 +24,14 @@ const StyledHeading = styled.h3`
 `;
 
 const StyledButtonsWrapper = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
 `;
 
 const StyledButtonElementWrapper = styled.div`
   margin: 0 ${spacing.xsmall} ${spacing.xsmall} 0;
   break-inside: avoid;
-  flex: 1 0 auto;
+  flex-shrink: 0;
 `;
 
 const StyledList = styled.ul`

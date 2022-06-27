@@ -14,6 +14,19 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Create folder',
+    newFolder: {
+      placeholder: 'Add foldername',
+      defaultName: 'New folder',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Add to tag',
+    removeTag: 'Remove tag {{name}}',
+    hideAllTags: 'Hide all tags',
+    showAllTags: 'Show all tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Frontpage${titleTemplate}`,
@@ -965,15 +978,55 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
-    resources: 'resources',
-    folders: 'folders',
-    folder: 'folder',
+    resources: '{{count}} Resource',
+    resources_plural: '{{count}} Resources',
+    folders: '{{count}} Folder',
+    folders_plural: '{{count}} Folders',
+    folder: 'Folder',
     myFolders: 'My folders',
     myTags: 'My tags',
     newFolder: 'New folder',
+    newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',
     help: 'Help',
+    more: 'More options',
+    listView: 'List view',
+    detailView: 'Detailed listview',
+    shortView: 'Short view',
+    myPage: {
+      myPage: 'My page',
+      logout: 'Log out of My NDLA',
+      deleteAccount: 'Delete My NDLA',
+      welcome:
+        'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
+      read: { our: 'Read our', ours: 'Read our' },
+      privacy: 'privacy statement',
+      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      wishToDelete: 'Do you wish to delete your account?',
+      terms: 'terms of use',
+      feide: 'We have retrieved this information from Feide',
+      newFavourite: 'Recently favourited',
+      storageInfo: {
+        title: 'How to save your favourite resources from NDLA',
+        text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
+      },
+      folderInfo: {
+        title: 'How to organise your favourite resources in folders',
+        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+      },
+      tagInfo: {
+        title: 'How to tag your favourite resources',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+      },
+    },
+    resource: {
+      addToMyNdla: 'Add to My NDLA',
+      addedToMyNdla: 'Added to My NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Close notification',
   },
   labels: {
     category: 'Category',

@@ -139,7 +139,7 @@ interface Props {
   allowedFiles: string[];
   onAddedFiles: (files: File[], e: ChangeEvent<HTMLInputElement>) => void;
   multiple?: boolean;
-  useIcon: ReactNode;
+  useIcon?: ReactNode;
   ariaLabel: string;
   errorMessage?: string;
   loading?: boolean;

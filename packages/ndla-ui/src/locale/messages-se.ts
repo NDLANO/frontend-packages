@@ -14,6 +14,19 @@ export const { contentTypes, subjectCategories, subjectTypes } = constants;
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Lag mappe',
+    newFolder: {
+      placeholder: 'Skriv navn på mappe',
+      defaultName: 'Ny mappe',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Legg til tag',
+    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    hideAllTags: 'Skjul alla tags',
+    showAllTags: 'Vis alla tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Forsiden${titleTemplate}`,
@@ -963,15 +976,55 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
-    resources: 'Ressurser',
-    folders: 'Mapper',
+    resources: '{{count}} ressurs',
+    resources_plural: '{{count}} ressurser',
+    folders: '{{count}} mappe',
+    folders_plural: '{{count}} mapper',
     folder: 'Mappe',
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',
+    newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
     help: 'Hjelp',
+    more: 'Flere valg',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
+    myPage: {
+      myPage: 'Min side',
+      deleteAccount: 'Slett Min NDLA',
+      logout: 'Logg ut av Min NDLA',
+      welcome:
+        'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
+      read: { our: 'Les våre', ours: 'Les vår' },
+      privacy: 'personvernerklæring her',
+      questions: { question: 'Lurer du på noe?', ask: 'Spør oss i chatten' },
+      wishToDelete: 'Ønsker du ikke ha brukerprofil hos oss lengre?',
+      terms: 'vilkår for bruk',
+      newFavourite: 'Nylig lagt til',
+      feide: 'Dette henter vi om deg fra Feide',
+      storageInfo: {
+        title: 'Slik lagrer du dine favorittressurser fra NDLA',
+        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til høyre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
+      },
+      folderInfo: {
+        title: 'Slik organiserer du dine favorittressurser i mapper',
+        text: 'Du kommer til mappeoversikten din ved å klikke på mine mapper i menyen til venstre. Her kan du opprette nye mapper og undermapper. Du kan også opprette en ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
+      },
+      tagInfo: {
+        title: 'Slik tagger du dine favorittressurser',
+        text: 'Når du lagrer en ressurs får du mulighet til å tagge ressursen med et nøkkelord. Du kan senere bruke taggene til å finne tilbake til ressurser på tvers av mapper.  Ved å velge mine tagger i venstremenyen får du oversikt over alle taggene du har brukt og du kan også her se hvilke ressurser som du har tagget med det bestemte nøkkelordet.',
+      },
+    },
+    resource: {
+      addToMyNdla: 'Legg i Min NDLA',
+      addedToMyNdla: 'Lagt i Min NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Lukk melding',
   },
   labels: {
     category: 'Kategori',

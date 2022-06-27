@@ -1,13 +1,14 @@
 {
   "name": "@ndla/button",
-  "version": "2.2.1",
+  "version": "2.4.0",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "yarn build:types",
+    "build:css": "webpack --config ../../css.webpack.config.js -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build": "concurrently 'yarn build:types' 'yarn build:css'",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
@@ -28,7 +29,8 @@
   ],
   "dependencies": {
     "@ndla/core": "^2.1.1",
-    "@ndla/icons": "^1.7.1"
+    "@ndla/icons": "^1.8.1",
+    "@reach/menu-button": "^0.16.2"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

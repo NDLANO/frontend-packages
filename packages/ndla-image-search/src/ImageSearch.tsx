@@ -12,7 +12,6 @@ import { css } from '@emotion/core';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
 import { IImageMetaInformationV2, ISearchResult, IImageMetaSummary, ISearchParams } from '@ndla/types-image-api';
-//@ts-ignore
 import { Input } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
@@ -59,7 +58,7 @@ const ImageSearchWrapper = styled.div`
     height: 210px;
 
     .list-item-title {
-      margin: ${spacing.xsmall}; 0;
+      margin: ${spacing.xsmall} 0;
       ${fonts.sizes('14px', 1.2)};
       overflow: hidden;
       text-overflow: ellipsis;
@@ -103,114 +102,110 @@ const ImageSearchWrapper = styled.div`
     margin-left: -${spacing.normal};
   }
 
+  .image-preview {
+    animation: fadeInSearchPreview 300ms ease;
+    position: relative;
+    width: 100%;
+    ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
+      width: 200%;
+    }
+    ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
+      width: 300%;
+    }
+    ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
+      width: 400%;
+    }
+    ${mq.range({ from: breakpoints.wide })} {
+      width: 500%;
+    }
+    background-color: ${colors.brand.lighter};
+    border-radius: 2px;
+    margin: 20px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 
-.image-preview {
-  animation: fadeInSearchPreview 300ms ease;
-  position: relative;
-  width: 100%;
+    ${mq.range({ until: breakpoints.mobileWide })} {
+      display: block;
+    }
+
+    .image {
+      max-width: 50%;
+      padding: ${spacing.small};
+      ${mq.range({ until: breakpoints.mobileWide })} {
+        width: 100%;
+      }
+    }
+
+    .info {
+      ${fonts.sizes('16px', 1.3)}
+    }
+
+    .image img {
+      max-width: 100%;
+      max-height: 300px;
+    }
+
+    .information {
+      width: 50%;
+      padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${spacing.normal} ${spacing.small};
+      word-break: initial;
+      ${mq.range({ until: breakpoints.mobileWide })} {
+        width: 100%;
+        padding: 0 ${spacing.small} ${spacing.normal};
+      }
+    }
+
+    .information > * {
+      margin-top: ${spacing.small};
+    }
+
+    .title {
+      padding-top: 0;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .text--left {
+      width: 20%;
+      display: inline-block;
+    }
+
+    .text--right {
+      width: 80%;
+      display: inline-block;
+    }
+    .tags > b {
+      display: block;
+      margin-bottom: ${spacing.normal};
+    }
+
+    .tags > .tag_item {
+      font-weight: ${fonts.weight.semibold};
+      margin-right: ${spacing.xsmall};
+      margin-bottom: ${spacing.xsmall};
+      display: inline-block;
+      ${fonts.sizes('16px', 1.3)}
+    }
+
+    .tags > .tag_item:hover {
+      text-decoration: none;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    width: 100%;
+  }
   ${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-    width: 200%;
-  }
-  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
-    width: 300%;
-  }
-  ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-    width: 400%;
-  }
-  ${mq.range({ from: breakpoints.wide })} {
-    width: 500%;
-  }
-  background-color: ${colors.brand.lighter};
-  border-radius: 2px;
-  margin: 20px 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    display: block;
-  }
-
-  .image {
-    max-width: 50%;
-    padding: ${spacing.small};
-    ${mq.range({ until: breakpoints.mobileWide })} {
-      width: 100%;
-    }
-  }
-
-  .info {
-    ${fonts.sizes('16px', 1.3)}
-  }
-
-  .image img {
-    max-width: 100%;
-    max-height: 300px;
-  }
-
-  .information {
-    width: 50%;
-    padding: calc(${spacing.normal} - ${spacing.xsmall}) ${spacing.normal} ${spacing.normal} ${spacing.small};
-    word-break: initial;
-    ${mq.range({ until: breakpoints.mobileWide })} {
-      width: 100%;
-      padding: 0 ${spacing.small} ${spacing.normal};
-    }
-  }
-
-  .information > * {
-    margin-top: ${spacing.small};
-  }
-
-  .title {
-    padding-top: 0;
-    margin: 0;
-    line-height: 1.3;
-  }
-  .text--left {
-    width: 20%;
-    display: inline-block;
-  }
-
-  .text--right {
-    width: 80%;
-    display: inline-block;
-  }
-  .tags > b {
-    display: block;
-    margin-bottom: ${spacing.normal};
-  }
-
-  .tags > .tag_item {
-    font-weight: ${fonts.weight.semibold};
-    margin-right: ${spacing.xsmall};
-    margin-bottom: ${spacing.xsmall};
-    display: inline-block;
-    ${fonts.sizes('16px', 1.3)}
-  }
-
-  .tags > .tag_item:hover {
-    text-decoration: none;
-  }
-
-  .clear {
-    clear: both;
-  }
-
-  width: 100%;
-}
-${mq.range({ from: breakpoints.tablet, until: breakpoints.tabletWide })} {
-
     .list-item .image-preview {
       width: 200%;
     }
     .list-item:nth-of-type(2n) .image-preview {
       margin-left: -100%;
     }
-
-}
-${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
-
+  }
+  ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     .list-item .image-preview {
       width: 300%;
     }
@@ -220,10 +215,8 @@ ${mq.range({ from: breakpoints.tabletWide, until: breakpoints.desktop })} {
     .list-item:nth-of-type(3n) .image-preview {
       margin-left: -200%;
     }
-
-}
-${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
-
+  }
+  ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
     .list-item .image-preview {
       width: 400%;
     }
@@ -236,10 +229,8 @@ ${mq.range({ from: breakpoints.desktop, until: breakpoints.wide })} {
     .list-item:nth-of-type(4n) .image-preview {
       margin-left: -300%;
     }
-
-}
-${mq.range({ from: breakpoints.wide })} {
-
+  }
+  ${mq.range({ from: breakpoints.wide })} {
     .list-item .image-preview {
       width: 500%;
     }
@@ -255,24 +246,23 @@ ${mq.range({ from: breakpoints.wide })} {
     .list-item:nth-of-type(5n) .image-preview {
       margin-left: -400%;
     }
+  }
 
-}
-
-@keyframes fadeInSearchPreview {
-  0% {
-    display: none;
-    opacity: 0;
+  @keyframes fadeInSearchPreview {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    1% {
+      opacity: 0;
+      display: flex;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
-  1% {
-    opacity: 0;
-    display: flex;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
 `;
 
 const searchIconCss = css`
@@ -386,7 +376,7 @@ class ImageSearch extends Component<Props, State> {
       <ImageSearchWrapper>
         <Input
           placeholder={searchPlaceholder}
-          focusOnMount
+          autoFocus
           iconRight={
             <button
               css={searchIconCss}
@@ -398,7 +388,6 @@ class ImageSearch extends Component<Props, State> {
               <SearchIcon />
             </button>
           }
-          container="div"
           value={queryString}
           onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}
           onKeyPress={(evt: KeyboardEvent<HTMLInputElement>) => {

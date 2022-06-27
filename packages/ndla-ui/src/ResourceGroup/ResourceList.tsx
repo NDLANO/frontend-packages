@@ -48,9 +48,19 @@ export type ResourceListProps = {
   contentType?: string;
   title?: string;
   showAdditionalResources?: boolean;
+  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  showAddToFavoriteButton: boolean;
 };
 
-const ResourceList = ({ resources, onClick, contentType, title, showAdditionalResources }: ResourceListProps) => {
+const ResourceList = ({
+  resources,
+  onClick,
+  onToggleAddToFavorites,
+  contentType,
+  title,
+  showAdditionalResources,
+  showAddToFavoriteButton,
+}: ResourceListProps) => {
   const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
     !showAdditionalResources &&
@@ -60,11 +70,14 @@ const ResourceList = ({ resources, onClick, contentType, title, showAdditionalRe
   return (
     <div>
       <StyledResourceList showAdditionalResources={showAdditionalResources}>
-        {resources.map((resource) => (
+        {resources.map(({ id, ...resource }) => (
           <ResourceItem
-            key={resource.id}
+            id={id}
+            key={id}
             contentType={contentType}
             showAdditionalResources={showAdditionalResources}
+            showAddToFavoriteButton={showAddToFavoriteButton}
+            onToggleAddToFavorites={onToggleAddToFavorites}
             {...resource}
             contentTypeDescription={
               resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')

@@ -17,10 +17,12 @@ import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
+import IconButtonDualStatesExample from './atoms/IconButtonDualStatesExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
+import TreeStructureExample from './molecules/TreeStructureExample';
 
 const floatVideo = (left) => (
   <Fragment>
@@ -648,6 +650,7 @@ storiesOf('Enkle komponenter', module)
     </div>
   ))
   .add('Knapper', () => <ButtonExample />)
+  .add('2 stats ikonknapper', () => <IconButtonDualStatesExample />)
   .add('Logo', () => (
     <div>
       <StoryIntro title="Logo">
@@ -737,6 +740,17 @@ storiesOf('Enkle komponenter', module)
       </StoryIntro>
       <OneColumn>
         <UkraineBannerExample />
+      </OneColumn>
+    </div>
+  ))
+
+  .add('Treestruktur komponent', () => (
+    <div>
+      <StoryIntro title="Trestruktur komponent">
+        <p>Tree struktur</p>
+      </StoryIntro>
+      <OneColumn>
+        <TreeStructureExample />
       </OneColumn>
     </div>
   ));

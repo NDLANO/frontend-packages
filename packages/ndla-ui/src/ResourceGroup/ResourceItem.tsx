@@ -15,6 +15,7 @@ import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
+import { ArticleFavoritesButton } from '../Article';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
@@ -208,6 +209,7 @@ const IconWrapper = styled.div`
 const TypeWrapper = styled.div`
   display: flex;
   align-items: center;
+  gap: ${spacing.xsmall};
 `;
 
 const ContentTypeName = styled.span`
@@ -219,15 +221,20 @@ const ContentTypeName = styled.span`
 `;
 
 type Props = {
+  id: string;
   showContentTypeDescription?: boolean;
   contentTypeName?: string;
   contentTypeDescription?: string;
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
   access?: 'teacher';
+  isFavorite?: boolean;
+  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  showAddToFavoriteButton: boolean;
 };
 
 const ResourceItem = ({
+  id,
   contentTypeName,
   contentTypeDescription,
   name,
@@ -238,6 +245,9 @@ const ResourceItem = ({
   extraBottomMargin,
   showAdditionalResources,
   access,
+  onToggleAddToFavorites,
+  isFavorite,
+  showAddToFavoriteButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -290,6 +300,13 @@ const ResourceItem = ({
               </Tooltip>
             )}
           </>
+        )}
+        {showAddToFavoriteButton && (
+          <ArticleFavoritesButton
+            isFavorite={isFavorite}
+            articleId={id}
+            onToggleAddToFavorites={() => onToggleAddToFavorites(id, true)}
+          />
         )}
       </TypeWrapper>
     </ListElement>

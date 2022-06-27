@@ -10,7 +10,6 @@ import React, { MouseEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, typography, colors, fonts, spacingUnit } from '@ndla/core';
-// @ts-ignore
 import { PopUpWrapper } from '@ndla/forms';
 
 const StyledWrapper = styled.section`

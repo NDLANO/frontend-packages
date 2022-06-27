@@ -7,5 +7,7 @@
  */
 
 import Tooltip from './Tooltip';
+import initTooltips from './initTooltips';
 
+export { initTooltips };
 export default Tooltip;

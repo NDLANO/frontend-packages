@@ -11,6 +11,7 @@ export interface Props {
   height?: string;
   viewBox?: string;
   role?: string;
+  onClick?: () => void;
   style?: {}; // eslint-disable-line
 }
 const IconBase = ({

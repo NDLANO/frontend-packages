@@ -9,11 +9,24 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories } = constants;
+export const { contentTypes, subjectCategories, subjectTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Create folder',
+    newFolder: {
+      placeholder: 'Add foldername',
+      defaultName: 'New folder',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Add to tag',
+    removeTag: 'Remove tag {{name}}',
+    hideAllTags: 'Hide all tags',
+    showAllTags: 'Show all tags',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Frontpage${titleTemplate}`,
@@ -52,6 +65,10 @@ const messages = {
     [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
+  },
+  subjectTypes: {
+    [subjectTypes.SUBJECT]: 'Subject',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
   },
   searchPage: {
     noHits: 'Your search - {{query}} - did not match any articles. ',
@@ -366,6 +383,7 @@ const messages = {
     access: {
       onlyTeacher: 'This resource is accessible only to teachers who are logged in with Feide.',
     },
+    possiblyOutdated: 'The article is outdated',
   },
   competenceGoals: {
     competenceGoal: 'competence-goal',
@@ -402,7 +420,7 @@ const messages = {
     openAll: 'Open all',
   },
   license: {
-    heading: 'Howto reuse content',
+    heading: 'How to reuse content',
     tabs: {
       text: 'Text',
       images: 'Images',
@@ -424,7 +442,7 @@ const messages = {
       rules: 'Rules for use of image:',
     },
     images: {
-      heading: 'How to use images from the article',
+      heading: 'How to reuse images',
       description: 'Remember to copy the text to be attached to the image where you use it.',
       rules: 'Rules for use of image:',
       itemImage: {
@@ -438,44 +456,50 @@ const messages = {
       title: 'Title',
     },
     text: {
-      heading: 'How to use text from the article',
+      heading: 'How to reuse the text',
       description: 'Remember to refer to the source when reusing text.',
       rules: 'Rules for use of text:',
       published: 'Published',
     },
     audio: {
-      heading: 'How to use audio files from the article',
+      heading: 'How to reuse audio files',
       description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
     },
     video: {
-      heading: 'How to use videos from the article',
+      heading: 'How to reuse videos',
       description: 'Remember to copy the text to be attached to the video where you use it.',
-      rules: 'Rules for use of audio file:',
+      rules: 'Rules for use of video files:',
       itemImage: {
         ariaLabel: 'Open video in new window',
       },
     },
     other: {
-      heading: 'How to use other content from the article',
+      heading: 'How to reuse other content',
       description: 'You will find guidelines for use of other content in the asset',
       itemImage: {
         ariaLabel: 'Open in new window',
       },
     },
     h5p: {
-      heading: 'How to use H5P content from the article',
+      heading: 'How to reuse H5P content',
       description: 'You will find guidelines for use of H5P content in the asset',
       rules: 'Rules for use of H5P:',
     },
     concept: {
-      heading: 'How to use concept content from the article',
+      heading: 'How to reuse concept content',
       description: 'You will find guidelines for use of concept content in the asset',
       rules: 'Rules for use of concept:',
       title: 'Title',
+      embedlink: {
+        heading: 'How to show the concept in other content',
+        description: 'This url shows the concept without menu and footer',
+        copyTitle: 'Copy embed link',
+        hasCopiedTitle: 'Embed link copied',
+      },
     },
     files: {
-      heading: 'How to use files from the article',
+      heading: 'How to reuse files',
       description: 'Remember to copy the text to be attached to the file where you use it.',
       rules: 'Rules for use of file:',
       itemImage: {
@@ -497,6 +521,11 @@ const messages = {
     },
     hasCopiedTitle: 'Copied!',
     download: 'Download',
+    title: 'Title',
+    originator: 'Originator',
+    rightsholder: 'Rightsholder',
+    source: 'Source',
+    published: 'Published',
   },
   errorMessage: {
     title: 'Oops, something went wrong',
@@ -527,8 +556,10 @@ const messages = {
       newsletterAria: 'Sign up for our Newsletter',
       youtube: 'NDLA on YouTube',
       youtubeAria: 'NDLA on YouTube',
-      twitter: 'NDLA on Twitter',
-      twitterAria: 'Follow NDLA on Twitter',
+      linkedin: 'NDLA on LinkedIn',
+      linkedinAria: 'Visit NDLA on LinkedIn',
+      instagram: 'NDLA on Instagram',
+      instagramAria: 'Visit NDLA on Instagram',
       sharePage: 'Share this page',
       sharePageAria: 'Share this page',
     },
@@ -591,6 +622,10 @@ const messages = {
     search: {
       placeholder: 'Search',
     },
+    embedlink: {
+      copyTitle: 'Copy embed code',
+      hasCopiedTitle: 'Embed code copied',
+    },
     filters: {
       subject: {
         useFilter: 'Use filter',
@@ -607,6 +642,7 @@ const messages = {
         openFilter: 'Filter',
         closeFilter: 'Close filter',
         heading: 'Filter',
+        filteredBy: 'Filtered by',
       },
       alphabet: {
         letterFilter: 'Filter content by the letter {{letter}}.',
@@ -734,15 +770,15 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Nye fag på NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
+      text: 'Forslag til årsplaner fra NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'Aktiviser elevane med digitale verktøy',
-      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
+      text: 'Huskeliste for kontaktlærere',
+      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Tom Knudsen',
@@ -762,6 +798,14 @@ const messages = {
   createdBy: {
     content: 'The resource',
     text: 'is retrieved from',
+    concept: {
+      content: 'The concept',
+      text: 'is created by',
+    },
+    listing: {
+      content: 'The list',
+      text: 'is created by',
+    },
   },
   fagfornyelse: {
     frontpage: {
@@ -794,7 +838,7 @@ const messages = {
   frontpageMenu: {
     program: 'Education programme',
     allsubjects: 'All subjects',
-    cursorText: 'Have a look at some new learning resources from our revised subjects!',
+    cursorText: 'Have a look at some new learning resources from our new subjects!',
   },
   navigation: {
     showLongerDescription: 'Show topic description',
@@ -814,6 +858,20 @@ const messages = {
   close: 'Close',
   title: 'Title',
   image: {
+    altText: 'Alt-text',
+    caption: 'Caption',
+    type: 'File type',
+    width: 'Width',
+    height: 'Height',
+    size: 'Size (bytes)',
+    modelReleased: {
+      label: 'Model released',
+      yes: 'Yes',
+      no: 'No',
+      'not-applicable': 'Not applicable',
+      'not-set': 'Not set',
+      description: 'Whether the image is model released or not:',
+    },
     download: 'Download image',
     reuse: 'Use image',
     largeSize: 'View original',
@@ -900,6 +958,15 @@ const messages = {
     resource: {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
     },
+    primarySchool: 'Primary School',
+    name: 'Name',
+    mail: 'E-mail',
+    username: 'Username',
+    groupTypes: {
+      basic: 'Basic group',
+      teaching: 'Teaching group',
+      other: 'Other groups',
+    },
   },
   checkOutNewFeature: 'New feature',
   slateBlockMenu: {
@@ -909,6 +976,72 @@ const messages = {
   factbox: {
     open: 'Open fact box',
     close: 'Close fact box',
+  },
+  myNdla: {
+    resources: '{{count}} Resource',
+    resources_plural: '{{count}} Resources',
+    folders: '{{count}} Folder',
+    folders_plural: '{{count}} Folders',
+    folder: 'Folder',
+    myFolders: 'My folders',
+    myTags: 'My tags',
+    newFolder: 'New folder',
+    newFolderUnder: 'Create new folder under {{folderName}}',
+    myAccount: 'My account',
+    favourites: 'Favourites',
+    help: 'Help',
+    more: 'More options',
+    listView: 'List view',
+    detailView: 'Detailed listview',
+    shortView: 'Short view',
+    myPage: {
+      myPage: 'My page',
+      logout: 'Log out of My NDLA',
+      deleteAccount: 'Delete My NDLA',
+      welcome:
+        'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
+      read: { our: 'Read our', ours: 'Read our' },
+      privacy: 'privacy statement',
+      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      wishToDelete: 'Do you wish to delete your account?',
+      terms: 'terms of use',
+      feide: 'We have retrieved this information from Feide',
+      newFavourite: 'Recently favourited',
+      storageInfo: {
+        title: 'How to save your favourite resources from NDLA',
+        text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
+      },
+      folderInfo: {
+        title: 'How to organise your favourite resources in folders',
+        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+      },
+      tagInfo: {
+        title: 'How to tag your favourite resources',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+      },
+    },
+    resource: {
+      addToMyNdla: 'Add to My NDLA',
+      addedToMyNdla: 'Added to My NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Close notification',
+  },
+  labels: {
+    category: 'Category',
+    subject: 'Subject',
+    other: 'Other',
+  },
+  listingPage: {
+    or: 'or',
+    noFilters: 'Have nothing to filter',
+    loadMore: 'Load more',
+  },
+  siteNav: {
+    search: 'Search',
+    contact: 'Contact',
+    help: 'Help',
   },
 };
 

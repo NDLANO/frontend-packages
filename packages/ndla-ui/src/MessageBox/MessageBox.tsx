@@ -8,14 +8,13 @@
 
 import React, { HTMLAttributes, useState } from 'react';
 import styled from '@emotion/styled';
-import Sticky from 'react-sticky-el';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
 // @ts-ignore
 import { Remarkable } from 'remarkable';
-import { CloseButton } from '../CloseButton';
+import { CloseButton } from '@ndla/button';
 
 export enum MessageBoxType {
   ghost = 'ghost',
@@ -82,7 +81,6 @@ const Wrapper = styled.div<WrapperProps>`
   border-radius: ${(props) => StyleByType(props.boxType).borderRadius};
   transform: ${(props) => StyleByType(props.boxType).transform};
   left: ${(props) => StyleByType(props.boxType).left};
-  z-index: 10;
   width: ${(props) => StyleByType(props.boxType).width};
 `;
 
@@ -155,7 +153,6 @@ type LinkProps = {
 };
 type Props = {
   type?: WrapperProps['boxType'];
-  sticky?: boolean;
   children?: string;
   links?: LinkProps[];
   showCloseButton?: boolean;
@@ -166,14 +163,7 @@ const markdown = new Remarkable({ breaks: true });
 markdown.inline.ruler.enable(['sub', 'sup']);
 markdown.block.ruler.disable(['list', 'table']);
 
-export const MessageBox = ({
-  type,
-  sticky = false,
-  children = '',
-  links,
-  showCloseButton,
-  onClose,
-}: Props & WithTranslation) => {
+export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props & WithTranslation) => {
   const [hideMessageBox, setHideMessageBox] = useState(false);
   const onCloseMessageBox = () => {
     setHideMessageBox(true);
@@ -181,8 +171,7 @@ export const MessageBox = ({
   };
   const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (
-    //StickyStyle top:84 makes sure that the messagebox sits beneath the masthead (header ) and the topOffsett sets it so that it applies when reaching the top of the messagebox
-    <Sticky disabled={!sticky} stickyStyle={{ zIndex: 9998, top: 84 }} topOffset={-84}>
+    <>
       <Wrapper boxType={type} style={{ display: hideMessageBox ? 'none' : 'flex' }}>
         <InfoWrapper boxType={type}>
           <IconWrapper boxType={type}>
@@ -205,7 +194,7 @@ export const MessageBox = ({
           ))}
         </LinkWrapper>
       )}
-    </Sticky>
+    </>
   );
 };
 

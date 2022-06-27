@@ -9,11 +9,24 @@
 import { contributorTypes } from '@ndla/licenses';
 import constants from '../model';
 
-export const { contentTypes, subjectCategories } = constants;
+export const { contentTypes, subjectCategories, subjectTypes } = constants;
 
 const titleTemplate = ' - NDLA';
 
 const messages = {
+  treeStructure: {
+    createFolder: 'Lag mappe',
+    newFolder: {
+      placeholder: 'Skriv navn på mappe',
+      defaultName: 'Ny mappe',
+    },
+  },
+  tagSelector: {
+    placeholder: 'Tilknytt tag',
+    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    hideAllTags: 'Skjul alle tagger',
+    showAllTags: 'Vis alle tagger',
+  },
   htmlTitles: {
     titleTemplate,
     welcomePage: `Framsida${titleTemplate}`,
@@ -52,6 +65,10 @@ const messages = {
     [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
     [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
     [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
+  },
+  subjectTypes: {
+    [subjectTypes.SUBJECT]: 'Fag',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {{query}}',
@@ -365,6 +382,7 @@ const messages = {
     access: {
       onlyTeacher: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     },
+    possiblyOutdated: 'Artikkelen er foreldet.',
   },
   competenceGoals: {
     competenceGoal: 'kompetansemål',
@@ -430,7 +448,7 @@ const messages = {
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i anna innhald',
-      description: 'Denne lenka viser artikkelen utan kontekst(meny og botntekst)',
+      description: 'Denne lenka viser artikkelen utan kontekst (meny og botntekst)',
       copyTitle: 'Kopier lenke',
       hasCopiedTitle: 'Lenke kopiert',
     },
@@ -438,7 +456,7 @@ const messages = {
       rules: 'Reglar for bruk av biletet:',
     },
     images: {
-      heading: 'Slik bruker du bilete frå artikkelen',
+      heading: 'Slik gjenbruker du bileta',
       description: 'Hugs å kopiere teksten som skal leggjast ved biletet der du bruker det.',
       rules: 'Reglar for bruk av biletet:',
       itemImage: {
@@ -452,18 +470,18 @@ const messages = {
       title: 'Tittel',
     },
     text: {
-      heading: 'Slik bruker du tekst frå artikkelen',
+      heading: 'Slik gjenbruker du teksten',
       description: 'Hugs å vise til kjelda når du gjenbruker tekst.',
       rules: 'Reglar for bruk av teksten:',
       published: 'Publiseringsdato',
     },
     audio: {
-      heading: 'Slik bruker du lydfiler',
+      heading: 'Slik gjenbruker du lydfiler',
       description: 'Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.',
       rules: 'Reglar for bruk av lydfila:',
     },
     video: {
-      heading: 'Slik bruker du video frå artikkelen',
+      heading: 'Slik gjenbruker du videoar',
       description: 'Hugs å kopiera teksten som skal leggjast ved videoen der du bruker han.',
       rules: 'Reglar for bruk av videoen:',
       itemImage: {
@@ -471,31 +489,42 @@ const messages = {
       },
     },
     other: {
-      heading: 'Slik bruker du anna innhald frå artikkelen',
+      heading: 'Slik gjenbruker du anna innhald',
       description: 'Du finn retningslinjene for bruk av innhaldet i innhaldselementet.',
       itemImage: {
         ariaLabel: 'Opne i nytt vindauge',
       },
     },
     h5p: {
-      heading: 'Slik bruker du H5P-innhald frå artikkelen',
+      heading: 'Slik gjenbruker du H5P-innhald',
       description: 'Du finn retningslinjene for bruk av innhaldet i H5P-elementet.',
       rules: 'Reglar for bruk av H5P:',
     },
     concept: {
-      heading: 'Slik bruker du forklaringar frå artikkelen',
+      embedlink: {
+        heading: 'Slik viser du forklaringa i anna innhald',
+        description: 'Denne lenka viser forklaringa utan kontekst (meny og botntekst)',
+        copyTitle: 'Kopier innbyggingslenke',
+        hasCopiedTitle: 'Innbyggingslenke kopiert',
+      },
+      heading: 'Slik gjenbruker du forklaringar',
       description: 'Du finn retningslinjene for bruk av innhaldet i forklaring-elementet',
       rules: 'Reglar for bruk av forklaring:',
       title: 'Tittel',
     },
     files: {
-      heading: 'Slik bruker du filer frå artikkelen',
+      heading: 'Slik gjenbruker du filer',
       description: 'Hugs å kopiere teksten som skal leggjast ved fila der du bruker ho.',
       rules: 'Regler for bruk av fila:',
       itemImage: {
         ariaLabel: 'Opne i nytt vindauge',
       },
     },
+    title: 'Tittel',
+    originator: 'Opphavar',
+    rightsholder: 'Rettshavar',
+    source: 'Kjelde',
+    published: 'Publiseringsdato',
   },
   errorMessage: {
     title: 'Ops, noko gjekk gale',
@@ -514,11 +543,11 @@ const messages = {
     aboutNDLA: 'Om NDLA',
     selectLanguage: 'Vel språk (language): ',
     vision: 'Saman skapar vi framtidas læring',
-    footerLinksHeader: 'Andre NDLA nettstader',
+    footerLinksHeader: 'Andre NDLA-nettstader',
     footerInfo: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
     footerEditiorInChief: 'Ansvarleg redaktør: ',
     footerManagingEditor: 'Utgåveansvarleg: ',
-    footerPrivacyLink: 'Personvernerklæring',
+    footerPrivacyLink: 'Personvernerklæring og cookies',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',
       facebookAria: 'Besøk NDLA på Facebook',
@@ -526,8 +555,10 @@ const messages = {
       newsletterAria: 'Meld deg på vårt nyheitsbrev',
       youtube: 'NDLA på YouTube',
       youtubeAria: 'NDLA på YouTube',
-      twitter: 'NDLA på Twitter',
-      twitterAria: 'Besøk NDLA på Twitter',
+      linkedin: 'NDLA på LinkedIn',
+      linkedinAria: 'Besøk NDLA på LinkedIn',
+      instagram: 'NDLA på Instagram',
+      instagramAria: 'Besøk NDLA på Instagram',
       sharePage: 'Del denne sida',
       sharePageAria: 'Del denne sida',
     },
@@ -590,15 +621,19 @@ const messages = {
     search: {
       placeholder: 'Søk',
     },
+    embedlink: {
+      copyTitle: 'Kopier innbyggingskode',
+      hasCopiedTitle: 'Innbyggingskode kopiert',
+    },
     filters: {
       subject: {
         useFilter: 'Bruk filter',
-        openFilter: 'Velg fag',
+        openFilter: 'Vel fag',
         closeFilter: 'Lukk filter',
       },
       category: {
         useFilter: 'Bruk filter',
-        openFilter: 'Velg liste',
+        openFilter: 'Vel liste',
         closeFilter: 'Lukk filter',
       },
       default: {
@@ -606,6 +641,7 @@ const messages = {
         openFilter: 'Filtrer',
         closeFilter: 'Lukk filter',
         heading: 'Filter',
+        filteredBy: 'Filtrert på',
       },
       alphabet: {
         letterFilter: 'Vis innhold på {{letter}}.',
@@ -733,15 +769,15 @@ const messages = {
   },
   blogPosts: {
     blog1: {
-      text: 'Nye fag på NDLA',
-      externalLink: 'https://blogg.ndla.no/2021/12/nye-fag-pa-ndla/',
+      text: 'Forslag til årsplaner fra NDLA',
+      externalLink: 'https://blogg.ndla.no/2021/08/forslag-til-arsplaner-hos-ndla/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Vibeke Klungland',
     },
     blog2: {
-      text: 'Aktiviser elevane med digitale verktøy',
-      externalLink: 'https://blogg.ndla.no/2021/09/aktiviser-elevane-med-digitale-verktoy/',
+      text: 'Huskeliste for kontaktlærere',
+      externalLink: 'https://blogg.ndla.no/2019/08/huskeliste-for-kontaktlaerere/',
       linkText: 'Fagblogg',
       license: 'CC-BY-SA-4.0',
       licenseAuthor: 'Tom Knudsen',
@@ -761,6 +797,14 @@ const messages = {
   createdBy: {
     content: 'Ressursen',
     text: 'er henta frå',
+    concept: {
+      content: 'Forklaringa',
+      text: 'er utarbeida av',
+    },
+    listing: {
+      content: 'Lista',
+      text: 'er utarbeida av',
+    },
   },
   fagfornyelse: {
     frontpage: {
@@ -793,7 +837,7 @@ const messages = {
   frontpageMenu: {
     program: 'Utdanningsprogram',
     allsubjects: 'Alle fag',
-    cursorText: 'Sjå smakebitar frå fag som kjem hausten 2022.',
+    cursorText: 'Sjå smakebitar frå fag under utvikling.',
   },
   navigation: {
     showLongerDescription: 'Vis heile emneskildringa',
@@ -813,6 +857,20 @@ const messages = {
   close: 'Lukk',
   title: 'Tittel',
   image: {
+    altText: 'Alt-tekst',
+    caption: 'Bilettekst',
+    type: 'Filtype',
+    width: 'Breidde',
+    height: 'Høgde',
+    size: 'Størrelse (bytes)',
+    modelReleased: {
+      label: 'Modellklarert',
+      yes: 'Ja',
+      no: 'Nei',
+      'not-applicable': 'Ikkje relevant',
+      'not-set': 'Ikkje valgt',
+      description: 'Om bildet er modellklarert eller ikkje:',
+    },
     download: 'Last ned biletet',
     reuse: 'Bruk biletet',
     largeSize: 'Sjå stor utgave av biletet',
@@ -899,6 +957,15 @@ const messages = {
     resource: {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
+    primarySchool: 'Hovudskule',
+    name: 'Namn',
+    mail: 'E-post',
+    username: 'Brukarnamn',
+    groupTypes: {
+      basic: 'Basisgruppe',
+      teaching: 'Undervisningsgruppe',
+      other: 'Andre grupper',
+    },
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {
@@ -908,6 +975,72 @@ const messages = {
   factbox: {
     open: 'Åpne faktaboks',
     close: 'Lukk faktaboks',
+  },
+  myNdla: {
+    resources: '{{count}} ressurs',
+    resources_plural: '{{count}} ressursar',
+    folders: '{{count}} mappe',
+    folders_plural: '{{count}} mapper',
+    folder: 'Mappe',
+    myFolders: 'Mine mapper',
+    myTags: 'Mine tags',
+    newFolder: 'Ny mappe',
+    newFolderUnder: 'Lag ny mappe under {{folderName}}',
+    myAccount: 'Min konto',
+    favourites: 'Favorittar',
+    help: 'Hjelp',
+    more: 'Fleire val',
+    listView: 'Listevisning',
+    detailView: 'Detaljrik listevisning',
+    shortView: 'Kort visning',
+    myPage: {
+      myPage: 'Min side',
+      deleteAccount: 'Slett Min NDLA',
+      logout: 'Logg ut av Min NDLA',
+      welcome:
+        'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
+      read: { our: 'Les våre', ours: 'Les vår' },
+      privacy: 'personvernerklæring her',
+      questions: { question: 'Lurer du på noe?', ask: 'Spør oss i chatten' },
+      wishToDelete: 'Ønsker du ikke ha brukerprofil hos oss lengre?',
+      terms: 'vilkår for bruk',
+      newFavourite: 'Nylig lagt til',
+      feide: 'Dette henter vi om deg fra Feide',
+      storageInfo: {
+        title: 'Slik lagrer du dine favorittressurser fra NDLA',
+        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til høyre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
+      },
+      folderInfo: {
+        title: 'Slik organiserer du dine favorittressurser i mapper',
+        text: 'Du kommer til mappeoversikten din ved å klikke på mine mapper i menyen til venstre. Her kan du opprette nye mapper og undermapper. Du kan også opprette en ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
+      },
+      tagInfo: {
+        title: 'Slik tagger du dine favorittressurser',
+        text: 'Når du lagrer en ressurs får du mulighet til å tagge ressursen med et nøkkelord. Du kan senere bruke taggene til å finne tilbake til ressurser på tvers av mapper.  Ved å velge mine tagger i venstremenyen får du oversikt over alle taggene du har brukt og du kan også her se hvilke ressurser som du har tagget med det bestemte nøkkelordet.',
+      },
+    },
+    resource: {
+      addToMyNdla: 'Legg i Min NDLA',
+      addedToMyNdla: 'Lagt i Min NDLA',
+    },
+  },
+  snackbar: {
+    close: 'Lukk melding',
+  },
+  labels: {
+    category: 'Kategori',
+    subject: 'Fag',
+    other: 'Anna',
+  },
+  listingPage: {
+    or: 'eller',
+    noFilters: 'Har ikkje noko å filtrera',
+    loadMore: 'Last meir',
+  },
+  siteNav: {
+    search: 'Søk',
+    contact: 'Kontakt',
+    help: 'Hjelp',
   },
 };
 

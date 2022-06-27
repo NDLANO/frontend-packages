@@ -96,7 +96,7 @@ const Paragraph = styled.p`
   font-weight: ${fonts.weight.normal};
   ${fonts.sizes('18px', 1.3)};
   color: ${colors.text.primary};
-  font-family: ${fonts.serif};
+  font-family: ${fonts.sans};
 `;
 
 interface NotionDialogTextProps {
@@ -151,12 +151,12 @@ export const NotionDialogStyledWrapper = styled.div`
     z-index: 9999;
   }
   ${mq.range({ from: breakpoints.tablet })} {
-    max-width: 500px;
+    width: 500px;
     left: 50%;
     margin-left: -250px;
   }
   ${mq.range({ from: breakpoints.desktop })} {
-    max-width: 720px;
+    width: 720px;
     margin-left: -360px;
     left: 50%;
   }
@@ -176,7 +176,7 @@ interface Props {
   subTitle?: string;
   ariaHidden?: boolean;
   children?: ReactNode;
-  customCSS: InterpolationWithTheme<any>;
+  customCSS?: InterpolationWithTheme<any>;
   headerContent?: ReactNode;
 }
 

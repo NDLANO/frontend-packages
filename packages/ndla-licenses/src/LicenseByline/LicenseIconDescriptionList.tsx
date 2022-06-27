@@ -6,14 +6,15 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
+import Tooltip from '@ndla/tooltip';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-import StyledLicenseIconList from './StyledLicenseIconList';
 import { StyledLicenseIconButton, StyledLicenseIconItem } from './LicenseIconList';
+import StyledLicenseIconList from './StyledLicenseIconList';
 
 const StyledLicenseLabel = styled.div`
   margin-left: ${spacing.small};
@@ -24,16 +25,24 @@ interface LicenseIconItemProps {
   locale?: string;
 }
 
+const IconLineWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
     <StyledLicenseIconItem>
-      <StyledLicenseIconButton>
-        <LicenseIcon licenseRight={licenseRight} description={description} />
-        <span role="tooltip">{description}</span>
-      </StyledLicenseIconButton>
-      <StyledLicenseLabel>{description}</StyledLicenseLabel>
+      <Tooltip tooltip={description}>
+        <IconLineWrapper>
+          <StyledLicenseIconButton>
+            <LicenseIcon licenseRight={licenseRight} description={description} />
+          </StyledLicenseIconButton>
+          <StyledLicenseLabel>{description}</StyledLicenseLabel>
+        </IconLineWrapper>
+      </Tooltip>
     </StyledLicenseIconItem>
   );
 };

@@ -8,7 +8,7 @@
 
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import format from 'date-fns/format';
 import { OneColumn, Article, ResourcesWrapper, ResourcesTopicTitle, TopicIntroductionList } from '@ndla/ui';
 import Button from '@ndla/button';
@@ -79,9 +79,9 @@ class ArticleLoader extends Component {
   }
 
   handleSubmit = async (articleId) => {
-    const { useFFServer, onArticleLoaded } = this.props;
+    const { onArticleLoaded } = this.props;
     try {
-      const article = await fetchArticle(articleId, useFFServer);
+      const article = await fetchArticle(articleId);
       this.setState({
         article: {
           ...article,
@@ -122,6 +122,7 @@ class ArticleLoader extends Component {
       hideForm,
       id,
       hideCompetenceGoals,
+      showOutdatedWarning,
     } = this.props;
     const scripts =
       article && article.requiredLibraries
@@ -164,6 +165,11 @@ class ArticleLoader extends Component {
       );
     }
 
+    const messages = {
+      label,
+      messageBox: showOutdatedWarning ? 'Artikkelen er foreldet.' : undefined,
+    };
+
     return (
       <>
         {ndlaFilm && <NdlaFilmArticleHero article={article} withBackgroundImage={withBackgroundImage} />}
@@ -176,9 +182,7 @@ class ArticleLoader extends Component {
                 icon={icon}
                 article={article}
                 modifier={articleModifier}
-                messages={{
-                  label,
-                }}
+                messages={messages}
                 licenseBox={<LicenseBox />}
                 competenceGoals={!hideCompetenceGoals ? <CompetenceGoalListExample /> : null}>
                 {articleChildren}
@@ -210,8 +214,8 @@ ArticleLoader.propTypes = {
   reset: PropTypes.bool,
   articleModifier: PropTypes.string,
   ndlaFilm: PropTypes.bool,
-  useFFServer: PropTypes.bool,
   hideCompetenceGoals: PropTypes.bool,
+  showOutdatedWarning: PropTypes.bool,
 };
 
 ArticleLoader.defaultProps = {

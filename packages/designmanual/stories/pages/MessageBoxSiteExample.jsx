@@ -13,12 +13,12 @@ import MastheadWithTopicMenu from '../molecules/mastheads';
 
 import { programme } from '../../dummydata/mockPrograms';
 
-const MessageBoxSiteExample = ({ type, message, sticky }) => {
+const MessageBoxSiteExample = ({ type, message }) => {
   return (
     <PageContainer>
       <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
       <Content>
-        <MessageBox sticky={sticky} type={type} showCloseButton>
+        <MessageBox type={type} showCloseButton>
           Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på:
           <a href="https://browsehappy.com"> https://browsehappy.com.</a>
         </MessageBox>

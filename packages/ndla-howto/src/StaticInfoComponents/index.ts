@@ -101,7 +101,7 @@ export const stories: Record<string, Story> = {
     ],
   },
   H5P: {
-    title: 'H5P',
+    title: 'h5p',
     lead: 'H5P er oppgaver man kan legge til en artikkel. Dette hjelper brukeren å bedre huske hva som blir lest, skaper engasjement og gjør det gøyere å lære.',
     body: [
       {

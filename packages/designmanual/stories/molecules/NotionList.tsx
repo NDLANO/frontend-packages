@@ -6,53 +6,46 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import { breakpoints, mq } from '@ndla/core';
+import { fonts } from '@ndla/core';
 import NotionBlock from '../molecules/NotionBlock';
 
-const NotionListTitleWrapper = styled.div`
-  margin: 48px 0 48px;
-  position: relative !important;
-  right: auto !important;
-  left: -16.6666666667%;
-  width: 133.3333333333% !important;
-  padding-left: 24px;
-  padding-right: 24px;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100%;
-    left: -4%;
-  }
-`;
 const NotionListTitle = styled.h2`
   font-size: 24px;
   color: #444444;
-  border-bottom: 1px solid #d1d6db;
-  padding-bottom: 24px;
+  font-family: ${fonts.sans};
+  margin: 0;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
 `;
 type Notions = {
-  type: 'image' | 'video' | 'H5P';
+  type: 'image' | 'video' | 'h5p';
 };
 type Props = {
-  children: Notions[];
-  title: ReactNode;
+  notions: Notions[];
+  title: string;
 };
 
-const NotionListExample = ({ title, children }: Props) => {
+const NotionList = ({ title, notions }: Props) => {
   return (
     <>
-      {children && (
+      {notions && (
         <>
-          <NotionListTitleWrapper>
-            <NotionListTitle>{title}</NotionListTitle>
-          </NotionListTitleWrapper>
-          {children.map((x) => (
-            <NotionBlock type={x.type}></NotionBlock>
-          ))}
+          <NotionListTitle>{title}</NotionListTitle>
+          <StyledList>
+            {notions.map((notion) => (
+              <li>
+                <NotionBlock type={notion.type} hideIconsAndAuthors></NotionBlock>
+              </li>
+            ))}
+          </StyledList>
         </>
       )}
     </>
   );
 };
 
-export default NotionListExample;
+export default NotionList;

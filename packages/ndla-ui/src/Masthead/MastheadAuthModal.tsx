@@ -11,8 +11,7 @@ import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { Feide } from '@ndla/icons/common';
 
-import AuthModal from '../User';
-import { AuthModalProps } from '../User/AuthModal';
+import AuthModal, { AuthModalProps } from '../User/AuthModal';
 
 type FeideWrapperProps = {
   inverted?: boolean;
@@ -31,11 +30,11 @@ const StyledButton = styled(Button)<FeideWrapperProps>`
   }
 `;
 
-type Props = {
+interface Props extends AuthModalProps {
   inverted?: boolean;
-};
+}
 
-const MastheadAuthModal = ({ inverted, ...rest }: Props & AuthModalProps) => {
+const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
   return (
     <AuthModal
       {...rest}

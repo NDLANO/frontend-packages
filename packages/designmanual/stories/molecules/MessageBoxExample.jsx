@@ -7,9 +7,10 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
-import { MessageBoxTag, messagesNB, MessageBox, MessageBoxType } from '@ndla/ui';
+import { MessageBoxTag, MessageBox, MessageBoxType } from '@ndla/ui';
 import MessageBoxTabs from '../molecules/MessageBoxTabs';
 import ComponentInfo from '../ComponentInfo';
 const Wrapper = styled.div`
@@ -30,6 +31,7 @@ const MessageBoxWrapper = styled.div`
 `;
 
 const MessageBoxExample = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Wrapper>
@@ -41,7 +43,7 @@ const MessageBoxExample = () => {
               <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
               <p>
                 <MessageBox type={MessageBoxType.fullpage} showCloseButton>
-                  {messagesNB.messageBoxInfo.updateBrowser}
+                  {t('messageBoxInfo.updateBrowser')}
                 </MessageBox>
 
                 <MessageBoxWrapper>
@@ -51,13 +53,11 @@ const MessageBoxExample = () => {
                     klikkes vekk eller ikke.
                   </p>
                   <MessageBox type={MessageBoxType.medium} showCloseButton>
-                    <span>{messagesNB.messageBoxInfo.noContent}</span>
+                    {t('messageBoxInfo.noContent')}
                   </MessageBox>
                 </MessageBoxWrapper>
                 <MessageBoxWrapper>
-                  <MessageBox type={MessageBoxType.medium}>
-                    <span>{messagesNB.messageBoxInfo.outdatedSubject}</span>
-                  </MessageBox>
+                  <MessageBox type={MessageBoxType.medium}>{t('messageBoxInfo.subjectOutdated')}</MessageBox>
                 </MessageBoxWrapper>
                 <MessageBoxWrapper>
                   <MessageBox
@@ -67,7 +67,7 @@ const MessageBoxExample = () => {
                       { text: 'link3', href: 'www.facebook.com' },
                     ]}
                     showCloseButton>
-                    {messagesNB.messageBoxInfo.newVersion}
+                    {t('messageBoxInfo.newVersion')}
                   </MessageBox>
                 </MessageBoxWrapper>
                 <MessageHeader>Ghost variant</MessageHeader>
@@ -76,9 +76,7 @@ const MessageBoxExample = () => {
                   feide.
                 </p>
                 <MessageBoxWrapper>
-                  <MessageBox type={MessageBoxType.ghost}>
-                    <span>{messagesNB.messageBoxInfo.feide}</span>
-                  </MessageBox>
+                  <MessageBox type={MessageBoxType.ghost}>{t('messageBoxInfo.feide')}</MessageBox>
                 </MessageBoxWrapper>
                 <MessageHeader>Tags</MessageHeader>
                 <MessageBoxWrapper>
@@ -96,8 +94,8 @@ const MessageBoxExample = () => {
           onSite={[<MessageBoxTabs></MessageBoxTabs>]}
           reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBoxType } from '@ndla/ui';
   
-//Direkte kall på fullpage sticky meldingsboks
-<MessageBox type={MessageBoxType.fullpage} showCloseButton sticky={true}>
+//Direkte kall på fullpage meldingsboks
+<MessageBox type={MessageBoxType.fullpage} showCloseButton >
 {messagesNB.messageBoxInfo.updateBrowser}
 </MessageBox>
 
@@ -159,12 +157,6 @@ messageBoxTagMessage="Beta"
               default: 'undefined',
               description:
                 'Enum som kan settes til "ghost", "fullpage" eller "medium" for å toggle mellom de forskjellige boksene',
-            },
-            {
-              name: 'sticky',
-              type: 'boolean',
-              default: 'false',
-              description: 'Sticky gjør at meldingsboksen blir sticky og følger etter på scroll.',
             },
             {
               name: 'showCloseButton',

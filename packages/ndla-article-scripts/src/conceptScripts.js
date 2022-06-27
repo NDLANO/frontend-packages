@@ -9,6 +9,7 @@
 import jump from 'jump.js';
 
 import { forEachElement, inIframe, getElementOffset } from './domHelpers';
+import { resetIframeElement, initOpenedIframe } from './figureScripts';
 
 const closeAllVisibleNotions = (returnFocusToParent) => {
   forEachElement('[data-notion]', (item) => {
@@ -17,6 +18,13 @@ const closeAllVisibleNotions = (returnFocusToParent) => {
     if (popup.classList.contains('visible')) {
       popup.classList.remove('visible');
       popup.setAttribute('aria-hidden', true);
+      const iframe = popup.querySelector('iframe');
+      if (iframe) {
+        const src = iframe.src;
+        if (src.match(/brightcove|youtube|youtu.be/g)) {
+          resetIframeElement(iframe);
+        }
+      }
       if (returnFocusToParent) {
         const openBtn = item.querySelector('[data-notion-link]');
         openBtn.focus();
@@ -41,8 +49,8 @@ const checkClickOutside = (e) => {
   // click out side will close concept box.
   let { target } = e;
   let clickedInside = false;
-  while (target.nodeName !== 'BODY' && !clickedInside) {
-    if (target.getAttribute('data-concept-id')) {
+  while (target && target.nodeName !== 'BODY' && !clickedInside) {
+    if (target.getAttribute('data-concept-id') || target.getAttribute('data-dialog-id')) {
       clickedInside = true;
     } else {
       target = target.parentNode;
@@ -82,31 +90,50 @@ export const addShowConceptDefinitionClickListeners = () => {
 
         popup.classList.add('visible');
         popup.setAttribute('aria-hidden', false);
+
         const parentOffset = getElementOffset(popup.offsetParent).top;
         const openBtnBottom = openBtn.getBoundingClientRect().bottom + window.pageYOffset - parentOffset;
-        popup.style.top = `${openBtnBottom + 10}px`;
+        popup.style.top = `${openBtnBottom - 200}px`;
         const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        const popupHeight = popup.offsetHeight;
         const popupTop = getElementOffset(popup).top;
+        const popupHeight = popup.offsetHeight;
+        let scrollOffset = 0;
 
-        let offset = 0;
-
-        if (popupTop + popupHeight < documentHeight) {
-          offset = -((viewportHeight - popupHeight) / 2);
-        } else {
-          offset = popupHeight;
-        }
-        if (popupTop + popupHeight > documentHeight) {
-          const maxHeight = documentHeight - popupTop;
-
-          if (maxHeight < 200) {
-            popup.style.height = `auto`;
-          } else {
-            popup.style.height = `${maxHeight}px`;
-            popup.style.overflowY = 'scroll';
+        let mastheadHeight = 84;
+        if (typeof window !== 'undefined') {
+          const masthead = document.getElementById('masthead');
+          const height = masthead?.getBoundingClientRect().height;
+          if (height) {
+            mastheadHeight = height;
           }
         }
-        if (inIframe() && window.parent) {
+
+        const plainId = id.split('notion-')[1];
+        const conceptNotionIdentifier = openBtn.closest(`#visual-element-${plainId}`);
+        // checks if it is part of a notionblock
+        if (conceptNotionIdentifier?.contains(openBtn)) {
+          scrollOffset = -(mastheadHeight + 50);
+        } else {
+          popup.style.top = `${openBtnBottom + 20}px`;
+
+          if (popupTop + popupHeight < documentHeight) {
+            scrollOffset = -((viewportHeight - popupHeight) / 2);
+          } else {
+            scrollOffset = popupHeight;
+          }
+          if (popupTop + popupHeight > documentHeight) {
+            const maxHeight = documentHeight - popupTop;
+
+            if (maxHeight < 200) {
+              popup.style.height = `auto`;
+            } else {
+              popup.style.height = `${maxHeight}px`;
+              popup.style.overflowY = 'scroll';
+            }
+          }
+        }
+
+        if (!conceptNotionIdentifier && inIframe() && window.parent) {
           window.parent.postMessage(
             {
               event: 'scrollTo',
@@ -118,9 +145,13 @@ export const addShowConceptDefinitionClickListeners = () => {
         } else {
           jump(popup, {
             duration: 300,
-            offset,
+            offset: scrollOffset,
           });
         }
+        popup.querySelectorAll('iframe').forEach((iframe) => {
+          initOpenedIframe(iframe);
+        });
+
         window.addEventListener('keyup', ESCKeyListener, true);
         window.addEventListener('mousedown', checkClickOutside, true);
         closeBtn.focus();
@@ -147,6 +178,13 @@ export const addShowConceptDefinitionClickListeners = () => {
       popup.setAttribute('aria-hidden', true);
       window.removeEventListener('keyup', ESCKeyListener, true);
       openBtn.focus();
+      let iframe = popup.querySelector('iframe');
+      if (iframe) {
+        const src = iframe.src;
+        if (src.match(/brightcove|youtube|youtu.be/g)) {
+          resetIframeElement(iframe);
+        }
+      }
     };
   });
 };

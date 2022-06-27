@@ -12,7 +12,6 @@ import styled from '@emotion/styled';
 import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';
 import Button from '@ndla/button';
-//@ts-ignore
 import { Input } from '@ndla/forms';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
@@ -58,10 +57,9 @@ const ThemeEditorModal = ({
         <div>
           <Input
             iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nb')}:</LanguageIndicator>}
-            warningText={theme.warnings.nb && 'Mangler navn'}
-            container="div"
+            warningText={theme.warnings.nb ? 'Mangler navn' : undefined}
             type="text"
-            focusOnMount
+            autoFocus
             placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
               lang: t('languages.nb'),
             })}
@@ -72,8 +70,7 @@ const ThemeEditorModal = ({
         <div>
           <Input
             iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nn')}:</LanguageIndicator>}
-            warningText={theme.warnings.nn && 'Mangler navn'}
-            container="div"
+            warningText={theme.warnings.nn ? 'Mangler navn' : undefined}
             type="text"
             placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
               lang: t('languages.nn'),
@@ -85,8 +82,7 @@ const ThemeEditorModal = ({
         <div>
           <Input
             iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.en')}:</LanguageIndicator>}
-            warningText={theme.warnings.en && 'Mangler navn'}
-            container="div"
+            warningText={theme.warnings.en ? 'Mangler navn' : undefined}
             type="text"
             placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
               lang: t('languages.en'),

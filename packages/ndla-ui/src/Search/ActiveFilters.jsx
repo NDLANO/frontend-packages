@@ -85,7 +85,6 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
         <StyledActiveFilterWrapper key={filterKey}>
           {filterLength > 1 ? (
             <Tooltip
-              align="top"
               tooltip={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,
               })}>

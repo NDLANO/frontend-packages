@@ -6,38 +6,57 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
+import { animations, breakpoints, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Image, FigureExpandButton } from '..';
-import { Copyright } from '../types';
-import FigureNotion from './FigureNotion';
+import Image from '../Image';
+import { Figure, FigureOpenDialogButton } from '../Figure';
+
+const StyledImageWrapper = styled.div`
+  overflow: hidden;
+  width: 260px;
+  padding-top: ${spacing.small};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    margin: 0 auto;
+  }
+  &:hover {
+    img {
+      transform: scale(1.1);
+      opacity: 1.1;
+      transition-duration: 0.5s;
+    }
+  }
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+  max-height: 162px;
+  transition: transform ${animations.durations.fast};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    min-width: 260px;
+  }
+`;
+
 interface Props {
+  type: 'image' | 'video' | 'h5p' | 'iframe' | 'external' | undefined;
   id: string;
   src: string;
   alt: string;
-  imageCopyright?: Partial<Copyright>;
 }
-export const NotionImage = ({ id, src, alt, imageCopyright }: Props) => {
+export const NotionImage = ({ id, src, alt, type }: Props) => {
   const { t } = useTranslation();
 
-  const imageId = `image-${id}`;
   const imageFigureId = `image-figure-${id}`;
 
   return (
-    <FigureNotion
-      hideFigCaption
-      figureId={imageFigureId}
-      id={imageId}
-      title={alt}
-      copyright={imageCopyright}
-      licenseString={imageCopyright?.license?.license ?? ''}
-      type={'image'}>
-      {({ typeClass }) => (
-        <Image
+    <Figure resizeIframe id={imageFigureId} type={'full-column'}>
+      <StyledImageWrapper>
+        <StyledImage
           alt={alt}
           src={src}
           expandButton={
-            <FigureExpandButton
-              typeClass={typeClass}
+            <FigureOpenDialogButton
+              type={type}
               messages={{
                 zoomImageButtonLabel: t('license.images.itemImage.zoomImageButtonLabel'),
                 zoomOutImageButtonLabel: t('license.image.itemImage.zoomOutImageButtonLabel'),
@@ -45,7 +64,7 @@ export const NotionImage = ({ id, src, alt, imageCopyright }: Props) => {
             />
           }
         />
-      )}
-    </FigureNotion>
+      </StyledImageWrapper>
+    </Figure>
   );
 };

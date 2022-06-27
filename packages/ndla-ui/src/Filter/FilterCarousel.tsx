@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactChild, useLayoutEffect, useRef, useState } from 'react';
+import React, { ReactChild, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -31,7 +31,6 @@ const Inner = styled.div`
 `;
 
 const NavButton = styled('button')<{
-  hide?: boolean;
   alignRight?: boolean;
 }>`
   box-sizing: border-box;
@@ -59,24 +58,11 @@ const NavButton = styled('button')<{
   }
 
   ${(props) =>
-    props.hide &&
-    `
-        opacity: 0;
-        transform: translate(-40px, 0px);
-    `}
-
-  ${(props) =>
     props.alignRight &&
     `
         right: 2px;
         left: unset;
-    `}
 
-    ${(props) =>
-    props.alignRight &&
-    props.hide &&
-    `
-        transform: translate(40px, 0px);
     `}
 `;
 
@@ -94,7 +80,7 @@ const FilterCarousel = ({ children }: Props) => {
   const innerRef: { current: HTMLDivElement | null } = useRef(null);
 
   // Check if we need to show the nav buttons
-  useLayoutEffect(() => {
+  const showButtons = () => {
     if (carouselRef.current && innerRef.current) {
       const carouselWidth = carouselRef.current.offsetWidth || 0;
       const innerWidth = innerRef.current.scrollWidth;
@@ -106,7 +92,20 @@ const FilterCarousel = ({ children }: Props) => {
     } else {
       setHideNext(true);
     }
+  };
+
+  useLayoutEffect(() => {
+    showButtons();
   }, [children]);
+
+  useEffect(() => {
+    const resetTranslateX = () => {
+      setTranslateX(0);
+      showButtons();
+    };
+    window.addEventListener('resize', resetTranslateX);
+    return () => window.removeEventListener('resize', resetTranslateX);
+  }, []);
 
   const updateIndex = (direction: string) => {
     const carousel = carouselRef.current;
@@ -153,12 +152,16 @@ const FilterCarousel = ({ children }: Props) => {
           {children}
         </Inner>
       </Carousel>
-      <NavButton title={t('carousel.back')} onClick={() => updateIndex('PREV')} hide={translateX < 1}>
-        <ChevronLeft style={{ width: '18px', height: '18px' }} aria-hidden title="" />
-      </NavButton>
-      <NavButton title={t('carousel.forward')} onClick={() => updateIndex('NEXT')} alignRight hide={hideNext}>
-        <ChevronRight style={{ width: '18px', height: '18px' }} aria-hidden title="" />
-      </NavButton>
+      {!hideNext && (
+        <NavButton title={t('carousel.forward')} onClick={() => updateIndex('NEXT')} alignRight>
+          <ChevronRight style={{ width: '18px', height: '18px' }} aria-hidden title="" />
+        </NavButton>
+      )}
+      {translateX >= 1 && (
+        <NavButton title={t('carousel.back')} onClick={() => updateIndex('PREV')}>
+          <ChevronLeft style={{ width: '18px', height: '18px' }} aria-hidden title="" />
+        </NavButton>
+      )}
     </div>
   );
 };

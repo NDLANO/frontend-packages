@@ -71,6 +71,7 @@ const CompetenceButtonWrapper = styled.div<CompetenceButtonWrapperProps>`
 type Props = {
   competenceGoals?:
     | ((inp: { Dialog: ComponentType; dialogProps: { isOpen: boolean; onClose: () => void } }) => ReactNode)
+    | ReactNode
     | null;
   competenceGoalTypes?: string[];
   children: ReactNode;

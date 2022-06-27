@@ -8,8 +8,6 @@
 
 import { addFactBoxClickListener, removeFactBoxClickListener } from './factBoxScripts';
 
-import { addFilelistTooltipListners } from './fileListScript';
-
 import {
   addCopyToClipboardListeners,
   updateIFrameDimensions,
@@ -56,7 +54,6 @@ export const initArticleScripts = () => {
   addFootnoteClickListeners();
   toggleRelatedArticles();
   initTableScript();
-  addFilelistTooltipListners();
   initArticleTabs();
   addEventListenerForFigureZoomButton();
   addEventListenerForNotionExpandButton();
@@ -81,7 +78,6 @@ export {
   addFootnoteClickListeners,
   toggleLicenseInfoBox,
   toggleRelatedArticles,
-  addFilelistTooltipListners,
   initArticleTabs,
   addEventListenerForFigureZoomButton,
   addEventListenerForNotionExpandButton,

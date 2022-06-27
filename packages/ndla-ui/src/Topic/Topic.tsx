@@ -21,6 +21,7 @@ import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
+import { MessageBox, MessageBoxType } from '../MessageBox';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -235,6 +236,7 @@ export type TopicProps = {
   showContent?: boolean;
   isAdditionalTopic?: boolean;
   frame?: boolean;
+  messageBox?: string;
   children?: ReactNode;
 };
 
@@ -249,6 +251,7 @@ const Topic = ({
   showContent,
   isAdditionalTopic,
   frame,
+  messageBox,
   children,
 }: TopicProps) => {
   const { t } = useTranslation();
@@ -274,7 +277,7 @@ const Topic = ({
                             <ShowVisualElementWrapper>
                               <TopicHeaderImage
                                 src={`${topic.image.url}?${makeSrcQueryString(
-                                  400,
+                                  800,
                                   topic.image.crop,
                                   topic.image.focalPoint,
                                 )}`}
@@ -328,6 +331,7 @@ const Topic = ({
                   </StyledAdditionalResource>
                 )}
               </TopicHeading>
+              {messageBox && <MessageBox type={MessageBoxType.medium}>{messageBox}</MessageBox>}
               <TopicIntroduction invertedStyle={invertedStyle}>
                 {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
               </TopicIntroduction>

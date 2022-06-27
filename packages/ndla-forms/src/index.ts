@@ -6,7 +6,19 @@
  *
  */
 
-// @ts-ignore
+/** @ts-ignore */
 export * from './index-javascript';
 
+export type { InputProps, TextAreaProps } from './Input';
 export { default as PopUpWrapper } from './PopupWrapper';
+export { Input, TextArea } from './Input';
+export { default as FieldHeader } from './FieldHeader';
+export { default as FieldSection } from './FieldSection';
+export { default as FieldSplitter } from './FieldSplitter';
+export { default as FieldRemoveButton } from './FieldRemoveButton';
+export { default as Radiobuttonitem } from './RadiobuttonItem';
+export { default as Select } from './Select';
+export { StyledButtonWrapper, FieldHeaderIconStyle } from './Styles';
+export { FormPill, FormPills } from './FormPill';
+export { default as CheckboxItem } from './CheckboxItem';
+export { default as UploadDropZone } from './UploadDropZone';

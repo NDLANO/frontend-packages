@@ -6,16 +6,18 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { colors, fonts, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
+import { colors } from '@ndla/core';
+import Tooltip from '@ndla/tooltip';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
 type StyledLicenseIconItemProps = {
   horizontal?: boolean;
+  fill?: string;
 };
 
 export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
@@ -24,24 +26,10 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
   margin-bottom: 0;
   margin-right: 0.2em;
   line-height: 1.3rem;
-
-  span {
-    z-index: 1;
-    opacity: 0;
-    display: none;
-    max-width: 300px;
-    position: absolute;
-    background: ${colors.brand.primary};
-    color: ${colors.white};
-    text-align: left;
-    border-radius: 2px;
-    padding: ${spacing.small};
-    font-family: ${fonts.sans};
-    transform: translate(0, calc(-100% - 6px));
-    ${fonts.sizes('14px', '18px')};
-  }
+  color: ${colors.brand.primary};
 
   svg {
+    fill: ${(props) => props.fill};
     ${(props) =>
       props.horizontal
         ? `width: 18px;
@@ -54,6 +42,7 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
 interface StyledLicenseIconButtonprops {
   light?: boolean;
 }
+
 export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprops>`
   display: flex;
   border: 0;
@@ -78,18 +67,20 @@ interface LicenseIconItemProps {
   locale?: string;
   horizontal?: boolean;
   light?: boolean;
+  color?: string;
 }
 
-const LicenseIconItem = ({ licenseRight, locale, horizontal, light }: LicenseIconItemProps) => {
+const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem horizontal={horizontal}>
-      <StyledLicenseIconButton type="button" light={light}>
-        <LicenseIcon licenseRight={licenseRight} description={description} />
-        <span role="tooltip">{getLicenseRightByAbbreviation(licenseRight, locale).description}</span>
-      </StyledLicenseIconButton>
-    </StyledLicenseIconItem>
+    <Tooltip tooltip={description}>
+      <StyledLicenseIconItem horizontal={horizontal} fill={color}>
+        <StyledLicenseIconButton type="button" light={light}>
+          <LicenseIcon licenseRight={licenseRight} description={description} />
+        </StyledLicenseIconButton>
+      </StyledLicenseIconItem>
+    </Tooltip>
   );
 };
 
@@ -116,6 +107,7 @@ const LicenseIconList = ({ licenseRights, locale, color, marginRight, horizontal
         locale={locale}
         horizontal={horizontal}
         light={light}
+        color={color}
       />
     ))}
   </StyledLicenseIconList>

@@ -7,10 +7,8 @@
  */
 
 import React, { ElementType, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import rgba from 'polished/lib/color/rgba';
 import { colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { stepNumbers } from './pagerHelpers';
@@ -23,7 +21,7 @@ const createQueryString = (obj: Query) =>
 
 const pageItemActiveStyle = css`
   border-top: 3px solid ${colors.brand.primary};
-  background-color: ${rgba(colors.brand.lighter, 0.5)};
+  background-color: 'rgba(222,235,246,0.5)';
 `;
 
 const pageItemStyle = css`
@@ -71,7 +69,7 @@ export const PageItem = <T extends Query>({
 
   const handleClick = () => onClick(query);
 
-  if (Component === SafeLink || Component === Link) {
+  if (Component === SafeLink) {
     return (
       <SafeLink css={pageItemStyle} onClick={handleClick} to={linkToPage}>
         {children}

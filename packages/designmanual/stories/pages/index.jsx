@@ -36,7 +36,7 @@ import ArticleExercise from './ArticleExercise';
 import ArticleExternalLearningResource from './ArticleExternalLearningResource';
 import ArticleSourceMaterial from './ArticleSourceMaterial';
 import ArticleAssessmentResource from './ArticleAssessmentResource';
-import Breadcrumb from '../molecules/breadcrumbs';
+import { BreadcrumbWithHome } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 import LearningPathExample from './LearningPathExample';
@@ -82,12 +82,30 @@ storiesOf('Sidevisninger', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
         </SubjectMaterialHero>
         <ArticleLoader articleId="744" />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('En side med varsel om utdatert artikkel', () => (
+    <PageContainer backgroundWide>
+      <MastheadWithTopicMenu />
+      <Content>
+        <SubjectMaterialHero>
+          <OneColumn>
+            <div className="c-hero__content">
+              <section>
+                <BreadcrumbWithHome />
+              </section>
+            </div>
+          </OneColumn>
+        </SubjectMaterialHero>
+        <ArticleLoader articleId="744" showOutdatedWarning />
       </Content>
       <FooterExample />
     </PageContainer>
@@ -132,7 +150,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
@@ -150,7 +168,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
@@ -168,7 +186,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
@@ -186,7 +204,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
@@ -204,7 +222,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
@@ -222,7 +240,7 @@ storiesOf('Læringsressurser', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>
@@ -472,7 +490,7 @@ storiesOf('Autentisering', module)
           <OneColumn>
             <div className="c-hero__content">
               <section>
-                <Breadcrumb />
+                <BreadcrumbWithHome />
               </section>
             </div>
           </OneColumn>

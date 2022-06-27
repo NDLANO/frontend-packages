@@ -17,9 +17,12 @@ import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
+import IconButtonDualStatesExample from './atoms/IconButtonDualStatesExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
+import UkraineBannerExample from './molecules/UkraineBannerExample';
+import TreeStructureExample from './molecules/TreeStructureExample';
 
 const floatVideo = (left) => (
   <Fragment>
@@ -616,7 +619,9 @@ storiesOf('Enkle komponenter', module)
             License Version 2.0. Hvis det er behov for flere eller nye systemikoner skal disse hentes her:{' '}
             <a href="https://material.io/icons/">https://material.io/icons/</a> og hvis det ikke finnes et passende ikon
             i denne pakken kan man lage nye ikoner ved å bruke disse retningslinjene:{' '}
-            <a href="https://material.io/guidelines/">https://material.io/guidelines/</a>
+            <a href="https://material.io/guidelines/">https://material.io/guidelines/</a>. Ikoner kan i nød også hentes
+            fra: <a href="https://materialdesignicons.com">https://materialdesignicons.com</a>, som også er Apache
+            License Version 2.0.
           </p>
         </LayoutItem>
 
@@ -645,6 +650,7 @@ storiesOf('Enkle komponenter', module)
     </div>
   ))
   .add('Knapper', () => <ButtonExample />)
+  .add('2 stats ikonknapper', () => <IconButtonDualStatesExample />)
   .add('Logo', () => (
     <div>
       <StoryIntro title="Logo">
@@ -677,7 +683,16 @@ storiesOf('Enkle komponenter', module)
   .add('Tooltip', () => (
     <div>
       <StoryIntro title="Tooltip">
-        <p>Tooltip tekst</p>
+        <p>Når en brukers mus eller fokus hviler på et element, vil et ikke-interaktivt element vises i nærheten.</p>
+        <p>Tooltip plasseres automatisk der det er plass.</p>
+        Tips for bruk av tooltips:
+        <ul>
+          <li>
+            Ikke bruk for informasjon essensiell for å fullføre en oppgave. Elementene tooltip er knyttet til burde gi
+            mening på egenhånd, men tooltip kan gi ytterligere informasjon.
+          </li>
+          <li>Hold innholdet minimalt, - burde ikke inneholde viktige ting.</li>
+        </ul>
       </StoryIntro>
       <StoryBody>
         <TooltipExample />
@@ -714,6 +729,28 @@ storiesOf('Enkle komponenter', module)
         <LayoutItem layout="extend">
           <CodeblockExample />
         </LayoutItem>
+      </OneColumn>
+    </div>
+  ))
+
+  .add('Ukraina Banner', () => (
+    <div>
+      <StoryIntro title="Ukraina Banner">
+        <p>Banner for læringsressurser på Ukrainsk.</p>
+      </StoryIntro>
+      <OneColumn>
+        <UkraineBannerExample />
+      </OneColumn>
+    </div>
+  ))
+
+  .add('Treestruktur komponent', () => (
+    <div>
+      <StoryIntro title="Trestruktur komponent">
+        <p>Tree struktur</p>
+      </StoryIntro>
+      <OneColumn>
+        <TreeStructureExample />
       </OneColumn>
     </div>
   ));

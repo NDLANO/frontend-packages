@@ -159,9 +159,10 @@ type ArticleNotionsProps = {
   notions: ConceptNotionType[];
   relatedContent?: NotionRelatedContent[];
   buttonOffsetRight: number;
+  type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';
 };
 
-export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight }: ArticleNotionsProps) => {
+export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight, type }: ArticleNotionsProps) => {
   const { t } = useTranslation();
   const leftOffset = `${buttonOffsetRight - 32}px`;
   return (
@@ -188,7 +189,7 @@ export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight
               </ModalHeadingContainer>
               <NotionsContainer>
                 {notions.map((notion) => (
-                  <ConceptNotion key={notion.id} concept={notion} />
+                  <ConceptNotion key={notion.id} concept={notion} type={type} />
                 ))}
               </NotionsContainer>
               {relatedContent.length > 0 && (

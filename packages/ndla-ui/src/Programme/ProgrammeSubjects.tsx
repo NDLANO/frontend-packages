@@ -7,10 +7,12 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { breakpoints, mq } from '@ndla/core';
 import { NavigationBox } from '../Navigation';
+import { MessageBox } from '../MessageBox';
 
 const GradesMenu = styled.div`
   margin-bottom: 28px;
@@ -29,6 +31,7 @@ export type GradesProps = {
   selectedGrade?: string;
   onChangeGrade: (newGrade: string) => void;
   grades: {
+    missingProgrammeSubjects?: boolean;
     name: string;
     categories: {
       name: string;
@@ -45,6 +48,7 @@ type Props = GradesProps & {
 };
 
 const ProgrammeSubjects = ({ grades, onNavigate, onChangeGrade, selectedGrade = 'vg1' }: Props) => {
+  const { t } = useTranslation();
   const grade = grades.find((grade) => grade.name.toLowerCase() === selectedGrade) ?? grades[0];
   return (
     <>
@@ -60,6 +64,7 @@ const ProgrammeSubjects = ({ grades, onNavigate, onChangeGrade, selectedGrade = 
           </Button>
         ))}
       </GradesMenu>
+      {grade.missingProgrammeSubjects && <MessageBox>{t('messageBoxInfo.noContent')}</MessageBox>}
       {grade.categories.map((category) => (
         <NavigationBox key={category.name} heading={category.name} items={category.subjects} onClick={onNavigate} />
       ))}

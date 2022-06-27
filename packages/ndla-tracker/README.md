@@ -54,7 +54,7 @@ export default SomeTrackableComponent;
 or you can customize when the tracking should be done and add dimensions:
 
 ```javascript
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { withTracker } from '@ndla/tracker';
 
 class SomeTrackableComponent extends Component {

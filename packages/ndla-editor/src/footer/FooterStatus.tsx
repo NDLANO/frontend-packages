@@ -10,7 +10,6 @@ import React, { useReducer } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, typography, colors, misc, fonts, spacingUnit } from '@ndla/core';
-// @ts-ignore
 import { PopUpWrapper } from '@ndla/forms';
 import FooterStatusSelect from './FooterStatusSelect';
 // import FooterStatusCommentAndSave from './FooterStatusCommentAndSave';

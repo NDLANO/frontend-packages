@@ -5,19 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
+import React, { Fragment, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { parseMarkdown } from '@ndla/util';
-import React, { Fragment, ReactNode } from 'react';
-import { keyframes } from '@emotion/core';
-import Button from '@ndla/button';
-import { animations, breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { CursorClick } from '@ndla/icons/action';
-import { Play, ArrowCollapse } from '@ndla/icons/common';
-import { ImageCrop, ImageFocalPoint, makeSrcQueryString } from '../Image';
-
-const NotionContainer = styled.div``;
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 
 const ContentWrapper = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
@@ -26,11 +18,7 @@ const ContentWrapper = styled.div`
   }
   .c-figure {
     margin: 0;
-    position: relative !important;
-    left: 0 !important;
-    width: 25% !important;
     padding: 0 0 0 20px;
-    float: right;
     &.expanded {
       width: 100% !important;
       padding: 0;
@@ -44,112 +32,29 @@ const ContentWrapper = styled.div`
 `;
 const TextWrapper = styled.div<{ hasVisualElement: boolean }>`
   width: ${(props) => (props.hasVisualElement ? '75%' : '100%')};
+
   ${mq.range({ until: breakpoints.tabletWide })} {
     width: 100%;
   }
-  font-family: ${fonts.serif};
+  font-family: ${fonts.sans};
   ${fonts.sizes('18px', '28px')};
   ${ContentWrapper} .c-figure.expanded + & {
     width: 100%;
   }
-`;
-
-const ImageElement = styled.img``;
-
-const fadeInMediaKeyframe = keyframes`
-  0% {
-    opacity: 0;
-    height: auto;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-const fadeOutMediaKeyframe = keyframes`
-  0% {
-    opacity: 1;
-    height: auto;
-  }
-  100% {
-    opacity: 0;
-    height:0;
-    overflow: hidden;
-  }
-`;
-
-const ImageWrapper = styled.div`
-  float: right;
-  width: 25%;
-  padding-left: ${spacing.normal};
-  position: relative;
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100%;
-    padding-left: 0;
-  }
-`;
-
-const ExpandVisualElementButton = styled(Button)`
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  transition: all ${animations.durations.normal};
-  &,
-  &:focus,
-  &:active {
-    background-color: rgba(255, 255, 255, 0.65);
-  }
-
-  color: ${colors.brand.primary};
-  border-radius: 50%;
-  border: 0;
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    transition: transform ${animations.durations.normal} ease-out;
-  }
-  ${ContentWrapper}:hover & {
-    background-color: #fff;
-    svg {
-      transform: scale(1.2);
+  ${mq.range({ from: breakpoints.desktop })} {
+    ul,
+    ol {
+      margin: 12px 0;
+      padding: 0 1rem 0 2rem;
     }
-  }
-`;
-
-const ExpandIcon = styled.span`
-  ${ExpandVisualElementButton}.expanded & {
-    display: none;
-  }
-`;
-const CollapseIcon = styled.span`
-  display: none;
-  ${ExpandVisualElementButton}.expanded & {
-    display: inline-block;
+    ol > li {
+      margin-left: 24px;
+    }
   }
 `;
 
 const ClearWrapper = styled.div`
   clear: both;
-`;
-
-const MediaContainer = styled.div`
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  &.expanded {
-    animation-name: ${fadeInMediaKeyframe};
-    animation-duration: 2.8s;
-    opacity: 1;
-    height: auto;
-  }
-  &.fadeOut {
-    animation-name: ${fadeOutMediaKeyframe};
-    animation-duration: 2.8s;
-  }
 `;
 
 const LabelsContainer = styled.div`
@@ -160,23 +65,12 @@ const LabelsContainer = styled.div`
   margin: ${spacing.small} 0;
 `;
 
-type VisualElementProps = {
-  type: 'video' | 'other';
-  element: ReactNode;
-  metaImage?: {
-    url: string;
-    alt: string;
-    crop?: ImageCrop;
-    focalPoint?: ImageFocalPoint;
-  };
-};
-
 export type NotionProps = {
   id: string | number;
   labels?: string[];
   text: ReactNode;
   title: string;
-  visualElement?: VisualElementProps;
+  visualElement: ReactNode;
   imageElement?: ReactNode;
   children?: ReactNode;
 };
@@ -185,35 +79,11 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
   const { t } = useTranslation();
 
   return (
-    <NotionContainer>
-      {visualElement && <MediaContainer id={`notion-media-${id}`}>{visualElement.element}</MediaContainer>}
+    <div>
       <ContentWrapper>
         {imageElement}
-        {visualElement && visualElement.metaImage && (
-          <ImageWrapper>
-            <ImageElement
-              src={`${visualElement.metaImage.url}?${makeSrcQueryString(
-                400,
-                visualElement.metaImage.crop,
-                visualElement.metaImage.focalPoint,
-              )}`}
-              alt={visualElement.metaImage.alt}
-            />
-            <ExpandVisualElementButton
-              stripped
-              data-notion-expand-media={true}
-              data-notion-media-id={`notion-media-${id}`}>
-              <ExpandIcon>
-                {visualElement.type === 'video' && <Play style={{ width: '24px', height: '24px' }} />}
-                {visualElement.type === 'other' && <CursorClick style={{ width: '24px', height: '24px' }} />}
-              </ExpandIcon>
-              <CollapseIcon>
-                <ArrowCollapse style={{ width: '24px', height: '24px' }} />
-              </CollapseIcon>
-            </ExpandVisualElementButton>
-          </ImageWrapper>
-        )}
-        <TextWrapper hasVisualElement={!!(imageElement || visualElement?.metaImage)}>
+        {visualElement}
+        <TextWrapper hasVisualElement={!!(imageElement || visualElement)}>
           {parseMarkdown(`**${title}** \u2013 ${text}`, 'body')}
           {!!labels.length && (
             <LabelsContainer>
@@ -231,7 +101,7 @@ const Notion = ({ id, labels = [], text, title, visualElement, imageElement, chi
         <ClearWrapper />
       </ContentWrapper>
       {children}
-    </NotionContainer>
+    </div>
   );
 };
 

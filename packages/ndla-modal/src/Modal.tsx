@@ -7,8 +7,6 @@
  */
 
 import React, { ReactElement, ReactNode, useState, MouseEvent, cloneElement } from 'react';
-import em from 'polished/lib/helpers/em';
-
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import { DialogContent } from '@reach/dialog';
 import css from '@emotion/css';
@@ -240,11 +238,11 @@ const animationContainer = css`
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   }
   &.large {
-    max-width: ${em('970px')};
-    width: ${em('970px')};
+    max-width: 60.625em;
+    width: 60.625em;
     max-height: 85vh;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    ${mq.range({ until: em('970px') })} {
+    ${mq.range({ until: '60.625em' })} {
       box-shadow: none;
       width: 100vw;
       height: 100vw;
@@ -253,11 +251,11 @@ const animationContainer = css`
     }
   }
   &.medium {
-    max-width: ${em('790px')};
-    width: ${em('790px')};
+    max-width: 49.375em;
+    width: 49.375em;
     max-height: 85vh;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    ${mq.range({ until: em('790px') })} {
+    ${mq.range({ until: '49.375em' })} {
       box-shadow: none;
       height: 100vh;
       width: 100vw;
@@ -273,8 +271,8 @@ const animationContainer = css`
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
       width: 90%;
       max-height: 85vh;
-      max-width: ${em('613px')};
-      min-width: ${em('613px')};
+      max-width: 38.3125em;
+      min-width: 38.3125em;
     }
   }
   &.medium,

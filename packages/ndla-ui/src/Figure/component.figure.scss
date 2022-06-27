@@ -136,6 +136,10 @@
   justify-content: space-between;
   color: $primary-color;
 }
+.c-figure__byline-author-buttons--no-siblings {
+  //styling for button in licensewrapper when there are no other elements in it. Places the button to the right
+  justify-content: flex-end;
+}
 .c-figure__byline-authors {
   @include font-size(14px, 20px);
   margin-right: $spacing--small;

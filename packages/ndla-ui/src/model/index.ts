@@ -8,10 +8,12 @@
 
 import * as contentTypes from './ContentType';
 import * as subjectCategories from './SubjectCategories';
+import * as subjectTypes from './SubjectTypes';
 
 const model = {
   contentTypes,
   subjectCategories,
+  subjectTypes,
 };
 
 export default model;

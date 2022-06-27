@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
-import em from 'polished/lib/helpers/em';
 import { breakpoints as breakpointFromCore } from '@ndla/core';
 import { Breakpoint } from '@ndla/core/types';
 import { CalculatedProps as CalculatedCarouselProps } from './Carousel';
@@ -37,7 +36,7 @@ export const CarouselAutosize = ({ breakpoints: propsBreakpoints, children, cent
   // Update sizes when window resize changes
   const updateSizes = useCallback(() => {
     const node = autosizeRef.current!;
-    const wrapperWidthInEm = parseFloat(em(node.offsetWidth));
+    const wrapperWidthInEm = parseFloat(`${node.offsetWidth / 16}em`);
     const breakpoints: CaruselBreakpoint[] = propsBreakpoints;
 
     const useBreakpoint = breakpoints

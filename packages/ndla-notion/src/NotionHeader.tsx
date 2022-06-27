@@ -9,7 +9,7 @@
 import React, { MouseEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing, colors, fonts, misc } from '@ndla/core';
-import { CloseButton } from '@ndla/ui';
+import { CloseButton } from '@ndla/button';
 interface NotionHeaderWrapperProps {
   hasChildren?: boolean;
 }
@@ -39,9 +39,11 @@ const NotionHeaderWrapper = styled.div<NotionHeaderWrapperProps>`
     border: none;
     background: none;
     color: ${colors.brand.primary};
-    box-shadow: ${misc.textLinkBoxShadow};
     cursor: pointer;
-    &:hover,
+    &:hover {
+      box-shadow: ${misc.textLinkBoxShadow};
+    }
+
     &:focus {
       box-shadow: none;
     }

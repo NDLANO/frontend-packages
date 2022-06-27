@@ -6,11 +6,11 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { colors, fonts, spacing } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
+import { colors } from '@ndla/core';
+import Tooltip from '@ndla/tooltip';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
@@ -27,22 +27,6 @@ export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
   margin-right: 0.2em;
   line-height: 1.3rem;
   color: ${colors.brand.primary};
-
-  span {
-    z-index: 1;
-    opacity: 0;
-    display: none;
-    max-width: 300px;
-    position: absolute;
-    background: ${colors.brand.primary};
-    color: ${colors.white};
-    text-align: left;
-    border-radius: 2px;
-    padding: ${spacing.small};
-    font-family: ${fonts.sans};
-    transform: translate(0, calc(-100% - 6px));
-    ${fonts.sizes('14px', '18px')};
-  }
 
   svg {
     fill: ${(props) => props.fill};

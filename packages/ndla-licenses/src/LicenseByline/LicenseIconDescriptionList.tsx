@@ -25,18 +25,25 @@ interface LicenseIconItemProps {
   locale?: string;
 }
 
+const IconLineWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <Tooltip tooltip={description}>
-      <StyledLicenseIconItem>
-        <StyledLicenseIconButton>
-          <LicenseIcon licenseRight={licenseRight} description={description} />
-        </StyledLicenseIconButton>
-        <StyledLicenseLabel>{description}</StyledLicenseLabel>
-      </StyledLicenseIconItem>
-    </Tooltip>
+    <StyledLicenseIconItem>
+      <Tooltip tooltip={description}>
+        <IconLineWrapper>
+          <StyledLicenseIconButton>
+            <LicenseIcon licenseRight={licenseRight} description={description} />
+          </StyledLicenseIconButton>
+          <StyledLicenseLabel>{description}</StyledLicenseLabel>
+        </IconLineWrapper>
+      </Tooltip>
+    </StyledLicenseIconItem>
   );
 };
 

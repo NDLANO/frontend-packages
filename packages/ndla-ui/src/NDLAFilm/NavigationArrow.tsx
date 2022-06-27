@@ -9,7 +9,7 @@
 import React from 'react';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import styled from '@emotion/styled';
-import { breakpoints, mq, spacing } from '@ndla/core';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
 
 interface Props {
@@ -59,7 +59,7 @@ const NavigationArrowButton = styled.button`
   border-radius: 4px;
   outline: none;
   background: transparent;
-  color: #fff;
+  color: ${colors.white};
   border: 0;
   &:hover,
   &:focus {
@@ -71,7 +71,7 @@ const NavigationArrowButton = styled.button`
 `;
 
 const chevronCss = css`
-  fill: #fff;
+  fill: ${colors.white};
   width: 52px;
   height: 52px;
   ${mq.range({ from: breakpoints.desktop })} {

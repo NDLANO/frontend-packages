@@ -34,7 +34,7 @@ const DropdownButton = styled.button`
   border: 0;
   text-transform: uppercase;
   background: ${colors.ndlaFilm.filmColorBright};
-  color: #fff;
+  color: ${colors.white};
   padding: ${spacing.small} ${spacing.nsmall};
   font-weight: ${fonts.weight.semibold};
   display: flex;
@@ -76,7 +76,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   display: flex;
   flex-direction: column;
   padding: $spacing--small 0;
-  background: #deebf6;
+  background: ${colors.brand.lighter};
   border-radius: 4px;
   left: 0;
   right: 0;

@@ -8,12 +8,11 @@
 
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { uuid } from '@ndla/util';
-import Button from '@ndla/button';
+import { AddButton } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { Plus } from '@ndla/icons/action';
-import { spacing, fonts, colors } from '@ndla/core';
+import { spacing, fonts } from '@ndla/core';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { getIdPathsOfFolder, getPathOfFolder, getFolderName } from './helperFunctions';
@@ -21,51 +20,6 @@ import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigat
 import { NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
-
-const AddIconBorder = styled.div`
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid ${colors.brand.tertiary};
-  border-radius: 50%;
-`;
-
-const AddButton = styled(Button)`
-  display: flex;
-  gap: ${spacing.small};
-  svg {
-    fill: ${colors.brand.primary};
-    width: 24px;
-    height: 24px;
-  }
-  :hover {
-    background-color: transparent;
-    margin: 0;
-    border: none;
-    svg {
-      fill: white;
-    }
-    div {
-      background-color: ${colors.brand.primary};
-    }
-  }
-  &:focus,
-  &:active {
-    background-color: transparent;
-    border: none;
-  }
-`;
-
-const AddFolder = styled.p`
-  color: ${colors.brand.primary};
-  margin: 0;
-  align-items: center;
-  display: flex;
-  font-weight: 600;
-  ${fonts.sizes('16')}
-`;
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
@@ -164,9 +118,6 @@ const TreeStructure = ({
     setFocusedFolderId(id);
   };
 
-  /*   const disableAddFolderButton =
-    markedFolderId === undefined || getPathOfFolder(data, markedFolderId).length >= MAX_LEVEL_FOR_FOLDERS;
- */
   return (
     <div
       ref={treestructureRef}
@@ -210,19 +161,13 @@ const TreeStructure = ({
               folderName: getFolderName(data, markedFolderId),
             })}>
             <AddButton
-              size="xsmall"
               aria-label={t('myNdla.newFolder')}
-              ghostPill
               onClick={() => {
                 const paths = getPathOfFolder(data, markedFolderId || '');
                 const idPaths = getIdPathsOfFolder(data, markedFolderId || '');
                 setNewFolder({ idPaths, parentId: paths[paths.length - 1] });
-              }}>
-              <AddIconBorder>
-                <Plus />
-              </AddIconBorder>
-              <AddFolder>{t('myNdla.newFolder')}</AddFolder>
-            </AddButton>
+              }}
+            />
           </Tooltip>
         </AddFolderWrapper>
       )}

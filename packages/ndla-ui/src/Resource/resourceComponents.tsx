@@ -17,11 +17,11 @@ export interface ResourceImageProps {
   src: string;
 }
 
-export const ResourceTitle = styled.h2`
+export const ResourceTitle = styled.h3`
   ${fonts.sizes(18)};
   min-width: 50px;
   font-weight: ${fonts.weight.bold};
-  margin: 0 !important; //Modal overrides h2 and gives 52px margin top
+  margin: 0;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;

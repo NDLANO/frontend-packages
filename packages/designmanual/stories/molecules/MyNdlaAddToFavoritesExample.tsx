@@ -12,25 +12,29 @@ import Button, { IconButtonDualStates } from '@ndla/button';
 import { Heart, HeartOutline } from '@ndla/icons/action';
 import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
 import { SnackBar, SnackBarItem } from '@ndla/ui';
-import { spacing } from '@ndla/core';
+
+import { ListResource } from '@ndla/ui';
+import { fonts, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
 import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
-const MyNdlaFolder = styled.div`
-  height: 100px;
-`;
-
-const MyNdlaResource = styled.div`
-  height: 100px;
-`;
-
 const DialogFooter = styled.div`
   display: flex;
   gap: ${spacing.xsmall};
   justify-content: flex-end;
+`;
+
+const FavouriteWrapper = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+const StyledH1 = styled.h1`
+  ${fonts.sizes(24)};
+  ${fonts.weight.bold}
 `;
 
 type DialogExampleProps = {
@@ -54,13 +58,22 @@ const DialogExample = ({
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
       {(onCloseModal: () => void) => (
-        <>
+        <FavouriteWrapper>
           <ModalHeader modifier="no-bottom-padding">
             {t('modal.closeModal')} <ModalCloseButton title="Lukk" onClick={onCloseModal} />
           </ModalHeader>
           <ModalBody>
-            <h1>{title}</h1>
-            <MyNdlaResource />
+            <StyledH1>{title}</StyledH1>
+            <ListResource
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={['Topic', 'Topic', 'Topic']}
+              resourceImage={{
+                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                alt: 'alt',
+              }}
+              link={''}
+            />
             <TreeStructureExampleComponent
               label="Velg plassering"
               editable
@@ -70,11 +83,11 @@ const DialogExample = ({
               openOnFolderClick={false}
             />
             <TagSelectorExample />
-            <MyNdlaFolder />
             <DialogFooter>
               <Button outline onClick={onCloseModal}>
                 Avbryt
               </Button>
+
               <Button
                 aria-controls={SNACKBAR_ID_ADD_TO_FAVORITES}
                 onClick={() => {
@@ -89,7 +102,7 @@ const DialogExample = ({
               </Button>
             </DialogFooter>
           </ModalBody>
-        </>
+        </FavouriteWrapper>
       )}
     </Modal>
   );

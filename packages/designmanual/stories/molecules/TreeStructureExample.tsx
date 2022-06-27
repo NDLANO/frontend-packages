@@ -13,7 +13,7 @@ import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
 
 const Container = styled.div`
-  margin: 40px auto;
+  margin-top: 40px;
   max-width: 600px;
 `;
 

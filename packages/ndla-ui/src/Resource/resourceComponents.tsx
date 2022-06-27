@@ -21,7 +21,7 @@ export const ResourceTitle = styled.h2`
   ${fonts.sizes(18)};
   min-width: 50px;
   font-weight: ${fonts.weight.bold};
-  margin: 0;
+  margin: 0 !important; //Modal overrides h2 and gives 52px margin top
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;

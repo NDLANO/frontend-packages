@@ -7,10 +7,9 @@
  */
 
 import React, { Fragment, Component, ChangeEvent } from 'react';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
 import { uuid } from '@ndla/util';
-
-const classes = BEMHelper('c-radio-button-group');
+import { spacing, fonts, colors } from '@ndla/core';
 
 interface Props {
   selected?: string;
@@ -27,6 +26,81 @@ interface Props {
 interface State {
   selected: string;
 }
+
+const RadioButtonGroupWrapper = styled.div`
+  padding: ${spacing.small} 0;
+  font-family: ${fonts.sans};
+  display: flex;
+  align-items: center;
+`;
+
+const RadioButtonGroupLabelHeading = styled.h1`
+  ${fonts.sizes('16px', '20px')};
+  margin: 0 ${spacing.normal} 0 0;
+  font-weight: 600;
+`;
+
+const RadioButtonGroupLabel = styled.label`
+  ${fonts.sizes('16px', '28px')};
+  color: ${colors.brand.primary};
+  align-items: center;
+  display: inline-flex;
+  &:before {
+    content: '';
+    margin-right: ${spacing.small};
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 2px solid ${colors.brand.tertiary};
+    transition: 200ms border-color ease;
+  }
+  &:after {
+    content: '';
+    background: transparent;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    position: absolute;
+    transform: translateX(5px) scale(0, 0);
+    transition: 200ms all ease;
+  }
+  &:not(:last-child) {
+    margin-right: ${spacing.medium};
+  }
+`;
+
+const RadioButtonGroupInput = styled.input`
+  opacity: 0;
+  position: absolute;
+  width: auto;
+  &:hover + ${RadioButtonGroupLabel} {
+    outline: 1px dotted #212121;
+    outline: -webkit-focus-ring-color auto 5px;
+    &:after {
+      transform: translateX(5px) scale(1, 1);
+      background: ${colors.brand.tertiary};
+    }
+  }
+  // emotion does not seem to support several selectors combined with targeting another emotion component
+  // so we duplicate the css for :hover and :focus.
+  &:focus + ${RadioButtonGroupLabel} {
+    outline: 1px dotted #212121;
+    outline: -webkit-focus-ring-color auto 5px;
+    &:after {
+      transform: translateX(5px) scale(1, 1);
+      background: ${colors.brand.tertiary};
+    }
+  }
+  &:checked + ${RadioButtonGroupLabel} {
+    &:before {
+      border-color: ${colors.brand.primary};
+    }
+    &:after {
+      transform: translateX(5px) scale(1, 1);
+      background: ${colors.brand.primary};
+    }
+  }
+`;
 
 class RadioButtonGroup extends Component<Props, State> {
   private readonly uuid?: string;
@@ -49,14 +123,13 @@ class RadioButtonGroup extends Component<Props, State> {
   render() {
     return (
       <section>
-        <div role="radiogroup" {...classes('wrapper')}>
-          {this.props.label && <h1 {...classes('label-heading')}>{this.props.label}</h1>}
+        <RadioButtonGroupWrapper role="radiogroup">
+          {this.props.label && <RadioButtonGroupLabelHeading>{this.props.label}</RadioButtonGroupLabelHeading>}
           {this.props.options.map((option) => {
             const id = this.uuid ? `${this.uuid}_${option.value}` : option.value;
             return (
               <Fragment key={option.value}>
-                <input
-                  {...classes('input')}
+                <RadioButtonGroupInput
                   disabled={option.disabled}
                   aria-checked={this.state.selected === option.value}
                   checked={this.state.selected === option.value}
@@ -66,13 +139,11 @@ class RadioButtonGroup extends Component<Props, State> {
                   name={id}
                   onChange={this.handleOnChange}
                 />
-                <label htmlFor={id} {...classes('label')}>
-                  {option.title}
-                </label>
+                <RadioButtonGroupLabel htmlFor={id}>{option.title}</RadioButtonGroupLabel>
               </Fragment>
             );
           })}
-        </div>
+        </RadioButtonGroupWrapper>
       </section>
     );
   }

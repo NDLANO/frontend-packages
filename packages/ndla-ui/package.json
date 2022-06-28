@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "16.1.0",
+  "version": "16.1.1",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -31,15 +31,15 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^2.4.0",
+    "@ndla/button": "^2.4.1",
     "@ndla/carousel": "^1.2.9",
     "@ndla/core": "^2.1.1",
     "@ndla/hooks": "^1.1.4",
     "@ndla/icons": "^1.8.1",
     "@ndla/licenses": "^5.0.0",
     "@ndla/modal": "^1.2.10",
-    "@ndla/notion": "^3.1.13",
-    "@ndla/safelink": "^2.0.4",
+    "@ndla/notion": "^3.1.14",
+    "@ndla/safelink": "^2.0.5",
     "@ndla/switch": "^0.1.5",
     "@ndla/tabs": "^1.1.8",
     "@ndla/tooltip": "^2.1.0",

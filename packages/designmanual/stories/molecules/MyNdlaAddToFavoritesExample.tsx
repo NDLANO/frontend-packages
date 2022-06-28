@@ -173,23 +173,27 @@ const DialogNotLoggedInExample = ({
             <RoundedImage src="https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg" alt="" />
           </Header>
           <ModalBody>
-            <StyledH1>{title}</StyledH1>
             {resource && (
-              <ListResource
-                key={'minimalResource'}
-                title="Minimal ressurs"
-                topics={['Topic', 'Topic', 'Topic']}
-                resourceImage={{
-                  src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                  alt: 'alt',
-                }}
-                link={''}
-              />
+              <>
+                <StyledH1>{title}</StyledH1>
+                <ListResource
+                  key={'minimalResource'}
+                  title="Minimal ressurs"
+                  topics={['Topic', 'Topic', 'Topic']}
+                  resourceImage={{
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                    alt: 'alt',
+                  }}
+                  link={''}
+                />
+              </>
             )}
 
             <Feide>
               <FeideText />
-              <FeideP>Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk</FeideP>
+              <FeideP>
+                Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre <a href="www">vilkår for bruk</a>
+              </FeideP>
             </Feide>
             <DialogFooter>
               <Button outline onClick={onCloseModal}>

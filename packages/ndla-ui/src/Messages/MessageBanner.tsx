@@ -20,7 +20,7 @@ interface WrapperProps {
 const MessageBannerWrapper = styled.div<WrapperProps>`
   display: grid;
   grid-template-areas: '. content closebutton';
-  grid-template-columns: minmax(30px, 1fr) auto minmax(30px, 1fr);
+  grid-template-columns: minmax(30px, 1fr) minmax(0, auto) minmax(30px, 1fr);
   padding: ${({ small }) => (small ? spacing.xxsmall : spacing.small)};
   background: ${colors.support.yellowLight};
   color: ${colors.brand.greyDark};

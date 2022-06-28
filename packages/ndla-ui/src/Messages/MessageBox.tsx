@@ -17,60 +17,28 @@ import { Remarkable } from 'remarkable';
 import { CloseButton } from '@ndla/button';
 import { css } from '@emotion/core';
 
+const markdown = new Remarkable({ breaks: true });
+markdown.inline.ruler.enable(['sub', 'sup']);
+markdown.block.ruler.disable(['list', 'table']);
+
+type MessageBoxType = 'ghost' | 'danger';
+
 type StyledProps = {
   type?: MessageBoxType;
 };
 
-// const StyleByType = (type: WrapperProps['boxType']) => {
-//   const styles: HTMLAttributes<HTMLElement>['style'] = {
-//     color: '#444444',
-//     backgroundColor: '#f9f4c8',
-//     border: 'none',
-//     display: 'flex',
-//     padding: '10px',
-//     width: 'auto',
-//     borderRadius: '5px',
-//     position: 'relative',
-//     transform: 'auto',
-//     left: 'auto',
-//   }; // Different CSS properties for different types of message-boxes
-//   switch (type) {
-//     case 'fullpage':
-//       styles.margin = '0 auto';
-//       styles.display = 'none';
-//       styles.width = '100vw';
-//       styles.position = 'relative';
-//       styles.left = '50%';
-//       styles.padding = '0';
-//       styles.transform = 'translateX(-50%)';
-//       break;
-//     case 'medium':
-//       styles.margin = '0px';
-//       break;
-//     case 'ghost':
-//       styles.backgroundColor = 'transparent';
-//       styles.border = '1px solid #D1D6DB';
-//       styles.color = '#444444';
-//       break;
-//     case 'masthead':
-//       styles.margin = '0 auto';
-//       styles.display = 'none';
-//       styles.padding = '0';
-//       styles.borderRadius = '0';
-//       break;
-//   }
-//   return styles;
-// };
-
 const MessageBoxWrapper = styled.div<StyledProps>`
-  font-size: 18px;
-  line-height: 32px;
-  font-family: ${fonts.sans};
   display: flex;
   padding: ${spacing.small};
+  font-family: ${fonts.sans};
+  border-radius: 5px;
   background: ${colors.support.yellowLight};
   color: ${colors.brand.greyDark};
-  border-radius: 5px;
+
+  ${fonts.sizes('18px')};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    ${fonts.sizes('16px')};
+  }
 
   ${({ type }) =>
     type === 'ghost' &&
@@ -83,31 +51,23 @@ const MessageBoxWrapper = styled.div<StyledProps>`
 
 const InfoWrapper = styled.div<StyledProps>`
   display: flex;
-  padding: ${spacing.small};
-  padding-right: 0;
   flex-direction: row;
   flex: 1;
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    font-size: 16px;
-  }
+  padding: ${spacing.small};
+  padding-right: 0;
 `;
+
 const TextWrapper = styled.div<StyledProps>`
-  display: flex;
-  align-items: center;
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    line-height: 24px;
-    font-size: 16px;
-  }
   & p {
     margin: 0;
   }
 `;
 
-const IconWrapper = styled.div<StyledProps>`
+const IconWrapper = styled.div`
   display: flex;
-  margin-top: ${spacing.xxsmall};
-  padding-right: ${spacing.small};
   align-items: flex-start;
+  padding-right: ${spacing.small};
+
   svg {
     width: 24px;
     height: 24px;
@@ -116,56 +76,52 @@ const IconWrapper = styled.div<StyledProps>`
 
 const LinkWrapper = styled.div`
   display: flex;
-  padding-top: ${spacing.nsmall};
+  flex-wrap: wrap;
   gap: ${spacing.normal};
-  align-items: center;
+  padding-top: ${spacing.nsmall};
+
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const Link = styled.a`
   display: flex;
   align-items: center;
   color: ${colors.brand.primary};
-  font-family: ${fonts.sans};
-  font-size: 16px;
   gap: ${spacing.xxsmall};
   font-weight: ${fonts.weight.semibold};
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    margin: 0px 15px 1px 5px;
-    box-shadow: none;
-  }
 `;
 
 const StyledClosebutton = styled(CloseButton)`
   padding: 0;
-  justify-self: flex-end;
-  align-self: flex-start;
 `;
 
-type LinkProps = {
+interface LinkProps {
   href?: string;
   text?: string;
-};
+}
 
-type MessageBoxType = 'ghost' | 'danger';
-
-type Props = {
+interface Props {
   type?: MessageBoxType;
   children?: string;
   links?: LinkProps[];
   showCloseButton?: boolean;
   onClose?: () => void;
+}
+
+const Icon = ({ type }: StyledProps) => {
+  if (type === 'ghost') {
+    return <HumanMaleBoard />;
+  }
+  return <InformationOutline />;
 };
 
-const markdown = new Remarkable({ breaks: true });
-markdown.inline.ruler.enable(['sub', 'sup']);
-markdown.block.ruler.disable(['list', 'table']);
-
 export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props & WithTranslation) => {
-  const Icon = type === 'ghost' ? HumanMaleBoard : InformationOutline;
   return (
     <MessageBoxWrapper type={type}>
       <InfoWrapper type={type}>
-        <IconWrapper type={type}>
+        <IconWrapper>
           <Icon />
         </IconWrapper>
         <div>
@@ -174,7 +130,7 @@ export const MessageBox = ({ type, children = '', links, showCloseButton, onClos
             <LinkWrapper>
               {links.map((x) => (
                 <Link href={x.href}>
-                  {x.text}
+                  <span>{x.text}</span>
                   <Forward />
                 </Link>
               ))}

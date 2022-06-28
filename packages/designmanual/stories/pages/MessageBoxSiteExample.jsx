@@ -19,8 +19,9 @@ const MessageBoxSiteExample = ({ type, message }) => {
       <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />
       <Content>
         <MessageBox type={type} showCloseButton>
-          Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på:
-          <a href="https://browsehappy.com"> https://browsehappy.com.</a>
+          {
+            'Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på: [https://browsehappy.com.]("https://browsehappy.com")'
+          }
         </MessageBox>
 
         <Programme

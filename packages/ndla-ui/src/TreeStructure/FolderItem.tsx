@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
-import { SetFocusedFolderId } from './TreeStructure.types';
+import { SetFocusedFolderId, FolderChildTypeProp } from './TreeStructure.types';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
@@ -37,6 +37,16 @@ const FolderItemWrapper = styled.div`
   align-items: center;
 `;
 
+const WrapperForFolderChild = styled.div<{ marked: boolean }>`
+  position: absolute;
+  right: ${spacing.xsmall};
+  opacity: ${({ marked }) => (marked ? 1 : 0.25)};
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+`;
+
 const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   line-height: 1;
   background: ${({ marked }) => (marked ? colors.brand.lighter : 'transparent')};
@@ -45,6 +55,9 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   &:focus {
     background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lightest)};
     color: ${colors.brand.primary};
+    + ${WrapperForFolderChild} {
+      opacity: 1;
+    }
   }
   transition: ${animations.durations.superFast};
   border: 0;
@@ -58,6 +71,7 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
   flex-grow: 1;
   box-shadow: none;
+  text-align: left;
 `;
 
 const FolderNameLink = FolderName.withComponent('a');
@@ -77,6 +91,7 @@ interface Props {
   url?: string;
   icon?: React.ReactNode;
   noPaddingWhenArrowIsHidden?: boolean;
+  folderChild?: FolderChildTypeProp;
 }
 
 const FolderItem = ({
@@ -94,9 +109,11 @@ const FolderItem = ({
   icon,
   url,
   noPaddingWhenArrowIsHidden,
+  folderChild,
 }: Props) => {
   const folderNameLinkRef = useRef<HTMLAnchorElement | null>(null);
   const folderNameButtonRef = useRef<HTMLButtonElement | null>(null);
+  console.log('folderChild', folderChild);
   useEffect(() => {
     if (focusedFolderId === id) {
       if (url && folderNameLinkRef.current) {
@@ -134,24 +151,29 @@ const FolderItem = ({
           {name}
         </FolderNameLink>
       ) : (
-        <FolderName
-          ref={folderNameButtonRef}
-          noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
-          tabIndex={marked ? 0 : -1}
-          marked={marked}
-          disabled={loading}
-          onFocus={() => {
-            setFocusedFolderId(id);
-          }}
-          onClick={() => {
-            onMarkFolder(id);
-            if (openOnFolderClick) {
-              onToggleOpen(id);
-            }
-          }}>
-          {icon || <FolderOutlined />}
-          {name}
-        </FolderName>
+        <>
+          <FolderName
+            ref={folderNameButtonRef}
+            noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
+            tabIndex={marked ? 0 : -1}
+            marked={marked}
+            disabled={loading}
+            onFocus={() => {
+              setFocusedFolderId(id);
+            }}
+            onClick={() => {
+              onMarkFolder(id);
+              if (openOnFolderClick) {
+                onToggleOpen(id);
+              }
+            }}>
+            {icon || <FolderOutlined />}
+            {name}
+          </FolderName>
+          {folderChild && (
+            <WrapperForFolderChild marked={marked}>{folderChild(id, marked ? 0 : -1)}</WrapperForFolderChild>
+          )}
+        </>
       )}
     </FolderItemWrapper>
   );

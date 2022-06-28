@@ -48,6 +48,7 @@ const FolderItems = ({
   focusedFolderId,
   setFocusedFolderId,
   firstLevel,
+  folderChild,
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={firstLevel}>
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
@@ -71,6 +72,7 @@ const FolderItems = ({
               hideArrow={dataChildren?.length === 0 || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
               noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
               setFocusedFolderId={setFocusedFolderId}
+              folderChild={folderChild}
             />
           </div>
           {newFolder?.parentId === id && (
@@ -98,6 +100,7 @@ const FolderItems = ({
               focusedFolderId={focusedFolderId}
               setFocusedFolderId={setFocusedFolderId}
               firstLevel={false}
+              folderChild={folderChild}
             />
           )}
         </StyledLI>

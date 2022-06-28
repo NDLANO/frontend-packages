@@ -23,14 +23,15 @@ export const ArticleFavoritesButton = ({ isFavorite, onToggleAddToFavorites, art
   const removeFromFavoritesLabel = t('myNdla.resource.addToMyNdla');
   const addToFavoritesLabel = t('myNdla.resource.addedToMyNdla');
   return (
-    <Tooltip tooltip={isFavorite ? removeFromFavoritesLabel : addToFavoritesLabel}>
+    <Tooltip tooltip={isFavorite ? addToFavoritesLabel : removeFromFavoritesLabel}>
       <IconButtonDualStates
-        ariaLabelActive={addToFavoritesLabel}
-        ariaLabelInActive={removeFromFavoritesLabel}
+        ariaLabelActive="Legg til i mine favoritter"
+        ariaLabelInActive="Allerede lagt til i mine favoritter"
         activeIcon={<Heart />}
         inactiveIcon={<HeartOutline />}
         active={isFavorite}
         size="small"
+        ghostPill
         onClick={() => onToggleAddToFavorites(articleId, !isFavorite)}
       />
     </Tooltip>

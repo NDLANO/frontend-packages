@@ -65,6 +65,7 @@ const ArticleExternalLearningResource = () => (
         },
       }}
       licenseBox={<LicenseBox />}
+      onToggleAddToFavorites
       competenceGoals={<CompetenceGoalListExample />}
       competenceGoalTypes={['LK20', 'LK06']}
       copyPageUrlLink={window.location.href}

@@ -73,9 +73,12 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
       }
     }
   }
-  ${({ isHighlighted }) => isHighlighted ? css`
-    background: ${colors.brand.lighter};
-  ` : ''}
+  ${({ isHighlighted }) =>
+    isHighlighted
+      ? css`
+          background: ${colors.brand.lighter};
+        `
+      : ''}
 `;
 
 interface Props {

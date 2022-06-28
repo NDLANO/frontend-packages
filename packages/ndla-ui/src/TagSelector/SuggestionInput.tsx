@@ -22,14 +22,19 @@ import type { TagType } from './TagSelector';
 const SuggestionTextWrapper = styled.div`
   ${fonts.sizes(18)};
   position: absolute;
+  display: flex;
+  flex-grow: 1;
   left: 0;
   right: 0;
-  background: green;
-  padding: ${spacing.xsmall};
-  padding-left: calc(${spacing.xxsmall} + ${spacing.xxsmall});
-  padding-top: calc(${spacing.xxsmall} + ${spacing.xxsmall});
+  overflow: hidden;
+  max-height: ${spacing.large};
+  padding: 8.333px;
+  padding-right: ${spacing.large};
   span {
-    color: ${colors.brand.greyMedium};
+    color: ${colors.brand.grey};
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
     &:first-of-type {
       color: transparent;
     }
@@ -38,13 +43,9 @@ const SuggestionTextWrapper = styled.div`
 
 const SuggestionText = ({ value, suggestionValue }) => (
   <SuggestionTextWrapper>
-    <span>
-      {value}
-    </span>
-    <span>
-      {suggestionValue.substring(value.length)}
-    </span>
-  </SuggestionTextWrapper>  
+    <span>{value}</span>
+    <span>{suggestionValue.substring(value.length)}</span>
+  </SuggestionTextWrapper>
 );
 
 const Cross = styled(CrossRaw)`
@@ -68,7 +69,6 @@ const StyledInput = styled.input`
 const StyledInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  position: relative;
   gap: ${spacing.xsmall};
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.greyLighter};
@@ -82,7 +82,7 @@ const StyledInputWrapper = styled.div`
 const CombinedInputAndDropdownWrapper = styled.div`
   display: flex;
   flex-grow: 1;
-  display: relative;
+  position: relative;
 `;
 
 interface SuggestionInputProps {

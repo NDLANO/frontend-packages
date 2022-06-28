@@ -103,10 +103,13 @@ const colors = {
   support: {
     red: '#d1372e',
     redLight: 'rgba(209,55,46,0.3)',
+    redLightest: 'rgba(209,55,46,0.15)',
     green: '#5cbc80',
     greenLight: 'rgba(92,188,128,0.3)',
+    greenLightest: 'rgba(92,188,128,0.15)',
     yellow: '#ead854',
     yellowLight: 'rgba(234,216,84,0.3)',
+    yellowLightest: 'rgba(234,216,84,0.15)',
   },
   tableBg: '#f9fafb',
   favoriteColor: '#fcba03',

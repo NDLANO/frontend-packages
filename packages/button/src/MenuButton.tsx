@@ -72,9 +72,10 @@ const StyledMenuItem = styled(MenuItem)`
   gap: ${spacing.xsmall};
   padding: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} ${spacing.xsmall};
   cursor: pointer;
-  color: ${({ color }) => color === 'red' && colors.support.red};
+  color: ${({ color }) => (color === 'red' ? colors.support.red : colors.text.primary)};
   &[data-selected] {
-    background: ${colors.brand.secondary};
+    color: ${({ color }) => (color === 'red' ? colors.support.red : colors.brand.primary)};
+    background: ${({ color }) => (color === 'red' ? colors.support.redLightest : colors.brand.lighter)};
   }
 `;
 

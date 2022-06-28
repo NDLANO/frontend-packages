@@ -12,8 +12,7 @@ import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import { User, HashTag } from '@ndla/icons/common';
-import { Pencil } from '@ndla/icons/action';
-import { DeleteForever } from '@ndla/icons/editor';
+import { Pencil, TrashCanOutline } from '@ndla/icons/action';
 
 const Container = styled.div`
   margin-top: 40px;
@@ -33,7 +32,7 @@ const menuItemsForFolderChild = (id: string): MenuItemProps[] => [
     },
   },
   {
-    icon: <DeleteForever />,
+    icon: <TrashCanOutline />,
     text: 'Fjern',
     color: 'red',
     onClick: (e) => {
@@ -133,6 +132,7 @@ export const TreeStructureExampleComponent = ({
   folderIdMarkedByDefault,
   openOnFolderClick,
   defaultOpenFolders,
+  withDots,
 }: {
   structure: FolderStructureProps[];
   label: string;
@@ -141,13 +141,14 @@ export const TreeStructureExampleComponent = ({
   folderIdMarkedByDefault?: string;
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
+  withDots?: boolean;
 }) => {
   const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
     <Container>
       <TreeStructure
-        folderChild={folderChild}
+        folderChild={withDots ? folderChild : undefined}
         framed={framed}
         label={label}
         editable={editable}
@@ -201,7 +202,6 @@ const TreeStructureExample = () => (
       structure={STRUCTURE_EXAMPLE(false)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
     />
-    <hr />
     <h1>TreeStructure non-editable:</h1>
     <TreeStructureExampleComponent
       label="Static"
@@ -210,8 +210,8 @@ const TreeStructureExample = () => (
       framed
       structure={STRUCTURE_EXAMPLE(false)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
+      withDots
     />
-    <hr />
     <h1>TreeStructure without frame</h1>
     <TreeStructureExampleComponent
       label="Static"
@@ -219,6 +219,7 @@ const TreeStructureExample = () => (
       framed={false}
       openOnFolderClick
       structure={STRUCTURE_EXAMPLE_WRAPPED()}
+      withDots
     />
   </div>
 );

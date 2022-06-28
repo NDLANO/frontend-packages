@@ -48,12 +48,11 @@ const AddButtonStyle = styled(Button)`
     border: none;
   }
 `;
-const AddFolder = styled.p`
+const AddFolder = styled.span`
   color: ${colors.brand.primary};
-  margin: 0;
   align-items: center;
   display: flex;
-  font-weight: 600;
+  ${fonts.weight.semibold}
   ${fonts.sizes('16')}
 `;
 

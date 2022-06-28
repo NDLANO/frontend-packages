@@ -347,7 +347,7 @@ const messages = {
     resources:
       'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
-    subjectBeta: 'This course is in beta.',
+    subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:

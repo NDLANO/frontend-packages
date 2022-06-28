@@ -41,7 +41,7 @@ const SuggestionTextWrapper = styled.div`
   }
 `;
 
-const SuggestionText = ({ value, suggestionValue }: { value: string, suggestionValue: string }) => (
+const SuggestionText = ({ value, suggestionValue }: { value: string; suggestionValue: string }) => (
   <SuggestionTextWrapper>
     <span>{value}</span>
     <span>{suggestionValue.substring(value.length)}</span>

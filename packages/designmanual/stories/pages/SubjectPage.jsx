@@ -26,6 +26,7 @@ import {
   Topic,
   AuthModal,
   MessageBox,
+  SubjectCarousel,
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
@@ -512,12 +513,9 @@ const SubjectPage = ({
           </LayoutItem>
         </OneColumn>
       </div>
-      {/* Stored for later. 
-      {bannerBackground && <SubjectBanner image={bannerBackground} negativeTopMargin={moveBannerUp} />}
-      {subjectAboutHeading && <OneColumn wide>{subjectAbout(subjectAboutHeading, subjectAboutDescription)}</OneColumn>}
       {subjectContentCards && (
         <SubjectCarousel wideScreen subjects={subjectContentCards} title="Litt forskjellig fra faget" subjectPage />
-      )} */}
+      )}
 
       <OneColumn wide>
         {message && (

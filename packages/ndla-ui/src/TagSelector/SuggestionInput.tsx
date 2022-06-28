@@ -19,6 +19,29 @@ import { uuid } from '@ndla/util';
 import Suggestions from './Suggestions';
 import type { TagType } from './TagSelector';
 
+const SuggestionTextWrapper = styled.div`
+  ${fonts.sizes(18)};
+  width: 0;
+  height: 0;
+  span {
+    color: ${colors.brand.greyMedium};
+    &:first-of-type {
+      color: transparent;
+    }
+  }
+`;
+
+const SuggestionText = ({ value, suggestionValue }) => (
+  <SuggestionTextWrapper>
+    <span>
+      {value}
+    </span>
+    <span>
+      {suggestionValue.substring(value.length)}
+    </span>
+  </SuggestionTextWrapper>  
+);
+
 const Cross = styled(CrossRaw)`
   margin-left: ${spacing.xxsmall};
 `;
@@ -31,9 +54,12 @@ const StyledInput = styled.input`
   flex-grow: 1;
   border: 0;
   outline: none;
-  background: transparent;
   ${fonts.sizes(18)};
+  z-index: 1;
+  position: relative;
+  background: transparent;
 `;
+
 const StyledInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -50,6 +76,7 @@ const StyledInputWrapper = styled.div`
 const CombinedInputAndDropdownWrapper = styled.div`
   display: flex;
   flex-grow: 1;
+  display: relative;
 `;
 
 interface SuggestionInputProps {
@@ -135,6 +162,9 @@ const SuggestionInput = ({
           </Button>
         ))}
         <CombinedInputAndDropdownWrapper>
+          {suggestions[currentHighlightedIndex] && (
+            <SuggestionText value={value} suggestionValue={suggestions[currentHighlightedIndex].name} />
+          )}
           <StyledInput
             placeholder={t('tagSelector.placeholder')}
             value={value}

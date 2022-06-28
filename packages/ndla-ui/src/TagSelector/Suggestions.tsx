@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Check } from '@ndla/icons/editor';
 import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
 import Button from '@ndla/button';
@@ -72,6 +73,9 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
       }
     }
   }
+  ${({ isHighlighted }) => isHighlighted ? css`
+    background: ${colors.brand.lighter};
+  ` : ''}
 `;
 
 interface Props {

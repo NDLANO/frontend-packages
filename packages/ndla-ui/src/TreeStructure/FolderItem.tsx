@@ -113,7 +113,6 @@ const FolderItem = ({
 }: Props) => {
   const folderNameLinkRef = useRef<HTMLAnchorElement | null>(null);
   const folderNameButtonRef = useRef<HTMLButtonElement | null>(null);
-  console.log('folderChild', folderChild);
   useEffect(() => {
     if (focusedFolderId === id) {
       if (url && folderNameLinkRef.current) {

@@ -48,7 +48,7 @@ const ResourceGroup = ({
   contentType,
   invertedStyle,
   onToggleAddToFavorites,
-  showAddToFavoriteButton = true,
+  showAddToFavoriteButton = false,
 }: Props & ResourceListProps) => (
   <Wrapper>
     {title && (

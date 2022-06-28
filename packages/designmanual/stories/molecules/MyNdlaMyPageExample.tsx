@@ -19,7 +19,7 @@ import { HeartOutline } from '@ndla/icons/action';
 import { FolderOutlined } from '@ndla/icons/contentType';
 
 const MyPageWrapper = styled.div`
-  width: 960px;
+  width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,7 @@ const Terms = styled.p`
     box-shadow: none;
   }
   p {
-    margin: 0;
+    margin-left: 0;
   }
 `;
 

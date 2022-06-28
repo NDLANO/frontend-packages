@@ -29,7 +29,6 @@ const ArticleLearningMaterial = ({ accessRestricted }) => {
       <Article
         // eslint-disable-next-line no-console
         onAddToFavorites={() => console.log('add to favorites')}
-        onToggleAddToFavorites
         addToFavoritesLabel="Legg til i favoritter"
         removeFromFavoritesLabel="Fjern fra favoritter"
         isFavorite={false}

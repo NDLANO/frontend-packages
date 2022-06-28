@@ -12,14 +12,14 @@ import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { Plus, GridListView, FourlineHamburger, List } from '@ndla/icons/action';
+import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import { Folder, ListResource, BlockResource } from '@ndla/ui';
-import { MenuButton } from '@ndla/button';
+import { AddButton, MenuButton } from '@ndla/button';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -78,51 +78,6 @@ const DashLeftSide = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-`;
-
-const AddIconBorder = styled.div`
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid ${colors.brand.tertiary};
-  border-radius: 50%;
-`;
-
-const AddButton = styled(Button)`
-  display: flex;
-  gap: ${spacing.small};
-  svg {
-    fill: ${colors.brand.primary};
-    width: 24px;
-    height: 24px;
-  }
-  :hover {
-    background-color: transparent;
-    margin: 0;
-    border: none;
-    svg {
-      fill: white;
-    }
-    div {
-      background-color: ${colors.brand.primary};
-    }
-  }
-  &:focus,
-  &:active {
-    background-color: transparent;
-    border: none;
-  }
-`;
-
-const AddFolder = styled.p`
-  color: ${colors.brand.primary};
-  margin: 0;
-  align-items: center;
-  display: flex;
-  font-weight: 600;
-  ${fonts.sizes('16')}
 `;
 
 const FoldersText = styled.p`
@@ -211,12 +166,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
       </ResourceCountWrapper>
       <DashOptionWrapper>
         <DashLeftSide>
-          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill>
-            <AddIconBorder>
-              <Plus />
-            </AddIconBorder>
-            <AddFolder>{t('myNdla.newFolder')}</AddFolder>
-          </AddButton>
+          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill onClick={() => {}} />
         </DashLeftSide>
         {(folders || resources) && (
           <DashRightSide>

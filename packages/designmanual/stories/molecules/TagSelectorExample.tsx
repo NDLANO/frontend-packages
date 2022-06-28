@@ -32,7 +32,7 @@ const dummyData = [
 ];
 
 const Container = styled.div`
-  margin: 40px auto;
+  margin: 10px auto;
   max-width: 600px;
 `;
 

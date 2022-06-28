@@ -28,7 +28,13 @@ storiesOf('Min NDLA', module).add('Add to favorites', () => (
     <MastheadWithTopicMenu />
     <Content>
       <OneColumn cssModifier="clear-desktop" wide>
+        <h3>Hjerte logget inn</h3>
         <MyNdlaAddToFavoritesExample />
+        <h3>Hjerte ikke logget inn</h3>
+        <MyNdlaAddToFavoritesExample isLoggedIn={false} />
+
+        <h3>Hjerte ikke logget inn, uten ressurs</h3>
+        <MyNdlaAddToFavoritesExample isLoggedIn={false} resource={false} />
       </OneColumn>
     </Content>
     <FooterExample />

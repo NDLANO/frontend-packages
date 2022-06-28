@@ -17,10 +17,8 @@ export interface ResourceImageProps {
   src: string;
 }
 
-export const ResourceTitle = styled.h2`
-  ${fonts.sizes(18)};
+export const ResourceTitle = styled.h3`
   min-width: 50px;
-  font-weight: ${fonts.weight.bold};
   margin: 0;
   flex: 1;
   overflow: hidden;

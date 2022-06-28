@@ -8,7 +8,7 @@
 
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { uuid } from '@ndla/util';
-import Button from '@ndla/button';
+import { AddButton } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
@@ -118,9 +118,6 @@ const TreeStructure = ({
     setFocusedFolderId(id);
   };
 
-  const disableAddFolderButton =
-    markedFolderId === undefined || getPathOfFolder(data, markedFolderId).length >= MAX_LEVEL_FOR_FOLDERS;
-
   return (
     <div
       ref={treestructureRef}
@@ -163,17 +160,14 @@ const TreeStructure = ({
             tooltip={t('myNdla.newFolderUnder', {
               folderName: getFolderName(data, markedFolderId),
             })}>
-            <Button
-              size="small"
-              light
-              disabled={disableAddFolderButton}
+            <AddButton
+              aria-label={t('myNdla.newFolder')}
               onClick={() => {
                 const paths = getPathOfFolder(data, markedFolderId || '');
                 const idPaths = getIdPathsOfFolder(data, markedFolderId || '');
                 setNewFolder({ idPaths, parentId: paths[paths.length - 1] });
-              }}>
-              {t('myNdla.newFolder')}
-            </Button>
+              }}
+            />
           </Tooltip>
         </AddFolderWrapper>
       )}

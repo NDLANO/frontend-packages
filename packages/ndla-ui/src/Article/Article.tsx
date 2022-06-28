@@ -24,7 +24,7 @@ import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
 import ArticleAccessMessage from './ArticleAccessMessage';
-import MessageBox from '../MessageBox/MessageBox';
+import MessageBox from '../Messages/MessageBox';
 import { ConceptNotionType } from '../Notion/ConceptNotion';
 
 const classes = new BEMHelper({

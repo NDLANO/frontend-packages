@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
-import { MessageBox } from '../MessageBox';
+import { MessageBox } from '../Messages';
 // @ts-ignore
 import { ToggleItem } from '../Filter';
 

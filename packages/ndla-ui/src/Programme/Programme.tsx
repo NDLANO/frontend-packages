@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import LayoutItem, { OneColumn } from '../Layout';
 import ProgrammeSubjects from './ProgrammeSubjects';
 import { GradesProps } from './ProgrammeSubjects';
-import MessageBox from '../MessageBox/MessageBox';
+import MessageBox from '../Messages/MessageBox';
 import { NavigationHeading } from '..';
 const StyledWrapper = styled.div`
   display: flex;

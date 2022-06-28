@@ -74,6 +74,11 @@ const MessageBoxExample = () => {
                 <MessageBoxWrapper>
                   <MessageBox type="ghost">{t('messageBoxInfo.feide')}</MessageBox>
                 </MessageBoxWrapper>
+                <MessageHeader>Varsel</MessageHeader>
+                <p>Brukes ved feilmelding i applikasjonen</p>
+                <MessageBoxWrapper>
+                  <MessageBox type="danger">{t('messageBoxInfo.feide')}</MessageBox>
+                </MessageBoxWrapper>
                 <MessageHeader>Tags</MessageHeader>
                 <MessageBoxWrapper>
                   <MessageBoxTag tagMessage="Beta" />

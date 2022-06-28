@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { InformationOutline, HumanMaleBoard, Forward } from '@ndla/icons/common';
+import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
 // @ts-ignore
@@ -23,9 +23,9 @@ markdown.block.ruler.disable(['list', 'table']);
 
 type MessageBoxType = 'ghost' | 'danger';
 
-type StyledProps = {
+interface StyledProps {
   type?: MessageBoxType;
-};
+}
 
 const MessageBoxWrapper = styled.div<StyledProps>`
   display: flex;
@@ -47,9 +47,16 @@ const MessageBoxWrapper = styled.div<StyledProps>`
       border: 1px solid ${colors.brand.neutral7};
       color: ${colors.brand.greyDark};
     `}
+
+  ${({ type }) =>
+    type === 'danger' &&
+    css`
+      background: ${colors.support.redLighter};
+      color: ${colors.support.red};
+    `}
 `;
 
-const InfoWrapper = styled.div<StyledProps>`
+const InfoWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
@@ -57,7 +64,7 @@ const InfoWrapper = styled.div<StyledProps>`
   padding-right: 0;
 `;
 
-const TextWrapper = styled.div<StyledProps>`
+const TextWrapper = styled.div`
   & p {
     margin: 0;
   }
@@ -114,15 +121,18 @@ const Icon = ({ type }: StyledProps) => {
   if (type === 'ghost') {
     return <HumanMaleBoard />;
   }
+  if (type === 'danger') {
+    return <WarningOutline />;
+  }
   return <InformationOutline />;
 };
 
 export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props & WithTranslation) => {
   return (
     <MessageBoxWrapper type={type}>
-      <InfoWrapper type={type}>
+      <InfoWrapper>
         <IconWrapper>
-          <Icon />
+          <Icon type={type} />
         </IconWrapper>
         <div>
           <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }} />

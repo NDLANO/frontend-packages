@@ -21,8 +21,13 @@ import type { TagType } from './TagSelector';
 
 const SuggestionTextWrapper = styled.div`
   ${fonts.sizes(18)};
-  width: 0;
-  height: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: green;
+  padding: ${spacing.xsmall};
+  padding-left: calc(${spacing.xxsmall} + ${spacing.xxsmall});
+  padding-top: calc(${spacing.xxsmall} + ${spacing.xxsmall});
   span {
     color: ${colors.brand.greyMedium};
     &:first-of-type {
@@ -63,6 +68,7 @@ const StyledInput = styled.input`
 const StyledInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   gap: ${spacing.xsmall};
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.greyLighter};

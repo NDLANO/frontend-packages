@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
 import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
-import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
+import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
 import { SnackBar, SnackBarItem, Image } from '@ndla/ui';
 
 import { ListResource } from '@ndla/ui';

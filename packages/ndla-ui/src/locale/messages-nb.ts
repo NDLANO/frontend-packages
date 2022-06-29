@@ -16,7 +16,7 @@ const titleTemplate = ' - NDLA';
 const messages = {
   treeStructure: {
     folderChildOptions: {
-      edit: 'Rediger',
+      edit: 'Endre mappenavn',
       delete: 'Slett',
     },
     createFolder: 'Lag mappe',

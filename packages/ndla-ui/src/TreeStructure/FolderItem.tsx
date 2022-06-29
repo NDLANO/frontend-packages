@@ -42,7 +42,8 @@ const WrapperForFolderChild = styled.div<{ marked: boolean }>`
   right: ${spacing.xsmall};
   opacity: ${({ marked }) => (marked ? 1 : 0.25)};
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     opacity: 1;
   }
 `;
@@ -170,7 +171,9 @@ const FolderItem = ({
             {name}
           </FolderName>
           {folderChild && (
-            <WrapperForFolderChild marked={marked}>{folderChild(id, marked ? 0 : -1)}</WrapperForFolderChild>
+            <WrapperForFolderChild marked={marked}>
+              {folderChild(id, marked || id === focusedFolderId ? 0 : -1)}
+            </WrapperForFolderChild>
           )}
         </>
       )}

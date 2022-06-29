@@ -21,7 +21,7 @@ import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 import { makeSrcQueryString, ImageCrop, ImageFocalPoint } from '../Image';
-import { MessageBox, MessageBoxType } from '../MessageBox';
+import { MessageBox } from '../Messages';
 
 type InvertItProps = {
   invertedStyle?: boolean;
@@ -331,7 +331,7 @@ const Topic = ({
                   </StyledAdditionalResource>
                 )}
               </TopicHeading>
-              {messageBox && <MessageBox type={MessageBoxType.medium}>{messageBox}</MessageBox>}
+              {messageBox && <MessageBox>{messageBox}</MessageBox>}
               <TopicIntroduction invertedStyle={invertedStyle}>
                 {renderMarkdown ? parse(renderMarkdown(topic.introduction)) : topic.introduction}
               </TopicIntroduction>

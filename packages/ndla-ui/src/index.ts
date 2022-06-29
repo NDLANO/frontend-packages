@@ -127,7 +127,7 @@ export { default as CreatedBy } from './CreatedBy';
 
 export { default as Breadcrumblist } from './Breadcrumblist';
 
-export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
+export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 

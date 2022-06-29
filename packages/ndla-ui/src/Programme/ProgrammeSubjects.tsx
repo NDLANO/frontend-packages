@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { breakpoints, mq } from '@ndla/core';
 import { NavigationBox } from '../Navigation';
-import { MessageBox } from '../MessageBox';
+import { MessageBox } from '../Messages';
 
 const GradesMenu = styled.div`
   margin-bottom: 28px;

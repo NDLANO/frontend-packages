@@ -28,7 +28,7 @@ import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
 import NavigationBox from '../Navigation/NavigationBox';
 import { ProgrammeSubjects } from '../Programme';
-import { MessageBox, MessageBoxType } from '../MessageBox';
+import { MessageBanner } from '../Messages';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -153,7 +153,7 @@ export const TopicMenu = ({
   return (
     <nav>
       {messages?.map((message) => (
-        <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+        <MessageBanner>{message}</MessageBanner>
       ))}
       <ModalHeader modifier={['white', 'menu']}>
         <div {...classes('masthead-left')}>

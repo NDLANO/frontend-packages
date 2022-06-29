@@ -34,7 +34,7 @@ export const MyNdla = () => {
   return (
     <Wrapper>
       <ComponentInfo
-        status={1}
+        status={3}
         components={
           <>
             <h2>Folder</h2>
@@ -115,6 +115,7 @@ export const MyNdla = () => {
               key={'withoutDescription'}
               title="Min Tittel"
               topics={topics}
+              description={''}
               tags={tags}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',

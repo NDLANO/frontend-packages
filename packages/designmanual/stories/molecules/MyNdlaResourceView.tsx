@@ -223,7 +223,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
               src: resourceImage.src,
             }}
             link={link}
-            actionMenu={<MenuButton size="xsmall" />}
+            actionMenu={<MenuButton size="small" />}
           />
         ))}
       </BlockWrapper>

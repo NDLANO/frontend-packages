@@ -59,7 +59,7 @@ const FolderWrapper = styled(SafeLink)`
   display: flex;
   align-items: center;
   padding: ${spacing.small};
-  border: 1px solid ${colors.brand.light};
+  border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
   box-shadow: none;
   text-decoration: none;

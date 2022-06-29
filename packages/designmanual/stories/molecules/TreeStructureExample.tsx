@@ -8,6 +8,7 @@
 
 import React, { useState, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { useTranslation, TFunction } from 'react-i18next';
 import { TreeStructure, FolderStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { MenuButton, MenuItemProps } from '@ndla/button';
@@ -21,31 +22,42 @@ const Container = styled.div`
 
 export const MY_FOLDERS_ID = 'MY_FOLDERS_ID';
 
-const menuItemsForFolderChild = (id: string): MenuItemProps[] => [
+const menuItemsForFolderChild = (id: string, editText: string, deleteText: string): MenuItemProps[] => [
   {
     icon: <Pencil />,
-    text: 'Rediger',
+    text: editText,
     onClick: (e) => {
-      console.log('Rediger', id); // eslint-disable-line no-console
+      console.log(editText, id); // eslint-disable-line no-console
       e?.preventDefault();
       return;
     },
   },
   {
     icon: <TrashCanOutline />,
-    text: 'Fjern',
+    text: deleteText,
     color: 'red',
     onClick: (e) => {
-      console.log('Fjern', id); // eslint-disable-line no-console
+      console.log(deleteText, id); // eslint-disable-line no-console
       e?.preventDefault();
       return;
     },
   },
 ];
 
-const folderChild = (id: string, tabIndex: number): ReactNode => (
-  <MenuButton size="xsmall" menuItems={menuItemsForFolderChild(id)} tabIndex={tabIndex} />
-);
+const folderChild =
+  (t: TFunction) =>
+  (id: string, tabIndex: number): ReactNode =>
+    (
+      <MenuButton
+        size="xsmall"
+        menuItems={menuItemsForFolderChild(
+          id,
+          t('treeStructure.folderChildOptions.edit'),
+          t('treeStructure.folderChildOptions.delete'),
+        )}
+        tabIndex={tabIndex}
+      />
+    );
 
 export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
   {
@@ -143,12 +155,13 @@ export const TreeStructureExampleComponent = ({
   defaultOpenFolders?: string[];
   withDots?: boolean;
 }) => {
+  const { t } = useTranslation();
   const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
     <Container>
       <TreeStructure
-        folderChild={withDots ? folderChild : undefined}
+        folderChild={withDots ? folderChild(t) : undefined}
         framed={framed}
         label={label}
         editable={editable}

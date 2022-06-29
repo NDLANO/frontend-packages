@@ -93,17 +93,29 @@ interface MenuButtonProps extends ButtonProps {
   hideMenuIcon?: boolean;
   tabIndex?: number;
 }
-export const MenuButton = ({ menuItems, size, children, hideMenuIcon, className, tabIndex }: MenuButtonProps) => {
+export const MenuButton = ({
+  menuItems,
+  size,
+  children,
+  hideMenuIcon,
+  className,
+  tabIndex,
+  ...rest
+}: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
-    <Menu aria-label={t('myNdla.more')} tabIndex={tabIndex}>
-      <StyledMenuButton tabIndex={tabIndex} className={className} svgSize={convertSizeForSVG(size || 'normal')}>
+    <Menu tabIndex={tabIndex}>
+      <StyledMenuButton
+        aria-label={rest['aria-label'] || t('myNdla.more')}
+        tabIndex={tabIndex}
+        className={className}
+        svgSize={convertSizeForSVG(size || 'normal')}>
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
       <StyledMenuList>
         {menuItems?.map(({ color, text, icon, onClick }) => (
-          <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
+          <StyledMenuItem key={text} onSelect={onClick} color={color} aria-label={text}>
             {icon}
             {text}
           </StyledMenuItem>

@@ -15,6 +15,10 @@ const titleTemplate = ' - NDLA';
 
 const messages = {
   treeStructure: {
+    folderChildOptions: {
+      edit: 'Edit foldername',
+      delete: 'Delete',
+    },
     createFolder: 'Create folder',
     newFolder: {
       placeholder: 'Add foldername',

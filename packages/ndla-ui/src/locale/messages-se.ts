@@ -22,8 +22,9 @@ const messages = {
     },
   },
   tagSelector: {
-    placeholder: 'Legg til tag',
-    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    label: 'Legg til tag',
+    placeholder: 'Skriv tag navn',
+    removeTag: 'Ta vekk {{name}}',
     hideAllTags: 'Skjul alla tags',
     showAllTags: 'Vis alla tags',
   },

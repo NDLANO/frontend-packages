@@ -22,7 +22,8 @@ const messages = {
     },
   },
   tagSelector: {
-    placeholder: 'Add to tag',
+    label: 'Add tag',
+    placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
     hideAllTags: 'Hide all tags',
     showAllTags: 'Show all tags',

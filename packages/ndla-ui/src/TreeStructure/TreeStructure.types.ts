@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export interface FolderStructureProps {
   id: string;
@@ -17,7 +17,7 @@ export interface FolderStructureProps {
   status?: string;
   openAsDefault?: boolean;
   url?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
 export interface NewFolderProps {
@@ -38,6 +38,7 @@ export interface TreeStructureProps extends CommonFolderProps {
   folderIdMarkedByDefault?: string;
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
   defaultOpenFolders?: string[];
+  folderChild?: FolderChildFuncType;
 }
 
 export type onCreateNewFolderProp = ({
@@ -50,6 +51,8 @@ export type onCreateNewFolderProp = ({
 
 export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<Set<string>>>;
 export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | undefined>>;
+
+export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
 
 export interface FolderItemsProps extends CommonFolderProps {
   onToggleOpen: (id: string) => void;
@@ -65,5 +68,6 @@ export interface FolderItemsProps extends CommonFolderProps {
   setFocusedFolderId: SetFocusedFolderId;
   firstLevel: boolean;
   keyNavigationFocusIsCreateFolderButton?: boolean;
-  icon?: React.ReactElement;
+  icon?: ReactNode;
+  folderChild?: FolderChildFuncType;
 }

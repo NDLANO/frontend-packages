@@ -67,7 +67,9 @@ export {
 export { default as FactBox } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
+export type { ImageCrop, ImageFocalPoint } from './Image';
 
+export type { HeroContentType } from './Hero';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
@@ -81,7 +83,15 @@ export {
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
-export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton, FigureOpenDialogButton } from './Figure';
+export {
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+  FigureExpandButton,
+  FigureOpenDialogButton,
+  FigureBylineExpandButton,
+} from './Figure';
+export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
 
@@ -157,7 +167,7 @@ export { default as AuthorInfo } from './AuthorInfo';
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
-export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
+export type { BreadcrumbItemProps } from './Breadcrumblist';
 export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
@@ -221,7 +231,10 @@ export { default as ContentCard } from './ContentCard';
 export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
+
 export { Notion, ConceptNotion } from './Notion';
+export type { NotionVisualElementType, ConceptNotionType } from './Notion';
+
 export { BannerCard } from './BannerCard';
 export { VerticalNavigation, Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';

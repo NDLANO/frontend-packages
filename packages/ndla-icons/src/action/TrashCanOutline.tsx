@@ -14,13 +14,15 @@ interface Props extends IconProps {
   children?: ReactNode;
 }
 
-const Person = (props: Props) => (
+const TrashCanOutline = (props: Props) => (
   <Icon viewBox="0 0 24 24" data-license="Apache License 2.0" data-source="Material Design" {...props}>
     <g>
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+      <path
+        fill="currentColor"
+        d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"
+      />
     </g>
   </Icon>
 );
 
-export default Person;
+export default TrashCanOutline;

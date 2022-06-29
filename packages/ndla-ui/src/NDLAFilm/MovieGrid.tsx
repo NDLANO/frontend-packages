@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core/src';
+import { spacing } from '@ndla/core';
 import { CalculatedCarouselProps } from '@ndla/carousel';
 import { useTranslation } from 'react-i18next';
 import FilmContentCard from './FilmContentCard';

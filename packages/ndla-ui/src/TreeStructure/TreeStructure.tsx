@@ -40,6 +40,7 @@ const TreeStructure = ({
   framed,
   folderIdMarkedByDefault,
   defaultOpenFolders,
+  folderChild,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
@@ -152,6 +153,7 @@ const TreeStructure = ({
           focusedFolderId={focusedFolderId}
           setFocusedFolderId={setFocusedFolderId}
           firstLevel
+          folderChild={folderChild}
         />
       </TreeStructureStyledWrapper>
       {editable && (

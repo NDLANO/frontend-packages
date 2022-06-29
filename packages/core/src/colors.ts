@@ -103,7 +103,7 @@ const colors = {
   support: {
     red: '#d1372e',
     redLight: '#f1c3c0',
-    redLighter: '#f8e1df',
+    redLightest: '#f8e1df',
     green: '#5cbc80',
     greenLight: '#ceead8',
     greenLightest: '#e6f4eb',

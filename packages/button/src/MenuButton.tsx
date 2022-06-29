@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactElement, ReactNode, MouseEvent } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import { colors, spacing, shadows, misc, animations } from '@ndla/core';
 import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
@@ -80,15 +80,15 @@ const StyledMenuItem = styled(MenuItem)`
 `;
 
 export interface MenuItemProps {
-  icon?: ReactElement;
+  icon?: ReactNode;
   text?: string;
-  onClick: (e?: MouseEvent<HTMLButtonElement>) => void;
+  onClick: (e?: MouseEvent<HTMLDivElement>) => void;
   color?: 'red';
 }
 
 interface MenuButtonProps extends ButtonProps {
   menuItems?: MenuItemProps[];
-  children?: ReactElement;
+  children?: ReactNode;
   menuButtonPrefix?: ReactNode;
   hideMenuIcon?: boolean;
   tabIndex?: number;

@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
-import { SetFocusedFolderId, FolderChildTypeProp } from './TreeStructure.types';
+import { SetFocusedFolderId, FolderChildFuncType } from './TreeStructure.types';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
@@ -91,7 +91,7 @@ interface Props {
   url?: string;
   icon?: React.ReactNode;
   noPaddingWhenArrowIsHidden?: boolean;
-  folderChild?: FolderChildTypeProp;
+  folderChild?: FolderChildFuncType;
 }
 
 const FolderItem = ({

@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { TagType, TagSelector } from '@ndla/ui';
+import { useTranslation } from 'react-i18next';
 
 const dummyData = [
   { id: '1', name: 'Cat' },
@@ -37,13 +38,14 @@ const Container = styled.div`
 `;
 
 const TagSelectorExample = () => {
+  const { t } = useTranslation();
   const [exampleTags, setExampleTags] = useState<TagType[]>(dummyData);
   const [exampleTagsSelected, setExampleTagsSelected] = useState(['6']);
   return (
     <Container>
       <TagSelector
         prefix="#"
-        label="Tilknytt tagger"
+        label={t('tagSelector.label')}
         tags={exampleTags}
         tagsSelected={exampleTagsSelected}
         onToggleTag={(id: string) => {
@@ -53,13 +55,13 @@ const TagSelectorExample = () => {
               return prevSelected.filter((existingId) => existingId !== id);
             }
             // Not selected, add.
-            return [id, ...prevSelected];
+            return [...prevSelected, id];
           });
         }}
         onCreateTag={(newTagName: string) => {
           const newId = Math.random().toString();
-          setExampleTags((prevTags) => [{ id: newId, name: newTagName }, ...prevTags]);
-          setExampleTagsSelected((prevSelectedTags) => [newId, ...prevSelectedTags]);
+          setExampleTags((prevTags) => [...prevTags, { id: newId, name: newTagName }]);
+          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, newId]);
         }}
       />
     </Container>

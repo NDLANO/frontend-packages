@@ -43,8 +43,12 @@ const SuggestionTextWrapper = styled.div`
 
 const SuggestionText = ({ value, suggestionValue }: { value: string; suggestionValue: string }) => (
   <SuggestionTextWrapper>
-    <span>{value}</span>
-    <span>{suggestionValue.substring(value.length)}</span>
+    {!!value && (
+      <>
+        <span>{value}</span>
+        <span>{suggestionValue.substring(value.length)}</span>
+      </>
+    )}
   </SuggestionTextWrapper>
 );
 
@@ -71,7 +75,7 @@ const StyledInputWrapper = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.xsmall};
   padding: ${spacing.small};
-  border: 1px solid ${colors.brand.greyLighter};
+  border: 1px solid ${colors.brand.neutral7};
   transition: border-color ${animations.durations.normal} ease;
   border-radius: ${misc.borderRadius};
   &:focus-within {
@@ -83,6 +87,11 @@ const CombinedInputAndDropdownWrapper = styled.div`
   display: flex;
   flex-grow: 1;
   position: relative;
+`;
+
+const StyledTagButton = styled(Button)<{ enableTagButtonAnimation: boolean }>`
+  ${({ enableTagButtonAnimation }) =>
+    enableTagButtonAnimation ? animations.fadeInScaled(animations.durations.slow) : ''}
 `;
 
 interface SuggestionInputProps {
@@ -123,6 +132,7 @@ const SuggestionInput = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const suggestionIdRef = useRef<string>(uuid());
+  const initalTags = useRef<string[]>(addedTags.map(({ id }) => id));
 
   useEffect(() => {
     setCurrentHighlightedIndex(0);
@@ -155,7 +165,8 @@ const SuggestionInput = ({
     <SuggestionInputContainer ref={containerRef}>
       <StyledInputWrapper>
         {addedTags.map(({ id, name }) => (
-          <Button
+          <StyledTagButton
+            enableTagButtonAnimation={!initalTags.current.includes(id)}
             aria-label={t('tagSelector.removeTag', { name })}
             onClick={() => onToggleTag(id)}
             light
@@ -165,7 +176,7 @@ const SuggestionInput = ({
             {prefix}
             {name}
             <Cross />
-          </Button>
+          </StyledTagButton>
         ))}
         <CombinedInputAndDropdownWrapper>
           {suggestions[currentHighlightedIndex] && (
@@ -193,38 +204,57 @@ const SuggestionInput = ({
             }}
             ref={inputRef}
             onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+              if (!['Enter', ' ', 'Tab', 'ArrowDown', 'ArrowUp', 'Backspace'].includes(e.key)) {
+                return;
+              }
+              const trimmedValue = value.replace(/\s/g, '');
               if (e.key === 'Escape') {
                 setExpanded(false);
                 e.preventDefault();
-              } else if (e.key === 'Enter' || e.key === 'Tab') {
-                if (value !== '' || expanded) {
-                  if (suggestions.length > 0) {
-                    if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
-                      onToggleTag(suggestions[currentHighlightedIndex].id);
-                    }
-                    setInputValue('');
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                    }
-                  } else {
-                    onCreateTag(value);
-                    setInputValue('');
-                    e.preventDefault();
-                  }
-                } else if (e.key === 'Enter') {
-                  e.preventDefault();
-                }
-              } else if (e.key === 'ArrowUp') {
+                return;
+              }
+              if (e.key === 'Backspace' && trimmedValue === '' && addedTags.length) {
+                // Remove the added last tag
+                onToggleTag(addedTags[addedTags.length - 1].id);
+                return;
+              }
+              if (e.key === 'ArrowUp') {
                 setCurrentHighlightedIndex(
                   currentHighlightedIndex - 1 < 0 ? suggestions.length - 1 : currentHighlightedIndex - 1,
                 );
                 e.preventDefault();
-              } else if (e.key === 'ArrowDown') {
+                return;
+              }
+              if (e.key === 'ArrowDown') {
                 setCurrentHighlightedIndex(
                   currentHighlightedIndex + 1 >= suggestions.length ? 0 : currentHighlightedIndex + 1,
                 );
                 e.preventDefault();
+                return;
               }
+              if (trimmedValue === '' && !expanded) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                }
+                return;
+              }
+              if (e.key === 'Enter' || e.key === 'Tab' || e.key === ' ') {
+                if (suggestions.length > 0) {
+                  if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
+                    onToggleTag(suggestions[currentHighlightedIndex].id);
+                  } else if (trimmedValue.length < suggestions[currentHighlightedIndex].name.length) {
+                    onCreateTag(trimmedValue);
+                    e.preventDefault();
+                  }
+                  setInputValue('');
+                  e.preventDefault();
+                  return;
+                }
+                onCreateTag(trimmedValue);
+                setInputValue('');
+                e.preventDefault();
+              }
+              return;
             }}
           />
           <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>

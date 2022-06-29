@@ -61,6 +61,7 @@ interface SuggestionButtonProps {
 const SuggestionButton = styled(Button)<SuggestionButtonProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   ${fonts.sizes(18)};
   transition: ${misc.transition.default};
   font-weight: 400;
@@ -77,6 +78,12 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
     isHighlighted
       ? css`
           background: ${colors.brand.lighter};
+          &:disabled {
+            background: ${colors.brand.greyLighter};
+            svg {
+              fill: ${colors.brand.grey};
+            }
+          }
         `
       : ''}
 `;

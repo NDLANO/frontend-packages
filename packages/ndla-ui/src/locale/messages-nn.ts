@@ -17,13 +17,14 @@ const messages = {
   treeStructure: {
     createFolder: 'Lag mappe',
     newFolder: {
-      placeholder: 'Skriv navn på mappe',
+      placeholder: 'Skriv namn på mappe',
       defaultName: 'Ny mappe',
     },
   },
   tagSelector: {
-    placeholder: 'Tilknytt tag',
-    removeTag: 'Ta vekk tilknytninga til {{name}}',
+    label: 'Legg til tag',
+    placeholder: 'Skriv tag namn',
+    removeTag: 'Ta vekk {{name}}',
     hideAllTags: 'Skjul alle tagger',
     showAllTags: 'Vis alle tagger',
   },

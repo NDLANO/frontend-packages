@@ -978,6 +978,7 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
+    myNDLA: 'My NDLA',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',

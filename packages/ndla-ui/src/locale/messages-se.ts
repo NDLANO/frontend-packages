@@ -976,6 +976,7 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    myNDLA: 'Min NDLA',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',

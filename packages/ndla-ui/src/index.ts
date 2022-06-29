@@ -81,7 +81,15 @@ export {
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
-export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton, FigureOpenDialogButton } from './Figure';
+export {
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+  FigureExpandButton,
+  FigureOpenDialogButton,
+  FigureBylineExpandButton,
+} from './Figure';
+export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
 
@@ -221,7 +229,10 @@ export { default as ContentCard } from './ContentCard';
 export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
+
 export { Notion, ConceptNotion } from './Notion';
+export type { NotionVisualElementType } from './Notion';
+
 export { BannerCard } from './BannerCard';
 export { VerticalNavigation, Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';

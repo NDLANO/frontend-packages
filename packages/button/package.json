@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,8 +28,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^2.1.1",
-    "@ndla/icons": "^1.8.1",
+    "@ndla/core": "^2.2.0",
+    "@ndla/icons": "^1.9.0",
     "@reach/menu-button": "^0.16.2"
   },
   "peerDependencies": {

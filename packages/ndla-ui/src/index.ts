@@ -68,6 +68,7 @@ export { default as FactBox } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
 
+export type { HeroContentType } from './Hero';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,

@@ -147,7 +147,7 @@ export const TreeStructureExampleComponent = ({
   withDots,
 }: {
   structure: FolderStructureProps[];
-  label: string;
+  label?: string;
   editable: boolean;
   framed: boolean;
   folderIdMarkedByDefault?: string;

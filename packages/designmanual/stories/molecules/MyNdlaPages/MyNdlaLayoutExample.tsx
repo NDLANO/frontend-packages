@@ -6,12 +6,12 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE_WRAPPED } from '../TreeStructureExample';
 //@ts-ignore
 import { LayoutWithSidebarAside, LayoutWithSidebarMain, LayoutWithSidebarWrapper } from '../../helpers';
 
-export const MyPage = ({ children }) => (
+export const MyPage = ({ children }: { children: ReactNode }) => (
   <LayoutWithSidebarWrapper>
     <LayoutWithSidebarAside>
       <TreeStructureExampleComponent

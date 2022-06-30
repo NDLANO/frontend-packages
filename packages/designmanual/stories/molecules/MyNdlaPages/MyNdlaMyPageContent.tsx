@@ -19,15 +19,13 @@ import { HeartOutline } from '@ndla/icons/action';
 import { FolderOutlined } from '@ndla/icons/contentType';
 
 const MyPageWrapper = styled.div`
-  width: 960px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
   ${fonts.sizes('16')};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 const Resources = styled.div`
@@ -105,6 +103,7 @@ const StyledBottomDiv = styled.div`
     ${fonts.sizes(16)}
   }
 `;
+
 interface MyPageProps {
   name: { firstName: string; lastName: string };
   title: string;
@@ -117,11 +116,11 @@ interface MyPageProps {
   };
 }
 
-export const MyPage = ({ name, title, school, courses, recentFavorites, headerPic }: MyPageProps) => {
+const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, headerPic }: MyPageProps) => {
   const { t } = useTranslation();
   return (
     <MyPageWrapper>
-      <StyledH1> {t('myNdla.myPage.myPage')}</StyledH1>
+      <StyledH1>{t('myNdla.myPage.myPage')}</StyledH1>
       <Header>
         <StyledH1>{t('myNdla.myPage.welcome')}</StyledH1>
         <RoundedImage src={headerPic.src} alt={headerPic.alt} />
@@ -187,4 +186,4 @@ export const MyPage = ({ name, title, school, courses, recentFavorites, headerPi
   );
 };
 
-export default MyPage;
+export default MyNdlaMyPageContent;

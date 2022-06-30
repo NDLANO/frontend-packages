@@ -12,7 +12,6 @@ import { animations, spacing } from '@ndla/core';
 import FolderItem from './FolderItem';
 import FolderNameInput from './FolderNameInput';
 import { FolderItemsProps } from './TreeStructure.types';
-import { MAX_LEVEL_FOR_FOLDERS } from './TreeStructure';
 
 const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   ${animations.fadeInLeft(animations.durations.fast)};
@@ -49,6 +48,7 @@ const FolderItems = ({
   setFocusedFolderId,
   firstLevel,
   folderChild,
+  maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={firstLevel}>
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
@@ -69,7 +69,7 @@ const FolderItems = ({
               focusedFolderId={focusedFolderId}
               onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
-              hideArrow={dataChildren?.length === 0 || newIdPaths.length >= MAX_LEVEL_FOR_FOLDERS}
+              hideArrow={dataChildren?.length === 0 || newIdPaths.length >= maximumLevelsOfFoldersAllowed}
               noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
               setFocusedFolderId={setFocusedFolderId}
               folderChild={folderChild}
@@ -101,6 +101,7 @@ const FolderItems = ({
               setFocusedFolderId={setFocusedFolderId}
               firstLevel={false}
               folderChild={folderChild}
+              maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
             />
           )}
         </StyledLI>

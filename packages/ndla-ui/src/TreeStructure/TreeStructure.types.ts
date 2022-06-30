@@ -34,11 +34,12 @@ interface CommonFolderProps {
 
 export interface TreeStructureProps extends CommonFolderProps {
   framed?: boolean;
-  label: string;
+  label?: string;
   folderIdMarkedByDefault?: string;
   onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
   defaultOpenFolders?: string[];
   folderChild?: FolderChildFuncType;
+  maximumLevelsOfFoldersAllowed: number;
 }
 
 export type onCreateNewFolderProp = ({
@@ -70,4 +71,5 @@ export interface FolderItemsProps extends CommonFolderProps {
   keyNavigationFocusIsCreateFolderButton?: boolean;
   icon?: ReactNode;
   folderChild?: FolderChildFuncType;
+  maximumLevelsOfFoldersAllowed: number;
 }

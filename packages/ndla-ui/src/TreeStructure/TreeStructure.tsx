@@ -41,6 +41,7 @@ const TreeStructure = ({
   folderIdMarkedByDefault,
   defaultOpenFolders,
   folderChild,
+  maximumLevelsOfFoldersAllowed,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
@@ -119,6 +120,9 @@ const TreeStructure = ({
     setFocusedFolderId(id);
   };
 
+  const paths = getPathOfFolder(data, markedFolderId || '');
+  const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
+
   return (
     <div
       ref={treestructureRef}
@@ -134,7 +138,7 @@ const TreeStructure = ({
           });
         }
       }}>
-      <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>
+      {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
           idPaths={[]}
@@ -154,27 +158,37 @@ const TreeStructure = ({
           setFocusedFolderId={setFocusedFolderId}
           firstLevel
           folderChild={folderChild}
+          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
         />
       </TreeStructureStyledWrapper>
       {editable && (
         <AddFolderWrapper>
           <Tooltip
-            tooltip={t('myNdla.newFolderUnder', {
-              folderName: getFolderName(data, markedFolderId),
-            })}>
+            tooltip={
+              canAddFolder
+                ? t('myNdla.newFolderUnder', {
+                    folderName: getFolderName(data, markedFolderId),
+                  })
+                : t('myNdla.maxFoldersAlreadyAdded')
+            }>
             <AddButton
+              disabled={!canAddFolder}
               aria-label={t('myNdla.newFolder')}
               onClick={() => {
-                const paths = getPathOfFolder(data, markedFolderId || '');
                 const idPaths = getIdPathsOfFolder(data, markedFolderId || '');
                 setNewFolder({ idPaths, parentId: paths[paths.length - 1] });
-              }}
-            />
+              }}>
+              {t('myNdla.newFolder')}
+            </AddButton>
           </Tooltip>
         </AddFolderWrapper>
       )}
     </div>
   );
+};
+
+TreeStructure.defaultProps = {
+  maximumLevelsOfFoldersAllowed: MAX_LEVEL_FOR_FOLDERS,
 };
 
 export default TreeStructure;

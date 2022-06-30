@@ -78,7 +78,7 @@ const keyboardNavigation = ({
   if (!updatePathToElementWithKeyFocus(data, [], data)) {
     // Couldn't find its location in the tree.
     // This should not happen, reset its value to root.
-    setFocusedFolderId(e.key === 'ArrowDown' ? data[0].id : undefined);
+    setFocusedFolderId(e.key === 'ArrowDown' ? data[0]?.id : undefined);
     return;
   }
   e.preventDefault();
@@ -113,7 +113,7 @@ const keyboardNavigation = ({
   }
 
   if (!id && e.key === 'ArrowDown') {
-    setFocusedFolderId(data[0].id);
+    setFocusedFolderId(data[0]?.id);
     return;
   }
   if (!id) {
@@ -124,7 +124,7 @@ const keyboardNavigation = ({
     if (elementWithKeyFocus.index > 0) {
       // Move upwards to the parent folder
       setFocusedFolderId(
-        elementWithKeyFocus.parent ? elementWithKeyFocus.parent[elementWithKeyFocus.index - 1].id : undefined,
+        elementWithKeyFocus.parent ? elementWithKeyFocus.parent[elementWithKeyFocus.index - 1]?.id : undefined,
       );
     } else if (elementWithKeyFocus.paths.length > 0) {
       elementWithKeyFocus.paths.pop();
@@ -133,14 +133,14 @@ const keyboardNavigation = ({
         findParent = findParent[index].data as FolderStructureProps[];
       });
       const parentsCurrentIndex = findParent.findIndex(({ id }) => id === elementWithKeyFocus.parentId);
-      setFocusedFolderId(findParent[parentsCurrentIndex].id);
+      setFocusedFolderId(findParent[parentsCurrentIndex]?.id);
     }
     return;
   }
 
   if (elementWithKeyFocus.isOpen) {
     if (elementWithKeyFocus.data?.length) {
-      setFocusedFolderId(elementWithKeyFocus.data[0].id);
+      setFocusedFolderId(elementWithKeyFocus.data[0]?.id);
     } else {
       // move to next child of parent if any... need new traverse :-/
       traverseUpwards(data, setFocusedFolderId, elementWithKeyFocus.paths, elementWithKeyFocus.index);
@@ -150,7 +150,7 @@ const keyboardNavigation = ({
 
   if (elementWithKeyFocus.parent && elementWithKeyFocus.index < elementWithKeyFocus.parent?.length - 1) {
     // Move downwards to the next child
-    setFocusedFolderId(elementWithKeyFocus.parent[elementWithKeyFocus.index + 1].id);
+    setFocusedFolderId(elementWithKeyFocus.parent[elementWithKeyFocus.index + 1]?.id);
     return;
   }
 

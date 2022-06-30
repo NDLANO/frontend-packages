@@ -46,7 +46,7 @@ const TreeStructure = ({
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(defaultOpenFolders || []));
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0].id);
+  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0]?.id);
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18

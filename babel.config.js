@@ -10,6 +10,7 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-transform-runtime',
   ],
   env: {
     test: {

@@ -19,7 +19,11 @@ import { HeartOutline } from '@ndla/icons/action';
 import { FolderOutlined } from '@ndla/icons/contentType';
 
 const MyPageWrapper = styled.div`
+<<<<<<< HEAD:packages/designmanual/stories/molecules/MyNdlaPages/MyNdlaFolderContent.tsx
   max-width: 800px;
+=======
+  width: 800px;
+>>>>>>> master:packages/designmanual/stories/molecules/MyNdlaMyPageExample.tsx
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -82,12 +86,15 @@ const Terms = styled.p`
     box-shadow: none;
   }
   p {
-    margin: 0;
+    margin-left: 0;
   }
 `;
 
 const ButtonsWrapper = styled.div`
   padding: ${spacing.small} 0;
+  p {
+    margin: ${spacing.normal} 0 ${spacing.small} 0;
+  }
 `;
 
 const StyledResourceList = styled.div`
@@ -102,6 +109,10 @@ const StyledBottomDiv = styled.div`
   p {
     ${fonts.sizes(16)}
   }
+`;
+
+const LogoutButton = styled(Button)`
+  margin-bottom: ${spacing.small};
 `;
 
 interface MyPageProps {
@@ -177,7 +188,8 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
         </Terms>
 
         <ButtonsWrapper>
-          <Button outline>{t('user.buttonLogOut')}</Button>
+          <LogoutButton outline>{t('user.buttonLogOut')}</LogoutButton>
+
           <p>{t('myNdla.myPage.wishToDelete')}</p>
           <DeleteButton>{t('myNdla.myPage.deleteAccount')}</DeleteButton>
         </ButtonsWrapper>

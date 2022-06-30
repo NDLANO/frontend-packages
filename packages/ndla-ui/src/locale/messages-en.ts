@@ -984,6 +984,7 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
+    myNDLA: 'My NDLA',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
@@ -995,6 +996,8 @@ const messages = {
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',
+    addToFavourites: 'Add to my favourites',
+    alreadyFavourited: 'Already in my favourites',
     help: 'Help',
     more: 'More options',
     listView: 'List view',
@@ -1013,6 +1016,7 @@ const messages = {
       terms: 'terms of use',
       feide: 'We have retrieved this information from Feide',
       newFavourite: 'Recently favourited',
+
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
         text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',

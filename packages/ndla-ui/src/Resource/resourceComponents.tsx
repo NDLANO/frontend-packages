@@ -48,6 +48,9 @@ const StyledTagListElement = styled.li`
   ::before {
     content: '#';
   }
+  &:hover {
+    color: ${colors.brand.primary};
+  }
 `;
 
 const StyledTopicList = styled.ul`

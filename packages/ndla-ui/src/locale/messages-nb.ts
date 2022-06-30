@@ -982,6 +982,7 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    myNDLA: 'Min NDLA',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
@@ -993,6 +994,8 @@ const messages = {
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
     favourites: 'Favoritter',
+    addToFavourites: 'Legg til i mine favoritter',
+    alreadyFavourited: 'Allerede lagt til i mine favoritter',
     help: 'Hjelp',
     more: 'Flere valg',
     listView: 'Listevisning',

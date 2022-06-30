@@ -47,7 +47,7 @@ const ResourceWrapper = styled(SafeLink)`
   text-decoration: none;
   box-shadow: none;
   padding: ${spacing.small};
-  border: 1px solid ${colors.brand.light};
+  border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
   gap: 0 ${spacing.small};

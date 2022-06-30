@@ -30,7 +30,7 @@ const BlockFolderWrapper = styled.div`
 
 const menuItems = [
   { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
-  { icon: <DeleteForever />, text: 'Slett', onClick: () => {} },
+  { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];
 
 const tags = ['tag', 'tag', 'tag'];

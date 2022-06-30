@@ -13,6 +13,7 @@ import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, fonts } from '@ndla/core';
+import { uniq } from 'lodash';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { getIdPathsOfFolder, getPathOfFolder, getFolderName } from './helperFunctions';
@@ -44,7 +45,7 @@ const TreeStructure = ({
 }: TreeStructureProps) => {
   const { t } = useTranslation();
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
-  const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(defaultOpenFolders || []));
+  const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0]?.id);
   const treestructureRef = useRef<HTMLDivElement>(null);
@@ -52,10 +53,11 @@ const TreeStructure = ({
   const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18
 
   useEffect(() => {
-    setOpenFolders((prev) => {
-      defaultOpenFolders?.forEach((id) => prev.add(id));
-      return new Set(prev);
-    });
+    if (defaultOpenFolders) {
+      setOpenFolders((prev) => {
+        return uniq([...defaultOpenFolders, ...prev]);
+      });
+    }
   }, [defaultOpenFolders]);
 
   useEffect(() => {
@@ -65,26 +67,23 @@ const TreeStructure = ({
   }, [loading]);
 
   const onToggleOpen = (id: string) => {
-    setOpenFolders((prev) => {
-      if (prev.has(id)) {
-        prev.delete(id);
-        // Did we just closed a folder with a marked folder inside it?
-        // If so, we need to mark the folder we just closed.
-        if (markedFolderId) {
-          const closingFolderPath = getPathOfFolder(data, id);
-          const markedFolderPath = getPathOfFolder(data, markedFolderId);
-          const markedFolderIsSubPath = closingFolderPath.every(
-            (folderId, _index) => markedFolderPath[_index] === folderId,
-          );
-          if (markedFolderIsSubPath) {
-            setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
-          }
+    if (openFolders.includes(id)) {
+      // Did we just closed a folder with a marked folder inside it?
+      // If so, we need to mark the folder we just closed.
+      if (markedFolderId) {
+        const closingFolderPath = getPathOfFolder(data, id);
+        const markedFolderPath = getPathOfFolder(data, markedFolderId);
+        const markedFolderIsSubPath = closingFolderPath.every(
+          (folderId, _index) => markedFolderPath[_index] === folderId,
+        );
+        if (markedFolderIsSubPath) {
+          setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
         }
-      } else {
-        prev.add(id);
       }
-      return new Set(prev);
-    });
+      setOpenFolders(openFolders.filter((folder) => folder !== id));
+    } else {
+      setOpenFolders(uniq([...openFolders, id]));
+    }
   };
 
   const onCreateNewFolder = (props: { idPaths: number[]; parentId?: string }) => {
@@ -100,12 +99,10 @@ const TreeStructure = ({
         setMarkedFolderId(newFolderId);
         setFocusedFolderId(newFolderId);
         // Open current folder in case it was closed..
-        setOpenFolders((prev) => {
-          if (newFolder.parentId) {
-            prev.add(newFolder.parentId);
-          }
-          return new Set(prev);
-        });
+
+        if (newFolder.parentId) {
+          setOpenFolders(uniq([...openFolders, newFolder.parentId]));
+        }
       }
     }
   };

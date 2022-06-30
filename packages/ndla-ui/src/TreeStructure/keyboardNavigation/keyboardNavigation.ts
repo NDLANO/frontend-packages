@@ -66,7 +66,7 @@ const keyboardNavigation = ({
       if (dataId === id) {
         elementWithKeyFocus.paths = paths;
         elementWithKeyFocus.index = _index;
-        elementWithKeyFocus.isOpen = openFolders.has(dataId) && childData && childData.length > 0;
+        elementWithKeyFocus.isOpen = openFolders.includes(dataId) && childData && childData.length > 0;
         elementWithKeyFocus.data = childData;
         elementWithKeyFocus.parent = parent;
         elementWithKeyFocus.parentId = parentId;

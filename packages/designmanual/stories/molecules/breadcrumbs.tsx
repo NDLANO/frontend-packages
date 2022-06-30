@@ -62,7 +62,7 @@ export const BreadcrumbWithAction = () => {
       actionItems={[
         { icon: <FolderOutlined />, text: 'Legg til mappe/tag', onClick: () => {} },
         { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => {} },
-        { icon: <DeleteForever />, text: 'Fjern', onClick: () => {}, color: 'red' },
+        { icon: <DeleteForever />, text: 'Fjern', onClick: () => {}, type: 'danger' },
       ]}
     />
   );

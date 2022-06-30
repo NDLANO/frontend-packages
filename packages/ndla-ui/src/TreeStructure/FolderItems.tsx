@@ -53,7 +53,7 @@ const FolderItems = ({
   <StyledUL role="group" firstLevel={firstLevel}>
     {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
-      const isOpen = openFolders?.has(id);
+      const isOpen = openFolders?.includes(id);
       return (
         <StyledLI key={id} role="treeitem">
           <div>

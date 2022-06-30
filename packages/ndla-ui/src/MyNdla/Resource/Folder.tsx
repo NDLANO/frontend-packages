@@ -124,7 +124,7 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
   return (
     <IconCountWrapper type={layoutType}>
       <Icon aria-label={t(`myNdla.${type}s`)} />
-      <span>{layoutType === 'block' ? count : t(`myNdla.${type}s`, { count: 3 })}</span>
+      <span>{layoutType === 'block' ? count : t(`myNdla.${type}s`, { count })}</span>
     </IconCountWrapper>
   );
 };

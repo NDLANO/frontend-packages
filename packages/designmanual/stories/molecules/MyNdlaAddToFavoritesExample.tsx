@@ -8,10 +8,10 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import Button, { IconButtonDualStates } from '@ndla/button';
-import { Heart, HeartOutline } from '@ndla/icons/action';
+import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
+import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
-import Modal, { ModalBody, ModalCloseButton, ModalHeader } from '@ndla/modal';
+import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
 import { SnackBar, SnackBarItem, Image } from '@ndla/ui';
 
 import { ListResource } from '@ndla/ui';
@@ -103,7 +103,9 @@ const DialogExample = ({
       {(onCloseModal: () => void) => (
         <FavouriteWrapper>
           <ModalHeader modifier="no-bottom-padding">
-            {t('modal.closeModal')} <ModalCloseButton title="Lukk" onClick={onCloseModal} />
+            <IconButton size="xsmall" aria-label={t('modal.closeModal')} greyLighter onClick={onCloseModal}>
+              <Cross />
+            </IconButton>
           </ModalHeader>
           <ModalBody>
             <StyledH1>{title}</StyledH1>
@@ -164,7 +166,9 @@ const DialogNotLoggedInExample = ({
       {(onCloseModal: () => void) => (
         <FavouriteWrapper>
           <ModalHeader modifier="no-bottom-padding">
-            {t('modal.closeModal')} <ModalCloseButton title="Lukk" onClick={onCloseModal} />
+            <IconButton size="xsmall" aria-label={t('modal.closeModal')} greyLighter onClick={onCloseModal}>
+              <Cross />
+            </IconButton>
           </ModalHeader>
           <Header>
             <StyledNotLoggedInH1>

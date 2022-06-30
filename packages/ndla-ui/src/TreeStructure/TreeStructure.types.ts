@@ -49,7 +49,7 @@ export type onCreateNewFolderProp = ({
   parentId: string | undefined;
 }) => void;
 
-export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<Set<string>>>;
+export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<string[]>>;
 export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | undefined>>;
 
 export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
@@ -60,7 +60,7 @@ export interface FolderItemsProps extends CommonFolderProps {
   onCancelNewFolder: () => void;
   onCreateNewFolder: onCreateNewFolderProp;
   newFolder: NewFolderProps | undefined;
-  openFolders: Set<string>;
+  openFolders: string[];
   markedFolderId?: string;
   onMarkFolder: (id: string) => void;
   idPaths: number[];

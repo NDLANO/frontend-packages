@@ -84,7 +84,6 @@ export const LayoutWithSidebarAside = styled.aside`
   border-bottom: 1px solid ${colors.brand.greyLight};
   padding-bottom: ${spacing.normal};
   ${mq.range({ from: breakpoints.tablet })} {
-    border-right: 1px solid ${colors.brand.greyLight};
     padding-right: ${spacing.small};
     border-bottom: 0;
     padding-bottom: 0;

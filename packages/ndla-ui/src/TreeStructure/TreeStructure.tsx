@@ -90,20 +90,21 @@ const TreeStructure = ({
     setNewFolder(props);
   };
 
-  const onSaveNewFolder = async (value: string) => {
+  const onSaveNewFolder = (value: string) => {
     if (newFolder) {
       // We would like to create a new folder with the name of value.
       // Its location in structure is based on newFolder object
-      const newFolderId = await onNewFolder({ ...newFolder, value });
-      if (newFolderId) {
-        setMarkedFolderId(newFolderId);
-        setFocusedFolderId(newFolderId);
-        // Open current folder in case it was closed..
+      onNewFolder({ ...newFolder, value }).then((newFolderId) => {
+        if (newFolderId) {
+          setMarkedFolderId(newFolderId);
+          setFocusedFolderId(newFolderId);
+          // Open current folder in case it was closed..
 
-        if (newFolder.parentId) {
-          setOpenFolders(uniq([...openFolders, newFolder.parentId]));
+          if (newFolder.parentId) {
+            setOpenFolders(uniq([...openFolders, newFolder.parentId]));
+          }
         }
-      }
+      });
     }
   };
 

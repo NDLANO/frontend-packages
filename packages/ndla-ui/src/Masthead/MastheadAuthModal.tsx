@@ -10,6 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { Feide } from '@ndla/icons/common';
+import { colors, fonts, spacing } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 
 import AuthModal, { AuthModalProps } from '../User/AuthModal';
 
@@ -18,7 +20,12 @@ type FeideWrapperProps = {
 };
 
 const StyledButton = styled(Button)<FeideWrapperProps>`
+  font-weight: ${fonts.weight.semibold};
+  display: flex;
+  align-items: center;
   .feide-icon svg {
+    margin-left: ${spacing.xsmall};
+    fill: ${colors.brand.primary};
     color: ${(props) => (props.inverted ? `#ffffff` : `#000000`)};
     width: 22px;
     height: 22px;
@@ -35,11 +42,13 @@ interface Props extends AuthModalProps {
 }
 
 const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
+  const { t } = useTranslation();
   return (
     <AuthModal
       {...rest}
       activateButton={
         <StyledButton inverted={inverted} ghostPill={!inverted} ghostPillInverted={inverted} aria-label="Feide">
+          {t('myNdla.myNDLA')}
           <span className="feide-icon">
             <Feide />
           </span>

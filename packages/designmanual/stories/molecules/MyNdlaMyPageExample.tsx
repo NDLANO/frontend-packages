@@ -90,6 +90,9 @@ const Terms = styled.p`
 
 const ButtonsWrapper = styled.div`
   padding: ${spacing.small} 0;
+  p {
+    margin: ${spacing.normal} 0 ${spacing.small} 0;
+  }
 `;
 
 const StyledResourceList = styled.div`
@@ -104,6 +107,9 @@ const StyledBottomDiv = styled.div`
   p {
     ${fonts.sizes(16)}
   }
+`;
+const LogoutButton = styled(Button)`
+  margin-bottom: ${spacing.small};
 `;
 interface MyPageProps {
   name: { firstName: string; lastName: string };
@@ -178,7 +184,8 @@ export const MyPage = ({ name, title, school, courses, recentFavorites, headerPi
         </Terms>
 
         <ButtonsWrapper>
-          <Button outline>{t('user.buttonLogOut')}</Button>
+          <LogoutButton outline>{t('user.buttonLogOut')}</LogoutButton>
+
           <p>{t('myNdla.myPage.wishToDelete')}</p>
           <DeleteButton>{t('myNdla.myPage.deleteAccount')}</DeleteButton>
         </ButtonsWrapper>

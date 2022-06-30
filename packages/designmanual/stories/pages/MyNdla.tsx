@@ -11,6 +11,8 @@ import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MenuButton } from '@ndla/button';
 import { FolderInput } from '@ndla/ui';
+import { Pencil } from '@ndla/icons/action';
+import { DeleteForever } from '@ndla/icons/editor';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -25,6 +27,11 @@ const BlockFolderWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};
 `;
+
+const menuItems = [
+  { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
+  { icon: <DeleteForever />, text: 'Slett', onClick: () => {} },
+];
 
 const tags = ['tag', 'tag', 'tag'];
 
@@ -45,6 +52,7 @@ export const MyNdla = () => {
               subFolders={3}
               subResources={3}
               type={'list'}
+              menuItems={menuItems}
             />
             <h2>Legg til mappe</h2>
             <FolderInput

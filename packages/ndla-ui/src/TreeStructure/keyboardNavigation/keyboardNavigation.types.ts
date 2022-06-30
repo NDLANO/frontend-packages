@@ -12,7 +12,7 @@ export interface KeyboardNavigationProps {
   e: React.KeyboardEvent<HTMLElement>;
   data: FolderStructureProps[];
   setFocusedFolderId: SetFocusedFolderId;
-  openFolders: Set<string>;
+  openFolders: string[];
   onToggleOpen: (id: string) => void;
   focusedFolderId: string | undefined;
 }

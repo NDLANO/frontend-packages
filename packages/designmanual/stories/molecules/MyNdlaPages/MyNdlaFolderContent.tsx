@@ -19,11 +19,7 @@ import { HeartOutline } from '@ndla/icons/action';
 import { FolderOutlined } from '@ndla/icons/contentType';
 
 const MyPageWrapper = styled.div`
-<<<<<<< HEAD:packages/designmanual/stories/molecules/MyNdlaPages/MyNdlaFolderContent.tsx
   max-width: 800px;
-=======
-  width: 800px;
->>>>>>> master:packages/designmanual/stories/molecules/MyNdlaMyPageExample.tsx
   margin: 0 auto;
   display: flex;
   flex-direction: column;

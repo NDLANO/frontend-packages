@@ -19,7 +19,7 @@ import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import { Folder, ListResource, BlockResource } from '@ndla/ui';
-import { AddButton, MenuButton } from '@ndla/button';
+import { AddButton } from '@ndla/button';
 import { menuItems } from '../pages/MyNdla';
 
 const Dash = styled.div`

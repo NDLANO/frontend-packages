@@ -9,7 +9,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
-import { MenuButton, MenuItemProps } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import { FolderInput } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';

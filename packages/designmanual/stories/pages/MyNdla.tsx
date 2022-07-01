@@ -71,6 +71,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
               <Folder
                 key={'blockFolder2'}
@@ -79,6 +80,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
               <Folder
                 key={'blockFolder3'}
@@ -87,6 +89,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
             </BlockFolderWrapper>
             <h2> Ressurser </h2>
@@ -102,7 +105,7 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3> Standard Ressurs</h3>
             <ListResource
@@ -116,7 +119,7 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
@@ -130,7 +133,7 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource
@@ -141,7 +144,7 @@ export const MyNdla = () => {
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
               }}
-              link={''}
+              menuItems={menuItems}
             />
           </>
         }

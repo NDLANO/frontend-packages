@@ -12,6 +12,7 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import { SetFocusedFolderId, FolderChildFuncType } from './TreeStructure.types';
+import SafeLink from '../../../safelink/src';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
@@ -75,7 +76,7 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   text-align: left;
 `;
 
-const FolderNameLink = FolderName.withComponent('a');
+const FolderNameLink = FolderName.withComponent(SafeLink);
 
 interface Props {
   name: string;
@@ -135,9 +136,9 @@ const FolderItem = ({
         <FolderNameLink
           ref={folderNameLinkRef}
           noArrow={hideArrow}
+          to={loading ? '' : url}
           tabIndex={marked ? 0 : -1}
           marked={marked}
-          href={loading ? undefined : url}
           onFocus={() => {
             setFocusedFolderId(id);
           }}

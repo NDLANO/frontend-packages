@@ -28,7 +28,7 @@ const BlockFolderWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
-const menuItems: MenuItemProps[] = [
+export const menuItems: MenuItemProps[] = [
   { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];

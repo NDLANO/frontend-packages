@@ -7,11 +7,12 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import SafeLink from '@ndla/safelink';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
+import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
-import { CompressedTags, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
+import { CompressedTagList, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
 
 const ResourceDescription = styled.p`
   grid-area: description;
@@ -109,10 +110,10 @@ export interface ListResourceProps {
   topics: string[];
   tags?: string[];
   description?: string;
-  actionMenu?: ReactNode;
+  menuItems?: MenuItemProps[];
 }
 
-const ListResource = ({ link, title, tags, resourceImage, topics, description, actionMenu }: ListResourceProps) => {
+const ListResource = ({ link, title, tags, resourceImage, topics, description, menuItems }: ListResourceProps) => {
   const showDescription = description !== undefined;
 
   return (
@@ -126,8 +127,8 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, a
       </TopicAndTitle>
       {showDescription && <ResourceDescription>{description}</ResourceDescription>}
       <TagsandActionMenu>
-        {tags && CompressedTags(tags)}
-        {actionMenu}
+        {tags && <CompressedTagList tags={tags} />}
+        {menuItems && menuItems.length > 0 && <MenuButton size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ResourceWrapper>
   );

@@ -7,11 +7,12 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
+import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
-import { CompressedTags, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
+import { CompressedTagList, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
 
 interface BlockResourceProps {
   link: string;
@@ -20,7 +21,7 @@ interface BlockResourceProps {
   topics: string[];
   tags?: string[];
   description?: string;
-  actionMenu?: ReactNode;
+  menuItems?: MenuItemProps[];
 }
 
 const BlockElementWrapper = styled(SafeLink)`
@@ -77,7 +78,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const BlockResource = ({ link, title, tags, resourceImage, topics, description, actionMenu }: BlockResourceProps) => {
+const BlockResource = ({ link, title, tags, resourceImage, topics, description, menuItems }: BlockResourceProps) => {
   return (
     <BlockElementWrapper to={link}>
       <ImageWrapper>
@@ -90,8 +91,8 @@ const BlockResource = ({ link, title, tags, resourceImage, topics, description, 
         <TopicList topics={topics} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
-          {tags && CompressedTags(tags)}
-          {actionMenu}
+          {tags && <CompressedTagList tags={tags} />}
+          {menuItems && menuItems.length > 0 && <MenuButton size="small" menuItems={menuItems} />}
         </RightRow>
       </BlockInfoWrapper>
     </BlockElementWrapper>

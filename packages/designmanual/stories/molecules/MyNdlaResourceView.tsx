@@ -20,6 +20,7 @@ import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import { Folder, ListResource, BlockResource } from '@ndla/ui';
 import { AddButton, MenuButton } from '@ndla/button';
+import { menuItems } from '../pages/MyNdla';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -207,7 +208,15 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
       )}
       <BlockWrapper type={layout}>
         {folders?.map(({ title, link }, i) => (
-          <Folder key={`folder-${i}`} type={viewType} title={title} link={link} subFolders={3} subResources={3} />
+          <Folder
+            key={`folder-${i}`}
+            type={viewType}
+            title={title}
+            link={link}
+            subFolders={3}
+            subResources={3}
+            menuItems={menuItems}
+          />
         ))}
       </BlockWrapper>
       <BlockWrapper type={layout}>
@@ -223,7 +232,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
               src: resourceImage.src,
             }}
             link={link}
-            actionMenu={<MenuButton size="small" />}
+            menuItems={menuItems}
           />
         ))}
       </BlockWrapper>

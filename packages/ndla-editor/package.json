@@ -1,6 +1,6 @@
 {
   "name": "@ndla/editor",
-  "version": "1.2.19",
+  "version": "1.2.20",
   "description": "Editor components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,9 +25,9 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^2.6.0",
+    "@ndla/button": "^3.0.0",
     "@ndla/core": "^2.3.0",
-    "@ndla/forms": "^3.0.6",
+    "@ndla/forms": "^3.0.7",
     "@ndla/icons": "^1.10.0",
     "@ndla/modal": "^1.2.12",
     "@types/react-beautiful-dnd": "^13.1.2",

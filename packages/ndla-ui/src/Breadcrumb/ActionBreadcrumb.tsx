@@ -44,6 +44,9 @@ interface Props {
 
 const ActionBreadcrumb = ({ items, actionItems }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
+    if (totalCount === 1) {
+      return <StyledSpan title={item.name}>{item.name}</StyledSpan>;
+    }
     if (item.index === totalCount - 1) {
       return (
         <MenuButton menuItems={actionItems} size="small">

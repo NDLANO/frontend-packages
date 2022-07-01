@@ -236,8 +236,8 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
     return (
       <div>
         <IconButtonDualStates
-          ariaLabelActive="Legg til i mine favoritter"
-          ariaLabelInActive="Allerede lagt til i mine favoritter"
+          ariaLabelInActive="Legg til i mine favoritter"
+          ariaLabelActive="Allerede lagt til i mine favoritter"
           activeIcon={<Heart />}
           inactiveIcon={<HeartOutline />}
           active={isFavorite}
@@ -272,8 +272,8 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
     return (
       <div>
         <IconButtonDualStates
-          ariaLabelActive="Legg til i mine favoritter"
-          ariaLabelInActive="Allerede lagt til i mine favoritter"
+          ariaLabelInActive="Legg til i mine favoritter"
+          ariaLabelActive="Allerede lagt til i mine favoritter"
           activeIcon={<Heart />}
           inactiveIcon={<HeartOutline />}
           active={isFavorite}

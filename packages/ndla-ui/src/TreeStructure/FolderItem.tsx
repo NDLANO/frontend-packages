@@ -11,8 +11,8 @@ import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
+import SafeLink from '@ndla/safelink';
 import { SetFocusedFolderId, FolderChildFuncType } from './TreeStructure.types';
-import SafeLink from '../../../safelink/src';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;

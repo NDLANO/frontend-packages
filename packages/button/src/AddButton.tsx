@@ -6,10 +6,9 @@
  *
  */
 
-import React, { MouseEventHandler } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, spacing, animations } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
 import { Button, ButtonProps } from './Button';
 
@@ -21,6 +20,15 @@ const AddIconBorder = styled.div`
   justify-content: center;
   border: 1px solid ${colors.brand.tertiary};
   border-radius: 50%;
+  transition: background ${animations.durations.superFast} ease-in-out;
+`;
+
+const TextWrapper = styled.span`
+  color: ${colors.brand.primary};
+  align-items: center;
+  display: flex;
+  ${fonts.weight.semibold}
+  ${fonts.sizes('16')}
 `;
 
 const AddButtonStyle = styled(Button)`
@@ -31,45 +39,46 @@ const AddButtonStyle = styled(Button)`
     width: 24px;
     height: 24px;
   }
-  :hover {
-    background-color: transparent;
-    margin: 0;
-    border: none;
-    svg {
-      fill: white;
-    }
-    div {
-      background-color: ${colors.brand.primary};
-    }
-  }
   &:focus,
-  &:active {
+  &:active,
+  &:hover {
     background-color: transparent;
-    border: none;
+      &:not(:disabled) {
+      svg {
+        fill: white;
+      }
+      ${AddIconBorder} {
+        background-color: ${colors.brand.primary};
+      }
+    }
+    }
   }
-`;
-const AddFolder = styled.span`
-  color: ${colors.brand.primary};
-  align-items: center;
-  display: flex;
-  ${fonts.weight.semibold}
-  ${fonts.sizes('16')}
+  &:disabled {
+    color: ${colors.brand.grey};
+    svg {
+        fill: ${colors.brand.grey};
+      }
+      ${AddIconBorder} {
+        background-color: ${colors.brand.greyLighter};
+        border-color: ${colors.brand.greyLight};
+      }
+      ${TextWrapper} {
+        color: ${colors.brand.grey};
+      }
+  }
 `;
 
 interface AddButtonProps extends ButtonProps {
-  onClick: MouseEventHandler;
+  ['aria-label']: string;
 }
 
-export const AddButton = ({ onClick }: AddButtonProps) => {
-  const { t } = useTranslation();
-  return (
-    <AddButtonStyle size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill onClick={onClick}>
-      <AddIconBorder>
-        <Plus />
-      </AddIconBorder>
-      <AddFolder>{t('myNdla.newFolder')}</AddFolder>
-    </AddButtonStyle>
-  );
-};
+export const AddButton = ({ children, size, ...rest }: AddButtonProps) => (
+  <AddButtonStyle size={size || 'xsmall'} ghostPill {...rest}>
+    <AddIconBorder>
+      <Plus />
+    </AddIconBorder>
+    <TextWrapper>{children}</TextWrapper>
+  </AddButtonStyle>
+);
 
 export default AddButton;

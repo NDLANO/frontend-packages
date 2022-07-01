@@ -20,6 +20,7 @@ const messages = {
       delete: 'Slett',
     },
     createFolder: 'Lag mappe',
+    maxFoldersAlreadyAdded: 'Maks nivå av undermapper nådd',
     newFolder: {
       placeholder: 'Skriv namn på mappe',
       defaultName: 'Ny mappe',

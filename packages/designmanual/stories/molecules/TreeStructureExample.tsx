@@ -109,7 +109,7 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
   },
 ];
 
-const STRUCTURE_EXAMPLE_WRAPPED = () => [
+export const STRUCTURE_EXAMPLE_WRAPPED = () => [
   {
     id: uuid(),
     name: 'Min NDLA',
@@ -147,7 +147,7 @@ export const TreeStructureExampleComponent = ({
   withDots,
 }: {
   structure: FolderStructureProps[];
-  label: string;
+  label?: string;
   editable: boolean;
   framed: boolean;
   folderIdMarkedByDefault?: string;

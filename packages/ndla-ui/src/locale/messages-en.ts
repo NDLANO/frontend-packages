@@ -20,6 +20,7 @@ const messages = {
       delete: 'Delete',
     },
     createFolder: 'Create folder',
+    maxFoldersAlreadyAdded: 'Maximum subfolders reached',
     newFolder: {
       placeholder: 'Add foldername',
       defaultName: 'New folder',

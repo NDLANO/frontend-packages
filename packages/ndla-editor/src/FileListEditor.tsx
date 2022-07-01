@@ -10,6 +10,7 @@ import React, { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefO
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Tooltip from '@ndla/tooltip';
+import { isNumber } from 'lodash';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';
 import { Pencil } from '@ndla/icons/action';
 import { spacing, spacingUnit, fonts, colors, shadows, animations } from '@ndla/core';
@@ -341,7 +342,7 @@ class FileListEditor extends Component<Props, State> {
                     checked={file.display === 'block'}
                     value=""
                     id={index}
-                    onChange={(i) => i && onToggleRenderInline(i)}
+                    onChange={(i) => isNumber(i) && onToggleRenderInline(i)}
                   />
                 </Tooltip>
               )}

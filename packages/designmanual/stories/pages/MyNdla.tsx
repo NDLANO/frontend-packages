@@ -144,7 +144,7 @@ export const MyNdla = () => {
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
               }}
-              menuItems={menuItems}
+              link={''}
             />
           </>
         }

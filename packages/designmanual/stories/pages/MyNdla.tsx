@@ -9,7 +9,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
-import { MenuButton } from '@ndla/button';
+import { MenuButton, MenuItemProps } from '@ndla/button';
 import { FolderInput } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
@@ -28,7 +28,7 @@ const BlockFolderWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
-const menuItems = [
+const menuItems: MenuItemProps[] = [
   { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];

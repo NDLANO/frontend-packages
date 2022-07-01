@@ -987,7 +987,11 @@ const messages = {
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
     folders_plural: '{{count}} mapper',
-    folder: 'Mappe',
+    folder: {
+      folder: 'Mappe',
+      delete: 'Slett',
+      edit: 'Rediger',
+    },
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',
@@ -1028,6 +1032,9 @@ const messages = {
       },
     },
     resource: {
+      add: 'Legg til mappe/tag',
+      remove: 'Fjern',
+      copyLink: 'Kopier lenke til siden',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
     },

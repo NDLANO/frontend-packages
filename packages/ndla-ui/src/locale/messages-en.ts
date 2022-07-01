@@ -989,7 +989,11 @@ const messages = {
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
-    folder: 'Folder',
+    folder: {
+      folder: 'Folder',
+      delete: 'Delete',
+      edit: 'Edit',
+    },
     myFolders: 'My folders',
     myTags: 'My tags',
     newFolder: 'New folder',
@@ -1031,6 +1035,9 @@ const messages = {
       },
     },
     resource: {
+      add: 'Add folder/tag',
+      remove: 'Remove',
+      copyLink: 'Copy link to this page',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
     },

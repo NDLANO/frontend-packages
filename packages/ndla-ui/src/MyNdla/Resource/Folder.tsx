@@ -7,14 +7,14 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
-import { MenuButton } from '@ndla/button';
+import { MenuButton, MenuItemProps } from '@ndla/button';
 
 interface FolderIconWrapperProps {
   type?: LayoutType;
@@ -84,7 +84,7 @@ interface Props {
   description?: string;
   link: string;
   type: LayoutType;
-  actionMenu?: ReactNode;
+  menuItems?: MenuItemProps[];
 }
 
 interface IconCountProps {
@@ -131,7 +131,7 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
 
 type LayoutType = 'list' | 'block';
 
-const Folder = ({ link, title, subFolders, subResources, type = 'list', actionMenu }: Props) => {
+const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
   return (
     <FolderWrapper to={link}>
@@ -141,7 +141,7 @@ const Folder = ({ link, title, subFolders, subResources, type = 'list', actionMe
       <FolderTitle>{title}</FolderTitle>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />
       <IconCount layoutType={type} type={'resource'} count={subResources} />
-      <MenuButton size="small" />
+      {menuItems && menuItems.length > 0 && <MenuButton size="small" menuItems={menuItems} />}
     </FolderWrapper>
   );
 };

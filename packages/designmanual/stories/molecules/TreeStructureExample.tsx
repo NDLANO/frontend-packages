@@ -35,7 +35,7 @@ const menuItemsForFolderChild = (id: string, editText: string, deleteText: strin
   {
     icon: <TrashCanOutline />,
     text: deleteText,
-    color: 'red',
+    type: 'danger',
     onClick: (e) => {
       console.log(deleteText, id); // eslint-disable-line no-console
       e?.preventDefault();

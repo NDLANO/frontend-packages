@@ -66,16 +66,20 @@ const StyledMenuList = styled(MenuList)`
   }
 `;
 
-const StyledMenuItem = styled(MenuItem)`
+interface StyledMenuItemProps {
+  type?: 'danger';
+}
+
+const StyledMenuItem = styled(MenuItem)<StyledMenuItemProps>`
   display: flex;
   align-items: center;
   gap: ${spacing.xsmall};
   padding: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} ${spacing.xsmall};
   cursor: pointer;
-  color: ${({ color }) => (color === 'red' ? colors.support.red : colors.text.primary)};
+  color: ${({ type }) => (type === 'danger' ? colors.support.red : colors.text.primary)};
   &[data-selected] {
-    color: ${({ color }) => (color === 'red' ? colors.support.red : colors.brand.primary)};
-    background: ${({ color }) => (color === 'red' ? colors.support.redLightest : colors.brand.lighter)};
+    color: ${({ type }) => (type === 'danger' ? colors.support.red : colors.brand.primary)};
+    background: ${({ type }) => (type === 'danger' ? colors.support.redLightest : colors.brand.lighter)};
   }
 `;
 
@@ -83,7 +87,7 @@ export interface MenuItemProps {
   icon?: ReactNode;
   text?: string;
   onClick: (e?: MouseEvent<HTMLDivElement>) => void;
-  color?: 'red';
+  type?: 'danger';
 }
 
 interface MenuButtonProps extends ButtonProps {
@@ -114,8 +118,8 @@ export const MenuButton = ({
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
       <StyledMenuList>
-        {menuItems?.map(({ color, text, icon, onClick }) => (
-          <StyledMenuItem key={text} onSelect={onClick} color={color} aria-label={text}>
+        {menuItems?.map(({ type, text, icon, onClick }) => (
+          <StyledMenuItem key={text} onSelect={onClick} type={type} aria-label={text}>
             {icon}
             {text}
           </StyledMenuItem>

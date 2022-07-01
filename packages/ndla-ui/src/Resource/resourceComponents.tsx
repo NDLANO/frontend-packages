@@ -103,7 +103,11 @@ export const TagList = ({ tags }: TagListProps) => {
   );
 };
 
-export const CompressedTags = (tags: string[]) => {
+interface CompressedTagListProps {
+  tags: string[];
+}
+
+export const CompressedTagList = ({ tags }: CompressedTagListProps) => {
   const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {

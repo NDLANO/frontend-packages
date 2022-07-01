@@ -9,8 +9,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
-import { MenuButton } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
 import { FolderInput } from '@ndla/ui';
+import { Pencil } from '@ndla/icons/action';
+import { DeleteForever } from '@ndla/icons/editor';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -25,6 +27,11 @@ const BlockFolderWrapper = styled.div`
   display: flex;
   gap: ${spacing.small};
 `;
+
+export const menuItems: MenuItemProps[] = [
+  { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
+  { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
+];
 
 const tags = ['tag', 'tag', 'tag'];
 
@@ -45,6 +52,7 @@ export const MyNdla = () => {
               subFolders={3}
               subResources={3}
               type={'list'}
+              menuItems={menuItems}
             />
             <h2>Legg til mappe</h2>
             <FolderInput
@@ -63,6 +71,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
               <Folder
                 key={'blockFolder2'}
@@ -71,6 +80,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
               <Folder
                 key={'blockFolder3'}
@@ -79,6 +89,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
             </BlockFolderWrapper>
             <h2> Ressurser </h2>
@@ -94,7 +105,7 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3> Standard Ressurs</h3>
             <ListResource
@@ -108,7 +119,7 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
@@ -122,7 +133,7 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource

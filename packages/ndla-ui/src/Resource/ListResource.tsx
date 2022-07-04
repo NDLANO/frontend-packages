@@ -31,12 +31,13 @@ const ResourceDescription = styled.p`
 `;
 
 const ResourceWrapper = styled(SafeLink)`
-  display: grid;
   flex: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
     'image  topicAndTitle   tags'
     'image  description     description';
-  grid-template-columns: auto 1fr auto;
+
   ${mq.range({ until: breakpoints.mobileWide })} {
     grid-template-columns: auto 1fr;
     grid-template-areas:
@@ -52,6 +53,7 @@ const ResourceWrapper = styled(SafeLink)`
   border-radius: 2px;
   color: ${colors.brand.greyDark};
   gap: 0 ${spacing.small};
+
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
@@ -117,7 +119,7 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, m
   const showDescription = description !== undefined;
 
   return (
-    <ResourceWrapper to={link}>
+    <ResourceWrapper to={'https://google.com'}>
       <StyledImageWrapper imageSize={showDescription ? 'normal' : 'compact'}>
         <StyledImage alt={resourceImage.alt} src={resourceImage.src} />
       </StyledImageWrapper>

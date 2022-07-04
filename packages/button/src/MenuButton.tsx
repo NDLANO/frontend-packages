@@ -62,7 +62,7 @@ const StyledMenuList = styled(MenuList)`
   z-index: 99999;
   position: relative;
   @media (prefers-reduced-motion: no-preference) {
-    ${animations.fadeInTop(animations.durations.fast)}
+    ${animations.fadeIn(animations.durations.fast)}
   }
 `;
 

@@ -6,6 +6,7 @@
  *
  */
 
+import { compact } from 'lodash';
 import { FolderStructureProps, SetFocusedFolderId } from '../TreeStructure.types';
 import { KeyboardNavigationProps, ElementWithKeyFocusProps } from './keyboardNavigation.types';
 import { MAX_LEVEL_FOR_FOLDERS } from '../TreeStructure';
@@ -21,17 +22,20 @@ const traverseUpwards = (
 ) => {
   let findParent: FolderStructureProps[] = inital;
   const parentNextIds: (string | false)[] = [];
+
   paths.forEach((pathIndex) => {
     const nextParent = findParent ? findParent[pathIndex + 1] : undefined;
     parentNextIds.push(nextParent?.id || false);
     findParent = findParent[pathIndex].data || [];
   });
+
   if (!parentNextIds.length) {
     parentNextIds.push(findParent[index + 1]?.id || false);
   }
+
   // We use a reversed version of parentNextIds, filtered out falses, to find the next element
   // No newId? We are at the end of the tree so we wont update.
-  const newId = parentNextIds.reverse().filter((id) => id)[0];
+  const newId = compact(parentNextIds).reverse()[0];
   if (newId) {
     setFocusedFolderId(newId);
   }
@@ -105,6 +109,7 @@ const keyboardNavigation = ({
     }
     return;
   }
+
   if (e.key === 'ArrowLeft') {
     if (id && elementWithKeyFocus.isOpen) {
       onToggleOpen(id);

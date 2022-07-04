@@ -993,6 +993,8 @@ const messages = {
       delete: 'Slett',
       edit: 'Rediger',
     },
+    confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje angres.',
+    confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje angres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine tags',
     newFolder: 'Ny mappe',

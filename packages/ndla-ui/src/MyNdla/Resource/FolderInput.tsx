@@ -13,6 +13,7 @@ import { Cross } from '@ndla/icons/action';
 import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
+import { Input } from '@ndla/forms';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -20,12 +21,12 @@ const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%2
 )}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
 
 const FolderInputWrapper = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
   padding: ${spacing.small};
 
-  background-image: ${borderStyle};
+  background-image: ${borderStyle}; */
 `;
 
 const StyledFolderIcon = styled.span`
@@ -38,7 +39,9 @@ const StyledFolderIcon = styled.span`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled(Input)`
+  padding: 20px;
+  background-image: ${borderStyle};
   color: ${colors.brand.primary};
   outline: none;
   border: none;
@@ -84,19 +87,23 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
 
   return (
     <FolderInputWrapper>
-      <StyledFolderIcon>
-        <FolderOutlined />
-      </StyledFolderIcon>
       <StyledInput
         ref={inputRef}
         value={input}
         onChange={handleInputChange}
         onKeyDown={onKeydown}
         aria-label={newFolderText}
+        iconLeft={
+          <StyledFolderIcon>
+            <FolderOutlined />
+          </StyledFolderIcon>
+        }
+        iconRight={
+          <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
+            <Cross />
+          </IconButton>
+        }
       />
-      <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
-        <Cross />
-      </IconButton>
     </FolderInputWrapper>
   );
 };

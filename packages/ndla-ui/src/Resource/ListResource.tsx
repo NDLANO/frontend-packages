@@ -119,7 +119,7 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, m
   const showDescription = description !== undefined;
 
   return (
-    <ResourceWrapper to={'https://google.com'}>
+    <ResourceWrapper to={link}>
       <StyledImageWrapper imageSize={showDescription ? 'normal' : 'compact'}>
         <StyledImage alt={resourceImage.alt} src={resourceImage.src} />
       </StyledImageWrapper>

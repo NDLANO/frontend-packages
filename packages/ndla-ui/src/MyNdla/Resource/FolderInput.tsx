@@ -14,20 +14,12 @@ import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from '
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
 import { Input } from '@ndla/forms';
+import { css } from '@emotion/core';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
   colors.brand.tertiary,
 )}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
-
-const FolderInputWrapper = styled.div`
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: ${spacing.small};
-
-  background-image: ${borderStyle}; */
-`;
 
 const StyledFolderIcon = styled.span`
   display: flex;
@@ -39,17 +31,18 @@ const StyledFolderIcon = styled.span`
   }
 `;
 
-const StyledInput = styled(Input)`
+const inputStyle = css`
   padding: 20px;
+  background: none;
   background-image: ${borderStyle};
-  color: ${colors.brand.primary};
-  outline: none;
   border: none;
-  margin-right: auto;
   line-height: 1.75em;
 
-  ::selection {
-    background: ${colors.brand.lighter};
+  input {
+    color: ${colors.brand.primary};
+    ::selection {
+      background: ${colors.brand.lighter};
+    }
   }
 `;
 
@@ -86,25 +79,24 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
   }, [mounted, autoFocus]);
 
   return (
-    <FolderInputWrapper>
-      <StyledInput
-        ref={inputRef}
-        value={input}
-        onChange={handleInputChange}
-        onKeyDown={onKeydown}
-        aria-label={newFolderText}
-        iconLeft={
-          <StyledFolderIcon>
-            <FolderOutlined />
-          </StyledFolderIcon>
-        }
-        iconRight={
-          <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
-            <Cross />
-          </IconButton>
-        }
-      />
-    </FolderInputWrapper>
+    <Input
+      customCss={inputStyle}
+      ref={inputRef}
+      value={input}
+      onChange={handleInputChange}
+      onKeyDown={onKeydown}
+      aria-label={newFolderText}
+      iconLeft={
+        <StyledFolderIcon>
+          <FolderOutlined />
+        </StyledFolderIcon>
+      }
+      iconRight={
+        <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
+          <Cross />
+        </IconButton>
+      }
+    />
   );
 };
 

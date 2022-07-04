@@ -122,7 +122,12 @@ export const MenuButton = ({
       </StyledMenuButton>
       <StyledMenuList>
         {menuItems?.map(({ type, text, icon, onClick }) => (
-          <StyledMenuItem key={text} onSelect={onClick} type={type} aria-label={text}>
+          <StyledMenuItem
+            key={text}
+            onClick={(e) => e.preventDefault()}
+            onSelect={onClick}
+            type={type}
+            aria-label={text}>
             {icon}
             {text}
           </StyledMenuItem>

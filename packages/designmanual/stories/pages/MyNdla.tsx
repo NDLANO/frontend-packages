@@ -29,7 +29,11 @@ const BlockFolderWrapper = styled.div`
 `;
 
 export const menuItems: MenuItemProps[] = [
-  { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
+  {
+    icon: <Pencil />,
+    text: 'Rediger',
+    onClick: () => {},
+  },
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];
 

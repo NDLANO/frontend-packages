@@ -991,6 +991,7 @@ const messages = {
       folder: 'Mappe',
       delete: 'Slett',
       edit: 'Rediger',
+      missingName: 'Mappenavn er påkrevd',
     },
     confirmDeleteFolder: 'Er du sikker på at du vil slette mappen? Denne handlingen kan ikke angres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlingen kan ikke angres.',

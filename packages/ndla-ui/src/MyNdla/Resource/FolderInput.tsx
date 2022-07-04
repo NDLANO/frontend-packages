@@ -31,14 +31,16 @@ const StyledFolderIcon = styled.span`
   }
 `;
 
-const inputStyle = css`
+const inputWrapperStyle = css`
   padding: 20px;
   background: none;
   background-image: ${borderStyle};
   border: none;
   line-height: 1.75em;
+`;
 
-  input {
+const StyledInput = styled(Input)`
+  && {
     color: ${colors.brand.primary};
     ::selection {
       background: ${colors.brand.lighter};
@@ -67,6 +69,9 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
     if (e.key === 'Enter' && input) {
       e.preventDefault();
       onAddFolder(input);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      onClose();
     }
   };
 
@@ -79,8 +84,9 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
   }, [mounted, autoFocus]);
 
   return (
-    <Input
-      customCss={inputStyle}
+    <StyledInput
+      customCss={inputWrapperStyle}
+      warningText={!input ? t('myNdla.folder.missingName') : undefined}
       ref={inputRef}
       value={input}
       onChange={handleInputChange}

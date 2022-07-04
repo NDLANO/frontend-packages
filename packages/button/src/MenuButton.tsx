@@ -105,14 +105,13 @@ export const MenuButton = ({
   hideMenuIcon,
   className,
   tabIndex,
-  'aria-label': ariaLabel,
   ...rest
 }: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
     <Menu tabIndex={tabIndex}>
       <StyledMenuButton
-        aria-label={ariaLabel || t('myNdla.more')}
+        aria-label={t('myNdla.more')}
         tabIndex={tabIndex}
         className={className}
         svgSize={convertSizeForSVG(size || 'normal')}

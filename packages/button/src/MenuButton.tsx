@@ -7,12 +7,12 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode, MouseEvent } from 'react';
+import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
 import { colors, spacing, shadows, misc, animations } from '@ndla/core';
 import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
-import { ButtonProps } from './';
+import { ButtonSize } from './';
 import { convertSizeForSVG } from './IconButton';
 
 interface StyledButtonProps {
@@ -90,12 +90,13 @@ export interface MenuItemProps {
   type?: 'danger';
 }
 
-interface MenuButtonProps extends ButtonProps {
+interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   menuItems?: MenuItemProps[];
   children?: ReactNode;
   menuButtonPrefix?: ReactNode;
   hideMenuIcon?: boolean;
   tabIndex?: number;
+  size?: ButtonSize;
 }
 export const MenuButton = ({
   menuItems,
@@ -110,10 +111,12 @@ export const MenuButton = ({
   return (
     <Menu tabIndex={tabIndex}>
       <StyledMenuButton
-        aria-label={rest['aria-label'] || t('myNdla.more')}
+        aria-label={t('myNdla.more')}
         tabIndex={tabIndex}
         className={className}
-        svgSize={convertSizeForSVG(size || 'normal')}>
+        svgSize={convertSizeForSVG(size || 'normal')}
+        onClick={(e) => e.preventDefault()} // Prevent redirect from triggering when placed inside <a>
+        {...rest}>
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>

@@ -12,7 +12,7 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { SetFocusedFolderId, FolderChildFuncType, FolderStructureProps } from './TreeStructure.types';
+import { SetFocusedFolderId, FolderChildFuncType } from './TreeStructure.types';
 import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
@@ -82,13 +82,13 @@ const FolderNameLink = FolderName.withComponent(SafeLink);
 interface Props {
   name: string;
   id: string;
-  data: FolderStructureProps[];
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onMarkFolder: (id: string) => void;
   isOpen: boolean;
   markedFolderId?: string;
   focusedFolderId?: string;
+  visibleFolders: string[];
   loading?: boolean;
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
@@ -103,8 +103,8 @@ const FolderItem = ({
   hideArrow,
   loading,
   name,
-  data,
   id,
+  visibleFolders,
   onCloseFolder,
   onOpenFolder,
   onMarkFolder,
@@ -145,7 +145,7 @@ const FolderItem = ({
         <FolderNameLink
           ref={folderNameLinkRef}
           className="folder"
-          onKeyDown={(e) => arrowNavigation(e, id, data, setFocusedFolderId, onOpenFolder, onCloseFolder)}
+          onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)}
           noArrow={hideArrow}
           to={loading ? '' : url}
           tabIndex={marked ? 0 : -1}
@@ -171,7 +171,7 @@ const FolderItem = ({
           <FolderName
             ref={folderNameButtonRef}
             className="folder"
-            onKeyDown={(e) => arrowNavigation(e, id, data, setFocusedFolderId, onOpenFolder, onCloseFolder)}
+            onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
             tabIndex={marked ? 0 : -1}
             marked={marked}

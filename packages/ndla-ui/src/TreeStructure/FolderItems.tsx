@@ -42,6 +42,7 @@ const FolderItems = ({
   onCancelNewFolder,
   onSaveNewFolder,
   newFolder,
+  visibleFolders,
   openFolders,
   markedFolderId,
   onMarkFolder,
@@ -66,7 +67,7 @@ const FolderItems = ({
               loading={loading}
               isOpen={isOpen}
               id={id}
-              data={data}
+              visibleFolders={visibleFolders}
               name={name}
               markedFolderId={markedFolderId}
               focusedFolderId={focusedFolderId}
@@ -90,6 +91,7 @@ const FolderItems = ({
             <FolderItems
               loading={loading}
               newFolder={newFolder}
+              visibleFolders={visibleFolders}
               openFolders={openFolders}
               idPaths={newIdPaths}
               editable={editable}

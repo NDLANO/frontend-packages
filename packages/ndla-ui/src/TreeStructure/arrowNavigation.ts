@@ -7,34 +7,27 @@
  */
 
 import { KeyboardEvent } from 'react';
-import { FolderStructureProps } from './TreeStructure.types';
 
-const flattenFolders = (folders: FolderStructureProps[]): string[] => {
-  return folders.reduce((acc, { data, id }) => {
-    if (!data) {
-      return [...acc, id];
-    }
-    return [...acc, id, ...flattenFolders(data)];
-  }, [] as string[]);
-};
-
-const navigateUp = (folders: FolderStructureProps[], folderId: string, setFocusedFolderId: (id: string) => void) => {
-  const folderIds = flattenFolders(folders);
-  const currentIndex = folderIds.findIndex((id) => id === folderId);
-  const target = folderIds[currentIndex - 1];
+const navigateUp = (openFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
+  const currentIndex = openFolders.findIndex((id) => id === folderId);
+  const target = openFolders[currentIndex - 1];
   if (target) {
     setFocusedFolderId(target);
   }
 };
 
-const navigateDown = (element: HTMLElement) => {
-  console.log('down');
+const navigateDown = (openFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
+  const currentIndex = openFolders.findIndex((id) => id === folderId);
+  const target = openFolders[currentIndex + 1];
+  if (target) {
+    setFocusedFolderId(target);
+  }
 };
 
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,
   id: string,
-  data: FolderStructureProps[],
+  openFolders: string[],
   setFocusedFolderId: (id: string) => void,
   onOpen: (id: string) => void,
   onClose: (id: string) => void,
@@ -42,7 +35,13 @@ export const arrowNavigation = (
   if (e.key === 'ArrowUp') {
     e.preventDefault();
     e.stopPropagation();
-    return navigateUp(data, id, setFocusedFolderId);
+    return navigateUp(openFolders, id, setFocusedFolderId);
+  }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    e.stopPropagation();
+
+    return navigateDown(openFolders, id, setFocusedFolderId);
   }
   if (e.key === 'ArrowLeft') {
     e.preventDefault();

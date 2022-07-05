@@ -1,6 +1,6 @@
 import { FolderStructureProps } from './TreeStructure.types';
 
-const getPathOfFolder = (data: FolderStructureProps[], findId: string): string[] => {
+export const getPathOfFolder = (data: FolderStructureProps[], findId: string): string[] => {
   const paths = (dataChildren: FolderStructureProps[], path: string[]): string[] => {
     for (const { id, data: dataChildrenSub } of dataChildren) {
       if (id === findId) {
@@ -14,7 +14,7 @@ const getPathOfFolder = (data: FolderStructureProps[], findId: string): string[]
   return paths(data, []);
 };
 
-const getIdPathsOfFolder = (data: FolderStructureProps[], findId: string): number[] => {
+export const getIdPathsOfFolder = (data: FolderStructureProps[], findId: string): number[] => {
   let currentPath: number[] = [];
   const paths = (dataChildren: FolderStructureProps[], path: number[]) => {
     dataChildren.forEach(({ id, data: dataChildrenSub }, _index) => {
@@ -29,7 +29,7 @@ const getIdPathsOfFolder = (data: FolderStructureProps[], findId: string): numbe
   return currentPath;
 };
 
-const getFolderName = (data: FolderStructureProps[], findId: string | undefined): string | undefined => {
+export const getFolderName = (data: FolderStructureProps[], findId: string | undefined): string | undefined => {
   if (!findId) {
     return undefined;
   }
@@ -49,4 +49,15 @@ const getFolderName = (data: FolderStructureProps[], findId: string | undefined)
   return folderName;
 };
 
-export { getPathOfFolder, getIdPathsOfFolder, getFolderName };
+// Her må openFolders brukes. Må filtrere bort usynlige mapper
+export const flattenFolders = (folders: FolderStructureProps[], openFolders: string[]): string[] => {
+  return folders.reduce((acc, { data, id }) => {
+    if (!openFolders.includes(id)) {
+      return [...acc, id];
+    }
+    if (!data) {
+      return [...acc, id];
+    }
+    return [...acc, id, ...flattenFolders(data, openFolders)];
+  }, [] as string[]);
+};

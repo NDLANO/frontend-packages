@@ -63,6 +63,7 @@ export interface FolderItemsProps extends CommonFolderProps {
   onCancelNewFolder: () => void;
   onCreateNewFolder: onCreateNewFolderProp;
   newFolder: NewFolderProps | undefined;
+  visibleFolders: string[];
   openFolders: string[];
   markedFolderId?: string;
   onMarkFolder: (id: string) => void;

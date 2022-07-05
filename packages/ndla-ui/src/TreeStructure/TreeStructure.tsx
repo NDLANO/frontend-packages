@@ -16,7 +16,7 @@ import { spacing, fonts } from '@ndla/core';
 import { uniq } from 'lodash';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
-import { getIdPathsOfFolder, getPathOfFolder, getFolderName } from './helperFunctions';
+import { getIdPathsOfFolder, getPathOfFolder, getFolderName, flattenFolders } from './helperFunctions';
 import { NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
@@ -51,6 +51,8 @@ const TreeStructure = ({
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18
+
+  const visibleFolders = useMemo(() => flattenFolders(data, openFolders), [data, openFolders]);
 
   useEffect(() => {
     if (defaultOpenFolders) {
@@ -135,6 +137,7 @@ const TreeStructure = ({
           onCreateNewFolder={onCreateNewFolder}
           onCancelNewFolder={onCancelNewFolder}
           onSaveNewFolder={onSaveNewFolder}
+          visibleFolders={visibleFolders}
           openFolders={openFolders}
           markedFolderId={markedFolderId}
           onMarkFolder={onMarkFolder}

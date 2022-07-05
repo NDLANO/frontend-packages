@@ -32,15 +32,15 @@ const StyledFolderIcon = styled.span`
 `;
 
 const inputWrapperStyle = css`
-  padding: 20px;
+  padding: ${spacing.small};
   background: none;
   background-image: ${borderStyle};
   border: none;
-  line-height: 1.75em;
 `;
 
 const StyledInput = styled(Input)`
   && {
+    line-height: 1.75em;
     color: ${colors.brand.primary};
     ::selection {
       background: ${colors.brand.lighter};
@@ -66,7 +66,7 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
   };
 
   const onKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && input) {
+    if (e.key === 'Enter' && input.trim()) {
       e.preventDefault();
       onAddFolder(input);
     } else if (e.key === 'Escape') {
@@ -86,7 +86,7 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
   return (
     <StyledInput
       customCss={inputWrapperStyle}
-      warningText={!input ? t('myNdla.folder.missingName') : undefined}
+      warningText={!input.trim() ? t('myNdla.folder.missingName') : undefined}
       ref={inputRef}
       value={input}
       onChange={handleInputChange}

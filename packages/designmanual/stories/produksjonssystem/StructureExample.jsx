@@ -7,7 +7,8 @@
  */
 
 import React, { Component, Fragment } from 'react';
-import { Structure, Spinner } from '@ndla/editor';
+import { Structure } from '@ndla/editor';
+import { Spinner } from '@ndla/icons';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Button from '@ndla/button';

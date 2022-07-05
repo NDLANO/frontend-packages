@@ -9,7 +9,7 @@ import Button from '@ndla/button';
 import { FilterTabs } from '@ndla/tabs';
 import Tooltip from '@ndla/tooltip';
 import SafeLink from '@ndla/safelink';
-import Spinner from '../../lib/Spinner';
+import { Spinner } from '@ndla/icons';
 
 const resultClasses = BEMHelper('c-search-result');
 

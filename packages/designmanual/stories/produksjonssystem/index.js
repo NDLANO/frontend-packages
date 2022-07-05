@@ -11,7 +11,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { Image } from '@ndla/ui';
-import { Spinner } from '@ndla/editor';
+import { Spinner } from '@ndla/icons';
 import { spacing, colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from '../wrappers';
 

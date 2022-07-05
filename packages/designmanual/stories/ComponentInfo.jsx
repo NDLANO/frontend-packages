@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 import Tabs from '@ndla/tabs';
-import { Spinner } from '@ndla/editor';
+import { Spinner } from '@ndla/icons';
 import { uuid, copyTextToClipboard } from '@ndla/util';
 import Button from '@ndla/button';
 import { Copy } from '@ndla/icons/action';

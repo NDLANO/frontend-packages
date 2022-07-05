@@ -11,7 +11,7 @@ import { DropResult } from 'react-beautiful-dnd';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import Spinner from '../Spinner';
+import { Spinner } from '@ndla/icons';
 import ItemNameBar from './ItemNameBar';
 import MakeDNDList from './MakeDNDList';
 import Fade from './Fade';

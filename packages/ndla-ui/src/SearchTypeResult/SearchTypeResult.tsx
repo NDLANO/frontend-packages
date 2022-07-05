@@ -9,7 +9,7 @@
 import React, { memo, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import Spinner from '../Spinner';
+import { Spinner } from '@ndla/icons';
 import constants from '../model';
 import SearchTypeHeader, { FilterOptionsType } from './SearchTypeHeader';
 import SearchItems from './SearchItems';

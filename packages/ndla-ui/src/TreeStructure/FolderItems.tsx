@@ -32,10 +32,12 @@ const StyledLI = styled.li`
 
 const FolderItems = ({
   loading,
-  data,
+  subFolders,
   idPaths,
   editable,
-  onToggleOpen,
+  data,
+  onCloseFolder,
+  onOpenFolder,
   onCreateNewFolder,
   onCancelNewFolder,
   onSaveNewFolder,
@@ -51,7 +53,7 @@ const FolderItems = ({
   maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={firstLevel}>
-    {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
+    {subFolders.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const newIdPaths = [...idPaths, _index];
       const isOpen = openFolders?.includes(id);
       return (
@@ -64,11 +66,13 @@ const FolderItems = ({
               loading={loading}
               isOpen={isOpen}
               id={id}
+              data={data}
               name={name}
               markedFolderId={markedFolderId}
               focusedFolderId={focusedFolderId}
-              onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
+              onCloseFolder={onCloseFolder}
+              onOpenFolder={onOpenFolder}
               hideArrow={dataChildren?.length === 0 || newIdPaths.length >= maximumLevelsOfFoldersAllowed}
               noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
               setFocusedFolderId={setFocusedFolderId}
@@ -89,8 +93,10 @@ const FolderItems = ({
               openFolders={openFolders}
               idPaths={newIdPaths}
               editable={editable}
-              data={dataChildren}
-              onToggleOpen={onToggleOpen}
+              data={data}
+              subFolders={dataChildren}
+              onCloseFolder={onCloseFolder}
+              onOpenFolder={onOpenFolder}
               onCreateNewFolder={onCreateNewFolder}
               onSaveNewFolder={onSaveNewFolder}
               onCancelNewFolder={onCancelNewFolder}

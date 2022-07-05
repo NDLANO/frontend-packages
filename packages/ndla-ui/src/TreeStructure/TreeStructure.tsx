@@ -17,7 +17,6 @@ import { uniq } from 'lodash';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { getIdPathsOfFolder, getPathOfFolder, getFolderName } from './helperFunctions';
-import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation/keyboardNavigation';
 import { NewFolderProps, TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
@@ -67,24 +66,24 @@ const TreeStructure = ({
     }
   }, [loading]);
 
-  const onToggleOpen = (id: string) => {
-    if (openFolders.includes(id)) {
-      // Did we just closed a folder with a marked folder inside it?
-      // If so, we need to mark the folder we just closed.
-      if (markedFolderId) {
-        const closingFolderPath = getPathOfFolder(data, id);
-        const markedFolderPath = getPathOfFolder(data, markedFolderId);
-        const markedFolderIsSubPath = closingFolderPath.every(
-          (folderId, _index) => markedFolderPath[_index] === folderId,
-        );
-        if (markedFolderIsSubPath) {
-          setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
-        }
+  const onCloseFolder = (id: string) => {
+    // Did we just closed a folder with a marked folder inside it?
+    // If so, we need to mark the folder we just closed.
+    if (markedFolderId) {
+      const closingFolderPath = getPathOfFolder(data, id);
+      const markedFolderPath = getPathOfFolder(data, markedFolderId);
+      const markedFolderIsSubPath = closingFolderPath.every(
+        (folderId, _index) => markedFolderPath[_index] === folderId,
+      );
+      if (markedFolderIsSubPath) {
+        setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
       }
-      setOpenFolders(openFolders.filter((folder) => folder !== id));
-    } else {
-      setOpenFolders(uniq([...openFolders, id]));
     }
+    setOpenFolders(openFolders.filter((folder) => folder !== id));
+  };
+
+  const onOpenFolder = (id: string) => {
+    setOpenFolders(uniq([...openFolders, id]));
   };
 
   const onCreateNewFolder = (props: { idPaths: number[]; parentId?: string }) => {
@@ -122,27 +121,16 @@ const TreeStructure = ({
   const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
-    <div
-      ref={treestructureRef}
-      onKeyDown={(e) => {
-        if (wrapperRef.current?.contains(document.activeElement) && KEYBOARD_KEYS_OF_INTEREST.includes(e.key)) {
-          keyboardNavigation({
-            e,
-            data,
-            setFocusedFolderId,
-            focusedFolderId,
-            onToggleOpen,
-            openFolders,
-          });
-        }
-      }}>
+    <div ref={treestructureRef}>
       {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
           idPaths={[]}
           data={data}
+          subFolders={data}
           editable={editable}
-          onToggleOpen={onToggleOpen}
+          onOpenFolder={onOpenFolder}
+          onCloseFolder={onCloseFolder}
           newFolder={newFolder}
           onCreateNewFolder={onCreateNewFolder}
           onCancelNewFolder={onCancelNewFolder}

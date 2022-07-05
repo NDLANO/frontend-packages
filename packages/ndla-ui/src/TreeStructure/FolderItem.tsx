@@ -12,7 +12,8 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { SetFocusedFolderId, FolderChildFuncType } from './TreeStructure.types';
+import { SetFocusedFolderId, FolderChildFuncType, FolderStructureProps } from './TreeStructure.types';
+import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
@@ -81,7 +82,9 @@ const FolderNameLink = FolderName.withComponent(SafeLink);
 interface Props {
   name: string;
   id: string;
-  onToggleOpen: (id: string) => void;
+  data: FolderStructureProps[];
+  onCloseFolder: (id: string) => void;
+  onOpenFolder: (id: string) => void;
   onMarkFolder: (id: string) => void;
   isOpen: boolean;
   markedFolderId?: string;
@@ -100,8 +103,10 @@ const FolderItem = ({
   hideArrow,
   loading,
   name,
+  data,
   id,
-  onToggleOpen,
+  onCloseFolder,
+  onOpenFolder,
   onMarkFolder,
   isOpen,
   markedFolderId,
@@ -128,13 +133,19 @@ const FolderItem = ({
   return (
     <FolderItemWrapper>
       {!hideArrow && (
-        <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
+        <OpenButton
+          tabIndex={-1}
+          isOpen={isOpen}
+          disabled={loading}
+          onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
           <ArrowDropDown />
         </OpenButton>
       )}
       {url ? (
         <FolderNameLink
           ref={folderNameLinkRef}
+          className="folder"
+          onKeyDown={(e) => arrowNavigation(e, id, data, setFocusedFolderId, onOpenFolder, onCloseFolder)}
           noArrow={hideArrow}
           to={loading ? '' : url}
           tabIndex={marked ? 0 : -1}
@@ -145,7 +156,11 @@ const FolderItem = ({
           onClick={() => {
             onMarkFolder(id);
             if (openOnFolderClick) {
-              onToggleOpen(id);
+              if (isOpen) {
+                onCloseFolder(id);
+              } else {
+                onOpenFolder(id);
+              }
             }
           }}>
           {icon || <FolderOutlined />}
@@ -155,6 +170,8 @@ const FolderItem = ({
         <>
           <FolderName
             ref={folderNameButtonRef}
+            className="folder"
+            onKeyDown={(e) => arrowNavigation(e, id, data, setFocusedFolderId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
             tabIndex={marked ? 0 : -1}
             marked={marked}
@@ -165,7 +182,11 @@ const FolderItem = ({
             onClick={() => {
               onMarkFolder(id);
               if (openOnFolderClick) {
-                onToggleOpen(id);
+                if (isOpen) {
+                  onCloseFolder(id);
+                } else {
+                  onOpenFolder(id);
+                }
               }
             }}>
             {icon || <FolderOutlined />}

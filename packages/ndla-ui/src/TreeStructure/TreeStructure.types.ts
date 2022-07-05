@@ -56,7 +56,9 @@ export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | un
 export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
 
 export interface FolderItemsProps extends CommonFolderProps {
-  onToggleOpen: (id: string) => void;
+  subFolders: FolderStructureProps[];
+  onCloseFolder: (id: string) => void;
+  onOpenFolder: (id: string) => void;
   onSaveNewFolder: (value: string) => void;
   onCancelNewFolder: () => void;
   onCreateNewFolder: onCreateNewFolderProp;

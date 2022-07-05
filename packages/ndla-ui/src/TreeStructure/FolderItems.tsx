@@ -52,7 +52,7 @@ const FolderItems = ({
   folderChild,
   maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
-  <StyledUL role="group" firstLevel={level === 0}>
+  <StyledUL role="group" firstLevel={level === 1}>
     {subFolders.map(({ name, data: dataChildren, id, url, icon }, _index) => {
       const isOpen = openFolders?.includes(id);
       return (
@@ -91,7 +91,7 @@ const FolderItems = ({
               newFolder={newFolder}
               visibleFolders={visibleFolders}
               openFolders={openFolders}
-              level={level}
+              level={level + 1}
               editable={editable}
               data={data}
               subFolders={dataChildren}

@@ -41,7 +41,7 @@ const TreeStructure = ({
   folderIdMarkedByDefault,
   defaultOpenFolders,
   folderChild,
-  maximumLevelsOfFoldersAllowed,
+  maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
   const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
@@ -173,10 +173,6 @@ const TreeStructure = ({
       )}
     </div>
   );
-};
-
-TreeStructure.defaultProps = {
-  maximumLevelsOfFoldersAllowed: MAX_LEVEL_FOR_FOLDERS,
 };
 
 export default TreeStructure;

@@ -127,7 +127,7 @@ const TreeStructure = ({
       {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
-          level={0}
+          level={1}
           data={data}
           subFolders={data}
           editable={editable}

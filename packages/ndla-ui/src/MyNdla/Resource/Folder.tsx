@@ -136,7 +136,7 @@ const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItem
   return (
     <FolderWrapper to={link}>
       <FolderIconWrapper type={type}>
-        <FolderOutlined aria-label={t('myNdla.folder')} />
+        <FolderOutlined aria-label={t('myNdla.folder.folder')} />
       </FolderIconWrapper>
       <FolderTitle>{title}</FolderTitle>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />

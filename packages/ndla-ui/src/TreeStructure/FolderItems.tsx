@@ -33,7 +33,7 @@ const StyledLI = styled.li`
 const FolderItems = ({
   loading,
   subFolders,
-  idPaths,
+  level,
   editable,
   data,
   onCloseFolder,
@@ -49,13 +49,12 @@ const FolderItems = ({
   openOnFolderClick,
   focusedFolderId,
   setFocusedFolderId,
-  firstLevel,
   folderChild,
   maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
-  <StyledUL role="group" firstLevel={firstLevel}>
+  <StyledUL role="group" firstLevel={level === 0}>
     {subFolders.map(({ name, data: dataChildren, id, url, icon }, _index) => {
-      const newIdPaths = [...idPaths, _index];
+      const nextLevel = level + 1;
       const isOpen = openFolders?.includes(id);
       return (
         <StyledLI key={id} role="treeitem">
@@ -74,8 +73,8 @@ const FolderItems = ({
               onMarkFolder={onMarkFolder}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
-              hideArrow={dataChildren?.length === 0 || newIdPaths.length >= maximumLevelsOfFoldersAllowed}
-              noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
+              hideArrow={dataChildren?.length === 0 || nextLevel >= maximumLevelsOfFoldersAllowed}
+              noPaddingWhenArrowIsHidden={editable && level === 0 && dataChildren?.length === 0}
               setFocusedFolderId={setFocusedFolderId}
               folderChild={folderChild}
             />
@@ -93,7 +92,7 @@ const FolderItems = ({
               newFolder={newFolder}
               visibleFolders={visibleFolders}
               openFolders={openFolders}
-              idPaths={newIdPaths}
+              level={nextLevel}
               editable={editable}
               data={data}
               subFolders={dataChildren}
@@ -107,7 +106,6 @@ const FolderItems = ({
               openOnFolderClick={openOnFolderClick}
               focusedFolderId={focusedFolderId}
               setFocusedFolderId={setFocusedFolderId}
-              firstLevel={false}
               folderChild={folderChild}
               maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
             />

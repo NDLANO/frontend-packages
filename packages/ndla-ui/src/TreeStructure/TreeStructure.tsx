@@ -127,7 +127,7 @@ const TreeStructure = ({
       {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
-          idPaths={[]}
+          level={0}
           data={data}
           subFolders={data}
           editable={editable}
@@ -145,7 +145,6 @@ const TreeStructure = ({
           loading={loading}
           focusedFolderId={focusedFolderId}
           setFocusedFolderId={setFocusedFolderId}
-          firstLevel
           folderChild={folderChild}
           maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
         />

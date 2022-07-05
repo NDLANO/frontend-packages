@@ -67,10 +67,9 @@ export interface FolderItemsProps extends CommonFolderProps {
   openFolders: string[];
   markedFolderId?: string;
   onMarkFolder: (id: string) => void;
-  idPaths: number[];
+  level: number;
   focusedFolderId: string | undefined;
   setFocusedFolderId: SetFocusedFolderId;
-  firstLevel: boolean;
   keyNavigationFocusIsCreateFolderButton?: boolean;
   icon?: ReactNode;
   folderChild?: FolderChildFuncType;

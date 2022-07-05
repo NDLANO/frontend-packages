@@ -23,6 +23,7 @@ interface Props<T extends object> extends InputProps {
   values?: T[];
   testid?: string;
 }
+
 const DropdownInput = <T extends object>({
   multiSelect,
   testid,

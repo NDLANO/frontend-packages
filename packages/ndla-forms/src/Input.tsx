@@ -1,7 +1,7 @@
 import { SerializedStyles } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
-import React, { forwardRef, HTMLProps, ReactElement, useEffect, useRef } from 'react';
+import React, { forwardRef, HTMLProps, InputHTMLAttributes, ReactElement, useEffect, useRef } from 'react';
 import { ReactNode } from 'react';
 
 interface BaseInputProps {
@@ -116,7 +116,7 @@ const BaseInput = ({ iconRight, iconLeft, tags, white, warningText, label, child
   );
 };
 
-export interface InputProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLInputElement> {}
+export interface InputProps extends Omit<BaseInputProps, 'children'>, InputHTMLAttributes<HTMLInputElement> {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ iconRight, iconLeft, tags, white, warningText, label, customCss, value = '', ...rest }, ref) => {

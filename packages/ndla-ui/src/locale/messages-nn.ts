@@ -860,6 +860,7 @@ const messages = {
     open: 'Åpne meny',
     close: 'Lukk meny',
   },
+  cancel: 'Avbryt',
   close: 'Lukk',
   title: 'Tittel',
   image: {

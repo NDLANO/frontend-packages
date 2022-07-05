@@ -861,6 +861,7 @@ const messages = {
     open: 'Open menu',
     close: 'Close menu',
   },
+  cancel: 'Cancel',
   close: 'Close',
   title: 'Title',
   image: {

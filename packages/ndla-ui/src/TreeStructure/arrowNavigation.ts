@@ -8,17 +8,17 @@
 
 import { KeyboardEvent } from 'react';
 
-const navigateUp = (openFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
-  const currentIndex = openFolders.findIndex((id) => id === folderId);
-  const target = openFolders[currentIndex - 1];
+const navigateUp = (visibleFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
+  const currentIndex = visibleFolders.findIndex((id) => id === folderId);
+  const target = visibleFolders[currentIndex - 1];
   if (target) {
     setFocusedFolderId(target);
   }
 };
 
-const navigateDown = (openFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
-  const currentIndex = openFolders.findIndex((id) => id === folderId);
-  const target = openFolders[currentIndex + 1];
+const navigateDown = (visibleFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
+  const currentIndex = visibleFolders.findIndex((id) => id === folderId);
+  const target = visibleFolders[currentIndex + 1];
   if (target) {
     setFocusedFolderId(target);
   }
@@ -27,30 +27,25 @@ const navigateDown = (openFolders: string[], folderId: string, setFocusedFolderI
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,
   id: string,
-  openFolders: string[],
+  visibleFolders: string[],
   setFocusedFolderId: (id: string) => void,
   onOpen: (id: string) => void,
   onClose: (id: string) => void,
 ) => {
-  if (e.key === 'ArrowUp') {
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'arrowRight'].includes(e.key)) {
     e.preventDefault();
     e.stopPropagation();
-    return navigateUp(openFolders, id, setFocusedFolderId);
   }
-  if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    e.stopPropagation();
-
-    return navigateDown(openFolders, id, setFocusedFolderId);
-  }
-  if (e.key === 'ArrowLeft') {
-    e.preventDefault();
-    e.stopPropagation();
-    return onClose(id);
-  }
-  if (e.key === 'ArrowRight') {
-    e.preventDefault();
-    e.stopPropagation();
-    return onOpen(id);
+  switch (e.key) {
+    case 'ArrowUp':
+      return navigateUp(visibleFolders, id, setFocusedFolderId);
+    case 'ArrowDown':
+      return navigateDown(visibleFolders, id, setFocusedFolderId);
+    case 'ArrowLeft':
+      return onClose(id);
+    case 'ArrowRight':
+      return onOpen(id);
+    default:
+      return;
   }
 };

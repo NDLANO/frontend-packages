@@ -50,9 +50,9 @@ export const getFolderName = (data: FolderStructureProps[], findId: string | und
 };
 
 // Her må openFolders brukes. Må filtrere bort usynlige mapper
-export const flattenFolders = (folders: FolderStructureProps[], openFolders: string[]): string[] => {
+export const flattenFolders = (folders: FolderStructureProps[], openFolders?: string[]): string[] => {
   return folders.reduce((acc, { data, id }) => {
-    if (!openFolders.includes(id)) {
+    if (openFolders && !openFolders?.includes(id)) {
       return [...acc, id];
     }
     if (!data) {

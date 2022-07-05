@@ -53,7 +53,7 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
-  background: ${(p) => (p.white ? '#fff' : colors.brand.greyLightest)};
+  background: ${(p) => (p.white ? colors.white : colors.brand.greyLightest)};
   align-items: center;
   justify-content: flex-start;
   border: 1px solid ${colors.brand.greyLighter};
@@ -61,9 +61,11 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
   padding-right: ${spacing.small};
+
   &:focus-within {
     border-color: ${colors.brand.primary};
   }
+
   input,
   textarea {
     width: inherit;
@@ -79,15 +81,18 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
       outline: none;
     }
   }
+
   input {
     padding: ${spacing.xsmall} ${spacing.small};
   }
+
   textarea {
     padding: 0 ${spacing.small};
     height: 20px;
     margin: 14px 0;
     resize: none;
   }
+
   .c-icon {
     width: 24px;
     height: 24px;

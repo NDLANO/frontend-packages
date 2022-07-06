@@ -11,35 +11,29 @@ import React, { ReactNode } from 'react';
 export interface FolderStructureProps {
   id: string;
   name: string;
-  isOpen?: boolean;
-  data?: FolderStructureProps[];
+  subfolders: FolderStructureProps[];
   isFavorite?: boolean;
   status?: string;
   openAsDefault?: boolean;
-  url?: string;
   icon?: ReactNode;
 }
 
-export interface NewFolderProps {
-  parentId?: string;
-  idPaths: number[];
-}
-
 interface CommonFolderProps {
-  data: FolderStructureProps[];
   editable?: boolean;
   loading?: boolean;
   openOnFolderClick?: boolean;
+  onSelectFolder?: (id: string) => void;
 }
 
 export interface TreeStructureProps extends CommonFolderProps {
+  folders: FolderStructureProps[];
   framed?: boolean;
   label?: string;
   folderIdMarkedByDefault?: string;
   onNewFolder: (name: string, parentId: string | undefined) => Promise<string>;
   defaultOpenFolders?: string[];
   folderChild?: FolderChildFuncType;
-  maximumLevelsOfFoldersAllowed: number;
+  maximumLevelsOfFoldersAllowed?: number;
 }
 
 export type onCreateNewFolderProp = ({
@@ -56,7 +50,7 @@ export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | un
 export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
 
 export interface FolderItemsProps extends CommonFolderProps {
-  subFolders: FolderStructureProps[];
+  folders: FolderStructureProps[];
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onSaveNewFolder: (name: string, parentId: string) => void;

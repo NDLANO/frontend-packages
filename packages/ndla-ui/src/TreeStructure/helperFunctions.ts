@@ -1,12 +1,12 @@
 import { FolderStructureProps } from './TreeStructure.types';
 
 export const getPathOfFolder = (data: FolderStructureProps[], findId: string): string[] => {
-  const paths = (dataChildren: FolderStructureProps[], path: string[]): string[] => {
-    for (const { id, data: dataChildrenSub } of dataChildren) {
+  const paths = (folders: FolderStructureProps[], path: string[]): string[] => {
+    for (const { id, subfolders } of folders) {
       if (id === findId) {
         return [...path, id];
-      } else if (dataChildrenSub?.length) {
-        return paths(dataChildrenSub, [...path, id]);
+      } else if (subfolders?.length) {
+        return paths(subfolders, [...path, id]);
       }
     }
     return [];
@@ -20,7 +20,7 @@ export const getFolderName = (data: FolderStructureProps[], findId: string | und
   }
   let folderName: string | undefined;
   const paths = (dataChildren: FolderStructureProps[]) => {
-    dataChildren.some(({ id, name, data: dataChildrenSub }, _index) => {
+    dataChildren.some(({ id, name, subfolders: dataChildrenSub }, _index) => {
       if (id === findId) {
         folderName = name;
         return true;
@@ -35,14 +35,15 @@ export const getFolderName = (data: FolderStructureProps[], findId: string | und
 };
 
 // Her må openFolders brukes. Må filtrere bort usynlige mapper
-export const flattenFolders = (folders: FolderStructureProps[], openFolders?: string[]): string[] => {
-  return folders.reduce((acc, { data, id }) => {
+
+export const flattenFolders = (folders: FolderStructureProps[], openFolders?: string[]): FolderStructureProps[] => {
+  return folders.reduce((acc, { subfolders: data, id, ...rest }) => {
     if (openFolders && !openFolders?.includes(id)) {
-      return [...acc, id];
+      return [...acc, { subfolders: data, id, ...rest }];
     }
     if (!data) {
-      return [...acc, id];
+      return [...acc, { subfolders: data, id, ...rest }];
     }
-    return [...acc, id, ...flattenFolders(data, openFolders)];
-  }, [] as string[]);
+    return [...acc, { subfolders: data, id, ...rest }, ...flattenFolders(data, openFolders)];
+  }, [] as FolderStructureProps[]);
 };

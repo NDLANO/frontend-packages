@@ -31,11 +31,12 @@ const AddFolderWrapper = styled.div`
 `;
 
 const TreeStructure = ({
-  data,
+  folders,
   label,
   editable,
   loading,
   onNewFolder,
+  onSelectFolder,
   openOnFolderClick,
   framed,
   folderIdMarkedByDefault,
@@ -47,12 +48,14 @@ const TreeStructure = ({
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0]?.id);
+  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || folders[0]?.id);
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18
 
-  const visibleFolders = useMemo(() => flattenFolders(data, openFolders), [data, openFolders]);
+  const visibleFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]).map(
+    (folder) => folder.id,
+  );
 
   useEffect(() => {
     if (defaultOpenFolders) {
@@ -72,8 +75,8 @@ const TreeStructure = ({
     // Did we just closed a folder with a marked folder inside it?
     // If so, we need to mark the folder we just closed.
     if (markedFolderId) {
-      const closingFolderPath = getPathOfFolder(data, id);
-      const markedFolderPath = getPathOfFolder(data, markedFolderId);
+      const closingFolderPath = getPathOfFolder(folders, id);
+      const markedFolderPath = getPathOfFolder(folders, markedFolderId);
       const markedFolderIsSubPath = closingFolderPath.every(
         (folderId, _index) => markedFolderPath[_index] === folderId,
       );
@@ -115,7 +118,7 @@ const TreeStructure = ({
     setFocusedFolderId(id);
   };
 
-  const paths = getPathOfFolder(data, markedFolderId || '');
+  const paths = getPathOfFolder(folders, markedFolderId || '');
   const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
@@ -123,9 +126,9 @@ const TreeStructure = ({
       {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
+          onSelectFolder={onSelectFolder}
           level={1}
-          data={data}
-          subFolders={data}
+          folders={folders}
           editable={editable}
           onOpenFolder={onOpenFolder}
           onCloseFolder={onCloseFolder}
@@ -151,7 +154,7 @@ const TreeStructure = ({
             tooltip={
               canAddFolder
                 ? t('myNdla.newFolderUnder', {
-                    folderName: getFolderName(data, markedFolderId),
+                    folderName: getFolderName(folders, markedFolderId),
                   })
                 : t('myNdla.maxFoldersAlreadyAdded')
             }>

@@ -32,10 +32,10 @@ const StyledLI = styled.li`
 
 const FolderItems = ({
   loading,
-  subFolders,
+  folders,
   level,
   editable,
-  data,
+  onSelectFolder,
   onCloseFolder,
   onOpenFolder,
   onCreateNewFolder,
@@ -53,14 +53,14 @@ const FolderItems = ({
   maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={level === 1}>
-    {subFolders.map(({ name, data: dataChildren, id, url, icon }, _index) => {
+    {folders.map(({ name, subfolders, id, icon }, _index) => {
       const isOpen = openFolders?.includes(id);
       return (
         <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
               icon={icon}
-              url={url}
+              onSelectFolder={onSelectFolder}
               openOnFolderClick={openOnFolderClick}
               loading={loading}
               isOpen={isOpen}
@@ -72,8 +72,8 @@ const FolderItems = ({
               onMarkFolder={onMarkFolder}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
-              hideArrow={dataChildren?.length === 0 || level > maximumLevelsOfFoldersAllowed}
-              noPaddingWhenArrowIsHidden={editable && level === 1 && dataChildren?.length === 0}
+              hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
+              noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
               setFocusedFolderId={setFocusedFolderId}
               folderChild={folderChild}
             />
@@ -86,16 +86,16 @@ const FolderItems = ({
               onSaveNewFolder={onSaveNewFolder}
             />
           )}
-          {dataChildren && isOpen && (
+          {subfolders && isOpen && (
             <FolderItems
+              onSelectFolder={onSelectFolder}
               loading={loading}
               newFolderParentId={newFolderParentId}
               visibleFolders={visibleFolders}
               openFolders={openFolders}
               level={level + 1}
               editable={editable}
-              data={data}
-              subFolders={dataChildren}
+              folders={subfolders}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
               onCreateNewFolder={onCreateNewFolder}

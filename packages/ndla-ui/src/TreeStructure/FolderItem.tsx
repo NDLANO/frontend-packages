@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { KeyboardEvent, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
@@ -85,6 +85,7 @@ interface Props {
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onMarkFolder: (id: string) => void;
+  onSelectFolder?: (id: string) => void;
   isOpen: boolean;
   markedFolderId?: string;
   focusedFolderId?: string;
@@ -93,7 +94,6 @@ interface Props {
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
   setFocusedFolderId: SetFocusedFolderId;
-  url?: string;
   icon?: React.ReactNode;
   noPaddingWhenArrowIsHidden?: boolean;
   folderChild?: FolderChildFuncType;
@@ -108,28 +108,37 @@ const FolderItem = ({
   onCloseFolder,
   onOpenFolder,
   onMarkFolder,
+  onSelectFolder,
   isOpen,
   markedFolderId,
   focusedFolderId,
   openOnFolderClick,
   setFocusedFolderId,
   icon,
-  url,
   noPaddingWhenArrowIsHidden,
   folderChild,
 }: Props) => {
-  const folderNameLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const folderNameButtonRef = useRef<HTMLButtonElement | null>(null);
-  useEffect(() => {
-    if (focusedFolderId === id) {
-      if (url && folderNameLinkRef.current) {
-        folderNameLinkRef.current.focus();
-      } else if (folderNameButtonRef.current) {
-        folderNameButtonRef.current.focus();
+  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
+  const marked = markedFolderId === id;
+
+  const handleMarkFolder = () => {
+    onMarkFolder(id);
+    if (openOnFolderClick) {
+      if (isOpen) {
+        onCloseFolder(id);
+      } else {
+        onOpenFolder(id);
       }
     }
-  }, [focusedFolderId, folderNameLinkRef, folderNameButtonRef, url, id]);
-  const marked = markedFolderId === id;
+  };
+
+  useEffect(() => {
+    if (focusedFolderId === id) {
+      if (ref.current) {
+        ref.current.focus();
+      }
+    }
+  }, [focusedFolderId, ref, id]);
   return (
     <FolderItemWrapper>
       {!hideArrow && (
@@ -141,36 +150,10 @@ const FolderItem = ({
           <ArrowDropDown />
         </OpenButton>
       )}
-      {url ? (
-        <FolderNameLink
-          ref={folderNameLinkRef}
-          className="folder"
-          onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)}
-          noArrow={hideArrow}
-          to={loading ? '' : url}
-          tabIndex={marked ? 0 : -1}
-          marked={marked}
-          onFocus={() => {
-            setFocusedFolderId(id);
-          }}
-          onClick={() => {
-            onMarkFolder(id);
-            if (openOnFolderClick) {
-              if (isOpen) {
-                onCloseFolder(id);
-              } else {
-                onOpenFolder(id);
-              }
-            }
-          }}>
-          {icon || <FolderOutlined />}
-          {name}
-        </FolderNameLink>
-      ) : (
+      {onSelectFolder ? (
         <>
           <FolderName
-            ref={folderNameButtonRef}
-            className="folder"
+            ref={ref}
             onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
             tabIndex={marked ? 0 : -1}
@@ -180,14 +163,8 @@ const FolderItem = ({
               setFocusedFolderId(id);
             }}
             onClick={() => {
-              onMarkFolder(id);
-              if (openOnFolderClick) {
-                if (isOpen) {
-                  onCloseFolder(id);
-                } else {
-                  onOpenFolder(id);
-                }
-              }
+              handleMarkFolder();
+              onSelectFolder(id);
             }}>
             {icon || <FolderOutlined />}
             {name}
@@ -198,6 +175,25 @@ const FolderItem = ({
             </WrapperForFolderChild>
           )}
         </>
+      ) : (
+        <FolderNameLink
+          ref={ref}
+          onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
+            arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)
+          }
+          noArrow={hideArrow}
+          to={loading ? '' : `/${id}`}
+          tabIndex={marked ? 0 : -1}
+          marked={marked}
+          onFocus={() => {
+            setFocusedFolderId(id);
+          }}
+          onClick={() => {
+            handleMarkFolder();
+          }}>
+          {icon || <FolderOutlined />}
+          {name}
+        </FolderNameLink>
       )}
     </FolderItemWrapper>
   );

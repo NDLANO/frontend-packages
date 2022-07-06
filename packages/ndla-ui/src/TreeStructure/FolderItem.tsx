@@ -141,6 +141,7 @@ const FolderItem = ({
       }
     }
   }, [focusedFolderId, ref, id]);
+
   return (
     <FolderItemWrapper>
       {!hideArrow && (

@@ -81,7 +81,12 @@ const TreeStructure = ({
         (folderId, _index) => markedFolderPath[_index] === folderId,
       );
       if (markedFolderIsSubPath) {
-        setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+        if (onSelectFolder) {
+          setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+          onSelectFolder(closingFolderPath[closingFolderPath.length - 1]);
+        } else {
+          setFocusedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+        }
       }
     }
     setOpenFolders(openFolders.filter((folder) => folder !== id));

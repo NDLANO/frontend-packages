@@ -185,7 +185,7 @@ const FolderItem = ({
           }
           noArrow={hideArrow}
           to={loading ? '' : `/${id}`}
-          tabIndex={marked || (level === 1 && !isOpen) ? 0 : -1}
+          tabIndex={marked || level === 1 ? 0 : -1}
           marked={marked}
           onFocus={() => {
             setFocusedFolderId(id);

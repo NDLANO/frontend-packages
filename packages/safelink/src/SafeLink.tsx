@@ -6,7 +6,7 @@
  *
  */
 
-import React, { HTMLAttributes, MutableRefObject, ReactNode, useContext } from 'react';
+import React, { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useContext } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
@@ -34,28 +34,31 @@ type Props = {
 export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
-const SafeLink = ({ to, replace, children, showNewWindowIcon, tabIndex, ref, ...rest }: SafeLinkProps) => {
-  const isMissingRouterContext = useContext(MissingRouterContext);
 
-  if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
-    const href = typeof to === 'string' ? to : '#';
+const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
+  ({ to, replace, children, showNewWindowIcon, tabIndex, ...rest }, ref) => {
+    const isMissingRouterContext = useContext(MissingRouterContext);
+
+    if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
+      const href = typeof to === 'string' ? to : '#';
+      return (
+        <>
+          <a href={href} ref={ref} {...rest}>
+            {children}
+            {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+          </a>
+        </>
+      );
+    }
+
     return (
-      <>
-        <a href={href} ref={ref} {...rest}>
-          {children}
-          {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
-        </a>
-      </>
+      // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
+      <Link ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ''} replace={replace} {...rest}>
+        {children}
+        {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+      </Link>
     );
-  }
-
-  return (
-    // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
-    <Link ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ''} replace={replace} {...rest}>
-      {children}
-      {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
-    </Link>
-  );
-};
+  },
+);
 
 export default SafeLink;

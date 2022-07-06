@@ -82,6 +82,7 @@ const FolderNameLink = FolderName.withComponent(SafeLink);
 interface Props {
   name: string;
   id: string;
+  level: number;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onMarkFolder: (id: string) => void;
@@ -102,6 +103,7 @@ interface Props {
 const FolderItem = ({
   hideArrow,
   loading,
+  level,
   name,
   id,
   visibleFolders,
@@ -183,7 +185,7 @@ const FolderItem = ({
           }
           noArrow={hideArrow}
           to={loading ? '' : `/${id}`}
-          tabIndex={marked ? 0 : -1}
+          tabIndex={marked || (level === 1 && !isOpen) ? 0 : -1}
           marked={marked}
           onFocus={() => {
             setFocusedFolderId(id);

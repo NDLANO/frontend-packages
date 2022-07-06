@@ -59,6 +59,7 @@ const FolderItems = ({
         <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
+              level={level}
               icon={icon}
               onSelectFolder={onSelectFolder}
               openOnFolderClick={openOnFolderClick}

@@ -21,7 +21,7 @@ const Container = styled.div`
   max-width: 600px;
 `;
 
-export const MY_FOLDERS_ID = 'MY_FOLDERS_ID';
+export const MY_FOLDERS_ID = 'folders';
 
 const menuItemsForFolderChild = (id: string, editText: string, deleteText: string): MenuItemProps[] => [
   {

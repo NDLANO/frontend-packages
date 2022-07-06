@@ -184,7 +184,7 @@ const FolderItem = ({
             arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)
           }
           noArrow={hideArrow}
-          to={loading ? '' : `/${id}`}
+          to={loading ? '' : `/minndla/${level > 1 ? 'folders/' : ''}${id}`}
           tabIndex={marked || level === 1 ? 0 : -1}
           marked={marked}
           onFocus={() => {

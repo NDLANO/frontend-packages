@@ -36,7 +36,7 @@ export interface TreeStructureProps extends CommonFolderProps {
   framed?: boolean;
   label?: string;
   folderIdMarkedByDefault?: string;
-  onNewFolder: (props: { value: string; parentId?: string; idPaths: number[] }) => Promise<string>;
+  onNewFolder: (name: string, parentId: string | undefined) => Promise<string>;
   defaultOpenFolders?: string[];
   folderChild?: FolderChildFuncType;
   maximumLevelsOfFoldersAllowed: number;
@@ -59,10 +59,10 @@ export interface FolderItemsProps extends CommonFolderProps {
   subFolders: FolderStructureProps[];
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  onSaveNewFolder: (value: string) => void;
+  onSaveNewFolder: (name: string, parentId: string) => void;
   onCancelNewFolder: () => void;
-  onCreateNewFolder: onCreateNewFolderProp;
-  newFolder: NewFolderProps | undefined;
+  onCreateNewFolder: (parentId: string) => void;
+  newFolderParentId: string | undefined;
   visibleFolders: string[];
   openFolders: string[];
   markedFolderId?: string;

@@ -53,14 +53,15 @@ const StyledInput = styled.input`
 `;
 
 interface FolderNameInputProps {
-  onSaveNewFolder: (value: string) => void;
+  onSaveNewFolder: (name: string, parentId: string) => void;
+  parentId: string;
   onCancelNewFolder: () => void;
   loading?: boolean;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: FolderNameInputProps) => {
+const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading }: FolderNameInputProps) => {
   const { t } = useTranslation();
-  const [value, setValue] = useState<string>(t('treeStructure.newFolder.defaultName'));
+  const [name, setName] = useState<string>(t('treeStructure.newFolder.defaultName'));
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: Folder
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
           disabled={loading}
-          value={value}
+          value={name}
           onBlur={() => onCancelNewFolder()}
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
@@ -90,14 +91,14 @@ const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: Folder
               return;
             }
             if (e.key === 'Enter' || e.key === 'Tab') {
-              onSaveNewFolder(value);
+              onSaveNewFolder(name, parentId);
               e.preventDefault();
             }
             return;
           }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const target = e.target as HTMLInputElement;
-            setValue(target.value);
+            setName(target.value);
           }}
         />
         {loading && <Spinner size="small" />}

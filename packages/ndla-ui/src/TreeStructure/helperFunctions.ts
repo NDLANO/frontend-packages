@@ -14,21 +14,6 @@ export const getPathOfFolder = (data: FolderStructureProps[], findId: string): s
   return paths(data, []);
 };
 
-export const getIdPathsOfFolder = (data: FolderStructureProps[], findId: string): number[] => {
-  let currentPath: number[] = [];
-  const paths = (dataChildren: FolderStructureProps[], path: number[]) => {
-    dataChildren.forEach(({ id, data: dataChildrenSub }, _index) => {
-      if (id === findId) {
-        currentPath = [...path, _index];
-      } else if (dataChildrenSub?.length) {
-        paths(dataChildrenSub, [...path, _index]);
-      }
-    });
-  };
-  paths(data, []);
-  return currentPath;
-};
-
 export const getFolderName = (data: FolderStructureProps[], findId: string | undefined): string | undefined => {
   if (!findId) {
     return undefined;

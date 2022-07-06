@@ -41,7 +41,7 @@ const FolderItems = ({
   onCreateNewFolder,
   onCancelNewFolder,
   onSaveNewFolder,
-  newFolder,
+  newFolderParentId,
   visibleFolders,
   openFolders,
   markedFolderId,
@@ -78,8 +78,9 @@ const FolderItems = ({
               folderChild={folderChild}
             />
           </div>
-          {newFolder?.parentId === id && (
+          {newFolderParentId === id && (
             <FolderNameInput
+              parentId={newFolderParentId}
               loading={loading}
               onCancelNewFolder={onCancelNewFolder}
               onSaveNewFolder={onSaveNewFolder}
@@ -88,7 +89,7 @@ const FolderItems = ({
           {dataChildren && isOpen && (
             <FolderItems
               loading={loading}
-              newFolder={newFolder}
+              newFolderParentId={newFolderParentId}
               visibleFolders={visibleFolders}
               openFolders={openFolders}
               level={level + 1}

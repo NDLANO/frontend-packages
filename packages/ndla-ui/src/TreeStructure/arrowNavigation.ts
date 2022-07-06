@@ -11,7 +11,7 @@ import { KeyboardEvent } from 'react';
 const navigateUp = (visibleFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
   const currentIndex = visibleFolders.findIndex((id) => id === folderId);
   const target = visibleFolders[currentIndex - 1];
-  if (target) {
+  if (target !== undefined) {
     setFocusedFolderId(target);
   }
 };
@@ -19,7 +19,7 @@ const navigateUp = (visibleFolders: string[], folderId: string, setFocusedFolder
 const navigateDown = (visibleFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
   const currentIndex = visibleFolders.findIndex((id) => id === folderId);
   const target = visibleFolders[currentIndex + 1];
-  if (target) {
+  if (target !== undefined) {
     setFocusedFolderId(target);
   }
 };

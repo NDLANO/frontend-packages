@@ -862,6 +862,7 @@ const messages = {
   close: 'Lukk',
   title: 'Tittel',
   cancel: 'Avbryt',
+  save: 'Lagre',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bildetekst',

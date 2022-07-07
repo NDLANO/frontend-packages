@@ -864,6 +864,7 @@ const messages = {
   cancel: 'Cancel',
   close: 'Close',
   title: 'Title',
+  save: 'Save',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',

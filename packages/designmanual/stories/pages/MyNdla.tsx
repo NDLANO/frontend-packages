@@ -115,7 +115,7 @@ export const MyNdla = () => {
               tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
               description={'En helt vanlig beskrivelse.'}
               resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                src: 'https://m.media-amazon.com/images/I/41unuBlc5IL.jpg',
                 alt: 'alt',
               }}
               link={''}

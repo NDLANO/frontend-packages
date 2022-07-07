@@ -88,6 +88,7 @@ const StyledImageWrapper = styled.div<StyledImageProps>`
     width: 54px;
     height: 40px;
   }
+  overflow: hidden;
 `;
 
 const StyledImage = styled(Image)`

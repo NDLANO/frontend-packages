@@ -101,17 +101,15 @@ const TreeStructure = ({
   };
 
   const onSaveNewFolder = (name: string, parentId: string) => {
-    if (newFolderParentId) {
-      onNewFolder(name, parentId).then((newFolderId) => {
-        if (newFolderId) {
-          setMarkedFolderId(newFolderId);
-          setFocusedFolderId(newFolderId);
+    onNewFolder(name, parentId).then((newFolderId) => {
+      if (newFolderId) {
+        setMarkedFolderId(newFolderId);
+        setFocusedFolderId(newFolderId);
 
-          // TODO: Remove? Open current folder in case it was closed..
-          setOpenFolders(uniq([...openFolders, parentId]));
-        }
-      });
-    }
+        // TODO: Remove? Open current folder in case it was closed..
+        setOpenFolders(uniq([...openFolders, parentId]));
+      }
+    });
   };
 
   const onCancelNewFolder = () => {

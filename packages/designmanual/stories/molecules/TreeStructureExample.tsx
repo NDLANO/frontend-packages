@@ -170,7 +170,7 @@ export const TreeStructureExampleComponent = ({
         openOnFolderClick={openOnFolderClick}
         folderIdMarkedByDefault={folderIdMarkedByDefault}
         defaultOpenFolders={defaultOpenFolders}
-        onNewFolder={async (name: string, parentId: string | undefined) => {
+        onNewFolder={async (name: string, parentId: string) => {
           // Just as an example, pretend to save to database and update the structure
           // eslint-disable-next-line no-console
           console.log(`Example, create new folder under ${parentId} with name ${name}`);

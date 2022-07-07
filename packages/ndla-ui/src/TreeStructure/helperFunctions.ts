@@ -20,12 +20,12 @@ export const getFolderName = (data: FolderStructureProps[], findId: string | und
   }
   let folderName: string | undefined;
   const paths = (dataChildren: FolderStructureProps[]) => {
-    dataChildren.some(({ id, name, subfolders: dataChildrenSub }, _index) => {
+    dataChildren.some(({ id, name, subfolders }, _index) => {
       if (id === findId) {
         folderName = name;
         return true;
-      } else if (dataChildrenSub?.length) {
-        return paths(dataChildrenSub);
+      } else if (subfolders?.length) {
+        return paths(subfolders);
       }
       return false;
     });
@@ -39,6 +39,6 @@ export const flattenFolders = (folders: FolderStructureProps[], openFolders?: st
     if (!subfolders || (openFolders && !openFolders.includes(id))) {
       return acc.concat({ subfolders, id, ...rest });
     }
-    return acc.concat({ subfolders, id, ...rest }, ...flattenFolders(subfolders, openFolders));
+    return acc.concat({ subfolders, id, ...rest }, flattenFolders(subfolders, openFolders));
   }, [] as FolderStructureProps[]);
 };

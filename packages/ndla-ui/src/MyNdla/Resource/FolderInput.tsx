@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { IconButton } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { Cross } from '@ndla/icons/action';
-import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
 import { Input } from '@ndla/forms';
@@ -51,14 +51,13 @@ const StyledInput = styled(Input)`
 interface Props {
   onAddFolder: (name: string) => void;
   onClose: () => void;
-  autoFocus?: boolean;
+  autoSelect?: boolean;
 }
 
-const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
+const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
   const { t } = useTranslation();
   const newFolderText = t('treeStructure.newFolder.defaultName');
   const [input, setInput] = useState<string>(newFolderText);
-  const [mounted, setMounted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -75,16 +74,9 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
     }
   };
 
-  useEffect(() => {
-    if (mounted && autoFocus) {
-      inputRef.current?.select();
-    } else {
-      setMounted(true);
-    }
-  }, [mounted, autoFocus]);
-
   return (
     <StyledInput
+      autoSelect={autoSelect}
       customCss={inputWrapperStyle}
       warningText={!input.trim() ? t('myNdla.folder.missingName') : undefined}
       ref={inputRef}

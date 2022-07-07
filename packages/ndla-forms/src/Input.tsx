@@ -1,7 +1,7 @@
 import { SerializedStyles } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
-import React, { forwardRef, HTMLProps, InputHTMLAttributes, ReactElement, useEffect, useRef } from 'react';
+import React, { HTMLProps, ReactElement, useEffect, useRef } from 'react';
 import { ReactNode } from 'react';
 
 interface BaseInputProps {
@@ -9,6 +9,7 @@ interface BaseInputProps {
   iconLeft?: ReactNode;
   tags?: ReactNode;
   white?: boolean;
+  autoSelect?: boolean;
   warningText?: string;
   customCss?: SerializedStyles;
   label?: string;
@@ -116,24 +117,40 @@ const BaseInput = ({ iconRight, iconLeft, tags, white, warningText, label, child
   );
 };
 
-export interface InputProps extends Omit<BaseInputProps, 'children'>, InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLInputElement> {}
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ iconRight, iconLeft, tags, white, warningText, label, customCss, value = '', ...rest }, ref) => {
-    return (
-      <BaseInput
-        iconRight={iconRight}
-        iconLeft={iconLeft}
-        tags={tags}
-        white={white}
-        warningText={warningText}
-        customCss={customCss}
-        label={label}>
-        <input value={value} ref={ref} {...rest} />
-      </BaseInput>
-    );
-  },
-);
+export const Input = ({
+  iconRight,
+  iconLeft,
+  tags,
+  white,
+  warningText,
+  label,
+  customCss,
+  value = '',
+  autoSelect,
+  ...rest
+}: InputProps) => {
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (autoSelect && ref.current) {
+      ref.current.select();
+    }
+  }, [autoSelect]);
+  return (
+    <BaseInput
+      iconRight={iconRight}
+      iconLeft={iconLeft}
+      tags={tags}
+      white={white}
+      warningText={warningText}
+      customCss={customCss}
+      label={label}>
+      <input ref={ref} value={value} {...rest} />
+    </BaseInput>
+  );
+};
 
 export interface TextAreaProps extends Omit<BaseInputProps, 'children'>, HTMLProps<HTMLTextAreaElement> {}
 

@@ -35,13 +35,10 @@ export const getFolderName = (data: FolderStructureProps[], findId: string | und
 };
 
 export const flattenFolders = (folders: FolderStructureProps[], openFolders?: string[]): FolderStructureProps[] => {
-  return folders.reduce((acc, { subfolders: data, id, ...rest }) => {
-    if (openFolders && !openFolders?.includes(id)) {
-      return [...acc, { subfolders: data, id, ...rest }];
+  return folders.reduce((acc, { subfolders, id, ...rest }) => {
+    if (!subfolders || (openFolders && !openFolders.includes(id))) {
+      return acc.concat({ subfolders, id, ...rest });
     }
-    if (!data) {
-      return [...acc, { subfolders: data, id, ...rest }];
-    }
-    return [...acc, { subfolders: data, id, ...rest }, ...flattenFolders(data, openFolders)];
+    return acc.concat({ subfolders, id, ...rest }, ...flattenFolders(subfolders, openFolders));
   }, [] as FolderStructureProps[]);
 };

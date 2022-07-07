@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { Spinner } from '@ndla/ui';
+import { Spinner } from '@ndla/icons';
 import { Search } from '@ndla/icons/common';
 //@ts-ignore
 import { getFieldValue } from './dropdownHelper';
@@ -23,6 +23,7 @@ interface Props<T extends object> extends InputProps {
   values?: T[];
   testid?: string;
 }
+
 const DropdownInput = <T extends object>({
   multiSelect,
   testid,

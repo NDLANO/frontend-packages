@@ -861,8 +861,10 @@ const messages = {
     open: 'Open menu',
     close: 'Close menu',
   },
+  cancel: 'Cancel',
   close: 'Close',
   title: 'Title',
+  save: 'Save',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',
@@ -993,6 +995,7 @@ const messages = {
       folder: 'Folder',
       delete: 'Delete',
       edit: 'Edit',
+      missingName: 'Folder name required',
     },
     confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',

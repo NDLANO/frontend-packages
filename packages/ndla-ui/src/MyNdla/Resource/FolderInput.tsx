@@ -10,23 +10,16 @@ import styled from '@emotion/styled';
 import { IconButton } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { Cross } from '@ndla/icons/action';
-import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
+import { Input } from '@ndla/forms';
+import { css } from '@emotion/core';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
   colors.brand.tertiary,
 )}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
-
-const FolderInputWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: ${spacing.small};
-
-  background-image: ${borderStyle};
-`;
 
 const StyledFolderIcon = styled.span`
   display: flex;
@@ -38,29 +31,33 @@ const StyledFolderIcon = styled.span`
   }
 `;
 
-const StyledInput = styled.input`
-  color: ${colors.brand.primary};
-  outline: none;
+const inputWrapperStyle = css`
+  padding: ${spacing.small};
+  background: none;
+  background-image: ${borderStyle};
   border: none;
-  margin-right: auto;
-  line-height: 1.75em;
+`;
 
-  ::selection {
-    background: ${colors.brand.lighter};
+const StyledInput = styled(Input)`
+  && {
+    line-height: 1.75em;
+    color: ${colors.brand.primary};
+    ::selection {
+      background: ${colors.brand.lighter};
+    }
   }
 `;
 
 interface Props {
   onAddFolder: (name: string) => void;
   onClose: () => void;
-  autoFocus?: boolean;
+  autoSelect?: boolean;
 }
 
-const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
+const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
   const { t } = useTranslation();
   const newFolderText = t('treeStructure.newFolder.defaultName');
   const [input, setInput] = useState<string>(newFolderText);
-  const [mounted, setMounted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -68,36 +65,36 @@ const FolderInput = ({ onAddFolder, onClose, autoFocus }: Props) => {
   };
 
   const onKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && input) {
+    if (e.key === 'Enter' && input.trim()) {
       e.preventDefault();
       onAddFolder(input);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      onClose();
     }
   };
 
-  useEffect(() => {
-    if (mounted && autoFocus) {
-      inputRef.current?.select();
-    } else {
-      setMounted(true);
-    }
-  }, [mounted, autoFocus]);
-
   return (
-    <FolderInputWrapper>
-      <StyledFolderIcon>
-        <FolderOutlined />
-      </StyledFolderIcon>
-      <StyledInput
-        ref={inputRef}
-        value={input}
-        onChange={handleInputChange}
-        onKeyDown={onKeydown}
-        aria-label={newFolderText}
-      />
-      <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
-        <Cross />
-      </IconButton>
-    </FolderInputWrapper>
+    <StyledInput
+      autoSelect={autoSelect}
+      customCss={inputWrapperStyle}
+      warningText={!input.trim() ? t('myNdla.folder.missingName') : undefined}
+      ref={inputRef}
+      value={input}
+      onChange={handleInputChange}
+      onKeyDown={onKeydown}
+      aria-label={newFolderText}
+      iconLeft={
+        <StyledFolderIcon>
+          <FolderOutlined />
+        </StyledFolderIcon>
+      }
+      iconRight={
+        <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
+          <Cross />
+        </IconButton>
+      }
+    />
   );
 };
 

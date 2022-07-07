@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import Button from '@ndla/button';
-import { Spinner } from '@ndla/ui';
+import { Spinner } from '@ndla/icons';
 
 const ResourceStats = () => {
   const [isLoading, setIsLoading] = useState(false);

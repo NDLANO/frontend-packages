@@ -9,7 +9,7 @@
 import React, { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Spinner } from '@ndla/ui';
+import { Spinner } from '@ndla/icons';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
 import { getIllegalFiles } from './filetypeHelper';

@@ -109,8 +109,6 @@ export {
 } from './LearningPaths';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 
-export { default as Spinner } from './Spinner';
-
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 
 export { default as ContentTypeResult } from './Search/ContentTypeResult';

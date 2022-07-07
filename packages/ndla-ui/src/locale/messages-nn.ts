@@ -860,8 +860,10 @@ const messages = {
     open: 'Åpne meny',
     close: 'Lukk meny',
   },
+  cancel: 'Avbryt',
   close: 'Lukk',
   title: 'Tittel',
+  save: 'Lagre',
   image: {
     altText: 'Alt-tekst',
     caption: 'Bilettekst',
@@ -992,6 +994,7 @@ const messages = {
       folder: 'Mappe',
       delete: 'Slett',
       edit: 'Rediger',
+      missingName: 'Mappenavn er påkrevd',
     },
     confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje angres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje angres.',

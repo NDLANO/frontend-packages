@@ -7,7 +7,6 @@
  */
 
 import React, { useEffect, useState, useRef, useMemo } from 'react';
-import { uuid } from '@ndla/util';
 import { AddButton } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
@@ -51,10 +50,11 @@ const TreeStructure = ({
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || folders[0]?.id);
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18
+  const rootLevelId = 'treestructure-root';
 
-  const visibleFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]).map(
-    (folder) => folder.id,
+  const visibleFolders = useMemo(
+    () => flattenFolders(folders, openFolders).map((folder) => folder.id),
+    [folders, openFolders],
   );
 
   useEffect(() => {

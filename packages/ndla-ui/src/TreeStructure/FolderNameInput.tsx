@@ -88,16 +88,13 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               onCancelNewFolder();
-              return;
-            }
-            if (e.key === 'Enter' || e.key === 'Tab') {
-              onSaveNewFolder(name, parentId);
+            } else if (e.key === 'Enter' || e.key === 'Tab') {
               e.preventDefault();
+              onSaveNewFolder(name, parentId);
             }
-            return;
           }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const target = e.target as HTMLInputElement;
+            const target = e.target;
             setName(target.value);
           }}
         />

@@ -93,7 +93,7 @@ const TreeStructure = ({
   };
 
   const onOpenFolder = (id: string) => {
-    setOpenFolders(uniq([...openFolders, id]));
+    setOpenFolders(uniq(openFolders.concat(id)));
   };
 
   const onCreateNewFolder = (parentId: string) => {
@@ -106,8 +106,7 @@ const TreeStructure = ({
         setMarkedFolderId(newFolderId);
         setFocusedFolderId(newFolderId);
 
-        // TODO: Remove? Open current folder in case it was closed..
-        setOpenFolders(uniq([...openFolders, parentId]));
+        setOpenFolders(uniq(openFolders.concat(parentId)));
       }
     });
   };

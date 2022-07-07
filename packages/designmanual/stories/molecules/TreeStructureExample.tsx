@@ -14,13 +14,14 @@ import { uuid } from '@ndla/util';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import { User, HashTag } from '@ndla/icons/common';
 import { Pencil, TrashCanOutline } from '@ndla/icons/action';
+import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 
 const Container = styled.div`
   margin-top: 40px;
   max-width: 600px;
 `;
 
-export const MY_FOLDERS_ID = 'MY_FOLDERS_ID';
+export const MY_FOLDERS_ID = 'folders';
 
 const menuItemsForFolderChild = (id: string, editText: string, deleteText: string): MenuItemProps[] => [
   {
@@ -59,19 +60,19 @@ const folderChild =
       />
     );
 
-export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
+export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderStructureProps[] => [
   {
     id: MY_FOLDERS_ID,
     name: 'Mine mapper',
     status: 'private',
     isFavorite: false,
-    data: [
+    subfolders: [
       {
         id: uuid(),
         name: 'Mine favoritter',
         status: 'private',
         isFavorite: false,
-        data: newUser
+        subfolders: newUser
           ? []
           : [
               {
@@ -79,20 +80,20 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
                 name: 'Eksamen',
                 status: 'private',
                 isFavorite: false,
-                data: [
+                subfolders: [
                   {
                     id: uuid(),
                     name: 'Eksamens oppgaver',
                     status: 'private',
                     isFavorite: false,
-                    data: [],
+                    subfolders: [],
                   },
                   {
                     id: uuid(),
                     name: 'Eksamen 2022',
                     status: 'private',
                     isFavorite: false,
-                    data: [],
+                    subfolders: [],
                   },
                 ],
               },
@@ -101,7 +102,7 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
                 name: 'Oppgaver',
                 status: 'private',
                 isFavorite: false,
-                data: [],
+                subfolders: [],
               },
             ],
       },
@@ -109,21 +110,19 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean) => [
   },
 ];
 
-export const STRUCTURE_EXAMPLE_WRAPPED = () => [
+export const STRUCTURE_EXAMPLE_WRAPPED = (): FolderStructureProps[] => [
   {
-    id: uuid(),
+    id: '',
     name: 'Min NDLA',
-    url: 'https://ndla.no',
     icon: <User />,
-    data: [],
+    subfolders: [],
   },
   ...STRUCTURE_EXAMPLE(false),
   {
-    id: uuid(),
+    id: 'tags',
     name: 'Mine tagger',
-    url: 'https://ndla.no',
     icon: <HashTag />,
-    data: [],
+    subfolders: [],
   },
 ];
 
@@ -132,7 +131,7 @@ const generateNewFolder = (name: string, id: string) => ({
   name,
   status: 'private',
   isFavorite: false,
-  data: [],
+  subfolders: [],
   openAsDefault: true,
 });
 
@@ -141,6 +140,7 @@ export const TreeStructureExampleComponent = ({
   label,
   editable,
   framed,
+  onSelectFolder,
   folderIdMarkedByDefault,
   openOnFolderClick,
   defaultOpenFolders,
@@ -150,6 +150,7 @@ export const TreeStructureExampleComponent = ({
   label?: string;
   editable: boolean;
   framed: boolean;
+  onSelectFolder?: (id: string) => void;
   folderIdMarkedByDefault?: string;
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
@@ -163,32 +164,31 @@ export const TreeStructureExampleComponent = ({
       <TreeStructure
         folderChild={withDots ? folderChild(t) : undefined}
         framed={framed}
+        onSelectFolder={onSelectFolder}
         label={label}
         editable={editable}
         openOnFolderClick={openOnFolderClick}
         folderIdMarkedByDefault={folderIdMarkedByDefault}
         defaultOpenFolders={defaultOpenFolders}
-        onNewFolder={async ({ value, idPaths, parentId }: { value: string; idPaths: number[]; parentId?: string }) => {
+        onNewFolder={async (name: string, parentId: string) => {
           // Just as an example, pretend to save to database and update the structure
           // eslint-disable-next-line no-console
-          console.log(`Example, create new folder under ${parentId} with name ${value}`);
+          console.log(`Example, create new folder under ${parentId} with name ${name}`);
           setLoading(true);
           await new Promise((resolve) => setTimeout(resolve, 1000));
           setLoading(false);
           const newFolderId = uuid();
-          await setStructure((oldStructure) => {
-            const newStructure = [...oldStructure];
-            let updateFolderObject = newStructure;
-            idPaths?.forEach((dataIndex, _index) => {
-              updateFolderObject = updateFolderObject[dataIndex].data as FolderStructureProps[];
-            });
-            // toggle open
-            updateFolderObject.unshift(generateNewFolder(value, newFolderId));
-            return newStructure;
+          setStructure((oldStructure) => {
+            const flattenedStructure = flattenFolders(oldStructure);
+            const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
+            if (targetFolder) {
+              targetFolder.subfolders.unshift(generateNewFolder(name, newFolderId));
+            }
+            return oldStructure;
           });
           return newFolderId;
         }}
-        data={structure}
+        folders={structure}
         loading={loading}
       />
     </Container>
@@ -203,6 +203,7 @@ const TreeStructureExample = () => (
       label="Editable"
       editable
       framed
+      onSelectFolder={(id: string) => {}}
       structure={STRUCTURE_EXAMPLE(true)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
     />
@@ -212,12 +213,14 @@ const TreeStructureExample = () => (
       openOnFolderClick={false}
       editable
       framed
+      onSelectFolder={(id: string) => {}}
       structure={STRUCTURE_EXAMPLE(false)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
     />
     <h1>TreeStructure non-editable:</h1>
     <TreeStructureExampleComponent
       label="Static"
+      onSelectFolder={(id: string) => {}}
       openOnFolderClick
       editable={false}
       framed

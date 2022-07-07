@@ -19,7 +19,9 @@ interface StyledButtonProps {
   svgSize: number;
 }
 
-const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
+const StyledMenuButton = styled(MenuButtonReach, {
+  shouldForwardProp: (name) => name !== 'svgSize',
+})<StyledButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;

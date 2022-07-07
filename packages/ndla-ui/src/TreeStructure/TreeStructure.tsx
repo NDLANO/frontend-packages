@@ -7,7 +7,6 @@
  */
 
 import React, { useEffect, useState, useRef, useMemo } from 'react';
-import { uuid } from '@ndla/util';
 import { AddButton } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
@@ -16,9 +15,8 @@ import { spacing, fonts } from '@ndla/core';
 import { uniq } from 'lodash';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
-import { getIdPathsOfFolder, getPathOfFolder, getFolderName } from './helperFunctions';
-import keyboardNavigation, { KEYBOARD_KEYS_OF_INTEREST } from './keyboardNavigation/keyboardNavigation';
-import { NewFolderProps, TreeStructureProps } from './TreeStructure.types';
+import { getPathOfFolder, getFolderName, flattenFolders } from './helperFunctions';
+import { TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -32,26 +30,32 @@ const AddFolderWrapper = styled.div`
 `;
 
 const TreeStructure = ({
-  data,
+  folders,
   label,
   editable,
   loading,
   onNewFolder,
+  onSelectFolder,
   openOnFolderClick,
   framed,
   folderIdMarkedByDefault,
   defaultOpenFolders,
   folderChild,
-  maximumLevelsOfFoldersAllowed,
+  maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
-  const [newFolder, setNewFolder] = useState<NewFolderProps | undefined>();
+  const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || data[0]?.id);
+  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || folders[0]?.id);
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const rootLevelId = useMemo(() => uuid(), []); // TODO: use useId hook when we update to React 18
+  const rootLevelId = 'treestructure-root';
+
+  const visibleFolders = useMemo(
+    () => flattenFolders(folders, openFolders).map((folder) => folder.id),
+    [folders, openFolders],
+  );
 
   useEffect(() => {
     if (defaultOpenFolders) {
@@ -63,54 +67,51 @@ const TreeStructure = ({
 
   useEffect(() => {
     if (!loading) {
-      setNewFolder(undefined);
+      setNewFolderParentId(undefined);
     }
   }, [loading]);
 
-  const onToggleOpen = (id: string) => {
-    if (openFolders.includes(id)) {
-      // Did we just closed a folder with a marked folder inside it?
-      // If so, we need to mark the folder we just closed.
-      if (markedFolderId) {
-        const closingFolderPath = getPathOfFolder(data, id);
-        const markedFolderPath = getPathOfFolder(data, markedFolderId);
-        const markedFolderIsSubPath = closingFolderPath.every(
-          (folderId, _index) => markedFolderPath[_index] === folderId,
-        );
-        if (markedFolderIsSubPath) {
+  const onCloseFolder = (id: string) => {
+    // Did we just closed a folder with a marked folder inside it?
+    // If so, we need to mark the folder we just closed.
+    if (markedFolderId) {
+      const closingFolderPath = getPathOfFolder(folders, id);
+      const markedFolderPath = getPathOfFolder(folders, markedFolderId);
+      const markedFolderIsSubPath = closingFolderPath.every(
+        (folderId, _index) => markedFolderPath[_index] === folderId,
+      );
+      if (markedFolderIsSubPath) {
+        if (onSelectFolder) {
           setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+          onSelectFolder(closingFolderPath[closingFolderPath.length - 1]);
+        } else {
+          setFocusedFolderId(closingFolderPath[closingFolderPath.length - 1]);
         }
       }
-      setOpenFolders(openFolders.filter((folder) => folder !== id));
-    } else {
-      setOpenFolders(uniq([...openFolders, id]));
     }
+    setOpenFolders(openFolders.filter((folder) => folder !== id));
   };
 
-  const onCreateNewFolder = (props: { idPaths: number[]; parentId?: string }) => {
-    setNewFolder(props);
+  const onOpenFolder = (id: string) => {
+    setOpenFolders(uniq(openFolders.concat(id)));
   };
 
-  const onSaveNewFolder = (value: string) => {
-    if (newFolder) {
-      // We would like to create a new folder with the name of value.
-      // Its location in structure is based on newFolder object
-      onNewFolder({ ...newFolder, value }).then((newFolderId) => {
-        if (newFolderId) {
-          setMarkedFolderId(newFolderId);
-          setFocusedFolderId(newFolderId);
-          // Open current folder in case it was closed..
+  const onCreateNewFolder = (parentId: string) => {
+    setNewFolderParentId(parentId);
+  };
 
-          if (newFolder.parentId) {
-            setOpenFolders(uniq([...openFolders, newFolder.parentId]));
-          }
-        }
-      });
-    }
+  const onSaveNewFolder = (name: string, parentId: string) => {
+    onNewFolder(name, parentId).then((newFolderId) => {
+      if (newFolderId) {
+        setMarkedFolderId(newFolderId);
+        setFocusedFolderId(newFolderId);
+        setOpenFolders(uniq(openFolders.concat(parentId)));
+      }
+    });
   };
 
   const onCancelNewFolder = () => {
-    setNewFolder(undefined);
+    setNewFolderParentId(undefined);
   };
 
   const onMarkFolder = (id: string) => {
@@ -118,35 +119,25 @@ const TreeStructure = ({
     setFocusedFolderId(id);
   };
 
-  const paths = getPathOfFolder(data, markedFolderId || '');
+  const paths = getPathOfFolder(folders, markedFolderId || '');
   const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
-    <div
-      ref={treestructureRef}
-      onKeyDown={(e) => {
-        if (wrapperRef.current?.contains(document.activeElement) && KEYBOARD_KEYS_OF_INTEREST.includes(e.key)) {
-          keyboardNavigation({
-            e,
-            data,
-            setFocusedFolderId,
-            focusedFolderId,
-            onToggleOpen,
-            openFolders,
-          });
-        }
-      }}>
+    <div ref={treestructureRef}>
       {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
       <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
-          idPaths={[]}
-          data={data}
+          onSelectFolder={onSelectFolder}
+          level={1}
+          folders={folders}
           editable={editable}
-          onToggleOpen={onToggleOpen}
-          newFolder={newFolder}
+          onOpenFolder={onOpenFolder}
+          onCloseFolder={onCloseFolder}
+          newFolderParentId={newFolderParentId}
           onCreateNewFolder={onCreateNewFolder}
           onCancelNewFolder={onCancelNewFolder}
           onSaveNewFolder={onSaveNewFolder}
+          visibleFolders={visibleFolders}
           openFolders={openFolders}
           markedFolderId={markedFolderId}
           onMarkFolder={onMarkFolder}
@@ -154,7 +145,6 @@ const TreeStructure = ({
           loading={loading}
           focusedFolderId={focusedFolderId}
           setFocusedFolderId={setFocusedFolderId}
-          firstLevel
           folderChild={folderChild}
           maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
         />
@@ -165,16 +155,15 @@ const TreeStructure = ({
             tooltip={
               canAddFolder
                 ? t('myNdla.newFolderUnder', {
-                    folderName: getFolderName(data, markedFolderId),
+                    folderName: getFolderName(folders, markedFolderId),
                   })
-                : t('myNdla.maxFoldersAlreadyAdded')
+                : t('treeStructure.maxFoldersAlreadyAdded')
             }>
             <AddButton
               disabled={!canAddFolder}
               aria-label={t('myNdla.newFolder')}
               onClick={() => {
-                const idPaths = getIdPathsOfFolder(data, markedFolderId || '');
-                setNewFolder({ idPaths, parentId: paths[paths.length - 1] });
+                setNewFolderParentId(markedFolderId);
               }}>
               {t('myNdla.newFolder')}
             </AddButton>
@@ -183,10 +172,6 @@ const TreeStructure = ({
       )}
     </div>
   );
-};
-
-TreeStructure.defaultProps = {
-  maximumLevelsOfFoldersAllowed: MAX_LEVEL_FOR_FOLDERS,
 };
 
 export default TreeStructure;

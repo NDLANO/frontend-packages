@@ -42,12 +42,10 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
     if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
       const href = typeof to === 'string' ? to : '#';
       return (
-        <>
-          <a href={href} ref={ref} {...rest}>
-            {children}
-            {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
-          </a>
-        </>
+        <a href={href} ref={ref} {...rest}>
+          {children}
+          {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+        </a>
       );
     }
 

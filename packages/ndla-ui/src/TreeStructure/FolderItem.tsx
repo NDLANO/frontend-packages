@@ -50,7 +50,10 @@ const WrapperForFolderChild = styled.div<{ marked: boolean }>`
   }
 `;
 
-const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
+const FolderName = styled('button', { shouldForwardProp: (name) => !['marked', 'noArrow'].includes(name) })<{
+  marked: boolean;
+  noArrow?: boolean;
+}>`
   line-height: 1;
   background: ${({ marked }) => (marked ? colors.brand.lighter : 'transparent')};
   color: ${colors.text.primary};

@@ -24,6 +24,8 @@ const navigateDown = (visibleFolders: string[], folderId: string, setFocusedFold
   }
 };
 
+const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'arrowRight'];
+
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,
   id: string,
@@ -32,10 +34,13 @@ export const arrowNavigation = (
   onOpen: (id: string) => void,
   onClose: (id: string) => void,
 ) => {
-  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'arrowRight'].includes(e.key)) {
-    e.preventDefault();
-    e.stopPropagation();
+  if (!arrowKeys.includes(e.key)) {
+    return;
   }
+
+  e.preventDefault();
+  e.stopPropagation();
+
   switch (e.key) {
     case 'ArrowUp':
       return navigateUp(visibleFolders, id, setFocusedFolderId);

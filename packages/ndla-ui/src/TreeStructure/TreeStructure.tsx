@@ -105,7 +105,6 @@ const TreeStructure = ({
       if (newFolderId) {
         setMarkedFolderId(newFolderId);
         setFocusedFolderId(newFolderId);
-
         setOpenFolders(uniq(openFolders.concat(parentId)));
       }
     });

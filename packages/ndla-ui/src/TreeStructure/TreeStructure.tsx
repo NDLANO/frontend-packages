@@ -157,7 +157,7 @@ const TreeStructure = ({
                 ? t('myNdla.newFolderUnder', {
                     folderName: getFolderName(folders, markedFolderId),
                   })
-                : t('myNdla.maxFoldersAlreadyAdded')
+                : t('treeStructure.maxFoldersAlreadyAdded')
             }>
             <AddButton
               disabled={!canAddFolder}

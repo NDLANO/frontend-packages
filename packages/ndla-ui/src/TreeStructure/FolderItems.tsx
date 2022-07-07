@@ -32,65 +32,73 @@ const StyledLI = styled.li`
 
 const FolderItems = ({
   loading,
-  data,
-  idPaths,
+  folders,
+  level,
   editable,
-  onToggleOpen,
+  onSelectFolder,
+  onCloseFolder,
+  onOpenFolder,
   onCreateNewFolder,
   onCancelNewFolder,
   onSaveNewFolder,
-  newFolder,
+  newFolderParentId,
+  visibleFolders,
   openFolders,
   markedFolderId,
   onMarkFolder,
   openOnFolderClick,
   focusedFolderId,
   setFocusedFolderId,
-  firstLevel,
   folderChild,
   maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
-  <StyledUL role="group" firstLevel={firstLevel}>
-    {data.map(({ name, data: dataChildren, id, url, icon }, _index) => {
-      const newIdPaths = [...idPaths, _index];
+  <StyledUL role="group" firstLevel={level === 1}>
+    {folders.map(({ name, subfolders, id, icon }, _index) => {
       const isOpen = openFolders?.includes(id);
       return (
         <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
+              level={level}
               icon={icon}
-              url={url}
+              onSelectFolder={onSelectFolder}
               openOnFolderClick={openOnFolderClick}
               loading={loading}
               isOpen={isOpen}
               id={id}
+              visibleFolders={visibleFolders}
               name={name}
               markedFolderId={markedFolderId}
               focusedFolderId={focusedFolderId}
-              onToggleOpen={onToggleOpen}
               onMarkFolder={onMarkFolder}
-              hideArrow={dataChildren?.length === 0 || newIdPaths.length >= maximumLevelsOfFoldersAllowed}
-              noPaddingWhenArrowIsHidden={editable && firstLevel && dataChildren?.length === 0}
+              onCloseFolder={onCloseFolder}
+              onOpenFolder={onOpenFolder}
+              hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
+              noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
               setFocusedFolderId={setFocusedFolderId}
               folderChild={folderChild}
             />
           </div>
-          {newFolder?.parentId === id && (
+          {newFolderParentId === id && (
             <FolderNameInput
+              parentId={newFolderParentId}
               loading={loading}
               onCancelNewFolder={onCancelNewFolder}
               onSaveNewFolder={onSaveNewFolder}
             />
           )}
-          {dataChildren && isOpen && (
+          {subfolders && isOpen && (
             <FolderItems
+              onSelectFolder={onSelectFolder}
               loading={loading}
-              newFolder={newFolder}
+              newFolderParentId={newFolderParentId}
+              visibleFolders={visibleFolders}
               openFolders={openFolders}
-              idPaths={newIdPaths}
+              level={level + 1}
               editable={editable}
-              data={dataChildren}
-              onToggleOpen={onToggleOpen}
+              folders={subfolders}
+              onCloseFolder={onCloseFolder}
+              onOpenFolder={onOpenFolder}
               onCreateNewFolder={onCreateNewFolder}
               onSaveNewFolder={onSaveNewFolder}
               onCancelNewFolder={onCancelNewFolder}
@@ -99,7 +107,6 @@ const FolderItems = ({
               openOnFolderClick={openOnFolderClick}
               focusedFolderId={focusedFolderId}
               setFocusedFolderId={setFocusedFolderId}
-              firstLevel={false}
               folderChild={folderChild}
               maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
             />

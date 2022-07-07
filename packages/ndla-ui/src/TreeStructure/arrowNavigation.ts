@@ -21,7 +21,7 @@ const navigateVertical = (
   }
 };
 
-const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'arrowRight'];
+const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,

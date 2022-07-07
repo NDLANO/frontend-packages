@@ -8,17 +8,14 @@
 
 import { KeyboardEvent } from 'react';
 
-const navigateUp = (visibleFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
+const navigateVertical = (
+  visibleFolders: string[],
+  folderId: string,
+  setFocusedFolderId: (id: string) => void,
+  direction: 1 | -1,
+) => {
   const currentIndex = visibleFolders.findIndex((id) => id === folderId);
-  const target = visibleFolders[currentIndex - 1];
-  if (target !== undefined) {
-    setFocusedFolderId(target);
-  }
-};
-
-const navigateDown = (visibleFolders: string[], folderId: string, setFocusedFolderId: (id: string) => void) => {
-  const currentIndex = visibleFolders.findIndex((id) => id === folderId);
-  const target = visibleFolders[currentIndex + 1];
+  const target = visibleFolders[currentIndex + direction];
   if (target !== undefined) {
     setFocusedFolderId(target);
   }
@@ -43,9 +40,9 @@ export const arrowNavigation = (
 
   switch (e.key) {
     case 'ArrowUp':
-      return navigateUp(visibleFolders, id, setFocusedFolderId);
+      return navigateVertical(visibleFolders, id, setFocusedFolderId, -1);
     case 'ArrowDown':
-      return navigateDown(visibleFolders, id, setFocusedFolderId);
+      return navigateVertical(visibleFolders, id, setFocusedFolderId, 1);
     case 'ArrowLeft':
       return onClose(id);
     case 'ArrowRight':

@@ -141,7 +141,6 @@ export const TreeStructureExampleComponent = ({
   editable,
   framed,
   onSelectFolder,
-  folderIdMarkedByDefault,
   openOnFolderClick,
   defaultOpenFolders,
   withDots,
@@ -151,7 +150,6 @@ export const TreeStructureExampleComponent = ({
   editable: boolean;
   framed: boolean;
   onSelectFolder?: (id: string) => void;
-  folderIdMarkedByDefault?: string;
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
   withDots?: boolean;
@@ -168,7 +166,6 @@ export const TreeStructureExampleComponent = ({
         label={label}
         editable={editable}
         openOnFolderClick={openOnFolderClick}
-        folderIdMarkedByDefault={folderIdMarkedByDefault}
         defaultOpenFolders={defaultOpenFolders}
         onNewFolder={async (name: string, parentId: string) => {
           // Just as an example, pretend to save to database and update the structure

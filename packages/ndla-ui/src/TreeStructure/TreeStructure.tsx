@@ -38,7 +38,6 @@ const TreeStructure = ({
   onSelectFolder,
   openOnFolderClick,
   framed,
-  folderIdMarkedByDefault,
   defaultOpenFolders,
   folderChild,
   maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
@@ -47,7 +46,9 @@ const TreeStructure = ({
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(folderIdMarkedByDefault || folders[0]?.id);
+  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(
+    defaultOpenFolders?.[defaultOpenFolders.length - 1] || folders[0]?.id,
+  );
   const treestructureRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const rootLevelId = 'treestructure-root';
@@ -58,10 +59,11 @@ const TreeStructure = ({
   );
 
   useEffect(() => {
-    if (defaultOpenFolders) {
+    if (defaultOpenFolders && defaultOpenFolders.length > 0) {
       setOpenFolders((prev) => {
-        return uniq([...defaultOpenFolders, ...prev]);
+        return uniq(defaultOpenFolders.concat(prev));
       });
+      setMarkedFolderId(defaultOpenFolders[defaultOpenFolders.length - 1]);
     }
   }, [defaultOpenFolders]);
 

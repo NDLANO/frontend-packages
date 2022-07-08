@@ -29,7 +29,6 @@ export interface TreeStructureProps extends CommonFolderProps {
   folders: FolderStructureProps[];
   framed?: boolean;
   label?: string;
-  folderIdMarkedByDefault?: string;
   onNewFolder: (name: string, parentId: string) => Promise<string>;
   defaultOpenFolders?: string[];
   folderChild?: FolderChildFuncType;

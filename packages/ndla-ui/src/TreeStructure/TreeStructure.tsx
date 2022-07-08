@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { AddButton } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
@@ -43,15 +43,13 @@ const TreeStructure = ({
   maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
-  const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
+
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
   const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(
     defaultOpenFolders?.[defaultOpenFolders.length - 1] || folders[0]?.id,
   );
-  const treestructureRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const rootLevelId = 'treestructure-root';
+  const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
 
   const visibleFolders = useMemo(
     () => flattenFolders(folders, openFolders).map((folder) => folder.id),
@@ -125,9 +123,9 @@ const TreeStructure = ({
   const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
-    <div ref={treestructureRef}>
-      {label && <StyledLabel htmlFor={rootLevelId}>{label}</StyledLabel>}
-      <TreeStructureStyledWrapper ref={wrapperRef} id={rootLevelId} aria-label="Menu tree" role="tree" framed={framed}>
+    <div>
+      {label && <StyledLabel>{label}</StyledLabel>}
+      <TreeStructureStyledWrapper aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
           onSelectFolder={onSelectFolder}
           level={1}

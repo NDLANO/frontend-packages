@@ -8,10 +8,10 @@
 
 import React, { ReactNode } from 'react';
 
-export interface FolderStructureProps {
+export interface Folder {
   id: string;
   name: string;
-  subfolders: FolderStructureProps[];
+  subfolders: Folder[];
   isFavorite?: boolean;
   status?: string;
   openAsDefault?: boolean;
@@ -26,7 +26,7 @@ interface CommonFolderProps {
 }
 
 export interface TreeStructureProps extends CommonFolderProps {
-  folders: FolderStructureProps[];
+  folders: Folder[];
   framed?: boolean;
   label?: string;
   onNewFolder: (name: string, parentId: string) => Promise<string>;
@@ -49,7 +49,7 @@ export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | un
 export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
 
 export interface FolderItemsProps extends CommonFolderProps {
-  folders: FolderStructureProps[];
+  folders: Folder[];
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onSaveNewFolder: (name: string, parentId: string) => void;

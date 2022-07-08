@@ -77,21 +77,16 @@ const TreeStructure = ({
   }, [loading]);
 
   const onCloseFolder = (id: string) => {
-    // Did we just closed a folder with a marked folder inside it?
-    // If so, we need to mark the folder we just closed.
-    if (selectedFolderId) {
-      const closingFolderPath = getPathOfFolder(folders, id);
-      const markedFolderPath = getPathOfFolder(folders, selectedFolderId);
-      const markedFolderIsSubPath = closingFolderPath.every(
-        (folderId, _index) => markedFolderPath[_index] === folderId,
-      );
-      if (markedFolderIsSubPath) {
+    const closedFolder = flattenedFolders.find((folder) => folder.id === id);
+
+    if (closedFolder) {
+      const subFolders = closedFolder.subfolders && flattenFolders(closedFolder.subfolders);
+      if (subFolders.some((folder) => folder.id === selectedFolderId)) {
         if (onSelectFolder) {
-          setSelectedFolderId(closingFolderPath[closingFolderPath.length - 1]);
-          onSelectFolder(closingFolderPath[closingFolderPath.length - 1]);
-        } else {
-          setFocusedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+          setSelectedFolderId(closedFolder.id);
+          onSelectFolder(closedFolder.id);
         }
+        setFocusedFolderId(closedFolder.id);
       }
     }
     setOpenFolders(openFolders.filter((folder) => folder !== id));

@@ -43,27 +43,32 @@ const TreeStructure = ({
   maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
+  const defaultOpenFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
+
+  const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
-  const [markedFolderId, setMarkedFolderId] = useState<string | undefined>(
+  const [selectedFolderId, setSelectedFolderId] = useState<string | undefined>(
     defaultOpenFolders?.[defaultOpenFolders.length - 1] || folders[0]?.id,
   );
-  const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
 
-  const visibleFolders = useMemo(
-    () => flattenFolders(folders, openFolders).map((folder) => folder.id),
-    [folders, openFolders],
-  );
+  const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
+  const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
 
   useEffect(() => {
-    if (defaultOpenFolders && defaultOpenFolders.length > 0) {
+    if (defaultOpenFolders) {
       setOpenFolders((prev) => {
         return uniq(defaultOpenFolders.concat(prev));
       });
-      setMarkedFolderId(defaultOpenFolders[defaultOpenFolders.length - 1]);
     }
   }, [defaultOpenFolders]);
+
+  useEffect(() => {
+    if (defaultOpenFolderId !== undefined) {
+      setSelectedFolderId(defaultOpenFolderId);
+    }
+  }, [defaultOpenFolderId]);
 
   useEffect(() => {
     if (!loading) {
@@ -74,15 +79,15 @@ const TreeStructure = ({
   const onCloseFolder = (id: string) => {
     // Did we just closed a folder with a marked folder inside it?
     // If so, we need to mark the folder we just closed.
-    if (markedFolderId) {
+    if (selectedFolderId) {
       const closingFolderPath = getPathOfFolder(folders, id);
-      const markedFolderPath = getPathOfFolder(folders, markedFolderId);
+      const markedFolderPath = getPathOfFolder(folders, selectedFolderId);
       const markedFolderIsSubPath = closingFolderPath.every(
         (folderId, _index) => markedFolderPath[_index] === folderId,
       );
       if (markedFolderIsSubPath) {
         if (onSelectFolder) {
-          setMarkedFolderId(closingFolderPath[closingFolderPath.length - 1]);
+          setSelectedFolderId(closingFolderPath[closingFolderPath.length - 1]);
           onSelectFolder(closingFolderPath[closingFolderPath.length - 1]);
         } else {
           setFocusedFolderId(closingFolderPath[closingFolderPath.length - 1]);
@@ -103,7 +108,7 @@ const TreeStructure = ({
   const onSaveNewFolder = (name: string, parentId: string) => {
     onNewFolder(name, parentId).then((newFolderId) => {
       if (newFolderId) {
-        setMarkedFolderId(newFolderId);
+        setSelectedFolderId(newFolderId);
         setFocusedFolderId(newFolderId);
         setOpenFolders(uniq(openFolders.concat(parentId)));
       }
@@ -115,11 +120,11 @@ const TreeStructure = ({
   };
 
   const onMarkFolder = (id: string) => {
-    setMarkedFolderId(id);
+    setSelectedFolderId(id);
     setFocusedFolderId(id);
   };
 
-  const paths = getPathOfFolder(folders, markedFolderId || '');
+  const paths = getPathOfFolder(folders, selectedFolderId || '');
   const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
@@ -137,9 +142,9 @@ const TreeStructure = ({
           onCreateNewFolder={onCreateNewFolder}
           onCancelNewFolder={onCancelNewFolder}
           onSaveNewFolder={onSaveNewFolder}
-          visibleFolders={visibleFolders}
+          visibleFolders={visibleFolderIds}
           openFolders={openFolders}
-          markedFolderId={markedFolderId}
+          markedFolderId={selectedFolderId}
           onMarkFolder={onMarkFolder}
           openOnFolderClick={openOnFolderClick}
           loading={loading}
@@ -155,7 +160,7 @@ const TreeStructure = ({
             tooltip={
               canAddFolder
                 ? t('myNdla.newFolderUnder', {
-                    folderName: getFolderName(folders, markedFolderId),
+                    folderName: getFolderName(folders, selectedFolderId),
                   })
                 : t('treeStructure.maxFoldersAlreadyAdded')
             }>
@@ -163,7 +168,7 @@ const TreeStructure = ({
               disabled={!canAddFolder}
               aria-label={t('myNdla.newFolder')}
               onClick={() => {
-                setNewFolderParentId(markedFolderId);
+                setNewFolderParentId(selectedFolderId);
               }}>
               {t('myNdla.newFolder')}
             </AddButton>

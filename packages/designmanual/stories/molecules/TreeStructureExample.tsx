@@ -231,6 +231,7 @@ const TreeStructureExample = () => (
       editable={false}
       framed={false}
       openOnFolderClick
+      defaultOpenFolders={[MY_FOLDERS_ID]}
       structure={STRUCTURE_EXAMPLE_WRAPPED()}
       withDots
     />

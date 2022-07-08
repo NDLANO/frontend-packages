@@ -15,7 +15,7 @@ import { spacing, fonts } from '@ndla/core';
 import { uniq } from 'lodash';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
-import { getPathOfFolder, getFolderName, flattenFolders } from './helperFunctions';
+import { getPathOfFolder, flattenFolders } from './helperFunctions';
 import { TreeStructureProps } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
@@ -160,7 +160,7 @@ const TreeStructure = ({
             tooltip={
               canAddFolder
                 ? t('myNdla.newFolderUnder', {
-                    folderName: getFolderName(folders, selectedFolderId),
+                    folderName: flattenedFolders.find((folder) => folder.id === selectedFolderId)?.name,
                   })
                 : t('treeStructure.maxFoldersAlreadyAdded')
             }>

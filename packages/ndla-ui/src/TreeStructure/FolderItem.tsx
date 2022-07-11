@@ -40,10 +40,10 @@ const FolderItemWrapper = styled.div`
   align-items: center;
 `;
 
-const WrapperForFolderChild = styled.div<{ marked?: boolean }>`
+const WrapperForFolderChild = styled.div<{ selected?: boolean }>`
   position: absolute;
   right: ${spacing.xsmall};
-  opacity: ${({ marked }) => (marked ? 1 : 0.25)};
+  opacity: ${({ selected }) => (selected ? 1 : 0.25)};
   &:hover,
   &:focus,
   &:focus-within {
@@ -51,16 +51,16 @@ const WrapperForFolderChild = styled.div<{ marked?: boolean }>`
   }
 `;
 
-const FolderName = styled('button', { shouldForwardProp: (name) => !['marked', 'noArrow'].includes(name) })<{
-  marked?: boolean;
+const FolderName = styled('button', { shouldForwardProp: (name) => !['selected', 'noArrow'].includes(name) })<{
+  selected?: boolean;
   noArrow?: boolean;
 }>`
   line-height: 1;
-  background: ${({ marked }) => (marked ? colors.brand.lighter : 'transparent')};
+  background: ${({ selected }) => (selected ? colors.brand.lighter : 'transparent')};
   color: ${colors.text.primary};
   &:hover,
   &:focus {
-    background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lightest)};
+    background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
     color: ${colors.brand.primary};
     + ${WrapperForFolderChild} {
       opacity: 1;
@@ -108,9 +108,9 @@ const FolderItem = ({
   setSelectedFolder,
   visibleFolders,
 }: Props) => {
-  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const { id, icon, name } = folder;
-  const marked = selectedFolder && selectedFolder.id === id;
+  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
+  const selected = selectedFolder && selectedFolder.id === id;
 
   const handleClickFolder = () => {
     setSelectedFolder(folder);
@@ -133,7 +133,7 @@ const FolderItem = ({
     }
   }, [focusedFolderId, ref, id]);
 
-  const actions = menuItems.map((item) => {
+  const actions = menuItems?.map((item) => {
     const { onClick } = item;
     return {
       ...item,
@@ -158,8 +158,8 @@ const FolderItem = ({
             ref={ref}
             onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
-            tabIndex={marked ? 0 : -1}
-            marked={marked}
+            tabIndex={selected ? 0 : -1}
+            selected={selected}
             disabled={loading}
             onFocus={() => {
               setFocusedId(id);
@@ -170,9 +170,9 @@ const FolderItem = ({
             {icon || <FolderOutlined />}
             {name}
           </FolderName>
-          {actions.length > 0 && (
-            <WrapperForFolderChild marked={marked}>
-              <MenuButton size="xsmall" menuItems={actions} tabIndex={marked || id === focusedFolderId ? 0 : -1} />
+          {actions && (
+            <WrapperForFolderChild selected={selected}>
+              <MenuButton size="xsmall" menuItems={actions} tabIndex={selected || id === focusedFolderId ? 0 : -1} />
             </WrapperForFolderChild>
           )}
         </>
@@ -184,8 +184,8 @@ const FolderItem = ({
           }
           noArrow={hideArrow}
           to={loading ? '' : `/minndla/${level > 1 ? 'folders/' : ''}${id}`}
-          tabIndex={marked || level === 1 ? 0 : -1}
-          marked={marked}
+          tabIndex={selected || level === 1 ? 0 : -1}
+          selected={selected}
           onFocus={() => {
             setFocusedId(id);
           }}

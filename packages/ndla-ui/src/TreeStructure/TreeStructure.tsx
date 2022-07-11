@@ -16,7 +16,7 @@ import { uniq } from 'lodash';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { getPathOfFolder, flattenFolders } from './helperFunctions';
-import { TreeStructureProps } from './TreeStructure.types';
+import { CommonTreeStructureProps, Folder } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -28,6 +28,16 @@ const AddFolderWrapper = styled.div`
   display: flex;
   margin-top: ${spacing.xsmall};
 `;
+
+export interface TreeStructureProps extends CommonTreeStructureProps {
+  defaultOpenFolders?: string[];
+  folders: Folder[];
+  editable?: boolean;
+  framed?: boolean;
+  label?: string;
+  maximumLevelsOfFoldersAllowed?: number;
+  onNewFolder: (name: string, parentId: string) => Promise<string>;
+}
 
 const TreeStructure = ({
   defaultOpenFolders,

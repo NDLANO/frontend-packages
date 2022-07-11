@@ -18,49 +18,23 @@ export interface Folder {
   subfolders: Folder[];
 }
 
-interface CommonFolderProps {
-  editable?: boolean;
+export interface CommonTreeStructureProps {
   loading?: boolean;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick?: boolean;
+  folderChild?: FolderChildFuncType;
 }
 
-export interface TreeStructureProps extends CommonFolderProps {
-  defaultOpenFolders?: string[];
-  folderChild?: FolderChildFuncType;
-  folders: Folder[];
-  framed?: boolean;
-  label?: string;
-  maximumLevelsOfFoldersAllowed?: number;
-  onNewFolder: (name: string, parentId: string) => Promise<string>;
-}
-
-export type onCreateNewFolderProp = ({
-  idPaths,
-  parentId,
-}: {
-  idPaths: number[];
-  parentId: string | undefined;
-}) => void;
-
-export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
-
-export interface FolderItemsProps extends CommonFolderProps {
-  focusedFolderId: string | undefined;
-  folderChild?: FolderChildFuncType;
-  folders: Folder[];
-  icon?: ReactNode;
-  keyNavigationFocusIsCreateFolderButton?: boolean;
+export interface CommonFolderItemsProps extends CommonTreeStructureProps {
+  focusedFolderId?: string;
+  icon?: React.ReactNode;
   level: number;
   markedFolderId?: string;
-  maximumLevelsOfFoldersAllowed: number;
-  newFolderParentId: string | undefined;
-  onCancelNewFolder: () => void;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  onSaveNewFolder: (name: string, parentId: string) => void;
-  openFolders: string[];
   setFocusedId: (id: string) => void;
   setSelectedId: (id: string) => void;
   visibleFolders: string[];
 }
+
+export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;

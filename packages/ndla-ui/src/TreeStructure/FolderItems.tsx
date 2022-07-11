@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { animations, spacing } from '@ndla/core';
 import FolderItem from './FolderItem';
 import FolderNameInput from './FolderNameInput';
-import { FolderItemsProps } from './TreeStructure.types';
+import { CommonFolderItemsProps, Folder, FolderChildFuncType } from './TreeStructure.types';
 
 const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   ${animations.fadeInLeft(animations.durations.fast)};
@@ -29,6 +29,18 @@ const StyledLI = styled.li`
   margin: 0;
   padding: 0;
 `;
+
+export interface FolderItemsProps extends CommonFolderItemsProps {
+  folderChild?: FolderChildFuncType;
+  folders: Folder[];
+  editable?: boolean;
+  keyNavigationFocusIsCreateFolderButton?: boolean;
+  maximumLevelsOfFoldersAllowed: number;
+  newFolderParentId: string | undefined;
+  onCancelNewFolder: () => void;
+  onSaveNewFolder: (name: string, parentId: string) => void;
+  openFolders: string[];
+}
 
 const FolderItems = ({
   editable,

@@ -12,7 +12,7 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { FolderChildFuncType } from './TreeStructure.types';
+import { CommonFolderItemsProps, FolderChildFuncType } from './TreeStructure.types';
 import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
@@ -82,7 +82,7 @@ const FolderName = styled('button', { shouldForwardProp: (name) => !['marked', '
 
 const FolderNameLink = FolderName.withComponent(SafeLink);
 
-interface Props {
+interface Props extends CommonFolderItemsProps {
   focusedFolderId?: string;
   folderChild?: FolderChildFuncType;
   hideArrow?: boolean;

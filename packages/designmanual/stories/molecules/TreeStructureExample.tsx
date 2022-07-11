@@ -26,7 +26,7 @@ const menuItems = (t: TFunction) => [
   {
     icon: <Pencil />,
     text: t('treeStructure.folderChildOptions.edit'),
-    onClick: (e: MouseEvent<HTMLDivElement>, folder: FolderType) => {
+    onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => {
       console.log('Endre tekst på', folder.id); // eslint-disable-line no-console
       e?.preventDefault();
       return;
@@ -36,7 +36,7 @@ const menuItems = (t: TFunction) => [
     icon: <TrashCanOutline />,
     text: t('treeStructure.folderChildOptions.delete'),
     type: 'danger',
-    onClick: (e: MouseEvent<HTMLDivElement>, folder: FolderType) => {
+    onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => {
       console.log('Sletter', folder.id); // eslint-disable-line no-console
       e?.preventDefault();
       return;

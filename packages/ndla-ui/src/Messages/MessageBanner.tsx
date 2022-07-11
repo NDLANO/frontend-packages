@@ -24,7 +24,7 @@ const MessageBannerWrapper = styled.div<WrapperProps>`
   padding: ${({ small }) => (small ? spacing.xxsmall : spacing.small)};
   background: ${colors.support.yellowLight};
   color: ${colors.brand.greyDark};
-  border: none;
+  border-bottom: solid 1px ${colors.white};
 `;
 
 const TextWrapper = styled.div`

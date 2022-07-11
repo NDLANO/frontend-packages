@@ -48,7 +48,7 @@ export type ResourceListProps = {
   contentType?: string;
   title?: string;
   showAdditionalResources?: boolean;
-  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  onToggleAddToFavorites: (id: string) => void;
   showAddToFavoriteButton: boolean;
 };
 

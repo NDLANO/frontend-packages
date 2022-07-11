@@ -153,7 +153,12 @@ export const TopicMenu = ({
   return (
     <nav>
       {messages?.map((message) => (
-        <MessageBanner key={message.number} showCloseButton={message.closable} onClose={() => closeAlert?.(message.number)}>{message.content}</MessageBanner>
+        <MessageBanner
+          key={message.number}
+          showCloseButton={message.closable}
+          onClose={() => closeAlert?.(message.number)}>
+          {message.content}
+        </MessageBanner>
       ))}
       <ModalHeader modifier={['white', 'menu']}>
         <div {...classes('masthead-left')}>
@@ -375,7 +380,8 @@ TopicMenu.propTypes = {
       content: PropTypes.string.isRequired,
       closable: PropTypes.bool.isRequired,
       number: PropTypes.number.isRequired,
-  })),
+    }),
+  ),
   subjectCategories: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

@@ -23,6 +23,8 @@ interface CommonFolderProps {
   loading?: boolean;
   openOnFolderClick?: boolean;
   onSelectFolder?: (id: string) => void;
+  setSelectedId: (id: string) => void;
+  setFocusedId: (id: string) => void;
 }
 
 export interface TreeStructureProps extends CommonFolderProps {
@@ -54,15 +56,13 @@ export interface FolderItemsProps extends CommonFolderProps {
   onOpenFolder: (id: string) => void;
   onSaveNewFolder: (name: string, parentId: string) => void;
   onCancelNewFolder: () => void;
-  onCreateNewFolder: (parentId: string) => void;
   newFolderParentId: string | undefined;
   visibleFolders: string[];
   openFolders: string[];
   markedFolderId?: string;
-  onMarkFolder: (id: string) => void;
   level: number;
   focusedFolderId: string | undefined;
-  setFocusedFolderId: SetFocusedFolderId;
+  setFocusedId: SetFocusedFolderId;
   keyNavigationFocusIsCreateFolderButton?: boolean;
   icon?: ReactNode;
   folderChild?: FolderChildFuncType;

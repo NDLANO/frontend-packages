@@ -43,13 +43,13 @@ const TreeStructure = ({
   maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
-  const defaultOpenFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
+  const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
-  const [focusedFolderId, setFocusedFolderId] = useState<string | undefined>();
-  const [selectedFolderId, setSelectedFolderId] = useState<string | undefined>(
+  const [focusedId, setFocusedId] = useState<string | undefined>();
+  const [selectedId, setSelectedId] = useState<string | undefined>(
     defaultOpenFolders?.[defaultOpenFolders.length - 1] || folders[0]?.id,
   );
 
@@ -65,10 +65,10 @@ const TreeStructure = ({
   }, [defaultOpenFolders]);
 
   useEffect(() => {
-    if (defaultOpenFolderId !== undefined) {
-      setSelectedFolderId(defaultOpenFolderId);
+    if (defaultSelectedFolderId !== undefined) {
+      setSelectedId(defaultSelectedFolderId);
     }
-  }, [defaultOpenFolderId]);
+  }, [defaultSelectedFolderId]);
 
   useEffect(() => {
     if (!loading) {
@@ -81,12 +81,12 @@ const TreeStructure = ({
 
     if (closedFolder) {
       const subFolders = closedFolder.subfolders && flattenFolders(closedFolder.subfolders);
-      if (subFolders.some((folder) => folder.id === selectedFolderId)) {
+      if (subFolders.some((folder) => folder.id === selectedId)) {
         if (onSelectFolder) {
-          setSelectedFolderId(closedFolder.id);
+          setSelectedId(closedFolder.id);
           onSelectFolder(closedFolder.id);
         }
-        setFocusedFolderId(closedFolder.id);
+        setFocusedId(closedFolder.id);
       }
     }
     setOpenFolders(openFolders.filter((folder) => folder !== id));
@@ -96,15 +96,11 @@ const TreeStructure = ({
     setOpenFolders(uniq(openFolders.concat(id)));
   };
 
-  const onCreateNewFolder = (parentId: string) => {
-    setNewFolderParentId(parentId);
-  };
-
   const onSaveNewFolder = (name: string, parentId: string) => {
     onNewFolder(name, parentId).then((newFolderId) => {
       if (newFolderId) {
-        setSelectedFolderId(newFolderId);
-        setFocusedFolderId(newFolderId);
+        setSelectedId(newFolderId);
+        setFocusedId(newFolderId);
         setOpenFolders(uniq(openFolders.concat(parentId)));
       }
     });
@@ -114,12 +110,7 @@ const TreeStructure = ({
     setNewFolderParentId(undefined);
   };
 
-  const onMarkFolder = (id: string) => {
-    setSelectedFolderId(id);
-    setFocusedFolderId(id);
-  };
-
-  const paths = getPathOfFolder(folders, selectedFolderId || '');
+  const paths = getPathOfFolder(folders, selectedId || '');
   const canAddFolder = editable && paths.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
@@ -127,26 +118,25 @@ const TreeStructure = ({
       {label && <StyledLabel>{label}</StyledLabel>}
       <TreeStructureStyledWrapper aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
-          onSelectFolder={onSelectFolder}
+          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
           level={1}
-          folders={folders}
           editable={editable}
+          folders={folders}
+          folderChild={folderChild}
+          openFolders={openFolders}
+          visibleFolders={visibleFolderIds}
+          markedFolderId={selectedId}
+          openOnFolderClick={openOnFolderClick}
           onOpenFolder={onOpenFolder}
           onCloseFolder={onCloseFolder}
           newFolderParentId={newFolderParentId}
-          onCreateNewFolder={onCreateNewFolder}
           onCancelNewFolder={onCancelNewFolder}
           onSaveNewFolder={onSaveNewFolder}
-          visibleFolders={visibleFolderIds}
-          openFolders={openFolders}
-          markedFolderId={selectedFolderId}
-          onMarkFolder={onMarkFolder}
-          openOnFolderClick={openOnFolderClick}
+          onSelectFolder={onSelectFolder}
           loading={loading}
-          focusedFolderId={focusedFolderId}
-          setFocusedFolderId={setFocusedFolderId}
-          folderChild={folderChild}
-          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
+          setSelectedId={setSelectedId}
+          focusedFolderId={focusedId}
+          setFocusedId={setFocusedId}
         />
       </TreeStructureStyledWrapper>
       {editable && (
@@ -155,7 +145,7 @@ const TreeStructure = ({
             tooltip={
               canAddFolder
                 ? t('myNdla.newFolderUnder', {
-                    folderName: flattenedFolders.find((folder) => folder.id === selectedFolderId)?.name,
+                    folderName: flattenedFolders.find((folder) => folder.id === selectedId)?.name,
                   })
                 : t('treeStructure.maxFoldersAlreadyAdded')
             }>
@@ -163,7 +153,7 @@ const TreeStructure = ({
               disabled={!canAddFolder}
               aria-label={t('myNdla.newFolder')}
               onClick={() => {
-                setNewFolderParentId(selectedFolderId);
+                setNewFolderParentId(selectedId);
               }}>
               {t('myNdla.newFolder')}
             </AddButton>

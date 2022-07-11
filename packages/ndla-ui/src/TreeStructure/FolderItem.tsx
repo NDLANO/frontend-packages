@@ -12,7 +12,7 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { SetFocusedFolderId, FolderChildFuncType } from './TreeStructure.types';
+import { FolderChildFuncType } from './TreeStructure.types';
 import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
@@ -88,7 +88,6 @@ interface Props {
   level: number;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  onMarkFolder: (id: string) => void;
   onSelectFolder?: (id: string) => void;
   isOpen: boolean;
   markedFolderId?: string;
@@ -97,7 +96,8 @@ interface Props {
   loading?: boolean;
   openOnFolderClick?: boolean;
   hideArrow?: boolean;
-  setFocusedFolderId: SetFocusedFolderId;
+  setFocusedId: (id: string) => void;
+  setSelectedId: (id: string) => void;
   icon?: React.ReactNode;
   noPaddingWhenArrowIsHidden?: boolean;
   folderChild?: FolderChildFuncType;
@@ -112,13 +112,13 @@ const FolderItem = ({
   visibleFolders,
   onCloseFolder,
   onOpenFolder,
-  onMarkFolder,
   onSelectFolder,
   isOpen,
   markedFolderId,
   focusedFolderId,
   openOnFolderClick,
-  setFocusedFolderId,
+  setFocusedId,
+  setSelectedId,
   icon,
   noPaddingWhenArrowIsHidden,
   folderChild,
@@ -126,8 +126,10 @@ const FolderItem = ({
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const marked = markedFolderId === id;
 
-  const handleMarkFolder = () => {
-    onMarkFolder(id);
+  const handleClickFolder = () => {
+    setSelectedId(id);
+    setFocusedId(id);
+    onSelectFolder?.(id);
     if (openOnFolderClick) {
       if (isOpen) {
         onCloseFolder(id);
@@ -160,17 +162,16 @@ const FolderItem = ({
         <>
           <FolderName
             ref={ref}
-            onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)}
+            onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
             tabIndex={marked ? 0 : -1}
             marked={marked}
             disabled={loading}
             onFocus={() => {
-              setFocusedFolderId(id);
+              setFocusedId(id);
             }}
             onClick={() => {
-              handleMarkFolder();
-              onSelectFolder(id);
+              handleClickFolder();
             }}>
             {icon || <FolderOutlined />}
             {name}
@@ -185,17 +186,17 @@ const FolderItem = ({
         <FolderNameLink
           ref={ref}
           onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-            arrowNavigation(e, id, visibleFolders, setFocusedFolderId, onOpenFolder, onCloseFolder)
+            arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
           }
           noArrow={hideArrow}
           to={loading ? '' : `/minndla/${level > 1 ? 'folders/' : ''}${id}`}
           tabIndex={marked || level === 1 ? 0 : -1}
           marked={marked}
           onFocus={() => {
-            setFocusedFolderId(id);
+            setFocusedId(id);
           }}
           onClick={() => {
-            handleMarkFolder();
+            handleClickFolder();
           }}>
           {icon || <FolderOutlined />}
           {name}

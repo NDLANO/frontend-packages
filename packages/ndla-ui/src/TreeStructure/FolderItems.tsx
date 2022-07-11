@@ -38,17 +38,16 @@ const FolderItems = ({
   onSelectFolder,
   onCloseFolder,
   onOpenFolder,
-  onCreateNewFolder,
   onCancelNewFolder,
+  setSelectedId,
   onSaveNewFolder,
   newFolderParentId,
   visibleFolders,
   openFolders,
   markedFolderId,
-  onMarkFolder,
   openOnFolderClick,
   focusedFolderId,
-  setFocusedFolderId,
+  setFocusedId,
   folderChild,
   maximumLevelsOfFoldersAllowed,
 }: FolderItemsProps) => (
@@ -59,6 +58,7 @@ const FolderItems = ({
         <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
+              setSelectedId={setSelectedId}
               level={level}
               icon={icon}
               onSelectFolder={onSelectFolder}
@@ -70,12 +70,11 @@ const FolderItems = ({
               name={name}
               markedFolderId={markedFolderId}
               focusedFolderId={focusedFolderId}
-              onMarkFolder={onMarkFolder}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
               hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
               noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
-              setFocusedFolderId={setFocusedFolderId}
+              setFocusedId={setFocusedId}
               folderChild={folderChild}
             />
           </div>
@@ -89,6 +88,7 @@ const FolderItems = ({
           )}
           {subfolders && isOpen && (
             <FolderItems
+              setSelectedId={setSelectedId}
               onSelectFolder={onSelectFolder}
               loading={loading}
               newFolderParentId={newFolderParentId}
@@ -99,14 +99,12 @@ const FolderItems = ({
               folders={subfolders}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
-              onCreateNewFolder={onCreateNewFolder}
               onSaveNewFolder={onSaveNewFolder}
               onCancelNewFolder={onCancelNewFolder}
               markedFolderId={markedFolderId}
-              onMarkFolder={onMarkFolder}
               openOnFolderClick={openOnFolderClick}
               focusedFolderId={focusedFolderId}
-              setFocusedFolderId={setFocusedFolderId}
+              setFocusedId={setFocusedId}
               folderChild={folderChild}
               maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
             />

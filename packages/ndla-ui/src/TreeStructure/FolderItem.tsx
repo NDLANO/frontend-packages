@@ -83,45 +83,45 @@ const FolderName = styled('button', { shouldForwardProp: (name) => !['marked', '
 const FolderNameLink = FolderName.withComponent(SafeLink);
 
 interface Props {
-  name: string;
+  focusedFolderId?: string;
+  folderChild?: FolderChildFuncType;
+  hideArrow?: boolean;
+  icon?: React.ReactNode;
   id: string;
+  isOpen: boolean;
   level: number;
+  loading?: boolean;
+  markedFolderId?: string;
+  name: string;
+  noPaddingWhenArrowIsHidden?: boolean;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onSelectFolder?: (id: string) => void;
-  isOpen: boolean;
-  markedFolderId?: string;
-  focusedFolderId?: string;
-  visibleFolders: string[];
-  loading?: boolean;
   openOnFolderClick?: boolean;
-  hideArrow?: boolean;
   setFocusedId: (id: string) => void;
   setSelectedId: (id: string) => void;
-  icon?: React.ReactNode;
-  noPaddingWhenArrowIsHidden?: boolean;
-  folderChild?: FolderChildFuncType;
+  visibleFolders: string[];
 }
 
 const FolderItem = ({
+  focusedFolderId,
+  folderChild,
   hideArrow,
-  loading,
-  level,
-  name,
+  icon,
   id,
-  visibleFolders,
+  isOpen,
+  level,
+  loading,
+  markedFolderId,
+  name,
+  noPaddingWhenArrowIsHidden,
   onCloseFolder,
   onOpenFolder,
   onSelectFolder,
-  isOpen,
-  markedFolderId,
-  focusedFolderId,
   openOnFolderClick,
   setFocusedId,
   setSelectedId,
-  icon,
-  noPaddingWhenArrowIsHidden,
-  folderChild,
+  visibleFolders,
 }: Props) => {
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const marked = markedFolderId === id;

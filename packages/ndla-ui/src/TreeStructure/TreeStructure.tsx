@@ -30,17 +30,17 @@ const AddFolderWrapper = styled.div`
 `;
 
 const TreeStructure = ({
-  folders,
-  label,
+  defaultOpenFolders,
   editable,
+  folderChild,
+  folders,
+  framed,
+  label,
   loading,
+  maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
   onNewFolder,
   onSelectFolder,
   openOnFolderClick,
-  framed,
-  defaultOpenFolders,
-  folderChild,
-  maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
   const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
@@ -118,25 +118,25 @@ const TreeStructure = ({
       {label && <StyledLabel>{label}</StyledLabel>}
       <TreeStructureStyledWrapper aria-label="Menu tree" role="tree" framed={framed}>
         <FolderItems
-          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
-          level={1}
           editable={editable}
-          folders={folders}
+          focusedFolderId={focusedId}
           folderChild={folderChild}
-          openFolders={openFolders}
-          visibleFolders={visibleFolderIds}
+          folders={folders}
+          level={1}
+          loading={loading}
           markedFolderId={selectedId}
-          openOnFolderClick={openOnFolderClick}
-          onOpenFolder={onOpenFolder}
-          onCloseFolder={onCloseFolder}
+          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
           newFolderParentId={newFolderParentId}
           onCancelNewFolder={onCancelNewFolder}
+          onCloseFolder={onCloseFolder}
+          onOpenFolder={onOpenFolder}
           onSaveNewFolder={onSaveNewFolder}
           onSelectFolder={onSelectFolder}
-          loading={loading}
-          setSelectedId={setSelectedId}
-          focusedFolderId={focusedId}
+          openFolders={openFolders}
+          openOnFolderClick={openOnFolderClick}
           setFocusedId={setFocusedId}
+          setSelectedId={setSelectedId}
+          visibleFolders={visibleFolderIds}
         />
       </TreeStructureStyledWrapper>
       {editable && (

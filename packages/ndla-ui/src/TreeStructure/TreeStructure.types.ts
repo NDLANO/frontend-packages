@@ -6,35 +6,33 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export interface Folder {
-  id: string;
-  name: string;
-  subfolders: Folder[];
-  isFavorite?: boolean;
-  status?: string;
-  openAsDefault?: boolean;
   icon?: ReactNode;
+  id: string;
+  isFavorite?: boolean;
+  name: string;
+  openAsDefault?: boolean;
+  status?: string;
+  subfolders: Folder[];
 }
 
 interface CommonFolderProps {
   editable?: boolean;
   loading?: boolean;
-  openOnFolderClick?: boolean;
   onSelectFolder?: (id: string) => void;
-  setSelectedId: (id: string) => void;
-  setFocusedId: (id: string) => void;
+  openOnFolderClick?: boolean;
 }
 
 export interface TreeStructureProps extends CommonFolderProps {
+  defaultOpenFolders?: string[];
+  folderChild?: FolderChildFuncType;
   folders: Folder[];
   framed?: boolean;
   label?: string;
-  onNewFolder: (name: string, parentId: string) => Promise<string>;
-  defaultOpenFolders?: string[];
-  folderChild?: FolderChildFuncType;
   maximumLevelsOfFoldersAllowed?: number;
+  onNewFolder: (name: string, parentId: string) => Promise<string>;
 }
 
 export type onCreateNewFolderProp = ({
@@ -45,26 +43,24 @@ export type onCreateNewFolderProp = ({
   parentId: string | undefined;
 }) => void;
 
-export type SetOpenFolderProp = React.Dispatch<React.SetStateAction<string[]>>;
-export type SetFocusedFolderId = React.Dispatch<React.SetStateAction<string | undefined>>;
-
 export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;
 
 export interface FolderItemsProps extends CommonFolderProps {
+  focusedFolderId: string | undefined;
+  folderChild?: FolderChildFuncType;
   folders: Folder[];
+  icon?: ReactNode;
+  keyNavigationFocusIsCreateFolderButton?: boolean;
+  level: number;
+  markedFolderId?: string;
+  maximumLevelsOfFoldersAllowed: number;
+  newFolderParentId: string | undefined;
+  onCancelNewFolder: () => void;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   onSaveNewFolder: (name: string, parentId: string) => void;
-  onCancelNewFolder: () => void;
-  newFolderParentId: string | undefined;
-  visibleFolders: string[];
   openFolders: string[];
-  markedFolderId?: string;
-  level: number;
-  focusedFolderId: string | undefined;
-  setFocusedId: SetFocusedFolderId;
-  keyNavigationFocusIsCreateFolderButton?: boolean;
-  icon?: ReactNode;
-  folderChild?: FolderChildFuncType;
-  maximumLevelsOfFoldersAllowed: number;
+  setFocusedId: (id: string) => void;
+  setSelectedId: (id: string) => void;
+  visibleFolders: string[];
 }

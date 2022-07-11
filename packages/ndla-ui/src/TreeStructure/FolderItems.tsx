@@ -31,25 +31,25 @@ const StyledLI = styled.li`
 `;
 
 const FolderItems = ({
-  loading,
+  editable,
+  focusedFolderId,
+  folderChild,
   folders,
   level,
-  editable,
-  onSelectFolder,
+  loading,
+  markedFolderId,
+  maximumLevelsOfFoldersAllowed,
+  newFolderParentId,
+  onCancelNewFolder,
   onCloseFolder,
   onOpenFolder,
-  onCancelNewFolder,
-  setSelectedId,
   onSaveNewFolder,
-  newFolderParentId,
-  visibleFolders,
+  onSelectFolder,
   openFolders,
-  markedFolderId,
   openOnFolderClick,
-  focusedFolderId,
   setFocusedId,
-  folderChild,
-  maximumLevelsOfFoldersAllowed,
+  setSelectedId,
+  visibleFolders,
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={level === 1}>
     {folders.map(({ name, subfolders, id, icon }, _index) => {
@@ -58,55 +58,55 @@ const FolderItems = ({
         <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
-              setSelectedId={setSelectedId}
-              level={level}
-              icon={icon}
-              onSelectFolder={onSelectFolder}
-              openOnFolderClick={openOnFolderClick}
-              loading={loading}
-              isOpen={isOpen}
-              id={id}
-              visibleFolders={visibleFolders}
-              name={name}
-              markedFolderId={markedFolderId}
               focusedFolderId={focusedFolderId}
+              folderChild={folderChild}
+              hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
+              icon={icon}
+              id={id}
+              isOpen={isOpen}
+              level={level}
+              loading={loading}
+              markedFolderId={markedFolderId}
+              name={name}
+              noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
-              hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
-              noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
+              onSelectFolder={onSelectFolder}
+              openOnFolderClick={openOnFolderClick}
               setFocusedId={setFocusedId}
-              folderChild={folderChild}
+              setSelectedId={setSelectedId}
+              visibleFolders={visibleFolders}
             />
           </div>
           {newFolderParentId === id && (
             <FolderNameInput
-              parentId={newFolderParentId}
               loading={loading}
               onCancelNewFolder={onCancelNewFolder}
               onSaveNewFolder={onSaveNewFolder}
+              parentId={newFolderParentId}
             />
           )}
           {subfolders && isOpen && (
             <FolderItems
-              setSelectedId={setSelectedId}
-              onSelectFolder={onSelectFolder}
-              loading={loading}
-              newFolderParentId={newFolderParentId}
-              visibleFolders={visibleFolders}
-              openFolders={openFolders}
-              level={level + 1}
               editable={editable}
+              focusedFolderId={focusedFolderId}
+              folderChild={folderChild}
               folders={subfolders}
+              level={level + 1}
+              loading={loading}
+              markedFolderId={markedFolderId}
+              maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
+              newFolderParentId={newFolderParentId}
+              onCancelNewFolder={onCancelNewFolder}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
               onSaveNewFolder={onSaveNewFolder}
-              onCancelNewFolder={onCancelNewFolder}
-              markedFolderId={markedFolderId}
+              onSelectFolder={onSelectFolder}
+              openFolders={openFolders}
               openOnFolderClick={openOnFolderClick}
-              focusedFolderId={focusedFolderId}
               setFocusedId={setFocusedId}
-              folderChild={folderChild}
-              maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
+              setSelectedId={setSelectedId}
+              visibleFolders={visibleFolders}
             />
           )}
         </StyledLI>

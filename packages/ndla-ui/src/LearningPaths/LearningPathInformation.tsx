@@ -8,7 +8,8 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, spacing, spacingUnit, breakpoints, mq } from '@ndla/core';
+import { fonts, spacing, spacingUnit, breakpoints, mq, colors } from '@ndla/core';
+import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 
 type StyledWrapperProps = {
   invertedStyle?: boolean;
@@ -50,6 +51,17 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
   }
 `;
 
+const LicenseWrapper = styled.div`
+  h1,
+  ul {
+    margin-bottom: ${spacing.small};
+  }
+
+  ul {
+    margin-left: 0;
+  }
+`;
+
 interface Props {
   description?: string;
   title: string;
@@ -59,14 +71,17 @@ interface Props {
   };
 }
 
-export const LearningPathInformation = ({ description, title, license, invertedStyle }: Props) => (
-  <section className="o-wrapper">
-    <StyledWrapper invertedStyle={invertedStyle} className="c-article">
-      <div>
-        <h1>{title}</h1>
-        {license && license.license}
-      </div>
-      {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
-    </StyledWrapper>
-  </section>
-);
+export const LearningPathInformation = ({ description, title, license, invertedStyle }: Props) => {
+  const { rights } = getLicenseByAbbreviation(license?.license || '', 'nb');
+  return (
+    <section className="o-wrapper">
+      <StyledWrapper invertedStyle={invertedStyle} className="c-article">
+        <LicenseWrapper>
+          <h1>{title}</h1>
+          <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
+        </LicenseWrapper>
+        {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
+      </StyledWrapper>
+    </section>
+  );
+};

@@ -9,7 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { User } from '@ndla/icons/common';
-import { spacing, fonts } from '@ndla/core';
+import { spacing, fonts, colors } from '@ndla/core';
+import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 
 const StyledLearningPathDetails = styled.div`
   ${fonts.sizes(14, 1.1)};
@@ -40,16 +41,19 @@ type Props = {
   };
 };
 
-const LearningPathMenuAsideCopyright = ({ copyright }: Props) => (
-  <StyledLearningPathDetails>
-    <User />
-    <p>
-      {copyright.contributors.map((contributor) => (
-        <span key={contributor.name}>{contributor.name}</span>
-      ))}
-      <span>{copyright.license.license}</span>
-    </p>
-  </StyledLearningPathDetails>
-);
+const LearningPathMenuAsideCopyright = ({ copyright }: Props) => {
+  const { rights } = getLicenseByAbbreviation(copyright.license.license || '', 'nb');
+  return (
+    <StyledLearningPathDetails>
+      <User />
+      <p>
+        {copyright.contributors.map((contributor) => (
+          <span key={contributor.name}>{contributor.name}</span>
+        ))}
+        <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
+      </p>
+    </StyledLearningPathDetails>
+  );
+};
 
 export default LearningPathMenuAsideCopyright;

@@ -56,7 +56,8 @@ const FolderItems = ({
   ...rest
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={level === 1}>
-    {folders.map(({ name, subfolders, id, icon }, _index) => {
+    {folders.map((folder, _index) => {
+      const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
       return (
         <StyledLI key={id} role="treeitem">
@@ -64,12 +65,10 @@ const FolderItems = ({
             <FolderItem
               folderChild={folderChild}
               hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
-              icon={icon}
-              id={id}
+              folder={folder}
               isOpen={isOpen}
               level={level}
               loading={loading}
-              name={name}
               noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
               {...rest}
             />

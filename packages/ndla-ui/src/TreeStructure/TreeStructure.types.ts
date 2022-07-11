@@ -7,15 +7,10 @@
  */
 
 import { ReactNode } from 'react';
+import { IFolder } from '@ndla/types-learningpath-api';
 
-export interface Folder {
+export interface Folder extends IFolder {
   icon?: ReactNode;
-  id: string;
-  isFavorite?: boolean;
-  name: string;
-  openAsDefault?: boolean;
-  status?: string;
-  subfolders: Folder[];
 }
 
 export interface CommonTreeStructureProps {
@@ -29,11 +24,11 @@ export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   focusedFolderId?: string;
   icon?: React.ReactNode;
   level: number;
-  markedFolderId?: string;
+  selectedFolder?: Folder;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
   setFocusedId: (id: string) => void;
-  setSelectedId: (id: string) => void;
+  setSelectedFolder: (id: Folder) => void;
   visibleFolders: string[];
 }
 

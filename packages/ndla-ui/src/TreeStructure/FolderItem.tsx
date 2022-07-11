@@ -12,7 +12,7 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { CommonFolderItemsProps, FolderChildFuncType } from './TreeStructure.types';
+import { CommonFolderItemsProps, Folder } from './TreeStructure.types';
 import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
@@ -39,7 +39,7 @@ const FolderItemWrapper = styled.div`
   align-items: center;
 `;
 
-const WrapperForFolderChild = styled.div<{ marked: boolean }>`
+const WrapperForFolderChild = styled.div<{ marked?: boolean }>`
   position: absolute;
   right: ${spacing.xsmall};
   opacity: ${({ marked }) => (marked ? 1 : 0.25)};
@@ -51,7 +51,7 @@ const WrapperForFolderChild = styled.div<{ marked: boolean }>`
 `;
 
 const FolderName = styled('button', { shouldForwardProp: (name) => !['marked', 'noArrow'].includes(name) })<{
-  marked: boolean;
+  marked?: boolean;
   noArrow?: boolean;
 }>`
   line-height: 1;
@@ -83,51 +83,36 @@ const FolderName = styled('button', { shouldForwardProp: (name) => !['marked', '
 const FolderNameLink = FolderName.withComponent(SafeLink);
 
 interface Props extends CommonFolderItemsProps {
-  focusedFolderId?: string;
-  folderChild?: FolderChildFuncType;
   hideArrow?: boolean;
-  icon?: React.ReactNode;
-  id: string;
   isOpen: boolean;
-  level: number;
-  loading?: boolean;
-  markedFolderId?: string;
-  name: string;
+  folder: Folder;
   noPaddingWhenArrowIsHidden?: boolean;
-  onCloseFolder: (id: string) => void;
-  onOpenFolder: (id: string) => void;
-  onSelectFolder?: (id: string) => void;
-  openOnFolderClick?: boolean;
-  setFocusedId: (id: string) => void;
-  setSelectedId: (id: string) => void;
-  visibleFolders: string[];
 }
 
 const FolderItem = ({
   focusedFolderId,
   folderChild,
   hideArrow,
-  icon,
-  id,
+  folder,
   isOpen,
   level,
   loading,
-  markedFolderId,
-  name,
+  selectedFolder,
   noPaddingWhenArrowIsHidden,
   onCloseFolder,
   onOpenFolder,
   onSelectFolder,
   openOnFolderClick,
   setFocusedId,
-  setSelectedId,
+  setSelectedFolder,
   visibleFolders,
 }: Props) => {
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
-  const marked = markedFolderId === id;
+  const { id, icon, name } = folder;
+  const marked = selectedFolder && selectedFolder.id === id;
 
   const handleClickFolder = () => {
-    setSelectedId(id);
+    setSelectedFolder(folder);
     setFocusedId(id);
     onSelectFolder?.(id);
     if (openOnFolderClick) {

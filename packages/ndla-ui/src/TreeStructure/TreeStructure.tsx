@@ -17,7 +17,7 @@ import { IFolder } from '@ndla/types-learningpath-api';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { flattenFolders } from './helperFunctions';
-import { CommonTreeStructureProps, Folder } from './TreeStructure.types';
+import { CommonTreeStructureProps, FolderType } from './TreeStructure.types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -31,8 +31,8 @@ const AddFolderWrapper = styled.div`
 `;
 
 export interface TreeStructureProps extends CommonTreeStructureProps {
-  defaultOpenFolderIds?: string[];
-  folders: Folder[];
+  defaultOpenFolders?: string[];
+  folders: FolderType[];
   editable?: boolean;
   framed?: boolean;
   label?: string;
@@ -41,7 +41,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
 }
 
 const TreeStructure = ({
-  defaultOpenFolderIds,
+  defaultOpenFolders,
   editable,
   folderChild,
   folders,
@@ -55,24 +55,24 @@ const TreeStructure = ({
 }: TreeStructureProps) => {
   const { t } = useTranslation();
 
-  const defaultSelectedFolderId = defaultOpenFolderIds && defaultOpenFolderIds[defaultOpenFolderIds.length - 1];
+  const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
 
-  const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolderIds || []);
+  const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [focusedId, setFocusedId] = useState<string | undefined>();
-  const [selectedFolder, setSelectedFolder] = useState<Folder | undefined>();
+  const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
   const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
 
   useEffect(() => {
-    if (defaultOpenFolderIds) {
+    if (defaultOpenFolders) {
       setOpenFolders((prev) => {
-        return uniq(defaultOpenFolderIds.concat(prev));
+        return uniq(defaultOpenFolders.concat(prev));
       });
     }
-  }, [defaultOpenFolderIds]);
+  }, [defaultOpenFolders]);
 
   useEffect(() => {
     if (defaultSelectedFolderId !== undefined) {
@@ -159,7 +159,7 @@ const TreeStructure = ({
             tooltip={
               canAddFolder
                 ? t('myNdla.newFolderUnder', {
-                    folderName: selectedFolder.name,
+                    folderName: selectedFolder?.name,
                   })
                 : t('treeStructure.maxFoldersAlreadyAdded')
             }>

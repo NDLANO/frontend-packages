@@ -9,7 +9,7 @@
 import React, { useState, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation, TFunction } from 'react-i18next';
-import { TreeStructure, FolderStructureProps } from '@ndla/ui';
+import { TreeStructure, FolderType } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import { User, HashTag } from '@ndla/icons/common';
@@ -60,48 +60,74 @@ const folderChild =
       />
     );
 
-export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderStructureProps[] => [
+export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
   {
     id: MY_FOLDERS_ID,
     name: 'Mine mapper',
     status: 'private',
     isFavorite: false,
+    breadcrumbs: [],
+    resources: [],
     subfolders: [
       {
-        id: uuid(),
+        id: '1',
         name: 'Mine favoritter',
         status: 'private',
         isFavorite: false,
+        breadcrumbs: [{ id: '1', name: 'Mine Favoritter' }],
+        resources: [],
         subfolders: newUser
           ? []
           : [
               {
-                id: uuid(),
+                id: '2',
                 name: 'Eksamen',
                 status: 'private',
                 isFavorite: false,
+                breadcrumbs: [
+                  { id: '1', name: 'Mine Favoritter' },
+                  { id: '2', name: 'Eksamen' },
+                ],
+                resources: [],
                 subfolders: [
                   {
-                    id: uuid(),
+                    id: '3',
                     name: 'Eksamens oppgaver',
                     status: 'private',
                     isFavorite: false,
+                    breadcrumbs: [
+                      { id: '1', name: 'Mine Favoritter' },
+                      { id: '2', name: 'Eksamen' },
+                      { id: '3', name: 'Eksamens oppgaver' },
+                    ],
+                    resources: [],
                     subfolders: [],
                   },
                   {
-                    id: uuid(),
+                    id: '4',
                     name: 'Eksamen 2022',
                     status: 'private',
                     isFavorite: false,
+                    breadcrumbs: [
+                      { id: '1', name: 'Mine Favoritter' },
+                      { id: '2', name: 'Eksamen' },
+                      { id: '4', name: 'Eksamen 2022' },
+                    ],
+                    resources: [],
                     subfolders: [],
                   },
                 ],
               },
               {
-                id: uuid(),
+                id: '5',
                 name: 'Oppgaver',
                 status: 'private',
                 isFavorite: false,
+                breadcrumbs: [
+                  { id: '1', name: 'Mine Favoritter' },
+                  { id: '5', name: 'Oppgaver' },
+                ],
+                resources: [],
                 subfolders: [],
               },
             ],
@@ -110,29 +136,38 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderStructureProps[] => 
   },
 ];
 
-export const STRUCTURE_EXAMPLE_WRAPPED = (): FolderStructureProps[] => [
+export const STRUCTURE_EXAMPLE_WRAPPED = (): FolderType[] => [
   {
     id: '',
     name: 'Min NDLA',
+    status: 'private',
+    isFavorite: false,
     icon: <User />,
     subfolders: [],
+    resources: [],
+    breadcrumbs: [],
   },
   ...STRUCTURE_EXAMPLE(false),
   {
     id: 'tags',
     name: 'Mine tagger',
+    status: 'private',
+    isFavorite: false,
     icon: <HashTag />,
     subfolders: [],
+    resources: [],
+    breadcrumbs: [],
   },
 ];
 
-const generateNewFolder = (name: string, id: string) => ({
+const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; name: string }[]): FolderType => ({
   id,
   name,
   status: 'private',
   isFavorite: false,
   subfolders: [],
-  openAsDefault: true,
+  breadcrumbs: breadcrumbs.concat({ name, id }),
+  resources: [],
 });
 
 export const TreeStructureExampleComponent = ({
@@ -145,7 +180,7 @@ export const TreeStructureExampleComponent = ({
   defaultOpenFolders,
   withDots,
 }: {
-  structure: FolderStructureProps[];
+  structure: FolderType[];
   label?: string;
   editable: boolean;
   framed: boolean;
@@ -155,7 +190,7 @@ export const TreeStructureExampleComponent = ({
   withDots?: boolean;
 }) => {
   const { t } = useTranslation();
-  const [structure, setStructure] = useState<FolderStructureProps[]>(initalStructure);
+  const [structure, setStructure] = useState<FolderType[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
     <Container>
@@ -168,22 +203,26 @@ export const TreeStructureExampleComponent = ({
         openOnFolderClick={openOnFolderClick}
         defaultOpenFolders={defaultOpenFolders}
         onNewFolder={async (name: string, parentId: string) => {
-          // Just as an example, pretend to save to database and update the structure
+          // A funky implementation to imitate backend updates of structure
           // eslint-disable-next-line no-console
           console.log(`Example, create new folder under ${parentId} with name ${name}`);
           setLoading(true);
           await new Promise((resolve) => setTimeout(resolve, 1000));
           setLoading(false);
+          const flattenedStructure = flattenFolders(structure);
+          const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
           const newFolderId = uuid();
-          setStructure((oldStructure) => {
-            const flattenedStructure = flattenFolders(oldStructure);
-            const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
-            if (targetFolder) {
-              targetFolder.subfolders.unshift(generateNewFolder(name, newFolderId));
-            }
-            return oldStructure;
-          });
-          return newFolderId;
+          if (targetFolder) {
+            const newFolder = generateNewFolder(name, newFolderId, targetFolder.breadcrumbs);
+
+            setStructure((oldStructure) => {
+              if (targetFolder) {
+                targetFolder.subfolders.unshift(newFolder);
+              }
+              return oldStructure;
+            });
+            return generateNewFolder(name, newFolderId, targetFolder.breadcrumbs);
+          }
         }}
         folders={structure}
         loading={loading}

@@ -9,7 +9,7 @@
 import React, { useState, MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation, TFunction } from 'react-i18next';
-import { TreeStructure, FolderType } from '@ndla/ui';
+import { TreeStructure, FolderType, TreeStructureMenuProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
 import { Pencil, TrashCanOutline } from '@ndla/icons/action';
@@ -22,7 +22,7 @@ const Container = styled.div`
 
 export const MY_FOLDERS_ID = 'folders';
 
-const menuItems = (t: TFunction) => [
+const menuItems = (t: TFunction): TreeStructureMenuProps[] => [
   {
     icon: <Pencil />,
     text: t('treeStructure.folderChildOptions.edit'),
@@ -186,6 +186,7 @@ export const TreeStructureExampleComponent = ({
         editable={editable}
         openOnFolderClick={openOnFolderClick}
         defaultOpenFolders={defaultOpenFolders}
+        // @ts-ignore
         onNewFolder={async (name: string, parentId: string) => {
           // A funky implementation to imitate backend updates of structure
           // eslint-disable-next-line no-console

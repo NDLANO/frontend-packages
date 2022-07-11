@@ -14,7 +14,7 @@ export interface FolderType extends IFolder {
   icon?: ReactNode;
 }
 
-interface TreestructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
+export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
   onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
 }
 
@@ -22,7 +22,7 @@ export interface CommonTreeStructureProps {
   loading?: boolean;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick?: boolean;
-  menuItems?: TreestructureMenuProps[];
+  menuItems?: TreeStructureMenuProps[];
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {

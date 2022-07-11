@@ -142,6 +142,8 @@ const FolderItem = ({
     };
   });
 
+  const linkPath = `/minndla${level > 1 ? '/folders' : ''}/${id}`;
+
   return (
     <FolderItemWrapper>
       {!hideArrow && (
@@ -184,7 +186,7 @@ const FolderItem = ({
             arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
           }
           noArrow={hideArrow}
-          to={loading ? '' : `/minndla/${level > 1 ? 'folders/' : ''}${id}`}
+          to={loading ? '' : linkPath}
           tabIndex={selected || focused || level === 1 ? 0 : -1}
           selected={selected}
           onFocus={() => {

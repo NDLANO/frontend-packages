@@ -111,6 +111,7 @@ const FolderItem = ({
   const { id, icon, name } = folder;
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder && selectedFolder.id === id;
+  const focused = focusedFolderId === id;
 
   const handleClickFolder = () => {
     setSelectedFolder(folder);
@@ -158,7 +159,7 @@ const FolderItem = ({
             ref={ref}
             onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
-            tabIndex={selected ? 0 : -1}
+            tabIndex={selected || focused ? 0 : -1}
             selected={selected}
             disabled={loading}
             onFocus={() => {
@@ -184,7 +185,7 @@ const FolderItem = ({
           }
           noArrow={hideArrow}
           to={loading ? '' : `/minndla/${level > 1 ? 'folders/' : ''}${id}`}
-          tabIndex={selected || level === 1 ? 0 : -1}
+          tabIndex={selected || focused || level === 1 ? 0 : -1}
           selected={selected}
           onFocus={() => {
             setFocusedId(id);

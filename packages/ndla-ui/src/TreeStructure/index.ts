@@ -7,6 +7,6 @@
  */
 
 import TreeStructure from './TreeStructure';
-export type { FolderType } from './TreeStructure.types';
+export type { FolderType } from './types';
 export type { TreeStructureProps } from './TreeStructure';
 export { TreeStructure };

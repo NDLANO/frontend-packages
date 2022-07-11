@@ -17,7 +17,7 @@ import { IFolder } from '@ndla/types-learningpath-api';
 import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { flattenFolders } from './helperFunctions';
-import { CommonTreeStructureProps, FolderType } from './TreeStructure.types';
+import { CommonTreeStructureProps, FolderType } from './types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -43,7 +43,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
 const TreeStructure = ({
   defaultOpenFolders,
   editable,
-  folderChild,
+  menuItems,
   folders,
   framed,
   label,
@@ -103,7 +103,7 @@ const TreeStructure = ({
         setFocusedId(closedFolder.id);
       }
     }
-    setOpenFolders(openFolders.filter((folder) => folder !== id));
+    setOpenFolders(openFolders.filter((folderId) => folderId !== id));
   };
 
   const onOpenFolder = (id: string) => {
@@ -134,7 +134,7 @@ const TreeStructure = ({
         <FolderItems
           editable={editable}
           focusedFolderId={focusedId}
-          folderChild={folderChild}
+          menuItems={menuItems}
           folders={folders}
           level={1}
           loading={loading}

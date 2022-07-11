@@ -6,18 +6,23 @@
  *
  */
 
-import { ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import { IFolder } from '@ndla/types-learningpath-api';
+import { MenuItemProps } from '@ndla/button/src';
 
 export interface FolderType extends IFolder {
   icon?: ReactNode;
+}
+
+interface TreestructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
+  onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
 }
 
 export interface CommonTreeStructureProps {
   loading?: boolean;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick?: boolean;
-  folderChild?: FolderChildFuncType;
+  menuItems: TreestructureMenuProps[];
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
@@ -31,5 +36,3 @@ export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   setSelectedFolder: (id: FolderType) => void;
   visibleFolders: string[];
 }
-
-export type FolderChildFuncType = (id: string, tabIndex: number) => ReactNode;

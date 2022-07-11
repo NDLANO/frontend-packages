@@ -1,4 +1,4 @@
-import { FolderType } from './TreeStructure.types';
+import { FolderType } from './types';
 
 export const flattenFolders = (folders: FolderType[], openFolders?: string[]): FolderType[] => {
   return folders.reduce((acc, { subfolders, id, ...rest }) => {

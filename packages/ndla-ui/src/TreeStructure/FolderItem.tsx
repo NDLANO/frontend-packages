@@ -6,13 +6,14 @@
  *
  */
 
-import React, { KeyboardEvent, useEffect, useRef } from 'react';
+import React, { KeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
+import { MenuButton } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { CommonFolderItemsProps, FolderType } from './TreeStructure.types';
+import { CommonFolderItemsProps, FolderType } from './types';
 import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
@@ -91,7 +92,7 @@ interface Props extends CommonFolderItemsProps {
 
 const FolderItem = ({
   focusedFolderId,
-  folderChild,
+  menuItems,
   hideArrow,
   folder,
   isOpen,
@@ -132,6 +133,14 @@ const FolderItem = ({
     }
   }, [focusedFolderId, ref, id]);
 
+  const actions = menuItems.map((item) => {
+    const { onClick } = item;
+    return {
+      ...item,
+      onClick: (e?: MouseEvent<HTMLDivElement>) => onClick(e, folder),
+    };
+  });
+
   return (
     <FolderItemWrapper>
       {!hideArrow && (
@@ -161,9 +170,9 @@ const FolderItem = ({
             {icon || <FolderOutlined />}
             {name}
           </FolderName>
-          {folderChild && (
+          {actions.length > 0 && (
             <WrapperForFolderChild marked={marked}>
-              {folderChild(id, marked || id === focusedFolderId ? 0 : -1)}
+              <MenuButton size="xsmall" menuItems={actions} tabIndex={marked || id === focusedFolderId ? 0 : -1} />
             </WrapperForFolderChild>
           )}
         </>

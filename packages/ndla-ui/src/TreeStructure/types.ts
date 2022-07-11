@@ -22,7 +22,7 @@ export interface CommonTreeStructureProps {
   loading?: boolean;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick?: boolean;
-  menuItems: TreestructureMenuProps[];
+  menuItems?: TreestructureMenuProps[];
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {

@@ -76,6 +76,7 @@ export type StepProps = {
 };
 
 interface Props {
+  onToggleAddToFavorites?: () => void;
   learningsteps: StepProps[];
   name: string;
   lastUpdated: string;
@@ -109,6 +110,7 @@ const LearningPathMenu = ({
   learningPathURL,
   invertedStyle,
   cookies,
+  onToggleAddToFavorites,
 }: Props) => {
   const { t } = useTranslation();
   const [isOpen, toggleOpenState] = useState(false);
@@ -129,7 +131,13 @@ const LearningPathMenu = ({
                 </StyledToggleMenubutton>
               </Tooltip>
             </div>
-            <LearningPathMenuIntro isOpen={isOpen} name={name} invertedStyle={invertedStyle} />
+            <LearningPathMenuIntro
+              isOpen={isOpen}
+              name={name}
+              invertedStyle={invertedStyle}
+              id={learningPathId}
+              onToggleAddToFavorites={onToggleAddToFavorites}
+            />
             <LearningPathMenuContent
               learningsteps={learningsteps}
               learningPathId={learningPathId}

@@ -43,7 +43,7 @@ See: [package.json](package.json) for version requirements
 ### Simplified example
 
 ```jsx
-import { Hero, OneColumn, Article, Breadcrumb } from '@ndla/ui';
+import { Breadcrumb, Hero, OneColumn, Article } from '@ndla/ui';
 
 const MyPage = ({ topicPath, topic, article }) => {
   return (

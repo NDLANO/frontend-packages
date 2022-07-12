@@ -52,14 +52,14 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
 `;
 
 const LicenseWrapper = styled.div`
-  h1,
-  ul {
-    margin-bottom: ${spacing.small};
-  }
-
   ul {
     margin-left: 0;
+    margin-bottom: ${spacing.small};
   }
+`;
+
+const StyledHeader = styled.h1`
+  margin-bottom: ${spacing.small};
 `;
 
 interface Props {
@@ -77,7 +77,7 @@ export const LearningPathInformation = ({ description, title, license, invertedS
     <section className="o-wrapper">
       <StyledWrapper invertedStyle={invertedStyle} className="c-article">
         <LicenseWrapper>
-          <h1>{title}</h1>
+          <StyledHeader>{title}</StyledHeader>
           <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
         </LicenseWrapper>
         {description && <div dangerouslySetInnerHTML={{ __html: description }} />}

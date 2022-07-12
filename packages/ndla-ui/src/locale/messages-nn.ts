@@ -1023,10 +1023,9 @@ const messages = {
       wishToDelete: 'Ønsker du ikke ha brukerprofil hos oss lengre?',
       terms: {
         terms: 'Vilkår for bruk',
-        sensitive: 'Ikkje skriv personsensitiv informasjon eller persondata i tekstfelt.',
-        offensive: 'Ikkje skriv noko støytande i tekstfelt.',
-        reservations:
-          'NDLA atterhald seg retten til å oppdatere eller eventuelt slette ressursar dersom disse blir utdatert.',
+        term1: 'Ikkje skriv personsensitiv informasjon eller persondata i tekstfelt.',
+        term2: 'Ikkje skriv noko støytande i tekstfelt.',
+        term3: 'NDLA atterhald seg retten til å oppdatere eller eventuelt slette ressursar dersom disse blir utdatert.',
       },
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg fra Feide',

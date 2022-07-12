@@ -241,6 +241,7 @@ const LearningPathExample = ({ invertedStyle }) => {
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
   const learningPathMenu = (
     <LearningPathMenu
+      onToggleAddToFavorites={() => {}}
       invertedStyle={invertedStyle}
       learningsteps={mappedLearningsteps}
       lastUpdated={lastUpdatedString}

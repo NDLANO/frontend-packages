@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
+import { ArticleFavoritesButton } from '../Article';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -94,18 +95,30 @@ const StyledIntroHeader = styled.h1`
   margin: ${spacing.small} 0 ${spacing.normal};
 `;
 
+const StyledRow = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+`;
+
 interface Props {
   isOpen: boolean;
   invertedStyle?: boolean;
   name: string;
+  onToggleAddToFavorites?: () => void;
+  id: number;
 }
 
-const LearningPathMenuIntro = ({ isOpen, name, invertedStyle }: Props) => {
+const LearningPathMenuIntro = ({ isOpen, name, invertedStyle, onToggleAddToFavorites, id }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
-        <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
+        <StyledRow>
+          <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
+          {onToggleAddToFavorites && (
+            <ArticleFavoritesButton onToggleAddToFavorites={onToggleAddToFavorites} articleId={id.toString()} />
+          )}
+        </StyledRow>
         <StyledIntroHeader>{name}</StyledIntroHeader>
       </div>
     </StyledMenuIntro>

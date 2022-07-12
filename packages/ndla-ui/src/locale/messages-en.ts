@@ -1022,7 +1022,12 @@ const messages = {
       privacy: 'privacy statement',
       questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
       wishToDelete: 'Do you wish to delete your account?',
-      terms: 'terms of use',
+      terms: {
+        terms: 'Terms of use',
+        term1: 'Do not write personal or sensitive information in text fields.',
+        term2: 'Do not write offensive statements in text fields.',
+        term3: 'NDLA reserves the right to update or remove resources if they are not up to date.',
+      },
       feide: 'We have retrieved this information from Feide',
       newFavourite: 'Recently favourited',
 

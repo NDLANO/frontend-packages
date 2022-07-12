@@ -167,7 +167,7 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
       </InfoBlock>
       <StyledBottomDiv>
         <Terms>
-          {t('myNdla.myPage.read.our')} <SafeLink to=""> {t('myNdla.myPage.terms')}</SafeLink>
+          {t('myNdla.myPage.read.our')} <SafeLink to=""> {t('myNdla.myPage.terms.terms')}</SafeLink>
         </Terms>
         <Terms>
           {t('myNdla.myPage.read.ours')} <SafeLink to=""> {t('myNdla.myPage.privacy')}</SafeLink>

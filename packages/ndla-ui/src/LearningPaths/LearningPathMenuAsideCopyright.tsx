@@ -15,17 +15,14 @@ import { getLicenseByAbbreviation, LicenseByline } from '@ndla/licenses';
 const StyledLearningPathDetails = styled.div`
   ${fonts.sizes(14, 1.1)};
   font-weight: ${fonts.weight.normal};
-  margin: 0;
+`;
+
+const UserLine = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-items: flex-start;
   margin-bottom: ${spacing.xsmall};
-  p {
-    margin: 0;
-    padding-left: ${spacing.xsmall};
-  }
+
   span {
-    display: block;
+    margin-left: ${spacing.xsmall};
   }
 `;
 
@@ -45,13 +42,14 @@ const LearningPathMenuAsideCopyright = ({ copyright }: Props) => {
   const { rights } = getLicenseByAbbreviation(copyright.license.license || '', 'nb');
   return (
     <StyledLearningPathDetails>
-      <User />
-      <p>
+      <UserLine>
+        <User />
         {copyright.contributors.map((contributor) => (
           <span key={contributor.name}>{contributor.name}</span>
         ))}
-        <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
-      </p>
+      </UserLine>
+
+      <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
     </StyledLearningPathDetails>
   );
 };

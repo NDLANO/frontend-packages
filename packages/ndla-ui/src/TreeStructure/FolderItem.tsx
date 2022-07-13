@@ -51,10 +51,14 @@ const WrapperForFolderChild = styled.div<{ selected?: boolean }>`
   }
 `;
 
-const FolderName = styled('button', { shouldForwardProp: (name) => !['selected', 'noArrow'].includes(name) })<{
+const shouldForwardProp = (name: string) => !['selected', 'noArrow'].includes(name);
+
+interface FolderNameProps {
   selected?: boolean;
   noArrow?: boolean;
-}>`
+}
+
+const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
   line-height: 1;
   background: ${({ selected }) => (selected ? colors.brand.lighter : 'transparent')};
   color: ${colors.text.primary};
@@ -128,9 +132,7 @@ const FolderItem = ({
 
   useEffect(() => {
     if (focusedFolderId === id) {
-      if (ref.current) {
-        ref.current.focus();
-      }
+      ref.current?.focus();
     }
   }, [focusedFolderId, ref, id]);
 
@@ -164,12 +166,8 @@ const FolderItem = ({
             tabIndex={selected || focused ? 0 : -1}
             selected={selected}
             disabled={loading}
-            onFocus={() => {
-              setFocusedId(id);
-            }}
-            onClick={() => {
-              handleClickFolder();
-            }}>
+            onFocus={() => setFocusedId(id)}
+            onClick={handleClickFolder}>
             {icon || <FolderOutlined />}
             {name}
           </FolderName>
@@ -189,12 +187,8 @@ const FolderItem = ({
           to={loading ? '' : linkPath}
           tabIndex={selected || focused || level === 1 ? 0 : -1}
           selected={selected}
-          onFocus={() => {
-            setFocusedId(id);
-          }}
-          onClick={() => {
-            handleClickFolder();
-          }}>
+          onFocus={() => setFocusedId(id)}
+          onClick={handleClickFolder}>
           {icon || <FolderOutlined />}
           {name}
         </FolderNameLink>

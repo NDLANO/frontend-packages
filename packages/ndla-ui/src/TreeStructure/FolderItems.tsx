@@ -33,7 +33,6 @@ const StyledLI = styled.li`
 export interface FolderItemsProps extends CommonFolderItemsProps {
   folders: FolderType[];
   editable?: boolean;
-  keyNavigationFocusIsCreateFolderButton?: boolean;
   maximumLevelsOfFoldersAllowed: number;
   newFolderParentId: string | undefined;
   onCancelNewFolder: () => void;
@@ -54,7 +53,7 @@ const FolderItems = ({
   ...rest
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={level === 1}>
-    {folders.map((folder, _index) => {
+    {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
       return (

@@ -166,9 +166,7 @@ const TreeStructure = ({
             <AddButton
               disabled={!canAddFolder}
               aria-label={t('myNdla.newFolder')}
-              onClick={() => {
-                setNewFolderParentId(selectedFolder?.id);
-              }}>
+              onClick={() => setNewFolderParentId(selectedFolder?.id)}>
               {t('myNdla.newFolder')}
             </AddButton>
           </Tooltip>

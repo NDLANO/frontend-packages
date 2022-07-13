@@ -27,7 +27,6 @@ export interface CommonTreeStructureProps {
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   focusedFolderId?: string;
-  icon?: React.ReactNode;
   level: number;
   selectedFolder?: FolderType;
   onCloseFolder: (id: string) => void;

@@ -37,7 +37,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
   framed?: boolean;
   label?: string;
   maximumLevelsOfFoldersAllowed?: number;
-  onNewFolder: (name: string, parentId: string) => Promise<IFolder>;
+  onNewFolder?: (name: string, parentId: string) => Promise<IFolder>;
 }
 
 const TreeStructure = ({
@@ -111,7 +111,7 @@ const TreeStructure = ({
   };
 
   const onSaveNewFolder = (name: string, parentId: string) => {
-    onNewFolder(name, parentId).then((newFolder) => {
+    onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
         setSelectedFolder(newFolder);
         setFocusedId(newFolder.id);

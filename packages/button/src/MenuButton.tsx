@@ -9,7 +9,8 @@
 import styled from '@emotion/styled';
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
 import { colors, spacing, shadows, misc, animations } from '@ndla/core';
-import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
+import { Menu, MenuItem, MenuButton as MenuButtonReach, MenuPopover, MenuItems } from '@reach/menu-button';
+import { positionRight, positionDefault } from '@reach/popover';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 import { ButtonSize } from './';
@@ -19,16 +20,15 @@ interface StyledButtonProps {
   svgSize: number;
 }
 
-const StyledMenuButton = styled(MenuButtonReach, {
-  shouldForwardProp: (name) => name !== 'svgSize',
-})<StyledButtonProps>`
+const shouldForwardProp = (name: string) => name !== 'svgSize';
+
+const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledButtonProps>`
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: ${spacing.small};
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
+  background: none;
   border: none;
   &:hover *,
   &:active *,
@@ -37,12 +37,12 @@ const StyledMenuButton = styled(MenuButtonReach, {
   }
 
   svg {
-    margin: 0;
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
     fill: ${colors.brand.secondary};
   }
 `;
+
 const StyledHorizontalMenu = styled(HorizontalMenu)`
   border-radius: 100%;
   transition: ${misc.transition.default};
@@ -54,15 +54,12 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
   }
 `;
 
-const StyledMenuList = styled(MenuList)`
-  overflow: hidden;
+const StyledMenuItems = styled(MenuItems)`
   padding: 0;
-  background-color: white;
   border: none;
   border-radius: 4px;
   box-shadow: ${shadows.levitate1};
   z-index: 99999;
-  position: relative;
   @media (prefers-reduced-motion: no-preference) {
     ${animations.fadeIn(animations.durations.fast)}
   }
@@ -99,6 +96,7 @@ interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   hideMenuIcon?: boolean;
   tabIndex?: number;
   size?: ButtonSize;
+  alignRight?: boolean;
 }
 export const MenuButton = ({
   menuItems,
@@ -107,6 +105,7 @@ export const MenuButton = ({
   hideMenuIcon,
   className,
   tabIndex,
+  alignRight,
   ...rest
 }: MenuButtonProps) => {
   const { t } = useTranslation();
@@ -122,19 +121,21 @@ export const MenuButton = ({
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
-      <StyledMenuList>
-        {menuItems?.map(({ type, text, icon, onClick }) => (
-          <StyledMenuItem
-            key={text}
-            onClick={(e) => e.preventDefault()}
-            onSelect={onClick}
-            type={type}
-            aria-label={text}>
-            {icon}
-            {text}
-          </StyledMenuItem>
-        ))}
-      </StyledMenuList>
+      <MenuPopover portal={true} position={alignRight ? positionRight : positionDefault}>
+        <StyledMenuItems>
+          {menuItems?.map(({ type, text, icon, onClick }) => (
+            <StyledMenuItem
+              key={text}
+              onClick={(e) => e.preventDefault()}
+              onSelect={onClick}
+              type={type}
+              aria-label={text}>
+              {icon}
+              {text}
+            </StyledMenuItem>
+          ))}
+        </StyledMenuItems>
+      </MenuPopover>
     </Menu>
   );
 };

@@ -131,7 +131,7 @@ const ListResource = ({ link, title, tags, resourceImage, topics, description, m
       {showDescription && <ResourceDescription>{description}</ResourceDescription>}
       <TagsandActionMenu>
         {tags && <CompressedTagList tags={tags} />}
-        {menuItems && menuItems.length > 0 && <MenuButton size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ResourceWrapper>
   );

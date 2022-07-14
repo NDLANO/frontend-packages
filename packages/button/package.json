@@ -25,7 +25,8 @@
   "files": [
     "scss",
     "lib",
-    "es"
+    "es",
+    "dist"
   ],
   "dependencies": {
     "@ndla/core": "^2.3.2",

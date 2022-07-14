@@ -141,7 +141,7 @@ const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItem
       <FolderTitle>{title}</FolderTitle>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />
       <IconCount layoutType={type} type={'resource'} count={subResources} />
-      {menuItems && menuItems.length > 0 && <MenuButton size="small" menuItems={menuItems} />}
+      {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
     </FolderWrapper>
   );
 };

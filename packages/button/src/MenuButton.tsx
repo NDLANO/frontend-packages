@@ -20,16 +20,15 @@ interface StyledButtonProps {
   svgSize: number;
 }
 
-const StyledMenuButton = styled(MenuButtonReach, {
-  shouldForwardProp: (name) => name !== 'svgSize',
-})<StyledButtonProps>`
+const shouldForwardProp = (name: string) => name !== 'svgSize';
+
+const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledButtonProps>`
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: ${spacing.small};
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
+  background: none;
   border: none;
   &:hover *,
   &:active *,
@@ -38,12 +37,12 @@ const StyledMenuButton = styled(MenuButtonReach, {
   }
 
   svg {
-    margin: 0;
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
     fill: ${colors.brand.secondary};
   }
 `;
+
 const StyledHorizontalMenu = styled(HorizontalMenu)`
   border-radius: 100%;
   transition: ${misc.transition.default};
@@ -56,14 +55,11 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
 `;
 
 const StyledMenuItems = styled(MenuItems)`
-  overflow: hidden;
   padding: 0;
-  background-color: white;
   border: none;
   border-radius: 4px;
   box-shadow: ${shadows.levitate1};
   z-index: 99999;
-  position: relative;
   @media (prefers-reduced-motion: no-preference) {
     ${animations.fadeIn(animations.durations.fast)}
   }

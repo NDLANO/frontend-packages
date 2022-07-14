@@ -96,9 +96,9 @@ class Resources extends Component {
     this.toggleAdditionalDialog = this.toggleAdditionalDialog.bind(this);
   }
 
-  onToggleAddToFavorites(id, add) {
+  onToggleAddToFavorites(id) {
     // eslint-disable-next-line no-console
-    console.log(`${add ? 'Legg til' : 'Ta vekk'} ressursen ${id}`);
+    console.log(`Legg til ressursen ${id}`);
   }
 
   toggleAdditionalResources() {

@@ -229,7 +229,7 @@ type Props = {
   showAdditionalResources?: boolean;
   access?: 'teacher';
   isFavorite?: boolean;
-  onToggleAddToFavorites: (id: string, add: boolean) => void;
+  onToggleAddToFavorites: (id: string) => void;
   showAddToFavoriteButton: boolean;
 };
 
@@ -305,7 +305,7 @@ const ResourceItem = ({
           <ArticleFavoritesButton
             isFavorite={isFavorite}
             articleId={id}
-            onToggleAddToFavorites={() => onToggleAddToFavorites(id, true)}
+            onToggleAddToFavorites={() => onToggleAddToFavorites(id)}
           />
         )}
       </TypeWrapper>

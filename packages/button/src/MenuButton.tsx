@@ -9,7 +9,8 @@
 import styled from '@emotion/styled';
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
 import { colors, spacing, shadows, misc, animations } from '@ndla/core';
-import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
+import { Menu, MenuItem, MenuButton as MenuButtonReach, MenuPopover, MenuItems } from '@reach/menu-button';
+import { positionRight, positionDefault } from '@reach/popover';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 import { ButtonSize } from './';
@@ -54,7 +55,7 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
   }
 `;
 
-const StyledMenuList = styled(MenuList)`
+const StyledMenuItems = styled(MenuItems)`
   overflow: hidden;
   padding: 0;
   background-color: white;
@@ -99,6 +100,7 @@ interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   hideMenuIcon?: boolean;
   tabIndex?: number;
   size?: ButtonSize;
+  alignRight?: boolean;
 }
 export const MenuButton = ({
   menuItems,
@@ -107,6 +109,7 @@ export const MenuButton = ({
   hideMenuIcon,
   className,
   tabIndex,
+  alignRight,
   ...rest
 }: MenuButtonProps) => {
   const { t } = useTranslation();
@@ -122,19 +125,21 @@ export const MenuButton = ({
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
-      <StyledMenuList>
-        {menuItems?.map(({ type, text, icon, onClick }) => (
-          <StyledMenuItem
-            key={text}
-            onClick={(e) => e.preventDefault()}
-            onSelect={onClick}
-            type={type}
-            aria-label={text}>
-            {icon}
-            {text}
-          </StyledMenuItem>
-        ))}
-      </StyledMenuList>
+      <MenuPopover portal={true} position={alignRight ? positionRight : positionDefault}>
+        <StyledMenuItems>
+          {menuItems?.map(({ type, text, icon, onClick }) => (
+            <StyledMenuItem
+              key={text}
+              onClick={(e) => e.preventDefault()}
+              onSelect={onClick}
+              type={type}
+              aria-label={text}>
+              {icon}
+              {text}
+            </StyledMenuItem>
+          ))}
+        </StyledMenuItems>
+      </MenuPopover>
     </Menu>
   );
 };

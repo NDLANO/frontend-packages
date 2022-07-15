@@ -239,6 +239,7 @@ const TreeStructureExample = () => (
       onSelectFolder={(id: string) => {}}
       structure={STRUCTURE_EXAMPLE(true)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
+      targetResource={targetResource}
     />
     <h1>TreeStructure editable:</h1>
     <TreeStructureExampleComponent
@@ -249,6 +250,7 @@ const TreeStructureExample = () => (
       onSelectFolder={(id: string) => {}}
       structure={STRUCTURE_EXAMPLE(false)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
+      targetResource={targetResource}
     />
     <h1>TreeStructure non-editable:</h1>
     <TreeStructureExampleComponent

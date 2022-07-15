@@ -7,6 +7,7 @@
  */
 
 import React, { KeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { Done } from '@ndla/icons/editor';
@@ -16,7 +17,6 @@ import { colors, spacing, misc, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { CommonFolderItemsProps, FolderType } from './types';
 import { arrowNavigation } from './arrowNavigation';
-import { useTranslation } from 'react-i18next';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;

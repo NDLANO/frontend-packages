@@ -56,6 +56,7 @@ const FolderItems = ({
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
+
       return (
         <StyledLI key={id} role="treeitem">
           <div>

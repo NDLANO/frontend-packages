@@ -120,16 +120,20 @@ const FolderItem = ({
   const focused = focusedFolderId === id;
 
   const handleClickFolder = () => {
-    setSelectedFolder(folder);
-    setFocusedId(id);
-    onSelectFolder?.(id);
     if (openOnFolderClick) {
-      if (isOpen) {
-        onCloseFolder(id);
-      } else {
-        onOpenFolder(id);
+      if (selected) {
+        if (isOpen) {
+          onCloseFolder(id);
+        } else {
+          onOpenFolder(id);
+        }
       }
     }
+    if (!selected) {
+      setSelectedFolder(folder);
+      setFocusedId(id);
+    }
+    onSelectFolder?.(id);
   };
 
   useEffect(() => {

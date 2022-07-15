@@ -68,10 +68,13 @@ const TreeStructure = ({
 
   useEffect(() => {
     if (defaultOpenFolders) {
-      setOpenFolders((prev) => {
-        return uniq(defaultOpenFolders.concat(prev));
-      });
+      if (!defaultOpenFolders.every((element) => openFolders.includes(element))) {
+        setOpenFolders((prev) => {
+          return uniq(defaultOpenFolders.concat(prev));
+        });
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultOpenFolders]);
 
   useEffect(() => {

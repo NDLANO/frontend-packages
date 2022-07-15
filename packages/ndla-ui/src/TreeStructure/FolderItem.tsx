@@ -59,9 +59,24 @@ interface FolderNameProps {
 }
 
 const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
-  line-height: 1;
+  cursor: pointer;
+  padding: ${spacing.xsmall};
+  margin: 0;
+  margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: ${spacing.xxsmall};
+  border: 0;
+  border-radius: ${misc.borderRadius};
+  box-shadow: none;
   background: ${({ selected }) => (selected ? colors.brand.lighter : 'transparent')};
   color: ${colors.text.primary};
+  transition: ${animations.durations.superFast};
+  text-align: left;
+  line-height: 1;
+  word-break: break-word;
   &:hover,
   &:focus {
     background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
@@ -70,19 +85,6 @@ const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
       opacity: 1;
     }
   }
-  transition: ${animations.durations.superFast};
-  border: 0;
-  border-radius: ${misc.borderRadius};
-  display: flex;
-  gap: ${spacing.xxsmall};
-  align-items: center;
-  cursor: pointer;
-  padding: ${spacing.xsmall};
-  margin: 0;
-  margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
-  flex-grow: 1;
-  box-shadow: none;
-  text-align: left;
 `;
 
 const FolderNameLink = FolderName.withComponent(SafeLink);
@@ -144,7 +146,7 @@ const FolderItem = ({
     };
   });
 
-  const linkPath = `/minndla${level > 1 ? '/folders' : ''}/${id}`;
+  const linkPath = `/minndla${level > 0 ? '/folders' : ''}/${id}`;
 
   return (
     <FolderItemWrapper>
@@ -185,7 +187,7 @@ const FolderItem = ({
           }
           noArrow={hideArrow}
           to={loading ? '' : linkPath}
-          tabIndex={selected || focused || level === 1 ? 0 : -1}
+          tabIndex={selected || focused || level === 0 ? 0 : -1}
           selected={selected}
           onFocus={() => setFocusedId(id)}
           onClick={handleClickFolder}>

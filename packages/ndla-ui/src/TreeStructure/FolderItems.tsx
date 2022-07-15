@@ -52,7 +52,7 @@ const FolderItems = ({
   openFolders,
   ...rest
 }: FolderItemsProps) => (
-  <StyledUL role="group" firstLevel={level === 1}>
+  <StyledUL role="group" firstLevel={level === 0}>
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
@@ -65,7 +65,7 @@ const FolderItems = ({
               isOpen={isOpen}
               level={level}
               loading={loading}
-              noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
+              noPaddingWhenArrowIsHidden={editable && level === 0 && subfolders?.length === 0}
               {...rest}
             />
           </div>

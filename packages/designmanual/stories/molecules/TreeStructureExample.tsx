@@ -9,7 +9,7 @@
 import React, { useState, MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation, TFunction } from 'react-i18next';
-import { TreeStructure, FolderType, TreeStructureMenuProps } from '@ndla/ui';
+import { TreeStructure, FolderType, TreeStructureMenuProps, TreeStructureProps } from '@ndla/ui';
 import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
 import { Pencil, TrashCanOutline } from '@ndla/icons/action';
@@ -44,6 +44,15 @@ const menuItems = (t: TFunction): TreeStructureMenuProps[] => [
   },
 ];
 
+const targetResource: TreeStructureProps['targetResource'] = {
+  id: 'test-resource',
+  resourceId: 123,
+  resourceType: 'type',
+  tags: [],
+  path: '',
+  created: '',
+};
+
 export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
   {
     id: MY_FOLDERS_ID,
@@ -59,7 +68,7 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
         status: 'private',
         isFavorite: false,
         breadcrumbs: [{ id: '1', name: 'Mine Favoritter' }],
-        resources: [],
+        resources: [targetResource],
         subfolders: newUser
           ? []
           : [
@@ -163,6 +172,7 @@ export const TreeStructureExampleComponent = ({
   openOnFolderClick,
   defaultOpenFolders,
   withDots,
+  targetResource,
 }: {
   structure: FolderType[];
   label?: string;
@@ -172,6 +182,7 @@ export const TreeStructureExampleComponent = ({
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
   withDots?: boolean;
+  targetResource?: TreeStructureProps['targetResource'];
 }) => {
   const { t } = useTranslation();
   const [structure, setStructure] = useState<FolderType[]>(initalStructure);
@@ -179,6 +190,7 @@ export const TreeStructureExampleComponent = ({
   return (
     <Container>
       <TreeStructure
+        targetResource={targetResource}
         menuItems={withDots ? menuItems(t) : undefined}
         framed={framed}
         onSelectFolder={onSelectFolder}
@@ -247,6 +259,7 @@ const TreeStructureExample = () => (
       framed
       structure={STRUCTURE_EXAMPLE(false)}
       defaultOpenFolders={[MY_FOLDERS_ID]}
+      targetResource={targetResource}
       withDots
     />
     <h1>TreeStructure without frame</h1>

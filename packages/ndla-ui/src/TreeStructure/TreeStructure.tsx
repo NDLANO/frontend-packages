@@ -52,6 +52,7 @@ const TreeStructure = ({
   onNewFolder,
   onSelectFolder,
   openOnFolderClick,
+  targetResource,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
 
@@ -153,6 +154,7 @@ const TreeStructure = ({
           openOnFolderClick={openOnFolderClick}
           setFocusedId={setFocusedId}
           setSelectedFolder={setSelectedFolder}
+          targetResource={targetResource}
           visibleFolders={visibleFolderIds}
         />
       </TreeStructureStyledWrapper>

@@ -997,6 +997,8 @@ const messages = {
       edit: 'Edit',
       missingName: 'Folder name required',
     },
+    tags: '{{count}} tag',
+    tags_plural: '{{count}} tags',
     confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',

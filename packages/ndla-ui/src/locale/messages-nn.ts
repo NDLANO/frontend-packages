@@ -996,6 +996,8 @@ const messages = {
       edit: 'Rediger',
       missingName: 'Mappenavn er påkrevd',
     },
+    tags: '{{count}} tag',
+    tags_plural: '{{count}} tags',
     confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje angres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje angres.',
     myFolders: 'Mine mapper',

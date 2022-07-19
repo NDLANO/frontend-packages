@@ -1017,6 +1017,9 @@ const messages = {
     myPage: {
       myPage: 'My page',
       logout: 'Log out of My NDLA',
+      loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
+      loginResourcePitch: 'Do you want to favorite this page?',
+      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
@@ -1049,6 +1052,8 @@ const messages = {
     resource: {
       add: 'Add folder/tag',
       remove: 'Remove',
+      removeTitle: 'Remove resource',
+      confirmRemove: 'Are you sure you want to remove the resource from this folder?',
       copyLink: 'Copy link to this page',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',

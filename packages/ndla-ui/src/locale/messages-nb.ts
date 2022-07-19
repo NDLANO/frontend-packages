@@ -1016,6 +1016,9 @@ const messages = {
       myPage: 'Min side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
+      loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk',
+      loginResourcePitch: 'Ønsker du å favorittmerke denne siden?',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
       read: { our: 'Les våre', ours: 'Les vår' },
@@ -1047,6 +1050,8 @@ const messages = {
     resource: {
       add: 'Legg til mappe/tag',
       remove: 'Fjern',
+      removeTitle: 'Fjern ressurs',
+      confirmRemove: 'Er du sikker på at du ønsker å fjerne ressursen fra denne mappen?',
       copyLink: 'Kopier lenke til siden',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',

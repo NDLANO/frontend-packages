@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { spacing, fonts, colors } from '@ndla/core';
+import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { Menu } from '@ndla/icons/common';
 import Button from '@ndla/button';
 
@@ -37,6 +37,10 @@ const style = css`
     border: 2px solid ${colors.brand.lighter};
     background: ${colors.white};
     color: ${colors.brand.primary};
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    padding-left: ${spacing.xsmall};
+    padding-right: ${spacing.xsmall};
   }
 `;
 

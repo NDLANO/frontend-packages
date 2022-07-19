@@ -47,7 +47,7 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
     if (totalCount === 1) {
       return <StyledSpan title={item.name}>{item.name}</StyledSpan>;
     }
-    if (item.index === totalCount - 1) {
+    if (item.index === totalCount - 1 && actionItems.length > 0) {
       return (
         <MenuButton menuItems={actionItems} size="small">
           <StyledSpan title={item.name}>{item.name}</StyledSpan>

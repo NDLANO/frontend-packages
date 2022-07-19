@@ -1022,7 +1022,13 @@ const messages = {
       privacy: 'personvernerklæring her',
       questions: { question: 'Lurer du på noe?', ask: 'Spør oss i chatten' },
       wishToDelete: 'Ønsker du ikke ha brukerprofil hos oss lengre?',
-      terms: 'vilkår for bruk',
+      terms: {
+        terms: 'Vilkår for bruk',
+        term1: 'Ikke skriv personsensitiv informasjon eller persondata i tekstfelt.',
+        term2: 'Ikke skriv noe støtende i tekstfelt.',
+        term3:
+          'NDLA forbeholder seg retten til å oppdatere eller eventuelt slette ressurser dersom disse blir utdatert.',
+      },
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg fra Feide',
       storageInfo: {

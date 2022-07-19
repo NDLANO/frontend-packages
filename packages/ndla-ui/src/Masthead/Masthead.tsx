@@ -95,7 +95,10 @@ export const Masthead = ({
       )}
       <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
         {messages?.map((message) => (
-          <MessageBanner showCloseButton={message.closable} onClose={() => onCloseAlert?.(message.number)}>
+          <MessageBanner
+            key={message.number}
+            showCloseButton={message.closable}
+            onClose={() => onCloseAlert?.(message.number)}>
             {message.content}
           </MessageBanner>
         ))}

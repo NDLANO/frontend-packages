@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { animations, spacing } from '@ndla/core';
 import FolderItem from './FolderItem';
 import FolderNameInput from './FolderNameInput';
-import { FolderItemsProps } from './TreeStructure.types';
+import { CommonFolderItemsProps, FolderType } from './types';
 
 const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   ${animations.fadeInLeft(animations.durations.fast)};
@@ -30,85 +30,65 @@ const StyledLI = styled.li`
   padding: 0;
 `;
 
+export interface FolderItemsProps extends CommonFolderItemsProps {
+  folders: FolderType[];
+  editable?: boolean;
+  maximumLevelsOfFoldersAllowed: number;
+  newFolderParentId: string | undefined;
+  onCancelNewFolder: () => void;
+  onSaveNewFolder: (name: string, parentId: string) => void;
+  openFolders: string[];
+}
+
 const FolderItems = ({
-  loading,
+  editable,
   folders,
   level,
-  editable,
-  onSelectFolder,
-  onCloseFolder,
-  onOpenFolder,
-  onCreateNewFolder,
+  loading,
+  maximumLevelsOfFoldersAllowed,
+  newFolderParentId,
   onCancelNewFolder,
   onSaveNewFolder,
-  newFolderParentId,
-  visibleFolders,
   openFolders,
-  markedFolderId,
-  onMarkFolder,
-  openOnFolderClick,
-  focusedFolderId,
-  setFocusedFolderId,
-  folderChild,
-  maximumLevelsOfFoldersAllowed,
+  ...rest
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={level === 1}>
-    {folders.map(({ name, subfolders, id, icon }, _index) => {
+    {folders.map((folder) => {
+      const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
       return (
         <StyledLI key={id} role="treeitem">
           <div>
             <FolderItem
-              level={level}
-              icon={icon}
-              onSelectFolder={onSelectFolder}
-              openOnFolderClick={openOnFolderClick}
-              loading={loading}
-              isOpen={isOpen}
-              id={id}
-              visibleFolders={visibleFolders}
-              name={name}
-              markedFolderId={markedFolderId}
-              focusedFolderId={focusedFolderId}
-              onMarkFolder={onMarkFolder}
-              onCloseFolder={onCloseFolder}
-              onOpenFolder={onOpenFolder}
               hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
+              folder={folder}
+              isOpen={isOpen}
+              level={level}
+              loading={loading}
               noPaddingWhenArrowIsHidden={editable && level === 1 && subfolders?.length === 0}
-              setFocusedFolderId={setFocusedFolderId}
-              folderChild={folderChild}
+              {...rest}
             />
           </div>
           {newFolderParentId === id && (
             <FolderNameInput
-              parentId={newFolderParentId}
               loading={loading}
               onCancelNewFolder={onCancelNewFolder}
               onSaveNewFolder={onSaveNewFolder}
+              parentId={newFolderParentId}
             />
           )}
           {subfolders && isOpen && (
             <FolderItems
-              onSelectFolder={onSelectFolder}
-              loading={loading}
-              newFolderParentId={newFolderParentId}
-              visibleFolders={visibleFolders}
-              openFolders={openFolders}
-              level={level + 1}
               editable={editable}
               folders={subfolders}
-              onCloseFolder={onCloseFolder}
-              onOpenFolder={onOpenFolder}
-              onCreateNewFolder={onCreateNewFolder}
-              onSaveNewFolder={onSaveNewFolder}
-              onCancelNewFolder={onCancelNewFolder}
-              markedFolderId={markedFolderId}
-              onMarkFolder={onMarkFolder}
-              openOnFolderClick={openOnFolderClick}
-              focusedFolderId={focusedFolderId}
-              setFocusedFolderId={setFocusedFolderId}
-              folderChild={folderChild}
+              level={level + 1}
+              loading={loading}
               maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
+              newFolderParentId={newFolderParentId}
+              onCancelNewFolder={onCancelNewFolder}
+              onSaveNewFolder={onSaveNewFolder}
+              openFolders={openFolders}
+              {...rest}
             />
           )}
         </StyledLI>

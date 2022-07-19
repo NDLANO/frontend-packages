@@ -36,7 +36,7 @@ const StyledHeading = styled.h1`
 type Props = {
   invertedStyle?: boolean;
   toggleAdditionalResources: () => void;
-  onToggleAddToFavorites: (id: string | number, add: string) => void;
+  onToggleAddToFavorites: (id: string) => void;
   showAddToFavoriteButton: boolean;
 };
 

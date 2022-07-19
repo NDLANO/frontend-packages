@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
@@ -65,11 +65,9 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.select();
-      if (isMobile) {
-        inputRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
+    inputRef.current?.select();
+    if (isMobile) {
+      inputRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, []);
 
@@ -85,7 +83,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
           disabled={loading}
           value={name}
           onBlur={() => onCancelNewFolder()}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               onCancelNewFolder();
             } else if (e.key === 'Enter' || e.key === 'Tab') {
@@ -93,10 +91,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
               onSaveNewFolder(name, parentId);
             }
           }}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const target = e.target;
-            setName(target.value);
-          }}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         />
         {loading && <Spinner size="small" />}
       </InputWrapper>

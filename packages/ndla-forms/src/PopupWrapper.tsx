@@ -9,8 +9,7 @@
 import React, { useState, ReactChild, ReactChildren } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { CSSPropertiesWithMultiValues } from '@emotion/serialize';
+import { css, SerializedStyles } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
 import { ChevronDown } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
@@ -136,9 +135,9 @@ const StyledCloseButton = styled.button`
 `;
 
 interface Props extends StyledOptionProps {
-  children: (arg: Function) => ReactChild | ReactChildren;
+  children: (arg: (newValue?: boolean) => void) => ReactChild | ReactChildren;
   label: string;
-  buttonStyle: CSSPropertiesWithMultiValues;
+  buttonStyle: SerializedStyles;
   onOpen?: () => void;
   onClose?: () => void;
 }

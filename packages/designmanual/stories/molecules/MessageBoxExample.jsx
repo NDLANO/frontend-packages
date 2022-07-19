@@ -10,7 +10,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
-import { MessageBoxTag, MessageBox, MessageBoxType } from '@ndla/ui';
+import { MessageBoxTag, MessageBox, MessageBanner } from '@ndla/ui';
 import MessageBoxTabs from '../molecules/MessageBoxTabs';
 import ComponentInfo from '../ComponentInfo';
 const Wrapper = styled.div`
@@ -30,6 +30,13 @@ const MessageBoxWrapper = styled.div`
   width: auto;
 `;
 
+const FullWidthWrapper = styled.div`
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
 const MessageBoxExample = () => {
   const { t } = useTranslation();
   return (
@@ -41,66 +48,66 @@ const MessageBoxExample = () => {
             <>
               <MessageHeader>Full bredde topp</MessageHeader>
               <p>Brukes i toppen av nettleseren når noe trenger mye oppmerksomhet globalt i systemet.</p>
-              <p>
-                <MessageBox type={MessageBoxType.fullpage} showCloseButton>
-                  {t('messageBoxInfo.updateBrowser')}
-                </MessageBox>
-
-                <MessageBoxWrapper>
-                  <MessageHeader>Gul versjon</MessageHeader>
-                  <p>
-                    Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som kan
-                    klikkes vekk eller ikke.
-                  </p>
-                  <MessageBox type={MessageBoxType.medium} showCloseButton>
-                    {t('messageBoxInfo.noContent')}
-                  </MessageBox>
-                </MessageBoxWrapper>
-                <MessageBoxWrapper>
-                  <MessageBox type={MessageBoxType.medium}>{t('messageBoxInfo.subjectOutdated')}</MessageBox>
-                </MessageBoxWrapper>
-                <MessageBoxWrapper>
-                  <MessageBox
-                    links={[
-                      { text: 'link1', href: 'www.facebook.com' },
-                      { text: 'link2', href: 'www.facebook.com' },
-                      { text: 'link3', href: 'www.facebook.com' },
-                    ]}
-                    showCloseButton>
-                    {t('messageBoxInfo.newVersion')}
-                  </MessageBox>
-                </MessageBoxWrapper>
-                <MessageHeader>Ghost variant</MessageHeader>
+              <FullWidthWrapper>
+                <MessageBanner showCloseButton>{t('messageBoxInfo.updateBrowser')}</MessageBanner>
+              </FullWidthWrapper>
+              <MessageBoxWrapper>
+                <MessageHeader>Gul versjon</MessageHeader>
                 <p>
-                  Denne er mer nedtonet og brukes f.eks for informasjon om at ressursen kun er for lærere innlogget med
-                  feide.
+                  Hovedvarianten vi bruker for å gi beskjed til brukeren rundt i systemet. Velg mellom variant som kan
+                  klikkes vekk eller ikke.
                 </p>
-                <MessageBoxWrapper>
-                  <MessageBox type={MessageBoxType.ghost}>{t('messageBoxInfo.feide')}</MessageBox>
-                </MessageBoxWrapper>
-                <MessageHeader>Tags</MessageHeader>
-                <MessageBoxWrapper>
-                  <MessageBoxTag tagMessage="Beta" />
-                </MessageBoxWrapper>
-                <MessageBoxWrapper>
-                  <MessageBoxTag tagMessage="Utgått" />
-                </MessageBoxWrapper>
-                <MessageBoxWrapper>
-                  <MessageBoxTag tagMessage="Kommer" />
-                </MessageBoxWrapper>
+                <MessageBox showCloseButton>{t('messageBoxInfo.noContent')}</MessageBox>
+              </MessageBoxWrapper>
+              <MessageBoxWrapper>
+                <MessageBox>{t('messageBoxInfo.subjectOutdated')}</MessageBox>
+              </MessageBoxWrapper>
+              <MessageBoxWrapper>
+                <MessageBox
+                  links={[
+                    { text: 'link 1', href: '#' },
+                    { text: 'link 2', href: '#' },
+                    { text: 'link 3', href: '#' },
+                  ]}
+                  showCloseButton>
+                  {t('messageBoxInfo.newVersion')}
+                </MessageBox>
+              </MessageBoxWrapper>
+              <MessageHeader>Ghost variant</MessageHeader>
+              <p>
+                Denne er mer nedtonet og brukes f.eks for informasjon om at ressursen kun er for lærere innlogget med
+                feide.
               </p>
+              <MessageBoxWrapper>
+                <MessageBox type="ghost">{t('messageBoxInfo.feide')}</MessageBox>
+              </MessageBoxWrapper>
+              <MessageHeader>Varsel</MessageHeader>
+              <p>Brukes ved feilmelding i applikasjonen</p>
+              <MessageBoxWrapper>
+                <MessageBox type="danger">{t('messageBoxInfo.feide')}</MessageBox>
+              </MessageBoxWrapper>
+              <MessageHeader>Tags</MessageHeader>
+              <MessageBoxWrapper>
+                <MessageBoxTag tagMessage="Beta" />
+              </MessageBoxWrapper>
+              <MessageBoxWrapper>
+                <MessageBoxTag tagMessage="Utgått" />
+              </MessageBoxWrapper>
+              <MessageBoxWrapper>
+                <MessageBoxTag tagMessage="Kommer" />
+              </MessageBoxWrapper>
             </>
           }
           onSite={[<MessageBoxTabs></MessageBoxTabs>]}
-          reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBoxType } from '@ndla/ui';
+          reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBanner } from '@ndla/ui';
   
 //Direkte kall på fullpage meldingsboks
-<MessageBox type={MessageBoxType.fullpage} showCloseButton >
+<MessageBanner showCloseButton >
 {messagesNB.messageBoxInfo.updateBrowser}
 </MessageBox>
 
 //Direkte kall på standard meldingsboks
-<MessageBox type={MessageBoxType.medium} showCloseButton>
+<MessageBox showCloseButton>
 <span>{messagesNB.messageBoxInfo.noContent}</span>
 </MessageBox>
 

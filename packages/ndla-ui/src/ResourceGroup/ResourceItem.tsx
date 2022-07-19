@@ -229,8 +229,8 @@ type Props = {
   showAdditionalResources?: boolean;
   access?: 'teacher';
   isFavorite?: boolean;
-  onToggleAddToFavorites: (id: string, add: boolean) => void;
-  hideAddToFavoriteButton?: boolean;
+  onToggleAddToFavorites: (id: string) => void;
+  showAddToFavoriteButton: boolean;
 };
 
 const ResourceItem = ({
@@ -247,7 +247,7 @@ const ResourceItem = ({
   access,
   onToggleAddToFavorites,
   isFavorite,
-  hideAddToFavoriteButton,
+  showAddToFavoriteButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -301,11 +301,11 @@ const ResourceItem = ({
             )}
           </>
         )}
-        {!hideAddToFavoriteButton && (
+        {showAddToFavoriteButton && (
           <ArticleFavoritesButton
             isFavorite={isFavorite}
             articleId={id}
-            onToggleAddToFavorites={() => onToggleAddToFavorites(id, true)}
+            onToggleAddToFavorites={() => onToggleAddToFavorites(id)}
           />
         )}
       </TypeWrapper>

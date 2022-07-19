@@ -28,7 +28,7 @@ import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
 import NavigationBox from '../Navigation/NavigationBox';
 import { ProgrammeSubjects } from '../Programme';
-import { MessageBox, MessageBoxType } from '../MessageBox';
+import { MessageBanner } from '../Messages';
 
 const classes = new BEMHelper({
   name: 'topic-menu',
@@ -74,6 +74,7 @@ export const TopicMenu = ({
   currentProgramme,
   initialSelectedMenu,
   messages,
+  closeAlert,
   selectedGrade,
   onGradeChange,
 }) => {
@@ -149,11 +150,15 @@ export const TopicMenu = ({
   const disableSubTopic = disableMain && hasExpandedSubtopics;
 
   const sliderCounter = !expandedTopicId ? 0 : expandedSubtopicsId.length + 1;
-
   return (
     <nav>
       {messages?.map((message) => (
-        <MessageBox type={MessageBoxType.masthead}>{message}</MessageBox>
+        <MessageBanner
+          key={message.number}
+          showCloseButton={message.closable}
+          onClose={() => closeAlert?.(message.number)}>
+          {message.content}
+        </MessageBanner>
       ))}
       <ModalHeader modifier={['white', 'menu']}>
         <div {...classes('masthead-left')}>
@@ -358,6 +363,7 @@ TopicMenu.propTypes = {
   topics: PropTypes.arrayOf(TopicShape).isRequired,
   toFrontpage: PropTypes.func.isRequired,
   toTopic: PropTypes.func,
+  closeAlert: PropTypes.func,
   toSubject: PropTypes.func,
   close: PropTypes.func,
   defaultCount: PropTypes.number,
@@ -369,6 +375,13 @@ TopicMenu.propTypes = {
   hideSearch: PropTypes.bool,
   searchFieldComponent: PropTypes.node,
   locale: PropTypes.string,
+  messages: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string.isRequired,
+      closable: PropTypes.bool.isRequired,
+      number: PropTypes.number.isRequired,
+    }),
+  ),
   subjectCategories: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

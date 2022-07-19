@@ -6,12 +6,15 @@
  *
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { KeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
+import { MenuButton } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
-import { SetFocusedFolderId } from './TreeStructure.types';
+import SafeLink from '@ndla/safelink';
+import { CommonFolderItemsProps, FolderType } from './types';
+import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.button<{ isOpen: boolean }>`
   background: transparent;
@@ -37,14 +40,35 @@ const FolderItemWrapper = styled.div`
   align-items: center;
 `;
 
-const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
+const WrapperForFolderChild = styled.div<{ selected?: boolean }>`
+  position: absolute;
+  right: ${spacing.xsmall};
+  opacity: ${({ selected }) => (selected ? 1 : 0.25)};
+  &:hover,
+  &:focus,
+  &:focus-within {
+    opacity: 1;
+  }
+`;
+
+const shouldForwardProp = (name: string) => !['selected', 'noArrow'].includes(name);
+
+interface FolderNameProps {
+  selected?: boolean;
+  noArrow?: boolean;
+}
+
+const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
   line-height: 1;
-  background: ${({ marked }) => (marked ? colors.brand.lighter : 'transparent')};
+  background: ${({ selected }) => (selected ? colors.brand.lighter : 'transparent')};
   color: ${colors.text.primary};
   &:hover,
   &:focus {
-    background: ${({ marked }) => (marked ? colors.brand.light : colors.brand.lightest)};
+    background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
     color: ${colors.brand.primary};
+    + ${WrapperForFolderChild} {
+      opacity: 1;
+    }
   }
   transition: ${animations.durations.superFast};
   border: 0;
@@ -58,100 +82,116 @@ const FolderName = styled.button<{ marked: boolean; noArrow?: boolean }>`
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
   flex-grow: 1;
   box-shadow: none;
+  text-align: left;
 `;
 
-const FolderNameLink = FolderName.withComponent('a');
+const FolderNameLink = FolderName.withComponent(SafeLink);
 
-interface Props {
-  name: string;
-  id: string;
-  onToggleOpen: (id: string) => void;
-  onMarkFolder: (id: string) => void;
-  isOpen: boolean;
-  markedFolderId?: string;
-  focusedFolderId?: string;
-  loading?: boolean;
-  openOnFolderClick?: boolean;
+interface Props extends CommonFolderItemsProps {
   hideArrow?: boolean;
-  setFocusedFolderId: SetFocusedFolderId;
-  url?: string;
-  icon?: React.ReactNode;
+  isOpen: boolean;
+  folder: FolderType;
   noPaddingWhenArrowIsHidden?: boolean;
 }
 
 const FolderItem = ({
-  hideArrow,
-  loading,
-  name,
-  id,
-  onToggleOpen,
-  onMarkFolder,
-  isOpen,
-  markedFolderId,
   focusedFolderId,
-  openOnFolderClick,
-  setFocusedFolderId,
-  icon,
-  url,
+  menuItems,
+  hideArrow,
+  folder,
+  isOpen,
+  level,
+  loading,
+  selectedFolder,
   noPaddingWhenArrowIsHidden,
+  onCloseFolder,
+  onOpenFolder,
+  onSelectFolder,
+  openOnFolderClick,
+  setFocusedId,
+  setSelectedFolder,
+  visibleFolders,
 }: Props) => {
-  const folderNameLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const folderNameButtonRef = useRef<HTMLButtonElement | null>(null);
-  useEffect(() => {
-    if (focusedFolderId === id) {
-      if (url && folderNameLinkRef.current) {
-        folderNameLinkRef.current.focus();
-      } else if (folderNameButtonRef.current) {
-        folderNameButtonRef.current.focus();
+  const { id, icon, name } = folder;
+  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
+  const selected = selectedFolder && selectedFolder.id === id;
+  const focused = focusedFolderId === id;
+
+  const handleClickFolder = () => {
+    setSelectedFolder(folder);
+    setFocusedId(id);
+    onSelectFolder?.(id);
+    if (openOnFolderClick) {
+      if (isOpen) {
+        onCloseFolder(id);
+      } else {
+        onOpenFolder(id);
       }
     }
-  }, [focusedFolderId, folderNameLinkRef, folderNameButtonRef, url, id]);
-  const marked = markedFolderId === id;
+  };
+
+  useEffect(() => {
+    if (focusedFolderId === id) {
+      ref.current?.focus();
+    }
+  }, [focusedFolderId, ref, id]);
+
+  const actions = menuItems?.map((item) => {
+    const { onClick } = item;
+    return {
+      ...item,
+      onClick: (e?: MouseEvent<HTMLDivElement>) => onClick(e, folder),
+    };
+  });
+
+  const linkPath = `/minndla${level > 1 ? '/folders' : ''}/${id}`;
+
   return (
     <FolderItemWrapper>
       {!hideArrow && (
-        <OpenButton tabIndex={-1} isOpen={isOpen} disabled={loading} onClick={() => onToggleOpen(id)}>
+        <OpenButton
+          tabIndex={-1}
+          isOpen={isOpen}
+          disabled={loading}
+          onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
           <ArrowDropDown />
         </OpenButton>
       )}
-      {url ? (
+      {onSelectFolder ? (
+        <>
+          <FolderName
+            ref={ref}
+            onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
+            noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
+            tabIndex={selected || focused ? 0 : -1}
+            selected={selected}
+            disabled={loading}
+            onFocus={() => setFocusedId(id)}
+            onClick={handleClickFolder}>
+            {icon || <FolderOutlined />}
+            {name}
+          </FolderName>
+          {actions && (
+            <WrapperForFolderChild selected={selected}>
+              <MenuButton size="xsmall" menuItems={actions} tabIndex={selected || id === focusedFolderId ? 0 : -1} />
+            </WrapperForFolderChild>
+          )}
+        </>
+      ) : (
         <FolderNameLink
-          ref={folderNameLinkRef}
+          ref={ref}
+          onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
+            arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
+          }
           noArrow={hideArrow}
-          tabIndex={marked ? 0 : -1}
-          marked={marked}
-          href={loading ? undefined : url}
-          onFocus={() => {
-            setFocusedFolderId(id);
-          }}
-          onClick={() => {
-            onMarkFolder(id);
-            if (openOnFolderClick) {
-              onToggleOpen(id);
-            }
-          }}>
+          to={loading ? '' : linkPath}
+          tabIndex={selected || focused || level === 1 ? 0 : -1}
+          selected={selected}
+          onFocus={() => setFocusedId(id)}
+          onClick={handleClickFolder}>
           {icon || <FolderOutlined />}
           {name}
         </FolderNameLink>
-      ) : (
-        <FolderName
-          ref={folderNameButtonRef}
-          noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
-          tabIndex={marked ? 0 : -1}
-          marked={marked}
-          disabled={loading}
-          onFocus={() => {
-            setFocusedFolderId(id);
-          }}
-          onClick={() => {
-            onMarkFolder(id);
-            if (openOnFolderClick) {
-              onToggleOpen(id);
-            }
-          }}>
-          {icon || <FolderOutlined />}
-          {name}
-        </FolderName>
       )}
     </FolderItemWrapper>
   );

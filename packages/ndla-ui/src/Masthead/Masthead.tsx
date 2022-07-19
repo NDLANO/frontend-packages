@@ -10,7 +10,7 @@ import React, { ReactNode, useEffect, useRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { DisplayOnPageYOffset } from '../Animation';
-import { MessageBox, MessageBoxType } from '../MessageBox';
+import { MessageBanner } from '../Messages';
 
 const classes = new BEMHelper({
   name: 'masthead',
@@ -95,12 +95,12 @@ export const Masthead = ({
       )}
       <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
         {messages?.map((message) => (
-          <MessageBox
-            type={MessageBoxType.masthead}
+          <MessageBanner
+            key={message.number}
             showCloseButton={message.closable}
             onClose={() => onCloseAlert?.(message.number)}>
             {message.content}
-          </MessageBox>
+          </MessageBanner>
         ))}
         {infoContent && (
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>

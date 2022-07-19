@@ -48,8 +48,8 @@ export type ResourceListProps = {
   contentType?: string;
   title?: string;
   showAdditionalResources?: boolean;
-  onToggleAddToFavorites: (id: string, add: boolean) => void;
-  hideAddToFavoriteButton?: boolean;
+  onToggleAddToFavorites: (id: string) => void;
+  showAddToFavoriteButton: boolean;
 };
 
 const ResourceList = ({
@@ -59,7 +59,7 @@ const ResourceList = ({
   contentType,
   title,
   showAdditionalResources,
-  hideAddToFavoriteButton,
+  showAddToFavoriteButton,
 }: ResourceListProps) => {
   const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
@@ -76,7 +76,7 @@ const ResourceList = ({
             key={id}
             contentType={contentType}
             showAdditionalResources={showAdditionalResources}
-            hideAddToFavoriteButton={hideAddToFavoriteButton}
+            showAddToFavoriteButton={showAddToFavoriteButton}
             onToggleAddToFavorites={onToggleAddToFavorites}
             {...resource}
             contentTypeDescription={

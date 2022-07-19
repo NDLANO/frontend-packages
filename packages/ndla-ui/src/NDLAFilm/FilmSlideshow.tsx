@@ -8,11 +8,13 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SwipeEventData, useSwipeable } from 'react-swipeable';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { breakpoints, mq, spacing, spacingUnit, fonts, colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
+import { Spinner } from '@ndla/icons';
 import { OneColumn } from '../Layout';
-import Spinner from '../Spinner';
-import NavigationArrow from './NavigationArrow';
+import NavigationArrow, { StyledNavigationArrow } from './NavigationArrow';
 import SlideshowIndicator from './SlideshowIndicator';
 import { MovieType } from './types';
 
@@ -23,17 +25,180 @@ interface Props {
   slideInterval?: number;
 }
 
-const classes = new BEMHelper({
-  name: 'film-slideshow',
-  prefix: 'c-',
-});
+const SlideLinkWrapper = styled.div`
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: absolute;
+  z-index: 2;
+  height: 100vw;
+  width: 100%;
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    height: 100vw;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 75vw;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    height: 55vw;
+  }
+  ${mq.range({ from: breakpoints.wide })} {
+    height: 40vw;
+  }
+  ${mq.range({ from: breakpoints.ultraWide })} {
+    height: 36vw;
+  }
+`;
+
+const itemWrapperCSS = css`
+  display: flex;
+  box-shadow: none;
+`;
+
+interface SlideshowItemProps {
+  fadeOver?: boolean;
+}
+
+const SlideshowItem = styled.div<SlideshowItemProps>`
+  width: 100vw;
+  height: 100vw;
+  /* aspect ratios */
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    height: 100vw;
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    height: 75vw;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    height: 55vw;
+  }
+  ${mq.range({ from: breakpoints.wide })} {
+    height: 40vw;
+  }
+  ${mq.range({ from: breakpoints.ultraWide })} {
+    height: 36vw;
+  }
+  background-color: '#222';
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  border: 0;
+  position: ${(props) => (props.fadeOver ? 'absolute' : 'relative')};
+  animation: ${(props) => props.fadeOver && 'fadeIn 400ms ease'};
+  z-index: ${(props) => props.fadeOver && 1};
+  &:before {
+    content: '';
+    opacity: 0.4;
+    background: #091a2a;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+  }
+`;
+
+interface SlideshowLinkProps {
+  out?: boolean;
+}
+
+const SlideshowLink = styled(SafeLink)<SlideshowLinkProps>`
+  display: flex;
+  box-shadow: none;
+  transition: all 400ms ease;
+  opacity: ${(props) => props.out && 0};
+  animation: ${(props) => !props.out && 'fadeInBottomFixed 600ms ease'};
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    padding-bottom: ${spacing.medium};
+  }
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding-bottom: ${spacing.large};
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding-bottom: ${spacingUnit * 3}px;
+  }
+  &:hover {
+    h1 {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const SlideshowWrapper = styled.section`
+  &:hover {
+    ${StyledNavigationArrow} {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+`;
+
+const SlideshowInfo = styled.div`
+  border: 0;
+  background: none;
+  background-color: rgba(3, 23, 43, 0.7);
+  border-radius: 4px;
+  padding: ${spacing.medium} ${spacing.medium} ${spacing.medium} ${spacing.normal};
+  margin: 0 -20px;
+  width: 100vw;
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    margin: 0;
+    width: 100%;
+    padding: ${spacing.medium} ${spacingUnit * 2}px ${spacing.medium} ${spacing.normal};
+  }
+  h1 {
+    ${fonts.sizes('22px', '30px')};
+    color: ${colors.white};
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 0;
+    font-weight: ${fonts.weight.semibold};
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      margin: 0 0 ${spacing.small};
+      ${fonts.sizes('26px', '30px')};
+    }
+    ${mq.range({ from: breakpoints.tablet })} {
+      ${fonts.sizes('40px', '44px')};
+    }
+    ${mq.range({ from: breakpoints.desktop })} {
+      ${fonts.sizes('48px', '54px')};
+    }
+  }
+
+  p {
+    color: ${colors.white};
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    ${fonts.sizes('12px', '18px')};
+    ${mq.range({ from: breakpoints.mobileWide })} {
+      ${fonts.sizes('15px', '20px')};
+    }
+    ${mq.range({ from: breakpoints.tablet })} {
+      ${fonts.sizes('18px', '24px')};
+    }
+    ${mq.range({ from: breakpoints.wide })} {
+      ${fonts.sizes('20px', '32px')};
+    }
+  }
+`;
+
+const EmptySlideshow = styled.div`
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: $spacing--large * 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vw;
+`;
 
 const defaultTransitionSwipeEnd = 'transform 600ms cubic-bezier(0, 0.76, 0.09, 1)';
 const defaultTransitionText = 'opacity 600ms ease';
 
 const renderSlideItem = (slide: MovieType) => (
-  <div
-    {...classes('item')}
+  <SlideshowItem
     key={slide.id}
     role="img"
     aria-label={(slide.metaImage && slide.metaImage.alt) || ''}
@@ -190,9 +355,9 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   if (slideshow.length === 0) {
     return (
       <div>
-        <div {...classes('slideshow')}>
+        <EmptySlideshow>
           <Spinner inverted />
-        </div>
+        </EmptySlideshow>
       </div>
     );
   }
@@ -208,22 +373,18 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   const backgroundImage = slideshow[activeSlide].metaImage;
 
   return (
-    <section {...classes('')} {...handlers}>
+    <SlideshowWrapper {...handlers}>
       <>
-        <div {...classes('slide-link-wrapper')}>
+        <SlideLinkWrapper>
           <OneColumn>
-            <SafeLink
-              to={slideshow[activeSlide].path}
-              {...classes('item-wrapper', 'text', {
-                out: !animationComplete,
-              })}>
-              <div {...classes('slide-info')} ref={slideText}>
+            <SlideshowLink to={slideshow[activeSlide].path} out={!animationComplete}>
+              <SlideshowInfo ref={slideText}>
                 <h1>{slideshow[activeSlide].title}</h1>
                 <p>{slideshow[activeSlide].metaDescription}</p>
-              </div>
-            </SafeLink>
+              </SlideshowInfo>
+            </SlideshowLink>
           </OneColumn>
-        </div>
+        </SlideLinkWrapper>
         <NavigationArrow
           slideIndexTarget={slideIndexTarget > 0 ? slideIndexTarget - 1 : slideshow.length - 1}
           gotoSlide={gotoSlide}
@@ -234,8 +395,8 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
           rightArrow
         />
         {!animationComplete && (
-          <div
-            {...classes('item', 'fade-over')}
+          <SlideshowItem
+            fadeOver
             role="img"
             onAnimationEnd={onChangedSlide}
             style={{
@@ -245,7 +406,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
         )}
         <div
           ref={slideRef}
-          {...classes('item-wrapper')}
+          css={itemWrapperCSS}
           onTransitionEnd={onTransitionEnd}
           style={{
             width: slideshowWidth,
@@ -257,7 +418,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
         </div>
         <SlideshowIndicator slideshow={slideshow} activeSlide={activeSlide} gotoSlide={gotoSlide} />
       </>
-    </section>
+    </SlideshowWrapper>
   );
 };
 

@@ -16,6 +16,7 @@ $denominator: auto;
 $extra-margin: 10px;
 
 @mixin float($cols, $maxcols, $direction) {
+  z-index: 1;
   $colDifference: $maxcols - $cols;
   $cols-tablet: $cols - 1;
   @if ($cols == 1) {

@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
-//@ts-ignore
 import { CheckboxItem } from '@ndla/forms';
 import { IImageMetaInformationV2 } from '@ndla/types-image-api';
 

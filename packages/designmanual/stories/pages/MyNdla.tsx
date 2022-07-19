@@ -9,7 +9,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
-import { MenuButton } from '@ndla/button';
+import { MenuItemProps } from '@ndla/button';
+import { FolderInput } from '@ndla/ui';
+import { Pencil } from '@ndla/icons/action';
+import { DeleteForever } from '@ndla/icons/editor';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
@@ -25,6 +28,11 @@ const BlockFolderWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
+export const menuItems: MenuItemProps[] = [
+  { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
+  { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
+];
+
 const tags = ['tag', 'tag', 'tag'];
 
 const topics = ['Matte', 'Naturfag'];
@@ -33,7 +41,7 @@ export const MyNdla = () => {
   return (
     <Wrapper>
       <ComponentInfo
-        status={1}
+        status={3}
         components={
           <>
             <h2>Folder</h2>
@@ -44,6 +52,15 @@ export const MyNdla = () => {
               subFolders={3}
               subResources={3}
               type={'list'}
+              menuItems={menuItems}
+            />
+            <h2>Legg til mappe</h2>
+            <FolderInput
+              autoSelect
+              // eslint-disable-next-line no-console
+              onAddFolder={() => console.log('onAddFolder')}
+              // eslint-disable-next-line no-console
+              onClose={() => console.log('onClose')}
             />
             <h2>Blokkvisning av folder</h2>
             <BlockFolderWrapper>
@@ -54,6 +71,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
               <Folder
                 key={'blockFolder2'}
@@ -62,6 +80,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
               <Folder
                 key={'blockFolder3'}
@@ -70,6 +89,7 @@ export const MyNdla = () => {
                 subFolders={3}
                 subResources={3}
                 type={'block'}
+                menuItems={menuItems}
               />
             </BlockFolderWrapper>
             <h2> Ressurser </h2>
@@ -81,11 +101,11 @@ export const MyNdla = () => {
               tags={tags}
               description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
               resourceImage={{
-                src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3> Standard Ressurs</h3>
             <ListResource
@@ -95,11 +115,11 @@ export const MyNdla = () => {
               tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
               description={'En helt vanlig beskrivelse.'}
               resourceImage={{
-                src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
@@ -109,11 +129,11 @@ export const MyNdla = () => {
               description={''}
               tags={tags}
               resourceImage={{
-                src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
               }}
               link={''}
-              actionMenu={<MenuButton size="xsmall" />}
+              menuItems={menuItems}
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource
@@ -121,7 +141,7 @@ export const MyNdla = () => {
               title="Minimal ressurs"
               topics={topics}
               resourceImage={{
-                src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
               }}
               link={''}
@@ -146,7 +166,7 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                     alt: 'alt',
                   },
                 },
@@ -158,7 +178,7 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg',
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                     alt: 'alt',
                   },
                 },
@@ -170,7 +190,7 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9YBKL8UUmH3-VklAvsuDv7D1I4KrNRFswqOwIhEcmx5NnMfUUUuNCAYB6flaehu4Jnbw&usqp=CAU',
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                     alt: 'alt',
                   },
                 },
@@ -182,7 +202,7 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                     alt: 'alt',
                   },
                 },

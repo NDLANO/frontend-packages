@@ -9,7 +9,7 @@
 import React, { ReactNode, useEffect, useState, useRef, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Spinner } from '@ndla/ui';
+import { Spinner } from '@ndla/icons';
 import { colors, spacing, fonts, misc, animations } from '@ndla/core';
 import { CloudUploadOutline, AlertCircle } from '@ndla/icons/editor';
 import { getIllegalFiles } from './filetypeHelper';
@@ -137,9 +137,9 @@ const AlertMessages = styled.div`
 interface Props {
   name: string;
   allowedFiles: string[];
-  onAddedFiles: (files: FileList, e: ChangeEvent<HTMLInputElement>) => void;
+  onAddedFiles: (files: File[], e: ChangeEvent<HTMLInputElement>) => void;
   multiple?: boolean;
-  useIcon: ReactNode;
+  useIcon?: ReactNode;
   ariaLabel: string;
   errorMessage?: string;
   loading?: boolean;
@@ -192,7 +192,7 @@ const UploadDropZone = ({
           }, 5000),
         );
       } else {
-        onAddedFiles(nativeFiles, e);
+        onAddedFiles(files, e);
         setError(undefined);
       }
     }

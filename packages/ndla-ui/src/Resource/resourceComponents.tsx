@@ -10,15 +10,15 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { fonts, colors, spacing } from '@ndla/core';
 
+import { MenuButton } from '@ndla/button';
+
 export interface ResourceImageProps {
   alt: string;
   src: string;
 }
 
-export const ResourceTitle = styled.h2`
-  ${fonts.sizes(18)};
+export const ResourceTitle = styled.h3`
   min-width: 50px;
-  font-weight: ${fonts.weight.bold};
   margin: 0;
   flex: 1;
   overflow: hidden;
@@ -29,6 +29,7 @@ export const ResourceTitle = styled.h2`
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
+  grid-area: resourceTitle;
 `;
 
 const StyledTagList = styled.ul`
@@ -47,6 +48,9 @@ const StyledTagListElement = styled.li`
   ::before {
     content: '#';
   }
+  &:hover {
+    color: ${colors.brand.primary};
+  }
 `;
 
 const StyledTopicList = styled.ul`
@@ -55,6 +59,7 @@ const StyledTopicList = styled.ul`
   margin: 0;
   padding: 0;
   overflow: hidden;
+  grid-area: topicList;
 `;
 
 const StyledTopicListElement = styled.li`
@@ -75,6 +80,14 @@ export const Row = styled.div`
   gap: ${spacing.xsmall};
 `;
 
+const TagCounterWrapper = styled.p`
+  color: ${colors.brand.primary};
+  box-shadow: none;
+  margin: 0;
+  font-weight: ${fonts.weight.semibold};
+  ${fonts.sizes(16)}
+`;
+
 interface TagListProps {
   tags?: string[];
 }
@@ -90,6 +103,31 @@ export const TagList = ({ tags }: TagListProps) => {
   );
 };
 
+interface CompressedTagListProps {
+  tags: string[];
+}
+
+export const CompressedTagList = ({ tags }: CompressedTagListProps) => {
+  const visibleTags = tags.slice(0, 3);
+  const remainingTags = tags.slice(3, tags.length).map((tag) => {
+    return {
+      text: '#' + tag,
+      onClick: () => {},
+    };
+  });
+
+  return (
+    <>
+      <TagList tags={visibleTags} />
+      {remainingTags.length > 0 && (
+        <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
+          <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>
+        </MenuButton>
+      )}
+    </>
+  );
+};
+
 interface TopicListProps {
   topics?: string[];
 }
@@ -100,10 +138,8 @@ export const TopicList = ({ topics }: TopicListProps) => {
     <StyledTopicList>
       {topics.map((topic, i) => (
         <StyledTopicListElement key={topic}>
-          <>
-            {topic}
-            {i !== topics.length - 1 && <StyledTopicDivider>•</StyledTopicDivider>}
-          </>
+          {topic}
+          {i !== topics.length - 1 && <StyledTopicDivider>•</StyledTopicDivider>}
         </StyledTopicListElement>
       ))}
     </StyledTopicList>

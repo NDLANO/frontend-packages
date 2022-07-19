@@ -6,14 +6,14 @@
  *
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
-import { Spinner } from '@ndla/editor';
 import { spacing, colors, misc, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
+import { Spinner } from '@ndla/icons';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};
@@ -53,22 +53,21 @@ const StyledInput = styled.input`
 `;
 
 interface FolderNameInputProps {
-  onSaveNewFolder: (value: string) => void;
+  onSaveNewFolder: (name: string, parentId: string) => void;
+  parentId: string;
   onCancelNewFolder: () => void;
   loading?: boolean;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: FolderNameInputProps) => {
+const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading }: FolderNameInputProps) => {
   const { t } = useTranslation();
-  const [value, setValue] = useState<string>(t('treeStructure.newFolder.defaultName'));
+  const [name, setName] = useState<string>(t('treeStructure.newFolder.defaultName'));
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.select();
-      if (isMobile) {
-        inputRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
+    inputRef.current?.select();
+    if (isMobile) {
+      inputRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, []);
 
@@ -82,23 +81,17 @@ const FolderNameInput = ({ onSaveNewFolder, onCancelNewFolder, loading }: Folder
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
           disabled={loading}
-          value={value}
+          value={name}
           onBlur={() => onCancelNewFolder()}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               onCancelNewFolder();
-              return;
-            }
-            if (e.key === 'Enter' || e.key === 'Tab') {
-              onSaveNewFolder(value);
+            } else if (e.key === 'Enter' || e.key === 'Tab') {
               e.preventDefault();
+              onSaveNewFolder(name, parentId);
             }
-            return;
           }}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const target = e.target as HTMLInputElement;
-            setValue(target.value);
-          }}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         />
         {loading && <Spinner size="small" />}
       </InputWrapper>

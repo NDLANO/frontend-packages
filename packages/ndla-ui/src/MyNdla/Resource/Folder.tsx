@@ -7,13 +7,14 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { fonts, spacing, colors } from '@ndla/core';
+import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
+import { MenuButton, MenuItemProps } from '@ndla/button';
 
 interface FolderIconWrapperProps {
   type?: LayoutType;
@@ -22,7 +23,7 @@ interface FolderIconWrapperProps {
 const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
   display: flex;
   border-radius: 100%;
-  padding: 11px;
+  padding: ${spacing.small};
   background-color: ${colors.brand.greyLighter};
   svg {
     width: 18px;
@@ -58,7 +59,7 @@ const FolderWrapper = styled(SafeLink)`
   display: flex;
   align-items: center;
   padding: ${spacing.small};
-  border: 1px solid ${colors.brand.light};
+  border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
   box-shadow: none;
   text-decoration: none;
@@ -83,7 +84,7 @@ interface Props {
   description?: string;
   link: string;
   type: LayoutType;
-  actionMenu?: ReactNode;
+  menuItems?: MenuItemProps[];
 }
 
 interface IconCountProps {
@@ -95,6 +96,7 @@ interface IconCountProps {
 interface IconCountWrapperProps {
   type: LayoutType;
 }
+
 const IconCountWrapper = styled.div<IconCountWrapperProps>`
   display: flex;
   align-items: center;
@@ -108,7 +110,12 @@ const IconCountWrapper = styled.div<IconCountWrapperProps>`
         opacity: 1;
       }
     `};
+
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    display: none;
+  }
 `;
+
 const IconCount = ({ type, count, layoutType }: IconCountProps) => {
   const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
   const { t } = useTranslation();
@@ -117,24 +124,24 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
   return (
     <IconCountWrapper type={layoutType}>
       <Icon aria-label={t(`myNdla.${type}s`)} />
-      <span>{layoutType === 'block' ? count : t(`myNdla.${type}s`, { count: 3 })}</span>
+      <span>{layoutType === 'block' ? count : t(`myNdla.${type}s`, { count })}</span>
     </IconCountWrapper>
   );
 };
 
 type LayoutType = 'list' | 'block';
 
-const Folder = ({ link, title, subFolders, subResources, type = 'list', actionMenu }: Props) => {
+const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
   return (
     <FolderWrapper to={link}>
       <FolderIconWrapper type={type}>
-        <FolderOutlined aria-label={t('myNdla.folder')} />
+        <FolderOutlined aria-label={t('myNdla.folder.folder')} />
       </FolderIconWrapper>
       <FolderTitle>{title}</FolderTitle>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />
       <IconCount layoutType={type} type={'resource'} count={subResources} />
-      {actionMenu}
+      {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
     </FolderWrapper>
   );
 };

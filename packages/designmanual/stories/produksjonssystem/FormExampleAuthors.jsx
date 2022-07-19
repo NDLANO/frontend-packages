@@ -9,7 +9,7 @@
 import React, { Component, Fragment } from 'react';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
-import { FieldHeader, FieldSection, Input, Select, FieldSplitter, FieldRemoveButton } from '@ndla/forms';
+import { FieldHeader, FieldSection, Input, Select, FieldSplitter, FieldRemoveButton, TextArea } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 
 const roleExamples = [
@@ -94,9 +94,8 @@ class FormExampleAuthors extends Component {
               <FieldSplitter>
                 <Input
                   warningText={author.name === '' ? 'Du må oppgi navn på forfatter' : null}
-                  container="div"
                   type="text"
-                  focusOnMount={author.focusOnMount}
+                  autoFocus={author.focusOnMount}
                   placeholder="Skriv navn"
                   value={author.name}
                   onChange={(e) => this.handleInputChange(e.target.value, index)}
@@ -122,7 +121,7 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <Input iconRight={<SearchIcon />} container="div" type="text" placeholder="Skriv navn" />
+            <Input iconRight={<SearchIcon />} type="text" placeholder="Skriv navn" />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>
@@ -131,7 +130,7 @@ class FormExampleAuthors extends Component {
         <FieldHeader title="Form heading" subTitle="example" width={3 / 4} />
         <FieldSection>
           <div>
-            <Input container="div" type="text" placeholder="Skriv navn" autoExpand />
+            <TextArea type="text" placeholder="Skriv navn" />
           </div>
           <div>
             <FieldRemoveButton>Ta bort</FieldRemoveButton>

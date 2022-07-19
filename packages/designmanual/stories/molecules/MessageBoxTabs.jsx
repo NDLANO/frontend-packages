@@ -46,7 +46,6 @@ const MessageBoxTabs = () => {
             content: (
               <Wrapper>
                 <MessageBoxSiteExample
-                  type="fullpage"
                   message={
                     'Nettleseren din er utdatert. Oppdater den, eller finn en trygg og oppdatert nettleser på https://browsehappy.com.'
                   }

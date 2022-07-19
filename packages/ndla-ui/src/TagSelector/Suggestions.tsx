@@ -8,6 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Check } from '@ndla/icons/editor';
 import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
 import Button from '@ndla/button';
@@ -60,6 +61,7 @@ interface SuggestionButtonProps {
 const SuggestionButton = styled(Button)<SuggestionButtonProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   ${fonts.sizes(18)};
   transition: ${misc.transition.default};
   font-weight: 400;
@@ -72,6 +74,18 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
       }
     }
   }
+  ${({ isHighlighted }) =>
+    isHighlighted
+      ? css`
+          background: ${colors.brand.lighter};
+          &:disabled {
+            background: ${colors.brand.greyLighter};
+            svg {
+              fill: ${colors.brand.grey};
+            }
+          }
+        `
+      : ''}
 `;
 
 interface Props {

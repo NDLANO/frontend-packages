@@ -67,7 +67,9 @@ export {
 export { default as FactBox } from './FactBox';
 
 export { default as Image, ImageLink, makeSrcQueryString } from './Image';
+export type { ImageCrop, ImageFocalPoint } from './Image';
 
+export type { HeroContentType } from './Hero';
 export {
   SubjectMaterialHero,
   TasksAndActivitiesHero,
@@ -81,7 +83,15 @@ export {
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
-export { Figure, FigureCaption, FigureLicenseDialog, FigureExpandButton, FigureOpenDialogButton } from './Figure';
+export {
+  Figure,
+  FigureCaption,
+  FigureLicenseDialog,
+  FigureExpandButton,
+  FigureOpenDialogButton,
+  FigureBylineExpandButton,
+} from './Figure';
+export type { FigureType } from './Figure';
 
 export { LanguageSelector } from './LanguageSelector';
 
@@ -99,8 +109,6 @@ export {
 } from './LearningPaths';
 export { Translation, TranslationLine, TranslationBox } from './Translation';
 
-export { default as Spinner } from './Spinner';
-
 export { default as SearchResultSleeve } from './Search/SearchResultSleeve';
 
 export { default as ContentTypeResult } from './Search/ContentTypeResult';
@@ -111,13 +119,13 @@ export { default as MastheadSearchModal } from './Masthead/MastheadSearchModal';
 export { default as MastheadAuthModal } from './Masthead/MastheadAuthModal';
 export { UserInfo } from './User';
 export { default as AuthModal } from './User';
-export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './User';
+export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser } from './User';
 
 export { default as CreatedBy } from './CreatedBy';
 
 export { default as Breadcrumblist } from './Breadcrumblist';
 
-export { MessageBox, MessageBoxTag, MessageBoxType } from './MessageBox';
+export { MessageBox, MessageBoxTag, MessageBanner } from './Messages';
 
 export { ResourceBox } from './ResourceBox';
 
@@ -157,7 +165,7 @@ export { default as AuthorInfo } from './AuthorInfo';
 export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from './Breadcrumb';
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
-export type { BreadcrumbItemProps } from './Breadcrumblist/Breadcrumblist';
+export type { BreadcrumbItemProps } from './Breadcrumblist';
 export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
@@ -221,9 +229,12 @@ export { default as ContentCard } from './ContentCard';
 export { default as CopyParagraphButton } from './CopyParagraphButton';
 
 export { default as ContentPlaceholder } from './ContentPlaceholder';
+
 export { Notion, ConceptNotion } from './Notion';
+export type { NotionVisualElementType, ConceptNotionType } from './Notion';
+
 export { BannerCard } from './BannerCard';
-export { VerticalNavigation, Folder } from './MyNdla';
+export { Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';
@@ -231,6 +242,6 @@ export { TagSelector } from './TagSelector';
 
 export type { SnackBarItem } from './SnackBar';
 export { SnackBar } from './SnackBar';
-
+export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
-export type { FolderStructureProps, TreeStructureProps } from './TreeStructure';
+export type { FolderType, TreeStructureProps, TreeStructureMenuProps } from './TreeStructure';

@@ -18,7 +18,7 @@ import {
 } from '@ndla/icons/action';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
-import MessageBoxTag from '../MessageBox/MessageBoxTag';
+import MessageBoxTag from '../Messages/MessageBoxTag';
 import { useMastheadHeight } from '../Masthead';
 
 type WrapperProps = {

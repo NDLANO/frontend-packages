@@ -34,3 +34,4 @@ export { default as Print } from './Print';
 export { default as RemoveCircle } from './RemoveCircle';
 export { default as RightArrow } from './RightArrow';
 export { default as School } from './School';
+export { default as TrashCanOutline } from './TrashCanOutline';

@@ -7,22 +7,53 @@
  */
 
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import SafeLink from '@ndla/safelink';
 import { useTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+import { spacing, mq, breakpoints, colors } from '@ndla/core';
 import CategorySelect from './CategorySelect';
 import { MovieResourceType } from './types';
 import { OneColumn } from '..';
+import { StyledHeadingH2 } from './filmStyles';
 
-const classes = new BEMHelper({
-  name: 'film-moviesearch',
-  prefix: 'c-',
-});
+const FilmMovieSearchContainer = styled.div`
+  margin: ${spacing.normal} 0 ${spacing.large};
+`;
 
-const classesMovieList = new BEMHelper({
-  name: 'film-movielist',
-  prefix: 'c-',
-});
+const TopicNavigation = styled.div`
+  margin: ${spacing.normal} 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 ${spacing.normal};
+  }
+  ul {
+    list-style-type: none;
+    list-style-image: none;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: ${spacing.small} 0;
+    ${mq.range({ from: breakpoints.tablet })} {
+      padding-left: ${spacing.normal};
+    }
+    li {
+      padding: 0;
+      width: 100%;
+      ${mq.range({ from: breakpoints.tablet })} {
+        width: 50%;
+      }
+      a {
+        color: #fff;
+        &:hover,
+        &:focus {
+          color: ${colors.brand.light};
+        }
+      }
+    }
+  }
+`;
 
 interface Props {
   topics?: { id: string; path: string; name: string }[];
@@ -41,10 +72,10 @@ const FilmMovieSearch = ({
 }: Props) => {
   const { t } = useTranslation();
   return (
-    <div {...classes('')}>
+    <FilmMovieSearchContainer>
       <OneColumn>
-        <div {...classes('topic-navigation')}>
-          <h2 {...classesMovieList('heading', '', 'u-12/12 u-4/12@tablet')}>{t('ndlaFilm.subjectsInMovies')}:</h2>
+        <TopicNavigation>
+          <StyledHeadingH2 className="u-12/12 u-4/12@tablet">{t('ndlaFilm.subjectsInMovies')}:</StyledHeadingH2>
           <nav className="u-12/12 u-8/12@tablet">
             <ul>
               {topics.map((topic) => (
@@ -56,7 +87,7 @@ const FilmMovieSearch = ({
               ))}
             </ul>
           </nav>
-        </div>
+        </TopicNavigation>
         <CategorySelect
           onChangeResourceType={onChangeResourceType}
           resourceTypes={resourceTypes}
@@ -64,7 +95,7 @@ const FilmMovieSearch = ({
           ariaControlId={ariaControlId}
         />
       </OneColumn>
-    </div>
+    </FilmMovieSearchContainer>
   );
 };
 

@@ -15,14 +15,20 @@ const titleTemplate = ' - NDLA';
 
 const messages = {
   treeStructure: {
+    folderChildOptions: {
+      edit: 'Edit foldername',
+      delete: 'Delete',
+    },
     createFolder: 'Create folder',
+    maxFoldersAlreadyAdded: 'Maximum subfolders reached',
     newFolder: {
       placeholder: 'Add foldername',
       defaultName: 'New folder',
     },
   },
   tagSelector: {
-    placeholder: 'Add to tag',
+    label: 'Add tag',
+    placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
     hideAllTags: 'Hide all tags',
     showAllTags: 'Show all tags',
@@ -347,7 +353,7 @@ const messages = {
     resources:
       'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
-    subjectBeta: 'This course is in beta.',
+    subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
@@ -855,8 +861,10 @@ const messages = {
     open: 'Open menu',
     close: 'Close menu',
   },
+  cancel: 'Cancel',
   close: 'Close',
   title: 'Title',
+  save: 'Save',
   image: {
     altText: 'Alt-text',
     caption: 'Caption',
@@ -978,29 +986,68 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
+    myNDLA: 'My NDLA',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
     folders_plural: '{{count}} Folders',
-    folder: 'Folder',
+    folder: {
+      folder: 'Folder',
+      delete: 'Delete',
+      edit: 'Edit',
+      missingName: 'Folder name required',
+    },
+    confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
+    confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
     newFolder: 'New folder',
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',
     favourites: 'Favourites',
+    addToFavourites: 'Add to my favourites',
+    alreadyFavourited: 'Already in my favourites',
     help: 'Help',
     more: 'More options',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Short view',
-    myPage: 'My page',
-    deleteAccount: 'Delete account',
-    welcome: 'Hello, {{name}}. We have gathered the following information about you from Feide:',
-    read: 'Read our',
-    terms: 'terms of use',
-    newFavourite: 'Recently favourited',
+    myPage: {
+      myPage: 'My page',
+      logout: 'Log out of My NDLA',
+      deleteAccount: 'Delete My NDLA',
+      welcome:
+        'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
+      read: { our: 'Read our', ours: 'Read our' },
+      privacy: 'privacy statement',
+      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      wishToDelete: 'Do you wish to delete your account?',
+      terms: {
+        terms: 'Terms of use',
+        term1: 'Do not write personal or sensitive information in text fields.',
+        term2: 'Do not write offensive statements in text fields.',
+        term3: 'NDLA reserves the right to update or remove resources if they are not up to date.',
+      },
+      feide: 'We have retrieved this information from Feide',
+      newFavourite: 'Recently favourited',
+
+      storageInfo: {
+        title: 'How to save your favourite resources from NDLA',
+        text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
+      },
+      folderInfo: {
+        title: 'How to organise your favourite resources in folders',
+        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+      },
+      tagInfo: {
+        title: 'How to tag your favourite resources',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+      },
+    },
     resource: {
+      add: 'Add folder/tag',
+      remove: 'Remove',
+      copyLink: 'Copy link to this page',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
     },

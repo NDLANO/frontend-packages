@@ -14,6 +14,7 @@ import React, { ReactNode } from 'react';
 
 const StyledTooltip = styled(Tooltip)`
   color: #fff;
+  z-index: 99999;
   border: 0;
   background: ${colors.text.primary};
   border-radius: ${misc.borderRadius};
@@ -23,22 +24,35 @@ const StyledTooltip = styled(Tooltip)`
   line-height: 1.2;
   font-weight: ${fonts.weight.normal};
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
 interface Props {
   id?: string;
-  children: ReactNode;
+  children?: ReactNode;
+  dangerousHTML?: string;
   tooltip: string;
 }
 
-const CustomTooltip = ({ id, children, tooltip }: Props) => {
+const CustomTooltip = ({ id, children, tooltip, dangerousHTML }: Props) => {
   const deterministicId = useId(id);
+
+  // Article Converter needs hydration due to SSR removing all dynamics
+  if (dangerousHTML) {
+    return (
+      <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
+        <span data-tooltip-children dangerouslySetInnerHTML={{ __html: dangerousHTML }} />
+      </StyledTooltip>
+    );
+  }
+
   return (
-    <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
-      <span>{children}</span>
-    </StyledTooltip>
+    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={tooltip}>
+      <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
+        <span data-tooltip-children>{children}</span>
+      </StyledTooltip>
+    </div>
   );
 };
 

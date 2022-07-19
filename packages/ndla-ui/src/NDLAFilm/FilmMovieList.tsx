@@ -6,15 +6,12 @@
  */
 
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import { Carousel, CalculatedCarouselProps } from '@ndla/carousel';
+import styled from '@emotion/styled';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import FilmContentCard from './FilmContentCard';
 import { MovieResourceType, MovieType } from './types';
-
-const classes = new BEMHelper({
-  name: 'film-movielist',
-  prefix: 'c-',
-});
+import { StyledHeadingH1 } from './filmStyles';
 
 interface Props {
   movies: MovieType[];
@@ -26,6 +23,13 @@ interface Props {
   resizeThumbnailImages?: boolean;
 }
 
+const StyledSection = styled.section`
+  margin-bottom: ${spacing.normal};
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: ${spacing.large};
+  }
+`;
+
 const FilmMovieList = ({
   name,
   movies = [],
@@ -35,10 +39,8 @@ const FilmMovieList = ({
   autoSizedProps,
   resizeThumbnailImages,
 }: Props) => (
-  <section {...classes()}>
-    <h1 {...classes('heading')} style={{ marginLeft: `${autoSizedProps.margin}px` }}>
-      {name}
-    </h1>
+  <StyledSection>
+    <StyledHeadingH1 marginLeft={autoSizedProps.margin}>{name}</StyledHeadingH1>
     <Carousel
       disableScroll={false}
       slideBackwardsLabel={slideBackwardsLabel}
@@ -56,7 +58,7 @@ const FilmMovieList = ({
       ))}
       {...autoSizedProps}
     />
-  </section>
+  </StyledSection>
 );
 
 export default FilmMovieList;

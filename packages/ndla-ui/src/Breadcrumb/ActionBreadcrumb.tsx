@@ -44,14 +44,21 @@ interface Props {
 
 const ActionBreadcrumb = ({ items, actionItems }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
-    if (item.index === totalCount - 1) {
+    if (totalCount === 1) {
+      return <StyledSpan title={item.name}>{item.name}</StyledSpan>;
+    }
+    if (item.index === totalCount - 1 && actionItems.length > 0) {
       return (
         <MenuButton menuItems={actionItems} size="small">
-          <StyledSpan>{item.name}</StyledSpan>
+          <StyledSpan title={item.name}>{item.name}</StyledSpan>
         </MenuButton>
       );
     }
-    return <StyledSafeLink to={item.to}>{item.name}</StyledSafeLink>;
+    return (
+      <StyledSafeLink title={item.name} to={item.to}>
+        {item.name}
+      </StyledSafeLink>
+    );
   };
 
   const renderSeparator = (item: IndexedBreadcrumbItem, totalCount: number) => {
@@ -62,7 +69,15 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
     return <StyledRightChevron />;
   };
 
-  return <Breadcrumb items={items} renderItem={renderItem} renderSeparator={renderSeparator} />;
+  return (
+    <Breadcrumb
+      autoCollapse
+      collapseLast={false}
+      items={items}
+      renderItem={renderItem}
+      renderSeparator={renderSeparator}
+    />
+  );
 };
 
 export default ActionBreadcrumb;

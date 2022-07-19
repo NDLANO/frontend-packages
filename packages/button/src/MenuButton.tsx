@@ -7,26 +7,28 @@
  */
 
 import styled from '@emotion/styled';
-import React, { ReactElement, ReactNode } from 'react';
-import { colors, spacingUnit, spacing, shadows, misc } from '@ndla/core';
-import { Menu, MenuList, MenuItem, MenuButton as MenuButtonReach } from '@reach/menu-button';
+import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
+import { colors, spacing, shadows, misc, animations } from '@ndla/core';
+import { Menu, MenuItem, MenuButton as MenuButtonReach, MenuPopover, MenuItems } from '@reach/menu-button';
+import { positionRight, positionDefault } from '@reach/popover';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
-import { ButtonProps } from './';
+import { ButtonSize } from './';
 import { convertSizeForSVG } from './IconButton';
 
 interface StyledButtonProps {
   svgSize: number;
 }
 
-const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
+const shouldForwardProp = (name: string) => name !== 'svgSize';
+
+const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledButtonProps>`
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: ${spacing.small};
-  padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.2 : 0.25)}px;
+  padding: 0;
   cursor: pointer;
-  background-color: transparent;
+  background: none;
   border: none;
   &:hover *,
   &:active *,
@@ -35,12 +37,12 @@ const StyledMenuButton = styled(MenuButtonReach)<StyledButtonProps>`
   }
 
   svg {
-    margin: 0;
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
     fill: ${colors.brand.secondary};
   }
 `;
+
 const StyledHorizontalMenu = styled(HorizontalMenu)`
   border-radius: 100%;
   transition: ${misc.transition.default};
@@ -52,55 +54,88 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
   }
 `;
 
-const StyledMenuList = styled(MenuList)`
-  overflow: hidden;
+const StyledMenuItems = styled(MenuItems)`
   padding: 0;
-  background-color: white;
   border: none;
   border-radius: 4px;
   box-shadow: ${shadows.levitate1};
+  z-index: 99999;
+  @media (prefers-reduced-motion: no-preference) {
+    ${animations.fadeIn(animations.durations.fast)}
+  }
 `;
 
-const StyledMenuItem = styled(MenuItem)`
+interface StyledMenuItemProps {
+  type?: 'danger';
+}
+
+const StyledMenuItem = styled(MenuItem)<StyledMenuItemProps>`
   display: flex;
   align-items: center;
-  gap: ${spacing.small};
-  padding: ${spacing.small};
+  gap: ${spacing.xsmall};
+  padding: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} ${spacing.xsmall};
   cursor: pointer;
-  color: ${({ color }) => color === 'red' && colors.support.red};
+  color: ${({ type }) => (type === 'danger' ? colors.support.red : colors.text.primary)};
   &[data-selected] {
-    background: ${colors.brand.secondary};
+    color: ${({ type }) => (type === 'danger' ? colors.support.red : colors.brand.primary)};
+    background: ${({ type }) => (type === 'danger' ? colors.support.redLightest : colors.brand.lighter)};
   }
 `;
 
 export interface MenuItemProps {
-  icon?: ReactElement;
+  icon?: ReactNode;
   text?: string;
-  onClick: () => void;
-  color?: 'red';
+  onClick: (e?: MouseEvent<HTMLDivElement>) => void;
+  type?: 'danger';
 }
 
-interface MenuButtonProps extends ButtonProps {
+interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   menuItems?: MenuItemProps[];
-  children?: ReactElement;
+  children?: ReactNode;
   menuButtonPrefix?: ReactNode;
+  hideMenuIcon?: boolean;
+  tabIndex?: number;
+  size?: ButtonSize;
+  alignRight?: boolean;
 }
-export const MenuButton = ({ menuItems, size, children }: MenuButtonProps) => {
+export const MenuButton = ({
+  menuItems,
+  size,
+  children,
+  hideMenuIcon,
+  className,
+  tabIndex,
+  alignRight,
+  ...rest
+}: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
-    <Menu aria-label={t('myNdla.more')}>
-      <StyledMenuButton svgSize={convertSizeForSVG(size || 'normal')}>
+    <Menu tabIndex={tabIndex}>
+      <StyledMenuButton
+        aria-label={t('myNdla.more')}
+        tabIndex={tabIndex}
+        className={className}
+        svgSize={convertSizeForSVG(size || 'normal')}
+        onClick={(e) => e.preventDefault()} // Prevent redirect from triggering when placed inside <a>
+        {...rest}>
         {children}
-        <StyledHorizontalMenu />
+        {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
-      <StyledMenuList>
-        {menuItems?.map(({ color, text, icon, onClick }) => (
-          <StyledMenuItem onSelect={onClick} color={color} aria-label={text}>
-            {icon}
-            {text}
-          </StyledMenuItem>
-        ))}
-      </StyledMenuList>
+      <MenuPopover portal={true} position={alignRight ? positionRight : positionDefault}>
+        <StyledMenuItems>
+          {menuItems?.map(({ type, text, icon, onClick }) => (
+            <StyledMenuItem
+              key={text}
+              onClick={(e) => e.preventDefault()}
+              onSelect={onClick}
+              type={type}
+              aria-label={text}>
+              {icon}
+              {text}
+            </StyledMenuItem>
+          ))}
+        </StyledMenuItems>
+      </MenuPopover>
     </Menu>
   );
 };

@@ -367,7 +367,7 @@ storiesOf('Sammensatte moduler', module)
     <I18nTranslate>
       {(t) => (
         <div>
-          <MastheadWithTopicMenu messages={[t('messageBoxInfo.updateBrowser')]} />
+          <MastheadWithTopicMenu messages={[{ content: t('messageBoxInfo.updateBrowser'), number: 1 }]} />
         </div>
       )}
     </I18nTranslate>
@@ -713,17 +713,6 @@ storiesOf('Sammensatte moduler', module)
         <TagSelectorExample />
       </Content>
       <FooterExample />
-    </PageContainer>
-  ))
-
-  .add('Meldings- og infoboks', () => (
-    <PageContainer>
-      <StoryIntro title="Meldings- og infoboks">
-        <p>
-          Her kan du se forskjellige typer meldings- og infobokser. Disse kan anvendes ulike steder på sidene og
-          forteller brukeren om at det foregår noe utenom det vanlige.
-        </p>
-      </StoryIntro>
     </PageContainer>
   ))
   .add('Ugrupperte læringsressurser', () => (

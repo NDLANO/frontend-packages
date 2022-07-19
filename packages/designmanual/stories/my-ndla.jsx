@@ -8,7 +8,6 @@ import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
-import MyNdlaNavigation from './molecules/MyNdlaNavigation';
 import MyNdlaMyPage from './pages/MyNdlaMyPage';
 
 storiesOf('Min NDLA', module).add('Elementer', () => (
@@ -28,19 +27,13 @@ storiesOf('Min NDLA', module).add('Add to favorites', () => (
     <MastheadWithTopicMenu />
     <Content>
       <OneColumn cssModifier="clear-desktop" wide>
+        <h3>Hjerte logget inn</h3>
         <MyNdlaAddToFavoritesExample />
-      </OneColumn>
-    </Content>
-    <FooterExample />
-  </PageContainer>
-));
+        <h3>Hjerte ikke logget inn</h3>
+        <MyNdlaAddToFavoritesExample isLoggedIn={false} />
 
-storiesOf('Min NDLA', module).add('Vertikal navigasjonsmeny', () => (
-  <PageContainer>
-    <MastheadWithTopicMenu />
-    <Content>
-      <OneColumn cssModifier="clear-desktop" wide>
-        <MyNdlaNavigation />
+        <h3>Hjerte ikke logget inn, uten ressurs</h3>
+        <MyNdlaAddToFavoritesExample isLoggedIn={false} resource={false} />
       </OneColumn>
     </Content>
     <FooterExample />

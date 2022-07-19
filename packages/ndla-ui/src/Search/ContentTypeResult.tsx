@@ -129,7 +129,6 @@ const ContentTypeResult = ({
             return (
               <StyledListItem key={path} delayAnimation={delayAnimation}>
                 <SafeLink
-                  tabIndex={-1}
                   css={shouldHighlight && highlightStyle}
                   data-highlighted={shouldHighlight || false}
                   {...linkProps}

@@ -15,7 +15,7 @@ const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
   ${({ framed }) =>
     framed
       ? css`
-          border: 1px solid ${colors.brand.greyLighter};
+          border: 1px solid ${colors.brand.neutral7};
           border-radius: ${misc.borderRadius};
           max-height: 400px;
           overflow-y: scroll;

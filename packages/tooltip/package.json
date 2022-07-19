@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "1.0.0",
+  "version": "2.1.5",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -23,11 +23,12 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
+    "dist",
     "lib",
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^2.1.1",
+    "@ndla/core": "^2.3.3",
     "@reach/auto-id": "^0.17.0",
     "@reach/tooltip": "^0.17.0"
   },
@@ -46,5 +47,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
 }

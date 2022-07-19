@@ -33,10 +33,12 @@ interface Props {
   prefix?: string;
 }
 
-const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] =>
-  tags
-    .filter(({ id }) => selectedTags.some((idSelected) => idSelected === id))
-    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
+const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] => {
+  const returnTags = selectedTags
+    .map((selectedId) => tags.find(({ id }) => selectedId === id))
+    .filter((notUndefined) => notUndefined) as unknown as TagType[];
+  return returnTags;
+};
 
 const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
   if (inputValue === '') {

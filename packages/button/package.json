@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "2.2.1",
+  "version": "3.2.0",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,11 +25,12 @@
   "files": [
     "scss",
     "lib",
-    "es"
+    "es",
+    "dist"
   ],
   "dependencies": {
-    "@ndla/core": "^2.1.1",
-    "@ndla/icons": "^1.7.1",
+    "@ndla/core": "^2.3.3",
+    "@ndla/icons": "^1.11.3",
     "@reach/menu-button": "^0.16.2"
   },
   "peerDependencies": {
@@ -41,5 +42,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "22d6282b4577a1106562213c096e5f26f2525e97"
+  "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
 }

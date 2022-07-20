@@ -7,14 +7,42 @@
  */
 
 import React, { ChangeEvent, KeyboardEvent, MouseEvent, Component } from 'react';
+import styled from '@emotion/styled';
 import Button from '@ndla/button';
-import BEMHelper from 'react-bem-helper';
 import { QueryObject } from './AudioSearch';
 
-const classes = new BEMHelper({
-  name: 'audio-search',
-  prefix: 'c-',
-});
+const AudioSearchFormWrapper = styled.div`
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eaeaea;
+`;
+
+const FormInput = styled.input`
+  width: 88%;
+  height: 3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  border-width: 2px;
+  float: left;
+  border-radius: 5px 0 0 5px;
+`;
+
+const FormButton = styled(Button)`
+  width: 12%;
+  height: 3rem;
+  display: inline-block;
+  margin-left: -2px;
+  border-radius: 0 5px 5px 0;
+  padding: 0.4em;
+
+  &:hover {
+    transform: none;
+  }
+`;
 
 interface Props {
   queryObject: QueryObject;
@@ -65,19 +93,18 @@ class AudioSearchForm extends Component<Props, State> {
     const { searching, translations } = this.props;
 
     return (
-      <div {...classes('form')}>
-        <input
-          {...classes('form-query')}
+      <AudioSearchFormWrapper>
+        <FormInput
           type="text"
           onChange={this.handleQueryChange}
           onKeyPress={this.onKeyPress}
           value={this.state.queryObject?.query}
           placeholder={translations.searchPlaceholder}
         />
-        <Button {...classes('form-button')} onClick={this.handleSubmit} loading={searching}>
+        <FormButton onClick={this.handleSubmit} loading={searching}>
           {translations.searchButtonTitle}
-        </Button>
-      </div>
+        </FormButton>
+      </AudioSearchFormWrapper>
     );
   }
 }

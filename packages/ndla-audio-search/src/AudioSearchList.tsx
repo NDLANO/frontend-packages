@@ -6,15 +6,21 @@
  *
  */
 
+import styled from '@emotion/styled';
+import { colors } from '@ndla/core/src';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import AudioSearchResult from './AudioSearchResult';
 
-const classes = new BEMHelper({
-  name: 'audio-search-list',
-  prefix: 'c-',
-});
+const StyledResultSpinner = styled.div`
+  border: 0.4em solid ${colors.brand.light};
+  border-bottom-color: ${colors.brand.primary};
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: loadVideoSpinner 0.7s linear infinite;
+  height: 3em;
+  width: 3em;
+`;
 
 interface Props {
   audios: IAudioSummary[];
@@ -42,10 +48,10 @@ export default function AudioSearchList({
     return <p>{translations.noResults}</p>;
   }
   if (searching && !((audios?.length ?? 0) > 0)) {
-    return <div {...classes('result-spinner')} />;
+    return <StyledResultSpinner />;
   }
   return (
-    <div {...classes('list')}>
+    <div>
       {audios?.map((audio) => (
         <AudioSearchResult
           key={audio.id}

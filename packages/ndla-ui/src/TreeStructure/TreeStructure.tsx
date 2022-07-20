@@ -52,6 +52,7 @@ const TreeStructure = ({
   onNewFolder,
   onSelectFolder,
   openOnFolderClick,
+  targetResource,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
 
@@ -68,10 +69,13 @@ const TreeStructure = ({
 
   useEffect(() => {
     if (defaultOpenFolders) {
-      setOpenFolders((prev) => {
-        return uniq(defaultOpenFolders.concat(prev));
-      });
+      if (!defaultOpenFolders.every((element) => openFolders.includes(element))) {
+        setOpenFolders((prev) => {
+          return uniq(defaultOpenFolders.concat(prev));
+        });
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultOpenFolders]);
 
   useEffect(() => {
@@ -136,7 +140,7 @@ const TreeStructure = ({
           focusedFolderId={focusedId}
           menuItems={menuItems}
           folders={folders}
-          level={1}
+          level={0}
           loading={loading}
           selectedFolder={selectedFolder}
           maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
@@ -150,6 +154,7 @@ const TreeStructure = ({
           openOnFolderClick={openOnFolderClick}
           setFocusedId={setFocusedId}
           setSelectedFolder={setSelectedFolder}
+          targetResource={targetResource}
           visibleFolders={visibleFolderIds}
         />
       </TreeStructureStyledWrapper>

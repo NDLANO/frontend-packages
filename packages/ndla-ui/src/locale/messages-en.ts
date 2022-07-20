@@ -1007,6 +1007,7 @@ const messages = {
     favourites: 'Favourites',
     addToFavourites: 'Add to my favourites',
     alreadyFavourited: 'Already in my favourites',
+    alreadyInFolder: 'Already in folder',
     help: 'Help',
     more: 'More options',
     listView: 'List view',

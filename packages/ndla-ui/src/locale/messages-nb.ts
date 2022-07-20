@@ -1005,6 +1005,7 @@ const messages = {
     favourites: 'Favoritter',
     addToFavourites: 'Legg til i mine favoritter',
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
+    alreadyInFolder: 'Finnes allerede i mappen',
     help: 'Hjelp',
     more: 'Flere valg',
     listView: 'Listevisning',

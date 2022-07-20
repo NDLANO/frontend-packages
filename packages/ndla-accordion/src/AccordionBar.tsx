@@ -8,7 +8,6 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { ChevronRight } from '@ndla/icons/common';
 import { colors, spacing, spacingUnit, fonts } from '@ndla/core';
 import { openIndexesProps } from '../types';
@@ -20,27 +19,17 @@ type StyledAccordionBarProps = {
 };
 
 const StyledAccordionBar = styled.div<StyledAccordionBarProps>`
-  ${(props) =>
-    props.tiny
-      ? css`
-          padding: ${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0;
-        `
-      : css`
-          padding: ${spacing.small} ${spacing.normal} ${spacing.small} calc(${spacing.xsmall} * 3);
-        `}
-  background: ${colors.brand.light};
+  padding: ${(p) =>
+    p.tiny
+      ? `${spacing.xsmall} ${spacing.small} ${spacing.xsmall} 0`
+      : `${spacing.small} ${spacing.normal} ${spacing.small} calc(${spacing.xsmall} * 3`};
+  background: ${(p) => (p.hasError && p.isOpen ? colors.support.redLight : colors.brand.light)};
   display: flex;
   align-items: center;
   justify-content: flex-start;
   transition: color 100ms ease, background 100ms ease;
   border: 2px solid ${(props) => (props.hasError ? colors.support.redLight : 'transparent')};
-  ${({ hasError, isOpen }) =>
-    hasError &&
-    isOpen &&
-    css`
-      background: ${colors.support.redLight};
-      border-bottom-color: transparent;
-    `}
+  border-bottom-color: ${(p) => p.hasError && p.isOpen && 'transparent'};
 `;
 
 type ButtonProps = {
@@ -56,10 +45,14 @@ const StyledButton = styled.button<ButtonProps>`
   color: ${colors.brand.primary};
   display: flex;
   align-items: center;
+  height: ${(p) => !p.tiny && spacing.large};
+  padding: ${(p) =>
+    p.tiny ? `${spacing.xsmall} ${spacing.xsmall} ${spacing.xsmall} ${spacing.small}` : `0 0 0 ${spacing.small}`};
   span {
     text-align: left;
     text-decoration: underline;
     font-weight: ${fonts.weight.semibold};
+    ${(p) => (p.tiny ? fonts.sizes(18, 1.1) : fonts.sizes(spacing.normal, 1.1))};
   }
   &:hover,
   &:focus {
@@ -70,32 +63,10 @@ const StyledButton = styled.button<ButtonProps>`
   svg {
     transition: transform 100ms ease;
     transform: rotate(${(props) => (props.isOpen ? '90' : '0')}deg);
+    width: ${(p) => (p.tiny ? '16px' : '22px')};
+    height: ${(p) => (p.tiny ? '16px' : '22px')};
+    margin-right: ${(p) => (p.tiny ? `${spacingUnit / 8}px` : spacing.xsmall)};
   }
-  ${(props) =>
-    props.tiny
-      ? css`
-          padding: ${spacing.xsmall} ${spacing.xsmall} ${spacing.xsmall} ${spacing.small};
-          span {
-            ${fonts.sizes(18, 1.1)};
-          }
-          svg {
-            width: 16px;
-            height: 16px;
-            margin-right: ${spacingUnit / 8}px;
-          }
-        `
-      : css`
-          height: ${spacing.large};
-          padding-right: ${spacing.small};
-          span {
-            ${fonts.sizes(spacing.normal, 1.1)};
-          }
-          svg {
-            width: 22px;
-            height: 22px;
-            margin-right: ${spacing.xsmall};
-          }
-        `}
 `;
 
 const StyledChildrenWrapper = styled.div<{ tiny?: boolean }>`

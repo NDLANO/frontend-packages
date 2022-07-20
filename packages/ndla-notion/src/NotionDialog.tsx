@@ -1,7 +1,6 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { InterpolationWithTheme } from '@emotion/core';
-import styled from '@emotion/styled';
+import styled, { Interpolation } from '@emotion/styled';
 import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import NotionHeader from './NotionHeader';
@@ -176,7 +175,7 @@ interface Props {
   subTitle?: string;
   ariaHidden?: boolean;
   children?: ReactNode;
-  customCSS?: InterpolationWithTheme<any>;
+  customCSS?: Interpolation;
   headerContent?: ReactNode;
 }
 

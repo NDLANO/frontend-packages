@@ -8,7 +8,6 @@
 
 import React, { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
 import { IImageMetaInformationV2, ISearchResult, IImageMetaSummary, ISearchParams } from '@ndla/types-image-api';
@@ -265,7 +264,7 @@ const ImageSearchWrapper = styled.div`
   }
 `;
 
-const searchIconCss = css`
+const SearchIconButton = styled.button`
   border: 0;
   background: transparent;
   margin: 0;
@@ -378,15 +377,14 @@ class ImageSearch extends Component<Props, State> {
           placeholder={searchPlaceholder}
           autoFocus
           iconRight={
-            <button
-              css={searchIconCss}
+            <SearchIconButton
               aria-label={searchButtonTitle}
               type="button"
               onClick={() => {
                 this.searchImages({ query: queryString, page: 1 });
               }}>
               <SearchIcon />
-            </button>
+            </SearchIconButton>
           }
           value={queryString}
           onChange={(evt: ChangeEvent<HTMLInputElement>) => this.setState({ queryString: evt.target.value })}

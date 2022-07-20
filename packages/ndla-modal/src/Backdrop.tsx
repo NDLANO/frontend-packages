@@ -8,7 +8,6 @@
 
 import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 
 const StyledBackdrop = styled('div')<Props>`
   position: fixed;
@@ -18,12 +17,7 @@ const StyledBackdrop = styled('div')<Props>`
   right: 0;
   bottom: 0;
   background: rgba(1, 1, 1, 0.3);
-  animation-name: fadeOut;
-  ${(props) =>
-    props.animateIn &&
-    css`
-      animation-name: fadeIn;
-    `}
+  animation-name: ${(p) => (p.animateIn ? 'fadeIn' : 'fadeOut')};
   animation-duration: ${(props) => props.animationDuration};
 `;
 

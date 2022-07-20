@@ -45,7 +45,7 @@ const AccordionSection = (props: Props) => {
         {barChildren}
       </AccordionBar>
       {isOpen && (
-        <AccordionPanel id={id} hasError={hasError} isOpen={isOpen}>
+        <AccordionPanel id={id} hasError={hasError} isOpen={false}>
           <div className={className}>
             {Children.map(children, (child) => {
               if (isValidElement(child) && typeof child.type !== 'string') {

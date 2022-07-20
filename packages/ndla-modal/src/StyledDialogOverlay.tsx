@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { DialogOverlay } from '@reach/dialog';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 interface Props {
   className: string;
   animateIn: boolean;
@@ -10,7 +10,11 @@ interface Props {
   children?: ReactNode;
 }
 
-const dialogStyles = css`
+interface StyledDialogOverlayProps {
+  animationName: string;
+  animationDuration: string;
+}
+const InternalStyledDialogOverlay = styled(DialogOverlay)<StyledDialogOverlayProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -22,18 +26,17 @@ const dialogStyles = css`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  animation-name: ${(p) => p.animationName};
+  animation-duration: ${(p) => p.animationDuration};
 `;
 
 export const StyledDialogOverlay = ({ animateIn, animationDuration = '400ms', children, ...props }: Props) => {
   return (
-    <DialogOverlay
-      css={css`
-        animation-name: ${animateIn ? 'fadeIn' : 'fadeOut'};
-        animation-duration: ${animationDuration};
-        ${dialogStyles}
-      `}
+    <InternalStyledDialogOverlay
+      animationName={animateIn ? 'fadeIn' : 'fadeOut'}
+      animationDuration={animationDuration}
       {...props}>
       {children}
-    </DialogOverlay>
+    </InternalStyledDialogOverlay>
   );
 };

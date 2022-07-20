@@ -1,6 +1,5 @@
 import React, { ChangeEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
 // @ts-ignore
@@ -131,7 +130,7 @@ const ListViewWrapper = styled.div`
   }
 `;
 
-const inputStyle = css`
+const StyledInput = styled.input`
   width: 100%;
   height: 48px;
   line-height: 48px;
@@ -266,8 +265,7 @@ const ListView = ({
             <div className={'search'}>
               <div {...searchFieldClasses()}>
                 <div {...searchFieldClasses('input-wrapper', 'with-icon', 'search-input-wrapper')}>
-                  <input
-                    css={inputStyle}
+                  <StyledInput
                     type="search"
                     placeholder={t(`listview.search.placeholder`)}
                     value={searchValue}

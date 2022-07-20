@@ -8,7 +8,6 @@
 
 import React, { ChangeEventHandler, ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { colors, fonts, spacing, spacingUnit, utils } from '@ndla/core';
 
 const SIZE: number = 22;
@@ -28,15 +27,11 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   display: inline-flex;
   min-height: ${spacing.normal};
   align-items: center;
-  ${(props) =>
-    props.hasFocus &&
-    css`
-      ${utils.restoreOutline};
-    `};
+  ${(props) => props.hasFocus && utils.restoreOutline};
   label {
     cursor: pointer;
     &:after {
-      content "";
+      content: '';
       display: block;
       width: ${SIZE}px;
       height: ${SIZE}px;
@@ -50,7 +45,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       cursor: pointer;
     }
     &:before {
-      content "";
+      content: '';
       display: block;
       position: absolute;
       right: 0;

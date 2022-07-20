@@ -7,9 +7,8 @@
  */
 
 import React, { ReactNode } from 'react';
-import styled from '@emotion/styled';
+import styled, { Interpolation } from '@emotion/styled';
 import { ShortText } from '@ndla/icons/common';
-import { css, InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
@@ -23,7 +22,7 @@ const BaselineIcon = styled(ShortText)`
   color: rgba(165, 188, 211, 1);
   transition: transform 0.1s ease;
 `;
-const NotionCSS = css`
+const NotionSpan = styled.span`
   display: inline;
   .link {
     background: none;
@@ -57,7 +56,7 @@ interface Props {
   children?: ReactNode;
   content?: ReactNode;
   headerContent?: ReactNode;
-  customCSS?: InterpolationWithTheme<any>;
+  customCSS?: Interpolation;
   hideBaselineIcon?: boolean;
 }
 const Notion = ({
@@ -71,7 +70,7 @@ const Notion = ({
   headerContent,
   hideBaselineIcon,
 }: Props) => (
-  <span css={NotionCSS} id={id} data-notion>
+  <NotionSpan id={id} data-notion>
     <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
       {children}
       {!hideBaselineIcon && <BaselineIcon />}
@@ -83,6 +82,6 @@ const Notion = ({
       </NotionDialog>,
       'body',
     )}
-  </span>
+  </NotionSpan>
 );
 export default Notion;

@@ -9,7 +9,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import css from '@emotion/css';
+import { css } from '@emotion/core';
 import { keyframes } from '@emotion/core';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';

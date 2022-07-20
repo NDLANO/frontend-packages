@@ -27,12 +27,16 @@
   ],
   "dependencies": {
     "@ndla/core": "^2.3.3",
-    "@ndla/icons": "^1.11.3"
+    "@ndla/icons": "^1.11.3",
+    "@ndla/pager": "^1.1.26",
+    "@ndla/util": "^3.0.0",
+    "focus-trap-react": "^8.9.2"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
-    "react": "^16.4.2 || ^17.0.0"
+    "react": "^16.4.2 || ^17.0.0",
+    "react-i18next": "^11.0.0"
   },
   "publishConfig": {
     "access": "public"

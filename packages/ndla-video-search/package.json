@@ -27,6 +27,7 @@
     "@ndla/button": "^3.2.0",
     "@ndla/icons": "^1.11.3",
     "@ndla/licenses": "^5.0.6",
+    "@ndla/pager": "^1.1.26",
     "@ndla/tabs": "^1.1.14",
     "react-bem-helper": "^1.4.1"
   },

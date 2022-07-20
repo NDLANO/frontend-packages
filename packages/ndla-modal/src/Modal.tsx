@@ -9,7 +9,7 @@
 import React, { ReactElement, ReactNode, useState, MouseEvent, cloneElement } from 'react';
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import { DialogContent } from '@reach/dialog';
-import css from '@emotion/css';
+import { css } from '@emotion/core';
 import { StyledDialogOverlay } from './StyledDialogOverlay';
 
 interface Props {

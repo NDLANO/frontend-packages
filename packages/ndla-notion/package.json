@@ -29,7 +29,8 @@
     "@ndla/icons": "^1.11.3",
     "@ndla/licenses": "^5.0.6",
     "@ndla/modal": "^1.2.16",
-    "@ndla/safelink": "^2.2.4"
+    "@ndla/safelink": "^2.2.4",
+    "@ndla/util": "^3.0.0"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

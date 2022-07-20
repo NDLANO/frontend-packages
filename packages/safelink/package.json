@@ -27,7 +27,8 @@
   ],
   "dependencies": {
     "@ndla/button": "^3.2.0",
-    "@ndla/icons": "^1.11.3"
+    "@ndla/icons": "^1.11.3",
+    "lodash": "^4.17.20"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.35",

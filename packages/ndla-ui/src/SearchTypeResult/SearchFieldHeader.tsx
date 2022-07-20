@@ -7,9 +7,8 @@
  */
 import React, { FormEvent, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core';
 import { Search as SearchIcon } from '@ndla/icons/common';
-import { spacing } from '@ndla/core';
+import { spacing, colors } from '@ndla/core';
 import { Cross as CrossIcon } from '@ndla/icons/action';
 
 import { useTranslation } from 'react-i18next';

@@ -32,6 +32,7 @@
     "@ndla/modal": "^1.2.16",
     "@ndla/tooltip": "^2.1.5",
     "@ndla/ui": "^22.0.0",
+    "@ndla/util": "^3.0.0",
     "remarkable": "^2.0.1"
   },
   "peerDependencies": {

@@ -31,6 +31,7 @@
     "types"
   ],
   "dependencies": {
+    "@ndla/article-scripts": "^3.0.0",
     "@ndla/button": "^3.2.0",
     "@ndla/carousel": "^1.2.15",
     "@ndla/core": "^2.3.3",

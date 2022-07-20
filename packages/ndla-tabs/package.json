@@ -36,7 +36,9 @@
   "dependencies": {
     "@ndla/icons": "^1.11.3",
     "@ndla/util": "^3.0.0",
-    "react-tabs": "^3.2.3"
+    "lodash": "^4.17.20",
+    "react-tabs": "^3.2.3",
+    "react-device-detect": "^2.1.2"
   },
   "publishConfig": {
     "access": "public"

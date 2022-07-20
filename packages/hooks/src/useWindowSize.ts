@@ -7,7 +7,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import throttle from 'lodash/throttle';
+import { throttle } from 'lodash';
 
 function getSize() {
   if (window) {

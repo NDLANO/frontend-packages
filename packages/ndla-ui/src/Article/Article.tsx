@@ -8,7 +8,7 @@
 
 import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
-import isString from 'lodash/isString';
+import { isString } from 'lodash';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 

@@ -1,11 +1,12 @@
 module.exports = {
-  stories: ['../stories/index.js', '../../switch/src/**/*.stories.tsx'],
+  stories: ['../stories/index.js', '../../../packages/**/stories/*.stories.tsx'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-controls',
     '@storybook/addon-viewport',
+    '@storybook/addon-storysource',
   ],
   webpackFinal: (config) => {
     config.module.rules.push({

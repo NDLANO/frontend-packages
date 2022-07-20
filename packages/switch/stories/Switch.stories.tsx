@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import SwitchComponent from './Switch';
+import SwitchComponent from '../src/Switch';
 
 export default {
   title: 'Switch',

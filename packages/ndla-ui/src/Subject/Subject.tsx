@@ -1,11 +1,76 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { breakpoints, colors, mq, spacing, spacingUnit } from '@ndla/core';
 import SectionHeading from '../SectionHeading';
 
-const classes = BEMHelper('c-subject-content');
+const SubjectContentWrapper = styled.div`
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: 100px;
+  }
+`;
 
+const StyledBreadcrumb = styled.div`
+  display: none;
+  margin: ${spacing.medium} 0 0 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: block;
+    margin-left: ${spacingUnit * 3}px;
+  }
+`;
+
+interface StyledSubjectContentProps {
+  twoColumns: boolean;
+}
+const StyledSubjectContent = styled.div<StyledSubjectContentProps>`
+  display: block;
+  flex-flow: column;
+  margin-top: ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    display: flex;
+    flex-flow: row;
+    margin-top: ${spacing.large};
+    > *:not(:only-child):last-child {
+      padding-left: ${spacingUnit * 3}px;
+    }
+  }
+
+  & > *:first-child {
+    margin-bottom: ${spacing.large};
+    ${mq.range({ from: breakpoints.tablet })} {
+      margin-right: 80px;
+    }
+  }
+
+  ${(p) =>
+    !p.twoColumns &&
+    css`
+      ${mq.range({ from: breakpoints.desktop })} {
+        > *:not(:only-child) {
+          max-width: 50%;
+        }
+      }
+      ${mq.range({ until: breakpoints.desktop })} {
+        flex-direction: column;
+      }
+      ${mq.range({ from: breakpoints.tablet, until: breakpoints.desktop })} {
+        > *:not(:only-child):last-child {
+          padding-left: $subject-margin;
+        }
+      }
+    `};
+
+  ${(p) =>
+    p.twoColumns &&
+    css`
+      flex-flow: column;
+      & > *:first-child {
+        ${mq.range({ from: breakpoints.tablet })} {
+          margin-right: 0;
+        }
+      }
+    `};
+`;
 export const SubjectContent = ({
   children,
   breadcrumb,
@@ -15,102 +80,116 @@ export const SubjectContent = ({
   breadcrumb: ReactNode;
   twoColumns?: boolean;
 }) => (
-  <div {...classes()}>
-    <div {...classes('breadcrumb')}>{breadcrumb}</div>
-    <div {...classes('content', { twoColumns })}>{children}</div>
-  </div>
+  <SubjectContentWrapper>
+    <StyledBreadcrumb>{breadcrumb}</StyledBreadcrumb>
+    <StyledSubjectContent twoColumns={twoColumns}>{children}</StyledSubjectContent>
+  </SubjectContentWrapper>
 );
 
-SubjectContent.propTypes = {
-  children: PropTypes.node.isRequired,
-  breadcrumb: PropTypes.node.isRequired,
-  twoColumns: PropTypes.bool,
-};
+const StyledSecondaryContent = styled.div`
+  background: ${colors.brand.greyLightest};
+  padding: ${spacing.large} 0;
+  margin-top: ${spacing.large};
 
-const secondaryContentClass = BEMHelper('c-subject-secondary-content');
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacingUnit * 3}px 0 ${spacing.large};
+    margin-bottom: 100px;
+    margin-top: 0;
+  }
+`;
 
 export const SubjectSecondaryContent = ({ children }: { children: ReactNode }) => (
-  <div {...secondaryContentClass()}>{children}</div>
+  <StyledSecondaryContent>{children}</StyledSecondaryContent>
 );
 
-SubjectSecondaryContent.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const childContentClasses = BEMHelper('c-subject-child-content');
+const StyledChildContent = styled.div`
+  padding: 0 ${spacing.normal};
+`;
 
 export const SubjectChildContent = ({ children }: { children: ReactNode }) => (
-  <div {...childContentClasses()}>{children}</div>
+  <StyledChildContent>{children}</StyledChildContent>
 );
 
-SubjectChildContent.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const topicClasses = BEMHelper('c-subject-topics');
-
 export const SubjectTopics = ({ messages, children }: { messages: { heading: string }; children: ReactNode }) => (
-  <section {...topicClasses()}>
-    <header {...topicClasses('header')}>
-      <h1 {...topicClasses('heading')}>{messages.heading}</h1>
+  <section>
+    <header>
+      <h1>{messages.heading}</h1>
     </header>
-    <div {...topicClasses('content')}>{children}</div>
+    <div>{children}</div>
   </section>
 );
 
-SubjectTopics.propTypes = {
-  messages: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-  }),
-  children: PropTypes.node.isRequired,
-};
+const SidebarWrapper = styled.div`
+  display: block;
+  margin: 0 ${spacing.normal};
 
-const sidebarClasses = BEMHelper('c-subject-sidebar-wrapper');
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    flex-basis: 390px;
+    flex-shrink: 0;
+    margin: 0px 0 0 0;
+  }
+`;
 
 export const SubjectSidebarWrapper = ({ children }: { children: ReactNode }) => (
-  <div {...sidebarClasses()}>{children}</div>
+  <SidebarWrapper>{children}</SidebarWrapper>
 );
 
-SubjectSidebarWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+interface StyledSubjectFlexWrapperProps {
+  noMargin: boolean;
+}
+const StyledSubjectFlexWrapper = styled.div<StyledSubjectFlexWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: ${(p) => !p.noMargin && spacing.large};
 
-const subjectFlexWrapperClasses = BEMHelper('c-subject-flex');
+  ${mq.range({ from: breakpoints.tablet })} {
+    flex-direction: row;
+  }
+`;
 
 export const SubjectFlexWrapper = ({ children, noMargin = false }: { children: ReactNode; noMargin?: boolean }) => (
-  <div {...subjectFlexWrapperClasses('', { noMargin })}>{children}</div>
+  <StyledSubjectFlexWrapper noMargin={noMargin}>{children}</StyledSubjectFlexWrapper>
 );
 
-SubjectFlexWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-  noMargin: PropTypes.bool,
-};
+const StyledSubjectFlexChild = styled.div`
+  box-sizing: border-box;
+  padding: 0 ${spacing.small};
+  ${mq.range({ from: breakpoints.tablet })} {
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-direction: row;
+  }
+
+  &:last-child {
+    & > * {
+      ${mq.range({ until: breakpoints.tablet })} {
+        margin-bottom: 0;
+      }
+    }
+  }
+  & > * {
+    ${mq.range({ from: breakpoints.tablet })} {
+      margin-bottom: o;
+    }
+  }
+`;
 
 export const SubjectFlexChild = ({ children }: { children: ReactNode }) => (
-  <div className="c-subject-flex__child">{children}</div>
+  <StyledSubjectFlexChild>{children}</StyledSubjectFlexChild>
 );
 
-SubjectFlexChild.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+const StyledSectionHeading = styled(SectionHeading)`
+  margin: 0 0 ${spacing.small} 0;
 
-export const SubjectSectionTitle = ({
-  children,
-  className = null,
-}: {
-  children: ReactNode;
-  className?: string | null;
-}) => (
-  <SectionHeading large className={`c-subject-section-title ${className}`}>
-    {children}
-  </SectionHeading>
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin: 0 0 ${spacing.normal} 0;
+  }
+`;
+
+export const SubjectSectionTitle = ({ children }: { children: ReactNode }) => (
+  <StyledSectionHeading large>{children}</StyledSectionHeading>
 );
-
-SubjectSectionTitle.propTypes = {
-  children: PropTypes.string.isRequired,
-  className: PropTypes.string,
-};
-
-SubjectSectionTitle.defaultProps = {
-  className: null,
-};

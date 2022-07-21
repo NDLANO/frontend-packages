@@ -1,12 +1,10 @@
-import React, { ReactNode, Component, createRef, Fragment, RefObject } from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import React, { ReactNode, Component, createRef, RefObject } from 'react';
+import styled from '@emotion/styled';
 import { Forward } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
+import { breakpoints, colors, fonts, mq, spacing, utils } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
-
-const classes = BEMHelper('c-subject-archive');
 
 interface Props {
   featuringArticle: {
@@ -25,6 +23,109 @@ interface State {
   archiveOpen: boolean;
   minHeight: number | null;
 }
+
+interface SubjectArchiveSectionProps {
+  fixedWidth: boolean;
+  animate: boolean;
+}
+
+const ArchiveWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+`;
+
+const StyledSectionHeading = styled(SectionHeading)`
+  margin: 0 0 ${spacing.small} 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${utils.visuallyHidden};
+  }
+`;
+
+const ArchiveButon = styled.button`
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin: ${spacing.small} 0 0 0;
+  padding: ${spacing.xsmall} 0;
+  border: 0;
+  color: ${colors.brand.primary};
+  ${fonts.sizes('16px', '24px')};
+  font-weight: ${fonts.weight.semibold};
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin: ${spacing.xsmall} ${spacing.normal} ${spacing.normal};
+  }
+  c-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: ${spacing.small};
+  }
+`;
+
+interface StyledNavProps {
+  animate: boolean;
+}
+const StyledNav = styled.nav<StyledNavProps>`
+  padding: 0;
+  animation: ${(p) => p.animate && 'fadeIn 0.3s ease-in-out'};
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.large} ${spacing.large} 0 ${spacing.large};
+  }
+`;
+
+const StyledArchiveList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    ${fonts.sizes('16px', '24px')};
+    margin-bottom: ${spacing.small};
+  }
+`;
+
+const MediaWrapper = styled.div`
+  width: 100%;
+  & > * {
+    width: 100%;
+  }
+`;
+
+const StyledContent = styled.div`
+  padding: ${spacing.small} 0 0 0;
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.normal};
+  }
+`;
+
+const StyledHeading = styled.h1`
+  ${fonts.sizes('20px', '32px')};
+  margin: 0 0 ${spacing.small} 0;
+  flex: 0 0 auto;
+`;
+
+const StyledDescription = styled.p`
+  margin: 0;
+  ${fonts.sizes('16px', '26px')}
+`;
+
+const SubjectArchiveSection = styled.section<SubjectArchiveSectionProps>`
+  margin-bottom: ${spacing.large};
+  display: flex;
+  flex-direction: column;
+  max-width: ${(p) => p.fixedWidth && '350px'};
+  animation: ${(p) => p.animate && 'fadeIn 0.3s ease-in-out'};
+
+  ${mq.range({ from: breakpoints.tablet })} {
+    border: 1px solid ${colors.brand.greyLight};
+  }
+`;
+
+interface FeaturingSectionProps {
+  animate: boolean;
+}
+const FeaturingSection = styled.section<FeaturingSectionProps>`
+  animation: ${(p) => p.animate && 'fadeIn 0.3s ease-in-out'};
+`;
 
 class SubjectArchive extends Component<Props, State> {
   wrapperRef: RefObject<HTMLElement> | null = createRef<HTMLElement>();
@@ -59,81 +160,51 @@ class SubjectArchive extends Component<Props, State> {
     const archiveId = 'subject-archive';
 
     const section = this.state.archiveOpen ? (
-      <nav id={archiveId} {...classes('archive')}>
-        <ul {...classes('archive-articles')}>
+      <StyledNav id={archiveId} animate={!!this.state.minHeight}>
+        <StyledArchiveList>
           {archiveArticles.map((article) => (
             <li key={article.heading}>
               <SafeLink to={article.url}>{article.heading}</SafeLink>
             </li>
           ))}
-        </ul>
-      </nav>
+        </StyledArchiveList>
+      </StyledNav>
     ) : (
-      <section {...classes('featuring')}>
-        <div {...classes('media-wrapper')}>{featuringArticle.media}</div>
-        <div {...classes('content')}>
-          <h1 {...classes('heading')}>
+      <FeaturingSection animate={!!this.state.minHeight}>
+        <MediaWrapper>{featuringArticle.media}</MediaWrapper>
+        <StyledContent>
+          <StyledHeading>
             <SafeLink to={featuringArticle.url}>{featuringArticle.heading}</SafeLink>
-          </h1>
-          <p {...classes('description')}>{featuringArticle.description}</p>
-        </div>
-      </section>
+          </StyledHeading>
+          <StyledDescription>{featuringArticle.description}</StyledDescription>
+        </StyledContent>
+      </FeaturingSection>
     );
 
-    const subClasses = Object.entries({ fixedWidth, animate: !!this.state.minHeight })
-      .filter(([_, include]) => include)
-      .map(([className, _]) => className);
-
     return (
-      <section {...classes('', subClasses)} ref={this.wrapperRef}>
-        <SectionHeading large className={classes('section-heading').className}>
-          {sectionHeading}
-        </SectionHeading>
-        <div {...classes('wrapper')}>
+      <SubjectArchiveSection animate={!!this.state.minHeight} fixedWidth={fixedWidth} ref={this.wrapperRef}>
+        <StyledSectionHeading large>{sectionHeading}</StyledSectionHeading>
+        <ArchiveWrapper>
           {section}
-          <button
+          <ArchiveButon
             type="button"
             aria-expanded={this.state.archiveOpen}
             aria-controls={archiveId}
-            className={classes('archive-button').className}
             onClick={this.handleToggleArchive}>
             {this.state.archiveOpen ? (
-              <Fragment>
+              <>
                 <Cross /> <span>{messages.close}</span>
-              </Fragment>
+              </>
             ) : (
-              <Fragment>
+              <>
                 <Forward /> <span>{messages.archive}</span>
-              </Fragment>
+              </>
             )}
-          </button>
-        </div>
-      </section>
+          </ArchiveButon>
+        </ArchiveWrapper>
+      </SubjectArchiveSection>
     );
   }
-  static propTypes = {
-    featuringArticle: PropTypes.shape({
-      media: PropTypes.node.isRequired,
-      heading: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }).isRequired,
-    archiveArticles: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        heading: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    sectionHeading: PropTypes.string.isRequired,
-    fixedWidth: PropTypes.bool,
-    messages: PropTypes.shape({
-      archive: PropTypes.string.isRequired,
-    }),
-  };
-
-  static defaultProps = {
-    fixedWidth: false,
-  };
 }
 
 export default SubjectArchive;

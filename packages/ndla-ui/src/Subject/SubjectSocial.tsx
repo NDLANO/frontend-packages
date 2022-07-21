@@ -1,30 +1,29 @@
+import styled from '@emotion/styled';
+import { breakpoints, mq, spacing } from '@ndla/core/src';
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
 import { SubjectSectionTitle } from './Subject';
 
-const classes = BEMHelper('c-subject-social');
+const StyledSubjectSocialContent = styled.div`
+  display: none;
+  ${mq.range({ from: breakpoints.tabletWide })} {
+    display: flex;
+  }
+`;
 
 export const SubjectSocialContent = ({ children }: { children: ReactNode }) => (
-  <div {...classes('content')}>{children}</div>
+  <StyledSubjectSocialContent>{children}</StyledSubjectSocialContent>
 );
 
-SubjectSocialContent.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+const StyledSection = styled.section`
+  flex-basis: 50%;
+  &:nth-child(odd) {
+    margin-right: ${spacing.normal};
+  }
+`;
 
-export const SubjectSocialSection = ({ children, title }: { children: ReactNode; title?: string }) => (
-  <section {...classes('section')}>
-    <SubjectSectionTitle className={classes('title').className}>{title}</SubjectSectionTitle>
+export const SubjectSocialSection = ({ children, title = '' }: { children: ReactNode; title?: string }) => (
+  <StyledSection>
+    <SubjectSectionTitle>{title}</SubjectSectionTitle>
     {children}
-  </section>
+  </StyledSection>
 );
-
-SubjectSocialSection.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string,
-};
-
-SubjectSocialSection.defaultProps = {
-  title: '',
-};

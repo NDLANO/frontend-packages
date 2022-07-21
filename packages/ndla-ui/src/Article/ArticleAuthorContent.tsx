@@ -78,7 +78,7 @@ const ArticleAuthorContent = ({ showAuthor, authors, onSelectAuthor }: Props) =>
   return (
     <div {...classes()}>
       <div {...classes('author-info')}>
-        {image && <Portrait src={image} alt={name} {...classes('portrait')} />}
+        {image && <Portrait src={image} alt={name} />}
         <section>
           <h1>{name}</h1>
           <hr />

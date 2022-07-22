@@ -3,8 +3,9 @@ module.exports = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-actions',
-    '@storybook/addon-links',
     '@storybook/addon-controls',
+    '@storybook/addon-docs',
+    '@storybook/addon-links',
     '@storybook/addon-viewport',
     '@storybook/addon-storysource',
   ],

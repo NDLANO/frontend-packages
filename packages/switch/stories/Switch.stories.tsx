@@ -7,11 +7,13 @@ export default {
   component: SwitchComponent,
 } as ComponentMeta<typeof SwitchComponent>;
 
-const Template: ComponentStory<typeof SwitchComponent> = ({ checked: checkedProp, label, id, disabled }) => {
+const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ checked: checkedProp, label, id, disabled }) => {
   const [checked, setChecked] = useState(checkedProp);
+
   useEffect(() => {
     setChecked(checkedProp);
   }, [checkedProp]);
+
   return (
     <SwitchComponent
       checked={checked}
@@ -23,9 +25,10 @@ const Template: ComponentStory<typeof SwitchComponent> = ({ checked: checkedProp
   );
 };
 
-export const Switch = Template.bind({});
+export const Switch = SwitchTemplate.bind({});
+
 Switch.args = {
-  label: 'Test',
-  id: '1',
+  label: 'Tilleggsstoff',
+  checked: true,
   disabled: false,
 };

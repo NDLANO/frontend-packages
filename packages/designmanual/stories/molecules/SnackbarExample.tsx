@@ -6,62 +6,46 @@
  *
  */
 
-import React, { useState } from 'react';
-import { SnackBar, SnackBarItem } from '@ndla/ui';
+import React from 'react';
 import Button from '@ndla/button';
+import { SnackbarProvider, useSnack } from '@ndla/ui';
+import { uuid } from '@ndla/util';
 
-const SnackBarExample = () => {
-  const [snack, setSnack] = useState<SnackBarItem>({});
-  const snackAriaId = 'snack-id';
+const NewSnackbarExample = () => {
+  return (
+    <SnackbarProvider>
+      <ExampleContent />
+    </SnackbarProvider>
+  );
+};
+
+const ExampleContent = () => {
+  const { addSnack } = useSnack();
+
+  const onClick = async () => {
+    const quotes: { text: string; author: string }[] = await fetch('https://type.fit/api/quotes').then((res) =>
+      res.json(),
+    );
+    const { text, author } = quotes[Math.floor(Math.random() * quotes.length)];
+
+    addSnack({
+      content: (
+        <span>
+          <strong>{author}: </strong> {text}
+        </span>
+      ),
+      id: uuid(),
+      duration: 100000,
+    });
+  };
+
   return (
     <div>
-      <div>
-        <p>
-          Remember to use aria-controls for accessibilty. In this example that would be the 'snackAriaId'. Snackbar does
-          not require any actions from the user to be closed.
-        </p>
-        <Button
-          outline
-          aria-controls={snackAriaId}
-          onClick={async () => {
-            const quotes: { text: string; author: string }[] = await fetch('https://type.fit/api/quotes').then((res) =>
-              res.json(),
-            );
-            const { text, author } = quotes[Math.floor(Math.random() * quotes.length)];
-            setSnack({
-              snackbarItemId: Math.random().toString(),
-              children: (
-                <div>
-                  <strong>{author}: </strong>"{text}"
-                </div>
-              ),
-            });
-          }}>
-          Generate random snack
-        </Button>
-      </div>
-      <SnackBar
-        id={snackAriaId}
-        key={snack.snackbarItemId}
-        snackbarItemId={snack.snackbarItemId}
-        actionButtons={[
-          {
-            text: 'Vis',
-            ariaLabel: 'Console.log onClick event',
-            onClick: () => {
-              console.log('Vis'); // eslint-disable-line no-console
-            },
-          },
-        ]}
-        onKill={(id: string | undefined) => {
-          // eslint-disable-next-line
-          console.log(`snack with id ${id || 'unknown'} removed`); // eslint-disable-line no-console
-          setSnack({});
-        }}>
-        {snack.children}
-      </SnackBar>
+      <Button outline onClick={onClick}>
+        Generate random snack
+      </Button>
     </div>
   );
 };
 
-export default SnackBarExample;
+export default NewSnackbarExample;

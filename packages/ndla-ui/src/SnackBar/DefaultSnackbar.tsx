@@ -22,6 +22,7 @@ const DefaultSnackContainer = styled.div`
   color: ${colors.white};
   border-radius: ${misc.borderRadius};
   justify-content: center;
+  align-items: center;
   box-shadow: ${shadows.levitate1};
   font-family: ${fonts.sans};
   font-size: 18px;

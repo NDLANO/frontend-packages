@@ -35,7 +35,6 @@ const ExampleContent = () => {
         </span>
       ),
       id: uuid(),
-      duration: 100000,
     });
   };
 

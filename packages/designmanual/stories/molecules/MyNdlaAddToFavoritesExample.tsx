@@ -215,55 +215,55 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
   const [isOpen, setIsOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  if (isLoggedIn === true) {
-    return (
-      <SnackbarProvider>
-        <IconButtonDualStates
-          ariaLabelInActive="Legg til i mine favoritter"
-          ariaLabelActive="Allerede lagt til i mine favoritter"
-          activeIcon={<Heart />}
-          inactiveIcon={<HeartOutline />}
-          active={isFavorite}
-          size="small"
-          ghostPill
-          onClick={() => setIsOpen(!isOpen)}
-        />
-        {isOpen && (
-          <DialogExample
-            isFavorite={isFavorite}
-            toggleIsFavorite={() => setIsFavorite(!isFavorite)}
-            title="Legg ressurs i Min NDLA"
-            isOpen={isOpen}
-            closeCallback={() => setIsOpen(!isOpen)}
+  return (
+    <SnackbarProvider>
+      {isLoggedIn ? (
+        <>
+          <IconButtonDualStates
+            ariaLabelInActive="Legg til i mine favoritter"
+            ariaLabelActive="Allerede lagt til i mine favoritter"
+            activeIcon={<Heart />}
+            inactiveIcon={<HeartOutline />}
+            active={isFavorite}
+            size="small"
+            ghostPill
+            onClick={() => setIsOpen(!isOpen)}
           />
-        )}
-      </SnackbarProvider>
-    );
-  } else {
-    return (
-      <SnackbarProvider>
-        <IconButtonDualStates
-          ariaLabelInActive="Legg til i mine favoritter"
-          ariaLabelActive="Allerede lagt til i mine favoritter"
-          activeIcon={<Heart />}
-          inactiveIcon={<HeartOutline />}
-          active={isFavorite}
-          size="small"
-          ghostPill
-          onClick={() => setIsOpen(!isOpen)}
-        />
-        {isOpen && (
-          <DialogNotLoggedInExample
-            resource={resource}
-            isFavorite={isFavorite}
-            toggleIsFavorite={() => setIsFavorite(!isFavorite)}
-            title="Legg ressurs i Min NDLA"
-            isOpen={isOpen}
-            closeCallback={() => setIsOpen(!isOpen)}
+          {isOpen && (
+            <DialogExample
+              isFavorite={isFavorite}
+              toggleIsFavorite={() => setIsFavorite(!isFavorite)}
+              title="Legg ressurs i Min NDLA"
+              isOpen={isOpen}
+              closeCallback={() => setIsOpen(!isOpen)}
+            />
+          )}
+        </>
+      ) : (
+        <>
+          <IconButtonDualStates
+            ariaLabelInActive="Legg til i mine favoritter"
+            ariaLabelActive="Allerede lagt til i mine favoritter"
+            activeIcon={<Heart />}
+            inactiveIcon={<HeartOutline />}
+            active={isFavorite}
+            size="small"
+            ghostPill
+            onClick={() => setIsOpen(!isOpen)}
           />
-        )}
-      </SnackbarProvider>
-    );
-  }
+          {isOpen && (
+            <DialogNotLoggedInExample
+              resource={resource}
+              isFavorite={isFavorite}
+              toggleIsFavorite={() => setIsFavorite(!isFavorite)}
+              title="Legg ressurs i Min NDLA"
+              isOpen={isOpen}
+              closeCallback={() => setIsOpen(!isOpen)}
+            />
+          )}
+        </>
+      )}
+    </SnackbarProvider>
+  );
 };
 export default MyNdlaAddToFavoritesExample;

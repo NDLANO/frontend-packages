@@ -47,7 +47,7 @@ export const SnackbarProvider = ({ children }: Props) => {
   const [snacks, setSnacks] = useState<Snack[]>([]);
 
   const addSnack = useCallback((snack: Snack) => {
-    setSnacks((prev) => prev.concat(snack));
+    setSnacks((prev) => prev.filter((s) => s.id !== snack.id).concat(snack));
   }, []);
 
   const removeSnack = useCallback((snackId: string) => {

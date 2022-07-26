@@ -5,6 +5,7 @@ import SwitchComponent from '../src/Switch';
 export default {
   title: 'Switch',
   component: SwitchComponent,
+  argTypes: { onClick: { action: 'clicked' } },
 } as ComponentMeta<typeof SwitchComponent>;
 
 const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ checked: checkedProp, label, id, disabled }) => {
@@ -28,7 +29,7 @@ const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ checked: check
 export const Switch = SwitchTemplate.bind({});
 
 Switch.args = {
+  id: '1',
   label: 'Tilleggsstoff',
-  checked: true,
   disabled: false,
 };

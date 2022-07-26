@@ -1,3 +1,8 @@
+---
+kind: 🏠 Home
+title: ' Readme'
+---
+
 # NDLA frontend packages
 
 [Monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) containing a set of packages used to build UIs at NDLA. By definition this repo is maintained using [yarn](https://classic.yarnpkg.com/en/).

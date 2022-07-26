@@ -692,7 +692,6 @@ storiesOf('Sammensatte moduler', module)
     </PageContainer>
   ))
 
-
   .add('Snackbar', () => (
     <PageContainer>
       <StoryIntro title="Snackbar" />

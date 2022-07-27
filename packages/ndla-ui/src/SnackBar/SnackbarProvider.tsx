@@ -91,7 +91,10 @@ const snackbarOutAnimation = keyframes({
   '100%': { transform: `translateY(${spacing.medium})`, opacity: 0 },
 });
 
-const BaseSnackContainer = styled.div<BaseSnackContainerProps>`
+const BaseSnackContainer = styled.li<BaseSnackContainerProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   animation: ${(p) => (p.expired ? snackbarOutAnimation : snackbarInAnimation)} 200ms ease-in-out;
   animation-fill-mode: forwards;
 `;
@@ -119,13 +122,14 @@ interface SnackbarContainerProps {
 const StyledSnackList = styled.ul`
   position: fixed;
   z-index: 99999;
-  align-items: center;
-  bottom: ${spacing.small};
-  left: ${spacing.small};
-  right: ${spacing.small};
   display: flex;
   flex-direction: column;
-  gap: ${spacing.small};
+  pointer-events: none;
+  margin: 0 auto;
+  padding: 0;
+  bottom: env(safe-area-inset-bottom, 40px);
+  right: env(safe-area-inset-right, 0px);
+  left: env(safe-area-inset-left, 0px);
 `;
 
 const SnackbarContainer = ({ snacks }: SnackbarContainerProps) => {

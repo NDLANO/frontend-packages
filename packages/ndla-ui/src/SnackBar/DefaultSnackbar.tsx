@@ -21,11 +21,12 @@ const DefaultSnackContainer = styled.div`
   background-color: ${colors.text.primary};
   color: ${colors.white};
   border-radius: ${misc.borderRadius};
-  justify-content: center;
-  align-items: center;
+  margin: 0 ${spacing.large};
+  pointer-events: all;
   box-shadow: ${shadows.levitate1};
   font-family: ${fonts.sans};
   font-size: 18px;
+  align-items: center;
 `;
 
 const StyledCloseButton = styled(IconButton)`
@@ -42,8 +43,6 @@ const StyledCloseButton = styled(IconButton)`
 `;
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
   ${mq.range({ from: breakpoints.tablet })} {
     gap: ${spacing.xxsmall};
   }

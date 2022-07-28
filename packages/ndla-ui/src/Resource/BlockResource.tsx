@@ -23,7 +23,7 @@ interface BlockResourceProps {
   tags?: string[];
   description?: string;
   menuItems?: MenuItemProps[];
-  loading?: boolean;
+  isLoading?: boolean;
 }
 
 const BlockElementWrapper = styled(SafeLink)`
@@ -138,18 +138,18 @@ const BlockResource = ({
   topics,
   description,
   menuItems,
-  loading,
+  isLoading,
 }: BlockResourceProps) => {
   return (
     <BlockElementWrapper to={link}>
       <ImageWrapper>
-        <BlockImage image={resourceImage} loading={loading} />
+        <BlockImage image={resourceImage} loading={isLoading} />
       </ImageWrapper>
       <BlockInfoWrapper>
         <div>
-          <BlockTitle title={title} loading={loading} />
+          <BlockTitle title={title} loading={isLoading} />
         </div>
-        <BlockTopicList topics={topics} loading={loading} />
+        <BlockTopicList topics={topics} loading={isLoading} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
           {tags && <CompressedTagList tags={tags} />}

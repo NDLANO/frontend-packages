@@ -171,6 +171,7 @@ const messages = {
     contextModal: {
       button: '+ {{count}} more contexts',
       heading: 'The resource is used in several contexts',
+      ariaLabel: 'View more contexts',
     },
   },
 
@@ -217,6 +218,7 @@ const messages = {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
     topic: 'TOPIC',
     topics: 'Topics',
+    imageModal: 'View full size image',
   },
   welcomePage: {
     search: 'Search',
@@ -394,6 +396,7 @@ const messages = {
   competenceGoals: {
     competenceGoal: 'competence-goal',
     title: 'Competence goals and curriculum ',
+    modalText: 'Explore curriculum links',
     closeCompetenceGoals: 'Close competence goals',
     showCompetenceGoals: 'Show competence goals',
     openCompentenceGoalsFilter: 'Filter competence goals',
@@ -962,6 +965,8 @@ const messages = {
       collectedInfo: 'We have collected the following information about you from Feide:',
       general: 'Resources that require logging in with Feide, are tagged with the icon',
       topic: 'Log in with Feide to access this topic.',
+      isAuth: 'User info',
+      isNotAuth: 'Log in with Feide',
     },
     resource: {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',

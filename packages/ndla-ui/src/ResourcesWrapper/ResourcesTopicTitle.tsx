@@ -66,6 +66,9 @@ const ResourcesTopicTitle = ({
   } else {
     heading = <h1 {...classes('topic-title', 'single')}>{messages.label}</h1>;
   }
+
+  const tooltipId = 'popupDialogTooltip';
+
   return (
     <header {...classes('topic-title-wrapper', { invertedStyle })}>
       <div>
@@ -82,6 +85,7 @@ const ResourcesTopicTitle = ({
             css={invertedStyle ? invertedSwitchCSS : switchCSS}
           />
           <Modal
+            labelledBy={tooltipId}
             narrow
             wrapperFunctionForButton={(activateButton: ReactNode) => (
               <TooltipWrapper>
@@ -89,7 +93,7 @@ const ResourcesTopicTitle = ({
               </TooltipWrapper>
             )}
             activateButton={
-              <TooltipButton aria-label={t('resource.dialogTooltip')}>
+              <TooltipButton id={tooltipId} aria-label={t('resource.dialogTooltip')}>
                 <HelpIcon invertedStyle={invertedStyle} />
               </TooltipButton>
             }>

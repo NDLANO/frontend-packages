@@ -165,14 +165,17 @@ type ArticleNotionsProps = {
 export const ArticleNotions = ({ notions, relatedContent = [], buttonOffsetRight, type }: ArticleNotionsProps) => {
   const { t } = useTranslation();
   const leftOffset = `${buttonOffsetRight - 32}px`;
+  const headingId = 'popupNotionHeading';
+
   return (
     <ArticleNotionsContainer>
       <Modal
+        labelledBy={headingId}
         activateButton={
           <NotionsTrigger role="button" aria-label={t('article.notionsPrompt')} style={{ left: leftOffset }}>
             <NotionFlip />
             <Explanation />
-            <span>{t('article.notionsPrompt')}</span>
+            <span id={headingId}>{t('article.notionsPrompt')}</span>
           </NotionsTrigger>
         }
         size="large"

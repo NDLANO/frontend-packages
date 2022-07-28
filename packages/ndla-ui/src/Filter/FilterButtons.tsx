@@ -128,6 +128,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
             </StyledButtonElementWrapper>
           ))}
           <Modal
+            label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}
             size="fullscreen"
             animation="subtle"
             backgroundColor="white"

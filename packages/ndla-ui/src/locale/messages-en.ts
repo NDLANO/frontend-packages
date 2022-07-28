@@ -1064,6 +1064,7 @@ const messages = {
       removedFromFolder: 'Removed from "{{folderName}}"',
       titleUpdated: 'Title updated',
       tagsUpdated: 'Tags updated',
+      show: 'Show',
     },
   },
   snackbar: {

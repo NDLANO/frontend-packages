@@ -1062,6 +1062,7 @@ const messages = {
       removedFromFolder: 'Fjernet fra "{{folderName}}"',
       titleUpdated: 'Tittel oppdatert',
       tagsUpdated: 'Tags oppdatert',
+      show: 'Vis',
     },
   },
   snackbar: {

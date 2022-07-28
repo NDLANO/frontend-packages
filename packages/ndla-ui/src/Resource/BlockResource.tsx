@@ -13,6 +13,7 @@ import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
 import { CompressedTagList, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
+import ContentLoader from '../ContentLoader';
 
 interface BlockResourceProps {
   link: string;
@@ -22,6 +23,7 @@ interface BlockResourceProps {
   tags?: string[];
   description?: string;
   menuItems?: MenuItemProps[];
+  isLoading?: boolean;
 }
 
 const BlockElementWrapper = styled(SafeLink)`
@@ -78,17 +80,76 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const BlockResource = ({ link, title, tags, resourceImage, topics, description, menuItems }: BlockResourceProps) => {
+interface BlockImageProps {
+  image: ResourceImageProps;
+  loading?: boolean;
+}
+
+const BlockImage = ({ image, loading }: BlockImageProps) => {
+  if (loading) {
+    return (
+      <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width="100%" height="100%" />
+      </ContentLoader>
+    );
+  }
+  return <Image alt={image.alt} src={image.src} />;
+};
+
+interface BlockTitleProps {
+  title: string;
+  loading?: boolean;
+}
+
+const BlockTitle = ({ title, loading }: BlockTitleProps) => {
+  if (loading) {
+    return (
+      <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width="100%" height="18px" />
+      </ContentLoader>
+    );
+  }
+  return <ResourceTitle>{title}</ResourceTitle>;
+};
+
+interface BlockTopicListProps {
+  topics: string[];
+  loading?: boolean;
+}
+
+const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
+  if (loading) {
+    return (
+      <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width="20%" height="18px" />
+        <rect x="25%" y="0" rx="3" ry="3" width="20%" height="18px" />
+      </ContentLoader>
+    );
+  }
+
+  return <TopicList topics={topics} />;
+};
+
+const BlockResource = ({
+  link,
+  title,
+  tags,
+  resourceImage,
+  topics,
+  description,
+  menuItems,
+  isLoading,
+}: BlockResourceProps) => {
   return (
     <BlockElementWrapper to={link}>
       <ImageWrapper>
-        <Image alt={resourceImage.alt} src={resourceImage.src} />
+        <BlockImage image={resourceImage} loading={isLoading} />
       </ImageWrapper>
       <BlockInfoWrapper>
         <div>
-          <ResourceTitle>{title}</ResourceTitle>
+          <BlockTitle title={title} loading={isLoading} />
         </div>
-        <TopicList topics={topics} />
+        <BlockTopicList topics={topics} loading={isLoading} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
           {tags && <CompressedTagList tags={tags} />}

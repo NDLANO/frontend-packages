@@ -276,6 +276,7 @@ const messages = {
       search: 'Search',
       toFrontpage: 'To frontpage',
       subjectOverview: 'All subjects',
+      modalLabel: 'Choose content',
       backToSubjectFrontpage: 'Back to subject frontpage',
       title: 'Content',
       subjectPage: 'Subject front page',

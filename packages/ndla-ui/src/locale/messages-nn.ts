@@ -276,6 +276,7 @@ const messages = {
       toFrontpage: 'Til framsida',
       subjectOverview: 'Alle fag',
       title: 'Innhald',
+      modalLabel: 'Vel innhald',
       subjectPage: 'Fagframside',
       backToSubjectFrontpage: 'Tilbake til fagframsida',
       openFilter: 'Filter',

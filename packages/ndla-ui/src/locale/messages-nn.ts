@@ -171,6 +171,7 @@ const messages = {
     contextModal: {
       button: '+ {{count}} fleire stader',
       heading: 'Ressursen er brukt fleire stader',
+      ariaLabel: 'Sjå fleire kontekstar',
     },
   },
   subjectPage: {
@@ -216,6 +217,7 @@ const messages = {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',
     topic: 'EMNE',
     topics: 'Emne',
+    imageModal: 'Sjå biletet i full storleik',
   },
   welcomePage: {
     search: 'Søk',
@@ -274,6 +276,7 @@ const messages = {
       toFrontpage: 'Til framsida',
       subjectOverview: 'Alle fag',
       title: 'Innhald',
+      modalLabel: 'Vel innhald',
       subjectPage: 'Fagframside',
       backToSubjectFrontpage: 'Tilbake til fagframsida',
       openFilter: 'Filter',
@@ -393,6 +396,7 @@ const messages = {
   competenceGoals: {
     competenceGoal: 'kompetansemål',
     title: 'Kompetansemål og læreplan',
+    modalText: 'Utforsk læreplankoplingar',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
     openCompentenceGoalsFilter: 'Filtrer kompetansemål',
@@ -961,6 +965,8 @@ const messages = {
       collectedInfo: 'Vi har henta denne informasjonen om deg frå Feide:',
       general: 'Ressursane som krev pålogging med Feide, vises med ikonet',
       topic: ' Logg inn med Feide for å få tilgang til dette emnet.',
+      isAuth: 'Brukarinfo',
+      isNotAuth: 'Logg inn med Feide',
     },
     resource: {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',

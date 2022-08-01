@@ -27,7 +27,7 @@
     "normalize-url": "^4.1.0",
     "octonode": "^0.9.4",
     "url-regex": "^4.1.1",
-    "vercel": "^24.2.4"
+    "vercel": "^25.2.0"
   },
   "publishConfig": {
     "access": "public"

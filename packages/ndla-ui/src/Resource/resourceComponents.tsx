@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { fonts, colors, spacing } from '@ndla/core';
 
 import { MenuButton } from '@ndla/button';
+import SafeLink from '@ndla/safelink';
 
 export interface ResourceImageProps {
   alt: string;
@@ -42,8 +43,12 @@ const StyledTagList = styled.ul`
 `;
 
 const StyledTagListElement = styled.li`
-  color: ${colors.brand.grey};
   margin: 0;
+`;
+
+const StyledSafeLink = styled(SafeLink)`
+  box-shadow: none;
+  color: ${colors.brand.grey};
   ${fonts.sizes(14)};
   ::before {
     content: '#';
@@ -97,7 +102,11 @@ export const TagList = ({ tags }: TagListProps) => {
   return (
     <StyledTagList>
       {tags.map((tag, i) => (
-        <StyledTagListElement key={`tag-${i}`}>{tag}</StyledTagListElement>
+        <StyledTagListElement key={`tag-${i}`}>
+          <StyledSafeLink onClick={(e) => e.stopPropagation()} to={`/minndla/tags/${tag}`}>
+            {tag}
+          </StyledSafeLink>
+        </StyledTagListElement>
       ))}
     </StyledTagList>
   );

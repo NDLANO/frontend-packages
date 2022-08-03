@@ -1,6 +1,6 @@
 {
   "name": "@ndla/ui",
-  "version": "22.0.3",
+  "version": "22.1.0",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -68,8 +68,8 @@
     "i18next": "^20.3.1",
     "prop-types": "^15.8.1",
     "react": "^16.8.4 || ^17.0.0",
-    "react-router-dom": "^6.3.0",
-    "react-i18next": "^11.11.0"
+    "react-i18next": "^11.11.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",

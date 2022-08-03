@@ -47,7 +47,7 @@ const BlockDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
-  ${() => BlockElementWrapper}:hover & {
+  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & {
     // Unfortunate css needed for multi-line text overflow ellipsis.
     height: 3.1em;
     -webkit-line-clamp: 2;

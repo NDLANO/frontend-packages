@@ -118,6 +118,7 @@ const TreeStructure = ({
     onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
         setSelectedFolder(newFolder);
+        onSelectFolder?.(newFolder.id);
         setFocusedId(newFolder.id);
         setOpenFolders(uniq(openFolders.concat(parentId)));
       }

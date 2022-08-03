@@ -96,8 +96,9 @@ const TagCounterWrapper = styled.p`
 
 interface TagListProps {
   tags?: string[];
+  tagLinkPrefix: string;
 }
-export const TagList = ({ tags }: TagListProps) => {
+export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
   if (!tags) return null;
   return (
     <StyledTagList>
@@ -105,7 +106,7 @@ export const TagList = ({ tags }: TagListProps) => {
         <StyledTagListElement key={`tag-${i}`}>
           <StyledSafeLink
             onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`/minndla/tags/${tag}`}>
+            to={`${tagLinkPrefix}/${tag}`}>
             {tag}
           </StyledSafeLink>
         </StyledTagListElement>
@@ -116,23 +117,24 @@ export const TagList = ({ tags }: TagListProps) => {
 
 interface CompressedTagListProps {
   tags: string[];
+  tagLinkPrefix: string;
 }
 
-export const CompressedTagList = ({ tags }: CompressedTagListProps) => {
+export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
   const navigate = useNavigate();
   const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {
       text: '#' + tag,
       onClick: () => {
-        navigate(`/minndla/tags/${tag}`);
+        navigate(`${tagLinkPrefix}/${tag}`);
       },
     };
   });
 
   return (
     <>
-      <TagList tags={visibleTags} />
+      <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
         <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
           <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>

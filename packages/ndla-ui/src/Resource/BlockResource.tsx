@@ -17,6 +17,7 @@ import ContentLoader from '../ContentLoader';
 
 interface BlockResourceProps {
   link: string;
+  tagLinkPrefix: string;
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];
@@ -132,6 +133,7 @@ const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
 
 const BlockResource = ({
   link,
+  tagLinkPrefix = '/minndla/tags',
   title,
   tags,
   resourceImage,
@@ -152,7 +154,7 @@ const BlockResource = ({
         <BlockTopicList topics={topics} loading={isLoading} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
-          {tags && <CompressedTagList tags={tags} />}
+          {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
           {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
         </RightRow>
       </BlockInfoWrapper>

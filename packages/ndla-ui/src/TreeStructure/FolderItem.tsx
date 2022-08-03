@@ -49,11 +49,12 @@ const WrapperForFolderChild = styled.div`
   gap: ${spacing.xsmall};
 `;
 
-const shouldForwardProp = (name: string) => !['selected', 'noArrow'].includes(name);
+const shouldForwardProp = (name: string) => !['selected', 'noArrow', 'fullWidth'].includes(name);
 
 interface FolderNameProps {
   selected?: boolean;
   noArrow?: boolean;
+  fullWidth?: boolean;
 }
 
 const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
@@ -61,7 +62,7 @@ const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
   padding: ${spacing.xsmall};
   margin: 0;
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
-  flex-grow: 1;
+  flex-grow: ${({ fullWidth }) => fullWidth && 1};
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -116,6 +117,7 @@ const FolderItem = ({
   setSelectedFolder,
   targetResource,
   visibleFolders,
+  framed,
 }: Props) => {
   const { t } = useTranslation();
   const { id, icon, name } = folder;
@@ -173,6 +175,7 @@ const FolderItem = ({
       {onSelectFolder ? (
         <>
           <FolderName
+            fullWidth={framed}
             ref={ref}
             onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}

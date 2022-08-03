@@ -45,12 +45,12 @@ const StyledTagList = styled.ul`
 
 const StyledTagListElement = styled.li`
   margin: 0;
+  ${fonts.sizes(14)};
 `;
 
 const StyledSafeLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.grey};
-  ${fonts.sizes(14)};
   ::before {
     content: '#';
   }
@@ -106,7 +106,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
         <StyledTagListElement key={`tag-${i}`}>
           <StyledSafeLink
             onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`${tagLinkPrefix}/${tag}`}>
+            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`}>
             {tag}
           </StyledSafeLink>
         </StyledTagListElement>
@@ -127,7 +127,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
     return {
       text: '#' + tag,
       onClick: () => {
-        navigate(`${tagLinkPrefix}/${tag}`);
+        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`);
       },
     };
   });

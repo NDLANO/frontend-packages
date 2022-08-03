@@ -421,6 +421,8 @@ const messages = {
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },
+    licenseData: 'Containing data under',
+    licenseFrom: 'published at',
   },
   subject: {
     associatedTopics: 'Associated topics',

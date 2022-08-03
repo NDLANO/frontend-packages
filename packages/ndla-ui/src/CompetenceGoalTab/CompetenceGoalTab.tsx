@@ -19,6 +19,7 @@ import CompetenceItem, { ListItemProp } from './CompetenceItem';
 type CompetenceProps = {
   list: ListItemProp[];
   highlightSearchBox?: boolean;
+  isOembed?: boolean;
 };
 
 const Wrapper = styled.div`
@@ -79,7 +80,7 @@ const HighlightText = styled.span`
   font-family: 'Shadows Into Light Two', cursive;
 `;
 
-const CompetenceGoalTab = ({ list, highlightSearchBox }: CompetenceProps) => {
+const CompetenceGoalTab = ({ list, highlightSearchBox, isOembed }: CompetenceProps) => {
   const [currentTabItem, setCurrentTab] = useState(list[0]);
   const { t } = useTranslation();
 
@@ -106,15 +107,15 @@ const CompetenceGoalTab = ({ list, highlightSearchBox }: CompetenceProps) => {
           <ArrowFeatureTips />
         </HighlightWrapper>
       )}
-      <CompetenceItem item={currentTabItem} />
+      <CompetenceItem item={currentTabItem} isOembed={isOembed} />
       <LicenseByline licenseRights={[CC, BY]}>
         <LicenseIconsTextWrapper>UDIR</LicenseIconsTextWrapper>
       </LicenseByline>
-      Inneholder data under{' '}
+      {`${t('competenceGoals.licenseData')} `}
       <SafeLink to="https://data.norge.no/nlod/no" target="_blank">
         NLOD
       </SafeLink>
-      , tilgjengeliggjort på{' '}
+      {`, ${t('competenceGoals.licenseFrom')} `}
       <SafeLink to="https://data.udir.no/" target="_blank">
         data.udir.no
       </SafeLink>

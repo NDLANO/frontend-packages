@@ -6,12 +6,13 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, colors, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
+import React, { MouseEvent } from 'react';
 
 import { MenuButton } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
+import { useNavigate } from 'react-router-dom';
 
 export interface ResourceImageProps {
   alt: string;
@@ -96,14 +97,15 @@ const TagCounterWrapper = styled.p`
 interface TagListProps {
   tags?: string[];
 }
-
 export const TagList = ({ tags }: TagListProps) => {
   if (!tags) return null;
   return (
     <StyledTagList>
       {tags.map((tag, i) => (
         <StyledTagListElement key={`tag-${i}`}>
-          <StyledSafeLink onClick={(e) => e.stopPropagation()} to={`/minndla/tags/${tag}`}>
+          <StyledSafeLink
+            onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
+            to={`/minndla/tags/${tag}`}>
             {tag}
           </StyledSafeLink>
         </StyledTagListElement>
@@ -117,11 +119,14 @@ interface CompressedTagListProps {
 }
 
 export const CompressedTagList = ({ tags }: CompressedTagListProps) => {
+  const navigate = useNavigate();
   const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {
       text: '#' + tag,
-      onClick: () => {},
+      onClick: () => {
+        navigate(`/minndla/tags/${tag}`);
+      },
     };
   });
 

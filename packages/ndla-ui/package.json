@@ -68,6 +68,7 @@
     "i18next": "^20.3.1",
     "prop-types": "^15.8.1",
     "react": "^16.8.4 || ^17.0.0",
+    "react-router-dom": "^6.3.0",
     "react-i18next": "^11.11.0"
   },
   "devDependencies": {

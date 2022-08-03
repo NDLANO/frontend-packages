@@ -420,6 +420,8 @@ const messages = {
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },
+    licenseData: 'Inneheld data under',
+    licenseFrom: 'tilgjengeleggjort på',
   },
   subject: {
     associatedTopics: 'Tilhøyrande emne',

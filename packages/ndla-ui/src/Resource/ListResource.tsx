@@ -109,7 +109,7 @@ interface StyledImageProps {
 
 export interface ListResourceProps {
   link: string;
-  tagLinkPrefix: string;
+  tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];
@@ -197,7 +197,6 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
 
-  console.log({ link });
   return (
     <ResourceWrapper to={link}>
       <StyledImageWrapper imageSize={imageType}>

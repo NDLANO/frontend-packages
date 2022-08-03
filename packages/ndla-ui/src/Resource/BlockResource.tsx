@@ -17,7 +17,7 @@ import ContentLoader from '../ContentLoader';
 
 interface BlockResourceProps {
   link: string;
-  tagLinkPrefix: string;
+  tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];

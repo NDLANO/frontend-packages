@@ -33,6 +33,7 @@ const TextWrapper = styled.span`
 
 const AddButtonStyle = styled(Button)`
   display: flex;
+  padding: 0;
   gap: ${spacing.small};
   svg {
     fill: ${colors.brand.primary};
@@ -73,7 +74,7 @@ interface AddButtonProps extends ButtonProps {
 }
 
 export const AddButton = ({ children, size, ...rest }: AddButtonProps) => (
-  <AddButtonStyle size={size || 'xsmall'} ghostPill {...rest}>
+  <AddButtonStyle size={size || 'xsmall'} stripped {...rest}>
     <AddIconBorder>
       <Plus />
     </AddIconBorder>

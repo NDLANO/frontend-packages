@@ -133,7 +133,7 @@ const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
 
 const BlockResource = ({
   link,
-  tagLinkPrefix = '/minndla/tags',
+  tagLinkPrefix,
   title,
   tags,
   resourceImage,

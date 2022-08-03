@@ -185,7 +185,7 @@ const ResourceDescription = ({ description, loading }: ResourceDescriptionProps)
 
 const ListResource = ({
   link,
-  tagLinkPrefix = '/minndla/tags',
+  tagLinkPrefix,
   title,
   tags,
   resourceImage,

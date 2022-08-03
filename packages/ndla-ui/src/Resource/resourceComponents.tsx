@@ -96,7 +96,7 @@ const TagCounterWrapper = styled.p`
 
 interface TagListProps {
   tags?: string[];
-  tagLinkPrefix: string;
+  tagLinkPrefix?: string;
 }
 export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
   if (!tags) return null;
@@ -117,7 +117,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
 
 interface CompressedTagListProps {
   tags: string[];
-  tagLinkPrefix: string;
+  tagLinkPrefix?: string;
 }
 
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {

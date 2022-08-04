@@ -61,6 +61,8 @@ const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
   cursor: pointer;
   padding: ${spacing.xsmall};
   margin: 0;
+  outline-offset: -2px;
+  outline-color: ${colors.brand.primary};
   margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
   flex-grow: ${({ fullWidth }) => fullWidth && 1};
   display: grid;

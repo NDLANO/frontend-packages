@@ -62,6 +62,7 @@ const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
         bottom: ${props.offsetY};
       `;
     }
+    return '';
   }}
   z-index: 1;
 `;

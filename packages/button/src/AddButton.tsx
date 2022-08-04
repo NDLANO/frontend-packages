@@ -34,6 +34,7 @@ const TextWrapper = styled.span`
 const AddButtonStyle = styled(Button)`
   display: flex;
   padding: 0;
+  outline-offset: ${spacing.xxsmall};
   gap: ${spacing.small};
   svg {
     fill: ${colors.brand.primary};
@@ -44,7 +45,7 @@ const AddButtonStyle = styled(Button)`
   &:active,
   &:hover {
     background-color: transparent;
-      &:not(:disabled) {
+    &:not(:disabled) {
       svg {
         fill: white;
       }
@@ -52,20 +53,20 @@ const AddButtonStyle = styled(Button)`
         background-color: ${colors.brand.primary};
       }
     }
-    }
   }
+
   &:disabled {
     color: ${colors.brand.grey};
     svg {
-        fill: ${colors.brand.grey};
-      }
-      ${AddIconBorder} {
-        background-color: ${colors.brand.greyLighter};
-        border-color: ${colors.brand.greyLight};
-      }
-      ${TextWrapper} {
-        color: ${colors.brand.grey};
-      }
+      fill: ${colors.brand.grey};
+    }
+    ${AddIconBorder} {
+      background-color: ${colors.brand.greyLighter};
+      border-color: ${colors.brand.greyLight};
+    }
+    ${TextWrapper} {
+      color: ${colors.brand.grey};
+    }
   }
 `;
 
@@ -74,7 +75,7 @@ interface AddButtonProps extends ButtonProps {
 }
 
 export const AddButton = ({ children, size, ...rest }: AddButtonProps) => (
-  <AddButtonStyle size={size || 'xsmall'} stripped {...rest}>
+  <AddButtonStyle size={size || 'xsmall'} ghostPill {...rest}>
     <AddIconBorder>
       <Plus />
     </AddIconBorder>

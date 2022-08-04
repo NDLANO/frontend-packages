@@ -6,11 +6,13 @@
  *
  */
 
-import React from 'react';
 import styled from '@emotion/styled';
-import { fonts, colors, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
+import React, { MouseEvent } from 'react';
 
 import { MenuButton } from '@ndla/button';
+import SafeLink from '@ndla/safelink';
+import { useNavigate } from 'react-router-dom';
 
 export interface ResourceImageProps {
   alt: string;
@@ -42,9 +44,13 @@ const StyledTagList = styled.ul`
 `;
 
 const StyledTagListElement = styled.li`
-  color: ${colors.brand.grey};
   margin: 0;
   ${fonts.sizes(14)};
+`;
+
+const StyledSafeLink = styled(SafeLink)`
+  box-shadow: none;
+  color: ${colors.brand.grey};
   ::before {
     content: '#';
   }
@@ -90,14 +96,20 @@ const TagCounterWrapper = styled.p`
 
 interface TagListProps {
   tags?: string[];
+  tagLinkPrefix?: string;
 }
-
-export const TagList = ({ tags }: TagListProps) => {
+export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
   if (!tags) return null;
   return (
     <StyledTagList>
       {tags.map((tag, i) => (
-        <StyledTagListElement key={`tag-${i}`}>{tag}</StyledTagListElement>
+        <StyledTagListElement key={`tag-${i}`}>
+          <StyledSafeLink
+            onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
+            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`}>
+            {tag}
+          </StyledSafeLink>
+        </StyledTagListElement>
       ))}
     </StyledTagList>
   );
@@ -105,20 +117,24 @@ export const TagList = ({ tags }: TagListProps) => {
 
 interface CompressedTagListProps {
   tags: string[];
+  tagLinkPrefix?: string;
 }
 
-export const CompressedTagList = ({ tags }: CompressedTagListProps) => {
+export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
+  const navigate = useNavigate();
   const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {
       text: '#' + tag,
-      onClick: () => {},
+      onClick: () => {
+        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`);
+      },
     };
   });
 
   return (
     <>
-      <TagList tags={visibleTags} />
+      <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
         <MenuButton hideMenuIcon={true} menuItems={remainingTags}>
           <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>

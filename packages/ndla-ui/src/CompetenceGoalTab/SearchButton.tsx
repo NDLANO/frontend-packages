@@ -37,11 +37,12 @@ const IconWrapper = styled.span`
 type Props = {
   to: string;
   text: string;
+  target?: string;
 };
 
-const SearchButton = ({ to, text }: Props) => (
+const SearchButton = ({ to, text, target = '_self' }: Props) => (
   <Wrapper>
-    <SafeLink to={to}>
+    <SafeLink to={to} target={target}>
       <IconWrapper>
         <Search style={{ width: '24px', height: '24px' }} />
       </IconWrapper>

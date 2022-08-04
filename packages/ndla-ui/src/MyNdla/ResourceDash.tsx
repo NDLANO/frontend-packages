@@ -20,10 +20,10 @@ import { colors, spacing, fonts } from '@ndla/core';
 import { AddButton, MenuItemProps } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { Folder } from './Resource';
-import { ListResource, BlockResource } from '../Resource';
 //@ts-ignore
 import DnDList from 'react-dnd-list';
+import { Folder } from './Resource';
+import { ListResource, BlockResource } from '../Resource';
 
 const Dash = styled.div`
   max-width: 960px;

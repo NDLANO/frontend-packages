@@ -8,9 +8,8 @@
 
 import styled from '@emotion/styled';
 import React from 'react';
-import { FolderOutlined, HorizontalMenu } from '@ndla/icons/contentType';
+import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { DragHorizontal } from '@ndla/icons/editor';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';

@@ -10,10 +10,9 @@ import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MenuItemProps } from '@ndla/button';
-import { FolderInput } from '@ndla/ui';
+import { FolderInput, ResourceDash } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
-import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
 
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
@@ -150,7 +149,7 @@ export const MyNdla = () => {
         }
         onSite={[
           <Wrapper>
-            <MyNdlaResourceView
+            <ResourceDash
               folders={[
                 { title: 'name', link: 'hey' },
                 { title: 'Ny mappe', link: '' },

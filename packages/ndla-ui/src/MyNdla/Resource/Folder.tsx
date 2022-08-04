@@ -8,8 +8,9 @@
 
 import styled from '@emotion/styled';
 import React from 'react';
-import { FolderOutlined } from '@ndla/icons/contentType';
+import { FolderOutlined, HorizontalMenu } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
+import { DragHorizontal } from '@ndla/icons/editor';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
 import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
@@ -61,12 +62,13 @@ const FolderWrapper = styled(SafeLink)`
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
-  box-shadow: none;
-  text-decoration: none;
+  background-color: white;
   color: ${colors.brand.greyDark};
   font-family: ${fonts.sans};
   transition-duration: 0.2s;
+  box-shadow: none;
   gap: ${spacing.small};
+  width: 100%;
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;

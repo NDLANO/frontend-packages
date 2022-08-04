@@ -103,5 +103,7 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-dnd-list": "^1.2.3"
+  }
 }

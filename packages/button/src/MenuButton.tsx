@@ -53,6 +53,9 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
     background-color: ${colors.brand.light};
   }
 `;
+const StyledPopOverMenu = styled(MenuPopover)`
+  z-index: 999999;
+`;
 
 const StyledMenuItems = styled(MenuItems)`
   padding: 0;
@@ -121,7 +124,7 @@ export const MenuButton = ({
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
-      <MenuPopover portal={true} position={alignRight ? positionRight : positionDefault}>
+      <StyledPopOverMenu portal={true} position={alignRight ? positionRight : positionDefault}>
         <StyledMenuItems>
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
@@ -135,7 +138,7 @@ export const MenuButton = ({
             </StyledMenuItem>
           ))}
         </StyledMenuItems>
-      </MenuPopover>
+      </StyledPopOverMenu>
     </Menu>
   );
 };

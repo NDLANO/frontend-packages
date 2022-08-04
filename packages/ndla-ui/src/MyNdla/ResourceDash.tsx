@@ -15,12 +15,15 @@ import { FileDocumentOutline } from '@ndla/icons/common';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
+import { DragHorizontal } from '@ndla/icons/editor';
 import { colors, spacing, fonts } from '@ndla/core';
+import { AddButton, MenuItemProps } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { Folder, ListResource, BlockResource } from '@ndla/ui';
-import { AddButton } from '@ndla/button';
-import { menuItems } from '../pages/MyNdla';
+import { Folder } from './Resource';
+import { ListResource, BlockResource } from '../Resource';
+//@ts-ignore
+import DnDList from 'react-dnd-list';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -101,6 +104,30 @@ const CountWrapper = styled.div`
   align-items: center;
 `;
 
+const StyledUl = styled.ul`
+  padding: 0;
+  margin: 0;
+`;
+
+const StyledLi = styled.li`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: ${spacing.xsmall};
+  z-index: 0;
+  border: 1px solid ${colors.brand.neutral7};
+  border-radius: 2px;
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    a {
+      box-shadow: none;
+    }
+  }
+  a {
+    border: none;
+  }
+`;
+
 const StyledIconButton = styled(Button)`
   padding: 10px;
   svg {
@@ -139,9 +166,11 @@ export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
   type?: 'list' | 'block';
+
+  menuItems?: MenuItemProps[];
 }
 
-export const ResourcesView = ({ folders, resources }: ViewProps) => {
+export const ResourceDash = ({ folders, resources, menuItems }: ViewProps) => {
   const { t } = useTranslation();
   const [layout, setLayout] = useState('list');
   const windowSize = useWindowSize(1000);
@@ -152,6 +181,47 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
   }, [windowSize]);
   const Resource = layout === 'block' ? BlockResource : ListResource;
   const viewType = layout === 'block' ? 'block' : 'list';
+
+  const Item = (props: any) => {
+    const dnd = props.dnd;
+    return (
+      <StyledLi style={{ ...dnd.item.styles, ...dnd.handler.styles }} className={dnd.item.classes} ref={dnd.item.ref}>
+        <DragHorizontal {...dnd.handler.listeners} />
+        {props.item}
+      </StyledLi>
+    );
+  };
+  const [folderList, setFolderList] = useState(
+    folders?.map(({ title, link }, i) => (
+      <Folder
+        key={`folder-${i}`}
+        type={viewType}
+        title={title}
+        link={link}
+        subFolders={3}
+        subResources={3}
+        menuItems={menuItems}
+      />
+    )),
+  );
+
+  const [resourceList, setResourceList] = useState(
+    resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
+      <Resource
+        key={`resource-${i}`}
+        title={title}
+        topics={topics}
+        tags={tags}
+        description={layout !== 'list' ? description : undefined}
+        resourceImage={{
+          alt: resourceImage.alt,
+          src: resourceImage.src,
+        }}
+        link={link}
+        menuItems={menuItems}
+      />
+    )),
+  );
 
   return (
     <Dash>
@@ -206,38 +276,47 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
           <h1>Illustrasjon tom mappe</h1>
         </NoFolders>
       )}
-      <BlockWrapper type={layout}>
-        {folders?.map(({ title, link }, i) => (
-          <Folder
-            key={`folder-${i}`}
-            type={viewType}
-            title={title}
-            link={link}
-            subFolders={3}
-            subResources={3}
-            menuItems={menuItems}
-          />
-        ))}
-      </BlockWrapper>
-      <BlockWrapper type={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
-          <Resource
-            key={`resource-${i}`}
-            title={title}
-            topics={topics}
-            tags={tags}
-            description={layout !== 'list' ? description : undefined}
-            resourceImage={{
-              alt: resourceImage.alt,
-              src: resourceImage.src,
-            }}
-            link={link}
-            menuItems={menuItems}
-          />
-        ))}
-      </BlockWrapper>
+      {layout === 'list' ? (
+        <StyledUl>
+          <DnDList items={folderList} itemComponent={Item} setList={setFolderList} />
+          <DnDList items={resourceList} itemComponent={Item} setList={setResourceList} />
+        </StyledUl>
+      ) : (
+        <>
+          <BlockWrapper type={layout}>
+            {folders?.map(({ title, link }, i) => (
+              <Folder
+                key={`folder-${i}`}
+                type={viewType}
+                title={title}
+                link={link}
+                subFolders={3}
+                subResources={3}
+                menuItems={menuItems}
+              />
+            ))}
+          </BlockWrapper>
+          <BlockWrapper type={layout}>
+            {resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
+              <Resource
+                key={`resource-${i}`}
+                title={title}
+                topics={topics}
+                tags={tags}
+                description={layout !== 'list' ? description : undefined}
+                resourceImage={{
+                  alt: resourceImage.alt,
+                  src: resourceImage.src,
+                }}
+                link={link}
+                menuItems={menuItems}
+              />
+            ))}
+          </BlockWrapper>
+        </>
+      )}
     </Dash>
   );
 };
 
-export default ResourcesView;
+export default ResourceDash;

@@ -1,3 +1,4 @@
 import Folder from './Resource/Folder';
 import FolderInput from './Resource/FolderInput';
-export { Folder, FolderInput };
+import ResourceDash from './ResourceDash';
+export { Folder, FolderInput, ResourceDash };

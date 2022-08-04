@@ -15822,6 +15822,13 @@ react-device-detect@^2.1.2:
   dependencies:
     ua-parser-js "^0.7.30"
 
+react-dnd-list@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-dnd-list/-/react-dnd-list-1.2.3.tgz#4adf0aa58ea9774fea3fcfea79225caa03c51dac"
+  integrity sha512-H7bddhky9buDB/dzAiqqj6fHkbb8PdmOlaIEG20lVhVuri3WwDBiBp2qWtqIXH3aUbKMdWTgtXsG17vA5YRzxA==
+  dependencies:
+    react "^16.8.6"
+
 react-docgen-typescript@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.1.0.tgz#20db64a7fd62e63a8a9469fb4abd90600878cbb2"
@@ -16095,6 +16102,15 @@ react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+
+react@^16.8.6:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

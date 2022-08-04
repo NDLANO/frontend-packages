@@ -60,7 +60,7 @@ const GoalSearchWrapper = styled.div`
   }
 `;
 
-const CompetenceGoalItem = ({ title, goals }: CompetenceGoalsItemType) => {
+const CompetenceGoalItem = ({ title, goals, isOembed }: CompetenceGoalsItemType) => {
   const { t } = useTranslation();
   return (
     <GoalItem>
@@ -73,7 +73,11 @@ const CompetenceGoalItem = ({ title, goals }: CompetenceGoalsItemType) => {
                 <GoalListInnerTextWrapper>{goal.text}</GoalListInnerTextWrapper>
                 {goal.url && goal.type !== 'LK06' && (
                   <GoalSearchWrapper>
-                    <SearchButton to={goal.url} text={t('competenceGoals.competenceGoalResourceSearchText')} />
+                    <SearchButton
+                      to={goal.url}
+                      text={t('competenceGoals.competenceGoalResourceSearchText')}
+                      target={isOembed ? '_blank' : '_self'}
+                    />
                   </GoalSearchWrapper>
                 )}
               </GoalListElementInnerWrapper>

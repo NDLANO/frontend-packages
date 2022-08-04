@@ -111,6 +111,7 @@ interface StyledImageProps {
 
 export interface ListResourceProps {
   link: string;
+  tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];
@@ -186,6 +187,7 @@ const ResourceDescription = ({ description, loading }: ResourceDescriptionProps)
 
 const ListResource = ({
   link,
+  tagLinkPrefix,
   title,
   tags,
   resourceImage,
@@ -207,7 +209,7 @@ const ListResource = ({
       </TopicAndTitleWrapper>
       {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>
-        {tags && <CompressedTagList tags={tags} />}
+        {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
         {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ResourceWrapper>

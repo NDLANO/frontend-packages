@@ -107,8 +107,8 @@ const StyledUl = styled.ul`
   padding: 0;
   margin: 0;
   list-style: none;
-  z-index: 100;
   li {
+    z-index: 1;
     display: flex;
     align-items: center;
     margin-bottom: ${spacing.xsmall};

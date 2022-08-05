@@ -8,7 +8,6 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { BY, NC, ND } from '@ndla/licenses';
 import { Article, OneColumn, TasksAndActivitiesBadge, constants, ResourceBox, Figure } from '@ndla/ui';
 import LicenseBox from '../article/LicenseBox';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
@@ -45,7 +44,6 @@ const ReferenceBoxExample = () => {
                 </p>
                 <Figure type={'full'}>
                   <ResourceBox
-                    licenseRights={[BY, NC, ND]}
                     title="Mediehistorie"
                     caption="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
                     image={image}

@@ -10,10 +10,10 @@ import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MenuItemProps } from '@ndla/button';
-import { FolderInput, ResourceDash } from '@ndla/ui';
+import { FolderInput } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
-
+import ResourceView from '../molecules/MyNdlaPages/MyNdlaResourceView';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
 
@@ -149,7 +149,7 @@ export const MyNdla = () => {
         }
         onSite={[
           <Wrapper>
-            <ResourceDash
+            <ResourceView
               folders={[
                 { title: 'name', link: 'hey' },
                 { title: 'Ny mappe', link: '' },
@@ -158,7 +158,7 @@ export const MyNdla = () => {
               ]}
               resources={[
                 {
-                  title: 'My Resource',
+                  title: 'My Resource 1',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],
@@ -170,7 +170,7 @@ export const MyNdla = () => {
                   },
                 },
                 {
-                  title: 'My Resource',
+                  title: 'My Resource 2',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],
@@ -182,7 +182,7 @@ export const MyNdla = () => {
                   },
                 },
                 {
-                  title: 'My Resource',
+                  title: 'My Resource 3',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],
@@ -194,7 +194,7 @@ export const MyNdla = () => {
                   },
                 },
                 {
-                  title: 'My Resource',
+                  title: 'My Resource 4',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],

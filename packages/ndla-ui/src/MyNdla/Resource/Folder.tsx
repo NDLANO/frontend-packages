@@ -56,6 +56,8 @@ const FolderTitle = styled.h2`
 `;
 
 const FolderWrapper = styled(SafeLink)`
+  user-select: none;
+  -webkit-user-drag: none;
   display: flex;
   align-items: center;
   padding: ${spacing.small};

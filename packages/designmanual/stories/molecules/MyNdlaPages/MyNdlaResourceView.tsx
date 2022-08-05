@@ -8,6 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
@@ -17,13 +18,11 @@ import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { DragHorizontal } from '@ndla/icons/editor';
 import { colors, spacing, fonts } from '@ndla/core';
-import { AddButton, MenuItemProps } from '@ndla/button';
-import Tooltip from '@ndla/tooltip';
-import { useTranslation } from 'react-i18next';
-//@ts-ignore
+import { Folder, ListResource, BlockResource } from '@ndla/ui';
+import { AddButton } from '@ndla/button'; //@ts-ignore
 import DnDList from 'react-dnd-list';
-import { Folder } from './Resource';
-import { ListResource, BlockResource } from '../Resource';
+import Tooltip from '@ndla/tooltip';
+import { menuItems } from '../../pages/MyNdla';
 
 const Dash = styled.div`
   max-width: 960px;
@@ -107,14 +106,16 @@ const CountWrapper = styled.div`
 const StyledUl = styled.ul`
   padding: 0;
   margin: 0;
+  list-style: none;
+  z-index: 100;
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: ${spacing.xsmall};
+  }
 `;
 
 const StyledLi = styled.li`
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin-bottom: ${spacing.xsmall};
-  z-index: 0;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
   &:hover {
@@ -166,11 +167,9 @@ export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
   type?: 'list' | 'block';
-
-  menuItems?: MenuItemProps[];
 }
 
-export const ResourceDash = ({ folders, resources, menuItems }: ViewProps) => {
+export const ResourceView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
   const [layout, setLayout] = useState('list');
   const windowSize = useWindowSize(1000);
@@ -191,6 +190,30 @@ export const ResourceDash = ({ folders, resources, menuItems }: ViewProps) => {
       </StyledLi>
     );
   };
+
+  const ItemWithoutBorder = (props: any) => {
+    const dnd = props.dnd;
+    return (
+      <li style={{ ...dnd.item.styles, ...dnd.handler.styles }} className={dnd.item.classes} ref={dnd.item.ref}>
+        <DragHorizontal {...dnd.handler.listeners} />
+        {props.item}
+      </li>
+    );
+  };
+
+  const ItemWithoutIcon = (props: any) => {
+    const dnd = props.dnd;
+    return (
+      <StyledLi
+        style={{ ...dnd.item.styles, ...dnd.handler.styles }}
+        className={dnd.item.classes}
+        ref={dnd.item.ref}
+        {...dnd.handler.listeners}>
+        {props.item}
+      </StyledLi>
+    );
+  };
+
   const [folderList, setFolderList] = useState(
     folders?.map(({ title, link }, i) => (
       <Folder
@@ -277,10 +300,23 @@ export const ResourceDash = ({ folders, resources, menuItems }: ViewProps) => {
         </NoFolders>
       )}
       {layout === 'list' ? (
-        <StyledUl>
-          <DnDList items={folderList} itemComponent={Item} setList={setFolderList} />
-          <DnDList items={resourceList} itemComponent={Item} setList={setResourceList} />
-        </StyledUl>
+        <>
+          <h2>Drag and Drop med dra-ikon inne på elementet</h2>
+          <StyledUl>
+            <DnDList items={folderList} itemComponent={Item} setList={setFolderList} />
+            <DnDList items={resourceList} itemComponent={Item} setList={setResourceList} />
+          </StyledUl>
+
+          <h2>Drag and Drop med dra-ikon utenfor elementet </h2>
+          <StyledUl>
+            <DnDList items={resourceList} itemComponent={ItemWithoutBorder} setList={setResourceList} />
+          </StyledUl>
+
+          <h2>Drag and Drop hele elementet</h2>
+          <StyledUl>
+            <DnDList items={resourceList} itemComponent={ItemWithoutIcon} setList={setResourceList} />
+          </StyledUl>
+        </>
       ) : (
         <>
           <BlockWrapper type={layout}>
@@ -319,4 +355,4 @@ export const ResourceDash = ({ folders, resources, menuItems }: ViewProps) => {
   );
 };
 
-export default ResourceDash;
+export default ResourceView;

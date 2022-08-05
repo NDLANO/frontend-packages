@@ -32,10 +32,11 @@ const StyledResourceDescription = styled.p`
 `;
 
 const ResourceWrapper = styled(SafeLink)`
+  user-select: none;
+  -webkit-user-drag: none;
   flex: 1;
   display: grid;
   background-color: white;
-  z-index: 10000;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
     'image  topicAndTitle   tags'

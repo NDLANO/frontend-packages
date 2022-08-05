@@ -22,7 +22,8 @@
     "@ndla/util": "^3.0.0",
     "focus-trap": "^6.7.3",
     "jump.js": "^1.0.2",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "react-bem-helper": "^1.4.1"
   },
   "publishConfig": {
     "access": "public"

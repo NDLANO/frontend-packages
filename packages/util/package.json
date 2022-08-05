@@ -26,7 +26,11 @@
     "es",
     "types"
   ],
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0"
+  },
   "dependencies": {
+    "html-react-parser": "^0.14.1",
     "remarkable": "^2.0.1"
   },
   "publishConfig": {

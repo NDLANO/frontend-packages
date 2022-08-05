@@ -12,7 +12,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import debounce from 'lodash/debounce';
+import { debounce } from 'lodash';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';

@@ -28,6 +28,7 @@
     "@ndla/core": "^2.3.3",
     "@ndla/icons": "^1.11.3",
     "@ndla/licenses": "^5.0.6",
+    "@ndla/util": "^3.0.0",
     "@ndla/modal": "^1.2.17",
     "@ndla/safelink": "^2.2.6"
   },

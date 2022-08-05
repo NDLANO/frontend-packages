@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@ndla/util": "^3.0.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "react-device-detect": "^2.1.2"
   },
   "publishConfig": {
     "access": "public"

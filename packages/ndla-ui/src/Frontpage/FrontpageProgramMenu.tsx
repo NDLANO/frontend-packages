@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Button from '@ndla/button';
-import { fonts } from '@ndla/core';
-import { breakpoints, mq } from '@ndla/core';
+import { fonts, breakpoints, mq } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import NavigationBox, { ItemProps } from '../Navigation/NavigationBox';
 import FrontpageAllSubjects, { subjectsProps } from './FrontpageAllSubjects';

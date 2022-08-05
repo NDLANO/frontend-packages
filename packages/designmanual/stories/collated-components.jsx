@@ -63,7 +63,7 @@ import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
 import TagSelectorExample from './molecules/TagSelectorExample';
-import SnackBarExample from './molecules/SnackbarExample';
+import SnackbarExample from './molecules/SnackbarExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -692,12 +692,12 @@ storiesOf('Sammensatte moduler', module)
     </PageContainer>
   ))
 
-  .add('Snackbar meldingsboks', () => (
+  .add('Snackbar', () => (
     <PageContainer>
       <StoryIntro title="Snackbar" />
       <StoryBody>
         <Center>
-          <SnackBarExample />
+          <SnackbarExample />
         </Center>
       </StoryBody>
       <FooterExample />

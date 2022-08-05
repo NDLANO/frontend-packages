@@ -33,8 +33,11 @@ const HeadingWrapper = styled.h2`
 
 export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, modalProps }) => {
   const { t } = useTranslation();
+  const iconId = 'popupCompetenceGoals';
+
   return (
     <Modal
+      labelledBy={iconId}
       {...modalProps}
       controllable
       isOpen={isOpen}
@@ -48,8 +51,8 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
           <ModalHeader modifier="menu">
             <HeaderWrapper>
               <HeadingWrapper>
-                <FooterHeaderIcon size="24px" style={{ marginRight: '20px' }} />
-                {'Utforsk læreplankoblinger'} {subjectName && ` \u2022 ${subjectName}`}
+                <FooterHeaderIcon id={iconId} size="24px" style={{ marginRight: '20px' }} />
+                {t('competenceGoals.modalText')} {subjectName && ` \u2022 ${subjectName}`}
               </HeadingWrapper>
               <ModalCloseButton onClick={close} title={t('competenceGoals.competenceGoalClose')} />
             </HeaderWrapper>

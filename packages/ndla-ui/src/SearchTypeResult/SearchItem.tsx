@@ -154,7 +154,6 @@ const ItemText = styled.div<ItemTypeProps>`
 
 const ContextWrapper = styled.div`
   background: white;
-  z-index: 1;
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
   ${ItemWrapper}:hover & {

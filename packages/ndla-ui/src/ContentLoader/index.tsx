@@ -6,18 +6,14 @@
  *
  */
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, SVGProps } from 'react';
 import { uuid } from '@ndla/util';
 
-interface Props {
+interface Props extends Omit<SVGProps<SVGSVGElement>, 'viewBox'> {
   children?: ReactNode;
-  speed?: number;
-  width?: number;
-  height?: number;
   primaryColor?: string;
   secondaryColor?: string;
-  preserveAspectRatio?: string;
-  className?: string;
+  viewBox?: string | null;
 }
 
 const ContentLoader = ({
@@ -29,18 +25,22 @@ const ContentLoader = ({
   primaryColor = '#f0f0f0',
   secondaryColor = '#e0e0e0',
   speed = 2,
+  viewBox: viewBoxProp,
   ...rest
 }: Props) => {
   const idClip = uuid();
   const idGradient = uuid();
+  const viewBox = viewBoxProp === undefined ? `0 0 ${width} ${height}` : viewBoxProp;
 
   return (
     <svg
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={viewBox ?? undefined}
       version="1.1"
       preserveAspectRatio={preserveAspectRatio}
       className={className}
-      {...rest}>
+      {...rest}
+      height={typeof height === 'string' ? height : undefined}
+      width={typeof width === 'string' ? width : undefined}>
       <rect
         style={{ fill: `url(#${idGradient})` }}
         clipPath={`url(#${idClip})`}

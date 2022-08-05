@@ -92,9 +92,11 @@ const PopupFilter = ({
 }: PopupFilterProps) => {
   const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
+  const headingId = 'popupFilterHeading';
 
   return (
     <Modal
+      labelledBy={headingId}
       controllable
       backgroundColor="white"
       animation="subtle"
@@ -107,7 +109,7 @@ const PopupFilter = ({
           <ModalWrapper>
             <ModalContent>
               <ModalHeaderWrapper>
-                <ModalHeading>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
+                <ModalHeading id={headingId}>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
                 <ModalCloseButton onClick={() => onClose()} title={t('searchPage.close')} />
               </ModalHeaderWrapper>
               {subjectCategories && programmes && (

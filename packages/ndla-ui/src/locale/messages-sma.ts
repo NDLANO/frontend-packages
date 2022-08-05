@@ -171,6 +171,7 @@ const messages = {
     contextModal: {
       button: '+ {{count}} flere steder',
       heading: 'Ressursen er brukt flere steder',
+      ariaLabel: 'Se flere kontekster',
     },
   },
   subjectPage: {
@@ -216,6 +217,7 @@ const messages = {
     articleErrorDescription: 'Beklager, en feil oppstod under lasting av emnebeskrivelsen.',
     topic: 'EMNE',
     topics: 'Emner',
+    imageModal: 'Se bildet i full størrelse',
   },
   welcomePage: {
     search: 'Søk',
@@ -274,6 +276,7 @@ const messages = {
       toFrontpage: 'Til forsiden',
       subjectOverview: 'Alle fag',
       title: 'Innhold',
+      modalLabel: 'Velg innhold',
       subjectPage: 'Fagforside',
       backToSubjectFrontpage: 'Tilbake til fagforsiden',
       openFilter: 'Filter',
@@ -392,6 +395,7 @@ const messages = {
   competenceGoals: {
     competenceGoal: 'kompetansemål',
     title: 'Kompetansemål og læreplan',
+    modalText: 'Utforsk læreplankoblinger',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
     openCompentenceGoalsFilter: 'Filtrer kompetansemål',
@@ -415,6 +419,8 @@ const messages = {
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },
+    licenseData: 'Inneholder data under',
+    licenseFrom: 'tilgjengeliggjort på',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',
@@ -960,6 +966,8 @@ const messages = {
       collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide:',
       general: 'Ressursene som krever pålogging med Feide, vises med ikonet',
       topic: 'Logg inn med Feide for å få tilgang til dette emnet.',
+      isAuth: 'Brukerinfo',
+      isNotAuth: 'Logg inn med Feide',
     },
     resource: {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
@@ -994,7 +1002,10 @@ const messages = {
       delete: 'Slett',
       edit: 'Rediger',
       missingName: 'Mappenavn er påkrevd',
+      folderDeleted: '"{{folderName}}" er sletta',
     },
+    tags: '{{count}} tag',
+    tags_plural: '{{count}} tags',
     confirmDeleteFolder: 'Er du sikker på at du vil slette mappen? Denne handlingen kan ikke angres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlingen kan ikke angres.',
     myFolders: 'Mine mapper',
@@ -1005,6 +1016,7 @@ const messages = {
     favourites: 'Favoritter',
     addToFavourites: 'Legg til i mine favoritter',
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
+    alreadyInFolder: 'Finnes allerede i mappen',
     help: 'Hjelp',
     more: 'Flere valg',
     listView: 'Listevisning',
@@ -1014,6 +1026,9 @@ const messages = {
       myPage: 'Min side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
+      loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
+      loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
       read: { our: 'Les våre', ours: 'Les vår' },
@@ -1045,9 +1060,17 @@ const messages = {
     resource: {
       add: 'Legg til mappe/tag',
       remove: 'Fjern',
+      removeTitle: 'Fjern ressurs',
+      confirmRemove: 'Er du sikker på at du ønsker å fjerne ressursen frå denne mappen?',
       copyLink: 'Kopier lenke til siden',
+      linkCopied: 'Kopiert til utklippstavla',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
+      addedToFolder: 'Ressurs er lagt i "{{folderName}}"',
+      removedFromFolder: 'Fjernet fra "{{folderName}}"',
+      titleUpdated: 'Tittel oppdatert',
+      tagsUpdated: 'Tags oppdatert',
+      show: 'Vis',
     },
   },
   snackbar: {

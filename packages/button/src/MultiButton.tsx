@@ -62,6 +62,7 @@ const StyledOptionWrapperAnimation = styled.div<StyledOptionProps>`
         bottom: ${props.offsetY};
       `;
     }
+    return '';
   }}
   z-index: 1;
 `;
@@ -85,17 +86,17 @@ type StyledButtonProps = {
 };
 const ButtonItem = styled.button<StyledButtonProps>`
   ${buttonStyle};
-  ${(props) => props.outline && outlineStyle}
-  ${(props) => props.large && largeStyle}
+  ${(props) => props.outline && outlineStyle};
+  ${(props) => props.large && largeStyle};
   ${(props) =>
     props.outline &&
-    `
-    border-color:white;
-    &:hover,
-    &:focus {
-      border: 2px solid ${colors.brand.primary};
-    }
-  `}
+    css`
+      border-color: white;
+      &:hover,
+      &:focus {
+        border: 2px solid ${colors.brand.primary};
+      }
+    `};
   white-space: nowrap;
   text-align: right;
   border-radius: 0;

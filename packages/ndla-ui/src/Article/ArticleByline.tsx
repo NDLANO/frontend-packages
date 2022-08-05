@@ -101,6 +101,8 @@ const ArticleByline = ({
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
 
+  const buttonId = 'popupUseContent';
+
   return (
     <Wrapper>
       <div>
@@ -123,8 +125,9 @@ const ArticleByline = ({
       <ButtonWrapper>
         {licenseBox && (
           <Modal
+            labelledBy={buttonId}
             activateButton={
-              <Button size="small" borderShape="rounded" outline>
+              <Button id={buttonId} size="small" borderShape="rounded" outline>
                 {t('article.useContent')}
               </Button>
             }

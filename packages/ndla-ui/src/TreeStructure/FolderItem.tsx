@@ -7,8 +7,10 @@
  */
 
 import React, { KeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
+import { Done } from '@ndla/icons/editor';
 import { MenuButton } from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, misc, animations } from '@ndla/core';
@@ -40,28 +42,42 @@ const FolderItemWrapper = styled.div`
   align-items: center;
 `;
 
-const WrapperForFolderChild = styled.div<{ selected?: boolean }>`
-  position: absolute;
-  right: ${spacing.xsmall};
-  opacity: ${({ selected }) => (selected ? 1 : 0.25)};
-  &:hover,
-  &:focus,
-  &:focus-within {
-    opacity: 1;
-  }
+const WrapperForFolderChild = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${spacing.xsmall};
 `;
 
-const shouldForwardProp = (name: string) => !['selected', 'noArrow'].includes(name);
+const shouldForwardProp = (name: string) => !['selected', 'noArrow', 'fullWidth'].includes(name);
 
 interface FolderNameProps {
   selected?: boolean;
   noArrow?: boolean;
+  fullWidth?: boolean;
 }
 
 const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
-  line-height: 1;
+  cursor: pointer;
+  padding: ${spacing.xsmall};
+  margin: 0;
+  outline-offset: -2px;
+  outline-color: ${colors.brand.primary};
+  margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
+  flex-grow: ${({ fullWidth }) => fullWidth && 1};
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: ${spacing.xxsmall};
+  border: 0;
+  border-radius: ${misc.borderRadius};
+  box-shadow: none;
   background: ${({ selected }) => (selected ? colors.brand.lighter : 'transparent')};
   color: ${colors.text.primary};
+  transition: ${animations.durations.superFast};
+  text-align: left;
+  line-height: 1;
+  word-break: break-word;
   &:hover,
   &:focus {
     background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
@@ -70,19 +86,10 @@ const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
       opacity: 1;
     }
   }
-  transition: ${animations.durations.superFast};
-  border: 0;
-  border-radius: ${misc.borderRadius};
-  display: flex;
-  gap: ${spacing.xxsmall};
-  align-items: center;
-  cursor: pointer;
-  padding: ${spacing.xsmall};
-  margin: 0;
-  margin-left: ${({ noArrow }) => (noArrow ? `29px` : `0px`)};
-  flex-grow: 1;
-  box-shadow: none;
-  text-align: left;
+`;
+
+const StyledDone = styled(Done)`
+  color: ${colors.support.green};
 `;
 
 const FolderNameLink = FolderName.withComponent(SafeLink);
@@ -110,24 +117,31 @@ const FolderItem = ({
   openOnFolderClick,
   setFocusedId,
   setSelectedFolder,
+  targetResource,
   visibleFolders,
+  framed,
 }: Props) => {
+  const { t } = useTranslation();
   const { id, icon, name } = folder;
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder && selectedFolder.id === id;
   const focused = focusedFolderId === id;
 
   const handleClickFolder = () => {
-    setSelectedFolder(folder);
-    setFocusedId(id);
-    onSelectFolder?.(id);
     if (openOnFolderClick) {
-      if (isOpen) {
-        onCloseFolder(id);
-      } else {
-        onOpenFolder(id);
+      if (selected) {
+        if (isOpen) {
+          onCloseFolder(id);
+        } else {
+          onOpenFolder(id);
+        }
       }
     }
+    if (!selected) {
+      setSelectedFolder(folder);
+      setFocusedId(id);
+    }
+    onSelectFolder?.(id);
   };
 
   useEffect(() => {
@@ -144,7 +158,10 @@ const FolderItem = ({
     };
   });
 
-  const linkPath = `/minndla${level > 1 ? '/folders' : ''}/${id}`;
+  const linkPath = `/minndla${level > 0 ? '/folders' : ''}/${id}`;
+
+  const containsResource =
+    targetResource && folder.resources.some((resource) => resource.resourceId === targetResource.resourceId);
 
   return (
     <FolderItemWrapper>
@@ -160,6 +177,7 @@ const FolderItem = ({
       {onSelectFolder ? (
         <>
           <FolderName
+            fullWidth={framed}
             ref={ref}
             onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
             noArrow={hideArrow && !noPaddingWhenArrowIsHidden}
@@ -170,12 +188,18 @@ const FolderItem = ({
             onClick={handleClickFolder}>
             {icon || <FolderOutlined />}
             {name}
-          </FolderName>
-          {actions && (
-            <WrapperForFolderChild selected={selected}>
-              <MenuButton size="xsmall" menuItems={actions} tabIndex={selected || id === focusedFolderId ? 0 : -1} />
+            <WrapperForFolderChild>
+              {containsResource && <StyledDone title={t('myNdla.alreadyInFolder')} />}
+              {actions && (
+                <MenuButton
+                  onClick={(e) => e.stopPropagation()}
+                  size="xsmall"
+                  menuItems={actions}
+                  tabIndex={selected || id === focusedFolderId ? 0 : -1}
+                />
+              )}
             </WrapperForFolderChild>
-          )}
+          </FolderName>
         </>
       ) : (
         <FolderNameLink
@@ -185,7 +209,7 @@ const FolderItem = ({
           }
           noArrow={hideArrow}
           to={loading ? '' : linkPath}
-          tabIndex={selected || focused || level === 1 ? 0 : -1}
+          tabIndex={selected || focused || level === 0 ? 0 : -1}
           selected={selected}
           onFocus={() => setFocusedId(id)}
           onClick={handleClickFolder}>

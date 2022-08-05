@@ -113,6 +113,7 @@ export type CompetenceGoalsItemType = {
     type: 'LK06' | 'LK20';
   }[];
   selected?: boolean;
+  isOembed?: boolean;
 };
 
 export type NotionMedia = {

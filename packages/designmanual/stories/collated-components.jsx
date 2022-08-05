@@ -80,13 +80,13 @@ storiesOf('Sammensatte moduler', module)
         <ArticleByline
           authors={[
             {
-              name: 'Cecilie Isaksen Eftedal',
-              shortName: 'Cecilie',
+              name: 'Frida Forfatter',
+              shortName: 'Frida',
               role: 'Forfatter',
             },
             {
-              name: 'Pål Frønsdal',
-              shortName: 'Pål',
+              name: 'Fred Forfatter',
+              shortName: 'Fred',
               role: 'Manusforfatter',
             },
           ]}
@@ -97,8 +97,8 @@ storiesOf('Sammensatte moduler', module)
         <ArticleByline
           authors={[
             {
-              name: 'Cecilie Isaksen Eftedal',
-              shortName: 'Cecilie',
+              name: 'Frida Forfatter',
+              shortName: 'Frida',
             },
           ]}
           published="21.06.2018"
@@ -111,8 +111,8 @@ storiesOf('Sammensatte moduler', module)
           authors={[
             {
               role: 'rolle',
-              name: 'Cecilie Isaksen Eftedal',
-              shortName: 'Cecilie',
+              name: 'Frida Forfatter',
+              shortName: 'Frida',
               urlContributions: '#',
               urlAuthor: '#',
               licenses: 'CC BY-SA',
@@ -134,36 +134,36 @@ storiesOf('Sammensatte moduler', module)
           authors={[
             {
               role: 'Forfatter',
-              name: 'Cecilie Isaksen Eftedal',
-              shortName: 'Cecilie',
+              name: 'Frida Forfatter',
+              shortName: 'Frida',
               urlContributions: '#',
               urlAuthor: '#',
               licenses: 'CC BY-SA',
               title: 'Stilling',
               phone: '+47 123 45 678',
-              email: 'cecilie@ndla.no',
+              email: 'fridaforfatter@ndla.no',
               image: cecilie,
               introduction:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
             {
               role: 'Illustratør',
-              name: 'Siv Mundal',
-              shortName: 'Siv',
+              name: 'Ida Illustratør',
+              shortName: 'Ida',
               urlContributions: '#',
               urlAuthor: '#',
               licenses: 'CC BY-SA',
               title: 'Stilling',
               phone: '+47 123 45 678',
-              email: 'siv.mundal@keyteq.no',
+              email: 'idaillustrator@ndla.no',
               image: cecilie,
               introduction:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
             {
               role: 'Manusforfatter',
-              name: 'Pål Frønsdal',
-              shortName: 'Pål',
+              name: 'Fred Forfatter',
+              shortName: 'Fred',
               urlContributions: '#',
               urlAuthor: '#',
               licenses: 'CC BY-SA',

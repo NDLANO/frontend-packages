@@ -1025,6 +1025,8 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Short view',
     myPage: {
+      confirmDeleteAccount: 'Are you sure you want to delete your account?',
+      confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',

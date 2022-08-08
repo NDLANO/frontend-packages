@@ -1023,6 +1023,8 @@ const messages = {
     detailView: 'Detaljrik listevisning',
     shortView: 'Kort visning',
     myPage: {
+      confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
+      confirmDeleteAccountButton: 'Slett konto',
       myPage: 'Min side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',

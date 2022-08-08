@@ -13,7 +13,7 @@ import React from 'react';
 import AudioSearchResult from './AudioSearchResult';
 
 const StyledResultSpinner = styled.div`
-  border: 0.4em solid ${colors.brand.light};
+  border: 0.4em solid ${colors.brand.greyLight};
   border-bottom-color: ${colors.brand.primary};
   border-radius: 50%;
   margin: 0 auto;

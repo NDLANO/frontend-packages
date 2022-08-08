@@ -11,17 +11,17 @@ import styled from '@emotion/styled';
 import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
 import Button from '@ndla/button';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
-import { spacing } from '@ndla/core';
+import { colors, spacing } from '@ndla/core';
 import AudioBar from './AudioBar';
 
 const StyledListItem = styled.div`
   &:not(:last-child) {
     padding-bottom: 1em;
-    border-bottom: 1px solid $brand-color--lighter;
+    border-bottom: 1px solid ${colors.brand.lighter};
   }
 `;
 
-const InnerListItem = styled.div`
+const StyledHeading = styled.h2`
   margin-top: 30px;
 `;
 
@@ -42,13 +42,13 @@ export default function AudioSearchResult({ audio, fetchAudio, onError, locale, 
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
     <StyledListItem key={audio.id}>
-      <InnerListItem>
-        <h2>{audio.title?.title}</h2>
+      <div>
+        <StyledHeading>{audio.title?.title}</StyledHeading>
         <LicenseWrapper>
           {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
         </LicenseWrapper>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
-      </InnerListItem>
+      </div>
       <Button outline onClick={() => onAudioSelect(audio)}>
         {translations.useAudio}
       </Button>

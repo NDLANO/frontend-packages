@@ -9,7 +9,7 @@
 import React, { ReactElement, ReactNode, useState, MouseEvent, cloneElement } from 'react';
 import { spacing, colors, mq, breakpoints, fonts } from '@ndla/core';
 import { DialogContent } from '@reach/dialog';
-import css from '@emotion/css';
+import { css } from '@emotion/core';
 import { StyledDialogOverlay } from './StyledDialogOverlay';
 
 interface Props {
@@ -28,6 +28,8 @@ interface Props {
   minHeight?: string;
   isOpen?: boolean;
   position?: 'center' | 'top' | 'bottom';
+  label?: string;
+  labelledBy?: string;
 }
 
 const Modal = ({
@@ -46,6 +48,8 @@ const Modal = ({
   isOpen: propsIsOpen,
   position = 'center',
   className = '',
+  label,
+  labelledBy,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [animateIn, setAnimateIn] = useState(!!controllable);
@@ -88,6 +92,8 @@ const Modal = ({
       {modalButton}
       <StyledDialogOverlay isOpen={!!showDialog} animateIn={animateIn} onDismiss={closeModal} className={className}>
         <DialogContent
+          aria-label={label}
+          aria-labelledby={labelledBy}
           css={css`
             animation-duration: ${animationDuration}ms;
             min-height: ${minHeight};

@@ -24,6 +24,7 @@ export interface CommonTreeStructureProps {
   openOnFolderClick?: boolean;
   menuItems?: TreeStructureMenuProps[];
   targetResource?: IResource;
+  framed?: boolean;
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {

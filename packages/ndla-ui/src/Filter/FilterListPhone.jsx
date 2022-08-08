@@ -12,7 +12,7 @@ import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
-import debounce from 'lodash/debounce';
+import { debounce } from 'lodash';
 import { classes } from './filterClasses';
 import ToggleItem from './ToggleItem';
 import ActiveFilters from '../Search/ActiveFilters';

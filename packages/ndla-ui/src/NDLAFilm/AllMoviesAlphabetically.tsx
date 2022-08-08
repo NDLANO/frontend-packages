@@ -10,7 +10,7 @@ import React, { Fragment, RefObject, useEffect, useRef, useState } from 'react';
 import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import throttle from 'lodash/throttle';
+import { throttle } from 'lodash';
 import { breakpoints, mq, spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { makeSrcQueryString } from '../Image';

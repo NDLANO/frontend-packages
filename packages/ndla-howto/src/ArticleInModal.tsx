@@ -11,17 +11,22 @@ interface ModalContentProps {
   onClose: () => void;
 }
 
+const headingId = 'popupModalHeader';
+
 const ModalContent = ({ pageId, onClose }: ModalContentProps) => {
   const useStory = stories[pageId] || {
     title: `Fant ingen veiledningstekster "${pageId}"`,
     lead: 'Sjekk key-names i @ndla-howto/src/StaticInfoComponents og propType pageId til <ArticleInModal />',
   };
+
   return (
     <Wrapper>
       <div>
         <InModalHeader>
           <InformationOutline style={{ position: 'absolute' }} />
-          <Heading inModal>{useStory.title}</Heading>
+          <Heading id={headingId} inModal>
+            {useStory.title}
+          </Heading>
           <ModalCloseButton onClick={onClose} />
         </InModalHeader>
         {useStory.imageUrl && (
@@ -66,6 +71,7 @@ interface Props {
 
 const ArticleInModal = ({ pageId, tooltip, activateButton }: Props) => (
   <Modal
+    labelledBy={headingId}
     size="medium"
     backgroundColor="white"
     wrapperFunctionForButton={tooltip ? (btn: ReactElement) => <Tooltip tooltip={tooltip}>{btn}</Tooltip> : undefined}

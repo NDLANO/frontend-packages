@@ -79,9 +79,10 @@ export type ListItemProp = {
 };
 export type ListItemProps = {
   item: ListItemProp;
+  isOembed?: boolean;
 };
 
-const CompetenceItem = ({ item }: ListItemProps) => {
+const CompetenceItem = ({ item, isOembed }: ListItemProps) => {
   const { t } = useTranslation();
   const { type, groupedCompetenceGoals, groupedCoreElementItems } = item;
   switch (type) {
@@ -105,7 +106,13 @@ const CompetenceItem = ({ item }: ListItemProps) => {
                 {group.elements.length > 0 && (
                   <Goals>
                     {group.elements.map((goal) => (
-                      <CompetenceGoalItem key={goal.id} id={goal.id} title={goal.title} goals={goal.goals} />
+                      <CompetenceGoalItem
+                        key={goal.id}
+                        id={goal.id}
+                        title={goal.title}
+                        goals={goal.goals}
+                        isOembed={isOembed}
+                      />
                     ))}
                   </Goals>
                 )}

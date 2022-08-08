@@ -32,26 +32,24 @@ interface Props {
   id?: string;
   children?: ReactNode;
   dangerousHTML?: string;
-  ariaLabel?: string;
-  tooltip: ReactNode;
+  tooltip: string;
 }
 
-const CustomTooltip = ({ id, children, tooltip, dangerousHTML, ariaLabel: ariaLabelProp }: Props) => {
+const CustomTooltip = ({ id, children, tooltip, dangerousHTML }: Props) => {
   const deterministicId = useId(id);
-  const ariaLabel = typeof tooltip === 'string' ? tooltip : ariaLabelProp;
 
   // Article Converter needs hydration due to SSR removing all dynamics
   if (dangerousHTML) {
     return (
-      <StyledTooltip id={deterministicId} label={tooltip} aria-label={ariaLabel}>
+      <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
         <span data-tooltip-children dangerouslySetInnerHTML={{ __html: dangerousHTML }} />
       </StyledTooltip>
     );
   }
 
   return (
-    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={ariaLabel}>
-      <StyledTooltip id={deterministicId} label={tooltip} aria-label={ariaLabel}>
+    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={tooltip}>
+      <StyledTooltip id={deterministicId} label={tooltip} aria-label={tooltip}>
         <span data-tooltip-children>{children}</span>
       </StyledTooltip>
     </div>

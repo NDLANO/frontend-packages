@@ -116,16 +116,9 @@ const StyledUl = styled.ul`
 `;
 
 const StyledLi = styled.li`
-  border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
-    a {
-      box-shadow: none;
-    }
-  }
-  a {
-    border: none;
   }
 `;
 
@@ -186,29 +179,6 @@ export const ResourceView = ({ folders, resources }: ViewProps) => {
     return (
       <StyledLi style={{ ...dnd.item.styles, ...dnd.handler.styles }} className={dnd.item.classes} ref={dnd.item.ref}>
         <DragHorizontal {...dnd.handler.listeners} />
-        {props.item}
-      </StyledLi>
-    );
-  };
-
-  const ItemWithoutBorder = (props: any) => {
-    const dnd = props.dnd;
-    return (
-      <li style={{ ...dnd.item.styles, ...dnd.handler.styles }} className={dnd.item.classes} ref={dnd.item.ref}>
-        <DragHorizontal {...dnd.handler.listeners} />
-        {props.item}
-      </li>
-    );
-  };
-
-  const ItemWithoutIcon = (props: any) => {
-    const dnd = props.dnd;
-    return (
-      <StyledLi
-        style={{ ...dnd.item.styles, ...dnd.handler.styles }}
-        className={dnd.item.classes}
-        ref={dnd.item.ref}
-        {...dnd.handler.listeners}>
         {props.item}
       </StyledLi>
     );
@@ -300,23 +270,10 @@ export const ResourceView = ({ folders, resources }: ViewProps) => {
         </NoFolders>
       )}
       {layout === 'list' ? (
-        <>
-          <h2>Drag and Drop med dra-ikon inne på elementet</h2>
-          <StyledUl>
-            <DnDList items={folderList} itemComponent={Item} setList={setFolderList} />
-            <DnDList items={resourceList} itemComponent={Item} setList={setResourceList} />
-          </StyledUl>
-
-          <h2>Drag and Drop med dra-ikon utenfor elementet </h2>
-          <StyledUl>
-            <DnDList items={resourceList} itemComponent={ItemWithoutBorder} setList={setResourceList} />
-          </StyledUl>
-
-          <h2>Drag and Drop hele elementet</h2>
-          <StyledUl>
-            <DnDList items={resourceList} itemComponent={ItemWithoutIcon} setList={setResourceList} />
-          </StyledUl>
-        </>
+        <StyledUl>
+          <DnDList items={resourceList} itemComponent={Item} setList={setResourceList} />
+          <DnDList items={folderList} itemComponent={Item} setList={setFolderList} />
+        </StyledUl>
       ) : (
         <>
           <BlockWrapper type={layout}>

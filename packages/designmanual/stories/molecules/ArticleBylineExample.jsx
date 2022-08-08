@@ -21,13 +21,13 @@ export const authorSimple = {
 export const authorRealText = [
   {
     role: 'Forfatter',
-    name: 'Cecilie Isaksen Eftedal',
-    shortName: 'Cecilie',
+    name: 'Frida Forfatter',
+    shortName: 'Frida',
     urlContributions: '#',
     urlAuthor: '#',
     title: 'Stilling',
     phone: '+47 123 45 678',
-    email: 'cecilie@ndla.no',
+    email: 'fridaforfatter@ndla.no',
     image: cecilie,
     introduction:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
@@ -35,13 +35,13 @@ export const authorRealText = [
   },
   {
     role: 'Illustratør',
-    name: 'Siv Mundal',
-    shortName: 'Siv',
+    name: 'Ida Illustratør',
+    shortName: 'Ida',
     urlContributions: '#',
     urlAuthor: '#',
     title: 'Stilling',
     phone: '+47 123 45 678',
-    email: 'siv.mundal@keyteq.no',
+    email: 'idaillustrator@ndla.no',
     image: cecilie,
     introduction:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
@@ -49,13 +49,13 @@ export const authorRealText = [
   },
   {
     role: 'Manusforfatter',
-    name: 'Pål Frønsdal',
-    shortName: 'Pål',
+    name: 'Fred Forfatter',
+    shortName: 'Fred',
     urlContributions: '#',
     urlAuthor: '#',
     title: 'Stilling',
     phone: '+47 123 45 678',
-    email: 'paal.fronsdal@ndla.no',
+    email: 'fredforfatter@ndla.no',
     image: cecilie,
     introduction:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import css from '@emotion/css';
 import { spacing, mq, breakpoints } from '@ndla/core';
@@ -7,7 +6,12 @@ import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import ActiveFilterContent, { StyledActiveFilterTitle } from './ActiveFilterContent';
 
-const StyledActiveFilters = styled('ul')`
+interface StyledActiveFiltersProps {
+  showOnSmallScreen?: boolean;
+  filterLength?: number;
+}
+
+const StyledActiveFilters = styled('ul')<StyledActiveFiltersProps>`
   margin: 0;
   padding: 0;
   flex-direction: column;
@@ -70,10 +74,22 @@ const StyledActiveFilterWrapper = styled('li')`
   }
 `;
 
-const getFilterLength = (filters) =>
+const getFilterLength = (filters: Filter[]) =>
   filters.filter((filter) => filter.filterName === 'filter_subjects' && filter.title).length;
 
-const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
+interface Filter {
+  title: string;
+  value: string;
+  filterName?: string;
+}
+
+interface Props {
+  filters: Filter[];
+  onFilterRemove: (value: string, filterName?: string) => void;
+  showOnSmallScreen?: boolean;
+}
+
+const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }: Props) => {
   const { t } = useTranslation();
   if (filters && filters.length > 0) {
     const filterLength = getFilterLength(filters);
@@ -90,7 +106,6 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
               })}>
               <ActiveFilterContent
                 filter={filter}
-                filterLength={filterLength}
                 ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
                   filterName: filter.title,
                 })}
@@ -100,7 +115,6 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
           ) : (
             <ActiveFilterContent
               filter={filter}
-              filterLength={filterLength}
               onFilterRemove={onFilterRemove}
               ariaLabel={t('searchPage.searchFilterMessages.removeFilter', {
                 filterName: filter.title,
@@ -119,17 +133,6 @@ const ActiveFilters = ({ filters, onFilterRemove, showOnSmallScreen }) => {
   }
 
   return null;
-};
-
-ActiveFilters.propTypes = {
-  filters: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      filterName: PropTypes.string,
-    }),
-  ),
-  onFilterRemove: PropTypes.func.isRequired,
 };
 
 export default ActiveFilters;

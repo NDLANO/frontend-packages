@@ -21,8 +21,8 @@ interface ItemType {
   additional?: boolean;
   image?: ReactNode;
   ingress: string;
-  contentTypeIcon: string;
-  contentTypeLabel: string;
+  contentTypeIcon?: string;
+  contentTypeLabel?: string;
   children?: ReactNode;
   type?: string;
 }

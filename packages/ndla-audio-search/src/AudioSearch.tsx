@@ -7,16 +7,18 @@
  */
 
 import React, { Component } from 'react';
+import styled from '@emotion/styled';
+import { colors } from '@ndla/core/src';
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from '@ndla/types-audio-api';
 import Pager from '@ndla/pager';
-import BEMHelper from 'react-bem-helper';
 import AudioSearchForm from './AudioSearchForm';
 import AudioSearchList from './AudioSearchList';
 
-const classes = new BEMHelper({
-  name: 'audio-search',
-  prefix: 'c-',
-});
+const AudioSearchWrapper = styled.div`
+  padding: 1rem;
+  border: 1px solid ${colors.brand.lighter};
+  border-radius: 0.2rem;
+`;
 
 interface Props {
   queryObject: QueryObject;
@@ -105,7 +107,7 @@ class AudioSearch extends Component<Props, State> {
     const { page, locale } = queryObject ?? {};
 
     return (
-      <div {...classes()}>
+      <AudioSearchWrapper>
         <AudioSearchForm
           onSearchQuerySubmit={this.submitAudioSearchQuery}
           queryObject={queryObject}
@@ -129,7 +131,7 @@ class AudioSearch extends Component<Props, State> {
           onClick={this.searchAudios}
           pageItemComponentClass="button"
         />
-      </div>
+      </AudioSearchWrapper>
     );
   }
 }

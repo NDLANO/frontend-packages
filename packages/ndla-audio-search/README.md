@@ -16,12 +16,6 @@ npm install @ndla/audio-search
 
 ### Styling
 
-```scss
-/* Your project's main .scss import file */
-@import '~@ndla/audio-search/scss/audio-search'; // with webpack and sass-loader
-@import '../path/to/node_modules/ndla-audio-search/scss/audio-search'; // direct reference
-```
-
 ### Get audio with the audio selector
 
 To use the `AudioSearch` component, some functions for handling search and fetching audios are needed. In addition, some translations are needed.

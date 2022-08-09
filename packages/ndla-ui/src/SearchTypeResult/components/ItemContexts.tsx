@@ -98,6 +98,7 @@ const ItemContexts = ({ contexts, id, title }: ItemContextsType) => {
       &nbsp;
       {contexts.length > 1 && (
         <Modal
+          label={t('searchPage.contextModal.ariaLabel')}
           activateButton={
             <ModalButton link>
               {t('searchPage.contextModal.button', {

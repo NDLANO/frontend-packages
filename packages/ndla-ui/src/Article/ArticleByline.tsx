@@ -13,8 +13,7 @@ import Button, { CopyButton } from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
 import { copyTextToClipboard, printPage } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-import { LicenseByline } from '@ndla/licenses';
-import { getLicenseByAbbreviation } from '@ndla/licenses';
+import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
 import { TFunction } from 'i18next';
 
 const Wrapper = styled.div`
@@ -102,6 +101,8 @@ const ArticleByline = ({
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
 
+  const buttonId = 'popupUseContent';
+
   return (
     <Wrapper>
       <div>
@@ -124,8 +125,9 @@ const ArticleByline = ({
       <ButtonWrapper>
         {licenseBox && (
           <Modal
+            labelledBy={buttonId}
             activateButton={
-              <Button size="small" borderShape="rounded" outline>
+              <Button id={buttonId} size="small" borderShape="rounded" outline>
                 {t('article.useContent')}
               </Button>
             }

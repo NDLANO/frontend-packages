@@ -83,7 +83,8 @@ const AuthModal = ({
       position={position}
       isOpen={isOpen}
       onClose={onClose}
-      controllable={!activateButton}>
+      controllable={!activateButton}
+      label={isAuthenticated ? t('user.modal.isAuth') : t('user.modal.isNotAuth')}>
       {(onClose: () => void) => (
         <StyledModalBody>
           <StyledModalHeader>

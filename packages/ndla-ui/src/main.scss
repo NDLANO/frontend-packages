@@ -16,7 +16,11 @@
 @import 'Aside/component.aside';
 @import 'Article/component.footnotes';
 @import 'NoContentBox/component.no-content-box.scss';
+<<<<<<< HEAD
 @import 'BackgroundImage/component.background-image';
+=======
+@import 'Portrait/component.portrait.scss';
+>>>>>>> aaa5c53a339201186cfb8a0e2f061783e73ad449
 @import 'global/components/component.logo';
 @import 'MediaList/component.medialist';
 @import 'RelatedArticleList/component.related-articles';
@@ -31,12 +35,7 @@
 @import 'Translation/component.translation-box';
 @import 'Search/component.search';
 @import 'Subject/component.subject';
-@import 'InfoBox/component.info-box';
 @import 'CompetenceGoals/component.competence-goals';
-@import 'ContentCard/component.content-card';
-@import 'InfoWidget/component.info-widget';
 @import 'Carousel/component.carousel';
-@import 'FileList/component.file-list';
 @import 'SectionHeading/component.section-heading';
-@import 'AuthorInfo/component.author-info';
 @import 'NDLAFilm/component.film-movielist';

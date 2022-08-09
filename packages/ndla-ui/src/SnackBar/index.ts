@@ -6,8 +6,6 @@
  *
  */
 
-import SnackBar from './SnackBar';
-
-export type { SnackBarItem } from './SnackBar';
-
-export { SnackBar };
+export type { Snack, SnackContext } from './SnackbarProvider';
+export { SnackbarProvider, useSnack, BaseSnack } from './SnackbarProvider';
+export { default as DefaultSnackbar } from './DefaultSnackbar';

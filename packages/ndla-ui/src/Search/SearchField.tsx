@@ -6,27 +6,30 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
-import { Search as SearchIcon } from '@ndla/icons/common';
-import { css } from '@emotion/core';
-import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
+import React, { FocusEvent, MouseEvent, RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
+import BEMHelper from 'react-bem-helper';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { Search as SearchIcon } from '@ndla/icons/common';
+import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';
 
 import ActiveFilters from './ActiveFilters';
 import LoadingWrapper from './LoadingWrapper';
 
-import { ContentTypeResultShape } from '../shapes';
-
 const classes = new BEMHelper('c-search-field');
 
-const inputStyle = (frontPageSearch) => css`
+interface StyledInputProps {
+  frontPageSearch?: boolean;
+  hasFilters?: boolean;
+}
+
+const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   height: 48px;
   line-height: 28px;
   border: 1px solid ${colors.brand.greyLight};
-  border-radius: ${frontPageSearch ? '100px' : misc.borderRadius};
+  border-radius: ${(p) => (p.frontPageSearch ? '100px' : misc.borderRadius)};
   padding-right: ${spacing.large};
   padding-left: ${spacing.normal};
   flex-grow: 1;
@@ -41,61 +44,71 @@ const inputStyle = (frontPageSearch) => css`
     line-height: 58px;
     ${fonts.sizes('18px', '24px')};
   }
+
+  ${(p) =>
+    p.hasFilters &&
+    css`
+      ${mq.range({ from: breakpoints.desktop })} {
+        padding-left: ${spacing.normal};
+      }
+      padding-left: 0;
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &:focus {
+        border: 1px solid ${colors.brand.primary};
+        border-left: 0;
+
+        & + .c-search-field__filters {
+          border: 1px solid ${colors.brand.primary};
+          border-right: 0;
+        }
+      }
+    `};
 `;
 
-const filterStyle = css`
-  ${mq.range({ from: breakpoints.desktop })} {
-    padding-left: ${spacing.normal};
-  }
-  padding-left: 0;
-  border-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-
-  &:focus {
-    border: 1px solid ${colors.brand.primary};
-    border-left: 0;
-
-    & + .c-search-field__filters {
-      border: 1px solid ${colors.brand.primary};
-      border-right: 0;
-    }
-  }
-`;
+interface Props {
+  value: string;
+  placeholder: string;
+  onChange: (value: string) => void;
+  filters?: { value: string; title: string }[];
+  onFilterRemove?: (value: string, filterName?: string) => void;
+  onFocus?: (event?: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
+  onClick?: (event: MouseEvent<HTMLInputElement>) => void;
+  loading?: boolean;
+  inputRef?: RefObject<HTMLInputElement>;
+  frontPageSearch?: boolean;
+}
 
 const SearchField = ({
   placeholder,
   value,
   onChange,
   filters,
-  small,
   onClick,
-  onFocus = () => {},
-  onBlur = () => {},
+  onFocus,
+  onBlur,
   loading,
   onFilterRemove,
   inputRef,
   frontPageSearch = false,
-}) => {
+}: Props) => {
   const { t } = useTranslation();
-  const handleOnFilterRemove = (value, filterName) => {
-    onFilterRemove(value, filterName);
-    if (inputRef) {
-      inputRef.current.focus();
-    }
-    onFocus();
+  const handleOnFilterRemove = (value: string, filterName?: string) => {
+    onFilterRemove?.(value, filterName);
+    inputRef?.current?.focus();
+    onFocus?.();
   };
-  const hasFilters = filters && filters.length > 0;
   return (
     <div {...classes('input-wrapper')}>
       {loading && <LoadingWrapper value={value} />}
-      <input
+      <StyledInput
+        frontPageSearch={frontPageSearch}
+        hasFilters={!!filters?.length}
         ref={inputRef}
         type="search"
-        css={css`
-          ${inputStyle(frontPageSearch)};
-          ${hasFilters && filterStyle};
-        `}
         aria-autocomplete="list"
         autoComplete="off"
         id="search"
@@ -108,7 +121,7 @@ const SearchField = ({
         onFocus={onFocus}
         onClick={onClick}
       />
-      {hasFilters && (
+      {filters && filters.length > 0 && (
         <div {...classes('filters')}>
           <ActiveFilters filters={filters} onFilterRemove={handleOnFilterRemove} />
         </div>
@@ -119,41 +132,18 @@ const SearchField = ({
           type="button"
           onClick={() => {
             onChange('');
-            onFocus();
-            if (inputRef) {
-              inputRef.current.focus();
-            }
+            onFocus?.();
+            inputRef?.current?.focus();
           }}
           onBlur={onBlur}>
           {t('welcomePage.resetSearch')}
         </button>
       )}
-      <button tabIndex="-1" {...classes('button', 'searchIcon')} type="submit" value="Search">
+      <button tabIndex={-1} {...classes('button', 'searchIcon')} type="submit" value="Search">
         <SearchIcon />
       </button>
     </div>
   );
-};
-
-SearchField.propTypes = {
-  value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  filters: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ),
-  searchResult: PropTypes.arrayOf(ContentTypeResultShape),
-  allResultUrl: PropTypes.string,
-  onFilterRemove: PropTypes.func,
-  small: PropTypes.bool,
-  onNavigate: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  onClick: PropTypes.func,
-  loading: PropTypes.bool,
 };
 
 export default SearchField;

@@ -171,6 +171,7 @@ const messages = {
     contextModal: {
       button: '+ {{count}} more contexts',
       heading: 'The resource is used in several contexts',
+      ariaLabel: 'View more contexts',
     },
   },
 
@@ -217,6 +218,7 @@ const messages = {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
     topic: 'TOPIC',
     topics: 'Topics',
+    imageModal: 'View full size image',
   },
   welcomePage: {
     search: 'Search',
@@ -274,6 +276,7 @@ const messages = {
       search: 'Search',
       toFrontpage: 'To frontpage',
       subjectOverview: 'All subjects',
+      modalLabel: 'Choose content',
       backToSubjectFrontpage: 'Back to subject frontpage',
       title: 'Content',
       subjectPage: 'Subject front page',
@@ -394,6 +397,7 @@ const messages = {
   competenceGoals: {
     competenceGoal: 'competence-goal',
     title: 'Competence goals and curriculum ',
+    modalText: 'Explore curriculum links',
     closeCompetenceGoals: 'Close competence goals',
     showCompetenceGoals: 'Show competence goals',
     openCompentenceGoalsFilter: 'Filter competence goals',
@@ -417,6 +421,8 @@ const messages = {
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },
+    licenseData: 'Containing data under',
+    licenseFrom: 'published at',
   },
   subject: {
     associatedTopics: 'Associated topics',
@@ -962,6 +968,8 @@ const messages = {
       collectedInfo: 'We have collected the following information about you from Feide:',
       general: 'Resources that require logging in with Feide, are tagged with the icon',
       topic: 'Log in with Feide to access this topic.',
+      isAuth: 'User info',
+      isNotAuth: 'Log in with Feide',
     },
     resource: {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
@@ -996,6 +1004,7 @@ const messages = {
       delete: 'Delete',
       edit: 'Edit',
       missingName: 'Folder name required',
+      folderDeleted: '"{{folderName}}" deleted',
     },
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
@@ -1016,6 +1025,8 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Short view',
     myPage: {
+      confirmDeleteAccount: 'Are you sure you want to delete your account?',
+      confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
@@ -1056,8 +1067,14 @@ const messages = {
       removeTitle: 'Remove resource',
       confirmRemove: 'Are you sure you want to remove the resource from this folder?',
       copyLink: 'Copy link to this page',
+      linkCopied: 'Copied to clipboard',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
+      addedToFolder: 'Resource added to "{{folderName}}"',
+      removedFromFolder: 'Removed from "{{folderName}}"',
+      titleUpdated: 'Title updated',
+      tagsUpdated: 'Tags updated',
+      show: 'Show',
     },
   },
   snackbar: {

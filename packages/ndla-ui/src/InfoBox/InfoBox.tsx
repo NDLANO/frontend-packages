@@ -1,11 +1,31 @@
+import styled from '@emotion/styled';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core/src';
 import React, { ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
-
-const classes = BEMHelper('c-info-box');
 
 interface Props {
   children?: ReactNode;
 }
-const InfoBox = ({ children }: Props) => <div {...classes()}>{children}</div>;
+
+const StyledInfoBox = styled.div`
+  background: ${colors.support.yellowLight};
+  padding: ${spacing.small} ${spacing.normal};
+  font-family: ${fonts.sans};
+  ${fonts.sizes('14px', '18px')};
+  margin-bottom: ${spacing.medium};
+  ${mq.range({ from: breakpoints.tablet })} {
+    ${fonts.sizes('16px', '20px')};
+    padding: ${spacing.normal};
+  }
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const InfoBox = ({ children }: Props) => <StyledInfoBox>{children}</StyledInfoBox>;
 
 export default InfoBox;

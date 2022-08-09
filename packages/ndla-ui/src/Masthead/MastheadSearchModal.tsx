@@ -117,6 +117,7 @@ const MastheadSearchModal = ({
   t,
 }: Props & WithTranslation) => (
   <Modal
+    label={t('searchPage.searchFieldPlaceholder')}
     backgroundColor="grey"
     animation="slide-down"
     animationDuration={200}

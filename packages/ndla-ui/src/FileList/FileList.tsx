@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import React from 'react';
+import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import File from './File';
 
@@ -24,7 +24,7 @@ interface Props {
 const FileListSection = styled.section`
   margin: ${spacing.large} 0;
   padding: ${spacing.small} 0 ${spacing.normal} ${spacing.normal};
-  border-left: 2px solid ${colors.brand.lightest};
+  border-left: 2px solid ${colors.brand.greyLightest};
   font-family: ${fonts.sans};
 
   .c-icon {

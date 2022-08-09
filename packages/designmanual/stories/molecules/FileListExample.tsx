@@ -1,3 +1,4 @@
+import React from 'react';
 import { initTooltips } from '@ndla/tooltip';
 import { FileList } from '@ndla/ui';
 import { Component } from 'react';

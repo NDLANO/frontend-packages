@@ -8,21 +8,6 @@
 
 export { FilterList, FilterListPhone, FilterButtons } from './Filter';
 
-export {
-  SearchOverlay,
-  SearchField,
-  SearchPage,
-  SearchResult,
-  SearchResultAuthor,
-  SearchResultList,
-  SearchResultItem,
-  SearchFilter,
-  SearchFilterList,
-  SearchPopoverFilter,
-  ActiveFilters,
-  ToggleSearchButton,
-} from './Search';
-
 export { default as TopicIntroductionList } from './TopicIntroductionList';
 export { default as TopicMenu, TopicMenuButton } from './TopicMenu';
 export {

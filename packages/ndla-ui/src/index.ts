@@ -245,3 +245,5 @@ export type { Snack, SnackContext } from './SnackBar';
 export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
 export type { FolderType, TreeStructureProps, TreeStructureMenuProps } from './TreeStructure';
+
+export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';

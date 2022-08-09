@@ -16,7 +16,7 @@ import { FileDocumentOutline } from '@ndla/icons/common';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
-import { DragHorizontal } from '@ndla/icons/editor';
+import { DragVertical } from '@ndla/icons/editor';
 import { colors, spacing, fonts } from '@ndla/core';
 import { Folder, ListResource, BlockResource } from '@ndla/ui';
 import { AddButton } from '@ndla/button'; //@ts-ignore
@@ -122,6 +122,11 @@ const StyledLi = styled.li`
   }
 `;
 
+const IconWrapper = styled.div`
+  position: absolute;
+  left: 0;
+`;
+
 const StyledIconButton = styled(Button)`
   padding: 10px;
   svg {
@@ -178,7 +183,9 @@ export const ResourceView = ({ folders, resources }: ViewProps) => {
     const dnd = props.dnd;
     return (
       <StyledLi style={{ ...dnd.item.styles, ...dnd.handler.styles }} className={dnd.item.classes} ref={dnd.item.ref}>
-        <DragHorizontal {...dnd.handler.listeners} />
+        <IconWrapper {...dnd.handler.listeners}>
+          <DragVertical />
+        </IconWrapper>
         {props.item}
       </StyledLi>
     );

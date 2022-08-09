@@ -145,7 +145,7 @@ const StyledSubjects = styled.div`
       content: '';
       width: 1px;
       height: 15px;
-      background: ${colors.brand.light};
+      background: ${colors.brand.greyLight};
       display: block;
       position: absolute;
       right: 0;

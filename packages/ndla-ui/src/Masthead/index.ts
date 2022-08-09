@@ -9,7 +9,8 @@
 import Masthead, { MastheadItem } from './Masthead';
 
 import { getMastheadHeight, useMastheadHeight } from './utils';
+import { default as SkipToMainContent } from './SkipToMainContent';
 
-export { MastheadItem, getMastheadHeight, useMastheadHeight };
+export { MastheadItem, getMastheadHeight, useMastheadHeight, SkipToMainContent };
 
 export default Masthead;

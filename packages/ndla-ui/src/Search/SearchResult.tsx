@@ -6,7 +6,7 @@ import Tooltip from '@ndla/tooltip';
 import SafeLink from '@ndla/safelink';
 import { Spinner } from '@ndla/icons';
 import styled from '@emotion/styled';
-import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from '@ndla/core/src';
+import { fonts, mq, spacing, breakpoints, colors, spacingUnit } from '@ndla/core';
 
 interface ItemType {
   id: string | number;
@@ -239,7 +239,7 @@ export const SearchResultItem = ({
         <Breadcrumb>
           {breadcrumbs.map((breadcrumbItem, index) => {
             let icon = null;
-            if (index !== item.breadcrumb!.length - 1) {
+            if (index !== (item.breadcrumb?.length || 0) - 1) {
               icon = <ChevronRight />;
             }
             return (

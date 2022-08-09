@@ -186,7 +186,7 @@ const StyledSearchResultItem = styled.li`
 
   h1 {
     font-weight: 600;
-    ${fonts.sizes('16px', '20px')}
+    ${fonts.sizes('16px', '20px')};
 
     ${mq.range({ from: breakpoints.desktop })} {
       ${fonts.sizes('22px', '28px')};

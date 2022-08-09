@@ -7,15 +7,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
 import SafeLink from '@ndla/safelink';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Portrait from '../Portrait';
-
-const classes = new BEMHelper({
-  name: 'author-info',
-  prefix: 'c-',
-});
 
 interface Props {
   authorName: string;
@@ -25,24 +20,63 @@ interface Props {
   image?: string;
 }
 
+const AuthorInfoSection = styled.section`
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: ${spacing.large};
+  font-family: ${fonts.sans};
+  p,
+  a {
+    margin: 0;
+    ${mq.range({ until: breakpoints.tablet })} {
+      ${fonts.sizes('14px', '22px')};
+    }
+  }
+`;
+
+const StyledPortrait = styled(Portrait)`
+  margin-right: ${spacing.large};
+  ${mq.range({ until: breakpoints.desktop })} {
+    margin-right: ${spacing.medium};
+    width: 7rem;
+    height: 7rem;
+    span {
+      width: 7rem;
+      height: 7rem;
+    }
+  }
+  ${mq.range({ until: breakpoints.desktop })} {
+    margin-right: ${spacing.small};
+    width: 4rem;
+    height: 4rem;
+    span {
+      width: 4rem;
+      height: 4rem;
+    }
+  } ;
+`;
+
+const StyledHeading = styled.h1`
+  margin: 0 0 ${spacing.small};
+  ${mq.range({ until: breakpoints.desktop })} {
+    ${fonts.sizes('22px', '22px')};
+  }
+  ${mq.range({ until: breakpoints.tablet })} {
+    ${fonts.sizes('18px', '18px')};
+    margin-bottom: ${spacing.xsmall};
+  }
+`;
+
 const AuthorInfo = ({ authorName, authorRole, email, image, phone }: Props) => (
-  <section {...classes('')}>
-    {image && <Portrait src={image} alt={authorName} modifier="large" {...classes('portrait-image')} />}
+  <AuthorInfoSection>
+    {image && <StyledPortrait src={image} alt={authorName} modifier="large" />}
     <div>
-      <h1 {...classes('heading')}>{authorName}</h1>
+      <StyledHeading>{authorName}</StyledHeading>
       <p>{authorRole}</p>
       {phone && <p>{phone}</p>}
       {email && <SafeLink to={`mailto:${email}`}>{email}</SafeLink>}
     </div>
-  </section>
+  </AuthorInfoSection>
 );
-
-AuthorInfo.propTypes = {
-  authorName: PropTypes.string.isRequired,
-  authorRole: PropTypes.string.isRequired,
-  phone: PropTypes.string,
-  email: PropTypes.string,
-  image: PropTypes.string,
-};
 
 export default AuthorInfo;

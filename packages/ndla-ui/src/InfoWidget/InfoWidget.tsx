@@ -1,13 +1,67 @@
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import React, { ReactNode } from 'react';
-import BEMHelper from 'react-bem-helper';
 import { Forward } from '@ndla/icons/common';
-
 import SafeLink from '@ndla/safelink';
+import { colors, fonts, spacing } from '@ndla/core';
 
 import SectionHeading from '../SectionHeading';
 
-const classes = BEMHelper('c-info-widget');
+interface InfoWidgetSectionProps {
+  center?: boolean;
+}
+const InfoWidgetSection = styled.section<InfoWidgetSectionProps>`
+  max-width: 600px;
+  margin: ${(p) => p.center && '0 auto'};
+`;
 
+const InfoWidgetDescription = styled.div`
+  padding: ${spacing.normal};
+  background: ${colors.brand.lighter};
+  color: ${colors.brand.dark};
+  ${fonts.sizes('18px', '26px')};
+
+  p {
+    margin-top: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+const InfoWidgetLinksContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+const iconLinkStyle = css`
+  width: 47px;
+  height: 47px;
+  border-radius: 100%;
+  background: ${colors.brand.lighter};
+  color: ${colors.brand.dark};
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: ${spacing.small};
+
+  .c-icon {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+const IconSafeLink = styled(SafeLink)(iconLinkStyle);
+
+const IconAnchor = styled.a(iconLinkStyle);
+const IconSpan = styled.span(iconLinkStyle);
+
+const StyledMainLink = styled.a`
+  color: ${colors.brand.dark};
+  ${fonts.sizes('16px', '24px')};
+`;
 interface Props {
   heading: string;
   description: string;
@@ -26,36 +80,33 @@ interface Props {
 }
 
 const InfoWidget = ({ heading, description, mainLink, iconLinks, center = false }: Props) => (
-  <section {...classes('', { center })}>
-    <SectionHeading large className={classes('heading').className}>
-      {heading}
-    </SectionHeading>
-    <div {...classes('description')}>
+  <InfoWidgetSection center={center}>
+    <SectionHeading large>{heading}</SectionHeading>
+    <InfoWidgetDescription>
       <p>{description}</p>
-    </div>
-    <div {...classes('links')}>
-      {iconLinks &&
-        iconLinks.map((link) => {
-          if (link.url) {
-            return (
-              <SafeLink key={link.url} {...classes('icon-link')} to={link.url} aria-label={link.name}>
-                {link.icon}
-              </SafeLink>
-            );
-          }
-          if (link.href) {
-            return (
-              <a key={link.href} href={link.href} {...classes('icon-link')} aria-label={link.name}>
-                {link.icon}
-              </a>
-            );
-          }
+    </InfoWidgetDescription>
+    <InfoWidgetLinksContainer>
+      {iconLinks?.map((link) => {
+        if (link.url) {
           return (
-            <span key={link.name} {...classes('icon-link')} aria-label={link.name}>
+            <IconSafeLink key={link.url} to={link.url} aria-label={link.name}>
               {link.icon}
-            </span>
+            </IconSafeLink>
           );
-        })}
+        }
+        if (link.href) {
+          return (
+            <IconAnchor key={link.href} href={link.href} aria-label={link.name}>
+              {link.icon}
+            </IconAnchor>
+          );
+        }
+        return (
+          <IconSpan key={link.name} aria-label={link.name}>
+            {link.icon}
+          </IconSpan>
+        );
+      })}
       {mainLink.url ? (
         <div className="o-text-link__wrapper o-text-link__wrapper--right">
           <SafeLink className="o-text-link" to={mainLink.url}>
@@ -63,12 +114,10 @@ const InfoWidget = ({ heading, description, mainLink, iconLinks, center = false 
           </SafeLink>
         </div>
       ) : (
-        <a {...classes('main-link')} href={mainLink.href}>
-          {mainLink.name}
-        </a>
+        <StyledMainLink href={mainLink.href}>{mainLink.name}</StyledMainLink>
       )}
-    </div>
-  </section>
+    </InfoWidgetLinksContainer>
+  </InfoWidgetSection>
 );
 
 export default InfoWidget;

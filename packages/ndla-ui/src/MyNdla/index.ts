@@ -1,3 +1,4 @@
 import Folder from './Resource/Folder';
 import FolderInput from './Resource/FolderInput';
-export { Folder, FolderInput };
+import GroupElement from './GroupElement';
+export { Folder, FolderInput, GroupElement };

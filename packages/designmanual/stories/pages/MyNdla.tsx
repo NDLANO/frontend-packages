@@ -8,7 +8,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { ListResource, BlockResource, Folder } from '@ndla/ui';
+import { ListResource, BlockResource, Folder, GroupElement } from '@ndla/ui';
 import { MenuItemProps } from '@ndla/button';
 import { FolderInput } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
@@ -145,6 +145,24 @@ export const MyNdla = () => {
                 alt: 'alt',
               }}
               link={''}
+            />
+            <h3>Gruppe-element</h3>
+            <GroupElement
+              courseTitle="Naturfag"
+              link="www.google.com"
+              courseIllustration={{
+                backgroundImage: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg?width=2080',
+              }}
+            />
+            <h3>Fag-element</h3>
+            <GroupElement
+              courseTitle="Naturfag"
+              link="www.google.com"
+              favouritable={true}
+              courseIllustration={{
+                backgroundImage:
+                  'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+              }}
             />
           </>
         }

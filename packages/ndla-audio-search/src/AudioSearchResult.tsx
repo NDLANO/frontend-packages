@@ -7,16 +7,27 @@
  */
 
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
 import { LicenseByline, getLicenseByAbbreviation } from '@ndla/licenses';
 import Button from '@ndla/button';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
+import { colors, spacing } from '@ndla/core';
 import AudioBar from './AudioBar';
 
-const classes = new BEMHelper({
-  name: 'audio-search',
-  prefix: 'c-',
-});
+const StyledListItem = styled.div`
+  &:not(:last-child) {
+    padding-bottom: 1em;
+    border-bottom: 1px solid ${colors.brand.lighter};
+  }
+`;
+
+const StyledHeading = styled.h2`
+  margin-top: 30px;
+`;
+
+const LicenseWrapper = styled.div`
+  margin-bottom: ${spacing.small};
+`;
 
 interface Props {
   audio: IAudioSummary;
@@ -30,17 +41,17 @@ interface Props {
 export default function AudioSearchResult({ audio, fetchAudio, onError, locale, translations, onAudioSelect }: Props) {
   const license = getLicenseByAbbreviation(audio.license, locale);
   return (
-    <div key={audio.id} {...classes('list-item')}>
-      <div {...classes('list-item-inner')}>
-        <h2>{audio.title?.title}</h2>
-        <div {...classes('license')}>
+    <StyledListItem key={audio.id}>
+      <div>
+        <StyledHeading>{audio.title?.title}</StyledHeading>
+        <LicenseWrapper>
           {license.rights ? <LicenseByline licenseRights={license.rights} locale={locale} /> : license}
-        </div>
+        </LicenseWrapper>
         <AudioBar audio={audio} fetchAudio={fetchAudio} onError={onError} />
       </div>
       <Button outline onClick={() => onAudioSelect(audio)}>
         {translations.useAudio}
       </Button>
-    </div>
+    </StyledListItem>
   );
 }

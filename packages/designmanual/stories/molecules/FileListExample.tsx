@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { initTooltips } from '@ndla/tooltip';
 import { FileList } from '@ndla/ui';
-import { Component } from 'react';
 
 class FileListExample extends Component {
   componentDidMount() {

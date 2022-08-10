@@ -234,7 +234,7 @@ export { Notion, ConceptNotion } from './Notion';
 export type { NotionVisualElementType, ConceptNotionType } from './Notion';
 
 export { BannerCard } from './BannerCard';
-export { Folder, FolderInput, GroupElement } from './MyNdla';
+export { Folder, FolderInput, CourseCard } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';

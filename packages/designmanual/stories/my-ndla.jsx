@@ -9,6 +9,7 @@ import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
 import MyNdlaMyPage from './pages/MyNdlaMyPage';
+import MyNdlaCourse from './molecules/MyNdlaPages/MyNdlaCourse';
 
 storiesOf('Min NDLA', module).add('Elementer', () => (
   <PageContainer>
@@ -48,6 +49,18 @@ storiesOf('Min NDLA', module).add('Min side', () => (
     <Content>
       <OneColumn cssModifier="clear-desktop" wide>
         <MyNdlaMyPage />
+      </OneColumn>
+    </Content>
+    <FooterExample />
+  </PageContainer>
+));
+
+storiesOf('Min NDLA', module).add('Mine fag', () => (
+  <PageContainer>
+    <MastheadWithTopicMenu />
+    <Content>
+      <OneColumn cssModifier="clear-desktop" wide>
+        <MyNdlaCourse />
       </OneColumn>
     </Content>
     <FooterExample />

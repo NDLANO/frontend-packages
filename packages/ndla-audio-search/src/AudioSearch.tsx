@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core/src';
+import { colors } from '@ndla/core';
 import { IAudioMetaInformation, IAudioSummary, IAudioSummarySearchResult } from '@ndla/types-audio-api';
 import Pager from '@ndla/pager';
 import AudioSearchForm from './AudioSearchForm';

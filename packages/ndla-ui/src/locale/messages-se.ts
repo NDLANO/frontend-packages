@@ -1021,7 +1021,7 @@ const messages = {
     more: 'Flere valg',
     listView: 'Listevisning',
     detailView: 'Detaljrik listevisning',
-    shortView: 'Kort visning',
+    shortView: 'Kortvisning',
     myPage: {
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
       confirmDeleteAccountButton: 'Slett konto',

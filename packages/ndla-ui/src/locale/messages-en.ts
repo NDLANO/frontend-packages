@@ -1023,7 +1023,7 @@ const messages = {
     more: 'More options',
     listView: 'List view',
     detailView: 'Detailed listview',
-    shortView: 'Short view',
+    shortView: 'Card view',
     myPage: {
       confirmDeleteAccount: 'Are you sure you want to delete your account?',
       confirmDeleteAccountButton: 'Delete account',

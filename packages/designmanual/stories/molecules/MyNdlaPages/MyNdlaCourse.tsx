@@ -44,7 +44,7 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: '',
           }}
           favorite={{
@@ -57,72 +57,59 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: '',
           }}
           favorite={{
             isFavorite: true,
             setFavorite: () => 0,
           }}
-        />{' '}
+        />
         <CourseCard
           courseTitle="Naturfag"
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: '',
           }}
           favorite={{
             isFavorite: true,
             setFavorite: () => 0,
           }}
-        />{' '}
+        />
         <CourseCard
           courseTitle="Naturfag"
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: '',
           }}
           favorite={{
             isFavorite: true,
             setFavorite: () => 0,
           }}
-        />{' '}
+        />
         <CourseCard
           courseTitle="Naturfag"
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: '',
           }}
           favorite={{
             isFavorite: true,
             setFavorite: () => 0,
           }}
-        />{' '}
+        />
         <CourseCard
           courseTitle="Naturfag"
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
-            alt: '',
-          }}
-          favorite={{
-            isFavorite: true,
-            setFavorite: () => 0,
-          }}
-        />{' '}
-        <CourseCard
-          courseTitle="Naturfag"
-          href="www.google.com"
-          favouritable={true}
-          image={{
-            src: 'https://thumbs.dreamstime.com/b/stick-man-icon-vector-isolated-white-background-stick-man-si-stick-man-icon-vector-isolated-white-background-stick-man-133799741.jpg',
+            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
             alt: '',
           }}
           favorite={{

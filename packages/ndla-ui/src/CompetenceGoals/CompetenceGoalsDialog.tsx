@@ -6,14 +6,12 @@
  *
  */
 
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { fonts } from '@ndla/core';
+import { breakpoints, fonts, mq } from '@ndla/core';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { FooterHeaderIcon } from '@ndla/icons/common';
 import styled from '@emotion/styled';
-import { classes } from './CompetenceGoals';
 
 const HeaderWrapper = styled.div`
   padding: 14px 20px 14px 0;
@@ -31,7 +29,35 @@ const HeadingWrapper = styled.h2`
   font-weight: ${fonts.weight.semibold};
 `;
 
-export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, modalProps }) => {
+interface Props {
+  children?: ReactNode;
+  modalProps?: ComponentProps<typeof Modal>;
+  isOpen?: boolean;
+  onClose?: () => void;
+  subjectName?: string;
+  curriculums?: {
+    id: string;
+    name: string;
+    goals?: {
+      id: string;
+      name: string;
+    }[];
+  }[];
+}
+
+const CompetenceGoalsWrapper = styled.div`
+  height: 100%;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px;
+
+  ${mq.range({ from: breakpoints.mobile })} {
+    padding: 0;
+  }
+`;
+
+export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, modalProps }: Props) => {
   const { t } = useTranslation();
   const iconId = 'popupCompetenceGoals';
 
@@ -47,7 +73,7 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
       backgroundColor="light-gradient"
       narrow>
       {(close) => (
-        <Fragment>
+        <>
           <ModalHeader modifier="menu">
             <HeaderWrapper>
               <HeadingWrapper>
@@ -58,30 +84,12 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
             </HeaderWrapper>
           </ModalHeader>
           <ModalBody>
-            <div {...classes()} className="c-competence-goals">
-              {children}
-            </div>
+            <CompetenceGoalsWrapper>{children}</CompetenceGoalsWrapper>
           </ModalBody>
-        </Fragment>
+        </>
       )}
     </Modal>
   );
-};
-
-CompetenceGoalsDialog.propTypes = {
-  curriculums: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      goals: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          name: PropTypes.string.isRequired,
-        }),
-      ),
-    }),
-  ),
-  subjectName: PropTypes.string,
 };
 
 export default CompetenceGoalsDialog;

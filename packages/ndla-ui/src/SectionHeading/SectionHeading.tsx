@@ -9,6 +9,7 @@ interface Props {
   large?: boolean;
   className?: string;
 }
+
 const SectionHeading = ({ children, large = false, className }: Props) => {
   const Wrapper: ElementType = large ? 'h1' : 'h2';
   return <Wrapper {...classes('', { large: !!large }, className)}>{children}</Wrapper>;

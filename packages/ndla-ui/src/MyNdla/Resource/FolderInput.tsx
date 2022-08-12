@@ -81,6 +81,7 @@ const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
       warningText={!input.trim() ? t('myNdla.folder.missingName') : undefined}
       ref={inputRef}
       value={input}
+      onBlur={() => onAddFolder(input)}
       onChange={handleInputChange}
       onKeyDown={onKeydown}
       aria-label={newFolderText}

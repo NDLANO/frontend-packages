@@ -94,7 +94,7 @@ const BlockImage = ({ image, loading }: BlockImageProps) => {
       </ContentLoader>
     );
   }
-  return <Image alt={image.alt} src={image.src} />;
+  return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
 };
 
 interface BlockTitleProps {

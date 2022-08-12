@@ -22,7 +22,7 @@ const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: ${({ firstLevel }) => (firstLevel ? `-${spacing.xsmall}` : spacing.normal)};
+  margin-left: ${({ firstLevel }) => (firstLevel ? `-${spacing.xsmall}` : spacing.small)};
 `;
 
 const StyledLI = styled.li`

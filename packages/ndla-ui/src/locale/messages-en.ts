@@ -1050,7 +1050,7 @@ const messages = {
 
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
-        text: 'When you wish to save a resource, you can do so by clicking the heart in the top left corner of the page. You will then get an option to store the resource in a folder',
+        text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',

@@ -1048,7 +1048,7 @@ const messages = {
       feide: 'Dette henter vi om deg fra Feide',
       storageInfo: {
         title: 'Slik lagrer du dine favorittressurser fra NDLA',
-        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til venstre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
+        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjerteknappen der den er tilgjengeleg. Du vil da få mulighet til å lagre ressursen i en mappe.',
       },
       folderInfo: {
         title: 'Slik organiserer du dine favorittressurser i mapper',

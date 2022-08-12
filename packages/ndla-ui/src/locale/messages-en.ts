@@ -1070,7 +1070,7 @@ const messages = {
       linkCopied: 'Copied to clipboard',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
-      addedToFolder: 'Resource added to "{{folderName}}"',
+      addedToFolder: 'Resource added to ',
       removedFromFolder: 'Removed from "{{folderName}}"',
       titleUpdated: 'Title updated',
       tagsUpdated: 'Tags updated',

@@ -441,8 +441,9 @@ const messages = {
       h5p: 'H5P',
       files: 'Files',
       embedlink: 'Embedded link',
-      other: 'Other content',
       concept: 'Concepts',
+      podcast: 'Podcast',
+      other: 'Other content',
     },
     embedlink: {
       heading: 'How to show the article in other content',
@@ -477,6 +478,11 @@ const messages = {
       heading: 'How to reuse audio files',
       description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
+    },
+    podcast: {
+      heading: 'How to reuse podcasts',
+      description: 'Remember to copy the text to be attached to the podcast where you use it.',
+      rules: 'Rules for use of podcast:',
     },
     video: {
       heading: 'How to reuse videos',

@@ -455,6 +455,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',
+      podcast: 'Podkast',
       other: 'Annet innhold',
     },
     embedlink: {
@@ -490,6 +491,11 @@ const messages = {
       heading: 'Slik gjenbruker du lydfiler',
       description: 'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
       rules: 'Regler for bruk av lydfilen:',
+    },
+    podcast: {
+      heading: 'Slik gjenbruker du podkaster',
+      description: 'Husk å kopiere teksten som skal legges ved podkasten der du bruker den.',
+      rules: 'Regler for bruk av podkasten:',
     },
     video: {
       heading: 'Slik gjenbruker du videoer',

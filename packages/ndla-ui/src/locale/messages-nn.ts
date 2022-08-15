@@ -455,8 +455,9 @@ const messages = {
       h5p: 'H5P',
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
-      other: 'Anna innhald',
       concept: 'Forklaringar',
+      podcast: 'Podkast',
+      other: 'Anna innhald',
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i anna innhald',
@@ -491,6 +492,11 @@ const messages = {
       heading: 'Slik gjenbruker du lydfiler',
       description: 'Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.',
       rules: 'Reglar for bruk av lydfila:',
+    },
+    podcast: {
+      heading: 'Slik gjenbruker du podkaster',
+      description: 'Hugs å kopiera teksten som skal leggjast ved podksten der du bruker ho.',
+      rules: 'Reglar for bruk av podkasten:',
     },
     video: {
       heading: 'Slik gjenbruker du videoar',

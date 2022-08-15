@@ -16,7 +16,7 @@ import { isMobile } from 'react-device-detect';
 import { Spinner } from '@ndla/icons';
 import { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-import { Check } from '@ndla/icons/editor';
+import { Done } from '@ndla/icons/editor';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};
@@ -40,6 +40,7 @@ const Row = styled.div`
 
 const InputWrapper = styled.div<{ loading?: boolean }>`
   display: flex;
+  margin: ${spacing.xxsmall} 0;
   align-items: center;
   border: 1px solid ${({ loading }) => (loading ? colors.brand.lighter : colors.brand.primary)};
   border-style: dashed;
@@ -106,7 +107,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
                 <Cross />
               </IconButton>
               <IconButton aria-label={t('save')} size="small" ghostPill onClick={() => onSaveNewFolder(name, parentId)}>
-                <Check />
+                <Done />
               </IconButton>
             </>
           ) : (

@@ -14,6 +14,9 @@ import { spacing, colors, misc, animations } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
 import { Spinner } from '@ndla/icons';
+import { IconButton } from '@ndla/button';
+import { Cross } from '@ndla/icons/action';
+import { Done } from '@ndla/icons/editor';
 
 const ArrowRight = styled(ArrowDropDownRaw)`
   color: ${colors.text.primary};
@@ -29,15 +32,19 @@ const NewFolderWrapper = styled.div`
   }
 `;
 
-const InputWrapper = styled.div<{ loading?: boolean }>`
-  margin: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} 0;
+const Row = styled.div`
   display: flex;
+  gap: ${spacing.xxsmall};
+  padding-right: ${spacing.xsmall};
+`;
+
+const InputWrapper = styled.div<{ loading?: boolean }>`
+  display: flex;
+  margin: ${spacing.xxsmall} 0;
   align-items: center;
   border: 1px solid ${({ loading }) => (loading ? colors.brand.lighter : colors.brand.primary)};
   border-style: dashed;
   border-radius: ${misc.borderRadius};
-  padding-right: ${spacing.normal};
-  padding-left: ${spacing.xsmall};
   color: ${colors.brand.primary};
 `;
 
@@ -45,8 +52,7 @@ const StyledInput = styled.input`
   flex-grow: 1;
   border: 0;
   outline: none;
-  padding: ${spacing.small};
-  padding-left: ${spacing.xsmall};
+  min-width: 0;
   background: transparent;
   color: ${colors.text.primary};
   scroll-margin-top: 100px;
@@ -74,15 +80,16 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
   return (
     <NewFolderWrapper>
       <InputWrapper loading={loading}>
-        <ArrowRight />
-        <FolderOutlined />
+        <Row>
+          <ArrowRight />
+          <FolderOutlined />
+        </Row>
         <StyledInput
           ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
           disabled={loading}
           value={name}
-          onBlur={() => onCancelNewFolder()}
           onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               onCancelNewFolder();
@@ -93,7 +100,24 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
           }}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         />
-        {loading && <Spinner size="small" />}
+        <Row>
+          {!loading ? (
+            <>
+              <IconButton aria-label={t('close')} size="xsmall" ghostPill onClick={onCancelNewFolder}>
+                <Cross />
+              </IconButton>
+              <IconButton
+                aria-label={t('save')}
+                size="xsmall"
+                ghostPill
+                onClick={() => onSaveNewFolder(name, parentId)}>
+                <Done />
+              </IconButton>
+            </>
+          ) : (
+            <Spinner size="small" margin="0" />
+          )}
+        </Row>
       </InputWrapper>
     </NewFolderWrapper>
   );

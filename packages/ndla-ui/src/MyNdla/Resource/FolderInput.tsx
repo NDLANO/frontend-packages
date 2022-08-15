@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
 import { Input } from '@ndla/forms';
 import { css } from '@emotion/core';
+import { Done } from '@ndla/icons/editor';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -40,12 +41,21 @@ const inputWrapperStyle = css`
 
 const StyledInput = styled(Input)`
   && {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
     line-height: 1.75em;
     color: ${colors.brand.primary};
     ::selection {
       background: ${colors.brand.lighter};
     }
   }
+`;
+
+const Row = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+  padding-right: ${spacing.small};
 `;
 
 interface Props {
@@ -90,9 +100,14 @@ const FolderInput = ({ onAddFolder, onClose, autoSelect }: Props) => {
         </StyledFolderIcon>
       }
       iconRight={
-        <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
-          <Cross />
-        </IconButton>
+        <Row>
+          <IconButton aria-label={t('close')} size="small" ghostPill onClick={onClose}>
+            <Cross />
+          </IconButton>
+          <IconButton aria-label={t('save')} size="small" ghostPill onClick={() => onAddFolder(input)}>
+            <Done />
+          </IconButton>
+        </Row>
       }
     />
   );

@@ -25,8 +25,8 @@ export const ArticleFavoritesButton = ({ isFavorite, onToggleAddToFavorites, art
   return (
     <Tooltip tooltip={isFavorite ? addToFavoritesLabel : removeFromFavoritesLabel}>
       <IconButtonDualStates
-        ariaLabelActive={t('myNdla.addToFavourites')}
-        ariaLabelInActive={t('myNdla.alreadyFavourited')}
+        ariaLabelActive={t('myNdla.alreadyFavourited')}
+        ariaLabelInActive={t('myNdla.addToFavourites')}
         activeIcon={<Heart />}
         inactiveIcon={<HeartOutline />}
         active={isFavorite}

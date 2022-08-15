@@ -1041,8 +1041,7 @@ const messages = {
         terms: 'Vilkår for bruk',
         term1: 'Ikke skriv personsensitiv informasjon eller persondata i tekstfelt.',
         term2: 'Ikke skriv noe støtende i tekstfelt.',
-        term3:
-          'NDLA forbeholder seg retten til å oppdatere eller slette utdaterte ressurser.',
+        term3: 'NDLA forbeholder seg retten til å oppdatere eller slette utdaterte ressurser.',
       },
       newFavourite: 'Nylig lagt til',
       feide: 'Dette henter vi om deg fra Feide',

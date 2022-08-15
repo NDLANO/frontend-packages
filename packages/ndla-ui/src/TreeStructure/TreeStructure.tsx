@@ -114,6 +114,7 @@ const TreeStructure = ({
   };
 
   const onSaveNewFolder = (name: string, parentId: string) => {
+    setNewFolderParentId(undefined);
     onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
         setSelectedFolder(newFolder);

@@ -92,6 +92,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
           value={name}
           onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
+              e.preventDefault();
               onCancelNewFolder();
             } else if (e.key === 'Enter' || e.key === 'Tab') {
               e.preventDefault();

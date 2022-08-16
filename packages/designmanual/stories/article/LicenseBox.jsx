@@ -21,7 +21,7 @@ import {
   MediaListItemMeta,
 } from '@ndla/ui';
 import Button, { CopyButton } from '@ndla/button';
-import { FileDocumentOutline, AudioDocument } from '@ndla/icons/common';
+import { FileDocumentOutline, AudioDocument, Podcast } from '@ndla/icons/common';
 
 import { COPYRIGHTED, metaTypes } from '@ndla/licenses';
 
@@ -219,6 +219,65 @@ const AudioContent = ({ t }) => (
 );
 
 AudioContent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+const PodcastContent = ({ t }) => (
+  <div>
+    <div className="u-introduction">
+      <h2>{t('license.podcast.heading')}</h2>
+      <p>{t('license.podcast.description')}</p>
+    </div>
+    <MediaList>
+      {[
+        { id: 'audio-1', title: 'Søvn og hvile' },
+        { id: 'audio-2', title: 'Betydning og behov' },
+      ].map((el) => (
+        <MediaListItem key={el.id}>
+          <MediaListItemImage>
+            <Podcast className="c-medialist__icon" />
+          </MediaListItemImage>
+          <MediaListItemBody
+            license={bysaLicenseAbbreviation}
+            title={t('license.podcast.rules')}
+            resourceUrl=""
+            locale="nb"
+            resourceType="audio">
+            <MediaListItemActions>
+              <div className="c-medialist__ref">
+                <MediaListItemMeta
+                  items={[
+                    {
+                      label: 'Tittel',
+                      description: el.title,
+                      metaType: metaTypes.title,
+                    },
+                    {
+                      label: 'Opphaver',
+                      description: 'Fotograf Ola N',
+                      metaType: metaTypes.author,
+                    },
+                    {
+                      label: 'Rettighetshaver',
+                      description: 'Leverandør NTB scanpix',
+                      metaType: metaTypes.copyrightHolder,
+                    },
+                  ]}
+                />
+                <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+                  {t('license.copyTitle')}
+                </CopyButton>
+                <Button outline>{t('license.download')}</Button>
+              </div>
+            </MediaListItemActions>
+          </MediaListItemBody>
+        </MediaListItem>
+      ))}
+    </MediaList>
+  </div>
+);
+
+PodcastContent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
@@ -464,6 +523,7 @@ const LicenseBox = () => {
           { title: t('license.tabs.images'), content: <ImageContent t={t} /> },
           { title: t('license.tabs.video'), content: <VideoContent t={t} /> },
           { title: t('license.tabs.audio'), content: <AudioContent t={t} /> },
+          { title: t('license.tabs.podcast'), content: <PodcastContent t={t} /> },
           { title: t('license.tabs.files'), content: <Files t={t} /> },
           { title: t('license.tabs.embedlink'), content: <LinkContent t={t} /> },
           { title: t('license.tabs.other'), content: <OtherContent t={t} /> },

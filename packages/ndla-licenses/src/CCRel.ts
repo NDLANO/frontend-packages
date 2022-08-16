@@ -6,7 +6,7 @@
  *
  */
 
-export type ResourceTypes = 'video' | 'image' | 'audio' | 'text' | 'h5p';
+export type ResourceTypes = 'video' | 'image' | 'audio' | 'text' | 'h5p' | 'podcast';
 
 export const resourceTypes = {
   video: 'video',
@@ -14,6 +14,7 @@ export const resourceTypes = {
   audio: 'audio',
   text: 'text',
   h5p: 'h5p',
+  podcast: 'podcast',
 };
 
 export const getResourceTypeNamespace = (type: ResourceTypes | undefined | null) => {
@@ -23,6 +24,7 @@ export const getResourceTypeNamespace = (type: ResourceTypes | undefined | null)
     case resourceTypes.image:
       return 'http://purl.org/dc/dcmitype/Image';
     case resourceTypes.audio:
+    case resourceTypes.podcast:
       return 'http://purl.org/dc/dcmitype/Sound';
     case resourceTypes.text:
       return 'http://purl.org/dc/dcmitype/Text';

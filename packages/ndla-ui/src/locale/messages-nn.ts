@@ -495,7 +495,7 @@ const messages = {
     },
     podcast: {
       heading: 'Slik gjenbruker du podkaster',
-      description: 'Hugs å kopiera teksten som skal leggjast ved podksten der du bruker ho.',
+      description: 'Hugs å kopiera teksten som skal leggjast ved podkasten der du bruker ho.',
       rules: 'Reglar for bruk av podkasten:',
     },
     video: {

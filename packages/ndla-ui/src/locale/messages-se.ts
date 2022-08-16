@@ -1079,6 +1079,7 @@ const messages = {
       titleUpdated: 'Tittel oppdatert',
       tagsUpdated: 'Tags oppdatert',
       show: 'Vis',
+      save: 'Lagre ressurs',
     },
   },
   snackbar: {

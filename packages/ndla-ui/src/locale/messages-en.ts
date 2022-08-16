@@ -1081,6 +1081,7 @@ const messages = {
       titleUpdated: 'Title updated',
       tagsUpdated: 'Tags updated',
       show: 'Show',
+      save: 'Save resource',
     },
   },
   snackbar: {

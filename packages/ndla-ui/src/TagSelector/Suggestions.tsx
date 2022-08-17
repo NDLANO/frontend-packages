@@ -45,6 +45,16 @@ const Suggestions = styled.div<SuggestionsWrapperProps>`
   border-radius: ${misc.borderRadius};
   background: ${colors.white};
   ${animations.fadeIn(animations.durations.fast)}
+
+  ::-webkit-scrollbar {
+    width: ${spacing.small};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${colors.brand.greyLight};
+    border-radius: 10px;
+    border: solid ${spacing.xxsmall} white;
+  }
 `;
 
 const SuggestionList = styled.div`

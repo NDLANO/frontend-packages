@@ -230,7 +230,7 @@ const SuggestionInput = ({
                 return;
               }
               if (e.key === 'Enter' || e.key === 'Tab' || e.key === ' ') {
-                if (suggestions.length > 0) {
+                if (suggestions.length > 0 && e.key !== ' ') {
                   if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
                     onToggleTag(suggestions[currentHighlightedIndex].id);
                   } else if (trimmedValue.length < suggestions[currentHighlightedIndex].name.length) {

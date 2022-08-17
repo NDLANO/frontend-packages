@@ -63,8 +63,8 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
   justify-content: space-between;
   align-items: center;
   ${fonts.sizes(18)};
+  font-weight: ${fonts.weight.semibold};
   transition: ${misc.transition.default};
-  font-weight: 400;
 
   &:disabled {
     color: ${colors.brand.greyMedium};
@@ -126,7 +126,7 @@ const TagSuggestions = ({
                 onToggleTag(id);
               }}
               key={id}>
-              <span>{name}</span>
+              <span>{`# ${name}`}</span>
               {alreadyAdded && <CheckedIcon />}
             </SuggestionButton>
           );

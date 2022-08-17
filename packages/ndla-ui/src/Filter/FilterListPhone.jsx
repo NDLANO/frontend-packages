@@ -121,7 +121,6 @@ class FilterListPhone extends Component {
           )}
           <Modal
             size="fullscreen"
-            animation="slide-up"
             backgroundColor="grey"
             activateButton={
               <Button outline {...classes('modal-button')}>

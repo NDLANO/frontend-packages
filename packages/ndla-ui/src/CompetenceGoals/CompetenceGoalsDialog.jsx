@@ -43,7 +43,6 @@ export const CompetenceGoalsDialog = ({ children, isOpen, onClose, subjectName, 
       isOpen={isOpen}
       onClose={onClose}
       size="fullscreen"
-      animation="slide-up"
       backgroundColor="light-gradient"
       narrow>
       {(close) => (

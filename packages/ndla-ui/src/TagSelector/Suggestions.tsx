@@ -14,40 +14,34 @@ import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
 import Button from '@ndla/button';
 import type { TagType } from './TagSelector';
 
-const ABSOLUTE_DROPDOWN_MAXHEIGHT = '360px';
-
 const CheckedIcon = styled(Check)`
   width: ${spacing.normal};
   height: ${spacing.normal};
   fill: ${colors.brand.light};
 `;
 
-interface SuggestionsWrapperProps {
-  dropdownMaxHeight: string;
-  inline?: boolean;
-}
-
 const SuggestionsWrapper = styled.div`
   position: relative;
 `;
 
-const Suggestions = styled.div<SuggestionsWrapperProps>`
-  position: ${({ inline }) => (inline ? 'static' : 'absolute')};
-  z-index: 99999;
+const Suggestions = styled.div`
+  border-top: 1px solid ${colors.brand.neutral7};
   right: 0;
   left: 0;
-  box-shadow: ${shadows.levitate1};
-  margin: 0 ${spacing.small};
+  max-height: 200px;
   padding: ${spacing.small} 0;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  max-height: min(${({ dropdownMaxHeight }) => dropdownMaxHeight}, ${ABSOLUTE_DROPDOWN_MAXHEIGHT});
-  border-radius: ${misc.borderRadius};
   background: ${colors.white};
   ${animations.fadeIn(animations.durations.fast)}
 
   ::-webkit-scrollbar {
     width: ${spacing.small};
+  }
+
+  ::-webkit-scrollbar-track {
+    width: ${spacing.small};
+    margin-top: ${spacing.xsmall};
   }
 
   ::-webkit-scrollbar-thumb {
@@ -75,6 +69,7 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
   ${fonts.sizes(18)};
   font-weight: ${fonts.weight.semibold};
   transition: ${misc.transition.default};
+  border-radius: 0;
 
   &:disabled {
     color: ${colors.brand.greyMedium};
@@ -99,24 +94,15 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
 `;
 
 interface Props {
-  inline?: boolean;
-  dropdownMaxHeight: string;
   suggestions: TagType[];
   currentHighlightedIndex: number;
   onToggleTag: (id: string) => void;
   hasBeenAdded: (id: string) => boolean;
 }
 
-const TagSuggestions = ({
-  inline,
-  dropdownMaxHeight,
-  suggestions,
-  currentHighlightedIndex,
-  onToggleTag,
-  hasBeenAdded,
-}: Props) => (
+const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, hasBeenAdded }: Props) => (
   <SuggestionsWrapper>
-    <Suggestions inline={inline} dropdownMaxHeight={dropdownMaxHeight}>
+    <Suggestions>
       <SuggestionList role="listbox">
         {suggestions.map(({ id, name }, index: number) => {
           const alreadyAdded = hasBeenAdded(id);

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect, ReactNode, RefObject, ChangeEvent, KeyboardEvent } from 'react';
+import React, { useState, useRef, useEffect, ReactNode, RefObject, ChangeEvent, KeyboardEvent, useMemo } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
@@ -18,6 +18,14 @@ import Tooltip from '@ndla/tooltip';
 import { uuid } from '@ndla/util';
 import Suggestions from './Suggestions';
 import type { TagType } from './TagSelector';
+
+const TagSelectorWrapper = styled.div`
+  border: 1.5px solid ${colors.brand.neutral7};
+  border-radius: ${misc.borderRadius};
+  &:focus-within {
+    border-color: ${colors.brand.tertiary};
+  }
+`;
 
 const SuggestionTextWrapper = styled.div`
   ${fonts.sizes(18)};
@@ -56,10 +64,6 @@ const Cross = styled(CrossRaw)`
   margin-left: ${spacing.xxsmall};
 `;
 
-const SuggestionInputContainer = styled.div`
-  margin-bottom: ${spacing.large};
-`;
-
 const StyledInput = styled.input`
   flex-grow: 1;
   border: 0;
@@ -75,12 +79,7 @@ const StyledInputWrapper = styled.div`
   flex-wrap: wrap;
   gap: ${spacing.xsmall};
   padding: ${spacing.small};
-  border: 1px solid ${colors.brand.neutral7};
   transition: border-color ${animations.durations.normal} ease;
-  border-radius: ${misc.borderRadius};
-  &:focus-within {
-    border-color: ${colors.brand.primary};
-  }
 `;
 
 const CombinedInputAndDropdownWrapper = styled.div`
@@ -104,9 +103,7 @@ interface SuggestionInputProps {
   setInputValue: (value: string) => void;
   onCreateTag: (tagName: string) => void;
   addedTags: TagType[];
-  dropdownMaxHeight: string;
   prefix?: string | ReactNode;
-  inline?: boolean;
   scrollAnchorElement: RefObject<HTMLDivElement>;
 }
 
@@ -120,9 +117,7 @@ const SuggestionInput = ({
   addedTags,
   setExpanded,
   expanded,
-  dropdownMaxHeight,
   prefix,
-  inline,
   scrollAnchorElement,
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
@@ -130,7 +125,7 @@ const SuggestionInput = ({
   const [hasFocus, setHasFocus] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const suggestionIdRef = useRef<string>(uuid());
+  const suggestionIdRef = useMemo<string>(() => uuid(), []);
   const initalTags = useRef<string[]>(addedTags.map(({ id }) => id));
 
   useEffect(() => {
@@ -138,9 +133,7 @@ const SuggestionInput = ({
   }, [suggestions]);
 
   useEffect(() => {
-    const selectedSuggestionElement = document
-      .getElementById(suggestionIdRef.current)
-      ?.querySelector('[aria-selected="true"]');
+    const selectedSuggestionElement = document.getElementById(suggestionIdRef)?.querySelector('[aria-selected="true"]');
     if (selectedSuggestionElement) {
       // Do we need to scroll this into view?
       selectedSuggestionElement.scrollIntoView({
@@ -148,12 +141,12 @@ const SuggestionInput = ({
         block: 'nearest',
       });
     }
-  }, [currentHighlightedIndex]);
+  }, [currentHighlightedIndex, suggestionIdRef]);
 
   const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
 
   return (
-    <SuggestionInputContainer ref={containerRef}>
+    <TagSelectorWrapper ref={containerRef}>
       <StyledInputWrapper>
         {addedTags.map(({ id, name }) => (
           <StyledTagButton
@@ -258,7 +251,7 @@ const SuggestionInput = ({
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}
               size="small"
-              aria-controls={suggestionIdRef.current}
+              aria-controls={suggestionIdRef}
               onClick={() => {
                 setInputValue('');
                 setExpanded(!expanded);
@@ -268,11 +261,9 @@ const SuggestionInput = ({
           </Tooltip>
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
-      <div id={suggestionIdRef.current} aria-live="polite">
+      <div id={suggestionIdRef} aria-live="polite">
         {(hasFocus || expanded) && suggestions.length > 0 ? (
           <Suggestions
-            inline={inline}
-            dropdownMaxHeight={dropdownMaxHeight}
             suggestions={suggestions}
             currentHighlightedIndex={currentHighlightedIndex}
             onToggleTag={onToggleTag}
@@ -280,7 +271,7 @@ const SuggestionInput = ({
           />
         ) : null}
       </div>
-    </SuggestionInputContainer>
+    </TagSelectorWrapper>
   );
 };
 

@@ -8,11 +8,9 @@
 
 import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
-import { spacingUnit, fonts } from '@ndla/core';
+import { colors, fonts, misc } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import SuggestionInput from './SuggestionInput';
-
-const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
@@ -29,7 +27,6 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-  inline?: boolean;
   prefix?: string;
 }
 
@@ -50,39 +47,15 @@ const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
     .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 };
 
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline, prefix }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, prefix }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
-  const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputIdRef = useRef<string>(uuid());
 
   useEffect(() => {
     setExpanded(false);
   }, [tagsSelected]);
-
-  useEffect(() => {
-    const setMaxDropdownMaxHeight = () => {
-      if (!inline && containerRef.current && typeof window !== 'undefined') {
-        // Calculate distance from bottom of container to bottom of viewport
-        const containerBottom = containerRef.current.getBoundingClientRect().bottom;
-        const viewportBottom = document.documentElement.scrollHeight;
-        const maxDropdownHeight = viewportBottom - containerBottom;
-        setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
-      }
-    };
-    if (!inline && typeof window !== 'undefined') {
-      if (expanded) {
-        setMaxDropdownMaxHeight();
-        window.addEventListener('resize', setMaxDropdownMaxHeight);
-      } else {
-        window.removeEventListener('resize', setMaxDropdownMaxHeight);
-      }
-    }
-    return () => {
-      typeof window !== 'undefined' && window.removeEventListener('resize', setMaxDropdownMaxHeight);
-    };
-  }, [expanded, inline]);
 
   return (
     <div ref={containerRef}>
@@ -101,8 +74,6 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inli
         addedTags={sortedTags(tags, tagsSelected)}
         expanded={expanded}
         setExpanded={setExpanded}
-        dropdownMaxHeight={dropdownMaxHeight}
-        inline={inline}
         scrollAnchorElement={containerRef}
         prefix={prefix}
       />

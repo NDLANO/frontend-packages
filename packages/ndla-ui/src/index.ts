@@ -25,6 +25,10 @@ export {
   ArticleFavoritesButton,
 } from './Article';
 
+export { CompetenceGoalsDialog } from './CompetenceGoals';
+
+export { default as TopicIntroductionList } from './TopicIntroductionList';
+
 export { default as Table } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';

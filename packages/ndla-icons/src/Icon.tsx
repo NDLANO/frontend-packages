@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 
 export interface Props {
+  id?: string;
   color?: string;
   title?: string;
   description?: string;

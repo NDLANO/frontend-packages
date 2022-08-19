@@ -10,7 +10,6 @@ import React from 'react';
 import { breakpoints, fonts, mq, colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Launch } from '@ndla/icons/common';
-import { LicenseByline } from '@ndla/licenses';
 import { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import Image from '../Image';
@@ -81,12 +80,6 @@ const StyledImage = styled(Image)`
   }
 `;
 
-const LincenseWrapper = styled.div`
-  position: absolute;
-  top: 9px;
-  right: 0;
-`;
-
 interface ImageMeta {
   src: string;
   alt: string;
@@ -96,25 +89,13 @@ interface Props {
   image: ImageMeta;
   title: string;
   caption: string;
-  licenseRights: string[];
-  authors?: string[];
-  locale?: string;
   url: string;
 }
 
-export const ResourceBox = ({ image, title, caption, licenseRights, locale, authors, url }: Props) => {
+export const ResourceBox = ({ image, title, caption, url }: Props) => {
   const { t } = useTranslation();
   return (
     <ResourceBoxContainer>
-      <LincenseWrapper>
-        <LicenseByline licenseRights={licenseRights} locale={locale} marginRight color={colors.brand.tertiary}>
-          {authors && authors.length > 0 && (
-            <div className="c-figure__byline-author-buttons">
-              <span className="c-figure__byline-authors">{authors.join(' ')}</span>
-            </div>
-          )}
-        </LicenseByline>
-      </LincenseWrapper>
       <StyledImage src={image.src} alt={image.alt} />
       <ContentWrapper>
         <Title>{title}</Title>

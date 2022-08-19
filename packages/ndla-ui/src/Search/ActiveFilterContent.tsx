@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { spacing, mq, breakpoints, colors, misc, fonts } from '@ndla/core';
@@ -32,7 +31,17 @@ export const StyledActiveFilterTitle = styled('span')`
   padding-right: ${spacing.small};
 `;
 
-const ActiveFilterContent = ({ filter, onFilterRemove, ariaLabel }) => (
+interface Props {
+  filter: {
+    value: string;
+    title: string;
+    filterName?: string;
+  };
+  onFilterRemove: (value: string, filterName?: string) => void;
+  ariaLabel: string;
+}
+
+const ActiveFilterContent = ({ filter, onFilterRemove, ariaLabel }: Props) => (
   <StyledActiveFilter
     aria-label={ariaLabel}
     type="button"
@@ -41,15 +50,5 @@ const ActiveFilterContent = ({ filter, onFilterRemove, ariaLabel }) => (
     <Cross />
   </StyledActiveFilter>
 );
-
-ActiveFilterContent.propTypes = {
-  filter: PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    filterName: PropTypes.string,
-  }),
-  onFilterRemove: PropTypes.func.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
-};
 
 export default ActiveFilterContent;

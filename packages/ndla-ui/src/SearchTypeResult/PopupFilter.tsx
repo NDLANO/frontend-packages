@@ -12,7 +12,6 @@ import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import { ToggleItem } from '../Filter';
 
 import FrontpageAllSubjects, { subjectsProps } from '../Frontpage/FrontpageAllSubjects';
@@ -92,9 +91,11 @@ const PopupFilter = ({
 }: PopupFilterProps) => {
   const { t } = useTranslation();
   const [selectedMenu, setSelectedMenu] = useState(MENU_ALL_SUBJECTS);
+  const headingId = 'popupFilterHeading';
 
   return (
     <Modal
+      labelledBy={headingId}
       controllable
       backgroundColor="white"
       animation="subtle"
@@ -107,7 +108,7 @@ const PopupFilter = ({
           <ModalWrapper>
             <ModalContent>
               <ModalHeaderWrapper>
-                <ModalHeading>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
+                <ModalHeading id={headingId}>{t('searchPage.searchFilterMessages.filterLabel')}</ModalHeading>
                 <ModalCloseButton onClick={() => onClose()} title={t('searchPage.close')} />
               </ModalHeaderWrapper>
               {subjectCategories && programmes && (

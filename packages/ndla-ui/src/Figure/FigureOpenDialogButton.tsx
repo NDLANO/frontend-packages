@@ -8,8 +8,7 @@
 
 import React from 'react';
 import { Play } from '@ndla/icons/common';
-import { ExpandTwoArrows } from '@ndla/icons/action';
-import { CursorClick } from '@ndla/icons/action';
+import { ExpandTwoArrows, CursorClick } from '@ndla/icons/action';
 
 interface Props {
   type?: 'image' | 'video' | 'h5p' | 'iframe' | 'external';

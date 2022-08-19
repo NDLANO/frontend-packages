@@ -34,7 +34,6 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
   defaultOpenFolders?: string[];
   folders: FolderType[];
   editable?: boolean;
-  framed?: boolean;
   label?: string;
   maximumLevelsOfFoldersAllowed?: number;
   onNewFolder?: (name: string, parentId: string) => Promise<IFolder>;
@@ -115,9 +114,11 @@ const TreeStructure = ({
   };
 
   const onSaveNewFolder = (name: string, parentId: string) => {
+    setNewFolderParentId(undefined);
     onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
         setSelectedFolder(newFolder);
+        onSelectFolder?.(newFolder.id);
         setFocusedId(newFolder.id);
         setOpenFolders(uniq(openFolders.concat(parentId)));
       }
@@ -156,6 +157,7 @@ const TreeStructure = ({
           setSelectedFolder={setSelectedFolder}
           targetResource={targetResource}
           visibleFolders={visibleFolderIds}
+          framed={framed}
         />
       </TreeStructureStyledWrapper>
       {editable && (

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/safelink",
-  "version": "2.2.4",
+  "version": "2.2.9",
   "description": "SafeLink component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,8 +26,9 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/button": "^3.2.0",
-    "@ndla/icons": "^1.11.3"
+    "@ndla/button": "^3.3.3",
+    "@ndla/icons": "^1.11.5",
+    "lodash": "^4.17.20"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.35",

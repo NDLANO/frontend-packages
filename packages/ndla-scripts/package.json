@@ -1,6 +1,6 @@
 {
   "name": "@ndla/scripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
   "main": "src/index.js",
@@ -27,7 +27,7 @@
     "normalize-url": "^4.1.0",
     "octonode": "^0.9.4",
     "url-regex": "^4.1.1",
-    "vercel": "^24.2.4"
+    "vercel": "^27.2.0"
   },
   "publishConfig": {
     "access": "public"

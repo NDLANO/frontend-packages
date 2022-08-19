@@ -171,6 +171,7 @@ const messages = {
     contextModal: {
       button: '+ {{count}} more contexts',
       heading: 'The resource is used in several contexts',
+      ariaLabel: 'View more contexts',
     },
   },
 
@@ -217,6 +218,7 @@ const messages = {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
     topic: 'TOPIC',
     topics: 'Topics',
+    imageModal: 'View full size image',
   },
   welcomePage: {
     search: 'Search',
@@ -274,6 +276,7 @@ const messages = {
       search: 'Search',
       toFrontpage: 'To frontpage',
       subjectOverview: 'All subjects',
+      modalLabel: 'Choose content',
       backToSubjectFrontpage: 'Back to subject frontpage',
       title: 'Content',
       subjectPage: 'Subject front page',
@@ -394,6 +397,7 @@ const messages = {
   competenceGoals: {
     competenceGoal: 'competence-goal',
     title: 'Competence goals and curriculum ',
+    modalText: 'Explore curriculum links',
     closeCompetenceGoals: 'Close competence goals',
     showCompetenceGoals: 'Show competence goals',
     openCompentenceGoalsFilter: 'Filter competence goals',
@@ -417,6 +421,8 @@ const messages = {
     competenceGoalItem: {
       title: 'Competence goals and assessment',
     },
+    licenseData: 'Containing data under',
+    licenseFrom: 'published at',
   },
   subject: {
     associatedTopics: 'Associated topics',
@@ -435,8 +441,9 @@ const messages = {
       h5p: 'H5P',
       files: 'Files',
       embedlink: 'Embedded link',
-      other: 'Other content',
       concept: 'Concepts',
+      podcast: 'Podcast',
+      other: 'Other content',
     },
     embedlink: {
       heading: 'How to show the article in other content',
@@ -471,6 +478,11 @@ const messages = {
       heading: 'How to reuse audio files',
       description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
+    },
+    podcast: {
+      heading: 'How to reuse podcasts',
+      description: 'Remember to copy the text to be attached to the podcast where you use it.',
+      rules: 'Rules for use of podcast:',
     },
     video: {
       heading: 'How to reuse videos',
@@ -962,6 +974,8 @@ const messages = {
       collectedInfo: 'We have collected the following information about you from Feide:',
       general: 'Resources that require logging in with Feide, are tagged with the icon',
       topic: 'Log in with Feide to access this topic.',
+      isAuth: 'User info',
+      isNotAuth: 'Log in with Feide',
     },
     resource: {
       accessDenied: 'We are sorry, but this resource is only available to teachers who are logged in with Feide.',
@@ -987,6 +1001,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'My NDLA',
+    support: 'Support',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
@@ -996,6 +1011,7 @@ const messages = {
       delete: 'Delete',
       edit: 'Edit',
       missingName: 'Folder name required',
+      folderDeleted: '"{{folderName}}" deleted',
     },
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
@@ -1014,8 +1030,10 @@ const messages = {
     more: 'More options',
     listView: 'List view',
     detailView: 'Detailed listview',
-    shortView: 'Short view',
+    shortView: 'Card view',
     myPage: {
+      confirmDeleteAccount: 'Are you sure you want to delete your account?',
+      confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
@@ -1039,7 +1057,7 @@ const messages = {
 
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
-        text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
+        text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
@@ -1056,8 +1074,15 @@ const messages = {
       removeTitle: 'Remove resource',
       confirmRemove: 'Are you sure you want to remove the resource from this folder?',
       copyLink: 'Copy link to this page',
+      linkCopied: 'Copied to clipboard',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
+      addedToFolder: 'Resource added to ',
+      removedFromFolder: 'Removed from "{{folderName}}"',
+      titleUpdated: 'Title updated',
+      tagsUpdated: 'Tags updated',
+      show: 'Show',
+      save: 'Save resource',
     },
   },
   snackbar: {

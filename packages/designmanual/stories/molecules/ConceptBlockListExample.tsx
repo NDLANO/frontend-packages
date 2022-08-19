@@ -87,9 +87,9 @@ const ConceptBlockListExample = () => {
           copyright: {
             license: { license: 'CC-BY-SA-4.0' },
             creators: [
-              { name: 'Cecilie Isaksen Eftedal', type: 'author' },
-              { name: 'Siv Mundal', type: 'author' },
-              { name: 'Pål Frønsdal', type: 'author' },
+              { name: 'Frida Forfatter', type: 'author' },
+              { name: 'Ida Illustratør', type: 'author' },
+              { name: 'Fred Forfatter', type: 'author' },
             ],
             processors: [],
             rightsholders: [{ name: 'Riksarkivet', type: 'owner' }],

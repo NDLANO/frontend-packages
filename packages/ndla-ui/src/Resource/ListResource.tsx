@@ -13,8 +13,9 @@ import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
 import { CompressedTagList, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
+import ContentLoader from '../ContentLoader';
 
-const ResourceDescription = styled.p`
+const StyledResourceDescription = styled.p`
   grid-area: description;
   line-clamp: 2;
   line-height: 1em;
@@ -97,7 +98,7 @@ const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-const TopicAndTitle = styled.div`
+const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
   margin-top: ${spacing.xxsmall};
 `;
@@ -108,29 +109,107 @@ interface StyledImageProps {
 
 export interface ListResourceProps {
   link: string;
+  tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];
   tags?: string[];
   description?: string;
   menuItems?: MenuItemProps[];
+  isLoading?: boolean;
 }
 
-const ListResource = ({ link, title, tags, resourceImage, topics, description, menuItems }: ListResourceProps) => {
+interface ListResourceImageProps {
+  resourceImage: ResourceImageProps;
+  loading?: boolean;
+  type: 'normal' | 'compact';
+}
+
+const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImageProps) => {
+  if (!loading) {
+    return (
+      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+    );
+  }
+  return (
+    <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+      <rect
+        x="0"
+        y="0"
+        rx="3"
+        ry="3"
+        width={type === 'compact' ? '56' : '136'}
+        height={type === 'compact' ? '40' : '96'}
+      />
+    </ContentLoader>
+  );
+};
+
+interface TopicAndTitleProps {
+  title: string;
+  topics: string[];
+  loading?: boolean;
+}
+
+const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
+  if (loading) {
+    return (
+      <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width={'100%'} height={'16'} />
+        <rect x="0" y="18" rx="3" ry="3" width={'70'} height={'16'} />
+        <rect x="80" y="18" rx="3" ry="3" width={'70'} height={'16'} />
+      </ContentLoader>
+    );
+  }
+  return (
+    <>
+      <ResourceTitle>{title}</ResourceTitle>
+      <TopicList topics={topics} />
+    </>
+  );
+};
+
+interface ResourceDescriptionProps {
+  description?: string;
+  loading?: boolean;
+}
+
+const ResourceDescription = ({ description, loading }: ResourceDescriptionProps) => {
+  if (loading) {
+    return (
+      <ContentLoader height={'20px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" width="100%" height="20" />
+      </ContentLoader>
+    );
+  }
+  return <StyledResourceDescription>{description}</StyledResourceDescription>;
+};
+
+const ListResource = ({
+  link,
+  tagLinkPrefix,
+  title,
+  tags,
+  resourceImage,
+  topics,
+  description,
+  menuItems,
+  isLoading = false,
+}: ListResourceProps) => {
   const showDescription = description !== undefined;
+  const imageType = showDescription ? 'normal' : 'compact';
 
   return (
     <ResourceWrapper to={link}>
-      <StyledImageWrapper imageSize={showDescription ? 'normal' : 'compact'}>
-        <StyledImage alt={resourceImage.alt} src={resourceImage.src} />
+      <StyledImageWrapper imageSize={imageType}>
+        <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
       </StyledImageWrapper>
-      <TopicAndTitle>
-        <ResourceTitle>{title}</ResourceTitle>
-        <TopicList topics={topics} />
-      </TopicAndTitle>
-      {showDescription && <ResourceDescription>{description}</ResourceDescription>}
+      <TopicAndTitleWrapper>
+        <TopicAndTitle topics={topics} title={title} loading={isLoading} />
+      </TopicAndTitleWrapper>
+      {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>
-        {tags && <CompressedTagList tags={tags} />}
+        {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
         {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ResourceWrapper>

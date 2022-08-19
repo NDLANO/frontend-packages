@@ -171,6 +171,7 @@ const messages = {
     contextModal: {
       button: '+ {{count}} flere steder',
       heading: 'Ressursen er brukt flere steder',
+      ariaLabel: 'Se flere kontekster',
     },
   },
   subjectPage: {
@@ -216,6 +217,7 @@ const messages = {
     articleErrorDescription: 'Beklager, en feil oppstod under lasting av emnebeskrivelsen.',
     topic: 'EMNE',
     topics: 'Emner',
+    imageModal: 'Se bildet i full størrelse',
   },
   welcomePage: {
     search: 'Søk',
@@ -274,6 +276,7 @@ const messages = {
       toFrontpage: 'Til forsiden',
       subjectOverview: 'Alle fag',
       title: 'Innhold',
+      modalLabel: 'Velg innhold',
       subjectPage: 'Fagforside',
       backToSubjectFrontpage: 'Tilbake til fagforsiden',
       openFilter: 'Filter',
@@ -392,6 +395,7 @@ const messages = {
   competenceGoals: {
     competenceGoal: 'kompetansemål',
     title: 'Kompetansemål og læreplan',
+    modalText: 'Utforsk læreplankoblinger',
     closeCompetenceGoals: 'Lukk kompetansemål',
     showCompetenceGoals: 'Vis kompetansemål',
     openCompentenceGoalsFilter: 'Filtrer kompetansemål',
@@ -415,6 +419,8 @@ const messages = {
     competenceGoalItem: {
       title: 'Kompetansemål og vurdering',
     },
+    licenseData: 'Inneholder data under',
+    licenseFrom: 'tilgjengeliggjort på',
   },
   subject: {
     associatedTopics: 'Tilhørende emner',
@@ -449,6 +455,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',
+      podcast: 'Podkast',
       other: 'Annet innhold',
     },
     embedlink: {
@@ -484,6 +491,11 @@ const messages = {
       heading: 'Slik gjenbruker du lydfiler',
       description: 'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
       rules: 'Regler for bruk av lydfilen:',
+    },
+    podcast: {
+      heading: 'Slik gjenbruker du podkaster',
+      description: 'Husk å kopiere teksten som skal legges ved podkasten der du bruker den.',
+      rules: 'Regler for bruk av podkasten:',
     },
     video: {
       heading: 'Slik gjenbruker du videoer',
@@ -960,6 +972,8 @@ const messages = {
       collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide:',
       general: 'Ressursene som krever pålogging med Feide, vises med ikonet',
       topic: 'Logg inn med Feide for å få tilgang til dette emnet.',
+      isAuth: 'Brukerinfo',
+      isNotAuth: 'Logg inn med Feide',
     },
     resource: {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
@@ -985,6 +999,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'Min NDLA',
+    support: 'Brukerstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
@@ -994,6 +1009,7 @@ const messages = {
       delete: 'Slett',
       edit: 'Rediger',
       missingName: 'Mappenavn er påkrevd',
+      folderDeleted: '"{{folderName}}" er slettet',
     },
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
@@ -1012,8 +1028,10 @@ const messages = {
     more: 'Flere valg',
     listView: 'Listevisning',
     detailView: 'Detaljrik listevisning',
-    shortView: 'Kort visning',
+    shortView: 'Kortvisning',
     myPage: {
+      confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
+      confirmDeleteAccountButton: 'Slett konto',
       myPage: 'Min side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
@@ -1037,7 +1055,7 @@ const messages = {
       feide: 'Dette henter vi om deg fra Feide',
       storageInfo: {
         title: 'Slik lagrer du dine favorittressurser fra NDLA',
-        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til høyre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
+        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjerteknappen der den er tilgjengelig. Du vil da få mulighet til å lagre ressursen i en mappe.',
       },
       folderInfo: {
         title: 'Slik organiserer du dine favorittressurser i mapper',
@@ -1054,8 +1072,15 @@ const messages = {
       removeTitle: 'Fjern ressurs',
       confirmRemove: 'Er du sikker på at du ønsker å fjerne ressursen fra denne mappen?',
       copyLink: 'Kopier lenke til siden',
+      linkCopied: 'Kopiert til utklippstavle',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
+      addedToFolder: 'Ressurs er lagt i ',
+      removedFromFolder: 'Fjernet fra "{{folderName}}"',
+      titleUpdated: 'Tittel oppdatert',
+      tagsUpdated: 'Tags oppdatert',
+      show: 'Vis',
+      save: 'Lagre ressurs',
     },
   },
   snackbar: {

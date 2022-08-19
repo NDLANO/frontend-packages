@@ -65,7 +65,7 @@ const ArticleAssessmentResource = () => (
         footNotes: '',
         copyright: {
           license: { license: 'CC-BY-SA-4.0' },
-          creators: [{ name: 'Cecilie Isaksen Eftedal' }, { name: 'Siv Mundal' }, { name: 'Pål Frønsdal' }],
+          creators: [{ name: 'Frida Forfatter' }, { name: 'Ida Illustratør' }, { name: 'Fred Forfatter' }],
           rightsholders: [{ name: 'Riksarkivet' }],
         },
       }}

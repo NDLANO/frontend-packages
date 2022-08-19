@@ -7,7 +7,7 @@
  */
 
 import React, { ReactNode } from 'react';
-import css from '@emotion/css';
+import { css } from '@emotion/core';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 
 const headerStyles = css`

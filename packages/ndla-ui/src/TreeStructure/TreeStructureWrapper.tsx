@@ -13,18 +13,15 @@ import { colors, misc, spacing } from '@ndla/core';
 const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
   padding: ${spacing.xsmall};
   ${({ framed }) =>
-    framed
-      ? css`
-          border: 1px solid ${colors.brand.neutral7};
-          border-radius: ${misc.borderRadius};
-          max-height: 400px;
-          overflow-y: scroll;
-          scroll-behavior: smooth;
-          padding: ${spacing.small};
-        `
-      : css`
-          margin-left: -${spacing.medium};
-        `}
+    framed &&
+    css`
+      border: 1px solid ${colors.brand.neutral7};
+      border-radius: ${misc.borderRadius};
+      max-height: 400px;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      padding: ${spacing.small};
+    `}
   transition: ${misc.transition.default};
   &:focus-within {
     border-color: ${colors.brand.primary};

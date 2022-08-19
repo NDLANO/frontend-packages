@@ -8,7 +8,7 @@
 
 import { MouseEvent, ReactNode } from 'react';
 import { IFolder, IResource } from '@ndla/types-learningpath-api';
-import { MenuItemProps } from '@ndla/button/src';
+import { MenuItemProps } from '@ndla/button';
 
 export interface FolderType extends IFolder {
   icon?: ReactNode;
@@ -24,6 +24,7 @@ export interface CommonTreeStructureProps {
   openOnFolderClick?: boolean;
   menuItems?: TreeStructureMenuProps[];
   targetResource?: IResource;
+  framed?: boolean;
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {

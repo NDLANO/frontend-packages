@@ -12,7 +12,6 @@ import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { Cross as CrossIcon, Plus as PlusIcon } from '@ndla/icons/action';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
-// @ts-ignore
 import ToggleItem from './ToggleItem';
 import FilterCarousel from './FilterCarousel';
 
@@ -128,6 +127,7 @@ export const FilterButtons = ({ heading, items, onFilterToggle, onRemoveAllFilte
             </StyledButtonElementWrapper>
           ))}
           <Modal
+            label={t('searchPage.searchFilterMessages.resourceTypeFilter.button')}
             size="fullscreen"
             animation="subtle"
             backgroundColor="white"

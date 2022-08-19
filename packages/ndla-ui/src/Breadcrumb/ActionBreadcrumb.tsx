@@ -11,8 +11,7 @@ import { colors, fonts, spacing } from '@ndla/core';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import React from 'react';
-import { MenuButton } from '@ndla/button';
-import { MenuItemProps } from '@ndla/button';
+import { MenuButton, MenuItemProps } from '@ndla/button';
 import Breadcrumb from './Breadcrumb';
 import { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
 

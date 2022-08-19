@@ -1,6 +1,6 @@
 {
   "name": "@ndla/core",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "UI component library for NDLA.",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,6 +30,9 @@
   "dependencies": {
     "inuitcss": "6.0.0",
     "sass-mq": "^5.0.1"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^10.0.9"
   },
   "publishConfig": {
     "access": "public"

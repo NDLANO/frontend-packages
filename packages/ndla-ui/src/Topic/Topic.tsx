@@ -268,6 +268,7 @@ const Topic = ({
                   {topic.visualElement ? (
                     <>
                       <Modal
+                        label={t('topicPage.imageModal')}
                         activateButton={
                           <VisualElementButton
                             stripped

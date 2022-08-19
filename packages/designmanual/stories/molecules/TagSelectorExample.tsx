@@ -44,7 +44,6 @@ const TagSelectorExample = () => {
   return (
     <Container>
       <TagSelector
-        prefix="#"
         label={t('tagSelector.label')}
         tags={exampleTags}
         tagsSelected={exampleTagsSelected}

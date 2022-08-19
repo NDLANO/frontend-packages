@@ -1001,6 +1001,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'My NDLA',
+    support: 'Support',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',

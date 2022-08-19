@@ -455,8 +455,9 @@ const messages = {
       h5p: 'H5P',
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
-      other: 'Anna innhald',
       concept: 'Forklaringar',
+      podcast: 'Podkast',
+      other: 'Anna innhald',
     },
     embedlink: {
       heading: 'Slik viser du artikkelen i anna innhald',
@@ -491,6 +492,11 @@ const messages = {
       heading: 'Slik gjenbruker du lydfiler',
       description: 'Hugs å kopiera teksten som skal leggjast ved lydfila der du bruker ho.',
       rules: 'Reglar for bruk av lydfila:',
+    },
+    podcast: {
+      heading: 'Slik gjenbruker du podkaster',
+      description: 'Hugs å kopiera teksten som skal leggjast ved podkasten der du bruker ho.',
+      rules: 'Reglar for bruk av podkasten:',
     },
     video: {
       heading: 'Slik gjenbruker du videoar',
@@ -994,6 +1000,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'Min NDLA',
+    support: 'Brukarstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressursar',
     folders: '{{count}} mappe',
@@ -1022,7 +1029,7 @@ const messages = {
     more: 'Fleire val',
     listView: 'Listevisning',
     detailView: 'Detaljrik listevisning',
-    shortView: 'Kort visning',
+    shortView: 'Kortvisning',
     myPage: {
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
       confirmDeleteAccountButton: 'Slett konto',
@@ -1048,7 +1055,7 @@ const messages = {
       feide: 'Dette henter vi om deg fra Feide',
       storageInfo: {
         title: 'Slik lagrer du dine favorittressurser fra NDLA',
-        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til høyre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
+        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjerteknappen der den er tilgjengeleg. Du vil da få mulighet til å lagre ressursen i en mappe.',
       },
       folderInfo: {
         title: 'Slik organiserer du dine favorittressurser i mapper',
@@ -1068,11 +1075,12 @@ const messages = {
       linkCopied: 'Kopiert til utklippstavla',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
-      addedToFolder: 'Ressurs er lagt i "{{folderName}}"',
+      addedToFolder: 'Ressurs er lagt i ',
       removedFromFolder: 'Fjernet fra "{{folderName}}"',
       titleUpdated: 'Tittel oppdatert',
       tagsUpdated: 'Tags oppdatert',
       show: 'Vis',
+      save: 'Lagre ressurs',
     },
   },
   snackbar: {

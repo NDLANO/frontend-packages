@@ -37,7 +37,7 @@ export { createUniversalPortal } from './utils/createUniversalPortal';
 
 export { default as NoContentBox } from './NoContentBox';
 
-export { default as Masthead, MastheadItem, getMastheadHeight, useMastheadHeight } from './Masthead';
+export { default as Masthead, MastheadItem, getMastheadHeight, useMastheadHeight, SkipToMainContent } from './Masthead';
 
 export { default as Portrait } from './Portrait';
 

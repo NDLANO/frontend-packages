@@ -455,6 +455,7 @@ const messages = {
       files: 'Filer',
       embedlink: 'Innbyggingslenke',
       concept: 'Forklaringer',
+      podcast: 'Podkast',
       other: 'Annet innhold',
     },
     embedlink: {
@@ -490,6 +491,11 @@ const messages = {
       heading: 'Slik gjenbruker du lydfiler',
       description: 'Husk å kopiere teksten som skal legges ved lydfilen der du bruker den.',
       rules: 'Regler for bruk av lydfilen:',
+    },
+    podcast: {
+      heading: 'Slik gjenbruker du podkaster',
+      description: 'Husk å kopiere teksten som skal legges ved podkasten der du bruker den.',
+      rules: 'Regler for bruk av podkasten:',
     },
     video: {
       heading: 'Slik gjenbruker du videoer',
@@ -993,6 +999,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'Min NDLA',
+    support: 'Brukerstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressurser',
     folders: '{{count}} mappe',
@@ -1021,7 +1028,7 @@ const messages = {
     more: 'Flere valg',
     listView: 'Listevisning',
     detailView: 'Detaljrik listevisning',
-    shortView: 'Kort visning',
+    shortView: 'Kortvisning',
     myPage: {
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
       confirmDeleteAccountButton: 'Slett konto',
@@ -1048,7 +1055,7 @@ const messages = {
       feide: 'Dette henter vi om deg fra Feide',
       storageInfo: {
         title: 'Slik lagrer du dine favorittressurser fra NDLA',
-        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjertet øverst til høyre på siden. Du vil da få mulighet til å lagre ressursen i en mappe.',
+        text: 'Når du ønsker å lagre en ressurs, kan du gjøre dette ved å klikke på hjerteknappen der den er tilgjengelig. Du vil da få mulighet til å lagre ressursen i en mappe.',
       },
       folderInfo: {
         title: 'Slik organiserer du dine favorittressurser i mapper',
@@ -1068,11 +1075,12 @@ const messages = {
       linkCopied: 'Kopiert til utklippstavle',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
-      addedToFolder: 'Ressurs er lagt i "{{folderName}}"',
+      addedToFolder: 'Ressurs er lagt i ',
       removedFromFolder: 'Fjernet fra "{{folderName}}"',
       titleUpdated: 'Tittel oppdatert',
       tagsUpdated: 'Tags oppdatert',
       show: 'Vis',
+      save: 'Lagre ressurs',
     },
   },
   snackbar: {

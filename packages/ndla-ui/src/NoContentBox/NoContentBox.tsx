@@ -7,21 +7,16 @@
  */
 
 import React from 'react';
-import BEMHelper from 'react-bem-helper';
 import Button from '@ndla/button';
-
-const classes = new BEMHelper({
-  name: 'topic-resource',
-  prefix: 'c-',
-});
 
 interface Props {
   onClick?: () => void;
   buttonText?: string;
   text: string;
 }
+
 export const NoContentBox = ({ buttonText, text, onClick }: Props) => (
-  <div {...classes('additional-resources-trigger')}>
+  <div>
     <span>
       <div>
         <p>{text}</p>

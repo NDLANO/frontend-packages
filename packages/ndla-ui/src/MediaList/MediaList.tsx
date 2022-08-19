@@ -64,7 +64,7 @@ interface MediaListItemBodyProps {
   license: string;
   locale: string;
   resourceUrl?: string;
-  resourceType?: 'video' | 'image' | 'audio' | 'text' | 'h5p';
+  resourceType?: 'video' | 'image' | 'audio' | 'text' | 'h5p' | 'podcast';
   messages?: {
     modelPremission?: string;
   };

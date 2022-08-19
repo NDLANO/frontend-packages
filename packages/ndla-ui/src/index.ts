@@ -85,6 +85,8 @@ export {
   NdlaFilmHero,
 } from './Hero';
 
+export { FilterList, FilterListPhone, FilterButtons } from './Filter';
+
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
 export {
@@ -212,7 +214,6 @@ export {
   SubjectCarousel,
   SubjectChildContent,
   SubjectContent,
-  SubjectFilter,
   SubjectFlexChild,
   SubjectFlexWrapper,
   SubjectHeader,

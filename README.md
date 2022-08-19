@@ -74,29 +74,18 @@ yarn
 yarn run publish
 ```
 
+If script was interrupted, resulting in new versions being commited but not published to npm, this can be resolved by running
+
+```
+yarn lerna publish from-package
+```
+
 ### Alias master to designmanual.ndla.sh
 
 ```js
 yarn deploy
 ```
 
-## Publishing alpha releases
-
-As an alternative to linking packages locally, alpha versions of packages can be published and used in other repositories.
-
-**READ FIRST:** This guide is not fully functional. When merging and bumping alpha versions in the second step, the released package is not necessarily correct. The guide has to be updated to resolve this issue.
-
-### Creating alpha version and using it
-
-- `yarn lerna publish --canary`. Will bump patch version and add current git sha to version. For example: `1.0.1-alpha.0+${SHA}`
-- The scripts fails sometimes, but the alpha version should be released. You have to manually commit the new version in package.json.
-- Upgrade packages to alpha versions in your repository. Add the full version number to package.json manually and run `yarn install --force` or install it using `yarn upgrade @ndla/my-package@<version-number>`.
-
-### Merging and bumping alpha versions to latest.
-
-- Merge frontend-packages PR.
-- `yarn lerna version`: Now set packages to the desired major/minor/patch version.
-- `yarn lerna publish from-git` Publishes versions generated in previous step.
 
 ## New Icons
 

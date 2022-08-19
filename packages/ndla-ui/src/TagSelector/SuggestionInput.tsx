@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
 import { ChevronDown, ChevronUp, HashTag } from '@ndla/icons/common';
-import { Cross as CrossRaw } from '@ndla/icons/action';
+import { Cross } from '@ndla/icons/action';
 import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { uuid } from '@ndla/util';
@@ -60,7 +60,7 @@ const SuggestionText = ({ value, suggestionValue }: { value: string; suggestionV
   </SuggestionTextWrapper>
 );
 
-const Cross = styled(CrossRaw)`
+const StyledCross = styled(Cross)`
   margin-left: ${spacing.xxsmall};
 `;
 
@@ -169,7 +169,7 @@ const SuggestionInput = ({
             size="small">
             <HashTag />
             {name}
-            <Cross />
+            <StyledCross />
           </StyledTagButton>
         ))}
         <CombinedInputAndDropdownWrapper>

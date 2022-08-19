@@ -99,7 +99,7 @@ export const pillStyle = css`
   color: ${colors.brand.primary};
   ${fonts.sizes('16px', '18px')};
   background-color: transparent;
-  > svg {
+  > svg:not(:first-child) {
     margin-left: ${spacing.xsmall};
     height: 18px;
     width: 18px;

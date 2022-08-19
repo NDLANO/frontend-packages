@@ -9,17 +9,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Check } from '@ndla/icons/editor';
+import { Cross } from '@ndla/icons/action';
 import { HashTag } from '@ndla/icons/common';
 import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Button from '@ndla/button';
 import type { TagType } from './TagSelector';
-
-const CheckedIcon = styled(Check)`
-  width: ${spacing.normal};
-  height: ${spacing.normal};
-  fill: ${colors.brand.light};
-`;
 
 const SuggestionsWrapper = styled.div`
   position: relative;
@@ -34,7 +28,6 @@ const Suggestions = styled.div<SuggestionProps>`
   right: 0;
   left: 0;
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
-  padding: ${spacing.small} 0;
   overflow-y: scroll;
   scroll-behavior: smooth;
   background: ${colors.white};
@@ -50,13 +43,18 @@ const Suggestions = styled.div<SuggestionProps>`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${colors.brand.greyLight};
+    background-color: ${colors.brand.neutral7};
     border-radius: 10px;
     border: solid ${spacing.xxsmall} white;
   }
 `;
 
 const SuggestionList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${spacing.xsmall};
+  padding: ${spacing.small};
   opacity: 0;
   ${animations.fadeInBottom()}
   animation-delay: ${animations.durations.fast};
@@ -65,16 +63,13 @@ const SuggestionList = styled.div`
 
 interface SuggestionButtonProps {
   isHighlighted: boolean;
+  alreadyAdded: boolean;
 }
 
 const SuggestionButton = styled(Button)<SuggestionButtonProps>`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  ${fonts.sizes(18)};
   font-weight: ${fonts.weight.semibold};
   transition: ${misc.transition.default};
-  border-radius: 0;
+  padding: ${spacing.xxsmall} ${spacing.small};
 
   &:disabled {
     color: ${colors.brand.greyMedium};
@@ -84,18 +79,17 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
       }
     }
   }
-  ${({ isHighlighted }) =>
-    isHighlighted
-      ? css`
-          background: ${colors.brand.lighter};
-          &:disabled {
-            background: ${colors.brand.greyLighter};
-            svg {
-              fill: ${colors.brand.grey};
-            }
-          }
-        `
-      : ''}
+  ${({ isHighlighted, alreadyAdded }) =>
+    isHighlighted &&
+    css`
+      background: ${alreadyAdded ? colors.brand.primary : colors.brand.lighter};
+      color: ${alreadyAdded && colors.white};
+      border-color: ${colors.brand.primary};
+    `}
+`;
+
+const StyledCross = styled(Cross)`
+  margin-left: ${spacing.xxsmall};
 `;
 
 interface Props {
@@ -115,21 +109,21 @@ const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, has
           const selected = index === currentHighlightedIndex;
           return (
             <SuggestionButton
-              borderShape="sharpened"
-              ghostPill
-              width="full"
-              textAlign="left"
+              borderShape="rounded"
+              ghostPill={!alreadyAdded}
+              light={alreadyAdded}
               data-suggestionbutton
               role="option"
+              size="small"
               aria-selected={selected}
-              disabled={alreadyAdded}
               isHighlighted={selected}
               onMouseDown={() => {
                 onToggleTag(id);
               }}
+              alreadyAdded={alreadyAdded}
               key={id}>
               <HashTag /> {name}
-              {alreadyAdded && <CheckedIcon />}
+              {alreadyAdded && <StyledCross />}
             </SuggestionButton>
           );
         })}

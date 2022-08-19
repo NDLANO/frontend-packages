@@ -1000,6 +1000,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'Min NDLA',
+    support: 'Brukarstøtte',
     resources: '{{count}} ressurs',
     resources_plural: '{{count}} ressursar',
     folders: '{{count}} mappe',

@@ -8,7 +8,7 @@
 
 import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, misc } from '@ndla/core';
+import { fonts } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import SuggestionInput from './SuggestionInput';
 
@@ -27,7 +27,7 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-  prefix?: string;
+  dropdownMaxHeight?: number;
 }
 
 const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] => {
@@ -47,7 +47,7 @@ const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
     .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
 };
 
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, prefix }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, dropdownMaxHeight }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,6 +61,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, pref
     <div ref={containerRef}>
       <StyledLabel htmlFor={inputIdRef.current}>{label}</StyledLabel>
       <SuggestionInput
+        dropdownMaxHeight={dropdownMaxHeight}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);
@@ -75,7 +76,6 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, pref
         expanded={expanded}
         setExpanded={setExpanded}
         scrollAnchorElement={containerRef}
-        prefix={prefix}
       />
     </div>
   );

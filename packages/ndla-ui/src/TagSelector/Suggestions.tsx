@@ -10,7 +10,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Check } from '@ndla/icons/editor';
-import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
+import { HashTag } from '@ndla/icons/common';
+import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Button from '@ndla/button';
 import type { TagType } from './TagSelector';
 
@@ -24,11 +25,15 @@ const SuggestionsWrapper = styled.div`
   position: relative;
 `;
 
-const Suggestions = styled.div`
+interface SuggestionProps {
+  maxHeight?: number;
+}
+
+const Suggestions = styled.div<SuggestionProps>`
   border-top: 1px solid ${colors.brand.neutral7};
   right: 0;
   left: 0;
-  max-height: 200px;
+  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
   padding: ${spacing.small} 0;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -63,8 +68,8 @@ interface SuggestionButtonProps {
 }
 
 const SuggestionButton = styled(Button)<SuggestionButtonProps>`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   ${fonts.sizes(18)};
   font-weight: ${fonts.weight.semibold};
@@ -98,11 +103,12 @@ interface Props {
   currentHighlightedIndex: number;
   onToggleTag: (id: string) => void;
   hasBeenAdded: (id: string) => boolean;
+  maxHeight?: number;
 }
 
-const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, hasBeenAdded }: Props) => (
+const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, hasBeenAdded, maxHeight }: Props) => (
   <SuggestionsWrapper>
-    <Suggestions>
+    <Suggestions maxHeight={maxHeight}>
       <SuggestionList role="listbox">
         {suggestions.map(({ id, name }, index: number) => {
           const alreadyAdded = hasBeenAdded(id);
@@ -122,7 +128,7 @@ const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, has
                 onToggleTag(id);
               }}
               key={id}>
-              <span>{`# ${name}`}</span>
+              <HashTag /> {name}
               {alreadyAdded && <CheckedIcon />}
             </SuggestionButton>
           );

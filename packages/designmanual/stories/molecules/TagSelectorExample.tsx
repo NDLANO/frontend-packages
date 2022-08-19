@@ -63,6 +63,7 @@ const TagSelectorExample = () => {
           setExampleTags((prevTags) => [...prevTags, { id: newId, name: newTagName }]);
           setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, newId]);
         }}
+        dropdownMaxHeight={200}
       />
     </Container>
   );

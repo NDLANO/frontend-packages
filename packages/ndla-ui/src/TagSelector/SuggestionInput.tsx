@@ -6,12 +6,12 @@
  *
  */
 
-import React, { useState, useRef, useEffect, ReactNode, RefObject, ChangeEvent, KeyboardEvent, useMemo } from 'react';
+import React, { useState, useRef, useEffect, RefObject, ChangeEvent, KeyboardEvent, useMemo } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Button, { IconButtonDualStates } from '@ndla/button';
-import { ChevronDown, ChevronUp } from '@ndla/icons/common';
+import { ChevronDown, ChevronUp, HashTag } from '@ndla/icons/common';
 import { Cross as CrossRaw } from '@ndla/icons/action';
 import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
@@ -39,7 +39,7 @@ const SuggestionTextWrapper = styled.div`
   padding: 8.333px;
   padding-right: ${spacing.large};
   span {
-    color: ${colors.brand.grey};
+    color: ${colors.brand.greyMedium};
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
@@ -64,7 +64,17 @@ const Cross = styled(CrossRaw)`
   margin-left: ${spacing.xxsmall};
 `;
 
+const StyledDualIconButton = styled(IconButtonDualStates)`
+  color: ${colors.brand.primary};
+  padding: 0;
+`;
+
 const StyledInput = styled.input`
+  ::placeholder {
+    color: ${colors.brand.primary};
+  }
+  color: ${colors.brand.primary};
+  caret-color: ${colors.brand.primary};
   flex-grow: 1;
   border: 0;
   outline: none;
@@ -77,6 +87,7 @@ const StyledInput = styled.input`
 const StyledInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: ${spacing.xsmall};
   padding: ${spacing.small};
   transition: border-color ${animations.durations.normal} ease;
@@ -85,12 +96,13 @@ const StyledInputWrapper = styled.div`
 const CombinedInputAndDropdownWrapper = styled.div`
   display: flex;
   flex-grow: 1;
+  align-items: center;
   position: relative;
 `;
 
-const StyledTagButton = styled(Button)<{ enableTagButtonAnimation: boolean }>`
-  ${({ enableTagButtonAnimation }) =>
-    enableTagButtonAnimation ? animations.fadeInScaled(animations.durations.slow) : ''}
+const StyledTagButton = styled(Button)`
+  padding: ${spacing.xxsmall} ${spacing.small};
+  ${animations.fadeIn(animations.durations.slow)};
 `;
 
 interface SuggestionInputProps {
@@ -103,8 +115,8 @@ interface SuggestionInputProps {
   setInputValue: (value: string) => void;
   onCreateTag: (tagName: string) => void;
   addedTags: TagType[];
-  prefix?: string | ReactNode;
   scrollAnchorElement: RefObject<HTMLDivElement>;
+  dropdownMaxHeight?: number;
 }
 
 const SuggestionInput = ({
@@ -117,8 +129,8 @@ const SuggestionInput = ({
   addedTags,
   setExpanded,
   expanded,
-  prefix,
   scrollAnchorElement,
+  dropdownMaxHeight,
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
@@ -126,7 +138,6 @@ const SuggestionInput = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const suggestionIdRef = useMemo<string>(() => uuid(), []);
-  const initalTags = useRef<string[]>(addedTags.map(({ id }) => id));
 
   useEffect(() => {
     setCurrentHighlightedIndex(0);
@@ -150,14 +161,13 @@ const SuggestionInput = ({
       <StyledInputWrapper>
         {addedTags.map(({ id, name }) => (
           <StyledTagButton
-            enableTagButtonAnimation={!initalTags.current.includes(id)}
             aria-label={t('tagSelector.removeTag', { name })}
             onClick={() => onToggleTag(id)}
             light
             borderShape="rounded"
             key={id}
             size="small">
-            {prefix}
+            <HashTag />
             {name}
             <Cross />
           </StyledTagButton>
@@ -242,15 +252,14 @@ const SuggestionInput = ({
             }}
           />
           <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
-            <IconButtonDualStates
+            <StyledDualIconButton
               data-suggestionbutton
               ariaLabelActive={t('tagSelector.showAllTags')}
               ariaLabelInActive={t('tagSelector.hideAllTags')}
               active={expanded}
-              greyLighter
+              stripped
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}
-              size="small"
               aria-controls={suggestionIdRef}
               onClick={() => {
                 setInputValue('');
@@ -264,6 +273,7 @@ const SuggestionInput = ({
       <div id={suggestionIdRef} aria-live="polite">
         {(hasFocus || expanded) && suggestions.length > 0 ? (
           <Suggestions
+            maxHeight={dropdownMaxHeight}
             suggestions={suggestions}
             currentHighlightedIndex={currentHighlightedIndex}
             onToggleTag={onToggleTag}

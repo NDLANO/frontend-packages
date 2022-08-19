@@ -6,39 +6,98 @@
  *
  */
 
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core/src';
 import React, { ReactNode, useEffect, useRef } from 'react';
-import BEMHelper from 'react-bem-helper';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { DisplayOnPageYOffset } from '../Animation';
 import { MessageBanner } from '../Messages';
-
-const classes = new BEMHelper({
-  name: 'masthead',
-  prefix: 'c-',
-});
+import SkipToMainContent from './SkipToMainContent';
 
 interface MastheadItemProps {
   children?: ReactNode;
-  className?: string;
   right?: boolean;
   left?: boolean;
 }
-export const MastheadItem = ({ children, className, left = false, right = false }: MastheadItemProps) => {
-  const itemClassName = left ? 'left' : right ? 'right' : undefined;
-  const itemClassNames = itemClassName ? classes(itemClassName).className : undefined;
 
-  return <div className={itemClassNames}>{children}</div>;
+const LeftMastheadItem = styled.div`
+  display: flex;
+  button {
+    white-space: nowrap;
+  }
+  > div:last-child {
+    flex-grow: 1;
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    flex-grow: 1;
+    text-align: left;
+  }
+`;
+
+const RightMastheadItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  ${mq.range({ from: breakpoints.tablet })} {
+    padding: ${spacing.small} 0;
+    padding: 0;
+  }
+`;
+
+export const MastheadItem = ({ children, left = false, right = false }: MastheadItemProps) => {
+  const Wrapper = left ? LeftMastheadItem : right ? RightMastheadItem : 'div';
+  return <Wrapper>{children}</Wrapper>;
 };
 
-interface MastheadInfoProps {
-  children?: ReactNode;
+const MastheadContent = styled.div`
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: ${spacing.small};
+  font-weight: ${fonts.weight.normal};
+  display: flex;
+  height: 84px;
+  justify-content: space-between;
+  ${mq.range({ from: breakpoints.tablet })} {
+    flex-direction: row;
+    padding: ${spacing.small} ${spacing.normal};
+  }
+  ${mq.range({ from: breakpoints.desktop })} {
+    padding: ${spacing.small} ${spacing.large};
+  }
+`;
+
+interface StyledMastheadProps {
+  fixed: boolean;
+  ndlaFilm: boolean;
 }
 
-const MastheadInfo = ({ children }: MastheadInfoProps) => (
-  <div {...classes('info')}>
-    <div {...classes('info-content')}>{children}</div>
-  </div>
-);
+const StyledMasthead = styled.div<StyledMastheadProps>`
+  z-index: 99;
+  position: relative;
+  background: white;
+  border-bottom: 1px solid ${colors.brand.greyLighter};
+  min-height: 84px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  ${(p) =>
+    p.fixed &&
+    css`
+      top: 0;
+      position: sticky;
+      @media print {
+        position: relative;
+      }
+    `};
+  ${(p) =>
+    p.ndlaFilm &&
+    css`
+      background: ${colors.ndlaFilm.filmColorLight};
+      background-image: linear-gradient(0deg, ${colors.ndlaFilm.filmColorLight}, ${colors.ndlaFilm.filmColor});
+      border: 0;
+      border-bottom: 1px solid #18334c;
+    `};
+`;
 
 interface Alert {
   content: string;
@@ -49,23 +108,13 @@ interface Alert {
 interface Props {
   children?: ReactNode;
   fixed?: boolean;
-  infoContent?: ReactNode;
   ndlaFilm?: boolean;
   skipToMainContentId?: string;
   messages?: Alert[];
   onCloseAlert?: (id: number) => void;
 }
 
-export const Masthead = ({
-  children,
-  fixed,
-  infoContent,
-  ndlaFilm,
-  skipToMainContentId,
-  messages,
-  onCloseAlert,
-  t,
-}: Props & WithTranslation) => {
+export const Masthead = ({ children, fixed, ndlaFilm, skipToMainContentId, messages, onCloseAlert }: Props) => {
   const mastheadRef = useRef<HTMLDivElement>(null);
   const focusHandler = (evt: FocusEvent) => {
     const mastheadHeight = (mastheadRef.current && mastheadRef.current.offsetHeight) || 0;
@@ -88,12 +137,8 @@ export const Masthead = ({
 
   return (
     <>
-      {skipToMainContentId && (
-        <a tabIndex={0} href={`#${skipToMainContentId}`} {...classes('skip-to-main-content')}>
-          {t('masthead.skipToContent')}
-        </a>
-      )}
-      <div id="masthead" {...classes('', { fixed: !!fixed, infoContent: !!infoContent, ndlaFilm: !!ndlaFilm })}>
+      {skipToMainContentId && <SkipToMainContent skipToMainContentId={skipToMainContentId} />}
+      <StyledMasthead fixed={!!fixed} ndlaFilm={!!ndlaFilm} id="masthead">
         {messages?.map((message) => (
           <MessageBanner
             key={message.number}
@@ -102,15 +147,10 @@ export const Masthead = ({
             {message.content}
           </MessageBanner>
         ))}
-        {infoContent && (
-          <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={90}>
-            <MastheadInfo>{infoContent}</MastheadInfo>
-          </DisplayOnPageYOffset>
-        )}
-        <div className={`u-1/1 ${classes('content').className}`}>{children}</div>
-      </div>
+        <MastheadContent className="u-1/1">{children}</MastheadContent>
+      </StyledMasthead>
     </>
   );
 };
 
-export default withTranslation()(Masthead);
+export default Masthead;

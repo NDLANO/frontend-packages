@@ -122,7 +122,7 @@ class ModalExample extends Component {
             name: 'animation',
             type: 'String',
             default: 'zoom-in',
-            description: `PropTypes.oneOf(['slide-up', 'slide-down', 'zoom-in', 'subtle'])`,
+            description: `PropTypes.oneOf(['slide-down', 'zoom-in', 'subtle'])`,
           },
           {
             name: 'backgroundColor',
@@ -173,7 +173,7 @@ class ModalExample extends Component {
                 <hr />
                 <p>Lukk denne modal eller åpne en ny modal fra denne modalen</p>
                 <div className="u-horisontal-list">
-                  <Modal narrow size="fullscreen" animation="slide-up" activateButton={<Button>Åpne ny modal</Button>}>
+                  <Modal narrow size="fullscreen" activateButton={<Button>Åpne ny modal</Button>}>
                     {(onClose2ndModal) => (
                       <Fragment>
                         <ModalHeader>
@@ -232,7 +232,6 @@ class ModalExample extends Component {
           options={[
             { title: 'Zoom in (default)', value: 'zoom-in' },
             { title: 'Subtle', value: 'subtle' },
-            { title: 'Slide up', value: 'slide-up' },
             { title: 'Slide down', value: 'slide-down' },
           ]}
           values={[this.state.animation]}

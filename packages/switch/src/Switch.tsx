@@ -25,7 +25,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   font-family: ${fonts.sans};
   position: relative;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   min-height: ${spacing.normal};
   align-items: center;
   ${(props) =>

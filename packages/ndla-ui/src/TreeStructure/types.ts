@@ -8,7 +8,7 @@
 
 import { MouseEvent, ReactNode } from 'react';
 import { IFolder, IResource } from '@ndla/types-learningpath-api';
-import { MenuItemProps } from '@ndla/button/src';
+import { MenuItemProps } from '@ndla/button';
 
 export interface FolderType extends IFolder {
   icon?: ReactNode;

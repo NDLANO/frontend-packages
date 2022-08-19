@@ -24,7 +24,7 @@ interface SuggestionProps {
 }
 
 const Suggestions = styled.div<SuggestionProps>`
-  border-top: 1.5px solid ${colors.brand.neutral7};
+  border-top: 1px solid ${colors.brand.neutral7};
   right: 0;
   left: 0;
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};

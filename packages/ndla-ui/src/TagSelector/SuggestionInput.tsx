@@ -20,7 +20,7 @@ import Suggestions from './Suggestions';
 import type { TagType } from './TagSelector';
 
 const TagSelectorWrapper = styled.div`
-  border: 1.5px solid ${colors.brand.neutral7};
+  border: 1px solid ${colors.brand.neutral7};
   border-radius: ${misc.borderRadius};
   &:focus-within {
     border-color: ${colors.brand.tertiary};
@@ -78,6 +78,7 @@ const StyledInput = styled.input`
   flex-grow: 1;
   border: 0;
   outline: none;
+  padding: 0;
   ${fonts.sizes(18)};
   z-index: 1;
   position: relative;
@@ -89,7 +90,7 @@ const StyledInputWrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: ${spacing.xsmall};
-  padding: ${spacing.small};
+  padding: ${spacing.xsmall};
   transition: border-color ${animations.durations.normal} ease;
 `;
 
@@ -257,6 +258,7 @@ const SuggestionInput = ({
               ariaLabelActive={t('tagSelector.showAllTags')}
               ariaLabelInActive={t('tagSelector.hideAllTags')}
               active={expanded}
+              size="small"
               stripped
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}

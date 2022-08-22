@@ -1,6 +1,6 @@
 import React, { ElementType, ReactNode } from 'react';
 import { css } from '@emotion/core';
-import { breakpoints, fonts, mq, spacing } from '@ndla/core/src';
+import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 
 interface StyledWrapperProps {

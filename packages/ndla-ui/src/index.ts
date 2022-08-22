@@ -252,3 +252,4 @@ export { TreeStructure } from './TreeStructure';
 export type { FolderType, TreeStructureProps, TreeStructureMenuProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
+export { default as LetterFilter } from './LetterFilter';

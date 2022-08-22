@@ -36,7 +36,11 @@ interface Props {
 
 const SectionHeading = ({ children, large = false, className }: Props) => {
   const Wrapper: ElementType = large ? LargeStyledWrapper : StyledWrapper;
-  return <Wrapper className={className}>{children}</Wrapper>;
+  return (
+    <Wrapper large={large} className={className}>
+      {children}
+    </Wrapper>
+  );
 };
 
 export default SectionHeading;

@@ -152,14 +152,14 @@ export const MyNdla = () => {
           <Wrapper>
             <MyNdlaResourceView
               folders={[
-                { title: 'name', link: 'hey' },
-                { title: 'Ny mappe', link: '' },
-                { title: 'Eldre mappe', link: '' },
-                { title: 'Eldre mappe', link: '' },
+                { title: 'Naturfag', link: '' },
+                { title: 'Matte', link: '' },
+                { title: 'Historie', link: '' },
+                { title: 'Norsk', link: '' },
               ]}
               resources={[
                 {
-                  title: 'My Resource',
+                  title: 'Norsktekst',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],
@@ -171,7 +171,7 @@ export const MyNdla = () => {
                   },
                 },
                 {
-                  title: 'My Resource',
+                  title: 'Alfabetet',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],
@@ -183,7 +183,7 @@ export const MyNdla = () => {
                   },
                 },
                 {
-                  title: 'My Resource',
+                  title: 'Alt om matte',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],
@@ -195,7 +195,7 @@ export const MyNdla = () => {
                   },
                 },
                 {
-                  title: 'My Resource',
+                  title: 'En ressurs',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],

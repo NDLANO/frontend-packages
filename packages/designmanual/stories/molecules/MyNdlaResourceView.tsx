@@ -12,14 +12,17 @@ import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
+import { ReplyArrow } from '@ndla/icons/action';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import { Button } from '@ndla/button/src/Button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
+import { Plus } from '@ndla/icons/action';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { Folder, ListResource, BlockResource } from '@ndla/ui';
+import { Folder, ListResource, BlockResource, ShareModal, SnackbarProvider, SearchField } from '@ndla/ui';
 import { AddButton } from '@ndla/button';
+import { orderBy } from 'lodash';
 import { menuItems } from '../pages/MyNdla';
 
 const Dash = styled.div`
@@ -79,6 +82,7 @@ const DashLeftSide = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  gap: ${spacing.small};
 `;
 
 const FoldersText = styled.p`
@@ -99,6 +103,10 @@ const CountWrapper = styled.div`
   justify-content: column;
   gap: 5px;
   align-items: center;
+`;
+
+const FlippedReplyArrow = styled(ReplyArrow)`
+  transform: rotateY(180deg);
 `;
 
 const StyledIconButton = styled(Button)`
@@ -123,6 +131,18 @@ const StyledIconButton = styled(Button)`
   }
 `;
 
+const StyledSelect = styled.select`
+  height: 40px;
+  border: none;
+  color: ${colors.brand.primary};
+  padding: 0px ${spacing.small};
+  display: flex;
+  justify-content: center;
+  background-color: ${colors.brand.lightest};
+  border-radius: 100px;
+  ${fonts.sizes('16')};
+`;
+
 type FolderProps = {
   title: string;
   link: string;
@@ -144,98 +164,139 @@ export interface ViewProps {
 export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const { t } = useTranslation();
   const [layout, setLayout] = useState('list');
+  const [isOpen, setIsOpen] = useState(false);
+  const [sort, setSort] = useState<any>();
+  const Resource = layout === 'block' ? BlockResource : ListResource;
+  const viewType = layout === 'block' ? 'block' : 'list';
+
+  const sortedFolders = orderBy(folders, 'title', sort).map((folder, i) => {
+    return (
+      <Folder
+        key={`folder-${i}`}
+        type={viewType}
+        title={folder.title}
+        link={folder.link}
+        subFolders={3}
+        subResources={3}
+        menuItems={menuItems}
+      />
+    );
+  });
+
+  const sortedResources = orderBy(resources, 'title', sort).map((resource, i) => {
+    return (
+      <Resource
+        key={`resource-${i}`}
+        title={resource.title}
+        topics={resource.topics}
+        tags={resource.tags}
+        description={layout !== 'list' ? resource.description : undefined}
+        resourceImage={{
+          alt: resource.resourceImage.alt,
+          src: resource.resourceImage.src,
+        }}
+        link={resource.link}
+        menuItems={menuItems}
+      />
+    );
+  });
+
   const windowSize = useWindowSize(1000);
   useEffect(() => {
     if (windowSize.innerWidth < 1000) {
       setLayout('list');
     }
   }, [windowSize]);
-  const Resource = layout === 'block' ? BlockResource : ListResource;
-  const viewType = layout === 'block' ? 'block' : 'list';
 
   return (
     <Dash>
-      <ResourceCountWrapper>
-        <CountWrapper>
-          <FolderOutlined aria-label={t('myNdla.folders')} />
-          <FoldersText>{t('myNdla.folders', { count: folders?.length })}</FoldersText>
-        </CountWrapper>
-        <CountWrapper>
-          <FileDocumentOutline aria-label={t('myNdla.resources')} />
-          <FoldersText>{t('myNdla.resources', { count: resources?.length })}</FoldersText>
-        </CountWrapper>
-      </ResourceCountWrapper>
-      <DashOptionWrapper>
-        <DashLeftSide>
-          <AddButton size="xsmall" aria-label={t('myNdla.newFolder')} ghostPill onClick={() => {}} />
-        </DashLeftSide>
-        {(folders || resources) && (
-          <DashRightSide>
-            <Tooltip tooltip={t('myNdla.listView')}>
-              <StyledIconButton
-                ghostPill
-                onClick={() => setLayout('list')}
-                size="small"
-                aria-label={t('myNdla.listView')}>
-                <FourlineHamburger />
-              </StyledIconButton>
-            </Tooltip>
-            <Tooltip tooltip={t('myNdla.detailView')}>
-              <StyledIconButton
-                ghostPill
-                onClick={() => setLayout('listLarger')}
-                size="small"
-                aria-label={t('myNdla.detailView')}>
-                <List />
-              </StyledIconButton>
-            </Tooltip>
-            <Tooltip tooltip={t('myNdla.shortView')}>
-              <StyledIconButton
-                ghostPill
-                onClick={() => setLayout('block')}
-                size="small"
-                aria-label={t('myNdla.shortView')}>
-                <GridListView />
-              </StyledIconButton>
-            </Tooltip>
-          </DashRightSide>
+      <SnackbarProvider>
+        <ResourceCountWrapper>
+          <CountWrapper>
+            <FolderOutlined aria-label={t('myNdla.folders')} />
+            <FoldersText>{t('myNdla.folders', { count: folders?.length })}</FoldersText>
+          </CountWrapper>
+          <CountWrapper>
+            <FileDocumentOutline aria-label={t('myNdla.resources')} />
+            <FoldersText>{t('myNdla.resources', { count: resources?.length })}</FoldersText>
+          </CountWrapper>
+        </ResourceCountWrapper>
+        <DashOptionWrapper>
+          <DashLeftSide>
+            <AddButton
+              text="Del"
+              size="xsmall"
+              aria-label={t('myNdla.newFolder')}
+              borderShape="rounded"
+              onClick={() => setIsOpen(!isOpen)}>
+              <FlippedReplyArrow />
+            </AddButton>
+            {isOpen && (
+              <ShareModal
+                title="Mappe 1"
+                subResources={3}
+                subFolders={3}
+                isOpen={isOpen}
+                closeCallback={() => setIsOpen(!isOpen)}
+                linkToCopy="Copy me, I am a text. "
+                codeToCopy="Copy me, I am a block of code <html> <h1>Title</h1> <p>Pararagraph and stuff</p></html> <html> <h1>Title</h1> <p>Pararagraph and stuff</p></html> <html> <h1>Title</h1> <p>Pararagraph and stuff</p></html>"
+              />
+            )}
+            <AddButton
+              text="Ny mappe"
+              size="xsmall"
+              aria-label={t('myNdla.newFolder')}
+              ghostPillOutline
+              onClick={() => {}}>
+              <Plus />
+            </AddButton>
+          </DashLeftSide>
+          {(folders || resources) && (
+            <DashRightSide>
+              <StyledSelect name="cars" id="cars" onChange={(e) => setSort(e.target.value)}>
+                <option> none </option>
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+              </StyledSelect>
+              <Tooltip tooltip={t('myNdla.listView')}>
+                <StyledIconButton
+                  ghostPill
+                  onClick={() => setLayout('list')}
+                  size="small"
+                  aria-label={t('myNdla.listView')}>
+                  <FourlineHamburger />
+                </StyledIconButton>
+              </Tooltip>
+              <Tooltip tooltip={t('myNdla.detailView')}>
+                <StyledIconButton
+                  ghostPill
+                  onClick={() => setLayout('listLarger')}
+                  size="small"
+                  aria-label={t('myNdla.detailView')}>
+                  <List />
+                </StyledIconButton>
+              </Tooltip>
+              <Tooltip tooltip={t('myNdla.shortView')}>
+                <StyledIconButton
+                  ghostPill
+                  onClick={() => setLayout('block')}
+                  size="small"
+                  aria-label={t('myNdla.shortView')}>
+                  <GridListView />
+                </StyledIconButton>
+              </Tooltip>
+              <SearchField placeholder="Søk" onChange={() => {}} value="" />
+            </DashRightSide>
+          )}
+        </DashOptionWrapper>
+        {(!folders || !resources) && (
+          <NoFolders>
+            <h1>Illustrasjon tom mappe</h1>
+          </NoFolders>
         )}
-      </DashOptionWrapper>
-      {(!folders || !resources) && (
-        <NoFolders>
-          <h1>Illustrasjon tom mappe</h1>
-        </NoFolders>
-      )}
-      <BlockWrapper type={layout}>
-        {folders?.map(({ title, link }, i) => (
-          <Folder
-            key={`folder-${i}`}
-            type={viewType}
-            title={title}
-            link={link}
-            subFolders={3}
-            subResources={3}
-            menuItems={menuItems}
-          />
-        ))}
-      </BlockWrapper>
-      <BlockWrapper type={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
-          <Resource
-            key={`resource-${i}`}
-            title={title}
-            topics={topics}
-            tags={tags}
-            description={layout !== 'list' ? description : undefined}
-            resourceImage={{
-              alt: resourceImage.alt,
-              src: resourceImage.src,
-            }}
-            link={link}
-            menuItems={menuItems}
-          />
-        ))}
-      </BlockWrapper>
+        <BlockWrapper type={layout}>{sortedFolders}</BlockWrapper>
+        <BlockWrapper type={layout}>{sortedResources}</BlockWrapper>
+      </SnackbarProvider>
     </Dash>
   );
 };

@@ -8,51 +8,24 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing, animations } from '@ndla/core';
-import { Plus } from '@ndla/icons/action';
+import { colors, fonts, spacing } from '@ndla/core';
 import { Button, ButtonProps } from './Button';
 
-const AddIconBorder = styled.div`
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid ${colors.brand.tertiary};
-  border-radius: 50%;
-  transition: background ${animations.durations.superFast} ease-in-out;
-`;
-
 const TextWrapper = styled.span`
-  color: ${colors.brand.primary};
   align-items: center;
   display: flex;
   ${fonts.weight.semibold}
   ${fonts.sizes('16')}
 `;
 
-const AddButtonStyle = styled(Button)`
+const AddButtonStyle = styled(Button)<ButtonProps>`
   display: flex;
-  padding: 0;
-  outline-offset: ${spacing.xxsmall};
-  gap: ${spacing.small};
+  padding: ${spacing.xxsmall} ${spacing.small};
+
+  gap: ${spacing.xsmall};
   svg {
-    fill: ${colors.brand.primary};
     width: 24px;
     height: 24px;
-  }
-  &:focus,
-  &:active,
-  &:hover {
-    background-color: transparent;
-    &:not(:disabled) {
-      svg {
-        fill: white;
-      }
-      ${AddIconBorder} {
-        background-color: ${colors.brand.primary};
-      }
-    }
   }
 
   &:disabled {
@@ -60,10 +33,7 @@ const AddButtonStyle = styled(Button)`
     svg {
       fill: ${colors.brand.grey};
     }
-    ${AddIconBorder} {
-      background-color: ${colors.brand.greyLighter};
-      border-color: ${colors.brand.greyLight};
-    }
+
     ${TextWrapper} {
       color: ${colors.brand.grey};
     }
@@ -72,14 +42,13 @@ const AddButtonStyle = styled(Button)`
 
 interface AddButtonProps extends ButtonProps {
   ['aria-label']: string;
+  text?: string;
 }
 
-export const AddButton = ({ children, size, ...rest }: AddButtonProps) => (
-  <AddButtonStyle size={size || 'xsmall'} ghostPill {...rest}>
-    <AddIconBorder>
-      <Plus />
-    </AddIconBorder>
-    <TextWrapper>{children}</TextWrapper>
+export const AddButton = ({ children, size, text, ...rest }: AddButtonProps) => (
+  <AddButtonStyle size={size || 'xsmall'} {...rest}>
+    {children}
+    <TextWrapper>{text}</TextWrapper>
   </AddButtonStyle>
 );
 

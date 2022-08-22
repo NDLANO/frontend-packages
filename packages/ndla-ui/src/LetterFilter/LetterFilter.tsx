@@ -28,15 +28,14 @@ const StyledButton = styled(IconButton)`
   width: ${spacing.normal};
   height: ${spacing.normal};
   padding: 0;
+  ${fonts.sizes(18)};
+  && {
+    font-weight: ${fonts.weight.semibold};
+  }
 
   :disabled {
     pointer-events: none;
     color: ${colors.brand.light};
-  }
-
-  ${fonts.sizes(18)};
-  && {
-    font-weight: ${fonts.weight.semibold};
   }
 `;
 
@@ -48,7 +47,6 @@ interface Props {
 
 const LetterFilter = ({ value, onChange, letters }: Props) => {
   const { t } = useTranslation();
-
   const uppercaseLetters = useMemo(() => letters.map((letter) => letter.toUpperCase()), [letters]);
 
   return (

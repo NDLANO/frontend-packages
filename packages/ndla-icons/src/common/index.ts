@@ -41,6 +41,7 @@ export { default as GridView } from './GridView';
 export { default as HashTag } from './HashTag';
 export { default as HelpCircle } from './HelpCircle';
 export { default as HelpCircleDual } from './HelpCircleDual';
+export { default as HelpCircleOutline } from './HelpCircleOutline';
 export { default as Home } from './Home';
 export { default as HumanMaleBoard } from './HumanMaleBoard';
 export { default as Information } from './Information';

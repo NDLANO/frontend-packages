@@ -16,7 +16,7 @@ interface Props {
   children: (closeModal: () => void) => ReactNode;
   onClick?: () => void;
   onClose?: () => void;
-  animation?: 'slide-up' | 'slide-down' | 'zoom-in' | 'subtle';
+  animation?: 'slide-down' | 'zoom-in' | 'subtle';
   size?: 'regular' | 'medium' | 'large' | 'fullscreen' | 'full-width' | 'custom';
   backgroundColor?: 'white' | 'grey' | 'grey-dark' | 'blue' | 'light-gradient';
   animationDuration?: number;
@@ -75,16 +75,13 @@ const Modal = ({
     }
   };
 
-  let clonedComponent: ReactElement | undefined;
-  if (activateButton) {
-    clonedComponent = cloneElement(activateButton, {
-      onClick: (e: MouseEvent<HTMLButtonElement>) => {
-        openModal();
-        onClickEvent?.();
-        e.preventDefault();
-      },
-    });
-  }
+  const onActivateClick = (e: MouseEvent<HTMLButtonElement>) => {
+    openModal();
+    onClickEvent?.();
+    e.preventDefault();
+  };
+
+  const clonedComponent = activateButton ? cloneElement(activateButton, { onClick: onActivateClick }) : undefined;
 
   const modalButton = clonedComponent && (wrapperFunctionForButton?.(clonedComponent) ?? clonedComponent);
   return (
@@ -142,23 +139,6 @@ const modalAnimations = `
     }
   }
 
-  @keyframes modal-slideup {
-    0% {
-      transform: translate3d(0, 100vh, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  @keyframes modal-slideup-exit {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(0, 100vh, 0);
-    }
-  }
-
   @keyframes modal-slidedown {
     0% {
       opacity: 0;
@@ -207,18 +187,12 @@ const animationContainer = css`
   z-index: 9001;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  max-height: 100vh;
+  max-height: 100%;
   // 1. Animations
   &.zoom-in {
     animation-name: modal-zoomIn-exit;
     &.animateIn {
       animation-name: modal-zoomIn;
-    }
-  }
-  &.slide-up {
-    animation-name: modal-slideup-exit;
-    &.animateIn {
-      animation-name: modal-slideup;
     }
   }
   &.slide-down {
@@ -235,48 +209,48 @@ const animationContainer = css`
   }
   // 2. Modal size modifiers
   &.fullscreen {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
   }
   &.full-width {
-    width: 100vw;
+    width: 100%;
     height: auto;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   }
   &.large {
     max-width: 60.625em;
     width: 60.625em;
-    max-height: 85vh;
+    max-height: 85%;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     ${mq.range({ until: '60.625em' })} {
       box-shadow: none;
-      width: 100vw;
-      height: 100vw;
-      max-height: 100vh;
-      min-height: 100vh;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      min-height: 100%;
     }
   }
   &.medium {
     max-width: 49.375em;
     width: 49.375em;
-    max-height: 85vh;
+    max-height: 85%;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     ${mq.range({ until: '49.375em' })} {
       box-shadow: none;
-      height: 100vh;
-      width: 100vw;
-      min-height: 100vh;
+      height: 100%;
+      width: 100%;
+      min-height: 100%;
     }
   }
   &.regular {
     ${mq.range({ until: breakpoints.tablet })} {
-      height: 100vh;
-      width: 100vw;
+      height: 100%;
+      width: 100%;
     }
     ${mq.range({ from: breakpoints.tablet })} {
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
       width: 90%;
-      max-height: 85vh;
+      max-height: 85%;
       max-width: 38.3125em;
       min-width: 38.3125em;
     }
@@ -336,6 +310,10 @@ const narrowStyle = css`
 `;
 
 const dialogStyles = css`
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   ${modalAnimations}
   ${animationContainer}
 `;

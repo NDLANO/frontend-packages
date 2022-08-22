@@ -12,7 +12,6 @@ import Modal, { ModalCloseButton, ModalBody } from '@ndla/modal';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import { ToggleItem } from '../Filter';
 
 import FrontpageAllSubjects, { subjectsProps } from '../Frontpage/FrontpageAllSubjects';

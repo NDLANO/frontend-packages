@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
 import { WithTranslation, withTranslation } from 'react-i18next';
-// @ts-ignore
 import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {

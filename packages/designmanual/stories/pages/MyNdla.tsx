@@ -156,6 +156,10 @@ export const MyNdla = () => {
                 { title: 'Matte', link: '' },
                 { title: 'Historie', link: '' },
                 { title: 'Norsk', link: '' },
+                { title: 'Amerika historie', link: '' },
+                { title: 'Australia historie', link: '' },
+                { title: 'Bygg', link: '' },
+                { title: 'Medisin', link: '' },
               ]}
               resources={[
                 {
@@ -196,6 +200,30 @@ export const MyNdla = () => {
                 },
                 {
                   title: 'En ressurs',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                    alt: 'alt',
+                  },
+                },
+                {
+                  title: 'Historien om det britiske imperiet',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                    alt: 'alt',
+                  },
+                },
+                {
+                  title: 'Banankrigen',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
                   tags: ['tag', 'tag', 'tag'],

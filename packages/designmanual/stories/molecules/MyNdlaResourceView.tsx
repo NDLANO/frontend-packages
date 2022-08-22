@@ -20,7 +20,7 @@ import { colors, spacing, fonts } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
-import { Folder, ListResource, BlockResource, ShareModal, SnackbarProvider, SearchField } from '@ndla/ui';
+import { Folder, ListResource, BlockResource, ShareModal, SnackbarProvider } from '@ndla/ui';
 import { AddButton } from '@ndla/button';
 import { orderBy } from 'lodash';
 import { menuItems } from '../pages/MyNdla';
@@ -143,6 +143,9 @@ const StyledSelect = styled.select`
   ${fonts.sizes('16')};
 `;
 
+const SearchBarDiv = styled.div``;
+const SearchBar = styled.input``;
+
 type FolderProps = {
   title: string;
   link: string;
@@ -166,10 +169,33 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const [layout, setLayout] = useState('list');
   const [isOpen, setIsOpen] = useState(false);
   const [sort, setSort] = useState<any>();
+  const [query, setQuery] = useState('');
+  const [resultFolders, setResultFolders] = useState(folders);
+  const [resultResources, setResultResources] = useState(resources);
   const Resource = layout === 'block' ? BlockResource : ListResource;
   const viewType = layout === 'block' ? 'block' : 'list';
 
-  const sortedFolders = orderBy(folders, 'title', sort).map((folder, i) => {
+  //search functionality
+  const filter = (e: any) => {
+    const keyword = e.target.value;
+
+    if (keyword !== '') {
+      const resultsFolders = folders?.filter((folder) => {
+        return folder.title.toLocaleLowerCase().startsWith(keyword.toLowerCase());
+      });
+      const resultsResources = resources?.filter((resource) => {
+        return resource.title.toLocaleLowerCase().startsWith(keyword.toLowerCase());
+      });
+      setResultFolders(resultsFolders);
+      setResultResources(resultsResources);
+    } else {
+      setResultFolders(folders);
+      setResultResources(resources);
+    }
+    setQuery(keyword);
+  };
+
+  const sortedFolders = orderBy(resultFolders, 'title', sort).map((folder, i) => {
     return (
       <Folder
         key={`folder-${i}`}
@@ -183,7 +209,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
     );
   });
 
-  const sortedResources = orderBy(resources, 'title', sort).map((resource, i) => {
+  const sortedResources = orderBy(resultResources, 'title', sort).map((resource, i) => {
     return (
       <Resource
         key={`resource-${i}`}
@@ -285,7 +311,9 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                   <GridListView />
                 </StyledIconButton>
               </Tooltip>
-              <SearchField placeholder="Søk" onChange={() => {}} value="" />
+              <SearchBarDiv>
+                <SearchBar type="text" placeholder="søk" value={query} onChange={filter} />
+              </SearchBarDiv>
             </DashRightSide>
           )}
         </DashOptionWrapper>

@@ -12,6 +12,8 @@
 /** @ts-ignore */
 export * from './index-javascript';
 
+export { default as SectionHeading } from './SectionHeading';
+
 export {
   ArticleByline,
   ArticleContent,

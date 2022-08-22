@@ -127,6 +127,8 @@ const SlideshowLink = styled(SafeLink)<SlideshowLinkProps>`
 `;
 
 const SlideshowWrapper = styled.section`
+  width: 100%;
+  overflow: hidden;
   &:hover {
     ${StyledNavigationArrow} {
       opacity: 1;

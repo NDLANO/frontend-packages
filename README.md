@@ -86,7 +86,6 @@ yarn lerna publish from-package
 yarn deploy
 ```
 
-
 ## New Icons
 
 ### Download icon

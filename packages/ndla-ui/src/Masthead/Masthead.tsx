@@ -8,7 +8,7 @@
 
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core/src';
+import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { MessageBanner } from '../Messages';
 import SkipToMainContent from './SkipToMainContent';

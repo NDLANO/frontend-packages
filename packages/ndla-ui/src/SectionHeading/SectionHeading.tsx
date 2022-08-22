@@ -26,7 +26,7 @@ const StyledWrapper = styled.h2<StyledWrapperProps>`
     `};
 `;
 
-const LargeStyledWrapper = StyledWrapper.withComponent('h2');
+const LargeStyledWrapper = StyledWrapper.withComponent('h1');
 
 interface Props {
   children: ReactNode;
@@ -36,7 +36,11 @@ interface Props {
 
 const SectionHeading = ({ children, large = false, className }: Props) => {
   const Wrapper: ElementType = large ? LargeStyledWrapper : StyledWrapper;
-  return <Wrapper className={className}>{children}</Wrapper>;
+  return (
+    <Wrapper large={large} className={className}>
+      {children}
+    </Wrapper>
+  );
 };
 
 export default SectionHeading;

@@ -26,7 +26,7 @@ const StyledWrapper = styled.h2<StyledWrapperProps>`
     `};
 `;
 
-const LargeStyledWrapper = StyledWrapper.withComponent('h2');
+const LargeStyledWrapper = StyledWrapper.withComponent('h1');
 
 interface Props {
   children: ReactNode;

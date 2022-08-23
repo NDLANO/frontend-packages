@@ -12,10 +12,9 @@ import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
-import { ReplyArrow } from '@ndla/icons/action';
-import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
+import { GridListView, FourlineHamburger, List, ReplyArrow } from '@ndla/icons/action';
 import Button from '@ndla/button';
-import { FolderOutlined } from '@ndla/icons/contentType';
+import { FolderOutlined, LearningPath } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
 import Tooltip from '@ndla/tooltip';
@@ -160,6 +159,7 @@ type ResourceProps = {
   link: string;
   description?: string;
 };
+
 export interface ViewProps {
   folders?: FolderProps[];
   resources?: ResourceProps[];
@@ -174,13 +174,16 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
   const [query, setQuery] = useState('');
   const [resultFolders, setResultFolders] = useState(folders);
   const [resultResources, setResultResources] = useState(resources);
+  const [showLayOutIcons, setShowLayoutIcons] = useState(false);
+  const toggleLayoutIcons = () => {
+    setShowLayoutIcons(!showLayOutIcons);
+  };
   const Resource = layout === 'block' ? BlockResource : ListResource;
   const viewType = layout === 'block' ? 'block' : 'list';
 
   //search functionality
   const filter = (e: any) => {
     const keyword = e.target.value;
-
     if (keyword !== '') {
       const resultsFolders = folders?.filter((folder) => {
         return folder.title.toLocaleLowerCase().startsWith(keyword.toLowerCase());
@@ -286,31 +289,44 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
                 <option value="asc">A-Z</option>
                 <option value="desc">Z-A</option>
               </StyledSelect>
-              <Tooltip tooltip={t('myNdla.listView')}>
+              {showLayOutIcons && (
+                <>
+                  <Tooltip tooltip={t('myNdla.listView')}>
+                    <StyledIconButton
+                      ghostPill
+                      onClick={() => setLayout('list')}
+                      size="small"
+                      aria-label={t('myNdla.listView')}>
+                      <FourlineHamburger />
+                    </StyledIconButton>
+                  </Tooltip>
+                  <Tooltip tooltip={t('myNdla.detailView')}>
+                    <StyledIconButton
+                      ghostPill
+                      onClick={() => setLayout('listLarger')}
+                      size="small"
+                      aria-label={t('myNdla.detailView')}>
+                      <List />
+                    </StyledIconButton>
+                  </Tooltip>
+                  <Tooltip tooltip={t('myNdla.shortView')}>
+                    <StyledIconButton
+                      ghostPill
+                      onClick={() => setLayout('block')}
+                      size="small"
+                      aria-label={t('myNdla.shortView')}>
+                      <GridListView />
+                    </StyledIconButton>
+                  </Tooltip>
+                </>
+              )}
+              <Tooltip tooltip={t('resultType.showMore')}>
                 <StyledIconButton
                   ghostPill
-                  onClick={() => setLayout('list')}
+                  onClick={toggleLayoutIcons}
                   size="small"
-                  aria-label={t('myNdla.listView')}>
-                  <FourlineHamburger />
-                </StyledIconButton>
-              </Tooltip>
-              <Tooltip tooltip={t('myNdla.detailView')}>
-                <StyledIconButton
-                  ghostPill
-                  onClick={() => setLayout('listLarger')}
-                  size="small"
-                  aria-label={t('myNdla.detailView')}>
-                  <List />
-                </StyledIconButton>
-              </Tooltip>
-              <Tooltip tooltip={t('myNdla.shortView')}>
-                <StyledIconButton
-                  ghostPill
-                  onClick={() => setLayout('block')}
-                  size="small"
-                  aria-label={t('myNdla.shortView')}>
-                  <GridListView />
+                  aria-label={t('resultType.showMore')}>
+                  <LearningPath />
                 </StyledIconButton>
               </Tooltip>
               <SearchBarDiv>

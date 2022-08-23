@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
-import { FileDocumentOutline } from '@ndla/icons/common';
+import { FileDocumentOutline, Search } from '@ndla/icons/common';
 import { ReplyArrow } from '@ndla/icons/action';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import Button from '@ndla/button';
@@ -144,7 +144,9 @@ const StyledSelect = styled.select`
 `;
 
 const SearchBarDiv = styled.div``;
-const SearchBar = styled.input``;
+const SearchBar = styled.input`
+  border-radius: 5px;
+`;
 
 type FolderProps = {
   title: string;

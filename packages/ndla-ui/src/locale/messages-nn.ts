@@ -27,11 +27,11 @@ const messages = {
     },
   },
   tagSelector: {
-    label: 'Legg til tag',
-    placeholder: 'Skriv tag namn',
+    label: 'Legg til emneknagg',
+    placeholder: 'Skriv inn emneknagg',
     removeTag: 'Ta vekk {{name}}',
-    hideAllTags: 'Skjul alle tagger',
-    showAllTags: 'Vis alle tagger',
+    hideAllTags: 'Skjul alle emneknaggar',
+    showAllTags: 'Vis alle emneknaggar',
   },
   htmlTitles: {
     titleTemplate,

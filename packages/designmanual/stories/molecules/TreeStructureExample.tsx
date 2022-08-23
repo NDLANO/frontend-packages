@@ -136,7 +136,7 @@ export const STRUCTURE_EXAMPLE_WRAPPED = (): FolderType[] => [
   ...STRUCTURE_EXAMPLE(false),
   {
     id: 'tags',
-    name: 'Mine tagger',
+    name: 'Mine emneknagger',
     status: 'private',
     icon: <HashTag />,
     subfolders: [],

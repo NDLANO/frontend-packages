@@ -30,6 +30,7 @@ interface Props {
   hideFigCaption?: boolean;
   hideIconsAndAuthors?: boolean;
   figureType?: FigureType;
+  licenseButtons?: ReactNode;
 }
 
 const FigureNotion = ({
@@ -44,6 +45,7 @@ const FigureNotion = ({
   hideFigCaption,
   hideIconsAndAuthors,
   figureType,
+  licenseButtons,
 }: Props) => {
   const { t, i18n } = useTranslation();
   const license = getLicenseByAbbreviation(licenseString, i18n.language);
@@ -84,8 +86,9 @@ const FigureNotion = ({
                   source: t('source'),
                   learnAboutLicenses: t('license.learnMore'),
                   title: t('title'),
-                }}
-              />
+                }}>
+                {licenseButtons}
+              </FigureLicenseDialog>
             </FigureCaption>
           ) : (
             <BottomBorder />

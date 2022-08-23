@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 import { noScroll } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import { SearchField } from '../Search';
 import { SearchFieldForm } from '../Search/SearchFieldForm';
 import SearchResultSleeve from '../Search/SearchResultSleeve';
 import { ContentTypeResultType, Resource } from '../types';
+import { getMastheadHeight } from '../Masthead';
 
 const StyledWrapper = styled.section`
   border-radius: 2px;
@@ -95,11 +95,12 @@ const FrontpageSearch = ({
 
   useEffect(() => {
     let yCoordinate = 0;
+    const mastheadHeight = getMastheadHeight() || 84;
     const resetScroll = () => {
       window.scrollTo({ top: yCoordinate });
     };
     if (inputHasFocus && searchFieldRef && searchFieldRef.current) {
-      yCoordinate = searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset;
+      yCoordinate = searchFieldRef.current.getBoundingClientRect().top + window.pageYOffset - mastheadHeight;
       const isIE11 = isIE && parseInt(browserVersion) < 12;
       if (isIE11) {
         // insta move on IE

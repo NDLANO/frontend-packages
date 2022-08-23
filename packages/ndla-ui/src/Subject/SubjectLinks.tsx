@@ -1,11 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { spacing } from '@ndla/core';
 import SafeLink, { SafeLinkProps } from '@ndla/safelink';
 
 import { SubjectSectionTitle } from './Subject';
 
-const classes = BEMHelper('c-subject-links');
+const SubjectLinksSection = styled.section`
+  margin-bottom: ${spacing.large};
+`;
+
+const StyledSubjectSectionTitle = styled(SubjectSectionTitle)`
+  margin: 0 0 ${spacing.small} 0;
+`;
+
+const SubjectLinksList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
 
 interface Props {
   links: {
@@ -16,28 +28,18 @@ interface Props {
 }
 
 const SubjectLinks = ({ links, heading }: Props) => (
-  <section {...classes()}>
-    <SubjectSectionTitle className={classes('heading').className}>{heading}</SubjectSectionTitle>
+  <SubjectLinksSection>
+    <StyledSubjectSectionTitle>{heading}</StyledSubjectSectionTitle>
     <nav>
-      <ul {...classes('list')}>
+      <SubjectLinksList>
         {links.map((link) => (
-          <li key={link.toLinkProps().to.toString()} {...classes('item')}>
+          <li key={link.toLinkProps().to.toString()}>
             <SafeLink {...link.toLinkProps()}>{link.text}</SafeLink>
           </li>
         ))}
-      </ul>
+      </SubjectLinksList>
     </nav>
-  </section>
+  </SubjectLinksSection>
 );
-
-SubjectLinks.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      toLinkProps: PropTypes.func.isRequired,
-      text: PropTypes.string.isRequired,
-    }),
-  ),
-  heading: PropTypes.string.isRequired,
-};
 
 export default SubjectLinks;

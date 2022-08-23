@@ -1,6 +1,6 @@
 {
   "name": "@ndla/code",
-  "version": "1.1.26",
+  "version": "1.1.29",
   "description": "Code components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,9 +28,9 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^3.3.1",
+    "@ndla/button": "^3.3.4",
     "@ndla/core": "^2.3.4",
-    "@ndla/icons": "^1.11.4",
+    "@ndla/icons": "^1.11.6",
     "@ndla/util": "^3.0.1",
     "@types/react-syntax-highlighter": "^13.5.2",
     "prismjs": "^1.22.0",

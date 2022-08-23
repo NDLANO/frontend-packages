@@ -40,20 +40,20 @@ export const UserInfo = ({ user }: Props) => {
       }
 
       <ShortInfoDiv>
-        <div>
+        <div data-hj-suppress>
           {t('user.username')}: <b>{user.uid}</b>
         </div>
-        <div>
+        <div data-hj-suppress>
           {t('user.name')}: <b>{user.displayName}</b>
         </div>
-        <div>
+        <div data-hj-suppress>
           {t('user.mail')}: <b>{user.mail?.join(', ')}</b>
         </div>
       </ShortInfoDiv>
 
       {t('user.modal.collectedInfo')}
 
-      <InfoList>
+      <InfoList data-hj-suppress>
         {parsedUser.organizations.map((org) => (
           <li key={org.id}>
             {`${org.displayName}${org.membership.primarySchool ? ` (${t('user.primarySchool')})` : ''}`}

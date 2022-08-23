@@ -12,6 +12,8 @@
 /** @ts-ignore */
 export * from './index-javascript';
 
+export { default as SectionHeading } from './SectionHeading';
+
 export {
   ArticleByline,
   ArticleContent,
@@ -25,6 +27,10 @@ export {
   ArticleFavoritesButton,
 } from './Article';
 
+export { CompetenceGoalsDialog } from './CompetenceGoals';
+
+export { default as TopicIntroductionList } from './TopicIntroductionList';
+
 export { default as Table } from './Table';
 
 export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
@@ -33,7 +39,7 @@ export { createUniversalPortal } from './utils/createUniversalPortal';
 
 export { default as NoContentBox } from './NoContentBox';
 
-export { default as Masthead, MastheadItem, getMastheadHeight, useMastheadHeight } from './Masthead';
+export { default as Masthead, MastheadItem, getMastheadHeight, useMastheadHeight, SkipToMainContent } from './Masthead';
 
 export { default as Portrait } from './Portrait';
 
@@ -80,6 +86,8 @@ export {
   Hero,
   NdlaFilmHero,
 } from './Hero';
+
+export { FilterList, FilterListPhone, FilterButtons } from './Filter';
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
@@ -208,7 +216,6 @@ export {
   SubjectCarousel,
   SubjectChildContent,
   SubjectContent,
-  SubjectFilter,
   SubjectFlexChild,
   SubjectFlexWrapper,
   SubjectHeader,
@@ -245,3 +252,5 @@ export type { Snack, SnackContext } from './SnackBar';
 export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
 export type { FolderType, TreeStructureProps, TreeStructureMenuProps } from './TreeStructure';
+
+export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';

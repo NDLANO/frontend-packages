@@ -48,10 +48,10 @@ export const StyledNavigationArrow = styled.div<StyledNavigationArrowProps>`
   transform: translate(${spacing.xsmall}, 0);
   ${(props) =>
     props.right &&
-    `
-    right: 0;
-    transform: translate(${spacing.xsmall}, 0);
-  `}
+    css`
+      right: 0;
+      transform: translate(-${spacing.xsmall}, 0);
+    `}
 `;
 
 const NavigationArrowButton = styled.button`

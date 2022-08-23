@@ -13,7 +13,7 @@ import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
-import { Button } from '@ndla/button/src/Button';
+import Button from '@ndla/button';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { colors, spacing, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';

@@ -441,8 +441,9 @@ const messages = {
       h5p: 'H5P',
       files: 'Files',
       embedlink: 'Embedded link',
-      other: 'Other content',
       concept: 'Concepts',
+      podcast: 'Podcast',
+      other: 'Other content',
     },
     embedlink: {
       heading: 'How to show the article in other content',
@@ -477,6 +478,11 @@ const messages = {
       heading: 'How to reuse audio files',
       description: 'Remember to copy the text to be attached to the audio where you use it.',
       rules: 'Rules for use of audio file:',
+    },
+    podcast: {
+      heading: 'How to reuse podcasts',
+      description: 'Remember to copy the text to be attached to the podcast where you use it.',
+      rules: 'Rules for use of podcast:',
     },
     video: {
       heading: 'How to reuse videos',
@@ -995,6 +1001,7 @@ const messages = {
   },
   myNdla: {
     myNDLA: 'My NDLA',
+    support: 'Support',
     resources: '{{count}} Resource',
     resources_plural: '{{count}} Resources',
     folders: '{{count}} Folder',
@@ -1027,7 +1034,7 @@ const messages = {
     more: 'More options',
     listView: 'List view',
     detailView: 'Detailed listview',
-    shortView: 'Short view',
+    shortView: 'Card view',
     myPage: {
       confirmDeleteAccount: 'Are you sure you want to delete your account?',
       confirmDeleteAccountButton: 'Delete account',
@@ -1054,7 +1061,7 @@ const messages = {
 
       storageInfo: {
         title: 'How to save your favourite resources from NDLA',
-        text: 'When you wish to save a resource, you can do so by clicking the heart on the top right corner of the page. You will then get an option to store the resource in a folder',
+        text: 'When you wish to save a resource, you can do so by clicking the heart button. You will then get an option to store the resource in a folder',
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
@@ -1074,11 +1081,12 @@ const messages = {
       linkCopied: 'Copied to clipboard',
       addToMyNdla: 'Add to My NDLA',
       addedToMyNdla: 'Added to My NDLA',
-      addedToFolder: 'Resource added to "{{folderName}}"',
+      addedToFolder: 'Resource added to ',
       removedFromFolder: 'Removed from "{{folderName}}"',
       titleUpdated: 'Title updated',
       tagsUpdated: 'Tags updated',
       show: 'Show',
+      save: 'Save resource',
     },
   },
   snackbar: {

@@ -1,14 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { withTranslation, WithTranslation } from 'react-i18next';
-import { spacingUnit } from '@ndla/core';
+import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
 import { SafeLinkProps } from '@ndla/safelink';
 import { ContentCard } from '../index';
 import { SubjectSectionTitle } from './Subject';
-
-const subjectCarouselClasses = BEMHelper('c-subject-carousel');
 
 interface Props {
   subjects?: {
@@ -24,11 +22,42 @@ interface Props {
   wideScreen?: boolean;
 }
 
-const getSubclasses = (obj: Record<string, boolean>): string[] => {
-  return Object.entries(obj)
-    .filter(([_, value]) => !!value)
-    .map(([className, _]) => className);
-};
+interface StyledSectionProps {
+  narrowScreen: boolean;
+  wideScreen: boolean;
+}
+
+const StyledSection = styled.section<StyledSectionProps>`
+  margin-bottom: ${spacing.large};
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: 100px;
+  }
+  ${(p) =>
+    p.narrowScreen &&
+    css`
+      display: none;
+      ${mq.range({ from: breakpoints.tablet })} {
+        display: block;
+      }
+    `};
+  ${(p) =>
+    p.narrowScreen &&
+    css`
+      ${mq.range({ from: breakpoints.tablet })} {
+        display: block;
+      }
+    `};
+`;
+
+const StyledSubjectSectionTitle = styled(SubjectSectionTitle)`
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-left: ${spacing.medium} !important;
+  }
+
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-left: ${spacingUnit * 3}px !important;
+  }
+`;
 
 const SubjectCarousel = ({
   subjects = [],
@@ -37,7 +66,7 @@ const SubjectCarousel = ({
   wideScreen = false,
   t,
 }: Props & WithTranslation) => (
-  <section {...subjectCarouselClasses('', getSubclasses({ narrowScreen, wideScreen }))}>
+  <StyledSection narrowScreen={narrowScreen} wideScreen={wideScreen}>
     <CarouselAutosize
       breakpoints={[
         {
@@ -99,7 +128,7 @@ const SubjectCarousel = ({
       itemsLength={subjects?.length ?? 0}>
       {(autoSizedProps) => (
         <>
-          <SubjectSectionTitle {...subjectCarouselClasses('title')}>{title}</SubjectSectionTitle>
+          <StyledSubjectSectionTitle>{title}</StyledSubjectSectionTitle>
           <Carousel
             {...autoSizedProps}
             disableScroll={(autoSizedProps?.columnsPrSlide ?? 0) >= subjects.length}
@@ -122,30 +151,7 @@ const SubjectCarousel = ({
         </>
       )}
     </CarouselAutosize>
-  </section>
+  </StyledSection>
 );
-
-SubjectCarousel.propTypes = {
-  subjects: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string,
-      text: PropTypes.string.isRequired,
-      image: PropTypes.string,
-      toLinkProps: PropTypes.func.isRequired,
-    }).isRequired,
-  ).isRequired,
-  title: PropTypes.string,
-  narrowScreen: PropTypes.bool,
-  wideScreen: PropTypes.bool,
-};
-
-SubjectCarousel.defaultProps = {
-  subjects: [],
-  title: '',
-  narrowScreen: false,
-  wideScreen: false,
-};
 
 export default withTranslation()(SubjectCarousel);

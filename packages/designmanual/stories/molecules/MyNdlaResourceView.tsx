@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
-import { FileDocumentOutline, Search } from '@ndla/icons/common';
+import { FileDocumentOutline } from '@ndla/icons/common';
 import { ReplyArrow } from '@ndla/icons/action';
 import { GridListView, FourlineHamburger, List } from '@ndla/icons/action';
 import Button from '@ndla/button';

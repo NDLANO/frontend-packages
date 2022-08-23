@@ -20,7 +20,16 @@ const StyledImage = styled.img`
 
 const StyledImageWrapper = styled.div`
   overflow: hidden;
-  height: 60%;
+  height: 70%;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const CourseTitleWrapper = styled.div`
+  overflow: hidden;
+  height: 30%;
   position: relative;
 `;
 
@@ -38,9 +47,11 @@ const CourseTitle = styled.h3`
 const LinkWrapper = styled(SafeLink)`
   box-shadow: none;
   height: 140px;
+  width: 256px;
   max-width: 350px;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 4px;
+
   &:hover {
     border: 1px solid ${colors.brand.tertiary};
     ${CourseTitle} {
@@ -77,15 +88,16 @@ const CourseCard = ({ courseTitle, image, href, favouritable, favorite }: Props)
             activeIcon={<Heart />}
             inactiveIcon={<HeartOutline />}
             active={favorite?.isFavorite}
-            size="small"
+            size="xsmall"
             ghostPill
             onClick={() => favorite?.setFavorite(favorite?.isFavorite)}
           />
         )}
         <StyledImage src={image?.src} />
       </StyledImageWrapper>
-
-      <CourseTitle>{courseTitle}</CourseTitle>
+      <CourseTitleWrapper>
+        <CourseTitle>{courseTitle}</CourseTitle>
+      </CourseTitleWrapper>
     </LinkWrapper>
   );
 };

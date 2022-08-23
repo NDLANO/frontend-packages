@@ -25,6 +25,7 @@ const CoursesWrapper = styled.div`
   display: grid;
   gap: 12px;
   row-gap: 24px;
+  justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   ${mq.range({ until: breakpoints.tabletWide })} {
     grid-template-columns: repeat(1, 1fr);
@@ -44,7 +45,7 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+            src: '',
             alt: '',
           }}
           favorite={{
@@ -57,7 +58,7 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+            src: '',
             alt: '',
           }}
           favorite={{
@@ -70,7 +71,7 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+            src: '',
             alt: '',
           }}
           favorite={{
@@ -83,7 +84,7 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+            src: '',
             alt: '',
           }}
           favorite={{
@@ -96,7 +97,7 @@ export const MyCourses = () => {
           href="www.google.com"
           favouritable={true}
           image={{
-            src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+            src: '',
             alt: '',
           }}
           favorite={{

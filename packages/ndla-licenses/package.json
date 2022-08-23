@@ -1,6 +1,6 @@
 {
   "name": "@ndla/licenses",
-  "version": "5.0.11",
+  "version": "5.0.12",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -30,9 +30,9 @@
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@ndla/core": "^2.3.4",
-    "@ndla/icons": "^1.11.6",
-    "@ndla/tooltip": "^2.2.0"
+    "@ndla/core": "^2.3.5",
+    "@ndla/icons": "^1.11.7",
+    "@ndla/tooltip": "^2.2.1"
   },
   "publishConfig": {
     "access": "public"

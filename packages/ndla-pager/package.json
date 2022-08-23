@@ -1,6 +1,6 @@
 {
   "name": "@ndla/pager",
-  "version": "1.1.32",
+  "version": "1.1.33",
   "description": "Pager component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,8 +26,8 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^2.3.4",
-    "@ndla/safelink": "^2.2.10"
+    "@ndla/core": "^2.3.5",
+    "@ndla/safelink": "^2.2.11"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors } from '@ndla/core/src';
+import { colors } from '@ndla/core';
 import { IAudioMetaInformation, IAudioSummary } from '@ndla/types-audio-api';
 import React from 'react';
 import AudioSearchResult from './AudioSearchResult';

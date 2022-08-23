@@ -40,7 +40,6 @@ const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {
     return (
       <Modal
         backgroundColor="grey"
-        animation="slide-up"
         animationDuration={200}
         size="fullscreen"
         activateButton={

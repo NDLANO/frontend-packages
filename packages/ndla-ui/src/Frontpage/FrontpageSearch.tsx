@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { colors, spacing, mq, breakpoints, animations } from '@ndla/core';
 import { noScroll } from '@ndla/util';
 import { useTranslation } from 'react-i18next';
-// @ts-ignore
 import { SearchField } from '../Search';
 import { SearchFieldForm } from '../Search/SearchFieldForm';
 import SearchResultSleeve from '../Search/SearchResultSleeve';

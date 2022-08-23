@@ -58,7 +58,6 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
     id: MY_FOLDERS_ID,
     name: 'Mine mapper',
     status: 'private',
-    isFavorite: false,
     breadcrumbs: [],
     resources: [],
     subfolders: [
@@ -66,7 +65,6 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
         id: '1',
         name: 'Mine favoritter',
         status: 'private',
-        isFavorite: false,
         breadcrumbs: [{ id: '1', name: 'Mine Favoritter' }],
         resources: [targetResource],
         subfolders: newUser
@@ -76,7 +74,6 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
                 id: '2',
                 name: 'Eksamen',
                 status: 'private',
-                isFavorite: false,
                 breadcrumbs: [
                   { id: '1', name: 'Mine Favoritter' },
                   { id: '2', name: 'Eksamen' },
@@ -87,7 +84,6 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
                     id: '3',
                     name: 'Eksamens oppgaver',
                     status: 'private',
-                    isFavorite: false,
                     breadcrumbs: [
                       { id: '1', name: 'Mine Favoritter' },
                       { id: '2', name: 'Eksamen' },
@@ -100,7 +96,6 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
                     id: '4',
                     name: 'Eksamen 2022',
                     status: 'private',
-                    isFavorite: false,
                     breadcrumbs: [
                       { id: '1', name: 'Mine Favoritter' },
                       { id: '2', name: 'Eksamen' },
@@ -115,7 +110,6 @@ export const STRUCTURE_EXAMPLE = (newUser?: boolean): FolderType[] => [
                 id: '5',
                 name: 'Oppgaver',
                 status: 'private',
-                isFavorite: false,
                 breadcrumbs: [
                   { id: '1', name: 'Mine Favoritter' },
                   { id: '5', name: 'Oppgaver' },
@@ -134,7 +128,6 @@ export const STRUCTURE_EXAMPLE_WRAPPED = (): FolderType[] => [
     id: '',
     name: 'Min NDLA',
     status: 'private',
-    isFavorite: false,
     icon: <User />,
     subfolders: [],
     resources: [],
@@ -145,7 +138,6 @@ export const STRUCTURE_EXAMPLE_WRAPPED = (): FolderType[] => [
     id: 'tags',
     name: 'Mine tagger',
     status: 'private',
-    isFavorite: false,
     icon: <HashTag />,
     subfolders: [],
     resources: [],
@@ -157,7 +149,6 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
   id,
   name,
   status: 'private',
-  isFavorite: false,
   subfolders: [],
   breadcrumbs: breadcrumbs.concat({ name, id }),
   resources: [],

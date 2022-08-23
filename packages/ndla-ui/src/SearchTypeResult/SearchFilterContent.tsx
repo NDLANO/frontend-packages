@@ -12,7 +12,6 @@ import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 
 import SearchViewType, { SearchViewTypeProps } from './SearchViewType';
-// @ts-ignore
 import { FilterButtons } from '../Filter';
 import { FilterButtonsProps } from '../Filter/FilterButtons';
 

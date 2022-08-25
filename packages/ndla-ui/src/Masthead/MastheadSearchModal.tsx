@@ -1,6 +1,6 @@
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import Modal from '@ndla/modal';
-import Button from '@ndla/button';
+import Button, { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
@@ -29,6 +29,8 @@ const StyledHeader = styled.div`
   margin: 0 auto;
 
   display: flex;
+  align-items: center;
+  gap: ${spacing.xsmall};
   padding-top: ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
     padding-top: ${spacing.normal};
@@ -47,26 +49,6 @@ const StyledHeader = styled.div`
       .c-search-field__button--searchIcon {
         right: ${spacing.large};
         top: ${spacing.small};
-      }
-    }
-  }
-  > button {
-    width: ${spacing.large};
-    height: 48px;
-    ${mq.range({ from: breakpoints.tablet })} {
-      transform: translate(${spacing.large}, 0);
-      width: ${spacing.large};
-      height: 56px;
-      &:hover,
-      &:focus {
-        transform: translate(calc(${spacing.large} + 1px), 1px);
-      }
-    }
-    ${mq.range({ from: breakpoints.wide })} {
-      transform: translate(${spacing.large}, 0);
-      &:hover,
-      &:focus {
-        transform: translate(calc(${spacing.large} + 1px), 1px);
       }
     }
   }
@@ -133,9 +115,9 @@ const MastheadSearchModal = ({
         <div css={extraBackdrop} />
         <StyledHeader>
           {isFunction(children) ? children(closeModal) : children}
-          <Button stripped onClick={closeModal}>
-            <Cross className="c-icon--medium" />
-          </Button>
+          <IconButton size="small" variant="ghost" colorTheme="light" onClick={closeModal}>
+            <Cross />
+          </IconButton>
         </StyledHeader>
       </>
     )}

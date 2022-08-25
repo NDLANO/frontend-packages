@@ -10,7 +10,7 @@ import css from '@emotion/css';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { ButtonHTMLAttributes } from 'react';
 
-type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
+export type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
 type ButtonColor = 'primary' | 'light' | 'lighter' | 'greyLighter' | 'greyLightest';
 type ButtonBorder = 'normal' | 'pill' | 'sharpened';
 type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link' | 'text';
@@ -225,7 +225,7 @@ interface Props {
   link?: boolean;
 }
 
-type ButtonProps = Props & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
+export type ButtonProps = Props & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
 const Button = ({ colorTheme, children, ...rest }: ButtonProps) => {
   const theme = themes[colorTheme || 'primary'];

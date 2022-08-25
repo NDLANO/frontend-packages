@@ -129,12 +129,12 @@ const ButtonExample = () => {
         <ButtonRow border="pill" colorTheme="greyLighter" />
         <ButtonRow border="pill" colorTheme="greyLightest" />
         <h3>Firkantet knapp</h3>
-        <ButtonRow borderShape="sharpened" />
-        <ButtonRow borderShape="sharpened" variant="outline" />
-        <ButtonRow borderShape="sharpened" colorTheme="light" />
-        <ButtonRow borderShape="sharpened" colorTheme="lighter" />
-        <ButtonRow borderShape="sharpened" colorTheme="greyLighter" />
-        <ButtonRow borderShape="sharpened" colorTheme="greyLightest" />
+        <ButtonRow border="sharp" />
+        <ButtonRow border="sharp" variant="outline" />
+        <ButtonRow border="sharp" colorTheme="light" />
+        <ButtonRow border="sharp" colorTheme="lighter" />
+        <ButtonRow border="sharp" colorTheme="greyLighter" />
+        <ButtonRow border="sharp" colorTheme="greyLightest" />
         <h3>Deaktiverte knapper</h3>
         <ButtonRow disabled />
         <h2 className="u-heading">Multiknapper</h2>
@@ -166,12 +166,11 @@ const ButtonExample = () => {
         <CloseButton />
         <h2 className="u-heading">Ikon knapper</h2>
         <IconButtonRow aria-label="Eksempel knapp" component={ChevronDown}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" outline component={Heart}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" light component={ChevronDown}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" lighter component={Wrench}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" greyLighter component={Star}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" greyLightest component={Pencil}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" ghostPill component={Print}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" colorTheme="light" component={ChevronDown}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" colorTheme="lighter" component={Wrench}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" colorTheme="greyLighter" component={Star}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" colorTheme="greyLightest" component={Pencil}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" variant="ghost" colorTheme="light" component={Print}></IconButtonRow>
         <h2 className="u-heading">Meny-knapp</h2>
         <StyledButtonRow>
           {menuButtonSizes.map((size) => (

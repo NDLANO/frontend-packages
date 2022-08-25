@@ -9,11 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
-import { Button, ButtonSize, ButtonProps } from './OldButton';
-
-export interface IconButtonProps extends ButtonProps {
-  ['aria-label']: string;
-}
+import Button, { ButtonSize, ButtonProps } from './Button';
 
 interface StyledButtonProps extends ButtonProps {
   svgSize: number;
@@ -24,6 +20,7 @@ const StyledButton = styled(Button)<StyledButtonProps>`
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.5 : 0.25)}px;
   line-height: 1;
   border-color: transparent;
+  min-height: unset;
   svg {
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
@@ -50,8 +47,8 @@ export const convertSizeForSVG = (size: ButtonSize) => {
   return spacingUnit;
 };
 
-export const IconButton = ({ children, size, ...rest }: IconButtonProps) => (
-  <StyledButton svgSize={convertSizeForSVG(size || 'normal')} {...rest}>
+export const IconButton = ({ children, size = 'small', ...rest }: ButtonProps) => (
+  <StyledButton svgSize={convertSizeForSVG(size)} {...rest}>
     <span aria-hidden="true">{children}</span>
   </StyledButton>
 );

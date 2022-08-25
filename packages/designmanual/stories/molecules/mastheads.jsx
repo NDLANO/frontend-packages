@@ -98,7 +98,6 @@ class MastheadWithTopicMenu extends Component {
             }
           }}
         />
-        qwe
         {this.state.value.length > 2 && (
           <SearchResultSleeve
             result={contentTypeResults}

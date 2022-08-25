@@ -9,11 +9,10 @@
 import React, { ReactElement } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
-import { IconButton, IconButtonProps } from './IconButton';
+import { IconButton } from './IconButton';
+import { ButtonProps } from './ButtonV2';
 
-type Props = Omit<IconButtonProps, 'aria-label'>;
-
-export interface IconButtonDualStatesProps extends Props {
+export interface IconButtonDualStatesProps extends ButtonProps {
   ariaLabelActive: string;
   ariaLabelInActive: string;
   active?: boolean;

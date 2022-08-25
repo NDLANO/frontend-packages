@@ -43,12 +43,21 @@ const IconButtonDualStatesExample = () => (
       <h2 className="u-heading">Eksempel</h2>
       <InlineContainer>
         {sizes.map((size) => {
-          return <WrapperForExample size={size} greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />;
+          return (
+            <WrapperForExample
+              size={size}
+              colorTheme="greyLightest"
+              activeIcon={<Heart />}
+              inactiveIcon={<HeartOutline />}
+            />
+          );
         })}
       </InlineContainer>
       <InlineContainer>
         {sizes.map((size) => {
-          return <WrapperForExample size={size} greyLightest activeIcon={<Cross />} inactiveIcon={<Plus />} />;
+          return (
+            <WrapperForExample size={size} colorTheme="greyLightest" activeIcon={<Cross />} inactiveIcon={<Plus />} />
+          );
         })}
       </InlineContainer>
     </StoryBody>

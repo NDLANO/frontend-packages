@@ -9,22 +9,18 @@
 import css from '@emotion/css';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { ButtonHTMLAttributes } from 'react';
-
-export type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
-type ButtonColor = 'primary' | 'light' | 'lighter' | 'greyLighter' | 'greyLightest';
-type ButtonShape = 'normal' | 'pill' | 'sharp';
-type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link' | 'text';
+import { themes } from './themes';
+import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme } from './types';
 
 interface ButtonStyleProps {
   size?: ButtonSize;
-  outline?: boolean;
   variant?: ButtonVariant;
   theme: ButtonTheme;
   shape?: ButtonShape;
   inverted?: boolean;
 }
 
-const buttonStyle = ({
+export const buttonStyle = ({
   size = 'normal',
   theme,
   shape = 'normal',
@@ -122,7 +118,6 @@ const buttonStyle = ({
       border-color: ${theme.background};
     }
   `}
-
   ${variant === 'ghost' &&
   css`
     outline-width: 2px;
@@ -137,7 +132,6 @@ const buttonStyle = ({
       border-color: ${theme.background};
     }
   `}
-
   ${variant === 'link' &&
   css`
     border-radius: 0;
@@ -175,46 +169,6 @@ const buttonStyle = ({
     }
   `}
 `;
-
-interface ButtonTheme {
-  foreground: string;
-  background: string;
-  hoverForeground: string;
-  hoverBackground: string;
-}
-
-const themes: Record<ButtonColor, ButtonTheme> = {
-  primary: {
-    foreground: colors.white,
-    background: colors.brand.primary,
-    hoverForeground: colors.white,
-    hoverBackground: colors.brand.dark,
-  },
-  light: {
-    foreground: colors.brand.primary,
-    background: colors.brand.light,
-    hoverForeground: colors.white,
-    hoverBackground: colors.brand.dark,
-  },
-  lighter: {
-    foreground: colors.brand.primary,
-    background: colors.brand.lighter,
-    hoverForeground: colors.white,
-    hoverBackground: colors.brand.primary,
-  },
-  greyLighter: {
-    foreground: colors.brand.primary,
-    background: colors.brand.greyLighter,
-    hoverForeground: colors.white,
-    hoverBackground: colors.brand.primary,
-  },
-  greyLightest: {
-    foreground: colors.brand.primary,
-    background: colors.brand.greyLightest,
-    hoverForeground: colors.white,
-    hoverBackground: colors.brand.primary,
-  },
-};
 
 interface Props {
   className?: string;

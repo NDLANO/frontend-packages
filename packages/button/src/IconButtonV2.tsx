@@ -9,7 +9,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
-import Button, { ButtonSize, ButtonProps } from './ButtonV2';
+import Button, { ButtonProps } from './ButtonV2';
+import { ButtonSize } from './types';
 
 interface StyledButtonProps extends ButtonProps {
   svgSize: number;

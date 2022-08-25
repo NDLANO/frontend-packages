@@ -5,13 +5,13 @@ import { Cross, Plus, Heart, HeartOutline } from '@ndla/icons/action';
 import { InlineContainer } from '../helpers';
 // @ts-ignore
 import { StoryIntro, StoryBody } from '../wrappers';
+import { ButtonColor } from '../../../button/src/types';
 
 interface Props {
   activeIcon: ReactElement;
   inactiveIcon: ReactElement;
   size: IconSize;
-  ghostPill?: boolean;
-  greyLightest?: boolean;
+  colorTheme?: ButtonColor;
 }
 
 type IconSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';

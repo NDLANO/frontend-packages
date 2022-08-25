@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, spacingUnit, mq, breakpoints } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { WithTranslation, withTranslation } from 'react-i18next';
 import FrontpageHeaderIllustration from './illustrations/FrontpageHeaderIllustration';
 import SvgLogo from '../Logo/SvgLogo';
 
@@ -48,16 +47,16 @@ const HeaderIllustrationWrapper = styled.div`
   }
 `;
 
-export type FrontPageHeaderProps = {
+interface FrontPageHeaderProps {
   locale: string;
   showHeader: boolean;
   children?: ReactNode;
-};
+}
 
-const FrontpageHeader = ({ locale, showHeader = true, children, t }: FrontPageHeaderProps & WithTranslation) => (
+const FrontpageHeader = ({ locale, showHeader = true, children }: FrontPageHeaderProps) => (
   <StyledHeaderWrapper>
     <StyledHeader>
-      <StyledLogo to="/" aria-label={t('logo.altText')}>
+      <StyledLogo to="/" aria-hidden="true">
         <SvgLogo locale={locale} />
       </StyledLogo>
       {showHeader && (
@@ -70,4 +69,4 @@ const FrontpageHeader = ({ locale, showHeader = true, children, t }: FrontPageHe
   </StyledHeaderWrapper>
 );
 
-export default withTranslation()(FrontpageHeader);
+export default FrontpageHeader;

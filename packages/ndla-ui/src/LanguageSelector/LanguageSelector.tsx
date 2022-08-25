@@ -116,6 +116,10 @@ type Props = {
   alwaysVisible?: boolean;
 };
 
+const StyledButton = styled(Button)`
+  border-color: ${({ inverted }) => (inverted ? colors.white : colors.brand.primary)};
+`;
+
 const LanguageSelector = ({
   currentLanguage,
   outline,
@@ -129,7 +133,7 @@ const LanguageSelector = ({
   const [isOpen, setIsOpen] = useState(false);
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
-      <Button
+      <StyledButton
         inverted={inverted}
         variant="ghost"
         size="medium"
@@ -141,7 +145,7 @@ const LanguageSelector = ({
           {t(`languages.prefixChangeLanguage`)}: {t(`languages.${infoLocale}`)}
         </StyledSpan>
         <ChevronDown />
-      </Button>
+      </StyledButton>
       {isOpen && (
         <FocusTrapReact
           active

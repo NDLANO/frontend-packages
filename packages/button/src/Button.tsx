@@ -129,14 +129,20 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant
 
   ${variant === 'link' &&
   css`
+    border-radius: 0;
     padding: 0;
     font-size: inherit;
     line-height: inherit;
     color: ${colors.brand.primary};
     box-shadow: ${colors.link};
+    background: none;
+    border: none;
+    font-weight: ${fonts.weight.normal};
     &:hover,
     &:focus {
       box-shadow: ${colors.linkHover};
+      background: none;
+      border: none;
     }
   `}
 
@@ -200,6 +206,7 @@ interface Props {
   size?: ButtonSize;
   outline?: boolean;
   colorTheme?: ButtonColor;
+  variant?: ButtonVariant;
   inverted?: boolean;
   border?: ButtonBorder;
   noBackground?: boolean;

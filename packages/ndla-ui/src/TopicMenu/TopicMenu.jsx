@@ -196,7 +196,7 @@ export const TopicMenu = ({
                   onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
                   colorTheme={selectedMenu !== MENU_CURRENT_SUBJECT ? 'lighter' : 'primary'}
                   size="small"
-                  border="pill">
+                  shape="pill">
                   {subjectTitle}
                 </Button>
               )}
@@ -205,7 +205,7 @@ export const TopicMenu = ({
                   onClick={() => setSelectedMenu(MENU_CURRENT_PROGRAMME)}
                   colorTheme={selectedMenu !== MENU_CURRENT_PROGRAMME ? 'lighter' : 'primary'}
                   size="small"
-                  border="pill">
+                  shape="pill">
                   {currentProgramme.name}
                 </Button>
               )}
@@ -214,7 +214,7 @@ export const TopicMenu = ({
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
                   colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : 'primary'}
                   size="small"
-                  border="pill">
+                  shape="pill">
                   {t('frontpageMenu.program')}
                 </Button>
               )}
@@ -223,7 +223,7 @@ export const TopicMenu = ({
                   onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
                   colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : 'primary'}
                   size="small"
-                  border="pill">
+                  shape="pill">
                   {t('frontpageMenu.allsubjects')}
                 </Button>
               )}

@@ -166,6 +166,7 @@ const ButtonExample = () => {
         <CloseButton />
         <h2 className="u-heading">Ikon knapper</h2>
         <IconButtonRow aria-label="Eksempel knapp" component={ChevronDown}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" variant="outline" component={Heart}></IconButtonRow>
         <IconButtonRow aria-label="Eksempel knapp" colorTheme="light" component={ChevronDown}></IconButtonRow>
         <IconButtonRow aria-label="Eksempel knapp" colorTheme="lighter" component={Wrench}></IconButtonRow>
         <IconButtonRow aria-label="Eksempel knapp" colorTheme="greyLighter" component={Star}></IconButtonRow>

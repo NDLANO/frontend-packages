@@ -8,7 +8,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import { Button } from './OldButton';
+import { Button } from './Button';
 
 const StyledDeleteButton = styled(Button)`
   color: ${colors.support.red};

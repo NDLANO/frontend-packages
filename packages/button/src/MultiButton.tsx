@@ -14,7 +14,7 @@ import FocusTrapReact from 'focus-trap-react';
 import { css } from '@emotion/core';
 import { ChevronDown } from '@ndla/icons/common';
 
-import { Button, buttonStyle, outlineStyle, largeStyle } from './OldButton';
+import { Button, buttonStyle, outlineStyle, largeStyle } from './Button';
 
 const StyledWrapper = styled.div`
   display: inline-flex;

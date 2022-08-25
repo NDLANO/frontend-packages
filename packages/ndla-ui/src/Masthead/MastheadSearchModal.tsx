@@ -1,7 +1,6 @@
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import Modal from '@ndla/modal';
-import Button, { IconButton } from '@ndla/button';
-import { Cross } from '@ndla/icons/action';
+import { CloseButton } from '@ndla/button';
 import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -115,9 +114,7 @@ const MastheadSearchModal = ({
         <div css={extraBackdrop} />
         <StyledHeader>
           {isFunction(children) ? children(closeModal) : children}
-          <IconButton size="small" variant="ghost" colorTheme="light" onClick={closeModal}>
-            <Cross />
-          </IconButton>
+          <CloseButton onClick={closeModal}></CloseButton>
         </StyledHeader>
       </>
     )}

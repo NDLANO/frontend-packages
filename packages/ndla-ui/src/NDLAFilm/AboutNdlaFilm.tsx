@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { colors, spacing, fonts, mq, breakpoints } from '@ndla/core';
-import Button from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 import { OneColumn } from '..';
 import VisualElement from './VisualElement';
 

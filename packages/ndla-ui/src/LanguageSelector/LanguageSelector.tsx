@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-import Button, { appearances } from '@ndla/button';
+import { ButtonV2 as Button, appearances } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts, spacingUnit } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
@@ -138,7 +138,7 @@ const LanguageSelector = ({
         variant="ghost"
         size="medium"
         colorTheme="lighter"
-        border="pill"
+        shape="pill"
         css={invertedOutlineLargeScreensOnly && styledInvertedOutlineLargeScreensOnly}
         onClick={() => setIsOpen(true)}>
         <StyledSpan>

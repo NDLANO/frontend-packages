@@ -28,8 +28,6 @@ const StyledHeader = styled.div`
   margin: 0 auto;
 
   display: flex;
-  align-items: center;
-  gap: ${spacing.xsmall};
   padding-top: ${spacing.small};
   ${mq.range({ from: breakpoints.tablet })} {
     padding-top: ${spacing.normal};

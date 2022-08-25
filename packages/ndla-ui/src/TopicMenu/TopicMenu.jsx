@@ -17,7 +17,7 @@ import { debounce } from 'lodash';
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { ModalHeader } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';

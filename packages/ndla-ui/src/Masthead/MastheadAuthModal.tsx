@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import Button from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 import { Feide } from '@ndla/icons/common';
 import { colors, fonts, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +49,7 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
       activateButton={
         <StyledButton
           inverted={inverted}
-          border="pill"
+          shape="pill"
           size="medium"
           colorTheme="lighter"
           variant="ghost"

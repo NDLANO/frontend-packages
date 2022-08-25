@@ -9,7 +9,7 @@
 import React, { ReactElement } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
-import { IconButton } from './IconButton';
+import { IconButton } from './IconButtonV2';
 import { ButtonProps } from './ButtonV2';
 
 export interface IconButtonDualStatesProps extends ButtonProps {

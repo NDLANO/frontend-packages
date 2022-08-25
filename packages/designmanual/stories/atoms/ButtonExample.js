@@ -112,29 +112,29 @@ const ButtonExample = () => {
         <h2 className="u-heading">Eksempel</h2>
         <ButtonRow />
         <h3>Knapp med ramme(outline)</h3>
-        <ButtonRow variant="outline" />
+        <ButtonRow outline />
         <h3>Lys versjon(light)</h3>
-        <ButtonRow colorTheme="light" />
+        <ButtonRow light />
         <h3>Lysere versjon(lighter)</h3>
-        <ButtonRow colorTheme="lighter" />
+        <ButtonRow lighter />
         <h3>Lys grå versjon(greyLighter)</h3>
-        <ButtonRow colorTheme="greyLighter" />
+        <ButtonRow greyLighter />
         <h3>Lysere grå versjon(greyLightest)</h3>
-        <ButtonRow colorTheme="greyLightest" />
+        <ButtonRow greyLightest />
         <h3>Rundet knapp</h3>
-        <ButtonRow border="pill" />
-        <ButtonRow border="pill" variant="outline" />
-        <ButtonRow border="pill" colorTheme="light" />
-        <ButtonRow border="pill" colorTheme="lighter" />
-        <ButtonRow border="pill" colorTheme="greyLighter" />
-        <ButtonRow border="pill" colorTheme="greyLightest" />
+        <ButtonRow borderShape="rounded" />
+        <ButtonRow borderShape="rounded" outline />
+        <ButtonRow borderShape="rounded" light />
+        <ButtonRow borderShape="rounded" lighter />
+        <ButtonRow borderShape="rounded" greyLighter />
+        <ButtonRow borderShape="rounded" greyLightest />
         <h3>Firkantet knapp</h3>
-        <ButtonRow border="sharp" />
-        <ButtonRow border="sharp" variant="outline" />
-        <ButtonRow border="sharp" colorTheme="light" />
-        <ButtonRow border="sharp" colorTheme="lighter" />
-        <ButtonRow border="sharp" colorTheme="greyLighter" />
-        <ButtonRow border="sharp" colorTheme="greyLightest" />
+        <ButtonRow borderShape="sharpened" />
+        <ButtonRow borderShape="sharpened" outline />
+        <ButtonRow borderShape="sharpened" light />
+        <ButtonRow borderShape="sharpened" lighter />
+        <ButtonRow borderShape="sharpened" greyLighter />
+        <ButtonRow borderShape="sharpened" greyLightest />
         <h3>Deaktiverte knapper</h3>
         <ButtonRow disabled />
         <h2 className="u-heading">Multiknapper</h2>
@@ -158,7 +158,7 @@ const ButtonExample = () => {
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <Button colorTheme="light" variant="ghost" border="pill" size="medium" onClick={action('clicked')}>
+        <Button ghostPill onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
           <ChevronDown />
         </Button>
@@ -166,12 +166,12 @@ const ButtonExample = () => {
         <CloseButton />
         <h2 className="u-heading">Ikon knapper</h2>
         <IconButtonRow aria-label="Eksempel knapp" component={ChevronDown}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" variant="outline" component={Heart}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" colorTheme="light" component={ChevronDown}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" colorTheme="lighter" component={Wrench}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" colorTheme="greyLighter" component={Star}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" colorTheme="greyLightest" component={Pencil}></IconButtonRow>
-        <IconButtonRow aria-label="Eksempel knapp" variant="ghost" colorTheme="light" component={Print}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" outline component={Heart}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" light component={ChevronDown}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" lighter component={Wrench}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" greyLighter component={Star}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" greyLightest component={Pencil}></IconButtonRow>
+        <IconButtonRow aria-label="Eksempel knapp" ghostPill component={Print}></IconButtonRow>
         <h2 className="u-heading">Meny-knapp</h2>
         <StyledButtonRow>
           {menuButtonSizes.map((size) => (
@@ -197,7 +197,7 @@ const ButtonExample = () => {
         <h2 key="alternative-button-heading" className="u-heading">
           Alternativer når UU krever en knapp
         </h2>
-        <Button variant="link" onClick={action('clicked')}>
+        <Button link onClick={action('clicked')}>
           Knapp stylet som link
         </Button>
       </StoryBody>

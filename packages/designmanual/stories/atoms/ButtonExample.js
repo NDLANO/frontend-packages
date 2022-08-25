@@ -112,7 +112,7 @@ const ButtonExample = () => {
         <h2 className="u-heading">Eksempel</h2>
         <ButtonRow />
         <h3>Knapp med ramme(outline)</h3>
-        <ButtonRow outline />
+        <ButtonRow variant="outline" />
         <h3>Lys versjon(light)</h3>
         <ButtonRow colorTheme="light" />
         <h3>Lysere versjon(lighter)</h3>
@@ -123,14 +123,14 @@ const ButtonExample = () => {
         <ButtonRow colorTheme="greyLightest" />
         <h3>Rundet knapp</h3>
         <ButtonRow border="pill" />
-        <ButtonRow border="pill" outline />
+        <ButtonRow border="pill" variant="outline" />
         <ButtonRow border="pill" colorTheme="light" />
         <ButtonRow border="pill" colorTheme="lighter" />
         <ButtonRow border="pill" colorTheme="greyLighter" />
         <ButtonRow border="pill" colorTheme="greyLightest" />
         <h3>Firkantet knapp</h3>
         <ButtonRow borderShape="sharpened" />
-        <ButtonRow borderShape="sharpened" outline />
+        <ButtonRow borderShape="sharpened" variant="outline" />
         <ButtonRow borderShape="sharpened" colorTheme="light" />
         <ButtonRow borderShape="sharpened" colorTheme="lighter" />
         <ButtonRow borderShape="sharpened" colorTheme="greyLighter" />
@@ -158,7 +158,7 @@ const ButtonExample = () => {
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <Button colorTheme="ghost" border="pill" size="medium" onClick={action('clicked')}>
+        <Button colorTheme="light" variant="ghost" border="pill" size="medium" onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
           <ChevronDown />
         </Button>

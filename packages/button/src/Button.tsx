@@ -11,27 +11,27 @@ import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { ButtonHTMLAttributes } from 'react';
 
 type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
-type ButtonColor = 'primary' | 'light' | 'lighter' | 'greyLighter' | 'greyLightest' | 'ghost';
+type ButtonColor = 'primary' | 'light' | 'lighter' | 'greyLighter' | 'greyLightest';
 type ButtonBorder = 'normal' | 'pill' | 'sharpened';
+type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link' | 'text';
 
 interface ButtonStyleProps {
   disabled?: boolean;
   size?: ButtonSize;
   outline?: boolean;
+  variant?: ButtonVariant;
   theme: ButtonTheme;
   border?: ButtonBorder;
   inverted?: boolean;
-  noBackground?: boolean;
-  link?: boolean;
 }
 
-const buttonStyle = ({ disabled, size, outline, theme, border, inverted, noBackground, link }: ButtonStyleProps) => css`
+const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant }: ButtonStyleProps) => css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   color: ${theme.foreground};
   background: ${theme.background};
-
   border: 2px solid ${theme.background};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.xxsmall} ${spacing.small};
@@ -71,7 +71,6 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, noBackg
   `}
 
   // Sizes
-
   ${size === 'xsmall' &&
   css`
     padding: ${spacing.xxsmall} ${spacing.xsmall};
@@ -103,27 +102,32 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, noBackg
     min-height: 52px;
   `}
 
-  // Modifiers
-  ${outline &&
+  // Variants
+  ${variant === 'outline' &&
   css`
+    color: ${theme.background};
     background: transparent;
     border-color: ${theme.background};
-    color: ${theme.background};
-  `}
-
-  ${inverted &&
-  css`
-    background: transparent;
-    color: ${colors.white};
-    border-color: ${outline ? colors.white : 'transparent'};
     :hover {
-      background: ${theme.background};
       color: ${theme.foreground};
-      border-color: ${outline ? theme.background : 'transparent'};
+      background: ${theme.background};
+      border-color: ${theme.background};
     }
   `}
 
-  ${link &&
+  ${variant === 'ghost' &&
+  css`
+    color: ${theme.foreground};
+    background: transparent;
+    border-color: transparent;
+    :hover {
+      color: ${theme.foreground};
+      background: ${theme.background};
+      border-color: ${theme.background};
+    }
+  `}
+
+  ${variant === 'link' &&
   css`
     padding: 0;
     font-size: inherit;
@@ -136,10 +140,17 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, noBackg
     }
   `}
 
-  ${noBackground &&
+  // Modifiers
+  ${inverted &&
   css`
     background: transparent;
-    border-color: transparent;
+    color: ${colors.white};
+    border-color: ${variant === 'outline' ? colors.white : 'transparent'};
+    :hover {
+      color: ${theme.foreground};
+      background: ${theme.background};
+      border-color: ${variant === 'outline' ? theme.background : 'transparent'};
+    }
   `}
 `;
 
@@ -180,12 +191,6 @@ const themes: Record<ButtonColor, ButtonTheme> = {
     background: colors.brand.greyLightest,
     hoverForeground: colors.white,
     hoverBackground: colors.brand.primary,
-  },
-  ghost: {
-    foreground: colors.brand.primary,
-    background: 'transparent',
-    hoverForeground: colors.brand.primary,
-    hoverBackground: colors.brand.lighter,
   },
 };
 

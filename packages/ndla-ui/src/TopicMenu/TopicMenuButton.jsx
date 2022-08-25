@@ -43,7 +43,7 @@ const style = css`
 `;
 
 const TopicMenuButton = ({ ndlaFilm, children, ...rest }) => (
-  <Button inverted={ndlaFilm} outline css={style} {...rest}>
+  <Button inverted={ndlaFilm} variant="outline" css={style} {...rest}>
     <Menu /> {children}
   </Button>
 );

@@ -133,7 +133,7 @@ const LanguageSelector = ({
         outline={outline}
         inverted={inverted}
         size="medium"
-        colorTheme={inverted ? 'light' : 'ghost'}
+        colorTheme="lighter"
         border="pill"
         css={invertedOutlineLargeScreensOnly && styledInvertedOutlineLargeScreensOnly}
         onClick={() => setIsOpen(true)}>

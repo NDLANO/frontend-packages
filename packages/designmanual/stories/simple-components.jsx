@@ -17,7 +17,7 @@ import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
 import ButtonExample from './atoms/ButtonExample';
-import ButtonExample2 from './atoms/ButtonExample2';
+import ButtonV2Example from './atoms/ButtonV2Example';
 import IconButtonDualStatesExample from './atoms/IconButtonDualStatesExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
@@ -651,7 +651,7 @@ storiesOf('Enkle komponenter', module)
     </div>
   ))
   .add('Knapper', () => <ButtonExample />)
-  .add('Knapper BETA', () => <ButtonExample2 />)
+  .add('Knapper BETA', () => <ButtonV2Example />)
   .add('2 stats ikonknapper', () => <IconButtonDualStatesExample />)
   .add('Logo', () => (
     <div>

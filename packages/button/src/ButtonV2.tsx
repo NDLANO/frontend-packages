@@ -12,7 +12,7 @@ import React, { ButtonHTMLAttributes } from 'react';
 
 export type ButtonSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
 type ButtonColor = 'primary' | 'light' | 'lighter' | 'greyLighter' | 'greyLightest';
-type ButtonBorder = 'normal' | 'pill' | 'sharpened';
+type ButtonShape = 'normal' | 'pill' | 'sharp';
 type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link' | 'text';
 
 interface ButtonStyleProps {
@@ -20,14 +20,14 @@ interface ButtonStyleProps {
   outline?: boolean;
   variant?: ButtonVariant;
   theme: ButtonTheme;
-  border?: ButtonBorder;
+  shape?: ButtonShape;
   inverted?: boolean;
 }
 
 const buttonStyle = ({
   size = 'normal',
   theme,
-  border = 'normal',
+  shape = 'normal',
   inverted,
   variant = 'solid',
 }: ButtonStyleProps) => css`
@@ -69,14 +69,14 @@ const buttonStyle = ({
   // Sizes
   ${size === 'xsmall' &&
   css`
-    padding: ${spacing.xxsmall} ${border === 'pill' ? spacing.small : spacing.xsmall};
+    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.small : spacing.xsmall};
     ${fonts.sizes('12px', '14px')};
     min-height: 24px;
     border-width: 1px;
   `}
   ${size === 'small' &&
   css`
-    padding: ${spacing.xxsmall} ${border === 'pill' ? spacing.small : spacing.xsmall};
+    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.small : spacing.xsmall};
     ${fonts.sizes('14px', '18px')};
     min-height: 32px;
     border-width: 1px;
@@ -101,9 +101,13 @@ const buttonStyle = ({
   `}
 
   // Borders
-  ${border === 'pill' &&
+  ${shape === 'pill' &&
   css`
     border-radius: ${spacing.normal};
+  `}
+  ${shape === 'sharp' &&
+  css`
+    border-radius: 0;
   `}
   
   // Variants
@@ -220,7 +224,7 @@ interface Props {
   colorTheme?: ButtonColor;
   variant?: ButtonVariant;
   inverted?: boolean;
-  border?: ButtonBorder;
+  border?: ButtonShape;
   noBackground?: boolean;
   link?: boolean;
 }

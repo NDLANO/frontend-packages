@@ -114,27 +114,27 @@ const ButtonExample = () => {
         <h3>Knapp med ramme(outline)</h3>
         <ButtonRow outline />
         <h3>Lys versjon(light)</h3>
-        <ButtonRow light />
+        <ButtonRow colorTheme="light" />
         <h3>Lysere versjon(lighter)</h3>
-        <ButtonRow lighter />
+        <ButtonRow colorTheme="lighter" />
         <h3>Lys grå versjon(greyLighter)</h3>
-        <ButtonRow greyLighter />
+        <ButtonRow colorTheme="greyLighter" />
         <h3>Lysere grå versjon(greyLightest)</h3>
-        <ButtonRow greyLightest />
+        <ButtonRow colorTheme="greyLightest" />
         <h3>Rundet knapp</h3>
-        <ButtonRow borderShape="rounded" />
-        <ButtonRow borderShape="rounded" outline />
-        <ButtonRow borderShape="rounded" light />
-        <ButtonRow borderShape="rounded" lighter />
-        <ButtonRow borderShape="rounded" greyLighter />
-        <ButtonRow borderShape="rounded" greyLightest />
+        <ButtonRow border="pill" />
+        <ButtonRow border="pill" outline />
+        <ButtonRow border="pill" colorTheme="light" />
+        <ButtonRow border="pill" colorTheme="lighter" />
+        <ButtonRow border="pill" colorTheme="greyLighter" />
+        <ButtonRow border="pill" colorTheme="greyLightest" />
         <h3>Firkantet knapp</h3>
         <ButtonRow borderShape="sharpened" />
         <ButtonRow borderShape="sharpened" outline />
-        <ButtonRow borderShape="sharpened" light />
-        <ButtonRow borderShape="sharpened" lighter />
-        <ButtonRow borderShape="sharpened" greyLighter />
-        <ButtonRow borderShape="sharpened" greyLightest />
+        <ButtonRow borderShape="sharpened" colorTheme="light" />
+        <ButtonRow borderShape="sharpened" colorTheme="lighter" />
+        <ButtonRow borderShape="sharpened" colorTheme="greyLighter" />
+        <ButtonRow borderShape="sharpened" colorTheme="greyLightest" />
         <h3>Deaktiverte knapper</h3>
         <ButtonRow disabled />
         <h2 className="u-heading">Multiknapper</h2>
@@ -158,7 +158,7 @@ const ButtonExample = () => {
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <Button ghostPill onClick={action('clicked')}>
+        <Button colorTheme="ghost" border="pill" size="medium" onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
           <ChevronDown />
         </Button>

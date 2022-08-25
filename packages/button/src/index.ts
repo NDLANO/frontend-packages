@@ -6,8 +6,8 @@
  *
  */
 
-export { Button as default, StyledButton, buttonStyle, appearances, ButtonStyles } from './Button';
-export { Button2 } from './Button2';
+export { StyledButton, buttonStyle, appearances, ButtonStyles } from './Button';
+export { Button2 as default } from './Button2';
 export { default as CopyButton } from './CopyButton';
 export { default as MultiButton } from './MultiButton';
 export { default as CloseButton } from './CloseButton';

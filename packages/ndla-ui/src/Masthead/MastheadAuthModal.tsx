@@ -47,7 +47,12 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
     <AuthModal
       {...rest}
       activateButton={
-        <StyledButton inverted={inverted} ghostPill={!inverted} ghostPillInverted={inverted} aria-label="Feide">
+        <StyledButton
+          inverted={inverted}
+          border="pill"
+          size="medium"
+          colorTheme={inverted ? 'light' : 'ghost'}
+          aria-label="Feide">
           {t('myNdla.myNDLA')}
           <span className="feide-icon">
             <Feide />

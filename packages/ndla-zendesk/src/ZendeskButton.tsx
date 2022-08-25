@@ -10,6 +10,7 @@ import { css, Global } from '@emotion/core';
 import React, { ReactNode, useState } from 'react';
 import Button, { ButtonProps } from '@ndla/button';
 import { mq, breakpoints, spacing } from '@ndla/core';
+import styled from '@emotion/styled';
 
 const styling = css`
   border-radius: 2px;
@@ -72,14 +73,7 @@ const ZendeskButton = ({ children, locale, widgetKey, ...rest }: Props) => {
           }
         `}
       />
-      <Button
-        type="button"
-        css={styling}
-        onClick={handleClick}
-        appearance="outline"
-        id="zendeskButton"
-        disabled={loading}
-        {...rest}>
+      <Button type="button" css={styling} onClick={handleClick} outline id="zendeskButton" disabled={loading} {...rest}>
         {children}
       </Button>
     </>

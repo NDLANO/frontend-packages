@@ -114,27 +114,27 @@ const ButtonExample = () => {
         <h3>Knapp med ramme(outline)</h3>
         <ButtonRow outline />
         <h3>Lys versjon(light)</h3>
-        <ButtonRow color="light" />
+        <ButtonRow theme="light" />
         <h3>Lysere versjon(lighter)</h3>
-        <ButtonRow color="lighter" />
+        <ButtonRow theme="lighter" />
         <h3>Lys grå versjon(greyLighter)</h3>
-        <ButtonRow color="greyLighter" />
+        <ButtonRow theme="greyLighter" />
         <h3>Lysere grå versjon(greyLightest)</h3>
-        <ButtonRow color="greyLightest" />
+        <ButtonRow theme="greyLightest" />
         <h3>Rundet knapp</h3>
         <ButtonRow border="rounded" />
         <ButtonRow border="rounded" outline />
-        <ButtonRow border="rounded" color="light" />
-        <ButtonRow border="rounded" color="lighter" />
-        <ButtonRow border="rounded" color="greyLighter" />
-        <ButtonRow border="rounded" color="greyLightest" />
+        <ButtonRow border="rounded" theme="light" />
+        <ButtonRow border="rounded" theme="lighter" />
+        <ButtonRow border="rounded" theme="greyLighter" />
+        <ButtonRow border="rounded" theme="greyLightest" />
         <h3>Firkantet knapp</h3>
         <ButtonRow border="sharpened" />
         <ButtonRow border="sharpened" outline />
-        <ButtonRow border="sharpened" color="light" />
-        <ButtonRow border="sharpened" color="lighter" />
-        <ButtonRow border="sharpened" color="greyLighter" />
-        <ButtonRow border="sharpened" color="greyLightest" />
+        <ButtonRow border="sharpened" theme="light" />
+        <ButtonRow border="sharpened" theme="lighter" />
+        <ButtonRow border="sharpened" theme="greyLighter" />
+        <ButtonRow border="sharpened" theme="greyLightest" />
         <h3>Deaktiverte knapper</h3>
         <ButtonRow disabled />
         <h2 className="u-heading">Multiknapper</h2>

@@ -130,10 +130,11 @@ const LanguageSelector = ({
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
       <Button
-        ghostPillOutline={outline && !inverted}
-        ghostPill={!outline && !inverted}
-        ghostPillOutlineInverted={outline && inverted}
-        ghostPillInverted={!outline && inverted}
+        outline={outline}
+        inverted={inverted}
+        size="medium"
+        colorTheme={inverted ? 'light' : 'ghost'}
+        border="pill"
         css={invertedOutlineLargeScreensOnly && styledInvertedOutlineLargeScreensOnly}
         onClick={() => setIsOpen(true)}>
         <StyledSpan>

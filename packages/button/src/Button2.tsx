@@ -21,9 +21,10 @@ interface ButtonStyleProps {
   theme: ButtonTheme;
   border?: ButtonBorder;
   inverted?: boolean;
+  noBackground?: boolean;
 }
 
-const buttonStyle = ({ disabled, size, outline, theme, border }: ButtonStyleProps) => css`
+const buttonStyle = ({ disabled, size, outline, theme, border, inverted, noBackground }: ButtonStyleProps) => css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -40,16 +41,16 @@ const buttonStyle = ({ disabled, size, outline, theme, border }: ButtonStyleProp
   min-height: 40px;
 
   font-family: ${fonts.sans};
-  font-weight: ${fonts.weight.bold};
+  font-weight: ${fonts.weight.semibold};
   transition: ${misc.transition.default};
   box-shadow: none;
   text-align: center;
 
   &:hover,
   &:focus {
-    color: ${colors.white};
+    color: ${theme.hoverForeground};
     background-color: ${theme.hoverBackground};
-    border: 2px solid ${theme.hoverBackground};
+    border-color: ${theme.hoverBackground};
   }
 
   &[disabled] {
@@ -62,17 +63,31 @@ const buttonStyle = ({ disabled, size, outline, theme, border }: ButtonStyleProp
     box-shadow: 0 0 2px ${colors.brand.primary};
   }
 
+  // Borders
+  ${border === 'pill' &&
+  css`
+    border-radius: ${spacing.normal};
+  `}
+
+  // Sizes
+
   ${size === 'xsmall' &&
   css`
     padding: ${spacing.xxsmall} ${spacing.xsmall};
     ${fonts.sizes('12px', '14px')};
     min-height: 24px;
+    border-width: 1px;
   `}
   ${size === 'small' &&
   css`
     padding: ${spacing.xxsmall} ${spacing.xsmall};
-    ${fonts.sizes('12px', '14px')};
+    ${fonts.sizes('14px', '18px')};
     min-height: 32px;
+    border-width: 1px;
+  `}
+  ${size === 'normal' &&
+  css`
+    min-height: 40px;
   `}
   ${size === 'medium' &&
   css`
@@ -85,6 +100,32 @@ const buttonStyle = ({ disabled, size, outline, theme, border }: ButtonStyleProp
     padding: ${spacing.xxsmall} ${spacing.normal};
     ${fonts.sizes('18px', '20px')};
     min-height: 52px;
+  `}
+
+  // Modifiers
+  ${outline &&
+  css`
+    background: transparent;
+    border-color: ${theme.background};
+    color: ${theme.background};
+  `}
+
+  ${inverted &&
+  css`
+    background: transparent;
+    color: ${colors.white};
+    border-color: ${outline ? colors.white : 'transparent'};
+    :hover {
+      background: ${theme.background};
+      color: ${theme.foreground};
+      border-color: ${outline ? theme.background : 'transparent'};
+    }
+  `}
+
+  ${noBackground &&
+  css`
+    background: transparent;
+    border-color: transparent;
   `}
 `;
 
@@ -127,7 +168,7 @@ const themes: Record<ButtonColor, ButtonTheme> = {
     hoverBackground: colors.brand.primary,
   },
   ghost: {
-    foreground: colors.white,
+    foreground: colors.brand.primary,
     background: 'transparent',
     hoverForeground: colors.brand.primary,
     hoverBackground: colors.brand.lighter,
@@ -139,15 +180,15 @@ interface Props {
   disabled?: boolean;
   size?: ButtonSize;
   outline?: boolean;
-  color?: ButtonColor;
+  colorTheme?: ButtonColor;
   inverted?: boolean;
   border?: ButtonBorder;
 }
 
-type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps = Props & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
-export const Button2 = ({ color, inverted, children, ...rest }: ButtonProps) => {
-  const theme = themes[color || 'primary'];
+export const Button2 = ({ colorTheme, children, ...rest }: ButtonProps) => {
+  const theme = themes[colorTheme || 'primary'];
   return (
     <button css={buttonStyle({ ...rest, theme })} {...rest}>
       {children}

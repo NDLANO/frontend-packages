@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
-import { Button, ButtonSize, ButtonProps } from './Button';
+import { Button, ButtonSize, ButtonProps } from './OldButton';
 
 export interface IconButtonProps extends ButtonProps {
   ['aria-label']: string;

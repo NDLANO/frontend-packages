@@ -7,7 +7,7 @@
  */
 
 import React, { Component, ReactNode, MouseEvent } from 'react';
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonProps } from './OldButton';
 
 interface Props extends ButtonProps {
   children: ReactNode;

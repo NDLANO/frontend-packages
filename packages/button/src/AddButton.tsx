@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing, animations } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonProps } from './OldButton';
 
 const AddIconBorder = styled.div`
   height: 40px;

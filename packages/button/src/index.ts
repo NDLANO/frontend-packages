@@ -6,8 +6,8 @@
  *
  */
 
-export { StyledButton, buttonStyle, appearances, ButtonStyles } from './Button';
-export { Button2 as default } from './Button2';
+export { StyledButton, buttonStyle, appearances, ButtonStyles } from './OldButton';
+export { default } from './Button';
 export { default as CopyButton } from './CopyButton';
 export { default as MultiButton } from './MultiButton';
 export { default as CloseButton } from './CloseButton';
@@ -18,4 +18,11 @@ export { default as IconButtonDualStates } from './IconButtonDualStates';
 export { default as DeleteButton } from './DeleteButton';
 export { default as AddButton } from './AddButton';
 
-export type { ButtonAppearance, ButtonBorder, ButtonSize, ButtonTextAlign, ButtonWidth, ButtonProps } from './Button';
+export type {
+  ButtonAppearance,
+  ButtonBorder,
+  ButtonSize,
+  ButtonTextAlign,
+  ButtonWidth,
+  ButtonProps,
+} from './OldButton';

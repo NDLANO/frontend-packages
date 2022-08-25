@@ -61,7 +61,7 @@ const FrontpageHeader = ({ locale, showHeader = true, children, t }: FrontPageHe
         <SvgLogo locale={locale} />
       </StyledLogo>
       {showHeader && (
-        <HeaderIllustrationWrapper>
+        <HeaderIllustrationWrapper aria-hidden="true">
           <FrontpageHeaderIllustration />
         </HeaderIllustrationWrapper>
       )}

@@ -64,10 +64,10 @@ const Image = ({
   contentType,
   sizes = '(min-width: 1024px) 1024px, 100vw',
   expandButton,
+  fallbackWidth = 1024,
   ...rest
 }: Props) => {
   const srcSet = rest.srcSet ?? getSrcSet(src, crop, focalPoint);
-  const fallbackWidth = rest.fallbackWidth ?? 1024;
   const queryString = makeSrcQueryString(fallbackWidth, crop, focalPoint);
 
   if (contentType && contentType === 'image/gif') {

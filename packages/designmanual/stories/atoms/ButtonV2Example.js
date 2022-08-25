@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { ButtonV2, MultiButton, StyledButton, IconButton } from '@ndla/button';
+import { ButtonV2 as Button, MultiButton, StyledButton, IconButtonV2 as IconButton } from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown, Wrench } from '@ndla/icons/common';
 import { Heart, Pencil, Print } from '@ndla/icons/action';
@@ -66,9 +66,9 @@ const ButtonRow = (buttonProps) => {
   return (
     <StyledButtonRow>
       {menuButtonSizes.map((size, i) => (
-        <ButtonV2 size={size} key={i} onClick={action('clicked')} {...buttonProps}>
+        <Button size={size} key={i} onClick={action('clicked')} {...buttonProps}>
           {sizeNameMap[size]}
-        </ButtonV2>
+        </Button>
       ))}
     </StyledButtonRow>
   );
@@ -158,10 +158,10 @@ const ButtonExample = () => {
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <ButtonV2 colorTheme="light" variant="ghost" border="pill" size="medium" onClick={action('clicked')}>
+        <Button colorTheme="light" variant="ghost" border="pill" size="medium" onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
           <ChevronDown />
-        </ButtonV2>
+        </Button>
         <h2 className="u-heading">Lukkeknapp</h2>
         <CloseButton />
         <h2 className="u-heading">Ikon knapper</h2>
@@ -197,9 +197,9 @@ const ButtonExample = () => {
         <h2 key="alternative-button-heading" className="u-heading">
           Alternativer når UU krever en knapp
         </h2>
-        <ButtonV2 variant="link" onClick={action('clicked')}>
+        <Button variant="link" onClick={action('clicked')}>
           Knapp stylet som link
-        </ButtonV2>
+        </Button>
       </StoryBody>
     </>
   );

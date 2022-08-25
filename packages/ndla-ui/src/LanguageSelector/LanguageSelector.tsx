@@ -158,8 +158,7 @@ const LanguageSelector = ({
           }}>
           <StyledModal animateIn={isOpen} centered={center}>
             <Button
-              link
-              noBackground
+              variant="link"
               onClick={() => {
                 setIsOpen(false);
               }}>

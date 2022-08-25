@@ -16,7 +16,6 @@ type ButtonBorder = 'normal' | 'pill' | 'sharpened';
 type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link' | 'text';
 
 interface ButtonStyleProps {
-  disabled?: boolean;
   size?: ButtonSize;
   outline?: boolean;
   variant?: ButtonVariant;
@@ -26,9 +25,7 @@ interface ButtonStyleProps {
 }
 
 const buttonStyle = ({
-  disabled,
   size = 'normal',
-  outline,
   theme,
   border = 'normal',
   inverted,
@@ -148,6 +145,7 @@ const buttonStyle = ({
     background: none;
     border: none;
     font-weight: ${fonts.weight.normal};
+    min-height: unset;
     &:hover,
     &:active,
     &:disabled,

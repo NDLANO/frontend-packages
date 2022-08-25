@@ -34,6 +34,7 @@ const IconBase = ({
   return (
     <svg
       fill="currentColor"
+      aria-hidden="true"
       preserveAspectRatio="xMidYMid meet"
       height={height || computedSize}
       width={width || computedSize}

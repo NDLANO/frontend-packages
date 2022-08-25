@@ -194,36 +194,36 @@ export const TopicMenu = ({
               {subjectTitle && (
                 <Button
                   onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
-                  lighter={selectedMenu !== MENU_CURRENT_SUBJECT}
+                  colorTheme={selectedMenu !== MENU_CURRENT_SUBJECT ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  border="pill">
                   {subjectTitle}
                 </Button>
               )}
               {currentProgramme && (
                 <Button
                   onClick={() => setSelectedMenu(MENU_CURRENT_PROGRAMME)}
-                  lighter={selectedMenu !== MENU_CURRENT_PROGRAMME}
+                  colorTheme={selectedMenu !== MENU_CURRENT_PROGRAMME ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  border="pill">
                   {currentProgramme.name}
                 </Button>
               )}
               {programmes && (
                 <Button
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  border="pill">
                   {t('frontpageMenu.program')}
                 </Button>
               )}
               {subjectCategories && (
                 <Button
                   onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                  lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                  colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  border="pill">
                   {t('frontpageMenu.allsubjects')}
                 </Button>
               )}

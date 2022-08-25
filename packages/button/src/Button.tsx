@@ -25,7 +25,15 @@ interface ButtonStyleProps {
   inverted?: boolean;
 }
 
-const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant }: ButtonStyleProps) => css`
+const buttonStyle = ({
+  disabled,
+  size = 'normal',
+  outline,
+  theme,
+  border = 'normal',
+  inverted,
+  variant = 'solid',
+}: ButtonStyleProps) => css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -34,12 +42,9 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant
   background: ${theme.background};
   border: 2px solid ${theme.background};
   border-radius: ${misc.borderRadius};
-  padding: ${spacing.xxsmall} ${spacing.small};
   outline-width: 0;
   cursor: pointer;
   text-decoration: none;
-  ${fonts.sizes('16px')}
-  min-height: 40px;
 
   font-family: ${fonts.sans};
   font-weight: ${fonts.weight.semibold};
@@ -64,29 +69,25 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant
     box-shadow: 0 0 2px ${colors.brand.primary};
   }
 
-  // Borders
-  ${border === 'pill' &&
-  css`
-    border-radius: ${spacing.normal};
-  `}
-
   // Sizes
   ${size === 'xsmall' &&
   css`
-    padding: ${spacing.xxsmall} ${spacing.xsmall};
+    padding: ${spacing.xxsmall} ${border === 'pill' ? spacing.small : spacing.xsmall};
     ${fonts.sizes('12px', '14px')};
     min-height: 24px;
     border-width: 1px;
   `}
   ${size === 'small' &&
   css`
-    padding: ${spacing.xxsmall} ${spacing.xsmall};
+    padding: ${spacing.xxsmall} ${border === 'pill' ? spacing.small : spacing.xsmall};
     ${fonts.sizes('14px', '18px')};
     min-height: 32px;
     border-width: 1px;
   `}
   ${size === 'normal' &&
   css`
+    padding: ${spacing.xxsmall} ${spacing.small};
+    ${fonts.sizes('16px')};
     min-height: 40px;
   `}
   ${size === 'medium' &&
@@ -102,6 +103,12 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant
     min-height: 52px;
   `}
 
+  // Borders
+  ${border === 'pill' &&
+  css`
+    border-radius: ${spacing.normal};
+  `}
+  
   // Variants
   ${variant === 'outline' &&
   css`
@@ -117,10 +124,13 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant
 
   ${variant === 'ghost' &&
   css`
+    outline-width: 2px;
     color: ${theme.foreground};
     background: transparent;
     border-color: transparent;
-    :hover {
+    :hover,
+    :active,
+    :focus {
       color: ${theme.foreground};
       background: ${theme.background};
       border-color: ${theme.background};
@@ -139,8 +149,12 @@ const buttonStyle = ({ disabled, size, outline, theme, border, inverted, variant
     border: none;
     font-weight: ${fonts.weight.normal};
     &:hover,
+    &:active,
+    &:disabled,
     &:focus {
+      outline-width: 2px;
       box-shadow: ${colors.linkHover};
+      color: ${colors.brand.primary};
       background: none;
       border: none;
     }

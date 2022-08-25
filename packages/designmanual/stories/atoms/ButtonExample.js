@@ -197,7 +197,7 @@ const ButtonExample = () => {
         <h2 key="alternative-button-heading" className="u-heading">
           Alternativer når UU krever en knapp
         </h2>
-        <Button link onClick={action('clicked')}>
+        <Button variant="link" onClick={action('clicked')}>
           Knapp stylet som link
         </Button>
       </StoryBody>

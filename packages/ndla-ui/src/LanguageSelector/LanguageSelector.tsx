@@ -130,8 +130,8 @@ const LanguageSelector = ({
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
       <Button
-        outline={outline}
         inverted={inverted}
+        variant="ghost"
         size="medium"
         colorTheme="lighter"
         border="pill"

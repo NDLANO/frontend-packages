@@ -122,19 +122,19 @@ const ButtonExample = () => {
         <h3>Lysere grå versjon(greyLightest)</h3>
         <ButtonRow colorTheme="greyLightest" />
         <h3>Rundet knapp</h3>
-        <ButtonRow border="pill" />
-        <ButtonRow border="pill" variant="outline" />
-        <ButtonRow border="pill" colorTheme="light" />
-        <ButtonRow border="pill" colorTheme="lighter" />
-        <ButtonRow border="pill" colorTheme="greyLighter" />
-        <ButtonRow border="pill" colorTheme="greyLightest" />
+        <ButtonRow shape="pill" />
+        <ButtonRow shape="pill" variant="outline" />
+        <ButtonRow shape="pill" colorTheme="light" />
+        <ButtonRow shape="pill" colorTheme="lighter" />
+        <ButtonRow shape="pill" colorTheme="greyLighter" />
+        <ButtonRow shape="pill" colorTheme="greyLightest" />
         <h3>Firkantet knapp</h3>
-        <ButtonRow border="sharp" />
-        <ButtonRow border="sharp" variant="outline" />
-        <ButtonRow border="sharp" colorTheme="light" />
-        <ButtonRow border="sharp" colorTheme="lighter" />
-        <ButtonRow border="sharp" colorTheme="greyLighter" />
-        <ButtonRow border="sharp" colorTheme="greyLightest" />
+        <ButtonRow shape="sharp" />
+        <ButtonRow shape="sharp" variant="outline" />
+        <ButtonRow shape="sharp" colorTheme="light" />
+        <ButtonRow shape="sharp" colorTheme="lighter" />
+        <ButtonRow shape="sharp" colorTheme="greyLighter" />
+        <ButtonRow shape="sharp" colorTheme="greyLightest" />
         <h3>Deaktiverte knapper</h3>
         <ButtonRow disabled />
         <h2 className="u-heading">Multiknapper</h2>
@@ -158,7 +158,7 @@ const ButtonExample = () => {
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <Button colorTheme="light" variant="ghost" border="pill" size="medium" onClick={action('clicked')}>
+        <Button colorTheme="light" variant="ghost" shape="pill" size="medium" onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
           <ChevronDown />
         </Button>

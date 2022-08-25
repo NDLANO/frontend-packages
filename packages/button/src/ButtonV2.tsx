@@ -224,8 +224,7 @@ interface Props {
   colorTheme?: ButtonColor;
   variant?: ButtonVariant;
   inverted?: boolean;
-  border?: ButtonShape;
-  noBackground?: boolean;
+  shape?: ButtonShape;
   link?: boolean;
 }
 

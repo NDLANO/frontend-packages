@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { ButtonV2 as Button, MultiButton, StyledButton, IconButtonV2 as IconButton } from '@ndla/button';
@@ -8,10 +8,13 @@ import { Heart, Pencil, Print } from '@ndla/icons/action';
 import { Folder, Star, Link } from '@ndla/icons/editor';
 
 import { CloseButton, MenuButton } from '@ndla/button';
+// @ts-ignore
 import { StoryIntro, StoryBody } from '../wrappers';
+import { ButtonProps } from '../../../button/src/ButtonV2';
+import { ButtonSize } from '../../../button/src/types';
 const AnchorButton = StyledButton.withComponent('a');
 
-const menuButtonSizes = ['xsmall', 'small', 'normal', 'medium', 'large'];
+const menuButtonSizes: ButtonSize[] = ['xsmall', 'small', 'normal', 'medium', 'large'];
 const menuItems = [
   { icon: <Folder />, text: 'Legg til mappe/tag', onClick: () => {} },
   { icon: <Link />, text: 'Kopier lenke til siden', onClick: () => {} },
@@ -54,7 +57,7 @@ const StyledButtonRow = styled.div`
   gap: ${spacing.xsmall};
 `;
 
-const sizeNameMap = {
+const sizeNameMap: Record<ButtonSize, string> = {
   xsmall: 'Minst knapp',
   small: 'Liten knapp',
   normal: 'Normal knapp',
@@ -67,7 +70,7 @@ const StyledChevron = styled(ChevronDown)`
   height: 18px;
 `;
 
-const ButtonRow = (buttonProps) => {
+const ButtonRow = (buttonProps: ButtonProps) => {
   return (
     <StyledButtonRow>
       {menuButtonSizes.map((size, i) => (
@@ -79,11 +82,15 @@ const ButtonRow = (buttonProps) => {
   );
 };
 
-const IconButtonRow = ({ component: Component, ...buttonProps }) => {
+interface IconButtonRowProps extends ButtonProps {
+  component: ElementType;
+}
+
+const IconButtonRow = ({ component: Component, ...buttonProps }: IconButtonRowProps) => {
   return (
     <StyledButtonRow>
       {menuButtonSizes.map((size, i) => (
-        <IconButton key={i} size={size} onClick={() => action('clicked')} {...buttonProps}>
+        <IconButton key={i} size={size} aria-label="Testknapp" onClick={() => action('clicked')} {...buttonProps}>
           <Component />
         </IconButton>
       ))}

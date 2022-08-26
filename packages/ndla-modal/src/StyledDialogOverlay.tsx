@@ -15,7 +15,9 @@ interface StyledDialogOverlayComponentProps {
   animationDuration?: string;
 }
 
-const StyledDialogOverlayComponent = styled(DialogOverlay)<StyledDialogOverlayComponentProps>`
+const shouldForwardProp = (propName: string) => propName !== 'animateIn' && propName !== 'animationDuration';
+
+const StyledDialogOverlayComponent = styled(DialogOverlay, { shouldForwardProp })<StyledDialogOverlayComponentProps>`
   position: fixed;
   top: 0;
   left: 0;

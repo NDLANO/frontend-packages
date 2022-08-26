@@ -7,7 +7,7 @@
  */
 
 import css from '@emotion/css';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
 import React, { ButtonHTMLAttributes } from 'react';
 import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme, ButtonFontWeight } from './types';
@@ -32,6 +32,7 @@ export const buttonStyle = ({
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: ${spacing.xsmall};
 
   color: ${theme.foreground};
   background: ${theme.background};
@@ -67,33 +68,33 @@ export const buttonStyle = ({
   // Sizes
   ${size === 'xsmall' &&
   css`
-    padding: ${spacing.xxsmall} ${shape === 'pill' ? '10px' : spacing.xsmall};
+    padding: ${spacing.xxsmall} ${spacing.xsmall};
     ${fonts.sizes('12px', '14px')};
     min-height: 24px;
     border-width: 1px;
   `}
   ${size === 'small' &&
   css`
-    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.small : spacing.xsmall};
+    padding: ${spacing.xxsmall} ${spacing.xsmall};
     ${fonts.sizes('14px', '18px')};
     min-height: 32px;
     border-width: 1px;
   `}
   ${size === 'normal' &&
   css`
-    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.nsmall : spacing.small};
+    padding: ${spacing.xxsmall} ${spacing.small};
     ${fonts.sizes('16px')};
     min-height: 40px;
   `}
   ${size === 'medium' &&
   css`
-    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.medium : spacing.nsmall};
+    padding: ${spacing.xxsmall} ${spacing.nsmall};
     ${fonts.sizes('16px', '18px')};
     min-height: 48px;
   `}
   ${size === 'large' &&
   css`
-    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.large : spacing.normal};
+    padding: ${spacing.xxsmall} ${spacing.normal};
     ${fonts.sizes('18px', '20px')};
     min-height: 52px;
   `}

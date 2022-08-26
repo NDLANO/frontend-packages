@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { ButtonV2 as Button } from '@ndla/button';
 import { Feide } from '@ndla/icons/common';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 
 import AuthModal, { AuthModalProps } from '../User/AuthModal';
@@ -19,22 +19,17 @@ type FeideWrapperProps = {
   inverted?: boolean;
 };
 
-const StyledButton = styled(Button)<FeideWrapperProps>`
-  font-weight: ${fonts.weight.semibold};
-  display: flex;
-  align-items: center;
-`;
+const StyledButton = styled(Button)``;
 
-const StyledSpan = styled.span`
+const StyledSpan = styled.span<FeideWrapperProps>`
   svg {
     margin-left: ${spacing.xsmall};
-    fill: ${colors.brand.primary};
-    color: ${(props) => (props.inverted ? `#ffffff` : `#000000`)};
+    color: ${(props) => (props.inverted ? colors.white : colors.brand.primary)};
     width: 22px;
     height: 22px;
   }
-  ${StyledButton}:hover svg {
-    color: #000000;
+  ${StyledButton}:hover & svg {
+    color: ${colors.brand.primary};
   }
 `;
 
@@ -44,6 +39,7 @@ interface Props extends AuthModalProps {
 
 const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
   const { t } = useTranslation();
+
   return (
     <AuthModal
       {...rest}
@@ -56,7 +52,7 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
           variant="ghost"
           aria-label={t('user.buttonLogIn')}>
           {t('myNdla.myNDLA')}
-          <StyledSpan>
+          <StyledSpan inverted={inverted}>
             <Feide />
           </StyledSpan>
         </StyledButton>

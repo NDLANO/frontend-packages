@@ -119,7 +119,7 @@ const FrontpageProgramMenu = ({ programItems, subjectCategories, showBetaCursor 
           <StyledMenuItem>{t('frontpageMenu.allsubjects')}</StyledMenuItem>
         </Button>
         {showBetaCursor && (
-          <CursorPlaceholder>
+          <CursorPlaceholder aria-hidden="true">
             <CursorWrapper>
               <LeftCursor hide={showSubjects} />
               <CursorTextWrapper>

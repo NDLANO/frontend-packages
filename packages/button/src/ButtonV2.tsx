@@ -10,7 +10,7 @@ import css from '@emotion/css';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { ButtonHTMLAttributes } from 'react';
 import { themes } from './themes';
-import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme } from './types';
+import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme, ButtonFontWeight } from './types';
 
 interface ButtonStyleProps {
   size?: ButtonSize;
@@ -18,6 +18,7 @@ interface ButtonStyleProps {
   theme: ButtonTheme;
   shape?: ButtonShape;
   inverted?: boolean;
+  fontWeight?: ButtonFontWeight;
 }
 
 export const buttonStyle = ({
@@ -26,6 +27,7 @@ export const buttonStyle = ({
   shape = 'normal',
   inverted,
   variant = 'solid',
+  fontWeight = 'semibold',
 }: ButtonStyleProps) => css`
   display: inline-flex;
   align-items: center;
@@ -40,7 +42,7 @@ export const buttonStyle = ({
   text-decoration: none;
 
   font-family: ${fonts.sans};
-  font-weight: ${fonts.weight.semibold};
+  font-weight: ${fonts.weight[fontWeight]};
   transition: ${misc.transition.default};
   box-shadow: none;
   text-align: center;
@@ -65,7 +67,7 @@ export const buttonStyle = ({
   // Sizes
   ${size === 'xsmall' &&
   css`
-    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.small : spacing.xsmall};
+    padding: ${spacing.xxsmall} ${shape === 'pill' ? '10px' : spacing.xsmall};
     ${fonts.sizes('12px', '14px')};
     min-height: 24px;
     border-width: 1px;
@@ -79,19 +81,19 @@ export const buttonStyle = ({
   `}
   ${size === 'normal' &&
   css`
-    padding: ${spacing.xxsmall} ${spacing.small};
+    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.nsmall : spacing.small};
     ${fonts.sizes('16px')};
     min-height: 40px;
   `}
   ${size === 'medium' &&
   css`
-    padding: ${spacing.xxsmall} ${spacing.nsmall};
+    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.medium : spacing.nsmall};
     ${fonts.sizes('16px', '18px')};
     min-height: 48px;
   `}
   ${size === 'large' &&
   css`
-    padding: ${spacing.xxsmall} ${spacing.normal};
+    padding: ${spacing.xxsmall} ${shape === 'pill' ? spacing.large : spacing.normal};
     ${fonts.sizes('18px', '20px')};
     min-height: 52px;
   `}
@@ -171,18 +173,15 @@ export const buttonStyle = ({
 `;
 
 interface Props {
-  className?: string;
-  disabled?: boolean;
   size?: ButtonSize;
-  outline?: boolean;
   colorTheme?: ButtonColor;
   variant?: ButtonVariant;
   inverted?: boolean;
   shape?: ButtonShape;
-  link?: boolean;
+  fontWeight?: ButtonFontWeight;
 }
 
-export type ButtonProps = Props & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
+export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({ colorTheme, children, ...rest }: ButtonProps) => {
   const theme = themes[colorTheme || 'primary'];

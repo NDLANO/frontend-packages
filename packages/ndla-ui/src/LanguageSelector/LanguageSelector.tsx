@@ -110,7 +110,12 @@ type Props = {
   alwaysVisible?: boolean;
 };
 
-const StyledButton = styled(Button)`
+interface StyledButtonProps {
+  outline?: boolean;
+  inverted?: boolean;
+}
+
+const StyledButton = styled(Button)<StyledButtonProps>`
   border-color: ${({ inverted, outline }) =>
     outline ? (inverted ? colors.white : colors.brand.primary) : 'transparent'};
 `;

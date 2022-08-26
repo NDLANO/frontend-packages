@@ -339,6 +339,7 @@ const Topic = ({
               {onToggleShowContent && (
                 <StyledButtonWrapper invertedStyle={invertedStyle}>
                   <Button
+                    aria-expanded={!!showContent}
                     link
                     onClick={() => {
                       onToggleShowContent();

@@ -66,7 +66,12 @@ const StyledCross = styled(Cross)`
 
 const StyledDualIconButton = styled(IconButtonDualStates)`
   color: ${colors.brand.primary};
-  padding: 0;
+  :hover,
+  :active,
+  :focus {
+    background: ${colors.brand.greyLight};
+  }
+  padding: ${spacing.xsmall};
 `;
 
 const StyledInput = styled.input`
@@ -259,6 +264,7 @@ const SuggestionInput = ({
               ariaLabelInActive={t('tagSelector.hideAllTags')}
               active={expanded}
               size="small"
+              ghostPill
               stripped
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}

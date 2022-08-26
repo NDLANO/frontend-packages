@@ -10,7 +10,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
 import Button, { ButtonProps } from './ButtonV2';
-import { ButtonSize } from './types';
+
+export const svgSizes = {
+  xsmall: spacingUnit * 0.75,
+  small: spacingUnit,
+  normal: spacingUnit * 1.25,
+  medium: spacingUnit * 2,
+  large: spacingUnit * 2.5,
+};
 
 export interface IconButtonProps extends ButtonProps {
   ['aria-label']: string;
@@ -33,27 +40,8 @@ const StyledButton = styled(Button)<StyledButtonProps>`
   }
 `;
 
-export const convertSizeForSVG = (size: ButtonSize) => {
-  if (size === 'xsmall') {
-    return spacingUnit * 0.75;
-  }
-  if (size === 'small') {
-    return spacingUnit * 1;
-  }
-  if (size === 'normal') {
-    return spacingUnit * 1.25;
-  }
-  if (size === 'medium') {
-    return spacingUnit * 2;
-  }
-  if (size === 'large') {
-    return spacingUnit * 2.5;
-  }
-  return spacingUnit;
-};
-
 export const IconButton = ({ children, size = 'small', ...rest }: IconButtonProps) => (
-  <StyledButton svgSize={convertSizeForSVG(size)} {...rest}>
+  <StyledButton svgSize={svgSizes[size]} {...rest}>
     <span aria-hidden="true">{children}</span>
   </StyledButton>
 );

@@ -14,6 +14,7 @@ export interface Props {
   role?: string;
   onClick?: () => void;
   style?: {}; // eslint-disable-line
+  ariaHidden?: boolean;
 }
 const IconBase = ({
   children,
@@ -25,6 +26,7 @@ const IconBase = ({
   description,
   width,
   height,
+  ariaHidden = true,
   className,
   ...props
 }: Props) => {
@@ -34,6 +36,7 @@ const IconBase = ({
   return (
     <svg
       fill="currentColor"
+      aria-hidden={ariaHidden}
       preserveAspectRatio="xMidYMid meet"
       height={height || computedSize}
       width={width || computedSize}

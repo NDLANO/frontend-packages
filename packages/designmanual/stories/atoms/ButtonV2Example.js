@@ -158,7 +158,13 @@ const ButtonExample = () => {
         <h2 key="pill-heading" className="u-heading">
           Ghost pill knapp (hover)
         </h2>
-        <Button colorTheme="light" variant="ghost" shape="pill" size="medium" onClick={action('clicked')}>
+        <Button
+          colorTheme="light"
+          fontWeight={'normal'}
+          variant="ghost"
+          shape="pill"
+          size="medium"
+          onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
           <ChevronDown />
         </Button>

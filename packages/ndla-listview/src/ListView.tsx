@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
-// @ts-ignore
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
 import { WithTranslation, withTranslation } from 'react-i18next';
@@ -177,7 +176,7 @@ const searchFieldClasses = new BEMHelper('c-search-field');
 
 interface Option {
   title: string;
-  value: string | number;
+  value: string;
   icon: Function;
   noResults?: boolean;
   disabled?: boolean;
@@ -186,7 +185,7 @@ interface Option {
 interface Filter {
   options: Option[] | Option[][];
   onChange: (key: string, values: string[]) => void;
-  filterValues?: (string | number)[];
+  filterValues?: string[];
   label?: string;
   key: 'subject' | 'category' | 'default';
   isGroupedOptions?: boolean;

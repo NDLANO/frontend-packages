@@ -1,6 +1,6 @@
 {
   "name": "@ndla/listview",
-  "version": "2.1.44",
+  "version": "2.1.49",
   "description": "Listview components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -26,9 +26,9 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^2.3.4",
-    "@ndla/icons": "^1.11.4",
-    "@ndla/ui": "^24.2.1"
+    "@ndla/core": "^2.3.5",
+    "@ndla/icons": "^1.11.7",
+    "@ndla/ui": "^25.1.0"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

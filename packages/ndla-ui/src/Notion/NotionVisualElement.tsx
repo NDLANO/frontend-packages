@@ -30,6 +30,7 @@ export type NotionVisualElementType = {
     src: string;
     alt?: string;
   };
+  licenseButtons?: ReactNode;
 };
 
 interface Props {
@@ -64,6 +65,7 @@ const NotionVisualElement = ({ visualElement, id, figureId }: Props) => {
       title={visualElement.title ?? ''}
       copyright={visualElement.copyright}
       licenseString={visualElement.copyright?.license?.license ?? ''}
+      licenseButtons={visualElement.licenseButtons}
       type={type}>
       {visualElement.image?.src ? (
         <img src={visualElement.image?.src} alt={visualElement.image.alt} />

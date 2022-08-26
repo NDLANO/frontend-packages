@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { DialogOverlay } from '@reach/dialog';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 interface Props {
   className: string;
   animateIn: boolean;
@@ -10,7 +10,14 @@ interface Props {
   children?: ReactNode;
 }
 
-const dialogStyles = css`
+interface StyledDialogOverlayComponentProps {
+  animateIn?: boolean;
+  animationDuration?: string;
+}
+
+const shouldForwardProp = (propName: string) => propName !== 'animateIn' && propName !== 'animationDuration';
+
+const StyledDialogOverlayComponent = styled(DialogOverlay, { shouldForwardProp })<StyledDialogOverlayComponentProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -21,19 +28,15 @@ const dialogStyles = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
+  animation-name: ${(p) => (p.animateIn ? 'fadeIn' : 'fadeOut')};
+  animation-duration: ${(p) => p.animationDuration};
 `;
 
 export const StyledDialogOverlay = ({ animateIn, animationDuration = '400ms', children, ...props }: Props) => {
   return (
-    <DialogOverlay
-      css={css`
-        animation-name: ${animateIn ? 'fadeIn' : 'fadeOut'};
-        animation-duration: ${animationDuration};
-        ${dialogStyles}
-      `}
-      {...props}>
+    <StyledDialogOverlayComponent animateIn={animateIn} animationDuration={animationDuration} {...props}>
       {children}
-    </DialogOverlay>
+    </StyledDialogOverlayComponent>
   );
 };

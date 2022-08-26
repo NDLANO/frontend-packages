@@ -12,6 +12,10 @@ import { spacingUnit } from '@ndla/core';
 import Button, { ButtonProps } from './ButtonV2';
 import { ButtonSize } from './types';
 
+export interface IconButtonProps extends ButtonProps {
+  ['aria-label']: string;
+}
+
 interface StyledButtonProps extends ButtonProps {
   svgSize: number;
 }
@@ -48,7 +52,7 @@ export const convertSizeForSVG = (size: ButtonSize) => {
   return spacingUnit;
 };
 
-export const IconButton = ({ children, size = 'small', ...rest }: ButtonProps) => (
+export const IconButton = ({ children, size = 'small', ...rest }: IconButtonProps) => (
   <StyledButton svgSize={convertSizeForSVG(size)} {...rest}>
     <span aria-hidden="true">{children}</span>
   </StyledButton>

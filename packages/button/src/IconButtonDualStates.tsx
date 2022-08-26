@@ -9,10 +9,9 @@
 import React, { ReactElement } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
-import { IconButton } from './IconButtonV2';
-import { ButtonProps } from './ButtonV2';
+import { IconButton, IconButtonProps } from './IconButtonV2';
 
-export interface IconButtonDualStatesProps extends ButtonProps {
+interface Props extends Omit<IconButtonProps, 'aria-label'> {
   ariaLabelActive: string;
   ariaLabelInActive: string;
   active?: boolean;
@@ -44,7 +43,7 @@ export const IconButtonDualStates = ({
   activeIcon,
   inactiveIcon,
   ...props
-}: IconButtonDualStatesProps) => (
+}: Props) => (
   <StyledIconButton active={!!active} aria-label={active ? ariaLabelActive : ariaLabelInActive} {...props}>
     {activeIcon}
     {inactiveIcon}

@@ -62,6 +62,11 @@ const sizeNameMap = {
   large: 'Stor knapp',
 };
 
+const StyledChevron = styled(ChevronDown)`
+  width: 18px;
+  height: 18px;
+`;
+
 const ButtonRow = (buttonProps) => {
   return (
     <StyledButtonRow>
@@ -160,7 +165,7 @@ const ButtonExample = () => {
         </h2>
         <Button colorTheme="light" fontWeight={'normal'} variant="ghost" shape="pill" onClick={action('clicked')}>
           <span>Velg språk(language): Bokmål</span>
-          <ChevronDown />
+          <StyledChevron />
         </Button>
         <h2 className="u-heading">Lukkeknapp</h2>
         <CloseButton />

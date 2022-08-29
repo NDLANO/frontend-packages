@@ -10,7 +10,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/core';
 import { Done } from '@ndla/icons/editor';
-import { spacing, colors, misc, animations, fonts, spacingUnit } from '@ndla/core';
+import { spacing, colors, animations, fonts, spacingUnit } from '@ndla/core';
 import Button from '@ndla/button';
 import type { TagType } from './TagSelector';
 
@@ -21,11 +21,6 @@ const animationKeyframe = (maxHeight?: number) => keyframes`
   to {
     max-height: ${maxHeight}px;
   }
-`;
-
-const StyledDone = styled(Done)`
-  height: 18px;
-  width: 18px;
 `;
 
 interface SuggestionProps {
@@ -54,10 +49,10 @@ const Suggestions = styled.div<SuggestionProps>`
 
   ::-webkit-scrollbar-thumb {
     border: 4px solid transparent;
+    border-radius: 14px;
     background-clip: padding-box;
     padding: 0 4px;
     background-color: ${colors.brand.neutral7};
-    border-radius: 14px;
   }
 `;
 
@@ -66,11 +61,11 @@ const SuggestionList = styled.div`
   flex-direction: column;
 `;
 
-interface SuggestionButtonProps {
+interface SuggestionStyleProps {
   isHighlighted: boolean;
 }
 
-const SuggestionButton = styled(Button)<SuggestionButtonProps>`
+const SuggestionButton = styled(Button)<SuggestionStyleProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,17 +80,24 @@ const SuggestionButton = styled(Button)<SuggestionButtonProps>`
     }
   }
   ${({ isHighlighted }) =>
-    isHighlighted
-      ? css`
-          background: ${colors.brand.lighter};
-          &:disabled {
-            background: ${colors.brand.greyLighter};
-            svg {
-              fill: ${colors.brand.greyMedium};
-            }
-          }
-        `
-      : ''}
+    isHighlighted &&
+    css`
+      background: ${colors.brand.lighter};
+      &:disabled {
+        background: ${colors.brand.greyLighter};
+      }
+    `}
+`;
+
+const StyledDone = styled(Done)<SuggestionStyleProps>`
+  height: 20px;
+  width: 20px;
+
+  color: ${({ isHighlighted }) => (isHighlighted ? colors.brand.greyMedium : colors.brand.tertiary)};
+
+  ${SuggestionButton}:hover & {
+    color: ${colors.brand.greyMedium};
+  }
 `;
 
 interface Props {
@@ -125,7 +127,7 @@ const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, has
                 onToggleTag(id);
               }}
               key={id}>
-              {name} {alreadyAdded && <StyledDone />}
+              {name} {alreadyAdded && <StyledDone isHighlighted={selected} />}
             </SuggestionButton>
           );
         })}

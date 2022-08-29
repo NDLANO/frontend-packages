@@ -52,7 +52,7 @@ export const convertSizeForSVG = (size: ButtonSize) => {
 
 export const IconButton = ({ children, size, ...rest }: IconButtonProps) => (
   <StyledButton svgSize={convertSizeForSVG(size || 'normal')} {...rest}>
-    <span aria-hidden="true">{children}</span>
+    {children}
   </StyledButton>
 );
 

@@ -19,16 +19,15 @@ type FeideWrapperProps = {
   inverted?: boolean;
 };
 
-const StyledButton = styled(Button)``;
-
-const StyledSpan = styled.span<FeideWrapperProps>`
+const StyledButton = styled(Button)<FeideWrapperProps>`
   svg {
     margin-left: ${spacing.xsmall};
     color: ${(props) => (props.inverted ? colors.white : colors.brand.primary)};
     width: 22px;
     height: 22px;
   }
-  ${StyledButton}:hover & svg, ${StyledButton}:focus & svg {
+  &:hover svg,
+  &:focus svg {
     color: ${colors.brand.primary};
   }
 `;
@@ -52,9 +51,7 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
           variant="ghost"
           aria-label={t('user.buttonLogIn')}>
           {t('myNdla.myNDLA')}
-          <StyledSpan inverted={inverted}>
-            <Feide />
-          </StyledSpan>
+          <Feide />
         </StyledButton>
       }
     />

@@ -1,6 +1,6 @@
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import Modal from '@ndla/modal';
-import Button from '@ndla/button';
+import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
@@ -17,6 +17,9 @@ interface Props {
 }
 
 const StyledHeader = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
   ${mq.range({ from: breakpoints.tablet })} {
     width: 1024px;
     max-width: calc(100vw - 100px);
@@ -113,9 +116,9 @@ const MastheadSearchModal = ({
         <div css={extraBackdrop} />
         <StyledHeader>
           {isFunction(children) ? children(closeModal) : children}
-          <Button aria-label={t('welcomePage.closeSearch')} stripped onClick={closeModal}>
+          <IconButton aria-label={t('welcomePage.closeSearch')} variant="ghost" colorTheme="light" onClick={closeModal}>
             <Cross className="c-icon--medium" />
-          </Button>
+          </IconButton>
         </StyledHeader>
       </>
     )}

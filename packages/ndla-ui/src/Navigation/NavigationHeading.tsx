@@ -45,10 +45,11 @@ type Props = {
   subHeading?: string;
   children: ReactNode;
   invertedStyle?: boolean;
+  headingId?: string;
 };
 
-export const NavigationHeading = ({ subHeading, children, invertedStyle }: Props) => (
-  <StyledH1 invertedStyle={invertedStyle}>
+export const NavigationHeading = ({ subHeading, children, invertedStyle, headingId }: Props) => (
+  <StyledH1 invertedStyle={invertedStyle} id={headingId} tabIndex={-1}>
     {subHeading && <StyledSubText>{subHeading}</StyledSubText>}
     <StyledMainText>{children}</StyledMainText>
   </StyledH1>

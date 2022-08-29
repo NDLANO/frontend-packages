@@ -139,7 +139,12 @@ const SearchField = ({
           {t('welcomePage.resetSearch')}
         </button>
       )}
-      <button tabIndex={-1} {...classes('button', 'searchIcon')} type="submit" value="Search">
+      <button
+        tabIndex={-1}
+        {...classes('button', 'searchIcon')}
+        type="submit"
+        value="Search"
+        aria-label={t('siteNav.search')}>
         <SearchIcon />
       </button>
     </div>

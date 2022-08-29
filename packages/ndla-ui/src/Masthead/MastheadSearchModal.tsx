@@ -133,7 +133,7 @@ const MastheadSearchModal = ({
         <div css={extraBackdrop} />
         <StyledHeader>
           {isFunction(children) ? children(closeModal) : children}
-          <Button stripped onClick={closeModal}>
+          <Button aria-label={t('welcomePage.closeSearch')} stripped onClick={closeModal}>
             <Cross className="c-icon--medium" />
           </Button>
         </StyledHeader>

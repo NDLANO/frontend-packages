@@ -42,7 +42,7 @@ const StyledButton = styled(Button)<StyledButtonProps>`
 
 export const IconButton = ({ children, size = 'small', ...rest }: IconButtonProps) => (
   <StyledButton svgSize={svgSizes[size]} {...rest}>
-    <span aria-hidden="true">{children}</span>
+    {children}
   </StyledButton>
 );
 

@@ -118,7 +118,7 @@ const TopicHeaderOverlay = styled.div`
   }
 `;
 
-const TopicHeading = styled.h1<InvertItProps>`
+const TopicHeading = styled.h2<InvertItProps>`
   margin: ${spacing.medium} 0 0;
   font-weight: ${fonts.weight.bold};
   display: flex;
@@ -360,6 +360,7 @@ const Topic = ({
               {subTopics && subTopics.length !== 0 && (
                 <StyledNavigationBoxWrapper>
                   <NavigationBox
+                    headingType="h3"
                     colorMode="light"
                     heading={t('navigation.topics')}
                     items={subTopics}

@@ -1,10 +1,9 @@
-import React, { HTMLProps, ReactNode } from 'react';
+import React from 'react';
 import { colors, spacing, fonts, spacingUnit } from '@ndla/core';
 import { css } from '@emotion/core';
-import Button from '@ndla/button';
+import Button, { ButtonProps } from '@ndla/button';
 
-interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size' | 'width' | 'type'> {
-  children: ReactNode;
+interface Props extends ButtonProps {
   bold: boolean;
 }
 

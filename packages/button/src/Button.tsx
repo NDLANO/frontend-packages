@@ -37,7 +37,7 @@ export type ButtonBorder = 'normal' | 'rounded' | 'sharpened';
 export type ButtonWidth = 'auto' | 'full';
 export type ButtonTextAlign = 'center' | 'left' | 'right';
 
-export interface ButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
+export interface ButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size' | 'ref'> {
   className?: string;
   type?: 'submit' | 'button' | 'reset';
   disabled?: boolean;

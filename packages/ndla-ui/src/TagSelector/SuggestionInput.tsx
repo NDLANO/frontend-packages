@@ -153,6 +153,8 @@ const SuggestionInput = ({
 
   const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
 
+  const isOpen = (hasFocus || expanded) && suggestions.length > 0;
+
   return (
     <TagSelectorWrapper ref={containerRef}>
       <StyledInputWrapper>
@@ -248,11 +250,11 @@ const SuggestionInput = ({
               return;
             }}
           />
-          <Tooltip tooltip={expanded ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
+          <Tooltip tooltip={expanded ? t('tagSelector.hideTags') : t('tagSelector.showTags')}>
             <StyledDualIconButton
               data-suggestionbutton
-              ariaLabelActive={t('tagSelector.showAllTags')}
-              ariaLabelInActive={t('tagSelector.hideAllTags')}
+              ariaLabelActive={t('tagSelector.showTags')}
+              ariaLabelInActive={t('tagSelector.hideTags')}
               active={expanded}
               size="small"
               ghostPill
@@ -261,16 +263,18 @@ const SuggestionInput = ({
               activeIcon={<ChevronUp />}
               aria-controls={TAG_INPUT_ID}
               onClick={() => {
-                setInputValue('');
-                setExpanded(!expanded);
+                if (isOpen) {
+                  setInputValue('');
+                }
                 inputRef.current?.focus();
+                setExpanded(!expanded);
               }}
             />
           </Tooltip>
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
       <div id={TAG_INPUT_ID} aria-live="polite">
-        {(hasFocus || expanded) && suggestions.length > 0 ? (
+        {isOpen ? (
           <Suggestions
             maxHeight={dropdownMaxHeight}
             suggestions={suggestions}

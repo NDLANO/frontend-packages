@@ -30,8 +30,8 @@ const messages = {
     label: 'Legg til emneknagg',
     placeholder: 'Skriv inn emneknagg',
     removeTag: 'Ta vekk {{name}}',
-    hideAllTags: 'Skjul alle emneknagger',
-    showAllTags: 'Vis alle emneknagger',
+    hideTags: 'Skjul emneknagger',
+    showTags: 'Vis emneknagger',
   },
   htmlTitles: {
     titleTemplate,

@@ -30,8 +30,8 @@ const messages = {
     label: 'Add tag',
     placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
-    hideAllTags: 'Hide all tags',
-    showAllTags: 'Show all tags',
+    hideTags: 'Hide tags',
+    showTags: 'Show tags',
   },
   htmlTitles: {
     titleTemplate,

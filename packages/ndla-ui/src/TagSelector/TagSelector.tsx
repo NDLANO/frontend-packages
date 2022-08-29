@@ -44,7 +44,7 @@ const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
   const inputLowercase = inputValue.toLowerCase();
   return tags
     .filter(({ name }) => name.toLowerCase().startsWith(inputLowercase))
-    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
+    .sort((a, b) => a.name.localeCompare(b.name));
 };
 
 const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, dropdownMaxHeight }: Props) => {

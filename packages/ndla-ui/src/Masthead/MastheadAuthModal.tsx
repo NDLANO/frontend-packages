@@ -28,7 +28,7 @@ const StyledSpan = styled.span<FeideWrapperProps>`
     width: 22px;
     height: 22px;
   }
-  ${StyledButton}:hover & svg {
+  ${StyledButton}:hover & svg, ${StyledButton}:focus & svg {
     color: ${colors.brand.primary};
   }
 `;

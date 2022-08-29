@@ -13,6 +13,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { debounce } from 'lodash';
+import { spacing } from '@ndla/core';
+import styled from '@emotion/styled';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
@@ -34,6 +36,10 @@ const classes = new BEMHelper({
   name: 'topic-menu',
   prefix: 'c-',
 });
+
+const StyledButton = styled(Button)`
+  padding: ${spacing.xsmall} ${spacing.small};
+`;
 
 export const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
@@ -192,40 +198,40 @@ export const TopicMenu = ({
           <div {...classes('subject__header')}>
             <div {...classes('subject__header__menu-filter')}>
               {subjectTitle && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
                   colorTheme={selectedMenu !== MENU_CURRENT_SUBJECT ? 'lighter' : 'primary'}
                   size="small"
                   shape="pill">
                   {subjectTitle}
-                </Button>
+                </StyledButton>
               )}
               {currentProgramme && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_CURRENT_PROGRAMME)}
                   colorTheme={selectedMenu !== MENU_CURRENT_PROGRAMME ? 'lighter' : 'primary'}
                   size="small"
                   shape="pill">
                   {currentProgramme.name}
-                </Button>
+                </StyledButton>
               )}
               {programmes && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
                   colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : 'primary'}
                   size="small"
                   shape="pill">
                   {t('frontpageMenu.program')}
-                </Button>
+                </StyledButton>
               )}
               {subjectCategories && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
                   colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : 'primary'}
                   size="small"
                   shape="pill">
                   {t('frontpageMenu.allsubjects')}
-                </Button>
+                </StyledButton>
               )}
             </div>
           </div>

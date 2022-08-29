@@ -20,6 +20,8 @@ import Suggestions from './Suggestions';
 import type { TagType } from './TagSelector';
 
 const TagSelectorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: ${misc.borderRadius};
   &:focus-within {
@@ -36,8 +38,7 @@ const SuggestionTextWrapper = styled.div`
   right: 0;
   overflow: hidden;
   max-height: ${spacing.large};
-  padding: 8.333px;
-  padding-right: ${spacing.large};
+  padding-left: 0;
   span {
     color: ${colors.brand.greyMedium};
     white-space: nowrap;

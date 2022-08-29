@@ -9,15 +9,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Cross } from '@ndla/icons/action';
-import { HashTag } from '@ndla/icons/common';
-import { spacing, colors, misc, animations, fonts } from '@ndla/core';
+import { spacing, colors, misc, animations, fonts, spacingUnit } from '@ndla/core';
 import Button from '@ndla/button';
 import type { TagType } from './TagSelector';
 
-const SuggestionsWrapper = styled.div`
-  position: relative;
-`;
+const SuggestionsWrapper = styled.div``;
 
 interface SuggestionProps {
   maxHeight?: number;
@@ -28,7 +24,7 @@ const Suggestions = styled.div<SuggestionProps>`
   right: 0;
   left: 0;
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
-  overflow-y: scroll;
+  overflow-y: overlay;
   scroll-behavior: smooth;
   background: ${colors.white};
   ${animations.fadeIn(animations.durations.fast)}
@@ -37,28 +33,18 @@ const Suggestions = styled.div<SuggestionProps>`
     width: ${spacing.small};
   }
 
-  ::-webkit-scrollbar-track {
-    width: ${spacing.small};
-    margin-top: ${spacing.xsmall};
-  }
-
   ::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    padding: 0 4px;
     background-color: ${colors.brand.neutral7};
-    border-radius: 10px;
-    border: solid ${spacing.xxsmall} white;
+    border-radius: 14px;
   }
 `;
 
 const SuggestionList = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: ${spacing.xsmall};
-  padding: ${spacing.small};
-  opacity: 0;
-  ${animations.fadeInBottom()}
-  animation-delay: ${animations.durations.fast};
-  animation-fill-mode: forwards;
 `;
 
 interface SuggestionButtonProps {
@@ -67,29 +53,35 @@ interface SuggestionButtonProps {
 }
 
 const SuggestionButton = styled(Button)<SuggestionButtonProps>`
-  font-weight: ${fonts.weight.semibold};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: ${fonts.weight.normal};
   transition: ${misc.transition.default};
-  padding: ${spacing.xxsmall} ${spacing.small};
+  padding: ${spacingUnit / 3} ${spacing.nsmall};
+  border-radius: 0;
 
   &:disabled {
     color: ${colors.brand.greyMedium};
     &:hover {
+      background: ${colors.brand.greyLighter};
       svg {
         fill: ${colors.brand.greyLight};
       }
     }
   }
   ${({ isHighlighted, alreadyAdded }) =>
-    isHighlighted &&
-    css`
-      background: ${alreadyAdded ? colors.brand.primary : colors.brand.lighter};
-      color: ${alreadyAdded && colors.white};
-      border-color: ${colors.brand.primary};
-    `}
-`;
-
-const StyledCross = styled(Cross)`
-  margin-left: ${spacing.xxsmall};
+    isHighlighted
+      ? css`
+          background: ${colors.brand.lighter};
+          &:disabled {
+            background: ${colors.brand.greyLighter};
+            svg {
+              fill: ${colors.brand.grey};
+            }
+          }
+        `
+      : ''}
 `;
 
 interface Props {
@@ -109,12 +101,10 @@ const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, has
           const selected = index === currentHighlightedIndex;
           return (
             <SuggestionButton
-              borderShape="rounded"
-              ghostPill={!alreadyAdded}
-              light={alreadyAdded}
+              ghostPill
+              disabled={alreadyAdded}
               data-suggestionbutton
               role="option"
-              size="small"
               aria-selected={selected}
               isHighlighted={selected}
               onMouseDown={() => {
@@ -122,8 +112,7 @@ const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, has
               }}
               alreadyAdded={alreadyAdded}
               key={id}>
-              <HashTag /> {name}
-              {alreadyAdded && <StyledCross />}
+              {name}
             </SuggestionButton>
           );
         })}

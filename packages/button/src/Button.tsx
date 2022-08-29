@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { forwardRef, HTMLProps } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing, spacingUnit, misc, fonts, breakpoints, mq } from '@ndla/core';
@@ -37,8 +37,9 @@ export type ButtonBorder = 'normal' | 'rounded' | 'sharpened';
 export type ButtonWidth = 'auto' | 'full';
 export type ButtonTextAlign = 'center' | 'left' | 'right';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
   className?: string;
+  type?: 'submit' | 'button' | 'reset';
   disabled?: boolean;
   outline?: boolean;
   link?: boolean;
@@ -537,7 +538,7 @@ export const ButtonStyles = (p: ButtonProps) =>
   ${p.light ? appearances['light'] : null}
   `;
 
-export const StyledButton = styled('button')<ButtonProps>`
+export const StyledButton = styled.button<ButtonProps>`
   ${(p) => ButtonStyles(p)}
 `;
 
@@ -545,67 +546,72 @@ export const StyledButton = styled('button')<ButtonProps>`
 const modifierToApperance = (modifiers: Record<ButtonAppearance, boolean | undefined>) =>
   (Object.keys(modifiers) as ButtonAppearance[]).reverse().find((key) => modifiers[key]);
 
-export const Button = ({
-  outline,
-  stripped,
-  link,
-  large,
-  lighter,
-  submit,
-  loading,
-  appearance,
-  children,
-  disabled,
-  inverted,
-  invertedOutline,
-  safelink,
-  ghostPill,
-  ghostPillInverted,
-  ghostPillOutline,
-  ghostPillOutlineInverted,
-  clippedButton,
-  clippedButtonOutline,
-  clippedButtonAttachment,
-  clippedButtonAttachmentOutline,
-  ...rest
-}: ButtonProps) => {
-  const clippedButtonLarge = clippedButton && large;
-  const clippedButtonOutlineLarge = clippedButtonOutline && large;
-  const clippedButtonAttachmentLarge = clippedButtonAttachment && large;
-  const clippedButtonAttachmentOutlineLarge = clippedButtonAttachmentOutline && large;
-  const modifiers: Record<ButtonAppearance, boolean | undefined> = {
-    link,
-    large,
-    outline,
-    lighter,
-    stripped,
-    inverted,
-    invertedOutline,
-    ghostPill,
-    ghostPillInverted,
-    ghostPillOutline,
-    ghostPillOutlineInverted,
-    clippedButton,
-    clippedButtonOutline,
-    clippedButtonAttachment,
-    clippedButtonAttachmentOutline,
-    clippedButtonLarge,
-    clippedButtonOutlineLarge,
-    clippedButtonAttachmentLarge,
-    clippedButtonAttachmentOutlineLarge,
-  };
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      outline,
+      stripped,
+      link,
+      large,
+      lighter,
+      submit,
+      loading,
+      appearance,
+      children,
+      disabled,
+      inverted,
+      invertedOutline,
+      safelink,
+      ghostPill,
+      ghostPillInverted,
+      ghostPillOutline,
+      ghostPillOutlineInverted,
+      clippedButton,
+      clippedButtonOutline,
+      clippedButtonAttachment,
+      clippedButtonAttachmentOutline,
+      ...rest
+    },
+    ref,
+  ) => {
+    const clippedButtonLarge = clippedButton && large;
+    const clippedButtonOutlineLarge = clippedButtonOutline && large;
+    const clippedButtonAttachmentLarge = clippedButtonAttachment && large;
+    const clippedButtonAttachmentOutlineLarge = clippedButtonAttachmentOutline && large;
+    const modifiers: Record<ButtonAppearance, boolean | undefined> = {
+      link,
+      large,
+      outline,
+      lighter,
+      stripped,
+      inverted,
+      invertedOutline,
+      ghostPill,
+      ghostPillInverted,
+      ghostPillOutline,
+      ghostPillOutlineInverted,
+      clippedButton,
+      clippedButtonOutline,
+      clippedButtonAttachment,
+      clippedButtonAttachmentOutline,
+      clippedButtonLarge,
+      clippedButtonOutlineLarge,
+      clippedButtonAttachmentLarge,
+      clippedButtonAttachmentOutlineLarge,
+    };
 
-  const styledAppearance = appearance || modifierToApperance(modifiers);
+    const styledAppearance = appearance || modifierToApperance(modifiers);
 
-  /* eslint-disable react/button-has-type */
-  const type = submit ? 'submit' : rest.type || 'button';
-  // Unless the disabled state is explicitly set, the button is disabled when loading.
-  const isDisabled = (disabled !== undefined ? disabled : loading) || false;
+    /* eslint-disable react/button-has-type */
+    const type = submit ? 'submit' : rest.type || 'button';
+    // Unless the disabled state is explicitly set, the button is disabled when loading.
+    const isDisabled = (disabled !== undefined ? disabled : loading) || false;
 
-  const buttonProps = { ...rest, outline };
-  return (
-    <StyledButton type={type} appearance={styledAppearance} disabled={isDisabled} {...buttonProps}>
-      {children}
-    </StyledButton>
-  );
-};
+    const buttonProps = { ...rest, outline };
+    return (
+      <StyledButton ref={ref} type={type} appearance={styledAppearance} disabled={isDisabled} {...buttonProps}>
+        {children}
+      </StyledButton>
+    );
+  },
+);

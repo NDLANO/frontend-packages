@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useRef, useEffect, RefObject, ChangeEvent, KeyboardEvent, useMemo } from 'react';
+import React, { useState, useRef, useEffect, RefObject, ChangeEvent, KeyboardEvent } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
@@ -15,12 +15,14 @@ import { ChevronDown, ChevronUp, HashTag } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { uuid } from '@ndla/util';
 import Suggestions from './Suggestions';
 import type { TagType } from './TagSelector';
 
+const TAG_INPUT_ID = 'TAG_INPUT_ID';
+
 const TagSelectorWrapper = styled.div`
   display: flex;
+  background: ${colors.white};
   flex-direction: column;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: ${misc.borderRadius};
@@ -144,22 +146,10 @@ const SuggestionInput = ({
   const [hasFocus, setHasFocus] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const suggestionIdRef = useMemo<string>(() => uuid(), []);
 
   useEffect(() => {
     setCurrentHighlightedIndex(0);
   }, [suggestions]);
-
-  useEffect(() => {
-    const selectedSuggestionElement = document.getElementById(suggestionIdRef)?.querySelector('[aria-selected="true"]');
-    if (selectedSuggestionElement) {
-      // Do we need to scroll this into view?
-      selectedSuggestionElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
-    }
-  }, [currentHighlightedIndex, suggestionIdRef]);
 
   const hasBeenAdded = (id: string) => addedTags.some(({ id: idAdded }) => idAdded === id);
 
@@ -269,7 +259,7 @@ const SuggestionInput = ({
               stripped
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}
-              aria-controls={suggestionIdRef}
+              aria-controls={TAG_INPUT_ID}
               onClick={() => {
                 setInputValue('');
                 setExpanded(!expanded);
@@ -279,7 +269,7 @@ const SuggestionInput = ({
           </Tooltip>
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
-      <div id={suggestionIdRef} aria-live="polite">
+      <div id={TAG_INPUT_ID} aria-live="polite">
         {(hasFocus || expanded) && suggestions.length > 0 ? (
           <Suggestions
             maxHeight={dropdownMaxHeight}

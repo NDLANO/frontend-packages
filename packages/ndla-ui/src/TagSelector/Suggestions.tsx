@@ -8,12 +8,25 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css, keyframes } from '@emotion/core';
+import { Done } from '@ndla/icons/editor';
 import { spacing, colors, misc, animations, fonts, spacingUnit } from '@ndla/core';
 import Button from '@ndla/button';
 import type { TagType } from './TagSelector';
 
-const SuggestionsWrapper = styled.div``;
+const animationKeyframe = (maxHeight?: number) => keyframes`
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: ${maxHeight}px;
+  }
+`;
+
+const StyledDone = styled(Done)`
+  height: 18px;
+  width: 18px;
+`;
 
 interface SuggestionProps {
   maxHeight?: number;
@@ -28,6 +41,12 @@ const Suggestions = styled.div<SuggestionProps>`
   scroll-behavior: smooth;
   background: ${colors.white};
   ${animations.fadeIn(animations.durations.fast)}
+
+  ${({ maxHeight }) =>
+    maxHeight &&
+    css`
+      animation: ${animationKeyframe(maxHeight)} 0.25s linear;
+    `}
 
   ::-webkit-scrollbar {
     width: ${spacing.small};
@@ -49,35 +68,30 @@ const SuggestionList = styled.div`
 
 interface SuggestionButtonProps {
   isHighlighted: boolean;
-  alreadyAdded: boolean;
 }
 
 const SuggestionButton = styled(Button)<SuggestionButtonProps>`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   font-weight: ${fonts.weight.normal};
-  transition: ${misc.transition.default};
-  padding: ${spacingUnit / 3} ${spacing.nsmall};
+  padding: ${spacingUnit * 0.4}px ${spacing.nsmall};
   border-radius: 0;
 
   &:disabled {
     color: ${colors.brand.greyMedium};
     &:hover {
       background: ${colors.brand.greyLighter};
-      svg {
-        fill: ${colors.brand.greyLight};
-      }
     }
   }
-  ${({ isHighlighted, alreadyAdded }) =>
+  ${({ isHighlighted }) =>
     isHighlighted
       ? css`
           background: ${colors.brand.lighter};
           &:disabled {
             background: ${colors.brand.greyLighter};
             svg {
-              fill: ${colors.brand.grey};
+              fill: ${colors.brand.greyMedium};
             }
           }
         `
@@ -93,7 +107,7 @@ interface Props {
 }
 
 const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, hasBeenAdded, maxHeight }: Props) => (
-  <SuggestionsWrapper>
+  <div>
     <Suggestions maxHeight={maxHeight}>
       <SuggestionList role="listbox">
         {suggestions.map(({ id, name }, index: number) => {
@@ -110,15 +124,14 @@ const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, has
               onMouseDown={() => {
                 onToggleTag(id);
               }}
-              alreadyAdded={alreadyAdded}
               key={id}>
-              {name}
+              {name} {alreadyAdded && <StyledDone />}
             </SuggestionButton>
           );
         })}
       </SuggestionList>
     </Suggestions>
-  </SuggestionsWrapper>
+  </div>
 );
 
 export default TagSuggestions;

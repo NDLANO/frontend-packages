@@ -14,9 +14,10 @@ import { Menu } from '@ndla/icons/common';
 import { ButtonV2 as Button } from '@ndla/button';
 
 const style = css`
+  display: block;
   position: relative;
   background: transparent;
-  padding: ${spacing.nsmall} ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal};
   font-weight: ${fonts.weight.normal};
 
   svg {

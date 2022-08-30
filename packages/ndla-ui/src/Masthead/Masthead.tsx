@@ -36,7 +36,7 @@ const LeftMastheadItem = styled.div`
 
 const RightMastheadItem = styled.div`
   display: flex;
-  gap: ${spacing.xsmall};
+  gap: ${spacing.small};
   align-items: center;
   justify-content: flex-end;
   ${mq.range({ from: breakpoints.tablet })} {

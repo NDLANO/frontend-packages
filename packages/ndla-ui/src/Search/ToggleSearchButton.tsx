@@ -32,7 +32,7 @@ const StyledButton = styled(Button)<StyledButtonProps>`
   color: ${(p) => (p.ndlaFilm ? '#fff' : colors.brand.primary)};
   padding: ${spacing.small} ${spacingUnit * 0.75}px ${spacing.small} ${spacing.normal};
   align-items: center;
-  margin-left: ${spacing.normal};
+  margin-left: ${spacing.medium};
 
   .c-icon {
     height: 24px;
@@ -43,7 +43,7 @@ const StyledButton = styled(Button)<StyledButtonProps>`
 
   ${mq.range({ from: breakpoints.desktop })} {
     display: ${(p) => (p.hideOnWideScreen ? 'none' : 'flex')};
-    margin-right: ${spacing.medium};
+    margin-right: ${spacing.nsmall};
     padding: ${spacing.small} ${spacing.normal};
   }
   &:hover,

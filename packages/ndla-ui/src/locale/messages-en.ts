@@ -825,18 +825,6 @@ const messages = {
       text: 'is created by',
     },
   },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
-      text: 'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
-      blogHeading: 'Do you want to know more?',
-    },
-    badge: {
-      heading: 'This page is adapted for Fagfornyelsen 2020',
-      text: 'The content is in progress. Not what you were looking for?',
-      linkText: "Go to ndla.no for today's content",
-    },
-  },
   frontPageToolbox: {
     heading: 'Toolbox',
     text: 'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',

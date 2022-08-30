@@ -824,18 +824,6 @@ const messages = {
       text: 'er utarbeidet av',
     },
   },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Bures boahtin suoli geahčesteame Fágaođastusa NDLAs',
-      text: '2020 ja 2021 čavčča šaddet ođđa oahppoplánat gustovažžan. NDLAs mii leat álggahan dán barggu juo. Min ovddasvástideaddjit sisdoalu ektui ráhkadit juohke beaivvi buriid oahpporesurssaid mat leat heivehuvvon ođđa oahppoplánaid ektui. Dán siiddus sáhtát dál juo oaidnit daid',
-      blogHeading: 'Háliidat go eanet diehtit?',
-    },
-    badge: {
-      heading: 'Dát siidu lea heivehuvvon fágaođastusa 2020/2021 ektui.',
-      text: 'Sisdoallu lea barggu vuolde. Ii lean maid ohcet?',
-      linkText: 'Mana ndla.no siidui otná beaivvi sisdollui',
-    },
-  },
   frontPageToolbox: {
     heading: 'Reaidokássa',
     text: 'Háliidat go šaddat čeahppin ovdanbuktit, dahje háliidat go oahppat buoret vugiin rievttes lohkanteknihka bokte? Dárbbahat go ráđiid mo beaktilepmosit ráhkkanit eksámenii? NDLA reaidokássas gávnnat ollu buriid ráđiid ja rávvagiid!',

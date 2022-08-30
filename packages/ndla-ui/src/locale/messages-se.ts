@@ -264,7 +264,8 @@ const messages = {
     blog: 'Bloggas',
   },
   meta: {
-    description: 'Kvalitehta sihkarasttojuvvon ja nuvttá olamuttos neahttavuđoš oahppaoneavvut joatkkaskuvlla oahpahussii',
+    description:
+      'Kvalitehta sihkarasttojuvvon ja nuvttá olamuttos neahttavuđoš oahppaoneavvut joatkkaskuvlla oahpahussii',
     keywords: 'oahpponeavvu, fága, skuvla, joatkka, fidnohárjehalli, pensuma, fágaávnnas',
   },
   masthead: {

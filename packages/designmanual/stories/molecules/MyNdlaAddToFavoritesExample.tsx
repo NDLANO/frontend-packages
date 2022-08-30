@@ -225,7 +225,8 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
           inactiveIcon={<HeartOutline />}
           active={isFavorite}
           size="small"
-          ghostPill
+          variant="ghost"
+          shape="pill"
           onClick={() => setIsOpen(!isOpen)}
         />
         {isOpen && (
@@ -249,7 +250,8 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
           inactiveIcon={<HeartOutline />}
           active={isFavorite}
           size="small"
-          ghostPill
+          variant="ghost"
+          shape="pill"
           onClick={() => setIsOpen(!isOpen)}
         />
         {isOpen && (

@@ -7,10 +7,12 @@
  */
 
 export { Button as default, StyledButton, buttonStyle, appearances, ButtonStyles } from './Button';
+export { default as ButtonV2 } from './ButtonV2';
 export { default as CopyButton } from './CopyButton';
 export { default as MultiButton } from './MultiButton';
 export { default as CloseButton } from './CloseButton';
 export { default as IconButton, convertSizeForSVG } from './IconButton';
+export { default as IconButtonV2 } from './IconButtonV2';
 export { default as MenuButton } from './MenuButton';
 export type { MenuItemProps } from './MenuButton';
 export { default as IconButtonDualStates } from './IconButtonDualStates';

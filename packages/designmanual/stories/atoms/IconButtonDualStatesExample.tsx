@@ -5,13 +5,13 @@ import { Cross, Plus, Heart, HeartOutline } from '@ndla/icons/action';
 import { InlineContainer } from '../helpers';
 // @ts-ignore
 import { StoryIntro, StoryBody } from '../wrappers';
+import { ButtonColor } from '../../../button/src/types';
 
 interface Props {
   activeIcon: ReactElement;
   inactiveIcon: ReactElement;
   size: IconSize;
-  ghostPill?: boolean;
-  greyLightest?: boolean;
+  colorTheme?: ButtonColor;
 }
 
 type IconSize = 'xsmall' | 'small' | 'normal' | 'medium' | 'large';
@@ -43,12 +43,21 @@ const IconButtonDualStatesExample = () => (
       <h2 className="u-heading">Eksempel</h2>
       <InlineContainer>
         {sizes.map((size) => {
-          return <WrapperForExample size={size} greyLightest activeIcon={<Heart />} inactiveIcon={<HeartOutline />} />;
+          return (
+            <WrapperForExample
+              size={size}
+              colorTheme="greyLightest"
+              activeIcon={<Heart />}
+              inactiveIcon={<HeartOutline />}
+            />
+          );
         })}
       </InlineContainer>
       <InlineContainer>
         {sizes.map((size) => {
-          return <WrapperForExample size={size} greyLightest activeIcon={<Cross />} inactiveIcon={<Plus />} />;
+          return (
+            <WrapperForExample size={size} colorTheme="greyLightest" activeIcon={<Cross />} inactiveIcon={<Plus />} />
+          );
         })}
       </InlineContainer>
     </StoryBody>

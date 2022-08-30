@@ -1,9 +1,10 @@
 module.exports = {
   stories: ['../stories/index.js'],
-  addons: ['@storybook/addon-a11y', '@storybook/addon-actions', '@storybook/addon-links'],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-actions', '@storybook/addon-links', 'storybook-addon-designs'],
   webpackFinal: (config) => {
     config.module.rules.push({
       test: /\.scss$/,
+
       loaders: [
         'style-loader',
         'css-loader',

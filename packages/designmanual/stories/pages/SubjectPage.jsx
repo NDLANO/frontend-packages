@@ -513,10 +513,10 @@ const SubjectPage = ({
           </LayoutItem>
         </OneColumn>
       </div>
+
       {subjectContentCards && (
         <SubjectCarousel wideScreen subjects={subjectContentCards} title="Litt forskjellig fra faget" subjectPage />
       )}
-
       <OneColumn wide>
         {message && (
           <Breadcrumblist

@@ -67,16 +67,6 @@ const StyledCross = styled(Cross)`
   margin-left: ${spacing.xxsmall};
 `;
 
-const StyledDualIconButton = styled(IconButtonDualStates)`
-  color: ${colors.brand.primary};
-  :hover,
-  :active,
-  :focus {
-    background: ${colors.brand.greyLight};
-  }
-  padding: ${spacing.xsmall};
-`;
-
 const StyledInput = styled.input`
   ::placeholder {
     color: ${colors.brand.primary};
@@ -251,14 +241,13 @@ const SuggestionInput = ({
             }}
           />
           <Tooltip tooltip={expanded ? t('tagSelector.hideTags') : t('tagSelector.showTags')}>
-            <StyledDualIconButton
+            <IconButtonDualStates
               data-suggestionbutton
               ariaLabelActive={t('tagSelector.showTags')}
               ariaLabelInActive={t('tagSelector.hideTags')}
               active={expanded}
-              size="small"
-              ghostPill
-              stripped
+              colorTheme="greyLighter"
+              variant="ghost"
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}
               aria-controls={TAG_INPUT_ID}

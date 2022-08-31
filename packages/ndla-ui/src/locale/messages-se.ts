@@ -664,7 +664,6 @@ const messages = {
       alphabet: {
         letterFilter: 'Čájet sidoalu čuovvovaš (bustávva) {{letter}}.',
       },
-      filteredBy: 'Filtrert på',
     },
     relatedLinks: {
       label: 'Goallostuvvon artihkkalat',

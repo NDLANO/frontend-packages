@@ -8,7 +8,7 @@
 
 import css from '@emotion/css';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme, ButtonFontWeight } from './types';
 
@@ -184,22 +184,15 @@ interface Props {
 
 export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({
-  colorTheme = 'primary',
-  size,
-  variant,
-  inverted,
-  shape,
-  fontWeight,
-  children,
-  ...rest
-}: ButtonProps) => {
-  const theme = themes[colorTheme];
-  return (
-    <button css={buttonStyle({ theme, size, variant, inverted, shape, fontWeight })} {...rest}>
-      {children}
-    </button>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, ...rest }, ref) => {
+    const theme = themes[colorTheme];
+    return (
+      <button css={buttonStyle({ theme, size, variant, inverted, shape, fontWeight })} {...rest}>
+        {children}
+      </button>
+    );
+  },
+);
 
 export default Button;

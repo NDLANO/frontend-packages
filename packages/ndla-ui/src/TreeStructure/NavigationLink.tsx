@@ -7,8 +7,9 @@
  */
 
 import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
 import React, { KeyboardEvent, useEffect, useRef } from 'react';
-import SafeLink from '../../../safelink/src';
+import SafeLink from '@ndla/safelink';
 import { arrowNavigation } from './arrowNavigation';
 import { CommonFolderItemsProps, FolderType } from './types';
 
@@ -16,7 +17,34 @@ interface StyledProps {
   selected?: boolean;
 }
 
-const StyledSafeLink = styled(SafeLink)<StyledProps>``;
+const StyledSafeLink = styled(SafeLink)<StyledProps>`
+  display: grid;
+  grid-template-columns: ${spacing.medium} 1fr;
+  align-items: center;
+  padding: ${spacing.xxsmall} ${spacing.xxsmall};
+  margin: ${spacing.xsmall} 0;
+  gap: ${spacing.xxsmall};
+  box-shadow: none;
+
+  color: ${({ selected }) => (selected ? colors.brand.primary : colors.text.primary)};
+  font-weight: ${({ selected }) => (selected ? fonts.weight.semibold : fonts.weight.normal)};
+  font-size: ${fonts.sizes('16px')};
+
+  :hover,
+  :focus {
+    color: ${colors.brand.primary};
+  }
+  svg {
+    height: 26px;
+    width: 26px;
+  }
+`;
+
+const IconWrapper = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 interface Props extends CommonFolderItemsProps {
   isOpen: boolean;
@@ -63,7 +91,7 @@ const NavigationLink = ({
       onFocus={() => setFocusedId(id)}
       onClick={handleClick}
       to={loading ? '' : `/minndla/${id}`}>
-      {icon}
+      <IconWrapper>{icon}</IconWrapper>
       {name}
     </StyledSafeLink>
   );

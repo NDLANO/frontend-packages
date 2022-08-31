@@ -11,18 +11,17 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { Done } from '@ndla/icons/editor';
-import { MenuButton } from '@ndla/button';
+import { ButtonV2, MenuButton } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
-import SafeLink from '@ndla/safelink';
+import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import { CommonFolderItemsProps, FolderType } from './types';
 import { arrowNavigation } from './arrowNavigation';
 
 const OpenButton = styled.span<{ isOpen: boolean }>`
-  background: transparent;
-  border: 0;
-  transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
   display: flex;
-  padding: 0 ${spacing.xsmall};
+  align-items: center;
+  justify-content: center;
+
   color: ${colors.brand.tertiary};
   ${misc.transition.default};
   cursor: pointer;
@@ -32,8 +31,13 @@ const OpenButton = styled.span<{ isOpen: boolean }>`
   svg {
     width: 18px;
     height: 18px;
-    transform: ${({ isOpen }) => (isOpen ? 'translateX(3px)' : 'translateY(3px)')};
+    transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
   }
+`;
+
+const StyledName = styled.span`
+  grid-column-start: 2;
+  text-align: left;
 `;
 
 const WrapperForFolderChild = styled.div`
@@ -53,35 +57,24 @@ interface FolderNameProps {
   level: number;
 }
 
-const FolderName = styled('button', { shouldForwardProp })<FolderNameProps>`
-  flex-grow: ${({ fullWidth }) => fullWidth && 1};
-  display: flex;
-  align-items: center;
+const FolderName = styled(ButtonV2, { shouldForwardProp })<FolderNameProps>`
+  display: grid;
+  grid-template-columns: ${spacing.medium} 1fr auto;
 
-  cursor: pointer;
-  padding: ${spacing.xsmall};
-  padding-left: ${({ level, noArrow }) => 0.75 * spacingUnit * level + (noArrow && level > 1 ? spacingUnit : 0)}px;
-  margin: 0;
-  outline-offset: -2px;
-  outline-color: ${colors.brand.primary};
+  padding-left: ${({ level }) => 0.75 * spacingUnit * level}px;
   gap: ${spacing.xxsmall};
   border: none;
-  border-radius: 0;
+  outline: none;
   box-shadow: none;
-  background: ${({ selected }) => (selected ? colors.brand.lighter : 'transparent')};
+  background: ${({ selected }) => selected && colors.brand.lighter};
   color: ${colors.text.primary};
   transition: ${animations.durations.superFast};
-  text-align: left;
-  ${fonts.sizes(16)};
   line-height: 1;
   word-break: break-word;
   &:hover,
   &:focus {
     background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
     color: ${colors.brand.primary};
-    + ${WrapperForFolderChild} {
-      opacity: 1;
-    }
   }
 `;
 
@@ -89,7 +82,27 @@ const StyledDone = styled(Done)`
   color: ${colors.support.green};
 `;
 
-const FolderNameLink = FolderName.withComponent(SafeLink);
+const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
+  display: grid;
+  grid-template-columns: ${spacing.medium} 1fr auto;
+  padding: ${spacing.small} ${spacing.xxsmall};
+  margin-left: ${({ level }) => 0.75 * spacingUnit * level}px;
+  gap: ${spacing.xxsmall};
+  cursor: pointer;
+
+  border: none;
+  box-shadow: none;
+  color: ${({ selected }) => (selected ? colors.brand.primary : colors.text.primary)};
+  font-weight: ${({ selected }) => selected && fonts.weight.semibold};
+  font-size: ${fonts.sizes('16px')};
+  transition: ${animations.durations.superFast};
+  line-height: 1;
+  word-break: break-word;
+  &:hover,
+  &:focus {
+    color: ${colors.brand.primary};
+  }
+`;
 
 interface Props extends CommonFolderItemsProps {
   isOpen: boolean;
@@ -165,6 +178,10 @@ const FolderItem = ({
 
   return onSelectFolder ? (
     <FolderName
+      variant="ghost"
+      shape="sharp"
+      fontWeight="normal"
+      colorTheme="light"
       ref={ref}
       level={level}
       fullWidth={framed}
@@ -180,7 +197,7 @@ const FolderItem = ({
           <ArrowDropDown />
         </OpenButton>
       )}
-      {name}
+      <StyledName>{name}</StyledName>
       <WrapperForFolderChild>
         {containsResource && <StyledDone title={t('myNdla.alreadyInFolder')} />}
         {actions && (
@@ -202,7 +219,7 @@ const FolderItem = ({
       }
       noArrow={!isMaxDepth}
       to={loading ? '' : linkPath}
-      tabIndex={selected || focused || level === 0 ? 0 : -1}
+      tabIndex={selected || focused ? 0 : -1}
       selected={selected}
       onFocus={() => setFocusedId(id)}
       onClick={handleClickFolder}>
@@ -211,7 +228,7 @@ const FolderItem = ({
           <ArrowDropDown />
         </OpenButton>
       )}
-      {name}
+      <StyledName>{name}</StyledName>
     </FolderNameLink>
   );
 };

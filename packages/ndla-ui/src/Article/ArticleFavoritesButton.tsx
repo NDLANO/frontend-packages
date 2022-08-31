@@ -31,7 +31,8 @@ export const ArticleFavoritesButton = ({ isFavorite, onToggleAddToFavorites, art
         inactiveIcon={<HeartOutline />}
         active={isFavorite}
         size="small"
-        ghostPill
+        variant="ghost"
+        shape="pill"
         onClick={() => onToggleAddToFavorites(articleId, !isFavorite)}
       />
     </Tooltip>

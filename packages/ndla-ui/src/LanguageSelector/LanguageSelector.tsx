@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import FocusTrapReact from 'focus-trap-react';
-import Button, { appearances } from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts, spacingUnit } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
@@ -95,12 +95,6 @@ const StyledSpan = styled.span`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const styledInvertedOutlineLargeScreensOnly = css`
-  ${mq.range({ from: breakpoints.tablet })} {
-    ${appearances.ghostPillOutlineInverted}
-  }
-`;
-
 type Props = {
   options: {
     [key: string]: {
@@ -116,31 +110,35 @@ type Props = {
   alwaysVisible?: boolean;
 };
 
-const LanguageSelector = ({
-  currentLanguage,
-  outline,
-  center,
-  inverted,
-  invertedOutlineLargeScreensOnly,
-  alwaysVisible,
-}: Props) => {
+interface StyledButtonProps {
+  outline?: boolean;
+  inverted?: boolean;
+}
+
+const StyledButton = styled(Button)<StyledButtonProps>`
+  border-color: ${({ inverted, outline }) =>
+    outline ? (inverted ? colors.white : colors.brand.primary) : 'transparent'};
+`;
+
+const LanguageSelector = ({ currentLanguage, outline, center, inverted, alwaysVisible }: Props) => {
   const { t, i18n } = useTranslation();
   const [infoLocale, setInfoLocale] = useState(i18n.language);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <StyledWrapper alwaysVisible={alwaysVisible}>
-      <Button
-        ghostPillOutline={outline && !inverted}
-        ghostPill={!outline && !inverted}
-        ghostPillOutlineInverted={outline && inverted}
-        ghostPillInverted={!outline && inverted}
-        css={invertedOutlineLargeScreensOnly && styledInvertedOutlineLargeScreensOnly}
+      <StyledButton
+        outline={outline}
+        inverted={inverted}
+        shape="pill"
+        size="medium"
+        colorTheme="lighter"
+        variant="ghost"
         onClick={() => setIsOpen(true)}>
         <StyledSpan>
           {t(`languages.prefixChangeLanguage`)}: {t(`languages.${infoLocale}`)}
         </StyledSpan>
         <ChevronDown />
-      </Button>
+      </StyledButton>
       {isOpen && (
         <FocusTrapReact
           active
@@ -153,7 +151,7 @@ const LanguageSelector = ({
           }}>
           <StyledModal animateIn={isOpen} centered={center}>
             <Button
-              link
+              variant="link"
               onClick={() => {
                 setIsOpen(false);
               }}>

@@ -9,7 +9,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
-import { Button, ButtonSize, ButtonProps } from './Button';
+import Button, { ButtonProps } from './ButtonV2';
+
+export const svgSizes = {
+  xsmall: spacingUnit * 0.75,
+  small: spacingUnit,
+  normal: spacingUnit * 1.25,
+  medium: spacingUnit * 2,
+  large: spacingUnit * 2.5,
+};
 
 export interface IconButtonProps extends ButtonProps {
   ['aria-label']: string;
@@ -24,6 +32,7 @@ const StyledButton = styled(Button)<StyledButtonProps>`
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.5 : 0.25)}px;
   line-height: 1;
   border-color: transparent;
+  min-height: unset;
   svg {
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
@@ -31,27 +40,8 @@ const StyledButton = styled(Button)<StyledButtonProps>`
   }
 `;
 
-export const convertSizeForSVG = (size: ButtonSize) => {
-  if (size === 'xsmall') {
-    return spacingUnit * 0.75;
-  }
-  if (size === 'small') {
-    return spacingUnit * 1;
-  }
-  if (size === 'normal') {
-    return spacingUnit * 1.25;
-  }
-  if (size === 'medium') {
-    return spacingUnit * 2;
-  }
-  if (size === 'large') {
-    return spacingUnit * 2.5;
-  }
-  return spacingUnit;
-};
-
-export const IconButton = ({ children, size, ...rest }: IconButtonProps) => (
-  <StyledButton svgSize={convertSizeForSVG(size || 'normal')} {...rest}>
+export const IconButton = ({ children, size = 'small', ...rest }: IconButtonProps) => (
+  <StyledButton svgSize={svgSizes[size]} {...rest}>
     {children}
   </StyledButton>
 );

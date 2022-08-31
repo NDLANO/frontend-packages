@@ -129,8 +129,7 @@ const TreeStructure = ({
     setNewFolderParentId(undefined);
   };
 
-  const canAddFolder =
-    editable && selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
+  const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
     <div>
@@ -144,7 +143,7 @@ const TreeStructure = ({
           level={0}
           loading={loading}
           selectedFolder={selectedFolder}
-          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
+          maxLevel={maximumLevelsOfFoldersAllowed}
           newFolderParentId={newFolderParentId}
           onCancelNewFolder={onCancelNewFolder}
           onCloseFolder={onCloseFolder}
@@ -160,7 +159,7 @@ const TreeStructure = ({
           framed={framed}
         />
       </TreeStructureStyledWrapper>
-      {editable && (
+      {onNewFolder && (
         <AddFolderWrapper>
           <Tooltip
             tooltip={

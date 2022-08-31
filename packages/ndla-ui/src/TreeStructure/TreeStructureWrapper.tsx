@@ -20,7 +20,7 @@ const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
       max-height: 400px;
       overflow-y: scroll;
       scroll-behavior: smooth;
-      padding: ${spacing.small};
+      padding: 0;
     `}
   transition: ${misc.transition.default};
   &:focus-within {

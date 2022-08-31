@@ -12,6 +12,7 @@ import { MenuItemProps } from '@ndla/button';
 
 export interface FolderType extends IFolder {
   icon?: ReactNode;
+  isNavigation?: boolean;
 }
 
 export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
@@ -30,6 +31,7 @@ export interface CommonTreeStructureProps {
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   focusedFolderId?: string;
   level: number;
+  maxLevel: number;
   selectedFolder?: FolderType;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;

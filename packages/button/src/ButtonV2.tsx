@@ -61,9 +61,6 @@ export const buttonStyle = ({
     border-color: transparent;
     cursor: not-allowed;
   }
-  &:focus {
-    box-shadow: 0 0 2px ${colors.brand.primary};
-  }
 
   // Sizes
   ${size === 'xsmall' &&

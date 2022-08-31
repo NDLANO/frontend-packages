@@ -7,11 +7,13 @@
  */
 
 import React, { useEffect, useState, useMemo } from 'react';
-import { AddButton, ButtonV2 as Button } from '@ndla/button';
+import { ButtonV2 as Button, IconButtonDualStates } from '@ndla/button';
+import { Plus } from '@ndla/icons/action';
+import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { spacing, fonts } from '@ndla/core';
+import { fonts, spacing } from '@ndla/core';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
 import TreeStructureWrapper from './TreeStructureWrapper';
@@ -25,14 +27,10 @@ const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const AddFolderWrapper = styled.div`
-  display: flex;
-  margin-top: ${spacing.xsmall};
-`;
-
 const StyledRow = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: ${spacing.xxsmall};
 `;
 
 const StyledSelectedFolder = styled(Button)`
@@ -44,6 +42,15 @@ const StyledSelectedFolder = styled(Button)`
     box-shadow: none;
     border-color: transparent;
   }
+`;
+
+const StyledAddFolderButton = styled(Button)`
+  border-color: transparent;
+`;
+
+const StyledPlus = styled(Plus)`
+  height: 24px;
+  width: 24px;
 `;
 
 export interface TreeStructureProps extends CommonTreeStructureProps {
@@ -76,6 +83,7 @@ const TreeStructure = ({
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [focusedId, setFocusedId] = useState<string | undefined>();
   const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
+  const [showTree, setShowTree] = useState(type === 'picker');
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
   const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
@@ -154,6 +162,42 @@ const TreeStructure = ({
             <StyledSelectedFolder variant="ghost" colorTheme="light" fontWeight="normal" shape="sharp">
               {selectedFolder?.name}
             </StyledSelectedFolder>
+            {onNewFolder && (
+              <Tooltip
+                tooltip={
+                  canAddFolder
+                    ? t('myNdla.newFolderUnder', {
+                        folderName: selectedFolder?.name,
+                      })
+                    : t('treeStructure.maxFoldersAlreadyAdded')
+                }>
+                <StyledAddFolderButton
+                  variant="outline"
+                  shape="pill"
+                  disabled={!canAddFolder}
+                  aria-label={t('myNdla.newFolder')}
+                  onClick={() => setNewFolderParentId(selectedFolder?.id)}>
+                  <StyledPlus /> {t('myNdla.newFolder')}
+                </StyledAddFolderButton>
+              </Tooltip>
+            )}
+            <IconButtonDualStates
+              data-suggestionbutton
+              ariaLabelActive={t('tagSelector.showAllTags')}
+              ariaLabelInActive={t('tagSelector.hideAllTags')}
+              active={true}
+              variant="ghost"
+              colorTheme="greyLighter"
+              inactiveIcon={<ChevronDown />}
+              activeIcon={<ChevronUp />}
+              size="small"
+              // aria-controls={suggestionIdRef.current}
+              onClick={() => {
+                // setInputValue('');
+                // setExpanded(!expanded);
+                // inputRef.current?.focus();
+              }}
+            />
           </StyledRow>
         )}
         <FolderItems
@@ -179,25 +223,6 @@ const TreeStructure = ({
           type={type}
         />
       </TreeStructureWrapper>
-      {onNewFolder && (
-        <AddFolderWrapper>
-          <Tooltip
-            tooltip={
-              canAddFolder
-                ? t('myNdla.newFolderUnder', {
-                    folderName: selectedFolder?.name,
-                  })
-                : t('treeStructure.maxFoldersAlreadyAdded')
-            }>
-            <AddButton
-              disabled={!canAddFolder}
-              aria-label={t('myNdla.newFolder')}
-              onClick={() => setNewFolderParentId(selectedFolder?.id)}>
-              {t('myNdla.newFolder')}
-            </AddButton>
-          </Tooltip>
-        </AddFolderWrapper>
-      )}
     </div>
   );
 };

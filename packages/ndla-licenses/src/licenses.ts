@@ -297,7 +297,7 @@ const copy: LicenseType = {
     short: restrictedUseNN,
     title: 'Opphavsrett',
     userFriendlyTitle: '',
-    url: 'https://www.delrett.no/nb/artikler/om-opphavsrett',
+    url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær meir om opphavsrett',
     description:
       'Det er berre den som har laga innhaldet som kan endra, publisera og gje andre rett til å nytte innhaldet.',
@@ -306,7 +306,7 @@ const copy: LicenseType = {
     short: restrictedUseNB,
     title: 'Opphavsrett',
     userFriendlyTitle: '',
-    url: 'https://www.delrett.no/nb/artikler/om-opphavsrett',
+    url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Lær mer om opphavsrett',
     description:
       'Det er bare den som har laget innholdet som kan endre, publisere og gi andre rett til å bruke innholdet.',
@@ -316,7 +316,7 @@ const copy: LicenseType = {
     short: restrictedUseEN,
     title: 'Copyright',
     userFriendlyTitle: '',
-    url: 'https://www.delrett.no/nb/artikler/om-opphavsrett',
+    url: 'https://delrett.no/nb/artikler/om-opphavsrett',
     linkText: 'Learn more about copyright',
     description:
       'Only those who have created the content can modify, publish, and give others permission to use the content.',

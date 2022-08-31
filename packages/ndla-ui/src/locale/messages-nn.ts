@@ -353,8 +353,7 @@ const messages = {
       'Nettlesaren din er utdatert. Oppdater han, eller finn ein trygg og oppdatert nettlesar på https://browsehappy.com. ',
     noContent: 'Vi har dessverre ikkje nokon programfag enno.',
     feide: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
-    resources:
-      'Dette er ikkje eit komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan vere nyttig for deg.',
+    resources: 'Dette er ikkje eit komplett læremiddel, men ei ressurssamling som vi håper kan vere nyttig for deg.',
     subjectOutdated: 'Dette faget følgjer ein utgått læreplan.',
     subjectBeta: 'Dette faget er i betaversjon. Vi fyller på med ressurser fortløpande.',
     newVersion:

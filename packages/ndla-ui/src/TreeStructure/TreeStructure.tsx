@@ -7,14 +7,14 @@
  */
 
 import React, { useEffect, useState, useMemo } from 'react';
-import { AddButton } from '@ndla/button';
+import { AddButton, ButtonV2 as Button } from '@ndla/button';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { spacing, fonts } from '@ndla/core';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
-import TreeStructureStyledWrapper from './TreeStructureWrapper';
+import TreeStructureWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { flattenFolders } from './helperFunctions';
 import { CommonTreeStructureProps, FolderType } from './types';
@@ -30,10 +30,25 @@ const AddFolderWrapper = styled.div`
   margin-top: ${spacing.xsmall};
 `;
 
+const StyledRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledSelectedFolder = styled(Button)`
+  flex: 1;
+  justify-content: flex-start;
+  :hover,
+  :focus {
+    background: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+`;
+
 export interface TreeStructureProps extends CommonTreeStructureProps {
   defaultOpenFolders?: string[];
   folders: FolderType[];
-  editable?: boolean;
   label?: string;
   maximumLevelsOfFoldersAllowed?: number;
   onNewFolder?: (name: string, parentId: string) => Promise<IFolder>;
@@ -41,10 +56,8 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
 
 const TreeStructure = ({
   defaultOpenFolders,
-  editable,
   menuItems,
   folders,
-  framed,
   label,
   loading,
   maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
@@ -52,6 +65,7 @@ const TreeStructure = ({
   onSelectFolder,
   openOnFolderClick,
   targetResource,
+  type = 'normal',
 }: TreeStructureProps) => {
   const { t } = useTranslation();
 
@@ -114,7 +128,7 @@ const TreeStructure = ({
   };
 
   const onSaveNewFolder = (name: string, parentId: string) => {
-    setNewFolderParentId(undefined);
+    setNewFolderParentId?.(undefined);
     onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
         setSelectedFolder(newFolder);
@@ -126,7 +140,7 @@ const TreeStructure = ({
   };
 
   const onCancelNewFolder = () => {
-    setNewFolderParentId(undefined);
+    setNewFolderParentId?.(undefined);
   };
 
   const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
@@ -134,9 +148,15 @@ const TreeStructure = ({
   return (
     <div>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <TreeStructureStyledWrapper aria-label="Menu tree" role="tree" framed={framed}>
+      <TreeStructureWrapper aria-label="Menu tree" role="tree" type={type}>
+        {type === 'picker' && (
+          <StyledRow>
+            <StyledSelectedFolder variant="ghost" colorTheme="light" fontWeight="normal" shape="sharp">
+              {selectedFolder?.name}
+            </StyledSelectedFolder>
+          </StyledRow>
+        )}
         <FolderItems
-          editable={editable}
           focusedFolderId={focusedId}
           menuItems={menuItems}
           folders={folders}
@@ -156,9 +176,9 @@ const TreeStructure = ({
           setSelectedFolder={setSelectedFolder}
           targetResource={targetResource}
           visibleFolders={visibleFolderIds}
-          framed={framed}
+          type={type}
         />
-      </TreeStructureStyledWrapper>
+      </TreeStructureWrapper>
       {onNewFolder && (
         <AddFolderWrapper>
           <Tooltip

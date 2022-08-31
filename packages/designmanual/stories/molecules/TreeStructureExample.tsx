@@ -15,6 +15,7 @@ import { User, HashTag } from '@ndla/icons/common';
 import { Pencil, TrashCanOutline } from '@ndla/icons/action';
 import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { FolderOutlined } from '@ndla/icons/contentType';
+import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 
 const Container = styled.div`
   margin-top: 40px;
@@ -171,7 +172,7 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
 export const TreeStructureExampleComponent = ({
   structure: initalStructure,
   label,
-  editable,
+  type,
   framed,
   onSelectFolder,
   openOnFolderClick,
@@ -182,7 +183,7 @@ export const TreeStructureExampleComponent = ({
 }: {
   structure: FolderType[];
   label?: string;
-  editable: boolean;
+  type: TreeStructureType;
   framed: boolean;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick: boolean;
@@ -202,7 +203,7 @@ export const TreeStructureExampleComponent = ({
         framed={framed}
         onSelectFolder={onSelectFolder}
         label={label}
-        editable={editable}
+        type={type}
         openOnFolderClick={openOnFolderClick}
         defaultOpenFolders={defaultOpenFolders}
         // @ts-ignore
@@ -242,23 +243,20 @@ const TreeStructureExample = () => (
   <div>
     <h1>TreeStructure editable:</h1>
     <TreeStructureExampleComponent
-      label="Editable"
+      label="Velg mappe"
       openOnFolderClick={false}
-      editable
-      framed
       onSelectFolder={(id: string) => {}}
       structure={FOLDER_TREE_STRUCTURE}
       defaultOpenFolders={[MY_FOLDERS_ID]}
       targetResource={targetResource}
       onNewFolder
+      type="picker"
     />
     <h1>TreeStructure non-editable:</h1>
     <TreeStructureExampleComponent
-      label="Static"
+      label="Velg mappe"
       onSelectFolder={(id: string) => {}}
       openOnFolderClick
-      editable
-      framed
       structure={FOLDER_TREE_STRUCTURE}
       defaultOpenFolders={[MY_FOLDERS_ID]}
       targetResource={targetResource}
@@ -266,10 +264,8 @@ const TreeStructureExample = () => (
     />
     <h1>TreeStructure without frame</h1>
     <TreeStructureExampleComponent
-      label="Static"
-      editable={false}
-      framed={false}
       openOnFolderClick
+      type="navigation"
       defaultOpenFolders={[MY_FOLDERS_ID]}
       structure={NAVIGATION_STRUCTURE}
       withDots

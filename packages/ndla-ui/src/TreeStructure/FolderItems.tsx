@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import FolderItem from './FolderItem';
 import FolderNameInput from './FolderNameInput';
-import { CommonFolderItemsProps, FolderType } from './types';
+import { CommonFolderItemsProps, FolderType, TreeStructureType } from './types';
 import NavigationLink from './NavigationLink';
 
 const StyledUL = styled.ul<{ firstLevel?: boolean }>`
@@ -26,20 +26,19 @@ const StyledUL = styled.ul<{ firstLevel?: boolean }>`
 `;
 
 interface StyledLiProps {
-  editable?: boolean;
+  type?: TreeStructureType;
 }
 
 const StyledLI = styled.li<StyledLiProps>`
   display: flex;
   flex-direction: column;
-  align-items: ${({ editable }) => !editable && 'flex-start'};
+  align-items: ${({ type }) => type === 'navigation' && 'flex-start'};
   margin: 0;
   padding: 0;
 `;
 
 export interface FolderItemsProps extends CommonFolderItemsProps {
   folders: FolderType[];
-  editable?: boolean;
   newFolderParentId: string | undefined;
   onCancelNewFolder: () => void;
   onSaveNewFolder: (name: string, parentId: string) => void;
@@ -47,7 +46,6 @@ export interface FolderItemsProps extends CommonFolderItemsProps {
 }
 
 const FolderItems = ({
-  editable,
   folders,
   level,
   loading,
@@ -55,6 +53,7 @@ const FolderItems = ({
   onCancelNewFolder,
   onSaveNewFolder,
   openFolders,
+  type,
   ...rest
 }: FolderItemsProps) => (
   <StyledUL role="group" firstLevel={level === 0}>
@@ -63,12 +62,12 @@ const FolderItems = ({
       const isOpen = openFolders?.includes(id);
 
       return (
-        <StyledLI key={id} role="treeitem" editable={editable}>
+        <StyledLI key={id} role="treeitem" type={type}>
           {folder.isNavigation ? (
-            <NavigationLink folder={folder} isOpen={isOpen} level={level} loading={loading} {...rest} />
+            <NavigationLink folder={folder} isOpen={isOpen} level={level} type={type} loading={loading} {...rest} />
           ) : (
             <>
-              <FolderItem folder={folder} isOpen={isOpen} level={level} loading={loading} {...rest} />
+              <FolderItem folder={folder} isOpen={isOpen} level={level} loading={loading} type={type} {...rest} />
               {newFolderParentId === id && (
                 <FolderNameInput
                   loading={loading}
@@ -79,10 +78,10 @@ const FolderItems = ({
               )}
               {subfolders && isOpen && (
                 <FolderItems
-                  editable={editable}
                   folders={subfolders}
                   level={level + 1}
                   loading={loading}
+                  type={type}
                   newFolderParentId={newFolderParentId}
                   onCancelNewFolder={onCancelNewFolder}
                   onSaveNewFolder={onSaveNewFolder}

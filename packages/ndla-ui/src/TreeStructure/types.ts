@@ -15,6 +15,8 @@ export interface FolderType extends IFolder {
   isNavigation?: boolean;
 }
 
+export type TreeStructureType = 'normal' | 'navigation' | 'picker';
+
 export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
   onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
 }
@@ -26,6 +28,7 @@ export interface CommonTreeStructureProps {
   menuItems?: TreeStructureMenuProps[];
   targetResource?: IResource;
   framed?: boolean;
+  type: TreeStructureType;
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {

@@ -8,23 +8,20 @@
 
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors, misc, spacing } from '@ndla/core';
+import { colors, misc } from '@ndla/core';
+import { TreeStructureType } from './types';
 
-const TreeStructureWrapper = styled.div<{ framed?: boolean }>`
-  padding: ${spacing.xsmall};
-  ${({ framed }) =>
-    framed &&
+const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
+  ${({ type }) =>
+    (type === 'normal' || type === 'picker') &&
     css`
       border: 1px solid ${colors.brand.neutral7};
       border-radius: ${misc.borderRadius};
-      max-height: 400px;
-      overflow-y: scroll;
       scroll-behavior: smooth;
-      padding: 0;
     `}
   transition: ${misc.transition.default};
   &:focus-within {
-    border-color: ${colors.brand.primary};
+    border-color: ${colors.brand.tertiary};
   }
 `;
 

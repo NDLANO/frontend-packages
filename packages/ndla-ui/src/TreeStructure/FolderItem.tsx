@@ -13,7 +13,7 @@ import { ArrowDropDown } from '@ndla/icons/common';
 import { Done } from '@ndla/icons/editor';
 import { ButtonV2, MenuButton } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
-import SafeLink, { SafeLinkButton } from '@ndla/safelink';
+import SafeLink from '@ndla/safelink';
 import { CommonFolderItemsProps, FolderType } from './types';
 import { arrowNavigation } from './arrowNavigation';
 
@@ -65,7 +65,6 @@ const FolderName = styled(ButtonV2, { shouldForwardProp })<FolderNameProps>`
   gap: ${spacing.xxsmall};
   border: none;
   outline: none;
-  box-shadow: none;
   background: ${({ selected }) => selected && colors.brand.lighter};
   color: ${colors.text.primary};
   transition: ${animations.durations.superFast};
@@ -73,6 +72,8 @@ const FolderName = styled(ButtonV2, { shouldForwardProp })<FolderNameProps>`
   word-break: break-word;
   &:hover,
   &:focus {
+    box-shadow: none;
+    outline: none;
     background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
     color: ${colors.brand.primary};
   }

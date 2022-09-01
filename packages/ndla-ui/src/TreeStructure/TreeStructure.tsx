@@ -214,7 +214,14 @@ const TreeStructure = ({
       <TreeStructureWrapper aria-label="Menu tree" role="tree" type={type}>
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
-            <StyledSelectedFolder variant="ghost" colorTheme="light" fontWeight="normal" shape="sharp">
+            <StyledSelectedFolder
+              variant="ghost"
+              colorTheme="light"
+              fontWeight="normal"
+              shape="sharp"
+              onClick={() => {
+                setShowTree(!showTree);
+              }}>
               {selectedFolder?.name}
             </StyledSelectedFolder>
             {onNewFolder && showTree && (

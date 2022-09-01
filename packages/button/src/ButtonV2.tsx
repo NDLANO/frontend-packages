@@ -197,7 +197,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, ...rest }, ref) => {
     const theme = themes[colorTheme];
     return (
-      <button css={buttonStyle({ theme, size, variant, inverted, shape, fontWeight })} {...rest}>
+      <button css={buttonStyle({ theme, size, variant, inverted, shape, fontWeight })} {...rest} ref={ref}>
         {children}
       </button>
     );

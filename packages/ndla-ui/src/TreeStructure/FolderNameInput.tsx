@@ -105,6 +105,10 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
               onCancelNewFolder();
             } else if (e.key === 'Enter' || e.key === 'Tab') {
               e.preventDefault();
+              if (name === '') {
+                onCancelNewFolder();
+                return;
+              }
               onSaveNewFolder(name, parentId);
             }
           }}

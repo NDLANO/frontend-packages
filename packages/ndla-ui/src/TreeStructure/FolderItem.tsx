@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDown } from '@ndla/icons/common';
 import { Done } from '@ndla/icons/editor';
-import { ButtonV2, MenuButton } from '@ndla/button';
+import { ButtonV2 as Button, MenuButton } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { CommonFolderItemsProps, FolderType } from './types';
@@ -58,7 +58,7 @@ interface FolderNameProps {
   isCreatingFolder?: boolean;
 }
 
-const FolderName = styled(ButtonV2, { shouldForwardProp })<FolderNameProps>`
+const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
   display: grid;
   grid-template-columns: ${spacing.medium} 1fr auto;
 
@@ -156,10 +156,10 @@ const FolderItem = ({
   };
 
   useEffect(() => {
-    if (focusedFolderId === id) {
+    if (focusedFolderId === id && !isCreatingFolder) {
       ref.current?.focus();
     }
-  }, [focusedFolderId, ref, id]);
+  }, [focusedFolderId, ref, id, isCreatingFolder]);
 
   const actions = menuItems?.map((item) => {
     const { onClick } = item;

@@ -67,7 +67,15 @@ const FolderItems = ({
             <NavigationLink folder={folder} isOpen={isOpen} level={level} type={type} loading={loading} {...rest} />
           ) : (
             <>
-              <FolderItem folder={folder} isOpen={isOpen} level={level} loading={loading} type={type} {...rest} />
+              <FolderItem
+                folder={folder}
+                isOpen={isOpen}
+                level={level}
+                loading={loading}
+                type={type}
+                isCreatingFolder={newFolderParentId === folder.id}
+                {...rest}
+              />
               {newFolderParentId === id && (
                 <FolderNameInput
                   loading={loading}

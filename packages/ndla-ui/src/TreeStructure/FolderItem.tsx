@@ -55,6 +55,7 @@ interface FolderNameProps {
   noArrow?: boolean;
   fullWidth?: boolean;
   level: number;
+  isCreatingFolder?: boolean;
 }
 
 const FolderName = styled(ButtonV2, { shouldForwardProp })<FolderNameProps>`
@@ -65,8 +66,8 @@ const FolderName = styled(ButtonV2, { shouldForwardProp })<FolderNameProps>`
   gap: ${spacing.xxsmall};
   border: none;
   outline: none;
-  background: ${({ selected }) => selected && colors.brand.lighter};
-  color: ${colors.text.primary};
+  background: ${({ selected, isCreatingFolder }) => selected && !isCreatingFolder && colors.brand.lighter};
+  color: ${({ isCreatingFolder }) => (isCreatingFolder ? colors.brand.primary : colors.text.primary)};
   transition: ${animations.durations.superFast};
   line-height: 1;
   word-break: break-word;
@@ -108,6 +109,7 @@ const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
 interface Props extends CommonFolderItemsProps {
   isOpen: boolean;
   folder: FolderType;
+  isCreatingFolder?: boolean;
 }
 
 const FolderItem = ({
@@ -128,6 +130,7 @@ const FolderItem = ({
   visibleFolders,
   framed,
   maxLevel,
+  isCreatingFolder,
 }: Props) => {
   const { t } = useTranslation();
   const { id, name } = folder;
@@ -192,7 +195,8 @@ const FolderItem = ({
       selected={selected}
       disabled={loading}
       onFocus={() => setFocusedId(id)}
-      onClick={handleClickFolder}>
+      onClick={handleClickFolder}
+      isCreatingFolder={isCreatingFolder}>
       {!hideArrow && (
         <OpenButton tabIndex={-1} isOpen={isOpen} onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
           <ArrowDropDown />

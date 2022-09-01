@@ -63,7 +63,7 @@ const StyledInput = styled.input`
   outline: none;
   min-width: 0;
   background: transparent;
-  color: ${colors.text.primary};
+  color: ${colors.brand.primary};
   scroll-margin-top: 100px;
 `;
 
@@ -77,7 +77,7 @@ interface FolderNameInputProps {
 
 const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading, level }: FolderNameInputProps) => {
   const { t } = useTranslation();
-  const [name, setName] = useState<string>(t('treeStructure.newFolder.defaultName'));
+  const [name, setName] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

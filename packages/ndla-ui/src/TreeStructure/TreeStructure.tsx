@@ -13,7 +13,7 @@ import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { fonts, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
 import TreeStructureWrapper from './TreeStructureWrapper';
@@ -27,10 +27,15 @@ const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const StyledRow = styled.div`
+interface StyledRowProps {
+  isOpen: boolean;
+}
+
+const StyledRow = styled.div<StyledRowProps>`
   display: flex;
   justify-content: space-between;
   padding: ${spacing.xxsmall};
+  border-bottom: ${({ isOpen }) => isOpen && `1px solid ${colors.brand.tertiary}`};
 `;
 
 const StyledSelectedFolder = styled(Button)`
@@ -83,7 +88,7 @@ const TreeStructure = ({
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [focusedId, setFocusedId] = useState<string | undefined>();
   const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
-  const [showTree, setShowTree] = useState(type !== 'picker' || true);
+  const [showTree, setShowTree] = useState(type !== 'picker');
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
   const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
@@ -100,6 +105,10 @@ const TreeStructure = ({
   }, [defaultOpenFolders]);
 
   useEffect(() => {
+    setNewFolderParentId(undefined);
+  }, [selectedFolder]);
+
+  useEffect(() => {
     if (defaultSelectedFolderId !== undefined) {
       const selected = flattenFolders(folders).find((folder) => folder.id === defaultSelectedFolderId);
       if (selected) {
@@ -111,7 +120,7 @@ const TreeStructure = ({
 
   useEffect(() => {
     if (!loading) {
-      setNewFolderParentId('1');
+      setNewFolderParentId(undefined);
     }
   }, [loading]);
 
@@ -158,7 +167,7 @@ const TreeStructure = ({
       {label && <StyledLabel>{label}</StyledLabel>}
       <TreeStructureWrapper aria-label="Menu tree" role="tree" type={type}>
         {type === 'picker' && (
-          <StyledRow>
+          <StyledRow isOpen={showTree}>
             <StyledSelectedFolder variant="ghost" colorTheme="light" fontWeight="normal" shape="sharp">
               {selectedFolder?.name}
             </StyledSelectedFolder>
@@ -185,7 +194,7 @@ const TreeStructure = ({
               data-suggestionbutton
               ariaLabelActive={t('tagSelector.showAllTags')}
               ariaLabelInActive={t('tagSelector.hideAllTags')}
-              active={true}
+              active={showTree}
               variant="ghost"
               colorTheme="greyLighter"
               inactiveIcon={<ChevronDown />}

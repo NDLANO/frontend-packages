@@ -14,7 +14,7 @@ import FolderNameInput from './FolderNameInput';
 import { CommonFolderItemsProps, FolderType, TreeStructureType } from './types';
 import NavigationLink from './NavigationLink';
 
-const StyledUL = styled.ul<{ firstLevel?: boolean }>`
+const StyledUL = styled.ul`
   ${animations.fadeInLeft(animations.durations.fast)};
   animation-fill-mode: forwards;
   @media (prefers-reduced-motion: reduce) {
@@ -56,7 +56,7 @@ const FolderItems = ({
   type,
   ...rest
 }: FolderItemsProps) => (
-  <StyledUL role="group" firstLevel={level === 0}>
+  <StyledUL role="group">
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
@@ -71,6 +71,7 @@ const FolderItems = ({
               {newFolderParentId === id && (
                 <FolderNameInput
                   loading={loading}
+                  level={level}
                   onCancelNewFolder={onCancelNewFolder}
                   onSaveNewFolder={onSaveNewFolder}
                   parentId={newFolderParentId}

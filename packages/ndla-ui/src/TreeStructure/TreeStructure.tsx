@@ -83,7 +83,7 @@ const TreeStructure = ({
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
   const [focusedId, setFocusedId] = useState<string | undefined>();
   const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
-  const [showTree, setShowTree] = useState(type === 'picker');
+  const [showTree, setShowTree] = useState(type !== 'picker' || true);
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
   const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
@@ -111,7 +111,7 @@ const TreeStructure = ({
 
   useEffect(() => {
     if (!loading) {
-      setNewFolderParentId(undefined);
+      setNewFolderParentId('1');
     }
   }, [loading]);
 
@@ -162,7 +162,7 @@ const TreeStructure = ({
             <StyledSelectedFolder variant="ghost" colorTheme="light" fontWeight="normal" shape="sharp">
               {selectedFolder?.name}
             </StyledSelectedFolder>
-            {onNewFolder && (
+            {onNewFolder && showTree && (
               <Tooltip
                 tooltip={
                   canAddFolder
@@ -191,37 +191,36 @@ const TreeStructure = ({
               inactiveIcon={<ChevronDown />}
               activeIcon={<ChevronUp />}
               size="small"
-              // aria-controls={suggestionIdRef.current}
               onClick={() => {
-                // setInputValue('');
-                // setExpanded(!expanded);
-                // inputRef.current?.focus();
+                setShowTree(!showTree);
               }}
             />
           </StyledRow>
         )}
-        <FolderItems
-          focusedFolderId={focusedId}
-          menuItems={menuItems}
-          folders={folders}
-          level={0}
-          loading={loading}
-          selectedFolder={selectedFolder}
-          maxLevel={maximumLevelsOfFoldersAllowed}
-          newFolderParentId={newFolderParentId}
-          onCancelNewFolder={onCancelNewFolder}
-          onCloseFolder={onCloseFolder}
-          onOpenFolder={onOpenFolder}
-          onSaveNewFolder={onSaveNewFolder}
-          onSelectFolder={onSelectFolder}
-          openFolders={openFolders}
-          openOnFolderClick={openOnFolderClick}
-          setFocusedId={setFocusedId}
-          setSelectedFolder={setSelectedFolder}
-          targetResource={targetResource}
-          visibleFolders={visibleFolderIds}
-          type={type}
-        />
+        {showTree && (
+          <FolderItems
+            focusedFolderId={focusedId}
+            menuItems={menuItems}
+            folders={folders}
+            level={0}
+            loading={loading}
+            selectedFolder={selectedFolder}
+            maxLevel={maximumLevelsOfFoldersAllowed}
+            newFolderParentId={newFolderParentId}
+            onCancelNewFolder={onCancelNewFolder}
+            onCloseFolder={onCloseFolder}
+            onOpenFolder={onOpenFolder}
+            onSaveNewFolder={onSaveNewFolder}
+            onSelectFolder={onSelectFolder}
+            openFolders={openFolders}
+            openOnFolderClick={openOnFolderClick}
+            setFocusedId={setFocusedId}
+            setSelectedFolder={setSelectedFolder}
+            targetResource={targetResource}
+            visibleFolders={visibleFolderIds}
+            type={type}
+          />
+        )}
       </TreeStructureWrapper>
     </div>
   );

@@ -8,9 +8,7 @@
 
 import React, { useEffect, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
-import { FolderOutlined } from '@ndla/icons/contentType';
-import { ArrowDropDown as ArrowDropDownRaw } from '@ndla/icons/common';
-import { spacing, colors, misc, animations } from '@ndla/core';
+import { spacing, colors, animations, spacingUnit } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { isMobile } from 'react-device-detect';
 import { Spinner } from '@ndla/icons';
@@ -18,18 +16,21 @@ import { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
 
-const ArrowRight = styled(ArrowDropDownRaw)`
-  color: ${colors.text.primary};
-  transform: rotate(-90deg);
-`;
+const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
+  colors.brand.tertiary,
+)}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
 
 const NewFolderWrapper = styled.div`
-  padding-left: ${spacing.normal};
-  ${animations.fadeInLeft(animations.durations.fast)};
-  animation-fill-mode: forwards;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
+  background: linear-gradient(
+    to bottom,
+    ${colors.white} 0%,
+    ${colors.white} 15%,
+    ${colors.brand.lighter} 15%,
+    ${colors.brand.lighter} 85%,
+    ${colors.white} 85%,
+    ${colors.white} 100%
+  );
+  background-size: auto 100%;
 `;
 
 const Row = styled.div`
@@ -38,17 +39,25 @@ const Row = styled.div`
   padding-right: ${spacing.xsmall};
 `;
 
-const InputWrapper = styled.div<{ loading?: boolean }>`
+const InputWrapper = styled.div<{ level: number }>`
   display: flex;
   margin: ${spacing.xxsmall} 0;
+  margin-left: ${({ level }) => 0.75 * spacingUnit * level + 2 * spacingUnit}px;
+  margin-right: ${spacing.normal};
   align-items: center;
-  border: 1px solid ${({ loading }) => (loading ? colors.brand.lighter : colors.brand.primary)};
-  border-style: dashed;
-  border-radius: ${misc.borderRadius};
+  background-color: ${colors.white};
+  background-image: ${borderStyle};
   color: ${colors.brand.primary};
+
+  ${animations.fadeInLeft(animations.durations.fast)};
+  animation-fill-mode: forwards;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 const StyledInput = styled.input`
+  padding: ${spacing.small};
   flex-grow: 1;
   border: 0;
   outline: none;
@@ -63,9 +72,10 @@ interface FolderNameInputProps {
   parentId: string;
   onCancelNewFolder: () => void;
   loading?: boolean;
+  level: number;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading }: FolderNameInputProps) => {
+const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading, level }: FolderNameInputProps) => {
   const { t } = useTranslation();
   const [name, setName] = useState<string>(t('treeStructure.newFolder.defaultName'));
   const inputRef = useRef<HTMLInputElement>(null);
@@ -79,11 +89,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
 
   return (
     <NewFolderWrapper>
-      <InputWrapper loading={loading}>
-        <Row>
-          <ArrowRight />
-          <FolderOutlined />
-        </Row>
+      <InputWrapper level={level}>
         <StyledInput
           ref={inputRef}
           autoFocus
@@ -104,12 +110,13 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
         <Row>
           {!loading ? (
             <>
-              <IconButton aria-label={t('close')} size="xsmall" ghostPill onClick={onCancelNewFolder}>
+              <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onCancelNewFolder}>
                 <Cross />
               </IconButton>
               <IconButton
                 aria-label={t('save')}
-                size="xsmall"
+                title={t('save')}
+                size="small"
                 ghostPill
                 onClick={() => onSaveNewFolder(name, parentId)}>
                 <Done />

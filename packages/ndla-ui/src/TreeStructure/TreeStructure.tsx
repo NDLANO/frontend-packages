@@ -42,16 +42,15 @@ const StyledTreeStructure = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 `;
 
 const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   ${({ type }) =>
     (type === 'normal' || type === 'picker') &&
     css`
+      overflow: hidden;
       border: 1px solid ${colors.brand.neutral7};
       border-radius: ${misc.borderRadius};
       scroll-behavior: smooth;
@@ -94,7 +93,10 @@ const StyledSelectedFolder = styled(Button)`
 `;
 
 const StyledAddFolderButton = styled(Button)`
-  border-color: transparent;
+  &,
+  &:disabled {
+    border-color: transparent;
+  }
 `;
 
 const StyledPlus = styled(Plus)`

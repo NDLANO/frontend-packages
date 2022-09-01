@@ -117,6 +117,12 @@ export const buttonStyle = ({
       background: ${theme.background};
       border-color: ${theme.background};
     }
+    &[disabled] {
+      color: ${colors.brand.grey};
+      background-color: transparent;
+      border-color: ${colors.brand.grey};
+      cursor: not-allowed;
+    }
   `}
   ${variant === 'ghost' &&
   css`
@@ -130,6 +136,12 @@ export const buttonStyle = ({
       color: ${theme.foreground};
       background: ${theme.background};
       border-color: ${theme.background};
+    }
+    &[disabled] {
+      color: ${colors.brand.grey};
+      background-color: transparent;
+      border-color: transparent;
+      cursor: not-allowed;
     }
   `}
   ${variant === 'link' &&

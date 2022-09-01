@@ -21,7 +21,6 @@ const Container = styled.div<{ type: TreeStructureType }>`
   display: flex;
   margin-top: 40px;
   max-width: 600px;
-  overflow: hidden;
   max-height: ${({ type }) => type !== 'navigation' && '250px'};
 `;
 

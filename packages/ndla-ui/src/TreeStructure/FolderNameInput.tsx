@@ -85,7 +85,10 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
     if (isMobile) {
       inputRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, []);
+    return () => {
+      onCancelNewFolder();
+    };
+  }, [onCancelNewFolder]);
 
   return (
     <NewFolderWrapper>

@@ -13,13 +13,13 @@ import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, misc, spacing } from '@ndla/core';
+import { css } from '@emotion/core';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
-import TreeStructureWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
 import { flattenFolders } from './helperFunctions';
-import { CommonTreeStructureProps, FolderType } from './types';
+import { CommonTreeStructureProps, FolderType, TreeStructureType } from './types';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -36,6 +36,50 @@ const StyledRow = styled.div<StyledRowProps>`
   justify-content: space-between;
   padding: ${spacing.xxsmall};
   border-bottom: ${({ isOpen }) => isOpen && `1px solid ${colors.brand.tertiary}`};
+`;
+
+const StyledTreeStructure = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  ${({ type }) =>
+    (type === 'normal' || type === 'picker') &&
+    css`
+      border: 1px solid ${colors.brand.neutral7};
+      border-radius: ${misc.borderRadius};
+      scroll-behavior: smooth;
+    `}
+  transition: ${misc.transition.default};
+  &:focus-within {
+    border-color: ${colors.brand.tertiary};
+  }
+`;
+interface ScrollableDivProps {
+  type: TreeStructureType;
+}
+const ScrollableDiv = styled.div<ScrollableDivProps>`
+  ${({ type }) =>
+    (type === 'picker' || type === 'normal') &&
+    css`
+      overflow: overlay;
+      ::-webkit-scrollbar {
+        width: ${spacing.small};
+      }
+      ::-webkit-scrollbar-thumb {
+        border: 4px solid transparent;
+        border-radius: 14px;
+        background-clip: padding-box;
+        padding: 0 4px;
+        background-color: ${colors.brand.neutral7};
+      }
+    `}
 `;
 
 const StyledSelectedFolder = styled(Button)`
@@ -163,7 +207,7 @@ const TreeStructure = ({
   const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
-    <div>
+    <StyledTreeStructure>
       {label && <StyledLabel>{label}</StyledLabel>}
       <TreeStructureWrapper aria-label="Menu tree" role="tree" type={type}>
         {type === 'picker' && (
@@ -207,31 +251,33 @@ const TreeStructure = ({
           </StyledRow>
         )}
         {showTree && (
-          <FolderItems
-            focusedFolderId={focusedId}
-            menuItems={menuItems}
-            folders={folders}
-            level={0}
-            loading={loading}
-            selectedFolder={selectedFolder}
-            maxLevel={maximumLevelsOfFoldersAllowed}
-            newFolderParentId={newFolderParentId}
-            onCancelNewFolder={onCancelNewFolder}
-            onCloseFolder={onCloseFolder}
-            onOpenFolder={onOpenFolder}
-            onSaveNewFolder={onSaveNewFolder}
-            onSelectFolder={onSelectFolder}
-            openFolders={openFolders}
-            openOnFolderClick={openOnFolderClick}
-            setFocusedId={setFocusedId}
-            setSelectedFolder={setSelectedFolder}
-            targetResource={targetResource}
-            visibleFolders={visibleFolderIds}
-            type={type}
-          />
+          <ScrollableDiv type={type}>
+            <FolderItems
+              focusedFolderId={focusedId}
+              menuItems={menuItems}
+              folders={folders}
+              level={0}
+              loading={loading}
+              selectedFolder={selectedFolder}
+              maxLevel={maximumLevelsOfFoldersAllowed}
+              newFolderParentId={newFolderParentId}
+              onCancelNewFolder={onCancelNewFolder}
+              onCloseFolder={onCloseFolder}
+              onOpenFolder={onOpenFolder}
+              onSaveNewFolder={onSaveNewFolder}
+              onSelectFolder={onSelectFolder}
+              openFolders={openFolders}
+              openOnFolderClick={openOnFolderClick}
+              setFocusedId={setFocusedId}
+              setSelectedFolder={setSelectedFolder}
+              targetResource={targetResource}
+              visibleFolders={visibleFolderIds}
+              type={type}
+            />
+          </ScrollableDiv>
         )}
       </TreeStructureWrapper>
-    </div>
+    </StyledTreeStructure>
   );
 };
 

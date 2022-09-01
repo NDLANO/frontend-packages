@@ -17,9 +17,12 @@ import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 
-const Container = styled.div`
+const Container = styled.div<{ type: TreeStructureType }>`
+  display: flex;
   margin-top: 40px;
   max-width: 600px;
+  overflow: hidden;
+  max-height: ${({ type }) => type !== 'navigation' && '250px'};
 `;
 
 export const MY_FOLDERS_ID = 'folders';
@@ -196,7 +199,7 @@ export const TreeStructureExampleComponent = ({
   const [structure, setStructure] = useState<FolderType[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
-    <Container>
+    <Container type={type}>
       <TreeStructure
         targetResource={targetResource}
         menuItems={withDots ? menuItems(t) : undefined}

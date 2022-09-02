@@ -14,7 +14,7 @@ import { FeideText } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Button, { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
-import { Image } from '@ndla/ui';
+import Image from '../Image';
 import { FeideUserApiType } from './apiTypes';
 const DialogFooter = styled.div`
   display: flex;

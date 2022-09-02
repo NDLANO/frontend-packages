@@ -240,7 +240,7 @@ export const TreeStructureExampleComponent = ({
 
 const TreeStructureExample = () => (
   <div>
-    <h1>TreeStructure editable:</h1>
+    <h1>Trestruktur velger</h1>
     <TreeStructureExampleComponent
       label="Velg mappe"
       openOnFolderClick={false}
@@ -252,7 +252,7 @@ const TreeStructureExample = () => (
       type="picker"
       withDots
     />
-    <h1>TreeStructure non-editable:</h1>
+    <h1>Trestruktur enkel</h1>
     <TreeStructureExampleComponent
       label="Velg mappe"
       onSelectFolder={(id: string) => {}}
@@ -262,7 +262,7 @@ const TreeStructureExample = () => (
       targetResource={targetResource}
       withDots
     />
-    <h1>TreeStructure without frame</h1>
+    <h1>Trestruktur navigasjon</h1>
     <TreeStructureExampleComponent
       openOnFolderClick
       type="navigation"

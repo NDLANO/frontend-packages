@@ -126,7 +126,10 @@ export const MenuButton = ({
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
               key={text}
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
               onSelect={onClick}
               type={type}
               aria-label={text}>

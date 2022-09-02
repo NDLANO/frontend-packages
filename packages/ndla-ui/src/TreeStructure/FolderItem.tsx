@@ -220,8 +220,11 @@ const FolderItem = ({
         {containsResource && <StyledDone title={t('myNdla.alreadyInFolder')} />}
         {actions && (
           <MenuButton
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             size="xsmall"
+            alignRight
             menuItems={actions}
             tabIndex={selected || id === focusedFolderId ? 0 : -1}
           />

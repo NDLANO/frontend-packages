@@ -253,8 +253,9 @@ const TreeStructureExample = () => (
       targetResource={targetResource}
       onNewFolder
       type="picker"
+      withDots
     />
-    <h1>TreeStructure non-editable:</h1>
+    {/* <h1>TreeStructure non-editable:</h1>
     <TreeStructureExampleComponent
       label="Velg mappe"
       onSelectFolder={(id: string) => {}}
@@ -271,7 +272,7 @@ const TreeStructureExample = () => (
       defaultOpenFolders={[MY_FOLDERS_ID]}
       structure={NAVIGATION_STRUCTURE}
       withDots
-    />
+    /> */}
   </div>
 );
 

@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { ButtonV2 as Button, IconButtonDualStates } from '@ndla/button';
 import { Plus } from '@ndla/icons/action';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
@@ -127,6 +127,8 @@ const TreeStructure = ({
 }: TreeStructureProps) => {
   const { t } = useTranslation();
 
+  const ref = useRef<HTMLDivElement>(null);
+
   const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
@@ -138,6 +140,25 @@ const TreeStructure = ({
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
   const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (e.target instanceof Element && ref.current && !ref.current.contains(e.target)) {
+        const portal = e.target.closest('reach-portal');
+        if (portal) {
+          if (portal.contains(ref.current)) {
+            setShowTree(false);
+          }
+        } else {
+          setShowTree(false);
+        }
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref]);
 
   useEffect(() => {
     if (defaultOpenFolders) {
@@ -209,7 +230,7 @@ const TreeStructure = ({
   const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
-    <StyledTreeStructure>
+    <StyledTreeStructure ref={ref}>
       {label && <StyledLabel>{label}</StyledLabel>}
       <TreeStructureWrapper aria-label="Menu tree" role="tree" type={type}>
         {type === 'picker' && (

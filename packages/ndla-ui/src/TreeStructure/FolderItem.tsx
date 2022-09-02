@@ -9,7 +9,7 @@
 import React, { KeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { ArrowDropDown } from '@ndla/icons/common';
+import { ArrowDropDownRounded } from '@ndla/icons/common';
 import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button, MenuButton } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
@@ -29,8 +29,8 @@ const OpenButton = styled.span<{ isOpen: boolean }>`
     color: ${colors.brand.primary};
   }
   svg {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     transform: rotate(${({ isOpen }) => (isOpen ? '0' : '-90')}deg);
   }
 `;
@@ -67,7 +67,8 @@ const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
   border: none;
   outline: none;
   background: ${({ selected, isCreatingFolder }) => selected && !isCreatingFolder && colors.brand.lighter};
-  color: ${({ isCreatingFolder }) => (isCreatingFolder ? colors.brand.primary : colors.text.primary)};
+  color: ${({ isCreatingFolder, selected }) =>
+    isCreatingFolder && selected ? colors.brand.primary : colors.text.primary};
   transition: ${animations.durations.superFast};
   line-height: 1;
   word-break: break-word;
@@ -76,7 +77,7 @@ const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
     box-shadow: none;
     outline: none;
     background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
-    color: ${colors.brand.primary};
+    color: ${colors.text.primary};
   }
 `;
 
@@ -86,6 +87,7 @@ const StyledDone = styled(Done)`
 
 const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
   display: grid;
+  align-items: center;
   grid-template-columns: ${spacing.medium} 1fr auto;
   padding: ${spacing.small} ${spacing.xxsmall};
   margin-left: ${({ level }) => 0.75 * spacingUnit * level}px;
@@ -199,7 +201,7 @@ const FolderItem = ({
       isCreatingFolder={isCreatingFolder}>
       {!hideArrow && (
         <OpenButton tabIndex={-1} isOpen={isOpen} onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
-          <ArrowDropDown />
+          <ArrowDropDownRounded />
         </OpenButton>
       )}
       <StyledName>{name}</StyledName>
@@ -230,7 +232,7 @@ const FolderItem = ({
       onClick={handleClickFolder}>
       {(!hideArrow || level === 0) && (
         <OpenButton tabIndex={-1} isOpen={isOpen} onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
-          <ArrowDropDown />
+          <ArrowDropDownRounded />
         </OpenButton>
       )}
       <StyledName>{name}</StyledName>

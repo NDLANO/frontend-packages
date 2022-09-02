@@ -154,11 +154,13 @@ const TreeStructure = ({
         }
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref]);
+    if (type === 'picker') {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [ref, type]);
 
   useEffect(() => {
     if (defaultOpenFolders) {

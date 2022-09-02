@@ -20,10 +20,11 @@ import type { TagType } from './TagSelector';
 
 const TAG_INPUT_ID = 'TAG_INPUT_ID';
 
-const TagSelectorWrapper = styled.div`
+const SuggestionInputWrapper = styled.div`
   display: flex;
-  background: ${colors.white};
   flex-direction: column;
+  overflow: hidden;
+  background: ${colors.white};
   border: 1px solid ${colors.brand.neutral7};
   border-radius: ${misc.borderRadius};
   &:focus-within {
@@ -50,6 +51,12 @@ const SuggestionTextWrapper = styled.div`
       color: transparent;
     }
   }
+`;
+
+const SuggestionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 const SuggestionText = ({ value, suggestionValue }: { value: string; suggestionValue: string }) => (
@@ -115,7 +122,6 @@ interface SuggestionInputProps {
   onCreateTag: (tagName: string) => void;
   addedTags: TagType[];
   scrollAnchorElement: RefObject<HTMLDivElement>;
-  dropdownMaxHeight?: number;
 }
 
 const SuggestionInput = ({
@@ -129,7 +135,6 @@ const SuggestionInput = ({
   setExpanded,
   expanded,
   scrollAnchorElement,
-  dropdownMaxHeight,
 }: SuggestionInputProps) => {
   const { t } = useTranslation();
   const [currentHighlightedIndex, setCurrentHighlightedIndex] = useState(0);
@@ -146,7 +151,7 @@ const SuggestionInput = ({
   const isOpen = (hasFocus || expanded) && suggestions.length > 0;
 
   return (
-    <TagSelectorWrapper ref={containerRef}>
+    <SuggestionInputWrapper ref={containerRef}>
       <StyledInputWrapper>
         {addedTags.map(({ id, name }) => (
           <StyledTagButton
@@ -262,18 +267,17 @@ const SuggestionInput = ({
           </Tooltip>
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
-      <div id={TAG_INPUT_ID} aria-live="polite">
+      <SuggestionsWrapper id={TAG_INPUT_ID} aria-live="polite">
         {isOpen ? (
           <Suggestions
-            maxHeight={dropdownMaxHeight}
             suggestions={suggestions}
             currentHighlightedIndex={currentHighlightedIndex}
             onToggleTag={onToggleTag}
             hasBeenAdded={hasBeenAdded}
           />
         ) : null}
-      </div>
-    </TagSelectorWrapper>
+      </SuggestionsWrapper>
+    </SuggestionInputWrapper>
   );
 };
 

@@ -12,15 +12,10 @@ import { spacing, colors } from '@ndla/core';
 import type { TagType } from './TagSelector';
 import SuggestionButton from './SuggestionButton';
 
-interface SuggestionProps {
-  maxHeight?: number;
-}
-
-const Suggestions = styled.div<SuggestionProps>`
+const Suggestions = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 1px solid ${colors.brand.neutral7};
-  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
+  border-top: 1px solid ${colors.brand.tertiary};
   overflow-y: overlay;
   scroll-behavior: smooth;
 
@@ -42,11 +37,10 @@ interface Props {
   currentHighlightedIndex: number;
   onToggleTag: (id: string) => void;
   hasBeenAdded: (id: string) => boolean;
-  maxHeight?: number;
 }
 
-const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, hasBeenAdded, maxHeight }: Props) => (
-  <Suggestions role="listbox" maxHeight={maxHeight}>
+const TagSuggestions = ({ suggestions, currentHighlightedIndex, onToggleTag, hasBeenAdded }: Props) => (
+  <Suggestions role="listbox">
     {suggestions.map(({ id, name }, index: number) => {
       const alreadyAdded = hasBeenAdded(id);
       const selected = index === currentHighlightedIndex;

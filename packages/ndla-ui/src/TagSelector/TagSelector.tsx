@@ -16,6 +16,12 @@ const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
 `;
 
+const TagSelectorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
 export interface TagType {
   name: string;
   id: string;
@@ -27,7 +33,6 @@ interface Props {
   tagsSelected: string[];
   onToggleTag: (id: string) => void;
   onCreateTag: (tagName: string) => void;
-  dropdownMaxHeight?: number;
 }
 
 const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] => {
@@ -47,7 +52,7 @@ const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
     .sort((a, b) => a.name.localeCompare(b.name));
 };
 
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, dropdownMaxHeight }: Props) => {
+const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [expanded, setExpanded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,10 +63,9 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, drop
   }, [tagsSelected]);
 
   return (
-    <div ref={containerRef}>
+    <TagSelectorWrapper ref={containerRef}>
       <StyledLabel htmlFor={inputIdRef.current}>{label}</StyledLabel>
       <SuggestionInput
-        dropdownMaxHeight={dropdownMaxHeight}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           const target = e.target as HTMLInputElement;
           setInputValue(target.value);
@@ -77,7 +81,7 @@ const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, drop
         setExpanded={setExpanded}
         scrollAnchorElement={containerRef}
       />
-    </div>
+    </TagSelectorWrapper>
   );
 };
 

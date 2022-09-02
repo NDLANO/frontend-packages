@@ -33,8 +33,12 @@ const dummyData = [
 ];
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 10px auto;
   max-width: 600px;
+  max-height: 250px;
+  overflow: hidden;
 `;
 
 const TagSelectorExample = () => {
@@ -62,7 +66,6 @@ const TagSelectorExample = () => {
           setExampleTags((prevTags) => [...prevTags, { id: newId, name: newTagName }]);
           setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, newId]);
         }}
-        dropdownMaxHeight={150}
       />
     </Container>
   );

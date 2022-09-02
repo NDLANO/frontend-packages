@@ -14,12 +14,7 @@ import { LayoutWithSidebarAside, LayoutWithSidebarMain, LayoutWithSidebarWrapper
 export const MyPage = ({ children }: { children: ReactNode }) => (
   <LayoutWithSidebarWrapper>
     <LayoutWithSidebarAside>
-      <TreeStructureExampleComponent
-        editable={false}
-        framed={false}
-        openOnFolderClick
-        structure={NAVIGATION_STRUCTURE()}
-      />
+      <TreeStructureExampleComponent type="navigation" openOnFolderClick structure={NAVIGATION_STRUCTURE} />
     </LayoutWithSidebarAside>
     <LayoutWithSidebarMain>{children}</LayoutWithSidebarMain>
   </LayoutWithSidebarWrapper>

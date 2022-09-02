@@ -353,8 +353,7 @@ const messages = {
       'Your browser is outdated. Update it, or find a safe and updated browser on https://browsehappy.com.',
     noContent: 'We are sorry, but we do not yet offer any program courses.',
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
-    resources:
-      'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
+    resources: 'This is not a complete course, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
     subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:

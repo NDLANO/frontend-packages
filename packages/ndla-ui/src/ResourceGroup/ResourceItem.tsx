@@ -284,19 +284,28 @@ const ResourceItem = ({
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
           <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <HumanMaleBoard className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+            <HumanMaleBoard
+              className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+              aria-label={t('article.access.onlyTeacher')}
+            />
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+                <Additional
+                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                  aria-label={contentTypeDescription}
+                />
               </Tooltip>
             )}
             {!additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+                <Core
+                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                  aria-label={contentTypeDescription}
+                />
               </Tooltip>
             )}
           </>

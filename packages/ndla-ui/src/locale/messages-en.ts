@@ -1012,6 +1012,9 @@ const messages = {
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
     },
+    login: 'Log in',
+    loginMessage:
+      'Log in with Feide to access My NDLA. We ask you not to write anything offensive or share any sensitiv information in the textfields. Read our privacy statement here.',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
     confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
@@ -1037,7 +1040,7 @@ const messages = {
       logout: 'Log out of My NDLA',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',
-      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',
+      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your own way!',
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',

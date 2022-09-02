@@ -11,8 +11,8 @@ import styled from '@emotion/styled';
 import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
 import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
-import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
-import { useSnack, Image, ListResource } from '@ndla/ui';
+import Modal, { ModalHeader } from '@ndla/modal';
+import { useSnack, ListResource } from '@ndla/ui';
 
 import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -27,16 +27,28 @@ const DialogFooter = styled.div`
   gap: ${spacing.xsmall};
   justify-content: flex-end;
   margin-top: ${spacing.small};
+  justify-content: space-between;
+  align-items: center;
 `;
-
+const FooterButtons = styled.div`
+  display: flex;
+  gap: ${spacing.xsmall};
+`;
 const FavouriteWrapper = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
+  padding-bottom: 26px;
+  gap: 10px;
 `;
 
+const StyledModalBody = styled.div`
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 560px;
+`;
 const StyledNotLoggedInH1 = styled.h1`
   font-weight: 700;
-  ${fonts.sizes('20')};
+  ${fonts.sizes('24')};
 `;
 const Header = styled.div`
   display: flex;
@@ -52,11 +64,6 @@ const Header = styled.div`
     text-align: center;
   }
 `;
-const RoundedImage = styled(Image)`
-  border-radius: 50%;
-  height: 160px;
-  max-width: 160px;
-`;
 
 const StyledH1 = styled.h1`
   ${fonts.sizes(24)};
@@ -68,10 +75,10 @@ const Feide = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.small};
-  svg {
-    height: 21px;
-    width: 60px;
-  }
+`;
+const FeideIcon = styled(FeideText)`
+  height: 21px;
+  width: 60px;
 `;
 const FeideP = styled.p`
   margin: 0;
@@ -99,7 +106,7 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
               <Cross />
             </IconButton>
           </ModalHeader>
-          <ModalBody>
+          <StyledModalBody>
             <StyledH1>{title}</StyledH1>
             <ListResource
               key={'minimalResource'}
@@ -138,7 +145,7 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
                 Lagre
               </Button>
             </DialogFooter>
-          </ModalBody>
+          </StyledModalBody>
         </FavouriteWrapper>
       )}
     </Modal>
@@ -158,15 +165,11 @@ const DialogNotLoggedInExample = ({ isOpen, title, closeCallback, resource }: Di
             </IconButton>
           </ModalHeader>
           <Header>
-            <StyledNotLoggedInH1>
-              Velkommen til Min NDLA! Her kan du organisere fagstoffet på din måte!
-            </StyledNotLoggedInH1>
-            <RoundedImage src="https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg" alt="" />
+            <StyledNotLoggedInH1>Ønsker du å favorittmerke denne siden?</StyledNotLoggedInH1>
           </Header>
-          <ModalBody>
+          <StyledModalBody>
             {resource && (
               <>
-                <StyledH1>{title}</StyledH1>
                 <ListResource
                   key={'minimalResource'}
                   title="Minimal ressurs"
@@ -181,25 +184,29 @@ const DialogNotLoggedInExample = ({ isOpen, title, closeCallback, resource }: Di
             )}
 
             <Feide>
-              <FeideText />
               <FeideP>
-                Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre <a href="www">vilkår for bruk</a>
+                Logg inn med Feide for å få tilgang til Min NDLA. Vi ber om at du ikke skriver noe støtende eller
+                personsensitiv informasjon eller annen persondata i tekstfelt. Les vår{' '}
+                <a href="www">personvernerklæring her</a>
               </FeideP>
             </Feide>
             <DialogFooter>
-              <Button outline onClick={onCloseModal}>
-                Avbryt
-              </Button>
+              <FeideIcon />
+              <FooterButtons>
+                <Button outline onClick={onCloseModal}>
+                  Avbryt
+                </Button>
 
-              <Button
-                onClick={() => {
-                  addSnack({ id: 'mustLogIn', content: 'Logg på med Feide' });
-                  onCloseModal();
-                }}>
-                Logg på med Feide
-              </Button>
+                <Button
+                  onClick={() => {
+                    addSnack({ id: 'mustLogIn', content: 'Logg inn' });
+                    onCloseModal();
+                  }}>
+                  Logg inn
+                </Button>
+              </FooterButtons>
             </DialogFooter>
-          </ModalBody>
+          </StyledModalBody>
         </FavouriteWrapper>
       )}
     </Modal>

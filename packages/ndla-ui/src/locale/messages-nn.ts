@@ -1011,6 +1011,9 @@ const messages = {
       missingName: 'Skriv namn på mappe',
       folderDeleted: '"{{folderName}}" er sletta',
     },
+    login: 'Logg inn',
+    loginMessage:
+      ' Logg inn med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støytande eller personsensitiv informasjon eller anna persondata i tekstfelt. Les vår personvernerklæring her',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',
     confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje endrast.',
@@ -1037,7 +1040,7 @@ const messages = {
       logout: 'Logg ut av Min NDLA',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
-      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
       read: { our: 'Les vår', ours: 'Les våre' },

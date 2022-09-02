@@ -22,17 +22,17 @@ storiesOf('Min NDLA', module).add('Elementer', () => (
   </PageContainer>
 ));
 
-storiesOf('Min NDLA', module).add('Add to favorites', () => (
+storiesOf('Min NDLA', module).add('Moduler', () => (
   <PageContainer>
     <SnackbarProvider>
       <MastheadWithTopicMenu />
       <Content>
         <OneColumn cssModifier="clear-desktop" wide>
+          <h2>Hjerte av ressurs</h2>
           <h3>Hjerte logget inn</h3>
           <MyNdlaAddToFavoritesExample />
           <h3>Hjerte ikke logget inn</h3>
           <MyNdlaAddToFavoritesExample isLoggedIn={false} />
-
           <h3>Hjerte ikke logget inn, uten ressurs</h3>
           <MyNdlaAddToFavoritesExample isLoggedIn={false} resource={false} />
         </OneColumn>

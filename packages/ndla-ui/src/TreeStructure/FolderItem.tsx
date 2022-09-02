@@ -200,7 +200,18 @@ const FolderItem = ({
       onClick={handleClickFolder}
       isCreatingFolder={isCreatingFolder}>
       {!hideArrow && (
-        <OpenButton tabIndex={-1} isOpen={isOpen} onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
+        <OpenButton
+          aria-hidden
+          tabIndex={-1}
+          isOpen={isOpen}
+          onClick={() => {
+            ref.current?.focus();
+            if (isOpen) {
+              onCloseFolder(id);
+            } else {
+              onOpenFolder(id);
+            }
+          }}>
           <ArrowDropDownRounded />
         </OpenButton>
       )}
@@ -231,7 +242,18 @@ const FolderItem = ({
       onFocus={() => setFocusedId(id)}
       onClick={handleClickFolder}>
       {(!hideArrow || level === 0) && (
-        <OpenButton tabIndex={-1} isOpen={isOpen} onClick={() => (isOpen ? onCloseFolder(id) : onOpenFolder(id))}>
+        <OpenButton
+          aria-hidden
+          tabIndex={-1}
+          isOpen={isOpen}
+          onClick={() => {
+            ref.current?.focus();
+            if (isOpen) {
+              onCloseFolder(id);
+            } else {
+              onOpenFolder(id);
+            }
+          }}>
           <ArrowDropDownRounded />
         </OpenButton>
       )}

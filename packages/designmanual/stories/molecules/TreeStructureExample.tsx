@@ -9,7 +9,7 @@
 import React, { useState, MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation, TFunction } from 'react-i18next';
-import { TreeStructure, FolderType, TreeStructureMenuProps, TreeStructureProps } from '@ndla/ui';
+import { TreeStructure, FolderType, TreeStructureMenuProps, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
 import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
 import { Pencil, TrashCanOutline } from '@ndla/icons/action';
@@ -17,7 +17,7 @@ import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 
-const Container = styled.div<{ type: TreeStructureType }>`
+const Container = styled.div<{ type?: TreeStructureType }>`
   display: flex;
   margin-top: 40px;
   max-width: 600px;
@@ -174,8 +174,7 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
 export const TreeStructureExampleComponent = ({
   structure: initalStructure,
   label,
-  type,
-  framed,
+  type = 'normal',
   onSelectFolder,
   openOnFolderClick,
   defaultOpenFolders,
@@ -185,8 +184,7 @@ export const TreeStructureExampleComponent = ({
 }: {
   structure: FolderType[];
   label?: string;
-  type: TreeStructureType;
-  framed: boolean;
+  type?: TreeStructureType;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
@@ -202,7 +200,6 @@ export const TreeStructureExampleComponent = ({
       <TreeStructure
         targetResource={targetResource}
         menuItems={withDots ? menuItems(t) : undefined}
-        framed={framed}
         onSelectFolder={onSelectFolder}
         label={label}
         type={type}

@@ -19,6 +19,8 @@ const messages = {
       edit: 'Edit foldername',
       delete: 'Delete',
     },
+    hideFolders: 'Hide all folders',
+    showFolders: 'Show all folders',
     createFolder: 'Create folder',
     maxFoldersAlreadyAdded: 'Maximum subfolders reached',
     newFolder: {

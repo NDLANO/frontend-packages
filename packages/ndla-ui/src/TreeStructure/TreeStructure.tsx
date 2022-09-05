@@ -268,8 +268,8 @@ const TreeStructure = ({
             )}
             <IconButtonDualStates
               data-suggestionbutton
-              ariaLabelActive={t('tagSelector.showAllTags')}
-              ariaLabelInActive={t('tagSelector.hideAllTags')}
+              ariaLabelActive={t('treeStructure.hideFolders')}
+              ariaLabelInActive={t('treeStructure.showFolders')}
               active={showTree}
               variant="ghost"
               colorTheme="greyLighter"

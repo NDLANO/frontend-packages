@@ -3,12 +3,14 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { PageContainer, Content, OneColumn, SnackbarProvider } from '@ndla/ui';
+import { PageContainer, Content, OneColumn, SnackbarProvider, ErrorMessage } from '@ndla/ui';
 import MastheadWithTopicMenu from './molecules/mastheads';
 import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
 import MyNdlaMyPage from './pages/MyNdlaMyPage';
+import { StoryIntro } from './wrappers';
+import Oops from '../images/oops.gif';
 
 storiesOf('Min NDLA', module).add('Elementer', () => (
   <PageContainer>
@@ -52,4 +54,26 @@ storiesOf('Min NDLA', module).add('Min side', () => (
     </Content>
     <FooterExample />
   </PageContainer>
+));
+
+storiesOf('Min NDLA', module).add('Feilmelding', () => (
+  <div>
+    <StoryIntro title="Feilmelding">
+      <p>
+        Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
+        feil ved innlogging.
+      </p>
+    </StoryIntro>
+    <ErrorMessage
+      illustration={{
+        url: Oops,
+        altText: 'Systemfeil',
+      }}
+      messages={{
+        title: 'Ops, her gikk noe galt',
+        linksTitle: 'Prøv igjen',
+        logInFailed: 'Logg inn',
+      }}
+    />
+  </div>
 ));

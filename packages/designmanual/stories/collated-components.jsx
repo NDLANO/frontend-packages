@@ -290,6 +290,30 @@ storiesOf('Sammensatte moduler', module)
     </div>
   ))
 
+  .add('Feilmelding', () => (
+    <div>
+      <StoryIntro title="Feilmelding">
+        <p>
+          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
+          feil i systemet, f.eks. ved 404- eller 503-feil.
+        </p>
+      </StoryIntro>
+      <ErrorMessage
+        illustration={{
+          url: Oops,
+          altText: 'Systemfeil',
+        }}
+        messages={{
+          title: 'Oisann, her gikk noe galt',
+          description: 'En kort beskrivelse av feilen som oppsto.',
+          linksTitle: 'Kom igang:',
+          back: 'Gå tilbake',
+          goToFrontPage: 'Gå til forsiden',
+        }}
+      />
+    </div>
+  ))
+
   .add('Filter', () => (
     <div>
       <StoryIntro title="Filter">

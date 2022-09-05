@@ -37,6 +37,9 @@ const FooterButtons = styled.div`
 const FavouriteWrapper = styled.div`
   padding-bottom: 26px;
   gap: 10px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    padding: ${spacing.small};
+  }
 `;
 
 const StyledModalBody = styled.div`
@@ -61,7 +64,6 @@ const Header = styled.div`
   ${mq.range({ until: breakpoints.tabletWide })} {
     flex-direction: column;
     gap: 0;
-    text-align: center;
   }
 `;
 

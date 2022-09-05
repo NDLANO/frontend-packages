@@ -56,16 +56,15 @@ const Header = styled.div`
   max-width: 550px;
   margin: 0 auto;
   margin-top: ${spacing.normal};
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-direction: column;
-    gap: 0;
-    text-align: center;
-  }
 `;
 const RoundedImage = styled(Image)`
   border-radius: 50%;
   height: 160px;
   max-width: 160px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    height: 100px;
+    max-width: 100px;
+  }
 `;
 
 const Feide = styled.div`

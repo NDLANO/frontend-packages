@@ -10,6 +10,7 @@
 export { default as AssessmentResource } from './AssessmentResource';
 export { default as ExternalLearningResource } from './ExternalLearningResource';
 export { default as FolderOutlined } from './FolderOutlined';
+export { default as FolderShared } from './FolderShared';
 export { default as HorizontalMenu } from './HorizontalMenu';
 export { default as LearningPathArticle } from './LearningPathArticle';
 export { default as LearningPathIntroduction } from './LearningPathIntroduction';

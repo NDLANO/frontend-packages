@@ -227,7 +227,7 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
           active={isFavorite}
           size="small"
           variant="ghost"
-          shape="pill"
+          colorTheme="light"
           onClick={() => setIsOpen(!isOpen)}
         />
         {isOpen && (
@@ -252,7 +252,7 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
           active={isFavorite}
           size="small"
           variant="ghost"
-          shape="pill"
+          colorTheme="light"
           onClick={() => setIsOpen(!isOpen)}
         />
         {isOpen && (

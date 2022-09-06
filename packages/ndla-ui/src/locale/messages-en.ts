@@ -1035,6 +1035,9 @@ const messages = {
       confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
+      loginText:
+        'Log in with Feide to receive access to My NDLA. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
+      loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',
       loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',

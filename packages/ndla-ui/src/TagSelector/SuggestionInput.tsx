@@ -21,8 +21,8 @@ import type { TagType } from './TagSelector';
 const TAG_INPUT_ID = 'TAG_INPUT_ID';
 
 const SuggestionInputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: minmax(${spacing.large}, auto) 1fr;
   overflow: hidden;
   background: ${colors.white};
   border: 1px solid ${colors.brand.neutral7};
@@ -54,6 +54,7 @@ const SuggestionTextWrapper = styled.div`
 `;
 
 const SuggestionsWrapper = styled.div`
+  min-height: 60px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -91,6 +92,18 @@ const StyledInput = styled.input`
 `;
 
 const StyledInputWrapper = styled.div`
+  overflow: overlay;
+  ::-webkit-scrollbar {
+    width: ${spacing.small};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: 14px;
+    background-clip: padding-box;
+    padding: 0 4px;
+    background-color: ${colors.brand.neutral7};
+  }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -230,16 +243,22 @@ const SuggestionInput = ({
                 if (suggestions.length > 0 && e.key !== ' ') {
                   if (!hasBeenAdded(suggestions[currentHighlightedIndex].id)) {
                     onToggleTag(suggestions[currentHighlightedIndex].id);
-                  } else if (trimmedValue.length < suggestions[currentHighlightedIndex].name.length) {
+                  } else if (
+                    trimmedValue.length &&
+                    trimmedValue.length < suggestions[currentHighlightedIndex].name.length
+                  ) {
                     onCreateTag(trimmedValue);
                     e.preventDefault();
                   }
+
                   setInputValue('');
                   e.preventDefault();
                   return;
                 }
-                onCreateTag(trimmedValue);
-                setInputValue('');
+                if (trimmedValue.length) {
+                  onCreateTag(trimmedValue);
+                  setInputValue('');
+                }
                 e.preventDefault();
               }
               return;
@@ -267,16 +286,16 @@ const SuggestionInput = ({
           </Tooltip>
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
-      <SuggestionsWrapper id={TAG_INPUT_ID} aria-live="polite">
-        {isOpen ? (
+      {isOpen ? (
+        <SuggestionsWrapper id={TAG_INPUT_ID} aria-live="polite">
           <Suggestions
             suggestions={suggestions}
             currentHighlightedIndex={currentHighlightedIndex}
             onToggleTag={onToggleTag}
             hasBeenAdded={hasBeenAdded}
           />
-        ) : null}
-      </SuggestionsWrapper>
+        </SuggestionsWrapper>
+      ) : null}
     </SuggestionInputWrapper>
   );
 };

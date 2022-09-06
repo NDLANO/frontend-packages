@@ -10,6 +10,7 @@ import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core';
 import { uuid } from '@ndla/util';
+import { compact } from 'lodash';
 import SuggestionInput from './SuggestionInput';
 
 const StyledLabel = styled.label`
@@ -36,9 +37,7 @@ interface Props {
 }
 
 const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] => {
-  const returnTags = selectedTags
-    .map((selectedId) => tags.find(({ id }) => selectedId === id))
-    .filter((notUndefined) => notUndefined) as unknown as TagType[];
+  const returnTags = compact(selectedTags.map((selectedId) => tags.find(({ id }) => selectedId === id)));
   return returnTags;
 };
 

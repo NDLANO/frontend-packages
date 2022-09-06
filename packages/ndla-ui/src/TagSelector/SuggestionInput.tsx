@@ -54,7 +54,7 @@ const SuggestionTextWrapper = styled.div`
 `;
 
 const SuggestionsWrapper = styled.div`
-  min-height: 60px;
+  min-height: 70px;
   display: flex;
   flex-direction: column;
   overflow: hidden;

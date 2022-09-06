@@ -53,8 +53,12 @@ const SuggestionTextWrapper = styled.div`
   }
 `;
 
-const SuggestionsWrapper = styled.div`
-  min-height: 70px;
+interface SuggestionsWrapperProps {
+  multiple: boolean;
+}
+
+const SuggestionsWrapper = styled.div<SuggestionsWrapperProps>`
+  min-height: ${({ multiple }) => (multiple ? '70px' : spacing.medium)};
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -287,7 +291,7 @@ const SuggestionInput = ({
         </CombinedInputAndDropdownWrapper>
       </StyledInputWrapper>
       {isOpen ? (
-        <SuggestionsWrapper id={TAG_INPUT_ID} aria-live="polite">
+        <SuggestionsWrapper multiple={suggestions.length > 1} id={TAG_INPUT_ID} aria-live="polite">
           <Suggestions
             suggestions={suggestions}
             currentHighlightedIndex={currentHighlightedIndex}

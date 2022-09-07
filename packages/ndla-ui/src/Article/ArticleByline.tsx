@@ -150,6 +150,7 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            aria-live="assertive"
             data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}

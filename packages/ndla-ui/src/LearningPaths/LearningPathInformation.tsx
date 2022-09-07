@@ -66,18 +66,19 @@ interface Props {
   description?: string;
   title: string;
   invertedStyle?: boolean;
+  id?: string;
   license?: {
     license: string;
   };
 }
 
-export const LearningPathInformation = ({ description, title, license, invertedStyle }: Props) => {
+export const LearningPathInformation = ({ description, title, license, invertedStyle, id }: Props) => {
   const { rights } = getLicenseByAbbreviation(license?.license || '', 'nb');
   return (
     <section className="o-wrapper">
       <StyledWrapper invertedStyle={invertedStyle} className="c-article">
         <LicenseWrapper>
-          <StyledHeader>{title}</StyledHeader>
+          <StyledHeader id={id}>{title}</StyledHeader>
           <LicenseByline licenseRights={rights} color={colors.brand.tertiary} />
         </LicenseWrapper>
         {description && <div dangerouslySetInnerHTML={{ __html: description }} />}

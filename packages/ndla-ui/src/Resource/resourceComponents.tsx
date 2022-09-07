@@ -19,6 +19,11 @@ export interface ResourceImageProps {
   src: string;
 }
 
+export const ResourceTitleLink = styled(SafeLink)`
+  box-shadow: none;
+  color: ${colors.brand.primary};
+`;
+
 export const ResourceTitle = styled.h3`
   min-width: 50px;
   margin: 0;

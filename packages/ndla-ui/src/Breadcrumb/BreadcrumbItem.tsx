@@ -70,7 +70,10 @@ const StyledChevron = styled(ChevronRight)`
 const StyledSafeLink = styled(SafeLink)`
   color: inherit;
 `;
-
+const StyledSafeLinkLast = styled(SafeLink)`
+  color: inherit;
+  box-shadow: none;
+`;
 interface Props {
   item: IndexedBreadcrumbItem;
   autoCollapse?: boolean;
@@ -97,7 +100,9 @@ const BreadcrumbItem = forwardRef<any, Props>(
           {renderItem ? (
             renderItem(item, totalCount)
           ) : isLast ? (
-            <span>{name}</span>
+            <StyledSafeLinkLast to="./" aria-current="page">
+              <span>{name}</span>
+            </StyledSafeLinkLast>
           ) : (
             <StyledSafeLink to={to}>
               <span>{name}</span>

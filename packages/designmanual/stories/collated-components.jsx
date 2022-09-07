@@ -267,7 +267,7 @@ storiesOf('Sammensatte moduler', module)
   ))
 
   .add('Feilmelding', () => (
-    <>
+    <div className="u-margin-bottom">
       <div>
         <StoryIntro title="Feilmelding">
           <p>
@@ -276,7 +276,7 @@ storiesOf('Sammensatte moduler', module)
           </p>
         </StoryIntro>
         <Center>
-          <h2>Standard feilmelding ved 404: </h2>
+          <h2 className="u-heading">Standard feilmelding ved 404: </h2>
         </Center>
         <ErrorMessage
           illustration={{
@@ -293,9 +293,9 @@ storiesOf('Sammensatte moduler', module)
         />
       </div>
       <Center>
-        <h2>Login feilet Min NDLA: </h2>
+        <h2 className="u-heading">Login feilet Min NDLA: </h2>
       </Center>
-      <div>
+      <div className="u-margin-bottom">
         <ErrorMessage
           illustration={{
             url: Oops,
@@ -308,7 +308,7 @@ storiesOf('Sammensatte moduler', module)
           }}
         />
       </div>
-    </>
+    </div>
   ))
 
   .add('Filter', () => (

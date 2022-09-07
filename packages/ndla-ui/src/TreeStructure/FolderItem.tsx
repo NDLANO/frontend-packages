@@ -21,7 +21,7 @@ const OpenButton = styled.span<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  align-self: stretch;
   color: ${colors.brand.tertiary};
   ${misc.transition.default};
   cursor: pointer;

@@ -1006,8 +1006,8 @@ const messages = {
     folders_plural: '{{count}} mapper',
     folder: {
       folder: 'Mappe',
-      delete: 'Slett',
-      edit: 'Rediger',
+      delete: 'Slett mappe',
+      edit: 'Rediger mappe',
       missingName: 'Skriv namn på mappe',
       folderDeleted: '"{{folderName}}" er sletta',
     },

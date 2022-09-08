@@ -41,9 +41,8 @@ const StyledRightChevron = styled(ChevronRight)<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
   margin: ${spacing.xxsmall};
 `;
-const StyledSafeLinkLast = styled(SafeLink)<ThemeProps>`
+const StyledSpan = styled.span<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
-  box-shadow: none;
 `;
 const StyledSafeLink = styled(SafeLink)<ThemeProps>`
   color: ${({ light }) => (light ? colors.white : colors.text.primary)};
@@ -57,11 +56,7 @@ interface Props {
 const HomeBreadcrumb = ({ items, light }: Props) => {
   const renderItem = (item: IndexedBreadcrumbItem, totalCount: number) => {
     if (item.index === totalCount - 1) {
-      return (
-        <StyledSafeLinkLast to="./" aria-current="page" light={light}>
-          {item.name}
-        </StyledSafeLinkLast>
-      );
+      return <StyledSpan light={light}>{item.name}</StyledSpan>;
     }
     if (item.index === 0) {
       return (

@@ -128,6 +128,7 @@ storiesOf('Sammensatte moduler', module)
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
+          embedLink="https://ndla.no/article-iframe/nb/urn:resource:2c243daf-f335-4bae-a022-95cc7f5e34b3/21844"
         />
         <h2 className="u-heading">Linje med flere opphavere med detaljert informasjon</h2>
         <ArticleByline

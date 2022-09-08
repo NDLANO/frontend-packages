@@ -433,6 +433,7 @@ const messages = {
     heading: 'Slik gjenbruker du innhald',
     learnMore: 'Lær meir om opne lisensar',
     copyTitle: 'Kjeldetilvising',
+    copy: 'Kopier',
     hasCopiedTitle: 'Kopiert!',
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',

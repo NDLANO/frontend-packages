@@ -91,17 +91,13 @@ const BreadcrumbItem = forwardRef<any, Props>(
 
     const { to, name, index } = item;
     const isLast = index === totalCount - 1;
-    return isLast ? (
-      <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current="page">
-        <CollapseContainer autoCollapse={autoCollapse}>
-          <span>{name}</span>
-        </CollapseContainer>
-      </StyledListItem>
-    ) : (
-      <StyledListItem ref={liRef} autoCollapse={autoCollapse}>
+    return (
+      <StyledListItem ref={liRef} autoCollapse={autoCollapse} aria-current={isLast ? 'page' : undefined}>
         <CollapseContainer autoCollapse={autoCollapse}>
           {renderItem ? (
             renderItem(item, totalCount)
+          ) : isLast ? (
+            <span>{name}</span>
           ) : (
             <StyledSafeLink to={to}>
               <span>{name}</span>

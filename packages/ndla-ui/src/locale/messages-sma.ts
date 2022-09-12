@@ -823,18 +823,6 @@ const messages = {
       text: 'er utarbeidet av',
     },
   },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
-      text: 'Høsten 2020 og 2021 vil de nye læreplanene tre i kraft. I NDLA har vi startet med dette arbeidet allerede. Våre innholdsansvarlige lager hver dag nye supre læringsressurser som er tilrettelagt for de nye planene. På denne siden kan du se dem allerede nå.',
-      blogHeading: 'Vil du vite mer?',
-    },
-    badge: {
-      heading: 'Denne siden er tilrettelagt for fagfornyelsen 2020/2021',
-      text: 'Innholdet er under arbeid. Ikke på jakt etter dette?',
-      linkText: 'Gå til ndla.no for dagens innhold',
-    },
-  },
   frontPageToolbox: {
     heading: 'Verktøykassa',
     text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',

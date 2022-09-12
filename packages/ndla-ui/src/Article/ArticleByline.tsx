@@ -60,6 +60,7 @@ type Props = {
   printUrl?: string;
   locale?: string;
   embedLink?: string;
+  sourceString?: string;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -90,6 +91,7 @@ const ArticleByline = ({
   printUrl,
   locale,
   embedLink,
+  sourceString,
 }: Props) => {
   const { t } = useTranslation();
   const copyLinkHandler = () => {
@@ -100,8 +102,8 @@ const ArticleByline = ({
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
 
   const copyLicense = () => {
-    if (licenseRights) {
-      copyTextToClipboard(licenseRights.toString());
+    if (sourceString) {
+      copyTextToClipboard(sourceString);
     }
   };
   const copyEmbedLink = () => {
@@ -109,8 +111,7 @@ const ArticleByline = ({
       copyTextToClipboard(embedLink);
     }
   };
-  const copyTitle = t('license.copyTitle').toLowerCase();
-  const embedLinkTitle = t('license.tabs.embedlink').toLowerCase();
+
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
 
@@ -144,7 +145,7 @@ const ArticleByline = ({
               outline
               copyNode={t('license.hasCopiedTitle')}
               onClick={copyLicense}>
-              {t('license.copy') + ' ' + copyTitle}
+              {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
             </CopyButton>
 
             <Modal
@@ -186,7 +187,7 @@ const ArticleByline = ({
             outline
             copyNode={t('license.hasCopiedTitle')}
             onClick={copyEmbedLink}>
-            {t('license.copy') + ' ' + embedLinkTitle}
+            {`${t('license.copy')}  ${t('license.tabs.embedlink').toLowerCase()}`}
           </CopyButton>
         )}
         {printUrl && (

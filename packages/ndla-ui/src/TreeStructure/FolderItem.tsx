@@ -201,7 +201,6 @@ const FolderItem = ({
       isCreatingFolder={isCreatingFolder}>
       {!hideArrow && (
         <OpenButton
-          aria-hidden
           tabIndex={-1}
           isOpen={isOpen}
           onClick={() => {
@@ -246,7 +245,6 @@ const FolderItem = ({
       onClick={handleClickFolder}>
       {(!hideArrow || level === 0) && (
         <OpenButton
-          aria-hidden
           tabIndex={-1}
           isOpen={isOpen}
           onClick={() => {

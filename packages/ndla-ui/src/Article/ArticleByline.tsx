@@ -77,8 +77,11 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
     return '';
   }
   return suppliers.length > 1
-    ? t('article.multipleSuppliersLabel', { names: renderContributors(suppliers, t) })
-    : t('article.supplierLabel', { name: renderContributors(suppliers, t) });
+    ? t('article.multipleSuppliersLabel', {
+        names: renderContributors(suppliers, t),
+        interpolation: { escapeValue: false },
+      })
+    : t('article.supplierLabel', { name: renderContributors(suppliers, t), interpolation: { escapeValue: false } });
 };
 
 const ArticleByline = ({
@@ -128,7 +131,10 @@ const ArticleByline = ({
             {showPrimaryContributors && (
               <PrimaryContributorsWrapper>
                 {authors.length > 0
-                  ? t('article.authorsLabel', { names: renderContributors(authors, t) })
+                  ? t('article.authorsLabel', {
+                      names: renderContributors(authors, t),
+                      interpolation: { escapeValue: false },
+                    })
                   : getSuppliersText(suppliers, t)}
               </PrimaryContributorsWrapper>
             )}
@@ -175,6 +181,7 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            aria-live="assertive"
             data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}

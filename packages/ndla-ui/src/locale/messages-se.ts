@@ -247,13 +247,6 @@ const messages = {
         name: 'Čuovo min',
       },
     },
-    category: {
-      fellesfag: 'Oktasašfága',
-      yrkesfag: 'Fidnofága',
-      studiespesialiserende: 'Lohkanráhkkanahtti',
-      imported: 'Spolte fága',
-      heading: 'Maid oahpat?',
-    },
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     film: {
       header: 'NDLA filbma',

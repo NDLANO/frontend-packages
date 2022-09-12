@@ -248,13 +248,6 @@ const messages = {
         name: 'Follow us',
       },
     },
-    category: {
-      fellesfag: 'Common',
-      yrkesfag: 'Vocational',
-      studiespesialiserende: 'Specialization',
-      imported: 'Imported subjects',
-      heading: 'What will you learn?',
-    },
     film: {
       header: 'NDLA film',
       text: 'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',

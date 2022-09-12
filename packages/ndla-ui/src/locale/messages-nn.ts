@@ -247,13 +247,6 @@ const messages = {
         name: 'Følg oss',
       },
     },
-    category: {
-      fellesfag: 'Fellesfag',
-      yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studieførebuande',
-      imported: 'Spolte fag',
-      heading: 'Kva lærer du?',
-    },
     film: {
       header: 'NDLA film',
       text: 'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',

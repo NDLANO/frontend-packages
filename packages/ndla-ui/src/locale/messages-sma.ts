@@ -247,13 +247,6 @@ const messages = {
         name: 'Følg oss',
       },
     },
-    category: {
-      fellesfag: 'Fellesfag',
-      yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studieforberedende',
-      imported: 'Spolte fag',
-      heading: 'Hva lærer du?',
-    },
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     film: {
       header: 'NDLA film',

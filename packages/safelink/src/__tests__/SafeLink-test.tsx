@@ -8,61 +8,53 @@
 
 /* eslint-env jest */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React, { ReactNode } from 'react';
 import { StaticRouter } from 'react-router-dom/server.js';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Safelink, { isOldNdlaLink } from '../SafeLink';
 import MissingRouterContext from '../MissingRouterContext';
 
-test('SafeLink renderers Link correctly if router context is present', () => {
-  const component = renderer.create(
-    <StaticRouter location="foo">
-      <div>
-        <Safelink to="/my/path">Snapshot should contain onClick</Safelink>,
-      </div>
-    </StaticRouter>,
-  );
+interface Props {
+  children: ReactNode;
+}
 
-  expect(component.toJSON()).toMatchSnapshot();
-  // @ts-ignore
-  expect(component.toJSON()!.children![0].props.onClick).toBeInstanceOf(Function);
+const wrapper = ({ children }: Props) => <StaticRouter location="foo">{children}</StaticRouter>;
+
+test('SafeLink renderers Link correctly if router context is present', async () => {
+  const { container, findByRole } = render(<Safelink to="/my/path">Internal link</Safelink>, {
+    wrapper,
+  });
+  const link = await findByRole('link');
+  expect(link).toHaveAttribute('href', '/my/path');
+  expect(container).toMatchSnapshot();
 });
 
-test('SafeLink defaults to normal link if to prop is an external link', () => {
-  const component = renderer.create(
-    <StaticRouter location="foo">
-      <div>
-        <Safelink to="https://example.com">Snapshot should not contain onClick</Safelink>,
-      </div>
-    </StaticRouter>,
-  );
-
-  expect(component.toJSON()).toMatchSnapshot();
-  // @ts-ignore
-  expect(component.toJSON()!.children![0].props.onClick).toBeUndefined();
+test('SafeLink defaults to normal link if to prop is an external link', async () => {
+  const { container, findByRole } = render(<Safelink to="https://example.com">External link</Safelink>);
+  const link = await findByRole('link');
+  expect(link).toHaveAttribute('href', 'https://example.com');
+  expect(container).toMatchSnapshot();
 });
 
-test('SafeLink defaults to normal link if to prop is an old ndla link', () => {
-  const component = renderer.create(
-    <StaticRouter location="foo">
-      <div>
-        <Safelink to="/nb/node/54">Snapshot should not contain onClick</Safelink>,
-      </div>
-    </StaticRouter>,
-  );
-
-  // @ts-ignore
-  expect(component.toJSON()!.children![0].props.onClick).toBeUndefined();
+test('SafeLink defaults to normal link if to prop is an old ndla link', async () => {
+  const { container, findByRole } = render(<Safelink to="/nb/node/54">Normal link</Safelink>, {
+    wrapper,
+  });
+  const link = await findByRole('link');
+  expect(link).toHaveAttribute('href', '/nb/node/54');
+  expect(container).toMatchSnapshot();
 });
 
-test('SafeLink renderers normal link correctly when router context is not present', () => {
-  const component = renderer.create(
+test('SafeLink renderers normal link correctly when router context is not present', async () => {
+  const { container, findByRole } = render(
     <MissingRouterContext.Provider value={true}>
       <Safelink to="/my/path">No router context</Safelink>
     </MissingRouterContext.Provider>,
   );
-
-  expect(component.toJSON()).toMatchSnapshot();
+  const link = await findByRole('link');
+  expect(link).toHaveAttribute('href', '/my/path');
+  expect(container).toMatchSnapshot();
 });
 
 test('isOldNdlaLink checks', () => {

@@ -22,7 +22,6 @@ const LazyLoadImage = ({ alt, src, srcSet, lazyLoadSrc, sizes, ...rest }: Props)
     <noscript key="noscript">
       <img alt={alt} src={`${src}`} srcSet={srcSet} sizes={sizes} {...rest} />
     </noscript>
-    ,
     <img
       alt={alt}
       key="img"

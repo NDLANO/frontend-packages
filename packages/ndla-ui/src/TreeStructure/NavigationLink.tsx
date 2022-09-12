@@ -21,14 +21,14 @@ const StyledSafeLink = styled(SafeLink)<StyledProps>`
   display: grid;
   grid-template-columns: ${spacing.medium} 1fr;
   align-items: center;
-  padding: ${spacing.xxsmall} ${spacing.xxsmall};
+  padding: ${spacing.xxsmall};
   margin: ${spacing.xsmall} 0;
   gap: ${spacing.xxsmall};
   box-shadow: none;
 
   color: ${({ selected }) => (selected ? colors.brand.primary : colors.text.primary)};
   font-weight: ${({ selected }) => (selected ? fonts.weight.semibold : fonts.weight.normal)};
-  font-size: ${fonts.sizes('16px')};
+  ${fonts.sizes('16px')};
 
   :hover,
   :focus {

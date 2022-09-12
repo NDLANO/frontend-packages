@@ -226,7 +226,7 @@ const TreeStructure = ({
   return (
     <StyledTreeStructure ref={ref}>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <TreeStructureWrapper aria-label="Menu tree" role="tree" type={type}>
+      <TreeStructureWrapper aria-label={label} type={type}>
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
             <StyledSelectedFolder

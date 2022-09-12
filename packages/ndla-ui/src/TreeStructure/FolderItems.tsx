@@ -56,7 +56,7 @@ const FolderItems = ({
   type,
   ...rest
 }: FolderItemsProps) => (
-  <StyledUL role="group">
+  <StyledUL role={level === 0 ? 'tree' : 'group'}>
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);

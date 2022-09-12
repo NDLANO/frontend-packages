@@ -259,7 +259,6 @@ const TreeStructure = ({
               </Tooltip>
             )}
             <IconButtonDualStates
-              data-suggestionbutton
               ariaLabelActive={t('treeStructure.hideFolders')}
               ariaLabelInActive={t('treeStructure.showFolders')}
               active={showTree}

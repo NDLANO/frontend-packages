@@ -250,13 +250,6 @@ const messages = {
         name: 'Follow us',
       },
     },
-    category: {
-      fellesfag: 'Common',
-      yrkesfag: 'Vocational',
-      studiespesialiserende: 'Specialization',
-      imported: 'Imported subjects',
-      heading: 'What will you learn?',
-    },
     film: {
       header: 'NDLA film',
       text: 'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
@@ -824,18 +817,6 @@ const messages = {
     listing: {
       content: 'The list',
       text: 'is created by',
-    },
-  },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
-      text: 'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
-      blogHeading: 'Do you want to know more?',
-    },
-    badge: {
-      heading: 'This page is adapted for Fagfornyelsen 2020',
-      text: 'The content is in progress. Not what you were looking for?',
-      linkText: "Go to ndla.no for today's content",
     },
   },
   frontPageToolbox: {

@@ -206,9 +206,9 @@ const TreeStructure = ({
   };
 
   const onSaveNewFolder = (name: string, parentId: string) => {
-    setNewFolderParentId?.(undefined);
     onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
+        setNewFolderParentId?.(undefined);
         setSelectedFolder(newFolder);
         onSelectFolder?.(newFolder.id);
         setFocusedId(newFolder.id);

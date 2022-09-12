@@ -252,7 +252,13 @@ const TreeStructure = ({
                   variant="outline"
                   shape="pill"
                   disabled={!canAddFolder}
-                  aria-label={t('myNdla.newFolder')}
+                  aria-label={
+                    canAddFolder
+                      ? t('myNdla.newFolderUnder', {
+                          folderName: selectedFolder?.name,
+                        })
+                      : t('treeStructure.maxFoldersAlreadyAdded')
+                  }
                   onClick={() => setNewFolderParentId(selectedFolder?.id)}>
                   <StyledPlus /> {t('myNdla.newFolder')}
                 </StyledAddFolderButton>

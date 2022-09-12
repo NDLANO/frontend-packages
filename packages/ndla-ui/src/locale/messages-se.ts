@@ -423,11 +423,7 @@ const messages = {
     openAll: 'Raba buot',
   },
   license: {
-    heading: 'Slik gjenbruker du innhold',
-    learnMore: 'Lær mer om åpne lisenser',
-    copyTitle: 'Kildehenvisning',
     copy: 'Kopier',
-
     heading: 'Ná geavahat sisdoalu ođđasit',
     learnMore: 'Oahpa eanet rabas liseanssaid birra',
     copyTitle: 'Gáldočujuhus',

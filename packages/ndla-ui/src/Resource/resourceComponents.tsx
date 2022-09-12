@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 
 import { MenuButton } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
@@ -103,6 +103,12 @@ interface TagListProps {
   tags?: string[];
   tagLinkPrefix?: string;
 }
+
+export interface LoaderProps {
+  loading?: boolean;
+  children?: ReactNode;
+}
+
 export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
   if (!tags) return null;
   return (

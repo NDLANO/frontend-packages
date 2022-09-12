@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React, { MouseEvent, ReactNode, useRef } from 'react';
+import React, { useRef } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
@@ -17,6 +17,7 @@ import {
   ResourceTitle,
   ResourceTitleLink,
   TopicList,
+  LoaderProps,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
@@ -143,11 +144,6 @@ const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImagePr
     </ContentLoader>
   );
 };
-
-interface LoaderProps {
-  loading?: boolean;
-  children?: ReactNode;
-}
 
 const TopicAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {

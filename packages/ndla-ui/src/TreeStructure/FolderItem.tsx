@@ -6,12 +6,12 @@
  *
  */
 
-import React, { KeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
+import React, { KeyboardEvent, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { ArrowDropDownRounded } from '@ndla/icons/common';
 import { Done } from '@ndla/icons/editor';
-import { ButtonV2 as Button, MenuButton } from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { CommonFolderItemsProps, FolderType } from './types';
@@ -116,7 +116,6 @@ interface Props extends CommonFolderItemsProps {
 
 const FolderItem = ({
   focusedFolderId,
-  menuItems,
   folder,
   isOpen,
   level,
@@ -162,14 +161,6 @@ const FolderItem = ({
       ref.current?.focus();
     }
   }, [focusedFolderId, ref, id, isCreatingFolder]);
-
-  const actions = menuItems?.map((item) => {
-    const { onClick } = item;
-    return {
-      ...item,
-      onClick: (e?: MouseEvent<HTMLDivElement>) => onClick(e, folder),
-    };
-  });
 
   const linkPath = `/minndla${level > 0 ? '/folders' : ''}/${id}`;
 
@@ -217,17 +208,6 @@ const FolderItem = ({
       <StyledName>{name}</StyledName>
       <WrapperForFolderChild>
         {containsResource && <StyledDone title={t('myNdla.alreadyInFolder')} />}
-        {actions && (
-          <MenuButton
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            size="xsmall"
-            alignRight
-            menuItems={actions}
-            tabIndex={selected || id === focusedFolderId ? 0 : -1}
-          />
-        )}
       </WrapperForFolderChild>
     </FolderName>
   ) : (

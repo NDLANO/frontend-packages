@@ -6,13 +6,11 @@
  *
  */
 
-import React, { useState, MouseEvent } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { useTranslation, TFunction } from 'react-i18next';
-import { TreeStructure, FolderType, TreeStructureMenuProps, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
+import { TreeStructure, FolderType, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
 import { uuid } from '@ndla/util';
 import { User, HashTag } from '@ndla/icons/common';
-import { Pencil, TrashCanOutline } from '@ndla/icons/action';
 import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
@@ -25,28 +23,6 @@ const Container = styled.div<{ type?: TreeStructureType }>`
 `;
 
 export const MY_FOLDERS_ID = 'folders';
-
-const menuItems = (t: TFunction): TreeStructureMenuProps[] => [
-  {
-    icon: <Pencil />,
-    text: t('treeStructure.folderChildOptions.edit'),
-    onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => {
-      console.log('Endre tekst på', folder.id); // eslint-disable-line no-console
-      e?.preventDefault();
-      return;
-    },
-  },
-  {
-    icon: <TrashCanOutline />,
-    text: t('treeStructure.folderChildOptions.delete'),
-    type: 'danger',
-    onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => {
-      console.log('Sletter', folder.id); // eslint-disable-line no-console
-      e?.preventDefault();
-      return;
-    },
-  },
-];
 
 const targetResource: TreeStructureProps['targetResource'] = {
   id: 'test-resource',
@@ -178,7 +154,6 @@ export const TreeStructureExampleComponent = ({
   onSelectFolder,
   openOnFolderClick,
   defaultOpenFolders,
-  withDots,
   targetResource,
   onNewFolder,
 }: {
@@ -188,18 +163,15 @@ export const TreeStructureExampleComponent = ({
   onSelectFolder?: (id: string) => void;
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
-  withDots?: boolean;
   targetResource?: TreeStructureProps['targetResource'];
   onNewFolder?: boolean;
 }) => {
-  const { t } = useTranslation();
   const [structure, setStructure] = useState<FolderType[]>(initalStructure);
   const [loading, setLoading] = useState(false);
   return (
     <Container type={type}>
       <TreeStructure
         targetResource={targetResource}
-        menuItems={withDots ? menuItems(t) : undefined}
         onSelectFolder={onSelectFolder}
         label={label}
         type={type}
@@ -250,7 +222,6 @@ const TreeStructureExample = () => (
       targetResource={targetResource}
       onNewFolder
       type="picker"
-      withDots
     />
     <h1>Trestruktur enkel</h1>
     <TreeStructureExampleComponent
@@ -260,7 +231,6 @@ const TreeStructureExample = () => (
       structure={FOLDER_TREE_STRUCTURE}
       defaultOpenFolders={[MY_FOLDERS_ID]}
       targetResource={targetResource}
-      withDots
     />
     <h1>Trestruktur navigasjon</h1>
     <TreeStructureExampleComponent
@@ -268,7 +238,6 @@ const TreeStructureExample = () => (
       type="navigation"
       defaultOpenFolders={[MY_FOLDERS_ID]}
       structure={NAVIGATION_STRUCTURE}
-      withDots
     />
   </div>
 );

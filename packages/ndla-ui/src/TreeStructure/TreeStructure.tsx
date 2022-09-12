@@ -114,7 +114,6 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
 
 const TreeStructure = ({
   defaultOpenFolders,
-  menuItems,
   folders,
   label,
   loading,
@@ -144,14 +143,7 @@ const TreeStructure = ({
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (e.target instanceof Element && ref.current && !ref.current.contains(e.target)) {
-        const portal = e.target.closest('reach-portal');
-        if (portal) {
-          if (portal.contains(ref.current)) {
-            setShowTree(false);
-          }
-        } else {
-          setShowTree(false);
-        }
+        setShowTree(false);
       }
     };
     if (type === 'picker') {
@@ -286,7 +278,6 @@ const TreeStructure = ({
           <ScrollableDiv type={type}>
             <FolderItems
               focusedFolderId={focusedId}
-              menuItems={menuItems}
               folders={folders}
               level={0}
               loading={loading}

@@ -114,7 +114,7 @@ const Pager = <T extends Query>({
   const PageItems = steps.map((n) => {
     if (n === page) {
       return (
-        <span key={n} css={[pageItemStyle, pageItemActiveStyle]}>
+        <span key={n} aria-current="step" css={[pageItemStyle, pageItemActiveStyle]}>
           {n}
         </span>
       );
@@ -129,20 +129,18 @@ const Pager = <T extends Query>({
   const prevPageItem =
     steps[0] < page ? (
       <PageItem page={page - 1} {...rest}>
-        {' '}
-        {'<'}{' '}
+        {'<'}
       </PageItem>
     ) : null;
   const nextPageItem =
     page < lastPage ? (
       <PageItem page={page + 1} {...rest}>
-        {' '}
-        {'>'}{' '}
+        {'>'}
       </PageItem>
     ) : null;
 
   return (
-    <StyledPager>
+    <StyledPager data-testid="pager">
       {prevPageItem}
       {PageItems}
       {nextPageItem}

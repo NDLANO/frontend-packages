@@ -34,7 +34,7 @@
     "@ndla/util": "^3.0.1",
     "@types/react-syntax-highlighter": "^13.5.2",
     "prismjs": "^1.22.0",
-    "react-simple-code-editor": "^0.11.0",
+    "react-simple-code-editor": "^0.13.0",
     "react-syntax-highlighter": "^15.4.4"
   },
   "peerDependencies": {

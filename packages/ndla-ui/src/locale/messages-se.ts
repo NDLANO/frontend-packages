@@ -1017,7 +1017,7 @@ const messages = {
       deleteAccount: 'Sihko mu NDLA',
       logout: 'Logge eret mu NDLAs',
       loginText:
-        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriver noko støtende eller personsensitiv informasjon eller anna persondata i tekstfelt. Les vår ',
+        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriver noko støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logge Feide bokte vai oaččut beassanlobi. Go logget sisa de dohkkehat min geavahaneavttuid.',
       loginResourcePitch: 'Dáhtut go merket siiddu oiddohin?',

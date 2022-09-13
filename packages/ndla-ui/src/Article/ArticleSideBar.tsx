@@ -89,6 +89,7 @@ const ArticleSideBar = ({
             size="small"
             width="full"
             outline
+            aria-live="assertive"
             copyNode={t('article.copyPageLinkCopied')}
             data-copy-string={copyPageUrlLink}>
             {t('article.copyPageLink')}

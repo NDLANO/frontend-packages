@@ -12,6 +12,7 @@ export * from './index-javascript';
 export type { InputProps, TextAreaProps } from './Input';
 export { default as PopUpWrapper } from './PopupWrapper';
 export { Input, TextArea } from './Input';
+export { Input as InputV2, TextArea as TextAreaV2 } from './InputV2';
 export { default as FieldHeader } from './FieldHeader';
 export { default as FieldSection } from './FieldSection';
 export { default as FieldSplitter } from './FieldSplitter';

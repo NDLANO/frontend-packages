@@ -267,26 +267,47 @@ storiesOf('Sammensatte moduler', module)
   ))
 
   .add('Feilmelding', () => (
-    <div>
-      <StoryIntro title="Feilmelding">
-        <p>
-          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
-          feil i systemet, f.eks. ved 404- eller 503-feil.
-        </p>
-      </StoryIntro>
-      <ErrorMessage
-        illustration={{
-          url: Oops,
-          altText: 'Systemfeil',
-        }}
-        messages={{
-          title: 'Oisann, her gikk noe galt',
-          description: 'En kort beskrivelse av feilen som oppsto.',
-          linksTitle: 'Kom igang:',
-          back: 'Gå tilbake',
-          goToFrontPage: 'Gå til forsiden',
-        }}
-      />
+    <div className="u-margin-bottom">
+      <div>
+        <StoryIntro title="Feilmelding">
+          <p>
+            Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått
+            en feil i systemet, f.eks. ved 404- eller 503-feil.
+          </p>
+        </StoryIntro>
+        <Center>
+          <h2 className="u-heading">Standard feilmelding ved 404: </h2>
+        </Center>
+        <ErrorMessage
+          illustration={{
+            url: Oops,
+            altText: 'Systemfeil',
+          }}
+          messages={{
+            title: 'Oisann, her gikk noe galt',
+            description: 'En kort beskrivelse av feilen som oppsto.',
+            linksTitle: 'Kom igang:',
+            back: 'Gå tilbake',
+            goToFrontPage: 'Gå til forsiden',
+          }}
+        />
+      </div>
+      <Center>
+        <h2 className="u-heading">Login feilet Min NDLA: </h2>
+      </Center>
+      <div className="u-margin-bottom">
+        <ErrorMessage
+          illustration={{
+            url: Oops,
+            altText: 'Systemfeil',
+          }}
+          messages={{
+            title: 'Ops, her gikk noe galt',
+            linksTitle: 'Prøv igjen',
+            logInFailed: 'Logg inn',
+          }}
+        />
+      </div>
     </div>
   ))
 

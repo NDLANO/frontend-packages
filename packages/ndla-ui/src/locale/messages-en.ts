@@ -988,8 +988,8 @@ const messages = {
     folders_plural: '{{count}} Folders',
     folder: {
       folder: 'Folder',
-      delete: 'Delete',
-      edit: 'Edit',
+      delete: 'Delete folder',
+      edit: 'Edit folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
     },

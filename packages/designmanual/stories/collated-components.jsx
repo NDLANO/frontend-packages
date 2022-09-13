@@ -92,6 +92,7 @@ storiesOf('Sammensatte moduler', module)
           ]}
           published="21.06.2018"
           license="CC BY-SA"
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
         />
         <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
         <ArticleByline
@@ -105,6 +106,7 @@ storiesOf('Sammensatte moduler', module)
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
         />
         <h2 className="u-heading">Linje med detaljert opphaver informasjon</h2>
         <ArticleByline
@@ -124,6 +126,7 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
           published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
@@ -176,12 +179,18 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
           published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
         <h2 className="u-heading">Linje uten opphavere detaljert informasjon</h2>
-        <ArticleByline published="21.06.2018" license="CC BY-SA" licenseBox={<LicenseBox />} />
+        <ArticleByline
+          published="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
+        />
       </StoryBody>
     </div>
   ))

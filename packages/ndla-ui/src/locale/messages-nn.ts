@@ -1018,7 +1018,7 @@ const messages = {
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
       loginText:
-        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støtande eller personsensitiv informasjon eller anna persondata i tekstfelt. Les vår ',
+        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',

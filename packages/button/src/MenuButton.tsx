@@ -121,12 +121,18 @@ export const MenuButton = ({
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
-      <MenuPopover portal={true} position={alignRight ? positionRight : positionDefault}>
+      <MenuPopover
+        onKeyDown={(e) => e.stopPropagation()}
+        portal={true}
+        position={alignRight ? positionRight : positionDefault}>
         <StyledMenuItems>
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
               key={text}
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
               onSelect={onClick}
               type={type}
               aria-label={text}>

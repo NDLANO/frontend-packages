@@ -19,6 +19,8 @@ const messages = {
       edit: 'Endre mappenavn',
       delete: 'Slett',
     },
+    hideFolders: 'Skjul alle mapper',
+    showFolders: 'Vis alle mapper',
     createFolder: 'Lag mappe',
     maxFoldersAlreadyAdded: 'Maks nivå av undermapper nådd',
     newFolder: {

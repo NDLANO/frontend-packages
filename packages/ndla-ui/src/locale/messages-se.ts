@@ -19,6 +19,8 @@ const messages = {
       edit: 'Rievdat máhpa nama',
       delete: 'Sihko',
     },
+    hideFolders: 'Skjul alle mapper',
+    showFolders: 'Vis alle mapper',
     createFolder: 'Ráhkat máhpa',
     maxFoldersAlreadyAdded: 'Vuollemáhpaid badjerádji lea olahuvvon',
     newFolder: {

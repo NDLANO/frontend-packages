@@ -62,7 +62,7 @@ const FolderItems = ({
       const isOpen = openFolders?.includes(id);
 
       return (
-        <StyledLI key={id} role="treeitem" type={type}>
+        <StyledLI key={id} role="none" type={type}>
           {folder.isNavigation ? (
             <NavigationLink folder={folder} isOpen={isOpen} level={level} type={type} loading={loading} {...rest} />
           ) : (

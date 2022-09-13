@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
-import { ButtonV2 as Button, IconButtonDualStates } from '@ndla/button';
+import { ButtonV2 as Button, IconButtonDualStates, IconButtonV2 as IconButton } from '@ndla/button';
 import { Plus } from '@ndla/icons/action';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
@@ -230,6 +230,7 @@ const TreeStructure = ({
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
             <StyledSelectedFolder
+              aria-expanded={showTree}
               variant="ghost"
               colorTheme="light"
               fontWeight="normal"
@@ -264,19 +265,17 @@ const TreeStructure = ({
                 </StyledAddFolderButton>
               </Tooltip>
             )}
-            <IconButtonDualStates
-              ariaLabelActive={t('treeStructure.hideFolders')}
-              ariaLabelInActive={t('treeStructure.showFolders')}
-              active={showTree}
+            <IconButton
+              aria-expanded={showTree}
+              aria-label={showTree ? t('treeStructure.hideFolders') : t('treeStructure.showFolders')}
               variant="ghost"
               colorTheme="greyLighter"
-              inactiveIcon={<ChevronDown />}
-              activeIcon={<ChevronUp />}
               size="small"
               onClick={() => {
                 setShowTree(!showTree);
-              }}
-            />
+              }}>
+              {showTree ? <ChevronUp /> : <ChevronDown />}
+            </IconButton>
           </StyledRow>
         )}
         {showTree && (

@@ -132,6 +132,7 @@ const FolderItem = ({
   framed,
   maxLevel,
   isCreatingFolder,
+  type,
 }: Props) => {
   const { t } = useTranslation();
   const { id, name } = folder;
@@ -173,8 +174,45 @@ const FolderItem = ({
 
   const hideArrow = isMaxDepth || emptyFolder;
 
-  return onSelectFolder ? (
+  return type === 'navigation' ? (
+    <FolderNameLink
+      role="treeitem"
+      aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
+      aria-current={selected ? 'page' : undefined}
+      ref={ref}
+      level={level}
+      onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
+        arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
+      }
+      noArrow={!isMaxDepth}
+      to={loading ? '' : linkPath}
+      tabIndex={selected || focused ? 0 : -1}
+      selected={selected}
+      onFocus={() => setFocusedId(id)}
+      onClick={handleClickFolder}>
+      {(!hideArrow || level === 0) && (
+        <OpenButton
+          aria-hidden
+          tabIndex={-1}
+          isOpen={isOpen}
+          onClick={() => {
+            ref.current?.focus();
+            if (isOpen) {
+              onCloseFolder(id);
+            } else {
+              onOpenFolder(id);
+            }
+          }}>
+          <ArrowDropDownRounded />
+        </OpenButton>
+      )}
+      <StyledName>{name}</StyledName>
+    </FolderNameLink>
+  ) : (
     <FolderName
+      role="treeitem"
+      aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
+      aria-selected={selected}
       variant="ghost"
       shape="sharp"
       fontWeight="normal"
@@ -192,6 +230,7 @@ const FolderItem = ({
       isCreatingFolder={isCreatingFolder}>
       {!hideArrow && (
         <OpenButton
+          aria-hidden
           tabIndex={-1}
           isOpen={isOpen}
           onClick={() => {
@@ -210,36 +249,6 @@ const FolderItem = ({
         {containsResource && <StyledDone title={t('myNdla.alreadyInFolder')} />}
       </WrapperForFolderChild>
     </FolderName>
-  ) : (
-    <FolderNameLink
-      ref={ref}
-      level={level}
-      onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-        arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
-      }
-      noArrow={!isMaxDepth}
-      to={loading ? '' : linkPath}
-      tabIndex={selected || focused ? 0 : -1}
-      selected={selected}
-      onFocus={() => setFocusedId(id)}
-      onClick={handleClickFolder}>
-      {(!hideArrow || level === 0) && (
-        <OpenButton
-          tabIndex={-1}
-          isOpen={isOpen}
-          onClick={() => {
-            ref.current?.focus();
-            if (isOpen) {
-              onCloseFolder(id);
-            } else {
-              onOpenFolder(id);
-            }
-          }}>
-          <ArrowDropDownRounded />
-        </OpenButton>
-      )}
-      <StyledName>{name}</StyledName>
-    </FolderNameLink>
   );
 };
 

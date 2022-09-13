@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { breakpoints } from '@ndla/util';
-import { colors, fonts, mq, spacing, spacingUnit } from '@ndla/core';
+import { colors, fonts, mq, spacing, spacingUnit, breakpoints } from '@ndla/core';
 import OneColumn from '../Layout/OneColumn';
 
 type Types = 'mobile' | 'tablet' | 'desktop' | 'wide';

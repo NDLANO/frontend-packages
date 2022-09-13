@@ -19,6 +19,8 @@ const messages = {
       edit: 'Edit foldername',
       delete: 'Delete',
     },
+    hideFolders: 'Hide all folders',
+    showFolders: 'Show all folders',
     createFolder: 'Create folder',
     maxFoldersAlreadyAdded: 'Maximum subfolders reached',
     newFolder: {
@@ -247,13 +249,6 @@ const messages = {
       mainLink: {
         name: 'Follow us',
       },
-    },
-    category: {
-      fellesfag: 'Common',
-      yrkesfag: 'Vocational',
-      studiespesialiserende: 'Specialization',
-      imported: 'Imported subjects',
-      heading: 'What will you learn?',
     },
     film: {
       header: 'NDLA film',
@@ -824,18 +819,6 @@ const messages = {
       text: 'is created by',
     },
   },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
-      text: 'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
-      blogHeading: 'Do you want to know more?',
-    },
-    badge: {
-      heading: 'This page is adapted for Fagfornyelsen 2020',
-      text: 'The content is in progress. Not what you were looking for?',
-      linkText: "Go to ndla.no for today's content",
-    },
-  },
   frontPageToolbox: {
     heading: 'Toolbox',
     text: 'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
@@ -1007,8 +990,8 @@ const messages = {
     folders_plural: '{{count}} Folders',
     folder: {
       folder: 'Folder',
-      delete: 'Delete',
-      edit: 'Edit',
+      delete: 'Delete folder',
+      edit: 'Edit folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
     },
@@ -1017,7 +1000,8 @@ const messages = {
       'Log in with Feide to access My NDLA. We ask you not to write anything offensive or share any sensitiv information in the textfields. Read our privacy statement here.',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
-    confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
+    confirmDeleteFolder:
+      'Are you sure you want to delete this folder? Subfolders of this folder will also be deleted. This action cannot be undone.',
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
@@ -1038,6 +1022,9 @@ const messages = {
       confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
+      loginText:
+        'Log in with Feide to receive access to My NDLA. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
+      loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',
       loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your own way!',

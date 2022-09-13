@@ -17,7 +17,7 @@ import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
 
-import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from './TreeStructureExample';
+import { TreeStructureExampleComponent, MY_FOLDERS_ID, FOLDER_TREE_STRUCTURE } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
@@ -122,11 +122,12 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
             />
             <TreeStructureExampleComponent
               label="Velg plassering"
-              editable
-              framed
-              structure={STRUCTURE_EXAMPLE(true)}
+              type="picker"
+              structure={FOLDER_TREE_STRUCTURE}
               defaultOpenFolders={[MY_FOLDERS_ID]}
               openOnFolderClick={false}
+              onNewFolder
+              onSelectFolder={() => {}}
             />
             <TagSelectorExample />
             <DialogFooter>

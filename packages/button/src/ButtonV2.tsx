@@ -8,7 +8,7 @@
 
 import css from '@emotion/css';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme, ButtonFontWeight } from './types';
 
@@ -60,9 +60,6 @@ export const buttonStyle = ({
     background-color: ${colors.background.dark};
     border-color: transparent;
     cursor: not-allowed;
-  }
-  &:focus {
-    box-shadow: 0 0 2px ${colors.brand.primary};
   }
 
   // Sizes
@@ -120,6 +117,12 @@ export const buttonStyle = ({
       background: ${theme.background};
       border-color: ${theme.background};
     }
+    &[disabled] {
+      color: ${colors.brand.grey};
+      background-color: transparent;
+      border-color: ${colors.brand.grey};
+      cursor: not-allowed;
+    }
   `}
   ${variant === 'ghost' &&
   css`
@@ -133,6 +136,12 @@ export const buttonStyle = ({
       color: ${theme.foreground};
       background: ${theme.background};
       border-color: ${theme.background};
+    }
+    &[disabled] {
+      color: ${colors.brand.grey};
+      background-color: transparent;
+      border-color: transparent;
+      cursor: not-allowed;
     }
   `}
   ${variant === 'link' &&
@@ -184,22 +193,15 @@ interface Props {
 
 export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({
-  colorTheme = 'primary',
-  size,
-  variant,
-  inverted,
-  shape,
-  fontWeight,
-  children,
-  ...rest
-}: ButtonProps) => {
-  const theme = themes[colorTheme];
-  return (
-    <button css={buttonStyle({ theme, size, variant, inverted, shape, fontWeight })} {...rest}>
-      {children}
-    </button>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, ...rest }, ref) => {
+    const theme = themes[colorTheme];
+    return (
+      <button css={buttonStyle({ theme, size, variant, inverted, shape, fontWeight })} {...rest} ref={ref}>
+        {children}
+      </button>
+    );
+  },
+);
 
 export default Button;

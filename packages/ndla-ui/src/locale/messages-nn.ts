@@ -1014,7 +1014,7 @@ const messages = {
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',
     confirmDeleteFolder:
-      'Er du sikker på at du vil slette mappa? Dersom mappa har undermappar vil disse også slettes. Denne handlinga kan ikkje endrast.',
+      'Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
     myTags: 'Emneknaggane mine',

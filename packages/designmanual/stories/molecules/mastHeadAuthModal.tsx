@@ -12,8 +12,7 @@ import { ButtonV2 as Button } from '@ndla/button';
 import { Feide } from '@ndla/icons/common';
 import { colors, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-
-import AuthModal, { AuthModalProps } from '../User/AuthModal';
+import { AuthModalExample, AuthModalProps } from './authModalExample';
 
 type FeideWrapperProps = {
   inverted?: boolean;
@@ -40,7 +39,7 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <AuthModal
+    <AuthModalExample
       {...rest}
       activateButton={
         <StyledButton

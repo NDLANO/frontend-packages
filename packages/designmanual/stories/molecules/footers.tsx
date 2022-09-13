@@ -1,18 +1,15 @@
-/**
- * Copyright (c) 2021-present, NDLA.
- *
- * This source code is licensed under the GPLv3 license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-import styled from '@emotion/styled';
-import Button from '@ndla/button';
-import { animations, colors, fonts, spacing } from '@ndla/core';
-import { ChevronDown, FeideText, LogIn, LogOut } from '@ndla/icons/common';
 import React from 'react';
+import { spacing, fonts, animations, colors } from '@ndla/core';
+import Button from '@ndla/button/src/ButtonV2';
+import styled from '@emotion/styled';
+import { Footer, FooterText, EditorName, LanguageSelector } from '@ndla/ui';
+import ZendeskButton from '@ndla/zendesk';
+import { FeideText, ChevronDown, LogIn, LogOut } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
-import AuthModal, { AuthModalProps } from '../User/AuthModal';
+import { feideUserLaerer } from './feideUser';
+//@ts-ignore
+import { mockFooterLinks } from '../../dummydata/mockFooter';
+import { AuthModalExample, AuthModalProps } from './authModalExample';
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,13 +70,13 @@ const FooterAuth = ({ isAuthenticated, user, onAuthenticateClick, ...rest }: Aut
       </Heading>
       <StyledButtonWrapper>
         {isAuthenticated ? (
-          <AuthModal
+          <AuthModalExample
             {...rest}
             isAuthenticated={isAuthenticated}
             user={user}
             onAuthenticateClick={onAuthenticateClick}
             activateButton={
-              <AuthedButton ghostPill size="medium">
+              <AuthedButton shape="pill" variant="ghost" size="medium">
                 {t('user.loggedInAsButton', { role: user?.eduPersonPrimaryAffiliation })}
                 <ChevronDown />
               </AuthedButton>
@@ -100,5 +97,38 @@ const FooterAuth = ({ isAuthenticated, user, onAuthenticateClick, ...rest }: Aut
     </Wrapper>
   );
 };
+interface FooterProps {
+  inverted?: boolean;
+  hideLanguageSelector?: boolean;
+  i18n?: any;
+  isAuthenticated?: boolean;
+}
+const FooterExample = ({ inverted, hideLanguageSelector, i18n, isAuthenticated }: FooterProps) => {
+  const { t } = useTranslation();
+  <Footer
+    lang={'nb'}
+    links={mockFooterLinks}
+    languageSelector={
+      !hideLanguageSelector && (
+        <LanguageSelector
+          alwaysVisible
+          outline
+          center
+          inverted={inverted}
+          options={i18n.options.supportedLanguages}
+          currentLanguage={i18n.language}
+        />
+      )
+    }
+    auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}>
+    <FooterText>
+      <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
+      <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
+      <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+        {t('askNDLA')}
+      </ZendeskButton>
+    </FooterText>
+  </Footer>;
+};
 
-export default FooterAuth;
+export default FooterExample;

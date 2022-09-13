@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2021-present, NDLA.
+/*
+ * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,14 +8,15 @@
 
 import React, { ReactElement, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { useTranslation } from 'react-i18next';
-import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
-import { FeideText } from '@ndla/icons/common';
-import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Button, { IconButton } from '@ndla/button';
+import { FeideText } from '@ndla/icons/common';
+import { ModalBody, ModalHeader } from '@ndla/modal';
+import { FeideUserApiType, Image } from '@ndla/ui';
+import Modal from '@ndla/modal';
+import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
-import Image from '../Image';
-import { FeideUserApiType } from './apiTypes';
+
 const DialogFooter = styled.div`
   display: flex;
   gap: ${spacing.xsmall};
@@ -29,21 +30,13 @@ const FooterButtons = styled.div`
   gap: ${spacing.xsmall};
 `;
 const FavouriteWrapper = styled.div`
-  padding-bottom: ${spacing.normal};
-  gap: ${spacing.normal};
-  max-width: 560px;
-  min-width: 560px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  div {
-    padding: 0;
-  }
+  padding-bottom: 26px;
+  gap: 10px;
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: ${spacing.small};
-    min-width: auto;
   }
 `;
+
 const StyledNotLoggedInH1 = styled.h1`
   font-weight: 700;
   ${fonts.sizes('24')};
@@ -56,14 +49,9 @@ const Header = styled.div`
   max-width: 550px;
   margin: 0 auto;
   margin-top: ${spacing.normal};
-`;
-const RoundedImage = styled(Image)`
-  border-radius: 50%;
-  height: 160px;
-  max-width: 160px;
   ${mq.range({ until: breakpoints.tabletWide })} {
-    height: 100px;
-    max-width: 100px;
+    flex-direction: column;
+    gap: 0;
   }
 `;
 
@@ -83,6 +71,16 @@ const FeideP = styled.p`
   ${colors.brand.grey};
 `;
 
+const RoundedImage = styled(Image)`
+  border-radius: 50%;
+  height: 160px;
+  max-width: 160px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    height: 100px;
+    max-width: 100px;
+  }
+`;
+
 export type AuthModalProps = {
   isAuthenticated?: boolean;
   user?: FeideUserApiType;
@@ -95,7 +93,7 @@ export type AuthModalProps = {
   onClose?: () => void;
 };
 
-const AuthModal = ({
+export const AuthModalExample = ({
   isAuthenticated,
   user,
   showGeneralMessage = true,
@@ -154,4 +152,4 @@ const AuthModal = ({
   );
 };
 
-export default AuthModal;
+export default AuthModalExample;

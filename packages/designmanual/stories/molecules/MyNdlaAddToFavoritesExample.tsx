@@ -13,7 +13,6 @@ import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
 import Modal, { ModalHeader } from '@ndla/modal';
 import { useSnack, ListResource } from '@ndla/ui';
-
 import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
@@ -87,6 +86,7 @@ const FeideP = styled.p`
   ${fonts.sizes(18)};
   ${colors.brand.grey};
 `;
+
 type DialogExampleProps = {
   title: string;
   closeCallback?: () => void;

@@ -24,7 +24,6 @@ import {
   ArticleIntroduction,
   ArticleWrapper,
   Topic,
-  AuthModal,
   MessageBox,
   SubjectCarousel,
 } from '@ndla/ui';
@@ -34,7 +33,7 @@ import Resources from '../molecules/resources';
 import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 import FigureImage from '../article/FigureImage';
-
+import { AuthModalExample } from '../molecules/MyNdlaAddToFavoritesExample';
 /* Stored for later 
 const subjectAbout = (label, description) => (
   <SubjectAbout
@@ -530,13 +529,13 @@ const SubjectPage = ({
         {!message && <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />}
       </OneColumn>
       {showLoginModal && (
-        <AuthModal
+        <AuthModalExample
           showGeneralMessage={false}
           onAuthenticateClick={() => {}}
           onClose={() => setShowLoginModal(false)}
           isOpen>
           <p>{t('user.modal.topic')}</p>
-        </AuthModal>
+        </AuthModalExample>
       )}
     </>
   );

@@ -993,7 +993,8 @@ const messages = {
     },
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
-    confirmDeleteFolder: 'Er du sikker på at du vil slette mappen? Denne handlingen kan ikke endres.',
+    confirmDeleteFolder:
+      'Er du sikker på at du vil slette mappen? Dersom mappen har undermapper vil disse også slettes. Handlingen kan ikke endres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknagger',
@@ -1015,6 +1016,9 @@ const messages = {
       myPage: 'Min side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
+      loginText:
+        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikke skriver noe støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
+      loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne siden?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
@@ -1054,7 +1058,7 @@ const messages = {
       linkCopied: 'Kopiert til utklippstavle',
       addToMyNdla: 'Legg i Min NDLA',
       addedToMyNdla: 'Lagt i Min NDLA',
-      addedToFolder: 'Ressurs er lagt i "{{folderName}}"',
+      addedToFolder: 'Ressurs er lagt i ',
       removedFromFolder: 'Fjernet fra "{{folderName}}"',
       titleUpdated: 'Tittel oppdatert',
       tagsUpdated: 'Emneknagger oppdatert',

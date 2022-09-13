@@ -994,7 +994,8 @@ const messages = {
     },
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',
-    confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje endrast.',
+    confirmDeleteFolder:
+      'Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
     myTags: 'Emneknaggane mine',
@@ -1016,6 +1017,9 @@ const messages = {
       myPage: 'Mi side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
+      loginText:
+        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
+      loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',

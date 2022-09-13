@@ -177,6 +177,7 @@ const FolderItem = ({
   return type === 'navigation' ? (
     <FolderNameLink
       role="treeitem"
+      aria-owns={`item-${folder.id}`}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-current={selected ? 'page' : undefined}
       ref={ref}
@@ -211,6 +212,7 @@ const FolderItem = ({
   ) : (
     <FolderName
       role="treeitem"
+      aria-owns={`item-${folder.id}`}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-selected={selected}
       variant="ghost"

@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
-import { ButtonV2 as Button, IconButtonDualStates, IconButtonV2 as IconButton } from '@ndla/button';
+import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { Plus } from '@ndla/icons/action';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
@@ -191,10 +191,6 @@ const TreeStructure = ({
     if (closedFolder) {
       const subFolders = closedFolder.subfolders && flattenFolders(closedFolder.subfolders);
       if (subFolders.some((folder) => folder.id === selectedFolder?.id)) {
-        if (onSelectFolder) {
-          setSelectedFolder(closedFolder);
-          onSelectFolder(closedFolder.id);
-        }
         setFocusedId(closedFolder.id);
       }
     }
@@ -225,16 +221,25 @@ const TreeStructure = ({
 
   return (
     <StyledTreeStructure ref={ref}>
-      {label && <StyledLabel>{label}</StyledLabel>}
+      {label && <StyledLabel id="treestructure-label">{label}</StyledLabel>}
       <TreeStructureWrapper aria-label={label} type={type}>
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
             <StyledSelectedFolder
+              role="combobox"
+              aria-controls="treestructure-popup"
+              aria-haspopup="tree"
               aria-expanded={showTree}
+              aria-labelledby="treestructure-label"
               variant="ghost"
               colorTheme="light"
               fontWeight="normal"
               shape="sharp"
+              onKeyDown={(e) => {
+                if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
+                  setShowTree(true);
+                }
+              }}
               onClick={() => {
                 setShowTree(!showTree);
               }}>
@@ -266,6 +271,7 @@ const TreeStructure = ({
               </Tooltip>
             )}
             <IconButton
+              tabIndex={-1}
               aria-expanded={showTree}
               aria-label={showTree ? t('treeStructure.hideFolders') : t('treeStructure.showFolders')}
               variant="ghost"

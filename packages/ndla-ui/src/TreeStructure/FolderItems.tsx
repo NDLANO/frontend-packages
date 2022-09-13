@@ -43,6 +43,7 @@ export interface FolderItemsProps extends CommonFolderItemsProps {
   onCancelNewFolder: () => void;
   onSaveNewFolder: (name: string, parentId: string) => void;
   openFolders: string[];
+  parentFolder?: FolderType;
 }
 
 const FolderItems = ({
@@ -54,9 +55,12 @@ const FolderItems = ({
   onSaveNewFolder,
   openFolders,
   type,
+  parentFolder,
   ...rest
 }: FolderItemsProps) => (
-  <StyledUL role={level === 0 ? 'tree' : 'group'}>
+  <StyledUL
+    id={level === 0 && type === 'picker' ? 'treestructure-popup' : parentFolder ? `item-${parentFolder.id}` : undefined}
+    role={level === 0 ? 'tree' : 'group'}>
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
@@ -87,6 +91,7 @@ const FolderItems = ({
               )}
               {subfolders && isOpen && (
                 <FolderItems
+                  parentFolder={folder}
                   folders={subfolders}
                   level={level + 1}
                   loading={loading}

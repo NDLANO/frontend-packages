@@ -115,7 +115,9 @@ interface StyledButtonProps {
   inverted?: boolean;
 }
 
-const StyledButton = styled(Button)<StyledButtonProps>`
+const shouldForwardProp = (name: string) => name !== 'outline';
+
+const StyledButton = styled(Button, { shouldForwardProp })<StyledButtonProps>`
   border-color: ${({ inverted, outline }) =>
     outline ? (inverted ? colors.white : colors.brand.primary) : 'transparent'};
 `;
@@ -139,6 +141,7 @@ const LanguageSelector = ({ currentLanguage, outline, center, inverted, alwaysVi
         </StyledSpan>
         <ChevronDown />
       </StyledButton>
+
       {isOpen && (
         <FocusTrapReact
           active

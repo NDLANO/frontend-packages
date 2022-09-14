@@ -141,20 +141,6 @@ const TreeStructure = ({
   const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (e.target instanceof Element && ref.current && !ref.current.contains(e.target)) {
-        setShowTree(false);
-      }
-    };
-    if (type === 'picker') {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }
-  }, [ref, type]);
-
-  useEffect(() => {
     if (defaultOpenFolders) {
       if (!defaultOpenFolders.every((element) => openFolders.includes(element))) {
         setOpenFolders((prev) => {
@@ -178,6 +164,13 @@ const TreeStructure = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultSelectedFolderId]);
+
+  useEffect(() => {
+    if (showTree) {
+      setFocusedId(selectedFolder?.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showTree]);
 
   useEffect(() => {
     if (!loading) {
@@ -220,9 +213,17 @@ const TreeStructure = ({
   const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
-    <StyledTreeStructure ref={ref}>
+    <StyledTreeStructure>
       {label && <StyledLabel id="treestructure-label">{label}</StyledLabel>}
-      <TreeStructureWrapper aria-label={label} type={type}>
+      <TreeStructureWrapper
+        ref={ref}
+        aria-label={label}
+        type={type}
+        onBlur={(e) => {
+          if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
+            setShowTree(false);
+          }
+        }}>
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
             <StyledSelectedFolder

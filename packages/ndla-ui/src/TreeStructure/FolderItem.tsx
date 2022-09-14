@@ -40,14 +40,6 @@ const StyledName = styled.span`
   text-align: left;
 `;
 
-const WrapperForFolderChild = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: ${spacing.xsmall};
-  margin-left: auto;
-`;
-
 const shouldForwardProp = (name: string) => !['selected', 'noArrow', 'fullWidth', 'level'].includes(name);
 
 interface FolderNameProps {
@@ -177,9 +169,10 @@ const FolderItem = ({
   return type === 'navigation' ? (
     <FolderNameLink
       role="treeitem"
-      aria-owns={`item-${folder.id}`}
+      aria-owns={`subfolders-${folder.id}`}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-current={selected ? 'page' : undefined}
+      aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       ref={ref}
       level={level}
       onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
@@ -247,9 +240,14 @@ const FolderItem = ({
         </OpenButton>
       )}
       <StyledName>{name}</StyledName>
-      <WrapperForFolderChild>
-        {containsResource && <StyledDone title={t('myNdla.alreadyInFolder')} />}
-      </WrapperForFolderChild>
+      {containsResource && (
+        <StyledDone
+          ariaHidden={false}
+          aria-label={t('myNdla.alreadyInFolder')}
+          id={`alreadyAdded-${folder.id}`}
+          title={t('myNdla.alreadyInFolder')}
+        />
+      )}
     </FolderName>
   );
 };

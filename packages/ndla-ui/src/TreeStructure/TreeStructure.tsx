@@ -60,6 +60,7 @@ const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
     border-color: ${colors.brand.tertiary};
   }
 `;
+
 interface ScrollableDivProps {
   type: TreeStructureType;
 }

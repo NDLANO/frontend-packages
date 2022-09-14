@@ -59,7 +59,13 @@ const FolderItems = ({
   ...rest
 }: FolderItemsProps) => (
   <StyledUL
-    id={level === 0 && type === 'picker' ? 'treestructure-popup' : parentFolder ? `item-${parentFolder.id}` : undefined}
+    id={
+      level === 0 && type === 'picker'
+        ? 'treestructure-popup'
+        : parentFolder
+        ? `subfolders-${parentFolder.id}`
+        : undefined
+    }
     role={level === 0 ? 'tree' : 'group'}>
     {folders.map((folder) => {
       const { subfolders, id } = folder;

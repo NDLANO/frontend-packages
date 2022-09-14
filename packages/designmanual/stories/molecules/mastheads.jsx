@@ -30,7 +30,7 @@ import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
-import MastHeadAuthModal from './MastHeadAuthModal';
+import { MastHeadAuthModal } from './MastHeadAuthModal';
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
 import { feideUserLaerer } from './feideUser';
 

@@ -43,7 +43,11 @@ const StyledButtonWrapper = styled.div`
 
 const LoginButton = styled(Button)`
   background: #222222;
-  border-color: ${colors.text.light};
+  border-color: ${colors.white};
+  color: white;
+  box-shadow: none;
+  padding: ${spacing.small};
+  font-weight: ${fonts.weight.semibold};
 `;
 
 const StyledLogInIconWrapper = styled.span`
@@ -85,7 +89,7 @@ const FooterAuth = ({ isAuthenticated, user, onAuthenticateClick, ...rest }: Aut
         ) : (
           <>
             <InfoText>{t('user.generalFooter')}</InfoText>
-            <LoginButton size="medium" onClick={onAuthenticateClick}>
+            <LoginButton size="medium" onClick={onAuthenticateClick} shape="pill" variant="ghost">
               {isAuthenticated ? t('user.buttonLogOut') : t('user.buttonLogIn')}
               <StyledLogInIconWrapper aria-hidden>
                 {isAuthenticated ? <LogOut className="c-icon--medium" /> : <LogIn className="c-icon--medium" />}
@@ -105,30 +109,32 @@ interface FooterProps {
 }
 const FooterExample = ({ inverted, hideLanguageSelector, i18n, isAuthenticated }: FooterProps) => {
   const { t } = useTranslation();
-  <Footer
-    lang={'nb'}
-    links={mockFooterLinks}
-    languageSelector={
-      !hideLanguageSelector && (
-        <LanguageSelector
-          alwaysVisible
-          outline
-          center
-          inverted={inverted}
-          options={i18n.options.supportedLanguages}
-          currentLanguage={i18n.language}
-        />
-      )
-    }
-    auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}>
-    <FooterText>
-      <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
-      <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
-      <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
-        {t('askNDLA')}
-      </ZendeskButton>
-    </FooterText>
-  </Footer>;
+  return (
+    <Footer
+      lang={'nb'}
+      links={mockFooterLinks}
+      languageSelector={
+        !hideLanguageSelector && (
+          <LanguageSelector
+            alwaysVisible
+            outline
+            center
+            inverted={inverted}
+            options={i18n?.options.supportedLanguages}
+            currentLanguage={i18n?.language}
+          />
+        )
+      }
+      auth={<FooterAuth isAuthenticated={!!isAuthenticated} user={feideUserLaerer} onAuthenticateClick={() => {}} />}>
+      <FooterText>
+        <EditorName title="Utgaveansvarlig:" name="Sigurd Trageton" />
+        <span>Nettstedet er utarbeidet av NDLA med åpen kildekode.</span>
+        <ZendeskButton locale="nb" widgetKey="7401e616-d86d-42f9-b52f-5bad09d03058">
+          {t('askNDLA')}
+        </ZendeskButton>
+      </FooterText>
+    </Footer>
+  );
 };
 
 export default FooterExample;

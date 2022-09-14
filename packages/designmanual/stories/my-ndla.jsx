@@ -9,6 +9,7 @@ import FooterExample from './molecules/footers';
 import MyNdla from './pages/MyNdla';
 import MyNdlaAddToFavoritesExample from './molecules/MyNdlaAddToFavoritesExample';
 import MyNdlaMyPage from './pages/MyNdlaMyPage';
+import MyNdlaAuthModalExample from './molecules/authModalExample';
 
 storiesOf('Min NDLA', module).add('Elementer', () => (
   <PageContainer>
@@ -34,7 +35,7 @@ storiesOf('Min NDLA', module).add('Moduler', () => (
           <h3>Hjerte ikke logget inn</h3>
           <MyNdlaAddToFavoritesExample isLoggedIn={false} />
           <h3>Hjerte ikke logget inn, uten ressurs</h3>
-          <MyNdlaAddToFavoritesExample isLoggedIn={false} resource={false} />
+          <MyNdlaAuthModalExample />
         </OneColumn>
       </Content>
       <FooterExample />

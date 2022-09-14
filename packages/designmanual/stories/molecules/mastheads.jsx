@@ -23,7 +23,6 @@ import {
   MastheadSearchModal,
   TopicMenuButton,
   SearchFieldForm,
-  MastheadAuthModal,
   HeaderBreadcrumb,
 } from '@ndla/ui';
 import Modal from '@ndla/modal';
@@ -31,7 +30,7 @@ import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
-
+import MastheadAuthModal from './MastHeadAuthModal';
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
 import { feideUserLaerer } from './feideUser';
 

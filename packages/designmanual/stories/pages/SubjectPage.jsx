@@ -33,7 +33,7 @@ import Resources from '../molecules/resources';
 import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 import FigureImage from '../article/FigureImage';
-import { AuthModalExample } from '../molecules/MyNdlaAddToFavoritesExample';
+import AuthModalExample from '../molecules/authModalExample';
 /* Stored for later 
 const subjectAbout = (label, description) => (
   <SubjectAbout
@@ -528,15 +528,7 @@ const SubjectPage = ({
         )}
         {!message && <Breadcrumblist isVisible={showBreadCrumb} items={breadcrumbItems} onNav={handleNav} />}
       </OneColumn>
-      {showLoginModal && (
-        <AuthModalExample
-          showGeneralMessage={false}
-          onAuthenticateClick={() => {}}
-          onClose={() => setShowLoginModal(false)}
-          isOpen>
-          <p>{t('user.modal.topic')}</p>
-        </AuthModalExample>
-      )}
+      {showLoginModal && <AuthModalExample />}
     </>
   );
 };

@@ -17,7 +17,7 @@ import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
 
-import { TreeStructureExampleComponent, MY_FOLDERS_ID, FOLDER_TREE_STRUCTURE } from './TreeStructureExample';
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
@@ -28,7 +28,19 @@ const DialogFooter = styled.div`
   margin-top: ${spacing.small};
   justify-content: space-between;
   align-items: center;
+  padding: 10px 0px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    padding: 0px 26px;
+  }
 `;
+const FeideIconWrapper = styled.div``;
 const FooterButtons = styled.div`
   display: flex;
   gap: ${spacing.xsmall};
@@ -102,54 +114,58 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
   return (
     <Modal backgroundColor="white" controllable isOpen={isOpen} animation="subtle" onClose={closeCallback}>
       {(onCloseModal: () => void) => (
-        <FavouriteWrapper>
+        <>
           <ModalHeader modifier="no-bottom-padding">
             <IconButton size="xsmall" aria-label={t('modal.closeModal')} greyLighter onClick={onCloseModal}>
               <Cross />
             </IconButton>
           </ModalHeader>
-          <StyledModalBody>
-            <StyledH1>{title}</StyledH1>
-            <ListResource
-              key={'minimalResource'}
-              title="Minimal ressurs"
-              topics={['Topic', 'Topic', 'Topic']}
-              resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-            />
-            <TreeStructureExampleComponent
-              label="Velg plassering"
-              type="picker"
-              structure={FOLDER_TREE_STRUCTURE}
-              defaultOpenFolders={[MY_FOLDERS_ID]}
-              openOnFolderClick={false}
-              onNewFolder
-              onSelectFolder={() => {}}
-            />
-            <TagSelectorExample />
-            <DialogFooter>
-              <Button outline onClick={onCloseModal}>
-                Avbryt
-              </Button>
+          <FavouriteWrapper>
+            <StyledModalBody>
+              <StyledH1>{title}</StyledH1>
+              <ListResource
+                key={'minimalResource'}
+                title="Minimal ressurs"
+                topics={['Topic', 'Topic', 'Topic']}
+                resourceImage={{
+                  src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                  alt: 'alt',
+                }}
+                link={''}
+              />
+              <TreeStructureExampleComponent
+                label="Velg plassering"
+                structure={STRUCTURE_EXAMPLE}
+                defaultOpenFolders={[MY_FOLDERS_ID]}
+                openOnFolderClick={false}
+              />
+              <TagSelectorExample />
+              <DialogFooter>
+                <FeideIconWrapper>
+                  <FeideIcon />
+                </FeideIconWrapper>
+                <FooterButtons>
+                  <Button outline onClick={onCloseModal}>
+                    Avbryt
+                  </Button>
 
-              <Button
-                aria-controls={SNACKBAR_ID_ADD_TO_FAVORITES}
-                onClick={() => {
-                  addSnack({
-                    id: isFavorite ? 'removedFromFavorites' : 'addedToFavorites',
-                    content: isFavorite ? 'Fjernet fra favoritter' : 'Lagt til i favoritter!',
-                  });
-                  toggleIsFavorite();
-                  onCloseModal();
-                }}>
-                Lagre
-              </Button>
-            </DialogFooter>
-          </StyledModalBody>
-        </FavouriteWrapper>
+                  <Button
+                    aria-controls={SNACKBAR_ID_ADD_TO_FAVORITES}
+                    onClick={() => {
+                      addSnack({
+                        id: isFavorite ? 'removedFromFavorites' : 'addedToFavorites',
+                        content: isFavorite ? 'Fjernet fra favoritter' : 'Lagt til i favoritter!',
+                      });
+                      toggleIsFavorite();
+                      onCloseModal();
+                    }}>
+                    Lagre
+                  </Button>
+                </FooterButtons>
+              </DialogFooter>
+            </StyledModalBody>
+          </FavouriteWrapper>
+        </>
       )}
     </Modal>
   );
@@ -194,7 +210,9 @@ const DialogNotLoggedInExample = ({ isOpen, title, closeCallback, resource }: Di
               </FeideP>
             </Feide>
             <DialogFooter>
-              <FeideIcon />
+              <FeideIconWrapper>
+                <FeideIcon />
+              </FeideIconWrapper>
               <FooterButtons>
                 <Button outline onClick={onCloseModal}>
                   Avbryt

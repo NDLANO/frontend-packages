@@ -6,16 +6,16 @@
  *
  */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
-import Button, { IconButton } from '@ndla/button';
+import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
 import { FeideText } from '@ndla/icons/common';
 import { ModalBody, ModalHeader } from '@ndla/modal';
 import { FeideUserApiType, Image } from '@ndla/ui';
 import Modal from '@ndla/modal';
 import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { Cross } from '@ndla/icons/action';
+import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
 
 const DialogFooter = styled.div`
   display: flex;
@@ -24,7 +24,19 @@ const DialogFooter = styled.div`
   margin-top: ${spacing.small};
   justify-content: space-between;
   align-items: center;
+  padding: 5px 26px;
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
 `;
+
+const FeideIconWrapper = styled.div``;
 const FooterButtons = styled.div`
   display: flex;
   gap: ${spacing.xsmall};
@@ -32,6 +44,9 @@ const FooterButtons = styled.div`
 const FavouriteWrapper = styled.div`
   padding-bottom: 26px;
   gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+
   ${mq.range({ until: breakpoints.tabletWide })} {
     padding: ${spacing.small};
   }
@@ -40,6 +55,9 @@ const FavouriteWrapper = styled.div`
 const StyledNotLoggedInH1 = styled.h1`
   font-weight: 700;
   ${fonts.sizes('24')};
+  ${mq.range({ until: breakpoints.tabletWide })} {
+    ${fonts.sizes('20')}
+  }
 `;
 const Header = styled.div`
   display: flex;
@@ -50,8 +68,10 @@ const Header = styled.div`
   margin: 0 auto;
   margin-top: ${spacing.normal};
   ${mq.range({ until: breakpoints.tabletWide })} {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0;
+    padding: 0px 26px;
+    ${fonts.sizes(20)}
   }
 `;
 
@@ -112,7 +132,7 @@ export const AuthModalExample = ({
       backgroundColor="white"
       isOpen={isOpen}
       animation="subtle"
-      onClose={() => {}}>
+      onClose={onClose}>
       {(onCloseModal: () => void) => (
         <>
           <ModalHeader modifier="no-bottom-padding">
@@ -131,7 +151,9 @@ export const AuthModalExample = ({
               </Feide>{' '}
             </ModalBody>
             <DialogFooter>
-              <FeideIcon />
+              <FeideIconWrapper>
+                <FeideIcon />
+              </FeideIconWrapper>
               <FooterButtons>
                 <Button outline onClick={onCloseModal}>
                   {t('cancel')}
@@ -151,5 +173,30 @@ export const AuthModalExample = ({
     </Modal>
   );
 };
+const MyNdlaAuthModalExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-export default AuthModalExample;
+  return (
+    <div>
+      <IconButtonDualStates
+        ariaLabelInActive="Legg til i mine favoritter"
+        ariaLabelActive="Allerede lagt til i mine favoritter"
+        activeIcon={<Heart />}
+        inactiveIcon={<HeartOutline />}
+        size="small"
+        variant="ghost"
+        colorTheme="light"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+      {isOpen && (
+        <AuthModalExample
+          isOpen={isOpen}
+          onAuthenticateClick={() => setIsOpen(false)}
+          onClose={() => setIsOpen(false)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default MyNdlaAuthModalExample;

@@ -19,8 +19,6 @@ const messages = {
       edit: 'Rievdat máhpa nama',
       delete: 'Sihko',
     },
-    hideFolders: 'Skjul alle mapper',
-    showFolders: 'Vis alle mapper',
     createFolder: 'Ráhkat máhpa',
     maxFoldersAlreadyAdded: 'Vuollemáhpaid badjerádji lea olahuvvon',
     newFolder: {
@@ -248,6 +246,13 @@ const messages = {
       mainLink: {
         name: 'Čuovo min',
       },
+    },
+    category: {
+      fellesfag: 'Oktasašfága',
+      yrkesfag: 'Fidnofága',
+      studiespesialiserende: 'Lohkanráhkkanahtti',
+      imported: 'Spolte fága',
+      heading: 'Maid oahpat?',
     },
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     film: {
@@ -981,6 +986,10 @@ const messages = {
     close: 'Govčča fáktádoasa',
   },
   myNdla: {
+    login: 'Logg inn',
+    loginMessage:
+      ' Logg inn med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støytande eller personsensitiv informasjon eller anna persondata i tekstfelt. Les vår personvernerklæring her',
+    loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
     myNDLA: 'Mu NDLA',
     support: 'Geavaheaddjidoarjja',
     resources: '{{count}} resurssat',
@@ -988,7 +997,6 @@ const messages = {
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} mapper',
     folder: {
-
       folder: 'Máhppa',
       delete: 'Sihko',
       edit: 'Redigere',
@@ -1019,13 +1027,9 @@ const messages = {
       myPage: 'Mu siidu',
       deleteAccount: 'Sihko mu NDLA',
       logout: 'Logge eret mu NDLAs',
-      loginText:
-        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriver noko støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
-      loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logge Feide bokte vai oaččut beassanlobi. Go logget sisa de dohkkehat min geavahaneavttuid.',
       loginResourcePitch: 'Dáhtut go merket siiddu oiddohin?',
       loginWelcome: 'Bures boahtin NDLA:ii! Dáppe sáhtát fágaávdnasiid ordnet iežat vuogi mielde',
-
       welcome:
         'Bures boahtin NDLA:ii! Dál sáhtát vurket iežat oiddotresurssaid NDLA:s ja ordnet daid nu go dáhtut máhpain ja fáddágilkoriiguin.',
       read: { our: 'Loga min', ours: 'Loga min' },
@@ -1062,7 +1066,7 @@ const messages = {
       linkCopied: 'Máŋgejuvvon čájáhustávvalii',
       addToMyNdla: 'Bija mu NDLA:ii',
       addedToMyNdla: 'Biddjojuvvon mu NDLA:ii',
-      addedToFolder: 'Resursa lea biddjojuvvon ',
+      addedToFolder: 'Resursa lea biddjojuvvon "{{folderName}}"',
       removedFromFolder: 'Sihkkojuvvon "{{folderName}}"',
       titleUpdated: 'Tihttel lea ođastuvvon',
       tagsUpdated: 'Fáddágilkorat leat ođastuvvon',

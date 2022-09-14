@@ -19,8 +19,6 @@ const messages = {
       edit: 'Edit foldername',
       delete: 'Delete',
     },
-    hideFolders: 'Hide all folders',
-    showFolders: 'Show all folders',
     createFolder: 'Create folder',
     maxFoldersAlreadyAdded: 'Maximum subfolders reached',
     newFolder: {
@@ -250,6 +248,13 @@ const messages = {
         name: 'Follow us',
       },
     },
+    category: {
+      fellesfag: 'Common',
+      yrkesfag: 'Vocational',
+      studiespesialiserende: 'Specialization',
+      imported: 'Imported subjects',
+      heading: 'What will you learn?',
+    },
     film: {
       header: 'NDLA film',
       text: 'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
@@ -348,7 +353,8 @@ const messages = {
       'Your browser is outdated. Update it, or find a safe and updated browser on https://browsehappy.com.',
     noContent: 'We are sorry, but we do not yet offer any program courses.',
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
-    resources: 'This is not a complete course, but a collection of resources we hope you will find useful.',
+    resources:
+      'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
     subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:
@@ -982,6 +988,10 @@ const messages = {
     close: 'Close fact box',
   },
   myNdla: {
+    login: 'Log in',
+    loginMessage:
+      'Log in with Feide to access My NDLA. We ask you not to write anything offensive or share any sensitiv information in the textfields. Read our privacy statement here.',
+    loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your own way!',
     myNDLA: 'My NDLA',
     support: 'Support',
     resources: '{{count}} Resource',
@@ -990,18 +1000,14 @@ const messages = {
     folders_plural: '{{count}} Folders',
     folder: {
       folder: 'Folder',
-      delete: 'Delete folder',
-      edit: 'Edit folder',
+      delete: 'Delete',
+      edit: 'Edit',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
     },
-    login: 'Log in',
-    loginMessage:
-      'Log in with Feide to access My NDLA. We ask you not to write anything offensive or share any sensitiv information in the textfields. Read our privacy statement here.',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
-    confirmDeleteFolder:
-      'Are you sure you want to delete this folder? Subfolders of this folder will also be deleted. This action cannot be undone.',
+    confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
@@ -1022,12 +1028,9 @@ const messages = {
       confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
-      loginText:
-        'Log in with Feide to receive access to My NDLA. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
-      loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',
-      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your own way!',
+      loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',

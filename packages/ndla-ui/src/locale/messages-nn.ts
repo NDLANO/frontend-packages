@@ -19,8 +19,6 @@ const messages = {
       edit: 'Endre mappenamn',
       delete: 'Slett',
     },
-    hideFolders: 'Skjul alle mapper',
-    showFolders: 'Vis alle mapper',
     createFolder: 'Lag mappe',
     maxFoldersAlreadyAdded: 'Maks nivå av undermapper nådd',
     newFolder: {
@@ -249,6 +247,13 @@ const messages = {
         name: 'Følg oss',
       },
     },
+    category: {
+      fellesfag: 'Fellesfag',
+      yrkesfag: 'Yrkesfag',
+      studiespesialiserende: 'Studieførebuande',
+      imported: 'Spolte fag',
+      heading: 'Kva lærer du?',
+    },
     film: {
       header: 'NDLA film',
       text: 'NDLA film er ei teneste i samarbeid med Norgesfilm. Denne tenesta lar deg sjå ei rekkje spelefilmar, kortfilmar, dokumentarar og seriar. Du kan òg sjå undervisningsfilm og filmklipp. Velkomen inn i filmen si verd!',
@@ -348,7 +353,8 @@ const messages = {
       'Nettlesaren din er utdatert. Oppdater han, eller finn ein trygg og oppdatert nettlesar på https://browsehappy.com. ',
     noContent: 'Vi har dessverre ikkje nokon programfag enno.',
     feide: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
-    resources: 'Dette er ikkje eit komplett læremiddel, men ei ressurssamling som vi håper kan vere nyttig for deg.',
+    resources:
+      'Dette er ikkje eit komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan vere nyttig for deg.',
     subjectOutdated: 'Dette faget følgjer ein utgått læreplan.',
     subjectBeta: 'Dette faget er i betaversjon. Vi fyller på med ressurser fortløpande.',
     newVersion:
@@ -981,6 +987,10 @@ const messages = {
     close: 'Lukk faktaboks',
   },
   myNdla: {
+    login: 'Logg inn',
+    loginMessage:
+      ' Logg inn med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støytande eller personsensitiv informasjon eller anna persondata i tekstfelt. Les vår personvernerklæring her',
+    loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
     myNDLA: 'Min NDLA',
     support: 'Brukarstøtte',
     resources: '{{count}} ressurs',
@@ -989,18 +999,14 @@ const messages = {
     folders_plural: '{{count}} mapper',
     folder: {
       folder: 'Mappe',
-      delete: 'Slett mappe',
-      edit: 'Rediger mappe',
+      delete: 'Slett',
+      edit: 'Rediger',
       missingName: 'Skriv namn på mappe',
       folderDeleted: '"{{folderName}}" er sletta',
     },
-    login: 'Logg inn',
-    loginMessage:
-      ' Logg inn med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støytande eller personsensitiv informasjon eller anna persondata i tekstfelt. Les vår personvernerklæring her',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',
-    confirmDeleteFolder:
-      'Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.',
+    confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje endrast.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
     myTags: 'Emneknaggane mine',
@@ -1022,12 +1028,9 @@ const messages = {
       myPage: 'Mi side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
-      loginText:
-        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
-      loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
-      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på din måte!',
+      loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
       read: { our: 'Les vår', ours: 'Les våre' },

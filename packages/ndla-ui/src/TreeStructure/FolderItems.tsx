@@ -93,6 +93,7 @@ const FolderItems = ({
                   onCancelNewFolder={onCancelNewFolder}
                   onSaveNewFolder={onSaveNewFolder}
                   parentId={newFolderParentId}
+                  type={type}
                 />
               )}
               {subfolders && isOpen && (

@@ -16,6 +16,7 @@ import { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
 import { InputV2 as Input } from '@ndla/forms';
+import { TreeStructureType } from './types';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -75,9 +76,17 @@ interface FolderNameInputProps {
   onCancelNewFolder: () => void;
   loading?: boolean;
   level: number;
+  type: TreeStructureType;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading, level }: FolderNameInputProps) => {
+const FolderNameInput = ({
+  onSaveNewFolder,
+  parentId,
+  onCancelNewFolder,
+  loading,
+  level,
+  type,
+}: FolderNameInputProps) => {
   const { t } = useTranslation();
   const [name, setName] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -93,17 +102,22 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
   }, []);
 
   return (
-    <NewFolderWrapper>
+    <NewFolderWrapper
+      onBlur={(e) => {
+        if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
+          onCancelNewFolder();
+        }
+      }}>
       <InputWrapper level={level}>
         <StyledInput
           name="name"
           labelHidden
           label={t('treeStructure.newFolder.folderName')}
           aria-invalid={name.length === 0}
+          aria-disabled={loading}
           ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
-          disabled={loading}
           value={name}
           onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
@@ -111,13 +125,17 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
               onCancelNewFolder();
             } else if (e.key === 'Enter') {
               e.preventDefault();
-              if (name === '') {
+              if (name === '' || loading) {
                 return;
               }
               onSaveNewFolder(name, parentId);
             }
           }}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            if (!loading) {
+              setName(e.target.value);
+            }
+          }}
         />
         <Row>
           {!loading ? (
@@ -126,6 +144,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
                 <Cross />
               </IconButton>
               <IconButton
+                tabIndex={0}
                 aria-label={t('save')}
                 title={t('save')}
                 size="small"

@@ -30,7 +30,7 @@ import SafeLink from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { breakpoints, mq } from '@ndla/core';
 import { contentTypeResults, dummyLanguageOptions } from '../../dummydata';
-import MastheadAuthModal from './MastHeadAuthModal';
+import MastHeadAuthModal from './MastHeadAuthModal';
 import { programmes, programme, subjectCategories, topics } from '../../dummydata/mockPrograms';
 import { feideUserLaerer } from './feideUser';
 
@@ -272,7 +272,7 @@ class MastheadWithTopicMenu extends Component {
           <DisplayOnPageYOffset yOffsetMin={0} yOffsetMax={150}>
             <LanguageSelector inverted={ndlaFilm} options={dummyLanguageOptions} currentLanguage={i18n.language} />
           </DisplayOnPageYOffset>
-          <MastheadAuthModal inverted={ndlaFilm} {...authedProps} />
+          <MastHeadAuthModal inverted={ndlaFilm} {...authedProps} />
           {this.renderSearchButtonView(true, ndlaFilm)}
           <Logo
             to="?selectedKind=Emnesider&selectedStory=1.%20Fagoversikt&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"

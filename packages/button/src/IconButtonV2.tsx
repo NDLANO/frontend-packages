@@ -27,7 +27,9 @@ interface StyledButtonProps extends ButtonProps {
   svgSize: number;
 }
 
-const StyledButton = styled(Button)<StyledButtonProps>`
+const shouldForwardProp = (name: string) => name !== 'svgSize';
+
+const StyledButton = styled(Button, { shouldForwardProp })<StyledButtonProps>`
   border-radius: 100%;
   padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.5 : 0.25)}px;
   line-height: 1;

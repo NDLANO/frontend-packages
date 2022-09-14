@@ -183,9 +183,11 @@ export const TreeStructureExampleComponent = ({
           (async (name: string, parentId: string) => {
             // A funky implementation to imitate backend updates of structure
             // eslint-disable-next-line no-console
-            console.log(`Example, create new folder under ${parentId} with name ${name}`);
+            if (name === '') {
+              return;
+            }
             setLoading(true);
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 5000));
             setLoading(false);
             const flattenedStructure = flattenFolders(structure);
             const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);

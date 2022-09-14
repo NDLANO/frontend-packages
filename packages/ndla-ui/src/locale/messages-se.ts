@@ -26,6 +26,7 @@ const messages = {
     newFolder: {
       placeholder: 'Čále nama máhppii',
       defaultName: 'Ođđa máhppa',
+      folderName: 'Mappenavn',
     },
   },
   tagSelector: {

@@ -26,6 +26,7 @@ const messages = {
     newFolder: {
       placeholder: 'Skriv namn på mappe',
       defaultName: 'Ny mappe',
+      folderName: 'Mappenavn',
     },
   },
   tagSelector: {

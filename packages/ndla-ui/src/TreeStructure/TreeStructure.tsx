@@ -198,11 +198,11 @@ const TreeStructure = ({
   const onSaveNewFolder = (name: string, parentId: string) => {
     onNewFolder?.(name, parentId).then((newFolder) => {
       if (newFolder) {
-        setNewFolderParentId?.(undefined);
         setSelectedFolder(newFolder);
         onSelectFolder?.(newFolder.id);
         setFocusedId(newFolder.id);
         setOpenFolders(uniq(openFolders.concat(parentId)));
+        setNewFolderParentId?.(undefined);
       }
     });
   };
@@ -273,9 +273,9 @@ const TreeStructure = ({
               </Tooltip>
             )}
             <IconButton
+              aria-hidden
+              aria-label=""
               tabIndex={-1}
-              aria-expanded={showTree}
-              aria-label={showTree ? t('treeStructure.hideFolders') : t('treeStructure.showFolders')}
               variant="ghost"
               colorTheme="greyLighter"
               size="small"

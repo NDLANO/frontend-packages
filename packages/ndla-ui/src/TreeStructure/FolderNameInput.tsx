@@ -15,6 +15,7 @@ import { Spinner } from '@ndla/icons';
 import { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
+import { InputV2 as Input } from '@ndla/forms';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -57,7 +58,7 @@ const InputWrapper = styled.div<{ level: number }>`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled(Input)`
   padding: ${spacing.small};
   flex-grow: 1;
   border: 0;
@@ -82,19 +83,23 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inputRef.current?.select();
     if (isMobile) {
       inputRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
     return () => {
       onCancelNewFolder();
     };
-  }, [onCancelNewFolder]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <NewFolderWrapper>
       <InputWrapper level={level}>
         <StyledInput
+          name="name"
+          labelHidden
+          label={t('treeStructure.newFolder.folderName')}
+          aria-invalid={name.length === 0}
           ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
@@ -104,10 +109,9 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
             if (e.key === 'Escape') {
               e.preventDefault();
               onCancelNewFolder();
-            } else if (e.key === 'Enter' || e.key === 'Tab') {
+            } else if (e.key === 'Enter') {
               e.preventDefault();
               if (name === '') {
-                onCancelNewFolder();
                 return;
               }
               onSaveNewFolder(name, parentId);
@@ -131,7 +135,7 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
               </IconButton>
             </>
           ) : (
-            <Spinner size="small" margin="0" />
+            <Spinner size="normal" margin={spacing.small} />
           )}
         </Row>
       </InputWrapper>

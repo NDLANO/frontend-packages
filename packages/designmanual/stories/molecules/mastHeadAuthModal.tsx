@@ -35,7 +35,7 @@ interface Props extends AuthModalProps {
   inverted?: boolean;
 }
 
-const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
+export const MastHeadAuthModal = ({ inverted, ...rest }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -57,4 +57,4 @@ const MastheadAuthModal = ({ inverted, ...rest }: Props) => {
   );
 };
 
-export default MastheadAuthModal;
+export default MastHeadAuthModal;

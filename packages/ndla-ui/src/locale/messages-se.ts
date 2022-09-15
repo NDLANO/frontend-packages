@@ -988,7 +988,6 @@ const messages = {
     folders: '{{count}} máhpat',
     folders_plural: '{{count}} mapper',
     folder: {
-
       folder: 'Máhppa',
       delete: 'Sihko',
       edit: 'Redigere',
@@ -996,7 +995,7 @@ const messages = {
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
       folderCreated: '"{{folderName}}" er oppretta',
     },
-     tagList: 'emneknagg',
+    tagList: 'emneknagg',
     tags: '{{count}} fáddágilkor',
     tags_plural: '{{count}} fáddágilkorat',
     confirmDeleteFolder: 'Leat go áibbas sihkar ahte dáhtut sihkkut máhpa? Dan ii sáhte gáhtat.',

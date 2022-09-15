@@ -143,8 +143,7 @@ const BlockResource = ({
   };
 
   return (
-    <BlockElementWrapper onClick={handleClick} to={link} id={id}>
-
+    <BlockElementWrapper onClick={handleClick} id={id}>
       <ImageWrapper>
         <BlockImage image={resourceImage} loading={isLoading} />
       </ImageWrapper>

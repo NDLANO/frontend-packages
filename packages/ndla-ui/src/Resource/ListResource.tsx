@@ -195,7 +195,7 @@ const ListResource = ({
   };
 
   return (
-    <ResourceWrapper onClick={handleClick} to={link} id={id}>
+    <ResourceWrapper onClick={handleClick} id={id}>
       <StyledImageWrapper imageSize={imageType}>
         <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
       </StyledImageWrapper>

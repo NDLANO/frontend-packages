@@ -16,6 +16,7 @@ import { CompressedTagList, ResourceImageProps, ResourceTitle, Row, TopicList } 
 import ContentLoader from '../ContentLoader';
 
 interface BlockResourceProps {
+  id: string;
   link: string;
   tagLinkPrefix?: string;
   title: string;
@@ -132,6 +133,7 @@ const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
 };
 
 const BlockResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
@@ -143,7 +145,7 @@ const BlockResource = ({
   isLoading,
 }: BlockResourceProps) => {
   return (
-    <BlockElementWrapper to={link}>
+    <BlockElementWrapper to={link} id={id}>
       <ImageWrapper>
         <BlockImage image={resourceImage} loading={isLoading} />
       </ImageWrapper>

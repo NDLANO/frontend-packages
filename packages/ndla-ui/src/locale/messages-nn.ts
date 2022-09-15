@@ -993,6 +993,7 @@ const messages = {
       edit: 'Rediger mappe',
       missingName: 'Skriv namn på mappe',
       folderDeleted: '"{{folderName}}" er sletta',
+      folderCreated: '"{{folderName}}" er oppretta',
     },
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',

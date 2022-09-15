@@ -8,7 +8,6 @@
 
 import React, { ReactNode, useRef } from 'react';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
-import { uuid } from '@ndla/util';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
@@ -83,7 +82,7 @@ const Breadcrumb = ({
                 ? breadcrumbItemRefs.delete(item.to)
                 : breadcrumbItemRefs.set(item.to, element)
             }
-            key={uuid()}
+            key={typeof item.to === 'string' ? item.to : item.to.pathname}
             totalCount={items.length}
             item={{ ...item, index }}
           />

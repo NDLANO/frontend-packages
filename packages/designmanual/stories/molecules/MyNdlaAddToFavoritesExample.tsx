@@ -102,6 +102,7 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
           <ModalBody>
             <StyledH1>{title}</StyledH1>
             <ListResource
+              id={'346ddc8e-e52c-43dc-9631-3fe3720b9996'}
               key={'minimalResource'}
               title="Minimal ressurs"
               topics={['Topic', 'Topic', 'Topic']}
@@ -169,6 +170,7 @@ const DialogNotLoggedInExample = ({ isOpen, title, closeCallback, resource }: Di
               <>
                 <StyledH1>{title}</StyledH1>
                 <ListResource
+                  id={'97260470-3d14-4eb4-b0ca-901aec102078'}
                   key={'minimalResource'}
                   title="Minimal ressurs"
                   topics={['Topic', 'Topic', 'Topic']}

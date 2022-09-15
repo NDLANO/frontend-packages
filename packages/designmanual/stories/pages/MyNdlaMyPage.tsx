@@ -21,6 +21,7 @@ const MyNdlaMyPage = () => {
         }}
         recentFavorites={[
           {
+            id: 'f8260d00-33e5-4ace-8f41-73aa47410a80',
             title: 'My Resource',
             link: '',
             topics: ['Oppgave', 'Norsk', 'Muntlig'],
@@ -33,6 +34,7 @@ const MyNdlaMyPage = () => {
             },
           },
           {
+            id: 'ccc46e49-7d79-470c-8223-d7b2f9147aaf',
             title: 'My Resource',
             link: '',
             topics: ['Oppgave', 'Norsk', 'Muntlig'],

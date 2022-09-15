@@ -993,6 +993,7 @@ const messages = {
       edit: 'Redigere',
       missingName: 'Čále nama máhppii',
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
+      folderCreated: '"{{folderName}}" er oppretta',
     },
     tags: '{{count}} fáddágilkor',
     tags_plural: '{{count}} fáddágilkorat',

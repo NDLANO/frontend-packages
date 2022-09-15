@@ -108,6 +108,7 @@ interface StyledImageProps {
 }
 
 export interface ListResourceProps {
+  id: string;
   link: string;
   tagLinkPrefix?: string;
   title: string;
@@ -186,6 +187,7 @@ const ResourceDescription = ({ description, loading }: ResourceDescriptionProps)
 };
 
 const ListResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
@@ -200,7 +202,7 @@ const ListResource = ({
   const imageType = showDescription ? 'normal' : 'compact';
 
   return (
-    <ResourceWrapper to={link}>
+    <ResourceWrapper to={link} id={id}>
       <StyledImageWrapper imageSize={imageType}>
         <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
       </StyledImageWrapper>

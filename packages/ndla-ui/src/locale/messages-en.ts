@@ -994,6 +994,7 @@ const messages = {
       edit: 'Edit folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
+      folderCreated: '"{{folderName}} created',
     },
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',

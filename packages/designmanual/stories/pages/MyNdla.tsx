@@ -33,7 +33,7 @@ export const menuItems: MenuItemProps[] = [
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];
 
-const tags = ['tag', 'tag', 'tag'];
+const tags = ['tag', 'tag', 'tag', 'tag'];
 
 const topics = ['Matte', 'Naturfag'];
 

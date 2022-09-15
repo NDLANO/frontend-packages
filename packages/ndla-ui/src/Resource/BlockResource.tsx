@@ -45,6 +45,8 @@ const BlockElementWrapper = styled.div`
   border-radius: 2px;
   color: ${colors.brand.greyDark};
   cursor: pointer;
+  :focus-within & {
+  }
 `;
 
 const BlockDescription = styled.p`
@@ -56,7 +58,8 @@ const BlockDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
-  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & {
+  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & ,  ${() =>
+    BlockElementWrapper}:focus-within & {
     // Unfortunate css needed for multi-line text overflow ellipsis.
     height: 3.1em;
     -webkit-line-clamp: 2;
@@ -102,7 +105,7 @@ const BlockImage = ({ image, loading }: BlockImageProps) => {
       </ContentLoader>
     );
   }
-  return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
+  return <Image alt="" src={image.src} fallbackWidth={300} />;
 };
 
 const TopicAndTitleLoader = ({ children, loading }: LoaderProps) => {

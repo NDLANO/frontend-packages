@@ -23,6 +23,7 @@ import {
 import ContentLoader from '../ContentLoader';
 
 interface BlockResourceProps {
+  id: string;
   link: string;
   tagLinkPrefix?: string;
   title: string;
@@ -122,6 +123,7 @@ const TopicAndTitleLoader = ({ children, loading }: LoaderProps) => {
 };
 
 const BlockResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
@@ -141,7 +143,8 @@ const BlockResource = ({
   };
 
   return (
-    <BlockElementWrapper onClick={handleClick}>
+    <BlockElementWrapper onClick={handleClick} to={link} id={id}>
+
       <ImageWrapper>
         <BlockImage image={resourceImage} loading={isLoading} />
       </ImageWrapper>

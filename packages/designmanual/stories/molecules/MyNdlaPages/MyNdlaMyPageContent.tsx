@@ -128,8 +128,9 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
       <Resources>
         <StyledH2>{t('myNdla.myPage.newFavourite')}</StyledH2>
         <StyledResourceList>
-          {recentFavorites?.map(({ title, topics, tags, resourceImage, link }) => (
+          {recentFavorites?.map(({ id, title, topics, tags, resourceImage, link }) => (
             <ListResource
+              id={id}
               title={title}
               topics={topics}
               tags={tags}

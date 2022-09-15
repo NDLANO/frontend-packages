@@ -78,6 +78,7 @@ const FolderWrapper = styled(SafeLink)`
 `;
 
 interface Props {
+  id: string;
   title: string;
   subFolders?: number;
   subResources?: number;
@@ -131,10 +132,10 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
 
 type LayoutType = 'list' | 'block';
 
-const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
+const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
   return (
-    <FolderWrapper to={link}>
+    <FolderWrapper to={link} id={id}>
       <FolderIconWrapper type={type}>
         <FolderOutlined aria-label={t('myNdla.folder.folder')} />
       </FolderIconWrapper>

@@ -19,6 +19,8 @@ const messages = {
       edit: 'Endre mappenamn',
       delete: 'Slett',
     },
+    hideFolders: 'Skjul alle mapper',
+    showFolders: 'Vis alle mapper',
     createFolder: 'Lag mappe',
     maxFoldersAlreadyAdded: 'Maks nivå av undermapper nådd',
     newFolder: {
@@ -246,13 +248,6 @@ const messages = {
       mainLink: {
         name: 'Følg oss',
       },
-    },
-    category: {
-      fellesfag: 'Fellesfag',
-      yrkesfag: 'Yrkesfag',
-      studiespesialiserende: 'Studieførebuande',
-      imported: 'Spolte fag',
-      heading: 'Kva lærer du?',
     },
     film: {
       header: 'NDLA film',
@@ -823,18 +818,6 @@ const messages = {
       text: 'er utarbeida av',
     },
   },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Velkommen til sniktitt på Fagfornyelsen i NDLA',
-      text: 'Hausten 2020 og 2021 vil dei nye læreplanane tre i kraft. I NDLA har vi starta dette arbeidet allereie. Dei innhaldsansvarlege i NDLA lagar kvar dag nye supre læringsressursar som er tilrettelagte for dei nye planane. På denne sida kan du sjå dei allereie nå.',
-      blogHeading: 'Vil du vite meir?',
-    },
-    badge: {
-      heading: 'Denne sida er tilrettelagt for fagfornyelsen 2020/2021',
-      text: 'Innhaldet er under arbeid. Ikkje på jakt etter dette?',
-      linkText: 'Gå til ndla.no for dagens innhald',
-    },
-  },
   frontPageToolbox: {
     heading: 'Verktøykassa',
     text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartare ved hjelp av riktig studieteknikk? Treng du råd om korleis du les mest mogleg effektivt til eksamen? I verktøykassa til NDLA finn du masse gode tips og råd!',
@@ -1006,16 +989,18 @@ const messages = {
     folders_plural: '{{count}} mapper',
     folder: {
       folder: 'Mappe',
-      delete: 'Slett',
-      edit: 'Rediger',
+      delete: 'Slett mappe',
+      edit: 'Rediger mappe',
       missingName: 'Skriv namn på mappe',
       folderDeleted: '"{{folderName}}" er sletta',
+      folderCreated: '"{{folderName}}" er oppretta',
     },
     tagList: 'emneknaggar',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',
     moreTags: 'vis {{count}} fleire emneknaggar',
-    confirmDeleteFolder: 'Er du sikker på at du vil slette mappa? Denne handlinga kan ikkje endrast.',
+    confirmDeleteFolder:
+      'Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
     myTags: 'Emneknaggane mine',
@@ -1037,6 +1022,9 @@ const messages = {
       myPage: 'Mi side',
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
+      loginText:
+        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriv noko støtande, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
+      loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjennar du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',

@@ -617,12 +617,14 @@ const messages = {
   changeLanguage: {
     nb: 'Rievdat giela girjedárogiellan',
     nn: 'Rievdat giela ođđadárogiellan',
+    se: 'Rievdat giela davvisámegiella',
     en: 'Rievdat giela eŋgelasgiellan',
   },
   currentLanguageText: {
     nb: 'Siiddut leat girjedárogillii',
     nn: 'Siiddut leat ođđadárogillii',
-    en: 'Eai buot siddut leat eŋgelasgillii olamuttus.Dat ihtet dárogillii.',
+    se: 'Siiddut leat davvisámegiellii',
+    en: 'Eai buot siddut leat eŋgelasgillii olamuttus. Dat ihtet dárogillii.',
   },
   breadcrumb: {
     toFrontpage: 'NDLA ovdasiidu',
@@ -902,6 +904,8 @@ const messages = {
   },
   h5p: {
     reuse: 'Geavat H5P',
+    resource: 'Oahppanresursa H5P',
+    error: 'Boasttuvuohta čuožžilii H5P viežžamis.',
   },
   video: {
     download: 'Viečča video',
@@ -911,6 +915,9 @@ const messages = {
   other: {
     download: 'Viečča sisdoalu',
     reuse: 'Geavat sisdoalu',
+  },
+  external: {
+    error: 'Boasttuvuohta čuožžilii olgguldas resurssa viežžamis.',
   },
   concept: {
     showDescription: 'Čájet čilgehusa govvideami.',
@@ -927,8 +934,6 @@ const messages = {
     showMore: 'Čájet eanet guoskevaš sisdoalu',
     showLess: 'Čájet unnit',
   },
-  'external.error': 'Boasttuvuohta čuožžilii olgguldas resurssa viežžamis.',
-  'h5p.error': 'Boasttuvuohta čuožžilii H5P viežžamis.',
   files: 'Fiillat',
   download: 'Viečča fiilla: ',
   expandButton: 'Čájet stuora veršuvnna',

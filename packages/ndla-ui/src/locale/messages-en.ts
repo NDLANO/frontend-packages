@@ -618,11 +618,13 @@ const messages = {
   changeLanguage: {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
+    se: 'Rievdat giela davvisámegiella',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
+    se: 'Siiddut leat davvisámegiellii',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -903,6 +905,8 @@ const messages = {
   },
   h5p: {
     reuse: 'Use H5P',
+    resource: 'Learning resource from H5P',
+    error: 'An error occurred while loading the H5P.',
   },
   video: {
     download: 'Download video',
@@ -912,6 +916,9 @@ const messages = {
   other: {
     download: 'Download content',
     reuse: 'Use content',
+  },
+  external: {
+    error: 'An error occurred while loading an external resource.',
   },
   concept: {
     showDescription: 'Show concept description',
@@ -928,8 +935,6 @@ const messages = {
     showMore: 'Show more related content',
     showLess: 'Show less',
   },
-  'external.error': 'An error occurred while loading an external resource.',
-  'h5p.error': 'An error occurred while loading the H5P.',
   files: 'Files',
   download: 'Download file: ',
   expandButton: 'Show large version',

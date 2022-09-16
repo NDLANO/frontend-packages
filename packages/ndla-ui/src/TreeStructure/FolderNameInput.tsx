@@ -17,6 +17,7 @@ import { Cross } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
 import { InputV2 as Input } from '@ndla/forms';
 import { TreeStructureType } from './types';
+import { treestructureId } from './helperFunctions';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -107,6 +108,7 @@ const FolderNameInput = ({
           label={t('treeStructure.newFolder.folderName')}
           aria-invalid={name.length === 0}
           aria-disabled={loading ? true : undefined}
+          aria-describedby={loading ? treestructureId(type, 'spinner') : undefined}
           ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
@@ -130,7 +132,7 @@ const FolderNameInput = ({
           }}
         />
         <Row>
-          {!loading ? (
+          {!loading && (
             <>
               <IconButton
                 tabIndex={0}
@@ -145,9 +147,17 @@ const FolderNameInput = ({
                 <Cross />
               </IconButton>
             </>
-          ) : (
-            <Spinner size="normal" margin={spacing.small} />
           )}
+          <div aria-live="assertive">
+            {loading && (
+              <Spinner
+                size="normal"
+                margin={spacing.small}
+                id={treestructureId(type, 'spinner')}
+                aria-label={t('loading')}
+              />
+            )}
+          </div>
         </Row>
       </InputWrapper>
     </NewFolderWrapper>

@@ -82,6 +82,7 @@ const NavigationLink = ({
 
   return (
     <StyledSafeLink
+      role="treeitem"
       ref={ref}
       onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
         if (e.key === 'Enter') {

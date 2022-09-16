@@ -856,6 +856,7 @@ const messages = {
     close: 'Govčča fálu',
   },
   close: 'Govčča',
+  loading: 'Laster',
   title: 'Tihttel',
   cancel: 'Botkke',
   save: 'Vurke',

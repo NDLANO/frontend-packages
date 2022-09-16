@@ -232,7 +232,6 @@ const TreeStructure = ({
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
             <StyledSelectedFolder
-              type="button"
               ref={ref}
               tabIndex={0}
               id={treestructureId(type, 'combobox')}
@@ -250,9 +249,6 @@ const TreeStructure = ({
                 if (e.key === 'Enter') {
                   if (showTree) {
                     setSelectedFolder(focusedFolder);
-                    setShowTree(false);
-                  } else {
-                    setShowTree(true);
                   }
                   return;
                 }

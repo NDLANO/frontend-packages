@@ -187,7 +187,7 @@ export const TreeStructureExampleComponent = ({
               return;
             }
             setLoading(true);
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 3000));
             setLoading(false);
             const flattenedStructure = flattenFolders(structure);
             const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);

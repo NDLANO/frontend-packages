@@ -858,6 +858,7 @@ const messages = {
   },
   cancel: 'Cancel',
   close: 'Close',
+  loading: 'Loading',
   title: 'Title',
   save: 'Save',
   image: {

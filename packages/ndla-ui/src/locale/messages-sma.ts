@@ -856,6 +856,7 @@ const messages = {
     close: 'Lukk meny',
   },
   close: 'Lukk',
+  loading: 'Laster',
   title: 'Tittel',
   cancel: 'Avbryt',
   save: 'Lagre',

@@ -857,6 +857,7 @@ const messages = {
   },
   cancel: 'Avbryt',
   close: 'Lukk',
+  loading: 'Laster',
   title: 'Tittel',
   save: 'Lagre',
   image: {

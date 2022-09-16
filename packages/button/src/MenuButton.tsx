@@ -30,9 +30,13 @@ const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledBu
   cursor: pointer;
   background: none;
   border: none;
-  &:hover *,
-  &:active *,
-  &:focus * {
+  border-radius: 100%;
+  transition: ${misc.transition.default};
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-within {
+    background-color: ${colors.brand.light};
     color: ${colors.brand.primary};
   }
 
@@ -40,17 +44,6 @@ const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledBu
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
     fill: ${colors.brand.secondary};
-  }
-`;
-
-const StyledHorizontalMenu = styled(HorizontalMenu)`
-  border-radius: 100%;
-  transition: ${misc.transition.default};
-  &:hover,
-  &:active,
-  &:focus,
-  ${() => StyledMenuButton}:active, ${() => StyledMenuButton}:focus, ${() => StyledMenuButton}:hover & {
-    background-color: ${colors.brand.light};
   }
 `;
 
@@ -119,7 +112,7 @@ export const MenuButton = ({
         onClick={(e) => e.preventDefault()} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
         {children}
-        {!hideMenuIcon && <StyledHorizontalMenu />}
+        {!hideMenuIcon && <HorizontalMenu />}
       </StyledMenuButton>
       <MenuPopover
         onKeyDown={(e) => e.stopPropagation()}

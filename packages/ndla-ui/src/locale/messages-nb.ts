@@ -997,7 +997,8 @@ const messages = {
     tagList: 'Emneknagger',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
-    moreTags: 'Vis {{count}} til emneknagger',
+    moreTags: 'Vis en emneknagg til',
+    moreTags_plural: 'Vis {{count}} emneknagger til',
     confirmDeleteFolder:
       'Er du sikker på at du vil slette mappen? Dersom mappen har undermapper vil disse også slettes. Handlingen kan ikke endres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',

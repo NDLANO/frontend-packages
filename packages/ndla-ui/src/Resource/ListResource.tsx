@@ -73,9 +73,8 @@ const TagsandActionMenu = styled.div`
   grid-area: tags;
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  width: 100%;
   overflow: hidden;
-  gap: ${spacing.small};
   align-self: flex-start;
   justify-self: flex-end;
   justify-content: flex-end;

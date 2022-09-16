@@ -999,7 +999,8 @@ const messages = {
     tagList: 'Tags',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
-    moreTags: 'Show {{count}} more tags',
+    moreTags: 'Show one more tag',
+    moreTags_plural: 'Show {{count}} more tags',
     confirmDeleteFolder:
       'Are you sure you want to delete this folder? Subfolders of this folder will also be deleted. This action cannot be undone.',
 

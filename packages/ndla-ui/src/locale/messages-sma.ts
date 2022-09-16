@@ -998,7 +998,8 @@ const messages = {
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
-    moreTags: 'Vis {{count}} til emneknagger',
+    moreTags: 'Vis ein emneknagg til',
+    moreTags_plural: 'Vis {{count}} emneknaggar til',
     confirmDeleteFolder:
       'Er du sikker på at du vil slette mappa? Dersom mappa har undermappar vil disse også slettes. Denne handlinga kan ikkje endrast.',
 

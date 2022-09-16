@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { MouseEvent, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuButton } from '@ndla/button';
@@ -22,10 +22,10 @@ export interface ResourceImageProps {
 
 export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
-  color: ${colors.brand.primary};
+  color: ${colors.text.primary};
 `;
 
-export const ResourceTitle = styled.h3`
+export const ResourceTitle = styled.h2`
   min-width: 50px;
   margin: 0;
   flex: 1;
@@ -38,6 +38,7 @@ export const ResourceTitle = styled.h3`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
+  ${fonts.sizes('18px', '18px')};
 `;
 
 const StyledTagList = styled.ul`
@@ -45,6 +46,7 @@ const StyledTagList = styled.ul`
   display: flex;
   margin: 0;
   padding: 0;
+  padding: 2px;
   gap: ${spacing.xsmall};
   overflow: hidden;
 `;
@@ -55,6 +57,8 @@ const StyledTagListElement = styled.li`
 `;
 
 const StyledSafeLink = styled(SafeLink)`
+  display: flex;
+  align-items: center;
   box-shadow: none;
   color: ${colors.brand.grey};
   &:hover {
@@ -71,6 +75,11 @@ const StyledTopicList = styled.ul`
   grid-area: topicList;
 `;
 
+const StyledTopicDivider = styled.span`
+  margin: 0;
+  padding: 0 ${spacing.xxsmall};
+`;
+
 const StyledTopicListElement = styled.li`
   ${fonts.sizes(12)};
   margin: 0;
@@ -78,11 +87,6 @@ const StyledTopicListElement = styled.li`
   padding: 0;
   display: flex;
   align-items: center;
-  :not(:last-child):after {
-    content: '•';
-    margin: 0;
-    padding: 0 ${spacing.xxsmall};
-  }
 `;
 
 export const Row = styled.div`
@@ -91,12 +95,13 @@ export const Row = styled.div`
   gap: ${spacing.xsmall};
 `;
 
-const TagCounterWrapper = styled.p`
-  color: ${colors.brand.primary};
+const TagCounterWrapper = styled.span`
+  color: ${colors.brand.secondary};
   box-shadow: none;
   margin: 0;
   font-weight: ${fonts.weight.semibold};
-  ${fonts.sizes(16)}
+  ${fonts.sizes('14px', '14px')};
+  padding: 5px;
 `;
 
 interface TagListProps {
@@ -133,6 +138,16 @@ interface CompressedTagListProps {
   tagLinkPrefix?: string;
 }
 
+const TagMenuButton = styled(MenuButton)`
+  &:hover,
+  &:active,
+  &:focus {
+    transition: ${misc.transition.default};
+    border-radius: 100%;
+    background-color: ${colors.brand.light};
+  }
+`;
+
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -150,9 +165,12 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
     <>
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
-        <MenuButton hideMenuIcon={true} menuItems={remainingTags} aria-label={t('myNdla.moreTags')}>
+        <TagMenuButton
+          hideMenuIcon={true}
+          menuItems={remainingTags}
+          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}>
           <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>
-        </MenuButton>
+        </TagMenuButton>
       )}
     </>
   );
@@ -168,7 +186,12 @@ export const TopicList = ({ topics }: TopicListProps) => {
   return (
     <StyledTopicList aria-label={t('navigation.topics')}>
       {topics.map((topic, i) => (
-        <StyledTopicListElement key={topic}>{topic}</StyledTopicListElement>
+        <>
+          <StyledTopicListElement key={topic}>
+            {topic}
+            {i !== topics.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
+          </StyledTopicListElement>
+        </>
       ))}
     </StyledTopicList>
   );

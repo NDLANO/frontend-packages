@@ -1040,6 +1040,8 @@ const messages = {
         term3: 'NDLA reserves the right to update or remove resources if they are not up to date.',
       },
       feide: 'We have retrieved this information from Feide',
+      feideWrongInfo:
+        'If the information is incorrect, it has to be updated by the host organizationg or the school that the account is associated with. An overview of user support can be found here: feide.no/brukerstotte',
       newFavourite: 'Recently favourited',
 
       storageInfo: {

@@ -165,6 +165,7 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
             <li>{courses.join(', ')}</li>
           </ul>
         </SchoolInfo>
+        <p>{t('myNdla.myPage.feideWrongInfo')}</p>
       </InfoBlock>
       <StyledBottomDiv>
         <Terms>

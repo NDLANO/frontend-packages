@@ -246,29 +246,16 @@ const TreeStructure = ({
               fontWeight="normal"
               shape="sharp"
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  setSelectedFolder(focusedFolder);
-                  return;
-                }
                 if (e.key === 'Escape') {
                   setShowTree(false);
                   return;
                 }
                 if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
                   setShowTree(true);
-                } else {
-                  if (!focusedFolder) {
-                    setFocusedFolder(selectedFolder || folders[0]);
-                  } else {
-                    arrowNavigation(
-                      e,
-                      focusedFolder.id,
-                      flattenedFolders,
-                      setFocusedFolder,
-                      onOpenFolder,
-                      onCloseFolder,
-                    );
-                  }
+                  return;
+                }
+                if (focusedFolder) {
+                  arrowNavigation(e, focusedFolder.id, flattenedFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
                 }
               }}
               onClick={() => {

@@ -181,9 +181,14 @@ const FolderItem = ({
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       ref={ref}
       level={level}
-      onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-        arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder)
-      }
+      onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
+        if (e.key === 'Enter') {
+          setSelectedFolder(folder);
+          setFocusedFolder(folder);
+          return;
+        }
+        arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
+      }}
       noArrow={!isMaxDepth}
       to={loading ? '' : linkPath}
       tabIndex={selected || focused ? 0 : -1}
@@ -197,6 +202,7 @@ const FolderItem = ({
           isOpen={isOpen}
           onClick={(e) => {
             e.stopPropagation();
+            e.preventDefault();
             ref.current?.focus();
             if (isOpen) {
               onCloseFolder(id);

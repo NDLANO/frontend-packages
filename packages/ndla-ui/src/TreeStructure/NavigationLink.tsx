@@ -83,9 +83,14 @@ const NavigationLink = ({
   return (
     <StyledSafeLink
       ref={ref}
-      onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-        arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder)
-      }
+      onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
+        if (e.key === 'Enter') {
+          setSelectedFolder(folder);
+          setFocusedFolder(folder);
+          return;
+        }
+        arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
+      }}
       tabIndex={selected || focused ? 0 : -1}
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}

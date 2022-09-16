@@ -132,9 +132,6 @@ const FolderNameInput = ({
         <Row>
           {!loading ? (
             <>
-              <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onCancelNewFolder}>
-                <Cross />
-              </IconButton>
               <IconButton
                 tabIndex={0}
                 aria-label={t('save')}
@@ -143,6 +140,9 @@ const FolderNameInput = ({
                 ghostPill
                 onClick={() => onSaveNewFolder(name, parentId)}>
                 <Done />
+              </IconButton>
+              <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onCancelNewFolder}>
+                <Cross />
               </IconButton>
             </>
           ) : (

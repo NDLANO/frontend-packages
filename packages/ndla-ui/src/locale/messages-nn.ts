@@ -1039,7 +1039,7 @@ const messages = {
         term3: 'NDLA tek atterhald om retten til å oppdatere eller slette utdaterte ressursar.',
       },
       newFavourite: 'Nyleg lagt til',
-      feide: 'Dette hentar vi om deg frå Feide',
+      feide: 'Dette hentar vi om deg gjennom Feide',
       storageInfo: {
         title: 'Slik lagrar du favorittressursene dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',

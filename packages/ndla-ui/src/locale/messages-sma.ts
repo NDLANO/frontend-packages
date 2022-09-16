@@ -995,10 +995,14 @@ const messages = {
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er oppretta',
     },
+    tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
+    moreTags: 'Vis ein emneknagg til',
+    moreTags_plural: 'Vis {{count}} emneknaggar til',
     confirmDeleteFolder:
       'Er du sikker på at du vil slette mappa? Dersom mappa har undermappar vil disse også slettes. Denne handlinga kan ikkje endrast.',
+
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknagger',

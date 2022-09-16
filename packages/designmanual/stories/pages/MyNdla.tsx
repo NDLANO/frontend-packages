@@ -33,7 +33,7 @@ export const menuItems: MenuItemProps[] = [
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];
 
-const tags = ['tag', 'tag', 'tag'];
+const tags = ['tag', 'tag', 'tag', 'tag'];
 
 const topics = ['Matte', 'Naturfag'];
 
@@ -107,7 +107,7 @@ export const MyNdla = () => {
               description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
+                alt: '',
               }}
               link={''}
               menuItems={menuItems}
@@ -122,7 +122,7 @@ export const MyNdla = () => {
               description={'En helt vanlig beskrivelse.'}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
+                alt: '',
               }}
               link={''}
               menuItems={menuItems}
@@ -137,7 +137,7 @@ export const MyNdla = () => {
               tags={tags}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
+                alt: '',
               }}
               link={''}
               menuItems={menuItems}
@@ -150,9 +150,10 @@ export const MyNdla = () => {
               topics={topics}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
+                alt: '',
               }}
               link={''}
+              menuItems={menuItems}
             />
           </>
         }
@@ -176,7 +177,7 @@ export const MyNdla = () => {
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
                     src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
+                    alt: '',
                   },
                 },
                 {
@@ -189,7 +190,7 @@ export const MyNdla = () => {
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
                     src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
+                    alt: '',
                   },
                 },
                 {
@@ -202,7 +203,7 @@ export const MyNdla = () => {
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
                     src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
+                    alt: '',
                   },
                 },
                 {
@@ -215,7 +216,7 @@ export const MyNdla = () => {
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
                     src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
+                    alt: '',
                   },
                 },
               ]}

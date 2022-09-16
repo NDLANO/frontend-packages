@@ -7,12 +7,18 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
-import SafeLink from '@ndla/safelink';
+import React, { useRef } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
-import { CompressedTagList, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
+import {
+  CompressedTagList,
+  ResourceImageProps,
+  ResourceTitle,
+  ResourceTitleLink,
+  TopicList,
+  LoaderProps,
+} from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
 const StyledResourceDescription = styled.p`
@@ -31,7 +37,7 @@ const StyledResourceDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-const ResourceWrapper = styled(SafeLink)`
+const ResourceWrapper = styled.div`
   flex: 1;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -47,38 +53,38 @@ const ResourceWrapper = styled(SafeLink)`
       'tags                 tags';
   }
 
-  text-decoration: none;
-  box-shadow: none;
+  cursor: pointer;
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
-  color: ${colors.brand.greyDark};
   gap: 0 ${spacing.small};
 
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
-    ${ResourceTitle} {
+    ${() => ResourceTitleLink} {
       color: ${colors.brand.primary};
       text-decoration: underline;
-    }
-    a {
-      display: flex;
-      align-items: center;
     }
   }
 `;
 
 const TagsandActionMenu = styled.div`
+  box-sizing: content-box;
+  padding: 2px;
   grid-area: tags;
   display: flex;
   align-items: center;
   width: 100%;
   overflow: hidden;
-  gap: ${spacing.small};
   align-self: flex-start;
   justify-self: flex-end;
   justify-content: flex-end;
+
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    margin-top: -${spacing.xsmall};
+    margin-right: -${spacing.xxsmall};
+  }
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`
@@ -100,7 +106,7 @@ const StyledImage = styled(Image)`
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  margin-top: ${spacing.xxsmall};
+  margin-top: 2px;
 `;
 
 interface StyledImageProps {
@@ -146,13 +152,7 @@ const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImagePr
   );
 };
 
-interface TopicAndTitleProps {
-  title: string;
-  topics: string[];
-  loading?: boolean;
-}
-
-const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
+const TopicAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -162,12 +162,7 @@ const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
       </ContentLoader>
     );
   }
-  return (
-    <>
-      <ResourceTitle>{title}</ResourceTitle>
-      <TopicList topics={topics} />
-    </>
-  );
+  return <>{children}</>;
 };
 
 interface ResourceDescriptionProps {
@@ -200,14 +195,25 @@ const ListResource = ({
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const handleClick = () => {
+    if (linkRef.current) {
+      linkRef.current.click();
+    }
+  };
 
   return (
-    <ResourceWrapper to={link} id={id}>
+    <ResourceWrapper onClick={handleClick} id={id}>
       <StyledImageWrapper imageSize={imageType}>
         <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
       </StyledImageWrapper>
       <TopicAndTitleWrapper>
-        <TopicAndTitle topics={topics} title={title} loading={isLoading} />
+        <TopicAndTitleLoader loading={isLoading}>
+          <ResourceTitleLink to={link} ref={linkRef}>
+            <ResourceTitle>{title}</ResourceTitle>
+          </ResourceTitleLink>
+          <TopicList topics={topics} />
+        </TopicAndTitleLoader>
       </TopicAndTitleWrapper>
       {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>

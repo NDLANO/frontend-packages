@@ -16,6 +16,7 @@ import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/cor
 import SafeLink from '@ndla/safelink';
 import { CommonFolderItemsProps, FolderType } from './types';
 import { arrowNavigation } from './arrowNavigation';
+import { treestructureId } from './helperFunctions';
 
 const OpenButton = styled.span<{ isOpen: boolean }>`
   display: flex;
@@ -40,7 +41,7 @@ const StyledName = styled.span`
   text-align: left;
 `;
 
-const shouldForwardProp = (name: string) => !['selected', 'noArrow', 'fullWidth', 'level'].includes(name);
+const shouldForwardProp = (name: string) => !['selected', 'noArrow', 'fullWidth', 'level', 'focused'].includes(name);
 
 interface FolderNameProps {
   selected?: boolean;
@@ -48,6 +49,7 @@ interface FolderNameProps {
   fullWidth?: boolean;
   level: number;
   isCreatingFolder?: boolean;
+  focused?: boolean;
 }
 
 const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
@@ -58,14 +60,15 @@ const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
   gap: ${spacing.xxsmall};
   border: none;
   outline: none;
-  background: ${({ selected, isCreatingFolder }) => selected && !isCreatingFolder && colors.brand.lighter};
-  color: ${({ isCreatingFolder, selected }) =>
-    isCreatingFolder && selected ? colors.brand.primary : colors.text.primary};
+  background: ${({ selected, isCreatingFolder, focused }) =>
+    isCreatingFolder ? 'none' : selected ? colors.brand.lighter : focused && colors.brand.lightest};
+  color: ${({ isCreatingFolder, selected, focused }) =>
+    isCreatingFolder && focused ? colors.brand.primary : colors.text.primary};
   transition: ${animations.durations.superFast};
   line-height: 1;
   word-break: break-word;
-  &:hover,
-  &:focus {
+
+  &:hover {
     box-shadow: none;
     outline: none;
     background: ${({ selected }) => (selected ? colors.brand.light : colors.brand.lightest)};
@@ -107,7 +110,7 @@ interface Props extends CommonFolderItemsProps {
 }
 
 const FolderItem = ({
-  focusedFolderId,
+  focusedFolder,
   folder,
   isOpen,
   level,
@@ -116,8 +119,7 @@ const FolderItem = ({
   onCloseFolder,
   onOpenFolder,
   onSelectFolder,
-  openOnFolderClick,
-  setFocusedId,
+  setFocusedFolder,
   setSelectedFolder,
   targetResource,
   visibleFolders,
@@ -125,37 +127,41 @@ const FolderItem = ({
   maxLevel,
   isCreatingFolder,
   type,
+  closeTree,
 }: Props) => {
   const { t } = useTranslation();
-  const { id, name } = folder;
+  const { id, name, isNavigation } = folder;
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
-  const selected = selectedFolder && selectedFolder.id === id;
-  const focused = focusedFolderId === id;
+  const selected = selectedFolder ? selectedFolder.id === id : false;
+
+  const focused = focusedFolder?.id === id;
 
   const handleClickFolder = () => {
-    if (openOnFolderClick) {
-      if (selected) {
-        if (isOpen) {
-          onCloseFolder(id);
-        } else {
-          onOpenFolder(id);
-        }
-      }
-    }
     if (!selected) {
       setSelectedFolder(folder);
-      setFocusedId(id);
     }
-    onSelectFolder?.(id);
+    setFocusedFolder(folder);
+    if (type === 'picker') {
+      if (selected) {
+        closeTree();
+      }
+      onSelectFolder?.(id);
+    }
   };
 
   useEffect(() => {
-    if (focusedFolderId === id && !isCreatingFolder) {
-      ref.current?.focus();
+    if (focusedFolder?.id === id && !isCreatingFolder) {
+      if (type === 'navigation') {
+        ref.current?.focus();
+      }
+      ref.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
     }
-  }, [focusedFolderId, ref, id, isCreatingFolder]);
+  }, [focusedFolder, ref, id, isCreatingFolder, type]);
 
-  const linkPath = `/minndla${level > 0 ? '/folders' : ''}/${id}`;
+  const linkPath = `/minndla${!isNavigation ? '/folders' : ''}/${id}`;
 
   const containsResource =
     targetResource && folder.resources.some((resource) => resource.resourceId === targetResource.resourceId);
@@ -169,27 +175,28 @@ const FolderItem = ({
   return type === 'navigation' ? (
     <FolderNameLink
       role="treeitem"
-      aria-owns={`subfolders-${folder.id}`}
+      aria-owns={folder.subfolders.length ? `subfolders-${folder.id}` : undefined}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-current={selected ? 'page' : undefined}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       ref={ref}
       level={level}
       onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-        arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
+        arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder)
       }
       noArrow={!isMaxDepth}
       to={loading ? '' : linkPath}
       tabIndex={selected || focused ? 0 : -1}
       selected={selected}
-      onFocus={() => setFocusedId(id)}
+      onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}>
       {(!hideArrow || level === 0) && (
         <OpenButton
           aria-hidden
           tabIndex={-1}
           isOpen={isOpen}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             ref.current?.focus();
             if (isOpen) {
               onCloseFolder(id);
@@ -204,10 +211,13 @@ const FolderItem = ({
     </FolderNameLink>
   ) : (
     <FolderName
+      tabIndex={-1}
       role="treeitem"
-      aria-owns={`item-${folder.id}`}
+      id={treestructureId(type, folder.id)}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-selected={selected}
+      focused={focusedFolder?.id === folder.id}
+      aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}
       variant="ghost"
       shape="sharp"
       fontWeight="normal"
@@ -215,12 +225,12 @@ const FolderItem = ({
       ref={ref}
       level={level}
       fullWidth={framed}
-      onKeyDown={(e) => arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)}
       noArrow={hideArrow}
-      tabIndex={selected || focused ? 0 : -1}
       selected={selected}
       disabled={loading}
-      onFocus={() => setFocusedId(id)}
+      onFocus={(e) => {
+        setFocusedFolder(focusedFolder || folder, true);
+      }}
       onClick={handleClickFolder}
       isCreatingFolder={isCreatingFolder}>
       {!hideArrow && (
@@ -228,8 +238,9 @@ const FolderItem = ({
           aria-hidden
           tabIndex={-1}
           isOpen={isOpen}
-          onClick={() => {
-            ref.current?.focus();
+          onClick={(e) => {
+            e.stopPropagation();
+            setFocusedFolder(folder, true);
             if (isOpen) {
               onCloseFolder(id);
             } else {
@@ -242,7 +253,6 @@ const FolderItem = ({
       <StyledName>{name}</StyledName>
       {containsResource && (
         <StyledDone
-          ariaHidden={false}
           aria-label={t('myNdla.alreadyInFolder')}
           id={`alreadyAdded-${folder.id}`}
           title={t('myNdla.alreadyInFolder')}

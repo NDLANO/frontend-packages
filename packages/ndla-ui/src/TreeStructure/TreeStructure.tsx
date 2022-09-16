@@ -18,8 +18,9 @@ import { css } from '@emotion/core';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
 import FolderItems from './FolderItems';
-import { flattenFolders } from './helperFunctions';
+import { flattenFolders, treestructureId } from './helperFunctions';
 import { CommonTreeStructureProps, FolderType, TreeStructureType } from './types';
+import { arrowNavigation } from './arrowNavigation';
 
 export const MAX_LEVEL_FOR_FOLDERS = 4;
 
@@ -48,7 +49,7 @@ const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
   display: flex;
   flex-direction: column;
   ${({ type }) =>
-    (type === 'normal' || type === 'picker') &&
+    type === 'picker' &&
     css`
       overflow: hidden;
       border: 1px solid ${colors.brand.neutral7};
@@ -66,7 +67,7 @@ interface ScrollableDivProps {
 }
 const ScrollableDiv = styled.div<ScrollableDivProps>`
   ${({ type }) =>
-    (type === 'picker' || type === 'normal') &&
+    type === 'picker' &&
     css`
       overflow: overlay;
       ::-webkit-scrollbar {
@@ -85,11 +86,15 @@ const ScrollableDiv = styled.div<ScrollableDivProps>`
 const StyledSelectedFolder = styled(Button)`
   flex: 1;
   justify-content: flex-start;
+  color: ${colors.black};
   :hover,
   :focus {
     background: none;
     box-shadow: none;
     border-color: transparent;
+  }
+  :focus-visible {
+    outline: none;
   }
 `;
 
@@ -121,25 +126,23 @@ const TreeStructure = ({
   maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
   onNewFolder,
   onSelectFolder,
-  openOnFolderClick,
   targetResource,
-  type = 'normal',
+  type,
 }: TreeStructureProps) => {
   const { t } = useTranslation();
 
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
 
   const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
-  const [focusedId, setFocusedId] = useState<string | undefined>();
+  const [focusedFolder, setFocusedFolder] = useState<FolderType | undefined>();
   const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
-  const [showTree, setShowTree] = useState(type !== 'picker');
+  const [showTree, setShowTree] = useState(type === 'navigation');
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
-  const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
 
   useEffect(() => {
     if (defaultOpenFolders) {
@@ -153,10 +156,6 @@ const TreeStructure = ({
   }, [defaultOpenFolders]);
 
   useEffect(() => {
-    setNewFolderParentId(undefined);
-  }, [selectedFolder]);
-
-  useEffect(() => {
     if (defaultSelectedFolderId !== undefined) {
       const selected = flattenFolders(folders).find((folder) => folder.id === defaultSelectedFolderId);
       if (selected) {
@@ -168,16 +167,12 @@ const TreeStructure = ({
 
   useEffect(() => {
     if (showTree) {
-      setFocusedId(selectedFolder?.id);
+      setFocusedFolder(selectedFolder);
+    } else {
+      setNewFolderParentId(undefined);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showTree]);
-
-  useEffect(() => {
-    if (!loading) {
-      setNewFolderParentId(undefined);
-    }
-  }, [loading]);
 
   const onCloseFolder = (id: string) => {
     const closedFolder = flattenedFolders.find((folder) => folder.id === id);
@@ -185,7 +180,7 @@ const TreeStructure = ({
     if (closedFolder) {
       const subFolders = closedFolder.subfolders && flattenFolders(closedFolder.subfolders);
       if (subFolders.some((folder) => folder.id === selectedFolder?.id)) {
-        setFocusedId(closedFolder.id);
+        setFocusedFolder(closedFolder);
       }
     }
     setOpenFolders(openFolders.filter((folderId) => folderId !== id));
@@ -200,24 +195,33 @@ const TreeStructure = ({
       if (newFolder) {
         setSelectedFolder(newFolder);
         onSelectFolder?.(newFolder.id);
-        setFocusedId(newFolder.id);
+        setFocusedFolder(newFolder);
         setOpenFolders(uniq(openFolders.concat(parentId)));
         setNewFolderParentId?.(undefined);
+        ref.current?.focus();
       }
     });
   };
 
   const onCancelNewFolder = () => {
     setNewFolderParentId?.(undefined);
+    ref.current?.focus();
+  };
+
+  const setFolderFocus = (folder: FolderType, focus?: boolean) => {
+    setFocusedFolder(folder);
+
+    if (focus) {
+      ref.current?.focus();
+    }
   };
 
   const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
 
   return (
     <StyledTreeStructure>
-      {label && <StyledLabel id="treestructure-label">{label}</StyledLabel>}
+      {label && <StyledLabel id={treestructureId(type, 'label')}>{label}</StyledLabel>}
       <TreeStructureWrapper
-        ref={ref}
         aria-label={label}
         type={type}
         onBlur={(e) => {
@@ -228,18 +232,43 @@ const TreeStructure = ({
         {type === 'picker' && (
           <StyledRow isOpen={showTree}>
             <StyledSelectedFolder
+              ref={ref}
+              tabIndex={0}
+              id={treestructureId(type, 'combobox')}
               role="combobox"
-              aria-controls="treestructure-popup"
+              aria-controls={treestructureId(type, 'popup')}
               aria-haspopup="tree"
               aria-expanded={showTree}
-              aria-labelledby="treestructure-label"
+              aria-labelledby={label ? treestructureId(type, 'label') : undefined}
+              aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
               variant="ghost"
               colorTheme="light"
               fontWeight="normal"
               shape="sharp"
               onKeyDown={(e) => {
-                if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
+                if (e.key === 'Enter') {
+                  setSelectedFolder(focusedFolder);
+                  return;
+                }
+                if (e.key === 'Escape') {
+                  setShowTree(false);
+                  return;
+                }
+                if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
                   setShowTree(true);
+                } else {
+                  if (!focusedFolder) {
+                    setFocusedFolder(selectedFolder || folders[0]);
+                  } else {
+                    arrowNavigation(
+                      e,
+                      focusedFolder.id,
+                      flattenedFolders,
+                      setFocusedFolder,
+                      onOpenFolder,
+                      onCloseFolder,
+                    );
+                  }
                 }
               }}
               onClick={() => {
@@ -267,7 +296,7 @@ const TreeStructure = ({
                         })
                       : t('treeStructure.maxFoldersAlreadyAdded')
                   }
-                  onClick={() => setNewFolderParentId(selectedFolder?.id)}>
+                  onClick={() => setNewFolderParentId(focusedFolder?.id)}>
                   <StyledPlus /> {t('myNdla.newFolder')}
                 </StyledAddFolderButton>
               </Tooltip>
@@ -280,6 +309,9 @@ const TreeStructure = ({
               colorTheme="greyLighter"
               size="small"
               onClick={() => {
+                if (!showTree) {
+                  ref.current?.focus();
+                }
                 setShowTree(!showTree);
               }}>
               {showTree ? <ChevronUp /> : <ChevronDown />}
@@ -289,7 +321,7 @@ const TreeStructure = ({
         {showTree && (
           <ScrollableDiv type={type}>
             <FolderItems
-              focusedFolderId={focusedId}
+              focusedFolder={focusedFolder}
               folders={folders}
               level={0}
               loading={loading}
@@ -302,12 +334,12 @@ const TreeStructure = ({
               onSaveNewFolder={onSaveNewFolder}
               onSelectFolder={onSelectFolder}
               openFolders={openFolders}
-              openOnFolderClick={openOnFolderClick}
-              setFocusedId={setFocusedId}
+              setFocusedFolder={setFolderFocus}
               setSelectedFolder={setSelectedFolder}
               targetResource={targetResource}
-              visibleFolders={visibleFolderIds}
+              visibleFolders={flattenedFolders}
               type={type}
+              closeTree={() => setShowTree(false)}
             />
           </ScrollableDiv>
         )}

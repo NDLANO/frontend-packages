@@ -95,26 +95,18 @@ const FolderNameInput = ({
     if (isMobile) {
       inputRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-    return () => {
-      onCancelNewFolder();
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <NewFolderWrapper
-      onBlur={(e) => {
-        if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
-          onCancelNewFolder();
-        }
-      }}>
+    <NewFolderWrapper>
       <InputWrapper level={level}>
         <StyledInput
           name="name"
           labelHidden
           label={t('treeStructure.newFolder.folderName')}
           aria-invalid={name.length === 0}
-          aria-disabled={loading}
+          aria-disabled={loading ? true : undefined}
           ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}

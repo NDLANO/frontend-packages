@@ -46,6 +46,15 @@ const BlockElementWrapper = styled.div`
   border-radius: 2px;
   color: ${colors.brand.greyDark};
   cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    transition-duration: 0.2s;
+    ${() => ResourceTitleLink} {
+      color: ${colors.brand.primary};
+      text-decoration: underline;
+    }
+  }
 `;
 
 const BlockDescription = styled.p`
@@ -69,6 +78,7 @@ const BlockDescription = styled.p`
 
 const RightRow = styled(Row)`
   justify-content: flex-end;
+  margin-bottom: -${spacing.xxsmall};
 `;
 
 const BlockInfoWrapper = styled.div`

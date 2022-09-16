@@ -22,7 +22,7 @@ export interface ResourceImageProps {
 
 export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
-  color: ${colors.text.primary};
+  color: ${colors.brand.primary};
 `;
 
 export const ResourceTitle = styled.h2`
@@ -45,7 +45,6 @@ const StyledTagList = styled.ul`
   list-style: none;
   display: flex;
   margin: 0;
-  padding: 0;
   padding: 2px;
   gap: ${spacing.xsmall};
   overflow: hidden;

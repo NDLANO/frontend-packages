@@ -153,6 +153,7 @@ export const MyNdla = () => {
                 alt: '',
               }}
               link={''}
+              menuItems={menuItems}
             />
           </>
         }

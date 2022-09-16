@@ -70,6 +70,8 @@ const ResourceWrapper = styled.div`
 `;
 
 const TagsandActionMenu = styled.div`
+  box-sizing: content-box;
+  padding: 2px;
   grid-area: tags;
   display: flex;
   align-items: center;
@@ -78,6 +80,11 @@ const TagsandActionMenu = styled.div`
   align-self: flex-start;
   justify-self: flex-end;
   justify-content: flex-end;
+
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    margin-top: -${spacing.xsmall};
+    margin-right: -${spacing.xxsmall};
+  }
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`
@@ -99,7 +106,7 @@ const StyledImage = styled(Image)`
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  margin-top: ${spacing.xxsmall};
+  margin-top: 2px;
 `;
 
 interface StyledImageProps {

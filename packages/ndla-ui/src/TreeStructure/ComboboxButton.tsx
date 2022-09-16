@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
@@ -98,6 +98,26 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
     const { t } = useTranslation();
     const innerRef = useForwardedRef(ref);
 
+    const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key === 'Enter') {
+        if (showTree) {
+          setSelectedFolder(focusedFolder);
+        }
+        return;
+      }
+      if (e.key === 'Escape') {
+        onToggleTree(false);
+        return;
+      }
+      if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
+        onToggleTree(true);
+        return;
+      }
+      if (focusedFolder) {
+        arrowNavigation(e, focusedFolder.id, flattenedFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
+      }
+    };
+
     const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
     return (
       <StyledRow isOpen={showTree}>
@@ -115,25 +135,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           colorTheme="light"
           fontWeight="normal"
           shape="sharp"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              if (showTree) {
-                setSelectedFolder(focusedFolder);
-              }
-              return;
-            }
-            if (e.key === 'Escape') {
-              onToggleTree(false);
-              return;
-            }
-            if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
-              onToggleTree(true);
-              return;
-            }
-            if (focusedFolder) {
-              arrowNavigation(e, focusedFolder.id, flattenedFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
-            }
-          }}
+          onKeyDown={onKeyDown}
           onClick={() => {
             onToggleTree(!showTree);
           }}>

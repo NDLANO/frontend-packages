@@ -91,6 +91,7 @@ const NavigationLink = ({
         }
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
       }}
+      aria-current={selected ? 'page' : undefined}
       tabIndex={selected || focused ? 0 : -1}
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}

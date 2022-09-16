@@ -114,7 +114,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
   defaultOpenFolders?: string[];
   folders: FolderType[];
   label?: string;
-  maximumLevelsOfFoldersAllowed?: number;
+  maxLevel?: number;
   onNewFolder?: (name: string, parentId: string) => Promise<IFolder>;
 }
 
@@ -123,7 +123,7 @@ const TreeStructure = ({
   folders,
   label,
   loading,
-  maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
+  maxLevel = MAX_LEVEL_FOR_FOLDERS,
   onNewFolder,
   onSelectFolder,
   targetResource,
@@ -216,7 +216,7 @@ const TreeStructure = ({
     }
   };
 
-  const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
+  const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
 
   return (
     <StyledTreeStructure>
@@ -319,7 +319,7 @@ const TreeStructure = ({
               level={0}
               loading={loading}
               selectedFolder={selectedFolder}
-              maxLevel={maximumLevelsOfFoldersAllowed}
+              maxLevel={maxLevel}
               newFolderParentId={newFolderParentId}
               onCancelNewFolder={onCancelNewFolder}
               onCloseFolder={onCloseFolder}

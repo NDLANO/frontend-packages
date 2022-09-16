@@ -41,12 +41,10 @@ const StyledName = styled.span`
   text-align: left;
 `;
 
-const shouldForwardProp = (name: string) => !['selected', 'noArrow', 'fullWidth', 'level', 'focused'].includes(name);
+const shouldForwardProp = (name: string) => !['selected', 'level', 'focused', 'isCreatingFolder'].includes(name);
 
 interface FolderNameProps {
   selected?: boolean;
-  noArrow?: boolean;
-  fullWidth?: boolean;
   level: number;
   isCreatingFolder?: boolean;
   focused?: boolean;
@@ -62,7 +60,7 @@ const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
   outline: none;
   background: ${({ selected, isCreatingFolder, focused }) =>
     isCreatingFolder ? 'none' : selected ? colors.brand.lighter : focused && colors.brand.lightest};
-  color: ${({ isCreatingFolder, selected, focused }) =>
+  color: ${({ isCreatingFolder, focused }) =>
     isCreatingFolder && focused ? colors.brand.primary : colors.text.primary};
   transition: ${animations.durations.superFast};
   line-height: 1;
@@ -123,7 +121,6 @@ const FolderItem = ({
   setSelectedFolder,
   targetResource,
   visibleFolders,
-  framed,
   maxLevel,
   isCreatingFolder,
   type,
@@ -189,7 +186,6 @@ const FolderItem = ({
         }
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
       }}
-      noArrow={!isMaxDepth}
       to={loading ? '' : linkPath}
       tabIndex={selected || focused ? 0 : -1}
       selected={selected}
@@ -230,8 +226,6 @@ const FolderItem = ({
       colorTheme="light"
       ref={ref}
       level={level}
-      fullWidth={framed}
-      noArrow={hideArrow}
       selected={selected}
       disabled={loading}
       onFocus={(e) => {

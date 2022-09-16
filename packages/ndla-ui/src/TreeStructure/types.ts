@@ -25,7 +25,6 @@ export interface CommonTreeStructureProps {
   loading?: boolean;
   onSelectFolder?: (id: string) => void;
   targetResource?: IResource;
-  framed?: boolean;
   type: TreeStructureType;
 }
 

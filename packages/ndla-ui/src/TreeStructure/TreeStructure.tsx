@@ -49,6 +49,7 @@ const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
 interface ScrollableDivProps {
   type: TreeStructureType;
 }
+
 const ScrollableDiv = styled.div<ScrollableDivProps>`
   ${({ type }) =>
     type === 'picker' &&
@@ -115,19 +116,20 @@ const TreeStructure = ({
       const selected = flattenFolders(folders).find((folder) => folder.id === defaultSelectedFolderId);
       if (selected) {
         setSelectedFolder(selected);
+        if (type === 'picker') {
+          setFocusedFolder(selected);
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultSelectedFolderId]);
 
-  useEffect(() => {
-    if (showTree) {
-      setFocusedFolder(selectedFolder);
-    } else {
+  const onToggleTree = (open: boolean) => {
+    setShowTree(open);
+    if (!open) {
       setNewFolderParentId(undefined);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showTree]);
+  };
 
   const onCloseFolder = (id: string) => {
     const closedFolder = flattenedFolders.find((folder) => folder.id === id);
@@ -179,7 +181,7 @@ const TreeStructure = ({
         type={type}
         onBlur={(e) => {
           if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
-            setShowTree(false);
+            onToggleTree(false);
           }
         }}>
         {type === 'picker' && (
@@ -192,7 +194,7 @@ const TreeStructure = ({
             selectedFolder={selectedFolder}
             setSelectedFolder={setSelectedFolder}
             setFocusedFolder={setFocusedFolder}
-            setShowTree={setShowTree}
+            onToggleTree={onToggleTree}
             flattenedFolders={flattenedFolders}
             onCloseFolder={onCloseFolder}
             onOpenFolder={onOpenFolder}
@@ -222,7 +224,7 @@ const TreeStructure = ({
               targetResource={targetResource}
               visibleFolders={flattenedFolders}
               type={type}
-              closeTree={() => setShowTree(false)}
+              closeTree={() => onToggleTree(false)}
             />
           </ScrollableDiv>
         )}

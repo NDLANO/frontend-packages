@@ -65,7 +65,7 @@ interface Props {
   focusedFolder?: FolderType;
   selectedFolder?: FolderType;
   setSelectedFolder: (folder?: FolderType) => void;
-  setShowTree: (value: boolean) => void;
+  onToggleTree: (open: boolean) => void;
   flattenedFolders: FolderType[];
   onOpenFolder: (id: string) => void;
   onCloseFolder: (id: string) => void;
@@ -84,7 +84,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       focusedFolder,
       selectedFolder,
       setSelectedFolder,
-      setShowTree,
+      onToggleTree,
       flattenedFolders,
       setFocusedFolder,
       onOpenFolder,
@@ -124,11 +124,11 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
               return;
             }
             if (e.key === 'Escape') {
-              setShowTree(false);
+              onToggleTree(false);
               return;
             }
             if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
-              setShowTree(true);
+              onToggleTree(true);
               return;
             }
             if (focusedFolder) {
@@ -136,7 +136,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             }
           }}
           onClick={() => {
-            setShowTree(!showTree);
+            onToggleTree(!showTree);
           }}>
           {selectedFolder?.name}
         </StyledSelectedFolder>
@@ -176,7 +176,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             if (!showTree) {
               innerRef.current?.focus();
             }
-            setShowTree(!showTree);
+            onToggleTree(!showTree);
           }}>
           {showTree ? <ChevronUp /> : <ChevronDown />}
         </IconButton>

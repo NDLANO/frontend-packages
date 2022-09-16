@@ -172,7 +172,7 @@ const FolderItem = ({
   return type === 'navigation' ? (
     <FolderNameLink
       role="treeitem"
-      aria-owns={folder.subfolders.length ? `subfolders-${folder.id}` : undefined}
+      aria-owns={folder.subfolders.length ? treestructureId(type, `subfolders-${folder.id}`) : undefined}
       aria-expanded={isMaxDepth || emptyFolder ? undefined : isOpen}
       aria-current={selected ? 'page' : undefined}
       aria-describedby={containsResource ? `alreadyAdded-${folder.id}` : undefined}

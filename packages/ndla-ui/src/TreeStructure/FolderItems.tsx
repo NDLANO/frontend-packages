@@ -66,7 +66,7 @@ const FolderItems = ({
       level === 0 && type === 'picker'
         ? treestructureId(type, 'popup')
         : parentFolder
-        ? `subfolders-${parentFolder.id}`
+        ? treestructureId(type, `subfolders-${parentFolder.id}`)
         : undefined
     }
     tabIndex={-1}

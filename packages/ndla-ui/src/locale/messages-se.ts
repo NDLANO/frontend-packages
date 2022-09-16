@@ -26,6 +26,7 @@ const messages = {
     newFolder: {
       placeholder: 'Čále nama máhppii',
       defaultName: 'Ođđa máhppa',
+      folderName: 'Mappenavn',
     },
   },
   tagSelector: {
@@ -855,6 +856,7 @@ const messages = {
     close: 'Govčča fálu',
   },
   close: 'Govčča',
+  loading: 'Laster',
   title: 'Tihttel',
   cancel: 'Botkke',
   save: 'Vurke',

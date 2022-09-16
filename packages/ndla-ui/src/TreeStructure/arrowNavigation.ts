@@ -7,27 +7,28 @@
  */
 
 import { KeyboardEvent } from 'react';
+import { FolderType } from './types';
 
 const navigateVertical = (
-  visibleFolders: string[],
+  visibleFolders: FolderType[],
   folderId: string,
-  setFocusedFolderId: (id: string) => void,
+  setFocusedFolderId: (id: FolderType) => void,
   direction: 1 | -1,
 ) => {
-  const currentIndex = visibleFolders.findIndex((id) => id === folderId);
+  const currentIndex = visibleFolders.findIndex((folder) => folder.id === folderId);
   const target = visibleFolders[currentIndex + direction];
   if (target !== undefined) {
     setFocusedFolderId(target);
   }
 };
 
-const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter'];
 
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,
   id: string,
-  visibleFolders: string[],
-  setFocusedFolderId: (id: string) => void,
+  visibleFolders: FolderType[],
+  setFocusedFolderId: (id: FolderType) => void,
   onOpen: (id: string) => void,
   onClose: (id: string) => void,
 ) => {

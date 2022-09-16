@@ -15,7 +15,7 @@ export interface FolderType extends IFolder {
   isNavigation?: boolean;
 }
 
-export type TreeStructureType = 'normal' | 'navigation' | 'picker';
+export type TreeStructureType = 'navigation' | 'picker';
 
 export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
   onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
@@ -24,20 +24,19 @@ export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
 export interface CommonTreeStructureProps {
   loading?: boolean;
   onSelectFolder?: (id: string) => void;
-  openOnFolderClick?: boolean;
   targetResource?: IResource;
-  framed?: boolean;
   type: TreeStructureType;
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
-  focusedFolderId?: string;
+  focusedFolder?: FolderType;
   level: number;
   maxLevel: number;
   selectedFolder?: FolderType;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  setFocusedId: (id: string) => void;
-  setSelectedFolder: (id: FolderType) => void;
-  visibleFolders: string[];
+  setFocusedFolder: (folder: FolderType, focus?: boolean) => void;
+  setSelectedFolder: (folder: FolderType) => void;
+  visibleFolders: FolderType[];
+  closeTree: () => void;
 }

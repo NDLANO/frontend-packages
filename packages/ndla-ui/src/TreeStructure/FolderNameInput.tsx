@@ -15,6 +15,9 @@ import { Spinner } from '@ndla/icons';
 import { IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { Done } from '@ndla/icons/editor';
+import { InputV2 as Input } from '@ndla/forms';
+import { TreeStructureType } from './types';
+import { treestructureId } from './helperFunctions';
 
 // Source: https://kovart.github.io/dashed-border-generator/
 const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
@@ -57,7 +60,7 @@ const InputWrapper = styled.div<{ level: number }>`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled(Input)`
   padding: ${spacing.small};
   flex-grow: 1;
   border: 0;
@@ -74,54 +77,65 @@ interface FolderNameInputProps {
   onCancelNewFolder: () => void;
   loading?: boolean;
   level: number;
+  type: TreeStructureType;
 }
 
-const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading, level }: FolderNameInputProps) => {
+const FolderNameInput = ({
+  onSaveNewFolder,
+  parentId,
+  onCancelNewFolder,
+  loading,
+  level,
+  type,
+}: FolderNameInputProps) => {
   const { t } = useTranslation();
   const [name, setName] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inputRef.current?.select();
     if (isMobile) {
       inputRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-    return () => {
-      onCancelNewFolder();
-    };
-  }, [onCancelNewFolder]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <NewFolderWrapper>
       <InputWrapper level={level}>
         <StyledInput
+          name="name"
+          labelHidden
+          label={t('treeStructure.newFolder.folderName')}
+          aria-invalid={name.length === 0}
+          aria-disabled={loading ? true : undefined}
+          aria-describedby={loading ? treestructureId(type, 'spinner') : undefined}
           ref={inputRef}
           autoFocus
           placeholder={t('treeStructure.newFolder.placeholder')}
-          disabled={loading}
           value={name}
           onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Escape') {
               e.preventDefault();
               onCancelNewFolder();
-            } else if (e.key === 'Enter' || e.key === 'Tab') {
+            } else if (e.key === 'Enter') {
               e.preventDefault();
-              if (name === '') {
-                onCancelNewFolder();
+              if (name === '' || loading) {
                 return;
               }
               onSaveNewFolder(name, parentId);
             }
           }}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            if (!loading) {
+              setName(e.target.value);
+            }
+          }}
         />
         <Row>
-          {!loading ? (
+          {!loading && (
             <>
-              <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onCancelNewFolder}>
-                <Cross />
-              </IconButton>
               <IconButton
+                tabIndex={0}
                 aria-label={t('save')}
                 title={t('save')}
                 size="small"
@@ -129,10 +143,21 @@ const FolderNameInput = ({ onSaveNewFolder, parentId, onCancelNewFolder, loading
                 onClick={() => onSaveNewFolder(name, parentId)}>
                 <Done />
               </IconButton>
+              <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onCancelNewFolder}>
+                <Cross />
+              </IconButton>
             </>
-          ) : (
-            <Spinner size="small" margin="0" />
           )}
+          <div aria-live="assertive">
+            {loading && (
+              <Spinner
+                size="normal"
+                margin={spacing.small}
+                id={treestructureId(type, 'spinner')}
+                aria-label={t('loading')}
+              />
+            )}
+          </div>
         </Row>
       </InputWrapper>
     </NewFolderWrapper>

@@ -26,6 +26,7 @@ const messages = {
     newFolder: {
       placeholder: 'Skriv namn på mappe',
       defaultName: 'Ny mappe',
+      folderName: 'Mappenavn',
     },
   },
   tagSelector: {
@@ -856,6 +857,7 @@ const messages = {
   },
   cancel: 'Avbryt',
   close: 'Lukk',
+  loading: 'Laster',
   title: 'Tittel',
   save: 'Lagre',
   image: {

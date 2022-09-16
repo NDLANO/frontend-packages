@@ -142,25 +142,23 @@ const BaseInput = ({
   className,
 }: BaseInputProps) => {
   return (
-    <div>
-      <Wrapper css={customCss}>
-        <StyledLabel labelHidden={labelHidden} htmlFor={name}>
-          {label}
-        </StyledLabel>
-        <FieldWrapper>
-          <InputWrapper white={white} className={className}>
-            {before}
-            {children}
-            {after}
-          </InputWrapper>
-          {error && (
-            <ErrorText id={`${name}-error`} aria-live="assertive">
-              {error}
-            </ErrorText>
-          )}
-        </FieldWrapper>
-      </Wrapper>
-    </div>
+    <Wrapper css={customCss}>
+      <StyledLabel labelHidden={labelHidden} htmlFor={name}>
+        {label}
+      </StyledLabel>
+      <FieldWrapper>
+        <InputWrapper white={white} className={className}>
+          {before}
+          {children}
+          {after}
+        </InputWrapper>
+        {error && (
+          <ErrorText id={`${name}-error`} aria-live="assertive">
+            {error}
+          </ErrorText>
+        )}
+      </FieldWrapper>
+    </Wrapper>
   );
 };
 

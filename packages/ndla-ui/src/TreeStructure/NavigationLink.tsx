@@ -55,9 +55,9 @@ const NavigationLink = ({
   loading,
   folder,
   selectedFolder,
-  focusedFolderId,
+  focusedFolder,
   setSelectedFolder,
-  setFocusedId,
+  setFocusedFolder,
   visibleFolders,
   onOpenFolder,
   onCloseFolder,
@@ -65,30 +65,37 @@ const NavigationLink = ({
   const { id, icon, name } = folder;
   const selected = selectedFolder && selectedFolder.id === id;
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
-  const focused = focusedFolderId === id;
+  const focused = focusedFolder?.id === id;
 
   const handleClick = () => {
     if (!selected) {
       setSelectedFolder(folder);
-      setFocusedId(id);
+      setFocusedFolder(folder);
     }
   };
 
   useEffect(() => {
-    if (focusedFolderId === id) {
+    if (focusedFolder?.id === id) {
       ref.current?.focus();
     }
-  }, [focusedFolderId, ref, id]);
+  }, [focusedFolder, ref, id]);
 
   return (
     <StyledSafeLink
+      role="treeitem"
       ref={ref}
-      onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-        arrowNavigation(e, id, visibleFolders, setFocusedId, onOpenFolder, onCloseFolder)
-      }
+      onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
+        if (e.key === 'Enter') {
+          setSelectedFolder(folder);
+          setFocusedFolder(folder);
+          return;
+        }
+        arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
+      }}
+      aria-current={selected ? 'page' : undefined}
       tabIndex={selected || focused ? 0 : -1}
       selected={selected}
-      onFocus={() => setFocusedId(id)}
+      onFocus={() => setFocusedFolder(folder)}
       onClick={handleClick}
       to={loading ? '' : `/minndla/${id}`}>
       <IconWrapper>{icon}</IconWrapper>

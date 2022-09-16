@@ -46,8 +46,6 @@ const BlockElementWrapper = styled.div`
   border-radius: 2px;
   color: ${colors.brand.greyDark};
   cursor: pointer;
-  :focus-within & {
-  }
 `;
 
 const BlockDescription = styled.p`
@@ -106,7 +104,7 @@ const BlockImage = ({ image, loading }: BlockImageProps) => {
       </ContentLoader>
     );
   }
-  return <Image alt="" src={image.src} fallbackWidth={300} />;
+  return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
 };
 
 const TopicAndTitleLoader = ({ children, loading }: LoaderProps) => {

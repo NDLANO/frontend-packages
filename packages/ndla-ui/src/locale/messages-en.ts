@@ -996,10 +996,10 @@ const messages = {
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',
     },
-    tagList: 'tags',
+    tagList: 'Tags',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
-    moreTags: 'show {{count}} more tags',
+    moreTags: 'Show {{count}} more tags',
     confirmDeleteFolder:
       'Are you sure you want to delete this folder? Subfolders of this folder will also be deleted. This action cannot be undone.',
 

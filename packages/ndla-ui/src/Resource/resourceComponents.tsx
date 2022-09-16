@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { MenuButton } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import { useNavigate } from 'react-router-dom';
+import { HashTag } from '@ndla/icons/common';
 
 export interface ResourceImageProps {
   alt: string;
@@ -75,11 +76,13 @@ const StyledTopicListElement = styled.li`
   margin: 0;
   line-height: 1.5;
   padding: 0;
-`;
-
-const StyledTopicDivider = styled.span`
-  margin: 0;
-  padding: 0 ${spacing.xxsmall};
+  display: flex;
+  align-items: center;
+  :not(:last-child):after {
+    content: '•';
+    margin: 0;
+    padding: 0 ${spacing.xxsmall};
+  }
 `;
 
 export const Row = styled.div`
@@ -116,7 +119,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
           <StyledSafeLink
             onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
             to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`}>
-            <span aria-hidden={true}>#</span>
+            <HashTag />
             {tag}
           </StyledSafeLink>
         </StyledTagListElement>
@@ -136,7 +139,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
   const visibleTags = tags.slice(0, 3);
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {
-      icon: <span aria-hidden={true}>#</span>,
+      icon: <HashTag />,
       text: tag,
       onClick: () => {
         navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`);
@@ -165,10 +168,7 @@ export const TopicList = ({ topics }: TopicListProps) => {
   return (
     <StyledTopicList aria-label={t('navigation.topics')}>
       {topics.map((topic, i) => (
-        <StyledTopicListElement key={topic}>
-          {topic}
-          {i !== topics.length - 1 && <StyledTopicDivider aria-hidden={true}>•</StyledTopicDivider>}
-        </StyledTopicListElement>
+        <StyledTopicListElement key={topic}>{topic}</StyledTopicListElement>
       ))}
     </StyledTopicList>
   );

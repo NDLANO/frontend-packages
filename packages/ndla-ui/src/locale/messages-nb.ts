@@ -994,10 +994,10 @@ const messages = {
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er opprettet',
     },
-    tagList: 'emneknagger',
+    tagList: 'Emneknagger',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
-    moreTags: 'vis {{count}} til emneknagger',
+    moreTags: 'Vis {{count}} til emneknagger',
     confirmDeleteFolder:
       'Er du sikker på at du vil slette mappen? Dersom mappen har undermapper vil disse også slettes. Handlingen kan ikke endres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',

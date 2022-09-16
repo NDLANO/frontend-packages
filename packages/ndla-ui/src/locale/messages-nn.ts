@@ -995,10 +995,10 @@ const messages = {
       folderDeleted: '"{{folderName}}" er sletta',
       folderCreated: '"{{folderName}}" er oppretta',
     },
-    tagList: 'emneknaggar',
+    tagList: 'Emneknaggar',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknaggar',
-    moreTags: 'vis {{count}} fleire emneknaggar',
+    moreTags: 'Vis {{count}} fleire emneknaggar',
     confirmDeleteFolder:
       'Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',

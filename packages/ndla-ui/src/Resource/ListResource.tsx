@@ -128,7 +128,9 @@ interface ListResourceImageProps {
 
 const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImageProps) => {
   if (!loading) {
-    return <StyledImage alt="" src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />;
+    return (
+      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+    );
   }
   return (
     <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">

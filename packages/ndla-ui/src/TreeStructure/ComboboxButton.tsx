@@ -6,9 +6,11 @@
  *
  */
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { useForwardedRef } from '@ndla/util';
+import Tooltip from '@ndla/tooltip';
 import { colors, spacing } from '@ndla/core';
 import { IFolder } from '@ndla/types-learningpath-api';
 import { Plus } from '@ndla/icons/action';
@@ -18,8 +20,6 @@ import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
 import { FolderType, TreeStructureType } from './types';
 import { arrowNavigation } from './arrowNavigation';
-import Tooltip from '../../../tooltip/src';
-import useCombinedRefs from '../utils/useCombinedRefs';
 
 interface StyledRowProps {
   isOpen: boolean;
@@ -96,14 +96,13 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
     ref,
   ) => {
     const { t } = useTranslation();
-    const innerRef = useRef<HTMLButtonElement>(null);
-    const combinedRef = useCombinedRefs<HTMLButtonElement>(ref, innerRef);
+    const innerRef = useForwardedRef(ref);
 
     const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
     return (
       <StyledRow isOpen={showTree}>
         <StyledSelectedFolder
-          ref={combinedRef}
+          ref={innerRef}
           tabIndex={0}
           id={treestructureId(type, 'combobox')}
           role="combobox"

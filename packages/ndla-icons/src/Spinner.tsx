@@ -6,11 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing, SpacingNames } from '@ndla/core';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   size?: SpacingNames;
   margin?: string;
   inverted?: boolean;
@@ -39,8 +39,8 @@ const SpinnerDiv = styled('div')<StyledProps>`
   }
 `;
 
-const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted }: Partial<Props>) => (
-  <SpinnerDiv size={size} margin={margin} inverted={!!inverted} />
+const Spinner = ({ size = 'large', margin = `${spacing.normal} auto`, inverted, ...rest }: Props) => (
+  <SpinnerDiv size={size} margin={margin} inverted={!!inverted} {...rest} />
 );
 
 export default Spinner;

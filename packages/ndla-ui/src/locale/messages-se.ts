@@ -24,6 +24,7 @@ const messages = {
     newFolder: {
       placeholder: 'Čále nama máhppii',
       defaultName: 'Ođđa máhppa',
+      folderName: 'Mappenavn',
     },
   },
   tagSelector: {
@@ -860,6 +861,7 @@ const messages = {
     close: 'Govčča fálu',
   },
   close: 'Govčča',
+  loading: 'Laster',
   title: 'Tihttel',
   cancel: 'Botkke',
   save: 'Vurke',
@@ -1002,9 +1004,13 @@ const messages = {
       edit: 'Redigere',
       missingName: 'Čále nama máhppii',
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
+      folderCreated: '"{{folderName}}" er oppretta',
     },
+    tagList: 'Emneknagger',
     tags: '{{count}} fáddágilkor',
     tags_plural: '{{count}} fáddágilkorat',
+    moreTags: 'Vis ein emneknagg til',
+    moreTags_plural: 'Vis {{count}} emneknaggar til',
     confirmDeleteFolder: 'Leat go áibbas sihkar ahte dáhtut sihkkut máhpa? Dan ii sáhte gáhtat.',
     confirmDeleteTag: 'Leat go áibbas sihkar ahte dáhtut sihkkut fáddágilkora? Dan ii sáhte gáhtat.',
     myFolders: 'Mu máhpat',
@@ -1021,6 +1027,7 @@ const messages = {
     listView: 'Oppalašlistu',
     detailView: 'Bienalaš oppalašlistu',
     shortView: 'Oanehis listu',
+
     myPage: {
       confirmDeleteAccount: 'Leat go áibbas sihkar ahte dáhtut sihkkut kontu?',
       confirmDeleteAccountButton: 'Sihko kontu',

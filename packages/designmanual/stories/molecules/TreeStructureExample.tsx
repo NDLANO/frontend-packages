@@ -150,7 +150,7 @@ const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; 
 export const TreeStructureExampleComponent = ({
   structure: initalStructure,
   label,
-  type = 'normal',
+  type,
   onSelectFolder,
   openOnFolderClick,
   defaultOpenFolders,
@@ -159,7 +159,7 @@ export const TreeStructureExampleComponent = ({
 }: {
   structure: FolderType[];
   label?: string;
-  type?: TreeStructureType;
+  type: TreeStructureType;
   onSelectFolder?: (id: string) => void;
   openOnFolderClick: boolean;
   defaultOpenFolders?: string[];
@@ -183,9 +183,11 @@ export const TreeStructureExampleComponent = ({
           (async (name: string, parentId: string) => {
             // A funky implementation to imitate backend updates of structure
             // eslint-disable-next-line no-console
-            console.log(`Example, create new folder under ${parentId} with name ${name}`);
+            if (name === '') {
+              return;
+            }
             setLoading(true);
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 3000));
             setLoading(false);
             const flattenedStructure = flattenFolders(structure);
             const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
@@ -222,15 +224,6 @@ const TreeStructureExample = () => (
       targetResource={targetResource}
       onNewFolder
       type="picker"
-    />
-    <h1>Trestruktur enkel</h1>
-    <TreeStructureExampleComponent
-      label="Velg mappe"
-      onSelectFolder={(id: string) => {}}
-      openOnFolderClick
-      structure={FOLDER_TREE_STRUCTURE}
-      defaultOpenFolders={[MY_FOLDERS_ID]}
-      targetResource={targetResource}
     />
     <h1>Trestruktur navigasjon</h1>
     <TreeStructureExampleComponent

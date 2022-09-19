@@ -6,13 +6,14 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import FolderItem from './FolderItem';
 import FolderNameInput from './FolderNameInput';
 import { CommonFolderItemsProps, FolderType, TreeStructureType } from './types';
 import NavigationLink from './NavigationLink';
+import { treestructureId } from './helperFunctions';
 
 const StyledUL = styled.ul`
   ${animations.fadeInLeft(animations.durations.fast)};
@@ -43,6 +44,8 @@ export interface FolderItemsProps extends CommonFolderItemsProps {
   onCancelNewFolder: () => void;
   onSaveNewFolder: (name: string, parentId: string) => void;
   openFolders: string[];
+  parentFolder?: FolderType;
+  children?: ReactNode;
 }
 
 const FolderItems = ({
@@ -54,15 +57,28 @@ const FolderItems = ({
   onSaveNewFolder,
   openFolders,
   type,
+  parentFolder,
+  children,
   ...rest
 }: FolderItemsProps) => (
-  <StyledUL role={level === 0 ? 'tree' : 'group'}>
+  <StyledUL
+    id={
+      level === 0 && type === 'picker'
+        ? treestructureId(type, 'popup')
+        : parentFolder
+        ? treestructureId(type, `subfolders-${parentFolder.id}`)
+        : undefined
+    }
+    tabIndex={-1}
+    aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}
+    role={level === 0 ? 'tree' : 'group'}>
+    {children}
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
 
       return (
-        <StyledLI key={id} role="treeitem" type={type}>
+        <StyledLI key={id} tabIndex={-1} role="none" type={type}>
           {folder.isNavigation ? (
             <NavigationLink folder={folder} isOpen={isOpen} level={level} type={type} loading={loading} {...rest} />
           ) : (
@@ -73,20 +89,12 @@ const FolderItems = ({
                 level={level}
                 loading={loading}
                 type={type}
-                isCreatingFolder={newFolderParentId === folder.id}
+                isCreatingFolder={!!newFolderParentId}
                 {...rest}
               />
-              {newFolderParentId === id && (
-                <FolderNameInput
-                  loading={loading}
-                  level={level}
-                  onCancelNewFolder={onCancelNewFolder}
-                  onSaveNewFolder={onSaveNewFolder}
-                  parentId={newFolderParentId}
-                />
-              )}
-              {subfolders && isOpen && (
+              {((subfolders && isOpen) || newFolderParentId === id) && (
                 <FolderItems
+                  parentFolder={folder}
                   folders={subfolders}
                   level={level + 1}
                   loading={loading}
@@ -95,8 +103,20 @@ const FolderItems = ({
                   onCancelNewFolder={onCancelNewFolder}
                   onSaveNewFolder={onSaveNewFolder}
                   openFolders={openFolders}
-                  {...rest}
-                />
+                  {...rest}>
+                  {newFolderParentId === id && (
+                    <li role="none">
+                      <FolderNameInput
+                        loading={loading}
+                        level={level}
+                        onCancelNewFolder={onCancelNewFolder}
+                        onSaveNewFolder={onSaveNewFolder}
+                        parentId={newFolderParentId}
+                        type={type}
+                      />
+                    </li>
+                  )}
+                </FolderItems>
               )}
             </>
           )}

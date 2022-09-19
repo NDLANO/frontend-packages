@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useRef } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
@@ -40,6 +40,12 @@ const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
   `};
 `;
 
+const FolderTitleLink = styled(SafeLink)`
+  box-shadow: none;
+  color: ${colors.text.primary};
+  flex: 1;
+`;
+
 const FolderTitle = styled.h2`
   ${fonts.sizes(18)};
   font-weight: ${fonts.weight.normal};
@@ -55,11 +61,12 @@ const FolderTitle = styled.h2`
   -webkit-box-orient: vertical;
 `;
 
-const FolderWrapper = styled(SafeLink)`
+const FolderWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.neutral7};
+  cursor: pointer;
   border-radius: 2px;
   box-shadow: none;
   text-decoration: none;
@@ -78,6 +85,7 @@ const FolderWrapper = styled(SafeLink)`
 `;
 
 interface Props {
+  id: string;
   title: string;
   subFolders?: number;
   subResources?: number;
@@ -131,14 +139,22 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
 
 type LayoutType = 'list' | 'block';
 
-const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
+const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
+  const linkRef = useRef<HTMLAnchorElement | null>(null);
+
+  const onClick = () => {
+    linkRef?.current?.click();
+  };
+
   return (
-    <FolderWrapper to={link}>
+    <FolderWrapper onClick={onClick} id={id}>
       <FolderIconWrapper type={type}>
         <FolderOutlined aria-label={t('myNdla.folder.folder')} />
       </FolderIconWrapper>
-      <FolderTitle>{title}</FolderTitle>
+      <FolderTitleLink to={link} ref={linkRef}>
+        <FolderTitle>{title}</FolderTitle>
+      </FolderTitleLink>
       <IconCount layoutType={type} type={'folder'} count={subFolders} />
       <IconCount layoutType={type} type={'resource'} count={subResources} />
       {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}

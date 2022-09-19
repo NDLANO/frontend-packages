@@ -27,6 +27,7 @@ interface BaseInputProps {
 
 const Wrapper = styled.div`
   display: flex;
+  flex: 1;
 `;
 
 interface FormWarningTextProps {
@@ -39,7 +40,7 @@ const ErrorText = styled('span', { shouldForwardProp: shouldForwardError })<Form
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
-  padding-left: ${(p) => p.withLabel && `${spacingUnit & 4}px`};
+  padding-left: ${(p) => p.withLabel && `${spacingUnit * 4}px`};
 `;
 
 interface StyledLabelProps {
@@ -122,6 +123,12 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
   }
 `;
 
+const FieldWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
+
 const BaseInput = ({
   before,
   after,
@@ -135,23 +142,23 @@ const BaseInput = ({
   className,
 }: BaseInputProps) => {
   return (
-    <>
-      <Wrapper css={customCss}>
-        <StyledLabel labelHidden={labelHidden} htmlFor={name}>
-          {label}
-        </StyledLabel>
+    <Wrapper css={customCss}>
+      <StyledLabel labelHidden={labelHidden} htmlFor={name}>
+        {label}
+      </StyledLabel>
+      <FieldWrapper>
         <InputWrapper white={white} className={className}>
           {before}
           {children}
           {after}
         </InputWrapper>
-      </Wrapper>
-      {error && (
-        <ErrorText withLabel={!labelHidden} id={`${name}-error`}>
-          {error}
-        </ErrorText>
-      )}
-    </>
+        {error && (
+          <ErrorText id={`${name}-error`} aria-live="assertive">
+            {error}
+          </ErrorText>
+        )}
+      </FieldWrapper>
+    </Wrapper>
   );
 };
 
@@ -172,7 +179,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         name={name}
         className={className}
         label={label}>
-        <input ref={ref} name={name} {...rest} aria-describedby={`${name}-error`} />
+        <input ref={ref} name={name} aria-invalid={!!error} {...rest} aria-describedby={`${name}-error`} />
       </BaseInput>
     );
   },

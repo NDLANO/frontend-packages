@@ -7,15 +7,23 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
-import SafeLink from '@ndla/safelink';
+import React, { useRef } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
-import { CompressedTagList, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
+import {
+  CompressedTagList,
+  ResourceImageProps,
+  ResourceTitle,
+  Row,
+  TopicList,
+  ResourceTitleLink,
+  LoaderProps,
+} from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
 interface BlockResourceProps {
+  id: string;
   link: string;
   tagLinkPrefix?: string;
   title: string;
@@ -27,7 +35,7 @@ interface BlockResourceProps {
   isLoading?: boolean;
 }
 
-const BlockElementWrapper = styled(SafeLink)`
+const BlockElementWrapper = styled.div`
   display: flex;
   text-decoration: none;
   box-shadow: none;
@@ -37,6 +45,16 @@ const BlockElementWrapper = styled(SafeLink)`
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    transition-duration: 0.2s;
+    ${() => ResourceTitleLink} {
+      color: ${colors.brand.primary};
+      text-decoration: underline;
+    }
+  }
 `;
 
 const BlockDescription = styled.p`
@@ -48,7 +66,8 @@ const BlockDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
-  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & {
+  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & ,  ${() =>
+    BlockElementWrapper}:focus-within & {
     // Unfortunate css needed for multi-line text overflow ellipsis.
     height: 3.1em;
     -webkit-line-clamp: 2;
@@ -59,6 +78,7 @@ const BlockDescription = styled.p`
 
 const RightRow = styled(Row)`
   justify-content: flex-end;
+  margin-bottom: -${spacing.xxsmall};
 `;
 
 const BlockInfoWrapper = styled.div`
@@ -97,28 +117,7 @@ const BlockImage = ({ image, loading }: BlockImageProps) => {
   return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
 };
 
-interface BlockTitleProps {
-  title: string;
-  loading?: boolean;
-}
-
-const BlockTitle = ({ title, loading }: BlockTitleProps) => {
-  if (loading) {
-    return (
-      <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
-        <rect x="0" y="0" rx="3" ry="3" width="100%" height="18px" />
-      </ContentLoader>
-    );
-  }
-  return <ResourceTitle>{title}</ResourceTitle>;
-};
-
-interface BlockTopicListProps {
-  topics: string[];
-  loading?: boolean;
-}
-
-const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
+const TopicAndTitleLoader = ({ children, loading }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -128,10 +127,11 @@ const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
     );
   }
 
-  return <TopicList topics={topics} />;
+  return <>{children}</>;
 };
 
 const BlockResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
@@ -142,16 +142,26 @@ const BlockResource = ({
   menuItems,
   isLoading,
 }: BlockResourceProps) => {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+
+  const handleClick = () => {
+    if (linkRef.current) {
+      linkRef.current.click();
+    }
+  };
+
   return (
-    <BlockElementWrapper to={link}>
+    <BlockElementWrapper onClick={handleClick} id={id}>
       <ImageWrapper>
         <BlockImage image={resourceImage} loading={isLoading} />
       </ImageWrapper>
       <BlockInfoWrapper>
-        <div>
-          <BlockTitle title={title} loading={isLoading} />
-        </div>
-        <BlockTopicList topics={topics} loading={isLoading} />
+        <TopicAndTitleLoader loading={isLoading}>
+          <ResourceTitleLink title={title} to={link} ref={linkRef}>
+            <ResourceTitle>{title}</ResourceTitle>
+          </ResourceTitleLink>
+        </TopicAndTitleLoader>
+        <TopicList topics={topics} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
           {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}

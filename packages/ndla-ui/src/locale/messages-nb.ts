@@ -24,6 +24,7 @@ const messages = {
     newFolder: {
       placeholder: 'Skriv navn på mappe',
       defaultName: 'Ny mappe',
+      folderName: 'Mappenavn',
     },
   },
   tagSelector: {
@@ -860,6 +861,7 @@ const messages = {
     close: 'Lukk meny',
   },
   close: 'Lukk',
+  loading: 'Laster',
   title: 'Tittel',
   cancel: 'Avbryt',
   save: 'Lagre',
@@ -1002,10 +1004,15 @@ const messages = {
       edit: 'Rediger',
       missingName: 'Skriv navn på mappe',
       folderDeleted: '"{{folderName}}" er slettet',
+      folderCreated: '"{{folderName}}" er opprettet',
     },
+    tagList: 'Emneknagger',
     tags: '{{count}} emneknagg',
     tags_plural: '{{count}} emneknagger',
-    confirmDeleteFolder: 'Er du sikker på at du vil slette mappen? Denne handlingen kan ikke endres.',
+    moreTags: 'Vis en emneknagg til',
+    moreTags_plural: 'Vis {{count}} emneknagger til',
+    confirmDeleteFolder:
+      'Er du sikker på at du vil slette mappen? Dersom mappen har undermapper vil disse også slettes. Handlingen kan ikke endres.',
     confirmDeleteTag: 'Er du sikker på at du vil slette emneknagg? Denne handlingen kan ikke endres.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknagger',

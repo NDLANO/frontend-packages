@@ -24,6 +24,7 @@ const messages = {
     newFolder: {
       placeholder: 'Add foldername',
       defaultName: 'New folder',
+      folderName: 'Folder name',
     },
   },
   tagSelector: {
@@ -863,6 +864,7 @@ const messages = {
   },
   cancel: 'Cancel',
   close: 'Close',
+  loading: 'Loading',
   title: 'Title',
   save: 'Save',
   image: {
@@ -1004,10 +1006,15 @@ const messages = {
       edit: 'Edit',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
+      folderCreated: '"{{folderName}} created',
     },
+    tagList: 'Tags',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
-    confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
+    moreTags: 'Show one more tag',
+    moreTags_plural: 'Show {{count}} more tags',
+    confirmDeleteFolder:
+      'Are you sure you want to delete this folder? Subfolders of this folder will also be deleted. This action cannot be undone.',
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',

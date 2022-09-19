@@ -17,7 +17,7 @@ import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
 
-import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from './TreeStructureExample';
+import { TreeStructureExampleComponent, FOLDER_TREE_STRUCTURE, MY_FOLDERS_ID } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
@@ -123,26 +123,26 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
           <FavouriteWrapper>
             <StyledModalBody>
               <StyledH1>{title}</StyledH1>
-            <ListResource
-              id={'346ddc8e-e52c-43dc-9631-3fe3720b9996'}
-              key={'minimalResource'}
-              title="Minimal ressurs"
-              topics={['Topic', 'Topic', 'Topic']}
-              resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-            />
-            <TreeStructureExampleComponent
-              label="Velg plassering"
-              type="picker"
-              structure={FOLDER_TREE_STRUCTURE}
-              defaultOpenFolders={[MY_FOLDERS_ID]}
-              openOnFolderClick={false}
-              onNewFolder
-              onSelectFolder={() => {}}
-            />
+              <ListResource
+                id={'346ddc8e-e52c-43dc-9631-3fe3720b9996'}
+                key={'minimalResource'}
+                title="Minimal ressurs"
+                topics={['Topic', 'Topic', 'Topic']}
+                resourceImage={{
+                  src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                  alt: 'alt',
+                }}
+                link={''}
+              />
+              <TreeStructureExampleComponent
+                label="Velg plassering"
+                type="picker"
+                structure={FOLDER_TREE_STRUCTURE}
+                defaultOpenFolders={[MY_FOLDERS_ID]}
+                openOnFolderClick={false}
+                onNewFolder
+                onSelectFolder={() => {}}
+              />
               <TagSelectorExample />
               <DialogFooter>
                 <FeideIconWrapper>

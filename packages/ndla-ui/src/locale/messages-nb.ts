@@ -617,11 +617,13 @@ const messages = {
   changeLanguage: {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
+    se: 'Rievdat giela davvisámegiella',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
+    se: 'Siiddut leat davvisámegiellii',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -903,6 +905,8 @@ const messages = {
   },
   h5p: {
     reuse: 'Bruk H5P',
+    resource: 'Læringsressurs fra H5P',
+    error: 'En feil oppstod ved lasting av H5P.',
   },
   video: {
     download: 'Last ned video',
@@ -912,6 +916,9 @@ const messages = {
   other: {
     download: 'Last ned innhold',
     reuse: 'Bruk innhold',
+  },
+  external: {
+    error: 'En feil oppstod ved lasting av en ekstern ressurs.',
   },
   concept: {
     showDescription: 'Vis beskrivelsen av forklaringen.',
@@ -928,8 +935,6 @@ const messages = {
     showMore: 'Vis mer relatert innhold',
     showLess: 'Vis mindre',
   },
-  'external.error': 'En feil oppstod ved lasting av en ekstern ressurs.',
-  'h5p.error': 'En feil oppstod ved lasting av H5P.',
   files: 'Filer',
   download: 'Last ned fil: ',
   expandButton: 'Vis stor versjon',

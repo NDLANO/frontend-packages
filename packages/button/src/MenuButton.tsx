@@ -115,7 +115,10 @@ export const MenuButton = ({
         {!hideMenuIcon && <HorizontalMenu />}
       </StyledMenuButton>
       <MenuPopover
-        onKeyDown={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
         portal={true}
         position={alignRight ? positionRight : positionDefault}>
         <StyledMenuItems>

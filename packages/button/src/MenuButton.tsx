@@ -109,13 +109,19 @@ export const MenuButton = ({
         tabIndex={tabIndex}
         className={className}
         svgSize={convertSizeForSVG(size || 'normal')}
-        onClick={(e) => e.preventDefault()} // Prevent redirect from triggering when placed inside <a>
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
         {children}
         {!hideMenuIcon && <HorizontalMenu />}
       </StyledMenuButton>
       <MenuPopover
-        onKeyDown={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
         portal={true}
         position={alignRight ? positionRight : positionDefault}>
         <StyledMenuItems>

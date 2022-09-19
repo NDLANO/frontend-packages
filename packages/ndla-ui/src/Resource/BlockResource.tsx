@@ -33,6 +33,7 @@ interface BlockResourceProps {
   description?: string;
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
+  targetBlank?: boolean;
 }
 
 const BlockElementWrapper = styled.div`
@@ -141,6 +142,7 @@ const BlockResource = ({
   description,
   menuItems,
   isLoading,
+  targetBlank,
 }: BlockResourceProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
@@ -157,7 +159,7 @@ const BlockResource = ({
       </ImageWrapper>
       <BlockInfoWrapper>
         <TopicAndTitleLoader loading={isLoading}>
-          <ResourceTitleLink title={title} to={link} ref={linkRef}>
+          <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
             <ResourceTitle>{title}</ResourceTitle>
           </ResourceTitleLink>
         </TopicAndTitleLoader>

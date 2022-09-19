@@ -124,6 +124,7 @@ export interface ListResourceProps {
   description?: string;
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
+  targetBlank?: boolean;
 }
 
 interface ListResourceImageProps {
@@ -192,6 +193,7 @@ const ListResource = ({
   description,
   menuItems,
   isLoading = false,
+  targetBlank,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
@@ -209,7 +211,7 @@ const ListResource = ({
       </StyledImageWrapper>
       <TopicAndTitleWrapper>
         <TopicAndTitleLoader loading={isLoading}>
-          <ResourceTitleLink to={link} ref={linkRef}>
+          <ResourceTitleLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
             <ResourceTitle>{title}</ResourceTitle>
           </ResourceTitleLink>
           <TopicList topics={topics} />

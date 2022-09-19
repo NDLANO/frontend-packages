@@ -151,10 +151,12 @@ const FolderItem = ({
       if (type === 'navigation') {
         ref.current?.focus();
       }
-      ref.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
+      if (type === 'picker') {
+        ref.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        });
+      }
     }
   }, [focusedFolder, ref, id, isCreatingFolder, type]);
 
@@ -181,7 +183,6 @@ const FolderItem = ({
       onKeyDown={(e: KeyboardEvent<HTMLElement>) => {
         if (e.key === 'Enter') {
           setSelectedFolder(folder);
-          setFocusedFolder(folder);
           return;
         }
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);

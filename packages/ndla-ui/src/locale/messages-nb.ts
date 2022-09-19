@@ -1048,7 +1048,9 @@ const messages = {
         term3: 'NDLA forbeholder seg retten til å oppdatere eller slette utdaterte ressurser.',
       },
       newFavourite: 'Nylig lagt til',
-      feide: 'Dette henter vi om deg fra Feide',
+      feide: 'Dette henter vi om deg gjennom Feide',
+      feideWrongInfo:
+        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
       storageInfo: {
         title: 'Slik lagrer du dine favorittressurser fra NDLA',
         text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i en mappe.',

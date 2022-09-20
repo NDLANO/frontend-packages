@@ -96,12 +96,12 @@ const StyledImageWrapper = styled.div<StyledImageProps>`
     height: 40px;
   }
   overflow: hidden;
+  border-radius: 2px;
 `;
 
 const StyledImage = styled(Image)`
-  display: flex;
-  border-radius: 2px;
   object-fit: cover;
+  aspect-ratio: 1;
 `;
 
 const TopicAndTitleWrapper = styled.div`

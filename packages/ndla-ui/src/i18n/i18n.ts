@@ -23,6 +23,7 @@ const DETECTION_OPTIONS = {
 const i18nInstance = i18n.use(initReactI18next).use(LanguageDetector);
 
 i18nInstance.init({
+  compatibilityJSON: 'v3',
   detection: DETECTION_OPTIONS,
   fallbackLng: 'nb',
   supportedLngs: ['nb', 'nn', 'en', 'se'],

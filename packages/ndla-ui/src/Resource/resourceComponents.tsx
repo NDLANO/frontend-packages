@@ -185,12 +185,10 @@ export const TopicList = ({ topics }: TopicListProps) => {
   return (
     <StyledTopicList aria-label={t('navigation.topics')}>
       {topics.map((topic, i) => (
-        <>
-          <StyledTopicListElement key={topic}>
-            {topic}
-            {i !== topics.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
-          </StyledTopicListElement>
-        </>
+        <StyledTopicListElement key={topic}>
+          {topic}
+          {i !== topics.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
+        </StyledTopicListElement>
       ))}
     </StyledTopicList>
   );

@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { ShortText } from '@ndla/icons/common';
-import { css, InterpolationWithTheme } from '@emotion/core';
+import { InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
@@ -18,33 +18,37 @@ const BaselineIcon = styled(ShortText)`
   content: '';
   display: inline-block;
   position: absolute;
-  margin: calc(0.5em + 4px) auto 0;
+  margin: calc(0.5em + 1px) auto 0;
   left: 0;
-  color: rgba(165, 188, 211, 1);
+  color: ${colors.brand.secondary};
   transition: transform 0.1s ease;
+  height: 1.25em;
+  width: 1.1em;
 `;
-const NotionCSS = css`
+const NotionCSS = styled.span`
   display: inline;
-  .link {
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-style: inherit;
-    line-height: 1em;
-    padding: 0 0 4px 0;
-    margin-bottom: -4px;
-    text-decoration: none;
-    color: #000;
-    position: relative;
-
-    cursor: pointer;
-
-    &:focus {
-      border-color: ${colors.brand.primary};
-      outline: none;
-      &:after {
-        transform: scale(1.4) translateY(1px);
-      }
+`;
+const StyledButton = styled.button`
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-style: inherit;
+  line-height: 1em;
+  padding: 0 0 4px 0;
+  margin-bottom: -4px;
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    color: ${colors.brand.primary};
+    outline: none;
+    ${BaselineIcon} {
+      color: ${colors.brand.primary};
+    }
+    &:after {
+      transform: scale(1.4) translateY(1px);
     }
   }
 `;
@@ -71,11 +75,11 @@ const Notion = ({
   headerContent,
   hideBaselineIcon,
 }: Props) => (
-  <span css={NotionCSS} id={id} data-notion>
-    <button type="button" aria-label={ariaLabel} className={'link'} data-notion-link>
+  <NotionCSS css={NotionCSS} id={id} data-notion>
+    <StyledButton type="button" aria-label={ariaLabel} data-notion-link>
       {children}
       {!hideBaselineIcon && <BaselineIcon />}
-    </button>
+    </StyledButton>
 
     {createUniversalPortal(
       <NotionDialog id={id} title={title} subTitle={subTitle} customCSS={customCSS} headerContent={headerContent}>
@@ -83,6 +87,6 @@ const Notion = ({
       </NotionDialog>,
       'body',
     )}
-  </span>
+  </NotionCSS>
 );
 export default Notion;

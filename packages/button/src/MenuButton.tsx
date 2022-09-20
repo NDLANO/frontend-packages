@@ -36,8 +36,10 @@ const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledBu
   &:active,
   &:focus,
   &:focus-within {
-    background-color: ${colors.brand.light};
     color: ${colors.brand.primary};
+    ${() => StyledHorizontalMenu} {
+      background-color: ${colors.brand.light};
+    }
   }
 
   svg {
@@ -45,6 +47,11 @@ const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledBu
     height: ${({ svgSize }) => svgSize}px;
     fill: ${colors.brand.secondary};
   }
+`;
+
+const StyledHorizontalMenu = styled(HorizontalMenu)`
+  border-radius: 100%;
+  transition: ${misc.transition.default};
 `;
 
 const StyledMenuItems = styled(MenuItems)`
@@ -115,7 +122,7 @@ export const MenuButton = ({
         }} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
         {children}
-        {!hideMenuIcon && <HorizontalMenu />}
+        {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
       <MenuPopover
         onKeyDown={(e) => {

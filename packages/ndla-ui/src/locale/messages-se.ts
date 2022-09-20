@@ -1051,7 +1051,7 @@ const messages = {
       newFavourite: 'Aitto lasihuvvon',
       feide: 'Dát vižžojuvvo du birra Feide:s',
       feideWrongInfo:
-        'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
+        'Jus leat boasttudieđut, de fertejit dat ođasmahttojuvvot doallogoddiorganisašuvnna/skuvlaeaiggáda bokte gosa geavaheaddji gullá. Visogovva geavaheaddjidoarjagis gávnnat dáppe: feide.no/brukerstøtte',
       storageInfo: {
         title: 'Ná vurket iežat oiddotresurssaid NDLA:s',
         text: 'Deaddil váibmoboalu vurken dihtii resurssa.',

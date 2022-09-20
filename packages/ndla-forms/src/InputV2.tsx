@@ -106,10 +106,6 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
     }
   }
 
-  input {
-    padding: ${spacing.xsmall} ${spacing.small};
-  }
-
   textarea {
     padding: 0 ${spacing.small};
     height: 20px;
@@ -167,7 +163,22 @@ export interface InputProps
     Omit<HTMLProps<HTMLInputElement>, 'label' | 'name'> {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ before, after, white, error, customCss, label, labelHidden, name, className, ...rest }: InputProps, ref) => {
+  (
+    {
+      before,
+      after,
+      white,
+      error,
+      customCss,
+      label,
+      labelHidden,
+      name,
+      className,
+      'aria-describedby': describedBy = '',
+      ...rest
+    }: InputProps,
+    ref,
+  ) => {
     return (
       <BaseInput
         before={before}
@@ -179,7 +190,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         name={name}
         className={className}
         label={label}>
-        <input ref={ref} name={name} aria-invalid={!!error} {...rest} aria-describedby={`${name}-error`} />
+        <input
+          ref={ref}
+          name={name}
+          aria-invalid={!!error}
+          aria-describedby={`${name}-error ${describedBy}`}
+          {...rest}
+        />
       </BaseInput>
     );
   },

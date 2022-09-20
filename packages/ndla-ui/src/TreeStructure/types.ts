@@ -17,6 +17,18 @@ export interface FolderType extends IFolder {
 
 export type TreeStructureType = 'navigation' | 'picker';
 
+export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
+
+export type NewFolderInputFunc = ({
+  onClose,
+  parentId,
+  onCreate,
+}: {
+  onClose: () => void;
+  parentId: string;
+  onCreate: OnCreatedFunc;
+}) => ReactNode;
+
 export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
   onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
 }

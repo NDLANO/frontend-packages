@@ -57,9 +57,11 @@ export const MyNdla = () => {
             />
             <h2>Legg til mappe</h2>
             <FolderInput
-              autoSelect
+              autoFocus
+              label="name"
+              name="name"
               // eslint-disable-next-line no-console
-              onAddFolder={() => console.log('onAddFolder')}
+              onSave={() => console.log('onAddFolder')}
               // eslint-disable-next-line no-console
               onClose={() => console.log('onClose')}
             />

@@ -12,6 +12,8 @@ import { ShortText } from '@ndla/icons/common';
 import { InterpolationWithTheme } from '@emotion/core';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
+import Tooltip from '@ndla/tooltip';
 import NotionDialog from './NotionDialog';
 
 const BaselineIcon = styled(ShortText)`
@@ -21,11 +23,15 @@ const BaselineIcon = styled(ShortText)`
   margin: calc(0.5em + 1px) auto 0;
   left: 0;
   color: ${colors.brand.secondary};
-  transition: transform 0.1s ease;
   height: 1.25em;
   width: 1.1em;
+  transition-duration: 0.5s;
 `;
 const NotionCSS = styled.span`
+  display: inline;
+`;
+
+const StyledTooltip = styled(Tooltip)`
   display: inline;
 `;
 const StyledButton = styled.button`
@@ -46,6 +52,8 @@ const StyledButton = styled.button`
     outline: none;
     ${BaselineIcon} {
       color: ${colors.brand.primary};
+      transform: scale(1.2, 1);
+      transform-origin: left center;
     }
     &:after {
       transform: scale(1.4) translateY(1px);
@@ -74,19 +82,23 @@ const Notion = ({
   customCSS,
   headerContent,
   hideBaselineIcon,
-}: Props) => (
-  <NotionCSS css={NotionCSS} id={id} data-notion>
-    <StyledButton type="button" aria-label={ariaLabel} data-notion-link>
-      {children}
-      {!hideBaselineIcon && <BaselineIcon />}
-    </StyledButton>
-
-    {createUniversalPortal(
-      <NotionDialog id={id} title={title} subTitle={subTitle} customCSS={customCSS} headerContent={headerContent}>
-        {content}
-      </NotionDialog>,
-      'body',
-    )}
-  </NotionCSS>
-);
+}: Props) => {
+  const { t } = useTranslation();
+  return (
+    <NotionCSS css={NotionCSS} id={id} data-notion>
+      <StyledButton type="button" aria-label={ariaLabel} data-notion-link>
+        <StyledTooltip tooltip={t('searchPage.resultType.showNotion')}>
+          {children}
+          {!hideBaselineIcon && <BaselineIcon />}
+        </StyledTooltip>
+      </StyledButton>{' '}
+      {createUniversalPortal(
+        <NotionDialog id={id} title={title} subTitle={subTitle} customCSS={customCSS} headerContent={headerContent}>
+          {content}
+        </NotionDialog>,
+        'body',
+      )}
+    </NotionCSS>
+  );
+};
 export default Notion;

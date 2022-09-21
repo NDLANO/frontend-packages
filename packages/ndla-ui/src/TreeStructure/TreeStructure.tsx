@@ -172,6 +172,7 @@ const TreeStructure = ({
 
   const setFolderFocus = (folder: FolderType) => {
     setFocusedFolder(folder);
+    setNewFolderParentId(undefined);
     ref.current?.focus();
   };
   const canAddFolder = showTree && selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);

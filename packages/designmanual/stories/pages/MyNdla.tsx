@@ -60,6 +60,7 @@ export const MyNdla = () => {
               autoFocus
               label="name"
               name="name"
+              labelHidden
               // eslint-disable-next-line no-console
               onSave={() => console.log('onAddFolder')}
               // eslint-disable-next-line no-console

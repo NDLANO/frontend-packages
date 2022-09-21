@@ -15,12 +15,25 @@ import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 import { FolderInput } from '@ndla/ui';
+import { colors, spacing } from '@ndla/core';
 
 const Container = styled.div<{ type?: TreeStructureType }>`
   display: flex;
   margin-top: 40px;
   max-width: 600px;
   max-height: ${({ type }) => type !== 'navigation' && '250px'};
+`;
+
+const StyledFolderInput = styled(FolderInput)`
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  border-right: ${spacing.xsmall} solid ${colors.brand.light};
+  &:focus-within {
+    border-color: ${colors.brand.light};
+  }
+  // Not good practice, but necessary to give error message same padding as caused by border.
+  & + span {
+    padding: 0 ${spacing.xsmall};
+  }
 `;
 
 export const MY_FOLDERS_ID = 'folders';
@@ -263,7 +276,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
   }, [name]);
 
   return (
-    <FolderInput
+    <StyledFolderInput
       autoFocus
       labelHidden
       name="name"

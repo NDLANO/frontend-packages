@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { animations, colors, spacing } from '@ndla/core';
+import { animations } from '@ndla/core';
 import FolderItem from './FolderItem';
 import { CommonFolderItemsProps, FolderType, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
 import NavigationLink from './NavigationLink';
@@ -35,11 +35,6 @@ const StyledLI = styled.li<StyledLiProps>`
   align-items: ${({ type }) => type === 'navigation' && 'flex-start'};
   margin: 0;
   padding: 0;
-`;
-
-const InputListElement = styled.li`
-  background-color: ${colors.brand.light};
-  padding: 0 ${spacing.xsmall};
 `;
 
 export interface FolderItemsProps extends CommonFolderItemsProps {
@@ -112,9 +107,7 @@ const FolderItems = ({
                   onCreate={onCreate}
                   {...rest}>
                   {newFolderParentId === id && (
-                    <InputListElement role="none">
-                      {newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}
-                    </InputListElement>
+                    <li role="none">{newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}</li>
                   )}
                 </FolderItems>
               )}

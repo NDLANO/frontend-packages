@@ -14,7 +14,6 @@ import { isMobile } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing } from '@ndla/core';
 import { InputV2 } from '@ndla/forms';
-import { css } from '@emotion/core';
 import { Done } from '@ndla/icons/editor';
 import { Spinner } from '@ndla/icons';
 import { useForwardedRef } from '@ndla/util';
@@ -26,26 +25,30 @@ interface Props extends ComponentProps<typeof InputV2> {
 }
 
 // Source: https://kovart.github.io/dashed-border-generator/
-const borderStyle = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
-  colors.brand.tertiary,
-)}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
+const borderStyle = (error?: boolean) =>
+  `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${encodeURIComponent(
+    error ? colors.support.red : colors.brand.tertiary,
+  )}' stroke-width='2' stroke-dasharray='8%2c8' stroke-dashoffset='4' stroke-linecap='square'/%3e%3c/svg%3e")`;
 
-const inputWrapperStyle = css`
-  padding: ${spacing.xxsmall};
-  background: white;
-  background-image: ${borderStyle};
-  border: none;
-`;
+interface StyledInputProps {
+  error?: string;
+}
 
-const StyledInput = styled(InputV2)`
+const StyledInput = styled(InputV2)<StyledInputProps>`
+  background-color: white;
+  background-image: ${({ error }) => borderStyle(!!error)};
   border: none;
   border-radius: 0;
   flex-wrap: nowrap;
   input {
     line-height: 1.75em;
     color: ${colors.brand.primary};
+    caret-color: ${colors.brand.tertiary};
     ::selection {
       background: ${colors.brand.lighter};
+    }
+    ::placeholder {
+      color: ${colors.brand.tertiary};
     }
   }
 `;
@@ -70,7 +73,6 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
 
   return (
     <StyledInput
-      customCss={inputWrapperStyle}
       white
       error={error}
       aria-disabled={loading ? true : undefined}
@@ -80,17 +82,18 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
         <Row>
           {!loading && (
             <>
-              <IconButtonV2
-                variant={'ghost'}
-                colorTheme="light"
-                tabIndex={0}
-                disabled={!!error}
-                aria-label={t('save')}
-                title={t('save')}
-                size="small"
-                onClick={onSave}>
-                <Done />
-              </IconButtonV2>
+              {!error && (
+                <IconButtonV2
+                  variant={'ghost'}
+                  colorTheme="light"
+                  tabIndex={0}
+                  aria-label={t('save')}
+                  title={t('save')}
+                  size="small"
+                  onClick={onSave}>
+                  <Done />
+                </IconButtonV2>
+              )}
               <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onClose}>
                 <Cross />
               </IconButton>

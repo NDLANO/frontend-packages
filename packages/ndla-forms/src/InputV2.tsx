@@ -37,6 +37,7 @@ interface FormWarningTextProps {
 const shouldForwardError = (prop: string) => prop !== 'withLabel';
 
 const ErrorText = styled('span', { shouldForwardProp: shouldForwardError })<FormWarningTextProps>`
+  grid-column: 2;
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
@@ -75,6 +76,7 @@ interface StyledInputWrapperProps {
 
 const InputWrapper = styled.div<StyledInputWrapperProps>`
   display: flex;
+  grid-column: 2;
   flex-wrap: wrap;
   flex-grow: 1;
   background: ${(p) => (p.white ? colors.white : colors.brand.greyLightest)};
@@ -84,7 +86,6 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
   transition: border-color 100ms ease;
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
-  padding-right: ${spacing.small};
 
   &:focus-within {
     border-color: ${colors.brand.primary};
@@ -92,6 +93,7 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
 
   input,
   textarea {
+    padding: 0 ${spacing.small};
     width: inherit;
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
@@ -120,8 +122,8 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
 `;
 
 const FieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   flex: 1;
 `;
 
@@ -143,11 +145,11 @@ const BaseInput = ({
         {label}
       </StyledLabel>
       <FieldWrapper>
+        {before}
         <InputWrapper white={white} className={className}>
-          {before}
           {children}
-          {after}
         </InputWrapper>
+        {after}
         {error && (
           <ErrorText id={`${name}-error`} aria-live="assertive">
             {error}

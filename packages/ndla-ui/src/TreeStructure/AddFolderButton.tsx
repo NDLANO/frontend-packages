@@ -15,7 +15,6 @@ import { Plus } from '@ndla/icons/action';
 import { FolderType } from './types';
 
 interface AddFolderButtonProps {
-  selectedFolder?: FolderType;
   canAddFolder: boolean;
   focusedFolder?: FolderType;
   setNewFolderParentId: (id?: string) => void;
@@ -33,19 +32,14 @@ const StyledPlus = styled(Plus)`
   width: 24px;
 `;
 
-const AddFolderButton = ({
-  selectedFolder,
-  canAddFolder,
-  setNewFolderParentId,
-  focusedFolder,
-}: AddFolderButtonProps) => {
+const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder }: AddFolderButtonProps) => {
   const { t } = useTranslation();
   return (
     <Tooltip
       tooltip={
         canAddFolder
           ? t('myNdla.newFolderUnder', {
-              folderName: selectedFolder?.name,
+              folderName: focusedFolder?.name,
             })
           : t('treeStructure.maxFoldersAlreadyAdded')
       }>
@@ -56,7 +50,7 @@ const AddFolderButton = ({
         aria-label={
           canAddFolder
             ? t('myNdla.newFolderUnder', {
-                folderName: selectedFolder?.name,
+                folderName: focusedFolder?.name,
               })
             : t('treeStructure.maxFoldersAlreadyAdded')
         }

@@ -191,7 +191,6 @@ const TreeStructure = ({
         {type === 'picker' && (
           <AddFolderButton
             canAddFolder={!!canAddFolder}
-            selectedFolder={selectedFolder}
             focusedFolder={focusedFolder}
             setNewFolderParentId={setNewFolderParentId}
           />

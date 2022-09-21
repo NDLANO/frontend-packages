@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { IconButton } from '@ndla/button';
+import { IconButton, IconButtonV2 } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import React, { ComponentProps, forwardRef, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -53,6 +53,7 @@ const StyledInput = styled(InputV2)`
 
 const Row = styled.div`
   display: flex;
+  align-items: center;
   gap: ${spacing.xxsmall};
   padding-right: ${spacing.xsmall};
 `;
@@ -80,16 +81,17 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
         <Row>
           {!loading && (
             <>
-              <IconButton
+              <IconButtonV2
+                variant={'ghost'}
+                colorTheme="light"
                 tabIndex={0}
                 disabled={!!error}
                 aria-label={t('save')}
                 title={t('save')}
                 size="small"
-                ghostPill
                 onClick={onSave}>
                 <Done />
-              </IconButton>
+              </IconButtonV2>
               <IconButton aria-label={t('close')} title={t('close')} size="small" ghostPill onClick={onClose}>
                 <Cross />
               </IconButton>

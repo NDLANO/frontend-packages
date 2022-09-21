@@ -37,6 +37,7 @@ interface FormWarningTextProps {
 const shouldForwardError = (prop: string) => prop !== 'withLabel';
 
 const ErrorText = styled('span', { shouldForwardProp: shouldForwardError })<FormWarningTextProps>`
+  margin-top: 2px;
   grid-column: 2;
   font-family: ${fonts.sans};
   color: ${colors.support.red};
@@ -145,11 +146,11 @@ const BaseInput = ({
         {label}
       </StyledLabel>
       <FieldWrapper>
-        {before}
         <InputWrapper white={white} className={className}>
+          {before}
           {children}
+          {after}
         </InputWrapper>
-        {after}
         {error && (
           <ErrorText id={`${name}-error`} aria-live="assertive">
             {error}

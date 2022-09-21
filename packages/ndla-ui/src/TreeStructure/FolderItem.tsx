@@ -231,7 +231,7 @@ const FolderItem = ({
       selected={selected}
       disabled={loading}
       onFocus={(e) => {
-        setFocusedFolder(focusedFolder || folder, true);
+        setFocusedFolder(focusedFolder || folder);
       }}
       onClick={handleClickFolder}
       isCreatingFolder={isCreatingFolder}>
@@ -242,7 +242,7 @@ const FolderItem = ({
           isOpen={isOpen}
           onClick={(e) => {
             e.stopPropagation();
-            setFocusedFolder(folder, true);
+            setFocusedFolder(folder);
             if (isOpen) {
               onCloseFolder(id);
             } else {

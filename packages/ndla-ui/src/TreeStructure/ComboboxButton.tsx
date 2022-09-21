@@ -118,6 +118,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           shape="sharp"
           onKeyDown={onKeyDown}
           onClick={() => {
+            innerRef.current?.focus();
             onToggleTree(!showTree);
           }}>
           {selectedFolder?.name}

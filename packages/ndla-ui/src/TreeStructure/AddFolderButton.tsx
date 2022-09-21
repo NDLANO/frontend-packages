@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
@@ -34,6 +34,7 @@ const StyledPlus = styled(Plus)`
 
 const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder }: AddFolderButtonProps) => {
   const { t } = useTranslation();
+  const ref = useRef<HTMLButtonElement>(null);
   return (
     <Tooltip
       tooltip={
@@ -44,6 +45,7 @@ const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder }: 
           : t('treeStructure.maxFoldersAlreadyAdded')
       }>
       <StyledAddFolderButton
+        ref={ref}
         variant="outline"
         shape="pill"
         disabled={!canAddFolder}
@@ -54,7 +56,20 @@ const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder }: 
               })
             : t('treeStructure.maxFoldersAlreadyAdded')
         }
-        onClick={() => setNewFolderParentId(focusedFolder?.id)}>
+        onMouseDown={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          ref.current?.focus();
+        }}
+        onMouseUp={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          ref.current?.focus();
+        }}
+        onClick={(e) => {
+          e.currentTarget.focus();
+          setNewFolderParentId(focusedFolder?.id);
+        }}>
         <StyledPlus /> {t('myNdla.newFolder')}
       </StyledAddFolderButton>
     </Tooltip>

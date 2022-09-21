@@ -47,7 +47,7 @@ export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   selectedFolder?: FolderType;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  setFocusedFolder: (folder: FolderType, focus?: boolean) => void;
+  setFocusedFolder: (folder: FolderType) => void;
   setSelectedFolder: (folder: FolderType) => void;
   visibleFolders: FolderType[];
   closeTree: () => void;

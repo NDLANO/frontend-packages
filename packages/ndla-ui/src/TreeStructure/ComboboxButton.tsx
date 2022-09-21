@@ -7,13 +7,9 @@
  */
 
 import React, { KeyboardEvent } from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
-import Tooltip from '@ndla/tooltip';
-import { colors, spacing } from '@ndla/core';
-import { IFolder } from '@ndla/types-learningpath-api';
-import { Plus } from '@ndla/icons/action';
+import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 import { forwardRef } from 'react';
 import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
@@ -27,8 +23,8 @@ interface StyledRowProps {
 
 const StyledRow = styled.div<StyledRowProps>`
   display: flex;
-  justify-content: space-between;
   padding: ${spacing.xxsmall};
+  align-items: center;
   border-bottom: ${({ isOpen }) => isOpen && `1px solid ${colors.brand.tertiary}`};
 `;
 const StyledSelectedFolder = styled(Button)`
@@ -44,18 +40,11 @@ const StyledSelectedFolder = styled(Button)`
   :focus-visible {
     outline: none;
   }
-`;
-
-const StyledAddFolderButton = styled(Button)`
-  &,
-  &:disabled {
-    border-color: transparent;
+  ${mq.range({ until: breakpoints.tablet })} {
+    min-height: 4rem;
+    max-height: 4rem;
+    text-align: start;
   }
-`;
-
-const StyledPlus = styled(Plus)`
-  height: 24px;
-  width: 24px;
 `;
 
 interface Props {
@@ -70,9 +59,6 @@ interface Props {
   onOpenFolder: (id: string) => void;
   onCloseFolder: (id: string) => void;
   setFocusedFolder: (folder?: FolderType) => void;
-  onNewFolder?: (name: string, parentId: string) => Promise<IFolder>;
-  maxLevel: number;
-  setNewFolderParentId: (id?: string) => void;
 }
 
 const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
@@ -89,13 +75,9 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       setFocusedFolder,
       onOpenFolder,
       onCloseFolder,
-      onNewFolder,
-      maxLevel,
-      setNewFolderParentId,
     },
     ref,
   ) => {
-    const { t } = useTranslation();
     const innerRef = useForwardedRef(ref);
 
     const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
@@ -118,7 +100,6 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       }
     };
 
-    const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
     return (
       <StyledRow isOpen={showTree}>
         <StyledSelectedFolder
@@ -137,35 +118,11 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           shape="sharp"
           onKeyDown={onKeyDown}
           onClick={() => {
+            innerRef.current?.focus();
             onToggleTree(!showTree);
           }}>
           {selectedFolder?.name}
         </StyledSelectedFolder>
-        {onNewFolder && showTree && (
-          <Tooltip
-            tooltip={
-              canAddFolder
-                ? t('myNdla.newFolderUnder', {
-                    folderName: selectedFolder?.name,
-                  })
-                : t('treeStructure.maxFoldersAlreadyAdded')
-            }>
-            <StyledAddFolderButton
-              variant="outline"
-              shape="pill"
-              disabled={!canAddFolder}
-              aria-label={
-                canAddFolder
-                  ? t('myNdla.newFolderUnder', {
-                      folderName: selectedFolder?.name,
-                    })
-                  : t('treeStructure.maxFoldersAlreadyAdded')
-              }
-              onClick={() => setNewFolderParentId(focusedFolder?.id)}>
-              <StyledPlus /> {t('myNdla.newFolder')}
-            </StyledAddFolderButton>
-          </Tooltip>
-        )}
         <IconButton
           aria-hidden
           aria-label=""
@@ -174,9 +131,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           colorTheme="greyLighter"
           size="small"
           onClick={() => {
-            if (!showTree) {
-              innerRef.current?.focus();
-            }
+            innerRef.current?.focus();
             onToggleTree(!showTree);
           }}>
           {showTree ? <ChevronUp /> : <ChevronDown />}

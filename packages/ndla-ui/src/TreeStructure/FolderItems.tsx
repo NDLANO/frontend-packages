@@ -10,8 +10,7 @@ import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
 import FolderItem from './FolderItem';
-import FolderNameInput from './FolderNameInput';
-import { CommonFolderItemsProps, FolderType, TreeStructureType } from './types';
+import { CommonFolderItemsProps, FolderType, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
 import NavigationLink from './NavigationLink';
 import { treestructureId } from './helperFunctions';
 
@@ -42,10 +41,11 @@ export interface FolderItemsProps extends CommonFolderItemsProps {
   folders: FolderType[];
   newFolderParentId: string | undefined;
   onCancelNewFolder: () => void;
-  onSaveNewFolder: (name: string, parentId: string) => void;
   openFolders: string[];
   parentFolder?: FolderType;
   children?: ReactNode;
+  onCreate: OnCreatedFunc;
+  newFolderInput?: NewFolderInputFunc;
 }
 
 const FolderItems = ({
@@ -54,11 +54,12 @@ const FolderItems = ({
   loading,
   newFolderParentId,
   onCancelNewFolder,
-  onSaveNewFolder,
   openFolders,
   type,
   parentFolder,
   children,
+  onCreate,
+  newFolderInput,
   ...rest
 }: FolderItemsProps) => (
   <StyledUL
@@ -101,20 +102,12 @@ const FolderItems = ({
                   type={type}
                   newFolderParentId={newFolderParentId}
                   onCancelNewFolder={onCancelNewFolder}
-                  onSaveNewFolder={onSaveNewFolder}
                   openFolders={openFolders}
+                  newFolderInput={newFolderInput}
+                  onCreate={onCreate}
                   {...rest}>
                   {newFolderParentId === id && (
-                    <li role="none">
-                      <FolderNameInput
-                        loading={loading}
-                        level={level}
-                        onCancelNewFolder={onCancelNewFolder}
-                        onSaveNewFolder={onSaveNewFolder}
-                        parentId={newFolderParentId}
-                        type={type}
-                      />
-                    </li>
+                    <li role="none">{newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}</li>
                   )}
                 </FolderItems>
               )}

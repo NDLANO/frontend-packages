@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { TreeStructure, FolderType, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
 import { uuid } from '@ndla/util';
@@ -14,12 +14,26 @@ import { User, HashTag } from '@ndla/icons/common';
 import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
+import { FolderInput } from '@ndla/ui';
+import { colors, spacing } from '@ndla/core';
 
 const Container = styled.div<{ type?: TreeStructureType }>`
   display: flex;
   margin-top: 40px;
   max-width: 600px;
   max-height: ${({ type }) => type !== 'navigation' && '250px'};
+`;
+
+const StyledFolderInput = styled(FolderInput)`
+  border-left: ${spacing.xsmall} solid ${colors.brand.light};
+  border-right: ${spacing.xsmall} solid ${colors.brand.light};
+  &:focus-within {
+    border-color: ${colors.brand.light};
+  }
+  // Not good practice, but necessary to give error message same padding as caused by border.
+  & + span {
+    padding: 0 ${spacing.xsmall};
+  }
 `;
 
 export const MY_FOLDERS_ID = 'folders';
@@ -167,7 +181,6 @@ export const TreeStructureExampleComponent = ({
   onNewFolder?: boolean;
 }) => {
   const [structure, setStructure] = useState<FolderType[]>(initalStructure);
-  const [loading, setLoading] = useState(false);
   return (
     <Container type={type}>
       <TreeStructure
@@ -175,38 +188,18 @@ export const TreeStructureExampleComponent = ({
         onSelectFolder={onSelectFolder}
         label={label}
         type={type}
-        openOnFolderClick={openOnFolderClick}
         defaultOpenFolders={defaultOpenFolders}
-        // @ts-ignore
-        onNewFolder={
-          onNewFolder &&
-          (async (name: string, parentId: string) => {
-            // A funky implementation to imitate backend updates of structure
-            // eslint-disable-next-line no-console
-            if (name === '') {
-              return;
-            }
-            setLoading(true);
-            await new Promise((resolve) => setTimeout(resolve, 3000));
-            setLoading(false);
-            const flattenedStructure = flattenFolders(structure);
-            const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
-            const newFolderId = uuid();
-            if (targetFolder) {
-              const newFolder = generateNewFolder(name, newFolderId, targetFolder.breadcrumbs);
-
-              setStructure((oldStructure) => {
-                if (targetFolder) {
-                  targetFolder.subfolders.unshift(newFolder);
-                }
-                return oldStructure;
-              });
-              return generateNewFolder(name, newFolderId, targetFolder.breadcrumbs);
-            }
-          })
-        }
+        newFolderInput={({ parentId, onClose, onCreate }) => (
+          <NewFolder
+            structure={structure}
+            setStructure={setStructure}
+            parentId={parentId}
+            onClose={onClose}
+            onCreate={onCreate}
+          />
+        )}
         folders={structure}
-        loading={loading}
+        loading={false}
       />
     </Container>
   );
@@ -234,5 +227,82 @@ const TreeStructureExample = () => (
     />
   </div>
 );
+
+interface NewFolderProps {
+  parentId: string;
+  structure: FolderType[];
+  setStructure: Dispatch<SetStateAction<FolderType[]>>;
+  onClose?: () => void;
+  onCreate?: (folder: FolderType, parentId: string) => void;
+}
+
+const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: NewFolderProps) => {
+  const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const onSave = async () => {
+    if (error) {
+      return;
+    }
+    if (name === '') {
+      return;
+    }
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    setLoading(false);
+    const flattenedStructure = flattenFolders(structure);
+    const targetFolder = flattenedStructure.find((folder) => folder.id === parentId);
+    const newFolderId = uuid();
+    const newFolder = generateNewFolder(name, newFolderId, targetFolder?.breadcrumbs ?? []);
+    if (targetFolder) {
+      setStructure((oldStructure) => {
+        targetFolder.subfolders.unshift(newFolder);
+        return oldStructure;
+      });
+    } else {
+      setStructure((old) => [newFolder].concat(old));
+    }
+    onCreate?.(newFolder, parentId);
+    onClose?.();
+  };
+
+  useEffect(() => {
+    if (name.length === 0) {
+      setError('Navn er påkrevd');
+    } else {
+      setError('');
+    }
+  }, [name]);
+
+  return (
+    <StyledFolderInput
+      autoFocus
+      labelHidden
+      name="name"
+      label={'Mine mapper'}
+      placeholder={'Skriv inn mappenavn'}
+      loading={loading}
+      onClose={onClose}
+      onSave={onSave}
+      error={error}
+      value={name}
+      onChange={(e) => {
+        if (!loading) {
+          setName(e.currentTarget.value);
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          onClose?.();
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          onSave();
+        }
+      }}
+    />
+  );
+};
 
 export default TreeStructureExample;

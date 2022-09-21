@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-
+import { constants } from '@ndla/ui';
 import MyNdlaLayoutExample from '../molecules/MyNdlaPages/MyNdlaLayoutExample';
 import MyNdlaMyPageContent from '../molecules/MyNdlaPages/MyNdlaMyPageContent';
 
@@ -32,6 +32,7 @@ const MyNdlaMyPage = () => {
               src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
               alt: 'alt',
             },
+            contentType: constants.contentTypes.TOPIC,
           },
           {
             id: 'ccc46e49-7d79-470c-8223-d7b2f9147aaf',
@@ -45,6 +46,7 @@ const MyNdlaMyPage = () => {
               src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
               alt: 'alt',
             },
+            contentType: constants.contentTypes.TOPIC,
           },
         ]}
         name={{ firstName: 'Peter', lastName: 'Rolfsen' }}

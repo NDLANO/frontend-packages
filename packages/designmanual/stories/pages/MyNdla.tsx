@@ -8,7 +8,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { ListResource, BlockResource, Folder } from '@ndla/ui';
+import { ListResource, BlockResource, Folder, constants } from '@ndla/ui';
 import { MenuItemProps } from '@ndla/button';
 import { FolderInput } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
@@ -111,6 +111,24 @@ export const MyNdla = () => {
               }}
               link={''}
               menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
+            />
+
+            <h3>Blokkressurs uten bilde</h3>
+            <BlockResource
+              id="2ae58e7d-ea25-49f0-b2a5-1f11830f8c04"
+              key={'blockResource'}
+              title="Helt Vanlig Tittel"
+              topics={topics}
+              tags={tags}
+              description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
             />
             <h3> Standard Ressurs</h3>
             <ListResource
@@ -126,6 +144,23 @@ export const MyNdla = () => {
               }}
               link={''}
               menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
+            />
+            <h3> Standard Ressurs uten bilde</h3>
+            <ListResource
+              id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
+              key={'defaultResource'}
+              title="Titler kan også kuttes av"
+              topics={topics}
+              tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
+              description={'En helt vanlig beskrivelse.'}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
             />
             <h3>Ressurs med tom beskrivelse</h3>
             <ListResource
@@ -141,6 +176,23 @@ export const MyNdla = () => {
               }}
               link={''}
               menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
+            />
+            <h3>Ressurs med tom beskrivelse uten bilde</h3>
+            <ListResource
+              id={'181c1b06-683f-472b-900c-cf25979d22ac'}
+              key={'withoutDescription'}
+              title="Min Tittel"
+              topics={topics}
+              description={''}
+              tags={tags}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
             />
             <h3>Ressurs uten beskrivelse, tags og meny</h3>
             <ListResource
@@ -154,6 +206,125 @@ export const MyNdla = () => {
               }}
               link={''}
               menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
+            />
+            <h3>Ressurs uten beskrivelse, tags og meny. Uten bilde</h3>
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.EXTERNAL_LEARNING_RESOURCES}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.LEARNING_PATH}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.MULTIDISCIPLINARY_TOPIC}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.SOURCE_MATERIAL}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.subjectTypes.SUBJECT}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.SUBJECT_MATERIAL}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.TASKS_AND_ACTIVITIES}
+            />
+            <ListResource
+              id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
+              key={'minimalResource'}
+              title="Minimal ressurs"
+              topics={topics}
+              resourceImage={{
+                src: '',
+                alt: '',
+              }}
+              link={''}
+              menuItems={menuItems}
+              contentType={constants.contentTypes.TOPIC}
             />
           </>
         }
@@ -179,6 +350,21 @@ export const MyNdla = () => {
                     src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                     alt: '',
                   },
+                  contentType: constants.contentTypes.ASSESSMENT_RESOURCES,
+                },
+                {
+                  id: '61532e39-7623-4c14-b544-350cc9c2cba4',
+                  title: 'My Resource',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: '',
+                    alt: '',
+                  },
+                  contentType: constants.contentTypes.ASSESSMENT_RESOURCES,
                 },
                 {
                   id: '94c16735-7485-4f95-9591-f61df6291d87',
@@ -189,9 +375,10 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                    src: '',
                     alt: '',
                   },
+                  contentType: constants.contentTypes.EXTERNAL_LEARNING_RESOURCES,
                 },
                 {
                   id: 'ee3b8780-3056-4696-a33e-6c4609530a40',
@@ -202,9 +389,10 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                    src: '',
                     alt: '',
                   },
+                  contentType: constants.contentTypes.LEARNING_PATH,
                 },
                 {
                   id: '787b735e-bcd8-4b22-ae37-349a18013c43',
@@ -215,9 +403,80 @@ export const MyNdla = () => {
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+                    src: '',
                     alt: '',
                   },
+                  contentType: constants.contentTypes.MULTIDISCIPLINARY_TOPIC,
+                },
+                {
+                  id: '787b735e-bcd8-4b22-ae37-349a18013c43',
+                  title: 'My Resource',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: '',
+                    alt: '',
+                  },
+                  contentType: constants.contentTypes.SOURCE_MATERIAL,
+                },
+                {
+                  id: '787b735e-bcd8-4b22-ae37-349a18013c43',
+                  title: 'My Resource',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: '',
+                    alt: '',
+                  },
+                  contentType: constants.contentTypes.SUBJECT,
+                },
+                {
+                  id: '787b735e-bcd8-4b22-ae37-349a18013c43',
+                  title: 'My Resource',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: '',
+                    alt: '',
+                  },
+                  contentType: constants.contentTypes.SUBJECT_MATERIAL,
+                },
+                {
+                  id: '787b735e-bcd8-4b22-ae37-349a18013c43',
+                  title: 'My Resource',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: '',
+                    alt: '',
+                  },
+                  contentType: constants.contentTypes.TASKS_AND_ACTIVITIES,
+                },
+                {
+                  id: '787b735e-bcd8-4b22-ae37-349a18013c43',
+                  title: 'My Resource',
+                  link: '',
+                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
+                  tags: ['tag', 'tag', 'tag'],
+                  description:
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
+                  resourceImage: {
+                    src: '',
+                    alt: '',
+                  },
+                  contentType: constants.contentTypes.TOPIC,
                 },
               ]}
             />

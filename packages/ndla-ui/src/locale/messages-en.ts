@@ -1032,7 +1032,7 @@ const messages = {
       myPage: 'My page',
       logout: 'Log out of My NDLA',
       loginText:
-        'Log in with Feide to receive access to My NDLA. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
+        'In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
       loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',

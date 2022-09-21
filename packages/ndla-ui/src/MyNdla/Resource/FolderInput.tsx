@@ -42,7 +42,6 @@ const StyledInput = styled(InputV2)`
   border-radius: 0;
   flex-wrap: nowrap;
   input {
-    min-width: 100px;
     line-height: 1.75em;
     color: ${colors.brand.primary};
     ::selection {

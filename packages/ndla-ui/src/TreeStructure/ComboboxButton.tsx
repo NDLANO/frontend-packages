@@ -24,6 +24,7 @@ interface StyledRowProps {
 const StyledRow = styled.div<StyledRowProps>`
   display: flex;
   padding: ${spacing.xxsmall};
+  align-items: center;
   border-bottom: ${({ isOpen }) => isOpen && `1px solid ${colors.brand.tertiary}`};
 `;
 const StyledSelectedFolder = styled(Button)`
@@ -129,9 +130,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           colorTheme="greyLighter"
           size="small"
           onClick={() => {
-            if (!showTree) {
-              innerRef.current?.focus();
-            }
+            innerRef.current?.focus();
             onToggleTree(!showTree);
           }}>
           {showTree ? <ChevronUp /> : <ChevronDown />}

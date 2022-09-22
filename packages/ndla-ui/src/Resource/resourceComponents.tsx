@@ -122,7 +122,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
         <StyledTagListElement key={`tag-${i}`}>
           <StyledSafeLink
             onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`}>
+            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
             <HashTag />
             {tag}
           </StyledSafeLink>
@@ -156,7 +156,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
       icon: <HashTag />,
       text: tag,
       onClick: () => {
-        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`);
+        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`);
       },
     };
   });

@@ -191,7 +191,7 @@ const FolderItem = ({
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}>
-      {(!hideArrow || level === 0) && (
+      {!hideArrow && (
         <OpenButton
           aria-hidden
           tabIndex={-1}

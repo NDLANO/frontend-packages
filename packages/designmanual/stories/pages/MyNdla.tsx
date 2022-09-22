@@ -33,7 +33,12 @@ export const menuItems: MenuItemProps[] = [
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];
 
-const tags = ['tag', 'tag', 'tag', 'tag'];
+const tags = [
+  { tag: 'tag', encoded: 'tag' },
+  { tag: 'tag', encoded: 'tag' },
+  { tag: 'tag', encoded: 'tag' },
+  { tag: 'tag', encoded: 'tag' },
+];
 
 const topics = ['Matte', 'Naturfag'];
 
@@ -121,7 +126,13 @@ export const MyNdla = () => {
               key={'defaultResource'}
               title="Titler kan også kuttes av"
               topics={topics}
-              tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
+              tags={[
+                { tag: 'veldiglangtag', encoded: 'veldiglangtag' },
+                { tag: 'kjempelangtag', encoded: 'kjempelangtag' },
+                { tag: 'tag3medrartnavn', encoded: 'tag3medrartnavn' },
+                { tag: 'matte', encoded: 'matte' },
+                { tag: 'matematikk', encoded: 'matematikk' },
+              ]}
               description={'En helt vanlig beskrivelse.'}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
@@ -175,7 +186,11 @@ export const MyNdla = () => {
                   title: 'My Resource',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
+                  tags: [
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                  ],
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
@@ -188,7 +203,11 @@ export const MyNdla = () => {
                   title: 'My Resource',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
+                  tags: [
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                  ],
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
@@ -201,7 +220,11 @@ export const MyNdla = () => {
                   title: 'My Resource',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
+                  tags: [
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                  ],
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {
@@ -214,7 +237,11 @@ export const MyNdla = () => {
                   title: 'My Resource',
                   link: '',
                   topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
+                  tags: [
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                    { tag: 'tag', encoded: 'tag' },
+                  ],
                   description:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
                   resourceImage: {

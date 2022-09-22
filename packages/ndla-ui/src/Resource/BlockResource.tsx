@@ -19,6 +19,7 @@ import {
   TopicList,
   ResourceTitleLink,
   LoaderProps,
+  Tag,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
@@ -29,7 +30,7 @@ interface BlockResourceProps {
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];
-  tags?: string[];
+  tags?: Tag[];
   description?: string;
   menuItems?: MenuItemProps[];
   isLoading?: boolean;

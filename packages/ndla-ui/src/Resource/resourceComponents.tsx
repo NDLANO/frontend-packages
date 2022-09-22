@@ -20,6 +20,11 @@ export interface ResourceImageProps {
   src: string;
 }
 
+export interface Tag {
+  tag: string;
+  encoded: string;
+}
+
 export const ResourceTitleLink = styled(SafeLink)`
   box-shadow: none;
   color: ${colors.brand.primary};
@@ -104,7 +109,7 @@ const TagCounterWrapper = styled.span`
 `;
 
 interface TagListProps {
-  tags?: string[];
+  tags?: Tag[];
   tagLinkPrefix?: string;
 }
 
@@ -122,9 +127,9 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
         <StyledTagListElement key={`tag-${i}`}>
           <StyledSafeLink
             onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
+            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag.encoded}`}>
             <HashTag />
-            {tag}
+            {tag.tag}
           </StyledSafeLink>
         </StyledTagListElement>
       ))}
@@ -133,7 +138,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
 };
 
 interface CompressedTagListProps {
-  tags: string[];
+  tags: Tag[];
   tagLinkPrefix?: string;
 }
 
@@ -154,9 +159,9 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
   const remainingTags = tags.slice(3, tags.length).map((tag) => {
     return {
       icon: <HashTag />,
-      text: tag,
+      text: tag.tag,
       onClick: () => {
-        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`);
+        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag.encoded}`);
       },
     };
   });

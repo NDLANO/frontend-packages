@@ -18,6 +18,7 @@ import {
   ResourceTitleLink,
   TopicList,
   LoaderProps,
+  Tag,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
@@ -120,7 +121,7 @@ export interface ListResourceProps {
   title: string;
   resourceImage: ResourceImageProps;
   topics: string[];
-  tags?: string[];
+  tags?: Tag[];
   description?: string;
   menuItems?: MenuItemProps[];
   isLoading?: boolean;

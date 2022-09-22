@@ -977,6 +977,8 @@ const messages = {
       teaching: 'Oahpahusjoavku',
       other: 'Eará joavkkut',
     },
+    wrongUserInfoDisclaimer:
+      'Jus leat boasttudieđut, de ferte lágideaddjiorganisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogovva geavaheaddjidoarjaga ektui gávnnat dás: ',
   },
   checkOutNewFeature: 'Iskka ođđa doaibmilvuođa',
   slateBlockMenu: {

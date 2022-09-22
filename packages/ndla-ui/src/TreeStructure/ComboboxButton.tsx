@@ -53,12 +53,12 @@ interface Props {
   label?: string;
   focusedFolder?: FolderType;
   selectedFolder?: FolderType;
-  setSelectedFolder: (folder?: FolderType) => void;
+  setSelectedFolder: (folder: FolderType) => void;
   onToggleTree: (open: boolean) => void;
   flattenedFolders: FolderType[];
   onOpenFolder: (id: string) => void;
   onCloseFolder: (id: string) => void;
-  setFocusedFolder: (folder?: FolderType) => void;
+  setFocusedFolder: (folder: FolderType) => void;
 }
 
 const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
@@ -82,7 +82,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
 
     const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
       if (e.key === 'Enter') {
-        if (showTree) {
+        if (showTree && focusedFolder) {
           setSelectedFolder(focusedFolder);
         }
         return;

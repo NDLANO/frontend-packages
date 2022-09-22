@@ -81,6 +81,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
   label?: string;
   maxLevel?: number;
   newFolderInput?: NewFolderInputFunc;
+  onSelectFolder?: (id: string) => void;
 }
 
 const TreeStructure = ({
@@ -101,8 +102,8 @@ const TreeStructure = ({
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
-  const [focusedFolder, setFocusedFolder] = useState<FolderType | undefined>();
-  const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
+  const [focusedFolder, _setFocusedFolder] = useState<FolderType | undefined>();
+  const [selectedFolder, _setSelectedFolder] = useState<FolderType | undefined>();
   const [showTree, setShowTree] = useState(type === 'navigation');
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
@@ -122,9 +123,9 @@ const TreeStructure = ({
     if (defaultSelectedFolderId !== undefined) {
       const selected = flattenFolders(folders).find((folder) => folder.id === defaultSelectedFolderId);
       if (selected) {
-        setSelectedFolder(selected);
+        _setSelectedFolder(selected);
         if (type === 'picker') {
-          setFocusedFolder(selected);
+          _setFocusedFolder(selected);
         }
       }
     }
@@ -136,6 +137,22 @@ const TreeStructure = ({
     if (!open) {
       setNewFolderParentId(undefined);
     }
+  };
+
+  const setSelectedFolder = (folder: FolderType) => {
+    _setSelectedFolder(folder);
+    onSelectFolder?.(folder.id);
+  };
+
+  const setFocusedFolder = (folder: FolderType) => {
+    _setFocusedFolder(folder);
+    setNewFolderParentId(undefined);
+
+    ref.current?.focus();
+  };
+
+  const onOpenFolder = (id: string) => {
+    setOpenFolders(uniq(openFolders.concat(id)));
   };
 
   const onCloseFolder = (id: string) => {
@@ -150,14 +167,9 @@ const TreeStructure = ({
     setOpenFolders(openFolders.filter((folderId) => folderId !== id));
   };
 
-  const onOpenFolder = (id: string) => {
-    setOpenFolders(uniq(openFolders.concat(id)));
-  };
-
   const onNewFolderCreated = (newFolder: IFolder | undefined, parentId: string) => {
     if (newFolder) {
       setSelectedFolder(newFolder);
-      onSelectFolder?.(newFolder.id);
       setFocusedFolder(newFolder);
       setOpenFolders(uniq(openFolders.concat(parentId)));
       setNewFolderParentId?.(undefined);
@@ -170,11 +182,6 @@ const TreeStructure = ({
     ref.current?.focus();
   };
 
-  const setFolderFocus = (folder: FolderType) => {
-    setFocusedFolder(folder);
-    setNewFolderParentId(undefined);
-    ref.current?.focus();
-  };
   const canAddFolder = showTree && selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
 
   return (
@@ -224,9 +231,8 @@ const TreeStructure = ({
               onCancelNewFolder={onCancelNewFolder}
               onCloseFolder={onCloseFolder}
               onOpenFolder={onOpenFolder}
-              onSelectFolder={onSelectFolder}
               openFolders={openFolders}
-              setFocusedFolder={setFolderFocus}
+              setFocusedFolder={setFocusedFolder}
               setSelectedFolder={setSelectedFolder}
               targetResource={targetResource}
               visibleFolders={flattenedFolders}

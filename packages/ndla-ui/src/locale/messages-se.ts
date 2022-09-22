@@ -978,7 +978,7 @@ const messages = {
       other: 'Eará joavkkut',
     },
     wrongUserInfoDisclaimer:
-      'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',
+      'Jus leat boasttudieđut, de ferte lágideaddjiorganisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogovva geavaheaddjidoarjaga ektui gávnnat dás: ',
   },
   checkOutNewFeature: 'Iskka ođđa doaibmilvuođa',
   slateBlockMenu: {

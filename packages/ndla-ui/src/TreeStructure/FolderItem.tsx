@@ -117,7 +117,6 @@ const FolderItem = ({
   selectedFolder,
   onCloseFolder,
   onOpenFolder,
-  onSelectFolder,
   setFocusedFolder,
   setSelectedFolder,
   targetResource,
@@ -143,7 +142,6 @@ const FolderItem = ({
       if (selected) {
         closeTree();
       }
-      onSelectFolder?.(id);
     }
   };
 

@@ -6,17 +6,15 @@
  *
  */
 
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 
 import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
 import { colors } from '@ndla/core';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLButtonElement> {
   title?: string;
-  onClick: () => void;
-  className?: string;
 }
 
 const StyledButton = styled.button`
@@ -35,10 +33,10 @@ const StyledCross = styled(Cross)`
   width: 24px;
 `;
 
-const ModalClose = ({ title, onClick, className = '' }: Props) => {
+const ModalClose = ({ title, ...rest }: Props) => {
   const { t } = useTranslation();
   return (
-    <StyledButton onClick={onClick} data-cy="close-modal-button" className={className} aria-label={t('close')}>
+    <StyledButton data-cy="close-modal-button" aria-label={t('close')} {...rest}>
       <StyledCross title={title} />
     </StyledButton>
   );

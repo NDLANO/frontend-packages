@@ -977,6 +977,8 @@ const messages = {
       teaching: 'Oahpahusjoavku',
       other: 'Eará joavkkut',
     },
+    wrongUserInfoDisclaimer:
+      'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',
   },
   checkOutNewFeature: 'Iskka ođđa doaibmilvuođa',
   slateBlockMenu: {

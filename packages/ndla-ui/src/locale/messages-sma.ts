@@ -977,6 +977,8 @@ const messages = {
       teaching: 'Undervisningsgruppe',
       other: 'Andre grupper',
     },
+    wrongUserInfoDisclaimer:
+      'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {

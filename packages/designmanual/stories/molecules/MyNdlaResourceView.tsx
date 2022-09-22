@@ -132,7 +132,7 @@ type ResourceProps = {
   id: string;
   title: string;
   topics: string[];
-  tags?: { encoded: string; tag: string }[];
+  tags?: string[];
   resourceImage: { alt: string; src: string };
   link: string;
   description?: string;

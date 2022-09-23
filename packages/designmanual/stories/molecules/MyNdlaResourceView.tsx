@@ -136,6 +136,7 @@ type ResourceProps = {
   resourceImage: { alt: string; src: string };
   link: string;
   description?: string;
+  contentType: string;
 };
 export interface ViewProps {
   folders?: FolderProps[];
@@ -223,7 +224,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         ))}
       </BlockWrapper>
       <BlockWrapper type={layout}>
-        {resources?.map(({ id, title, topics, tags, description, resourceImage, link }, i) => (
+        {resources?.map(({ id, title, topics, tags, description, resourceImage, link, contentType }, i) => (
           <Resource
             id={id}
             key={`resource-${i}`}
@@ -237,6 +238,7 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
             }}
             link={link}
             menuItems={menuItems}
+            contentType={contentType}
           />
         ))}
       </BlockWrapper>

@@ -12,7 +12,7 @@ import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
 import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
 import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
-import { useSnack, Image, ListResource } from '@ndla/ui';
+import { useSnack, Image, ListResource, constants } from '@ndla/ui';
 
 import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
@@ -111,6 +111,7 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
                 alt: 'alt',
               }}
               link={''}
+              contentType={constants.contentTypes.TOPIC}
             />
             <TreeStructureExampleComponent
               label="Velg plassering"
@@ -179,6 +180,7 @@ const DialogNotLoggedInExample = ({ isOpen, title, closeCallback, resource }: Di
                     alt: 'alt',
                   }}
                   link={''}
+                  contentType={constants.contentTypes.TOPIC}
                 />
               </>
             )}

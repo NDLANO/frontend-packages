@@ -17,9 +17,11 @@ import {
   ResourceTitle,
   ResourceTitleLink,
   TopicList,
+  StyledContentIconWrapper,
   LoaderProps,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import ContentTypeBadge from '../ContentTypeBadge';
 
 const StyledResourceDescription = styled.p`
   grid-area: description;
@@ -90,18 +92,21 @@ const TagsandActionMenu = styled.div`
 const StyledImageWrapper = styled.div<StyledImageProps>`
   grid-area: image;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
     width: 54px;
     height: 40px;
   }
   overflow: hidden;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4/3;
 `;
 
 const StyledImage = styled(Image)`
-  display: flex;
-  border-radius: 2px;
   object-fit: cover;
+  aspect-ratio: 4/3;
 `;
 
 const TopicAndTitleWrapper = styled.div`
@@ -125,20 +130,31 @@ export interface ListResourceProps {
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
   targetBlank?: boolean;
+  contentType: string;
 }
 
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
   loading?: boolean;
   type: 'normal' | 'compact';
+  contentType: string;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
   if (!loading) {
-    return (
-      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
-    );
+    if (resourceImage.src === '') {
+      return (
+        <StyledContentIconWrapper contentType={contentType}>
+          <ContentTypeBadge type={contentType} size="x-small" />
+        </StyledContentIconWrapper>
+      );
+    } else {
+      return (
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+      );
+    }
   }
+
   return (
     <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
       <rect
@@ -194,6 +210,7 @@ const ListResource = ({
   menuItems,
   isLoading = false,
   targetBlank,
+  contentType,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
@@ -207,7 +224,12 @@ const ListResource = ({
   return (
     <ResourceWrapper onClick={handleClick} id={id}>
       <StyledImageWrapper imageSize={imageType}>
-        <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
+        <ListResourceImage
+          resourceImage={resourceImage}
+          loading={isLoading}
+          type={imageType}
+          contentType={contentType}
+        />
       </StyledImageWrapper>
       <TopicAndTitleWrapper>
         <TopicAndTitleLoader loading={isLoading}>

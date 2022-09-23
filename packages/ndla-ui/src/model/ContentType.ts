@@ -15,3 +15,15 @@ export const SOURCE_MATERIAL = 'source-material';
 export const LEARNING_PATH = 'learning-path';
 export const TOPIC = 'topic';
 export const MULTIDISCIPLINARY_TOPIC = 'multidisciplinary-topic';
+
+export const ListOfContentTypes = [
+  'SUBJECT_MATERIAL',
+  'TASKS_AND_ACTIVITIES',
+  'ASSESSMENT_RESOURCES',
+  'SUBJECT',
+  'EXTERNAL_LEARNING_RESOURCES',
+  'SOURCE_MATERIAL',
+  'LEARNING_PATH',
+  'TOPIC',
+  'MULTIDISIPLINARY_TOPIC',
+];

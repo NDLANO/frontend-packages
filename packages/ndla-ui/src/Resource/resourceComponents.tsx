@@ -14,7 +14,7 @@ import { MenuButton } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import { useNavigate } from 'react-router-dom';
 import { HashTag } from '@ndla/icons/common';
-
+import resourceTypeColor from '../utils/resourceTypeColor';
 export interface ResourceImageProps {
   alt: string;
   src: string;
@@ -103,6 +103,19 @@ const TagCounterWrapper = styled.span`
   padding: 5px;
 `;
 
+export interface ContentIconProps {
+  contentType: string;
+}
+
+export const StyledContentIconWrapper = styled.span<ContentIconProps>`
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ contentType }) => resourceTypeColor(contentType)};
+`;
+
 interface TagListProps {
   tags?: string[];
   tagLinkPrefix?: string;
@@ -146,7 +159,6 @@ const TagMenuButton = styled(MenuButton)`
     background-color: ${colors.brand.light};
   }
 `;
-
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();

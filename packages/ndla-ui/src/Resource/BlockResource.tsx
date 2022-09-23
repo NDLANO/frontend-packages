@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import React, { useRef } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
+import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
   CompressedTagList,
@@ -19,6 +20,7 @@ import {
   TopicList,
   ResourceTitleLink,
   LoaderProps,
+  StyledContentIconWrapper,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
@@ -34,6 +36,7 @@ interface BlockResourceProps {
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
   targetBlank?: boolean;
+  contentType: string;
 }
 
 const BlockElementWrapper = styled.div`
@@ -92,22 +95,21 @@ const BlockInfoWrapper = styled.div`
 const ImageWrapper = styled.div`
   display: flex;
   width: 100%;
+  justify-content: center;
   overflow: hidden;
   align-items: center;
-  div {
-    min-width: 100%;
-  }
+  aspect-ratio: 3/4;
   img {
     min-width: 100%;
   }
 `;
-
 interface BlockImageProps {
   image: ResourceImageProps;
   loading?: boolean;
+  contentType: string;
 }
 
-const BlockImage = ({ image, loading }: BlockImageProps) => {
+const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   if (loading) {
     return (
       <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -115,7 +117,15 @@ const BlockImage = ({ image, loading }: BlockImageProps) => {
       </ContentLoader>
     );
   }
-  return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
+  if (image.src === '') {
+    return (
+      <StyledContentIconWrapper contentType={contentType}>
+        <ContentTypeBadge type={contentType} size="large" />
+      </StyledContentIconWrapper>
+    );
+  } else {
+    return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
+  }
 };
 
 const TopicAndTitleLoader = ({ children, loading }: LoaderProps) => {
@@ -143,6 +153,7 @@ const BlockResource = ({
   menuItems,
   isLoading,
   targetBlank,
+  contentType,
 }: BlockResourceProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
@@ -155,7 +166,7 @@ const BlockResource = ({
   return (
     <BlockElementWrapper onClick={handleClick} id={id}>
       <ImageWrapper>
-        <BlockImage image={resourceImage} loading={isLoading} />
+        <BlockImage image={resourceImage} loading={isLoading} contentType={contentType} />
       </ImageWrapper>
       <BlockInfoWrapper>
         <TopicAndTitleLoader loading={isLoading}>

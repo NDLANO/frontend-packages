@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import { ListResource, BlockResource, constants } from '@ndla/ui';
 
 const ListResourceWrapper = styled.div`
@@ -17,6 +17,9 @@ const ListResourceWrapper = styled.div`
 const BlockResourceWrapper = styled.div`
   display: flex;
   gap: ${spacing.large};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    flex-direction: column;
+  }
 `;
 const BlockResourceExample = styled.div`
   display: flex;
@@ -82,7 +85,7 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
           />
         </BlockResourceExample>
       </BlockResourceWrapper>
-      <h3> Standard Ressurs</h3>
+      <h3> Standard Ressurs som laster</h3>
       <ListResource
         isLoading
         id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
@@ -99,7 +102,22 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
         menuItems={menuItems}
         contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
       />
-
+      <h3> Standard Ressurs</h3>
+      <ListResource
+        id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
+        key={'defaultResource'}
+        title="Titler kan også kuttes av"
+        topics={topics}
+        tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
+        description={'En helt vanlig beskrivelse.'}
+        resourceImage={{
+          src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
+          alt: '',
+        }}
+        link={''}
+        menuItems={menuItems}
+        contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
+      />
       <h3>Ressurs med tom beskrivelse</h3>
       <ListResource
         id={'181c1b06-683f-472b-900c-cf25979d22ac'}

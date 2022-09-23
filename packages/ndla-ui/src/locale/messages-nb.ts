@@ -432,6 +432,7 @@ const messages = {
     heading: 'Slik gjenbruker du innhold',
     learnMore: 'Lær mer om åpne lisenser',
     copyTitle: 'Kildehenvisning',
+    copy: 'Kopier',
     hasCopiedTitle: 'Kopiert!',
     embed: 'Bygg inn',
     embedCopied: 'Kopierte innbyggingskode!',

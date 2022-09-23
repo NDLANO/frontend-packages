@@ -432,6 +432,7 @@ const messages = {
   },
   license: {
     heading: 'How to reuse content',
+    copy: 'Copy',
     tabs: {
       text: 'Text',
       images: 'Images',

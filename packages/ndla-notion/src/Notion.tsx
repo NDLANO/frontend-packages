@@ -27,13 +27,10 @@ const BaselineIcon = styled(ShortText)`
   width: 1.1em;
   transition-duration: 0.5s;
 `;
-const NotionCSS = styled.span`
+const StyledNotionWrapper = styled.span`
   display: inline;
 `;
 
-const StyledTooltip = styled(Tooltip)`
-  display: inline;
-`;
 const StyledButton = styled.button`
   background: none;
   border: none;
@@ -46,6 +43,7 @@ const StyledButton = styled.button`
   color: #000;
   position: relative;
   cursor: pointer;
+  display: inline;
   &:focus,
   &:hover {
     color: ${colors.brand.primary};
@@ -53,10 +51,7 @@ const StyledButton = styled.button`
     ${BaselineIcon} {
       color: ${colors.brand.primary};
       transform: scale(1.2, 1);
-      transform-origin: left center;
-    }
-    &:after {
-      transform: scale(1.4) translateY(1px);
+      transform-origin: top left;
     }
   }
 `;
@@ -85,20 +80,20 @@ const Notion = ({
 }: Props) => {
   const { t } = useTranslation();
   return (
-    <NotionCSS css={NotionCSS} id={id} data-notion>
+    <StyledNotionWrapper id={id} data-notion>
       <StyledButton type="button" aria-label={ariaLabel} data-notion-link>
-        <StyledTooltip tooltip={t('searchPage.resultType.showNotion')}>
+        <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
           {children}
           {!hideBaselineIcon && <BaselineIcon />}
-        </StyledTooltip>
-      </StyledButton>{' '}
+        </Tooltip>
+      </StyledButton>
       {createUniversalPortal(
         <NotionDialog id={id} title={title} subTitle={subTitle} customCSS={customCSS} headerContent={headerContent}>
           {content}
         </NotionDialog>,
         'body',
       )}
-    </NotionCSS>
+    </StyledNotionWrapper>
   );
 };
 export default Notion;

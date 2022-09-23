@@ -149,7 +149,9 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            aria-live="assertive"
             copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copySourceReference}
             onClick={copyLicense}>
             {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
           </CopyButton>
@@ -192,7 +194,9 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            aria-live="assertive"
             copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copyEmbedLink}
             onClick={copyEmbededLink}>
             {`${t('license.copy')}  ${t('license.tabs.embedlink').toLowerCase()}`}
           </CopyButton>

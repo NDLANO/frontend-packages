@@ -423,7 +423,7 @@ const messages = {
     openAll: 'Raba buot',
   },
   license: {
-    copy: 'Kopier',
+    copy: 'Maŋge',
     heading: 'Ná geavahat sisdoalu ođđasit',
     learnMore: 'Oahpa eanet rabas liseanssaid birra',
     copyTitle: 'Gáldočujuhus',

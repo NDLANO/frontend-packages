@@ -62,41 +62,26 @@ const ItemWrapper = styled.div`
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
   transition: all ${animations.durations.fast} ease-in-out;
-  &:hover {
-    height: calc(100% + 4px);
-    width: calc(100% + 4px);
-    .topic-header-image {
-      height: calc(100% + 6px);
-      width: calc(100% + 6px);
+
+  .resource-no-image {
+    background-color: ${colors.brand.greyLightest};
+    .c-content-type-badge {
+      width: 26px;
+      height: 26px;
+      left: 45px;
+      margin-left: 0;
+      top: 100%;
+      margin-top: -13px;
+      opacity: 1;
     }
-    .topic-label {
-      svg {
-        transform: scale(1.2);
-      }
-    }
-    .topic-label-list {
-      margin-left: 2px;
-    }
-    .resource-type-wrapper {
-      padding: 0 calc(${spacing.normal} + 2px);
-      .resource-icon-wrapper {
-        left: 19px;
-        svg {
-          transform: scale(1.2);
-        }
-      }
-    }
-    .resource-no-image {
-      background-color: ${colors.brand.greyLightest};
-      .c-content-type-badge {
-        width: 26px;
-        height: 26px;
-        left: 45px;
-        margin-left: 0;
-        top: 100%;
-        margin-top: -13px;
-        opacity: 1;
-      }
+  }
+
+  :hover {
+    img {
+      transform: scale(1.1);
+      opacity: 1.2;
+      transition-duration: 0.5s;
+      overflow: hidden;
     }
   }
 `;
@@ -114,16 +99,10 @@ const ItemLink = styled(SafeLink)`
 
 const TextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
 `;
 
 const ItemTitleWrapper = styled.div<ItemTypeProps>`
-  transition: all ${animations.durations.fast} ease-in-out;
   margin-top: ${spacing.small};
-  ${(props) =>
-    props.isTopic &&
-    `${ItemWrapper}:hover & {
-    padding-left:2px; padding-right: 2px;}`};
 `;
 
 const ItemTitle = styled.h3<ItemTypeProps>`
@@ -156,11 +135,6 @@ const ContextWrapper = styled.div`
   background: white;
   padding: 0 ${spacing.normal} ${spacing.small};
   transition: all ${animations.durations.fast} ease-in-out;
-  ${ItemWrapper}:hover & {
-    padding-left: calc(${spacing.normal} + 2px);
-    padding-right: calc(${spacing.normal} + 2px);
-    padding-bottom: calc(${spacing.small} + 2px);
-  }
 `;
 
 export type SearchItemProps = {
@@ -196,7 +170,6 @@ const SearchItem = ({ item, type }: SearchItemType) => {
             </ItemTopicHeader>
           ) : (
             <>
-              <ItemResourceHeader labels={labels} img={img} type={type} />
               <TextWrapper>
                 <ItemTitleWrapper>
                   <ItemTitle>{title}</ItemTitle>

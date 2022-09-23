@@ -1048,6 +1048,7 @@ const messages = {
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
       read: { our: 'Read our', ours: 'Read our' },
       privacy: 'privacy statement',
+      privacyLink: 'https://om.ndla.no/gdpr',
       questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
       wishToDelete: 'Do you wish to delete your account?',
       terms: {

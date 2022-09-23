@@ -1046,6 +1046,7 @@ const messages = {
         'Bures boahtin NDLA:ii! Dál sáhtát vurket iežat oiddotresurssaid NDLA:s ja ordnet daid nu go dáhtut máhpain ja fáddágilkoriiguin.',
       read: { our: 'Loga min', ours: 'Loga min' },
       privacy: 'personsuodjalusjulggaštusa dás',
+      privacyLink: 'https://om.ndla.no/gdpr',
       questions: { question: 'Smiehtat go maidege?', ask: 'Jeara min chattas' },
       wishToDelete: 'It go hálit geavaheaddjiprofiila min geahčen šat?',
       terms: {

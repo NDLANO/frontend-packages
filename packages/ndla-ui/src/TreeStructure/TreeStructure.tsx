@@ -148,7 +148,7 @@ const TreeStructure = ({
     _setFocusedFolder(folder);
     setNewFolderParentId(undefined);
 
-    ref.current?.focus();
+    ref.current?.focus({ preventScroll: true });
   };
 
   const onOpenFolder = (id: string) => {
@@ -173,13 +173,13 @@ const TreeStructure = ({
       setFocusedFolder(newFolder);
       setOpenFolders(uniq(openFolders.concat(parentId)));
       setNewFolderParentId?.(undefined);
-      ref.current?.focus();
+      ref.current?.focus({ preventScroll: true });
     }
   };
 
   const onCancelNewFolder = () => {
     setNewFolderParentId?.(undefined);
-    ref.current?.focus();
+    ref.current?.focus({ preventScroll: true });
   };
 
   const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);

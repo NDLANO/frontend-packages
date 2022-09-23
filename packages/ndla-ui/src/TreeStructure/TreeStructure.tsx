@@ -182,7 +182,7 @@ const TreeStructure = ({
     ref.current?.focus();
   };
 
-  const canAddFolder = showTree && selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
+  const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
 
   return (
     <StyledTreeStructure
@@ -198,6 +198,7 @@ const TreeStructure = ({
             canAddFolder={!!canAddFolder}
             focusedFolder={focusedFolder}
             setNewFolderParentId={setNewFolderParentId}
+            setShowTree={setShowTree}
           />
         )}
       </Row>

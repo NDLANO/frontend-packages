@@ -18,6 +18,7 @@ interface AddFolderButtonProps {
   canAddFolder: boolean;
   focusedFolder?: FolderType;
   setNewFolderParentId: (id?: string) => void;
+  setShowTree: (value: boolean) => void;
 }
 
 const StyledAddFolderButton = styled(Button)`
@@ -32,7 +33,7 @@ const StyledPlus = styled(Plus)`
   width: 24px;
 `;
 
-const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder }: AddFolderButtonProps) => {
+const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder, setShowTree }: AddFolderButtonProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLButtonElement>(null);
   return (
@@ -69,6 +70,7 @@ const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder }: 
         onClick={(e) => {
           e.currentTarget.focus();
           setNewFolderParentId(focusedFolder?.id);
+          setShowTree(true);
         }}>
         <StyledPlus /> {t('myNdla.newFolder')}
       </StyledAddFolderButton>

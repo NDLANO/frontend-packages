@@ -259,6 +259,10 @@ const messages = {
     },
     blog: 'Bloggas',
   },
+  toolboxPage: {
+    introduction:
+      'Maid mearkkaša bargat suokkardeaddji vugiin? Mo sáhtát buorebut oahppat? Mo galgá joavkobarggu oažžut doaibmat? Reaidokássas gávdnojit resurssat sihke ohppiide ja oahpaheddjiide mat leat guoskevaččat buot fágaide, ja mat dorjot oahppanbarggu ja ovdánahttet máhtu, gálgga ja ipmárdusa. ',
+  },
   meta: {
     description:
       'Kvalitehta sihkarasttojuvvon ja nuvttá olamuttos neahttavuđot oahppaoneavvut joatkkaskuvlla oahpahussii',

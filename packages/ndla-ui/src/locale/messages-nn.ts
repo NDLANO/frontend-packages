@@ -259,6 +259,10 @@ const messages = {
     blog: 'Frå bloggen',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
   },
+  toolboxPage: {
+    introduction:
+      'Kva vil det seie å arbeide utforskande? Korleis kan du lære betre? Kva skal til for å få gruppearbeid til å fungere? I Verktøykassa finn både elevar og lærerar ressursar som er aktuelle for alle fag, og som støtter opp under læringsarbeid og utvikling av kunnskap, ferdigheter og forståing.',
+  },
   meta: {
     description: 'Kvalitetssikra og fritt tilgjengelege nettbaserte læremiddel for vidaregåande opplæring',
     keywords: 'læremiddel,fag,skole,skule,vidaregåande,lærling,pensum,fagstoff, ',

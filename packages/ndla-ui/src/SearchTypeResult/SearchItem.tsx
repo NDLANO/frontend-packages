@@ -18,29 +18,7 @@ import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
 import ItemResourceHeader from './components/ItemResourceHeader';
-
 const { contentTypes } = constants;
-
-export const resourceTypeColor = (type: string) => {
-  switch (type) {
-    case contentTypes.SUBJECT_MATERIAL:
-      return colors.subjectMaterial.light;
-    case contentTypes.TOPIC:
-      return colors.subject.light;
-    case contentTypes.TASKS_AND_ACTIVITIES:
-      return colors.tasksAndActivities.light;
-    case contentTypes.ASSESSMENT_RESOURCES:
-      return colors.assessmentResource.light;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.light;
-    case contentTypes.SOURCE_MATERIAL:
-      return colors.sourceMaterial.light;
-    case contentTypes.LEARNING_PATH:
-      return colors.learningPath.light;
-    default:
-      return '';
-  }
-};
 
 type ItemTypeProps = {
   contentType?: ContentType;

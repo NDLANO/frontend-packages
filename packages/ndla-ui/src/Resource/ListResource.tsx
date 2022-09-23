@@ -17,7 +17,7 @@ import {
   ResourceTitle,
   ResourceTitleLink,
   TopicList,
-  handleColorType,
+  StyledContentIconWrapper,
   LoaderProps,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
@@ -92,7 +92,6 @@ const TagsandActionMenu = styled.div`
 const StyledImageWrapper = styled.div<StyledImageProps>`
   grid-area: image;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
     width: 54px;
     height: 40px;
@@ -102,7 +101,6 @@ const StyledImageWrapper = styled.div<StyledImageProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ contentType }) => handleColorType(contentType)};
 `;
 
 const StyledImage = styled(Image)`
@@ -117,7 +115,6 @@ const TopicAndTitleWrapper = styled.div`
 
 interface StyledImageProps {
   imageSize: 'normal' | 'compact';
-  contentType: string;
 }
 
 export interface ListResourceProps {
@@ -143,27 +140,32 @@ interface ListResourceImageProps {
 }
 
 const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
-  if (resourceImage.src === '') {
-    return <ContentTypeBadge type={contentType} size="x-small" />;
-  } else {
-    if (!loading) {
+  if (!loading) {
+    if (resourceImage.src === '') {
+      return (
+        <StyledContentIconWrapper contentType={contentType}>
+          <ContentTypeBadge type={contentType} size="x-small" />
+        </StyledContentIconWrapper>
+      );
+    } else {
       return (
         <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
       );
     }
-    return (
-      <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
-        <rect
-          x="0"
-          y="0"
-          rx="3"
-          ry="3"
-          width={type === 'compact' ? '56' : '136'}
-          height={type === 'compact' ? '40' : '96'}
-        />
-      </ContentLoader>
-    );
   }
+
+  return (
+    <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+      <rect
+        x="0"
+        y="0"
+        rx="3"
+        ry="3"
+        width={type === 'compact' ? '56' : '136'}
+        height={type === 'compact' ? '40' : '96'}
+      />
+    </ContentLoader>
+  );
 };
 
 const TopicAndTitleLoader = ({ loading, children }: LoaderProps) => {
@@ -220,7 +222,7 @@ const ListResource = ({
 
   return (
     <ResourceWrapper onClick={handleClick} id={id}>
-      <StyledImageWrapper imageSize={imageType} contentType={contentType}>
+      <StyledImageWrapper imageSize={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
           loading={isLoading}

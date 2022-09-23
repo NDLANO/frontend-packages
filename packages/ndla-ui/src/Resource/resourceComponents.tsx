@@ -14,7 +14,7 @@ import { MenuButton } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import { useNavigate } from 'react-router-dom';
 import { HashTag } from '@ndla/icons/common';
-import constants from '../model';
+import resourceTypeColor from '../utils/resourceTypeColor';
 export interface ResourceImageProps {
   alt: string;
   src: string;
@@ -103,28 +103,19 @@ const TagCounterWrapper = styled.span`
   padding: 5px;
 `;
 
-export const handleColorType = (color: string) => {
-  switch (color) {
-    case constants.contentTypes.ASSESSMENT_RESOURCES:
-      return colors.assessmentResource.background;
-    case constants.contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.background;
-    case constants.contentTypes.LEARNING_PATH:
-      return colors.learningPath.background;
-    case constants.contentTypes.MULTIDISCIPLINARY_TOPIC:
-      return colors.learningPath.background;
-    case constants.contentTypes.SOURCE_MATERIAL:
-      return colors.sourceMaterial.light;
-    case constants.subjectTypes.SUBJECT:
-      return colors.subject.light;
-    case constants.contentTypes.SUBJECT_MATERIAL:
-      return colors.sourceMaterial.light;
-    case constants.contentTypes.TASKS_AND_ACTIVITIES:
-      return colors.tasksAndActivities.background;
-    case constants.contentTypes.TOPIC:
-      return colors.learningPath.background;
-  }
-};
+export interface ContentIconProps {
+  contentType: string;
+}
+
+export const StyledContentIconWrapper = styled.span<ContentIconProps>`
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ contentType }) => resourceTypeColor(contentType)};
+`;
+
 interface TagListProps {
   tags?: string[];
   tagLinkPrefix?: string;

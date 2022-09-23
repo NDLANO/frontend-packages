@@ -20,7 +20,7 @@ import {
   TopicList,
   ResourceTitleLink,
   LoaderProps,
-  handleColorType,
+  StyledContentIconWrapper,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 
@@ -92,21 +92,17 @@ const BlockInfoWrapper = styled.div`
   gap: ${spacing.xxsmall};
 `;
 
-const ImageWrapper = styled.div<ImageContentType>`
+const ImageWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
   overflow: hidden;
   align-items: center;
-  background-color: ${({ contentType }) => handleColorType(contentType)};
-  height: 137px;
+  aspect-ratio: 3/4;
   img {
     min-width: 100%;
   }
 `;
-interface ImageContentType {
-  contentType: string;
-}
 interface BlockImageProps {
   image: ResourceImageProps;
   loading?: boolean;
@@ -114,16 +110,20 @@ interface BlockImageProps {
 }
 
 const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
+  if (loading) {
+    return (
+      <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
+        <rect x="0" y="0" rx="3" ry="3" width="100%" height="100%" />
+      </ContentLoader>
+    );
+  }
   if (image.src === '') {
-    return <ContentTypeBadge type={contentType} size="large" />;
+    return (
+      <StyledContentIconWrapper contentType={contentType}>
+        <ContentTypeBadge type={contentType} size="large" />
+      </StyledContentIconWrapper>
+    );
   } else {
-    if (loading) {
-      return (
-        <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
-          <rect x="0" y="0" rx="3" ry="3" width="100%" height="100%" />
-        </ContentLoader>
-      );
-    }
     return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
   }
 };
@@ -165,7 +165,7 @@ const BlockResource = ({
 
   return (
     <BlockElementWrapper onClick={handleClick} id={id}>
-      <ImageWrapper contentType={contentType}>
+      <ImageWrapper>
         <BlockImage image={resourceImage} loading={isLoading} contentType={contentType} />
       </ImageWrapper>
       <BlockInfoWrapper>

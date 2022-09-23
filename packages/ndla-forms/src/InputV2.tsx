@@ -37,6 +37,8 @@ interface FormWarningTextProps {
 const shouldForwardError = (prop: string) => prop !== 'withLabel';
 
 const ErrorText = styled('span', { shouldForwardProp: shouldForwardError })<FormWarningTextProps>`
+  margin-top: 2px;
+  grid-column: 2;
   font-family: ${fonts.sans};
   color: ${colors.support.red};
   ${fonts.sizes(14, 1.1)};
@@ -75,6 +77,7 @@ interface StyledInputWrapperProps {
 
 const InputWrapper = styled.div<StyledInputWrapperProps>`
   display: flex;
+  grid-column: 2;
   flex-wrap: wrap;
   flex-grow: 1;
   background: ${(p) => (p.white ? colors.white : colors.brand.greyLightest)};
@@ -84,7 +87,6 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
   transition: border-color 100ms ease;
   border-radius: ${misc.borderRadius};
   min-height: ${spacing.large};
-  padding-right: ${spacing.small};
 
   &:focus-within {
     border-color: ${colors.brand.primary};
@@ -92,6 +94,7 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
 
   input,
   textarea {
+    padding: 0 ${spacing.small};
     width: inherit;
     font-weight: ${fonts.weight.normal};
     color: ${colors.text.primary};
@@ -104,10 +107,6 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
       appearance: none;
       outline: none;
     }
-  }
-
-  input {
-    padding: ${spacing.xsmall} ${spacing.small};
   }
 
   textarea {
@@ -124,8 +123,8 @@ const InputWrapper = styled.div<StyledInputWrapperProps>`
 `;
 
 const FieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   flex: 1;
 `;
 
@@ -167,7 +166,22 @@ export interface InputProps
     Omit<HTMLProps<HTMLInputElement>, 'label' | 'name'> {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ before, after, white, error, customCss, label, labelHidden, name, className, ...rest }: InputProps, ref) => {
+  (
+    {
+      before,
+      after,
+      white,
+      error,
+      customCss,
+      label,
+      labelHidden,
+      name,
+      className,
+      'aria-describedby': describedBy = '',
+      ...rest
+    }: InputProps,
+    ref,
+  ) => {
     return (
       <BaseInput
         before={before}
@@ -179,7 +193,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         name={name}
         className={className}
         label={label}>
-        <input ref={ref} name={name} aria-invalid={!!error} {...rest} aria-describedby={`${name}-error`} />
+        <input
+          ref={ref}
+          name={name}
+          aria-invalid={!!error}
+          aria-describedby={`${name}-error ${describedBy}`}
+          {...rest}
+        />
       </BaseInput>
     );
   },

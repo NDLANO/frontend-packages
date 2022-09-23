@@ -260,6 +260,10 @@ const messages = {
     blog: 'From our blog',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
   },
+  toolboxPage: {
+    introduction:
+      'What will it mean to work exploratory? How can you learn better? What is needed in order to make group work function? In the toolbox both students and teach find resources that are current for every subject, and that support learning work and development of knowledge, skills and understanding.',
+  },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',
     keywords: 'open educational resources,teaching,learning',
@@ -978,6 +982,8 @@ const messages = {
       teaching: 'Teaching group',
       other: 'Other groups',
     },
+    wrongUserInfoDisclaimer:
+      'If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ',
   },
   checkOutNewFeature: 'New feature',
   slateBlockMenu: {
@@ -1032,7 +1038,7 @@ const messages = {
       myPage: 'My page',
       logout: 'Log out of My NDLA',
       loginText:
-        'Log in with Feide to receive access to My NDLA. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
+        'In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
       loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',

@@ -259,6 +259,10 @@ const messages = {
     },
     blog: 'Bloggas',
   },
+  toolboxPage: {
+    introduction:
+      'Maid mearkkaša bargat suokkardeaddji vugiin? Mo sáhtát buorebut oahppat? Mo galgá joavkobarggu oažžut doaibmat? Reaidokássas gávdnojit resurssat sihke ohppiide ja oahpaheddjiide mat leat guoskevaččat buot fágaide, ja mat dorjot oahppanbarggu ja ovdánahttet máhtu, gálgga ja ipmárdusa. ',
+  },
   meta: {
     description:
       'Kvalitehta sihkarasttojuvvon ja nuvttá olamuttos neahttavuđot oahppaoneavvut joatkkaskuvlla oahpahussii',
@@ -977,6 +981,8 @@ const messages = {
       teaching: 'Oahpahusjoavku',
       other: 'Eará joavkkut',
     },
+    wrongUserInfoDisclaimer:
+      'Jus leat boasttudieđut, de ferte lágideaddjiorganisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogovva geavaheaddjidoarjaga ektui gávnnat dás: ',
   },
   checkOutNewFeature: 'Iskka ođđa doaibmilvuođa',
   slateBlockMenu: {
@@ -997,16 +1003,16 @@ const messages = {
     folder: {
       folder: 'Máhppa',
       delete: 'Sihko',
-      edit: 'Redigere',
+      edit: 'Rievdat',
       missingName: 'Čále nama máhppii',
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
       folderCreated: '"{{folderName}}" er oppretta',
     },
-    tagList: 'Emneknagger',
+    tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
     tags_plural: '{{count}} fáddágilkorat',
-    moreTags: 'Vis ein emneknagg til',
-    moreTags_plural: 'Vis {{count}} emneknaggar til',
+    moreTags: 'Čájet nuppi fáddágilkora vel',
+    moreTags_plural: 'Čájet {{count}}  fáddágilkoriid vel',
     confirmDeleteFolder: 'Leat go áibbas sihkar ahte dáhtut sihkkut máhpa? Dan ii sáhte gáhtat.',
     confirmDeleteTag: 'Leat go áibbas sihkar ahte dáhtut sihkkut fáddágilkora? Dan ii sáhte gáhtat.',
     myFolders: 'Mu máhpat',
@@ -1031,8 +1037,8 @@ const messages = {
       deleteAccount: 'Sihko mu NDLA',
       logout: 'Logge eret mu NDLAs',
       loginText:
-        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikkje skriver noko støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
-      loginTextLink: 'personvernerklæring her',
+        'Jus galggat sáhttit geavahit bálvalusa Mu NDLA fertet leat oahppi dahje bargat muhtin skuvllas fylkkas mii lea mielde NDLA-ovttasbarggus. Mii bivdit ahte it čále maidege unohasaid, persovdnasensitiivvalaš dieđuid dahje eará persovdnadáhtaid min teakstagieddái. Loga min ',
+      loginTextLink: 'personsuodjalusjulggaštusa dákko',
       loginTerms: 'Logge Feide bokte vai oaččut beassanlobi. Go logget sisa de dohkkehat min geavahaneavttuid.',
       loginResourcePitch: 'Dáhtut go merket siiddu oiddohin?',
       loginWelcome: 'Bures boahtin NDLA:ii! Dáppe sáhtát fágaávdnasiid ordnet iežat vuogi mielde',

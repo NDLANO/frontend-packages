@@ -43,6 +43,7 @@ export const MyNdla = () => {
             <FolderInputExample />
             <h2>Mappe</h2>
             <FolderResourcesExample menuItems={menuItems} />
+
             <h2> Ressurser </h2>
             <ResourcesExample topics={topics} tags={tags} menuItems={menuItems} />
           </>

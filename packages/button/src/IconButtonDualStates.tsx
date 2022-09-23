@@ -23,7 +23,9 @@ interface StyledIconButtonProps {
   active: boolean;
 }
 
-const StyledIconButton = styled(IconButton)<StyledIconButtonProps>`
+const shouldForwardProp = (name: string) => name !== 'active';
+
+const StyledIconButton = styled(IconButton, { shouldForwardProp })<StyledIconButtonProps>`
   svg {
     transition: opacity ${animations.durations.fast} ease;
     &:first-of-type {

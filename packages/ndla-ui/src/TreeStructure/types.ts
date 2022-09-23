@@ -6,9 +6,8 @@
  *
  */
 
-import { MouseEvent, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { IFolder, IResource } from '@ndla/types-learningpath-api';
-import { MenuItemProps } from '@ndla/button';
 
 export interface FolderType extends IFolder {
   icon?: ReactNode;
@@ -17,13 +16,20 @@ export interface FolderType extends IFolder {
 
 export type TreeStructureType = 'navigation' | 'picker';
 
-export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
-  onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
-}
+export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
+
+export type NewFolderInputFunc = ({
+  onClose,
+  parentId,
+  onCreate,
+}: {
+  onClose: () => void;
+  parentId: string;
+  onCreate: OnCreatedFunc;
+}) => ReactNode;
 
 export interface CommonTreeStructureProps {
   loading?: boolean;
-  onSelectFolder?: (id: string) => void;
   targetResource?: IResource;
   type: TreeStructureType;
 }
@@ -35,7 +41,7 @@ export interface CommonFolderItemsProps extends CommonTreeStructureProps {
   selectedFolder?: FolderType;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  setFocusedFolder: (folder: FolderType, focus?: boolean) => void;
+  setFocusedFolder: (folder: FolderType) => void;
   setSelectedFolder: (folder: FolderType) => void;
   visibleFolders: FolderType[];
   closeTree: () => void;

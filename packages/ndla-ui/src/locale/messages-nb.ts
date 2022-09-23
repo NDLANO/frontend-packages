@@ -259,6 +259,10 @@ const messages = {
     },
     blog: 'Fra bloggen',
   },
+  toolboxPage: {
+    introduction:
+      'Hva vil det si å arbeide utforskende? Hvordan kan du lære bedre? Hva skal til for å få gruppearbeid til å fungere? I Verktøykassa finner både elever og lærere ressurser som er aktuelle for alle fag, og som støtter opp under læringsarbeid og utvikling av kunnskap, ferdigheter og forståelse.',
+  },
   meta: {
     description: 'Kvalitetssikrede og fritt tilgjengelige nettbaserte læremidler for videregående opplæring',
     keywords: 'læremiddel,fag,skole,videregående,lærling,pensum,fagstoff',
@@ -976,6 +980,8 @@ const messages = {
       teaching: 'Undervisningsgruppe',
       other: 'Andre grupper',
     },
+    wrongUserInfoDisclaimer:
+      'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {
@@ -1030,7 +1036,7 @@ const messages = {
       deleteAccount: 'Slett Min NDLA',
       logout: 'Logg ut av Min NDLA',
       loginText:
-        'Logg på med Feide for å få tilgang til Min NDLA. Vi ber om at du ikke skriver noe støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
+        'For å kunne bruke tjenesten Min NDLA må du være elev eller jobbe på en skole i et fylke som er med i NDLA-samarbeidet. Vi ber om at du ikke skriver noe støtende, personsensitiv informasjon eller andre persondata i tekstfelt. Les vår ',
       loginTextLink: 'personvernerklæring her',
       loginTerms: 'Logg på med Feide for å få tilgang. Ved å logge på godkjenner du våre vilkår for bruk',
       loginResourcePitch: 'Ønsker du å favorittmerke denne siden?',

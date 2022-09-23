@@ -37,6 +37,9 @@ const OpenButton = styled.span<{ isOpen: boolean }>`
 `;
 
 const StyledName = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   grid-column-start: 2;
   text-align: left;
 `;
@@ -63,7 +66,6 @@ const FolderName = styled(Button, { shouldForwardProp })<FolderNameProps>`
   color: ${({ isCreatingFolder, focused }) =>
     isCreatingFolder && focused ? colors.brand.primary : colors.text.primary};
   transition: ${animations.durations.superFast};
-  line-height: 1;
   word-break: break-word;
 
   &:hover {
@@ -93,7 +95,6 @@ const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
   font-weight: ${({ selected }) => selected && fonts.weight.semibold};
   font-size: ${fonts.sizes('16px')};
   transition: ${animations.durations.superFast};
-  line-height: 1;
   word-break: break-word;
   &:hover,
   &:focus {
@@ -116,7 +117,6 @@ const FolderItem = ({
   selectedFolder,
   onCloseFolder,
   onOpenFolder,
-  onSelectFolder,
   setFocusedFolder,
   setSelectedFolder,
   targetResource,
@@ -142,7 +142,6 @@ const FolderItem = ({
       if (selected) {
         closeTree();
       }
-      onSelectFolder?.(id);
     }
   };
 
@@ -192,7 +191,7 @@ const FolderItem = ({
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}>
-      {(!hideArrow || level === 0) && (
+      {!hideArrow && (
         <OpenButton
           aria-hidden
           tabIndex={-1}
@@ -230,7 +229,7 @@ const FolderItem = ({
       selected={selected}
       disabled={loading}
       onFocus={(e) => {
-        setFocusedFolder(focusedFolder || folder, true);
+        setFocusedFolder(focusedFolder || folder);
       }}
       onClick={handleClickFolder}
       isCreatingFolder={isCreatingFolder}>
@@ -241,7 +240,7 @@ const FolderItem = ({
           isOpen={isOpen}
           onClick={(e) => {
             e.stopPropagation();
-            setFocusedFolder(folder, true);
+            setFocusedFolder(folder);
             if (isOpen) {
               onCloseFolder(id);
             } else {

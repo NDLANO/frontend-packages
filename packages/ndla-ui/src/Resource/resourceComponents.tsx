@@ -135,7 +135,7 @@ export const TagList = ({ tags, tagLinkPrefix }: TagListProps) => {
         <StyledTagListElement key={`tag-${i}`}>
           <StyledSafeLink
             onClick={(e: MouseEvent<HTMLAnchorElement | HTMLElement>) => e.stopPropagation()}
-            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`}>
+            to={`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`}>
             <HashTag />
             {tag}
           </StyledSafeLink>
@@ -168,7 +168,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
       icon: <HashTag />,
       text: tag,
       onClick: () => {
-        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${tag}`);
+        navigate(`${tagLinkPrefix ? tagLinkPrefix : ''}/${encodeURIComponent(tag)}`);
       },
     };
   });
@@ -197,12 +197,10 @@ export const TopicList = ({ topics }: TopicListProps) => {
   return (
     <StyledTopicList aria-label={t('navigation.topics')}>
       {topics.map((topic, i) => (
-        <>
-          <StyledTopicListElement key={topic}>
-            {topic}
-            {i !== topics.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
-          </StyledTopicListElement>
-        </>
+        <StyledTopicListElement key={topic}>
+          {topic}
+          {i !== topics.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
+        </StyledTopicListElement>
       ))}
     </StyledTopicList>
   );

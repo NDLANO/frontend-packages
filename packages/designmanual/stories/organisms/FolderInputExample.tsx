@@ -12,13 +12,11 @@ import React from 'react';
 export const FolderInputExample = () => {
   return (
     <FolderInput
-      autoSelect
-      onAddFolder={() => {
-        // eslint-disable-next-line no-console
-        console.log('onAddFolder');
-      }}
+      onSave={() => {}}
       // eslint-disable-next-line no-console
       onClose={() => console.log('onClose')}
+      label={''}
+      name={''}
     />
   );
 };

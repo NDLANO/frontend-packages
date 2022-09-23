@@ -12,6 +12,7 @@ import React from 'react';
 export const FolderInputExample = () => {
   return (
     <FolderInput
+      labelHidden
       onSave={() => {}}
       // eslint-disable-next-line no-console
       onClose={() => console.log('onClose')}

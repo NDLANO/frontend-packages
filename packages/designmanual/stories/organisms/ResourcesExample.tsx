@@ -84,6 +84,7 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
       </BlockResourceWrapper>
       <h3> Standard Ressurs</h3>
       <ListResource
+        isLoading
         id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
         key={'defaultResource'}
         title="Titler kan også kuttes av"

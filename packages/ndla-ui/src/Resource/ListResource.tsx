@@ -101,6 +101,7 @@ const StyledImageWrapper = styled.div<StyledImageProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 4/3;
 `;
 
 const StyledImage = styled(Image)`

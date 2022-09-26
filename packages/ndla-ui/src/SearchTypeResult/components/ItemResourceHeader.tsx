@@ -39,8 +39,11 @@ const NoImageElement = styled.div<ItemTypeProps>`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   flex: 1;
-  max-height: 150px;
-  background-color: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
+  min-height: 40px;
+  height: 100%;
+  background: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
+  position: relative;
+  transition: background-color ${animations.durations.normal} ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,6 +73,30 @@ const ContentTypeWrapper = styled.div<ItemTypeProps>`
   transition: all ${animations.durations.fast} ease-in-out;
 `;
 
+const ContentTypeIcon = styled.span<ItemTypeProps>`
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='23' viewBox='17 0 78 23' fill='none'%3E%3Cpath d='M35.6874 10.8284C37.0999 8.9889 38.405 7.28934 40 6C44.8452 2.08335 48.9078 0 56 0C63.0922 0 67.6548 2.5833 72.5 6.49995C74.0499 7.75284 75.2937 9.39082 76.6385 11.1617C80.0028 15.5921 83.9988 20.8545 95 23H17C27.9865 20.8573 32.1701 15.409 35.6874 10.8284ZM352' fill='${(
+    props,
+  ) => props.contentType && `${encodeURIComponent(resourceTypeColor(props.contentType))}`}'/%3E%3C/svg%3E");
+  background-position: top;
+  background-repeat: no-repeat;
+  left: 17px;
+  top: -23px;
+  height: 45px;
+  width: 78px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ${animations.durations.fast} ease-in-out;
+  z-index: 2;
+
+  svg {
+    transition: all ${animations.durations.fast} ease-in-out;
+    width: 20px;
+    height: 20px;
+  }
+`;
+
 type Props = {
   labels: SearchItemType['item']['labels'];
   img?: SearchItemType['item']['img'] | null;
@@ -88,6 +115,11 @@ const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
         <NoImageElement contentType={type}>{type && <ContentTypeBadge type={type} border={false} />}</NoImageElement>
       )}
       <ContentTypeWrapper className="resource-type-wrapper" contentType={type}>
+        {img && type && (
+          <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
+            <ContentTypeBadge type={type} border={false} />
+          </ContentTypeIcon>
+        )}
         {type && t(`contentTypes.${type}`)}
         {labels.length > 0 && (
           <>

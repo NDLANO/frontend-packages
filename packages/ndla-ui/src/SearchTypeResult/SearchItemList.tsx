@@ -28,11 +28,6 @@ const Container = styled.div`
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
   transition: all ${animations.durations.fast} ease-in-out;
-  &:hover {
-    margin: -2px;
-    min-height: 196px;
-    height: calc(100% + 4px);
-  }
 `;
 
 const ItemLink = styled(SafeLink)`
@@ -53,10 +48,6 @@ const TextWrapper = styled.div`
   margin: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.normal};
   max-width: 800px;
   transition: all ${animations.durations.fast} ease-in-out;
-  ${Container}:hover & {
-    margin: calc(${spacing.small} + 2px) calc(${spacing.small} + 2px) calc(${spacing.small} + 2px)
-      calc(${spacing.normal} + 2px);
-  }
 `;
 const ContentTypeWrapper = styled.div`
   display: flex;
@@ -99,11 +90,6 @@ const ImageWrapper = styled.div<{ isTopic: boolean }>`
   justify-content: center;
   align-items: center;
   margin: ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
-  ${Container}:hover & {
-    width: ${(props) => (props.isTopic ? `168px` : `228px`)};
-    height: 168px;
-  }
 `;
 
 const ImageElement = styled.img<{ isTopic: boolean }>`

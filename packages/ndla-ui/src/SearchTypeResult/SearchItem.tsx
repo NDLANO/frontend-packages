@@ -17,7 +17,6 @@ import { ContentType } from './SearchTypeResult';
 import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
-import ItemResourceHeader from './components/ItemResourceHeader';
 
 const { contentTypes } = constants;
 
@@ -153,7 +152,7 @@ export type SearchItemType = {
   type?: ContentType;
 };
 const SearchItem = ({ item, type }: SearchItemType) => {
-  const { title, url, ingress, contexts, img = null, labels = [], children } = item;
+  const { title, url, ingress, contexts, img = null, children } = item;
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
 

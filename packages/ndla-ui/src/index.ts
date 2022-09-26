@@ -246,7 +246,7 @@ export { Folder, FolderInput } from './MyNdla';
 export { ListResource, BlockResource } from './Resource';
 export type { ListResourceProps } from './Resource';
 export type { TagType } from './TagSelector';
-export { TagSelector } from './TagSelector';
+export { TagSelector, TagSelectorV2 } from './TagSelector';
 
 export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from './SnackBar';
 export type { Snack, SnackContext } from './SnackBar';

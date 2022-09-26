@@ -17,7 +17,7 @@ import { spacing, colors, misc, animations, fonts } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import { uuid } from '@ndla/util';
 import Suggestions from './Suggestions';
-import type { TagType } from './TagSelector';
+import type { TagType } from './TagSelectorOld';
 
 const SuggestionTextWrapper = styled.div`
   ${fonts.sizes(18)};

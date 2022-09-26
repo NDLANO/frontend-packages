@@ -12,7 +12,7 @@ import { css } from '@emotion/core';
 import { Check } from '@ndla/icons/editor';
 import { spacing, colors, misc, animations, fonts, shadows } from '@ndla/core';
 import Button from '@ndla/button';
-import type { TagType } from './TagSelector';
+import type { TagType } from './TagSelectorOld';
 
 const ABSOLUTE_DROPDOWN_MAXHEIGHT = '360px';
 

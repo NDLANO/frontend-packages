@@ -8,28 +8,29 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { TagType, TagSelector } from '@ndla/ui';
+import { TagType, TagSelectorV2 } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
+import { MultiValue } from 'react-select';
 
 const dummyData = [
-  { id: '1', name: 'Cat' },
-  { id: '2', name: 'Dog' },
-  { id: '3', name: 'Fish' },
-  { id: '4', name: 'Dinosaur' },
-  { id: '5', name: 'Frog' },
-  { id: '6', name: 'Dragon' },
-  { id: '7', name: 'Lion' },
-  { id: '8', name: 'Snake' },
-  { id: '9', name: 'Alligator' },
-  { id: '10', name: 'Antelope' },
-  { id: '11', name: 'Bear' },
-  { id: '12', name: 'Baboon' },
-  { id: '13', name: 'Kangaroo' },
-  { id: '14', name: 'Scorpion' },
-  { id: '15', name: 'Goose' },
-  { id: '16', name: 'Fox' },
-  { id: '17', name: 'Donkey' },
-  { id: '18', name: 'Chicken' },
+  { value: 'Cat', label: 'Cat' },
+  { value: 'Dog', label: 'Dog' },
+  { value: 'Fish', label: 'Fish' },
+  { value: 'Dinosaur', label: 'Dinosaur' },
+  { value: 'Frog', label: 'Frog' },
+  { value: 'Dragon', label: 'Dragon' },
+  { value: 'Lion', label: 'Lion' },
+  { value: 'Snake', label: 'Snake' },
+  { value: 'Alligator', label: 'Alligator' },
+  { value: 'Antelope', label: 'Antelope' },
+  { value: 'Bear', label: 'Bear' },
+  { value: 'Baboon', label: 'Baboon' },
+  { value: 'Kangaroo', label: 'Kangaroo' },
+  { value: 'Scorpion', label: 'Scorpion' },
+  { value: 'Goose', label: 'Goose' },
+  { value: 'Fox', label: 'Fox' },
+  { value: 'Donkey', label: 'Donkey' },
+  { value: 'Chicken', label: 'Chicken' },
 ];
 
 const Container = styled.div`
@@ -39,29 +40,22 @@ const Container = styled.div`
 
 const TagSelectorExample = () => {
   const { t } = useTranslation();
-  const [exampleTags, setExampleTags] = useState<TagType[]>(dummyData);
-  const [exampleTagsSelected, setExampleTagsSelected] = useState(['6']);
+  const [exampleTags, setExampleTags] = useState<readonly TagType[]>(dummyData);
+  const [exampleTagsSelected, setExampleTagsSelected] = useState<readonly TagType[]>(dummyData.slice(0, 2));
+  console.log(exampleTagsSelected);
   return (
     <Container>
-      <TagSelector
+      <TagSelectorV2
         prefix="#"
         label={t('tagSelector.label')}
         tags={exampleTags}
-        tagsSelected={exampleTagsSelected}
-        onToggleTag={(id: string) => {
-          setExampleTagsSelected((prevSelected) => {
-            if (prevSelected.find((existingId) => existingId === id)) {
-              // Already part of tags. Remove it.
-              return prevSelected.filter((existingId) => existingId !== id);
-            }
-            // Not selected, add.
-            return [...prevSelected, id];
-          });
+        selected={exampleTagsSelected}
+        onChange={(tags: readonly TagType[]) => {
+          setExampleTagsSelected(tags);
         }}
-        onCreateTag={(newTagName: string) => {
-          const newId = Math.random().toString();
-          setExampleTags((prevTags) => [...prevTags, { id: newId, name: newTagName }]);
-          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, newId]);
+        onCreateTag={(name: string) => {
+          setExampleTags((prevTags) => [...prevTags, { value: name, label: name }]);
+          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, { value: name, label: name }]);
         }}
       />
     </Container>

@@ -17,6 +17,7 @@ import { ContentType } from './SearchTypeResult';
 import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
+import ItemResourceHeader from './components/ItemResourceHeader';
 
 const { contentTypes } = constants;
 
@@ -61,7 +62,6 @@ const ItemWrapper = styled.div`
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
   transition: all ${animations.durations.fast} ease-in-out;
-
   .resource-no-image {
     background-color: ${colors.brand.greyLightest};
     .c-content-type-badge {
@@ -79,7 +79,8 @@ const ItemWrapper = styled.div`
     img {
       transform: scale(1.1);
       opacity: 1.2;
-      transition-duration: 0.5s;
+
+      transition: all ${animations.durations.fast} ease-in-out;
       overflow: hidden;
     }
   }
@@ -152,7 +153,7 @@ export type SearchItemType = {
   type?: ContentType;
 };
 const SearchItem = ({ item, type }: SearchItemType) => {
-  const { title, url, ingress, contexts, img = null, children } = item;
+  const { title, url, ingress, contexts, img = null, labels = [], children } = item;
 
   const isTopic = type === contentTypes.TOPIC || type === contentTypes.MULTIDISCIPLINARY_TOPIC;
 
@@ -169,6 +170,7 @@ const SearchItem = ({ item, type }: SearchItemType) => {
             </ItemTopicHeader>
           ) : (
             <>
+              <ItemResourceHeader labels={labels} img={img} type={type} />
               <TextWrapper>
                 <ItemTitleWrapper>
                   <ItemTitle>{title}</ItemTitle>

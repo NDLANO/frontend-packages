@@ -55,14 +55,13 @@ const TopicHeaderVisualElementWrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border-radius: 50%;
 `;
 
 const TopicHeaderImage = styled.img`
-  border-radius: 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all ${animations.durations.fast} ease-in-out;
   max-width: unset;
 `;
 

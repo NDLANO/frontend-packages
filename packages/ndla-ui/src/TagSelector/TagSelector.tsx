@@ -8,11 +8,13 @@
 
 import React from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { OnChangeValue, MultiValue, StylesConfig } from 'react-select';
+import { OnChangeValue, MultiValue, StylesConfig, ContainerProps } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
 import DropdownButton from './DropdownButton';
+import { spacing } from '@ndla/core';
+import TagSelectorContainer from './TagSelectorContainer';
 
 const styles: StylesConfig<TagType, true> = {
   menu: (provided) => ({
@@ -20,11 +22,12 @@ const styles: StylesConfig<TagType, true> = {
     position: 'relative',
     boxShadow: 'none',
   }),
-  valueContainer: (provided) => ({ ...provided }),
+  valueContainer: (provided) => ({ ...provided, padding: 0 }),
   control: (provided) => ({
     ...provided,
     boxShadow: 'none',
     border: 'none',
+    margin: spacing.xxsmall,
   }),
   indicatorSeparator: () => ({
     display: 'none',
@@ -57,14 +60,13 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
   return (
     <CreatableSelect
       placeholder={t('tagSelector.placeholder')}
-      hideSelectedOptions={false}
       isMulti
       isClearable={false}
       value={selected}
       options={tags}
       onChange={handleChange}
       onCreateOption={onCreateOption}
-      components={{ DropdownIndicator: DropdownButton, MultiValue: ValueButton }}
+      components={{ DropdownIndicator: DropdownButton, MultiValue: ValueButton, SelectContainer: TagSelectorContainer }}
       styles={styles}
     />
   );

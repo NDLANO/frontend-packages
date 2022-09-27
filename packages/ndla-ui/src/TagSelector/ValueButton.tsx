@@ -24,6 +24,7 @@ const StyledValueButton = styled.div<StyledProps>`
     background: ${({ selected }) => selected && colors.brand.primary};
     color: ${({ selected }) => selected && colors.white};
     padding: ${spacing.xxsmall} ${spacing.small};
+    margin: ${spacing.xxsmall};
   }
 `;
 

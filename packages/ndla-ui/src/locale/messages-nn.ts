@@ -1044,7 +1044,7 @@ const messages = {
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
-        'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med tags.',
+        'Velkommen til Min NDLA! No kan du lagre dine favorittressursar frå NDLA og organisere dei slik du ønsker i mapper og med emneknaggar.',
       read: { our: 'Les vår', ours: 'Les våre' },
       privacy: 'personvernerklæring her',
       privacyLink: 'https://om.ndla.no/gdpr',

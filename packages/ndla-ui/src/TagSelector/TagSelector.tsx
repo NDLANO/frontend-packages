@@ -6,14 +6,54 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { Options, ActionMeta, OnChangeValue, MultiValue } from 'react-select';
+import { ActionMeta, OnChangeValue, MultiValue, StylesConfig, DropdownIndicatorProps, GroupBase } from 'react-select';
+import { useTranslation } from 'react-i18next';
+import Tooltip from '@ndla/tooltip';
+import { iconButtonStyle } from '@ndla/button';
+import { ChevronUp, ChevronDown } from '@ndla/icons/common';
 
 export interface TagType {
   readonly value: string;
   readonly label: string;
 }
+
+const styles: StylesConfig<TagType, true> = {
+  menu: (provided) => ({
+    ...provided,
+    position: 'relative',
+    boxShadow: 'none',
+  }),
+  control: (provided) => ({
+    ...provided,
+    boxShadow: 'none',
+    border: 'none',
+  }),
+  indicatorSeparator: () => ({
+    display: 'none',
+  }),
+  indicatorsContainer: () => ({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  }),
+};
+
+const DropdownIndicator = ({ innerProps, selectProps }: DropdownIndicatorProps<TagType, true>) => {
+  const { t } = useTranslation();
+
+  const { menuIsOpen } = selectProps;
+
+  return (
+    <div
+      css={iconButtonStyle({ colorTheme: 'greyLighter', variant: 'ghost', shape: 'pill', size: 'small' })}
+      {...innerProps}
+      aria-label={menuIsOpen ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
+      {menuIsOpen ? <ChevronUp /> : <ChevronDown />}
+    </div>
+  );
+};
 
 interface Props {
   label: string;
@@ -25,6 +65,7 @@ interface Props {
 }
 
 const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
+  const { t } = useTranslation();
   const handleChange = (newValue: OnChangeValue<TagType, true>, actionMeta: ActionMeta<TagType>) => {
     onChange(newValue);
   };
@@ -35,13 +76,16 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
 
   return (
     <CreatableSelect
+      placeholder={t('tagSelector.placeholder')}
       hideSelectedOptions={false}
       isMulti
+      isClearable={false}
       value={selected}
       options={tags}
       onChange={handleChange}
       onCreateOption={onCreateOption}
-      components={{}}
+      components={{ DropdownIndicator }}
+      styles={styles}
     />
   );
 };

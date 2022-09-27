@@ -64,7 +64,6 @@ import MessageBox from './molecules/MessageBoxExample';
 import ResourceBoxExample from './pages/ResourceBoxExample';
 
 import TagSelectorExample from './molecules/TagSelectorExample';
-import TagSelectorV2Example from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
 
 storiesOf('Sammensatte moduler', module)

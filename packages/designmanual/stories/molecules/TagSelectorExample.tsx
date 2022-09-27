@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { TagType, TagSelectorV2 } from '@ndla/ui';
+import { TagType, TagSelector } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 import { MultiValue } from 'react-select';
 
@@ -42,10 +42,10 @@ const TagSelectorExample = () => {
   const { t } = useTranslation();
   const [exampleTags, setExampleTags] = useState<readonly TagType[]>(dummyData);
   const [exampleTagsSelected, setExampleTagsSelected] = useState<readonly TagType[]>(dummyData.slice(0, 2));
-  console.log(exampleTagsSelected);
+
   return (
     <Container>
-      <TagSelectorV2
+      <TagSelector
         prefix="#"
         label={t('tagSelector.label')}
         tags={exampleTags}

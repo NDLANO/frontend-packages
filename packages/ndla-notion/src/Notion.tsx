@@ -17,18 +17,13 @@ import Tooltip from '@ndla/tooltip';
 import NotionDialog from './NotionDialog';
 
 const BaselineIcon = styled(ShortText)`
-  content: '';
-  display: inline-block;
   position: absolute;
   margin: calc(0.5em + 1px) auto 0;
   left: 0;
   color: ${colors.brand.secondary};
-  height: 1.25em;
+  height: 1.1em;
   width: 1.1em;
   transition-duration: 0.5s;
-`;
-const StyledNotionWrapper = styled.span`
-  display: inline;
 `;
 
 const StyledButton = styled.button`
@@ -43,7 +38,6 @@ const StyledButton = styled.button`
   color: #000;
   position: relative;
   cursor: pointer;
-  display: inline;
   &:focus,
   &:hover {
     color: ${colors.brand.primary};
@@ -80,7 +74,7 @@ const Notion = ({
 }: Props) => {
   const { t } = useTranslation();
   return (
-    <StyledNotionWrapper id={id} data-notion>
+    <span id={id} data-notion>
       <StyledButton type="button" aria-label={ariaLabel} data-notion-link>
         <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
           {children}
@@ -93,7 +87,7 @@ const Notion = ({
         </NotionDialog>,
         'body',
       )}
-    </StyledNotionWrapper>
+    </span>
   );
 };
 export default Notion;

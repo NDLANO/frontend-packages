@@ -7,9 +7,8 @@
  */
 
 import React from 'react';
-import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
-import Button, { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
+import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
 import css from '@emotion/css';
 import { ButtonSize } from './types';
 

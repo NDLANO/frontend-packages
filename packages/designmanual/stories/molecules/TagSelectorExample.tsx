@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { TagType, TagSelector } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
-import { MultiValue } from 'react-select';
 
 const dummyData = [
   { value: 'Cat', label: 'Cat' },
@@ -51,6 +50,7 @@ const TagSelectorExample = () => {
         tags={exampleTags}
         selected={exampleTagsSelected}
         onChange={(tags: readonly TagType[]) => {
+          console.log(tags);
           setExampleTagsSelected(tags);
         }}
         onCreateTag={(name: string) => {

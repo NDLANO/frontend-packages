@@ -6,18 +6,13 @@
  *
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { ActionMeta, OnChangeValue, MultiValue, StylesConfig, DropdownIndicatorProps, GroupBase } from 'react-select';
+import { OnChangeValue, MultiValue, StylesConfig } from 'react-select';
 import { useTranslation } from 'react-i18next';
-import Tooltip from '@ndla/tooltip';
-import { iconButtonStyle } from '@ndla/button';
-import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-
-export interface TagType {
-  readonly value: string;
-  readonly label: string;
-}
+import { TagType } from './types';
+import ValueButton from './ValueButton';
+import DropdownButton from './DropdownButton';
 
 const styles: StylesConfig<TagType, true> = {
   menu: (provided) => ({
@@ -25,6 +20,7 @@ const styles: StylesConfig<TagType, true> = {
     position: 'relative',
     boxShadow: 'none',
   }),
+  valueContainer: (provided) => ({ ...provided }),
   control: (provided) => ({
     ...provided,
     boxShadow: 'none',
@@ -33,26 +29,10 @@ const styles: StylesConfig<TagType, true> = {
   indicatorSeparator: () => ({
     display: 'none',
   }),
-  indicatorsContainer: () => ({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    alignSelf: 'flex-end',
   }),
-};
-
-const DropdownIndicator = ({ innerProps, selectProps }: DropdownIndicatorProps<TagType, true>) => {
-  const { t } = useTranslation();
-
-  const { menuIsOpen } = selectProps;
-
-  return (
-    <div
-      css={iconButtonStyle({ colorTheme: 'greyLighter', variant: 'ghost', shape: 'pill', size: 'small' })}
-      {...innerProps}
-      aria-label={menuIsOpen ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
-      {menuIsOpen ? <ChevronUp /> : <ChevronDown />}
-    </div>
-  );
 };
 
 interface Props {
@@ -66,7 +46,7 @@ interface Props {
 
 const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
   const { t } = useTranslation();
-  const handleChange = (newValue: OnChangeValue<TagType, true>, actionMeta: ActionMeta<TagType>) => {
+  const handleChange = (newValue: OnChangeValue<TagType, true>) => {
     onChange(newValue);
   };
 
@@ -84,7 +64,7 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
       options={tags}
       onChange={handleChange}
       onCreateOption={onCreateOption}
-      components={{ DropdownIndicator }}
+      components={{ DropdownIndicator: DropdownButton, MultiValue: ValueButton }}
       styles={styles}
     />
   );

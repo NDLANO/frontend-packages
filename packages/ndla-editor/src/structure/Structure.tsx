@@ -12,8 +12,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
 import { Spinner } from '@ndla/icons';
+import { MakeDNDList } from '@ndla/ui';
 import ItemNameBar from './ItemNameBar';
-import MakeDNDList from './MakeDNDList';
 import Fade from './Fade';
 
 const StructureWrapper = styled.ul`
@@ -129,7 +129,7 @@ const Structure = ({
   return (
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
-        <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
+        <MakeDNDList isServer={false} disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
           {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, contentUri, ...rest }) => {
             const currentPathIds = [...currentPath, id];
             const children = topics || subtopics;

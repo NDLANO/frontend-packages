@@ -71,9 +71,7 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Doaimmas',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Ii doaimmas šat',
     [subjectCategories.BETA_SUBJECTS]: 'Boahttevaš',
-    [subjectCategories.COMMON_SUBJECTS]: 'Oktasašfága',
-    [subjectCategories.PROGRAMME_SUBJECTS]: 'Prográmmafága',
-    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Fidnofága',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Eará resurssat',
   },
   subjectTypes: {
     [subjectTypes.SUBJECT]: 'Fága',

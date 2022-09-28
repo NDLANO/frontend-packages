@@ -8,15 +8,16 @@
 
 import React from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { OnChangeValue, MultiValue, StylesConfig, ContainerProps } from 'react-select';
+import { OnChangeValue, MultiValue, StylesConfig } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
 import DropdownButton from './DropdownButton';
-import { colors, spacing } from '@ndla/core';
+import { colors } from '@ndla/core';
 import TagSelectorContainer from './TagSelectorContainer';
 import MenuList from './MenuList';
 import TagSelectorControl from './TagSelectorControl';
+import MenuOption from './MenuOption';
 
 const styles: StylesConfig<TagType, true> = {
   menu: (provided) => ({
@@ -63,6 +64,7 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
 
   return (
     <CreatableSelect
+      hideSelectedOptions={false}
       placeholder={t('tagSelector.placeholder')}
       isMulti
       isClearable={false}
@@ -76,6 +78,7 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
         SelectContainer: TagSelectorContainer,
         MenuList,
         Control: TagSelectorControl,
+        Option: MenuOption,
       }}
       styles={styles}
     />

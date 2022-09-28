@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import React from 'react';
 import { MenuListProps } from 'react-select';
-import { TagType } from '../../lib';
+import { TagType } from './types';
 
 const StyledMenuList = styled.div`
   overflow: overlay;
@@ -24,6 +24,9 @@ const StyledMenuList = styled.div`
     padding: 0 4px;
     background-color: ${colors.brand.neutral7};
   }
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const MenuList = ({ innerProps, innerRef, children }: MenuListProps<TagType, true>) => {

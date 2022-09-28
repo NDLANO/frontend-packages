@@ -28,7 +28,7 @@ const StyledValueButton = styled.div<StyledProps>`
   }
 `;
 
-const ValueButton = ({ innerProps, children, removeProps, isFocused, ...rest }: MultiValueProps<TagType, true>) => {
+const ValueButton = ({ innerProps, children, removeProps, isFocused }: MultiValueProps<TagType, true>) => {
   return (
     <StyledValueButton
       selected={isFocused}

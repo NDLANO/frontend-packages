@@ -53,7 +53,6 @@ const TagSelectorExample = () => {
         tags={exampleTags}
         selected={exampleTagsSelected}
         onChange={(tags: readonly TagType[]) => {
-          console.log(tags);
           setExampleTagsSelected(tags);
         }}
         onCreateTag={(name: string) => {

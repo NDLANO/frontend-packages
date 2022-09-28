@@ -6,9 +6,9 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { OnChangeValue, MultiValue, StylesConfig } from 'react-select';
+import { OnChangeValue, MultiValue, StylesConfig, useStateManager, GroupBase } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
@@ -48,19 +48,13 @@ interface Props {
   tags: readonly TagType[];
   selected: readonly TagType[];
   onChange: (tags: MultiValue<TagType>) => void;
-  onCreateTag: (tag: string) => void;
   prefix?: string;
 }
 
-const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
+const TagSelector = ({ selected, tags, onChange }: Props) => {
   const { t } = useTranslation();
-  const handleChange = (newValue: OnChangeValue<TagType, true>) => {
-    onChange(newValue);
-  };
 
-  const onCreateOption = (inputValue: string) => {
-    onCreateTag(inputValue);
-  };
+  const [input, setInput] = useState('');
 
   return (
     <CreatableSelect
@@ -70,8 +64,7 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
       isClearable={false}
       value={selected}
       options={tags}
-      onChange={handleChange}
-      onCreateOption={onCreateOption}
+      onChange={onChange}
       components={{
         DropdownIndicator: DropdownButton,
         MultiValue: ValueButton,
@@ -80,6 +73,17 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
         Control: TagSelectorControl,
         Option: MenuOption,
       }}
+      onKeyDown={(e) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          if (!selected.find((tag) => tag.value === input) && input !== '') {
+            onChange(selected.concat({ value: input, label: input }));
+          }
+          setInput('');
+        }
+      }}
+      onInputChange={setInput}
+      inputValue={input}
       styles={styles}
     />
   );

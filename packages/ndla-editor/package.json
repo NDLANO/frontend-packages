@@ -32,10 +32,8 @@
     "@ndla/modal": "^1.6.1",
     "@ndla/tooltip": "^2.2.2",
     "@ndla/ui": "^27.1.6",
-    "@types/react-beautiful-dnd": "^13.1.2",
     "focus-trap-react": "^8.9.2",
-    "lodash": "^4.17.20",
-    "react-beautiful-dnd": "^13.1.0"
+    "lodash": "^4.17.20"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.9",

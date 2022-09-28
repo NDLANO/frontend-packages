@@ -23,7 +23,6 @@ const StyledRightChevron = styled(ChevronRight)`
 `;
 
 const StyledSpan = styled.span`
-  color: ${colors.text.primary};
   font-weight: ${fonts.weight.bold};
 `;
 
@@ -54,7 +53,7 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
     }
     if (item.index === totalCount - 1 && actionItems.length > 0) {
       return (
-        <StyledMenuButton menuItems={actionItems} size="small">
+        <StyledMenuButton menuItems={actionItems} alignRight size="small">
           <StyledSpan title={item.name}>{item.name}</StyledSpan>
         </StyledMenuButton>
       );

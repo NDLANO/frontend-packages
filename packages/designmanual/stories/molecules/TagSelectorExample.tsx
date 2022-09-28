@@ -35,6 +35,9 @@ const dummyData = [
 const Container = styled.div`
   margin: 10px auto;
   max-width: 600px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TagSelectorExample = () => {

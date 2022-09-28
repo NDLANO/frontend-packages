@@ -12,7 +12,6 @@ import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import { TagType } from './types';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { HashTag } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 
 interface StyledProps {
@@ -25,6 +24,7 @@ const StyledValueButton = styled.div<StyledProps>`
     color: ${({ selected }) => selected && colors.white};
     padding: ${spacing.xxsmall} ${spacing.small};
     margin: ${spacing.xxsmall};
+    border: none;
   }
 `;
 

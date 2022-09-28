@@ -13,22 +13,26 @@ import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
 import DropdownButton from './DropdownButton';
-import { spacing } from '@ndla/core';
+import { colors, spacing } from '@ndla/core';
 import TagSelectorContainer from './TagSelectorContainer';
+import MenuList from './MenuList';
+import TagSelectorControl from './TagSelectorControl';
 
 const styles: StylesConfig<TagType, true> = {
   menu: (provided) => ({
     ...provided,
     position: 'relative',
     boxShadow: 'none',
+    margin: 0,
+    borderTop: `1px solid ${colors.brand.tertiary}`,
+    borderRadius: 'none',
+    top: 'unset',
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+    minHeight: '70px',
   }),
   valueContainer: (provided) => ({ ...provided, padding: 0 }),
-  control: (provided) => ({
-    ...provided,
-    boxShadow: 'none',
-    border: 'none',
-    margin: spacing.xxsmall,
-  }),
   indicatorSeparator: () => ({
     display: 'none',
   }),
@@ -66,7 +70,13 @@ const TagSelector = ({ selected, tags, onCreateTag, onChange }: Props) => {
       options={tags}
       onChange={handleChange}
       onCreateOption={onCreateOption}
-      components={{ DropdownIndicator: DropdownButton, MultiValue: ValueButton, SelectContainer: TagSelectorContainer }}
+      components={{
+        DropdownIndicator: DropdownButton,
+        MultiValue: ValueButton,
+        SelectContainer: TagSelectorContainer,
+        MenuList,
+        Control: TagSelectorControl,
+      }}
       styles={styles}
     />
   );

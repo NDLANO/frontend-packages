@@ -7,12 +7,16 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, misc } from '@ndla/core';
+import { colors, misc, spacing } from '@ndla/core';
 import React from 'react';
 import { ContainerProps } from 'react-select';
 import { TagType } from './types';
 
 const StyledContainer = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+
   border: 1px solid ${colors.brand.neutral7};
   border-radius: ${misc.borderRadius};
   &:focus-within {

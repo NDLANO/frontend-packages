@@ -20,6 +20,7 @@ import Option from './Option';
 import Menu from './Menu';
 
 const styles: StylesConfig<TagType, true> = {
+  menu: () => ({}),
   valueContainer: (provided) => ({ ...provided, padding: 0 }),
   indicatorSeparator: () => ({
     display: 'none',
@@ -54,7 +55,6 @@ const TagSelector = ({ selected, tags, onChange }: Props) => {
 
   return (
     <CreatableSelect
-      menuIsOpen
       tabSelectsValue={false}
       hideSelectedOptions={false}
       placeholder={t('tagSelector.placeholder')}

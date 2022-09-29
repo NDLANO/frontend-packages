@@ -6,31 +6,32 @@
  *
  */
 
-import styled from '@emotion/styled';
+import css from '@emotion/css';
 import { colors } from '@ndla/core';
 import React from 'react';
-import { MenuProps } from 'react-select';
+import { MenuProps, components } from 'react-select';
 import { StyledMenuOption } from './Option';
 import { TagType } from './types';
 
-const StyledMenu = styled.div`
+const menuStyle = css`
   display: flex;
+  position: relative;
   flex-direction: column;
   margin: 0;
   overflow: hidden;
   border-top: 1px solid ${colors.brand.tertiary};
   min-height: 70px;
 
-  &:has(${() => StyledMenuOption}:only-child) {
+  :has(${StyledMenuOption}:only-child) {
     min-height: 40px;
   }
 `;
 
-const Menu = ({ innerProps, innerRef, children }: MenuProps<TagType, true>) => {
+const Menu = ({ children, ...props }: MenuProps<TagType, true>) => {
   return (
-    <StyledMenu ref={innerRef} {...innerProps}>
+    <components.Menu css={menuStyle} {...props}>
       {children}
-    </StyledMenu>
+    </components.Menu>
   );
 };
 

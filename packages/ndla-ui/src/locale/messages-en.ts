@@ -50,7 +50,7 @@ const messages = {
           space: 'press Space to create new tag',
         },
         value:
-          'Use left and right to toggle between focused tags, press Backspace to remove the currently focused value',
+          'Use left and right to toggle between focused tags, press Backspace to remove the currently focused value. The last tag will be removed if none are selected.',
       },
       onChange: {
         deselect: 'tag {{label}}, deselected.',
@@ -67,6 +67,7 @@ const messages = {
       onFilter: ' for search term ',
     },
     label: 'Add tag',
+    createLabel: 'Add tag {{tag}}',
     placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
     hideAllTags: 'Hide all tags',

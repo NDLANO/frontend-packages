@@ -48,7 +48,7 @@ export const createAriaMessages = (t: TFunction) => ({
       case 'deselect-option':
       case 'pop-value':
       case 'remove-value':
-        return t('tagSelector.aria.guidance.onChange.deselect', { label });
+        return t('tagSelector.aria.onChange.deselect', { label });
       case 'clear':
         return t('tagSelector.aria.onChange.clear');
       case 'initial-input-focus':

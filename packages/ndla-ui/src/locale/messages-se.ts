@@ -67,6 +67,7 @@ const messages = {
       onFilter: ' for søkeord ',
     },
     label: 'Bija fáddágilkora',
+    createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Čále fáddágilkora',
     removeTag: 'Váldde eret {{name}}',
     hideAllTags: 'Čiega buot fáddágilkoriid',

@@ -30,7 +30,43 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      disabled: 'utilgjengelig',
+      selected: 'valgt',
+      focused: 'fokusert',
+      guidance: {
+        menu: {
+          updown: 'Bruk piltaster opp og ned for å velge emneknagger',
+          enter: ', trykk enter for å velge den markerte emneknaggen',
+          escape: ', trykk escape for å lukke menyen',
+          tab: ', trykk tab for å velge emneknaggen og lukke menyen',
+        },
+        input: {
+          select: 'Emneknagg-meny',
+          focused: 'er fokusert',
+          refine: 'skriv for å filtrere listen med emneknagger',
+          down: 'trykk pil ned for å åpne menyen',
+          left: 'trykk venstre pil for å fokusere valgte emneknagger',
+          space: 'trykk mellomrom for å opprette ny emneknagg',
+        },
+        value:
+          'Bruk høyre og venstre pil for å navigere mellom valgte emneknagger, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.',
+      },
+      onChange: {
+        deselect: 'emneknagg {{tag}}, fjernet.',
+        clear: 'Alle valgte emneknagger fjernet.',
+        initialFocus: `Emneknagger {{tags}}, valgt.`,
+        selectedDisabled: 'Emneknagg kan ikke velges. Velg et annet alternativ.',
+        selected: 'Emneknagg {{tag}},  valgt.',
+      },
+      onFocus: {
+        value: 'emneknagg {{tag}} fokusert, {{position}}.',
+        menu: 'emneknagg {{tag}} {{status}}, {{position}}.',
+      },
+      onFilter: ' for søkeord ',
+    },
     label: 'Legg til emneknagg',
+    createLabel: 'Legg til tag "{{tag}}"',
     placeholder: 'Skriv inn emneknagg',
     removeTag: 'Ta vekk {{name}}',
     hideAllTags: 'Skjul alle emneknagger',

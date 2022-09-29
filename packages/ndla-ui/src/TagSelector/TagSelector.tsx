@@ -20,6 +20,7 @@ import MenuList from './MenuList';
 import Control from './Control';
 import Option from './Option';
 import Menu from './Menu';
+import { createAriaMessages } from './ariaMessages';
 
 const styles: StylesConfig<TagType, true> = {
   menu: () => ({}),
@@ -66,10 +67,14 @@ const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
     }
   };
 
+  const createLabel = (tag: string) => t('tagSelector.createLabel', { tag });
+
   return (
     <StyledTagSelector className={className}>
       {label && <StyledLabel id="tagselector-label">{label}</StyledLabel>}
       <CreatableSelect
+        ariaLiveMessages={createAriaMessages}
+        formatCreateLabel={createLabel}
         aria-labelledby={label ? 'tagselector-label' : undefined}
         tabSelectsValue={false}
         hideSelectedOptions={false}

@@ -6,8 +6,7 @@
  *
  */
 
-import React, { ReactNode } from 'react';
-import { DropResult } from 'react-beautiful-dnd';
+import React, { ComponentProps, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -54,7 +53,7 @@ interface Props {
   favoriteSubjectIds?: string[];
   toggleFavorite?: (subjectId: string) => void;
   isOpen?: boolean;
-  onDragEnd?: (result: DropResult) => void;
+  onDragEnd?: ComponentProps<typeof MakeDNDList>['onDragEnd'];
   isMainActive?: boolean;
   DND?: boolean;
   toggleOpen: (subject: { path: string; isSubject: boolean; id: string }) => void;

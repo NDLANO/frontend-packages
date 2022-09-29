@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import { spacing, utils } from '@ndla/core';
 import React from 'react';
 import { ControlProps } from 'react-select';
 import { TagType } from './types';
@@ -20,16 +20,7 @@ const StyledTagSelectorControl = styled.div`
   margin: ${spacing.xxsmall};
 
   overflow: overlay;
-  ::-webkit-scrollbar {
-    width: ${spacing.small};
-  }
-  ::-webkit-scrollbar-thumb {
-    border: 4px solid transparent;
-    border-radius: 14px;
-    background-clip: padding-box;
-    padding: 0 4px;
-    background-color: ${colors.brand.neutral7};
-  }
+  ${utils.scrollbar}
 `;
 
 const Control = ({ innerProps, children, innerRef }: ControlProps<TagType, true>) => {

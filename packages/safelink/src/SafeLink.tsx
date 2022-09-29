@@ -28,6 +28,7 @@ const LaunchIcon = styled(Launch)`
 type Props = {
   showNewWindowIcon?: boolean;
   ref?: MutableRefObject<HTMLAnchorElement | null>;
+  asAnchor?: boolean;
   children?: ReactNode;
 };
 
@@ -36,10 +37,10 @@ export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 // Fallback to normal link if app is missing RouterContext, link is external or is old ndla link
 
 const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
-  ({ to, replace, children, showNewWindowIcon, tabIndex, ...rest }, ref) => {
+  ({ to, replace, children, showNewWindowIcon, tabIndex, asAnchor, ...rest }, ref) => {
     const isMissingRouterContext = useContext(MissingRouterContext);
 
-    if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to)) {
+    if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor) {
       const href = typeof to === 'string' ? to : '#';
       return (
         <a href={href} ref={ref} {...rest}>

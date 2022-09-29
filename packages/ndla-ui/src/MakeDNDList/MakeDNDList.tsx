@@ -8,14 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { Children, cloneElement, ReactElement } from 'react';
-import {
-  DragDropContext,
-  Droppable,
-  Draggable,
-  DropResult,
-  ResponderProvided,
-  resetServerContext,
-} from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult, ResponderProvided } from 'react-beautiful-dnd';
 import { spacing } from '@ndla/core';
 
 interface StyledDropZoneProps {
@@ -34,22 +27,17 @@ interface Props {
   disableDND: boolean;
   onDragEnd: (result: DropResult, provided: ResponderProvided) => void;
   dragHandle: boolean;
-  isServer: boolean;
+  dndContextId: string;
 }
 
-const MakeDNDList = ({ disableDND, children, onDragEnd, dragHandle, isServer }: Props) => {
+const MakeDNDList = ({ disableDND, children, onDragEnd, dragHandle, dndContextId }: Props) => {
   if (disableDND) {
     return <>{children}</>;
   }
 
-  if (isServer) {
-    // `react-beautiful-dnd` wants this to only run on server
-    resetServerContext();
-  }
-
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="droppable">
+    <DragDropContext onDragEnd={onDragEnd} key={dndContextId}>
+      <Droppable droppableId={`droppable-${dndContextId}`}>
         {(provided, snapshot) => (
           <StyledDropZone ref={provided.innerRef} dragging={snapshot.isDraggingOver}>
             {Children.map(children, (child, index) => {

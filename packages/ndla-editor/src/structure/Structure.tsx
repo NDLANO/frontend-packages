@@ -128,7 +128,7 @@ const Structure = ({
   return (
     <StructureWrapper>
       <Fade show={isOpen} fadeType="fadeInTop">
-        <MakeDNDList isServer={false} disableDND={!enableDND} dragHandle onDragEnd={onDragEnd}>
+        <MakeDNDList disableDND={!enableDND} dragHandle onDragEnd={onDragEnd} dndContextId={'structure'}>
           {structure.map(({ id, connectionId, name, topics, subtopics, loading, metadata, contentUri, ...rest }) => {
             const currentPathIds = [...currentPath, id];
             const children = topics || subtopics;

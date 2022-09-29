@@ -30,6 +30,42 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      disabled: 'disabled',
+      selected: 'selected',
+      focused: 'focused',
+      guidance: {
+        menu: {
+          updown: 'Use Up and Down to choose tags',
+          enter: 'press Enter to select the currently focused tag',
+          escape: 'press Escape to exit the menu',
+          tab: 'press Tab to select the tag and exit the menu',
+        },
+        input: {
+          select: 'Tag menu',
+          focused: 'is focused',
+          refine: 'type to refine list',
+          down: 'press Down to open the menu',
+          left: 'press Left to focus selected tags',
+          space: 'press Space to create new tag',
+        },
+        value:
+          'Use left and right to toggle between focused tags, press Backspace to remove the currently focused value',
+      },
+      onChange: {
+        deselect: 'tag {{label}}, deselected.',
+        clear: 'All selected options have been cleared.',
+        initialFocus: `Tags {{labels}}, selected.`,
+        selectedDisabled: 'Tag {{label}} is disabled. Select another option.',
+        selected: 'Tag {{label}}, selected.',
+      },
+      onFocus: {
+        value: 'tag {{label}} focused, {{position}}.',
+        menu: 'tag {{label}} {{status}}, {{position}}.',
+        of: 'of',
+      },
+      onFilter: ' for search term ',
+    },
     label: 'Add tag',
     placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',

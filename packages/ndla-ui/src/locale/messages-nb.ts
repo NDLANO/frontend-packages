@@ -37,9 +37,9 @@ const messages = {
       guidance: {
         menu: {
           updown: 'Bruk piltaster opp og ned for å velge emneknagger',
-          enter: ', trykk enter for å velge den markerte emneknaggen',
-          escape: ', trykk escape for å lukke menyen',
-          tab: ', trykk tab for å velge emneknaggen og lukke menyen',
+          enter: 'trykk enter for å velge den markerte emneknaggen',
+          escape: 'trykk escape for å lukke menyen',
+          tab: 'trykk tab for å velge emneknaggen og lukke menyen',
         },
         input: {
           select: 'Emneknagg-meny',
@@ -53,15 +53,16 @@ const messages = {
           'Bruk høyre og venstre pil for å navigere mellom valgte emneknagger, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.',
       },
       onChange: {
-        deselect: 'emneknagg {{tag}}, fjernet.',
+        deselect: 'emneknagg {{label}}, fjernet.',
         clear: 'Alle valgte emneknagger fjernet.',
-        initialFocus: `Emneknagger {{tags}}, valgt.`,
-        selectedDisabled: 'Emneknagg kan ikke velges. Velg et annet alternativ.',
-        selected: 'Emneknagg {{tag}},  valgt.',
+        initialFocus: `Emneknagger {{labels}}, valgt.`,
+        selectedDisabled: 'Emneknagg {{label}} kan ikke velges. Velg et annet alternativ.',
+        selected: 'Emneknagg {{label}},  valgt.',
       },
       onFocus: {
-        value: 'emneknagg {{tag}} fokusert, {{position}}.',
-        menu: 'emneknagg {{tag}} {{status}}, {{position}}.',
+        value: 'emneknagg {{label}} fokusert, {{position}}.',
+        menu: 'emneknagg {{label}} {{status}}, {{position}}.',
+        of: 'av',
       },
       onFilter: ' for søkeord ',
     },

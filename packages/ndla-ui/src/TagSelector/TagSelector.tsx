@@ -73,7 +73,7 @@ const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
     <StyledTagSelector className={className}>
       {label && <StyledLabel id="tagselector-label">{label}</StyledLabel>}
       <CreatableSelect
-        ariaLiveMessages={createAriaMessages}
+        ariaLiveMessages={createAriaMessages(t)}
         formatCreateLabel={createLabel}
         aria-labelledby={label ? 'tagselector-label' : undefined}
         tabSelectsValue={false}

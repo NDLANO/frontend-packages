@@ -6,6 +6,7 @@
  *
  */
 
+import { TFunction } from 'react-i18next';
 import {
   AriaGuidanceProps,
   AriaOnChangeProps,
@@ -16,24 +17,26 @@ import {
 } from 'react-select';
 import { TagType } from './types';
 
-export const createAriaMessages = {
+export const createAriaMessages = (t: TFunction) => ({
   guidance: (props: AriaGuidanceProps) => {
     const { isSearchable, isMulti, isDisabled, tabSelectsValue, context } = props;
     switch (context) {
       case 'menu':
-        return `Use Up and Down to choose options${
-          isDisabled ? '' : ', press Enter to select the currently focused option'
-        }, press Escape to exit the menu${
-          tabSelectsValue ? ', press Tab to select the option and exit the menu' : ''
+        return `${t('tagSelector.aria.guidance.menu.updown')}${
+          isDisabled ? '' : `, ${t('tagSelector.aria.guidance.menu.enter')}`
+        }, ${t('tagSelector.aria.guidance.menu.escape')}${
+          tabSelectsValue ? `, ${t('tagSelector.aria.guidance.menu.tab')}` : ''
         }.`;
       case 'input':
-        return `${props['aria-label'] || 'Select'} is focused ${
-          isSearchable ? ',type to refine list' : ''
-        }, press Down to open the menu, ${
-          isMulti ? ' press left to focus selected values' : ''
-        } press space to create new tag`;
+        return `${props['aria-label'] || t('tagSelector.aria.guidance.input.select')} ${t(
+          'tagSelector.aria.guidance.input.focused',
+        )} ${isSearchable ? `, ${t('tagSelector.aria.guidance.input.refine')}` : ''}, ${t(
+          'tagSelector.aria.guidance.input.down',
+        )}, ${isMulti ? ` ${t('tagSelector.aria.guidance.input.left')}` : ''}, ${t(
+          'tagSelector.aria.guidance.input.space',
+        )}`;
       case 'value':
-        return 'Use left and right to toggle between focused values, press Backspace to remove the currently focused value';
+        return t('tagSelector.aria.guidance.value');
       default:
         return '';
     }
@@ -45,13 +48,15 @@ export const createAriaMessages = {
       case 'deselect-option':
       case 'pop-value':
       case 'remove-value':
-        return `option ${label}, deselected.`;
+        return t('tagSelector.aria.guidance.onChange.deselect', { label });
       case 'clear':
-        return 'All selected options have been cleared.';
+        return t('tagSelector.aria.onChange.clear');
       case 'initial-input-focus':
-        return `option${labels.length > 1 ? 's' : ''} ${labels.join(',')}, selected.`;
+        return t('tagSelector.aria.onChange.initialFocus', { labels: labels.join(',') });
       case 'select-option':
-        return isDisabled ? `option ${label} is disabled. Select another option.` : `option ${label}, selected.`;
+        return isDisabled
+          ? t('tagSelector.aria.onChange.selectedDisabled', { label })
+          : t('tagSelector.aria.onChange.selected', { label });
       default:
         return '';
     }
@@ -61,22 +66,22 @@ export const createAriaMessages = {
     const { context, focused, options, label = '', selectValue, isDisabled, isSelected } = props;
 
     const getArrayIndex = (arr: OptionsOrGroups<TagType, GroupBase<TagType>>, item: TagType) =>
-      arr && arr.length ? `${arr.indexOf(item) + 1} of ${arr.length}` : '';
+      arr && arr.length ? `${arr.indexOf(item) + 1} ${t('tagSelector.aria.onFocus.of')} ${arr.length}` : '';
 
     if (context === 'value' && selectValue) {
-      return `value ${label} focused, ${getArrayIndex(selectValue, focused)}.`;
+      return t('tagSelector.aria.onFocus.value', { label, position: getArrayIndex(selectValue, focused) });
     }
 
     if (context === 'menu') {
-      const disabled = isDisabled ? ' disabled' : '';
-      const status = `${isSelected ? 'selected' : 'focused'}${disabled}`;
-      return `option ${label} ${status}, ${getArrayIndex(options, focused)}.`;
+      const disabled = isDisabled ? ` ${t('tagSelector.aria.disabled')}` : '';
+      const status = `${isSelected ? t('tagSelector.aria.selected') : t('tagSelector.aria.focused')}${disabled}`;
+      return t('tagSelector.aria.onFocus.menu', { label, status, position: getArrayIndex(options, focused) });
     }
     return '';
   },
 
   onFilter: (props: AriaOnFilterProps) => {
     const { inputValue, resultsMessage } = props;
-    return `${resultsMessage}${inputValue ? ' for search term ' + inputValue : ''}.`;
+    return `${resultsMessage}${inputValue ? ` ${t('tagSelector.aria.onFilter')} ` + inputValue : ''}.`;
   },
-};
+});

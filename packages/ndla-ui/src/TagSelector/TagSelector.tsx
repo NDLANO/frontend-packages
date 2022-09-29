@@ -25,6 +25,7 @@ import Input from './Input';
 
 const styles: StylesConfig<TagType, true> = {
   menu: () => ({}),
+  dropdownIndicator: () => ({}),
   placeholder: (provided) => ({
     ...provided,
     padding: `0 ${spacing.small}`,

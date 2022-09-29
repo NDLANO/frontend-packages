@@ -8,23 +8,33 @@
 
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import React from 'react';
+import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
-import { DropdownIndicatorProps } from 'react-select';
+import { DropdownIndicatorProps, components } from 'react-select';
 import { iconButtonStyle } from '@ndla/button';
 import { TagType } from './types';
 
-const DropdownIndicator = ({ innerProps, selectProps }: DropdownIndicatorProps<TagType, true>) => {
+const StyledIconWrapper = styled.span`
+  svg {
+    pointer-events: none;
+  }
+`;
+
+const DropdownIndicator = ({ selectProps, children, ...props }: DropdownIndicatorProps<TagType, true>) => {
   const { t } = useTranslation();
 
   const { menuIsOpen } = selectProps;
-
+  const Icon = menuIsOpen ? ChevronUp : ChevronDown;
   return (
-    <div
+    <components.DropdownIndicator
       css={iconButtonStyle({ colorTheme: 'greyLighter', variant: 'ghost', shape: 'pill', size: 'small' })}
-      {...innerProps}
+      {...props}
+      selectProps={selectProps}
       aria-label={menuIsOpen ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
-      {menuIsOpen ? <ChevronUp /> : <ChevronDown />}
-    </div>
+      <StyledIconWrapper aria-hidden>
+        <Icon />
+      </StyledIconWrapper>
+    </components.DropdownIndicator>
   );
 };
 

@@ -24,8 +24,8 @@ const StyledContainer = styled.div`
   }
 `;
 
-const TagSelectorContainer = ({ innerProps, selectProps, children }: ContainerProps<TagType, true>) => {
+const SelectContainer = ({ innerProps, selectProps, children }: ContainerProps<TagType, true>) => {
   return <StyledContainer {...innerProps}>{children}</StyledContainer>;
 };
 
-export default TagSelectorContainer;
+export default SelectContainer;

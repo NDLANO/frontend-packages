@@ -32,7 +32,7 @@ const StyledTagSelectorControl = styled.div`
   }
 `;
 
-const TagSelectorControl = ({ innerProps, children, innerRef }: ControlProps<TagType, true>) => {
+const Control = ({ innerProps, children, innerRef }: ControlProps<TagType, true>) => {
   return (
     <StyledTagSelectorControl ref={innerRef} {...innerProps}>
       {children}
@@ -40,4 +40,4 @@ const TagSelectorControl = ({ innerProps, children, innerRef }: ControlProps<Tag
   );
 };
 
-export default TagSelectorControl;
+export default Control;

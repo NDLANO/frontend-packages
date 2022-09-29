@@ -13,7 +13,7 @@ import { DropdownIndicatorProps } from 'react-select';
 import { iconButtonStyle } from '@ndla/button';
 import { TagType } from './types';
 
-const DropdownButton = ({ innerProps, selectProps }: DropdownIndicatorProps<TagType, true>) => {
+const DropdownIndicator = ({ innerProps, selectProps }: DropdownIndicatorProps<TagType, true>) => {
   const { t } = useTranslation();
 
   const { menuIsOpen } = selectProps;
@@ -28,4 +28,4 @@ const DropdownButton = ({ innerProps, selectProps }: DropdownIndicatorProps<TagT
   );
 };
 
-export default DropdownButton;
+export default DropdownIndicator;

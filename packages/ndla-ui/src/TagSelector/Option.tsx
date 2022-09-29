@@ -10,7 +10,7 @@ import React from 'react';
 import { OptionProps } from 'react-select';
 import { buttonStyleV2 as buttonStyle } from '@ndla/button';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts } from '@ndla/core';
 import { Done } from '@ndla/icons/editor';
 import { TagType } from './types';
 
@@ -19,7 +19,7 @@ interface StyledProps {
   focused: boolean;
 }
 
-const StyledMenuOption = styled.div<StyledProps>`
+export const StyledMenuOption = styled.div<StyledProps>`
   && {
     background: ${({ focused }) => focused && colors.brand.lighter};
     color: ${({ focused }) => focused && colors.brand.primary};
@@ -31,12 +31,12 @@ const StyledMenuOption = styled.div<StyledProps>`
 `;
 
 const StyledCheck = styled(Done)`
-  width: ${spacing.normal};
-  height: ${spacing.normal};
+  width: 24px;
+  height: 24px;
   fill: ${colors.brand.tertiary};
 `;
 
-const MenuOption = ({ innerProps, innerRef, children, isSelected, isFocused }: OptionProps<TagType, true>) => {
+const Option = ({ innerProps, innerRef, children, isSelected, isFocused }: OptionProps<TagType, true>) => {
   return (
     <StyledMenuOption
       focused={isFocused}
@@ -50,4 +50,4 @@ const MenuOption = ({ innerProps, innerRef, children, isSelected, isFocused }: O
   );
 };
 
-export default MenuOption;
+export default Option;

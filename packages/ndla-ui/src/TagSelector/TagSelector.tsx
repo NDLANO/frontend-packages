@@ -6,33 +6,20 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { KeyboardEvent, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { colors } from '@ndla/core';
 import { MultiValue, StylesConfig } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
-import DropdownButton from './DropdownButton';
-import TagSelectorContainer from './TagSelectorContainer';
+import DropdownIndicator from './DropdownIndicator';
+import SelectContainer from './SelectContainer';
 import MenuList from './MenuList';
-import TagSelectorControl from './TagSelectorControl';
-import MenuOption from './MenuOption';
+import Control from './Control';
+import Option from './Option';
+import Menu from './Menu';
 
 const styles: StylesConfig<TagType, true> = {
-  menu: (provided) => ({
-    ...provided,
-    position: 'relative',
-    boxShadow: 'none',
-    margin: 0,
-    borderTop: `1px solid ${colors.brand.tertiary}`,
-    borderRadius: 'none',
-    top: 'unset',
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    minHeight: '70px',
-  }),
   valueContainer: (provided) => ({ ...provided, padding: 0 }),
   indicatorSeparator: () => ({
     display: 'none',
@@ -53,11 +40,22 @@ interface Props {
 
 const TagSelector = ({ selected, tags, onChange }: Props) => {
   const { t } = useTranslation();
-
   const [input, setInput] = useState('');
+
+  const handleSpaceClick = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      if (!selected.find((tag) => tag.value === input) && input !== '') {
+        onChange(selected.concat({ value: input, label: input }));
+      }
+      setInput('');
+    }
+  };
 
   return (
     <CreatableSelect
+      menuIsOpen
+      tabSelectsValue={false}
       hideSelectedOptions={false}
       placeholder={t('tagSelector.placeholder')}
       isMulti
@@ -66,22 +64,15 @@ const TagSelector = ({ selected, tags, onChange }: Props) => {
       options={tags}
       onChange={onChange}
       components={{
-        DropdownIndicator: DropdownButton,
+        DropdownIndicator,
         MultiValue: ValueButton,
-        SelectContainer: TagSelectorContainer,
+        SelectContainer,
         MenuList,
-        Control: TagSelectorControl,
-        Option: MenuOption,
+        Control,
+        Option,
+        Menu,
       }}
-      onKeyDown={(e) => {
-        if (e.key === ' ') {
-          e.preventDefault();
-          if (!selected.find((tag) => tag.value === input) && input !== '') {
-            onChange(selected.concat({ value: input, label: input }));
-          }
-          setInput('');
-        }
-      }}
+      onKeyDown={handleSpaceClick}
       onInputChange={setInput}
       inputValue={input}
       styles={styles}

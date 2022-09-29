@@ -131,17 +131,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           onKeyDown={onKeyDown}>
           {selectedFolder?.name}
         </StyledSelectedFolder>
-        <IconButton
-          aria-hidden
-          aria-label=""
-          tabIndex={-1}
-          variant="ghost"
-          colorTheme="greyLighter"
-          size="small"
-          onClick={() => {
-            innerRef.current?.focus();
-            onToggleTree(!showTree);
-          }}>
+        <IconButton aria-hidden aria-label="" tabIndex={-1} variant="ghost" colorTheme="greyLighter" size="small">
           {showTree ? <ChevronUp /> : <ChevronDown />}
         </IconButton>
       </StyledRow>

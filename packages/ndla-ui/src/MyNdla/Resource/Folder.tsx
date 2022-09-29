@@ -15,6 +15,7 @@ import { css } from '@emotion/core';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { MenuButton, MenuItemProps } from '@ndla/button';
+import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 
 interface FolderIconWrapperProps {
   type?: LayoutType;
@@ -93,6 +94,7 @@ interface Props {
   link: string;
   type: LayoutType;
   menuItems?: MenuItemProps[];
+  dragHandleProps?: DraggableProvidedDragHandleProps;
 }
 
 interface IconCountProps {
@@ -139,7 +141,7 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
 
 type LayoutType = 'list' | 'block';
 
-const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
+const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems, dragHandleProps }: Props) => {
   const { t } = useTranslation();
   const linkRef = useRef<HTMLAnchorElement | null>(null);
 
@@ -149,7 +151,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
 
   return (
     <FolderWrapper onClick={onClick} id={id}>
-      <FolderIconWrapper type={type}>
+      <FolderIconWrapper type={type} {...dragHandleProps}>
         <FolderOutlined aria-label={t('myNdla.folder.folder')} />
       </FolderIconWrapper>
       <FolderTitleLink to={link} ref={linkRef}>

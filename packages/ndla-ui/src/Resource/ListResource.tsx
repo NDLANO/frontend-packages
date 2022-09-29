@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import React, { useRef } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
+import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import Image from '../Image';
 import {
   CompressedTagList,
@@ -132,6 +133,7 @@ export interface ListResourceProps {
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
   targetBlank?: boolean;
+  dragHandleProps?: DraggableProvidedDragHandleProps;
 }
 
 interface ListResourceImageProps {
@@ -212,6 +214,7 @@ const ListResource = ({
   menuItems,
   isLoading = false,
   targetBlank,
+  dragHandleProps,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
@@ -226,7 +229,7 @@ const ListResource = ({
 
   return (
     <ResourceWrapper onClick={handleClick} id={id}>
-      <StyledImageWrapper imageSize={imageType}>
+      <StyledImageWrapper imageSize={imageType} {...dragHandleProps}>
         <ListResourceImage
           resourceImage={resourceImage}
           loading={isLoading}

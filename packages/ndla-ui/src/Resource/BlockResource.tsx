@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import React, { useRef } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
+import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
 import {
@@ -38,6 +39,7 @@ interface BlockResourceProps {
   isLoading?: boolean;
   targetBlank?: boolean;
   resourceTypes?: { id: string; name: string }[];
+  dragHandleProps?: DraggableProvidedDragHandleProps;
 }
 
 const BlockElementWrapper = styled.div`
@@ -155,6 +157,7 @@ const BlockResource = ({
   headingLevel = 'h2',
   targetBlank,
   resourceTypes,
+  dragHandleProps,
 }: BlockResourceProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
   const firstResourceType = resourceTypes?.[0].id ?? '';
@@ -168,7 +171,7 @@ const BlockResource = ({
 
   return (
     <BlockElementWrapper onClick={handleClick} id={id}>
-      <ImageWrapper>
+      <ImageWrapper {...dragHandleProps}>
         <BlockImage
           image={resourceImage}
           loading={isLoading}

@@ -8,8 +8,8 @@
 
 import React from 'react';
 import { spacingUnit } from '@ndla/core';
-import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
 import css from '@emotion/css';
+import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
 import { ButtonSize } from './types';
 
 export const svgSizes = {

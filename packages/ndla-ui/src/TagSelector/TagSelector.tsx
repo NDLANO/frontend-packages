@@ -8,12 +8,12 @@
 
 import React, { useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
-import { OnChangeValue, MultiValue, StylesConfig, useStateManager, GroupBase } from 'react-select';
+import { colors } from '@ndla/core';
+import { MultiValue, StylesConfig } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
 import DropdownButton from './DropdownButton';
-import { colors } from '@ndla/core';
 import TagSelectorContainer from './TagSelectorContainer';
 import MenuList from './MenuList';
 import TagSelectorControl from './TagSelectorControl';

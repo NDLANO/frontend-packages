@@ -21,7 +21,6 @@ import {
   OneColumn,
   Content,
   i18nInstance,
-  TagSelectorV2,
 } from '@ndla/ui';
 import Pager from '@ndla/pager';
 import { Translation as I18nTranslate } from 'react-i18next';

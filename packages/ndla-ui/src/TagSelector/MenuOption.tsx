@@ -9,10 +9,10 @@
 import React from 'react';
 import { OptionProps } from 'react-select';
 import { buttonStyleV2 as buttonStyle } from '@ndla/button';
-import { TagType } from './types';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Done } from '@ndla/icons/editor';
+import { TagType } from './types';
 
 interface StyledProps {
   selected: boolean;

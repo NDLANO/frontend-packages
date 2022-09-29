@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, misc, spacing } from '@ndla/core';
+import { colors, misc } from '@ndla/core';
 import React from 'react';
 import { ContainerProps } from 'react-select';
 import { TagType } from './types';

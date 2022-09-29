@@ -10,7 +10,7 @@ import css from '@emotion/css';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 import { themes } from './themes';
-import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonTheme, ButtonFontWeight } from './types';
+import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from './types';
 
 export interface ButtonStyleProps {
   colorTheme: ButtonColor;

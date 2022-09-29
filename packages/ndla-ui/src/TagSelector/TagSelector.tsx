@@ -73,17 +73,8 @@ const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
     <StyledTagSelector className={className}>
       {label && <StyledLabel id="tagselector-label">{label}</StyledLabel>}
       <CreatableSelect
-        ariaLiveMessages={createAriaMessages(t)}
-        formatCreateLabel={createLabel}
         aria-labelledby={label ? 'tagselector-label' : undefined}
-        tabSelectsValue={false}
-        hideSelectedOptions={false}
-        placeholder={t('tagSelector.placeholder')}
-        isMulti
-        isClearable={false}
-        value={selected}
-        options={tags}
-        onChange={onChange}
+        ariaLiveMessages={createAriaMessages(t)}
         components={{
           DropdownIndicator,
           MultiValue: ValueButton,
@@ -93,10 +84,20 @@ const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
           Option,
           Menu,
         }}
-        onKeyDown={handleSpaceClick}
-        onInputChange={setInput}
+        formatCreateLabel={createLabel}
+        hideSelectedOptions={false}
         inputValue={input}
+        isClearable={false}
+        isMulti
+        onChange={onChange}
+        onInputChange={setInput}
+        onKeyDown={handleSpaceClick}
+        options={tags}
+        placeholder={t('tagSelector.placeholder')}
+        screenReaderStatus={({ count }) => t('tagSelector.aria.screenReaderStatus', { count })}
         styles={styles}
+        tabSelectsValue={false}
+        value={selected}
       />
     </StyledTagSelector>
   );

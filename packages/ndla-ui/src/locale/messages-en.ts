@@ -31,6 +31,7 @@ const messages = {
   },
   tagSelector: {
     aria: {
+      screenReaderStatus: '{{count}} resultsj available',
       disabled: 'disabled',
       selected: 'selected',
       focused: 'focused',

@@ -31,6 +31,7 @@ const messages = {
   },
   tagSelector: {
     aria: {
+      screenReaderStatus: '{{count}} resultater tilgjengelig',
       disabled: 'utilgjengelig',
       selected: 'valgt',
       focused: 'fokusert',

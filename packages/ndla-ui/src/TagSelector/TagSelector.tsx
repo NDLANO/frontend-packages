@@ -9,6 +9,8 @@
 import React, { KeyboardEvent, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue, StylesConfig } from 'react-select';
+import styled from '@emotion/styled';
+import { fonts } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
@@ -31,15 +33,26 @@ const styles: StylesConfig<TagType, true> = {
   }),
 };
 
+const StyledTagSelector = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+`;
+
+const StyledLabel = styled.label`
+  font-weight: ${fonts.weight.semibold};
+`;
+
 interface Props {
   label: string;
   tags: readonly TagType[];
   selected: readonly TagType[];
   onChange: (tags: MultiValue<TagType>) => void;
-  prefix?: string;
+  className?: string;
 }
 
-const TagSelector = ({ selected, tags, onChange }: Props) => {
+const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
 
@@ -54,29 +67,33 @@ const TagSelector = ({ selected, tags, onChange }: Props) => {
   };
 
   return (
-    <CreatableSelect
-      tabSelectsValue={false}
-      hideSelectedOptions={false}
-      placeholder={t('tagSelector.placeholder')}
-      isMulti
-      isClearable={false}
-      value={selected}
-      options={tags}
-      onChange={onChange}
-      components={{
-        DropdownIndicator,
-        MultiValue: ValueButton,
-        SelectContainer,
-        MenuList,
-        Control,
-        Option,
-        Menu,
-      }}
-      onKeyDown={handleSpaceClick}
-      onInputChange={setInput}
-      inputValue={input}
-      styles={styles}
-    />
+    <StyledTagSelector className={className}>
+      {label && <StyledLabel id="tagselector-label">{label}</StyledLabel>}
+      <CreatableSelect
+        aria-labelledby={label ? 'tagselector-label' : undefined}
+        tabSelectsValue={false}
+        hideSelectedOptions={false}
+        placeholder={t('tagSelector.placeholder')}
+        isMulti
+        isClearable={false}
+        value={selected}
+        options={tags}
+        onChange={onChange}
+        components={{
+          DropdownIndicator,
+          MultiValue: ValueButton,
+          SelectContainer,
+          MenuList,
+          Control,
+          Option,
+          Menu,
+        }}
+        onKeyDown={handleSpaceClick}
+        onInputChange={setInput}
+        inputValue={input}
+        styles={styles}
+      />
+    </StyledTagSelector>
   );
 };
 

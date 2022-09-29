@@ -18,7 +18,7 @@ interface StyledProps {
   selected: boolean;
 }
 
-const StyledValueButton = styled.div<StyledProps>`
+export const StyledValueButton = styled.div<StyledProps>`
   && {
     background: ${({ selected }) => selected && colors.brand.primary};
     color: ${({ selected }) => selected && colors.white};

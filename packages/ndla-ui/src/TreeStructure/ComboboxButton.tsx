@@ -31,6 +31,7 @@ const StyledSelectedFolder = styled(Button)`
   flex: 1;
   justify-content: flex-start;
   color: ${colors.black};
+  border: none;
   :hover,
   :focus {
     background: none;

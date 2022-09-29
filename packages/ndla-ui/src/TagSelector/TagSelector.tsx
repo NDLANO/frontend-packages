@@ -10,7 +10,7 @@ import React, { KeyboardEvent, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue, StylesConfig } from 'react-select';
 import styled from '@emotion/styled';
-import { fonts } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
@@ -21,9 +21,16 @@ import Control from './Control';
 import Option from './Option';
 import Menu from './Menu';
 import { createAriaMessages } from './ariaMessages';
+import Input from './Input';
 
 const styles: StylesConfig<TagType, true> = {
   menu: () => ({}),
+  placeholder: (provided) => ({
+    ...provided,
+    padding: `0 ${spacing.small}`,
+    color: colors.brand.primary,
+    margin: 0,
+  }),
   valueContainer: (provided) => ({ ...provided, padding: 0 }),
   indicatorSeparator: () => ({
     display: 'none',
@@ -83,6 +90,7 @@ const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
           Control,
           Option,
           Menu,
+          Input,
         }}
         formatCreateLabel={createLabel}
         hideSelectedOptions={false}

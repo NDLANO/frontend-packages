@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, misc } from '@ndla/core';
+import { colors, fonts, misc } from '@ndla/core';
 import React from 'react';
 import { ContainerProps } from 'react-select';
 import { TagType } from './types';
@@ -22,6 +22,7 @@ const StyledContainer = styled.div`
   &:focus-within {
     border-color: ${colors.brand.tertiary};
   }
+  ${fonts.sizes(16)}
 `;
 
 const SelectContainer = ({ innerProps, selectProps, children }: ContainerProps<TagType, true>) => {

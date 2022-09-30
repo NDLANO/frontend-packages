@@ -1,18 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Image renderers correctly 1`] = `
-.emotion-1 {
+.emotion-0 {
   position: relative;
 }
 
-@media (max-width:29.75em) {
-  .emotion-0 {
-    display: none;
-  }
-}
-
 <div
-  className="emotion-1"
+  className="emotion-0"
 >
   <picture>
     <source
@@ -24,25 +18,16 @@ exports[`Image renderers correctly 1`] = `
       src="https://example.com/image.png?width=1024"
     />
   </picture>
-  <div
-    className="emotion-0"
-  />
 </div>
 `;
 
 exports[`Image with crop and focalpoint props renderers correctly 1`] = `
-.emotion-1 {
+.emotion-0 {
   position: relative;
 }
 
-@media (max-width:29.75em) {
-  .emotion-0 {
-    display: none;
-  }
-}
-
 <div
-  className="emotion-1"
+  className="emotion-0"
 >
   <picture>
     <source
@@ -54,9 +39,6 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
       src="https://example.com/image.png?width=1024&cropStartX=14.59&cropEndX=79.63&cropStartY=20&cropEndY=100&focalX=65.08&focalY=45.28"
     />
   </picture>
-  <div
-    className="emotion-0"
-  />
 </div>
 `;
 

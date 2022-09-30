@@ -17,7 +17,7 @@ import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
 import Button from '@ndla/button';
-import { breakpoints } from '@ndla/core';
+import { isMobile } from 'react-device-detect';
 const classes = new BEMHelper({
   name: 'figure',
   prefix: 'c-',
@@ -38,16 +38,9 @@ export const FigureCaption = ({
   hideIconsAndAuthors,
 }: FigureCaptionProps) => {
   const { t } = useTranslation();
-  const mediaQuery = window.matchMedia('(max-width:' + breakpoints.mobileWide);
-  const setHideFigCaption = () => {
-    if (mediaQuery.matches) {
-      return (hideFigcaption = false);
-    } else {
-      return hideFigcaption;
-    }
-  };
+
   return (
-    <figcaption {...classes('caption', setHideFigCaption() ? 'hidden-caption' : undefined)}>
+    <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined)}>
       {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
       <footer {...classes('byline')}>
         <div {...classes('byline-licenselist')}>

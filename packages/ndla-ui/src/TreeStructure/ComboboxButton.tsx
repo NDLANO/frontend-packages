@@ -16,6 +16,7 @@ import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
 import { FolderType, TreeStructureType } from './types';
 import { arrowNavigation } from './arrowNavigation';
+import ContentLoader from '../ContentLoader';
 
 interface StyledRowProps {
   isOpen: boolean;
@@ -51,6 +52,7 @@ interface Props {
   showTree: boolean;
   type: TreeStructureType;
   label?: string;
+  loading?: boolean;
   focusedFolder?: FolderType;
   selectedFolder?: FolderType;
   setSelectedFolder: (folder: FolderType) => void;
@@ -75,6 +77,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       setFocusedFolder,
       onOpenFolder,
       onCloseFolder,
+      loading,
     },
     ref,
   ) => {
@@ -102,29 +105,38 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <StyledRow isOpen={showTree}>
-        <StyledSelectedFolder
-          ref={innerRef}
-          tabIndex={0}
-          id={treestructureId(type, 'combobox')}
-          role="combobox"
-          aria-controls={treestructureId(type, 'popup')}
-          aria-haspopup="tree"
-          aria-expanded={showTree}
-          aria-labelledby={label ? treestructureId(type, 'label') : undefined}
-          aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
-          variant="ghost"
-          colorTheme="light"
-          fontWeight="normal"
-          shape="sharp"
-          onKeyDown={onKeyDown}
-          onClick={() => {
-            innerRef.current?.focus();
-            onToggleTree(!showTree);
-          }}>
-          {selectedFolder?.name}
-        </StyledSelectedFolder>
+        {loading && (
+          <ContentLoader width={1000} height={40}>
+            <rect x="40" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
+          </ContentLoader>
+        )}
+        {!loading && (
+          <StyledSelectedFolder
+            ref={innerRef}
+            tabIndex={0}
+            id={treestructureId(type, 'combobox')}
+            role="combobox"
+            aria-controls={treestructureId(type, 'popup')}
+            aria-haspopup="tree"
+            aria-expanded={showTree}
+            aria-labelledby={label ? treestructureId(type, 'label') : undefined}
+            aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
+            variant="ghost"
+            colorTheme="light"
+            fontWeight="normal"
+            shape="sharp"
+            onKeyDown={onKeyDown}
+            onClick={() => {
+              innerRef.current?.focus();
+              onToggleTree(!showTree);
+            }}>
+            {selectedFolder?.name}
+          </StyledSelectedFolder>
+        )}
         <IconButton
           aria-hidden
+          disabled={loading}
+          aria-busy={loading}
           aria-label=""
           tabIndex={-1}
           variant="ghost"

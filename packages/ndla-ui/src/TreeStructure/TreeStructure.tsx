@@ -195,6 +195,7 @@ const TreeStructure = ({
         {label && <StyledLabel id={treestructureId(type, 'label')}>{label}</StyledLabel>}
         {type === 'picker' && (
           <AddFolderButton
+            loading={loading}
             canAddFolder={!!canAddFolder}
             focusedFolder={focusedFolder}
             setNewFolderParentId={setNewFolderParentId}
@@ -209,6 +210,7 @@ const TreeStructure = ({
             showTree={showTree}
             type={type}
             label={label}
+            loading={loading}
             focusedFolder={focusedFolder}
             selectedFolder={selectedFolder}
             setSelectedFolder={setSelectedFolder}

@@ -30,7 +30,7 @@ export const menuItems: MenuItemProps[] = [
 
 const tags = ['tag', 'tag', 'tag', 'tag'];
 
-const topics = ['Matte', 'Naturfag'];
+const resourceTypes = [{ id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' }];
 
 export const MyNdla = () => {
   return (
@@ -45,7 +45,7 @@ export const MyNdla = () => {
             <FolderResourcesExample menuItems={menuItems} />
 
             <h2> Ressurser </h2>
-            <ResourcesExample topics={topics} tags={tags} menuItems={menuItems} />
+            <ResourcesExample resourceTypes={resourceTypes} tags={tags} menuItems={menuItems} />
           </>
         }
         onSite={[

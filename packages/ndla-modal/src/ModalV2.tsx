@@ -10,9 +10,10 @@ import React, { cloneElement, MouseEvent, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, SerializedStyles } from '@emotion/core';
 import { DialogContent, DialogOverlay } from '@reach/dialog';
-import { breakpoints, mq, spacing } from '@ndla/core';
-import { BaseProps, ModalAnimation, ModalMargin, ModalPosition, ModalSize, ModalSizeType } from './types';
+import { breakpoints, mq } from '@ndla/core';
+import { BaseProps, ModalAnimation, ModalMargin, ModalPosition, ModalSizeType } from './types';
 import { animations } from './animations';
+import { margins, sizeCombos, sizes } from './modalStyles';
 
 interface DialogProps {
   size?: ModalSizeType;
@@ -26,9 +27,9 @@ interface StyledDialogOverlayProps {
   animationDuration: number;
 }
 
-const shouldForwardOProps = (prop: string) => prop !== 'animateIn' && prop !== 'animationDuration';
+const forwardOverlay = (prop: string) => prop !== 'animateIn' && prop !== 'animationDuration';
 
-const StyledDialogOverlay = styled(DialogOverlay, { shouldForwardProp: shouldForwardOProps })<StyledDialogOverlayProps>`
+const StyledDialogOverlay = styled(DialogOverlay, { shouldForwardProp: forwardOverlay })<StyledDialogOverlayProps>`
   overflow: hidden;
   background: rgba(1, 1, 1, 0.3);
   position: fixed;
@@ -94,100 +95,6 @@ const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardCo
   }
   ${(p) => p.dialogSize};
 `;
-
-const sizeCombos: Record<ModalSize, SerializedStyles> = {
-  xxsmall: css`
-    min-width: 15%;
-    max-width: 15%;
-    max-height: 85%;
-  `,
-  xsmall: css`
-    max-height: 85%;
-    max-width: 30%;
-    min-width: 30%;
-  `,
-  small: css`
-    max-height: 85%;
-    max-width: 40%;
-    min-width: 40%;
-  `,
-  normal: css`
-    max-height: 85%;
-    max-width: 60%;
-    min-width: 60%;
-  `,
-  large: css`
-    max-height: 85%;
-    max-width: 80%;
-    min-width: 80%;
-  `,
-  full: css`
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-  `,
-};
-
-const sizes: Record<'width' | 'height', Record<ModalSize, SerializedStyles>> = {
-  width: {
-    xxsmall: css`
-      min-width: 15%;
-      max-width: 15%;
-    `,
-    xsmall: css`
-      min-width: 30%;
-      max-width: 30%;
-    `,
-    small: css`
-      min-width: 40%;
-      max-width: 40%;
-    `,
-    normal: css`
-      min-width: 60%;
-      max-width: 60%;
-    `,
-    large: css`
-      min-width: 80%;
-      max-width: 80%;
-    `,
-    full: css`
-      min-width: 100%;
-      max-width: 100%;
-    `,
-  },
-  height: {
-    xxsmall: css`
-      min-width: 15%;
-      max-width: 15%;
-    `,
-    xsmall: css`
-      min-height: 30%;
-      max-height: 30%;
-    `,
-    small: css`
-      min-height: 40%;
-      max-height: 40%;
-    `,
-    normal: css`
-      min-height: 60%;
-      max-height: 60%;
-    `,
-    large: css`
-      min-height: 80%;
-      max-height: 80%;
-    `,
-    full: css`
-      min-height: 100%;
-      max-height: 100%;
-    `,
-  },
-};
-
-const margins: Record<ModalMargin, string> = {
-  none: '0px',
-  small: spacing.normal,
-};
 
 const ModalV2 = ({
   size = 'normal',

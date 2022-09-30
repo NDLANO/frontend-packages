@@ -26,9 +26,6 @@ const Wrapper = styled.div`
     ${fonts.sizes('22px', 1.2)};
     color: ${colors.text.primary};
   }
-  @supports (-webkit-overflow-scrolling: touch) {
-    padding-top: ${spacing.large};
-  }
 `;
 const ModalHeaderV2 = ({ children, ...rest }: Props) => {
   return (

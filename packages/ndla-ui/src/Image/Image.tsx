@@ -7,8 +7,15 @@
  */
 
 import React, { ReactNode } from 'react';
+import { breakpoints, mq } from '@ndla/core';
 import styled from '@emotion/styled';
 import LazyLoadImage from './LazyLoadImage';
+
+const ExpandButtonWrapper = styled.div`
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    display: none;
+  }
+`;
 
 export interface ImageCrop {
   startX: number;
@@ -98,7 +105,7 @@ const Image = ({
         <source type={contentType} srcSet={srcSet} sizes={sizes} />
         <img alt={alt} src={`${src}?${queryString}`} {...rest} />
       </picture>
-      {expandButton}
+      <ExpandButtonWrapper>{expandButton}</ExpandButtonWrapper>
     </StyledImageWrapper>
   );
 };

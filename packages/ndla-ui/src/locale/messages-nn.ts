@@ -31,13 +31,13 @@ const messages = {
   },
   tagSelector: {
     aria: {
-      screenReaderStatus: '{{count}} resultater tilgjengelig',
-      disabled: 'utilgjengelig',
+      screenReaderStatus: '{{count}} resultat tilgjengeleg',
+      disabled: 'utilgjengeleg',
       selected: 'valgt',
       focused: 'fokusert',
       guidance: {
         menu: {
-          updown: 'Bruk piltaster opp og ned for å velge emneknagger',
+          updown: 'Bruk piltastar opp og ned for å velge emneknaggar',
           enter: 'trykk enter for å velge den markerte emneknaggen',
           escape: 'trykk escape for å lukke menyen',
           tab: 'trykk tab for å velge emneknaggen og lukke menyen',
@@ -45,19 +45,19 @@ const messages = {
         input: {
           select: 'Emneknagg-meny',
           focused: 'er fokusert',
-          refine: 'skriv for å filtrere listen med emneknagger',
+          refine: 'skriv for å filtrere lista med emneknaggar',
           down: 'trykk pil ned for å åpne menyen',
-          left: 'trykk venstre pil for å fokusere valgte emneknagger',
+          left: 'trykk venstre pil for å fokusere valgte emneknaggar',
           space: 'trykk mellomrom for å opprette ny emneknagg',
         },
         value:
-          'Bruk høyre og venstre pil for å navigere mellom valgte emneknagger, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.',
+          'Bruk høgre og venstre pil for å navigere mellom valgte emneknaggar, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.',
       },
       onChange: {
-        deselect: 'emneknagg {{label}}, fjernet.',
-        clear: 'Alle valgte emneknagger fjernet.',
-        initialFocus: `Emneknagger {{labels}}, valgt.`,
-        selectedDisabled: 'Emneknagg {{label}} kan ikke velges. Velg et annet alternativ.',
+        deselect: 'emneknagg {{label}}, fjerna.',
+        clear: 'Alle valgte emneknaggar fjerna.',
+        initialFocus: `Emneknaggar {{labels}}, valgt.`,
+        selectedDisabled: 'Emneknagg {{label}} kan ikkje velgast. Velg eit anna alternativ.',
         selected: 'Emneknagg {{label}},  valgt.',
       },
       onFocus: {

@@ -1045,10 +1045,10 @@ const messages = {
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
-      read: { our: 'Read our', ours: 'Read our' },
+      read: { read: 'Read our', our: '.' },
       privacy: 'privacy statement',
       privacyLink: 'https://om.ndla.no/gdpr',
-      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      questions: { question: 'Any questions?', ask: 'Ask NDLA' },
       wishToDelete: 'Do you wish to delete your account?',
       terms: {
         terms: 'Terms of use',
@@ -1067,11 +1067,11 @@ const messages = {
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
-        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+        text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
       },
       tagInfo: {
         title: 'How to tag your favourite resources',
-        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
     },
     resource: {

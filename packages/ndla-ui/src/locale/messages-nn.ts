@@ -954,9 +954,9 @@ const messages = {
     loggedInAs: 'Du er pålogga som {{role}}.',
     loggedInAsButton: 'Du er pålogga som {{role}}',
     role: {
-      employee: 'Lærar',
-      staff: 'Tilsett',
-      student: 'Elev',
+      employee: 'lærar',
+      staff: 'tilsett',
+      student: 'elev',
     },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
@@ -971,7 +971,7 @@ const messages = {
     resource: {
       accessDenied: 'Vi beklagar, men denne ressursen er berre for lærarar innlogga med Feide.',
     },
-    primarySchool: 'Hovudskule',
+    primarySchool: 'hovudskule',
     name: 'Namn',
     mail: 'E-post',
     username: 'Brukarnamn',
@@ -981,7 +981,7 @@ const messages = {
       other: 'Andre grupper',
     },
     wrongUserInfoDisclaimer:
-      'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',
+      'Dersom informasjonen er feil, må han oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversikt over brukarstøtte finst her: ',
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {
@@ -1042,11 +1042,11 @@ const messages = {
       loginResourcePitch: 'Ønsker du å favorittmerke denne sida?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
-        'Velkommen til Min NDLA! No kan du lagre dine favorittressursar frå NDLA og organisere dei slik du ønsker i mapper og med emneknaggar.',
-      read: { our: 'Les vår', ours: 'Les våre' },
-      privacy: 'personvernerklæring her',
+        'Velkommen til Min NDLA! No kan du lagre favorittressursane dine frå NDLA og organisere dei i mapper og med emneknaggar.',
+      read: { read: 'Les', our: ' vår.' },
+      privacy: 'personvernerklæringa',
       privacyLink: 'https://om.ndla.no/gdpr',
-      questions: { question: 'Lurer du på noko?', ask: 'Spør oss i chatten' },
+      questions: { question: 'Lurer du på noko?', ask: 'Spør NDLA' },
       wishToDelete: 'Vil du ikkje ha brukerprofil hos oss lenger?',
       terms: {
         terms: 'Vilkår for bruk',
@@ -1059,16 +1059,16 @@ const messages = {
       feideWrongInfo:
         'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversyn over brukartrygd finst her: feide.no/brukartrygd',
       storageInfo: {
-        title: 'Slik lagrar du favorittressursene dine frå NDLA',
+        title: 'Slik lagrar du favorittressursane dine frå NDLA',
         text: 'Klikk på hjarteknappen for å lagre ein ressurs. Du vil då få høve til å lagre ressursen i ei mappe.',
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
-        text: 'Klikk på mine mapper i menyen til venstre for å kome til mappeoversikta. Her kan du opprette nye mapper og undermapper. Du kan også opprette ny mappe i vindauget som kjem opp når du klikkar på eit hjarte i ein ressurs.',
+        text: 'Klikk på <strong>Mappene mine</strong> i menyen til venstre for å komme til mappeoversikta. Her kan du opprette nye mapper og undermapper. Du kan også opprette ny mappe i vindauget som kjem opp når du klikkar på eit hjarte i ein ressurs.',
       },
       tagInfo: {
-        title: 'Slik tagger du dine favorittressurser',
-        text: 'Når du lagrar ein ressurs får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt ved å velje mine emneknaggar i venstremenyen. Her kan du også sjå kva for nokre ressursar du har markert med kvar enkel emneknagg.',
+        title: 'Slik taggar du favorittressursane dine',
+        text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Emneknaggane mine</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
       },
     },
     resource: {

@@ -61,27 +61,12 @@ const ItemWrapper = styled.div`
   height: 100%;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
-  transition: all ${animations.durations.fast} ease-in-out;
-  .resource-no-image {
-    background-color: ${colors.brand.greyLightest};
-    .c-content-type-badge {
-      width: 26px;
-      height: 26px;
-      left: 45px;
-      margin-left: 0;
-      top: 100%;
-      margin-top: -13px;
-      opacity: 1;
-    }
+  img {
+    transition: all ${animations.durations.fast} ease-in-out;
   }
-
   :hover {
     img {
       transform: scale(1.1);
-      opacity: 1.2;
-
-      transition: all ${animations.durations.fast} ease-in-out;
-      overflow: hidden;
     }
   }
 `;
@@ -122,7 +107,6 @@ const ItemText = styled.div<ItemTypeProps>`
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
   overflow-wrap: anywhere;
-  transition: all ${animations.durations.fast} ease-in-out;
   margin-top: ${spacing.small};
   ${(props) =>
     props.isTopic &&
@@ -134,7 +118,6 @@ const ItemText = styled.div<ItemTypeProps>`
 const ContextWrapper = styled.div`
   background: white;
   padding: 0 ${spacing.normal} ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
 `;
 
 export type SearchItemProps = {

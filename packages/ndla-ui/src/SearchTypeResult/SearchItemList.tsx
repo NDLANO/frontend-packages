@@ -27,7 +27,6 @@ const Container = styled.div`
   height: 100%;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
-  transition: all ${animations.durations.fast} ease-in-out;
 `;
 
 const ItemLink = styled(SafeLink)`
@@ -47,7 +46,6 @@ const TextWrapper = styled.div`
   flex: 1;
   margin: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.normal};
   max-width: 800px;
-  transition: all ${animations.durations.fast} ease-in-out;
 `;
 const ContentTypeWrapper = styled.div`
   display: flex;
@@ -97,7 +95,6 @@ const ImageElement = styled.img<{ isTopic: boolean }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all ${animations.durations.fast} ease-in-out;
   max-width: unset;
   ${(props) => props.isTopic && `border-radius: 50%;`};
 `;

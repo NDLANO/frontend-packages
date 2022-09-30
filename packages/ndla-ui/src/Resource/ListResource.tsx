@@ -137,10 +137,10 @@ interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
   loading?: boolean;
   type: 'normal' | 'compact';
-  contentType?: string;
+  contentType: string;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type, contentType = '' }: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
   if (!loading) {
     if (resourceImage.src === '') {
       return (

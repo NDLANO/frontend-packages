@@ -6,6 +6,7 @@ import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
 import { MessageBox } from '../Messages';
 import { ToggleItem } from '../Filter';
+import constants from '../model';
 
 const StyledWrapper = styled.nav`
   margin: 32px 0 0;
@@ -198,12 +199,14 @@ const FrontpageAllSubjects = ({
         content: (
           <>
             {/* Should be persistent til fall 2022 */}
-            {category.name === t('subjectCategories.beta') && (
+            {(category.name === t('subjectCategories.beta') ||
+              category.type === constants.subjectCategories.BETA_SUBJECTS) && (
               <MessageBoxWrapper>
                 <MessageBox>{t('messageBoxInfo.frontPageBeta')}</MessageBox>
               </MessageBoxWrapper>
             )}
-            {category.name === t('subjectCategories.archive') && (
+            {(category.name === t('subjectCategories.archive') ||
+              category.type === constants.subjectCategories.ARCHIVE_SUBJECTS) && (
               <MessageBoxWrapper>
                 <MessageBox>{t('messageBoxInfo.frontPageExpired')}</MessageBox>
               </MessageBoxWrapper>

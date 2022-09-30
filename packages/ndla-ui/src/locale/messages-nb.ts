@@ -71,9 +71,7 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommende',
-    [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
-    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
-    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressurser',
   },
   subjectTypes: {
     [subjectTypes.SUBJECT]: 'Fag',

@@ -71,9 +71,7 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
     [subjectCategories.BETA_SUBJECTS]: 'Revised',
-    [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
-    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
-    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Other resources',
   },
   subjectTypes: {
     [subjectTypes.SUBJECT]: 'Subject',

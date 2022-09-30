@@ -125,6 +125,7 @@ export interface ListResourceProps {
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
@@ -206,6 +207,7 @@ const ListResource = ({
   tags,
   resourceImage,
   resourceTypes,
+  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
@@ -215,6 +217,7 @@ const ListResource = ({
   const imageType = showDescription ? 'normal' : 'compact';
   const linkRef = useRef<HTMLAnchorElement>(null);
   const firstContentType = resourceTypes?.[0].id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
   const handleClick = () => {
     if (linkRef.current) {
       linkRef.current.click();
@@ -234,7 +237,7 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <ResourceTypeAndTitleLoader loading={isLoading}>
           <ResourceTitleLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
-            <ResourceTitle>{title}</ResourceTitle>
+            <Title>{title}</Title>
           </ResourceTitleLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </ResourceTypeAndTitleLoader>

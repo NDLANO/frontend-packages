@@ -33,6 +33,7 @@ interface BlockResourceProps {
   resourceImage: ResourceImageProps;
   tags?: string[];
   description?: string;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
   targetBlank?: boolean;
@@ -151,11 +152,13 @@ const BlockResource = ({
   description,
   menuItems,
   isLoading,
+  headingLevel = 'h2',
   targetBlank,
   resourceTypes,
 }: BlockResourceProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
   const firstResourceType = resourceTypes?.[0].id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
 
   const handleClick = () => {
     if (linkRef.current) {
@@ -175,7 +178,7 @@ const BlockResource = ({
       <BlockInfoWrapper>
         <ResourceTypeAndTitleLoader loading={isLoading}>
           <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
-            <ResourceTitle>{title}</ResourceTitle>
+            <Title>{title}</Title>
           </ResourceTitleLink>
         </ResourceTypeAndTitleLoader>
         <ResourceTypeList resourceTypes={resourceTypes} />

@@ -67,6 +67,7 @@ const messages = {
       },
       onFilter: ' for søkeord ',
     },
+    noOptions: 'Ingen mulige val',
     label: 'Legg til emneknagg',
     createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Skriv inn emneknagg',

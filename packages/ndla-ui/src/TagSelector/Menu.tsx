@@ -10,7 +10,7 @@ import css from '@emotion/css';
 import { colors } from '@ndla/core';
 import React from 'react';
 import { MenuProps, components } from 'react-select';
-import { StyledMenuOption } from './Option';
+import { StyledMenuList } from './MenuList';
 import { TagType } from './types';
 
 const menuStyle = css`
@@ -22,7 +22,7 @@ const menuStyle = css`
   border-top: 1px solid ${colors.brand.tertiary};
   min-height: 70px;
 
-  :has(${StyledMenuOption}:only-child) {
+  :has(${StyledMenuList}>*:only-child) {
     min-height: 40px;
   }
 `;

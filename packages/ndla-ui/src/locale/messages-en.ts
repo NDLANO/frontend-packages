@@ -31,7 +31,7 @@ const messages = {
   },
   tagSelector: {
     aria: {
-      screenReaderStatus: '{{count}} resultsj available',
+      screenReaderStatus: '{{count}} results available',
       disabled: 'disabled',
       selected: 'selected',
       focused: 'focused',
@@ -67,6 +67,7 @@ const messages = {
       },
       onFilter: ' for search term ',
     },
+    noOptions: 'No options',
     label: 'Add tag',
     createLabel: 'Add tag {{tag}}',
     placeholder: 'Enter tag name',

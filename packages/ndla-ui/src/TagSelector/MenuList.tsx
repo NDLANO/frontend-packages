@@ -12,7 +12,7 @@ import React from 'react';
 import { MenuListProps } from 'react-select';
 import { TagType } from './types';
 
-const StyledMenuList = styled.div`
+export const StyledMenuList = styled.div`
   overflow: overlay;
   ${utils.scrollbar}
   display: flex;

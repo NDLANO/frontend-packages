@@ -19,7 +19,7 @@ interface StyledProps {
   focused: boolean;
 }
 
-export const StyledMenuOption = styled.div<StyledProps>`
+const StyledMenuOption = styled.div<StyledProps>`
   && {
     background: ${({ focused }) => focused && colors.brand.lighter};
     color: ${({ focused }) => focused && colors.brand.primary};

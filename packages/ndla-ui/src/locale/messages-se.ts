@@ -67,6 +67,7 @@ const messages = {
       },
       onFilter: ' for søkeord ',
     },
+    noOptions: 'Ingen valgmuligheter',
     label: 'Bija fáddágilkora',
     createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Čále fáddágilkora',

@@ -58,10 +58,11 @@ interface Props {
   tags: readonly TagType[];
   selected: readonly TagType[];
   onChange: (tags: MultiValue<TagType>) => void;
+  onCreateTag: (name: string) => void;
   className?: string;
 }
 
-const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
+const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }: Props) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
 
@@ -98,7 +99,9 @@ const TagSelector = ({ selected, tags, onChange, className, label }: Props) => {
         inputValue={input}
         isClearable={false}
         isMulti
+        noOptionsMessage={t('tagSelector.noOptions')}
         onChange={onChange}
+        onCreateOption={onCreateTag}
         onInputChange={setInput}
         onKeyDown={handleSpaceClick}
         options={tags}

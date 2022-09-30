@@ -42,7 +42,7 @@ const Container = styled.div`
 
 const TagSelectorExample = () => {
   const { t } = useTranslation();
-  const [exampleTags] = useState<readonly TagType[]>(dummyData);
+  const [exampleTags, setExampleTags] = useState<readonly TagType[]>(dummyData);
   const [exampleTagsSelected, setExampleTagsSelected] = useState<readonly TagType[]>(dummyData.slice(0, 0));
 
   return (
@@ -53,6 +53,10 @@ const TagSelectorExample = () => {
         selected={exampleTagsSelected}
         onChange={(tags: readonly TagType[]) => {
           setExampleTagsSelected(tags);
+        }}
+        onCreateTag={(newTagName: string) => {
+          setExampleTags((prevTags) => [...prevTags, { value: newTagName, label: newTagName }]);
+          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, { value: newTagName, label: newTagName }]);
         }}
       />
     </Container>

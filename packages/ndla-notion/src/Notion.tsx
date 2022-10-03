@@ -19,7 +19,7 @@ import NotionDialog from './NotionDialog';
 const BaselineIcon = styled(ShortText)`
   position: absolute;
   margin: calc(0.5em + 1px) auto 0;
-  left: 0;
+  left: -2px;
   color: ${colors.brand.secondary};
   height: 1.1em;
   width: 1.1em;

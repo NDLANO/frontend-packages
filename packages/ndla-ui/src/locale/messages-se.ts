@@ -954,9 +954,9 @@ const messages = {
     loggedInAs: 'Don leat sisaloggejuvvon {{role}}.',
     loggedInAsButton: 'Don leat sisaloggejuvvon {{role}}',
     role: {
-      employee: 'Oahpaheaddji',
-      staff: 'Bargi',
-      student: 'Oahppi',
+      employee: 'oahpaheaddji',
+      staff: 'bargi',
+      student: 'oahppi',
     },
     buttonLogIn: 'Logge sisa Feide bokte',
     buttonLogOut: 'Logge olggos',
@@ -971,7 +971,7 @@ const messages = {
     resource: {
       accessDenied: 'Šállošat, muhto dát resursa lea dušše oahpaheddjiide mat leat loggen sisa Feide bokte.',
     },
-    primarySchool: 'Váldoskuvla',
+    primarySchool: 'váldoskuvla',
     name: 'Namma',
     mail: 'Eboasta',
     username: 'Geavahan namma',
@@ -1044,8 +1044,8 @@ const messages = {
       loginWelcome: 'Bures boahtin NDLA:ii! Dáppe sáhtát fágaávdnasiid ordnet iežat vuogi mielde',
       welcome:
         'Bures boahtin Mu NDLA:ii! Dál sáhtát vurket iežat oiddotresurssaid NDLA:s ja ordnet daid nu go dáhtut máhpaide ja fáddágilkoriiguin.',
-      read: { our: 'Loga min', ours: 'Loga min' },
-      privacy: 'personsuodjalusjulggaštusa dás',
+      read: { read: 'Loga min', our: '.' },
+      privacy: 'personsuodjalusjulggaštusa',
       privacyLink: 'https://om.ndla.no/gdpr',
       questions: { question: 'Smiehtat go maidege?', ask: 'Jeara min chattas' },
       wishToDelete: 'It go hálit geavaheaddjiprofiila min geahčen šat?',

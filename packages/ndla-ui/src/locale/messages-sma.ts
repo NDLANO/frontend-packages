@@ -954,9 +954,9 @@ const messages = {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
-      employee: 'Lærer',
-      staff: 'Ansatt',
-      student: 'Elev',
+      employee: 'lærer',
+      staff: 'ansatt',
+      student: 'elev',
     },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
@@ -971,7 +971,7 @@ const messages = {
     resource: {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
     },
-    primarySchool: 'Hovedskole',
+    primarySchool: 'hovedskole',
     name: 'Navn',
     mail: 'E-post',
     username: 'Brukernavn',
@@ -981,7 +981,7 @@ const messages = {
       other: 'Andre grupper',
     },
     wrongUserInfoDisclaimer:
-      'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',
+      'Dersom informasjonen er feil, må den oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {
@@ -1043,11 +1043,11 @@ const messages = {
       loginResourcePitch: 'Ønsker du å favorittmerke denne siden?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
-        'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med emneknagger.',
-      read: { our: 'Les vår', ours: 'Les våre' },
-      privacy: 'personvernerklæring her',
+        'Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.',
+      read: { read: 'Les', our: ' vår.' },
+      privacy: 'personvernerklæringa',
       privacyLink: 'https://om.ndla.no/gdpr',
-      questions: { question: 'Lurer du på noe?', ask: 'Spør oss i chatten' },
+      questions: { question: 'Lurer du på noe?', ask: 'Spør NDLA' },
       wishToDelete: 'Vil du ikke ha brukerprofil hos oss lenger?',
       terms: {
         terms: 'Vilkår for bruk',
@@ -1060,16 +1060,16 @@ const messages = {
       feideWrongInfo:
         'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
       storageInfo: {
-        title: 'Slik lagrer du dine favorittressurser fra NDLA',
-        text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i en mappe.',
+        title: 'Slik lagrer du favorittressursene dine fra NDLA',
+        text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
       },
       folderInfo: {
-        title: 'Slik organiserer du dine favorittressurser i mapper',
-        text: 'Klikk på mine mapper i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette en ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
+        title: 'Slik organiserer du favorittressursene dine i mapper',
+        text: 'Klikk på <strong>Mine mapper</strong> i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
       },
       tagInfo: {
-        title: 'Slik tagger du dine favorittressurser',
-        text: 'Når du lagrer en ressurs får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt ved å velge mine emneknagger i venstremenyen. Her kan du også se hvilke ressurser du har markert med hver enkel emneknagg.',
+        title: 'Slik tagger du favorittressursene dine',
+        text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Mine emneknagger</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
       },
     },
     resource: {

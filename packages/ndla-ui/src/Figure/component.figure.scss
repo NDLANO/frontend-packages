@@ -113,9 +113,6 @@
 
 .c-figure__caption--hidden-caption {
   display: none;
-  @include mq($from: mobile) {
-    display: block;
-  }
 }
 
 .c-figure__licensetag {
@@ -200,8 +197,13 @@
     fill: $brand-color;
     color: $brand-color;
   }
-  @include mq($from: mobile) {
+}
+@media only screen and (max-width: 600px) {
+  .c-figure__fullscreen-btn {
     display: none;
+  }
+  .c-figure__caption--hidden-caption {
+    display: block;
   }
 }
 

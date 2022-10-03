@@ -10,7 +10,7 @@ import React, { KeyboardEvent, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue, StylesConfig } from 'react-select';
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, spacing, utils } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import { TagType } from './types';
 import ValueButton from './ValueButton';
@@ -49,8 +49,13 @@ const StyledTagSelector = styled.div`
   overflow: hidden;
 `;
 
-const StyledLabel = styled.label`
+interface StyledLabelProps {
+  labelHidden?: boolean;
+}
+
+const StyledLabel = styled.label<StyledLabelProps>`
   font-weight: ${fonts.weight.semibold};
+  ${(p) => p.labelHidden && utils.labelHidden}
 `;
 
 interface Props {
@@ -60,6 +65,7 @@ interface Props {
   onChange: (tags: MultiValue<TagType>) => void;
   onCreateTag: (name: string) => void;
   className?: string;
+  labelHidden?: boolean;
 }
 
 const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }: Props) => {
@@ -81,7 +87,7 @@ const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }
   return (
     <StyledTagSelector className={className}>
       {label && (
-        <StyledLabel htmlFor="tagselector-creatable" id="tagselector-label">
+        <StyledLabel labelHidden htmlFor="tagselector-creatable" id="tagselector-label">
           {label}
         </StyledLabel>
       )}

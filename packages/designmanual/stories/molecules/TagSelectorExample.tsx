@@ -32,8 +32,6 @@ const dummyData = [
   'Chicken',
 ];
 
-const tags = dummyData.map((tag) => ({ value: tag, label: tag }));
-
 const Container = styled.div`
   margin: 10px auto;
   max-width: 600px;
@@ -44,8 +42,8 @@ const Container = styled.div`
 
 const TagSelectorExample = () => {
   const { t } = useTranslation();
-  const [exampleTags, setExampleTags] = useState<readonly TagType[]>(tags);
-  const [exampleTagsSelected, setExampleTagsSelected] = useState<readonly TagType[]>(tags.slice(0, 0));
+  const [exampleTags, setExampleTags] = useState<string[]>(dummyData);
+  const [exampleTagsSelected, setExampleTagsSelected] = useState<string[]>(dummyData.slice(0, 0));
 
   return (
     <Container>

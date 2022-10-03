@@ -6,7 +6,7 @@
  *
  */
 
-import React, { KeyboardEvent, useState } from 'react';
+import React, { KeyboardEvent, useMemo, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import { MultiValue, StylesConfig } from 'react-select';
 import styled from '@emotion/styled';
@@ -60,26 +60,32 @@ const StyledLabel = styled.label<StyledLabelProps>`
 
 interface Props {
   label: string;
-  tags: readonly TagType[];
-  selected: readonly TagType[];
-  onChange: (tags: MultiValue<TagType>) => void;
+  tags: string[];
+  selected: string[];
+  onChange: (tags: string[]) => void;
   onCreateTag: (name: string) => void;
   className?: string;
   labelHidden?: boolean;
 }
 
-const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }: Props) => {
+const TagSelector = ({ selected: _selected, tags: _tags, onChange, onCreateTag, className, label }: Props) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
+  const tags = useMemo(() => _tags.map((tag) => ({ value: tag, label: tag })), [_tags]);
+  const selected = useMemo(() => _selected.map((tag) => ({ value: tag, label: tag })), [_selected]);
 
   const handleSpaceClick = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === ' ') {
       e.preventDefault();
-      if (!selected.find((tag) => tag.value === input) && input !== '') {
-        onChange(selected.concat({ value: input, label: input }));
+      if (!_selected.find((tag) => tag === input) && input !== '') {
+        onChange(_selected.concat(input));
       }
       setInput('');
     }
+  };
+
+  const handleChange = (tags: MultiValue<TagType>) => {
+    onChange(tags.map((tag) => tag.value));
   };
 
   const createLabel = (tag: string) => t('tagSelector.createLabel', { tag });
@@ -110,7 +116,7 @@ const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }
         isClearable={false}
         isMulti
         noOptionsMessage={() => t('tagSelector.noOptions')}
-        onChange={onChange}
+        onChange={handleChange}
         onCreateOption={onCreateTag}
         onInputChange={setInput}
         onKeyDown={handleSpaceClick}

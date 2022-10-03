@@ -53,7 +53,6 @@ const StyledButton = styled.button`
 interface Props {
   id: string;
   title: string;
-  ariaLabel: string;
   subTitle?: string;
   children?: ReactNode;
   content?: ReactNode;
@@ -61,21 +60,11 @@ interface Props {
   customCSS?: InterpolationWithTheme<any>;
   hideBaselineIcon?: boolean;
 }
-const Notion = ({
-  id,
-  ariaLabel,
-  content,
-  children,
-  title,
-  subTitle,
-  customCSS,
-  headerContent,
-  hideBaselineIcon,
-}: Props) => {
+const Notion = ({ id, content, children, title, subTitle, customCSS, headerContent, hideBaselineIcon }: Props) => {
   const { t } = useTranslation();
   return (
     <span id={id} data-notion>
-      <StyledButton type="button" aria-label={ariaLabel} data-notion-link>
+      <StyledButton type="button" aria-label={title} data-notion-link aria-expanded={true}>
         <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
           {children}
           {!hideBaselineIcon && <BaselineIcon />}

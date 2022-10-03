@@ -1044,7 +1044,7 @@ const messages = {
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
         'Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.',
-      read: { read: 'Les', ours: ' vår.' },
+      read: { read: 'Les', our: ' vår.' },
       privacy: 'personvernerklæringa',
       privacyLink: 'https://om.ndla.no/gdpr',
       questions: { question: 'Lurer du på noe?', ask: 'Spør NDLA' },

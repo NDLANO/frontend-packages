@@ -1065,7 +1065,7 @@ const messages = {
       },
       folderInfo: {
         title: 'Slik organiserer du favorittressursene dine i mapper',
-        text: 'Klikk på <strong>Mappene mine</strong> i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
+        text: 'Klikk på <strong>Mine mapper</strong> i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
       },
       tagInfo: {
         title: 'Slik tagger du favorittressursene dine',

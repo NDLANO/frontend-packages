@@ -91,7 +91,7 @@ export const UserInfo = ({ user }: Props) => {
             {t('user.groupTypes.grepCode')}
             <InfoList>
               {parsedUser.grepCodes.map((code) => (
-                <li key={code.id}>{code.displayName}</li>
+                <li key={code.id}>{`${code.displayName} ${code.code}`}</li>
               ))}
             </InfoList>
           </li>

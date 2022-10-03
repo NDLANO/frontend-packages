@@ -13,7 +13,9 @@ import styled from '@emotion/styled';
 import { animations, fonts, spacing } from '@ndla/core';
 
 import { ContentType } from '../SearchTypeResult';
-import { resourceTypeColor, SearchItemType } from '../SearchItem';
+import { SearchItemType } from '../SearchItem';
+
+import resourceTypeColor from '../../utils/resourceTypeColor';
 import ContentTypeBadge from '../../ContentTypeBadge';
 
 type ItemTypeProps = {

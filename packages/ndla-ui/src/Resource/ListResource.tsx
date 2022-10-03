@@ -7,13 +7,22 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
-import SafeLink from '@ndla/safelink';
+import React, { useRef } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
-import { CompressedTagList, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
+import {
+  CompressedTagList,
+  ResourceImageProps,
+  ResourceTitle,
+  ResourceTitleLink,
+  ResourceTypeList,
+  StyledContentIconWrapper,
+  LoaderProps,
+} from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import ContentTypeBadge from '../ContentTypeBadge';
+import { contentTypeMapping } from '../model/ContentType';
 
 const StyledResourceDescription = styled.p`
   grid-area: description;
@@ -31,7 +40,7 @@ const StyledResourceDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-const ResourceWrapper = styled(SafeLink)`
+const ResourceWrapper = styled.div`
   flex: 1;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -47,60 +56,63 @@ const ResourceWrapper = styled(SafeLink)`
       'tags                 tags';
   }
 
-  text-decoration: none;
-  box-shadow: none;
+  cursor: pointer;
   padding: ${spacing.small};
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
-  color: ${colors.brand.greyDark};
   gap: 0 ${spacing.small};
 
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
-    ${ResourceTitle} {
+    ${() => ResourceTitleLink} {
       color: ${colors.brand.primary};
       text-decoration: underline;
-    }
-    a {
-      display: flex;
-      align-items: center;
     }
   }
 `;
 
 const TagsandActionMenu = styled.div`
+  box-sizing: content-box;
+  padding: 2px;
   grid-area: tags;
   display: flex;
   align-items: center;
   width: 100%;
   overflow: hidden;
-  gap: ${spacing.small};
   align-self: flex-start;
   justify-self: flex-end;
   justify-content: flex-end;
+
+  ${mq.range({ from: breakpoints.mobileWide })} {
+    margin-top: -${spacing.xsmall};
+    margin-right: -${spacing.xxsmall};
+  }
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`
   grid-area: image;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
     width: 54px;
     height: 40px;
   }
   overflow: hidden;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4/3;
 `;
 
 const StyledImage = styled(Image)`
-  display: flex;
-  border-radius: 2px;
   object-fit: cover;
+  aspect-ratio: 4/3;
 `;
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  margin-top: ${spacing.xxsmall};
+  margin-top: 2px;
 `;
 
 interface StyledImageProps {
@@ -108,29 +120,42 @@ interface StyledImageProps {
 }
 
 export interface ListResourceProps {
+  id: string;
   link: string;
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  topics: string[];
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
+  targetBlank?: boolean;
 }
 
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
   loading?: boolean;
   type: 'normal' | 'compact';
+  contentType: string;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
   if (!loading) {
-    return (
-      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
-    );
+    if (resourceImage.src === '') {
+      return (
+        <StyledContentIconWrapper contentType={contentType}>
+          <ContentTypeBadge type={contentType} size="x-small" />
+        </StyledContentIconWrapper>
+      );
+    } else {
+      return (
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+      );
+    }
   }
+
   return (
     <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
       <rect
@@ -145,13 +170,7 @@ const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImagePr
   );
 };
 
-interface TopicAndTitleProps {
-  title: string;
-  topics: string[];
-  loading?: boolean;
-}
-
-const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
+const ResourceTypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -161,12 +180,7 @@ const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
       </ContentLoader>
     );
   }
-  return (
-    <>
-      <ResourceTitle>{title}</ResourceTitle>
-      <TopicList topics={topics} />
-    </>
-  );
+  return <>{children}</>;
 };
 
 interface ResourceDescriptionProps {
@@ -186,26 +200,47 @@ const ResourceDescription = ({ description, loading }: ResourceDescriptionProps)
 };
 
 const ListResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
   tags,
   resourceImage,
-  topics,
+  resourceTypes,
+  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
+  targetBlank,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const firstContentType = resourceTypes?.[0]?.id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
+  const handleClick = () => {
+    if (linkRef.current) {
+      linkRef.current.click();
+    }
+  };
 
   return (
-    <ResourceWrapper to={link}>
+    <ResourceWrapper onClick={handleClick} id={id}>
       <StyledImageWrapper imageSize={imageType}>
-        <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
+        <ListResourceImage
+          resourceImage={resourceImage}
+          loading={isLoading}
+          type={imageType}
+          contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
+        />
       </StyledImageWrapper>
       <TopicAndTitleWrapper>
-        <TopicAndTitle topics={topics} title={title} loading={isLoading} />
+        <ResourceTypeAndTitleLoader loading={isLoading}>
+          <ResourceTitleLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
+            <Title>{title}</Title>
+          </ResourceTitleLink>
+          <ResourceTypeList resourceTypes={resourceTypes} />
+        </ResourceTypeAndTitleLoader>
       </TopicAndTitleWrapper>
       {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>

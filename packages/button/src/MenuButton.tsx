@@ -30,10 +30,16 @@ const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledBu
   cursor: pointer;
   background: none;
   border: none;
-  &:hover *,
-  &:active *,
-  &:focus * {
+  border-radius: 100%;
+  transition: ${misc.transition.default};
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-within {
     color: ${colors.brand.primary};
+    ${() => StyledHorizontalMenu} {
+      background-color: ${colors.brand.light};
+    }
   }
 
   svg {
@@ -46,12 +52,6 @@ const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledBu
 const StyledHorizontalMenu = styled(HorizontalMenu)`
   border-radius: 100%;
   transition: ${misc.transition.default};
-  &:hover,
-  &:active,
-  &:focus,
-  ${() => StyledMenuButton}:active, ${() => StyledMenuButton}:focus, ${() => StyledMenuButton}:hover & {
-    background-color: ${colors.brand.light};
-  }
 `;
 
 const StyledMenuItems = styled(MenuItems)`
@@ -116,17 +116,29 @@ export const MenuButton = ({
         tabIndex={tabIndex}
         className={className}
         svgSize={convertSizeForSVG(size || 'normal')}
-        onClick={(e) => e.preventDefault()} // Prevent redirect from triggering when placed inside <a>
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
         {children}
         {!hideMenuIcon && <StyledHorizontalMenu />}
       </StyledMenuButton>
-      <MenuPopover portal={true} position={alignRight ? positionRight : positionDefault}>
+      <MenuPopover
+        onKeyDown={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
+        portal={true}
+        position={alignRight ? positionRight : positionDefault}>
         <StyledMenuItems>
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
               key={text}
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
               onSelect={onClick}
               type={type}
               aria-label={text}>

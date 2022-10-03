@@ -124,16 +124,18 @@ const StyledIconButton = styled(Button)`
 `;
 
 type FolderProps = {
+  id: string;
   title: string;
   link: string;
 };
 type ResourceProps = {
+  id: string;
   title: string;
-  topics: string[];
   tags?: string[];
   resourceImage: { alt: string; src: string };
   link: string;
   description?: string;
+  resourceTypes: { id: string; name: string }[];
 };
 export interface ViewProps {
   folders?: FolderProps[];
@@ -207,8 +209,9 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         </NoFolders>
       )}
       <BlockWrapper type={layout}>
-        {folders?.map(({ title, link }, i) => (
+        {folders?.map(({ id, title, link }, i) => (
           <Folder
+            id={id}
             key={`folder-${i}`}
             type={viewType}
             title={title}
@@ -220,11 +223,12 @@ export const ResourcesView = ({ folders, resources }: ViewProps) => {
         ))}
       </BlockWrapper>
       <BlockWrapper type={layout}>
-        {resources?.map(({ title, topics, tags, description, resourceImage, link }, i) => (
+        {resources?.map(({ id, title, resourceTypes, tags, description, resourceImage, link }, i) => (
           <Resource
+            id={id}
             key={`resource-${i}`}
             title={title}
-            topics={topics}
+            resourceTypes={resourceTypes}
             tags={tags}
             description={layout !== 'list' ? description : undefined}
             resourceImage={{

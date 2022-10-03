@@ -30,6 +30,7 @@ import {
 import { mockTypeahead } from './mockTypeahead';
 import { mockFooterLinks } from './mockFooter';
 import { dummyLanguageOptions } from './mockLanguages';
+import { ResourceData } from './mockResourceData';
 
 export {
   topicList,
@@ -62,4 +63,5 @@ export {
   dummyLanguageOptions,
   mockExplanationService,
   contentTypeResults,
+  ResourceData,
 };

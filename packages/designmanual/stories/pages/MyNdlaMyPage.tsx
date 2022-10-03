@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-
 import MyNdlaLayoutExample from '../molecules/MyNdlaPages/MyNdlaLayoutExample';
 import MyNdlaMyPageContent from '../molecules/MyNdlaPages/MyNdlaMyPageContent';
 
@@ -21,9 +20,13 @@ const MyNdlaMyPage = () => {
         }}
         recentFavorites={[
           {
+            id: 'f8260d00-33e5-4ace-8f41-73aa47410a80',
             title: 'My Resource',
             link: '',
-            topics: ['Oppgave', 'Norsk', 'Muntlig'],
+            resourceTypes: [
+              { id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' },
+              { id: 'urn:resourcetype:academicArticle', name: 'Fagartikkel' },
+            ],
             tags: ['tag', 'tag', 'tag'],
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
@@ -33,9 +36,13 @@ const MyNdlaMyPage = () => {
             },
           },
           {
+            id: 'ccc46e49-7d79-470c-8223-d7b2f9147aaf',
             title: 'My Resource',
             link: '',
-            topics: ['Oppgave', 'Norsk', 'Muntlig'],
+            resourceTypes: [
+              { id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' },
+              { id: 'urn:resourcetype:academicArticle', name: 'Fagartikkel' },
+            ],
             tags: ['tag', 'tag', 'tag'],
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",

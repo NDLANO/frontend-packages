@@ -12,6 +12,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import messagesEN from '../locale/messages-en';
 import messagesNN from '../locale/messages-nn';
 import messagesNB from '../locale/messages-nb';
+import messagesSE from '../locale/messages-se';
 
 const DETECTION_OPTIONS = {
   order: ['path', 'localStorage', 'htmlTag'],
@@ -22,9 +23,10 @@ const DETECTION_OPTIONS = {
 const i18nInstance = i18n.use(initReactI18next).use(LanguageDetector);
 
 i18nInstance.init({
+  compatibilityJSON: 'v3',
   detection: DETECTION_OPTIONS,
   fallbackLng: 'nb',
-  supportedLngs: ['nb', 'nn', 'en'],
+  supportedLngs: ['nb', 'nn', 'en', 'se'],
   resources: {
     en: {
       translation: messagesEN,
@@ -34,6 +36,9 @@ i18nInstance.init({
     },
     nb: {
       translation: messagesNB,
+    },
+    se: {
+      translation: messagesSE,
     },
   },
 });

@@ -128,10 +128,11 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
       <Resources>
         <StyledH2>{t('myNdla.myPage.newFavourite')}</StyledH2>
         <StyledResourceList>
-          {recentFavorites?.map(({ title, topics, tags, resourceImage, link }) => (
+          {recentFavorites?.map(({ id, title, resourceTypes, tags, resourceImage, link }) => (
             <ListResource
+              id={id}
               title={title}
-              topics={topics}
+              resourceTypes={resourceTypes}
               tags={tags}
               resourceImage={{
                 alt: resourceImage.alt,
@@ -164,6 +165,7 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
             <li>{courses.join(', ')}</li>
           </ul>
         </SchoolInfo>
+        <p>{t('myNdla.myPage.feideWrongInfo')}</p>
       </InfoBlock>
       <StyledBottomDiv>
         <Terms>

@@ -6,14 +6,15 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { animations, spacing } from '@ndla/core';
+import { animations } from '@ndla/core';
 import FolderItem from './FolderItem';
-import FolderNameInput from './FolderNameInput';
-import { CommonFolderItemsProps, FolderType } from './types';
+import { CommonFolderItemsProps, FolderType, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
+import NavigationLink from './NavigationLink';
+import { treestructureId } from './helperFunctions';
 
-const StyledUL = styled.ul<{ firstLevel?: boolean }>`
+const StyledUL = styled.ul`
   ${animations.fadeInLeft(animations.durations.fast)};
   animation-fill-mode: forwards;
   @media (prefers-reduced-motion: reduce) {
@@ -22,75 +23,95 @@ const StyledUL = styled.ul<{ firstLevel?: boolean }>`
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: ${({ firstLevel }) => (firstLevel ? `-${spacing.xsmall}` : spacing.small)};
 `;
 
-const StyledLI = styled.li`
+interface StyledLiProps {
+  type?: TreeStructureType;
+}
+
+const StyledLI = styled.li<StyledLiProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ type }) => type === 'navigation' && 'flex-start'};
   margin: 0;
   padding: 0;
 `;
 
 export interface FolderItemsProps extends CommonFolderItemsProps {
   folders: FolderType[];
-  editable?: boolean;
-  maximumLevelsOfFoldersAllowed: number;
   newFolderParentId: string | undefined;
   onCancelNewFolder: () => void;
-  onSaveNewFolder: (name: string, parentId: string) => void;
   openFolders: string[];
+  parentFolder?: FolderType;
+  children?: ReactNode;
+  onCreate: OnCreatedFunc;
+  newFolderInput?: NewFolderInputFunc;
 }
 
 const FolderItems = ({
-  editable,
   folders,
   level,
   loading,
-  maximumLevelsOfFoldersAllowed,
   newFolderParentId,
   onCancelNewFolder,
-  onSaveNewFolder,
   openFolders,
+  type,
+  parentFolder,
+  children,
+  onCreate,
+  newFolderInput,
   ...rest
 }: FolderItemsProps) => (
-  <StyledUL role="group" firstLevel={level === 0}>
+  <StyledUL
+    id={
+      level === 0 && type === 'picker'
+        ? treestructureId(type, 'popup')
+        : parentFolder
+        ? treestructureId(type, `subfolders-${parentFolder.id}`)
+        : undefined
+    }
+    tabIndex={-1}
+    aria-labelledby={level === 0 && type === 'picker' ? treestructureId(type, 'label') : undefined}
+    role={level === 0 ? 'tree' : 'group'}>
+    {children}
     {folders.map((folder) => {
       const { subfolders, id } = folder;
       const isOpen = openFolders?.includes(id);
 
       return (
-        <StyledLI key={id} role="treeitem">
-          <div>
-            <FolderItem
-              hideArrow={subfolders?.length === 0 || level > maximumLevelsOfFoldersAllowed}
-              folder={folder}
-              isOpen={isOpen}
-              level={level}
-              loading={loading}
-              noPaddingWhenArrowIsHidden={editable && level === 0 && subfolders?.length === 0}
-              {...rest}
-            />
-          </div>
-          {newFolderParentId === id && (
-            <FolderNameInput
-              loading={loading}
-              onCancelNewFolder={onCancelNewFolder}
-              onSaveNewFolder={onSaveNewFolder}
-              parentId={newFolderParentId}
-            />
-          )}
-          {subfolders && isOpen && (
-            <FolderItems
-              editable={editable}
-              folders={subfolders}
-              level={level + 1}
-              loading={loading}
-              maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
-              newFolderParentId={newFolderParentId}
-              onCancelNewFolder={onCancelNewFolder}
-              onSaveNewFolder={onSaveNewFolder}
-              openFolders={openFolders}
-              {...rest}
-            />
+        <StyledLI key={id} tabIndex={-1} role="none" type={type}>
+          {folder.isNavigation ? (
+            <NavigationLink folder={folder} isOpen={isOpen} level={level} type={type} loading={loading} {...rest} />
+          ) : (
+            <>
+              <FolderItem
+                folder={folder}
+                isOpen={isOpen}
+                level={level}
+                loading={loading}
+                type={type}
+                isCreatingFolder={!!newFolderParentId}
+                {...rest}
+              />
+              {((subfolders && isOpen) || newFolderParentId === id) && (
+                <FolderItems
+                  parentFolder={folder}
+                  folders={subfolders}
+                  level={level + 1}
+                  loading={loading}
+                  type={type}
+                  newFolderParentId={newFolderParentId}
+                  onCancelNewFolder={onCancelNewFolder}
+                  openFolders={openFolders}
+                  newFolderInput={newFolderInput}
+                  onCreate={onCreate}
+                  {...rest}>
+                  {newFolderParentId === id && (
+                    <li role="none">{newFolderInput?.({ parentId: id, onClose: onCancelNewFolder, onCreate })}</li>
+                  )}
+                </FolderItems>
+              )}
+            </>
           )}
         </StyledLI>
       );

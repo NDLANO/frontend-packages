@@ -63,15 +63,16 @@ const bodyStyles = css`
   }
 `;
 
-const ModalBody = ({ children, modifier }: Props) => (
-  <div data-cy="modal-body" css={bodyStyles} className={`modal-body ${modifier}`}>
-    {children}
-  </div>
-);
-
 interface Props {
   children?: ReactNode;
   modifier?: string;
+  className?: string;
 }
+
+const ModalBody = ({ children, modifier, className }: Props) => (
+  <div data-cy="modal-body" css={bodyStyles} className={`modal-body ${modifier} ${className}`}>
+    {children}
+  </div>
+);
 
 export default ModalBody;

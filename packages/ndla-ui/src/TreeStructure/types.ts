@@ -6,34 +6,43 @@
  *
  */
 
-import { MouseEvent, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { IFolder, IResource } from '@ndla/types-learningpath-api';
-import { MenuItemProps } from '@ndla/button';
 
 export interface FolderType extends IFolder {
   icon?: ReactNode;
+  isNavigation?: boolean;
 }
 
-export interface TreeStructureMenuProps extends Omit<MenuItemProps, 'onClick'> {
-  onClick: (e: MouseEvent<HTMLDivElement> | undefined, folder: FolderType) => void;
-}
+export type TreeStructureType = 'navigation' | 'picker';
+
+export type OnCreatedFunc = (folder: IFolder | undefined, parentId: string) => void;
+
+export type NewFolderInputFunc = ({
+  onClose,
+  parentId,
+  onCreate,
+}: {
+  onClose: () => void;
+  parentId: string;
+  onCreate: OnCreatedFunc;
+}) => ReactNode;
 
 export interface CommonTreeStructureProps {
   loading?: boolean;
-  onSelectFolder?: (id: string) => void;
-  openOnFolderClick?: boolean;
-  menuItems?: TreeStructureMenuProps[];
   targetResource?: IResource;
-  framed?: boolean;
+  type: TreeStructureType;
 }
 
 export interface CommonFolderItemsProps extends CommonTreeStructureProps {
-  focusedFolderId?: string;
+  focusedFolder?: FolderType;
   level: number;
+  maxLevel: number;
   selectedFolder?: FolderType;
   onCloseFolder: (id: string) => void;
   onOpenFolder: (id: string) => void;
-  setFocusedId: (id: string) => void;
-  setSelectedFolder: (id: FolderType) => void;
-  visibleFolders: string[];
+  setFocusedFolder: (folder: FolderType) => void;
+  setSelectedFolder: (folder: FolderType) => void;
+  visibleFolders: FolderType[];
+  closeTree: () => void;
 }

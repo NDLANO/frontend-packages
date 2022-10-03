@@ -59,6 +59,8 @@ type Props = {
   copyPageUrlLink?: string;
   printUrl?: string;
   locale?: string;
+  copyEmbedLink?: string;
+  copySourceReference?: string;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -91,15 +93,28 @@ const ArticleByline = ({
   copyPageUrlLink,
   printUrl,
   locale,
+  copyEmbedLink,
+  copySourceReference,
 }: Props) => {
   const { t } = useTranslation();
+
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
     }
   };
-
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
+
+  const copyLicense = () => {
+    if (copySourceReference) {
+      copyTextToClipboard(copySourceReference);
+    }
+  };
+  const copyEmbededLink = () => {
+    if (copyEmbedLink) {
+      copyTextToClipboard(copyEmbedLink);
+    }
+  };
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
@@ -129,6 +144,18 @@ const ArticleByline = ({
       )}
       {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
       <ButtonWrapper>
+        {copySourceReference && (
+          <CopyButton
+            size="small"
+            borderShape="rounded"
+            outline
+            aria-live="assertive"
+            copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copySourceReference}
+            onClick={copyLicense}>
+            {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
+          </CopyButton>
+        )}
         {licenseBox && (
           <Modal
             labelledBy={buttonId}
@@ -156,9 +183,22 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            aria-live="assertive"
             data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}
+          </CopyButton>
+        )}
+        {copyEmbedLink && (
+          <CopyButton
+            size="small"
+            borderShape="rounded"
+            outline
+            aria-live="assertive"
+            copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copyEmbedLink}
+            onClick={copyEmbededLink}>
+            {`${t('license.copy')}  ${t('license.tabs.embedlink').toLowerCase()}`}
           </CopyButton>
         )}
         {printUrl && (

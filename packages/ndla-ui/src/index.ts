@@ -161,6 +161,7 @@ export { default as constants } from './model';
 export { default as messagesNB } from './locale/messages-nb';
 export { default as messagesNN } from './locale/messages-nn';
 export { default as messagesEN } from './locale/messages-en';
+export { default as messagesSE } from './locale/messages-se';
 
 export { default as RadioButtonGroup } from './RadioButtonGroup';
 
@@ -251,6 +252,6 @@ export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from './SnackB
 export type { Snack, SnackContext } from './SnackBar';
 export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
-export type { FolderType, TreeStructureProps, TreeStructureMenuProps } from './TreeStructure';
+export type { FolderType, TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';

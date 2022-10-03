@@ -7,27 +7,40 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
-import SafeLink from '@ndla/safelink';
+import React, { useRef } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
+import ContentTypeBadge from '../ContentTypeBadge';
 import Image from '../Image';
-import { CompressedTagList, ResourceImageProps, ResourceTitle, Row, TopicList } from './resourceComponents';
+import {
+  CompressedTagList,
+  ResourceImageProps,
+  ResourceTitle,
+  Row,
+  ResourceTypeList,
+  ResourceTitleLink,
+  LoaderProps,
+  StyledContentIconWrapper,
+} from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import { contentTypeMapping } from '../model/ContentType';
 
 interface BlockResourceProps {
+  id: string;
   link: string;
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  topics: string[];
   tags?: string[];
   description?: string;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
+  targetBlank?: boolean;
+  resourceTypes?: { id: string; name: string }[];
 }
 
-const BlockElementWrapper = styled(SafeLink)`
+const BlockElementWrapper = styled.div`
   display: flex;
   text-decoration: none;
   box-shadow: none;
@@ -37,6 +50,16 @@ const BlockElementWrapper = styled(SafeLink)`
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
   color: ${colors.brand.greyDark};
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    transition-duration: 0.2s;
+    ${() => ResourceTitleLink} {
+      color: ${colors.brand.primary};
+      text-decoration: underline;
+    }
+  }
 `;
 
 const BlockDescription = styled.p`
@@ -48,7 +71,8 @@ const BlockDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: height 0.2s ease-out;
-  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & {
+  ${() => BlockElementWrapper}:hover &, ${() => BlockElementWrapper}:focus & ,  ${() =>
+    BlockElementWrapper}:focus-within & {
     // Unfortunate css needed for multi-line text overflow ellipsis.
     height: 3.1em;
     -webkit-line-clamp: 2;
@@ -59,6 +83,7 @@ const BlockDescription = styled.p`
 
 const RightRow = styled(Row)`
   justify-content: flex-end;
+  margin-bottom: -${spacing.xxsmall};
 `;
 
 const BlockInfoWrapper = styled.div`
@@ -71,22 +96,21 @@ const BlockInfoWrapper = styled.div`
 const ImageWrapper = styled.div`
   display: flex;
   width: 100%;
+  justify-content: center;
   overflow: hidden;
   align-items: center;
-  div {
-    min-width: 100%;
-  }
+  aspect-ratio: 3/4;
   img {
     min-width: 100%;
   }
 `;
-
 interface BlockImageProps {
   image: ResourceImageProps;
   loading?: boolean;
+  contentType: string;
 }
 
-const BlockImage = ({ image, loading }: BlockImageProps) => {
+const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   if (loading) {
     return (
       <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -94,31 +118,18 @@ const BlockImage = ({ image, loading }: BlockImageProps) => {
       </ContentLoader>
     );
   }
-  return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
-};
-
-interface BlockTitleProps {
-  title: string;
-  loading?: boolean;
-}
-
-const BlockTitle = ({ title, loading }: BlockTitleProps) => {
-  if (loading) {
+  if (image.src === '') {
     return (
-      <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
-        <rect x="0" y="0" rx="3" ry="3" width="100%" height="18px" />
-      </ContentLoader>
+      <StyledContentIconWrapper contentType={contentType}>
+        <ContentTypeBadge type={contentType} size="large" />
+      </StyledContentIconWrapper>
     );
+  } else {
+    return <Image alt={image.alt} src={image.src} fallbackWidth={300} />;
   }
-  return <ResourceTitle>{title}</ResourceTitle>;
 };
 
-interface BlockTopicListProps {
-  topics: string[];
-  loading?: boolean;
-}
-
-const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
+const ResourceTypeAndTitleLoader = ({ children, loading }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -128,30 +139,49 @@ const BlockTopicList = ({ topics, loading }: BlockTopicListProps) => {
     );
   }
 
-  return <TopicList topics={topics} />;
+  return <>{children}</>;
 };
 
 const BlockResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
   tags,
   resourceImage,
-  topics,
   description,
   menuItems,
   isLoading,
+  headingLevel = 'h2',
+  targetBlank,
+  resourceTypes,
 }: BlockResourceProps) => {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const firstResourceType = resourceTypes?.[0].id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
+
+  const handleClick = () => {
+    if (linkRef.current) {
+      linkRef.current.click();
+    }
+  };
+
   return (
-    <BlockElementWrapper to={link}>
+    <BlockElementWrapper onClick={handleClick} id={id}>
       <ImageWrapper>
-        <BlockImage image={resourceImage} loading={isLoading} />
+        <BlockImage
+          image={resourceImage}
+          loading={isLoading}
+          contentType={contentTypeMapping[firstResourceType] ?? contentTypeMapping['default']}
+        />
       </ImageWrapper>
       <BlockInfoWrapper>
-        <div>
-          <BlockTitle title={title} loading={isLoading} />
-        </div>
-        <BlockTopicList topics={topics} loading={isLoading} />
+        <ResourceTypeAndTitleLoader loading={isLoading}>
+          <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
+            <Title>{title}</Title>
+          </ResourceTitleLink>
+        </ResourceTypeAndTitleLoader>
+        <ResourceTypeList resourceTypes={resourceTypes} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
           {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}

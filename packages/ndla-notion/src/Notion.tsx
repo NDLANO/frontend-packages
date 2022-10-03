@@ -64,7 +64,7 @@ const Notion = ({ id, content, children, title, subTitle, customCSS, headerConte
   const { t } = useTranslation();
   return (
     <span id={id} data-notion>
-      <StyledButton type="button" aria-label={title} data-notion-link aria-expanded={true}>
+      <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })} data-notion-link>
         <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
           {children}
           {!hideBaselineIcon && <BaselineIcon />}

@@ -923,7 +923,7 @@ const messages = {
     error: 'An error occurred while loading an external resource.',
   },
   concept: {
-    showDescription: 'Show concept description',
+    showDescription: '{{title}}, concept description. Press to open the description',
     reuse: 'Use concept',
     error: {
       title: 'An error occurred',

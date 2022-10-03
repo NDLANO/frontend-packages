@@ -36,7 +36,8 @@ const ValueButton = ({ innerProps, children, removeProps, isFocused }: MultiValu
       css={buttonStyle({ colorTheme: 'lighter', shape: 'pill', size: 'small' })}
       {...innerProps}
       {...removeProps}>
-      #{children}
+      <span aria-hidden>#</span>
+      {children}
       <Cross />
     </StyledValueButton>
   );

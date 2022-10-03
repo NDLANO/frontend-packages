@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';

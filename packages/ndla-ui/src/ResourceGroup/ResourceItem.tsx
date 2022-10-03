@@ -9,8 +9,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { keyframes } from '@emotion/core';
+import { css } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';

@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { ShortText } from '@ndla/icons/common';
-import { css, InterpolationWithTheme } from '@emotion/core';
+import { css, Interpolation } from '@emotion/react';
 import { createUniversalPortal } from '@ndla/util';
 import { colors } from '@ndla/core';
 import NotionDialog from './NotionDialog';
@@ -57,7 +57,7 @@ interface Props {
   children?: ReactNode;
   content?: ReactNode;
   headerContent?: ReactNode;
-  customCSS?: InterpolationWithTheme<any>;
+  customCSS?: Interpolation<any>;
   hideBaselineIcon?: boolean;
 }
 const Notion = ({

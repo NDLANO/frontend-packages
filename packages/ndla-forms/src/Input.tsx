@@ -1,4 +1,4 @@
-import { SerializedStyles } from '@emotion/core';
+import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
 import React, { HTMLProps, ReactElement, useEffect, useRef } from 'react';

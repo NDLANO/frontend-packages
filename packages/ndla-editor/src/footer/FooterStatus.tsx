@@ -8,7 +8,7 @@
 
 import React, { useReducer } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, typography, colors, misc, fonts, spacingUnit } from '@ndla/core';
 import { PopUpWrapper } from '@ndla/forms';
 import FooterStatusSelect from './FooterStatusSelect';

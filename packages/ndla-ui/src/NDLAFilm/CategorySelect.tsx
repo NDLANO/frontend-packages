@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FocusTrapReact from 'focus-trap-react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
 import { WithTranslation, withTranslation } from 'react-i18next';

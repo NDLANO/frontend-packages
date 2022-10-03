@@ -6,9 +6,9 @@
  *
  */
 
-import React, { ChangeEventHandler, ReactNode, useState } from 'react';
+import React, { ChangeEventHandler, HTMLProps, ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { colors, fonts, spacing, spacingUnit, utils } from '@ndla/core';
 
 const SIZE: number = 22;
@@ -124,14 +124,14 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   }
 `;
 
-type Props = {
+interface Props extends Omit<HTMLProps<HTMLDivElement>, 'as'> {
   checked: boolean;
   label: string;
   id: string;
   disabled?: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
   children?: ReactNode;
-};
+}
 
 const Switch = ({ onChange, checked, disabled, id, label, ...rest }: Props) => {
   const [hasFocus, setFocusState] = useState(false);

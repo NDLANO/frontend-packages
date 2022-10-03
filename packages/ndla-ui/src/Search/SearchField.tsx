@@ -9,7 +9,7 @@
 import React, { FocusEvent, MouseEvent, RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import BEMHelper from 'react-bem-helper';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import { colors, spacing, mq, breakpoints, misc, fonts } from '@ndla/core';

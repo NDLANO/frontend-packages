@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
 import { WithTranslation, withTranslation } from 'react-i18next';

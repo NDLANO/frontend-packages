@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Accordion, { AccordionBar, AccordionPanel, AccordionWrapper } from '@ndla/accordion';
 import { colors, spacing } from '@ndla/core';
 

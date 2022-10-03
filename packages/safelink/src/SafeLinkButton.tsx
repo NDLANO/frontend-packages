@@ -7,7 +7,7 @@
  */
 
 import React, { ReactNode } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { appearances, ButtonStyles, ButtonAppearance } from '@ndla/button';
 import SafeLink from './SafeLink';
 import { SafeLinkProps } from '.';

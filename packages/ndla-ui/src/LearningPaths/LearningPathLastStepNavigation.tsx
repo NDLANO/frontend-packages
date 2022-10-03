@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { fonts, spacing, spacingUnit } from '@ndla/core';

@@ -11,7 +11,7 @@ import React, { useRef } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { MenuButton, MenuItemProps } from '@ndla/button';

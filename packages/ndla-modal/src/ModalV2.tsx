@@ -8,7 +8,7 @@
 
 import React, { cloneElement, MouseEvent, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
-import { css, SerializedStyles } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/react';
 import { DialogContent, DialogOverlay } from '@reach/dialog';
 import { breakpoints, mq } from '@ndla/core';
 import { BaseProps, ModalAnimation, ModalMargin, ModalPosition, ModalSizeType } from './types';

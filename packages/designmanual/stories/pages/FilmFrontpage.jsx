@@ -8,7 +8,7 @@
 
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, spacingUnit } from '@ndla/core';
 import { CarouselAutosize } from '@ndla/carousel';
 import { withTranslation } from 'react-i18next';

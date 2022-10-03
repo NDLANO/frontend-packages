@@ -6,7 +6,7 @@
  *
  */
 
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 
 interface Value {
   func: 'translateX' | 'translateY' | 'translate';

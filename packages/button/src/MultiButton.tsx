@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { colors, misc } from '@ndla/core';
 import FocusTrapReact from 'focus-trap-react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { ChevronDown } from '@ndla/icons/common';
 
 import { Button, buttonStyle, outlineStyle, largeStyle } from './Button';

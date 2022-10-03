@@ -31,8 +31,8 @@
     "lodash": "^4.17.20"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "react": "16.13.1 || ^17.0.0",
     "react-router-dom": "^6.3.0"
   },

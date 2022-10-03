@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Accordion, {
   AccordionBar,
   AccordionPanel,

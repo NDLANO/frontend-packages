@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { colors, fonts, mq, spacing, spacingUnit, breakpoints } from '@ndla/core';
 import OneColumn from '../Layout/OneColumn';
 

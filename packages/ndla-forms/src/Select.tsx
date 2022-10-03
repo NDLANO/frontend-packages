@@ -31,7 +31,7 @@ const SelectWrapper = styled.select`
   }
 `;
 
-interface Props extends HTMLProps<HTMLSelectElement> {
+interface Props extends Omit<HTMLProps<HTMLSelectElement>, 'as'> {
   children?: ReactNode;
 }
 

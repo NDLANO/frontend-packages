@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { mq, breakpoints } from '@ndla/core';
 import { useWindowSize } from '@ndla/hooks';
 import { FileDocumentOutline } from '@ndla/icons/common';

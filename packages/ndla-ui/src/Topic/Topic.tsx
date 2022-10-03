@@ -15,7 +15,7 @@ import { ChevronDown, ChevronUp, PlayCircleFilled } from '@ndla/icons/common';
 import Modal, { ModalCloseButton, ModalHeader, ModalBody } from '@ndla/modal';
 import Button from '@ndla/button';
 import { CursorClick, ExpandTwoArrows } from '@ndla/icons/action';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import Loader from './Loader';
 import { ItemProps } from '../Navigation/NavigationBox';

@@ -6,7 +6,7 @@
  *
  */
 
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 import { DialogContentProps } from '@reach/dialog';
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { animations } from './animations';

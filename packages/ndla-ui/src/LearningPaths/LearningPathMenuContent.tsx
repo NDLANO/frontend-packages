@@ -8,7 +8,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { LearningPathRead } from '@ndla/icons/contentType';

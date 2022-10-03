@@ -9,7 +9,7 @@
 import React, { forwardRef, ReactNode } from 'react';
 import FocusTrap from 'focus-trap-react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, colors, fonts, shadows, animations } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
 import { withTranslation, TFunction } from 'react-i18next';

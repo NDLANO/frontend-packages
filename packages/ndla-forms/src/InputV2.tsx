@@ -8,7 +8,7 @@
 
 import React, { forwardRef, HTMLProps, ReactElement, ReactNode, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { css, SerializedStyles } from '@emotion/core';
+import { SerializedStyles } from '@emotion/core';
 import { colors, fonts, misc, spacing, spacingUnit, utils } from '@ndla/core';
 import { useForwardedRef } from '@ndla/util';
 

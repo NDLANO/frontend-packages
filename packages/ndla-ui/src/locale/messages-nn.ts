@@ -72,8 +72,8 @@ const messages = {
     createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Skriv inn emneknagg',
     removeTag: 'Ta vekk {{name}}',
-    hideAllTags: 'Skjul alle emneknaggar',
-    showAllTags: 'Vis alle emneknaggar',
+    hideTags: 'Skjul emneknaggar',
+    showTags: 'Vis emneknaggar',
   },
   htmlTitles: {
     titleTemplate,

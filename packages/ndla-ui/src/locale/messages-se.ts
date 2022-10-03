@@ -72,8 +72,8 @@ const messages = {
     createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Čále fáddágilkora',
     removeTag: 'Váldde eret {{name}}',
-    hideAllTags: 'Čiega buot fáddágilkoriid',
-    showAllTags: 'Čájet buot fáddágilkoriid',
+    hideTags: 'Skjul emneknagger',
+    showTags: 'Vis emneknagger',
   },
   htmlTitles: {
     titleTemplate,

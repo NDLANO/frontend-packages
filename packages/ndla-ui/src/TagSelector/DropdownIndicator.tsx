@@ -36,7 +36,7 @@ const DropdownIndicator = ({ selectProps, children, ...props }: DropdownIndicato
       css={css}
       {...props}
       selectProps={selectProps}
-      aria-label={menuIsOpen ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>
+      aria-label={menuIsOpen ? t('tagSelector.hideTags') : t('tagSelector.showTags')}>
       <StyledIconWrapper aria-hidden>
         <Icon />
       </StyledIconWrapper>

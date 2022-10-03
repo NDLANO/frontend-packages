@@ -106,11 +106,10 @@ const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }
           Input,
         }}
         formatCreateLabel={createLabel}
-        hideSelectedOptions={false}
         inputValue={input}
         isClearable={false}
         isMulti
-        noOptionsMessage={t('tagSelector.noOptions')}
+        noOptionsMessage={() => t('tagSelector.noOptions')}
         onChange={onChange}
         onCreateOption={onCreateTag}
         onInputChange={setInput}

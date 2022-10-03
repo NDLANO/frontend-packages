@@ -8,7 +8,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
-import { ListResource, BlockResource, constants } from '@ndla/ui';
+import { ListResource, BlockResource } from '@ndla/ui';
 
 const ListResourceWrapper = styled.div`
   margin: ${spacing.xsmall} 0;
@@ -27,24 +27,21 @@ const BlockResourceExample = styled.div`
 `;
 
 interface BlockExampleProps {
-  topics: string[];
+  resourceTypes: { id: string; name: string }[];
   tags: string[];
   menuItems: any[];
 }
 
-const contentTypes = [
-  'subject-material',
-  'tasks-and-activities',
-  'assessment-resources',
-  'subject',
-  'external-learning-resources',
-  'source-material',
-  'learning-path',
-  'topic',
-  'multidisciplinary-topic',
+const resourceTypesArr = [
+  { id: 'urn:resourcetype:learningPath', name: 'Læringssti' },
+  { id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' },
+  { id: 'urn:resourcetype:tasksAndActivities', name: 'Oppgaver og aktiviteter' },
+  { id: 'urn:resourcetype:reviewResource', name: 'Vurderingsressurs' },
+  { id: 'urn:resourcetype:externalResource', name: 'Ekstern læringsressurs' },
+  { id: 'urn:resourcetype:SourceMaterial', name: 'Kildemateriale' },
 ];
 
-export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps) => {
+export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampleProps) => {
   return (
     <>
       <BlockResourceWrapper>
@@ -54,7 +51,7 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
             id="2ae58e7d-ea25-49f0-b2a5-1f11830f8c04"
             key={'blockResource'}
             title="Helt Vanlig Tittel"
-            topics={topics}
+            resourceTypes={resourceTypes}
             tags={tags}
             description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
             resourceImage={{
@@ -63,7 +60,6 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
             }}
             link={''}
             menuItems={menuItems}
-            contentType={constants.contentTypes.SUBJECT_MATERIAL}
           />
         </BlockResourceExample>
         <BlockResourceExample>
@@ -72,7 +68,7 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
             id="2ae58e7d-ea25-49f0-b2a5-1f11830f8c04"
             key={'blockResource'}
             title="Helt Vanlig Tittel"
-            topics={topics}
+            resourceTypes={resourceTypes}
             tags={tags}
             description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
             resourceImage={{
@@ -81,7 +77,6 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
             }}
             link={''}
             menuItems={menuItems}
-            contentType={constants.contentTypes.SUBJECT_MATERIAL}
           />
         </BlockResourceExample>
       </BlockResourceWrapper>
@@ -91,7 +86,7 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
         id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
         key={'defaultResource'}
         title="Titler kan også kuttes av"
-        topics={topics}
+        resourceTypes={resourceTypes}
         tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
         description={'En helt vanlig beskrivelse.'}
         resourceImage={{
@@ -100,14 +95,13 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
         }}
         link={''}
         menuItems={menuItems}
-        contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
       />
       <h3> Standard Ressurs</h3>
       <ListResource
         id={'b572358d-0807-4594-bd37-b2bc52d2a6b6'}
         key={'defaultResource'}
         title="Titler kan også kuttes av"
-        topics={topics}
+        resourceTypes={resourceTypes}
         tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
         description={'En helt vanlig beskrivelse.'}
         resourceImage={{
@@ -116,14 +110,13 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
         }}
         link={''}
         menuItems={menuItems}
-        contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
       />
       <h3>Ressurs med tom beskrivelse</h3>
       <ListResource
         id={'181c1b06-683f-472b-900c-cf25979d22ac'}
         key={'withoutDescription'}
         title="Min Tittel"
-        topics={topics}
+        resourceTypes={resourceTypes}
         description={''}
         tags={tags}
         resourceImage={{
@@ -132,7 +125,6 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
         }}
         link={''}
         menuItems={menuItems}
-        contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
       />
 
       <h3>Ressurs uten beskrivelse, tags og meny</h3>
@@ -140,32 +132,30 @@ export const ResourcesExample = ({ topics, tags, menuItems }: BlockExampleProps)
         id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
         key={'minimalResource'}
         title="Minimal ressurs"
-        topics={topics}
+        resourceTypes={resourceTypes}
         resourceImage={{
           src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
           alt: '',
         }}
         link={''}
         menuItems={menuItems}
-        contentType={constants.contentTypes.ASSESSMENT_RESOURCES}
       />
       <h3>Ressurs uten beskrivelse, tags og meny. Uten bilde</h3>
 
-      {contentTypes.map((contentType) => {
+      {resourceTypesArr.map((rt) => {
         return (
           <ListResourceWrapper>
             <ListResource
               id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
               key={'minimalResource'}
               title="Minimal ressurs"
-              topics={topics}
+              resourceTypes={[rt]}
               resourceImage={{
                 src: '',
                 alt: '',
               }}
               link={''}
               menuItems={menuItems}
-              contentType={contentType}
             />
           </ListResourceWrapper>
         );

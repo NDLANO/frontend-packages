@@ -16,12 +16,13 @@ import {
   ResourceImageProps,
   ResourceTitle,
   ResourceTitleLink,
-  TopicList,
+  ResourceTypeList,
   StyledContentIconWrapper,
   LoaderProps,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
+import { contentTypeMapping } from '../model/ContentType';
 
 const StyledResourceDescription = styled.p`
   grid-area: description;
@@ -124,13 +125,13 @@ export interface ListResourceProps {
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  topics: string[];
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  resourceTypes: { id: string; name: string }[];
   tags?: string[];
   description?: string;
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
   targetBlank?: boolean;
-  contentType: string;
 }
 
 interface ListResourceImageProps {
@@ -169,7 +170,7 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListRe
   );
 };
 
-const TopicAndTitleLoader = ({ loading, children }: LoaderProps) => {
+const ResourceTypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -205,16 +206,18 @@ const ListResource = ({
   title,
   tags,
   resourceImage,
-  topics,
+  resourceTypes,
+  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
   targetBlank,
-  contentType,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const linkRef = useRef<HTMLAnchorElement>(null);
+  const firstContentType = resourceTypes?.[0].id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
   const handleClick = () => {
     if (linkRef.current) {
       linkRef.current.click();
@@ -228,16 +231,16 @@ const ListResource = ({
           resourceImage={resourceImage}
           loading={isLoading}
           type={imageType}
-          contentType={contentType}
+          contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
         />
       </StyledImageWrapper>
       <TopicAndTitleWrapper>
-        <TopicAndTitleLoader loading={isLoading}>
+        <ResourceTypeAndTitleLoader loading={isLoading}>
           <ResourceTitleLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
-            <ResourceTitle>{title}</ResourceTitle>
+            <Title>{title}</Title>
           </ResourceTitleLink>
-          <TopicList topics={topics} />
-        </TopicAndTitleLoader>
+          <ResourceTypeList resourceTypes={resourceTypes} />
+        </ResourceTypeAndTitleLoader>
       </TopicAndTitleWrapper>
       {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>

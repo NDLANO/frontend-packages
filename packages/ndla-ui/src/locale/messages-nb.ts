@@ -110,9 +110,7 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommende',
-    [subjectCategories.COMMON_SUBJECTS]: 'Fellesfag',
-    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programfag SF',
-    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Yrkesfag',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressurser',
   },
   subjectTypes: {
     [subjectTypes.SUBJECT]: 'Fag',
@@ -866,7 +864,7 @@ const messages = {
   },
   frontPageToolbox: {
     heading: 'Verktøykassa',
-    text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du masse gode tips og råd!',
+    text: 'Har du lyst til å bli god til å presentere, eller vil du lære å studere smartere ved hjelp av riktig studieteknikk? Trenger du råd om hvordan du leser mest mulig effektivt til eksamen? I verktøykassa til NDLA finner du mange gode tips og råd!',
     linkTextStudents: 'Se alle tipsene for elever her',
     linkTextTeachers: 'Se alle tipsene for lærere her',
     cursorText: 'Tips',

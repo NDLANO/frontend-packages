@@ -65,13 +65,12 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const StyledTopicList = styled.ul`
+const StyledResourceTypeList = styled.ul`
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  grid-area: topicList;
 `;
 
 const StyledTopicDivider = styled.span`
@@ -79,7 +78,7 @@ const StyledTopicDivider = styled.span`
   padding: 0 ${spacing.xxsmall};
 `;
 
-const StyledTopicListElement = styled.li`
+const StyledResourceListElement = styled.li`
   ${fonts.sizes(12)};
   margin: 0;
   line-height: 1.5;
@@ -187,21 +186,21 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
   );
 };
 
-interface TopicListProps {
-  topics?: string[];
+interface ResourceTypeListProps {
+  resourceTypes?: { id: string; name: string }[];
 }
 
-export const TopicList = ({ topics }: TopicListProps) => {
+export const ResourceTypeList = ({ resourceTypes }: ResourceTypeListProps) => {
   const { t } = useTranslation();
-  if (!topics) return null;
+  if (!resourceTypes) return null;
   return (
-    <StyledTopicList aria-label={t('navigation.topics')}>
-      {topics.map((topic, i) => (
-        <StyledTopicListElement key={topic}>
-          {topic}
-          {i !== topics.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
-        </StyledTopicListElement>
+    <StyledResourceTypeList aria-label={t('navigation.topics')}>
+      {resourceTypes.map((resource, i) => (
+        <StyledResourceListElement key={resource.id}>
+          {resource.name}
+          {i !== resourceTypes.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
+        </StyledResourceListElement>
       ))}
-    </StyledTopicList>
+    </StyledResourceTypeList>
   );
 };

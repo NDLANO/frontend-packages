@@ -67,7 +67,7 @@ const Breadcrumb = ({
         el.setMaxWidth('40px');
       }
     });
-  }, [size]);
+  }, [size, items]);
 
   return (
     <BreadcrumbNav ref={containerRef} aria-label={t('breadcrumb.breadcrumb')}>
@@ -77,11 +77,20 @@ const Breadcrumb = ({
             autoCollapse={autoCollapse}
             renderItem={renderItem}
             renderSeparator={renderSeparator}
-            ref={(element) =>
-              element === null || (!collapseFirst && index === 0) || (!collapseLast && index === items.length - 1)
-                ? breadcrumbItemRefs.delete(item.to)
-                : breadcrumbItemRefs.set(item.to, element)
-            }
+            ref={(element) => {
+              if (
+                element === null ||
+                (!collapseFirst && index === 0) ||
+                (!collapseLast && index === items.length - 1)
+              ) {
+                if (element) {
+                  element.setMaxWidth('none');
+                }
+                breadcrumbItemRefs.delete(item.to);
+              } else {
+                breadcrumbItemRefs.set(item.to, element);
+              }
+            }}
             key={typeof item.to === 'string' ? item.to : item.to.pathname}
             totalCount={items.length}
             item={{ ...item, index }}

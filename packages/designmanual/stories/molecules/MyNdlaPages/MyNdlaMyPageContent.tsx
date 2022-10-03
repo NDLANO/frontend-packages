@@ -13,7 +13,7 @@ import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { Feide, HashTag } from '@ndla/icons/common';
-import { ListResource, ListResourceProps, InfoBlock, constants } from '@ndla/ui';
+import { ListResource, ListResourceProps, InfoBlock } from '@ndla/ui';
 import { Image } from '@ndla/ui';
 import { HeartOutline } from '@ndla/icons/action';
 import { FolderOutlined } from '@ndla/icons/contentType';
@@ -128,11 +128,11 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
       <Resources>
         <StyledH2>{t('myNdla.myPage.newFavourite')}</StyledH2>
         <StyledResourceList>
-          {recentFavorites?.map(({ id, title, topics, tags, resourceImage, link }) => (
+          {recentFavorites?.map(({ id, title, resourceTypes, tags, resourceImage, link }) => (
             <ListResource
               id={id}
               title={title}
-              topics={topics}
+              resourceTypes={resourceTypes}
               tags={tags}
               resourceImage={{
                 alt: resourceImage.alt,
@@ -140,7 +140,6 @@ const MyNdlaMyPageContent = ({ name, title, school, courses, recentFavorites, he
               }}
               link={link}
               key={link}
-              contentType={constants.contentTypes.TOPIC}
             />
           ))}
         </StyledResourceList>

@@ -17,12 +17,13 @@ import {
   ResourceImageProps,
   ResourceTitle,
   Row,
-  TopicList,
+  ResourceTypeList,
   ResourceTitleLink,
   LoaderProps,
   StyledContentIconWrapper,
 } from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import { contentTypeMapping } from '../model/ContentType';
 
 interface BlockResourceProps {
   id: string;
@@ -30,13 +31,13 @@ interface BlockResourceProps {
   tagLinkPrefix?: string;
   title: string;
   resourceImage: ResourceImageProps;
-  topics: string[];
   tags?: string[];
   description?: string;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   menuItems?: MenuItemProps[];
   isLoading?: boolean;
   targetBlank?: boolean;
-  contentType: string;
+  resourceTypes?: { id: string; name: string }[];
 }
 
 const BlockElementWrapper = styled.div`
@@ -128,7 +129,7 @@ const BlockImage = ({ image, loading, contentType }: BlockImageProps) => {
   }
 };
 
-const TopicAndTitleLoader = ({ children, loading }: LoaderProps) => {
+const ResourceTypeAndTitleLoader = ({ children, loading }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'18px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -148,14 +149,16 @@ const BlockResource = ({
   title,
   tags,
   resourceImage,
-  topics,
   description,
   menuItems,
   isLoading,
+  headingLevel = 'h2',
   targetBlank,
-  contentType,
+  resourceTypes,
 }: BlockResourceProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
+  const firstResourceType = resourceTypes?.[0].id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
 
   const handleClick = () => {
     if (linkRef.current) {
@@ -166,15 +169,19 @@ const BlockResource = ({
   return (
     <BlockElementWrapper onClick={handleClick} id={id}>
       <ImageWrapper>
-        <BlockImage image={resourceImage} loading={isLoading} contentType={contentType} />
+        <BlockImage
+          image={resourceImage}
+          loading={isLoading}
+          contentType={contentTypeMapping[firstResourceType] ?? contentTypeMapping['default']}
+        />
       </ImageWrapper>
       <BlockInfoWrapper>
-        <TopicAndTitleLoader loading={isLoading}>
+        <ResourceTypeAndTitleLoader loading={isLoading}>
           <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
-            <ResourceTitle>{title}</ResourceTitle>
+            <Title>{title}</Title>
           </ResourceTitleLink>
-        </TopicAndTitleLoader>
-        <TopicList topics={topics} />
+        </ResourceTypeAndTitleLoader>
+        <ResourceTypeList resourceTypes={resourceTypes} />
         <BlockDescription>{description}</BlockDescription>
         <RightRow>
           {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}

@@ -80,8 +80,13 @@ const TagSelector = ({ selected, tags, onChange, onCreateTag, className, label }
 
   return (
     <StyledTagSelector className={className}>
-      {label && <StyledLabel id="tagselector-label">{label}</StyledLabel>}
+      {label && (
+        <StyledLabel htmlFor="tagselector-creatable" id="tagselector-label">
+          {label}
+        </StyledLabel>
+      )}
       <CreatableSelect
+        id="tagselector-creatable"
         aria-labelledby={label ? 'tagselector-label' : undefined}
         ariaLiveMessages={createAriaMessages(t)}
         components={{

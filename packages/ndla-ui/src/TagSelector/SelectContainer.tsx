@@ -22,7 +22,7 @@ const StyledContainer = styled.div`
   &:focus-within {
     border-color: ${colors.brand.tertiary};
   }
-  ${fonts.sizes(16)}
+  ${fonts.sizes(16)};
 `;
 
 const SelectContainer = ({ innerProps, selectProps, children }: ContainerProps<TagType, true>) => {

@@ -7,7 +7,7 @@
  */
 
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { DropdownIndicatorProps, components } from 'react-select';
@@ -25,9 +25,15 @@ const DropdownIndicator = ({ selectProps, children, ...props }: DropdownIndicato
 
   const { menuIsOpen } = selectProps;
   const Icon = menuIsOpen ? ChevronUp : ChevronDown;
+
+  const css = useMemo(
+    () => iconButtonStyle({ colorTheme: 'greyLighter', variant: 'ghost', shape: 'pill', size: 'small' }),
+    [],
+  );
+
   return (
     <components.DropdownIndicator
-      css={iconButtonStyle({ colorTheme: 'greyLighter', variant: 'ghost', shape: 'pill', size: 'small' })}
+      css={css}
       {...props}
       selectProps={selectProps}
       aria-label={menuIsOpen ? t('tagSelector.hideAllTags') : t('tagSelector.showAllTags')}>

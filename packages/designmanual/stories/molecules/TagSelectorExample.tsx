@@ -51,12 +51,12 @@ const TagSelectorExample = () => {
         label={t('tagSelector.label')}
         tags={exampleTags}
         selected={exampleTagsSelected}
-        onChange={(tags: readonly TagType[]) => {
+        onChange={(tags: string[]) => {
           setExampleTagsSelected(tags);
         }}
         onCreateTag={(newTagName: string) => {
-          setExampleTags((prevTags) => [...prevTags, { value: newTagName, label: newTagName }]);
-          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, { value: newTagName, label: newTagName }]);
+          setExampleTags((prevTags) => [...prevTags, newTagName]);
+          setExampleTagsSelected((prevSelectedTags) => [...prevSelectedTags, newTagName]);
         }}
       />
     </Container>

@@ -6,9 +6,7 @@
  *
  */
 
-import TagSelector from './TagSelector';
-import { TagType } from './types';
-
-export type { TagType };
-
-export { TagSelector };
+export interface TagType {
+  readonly value: string;
+  readonly label: string;
+}

@@ -30,11 +30,50 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      screenReaderStatus: '{{count}} results available',
+      disabled: 'disabled',
+      selected: 'selected',
+      focused: 'focused',
+      guidance: {
+        menu: {
+          updown: 'Use Up and Down to choose tags',
+          enter: 'press Enter to select the currently focused tag',
+          escape: 'press Escape to exit the menu',
+          tab: 'press Tab to select the tag and exit the menu',
+        },
+        input: {
+          select: 'Tag menu',
+          focused: 'is focused',
+          refine: 'type to refine list',
+          down: 'press Down to open the menu',
+          left: 'press Left to focus selected tags',
+          space: 'press Space to create new tag',
+        },
+        value:
+          'Use left and right to toggle between focused tags, press Backspace to remove the currently focused value. The last tag will be removed if none are selected.',
+      },
+      onChange: {
+        deselect: 'tag {{label}}, deselected.',
+        clear: 'All selected options have been cleared.',
+        initialFocus: `Tags {{labels}}, selected.`,
+        selectedDisabled: 'Tag {{label}} is disabled. Select another option.',
+        selected: 'Tag {{label}}, selected.',
+      },
+      onFocus: {
+        value: 'tag {{label}} focused, {{position}}.',
+        menu: 'tag {{label}} {{status}}, {{position}}.',
+        of: 'of',
+      },
+      onFilter: ' for search term ',
+    },
+    noOptions: 'No options',
     label: 'Add tag',
+    createLabel: 'Add tag {{tag}}',
     placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
-    hideAllTags: 'Hide all tags',
-    showAllTags: 'Show all tags',
+    hideTags: 'Hide tags',
+    showTags: 'Show tags',
   },
   htmlTitles: {
     titleTemplate,

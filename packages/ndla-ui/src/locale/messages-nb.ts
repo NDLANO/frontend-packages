@@ -30,11 +30,50 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      screenReaderStatus: '{{count}} resultater tilgjengelig',
+      disabled: 'utilgjengelig',
+      selected: 'valgt',
+      focused: 'fokusert',
+      guidance: {
+        menu: {
+          updown: 'Bruk piltaster opp og ned for å velge emneknagger',
+          enter: 'trykk enter for å velge den markerte emneknaggen',
+          escape: 'trykk escape for å lukke menyen',
+          tab: 'trykk tab for å velge emneknaggen og lukke menyen',
+        },
+        input: {
+          select: 'Emneknagg-meny',
+          focused: 'er fokusert',
+          refine: 'skriv for å filtrere listen med emneknagger',
+          down: 'trykk pil ned for å åpne menyen',
+          left: 'trykk venstre pil for å fokusere valgte emneknagger',
+          space: 'trykk mellomrom for å opprette ny emneknagg',
+        },
+        value:
+          'Bruk høyre og venstre pil for å navigere mellom valgte emneknagger, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.',
+      },
+      onChange: {
+        deselect: 'emneknagg {{label}}, fjernet.',
+        clear: 'Alle valgte emneknagger fjernet.',
+        initialFocus: `Emneknagger {{labels}}, valgt.`,
+        selectedDisabled: 'Emneknagg {{label}} kan ikke velges. Velg et annet alternativ.',
+        selected: 'Emneknagg {{label}},  valgt.',
+      },
+      onFocus: {
+        value: 'emneknagg {{label}} fokusert, {{position}}.',
+        menu: 'emneknagg {{label}} {{status}}, {{position}}.',
+        of: 'av',
+      },
+      onFilter: ' for søkeord ',
+    },
+    noOptions: 'Ingen valgmuligheter',
     label: 'Legg til emneknagg',
+    createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Skriv inn emneknagg',
     removeTag: 'Ta vekk {{name}}',
-    hideAllTags: 'Skjul alle emneknagger',
-    showAllTags: 'Vis alle emneknagger',
+    hideTags: 'Skjul emneknagger',
+    showTags: 'Vis emneknagger',
   },
   htmlTitles: {
     titleTemplate,

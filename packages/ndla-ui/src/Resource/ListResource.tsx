@@ -216,7 +216,7 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const firstContentType = resourceTypes?.[0].id ?? '';
+  const firstContentType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
   const handleClick = () => {
     if (linkRef.current) {

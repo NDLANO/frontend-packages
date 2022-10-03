@@ -12,25 +12,27 @@ import { TagType, TagSelector } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 
 const dummyData = [
-  { value: 'Cat', label: 'Cat' },
-  { value: 'Dog', label: 'Dog' },
-  { value: 'Fish', label: 'Fish' },
-  { value: 'Dinosaur', label: 'Dinosaur' },
-  { value: 'Frog', label: 'Frog' },
-  { value: 'Dragon', label: 'Dragon' },
-  { value: 'Lion', label: 'Lion' },
-  { value: 'Snake', label: 'Snake' },
-  { value: 'Alligator', label: 'Alligator' },
-  { value: 'Antelope', label: 'Antelope' },
-  { value: 'Bear', label: 'Bear' },
-  { value: 'Baboon', label: 'Baboon' },
-  { value: 'Kangaroo', label: 'Kangaroo' },
-  { value: 'Scorpion', label: 'Scorpion' },
-  { value: 'Goose', label: 'Goose' },
-  { value: 'Fox', label: 'Fox' },
-  { value: 'Donkey', label: 'Donkey' },
-  { value: 'Chicken', label: 'Chicken' },
+  'Cat',
+  'Dog',
+  'Fish',
+  'Dinosaur',
+  'Frog',
+  'Dragon',
+  'Lion',
+  'Snake',
+  'Alligator',
+  'Antelope',
+  'Bear',
+  'Baboon',
+  'Kangaroo',
+  'Scorpion',
+  'Goose',
+  'Fox',
+  'Donkey',
+  'Chicken',
 ];
+
+const tags = dummyData.map((tag) => ({ value: tag, label: tag }));
 
 const Container = styled.div`
   margin: 10px auto;
@@ -42,8 +44,8 @@ const Container = styled.div`
 
 const TagSelectorExample = () => {
   const { t } = useTranslation();
-  const [exampleTags, setExampleTags] = useState<readonly TagType[]>(dummyData);
-  const [exampleTagsSelected, setExampleTagsSelected] = useState<readonly TagType[]>(dummyData.slice(0, 0));
+  const [exampleTags, setExampleTags] = useState<readonly TagType[]>(tags);
+  const [exampleTagsSelected, setExampleTagsSelected] = useState<readonly TagType[]>(tags.slice(0, 0));
 
   return (
     <Container>

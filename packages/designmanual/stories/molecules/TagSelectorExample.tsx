@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { TagType, TagSelector } from '@ndla/ui';
+import { TagSelector } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 
 const dummyData = [

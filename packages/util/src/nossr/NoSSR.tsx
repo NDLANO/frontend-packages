@@ -5,12 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  children: ReactNode;
-  fallback: ReactNode | null;
+  children: any;
+  fallback: any | null;
 }
 
 /**
@@ -25,10 +24,10 @@ const NoSSR = ({ children, fallback }: Props) => {
   }, []);
 
   if (!mounted) {
-    return <>{fallback}</>;
+    return fallback;
   }
 
-  return <>{children}</>;
+  return children;
 };
 
 export default NoSSR;

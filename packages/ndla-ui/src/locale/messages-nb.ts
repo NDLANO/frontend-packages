@@ -1067,7 +1067,7 @@ const messages = {
       },
       tagInfo: {
         title: 'Slik tagger du favorittressursene dine',
-        text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Emneknaggene mine</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
+        text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Mine emneknagger</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
       },
     },
     resource: {

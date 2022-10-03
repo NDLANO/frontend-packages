@@ -1016,7 +1016,7 @@ const messages = {
       'Er du sikker på at du vil slette mappa? Dersom mappa har undermapper vil desse også slettast. Denne handlinga kan ikkje endrast.',
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
-    myTags: 'Emneknaggane mine',
+    myTags: 'Mine emneknaggar',
     newFolder: 'Ny mappe',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',
@@ -1068,7 +1068,7 @@ const messages = {
       },
       tagInfo: {
         title: 'Slik taggar du favorittressursane dine',
-        text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Emneknaggane mine</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
+        text: 'Når du lagrar ein ressurs, får du høve til å markere ressursen med ein emneknagg. Emneknaggen er eit nøkkelord du kan bruke til å finne tilbake til ressursar på tvers av mapper. Du finn alle emneknaggane du har brukt, ved å velje <strong>Mine emneknaggar</strong> i venstremenyen. Her kan du også sjå kva for ressursar du har merkt med kva knagg.',
       },
     },
     resource: {

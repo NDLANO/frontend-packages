@@ -975,10 +975,13 @@ const messages = {
     name: 'Namn',
     mail: 'E-post',
     username: 'Brukarnamn',
+    mobile: 'Telefonnummer',
+    preferredLanguage: 'Føretrekt målform',
     groupTypes: {
       basic: 'Basisgruppe',
       teaching: 'Undervisningsgruppe',
       other: 'Andre grupper',
+      grepCode: 'Grepkodar',
     },
     wrongUserInfoDisclaimer:
       'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',

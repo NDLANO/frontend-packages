@@ -31,7 +31,7 @@
     "@ndla/icons": "^1.14.0",
     "@ndla/modal": "^1.6.1",
     "@ndla/tooltip": "^2.2.2",
-    "@ndla/ui": "^27.1.6",
+    "@ndla/ui": "^29.0.0",
     "focus-trap-react": "^8.9.2",
     "lodash": "^4.17.20"
   },

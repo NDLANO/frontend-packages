@@ -203,6 +203,17 @@ const FrontpageAllSubjects = ({
                 <MessageBox>{category.message}</MessageBox>
               </MessageBoxWrapper>
             )}
+            {category.name === t('subjectCategories.beta') && (
+              <MessageBoxWrapper>
+                <MessageBox>{t('messageBoxInfo.frontPageBeta')}</MessageBox>
+                <MessageBox>{category.message}</MessageBox>
+              </MessageBoxWrapper>
+            )}
+            {category.name === t('subjectCategories.archive') && (
+              <MessageBoxWrapper>
+                <MessageBox>{t('messageBoxInfo.frontPageExpired')}</MessageBox>
+              </MessageBoxWrapper>
+            )}
             {renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects)}
           </>
         ),

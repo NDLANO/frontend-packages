@@ -27,6 +27,15 @@ const Container = styled.div`
   height: 100%;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
+
+  img {
+    transition: all ${animations.durations.fast} ease-in-out;
+  }
+  :hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const ItemLink = styled(SafeLink)`
@@ -88,15 +97,16 @@ const ImageWrapper = styled.div<{ isTopic: boolean }>`
   justify-content: center;
   align-items: center;
   margin: ${spacing.small};
+  overflow: hidden;
+  ${(props) => props.isTopic && `border-radius: 50%;`};
 `;
 
-const ImageElement = styled.img<{ isTopic: boolean }>`
+const ImageElement = styled.img`
   border-radius: 2px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   max-width: unset;
-  ${(props) => props.isTopic && `border-radius: 50%;`};
 `;
 
 const ContextWrapper = styled.div`
@@ -139,7 +149,7 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
         </TextWrapper>
         {img && (
           <ImageWrapper isTopic={isTopic}>
-            <ImageElement src={img.url} alt={img.alt} isTopic={isTopic} />
+            <ImageElement src={img.url} alt={img.alt} />
           </ImageWrapper>
         )}
       </ItemLink>

@@ -113,6 +113,7 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: 'Eará resurssat',
   },
   subjectTypes: {
+    [subjectTypes.BETA_SUBJECT]: 'Betafága',
     [subjectTypes.SUBJECT]: 'Fága',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resursačoakkáldat',
   },

@@ -53,6 +53,7 @@ const TopicHeaderVisualElementWrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border-radius: 50%;
 `;
 
 const TopicHeaderImage = styled.img`

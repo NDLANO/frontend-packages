@@ -206,7 +206,6 @@ const FrontpageAllSubjects = ({
             {category.name === t('subjectCategories.beta') && (
               <MessageBoxWrapper>
                 <MessageBox>{t('messageBoxInfo.frontPageBeta')}</MessageBox>
-                <MessageBox>{category.message}</MessageBox>
               </MessageBoxWrapper>
             )}
             {category.name === t('subjectCategories.archive') && (

@@ -31,7 +31,6 @@ const StyledSelectedFolder = styled(Button)`
   flex: 1;
   justify-content: flex-start;
   color: ${colors.black};
-  border: none;
   :hover,
   :focus {
     background: none;
@@ -83,7 +82,6 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
 
     const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
       if (e.key === 'Enter') {
-        onToggleTree(!showTree);
         if (showTree && focusedFolder) {
           setSelectedFolder(focusedFolder);
         }
@@ -91,7 +89,6 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       }
       if (e.key === 'Escape') {
         onToggleTree(false);
-        e.preventDefault();
         return;
       }
       if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
@@ -104,16 +101,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
     };
 
     return (
-      <StyledRow
-        isOpen={showTree}
-        onMouseDown={(e) => {
-          if (!e.defaultPrevented) {
-            e.preventDefault();
-            e.stopPropagation();
-            onToggleTree(!showTree);
-            innerRef.current?.focus();
-          }
-        }}>
+      <StyledRow isOpen={showTree}>
         <StyledSelectedFolder
           ref={innerRef}
           tabIndex={0}
@@ -128,10 +116,24 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           colorTheme="light"
           fontWeight="normal"
           shape="sharp"
-          onKeyDown={onKeyDown}>
+          onKeyDown={onKeyDown}
+          onClick={() => {
+            innerRef.current?.focus();
+            onToggleTree(!showTree);
+          }}>
           {selectedFolder?.name}
         </StyledSelectedFolder>
-        <IconButton aria-hidden aria-label="" tabIndex={-1} variant="ghost" colorTheme="greyLighter" size="small">
+        <IconButton
+          aria-hidden
+          aria-label=""
+          tabIndex={-1}
+          variant="ghost"
+          colorTheme="greyLighter"
+          size="small"
+          onClick={() => {
+            innerRef.current?.focus();
+            onToggleTree(!showTree);
+          }}>
           {showTree ? <ChevronUp /> : <ChevronDown />}
         </IconButton>
       </StyledRow>

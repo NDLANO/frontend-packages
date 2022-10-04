@@ -1,6 +1,6 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-export interface Props extends HTMLAttributes<SVGSVGElement> {
+export interface Props {
   id?: string;
   color?: string;
   title?: string;

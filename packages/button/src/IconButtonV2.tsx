@@ -7,10 +7,9 @@
  */
 
 import React from 'react';
+import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
-import css from '@emotion/css';
-import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
-import { ButtonSize } from './types';
+import Button, { ButtonProps } from './ButtonV2';
 
 export const svgSizes = {
   xsmall: spacingUnit * 0.75,
@@ -20,42 +19,33 @@ export const svgSizes = {
   large: spacingUnit * 2.5,
 };
 
-interface IconButtonStyleProps extends ButtonStyleProps {
-  size: ButtonSize;
-}
-
-export const iconButtonStyle = ({ size, ...props }: IconButtonStyleProps) => css`
-  ${buttonStyle({ size, ...props })}
-
-  border-radius: 100%;
-  padding: ${spacingUnit * (svgSizes[size] > spacingUnit ? 0.5 : 0.25)}px;
-  line-height: 1;
-  border-color: transparent;
-  min-height: unset;
-  svg {
-    width: ${svgSizes[size]}px;
-    height: ${svgSizes[size]}px;
-    margin: 0;
-  }
-`;
-
 export interface IconButtonProps extends ButtonProps {
   ['aria-label']: string;
 }
 
-export const IconButton = ({
-  children,
-  size = 'small',
-  colorTheme = 'primary',
-  variant,
-  shape,
-  fontWeight,
-  inverted,
-  ...rest
-}: IconButtonProps) => (
-  <button css={iconButtonStyle({ size, variant, shape, fontWeight, inverted, colorTheme })} {...rest}>
+interface StyledButtonProps extends ButtonProps {
+  svgSize: number;
+}
+
+const shouldForwardProp = (name: string) => name !== 'svgSize';
+
+const StyledButton = styled(Button, { shouldForwardProp })<StyledButtonProps>`
+  border-radius: 100%;
+  padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.5 : 0.25)}px;
+  line-height: 1;
+  border-color: transparent;
+  min-height: unset;
+  svg {
+    width: ${({ svgSize }) => svgSize}px;
+    height: ${({ svgSize }) => svgSize}px;
+    margin: 0;
+  }
+`;
+
+export const IconButton = ({ children, size = 'small', ...rest }: IconButtonProps) => (
+  <StyledButton svgSize={svgSizes[size]} {...rest}>
     {children}
-  </button>
+  </StyledButton>
 );
 
 export default IconButton;

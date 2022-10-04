@@ -8,7 +8,7 @@
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, misc, utils } from '@ndla/core';
+import { colors, fonts, misc, spacing } from '@ndla/core';
 import { css } from '@emotion/core';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
@@ -62,7 +62,16 @@ const ScrollableDiv = styled.div<ScrollableDivProps>`
     type === 'picker' &&
     css`
       overflow: overlay;
-      ${utils.scrollbar}
+      ::-webkit-scrollbar {
+        width: ${spacing.small};
+      }
+      ::-webkit-scrollbar-thumb {
+        border: 4px solid transparent;
+        border-radius: 14px;
+        background-clip: padding-box;
+        padding: 0 4px;
+        background-color: ${colors.brand.neutral7};
+      }
     `}
 `;
 

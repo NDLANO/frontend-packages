@@ -8,8 +8,8 @@
 
 import React, { forwardRef, HTMLProps, ReactElement, ReactNode, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { SerializedStyles } from '@emotion/core';
-import { colors, fonts, misc, spacing, spacingUnit, utils } from '@ndla/core';
+import { css, SerializedStyles } from '@emotion/core';
+import { colors, fonts, misc, spacing, spacingUnit } from '@ndla/core';
 import { useForwardedRef } from '@ndla/util';
 
 interface BaseInputProps {
@@ -57,7 +57,18 @@ const StyledLabel = styled('label', { shouldForwardProp: shouldForwardLabel })<S
   padding: 20px ${spacing.small} ${spacing.small} 0;
   font-weight: ${fonts.weight.semibold};
   ${fonts.sizes(14, 1.1)};
-  ${(p) => p.labelHidden && utils.labelHidden}
+  ${(p) =>
+    p.labelHidden &&
+    css`
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    `};
 `;
 
 interface StyledInputWrapperProps {

@@ -964,7 +964,7 @@ const messages = {
     error: 'Ein feil oppstod ved lasting av ein ekstern ressurs.',
   },
   concept: {
-    showDescription: 'Vis skildring av forklaringa',
+    showDescription: '{{title}}, begrepsforklaring. Trykk for å åpne forklaringa.',
     reuse: 'Bruk forklaring',
     error: {
       title: 'Ein feil oppstod',

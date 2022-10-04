@@ -964,7 +964,7 @@ const messages = {
     error: 'Boasttuvuohta čuožžilii olgguldas resurssa viežžamis.',
   },
   concept: {
-    showDescription: 'Čájet čilgehusa govvideami.',
+    showDescription: '{{title}} ,Čájet čilgehusa govvideami.',
     reuse: 'Geavat čilgehusa',
     error: {
       title: 'Boasttuvuohta čuožžilii',

@@ -36,7 +36,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
   label {
     cursor: pointer;
     &:after {
-      content "";
+      content: '';
       display: block;
       width: ${SIZE}px;
       height: ${SIZE}px;
@@ -50,7 +50,7 @@ const StyledSwitch = styled.div<StyledSwitchProps>`
       cursor: pointer;
     }
     &:before {
-      content "";
+      content: '';
       display: block;
       position: absolute;
       right: 0;

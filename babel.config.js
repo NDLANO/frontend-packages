@@ -6,6 +6,7 @@ module.exports = {
     '@emotion/babel-preset-css-prop',
   ],
   plugins: [
+    '@emotion',
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',

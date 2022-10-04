@@ -113,7 +113,7 @@
 
 .c-figure__caption--hidden-caption {
   display: none;
-  @include mq($until: desktop) {
+  @include mq($until: tablet) {
     display: block;
   }
 }
@@ -200,7 +200,7 @@
     fill: $brand-color;
     color: $brand-color;
   }
-  @include mq($until: desktop) {
+  @include mq($until: tablet) {
     display: none;
   }
 }

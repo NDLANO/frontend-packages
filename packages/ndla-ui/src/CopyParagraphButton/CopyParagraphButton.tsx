@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState, MouseEvent } from 'react';
+import React, { useEffect, useState, MouseEvent } from 'react';
 
 import styled from '@emotion/styled';
 import { Link } from '@ndla/icons/common';
@@ -42,12 +42,6 @@ interface Props {
   title?: string | null;
   content?: string | null;
   hydrate?: boolean;
-}
-
-interface WrapperProps {
-  title: string;
-  hydrate?: boolean;
-  children: ReactNode;
 }
 
 const CopyParagraphButton = ({ title, content, hydrate }: Props) => {

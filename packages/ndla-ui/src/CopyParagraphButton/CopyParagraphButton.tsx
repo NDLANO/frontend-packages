@@ -53,14 +53,14 @@ interface CopyButtonProps {
 
 const CopyButton = ({ onClick, title, tooltip, content }: CopyButtonProps) => {
   return (
-    <>
+    <div>
       <IconButton onClick={onClick} data-title={title}>
         <Tooltip tooltip={tooltip}>
           <Link title={''} />
         </Tooltip>
       </IconButton>
       <h2 id={title} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }} />
-    </>
+    </div>
   );
 };
 

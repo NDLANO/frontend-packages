@@ -113,6 +113,7 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressurser',
   },
   subjectTypes: {
+    [subjectTypes.BETA_SUBJECT]: 'Betafag',
     [subjectTypes.SUBJECT]: 'Fag',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
   },

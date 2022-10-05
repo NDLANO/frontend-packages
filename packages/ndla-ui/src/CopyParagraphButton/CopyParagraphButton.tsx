@@ -50,17 +50,6 @@ interface WrapperProps {
   children: ReactNode;
 }
 
-const WrapperComponent = ({ title, hydrate, children }: WrapperProps) => {
-  if (hydrate) {
-    return <>{children}</>;
-  }
-  return (
-    <ContainerDiv data-header-copy-container data-title={title}>
-      {children}
-    </ContainerDiv>
-  );
-};
-
 const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
   const { t } = useTranslation();
   const [hasCopied, setHasCopied] = useState(false);
@@ -86,15 +75,30 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
   const sanitizedTitle = encodeURIComponent(title.replace(/ /g, '-'));
   const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
 
+  if (hydrate) {
+    return (
+      <>
+        <IconButton onClick={onCopyClick} data-title={sanitizedTitle}>
+          <Tooltip tooltip={tooltip}>
+            <Link title={''} />
+          </Tooltip>
+        </IconButton>
+        <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }} />
+      </>
+    );
+  }
+
   return (
-    <WrapperComponent hydrate={hydrate} title={title}>
-      <IconButton onClick={onCopyClick} data-title={sanitizedTitle}>
-        <Tooltip tooltip={tooltip}>
-          <Link title={''} />
-        </Tooltip>
-      </IconButton>
-      <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
-    </WrapperComponent>
+    <ContainerDiv data-header-copy-container data-title={title}>
+      <>
+        <IconButton onClick={onCopyClick} data-title={sanitizedTitle}>
+          <Tooltip tooltip={tooltip}>
+            <Link title={''} />
+          </Tooltip>
+        </IconButton>
+        <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }} />
+      </>
+    </ContainerDiv>
   );
 };
 

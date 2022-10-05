@@ -1,6 +1,6 @@
 {
   "name": "@ndla/icons",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A package containing icons used in NDLA frontends",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -32,10 +32,10 @@
     "action"
   ],
   "dependencies": {
-    "@emotion/styled": "^11.10.4",
     "@ndla/core": "^3.0.0"
   },
   "peerDependencies": {
+    "@emotion/styled": "^11.10.4",
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0"
   },
   "publishConfig": {

@@ -27,6 +27,7 @@
     "es"
   ],
   "peerDependencies": {
+    "@emotion/react": "^11.10.4",
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {

@@ -34,6 +34,7 @@
     "@ndla/types-audio-api": "^0.0.10"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.10.4",
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0",
     "react-bem-helper": "^1.4.1"
   },

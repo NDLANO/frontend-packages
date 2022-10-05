@@ -35,6 +35,7 @@
     "@ndla/core": "^3.0.0"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0"
   },

@@ -89,6 +89,10 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
   const sanitizedTitle = encodeURIComponent(title.replace(/ /g, '-'));
   const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
 
+  if (hydrate) {
+    return <CopyButton onClick={onCopyClick} title={sanitizedTitle} tooltip={tooltip} content={content} />;
+  }
+
   return (
     <ContainerDiv data-header-copy-container data-title={title}>
       <CopyButton onClick={onCopyClick} title={sanitizedTitle} tooltip={tooltip} content={content} />

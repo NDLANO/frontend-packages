@@ -32,10 +32,10 @@
     "action"
   ],
   "dependencies": {
-    "@emotion/styled": "^11.10.4",
     "@ndla/core": "^3.0.0"
   },
   "peerDependencies": {
+    "@emotion/styled": "^11.10.4",
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0"
   },
   "publishConfig": {

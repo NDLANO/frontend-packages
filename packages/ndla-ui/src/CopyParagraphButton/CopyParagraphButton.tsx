@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState, MouseEvent } from 'react';
+import React, { useEffect, useState, MouseEvent } from 'react';
 
 import styled from '@emotion/styled';
 import { Link } from '@ndla/icons/common';

@@ -1,6 +1,6 @@
 import React, { FormEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 
 interface Props {

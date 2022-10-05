@@ -10,7 +10,7 @@ import React, { Component, Fragment } from 'react';
 import { Structure } from '@ndla/editor';
 import { Spinner } from '@ndla/icons';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Button from '@ndla/button';
 import { colors, spacing, fonts } from '@ndla/core';
 import { AlertCircle } from '@ndla/icons/editor';

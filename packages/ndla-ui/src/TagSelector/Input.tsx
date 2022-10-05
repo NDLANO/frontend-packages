@@ -6,7 +6,7 @@
  *
  */
 
-import css from '@emotion/css';
+import { css } from '@emotion/react';
 import { colors, spacing } from '@ndla/core';
 import React from 'react';
 import { components, InputProps } from 'react-select';

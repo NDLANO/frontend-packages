@@ -13,7 +13,7 @@ import {
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
 import { colors, fonts, spacing } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';

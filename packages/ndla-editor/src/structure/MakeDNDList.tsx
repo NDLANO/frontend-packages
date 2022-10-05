@@ -10,7 +10,7 @@ import {
   DropResult,
 } from 'react-beautiful-dnd';
 import { colors } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { DragHorizontal } from '@ndla/icons/editor';
 
 const dropZone = css`

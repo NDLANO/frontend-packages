@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Button from '@ndla/button';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';

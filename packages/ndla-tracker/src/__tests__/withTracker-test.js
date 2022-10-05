@@ -10,7 +10,8 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { createMemoryHistory } from 'history';
 import sinon from 'sinon';
 import withTracker from '../withTracker';
@@ -60,9 +61,9 @@ ChildPage.propTypes = {
 
 test('withTracker HOC renderers Page correctly', () => {
   const PageWithTracker = withTracker(Page);
-  const component = renderer.create(<PageWithTracker />);
+  const { container } = render(<PageWithTracker />);
 
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('sendPageView is called on component mounth ', () => {
@@ -70,7 +71,7 @@ test('sendPageView is called on component mounth ', () => {
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test');
-  renderer.create(<PageWithTracker world="world" />);
+  render(<PageWithTracker world="world" />);
 
   expect(spy.calledOnce).toBe(true);
   expect(spy.args[0]).toMatchSnapshot();
@@ -82,9 +83,9 @@ test('sendPageView is called on component update if url is untracked', () => {
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test1');
-  const component = renderer.create(<PageWithTracker world="world" />);
+  const { rerender } = render(<PageWithTracker world="world" />);
   history.push('/test2');
-  component.getInstance().forceUpdate();
+  rerender(<PageWithTracker world="world" />);
 
   expect(spy.calledTwice).toBe(true);
   expect(spy.args).toMatchSnapshot();
@@ -96,8 +97,8 @@ test('sendPageView is not called on component update if url is tracked', () => {
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test1');
-  const component = renderer.create(<PageWithTracker world="world" />);
-  component.getInstance().forceUpdate();
+  const { rerender } = render(<PageWithTracker world="world" />);
+  rerender(<PageWithTracker world="world" />);
 
   expect(spy.calledOnce).toBe(true);
   expect(spy.args[0]).toMatchSnapshot();
@@ -110,7 +111,7 @@ test('sendPageView is called from child component if two page tracking componten
   const spy = sinon.spy(tracker, 'sendPageView');
 
   history.push('/test');
-  renderer.create(
+  render(
     <PageWithTracker world="world">
       <ChildPageWithTracker world="world" />
     </PageWithTracker>,

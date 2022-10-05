@@ -8,7 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { Menu } from '@ndla/icons/common';
 import { ButtonV2 as Button } from '@ndla/button';

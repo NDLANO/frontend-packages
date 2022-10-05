@@ -7,7 +7,7 @@
  */
 
 import React, { Children, cloneElement, ReactElement } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing } from '@ndla/core';
 
 const FieldSplitterCSS = css`

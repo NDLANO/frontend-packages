@@ -61,6 +61,7 @@ function withTracker<P>(WrappedComponent: TrackableComponent<P>): ComponentType<
     }
 
     render() {
+      //@ts-ignore
       return <WrappedComponent {...this.props} trackPageView={Tracker.trackPageView} />;
     }
   };

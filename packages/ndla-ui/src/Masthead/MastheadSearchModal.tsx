@@ -4,7 +4,7 @@ import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import ToggleSearchButton from '../Search/ToggleSearchButton';

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
 import { FilterListPhone } from '@ndla/ui';

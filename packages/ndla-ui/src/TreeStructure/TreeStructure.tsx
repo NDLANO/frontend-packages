@@ -9,7 +9,7 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, utils } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
 import FolderItems from './FolderItems';

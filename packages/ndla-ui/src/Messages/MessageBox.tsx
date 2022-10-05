@@ -15,7 +15,7 @@ import { WithTranslation, withTranslation } from 'react-i18next';
 // @ts-ignore
 import { Remarkable } from 'remarkable';
 import { CloseButton } from '@ndla/button';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const markdown = new Remarkable({ breaks: true });
 markdown.inline.ruler.enable(['sub', 'sup']);

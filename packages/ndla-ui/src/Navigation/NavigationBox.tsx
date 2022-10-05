@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
 import Button from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Switch } from '@ndla/switch';
 import { uuid } from '@ndla/util';
 import { useTranslation } from 'react-i18next';

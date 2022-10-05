@@ -9,7 +9,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SwipeEventData, useSwipeable } from 'react-swipeable';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { breakpoints, mq, spacing, spacingUnit, fonts, colors } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Spinner } from '@ndla/icons';

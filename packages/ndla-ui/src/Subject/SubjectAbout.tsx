@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import SectionHeading from '../SectionHeading';

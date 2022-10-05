@@ -6,7 +6,7 @@
  *
  */
 
-import { css, SerializedStyles } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/react';
 import { spacing } from '@ndla/core';
 import { ModalMargin, ModalSize } from './types';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
 import { withTranslation, WithTranslation } from 'react-i18next';

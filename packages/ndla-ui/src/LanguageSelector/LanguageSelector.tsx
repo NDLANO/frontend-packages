@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import FocusTrapReact from 'focus-trap-react';
 import { ButtonV2 as Button } from '@ndla/button';
 import { spacing, misc, colors, mq, breakpoints, animations, fonts, spacingUnit } from '@ndla/core';

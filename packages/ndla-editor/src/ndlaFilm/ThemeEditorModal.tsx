@@ -7,7 +7,7 @@
  */
 
 import React, { FormEvent } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import { spacing, spacingUnit } from '@ndla/core';

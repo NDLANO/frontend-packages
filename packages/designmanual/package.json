@@ -19,13 +19,13 @@
   },
   "author": "ndla@knowit.no",
   "peerDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "prop-types": "^15.8.1",
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0",
     "react-i18next": "^11.18.6"
   },
   "devDependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
     "@fontsource/shadows-into-light-two": "^4.5.8",
     "@fontsource/source-code-pro": "^4.5.9",
     "@fontsource/source-sans-pro": "^4.5.9",

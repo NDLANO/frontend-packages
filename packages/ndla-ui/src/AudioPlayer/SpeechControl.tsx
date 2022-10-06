@@ -51,12 +51,12 @@ const SpeechControl = ({ src, title }: Props) => {
     }
   };
   return (
-    <>
+    <div>
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <SpeechPlayButton type="button" onClick={togglePlay}>
         <VolumeUp role="img" aria-label="play" title="play" />
       </SpeechPlayButton>
-    </>
+    </div>
   );
 };
 

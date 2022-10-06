@@ -1069,6 +1069,7 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     myPage: {
+      imageAlt: 'Halvnært bilde av jente som holder et nettbrett i hendene. Oppå nettbrettet ligger det ei samling fargeprøver i ulike former og farger. Grafikk.',
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
       confirmDeleteAccountButton: 'Slett konto',
       myPage: 'Min side',

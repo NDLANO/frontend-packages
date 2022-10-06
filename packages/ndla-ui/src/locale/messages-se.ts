@@ -1071,6 +1071,8 @@ const messages = {
     shortView: 'Oanehis listu',
 
     myPage: {
+      imageAlt:
+        'Halvnært bilde av jente som holder et nettbrett i hendene. Oppå nettbrettet ligger det ei samling fargeprøver i ulike former og farger. Grafikk.',
       confirmDeleteAccount: 'Leat go sihkar ahte dáhtut sihkkut kontu?',
       confirmDeleteAccountButton: 'Sihko kontu',
       myPage: 'Mu siidu',

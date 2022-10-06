@@ -1072,6 +1072,8 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Card view',
     myPage: {
+      imageAlt:
+        'Medium close-up of girl holding a tablet. On top of the tablet there are colour samples in different shapes and colours. Graphic image.',
       confirmDeleteAccount: 'Are you sure you want to delete your account?',
       confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',

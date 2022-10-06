@@ -61,6 +61,7 @@ const ScrollableDiv = styled.div<ScrollableDivProps>`
   ${({ type }) =>
     type === 'picker' &&
     css`
+      overflow: auto;
       overflow: overlay;
       ${utils.scrollbar}
     `}

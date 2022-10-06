@@ -13,6 +13,7 @@ import { MenuListProps } from 'react-select';
 import { TagType } from './types';
 
 export const StyledMenuList = styled.div`
+  overflow: auto;
   overflow: overlay;
   ${utils.scrollbar}
   display: flex;

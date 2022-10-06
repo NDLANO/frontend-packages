@@ -19,6 +19,7 @@ const StyledTagSelectorControl = styled.div`
   align-items: center;
   margin: ${spacing.xxsmall};
 
+  overflow: auto;
   overflow: overlay;
   ${utils.scrollbar}
 `;

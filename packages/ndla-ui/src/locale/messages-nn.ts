@@ -1114,7 +1114,7 @@ const messages = {
       },
     },
     resource: {
-      add: 'Legg til mappe/tag',
+      add: 'Legg til mappe/emneknagg',
       remove: 'Fjern',
       removeTitle: 'Fjern ressurs',
       confirmRemove: 'Er du sikker på at du ønsker å fjerne ressursen frå denne mappa?',

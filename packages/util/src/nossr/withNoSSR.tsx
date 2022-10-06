@@ -11,7 +11,10 @@ import { ComponentType } from 'react';
 import NoSSR from './NoSSR';
 
 /** Basic HoC to wrap your component in `NoSSR`, see `NoSSR.tsx` */
-function withNoSSR<TProps extends object>(WrappedComponent: ComponentType<TProps>, fallback: ReactNode | null) {
+function withNoSSR<TProps extends object>(
+  WrappedComponent: ComponentType<any>,
+  fallback: ReactNode | null,
+): ComponentType<TProps> {
   return (props: TProps) => (
     <NoSSR fallback={fallback}>
       <WrappedComponent {...(props as TProps)} />

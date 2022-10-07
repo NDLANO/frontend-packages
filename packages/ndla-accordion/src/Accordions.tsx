@@ -51,6 +51,7 @@ const Accordions = ({ tiny, single, children }: Props) => {
             open: openPanels.includes(id),
             onClick: () => toggleOpen(id),
             tiny,
+            ...child.props,
           });
         }
         return child;

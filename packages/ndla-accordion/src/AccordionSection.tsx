@@ -51,6 +51,7 @@ const AccordionSection = (props: Props) => {
               if (isValidElement(child) && typeof child.type !== 'string') {
                 return cloneElement(child, {
                   setIsOpen: onClick ? onClick : setIsOpen,
+                  ...child.props,
                 });
               }
               return child;

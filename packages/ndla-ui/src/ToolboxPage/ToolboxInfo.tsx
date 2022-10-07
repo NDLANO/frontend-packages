@@ -39,16 +39,19 @@ const Introduction = styled.p`
   }
 `;
 
-type Props = {
+interface Props {
+  id?: string;
   title: string;
   introduction: string;
   topics: ItemProps[];
   onSelectTopic?: (event: MouseEvent<HTMLElement>, id?: string) => void;
-};
+}
 
-const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t }: Props & WithTranslation) => (
+const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t, id }: Props & WithTranslation) => (
   <>
-    <Heading>{title}</Heading>
+    <Heading id={id} tabIndex={-1}>
+      {title}
+    </Heading>
     <Introduction>{introduction}</Introduction>
     <NavigationBox
       items={topics}

@@ -29,7 +29,7 @@ const StyledResourceDescription = styled.p`
   line-clamp: 2;
   line-height: 1em;
   height: 3.1em;
-  margin: 0;
+  margin: ${spacing.small} ${spacing.small} 0;
   overflow: hidden;
   ${fonts.sizes(16)};
   text-overflow: ellipsis;
@@ -47,8 +47,9 @@ const ResourceWrapper = styled.div`
   grid-template-areas:
     'image  topicAndTitle   tags'
     'image  description     description';
-
+  padding-bottom: ${spacing.small};
   ${mq.range({ until: breakpoints.mobileWide })} {
+    padding-bottom: 0;
     grid-template-columns: auto 1fr;
     grid-template-areas:
       'image                topicAndTitle'
@@ -57,10 +58,8 @@ const ResourceWrapper = styled.div`
   }
 
   cursor: pointer;
-  padding: ${spacing.small};
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
-  gap: 0 ${spacing.small};
 
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
@@ -83,21 +82,16 @@ const TagsandActionMenu = styled.div`
   align-self: flex-start;
   justify-self: flex-end;
   justify-content: flex-end;
-
-  ${mq.range({ from: breakpoints.mobileWide })} {
-    margin-top: -${spacing.xsmall};
-    margin-right: -${spacing.xxsmall};
-  }
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`
   grid-area: image;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
-    width: 54px;
-    height: 40px;
+    width: 56px;
   }
   overflow: hidden;
+  margin: ${spacing.small} 0 0 ${spacing.small};
   border-radius: 2px;
   display: flex;
   align-items: center;
@@ -112,7 +106,8 @@ const StyledImage = styled(Image)`
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  margin-top: 2px;
+  align-self: flex-end;
+  margin: ${spacing.small} ${spacing.small} 0;
 `;
 
 interface StyledImageProps {

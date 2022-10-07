@@ -60,6 +60,8 @@ const StyledSafeLink = styled(SafeLink)`
   align-items: center;
   box-shadow: none;
   color: ${colors.brand.grey};
+  min-height: 44px;
+  min-width: 44px;
   &:hover {
     color: ${colors.brand.primary};
   }
@@ -94,12 +96,9 @@ export const Row = styled.div`
 `;
 
 const TagCounterWrapper = styled.span`
-  color: ${colors.brand.secondary};
-  box-shadow: none;
-  margin: 0;
+  display: flex;
   font-weight: ${fonts.weight.semibold};
   ${fonts.sizes('14px', '14px')};
-  padding: 5px;
 `;
 
 export interface ContentIconProps {
@@ -149,15 +148,8 @@ interface CompressedTagListProps {
   tagLinkPrefix?: string;
 }
 
-const TagMenuButton = styled(MenuButton)`
-  &:hover,
-  &:active,
-  &:focus {
-    transition: ${misc.transition.default};
-    border-radius: 100%;
-    background-color: ${colors.brand.light};
-  }
-`;
+const TagMenuButton = styled(MenuButton)``;
+
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -176,11 +168,10 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
         <TagMenuButton
-          hideMenuIcon={true}
+          size="small"
+          menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
           menuItems={remainingTags}
-          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}>
-          <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>
-        </TagMenuButton>
+          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}></TagMenuButton>
       )}
     </>
   );

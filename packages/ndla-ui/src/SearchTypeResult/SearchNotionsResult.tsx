@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { fonts, mq, breakpoints, spacing, colors } from '@ndla/core';
 import { ModalCloseButton } from '@ndla/modal';
-import { withTranslation, WithTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: flex;
@@ -59,7 +58,7 @@ type Props = {
   children: ReactNode;
 };
 
-const SearchNotionsResult = ({ totalCount, onRemove, children }: Props & WithTranslation) => {
+const SearchNotionsResult = ({ totalCount, onRemove, children }: Props) => {
   const { t } = useTranslation();
   return (
     <Wrapper>
@@ -75,4 +74,4 @@ const SearchNotionsResult = ({ totalCount, onRemove, children }: Props & WithTra
   );
 };
 
-export default withTranslation()(SearchNotionsResult);
+export default SearchNotionsResult;

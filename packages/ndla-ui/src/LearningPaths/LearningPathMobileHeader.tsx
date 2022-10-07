@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import React from 'react';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { LearningPathBadge } from '../ContentTypeBadge';
 
 const StyledWrapper = styled.div`
@@ -25,11 +25,14 @@ const StyledMiniHeader = styled.span`
   ${fonts.sizes(16, 1.1)};
 `;
 
-const LearningPathMobileHeader = ({ t }: WithTranslation) => (
-  <StyledWrapper>
-    <LearningPathBadge size="xx-small" background />
-    <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
-  </StyledWrapper>
-);
+const LearningPathMobileHeader = () => {
+  const { t } = useTranslation();
+  return (
+    <StyledWrapper>
+      <LearningPathBadge size="xx-small" background />
+      <StyledMiniHeader>{t('learningPath.youAreInALearningPath')}</StyledMiniHeader>
+    </StyledWrapper>
+  );
+};
 
-export default withTranslation()(LearningPathMobileHeader);
+export default LearningPathMobileHeader;

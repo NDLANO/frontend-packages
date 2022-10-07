@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { spacing, fonts, colors, mq, breakpoints, spacingUnit } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { Forward, Launch } from '@ndla/icons/common';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const StyledLinksWrapper = styled.div`
   display: flex;
@@ -92,43 +92,46 @@ const StyledHeaderLinks = styled.h1`
   margin: ${spacing.xsmall} 0;
 `;
 
-const FooterLinks = ({ t, links }: FooterLinksProps & WithTranslation) => (
-  <>
-    <StyledLinksWrapper>
-      <section>
-        <StyledHeaderLinks>
-          {t('footer.footerLinksHeader')} <Launch />
-        </StyledHeaderLinks>
-        <StyledNav>
-          {commonLinks.map((link) => (
-            <div key={link.url}>
-              <StyledSafeLink
-                key={t<string>(`footer.ndlaLinks.${link.key}`)}
-                aria-label={t(`footer.ndlaLinks.${link.key}`)}
-                to={link.url}
-                target="_blank"
-                rel="noopener noreferrer">
-                {t(`footer.ndlaLinks.${link.key}`)}
-              </StyledSafeLink>
-            </div>
-          ))}
-        </StyledNav>
-      </section>
-      <section>
-        <StyledNav>
-          {links.map((link) => (
-            <StyledSocialMediaLinkWrapper key={link.to}>
-              <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
-              <StyledSafeLink to={link.to}>
-                {link.text}
-                <Forward />
-              </StyledSafeLink>
-            </StyledSocialMediaLinkWrapper>
-          ))}
-        </StyledNav>
-      </section>
-    </StyledLinksWrapper>
-  </>
-);
+const FooterLinks = ({ links }: FooterLinksProps) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <StyledLinksWrapper>
+        <section>
+          <StyledHeaderLinks>
+            {t('footer.footerLinksHeader')} <Launch />
+          </StyledHeaderLinks>
+          <StyledNav>
+            {commonLinks.map((link) => (
+              <div key={link.url}>
+                <StyledSafeLink
+                  key={t<string>(`footer.ndlaLinks.${link.key}`)}
+                  aria-label={t(`footer.ndlaLinks.${link.key}`)}
+                  to={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {t(`footer.ndlaLinks.${link.key}`)}
+                </StyledSafeLink>
+              </div>
+            ))}
+          </StyledNav>
+        </section>
+        <section>
+          <StyledNav>
+            {links.map((link) => (
+              <StyledSocialMediaLinkWrapper key={link.to}>
+                <StyledSocialMediaIcon>{link.icon}</StyledSocialMediaIcon>
+                <StyledSafeLink to={link.to}>
+                  {link.text}
+                  <Forward />
+                </StyledSafeLink>
+              </StyledSocialMediaLinkWrapper>
+            ))}
+          </StyledNav>
+        </section>
+      </StyledLinksWrapper>
+    </>
+  );
+};
 
-export default withTranslation()(FooterLinks);
+export default FooterLinks;

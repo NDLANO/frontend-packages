@@ -68,7 +68,15 @@ interface Props {
   labelHidden?: boolean;
 }
 
-const TagSelector = ({ selected: _selected, tags: _tags, onChange, onCreateTag, className, label }: Props) => {
+const TagSelector = ({
+  selected: _selected,
+  tags: _tags,
+  onChange,
+  onCreateTag,
+  className,
+  label,
+  labelHidden,
+}: Props) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
   const tags = useMemo(() => _tags.map((tag) => ({ value: tag, label: tag })), [_tags]);
@@ -93,7 +101,7 @@ const TagSelector = ({ selected: _selected, tags: _tags, onChange, onCreateTag, 
   return (
     <StyledTagSelector className={className}>
       {label && (
-        <StyledLabel labelHidden htmlFor="tagselector-creatable" id="tagselector-label">
+        <StyledLabel labelHidden={labelHidden} htmlFor="tagselector-creatable" id="tagselector-label">
           {label}
         </StyledLabel>
       )}

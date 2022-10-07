@@ -1062,14 +1062,16 @@ const messages = {
     favourites: 'Favoritter',
     addToFavourites: 'Legg til i mine favoritter',
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
-    alreadyInFolder: 'Finnes allerede i mappen',
+    alreadyInFolder: 'Finnes allerede i mappen. Du kan fortsatt lagre nye emneknagger.',
+    noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
     help: 'Hjelp',
     more: 'Flere valg',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     myPage: {
-      imageAlt: 'Halvnært bilde av jente som holder et nettbrett i hendene. Oppå nettbrettet ligger det ei samling fargeprøver i ulike former og farger. Grafikk.',
+      imageAlt:
+        'Halvnært bilde av jente som holder et nettbrett i hendene. Oppå nettbrettet ligger det ei samling fargeprøver i ulike former og farger. Grafikk.',
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
       confirmDeleteAccountButton: 'Slett konto',
       myPage: 'Min side',

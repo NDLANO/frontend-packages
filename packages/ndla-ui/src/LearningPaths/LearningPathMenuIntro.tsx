@@ -6,12 +6,11 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import { colors, spacing, spacingUnit, fonts, typography, mq, breakpoints, animations } from '@ndla/core';
-import { ArticleFavoritesButton } from '../Article';
 
 const StyledInfoHeader = styled.p`
   ${typography.smallHeading}
@@ -104,20 +103,18 @@ interface Props {
   isOpen: boolean;
   invertedStyle?: boolean;
   name: string;
-  onToggleAddToFavorites?: () => void;
   id: number;
+  heartButton?: ReactNode;
 }
 
-const LearningPathMenuIntro = ({ isOpen, name, invertedStyle, onToggleAddToFavorites, id }: Props) => {
+const LearningPathMenuIntro = ({ isOpen, name, invertedStyle, heartButton }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledMenuIntro isOpen={isOpen} invertedStyle={invertedStyle}>
       <div>
         <StyledRow>
           <StyledInfoHeader>{t('learningPath.youAreInALearningPath')}</StyledInfoHeader>
-          {onToggleAddToFavorites && (
-            <ArticleFavoritesButton onToggleAddToFavorites={onToggleAddToFavorites} articleId={id.toString()} />
-          )}
+          {heartButton}
         </StyledRow>
         <StyledIntroHeader>{name}</StyledIntroHeader>
       </div>

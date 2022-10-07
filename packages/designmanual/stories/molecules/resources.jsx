@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { ResourcesWrapper, ResourceGroup, ResourcesTopicTitle, ContentTypeBadge, constants } from '@ndla/ui';
+import { FavoriteButton } from '@ndla/button';
 import {
   learningPathResources,
   articleResources,
@@ -96,11 +97,6 @@ class Resources extends Component {
     this.toggleAdditionalDialog = this.toggleAdditionalDialog.bind(this);
   }
 
-  onToggleAddToFavorites(id) {
-    // eslint-disable-next-line no-console
-    console.log(`Legg til ressursen ${id}`);
-  }
-
   toggleAdditionalResources() {
     this.setState((prevState) => ({
       showAdditionalResources: !prevState.showAdditionalResources,
@@ -167,7 +163,7 @@ class Resources extends Component {
             toggleAdditionalResources={this.toggleAdditionalResources}
             resourceToLinkProps={toLink}
             unGrouped
-            onToggleAddToFavorites={this.onToggleAddToFavorites}
+            heartButton={() => <FavoriteButton isFavorite />}
           />
         )}
         {!showUngrouped &&
@@ -181,7 +177,7 @@ class Resources extends Component {
               contentType={group.contentType}
               icon={<ContentTypeBadge type={group.contentType} />}
               resourceToLinkProps={toLink}
-              onToggleAddToFavorites={this.onToggleAddToFavorites}
+              heartButton={() => <FavoriteButton />}
             />
           ))}
       </ResourcesWrapper>

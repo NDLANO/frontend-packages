@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -15,7 +15,6 @@ import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { ArticleFavoritesButton } from '../Article';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
@@ -228,9 +227,7 @@ type Props = {
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
   access?: 'teacher';
-  isFavorite?: boolean;
-  onToggleAddToFavorites: (id: string) => void;
-  showAddToFavoriteButton: boolean;
+  heartButton?: (path: string) => ReactNode;
 };
 
 const ResourceItem = ({
@@ -245,9 +242,7 @@ const ResourceItem = ({
   extraBottomMargin,
   showAdditionalResources,
   access,
-  onToggleAddToFavorites,
-  isFavorite,
-  showAddToFavoriteButton,
+  heartButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -310,13 +305,7 @@ const ResourceItem = ({
             )}
           </>
         )}
-        {showAddToFavoriteButton && (
-          <ArticleFavoritesButton
-            isFavorite={isFavorite}
-            articleId={id}
-            onToggleAddToFavorites={() => onToggleAddToFavorites(id)}
-          />
-        )}
+        {heartButton?.(path)}
       </TypeWrapper>
     </ListElement>
   );

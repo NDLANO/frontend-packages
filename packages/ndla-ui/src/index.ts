@@ -24,7 +24,6 @@ export {
   ArticleHeaderWrapper,
   ArticleSideBar,
   default as Article,
-  ArticleFavoritesButton,
 } from './Article';
 
 export { CompetenceGoalsDialog } from './CompetenceGoals';

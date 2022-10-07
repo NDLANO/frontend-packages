@@ -8,8 +8,8 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
-import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
+import Button, { FavoriteButton, IconButton } from '@ndla/button';
+import { Cross } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
 import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
 import { useSnack, Image, ListResource } from '@ndla/ui';
@@ -227,17 +227,7 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
   if (isLoggedIn) {
     return (
       <div>
-        <IconButtonDualStates
-          ariaLabelInActive="Legg til i mine favoritter"
-          ariaLabelActive="Allerede lagt til i mine favoritter"
-          activeIcon={<Heart />}
-          inactiveIcon={<HeartOutline />}
-          active={isFavorite}
-          size="small"
-          variant="ghost"
-          colorTheme="light"
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        <FavoriteButton isFavorite={isFavorite} onClick={() => setIsOpen(!isOpen)} />
         {isOpen && (
           <DialogExample
             isFavorite={isFavorite}
@@ -252,17 +242,7 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
   } else
     return (
       <div>
-        <IconButtonDualStates
-          ariaLabelInActive="Legg til i mine favoritter"
-          ariaLabelActive="Allerede lagt til i mine favoritter"
-          activeIcon={<Heart />}
-          inactiveIcon={<HeartOutline />}
-          active={isFavorite}
-          size="small"
-          variant="ghost"
-          colorTheme="light"
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        <FavoriteButton onClick={() => setIsOpen(!isOpen)} />
         {isOpen && (
           <DialogNotLoggedInExample
             resource={resource}

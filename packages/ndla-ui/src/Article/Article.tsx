@@ -19,7 +19,6 @@ import { Article as ArticleType, Locale } from '../types';
 import ArticleFootNotes from './ArticleFootNotes';
 import ArticleContent from './ArticleContent';
 import ArticleByline from './ArticleByline';
-import ArticleFavoritesButton from './ArticleFavoritesButton';
 import LayoutItem from '../Layout';
 import ArticleHeaderWrapper from './ArticleHeaderWrapper';
 import ArticleNotions, { NotionRelatedContent } from './ArticleNotions';
@@ -116,6 +115,7 @@ const ArticleFavoritesButtonWrapper = styled.div`
 `;
 
 type Props = {
+  heartButton?: ReactNode;
   article: ArticleType;
   icon?: ReactNode;
   licenseBox?: ReactNode;
@@ -135,8 +135,6 @@ type Props = {
   printUrl?: string;
   notions?: { list: ConceptNotionType[]; related: NotionRelatedContent[] };
   accessMessage?: string;
-  isFavorite?: boolean;
-  onToggleAddToFavorites?: (id: string, add: boolean) => void;
 };
 
 const getArticleContent = (content: any, locale: Locale) => {
@@ -167,8 +165,7 @@ export const Article = ({
   printUrl,
   renderMarkdown,
   accessMessage,
-  onToggleAddToFavorites,
-  isFavorite,
+  heartButton,
 }: Props) => {
   const [articleRef, { entry }] = useIntersectionObserver({
     root: null,
@@ -218,15 +215,8 @@ export const Article = ({
             </MSGboxWrapper>
           )}
           <ArticleHeaderWrapper competenceGoals={competenceGoals} competenceGoalTypes={competenceGoalTypes}>
-            {onToggleAddToFavorites && (
-              <ArticleFavoritesButtonWrapper>
-                <ArticleFavoritesButton
-                  articleId={id}
-                  isFavorite={isFavorite}
-                  onToggleAddToFavorites={onToggleAddToFavorites}
-                />
-              </ArticleFavoritesButtonWrapper>
-            )}
+            {heartButton ? <ArticleFavoritesButtonWrapper>{heartButton}</ArticleFavoritesButtonWrapper> : null}
+
             <ArticleTitle icon={icon} label={messages.label}>
               {title}
             </ArticleTitle>

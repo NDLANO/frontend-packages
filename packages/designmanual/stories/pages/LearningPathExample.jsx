@@ -25,7 +25,7 @@ import {
 } from '@ndla/ui';
 import { getCookie, setCookie } from '@ndla/util';
 import { animations, shadows } from '@ndla/core';
-import Button from '@ndla/button';
+import Button, { FavoriteButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { useWindowSize } from '@ndla/hooks';
 import Resources from '../molecules/resources';
@@ -241,7 +241,7 @@ const LearningPathExample = ({ invertedStyle }) => {
   const isLastStep = currentLearningStepNumber === learningsteps.length - 1;
   const learningPathMenu = (
     <LearningPathMenu
-      onToggleAddToFavorites={() => {}}
+      heartButton={<FavoriteButton />}
       invertedStyle={invertedStyle}
       learningsteps={mappedLearningsteps}
       lastUpdated={lastUpdatedString}

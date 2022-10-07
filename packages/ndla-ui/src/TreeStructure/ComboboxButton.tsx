@@ -60,6 +60,7 @@ interface Props {
   onOpenFolder: (id: string) => void;
   onCloseFolder: (id: string) => void;
   setFocusedFolder: (folder: FolderType) => void;
+  ariaDescribedby?: string;
 }
 
 const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
@@ -76,6 +77,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       setFocusedFolder,
       onOpenFolder,
       onCloseFolder,
+      ariaDescribedby,
     },
     ref,
   ) => {
@@ -124,6 +126,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           aria-expanded={showTree}
           aria-labelledby={label ? treestructureId(type, 'label') : undefined}
           aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
+          aria-describedby={ariaDescribedby}
           variant="ghost"
           colorTheme="light"
           fontWeight="normal"

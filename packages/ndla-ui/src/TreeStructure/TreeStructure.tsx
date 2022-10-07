@@ -74,6 +74,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
   maxLevel?: number;
   newFolderInput?: NewFolderInputFunc;
   onSelectFolder?: (id: string) => void;
+  ariaDescribedby?: string;
 }
 
 const TreeStructure = ({
@@ -86,6 +87,7 @@ const TreeStructure = ({
   targetResource,
   type,
   newFolderInput,
+  ariaDescribedby,
 }: TreeStructureProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -209,6 +211,7 @@ const TreeStructure = ({
             flattenedFolders={flattenedFolders}
             onCloseFolder={onCloseFolder}
             onOpenFolder={onOpenFolder}
+            ariaDescribedby={ariaDescribedby}
           />
         )}
         {showTree && (

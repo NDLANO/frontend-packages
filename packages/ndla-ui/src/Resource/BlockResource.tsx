@@ -45,7 +45,7 @@ const BlockElementWrapper = styled.div`
   text-decoration: none;
   box-shadow: none;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 450px;
   max-height: 240px;
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;

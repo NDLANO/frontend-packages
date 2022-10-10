@@ -85,7 +85,6 @@ const TagsandActionMenu = styled.div`
   justify-self: flex-end;
   justify-content: flex-end;
   margin: -${spacing.small} -${spacing.small} 0 0;
-
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0 -${spacing.small} -${spacing.small} 0;
   }
@@ -139,6 +138,10 @@ interface ListResourceImageProps {
   type: 'normal' | 'compact';
   contentType: string;
 }
+
+const StyledMenuButton = styled(MenuButton)`
+  margin-left: ${spacing.small};
+`;
 
 const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
   if (!loading) {
@@ -244,7 +247,7 @@ const ListResource = ({
       {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <StyledMenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ResourceWrapper>
   );

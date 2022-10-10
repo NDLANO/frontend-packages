@@ -146,6 +146,7 @@ const Row = styled.div`
 `;
 
 const IconAndMenuWrapper = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -156,6 +157,7 @@ const IconAndMenuWrapper = styled.div`
 `;
 
 const ResourceCountContainer = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   gap: ${spacing.small};

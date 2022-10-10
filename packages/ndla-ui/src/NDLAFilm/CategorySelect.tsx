@@ -1,10 +1,18 @@
-import React, { Component } from 'react';
+/**
+ * Copyright (c) 2019-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import React, { useEffect, useRef, useState } from 'react';
 import FocusTrapReact from 'focus-trap-react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { MovieResourceType } from './types';
 
 const zoomInSelect = keyframes`
@@ -70,7 +78,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   top: -${(props) => props.offsetDropdown * 52 + 13}px;
   ${DropdownButton} {
     border-radius: 0;
-    text-transform: 0;
+    text-transform: none;
     letter-spacing: 0;
   }
   display: flex;
@@ -105,110 +113,82 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   }
 `;
 
-interface Props extends WithTranslation {
+interface Props {
   resourceTypes: MovieResourceType[];
   resourceTypeSelected?: MovieResourceType;
   ariaControlId?: string;
   onChangeResourceType: (resourceId?: string) => void;
 }
 
-interface State {
-  resourceTypesIsOpen: boolean;
-}
-class CategorySelect extends Component<Props, State> {
-  references: Record<string, HTMLButtonElement | null>;
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      resourceTypesIsOpen: false,
-    };
-    this.references = {};
-    this.createRef = this.createRef.bind(this);
-    this.openSelect = this.openSelect.bind(this);
-    this.onSelect = this.onSelect.bind(this);
-  }
+const CategorySelect = ({ resourceTypes, resourceTypeSelected, ariaControlId, onChangeResourceType }: Props) => {
+  const { t } = useTranslation();
+  const refs = useRef<Record<string, HTMLButtonElement | null>>({});
 
-  createRef(el: HTMLButtonElement | null, name: string) {
-    this.references[name] = el;
-  }
+  const [resourceTypesIsOpen, setResourceTypesIsOpen] = useState<boolean>(false);
 
-  openSelect() {
-    const { resourceTypeSelected } = this.props;
-    this.setState(
-      {
-        resourceTypesIsOpen: true,
-      },
-      () => {
-        if (resourceTypeSelected && this.references[resourceTypeSelected.id]) {
-          this.references[resourceTypeSelected.id]?.focus();
-        }
-      },
-    );
-  }
+  const updateRef = (el: HTMLButtonElement | null, name: string) => {
+    refs.current[name] = el;
+  };
 
-  onSelect(val?: string) {
-    this.props.onChangeResourceType(val);
-    this.setState({
-      resourceTypesIsOpen: false,
-    });
-  }
+  useEffect(() => {
+    if (resourceTypeSelected && refs.current[resourceTypeSelected.id]) {
+      refs.current[resourceTypeSelected.id]?.focus();
+    }
+  }, [resourceTypesIsOpen, resourceTypeSelected]);
 
-  render() {
-    const { resourceTypes, resourceTypeSelected, ariaControlId, t } = this.props;
-    const { resourceTypesIsOpen } = this.state;
-    const offsetDropDown = resourceTypeSelected
-      ? resourceTypes.findIndex((resource) => resource.id === resourceTypeSelected.id) + 1
-      : 0;
+  const onSelect = (val?: string) => {
+    onChangeResourceType(val);
+    setResourceTypesIsOpen(false);
+  };
 
-    return (
-      <DropdownContainer className="u-12/12">
-        <DropdownButton
-          aria-expanded={!resourceTypesIsOpen}
-          aria-controls="selectCategory"
-          type="button"
-          tabIndex={resourceTypesIsOpen ? -1 : 0}
-          onClick={this.openSelect}>
-          <div>
-            <span>{t('ndlaFilm.search.chooseCategory')}</span>
-            <small>
-              {(resourceTypeSelected && resourceTypeSelected.name) || t('ndlaFilm.search.categoryFromNdla')}
-            </small>
-          </div>
-          <div>
-            <ChevronDown className="c-icon--22" />
-          </div>
-        </DropdownButton>
-        {resourceTypesIsOpen && (
-          <FocusTrapReact
-            active={resourceTypesIsOpen}
-            focusTrapOptions={{
-              onDeactivate: () => {
-                this.setState({ resourceTypesIsOpen: false });
-              },
-              clickOutsideDeactivates: true,
-              escapeDeactivates: true,
-            }}>
-            <DropdownWrapper id="selectCategory" offsetDropdown={offsetDropDown}>
-              <DropdownButton aria-controls={ariaControlId} type="button" onClick={() => this.onSelect()}>
-                <span>{t('ndlaFilm.search.categoryFromNdla')}</span>
+  const offsetDropDown = resourceTypeSelected
+    ? resourceTypes.findIndex((resource) => resource.id === resourceTypeSelected.id) + 1
+    : 0;
+
+  return (
+    <DropdownContainer className="u-12/12">
+      <DropdownButton
+        aria-expanded={!resourceTypesIsOpen}
+        aria-controls="selectCategory"
+        type="button"
+        tabIndex={resourceTypesIsOpen ? -1 : 0}
+        onClick={() => setResourceTypesIsOpen(true)}>
+        <div>
+          <span>{t('ndlaFilm.search.chooseCategory')}</span>
+          <small>{(resourceTypeSelected && resourceTypeSelected.name) || t('ndlaFilm.search.categoryFromNdla')}</small>
+        </div>
+        <div>
+          <ChevronDown className="c-icon--22" />
+        </div>
+      </DropdownButton>
+      {resourceTypesIsOpen && (
+        <FocusTrapReact
+          active={resourceTypesIsOpen}
+          focusTrapOptions={{
+            onDeactivate: () => setResourceTypesIsOpen(false),
+            clickOutsideDeactivates: true,
+            escapeDeactivates: true,
+          }}>
+          <DropdownWrapper id="selectCategory" offsetDropdown={offsetDropDown}>
+            <DropdownButton aria-controls={ariaControlId} type="button" onClick={() => onSelect()}>
+              <span>{t('ndlaFilm.search.categoryFromNdla')}</span>
+            </DropdownButton>
+            {resourceTypes.map((resourceType) => (
+              <DropdownButton
+                aria-controls={ariaControlId}
+                type="button"
+                ref={(el) => updateRef(el, resourceType.id)}
+                onClick={() => onSelect(resourceType.id)}
+                data-id={resourceType.id}
+                key={resourceType.id}>
+                <span>{resourceType.name}</span>
               </DropdownButton>
-              {resourceTypes.map((resourceType) => (
-                <DropdownButton
-                  aria-controls={ariaControlId}
-                  type="button"
-                  ref={(el) => this.createRef(el, resourceType.id)}
-                  onClick={() => this.onSelect(resourceType.id)}
-                  data-id={resourceType.id}
-                  key={resourceType.id}>
-                  <span>{resourceType.name}</span>
-                </DropdownButton>
-              ))}
-            </DropdownWrapper>
-          </FocusTrapReact>
-        )}
-      </DropdownContainer>
-    );
-  }
-}
+            ))}
+          </DropdownWrapper>
+        </FocusTrapReact>
+      )}
+    </DropdownContainer>
+  );
+};
 
-export default withTranslation()(CategorySelect);
+export default CategorySelect;

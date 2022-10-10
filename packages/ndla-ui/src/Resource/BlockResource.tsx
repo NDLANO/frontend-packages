@@ -82,15 +82,22 @@ const BlockDescription = styled.p`
 `;
 
 const RightRow = styled(Row)`
+  min-height: ${spacing.small};
+  padding-right: ${spacing.xsmall};
   justify-content: flex-end;
-  margin-bottom: -${spacing.xxsmall};
 `;
 
 const BlockInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${spacing.small};
   gap: ${spacing.xxsmall};
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${spacing.small};
+  padding-bottom: 0;
 `;
 
 const ImageWrapper = styled.div`
@@ -99,7 +106,6 @@ const ImageWrapper = styled.div`
   justify-content: center;
   overflow: hidden;
   align-items: center;
-  aspect-ratio: 3/4;
   img {
     min-width: 100%;
   }
@@ -176,15 +182,17 @@ const BlockResource = ({
         />
       </ImageWrapper>
       <BlockInfoWrapper>
-        <ResourceTypeAndTitleLoader loading={isLoading}>
-          <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
-            <Title>{title}</Title>
-          </ResourceTitleLink>
-        </ResourceTypeAndTitleLoader>
-        <ResourceTypeList resourceTypes={resourceTypes} />
-        <BlockDescription>{description}</BlockDescription>
+        <ContentWrapper>
+          <ResourceTypeAndTitleLoader loading={isLoading}>
+            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
+              <Title>{title}</Title>
+            </ResourceTitleLink>
+          </ResourceTypeAndTitleLoader>
+          <ResourceTypeList resourceTypes={resourceTypes} />
+          <BlockDescription>{description}</BlockDescription>
+        </ContentWrapper>
         <RightRow>
-          {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
+          {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
           {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
         </RightRow>
       </BlockInfoWrapper>

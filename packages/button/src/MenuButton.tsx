@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
-import { colors, spacing, shadows, misc, animations, fonts } from '@ndla/core';
+import { colors, spacing, shadows, misc, animations } from '@ndla/core';
 import { Menu, MenuItem, MenuButton as MenuButtonReach, MenuPopover, MenuItems } from '@reach/menu-button';
 import { positionRight, positionDefault } from '@reach/popover';
 import { HorizontalMenu } from '@ndla/icons/contentType';

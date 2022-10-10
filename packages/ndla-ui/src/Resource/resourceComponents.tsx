@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import React, { MouseEvent, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuButton } from '@ndla/button';

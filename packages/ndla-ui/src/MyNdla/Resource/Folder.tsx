@@ -109,9 +109,13 @@ interface IconCountProps {
 const IconCountWrapper = styled.div<LayoutProps>`
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: ${spacing.xxsmall};
   color: ${colors.brand.grey};
   white-space: nowrap;
+  svg {
+    width: 13px;
+    height: 13px;
+  }
   ${fonts.sizes(16)};
   ${mq.range({ until: breakpoints.mobileWide })} {
     ${({ type }) =>

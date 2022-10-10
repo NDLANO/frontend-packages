@@ -16,40 +16,10 @@ import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 
+type LayoutType = 'list' | 'listLarger' | 'block';
 interface LayoutProps {
   type: LayoutType;
 }
-
-const FolderIconWrapper = styled.div<LayoutProps>`
-  display: flex;
-  border-radius: 100%;
-  color: ${colors.brand.primary};
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-`;
-
-const FolderTitleLink = styled(SafeLink)`
-  box-shadow: none;
-  color: ${colors.brand.primary};
-  flex: 1;
-`;
-
-const FolderTitle = styled.h2`
-  ${fonts.sizes('16px', '20px')};
-  font-weight: ${fonts.weight.semibold};
-  margin: 0;
-  flex: 1;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  // Unfortunate css needed for multi-line text overflow ellipsis.
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
-`;
 
 const FolderWrapper = styled.div<LayoutProps>`
   display: flex;
@@ -82,29 +52,70 @@ const FolderWrapper = styled.div<LayoutProps>`
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
-    ${FolderTitle} {
-      color: ${colors.brand.primary};
-      text-decoration: underline;
-    }
   }
 `;
 
-interface Props {
-  id: string;
-  title: string;
-  subFolders?: number;
-  subResources?: number;
-  description?: string;
-  link: string;
-  type: LayoutType;
-  menuItems?: MenuItemProps[];
-}
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${spacing.xsmall};
+  justify-content: space-between;
+`;
 
-interface IconCountProps {
-  type: 'resource' | 'folder';
-  count?: number;
-  layoutType: LayoutType;
-}
+const IconWrapper = styled.div`
+  display: flex;
+  border-radius: 100%;
+  color: ${colors.brand.primary};
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+const StyledLink = styled(SafeLink)`
+  box-shadow: none;
+  color: ${colors.brand.primary};
+  flex: 1;
+`;
+
+const FolderTitle = styled.h2`
+  ${fonts.sizes('16px', '20px')};
+  font-weight: ${fonts.weight.semibold};
+  margin: 0;
+  flex: 1;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // Unfortunate css needed for multi-line text overflow ellipsis.
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+
+  ${FolderWrapper}:hover & {
+    color: ${colors.brand.primary};
+    text-decoration: underline;
+  }
+`;
+
+const MenuWrapper = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${spacing.xsmall};
+  justify-content: space-between;
+  margin: -${spacing.nsmall};
+  margin-left: 0;
+`;
+
+const CountContainer = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  gap: ${spacing.small};
+`;
 
 const IconCountWrapper = styled.div<LayoutProps>`
   display: flex;
@@ -126,7 +137,13 @@ const IconCountWrapper = styled.div<LayoutProps>`
   }
 `;
 
-const IconCount = ({ type, count, layoutType }: IconCountProps) => {
+interface IconCountProps {
+  type: 'resource' | 'folder';
+  count?: number;
+  layoutType: LayoutType;
+}
+
+const Count = ({ type, count, layoutType }: IconCountProps) => {
   const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
   const { t } = useTranslation();
   if (!count) return null;
@@ -139,33 +156,16 @@ const IconCount = ({ type, count, layoutType }: IconCountProps) => {
   );
 };
 
-type LayoutType = 'list' | 'listLarger' | 'block';
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: ${spacing.xsmall};
-  justify-content: space-between;
-`;
-
-const IconAndMenuWrapper = styled.div`
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: ${spacing.xsmall};
-  justify-content: space-between;
-  margin: -${spacing.nsmall};
-  margin-left: 0;
-`;
-
-const ResourceCountContainer = styled.div`
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  gap: ${spacing.small};
-`;
+interface Props {
+  id: string;
+  title: string;
+  subFolders?: number;
+  subResources?: number;
+  description?: string;
+  link: string;
+  type: LayoutType;
+  menuItems?: MenuItemProps[];
+}
 
 const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
@@ -177,21 +177,21 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
 
   return (
     <FolderWrapper type={type} onClick={onClick} id={id}>
-      <Row>
-        <FolderIconWrapper type={type}>
+      <TitleWrapper>
+        <IconWrapper>
           <FolderOutlined aria-label={t('myNdla.folder.folder')} />
-        </FolderIconWrapper>
-        <FolderTitleLink to={link} ref={linkRef}>
+        </IconWrapper>
+        <StyledLink to={link} ref={linkRef}>
           <FolderTitle>{title}</FolderTitle>
-        </FolderTitleLink>
-      </Row>
-      <IconAndMenuWrapper>
-        <ResourceCountContainer>
-          <IconCount layoutType={type} type={'folder'} count={subFolders} />
-          <IconCount layoutType={type} type={'resource'} count={subResources} />
-        </ResourceCountContainer>
+        </StyledLink>
+      </TitleWrapper>
+      <MenuWrapper>
+        <CountContainer>
+          <Count layoutType={type} type={'folder'} count={subFolders} />
+          <Count layoutType={type} type={'resource'} count={subResources} />
+        </CountContainer>
         {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
-      </IconAndMenuWrapper>
+      </MenuWrapper>
     </FolderWrapper>
   );
 };

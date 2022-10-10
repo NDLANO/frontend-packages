@@ -140,7 +140,7 @@ interface ListResourceImageProps {
 }
 
 const StyledMenuButton = styled(MenuButton)`
-  margin-left: ${spacing.small};
+  padding-left: ${spacing.small};
 `;
 
 const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {

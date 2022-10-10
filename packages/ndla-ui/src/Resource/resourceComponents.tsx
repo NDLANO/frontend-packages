@@ -148,8 +148,6 @@ interface CompressedTagListProps {
   tagLinkPrefix?: string;
 }
 
-const TagMenuButton = styled(MenuButton)``;
-
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -167,11 +165,13 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
     <>
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
-        <TagMenuButton
+        <MenuButton
           size="small"
           menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
           menuItems={remainingTags}
-          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}></TagMenuButton>
+          alignRight
+          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
+        />
       )}
     </>
   );

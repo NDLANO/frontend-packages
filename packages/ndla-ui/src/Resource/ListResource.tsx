@@ -72,8 +72,9 @@ const ResourceWrapper = styled.div`
 `;
 
 const TagsandActionMenu = styled.div`
+  padding-right: ${spacing.xsmall};
+  min-height: ${spacing.xsmall};
   box-sizing: content-box;
-  padding: 2px;
   grid-area: tags;
   display: flex;
   align-items: center;
@@ -106,7 +107,6 @@ const StyledImage = styled(Image)`
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  align-self: flex-end;
   margin: ${spacing.small} ${spacing.small} 0;
 `;
 
@@ -239,7 +239,7 @@ const ListResource = ({
       </TopicAndTitleWrapper>
       {showDescription && <ResourceDescription description={description} loading={isLoading} />}
       <TagsandActionMenu>
-        {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
+        {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
         {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ResourceWrapper>

@@ -65,6 +65,7 @@ const FolderWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: ${spacing.small};
+  padding-right: ${spacing.xsmall};
   border: 1px solid ${colors.brand.neutral7};
   cursor: pointer;
   border-radius: 2px;

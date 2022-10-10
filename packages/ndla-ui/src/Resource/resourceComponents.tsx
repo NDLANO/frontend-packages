@@ -38,7 +38,7 @@ export const ResourceTitle = styled.h2`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
-  ${fonts.sizes('18px', '18px')};
+  ${fonts.sizes('16px', '20px')};
 `;
 
 const StyledTagList = styled.ul`

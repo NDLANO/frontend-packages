@@ -1015,10 +1015,13 @@ const messages = {
     name: 'Navn',
     mail: 'E-post',
     username: 'Brukernavn',
+    mobile: 'Telefonnummer',
+    preferredLanguage: 'Føretrekt målform',
     groupTypes: {
       basic: 'Basisgruppe',
       teaching: 'Undervisningsgruppe',
       other: 'Andre grupper',
+      grepCode: 'Grepkodar',
     },
     wrongUserInfoDisclaimer:
       'Dersom informasjonen er feil, må den oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',

@@ -1015,10 +1015,13 @@ const messages = {
     name: 'Namma',
     mail: 'Eboasta',
     username: 'Geavahan namma',
+    mobile: 'Telefonnummar',
+    preferredLanguage: 'Háliiduvvon giella',
     groupTypes: {
       basic: 'Vuođđojoavku',
       teaching: 'Oahpahusjoavku',
       other: 'Eará joavkkut',
+      grepCode: 'Grepkoda',
     },
     wrongUserInfoDisclaimer:
       'Jus leat boasttudieđut, de ferte organisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogova geavaheaddjidoarjaga ektui gávnnat dás: ',

@@ -1016,10 +1016,13 @@ const messages = {
     name: 'Name',
     mail: 'E-mail',
     username: 'Username',
+    mobile: 'Phone number',
+    preferredLanguage: 'Foretrukket språk',
     groupTypes: {
       basic: 'Basic group',
       teaching: 'Teaching group',
       other: 'Other groups',
+      grepCode: 'Grep codes',
     },
     wrongUserInfoDisclaimer:
       'If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ',

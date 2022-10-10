@@ -25,21 +25,6 @@ import {
 import ContentLoader from '../ContentLoader';
 import { contentTypeMapping } from '../model/ContentType';
 
-interface BlockResourceProps {
-  id: string;
-  link: string;
-  tagLinkPrefix?: string;
-  title: string;
-  resourceImage: ResourceImageProps;
-  tags?: string[];
-  description?: string;
-  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  menuItems?: MenuItemProps[];
-  isLoading?: boolean;
-  targetBlank?: boolean;
-  resourceTypes?: { id: string; name: string }[];
-}
-
 const BlockElementWrapper = styled.div`
   display: flex;
   text-decoration: none;
@@ -107,6 +92,7 @@ const ImageWrapper = styled.div`
     min-width: 100%;
   }
 `;
+
 interface BlockImageProps {
   image: ResourceImageProps;
   loading?: boolean;
@@ -145,6 +131,21 @@ const ResourceTypeAndTitleLoader = ({ children, loading }: LoaderProps) => {
   return <>{children}</>;
 };
 
+interface Props {
+  id: string;
+  link: string;
+  tagLinkPrefix?: string;
+  title: string;
+  resourceImage: ResourceImageProps;
+  tags?: string[];
+  description?: string;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  menuItems?: MenuItemProps[];
+  isLoading?: boolean;
+  targetBlank?: boolean;
+  resourceTypes?: { id: string; name: string }[];
+}
+
 const BlockResource = ({
   id,
   link,
@@ -158,7 +159,7 @@ const BlockResource = ({
   headingLevel = 'h2',
   targetBlank,
   resourceTypes,
-}: BlockResourceProps) => {
+}: Props) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
   const firstResourceType = resourceTypes?.[0].id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);

@@ -975,13 +975,13 @@ const messages = {
     name: 'Namma',
     mail: 'Eboasta',
     username: 'Geavahan namma',
-    mobile: 'Telefonnummer',
-    preferredLanguage: 'Føretrekt målform',
+    mobile: 'Telefonnummar',
+    preferredLanguage: 'Háliiduvvon giella',
     groupTypes: {
       basic: 'Vuođđojoavku',
       teaching: 'Oahpahusjoavku',
       other: 'Eará joavkkut',
-      grepCode: 'Grepkodar',
+      grepCode: 'Grepkoda',
     },
     wrongUserInfoDisclaimer:
       'Jus leat boasttudieđut, de ferte organisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogova geavaheaddjidoarjaga ektui gávnnat dás: ',

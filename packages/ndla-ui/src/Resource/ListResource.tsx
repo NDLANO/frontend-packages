@@ -29,7 +29,8 @@ const StyledResourceDescription = styled.p`
   line-clamp: 2;
   line-height: 1em;
   height: 3.1em;
-  margin: ${spacing.small} ${spacing.small} 0;
+  margin: 0;
+  margin-top: ${spacing.xxsmall};
   overflow: hidden;
   ${fonts.sizes(16)};
   text-overflow: ellipsis;
@@ -47,15 +48,16 @@ const ResourceWrapper = styled.div`
   grid-template-areas:
     'image  topicAndTitle   tags'
     'image  description     description';
-  padding-bottom: ${spacing.small};
   ${mq.range({ until: breakpoints.mobileWide })} {
-    padding-bottom: 0;
     grid-template-columns: auto 1fr;
     grid-template-areas:
       'image                topicAndTitle'
       'description          description'
       'tags                 tags';
   }
+
+  padding: ${spacing.small};
+  column-gap: ${spacing.small};
 
   cursor: pointer;
   border: 1px solid ${colors.brand.neutral7};
@@ -72,7 +74,6 @@ const ResourceWrapper = styled.div`
 `;
 
 const TagsandActionMenu = styled.div`
-  padding-right: ${spacing.xsmall};
   min-height: ${spacing.xsmall};
   box-sizing: content-box;
   grid-area: tags;
@@ -83,6 +84,11 @@ const TagsandActionMenu = styled.div`
   align-self: flex-start;
   justify-self: flex-end;
   justify-content: flex-end;
+  margin: -${spacing.small} -${spacing.small} 0 0;
+
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin: 0 -${spacing.small} -${spacing.small} 0;
+  }
 `;
 
 const StyledImageWrapper = styled.div<StyledImageProps>`
@@ -92,7 +98,6 @@ const StyledImageWrapper = styled.div<StyledImageProps>`
     width: 56px;
   }
   overflow: hidden;
-  margin: ${spacing.small} 0 0 ${spacing.small};
   border-radius: 2px;
   display: flex;
   align-items: center;
@@ -107,7 +112,6 @@ const StyledImage = styled(Image)`
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  margin: ${spacing.small} ${spacing.small} 0;
 `;
 
 interface StyledImageProps {

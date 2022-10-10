@@ -82,22 +82,19 @@ const BlockDescription = styled.p`
 `;
 
 const RightRow = styled(Row)`
-  min-height: ${spacing.small};
-  padding-right: ${spacing.xsmall};
   justify-content: flex-end;
+  margin: 0 -${spacing.small} -${spacing.small} 0;
 `;
 
 const BlockInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.xxsmall};
+  padding: ${spacing.small};
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${spacing.small};
-  padding-bottom: 0;
 `;
 
 const ImageWrapper = styled.div`

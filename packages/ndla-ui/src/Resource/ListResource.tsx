@@ -74,7 +74,6 @@ const ResourceWrapper = styled.div`
 `;
 
 const TagsandActionMenu = styled.div`
-  min-height: ${spacing.xsmall};
   box-sizing: content-box;
   grid-area: tags;
   display: flex;

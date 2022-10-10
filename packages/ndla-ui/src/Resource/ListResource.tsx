@@ -117,7 +117,7 @@ const TopicAndTitleWrapper = styled.div`
 
 const StyledMenuButton = styled(MenuButton)`
   :only-child {
-    padding-left: ${spacing.small};
+    margin-left: ${spacing.small};
   }
 `;
 

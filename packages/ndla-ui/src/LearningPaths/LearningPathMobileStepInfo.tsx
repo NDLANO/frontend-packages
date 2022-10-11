@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { mq, breakpoints, typography } from '@ndla/core';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const StyledInfo = styled.div`
   ${typography.smallHeading}
@@ -24,13 +24,16 @@ type Props = {
   current: number;
 };
 
-const LearningPathMobileStepInfo = ({ total, current, t }: Props & WithTranslation) => (
-  <StyledInfo>
-    {t('learningPath.mobileStepInfo', {
-      totalPages: total,
-      currentPage: current,
-    })}
-  </StyledInfo>
-);
+const LearningPathMobileStepInfo = ({ total, current }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledInfo>
+      {t('learningPath.mobileStepInfo', {
+        totalPages: total,
+        currentPage: current,
+      })}
+    </StyledInfo>
+  );
+};
 
-export default withTranslation()(LearningPathMobileStepInfo);
+export default LearningPathMobileStepInfo;

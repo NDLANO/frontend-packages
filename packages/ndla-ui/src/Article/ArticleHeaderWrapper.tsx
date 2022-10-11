@@ -6,16 +6,15 @@
  *
  */
 
-import React, { Component, ComponentType, ReactNode } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useState } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Button from '@ndla/button';
 import { isMobile } from 'react-device-detect';
 import { fonts, colors } from '@ndla/core';
 
 import styled from '@emotion/styled';
 import { FooterHeaderIcon } from '@ndla/icons/common';
-// @ts-ignore
 import CompetenceGoalsDialog from '../CompetenceGoals/CompetenceGoalsDialog';
 
 const classes = new BEMHelper({
@@ -40,12 +39,11 @@ const CompetenceWrapper = styled.div`
 `;
 
 const CompetenceBadge = styled.span`
-  display: inline-block;
+  display: inline-flex;
   background: ${colors.brand.greyLighter};
   border-radius: 36px;
   font-weight: ${fonts.weight.semibold};
   ${fonts.sizes('12px', '15px')};
-  display: inline-flex;
   align-items: center;
   color: ${colors.text.primary};
   font-family: ${fonts.sans};
@@ -77,19 +75,11 @@ type Props = {
   children: ReactNode;
 };
 
-interface State {
-  isOpen: boolean;
-}
+const ArticleHeaderWrapper = ({ children, competenceGoals, competenceGoalTypes }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
-class ArticleHeaderWrapper extends Component<Props & WithTranslation, State> {
-  constructor(props: Props & WithTranslation) {
-    super(props);
-    this.state = { isOpen: false };
-    this.closeDialog = this.closeDialog.bind(this);
-    this.openDialog = this.openDialog.bind(this);
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     if (isMobile) {
       const heroContentList: NodeListOf<HTMLElement> = document.querySelectorAll('.c-article__header');
       if (heroContentList.length === 1) {
@@ -97,58 +87,55 @@ class ArticleHeaderWrapper extends Component<Props & WithTranslation, State> {
         window.scrollBy(0, heroContentList[0].offsetTop - 120); // Adjust for header
       }
     }
+  }, []);
+
+  const openDialog = () => {
+    setIsOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsOpen(false);
+  };
+
+  if (!competenceGoals) {
+    return <div {...classes('header')}>{children}</div>;
   }
 
-  openDialog() {
-    this.setState({ isOpen: true });
-  }
-
-  closeDialog() {
-    this.setState({ isOpen: false });
-  }
-
-  render() {
-    const { children, competenceGoals, competenceGoalTypes, t } = this.props;
-    if (!competenceGoals) {
-      return <div {...classes('header')}>{children}</div>;
-    }
-
-    const dialog =
-      typeof competenceGoals === 'function' ? (
-        competenceGoals({
-          Dialog: CompetenceGoalsDialog,
-          dialogProps: {
-            isOpen: this.state.isOpen,
-            onClose: this.closeDialog,
-          },
-        })
-      ) : (
-        <CompetenceGoalsDialog onClose={this.closeDialog} isOpen={this.state.isOpen}>
-          {competenceGoals}
-        </CompetenceGoalsDialog>
-      );
-    return (
-      <div {...classes('header')}>
-        {children}
-        <CompetenceWrapper>
-          {competenceGoalTypes &&
-            competenceGoalTypes.map((type) => (
-              <CompetenceBadge key={type}>
-                <FooterHeaderIcon />
-                <CompetenceBadgeText>{type}</CompetenceBadgeText>
-              </CompetenceBadge>
-            ))}
-          <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
-            <OpenButton onClick={this.openDialog}>
-              <FooterHeaderIcon />
-              <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
-            </OpenButton>
-          </CompetenceButtonWrapper>
-        </CompetenceWrapper>
-        {dialog}
-      </div>
+  const dialog =
+    typeof competenceGoals === 'function' ? (
+      competenceGoals({
+        Dialog: CompetenceGoalsDialog,
+        dialogProps: {
+          isOpen: isOpen,
+          onClose: closeDialog,
+        },
+      })
+    ) : (
+      <CompetenceGoalsDialog onClose={closeDialog} isOpen={isOpen}>
+        {competenceGoals}
+      </CompetenceGoalsDialog>
     );
-  }
-}
+  return (
+    <div {...classes('header')}>
+      {children}
+      <CompetenceWrapper>
+        {competenceGoalTypes &&
+          competenceGoalTypes.map((type) => (
+            <CompetenceBadge key={type}>
+              <FooterHeaderIcon />
+              <CompetenceBadgeText>{type}</CompetenceBadgeText>
+            </CompetenceBadge>
+          ))}
+        <CompetenceButtonWrapper addSpace={competenceGoalTypes && competenceGoalTypes.length > 0}>
+          <OpenButton onClick={openDialog}>
+            <FooterHeaderIcon />
+            <CompetenceBadgeText>{t('competenceGoals.showCompetenceGoals')}</CompetenceBadgeText>
+          </OpenButton>
+        </CompetenceButtonWrapper>
+      </CompetenceWrapper>
+      {dialog}
+    </div>
+  );
+};
 
-export default withTranslation()(ArticleHeaderWrapper);
+export default ArticleHeaderWrapper;

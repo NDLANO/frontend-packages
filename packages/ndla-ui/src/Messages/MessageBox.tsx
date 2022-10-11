@@ -10,7 +10,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import { InformationOutline, HumanMaleBoard, Forward, WarningOutline } from '@ndla/icons/common';
-import { WithTranslation, withTranslation } from 'react-i18next';
 
 // @ts-ignore
 import { Remarkable } from 'remarkable';
@@ -127,7 +126,7 @@ const Icon = ({ type }: StyledProps) => {
   return <InformationOutline />;
 };
 
-export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props & WithTranslation) => {
+export const MessageBox = ({ type, children = '', links, showCloseButton, onClose }: Props) => {
   return (
     <MessageBoxWrapper type={type}>
       <InfoWrapper>
@@ -153,4 +152,4 @@ export const MessageBox = ({ type, children = '', links, showCloseButton, onClos
   );
 };
 
-export default withTranslation()(MessageBox);
+export default MessageBox;

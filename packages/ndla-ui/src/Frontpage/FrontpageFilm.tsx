@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Forward } from '@ndla/icons/common';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { spacing, spacingUnit, colors, breakpoints, fonts, mq } from '@ndla/core';
 import SectionHeading from '../SectionHeading';
 
@@ -74,20 +74,23 @@ type Props = {
   imageUrl: string;
 };
 
-const FrontpageFilm = ({ url, imageUrl, t }: Props & WithTranslation) => (
-  <StyledSection>
-    <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
-    <StyledImage imageUrl={imageUrl}>
-      <StyledText>{t('welcomePage.film.text')}</StyledText>
-      <StyledText narrow>{t('welcomePage.film.textShort')}</StyledText>
-    </StyledImage>
-    <div className="o-text-link__wrapper o-text-link__wrapper--right">
-      <SafeLink className="o-text-link" to={url}>
-        {t('welcomePage.film.linkLabel')}
-        <Forward />
-      </SafeLink>
-    </div>
-  </StyledSection>
-);
+const FrontpageFilm = ({ url, imageUrl }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledSection>
+      <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
+      <StyledImage imageUrl={imageUrl}>
+        <StyledText>{t('welcomePage.film.text')}</StyledText>
+        <StyledText narrow>{t('welcomePage.film.textShort')}</StyledText>
+      </StyledImage>
+      <div className="o-text-link__wrapper o-text-link__wrapper--right">
+        <SafeLink className="o-text-link" to={url}>
+          {t('welcomePage.film.linkLabel')}
+          <Forward />
+        </SafeLink>
+      </div>
+    </StyledSection>
+  );
+};
 
-export default withTranslation()(FrontpageFilm);
+export default FrontpageFilm;

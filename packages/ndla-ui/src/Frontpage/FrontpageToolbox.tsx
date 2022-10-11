@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { spacing, breakpoints, mq } from '@ndla/core';
 import { SafeLinkButton } from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
@@ -46,21 +46,24 @@ type Props = {
   urlTeachers: string;
 };
 
-const FrontpageToolbox = ({ urlStudents, urlTeachers, t }: Props & WithTranslation) => (
-  <StyledSection>
-    <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
-    <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
-    <ToolboxWrapper>
-      <StyledText>{t('frontPageToolbox.text')}</StyledText>
-    </ToolboxWrapper>
-    <StyledStudentsButton to={urlStudents} buttonSize="medium" borderShape="rounded">
-      {t('frontPageToolbox.linkTextStudents')}
-    </StyledStudentsButton>
-    <SafeLinkButton to={urlTeachers} buttonSize="medium" borderShape="rounded">
-      {t('frontPageToolbox.linkTextTeachers')}
-    </SafeLinkButton>
-    <Illustration />
-  </StyledSection>
-);
+const FrontpageToolbox = ({ urlStudents, urlTeachers }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledSection>
+      <ComponentCursor variant="left" text={t('frontPageToolbox.cursorText')} />
+      <SectionHeading large>{t('frontPageToolbox.heading')}</SectionHeading>
+      <ToolboxWrapper>
+        <StyledText>{t('frontPageToolbox.text')}</StyledText>
+      </ToolboxWrapper>
+      <StyledStudentsButton to={urlStudents} buttonSize="medium" borderShape="rounded">
+        {t('frontPageToolbox.linkTextStudents')}
+      </StyledStudentsButton>
+      <SafeLinkButton to={urlTeachers} buttonSize="medium" borderShape="rounded">
+        {t('frontPageToolbox.linkTextTeachers')}
+      </SafeLinkButton>
+      <Illustration />
+    </StyledSection>
+  );
+};
 
-export default withTranslation()(FrontpageToolbox);
+export default FrontpageToolbox;

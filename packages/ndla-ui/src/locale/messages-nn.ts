@@ -393,6 +393,7 @@ const messages = {
     feide: 'Denne ressursen er berre tilgjengeleg for lærarar som er pålogga med Feide.',
     resources: 'Dette er ikkje eit komplett læremiddel, men ei ressurssamling som vi håper kan vere nyttig for deg.',
     subjectOutdated: 'Dette faget følgjer ein utgått læreplan.',
+    subjectFuture: 'Dette faget følgjer ein kommande læreplan.',
     subjectBeta: 'Dette faget er i betaversjon. Vi fyller på med ressurser fortløpande.',
     newVersion:
       'Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ',
@@ -400,7 +401,6 @@ const messages = {
       'Kommande fag er tilpassa ny læreplan som gjeld fra hausten 2022. Betafag er fag under arbeid. Vi håper likevel at læringsressursane i betafaga kan vere nyttige allereie no.',
     frontPageExpired:
       'Utgåtte fag blir det ikkje undervist i lenger, men det kan framleis vere mogleg å ta eksamen i faget som privatist.',
-    frontPageRevised: 'Kommande fag er tilpassa ny læreplan som gjeld frå hausten 2022.',
   },
   article: {
     lastUpdated: 'Sist oppdatert',

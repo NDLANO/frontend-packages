@@ -393,6 +393,7 @@ const messages = {
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
     resources: 'This is not a complete course, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
+    subjectFuture: 'This course is for a future curriculum.',
     subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
@@ -400,8 +401,6 @@ const messages = {
       'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022. Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
     frontPageExpired:
       'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
-    frontPageRevised:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022.',
   },
   article: {
     edition: 'Edition',

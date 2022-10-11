@@ -393,6 +393,7 @@ const messages = {
     resources:
       'Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.',
     subjectOutdated: 'Dette faget følger en utgått læreplan.',
+    subjectFuture: 'Dette faget følger en kommende læreplan.',
     subjectBeta: 'Dette faget er i betaversjon. Vi fyller på med ressurser fortløpende.',
     newVersion:
       'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
@@ -400,7 +401,6 @@ const messages = {
       'Kommende fag er tilpassa ny læreplan som gjelder fra høsten 2022. Betafag er fag under arbeid. Vi håper likevel at læringsressursene i betafaga kan være nyttige allerede nå.',
     frontPageExpired:
       'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
-    frontPageRevised: 'Kommende fag er tilpassa ny læreplan som gjelder fra høsten 2022.',
   },
   article: {
     lastUpdated: 'Sist oppdatert',

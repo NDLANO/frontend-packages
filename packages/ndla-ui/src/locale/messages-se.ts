@@ -393,6 +393,7 @@ const messages = {
     feide: 'Dát resursa lea dušše olamuttus oahpahedjjiide geat leat Feide bokte sisaloggen.',
     resources: 'Dát ii leat ollislaš oahpponeavvu, muhto resursačoakkáldat man sávvat dutnje leat ávkin.',
     subjectOutdated: 'Dát fága čuovvu oahppoplána mii ii gusto šat.',
+    subjectFuture: 'Dát fága čuovvu oahppoplána mii ii gusto šat.',
     subjectBeta: 'Dát fága lea betaveršuvnnas. Mii lasihit resurssaid dađistaga',
     newVersion:
       'Dát oahpporesursa ii leat ođasmahttojuvvon gustovaš oahppaplána vuođul. Dáppe gávnnat ođastuvvon veršuvnna: ',
@@ -400,7 +401,6 @@ const messages = {
       'Čuovvovaš fága lea heivehuvvon ođđa oahppoplána vuođul mii lea gustovaš čavčča 2022 rájes. Betafága lea fága mii lea barggu vuolde. Mii sávvat goitge ahte oahppanresurssat betafágas sáhttet leat ávkkálaččat dál juo.',
     frontPageExpired:
       'Ii leat oahpahus šat fágain mat eai leat gustovaččat, muhto sáhttá ain leat vejolaš váldit eksámena fágas privatistan.',
-    frontPageRevised: 'Čuovvovaš fága lea heivehuvvon ođđa oahppoplánii mii lea gustovaš 2022 čavčča rájes..',
   },
   article: {
     lastUpdated: 'Maŋemusat ođastuvvon',

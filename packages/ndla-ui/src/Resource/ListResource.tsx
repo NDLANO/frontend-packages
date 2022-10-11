@@ -106,6 +106,7 @@ const TagsandActionMenu = styled.div<TagsAndActionProps>`
   grid-template-columns: 1fr auto auto;
   align-items: center;
   align-self: flex-start;
+  justify-items: flex-end;
   margin: -${spacing.small} -${(props) => (props.hasMenuButton ? spacing.small : 0)} 0 0;
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
+import { Spinner } from '@ndla/icons';
 import { MessageBox } from '../Messages';
 import { ToggleItem } from '../Filter';
 
@@ -190,6 +191,14 @@ const FrontpageAllSubjects = ({
   const allSubjects: subjectProps[] = [];
   const data: any = [];
   const { t } = useTranslation();
+
+  if (categories.flatMap((c) => c.subjects).length === 0) {
+    return (
+      <StyledWrapper>
+        <Spinner size="large" margin="0" aria-label={t('loading')} />;
+      </StyledWrapper>
+    );
+  }
 
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);

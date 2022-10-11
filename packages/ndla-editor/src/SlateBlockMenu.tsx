@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { spacing, colors, fonts, shadows, animations } from '@ndla/core';
 import { Plus } from '@ndla/icons/action';
-import { withTranslation, TFunction } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const ICON_SIZE = '48px';
 
@@ -139,53 +139,55 @@ interface Props {
     helpIcon?: ReactNode;
   }[];
   cy?: string;
-  t: TFunction;
 }
 
 const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
-  ({ heading, actions, clickItem, onToggleOpen, isOpen, cy = 'slate-block-menu', t }: Props, ref) => (
-    <>
-      <div
-        ref={ref}
-        css={[buttonCSS, isOpen && buttonOpen]}
-        data-cy={cy}
-        onMouseDown={() => onToggleOpen(!isOpen)}
-        role="button"
-        aria-expanded={isOpen}
-        aria-controls={cy}
-        aria-label={isOpen ? t('slateBlockMenu.close') : t('slateBlockMenu.open')}>
-        <Plus aria-hidden="true" />
-      </div>
-      {isOpen && (
-        <FocusTrap
-          active
-          focusTrapOptions={{
-            onDeactivate: () => onToggleOpen(false),
-            clickOutsideDeactivates: true,
-            escapeDeactivates: true,
-          }}>
-          <Wrapper>
-            <div data-cy="slate-block-picker-menu" id={cy}>
-              <HeaderLabel>{heading}</HeaderLabel>
-              {actions.map((action) => (
-                <Item key={action.data.object}>
-                  <button
-                    css={itemButton}
-                    data-cy={`create-${action.data.object}`}
-                    type="button"
-                    onClick={() => clickItem(action.data)}>
-                    {action.icon && action.icon}
-                    <span>{action.label}</span>
-                  </button>
-                  {action.helpIcon}
-                </Item>
-              ))}
-            </div>
-          </Wrapper>
-        </FocusTrap>
-      )}
-    </>
-  ),
+  ({ heading, actions, clickItem, onToggleOpen, isOpen, cy = 'slate-block-menu' }: Props, ref) => {
+    const { t } = useTranslation();
+    return (
+      <>
+        <div
+          ref={ref}
+          css={[buttonCSS, isOpen && buttonOpen]}
+          data-cy={cy}
+          onMouseDown={() => onToggleOpen(!isOpen)}
+          role="button"
+          aria-expanded={isOpen}
+          aria-controls={cy}
+          aria-label={isOpen ? t('slateBlockMenu.close') : t('slateBlockMenu.open')}>
+          <Plus aria-hidden="true" />
+        </div>
+        {isOpen && (
+          <FocusTrap
+            active
+            focusTrapOptions={{
+              onDeactivate: () => onToggleOpen(false),
+              clickOutsideDeactivates: true,
+              escapeDeactivates: true,
+            }}>
+            <Wrapper>
+              <div data-cy="slate-block-picker-menu" id={cy}>
+                <HeaderLabel>{heading}</HeaderLabel>
+                {actions.map((action) => (
+                  <Item key={action.data.object}>
+                    <button
+                      css={itemButton}
+                      data-cy={`create-${action.data.object}`}
+                      type="button"
+                      onClick={() => clickItem(action.data)}>
+                      {action.icon && action.icon}
+                      <span>{action.label}</span>
+                    </button>
+                    {action.helpIcon}
+                  </Item>
+                ))}
+              </div>
+            </Wrapper>
+          </FocusTrap>
+        )}
+      </>
+    );
+  },
 );
 
-export default withTranslation()(SlateBlockMenu);
+export default SlateBlockMenu;

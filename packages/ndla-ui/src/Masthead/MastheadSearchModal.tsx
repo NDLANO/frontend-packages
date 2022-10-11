@@ -6,7 +6,7 @@ import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
@@ -91,38 +91,39 @@ const extraBackdrop = css`
   box-shadow: ${shadows.searchHeader};
 `;
 
-const MastheadSearchModal = ({
-  onClose: onSearchClose,
-  children,
-  hideOnNarrowScreen,
-  ndlaFilm,
-  t,
-}: Props & WithTranslation) => (
-  <Modal
-    label={t('searchPage.searchFieldPlaceholder')}
-    backgroundColor="grey"
-    animation="slide-down"
-    animationDuration={200}
-    size="full-width"
-    onClose={onSearchClose}
-    css={modalStyles}
-    activateButton={
-      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
-        {t('masthead.menu.search')}
-      </ToggleSearchButton>
-    }>
-    {(closeModal: VoidFunction) => (
-      <>
-        <div css={extraBackdrop} />
-        <StyledHeader>
-          {isFunction(children) ? children(closeModal) : children}
-          <IconButton aria-label={t('welcomePage.closeSearch')} variant="ghost" colorTheme="light" onClick={closeModal}>
-            <Cross className="c-icon--medium" />
-          </IconButton>
-        </StyledHeader>
-      </>
-    )}
-  </Modal>
-);
+const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScreen, ndlaFilm }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <Modal
+      label={t('searchPage.searchFieldPlaceholder')}
+      backgroundColor="grey"
+      animation="slide-down"
+      animationDuration={200}
+      size="full-width"
+      onClose={onSearchClose}
+      css={modalStyles}
+      activateButton={
+        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
+          {t('masthead.menu.search')}
+        </ToggleSearchButton>
+      }>
+      {(closeModal: VoidFunction) => (
+        <>
+          <div css={extraBackdrop} />
+          <StyledHeader>
+            {isFunction(children) ? children(closeModal) : children}
+            <IconButton
+              aria-label={t('welcomePage.closeSearch')}
+              variant="ghost"
+              colorTheme="light"
+              onClick={closeModal}>
+              <Cross className="c-icon--medium" />
+            </IconButton>
+          </StyledHeader>
+        </>
+      )}
+    </Modal>
+  );
+};
 
-export default withTranslation()(MastheadSearchModal);
+export default MastheadSearchModal;

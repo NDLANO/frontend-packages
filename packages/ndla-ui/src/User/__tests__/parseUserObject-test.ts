@@ -165,6 +165,7 @@ describe('parseUserObject', () => {
       primaryAffiliation: 'employee',
       displayName: 'David LærerVGS Jonsen',
       mail: ['david_laerervgs@feide.no'],
+      grepCodes: [],
       organizations: [
         {
           id: 'fc:org:spusers.feide.no',

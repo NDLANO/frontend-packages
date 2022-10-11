@@ -6,7 +6,7 @@
  */
 
 import { groupBy } from 'lodash';
-import { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType } from './apiTypes';
+import { FeideGoGroup, FeideGrep, FeideGroup, FeideOrg, FeideUserApiType } from './apiTypes';
 
 type GoGroupType = 'basic' | 'teaching' | 'other';
 
@@ -46,24 +46,29 @@ const createGroupings = (groups: FeideGoGroup[]) => {
  * @returns An object containing root groups mapped with children.
  */
 const parseOrgs = (groups: FeideGroup[]) => {
-  const [roots, children] = groups.reduce<[FeideOrg[], FeideGoGroup[]]>(
+  const [roots, children, grep] = groups.reduce<[FeideOrg[], FeideGoGroup[], FeideGrep[]]>(
     (acc, curr) => {
       if (curr.type === 'fc:org') {
-        return [acc[0].concat(curr), acc[1]];
+        return [acc[0].concat(curr), acc[1], acc[2]];
+      } else if (curr.type === 'fc:gogroup') {
+        return [acc[0], acc[1].concat(curr), acc[2]];
       } else {
-        return [acc[0], acc[1].concat(curr)];
+        return [acc[0], acc[1], acc[2].concat(curr)];
       }
     },
-    [[], []],
+    [[], [], []],
   );
 
   const childrenByParentId = groupBy(children, (c) => c.parent);
   const rootsWithChildren = roots.map((root) => ({ ...root, children: childrenByParentId[root.id] ?? [] }));
 
-  return rootsWithChildren.map((root) => ({
-    ...root,
-    children: createGroupings(root.children),
-  }));
+  return {
+    grepCodes: grep,
+    roots: rootsWithChildren.map((root) => ({
+      ...root,
+      children: createGroupings(root.children),
+    })),
+  };
 };
 
 /**
@@ -71,13 +76,14 @@ const parseOrgs = (groups: FeideGroup[]) => {
  * @returns A user object parsed in a presentable way to be handled by i.e UserInfo component.
  */
 export const parseUserObject = (user: FeideUserApiType) => {
-  const orgs = parseOrgs(user.groups);
+  const { roots, grepCodes } = parseOrgs(user.groups);
 
   return {
     uid: user.uid,
     primaryAffiliation: user.eduPersonPrimaryAffiliation,
     displayName: user.displayName,
     mail: user.mail,
-    organizations: orgs,
+    organizations: roots,
+    grepCodes,
   };
 };

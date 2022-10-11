@@ -11,8 +11,7 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
-const canUseDOM = () =>
-  !!(typeof window !== 'undefined' && window.document && window.document.createElement && !window.document.hidden); // window.document.hidden === jsdom check
+const canUseDOM = () => !!(typeof window !== 'undefined' && window.document && !window.document.hidden); // window.document.hidden === jsdom check
 
 export function createUniversalPortal(children: ReactNode, selector: string) {
   if (!canUseDOM()) {

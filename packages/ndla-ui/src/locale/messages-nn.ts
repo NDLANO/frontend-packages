@@ -1074,6 +1074,7 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
     myPage: {
+      noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
       imageAlt:
         'Halvnært bilete av jente som held eit nettbrett i hendene. Oppå nettbrettet ligg det ei samling fargeprøver i ulike former og fargar. Grafikk.',
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',

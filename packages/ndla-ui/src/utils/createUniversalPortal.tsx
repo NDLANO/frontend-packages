@@ -12,12 +12,7 @@ import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
 function canUseDOM() {
-  return !!(
-    typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement &&
-    !window.document.hidden
-  ); // window.document.hidden === jsdom check
+  return !!(typeof window !== 'undefined' && window.document && !window.document.hidden); // window.document.hidden === jsdom check
 }
 
 export function createUniversalPortal(children: ReactNode, selector: string) {

@@ -9,7 +9,7 @@
 import React, { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq } from '@ndla/core';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { ItemProps } from '../Navigation/NavigationBox';
 import { NavigationBox } from '../Navigation';
 
@@ -47,20 +47,23 @@ interface Props {
   onSelectTopic?: (event: MouseEvent<HTMLElement>, id?: string) => void;
 }
 
-const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, t, id }: Props & WithTranslation) => (
-  <>
-    <Heading id={id} tabIndex={-1}>
-      {title}
-    </Heading>
-    <Introduction>{introduction}</Introduction>
-    <NavigationBox
-      items={topics}
-      listDirection="floating"
-      heading={t('topicPage.topics')}
-      colorMode="greyLighter"
-      onClick={onSelectTopic}
-    />
-  </>
-);
+const ToolboxInfo = ({ title, introduction, topics, onSelectTopic, id }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Heading id={id} tabIndex={-1}>
+        {title}
+      </Heading>
+      <Introduction>{introduction}</Introduction>
+      <NavigationBox
+        items={topics}
+        listDirection="floating"
+        heading={t('topicPage.topics')}
+        colorMode="greyLighter"
+        onClick={onSelectTopic}
+      />
+    </>
+  );
+};
 
-export default withTranslation()(ToolboxInfo);
+export default ToolboxInfo;

@@ -6,7 +6,7 @@
  *
  */
 import React, { FormEvent, useEffect, useState } from 'react';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import Button from '@ndla/button';
@@ -84,8 +84,8 @@ const SearchHeader = ({
   filters,
   competenceGoals,
   noResults,
-  t,
-}: Props & WithTranslation) => {
+}: Props) => {
+  const { t } = useTranslation();
   const [isNarrowScreen, setIsNarrowScreen] = useState<boolean | undefined>();
 
   useEffect(() => {
@@ -158,4 +158,4 @@ const SearchHeader = ({
   );
 };
 
-export default withTranslation()(SearchHeader);
+export default SearchHeader;

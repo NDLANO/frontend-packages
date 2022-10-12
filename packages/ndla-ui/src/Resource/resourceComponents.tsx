@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import React, { MouseEvent, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MenuButton } from '@ndla/button';
@@ -38,7 +38,7 @@ export const ResourceTitle = styled.h2`
   line-clamp: 1;
   -webkit-box-orient: vertical;
   grid-area: resourceTitle;
-  ${fonts.sizes('18px', '18px')};
+  ${fonts.sizes('16px', '20px')};
 `;
 
 const StyledTagList = styled.ul`
@@ -60,6 +60,8 @@ const StyledSafeLink = styled(SafeLink)`
   align-items: center;
   box-shadow: none;
   color: ${colors.brand.grey};
+  min-height: 44px;
+  min-width: 44px;
   &:hover {
     color: ${colors.brand.primary};
   }
@@ -94,12 +96,9 @@ export const Row = styled.div`
 `;
 
 const TagCounterWrapper = styled.span`
-  color: ${colors.brand.secondary};
-  box-shadow: none;
-  margin: 0;
+  display: flex;
   font-weight: ${fonts.weight.semibold};
   ${fonts.sizes('14px', '14px')};
-  padding: 5px;
 `;
 
 export interface ContentIconProps {
@@ -149,15 +148,6 @@ interface CompressedTagListProps {
   tagLinkPrefix?: string;
 }
 
-const TagMenuButton = styled(MenuButton)`
-  &:hover,
-  &:active,
-  &:focus {
-    transition: ${misc.transition.default};
-    border-radius: 100%;
-    background-color: ${colors.brand.light};
-  }
-`;
 export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -175,12 +165,13 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
     <>
       <TagList tagLinkPrefix={tagLinkPrefix} tags={visibleTags} />
       {remainingTags.length > 0 && (
-        <TagMenuButton
-          hideMenuIcon={true}
+        <MenuButton
+          size="small"
+          menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
           menuItems={remainingTags}
-          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}>
-          <TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>
-        </TagMenuButton>
+          alignRight
+          aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
+        />
       )}
     </>
   );

@@ -6,11 +6,11 @@
  *
  */
 
-import React, { MouseEvent, memo } from 'react'; // useMemo , { Children }
+import React, { MouseEvent, memo } from 'react';
 import styled from '@emotion/styled';
 import Button from '@ndla/button';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Cross } from '@ndla/icons/action';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { ContentType } from './SearchTypeResult';
@@ -85,47 +85,50 @@ type Props = {
   totalCount: number;
   type?: ContentType;
 };
-const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type, t }: Props & WithTranslation) => (
-  <Wrapper>
-    <HeaderWrapper>
-      <TypeWrapper>
-        {type && (
-          <BadgeWrapper>
-            <ContentTypeBadge type={type} title={t(`contentTypes.${type}`)} background border={false} size="large" />
-          </BadgeWrapper>
-        )}
-        <SubjectName>
-          <b>{type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}</b>{' '}
-          {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
-        </SubjectName>
-      </TypeWrapper>
-    </HeaderWrapper>
-    {filters.length > 0 && (
-      <CategoryItems>
-        {filters.map((option: FilterOptionsType) => (
-          <CategoryTypeButtonWrapper key={option.id}>
-            <Button
-              size="xsmall"
-              borderShape="rounded"
-              greyLighter={!option.active}
-              onClick={(e: MouseEvent<HTMLButtonElement>) => {
-                if (e.currentTarget && option.active) {
-                  e.currentTarget.blur();
-                }
-                onFilterClick?.(option.id);
-              }}>
-              {option.name}
-              {option.active && (
-                <CategoryTypeCrossWrapper>
-                  <Cross />
-                </CategoryTypeCrossWrapper>
-              )}
-            </Button>
-          </CategoryTypeButtonWrapper>
-        ))}
-      </CategoryItems>
-    )}
-  </Wrapper>
-);
+const SearchTypeHeader = ({ filters = [], onFilterClick, totalCount, type }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <Wrapper>
+      <HeaderWrapper>
+        <TypeWrapper>
+          {type && (
+            <BadgeWrapper>
+              <ContentTypeBadge type={type} title={t(`contentTypes.${type}`)} background border={false} size="large" />
+            </BadgeWrapper>
+          )}
+          <SubjectName>
+            <b>{type ? t(`contentTypes.${type}`) : t(`searchPage.resultType.allContentTypes`)}</b>{' '}
+            {totalCount && <Count>{t(`searchPage.resultType.hits`, { count: totalCount })}</Count>}
+          </SubjectName>
+        </TypeWrapper>
+      </HeaderWrapper>
+      {filters.length > 0 && (
+        <CategoryItems>
+          {filters.map((option: FilterOptionsType) => (
+            <CategoryTypeButtonWrapper key={option.id}>
+              <Button
+                size="xsmall"
+                borderShape="rounded"
+                greyLighter={!option.active}
+                onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                  if (e.currentTarget && option.active) {
+                    e.currentTarget.blur();
+                  }
+                  onFilterClick?.(option.id);
+                }}>
+                {option.name}
+                {option.active && (
+                  <CategoryTypeCrossWrapper>
+                    <Cross />
+                  </CategoryTypeCrossWrapper>
+                )}
+              </Button>
+            </CategoryTypeButtonWrapper>
+          ))}
+        </CategoryItems>
+      )}
+    </Wrapper>
+  );
+};
 
-export default memo(withTranslation()(SearchTypeHeader));
+export default memo(SearchTypeHeader);

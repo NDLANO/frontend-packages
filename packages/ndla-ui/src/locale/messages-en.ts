@@ -1016,10 +1016,13 @@ const messages = {
     name: 'Name',
     mail: 'E-mail',
     username: 'Username',
+    mobile: 'Phone number',
+    preferredLanguage: 'Foretrukket språk',
     groupTypes: {
       basic: 'Basic group',
       teaching: 'Teaching group',
       other: 'Other groups',
+      grepCode: 'Grep codes',
     },
     wrongUserInfoDisclaimer:
       'If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ',
@@ -1073,6 +1076,7 @@ const messages = {
     detailView: 'Detailed listview',
     shortView: 'Card view',
     myPage: {
+      noRecents: "You haven't added any resources yet. This is how you get started:",
       imageAlt:
         'Medium close-up of girl holding a tablet. On top of the tablet there are colour samples in different shapes and colours. Graphic image.',
       confirmDeleteAccount: 'Are you sure you want to delete your account?',

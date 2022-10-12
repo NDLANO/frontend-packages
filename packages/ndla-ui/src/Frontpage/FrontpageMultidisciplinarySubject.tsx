@@ -2,7 +2,7 @@ import React from 'react';
 import SafeLink, { SafeLinkButton } from '@ndla/safelink';
 import styled from '@emotion/styled';
 import { spacing, breakpoints, mq } from '@ndla/core';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import SectionHeading from '../SectionHeading';
 import ComponentCursor from '../ComponentCursor';
 import { MultidisciplinarySubjectIllustration as Illustration } from './illustrations/FrontpageIllustrations';
@@ -74,33 +74,36 @@ type Props = {
   topics?: { url: string; title: string; id: string }[];
 };
 
-const FrontpageMultidisciplinarySubject = ({ url, t, topics }: Props & WithTranslation) => (
-  <StyledSection>
-    <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
-    <Wrapper>
-      <Content>
-        <SectionHeading large>{t('frontpageMultidisciplinarySubject.heading')}</SectionHeading>
-        {topics ? (
-          <Topics>
-            {topics.map((topic) => {
-              return (
-                <Topic key={topic.id}>
-                  <SafeLink to={topic.url}>{topic.title}</SafeLink>
-                </Topic>
-              );
-            })}
-          </Topics>
-        ) : null}
-        <StyledText>{t('frontpageMultidisciplinarySubject.text')}</StyledText>
-      </Content>
-    </Wrapper>
-    <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
-      <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
-        {t('frontpageMultidisciplinarySubject.linkText')}
-      </SafeLinkButton>
-    </TargetItem>
-    <Illustration />
-  </StyledSection>
-);
+const FrontpageMultidisciplinarySubject = ({ url, topics }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledSection>
+      <ComponentCursor variant="left" text={t('frontpageMultidisciplinarySubject.cursorText')} />
+      <Wrapper>
+        <Content>
+          <SectionHeading large>{t('frontpageMultidisciplinarySubject.heading')}</SectionHeading>
+          {topics ? (
+            <Topics>
+              {topics.map((topic) => {
+                return (
+                  <Topic key={topic.id}>
+                    <SafeLink to={topic.url}>{topic.title}</SafeLink>
+                  </Topic>
+                );
+              })}
+            </Topics>
+          ) : null}
+          <StyledText>{t('frontpageMultidisciplinarySubject.text')}</StyledText>
+        </Content>
+      </Wrapper>
+      <TargetItem className="o-text-link__wrapper o-text-link__wrapper">
+        <SafeLinkButton to={url} buttonSize="medium" borderShape="rounded">
+          {t('frontpageMultidisciplinarySubject.linkText')}
+        </SafeLinkButton>
+      </TargetItem>
+      <Illustration />
+    </StyledSection>
+  );
+};
 
-export default withTranslation()(FrontpageMultidisciplinarySubject);
+export default FrontpageMultidisciplinarySubject;

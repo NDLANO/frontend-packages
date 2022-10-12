@@ -1015,10 +1015,13 @@ const messages = {
     name: 'Namn',
     mail: 'E-post',
     username: 'Brukarnamn',
+    mobile: 'Telefonnummer',
+    preferredLanguage: 'Føretrekt målform',
     groupTypes: {
       basic: 'Basisgruppe',
       teaching: 'Undervisningsgruppe',
       other: 'Andre grupper',
+      grepCode: 'Grepkodar',
     },
     wrongUserInfoDisclaimer:
       'Dersom informasjonen er feil, må han oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrer. Oversikt over brukarstøtte finst her: ',
@@ -1071,6 +1074,7 @@ const messages = {
     detailView: 'Detaljert listevisning',
     shortView: 'Kortvisning',
     myPage: {
+      noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
       imageAlt:
         'Halvnært bilete av jente som held eit nettbrett i hendene. Oppå nettbrettet ligg det ei samling fargeprøver i ulike former og fargar. Grafikk.',
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',

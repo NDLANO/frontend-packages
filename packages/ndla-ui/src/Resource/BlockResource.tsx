@@ -89,6 +89,8 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   align-items: center;
   img {
+    object-fit: cover;
+    aspect-ratio: 4/3;
     min-width: 100%;
   }
 `;

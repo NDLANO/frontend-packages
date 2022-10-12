@@ -163,7 +163,7 @@ const BlockResource = ({
   resourceTypes,
 }: Props) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const firstResourceType = resourceTypes?.[0].id ?? '';
+  const firstResourceType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
 
   const handleClick = () => {

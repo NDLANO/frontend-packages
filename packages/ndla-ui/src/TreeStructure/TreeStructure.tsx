@@ -18,7 +18,7 @@ import { CommonTreeStructureProps, FolderType, NewFolderInputFunc, TreeStructure
 import ComboboxButton from './ComboboxButton';
 import AddFolderButton from './AddFolderButton';
 
-export const MAX_LEVEL_FOR_FOLDERS = 4;
+export const MAX_LEVEL_FOR_FOLDERS = 5;
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};

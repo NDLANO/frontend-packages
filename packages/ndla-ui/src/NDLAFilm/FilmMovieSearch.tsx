@@ -61,6 +61,7 @@ interface Props {
   resourceTypeSelected?: MovieResourceType;
   resourceTypes: MovieResourceType[];
   ariaControlId: string;
+  skipToContentId?: string;
 }
 
 const FilmMovieSearch = ({
@@ -69,13 +70,16 @@ const FilmMovieSearch = ({
   resourceTypes,
   resourceTypeSelected,
   ariaControlId,
+  skipToContentId,
 }: Props) => {
   const { t } = useTranslation();
   return (
     <FilmMovieSearchContainer>
       <OneColumn>
         <TopicNavigation>
-          <StyledHeadingH2 className="u-12/12 u-4/12@tablet">{t('ndlaFilm.subjectsInMovies')}:</StyledHeadingH2>
+          <StyledHeadingH2 id={skipToContentId} className="u-12/12 u-4/12@tablet">
+            {t('ndlaFilm.subjectsInMovies')}:
+          </StyledHeadingH2>
           <nav className="u-12/12 u-8/12@tablet">
             <ul>
               {topics.map((topic) => (

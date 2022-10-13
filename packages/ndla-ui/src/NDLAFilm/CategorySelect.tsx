@@ -148,7 +148,7 @@ const CategorySelect = ({ resourceTypes, resourceTypeSelected, ariaControlId, on
   return (
     <DropdownContainer className="u-12/12">
       <DropdownButton
-        aria-expanded={!resourceTypesIsOpen}
+        aria-expanded={!!resourceTypesIsOpen}
         aria-controls="selectCategory"
         type="button"
         tabIndex={resourceTypesIsOpen ? -1 : 0}

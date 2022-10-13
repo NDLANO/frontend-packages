@@ -23,7 +23,7 @@ import NdlaFilmIllustration from '../../images/film_illustrasjon.svg';
 import { programmes, subjectCategories } from '../../dummydata/mockPrograms';
 import NdlaToolboxIllustration from '../../images/toolbox_illustration.svg';
 
-const FrontpageExample = () => {
+const FrontpageExample = ({ showLoadingSubjects = false }) => {
   const { t } = useTranslation();
   const [searchFieldValue, setSearchFieldValue] = useState('');
   const [inputHasFocus, setInputHasFocus] = useState(false);
@@ -229,7 +229,11 @@ const FrontpageExample = () => {
       </FrontpageHeader>
       <main>
         <OneColumn extraPadding>
-          <FrontpageProgramMenu programItems={programmes} subjectCategories={subjectCategories} showBetaCursor={true} />
+          <FrontpageProgramMenu
+            programItems={programmes}
+            subjectCategories={showLoadingSubjects ? [{ subjects: [] }] : subjectCategories}
+            showBetaCursor={true}
+          />
         </OneColumn>
         <OneColumn wide>
           <FrontpageMultidisciplinarySubject
@@ -318,6 +322,7 @@ const FrontpageExample = () => {
 
 FrontpageExample.propTypes = {
   showMessageBox: PropTypes.bool,
+  showLoadingSubjects: PropTypes.bool,
 };
 
 export default FrontpageExample;

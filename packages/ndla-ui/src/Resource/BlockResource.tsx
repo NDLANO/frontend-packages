@@ -89,6 +89,8 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   align-items: center;
   img {
+    object-fit: cover;
+    aspect-ratio: 4/3;
     min-width: 100%;
   }
 `;
@@ -161,7 +163,7 @@ const BlockResource = ({
   resourceTypes,
 }: Props) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const firstResourceType = resourceTypes?.[0].id ?? '';
+  const firstResourceType = resourceTypes?.[0]?.id ?? '';
   const Title = ResourceTitle.withComponent(headingLevel);
 
   const handleClick = () => {

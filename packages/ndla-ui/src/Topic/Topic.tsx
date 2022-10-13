@@ -215,6 +215,7 @@ type VisualElementProps = {
 };
 
 export type TopicProps = {
+  id?: string;
   topic?: {
     title: string;
     introduction: string;
@@ -241,6 +242,7 @@ export type TopicProps = {
 };
 
 const Topic = ({
+  id,
   topic,
   subTopics,
   onSubTopicSelected,
@@ -323,7 +325,7 @@ const Topic = ({
                   )}
                 </TopicHeaderVisualElementWrapper>
               )}
-              <TopicHeading invertedStyle={invertedStyle}>
+              <TopicHeading invertedStyle={invertedStyle} id={id} tabIndex={-1}>
                 <StyledHeadingText>{topic.title}</StyledHeadingText>
                 {isAdditionalTopic && (
                   <StyledAdditionalResource>

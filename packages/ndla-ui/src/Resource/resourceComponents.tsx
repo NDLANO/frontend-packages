@@ -48,10 +48,6 @@ const StyledTagList = styled.ul`
   padding: 2px;
   gap: ${spacing.xsmall};
   overflow: hidden;
-  padding-right: 14px;
-  :only-child {
-    margin-right: ${spacing.small};
-  }
 `;
 
 const StyledTagListElement = styled.li`

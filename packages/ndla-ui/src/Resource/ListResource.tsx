@@ -95,30 +95,26 @@ const StyledResourceDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-const TagsandActionMenu = styled.div`
+interface TagsAndActionProps {
+  hasMenuButton: boolean;
+}
+
+const TagsandActionMenu = styled.div<TagsAndActionProps>`
   box-sizing: content-box;
   grid-area: tags;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
-  width: 100%;
-  overflow: hidden;
   align-self: flex-start;
-  justify-self: flex-end;
-  justify-content: flex-end;
-  margin: -${spacing.small} -${spacing.small} 0 0;
+  justify-items: flex-end;
+  margin: -${spacing.small} -${(props) => (props.hasMenuButton ? spacing.small : 0)} 0 0;
   ${mq.range({ until: breakpoints.mobileWide })} {
-    margin: 0 -${spacing.small} -${spacing.small} 0;
+    margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
   }
 `;
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-`;
-
-const StyledMenuButton = styled(MenuButton)`
-  :only-child {
-    margin-left: ${spacing.small};
-  }
 `;
 
 interface ListResourceImageProps {
@@ -245,9 +241,9 @@ const ListResource = ({
         </TypeAndTitleLoader>
       </TopicAndTitleWrapper>
       {showDescription && <Description description={description} loading={isLoading} />}
-      <TagsandActionMenu>
+      <TagsandActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
         {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-        {menuItems && menuItems.length > 0 && <StyledMenuButton alignRight size="small" menuItems={menuItems} />}
+        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
     </ListResourceWrapper>
   );

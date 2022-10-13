@@ -315,7 +315,7 @@ const messages = {
       toFrontpage: 'Ovdasiidui',
       subjectOverview: 'Buot fágat',
       title: 'Sisdoallu',
-      modalLabel: 'Velg innhold',
+      modalLabel: 'Vállje sisdoalu',
       subjectPage: 'Ovdasiidu fágas',
       backToSubjectFrontpage: 'Ruovttoluotta fága ovdasiidui',
       openFilter: 'Filttar',
@@ -393,12 +393,12 @@ const messages = {
     feide: 'Dát resursa lea dušše olamuttus oahpahedjjiide geat leat Feide bokte sisaloggen.',
     resources: 'Dát ii leat ollislaš oahpponeavvu, muhto resursačoakkáldat man sávvat dutnje leat ávkin.',
     subjectOutdated: 'Dát fága čuovvu oahppoplána mii ii gusto šat.',
-    subjectFuture: 'Dát fága čuovvu oahppoplána mii ii gusto šat.',
+    subjectFuture: 'Dát fága čuovvu oahppoplána mii boahtá.',
     subjectBeta: 'Dát fága lea betaveršuvnnas. Mii lasihit resurssaid dađistaga',
     newVersion:
       'Dát oahpporesursa ii leat ođasmahttojuvvon gustovaš oahppaplána vuođul. Dáppe gávnnat ođastuvvon veršuvnna: ',
     frontPageBeta:
-      'Čuovvovaš fága lea heivehuvvon ođđa oahppoplána vuođul mii lea gustovaš čavčča 2022 rájes. Betafága lea fága mii lea barggu vuolde. Mii sávvat goitge ahte oahppanresurssat betafágas sáhttet leat ávkkálaččat dál juo.',
+      'Čuovvovaš fága lea heivehuvvon ođđa oahppoplána vuođul mii lea gustovaš boahtte skuvlajagi rájes. Mii sávvat goitge ahte oahppanresurssat cuovvovaš fága sáhttet leat ávkkálaččat dál juo.',
     frontPageExpired:
       'Ii leat oahpahus šat fágain mat eai leat gustovaččat, muhto sáhttá ain leat vejolaš váldit eksámena fágas privatistan.',
   },
@@ -1066,8 +1066,8 @@ const messages = {
     favourites: 'Oiddohat',
     addToFavourites: 'Bija mu oiddohiid searvái',
     alreadyFavourited: 'Lea juo biddjon oiddohin',
-    alreadyInFolder: 'Finnes allerede i mappen. Du kan fortsatt lagre nye emneknagger.',
-    noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
+    alreadyInFolder: 'Gávdno juo máhpas. Sáhtát ain vurket ođđa fáddágilkoriid.',
+    noFolderSelected: 'Vállje dahje ráhkat ođđa máhpa vai seasttát resurssa',
     help: 'Veahkki',
     more: 'Eanet válljejumit',
     listView: 'Oppalašlistu',
@@ -1075,9 +1075,9 @@ const messages = {
     shortView: 'Oanehis listu',
 
     myPage: {
-      noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
+      noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
       imageAlt:
-        'Halvnært bilde av jente som holder et nettbrett i hendene. Oppå nettbrettet ligger det ei samling fargeprøver i ulike former og farger. Grafikk.',
+        'Oalle lagas govva nieiddas gii doallá dihtordulbosa gieđain. Dihtordulbosa alde leat ivdnečájánasat iešguđet hámiin ja ivnniin. Grafihkka..',
       confirmDeleteAccount: 'Leat go sihkar ahte dáhtut sihkkut kontu?',
       confirmDeleteAccountButton: 'Sihko kontu',
       myPage: 'Mu siidu',

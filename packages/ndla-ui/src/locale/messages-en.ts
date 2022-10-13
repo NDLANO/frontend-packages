@@ -398,7 +398,7 @@ const messages = {
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022. Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
+      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from the next school year. We hope, however, that the learning resources available by now may come in useful already.',
     frontPageExpired:
       'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
   },

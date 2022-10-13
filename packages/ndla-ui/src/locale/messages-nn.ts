@@ -398,7 +398,7 @@ const messages = {
     newVersion:
       'Denne læringsressursen er ikkje oppdatert etter gjeldande læreplan. Du finn ein oppdatert versjon her: ',
     frontPageBeta:
-      'Kommande fag er tilpassa ny læreplan som gjeld fra hausten 2022. Betafag er fag under arbeid. Vi håper likevel at læringsressursane i betafaga kan vere nyttige allereie no.',
+      'Kommande fag er tilpassa ny læreplan som gjeld frå neste skuleår. Vi håper likevel at læringsressursane i kommande fag kan vere nyttige allereie no.',
     frontPageExpired:
       'Utgåtte fag blir det ikkje undervist i lenger, men det kan framleis vere mogleg å ta eksamen i faget som privatist.',
   },

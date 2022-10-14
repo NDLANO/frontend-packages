@@ -187,7 +187,7 @@ export const ResourceTypeList = ({ resourceTypes }: ResourceTypeListProps) => {
     <StyledResourceTypeList aria-label={t('navigation.topics')}>
       {resourceTypes.map((resource, i) => (
         <StyledResourceListElement key={resource.id}>
-          {resource.name}og mye mye mer
+          {resource.name}
           {i !== resourceTypes.length - 1 && <StyledTopicDivider aria-hidden="true">•</StyledTopicDivider>}
         </StyledResourceListElement>
       ))}

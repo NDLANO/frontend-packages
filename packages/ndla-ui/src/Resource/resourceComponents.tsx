@@ -26,9 +26,7 @@ export const ResourceTitleLink = styled(SafeLink)`
 `;
 
 export const ResourceTitle = styled.h2`
-  min-width: 50px;
   margin: 0;
-  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   // Unfortunate css needed for multi-line text overflow ellipsis.
@@ -81,6 +79,7 @@ const StyledTopicDivider = styled.span`
 `;
 
 const StyledResourceListElement = styled.li`
+  white-space: nowrap;
   ${fonts.sizes(12)};
   margin: 0;
   line-height: 1.5;

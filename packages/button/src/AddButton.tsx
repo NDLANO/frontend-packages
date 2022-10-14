@@ -13,10 +13,11 @@ import { Plus } from '@ndla/icons/action';
 import { Button, ButtonProps } from './Button';
 
 const AddIconBorder = styled.div`
-  height: 40px;
-  width: 40px;
   display: flex;
   align-items: center;
+  height: 40px;
+  width: 40px;
+  aspect-ratio: 1;
   justify-content: center;
   border: 1px solid ${colors.brand.tertiary};
   border-radius: 50%;
@@ -25,6 +26,7 @@ const AddIconBorder = styled.div`
 
 const TextWrapper = styled.span`
   color: ${colors.brand.primary};
+  white-space: nowrap;
   align-items: center;
   display: flex;
   ${fonts.weight.semibold}

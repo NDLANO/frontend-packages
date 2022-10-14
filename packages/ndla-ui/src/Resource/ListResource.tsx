@@ -27,7 +27,7 @@ import { contentTypeMapping } from '../model/ContentType';
 const ListResourceWrapper = styled.div`
   flex: 1;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
     'image  topicAndTitle   tags'
     'image  description     description';
@@ -100,8 +100,8 @@ interface TagsAndActionProps {
 }
 
 const TagsandActionMenu = styled.div<TagsAndActionProps>`
-  box-sizing: content-box;
   grid-area: tags;
+  box-sizing: content-box;
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
@@ -111,10 +111,14 @@ const TagsandActionMenu = styled.div<TagsAndActionProps>`
   ${mq.range({ until: breakpoints.mobileWide })} {
     margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
   }
+  overflow: hidden;
 `;
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 interface ListResourceImageProps {

@@ -86,7 +86,7 @@ export {
   NdlaFilmHero,
 } from './Hero';
 
-export { FilterList, FilterListPhone, FilterButtons } from './Filter';
+export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter';
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 

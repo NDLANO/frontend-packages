@@ -1,6 +1,6 @@
 {
   "name": "@ndla/code",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Code components for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
     "types"
   ],
   "dependencies": {
-    "@ndla/button": "^5.0.2",
+    "@ndla/button": "^5.0.3",
     "@ndla/core": "^3.0.0",
     "@ndla/icons": "^2.0.5",
     "@ndla/util": "^3.1.7",

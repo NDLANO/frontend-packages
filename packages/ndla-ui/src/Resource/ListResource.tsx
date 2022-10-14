@@ -239,7 +239,7 @@ const ListResource = ({
       <TopicAndTitleWrapper>
         <TypeAndTitleLoader loading={isLoading}>
           <StyledLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
-            <Title>{title}</Title>
+            <Title title={title}>{title}</Title>
           </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
         </TypeAndTitleLoader>

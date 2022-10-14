@@ -182,7 +182,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
           <FolderOutlined aria-label={t('myNdla.folder.folder')} />
         </IconWrapper>
         <StyledLink to={link} ref={linkRef}>
-          <FolderTitle>{title}</FolderTitle>
+          <FolderTitle title={title}>{title}</FolderTitle>
         </StyledLink>
       </TitleWrapper>
       <MenuWrapper>

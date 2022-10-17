@@ -13,7 +13,7 @@ import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from './types';
 
 export interface ButtonStyleProps {
-  colorTheme: ButtonColor;
+  colorTheme?: ButtonColor;
   size?: ButtonSize;
   variant?: ButtonVariant;
   shape?: ButtonShape;
@@ -23,7 +23,7 @@ export interface ButtonStyleProps {
 
 export const buttonStyle = ({
   size = 'normal',
-  colorTheme,
+  colorTheme = 'primary',
   shape = 'normal',
   inverted,
   variant = 'solid',

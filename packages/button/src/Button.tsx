@@ -6,6 +6,8 @@
  *
  */
 
+// Deprecated. Use ButtonV2.
+
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';

@@ -651,9 +651,9 @@ storiesOf('Enkle komponenter', module)
       </OneColumn>
     </div>
   ))
-  .add('Knapper', () => <ButtonExample />)
-  .add('Knapper BETA', () => <ButtonV2Example />)
-  .add('Modaler BETA', () => <ModalV2Example />)
+  .add('Knapper (utdatert)', () => <ButtonExample />)
+  .add('Knapper', () => <ButtonV2Example />)
+  .add('Modaler', () => <ModalV2Example />)
   .add('Skuff', () => <DrawerExample />)
 
   .add('Logo', () => (

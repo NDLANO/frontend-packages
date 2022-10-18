@@ -10,6 +10,7 @@ export { Button as default, StyledButton, buttonStyle, appearances, ButtonStyles
 export { default as ButtonV2, buttonStyle as buttonStyleV2 } from './ButtonV2';
 export { default as CopyButton } from './CopyButton';
 export { default as MultiButton } from './MultiButton';
+export { default as MultiButtonV2 } from './MultiButtonV2';
 export { default as CloseButton } from './CloseButton';
 export { default as IconButton, convertSizeForSVG } from './IconButton';
 export { default as IconButtonV2, iconButtonStyle } from './IconButtonV2';

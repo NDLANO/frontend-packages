@@ -13,11 +13,6 @@ body {
   }
 }
 
-// Overflow hidden from reach/dialog and react-remove-scroll causes issues with sticky masthead
-html body {
-  overflow: visible !important;
-}
-
 /* IE-10+ fix for footer */
 html.ie #root {
   height: 100%;

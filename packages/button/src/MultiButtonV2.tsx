@@ -83,7 +83,7 @@ const ButtonItem = styled(Button)<StyledButtonProps>`
   ${(props) =>
     props.outline &&
     css`
-      border-color: white;
+      border-color: ${colors.white};
       &:hover,
       &:focus {
         border: 2px solid ${colors.brand.primary};

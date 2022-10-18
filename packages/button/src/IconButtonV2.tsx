@@ -44,16 +44,17 @@ export interface IconButtonProps extends ButtonProps {
 }
 
 export const IconButton = ({
-  children,
+  type = 'button',
   size = 'small',
   colorTheme = 'primary',
   variant,
   shape,
   fontWeight,
   inverted,
+  children,
   ...rest
 }: IconButtonProps) => (
-  <button css={iconButtonStyle({ size, variant, shape, fontWeight, inverted, colorTheme })} {...rest}>
+  <button type={type} css={iconButtonStyle({ size, variant, shape, fontWeight, inverted, colorTheme })} {...rest}>
     {children}
   </button>
 );

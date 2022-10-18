@@ -6,6 +6,8 @@
  *
  */
 
+// Deprecated. Use IconButtonV2.
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';

@@ -22,32 +22,24 @@ const getScrollbarWidth = () => {
 const scrollTargets: string[] = [];
 
 const noScroll = (enable: boolean, uuid: string): void => {
-  const htmlElement = document.querySelector('html') as HTMLElement;
-  if (htmlElement === null) {
+  const bodyElement = document.querySelector('html > body') as HTMLElement;
+  if (bodyElement === null) {
     return;
   }
   if (enable) {
     if (!scrollTargets.includes(uuid)) {
       scrollTargets.push(uuid);
       const scrollWidth = getScrollbarWidth();
-      htmlElement.style.overflow = 'hidden';
-      htmlElement.style.paddingRight = `${scrollWidth}px`;
-      const mastHead = document.querySelector('.c-masthead--fixed') as HTMLElement;
-      if (mastHead) {
-        mastHead.style.paddingRight = `${scrollWidth}px`;
-      }
+      bodyElement.style.overflow = 'hidden';
+      bodyElement.style.marginRight = `${scrollWidth}px`;
     }
   } else {
     if (scrollTargets.indexOf(uuid) !== -1) {
       scrollTargets.splice(scrollTargets.indexOf(uuid), 1);
     }
     if (scrollTargets.length === 0) {
-      htmlElement.style.paddingRight = '0';
-      htmlElement.style.overflow = 'visible';
-      const mastHead = document.querySelector('.c-masthead--fixed') as HTMLElement;
-      if (mastHead) {
-        mastHead.style.paddingRight = '0';
-      }
+      bodyElement.style.marginRight = '0';
+      bodyElement.style.overflow = 'visible';
     }
   }
 };

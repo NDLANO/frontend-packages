@@ -9,10 +9,7 @@
 import { ReactNode } from 'react';
 import { IFolder, IResource } from '@ndla/types-learningpath-api';
 
-export interface FolderType extends IFolder {
-  icon?: ReactNode;
-  isNavigation?: boolean;
-}
+export interface FolderType extends IFolder {}
 
 export type TreeStructureType = 'navigation' | 'picker';
 

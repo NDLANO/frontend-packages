@@ -106,6 +106,7 @@ interface Props extends CommonFolderItemsProps {
   isOpen: boolean;
   folder: FolderType;
   isCreatingFolder?: boolean;
+  index: number;
 }
 
 const FolderItem = ({
@@ -125,9 +126,10 @@ const FolderItem = ({
   isCreatingFolder,
   type,
   closeTree,
+  index,
 }: Props) => {
   const { t } = useTranslation();
-  const { id, name, isNavigation } = folder;
+  const { id, name } = folder;
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder ? selectedFolder.id === id : false;
 
@@ -159,7 +161,7 @@ const FolderItem = ({
     }
   }, [focusedFolder, ref, id, isCreatingFolder, type]);
 
-  const linkPath = `/minndla${!isNavigation ? '/folders' : ''}/${id}`;
+  const linkPath = `/minndla/folders/${id}`;
 
   const containsResource =
     targetResource && folder.resources.some((resource) => resource.resourceId === targetResource.resourceId);
@@ -169,6 +171,8 @@ const FolderItem = ({
   const isMaxDepth = level > maxLevel;
 
   const hideArrow = isMaxDepth || emptyFolder;
+
+  const tabIndex = selected || focused || (!focusedFolder && !folder.parentId && index === 0) ? 0 : -1;
 
   return type === 'navigation' ? (
     <FolderNameLink
@@ -187,7 +191,7 @@ const FolderItem = ({
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
       }}
       to={loading ? '' : linkPath}
-      tabIndex={selected || focused ? 0 : -1}
+      tabIndex={tabIndex}
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}>

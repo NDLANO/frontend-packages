@@ -11,9 +11,7 @@ export default {
 } as ComponentMeta<typeof ButtonV2>;
 
 const Template: ComponentStory<typeof ButtonV2> = (args) => {
-  return (
-      <ButtonV2 {...args} />;
-  );
+  return <ButtonV2 {...args} />;
 };
 
 export const Primary = Template.bind({});

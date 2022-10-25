@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { defaultParameters } from '../.storybook/defaults';
-import ButtonV2 from '../../button/src/ButtonV2';
+import { defaultParameters } from '../../designmanual/.storybook/defaults';
+import ButtonV2 from './ButtonV2';
 
 export default {
   title: 'Enkle komponenter/Knapp',
@@ -20,7 +20,7 @@ Primary.args = {
   colorTheme: 'primary',
   children: 'Button',
   size: 'normal',
-  variant: 'ghost',
+  variant: 'solid',
   shape: 'normal',
   fontWeight: 'normal',
 };

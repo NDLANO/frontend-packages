@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ['../stories/index.ts', '../stories/**/*.stories.@(tsx)'],
+  stories: ['../stories/index.ts', '../../**/*.stories.@(tsx)'],
   addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', '@storybook/addon-links'],
   framework: '@storybook/react',
 
@@ -21,5 +21,12 @@ module.exports = {
       ],
     });
     return config;
+  },
+  babel: async (options) => {
+    return {
+      ...options,
+      presets: [...options.presets, '@emotion/babel-preset-css-prop'],
+      plugins: [...options.plugins, '@emotion'],
+    };
   },
 };

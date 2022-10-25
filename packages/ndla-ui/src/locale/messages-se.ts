@@ -308,6 +308,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Njuike sisdollui',
+    menuOptions: {
+      programme: 'Utdanningsprogram',
+      subjects: 'Fag',
+      multidisciplinarySubjects: 'Tverrfaglege tema',
+      toolboxStudents: 'Verktøykassa - for elever',
+      toolboxTeachers: 'Verktøykassa - for lærere',
+      film: 'NDLA Film',
+      about: {
+        title: 'Om NDLA',
+        whatIs: 'Kva er NDLA?',
+        organization: 'Organisasjonen',
+        numbers: 'Tal og bruk',
+        keyPersonnel: 'Nøkkelpersonar',
+        vacancies: 'Ledige stillingar',
+        newsletter: 'Nyheitsbrev',
+        contact: 'Kontakt',
+      },
+    },
     menu: {
       close: 'Govčča',
       goTo: 'Mana deike',

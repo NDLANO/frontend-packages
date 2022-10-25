@@ -308,6 +308,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Skip to content',
+    menuOptions: {
+      programme: 'Programmes',
+      subjects: 'Subjects',
+      multidisciplinarySubjects: 'Multidisciplinary subjects',
+      toolboxStudents: 'Toolbox - for students',
+      toolboxTeachers: 'Toolbox - for teachers',
+      film: 'NDLA Film',
+      about: {
+        title: 'About NDLA',
+        whatIs: 'What is NDLA?',
+        organization: 'The organization',
+        numbers: 'Numbers and usage',
+        keyPersonnel: 'Key personnel',
+        vacancies: 'Vacancies',
+        newsletter: 'Newsletter',
+        contact: 'Contact',
+      },
+    },
     menu: {
       close: 'Close',
       goTo: 'Go to',

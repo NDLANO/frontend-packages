@@ -31,7 +31,7 @@
     "@fontsource/source-sans-pro": "^4.5.9",
     "@fontsource/source-serif-pro": "^4.5.7",
     "@storybook/addon-a11y": "^6.5.12",
-    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
     "@storybook/addons": "^6.5.12",
     "@storybook/react": "^6.5.12",

@@ -7,7 +7,7 @@
  */
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { defaultParameters } from '../../designmanual/.storybook/defaults';
+import { defaultParameters } from '../../designmanual/stories/defaults';
 import MultiButton from './MultiButtonV2';
 
 export default {

@@ -8,7 +8,7 @@
 
 import { DeleteForever, Folder } from '@ndla/icons/editor';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { defaultParameters } from '../../designmanual/.storybook/defaults';
+import { defaultParameters } from '../../designmanual/stories/defaults';
 import MenuButton from './MenuButton';
 
 export default {

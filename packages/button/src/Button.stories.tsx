@@ -7,7 +7,7 @@
  */
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { defaultParameters } from '../../designmanual/.storybook/defaults';
+import { defaultParameters } from '../../designmanual/stories/defaults';
 import ButtonV2 from './ButtonV2';
 
 export default {

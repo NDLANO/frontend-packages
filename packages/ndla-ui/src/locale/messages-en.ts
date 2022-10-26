@@ -1054,6 +1054,7 @@ const messages = {
       onDragEnd: 'The folder {{name}} was dropped at position {{index}} og {{length}}',
       onDragEndMissingOver: 'The folder {{name}} was dropped',
       onDragcancel: 'Dragging was cancelled. The folder {{name}} was dropped',
+      dragHandle: 'Drag the folder {{name}}',
     },
     tagList: 'Tags',
     tags: '{{count}} tag',
@@ -1146,6 +1147,7 @@ const messages = {
       onDragEnd: 'The resource {{name}} was dropped at position {{index}} og {{length}}',
       onDragEndMissingOver: 'The resource {{name}} was dropped',
       onDragcancel: 'Dragging was cancelled. The resource {{name}} was dropped',
+      dragHandle: 'Drag the resource {{name}}',
     },
   },
   snackbar: {

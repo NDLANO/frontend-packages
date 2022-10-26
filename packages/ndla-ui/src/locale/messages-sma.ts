@@ -1054,6 +1054,7 @@ const messages = {
       onDragEnd: 'Mappa {{name}} blei sloppe på posisjon {{index}} av {{length}}',
       onDragEndMissingOver: 'Mappa blei sloppe',
       onDragcancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
+      dragHandle: 'Sorter mappen {{name}}',
     },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
@@ -1145,6 +1146,7 @@ const messages = {
       onDragEnd: 'Ressursen {{name}} blei sloppe på posisjon {{index}} av {{length}}',
       onDragEndMissingOver: 'Ressursen {{name}} blei sloppe',
       onDragcancel: 'Flytting avbrutt. Ressursen {{name}} blei sloppe',
+      dragHandle: 'Sorter ressursen {{navn}}',
     },
   },
   snackbar: {

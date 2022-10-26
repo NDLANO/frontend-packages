@@ -1053,6 +1053,7 @@ const messages = {
       onDragEnd: 'Mappen {{name}} ble sluppet på posisjon {{index}} av {{length}}',
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
       onDragcancel: 'Flytting kansellert. Mappen {{name}} ble sluppet',
+      dragHandle: 'Sorter mappen {{name}}',
     },
     tagList: 'Emneknagger',
     tags: '{{count}} emneknagg',
@@ -1143,6 +1144,7 @@ const messages = {
       onDragEnd: 'Ressursen {{name}} ble sluppet på posisjon {{index}} av {{length}}',
       onDragEndMissingOver: 'Ressursen {{name}} ble sluppet',
       onDragcancel: 'Flytting avbrutt. Ressursen {{name}} ble sluppet',
+      dragHandle: 'Sorter ressursen {{name}}',
     },
   },
   snackbar: {

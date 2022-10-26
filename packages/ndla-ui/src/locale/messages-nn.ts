@@ -1141,9 +1141,9 @@ const messages = {
       onDragStart: 'Plukket opp ressursen {{name}}. Ressursen er på posisjon {{index}} av {{length}}',
       onDragOver: 'Ressursen {{name}} blei flytta til posisjon {{index}} av {{length}}',
       onDragOverMissingOver: 'Ressursen {{name}} er ikkje lenger over eit sleppbart område',
-      onDragEnd: 'Ressursen {{name}} blei sloppe på posisjon {{index}} av {{length}}',
-      onDragEndMissingOver: 'Ressursen blei sloppe',
-      onDragcancel: 'Flytting avbrutt. Ressursen {{name}} blei sloppe',
+      onDragEnd: 'Ressursen {{name}} blei sleppt på posisjon {{index}} av {{length}}',
+      onDragEndMissingOver: 'Ressursen blei sleppt',
+      onDragcancel: 'Flytting avbrutt. Ressursen {{name}} blei sleppt',
     },
   },
   snackbar: {

@@ -1052,7 +1052,7 @@ const messages = {
       onDragOverMissingOver: 'Mappen {{name}} er ikke lenger over et slippbart område',
       onDragEnd: 'Mappen {{name}} ble sluppet på posisjon {{index}} av {{length}}',
       onDragEndMissingOver: 'Mappen {{name}} ble sluppet',
-      onDragcancel: 'Flytting kansellert. Mappen {{name}} ble sluppet',
+      onDragcancel: 'Flytting avbrutt. Mappen {{name}} ble sluppet',
       dragHandle: 'Sorter mappen {{name}}',
     },
     tagList: 'Emneknagger',

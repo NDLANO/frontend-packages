@@ -38,8 +38,8 @@ export default {
   },
 } as ComponentMeta<typeof MenuButton>;
 
-export const ButtonWithMenu: ComponentStory<typeof MenuButton> = (args) => {
+export const MenuButtonStory: ComponentStory<typeof MenuButton> = (args) => {
   return <MenuButton {...args} />;
 };
 
-ButtonWithMenu.storyName = 'Menyknapp';
+MenuButtonStory.storyName = 'Menyknapp';

@@ -26,8 +26,8 @@ export default {
   },
 } as ComponentMeta<typeof ButtonV2>;
 
-export const StandardButton: ComponentStory<typeof ButtonV2> = (args) => {
+export const ButtonStory: ComponentStory<typeof ButtonV2> = (args) => {
   return <ButtonV2 {...args} />;
 };
 
-StandardButton.storyName = 'Standard';
+ButtonStory.storyName = 'Standard';

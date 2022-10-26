@@ -37,8 +37,8 @@ export default {
   },
 } as ComponentMeta<typeof MultiButton>;
 
-export const StandardButton: ComponentStory<typeof MultiButton> = (args) => {
+export const MultiButtonStory: ComponentStory<typeof MultiButton> = (args) => {
   return <MultiButton {...args} />;
 };
 
-StandardButton.storyName = 'Flervalg';
+MultiButtonStory.storyName = 'Flervalg';

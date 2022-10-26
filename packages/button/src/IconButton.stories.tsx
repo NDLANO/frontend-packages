@@ -33,8 +33,8 @@ export default {
   },
 } as ComponentMeta<typeof IconButtonV2>;
 
-export const WithIcon: ComponentStory<typeof IconButtonV2> = (args) => {
+export const IconButtonStory: ComponentStory<typeof IconButtonV2> = (args) => {
   return <IconButtonV2 {...args} />;
 };
 
-WithIcon.storyName = 'Med ikon';
+IconButtonStory.storyName = 'Med ikon';

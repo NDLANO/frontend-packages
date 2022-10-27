@@ -1002,7 +1002,6 @@ const messages = {
     buttonLogOut: 'Log out',
     generalFooter: 'Some resources may only be accessed by teachers who are logged in.',
     modal: {
-      collectedInfo: 'We have collected the following information about you from Feide:',
       general: 'Resources that require logging in with Feide, are tagged with the icon',
       topic: 'Log in with Feide to access this topic.',
       isAuth: 'User info',

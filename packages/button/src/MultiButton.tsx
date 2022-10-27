@@ -6,6 +6,8 @@
  *
  */
 
+// Deprecated. Use MultiButtonV2.
+
 import React, { useState, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';

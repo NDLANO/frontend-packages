@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { spacingUnit } from '@ndla/core';
 import { css } from '@emotion/react';
 import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
@@ -43,19 +43,29 @@ export interface IconButtonProps extends ButtonProps {
   ['aria-label']: string;
 }
 
-export const IconButton = ({
-  children,
-  size = 'small',
-  colorTheme = 'primary',
-  variant,
-  shape,
-  fontWeight,
-  inverted,
-  ...rest
-}: IconButtonProps) => (
-  <button css={iconButtonStyle({ size, variant, shape, fontWeight, inverted, colorTheme })} {...rest}>
-    {children}
-  </button>
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+  (
+    {
+      type = 'button',
+      size = 'small',
+      colorTheme = 'primary',
+      variant,
+      shape,
+      fontWeight,
+      inverted,
+      children,
+      ...rest
+    },
+    ref,
+  ) => (
+    <button
+      type={type}
+      ref={ref}
+      css={iconButtonStyle({ size, variant, shape, fontWeight, inverted, colorTheme })}
+      {...rest}>
+      {children}
+    </button>
+  ),
 );
 
 export default IconButton;

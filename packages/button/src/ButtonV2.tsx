@@ -13,7 +13,7 @@ import { themes } from './themes';
 import { ButtonSize, ButtonColor, ButtonShape, ButtonVariant, ButtonFontWeight } from './types';
 
 export interface ButtonStyleProps {
-  colorTheme: ButtonColor;
+  colorTheme?: ButtonColor;
   size?: ButtonSize;
   variant?: ButtonVariant;
   shape?: ButtonShape;
@@ -23,7 +23,7 @@ export interface ButtonStyleProps {
 
 export const buttonStyle = ({
   size = 'normal',
-  colorTheme,
+  colorTheme = 'primary',
   shape = 'normal',
   inverted,
   variant = 'solid',
@@ -197,9 +197,13 @@ interface Props {
 export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, ...rest }, ref) => {
+  ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, type = 'button', ...rest }, ref) => {
     return (
-      <button css={buttonStyle({ colorTheme, size, variant, inverted, shape, fontWeight })} {...rest} ref={ref}>
+      <button
+        type={type}
+        css={buttonStyle({ colorTheme, size, variant, inverted, shape, fontWeight })}
+        {...rest}
+        ref={ref}>
         {children}
       </button>
     );

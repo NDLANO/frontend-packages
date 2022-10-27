@@ -503,10 +503,12 @@ storiesOf('Sammensatte moduler', module)
     </PageContainer>
   ))
 
-  .add('Modalboks', () => (
+  .add('Modalboks (utdatert)', () => (
     <div>
-      <StoryIntro title="Modalboks">
-        <p>Some tekst</p>
+      <StoryIntro title="Modalboks (utdatert)">
+        <p>
+          Utdatert. Se eksempelet "Modaler" under <b>Enkle komponenter</b>
+        </p>
       </StoryIntro>
       <StoryBody>
         <ModalExample />

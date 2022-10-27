@@ -73,6 +73,7 @@ const FolderInput = forwardRef<HTMLInputElement, Props>(({ loading, error, onClo
 
   return (
     <StyledInput
+      autoComplete="off"
       white
       error={error}
       aria-disabled={loading ? true : undefined}

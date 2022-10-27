@@ -61,8 +61,6 @@ export const UserInfo = ({ user }: Props) => {
         )}
       </ShortInfoDiv>
 
-      {t('user.modal.collectedInfo')}
-
       <InfoList data-hj-suppress>
         {parsedUser.organizations.map((org) => (
           <li key={org.id}>

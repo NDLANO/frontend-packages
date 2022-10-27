@@ -1,7 +1,12 @@
 import React, { ElementType } from 'react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { ButtonV2 as Button, MultiButton, StyledButton, IconButtonV2 as IconButton } from '@ndla/button';
+import {
+  ButtonV2 as Button,
+  MultiButtonV2 as MultiButton,
+  StyledButton,
+  IconButtonV2 as IconButton,
+} from '@ndla/button';
 import { action } from '@storybook/addon-actions';
 import { ChevronDown, Wrench } from '@ndla/icons/common';
 import { Heart, Pencil, Print } from '@ndla/icons/action';

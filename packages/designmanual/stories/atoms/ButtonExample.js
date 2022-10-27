@@ -9,6 +9,7 @@ import { Folder, Star, Link } from '@ndla/icons/editor';
 
 import { CloseButton, MenuButton } from '@ndla/button';
 import { StoryIntro, StoryBody } from '../wrappers';
+
 const AnchorButton = StyledButton.withComponent('a');
 
 const menuButtonSizes = ['xsmall', 'small', 'normal', 'medium', 'large'];
@@ -98,7 +99,10 @@ const MultiButtonHelper = ({ ...props }) => (
 const ButtonExample = () => {
   return (
     <>
-      <StoryIntro title="Knapper">
+      <StoryIntro title="Knapper (utdatert)">
+        <p>
+          <b>(utdatert)</b> Flere av knappkomponentene er utdatert og byttet ut med nye knapper. Se BETA-eksempelet.
+        </p>
         <p>
           Knapper er til å klikke på for å navigere på samme side, ikke for å lenke til en annen. De skal altså brukes
           til interaktivitet på samme side. For å sende brukeren til en annen side brukes vanlig lenke.

@@ -1002,7 +1002,6 @@ const messages = {
     buttonLogOut: 'Logge olggos',
     generalFooter: 'Muhtin resurssat leat dušše olamuttus sisaloggejuvvon oahpaheddjiide.',
     modal: {
-      collectedInfo: 'Čuovvovaš dieđut leat du birra vižžojuvvon Feide bokte:',
       general: 'Resurssat mat gáibidit Feide sisaloggema leat merkejuvvon čuovvovaš ikonain',
       topic: 'Logge sisa Feide bokte oažžun dihte beassanlági dán fáddái.',
       isAuth: 'Geavaheaddjidieđut',

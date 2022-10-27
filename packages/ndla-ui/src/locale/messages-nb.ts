@@ -1001,7 +1001,6 @@ const messages = {
     buttonLogOut: 'Logg ut',
     generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',
     modal: {
-      collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide:',
       general: 'Ressursene som krever pålogging med Feide, vises med ikonet',
       topic: 'Logg inn med Feide for å få tilgang til dette emnet.',
       isAuth: 'Brukerinfo',

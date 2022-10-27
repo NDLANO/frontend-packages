@@ -10,9 +10,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { TreeStructure, FolderType, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
 import { uuid } from '@ndla/util';
-import { User, HashTag } from '@ndla/icons/common';
 import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
-import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 import { FolderInput } from '@ndla/ui';
 import { colors, spacing } from '@ndla/core';
@@ -111,44 +109,9 @@ export const FOLDER_TREE_STRUCTURE: FolderType[] = [
     id: MY_FOLDERS_ID,
     name: 'Mine mapper',
     status: 'private',
-    icon: <FolderOutlined />,
     breadcrumbs: [],
     resources: [],
     subfolders: [...STRUCTURE_EXAMPLE],
-  },
-];
-
-export const NAVIGATION_STRUCTURE: FolderType[] = [
-  {
-    id: '',
-    name: 'Min NDLA',
-    status: 'private',
-    icon: <User />,
-    isNavigation: true,
-    subfolders: [],
-    resources: [],
-    breadcrumbs: [],
-  },
-  {
-    id: MY_FOLDERS_ID,
-    name: 'Mine mapper',
-    status: 'private',
-    icon: <FolderOutlined />,
-    isNavigation: true,
-    breadcrumbs: [],
-    resources: [],
-    subfolders: [],
-  },
-  ...STRUCTURE_EXAMPLE,
-  {
-    id: 'tags',
-    name: 'Mine emneknagger',
-    status: 'private',
-    icon: <HashTag />,
-    isNavigation: true,
-    subfolders: [],
-    resources: [],
-    breadcrumbs: [],
   },
 ];
 
@@ -223,7 +186,7 @@ const TreeStructureExample = () => (
       openOnFolderClick
       type="navigation"
       defaultOpenFolders={[MY_FOLDERS_ID]}
-      structure={NAVIGATION_STRUCTURE}
+      structure={STRUCTURE_EXAMPLE}
     />
   </div>
 );

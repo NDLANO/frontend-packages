@@ -1141,7 +1141,7 @@ const messages = {
       tagsUpdated: 'Tags updated',
       show: 'Show',
       save: 'Save resource',
-      onDragStart: 'Picked up the resource {{name}}. The folder is in position {{index}} of {{length}}',
+      onDragStart: 'Picked up the resource {{name}}. The resource is in position {{index}} of {{length}}',
       onDragOver: 'The resource {{name}} was moved into position {{index}} of {{length}}',
       onDragOverMissingOver: 'The resource {{name}} is no longer over a droppable area',
       onDragEnd: 'The resource {{name}} was dropped at position {{index}} og {{length}}',

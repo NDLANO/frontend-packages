@@ -1,5 +1,6 @@
 module.exports = {
   setupFilesAfterEnv: [require.resolve('./jest.setup.js')],
+  testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
     // Use ts-jest for typescript tests: https://kulshekhar.github.io/ts-jest/user/babel7-or-ts#no-type-checking

@@ -7,14 +7,14 @@
  */
 
 import React, { ReactNode } from 'react';
-import { TreeStructureExampleComponent, NAVIGATION_STRUCTURE } from '../TreeStructureExample';
+import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE } from '../TreeStructureExample';
 //@ts-ignore
 import { LayoutWithSidebarAside, LayoutWithSidebarMain, LayoutWithSidebarWrapper } from '../../helpers';
 
 export const MyPage = ({ children }: { children: ReactNode }) => (
   <LayoutWithSidebarWrapper>
     <LayoutWithSidebarAside>
-      <TreeStructureExampleComponent type="navigation" openOnFolderClick structure={NAVIGATION_STRUCTURE} />
+      <TreeStructureExampleComponent type="navigation" openOnFolderClick structure={STRUCTURE_EXAMPLE} />
     </LayoutWithSidebarAside>
     <LayoutWithSidebarMain>{children}</LayoutWithSidebarMain>
   </LayoutWithSidebarWrapper>

@@ -180,7 +180,7 @@ export const TopicMenu = ({
       </ModalHeader>
       <div {...classes('content')}>
         <div {...classes('back', 'wide')}>
-          <SafeLink {...classes('back-link')} to={toFrontpage()}>
+          <SafeLink {...classes('back-link')} to={toFrontpage()} onClick={closeMenu}>
             <Home {...classes('home-icon', '', 'c-icon--20')} />
             {t('masthead.menu.toFrontpage')}
           </SafeLink>
@@ -189,7 +189,7 @@ export const TopicMenu = ({
           {...classes('back', {
             narrow: true,
           })}>
-          <SafeLink {...classes('back-link')} to={toFrontpage()}>
+          <SafeLink {...classes('back-link')} to={toFrontpage()} onClick={closeMenu}>
             <Home {...classes('home-icon', '', 'c-icon--20')} />
             {t('masthead.menu.toFrontpage')}
           </SafeLink>

@@ -4,7 +4,7 @@
  * Forked/Inspired by: https://github.com/kentcdodds/glamorous-website/blob/master/other/now-travis
  */
 
-const github = require('octonode');
+const { Octokit } = require('octokit');
 const spawn = require('cross-spawn-promise');
 const normalizeUrl = require('normalize-url');
 const urlRegex = require('url-regex');
@@ -25,8 +25,7 @@ const {
   GITHUB_SHA,
 } = process.env;
 const { VERCEL_TOKEN: vercelToken, GH_TOKEN: githubToken } = process.env;
-const client = github.client(githubToken);
-const ghRepo = client.repo(GITHUB_REPOSITORY);
+const octokit = new Octokit({ auth: githubToken });
 const providedArgs = process.argv.slice(2);
 
 function isFork() {
@@ -83,10 +82,18 @@ function safeError(...args) {
   console.error(...safeArgs);
 }
 
-function updateStatus(sha, options) {
+async function updateStatus(sha, options) {
   const { description, target_url: url } = options;
   console.log(`${description}: ${url}`);
-  ghRepo.status(sha, options, logError('setting complete status'));
+  await octokit.rest.repos
+    .createCommitStatus({
+      sha,
+      repo: GITHUB_REPOSITORY,
+      target_url: url,
+      description,
+      state: options.state,
+    })
+    .catch(logError('setting complete status'));
 }
 
 function onError(sha, err) {

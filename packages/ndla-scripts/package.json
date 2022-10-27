@@ -22,10 +22,10 @@
     "src"
   ],
   "dependencies": {
+    "octokit": "^2.0.10",
     "cross-spawn": "^7.0.3",
     "cross-spawn-promise": "^0.10.2",
     "normalize-url": "^4.1.0",
-    "octonode": "^0.9.4",
     "url-regex": "^4.1.1",
     "vercel": "^27.2.0"
   },

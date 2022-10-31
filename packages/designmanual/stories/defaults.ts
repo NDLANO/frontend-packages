@@ -7,7 +7,4 @@ export const defaultParameters = {
   previewTabs: {
     'storybook/docs/panel': { hidden: false },
   },
-  custom: {
-    component: true,
-  },
 };

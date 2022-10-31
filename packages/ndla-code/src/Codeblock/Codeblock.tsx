@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { colors } from '@ndla/core';
@@ -61,7 +61,7 @@ const syntaxHighlighterStyle = {
   },
 };
 
-const lineNumberContainerStyle = {
+const lineNumberContainerStyle: CSSProperties = {
   padding: '10px',
   float: 'left',
   borderRight: '1px solid #D8D8D8',

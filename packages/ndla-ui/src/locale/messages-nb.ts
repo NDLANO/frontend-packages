@@ -307,6 +307,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Hopp til innhold',
+    menuOptions: {
+      programme: 'Utdanningsprogram',
+      subjects: 'Fag',
+      multidisciplinarySubjects: 'Tverrfaglige tema',
+      toolboxStudents: 'Verktøykassa - for elever',
+      toolboxTeachers: 'Verktøykassa - for lærere',
+      film: 'NDLA Film',
+      about: {
+        title: 'Om NDLA',
+        whatIs: 'Hva er NDLA?',
+        organization: 'Organisasjonen',
+        numbers: 'Tall og bruk',
+        keyPersonnel: 'Nøkkelpersoner',
+        vacancies: 'Ledige stillinger',
+        newsletter: 'Nyhetsbrev',
+        contact: 'Kontakt',
+      },
+    },
     menu: {
       close: 'Lukk',
       goTo: 'Gå til',

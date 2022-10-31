@@ -308,6 +308,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Njuike sisdollui',
+    menuOptions: {
+      programme: 'Oahppoprográmma',
+      subjects: 'Fága',
+      multidisciplinarySubjects: 'Fágaidrasttildeaddji fáddá',
+      toolboxStudents: 'Reaidokássa - ohppiide',
+      toolboxTeachers: 'Reaidokássa - oahpaheddjiide',
+      film: 'NDLA Filbma',
+      about: {
+        title: 'NDLA birra',
+        whatIs: 'Mii lea NDLA?',
+        organization: 'Organisašuvdna',
+        numbers: 'Logut ja geavahus',
+        keyPersonnel: 'Čoavddagieđat',
+        vacancies: 'Rabas virggit',
+        newsletter: 'Ođasreivvet',
+        contact: 'Oktavuohta',
+      },
+    },
     menu: {
       close: 'Govčča',
       goTo: 'Mana deike',

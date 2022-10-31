@@ -80,4 +80,5 @@ export interface FeideUser {
 export interface FeideUserApiType extends FeideUser {
   groups: FeideGroup[];
   primarySchool?: FeideGroup;
+  baseOrg?: FeideGroup;
 }

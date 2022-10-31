@@ -12,7 +12,7 @@ import { defaultParameters } from '../../designmanual/stories/defaults';
 import MenuButton from './MenuButton';
 
 export default {
-  title: 'Enkle komponenter/Knapp/Menyknapp',
+  title: 'Enkle komponenter/MenuButton',
   component: MenuButton,
   parameters: {
     ...defaultParameters,
@@ -42,4 +42,4 @@ export const MenuButtonStory: ComponentStory<typeof MenuButton> = (args) => {
   return <MenuButton {...args} />;
 };
 
-MenuButtonStory.storyName = 'Menyknapp';
+MenuButtonStory.storyName = 'MenuButton';

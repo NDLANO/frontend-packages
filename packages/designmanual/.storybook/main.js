@@ -1,6 +1,24 @@
 module.exports = {
-  stories: ['../stories/index.ts', '../../**/*.stories.@(tsx)'],
-  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', '@storybook/addon-links'],
+  stories: ['../stories/index.ts', '../../**/*.stories.@(tsx|mdx)'],
+  addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-links',
+    '@storybook/addon-actions',
+    '@storybook/addon-viewport',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        configureJSX: true,
+        transcludeMarkdown: true,
+        babelOptions: {},
+      },
+    },
+    '@storybook/addon-controls',
+    '@storybook/addon-backgrounds',
+    '@storybook/addon-toolbars',
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
+  ],
   framework: '@storybook/react',
 
   webpackFinal: (config) => {

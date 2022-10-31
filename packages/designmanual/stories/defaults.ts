@@ -1,5 +1,6 @@
 export const defaultParameters = {
   viewMode: 'docs',
+  layout: 'padded',
   docs: {
     page: undefined,
   },

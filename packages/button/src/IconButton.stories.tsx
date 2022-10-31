@@ -12,7 +12,7 @@ import { defaultParameters } from '../../designmanual/stories/defaults';
 import IconButtonV2 from './IconButtonV2';
 
 export default {
-  title: 'Enkle komponenter/Knapp/Med ikon',
+  title: 'Enkle komponenter/IconButton',
   component: IconButtonV2,
   parameters: {
     ...defaultParameters,
@@ -37,4 +37,4 @@ export const IconButtonStory: ComponentStory<typeof IconButtonV2> = (args) => {
   return <IconButtonV2 {...args} />;
 };
 
-IconButtonStory.storyName = 'Med ikon';
+IconButtonStory.storyName = 'IconButton';

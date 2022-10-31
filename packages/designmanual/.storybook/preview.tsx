@@ -1,9 +1,10 @@
 import { i18nInstance } from '@ndla/ui';
-import { Story, StoryContext } from '@storybook/react';
+import { addParameters, Story, StoryContext } from '@storybook/react';
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 import './designmanual.scss';
 
 export const parameters = {
@@ -27,11 +28,16 @@ export const decorators = [
     <BrowserRouter>
       <I18nextProvider i18n={i18nInstance}>
         <HelmetProvider>
-          <div style={{ margin: context.parameters?.custom?.component ? '3em' : undefined }}>
-            <Story />
-          </div>
+          <Story />
         </HelmetProvider>
       </I18nextProvider>
     </BrowserRouter>
   ),
 ];
+
+addParameters({
+  docs: {
+    container: DocsContainer,
+    page: DocsPage,
+  },
+});

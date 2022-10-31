@@ -6,12 +6,17 @@
  *
  */
 
+import styled from '@emotion/styled';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { defaultParameters } from '../../designmanual/stories/defaults';
 import MultiButton from './MultiButtonV2';
 
+const Wrapper = styled.div`
+  margin: 5em;
+`;
+
 export default {
-  title: 'Enkle komponenter/Knapp/Flervalg',
+  title: 'Enkle komponenter/MultiButton',
   component: MultiButton,
   parameters: {
     ...defaultParameters,
@@ -38,7 +43,11 @@ export default {
 } as ComponentMeta<typeof MultiButton>;
 
 export const MultiButtonStory: ComponentStory<typeof MultiButton> = (args) => {
-  return <MultiButton {...args} />;
+  return (
+    <Wrapper>
+      <MultiButton {...args} />
+    </Wrapper>
+  );
 };
 
-MultiButtonStory.storyName = 'Flervalg';
+MultiButtonStory.storyName = 'MultiButton';

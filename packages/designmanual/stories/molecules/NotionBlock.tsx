@@ -12,9 +12,9 @@ import { FigureType } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
+import Button from '@ndla/button';
 //@ts-ignore
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
-import Button from '../../../button/src';
 
 const conceptData = {
   image: {

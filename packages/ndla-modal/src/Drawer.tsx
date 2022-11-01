@@ -14,6 +14,7 @@ interface Props {
   size?: ModalSize;
   position?: DrawerPosition;
   animation?: ModalAnimation;
+  expands?: boolean;
 }
 
 const Drawer = ({ size = 'normal', position = 'left', ...rest }: Props & BaseProps) => {

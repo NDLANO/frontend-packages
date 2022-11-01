@@ -16,8 +16,6 @@ import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
-import ButtonExample from './atoms/ButtonExample';
-import ButtonV2Example from './atoms/ButtonV2Example';
 import ModalV2Example from './atoms/ModalV2Example';
 import DrawerExample from './atoms/DrawerExample';
 import SolutionTableExample from './molecules/SolutionExample';
@@ -651,8 +649,6 @@ storiesOf('Enkle komponenter', module)
       </OneColumn>
     </div>
   ))
-  .add('Knapper (utdatert)', () => <ButtonExample />)
-  .add('Knapper', () => <ButtonV2Example />)
   .add('Modaler', () => <ModalV2Example />)
   .add('Skuff', () => <DrawerExample />)
 

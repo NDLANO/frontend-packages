@@ -17,7 +17,7 @@ import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
 import Button from '@ndla/button';
-
+import { isMobile } from 'react-device-detect';
 const classes = new BEMHelper({
   name: 'figure',
   prefix: 'c-',
@@ -40,59 +40,57 @@ export const FigureCaption = ({
   const { t } = useTranslation();
 
   return (
-    <>
-      <figcaption {...classes('caption', hideFigcaption ? 'hidden-caption' : undefined)}>
-        {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
-        <footer {...classes('byline')}>
-          <div {...classes('byline-licenselist')}>
-            <LicenseByline licenseRights={hideIconsAndAuthors ? [] : licenseRights} locale={locale} marginRight>
-              <div {...classes('byline-author-buttons', hideIconsAndAuthors ? 'no-siblings' : undefined)}>
-                {!hideIconsAndAuthors && (
-                  <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
-                )}
-                <div>
+    <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined)}>
+      {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
+      <footer {...classes('byline')}>
+        <div {...classes('byline-licenselist')}>
+          <LicenseByline licenseRights={hideIconsAndAuthors ? [] : licenseRights} locale={locale} marginRight>
+            <div {...classes('byline-author-buttons', hideIconsAndAuthors ? 'no-siblings' : undefined)}>
+              {!hideIconsAndAuthors && (
+                <span {...classes('byline-authors')}>{authors?.map((author) => author.name).join(', ')}</span>
+              )}
+              <div>
+                <Button
+                  borderShape="rounded"
+                  outline
+                  size="small"
+                  type="button"
+                  data-dialog-trigger-id={id}
+                  data-dialog-source-id={figureId}>
+                  {reuseLabel}
+                </Button>
+                {hasLinkedVideo && (
                   <Button
                     borderShape="rounded"
                     outline
                     size="small"
                     type="button"
-                    data-dialog-trigger-id={id}
-                    data-dialog-source-id={figureId}>
-                    {reuseLabel}
+                    {...classes('toggleAlternativeVideo')}>
+                    <span className="original">{t('figure.button.alternative')}</span>
+                    <span className="alternative hidden">{t('figure.button.original')}</span>
                   </Button>
-                  {hasLinkedVideo && (
-                    <Button
-                      borderShape="rounded"
-                      outline
-                      size="small"
-                      type="button"
-                      {...classes('toggleAlternativeVideo')}>
-                      <span className="original">{t('figure.button.alternative')}</span>
-                      <span className="alternative hidden">{t('figure.button.original')}</span>
-                    </Button>
-                  )}
-                </div>
-                {children}
+                )}
               </div>
-            </LicenseByline>
+              {children}
+            </div>
+          </LicenseByline>
 
-            {link && (
-              <div {...classes('link-wrapper')}>
-                <SafeLink
-                  to={link.url}
-                  {...classes('link')}
-                  target={link.external ? '_blank' : undefined}
-                  rel={link.external ? 'noopener noreferrer' : undefined}>
-                  <span {...classes('link-text')}>{link.text}</span>
-                  <LinkIcon />
-                </SafeLink>
-                {link.description && <p {...classes('link-description')}>{link.description}</p>}
-              </div>
-            )}
-          </div>
-        </footer>
-      </figcaption>
-    </>
+          {link && (
+            <div {...classes('link-wrapper')}>
+              <SafeLink
+                to={link.url}
+                {...classes('link')}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}>
+                <span {...classes('link-text')}>{link.text}</span>
+                <LinkIcon />
+              </SafeLink>
+              {link.description && <p {...classes('link-description')}>{link.description}</p>}
+            </div>
+          )}
+        </div>
+      </footer>
+    </figcaption>
   );
 };
 

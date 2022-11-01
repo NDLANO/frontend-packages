@@ -6,7 +6,7 @@
  *
  */
 
-import React, { forwardRef } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 import { spacingUnit } from '@ndla/core';
 import { css } from '@emotion/react';
 import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
@@ -39,30 +39,18 @@ export const iconButtonStyle = ({ size, ...props }: IconButtonStyleProps) => css
   }
 `;
 
-export interface IconButtonProps extends ButtonProps {
+export interface IconButtonProps extends Omit<ButtonProps, 'shape'> {
   ['aria-label']: string;
+  /** Usually an icon from `'@ndla/icons'` */
+  children?: ReactNode;
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
-    {
-      type = 'button',
-      size = 'small',
-      colorTheme = 'primary',
-      variant,
-      shape,
-      fontWeight,
-      inverted,
-      children,
-      ...rest
-    },
+    { type = 'button', size = 'small', colorTheme = 'primary', variant, fontWeight, inverted, children, ...rest },
     ref,
   ) => (
-    <button
-      type={type}
-      ref={ref}
-      css={iconButtonStyle({ size, variant, shape, fontWeight, inverted, colorTheme })}
-      {...rest}>
+    <button type={type} ref={ref} css={iconButtonStyle({ size, variant, fontWeight, inverted, colorTheme })} {...rest}>
       {children}
     </button>
   ),

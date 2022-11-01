@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 import { colors, fonts, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
-import { IconButton } from '@ndla/button';
+import { IconButtonV2 as IconButton } from '@ndla/button';
 import { alphabet } from './alphabet';
 
 const StyledUL = styled.ul`
@@ -40,14 +40,14 @@ const StyledButton = styled(IconButton)`
 `;
 
 interface Props {
-  value: string | undefined;
-  onChange: (value: string | undefined) => void;
-  letters: string[];
+  value?: string | undefined;
+  onChange: (value?: string) => void;
+  enabledLetters: string[];
 }
 
-const LetterFilter = ({ value, onChange, letters }: Props) => {
+const LetterFilter = ({ value, onChange, enabledLetters }: Props) => {
   const { t } = useTranslation();
-  const uppercaseLetters = useMemo(() => letters.map((letter) => letter.toUpperCase()), [letters]);
+  const uppercaseLetters = useMemo(() => enabledLetters.map((letter) => letter.toUpperCase()), [enabledLetters]);
 
   return (
     <StyledUL>
@@ -55,11 +55,12 @@ const LetterFilter = ({ value, onChange, letters }: Props) => {
         const disabled = !uppercaseLetters.includes(letter.toUpperCase());
         const selected = letter.toUpperCase() === value?.toUpperCase();
         return (
-          <li>
+          <li key={letter}>
             <StyledButton
               onClick={() => (selected ? onChange(undefined) : onChange(letter))}
               aria-label={t('listview.filters.alphabet.letterFilter', { letter })}
-              ghostPill={!selected}
+              variant={!selected ? 'ghost' : undefined}
+              colorTheme={!selected ? 'lighter' : 'primary'}
               disabled={disabled}
               size="xsmall">
               {letter}

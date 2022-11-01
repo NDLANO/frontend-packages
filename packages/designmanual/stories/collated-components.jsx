@@ -64,7 +64,6 @@ import ResourceBoxExample from './pages/ResourceBoxExample';
 
 import TagSelectorExample from './molecules/TagSelectorExample';
 import SnackbarExample from './molecules/SnackbarExample';
-import LetterFilterExample from './molecules/LetterFilterExample';
 
 storiesOf('Sammensatte moduler', module)
   .add('Artikkel info linje', () => (
@@ -218,12 +217,6 @@ storiesOf('Sammensatte moduler', module)
         <NotionBlockExample />
       </Center>
     </div>
-  ))
-  .add('Bokstavfilter', () => (
-    <Center>
-      <h2 className="u-heading">Bokstavfilter</h2>
-      <LetterFilterExample />
-    </Center>
   ))
   .add('Brødsmulesti', () => (
     <Center>

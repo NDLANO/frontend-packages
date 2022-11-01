@@ -84,11 +84,13 @@ function safeError(...args) {
 
 async function updateStatus(sha, options) {
   const { description, target_url: url } = options;
+  const [owner, repo] = GITHUB_REPOSITORY.split('/');
   console.log(`${description}: ${url}`);
   await octokit.rest.repos
     .createCommitStatus({
       sha,
-      repo: GITHUB_REPOSITORY,
+      owner,
+      repo,
       target_url: url,
       description,
       state: options.state,

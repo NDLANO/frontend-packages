@@ -11,12 +11,12 @@ import styled from '@emotion/styled';
 import { createUniversalPortal } from '@ndla/util';
 import { spacing, spacingUnit, fonts, colors } from '@ndla/core';
 import { Download } from '@ndla/icons/common';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { InformationOutline } from '@ndla/icons/common';
 import Tooltip from '@ndla/tooltip';
 import { File, FileListMessages } from './FileListEditor';
 
-interface InputComponentProps extends HTMLProps<HTMLInputElement> {
+interface InputComponentProps extends Omit<HTMLProps<HTMLInputElement>, 'as'> {
   forwardedRef: MutableRefObject<HTMLUListElement | null>;
   usePortal?: boolean;
   childIndex: number;

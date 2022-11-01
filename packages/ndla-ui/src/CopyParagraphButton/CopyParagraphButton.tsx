@@ -6,7 +6,7 @@
  *
  */
 
-import React, { ReactNode, useEffect, useState, MouseEvent } from 'react';
+import React, { useEffect, useState, MouseEvent } from 'react';
 
 import styled from '@emotion/styled';
 import { Link } from '@ndla/icons/common';
@@ -44,20 +44,23 @@ interface Props {
   hydrate?: boolean;
 }
 
-interface WrapperProps {
+interface CopyButtonProps {
   title: string;
-  hydrate?: boolean;
-  children: ReactNode;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  tooltip: string;
+  content?: string | null;
 }
 
-const WrapperComponent = ({ title, hydrate, children }: WrapperProps) => {
-  if (hydrate) {
-    return <>{children}</>;
-  }
+const CopyButton = ({ onClick, title, tooltip, content }: CopyButtonProps) => {
   return (
-    <ContainerDiv data-header-copy-container data-title={title}>
-      {children}
-    </ContainerDiv>
+    <div>
+      <IconButton onClick={onClick} data-title={title}>
+        <Tooltip tooltip={tooltip}>
+          <Link title={''} />
+        </Tooltip>
+      </IconButton>
+      <h2 id={title} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }} />
+    </div>
   );
 };
 
@@ -86,15 +89,14 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
   const sanitizedTitle = encodeURIComponent(title.replace(/ /g, '-'));
   const tooltip = hasCopied ? t('article.copyPageLinkCopied') : t('article.copyHeaderLink');
 
+  if (hydrate) {
+    return <CopyButton onClick={onCopyClick} title={sanitizedTitle} tooltip={tooltip} content={content} />;
+  }
+
   return (
-    <WrapperComponent hydrate={hydrate} title={title}>
-      <IconButton onClick={onCopyClick} data-title={sanitizedTitle}>
-        <Tooltip tooltip={tooltip}>
-          <Link title={''} />
-        </Tooltip>
-      </IconButton>
-      <h2 id={sanitizedTitle} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }}></h2>
-    </WrapperComponent>
+    <ContainerDiv data-header-copy-container data-title={title}>
+      <CopyButton onClick={onCopyClick} title={sanitizedTitle} tooltip={tooltip} content={content} />
+    </ContainerDiv>
   );
 };
 

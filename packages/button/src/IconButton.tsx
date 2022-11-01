@@ -6,6 +6,8 @@
  *
  */
 
+// Deprecated. Use IconButtonV2.
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacingUnit } from '@ndla/core';
@@ -52,7 +54,7 @@ export const convertSizeForSVG = (size: ButtonSize) => {
 
 export const IconButton = ({ children, size, ...rest }: IconButtonProps) => (
   <StyledButton svgSize={convertSizeForSVG(size || 'normal')} {...rest}>
-    <span aria-hidden="true">{children}</span>
+    {children}
   </StyledButton>
 );
 

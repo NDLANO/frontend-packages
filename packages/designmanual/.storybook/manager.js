@@ -10,4 +10,7 @@ const theme = create({
 addons.setConfig({
   theme: theme,
   showPanel: false,
+  sidebar: {
+    showRoots: false,
+  },
 });

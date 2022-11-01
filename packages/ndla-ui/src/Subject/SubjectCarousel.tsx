@@ -1,14 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { Carousel, CarouselAutosize } from '@ndla/carousel';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { spacingUnit } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
+import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
 import { SafeLinkProps } from '@ndla/safelink';
 import { ContentCard } from '../index';
 import { SubjectSectionTitle } from './Subject';
-
-const subjectCarouselClasses = BEMHelper('c-subject-carousel');
 
 interface Props {
   subjects?: {
@@ -24,128 +22,133 @@ interface Props {
   wideScreen?: boolean;
 }
 
-const getSubclasses = (obj: Record<string, boolean>): string[] => {
-  return Object.entries(obj)
-    .filter(([_, value]) => !!value)
-    .map(([className, _]) => className);
+interface StyledSectionProps {
+  narrowScreen: boolean;
+  wideScreen: boolean;
+}
+
+const StyledSection = styled.section<StyledSectionProps>`
+  margin-bottom: ${spacing.large};
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-bottom: 100px;
+  }
+  ${(p) =>
+    p.narrowScreen &&
+    css`
+      display: none;
+      ${mq.range({ from: breakpoints.tablet })} {
+        display: block;
+      }
+    `};
+  ${(p) =>
+    p.narrowScreen &&
+    css`
+      ${mq.range({ from: breakpoints.tablet })} {
+        display: block;
+      }
+    `};
+`;
+
+const StyledSubjectSectionTitle = styled(SubjectSectionTitle)`
+  ${mq.range({ from: breakpoints.tablet })} {
+    margin-left: ${spacing.medium} !important;
+  }
+
+  ${mq.range({ from: breakpoints.desktop })} {
+    margin-left: ${spacingUnit * 3}px !important;
+  }
+`;
+
+const SubjectCarousel = ({ subjects = [], title = '', narrowScreen = false, wideScreen = false }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledSection narrowScreen={narrowScreen} wideScreen={wideScreen}>
+      <CarouselAutosize
+        breakpoints={[
+          {
+            until: 'mobile',
+            columnsPrSlide: 1,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+          },
+          {
+            until: 'mobileWide',
+            columnsPrSlide: 2,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+          },
+          {
+            until: 'tablet',
+            columnsPrSlide: 2.25,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+            margin: spacingUnit,
+          },
+          {
+            until: 'tabletWide',
+            columnsPrSlide: 3.25,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+            margin: spacingUnit * 1.25,
+          },
+          {
+            until: 'desktop',
+            columnsPrSlide: 4.25,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+            margin: spacingUnit * 1.25,
+          },
+          {
+            until: 'wide',
+            columnsPrSlide: 4,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+            margin: spacingUnit * 2.5,
+          },
+          {
+            until: 'ultraWide',
+            columnsPrSlide: 5,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+            margin: spacingUnit * 2.5,
+          },
+          {
+            columnsPrSlide: 7,
+            distanceBetweenItems: 26,
+            arrowOffset: 26,
+            margin: spacingUnit * 2.5,
+            maxColumnWidth: 200,
+          },
+        ]}
+        centered
+        itemsLength={subjects?.length ?? 0}>
+        {(autoSizedProps) => (
+          <>
+            <StyledSubjectSectionTitle>{title}</StyledSubjectSectionTitle>
+            <Carousel
+              {...autoSizedProps}
+              disableScroll={(autoSizedProps?.columnsPrSlide ?? 0) >= subjects.length}
+              slideBackwardsLabel={t('carousel.back')}
+              slideForwardsLabel={t('carousel.forward')}
+              buttonClass="c-carousel__arrow"
+              wrapperClass="c-carousel__wrapper"
+              columnWidth={autoSizedProps?.columnWidth ?? 0}
+              columnsPrSlide={autoSizedProps?.columnsPrSlide ?? 0}
+              items={subjects.map((subject) => (
+                <ContentCard
+                  {...subject}
+                  columnWidth={autoSizedProps?.columnWidth ?? 0}
+                  type={subject.type ?? ''}
+                  image={subject.image ?? ''}
+                  key={subject.id}
+                />
+              ))}
+            />
+          </>
+        )}
+      </CarouselAutosize>
+    </StyledSection>
+  );
 };
 
-const SubjectCarousel = ({
-  subjects = [],
-  title = '',
-  narrowScreen = false,
-  wideScreen = false,
-  t,
-}: Props & WithTranslation) => (
-  <section {...subjectCarouselClasses('', getSubclasses({ narrowScreen, wideScreen }))}>
-    <CarouselAutosize
-      breakpoints={[
-        {
-          until: 'mobile',
-          columnsPrSlide: 1,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-        },
-        {
-          until: 'mobileWide',
-          columnsPrSlide: 2,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-        },
-        {
-          until: 'tablet',
-          columnsPrSlide: 2.25,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-          margin: spacingUnit,
-        },
-        {
-          until: 'tabletWide',
-          columnsPrSlide: 3.25,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-          margin: spacingUnit * 1.25,
-        },
-        {
-          until: 'desktop',
-          columnsPrSlide: 4.25,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-          margin: spacingUnit * 1.25,
-        },
-        {
-          until: 'wide',
-          columnsPrSlide: 4,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-          margin: spacingUnit * 2.5,
-        },
-        {
-          until: 'ultraWide',
-          columnsPrSlide: 5,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-          margin: spacingUnit * 2.5,
-        },
-        {
-          columnsPrSlide: 7,
-          distanceBetweenItems: 26,
-          arrowOffset: 26,
-          margin: spacingUnit * 2.5,
-          maxColumnWidth: 200,
-        },
-      ]}
-      centered
-      itemsLength={subjects?.length ?? 0}>
-      {(autoSizedProps) => (
-        <>
-          <SubjectSectionTitle {...subjectCarouselClasses('title')}>{title}</SubjectSectionTitle>
-          <Carousel
-            {...autoSizedProps}
-            disableScroll={(autoSizedProps?.columnsPrSlide ?? 0) >= subjects.length}
-            slideBackwardsLabel={t('carousel.back')}
-            slideForwardsLabel={t('carousel.forward')}
-            buttonClass="c-carousel__arrow"
-            wrapperClass="c-carousel__wrapper"
-            columnWidth={autoSizedProps?.columnWidth ?? 0}
-            columnsPrSlide={autoSizedProps?.columnsPrSlide ?? 0}
-            items={subjects.map((subject) => (
-              <ContentCard
-                {...subject}
-                columnWidth={autoSizedProps?.columnWidth ?? 0}
-                type={subject.type ?? ''}
-                image={subject.image ?? ''}
-                key={subject.id}
-              />
-            ))}
-          />
-        </>
-      )}
-    </CarouselAutosize>
-  </section>
-);
-
-SubjectCarousel.propTypes = {
-  subjects: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string,
-      text: PropTypes.string.isRequired,
-      image: PropTypes.string,
-      toLinkProps: PropTypes.func.isRequired,
-    }).isRequired,
-  ).isRequired,
-  title: PropTypes.string,
-  narrowScreen: PropTypes.bool,
-  wideScreen: PropTypes.bool,
-};
-
-SubjectCarousel.defaultProps = {
-  subjects: [],
-  title: '',
-  narrowScreen: false,
-  wideScreen: false,
-};
-
-export default withTranslation()(SubjectCarousel);
+export default SubjectCarousel;

@@ -1,12 +1,12 @@
 import React, { ReactChild, ReactChildren, ReactNode } from 'react';
 import Modal from '@ndla/modal';
-import Button from '@ndla/button';
+import { IconButtonV2 as IconButton } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { isFunction } from '@ndla/util';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, mq, breakpoints, colors, shadows } from '@ndla/core';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
@@ -17,6 +17,9 @@ interface Props {
 }
 
 const StyledHeader = styled.div`
+  display: flex;
+  gap: ${spacing.small};
+  align-items: center;
   ${mq.range({ from: breakpoints.tablet })} {
     width: 1024px;
     max-width: calc(100vw - 100px);
@@ -47,26 +50,6 @@ const StyledHeader = styled.div`
       .c-search-field__button--searchIcon {
         right: ${spacing.large};
         top: ${spacing.small};
-      }
-    }
-  }
-  > button {
-    width: ${spacing.large};
-    height: 48px;
-    ${mq.range({ from: breakpoints.tablet })} {
-      transform: translate(${spacing.large}, 0);
-      width: ${spacing.large};
-      height: 56px;
-      &:hover,
-      &:focus {
-        transform: translate(calc(${spacing.large} + 1px), 1px);
-      }
-    }
-    ${mq.range({ from: breakpoints.wide })} {
-      transform: translate(${spacing.large}, 0);
-      &:hover,
-      &:focus {
-        transform: translate(calc(${spacing.large} + 1px), 1px);
       }
     }
   }
@@ -108,38 +91,39 @@ const extraBackdrop = css`
   box-shadow: ${shadows.searchHeader};
 `;
 
-const MastheadSearchModal = ({
-  onClose: onSearchClose,
-  children,
-  hideOnNarrowScreen,
-  ndlaFilm,
-  t,
-}: Props & WithTranslation) => (
-  <Modal
-    label={t('searchPage.searchFieldPlaceholder')}
-    backgroundColor="grey"
-    animation="slide-down"
-    animationDuration={200}
-    size="full-width"
-    onClose={onSearchClose}
-    css={modalStyles}
-    activateButton={
-      <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
-        {t('masthead.menu.search')}
-      </ToggleSearchButton>
-    }>
-    {(closeModal: VoidFunction) => (
-      <>
-        <div css={extraBackdrop} />
-        <StyledHeader>
-          {isFunction(children) ? children(closeModal) : children}
-          <Button stripped onClick={closeModal}>
-            <Cross className="c-icon--medium" />
-          </Button>
-        </StyledHeader>
-      </>
-    )}
-  </Modal>
-);
+const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScreen, ndlaFilm }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <Modal
+      label={t('searchPage.searchFieldPlaceholder')}
+      backgroundColor="grey"
+      animation="slide-down"
+      animationDuration={200}
+      size="full-width"
+      onClose={onSearchClose}
+      css={modalStyles}
+      activateButton={
+        <ToggleSearchButton hideOnNarrowScreen={hideOnNarrowScreen} ndlaFilm={ndlaFilm}>
+          {t('masthead.menu.search')}
+        </ToggleSearchButton>
+      }>
+      {(closeModal: VoidFunction) => (
+        <>
+          <div css={extraBackdrop} />
+          <StyledHeader>
+            {isFunction(children) ? children(closeModal) : children}
+            <IconButton
+              aria-label={t('welcomePage.closeSearch')}
+              variant="ghost"
+              colorTheme="light"
+              onClick={closeModal}>
+              <Cross className="c-icon--medium" />
+            </IconButton>
+          </StyledHeader>
+        </>
+      )}
+    </Modal>
+  );
+};
 
-export default withTranslation()(MastheadSearchModal);
+export default MastheadSearchModal;

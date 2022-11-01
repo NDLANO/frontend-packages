@@ -8,7 +8,7 @@
 
 import React, { ChangeEvent, Component, ReactNode, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
 import { IImageMetaInformationV2, ISearchResult, IImageMetaSummary, ISearchParams } from '@ndla/types-image-api';

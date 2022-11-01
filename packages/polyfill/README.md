@@ -13,7 +13,7 @@ $ yarn @ndla/polyfill
 ### Simple
 
 ```js
-// This must be the first line in your bundle
+// This must be the first line in your bundle.
 import '@ndla/polyfill';
 ```
 

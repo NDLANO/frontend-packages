@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "target": "es5",
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     // isolatedModules and declaration are not allowed together at
     // the moment, We set isolatedModules to true here to prevent
     // accidental export of types. We disable it when we build the
@@ -19,11 +20,11 @@
     "noEmit": true,
     "sourceMap": true,
     "lib": ["es2019", "esnext.asynciterable", "dom"],
-    "types": ["@emotion/core", "@emotion/styled", "jest", "node"],
+    "types": ["@emotion/react", "@emotion/styled", "jest", "node"],
     "paths": {
       "@ndla/*": ["./packages/*/src"],
       "*": ["node_modules"]
     }
   },
-  "exclude": ["./packages/*/lib", "**/*-test.*"]
+  "exclude": ["./packages/*/lib", "**/*-test.*", "./**/*.stories.tsx"]
 }

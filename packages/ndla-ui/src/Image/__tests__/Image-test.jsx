@@ -9,25 +9,26 @@
 /* eslint-env jest */
 
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Image, { makeSrcQueryString } from '../Image';
 
 test('Image renderers correctly', () => {
-  const component = renderer.create(<Image alt="example" src="https://example.com/image.png" />);
+  const { container } = render(<Image alt="example" src="https://example.com/image.png" />, { container: null });
 
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('Lazyloaded image renderers correctly', () => {
-  const component = renderer.create(
+  const { container } = render(
     <Image lazyLoad lazyLoadSrc="https://example.com/blurry.png" alt="example" src="https://example.com/image.png" />,
   );
 
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('Image with crop and focalpoint props renderers correctly', () => {
-  const component = renderer.create(
+  const { container } = render(
     <Image
       crop={{
         startX: 14.59,
@@ -44,7 +45,7 @@ test('Image with crop and focalpoint props renderers correctly', () => {
     />,
   );
 
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('makeSrcQueryString renders correctly', () => {

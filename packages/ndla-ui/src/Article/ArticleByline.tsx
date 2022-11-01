@@ -59,6 +59,8 @@ type Props = {
   copyPageUrlLink?: string;
   printUrl?: string;
   locale?: string;
+  copyEmbedLink?: string;
+  copySourceReference?: string;
 };
 
 const renderContributors = (contributors: SupplierProps[] | AuthorProps[], t: TFunction) => {
@@ -75,8 +77,11 @@ const getSuppliersText = (suppliers: SupplierProps[], t: TFunction) => {
     return '';
   }
   return suppliers.length > 1
-    ? t('article.multipleSuppliersLabel', { names: renderContributors(suppliers, t) })
-    : t('article.supplierLabel', { name: renderContributors(suppliers, t) });
+    ? t('article.multipleSuppliersLabel', {
+        names: renderContributors(suppliers, t),
+        interpolation: { escapeValue: false },
+      })
+    : t('article.supplierLabel', { name: renderContributors(suppliers, t), interpolation: { escapeValue: false } });
 };
 
 const ArticleByline = ({
@@ -88,15 +93,28 @@ const ArticleByline = ({
   copyPageUrlLink,
   printUrl,
   locale,
+  copyEmbedLink,
+  copySourceReference,
 }: Props) => {
   const { t } = useTranslation();
+
   const copyLinkHandler = () => {
     if (copyPageUrlLink) {
       copyTextToClipboard(copyPageUrlLink);
     }
   };
-
   const licenseRights = getLicenseByAbbreviation(license, locale).rights;
+
+  const copyLicense = () => {
+    if (copySourceReference) {
+      copyTextToClipboard(copySourceReference);
+    }
+  };
+  const copyEmbededLink = () => {
+    if (copyEmbedLink) {
+      copyTextToClipboard(copyEmbedLink);
+    }
+  };
 
   const showPrimaryContributors = suppliers.length > 0 || authors.length > 0;
   const showSecondaryContributors = suppliers.length > 0 && authors.length > 0;
@@ -114,7 +132,10 @@ const ArticleByline = ({
             {showPrimaryContributors && (
               <PrimaryContributorsWrapper>
                 {authors.length > 0
-                  ? t('article.authorsLabel', { names: renderContributors(authors, t) })
+                  ? t('article.authorsLabel', {
+                      names: renderContributors(authors, t),
+                      interpolation: { escapeValue: false },
+                    })
                   : getSuppliersText(suppliers, t)}
               </PrimaryContributorsWrapper>
             )}
@@ -123,6 +144,18 @@ const ArticleByline = ({
       )}
       {showSecondaryContributors && <TextWrapper>{getSuppliersText(suppliers, t)}</TextWrapper>}
       <ButtonWrapper>
+        {copySourceReference && (
+          <CopyButton
+            size="small"
+            borderShape="rounded"
+            outline
+            aria-live="assertive"
+            copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copySourceReference}
+            onClick={copyLicense}>
+            {`${t('license.copy')} ${t('license.copyTitle').toLowerCase()}`}
+          </CopyButton>
+        )}
         {licenseBox && (
           <Modal
             labelledBy={buttonId}
@@ -150,9 +183,22 @@ const ArticleByline = ({
             size="small"
             borderShape="rounded"
             outline
+            aria-live="assertive"
             data-copy-string={copyPageUrlLink}
             copyNode={t('article.copyPageLinkCopied')}>
             {t('article.copyPageLink')}
+          </CopyButton>
+        )}
+        {copyEmbedLink && (
+          <CopyButton
+            size="small"
+            borderShape="rounded"
+            outline
+            aria-live="assertive"
+            copyNode={t('license.hasCopiedTitle')}
+            data-copy-string={copyEmbedLink}
+            onClick={copyEmbededLink}>
+            {`${t('license.copy')}  ${t('license.tabs.embedlink').toLowerCase()}`}
           </CopyButton>
         )}
         {printUrl && (

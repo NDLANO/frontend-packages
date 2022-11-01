@@ -1,6 +1,6 @@
 {
   "name": "@ndla/util",
-  "version": "3.0.1",
+  "version": "3.1.7",
   "description": "Collection of util functions used by NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -27,6 +27,7 @@
     "types"
   ],
   "peerDependencies": {
+    "@emotion/react": "^11.10.4",
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {

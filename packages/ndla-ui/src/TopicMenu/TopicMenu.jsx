@@ -13,11 +13,13 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { debounce } from 'lodash';
+import { spacing } from '@ndla/core';
+import styled from '@emotion/styled';
 
 import { Home, Back, Additional, ChevronRight } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';
 import { ModalHeader } from '@ndla/modal';
-import Button from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
@@ -34,6 +36,10 @@ const classes = new BEMHelper({
   name: 'topic-menu',
   prefix: 'c-',
 });
+
+const StyledButton = styled(Button)`
+  padding: ${spacing.xsmall} ${spacing.small};
+`;
 
 export const renderAdditionalIcon = (isAdditional, label) => {
   if (isAdditional && label) {
@@ -174,7 +180,7 @@ export const TopicMenu = ({
       </ModalHeader>
       <div {...classes('content')}>
         <div {...classes('back', 'wide')}>
-          <SafeLink {...classes('back-link')} to={toFrontpage()}>
+          <SafeLink {...classes('back-link')} to={toFrontpage()} onClick={closeMenu}>
             <Home {...classes('home-icon', '', 'c-icon--20')} />
             {t('masthead.menu.toFrontpage')}
           </SafeLink>
@@ -183,7 +189,7 @@ export const TopicMenu = ({
           {...classes('back', {
             narrow: true,
           })}>
-          <SafeLink {...classes('back-link')} to={toFrontpage()}>
+          <SafeLink {...classes('back-link')} to={toFrontpage()} onClick={closeMenu}>
             <Home {...classes('home-icon', '', 'c-icon--20')} />
             {t('masthead.menu.toFrontpage')}
           </SafeLink>
@@ -192,40 +198,40 @@ export const TopicMenu = ({
           <div {...classes('subject__header')}>
             <div {...classes('subject__header__menu-filter')}>
               {subjectTitle && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_CURRENT_SUBJECT)}
-                  lighter={selectedMenu !== MENU_CURRENT_SUBJECT}
+                  colorTheme={selectedMenu !== MENU_CURRENT_SUBJECT ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  shape="pill">
                   {subjectTitle}
-                </Button>
+                </StyledButton>
               )}
               {currentProgramme && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_CURRENT_PROGRAMME)}
-                  lighter={selectedMenu !== MENU_CURRENT_PROGRAMME}
+                  colorTheme={selectedMenu !== MENU_CURRENT_PROGRAMME ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  shape="pill">
                   {currentProgramme.name}
-                </Button>
+                </StyledButton>
               )}
               {programmes && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_PROGRAMMES)}
-                  lighter={selectedMenu !== MENU_PROGRAMMES}
+                  colorTheme={selectedMenu !== MENU_PROGRAMMES ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  shape="pill">
                   {t('frontpageMenu.program')}
-                </Button>
+                </StyledButton>
               )}
               {subjectCategories && (
-                <Button
+                <StyledButton
                   onClick={() => setSelectedMenu(MENU_ALL_SUBJECTS)}
-                  lighter={selectedMenu !== MENU_ALL_SUBJECTS}
+                  colorTheme={selectedMenu !== MENU_ALL_SUBJECTS ? 'lighter' : 'primary'}
                   size="small"
-                  borderShape="rounded">
+                  shape="pill">
                   {t('frontpageMenu.allsubjects')}
-                </Button>
+                </StyledButton>
               )}
             </div>
           </div>

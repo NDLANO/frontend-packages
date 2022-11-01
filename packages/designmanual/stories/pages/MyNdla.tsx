@@ -7,25 +7,20 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { ListResource, BlockResource, Folder } from '@ndla/ui';
 import { MenuItemProps } from '@ndla/button';
-import { FolderInput } from '@ndla/ui';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
 import MyNdlaResourceView from '../molecules/MyNdlaResourceView';
-
+//@ts-ignore
+import { ResourceData } from '../../dummydata/index';
 //@ts-ignore
 import ComponentInfo from '../ComponentInfo';
-
+import ResourcesExample from '../organisms/ResourcesExample';
+import FolderResourcesExample from '../organisms/FolderResourcesExample';
+import FolderInputExample from '../organisms/FolderInputExample';
 const Wrapper = styled.div`
   max-width: 960px;
   margin: 0 auto;
-`;
-
-const BlockFolderWrapper = styled.div`
-  display: flex;
-  gap: ${spacing.small};
 `;
 
 export const menuItems: MenuItemProps[] = [
@@ -33,9 +28,9 @@ export const menuItems: MenuItemProps[] = [
   { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
 ];
 
-const tags = ['tag', 'tag', 'tag'];
+const tags = ['tag', 'tag', 'tag', 'tag'];
 
-const topics = ['Matte', 'Naturfag'];
+const resourceTypes = [{ id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' }];
 
 export const MyNdla = () => {
   return (
@@ -44,169 +39,25 @@ export const MyNdla = () => {
         status={3}
         components={
           <>
-            <h2>Folder</h2>
-            <Folder
-              key={'listFolder'}
-              link={''}
-              title={'Dette er min tittel'}
-              subFolders={3}
-              subResources={3}
-              type={'list'}
-              menuItems={menuItems}
-            />
-            <h2>Legg til mappe</h2>
-            <FolderInput
-              autoSelect
-              // eslint-disable-next-line no-console
-              onAddFolder={() => console.log('onAddFolder')}
-              // eslint-disable-next-line no-console
-              onClose={() => console.log('onClose')}
-            />
-            <h2>Blokkvisning av folder</h2>
-            <BlockFolderWrapper>
-              <Folder
-                key={'blockFolder'}
-                link={''}
-                title={'Dette er min tittel'}
-                subFolders={3}
-                subResources={3}
-                type={'block'}
-                menuItems={menuItems}
-              />
-              <Folder
-                key={'blockFolder2'}
-                link={''}
-                title={'Dette er min tittel'}
-                subFolders={3}
-                subResources={3}
-                type={'block'}
-                menuItems={menuItems}
-              />
-              <Folder
-                key={'blockFolder3'}
-                link={''}
-                title={'Dette er min tittel'}
-                subFolders={3}
-                subResources={3}
-                type={'block'}
-                menuItems={menuItems}
-              />
-            </BlockFolderWrapper>
+            <h2>Ny mappe</h2>
+            <FolderInputExample />
+            <h2>Mappe</h2>
+            <FolderResourcesExample menuItems={menuItems} />
+
             <h2> Ressurser </h2>
-            <h3>Blokkressurs</h3>
-            <BlockResource
-              key={'blockResource'}
-              title="Helt Vanlig Tittel"
-              topics={topics}
-              tags={tags}
-              description={'Dette er for eksempel en fagbeskrivelse! Dersom den er for lang vil den bli forkortet'}
-              resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-              menuItems={menuItems}
-            />
-            <h3> Standard Ressurs</h3>
-            <ListResource
-              key={'defaultResource'}
-              title="Titler kan også kuttes av"
-              topics={topics}
-              tags={['veldiglangtag', 'kjempelangtag', 'tag3medrartnavn', 'matte', 'matematikk']}
-              description={'En helt vanlig beskrivelse.'}
-              resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-              menuItems={menuItems}
-            />
-            <h3>Ressurs med tom beskrivelse</h3>
-            <ListResource
-              key={'withoutDescription'}
-              title="Min Tittel"
-              topics={topics}
-              description={''}
-              tags={tags}
-              resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-              menuItems={menuItems}
-            />
-            <h3>Ressurs uten beskrivelse, tags og meny</h3>
-            <ListResource
-              key={'minimalResource'}
-              title="Minimal ressurs"
-              topics={topics}
-              resourceImage={{
-                src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                alt: 'alt',
-              }}
-              link={''}
-            />
+            <ResourcesExample resourceTypes={resourceTypes} tags={tags} menuItems={menuItems} />
           </>
         }
         onSite={[
           <Wrapper>
             <MyNdlaResourceView
               folders={[
-                { title: 'name', link: 'hey' },
-                { title: 'Ny mappe', link: '' },
-                { title: 'Eldre mappe', link: '' },
-                { title: 'Eldre mappe', link: '' },
+                { title: 'name', link: 'hey', id: '0709ef14-249f-4c60-88b9-9fe6babfcb4c' },
+                { title: 'Ny mappe', link: '', id: '7520961a-2726-43c7-8320-6fe2890790d0' },
+                { title: 'Eldre mappe', link: '', id: '5855ed59-4725-4f6a-9684-156b3c1b8afb' },
+                { title: 'Eldre mappe', link: '', id: '567c1dc0-d2e2-49c2-9676-494108a7bf53' },
               ]}
-              resources={[
-                {
-                  title: 'My Resource',
-                  link: '',
-                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
-                  description:
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
-                  resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
-                  },
-                },
-                {
-                  title: 'My Resource',
-                  link: '',
-                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
-                  description:
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
-                  resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
-                  },
-                },
-                {
-                  title: 'My Resource',
-                  link: '',
-                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
-                  description:
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
-                  resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
-                  },
-                },
-                {
-                  title: 'My Resource',
-                  link: '',
-                  topics: ['Oppgave', 'Norsk', 'Muntlig'],
-                  tags: ['tag', 'tag', 'tag'],
-                  description:
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to mak",
-                  resourceImage: {
-                    src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
-                    alt: 'alt',
-                  },
-                },
-              ]}
+              resources={ResourceData}
             />
           </Wrapper>,
         ]}

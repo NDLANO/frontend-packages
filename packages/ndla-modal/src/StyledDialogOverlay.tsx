@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React, { ReactNode } from 'react';
 import { DialogOverlay } from '@reach/dialog';
 import styled from '@emotion/styled';
@@ -15,7 +23,9 @@ interface StyledDialogOverlayComponentProps {
   animationDuration?: string;
 }
 
-const StyledDialogOverlayComponent = styled(DialogOverlay)<StyledDialogOverlayComponentProps>`
+const shouldForwardProp = (propName: string) => propName !== 'animateIn' && propName !== 'animationDuration';
+
+const StyledDialogOverlayComponent = styled(DialogOverlay, { shouldForwardProp })<StyledDialogOverlayComponentProps>`
   position: fixed;
   top: 0;
   left: 0;

@@ -1,5 +1,6 @@
 module.exports = {
   setupFilesAfterEnv: [require.resolve('./jest.setup.js')],
+  testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
     // Use ts-jest for typescript tests: https://kulshekhar.github.io/ts-jest/user/babel7-or-ts#no-type-checking
@@ -11,5 +12,5 @@ module.exports = {
     '@ndla/(.+)$': ['<rootDir>packages/$1/src', '<rootDir>packages/ndla-$1/src'],
   },
   testRegex: '/packages/.*/src/.*__tests__/.*-test.(js|jsx|ts|tsx)$',
-  snapshotSerializers: ['jest-emotion/serializer'],
+  snapshotSerializers: ['@emotion/jest/serializer'],
 };

@@ -2,10 +2,10 @@ module.exports = {
   presets: [
     ['@babel/preset-env', { modules: false }],
     '@babel/preset-typescript',
-    '@babel/preset-react',
-    '@emotion/babel-preset-css-prop',
+    ['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/react' }],
   ],
   plugins: [
+    ['@emotion', { autoLabel: 'always' }],
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',

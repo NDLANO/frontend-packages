@@ -9,7 +9,7 @@
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import Button from '@ndla/button';

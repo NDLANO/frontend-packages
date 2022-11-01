@@ -12,6 +12,7 @@ import { FigureType } from '@ndla/ui';
 // @ts-ignore
 import { initArticleScripts } from '@ndla/article-scripts';
 import { uuid } from '@ndla/util';
+import Button from '@ndla/button';
 //@ts-ignore
 import { useRunOnlyOnce } from '../article/useRunOnlyOnce';
 
@@ -39,6 +40,12 @@ const conceptData = {
         rightsholders: [{ name: 'NTB Scanpix', type: 'Supplier' }],
         origin: 'http://www.scanpix.no',
       },
+      licenseButtons: (
+        <>
+          <Button outline>Kildehenvisning</Button>
+          <Button outline>Last ned bildet</Button>
+        </>
+      ),
       resource: 'image',
       image: {
         src: 'https://api.staging.ndla.no/image-api/raw/20081209-095942-ag_0.jpg',

@@ -49,9 +49,17 @@ export const UserInfo = ({ user }: Props) => {
         <div data-hj-suppress>
           {t('user.mail')}: <b>{user.mail?.join(', ')}</b>
         </div>
+        {user.preferredLanguage && (
+          <div data-hj-suppress>
+            {t('user.preferredLanguage')}: <b>{t(`languages.${user.preferredLanguage}`)}</b>
+          </div>
+        )}
+        {user.mobile && (
+          <div data-hj-suppress>
+            {t('user.mobile')}: <b>{user.mobile}</b>
+          </div>
+        )}
       </ShortInfoDiv>
-
-      {t('user.modal.collectedInfo')}
 
       <InfoList data-hj-suppress>
         {parsedUser.organizations.map((org) => (
@@ -75,6 +83,18 @@ export const UserInfo = ({ user }: Props) => {
           </li>
         ))}
       </InfoList>
+      {parsedUser.grepCodes.length > 0 && (
+        <InfoList data-hj-suppress>
+          <li key="grepCodes">
+            {t('user.groupTypes.grepCode')}
+            <InfoList>
+              {parsedUser.grepCodes.map((code) => (
+                <li key={code.id}>{`${code.displayName} (${code.code})`}</li>
+              ))}
+            </InfoList>
+          </li>
+        </InfoList>
+      )}
     </div>
   );
 };

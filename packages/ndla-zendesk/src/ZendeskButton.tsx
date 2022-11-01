@@ -6,7 +6,7 @@
  *
  */
 
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 import React, { ReactNode, useState } from 'react';
 import Button, { ButtonProps } from '@ndla/button';
 import { mq, breakpoints, spacing } from '@ndla/core';

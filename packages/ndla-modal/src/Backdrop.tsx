@@ -8,7 +8,7 @@
 
 import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const StyledBackdrop = styled('div')<Props>`
   position: fixed;

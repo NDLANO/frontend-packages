@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { animations } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 type Props = {
   show?: boolean;

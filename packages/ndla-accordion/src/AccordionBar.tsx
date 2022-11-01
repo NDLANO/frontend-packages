@@ -8,7 +8,7 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { ChevronRight } from '@ndla/icons/common';
 import { colors, spacing, spacingUnit, fonts } from '@ndla/core';
 import { openIndexesProps } from '../types';

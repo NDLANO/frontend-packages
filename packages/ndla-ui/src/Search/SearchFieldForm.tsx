@@ -1,6 +1,6 @@
 import React, { FormEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, mq, breakpoints } from '@ndla/core';
 
 interface Props {
@@ -58,7 +58,7 @@ const StyledForm = styled.form<StyledProps>`
 
 export const SearchFieldForm = ({ children, inputHasFocus, onSubmit }: Props) => {
   return (
-    <StyledForm action="/search/" inputHasFocus={inputHasFocus} onSubmit={onSubmit}>
+    <StyledForm role="search" action="/search/" inputHasFocus={inputHasFocus} onSubmit={onSubmit}>
       {children}
     </StyledForm>
   );

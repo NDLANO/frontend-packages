@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { fonts, spacing } from '@ndla/core';
 
@@ -36,8 +36,7 @@ const StyledHeading = styled.h1`
 type Props = {
   invertedStyle?: boolean;
   toggleAdditionalResources: () => void;
-  onToggleAddToFavorites: (id: string) => void;
-  showAddToFavoriteButton: boolean;
+  heartButton?: (path: string) => ReactNode;
 };
 
 const ResourceGroup = ({
@@ -47,8 +46,7 @@ const ResourceGroup = ({
   toggleAdditionalResources,
   contentType,
   invertedStyle,
-  onToggleAddToFavorites,
-  showAddToFavoriteButton = false,
+  heartButton,
 }: Props & ResourceListProps) => (
   <Wrapper>
     {title && (
@@ -63,8 +61,7 @@ const ResourceGroup = ({
         showAdditionalResources={showAdditionalResources}
         contentType={contentType}
         resources={resources}
-        onToggleAddToFavorites={onToggleAddToFavorites}
-        showAddToFavoriteButton={showAddToFavoriteButton}
+        heartButton={heartButton}
       />
     ) : null}
   </Wrapper>

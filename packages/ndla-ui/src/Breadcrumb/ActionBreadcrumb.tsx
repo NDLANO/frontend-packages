@@ -7,7 +7,7 @@
  */
 
 import styled from '@emotion/styled';
-import { colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, misc, spacing } from '@ndla/core';
 import { ChevronRight } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import React from 'react';
@@ -23,17 +23,22 @@ const StyledRightChevron = styled(ChevronRight)`
 `;
 
 const StyledSpan = styled.span`
-  color: ${colors.text.primary};
   font-weight: ${fonts.weight.bold};
 `;
 
 const StyledSafeLink = styled(SafeLink)`
   color: ${colors.text.primary};
   box-shadow: none;
+  margin: 0 2px;
   font-weight: ${fonts.weight.bold};
   :hover {
     color: ${colors.brand.primary};
   }
+`;
+
+const StyledMenuButton = styled(MenuButton)`
+  border-radius: ${misc.borderRadius};
+  margin: 0 2px;
 `;
 
 interface Props {
@@ -48,9 +53,9 @@ const ActionBreadcrumb = ({ items, actionItems }: Props) => {
     }
     if (item.index === totalCount - 1 && actionItems.length > 0) {
       return (
-        <MenuButton menuItems={actionItems} size="small">
+        <StyledMenuButton menuItems={actionItems} alignRight size="small">
           <StyledSpan title={item.name}>{item.name}</StyledSpan>
-        </MenuButton>
+        </StyledMenuButton>
       );
     }
     return (

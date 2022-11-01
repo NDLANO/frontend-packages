@@ -7,13 +7,76 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
-import SafeLink from '@ndla/safelink';
+import React, { useRef } from 'react';
 import { fonts, spacing, colors, breakpoints, mq } from '@ndla/core';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 import Image from '../Image';
-import { CompressedTagList, ResourceImageProps, ResourceTitle, TopicList } from './resourceComponents';
+import {
+  CompressedTagList,
+  ResourceImageProps,
+  ResourceTitle,
+  ResourceTitleLink as StyledLink,
+  ResourceTypeList,
+  StyledContentIconWrapper,
+  LoaderProps,
+} from './resourceComponents';
 import ContentLoader from '../ContentLoader';
+import ContentTypeBadge from '../ContentTypeBadge';
+import { contentTypeMapping } from '../model/ContentType';
+
+const ListResourceWrapper = styled.div`
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto minmax(50px, 1fr) auto;
+  grid-template-areas:
+    'image  topicAndTitle   tags'
+    'image  description     description';
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'image                topicAndTitle'
+      'description          description'
+      'tags                 tags';
+  }
+
+  padding: ${spacing.small};
+  column-gap: ${spacing.small};
+  cursor: pointer;
+  border: 1px solid ${colors.brand.neutral7};
+  border-radius: 2px;
+
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    transition-duration: 0.2s;
+    ${() => StyledLink} {
+      color: ${colors.brand.primary};
+      text-decoration: underline;
+    }
+  }
+`;
+
+interface StyledImageProps {
+  imageSize: 'normal' | 'compact';
+}
+
+const ImageWrapper = styled.div<StyledImageProps>`
+  grid-area: image;
+  width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    width: 56px;
+  }
+  overflow: hidden;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4/3;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+  aspect-ratio: 4/3;
+`;
 
 const StyledResourceDescription = styled.p`
   grid-area: description;
@@ -21,6 +84,7 @@ const StyledResourceDescription = styled.p`
   line-height: 1em;
   height: 3.1em;
   margin: 0;
+  margin-top: ${spacing.xxsmall};
   overflow: hidden;
   ${fonts.sizes(16)};
   text-overflow: ellipsis;
@@ -31,106 +95,54 @@ const StyledResourceDescription = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-const ResourceWrapper = styled(SafeLink)`
-  flex: 1;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    'image  topicAndTitle   tags'
-    'image  description     description';
+interface TagsAndActionProps {
+  hasMenuButton: boolean;
+}
 
-  ${mq.range({ until: breakpoints.mobileWide })} {
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      'image                topicAndTitle'
-      'description          description'
-      'tags                 tags';
-  }
-
-  text-decoration: none;
-  box-shadow: none;
-  padding: ${spacing.small};
-  border: 1px solid ${colors.brand.neutral7};
-  border-radius: 2px;
-  color: ${colors.brand.greyDark};
-  gap: 0 ${spacing.small};
-
-  &:hover {
-    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
-    transition-duration: 0.2s;
-    ${ResourceTitle} {
-      color: ${colors.brand.primary};
-      text-decoration: underline;
-    }
-    a {
-      display: flex;
-      align-items: center;
-    }
-  }
-`;
-
-const TagsandActionMenu = styled.div`
+const TagsandActionMenu = styled.div<TagsAndActionProps>`
   grid-area: tags;
-  display: flex;
+  box-sizing: content-box;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
-  width: 100%;
-  overflow: hidden;
-  gap: ${spacing.small};
   align-self: flex-start;
-  justify-self: flex-end;
-  justify-content: flex-end;
-`;
-
-const StyledImageWrapper = styled.div<StyledImageProps>`
-  grid-area: image;
-  width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
-  height: ${(p) => (p.imageSize === 'normal' ? '96px' : '40px')};
+  justify-items: flex-end;
+  margin: -${spacing.small} -${(props) => (props.hasMenuButton ? spacing.small : 0)} 0 0;
   ${mq.range({ until: breakpoints.mobileWide })} {
-    width: 54px;
-    height: 40px;
+    margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
   }
   overflow: hidden;
-`;
-
-const StyledImage = styled(Image)`
-  display: flex;
-  border-radius: 2px;
-  object-fit: cover;
 `;
 
 const TopicAndTitleWrapper = styled.div`
   grid-area: topicAndTitle;
-  margin-top: ${spacing.xxsmall};
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
-
-interface StyledImageProps {
-  imageSize: 'normal' | 'compact';
-}
-
-export interface ListResourceProps {
-  link: string;
-  tagLinkPrefix?: string;
-  title: string;
-  resourceImage: ResourceImageProps;
-  topics: string[];
-  tags?: string[];
-  description?: string;
-  menuItems?: MenuItemProps[];
-  isLoading?: boolean;
-}
 
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
   loading?: boolean;
   type: 'normal' | 'compact';
+  contentType: string;
 }
 
-const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImageProps) => {
+const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListResourceImageProps) => {
   if (!loading) {
-    return (
-      <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
-    );
+    if (resourceImage.src === '') {
+      return (
+        <StyledContentIconWrapper contentType={contentType}>
+          <ContentTypeBadge type={contentType} size="x-small" />
+        </StyledContentIconWrapper>
+      );
+    } else {
+      return (
+        <StyledImage alt={resourceImage.alt} src={resourceImage.src} fallbackWidth={type === 'compact' ? 56 : 136} />
+      );
+    }
   }
+
   return (
     <ContentLoader height={'100%'} width={'100%'} viewBox={null} preserveAspectRatio="none">
       <rect
@@ -145,13 +157,7 @@ const ListResourceImage = ({ resourceImage, loading, type }: ListResourceImagePr
   );
 };
 
-interface TopicAndTitleProps {
-  title: string;
-  topics: string[];
-  loading?: boolean;
-}
-
-const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
+const TypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -161,12 +167,7 @@ const TopicAndTitle = ({ title, topics, loading }: TopicAndTitleProps) => {
       </ContentLoader>
     );
   }
-  return (
-    <>
-      <ResourceTitle>{title}</ResourceTitle>
-      <TopicList topics={topics} />
-    </>
-  );
+  return <>{children}</>;
 };
 
 interface ResourceDescriptionProps {
@@ -174,7 +175,7 @@ interface ResourceDescriptionProps {
   loading?: boolean;
 }
 
-const ResourceDescription = ({ description, loading }: ResourceDescriptionProps) => {
+const Description = ({ description, loading }: ResourceDescriptionProps) => {
   if (loading) {
     return (
       <ContentLoader height={'20px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -185,34 +186,70 @@ const ResourceDescription = ({ description, loading }: ResourceDescriptionProps)
   return <StyledResourceDescription>{description}</StyledResourceDescription>;
 };
 
+export interface ListResourceProps {
+  id: string;
+  link: string;
+  tagLinkPrefix?: string;
+  title: string;
+  resourceImage: ResourceImageProps;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  resourceTypes: { id: string; name: string }[];
+  tags?: string[];
+  description?: string;
+  menuItems?: MenuItemProps[];
+  isLoading?: boolean;
+  targetBlank?: boolean;
+}
+
 const ListResource = ({
+  id,
   link,
   tagLinkPrefix,
   title,
   tags,
   resourceImage,
-  topics,
+  resourceTypes,
+  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
+  targetBlank,
 }: ListResourceProps) => {
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const firstContentType = resourceTypes?.[0]?.id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
+  const handleClick = () => {
+    if (linkRef.current) {
+      linkRef.current.click();
+    }
+  };
 
   return (
-    <ResourceWrapper to={link}>
-      <StyledImageWrapper imageSize={imageType}>
-        <ListResourceImage resourceImage={resourceImage} loading={isLoading} type={imageType} />
-      </StyledImageWrapper>
+    <ListResourceWrapper onClick={handleClick} id={id}>
+      <ImageWrapper imageSize={imageType}>
+        <ListResourceImage
+          resourceImage={resourceImage}
+          loading={isLoading}
+          type={imageType}
+          contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
+        />
+      </ImageWrapper>
       <TopicAndTitleWrapper>
-        <TopicAndTitle topics={topics} title={title} loading={isLoading} />
+        <TypeAndTitleLoader loading={isLoading}>
+          <StyledLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
+            <Title title={title}>{title}</Title>
+          </StyledLink>
+          <ResourceTypeList resourceTypes={resourceTypes} />
+        </TypeAndTitleLoader>
       </TopicAndTitleWrapper>
-      {showDescription && <ResourceDescription description={description} loading={isLoading} />}
-      <TagsandActionMenu>
-        {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
+      {showDescription && <Description description={description} loading={isLoading} />}
+      <TagsandActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
+        {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
         {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
-    </ResourceWrapper>
+    </ListResourceWrapper>
   );
 };
 

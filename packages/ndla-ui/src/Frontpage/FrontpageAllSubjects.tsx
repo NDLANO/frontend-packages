@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Tabs from '@ndla/tabs';
 import SafeLink from '@ndla/safelink';
 import { colors, fonts, mq, breakpoints } from '@ndla/core';
+import ContentLoader from '../ContentLoader';
 import { MessageBox } from '../Messages';
 import { ToggleItem } from '../Filter';
 
@@ -83,6 +84,7 @@ type categoryProps = {
   type?: string;
   name?: string;
   visible?: boolean;
+  message?: string;
   subjects: subjectProps[];
 };
 
@@ -190,6 +192,23 @@ const FrontpageAllSubjects = ({
   const data: any = [];
   const { t } = useTranslation();
 
+  if (categories.flatMap((c) => c.subjects).length === 0) {
+    return (
+      <StyledWrapper>
+        <ContentLoader width={880} height={270}>
+          <rect x="0" y="10" rx="3" ry="3" width="90" height="35" key="rect-1-1" />
+          <rect x="110" y="10" rx="3" ry="3" width="90" height="35" key="rect-1-2" />
+          <rect x="220" y="10" rx="3" ry="3" width="90" height="35" key="rect-1-3" />
+          <rect x="330" y="10" rx="3" ry="3" width="90" height="35" key="rect-1-4" />
+
+          <rect x="0" y="70" rx="3" ry="3" width="280" height="200" key="rect-2-1" />
+          <rect x="300" y="70" rx="3" ry="3" width="280" height="200" key="rect-2-2" />
+          <rect x="600" y="70" rx="3" ry="3" width="280" height="200" key="rect-2-3" />
+        </ContentLoader>
+      </StyledWrapper>
+    );
+  }
+
   categories.forEach((category: categoryProps) => {
     allSubjects.push(...category.subjects);
     category.visible &&
@@ -197,7 +216,11 @@ const FrontpageAllSubjects = ({
         title: category.name || t(`subjectCategories.${category.type}`),
         content: (
           <>
-            {/* Should be persistent til fall 2022 */}
+            {category.message && (
+              <MessageBoxWrapper>
+                <MessageBox>{category.message}</MessageBox>
+              </MessageBoxWrapper>
+            )}
             {category.name === t('subjectCategories.beta') && (
               <MessageBoxWrapper>
                 <MessageBox>{t('messageBoxInfo.frontPageBeta')}</MessageBox>
@@ -208,7 +231,6 @@ const FrontpageAllSubjects = ({
                 <MessageBox>{t('messageBoxInfo.frontPageExpired')}</MessageBox>
               </MessageBoxWrapper>
             )}
-
             {renderList(category.subjects, onNavigate, onToggleSubject, subjectViewType, selectedSubjects)}
           </>
         ),

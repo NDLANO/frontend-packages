@@ -8,9 +8,9 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { fonts, spacing, spacingUnit } from '@ndla/core';
 import { OneColumn, LayoutItem } from '../index';
 
@@ -51,32 +51,35 @@ interface Props {
   learningPathName: string;
 }
 
-const LearningPathLastStepNavigation = ({ subject, topic, learningPathName, children, t }: Props & WithTranslation) => (
-  <OneColumn css={OneColumnCss}>
-    <LayoutItem layout="center">
-      <StyledHeader className="c-article__title">
-        <span>{t('learningPath.lastStep.heading')}</span>
-        <StyledSmallText>
-          {t('learningPath.lastStep.headingSmall', {
-            learningPathName,
-          })}
-        </StyledSmallText>
-      </StyledHeader>
-      {subject && (
-        <StyledLinkWrapper>
-          {t('learningPath.lastStep.subjectHeading')}
-          <SafeLink to={subject.url}>{subject.name}</SafeLink>
-        </StyledLinkWrapper>
-      )}
-      {topic && (
-        <StyledLinkWrapper>
-          {t('learningPath.lastStep.topicHeading')}
-          <SafeLink to={topic.url}>{topic.name}</SafeLink>
-        </StyledLinkWrapper>
-      )}
-      {children}
-    </LayoutItem>
-  </OneColumn>
-);
+const LearningPathLastStepNavigation = ({ subject, topic, learningPathName, children }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <OneColumn css={OneColumnCss}>
+      <LayoutItem layout="center">
+        <StyledHeader className="c-article__title">
+          <span>{t('learningPath.lastStep.heading')}</span>
+          <StyledSmallText>
+            {t('learningPath.lastStep.headingSmall', {
+              learningPathName,
+            })}
+          </StyledSmallText>
+        </StyledHeader>
+        {subject && (
+          <StyledLinkWrapper>
+            {t('learningPath.lastStep.subjectHeading')}
+            <SafeLink to={subject.url}>{subject.name}</SafeLink>
+          </StyledLinkWrapper>
+        )}
+        {topic && (
+          <StyledLinkWrapper>
+            {t('learningPath.lastStep.topicHeading')}
+            <SafeLink to={topic.url}>{topic.name}</SafeLink>
+          </StyledLinkWrapper>
+        )}
+        {children}
+      </LayoutItem>
+    </OneColumn>
+  );
+};
 
-export default withTranslation()(LearningPathLastStepNavigation);
+export default LearningPathLastStepNavigation;

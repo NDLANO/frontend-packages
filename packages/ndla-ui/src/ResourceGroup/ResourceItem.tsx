@@ -6,16 +6,15 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { keyframes } from '@emotion/core';
+import { css } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import SafeLink from '@ndla/safelink';
 import { Additional, Core, HumanMaleBoard } from '@ndla/icons/common';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
-import { ArticleFavoritesButton } from '../Article';
 import { Resource } from '../types';
 import ContentTypeBadge from '../ContentTypeBadge';
 import * as contentTypes from '../model/ContentType';
@@ -228,9 +227,7 @@ type Props = {
   extraBottomMargin?: boolean;
   showAdditionalResources?: boolean;
   access?: 'teacher';
-  isFavorite?: boolean;
-  onToggleAddToFavorites: (id: string) => void;
-  showAddToFavoriteButton: boolean;
+  heartButton?: (path: string) => ReactNode;
 };
 
 const ResourceItem = ({
@@ -245,9 +242,7 @@ const ResourceItem = ({
   extraBottomMargin,
   showAdditionalResources,
   access,
-  onToggleAddToFavorites,
-  isFavorite,
-  showAddToFavoriteButton,
+  heartButton,
 }: Props & Resource) => {
   const { t } = useTranslation();
   const hidden = additional ? !showAdditionalResources : false;
@@ -284,30 +279,33 @@ const ResourceItem = ({
         {contentTypeName && <ContentTypeName>{contentTypeName}</ContentTypeName>}
         {access && access === 'teacher' && (
           <Tooltip tooltip={t('article.access.onlyTeacher')}>
-            <HumanMaleBoard className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+            <HumanMaleBoard
+              className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+              aria-label={t('article.access.onlyTeacher')}
+            />
           </Tooltip>
         )}
         {showAdditionalResources && contentTypeDescription && (
           <>
             {additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Additional className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+                <Additional
+                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                  aria-label={contentTypeDescription}
+                />
               </Tooltip>
             )}
             {!additional && (
               <Tooltip tooltip={contentTypeDescription}>
-                <Core className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons" />
+                <Core
+                  className="c-icon--20 u-margin-left-tiny c-topic-resource__list__additional-icons"
+                  aria-label={contentTypeDescription}
+                />
               </Tooltip>
             )}
           </>
         )}
-        {showAddToFavoriteButton && (
-          <ArticleFavoritesButton
-            isFavorite={isFavorite}
-            articleId={id}
-            onToggleAddToFavorites={() => onToggleAddToFavorites(id)}
-          />
-        )}
+        {heartButton?.(path)}
       </TypeWrapper>
     </ListElement>
   );

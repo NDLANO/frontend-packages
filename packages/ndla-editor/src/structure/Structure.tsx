@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import { DropResult } from 'react-beautiful-dnd';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { Spinner } from '@ndla/icons';
 import ItemNameBar from './ItemNameBar';

@@ -10,7 +10,7 @@ import React from 'react';
 import { ChevronRight, ChevronLeft } from '@ndla/icons/common';
 import styled from '@emotion/styled';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 interface Props {
   slideIndexTarget: number;

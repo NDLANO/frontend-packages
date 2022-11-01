@@ -19,19 +19,61 @@ const messages = {
       edit: 'Edit foldername',
       delete: 'Delete',
     },
+    hideFolders: 'Hide all folders',
+    showFolders: 'Show all folders',
     createFolder: 'Create folder',
     maxFoldersAlreadyAdded: 'Maximum subfolders reached',
     newFolder: {
       placeholder: 'Add foldername',
       defaultName: 'New folder',
+      folderName: 'Folder name',
     },
   },
   tagSelector: {
+    aria: {
+      screenReaderStatus: '{{count}} results available',
+      disabled: 'disabled',
+      selected: 'selected',
+      focused: 'focused',
+      guidance: {
+        menu: {
+          updown: 'Use Up and Down to choose tags',
+          enter: 'press Enter to select the currently focused tag',
+          escape: 'press Escape to exit the menu',
+          tab: 'press Tab to select the tag and exit the menu',
+        },
+        input: {
+          select: 'Tag menu',
+          focused: 'is focused',
+          refine: 'type to refine list',
+          down: 'press Down to open the menu',
+          left: 'press Left to focus selected tags',
+          space: 'press Space to create new tag',
+        },
+        value:
+          'Use left and right to toggle between focused tags, press Backspace to remove the currently focused value. The last tag will be removed if none are selected.',
+      },
+      onChange: {
+        deselect: 'tag {{label}}, deselected.',
+        clear: 'All selected options have been cleared.',
+        initialFocus: `Tags {{labels}}, selected.`,
+        selectedDisabled: 'Tag {{label}} is disabled. Select another option.',
+        selected: 'Tag {{label}}, selected.',
+      },
+      onFocus: {
+        value: 'tag {{label}} focused, {{position}}.',
+        menu: 'tag {{label}} {{status}}, {{position}}.',
+        of: 'of',
+      },
+      onFilter: ' for search term ',
+    },
+    noOptions: 'No options',
     label: 'Add tag',
+    createLabel: 'Add tag {{tag}}',
     placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
-    hideAllTags: 'Hide all tags',
-    showAllTags: 'Show all tags',
+    hideTags: 'Hide tags',
+    showTags: 'Show tags',
   },
   htmlTitles: {
     titleTemplate,
@@ -68,11 +110,10 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
     [subjectCategories.BETA_SUBJECTS]: 'Revised',
-    [subjectCategories.COMMON_SUBJECTS]: 'Common core subj.',
-    [subjectCategories.PROGRAMME_SUBJECTS]: 'Programme subj. SF',
-    [subjectCategories.SPECIALIZED_SUBJECTS]: 'Programme subj. YF',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Other resources',
   },
   subjectTypes: {
+    [subjectTypes.BETA_SUBJECT]: 'Betafag',
     [subjectTypes.SUBJECT]: 'Subject',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
   },
@@ -248,13 +289,6 @@ const messages = {
         name: 'Follow us',
       },
     },
-    category: {
-      fellesfag: 'Common',
-      yrkesfag: 'Vocational',
-      studiespesialiserende: 'Specialization',
-      imported: 'Imported subjects',
-      heading: 'What will you learn?',
-    },
     film: {
       header: 'NDLA film',
       text: 'NDLA film is a service in collaboration with Norgesfilm. This service allows you to watch a range of feature films, short films, documentaries and series. You can also watch educational films and movie clips. Welcome to the world of cinema!',
@@ -264,12 +298,34 @@ const messages = {
     blog: 'From our blog',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
   },
+  toolboxPage: {
+    introduction:
+      'What will it mean to work exploratory? How can you learn better? What is needed in order to make group work function? In the toolbox both students and teach find resources that are current for every subject, and that support learning work and development of knowledge, skills and understanding.',
+  },
   meta: {
     description: 'Norwegian Digital Learning Arena, Open Educational Resources',
     keywords: 'open educational resources,teaching,learning',
   },
   masthead: {
     skipToContent: 'Skip to content',
+    menuOptions: {
+      programme: 'Programmes',
+      subjects: 'Subjects',
+      multidisciplinarySubjects: 'Multidisciplinary subjects',
+      toolboxStudents: 'Toolbox - for students',
+      toolboxTeachers: 'Toolbox - for teachers',
+      film: 'NDLA Film',
+      about: {
+        title: 'About NDLA',
+        whatIs: 'What is NDLA?',
+        organization: 'The organization',
+        numbers: 'Numbers and usage',
+        keyPersonnel: 'Key personnel',
+        vacancies: 'Vacancies',
+        newsletter: 'Newsletter',
+        contact: 'Contact',
+      },
+    },
     menu: {
       close: 'Close',
       goTo: 'Go to',
@@ -353,18 +409,16 @@ const messages = {
       'Your browser is outdated. Update it, or find a safe and updated browser on https://browsehappy.com.',
     noContent: 'We are sorry, but we do not yet offer any program courses.',
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
-    resources:
-      'This is not a complete course produced by NDLA, but a collection of resources we hope you will find useful.',
+    resources: 'This is not a complete course, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
+    subjectFuture: 'This course is for a future curriculum.',
     subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022. Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
+      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from the next school year. We hope, however, that the learning resources available by now may come in useful already.',
     frontPageExpired:
       'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
-    frontPageRevised:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022.',
   },
   article: {
     edition: 'Edition',
@@ -433,6 +487,7 @@ const messages = {
   },
   license: {
     heading: 'How to reuse content',
+    copy: 'Copy',
     tabs: {
       text: 'Text',
       images: 'Images',
@@ -624,11 +679,13 @@ const messages = {
   changeLanguage: {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
+    se: 'Rievdat giela davvisámegiella',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
+    se: 'Siiddut leat davvisámegiellii',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {
@@ -825,18 +882,6 @@ const messages = {
       text: 'is created by',
     },
   },
-  fagfornyelse: {
-    frontpage: {
-      heading: 'Welcome to a sneak peek at Fagfornyelsen at NDLA',
-      text: 'The new curricula will take effect in the fall 2020. At NDLA we have already started this work. Those responsible for our content make new great learning resources every day, resources that are adapted to the new curricula. On this page you can already see them.',
-      blogHeading: 'Do you want to know more?',
-    },
-    badge: {
-      heading: 'This page is adapted for Fagfornyelsen 2020',
-      text: 'The content is in progress. Not what you were looking for?',
-      linkText: "Go to ndla.no for today's content",
-    },
-  },
   frontPageToolbox: {
     heading: 'Toolbox',
     text: 'Do you want to become good at presenting, or do you want to learn to study smarter using the right study technique? Need advice on how to read most effectively for the exam? In the NDLA Toolbox you will find lots of great tips and advice!',
@@ -875,6 +920,7 @@ const messages = {
   },
   cancel: 'Cancel',
   close: 'Close',
+  loading: 'Loading',
   title: 'Title',
   save: 'Save',
   image: {
@@ -921,6 +967,8 @@ const messages = {
   },
   h5p: {
     reuse: 'Use H5P',
+    resource: 'Learning resource from H5P',
+    error: 'An error occurred while loading the H5P.',
   },
   video: {
     download: 'Download video',
@@ -931,8 +979,11 @@ const messages = {
     download: 'Download content',
     reuse: 'Use content',
   },
+  external: {
+    error: 'An error occurred while loading an external resource.',
+  },
   concept: {
-    showDescription: 'Show concept description',
+    showDescription: '{{title}}, concept description. Press to open the description',
     reuse: 'Use concept',
     error: {
       title: 'An error occurred',
@@ -946,8 +997,6 @@ const messages = {
     showMore: 'Show more related content',
     showLess: 'Show less',
   },
-  'external.error': 'An error occurred while loading an external resource.',
-  'h5p.error': 'An error occurred while loading the H5P.',
   files: 'Files',
   download: 'Download file: ',
   expandButton: 'Show large version',
@@ -971,7 +1020,6 @@ const messages = {
     buttonLogOut: 'Log out',
     generalFooter: 'Some resources may only be accessed by teachers who are logged in.',
     modal: {
-      collectedInfo: 'We have collected the following information about you from Feide:',
       general: 'Resources that require logging in with Feide, are tagged with the icon',
       topic: 'Log in with Feide to access this topic.',
       isAuth: 'User info',
@@ -984,11 +1032,16 @@ const messages = {
     name: 'Name',
     mail: 'E-mail',
     username: 'Username',
+    mobile: 'Phone number',
+    preferredLanguage: 'Foretrukket språk',
     groupTypes: {
       basic: 'Basic group',
       teaching: 'Teaching group',
       other: 'Other groups',
+      grepCode: 'Grep codes',
     },
+    wrongUserInfoDisclaimer:
+      'If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ',
   },
   checkOutNewFeature: 'New feature',
   slateBlockMenu: {
@@ -1008,14 +1061,27 @@ const messages = {
     folders_plural: '{{count}} Folders',
     folder: {
       folder: 'Folder',
-      delete: 'Delete',
-      edit: 'Edit',
+      delete: 'Delete folder',
+      edit: 'Edit folder',
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
+      folderCreated: '"{{folderName}} created',
+      onDragStart: 'Picked up the folder {{name}}. The folder is in position {{index}} of {{length}}',
+      onDragOver: 'The folder {{name}} was moved into position {{index}} of {{length}}',
+      onDragOverMissingOver: 'The folder {{name}} is no longer over a droppable area',
+      onDragEnd: 'The folder {{name}} was dropped at position {{index}} og {{length}}',
+      onDragEndMissingOver: 'The folder {{name}} was dropped',
+      onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
+      dragHandle: 'Drag the folder {{name}}',
     },
+    tagList: 'Tags',
     tags: '{{count}} tag',
     tags_plural: '{{count}} tags',
-    confirmDeleteFolder: 'Are you sure you want to delete this folder? This process cannot be undone.',
+    moreTags: 'Show one more tag',
+    moreTags_plural: 'Show {{count}} more tags',
+    confirmDeleteFolder:
+      'Are you sure you want to delete this folder? Subfolders of this folder will also be deleted. This action cannot be undone.',
+
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
@@ -1025,26 +1091,34 @@ const messages = {
     favourites: 'Favourites',
     addToFavourites: 'Add to my favourites',
     alreadyFavourited: 'Already in my favourites',
-    alreadyInFolder: 'Already in folder',
+    alreadyInFolder: 'Already in folder. You can still save new tags.',
+    noFolderSelected: 'Select or create a new folder to save the resource.',
     help: 'Help',
     more: 'More options',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
     myPage: {
+      noRecents: "You haven't added any resources yet. This is how you get started:",
+      imageAlt:
+        'Medium close-up of girl holding a tablet. On top of the tablet there are colour samples in different shapes and colours. Graphic image.',
       confirmDeleteAccount: 'Are you sure you want to delete your account?',
       confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
       logout: 'Log out of My NDLA',
+      loginText:
+        'In order to use the My NDLA service you have to be a student or work at a school in a county that partakes in the NDLA collaboration. We ask you not to write offensive or personally sensitive information in text fields. Read our ',
+      loginTextLink: 'privacy policy here',
       loginTerms: 'Log in with Feide to receive access. By logging on your accept your terms of service',
       loginResourcePitch: 'Do you want to favorite this page?',
       loginWelcome: 'Welcome to My NDLA! This page allows you to organize your articles in your <i>own</i> way!',
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
-      read: { our: 'Read our', ours: 'Read our' },
+      read: { read: 'Read our', our: '.' },
       privacy: 'privacy statement',
-      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      privacyLink: 'https://om.ndla.no/gdpr',
+      questions: { question: 'Any questions?', ask: 'Ask NDLA' },
       wishToDelete: 'Do you wish to delete your account?',
       terms: {
         terms: 'Terms of use',
@@ -1053,6 +1127,8 @@ const messages = {
         term3: 'NDLA reserves the right to update or remove resources if they are not up to date.',
       },
       feide: 'We have retrieved this information from Feide',
+      feideWrongInfo:
+        'If the information is incorrect, it has to be updated by the host organizationg or the school that the account is associated with. An overview of user support can be found here: feide.no/brukerstotte',
       newFavourite: 'Recently favourited',
 
       storageInfo: {
@@ -1061,11 +1137,11 @@ const messages = {
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
-        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+        text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
       },
       tagInfo: {
         title: 'How to tag your favourite resources',
-        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
     },
     resource: {
@@ -1083,6 +1159,13 @@ const messages = {
       tagsUpdated: 'Tags updated',
       show: 'Show',
       save: 'Save resource',
+      onDragStart: 'Picked up the resource {{name}}. The resource is in position {{index}} of {{length}}',
+      onDragOver: 'The resource {{name}} was moved into position {{index}} of {{length}}',
+      onDragOverMissingOver: 'The resource {{name}} is no longer over a droppable area',
+      onDragEnd: 'The resource {{name}} was dropped at position {{index}} og {{length}}',
+      onDragEndMissingOver: 'The resource {{name}} was dropped',
+      onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
+      dragHandle: 'Drag the resource {{name}}',
     },
   },
   snackbar: {

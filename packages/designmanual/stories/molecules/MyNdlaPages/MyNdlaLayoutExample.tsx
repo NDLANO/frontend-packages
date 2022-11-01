@@ -7,19 +7,14 @@
  */
 
 import React, { ReactNode } from 'react';
-import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE_WRAPPED } from '../TreeStructureExample';
+import { TreeStructureExampleComponent, NAVIGATION_STRUCTURE } from '../TreeStructureExample';
 //@ts-ignore
 import { LayoutWithSidebarAside, LayoutWithSidebarMain, LayoutWithSidebarWrapper } from '../../helpers';
 
 export const MyPage = ({ children }: { children: ReactNode }) => (
   <LayoutWithSidebarWrapper>
     <LayoutWithSidebarAside>
-      <TreeStructureExampleComponent
-        editable={false}
-        framed={false}
-        openOnFolderClick
-        structure={STRUCTURE_EXAMPLE_WRAPPED()}
-      />
+      <TreeStructureExampleComponent type="navigation" openOnFolderClick structure={NAVIGATION_STRUCTURE} />
     </LayoutWithSidebarAside>
     <LayoutWithSidebarMain>{children}</LayoutWithSidebarMain>
   </LayoutWithSidebarWrapper>

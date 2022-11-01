@@ -1,13 +1,68 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { TransitionGroup } from 'react-transition-group';
-import BEMHelper from 'react-bem-helper';
+import styled from '@emotion/styled';
+import { colors, fonts, spacing } from '@ndla/core';
 import { Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import { SubjectSectionTitle } from './Subject';
 import Fade from '../Animation/Fade';
 
-const classes = BEMHelper('c-subject-shortcuts');
+const SubjectShortcutsSection = styled.section`
+  margin-bottom: ${spacing.large};
+`;
+
+const StyledTransitionGroup = styled(TransitionGroup)`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const StyledListItem = styled.li`
+  display: block;
+  margin-right: 9px;
+  margin-bottom: 9px;
+
+  a {
+    display: block;
+    background: ${colors.brand.light};
+    box-shadow: none;
+    border-radius: 5px;
+    ${fonts.sizes('18px', '23px')};
+    font-weight: ${fonts.weight.semibold};
+    color: ${colors.brand.dark};
+    padding: 9px 20px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: ${colors.brand.primary};
+      color: ${colors.white};
+    }
+  }
+`;
+
+const StyledButton = styled.button`
+  display: flex;
+  background: none;
+  border: 0;
+  align-items: center;
+  padding: 0;
+  color: ${colors.brand};
+  margin-top: ${spacing.normal};
+  cursor: pointer;
+
+  .c-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: ${spacing.xsmall};
+  }
+
+  span {
+    ${fonts.sizes('14px', '18px')};
+  }
+`;
 
 interface Props {
   links: {
@@ -59,51 +114,36 @@ class SubjectShortcuts extends Component<Props, State> {
       const buttonText = isExpanded ? messages.showLess : messages.showMore;
 
       button = (
-        <button
+        <StyledButton
           type="button"
           aria-expanded={isExpanded}
           aria-controls={id}
-          onClick={() => this.handleOnExpand(!isExpanded)}
-          {...classes('expand-button')}>
+          onClick={() => this.handleOnExpand(!isExpanded)}>
           <Forward />
           <span>{buttonText}</span>
-        </button>
+        </StyledButton>
       );
 
       filteredLinks = this.props.links.filter((link, index) => index < this.state.visibleCount);
     }
     return (
-      <section {...classes('')}>
+      <SubjectShortcutsSection>
         <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
         <nav id={id}>
-          <TransitionGroup className={classes('list').className} component="ul">
+          <StyledTransitionGroup component="ul">
             {filteredLinks.map((link) => (
               <Fade key={link.url}>
-                <li {...classes('item')}>
+                <StyledListItem>
                   <SafeLink to={link.url}>{link.text}</SafeLink>
-                </li>
+                </StyledListItem>
               </Fade>
             ))}
-          </TransitionGroup>
+          </StyledTransitionGroup>
         </nav>
         {button}
-      </section>
+      </SubjectShortcutsSection>
     );
   }
-  static propTypes = {
-    links: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    messages: PropTypes.shape({
-      heading: PropTypes.string.isRequired,
-      showMore: PropTypes.string.isRequired,
-      showLess: PropTypes.string.isRequired,
-    }).isRequired,
-    defaultVisableCount: PropTypes.number,
-  };
 
   static defaultProps = {
     defaultVisableCount,

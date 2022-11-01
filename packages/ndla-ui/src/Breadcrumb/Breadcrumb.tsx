@@ -8,7 +8,6 @@
 
 import React, { ReactNode, useRef } from 'react';
 import { useComponentSize, useIsomorphicLayoutEffect } from '@ndla/hooks';
-import { uuid } from '@ndla/util';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import BreadcrumbItem, { IndexedBreadcrumbItem, SimpleBreadcrumbItem } from './BreadcrumbItem';
@@ -68,7 +67,7 @@ const Breadcrumb = ({
         el.setMaxWidth('40px');
       }
     });
-  }, [size]);
+  }, [size, items]);
 
   return (
     <BreadcrumbNav ref={containerRef} aria-label={t('breadcrumb.breadcrumb')}>
@@ -78,12 +77,21 @@ const Breadcrumb = ({
             autoCollapse={autoCollapse}
             renderItem={renderItem}
             renderSeparator={renderSeparator}
-            ref={(element) =>
-              element === null || (!collapseFirst && index === 0) || (!collapseLast && index === items.length - 1)
-                ? breadcrumbItemRefs.delete(item.to)
-                : breadcrumbItemRefs.set(item.to, element)
-            }
-            key={uuid()}
+            ref={(element) => {
+              if (
+                element === null ||
+                (!collapseFirst && index === 0) ||
+                (!collapseLast && index === items.length - 1)
+              ) {
+                if (element) {
+                  element.setMaxWidth('none');
+                }
+                breadcrumbItemRefs.delete(item.to);
+              } else {
+                breadcrumbItemRefs.set(item.to, element);
+              }
+            }}
+            key={typeof item.to === 'string' ? item.to : item.to.pathname}
             totalCount={items.length}
             item={{ ...item, index }}
           />

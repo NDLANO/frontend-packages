@@ -1,6 +1,6 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { InterpolationWithTheme } from '@emotion/core';
+import { Interpolation } from '@emotion/react';
 import styled from '@emotion/styled';
 import { fonts, spacing, colors, misc, breakpoints, mq } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
@@ -13,7 +13,7 @@ const NotionDialogContentWrapper = styled.div`
   flex-direction: column;
 `;
 
-interface NotionDialogContentProps extends HTMLProps<HTMLDivElement> {
+interface NotionDialogContentProps extends Omit<HTMLProps<HTMLDivElement>, 'as'> {
   children?: ReactNode;
 }
 export const NotionDialogContent = ({ children, ...rest }: NotionDialogContentProps) => (
@@ -176,7 +176,7 @@ interface Props {
   subTitle?: string;
   ariaHidden?: boolean;
   children?: ReactNode;
-  customCSS?: InterpolationWithTheme<any>;
+  customCSS?: Interpolation<any>;
   headerContent?: ReactNode;
 }
 

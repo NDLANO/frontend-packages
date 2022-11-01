@@ -9,7 +9,7 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, colors, fonts } from '@ndla/core';
 import { Star } from '@ndla/icons/editor';
 import { RenderBeforeFunction } from './Structure';
@@ -189,7 +189,7 @@ interface RoundIconProps {
   type?: 'button' | 'reset' | 'submit';
 }
 
-const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & HTMLProps<HTMLButtonElement>) => (
+const RoundIcon = ({ smallIcon, ...rest }: RoundIconProps & Omit<HTMLProps<HTMLButtonElement>, 'as'>) => (
   <StyledIcon {...rest}>{smallIcon}</StyledIcon>
 );
 

@@ -7,42 +7,81 @@
  */
 
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useRef } from 'react';
 import { FolderOutlined } from '@ndla/icons/contentType';
 import { FileDocumentOutline } from '@ndla/icons/common';
 import { fonts, spacing, colors, mq, breakpoints } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { MenuButton, MenuItemProps } from '@ndla/button';
 
-interface FolderIconWrapperProps {
-  type?: LayoutType;
+type LayoutType = 'list' | 'listLarger' | 'block';
+interface LayoutProps {
+  type: LayoutType;
 }
 
-const FolderIconWrapper = styled.div<FolderIconWrapperProps>`
+const FolderWrapper = styled.div<LayoutProps>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${spacing.nsmall};
+  gap: ${spacing.small};
+
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    ${({ type }) =>
+      type !== 'list' &&
+      css`
+        flex-direction: column;
+        align-items: unset;
+      `}
+  }
+
+  ${({ type }) =>
+    type === 'block' &&
+    css`
+      flex-direction: column;
+      align-items: unset;
+    `}
+
+  border: 1px solid ${colors.brand.neutral7};
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: none;
+  text-decoration: none;
+  &:hover {
+    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
+    transition-duration: 0.2s;
+  }
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${spacing.xsmall};
+  justify-content: space-between;
+`;
+
+const IconWrapper = styled.div`
   display: flex;
   border-radius: 100%;
-  padding: ${spacing.small};
-  background-color: ${colors.brand.greyLighter};
+  color: ${colors.brand.primary};
   svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
-  ${(p) =>
-    p.type === 'block' &&
-    css`
-    background-color: transparent;
-    ${FolderWrapper}:hover & {
-      background-color: ${colors.brand.light};
-      transition-duration 0.5s;
-    }
-  `};
+`;
+
+const StyledLink = styled(SafeLink)`
+  box-shadow: none;
+  color: ${colors.brand.primary};
+  flex: 1;
 `;
 
 const FolderTitle = styled.h2`
-  ${fonts.sizes(18)};
-  font-weight: ${fonts.weight.normal};
+  ${fonts.sizes('16px', '20px')};
+  font-weight: ${fonts.weight.semibold};
   margin: 0;
   flex: 1;
 
@@ -53,31 +92,72 @@ const FolderTitle = styled.h2`
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
-`;
 
-const FolderWrapper = styled(SafeLink)`
-  display: flex;
-  align-items: center;
-  padding: ${spacing.small};
-  border: 1px solid ${colors.brand.neutral7};
-  border-radius: 2px;
-  box-shadow: none;
-  text-decoration: none;
-  color: ${colors.brand.greyDark};
-  font-family: ${fonts.sans};
-  transition-duration: 0.2s;
-  gap: ${spacing.small};
-  &:hover {
-    box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
-    transition-duration: 0.2s;
-    ${FolderTitle} {
-      color: ${colors.brand.primary};
-      text-decoration: underline;
-    }
+  ${FolderWrapper}:hover & {
+    color: ${colors.brand.primary};
+    text-decoration: underline;
   }
 `;
 
+const MenuWrapper = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${spacing.xsmall};
+  justify-content: space-between;
+  margin: -${spacing.nsmall};
+  margin-left: 0;
+`;
+
+const CountContainer = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  gap: ${spacing.small};
+`;
+
+const IconCountWrapper = styled.div<LayoutProps>`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.xxsmall};
+  color: ${colors.brand.grey};
+  white-space: nowrap;
+  svg {
+    width: 13px;
+    height: 13px;
+  }
+  ${fonts.sizes(16)};
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    ${({ type }) =>
+      type === 'list' &&
+      css`
+        display: none;
+      `}
+  }
+`;
+
+interface IconCountProps {
+  type: 'resource' | 'folder';
+  count?: number;
+  layoutType: LayoutType;
+}
+
+const Count = ({ type, count, layoutType }: IconCountProps) => {
+  const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
+  const { t } = useTranslation();
+  if (!count) return null;
+
+  return (
+    <IconCountWrapper type={layoutType}>
+      <Icon aria-label={t(`myNdla.${type}s`)} />
+      <span>{t(`myNdla.${type}s`, { count })}</span>
+    </IconCountWrapper>
+  );
+};
+
 interface Props {
+  id: string;
   title: string;
   subFolders?: number;
   subResources?: number;
@@ -87,61 +167,31 @@ interface Props {
   menuItems?: MenuItemProps[];
 }
 
-interface IconCountProps {
-  type: 'resource' | 'folder';
-  count?: number;
-  layoutType: LayoutType;
-}
-
-interface IconCountWrapperProps {
-  type: LayoutType;
-}
-
-const IconCountWrapper = styled.div<IconCountWrapperProps>`
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  ${fonts.sizes(16)};
-  ${(p) =>
-    p.type === 'block' &&
-    css`
-      opacity: 0;
-      ${FolderWrapper}:hover & {
-        opacity: 1;
-      }
-    `};
-
-  ${mq.range({ until: breakpoints.tabletWide })} {
-    display: none;
-  }
-`;
-
-const IconCount = ({ type, count, layoutType }: IconCountProps) => {
-  const Icon = type === 'resource' ? FileDocumentOutline : FolderOutlined;
+const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
   const { t } = useTranslation();
-  if (!count) return null;
+  const linkRef = useRef<HTMLAnchorElement | null>(null);
+
+  const onClick = () => {
+    linkRef?.current?.click();
+  };
 
   return (
-    <IconCountWrapper type={layoutType}>
-      <Icon aria-label={t(`myNdla.${type}s`)} />
-      <span>{layoutType === 'block' ? count : t(`myNdla.${type}s`, { count })}</span>
-    </IconCountWrapper>
-  );
-};
-
-type LayoutType = 'list' | 'block';
-
-const Folder = ({ link, title, subFolders, subResources, type = 'list', menuItems }: Props) => {
-  const { t } = useTranslation();
-  return (
-    <FolderWrapper to={link}>
-      <FolderIconWrapper type={type}>
-        <FolderOutlined aria-label={t('myNdla.folder.folder')} />
-      </FolderIconWrapper>
-      <FolderTitle>{title}</FolderTitle>
-      <IconCount layoutType={type} type={'folder'} count={subFolders} />
-      <IconCount layoutType={type} type={'resource'} count={subResources} />
-      {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+    <FolderWrapper type={type} onClick={onClick} id={id}>
+      <TitleWrapper>
+        <IconWrapper>
+          <FolderOutlined aria-label={t('myNdla.folder.folder')} />
+        </IconWrapper>
+        <StyledLink to={link} ref={linkRef}>
+          <FolderTitle title={title}>{title}</FolderTitle>
+        </StyledLink>
+      </TitleWrapper>
+      <MenuWrapper>
+        <CountContainer>
+          <Count layoutType={type} type={'folder'} count={subFolders} />
+          <Count layoutType={type} type={'resource'} count={subResources} />
+        </CountContainer>
+        {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
+      </MenuWrapper>
     </FolderWrapper>
   );
 };

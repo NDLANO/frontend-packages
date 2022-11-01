@@ -1,6 +1,6 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import { colors, spacing, fonts, spacingUnit } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Button from '@ndla/button';
 
 interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size' | 'width' | 'type'> {

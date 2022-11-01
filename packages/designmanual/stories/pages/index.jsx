@@ -17,7 +17,6 @@ import {
   ExternalLearningResourcesHero,
   SourceMaterialHero,
   SubjectBadge,
-  ErrorMessage,
   OneColumn,
   PageContainer,
   Content,
@@ -40,8 +39,6 @@ import { BreadcrumbWithHome } from '../molecules/breadcrumbs';
 import Frontpage from './FrontpageExample';
 import NdlaFilmFrontpage from './NdlaFilmFrontpage';
 import LearningPathExample from './LearningPathExample';
-
-import NotExist from '../../images/not-exist.gif';
 import banners from '../../images/banners';
 import ExplanationService from './ExplanationService';
 import ProgrammePage from './ProgrammePage';
@@ -110,28 +107,7 @@ storiesOf('Sidevisninger', module)
       <FooterExample />
     </PageContainer>
   ))
-  .add('En side med feilmelding', () => (
-    <PageContainer>
-      <MastheadWithTopicMenu />
-      <Content>
-        <OneColumn cssModifier="clear">
-          <ErrorMessage
-            illustration={{
-              url: NotExist,
-              altText: 'Finnes ikke',
-            }}
-            messages={{
-              title: 'Oops, noe gikk galt',
-              description: 'Vi beklager, men vi fant ikke siden du prøvde å komme til.',
-              back: 'Tilbake',
-              goToFrontPage: 'Gå til forsiden',
-            }}
-          />
-        </OneColumn>
-      </Content>
-      <FooterExample />
-    </PageContainer>
-  ))
+
   .add('Læringssti', () => (
     <PageContainer backgroundWide>
       <MastheadWithTopicMenu />
@@ -256,6 +232,14 @@ storiesOf('Fag- og emnesider', module)
     <PageContainer>
       <Content>
         <Frontpage />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
+  .add('1.5. Forside med fag som laster', () => (
+    <PageContainer>
+      <Content>
+        <Frontpage showLoadingSubjects={true} />
       </Content>
       <FooterExample />
     </PageContainer>

@@ -93,6 +93,7 @@ storiesOf('Sammensatte moduler', module)
           ]}
           published="21.06.2018"
           license="CC BY-SA"
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
         />
         <h2 className="u-heading">Linje med tilleggsstoff og lisensboks</h2>
         <ArticleByline
@@ -106,6 +107,7 @@ storiesOf('Sammensatte moduler', module)
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
         />
         <h2 className="u-heading">Linje med detaljert opphaver informasjon</h2>
         <ArticleByline
@@ -125,10 +127,12 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
           published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
           additional
+          embedLink="https://ndla.no/article-iframe/nb/urn:resource:2c243daf-f335-4bae-a022-95cc7f5e34b3/21844"
         />
         <h2 className="u-heading">Linje med flere opphavere med detaljert informasjon</h2>
         <ArticleByline
@@ -176,12 +180,18 @@ storiesOf('Sammensatte moduler', module)
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
             },
           ]}
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
           published="21.06.2018"
           license="CC BY-SA"
           licenseBox={<LicenseBox />}
         />
         <h2 className="u-heading">Linje uten opphavere detaljert informasjon</h2>
-        <ArticleByline published="21.06.2018" license="CC BY-SA" licenseBox={<LicenseBox />} />
+        <ArticleByline
+          published="21.06.2018"
+          license="CC BY-SA"
+          licenseBox={<LicenseBox />}
+          copySourceReference="Hvordan lage dummydata, av Rolfsen, P., Sopra Steria. (https://ndla.no/article/55). CC BY-NC 4.0."
+        />
       </StoryBody>
     </div>
   ))
@@ -274,26 +284,47 @@ storiesOf('Sammensatte moduler', module)
   ))
 
   .add('Feilmelding', () => (
-    <div>
-      <StoryIntro title="Feilmelding">
-        <p>
-          Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått en
-          feil i systemet, f.eks. ved 404- eller 503-feil.
-        </p>
-      </StoryIntro>
-      <ErrorMessage
-        illustration={{
-          url: Oops,
-          altText: 'Systemfeil',
-        }}
-        messages={{
-          title: 'Oisann, her gikk noe galt',
-          description: 'En kort beskrivelse av feilen som oppsto.',
-          linksTitle: 'Kom igang:',
-          back: 'Gå tilbake',
-          goToFrontPage: 'Gå til forsiden',
-        }}
-      />
+    <div className="u-margin-bottom">
+      <div>
+        <StoryIntro title="Feilmelding">
+          <p>
+            Feilmeldingskomponenten lenker tilbake til forrige side eller til forsiden. Den brukes når det har oppstått
+            en feil i systemet, f.eks. ved 404- eller 503-feil.
+          </p>
+        </StoryIntro>
+        <Center>
+          <h2 className="u-heading">Standard feilmelding ved 404: </h2>
+        </Center>
+        <ErrorMessage
+          illustration={{
+            url: Oops,
+            altText: 'Systemfeil',
+          }}
+          messages={{
+            title: 'Oisann, her gikk noe galt',
+            description: 'En kort beskrivelse av feilen som oppsto.',
+            linksTitle: 'Kom igang:',
+            back: 'Gå tilbake',
+            goToFrontPage: 'Gå til forsiden',
+          }}
+        />
+      </div>
+      <Center>
+        <h2 className="u-heading">Login feilet Min NDLA: </h2>
+      </Center>
+      <div className="u-margin-bottom">
+        <ErrorMessage
+          illustration={{
+            url: Oops,
+            altText: 'Systemfeil',
+          }}
+          messages={{
+            title: 'Ops, her gikk noe galt',
+            linksTitle: 'Prøv igjen',
+            logInFailed: 'Logg inn',
+          }}
+        />
+      </div>
     </div>
   ))
 
@@ -479,10 +510,12 @@ storiesOf('Sammensatte moduler', module)
     </PageContainer>
   ))
 
-  .add('Modalboks', () => (
+  .add('Modalboks (utdatert)', () => (
     <div>
-      <StoryIntro title="Modalboks">
-        <p>Some tekst</p>
+      <StoryIntro title="Modalboks (utdatert)">
+        <p>
+          Utdatert. Se eksempelet "Modaler" under <b>Enkle komponenter</b>
+        </p>
       </StoryIntro>
       <StoryBody>
         <ModalExample />

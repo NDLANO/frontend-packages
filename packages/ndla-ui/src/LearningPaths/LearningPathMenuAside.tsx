@@ -8,10 +8,10 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Time } from '@ndla/icons/common';
 import { SafeLinkButton } from '@ndla/safelink';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, spacingUnit, fonts, mq, breakpoints, animations } from '@ndla/core';
 import LearningPathMenuAsideCopyright from './LearningPathMenuAsideCopyright';
 
@@ -107,32 +107,28 @@ type Props = {
   };
 };
 
-const LearningPathMenuAside = ({
-  lastUpdated,
-  learningPathURL,
-  copyright,
-  isOpen,
-  invertedStyle,
-  t,
-}: Props & WithTranslation) => (
-  <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
-    <div css={learningPathDetailsCSS}>
-      <Time />
-      <p>
-        {t('learningPath.lastUpdated')}: {lastUpdated}
-      </p>
-    </div>
-    {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
-    <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
-    <StyledSafeLinkButton
-      to={learningPathURL}
-      target="_blank"
-      rel="noopener noreferrer"
-      outline
-      invertedStyle={invertedStyle}>
-      {t('learningPath.createLearningPathButtonText')}
-    </StyledSafeLinkButton>
-  </StyledAside>
-);
+const LearningPathMenuAside = ({ lastUpdated, learningPathURL, copyright, isOpen, invertedStyle }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledAside isOpen={isOpen} invertedStyle={invertedStyle}>
+      <div css={learningPathDetailsCSS}>
+        <Time />
+        <p>
+          {t('learningPath.lastUpdated')}: {lastUpdated}
+        </p>
+      </div>
+      {copyright.contributors && <LearningPathMenuAsideCopyright copyright={copyright} />}
+      <p css={infoTextCSS}>{t('learningPath.createLearningPathText')}</p>
+      <StyledSafeLinkButton
+        to={learningPathURL}
+        target="_blank"
+        rel="noopener noreferrer"
+        outline
+        invertedStyle={invertedStyle}>
+        {t('learningPath.createLearningPathButtonText')}
+      </StyledSafeLinkButton>
+    </StyledAside>
+  );
+};
 
-export default withTranslation()(LearningPathMenuAside);
+export default LearningPathMenuAside;

@@ -47,6 +47,7 @@ interface Props {
     linksTitle?: string;
     back?: string;
     goToFrontPage?: string;
+    logInFailed?: string;
   };
   illustration?: {
     url: string;
@@ -76,6 +77,11 @@ export const ErrorMessage = ({ children, messages, illustration, illustrationEle
     {messages.goToFrontPage && (
       <div css={{ marginTop: spacing.xsmall }}>
         <SafeLink to="/">{messages.goToFrontPage}</SafeLink>
+      </div>
+    )}
+    {messages.logInFailed && (
+      <div css={{ marginTop: spacing.xsmall }}>
+        <SafeLink to="/minndla">{messages.logInFailed}</SafeLink>
       </div>
     )}
     {children}

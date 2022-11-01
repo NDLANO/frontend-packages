@@ -8,17 +8,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { Menu } from '@ndla/icons/common';
-import Button from '@ndla/button';
+import { ButtonV2 as Button } from '@ndla/button';
 
 const style = css`
+  display: block;
   position: relative;
   background: transparent;
-  padding: ${spacing.small};
-  padding-right: ${spacing.normal};
-  padding-left: ${spacing.normal};
+  padding: ${spacing.small} ${spacing.normal};
   font-weight: ${fonts.weight.normal};
 
   svg {
@@ -28,13 +27,13 @@ const style = css`
     margin-right: ${spacing.xsmall};
   }
   &:hover {
-    border: 3px solid transparent;
+    border-color: transparent;
     background: ${colors.brand.primary};
     color: ${colors.white};
   }
   &:active,
   &:focus {
-    border: 2px solid ${colors.brand.lighter};
+    border-color: ${colors.brand.lighter};
     background: ${colors.white};
     color: ${colors.brand.primary};
   }
@@ -45,7 +44,7 @@ const style = css`
 `;
 
 const TopicMenuButton = ({ ndlaFilm, children, ...rest }) => (
-  <Button invertedOutline={ndlaFilm} outline={!ndlaFilm} css={style} {...rest}>
+  <Button inverted={ndlaFilm} variant="outline" css={style} {...rest}>
     <Menu /> {children}
   </Button>
 );

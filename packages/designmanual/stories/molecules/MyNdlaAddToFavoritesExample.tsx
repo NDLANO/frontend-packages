@@ -8,8 +8,8 @@
 
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import Button, { IconButton, IconButtonDualStates } from '@ndla/button';
-import { Cross, Heart, HeartOutline } from '@ndla/icons/action';
+import Button, { FavoriteButton, IconButton } from '@ndla/button';
+import { Cross } from '@ndla/icons/action';
 import { FeideText } from '@ndla/icons/common';
 import Modal, { ModalBody, ModalHeader } from '@ndla/modal';
 import { useSnack, Image, ListResource } from '@ndla/ui';
@@ -18,7 +18,7 @@ import { fonts, spacing, breakpoints, mq, colors } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import TagSelectorExample from './TagSelectorExample';
 
-import { TreeStructureExampleComponent, STRUCTURE_EXAMPLE, MY_FOLDERS_ID } from './TreeStructureExample';
+import { TreeStructureExampleComponent, MY_FOLDERS_ID, FOLDER_TREE_STRUCTURE } from './TreeStructureExample';
 
 const SNACKBAR_ID_ADD_TO_FAVORITES = 'SNACKBAR_ID_ADD_TO_FAVORITES';
 
@@ -102,9 +102,13 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
           <ModalBody>
             <StyledH1>{title}</StyledH1>
             <ListResource
+              id={'346ddc8e-e52c-43dc-9631-3fe3720b9996'}
               key={'minimalResource'}
               title="Minimal ressurs"
-              topics={['Topic', 'Topic', 'Topic']}
+              resourceTypes={[
+                { id: 'urn:resourcetype:tasksAndActivities', name: 'Oppgaver og aktiviteter' },
+                { id: 'urn:resourcetype:task', name: 'Oppgave' },
+              ]}
               resourceImage={{
                 src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                 alt: 'alt',
@@ -113,11 +117,12 @@ const DialogExample = ({ isOpen, title, toggleIsFavorite, isFavorite, closeCallb
             />
             <TreeStructureExampleComponent
               label="Velg plassering"
-              editable
-              framed
-              structure={STRUCTURE_EXAMPLE(true)}
+              type="picker"
+              structure={FOLDER_TREE_STRUCTURE}
               defaultOpenFolders={[MY_FOLDERS_ID]}
               openOnFolderClick={false}
+              onNewFolder
+              onSelectFolder={() => {}}
             />
             <TagSelectorExample />
             <DialogFooter>
@@ -168,9 +173,13 @@ const DialogNotLoggedInExample = ({ isOpen, title, closeCallback, resource }: Di
               <>
                 <StyledH1>{title}</StyledH1>
                 <ListResource
+                  id={'97260470-3d14-4eb4-b0ca-901aec102078'}
                   key={'minimalResource'}
                   title="Minimal ressurs"
-                  topics={['Topic', 'Topic', 'Topic']}
+                  resourceTypes={[
+                    { id: 'urn:resourcetype:subjectMaterial', name: 'Fagstoff' },
+                    { id: 'urn:resourcetype:academicArticle', name: 'Fagartikkel' },
+                  ]}
                   resourceImage={{
                     src: 'https://cdn.pixabay.com/photo/2022/06/12/22/35/village-7258991_1280.jpg',
                     alt: 'alt',
@@ -218,16 +227,7 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
   if (isLoggedIn) {
     return (
       <div>
-        <IconButtonDualStates
-          ariaLabelInActive="Legg til i mine favoritter"
-          ariaLabelActive="Allerede lagt til i mine favoritter"
-          activeIcon={<Heart />}
-          inactiveIcon={<HeartOutline />}
-          active={isFavorite}
-          size="small"
-          ghostPill
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        <FavoriteButton isFavorite={isFavorite} onClick={() => setIsOpen(!isOpen)} />
         {isOpen && (
           <DialogExample
             isFavorite={isFavorite}
@@ -242,16 +242,7 @@ const MyNdlaAddToFavoritesExample = ({ isLoggedIn = true, resource = true }: Fav
   } else
     return (
       <div>
-        <IconButtonDualStates
-          ariaLabelInActive="Legg til i mine favoritter"
-          ariaLabelActive="Allerede lagt til i mine favoritter"
-          activeIcon={<Heart />}
-          inactiveIcon={<HeartOutline />}
-          active={isFavorite}
-          size="small"
-          ghostPill
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        <FavoriteButton onClick={() => setIsOpen(!isOpen)} />
         {isOpen && (
           <DialogNotLoggedInExample
             resource={resource}

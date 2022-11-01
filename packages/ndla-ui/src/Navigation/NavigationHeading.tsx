@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { breakpoints, fonts, mq } from '@ndla/core';
 
 type InvertItProps = {
@@ -45,10 +45,11 @@ type Props = {
   subHeading?: string;
   children: ReactNode;
   invertedStyle?: boolean;
+  headingId?: string;
 };
 
-export const NavigationHeading = ({ subHeading, children, invertedStyle }: Props) => (
-  <StyledH1 invertedStyle={invertedStyle}>
+export const NavigationHeading = ({ subHeading, children, invertedStyle, headingId }: Props) => (
+  <StyledH1 invertedStyle={invertedStyle} id={headingId} tabIndex={-1}>
     {subHeading && <StyledSubText>{subHeading}</StyledSubText>}
     <StyledMainText>{children}</StyledMainText>
   </StyledH1>

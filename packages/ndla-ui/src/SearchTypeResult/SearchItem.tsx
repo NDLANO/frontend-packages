@@ -18,29 +18,7 @@ import constants from '../model';
 import ItemContexts, { ItemContextsType } from './components/ItemContexts';
 import ItemTopicHeader from './components/ItemTopicHeader';
 import ItemResourceHeader from './components/ItemResourceHeader';
-
 const { contentTypes } = constants;
-
-export const resourceTypeColor = (type: string) => {
-  switch (type) {
-    case contentTypes.SUBJECT_MATERIAL:
-      return colors.subjectMaterial.light;
-    case contentTypes.TOPIC:
-      return colors.subject.light;
-    case contentTypes.TASKS_AND_ACTIVITIES:
-      return colors.tasksAndActivities.light;
-    case contentTypes.ASSESSMENT_RESOURCES:
-      return colors.assessmentResource.light;
-    case contentTypes.EXTERNAL_LEARNING_RESOURCES:
-      return colors.externalLearningResource.light;
-    case contentTypes.SOURCE_MATERIAL:
-      return colors.sourceMaterial.light;
-    case contentTypes.LEARNING_PATH:
-      return colors.learningPath.light;
-    default:
-      return '';
-  }
-};
 
 type ItemTypeProps = {
   contentType?: ContentType;
@@ -61,42 +39,12 @@ const ItemWrapper = styled.div`
   height: 100%;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
-  transition: all ${animations.durations.fast} ease-in-out;
-  &:hover {
-    height: calc(100% + 4px);
-    width: calc(100% + 4px);
-    .topic-header-image {
-      height: calc(100% + 6px);
-      width: calc(100% + 6px);
-    }
-    .topic-label {
-      svg {
-        transform: scale(1.2);
-      }
-    }
-    .topic-label-list {
-      margin-left: 2px;
-    }
-    .resource-type-wrapper {
-      padding: 0 calc(${spacing.normal} + 2px);
-      .resource-icon-wrapper {
-        left: 19px;
-        svg {
-          transform: scale(1.2);
-        }
-      }
-    }
-    .resource-no-image {
-      background-color: ${colors.brand.greyLightest};
-      .c-content-type-badge {
-        width: 26px;
-        height: 26px;
-        left: 45px;
-        margin-left: 0;
-        top: 100%;
-        margin-top: -13px;
-        opacity: 1;
-      }
+  img {
+    transition: all ${animations.durations.fast} ease-in-out;
+  }
+  :hover {
+    img {
+      transform: scale(1.1);
     }
   }
 `;
@@ -114,16 +62,10 @@ const ItemLink = styled(SafeLink)`
 
 const TextWrapper = styled.div`
   padding: 0 ${spacing.normal} ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
 `;
 
 const ItemTitleWrapper = styled.div<ItemTypeProps>`
-  transition: all ${animations.durations.fast} ease-in-out;
   margin-top: ${spacing.small};
-  ${(props) =>
-    props.isTopic &&
-    `${ItemWrapper}:hover & {
-    padding-left:2px; padding-right: 2px;}`};
 `;
 
 const ItemTitle = styled.h3<ItemTypeProps>`
@@ -143,7 +85,6 @@ const ItemText = styled.div<ItemTypeProps>`
   ${fonts.sizes('16px', '24px')};
   word-break: break-word;
   overflow-wrap: anywhere;
-  transition: all ${animations.durations.fast} ease-in-out;
   margin-top: ${spacing.small};
   ${(props) =>
     props.isTopic &&
@@ -155,12 +96,6 @@ const ItemText = styled.div<ItemTypeProps>`
 const ContextWrapper = styled.div`
   background: white;
   padding: 0 ${spacing.normal} ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
-  ${ItemWrapper}:hover & {
-    padding-left: calc(${spacing.normal} + 2px);
-    padding-right: calc(${spacing.normal} + 2px);
-    padding-bottom: calc(${spacing.small} + 2px);
-  }
 `;
 
 export type SearchItemProps = {

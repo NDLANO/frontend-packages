@@ -6,65 +6,101 @@
  *
  */
 
-import React, { useEffect, useState, useMemo } from 'react';
-import { AddButton } from '@ndla/button';
-import Tooltip from '@ndla/tooltip';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
-import { spacing, fonts } from '@ndla/core';
+import { colors, fonts, misc, utils } from '@ndla/core';
+import { css } from '@emotion/react';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
-import TreeStructureStyledWrapper from './TreeStructureWrapper';
 import FolderItems from './FolderItems';
-import { flattenFolders } from './helperFunctions';
-import { CommonTreeStructureProps, FolderType } from './types';
+import { flattenFolders, treestructureId } from './helperFunctions';
+import { CommonTreeStructureProps, FolderType, NewFolderInputFunc, TreeStructureType } from './types';
+import ComboboxButton from './ComboboxButton';
+import AddFolderButton from './AddFolderButton';
 
-export const MAX_LEVEL_FOR_FOLDERS = 4;
+export const MAX_LEVEL_FOR_FOLDERS = 5;
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
 `;
 
-const AddFolderWrapper = styled.div`
+const StyledTreeStructure = styled.div`
+  flex: 1;
   display: flex;
-  margin-top: ${spacing.xsmall};
+  flex-direction: column;
+`;
+
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const TreeStructureWrapper = styled.div<{ type: TreeStructureType }>`
+  display: flex;
+  flex-direction: column;
+  ${({ type }) =>
+    type === 'picker' &&
+    css`
+      overflow: hidden;
+      border: 1px solid ${colors.brand.neutral7};
+      border-radius: ${misc.borderRadius};
+      scroll-behavior: smooth;
+    `}
+  transition: ${misc.transition.default};
+  &:focus-within {
+    border-color: ${colors.brand.tertiary};
+  }
+`;
+
+interface ScrollableDivProps {
+  type: TreeStructureType;
+}
+
+const ScrollableDiv = styled.div<ScrollableDivProps>`
+  ${({ type }) =>
+    type === 'picker' &&
+    css`
+      overflow: auto;
+      overflow: overlay;
+      ${utils.scrollbar}
+    `}
 `;
 
 export interface TreeStructureProps extends CommonTreeStructureProps {
   defaultOpenFolders?: string[];
   folders: FolderType[];
-  editable?: boolean;
   label?: string;
-  maximumLevelsOfFoldersAllowed?: number;
-  onNewFolder?: (name: string, parentId: string) => Promise<IFolder>;
+  maxLevel?: number;
+  newFolderInput?: NewFolderInputFunc;
+  onSelectFolder?: (id: string) => void;
+  ariaDescribedby?: string;
 }
 
 const TreeStructure = ({
   defaultOpenFolders,
-  editable,
-  menuItems,
   folders,
-  framed,
   label,
   loading,
-  maximumLevelsOfFoldersAllowed = MAX_LEVEL_FOR_FOLDERS,
-  onNewFolder,
+  maxLevel = MAX_LEVEL_FOR_FOLDERS,
   onSelectFolder,
-  openOnFolderClick,
   targetResource,
+  type,
+  newFolderInput,
+  ariaDescribedby,
 }: TreeStructureProps) => {
-  const { t } = useTranslation();
+  const ref = useRef<HTMLButtonElement>(null);
 
   const defaultSelectedFolderId = defaultOpenFolders && defaultOpenFolders[defaultOpenFolders.length - 1];
 
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
-  const [focusedId, setFocusedId] = useState<string | undefined>();
-  const [selectedFolder, setSelectedFolder] = useState<FolderType | undefined>();
+  const [focusedFolder, _setFocusedFolder] = useState<FolderType | undefined>();
+  const [selectedFolder, _setSelectedFolder] = useState<FolderType | undefined>();
+  const [showTree, setShowTree] = useState(type === 'navigation');
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
-  const visibleFolderIds = flattenedFolders.map((folder) => folder.id);
 
   useEffect(() => {
     if (defaultOpenFolders) {
@@ -81,17 +117,37 @@ const TreeStructure = ({
     if (defaultSelectedFolderId !== undefined) {
       const selected = flattenFolders(folders).find((folder) => folder.id === defaultSelectedFolderId);
       if (selected) {
-        setSelectedFolder(selected);
+        _setSelectedFolder(selected);
+        if (type === 'picker') {
+          _setFocusedFolder(selected);
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultSelectedFolderId]);
 
-  useEffect(() => {
-    if (!loading) {
+  const onToggleTree = (open: boolean) => {
+    setShowTree(open);
+    if (!open) {
       setNewFolderParentId(undefined);
     }
-  }, [loading]);
+  };
+
+  const setSelectedFolder = (folder: FolderType) => {
+    _setSelectedFolder(folder);
+    onSelectFolder?.(folder.id);
+  };
+
+  const setFocusedFolder = (folder: FolderType) => {
+    _setFocusedFolder(folder);
+    setNewFolderParentId(undefined);
+
+    ref.current?.focus({ preventScroll: true });
+  };
+
+  const onOpenFolder = (id: string) => {
+    setOpenFolders(uniq(openFolders.concat(id)));
+  };
 
   const onCloseFolder = (id: string) => {
     const closedFolder = flattenedFolders.find((folder) => folder.id === id);
@@ -99,87 +155,92 @@ const TreeStructure = ({
     if (closedFolder) {
       const subFolders = closedFolder.subfolders && flattenFolders(closedFolder.subfolders);
       if (subFolders.some((folder) => folder.id === selectedFolder?.id)) {
-        if (onSelectFolder) {
-          setSelectedFolder(closedFolder);
-          onSelectFolder(closedFolder.id);
-        }
-        setFocusedId(closedFolder.id);
+        setFocusedFolder(closedFolder);
       }
     }
     setOpenFolders(openFolders.filter((folderId) => folderId !== id));
   };
 
-  const onOpenFolder = (id: string) => {
-    setOpenFolders(uniq(openFolders.concat(id)));
-  };
-
-  const onSaveNewFolder = (name: string, parentId: string) => {
-    setNewFolderParentId(undefined);
-    onNewFolder?.(name, parentId).then((newFolder) => {
-      if (newFolder) {
-        setSelectedFolder(newFolder);
-        onSelectFolder?.(newFolder.id);
-        setFocusedId(newFolder.id);
-        setOpenFolders(uniq(openFolders.concat(parentId)));
-      }
-    });
+  const onNewFolderCreated = (newFolder: IFolder | undefined, parentId: string) => {
+    if (newFolder) {
+      setSelectedFolder(newFolder);
+      setFocusedFolder(newFolder);
+      setOpenFolders(uniq(openFolders.concat(parentId)));
+      setNewFolderParentId?.(undefined);
+      ref.current?.focus({ preventScroll: true });
+    }
   };
 
   const onCancelNewFolder = () => {
-    setNewFolderParentId(undefined);
+    setNewFolderParentId?.(undefined);
+    ref.current?.focus({ preventScroll: true });
   };
 
-  const canAddFolder =
-    editable && selectedFolder && selectedFolder?.breadcrumbs.length < (maximumLevelsOfFoldersAllowed || 1);
+  const canAddFolder = selectedFolder && selectedFolder?.breadcrumbs.length < (maxLevel || 1);
 
   return (
-    <div>
-      {label && <StyledLabel>{label}</StyledLabel>}
-      <TreeStructureStyledWrapper aria-label="Menu tree" role="tree" framed={framed}>
-        <FolderItems
-          editable={editable}
-          focusedFolderId={focusedId}
-          menuItems={menuItems}
-          folders={folders}
-          level={0}
-          loading={loading}
-          selectedFolder={selectedFolder}
-          maximumLevelsOfFoldersAllowed={maximumLevelsOfFoldersAllowed}
-          newFolderParentId={newFolderParentId}
-          onCancelNewFolder={onCancelNewFolder}
-          onCloseFolder={onCloseFolder}
-          onOpenFolder={onOpenFolder}
-          onSaveNewFolder={onSaveNewFolder}
-          onSelectFolder={onSelectFolder}
-          openFolders={openFolders}
-          openOnFolderClick={openOnFolderClick}
-          setFocusedId={setFocusedId}
-          setSelectedFolder={setSelectedFolder}
-          targetResource={targetResource}
-          visibleFolders={visibleFolderIds}
-          framed={framed}
-        />
-      </TreeStructureStyledWrapper>
-      {editable && (
-        <AddFolderWrapper>
-          <Tooltip
-            tooltip={
-              canAddFolder
-                ? t('myNdla.newFolderUnder', {
-                    folderName: selectedFolder?.name,
-                  })
-                : t('treeStructure.maxFoldersAlreadyAdded')
-            }>
-            <AddButton
-              disabled={!canAddFolder}
-              aria-label={t('myNdla.newFolder')}
-              onClick={() => setNewFolderParentId(selectedFolder?.id)}>
-              {t('myNdla.newFolder')}
-            </AddButton>
-          </Tooltip>
-        </AddFolderWrapper>
-      )}
-    </div>
+    <StyledTreeStructure
+      onBlur={(e) => {
+        if (type === 'picker' && !e.currentTarget.contains(e.relatedTarget)) {
+          onToggleTree(false);
+        }
+      }}>
+      <Row>
+        {label && <StyledLabel id={treestructureId(type, 'label')}>{label}</StyledLabel>}
+        {type === 'picker' && (
+          <AddFolderButton
+            canAddFolder={!!canAddFolder}
+            focusedFolder={focusedFolder}
+            setNewFolderParentId={setNewFolderParentId}
+            setShowTree={setShowTree}
+          />
+        )}
+      </Row>
+      <TreeStructureWrapper aria-label={label} type={type}>
+        {type === 'picker' && (
+          <ComboboxButton
+            ref={ref}
+            showTree={showTree}
+            type={type}
+            label={label}
+            focusedFolder={focusedFolder}
+            selectedFolder={selectedFolder}
+            setSelectedFolder={setSelectedFolder}
+            setFocusedFolder={setFocusedFolder}
+            onToggleTree={onToggleTree}
+            flattenedFolders={flattenedFolders}
+            onCloseFolder={onCloseFolder}
+            onOpenFolder={onOpenFolder}
+            ariaDescribedby={ariaDescribedby}
+          />
+        )}
+        {showTree && (
+          <ScrollableDiv type={type}>
+            <FolderItems
+              focusedFolder={focusedFolder}
+              folders={folders}
+              level={0}
+              loading={loading}
+              selectedFolder={selectedFolder}
+              maxLevel={maxLevel}
+              newFolderParentId={newFolderParentId}
+              onCancelNewFolder={onCancelNewFolder}
+              onCloseFolder={onCloseFolder}
+              onOpenFolder={onOpenFolder}
+              openFolders={openFolders}
+              setFocusedFolder={setFocusedFolder}
+              setSelectedFolder={setSelectedFolder}
+              targetResource={targetResource}
+              visibleFolders={flattenedFolders}
+              type={type}
+              closeTree={() => onToggleTree(false)}
+              newFolderInput={newFolderInput}
+              onCreate={onNewFolderCreated}
+            />
+          </ScrollableDiv>
+        )}
+      </TreeStructureWrapper>
+    </StyledTreeStructure>
   );
 };
 

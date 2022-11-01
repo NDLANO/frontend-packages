@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 interface Props {

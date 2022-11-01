@@ -9,7 +9,7 @@
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { animations, colors, fonts, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 
 import { SearchItemType } from '../SearchItem';
 import ContentTypeBadge from '../../ContentTypeBadge';
@@ -29,7 +29,6 @@ const Label = styled.div`
   display: flex;
   align-items: center;
   margin-top: ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
 
   .c-content-type-badge {
     width: 26px;
@@ -38,7 +37,6 @@ const Label = styled.div`
   }
 
   svg {
-    transition: all ${animations.durations.fast} ease-in-out;
     width: 22px;
     height: 22px;
     color: ${colors.text.primary} !important;
@@ -54,14 +52,14 @@ const TopicHeaderVisualElementWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
 `;
 
 const TopicHeaderImage = styled.img`
-  border-radius: 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all ${animations.durations.fast} ease-in-out;
   max-width: unset;
 `;
 

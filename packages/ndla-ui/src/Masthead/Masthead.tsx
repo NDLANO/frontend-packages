@@ -6,7 +6,7 @@
  *
  */
 
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import React, { ReactNode, useEffect, useRef } from 'react';
@@ -21,6 +21,7 @@ interface MastheadItemProps {
 
 const LeftMastheadItem = styled.div`
   display: flex;
+  align-items: center;
   button {
     white-space: nowrap;
   }
@@ -35,6 +36,7 @@ const LeftMastheadItem = styled.div`
 
 const RightMastheadItem = styled.div`
   display: flex;
+  gap: ${spacing.small};
   align-items: center;
   justify-content: flex-end;
   ${mq.range({ from: breakpoints.tablet })} {

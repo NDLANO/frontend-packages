@@ -90,9 +90,10 @@ type Props = {
   children: ReactNode;
   totalCardCount: number;
   hideCards?: boolean;
+  id?: string;
 };
 
-export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hideCards }: Props) => {
+export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hideCards, id }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledWrapper>
@@ -100,7 +101,9 @@ export const MultidisciplinarySubject = ({ cards, children, totalCardCount, hide
         <OneColumn wide>
           <Header>
             <LayoutItem layout="extend">
-              <Heading>{t('frontpageMultidisciplinarySubject.heading')}</Heading>
+              <Heading id={id} tabIndex={-1}>
+                {t('frontpageMultidisciplinarySubject.heading')}
+              </Heading>
               <InfoText>{t('frontpageMultidisciplinarySubject.text')}</InfoText>
             </LayoutItem>
             <Illustration />

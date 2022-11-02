@@ -20,6 +20,7 @@ export default {
   },
   args: {
     enabledLetters: ['a', 'c'],
+    onChange: (value?: string) => {},
   },
 } as ComponentMeta<typeof LetterFilter>;
 

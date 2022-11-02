@@ -31,8 +31,8 @@
   "dependencies": {
     "@ndla/core": "^3.0.1",
     "@ndla/icons": "^2.0.6",
-    "@reach/menu-button": "^0.16.2",
-    "@reach/popover": "^0.16.2",
+    "@reach/menu-button": "^0.18.0",
+    "@reach/popover": "^0.18.0",
     "focus-trap-react": "^8.9.2"
   },
   "peerDependencies": {

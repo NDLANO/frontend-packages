@@ -27,7 +27,7 @@
   "dependencies": {
     "@ndla/core": "^3.0.1",
     "@ndla/icons": "^2.0.6",
-    "@reach/dialog": "^0.16.2"
+    "@reach/dialog": "^0.18.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

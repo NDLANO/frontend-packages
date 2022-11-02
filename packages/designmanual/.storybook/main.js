@@ -8,6 +8,13 @@
 
 module.exports = {
   stories: ['../stories/index.ts', '../../**/*.stories.@(tsx|mdx)'],
+  core: {
+    builder: 'webpack5',
+    options: {
+      lazyCompilation: true,
+      fsCache: true,
+    },
+  },
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
@@ -32,13 +39,13 @@ module.exports = {
   webpackFinal: (config) => {
     config.module.rules.push({
       test: /\.scss$/,
-      loaders: [
+      use: [
         'style-loader',
         'css-loader',
         {
           loader: 'postcss-loader',
           options: {
-            config: {
+            postcssOptions: {
               path: './.storybook/postcss.config.js',
             },
           },

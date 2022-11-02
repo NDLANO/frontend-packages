@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",

@@ -6,13 +6,12 @@
  *
  */
 
-// N.B These component is used to render static markup serverside
+// N.B These components is used to render static markup serverside
 // Any interactivty is added by scripts located in the ndla-article-scripts package
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { isFunction as isFunctionHelper, parseMarkdown } from '@ndla/util';
-import { useTranslation } from 'react-i18next';
 import { Link as LinkIcon } from '@ndla/icons/common';
 import { LicenseByline } from '@ndla/licenses';
 import SafeLink from '@ndla/safelink';
@@ -36,9 +35,8 @@ export const FigureCaption = ({
   hideFigcaption,
   hasLinkedVideo,
   hideIconsAndAuthors,
+  linkedVideoMessages,
 }: FigureCaptionProps) => {
-  const { t } = useTranslation();
-
   return (
     <figcaption {...classes('caption', hideFigcaption && !isMobile ? 'hidden-caption' : undefined)}>
       {caption ? <div {...classes('info')}>{parseMarkdown(caption)}</div> : null}
@@ -66,8 +64,8 @@ export const FigureCaption = ({
                     size="small"
                     type="button"
                     {...classes('toggleAlternativeVideo')}>
-                    <span className="original">{t('figure.button.alternative')}</span>
-                    <span className="alternative hidden">{t('figure.button.original')}</span>
+                    <span className="original">{linkedVideoMessages?.alternative}</span>
+                    <span className="alternative hidden">{linkedVideoMessages?.original}</span>
                   </Button>
                 )}
               </div>
@@ -122,6 +120,10 @@ interface FigureCaptionProps {
   hideFigcaption?: boolean;
   hasLinkedVideo?: boolean;
   hideIconsAndAuthors?: boolean;
+  linkedVideoMessages?: {
+    original: string;
+    alternative: string;
+  };
 }
 
 const Figure = ({ children, type = 'full', resizeIframe, ...rest }: Props) => {

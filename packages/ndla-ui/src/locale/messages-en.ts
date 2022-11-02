@@ -1093,6 +1093,7 @@ const messages = {
     alreadyFavourited: 'Already in my favourites',
     alreadyInFolder: 'Already in folder. You can still save new tags.',
     noFolderSelected: 'Select or create a new folder to save the resource.',
+    examLockInfo: 'Editing of My NDLA content is disabled for students during the exam period.',
     help: 'Help',
     more: 'More options',
     listView: 'List view',

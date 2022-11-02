@@ -1091,6 +1091,7 @@ const messages = {
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
     alreadyInFolder: 'Finnes allerede i mappen. Du kan fortsatt lagre nye emneknagger.',
     noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
+    examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
     listView: 'Listevisning',

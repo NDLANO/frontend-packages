@@ -7,7 +7,7 @@
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build:css": "webpack --config ../../css.webpack.config.js -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:css": "webpack --config ../../css.webpack.config.js && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "build": "concurrently 'yarn build:types' 'yarn build:css'",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"

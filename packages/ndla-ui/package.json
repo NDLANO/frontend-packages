@@ -9,7 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn build:css && yarn build:types",
-    "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
@@ -81,7 +81,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^4.10.0"
   },
   "publishConfig": {
     "access": "public"

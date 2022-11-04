@@ -15,22 +15,39 @@ const BlockFolderWrapper = styled.div`
   gap: ${spacing.small};
 `;
 
+const FolderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.small};
+`;
+
 interface FolderExampleProps {
   menuItems: any[];
 }
 export const FolderResourcesExample = ({ menuItems }: FolderExampleProps) => {
   return (
     <>
-      <Folder
-        id={'2cd1579a-4e1a-4213-ba73-02373aae504c'}
-        key={'listFolder'}
-        link={''}
-        title={'Dette er min tittel'}
-        subFolders={3}
-        subResources={3}
-        type={'list'}
-        menuItems={menuItems}
-      />
+      <FolderWrapper>
+        <Folder
+          id={'2cd1579a-4e1a-4213-ba73-02373aae504c'}
+          key={'listFolder'}
+          link={''}
+          title={'Dette er min tittel'}
+          subFolders={3}
+          subResources={3}
+          type={'list'}
+          menuItems={menuItems}
+        />
+        <Folder
+          id={'2cd1579a-4e1a-4213-ba73-02373aae504c'}
+          key={'listFolder'}
+          link={''}
+          title={'Dette er min tittel'}
+          subFolders={3}
+          subResources={3}
+          type={'list'}
+        />
+      </FolderWrapper>
       <h2>Blokkvisning av folder</h2>
       <BlockFolderWrapper>
         <Folder

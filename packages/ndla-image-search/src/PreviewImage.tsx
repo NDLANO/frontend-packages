@@ -64,7 +64,11 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
             'image.modelReleased.' + image.modelRelease,
           )}`}</span>
         </div>
-        <ImageMeta contentType={image.image.contentType} fileSize={image.image.size} imageDimensions={image.image.dimensions} />
+        <ImageMeta
+          contentType={image.image.contentType}
+          fileSize={image.image.size}
+          imageDimensions={image.image.dimensions}
+        />
         <div className="tags">
           {tags.map((tag) => (
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>

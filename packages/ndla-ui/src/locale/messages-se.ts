@@ -1092,7 +1092,7 @@ const messages = {
     alreadyFavourited: 'Lea juo biddjon oiddohin',
     alreadyInFolder: 'Gávdno juo máhpas. Sáhtát ain vurket ođđa fáddágilkoriid.',
     noFolderSelected: 'Vállje dahje ráhkat ođđa máhpa vai seasttát resurssa',
-    examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
+    examLockInfo: 'Mu NDLA redigeren ii leat doaimmas ohppiide eksámenáigodagas.',
     help: 'Veahkki',
     more: 'Eanet válljejumit',
     listView: 'Oppalašlistu',

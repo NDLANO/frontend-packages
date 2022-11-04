@@ -11,14 +11,14 @@ import { useTranslation } from 'react-i18next';
 import Button from '@ndla/button';
 import { uuid } from '@ndla/util';
 import { CheckboxItem } from '@ndla/forms';
-import { IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-image-api';
 
 import { getSrcSets } from './util/imageUtil';
 import ImageMeta from './ImageMeta';
 
 interface Props {
-  image: IImageMetaInformationV2;
-  onSelectImage: (image: IImageMetaInformationV2, saveAsMetaImage: boolean) => void;
+  image: IImageMetaInformationV3;
+  onSelectImage: (image: IImageMetaInformationV3, saveAsMetaImage: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
   checkboxLabel?: string;
@@ -37,9 +37,9 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
         <img
           role="presentation"
           alt="presentation"
-          srcSet={getSrcSets(image.imageUrl)}
+          srcSet={getSrcSets(image.image.imageUrl)}
           sizes="(min-width: 800px) 360px, (min-width: 400px) 300px, 100vw"
-          src={image.imageUrl}
+          src={image.image.imageUrl}
           aria-label={title}
         />
       </div>
@@ -64,7 +64,11 @@ const PreviewImage = ({ image, onSelectImage, useImageTitle, showCheckbox, check
             'image.modelReleased.' + image.modelRelease,
           )}`}</span>
         </div>
-        <ImageMeta contentType={image.contentType} fileSize={image.size} imageDimensions={image.imageDimensions} />
+        <ImageMeta
+          contentType={image.image.contentType}
+          fileSize={image.image.size}
+          imageDimensions={image.image.dimensions}
+        />
         <div className="tags">
           {tags.map((tag) => (
             <span key={uuid()} className="tag_item">{`#${tag}`}</span>

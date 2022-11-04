@@ -7,16 +7,16 @@
  */
 
 import React from 'react';
-import { IImageMetaSummary, IImageMetaInformationV2 } from '@ndla/types-image-api';
+import { IImageMetaInformationV3 } from '@ndla/types-image-api';
 import Button from '@ndla/button';
 import PreviewImage from './PreviewImage';
 import { getPreviewSrcSets } from './util/imageUtil';
 
 interface Props {
-  image: IImageMetaSummary;
-  onImageClick: (image: IImageMetaSummary) => void;
-  selectedImage?: IImageMetaInformationV2;
-  onSelectImage: (image: IImageMetaInformationV2, saveAsMetaImage: boolean) => void;
+  image: IImageMetaInformationV3;
+  onImageClick: (image: IImageMetaInformationV3) => void;
+  selectedImage?: IImageMetaInformationV3;
+  onSelectImage: (image: IImageMetaInformationV3, saveAsMetaImage: boolean) => void;
   useImageTitle: string;
   showCheckbox: boolean;
   checkboxLabel?: string;
@@ -41,8 +41,8 @@ export default function ImageSearchResult({
           <img
             role="presentation"
             alt="presentation"
-            srcSet={getPreviewSrcSets(image.previewUrl)}
-            src={image.previewUrl}
+            srcSet={getPreviewSrcSets(image.image.imageUrl)}
+            src={image.image.imageUrl}
           />
           <span className="list-item-title">{image.title.title}</span>
         </Button>

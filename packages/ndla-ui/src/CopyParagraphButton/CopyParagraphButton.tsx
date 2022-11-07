@@ -13,6 +13,7 @@ import { Link } from '@ndla/icons/common';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import { copyTextToClipboard } from '@ndla/util';
+import { colors } from '@ndla/core';
 
 const ContainerDiv = styled.div`
   position: relative;
@@ -27,6 +28,7 @@ const IconButton = styled.button`
   z-index: 1;
   transition: 0.2s;
   opacity: 0;
+  color: ${colors.brand.grey};
 
   & svg {
     width: 30px;

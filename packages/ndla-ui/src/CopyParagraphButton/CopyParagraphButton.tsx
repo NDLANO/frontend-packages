@@ -14,6 +14,10 @@ import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import { copyTextToClipboard } from '@ndla/util';
 
+const ContainerDiv = styled.div`
+  position: relative;
+`;
+
 const IconButton = styled.button`
   position: absolute;
   left: -3em;
@@ -28,13 +32,11 @@ const IconButton = styled.button`
     width: 30px;
     height: 30px;
   }
-`;
 
-const ContainerDiv = styled.div`
-  position: relative;
-  &:hover button {
+  ${ContainerDiv}:hover &,
+  &:focus, &:focus-visible, &:active {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 1;
   }
 `;
 
@@ -54,12 +56,12 @@ interface CopyButtonProps {
 const CopyButton = ({ onClick, title, tooltip, content }: CopyButtonProps) => {
   return (
     <div>
-      <IconButton onClick={onClick} data-title={title}>
-        <Tooltip tooltip={tooltip}>
+      <Tooltip tooltip={tooltip}>
+        <IconButton onClick={onClick} data-title={title} aria-label={`${tooltip}: ${title}`}>
           <Link title={''} />
-        </Tooltip>
-      </IconButton>
-      <h2 id={title} tabIndex={0} dangerouslySetInnerHTML={{ __html: content || '' }} />
+        </IconButton>
+      </Tooltip>
+      <h2 id={title} tabIndex={-1} dangerouslySetInnerHTML={{ __html: content || '' }} />
     </div>
   );
 };

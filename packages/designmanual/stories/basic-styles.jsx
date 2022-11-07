@@ -154,7 +154,7 @@ storiesOf('Grunnstiler', module)
             <li className="o-list__item o-list__item--colors">
               <div className="o-list__bgcolor" style={{ backgroundColor: colors.markColor }} />
               <div className="o-list__label">
-                Markering (ikke i bruk?)
+                Markering
                 <br />
                 {colors.markColor}
               </div>

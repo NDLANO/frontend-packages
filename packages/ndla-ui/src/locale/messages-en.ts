@@ -1085,6 +1085,7 @@ const messages = {
     confirmDeleteTag: 'Are you sure you want to delete this tag? This process cannot be undone.',
     myFolders: 'My folders',
     myTags: 'My tags',
+    mySubjects: 'My subjects',
     newFolder: 'New folder',
     newFolderUnder: 'Create new folder under {{folderName}}',
     myAccount: 'My account',

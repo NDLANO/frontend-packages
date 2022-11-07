@@ -1084,6 +1084,7 @@ const messages = {
     confirmDeleteTag: 'Leat go sihkar ahte dáhtut sihkkut fáddágilkora? Dan ii sáhte gáhtat.',
     myFolders: 'Mu máhpat',
     myTags: 'Mu fáddágilkorat',
+    mySubjects: 'Mine fag',
     newFolder: 'Ođđa máhppa',
     newFolderUnder: 'Ráhkat ođđa máhpa dán vuolde {{folderName}}',
     myAccount: 'Mu kontu',

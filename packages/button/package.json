@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -29,8 +29,8 @@
     "dist"
   ],
   "dependencies": {
-    "@ndla/core": "^3.0.1",
-    "@ndla/icons": "^2.0.6",
+    "@ndla/core": "^3.0.2",
+    "@ndla/icons": "^2.0.7",
     "@reach/menu-button": "^0.16.2",
     "@reach/popover": "^0.16.2",
     "focus-trap-react": "^8.9.2"

@@ -103,10 +103,11 @@ export interface MenuItemProps {
 interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   menuItems?: MenuItemProps[];
   menuIcon?: ReactNode;
-  tabIndex?: number;
   size?: ButtonSize;
+  /** Change anchoring of popup menu */
   alignRight?: boolean;
 }
+
 export const MenuButton = ({
   menuItems,
   size,

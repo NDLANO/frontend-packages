@@ -19,6 +19,7 @@ const StyledDeleteButton = styled(Button)`
   }
 `;
 
+// Deprecated: Use regular button with danger theme instead.
 export const DeleteButton = ({ children, ...rest }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <StyledDeleteButton outline {...rest}>

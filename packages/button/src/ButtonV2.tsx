@@ -196,7 +196,10 @@ interface Props {
 
 export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+/**
+ * Knapp-komponent
+ */
+const ButtonV2 = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, type = 'button', ...rest }, ref) => {
     return (
       <button
@@ -210,4 +213,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-export default Button;
+export default ButtonV2;

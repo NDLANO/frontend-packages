@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { fonts, colors, spacing, mq, breakpoints } from '@ndla/core';
 import Pager from '@ndla/pager';
-import { IImageMetaInformationV2, ISearchResult, IImageMetaSummary, ISearchParams } from '@ndla/types-image-api';
+import { IImageMetaInformationV3, ISearchResultV3, ISearchParams } from '@ndla/types-image-api';
 import { Input } from '@ndla/forms';
 import { Search as SearchIcon } from '@ndla/icons/common';
 import ImageSearchResult from './ImageSearchResult';
@@ -273,24 +273,24 @@ const searchIconCss = css`
 `;
 
 interface Props {
-  onImageSelect: (image: IImageMetaInformationV2) => void;
-  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResult>;
-  fetchImage: (id: number) => Promise<IImageMetaInformationV2>;
+  onImageSelect: (image: IImageMetaInformationV3) => void;
+  searchImages: (query: string | undefined, page: number | undefined) => Promise<ISearchResultV3>;
+  fetchImage: (id: number) => Promise<IImageMetaInformationV3>;
   onError: (err: any) => void;
   searchPlaceholder: string;
   searchButtonTitle: string;
   locale: string;
   useImageTitle: string;
   noResults?: ReactNode;
-  checkboxAction?: (image: IImageMetaInformationV2) => void;
+  checkboxAction?: (image: IImageMetaInformationV3) => void;
   showCheckbox?: boolean;
   checkboxLabel?: string;
 }
 
 interface State {
   queryObject: ISearchParams;
-  images: IImageMetaSummary[];
-  selectedImage?: IImageMetaInformationV2;
+  images: IImageMetaInformationV3[];
+  selectedImage?: IImageMetaInformationV3;
   lastPage: number;
   searching: boolean;
   queryString?: string;
@@ -319,7 +319,7 @@ class ImageSearch extends Component<Props, State> {
     this.searchImages(this.state.queryObject);
   }
 
-  onImageClick(image: IImageMetaSummary) {
+  onImageClick(image: IImageMetaInformationV3) {
     const { onError, fetchImage } = this.props;
     const { selectedImage } = this.state;
     if (!selectedImage || image.id !== selectedImage.id) {
@@ -333,7 +333,7 @@ class ImageSearch extends Component<Props, State> {
     }
   }
 
-  onSelectImage(image: IImageMetaInformationV2, saveAsMetaImage: boolean) {
+  onSelectImage(image: IImageMetaInformationV3, saveAsMetaImage: boolean) {
     const { onImageSelect, checkboxAction } = this.props;
     this.setState({ selectedImage: undefined });
     onImageSelect(image);

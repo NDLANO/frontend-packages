@@ -99,15 +99,18 @@ const FolderTitle = styled.h2`
   }
 `;
 
-const MenuWrapper = styled.div`
+interface MenuWrapperProps {
+  hasMenuButton: boolean;
+}
+
+const MenuWrapper = styled.div<MenuWrapperProps>`
   overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: ${spacing.xsmall};
   justify-content: space-between;
-  margin: -${spacing.nsmall};
-  margin-left: 0;
+  margin: -${spacing.nsmall} -${(props) => (props.hasMenuButton ? spacing.nsmall : 0)} -${spacing.nsmall} 0;
 `;
 
 const CountContainer = styled.div`
@@ -185,7 +188,7 @@ const Folder = ({ id, link, title, subFolders, subResources, type = 'list', menu
           <FolderTitle title={title}>{title}</FolderTitle>
         </StyledLink>
       </TitleWrapper>
-      <MenuWrapper>
+      <MenuWrapper hasMenuButton={!!menuItems?.length}>
         <CountContainer>
           <Count layoutType={type} type={'folder'} count={subFolders} />
           <Count layoutType={type} type={'resource'} count={subResources} />

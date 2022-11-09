@@ -1,6 +1,6 @@
 {
   "name": "@ndla/scripts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Scripts for ndla.",
   "license": "GPL-3.0",
   "main": "src/index.js",
@@ -25,7 +25,7 @@
     "cross-spawn": "^7.0.3",
     "cross-spawn-promise": "^0.10.2",
     "normalize-url": "^4.1.0",
-    "octonode": "^0.9.4",
+    "octokit": "^2.0.10",
     "url-regex": "^4.1.1",
     "vercel": "^27.2.0"
   },

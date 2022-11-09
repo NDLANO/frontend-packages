@@ -55,6 +55,7 @@ const StyledTagListElement = styled.li`
 
 const StyledSafeLink = styled(SafeLink)`
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   box-shadow: none;
   color: ${colors.brand.grey};

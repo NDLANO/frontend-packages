@@ -26,5 +26,5 @@
       "*": ["node_modules"]
     }
   },
-  "exclude": ["./packages/*/lib", "**/*-test.*"]
+  "exclude": ["./packages/*/lib", "**/*-test.*", "./**/*.stories.tsx"]
 }

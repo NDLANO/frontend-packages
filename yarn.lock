@@ -2446,10 +2446,10 @@
   resolved "https://registry.yarnpkg.com/@ndla/types-image-api/-/types-image-api-0.0.8.tgz#4d1c7d830bb90ede23ac311c8f860811f83a0c39"
   integrity sha512-O8nVTzA8nLqawNArweLRcYgAyCRdhw/MK5T1pcOYJDnORllTgKCrbeaemWZH0Fu5jd4perFwCI1P+50FteNY6w==
 
-"@ndla/types-learningpath-api@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@ndla/types-learningpath-api/-/types-learningpath-api-0.0.13.tgz#76adbd73a130b59f922f30be8b5de60f0af7019c"
-  integrity sha512-yA3qN+an26HtrBMW5nr6/A+DHSSpq/ohAW49mOsVeYDJBG08csNzVTEO46iDbCqmTO3W/RSBPicDikI68lfBMw==
+"@ndla/types-learningpath-api@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@ndla/types-learningpath-api/-/types-learningpath-api-0.0.17.tgz#7ceca4372028e6f59b4e84e867ff01f7561fd851"
+  integrity sha512-bvI04Es2E5gJVDkDu6bRmPFgmvLn6JjXZNHQ47UHp7mek9p7sK9+MAeLyY04BswvidegIsdxJldxeStNq8uu/Q==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"

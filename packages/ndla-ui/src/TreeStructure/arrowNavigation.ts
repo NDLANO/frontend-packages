@@ -6,13 +6,13 @@
  *
  */
 
+import { IFolder } from '@ndla/types-learningpath-api';
 import { KeyboardEvent } from 'react';
-import { FolderType } from './types';
 
 const navigateVertical = (
-  visibleFolders: FolderType[],
+  visibleFolders: IFolder[],
   folderId: string,
-  setFocusedFolderId: (id: FolderType) => void,
+  setFocusedFolderId: (id: IFolder) => void,
   direction: 1 | -1,
 ) => {
   const currentIndex = visibleFolders.findIndex((folder) => folder.id === folderId);
@@ -27,8 +27,8 @@ const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter'];
 export const arrowNavigation = (
   e: KeyboardEvent<HTMLElement>,
   id: string,
-  visibleFolders: FolderType[],
-  setFocusedFolderId: (id: FolderType) => void,
+  visibleFolders: IFolder[],
+  setFocusedFolderId: (id: IFolder) => void,
   onOpen: (id: string) => void,
   onClose: (id: string) => void,
 ) => {

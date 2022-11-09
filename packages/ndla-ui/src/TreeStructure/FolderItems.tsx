@@ -9,8 +9,9 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { animations } from '@ndla/core';
+import { IFolder } from '@ndla/types-learningpath-api';
 import FolderItem from './FolderItem';
-import { CommonFolderItemsProps, FolderType, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
+import { CommonFolderItemsProps, NewFolderInputFunc, OnCreatedFunc, TreeStructureType } from './types';
 import { treestructureId } from './helperFunctions';
 
 const StyledUL = styled.ul`
@@ -37,11 +38,11 @@ const StyledLI = styled.li<StyledLiProps>`
 `;
 
 export interface FolderItemsProps extends CommonFolderItemsProps {
-  folders: FolderType[];
+  folders: IFolder[];
   newFolderParentId: string | undefined;
   onCancelNewFolder: () => void;
   openFolders: string[];
-  parentFolder?: FolderType;
+  parentFolder?: IFolder;
   children?: ReactNode;
   onCreate: OnCreatedFunc;
   newFolderInput?: NewFolderInputFunc;

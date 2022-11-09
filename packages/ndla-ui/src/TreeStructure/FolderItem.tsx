@@ -14,7 +14,8 @@ import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { CommonFolderItemsProps, FolderType } from './types';
+import { IFolder } from '@ndla/types-learningpath-api';
+import { CommonFolderItemsProps } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import { treestructureId } from './helperFunctions';
 
@@ -104,7 +105,7 @@ const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
 
 interface Props extends CommonFolderItemsProps {
   isOpen: boolean;
-  folder: FolderType;
+  folder: IFolder;
   isCreatingFolder?: boolean;
   index: number;
 }

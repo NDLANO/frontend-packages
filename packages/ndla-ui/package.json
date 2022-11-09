@@ -45,7 +45,7 @@
     "@ndla/switch": "^1.0.1",
     "@ndla/tabs": "^2.0.8",
     "@ndla/tooltip": "^3.0.4",
-    "@ndla/types-learningpath-api": "^0.0.13",
+    "@ndla/types-learningpath-api": "^0.0.17",
     "@ndla/util": "^3.1.7",
     "@reach/menu-button": "^0.16.2",
     "@reach/slider": "^0.16.0",

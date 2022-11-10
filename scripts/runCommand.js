@@ -3,8 +3,7 @@ const spawn = require('cross-spawn');
 
 module.exports = function runCommand(cmd, args = [], cwd = __dirname) {
   const displayArgs = args.length > 25 ? `${args.slice(0, 25)}...` : args.join(' ');
-  console.log(chalk.dim(`$ cwd ${cwd}\n$ ${cmd} ${displayArgs}\n`));
-  console.log('cmd', cmd);
+  console.log(chalk.dim(`$ cwd "${cwd}"\n$ ${cmd} ${displayArgs}\n`));
   const result = spawn.sync(`"${cmd}"`, args, {
     cwd,
     shell: true,

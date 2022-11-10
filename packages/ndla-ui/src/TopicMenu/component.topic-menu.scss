@@ -264,8 +264,7 @@ $navigation-row-width: 980px / 3;
 
     @include mq(desktop) {
       padding: $spacing--large;
-      margin: -($spacing + $spacing--small) $spacing + $spacing--small 0 $spacing +
-        $spacing--small;
+      margin: -($spacing + $spacing--small) $spacing + $spacing--small 0 $spacing + $spacing--small;
     }
 
     & > * {
@@ -362,7 +361,8 @@ $navigation-row-width: 980px / 3;
         @include inuit-font-size(26px);
       }
 
-      a, button {
+      a,
+      button {
         padding: 0;
         padding-right: $spacing--small;
         border: 0;
@@ -374,7 +374,8 @@ $navigation-row-width: 980px / 3;
         svg {
           transition: transform 100ms ease;
         }
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           svg {
             transform: translateX($spacing--small / 4);
           }
@@ -386,7 +387,8 @@ $navigation-row-width: 980px / 3;
 
       @include mq($until: tabletWide) {
         width: 100%;
-        a, button {
+        a,
+        button {
           background: $brand-color--lighter;
           box-shadow: none;
           width: 100%;
@@ -402,13 +404,14 @@ $navigation-row-width: 980px / 3;
         }
       }
       @include mq($until: mobileWide) {
-        a, button {
+        a,
+        button {
           padding: 0 $left-margin-narrow-screen;
         }
       }
     }
     &__menu-filter {
-      display:flex;
+      display: flex;
       flex-wrap: wrap;
       margin-top: -$spacing--small;
       button {
@@ -453,7 +456,7 @@ $navigation-row-width: 980px / 3;
 .c-topic-menu__back-button {
   display: flex;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
   border: 0;
   padding: 0;
   color: $brand-color;
@@ -484,7 +487,7 @@ $navigation-row-width: 980px / 3;
   .c-topic-menu__back-button-slides {
     display: flex;
     align-items: center;
-    cursor:pointer;
+    cursor: pointer;
     border: 0;
     padding: 0;
     color: $brand-color;
@@ -734,7 +737,6 @@ $navigation-row-width: 980px / 3;
     &:active,
     &:focus {
       background-color: $brand-color--light;
-
     }
   }
 
@@ -745,13 +747,13 @@ $navigation-row-width: 980px / 3;
     height: auto;
     min-height: $link-height;
 
-    .c-topic-menu__link-wrapper{
+    .c-topic-menu__link-wrapper {
       border-bottom: 1px solid $brand-color--dark;
       padding-bottom: $spacing--small;
       display: flex;
       flex-wrap: wrap;
       @include mq($until: tabletWide) {
-        border:0;
+        border: 0;
         padding-bottom: 0;
       }
     }
@@ -871,6 +873,7 @@ $navigation-row-width: 980px / 3;
 
   &-right {
     justify-content: flex-end;
+    margin-right: 16px;
   }
 }
 .c-topic-menu__search {
@@ -940,7 +943,7 @@ $navigation-row-width: 980px / 3;
     padding-right: $spacing + $spacing--small;
   }
   & > nav:first-child {
-    margin-top:0;
+    margin-top: 0;
   }
 }
 

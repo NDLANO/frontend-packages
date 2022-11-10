@@ -141,6 +141,7 @@ const FrontpageSearch = ({
     return () => {
       noScroll(false, 'preventPageScroll');
       window.removeEventListener('scroll', resetScroll);
+      inputHasFocusRef.current = false;
     };
   }, [inputHasFocus]);
 

@@ -680,12 +680,14 @@ const messages = {
     nb: 'Endre språk til bokmål',
     nn: 'Endre språk til nynorsk',
     se: 'Rievdat giela davvisámegiella',
+    sma: 'Jarkelh åarjelsaemiene',
     en: 'Change language to English',
   },
   currentLanguageText: {
     nb: 'Sidene vises på bokmål',
     nn: 'Sidene vises på nynorsk',
     se: 'Siiddut leat davvisámegiellii',
+    sma: 'Sæjroeh åarjelsaemiene',
     en: 'Not all pages are available in English. These will be shown in Norwegian',
   },
   breadcrumb: {

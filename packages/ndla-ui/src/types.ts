@@ -8,7 +8,7 @@
 
 import { ReactNode } from 'react';
 
-const locales = ['nb', 'nn', 'en', 'se'] as const;
+const locales = ['nb', 'nn', 'en', 'se', 'sma'] as const;
 export type Locale = typeof locales[number];
 
 export type Link = {

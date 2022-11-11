@@ -134,8 +134,7 @@ const SearchField = ({
             onChange('');
             onFocus?.();
             inputRef?.current?.focus();
-          }}
-          onBlur={onBlur}>
+          }}>
           {t('welcomePage.resetSearch')}
         </button>
       )}

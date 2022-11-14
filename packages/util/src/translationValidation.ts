@@ -9,7 +9,7 @@
 const getAllKeys = (o: object, prev: string = ''): string[] => {
   const keys: string[] = [];
   Object.entries(o).forEach(([key, value]: [string, unknown]) => {
-    let path = prev + (prev ? '.' : '') + key;
+    const path = prev + (prev ? '.' : '') + key;
     if (typeof value === 'object' && value !== null) {
       const nested = getAllKeys(value, path);
       keys.push(...nested);

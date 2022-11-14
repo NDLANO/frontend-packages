@@ -172,7 +172,7 @@ export const MultiButton = ({
   };
   const hideSecondaryButton = secondaryButtons.length === 0;
 
-  let clippedButtonProps = {
+  const clippedButtonProps = {
     disabled: disabled,
     large: large,
     clippedButton: !hideSecondaryButton,

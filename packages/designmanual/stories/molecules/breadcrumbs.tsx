@@ -7,10 +7,9 @@
  */
 
 import React from 'react';
-import { Breadcrumb } from '@ndla/ui';
+import { Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from '@ndla/ui';
 import { DeleteForever, Link } from '@ndla/icons/editor';
 import { FolderOutlined } from '@ndla/icons/contentType';
-import { HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcrumb } from '@ndla/ui';
 
 const items = [
   {

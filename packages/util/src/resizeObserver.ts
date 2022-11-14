@@ -15,7 +15,7 @@ interface IEDocument extends Document {
 function fallbackResizeObserver(element: HTMLElement, handler: (el: HTMLElement) => void): () => void {
   const CSS =
     'position:absolute;left:0;top:-100%;width:100%;height:100%;margin:1px 0 0;border:none;opacity:0;pointer-events:none;';
-  let frame = document.createElement('iframe');
+  const frame = document.createElement('iframe');
   const documentMode = (document as IEDocument).documentMode || 12;
   const supportsPE = documentMode < 11 ? false : 'pointerEvents' in frame.style;
 

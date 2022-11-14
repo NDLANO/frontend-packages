@@ -6,12 +6,11 @@
  *
  */
 
-import React, { KeyboardEvent } from 'react';
+import React, { KeyboardEvent, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
-import { forwardRef } from 'react';
 import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
 import { FolderType, TreeStructureType } from './types';

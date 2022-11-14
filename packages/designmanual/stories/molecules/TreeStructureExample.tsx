@@ -277,6 +277,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
 
   return (
     <StyledFolderInput
+      // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus
       labelHidden
       name="name"

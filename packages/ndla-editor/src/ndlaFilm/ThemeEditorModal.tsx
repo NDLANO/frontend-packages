@@ -54,6 +54,7 @@ const ThemeEditorModal = ({ theme, onClose, onSave, onEditName, messages: { save
               iconLeft={<LanguageIndicator style={{ padding: '13px' }}>{t('languages.nb')}:</LanguageIndicator>}
               warningText={theme.warnings.nb ? 'Mangler navn' : undefined}
               type="text"
+              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
               placeholder={t('ndlaFilm.editor.groupNamePlaceholder', {
                 lang: t('languages.nb'),

@@ -152,6 +152,7 @@ const SlateBlockMenu = forwardRef<HTMLDivElement, Props>(
           data-cy={cy}
           onMouseDown={() => onToggleOpen(!isOpen)}
           role="button"
+          tabIndex={0}
           aria-expanded={isOpen}
           aria-controls={cy}
           aria-label={isOpen ? t('slateBlockMenu.close') : t('slateBlockMenu.open')}>

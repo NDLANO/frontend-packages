@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { storiesOf } from '@storybook/react';
-import { Logo, PageContainer, FilterList, OneColumn, LayoutItem, messagesNN, messagesNB, messagesEN } from '@ndla/ui';
-import { formatNestedMessages } from '@ndla/ui';
+import { Logo, PageContainer, FilterList, OneColumn, LayoutItem, messagesNN, messagesNB, messagesEN, formatNestedMessages} from '@ndla/ui';
 import { Center } from './helpers';
 
 const classes = BEMHelper('c-table');

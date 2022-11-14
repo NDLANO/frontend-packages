@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import { breakpoints, mq, spacing } from '@ndla/core';
 import { useTranslation } from 'react-i18next';
 import LayoutItem, { OneColumn } from '../Layout';
-import ProgrammeSubjects from './ProgrammeSubjects';
-import { GradesProps } from './ProgrammeSubjects';
+import ProgrammeSubjects, { GradesProps } from './ProgrammeSubjects';
 import MessageBox from '../Messages/MessageBox';
 import { NavigationHeading } from '..';
 const StyledWrapper = styled.div`

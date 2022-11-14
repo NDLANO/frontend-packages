@@ -31,7 +31,7 @@ interface Ref {
 }
 
 export function useComponentSize(ref: Ref = { current: undefined }) {
-  let [componentSize, setComponentSize] = useState(getSize(ref.current));
+  const [componentSize, setComponentSize] = useState(getSize(ref.current));
   const handleResize = useCallback(
     function handleResize() {
       if (ref.current) {

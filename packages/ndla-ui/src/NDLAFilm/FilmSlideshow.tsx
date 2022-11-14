@@ -217,7 +217,7 @@ const FilmSlideshow = ({ autoSlide = false, slideshow = [], slideInterval = 5000
   const [animationComplete, setAnimationComplete] = useState(true);
   const slideRef = useRef<HTMLDivElement>(null);
   const slideText = useRef<HTMLDivElement>(null);
-  let timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const gotoSlide = useCallback((indexTarget: number, useAnimation = false) => {
     setSwipeDistance(0);

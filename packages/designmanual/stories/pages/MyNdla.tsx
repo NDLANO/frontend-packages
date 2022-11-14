@@ -49,7 +49,7 @@ export const MyNdla = () => {
           </>
         }
         onSite={[
-          <Wrapper>
+          <Wrapper key={1}>
             <MyNdlaResourceView
               folders={[
                 { title: 'name', link: 'hey', id: '0709ef14-249f-4c60-88b9-9fe6babfcb4c' },

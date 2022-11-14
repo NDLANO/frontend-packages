@@ -26,7 +26,6 @@ module.exports = {
   },
 
   settings: {
-    // 'import/extensions': ['.js', '.ts', '.jsx', '.tsx'],
     react: {
       version: 'detect',
     },

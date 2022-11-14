@@ -231,17 +231,29 @@ class NdlaFilmExample extends Component {
                   tooltip={t('ndlaFilm.editor.deleteMovieGroup', {
                     name: theme.name.nb,
                   })}>
-                  <button type="button" css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onDeleteTheme(index)}>
+                  <button
+                    type="button"
+                    css={FieldHeaderIconStyle}
+                    tabIndex={-1}
+                    onClick={() => this.onDeleteTheme(index)}>
                     <DeleteForever />
                   </button>
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupUp')}>
-                  <button type="button" css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onMoveTheme(index, -1)}>
+                  <button
+                    type="button"
+                    css={FieldHeaderIconStyle}
+                    tabIndex={-1}
+                    onClick={() => this.onMoveTheme(index, -1)}>
                     <ChevronUp />
                   </button>
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupDown')}>
-                  <button type="button" css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onMoveTheme(index, 1)}>
+                  <button
+                    type="button"
+                    css={FieldHeaderIconStyle}
+                    tabIndex={-1}
+                    onClick={() => this.onMoveTheme(index, 1)}>
                     <ChevronDown />
                   </button>
                 </Tooltip>

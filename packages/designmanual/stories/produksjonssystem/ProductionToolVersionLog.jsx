@@ -9,7 +9,7 @@ import Accordion, {
 } from '@ndla/accordion';
 import { Eye, Restore } from '@ndla/icons/editor';
 import { VersionHistory, VersionLogTag } from '@ndla/editor';
-import { colors, spacing,  fonts, misc } from '@ndla/core';
+import { colors, spacing, fonts, misc } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';

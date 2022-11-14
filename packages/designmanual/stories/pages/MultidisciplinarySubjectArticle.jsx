@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 
-import { Breadcrumblist, MultidisciplinarySubjectHeader, ArticleSideBar} from '@ndla/ui';
+import { Breadcrumblist, MultidisciplinarySubjectHeader, ArticleSideBar } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
 import ArticleLoader from '../article/ArticleLoader';
 

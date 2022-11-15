@@ -23,7 +23,7 @@
     "start-storybook": "node ./scripts/startStorybook.js",
     "prebuild-storybook": "yarn bootstrap",
     "build-storybook": "cross-env NODE_ENV=production node ./scripts/buildStorybook.js",
-    "serve-storybook": "cross-env NODE_ENV=production serve ./packages/designmanual/storybook-static",
+    "serve-storybook": "cross-env NODE_ENV=production serve -l 5000 ./packages/designmanual/storybook-static",
     "check-translations": "cross-env BABEL_ENV=test NODE_ENV=unittest jest 'packages/ndla-ui/src/locale/__tests__/'"
   },
   "repository": {
@@ -90,7 +90,7 @@
     "rimraf": "2.6.3",
     "sass": "^1.49.7",
     "sass-loader": "^7.1.0",
-    "serve": "^10.1.2",
+    "serve": "^14.1.1",
     "sinon": "^7.2.3",
     "string-length": "^2.0.0",
     "style-loader": "^0.23.1",

@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tabs",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "React Tabs component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@ndla/icons": "^2.0.8",
-    "@ndla/util": "^3.1.8",
+    "@ndla/util": "^3.1.9",
     "lodash": "^4.17.20",
     "react-device-detect": "^2.1.2",
     "react-tabs": "^3.2.3"

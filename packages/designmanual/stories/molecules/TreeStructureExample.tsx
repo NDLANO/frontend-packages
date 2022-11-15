@@ -181,6 +181,12 @@ export const TreeStructureExampleComponent = ({
   onNewFolder?: boolean;
 }) => {
   const [structure, setStructure] = useState<FolderType[]>(initalStructure);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
   return (
     <Container type={type}>
       <TreeStructure
@@ -199,7 +205,7 @@ export const TreeStructureExampleComponent = ({
           />
         )}
         folders={structure}
-        loading={false}
+        loading={loading}
       />
     </Container>
   );

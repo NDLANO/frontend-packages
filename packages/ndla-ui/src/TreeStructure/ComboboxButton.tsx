@@ -121,7 +121,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
         }}>
         {loading && (
           <ContentLoader width={1000} height={40}>
-            <rect x="40" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
+            <rect x="15" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
           </ContentLoader>
         )}
         {!loading && (

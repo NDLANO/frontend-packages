@@ -168,12 +168,10 @@ const FolderItem = ({
     targetResource && folder.resources.some((resource) => resource.resourceId === targetResource.resourceId);
 
   const emptyFolder = folder.subfolders.length === 0;
-
   const isMaxDepth = level > maxLevel;
-
   const hideArrow = isMaxDepth || emptyFolder;
 
-  const tabIndex = selected || focused || (!focusedFolder && !folder.parentId && index === 0) ? 0 : -1;
+  const tabable = selected || focused || (!focusedFolder && !folder.parentId && index === 0);
 
   return type === 'navigation' ? (
     <FolderNameLink
@@ -192,7 +190,7 @@ const FolderItem = ({
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
       }}
       to={loading ? '' : linkPath}
-      tabIndex={tabIndex}
+      tabIndex={tabable ? 0 : -1}
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}>

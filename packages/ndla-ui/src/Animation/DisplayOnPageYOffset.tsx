@@ -8,7 +8,7 @@
 
 import React, { Component, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 import Fade from './Fade';
 
 interface Props {

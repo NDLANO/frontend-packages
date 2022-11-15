@@ -28,11 +28,11 @@
   ],
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
+    "lodash": "^4.17.20",
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
     "@ndla/util": "^3.1.9",
-    "lodash": "^4.17.20",
     "react-device-detect": "^2.1.2"
   },
   "publishConfig": {

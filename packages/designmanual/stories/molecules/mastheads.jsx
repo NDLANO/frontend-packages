@@ -9,7 +9,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import _ from 'lodash';
+import cloneDeepWith from 'lodash/cloneDeepWith'
 
 import {
   Masthead,
@@ -173,7 +173,7 @@ class MastheadWithTopicMenu extends Component {
     };
 
     // must add props to topic object that matches the TopicMenu component
-    const topicMenuValues = _.cloneDeepWith(topics, remapTopicProps);
+    const topicMenuValues = cloneDeepWith(topics, remapTopicProps);
 
     return (
       <Masthead

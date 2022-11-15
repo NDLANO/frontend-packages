@@ -9,7 +9,7 @@
 import React, { Component, MutableRefObject, ReactNode, KeyboardEvent, createRef } from 'react';
 import BEMHelper from 'react-bem-helper';
 import { ArrowDropDown } from '@ndla/icons/common';
-import { DebouncedFunc, debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 
 const classes = BEMHelper('c-tabs');
 
@@ -45,7 +45,7 @@ class FilterTabs extends Component<Props, State> {
   showSelectedTab: boolean;
   liRefs: Record<string, HTMLButtonElement | null>;
   tabWidths: number[] | null;
-  checkTabSizesDebounce: DebouncedFunc<() => void>;
+  checkTabSizesDebounce: ReturnType<typeof debounce<() => void>>;
 
   constructor(props: Props) {
     super(props);

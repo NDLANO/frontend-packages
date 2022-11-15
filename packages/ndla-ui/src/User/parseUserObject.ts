@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { groupBy } from 'lodash';
+import groupBy from 'lodash/groupBy';
 import { FeideGoGroup, FeideGrep, FeideGroup, FeideOrg, FeideUserApiType } from './apiTypes';
 
 type GoGroupType = 'basic' | 'teaching' | 'other';

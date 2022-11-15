@@ -32,6 +32,7 @@ const StyledSelectedFolder = styled(Button)`
   flex: 1;
   justify-content: flex-start;
   color: ${colors.black};
+  border: none;
   :hover,
   :focus {
     background: none;
@@ -61,6 +62,7 @@ interface Props {
   onOpenFolder: (id: string) => void;
   onCloseFolder: (id: string) => void;
   setFocusedFolder: (folder: FolderType) => void;
+  ariaDescribedby?: string;
 }
 
 const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
@@ -78,6 +80,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       onOpenFolder,
       onCloseFolder,
       loading,
+      ariaDescribedby,
     },
     ref,
   ) => {
@@ -85,6 +88,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
 
     const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
       if (e.key === 'Enter') {
+        onToggleTree(!showTree);
         if (showTree && focusedFolder) {
           setSelectedFolder(focusedFolder);
         }
@@ -92,6 +96,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       }
       if (e.key === 'Escape') {
         onToggleTree(false);
+        e.preventDefault();
         return;
       }
       if (['ArrowUp', 'ArrowDown'].includes(e.key) && !showTree) {
@@ -104,7 +109,16 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
     };
 
     return (
-      <StyledRow isOpen={showTree}>
+      <StyledRow
+        isOpen={showTree}
+        onMouseDown={(e) => {
+          if (!e.defaultPrevented) {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggleTree(!showTree);
+            innerRef.current?.focus();
+          }
+        }}>
         {loading && (
           <ContentLoader width={1000} height={40}>
             <rect x="40" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
@@ -121,6 +135,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             aria-expanded={showTree}
             aria-labelledby={label ? treestructureId(type, 'label') : undefined}
             aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
+            aria-describedby={ariaDescribedby}
             variant="ghost"
             colorTheme="light"
             fontWeight="normal"
@@ -134,9 +149,9 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
           </StyledSelectedFolder>
         )}
         <IconButton
-          aria-hidden
           disabled={loading}
           aria-busy={loading}
+          aria-hidden
           aria-label=""
           tabIndex={-1}
           variant="ghost"

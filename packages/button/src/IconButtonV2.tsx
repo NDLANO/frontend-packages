@@ -6,10 +6,11 @@
  *
  */
 
-import React from 'react';
-import styled from '@emotion/styled';
+import React, { ReactNode, forwardRef } from 'react';
 import { spacingUnit } from '@ndla/core';
-import Button, { ButtonProps } from './ButtonV2';
+import { css } from '@emotion/react';
+import { ButtonProps, buttonStyle, ButtonStyleProps } from './ButtonV2';
+import { ButtonSize } from './types';
 
 export const svgSizes = {
   xsmall: spacingUnit * 0.75,
@@ -19,33 +20,40 @@ export const svgSizes = {
   large: spacingUnit * 2.5,
 };
 
-export interface IconButtonProps extends ButtonProps {
-  ['aria-label']: string;
+interface IconButtonStyleProps extends ButtonStyleProps {
+  size: ButtonSize;
 }
 
-interface StyledButtonProps extends ButtonProps {
-  svgSize: number;
-}
+export const iconButtonStyle = ({ size, ...props }: IconButtonStyleProps) => css`
+  ${buttonStyle({ size, ...props })}
 
-const shouldForwardProp = (name: string) => name !== 'svgSize';
-
-const StyledButton = styled(Button, { shouldForwardProp })<StyledButtonProps>`
   border-radius: 100%;
-  padding: ${({ svgSize }) => spacingUnit * (svgSize > spacingUnit ? 0.5 : 0.25)}px;
+  padding: ${spacingUnit * (svgSizes[size] > spacingUnit ? 0.5 : 0.25)}px;
   line-height: 1;
   border-color: transparent;
   min-height: unset;
   svg {
-    width: ${({ svgSize }) => svgSize}px;
-    height: ${({ svgSize }) => svgSize}px;
+    width: ${svgSizes[size]}px;
+    height: ${svgSizes[size]}px;
     margin: 0;
   }
 `;
 
-export const IconButton = ({ children, size = 'small', ...rest }: IconButtonProps) => (
-  <StyledButton svgSize={svgSizes[size]} {...rest}>
-    {children}
-  </StyledButton>
+export interface IconButtonProps extends Omit<ButtonProps, 'shape'> {
+  ['aria-label']: string;
+  /** Usually an icon from `'@ndla/icons'` */
+  children?: ReactNode;
+}
+
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+  (
+    { type = 'button', size = 'small', colorTheme = 'primary', variant, fontWeight, inverted, children, ...rest },
+    ref,
+  ) => (
+    <button type={type} ref={ref} css={iconButtonStyle({ size, variant, fontWeight, inverted, colorTheme })} {...rest}>
+      {children}
+    </button>
+  ),
 );
 
 export default IconButton;

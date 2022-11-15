@@ -236,6 +236,14 @@ storiesOf('Fag- og emnesider', module)
       <FooterExample />
     </PageContainer>
   ))
+  .add('1.5. Forside med fag som laster', () => (
+    <PageContainer>
+      <Content>
+        <Frontpage showLoadingSubjects={true} />
+      </Content>
+      <FooterExample />
+    </PageContainer>
+  ))
   .add('2. Programside', () => (
     <PageContainer>
       <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />

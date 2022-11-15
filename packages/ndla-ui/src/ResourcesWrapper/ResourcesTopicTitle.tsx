@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { HelpCircleDual } from '@ndla/icons/common';

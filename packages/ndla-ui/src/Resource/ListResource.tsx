@@ -15,7 +15,7 @@ import {
   CompressedTagList,
   ResourceImageProps,
   ResourceTitle,
-  ResourceTitleLink,
+  ResourceTitleLink as StyledLink,
   ResourceTypeList,
   StyledContentIconWrapper,
   LoaderProps,
@@ -24,30 +24,13 @@ import ContentLoader from '../ContentLoader';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { contentTypeMapping } from '../model/ContentType';
 
-const StyledResourceDescription = styled.p`
-  grid-area: description;
-  line-clamp: 2;
-  line-height: 1em;
-  height: 3.1em;
-  margin: 0;
-  overflow: hidden;
-  ${fonts.sizes(16)};
-  text-overflow: ellipsis;
-  // Unfortunate css needed for multi-line text overflow ellipsis.
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
-const ResourceWrapper = styled.div`
+const ListResourceWrapper = styled.div`
   flex: 1;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(50px, 1fr) auto;
   grid-template-areas:
     'image  topicAndTitle   tags'
     'image  description     description';
-
   ${mq.range({ until: breakpoints.mobileWide })} {
     grid-template-columns: auto 1fr;
     grid-template-areas:
@@ -56,46 +39,31 @@ const ResourceWrapper = styled.div`
       'tags                 tags';
   }
 
-  cursor: pointer;
   padding: ${spacing.small};
+  column-gap: ${spacing.small};
+  cursor: pointer;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 2px;
-  gap: 0 ${spacing.small};
 
   &:hover {
     box-shadow: 1px 1px 6px 2px rgba(9, 55, 101, 0.08);
     transition-duration: 0.2s;
-    ${() => ResourceTitleLink} {
+    ${() => StyledLink} {
       color: ${colors.brand.primary};
       text-decoration: underline;
     }
   }
 `;
 
-const TagsandActionMenu = styled.div`
-  box-sizing: content-box;
-  padding: 2px;
-  grid-area: tags;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  overflow: hidden;
-  align-self: flex-start;
-  justify-self: flex-end;
-  justify-content: flex-end;
+interface StyledImageProps {
+  imageSize: 'normal' | 'compact';
+}
 
-  ${mq.range({ from: breakpoints.mobileWide })} {
-    margin-top: -${spacing.xsmall};
-    margin-right: -${spacing.xxsmall};
-  }
-`;
-
-const StyledImageWrapper = styled.div<StyledImageProps>`
+const ImageWrapper = styled.div<StyledImageProps>`
   grid-area: image;
   width: ${(p) => (p.imageSize === 'normal' ? '136px' : '56px')};
   ${mq.range({ until: breakpoints.mobileWide })} {
-    width: 54px;
-    height: 40px;
+    width: 56px;
   }
   overflow: hidden;
   border-radius: 2px;
@@ -110,28 +78,48 @@ const StyledImage = styled(Image)`
   aspect-ratio: 4/3;
 `;
 
-const TopicAndTitleWrapper = styled.div`
-  grid-area: topicAndTitle;
-  margin-top: 2px;
+const StyledResourceDescription = styled.p`
+  grid-area: description;
+  line-clamp: 2;
+  line-height: 1em;
+  height: 3.1em;
+  margin: 0;
+  margin-top: ${spacing.xxsmall};
+  overflow: hidden;
+  ${fonts.sizes(16)};
+  text-overflow: ellipsis;
+  // Unfortunate css needed for multi-line text overflow ellipsis.
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
-interface StyledImageProps {
-  imageSize: 'normal' | 'compact';
+interface TagsAndActionProps {
+  hasMenuButton: boolean;
 }
 
-export interface ListResourceProps {
-  id: string;
-  link: string;
-  tagLinkPrefix?: string;
-  title: string;
-  resourceImage: ResourceImageProps;
-  resourceTypes: { id: string; name: string }[];
-  tags?: string[];
-  description?: string;
-  menuItems?: MenuItemProps[];
-  isLoading?: boolean;
-  targetBlank?: boolean;
-}
+const TagsandActionMenu = styled.div<TagsAndActionProps>`
+  grid-area: tags;
+  box-sizing: content-box;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  align-self: flex-start;
+  justify-items: flex-end;
+  margin: -${spacing.small} -${(props) => (props.hasMenuButton ? spacing.small : 0)} 0 0;
+  ${mq.range({ until: breakpoints.mobileWide })} {
+    margin: 0 -${(props) => (props.hasMenuButton ? spacing.small : 0)} -${spacing.small} 0;
+  }
+  overflow: hidden;
+`;
+
+const TopicAndTitleWrapper = styled.div`
+  grid-area: topicAndTitle;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
 
 interface ListResourceImageProps {
   resourceImage: ResourceImageProps;
@@ -169,7 +157,7 @@ const ListResourceImage = ({ resourceImage, loading, type, contentType }: ListRe
   );
 };
 
-const ResourceTypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
+const TypeAndTitleLoader = ({ loading, children }: LoaderProps) => {
   if (loading) {
     return (
       <ContentLoader height={'40px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -187,7 +175,7 @@ interface ResourceDescriptionProps {
   loading?: boolean;
 }
 
-const ResourceDescription = ({ description, loading }: ResourceDescriptionProps) => {
+const Description = ({ description, loading }: ResourceDescriptionProps) => {
   if (loading) {
     return (
       <ContentLoader height={'20px'} width={'100%'} viewBox={null} preserveAspectRatio="none">
@@ -198,6 +186,21 @@ const ResourceDescription = ({ description, loading }: ResourceDescriptionProps)
   return <StyledResourceDescription>{description}</StyledResourceDescription>;
 };
 
+export interface ListResourceProps {
+  id: string;
+  link: string;
+  tagLinkPrefix?: string;
+  title: string;
+  resourceImage: ResourceImageProps;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  resourceTypes: { id: string; name: string }[];
+  tags?: string[];
+  description?: string;
+  menuItems?: MenuItemProps[];
+  isLoading?: boolean;
+  targetBlank?: boolean;
+}
+
 const ListResource = ({
   id,
   link,
@@ -206,6 +209,7 @@ const ListResource = ({
   tags,
   resourceImage,
   resourceTypes,
+  headingLevel = 'h2',
   description,
   menuItems,
   isLoading = false,
@@ -214,7 +218,8 @@ const ListResource = ({
   const showDescription = description !== undefined;
   const imageType = showDescription ? 'normal' : 'compact';
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const firstContentType = resourceTypes?.[0].id ?? '';
+  const firstContentType = resourceTypes?.[0]?.id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
   const handleClick = () => {
     if (linkRef.current) {
       linkRef.current.click();
@@ -222,29 +227,29 @@ const ListResource = ({
   };
 
   return (
-    <ResourceWrapper onClick={handleClick} id={id}>
-      <StyledImageWrapper imageSize={imageType}>
+    <ListResourceWrapper onClick={handleClick} id={id}>
+      <ImageWrapper imageSize={imageType}>
         <ListResourceImage
           resourceImage={resourceImage}
           loading={isLoading}
           type={imageType}
           contentType={contentTypeMapping[firstContentType] ?? contentTypeMapping['default']}
         />
-      </StyledImageWrapper>
+      </ImageWrapper>
       <TopicAndTitleWrapper>
-        <ResourceTypeAndTitleLoader loading={isLoading}>
-          <ResourceTitleLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
-            <ResourceTitle>{title}</ResourceTitle>
-          </ResourceTitleLink>
+        <TypeAndTitleLoader loading={isLoading}>
+          <StyledLink to={link} target={targetBlank ? '_blank' : undefined} ref={linkRef}>
+            <Title title={title}>{title}</Title>
+          </StyledLink>
           <ResourceTypeList resourceTypes={resourceTypes} />
-        </ResourceTypeAndTitleLoader>
+        </TypeAndTitleLoader>
       </TopicAndTitleWrapper>
-      {showDescription && <ResourceDescription description={description} loading={isLoading} />}
-      <TagsandActionMenu>
-        {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
+      {showDescription && <Description description={description} loading={isLoading} />}
+      <TagsandActionMenu hasMenuButton={!!(tags && tags.length > 3) || !!(menuItems && menuItems.length)}>
+        {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
         {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
       </TagsandActionMenu>
-    </ResourceWrapper>
+    </ListResourceWrapper>
   );
 };
 

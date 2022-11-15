@@ -1,5 +1,5 @@
 import React, { ElementType, ReactNode } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 

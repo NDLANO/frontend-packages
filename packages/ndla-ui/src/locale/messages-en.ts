@@ -30,11 +30,50 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      screenReaderStatus: '{{count}} results available',
+      disabled: 'disabled',
+      selected: 'selected',
+      focused: 'focused',
+      guidance: {
+        menu: {
+          updown: 'Use Up and Down to choose tags',
+          enter: 'press Enter to select the currently focused tag',
+          escape: 'press Escape to exit the menu',
+          tab: 'press Tab to select the tag and exit the menu',
+        },
+        input: {
+          select: 'Tag menu',
+          focused: 'is focused',
+          refine: 'type to refine list',
+          down: 'press Down to open the menu',
+          left: 'press Left to focus selected tags',
+          space: 'press Space to create new tag',
+        },
+        value:
+          'Use left and right to toggle between focused tags, press Backspace to remove the currently focused value. The last tag will be removed if none are selected.',
+      },
+      onChange: {
+        deselect: 'tag {{label}}, deselected.',
+        clear: 'All selected options have been cleared.',
+        initialFocus: `Tags {{labels}}, selected.`,
+        selectedDisabled: 'Tag {{label}} is disabled. Select another option.',
+        selected: 'Tag {{label}}, selected.',
+      },
+      onFocus: {
+        value: 'tag {{label}} focused, {{position}}.',
+        menu: 'tag {{label}} {{status}}, {{position}}.',
+        of: 'of',
+      },
+      onFilter: ' for search term ',
+    },
+    noOptions: 'No options',
     label: 'Add tag',
+    createLabel: 'Add tag {{tag}}',
     placeholder: 'Enter tag name',
     removeTag: 'Remove tag {{name}}',
-    hideAllTags: 'Hide all tags',
-    showAllTags: 'Show all tags',
+    hideTags: 'Hide tags',
+    showTags: 'Show tags',
   },
   htmlTitles: {
     titleTemplate,
@@ -74,6 +113,7 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: 'Other resources',
   },
   subjectTypes: {
+    [subjectTypes.BETA_SUBJECT]: 'Betafag',
     [subjectTypes.SUBJECT]: 'Subject',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
   },
@@ -268,6 +308,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Skip to content',
+    menuOptions: {
+      programme: 'Programmes',
+      subjects: 'Subjects',
+      multidisciplinarySubjects: 'Multidisciplinary subjects',
+      toolboxStudents: 'Toolbox - for students',
+      toolboxTeachers: 'Toolbox - for teachers',
+      film: 'NDLA Film',
+      about: {
+        title: 'About NDLA',
+        whatIs: 'What is NDLA?',
+        organization: 'The organization',
+        numbers: 'Numbers and usage',
+        keyPersonnel: 'Key personnel',
+        vacancies: 'Vacancies',
+        newsletter: 'Newsletter',
+        contact: 'Contact',
+      },
+    },
     menu: {
       close: 'Close',
       goTo: 'Go to',
@@ -353,15 +411,14 @@ const messages = {
     feide: 'This resource is accessible only to teachers who are logged in with Feide.',
     resources: 'This is not a complete course, but a collection of resources we hope you will find useful.',
     subjectOutdated: 'This course is not updated to the current curriculum.',
+    subjectFuture: 'This course is for a future curriculum.',
     subjectBeta: 'This course is in beta. New resources are being added continously.',
     newVersion:
       'This learning resource is not updated to the current curriculum. You can find an updated version here: ',
     frontPageBeta:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022. Beta versions of subjects are subjects we are still working on. We hope, however, that the learning resources available by now may come in useful already.',
+      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from the next school year. We hope, however, that the learning resources available by now may come in useful already.',
     frontPageExpired:
       'Expired subjects are not being taught any longer, but it may still be possible to take exams in these subjects.',
-    frontPageRevised:
-      'Revised subjects have been revised in accordance with the new curriculum that will be put into effect from August 2022.',
   },
   article: {
     edition: 'Edition',
@@ -926,7 +983,7 @@ const messages = {
     error: 'An error occurred while loading an external resource.',
   },
   concept: {
-    showDescription: 'Show concept description',
+    showDescription: '{{title}}, concept description. Press to open the description',
     reuse: 'Use concept',
     error: {
       title: 'An error occurred',
@@ -963,7 +1020,6 @@ const messages = {
     buttonLogOut: 'Log out',
     generalFooter: 'Some resources may only be accessed by teachers who are logged in.',
     modal: {
-      collectedInfo: 'We have collected the following information about you from Feide:',
       general: 'Resources that require logging in with Feide, are tagged with the icon',
       topic: 'Log in with Feide to access this topic.',
       isAuth: 'User info',
@@ -976,10 +1032,13 @@ const messages = {
     name: 'Name',
     mail: 'E-mail',
     username: 'Username',
+    mobile: 'Phone number',
+    preferredLanguage: 'Foretrukket språk',
     groupTypes: {
       basic: 'Basic group',
       teaching: 'Teaching group',
       other: 'Other groups',
+      grepCode: 'Grep codes',
     },
     wrongUserInfoDisclaimer:
       'If any information is wrong, it must be updated by the host organization/school owner the user belongs to. An overview of available user support can be found here: ',
@@ -1007,6 +1066,13 @@ const messages = {
       missingName: 'Folder name required',
       folderDeleted: '"{{folderName}}" deleted',
       folderCreated: '"{{folderName}} created',
+      onDragStart: 'Picked up the folder {{name}}. The folder is in position {{index}} of {{length}}',
+      onDragOver: 'The folder {{name}} was moved into position {{index}} of {{length}}',
+      onDragOverMissingOver: 'The folder {{name}} is no longer over a droppable area',
+      onDragEnd: 'The folder {{name}} was dropped at position {{index}} og {{length}}',
+      onDragEndMissingOver: 'The folder {{name}} was dropped',
+      onDragCancel: 'Dragging was cancelled. The folder {{name}} was dropped',
+      dragHandle: 'Drag the folder {{name}}',
     },
     tagList: 'Tags',
     tags: '{{count}} tag',
@@ -1025,13 +1091,18 @@ const messages = {
     favourites: 'Favourites',
     addToFavourites: 'Add to my favourites',
     alreadyFavourited: 'Already in my favourites',
-    alreadyInFolder: 'Already in folder',
+    alreadyInFolder: 'Already in folder. You can still save new tags.',
+    noFolderSelected: 'Select or create a new folder to save the resource.',
+    examLockInfo: 'Editing content on Min NDLA is deactivated for pupils during the exam period.',
     help: 'Help',
     more: 'More options',
     listView: 'List view',
     detailView: 'Detailed listview',
     shortView: 'Card view',
     myPage: {
+      noRecents: "You haven't added any resources yet. This is how you get started:",
+      imageAlt:
+        'Medium close-up of girl holding a tablet. On top of the tablet there are colour samples in different shapes and colours. Graphic image.',
       confirmDeleteAccount: 'Are you sure you want to delete your account?',
       confirmDeleteAccountButton: 'Delete account',
       myPage: 'My page',
@@ -1045,10 +1116,10 @@ const messages = {
       deleteAccount: 'Delete My NDLA',
       welcome:
         'Welcome to my NDLA! You can now save your favourite resources from NDLA and organise them in folders with tags',
-      read: { our: 'Read our', ours: 'Read our' },
+      read: { read: 'Read our', our: '.' },
       privacy: 'privacy statement',
       privacyLink: 'https://om.ndla.no/gdpr',
-      questions: { question: 'Any questions?', ask: 'Ask us in the chat' },
+      questions: { question: 'Any questions?', ask: 'Ask NDLA' },
       wishToDelete: 'Do you wish to delete your account?',
       terms: {
         terms: 'Terms of use',
@@ -1067,11 +1138,11 @@ const messages = {
       },
       folderInfo: {
         title: 'How to organise your favourite resources in folders',
-        text: 'You can get to the folder overview by clicking on my folders on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
+        text: 'You can get to the folder overview by clicking on <strong>My folders</strong> on the menu to the left. Here you can create new folders and subfolder. You can also create a new folder in the dialogue window that is activated when you click on the heart in a resource',
       },
       tagInfo: {
         title: 'How to tag your favourite resources',
-        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting my tags on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
+        text: 'When you save a resource, you will have the option to tag it with a keyword. This tag can be used to find the resource across folders. By selecting <strong>My tags</strong> on the menu to the left, you will see all the tags your have used. You can also see which resources are tagget with which keyword.',
       },
     },
     resource: {
@@ -1089,6 +1160,13 @@ const messages = {
       tagsUpdated: 'Tags updated',
       show: 'Show',
       save: 'Save resource',
+      onDragStart: 'Picked up the resource {{name}}. The resource is in position {{index}} of {{length}}',
+      onDragOver: 'The resource {{name}} was moved into position {{index}} of {{length}}',
+      onDragOverMissingOver: 'The resource {{name}} is no longer over a droppable area',
+      onDragEnd: 'The resource {{name}} was dropped at position {{index}} og {{length}}',
+      onDragEndMissingOver: 'The resource {{name}} was dropped',
+      onDragCancel: 'Dragging was cancelled. The resource {{name}} was dropped',
+      dragHandle: 'Drag the resource {{name}}',
     },
   },
   snackbar: {

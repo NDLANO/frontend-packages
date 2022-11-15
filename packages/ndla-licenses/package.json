@@ -1,6 +1,6 @@
 {
   "name": "@ndla/licenses",
-  "version": "5.0.17",
+  "version": "6.0.10",
   "description": "A simple library for retrieving license information for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -25,14 +25,14 @@
     "es"
   ],
   "peerDependencies": {
-    "@emotion/core": "^10.0.9",
-    "@emotion/styled": "^10.0.9",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "react": "^15.6.0 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@ndla/core": "^2.3.5",
-    "@ndla/icons": "^1.13.0",
-    "@ndla/tooltip": "^2.2.1"
+    "@ndla/core": "^3.0.3",
+    "@ndla/icons": "^2.0.8",
+    "@ndla/tooltip": "^3.0.6"
   },
   "publishConfig": {
     "access": "public"

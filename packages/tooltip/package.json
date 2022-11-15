@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "2.2.1",
+  "version": "3.0.6",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "concurrently 'yarn build:types' 'yarn build:css'",
-    "build:css": "webpack -p && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
@@ -28,19 +28,20 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^2.3.5",
-    "@reach/auto-id": "^0.17.0",
-    "@reach/tooltip": "^0.17.0"
+    "@ndla/core": "^3.0.3",
+    "@reach/auto-id": "^0.16.0",
+    "@reach/tooltip": "^0.16.2"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",
     "mini-css-extract-plugin": "^0.5.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^4.10.0"
   },
   "peerDependencies": {
-    "@emotion/styled": "^10.0.9",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "react": "^16.4.2 || ^17.0.0",
     "react-device-detect": "^2.1.2"
   },

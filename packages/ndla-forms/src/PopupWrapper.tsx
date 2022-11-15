@@ -9,7 +9,7 @@
 import React, { useState, ReactChild, ReactChildren } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
-import { css, SerializedStyles } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/react';
 import FocusTrapReact from 'focus-trap-react';
 import { ChevronDown } from '@ndla/icons/common';
 import { Cross } from '@ndla/icons/action';

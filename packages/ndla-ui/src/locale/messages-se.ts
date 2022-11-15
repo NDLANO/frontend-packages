@@ -30,11 +30,50 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      screenReaderStatus: '{{count}} bohtosa olámuttos',
+      disabled: 'ii olámuttos',
+      selected: 'válljejuvvon',
+      focused: 'fokuserejuvvon',
+      guidance: {
+        menu: {
+          updown: 'Geavat njuollaboaluid vulos ja bajás válljet fáddágilkoriid',
+          enter: 'deaddil enter válljet merkejuvvon fáddágilkora',
+          escape: 'deaddil escape giddet fálu',
+          tab: 'deaddil tab válljet fáddágilkora ja giddet fálu',
+        },
+        input: {
+          select: 'Fáddágilkor-fállu',
+          focused: 'lea fokuserejuvvon',
+          refine: 'čále vai filtarasttet fáddágilkor listtu',
+          down: 'deaddil njuola vulos rahpat fálu',
+          left: 'deaddil gurut njuola fokuseret válljejuvvon fáddágilkoriid',
+          space: 'deaddil sátnegaskaboalu álggahit ođđa fáddágilkora',
+        },
+        value:
+          'Geavat olgeš ja gurut njuolaid navigeret válljejuvvon fáddágilkoriid gaskkas, deaddil backspace sihkkut válljejuvvon fáddágilkora. Jus ii leat válljejuvvon fáddágilkor de sihkkojuvvo maŋimus.',
+      },
+      onChange: {
+        deselect: 'fáddágilkor {{label}}, sihkkojuvvon.',
+        clear: 'Buot válljejuvvon fáddágilkorat sihkkojuvvon.',
+        initialFocus: `Fáddágilkorat {{labels}}, válljejuvvon.`,
+        selectedDisabled: 'Fáddágilkor {{label}} ii sáhte válljejuvvot. Vállje eará molsaeavttu.',
+        selected: 'Fáddágilkor {{label}},  vállejuvvon.',
+      },
+      onFocus: {
+        value: 'fáddágilkor {{label}} fokuserejuvvon, {{position}}.',
+        menu: 'fáddágilkor {{label}} {{status}}, {{position}}.',
+        of: 'eret',
+      },
+      onFilter: ' ohcansátnái ',
+    },
+    noOptions: 'Eai leat válljenvejolašvuođat',
     label: 'Bija fáddágilkora',
+    createLabel: 'Lasit fáddágilkora {{tag}}',
     placeholder: 'Čále fáddágilkora',
     removeTag: 'Váldde eret {{name}}',
-    hideAllTags: 'Čiega buot fáddágilkoriid',
-    showAllTags: 'Čájet buot fáddágilkoriid',
+    hideTags: 'Čiega fáddágilkoriid',
+    showTags: 'Čájet fáddágilkoriid',
   },
   htmlTitles: {
     titleTemplate,
@@ -74,6 +113,7 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: 'Eará resurssat',
   },
   subjectTypes: {
+    [subjectTypes.BETA_SUBJECT]: 'Betafága',
     [subjectTypes.SUBJECT]: 'Fága',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resursačoakkáldat',
   },
@@ -268,6 +308,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Njuike sisdollui',
+    menuOptions: {
+      programme: 'Oahppoprográmma',
+      subjects: 'Fága',
+      multidisciplinarySubjects: 'Fágaidrasttildeaddji fáddá',
+      toolboxStudents: 'Reaidokássa - ohppiide',
+      toolboxTeachers: 'Reaidokássa - oahpaheddjiide',
+      film: 'NDLA Filbma',
+      about: {
+        title: 'NDLA birra',
+        whatIs: 'Mii lea NDLA?',
+        organization: 'Organisašuvdna',
+        numbers: 'Logut ja geavahus',
+        keyPersonnel: 'Čoavddagieđat',
+        vacancies: 'Rabas virggit',
+        newsletter: 'Ođasreivvet',
+        contact: 'Oktavuohta',
+      },
+    },
     menu: {
       close: 'Govčča',
       goTo: 'Mana deike',
@@ -275,7 +333,7 @@ const messages = {
       toFrontpage: 'Ovdasiidui',
       subjectOverview: 'Buot fágat',
       title: 'Sisdoallu',
-      modalLabel: 'Velg innhold',
+      modalLabel: 'Vállje sisdoalu',
       subjectPage: 'Ovdasiidu fágas',
       backToSubjectFrontpage: 'Ruovttoluotta fága ovdasiidui',
       openFilter: 'Filttar',
@@ -353,14 +411,14 @@ const messages = {
     feide: 'Dát resursa lea dušše olamuttus oahpahedjjiide geat leat Feide bokte sisaloggen.',
     resources: 'Dát ii leat ollislaš oahpponeavvu, muhto resursačoakkáldat man sávvat dutnje leat ávkin.',
     subjectOutdated: 'Dát fága čuovvu oahppoplána mii ii gusto šat.',
+    subjectFuture: 'Dát fága čuovvu oahppoplána mii boahtá.',
     subjectBeta: 'Dát fága lea betaveršuvnnas. Mii lasihit resurssaid dađistaga',
     newVersion:
       'Dát oahpporesursa ii leat ođasmahttojuvvon gustovaš oahppaplána vuođul. Dáppe gávnnat ođastuvvon veršuvnna: ',
     frontPageBeta:
-      'Čuovvovaš fága lea heivehuvvon ođđa oahppoplána vuođul mii lea gustovaš čavčča 2022 rájes. Betafága lea fága mii lea barggu vuolde. Mii sávvat goitge ahte oahppanresurssat betafágas sáhttet leat ávkkálaččat dál juo.',
+      'Čuovvovaš fága lea heivehuvvon ođđa oahppoplána vuođul mii lea gustovaš boahtte skuvlajagi rájes. Mii sávvat goitge ahte oahppanresurssat cuovvovaš fága sáhttet leat ávkkálaččat dál juo.',
     frontPageExpired:
       'Ii leat oahpahus šat fágain mat eai leat gustovaččat, muhto sáhttá ain leat vejolaš váldit eksámena fágas privatistan.',
-    frontPageRevised: 'Čuovvovaš fága lea heivehuvvon ođđa oahppoplánii mii lea gustovaš 2022 čavčča rájes..',
   },
   article: {
     lastUpdated: 'Maŋemusat ođastuvvon',
@@ -925,7 +983,7 @@ const messages = {
     error: 'Boasttuvuohta čuožžilii olgguldas resurssa viežžamis.',
   },
   concept: {
-    showDescription: 'Čájet čilgehusa govvideami.',
+    showDescription: '{{title}} ,Čájet čilgehusa govvideami.',
     reuse: 'Geavat čilgehusa',
     error: {
       title: 'Boasttuvuohta čuožžilii',
@@ -954,15 +1012,14 @@ const messages = {
     loggedInAs: 'Don leat sisaloggejuvvon {{role}}.',
     loggedInAsButton: 'Don leat sisaloggejuvvon {{role}}',
     role: {
-      employee: 'Oahpaheaddji',
-      staff: 'Bargi',
-      student: 'Oahppi',
+      employee: 'oahpaheaddji',
+      staff: 'bargi',
+      student: 'oahppi',
     },
     buttonLogIn: 'Logge sisa Feide bokte',
     buttonLogOut: 'Logge olggos',
     generalFooter: 'Muhtin resurssat leat dušše olamuttus sisaloggejuvvon oahpaheddjiide.',
     modal: {
-      collectedInfo: 'Čuovvovaš dieđut leat du birra vižžojuvvon Feide bokte:',
       general: 'Resurssat mat gáibidit Feide sisaloggema leat merkejuvvon čuovvovaš ikonain',
       topic: 'Logge sisa Feide bokte oažžun dihte beassanlági dán fáddái.',
       isAuth: 'Geavaheaddjidieđut',
@@ -971,14 +1028,17 @@ const messages = {
     resource: {
       accessDenied: 'Šállošat, muhto dát resursa lea dušše oahpaheddjiide mat leat loggen sisa Feide bokte.',
     },
-    primarySchool: 'Váldoskuvla',
+    primarySchool: 'váldoskuvla',
     name: 'Namma',
     mail: 'Eboasta',
     username: 'Geavahan namma',
+    mobile: 'Telefonnummar',
+    preferredLanguage: 'Háliiduvvon giella',
     groupTypes: {
       basic: 'Vuođđojoavku',
       teaching: 'Oahpahusjoavku',
       other: 'Eará joavkkut',
+      grepCode: 'Grepkoda',
     },
     wrongUserInfoDisclaimer:
       'Jus leat boasttudieđut, de ferte organisašuvdna/skuvlaeaiggát masá geavaheaddji gullá ođasmahttit dan. Visogova geavaheaddjidoarjaga ektui gávnnat dás: ',
@@ -1006,6 +1066,13 @@ const messages = {
       missingName: 'Čále nama máhppii',
       folderDeleted: '"{{folderName}}" lea sihkkojuvvon',
       folderCreated: '"{{folderName}}" lea ráhkaduvvon',
+      onDragStart: 'Dohppen máhpa {{name}}. Máhppa lea {{index}} posišuvnnas čuovvovačča {{length}} posišuvnnas',
+      onDragOver: 'Máhppa {{name}} sirdojuvvui {{index}} posišuvdnii {{length}} posišuvnnas',
+      onDragOverMissingOver: 'Máhppa {{name}} ii leat šat luoitinposišuvnnas.',
+      onDragEnd: 'Máhppa {{name}} luitojuvvui {{index}} posišuvdnii {{length}} posišuvnnas',
+      onDragEndMissingOver: 'Máhppa {{name}} lea luitojuvvon',
+      onDragCancel: 'Sirdin botkejuvvui. Máhppa {{name}} lea luitojuvvon.',
+      dragHandle: 'Ordne máhpa {{name}}',
     },
     tagList: 'Fáddágilkor',
     tags: '{{count}} fáddágilkor',
@@ -1023,7 +1090,9 @@ const messages = {
     favourites: 'Oiddohat',
     addToFavourites: 'Bija mu oiddohiid searvái',
     alreadyFavourited: 'Lea juo biddjon oiddohin',
-    alreadyInFolder: 'Gávdno juo máhpas',
+    alreadyInFolder: 'Gávdno juo máhpas. Sáhtát ain vurket ođđa fáddágilkoriid.',
+    noFolderSelected: 'Vállje dahje ráhkat ođđa máhpa vai seasttát resurssa',
+    examLockInfo: 'Mu NDLA sisdoalu redigeren ii leat doaimmas ohppiide eksámenáigodagas.',
     help: 'Veahkki',
     more: 'Eanet válljejumit',
     listView: 'Oppalašlistu',
@@ -1031,6 +1100,9 @@ const messages = {
     shortView: 'Oanehis listu',
 
     myPage: {
+      noRecents: 'Don it leat lasihan makkárge resurssa vel. Ná boađát johtui:',
+      imageAlt:
+        'Oalle lagas govva nieiddas gii doallá dihtordulbosa gieđain. Dihtordulbosa alde leat ivdnečájánasat iešguđet hámiin ja ivnniin. Grafihkka..',
       confirmDeleteAccount: 'Leat go sihkar ahte dáhtut sihkkut kontu?',
       confirmDeleteAccountButton: 'Sihko kontu',
       myPage: 'Mu siidu',
@@ -1044,8 +1116,8 @@ const messages = {
       loginWelcome: 'Bures boahtin NDLA:ii! Dáppe sáhtát fágaávdnasiid ordnet iežat vuogi mielde',
       welcome:
         'Bures boahtin Mu NDLA:ii! Dál sáhtát vurket iežat oiddotresurssaid NDLA:s ja ordnet daid nu go dáhtut máhpaide ja fáddágilkoriiguin.',
-      read: { our: 'Loga min', ours: 'Loga min' },
-      privacy: 'personsuodjalusjulggaštusa dás',
+      read: { read: 'Loga min', our: '.' },
+      privacy: 'personsuodjalusjulggaštusa',
       privacyLink: 'https://om.ndla.no/gdpr',
       questions: { question: 'Smiehtat go maidege?', ask: 'Jeara min chattas' },
       wishToDelete: 'It go hálit geavaheaddjiprofiila min geahčen šat?',
@@ -1087,6 +1159,13 @@ const messages = {
       tagsUpdated: 'Fáddágilkorat leat ođastuvvon',
       show: 'Čájet',
       save: 'Vurke resurssa',
+      onDragStart: 'Dohppe resurssa {{name}}. Resursa lea {{index}} posišuvnnas čuovvovačča {{length}} posišuvnnas',
+      onDragOver: 'Resursa {{name}} sirdojuvvui {{index}} posišuvdnii {{length}} posišuvnnas',
+      onDragOverMissingOver: 'Resursa {{name}} ii leat šat luoitinposišuvnnas',
+      onDragEnd: 'Resursa {{name}} luitojuvvui {{index}} posišuvdnii {{length}} posišuvnnas',
+      onDragEndMissingOver: 'Resursa {{name}} lea luitojuvvon',
+      onDragCancel: 'Sirdin botkejuvvui. Resursa {{name}} lea luitojuvvon',
+      dragHandle: 'Ordne resurssa {{name}}',
     },
   },
   snackbar: {

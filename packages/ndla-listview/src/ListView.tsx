@@ -1,11 +1,11 @@
 import React, { ChangeEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import BEMHelper from 'react-bem-helper';
 import { spacing, fonts, colors, misc, breakpoints, mq } from '@ndla/core';
 import { FilterListPhone } from '@ndla/ui';
 import { List as ListIcon, Grid as GridIcon } from '@ndla/icons/action';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import ListItem from './ListItem';
 
 const ListViewWrapper = styled.div`
@@ -191,7 +191,7 @@ interface Filter {
   isGroupedOptions?: boolean;
 }
 
-interface Props extends WithTranslation {
+interface Props {
   items: ListItemType[];
   filters?: Filter[];
   selectedLetterCallback?: (letter: string) => void;
@@ -228,8 +228,8 @@ const ListView = ({
   renderMarkdown = (text) => {
     return text;
   },
-  t,
 }: Props) => {
+  const { t } = useTranslation();
   const hasOption = filters?.some((f) =>
     f.options.some((opt: Option | Option[]) => (Array.isArray(opt) ? opt.length > 0 : true)),
   );
@@ -334,4 +334,4 @@ const ListView = ({
   );
 };
 
-export default withTranslation()(ListView);
+export default ListView;

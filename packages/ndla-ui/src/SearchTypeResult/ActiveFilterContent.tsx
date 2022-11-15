@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { Cross } from '@ndla/icons/action';
 import { spacing, fonts } from '@ndla/core';
 import Button from '@ndla/button';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 export const StyledActiveFilterTitle = styled.span`
   white-space: nowrap;
@@ -35,18 +35,21 @@ type Props = {
   onFilterRemove: (value: string, name: string) => void;
 };
 
-const ActiveFilterContent = ({ filter, onFilterRemove, t }: Props & WithTranslation) => (
-  <StyledButton
-    aria-label={t('searchPage.searchFilterMessages.removeFilter', {
-      filterName: filter.title,
-    })}
-    type="button"
-    size="normal"
-    borderShape="rounded"
-    onClick={() => onFilterRemove(filter.value, filter.name)}>
-    <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
-    <Cross />
-  </StyledButton>
-);
+const ActiveFilterContent = ({ filter, onFilterRemove }: Props) => {
+  const { t } = useTranslation();
+  return (
+    <StyledButton
+      aria-label={t('searchPage.searchFilterMessages.removeFilter', {
+        filterName: filter.title,
+      })}
+      type="button"
+      size="normal"
+      borderShape="rounded"
+      onClick={() => onFilterRemove(filter.value, filter.name)}>
+      <StyledActiveFilterTitle>{filter.title}</StyledActiveFilterTitle>
+      <Cross />
+    </StyledButton>
+  );
+};
 
-export default withTranslation()(ActiveFilterContent);
+export default ActiveFilterContent;

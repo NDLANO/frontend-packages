@@ -27,11 +27,14 @@ const Container = styled.div`
   height: 100%;
   border: 1px solid ${colors.brand.neutral7};
   border-radius: 5px;
-  transition: all ${animations.durations.fast} ease-in-out;
-  &:hover {
-    margin: -2px;
-    min-height: 196px;
-    height: calc(100% + 4px);
+
+  img {
+    transition: all ${animations.durations.fast} ease-in-out;
+  }
+  :hover {
+    img {
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -52,11 +55,6 @@ const TextWrapper = styled.div`
   flex: 1;
   margin: ${spacing.small} ${spacing.small} ${spacing.small} ${spacing.normal};
   max-width: 800px;
-  transition: all ${animations.durations.fast} ease-in-out;
-  ${Container}:hover & {
-    margin: calc(${spacing.small} + 2px) calc(${spacing.small} + 2px) calc(${spacing.small} + 2px)
-      calc(${spacing.normal} + 2px);
-  }
 `;
 const ContentTypeWrapper = styled.div`
   display: flex;
@@ -99,21 +97,16 @@ const ImageWrapper = styled.div<{ isTopic: boolean }>`
   justify-content: center;
   align-items: center;
   margin: ${spacing.small};
-  transition: all ${animations.durations.fast} ease-in-out;
-  ${Container}:hover & {
-    width: ${(props) => (props.isTopic ? `168px` : `228px`)};
-    height: 168px;
-  }
+  overflow: hidden;
+  ${(props) => props.isTopic && `border-radius: 50%;`};
 `;
 
-const ImageElement = styled.img<{ isTopic: boolean }>`
+const ImageElement = styled.img`
   border-radius: 2px;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all ${animations.durations.fast} ease-in-out;
   max-width: unset;
-  ${(props) => props.isTopic && `border-radius: 50%;`};
 `;
 
 const ContextWrapper = styled.div`
@@ -156,7 +149,7 @@ const SearchItemList = ({ item, type }: SearchItemType) => {
         </TextWrapper>
         {img && (
           <ImageWrapper isTopic={isTopic}>
-            <ImageElement src={img.url} alt={img.alt} isTopic={isTopic} />
+            <ImageElement src={img.url} alt={img.alt} />
           </ImageWrapper>
         )}
       </ItemLink>

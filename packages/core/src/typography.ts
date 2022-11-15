@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import fonts from './fonts';
 import colors from './colors';
 import spacing from './spacing';

@@ -30,11 +30,50 @@ const messages = {
     },
   },
   tagSelector: {
+    aria: {
+      screenReaderStatus: '{{count}} resultater tilgjengelig',
+      disabled: 'utilgjengelig',
+      selected: 'valgt',
+      focused: 'fokusert',
+      guidance: {
+        menu: {
+          updown: 'Bruk piltaster opp og ned for å velge emneknagger',
+          enter: 'trykk enter for å velge den markerte emneknaggen',
+          escape: 'trykk escape for å lukke menyen',
+          tab: 'trykk tab for å velge emneknaggen og lukke menyen',
+        },
+        input: {
+          select: 'Emneknagg-meny',
+          focused: 'er fokusert',
+          refine: 'skriv for å filtrere listen med emneknagger',
+          down: 'trykk pil ned for å åpne menyen',
+          left: 'trykk venstre pil for å fokusere valgte emneknagger',
+          space: 'trykk mellomrom for å opprette ny emneknagg',
+        },
+        value:
+          'Bruk høyre og venstre pil for å navigere mellom valgte emneknagger, trykk backspace for å fjerne den valgte emneknaggen. Dersom ingen emneknagg er valgt fjernes den siste.',
+      },
+      onChange: {
+        deselect: 'emneknagg {{label}}, fjernet.',
+        clear: 'Alle valgte emneknagger fjernet.',
+        initialFocus: `Emneknagger {{labels}}, valgt.`,
+        selectedDisabled: 'Emneknagg {{label}} kan ikke velges. Velg et annet alternativ.',
+        selected: 'Emneknagg {{label}},  valgt.',
+      },
+      onFocus: {
+        value: 'emneknagg {{label}} fokusert, {{position}}.',
+        menu: 'emneknagg {{label}} {{status}}, {{position}}.',
+        of: 'av',
+      },
+      onFilter: ' for søkeord ',
+    },
+    noOptions: 'Ingen valgmuligheter',
     label: 'Legg til emneknagg',
+    createLabel: 'Legg til emneknagg {{tag}}',
     placeholder: 'Skriv inn emneknagg',
     removeTag: 'Ta vekk {{name}}',
-    hideAllTags: 'Skjul alle emneknagger',
-    showAllTags: 'Vis alle emneknagger',
+    hideTags: 'Skjul emneknagger',
+    showTags: 'Vis emneknagger',
   },
   htmlTitles: {
     titleTemplate,
@@ -74,6 +113,7 @@ const messages = {
     [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressurser',
   },
   subjectTypes: {
+    [subjectTypes.BETA_SUBJECT]: 'Betafag',
     [subjectTypes.SUBJECT]: 'Fag',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
   },
@@ -267,6 +307,24 @@ const messages = {
   },
   masthead: {
     skipToContent: 'Hopp til innhold',
+    menuOptions: {
+      programme: 'Utdanningsprogram',
+      subjects: 'Fag',
+      multidisciplinarySubjects: 'Tverrfaglege tema',
+      toolboxStudents: 'Verktøykassa - for elever',
+      toolboxTeachers: 'Verktøykassa - for lærere',
+      film: 'NDLA Film',
+      about: {
+        title: 'Om NDLA',
+        whatIs: 'Kva er NDLA?',
+        organization: 'Organisasjonen',
+        numbers: 'Tal og bruk',
+        keyPersonnel: 'Nøkkelpersonar',
+        vacancies: 'Ledige stillingar',
+        newsletter: 'Nyheitsbrev',
+        contact: 'Kontakt',
+      },
+    },
     menu: {
       close: 'Lukk',
       goTo: 'Gå til',
@@ -353,14 +411,14 @@ const messages = {
     resources:
       'Dette er ikke et komplett læremiddel produsert av NDLA, men ei ressurssamling som vi håper kan være nyttig for deg.',
     subjectOutdated: 'Dette faget følger en utgått læreplan.',
+    subjectFuture: 'Dette faget følger en kommende læreplan.',
     subjectBeta: 'Dette faget er i betaversjon. Vi fyller på med ressurser fortløpende.',
     newVersion:
       'Denne læringsressursen er ikke oppdatert etter gjeldende læreplan. Du finner en oppdatert versjon her: ',
     frontPageBeta:
-      'Kommende fag er tilpassa ny læreplan som gjelder fra høsten 2022. Betafag er fag under arbeid. Vi håper likevel at læringsressursene i betafaga kan være nyttige allerede nå.',
+      'Kommende fag er tilpassa ny læreplan som gjelder fra neste skoleår. Vi håper likevel at læringsressursene i kommende fag kan være nyttige allerede nå.',
     frontPageExpired:
       'Utgåtte fag undervises det ikke i lenger, men det kan fortsatt være mulig å ta eksamen i faga som privatist.',
-    frontPageRevised: 'Kommende fag er tilpassa ny læreplan som gjelder fra høsten 2022.',
   },
   article: {
     lastUpdated: 'Sist oppdatert',
@@ -925,7 +983,7 @@ const messages = {
     error: 'En feil oppstod ved lasting av en ekstern ressurs.',
   },
   concept: {
-    showDescription: 'Vis beskrivelsen av forklaringen.',
+    showDescription: '{{title}}, begrepsforklaring. Trykk for å åpne forklaring.',
     reuse: 'Bruk forklaring',
     error: {
       title: 'En feil oppstod',
@@ -954,15 +1012,14 @@ const messages = {
     loggedInAs: 'Du er pålogget som {{role}}.',
     loggedInAsButton: 'Du er pålogget som {{role}}',
     role: {
-      employee: 'Lærer',
-      staff: 'Ansatt',
-      student: 'Elev',
+      employee: 'lærer',
+      staff: 'ansatt',
+      student: 'elev',
     },
     buttonLogIn: 'Logg inn med Feide',
     buttonLogOut: 'Logg ut',
     generalFooter: 'Enkelte ressurser er bare tilgjengelige for påloggede lærere.',
     modal: {
-      collectedInfo: 'Vi har hentet følgende informasjon om deg fra Feide:',
       general: 'Ressursene som krever pålogging med Feide, vises med ikonet',
       topic: 'Logg inn med Feide for å få tilgang til dette emnet.',
       isAuth: 'Brukerinfo',
@@ -971,17 +1028,20 @@ const messages = {
     resource: {
       accessDenied: 'Vi beklager, men denne ressursen er bare for lærere innlogget med Feide.',
     },
-    primarySchool: 'Hovedskole',
+    primarySchool: 'hovedskole',
     name: 'Navn',
     mail: 'E-post',
     username: 'Brukernavn',
+    mobile: 'Telefonnummer',
+    preferredLanguage: 'Føretrekt målform',
     groupTypes: {
       basic: 'Basisgruppe',
       teaching: 'Undervisningsgruppe',
       other: 'Andre grupper',
+      grepCode: 'Grepkodar',
     },
     wrongUserInfoDisclaimer:
-      'Dersom informasjon er feil, så må dette oppdaterast av vertsorganisasjon/skuleeigar som brukaren tilhøyrar. Oversikt over brukarstøtte finst her: ',
+      'Dersom informasjonen er feil, må den oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: ',
   },
   checkOutNewFeature: 'Sjekk ut ny funksjonalitet',
   slateBlockMenu: {
@@ -1006,6 +1066,13 @@ const messages = {
       missingName: 'Skriv navn på mappe',
       folderDeleted: '"{{folderName}}" er slettet',
       folderCreated: '"{{folderName}}" er oppretta',
+      onDragStart: 'Plukket opp mappa {{name}}. Mappa er på posisjon {{index}} av {{length}}',
+      onDragOver: 'Mappa {{name}} blei flytta til posisjon {{index}} av {{length}}',
+      onDragOverMissingOver: 'Mappa {{name}} er ikkje lenger over eit sleppbart område',
+      onDragEnd: 'Mappa {{name}} blei sloppe på posisjon {{index}} av {{length}}',
+      onDragEndMissingOver: 'Mappa blei sloppe',
+      onDragCancel: 'Flytting avbrutt. Mappa {{name}} blei sloppe',
+      dragHandle: 'Sorter mappen {{name}}',
     },
     tagList: 'Emneknagg',
     tags: '{{count}} emneknagg',
@@ -1024,13 +1091,18 @@ const messages = {
     favourites: 'Favoritter',
     addToFavourites: 'Legg til i mine favoritter',
     alreadyFavourited: 'Allerede lagt til i mine favoritter',
-    alreadyInFolder: 'Finnes allerede i mappen',
+    alreadyInFolder: 'Finnes allerede i mappen. Du kan fortsatt lagre nye emneknagger.',
+    noFolderSelected: 'Velg eller opprett ny mappe for å lagre ressursen',
+    examLockInfo: 'Redigering av innhold på Min NDLA er deaktivert for elever i eksamensperioden.',
     help: 'Hjelp',
     more: 'Flere valg',
     listView: 'Listevisning',
     detailView: 'Detaljert listevisning',
     shortView: 'Kort visning',
     myPage: {
+      noRecents: 'Du har ikkje lagt til nokon ressurar enno. Slik kjem du i gang:',
+      imageAlt:
+        'Halvnært bilde av jente som holder et nettbrett i hendene. Oppå nettbrettet ligger det ei samling fargeprøver i ulike former og farger. Grafikk.',
       confirmDeleteAccount: 'Er du sikker på at du vil slette kontoen?',
       confirmDeleteAccountButton: 'Slett konto',
       myPage: 'Min side',
@@ -1043,11 +1115,11 @@ const messages = {
       loginResourcePitch: 'Ønsker du å favorittmerke denne siden?',
       loginWelcome: 'Velkommen til NDLA! Her kan du organisere fagstoffet på <i>din</i> måte!',
       welcome:
-        'Velkommen til Min NDLA! Nå kan du lagre dine favorittressurser fra NDLA og organisere dem slik du ønsker i mapper og med emneknagger.',
-      read: { our: 'Les vår', ours: 'Les våre' },
-      privacy: 'personvernerklæring her',
+        'Velkommen til Min NDLA! Nå kan du lagre favorittressursene dine fra NDLA og organisere dem i mapper og med emneknagger.',
+      read: { read: 'Les', our: ' vår.' },
+      privacy: 'personvernerklæringa',
       privacyLink: 'https://om.ndla.no/gdpr',
-      questions: { question: 'Lurer du på noe?', ask: 'Spør oss i chatten' },
+      questions: { question: 'Lurer du på noe?', ask: 'Spør NDLA' },
       wishToDelete: 'Vil du ikke ha brukerprofil hos oss lenger?',
       terms: {
         terms: 'Vilkår for bruk',
@@ -1060,16 +1132,16 @@ const messages = {
       feideWrongInfo:
         'Dersom informasjon er feil, så må dette oppdateres av vertsorganisasjon/skoleeier som brukeren tilhører. Oversikt over brukerstøtte finnes her: feide.no/brukerstøtte',
       storageInfo: {
-        title: 'Slik lagrer du dine favorittressurser fra NDLA',
-        text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i en mappe.',
+        title: 'Slik lagrer du favorittressursene dine fra NDLA',
+        text: 'Klikk på hjerteknappen for å lagre en ressurs. Du vil da få mulighet til å lagre ressursen i ei mappe.',
       },
       folderInfo: {
-        title: 'Slik organiserer du dine favorittressurser i mapper',
-        text: 'Klikk på mine mapper i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette en ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
+        title: 'Slik organiserer du favorittressursene dine i mapper',
+        text: 'Klikk på <strong>Mine mapper</strong> i menyen til venstre for å komme til mappeoversikten. Her kan du opprette nye mapper og undermapper. Du kan også opprette ei ny mappe i dialogvinduet som kommer når du klikker på et hjerte i en ressurs.',
       },
       tagInfo: {
-        title: 'Slik tagger du dine favorittressurser',
-        text: 'Når du lagrer en ressurs får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt ved å velge mine emneknagger i venstremenyen. Her kan du også se hvilke ressurser du har markert med hver enkel emneknagg.',
+        title: 'Slik tagger du favorittressursene dine',
+        text: 'Når du lagrer en ressurs, får du mulighet til å markere ressursen med en emneknagg. Emneknaggen er et nøkkelord du kan bruke til å finne tilbake til ressurser på tvers av mapper. Du finner alle emneknaggene du har brukt, ved å velge <strong>Mine emneknagger</strong> i venstremenyen. Her kan du også se hvilke ressurser du har markert med hvilken emneknagg.',
       },
     },
     resource: {
@@ -1087,6 +1159,13 @@ const messages = {
       tagsUpdated: 'Emneknagger oppdatert',
       show: 'Vis',
       save: 'Lagre ressurs',
+      onDragStart: 'Plukket opp ressursen {{name}}. Ressursen er på posisjon {{index}} av {{length}}',
+      onDragOver: 'Ressursen {{name}} blei flytta til posisjon {{index}} av {{length}}',
+      onDragOverMissingOver: 'Ressursen {{name}} er ikkje lenger over eit sleppbart område',
+      onDragEnd: 'Ressursen {{name}} blei sloppe på posisjon {{index}} av {{length}}',
+      onDragEndMissingOver: 'Ressursen {{name}} blei sloppe',
+      onDragCancel: 'Flytting avbrutt. Ressursen {{name}} blei sloppe',
+      dragHandle: 'Sorter ressursen {{navn}}',
     },
   },
   snackbar: {

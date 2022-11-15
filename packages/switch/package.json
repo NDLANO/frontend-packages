@@ -1,6 +1,6 @@
 {
   "name": "@ndla/switch",
-  "version": "0.1.13",
+  "version": "1.0.3",
   "description": "Switch button for NDLA",
   "license": "GPL-3.0",
   "sideEffects": false,
@@ -26,11 +26,11 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^2.3.5"
+    "@ndla/core": "^3.0.3"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.9",
-    "@emotion/styled": "^10.0.9",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "react": "^16.8.0 || ^17.0.0"
   },
   "publishConfig": {

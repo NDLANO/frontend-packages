@@ -72,7 +72,7 @@ const colors = {
   tasksAndActivities: {
     background: '#f8e0c4',
     light: '#fbeddc',
-    dark: '#d98229',
+    dark: '#c77632',
     additional: 'rgba(251,237,220,0.4)',
   },
 

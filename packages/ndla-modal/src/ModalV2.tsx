@@ -8,7 +8,7 @@
 
 import React, { cloneElement, MouseEvent, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
-import { css, SerializedStyles } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/react';
 import { DialogContent, DialogOverlay } from '@reach/dialog';
 import { breakpoints, mq } from '@ndla/core';
 import { BaseProps, ModalAnimation, ModalMargin, ModalPosition, ModalSizeType } from './types';
@@ -20,6 +20,7 @@ interface DialogProps {
   position?: ModalPosition;
   animation?: ModalAnimation;
   modalMargin?: ModalMargin;
+  expands?: boolean;
 }
 
 interface StyledDialogOverlayProps {
@@ -52,6 +53,7 @@ interface StyledDialogContentProps {
   dialogSize: SerializedStyles;
   animationDuration: number;
   animationName: string;
+  expands?: boolean;
 }
 
 const forwardContent = (p: string) =>
@@ -66,6 +68,7 @@ const forwardContent = (p: string) =>
     'isOpen',
     'onClose',
     'animationName',
+    'expands',
   ].includes(p);
 
 const opposite = {
@@ -76,10 +79,11 @@ const opposite = {
 };
 
 const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardContent })<StyledDialogContentProps>`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   overflow-y: auto;
   background: white;
-  overflow: hidden;
   max-height: 100%;
   ${(p) => p.position !== 'center' && `${p.position}: ${p.margin}`};
   ${(p) => p.position !== 'center' && `${opposite[p.position]}: unset`};
@@ -94,6 +98,12 @@ const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardCo
     min-height: 100%;
   }
   ${(p) => p.dialogSize};
+  ${(p) =>
+    p.expands &&
+    css`
+      max-width: 100%;
+      max-height: 100%;
+    `};
 `;
 
 const ModalV2 = ({
@@ -105,6 +115,7 @@ const ModalV2 = ({
   className,
   label,
   labelledBy,
+  expands,
   animationDuration = 400,
   ...rest
 }: BaseProps & DialogProps) => {
@@ -177,6 +188,7 @@ const ModalV2 = ({
           onAnimationEnd={onAnimationEnd}
           className={` ${className}`}
           margin={margins[modalMargin]}
+          expands={expands}
           dialogSize={dialogSize}
           {...rest}>
           {children(closeModal)}

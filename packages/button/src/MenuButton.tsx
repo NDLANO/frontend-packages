@@ -25,27 +25,38 @@ const shouldForwardProp = (name: string) => name !== 'svgSize';
 const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledButtonProps>`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: ${spacing.small};
   padding: 0;
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  aspect-ratio: 1;
   background: none;
   border: none;
-  border-radius: 100%;
   transition: ${misc.transition.default};
-  &:hover,
-  &:active,
-  &:focus,
-  &:focus-within {
-    color: ${colors.brand.primary};
-    ${() => StyledHorizontalMenu} {
-      background-color: ${colors.brand.light};
-    }
-  }
+  color: ${colors.brand.secondary};
 
   svg {
     width: ${({ svgSize }) => svgSize}px;
     height: ${({ svgSize }) => svgSize}px;
-    fill: ${colors.brand.secondary};
+  }
+`;
+
+const MenuIconWrapper = styled.span<StyledButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${({ svgSize }) => svgSize}px;
+  height: ${({ svgSize }) => svgSize}px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  ${StyledMenuButton}:hover &,
+  ${StyledMenuButton}:active &,
+  ${StyledMenuButton}:focus &,
+  ${StyledMenuButton}:focus-within & {
+    background-color: ${colors.brand.lighter};
+    color: ${colors.brand.primary};
   }
 `;
 
@@ -91,18 +102,16 @@ export interface MenuItemProps {
 
 interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   menuItems?: MenuItemProps[];
-  children?: ReactNode;
-  menuButtonPrefix?: ReactNode;
-  hideMenuIcon?: boolean;
-  tabIndex?: number;
+  menuIcon?: ReactNode;
   size?: ButtonSize;
+  /** Change anchoring of popup menu */
   alignRight?: boolean;
 }
+
 export const MenuButton = ({
   menuItems,
   size,
-  children,
-  hideMenuIcon,
+  menuIcon,
   className,
   tabIndex,
   alignRight,
@@ -121,8 +130,9 @@ export const MenuButton = ({
           e.preventDefault();
         }} // Prevent redirect from triggering when placed inside <a>
         {...rest}>
-        {children}
-        {!hideMenuIcon && <StyledHorizontalMenu />}
+        <MenuIconWrapper svgSize={convertSizeForSVG(size || 'normal')}>
+          {menuIcon || <StyledHorizontalMenu />}
+        </MenuIconWrapper>
       </StyledMenuButton>
       <MenuPopover
         onKeyDown={(e) => {

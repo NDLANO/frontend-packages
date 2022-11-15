@@ -6,10 +6,10 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { keyframes } from '@emotion/core';
+import { css } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import NoContentBox from '../NoContentBox';
 import ResourceItem from './ResourceItem';
@@ -44,22 +44,20 @@ const StyledResourceList = styled.ul<StyledListProps>`
 
 export type ResourceListProps = {
   resources: Resource[];
-  onClick: () => void;
+  onClick?: () => void;
   contentType?: string;
   title?: string;
   showAdditionalResources?: boolean;
-  onToggleAddToFavorites: (id: string) => void;
-  showAddToFavoriteButton: boolean;
+  heartButton?: (path: string) => ReactNode;
 };
 
 const ResourceList = ({
   resources,
   onClick,
-  onToggleAddToFavorites,
   contentType,
   title,
   showAdditionalResources,
-  showAddToFavoriteButton,
+  heartButton,
 }: ResourceListProps) => {
   const { t } = useTranslation();
   const renderAdditionalResourceTrigger =
@@ -76,8 +74,7 @@ const ResourceList = ({
             key={id}
             contentType={contentType}
             showAdditionalResources={showAdditionalResources}
-            showAddToFavoriteButton={showAddToFavoriteButton}
-            onToggleAddToFavorites={onToggleAddToFavorites}
+            heartButton={heartButton}
             {...resource}
             contentTypeDescription={
               resource.additional ? t('resource.tooltipAdditionalTopic') : t('resource.tooltipCoreTopic')

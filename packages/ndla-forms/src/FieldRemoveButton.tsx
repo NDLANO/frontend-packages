@@ -7,7 +7,7 @@
  */
 
 import React, { HTMLProps, ReactNode } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Cross } from '@ndla/icons/action';
 import { colors, spacing, fonts } from '@ndla/core';
 

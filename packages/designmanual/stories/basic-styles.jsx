@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Translation, TranslationLine } from '@ndla/ui';
+import { colors } from '@ndla/core';
 import { StoryIntro, StoryBody } from './wrappers';
 import { AnchorNavigation } from './helpers';
 import Table from './molecules/TableExample';
@@ -40,51 +41,67 @@ storiesOf('Grunnstiler', module)
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#20588F' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.primary }} />
               <div className="o-list__label">
                 NDLA primærfarge
                 <br />
-                #20588F
+                {colors.brand.primary}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#507AA4' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.secondary }} />
               <div className="o-list__label">
                 NDLA sekundærfarge
                 <br />
-                #507AA4
+                {colors.brand.secondary}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors o-list__item ">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#A5BCD3' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.tertiary }} />
               <div className="o-list__label">
                 NDLA tertiærfarge
                 <br />
-                #A5BCD3
+                {colors.brand.tertiary}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors o-list__item">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#CEDDEA' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.light }} />
               <div className="o-list__label">
                 NDLA lys
                 <br />
-                #CEDDEA
+                {colors.brand.light}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors o-list__item">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#DEEBF6' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.lighter }} />
+              <div className="o-list__label">
+                NDLA lysere
+                <br />
+                {colors.brand.lighter}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors o-list__item">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.lightest }} />
               <div className="o-list__label">
                 NDLA lysest
                 <br />
-                #DEEBF6
+                {colors.brand.lightest}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#184673' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.dark }} />
               <div className="o-list__label">
                 NDLA mørk
                 <br />
-                #184673
+                {colors.brand.dark}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.accent }} />
+              <div className="o-list__label">
+                NDLA aksent
+                <br />
+                {colors.brand.accent}
               </div>
             </li>
           </ul>
@@ -103,35 +120,67 @@ storiesOf('Grunnstiler', module)
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#444444' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.text.primary }} />
               <div className="o-list__label">
-                Tekst Mørk
+                Mørk
                 <br />
-                #444444
+                {colors.text.primary}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#757575' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.text.light }} />
               <div className="o-list__label">
-                Tekst Lys
+                Lys
                 <br />
-                #757575
+                {colors.text.light}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#FFFFFF', border: swatchBorder }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.white, border: swatchBorder }} />
               <div className="o-list__label">
-                Tekst Hvit
+                Hvit
                 <br />
-                #FFFFFF
+                {colors.white}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#20588F' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.black }} />
               <div className="o-list__label">
-                Tekst Link
+                Svart(ish)
                 <br />
-                #20588F
+                {colors.black}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.markColor }} />
+              <div className="o-list__label">
+                Markering
+                <br />
+                {colors.markColor}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.primary }} />
+              <div className="o-list__label">
+                Lenke (primærfarge)
+                <br />
+                {colors.brand.primary}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.linkVisited }} />
+              <div className="o-list__label">
+                Lenke besøkt
+                <br />
+                {colors.linkVisited}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.tableBg }} />
+              <div className="o-list__label">
+                Bakgrunn tabell
+                <br />
+                {colors.tableBg}
               </div>
             </li>
           </ul>
@@ -146,43 +195,105 @@ storiesOf('Grunnstiler', module)
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#FFFFFF', border: swatchBorder }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.white, border: swatchBorder }} />
               <div className="o-list__label">
                 Nøytral Hvit
                 <br />
-                #FFFFFF
+                {colors.white}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#F8F8F8' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.greyLightest }} />
               <div className="o-list__label">
-                Nøytral 1<br />
-                #F8F8F8
+                Nøytral 1
+                <br />
+                {colors.brand.greyLightest}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#EFF0F2' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.greyLighter }} />
               <div className="o-list__label">
-                Nøytral 2<br />
-                #EFF0F2
+                Nøytral 2
+                <br />
+                {colors.brand.greyLighter}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#E8E3E3' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.greyLight }} />
               <div className="o-list__label">
-                Nøytral 3<br />
-                #E8E3E3
+                Nøytral 3
+                <br />
+                {colors.brand.greyLighter}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#8A8888' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.greyMedium }} />
               <div className="o-list__label">
-                Nøytral 4<br />
-                #8A8888
+                Nøytral 4
+                <br />
+                {colors.brand.greyMedium}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.brand.grey }} />
+              <div className="o-list__label">
+                Nøytral 5
+                <br />
+                {colors.brand.grey}
               </div>
             </li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="u-heading">Bakgrunnsfarger</h2>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: colors.background.default, border: swatchBorder }}
+              />
+              <div className="o-list__label">
+                Standard
+                <br />
+                {colors.background.default}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.background.dark }} />
+              <div className="o-list__label">
+                Mørk
+                <br />
+                {colors.background.dark}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.background.darker }} />
+              <div className="o-list__label">
+                Mørkere
+                <br />
+                {colors.background.darker}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.background.backgroundGray }} />
+              <div className="o-list__label">
+                Grå
+                <br />
+                {colors.background.backgroundGray}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.background.grayDark }} />
+              <div className="o-list__label">
+                Mørk grå
+                <br />
+                {colors.background.grayDark}
+              </div>
+            </li>
+          </ul>
+        </div>
+
         <div>
           <h2 className="u-heading">Innholdstypefarger</h2>
           <p>
@@ -197,208 +308,261 @@ storiesOf('Grunnstiler', module)
           <h3>Emner</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#184673' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.subject.dark }} />
               <div className="o-list__label">
-                Emner Mørk
+                Mørk
                 <br />
-                #184673
+                {colors.subject.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#CEDDEA' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.subject.light }} />
               <div className="o-list__label">
-                Emner Lys
+                Lys
                 <br />
-                #CEDDEA
+                {colors.subject.light}
               </div>
             </li>
           </ul>
           <h3>Fagstoff</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#5C6A4F' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.subjectMaterial.dark }} />
               <div className="o-list__label">
-                Fagstoff Mørk
+                Mørk
                 <br />
-                #5C6A4F
+                {colors.subjectMaterial.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#DDE9D0' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.subjectMaterial.light }} />
               <div className="o-list__label">
-                Fagstoff Lys
+                Lys
                 <br />
-                #DDE9D0
+                {colors.subjectMaterial.light}
               </div>
             </li>
           </ul>
           <h3>Ekstern læringressurs</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#4F7D76' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.externalLearningResource.dark }} />
               <div className="o-list__label">
-                Ekstern læringressurs Mørk
+                Mørk
                 <br />
-                #4F7D76
+                {colors.externalLearningResource.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#D0E8DE' }} />
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: colors.externalLearningResource.background }}
+              />
               <div className="o-list__label">
-                Ekstern læringressurs Bakgrunn
+                Bakgrunn
                 <br />
-                #D0E8DE
+                {colors.externalLearningResource.background}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#E6F3ED' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.externalLearningResource.light }} />
               <div className="o-list__label">
-                Ekstern læringressurs Lys
+                Lys
                 <br />
-                #E6F3ED
+                {colors.externalLearningResource.light}
               </div>
             </li>
           </ul>
           <h3>Kildemateriale</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#636E68' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.sourceMaterial.dark }} />
               <div className="o-list__label">
-                Kildemateriale Mørk
+                Mørk
                 <br />
-                #636E68
+                {colors.sourceMaterial.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#DCE5E0' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.sourceMaterial.light }} />
               <div className="o-list__label">
-                Kildemateriale Lys
+                Lys
                 <br />
-                #DCE5E0
+                {colors.sourceMaterial.light}
               </div>
             </li>
           </ul>
           <h3>Oppgaver og Aktiviteter</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#D98229' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.tasksAndActivities.dark }} />
               <div className="o-list__label">
-                Oppgaver og Aktiviteter Mørk
+                Mørk
                 <br />
-                #D98229
+                {colors.tasksAndActivities.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#F8E0C4' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.tasksAndActivities.background }} />
               <div className="o-list__label">
-                Oppgaver og Aktiviteter Bakgrunn
+                Bakgrunn
                 <br />
-                #F8E0C4
+                {colors.tasksAndActivities.background}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#FBEDDC' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.tasksAndActivities.light }} />
               <div className="o-list__label">
-                Oppgaver og Aktiviteter Lys
+                Lys
                 <br />
-                #FBEDDC
+                {colors.tasksAndActivities.light}
               </div>
             </li>
           </ul>
           <h3>Vurderingsressurs</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#C0676F' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.assessmentResource.dark }} />
               <div className="o-list__label">
-                Vurderingsressurs Mørk
+                Mørk
                 <br />
-                #C0676F
+                {colors.assessmentResource.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#EFD5D5' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.assessmentResource.background }} />
               <div className="o-list__label">
-                Vurderingsressurs Bakgrunn
+                Bakgrunn
                 <br />
-                #EFD5D5
+                {colors.assessmentResource.background}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#F5E7E5' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.assessmentResource.light }} />
               <div className="o-list__label">
-                Vurderingsressurs Lys
+                Lys
                 <br />
-                #F5E7E5
+                {colors.assessmentResource.light}
               </div>
             </li>
           </ul>
           <h3>Læringsti</h3>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#797979' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.learningPath.dark }} />
               <div className="o-list__label">
-                Læringssti Mørk
+                Mørk
                 <br />
-                #797979
+                {colors.learningPath.dark}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#F2EFEF' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.learningPath.background }} />
               <div className="o-list__label">
-                Læringssti bakgrunn
+                Bakgrunn
                 <br />
-                #F2EFEF
+                {colors.learningPath.background}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#E8E3E3' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.learningPath.light }} />
               <div className="o-list__label">
-                Læringssti Lys
+                Lys
                 <br />
-                #E8E3E3
+                {colors.learningPath.light}
               </div>
             </li>
           </ul>
           <h3>Tilleggsstoff</h3>
+          <p>Tilleggstoff bruker en farge fra fagstoffet, men med 40% opacity</p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(221, 233, 208, 0.4)' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.subjectMaterial.additional }} />
               <div className="o-list__label">
-                Tilleggsstoff Fagstoff
+                Fagstoff lys
                 <br />
-                #DDE9D0: 40% opacity
+                {colors.subjectMaterial.additional}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(208, 232, 222, 0.4)' }} />
+              <div
+                className="o-list__bgcolor"
+                style={{ backgroundColor: colors.externalLearningResource.additional }}
+              />
               <div className="o-list__label">
-                Tilleggsstoff ekstern Læringsressurs
+                Ekstern læringsressurs bakgrunn
                 <br />
-                #D0E8DE: 40% opacity
+                {colors.externalLearningResource.additional}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(220, 229, 224, 0.4)' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.sourceMaterial.additional }} />
               <div className="o-list__label">
-                Tilleggsstoff Kildemateriale
+                Kildemateriale lys
                 <br />
-                #DCE5E0: 40% opacity
+                {colors.sourceMaterial.additional}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(251, 237, 220, 0.4)' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.assessmentResource.additional }} />
               <div className="o-list__label">
-                Tilleggsstoff Oppgaver og Aktiviteter
+                Oppgaver og aktiviteter lys
                 <br />
-                #FBEDDC: 40% opacity
+                {colors.tasksAndActivities.additional}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: 'rgba(245, 231, 229, 0.4)' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.assessmentResource.additional }} />
               <div className="o-list__label">
-                Tilleggsstoff Vurderingsressurs
+                Vurderingsressurs lys
                 <br />
-                #F5E7E5: 40% opacity
+                {colors.assessmentResource.additional}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.learningPath.backgroundAdditional }} />
+              <div className="o-list__label">
+                Læringssti bakgrunn
+                <br />
+                {colors.learningPath.backgroundAdditional}
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="u-heading">NDLA Film</h2>
+          <ul className="o-list--colors">
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.ndlaFilm.filmColor }} />
+              <div className="o-list__label">
+                Film
+                <br />
+                {colors.ndlaFilm.filmColor}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.ndlaFilm.filmColorDark }} />
+              <div className="o-list__label">
+                Mørk
+                <br />
+                {colors.ndlaFilm.filmColorDark}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.ndlaFilm.filmColorLight }} />
+              <div className="o-list__label">
+                Lys
+                <br />
+                {colors.ndlaFilm.filmColorLight}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.ndlaFilm.filmColorBright }} />
+              <div className="o-list__label">
+                Lysere
+                <br />
+                {colors.ndlaFilm.filmColorBright}
               </div>
             </li>
           </ul>
@@ -413,27 +577,75 @@ storiesOf('Grunnstiler', module)
           </p>
           <ul className="o-list--colors">
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#d1372e' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.red }} />
               <div className="o-list__label">
-                Support Rød
+                Rød
                 <br />
-                #D1372E
+                {colors.support.red}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#5CBC80' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.redLight }} />
               <div className="o-list__label">
-                Support Grønn
+                Rød lysere
                 <br />
-                #5CBC80
+                {colors.support.redLight}
               </div>
             </li>
             <li className="o-list__item o-list__item--colors">
-              <div className="o-list__bgcolor" style={{ backgroundColor: '#EAD854' }} />
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.redLightest }} />
               <div className="o-list__label">
-                Support Gul
+                Rød lysest
                 <br />
-                #EAD854
+                {colors.support.redLightest}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.green }} />
+              <div className="o-list__label">
+                Grønn
+                <br />
+                {colors.support.green}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.greenLight }} />
+              <div className="o-list__label">
+                Grønn lysere
+                <br />
+                {colors.support.greenLight}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.greenLightest }} />
+              <div className="o-list__label">
+                Grønn lysest
+                <br />
+                {colors.support.greenLightest}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.yellow }} />
+              <div className="o-list__label">
+                Gul
+                <br />
+                {colors.support.yellow}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.yellowLight }} />
+              <div className="o-list__label">
+                Gul lysere
+                <br />
+                {colors.support.yellowLight}
+              </div>
+            </li>
+            <li className="o-list__item o-list__item--colors">
+              <div className="o-list__bgcolor" style={{ backgroundColor: colors.support.yellowLightest }} />
+              <div className="o-list__label">
+                Gul lysest
+                <br />
+                {colors.support.yellowLightest}
               </div>
             </li>
           </ul>

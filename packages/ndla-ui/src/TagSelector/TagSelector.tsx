@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2022-present, NDLA.
  *
  * This source code is licensed under the GPLv3 license found in the
@@ -6,107 +6,136 @@
  *
  */
 
-import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
+import React, { KeyboardEvent, useMemo, useState } from 'react';
+import CreatableSelect from 'react-select/creatable';
+import { MultiValue, StylesConfig } from 'react-select';
 import styled from '@emotion/styled';
-import { spacingUnit, fonts } from '@ndla/core';
-import { uuid } from '@ndla/util';
-import SuggestionInput from './SuggestionInput';
+import { colors, fonts, spacing, utils } from '@ndla/core';
+import { useTranslation } from 'react-i18next';
+import { TagType } from './types';
+import ValueButton from './ValueButton';
+import DropdownIndicator from './DropdownIndicator';
+import SelectContainer from './SelectContainer';
+import MenuList from './MenuList';
+import Control from './Control';
+import Option from './Option';
+import Menu from './Menu';
+import { createAriaMessages } from './ariaMessages';
+import Input from './Input';
 
-const DEFAULT_DROPDOWN_MAXHEIGHT = '240px';
+const styles: StylesConfig<TagType, true> = {
+  menu: () => ({}),
+  dropdownIndicator: () => ({}),
+  placeholder: (provided) => ({
+    ...provided,
+    padding: `0 ${spacing.small}`,
+    color: colors.brand.primary,
+    margin: 0,
+  }),
+  valueContainer: (provided) => ({ ...provided, padding: 0 }),
+  indicatorSeparator: () => ({
+    display: 'none',
+  }),
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    alignSelf: 'flex-end',
+  }),
+};
 
-const StyledLabel = styled.label`
-  font-weight: ${fonts.weight.semibold};
+const StyledTagSelector = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 `;
 
-export interface TagType {
-  name: string;
-  id: string;
+interface StyledLabelProps {
+  labelHidden?: boolean;
 }
+
+const StyledLabel = styled.label<StyledLabelProps>`
+  font-weight: ${fonts.weight.semibold};
+  ${(p) => p.labelHidden && utils.labelHidden}
+`;
 
 interface Props {
   label: string;
-  tags: TagType[];
-  tagsSelected: string[];
-  onToggleTag: (id: string) => void;
-  onCreateTag: (tagName: string) => void;
-  inline?: boolean;
-  prefix?: string;
+  tags: string[];
+  selected: string[];
+  onChange: (tags: string[]) => void;
+  onCreateTag: (name: string) => void;
+  className?: string;
+  labelHidden?: boolean;
 }
 
-const sortedTags = (tags: TagType[], selectedTags: string[]): TagType[] => {
-  const returnTags = selectedTags
-    .map((selectedId) => tags.find(({ id }) => selectedId === id))
-    .filter((notUndefined) => notUndefined) as unknown as TagType[];
-  return returnTags;
-};
+const TagSelector = ({
+  selected: _selected,
+  tags: _tags,
+  onChange,
+  onCreateTag,
+  className,
+  label,
+  labelHidden,
+}: Props) => {
+  const { t } = useTranslation();
+  const [input, setInput] = useState('');
+  const tags = useMemo(() => _tags.map((tag) => ({ value: tag, label: tag })), [_tags]);
+  const selected = useMemo(() => _selected.map((tag) => ({ value: tag, label: tag })), [_selected]);
 
-const getSuggestions = (tags: TagType[], inputValue: string): TagType[] => {
-  if (inputValue === '') {
-    return [];
-  }
-  const inputLowercase = inputValue.toLowerCase();
-  return tags
-    .filter(({ name }) => name.toLowerCase().startsWith(inputLowercase))
-    .sort((a, b) => a.name.localeCompare(b.name, 'nb'));
-};
-
-const TagSelector = ({ label, tags, tagsSelected, onCreateTag, onToggleTag, inline, prefix }: Props) => {
-  const [inputValue, setInputValue] = useState('');
-  const [expanded, setExpanded] = useState(false);
-  const [dropdownMaxHeight, setDropdownMaxHeight] = useState(DEFAULT_DROPDOWN_MAXHEIGHT);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inputIdRef = useRef<string>(uuid());
-
-  useEffect(() => {
-    setExpanded(false);
-  }, [tagsSelected]);
-
-  useEffect(() => {
-    const setMaxDropdownMaxHeight = () => {
-      if (!inline && containerRef.current && typeof window !== 'undefined') {
-        // Calculate distance from bottom of container to bottom of viewport
-        const containerBottom = containerRef.current.getBoundingClientRect().bottom;
-        const viewportBottom = document.documentElement.scrollHeight;
-        const maxDropdownHeight = viewportBottom - containerBottom;
-        setDropdownMaxHeight(`${maxDropdownHeight - spacingUnit}px`);
+  const handleSpaceClick = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      if (!_selected.find((tag) => tag === input) && input !== '') {
+        onChange(_selected.concat(input));
       }
-    };
-    if (!inline && typeof window !== 'undefined') {
-      if (expanded) {
-        setMaxDropdownMaxHeight();
-        window.addEventListener('resize', setMaxDropdownMaxHeight);
-      } else {
-        window.removeEventListener('resize', setMaxDropdownMaxHeight);
-      }
+      setInput('');
     }
-    return () => {
-      typeof window !== 'undefined' && window.removeEventListener('resize', setMaxDropdownMaxHeight);
-    };
-  }, [expanded, inline]);
+  };
+
+  const handleChange = (tags: MultiValue<TagType>) => {
+    onChange(tags.map((tag) => tag.value));
+  };
+
+  const createLabel = (tag: string) => t('tagSelector.createLabel', { tag });
 
   return (
-    <div ref={containerRef}>
-      <StyledLabel htmlFor={inputIdRef.current}>{label}</StyledLabel>
-      <SuggestionInput
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const target = e.target as HTMLInputElement;
-          setInputValue(target.value);
-          setExpanded(false);
+    <StyledTagSelector className={className}>
+      {label && (
+        <StyledLabel labelHidden={labelHidden} htmlFor="tagselector-creatable" id="tagselector-label">
+          {label}
+        </StyledLabel>
+      )}
+      <CreatableSelect
+        id="tagselector-creatable"
+        aria-labelledby={label ? 'tagselector-label' : undefined}
+        ariaLiveMessages={createAriaMessages(t)}
+        components={{
+          DropdownIndicator,
+          MultiValue: ValueButton,
+          SelectContainer,
+          MenuList,
+          Control,
+          Option,
+          Menu,
+          Input,
         }}
-        suggestions={expanded ? tags : getSuggestions(tags, inputValue)}
-        value={inputValue}
-        onCreateTag={onCreateTag}
-        onToggleTag={onToggleTag}
-        setInputValue={setInputValue}
-        addedTags={sortedTags(tags, tagsSelected)}
-        expanded={expanded}
-        setExpanded={setExpanded}
-        dropdownMaxHeight={dropdownMaxHeight}
-        inline={inline}
-        scrollAnchorElement={containerRef}
-        prefix={prefix}
+        formatCreateLabel={createLabel}
+        inputValue={input}
+        isClearable={false}
+        isMulti
+        noOptionsMessage={() => t('tagSelector.noOptions')}
+        onChange={handleChange}
+        onCreateOption={onCreateTag}
+        onInputChange={setInput}
+        onKeyDown={handleSpaceClick}
+        options={tags}
+        placeholder={t('tagSelector.placeholder')}
+        screenReaderStatus={({ count }) => t('tagSelector.aria.screenReaderStatus', { count })}
+        styles={styles}
+        tabSelectsValue={false}
+        value={selected}
       />
-    </div>
+    </StyledTagSelector>
   );
 };
 

@@ -25,7 +25,7 @@ export interface FeideMembershipType {
 
 interface FeideBaseGroup {
   id: string;
-  type: 'fc:org' | 'fc:gogroup';
+  type: 'fc:org' | 'fc:gogroup' | 'fc:grep';
   displayName: string;
   membership: FeideMembershipType;
 }
@@ -53,7 +53,14 @@ export interface FeideGoGroup extends FeideBaseGroup {
   };
 }
 
-export type FeideGroup = FeideOrg | FeideGoGroup;
+export interface FeideGrep extends FeideBaseGroup {
+  type: 'fc:grep';
+  code: string;
+  grep_type: 'aarstrinn' | 'fagkoder';
+  public: boolean;
+}
+
+export type FeideGroup = FeideOrg | FeideGoGroup | FeideGrep;
 
 export interface FeideUser {
   cn: string[];
@@ -66,9 +73,12 @@ export interface FeideUser {
   schacHomeOrganization?: string;
   sn: string[];
   uid: string[];
+  preferredLanguage?: string;
+  mobile?: string;
 }
 
 export interface FeideUserApiType extends FeideUser {
   groups: FeideGroup[];
   primarySchool?: FeideGroup;
+  baseOrg?: FeideGroup;
 }

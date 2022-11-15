@@ -8,8 +8,8 @@
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
-import { colors, fonts, misc, spacing } from '@ndla/core';
-import { css } from '@emotion/core';
+import { colors, fonts, misc, utils } from '@ndla/core';
+import { css } from '@emotion/react';
 import { uniq } from 'lodash';
 import { IFolder } from '@ndla/types-learningpath-api';
 import FolderItems from './FolderItems';
@@ -18,7 +18,7 @@ import { CommonTreeStructureProps, FolderType, NewFolderInputFunc, TreeStructure
 import ComboboxButton from './ComboboxButton';
 import AddFolderButton from './AddFolderButton';
 
-export const MAX_LEVEL_FOR_FOLDERS = 4;
+export const MAX_LEVEL_FOR_FOLDERS = 5;
 
 const StyledLabel = styled.label`
   font-weight: ${fonts.weight.semibold};
@@ -61,17 +61,9 @@ const ScrollableDiv = styled.div<ScrollableDivProps>`
   ${({ type }) =>
     type === 'picker' &&
     css`
+      overflow: auto;
       overflow: overlay;
-      ::-webkit-scrollbar {
-        width: ${spacing.small};
-      }
-      ::-webkit-scrollbar-thumb {
-        border: 4px solid transparent;
-        border-radius: 14px;
-        background-clip: padding-box;
-        padding: 0 4px;
-        background-color: ${colors.brand.neutral7};
-      }
+      ${utils.scrollbar}
     `}
 `;
 
@@ -82,6 +74,7 @@ export interface TreeStructureProps extends CommonTreeStructureProps {
   maxLevel?: number;
   newFolderInput?: NewFolderInputFunc;
   onSelectFolder?: (id: string) => void;
+  ariaDescribedby?: string;
 }
 
 const TreeStructure = ({
@@ -94,6 +87,7 @@ const TreeStructure = ({
   targetResource,
   type,
   newFolderInput,
+  ariaDescribedby,
 }: TreeStructureProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -219,6 +213,7 @@ const TreeStructure = ({
             flattenedFolders={flattenedFolders}
             onCloseFolder={onCloseFolder}
             onOpenFolder={onOpenFolder}
+            ariaDescribedby={ariaDescribedby}
           />
         )}
         {showTree && (

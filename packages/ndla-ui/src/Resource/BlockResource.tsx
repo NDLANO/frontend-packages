@@ -25,26 +25,12 @@ import {
 import ContentLoader from '../ContentLoader';
 import { contentTypeMapping } from '../model/ContentType';
 
-interface BlockResourceProps {
-  id: string;
-  link: string;
-  tagLinkPrefix?: string;
-  title: string;
-  resourceImage: ResourceImageProps;
-  tags?: string[];
-  description?: string;
-  menuItems?: MenuItemProps[];
-  isLoading?: boolean;
-  targetBlank?: boolean;
-  resourceTypes?: { id: string; name: string }[];
-}
-
 const BlockElementWrapper = styled.div`
   display: flex;
   text-decoration: none;
   box-shadow: none;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 450px;
   max-height: 240px;
   border: 1px solid ${colors.brand.light};
   border-radius: 2px;
@@ -82,14 +68,18 @@ const BlockDescription = styled.p`
 
 const RightRow = styled(Row)`
   justify-content: flex-end;
-  margin-bottom: -${spacing.xxsmall};
+  margin: 0 -${spacing.small} -${spacing.small} 0;
 `;
 
 const BlockInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${spacing.small};
-  gap: ${spacing.xxsmall};
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const ImageWrapper = styled.div`
@@ -98,11 +88,13 @@ const ImageWrapper = styled.div`
   justify-content: center;
   overflow: hidden;
   align-items: center;
-  aspect-ratio: 3/4;
   img {
+    object-fit: cover;
+    aspect-ratio: 4/3;
     min-width: 100%;
   }
 `;
+
 interface BlockImageProps {
   image: ResourceImageProps;
   loading?: boolean;
@@ -141,6 +133,21 @@ const ResourceTypeAndTitleLoader = ({ children, loading }: LoaderProps) => {
   return <>{children}</>;
 };
 
+interface Props {
+  id: string;
+  link: string;
+  tagLinkPrefix?: string;
+  title: string;
+  resourceImage: ResourceImageProps;
+  tags?: string[];
+  description?: string;
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  menuItems?: MenuItemProps[];
+  isLoading?: boolean;
+  targetBlank?: boolean;
+  resourceTypes?: { id: string; name: string }[];
+}
+
 const BlockResource = ({
   id,
   link,
@@ -151,11 +158,13 @@ const BlockResource = ({
   description,
   menuItems,
   isLoading,
+  headingLevel = 'h2',
   targetBlank,
   resourceTypes,
-}: BlockResourceProps) => {
+}: Props) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const firstResourceType = resourceTypes?.[0].id ?? '';
+  const firstResourceType = resourceTypes?.[0]?.id ?? '';
+  const Title = ResourceTitle.withComponent(headingLevel);
 
   const handleClick = () => {
     if (linkRef.current) {
@@ -173,15 +182,17 @@ const BlockResource = ({
         />
       </ImageWrapper>
       <BlockInfoWrapper>
-        <ResourceTypeAndTitleLoader loading={isLoading}>
-          <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
-            <ResourceTitle>{title}</ResourceTitle>
-          </ResourceTitleLink>
-        </ResourceTypeAndTitleLoader>
-        <ResourceTypeList resourceTypes={resourceTypes} />
-        <BlockDescription>{description}</BlockDescription>
+        <ContentWrapper>
+          <ResourceTypeAndTitleLoader loading={isLoading}>
+            <ResourceTitleLink title={title} target={targetBlank ? '_blank' : undefined} to={link} ref={linkRef}>
+              <Title>{title}</Title>
+            </ResourceTitleLink>
+          </ResourceTypeAndTitleLoader>
+          <ResourceTypeList resourceTypes={resourceTypes} />
+          <BlockDescription>{description}</BlockDescription>
+        </ContentWrapper>
         <RightRow>
-          {tags && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
+          {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
           {menuItems && menuItems.length > 0 && <MenuButton alignRight size="small" menuItems={menuItems} />}
         </RightRow>
       </BlockInfoWrapper>

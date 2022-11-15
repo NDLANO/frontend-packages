@@ -410,7 +410,7 @@ const Controls = ({ src, title }: Props) => {
   };
 
   return (
-    <>
+    <div>
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <ControlsWrapper>
         <PlayButton type="button" onClick={togglePlay} title="play" aria-label="play">
@@ -514,7 +514,7 @@ const Controls = ({ src, title }: Props) => {
           </Menu>
         </VolumeWrapper>
       </ControlsWrapper>
-    </>
+    </div>
   );
 };
 

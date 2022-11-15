@@ -10,7 +10,7 @@ import React, { HTMLProps, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 
-interface Props extends HTMLProps<HTMLDivElement> {
+interface Props extends Omit<HTMLProps<HTMLDivElement>, 'as'> {
   children?: ReactNode;
 }
 

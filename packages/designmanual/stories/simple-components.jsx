@@ -16,11 +16,8 @@ import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
 import TooltipExample from './atoms/TooltipExample';
-import ButtonExample from './atoms/ButtonExample';
-import ButtonV2Example from './atoms/ButtonV2Example';
 import ModalV2Example from './atoms/ModalV2Example';
 import DrawerExample from './atoms/DrawerExample';
-import IconButtonDualStatesExample from './atoms/IconButtonDualStatesExample';
 import SolutionTableExample from './molecules/SolutionExample';
 import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
@@ -652,12 +649,9 @@ storiesOf('Enkle komponenter', module)
       </OneColumn>
     </div>
   ))
-  .add('Knapper', () => <ButtonExample />)
-  .add('Knapper BETA', () => <ButtonV2Example />)
-  .add('Modaler BETA', () => <ModalV2Example />)
+  .add('Modaler', () => <ModalV2Example />)
   .add('Skuff', () => <DrawerExample />)
 
-  .add('2 stats ikonknapper', () => <IconButtonDualStatesExample />)
   .add('Logo', () => (
     <div>
       <StoryIntro title="Logo">

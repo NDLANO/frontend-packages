@@ -15,7 +15,7 @@ npm install @ndla/util
 ## Usage
 
 ```js
-import uuid from '@ndla/util/uuid');
+import uuid from '@ndla/util/uuid';
 
 const unique = uuid();
 console.log(unique); // > 'b56f476a-bc77-49cd-8be1-9d9aa93117ca'
@@ -24,7 +24,7 @@ console.log(unique); // > 'b56f476a-bc77-49cd-8be1-9d9aa93117ca'
 or
 
 ```js
-import { uuid } from '@ndla/util');
+import { uuid } from '@ndla/util';
 
 const unique = uuid();
 console.log(unique); // > '0ada1b02-5888-43fd-9fbc-ccdbb69528f2'

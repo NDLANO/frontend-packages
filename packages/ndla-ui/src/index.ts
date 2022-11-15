@@ -24,7 +24,6 @@ export {
   ArticleHeaderWrapper,
   ArticleSideBar,
   default as Article,
-  ArticleFavoritesButton,
 } from './Article';
 
 export { CompetenceGoalsDialog } from './CompetenceGoals';
@@ -87,7 +86,7 @@ export {
   NdlaFilmHero,
 } from './Hero';
 
-export { FilterList, FilterListPhone, FilterButtons } from './Filter';
+export { FilterList, FilterListPhone, FilterButtons, ToggleItem } from './Filter';
 
 export { Footer, EditorName, FooterText, FooterAuth } from './Footer';
 
@@ -175,7 +174,7 @@ export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcru
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist';
-export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
+export { i18nInstance, formatNestedMessages } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';
@@ -255,3 +254,4 @@ export { TreeStructure } from './TreeStructure';
 export type { FolderType, TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
+export { default as LetterFilter } from './LetterFilter';

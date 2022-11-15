@@ -8,7 +8,7 @@
 
 import React, { Component, MouseEvent as ReactMouseEvent, createRef, MutableRefObject } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Tooltip from '@ndla/tooltip';
 import { isNumber } from 'lodash';
 import { DragHorizontal, DeleteForever } from '@ndla/icons/editor';

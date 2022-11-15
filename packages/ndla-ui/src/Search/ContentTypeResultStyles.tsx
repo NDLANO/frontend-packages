@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { colors, spacing, spacingUnit, fonts, misc, animations, mq, breakpoints } from '@ndla/core';
 
 export const highlightStyle = css`

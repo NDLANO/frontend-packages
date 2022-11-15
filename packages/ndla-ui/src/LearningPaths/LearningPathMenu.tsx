@@ -6,9 +6,9 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@ndla/tooltip';
 import { useWindowSize } from '@ndla/hooks';
@@ -76,7 +76,7 @@ export type StepProps = {
 };
 
 interface Props {
-  onToggleAddToFavorites?: () => void;
+  heartButton?: ReactNode;
   learningsteps: StepProps[];
   name: string;
   lastUpdated: string;
@@ -110,7 +110,7 @@ const LearningPathMenu = ({
   learningPathURL,
   invertedStyle,
   cookies,
-  onToggleAddToFavorites,
+  heartButton,
 }: Props) => {
   const { t } = useTranslation();
   const [isOpen, toggleOpenState] = useState(false);
@@ -136,7 +136,7 @@ const LearningPathMenu = ({
               name={name}
               invertedStyle={invertedStyle}
               id={learningPathId}
-              onToggleAddToFavorites={onToggleAddToFavorites}
+              heartButton={heartButton}
             />
             <LearningPathMenuContent
               learningsteps={learningsteps}

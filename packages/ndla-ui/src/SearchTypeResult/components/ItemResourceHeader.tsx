@@ -10,7 +10,7 @@ import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 
-import { animations, fonts, spacing } from '@ndla/core';
+import { fonts, spacing } from '@ndla/core';
 
 import { ContentType } from '../SearchTypeResult';
 import { SearchItemType } from '../SearchItem';
@@ -23,32 +23,30 @@ type ItemTypeProps = {
 };
 
 const ImageElement = styled.img`
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+const ImageWrapper = styled.div`
   flex: 1;
-  min-height: 40px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: hidden;
 `;
 
 const NoImageElement = styled.div<ItemTypeProps>`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   flex: 1;
-  min-height: 40px;
   background: ${(props) => props.contentType && `${resourceTypeColor(props.contentType)}`};
   position: relative;
-  transition: background-color ${animations.durations.normal} ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .c-content-type-badge {
-    transition: all ${animations.durations.normal} ease-in-out;
-    position: absolute;
     width: 58px;
     height: 58px;
-    left: 50%;
-    margin-left: -29px;
-    top: 50%;
-    margin-top: -18px;
     opacity: 0.2;
     z-index: 3;
     svg {
@@ -68,7 +66,6 @@ const ContentTypeWrapper = styled.div<ItemTypeProps>`
   padding: 0 ${spacing.normal};
   ${fonts.sizes('12px', '16px')};
   font-weight: ${fonts.weight.semibold};
-  transition: all ${animations.durations.fast} ease-in-out;
 `;
 
 const ContentTypeIcon = styled.span<ItemTypeProps>`
@@ -85,11 +82,8 @@ const ContentTypeIcon = styled.span<ItemTypeProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all ${animations.durations.fast} ease-in-out;
   z-index: 2;
-
   svg {
-    transition: all ${animations.durations.fast} ease-in-out;
     width: 20px;
     height: 20px;
   }
@@ -106,16 +100,18 @@ const ItemResourceHeader = ({ labels = [], img, type }: Props) => {
   return (
     <>
       {img ? (
-        <ImageElement src={img.url} alt={img.alt} />
+        <ImageWrapper>
+          <ImageElement src={img.url} alt={img.alt} />
+        </ImageWrapper>
       ) : (
-        <NoImageElement className="resource-no-image" contentType={type}>
-          {type && <ContentTypeBadge type={type} border={false} />}
-        </NoImageElement>
+        <NoImageElement contentType={type}>{type && <ContentTypeBadge type={type} border={false} />}</NoImageElement>
       )}
       <ContentTypeWrapper className="resource-type-wrapper" contentType={type}>
-        <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
-          {img && type && <ContentTypeBadge type={type} border={false} />}
-        </ContentTypeIcon>
+        {img && type && (
+          <ContentTypeIcon className="resource-icon-wrapper" contentType={type}>
+            <ContentTypeBadge type={type} border={false} />
+          </ContentTypeIcon>
+        )}
         {type && t(`contentTypes.${type}`)}
         {labels.length > 0 && (
           <>

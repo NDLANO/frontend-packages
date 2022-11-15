@@ -91,7 +91,6 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
             <ImageWrapper>
               <Notion
                 id={notionId}
-                ariaLabel={t('factbox.open')}
                 title={concept.title}
                 subTitle={t('searchPage.resultType.notionsHeading')}
                 hideBaselineIcon
@@ -127,7 +126,6 @@ const ConceptNotion = ({ concept, disableScripts, type, hideIconsAndAuthors, fig
             <ImageWrapper>
               <Notion
                 id={notionId}
-                ariaLabel={t('factbox.open')}
                 title={concept.title}
                 hideBaselineIcon
                 subTitle={t('searchPage.resultType.notionsHeading')}

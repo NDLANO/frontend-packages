@@ -52,6 +52,7 @@ const SpeechControl = ({ src, title }: Props) => {
   };
   return (
     <div>
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src={src} title={title} preload="metadata" />
       <SpeechPlayButton type="button" onClick={togglePlay}>
         <VolumeUp role="img" aria-label="play" title="play" />

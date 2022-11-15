@@ -1,6 +1,6 @@
 {
   "name": "@ndla/tooltip",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Tooltip component from NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -28,7 +28,7 @@
     "es"
   ],
   "dependencies": {
-    "@ndla/core": "^3.0.2",
+    "@ndla/core": "^3.0.3",
     "@reach/auto-id": "^0.16.0",
     "@reach/tooltip": "^0.16.2"
   },

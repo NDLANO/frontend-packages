@@ -138,7 +138,7 @@ export const MessageBox = ({ type, children = '', links, showCloseButton, onClos
           {links && (
             <LinkWrapper>
               {links.map((x) => (
-                <Link href={x.href}>
+                <Link href={x.href} key={x.href}>
                   <span>{x.text}</span>
                   <Forward />
                 </Link>

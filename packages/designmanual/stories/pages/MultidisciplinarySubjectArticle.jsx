@@ -8,9 +8,8 @@
 
 import React, { useState } from 'react';
 
-import { Breadcrumblist, MultidisciplinarySubjectHeader } from '@ndla/ui';
+import { Breadcrumblist, MultidisciplinarySubjectHeader, ArticleSideBar } from '@ndla/ui';
 import { useTranslation } from 'react-i18next';
-import { ArticleSideBar } from '@ndla/ui';
 import ArticleLoader from '../article/ArticleLoader';
 
 const MultidisciplinarySubjectArticle = ({ articleId = '22220', subjects = [] }) => {

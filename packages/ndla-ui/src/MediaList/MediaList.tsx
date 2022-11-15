@@ -147,6 +147,7 @@ export const MediaListItemMeta = ({ items = [] }: MediaListItemMetaProps) => {
 
   return (
     //@ts-ignore
+    // eslint-disable-next-line react/no-unknown-property
     <ul {...cClasses('actions')} property="cc:attributionName" content={attributionMeta}>
       {items.map((item) => (
         <li key={uuid()} className="c-medialist__meta-item">

@@ -174,7 +174,7 @@ export { default as Breadcrumb, HeaderBreadcrumb, HomeBreadcrumb, ActionBreadcru
 export type { SimpleBreadcrumbItem, IndexedBreadcrumbItem } from './Breadcrumb';
 
 export type { BreadcrumbItemProps } from './Breadcrumblist';
-export { i18nInstance, formatNestedMessages, formatMessage } from './i18n';
+export { i18nInstance, formatNestedMessages } from './i18n';
 export { default as ResourceGroup } from './ResourceGroup';
 
 export { default as LayoutItem, OneColumn, PageContainer, Content } from './Layout';

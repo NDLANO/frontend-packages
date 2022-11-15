@@ -203,6 +203,7 @@ const ButtonV2 = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ colorTheme = 'primary', size, variant, inverted, shape, fontWeight, children, type = 'button', ...rest }, ref) => {
     return (
       <button
+        // eslint-disable-next-line react/button-has-type
         type={type}
         css={buttonStyle({ colorTheme, size, variant, inverted, shape, fontWeight })}
         {...rest}

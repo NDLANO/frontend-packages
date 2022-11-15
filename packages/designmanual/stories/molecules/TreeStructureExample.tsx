@@ -145,6 +145,12 @@ export const TreeStructureExampleComponent = ({
   onNewFolder?: boolean;
 }) => {
   const [structure, setStructure] = useState<IFolder[]>(initalStructure);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
   return (
     <Container type={type}>
       <TreeStructure
@@ -163,7 +169,7 @@ export const TreeStructureExampleComponent = ({
           />
         )}
         folders={structure}
-        loading={false}
+        loading={loading}
       />
     </Container>
   );
@@ -241,6 +247,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
 
   return (
     <StyledFolderInput
+      // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus
       labelHidden
       name="name"

@@ -91,8 +91,8 @@ const SubjectNewContent = ({ heading, content }: Props) => (
     <StyledSubjectSectionTitle>{heading}</StyledSubjectSectionTitle>
     <nav>
       <StyledUl>
-        {content.map((item) => (
-          <StyledListItem>
+        {content.map((item, index) => (
+          <StyledListItem key={index}>
             <LeftWrapper>
               <ContentTypeBadge type={item.contentType} size="x-small" background border />
               <ContentLinkWrapper>

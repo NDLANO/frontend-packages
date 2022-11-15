@@ -19,6 +19,7 @@ interface AddFolderButtonProps {
   focusedFolder?: IFolder;
   setNewFolderParentId: (id?: string) => void;
   setShowTree: (value: boolean) => void;
+  loading?: boolean;
 }
 
 const StyledAddFolderButton = styled(Button)`
@@ -33,30 +34,28 @@ const StyledPlus = styled(Plus)`
   width: 24px;
 `;
 
-const AddFolderButton = ({ canAddFolder, setNewFolderParentId, focusedFolder, setShowTree }: AddFolderButtonProps) => {
+const AddFolderButton = ({
+  canAddFolder,
+  loading,
+  setNewFolderParentId,
+  focusedFolder,
+  setShowTree,
+}: AddFolderButtonProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLButtonElement>(null);
+  const tooltip = loading
+    ? t('loading')
+    : canAddFolder
+    ? t('myNdla.newFolderUnder', { folderName: focusedFolder?.name })
+    : t('treeStructure.maxFoldersAlreadyAdded');
   return (
-    <Tooltip
-      tooltip={
-        canAddFolder
-          ? t('myNdla.newFolderUnder', {
-              folderName: focusedFolder?.name,
-            })
-          : t('treeStructure.maxFoldersAlreadyAdded')
-      }>
+    <Tooltip tooltip={tooltip}>
       <StyledAddFolderButton
         ref={ref}
         variant="outline"
         shape="pill"
-        disabled={!canAddFolder}
-        aria-label={
-          canAddFolder
-            ? t('myNdla.newFolderUnder', {
-                folderName: focusedFolder?.name,
-              })
-            : t('treeStructure.maxFoldersAlreadyAdded')
-        }
+        disabled={loading || !canAddFolder}
+        aria-label={tooltip}
         onMouseDown={(e) => {
           e.preventDefault();
           e.stopPropagation();

@@ -16,6 +16,7 @@ import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
 import { TreeStructureType } from './types';
 import { arrowNavigation } from './arrowNavigation';
+import ContentLoader from '../ContentLoader';
 
 interface StyledRowProps {
   isOpen: boolean;
@@ -55,6 +56,7 @@ interface Props {
   focusedFolder?: IFolder;
   selectedFolder?: IFolder;
   setSelectedFolder: (folder: IFolder) => void;
+  loading?: boolean;
   onToggleTree: (open: boolean) => void;
   flattenedFolders: IFolder[];
   onOpenFolder: (id: string) => void;
@@ -77,6 +79,7 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
       setFocusedFolder,
       onOpenFolder,
       onCloseFolder,
+      loading,
       ariaDescribedby,
     },
     ref,
@@ -116,25 +119,48 @@ const ComboboxButton = forwardRef<HTMLButtonElement, Props>(
             innerRef.current?.focus();
           }
         }}>
-        <StyledSelectedFolder
-          ref={innerRef}
-          tabIndex={0}
-          id={treestructureId(type, 'combobox')}
-          role="combobox"
-          aria-controls={treestructureId(type, 'popup')}
-          aria-haspopup="tree"
-          aria-expanded={showTree}
-          aria-labelledby={label ? treestructureId(type, 'label') : undefined}
-          aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
-          aria-describedby={ariaDescribedby}
+        {loading && (
+          <ContentLoader width={1000} height={40}>
+            <rect x="15" y="0" width="1000" rx="3" ry="3" r="15" height="40" />
+          </ContentLoader>
+        )}
+        {!loading && (
+          <StyledSelectedFolder
+            ref={innerRef}
+            tabIndex={0}
+            id={treestructureId(type, 'combobox')}
+            role="combobox"
+            aria-controls={treestructureId(type, 'popup')}
+            aria-haspopup="tree"
+            aria-expanded={showTree}
+            aria-labelledby={label ? treestructureId(type, 'label') : undefined}
+            aria-activedescendant={focusedFolder ? treestructureId(type, focusedFolder.id) : undefined}
+            aria-describedby={ariaDescribedby}
+            variant="ghost"
+            colorTheme="light"
+            fontWeight="normal"
+            shape="sharp"
+            onKeyDown={onKeyDown}
+            onClick={() => {
+              innerRef.current?.focus();
+              onToggleTree(!showTree);
+            }}>
+            {selectedFolder?.name}
+          </StyledSelectedFolder>
+        )}
+        <IconButton
+          disabled={loading}
+          aria-busy={loading}
+          aria-hidden
+          aria-label=""
+          tabIndex={-1}
           variant="ghost"
-          colorTheme="light"
-          fontWeight="normal"
-          shape="sharp"
-          onKeyDown={onKeyDown}>
-          {selectedFolder?.name}
-        </StyledSelectedFolder>
-        <IconButton aria-hidden aria-label="" tabIndex={-1} variant="ghost" colorTheme="greyLighter" size="small">
+          colorTheme="greyLighter"
+          size="small"
+          onClick={() => {
+            innerRef.current?.focus();
+            onToggleTree(!showTree);
+          }}>
           {showTree ? <ChevronUp /> : <ChevronDown />}
         </IconButton>
       </StyledRow>

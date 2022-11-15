@@ -65,7 +65,7 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <h1 tabIndex={0}>{children}</h1>
+      <h1 tabIndex={-1}>{children}</h1>
     </div>
   );
 };

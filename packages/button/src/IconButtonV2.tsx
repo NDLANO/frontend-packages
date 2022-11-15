@@ -50,6 +50,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     { type = 'button', size = 'small', colorTheme = 'primary', variant, fontWeight, inverted, children, ...rest },
     ref,
   ) => (
+    // eslint-disable-next-line react/button-has-type
     <button type={type} ref={ref} css={iconButtonStyle({ size, variant, fontWeight, inverted, colorTheme })} {...rest}>
       {children}
     </button>

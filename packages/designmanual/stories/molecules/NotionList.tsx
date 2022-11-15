@@ -36,8 +36,8 @@ const NotionList = ({ title, notions }: Props) => {
         <>
           <NotionListTitle>{title}</NotionListTitle>
           <StyledList>
-            {notions.map((notion) => (
-              <li>
+            {notions.map((notion, index) => (
+              <li key={index}>
                 <NotionBlock type={notion.type} hideIconsAndAuthors></NotionBlock>
               </li>
             ))}

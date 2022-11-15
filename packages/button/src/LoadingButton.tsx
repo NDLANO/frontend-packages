@@ -7,8 +7,7 @@
  */
 
 import { Spinner } from '@ndla/icons';
-import React from 'react';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button, { ButtonProps } from './ButtonV2';
 

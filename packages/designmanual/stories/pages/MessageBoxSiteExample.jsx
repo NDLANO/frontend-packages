@@ -7,13 +7,12 @@
  */
 
 import React from 'react';
-import { PageContainer, Content } from '@ndla/ui';
-import { Programme, MessageBox } from '@ndla/ui';
+import { PageContainer, Content, Programme, MessageBox } from '@ndla/ui';
 import MastheadWithTopicMenu from '../molecules/mastheads';
 
 import { programme } from '../../dummydata/mockPrograms';
 
-const MessageBoxSiteExample = ({ type, message }) => {
+const MessageBoxSiteExample = ({ type }) => {
   return (
     <PageContainer>
       <MastheadWithTopicMenu menuProps={{ hideSubject: true }} />

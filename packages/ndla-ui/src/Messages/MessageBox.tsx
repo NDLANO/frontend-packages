@@ -137,7 +137,7 @@ export const MessageBox = ({ type, children = '', links, showCloseButton, onClos
           <TextWrapper dangerouslySetInnerHTML={{ __html: markdown.render(children) }} />
           {links && (
             <LinkWrapper>
-              {links.map((x, key) => (
+              {links.map((x) => (
                 <Link href={x.href} key={x.href}>
                   <span>{x.text}</span>
                   <Forward />

@@ -12,11 +12,11 @@ import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
 import { ButtonV2 as Button } from '@ndla/button';
 import { Plus } from '@ndla/icons/action';
-import { FolderType } from './types';
+import { IFolder } from '@ndla/types-learningpath-api';
 
 interface AddFolderButtonProps {
   canAddFolder: boolean;
-  focusedFolder?: FolderType;
+  focusedFolder?: IFolder;
   setNewFolderParentId: (id?: string) => void;
   setShowTree: (value: boolean) => void;
   loading?: boolean;

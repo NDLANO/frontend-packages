@@ -251,7 +251,7 @@ export { SnackbarProvider, useSnack, BaseSnack, DefaultSnackbar } from './SnackB
 export type { Snack, SnackContext } from './SnackBar';
 export { InfoBlock } from './InfoBlock';
 export { TreeStructure } from './TreeStructure';
-export type { FolderType, TreeStructureProps } from './TreeStructure';
+export type { TreeStructureProps } from './TreeStructure';
 
 export { SearchField, SearchResultList, SearchResultItem, ActiveFilters, ToggleSearchButton } from './Search';
 export { default as LetterFilter } from './LetterFilter';

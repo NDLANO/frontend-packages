@@ -14,7 +14,8 @@ import { Done } from '@ndla/icons/editor';
 import { ButtonV2 as Button } from '@ndla/button';
 import { colors, spacing, animations, spacingUnit, misc, fonts } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
-import { CommonFolderItemsProps, FolderType } from './types';
+import { IFolder } from '@ndla/types-learningpath-api';
+import { CommonFolderItemsProps } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import { treestructureId } from './helperFunctions';
 
@@ -104,8 +105,9 @@ const FolderNameLink = styled(SafeLink, { shouldForwardProp })<FolderNameProps>`
 
 interface Props extends CommonFolderItemsProps {
   isOpen: boolean;
-  folder: FolderType;
+  folder: IFolder;
   isCreatingFolder?: boolean;
+  index: number;
 }
 
 const FolderItem = ({
@@ -125,9 +127,10 @@ const FolderItem = ({
   isCreatingFolder,
   type,
   closeTree,
+  index,
 }: Props) => {
   const { t } = useTranslation();
-  const { id, name, isNavigation } = folder;
+  const { id, name } = folder;
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const selected = selectedFolder ? selectedFolder.id === id : false;
 
@@ -159,16 +162,16 @@ const FolderItem = ({
     }
   }, [focusedFolder, ref, id, isCreatingFolder, type]);
 
-  const linkPath = `/minndla${!isNavigation ? '/folders' : ''}/${id}`;
+  const linkPath = `/minndla/folders/${id}`;
 
   const containsResource =
     targetResource && folder.resources.some((resource) => resource.resourceId === targetResource.resourceId);
 
   const emptyFolder = folder.subfolders.length === 0;
-
   const isMaxDepth = level > maxLevel;
-
   const hideArrow = isMaxDepth || emptyFolder;
+
+  const tabable = selected || focused || (!focusedFolder && !folder.parentId && index === 0);
 
   return type === 'navigation' ? (
     <FolderNameLink
@@ -187,7 +190,7 @@ const FolderItem = ({
         arrowNavigation(e, id, visibleFolders, setFocusedFolder, onOpenFolder, onCloseFolder);
       }}
       to={loading ? '' : linkPath}
-      tabIndex={selected || focused ? 0 : -1}
+      tabIndex={tabable ? 0 : -1}
       selected={selected}
       onFocus={() => setFocusedFolder(folder)}
       onClick={handleClickFolder}>

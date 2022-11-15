@@ -11,9 +11,10 @@ import styled from '@emotion/styled';
 import { useForwardedRef } from '@ndla/util';
 import { breakpoints, colors, mq, spacing } from '@ndla/core';
 import { ChevronUp, ChevronDown } from '@ndla/icons/common';
+import { IFolder } from '@ndla/types-learningpath-api';
 import { ButtonV2 as Button, IconButtonV2 as IconButton } from '@ndla/button';
 import { treestructureId } from './helperFunctions';
-import { FolderType, TreeStructureType } from './types';
+import { TreeStructureType } from './types';
 import { arrowNavigation } from './arrowNavigation';
 import ContentLoader from '../ContentLoader';
 
@@ -52,15 +53,15 @@ interface Props {
   showTree: boolean;
   type: TreeStructureType;
   label?: string;
+  focusedFolder?: IFolder;
+  selectedFolder?: IFolder;
+  setSelectedFolder: (folder: IFolder) => void;
   loading?: boolean;
-  focusedFolder?: FolderType;
-  selectedFolder?: FolderType;
-  setSelectedFolder: (folder: FolderType) => void;
   onToggleTree: (open: boolean) => void;
-  flattenedFolders: FolderType[];
+  flattenedFolders: IFolder[];
   onOpenFolder: (id: string) => void;
   onCloseFolder: (id: string) => void;
-  setFocusedFolder: (folder: FolderType) => void;
+  setFocusedFolder: (folder: IFolder) => void;
   ariaDescribedby?: string;
 }
 

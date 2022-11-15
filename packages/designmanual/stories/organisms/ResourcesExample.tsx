@@ -142,9 +142,9 @@ export const ResourcesExample = ({ resourceTypes, tags, menuItems }: BlockExampl
       />
       <h3>Ressurs uten beskrivelse, tags og meny. Uten bilde</h3>
 
-      {resourceTypesArr.map((rt) => {
+      {resourceTypesArr.map((rt, index) => {
         return (
-          <ListResourceWrapper>
+          <ListResourceWrapper key={index}>
             <ListResource
               id={'1c9e14ac-b734-4d8e-a2d6-5b37051d65d4'}
               key={'minimalResource'}

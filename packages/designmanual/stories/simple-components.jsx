@@ -42,6 +42,7 @@ const floatVideo = (left) => (
         width="480"
         frameBorder="0"
         src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+        // eslint-disable-next-line react/no-unknown-property
         allowFullScreen
       />
     </FigureWithLicense>
@@ -240,7 +241,7 @@ storiesOf('Enkle komponenter', module)
           <h2 className="u-heading">Lydavspiller med lisensinformasjon</h2>
           <AudioExample />
           <h2 className="u-heading">Lydavspiller for bruk ved uttale</h2>
-          <div class="c-article c-article--clean">
+          <div className="c-article c-article--clean">
             <table>
               <thead>
                 <tr>
@@ -414,6 +415,7 @@ storiesOf('Enkle komponenter', module)
             width="480"
             frameBorder="0"
             src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+            // eslint-disable-next-line react/no-unknown-property
             allowFullScreen
           />
         </FigureWithLicense>
@@ -567,14 +569,14 @@ storiesOf('Enkle komponenter', module)
       <StoryBody>
         <details className="c-details--solution-box ">
           <summary>Vis fasit (ekspanderende på desktop)</summary>
-          <div class="c-details__content">
+          <div className="c-details__content">
             <SolutionTableExample />
           </div>
         </details>
 
         <details className="c-details--solution-box ">
           <summary>Vis fasit</summary>
-          <div class="c-details__content">
+          <div className="c-details__content">
             f(x) = x<sup>2</sup> + 10x - 20
             <FigureImage
               caption="Eksempel på graf"

@@ -344,7 +344,6 @@ class StructureExample extends Component {
           filters={availableFilters}
           toggleFavorite={this.toggleFavorite}
           favoriteSubjectIds={fetchFavoriteSubjectIds}
-          children
         />
       </Fragment>
     );

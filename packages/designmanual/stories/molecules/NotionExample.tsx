@@ -23,6 +23,7 @@ const Notion = {
         width="480"
         frameBorder="0"
         src="https://players.brightcove.net/4806596774001/default_default/index.html?videoId=ref:19011"
+        // eslint-disable-next-line react/no-unknown-property
         allowFullScreen
       />
     </FigureWithLicense>

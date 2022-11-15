@@ -141,10 +141,7 @@ const SubjectPage = ({
   subjectName,
   messagebox: message,
   messageBoxTagMessage,
-  bannerBackground,
   subjectContentCards,
-  subjectAboutHeading,
-  subjectAboutDescription,
 }) => {
   const { t } = useTranslation();
   const [selectedMainTopic, setSelectedMainTopic] = useState(preSelectedMainTopic);

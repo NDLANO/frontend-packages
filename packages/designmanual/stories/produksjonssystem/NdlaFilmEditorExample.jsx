@@ -209,7 +209,7 @@ class NdlaFilmExample extends Component {
                     <Tooltip tooltip={t('ndlaFilm.editor.editMovieGroupName')}>{activateButton}</Tooltip>
                   )}
                   activateButton={
-                    <button css={FieldHeaderIconStyle} tabIndex={-1}>
+                    <button type="button" css={FieldHeaderIconStyle} tabIndex={-1}>
                       <Pencil />
                     </button>
                   }>
@@ -231,17 +231,29 @@ class NdlaFilmExample extends Component {
                   tooltip={t('ndlaFilm.editor.deleteMovieGroup', {
                     name: theme.name.nb,
                   })}>
-                  <button css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onDeleteTheme(index)}>
+                  <button
+                    type="button"
+                    css={FieldHeaderIconStyle}
+                    tabIndex={-1}
+                    onClick={() => this.onDeleteTheme(index)}>
                     <DeleteForever />
                   </button>
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupUp')}>
-                  <button css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onMoveTheme(index, -1)}>
+                  <button
+                    type="button"
+                    css={FieldHeaderIconStyle}
+                    tabIndex={-1}
+                    onClick={() => this.onMoveTheme(index, -1)}>
                     <ChevronUp />
                   </button>
                 </Tooltip>
                 <Tooltip tooltip={t('ndlaFilm.editor.moveMovieGroupDown')}>
-                  <button css={FieldHeaderIconStyle} tabIndex={-1} onClick={() => this.onMoveTheme(index, 1)}>
+                  <button
+                    type="button"
+                    css={FieldHeaderIconStyle}
+                    tabIndex={-1}
+                    onClick={() => this.onMoveTheme(index, 1)}>
                     <ChevronDown />
                   </button>
                 </Tooltip>

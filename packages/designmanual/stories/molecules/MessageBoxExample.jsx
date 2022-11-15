@@ -98,7 +98,7 @@ const MessageBoxExample = () => {
               </MessageBoxWrapper>
             </>
           }
-          onSite={[<MessageBoxTabs></MessageBoxTabs>]}
+          onSite={[<MessageBoxTabs key={1}></MessageBoxTabs>]}
           reactCode={`import { MessageBoxTag, messagesNB, MessageBox, MessageBanner } from '@ndla/ui';
   
 //Direkte kall på fullpage meldingsboks

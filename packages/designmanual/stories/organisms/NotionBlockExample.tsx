@@ -48,7 +48,7 @@ class NotionBlockExample extends Component {
               <NotionBlock type="video" data="richtext" />
             </OneColumn>
           }
-          onSite={[<NotionSiteTabs></NotionSiteTabs>]}
+          onSite={[<NotionSiteTabs key={1}></NotionSiteTabs>]}
           reactCode={`
   //Enkel forklaringsblokk
   <NotionBlock type="H5P" hideIconsAndAuthors></NotionBlock>

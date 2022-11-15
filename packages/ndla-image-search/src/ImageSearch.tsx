@@ -376,6 +376,7 @@ class ImageSearch extends Component<Props, State> {
       <ImageSearchWrapper>
         <Input
           placeholder={searchPlaceholder}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           iconRight={
             <button

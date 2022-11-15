@@ -193,6 +193,7 @@ class MovieList extends Component<Props, State> {
         <ListWrapper ref={this.wrapperRef} draggingIndex={draggingIndex}>
           {movies.map((movie, index) => (
             <MovieListItem
+              key={index}
               movie={movie}
               messages={messages}
               index={index}

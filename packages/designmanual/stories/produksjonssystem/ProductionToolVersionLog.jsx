@@ -9,11 +9,10 @@ import Accordion, {
 } from '@ndla/accordion';
 import { Eye, Restore } from '@ndla/icons/editor';
 import { VersionHistory, VersionLogTag } from '@ndla/editor';
-import { colors, spacing } from '@ndla/core';
+import { colors, spacing, fonts, misc } from '@ndla/core';
 import { uuid } from '@ndla/util';
 import Tooltip from '@ndla/tooltip';
 import styled from '@emotion/styled';
-import { fonts, misc } from '@ndla/core';
 import { buttonStyle } from '@ndla/button';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';

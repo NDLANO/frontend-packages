@@ -10,7 +10,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import Modal, { ModalHeader, ModalBody, ModalCloseButton } from '@ndla/modal';
 import Button from '@ndla/button';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { classes } from './filterClasses';
 import ToggleItem from './ToggleItem';
 import ActiveFilters from '../Search/ActiveFilters';

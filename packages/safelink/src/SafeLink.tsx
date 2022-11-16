@@ -10,7 +10,7 @@ import React, { forwardRef, HTMLAttributes, MutableRefObject, ReactNode, useCont
 import { Link, LinkProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
-import { isString } from 'lodash';
+import isString from 'lodash/isString';
 import MissingRouterContext from './MissingRouterContext';
 
 const isExternalLink = (to?: LinkProps['to']) =>

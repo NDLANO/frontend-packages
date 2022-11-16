@@ -28,6 +28,7 @@
   ],
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
+    "lodash": "^4.17.20",
     "react": "^16.5.2 || ^17.0.0",
     "react-bem-helper": "^1.4.1"
   },
@@ -37,7 +38,6 @@
   "dependencies": {
     "@ndla/icons": "^2.0.8",
     "@ndla/util": "^3.1.9",
-    "lodash": "^4.17.20",
     "react-device-detect": "^2.1.2",
     "react-tabs": "^3.2.3"
   },

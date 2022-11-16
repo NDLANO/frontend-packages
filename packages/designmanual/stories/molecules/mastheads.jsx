@@ -9,7 +9,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import cloneDeepWith from 'lodash/cloneDeepWith'
+import cloneDeepWith from 'lodash/cloneDeepWith';
 
 import {
   Masthead,

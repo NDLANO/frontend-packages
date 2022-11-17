@@ -12,7 +12,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { spacing } from '@ndla/core';
 import styled from '@emotion/styled';
 

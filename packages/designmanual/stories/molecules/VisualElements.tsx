@@ -30,6 +30,7 @@ const Video = () => {
         width="480"
         frameBorder="0"
         src="https://players.brightcove.net/4806596774001/BkLm8fT_default/index.html?videoId=6154610667001"
+        // eslint-disable-next-line react/no-unknown-property
         allowFullScreen
       />
     </FigureWithLicense>
@@ -47,6 +48,7 @@ const H5p = () => (
       loading="lazy"
       width="762"
       height="571.5"
+      // eslint-disable-next-line react/no-unknown-property
       allowFullScreen
       src="https://h5p.ndla.no/resource/24f047a0-9282-46d2-ac28-860428708be8?locale=nb-no&cssUrl=https%3A%2F%2Fndla.no%2Fstatic%2Fh5p-custom-css.css"
       data-ratio="0.75"

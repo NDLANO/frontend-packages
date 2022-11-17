@@ -8,14 +8,13 @@
 
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { TreeStructure, FolderType, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
+import { TreeStructure, TreeStructureProps } from '@ndla/ui/src/TreeStructure';
 import { uuid } from '@ndla/util';
-import { User, HashTag } from '@ndla/icons/common';
 import { flattenFolders } from '@ndla/ui/src/TreeStructure/helperFunctions';
-import { FolderOutlined } from '@ndla/icons/contentType';
 import { TreeStructureType } from '@ndla/ui/src/TreeStructure/types';
 import { FolderInput } from '@ndla/ui';
 import { colors, spacing } from '@ndla/core';
+import { IFolder } from '@ndla/types-learningpath-api';
 
 const Container = styled.div<{ type?: TreeStructureType }>`
   display: flex;
@@ -47,7 +46,7 @@ const targetResource: TreeStructureProps['targetResource'] = {
   created: '',
 };
 
-export const STRUCTURE_EXAMPLE: FolderType[] = [
+export const STRUCTURE_EXAMPLE: IFolder[] = [
   {
     id: '1',
     name: 'Mine favoritter',
@@ -106,53 +105,18 @@ export const STRUCTURE_EXAMPLE: FolderType[] = [
   },
 ];
 
-export const FOLDER_TREE_STRUCTURE: FolderType[] = [
+export const FOLDER_TREE_STRUCTURE: IFolder[] = [
   {
     id: MY_FOLDERS_ID,
     name: 'Mine mapper',
     status: 'private',
-    icon: <FolderOutlined />,
     breadcrumbs: [],
     resources: [],
     subfolders: [...STRUCTURE_EXAMPLE],
   },
 ];
 
-export const NAVIGATION_STRUCTURE: FolderType[] = [
-  {
-    id: '',
-    name: 'Min NDLA',
-    status: 'private',
-    icon: <User />,
-    isNavigation: true,
-    subfolders: [],
-    resources: [],
-    breadcrumbs: [],
-  },
-  {
-    id: MY_FOLDERS_ID,
-    name: 'Mine mapper',
-    status: 'private',
-    icon: <FolderOutlined />,
-    isNavigation: true,
-    breadcrumbs: [],
-    resources: [],
-    subfolders: [],
-  },
-  ...STRUCTURE_EXAMPLE,
-  {
-    id: 'tags',
-    name: 'Mine emneknagger',
-    status: 'private',
-    icon: <HashTag />,
-    isNavigation: true,
-    subfolders: [],
-    resources: [],
-    breadcrumbs: [],
-  },
-];
-
-const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; name: string }[]): FolderType => ({
+const generateNewFolder = (name: string, id: string, breadcrumbs: { id: string; name: string }[]): IFolder => ({
   id,
   name,
   status: 'private',
@@ -171,7 +135,7 @@ export const TreeStructureExampleComponent = ({
   targetResource,
   onNewFolder,
 }: {
-  structure: FolderType[];
+  structure: IFolder[];
   label?: string;
   type: TreeStructureType;
   onSelectFolder?: (id: string) => void;
@@ -180,7 +144,13 @@ export const TreeStructureExampleComponent = ({
   targetResource?: TreeStructureProps['targetResource'];
   onNewFolder?: boolean;
 }) => {
-  const [structure, setStructure] = useState<FolderType[]>(initalStructure);
+  const [structure, setStructure] = useState<IFolder[]>(initalStructure);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
   return (
     <Container type={type}>
       <TreeStructure
@@ -199,7 +169,7 @@ export const TreeStructureExampleComponent = ({
           />
         )}
         folders={structure}
-        loading={false}
+        loading={loading}
       />
     </Container>
   );
@@ -223,17 +193,17 @@ const TreeStructureExample = () => (
       openOnFolderClick
       type="navigation"
       defaultOpenFolders={[MY_FOLDERS_ID]}
-      structure={NAVIGATION_STRUCTURE}
+      structure={STRUCTURE_EXAMPLE}
     />
   </div>
 );
 
 interface NewFolderProps {
   parentId: string;
-  structure: FolderType[];
-  setStructure: Dispatch<SetStateAction<FolderType[]>>;
+  structure: IFolder[];
+  setStructure: Dispatch<SetStateAction<IFolder[]>>;
   onClose?: () => void;
-  onCreate?: (folder: FolderType, parentId: string) => void;
+  onCreate?: (folder: IFolder, parentId: string) => void;
 }
 
 const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: NewFolderProps) => {
@@ -277,6 +247,7 @@ const NewFolder = ({ parentId, onClose, structure, setStructure, onCreate }: New
 
   return (
     <StyledFolderInput
+      // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus
       labelHidden
       name="name"

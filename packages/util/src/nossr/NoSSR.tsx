@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 interface Props {
   children: ReactNode;

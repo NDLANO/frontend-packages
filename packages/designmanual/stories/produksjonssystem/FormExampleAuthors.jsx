@@ -95,6 +95,7 @@ class FormExampleAuthors extends Component {
                 <Input
                   warningText={author.name === '' ? 'Du må oppgi navn på forfatter' : null}
                   type="text"
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus={author.focusOnMount}
                   placeholder="Skriv navn"
                   value={author.name}

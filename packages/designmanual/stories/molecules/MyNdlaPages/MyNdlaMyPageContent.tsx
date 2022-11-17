@@ -13,8 +13,7 @@ import Button, { DeleteButton } from '@ndla/button';
 import { useTranslation } from 'react-i18next';
 import SafeLink from '@ndla/safelink';
 import { Feide, HashTag } from '@ndla/icons/common';
-import { ListResource, ListResourceProps, InfoBlock } from '@ndla/ui';
-import { Image } from '@ndla/ui';
+import { ListResource, ListResourceProps, InfoBlock, Image } from '@ndla/ui';
 import { HeartOutline } from '@ndla/icons/action';
 import { FolderOutlined } from '@ndla/icons/contentType';
 

@@ -658,25 +658,25 @@ storiesOf('Grunnstiler', module)
       <StoryIntro title="Typografi">
         <AnchorNavigation
           links={[
-            <a href="#fonter" target="_self">
+            <a key="fonts" href="#fonter" target="_self">
               Fonter
             </a>,
-            <a href="#storrelser" target="_self">
+            <a key="sizes" href="#storrelser" target="_self">
               Skriftstørrelser
             </a>,
-            <a href="#overskrifter" target="_self">
+            <a key="headings" href="#overskrifter" target="_self">
               Overskrifter
             </a>,
-            <a href="#ingress" target="_self">
+            <a key="ingress" href="#ingress" target="_self">
               Ingress
             </a>,
-            <a href="#avsnitt" target="_self">
+            <a key="sections" href="#avsnitt" target="_self">
               Avsnitt
             </a>,
-            <a href="#lenker" target="_self">
+            <a key="links" href="#lenker" target="_self">
               Lenker
             </a>,
-            <a href="#midtstilttekst" target="_self">
+            <a key="centeredText" href="#midtstilttekst" target="_self">
               Midtstilt tekst
             </a>,
           ]}

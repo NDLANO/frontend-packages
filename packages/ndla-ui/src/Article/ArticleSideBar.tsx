@@ -74,7 +74,7 @@ const ArticleSideBar = ({
       //TOP
       if (resourcesRef.current.getBoundingClientRect().top <= 0) {
         setHide(true);
-      } else if (resourcesRef.current.getBoundingClientRect().top <= 0) {
+      } else if (resourcesRef.current.getBoundingClientRect().top >= 0) {
         setHide(false);
       }
     };

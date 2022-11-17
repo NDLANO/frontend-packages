@@ -8,7 +8,7 @@
 
 import React, { ComponentType, ReactNode, useEffect, useRef, useState, forwardRef } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { isString } from 'lodash';
+import isString from 'lodash/isString';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 
@@ -65,7 +65,7 @@ export const ArticleTitle = ({ children, icon, label }: ArticleTitleProps) => {
     <div {...classes('title', modifiers)}>
       {icon}
       {labelView}
-      <h1 tabIndex={0}>{children}</h1>
+      <h1 tabIndex={-1}>{children}</h1>
     </div>
   );
 };

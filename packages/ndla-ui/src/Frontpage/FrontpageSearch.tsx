@@ -146,13 +146,6 @@ const FrontpageSearch = ({
   }, [inputHasFocus]);
 
   const onBlur = () => {
-    setTimeout(() => {
-      if (searchFieldRef.current) {
-        if (!searchFieldRef.current.contains(document.activeElement)) {
-          onInputBlur();
-        }
-      }
-    }, 0);
     // This is needed when user tabs out of field
     if (!searchFieldValue) {
       onInputBlur();

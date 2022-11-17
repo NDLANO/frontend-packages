@@ -10,11 +10,11 @@ import React, { useEffect, useState, useMemo, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, utils } from '@ndla/core';
 import { css } from '@emotion/react';
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
 import { IFolder } from '@ndla/types-learningpath-api';
 import FolderItems from './FolderItems';
 import { flattenFolders, treestructureId } from './helperFunctions';
-import { CommonTreeStructureProps, FolderType, NewFolderInputFunc, TreeStructureType } from './types';
+import { CommonTreeStructureProps, NewFolderInputFunc, TreeStructureType } from './types';
 import ComboboxButton from './ComboboxButton';
 import AddFolderButton from './AddFolderButton';
 
@@ -69,7 +69,7 @@ const ScrollableDiv = styled.div<ScrollableDivProps>`
 
 export interface TreeStructureProps extends CommonTreeStructureProps {
   defaultOpenFolders?: string[];
-  folders: FolderType[];
+  folders: IFolder[];
   label?: string;
   maxLevel?: number;
   newFolderInput?: NewFolderInputFunc;
@@ -96,8 +96,8 @@ const TreeStructure = ({
   const [openFolders, setOpenFolders] = useState<string[]>(defaultOpenFolders || []);
 
   const [newFolderParentId, setNewFolderParentId] = useState<string | undefined>();
-  const [focusedFolder, _setFocusedFolder] = useState<FolderType | undefined>();
-  const [selectedFolder, _setSelectedFolder] = useState<FolderType | undefined>();
+  const [focusedFolder, _setFocusedFolder] = useState<IFolder | undefined>();
+  const [selectedFolder, _setSelectedFolder] = useState<IFolder | undefined>();
   const [showTree, setShowTree] = useState(type === 'navigation');
 
   const flattenedFolders = useMemo(() => flattenFolders(folders, openFolders), [folders, openFolders]);
@@ -133,12 +133,12 @@ const TreeStructure = ({
     }
   };
 
-  const setSelectedFolder = (folder: FolderType) => {
+  const setSelectedFolder = (folder: IFolder) => {
     _setSelectedFolder(folder);
     onSelectFolder?.(folder.id);
   };
 
-  const setFocusedFolder = (folder: FolderType) => {
+  const setFocusedFolder = (folder: IFolder) => {
     _setFocusedFolder(folder);
     setNewFolderParentId(undefined);
 
@@ -189,6 +189,7 @@ const TreeStructure = ({
         {label && <StyledLabel id={treestructureId(type, 'label')}>{label}</StyledLabel>}
         {type === 'picker' && (
           <AddFolderButton
+            loading={loading}
             canAddFolder={!!canAddFolder}
             focusedFolder={focusedFolder}
             setNewFolderParentId={setNewFolderParentId}
@@ -203,6 +204,7 @@ const TreeStructure = ({
             showTree={showTree}
             type={type}
             label={label}
+            loading={loading}
             focusedFolder={focusedFolder}
             selectedFolder={selectedFolder}
             setSelectedFolder={setSelectedFolder}

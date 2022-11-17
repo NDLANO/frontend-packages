@@ -10,7 +10,7 @@ import React, { Fragment, RefObject, useEffect, useRef, useState } from 'react';
 import { isIE, browserVersion } from 'react-device-detect';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 import { breakpoints, mq, spacing, spacingUnit, colors, fonts, animations } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { makeSrcQueryString } from '../Image';
@@ -170,7 +170,7 @@ const hasForEachPolyfill = () => {
   if ('NodeList' in window && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = function (callback, thisArg) {
       thisArg = thisArg || window;
-      for (var i = 0; i < this.length; i++) {
+      for (let i = 0; i < this.length; i++) {
         callback.call(thisArg, this[i], i, this);
       }
     };

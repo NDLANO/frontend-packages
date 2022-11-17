@@ -18,8 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { FilterListPhone } from '@ndla/ui';
 import styled from '@emotion/styled';
 import { DropdownInput, DropdownMenu } from '@ndla/forms';
-import { ChevronDown } from '@ndla/icons/lib/common';
-import { Search } from '@ndla/icons/lib/common';
+import { ChevronDown, Search } from '@ndla/icons/common';
 import Downshift from 'downshift';
 import { mockExplanationService } from '../../dummydata';
 import { TextContent, ImageContent } from '../article/LicenseBox';
@@ -390,7 +389,7 @@ const ExplanationService = () => {
           }}
           onStateChange={handleStateChangeCategoryFilter}
           isOpen={categoryFilterOpen}>
-          {({ getInputProps, getRootProps, getMenuProps, getItemProps }) => {
+          {({ getInputProps, getMenuProps, getItemProps }) => {
             return (
               <div>
                 <DropdownInput
@@ -403,6 +402,7 @@ const ExplanationService = () => {
                     categoryFilterOpen ? (
                       <Search aria-hidden="true" />
                     ) : (
+                      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
                       <span onClick={onCategoryFilterSearchFocus}>
                         <ChevronDown aria-hidden="true" />
                       </span>

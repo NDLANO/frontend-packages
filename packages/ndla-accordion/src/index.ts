@@ -7,6 +7,7 @@
  */
 
 import { Accordion, AccordionWrapper } from './Accordion';
+import AccordionV2 from './AccordionV2';
 import Accordions from './Accordions';
 import AccordionSection from './AccordionSection';
 import { AccordionBar } from './AccordionBar';
@@ -14,6 +15,7 @@ import { AccordionPanel, StyledAccordionsPanelItemsWrapper, StyledAccordionsPane
 
 export {
   Accordion as default,
+  AccordionV2,
   Accordions,
   AccordionWrapper,
   AccordionBar,

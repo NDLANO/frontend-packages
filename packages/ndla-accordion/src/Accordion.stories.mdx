@@ -1,0 +1,51 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { defaultParameters } from '../../designmanual/stories/defaults';
+
+import AccordionV2 from './AccordionV2';
+
+<Meta
+  title="Enkle komponenter/Accordion"
+  component={AccordionV2}
+  parameters={{
+    ...defaultParameters,
+    docs: {
+      inlineStories: true,
+    },
+    backgrounds: {},
+  }}
+  argTypes={{
+    icon: {
+      control: false,
+    },
+    titleItems: {
+      control: false,
+    },
+  }}
+/>
+
+export const Template = (args) => <AccordionV2 {...args} />;
+
+# Accordion
+
+<Canvas>
+  <Story
+    name="Accordion"
+    args={{
+      title: 'Title',
+      children: 'Content',
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Accordion" />
+
+### Bruk
+
+### Med bakgrunn
+
+<Canvas>
+  <AccordionV2></AccordionV2>
+</Canvas>

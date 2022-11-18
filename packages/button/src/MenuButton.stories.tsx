@@ -13,7 +13,7 @@ import { defaultParameters } from '../../designmanual/stories/defaults';
 import MenuButton from './MenuButton';
 
 export default {
-  title: 'Enkle komponenter/MenuButton',
+  title: 'Enkle komponenter/Knapper/MenuButton',
   component: MenuButton,
   parameters: {
     ...defaultParameters,

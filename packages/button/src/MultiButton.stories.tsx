@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'Enkle komponenter/MultiButton',
+  title: 'Enkle komponenter/Knapper/MultiButton',
   component: MultiButton,
   parameters: {
     ...defaultParameters,

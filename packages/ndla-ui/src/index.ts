@@ -100,7 +100,7 @@ export {
 } from './Figure';
 export type { FigureType } from './Figure';
 
-export { LanguageSelector } from './LanguageSelector';
+export { LanguageSelector, LanguageSelectorV2 } from './LanguageSelector';
 
 export {
   LearningPathWrapper,

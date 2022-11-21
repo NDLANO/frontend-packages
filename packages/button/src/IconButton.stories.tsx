@@ -13,7 +13,7 @@ import { defaultParameters } from '../../designmanual/stories/defaults';
 import IconButtonV2 from './IconButtonV2';
 
 export default {
-  title: 'Enkle komponenter/IconButton',
+  title: 'Enkle komponenter/Knapper/IconButton',
   component: IconButtonV2,
   parameters: {
     ...defaultParameters,

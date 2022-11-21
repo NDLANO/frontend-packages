@@ -6,78 +6,37 @@
  *
  */
 
-import { ReactNode, useRef, useState } from 'react';
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
-import { ChevronDown, ChevronUp } from '@ndla/icons/lib/common';
+import { ReactElement, ReactNode, useRef, useState } from 'react';
 
-const AccordionWrapper = styled.div``;
-const Summary = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-const SummaryItems = styled.div``;
-const Title = styled.div``;
-const ToggleButton = styled.button``;
-const Details = styled.div``;
-
-interface CollapseProps {
+export interface RenderProps {
   isOpen: boolean;
 }
-
-const Collapse = styled.div<CollapseProps>`
-  height: ${({ isOpen }) => (isOpen ? 'auto' : '0px')};
-  overflow: hidden;
-  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-`;
-
-export interface BaseAccordionProps {
-  children: ReactNode;
-  expanded?: boolean;
-  icon?: ReactNode;
-  initialValue?: boolean;
-  onChange?: (isOpen: boolean) => void;
-  title?: string;
-  titleItems?: ReactNode;
+interface ChildProps {
+  isOpen: boolean;
   id: string | number;
+  onToggle: () => void;
 }
 
-const BaseAccordion = ({
-  expanded,
-  children,
-  initialValue,
-  onChange,
-  icon,
-  titleItems,
-  title,
-  id,
-}: BaseAccordionProps) => {
+export interface BaseAccordionProps {
+  id: string | number;
+  initialValue?: boolean;
+  /** Controlled state */
+  expanded?: boolean;
+  /** Controlled state */
+  onChange?: (isOpen: boolean) => void;
+  children: (args: ChildProps) => ReactElement;
+}
+
+const BaseAccordion = ({ expanded, children, initialValue, onChange, id }: BaseAccordionProps) => {
   const [_isOpen, _setIsOpen] = useState(initialValue ?? false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const isOpen = expanded ?? _isOpen;
   const setIsOpen = onChange || _setIsOpen;
 
-  const onOpenClick = () => {
+  const onToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
-    <AccordionWrapper>
-      <Summary id={`${id}-header`} aria-controls={`${id}-content`} onClick={buttonRef.current?.click}>
-        {icon}
-        <Title>{title}</Title>
-        <SummaryItems onClick={(e) => e.stopPropagation()}>{titleItems}</SummaryItems>
-        <ToggleButton ref={buttonRef} onClick={onOpenClick} type="button" aria-expanded={isOpen}>
-          {isOpen ? <ChevronUp /> : <ChevronDown />}
-        </ToggleButton>
-      </Summary>
-      <Collapse isOpen={isOpen}>
-        <Details role="region" id={`${id}-content`} aria-labelledby={`${id}-header`}>
-          {children}
-        </Details>
-      </Collapse>
-    </AccordionWrapper>
-  );
+  return children({ isOpen, id, onToggle });
 };
 
 export default BaseAccordion;

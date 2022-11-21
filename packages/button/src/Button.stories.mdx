@@ -4,7 +4,7 @@ import { defaultParameters } from '../../designmanual/stories/defaults';
 import ButtonV2 from './ButtonV2';
 
 <Meta
-  title="Enkle komponenter/Button"
+  title="Enkle komponenter/Knapper/Button"
   component={ButtonV2}
   parameters={{
     ...defaultParameters,
@@ -21,7 +21,7 @@ export const Template = (args) => <ButtonV2 {...args} />;
 
 <Canvas>
   <Story
-    name="Default"
+    name="Button"
     args={{
       colorTheme: 'primary',
       children: 'Button',
@@ -36,57 +36,24 @@ export const Template = (args) => <ButtonV2 {...args} />;
 
 ### Props
 
-<ArgsTable story="Default" />
+<ArgsTable story="Button" />
 
 # Varianter
 
 ## Ghost
 
 <Canvas>
-  <Story
-    name="Ghost"
-    args={{
-      colorTheme: 'light',
-      children: 'Button',
-      size: 'normal',
-      variant: 'ghost',
-      shape: 'pill',
-      fontWeight: 'normal',
-    }}>
-    {Template.bind({})}
-  </Story>
+  <ButtonV2 colorTheme="light" children="Button" variant="ghost" shape="pill" />
 </Canvas>
 
 ## Outline
 
 <Canvas>
-  <Story
-    name="Outline"
-    args={{
-      colorTheme: 'primary',
-      children: 'Button',
-      size: 'normal',
-      variant: 'outline',
-      shape: 'normal',
-      fontWeight: 'normal',
-    }}>
-    {Template.bind({})}
-  </Story>
+  <ButtonV2 children="Button" variant="outline" />
 </Canvas>
 
 ## Link
 
 <Canvas>
-  <Story
-    name="Link"
-    args={{
-      colorTheme: 'primary',
-      children: 'Link',
-      size: 'normal',
-      variant: 'link',
-      shape: 'normal',
-      fontWeight: 'normal',
-    }}>
-    {Template.bind({})}
-  </Story>
+  <ButtonV2 children="Link" variant="link" />
 </Canvas>

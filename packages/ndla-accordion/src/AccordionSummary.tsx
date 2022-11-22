@@ -9,7 +9,8 @@
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { KeyboardEvent, MouseEvent, ReactNode, useRef } from 'react';
+import { KeyboardEvent, MouseEvent, ReactNode, useContext, useRef } from 'react';
+import { AccordionContext } from './AccordionContext';
 
 const Summary = styled.div`
   display: flex;
@@ -23,15 +24,9 @@ const Summary = styled.div`
   padding-left: ${spacing.small};
 `;
 
-const SummaryItems = styled.div``;
-
-const Title = styled.div`
-  ${fonts.sizes('18px', '24px')};
-  font-weight: ${fonts.weight.semibold};
-`;
-
 const ToggleButton = styled.button`
   align-self: stretch;
+  margin-left: auto;
   min-width: 40px;
   border: none;
   background: none;
@@ -43,21 +38,17 @@ const ToggleButton = styled.button`
 `;
 
 interface Props {
-  isOpen: boolean;
-  id: string | number;
-  onToggle: () => void;
-  title?: string;
-  titleItems?: ReactNode;
-  icon?: ReactNode;
   className?: string;
+  children?: ReactNode;
 }
 
-const AccordionSummary = ({ className, id, icon, isOpen, title, titleItems, onToggle }: Props) => {
+const AccordionSummary = ({ className, children }: Props) => {
+  const { isOpen, id, onChange } = useContext(AccordionContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const onClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    onToggle();
+    onChange(!isOpen);
   };
 
   const onKeydown = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -75,9 +66,7 @@ const AccordionSummary = ({ className, id, icon, isOpen, title, titleItems, onTo
       onClick={() => buttonRef.current?.click()}
       onKeyDown={onKeydown}
       tabIndex={0}>
-      {icon}
-      <Title>{title}</Title>
-      {titleItems && <SummaryItems onClick={(e) => e.stopPropagation()}>{titleItems}</SummaryItems>}
+      {children}
       <ToggleButton ref={buttonRef} tabIndex={-1} onClick={onClick} type="button" aria-expanded={isOpen}>
         {isOpen ? <ChevronUp /> : <ChevronDown />}
       </ToggleButton>

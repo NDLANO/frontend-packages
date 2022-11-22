@@ -15,29 +15,19 @@ import AccordionSummary from './AccordionSummary';
     },
     backgrounds: {},
   }}
-  argTypes={{
-    icon: {
-      control: false,
-    },
-    titleItems: {
-      control: false,
-    },
-  }}
 />
 
-export const Template = (args) => <AccordionV2 {...args} />;
+export const Template = (args) => (
+  <AccordionV2 {...args}>
+    <AccordionSummary>Tittel</AccordionSummary>
+    <AccordionDetails>Innhold</AccordionDetails>
+  </AccordionV2>
+);
 
 # Accordion
 
 <Canvas>
-  <Story
-    name="Accordion"
-    args={{
-      title: 'Title',
-      children: 'Content',
-    }}>
-    {Template.bind({})}
-  </Story>
+  <Story name="Accordion">{Template.bind({})}</Story>
 </Canvas>
 
 ### Props

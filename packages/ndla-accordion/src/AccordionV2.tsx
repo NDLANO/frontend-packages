@@ -6,29 +6,37 @@
  *
  */
 
-import { ReactNode } from 'react';
-import AccordionDetails from './AccordionDetails';
-import AccordionSummary from './AccordionSummary';
-import BaseAccordion, { BaseAccordionProps } from './BaseAccordion';
+import { ReactNode, useState } from 'react';
+import { AccordionContext } from './AccordionContext';
 
-interface Props extends Omit<BaseAccordionProps, 'children'> {
-  title?: string;
-  icon?: ReactNode;
+export interface RenderProps {
+  isOpen: boolean;
+}
+
+export interface Props {
+  id: string | number;
+  initialValue?: boolean;
+  /** Controlled state */
+  expanded?: boolean;
+  /** Controlled state */
+  onChange?: (isOpen: boolean) => void;
+  /** AccordionSummary and AccordionDetails */
   children: ReactNode;
 }
 
-const AccordionV2 = ({ expanded, initialValue, onChange, id, children, title, icon }: Props) => {
+const AccordionV2 = ({ expanded, children, initialValue, onChange: _onChange, id }: Props) => {
+  const [_isOpen, _setIsOpen] = useState(initialValue ?? false);
+  const isOpen = expanded ?? _isOpen;
+  const setIsOpen = _onChange || _setIsOpen;
+
+  const onChange = (value: boolean) => {
+    setIsOpen(value);
+  };
+
   return (
-    <BaseAccordion expanded={expanded} id={id} initialValue={initialValue} onChange={onChange}>
-      {({ isOpen, onToggle, id }) => (
-        <>
-          <AccordionSummary isOpen={isOpen} onToggle={onToggle} id={id} title={title} icon={icon} />
-          <AccordionDetails isOpen={isOpen} id={id}>
-            {children}
-          </AccordionDetails>
-        </>
-      )}
-    </BaseAccordion>
+    <AccordionContext.Provider value={{ isOpen, onChange, id }}>
+      <div>{children}</div>
+    </AccordionContext.Provider>
   );
 };
 

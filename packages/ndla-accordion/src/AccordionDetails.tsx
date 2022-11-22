@@ -8,15 +8,8 @@
 
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import { ReactNode, useContext } from 'react';
+import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import { AccordionContext } from './AccordionContext';
-import { RenderProps } from './AccordionV2';
-
-const Collapse = styled.div<RenderProps>`
-  height: ${({ isOpen }) => (isOpen ? 'auto' : '0px')};
-  overflow: hidden;
-  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
-`;
 
 const Details = styled.div`
   padding: ${spacing.xsmall} ${spacing.small};
@@ -31,11 +24,9 @@ const AccordionDetails = ({ className, children }: Props) => {
   const { isOpen, id } = useContext(AccordionContext);
 
   return (
-    <Collapse isOpen={isOpen}>
-      <Details className={className} role="region" id={`${id}-content`} aria-labelledby={`${id}-header`}>
-        {children}
-      </Details>
-    </Collapse>
+    <Details className={className} role="region" id={`${id}-content`} aria-labelledby={`${id}-header`}>
+      {children}
+    </Details>
   );
 };
 

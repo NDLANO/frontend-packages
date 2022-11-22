@@ -9,10 +9,6 @@
 import { ReactNode, useState } from 'react';
 import { AccordionContext } from './AccordionContext';
 
-export interface RenderProps {
-  isOpen: boolean;
-}
-
 export interface Props {
   id: string | number;
   initialValue?: boolean;

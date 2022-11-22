@@ -10,7 +10,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
-import { KeyboardEvent, MouseEvent, ReactNode, useContext, useRef } from 'react';
+import { KeyboardEvent, MouseEvent, ReactNode, useCallback, useContext, useRef } from 'react';
 import { AccordionContext } from './AccordionContext';
 
 const Summary = styled.div`
@@ -48,16 +48,26 @@ const AccordionSummary = ({ className, toggleButtonCSS, children }: Props) => {
   const { isOpen, id, onChange } = useContext(AccordionContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    onChange(!isOpen);
-  };
+  const onClick = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      onChange(!isOpen);
+    },
+    [onChange, isOpen],
+  );
 
-  const onKeydown = (e: KeyboardEvent<HTMLDivElement>) => {
+  const onKeyDown = useCallback((e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+    }
+  }, []);
+
+  const onKeyUp = useCallback((e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
       buttonRef.current?.click();
     }
-  };
+  }, []);
 
   return (
     <Summary
@@ -66,7 +76,8 @@ const AccordionSummary = ({ className, toggleButtonCSS, children }: Props) => {
       id={`${id}-header`}
       aria-controls={`${id}-content`}
       onClick={() => buttonRef.current?.click()}
-      onKeyDown={onKeydown}
+      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
       tabIndex={0}>
       {children}
       <ToggleButton

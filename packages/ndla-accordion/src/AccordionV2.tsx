@@ -8,10 +8,11 @@
 
 import { css } from '@emotion/react';
 import { ReactNode, useState } from 'react';
-import { AccordionContext } from './AccordionContext';
+import { AccordionContext, useAccordion } from './AccordionContext';
 import AccordionSummary from './AccordionSummary';
 
 export interface Props {
+  className?: string;
   /** Unique ID required for aria attributes */
   id: string | number;
   initialValue?: boolean;
@@ -23,7 +24,7 @@ export interface Props {
   children: ReactNode;
 }
 
-const AccordionV2 = ({ expanded, children, initialValue, onChange: _onChange, id }: Props) => {
+const AccordionV2 = ({ className, expanded, children, initialValue, onChange: _onChange, id }: Props) => {
   const [_isOpen, _setIsOpen] = useState(initialValue ?? false);
   const isOpen = expanded ?? _isOpen;
   const setIsOpen = _onChange || _setIsOpen;
@@ -34,7 +35,7 @@ const AccordionV2 = ({ expanded, children, initialValue, onChange: _onChange, id
 
   return (
     <AccordionContext.Provider value={{ isOpen, onChange, id }}>
-      <div>{children}</div>
+      <div className={className}>{children}</div>
     </AccordionContext.Provider>
   );
 };

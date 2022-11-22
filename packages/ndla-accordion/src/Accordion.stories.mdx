@@ -15,20 +15,21 @@ import AccordionSummary from './AccordionSummary';
     },
     backgrounds: {},
   }}
+  argTypes={{
+    children: {
+      control: false,
+    },
+  }}
 />
 
 export const Template = (args) => (
   <AccordionV2 {...args}>
     <AccordionSummary>Tittel</AccordionSummary>
     <AccordionDetails>
-      <div>Innhold</div>
-      <div>Innhold</div>
-      <div>Innhold</div>
-      <div>Innhold</div>
-      <div>Innhold</div>
-      <div>Innhold</div>
-      <div>Innhold</div>
-      <div>Innhold</div>
+      <div>
+        <strong>Undertittel</strong>
+      </div>
+      <div>En kort paragraf</div>
     </AccordionDetails>
   </AccordionV2>
 );
@@ -43,10 +44,16 @@ export const Template = (args) => (
 
 <ArgsTable story="Accordion" />
 
-### Bruk
+# Komponenter
 
-### Med bakgrunn
+### AccordionSummary
 
-<Canvas>
-  <AccordionV2></AccordionV2>
-</Canvas>
+<ArgsTable of={AccordionSummary} />
+
+### AccordionDetails
+
+<ArgsTable of={AccordionDetails} />
+
+### useAccordion
+
+Hook for bruk i en `<Accordion />`. Eksponerer isOpen og onChange.

@@ -13,6 +13,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
+import { LazyMotion, domAnimation } from 'framer-motion';
+
 import './designmanual.scss';
 
 export const parameters = {
@@ -36,7 +38,9 @@ export const decorators = [
     <BrowserRouter>
       <I18nextProvider i18n={i18nInstance}>
         <HelmetProvider>
-          <Story />
+          <LazyMotion features={domAnimation}>
+            <Story />
+          </LazyMotion>
         </HelmetProvider>
       </I18nextProvider>
     </BrowserRouter>

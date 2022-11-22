@@ -6,13 +6,15 @@
  *
  */
 
-import styled from '@emotion/styled';
-import { spacing } from '@ndla/core';
 import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import styled from '@emotion/styled';
+import { m, AnimatePresence } from 'framer-motion';
+import { spacing } from '@ndla/core';
 import { AccordionContext } from './AccordionContext';
 
 const Details = styled.div`
   padding: ${spacing.xsmall} ${spacing.small};
+  overflow: hidden;
 `;
 
 interface Props {
@@ -25,7 +27,21 @@ const AccordionDetails = ({ className, children }: Props) => {
 
   return (
     <Details className={className} role="region" id={`${id}-content`} aria-labelledby={`${id}-header`}>
-      {children}
+      <AnimatePresence>
+        {isOpen && (
+          <m.div
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { height: 'auto' },
+              collapsed: { height: 0 },
+            }}
+            transition={{ duration: 0.2, default: { ease: 'easeInOut' } }}>
+            {children}
+          </m.div>
+        )}
+      </AnimatePresence>
     </Details>
   );
 };

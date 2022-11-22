@@ -6,6 +6,7 @@
  *
  */
 
+import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
@@ -39,10 +40,11 @@ const ToggleButton = styled.button`
 
 interface Props {
   className?: string;
+  toggleButtonCSS?: SerializedStyles;
   children?: ReactNode;
 }
 
-const AccordionSummary = ({ className, children }: Props) => {
+const AccordionSummary = ({ className, toggleButtonCSS, children }: Props) => {
   const { isOpen, id, onChange } = useContext(AccordionContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -67,7 +69,13 @@ const AccordionSummary = ({ className, children }: Props) => {
       onKeyDown={onKeydown}
       tabIndex={0}>
       {children}
-      <ToggleButton ref={buttonRef} tabIndex={-1} onClick={onClick} type="button" aria-expanded={isOpen}>
+      <ToggleButton
+        css={toggleButtonCSS}
+        ref={buttonRef}
+        tabIndex={-1}
+        onClick={onClick}
+        type="button"
+        aria-expanded={isOpen}>
         {isOpen ? <ChevronUp /> : <ChevronDown />}
       </ToggleButton>
     </Summary>

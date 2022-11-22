@@ -6,10 +6,13 @@
  *
  */
 
+import { css } from '@emotion/react';
 import { ReactNode, useState } from 'react';
 import { AccordionContext } from './AccordionContext';
+import AccordionSummary from './AccordionSummary';
 
 export interface Props {
+  /** Unique ID required for aria attributes */
   id: string | number;
   initialValue?: boolean;
   /** Controlled state */

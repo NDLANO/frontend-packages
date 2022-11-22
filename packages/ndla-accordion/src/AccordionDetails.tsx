@@ -26,7 +26,7 @@ const AccordionDetails = ({ className, children }: Props) => {
   const { isOpen, id } = useContext(AccordionContext);
 
   return (
-    <Details className={className} role="region" id={`${id}-content`} aria-labelledby={`${id}-header`}>
+    <Details className={className} role="region" id={`${id}-details`} aria-labelledby={`${id}-summary`}>
       <AnimatePresence>
         {isOpen && (
           <m.div

@@ -73,8 +73,9 @@ const AccordionSummary = ({ className, toggleButtonCSS, children }: Props) => {
     <Summary
       className={className}
       role="button"
-      id={`${id}-header`}
-      aria-controls={`${id}-content`}
+      id={`${id}-summary`}
+      aria-controls={`${id}-details`}
+      aria-expanded={isOpen}
       onClick={() => buttonRef.current?.click()}
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}

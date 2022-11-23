@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { TransitionGroup } from 'react-transition-group';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Forward } from '@ndla/icons/common';
@@ -11,7 +10,7 @@ const SubjectShortcutsSection = styled.section`
   margin-bottom: ${spacing.large};
 `;
 
-const StyledTransitionGroup = styled(TransitionGroup)`
+const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -130,7 +129,7 @@ class SubjectShortcuts extends Component<Props, State> {
       <SubjectShortcutsSection>
         <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
         <nav id={id}>
-          <StyledTransitionGroup component="ul">
+          <StyledList>
             {filteredLinks.map((link) => (
               <Fade show={true}>
                 <StyledListItem>
@@ -138,7 +137,7 @@ class SubjectShortcuts extends Component<Props, State> {
                 </StyledListItem>
               </Fade>
             ))}
-          </StyledTransitionGroup>
+          </StyledList>
         </nav>
         {button}
       </SubjectShortcutsSection>

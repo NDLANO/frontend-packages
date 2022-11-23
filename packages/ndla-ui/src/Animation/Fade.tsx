@@ -1,5 +1,5 @@
 import { ReactNode, useMemo } from 'react';
-import { AnimatePresence, m } from 'framer-motion';
+import { AnimatePresence, LazyMotion, m, domAnimation } from 'framer-motion';
 import { uniqueId } from 'lodash';
 
 interface Props {
@@ -23,13 +23,16 @@ const Fade = ({ show, delay = 0, timeout = defaultTimeout, exitDelay = 0, childr
   const variants = useMemo(() => animations(timeout, delay, exitDelay), [timeout, delay, exitDelay]);
 
   return (
-    <AnimatePresence>
-      {show && (
-        <m.div key={id} initial="closed" animate="open" exit="closed" variants={variants}>
-          {children}
-        </m.div>
-      )}
-    </AnimatePresence>
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence>
+        {show && (
+          <m.div key={id} initial="closed" animate="open" exit="closed" variants={variants}>
+            {children}
+          </m.div>
+        )}
+      </AnimatePresence>
+    </LazyMotion>
   );
 };
+
 export default Fade;

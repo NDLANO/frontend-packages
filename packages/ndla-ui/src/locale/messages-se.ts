@@ -1186,6 +1186,7 @@ const messages = {
     contact: 'Váldde oktavuođa',
     help: 'Veahket',
   },
+  externalLink: 'Ekstern lenke',
 };
 
 export default messages;

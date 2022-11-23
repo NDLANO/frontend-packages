@@ -12,6 +12,7 @@ import styled from '@emotion/styled';
 import { Launch } from '@ndla/icons/common';
 import isString from 'lodash/isString';
 import MissingRouterContext from './MissingRouterContext';
+import { useTranslation } from 'react-i18next';
 
 const isExternalLink = (to?: LinkProps['to']) =>
   to && isString(to) && (to.startsWith('https://') || to.startsWith('http://'));
@@ -38,6 +39,7 @@ export type SafeLinkProps = Props & LinkProps & HTMLAttributes<HTMLElement>;
 
 const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
   ({ to, replace, children, showNewWindowIcon, tabIndex, asAnchor, ...rest }, ref) => {
+    const { t } = useTranslation();
     const isMissingRouterContext = useContext(MissingRouterContext);
 
     if (isMissingRouterContext || isExternalLink(to) || isOldNdlaLink(to) || asAnchor) {
@@ -54,7 +56,9 @@ const SafeLink = forwardRef<HTMLAnchorElement, SafeLinkProps>(
       // RR6 link immediately fails if to is somehow undefined, so we provide an empty fallback to recover.
       <Link ref={ref} tabIndex={tabIndex ?? 0} to={to ?? ''} replace={replace} {...rest}>
         {children}
-        {showNewWindowIcon && <LaunchIcon style={{ verticalAlign: 'text-top' }} />}
+        {showNewWindowIcon && (
+          <LaunchIcon aria-label={t('externalLink')} aria-hidden={false} style={{ verticalAlign: 'text-top' }} />
+        )}
       </Link>
     );
   },

@@ -1185,6 +1185,7 @@ const messages = {
     contact: 'Kontakt',
     help: 'Hjelp',
   },
+  externalLink: 'Ekstern lenke',
 };
 
 export default messages;

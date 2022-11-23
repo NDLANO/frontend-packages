@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { m, AnimatePresence } from 'framer-motion';
 import { spacing } from '@ndla/core';
@@ -30,6 +30,7 @@ const AccordionDetails = ({ className, children }: Props) => {
       <AnimatePresence>
         {isOpen && (
           <m.div
+            key={id}
             initial="collapsed"
             animate="open"
             exit="collapsed"

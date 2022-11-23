@@ -1,60 +1,44 @@
-import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import { CSSTransition } from 'react-transition-group';
-import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
+import { ReactNode, useMemo } from 'react';
+import { AnimatePresence, m } from 'framer-motion';
+import { uniqueId } from 'lodash';
 
 interface Props {
   children: ReactNode;
-  delay?: number | undefined | null;
+  delay?: number;
   timeout?: number;
-  exitDelay?: number | undefined | null;
+  exitDelay?: number;
 }
+
+const animations = (duration: number, delayIn: number, delayOut: number) => ({
+  open: { opacity: 1, transition: { delay: delayIn / 1000, ease: 'easeInOut', duration } },
+  closed: { opacity: 0, transition: { delay: delayOut / 1000, ease: 'easeInOut', duration } },
+});
 
 const defaultTimeout = 300;
 
-const Fade = ({
-  children,
-  delay = null,
-  timeout = defaultTimeout,
-  exitDelay = null,
-  ...rest
-}: Props & Omit<CSSTransitionProps, 'timeout' | 'unmountOnExit' | 'onEnter' | 'onExit'>) => (
-  <CSSTransition
-    classNames="u-fade"
-    {...rest}
-    timeout={timeout}
-    unmountOnExit
-    onEnter={(node: HTMLElement) => {
-      const n = node;
-      n.style.transitionDuration = `${timeout}ms`;
+const Fade = ({ children, delay = 0, timeout = defaultTimeout, exitDelay = 0 }: Props) => {
+  const id = useMemo(() => uniqueId(), []);
 
-      if (delay) {
-        n.style.transitionDelay = `${delay}ms`;
-      }
-    }}
-    onExit={
-      exitDelay
-        ? (node: HTMLElement) => {
-            const n = node;
-            n.style.transitionDelay = `${exitDelay}ms`;
-          }
-        : undefined
-    }>
-    {children}
-  </CSSTransition>
-);
+  const variants = useMemo(() => animations(timeout, delay, exitDelay), [timeout, delay, exitDelay]);
 
-Fade.propTypes = {
-  children: PropTypes.node.isRequired,
-  timeout: PropTypes.number,
-  delay: PropTypes.number,
-  exitDelay: PropTypes.number,
+  return (
+    <AnimatePresence>
+      {children && (
+        <m.div
+          key={id}
+          initial="closed"
+          animate="open"
+          exit="closed"
+          variants={variants}
+          transition={{
+            duration: timeout / 1000,
+            default: { ease: 'easeInOut' },
+            delay: delay ? delay / 1000 : undefined,
+          }}>
+          {children}
+        </m.div>
+      )}
+    </AnimatePresence>
+  );
 };
-
-Fade.defaultProps = {
-  timeout: defaultTimeout,
-  delay: null,
-  exitDelay: null,
-};
-
 export default Fade;

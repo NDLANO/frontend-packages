@@ -132,7 +132,7 @@ class SubjectShortcuts extends Component<Props, State> {
         <nav id={id}>
           <StyledTransitionGroup component="ul">
             {filteredLinks.map((link) => (
-              <Fade key={link.url}>
+              <Fade show={true}>
                 <StyledListItem>
                   <SafeLink to={link.url}>{link.text}</SafeLink>
                 </StyledListItem>

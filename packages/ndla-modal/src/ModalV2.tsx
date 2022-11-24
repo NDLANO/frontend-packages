@@ -10,7 +10,7 @@ import React, { cloneElement, MouseEvent, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { css, SerializedStyles } from '@emotion/react';
 import { DialogContent, DialogOverlay } from '@reach/dialog';
-import { breakpoints, mq } from '@ndla/core';
+import { breakpoints, mq, spacing } from '@ndla/core';
 import { BaseProps, ModalAnimation, ModalMargin, ModalPosition, ModalSizeType } from './types';
 import { animations } from './animations';
 import { margins, sizeCombos, sizes } from './modalStyles';
@@ -85,7 +85,7 @@ const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardCo
   overflow-y: auto;
   background: white;
   max-height: 85%;
-  max-width: 100%;
+  max-width: 95%;
   ${(p) => p.position !== 'center' && `${p.position}: ${p.margin}`};
   ${(p) => p.position !== 'center' && `${opposite[p.position]}: unset`};
   animation-name: ${(p) => p.animationName};

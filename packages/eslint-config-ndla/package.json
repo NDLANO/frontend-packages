@@ -25,6 +25,7 @@
     "confusing-browser-globals": "^1.0.11",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-lodash": "^7.4.0",
     "eslint-plugin-react": "^7.31.9",
     "eslint-plugin-react-hooks": "^4.6.0"
   }

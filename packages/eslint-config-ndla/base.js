@@ -20,7 +20,7 @@ module.exports = {
   ],
   root: true,
   parser: '@babel/eslint-parser',
-  plugins: ['react', 'react-hooks', 'import', 'jsx-a11y'],
+  plugins: ['react', 'react-hooks', 'import', 'jsx-a11y', 'lodash'],
 
   env: {
     browser: true,
@@ -126,6 +126,8 @@ module.exports = {
     'import/no-webpack-loader-syntax': 'error',
     'import/order': ['warn', { groups: [['builtin', 'external', 'internal']] }],
     'import/no-cycle': ['warn', { maxDepth: Infinity }],
+
+    'lodash/import-scope': [2, 'method'],
 
     'react/no-unused-state': 'warn',
     'react/button-has-type': 'error',

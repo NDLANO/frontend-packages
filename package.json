@@ -74,6 +74,7 @@
     "i18next": "^21.9.2",
     "jest": "^27.5.1",
     "lerna": "^5.6.2",
+    "lodash": "^4.17.20",
     "mini-css-extract-plugin": "^0.5.0",
     "mkdirp": "^0.5.1",
     "prettier": "^2.3.2",

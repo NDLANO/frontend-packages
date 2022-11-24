@@ -11,7 +11,7 @@ import ToggleSearchButton from '../Search/ToggleSearchButton';
 
 interface Props {
   onClose: VoidFunction;
-  children: (arg: Function) => ReactChild | ReactChildren | ReactNode;
+  children: (arg: Function) => ReactNode;
   hideOnNarrowScreen?: boolean;
   ndlaFilm?: boolean;
 }

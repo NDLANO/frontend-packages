@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import { useId } from '@reach/auto-id';
-import Tooltip from '@reach/tooltip';
+import { Tooltip } from '@reach/tooltip';
 import React, { ReactNode } from 'react';
 
 const StyledTooltip = styled(Tooltip)`

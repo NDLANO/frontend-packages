@@ -29,8 +29,8 @@
   ],
   "dependencies": {
     "@ndla/core": "^3.0.3",
-    "@reach/auto-id": "^0.16.0",
-    "@reach/tooltip": "^0.16.2"
+    "@reach/auto-id": "^0.18.0",
+    "@reach/tooltip": "^0.18.0"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "react": "^16.4.2 || ^17.0.0",
+    "react": ">= 17",
     "react-device-detect": "^2.1.2"
   },
   "publishConfig": {

@@ -6,7 +6,7 @@
  *
  */
 
-import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { ReactNode, useContext } from 'react';
 import styled from '@emotion/styled';
 import { m, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { spacing } from '@ndla/core';

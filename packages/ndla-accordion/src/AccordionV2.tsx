@@ -8,8 +8,7 @@
 
 import { css } from '@emotion/react';
 import { ReactNode, useState } from 'react';
-import { AccordionContext, useAccordion } from './AccordionContext';
-import AccordionSummary from './AccordionSummary';
+import { AccordionContext } from './AccordionContext';
 
 export interface Props {
   className?: string;

@@ -8,7 +8,7 @@
 
 import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { m, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { spacing } from '@ndla/core';
 import { AccordionContext } from './AccordionContext';
 
@@ -27,21 +27,23 @@ const AccordionDetails = ({ className, children }: Props) => {
 
   return (
     <Details className={className} role="region" id={`${id}-details`} aria-labelledby={`${id}-summary`}>
-      <AnimatePresence>
-        {isOpen && (
-          <m.div
-            initial="collapsed"
-            animate="open"
-            exit="collapsed"
-            variants={{
-              open: { height: 'auto' },
-              collapsed: { height: 0 },
-            }}
-            transition={{ duration: 0.2, default: { ease: 'easeInOut' } }}>
-            {children}
-          </m.div>
-        )}
-      </AnimatePresence>
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence>
+          {isOpen && (
+            <m.div
+              initial="collapsed"
+              animate="open"
+              exit="collapsed"
+              variants={{
+                open: { height: 'auto' },
+                collapsed: { height: 0 },
+              }}
+              transition={{ duration: 0.2, default: { ease: 'easeInOut' } }}>
+              {children}
+            </m.div>
+          )}
+        </AnimatePresence>
+      </LazyMotion>
     </Details>
   );
 };

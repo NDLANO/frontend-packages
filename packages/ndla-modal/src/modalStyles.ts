@@ -11,90 +11,57 @@ import { spacing } from '@ndla/core';
 import { ModalMargin, ModalSize } from './types';
 
 export const sizeCombos: Record<ModalSize, SerializedStyles> = {
-  xxsmall: css`
-    min-width: 15%;
-    max-width: 15%;
-    max-height: 85%;
-  `,
   xsmall: css`
-    max-height: 85%;
-    max-width: 30%;
-    min-width: 30%;
+    width: 300px;
   `,
   small: css`
-    max-height: 85%;
-    max-width: 40%;
-    min-width: 40%;
+    width: 500px;
   `,
   normal: css`
-    max-height: 85%;
-    max-width: 60%;
-    min-width: 60%;
+    width: 700px;
   `,
   large: css`
-    max-height: 85%;
-    max-width: 80%;
-    min-width: 80%;
+    width: 1100px;
   `,
   full: css`
     min-width: 100%;
-    max-width: 100%;
     min-height: 100%;
-    max-height: 100%;
   `,
 };
 
 export const sizes: Record<'width' | 'height', Record<ModalSize, SerializedStyles>> = {
   width: {
-    xxsmall: css`
-      min-width: 15%;
-      max-width: 15%;
-    `,
     xsmall: css`
-      min-width: 30%;
-      max-width: 30%;
+      width: 300px;
     `,
     small: css`
-      min-width: 40%;
-      max-width: 40%;
+      width: 500px;
     `,
     normal: css`
-      min-width: 60%;
-      max-width: 60%;
+      width: 700px;
     `,
     large: css`
-      min-width: 80%;
-      max-width: 80%;
+      width: 1100px;
     `,
     full: css`
       min-width: 100%;
-      max-width: 100%;
     `,
   },
   height: {
-    xxsmall: css`
-      min-width: 15%;
-      max-width: 15%;
-    `,
     xsmall: css`
-      min-height: 30%;
-      max-height: 30%;
+      height: auto;
     `,
     small: css`
-      min-height: 40%;
-      max-height: 40%;
+      height: 500px;
     `,
     normal: css`
-      min-height: 60%;
-      max-height: 60%;
+      height: 700px;
     `,
     large: css`
-      min-height: 80%;
-      max-height: 80%;
+      height: 1100px;
     `,
     full: css`
       min-height: 100%;
-      max-height: 100%;
     `,
   },
 };

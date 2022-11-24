@@ -84,7 +84,8 @@ const StyledDialogContent = styled(DialogContent, { shouldForwardProp: forwardCo
   position: fixed;
   overflow-y: auto;
   background: white;
-  max-height: 100%;
+  max-height: 85%;
+  max-width: 100%;
   ${(p) => p.position !== 'center' && `${p.position}: ${p.margin}`};
   ${(p) => p.position !== 'center' && `${opposite[p.position]}: unset`};
   animation-name: ${(p) => p.animationName};

@@ -10,58 +10,74 @@ import { css, SerializedStyles } from '@emotion/react';
 import { spacing } from '@ndla/core';
 import { ModalMargin, ModalSize } from './types';
 
+export const widths = {
+  xsmall: '300px',
+  small: '500px',
+  normal: '700px',
+  large: '1100px',
+  full: '100%',
+};
+
+export const heights = {
+  xsmall: 'auto',
+  small: '500px',
+  normal: '700px',
+  large: '1100px',
+  full: '100%',
+};
+
 export const sizeCombos: Record<ModalSize, SerializedStyles> = {
   xsmall: css`
-    width: 300px;
+    width: ${widths.xsmall};
   `,
   small: css`
-    width: 500px;
+    width: ${widths.small};
   `,
   normal: css`
-    width: 700px;
+    width: ${widths.normal};
   `,
   large: css`
-    width: 1100px;
+    width: ${widths.large};
   `,
   full: css`
-    min-width: 100%;
-    min-height: 100%;
+    min-width: ${widths.full};
+    min-height: ${heights.full};
   `,
 };
 
 export const sizes: Record<'width' | 'height', Record<ModalSize, SerializedStyles>> = {
   width: {
     xsmall: css`
-      width: 300px;
+      width: ${widths.xsmall};
     `,
     small: css`
-      width: 500px;
+      width: ${widths.small};
     `,
     normal: css`
-      width: 700px;
+      width: ${widths.normal};
     `,
     large: css`
-      width: 1100px;
+      width: ${widths.large};
     `,
     full: css`
-      min-width: 100%;
+      width: ${widths.full};
     `,
   },
   height: {
     xsmall: css`
-      height: auto;
+      width: ${heights.xsmall};
     `,
     small: css`
-      height: 500px;
+      width: ${heights.small};
     `,
     normal: css`
-      height: 700px;
+      width: ${heights.normal};
     `,
     large: css`
-      height: 1100px;
+      width: ${heights.large};
     `,
     full: css`
-      min-height: 100%;
+      min-height: ${heights.full};
     `,
   },
 };

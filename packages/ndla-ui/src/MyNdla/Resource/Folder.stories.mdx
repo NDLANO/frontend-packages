@@ -33,10 +33,7 @@ export const Template = (args) => <Folder {...args} />;
       description: '',
       link: '',
       type: 'list',
-      menuItems: [
-        { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
-        { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
-      ],
+      menuItems: { control: false },
     }}>
     {Template.bind({})}
   </Story>

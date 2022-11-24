@@ -47,7 +47,9 @@ const ReferenceBoxExample = () => {
                     title="Mediehistorie"
                     caption="I dette interaktive oppslagsverket kan du lære om medieutviklingen, kan du lære om medieutviklingen, kan du lære om medieutviklingen. kan du lære om medieutviklingen. "
                     image={image}
-                    url="https://www.ndla.no"></ResourceBox>
+                    url="https://www.ndla.no"
+                    buttonText="Åpne i nytt vindu"
+                  />
                 </Figure>
 
                 <p>

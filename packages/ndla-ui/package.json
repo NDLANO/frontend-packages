@@ -54,7 +54,7 @@
     "i18next-browser-languagedetector": "^6.1.1",
     "invariant": "^2.2.3",
     "react-bem-helper": "1.4.1",
-    "react-device-detect": "^2.1.2",
+    "react-device-detect": "^2.2.2",
     "react-select": "^5.4.0",
     "react-swipeable": "^6.2.0",
     "react-transition-group": "^2.5.3",

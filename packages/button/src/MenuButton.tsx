@@ -9,8 +9,7 @@
 import styled from '@emotion/styled';
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
 import { colors, spacing, shadows, misc, animations } from '@ndla/core';
-import { Menu, MenuItem, MenuButton as MenuButtonReach, MenuPopover, MenuItems } from '@reach/menu-button';
-import { positionRight, positionDefault } from '@reach/popover';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
 import { ButtonSize } from './';
@@ -22,7 +21,7 @@ interface StyledButtonProps {
 
 const shouldForwardProp = (name: string) => name !== 'svgSize';
 
-const StyledMenuButton = styled(MenuButtonReach, { shouldForwardProp })<StyledButtonProps>`
+const StyledMenuButton = styled(DropdownMenu.Trigger, { shouldForwardProp })<StyledButtonProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +64,8 @@ const StyledHorizontalMenu = styled(HorizontalMenu)`
   transition: ${misc.transition.default};
 `;
 
-const StyledMenuItems = styled(MenuItems)`
+const StyledMenuItems = styled(DropdownMenu.Content)`
+  background: ${colors.white};
   padding: 0;
   border: none;
   border-radius: 4px;
@@ -80,14 +80,15 @@ interface StyledMenuItemProps {
   type?: 'danger';
 }
 
-const StyledMenuItem = styled(MenuItem)<StyledMenuItemProps>`
+const StyledMenuItem = styled(DropdownMenu.Item)<StyledMenuItemProps>`
   display: flex;
   align-items: center;
   gap: ${spacing.xsmall};
   padding: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} ${spacing.xsmall};
   cursor: pointer;
   color: ${({ type }) => (type === 'danger' ? colors.support.red : colors.text.primary)};
-  &[data-selected] {
+  &[data-highlighted] {
+    outline: none;
     color: ${({ type }) => (type === 'danger' ? colors.support.red : colors.brand.primary)};
     background: ${({ type }) => (type === 'danger' ? colors.support.redLightest : colors.brand.lighter)};
   }
@@ -104,22 +105,12 @@ interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   menuItems?: MenuItemProps[];
   menuIcon?: ReactNode;
   size?: ButtonSize;
-  /** Change anchoring of popup menu */
-  alignRight?: boolean;
 }
 
-export const MenuButton = ({
-  menuItems,
-  size,
-  menuIcon,
-  className,
-  tabIndex,
-  alignRight,
-  ...rest
-}: MenuButtonProps) => {
+export const MenuButton = ({ menuItems, size, menuIcon, className, tabIndex, ...rest }: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
-    <Menu tabIndex={tabIndex}>
+    <DropdownMenu.Root>
       <StyledMenuButton
         aria-label={t('myNdla.more')}
         tabIndex={tabIndex}
@@ -134,22 +125,20 @@ export const MenuButton = ({
           {menuIcon || <StyledHorizontalMenu />}
         </MenuIconWrapper>
       </StyledMenuButton>
-      <MenuPopover
+      <DropdownMenu.Portal
         onKeyDown={(e) => {
           e.stopPropagation();
           e.preventDefault();
-        }}
-        portal={true}
-        position={alignRight ? positionRight : positionDefault}>
+        }}>
         <StyledMenuItems>
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
               key={text}
               onClick={(e) => {
+                onClick(e);
                 e.stopPropagation();
                 e.preventDefault();
               }}
-              onSelect={onClick}
               type={type}
               aria-label={text}>
               {icon}
@@ -157,8 +146,8 @@ export const MenuButton = ({
             </StyledMenuItem>
           ))}
         </StyledMenuItems>
-      </MenuPopover>
-    </Menu>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 };
 

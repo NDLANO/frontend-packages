@@ -31,7 +31,7 @@ const buttonToggleCss = css`
 
 type ModalWrapperProps = {
   innerWidth: number;
-  children: (arg: VoidFunction) => ReactChild | ReactChildren | ReactNode;
+  children: (arg: VoidFunction) => ReactNode;
 };
 
 const ModalWrapperComponent = ({ innerWidth, children }: ModalWrapperProps) => {

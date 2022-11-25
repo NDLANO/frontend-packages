@@ -111,14 +111,16 @@ const MastheadSearchModal = ({ onClose: onSearchClose, children, hideOnNarrowScr
         <>
           <div css={extraBackdrop} />
           <StyledHeader>
-            {isFunction(children) ? children(closeModal) : children}
-            <IconButton
-              aria-label={t('welcomePage.closeSearch')}
-              variant="ghost"
-              colorTheme="light"
-              onClick={closeModal}>
-              <Cross className="c-icon--medium" />
-            </IconButton>
+            <>
+              {isFunction(children) ? children(closeModal) : children}
+              <IconButton
+                aria-label={t('welcomePage.closeSearch')}
+                variant="ghost"
+                colorTheme="light"
+                onClick={closeModal}>
+                <Cross className="c-icon--medium" />
+              </IconButton>
+            </>
           </StyledHeader>
         </>
       )}

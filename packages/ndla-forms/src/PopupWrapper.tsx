@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, ReactChild, ReactChildren } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
 import { css, SerializedStyles } from '@emotion/react';
@@ -135,7 +135,7 @@ const StyledCloseButton = styled.button`
 `;
 
 interface Props extends StyledOptionProps {
-  children: (arg: (newValue?: boolean) => void) => ReactChild | ReactChildren;
+  children: (arg: (newValue?: boolean) => void) => ReactNode;
   label: string;
   buttonStyle: SerializedStyles;
   onOpen?: () => void;

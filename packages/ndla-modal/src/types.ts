@@ -18,7 +18,9 @@ export type ModalMargin = 'none' | 'small';
 
 export type DrawerPosition = 'top' | 'bottom' | 'left' | 'right';
 
-interface DialogProps extends DialogContentProps, Omit<HTMLAttributes<HTMLDivElement>, 'size'> {
+interface DialogProps
+  extends Omit<DialogContentProps, 'children'>,
+    Omit<HTMLAttributes<HTMLDivElement>, 'size' | 'children'> {
   controlled?: boolean;
   animation?: ModalAnimation;
   animationDuration?: number;

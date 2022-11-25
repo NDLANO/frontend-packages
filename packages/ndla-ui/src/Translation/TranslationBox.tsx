@@ -5,7 +5,7 @@ interface Props {
   tabs: {
     id: string;
     title: string;
-    content: (() => ReactNode) | ReactNode;
+    content: ReactNode;
   }[];
 }
 const TranslationBox = ({ tabs }: Props) => (

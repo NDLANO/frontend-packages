@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react';
-import { colors, spacing, shadows, misc, animations } from '@ndla/core';
+import { colors, spacing, shadows, misc, animations, fonts } from '@ndla/core';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { HorizontalMenu } from '@ndla/icons/contentType';
 import { useTranslation } from 'react-i18next';
@@ -82,6 +82,7 @@ interface StyledMenuItemProps {
 
 const StyledMenuItem = styled(DropdownMenu.Item)<StyledMenuItemProps>`
   display: flex;
+  ${fonts.sizes('16px', '22px')};
   align-items: center;
   gap: ${spacing.xsmall};
   padding: ${spacing.xxsmall} ${spacing.small} ${spacing.xxsmall} ${spacing.xsmall};
@@ -105,9 +106,18 @@ interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   menuItems?: MenuItemProps[];
   menuIcon?: ReactNode;
   size?: ButtonSize;
+  align?: 'start' | 'center' | 'end';
 }
 
-export const MenuButton = ({ menuItems, size, menuIcon, className, tabIndex, ...rest }: MenuButtonProps) => {
+export const MenuButton = ({
+  menuItems,
+  size,
+  menuIcon,
+  className,
+  tabIndex,
+  align = 'start',
+  ...rest
+}: MenuButtonProps) => {
   const { t } = useTranslation();
   return (
     <DropdownMenu.Root>
@@ -130,7 +140,7 @@ export const MenuButton = ({ menuItems, size, menuIcon, className, tabIndex, ...
           e.stopPropagation();
           e.preventDefault();
         }}>
-        <StyledMenuItems>
+        <StyledMenuItems align={align}>
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
               key={text}

@@ -193,7 +193,7 @@ const BlockResource = ({
         </ContentWrapper>
         <RightRow>
           {tags && tags.length > 0 && <CompressedTagList tagLinkPrefix={tagLinkPrefix} tags={tags} />}
-          {menuItems && menuItems.length > 0 && <MenuButton size="small" menuItems={menuItems} />}
+          {menuItems && menuItems.length > 0 && <MenuButton align="end" size="small" menuItems={menuItems} />}
         </RightRow>
       </BlockInfoWrapper>
     </BlockElementWrapper>

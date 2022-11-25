@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@ndla/util": "^3.1.9",
-    "react-device-detect": "^2.1.2"
+    "react-device-detect": "^2.2.2"
   },
   "publishConfig": {
     "access": "public"

@@ -81,7 +81,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bem-helper": "1.4.1",
-    "react-device-detect": "^2.1.2",
+    "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",
     "react-i18next": "^11.18.6",

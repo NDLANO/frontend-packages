@@ -38,7 +38,7 @@
   "dependencies": {
     "@ndla/icons": "^2.0.8",
     "@ndla/util": "^3.1.9",
-    "react-device-detect": "^2.1.2",
+    "react-device-detect": "^2.2.2",
     "react-tabs": "^3.2.3"
   },
   "publishConfig": {

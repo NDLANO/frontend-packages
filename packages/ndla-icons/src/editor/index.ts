@@ -26,6 +26,7 @@ export { default as DetailSearch } from './DetailSearch';
 export { default as Done } from './Done';
 export { default as DragHorizontal } from './DragHorizontal';
 export { default as DragVertical } from './DragVertical';
+export { default as Expandable } from './Expandable';
 export { default as ExpandableBox } from './ExpandableBox';
 export { default as Eye } from './Eye';
 export { default as FactBox } from './FactBox';

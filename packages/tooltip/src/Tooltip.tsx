@@ -8,11 +8,11 @@
 
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import { useId } from '@reach/auto-id';
-import Tooltip from '@reach/tooltip';
-import React, { ReactNode } from 'react';
+import * as RadixTooltip from '@radix-ui/react-tooltip';
 
-const StyledTooltip = styled(Tooltip)`
+import React, { cloneElement, ReactElement, ReactNode } from 'react';
+
+const StyledContent = styled(RadixTooltip.Content)`
   color: #fff;
   z-index: 99999;
   border: 0;
@@ -28,50 +28,37 @@ const StyledTooltip = styled(Tooltip)`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
-interface CoreProps {
-  id: string | undefined;
-  children: ReactNode;
-  tooltip: ReactNode;
-  ariaLabel: string | undefined;
-  className: string | undefined;
-}
-
-const CoreTooltip = ({ id, children, tooltip, ariaLabel, className }: CoreProps) => {
-  return (
-    <StyledTooltip id={id} label={tooltip} aria-label={ariaLabel} className={className}>
-      {children}
-    </StyledTooltip>
-  );
-};
-
 interface Props {
-  id?: string;
-  children?: ReactNode;
-  dangerousHTML?: string;
-  tooltip: ReactNode;
   ariaLabel?: string;
+  children?: ReactElement;
+  tooltip: string;
   className?: string;
+  dangerous?: string;
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
 }
-const CustomTooltip = ({ id, children, tooltip, dangerousHTML, ariaLabel: ariaLabelProp, className }: Props) => {
-  const deterministicId = useId(id);
-  const ariaLabel = typeof tooltip === 'string' ? tooltip : ariaLabelProp;
 
-  // Article Converter needs hydration due to SSR removing all dynamics
-  if (dangerousHTML) {
-    return (
-      <CoreTooltip id={deterministicId} tooltip={tooltip} ariaLabel={ariaLabel} className={className}>
-        <span data-tooltip-children dangerouslySetInnerHTML={{ __html: dangerousHTML }} />
-      </CoreTooltip>
-    );
-  }
-
+const Tooltip = ({ children, tooltip, className, dangerous, ariaLabel }: Props) => {
   return (
-    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={ariaLabel}>
-      <CoreTooltip id={deterministicId} tooltip={tooltip} ariaLabel={ariaLabel} className={className}>
-        <span data-tooltip-children>{children}</span>
-      </CoreTooltip>
-    </div>
+    <RadixTooltip.Provider>
+      <RadixTooltip.Root>
+        <RadixTooltip.Trigger asChild>
+          <div
+            aria-label={ariaLabel || tooltip}
+            data-aria-label={ariaLabel}
+            data-tooltip-container
+            data-tooltip={tooltip}
+            dangerouslySetInnerHTML={dangerous ? { __html: dangerous } : undefined}>
+            {children}
+          </div>
+        </RadixTooltip.Trigger>
+
+        <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
+          {tooltip}
+        </StyledContent>
+      </RadixTooltip.Root>
+    </RadixTooltip.Provider>
   );
 };
 
-export default CustomTooltip;
+export default Tooltip;

@@ -80,6 +80,7 @@ const CopyParagraphButton = ({ title, content, hydrate }: Props) => {
   if (!title) return null;
 
   const onCopyClick = (event: MouseEvent<HTMLButtonElement>): void => {
+    console.log('RUNS');
     setHasCopied(true);
     const copyId = event.currentTarget.getAttribute('data-title');
     const { location } = window;

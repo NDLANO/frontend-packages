@@ -17,7 +17,7 @@ interface Props {
 const ShortcutItem = ({ shortcut: { id, tooltip, contentType, url, count } }: Props) => {
   const { t } = useTranslation();
   return (
-    <Tooltip id={`shortcut-tooltip-${id}`} tooltip={t('resource.shortcutsTooltip', { count })}>
+    <Tooltip tooltip={t('resource.shortcutsTooltip', { count })}>
       <SafeLink {...classes('item-link')} aria-label={tooltip} to={url}>
         <ContentTypeBadge type={contentType} size="x-small" background />
         <span {...classes('count')}>{count}</span>

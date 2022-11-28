@@ -21,7 +21,7 @@ const forEachElement = (selector: string, callback: Function) => {
  * Hydrates tooltip for SSR pages
  */
 const initTooltips = () => {
-  forEachElement('[data-tooltip-container]', (el: HTMLDivElement) => {
+  forEachElement('[data-tooltip-from-article-converter]', (el: HTMLDivElement) => {
     const tooltip = el.getAttribute('data-tooltip');
     const ariaLabel = el.getAttribute('data-aria-label');
 

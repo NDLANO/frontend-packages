@@ -33,10 +33,10 @@ interface Props {
   children?: ReactNode;
   tooltip: ReactNode;
   className?: string;
-  dangerous?: string;
+  innerHTML?: string;
 }
 
-const Tooltip = ({ children, tooltip, className, dangerous, ariaLabel: ariaLabelProp }: Props) => {
+const Tooltip = ({ children, tooltip, className, innerHTML, ariaLabel: ariaLabelProp }: Props) => {
   const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
   const ariaLabel = ariaLabelProp || tooltipString;
   return (
@@ -48,7 +48,7 @@ const Tooltip = ({ children, tooltip, className, dangerous, ariaLabel: ariaLabel
             data-aria-label={ariaLabelProp}
             data-tooltip-container
             data-tooltip={tooltipString}
-            dangerouslySetInnerHTML={dangerous ? { __html: dangerous } : undefined}>
+            dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}>
             {children}
           </div>
         </RadixTooltip.Trigger>

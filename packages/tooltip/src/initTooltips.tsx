@@ -25,9 +25,9 @@ const initTooltips = () => {
     const tooltip = el.getAttribute('data-tooltip');
     const ariaLabel = el.getAttribute('data-aria-label');
 
-    const content = el.innerHTML;
+    const innerHTML = el.innerHTML;
 
-    ReactDOM.hydrate(<Tooltip tooltip={tooltip!} dangerous={content} ariaLabel={ariaLabel || undefined} />, el);
+    ReactDOM.hydrate(<Tooltip tooltip={tooltip!} innerHTML={innerHTML} ariaLabel={ariaLabel || undefined} />, el);
   });
 };
 

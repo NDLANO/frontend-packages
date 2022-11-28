@@ -30,7 +30,7 @@ const StyledContent = styled(RadixTooltip.Content)`
 
 interface Props {
   ariaLabel?: string;
-  children?: ReactElement;
+  children?: ReactNode;
   tooltip: string;
   className?: string;
   dangerous?: string;

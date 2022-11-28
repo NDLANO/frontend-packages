@@ -6,7 +6,7 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import warning from 'tiny-warning';
@@ -14,6 +14,7 @@ import withTracker from './withTracker';
 
 interface Props {
   title: string;
+  children?: ReactNode;
 }
 
 /**
@@ -34,7 +35,8 @@ class HelmetWithTracker extends Component<Props> {
   }
 
   render() {
-    return <Helmet {...this.props} />;
+    const { children, ...rest } = this.props;
+    return <Helmet {...rest}>{this.props.children}</Helmet>;
   }
 
   static propTypes = {

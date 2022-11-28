@@ -28,6 +28,22 @@ const StyledTooltip = styled(Tooltip)`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
+interface CoreProps {
+  id: string | undefined;
+  children: ReactNode;
+  tooltip: ReactNode;
+  ariaLabel: string | undefined;
+  className: string | undefined;
+}
+
+const CoreTooltip = ({ id, children, tooltip, ariaLabel, className }: CoreProps) => {
+  return (
+    <StyledTooltip id={id} label={tooltip} aria-label={ariaLabel} className={className}>
+      {children}
+    </StyledTooltip>
+  );
+};
+
 interface Props {
   id?: string;
   children?: ReactNode;
@@ -36,7 +52,6 @@ interface Props {
   ariaLabel?: string;
   className?: string;
 }
-
 const CustomTooltip = ({ id, children, tooltip, dangerousHTML, ariaLabel: ariaLabelProp, className }: Props) => {
   const deterministicId = useId(id);
   const ariaLabel = typeof tooltip === 'string' ? tooltip : ariaLabelProp;
@@ -44,17 +59,17 @@ const CustomTooltip = ({ id, children, tooltip, dangerousHTML, ariaLabel: ariaLa
   // Article Converter needs hydration due to SSR removing all dynamics
   if (dangerousHTML) {
     return (
-      <StyledTooltip id={deterministicId} label={tooltip} aria-label={ariaLabel} className={className}>
+      <CoreTooltip id={deterministicId} tooltip={tooltip} ariaLabel={ariaLabel} className={className}>
         <span data-tooltip-children dangerouslySetInnerHTML={{ __html: dangerousHTML }} />
-      </StyledTooltip>
+      </CoreTooltip>
     );
   }
 
   return (
-    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={ariaLabel} className={className}>
-      <StyledTooltip id={deterministicId} label={tooltip} aria-label={ariaLabel}>
+    <div data-tooltip data-tooltip-id={deterministicId} data-tooltip-label={ariaLabel}>
+      <CoreTooltip id={deterministicId} tooltip={tooltip} ariaLabel={ariaLabel} className={className}>
         <span data-tooltip-children>{children}</span>
-      </StyledTooltip>
+      </CoreTooltip>
     </div>
   );
 };

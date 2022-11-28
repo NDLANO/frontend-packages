@@ -34,8 +34,6 @@ interface Props {
   tooltip: string;
   className?: string;
   dangerous?: string;
-  side?: 'top' | 'right' | 'bottom' | 'left';
-  align?: 'start' | 'center' | 'end';
 }
 
 const Tooltip = ({ children, tooltip, className, dangerous, ariaLabel }: Props) => {

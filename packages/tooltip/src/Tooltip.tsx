@@ -31,26 +31,27 @@ const StyledContent = styled(RadixTooltip.Content)`
 interface Props {
   ariaLabel?: string;
   children?: ReactNode;
-  tooltip: string;
+  tooltip: ReactNode;
   className?: string;
   dangerous?: string;
 }
 
-const Tooltip = ({ children, tooltip, className, dangerous, ariaLabel }: Props) => {
+const Tooltip = ({ children, tooltip, className, dangerous, ariaLabel: ariaLabelProp }: Props) => {
+  const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
+  const ariaLabel = ariaLabelProp || tooltipString;
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger asChild>
           <div
-            aria-label={ariaLabel || tooltip}
-            data-aria-label={ariaLabel}
+            aria-label={ariaLabel}
+            data-aria-label={ariaLabelProp}
             data-tooltip-container
-            data-tooltip={tooltip}
+            data-tooltip={tooltipString}
             dangerouslySetInnerHTML={dangerous ? { __html: dangerous } : undefined}>
             {children}
           </div>
         </RadixTooltip.Trigger>
-
         <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
           {tooltip}
         </StyledContent>

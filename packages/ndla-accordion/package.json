@@ -28,6 +28,7 @@
     "@ndla/button": "^6.0.4",
     "@ndla/core": "^3.0.3",
     "@ndla/icons": "^2.0.8",
+    "@radix-ui/react-accordion": "^1.0.1",
     "framer-motion": "^6.5.1"
   },
   "peerDependencies": {

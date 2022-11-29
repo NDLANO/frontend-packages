@@ -24,7 +24,6 @@ const initTooltips = () => {
   forEachElement('[data-tooltip-from-article-converter]', (el: HTMLElement) => {
     const id = el.getAttribute('data-tooltip-id');
     const label = el.getAttribute('data-tooltip-label');
-    console.log(label);
     const children = el.querySelector('[data-tooltip-children]');
     ReactDOM.hydrate(<Tooltip id={id!} tooltip={label!} dangerousHTML={children?.innerHTML} />, el);
   });

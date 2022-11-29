@@ -10,91 +10,74 @@ import { css, SerializedStyles } from '@emotion/react';
 import { spacing } from '@ndla/core';
 import { ModalMargin, ModalSize } from './types';
 
+export const widths = {
+  xsmall: '300px',
+  small: '500px',
+  normal: '700px',
+  large: '1100px',
+  full: '100%',
+};
+
+export const heights = {
+  xsmall: 'auto',
+  small: '500px',
+  normal: '700px',
+  large: '1100px',
+  full: '100%',
+};
+
 export const sizeCombos: Record<ModalSize, SerializedStyles> = {
-  xxsmall: css`
-    min-width: 15%;
-    max-width: 15%;
-    max-height: 85%;
-  `,
   xsmall: css`
-    max-height: 85%;
-    max-width: 30%;
-    min-width: 30%;
+    width: ${widths.xsmall};
   `,
   small: css`
-    max-height: 85%;
-    max-width: 40%;
-    min-width: 40%;
+    width: ${widths.small};
   `,
   normal: css`
-    max-height: 85%;
-    max-width: 60%;
-    min-width: 60%;
+    width: ${widths.normal};
   `,
   large: css`
-    max-height: 85%;
-    max-width: 80%;
-    min-width: 80%;
+    width: ${widths.large};
   `,
   full: css`
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
+    min-width: ${widths.full};
+    min-height: ${heights.full};
   `,
 };
 
 export const sizes: Record<'width' | 'height', Record<ModalSize, SerializedStyles>> = {
   width: {
-    xxsmall: css`
-      min-width: 15%;
-      max-width: 15%;
-    `,
     xsmall: css`
-      min-width: 30%;
-      max-width: 30%;
+      width: ${widths.xsmall};
     `,
     small: css`
-      min-width: 40%;
-      max-width: 40%;
+      width: ${widths.small};
     `,
     normal: css`
-      min-width: 60%;
-      max-width: 60%;
+      width: ${widths.normal};
     `,
     large: css`
-      min-width: 80%;
-      max-width: 80%;
+      width: ${widths.large};
     `,
     full: css`
-      min-width: 100%;
-      max-width: 100%;
+      width: ${widths.full};
     `,
   },
   height: {
-    xxsmall: css`
-      min-width: 15%;
-      max-width: 15%;
-    `,
     xsmall: css`
-      min-height: 30%;
-      max-height: 30%;
+      width: ${heights.xsmall};
     `,
     small: css`
-      min-height: 40%;
-      max-height: 40%;
+      width: ${heights.small};
     `,
     normal: css`
-      min-height: 60%;
-      max-height: 60%;
+      width: ${heights.normal};
     `,
     large: css`
-      min-height: 80%;
-      max-height: 80%;
+      width: ${heights.large};
     `,
     full: css`
-      min-height: 100%;
-      max-height: 100%;
+      min-height: ${heights.full};
     `,
   },
 };

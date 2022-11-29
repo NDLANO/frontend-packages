@@ -26,7 +26,6 @@ const positionOptions: Record<DrawerPosition, Option<DrawerPosition>> = {
 };
 
 const sizeOptions: Record<ModalSize, Option<ModalSize>> = {
-  xxsmall: { title: 'Skikkelig Liten', value: 'xxsmall' },
   xsmall: { title: 'Ekstra Liten', value: 'xsmall' },
   small: { title: 'Liten', value: 'small' },
   normal: { title: 'Vanlig', value: 'normal' },

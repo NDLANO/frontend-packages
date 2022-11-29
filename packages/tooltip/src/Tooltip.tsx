@@ -28,7 +28,7 @@ const StyledContent = styled(RadixTooltip.Content)`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
-interface Props {
+interface CoreProps {
   ariaLabel?: string;
   children?: ReactNode;
   tooltip: ReactNode;
@@ -36,18 +36,14 @@ interface Props {
   innerHTML?: string;
 }
 
-const Tooltip = ({ children, tooltip, className, innerHTML, ariaLabel: ariaLabelProp }: Props) => {
-  const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
-  const ariaLabel = ariaLabelProp || tooltipString;
+const CoreTooltip = ({ children, tooltip, className, innerHTML, ariaLabel }: CoreProps) => {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger asChild>
           <div
             aria-label={ariaLabel}
-            data-aria-label={ariaLabelProp}
-            data-tooltip-container
-            data-tooltip={tooltipString}
+            data-inner-html
             dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}>
             {children}
           </div>
@@ -57,6 +53,31 @@ const Tooltip = ({ children, tooltip, className, innerHTML, ariaLabel: ariaLabel
         </StyledContent>
       </RadixTooltip.Root>
     </RadixTooltip.Provider>
+  );
+};
+
+interface Props extends CoreProps {
+  hydrate?: boolean;
+}
+
+const Tooltip = ({ children, tooltip, className, innerHTML, ariaLabel: ariaLabelProp, hydrate }: Props) => {
+  const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
+  const ariaLabel = ariaLabelProp || tooltipString;
+
+  if (hydrate) {
+    return (
+      <CoreTooltip ariaLabel={ariaLabel} className={className} innerHTML={innerHTML} tooltip={tooltip}>
+        {children}
+      </CoreTooltip>
+    );
+  }
+
+  return (
+    <div data-aria-label={ariaLabelProp} data-tooltip-container data-tooltip={tooltipString}>
+      <CoreTooltip ariaLabel={ariaLabel} className={className} innerHTML={innerHTML} tooltip={tooltip}>
+        {children}
+      </CoreTooltip>
+    </div>
   );
 };
 

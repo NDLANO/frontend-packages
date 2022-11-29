@@ -3,11 +3,11 @@ import { defaultParameters } from '../../../designmanual/stories/defaults';
 import { Pencil } from '@ndla/icons/action';
 import { DeleteForever } from '@ndla/icons/editor';
 
-import ListResource from './ListResource';
+import BlockResource from './BlockResource';
 
 <Meta
-  title="Enkle komponenter/Ressurser/ListResource"
-  component={ListResource}
+  title="Enkle komponenter/Ressurser/BlockResource"
+  component={BlockResource}
   parameters={{
     ...defaultParameters,
     docs: {
@@ -31,13 +31,13 @@ import ListResource from './ListResource';
   }}
 />
 
-export const Template = (args) => <ListResource {...args} />;
+export const Template = (args) => <BlockResource {...args} />;
 
-# Standard ressurs
+# Blokkressurs
 
 <Canvas>
   <Story
-    name="ListResource"
+    name="BlockResource"
     args={{
       id: '1234',
       link: '',
@@ -55,4 +55,4 @@ export const Template = (args) => <ListResource {...args} />;
 
 ### Props
 
-<ArgsTable story="ListResource" />
+<ArgsTable story="BlockResource" />

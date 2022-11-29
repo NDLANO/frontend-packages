@@ -16,6 +16,11 @@ import ButtonV2 from '../../../../button/src/ButtonV2';
     },
     backgrounds: {},
   }}
+  argTypes={{
+    menuItems: {
+      control: false,
+    },
+  }}
 />
 
 export const Template = (args) => <Folder {...args} />;
@@ -33,7 +38,10 @@ export const Template = (args) => <Folder {...args} />;
       description: '',
       link: '',
       type: 'list',
-      menuItems: { control: false },
+      menuItems: [
+        { icon: <Pencil />, text: 'Rediger', onClick: () => {} },
+        { icon: <DeleteForever />, text: 'Slett', onClick: () => {}, type: 'danger' },
+      ],
     }}>
     {Template.bind({})}
   </Story>

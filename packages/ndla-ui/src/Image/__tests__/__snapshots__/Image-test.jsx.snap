@@ -3,6 +3,8 @@
 exports[`Image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 <div
@@ -24,6 +26,8 @@ exports[`Image renderers correctly 1`] = `
 exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 <div
@@ -45,6 +49,8 @@ exports[`Image with crop and focalpoint props renderers correctly 1`] = `
 exports[`Lazyloaded image renderers correctly 1`] = `
 .emotion-0 {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 <div

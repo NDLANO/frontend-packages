@@ -10,6 +10,7 @@ import { Accordion, AccordionWrapper } from './Accordion';
 import AccordionItem from './AccordionItem';
 import AccordionHeader from './AccordionHeader';
 import AccordionContent from './AccordionContent';
+import AccordionRoot from './AccordionRoot';
 import Accordions from './Accordions';
 import AccordionSection from './AccordionSection';
 import { AccordionBar } from './AccordionBar';
@@ -20,6 +21,7 @@ export {
   AccordionItem,
   AccordionHeader,
   AccordionContent,
+  AccordionRoot,
   Accordions,
   AccordionWrapper,
   AccordionBar,

@@ -26,8 +26,16 @@ const Wrapper = styled.div`
   }
   [class^='language-'] {
     & > span:first-of-type {
-      margin-top: 10px;
-      display: block;
+      & span:first-of-type {
+        padding-top: 10px;
+        display: block;
+      }
+    }
+    & > span:last-of-type {
+      & span:first-of-type {
+        padding-bottom: 10px;
+        display: block;
+      }
     }
   }
 `;
@@ -61,12 +69,11 @@ const syntaxHighlighterStyle = {
   },
 };
 
-const lineNumberContainerStyle: CSSProperties = {
-  padding: '10px',
-  float: 'left',
+const lineNumberStyle: CSSProperties = {
   borderRight: '1px solid #D8D8D8',
   borderLeft: 0,
   marginRight: '10px',
+  marginLeft: '10px',
   userSelect: 'none',
   color: '#979797',
 };
@@ -100,11 +107,11 @@ export const Codeblock = ({ actionButton, code, format, showCopy = false, title 
         {actionButton}
       </TitleBar>
       <SyntaxHighlighter
-        lineNumberContainerStyle={lineNumberContainerStyle}
+        lineNumberStyle={lineNumberStyle}
         style={syntaxHighlighterStyle}
         language={format}
         wrapLines
-        showInlineLineNumbers={false}
+        showInlineLineNumbers
         showLineNumbers>
         {code}
       </SyntaxHighlighter>

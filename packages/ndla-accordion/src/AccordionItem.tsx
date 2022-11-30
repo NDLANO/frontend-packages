@@ -6,9 +6,17 @@
  *
  */
 
-import { AccordionItemProps, Item } from '@radix-ui/react-accordion';
+import { Item } from '@radix-ui/react-accordion';
+import { HTMLAttributes, ReactNode } from 'react';
 
-const AccordionItem = ({ children, ...rest }: AccordionItemProps) => {
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  disabled?: boolean;
+  /** Unique id for state handling */
+  value: string;
+  children: ReactNode;
+}
+
+const AccordionItem = ({ children, ...rest }: Props) => {
   return <Item {...rest}>{children}</Item>;
 };
 

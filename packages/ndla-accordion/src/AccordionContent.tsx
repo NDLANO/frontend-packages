@@ -10,7 +10,7 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { AccordionContentProps, Content } from '@radix-ui/react-accordion';
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 const slideDown = keyframes`
   from {
@@ -47,20 +47,19 @@ const AnimationWrapper = styled(Content)<AnimationProps>`
     `}
 `;
 
-const ContentMargin = styled.div`
+const StyledContent = styled.div`
   padding: ${spacing.xsmall} ${spacing.small};
 `;
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   disableAnimation?: boolean;
-  className: string;
   children: ReactNode;
 }
 
-const AccordionContent = ({ className, disableAnimation, children }: Props) => {
+const AccordionContent = ({ disableAnimation, children, ...rest }: Props) => {
   return (
     <AnimationWrapper animate={!disableAnimation}>
-      <ContentMargin className={className}>{children}</ContentMargin>
+      <StyledContent {...rest}>{children}</StyledContent>
     </AnimationWrapper>
   );
 };

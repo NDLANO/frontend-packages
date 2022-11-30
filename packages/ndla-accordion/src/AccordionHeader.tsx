@@ -10,14 +10,15 @@ import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, misc, spacing } from '@ndla/core';
 import { ChevronDown } from '@ndla/icons/common';
-import { AccordionTriggerProps, Header, Trigger } from '@radix-ui/react-accordion';
-import { forwardRef } from 'react';
+import { Header, Trigger } from '@radix-ui/react-accordion';
+import { forwardRef, HTMLAttributes } from 'react';
 
 const StyledHeader = styled(Header)`
   display: flex;
   background: ${colors.brand.lighter};
   border-radius: ${misc.borderRadius};
   cursor: pointer;
+  margin: 0;
   padding-left: ${spacing.small};
 `;
 
@@ -42,8 +43,8 @@ const StyledChevron = styled(ChevronDown)`
   height: 24px;
 `;
 
-interface Props extends AccordionTriggerProps {
-  toggleButtonCSS: SerializedStyles;
+interface Props extends HTMLAttributes<HTMLButtonElement> {
+  toggleButtonCSS?: SerializedStyles;
 }
 
 const AccordionHeader = forwardRef<HTMLButtonElement, Props>(({ toggleButtonCSS, children, ...rest }, ref) => {

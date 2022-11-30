@@ -25,30 +25,31 @@ h5 {
 }
 
 h1 {
-  font-weight: $font-weight-semibold;
-  @include font-size(30px, 40px);
+  font-family: $font-serif;
+  font-weight: $font-weight-bold;
+  @include font-size(38px, 44px);
   margin-bottom: $spacing--small;
 
-  @include mq(tablet) {
-    @include font-size(38px, 45px);
+  @include mq(desktop) {
+    @include font-size(48px, 60px);
     margin-bottom: $spacing;
   }
 
   @include chinese() {
-    @include font-size(32px, 40px);
+    @include font-size(38px, 44px);
 
-    @include mq(tablet) {
-      @include font-size(40px, 45px);
+    @include mq(desktop) {
+      @include font-size(48px, 60px);
     }
   }
 }
 
 @include chinese() {
   h1 {
-    @include font-size(32px, 40px);
+    @include font-size(38px, 44px);
 
-    @include mq(tablet) {
-      @include font-size(40px, 45px);
+    @include mq(desktop) {
+      @include font-size(48px, 60px);
     }
   }
 }
@@ -59,14 +60,17 @@ h4,
 h5 {
   margin-top: $spacing--large;
   margin-bottom: $spacing--small;
-  @include font-size(22px, 30px);
+  @include font-size(28px, 36px);
 
   @include mq(desktop) {
-    line-height: 1.5;
+    @include font-size(30px, 38px);
   }
 
   @include chinese() {
-    @include font-size(24px, 30px);
+    @include font-size(28px, 36px);
+    @include mq(desktop) {
+      @include font-size(30px, 38px);
+    }
   }
 }
 
@@ -75,19 +79,30 @@ h5 {
   h3,
   h4,
   h5 {
-    @include font-size(24px, 30px);
+    @include font-size(28px, 36px);
+
+    @include mq(desktop) {
+      @include font-size(30px, 38px);
+    }
   }
 }
 
 h3,
 h4,
 h5 {
-  @include font-size(18px, 26px);
+  @include font-size(26px, 35px);
   margin-top: $spacing--medium;
   margin-bottom: $spacing--small / 2;
 
+  @include mq(desktop) {
+    @include font-size(26px, 36px);
+  }
+
   @include chinese() {
-    @include font-size(20px, 26px);
+    @include font-size(26px, 35px);
+    @include mq(desktop) {
+      @include font-size(26px, 36px);
+    }
   }
 }
 
@@ -95,7 +110,28 @@ h5 {
   h3,
   h4,
   h5 {
-    @include font-size(20px, 26px);
+    @include font-size(26px, 35px);
+    @include mq(desktop) {
+      @include font-size(26px, 36px);
+    }
+  }
+}
+
+h4,
+h5 {
+  @include font-size(22px, 30px);
+  margin-top: $spacing--small;
+  margin-bottom: $spacing--small / 4;
+
+  @include mq(desktop) {
+    @include font-size(22px, 30px);
+  }
+
+  @include chinese {
+    @include font-size(22px, 30px);
+    @include mq(desktop) {
+      @include font-size(22px, 30px);
+    }
   }
 }
 

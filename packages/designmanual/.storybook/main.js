@@ -70,14 +70,4 @@ module.exports = {
       ],
     };
   },
-  typescript: {
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => {
-        return prop.parent
-          ? /@radix-ui/.test(prop.parent.fileName) || !/node_modules/.test(prop.parent.fileName)
-          : true;
-      },
-    },
-  },
 };

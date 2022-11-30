@@ -7,8 +7,26 @@
  */
 
 import { AccordionMultipleProps, AccordionSingleProps, Root } from '@radix-ui/react-accordion';
+import { HTMLAttributes } from 'react';
 
-const AccordionRoot = ({ children, ...rest }: AccordionSingleProps | AccordionMultipleProps) => {
+interface SingleProps extends HTMLAttributes<HTMLDivElement> {
+  type: 'single';
+  collapsible?: boolean;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  disabled?: boolean;
+}
+
+interface MultipleProps extends HTMLAttributes<HTMLDivElement> {
+  type: 'multiple';
+  value?: string[];
+  defaultValue?: string[];
+  onValueChange?: (value: string[]) => void;
+  disabled?: boolean;
+}
+
+const AccordionRoot = ({ children, ...rest }: SingleProps | MultipleProps) => {
   return <Root {...rest}>{children}</Root>;
 };
 

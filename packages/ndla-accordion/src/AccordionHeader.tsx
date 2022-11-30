@@ -15,22 +15,20 @@ import { forwardRef, HTMLAttributes } from 'react';
 
 const StyledHeader = styled(Header)`
   display: flex;
-  background: ${colors.brand.lighter};
-  border-radius: ${misc.borderRadius};
-  cursor: pointer;
   margin: 0;
-  padding-left: ${spacing.small};
 `;
 
 const StyledTrigger = styled(Trigger)`
-  flex: 1;
   display: flex;
+  background: ${colors.brand.lighter};
+  border-radius: ${misc.borderRadius};
+  padding-left: ${spacing.small};
+  flex: 1;
   min-height: 40px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: none;
-  background: none;
   cursor: pointer;
 `;
 
@@ -44,15 +42,16 @@ const StyledChevron = styled(ChevronDown)`
 `;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  toggleButtonCSS?: SerializedStyles;
+  indicatorCSS?: SerializedStyles;
+  headerCSS?: SerializedStyles;
 }
 
-const AccordionHeader = forwardRef<HTMLButtonElement, Props>(({ toggleButtonCSS, children, ...rest }, ref) => {
+const AccordionHeader = forwardRef<HTMLButtonElement, Props>(({ indicatorCSS, headerCSS, children, ...rest }, ref) => {
   return (
-    <StyledHeader>
+    <StyledHeader css={headerCSS}>
       <StyledTrigger ref={ref} {...rest}>
         {children}
-        <StyledChevron css={toggleButtonCSS} />
+        <StyledChevron css={indicatorCSS} />
       </StyledTrigger>
     </StyledHeader>
   );

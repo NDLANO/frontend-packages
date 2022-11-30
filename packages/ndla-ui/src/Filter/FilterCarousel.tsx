@@ -141,7 +141,7 @@ const FilterCarousel = ({ children }: Props) => {
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex('NEXT'),
     onSwipedRight: () => updateIndex('PREV'),
-    preventDefaultTouchmoveEvent: false,
+    preventScrollOnSwipe: false,
     trackMouse: true,
   });
 

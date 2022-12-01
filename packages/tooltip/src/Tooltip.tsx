@@ -74,7 +74,7 @@ const Tooltip = ({ children, tooltip, className, innerHTML, ariaLabel: ariaLabel
 
   return (
     <div data-aria-label={ariaLabelProp} data-tooltip-container data-tooltip={tooltipString}>
-      <CoreTooltip ariaLabel={ariaLabel} className={className} innerHTML={innerHTML} tooltip={tooltip}>
+      <CoreTooltip ariaLabel={ariaLabel} className={className} tooltip={tooltip}>
         {children}
       </CoreTooltip>
     </div>

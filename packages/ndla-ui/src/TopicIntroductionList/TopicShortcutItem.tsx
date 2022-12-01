@@ -14,7 +14,8 @@ const classes = new BEMHelper({
 interface Props {
   shortcut: Shortcut;
 }
-const ShortcutItem = ({ shortcut: { id, tooltip, contentType, url, count } }: Props) => {
+
+const ShortcutItem = ({ shortcut: { tooltip, contentType, url, count } }: Props) => {
   const { t } = useTranslation();
   return (
     <Tooltip tooltip={t('resource.shortcutsTooltip', { count })}>

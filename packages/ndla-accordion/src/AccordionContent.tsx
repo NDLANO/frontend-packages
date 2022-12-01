@@ -33,7 +33,8 @@ interface AnimationProps {
   animate: boolean;
 }
 
-const AnimationWrapper = styled(Content)<AnimationProps>`
+const shouldForwardProp = (p: string) => p !== 'animate';
+const AnimationWrapper = styled(Content, { shouldForwardProp })<AnimationProps>`
   overflow: hidden;
   ${({ animate }) =>
     animate &&

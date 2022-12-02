@@ -135,7 +135,7 @@ class SubjectShortcuts extends Component<Props, State> {
         <nav id={id}>
           <StyledList>
             {filteredLinks.map((link) => (
-              <Fade show={true}>
+              <Fade key={link.url} show={true}>
                 <StyledListItem>
                   <SafeLink to={link.url}>{link.text}</SafeLink>
                 </StyledListItem>

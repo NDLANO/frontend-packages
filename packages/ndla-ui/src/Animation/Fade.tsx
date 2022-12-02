@@ -8,7 +8,7 @@
 
 import { ReactNode, useMemo } from 'react';
 import { AnimatePresence, LazyMotion, m, domAnimation } from 'framer-motion';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash/uniqueId';
 
 interface Props {
   children: ReactNode;

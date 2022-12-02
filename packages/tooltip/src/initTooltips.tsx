@@ -23,11 +23,11 @@ const forEachElement = (selector: string, callback: Function) => {
 const initTooltips = () => {
   forEachElement('[data-tooltip-from-article-converter]', (el: HTMLDivElement) => {
     const tooltip = el.getAttribute('data-tooltip');
-    const inner = el.querySelector('[data-inner-html');
+    const inner = el.querySelector('[data-trigger');
 
-    const innerHTML = inner?.outerHTML;
+    const outerHTML = inner?.outerHTML;
 
-    ReactDOM.hydrate(<Tooltip hydrate tooltip={tooltip!} innerHTML={innerHTML} />, el);
+    ReactDOM.hydrate(<Tooltip tooltip={tooltip!} hydrateHTML={outerHTML} />, el);
   });
 };
 

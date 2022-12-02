@@ -28,19 +28,20 @@ const StyledContent = styled(RadixTooltip.Content)`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
-interface CoreProps {
+interface Props {
   children?: ReactNode;
   tooltip: ReactNode;
   className?: string;
-  innerHTML?: string;
+  /** outerHTML of Trigger. Only used when hydrating tooltips */
+  hydrateHTML?: string;
 }
 
-const CoreTooltip = ({ children, tooltip, className, innerHTML }: CoreProps) => {
+const CoreTooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
-        <RadixTooltip.Trigger data-inner-html asChild>
-          {innerHTML ? parse(innerHTML) : children}
+        <RadixTooltip.Trigger data-trigger asChild>
+          {hydrateHTML ? parse(hydrateHTML) : children}
         </RadixTooltip.Trigger>
         <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
           {tooltip}
@@ -50,16 +51,12 @@ const CoreTooltip = ({ children, tooltip, className, innerHTML }: CoreProps) => 
   );
 };
 
-interface Props extends CoreProps {
-  hydrate?: boolean;
-}
-
-const Tooltip = ({ children, tooltip, className, innerHTML, hydrate }: Props) => {
+const Tooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
   const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
 
-  if (hydrate) {
+  if (hydrateHTML) {
     return (
-      <CoreTooltip className={className} innerHTML={innerHTML} tooltip={tooltip}>
+      <CoreTooltip className={className} hydrateHTML={hydrateHTML} tooltip={tooltip}>
         {children}
       </CoreTooltip>
     );

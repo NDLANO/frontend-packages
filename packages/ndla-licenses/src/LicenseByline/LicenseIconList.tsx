@@ -20,7 +20,7 @@ type StyledLicenseIconItemProps = {
   fill?: string;
 };
 
-export const StyledLicenseIconItem = styled.li<StyledLicenseIconItemProps>`
+export const StyledListItem = styled.li<StyledLicenseIconItemProps>`
   display: flex;
   padding-bottom: ${(props) => (props.horizontal ? `0` : `5px`)};
   margin-bottom: 0;
@@ -70,13 +70,13 @@ const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: Lic
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <Tooltip tooltip={description}>
-      <StyledLicenseIconItem horizontal={horizontal} fill={color}>
-        <StyledLicenseIcon tabIndex={0} light={light} aria-label={description}>
+    <StyledListItem horizontal={horizontal} fill={color}>
+      <Tooltip tooltip={description}>
+        <StyledLicenseIcon aria-label={description} tabIndex={0} light={light}>
           <LicenseIcon licenseRight={licenseRight} description={description} />
         </StyledLicenseIcon>
-      </StyledLicenseIconItem>
-    </Tooltip>
+      </Tooltip>
+    </StyledListItem>
   );
 };
 

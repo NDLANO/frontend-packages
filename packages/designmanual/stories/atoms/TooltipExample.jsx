@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Tooltip from '@ndla/tooltip';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import ComponentInfo from '../ComponentInfo';
 
 const TooltipExample = () => (
@@ -41,7 +41,7 @@ const TooltipExample = () => (
     </p>
     <h3>Vanlig tooltip:</h3>
     <Tooltip tooltip="Bruk av tooltip på <Button>">
-      <Button appearance="outline">Hover me!!!</Button>
+      <ButtonV2>Hover me!!!</ButtonV2>
     </Tooltip>
   </ComponentInfo>
 );

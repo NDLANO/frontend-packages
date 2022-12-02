@@ -23,15 +23,11 @@ const forEachElement = (selector: string, callback: Function) => {
 const initTooltips = () => {
   forEachElement('[data-tooltip-from-article-converter]', (el: HTMLDivElement) => {
     const tooltip = el.getAttribute('data-tooltip');
-    const ariaLabel = el.getAttribute('data-aria-label');
     const inner = el.querySelector('[data-inner-html');
 
     const innerHTML = inner?.innerHTML;
 
-    ReactDOM.hydrate(
-      <Tooltip hydrate tooltip={tooltip!} innerHTML={innerHTML} ariaLabel={ariaLabel || undefined} />,
-      el,
-    );
+    ReactDOM.hydrate(<Tooltip hydrate tooltip={tooltip!} innerHTML={innerHTML} />, el);
   });
 };
 

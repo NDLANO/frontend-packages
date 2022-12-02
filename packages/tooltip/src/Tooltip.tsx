@@ -6,11 +6,10 @@
  *
  */
 
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import * as RadixTooltip from '@radix-ui/react-tooltip';
-
-import React, { ReactNode } from 'react';
 
 const StyledContent = styled(RadixTooltip.Content)`
   color: #fff;
@@ -29,22 +28,18 @@ const StyledContent = styled(RadixTooltip.Content)`
 `;
 
 interface CoreProps {
-  ariaLabel?: string;
   children?: ReactNode;
   tooltip: ReactNode;
   className?: string;
   innerHTML?: string;
 }
 
-const CoreTooltip = ({ children, tooltip, className, innerHTML, ariaLabel }: CoreProps) => {
+const CoreTooltip = ({ children, tooltip, className, innerHTML }: CoreProps) => {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger asChild>
-          <div
-            aria-label={ariaLabel}
-            data-inner-html
-            dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}>
+          <div data-inner-html dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}>
             {children}
           </div>
         </RadixTooltip.Trigger>
@@ -60,21 +55,20 @@ interface Props extends CoreProps {
   hydrate?: boolean;
 }
 
-const Tooltip = ({ children, tooltip, className, innerHTML, ariaLabel: ariaLabelProp, hydrate }: Props) => {
+const Tooltip = ({ children, tooltip, className, innerHTML, hydrate }: Props) => {
   const tooltipString = typeof tooltip === 'string' ? tooltip : undefined;
-  const ariaLabel = ariaLabelProp || tooltipString;
 
   if (hydrate) {
     return (
-      <CoreTooltip ariaLabel={ariaLabel} className={className} innerHTML={innerHTML} tooltip={tooltip}>
+      <CoreTooltip className={className} innerHTML={innerHTML} tooltip={tooltip}>
         {children}
       </CoreTooltip>
     );
   }
 
   return (
-    <div data-aria-label={ariaLabelProp} data-tooltip-container data-tooltip={tooltipString}>
-      <CoreTooltip ariaLabel={ariaLabel} className={className} tooltip={tooltip}>
+    <div data-tooltip-container data-tooltip={tooltipString}>
+      <CoreTooltip className={className} tooltip={tooltip}>
         {children}
       </CoreTooltip>
     </div>

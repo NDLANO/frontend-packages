@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-import { StyledLicenseIconButton, StyledLicenseIconItem } from './LicenseIconList';
+import { StyledLicenseIcon, StyledLicenseIconItem } from './LicenseIconList';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
 const StyledLicenseLabel = styled.div`
@@ -37,9 +37,9 @@ const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
     <StyledLicenseIconItem>
       <Tooltip tooltip={description}>
         <IconLineWrapper>
-          <StyledLicenseIconButton>
+          <StyledLicenseIcon>
             <LicenseIcon licenseRight={licenseRight} description={description} />
-          </StyledLicenseIconButton>
+          </StyledLicenseIcon>
           <StyledLicenseLabel>{description}</StyledLicenseLabel>
         </IconLineWrapper>
       </Tooltip>

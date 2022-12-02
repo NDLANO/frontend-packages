@@ -6,11 +6,11 @@
  *
  */
 
+import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import Tooltip from '@ndla/tooltip';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
@@ -43,13 +43,9 @@ interface StyledLicenseIconButtonprops {
   light?: boolean;
 }
 
-export const StyledLicenseIconButton = styled.button<StyledLicenseIconButtonprops>`
+export const StyledLicenseIcon = styled.span<StyledLicenseIconButtonprops>`
   display: flex;
-  border: 0;
-  margin: 0;
-  padding: 0;
   color: ${(p) => (p.light ? colors.white : colors.text.primary)};
-  background: transparent;
   &:hover,
   &:focus {
     color: ${(p) => (p.light ? colors.brand.light : colors.text.light)};
@@ -76,9 +72,9 @@ const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: Lic
   return (
     <Tooltip tooltip={description}>
       <StyledLicenseIconItem horizontal={horizontal} fill={color}>
-        <StyledLicenseIconButton type="button" light={light}>
+        <StyledLicenseIcon tabIndex={0} light={light} aria-label={description}>
           <LicenseIcon licenseRight={licenseRight} description={description} />
-        </StyledLicenseIconButton>
+        </StyledLicenseIcon>
       </StyledLicenseIconItem>
     </Tooltip>
   );

@@ -25,7 +25,7 @@ const initTooltips = () => {
     const tooltip = el.getAttribute('data-tooltip');
     const inner = el.querySelector('[data-inner-html');
 
-    const innerHTML = inner?.innerHTML;
+    const innerHTML = inner?.outerHTML;
 
     ReactDOM.hydrate(<Tooltip hydrate tooltip={tooltip!} innerHTML={innerHTML} />, el);
   });

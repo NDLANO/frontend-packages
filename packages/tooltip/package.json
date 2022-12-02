@@ -28,7 +28,7 @@
   "dependencies": {
     "@ndla/core": "^3.0.3",
     "@radix-ui/react-tooltip": "^1.0.2",
-    "html-react-parser": "^3.0.4"
+    "html-react-parser": "^0.14.1"
   },
   "devDependencies": {
   },

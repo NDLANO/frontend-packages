@@ -7,6 +7,7 @@
  */
 
 import React, { ReactNode } from 'react';
+import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import * as RadixTooltip from '@radix-ui/react-tooltip';
@@ -38,10 +39,8 @@ const CoreTooltip = ({ children, tooltip, className, innerHTML }: CoreProps) => 
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
-        <RadixTooltip.Trigger asChild>
-          <div data-inner-html dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}>
-            {children}
-          </div>
+        <RadixTooltip.Trigger data-inner-html asChild>
+          {innerHTML ? parse(innerHTML) : children}
         </RadixTooltip.Trigger>
         <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
           {tooltip}

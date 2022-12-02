@@ -72,7 +72,7 @@ const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: Lic
   return (
     <StyledListItem horizontal={horizontal} fill={color}>
       <Tooltip tooltip={description}>
-        <StyledLicenseIcon aria-label={description} tabIndex={0} light={light}>
+        <StyledLicenseIcon tabIndex={0} light={light}>
           <LicenseIcon licenseRight={licenseRight} description={description} />
         </StyledLicenseIcon>
       </Tooltip>

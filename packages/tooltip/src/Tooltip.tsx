@@ -38,16 +38,14 @@ interface Props {
 
 const CoreTooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
   return (
-    <RadixTooltip.Provider>
-      <RadixTooltip.Root delayDuration={0}>
-        <RadixTooltip.Trigger data-trigger asChild>
-          {hydrateHTML ? parse(hydrateHTML) : children}
-        </RadixTooltip.Trigger>
-        <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
-          {tooltip}
-        </StyledContent>
-      </RadixTooltip.Root>
-    </RadixTooltip.Provider>
+    <RadixTooltip.Root delayDuration={0}>
+      <RadixTooltip.Trigger data-trigger asChild>
+        {hydrateHTML ? parse(hydrateHTML) : children}
+      </RadixTooltip.Trigger>
+      <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
+        {tooltip}
+      </StyledContent>
+    </RadixTooltip.Root>
   );
 };
 

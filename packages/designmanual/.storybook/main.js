@@ -64,7 +64,7 @@ module.exports = {
         '@babel/plugin-proposal-optional-chaining',
       ],
     };
-  },  
+  },
   /* For at "Show code" skal legge seg bakerst slik at elementer som drop-down ikke blir skjult bak den */
   previewHead: (head) => `
   <style>
@@ -72,5 +72,5 @@ module.exports = {
       z-index: 0 !important;
     }
   </style>
-  ${head}`
+  ${head}`,
 };

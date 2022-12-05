@@ -5,7 +5,7 @@ primitives contains basic, low-level components.
 ## Installation
 
 ```sh
-yarn add --save @ndla/primitives
+yarn add @ndla/primitives
 ```
 
 ```sh

@@ -4,11 +4,11 @@
     "description": "Primitives component library for NDLA.",
     "license": "GPL-3.0",
     "main": "lib/index.js",
-    "module": "es/index.js",
+    "module": "es/index.js", 
+    "types": "lib/index.d.ts",
     "sideEffects": false,
     "scripts": {
-      "build": "yarn build:css && yarn build:types",
-      "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+      "build": "yarn build:types",
       "build:types": "tsc -p tsconfig.build.json",
       "prepublish": "yarn build"
     },
@@ -23,7 +23,6 @@
     "author": "ndla@knowit.no",
     "files": [
       "lib",
-      "src",
       "es"
     ],
     "dependencies": {

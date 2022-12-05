@@ -99,7 +99,7 @@ const FooterLinks = ({ links }: FooterLinksProps) => {
       <StyledLinksWrapper>
         <section>
           <StyledHeaderLinks>
-            {t('footer.footerLinksHeader')} <Launch />
+            {t('footer.linksHeader')} <Launch />
           </StyledHeaderLinks>
           <StyledNav>
             {commonLinks.map((link) => (

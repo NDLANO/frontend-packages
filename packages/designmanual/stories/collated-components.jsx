@@ -678,35 +678,42 @@ storiesOf('Sammensatte moduler', module)
       )}
     </I18nTranslate>
   ))
-  .add('Sidefot', () => (
-    <Center>
-      <Footer
-        links={mockFooterLinks}
-        languageSelector={
-          <LanguageSelector
-            center
-            outline
-            alwaysVisible
-            options={{
-              nb: {
-                name: 'Bokmål',
-                url: '#',
-              },
-              nn: {
-                name: 'Nynorsk',
-                url: '#',
-              },
-            }}
-            currentLanguage={i18nInstance.language}
-          />
-        }>
-        <FooterText>
-          <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
-        </FooterText>
-        <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
-      </Footer>
-    </Center>
-  ))
+  .add('Sidefot', () => {
+    const privacyLinks = [
+      { label: 'Personvernerklæring', url: 'https://om.ndla.no/gdpr' },
+      { label: 'Erklæring om informasjonskapsler', url: 'https://om.ndla.no/cookies' },
+    ];
+    return (
+      <Center>
+        <Footer
+          links={mockFooterLinks}
+          languageSelector={
+            <LanguageSelector
+              center
+              outline
+              alwaysVisible
+              options={{
+                nb: {
+                  name: 'Bokmål',
+                  url: '#',
+                },
+                nn: {
+                  name: 'Nynorsk',
+                  url: '#',
+                },
+              }}
+              currentLanguage={i18nInstance.language}
+            />
+          }
+          privacyLinks={privacyLinks}>
+          <FooterText>
+            <EditorName title="Ansvarlig redaktør:" name="Sigurd Trageton" />
+          </FooterText>
+          <FooterText>Nettstedet er utarbeidet av NDLA med åpen kildekode.</FooterText>
+        </Footer>
+      </Center>
+    );
+  })
   .add('Switch kontroller', () => (
     <div>
       <SwitchExample />

@@ -120,16 +120,23 @@ type Props = {
       twitter: string;
     },
   ];
+  privacyLinks: [
+    {
+      url: string;
+      label: string;
+    },
+  ];
   languageSelector?: ReactNode;
   auth?: ReactNode;
 };
 
-const Footer = ({ lang, children, links, languageSelector, auth }: Props) => {
+const Footer = ({ children, links, languageSelector, auth, privacyLinks }: Props) => {
   const { t } = useTranslation();
+
   const mainContent = (
     <>
       {children}
-      <FooterPrivacy lang={lang} label={t('footer.footerPrivacyLink')} />
+      {privacyLinks && <FooterPrivacy privacyLinks={privacyLinks} />}
     </>
   );
 

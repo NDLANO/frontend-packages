@@ -1,0 +1,44 @@
+{
+    "name": "@ndla/primitives",
+    "version": "1.0.0",
+    "description": "Primitives component library for NDLA.",
+    "license": "GPL-3.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "sideEffects": false,
+    "scripts": {
+      "build": "yarn build:css && yarn build:types",
+      "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+      "build:types": "tsc -p tsconfig.build.json",
+      "prepublish": "yarn build"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/NDLANO/frontend-packages.git",
+      "directory": "packages/primitives"
+    },
+    "keywords": [
+      "ndla"
+    ],
+    "author": "ndla@knowit.no",
+    "files": [
+      "lib",
+      "src",
+      "es"
+    ],
+    "dependencies": {
+      "@ndla/core": "^3.0.3",
+      "@ndla/icons": "^2.0.8",
+      "@radix-ui/react-select": "^1.1.2"
+    },
+    "peerDependencies": {
+      "@emotion/react": "^11.10.4",
+      "@emotion/styled": "^11.10.4",
+      "react": "^16.8.4 || ^17.0.0"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "gitHead": "c2e2628a2dddfcca03f25548474243ffcd13595e"
+  }
+  

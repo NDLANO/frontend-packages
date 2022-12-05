@@ -39,7 +39,7 @@ interface Props {
 const CoreTooltip = ({ children, tooltip, className, hydrateHTML }: Props) => {
   return (
     <RadixTooltip.Provider>
-      <RadixTooltip.Root delayDuration={0}>
+      <RadixTooltip.Root>
         <RadixTooltip.Trigger data-trigger asChild>
           {hydrateHTML ? parse(hydrateHTML) : children}
         </RadixTooltip.Trigger>

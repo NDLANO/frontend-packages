@@ -11,8 +11,7 @@ import { SerializedStyles } from '@emotion/react';
 import { Done } from '@ndla/icons/editor';
 import React, { forwardRef, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import colors from '@ndla/core/src/colors';
-import { fonts, spacing } from '@ndla/core/src';
+import { fonts, spacing, colors } from '@ndla/core';
 
 const StyledItem = styled(Item)`
   display: flex;

@@ -22,8 +22,7 @@ import {
 import React, { forwardRef } from 'react';
 import { ChevronDown, ChevronUp } from '@ndla/icons/common';
 import styled from '@emotion/styled';
-import colors from '@ndla/core/src/colors';
-import { fonts, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { css, SerializedStyles } from '@emotion/react';
 import SelectItem from './SelectItem';
 

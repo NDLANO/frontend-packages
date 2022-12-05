@@ -326,6 +326,7 @@ const messages = {
       },
     },
     menu: {
+      goToMainMenu: 'Gå til hovedmeny',
       close: 'Lukk',
       goTo: 'Gå til',
       search: 'Søk',

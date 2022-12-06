@@ -110,12 +110,14 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Doaimmas',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Ii doaimmas šat',
     [subjectCategories.BETA_SUBJECTS]: 'Boahttevaš',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Eará resurssat',
+    [subjectTypes.OTHER_RESOURCES]: 'Eará resurssat',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Resursačoakkáldat',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafága',
-    [subjectTypes.SUBJECT]: 'Fága',
+    [subjectTypes.OTHER_RESOURCES]: 'Eará resurssat',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resursačoakkáldat',
+    [subjectTypes.SUBJECT]: 'Fága',
   },
   searchPage: {
     noHits: 'Ii oktage artihkal heiven du ohcamii: {{query}}',

@@ -110,12 +110,14 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommande',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Andre ressursar',
+    [subjectTypes.OTHER_RESOURCES]: 'Andre ressursar',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamlingar',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.SUBJECT]: 'Fag',
+    [subjectTypes.OTHER_RESOURCES]: 'Andre ressursar',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
+    [subjectTypes.SUBJECT]: 'Fag',
   },
   searchPage: {
     noHits: 'Ingen artiklar samsvarte med søket ditt på: {{query}}',

@@ -327,6 +327,7 @@ const messages = {
       },
     },
     menu: {
+      goToMainMenu: 'Go to main menu',
       close: 'Close',
       goTo: 'Go to',
       search: 'Search',

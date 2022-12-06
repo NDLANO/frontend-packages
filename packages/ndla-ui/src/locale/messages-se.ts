@@ -327,6 +327,7 @@ const messages = {
       },
     },
     menu: {
+      goToMainMenu: 'Gå til hovedmeny',
       close: 'Govčča',
       goTo: 'Mana deike',
       search: 'Oza',

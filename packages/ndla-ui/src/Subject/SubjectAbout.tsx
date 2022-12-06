@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import SectionHeading from '../SectionHeading';
+import { HeadingLevel } from '../types';
 
 interface Props {
   fixedWidth?: boolean;
@@ -10,6 +11,7 @@ interface Props {
   media: ReactNode;
   heading: string;
   description: string;
+  headingLevel: HeadingLevel;
 }
 
 interface SubjectAboutSectionProps {
@@ -98,9 +100,11 @@ const StyledDescription = styled.p`
   ${fonts.sizes('16px', '26px')};
 `;
 
-const SubjectAbout = ({ fixedWidth = false, media, heading, description, wide = false }: Props) => (
+const SubjectAbout = ({ fixedWidth = false, media, heading, description, wide = false, headingLevel }: Props) => (
   <SubjectAboutSection wide={wide} fixedWidth={fixedWidth}>
-    <StyledSectionHeading large>{heading}</StyledSectionHeading>
+    <StyledSectionHeading headingLevel={headingLevel} large>
+      {heading}
+    </StyledSectionHeading>
     <MediaWrapper>{media}</MediaWrapper>
     <StyledContent>
       <StyledMainHeading>{heading}</StyledMainHeading>

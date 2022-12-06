@@ -5,6 +5,7 @@ import { Cross } from '@ndla/icons/action';
 import { breakpoints, colors, fonts, mq, spacing, utils } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
+import { HeadingLevel } from '../types';
 
 interface Props {
   featuringArticle: {
@@ -13,6 +14,7 @@ interface Props {
     description: string;
     url: string;
   };
+  headingLevel: HeadingLevel;
   archiveArticles: { url: string; heading: string }[];
   sectionHeading: string;
   fixedWidth?: boolean;
@@ -155,7 +157,14 @@ class SubjectArchive extends Component<Props, State> {
   }
 
   render() {
-    const { fixedWidth = false, featuringArticle, messages, sectionHeading, archiveArticles } = this.props;
+    const {
+      fixedWidth = false,
+      headingLevel,
+      featuringArticle,
+      messages,
+      sectionHeading,
+      archiveArticles,
+    } = this.props;
 
     const archiveId = 'subject-archive';
 
@@ -183,7 +192,9 @@ class SubjectArchive extends Component<Props, State> {
 
     return (
       <SubjectArchiveSection animate={!!this.state.minHeight} fixedWidth={fixedWidth} ref={this.wrapperRef}>
-        <StyledSectionHeading large>{sectionHeading}</StyledSectionHeading>
+        <StyledSectionHeading headingLevel={headingLevel} large>
+          {sectionHeading}
+        </StyledSectionHeading>
         <ArchiveWrapper>
           {section}
           <ArchiveButon

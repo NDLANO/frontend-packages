@@ -6,6 +6,7 @@ import { Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import { SubjectSectionTitle } from './Subject';
 import Fade from '../Animation/Fade';
+import { HeadingLevel } from '../types';
 
 const SubjectShortcutsSection = styled.section`
   margin-bottom: ${spacing.large};
@@ -69,6 +70,7 @@ interface Props {
     url: string;
     text: string;
   }[];
+  headingLevel: HeadingLevel;
   messages: {
     heading: string;
     showMore: string;
@@ -102,7 +104,7 @@ class SubjectShortcuts extends Component<Props, State> {
   }
 
   render() {
-    const { links, messages, defaultVisableCount } = this.props;
+    const { links, messages, defaultVisableCount, headingLevel } = this.props;
     const id = 'subject-shortcut';
 
     const showExpand = defaultVisableCount < links.length;
@@ -128,7 +130,7 @@ class SubjectShortcuts extends Component<Props, State> {
     }
     return (
       <SubjectShortcutsSection>
-        <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
+        <SubjectSectionTitle headingLevel={headingLevel}>{messages.heading}</SubjectSectionTitle>
         <nav id={id}>
           <StyledTransitionGroup component="ul">
             {filteredLinks.map((link) => (

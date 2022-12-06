@@ -618,12 +618,13 @@ const messages = {
   footer: {
     aboutNDLA: 'About NDLA',
     selectLanguage: 'Choose language (språk): ',
-    footerInfo: 'This webapplication is developed by NDLA as Open Source code.',
-    footerEditiorInChief: 'Editor in chief: ',
-    footerManagingEditor: 'Managing editor: ',
-    footerPrivacyLink: 'Cookies Policy',
+    info: 'This webapplication is developed by NDLA as Open Source code.',
+    editorInChief: 'Editor in chief: ',
+    managingEditor: 'Managing editor: ',
+    linksHeader: 'Other NDLA sites',
+    privacyLink: 'Privacy statement',
+    cookiesLink: 'Statement about cookies',
     vision: 'We create the learning of the future together',
-    footerLinksHeader: 'Other NDLA sites',
     socialMediaLinks: {
       facebook: 'NDLA on Facebook',
       facebookAria: 'Visit NDLA on Facebook',

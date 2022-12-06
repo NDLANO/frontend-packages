@@ -110,12 +110,13 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
     [subjectCategories.BETA_SUBJECTS]: 'Revised',
-    [subjectTypes.RESOURCE_COLLECTION]: 'Other resources',
+    [subjectCategories.OTHER]: 'Other resources',
+    [subjectTypes.RESOURCE_COLLECTION]: 'Resource collections',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.SUBJECT]: 'Subject',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
+    [subjectTypes.SUBJECT]: 'Subject',
   },
   searchPage: {
     noHits: 'Your search - {{query}} - did not match any articles. ',

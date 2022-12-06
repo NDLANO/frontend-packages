@@ -110,12 +110,11 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Aktive',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Utgåtte',
     [subjectCategories.BETA_SUBJECTS]: 'Kommende',
-    [subjectTypes.OTHER_RESOURCES]: 'Andre ressurser',
+    [subjectCategories.OTHER]: 'Andre ressurser',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamlinger',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.OTHER_RESOURCES]: 'Andre ressurser',
     [subjectTypes.RESOURCE_COLLECTION]: 'Ressurssamling',
     [subjectTypes.SUBJECT]: 'Fag',
   },

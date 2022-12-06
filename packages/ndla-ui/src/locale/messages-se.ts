@@ -110,12 +110,11 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Doaimmas',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Ii doaimmas šat',
     [subjectCategories.BETA_SUBJECTS]: 'Boahttevaš',
-    [subjectTypes.OTHER_RESOURCES]: 'Eará resurssat',
+    [subjectCategories.OTHER]: 'Eará resurssat',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resursačoakkáldat',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafága',
-    [subjectTypes.OTHER_RESOURCES]: 'Eará resurssat',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resursačoakkáldat',
     [subjectTypes.SUBJECT]: 'Fága',
   },

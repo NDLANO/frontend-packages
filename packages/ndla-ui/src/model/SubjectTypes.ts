@@ -9,4 +9,3 @@
 export const BETA_SUBJECT = 'betaSubject';
 export const SUBJECT = 'subject';
 export const RESOURCE_COLLECTION = 'resourceCollection';
-export const OTHER_RESOURCES = 'otherResources';

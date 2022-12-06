@@ -110,12 +110,11 @@ const messages = {
     [subjectCategories.ACTIVE_SUBJECTS]: 'Active',
     [subjectCategories.ARCHIVE_SUBJECTS]: 'Expired',
     [subjectCategories.BETA_SUBJECTS]: 'Revised',
-    [subjectTypes.OTHER_RESOURCES]: 'Other resources',
+    [subjectCategories.OTHER]: 'Other resources',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resource collections',
   },
   subjectTypes: {
     [subjectTypes.BETA_SUBJECT]: 'Betafag',
-    [subjectTypes.OTHER_RESOURCES]: 'Other resources',
     [subjectTypes.RESOURCE_COLLECTION]: 'Resource collection',
     [subjectTypes.SUBJECT]: 'Subject',
   },

@@ -819,7 +819,7 @@ export const subjectCategories = [
     ],
   },
   {
-    type: constants.subjectTypes.OTHER_RESOURCES,
+    type: constants.subjectCategories.OTHER,
     visible: true,
     subjects: [
       { name: 'NDLA Film', id: 'other_subject_1', path: '#' },

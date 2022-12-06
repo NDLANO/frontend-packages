@@ -120,7 +120,7 @@ type Props = {
       twitter: string;
     },
   ];
-  privacyLinks: [
+  privacyLinks?: [
     {
       url: string;
       label: string;

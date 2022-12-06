@@ -4,8 +4,10 @@ import SafeLink from '@ndla/safelink';
 import { breakpoints, colors, fonts, mq, spacing } from '@ndla/core';
 import ContentTypeBadge from '../ContentTypeBadge';
 import { SubjectSectionTitle } from './Subject';
+import { HeadingLevel } from '../types';
 
 interface Props {
+  headingLevel: HeadingLevel;
   heading: string;
   content: {
     name: string;
@@ -86,9 +88,9 @@ const StyledSafeLink = styled(SafeLink)`
   }
 `;
 
-const SubjectNewContent = ({ heading, content }: Props) => (
+const SubjectNewContent = ({ heading, content, headingLevel }: Props) => (
   <StyledSection>
-    <StyledSubjectSectionTitle>{heading}</StyledSubjectSectionTitle>
+    <StyledSubjectSectionTitle headingLevel={headingLevel}>{heading}</StyledSubjectSectionTitle>
     <nav>
       <StyledUl>
         {content.map((item, index) => (

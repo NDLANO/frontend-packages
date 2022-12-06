@@ -78,7 +78,9 @@ const FrontpageFilm = ({ url, imageUrl }: Props) => {
   const { t } = useTranslation();
   return (
     <StyledSection>
-      <SectionHeading large>{t('welcomePage.film.header')}</SectionHeading>
+      <SectionHeading headingLevel="h2" large>
+        {t('welcomePage.film.header')}
+      </SectionHeading>
       <StyledImage imageUrl={imageUrl}>
         <StyledText>{t('welcomePage.film.text')}</StyledText>
         <StyledText narrow>{t('welcomePage.film.textShort')}</StyledText>

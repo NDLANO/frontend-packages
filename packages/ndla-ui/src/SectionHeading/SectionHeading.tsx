@@ -1,6 +1,7 @@
 import React, { ElementType, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { breakpoints, fonts, mq, spacing } from '@ndla/core';
+import { HeadingLevel } from '../types';
 
 const headingStyle = css`
   font-weight: ${fonts.weight.bold};
@@ -24,11 +25,11 @@ interface Props {
   children: ReactNode;
   large?: boolean;
   className?: string;
-  heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+  headingLevel: HeadingLevel;
 }
 
-const SectionHeading = ({ children, large = false, className, heading = 'h2' }: Props) => {
-  const Element: ElementType = heading;
+const SectionHeading = ({ children, large = false, className, headingLevel = 'h2' }: Props) => {
+  const Element: ElementType = headingLevel;
   const styles = large ? [headingStyle, largeHeadingStyle] : [headingStyle];
   return (
     <Element css={styles} className={className}>

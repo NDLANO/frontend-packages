@@ -6,6 +6,7 @@ import SafeLink from '@ndla/safelink';
 import { colors, fonts, spacing } from '@ndla/core';
 
 import SectionHeading from '../SectionHeading';
+import { HeadingLevel } from '../types';
 
 interface InfoWidgetSectionProps {
   center?: boolean;
@@ -64,6 +65,7 @@ const StyledMainLink = styled.a`
 `;
 interface Props {
   heading: string;
+  headingLevel: HeadingLevel;
   description: string;
   mainLink: {
     name: string;
@@ -79,9 +81,11 @@ interface Props {
   center?: boolean;
 }
 
-const InfoWidget = ({ heading, description, mainLink, iconLinks, center = false }: Props) => (
+const InfoWidget = ({ heading, description, mainLink, iconLinks, headingLevel, center = false }: Props) => (
   <InfoWidgetSection center={center}>
-    <SectionHeading large>{heading}</SectionHeading>
+    <SectionHeading headingLevel={headingLevel} large>
+      {heading}
+    </SectionHeading>
     <InfoWidgetDescription>
       <p>{description}</p>
     </InfoWidgetDescription>

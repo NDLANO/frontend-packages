@@ -9,15 +9,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { spacing, fonts, misc, mq, breakpoints } from '@ndla/core';
-import { useTranslation } from 'react-i18next';
 
 type FooterPrivacyProps = {
-  privacyLinks: [
-    {
-      label: string;
-      url: string;
-    },
-  ];
+  privacyLinks: {
+    label: string;
+    url: string;
+  }[];
 };
 
 const StyledPrivacyLink = styled.a`
@@ -58,8 +55,6 @@ const StyledFooterText = styled.div`
 `;
 
 const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
-  const { t } = useTranslation();
-
   return (
     <StyledFooterText>
       {privacyLinks.map((link) => (

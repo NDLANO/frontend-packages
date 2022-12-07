@@ -623,7 +623,7 @@ const messages = {
     info: 'Nettstaden er utarbeida av NDLA med open kjeldekode.',
     editorInChief: 'Ansvarleg redaktør: ',
     managingEditor: 'Utgåveansvarleg: ',
-    privacyLink: 'Personvernerklæring og cookies',
+    privacyLink: 'Personvernerklæring',
     cookiesLink: 'Erklæring om informasjonskapslar',
     socialMediaLinks: {
       facebook: 'NDLA på Facebook',

@@ -27,8 +27,7 @@
     ],
     "dependencies": {
       "@ndla/core": "^3.0.3",
-      "@ndla/icons": "^2.0.8",
-      "@radix-ui/react-select": "^1.1.2"
+      "@ndla/icons": "^2.0.8"
     },
     "peerDependencies": {
       "@emotion/react": "^11.10.4",

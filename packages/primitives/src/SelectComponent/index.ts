@@ -6,6 +6,6 @@
  *
  */
 
-import Select from './Select';
+import SelectComponent from './SelectComponent';
 
-export default Select;
+export default SelectComponent;

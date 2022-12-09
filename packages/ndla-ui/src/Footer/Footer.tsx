@@ -120,12 +120,10 @@ type Props = {
       twitter: string;
     },
   ];
-  privacyLinks?: [
-    {
-      url: string;
-      label: string;
-    },
-  ];
+  privacyLinks?: {
+    url: string;
+    label: string;
+  }[];
   languageSelector?: ReactNode;
   auth?: ReactNode;
 };

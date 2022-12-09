@@ -213,19 +213,13 @@ export {
 } from './ContentTypeBadge';
 
 export {
-  SubjectAbout,
-  SubjectArchive,
-  SubjectCarousel,
   SubjectChildContent,
   SubjectContent,
-  SubjectFlexChild,
   SubjectFlexWrapper,
   SubjectHeader,
-  SubjectLinks,
   SubjectNewContent,
   SubjectSecondaryContent,
   SubjectSectionTitle,
-  SubjectShortcuts,
   SubjectSidebarWrapper,
   SubjectSocialContent,
   SubjectSocialSection,

@@ -7,6 +7,7 @@ import { breakpoints, mq, spacing, spacingUnit } from '@ndla/core';
 import { SafeLinkProps } from '@ndla/safelink';
 import { ContentCard } from '../index';
 import { SubjectSectionTitle } from './Subject';
+import { HeadingLevel } from '../types';
 
 interface Props {
   subjects?: {
@@ -17,6 +18,7 @@ interface Props {
     image?: string | undefined | null;
     toLinkProps: () => SafeLinkProps;
   }[];
+  headingLevel: HeadingLevel;
   title?: string;
   narrowScreen?: boolean;
   wideScreen?: boolean;
@@ -59,7 +61,13 @@ const StyledSubjectSectionTitle = styled(SubjectSectionTitle)`
   }
 `;
 
-const SubjectCarousel = ({ subjects = [], title = '', narrowScreen = false, wideScreen = false }: Props) => {
+const SubjectCarousel = ({
+  subjects = [],
+  title = '',
+  narrowScreen = false,
+  wideScreen = false,
+  headingLevel,
+}: Props) => {
   const { t } = useTranslation();
   return (
     <StyledSection narrowScreen={narrowScreen} wideScreen={wideScreen}>
@@ -124,7 +132,7 @@ const SubjectCarousel = ({ subjects = [], title = '', narrowScreen = false, wide
         itemsLength={subjects?.length ?? 0}>
         {(autoSizedProps) => (
           <>
-            <StyledSubjectSectionTitle>{title}</StyledSubjectSectionTitle>
+            <StyledSubjectSectionTitle headingLevel={headingLevel}>{title}</StyledSubjectSectionTitle>
             <Carousel
               {...autoSizedProps}
               disableScroll={(autoSizedProps?.columnsPrSlide ?? 0) >= subjects.length}

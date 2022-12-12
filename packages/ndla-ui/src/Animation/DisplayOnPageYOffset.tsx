@@ -57,7 +57,8 @@ export default class DisplayOnPageYOffset extends Component<Props, State> {
   }
 
   render() {
-    return <Fade in={this.state.show}>{this.props.children}</Fade>;
+    const { children } = this.props;
+    return <Fade show={this.state.show}>{children}</Fade>;
   }
   static propTypes = {
     children: PropTypes.node.isRequired,

@@ -4,6 +4,7 @@ import { spacing } from '@ndla/core';
 import SafeLink, { SafeLinkProps } from '@ndla/safelink';
 
 import { SubjectSectionTitle } from './Subject';
+import { HeadingLevel } from '../types';
 
 const SubjectLinksSection = styled.section`
   margin-bottom: ${spacing.large};
@@ -20,6 +21,7 @@ const SubjectLinksList = styled.ul`
 `;
 
 interface Props {
+  headingLevel: HeadingLevel;
   links: {
     toLinkProps: () => SafeLinkProps;
     text: string;
@@ -27,9 +29,9 @@ interface Props {
   heading: string;
 }
 
-const SubjectLinks = ({ links, heading }: Props) => (
+const SubjectLinks = ({ links, heading, headingLevel }: Props) => (
   <SubjectLinksSection>
-    <StyledSubjectSectionTitle>{heading}</StyledSubjectSectionTitle>
+    <StyledSubjectSectionTitle headingLevel={headingLevel}>{heading}</StyledSubjectSectionTitle>
     <nav>
       <SubjectLinksList>
         {links.map((link) => (

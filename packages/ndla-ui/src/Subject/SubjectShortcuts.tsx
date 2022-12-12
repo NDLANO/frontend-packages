@@ -1,17 +1,25 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React, { Component } from 'react';
-import { TransitionGroup } from 'react-transition-group';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Forward } from '@ndla/icons/common';
 import SafeLink from '@ndla/safelink';
 import { SubjectSectionTitle } from './Subject';
 import Fade from '../Animation/Fade';
+import { HeadingLevel } from '../types';
 
 const SubjectShortcutsSection = styled.section`
   margin-bottom: ${spacing.large};
 `;
 
-const StyledTransitionGroup = styled(TransitionGroup)`
+const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -23,7 +31,6 @@ const StyledListItem = styled.li`
   display: block;
   margin-right: 9px;
   margin-bottom: 9px;
-
   a {
     display: block;
     background: ${colors.brand.light};
@@ -33,7 +40,6 @@ const StyledListItem = styled.li`
     font-weight: ${fonts.weight.semibold};
     color: ${colors.brand.dark};
     padding: 9px 20px;
-
     &:hover,
     &:active,
     &:focus {
@@ -52,13 +58,11 @@ const StyledButton = styled.button`
   color: ${colors.brand};
   margin-top: ${spacing.normal};
   cursor: pointer;
-
   .c-icon {
     width: 18px;
     height: 18px;
     margin-right: ${spacing.xsmall};
   }
-
   span {
     ${fonts.sizes('14px', '18px')};
   }
@@ -69,6 +73,7 @@ interface Props {
     url: string;
     text: string;
   }[];
+  headingLevel: HeadingLevel;
   messages: {
     heading: string;
     showMore: string;
@@ -102,7 +107,7 @@ class SubjectShortcuts extends Component<Props, State> {
   }
 
   render() {
-    const { links, messages, defaultVisableCount } = this.props;
+    const { links, messages, defaultVisableCount, headingLevel } = this.props;
     const id = 'subject-shortcut';
 
     const showExpand = defaultVisableCount < links.length;
@@ -128,17 +133,17 @@ class SubjectShortcuts extends Component<Props, State> {
     }
     return (
       <SubjectShortcutsSection>
-        <SubjectSectionTitle>{messages.heading}</SubjectSectionTitle>
+        <SubjectSectionTitle headingLevel={headingLevel}>{messages.heading}</SubjectSectionTitle>
         <nav id={id}>
-          <StyledTransitionGroup component="ul">
+          <StyledList>
             {filteredLinks.map((link) => (
-              <Fade key={link.url}>
+              <Fade key={link.url} show={true}>
                 <StyledListItem>
                   <SafeLink to={link.url}>{link.text}</SafeLink>
                 </StyledListItem>
               </Fade>
             ))}
-          </StyledTransitionGroup>
+          </StyledList>
         </nav>
         {button}
       </SubjectShortcutsSection>

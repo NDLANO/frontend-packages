@@ -130,7 +130,7 @@ const ListItem = ({ item, clickCallback, nextItem, previousItem, viewStyle, rend
   const renderItem = () => (
     <>
       <h3 className={'item-name'}>{item.name}</h3>
-      <p className={'item-description'}>{renderMarkdown(item.description)}</p>
+      <div className={'item-description'}>{renderMarkdown(item.description)}</div>
     </>
   );
 

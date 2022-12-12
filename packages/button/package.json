@@ -1,6 +1,6 @@
 {
   "name": "@ndla/button",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
@@ -8,7 +8,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build:css": "webpack --config ../../css.webpack.config.js && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
-    "build": "concurrently 'yarn build:types' 'yarn build:css'",
+    "build": "concurrently \"yarn build:types\" \"yarn build:css\"",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
@@ -31,6 +31,7 @@
   "dependencies": {
     "@ndla/core": "^3.0.3",
     "@ndla/icons": "^2.1.0",
+    "@radix-ui/react-popover": "^1.0.2",
     "@reach/menu-button": "^0.16.2",
     "@reach/popover": "^0.16.2",
     "focus-trap-react": "^8.9.2"

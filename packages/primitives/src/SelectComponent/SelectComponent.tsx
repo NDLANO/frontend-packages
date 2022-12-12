@@ -16,66 +16,43 @@ const BoldFont = styled.span`
   font-weight: ${fonts.weight.bold};
 `;
 
-interface StylingProperties {
-  containerStyles?: CSSObjectWithLabel;
-  controlStyles?: CSSObjectWithLabel;
-  optionStyles?: CSSObjectWithLabel;
-  menuStyles?: CSSObjectWithLabel;
-  dropdownIndicatorStyles?: CSSObjectWithLabel;
-  placeholderStyles?: CSSObjectWithLabel;
-  valueContainerStyles?: CSSObjectWithLabel;
-}
-
-const customStyles = ({
-  containerStyles,
-  controlStyles,
-  optionStyles,
-  menuStyles,
-  dropdownIndicatorStyles,
-  placeholderStyles,
-  valueContainerStyles,
-}: StylingProperties): StylesConfig => {
-  return {
-    container: (baseStyles) => ({ ...baseStyles, width: 'max-content', ...containerStyles }),
-    control: (baseStyles) => {
-      return {
-        ...baseStyles,
-        border: 'none',
-        backgroundColor: colors.brand.lighter,
-        padding: `0px ${spacing.xsmall}`,
-        fontSize: 14,
-        height: 25,
-        minHeight: 20,
-        display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer',
-        ...controlStyles,
-      };
-    },
-    option: () => ({
-      height: 25,
+const customStyles: StylesConfig = {
+  container: (baseStyles) => ({ ...baseStyles, width: 'max-content' }),
+  control: (baseStyles) => {
+    return {
+      ...baseStyles,
+      border: 'none',
+      backgroundColor: colors.brand.lighter,
+      padding: `0px ${spacing.xsmall}`,
       fontSize: 14,
-      padding: spacing.xsmall,
+      height: 25,
+      minHeight: 20,
       display: 'flex',
       alignItems: 'center',
       cursor: 'pointer',
-      '&: hover': {
-        backgroundColor: colors.brand.lighter,
-      },
-      ...optionStyles,
-    }),
-    menu: (baseStyles) => ({
-      ...baseStyles,
-      backgroundColor: colors.white,
-      borderRadius: 4,
-      marginTop: 2,
-      width: '100%',
-      ...menuStyles,
-    }),
-    dropdownIndicator: (baseStyles) => ({ ...baseStyles, color: colors.black, padding: 0, ...dropdownIndicatorStyles }),
-    placeholder: (baseStyles) => ({ ...baseStyles, fontSize: 14, ...placeholderStyles }),
-    valueContainer: (baseStyles) => ({ ...baseStyles, padding: 0, ...valueContainerStyles }),
-  };
+    };
+  },
+  option: () => ({
+    height: 25,
+    fontSize: 14,
+    padding: spacing.xsmall,
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    '&: hover': {
+      backgroundColor: colors.brand.lighter,
+    },
+  }),
+  menu: (baseStyles) => ({
+    ...baseStyles,
+    backgroundColor: colors.white,
+    borderRadius: 4,
+    marginTop: 2,
+    width: '100%',
+  }),
+  dropdownIndicator: (baseStyles) => ({ ...baseStyles, color: colors.black, padding: 0 }),
+  placeholder: (baseStyles) => ({ ...baseStyles, fontSize: 14 }),
+  valueContainer: (baseStyles) => ({ ...baseStyles, padding: 0 }),
 };
 
 const StyledIcon = styled.div<{ isSelected: boolean }>`
@@ -87,7 +64,7 @@ type Option = {
   label: string;
 };
 
-interface Props extends StylingProperties {
+interface Props {
   selectElements: Option[];
   label?: string;
   defaultValue?: Option;
@@ -110,28 +87,13 @@ const SelectComponent = ({
   menuPlacement = 'bottom',
   prefix,
   icon,
-  containerStyles,
-  controlStyles,
-  optionStyles,
-  menuStyles,
-  dropdownIndicatorStyles,
-  placeholderStyles,
-  valueContainerStyles,
   isMulti,
 }: Props) => {
   return (
     <Select
       aria-label={label}
       options={selectElements}
-      styles={customStyles({
-        containerStyles,
-        controlStyles,
-        optionStyles,
-        menuStyles,
-        dropdownIndicatorStyles,
-        placeholderStyles,
-        valueContainerStyles,
-      })}
+      styles={customStyles}
       value={value}
       onChange={onValueChange}
       defaultValue={defaultValue}

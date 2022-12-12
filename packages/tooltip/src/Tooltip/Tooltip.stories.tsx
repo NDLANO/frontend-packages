@@ -9,7 +9,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ButtonV2 } from '@ndla/button';
 import React from 'react';
-import { defaultParameters } from '../../designmanual/stories/defaults';
+import { defaultParameters } from '../../../designmanual/stories/defaults';
 import Tooltip from './Tooltip';
 
 export default {

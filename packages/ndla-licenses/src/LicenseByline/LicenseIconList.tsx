@@ -9,7 +9,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
+import { Popover } from '@ndla/tooltip';
 import PropTypes from 'prop-types';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
@@ -17,7 +17,6 @@ import StyledLicenseIconList from './StyledLicenseIconList';
 
 type StyledLicenseIconItemProps = {
   horizontal?: boolean;
-  fill?: string;
 };
 
 export const StyledListItem = styled.li<StyledLicenseIconItemProps>`
@@ -27,25 +26,18 @@ export const StyledListItem = styled.li<StyledLicenseIconItemProps>`
   margin-right: 0.2em;
   line-height: 1.3rem;
   color: ${colors.brand.primary};
-
-  svg {
-    fill: ${(props) => props.fill};
-    ${(props) =>
-      props.horizontal
-        ? `width: 18px;
-    height: 18px;`
-        : `width: 24px;
-    height: 24px;`};
-  }
 `;
 
 interface StyledLicenseIconButtonprops {
   light?: boolean;
+  horizontal?: boolean;
+  fill?: string;
 }
 
 export const StyledLicenseIcon = styled.span<StyledLicenseIconButtonprops>`
   display: flex;
   color: ${(p) => (p.light ? colors.white : colors.text.primary)};
+  cursor: pointer;
   &:hover,
   &:focus {
     color: ${(p) => (p.light ? colors.brand.light : colors.text.light)};
@@ -55,6 +47,15 @@ export const StyledLicenseIcon = styled.span<StyledLicenseIconButtonprops>`
       animation-name: fadeIn;
       animation-duration: 200ms;
     }
+  }
+  & > svg {
+    fill: ${(props) => props.fill};
+    ${(props) =>
+      props.horizontal
+        ? `width: 18px;
+    height: 18px;`
+        : `width: 24px;
+    height: 24px;`};
   }
 `;
 
@@ -70,12 +71,12 @@ const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: Lic
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledListItem horizontal={horizontal} fill={color}>
-      <Tooltip tooltip={description}>
-        <StyledLicenseIcon tabIndex={0} light={light}>
+    <StyledListItem horizontal={horizontal}>
+      <Popover popover={description}>
+        <StyledLicenseIcon tabIndex={0} light={light} fill={color} horizontal={horizontal}>
           <LicenseIcon licenseRight={licenseRight} description={description} />
         </StyledLicenseIcon>
-      </Tooltip>
+      </Popover>
     </StyledListItem>
   );
 };

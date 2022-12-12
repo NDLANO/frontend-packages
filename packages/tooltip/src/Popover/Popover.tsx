@@ -10,12 +10,14 @@ import React, { ReactNode } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Content, Root, Trigger } from '@radix-ui/react-popover';
+import { Anchor, Arrow, Close, Content, Root, Trigger } from '@radix-ui/react-popover';
+import { Cross } from '@ndla/icons/action';
+import { useTranslation } from 'react-i18next';
 
 const StyledContent = styled(Content)`
   color: ${colors.white};
   border: 0;
-  background: ${colors.text.primary};
+  background: ${colors.brand.greyDark};
   border-radius: ${misc.borderRadius};
   padding: ${spacing.xsmall} ${spacing.small};
   font-family: ${fonts.sans};
@@ -27,6 +29,20 @@ const StyledContent = styled(Content)`
   max-width: calc(100vw - #{${spacing.normal}});
 `;
 
+const StyledClose = styled(Close)`
+  cursor: pointer;
+  background: none;
+  color: white;
+  border: none;
+  margin-left: ${spacing.xsmall};
+  margin-right: -${spacing.xsmall};
+`;
+
+const StyledArrow = styled(Arrow)`
+  visibility: visible;
+  fill: ${colors.brand.greyDark};
+`;
+
 interface Props {
   children?: ReactNode;
   popover: ReactNode;
@@ -36,13 +52,19 @@ interface Props {
 }
 
 const CorePopover = ({ children, popover, className, hydrateHTML }: Props) => {
+  const { t } = useTranslation();
   return (
     <Root>
       <Trigger data-trigger asChild>
         {hydrateHTML ? parse(hydrateHTML) : children}
       </Trigger>
-      <StyledContent className={className} side={'bottom'} align={'start'} sideOffset={10}>
+      <Anchor />
+      <StyledContent arrowPadding={5} className={className} side={'bottom'} align={'center'} sideOffset={5}>
         {popover}
+        <StyledClose aria-label={t('close')}>
+          <Cross />
+        </StyledClose>
+        <StyledArrow />
       </StyledContent>
     </Root>
   );

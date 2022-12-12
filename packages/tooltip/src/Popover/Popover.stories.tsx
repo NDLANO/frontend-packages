@@ -31,7 +31,7 @@ export default {
   },
 } as ComponentMeta<typeof Popover>;
 
-export const TooltipStory: ComponentStory<typeof Popover> = ({ children, ...args }) => {
+export const PopoverStory: ComponentStory<typeof Popover> = ({ children, ...args }) => {
   return (
     <Popover {...args}>
       <ButtonV2>{children}</ButtonV2>
@@ -39,4 +39,4 @@ export const TooltipStory: ComponentStory<typeof Popover> = ({ children, ...args
   );
 };
 
-TooltipStory.storyName = 'Popover';
+PopoverStory.storyName = 'Popover';

@@ -7,7 +7,8 @@
  */
 
 module.exports = {
-  stories: ['../stories/index.ts', '../../**/*.stories.@(tsx|mdx)'],
+  stories: ['../stories/index.ts', '../packages/**/*.stories.@(tsx|mdx)'],
+
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',

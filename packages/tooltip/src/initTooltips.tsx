@@ -23,7 +23,7 @@ const forEachElement = (selector: string, callback: Function) => {
 const initTooltips = () => {
   forEachElement('[data-tooltip-from-article-converter]', (el: HTMLDivElement) => {
     const tooltip = el.getAttribute('data-tooltip');
-    const inner = el.querySelector('[data-trigger');
+    const inner = el.querySelector('[data-trigger]');
 
     const outerHTML = inner?.outerHTML;
 

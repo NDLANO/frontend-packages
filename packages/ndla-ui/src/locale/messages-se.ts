@@ -334,7 +334,7 @@ const messages = {
       search: 'Oza',
       toFrontpage: 'Ovdasiidui',
       subjectOverview: 'Buot fágat',
-      title: 'Åpne navigasjonsmeny',
+      title: 'Åpne meny',
       modalLabel: 'Vállje sisdoalu',
       subjectPage: 'Ovdasiidu fágas',
       backToSubjectFrontpage: 'Ruovttoluotta fága ovdasiidui',

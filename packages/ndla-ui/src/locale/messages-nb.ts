@@ -333,7 +333,7 @@ const messages = {
       search: 'Søk',
       toFrontpage: 'Til forsiden',
       subjectOverview: 'Alle fag',
-      title: 'Åpne navigasjonsmeny',
+      title: 'Åpne meny',
       modalLabel: 'Velg innhold',
       subjectPage: 'Fagforside',
       backToSubjectFrontpage: 'Tilbake til fagforsiden',

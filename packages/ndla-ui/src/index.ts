@@ -32,7 +32,7 @@ export { default as TopicIntroductionList } from './TopicIntroductionList';
 
 export { default as Table } from './Table';
 
-export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
+export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 
 export { createUniversalPortal } from './utils/createUniversalPortal';
 

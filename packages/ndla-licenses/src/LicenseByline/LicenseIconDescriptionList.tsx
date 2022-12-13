@@ -8,7 +8,7 @@
 
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import Tooltip, { Popover } from '@ndla/tooltip';
+import { Popover } from '@ndla/tooltip';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';

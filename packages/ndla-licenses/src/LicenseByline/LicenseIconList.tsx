@@ -34,9 +34,12 @@ interface StyledLicenseIconButtonprops {
   fill?: string;
 }
 
-export const StyledLicenseIcon = styled.span<StyledLicenseIconButtonprops>`
+export const StyledLicenseIcon = styled.button<StyledLicenseIconButtonprops>`
   display: flex;
   color: ${(p) => (p.light ? colors.white : colors.text.primary)};
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
   &:hover,
   &:focus {
@@ -68,13 +71,13 @@ interface LicenseIconItemProps {
 }
 
 const LicenseIconItem = ({ licenseRight, locale, horizontal, light, color }: LicenseIconItemProps) => {
-  const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
+  const { description, title } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
     <StyledListItem horizontal={horizontal}>
       <Popover popover={description}>
-        <StyledLicenseIcon tabIndex={0} light={light} fill={color} horizontal={horizontal}>
-          <LicenseIcon licenseRight={licenseRight} description={description} />
+        <StyledLicenseIcon light={light} fill={color} horizontal={horizontal}>
+          <LicenseIcon licenseRight={licenseRight} description={title} />
         </StyledLicenseIcon>
       </Popover>
     </StyledListItem>

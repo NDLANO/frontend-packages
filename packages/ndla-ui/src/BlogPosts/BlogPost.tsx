@@ -32,16 +32,11 @@ const StyledLicense = styled.span<StyledLicenseProps>`
   border-radius: ${spacing.normal};
   li {
     padding-bottom: 0 !important;
-    svg {
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-    }
     &:last-child {
       padding-right: ${spacing.xsmall};
     }
   }
-  ${fonts.sizes(12, 1)};
+  ${fonts.sizes(12, 1)}a
   ${mq.range({ from: breakpoints.tablet })} {
     right: ${spacing.xsmall};
   }

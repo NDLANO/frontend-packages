@@ -8,18 +8,10 @@
 import React, { ReactNode, FunctionComponent } from 'react';
 import styled, { StyledComponent } from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import Select, {
-  components,
-  SingleValue,
-  ActionMeta,
-  StylesConfig,
-  ControlProps,
-  GroupBase,
-  SingleValueProps,
-  OptionProps,
-} from 'react-select';
+import Select, { components, SingleValue, ActionMeta, StylesConfig, SingleValueProps, OptionProps } from 'react-select';
 import { Done } from '@ndla/icons/editor';
 import { css } from '@emotion/react';
+import BaseControl from './BaseControl';
 
 const BoldFont = styled.span`
   font-weight: ${fonts.weight.bold};
@@ -136,43 +128,6 @@ const CustomOption = ({ OptionComponent, icon, isMultiSelect, children, ...props
   );
 };
 
-const controlStyles = css`
-  border: none;
-  background-color: ${colors.brand.lighter};
-  padding: 0px ${spacing.xsmall};
-  fontsize: 14px;
-  height: 25px;
-  min-height: 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
-
-const StyledTest = styled(components.Control)`
-  border: none;
-  background-color: ${colors.brand.lighter};
-  padding: 0px ${spacing.xsmall};
-  font-size: 14px;
-  height: 25px;
-  min-height: 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
-
-interface CustomControlProps extends ControlProps {
-  ControlComponent?: React.FunctionComponent;
-}
-
-const CustomControl = ({ ControlComponent, children, ...props }: CustomControlProps) => {
-  // {ControlComponent ? <ControlComponent>{children}</ControlComponent>
-  return (
-    <components.Control {...props} css={controlStyles}>
-      {ControlComponent ? <ControlComponent>{children}</ControlComponent> : children}{' '}
-    </components.Control>
-  );
-};
-
 const SelectComponent = ({
   selectElements,
   label,
@@ -189,9 +144,9 @@ const SelectComponent = ({
 }: Props) => {
   return (
     <Select
+      unstyled
       aria-label={label}
       options={selectElements}
-      styles={customStyles}
       value={value}
       onChange={onValueChange}
       defaultValue={defaultValue}
@@ -215,11 +170,7 @@ const SelectComponent = ({
             {children}
           </CustomOption>
         ),
-        Control: ({ children, ...props }) => (
-          <CustomControl ControlComponent={ControlComponent} {...props}>
-            {children}
-          </CustomControl>
-        ),
+        Control: ControlComponent || BaseControl,
       }}
     />
   );

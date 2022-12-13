@@ -52,20 +52,22 @@ const TestControl = (children) => {
 
 export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
   return (
-    <SelectComponent
-      {...args}
-      label="Farger"
-      selectElements={[
-        { value: 'Gul', label: 'Gul' },
-        { value: 'Blå', label: 'Blå' },
-        { value: 'Grønn', label: 'Grønn' },
-      ]}
-      placeholder="Velg en farge"
-      prefix="Farge"
-      //OptionComponent={TestComponent}
-      //  ControlComponent={TestControl}
-      isMultiSelect={true}
-    />
+    <div style={{ display: 'flex' }}>
+      <SelectComponent
+        {...args}
+        label="Farger"
+        selectElements={[
+          { value: 'Gul', label: 'Gul' },
+          { value: 'Blå', label: 'Blå' },
+          { value: 'Grønn', label: 'Grønn' },
+        ]}
+        placeholder="Velg en farge"
+        prefix="Farge"
+        //OptionComponent={TestComponent}
+        //  ControlComponent={TestControl}
+        //isMultiSelect={true}
+      />
+    </div>
   );
 };
 

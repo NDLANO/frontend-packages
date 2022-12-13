@@ -40,8 +40,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
         showAdditionalResources={showAdditionalCores}
       />
     }
-    id="resourcesListId">
-  </ResourcesWrapper>
+    id="resourcesListId"></ResourcesWrapper>
 );
 
 ResourcesSubTopics.propTypes = {

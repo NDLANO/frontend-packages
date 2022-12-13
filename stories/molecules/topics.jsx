@@ -58,8 +58,7 @@ class Topics extends Component {
             toggleAdditionalDialog={this.toggleAdditionalDialog}
             showAdditionalDialog={showAdditionalDialog}
           />
-        }>
-      </ResourcesWrapper>
+        }></ResourcesWrapper>
     );
   }
 }

@@ -25,7 +25,6 @@ export default {
       { value: 'Grønn', label: 'Grønn' },
     ],
     placeholder: 'Velg en farge',
-    prefix: 'Farge',
   },
 } as ComponentMeta<typeof SelectComponent>;
 

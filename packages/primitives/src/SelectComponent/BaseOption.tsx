@@ -11,26 +11,23 @@ import { colors, spacing } from '@ndla/core';
 import { GroupBase, OptionProps } from 'react-select';
 import { Option } from './types';
 
-const StyledBaseOption = styled.div`
+const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   height: 25px;
   font-size: 14px;
   padding: ${spacing.xsmall};
   display: flex;
   align-items: center;
   cursor: pointer;
-  &:hover {
-    background-color: ${colors.brand.lighter};
-  }
+  background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
 `;
 
 const BaseOption = <T extends boolean>({
-  children,
-  innerRef,
-  innerProps,
+  isFocused,
+  ...props
 }: OptionProps<unknown, T & boolean, GroupBase<Option>>) => {
   return (
-    <StyledBaseOption ref={innerRef} {...innerProps}>
-      {children}
+    <StyledBaseOption ref={props.innerRef} {...props.innerProps} isFocused={isFocused}>
+      {props.children}
     </StyledBaseOption>
   );
 };

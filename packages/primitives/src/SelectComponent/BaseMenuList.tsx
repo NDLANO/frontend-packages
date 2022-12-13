@@ -5,26 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ComponentType } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import { GroupBase, MenuProps } from 'react-select';
+import { GroupBase, MenuListProps } from 'react-select';
 import { Option } from './types';
 
-const StyledBaseMenu = styled.div`
+const StyledBaseMenuList = styled.div`
   background-color: ${colors.white};
   border-radius: 4px;
-  margin-top: 2px;
+  margin: 2px 0px;
   width: 100%;
   border: 1px solid ${colors.brand.greyLight};
 `;
 
-const BaseMenu = ({ children, innerRef, innerProps }: MenuProps<unknown, boolean, GroupBase<Option>>) => {
+const BaseMenuList = ({ children, innerRef, innerProps }: MenuListProps<unknown, boolean, GroupBase<Option>>) => {
   return (
-    <StyledBaseMenu ref={innerRef} {...innerProps}>
+    <StyledBaseMenuList ref={innerRef} {...innerProps}>
       {children}
-    </StyledBaseMenu>
+    </StyledBaseMenuList>
   );
 };
 
-export default BaseMenu;
+export default BaseMenuList;

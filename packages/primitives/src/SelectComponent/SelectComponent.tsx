@@ -9,7 +9,7 @@ import React, { ComponentType } from 'react';
 import Select, { SingleValue, ActionMeta, SingleValueProps, OptionProps, ControlProps, GroupBase } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
-import BaseMenu from './BaseMenu';
+import BaseMenuList from './BaseMenuList';
 import BaseSingleValue from './BaseSingleValue';
 import { Option } from './types';
 import BaseValueContainer from './BaseValueContainer';
@@ -62,7 +62,7 @@ const SelectComponent = <T extends boolean>({
         Option: OptionComponent || BaseOption,
         Control: ControlComponent || BaseControl,
         SingleValue: SingleValueComponent || BaseSingleValue,
-        Menu: BaseMenu,
+        MenuList: BaseMenuList,
         ValueContainer: BaseValueContainer,
       }}
     />

@@ -8,7 +8,6 @@ import {
   ErrorMessage,
   FilterList,
   Footer,
-  TopicIntroductionList,
   PageContainer,
   LayoutItem,
   Translation,
@@ -241,21 +240,6 @@ storiesOf('Sammensatte moduler', module)
     <Center>
       <ArticleLoader articleId="13661" reset />
     </Center>
-  ))
-  .add('Emneliste', () => (
-    <div>
-      <StoryIntro title="Emneliste">
-        <p>Emnelister brukes typisk innen et fag eller emne for å vise underliggende emner.</p>
-        <p>
-          Ved klikk på emnetittel kommer brukerne til emneartikkelen for emnet de klikker på. Se også siden for
-          Emnebeskrivelse.
-        </p>
-      </StoryIntro>
-      <StoryBody>
-        <LanguageSelectorStory />
-        <TopicIntroductionList toTopic={() => '#'} topics={topicList} toggleAdditionalCores={() => {}} />
-      </StoryBody>
-    </div>
   ))
   .add('Faner', () => (
     <Center>

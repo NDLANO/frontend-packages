@@ -10,17 +10,17 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import format from 'date-fns/format';
-import { OneColumn, Article, ResourcesWrapper, ResourcesTopicTitle, TopicIntroductionList } from '@ndla/ui';
+import { OneColumn, Article, ResourcesWrapper, ResourcesTopicTitle } from '@ndla/ui';
 import Button from '@ndla/button';
 import Resources from '../molecules/resources';
 import { fetchArticle } from './articleApi';
 import LicenseBox from './LicenseBox';
 import SimpleSubmitForm from './SimpleSubmitForm';
-import { topicList, topicListFilm } from '../../dummydata/index';
+import { topicList } from '../../dummydata/index';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import NdlaFilmArticleHero from './NdlaFilmArticleHero';
 
-const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores, ndlaFilm }) => (
+const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores }) => (
   <ResourcesWrapper
     header={
       <ResourcesTopicTitle
@@ -40,17 +40,7 @@ const ResourcesSubTopics = ({ showAdditionalCores, toggleAdditionalCores, ndlaFi
         showAdditionalResources={showAdditionalCores}
       />
     }
-    id="resourcesListId">
-    <TopicIntroductionList
-      toTopic={() => '#'}
-      topics={ndlaFilm ? topicListFilm : topicList}
-      toggleAdditionalCores={toggleAdditionalCores}
-      showAdditionalCores={showAdditionalCores}
-      messages={{
-        shortcutButtonText: 'Lærestoff',
-      }}
-    />
-  </ResourcesWrapper>
+    id="resourcesListId"></ResourcesWrapper>
 );
 
 ResourcesSubTopics.propTypes = {

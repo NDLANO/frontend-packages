@@ -5,13 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ReactNode, FunctionComponent } from 'react';
+import React, { ReactNode, FunctionComponent, ComponentType } from 'react';
 import styled, { StyledComponent } from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import Select, { components, SingleValue, ActionMeta, StylesConfig, SingleValueProps, OptionProps } from 'react-select';
-import { Done } from '@ndla/icons/editor';
-import { css } from '@emotion/react';
+import Select, {
+  components,
+  SingleValue,
+  ActionMeta,
+  StylesConfig,
+  SingleValueProps,
+  OptionProps,
+  ControlProps,
+  GroupBase,
+} from 'react-select';
 import BaseControl from './BaseControl';
+import BaseOption from './BaseOption';
+import { Option } from './types';
 
 const BoldFont = styled.span`
   font-weight: ${fonts.weight.bold};
@@ -57,15 +66,6 @@ const customStyles: StylesConfig = {
   valueContainer: (baseStyles) => ({ ...baseStyles, padding: 0 }),
 };
 
-const StyledIcon = styled.div<{ isSelected: boolean }>`
-  visibility: ${(isSelected) => (isSelected ? 'visible' : 'hidden')};
-`;
-
-type Option = {
-  value: string;
-  label: string;
-};
-
 interface Props {
   selectElements: Option[];
   label?: string;
@@ -78,7 +78,7 @@ interface Props {
   icon?: ReactNode;
   isMultiSelect?: boolean;
   OptionComponent?: FunctionComponent;
-  ControlComponent?: FunctionComponent;
+  ControlComponent?: React.ComponentType<ControlProps<Option, boolean, GroupBase<Option>>> | undefined;
 }
 
 interface CustomSingleValueProps extends SingleValueProps {
@@ -91,40 +91,6 @@ const CustomSingleValue = ({ prefix, children, ...props }: CustomSingleValueProp
       {prefix ? <BoldFont>{`${prefix}: `}</BoldFont> : null}
       {children}
     </components.SingleValue>
-  );
-};
-
-const optionStyles = css`
-  height: 25px;
-  font-size: 14px;
-  padding: ${spacing.xsmall};
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  :hover: {
-    background-color: ${colors.brand.lighter};
-  }
-`;
-interface CustomOptionProps extends OptionProps {
-  OptionComponent?: FunctionComponent;
-  icon?: ReactNode;
-  isMultiSelect?: boolean;
-}
-
-const CustomOption = ({ OptionComponent, icon, isMultiSelect, children, ...props }: CustomOptionProps) => {
-  return (
-    <components.Option {...props} css={OptionComponent ? '' : optionStyles}>
-      {OptionComponent ? (
-        <OptionComponent>{children}</OptionComponent>
-      ) : icon ? (
-        <div css={{ visibility: props.isSelected ? 'visible' : 'hidden' }}>{icon}</div>
-      ) : isMultiSelect ? (
-        <div css={{ visibility: props.isSelected ? 'visible' : 'hidden' }}>
-          <Done />
-        </div>
-      ) : null}
-      {children}
-    </components.Option>
   );
 };
 
@@ -144,6 +110,7 @@ const SelectComponent = ({
 }: Props) => {
   return (
     <Select
+      styles={customStyles}
       unstyled
       aria-label={label}
       options={selectElements}
@@ -160,16 +127,8 @@ const SelectComponent = ({
       hideSelectedOptions={false}
       components={{
         IndicatorSeparator: () => null,
-        SingleValue: ({ children, ...props }) => (
-          <CustomSingleValue prefix={prefix} {...props}>
-            {children}
-          </CustomSingleValue>
-        ),
-        Option: ({ children, ...props }) => (
-          <CustomOption OptionComponent={OptionComponent} icon={icon} isMultiSelect={isMultiSelect} {...props}>
-            {children}
-          </CustomOption>
-        ),
+        SingleValue: CustomSingleValue,
+        Option: OptionComponent || BaseOption,
         Control: ControlComponent || BaseControl,
       }}
     />

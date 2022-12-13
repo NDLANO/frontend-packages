@@ -42,12 +42,20 @@ const StyledOption = styled.div`
   }
 `;
 
-const TestComponent = (children) => {
-  return <StyledOption>{children.children}</StyledOption>;
+const TestComponent = (props) => {
+  return (
+    <StyledOption ref={props.innerRef} {...props.innerProps}>
+      {props.children}
+    </StyledOption>
+  );
 };
 
-const TestControl = (children) => {
-  return <StyledOption>{children.children}</StyledOption>;
+const TestControl = (props) => {
+  return (
+    <StyledOption ref={props.innerRef} {...props.innerProps}>
+      {props.children}
+    </StyledOption>
+  );
 };
 
 export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
@@ -63,9 +71,9 @@ export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
         ]}
         placeholder="Velg en farge"
         prefix="Farge"
-        //OptionComponent={TestComponent}
-        //  ControlComponent={TestControl}
-        //isMultiSelect={true}
+        // OptionComponent={TestComponent}
+        // ControlComponent={TestControl}
+        isMultiSelect={true}
       />
     </div>
   );

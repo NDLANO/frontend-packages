@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { ControlProps } from 'react-select';
+import { Option } from './types';
 
 const StyledBaseControl = styled.div`
   border: none;
@@ -16,16 +17,7 @@ const StyledBaseControl = styled.div`
   cursor: pointer;
 `;
 
-type Option = {
-  value: string;
-  label: string;
-};
-
-interface BaseControlProps<T> extends ControlProps<Option, T> {
-  ControlComponent?: React.FunctionComponent;
-}
-
-const BaseControl = <T extends boolean>({ children, innerRef, innerProps, ...props }: BaseControlProps<T>) => {
+const BaseControl = <T extends boolean>({ children, innerRef, innerProps }: ControlProps<Option, T & boolean>) => {
   return (
     <StyledBaseControl ref={innerRef} {...innerProps}>
       {children}

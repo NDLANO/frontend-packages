@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
-import { ControlProps } from 'react-select';
+import { ControlProps, GroupBase } from 'react-select';
 import { Option } from './types';
 
 const StyledBaseControl = styled.div`
@@ -17,7 +17,11 @@ const StyledBaseControl = styled.div`
   cursor: pointer;
 `;
 
-const BaseControl = <T extends boolean>({ children, innerRef, innerProps }: ControlProps<Option, T & boolean>) => {
+const BaseControl = <T extends boolean>({
+  children,
+  innerRef,
+  innerProps,
+}: ControlProps<unknown, T & boolean, GroupBase<Option>>) => {
   return (
     <StyledBaseControl ref={innerRef} {...innerProps}>
       {children}

@@ -9,7 +9,7 @@
 import { Cross } from '@ndla/icons/action';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { defaultParameters } from '../../designmanual/stories/defaults';
+import { defaultParameters } from '../../../stories/defaults';
 import IconButtonV2 from './IconButtonV2';
 
 export default {

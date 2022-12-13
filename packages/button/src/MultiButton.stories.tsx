@@ -9,7 +9,7 @@
 import styled from '@emotion/styled';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { defaultParameters } from '../../designmanual/stories/defaults';
+import { defaultParameters } from '../../../stories/defaults';
 import MultiButton from './MultiButtonV2';
 
 const Wrapper = styled.div`

@@ -18,7 +18,7 @@ const forEachElement = (selector: string, callback: Function) => {
 };
 
 /**
- * Hydrates popovers for SSR pages. Only supports
+ * Hydrates popovers for SSR pages.
  */
 const initPopovers = () => {
   forEachElement('[data-popover-from-article-converter]', (el: HTMLDivElement) => {

@@ -179,10 +179,6 @@ const StyledSubjectFlexChild = styled.div`
   }
 `;
 
-export const SubjectFlexChild = ({ children }: { children: ReactNode }) => (
-  <StyledSubjectFlexChild>{children}</StyledSubjectFlexChild>
-);
-
 const StyledSectionHeading = styled(SectionHeading)`
   margin: 0 0 ${spacing.small} 0;
 

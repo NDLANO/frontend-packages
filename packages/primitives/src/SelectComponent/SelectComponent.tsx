@@ -5,12 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-import React, { ReactNode } from 'react';
-import styled from '@emotion/styled';
+import React, { ReactNode, FunctionComponent } from 'react';
+import styled, { StyledComponent } from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import Select, { components, SingleValue, ActionMeta, StylesConfig, CSSObjectWithLabel } from 'react-select';
+import Select, {
+  components,
+  SingleValue,
+  ActionMeta,
+  StylesConfig,
+  ControlProps,
+  GroupBase,
+  SingleValueProps,
+  OptionProps,
+} from 'react-select';
 import { Done } from '@ndla/icons/editor';
+import { css } from '@emotion/react';
 
 const BoldFont = styled.span`
   font-weight: ${fonts.weight.bold};
@@ -18,7 +27,7 @@ const BoldFont = styled.span`
 
 const customStyles: StylesConfig = {
   container: (baseStyles) => ({ ...baseStyles, width: 'max-content' }),
-  control: (baseStyles) => {
+  /* control: (baseStyles) => {
     return {
       ...baseStyles,
       border: 'none',
@@ -31,8 +40,9 @@ const customStyles: StylesConfig = {
       alignItems: 'center',
       cursor: 'pointer',
     };
-  },
-  option: () => ({
+  },*/
+  /* option: (baseStyles) => ({
+    ...baseStyles,
     height: 25,
     fontSize: 14,
     padding: spacing.xsmall,
@@ -42,7 +52,7 @@ const customStyles: StylesConfig = {
     '&: hover': {
       backgroundColor: colors.brand.lighter,
     },
-  }),
+  }),*/
   menu: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: colors.white,
@@ -68,14 +78,100 @@ interface Props {
   selectElements: Option[];
   label?: string;
   defaultValue?: Option;
-  value?: SingleValue<Option>;
+  value?: SingleValue<unknown>;
   onValueChange?: (value: unknown, actionMeta: ActionMeta<unknown>) => void;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top';
   prefix?: string;
   icon?: ReactNode;
-  isMulti?: boolean;
+  isMultiSelect?: boolean;
+  OptionComponent?: FunctionComponent;
+  ControlComponent?: FunctionComponent;
 }
+
+interface CustomSingleValueProps extends SingleValueProps {
+  prefix?: string;
+}
+
+const CustomSingleValue = ({ prefix, children, ...props }: CustomSingleValueProps) => {
+  return (
+    <components.SingleValue {...props}>
+      {prefix ? <BoldFont>{`${prefix}: `}</BoldFont> : null}
+      {children}
+    </components.SingleValue>
+  );
+};
+
+const optionStyles = css`
+  height: 25px;
+  font-size: 14px;
+  padding: ${spacing.xsmall};
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  :hover: {
+    background-color: ${colors.brand.lighter};
+  }
+`;
+interface CustomOptionProps extends OptionProps {
+  OptionComponent?: FunctionComponent;
+  icon?: ReactNode;
+  isMultiSelect?: boolean;
+}
+
+const CustomOption = ({ OptionComponent, icon, isMultiSelect, children, ...props }: CustomOptionProps) => {
+  return (
+    <components.Option {...props} css={OptionComponent ? '' : optionStyles}>
+      {OptionComponent ? (
+        <OptionComponent>{children}</OptionComponent>
+      ) : icon ? (
+        <div css={{ visibility: props.isSelected ? 'visible' : 'hidden' }}>{icon}</div>
+      ) : isMultiSelect ? (
+        <div css={{ visibility: props.isSelected ? 'visible' : 'hidden' }}>
+          <Done />
+        </div>
+      ) : null}
+      {children}
+    </components.Option>
+  );
+};
+
+const controlStyles = css`
+  border: none;
+  background-color: ${colors.brand.lighter};
+  padding: 0px ${spacing.xsmall};
+  fontsize: 14px;
+  height: 25px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const StyledTest = styled(components.Control)`
+  border: none;
+  background-color: ${colors.brand.lighter};
+  padding: 0px ${spacing.xsmall};
+  font-size: 14px;
+  height: 25px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+interface CustomControlProps extends ControlProps {
+  ControlComponent?: React.FunctionComponent;
+}
+
+const CustomControl = ({ ControlComponent, children, ...props }: CustomControlProps) => {
+  // {ControlComponent ? <ControlComponent>{children}</ControlComponent>
+  return (
+    <components.Control {...props} css={controlStyles}>
+      {ControlComponent ? <ControlComponent>{children}</ControlComponent> : children}{' '}
+    </components.Control>
+  );
+};
 
 const SelectComponent = ({
   selectElements,
@@ -87,7 +183,9 @@ const SelectComponent = ({
   menuPlacement = 'bottom',
   prefix,
   icon,
-  isMulti,
+  isMultiSelect,
+  OptionComponent,
+  ControlComponent,
 }: Props) => {
   return (
     <Select
@@ -101,34 +199,23 @@ const SelectComponent = ({
       isSearchable={false}
       placeholder={placeholder}
       menuPlacement={menuPlacement}
-      isMulti={isMulti}
-      controlShouldRenderValue={!isMulti}
+      isMulti={isMultiSelect}
+      controlShouldRenderValue={!isMultiSelect}
       isClearable={false}
       hideSelectedOptions={false}
       components={{
         IndicatorSeparator: () => null,
-        SingleValue: ({ children, ...props }) => {
-          return (
-            <components.SingleValue {...props}>
-              {prefix ? <BoldFont>{`${prefix}: `}</BoldFont> : null}
-              {children}
-            </components.SingleValue>
-          );
-        },
-        Option: ({ children, ...props }) => {
-          return (
-            <components.Option {...props}>
-              {icon ? (
-                <StyledIcon isSelected={props.isSelected}>{icon}</StyledIcon>
-              ) : isMulti ? (
-                <StyledIcon isSelected={props.isSelected}>
-                  <Done />
-                </StyledIcon>
-              ) : null}
-              {children}
-            </components.Option>
-          );
-        },
+        SingleValue: ({ children, ...props }) => (
+          <CustomSingleValue prefix={prefix} {...props}>
+            {children}
+          </CustomSingleValue>
+        ),
+        Option: ({ children, ...props }) => (
+          <CustomOption OptionComponent={OptionComponent} icon={icon} isMultiSelect={isMultiSelect} {...props}>
+            {children}
+          </CustomOption>
+        ),
+        Control: ({ children, ...props }) => <CustomControl {...props}>{children}</CustomControl>,
       }}
     />
   );

@@ -6,6 +6,7 @@
  *
  */
 
+import styled from '@emotion/styled';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../../../designmanual/stories/defaults';
@@ -29,6 +30,26 @@ export default {
   },
 } as ComponentMeta<typeof SelectComponent>;
 
+const StyledOption = styled.div`
+  font-size: 50px;
+  font-weight: bold;
+  width: 200px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  &:hover {
+    background-color: blue;
+  }
+`;
+
+const TestComponent = (children) => {
+  return <StyledOption>{children.children}</StyledOption>;
+};
+
+const TestControl = (children) => {
+  return <StyledOption>{children.children}</StyledOption>;
+};
+
 export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
   return (
     <SelectComponent
@@ -41,6 +62,9 @@ export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
       ]}
       placeholder="Velg en farge"
       prefix="Farge"
+      //OptionComponent={TestComponent}
+      //  ControlComponent={TestControl}
+      isMultiSelect={true}
     />
   );
 };

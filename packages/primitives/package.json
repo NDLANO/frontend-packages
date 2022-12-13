@@ -27,7 +27,9 @@
     ],
     "dependencies": {
       "@ndla/core": "^3.0.3",
-      "@ndla/icons": "^2.0.8"
+      "@ndla/icons": "^2.0.8",
+      "react-select": "^5.4.0"
+
     },
     "peerDependencies": {
       "@emotion/react": "^11.10.4",

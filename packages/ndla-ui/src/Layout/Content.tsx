@@ -7,16 +7,11 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 
 interface Props {
   children: ReactNode;
 }
 
 export const Content = ({ children }: Props) => <div className="o-content">{children}</div>;
-
-Content.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Content;

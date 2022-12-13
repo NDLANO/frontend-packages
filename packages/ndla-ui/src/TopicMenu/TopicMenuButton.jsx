@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { spacing, fonts, colors, mq, breakpoints } from '@ndla/core';
 import { Menu } from '@ndla/icons/common';
@@ -48,10 +47,5 @@ const TopicMenuButton = ({ ndlaFilm, children, ...rest }) => (
     <Menu /> {children}
   </Button>
 );
-
-TopicMenuButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  ndlaFilm: PropTypes.bool,
-};
 
 export default TopicMenuButton;

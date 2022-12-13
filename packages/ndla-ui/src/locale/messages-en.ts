@@ -336,7 +336,7 @@ const messages = {
       subjectOverview: 'All subjects',
       modalLabel: 'Choose content',
       backToSubjectFrontpage: 'Back to subject frontpage',
-      title: 'Content',
+      title: 'Open menu',
       subjectPage: 'Subject front page',
       openFilter: 'Filter',
       useFilter: 'Use filter',

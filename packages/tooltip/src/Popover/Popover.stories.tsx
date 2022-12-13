@@ -33,9 +33,11 @@ export default {
 
 export const PopoverStory: ComponentStory<typeof Popover> = ({ children, ...args }) => {
   return (
-    <Popover {...args}>
-      <ButtonV2>{children}</ButtonV2>
-    </Popover>
+    <div style={{ display: 'flex' }}>
+      <Popover {...args}>
+        <ButtonV2>{children}</ButtonV2>
+      </Popover>
+    </div>
   );
 };
 

@@ -15,7 +15,6 @@ import MessageBoxSiteExample from '../pages/MessageBoxSiteExample';
 import MastheadWithTopicMenu from '../molecules/mastheads';
 import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
-import { contentCards } from '../../dummydata';
 import SubjectPage from '../pages/SubjectPage';
 import { CompetenceGoalListExample } from '../organisms/CompetenceGoalsExample';
 import FigureImage from '../article/FigureImage';
@@ -153,9 +152,6 @@ const MessageBoxTabs = () => {
                     initialBreadcrumb={subjectBreadcrumb}
                     subjectName="Forretningsdrift (SR Vg1)"
                     bannerBackground={backgroundSSR}
-                    subjectContentCards={contentCards}
-                    subjectAboutHeading="Om salg, service og reiseliv"
-                    subjectAboutDescription="Litt om faget"
                     messageBoxTagMessage="Beta" //Pass this prop to display a tag in the breadcrumblist
                   />
                 </Content>

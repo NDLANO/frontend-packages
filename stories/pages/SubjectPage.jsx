@@ -26,7 +26,6 @@ import {
   Topic,
   AuthModal,
   MessageBox,
-  SubjectCarousel,
 } from '@ndla/ui';
 import { getLicenseByAbbreviation } from '@ndla/licenses';
 
@@ -34,16 +33,6 @@ import Resources from '../molecules/resources';
 import { fetchArticle } from '../article/articleApi';
 import LicenseBox from '../article/LicenseBox';
 import FigureImage from '../article/FigureImage';
-
-/* Stored for later 
-const subjectAbout = (label, description) => (
-  <SubjectAbout
-    wide
-    media={<Image alt="Forstørrelsesglass" src="https://api.staging.ndla.no/image-api/raw/42-45210905.jpg" />}
-    heading={label}
-    description={description}
-  />
-); */
 
 const loadArticle = async (articleId) => {
   try {
@@ -141,7 +130,6 @@ const SubjectPage = ({
   subjectName,
   messagebox: message,
   messageBoxTagMessage,
-  subjectContentCards,
 }) => {
   const { t } = useTranslation();
   const [selectedMainTopic, setSelectedMainTopic] = useState(preSelectedMainTopic);
@@ -511,9 +499,6 @@ const SubjectPage = ({
         </OneColumn>
       </div>
 
-      {subjectContentCards && (
-        <SubjectCarousel wideScreen subjects={subjectContentCards} title="Litt forskjellig fra faget" subjectPage />
-      )}
       <OneColumn wide>
         {message && (
           <Breadcrumblist
@@ -547,9 +532,6 @@ SubjectPage.propTypes = {
   initialBreadcrumb: PropTypes.array,
   subjectName: PropTypes.string,
   bannerBackground: PropTypes.string,
-  subjectContentCards: PropTypes.array,
-  subjectAboutHeading: PropTypes.string,
-  subjectAboutDescription: PropTypes.string,
 };
 
 export default SubjectPage;

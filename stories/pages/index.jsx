@@ -47,7 +47,6 @@ import { subjectBreadcrumb, topics } from '../../dummydata/mockPrograms';
 import MultidisciplinarySubjectPage from './MultidisciplinarySubjectPage';
 import MultidisciplinarySubjectArticle from './MultidisciplinarySubjectArticle';
 import backgroundSSR from '../../images/banners/Service-og-samferdsel-black.svg';
-import { contentCards } from '../../dummydata';
 import Toolbox from './Toolbox';
 
 storiesOf('Sidevisninger', module)
@@ -262,9 +261,6 @@ storiesOf('Fag- og emnesider', module)
           initialBreadcrumb={subjectBreadcrumb}
           subjectName="Forretningsdrift (SR Vg1)"
           bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
         />
       </Content>
       <FooterExample />
@@ -279,10 +275,7 @@ storiesOf('Fag- og emnesider', module)
           initialBreadcrumb={subjectBreadcrumb}
           subjectName="Forretningsdrift (SR Vg1)"
           bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
           selectedMainTopic={22665}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
         />
       </Content>
       <FooterExample />
@@ -297,11 +290,8 @@ storiesOf('Fag- og emnesider', module)
           initialBreadcrumb={subjectBreadcrumb}
           subjectName="Forretningsdrift (SR Vg1)"
           bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
           selectedMainTopic={22665}
           selectedSubTopic={22703}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
         />
       </Content>
       <FooterExample />
@@ -316,12 +306,9 @@ storiesOf('Fag- og emnesider', module)
           initialBreadcrumb={subjectBreadcrumb}
           subjectName="Forretningsdrift (SR Vg1)"
           bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
           selectedMainTopic={22665}
           selectedSubTopic={22703}
           selectedSubSubTopic={22703}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
         />
       </Content>
       <FooterExample />
@@ -458,9 +445,6 @@ storiesOf('Autentisering', module)
           initialBreadcrumb={subjectBreadcrumb}
           subjectName="Forretningsdrift (SR Vg1)"
           bannerBackground={backgroundSSR}
-          subjectContentCards={contentCards}
-          subjectAboutHeading="Om salg, service og reiseliv"
-          subjectAboutDescription="Litt om faget"
         />
       </Content>
       <FooterExample />

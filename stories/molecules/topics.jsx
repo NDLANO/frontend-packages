@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ResourcesWrapper, ResourcesTopicTitle, TopicIntroductionList } from '@ndla/ui';
-import { topicList, topicListFilm } from '../../dummydata/index';
+import { ResourcesWrapper, ResourcesTopicTitle } from '@ndla/ui';
+import { topicList } from '../../dummydata/index';
 
 class Topics extends Component {
   constructor(props) {
@@ -36,7 +36,6 @@ class Topics extends Component {
 
   render() {
     const { showAdditionalCores, showAdditionalDialog } = this.state;
-    const { ndlaFilm } = this.props;
     return (
       <ResourcesWrapper
         header={
@@ -59,15 +58,7 @@ class Topics extends Component {
             toggleAdditionalDialog={this.toggleAdditionalDialog}
             showAdditionalDialog={showAdditionalDialog}
           />
-        }>
-        <TopicIntroductionList
-          toTopic={() => '#'}
-          topics={ndlaFilm ? topicListFilm : topicList}
-          subjectPage
-          showAdditionalCores={showAdditionalCores}
-          toggleAdditionalCores={this.toggleAdditionalCores}
-        />
-      </ResourcesWrapper>
+        }></ResourcesWrapper>
     );
   }
 }

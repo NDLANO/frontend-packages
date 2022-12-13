@@ -24,7 +24,7 @@ const BaseControl = <T extends boolean>({
   innerRef,
   innerProps,
   isFocused,
-}: ControlProps<unknown, T & boolean, GroupBase<Option>>) => {
+}: ControlProps<unknown, T, GroupBase<Option>>) => {
   return (
     <StyledBaseControl isFocused={isFocused} ref={innerRef} {...innerProps}>
       {children}

@@ -23,9 +23,9 @@ interface Props<T> {
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top';
   isMultiSelect?: boolean;
-  OptionComponent?: ComponentType<OptionProps<unknown, T & boolean, GroupBase<Option>>>;
-  ControlComponent?: ComponentType<ControlProps<unknown, T & boolean, GroupBase<Option>>>;
-  SingleValueComponent?: ComponentType<SingleValueProps<unknown, T & boolean, GroupBase<Option>>>;
+  OptionComponent?: ComponentType<OptionProps<unknown, boolean, GroupBase<Option>>>;
+  ControlComponent?: ComponentType<ControlProps<unknown, boolean, GroupBase<Option>>>;
+  SingleValueComponent?: ComponentType<SingleValueProps<unknown, boolean, GroupBase<Option>>>;
 }
 
 const SelectComponent = <T extends boolean>({

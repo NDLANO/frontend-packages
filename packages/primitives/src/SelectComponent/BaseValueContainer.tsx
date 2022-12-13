@@ -17,7 +17,7 @@ const StyledBaseValueContainer = styled.div`
 const BaseValueContainer = <T extends boolean>({
   children,
   innerProps,
-}: ValueContainerProps<unknown, T & boolean, GroupBase<Option>>) => {
+}: ValueContainerProps<unknown, T, GroupBase<Option>>) => {
   return <StyledBaseValueContainer {...innerProps}>{children}</StyledBaseValueContainer>;
 };
 

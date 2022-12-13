@@ -12,7 +12,7 @@ import { Option } from './types';
 const BaseSingleValue = <T extends boolean>({
   children,
   innerProps,
-}: SingleValueProps<unknown, T & boolean, GroupBase<Option>>) => {
+}: SingleValueProps<unknown, T, GroupBase<Option>>) => {
   return <div {...innerProps}>{children}</div>;
 };
 

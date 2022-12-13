@@ -215,7 +215,11 @@ const SelectComponent = ({
             {children}
           </CustomOption>
         ),
-        Control: ({ children, ...props }) => <CustomControl {...props}>{children}</CustomControl>,
+        Control: ({ children, ...props }) => (
+          <CustomControl ControlComponent={ControlComponent} {...props}>
+            {children}
+          </CustomControl>
+        ),
       }}
     />
   );

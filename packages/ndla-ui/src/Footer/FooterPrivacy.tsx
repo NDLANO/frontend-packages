@@ -64,12 +64,10 @@ const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
   return (
     <StyledFooterText>
       {privacyLinks.map((link, index) => (
-        <>
+        <div key={link.label}>
           {index > 0 && <StyledLinkSpacer aria-hidden>|</StyledLinkSpacer>}
-          <StyledPrivacyLink href={link.url} key={link.label}>
-            {link.label}
-          </StyledPrivacyLink>
-        </>
+          <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
+        </div>
       ))}
     </StyledFooterText>
   );

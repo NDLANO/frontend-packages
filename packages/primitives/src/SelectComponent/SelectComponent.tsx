@@ -6,15 +6,7 @@
  *
  */
 import React, { ComponentType } from 'react';
-import Select, {
-  SingleValue,
-  ActionMeta,
-  SingleValueProps,
-  OptionProps,
-  ControlProps,
-  GroupBase,
-  MultiValue,
-} from 'react-select';
+import Select, { SingleValue, SingleValueProps, OptionProps, ControlProps, GroupBase, MultiValue } from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseMenuList from './BaseMenuList';
@@ -26,8 +18,7 @@ interface Props<T extends boolean> {
   selectElements: Option[];
   label?: string;
   defaultValue?: Option;
-  value?: SingleValue<Option> | MultiValue<Option>;
-  onValueChange?: (value: SingleValue<Option> | MultiValue<Option>, actionMeta: ActionMeta<Option>) => void;
+  onChange: (value: SingleValue<Option> | MultiValue<Option>) => void;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top';
   isMultiSelect?: T;
@@ -40,8 +31,7 @@ const SelectComponent = <T extends boolean>({
   selectElements,
   label,
   defaultValue,
-  value,
-  onValueChange,
+  onChange,
   placeholder,
   menuPlacement = 'bottom',
   isMultiSelect,
@@ -49,13 +39,16 @@ const SelectComponent = <T extends boolean>({
   ControlComponent,
   SingleValueComponent,
 }: Props<T>) => {
+  const handleChange = (option: SingleValue<Option> | MultiValue<Option>) => {
+    onChange(option);
+  };
+
   return (
     <Select<Option, T>
       unstyled
       aria-label={label}
       options={selectElements}
-      value={value}
-      onChange={onValueChange}
+      onChange={handleChange}
       defaultValue={defaultValue}
       menuPortalTarget={document.querySelector('body')}
       isSearchable={false}

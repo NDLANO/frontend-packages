@@ -6,16 +6,17 @@
  *
  */
 
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Anchor, Arrow, Close, Content, Portal, Root, Trigger } from '@radix-ui/react-popover';
+import { Anchor, Arrow, Close, Content, Root, Trigger } from '@radix-ui/react-popover';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 
 const StyledContent = styled(Content)`
   color: ${colors.white};
+  z-index: 99999;
   border: 0;
   background: ${colors.brand.greyDark};
   border-radius: ${misc.borderRadius};
@@ -59,13 +60,7 @@ const CorePopover = ({ children, popover, className, hydrateHTML }: Props) => {
         {hydrateHTML ? parse(hydrateHTML) : children}
       </Trigger>
       <Anchor />
-      <StyledContent
-        css={{ zIndex: 10000 }}
-        arrowPadding={6}
-        className={className}
-        side={'bottom'}
-        align={'center'}
-        sideOffset={5}>
+      <StyledContent arrowPadding={6} className={className} side={'bottom'} align={'center'} sideOffset={5}>
         {popover}
         <StyledClose aria-label={t('close')}>
           <Cross />

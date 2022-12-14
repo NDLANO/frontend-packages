@@ -8,8 +8,8 @@
 
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import ButtonV2 from '@ndla/button';
-import { defaultParameters } from '../../../designmanual/stories/defaults';
+import { ButtonV2 } from '@ndla/button';
+import { defaultParameters } from '../../../../stories/defaults';
 import Popover from './Popover';
 
 export default {

@@ -7,7 +7,7 @@
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build:css": "webpack --config ../../css.webpack.config.js && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
+    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
     "build": "concurrently \"yarn build:types\" \"yarn build:css\"",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
@@ -34,6 +34,12 @@
     "@reach/menu-button": "^0.16.2",
     "@reach/popover": "^0.16.2",
     "focus-trap-react": "^8.9.2"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.2",
+    "mini-css-extract-plugin": "^2.7.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",

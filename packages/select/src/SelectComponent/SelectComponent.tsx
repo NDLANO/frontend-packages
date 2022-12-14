@@ -6,13 +6,22 @@
  *
  */
 import React, { ComponentType } from 'react';
-import Select, { SingleValue, SingleValueProps, OptionProps, ControlProps, GroupBase, MultiValue } from 'react-select';
+import Select, {
+  SingleValue,
+  SingleValueProps,
+  OptionProps,
+  ControlProps,
+  GroupBase,
+  MultiValue,
+  DropdownIndicatorProps,
+} from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseMenuList from './BaseMenuList';
 import BaseSingleValue from './BaseSingleValue';
-import { Option } from './types';
 import BaseValueContainer from './BaseValueContainer';
+import BaseDropdownIndicator from './BaseDropdownIndicator';
+import { Option } from './types';
 
 interface Props<T extends boolean> {
   selectElements: Option[];
@@ -25,6 +34,7 @@ interface Props<T extends boolean> {
   OptionComponent?: ComponentType<OptionProps<Option, T, GroupBase<Option>>>;
   ControlComponent?: ComponentType<ControlProps<Option, T, GroupBase<Option>>>;
   SingleValueComponent?: ComponentType<SingleValueProps<Option, T, GroupBase<Option>>>;
+  DropdownIndicatorComponent?: ComponentType<DropdownIndicatorProps<Option, T, GroupBase<Option>>>;
 }
 
 const SelectComponent = <T extends boolean>({
@@ -38,6 +48,7 @@ const SelectComponent = <T extends boolean>({
   OptionComponent,
   ControlComponent,
   SingleValueComponent,
+  DropdownIndicatorComponent,
 }: Props<T>) => {
   const handleChange = (option: SingleValue<Option> | MultiValue<Option>) => {
     onChange(option);
@@ -65,6 +76,7 @@ const SelectComponent = <T extends boolean>({
         SingleValue: SingleValueComponent || BaseSingleValue,
         MenuList: BaseMenuList,
         ValueContainer: BaseValueContainer,
+        DropdownIndicator: DropdownIndicatorComponent || BaseDropdownIndicator,
       }}
     />
   );

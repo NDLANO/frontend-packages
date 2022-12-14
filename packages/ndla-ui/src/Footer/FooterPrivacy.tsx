@@ -24,7 +24,6 @@ const StyledPrivacyLink = styled.a`
   padding: 0;
   box-shadow: ${misc.textLinkBoxShadow};
   cursor: pointer;
-  margin-bottom: ${spacing.large};
   &:hover,
   &:focus {
     box-shadow: none;
@@ -58,6 +57,7 @@ const StyledFooterText = styled.div`
       padding-bottom: ${spacing.xsmall};
     }
   }
+  margin-bottom: ${spacing.large};
 `;
 
 const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {

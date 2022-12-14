@@ -21,7 +21,7 @@ const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
 `;
 
-const BaseOption = <T extends boolean>({ isFocused, ...props }: OptionProps<unknown, T, GroupBase<Option>>) => {
+const BaseOption = <T extends boolean>({ isFocused, ...props }: OptionProps<Option, T, GroupBase<Option>>) => {
   return (
     <StyledBaseOption ref={props.innerRef} {...props.innerProps} isFocused={isFocused}>
       {props.children}

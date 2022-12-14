@@ -19,7 +19,11 @@ const StyledBaseMenuList = styled.div`
   border: 1px solid ${colors.brand.greyLight};
 `;
 
-const BaseMenuList = ({ children, innerRef, innerProps }: MenuListProps<unknown, boolean, GroupBase<Option>>) => {
+const BaseMenuList = <T extends boolean>({
+  children,
+  innerRef,
+  innerProps,
+}: MenuListProps<Option, T, GroupBase<Option>>) => {
   return (
     <StyledBaseMenuList ref={innerRef} {...innerProps}>
       {children}

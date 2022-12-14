@@ -6,7 +6,15 @@
  *
  */
 import React, { ComponentType } from 'react';
-import Select, { SingleValue, ActionMeta, SingleValueProps, OptionProps, ControlProps, GroupBase } from 'react-select';
+import Select, {
+  SingleValue,
+  ActionMeta,
+  SingleValueProps,
+  OptionProps,
+  ControlProps,
+  GroupBase,
+  MultiValue,
+} from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseMenuList from './BaseMenuList';
@@ -14,18 +22,18 @@ import BaseSingleValue from './BaseSingleValue';
 import { Option } from './types';
 import BaseValueContainer from './BaseValueContainer';
 
-interface Props<T> {
+interface Props<T extends boolean> {
   selectElements: Option[];
   label?: string;
   defaultValue?: Option;
-  value?: SingleValue<unknown>;
-  onValueChange?: (value: unknown, actionMeta: ActionMeta<unknown>) => void;
+  value?: SingleValue<Option> | MultiValue<Option>;
+  onValueChange?: (value: SingleValue<Option> | MultiValue<Option>, actionMeta: ActionMeta<Option>) => void;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top';
-  isMultiSelect?: boolean;
-  OptionComponent?: ComponentType<OptionProps<unknown, boolean, GroupBase<Option>>>;
-  ControlComponent?: ComponentType<ControlProps<unknown, boolean, GroupBase<Option>>>;
-  SingleValueComponent?: ComponentType<SingleValueProps<unknown, boolean, GroupBase<Option>>>;
+  isMultiSelect?: T;
+  OptionComponent?: ComponentType<OptionProps<Option, T, GroupBase<Option>>>;
+  ControlComponent?: ComponentType<ControlProps<Option, T, GroupBase<Option>>>;
+  SingleValueComponent?: ComponentType<SingleValueProps<Option, T, GroupBase<Option>>>;
 }
 
 const SelectComponent = <T extends boolean>({
@@ -42,7 +50,7 @@ const SelectComponent = <T extends boolean>({
   SingleValueComponent,
 }: Props<T>) => {
   return (
-    <Select
+    <Select<Option, T>
       unstyled
       aria-label={label}
       options={selectElements}

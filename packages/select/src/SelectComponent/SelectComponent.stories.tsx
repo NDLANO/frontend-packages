@@ -8,7 +8,7 @@
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React, { useState } from 'react';
-import { MultiValue, SingleValue } from 'react-select';
+import { SingleValue } from 'react-select';
 import { defaultParameters } from '../../../designmanual/stories/defaults';
 import SelectComponent from './SelectComponent';
 import { Option } from './types';

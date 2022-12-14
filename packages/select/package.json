@@ -1,7 +1,7 @@
 {
-    "name": "@ndla/primitives",
+    "name": "@ndla/select",
     "version": "1.0.0",
-    "description": "Primitives component library for NDLA.",
+    "description": "Select component library for NDLA.",
     "license": "GPL-3.0",
     "main": "lib/index.js",
     "module": "es/index.js", 
@@ -15,7 +15,7 @@
     "repository": {
       "type": "git",
       "url": "https://github.com/NDLANO/frontend-packages.git",
-      "directory": "packages/primitives"
+      "directory": "packages/select"
     },
     "keywords": [
       "ndla"

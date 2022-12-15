@@ -24,7 +24,7 @@ import BaseDropdownIndicator from './BaseDropdownIndicator';
 import { Option } from './types';
 
 interface Props<T extends boolean> {
-  selectElements: Option[];
+  options: Option[];
   label?: string;
   defaultValue?: Option;
   onChange: (value: SingleValue<Option> | MultiValue<Option>) => void;
@@ -38,7 +38,7 @@ interface Props<T extends boolean> {
 }
 
 const SelectComponent = <T extends boolean>({
-  selectElements,
+  options,
   label,
   defaultValue,
   onChange,
@@ -50,16 +50,12 @@ const SelectComponent = <T extends boolean>({
   SingleValueComponent,
   DropdownIndicatorComponent,
 }: Props<T>) => {
-  const handleChange = (option: SingleValue<Option> | MultiValue<Option>) => {
-    onChange(option);
-  };
-
   return (
     <Select<Option, T>
       unstyled
       aria-label={label}
-      options={selectElements}
-      onChange={handleChange}
+      options={options}
+      onChange={onChange}
       defaultValue={defaultValue}
       menuPortalTarget={document.querySelector('body')}
       isSearchable={false}

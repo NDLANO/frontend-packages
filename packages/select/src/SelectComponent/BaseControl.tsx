@@ -5,7 +5,6 @@ import { ControlProps, GroupBase } from 'react-select';
 import { Option } from './types';
 
 const StyledBaseControl = styled.div<{ isFocused: boolean }>`
-  border: none;
   border-radius: 4px;
   background-color: ${colors.brand.lighter};
   padding: 0px ${spacing.xsmall};

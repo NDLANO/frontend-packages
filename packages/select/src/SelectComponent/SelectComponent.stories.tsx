@@ -42,7 +42,7 @@ export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
         {...args}
         label="Farger"
         onChange={onChange}
-        selectElements={[
+        options={[
           { value: 'Gul', label: 'Gul' },
           { value: 'Blå', label: 'Blå' },
           { value: 'Grønn', label: 'Grønn' },

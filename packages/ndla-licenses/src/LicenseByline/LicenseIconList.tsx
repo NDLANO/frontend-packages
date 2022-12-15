@@ -15,11 +15,11 @@ import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
-type StyledLicenseIconItemProps = {
+interface StyledListItemProps {
   horizontal?: boolean;
-};
+}
 
-export const StyledListItem = styled.li<StyledLicenseIconItemProps>`
+export const StyledListItem = styled.li<StyledListItemProps>`
   display: flex;
   padding-bottom: ${(props) => (props.horizontal ? `0` : `5px`)};
   margin-bottom: 0;

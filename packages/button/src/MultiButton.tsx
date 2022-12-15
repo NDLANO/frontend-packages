@@ -158,8 +158,8 @@ export const MultiButton = ({
 }: Props) => {
   const [isOpen, toggleIsOpen] = useState(false);
   const { t } = useTranslation();
-  const setPopupState = (newState?: boolean) => {
-    toggleIsOpen(!!newState);
+  const setPopupState = (newState: boolean) => {
+    toggleIsOpen(newState);
   };
   const hideSecondaryButton = secondaryButtons.length === 0;
 
@@ -181,7 +181,7 @@ export const MultiButton = ({
       </Button>
       {!hideSecondaryButton && (
         <>
-          <Spacer outline={outline} disabled={disabled} />{' '}
+          <Spacer outline={outline} disabled={disabled} />
           <FocusTrapReact
             active={isOpen}
             focusTrapOptions={{
@@ -213,7 +213,7 @@ export const MultiButton = ({
                           size={large ? 'large' : undefined}
                           onClick={() => {
                             onClick(button.value);
-                            setPopupState();
+                            setPopupState(false);
                           }}>
                           {button.label}
                         </ButtonItem>

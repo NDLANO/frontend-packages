@@ -66,8 +66,10 @@ const Notion = ({ id, content, children, title, subTitle, customCSS, headerConte
     <span id={id} data-notion>
       <StyledButton type="button" aria-label={t('concept.showDescription', { title: title })} data-notion-link>
         <Tooltip tooltip={t('searchPage.resultType.showNotion')}>
-          {children}
-          {!hideBaselineIcon && <BaselineIcon />}
+          <>
+            {children}
+            {!hideBaselineIcon && <BaselineIcon />}
+          </>
         </Tooltip>
       </StyledButton>
       {createUniversalPortal(

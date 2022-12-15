@@ -31,17 +31,11 @@ export default {
 } as ComponentMeta<typeof SelectComponent>;
 
 export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
-  const [color, setColor] = useState<SingleValue<Option>>(null);
-
-  const onChange = (value) => {
-    setColor(value);
-  };
   return (
     <div style={{ display: 'flex' }}>
       <SelectComponent
         {...args}
         label="Farger"
-        onChange={onChange}
         options={[
           { value: 'Gul', label: 'Gul' },
           { value: 'Blå', label: 'Blå' },

@@ -27,7 +27,8 @@ interface Props<T extends boolean> {
   options: Option[];
   label?: string;
   defaultValue?: Option;
-  onChange: (value: SingleValue<Option> | MultiValue<Option>) => void;
+  onChange?: (value: SingleValue<Option> | MultiValue<Option>) => void;
+  value?: Option | null;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;
@@ -42,6 +43,7 @@ const SelectComponent = <T extends boolean>({
   label,
   defaultValue,
   onChange,
+  value,
   placeholder,
   menuPlacement = 'bottom',
   isMultiSelect,
@@ -56,6 +58,7 @@ const SelectComponent = <T extends boolean>({
       aria-label={label}
       options={options}
       onChange={onChange}
+      value={value}
       defaultValue={defaultValue}
       menuPortalTarget={document.querySelector('body')}
       isSearchable={false}

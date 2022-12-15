@@ -82,10 +82,10 @@ export const ArticleIntroduction = ({
   },
 }: ArticleIntroductionProps) => {
   if (isString(children)) {
-    return <p className="article_introduction">{parse(renderMarkdown(children))}</p>;
+    return <div className="article_introduction">{parse(renderMarkdown(children))}</div>;
   }
   if (children) {
-    return <p className="article_introduction">{children}</p>;
+    return <div className="article_introduction">{children}</div>;
   }
   return null;
 };

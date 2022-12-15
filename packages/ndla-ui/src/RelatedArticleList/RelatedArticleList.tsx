@@ -3,6 +3,7 @@ import BEMHelper from 'react-bem-helper';
 import Button from '@ndla/button';
 import SafeLink from '@ndla/safelink';
 import SectionHeading from '../SectionHeading';
+import { HeadingLevel } from '../types';
 
 const classes = new BEMHelper({
   name: 'related-articles',
@@ -51,13 +52,14 @@ interface Props {
     showMore: string;
     showLess: string;
   };
+  headingLevel: HeadingLevel;
   children?: ReactElement;
   dangerouslySetInnerHTML?: {
     __html: string;
   };
   articleCount?: number;
 }
-const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML }: Props) => {
+const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetInnerHTML, headingLevel }: Props) => {
   const clonedChildren =
     !dangerouslySetInnerHTML && children
       ? Children.map(children, (article, i) =>
@@ -70,7 +72,9 @@ const RelatedArticleList = ({ messages, children, articleCount, dangerouslySetIn
 
   return (
     <section {...classes('')}>
-      <SectionHeading className={classes('component-title').className}>{messages.title}</SectionHeading>
+      <SectionHeading headingLevel={headingLevel} className={classes('component-title').className}>
+        {messages.title}
+      </SectionHeading>
       <div {...classes('articles')} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
         {clonedChildren}
       </div>

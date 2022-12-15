@@ -25,7 +25,7 @@ const StyledContent = styled(RadixTooltip.Content)`
   font-weight: ${fonts.weight.normal};
   text-align: center;
   white-space: normal;
-  max-width: calc(100vw - #{${spacing.normal}});
+  max-width: calc(100vw - ${spacing.normal});
 `;
 
 interface Props {

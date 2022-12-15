@@ -36,7 +36,7 @@ const StyledLicense = styled.span<StyledLicenseProps>`
       padding-right: ${spacing.xsmall};
     }
   }
-  ${fonts.sizes(12, 1)}a
+  ${fonts.sizes(12, 1)};
   ${mq.range({ from: breakpoints.tablet })} {
     right: ${spacing.xsmall};
   }

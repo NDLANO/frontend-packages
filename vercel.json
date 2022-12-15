@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "packages/designmanual/storybook-static/index.html" },
-    { "source": "/(.*)", "destination": "packages/designmanual/storybook-static/$1" }
+    { "source": "/", "destination": "storybook-static/index.html" },
+    { "source": "/(.*)", "destination": "storybook-static/$1" }
   ],
   "headers": [
     {

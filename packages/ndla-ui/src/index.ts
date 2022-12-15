@@ -28,11 +28,9 @@ export {
 
 export { CompetenceGoalsDialog } from './CompetenceGoals';
 
-export { default as TopicIntroductionList } from './TopicIntroductionList';
-
 export { default as Table } from './Table';
 
-export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
+export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 
 export { createUniversalPortal } from './utils/createUniversalPortal';
 
@@ -213,19 +211,13 @@ export {
 } from './ContentTypeBadge';
 
 export {
-  SubjectAbout,
-  SubjectArchive,
-  SubjectCarousel,
   SubjectChildContent,
   SubjectContent,
-  SubjectFlexChild,
   SubjectFlexWrapper,
   SubjectHeader,
-  SubjectLinks,
   SubjectNewContent,
   SubjectSecondaryContent,
   SubjectSectionTitle,
-  SubjectShortcuts,
   SubjectSidebarWrapper,
   SubjectSocialContent,
   SubjectSocialSection,

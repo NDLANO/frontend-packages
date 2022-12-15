@@ -13,8 +13,6 @@ import { ImageCrop, ImageFocalPoint } from '.';
 
 const StyledLink = styled.a`
   box-shadow: inset 0 0;
-  width: 100%;
-  height: 100%;
 `;
 
 interface Props {

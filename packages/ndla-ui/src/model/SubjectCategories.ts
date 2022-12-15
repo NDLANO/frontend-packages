@@ -7,5 +7,6 @@
  */
 
 export const ACTIVE_SUBJECTS = 'active';
-export const BETA_SUBJECTS = 'beta';
 export const ARCHIVE_SUBJECTS = 'archive';
+export const BETA_SUBJECTS = 'beta';
+export const OTHER = 'otherResources';

@@ -8,12 +8,12 @@
 
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
-import Tooltip from '@ndla/tooltip';
+import { Popover } from '@ndla/tooltip';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
-import { StyledLicenseIconButton, StyledLicenseIconItem } from './LicenseIconList';
+import { StyledLicenseIcon, StyledListItem } from './LicenseIconList';
 import StyledLicenseIconList from './StyledLicenseIconList';
 
 const StyledLicenseLabel = styled.div`
@@ -34,16 +34,16 @@ const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   const { description } = getLicenseRightByAbbreviation(licenseRight, locale);
 
   return (
-    <StyledLicenseIconItem>
-      <Tooltip tooltip={description}>
-        <IconLineWrapper>
-          <StyledLicenseIconButton>
+    <StyledListItem>
+      <IconLineWrapper>
+        <Popover popover={description}>
+          <StyledLicenseIcon>
             <LicenseIcon licenseRight={licenseRight} description={description} />
-          </StyledLicenseIconButton>
-          <StyledLicenseLabel>{description}</StyledLicenseLabel>
-        </IconLineWrapper>
-      </Tooltip>
-    </StyledLicenseIconItem>
+          </StyledLicenseIcon>
+        </Popover>
+        <StyledLicenseLabel>{description}</StyledLicenseLabel>
+      </IconLineWrapper>
+    </StyledListItem>
   );
 };
 

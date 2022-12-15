@@ -29,7 +29,7 @@ interface Props<T extends boolean> {
   defaultValue?: Option;
   onChange: (value: SingleValue<Option> | MultiValue<Option>) => void;
   placeholder?: string;
-  menuPlacement?: 'bottom' | 'top';
+  menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;
   OptionComponent?: ComponentType<OptionProps<Option, T, GroupBase<Option>>>;
   ControlComponent?: ComponentType<ControlProps<Option, T, GroupBase<Option>>>;

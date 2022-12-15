@@ -169,7 +169,7 @@ export const CompressedTagList = ({ tags, tagLinkPrefix }: CompressedTagListProp
           size="small"
           menuIcon={<TagCounterWrapper>{`+${remainingTags.length}`}</TagCounterWrapper>}
           menuItems={remainingTags}
-          alignRight
+          align="end"
           aria-label={t('myNdla.moreTags', { count: remainingTags.length })}
         />
       )}

@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 import { colors, spacing } from '@ndla/core';
 import { GroupBase, OptionProps } from 'react-select';
 import { Option } from './types';
+import { Done } from '@ndla/icons/editor';
 
 const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   height: 25px;
@@ -21,9 +22,16 @@ const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
 `;
 
+const StyledCheck = styled.div<{ isVisible: boolean }>`
+  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
+`;
+
 const BaseOption = <T extends boolean>({ isFocused, ...props }: OptionProps<Option, T, GroupBase<Option>>) => {
   return (
     <StyledBaseOption ref={props.innerRef} {...props.innerProps} isFocused={isFocused}>
+      <StyledCheck isVisible={props.isSelected}>
+        <Done />
+      </StyledCheck>
       {props.children}
     </StyledBaseOption>
   );

@@ -15,7 +15,6 @@ import FigureWithLicense from './article/FigureWithLicense';
 import FigureImage from './article/FigureImage';
 import FootnotesExample from './article/FootnotesExample';
 import ArticleBylineExample from './molecules/ArticleBylineExample';
-import TooltipExample from './atoms/TooltipExample';
 import ModalV2Example from './atoms/ModalV2Example';
 import DrawerExample from './atoms/DrawerExample';
 import SolutionTableExample from './molecules/SolutionExample';
@@ -680,25 +679,6 @@ storiesOf('Enkle komponenter', module)
         <Logo cssModifier="large" name to="/" label="Nasjonal digital læringsarena" />
         <h2>Engelsk logo</h2>
         <Logo cssModifier="large" locale="en" name label="Norwegian digital learning arena" />
-      </StoryBody>
-    </div>
-  ))
-  .add('Tooltip', () => (
-    <div>
-      <StoryIntro title="Tooltip">
-        <p>Når en brukers mus eller fokus hviler på et element, vil et ikke-interaktivt element vises i nærheten.</p>
-        <p>Tooltip plasseres automatisk der det er plass.</p>
-        Tips for bruk av tooltips:
-        <ul>
-          <li>
-            Ikke bruk for informasjon essensiell for å fullføre en oppgave. Elementene tooltip er knyttet til burde gi
-            mening på egenhånd, men tooltip kan gi ytterligere informasjon.
-          </li>
-          <li>Hold innholdet minimalt, - burde ikke inneholde viktige ting.</li>
-        </ul>
-      </StoryIntro>
-      <StoryBody>
-        <TooltipExample />
       </StoryBody>
     </div>
   ))

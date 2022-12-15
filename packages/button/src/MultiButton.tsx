@@ -105,13 +105,13 @@ const MenuItem = styled.li<StyledButtonProps>`
   border-bottom: 1px solid ${(props) => (props.outline ? colors.brand.primary : colors.white)};
   line-height: normal;
   border-radius: 0;
-  &:first-child {
+  &:first-of-type {
     ${ButtonItem} {
       border-top-left-radius: ${misc.borderRadius};
       border-top-right-radius: ${misc.borderRadius};
     }
   }
-  &:last-child {
+  &:last-of-type {
     border-bottom: 0;
     ${ButtonItem} {
       border-bottom-left-radius: ${misc.borderRadius};

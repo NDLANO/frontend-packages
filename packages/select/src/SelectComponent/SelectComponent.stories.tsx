@@ -7,11 +7,9 @@
  */
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React, { useState } from 'react';
-import { SingleValue } from 'react-select';
-import { defaultParameters } from '../../../designmanual/stories/defaults';
+import React from 'react';
+import { defaultParameters } from '../../../../stories/defaults';
 import SelectComponent from './SelectComponent';
-import { Option } from './types';
 
 export default {
   title: 'Enkle komponenter/SelectComponent',

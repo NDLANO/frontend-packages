@@ -14,7 +14,7 @@ npm install @ndla/licenses
 
 ## Usage
 
-### Get license by abbreviation
+### Get license by abbreviation.
 
 ```js
 import getLicenseByAbbreviation from '@ndla/licenses';

@@ -10,7 +10,7 @@ yarn add @ndla/tooltip
 
 ## Usage
 
-### Tooltip wrapper for any element.
+### Tooltip wrapper for any element
 
 ```js
 import Tooltip from '@ndla/tooltip';

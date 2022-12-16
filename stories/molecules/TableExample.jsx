@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Table } from '@ndla/ui';
 import { uuid } from '@ndla/util';
-
-import {
-  addCloseDialogClickListeners,
-  addShowDialogClickListeners,
-  removeShowDialogClickListeners,
-  initTableScript,
-  removeTableEventListeners,
-} from '@ndla/article-scripts';
+import { initTableScript, removeTableEventListeners } from '@ndla/article-scripts';
 
 class TableExample extends Component {
   constructor(props) {
@@ -22,15 +15,12 @@ class TableExample extends Component {
   componentDidMount() {
     if (this.props.runScripts) {
       initTableScript();
-      addCloseDialogClickListeners();
-      addShowDialogClickListeners();
     }
   }
 
   componentWillUnmount() {
     if (this.props.runScripts) {
       removeTableEventListeners();
-      removeShowDialogClickListeners();
     }
   }
 

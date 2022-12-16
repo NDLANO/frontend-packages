@@ -26,9 +26,9 @@ const ArticleContent = ({ content, locale, ...rest }: Props) => {
     removeEventListenerForResize();
     initArticleScripts();
     initAudioPlayers(locale);
-    initCopyParagraphButtons();
     initTooltips();
     initPopovers();
+    initCopyParagraphButtons();
     return () => {
       removeEventListenerForResize();
     };

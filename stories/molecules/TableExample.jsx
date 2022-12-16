@@ -25,11 +25,7 @@ class TableExample extends Component {
   }
 
   render() {
-    return (
-      <Table id={this.tableId}>
-        {this.props.children}
-      </Table>
-    );
+    return <Table id={this.tableId}>{this.props.children}</Table>;
   }
 }
 

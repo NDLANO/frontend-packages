@@ -7,5 +7,9 @@
  */
 
 import SelectComponent from './SelectComponent';
+import { Option, ControlPropsType, OptionPropsType } from './types';
 
+export type { Option };
+export type { ControlPropsType };
+export type { OptionPropsType };
 export default SelectComponent;

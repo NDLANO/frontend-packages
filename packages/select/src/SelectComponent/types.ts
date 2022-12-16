@@ -6,7 +6,16 @@
  *
  */
 
+import { ComponentType } from 'react';
+import { ControlProps, OptionProps } from 'react-select';
+
+export type SingleValue = Option | null;
+export type MultiValue = readonly Option[];
+
 export type Option = {
   value: string;
   label: string;
 };
+
+export type ControlPropsType<T extends boolean> = ComponentType<ControlProps<Option, T>>;
+export type OptionPropsType<T extends boolean> = ComponentType<OptionProps<Option, T>>;

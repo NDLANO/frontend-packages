@@ -8,7 +8,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { GroupBase, OptionProps } from 'react-select';
+import { OptionProps } from 'react-select';
 import { Option } from './types';
 import { Done } from '@ndla/icons/editor';
 
@@ -25,7 +25,7 @@ const StyledCheck = styled.div<{ isVisible: boolean }>`
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
 `;
 
-const BaseOption = <T extends boolean>({ ...props }: OptionProps<Option, T, GroupBase<Option>>) => {
+const BaseOption = <T extends boolean>({ ...props }: OptionProps<Option, T>) => {
   return (
     <StyledBaseOption ref={props.innerRef} {...props.innerProps} isFocused={props.isFocused}>
       <StyledCheck isVisible={props.isSelected}>

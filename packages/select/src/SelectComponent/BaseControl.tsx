@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { ControlProps, GroupBase } from 'react-select';
+import { ControlProps } from 'react-select';
 import { Option } from './types';
 
 const StyledBaseControl = styled.div<{ isFocused: boolean }>`
@@ -17,12 +17,7 @@ const StyledBaseControl = styled.div<{ isFocused: boolean }>`
   outline: ${({ isFocused }) => (isFocused ? `1px solid ${colors.brand.primary}` : 'none')};
 `;
 
-const BaseControl = <T extends boolean>({
-  children,
-  innerRef,
-  innerProps,
-  isFocused,
-}: ControlProps<Option, T, GroupBase<Option>>) => {
+const BaseControl = <T extends boolean>({ children, innerRef, innerProps, isFocused }: ControlProps<Option, T>) => {
   return (
     <StyledBaseControl isFocused={isFocused} ref={innerRef} {...innerProps}>
       {children}

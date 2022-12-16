@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { GroupBase, MenuProps } from 'react-select';
+import { MenuProps } from 'react-select';
 import { Option } from './types';
 import { css, SerializedStyles } from '@emotion/react';
 
@@ -10,7 +10,7 @@ const StyledBaseMenu = styled.div<{ base: SerializedStyles }>`
   min-width: 100%;
 `;
 
-const BaseMenu = <T extends boolean>({ ...props }: MenuProps<Option, T, GroupBase<Option>>) => {
+const BaseMenu = <T extends boolean>({ ...props }: MenuProps<Option, T>) => {
   const baseStyling = css`
     ${props.getStyles('menu', props)}
   `;

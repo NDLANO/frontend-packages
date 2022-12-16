@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
-import { GroupBase, ValueContainerProps } from 'react-select';
+import { ValueContainerProps } from 'react-select';
 import { Option } from './types';
 
 const StyledMultiValue = styled.div`
@@ -15,7 +15,7 @@ const StyledMultiValue = styled.div`
   display: flex;
 `;
 
-const ValueContainer = <T extends boolean>({ ...props }: ValueContainerProps<Option, T, GroupBase<Option>>) => {
+const ValueContainer = <T extends boolean>({ ...props }: ValueContainerProps<Option, T>) => {
   return <StyledMultiValue {...props.innerProps}>{props.children}</StyledMultiValue>;
 };
 

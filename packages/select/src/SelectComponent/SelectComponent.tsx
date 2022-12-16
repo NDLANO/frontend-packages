@@ -6,11 +6,11 @@
  *
  */
 import React, { ComponentType } from 'react';
-import Select, { SingleValue, OptionProps, ControlProps, GroupBase, MultiValue } from 'react-select';
+import Select from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option } from './types';
+import { Option, SingleValue, MultiValue, OptionPropsType, ControlPropsType } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -19,13 +19,13 @@ interface Props<T extends boolean> {
   options: Option[];
   label?: string;
   defaultValue?: Option;
-  onChange?: (value: SingleValue<Option> | MultiValue<Option>) => void;
+  onChange?: (value: SingleValue | MultiValue) => void;
   value?: Option | null;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;
-  OptionComponent?: ComponentType<OptionProps<Option, T, GroupBase<Option>>>;
-  ControlComponent?: ComponentType<ControlProps<Option, T, GroupBase<Option>>>;
+  OptionComponent?: OptionPropsType<T>;
+  ControlComponent?: ControlPropsType<T>;
 }
 
 const SelectComponent = <T extends boolean>({

@@ -7,10 +7,10 @@
  */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { GroupBase, MultiValueProps } from 'react-select';
+import { MultiValueProps } from 'react-select';
 import { Option } from './types';
 
-const BaseMultiValue = <T extends boolean>({ ...props }: MultiValueProps<Option, T, GroupBase<Option>>) => {
+const BaseMultiValue = <T extends boolean>({ ...props }: MultiValueProps<Option, T>) => {
   const { t } = useTranslation();
 
   const ValueCasted: Option[] = (props.selectProps.value as Option[]) ?? [];

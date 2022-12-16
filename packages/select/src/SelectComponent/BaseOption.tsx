@@ -19,6 +19,7 @@ const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   align-items: center;
   cursor: pointer;
   background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
+  padding-right: 20px;
 `;
 
 const StyledCheck = styled.div<{ isVisible: boolean }>`

@@ -14,6 +14,7 @@ import { Option, SingleValue, MultiValue, OptionPropsType, ControlPropsType } fr
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
+import BaseSingleValue from './BaseSingleValue';
 
 interface Props<T extends boolean> {
   options: Option[];
@@ -59,6 +60,7 @@ const SelectComponent = <T extends boolean>({
         IndicatorSeparator: () => null,
         Option: OptionComponent || BaseOption,
         Control: ControlComponent || BaseControl,
+        SingleValue: BaseSingleValue,
         Menu: BaseMenu,
         DropdownIndicator: ControlComponent ? () => null : BaseDropdownIndicator,
         MultiValue: BaseMultiValue,

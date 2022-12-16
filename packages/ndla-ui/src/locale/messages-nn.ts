@@ -845,6 +845,7 @@ const messages = {
     searching: 'Søkjer...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+    selected: 'valgte',
   },
   blogPosts: {
     blog1: {

@@ -10,15 +10,13 @@ import styled from '@emotion/styled';
 import { GroupBase, ValueContainerProps } from 'react-select';
 import { Option } from './types';
 
-const StyledBaseValueContainer = styled.div`
+const StyledMultiValue = styled.div`
+  overflow: hidden;
   display: flex;
 `;
 
-const BaseValueContainer = <T extends boolean>({
-  children,
-  innerProps,
-}: ValueContainerProps<Option, T, GroupBase<Option>>) => {
-  return <StyledBaseValueContainer {...innerProps}>{children}</StyledBaseValueContainer>;
+const ValueContainer = <T extends boolean>({ ...props }: ValueContainerProps<Option, T, GroupBase<Option>>) => {
+  return <StyledMultiValue {...props.innerProps}>{props.children}</StyledMultiValue>;
 };
 
-export default BaseValueContainer;
+export default ValueContainer;

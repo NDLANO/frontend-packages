@@ -845,6 +845,7 @@ const messages = {
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
+    selected: 'selected',
   },
   blogPosts: {
     blog1: {

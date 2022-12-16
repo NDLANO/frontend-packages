@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, spacing } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import { ControlProps, GroupBase } from 'react-select';
 import { Option } from './types';
 
@@ -8,9 +8,8 @@ const StyledBaseControl = styled.div<{ isFocused: boolean }>`
   border-radius: 4px;
   background-color: ${colors.brand.lighter};
   padding: 0px ${spacing.xsmall};
-  font-size: 14px;
-  height: 25px;
-  min-height: 20px;
+  ${fonts.sizes('16')};
+  min-height: 40px;
   display: flex;
   align-items: center;
   cursor: pointer;

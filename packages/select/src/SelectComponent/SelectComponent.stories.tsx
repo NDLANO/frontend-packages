@@ -30,7 +30,7 @@ export default {
 
 export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ width: 150 }}>
       <SelectComponent
         {...args}
         label="Farger"

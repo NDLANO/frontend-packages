@@ -18,8 +18,7 @@ export default {
     ...defaultParameters,
   },
   args: {
-    label: 'Farger',
-    selectElements: [
+    options: [
       { value: 'Gul', label: 'Gul' },
       { value: 'Blå', label: 'Blå' },
       { value: 'Grønn', label: 'Grønn' },
@@ -33,7 +32,6 @@ export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
     <div style={{ width: 150 }}>
       <SelectComponent
         {...args}
-        label="Farger"
         options={[
           { value: 'Gul', label: 'Gul' },
           { value: 'Blå', label: 'Blå' },

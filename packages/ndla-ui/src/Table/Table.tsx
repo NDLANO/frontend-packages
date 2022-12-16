@@ -8,10 +8,8 @@
 
 import React, { ReactNode } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { ZoomOutMap } from '@ndla/icons/common';
 
 import { uuid } from '@ndla/util';
-import Dialog from '../Dialog';
 
 const classes = BEMHelper('c-table');
 
@@ -38,30 +36,8 @@ const Table = ({ children, messages, id, ...rest }: Props) => {
         <table id={tableId} {...classes({ extra: ['o-table'] })} {...rest}>
           {children}
         </table>
-        <button
-          type="button"
-          data-dialog-trigger-id={dialogId}
-          data-dialog-source-id={tableId}
-          data-table-id={tableId}
-          {...classes('expand-button')}
-          aria-label={messages.expandButtonLabel}>
-          <ZoomOutMap />
-        </button>
         <div {...classes('right-shadow')} />
       </div>
-      <Dialog
-        id={dialogId}
-        label={messages.expandButtonLabel}
-        messages={{
-          close: messages.dialogCloseButton,
-        }}
-        modifier="fullscreen">
-        <div {...classes('dialog')}>
-          <div {...classes('expanded-table-wrapper')}>
-            <div {...classes('content')} />
-          </div>
-        </div>
-      </Dialog>
     </div>
   );
 };

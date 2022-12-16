@@ -26,12 +26,7 @@ class TableExample extends Component {
 
   render() {
     return (
-      <Table
-        id={this.tableId}
-        messages={{
-          dialogCloseButton: 'Lukk',
-          expandButtonLabel: 'Vis stor versjon',
-        }}>
+      <Table id={this.tableId}>
         {this.props.children}
       </Table>
     );

@@ -19,12 +19,14 @@ import BaseSingleValue from './BaseSingleValue';
 interface Props<T extends boolean> {
   options: Option[];
   label?: string;
-  defaultValue?: Option;
+  defaultValue?: T extends true ? MultiValue : SingleValue;
   onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: Option | null;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;
+  isLoading?: boolean;
+  hideSelectedOptions?: boolean;
   OptionComponent?: OptionPropsType<T>;
   ControlComponent?: ControlPropsType<T>;
 }
@@ -38,6 +40,8 @@ const SelectComponent = <T extends boolean>({
   placeholder,
   menuPlacement = 'bottom',
   isMultiSelect,
+  isLoading,
+  hideSelectedOptions,
   OptionComponent,
   ControlComponent,
 }: Props<T>) => {
@@ -53,7 +57,8 @@ const SelectComponent = <T extends boolean>({
       menuPlacement={menuPlacement}
       isMulti={isMultiSelect}
       isClearable={false}
-      hideSelectedOptions={false}
+      hideSelectedOptions={hideSelectedOptions}
+      isLoading={isLoading}
       components={{
         IndicatorSeparator: () => null,
         Option: OptionComponent || BaseOption,

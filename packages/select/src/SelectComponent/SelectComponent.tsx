@@ -20,7 +20,7 @@ interface Props<T extends boolean> {
   options: Option[];
   label?: string;
   defaultValue?: Option;
-  onChange?: (value: SingleValue | MultiValue) => void;
+  onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: Option | null;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
@@ -48,14 +48,12 @@ const SelectComponent = <T extends boolean>({
       onChange={onChange}
       value={value}
       defaultValue={defaultValue}
-      menuPortalTarget={document.querySelector('body')}
       isSearchable={false}
       placeholder={placeholder}
       menuPlacement={menuPlacement}
       isMulti={isMultiSelect}
       isClearable={false}
       hideSelectedOptions={false}
-      styles={{ menuPortal: (base) => ({ ...base, zIndex: 101 }) }}
       components={{
         IndicatorSeparator: () => null,
         Option: OptionComponent || BaseOption,

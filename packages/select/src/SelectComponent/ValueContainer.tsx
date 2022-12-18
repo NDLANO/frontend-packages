@@ -13,6 +13,7 @@ import { Option } from './types';
 const StyledMultiValue = styled.div`
   overflow: hidden;
   display: flex;
+  align-items: center;
 `;
 
 const ValueContainer = <T extends boolean>({ ...props }: ValueContainerProps<Option, T>) => {

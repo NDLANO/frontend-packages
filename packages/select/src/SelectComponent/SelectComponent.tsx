@@ -10,7 +10,7 @@ import Select from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, SingleValue, MultiValue, OptionPropsType, ControlPropsType } from './types';
+import { Option, SingleValue, MultiValue, OptionComponentType, ControlComponentType } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -27,8 +27,8 @@ interface Props<T extends boolean> {
   isMultiSelect?: T;
   isLoading?: boolean;
   hideSelectedOptions?: boolean;
-  OptionComponent?: OptionPropsType<T>;
-  ControlComponent?: ControlPropsType<T>;
+  OptionComponent?: OptionComponentType<T>;
+  ControlComponent?: ControlComponentType<T>;
 }
 
 const SelectComponent = <T extends boolean>({

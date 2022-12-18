@@ -17,5 +17,8 @@ export type Option = {
   label: string;
 };
 
-export type ControlPropsType<T extends boolean> = ComponentType<ControlProps<Option, T>>;
-export type OptionPropsType<T extends boolean> = ComponentType<OptionProps<Option, T>>;
+export type ControlPropsType<T extends boolean> = ControlProps<Option, T>;
+export type OptionPropsType<T extends boolean> = OptionProps<Option, T>;
+
+export type ControlComponentType<T extends boolean> = ComponentType<ControlPropsType<T>>;
+export type OptionComponentType<T extends boolean> = ComponentType<OptionPropsType<T>>;

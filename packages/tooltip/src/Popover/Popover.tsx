@@ -10,7 +10,7 @@ import React, { ReactNode } from 'react';
 import parse from 'html-react-parser';
 import styled from '@emotion/styled';
 import { colors, fonts, misc, spacing } from '@ndla/core';
-import { Anchor, Arrow, Close, Content, Root, Trigger } from '@radix-ui/react-popover';
+import { Arrow, Close, Content, Root, Trigger } from '@radix-ui/react-popover';
 import { Cross } from '@ndla/icons/action';
 import { useTranslation } from 'react-i18next';
 
@@ -59,7 +59,6 @@ const CorePopover = ({ children, popover, className, hydrateHTML }: Props) => {
       <Trigger data-trigger asChild>
         {hydrateHTML ? parse(hydrateHTML) : children}
       </Trigger>
-      <Anchor />
       <StyledContent arrowPadding={6} className={className} side={'bottom'} align={'center'} sideOffset={5}>
         {popover}
         <StyledClose aria-label={t('close')}>

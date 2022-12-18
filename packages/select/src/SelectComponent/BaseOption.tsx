@@ -9,8 +9,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { OptionProps } from 'react-select';
-import { Option } from './types';
 import { Done } from '@ndla/icons/editor';
+import { Option } from './types';
 
 const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   ${fonts.sizes('16')};

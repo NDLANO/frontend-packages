@@ -54,6 +54,7 @@ const TopicHeaderVisualElementWrapper = styled.div`
   align-items: center;
   overflow: hidden;
   border-radius: 50%;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 `;
 
 const TopicHeaderImage = styled.img`

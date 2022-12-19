@@ -9,15 +9,15 @@
 import styled from '@emotion/styled';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { defaultParameters } from '../../designmanual/stories/defaults';
-import MultiButton from './MultiButtonV2';
+import { defaultParameters } from '../../../stories/defaults';
+import MultiButton from './MultiButton';
 
 const Wrapper = styled.div`
   margin: 5em;
 `;
 
 export default {
-  title: 'Enkle komponenter/MultiButton',
+  title: 'Enkle komponenter/Knapper/MultiButton',
   component: MultiButton,
   parameters: {
     ...defaultParameters,

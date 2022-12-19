@@ -28,11 +28,9 @@ export {
 
 export { CompetenceGoalsDialog } from './CompetenceGoals';
 
-export { default as TopicIntroductionList } from './TopicIntroductionList';
-
 export { default as Table } from './Table';
 
-export { default as ResourcesWrapper, ResourcesTitle, ResourcesTopicTitle } from './ResourcesWrapper';
+export { default as ResourcesWrapper, ResourcesTopicTitle } from './ResourcesWrapper';
 
 export { createUniversalPortal } from './utils/createUniversalPortal';
 
@@ -128,6 +126,8 @@ export { UserInfo } from './User';
 export { default as AuthModal } from './User';
 export type { FeideGoGroup, FeideGroup, FeideOrg, FeideUserApiType, FeideMembershipType, FeideUser } from './User';
 
+export { default as resourceTypeColor } from './utils/resourceTypeColor';
+
 export { default as CreatedBy } from './CreatedBy';
 
 export { default as Breadcrumblist } from './Breadcrumblist';
@@ -211,19 +211,13 @@ export {
 } from './ContentTypeBadge';
 
 export {
-  SubjectAbout,
-  SubjectArchive,
-  SubjectCarousel,
   SubjectChildContent,
   SubjectContent,
-  SubjectFlexChild,
   SubjectFlexWrapper,
   SubjectHeader,
-  SubjectLinks,
   SubjectNewContent,
   SubjectSecondaryContent,
   SubjectSectionTitle,
-  SubjectShortcuts,
   SubjectSidebarWrapper,
   SubjectSocialContent,
   SubjectSocialSection,

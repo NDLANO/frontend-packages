@@ -845,6 +845,7 @@ const messages = {
     searching: 'Ohcá...',
     create: 'Ráhkat ođđa',
     isSelectedItem: 'Lasihuvvon',
+    selected: 'valgte',
   },
   blogPosts: {
     blog1: {

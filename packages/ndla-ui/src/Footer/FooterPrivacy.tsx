@@ -24,7 +24,6 @@ const StyledPrivacyLink = styled.a`
   padding: 0;
   box-shadow: ${misc.textLinkBoxShadow};
   cursor: pointer;
-  margin-bottom: ${spacing.large};
   &:hover,
   &:focus {
     box-shadow: none;
@@ -58,18 +57,17 @@ const StyledFooterText = styled.div`
       padding-bottom: ${spacing.xsmall};
     }
   }
+  margin-bottom: ${spacing.large};
 `;
 
 const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
   return (
     <StyledFooterText>
       {privacyLinks.map((link, index) => (
-        <>
+        <div key={link.label}>
           {index > 0 && <StyledLinkSpacer aria-hidden>|</StyledLinkSpacer>}
-          <StyledPrivacyLink href={link.url} key={link.label}>
-            {link.label}
-          </StyledPrivacyLink>
-        </>
+          <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
+        </div>
       ))}
     </StyledFooterText>
   );

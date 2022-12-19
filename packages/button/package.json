@@ -1,14 +1,13 @@
 {
   "name": "@ndla/button",
-  "version": "6.1.1",
+  "version": "7.0.2",
   "description": "Button component for NDLA",
   "license": "GPL-3.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build:css": "webpack && cp ./dist/*.css ./es && cp ./dist/*.css ./lib",
-    "build": "concurrently \"yarn build:types\" \"yarn build:css\"",
+    "build": "yarn build:types",
     "build:types": "tsc -p tsconfig.build.json",
     "prepublish": "yarn build"
   },
@@ -23,16 +22,14 @@
   ],
   "author": "ndla@knowit.no",
   "files": [
-    "scss",
     "lib",
-    "es",
-    "dist"
+    "es"
   ],
   "dependencies": {
     "@ndla/core": "^3.0.3",
     "@ndla/icons": "^2.1.0",
-    "@reach/menu-button": "^0.16.2",
-    "@reach/popover": "^0.16.2",
+    "@ndla/tooltip": "^4.0.2",
+    "@radix-ui/react-dropdown-menu": "^2.0.1",
     "focus-trap-react": "^8.9.2"
   },
   "devDependencies": {

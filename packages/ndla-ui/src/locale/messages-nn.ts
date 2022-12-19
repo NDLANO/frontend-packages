@@ -251,6 +251,7 @@ const messages = {
     archived: 'Dette er eit utgått fag som ikkje blir halde ved like.',
   },
   subjectsPage: {
+    allSubjects: 'Alle fag',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
     chooseSubject: 'Vel fag',
   },

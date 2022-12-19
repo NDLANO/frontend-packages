@@ -251,6 +251,7 @@ const messages = {
     archived: 'Dát leat heaittihuvvon fága mii ii ođasmahttojuvvo.',
   },
   subjectsPage: {
+    allSubjects: 'Buot fágat',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
   },

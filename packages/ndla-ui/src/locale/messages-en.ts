@@ -252,6 +252,7 @@ const messages = {
     archived: 'This is an expired and unmaintained subject.',
   },
   subjectsPage: {
+    allSubjects: 'All subjects',
     chooseSubject: 'Choose subject',
     errorDescription: 'Sorry, an error occurred while loading the subjects.',
   },

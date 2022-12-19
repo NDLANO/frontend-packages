@@ -251,6 +251,7 @@ const messages = {
     archived: 'Dette er et utgått fag som ikke vedlikeholdes.',
   },
   subjectsPage: {
+    allSubjects: 'Alle fag',
     errorDescription: 'Beklager, en feil oppstod under lasting av fagene.',
     chooseSubject: 'Velg fag',
   },

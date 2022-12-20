@@ -7,7 +7,6 @@
  */
 
 import React, { Component, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import Fade from './Fade';
 
@@ -60,11 +59,6 @@ export default class DisplayOnPageYOffset extends Component<Props, State> {
     const { children } = this.props;
     return <Fade show={this.state.show}>{children}</Fade>;
   }
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    yOffsetMin: PropTypes.number.isRequired,
-    yOffsetMax: PropTypes.number,
-  };
 
   static defaultProps = {
     yOffsetMax: null,

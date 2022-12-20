@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { colors, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -44,23 +43,12 @@ export const StyledList = styled.ul<Props>`
   margin-right: ${(p) => (p.marginRight ? spacing.small : 0)};
 `;
 
-const StyledLicenseIconList = ({ highlightCC, horizontal, color, marginRight, children }: Props) => {
+const StyledLicenseIconList = ({ highlightCC, horizontal = false, color, marginRight, children }: Props) => {
   return (
     <StyledList marginRight={marginRight} color={color} horizontal={horizontal} highlightCC={highlightCC}>
       {children}
     </StyledList>
   );
-};
-
-StyledLicenseIconList.propTypes = {
-  horizontal: PropTypes.bool,
-  highlightCC: PropTypes.bool,
-  color: PropTypes.string,
-  marginRight: PropTypes.bool,
-};
-
-StyledLicenseIconList.defaultProps = {
-  horizontal: false,
 };
 
 export default StyledLicenseIconList;

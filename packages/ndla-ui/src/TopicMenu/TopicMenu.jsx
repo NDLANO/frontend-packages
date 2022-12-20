@@ -10,7 +10,6 @@
 /* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 1 */
 
 import React, { Fragment, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import debounce from 'lodash/debounce';
 import { spacing } from '@ndla/core';
@@ -24,7 +23,6 @@ import SafeLink from '@ndla/safelink';
 import Tooltip from '@ndla/tooltip';
 import { useTranslation } from 'react-i18next';
 import SubtopicLinkList from './SubtopicLinkList';
-import { TopicShape } from '../shapes';
 
 import Logo from '../Logo';
 import FrontpageAllSubjects from '../Frontpage/FrontpageAllSubjects';
@@ -363,74 +361,6 @@ export const TopicMenu = ({
       </div>
     </nav>
   );
-};
-
-TopicMenu.propTypes = {
-  topics: PropTypes.arrayOf(TopicShape).isRequired,
-  toFrontpage: PropTypes.func.isRequired,
-  toTopic: PropTypes.func,
-  closeAlert: PropTypes.func,
-  toSubject: PropTypes.func,
-  close: PropTypes.func,
-  defaultCount: PropTypes.number,
-  subjectTitle: PropTypes.string,
-  resourceToLinkProps: PropTypes.func.isRequired,
-  onNavigate: PropTypes.func.isRequired,
-  expandedTopicId: PropTypes.string,
-  expandedSubtopicsId: PropTypes.arrayOf(PropTypes.string).isRequired,
-  hideSearch: PropTypes.bool,
-  searchFieldComponent: PropTypes.node,
-  locale: PropTypes.string,
-  messages: PropTypes.arrayOf(
-    PropTypes.shape({
-      content: PropTypes.string.isRequired,
-      closable: PropTypes.bool.isRequired,
-      number: PropTypes.number.isRequired,
-    }),
-  ),
-  subjectCategories: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      subjects: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          url: PropTypes.string.isRequired,
-        }),
-      ),
-    }),
-  ),
-  programmes: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }),
-  ),
-  currentProgramme: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    grades: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        categories: PropTypes.arrayOf(
-          PropTypes.shape({
-            name: PropTypes.string,
-            subjects: PropTypes.arrayOf(
-              PropTypes.shape({
-                label: PropTypes.string.isRequired,
-                url: PropTypes.string.isRequired,
-              }),
-            ),
-          }),
-        ),
-      }),
-    ).isRequired,
-    selectedGradeIndex: PropTypes.number,
-  }),
-  initialSelectedMenu: PropTypes.oneOf([
-    MENU_CURRENT_SUBJECT,
-    MENU_CURRENT_PROGRAMME,
-    MENU_PROGRAMMES,
-    MENU_ALL_SUBJECTS,
-  ]),
 };
 
 TopicMenu.defaultProps = {

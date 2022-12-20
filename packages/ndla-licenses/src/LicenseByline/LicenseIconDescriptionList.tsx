@@ -9,7 +9,6 @@
 import styled from '@emotion/styled';
 import { spacing } from '@ndla/core';
 import { Popover } from '@ndla/tooltip';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { getLicenseRightByAbbreviation } from '../licenseRights';
 import LicenseIcon from './LicenseIcon';
@@ -47,11 +46,6 @@ const LicenseIconItem = ({ licenseRight, locale }: LicenseIconItemProps) => {
   );
 };
 
-LicenseIconItem.propTypes = {
-  licenseRight: PropTypes.string.isRequired,
-  locale: PropTypes.string,
-};
-
 interface LicenseIconDescriptionListProps {
   licenseRights: string[];
   highlightCC?: boolean;
@@ -66,12 +60,5 @@ const LicenseIconDescriptionList = ({ licenseRights, locale, color, highlightCC 
     ))}
   </StyledLicenseIconList>
 );
-
-LicenseIconDescriptionList.propTypes = {
-  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  highlightCC: PropTypes.bool,
-  color: PropTypes.string,
-  locale: PropTypes.string,
-};
 
 export default LicenseIconDescriptionList;

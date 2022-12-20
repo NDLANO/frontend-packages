@@ -252,8 +252,14 @@ const messages = {
     archived: 'Dette er eit utgått fag som ikkje blir halde ved like.',
   },
   subjectsPage: {
+    allSubjects: 'Alle fag',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
     chooseSubject: 'Vel fag',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjerna frå favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
   },
   topicPage: {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',
@@ -1088,6 +1094,7 @@ const messages = {
     confirmDeleteTag: 'Er du sikker på at du vil slette tag? Denne handlinga kan ikkje endrast.',
     myFolders: 'Mine mapper',
     myTags: 'Mine emneknaggar',
+    mySubjects: 'Mine fag',
     newFolder: 'Ny mappe',
     newFolderUnder: 'Lag ny mappe under {{folderName}}',
     myAccount: 'Min konto',

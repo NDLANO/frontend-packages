@@ -252,8 +252,14 @@ const messages = {
     archived: 'Dát leat heaittihuvvon fága mii ii ođasmahttojuvvo.',
   },
   subjectsPage: {
+    allSubjects: 'Buot fágat',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra favorittfag',
+    addConfirmed: '{{subject}} er lagt til som favorittfag',
   },
   topicPage: {
     articleErrorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáčilgehusa viežžamis.',
@@ -1088,6 +1094,7 @@ const messages = {
     confirmDeleteTag: 'Leat go sihkar ahte dáhtut sihkkut fáddágilkora? Dan ii sáhte gáhtat.',
     myFolders: 'Mu máhpat',
     myTags: 'Mu fáddágilkorat',
+    mySubjects: 'Mine fag',
     newFolder: 'Ođđa máhppa',
     newFolderUnder: 'Ráhkat ođđa máhpa dán vuolde {{folderName}}',
     myAccount: 'Mu kontu',

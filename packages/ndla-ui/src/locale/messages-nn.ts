@@ -259,7 +259,7 @@ const messages = {
     addFavorite: 'Legg til favorittfag',
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjerna fra dine favorittfag',
-    addConfirm: '{{subject}} er lagt til i dine favorittfag',
+    addConfirmed: '{{subject}} er lagt til i dine favorittfag',
   },
   topicPage: {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',

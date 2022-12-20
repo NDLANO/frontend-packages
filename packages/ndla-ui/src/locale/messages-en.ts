@@ -259,8 +259,8 @@ const messages = {
     confirmRemove: 'Are you sure you want to remove {{subject}} from your favorite subjects?',
     addFavorite: 'Add favorite subject',
     removeFavorite: 'Remove favorite subject',
-    confirmRemoved: '{{subject}} is removed from your favorite subjects',
-    conformAdded: '{{subject}} is added to your favorite subjects',
+    removeConfirmed: '{{subject}} is removed from your favorite subjects',
+    addConfirmed: '{{subject}} is added to your favorite subjects',
   },
   topicPage: {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',

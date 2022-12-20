@@ -258,8 +258,8 @@ const messages = {
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra dine favorittfag?',
     addFavorite: 'Legg til favorittfag',
     removeFavorite: 'Fjern favorittfag',
-    confirmRemoved: '{{subject}} er fjernet fra dine favorittfag',
-    conformAdded: '{{subject}} er lagt til i dine favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra dine favorittfag',
+    removeAdded: '{{subject}} er lagt til i dine favorittfag',
   },
   topicPage: {
     articleErrorDescription: 'Beklager, en feil oppstod under lasting av emnebeskrivelsen.',

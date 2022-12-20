@@ -7,7 +7,6 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Back, ChevronRight } from '@ndla/icons/common';
 import { Switch } from '@ndla/switch';
 import styled from '@emotion/styled';
@@ -15,7 +14,6 @@ import { css } from '@emotion/react';
 import { mq, breakpoints, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { withTranslation } from 'react-i18next';
-import { TopicShape } from '../shapes';
 import ContentTypeResult from '../Search/ContentTypeResult';
 import { renderAdditionalIcon } from './TopicMenu';
 
@@ -83,17 +81,6 @@ const SubtopicLink = ({
       </SafeLink>
     </li>
   );
-};
-
-SubtopicLink.propTypes = {
-  classes: PropTypes.func.isRequired,
-  subtopic: TopicShape.isRequired,
-  to: PropTypes.string.isRequired,
-  onSubtopicExpand: PropTypes.func,
-  expandedSubtopicId: PropTypes.string,
-  toTopic: PropTypes.func,
-  subtopicId: PropTypes.string,
-  additionalTooltipLabel: PropTypes.string,
 };
 
 class SubtopicLinkList extends Component {
@@ -256,22 +243,5 @@ class SubtopicLinkList extends Component {
     );
   }
 }
-
-SubtopicLinkList.propTypes = {
-  resourceToLinkProps: PropTypes.func.isRequired,
-  expandedSubtopicId: PropTypes.string,
-  onSubtopicExpand: PropTypes.func,
-  classes: PropTypes.func.isRequired,
-  className: PropTypes.string,
-  closeMenu: PropTypes.func.isRequired,
-  topic: TopicShape.isRequired,
-  toTopic: PropTypes.func.isRequired,
-  onGoBack: PropTypes.func.isRequired,
-  backLabel: PropTypes.string.isRequired,
-  defaultCount: PropTypes.number,
-  t: PropTypes.func.isRequired,
-  lastOpen: PropTypes.bool,
-  isUngrouped: PropTypes.bool,
-};
 
 export default withTranslation()(SubtopicLinkList);

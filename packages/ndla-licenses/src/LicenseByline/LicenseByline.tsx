@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import LicenseIconList from './LicenseIconList';
 import StyledLicenseByline from './StyledLicenseByline';
 
@@ -34,14 +33,6 @@ const LicenseByline = ({ children, licenseRights, locale, color, marginRight, li
       {children}
     </StyledLicenseByline>
   );
-};
-
-LicenseByline.propTypes = {
-  children: PropTypes.node,
-  licenseRights: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  locale: PropTypes.string,
-  color: PropTypes.string,
-  marginRight: PropTypes.bool,
 };
 
 export default LicenseByline;

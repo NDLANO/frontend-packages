@@ -84,7 +84,7 @@ export const stories: Record<string, Story> = {
   },
   Videos: {
     title: 'Video',
-    lead: 'Denne funksjonen lar deg legge inn en video i artikkelen. Du kan søke frem videoer fra NDLA sin konto på Brightcove og YouTube.',
+    lead: 'Denne funksjonen lar deg legge inn en video i artikkelen. Du kan søke frem videoer fra NDLA sin konto på Brightcove.',
   },
   Audios: {
     title: 'Lydfiler',
@@ -99,6 +99,10 @@ export const stories: Record<string, Story> = {
         content: AudioPlayerExamples,
       },
     ],
+  },
+  Podcasts: {
+    title: 'Podkastepisoder',
+    lead: 'Denne funksjonen lar deg legge til en podkastepisode i artikkelen.',
   },
   H5P: {
     title: 'h5p',
@@ -277,7 +281,7 @@ export const stories: Record<string, Story> = {
     body: [
       {
         type: 'text',
-        content: 'Søk opp og legg til forklaring i artikkel.',
+        content: 'Søk opp og legg til forklaring som blokkvisning i artikkel.',
       },
     ],
   },
@@ -287,7 +291,7 @@ export const stories: Record<string, Story> = {
     body: [
       {
         type: 'text',
-        content: 'Legg til en liste av forklaringer i artikkel.',
+        content: 'Legg til en liste av forklaringer som blokkvisning i artikkel.',
       },
     ],
   },

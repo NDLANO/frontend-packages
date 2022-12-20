@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { MenuProps } from 'react-select';
 import { css, SerializedStyles } from '@emotion/react';
-import { Option } from './types';
+import { MenuPropsType } from './types';
 
 const StyledBaseMenu = styled.div<{ base: SerializedStyles }>`
   ${(props) => props.base};
@@ -11,7 +10,7 @@ const StyledBaseMenu = styled.div<{ base: SerializedStyles }>`
   overflow: hidden;
 `;
 
-const BaseMenu = <T extends boolean>({ ...props }: MenuProps<Option, T>) => {
+const BaseMenu = <T extends boolean>({ ...props }: MenuPropsType<T>) => {
   const baseStyling = css`
     ${props.getStyles('menu', props)}
   `;

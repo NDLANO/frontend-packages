@@ -5,12 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, { ComponentType } from 'react';
+import React from 'react';
 import Select from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, SingleValue, MultiValue, OptionComponentType, ControlComponentType } from './types';
+import {
+  Option,
+  SingleValue,
+  MultiValue,
+  OptionComponentType,
+  ControlComponentType,
+  DropdownComponentType,
+  MenuComponentType,
+} from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -29,6 +37,8 @@ interface Props<T extends boolean> {
   hideSelectedOptions?: boolean;
   OptionComponent?: OptionComponentType<T>;
   ControlComponent?: ControlComponentType<T>;
+  MenuComponent?: MenuComponentType<T>;
+  DropdownIndicatorComponent: DropdownComponentType<T>;
 }
 
 const SelectComponent = <T extends boolean>({
@@ -44,6 +54,8 @@ const SelectComponent = <T extends boolean>({
   hideSelectedOptions,
   OptionComponent,
   ControlComponent,
+  MenuComponent,
+  DropdownIndicatorComponent,
 }: Props<T>) => {
   return (
     <Select<Option, T>
@@ -59,13 +71,15 @@ const SelectComponent = <T extends boolean>({
       isClearable={false}
       hideSelectedOptions={hideSelectedOptions}
       isLoading={isLoading}
+      menuPortalTarget={document.querySelector('body')}
+      styles={{ menuPortal: (base) => ({ ...base, zIndex: 101 }) }}
       components={{
         IndicatorSeparator: () => null,
         Option: OptionComponent || BaseOption,
         Control: ControlComponent || BaseControl,
         SingleValue: BaseSingleValue,
-        Menu: BaseMenu,
-        DropdownIndicator: ControlComponent ? () => null : BaseDropdownIndicator,
+        Menu: MenuComponent || BaseMenu,
+        DropdownIndicator: DropdownIndicatorComponent || BaseDropdownIndicator,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,
       }}

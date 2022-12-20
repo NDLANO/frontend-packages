@@ -7,7 +7,7 @@
  */
 
 import { ComponentType } from 'react';
-import { ControlProps, OptionProps } from 'react-select';
+import { ControlProps, OptionProps, DropdownIndicatorProps, MenuProps } from 'react-select';
 
 export type SingleValue = Option | null;
 export type MultiValue = readonly Option[];
@@ -19,6 +19,10 @@ export type Option = {
 
 export type ControlPropsType<T extends boolean> = ControlProps<Option, T>;
 export type OptionPropsType<T extends boolean> = OptionProps<Option, T>;
+export type MenuPropsType<T extends boolean> = MenuProps<Option, T>;
+export type DropdownIndicatorPropsType<T extends boolean> = DropdownIndicatorProps<Option, T>;
 
 export type ControlComponentType<T extends boolean> = ComponentType<ControlPropsType<T>>;
 export type OptionComponentType<T extends boolean> = ComponentType<OptionPropsType<T>>;
+export type MenuComponentType<T extends boolean> = ComponentType<MenuPropsType<T>>;
+export type DropdownComponentType<T extends boolean> = ComponentType<DropdownIndicatorPropsType<T>>;

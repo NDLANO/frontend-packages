@@ -10,7 +10,7 @@ export type {
   Option,
   ControlPropsType,
   OptionPropsType,
-  DropdownIndicatorPropsType,
+  IndicatorsContainerPropsType,
   SingleValue,
   MultiValue,
 } from './Select';

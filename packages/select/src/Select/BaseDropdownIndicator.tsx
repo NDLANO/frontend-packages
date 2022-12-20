@@ -7,9 +7,10 @@
  */
 import React from 'react';
 import { ChevronDown } from '@ndla/icons/common';
-import { DropdownIndicatorPropsType } from './types';
+import { DropdownIndicatorProps } from 'react-select';
+import { Option } from './types';
 
-const BaseDropdownIndicator = <T extends boolean>({ innerProps }: DropdownIndicatorPropsType<T>) => {
+const BaseDropdownIndicator = <T extends boolean>({ innerProps }: DropdownIndicatorProps<Option, T>) => {
   return (
     <div {...innerProps}>
       <ChevronDown />

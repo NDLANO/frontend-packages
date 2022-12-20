@@ -255,6 +255,11 @@ const messages = {
     allSubjects: 'Buot fágat',
     errorDescription: 'Šállošat, boasttuvuohta čuožžilii fágaid viežžamis.',
     chooseSubject: 'Vállje fága',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra dine favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    confirmRemoved: '{{subject}} er fjernet fra dine favorittfag',
+    conformAdded: '{{subject}} er lagt til i dine favorittfag',
   },
   topicPage: {
     articleErrorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáčilgehusa viežžamis.',

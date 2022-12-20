@@ -255,6 +255,11 @@ const messages = {
     allSubjects: 'Alle fag',
     errorDescription: 'Orsak, ein feil oppstod under lasting av faga.',
     chooseSubject: 'Vel fag',
+    confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra dine favorittfag?',
+    addFavorite: 'Legg til favorittfag',
+    removeFavorite: 'Fjern favorittfag',
+    confirmRemoved: '{{subject}} er fjerna fra dine favorittfag',
+    conformAdded: '{{subject}} er lagt til i dine favorittfag',
   },
   topicPage: {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',

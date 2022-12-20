@@ -52,10 +52,10 @@ const Select = <T extends boolean>({
   isMultiSelect,
   isLoading,
   hideSelectedOptions = false,
-  OptionComponent,
-  ControlComponent,
-  MenuComponent,
-  DropdownIndicatorComponent,
+  OptionComponent = BaseOption,
+  ControlComponent = BaseControl,
+  MenuComponent = BaseMenu,
+  DropdownIndicatorComponent = BaseDropdownIndicator,
 }: Props<T>) => {
   return (
     <ReactSelect<Option, T>
@@ -75,11 +75,11 @@ const Select = <T extends boolean>({
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 999999 }) }}
       components={{
         IndicatorSeparator: () => null,
-        Option: OptionComponent || BaseOption,
-        Control: ControlComponent || BaseControl,
+        Option: OptionComponent,
+        Control: ControlComponent,
         SingleValue: BaseSingleValue,
-        Menu: MenuComponent || BaseMenu,
-        DropdownIndicator: DropdownIndicatorComponent || BaseDropdownIndicator,
+        Menu: MenuComponent,
+        DropdownIndicator: DropdownIndicatorComponent,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,
       }}

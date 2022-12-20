@@ -72,7 +72,7 @@ const Select = <T extends boolean>({
       hideSelectedOptions={hideSelectedOptions}
       isLoading={isLoading}
       menuPortalTarget={document.querySelector('body')}
-      styles={{ menuPortal: (base) => ({ ...base, zIndex: 101 }) }}
+      styles={{ menuPortal: (base) => ({ ...base, zIndex: 999999 }) }}
       components={{
         IndicatorSeparator: () => null,
         Option: OptionComponent || BaseOption,

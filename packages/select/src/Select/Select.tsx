@@ -38,7 +38,7 @@ interface Props<T extends boolean> {
   OptionComponent?: OptionComponentType<T>;
   ControlComponent?: ControlComponentType<T>;
   MenuComponent?: MenuComponentType<T>;
-  DropdownIndicatorComponent: DropdownComponentType<T>;
+  DropdownIndicatorComponent?: DropdownComponentType<T>;
 }
 
 const Select = <T extends boolean>({

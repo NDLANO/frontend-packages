@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
+import styled from '@emotion/styled';
 import * as licenseIcons from '@ndla/icons/licenses';
 import * as contentTypeIcons from '@ndla/icons/contentType';
 import * as commonIcons from '@ndla/icons/common';
@@ -8,7 +9,7 @@ import * as editorIcons from '@ndla/icons/editor';
 import * as actionIcons from '@ndla/icons/action';
 import { LicenseByline, BY, NC, ND } from '@ndla/licenses';
 import { Aside, FactBox, Logo, LayoutItem, AudioPlayer, OneColumn, CreatedBy } from '@ndla/ui';
-import { colors } from '@ndla/core';
+import { colors, fonts, spacing } from '@ndla/core';
 import SafeLink from '@ndla/safelink';
 import { StoryIntro, IconList, StoryBody } from './wrappers';
 import FigureWithLicense from './article/FigureWithLicense';
@@ -22,6 +23,19 @@ import CodeblockExample from './codeblock/CodeblockExample';
 import AudioExample from './article/AudioExample';
 import UkraineBannerExample from './molecules/UkraineBannerExample';
 import TreeStructureExample from './molecules/TreeStructureExample';
+
+const SourceList = styled.div`
+  display: flex;
+  border-top: 1px solid ${colors.brand.tertiary};
+  padding-top: ${spacing.small};
+  margin-top: ${spacing.small};
+  color: ${colors.brand.grey};
+  align-items: center;
+  ${fonts.sizes('15px')};
+  span {
+    margin-right: ${spacing.small};
+  }
+`;
 
 const floatVideo = (left) => (
   <Fragment>
@@ -530,11 +544,11 @@ storiesOf('Enkle komponenter', module)
             Faktaboksen kan også brukes til å oppsummere innhold i slutten av en artikkel, og den kan inneholde
             lisensiering om eksternt innhold er brukt.
           </p>
-          <div className="c-source-list">
+          <SourceList>
             <LicenseByline locale="nb" marginRight color={colors.brand.grey} licenseRights={[BY, NC, ND]} />
-            <span className="c-source-list__item">Gary Waters</span>
-            <span className="c-source-list__item">Kilde: SNL.no</span>
-          </div>
+            <span >Gary Waters</span>
+            <span >Kilde: SNL.no</span>
+          </SourceList>
         </FactBox>
         <p>
           Pitching er også en god måte å bevisstgjøre seg selv på. Når du pitcher, blir idéen og historien i den filmen

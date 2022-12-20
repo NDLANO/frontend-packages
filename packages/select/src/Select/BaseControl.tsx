@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { ControlPropsType } from './types';
 
-const StyledBaseControl = styled.div<{ isFocused: boolean }>`
+const StyledBaseControl = styled.div`
   border-radius: 4px;
   background-color: ${colors.brand.lighter};
   padding: 0px ${spacing.xsmall};
@@ -13,12 +13,15 @@ const StyledBaseControl = styled.div<{ isFocused: boolean }>`
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
-  outline: ${({ isFocused }) => (isFocused ? `1px solid ${colors.brand.primary}` : 'none')};
+
+  &:focus-within {
+    outline: 2px solid ${colors.brand.primary};
+  }
 `;
 
-const BaseControl = <T extends boolean>({ children, innerRef, innerProps, isFocused }: ControlPropsType<T>) => {
+const BaseControl = <T extends boolean>({ children, innerRef, innerProps }: ControlPropsType<T>) => {
   return (
-    <StyledBaseControl isFocused={isFocused} ref={innerRef} {...innerProps}>
+    <StyledBaseControl ref={innerRef} {...innerProps}>
       {children}
     </StyledBaseControl>
   );

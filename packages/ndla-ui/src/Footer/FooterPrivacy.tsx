@@ -24,13 +24,18 @@ const StyledPrivacyLink = styled.a`
   padding: 0;
   box-shadow: ${misc.textLinkBoxShadow};
   cursor: pointer;
-  margin-bottom: ${spacing.large};
-  margin-left: ${spacing.small};
   &:hover,
   &:focus {
     box-shadow: none;
   }
 `;
+
+const StyledLinkSpacer = styled.span`
+  margin-left: ${spacing.xxsmall};
+  margin-right: ${spacing.xxsmall};
+  margin-bottom: ${spacing.large};
+`;
+
 const StyledFooterText = styled.div`
   display: flex;
   flex-direction: row;
@@ -52,15 +57,17 @@ const StyledFooterText = styled.div`
       padding-bottom: ${spacing.xsmall};
     }
   }
+  margin-bottom: ${spacing.large};
 `;
 
 const FooterPrivacy = ({ privacyLinks }: FooterPrivacyProps) => {
   return (
     <StyledFooterText>
-      {privacyLinks.map((link) => (
-        <StyledPrivacyLink href={link.url} key={link.label}>
-          {link.label}
-        </StyledPrivacyLink>
+      {privacyLinks.map((link, index) => (
+        <div key={link.label}>
+          {index > 0 && <StyledLinkSpacer aria-hidden>|</StyledLinkSpacer>}
+          <StyledPrivacyLink href={link.url}>{link.label}</StyledPrivacyLink>
+        </div>
       ))}
     </StyledFooterText>
   );

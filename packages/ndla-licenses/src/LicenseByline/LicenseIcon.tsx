@@ -18,23 +18,23 @@ interface Props {
 const LicenseIcon = ({ licenseRight, description }: Props) => {
   switch (licenseRight) {
     case CC:
-      return <Cc aria-label={description} />;
+      return <Cc aria-label={description} aria-hidden="false" />;
     case BY:
-      return <By aria-label={description} />;
+      return <By aria-label={description} aria-hidden="false" />;
     case NC:
-      return <Nc aria-label={description} />;
+      return <Nc aria-label={description} aria-hidden="false" />;
     case ND:
-      return <Nd aria-label={description} />;
+      return <Nd aria-label={description} aria-hidden="false" />;
     case SA:
-      return <Sa aria-label={description} />;
+      return <Sa aria-label={description} aria-hidden="false" />;
     case CC0:
-      return <Zero aria-label={description} />;
+      return <Zero aria-label={description} aria-hidden="false" />;
     case PD:
-      return <Publicdomain aria-label={description} />;
+      return <Publicdomain aria-label={description} aria-hidden="false" />;
     case COPYRIGHTED:
-      return <Copyright aria-label={description} />;
+      return <Copyright aria-label={description} aria-hidden="false" />;
     case NA:
-      return <Zero aria-label={description} />;
+      return <Zero aria-label={description} aria-hidden="false" />;
     default:
       return null;
   }

@@ -21,11 +21,13 @@ const forEachElement = (selector: string, callback: Function) => {
  * Hydrates tooltip for SSR pages
  */
 const initTooltips = () => {
-  forEachElement('[data-tooltip-from-article-converter]', (el: HTMLElement) => {
-    const id = el.getAttribute('data-tooltip-id');
-    const label = el.getAttribute('data-tooltip-label');
-    const children = el.querySelector('[data-tooltip-children]');
-    ReactDOM.hydrate(<Tooltip id={id!} tooltip={label!} dangerousHTML={children?.innerHTML} />, el);
+  forEachElement('[data-tooltip-from-article-converter]', (el: HTMLDivElement) => {
+    const tooltip = el.getAttribute('data-tooltip');
+    const inner = el.querySelector('[data-trigger]');
+
+    const outerHTML = inner?.outerHTML;
+
+    ReactDOM.hydrate(<Tooltip tooltip={tooltip!} hydrateHTML={outerHTML} />, el);
   });
 };
 

@@ -16,8 +16,8 @@ const StyledMultiValue = styled.div`
   align-items: center;
 `;
 
-const ValueContainer = <T extends boolean>({ ...props }: ValueContainerProps<Option, T>) => {
-  return <StyledMultiValue {...props.innerProps}>{props.children}</StyledMultiValue>;
+const ValueContainer = <T extends boolean>({ innerProps, children }: ValueContainerProps<Option, T>) => {
+  return <StyledMultiValue {...innerProps}>{children}</StyledMultiValue>;
 };
 
 export default ValueContainer;

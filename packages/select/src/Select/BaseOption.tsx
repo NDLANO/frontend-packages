@@ -33,11 +33,17 @@ const StyledCheck = styled(Done, {
   visibility: isVisible ? 'visible' : 'hidden',
 }));
 
-const BaseOption = <T extends boolean>({ ...props }: OptionPropsType<T>) => {
+const BaseOption = <T extends boolean>({
+  innerRef,
+  innerProps,
+  isFocused,
+  isSelected,
+  children,
+}: OptionPropsType<T>) => {
   return (
-    <StyledBaseOption ref={props.innerRef} {...props.innerProps} isFocused={props.isFocused}>
-      <StyledCheck isVisible={props.isSelected} />
-      {props.children}
+    <StyledBaseOption ref={innerRef} {...innerProps} isFocused={isFocused}>
+      <StyledCheck isVisible={isSelected} />
+      {children}
     </StyledBaseOption>
   );
 };

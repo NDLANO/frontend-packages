@@ -16,10 +16,10 @@ const StyledBaseMenu = styled.div`
   margin-top: 4px;
 `;
 
-const BaseMenu = <T extends boolean>({ ...props }: MenuPropsType<T>) => {
+const BaseMenu = <T extends boolean>({ innerRef, innerProps, children }: MenuPropsType<T>) => {
   return (
-    <StyledBaseMenu ref={props.innerRef} {...props.innerProps}>
-      {props.children}
+    <StyledBaseMenu ref={innerRef} {...innerProps}>
+      {children}
     </StyledBaseMenu>
   );
 };

@@ -546,8 +546,8 @@ storiesOf('Enkle komponenter', module)
           </p>
           <SourceList>
             <LicenseByline locale="nb" marginRight color={colors.brand.grey} licenseRights={[BY, NC, ND]} />
-            <span >Gary Waters</span>
-            <span >Kilde: SNL.no</span>
+            <span>Gary Waters</span>
+            <span>Kilde: SNL.no</span>
           </SourceList>
         </FactBox>
         <p>

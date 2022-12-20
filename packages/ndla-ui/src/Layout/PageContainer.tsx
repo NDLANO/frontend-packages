@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = new BEMHelper({
@@ -30,19 +29,5 @@ export const PageContainer = ({
   ndlaFilm = false,
   learningPath = false,
 }: Props) => <div {...classes('', { background, backgroundWide, ndlaFilm, learningPath })}>{children}</div>;
-
-PageContainer.propTypes = {
-  children: PropTypes.node,
-  background: PropTypes.bool,
-  backgroundWide: PropTypes.bool,
-  ndlaFilm: PropTypes.bool,
-};
-
-PageContainer.defaultProps = {
-  background: false,
-  backgroundWide: false,
-  ndlaFilm: false,
-  learningPath: false,
-};
 
 export default PageContainer;

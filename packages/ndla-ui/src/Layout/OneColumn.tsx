@@ -7,7 +7,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 
 const classes = BEMHelper({
@@ -45,15 +44,6 @@ export const OneColumn = ({ children, className, cssModifier, wide, noPadding, e
   }
 
   return <div className={`${classes('', modifiers)} ${className}`}>{children}</div>;
-};
-
-OneColumn.propTypes = {
-  children: PropTypes.node,
-  cssModifier: PropTypes.string,
-  wide: PropTypes.bool,
-  noPadding: PropTypes.bool,
-  extraPadding: PropTypes.bool,
-  className: PropTypes.string,
 };
 
 export default OneColumn;

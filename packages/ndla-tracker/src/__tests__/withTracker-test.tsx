@@ -8,8 +8,7 @@
 
 /* eslint-env jest */
 /* eslint-disable react/no-multi-comp */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { createMemoryHistory } from 'history';
@@ -21,8 +20,13 @@ window.dataLayer = [];
 const history = createMemoryHistory();
 tracker.configureTracker({ listen: history.listen });
 
-class Page extends Component {
-  static getDocumentTitle(props) {
+interface PageProps {
+  world?: string;
+  children?: ReactNode;
+}
+
+class Page extends Component<PageProps> {
+  static getDocumentTitle(props: PageProps) {
     return `Hello ${props.world}`;
   }
 
@@ -36,13 +40,12 @@ class Page extends Component {
   }
 }
 
-Page.propTypes = {
-  world: PropTypes.string,
-  children: PropTypes.node,
-};
+interface ChildPageProps {
+  world: string;
+}
 
-class ChildPage extends Component {
-  static getDocumentTitle(props) {
+class ChildPage extends Component<ChildPageProps> {
+  static getDocumentTitle(props: ChildPageProps) {
     return `Hello ${props.world} from child page`;
   }
 
@@ -54,10 +57,6 @@ class ChildPage extends Component {
     );
   }
 }
-
-ChildPage.propTypes = {
-  world: PropTypes.string,
-};
 
 test('withTracker HOC renderers Page correctly', () => {
   const PageWithTracker = withTracker(Page);

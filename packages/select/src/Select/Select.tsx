@@ -51,7 +51,7 @@ const Select = <T extends boolean>({
   menuPlacement = 'bottom',
   isMultiSelect,
   isLoading,
-  hideSelectedOptions,
+  hideSelectedOptions = false,
   OptionComponent,
   ControlComponent,
   MenuComponent,

@@ -18,12 +18,7 @@ const BaseMultiValue = <T extends boolean>({ ...props }: MultiValueProps<Option,
   const isLastItem = props.data === ValueCasted[count - 1];
 
   if (count === 1) return <span>{props.children}</span>;
-  if (isLastItem)
-    return (
-      <span>
-        {count} {t('dropdown.selected')}
-      </span>
-    );
+  if (isLastItem) return <span>{t('dropdown.selected', { count })}</span>;
   return null;
 };
 

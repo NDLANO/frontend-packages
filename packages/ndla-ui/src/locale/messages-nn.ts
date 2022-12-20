@@ -260,6 +260,7 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjerna frå favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',

@@ -21,16 +21,22 @@ const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   padding-right: 20px;
 `;
 
-const StyledCheck = styled.div<{ isVisible: boolean }>`
-  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
-`;
+type StyledCheckProps = {
+  isVisible: boolean;
+};
+
+const shouldForwardProp = (name: string) => name !== 'isVisible';
+
+const StyledCheck = styled(Done, {
+  shouldForwardProp,
+})<StyledCheckProps>(({ isVisible }) => ({
+  visibility: isVisible ? 'visible' : 'hidden',
+}));
 
 const BaseOption = <T extends boolean>({ ...props }: OptionPropsType<T>) => {
   return (
     <StyledBaseOption ref={props.innerRef} {...props.innerProps} isFocused={props.isFocused}>
-      <StyledCheck isVisible={props.isSelected}>
-        <Done />
-      </StyledCheck>
+      <StyledCheck isVisible={props.isSelected} />
       {props.children}
     </StyledBaseOption>
   );

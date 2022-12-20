@@ -52,9 +52,9 @@ const Select = <T extends boolean>({
   isMultiSelect,
   isLoading,
   hideSelectedOptions = false,
-  OptionComponent,
-  ControlComponent,
-  MenuComponent,
+  OptionComponent = BaseOption,
+  ControlComponent = BaseControl,
+  MenuComponent = BaseMenu,
   IndicatorsContainerComponent,
 }: Props<T>) => {
   const portalTarget = typeof document !== 'undefined' ? document?.querySelector('body') : null;
@@ -77,12 +77,12 @@ const Select = <T extends boolean>({
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 999999 }) }}
       components={{
         IndicatorSeparator: () => null,
-        Option: OptionComponent || BaseOption,
-        Control: ControlComponent || BaseControl,
+        Option: OptionComponent,
+        Control: ControlComponent,
         SingleValue: BaseSingleValue,
-        Menu: MenuComponent || BaseMenu,
         DropdownIndicator: BaseDropdownIndicator,
         IndicatorsContainer: IndicatorsContainerComponent,
+        Menu: MenuComponent,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,
       }}

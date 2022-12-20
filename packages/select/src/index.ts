@@ -13,5 +13,5 @@ export type {
   DropdownIndicatorPropsType,
   SingleValue,
   MultiValue,
-} from './SelectComponent';
-export { default as Select } from './SelectComponent';
+} from './Select';
+export { default as Select } from './Select';

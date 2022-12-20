@@ -9,11 +9,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { defaultParameters } from '../../../../stories/defaults';
-import SelectComponent from './SelectComponent';
+import Select from './Select';
 
 export default {
-  title: 'Enkle komponenter/SelectComponent',
-  component: SelectComponent,
+  title: 'Enkle komponenter/Select',
+  component: Select,
   parameters: {
     ...defaultParameters,
   },
@@ -25,12 +25,12 @@ export default {
     ],
     placeholder: 'Velg en farge',
   },
-} as ComponentMeta<typeof SelectComponent>;
+} as ComponentMeta<typeof Select>;
 
-export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
+export const SelectStory: ComponentStory<typeof Select> = (args) => {
   return (
     <div style={{ width: 150 }}>
-      <SelectComponent
+      <Select
         {...args}
         options={[
           { value: 'Gul', label: 'Gul' },
@@ -43,4 +43,4 @@ export const SelectStory: ComponentStory<typeof SelectComponent> = (args) => {
   );
 };
 
-SelectStory.storyName = 'SelectComponent';
+SelectStory.storyName = 'Select';

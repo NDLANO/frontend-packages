@@ -17,7 +17,7 @@ npm i --save @ndla/select
 ### Select with custom control component
 
 ```js
-import { SelectComponent, ControlPropsType } from '@ndla/select';
+import { Select, ControlPropsType } from '@ndla/select';
 
 const CustomControl = ({ ...props }: ControlPropsType<false>) => {
   return (
@@ -27,5 +27,5 @@ const CustomControl = ({ ...props }: ControlPropsType<false>) => {
   );
 };
 
-<SelectComponent options={[{ value: 'blå', label: 'blå' }]} placeholder="Farger" ControlComponent={CustomControl} />;
+<Select options={[{ value: 'blå', label: 'blå' }]} placeholder="Farger" ControlComponent={CustomControl} />;
 ```

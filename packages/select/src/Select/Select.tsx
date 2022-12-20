@@ -6,7 +6,7 @@
  *
  */
 import React from 'react';
-import Select from 'react-select';
+import ReactSelect from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
@@ -41,7 +41,7 @@ interface Props<T extends boolean> {
   DropdownIndicatorComponent: DropdownComponentType<T>;
 }
 
-const SelectComponent = <T extends boolean>({
+const Select = <T extends boolean>({
   options,
   label,
   defaultValue,
@@ -58,7 +58,7 @@ const SelectComponent = <T extends boolean>({
   DropdownIndicatorComponent,
 }: Props<T>) => {
   return (
-    <Select<Option, T>
+    <ReactSelect<Option, T>
       aria-label={label}
       options={options}
       onChange={onChange}
@@ -87,4 +87,4 @@ const SelectComponent = <T extends boolean>({
   );
 };
 
-export default SelectComponent;
+export default Select;

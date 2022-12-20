@@ -6,7 +6,7 @@
  *
  */
 
-import SelectComponent from './SelectComponent';
+import Select from './Select';
 import {
   Option,
   ControlPropsType,
@@ -16,10 +16,6 @@ import {
   MultiValue,
 } from './types';
 
-export type { Option };
-export type { ControlPropsType };
-export type { OptionPropsType };
-export type { DropdownIndicatorPropsType };
-export type { SingleValue };
-export type { MultiValue };
-export default SelectComponent;
+export type { Option, ControlPropsType, OptionPropsType, DropdownIndicatorPropsType, SingleValue, MultiValue };
+
+export default Select;

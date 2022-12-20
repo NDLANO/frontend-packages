@@ -258,7 +258,7 @@ const messages = {
     confirmRemove: 'Er du sikker på at du vil fjerne {{subject}} fra favorittfag?',
     addFavorite: 'Legg til favorittfag',
     removeFavorite: 'Fjern favorittfag',
-    removedConfirmed: '{{subject}} er fjernet fra favorittfag',
+    removeConfirmed: '{{subject}} er fjernet fra favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
   },
   topicPage: {

@@ -10,15 +10,7 @@ import ReactSelect from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import {
-  Option,
-  SingleValue,
-  MultiValue,
-  OptionComponentType,
-  ControlComponentType,
-  MenuComponentType,
-  IndicatorsContainerComponentType,
-} from './types';
+import { Option, SingleValue, MultiValue, OptionComponentType, ControlComponentType, MenuComponentType } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -38,7 +30,6 @@ interface Props<T extends boolean> {
   OptionComponent?: OptionComponentType<T>;
   ControlComponent?: ControlComponentType<T>;
   MenuComponent?: MenuComponentType<T>;
-  IndicatorsContainerComponent?: IndicatorsContainerComponentType<T>;
 }
 
 const Select = <T extends boolean>({
@@ -55,7 +46,6 @@ const Select = <T extends boolean>({
   OptionComponent = BaseOption,
   ControlComponent = BaseControl,
   MenuComponent = BaseMenu,
-  IndicatorsContainerComponent,
 }: Props<T>) => {
   const portalTarget = typeof document !== 'undefined' ? document?.querySelector('body') : null;
 
@@ -81,7 +71,6 @@ const Select = <T extends boolean>({
         Control: ControlComponent,
         SingleValue: BaseSingleValue,
         DropdownIndicator: BaseDropdownIndicator,
-        IndicatorsContainer: IndicatorsContainerComponent,
         Menu: MenuComponent,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,

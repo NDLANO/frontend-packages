@@ -25,4 +25,3 @@ export type IndicatorsContainerPropsType<T extends boolean> = IndicatorsContaine
 export type ControlComponentType<T extends boolean> = ComponentType<ControlPropsType<T>>;
 export type OptionComponentType<T extends boolean> = ComponentType<OptionPropsType<T>>;
 export type MenuComponentType<T extends boolean> = ComponentType<MenuPropsType<T>>;
-export type IndicatorsContainerComponentType<T extends boolean> = ComponentType<IndicatorsContainerPropsType<T>>;

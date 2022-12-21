@@ -1,7 +1,7 @@
 import React, { MouseEvent, ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { SafeLinkButton } from '@ndla/safelink';
-import Button from '@ndla/button';
+import { ButtonV2 } from '@ndla/button';
 import { breakpoints, colors, fonts, misc, mq, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { Switch } from '@ndla/switch';
@@ -182,7 +182,7 @@ export type ItemProps = {
 };
 type Props = {
   heading?: string;
-  colorMode?: 'dark' | 'light' | 'greyLightest' | 'greyLighter';
+  colorMode?: 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
   onClick?: (event: MouseEvent<HTMLElement>, id?: string) => void;
@@ -193,9 +193,13 @@ type Props = {
   onToggleAdditionalResources?: ChangeEventHandler<HTMLInputElement>;
 };
 
+const listElementStyle = css`
+  text-align: left;
+`;
+
 export const NavigationBox = ({
   heading,
-  colorMode = 'dark',
+  colorMode,
   items,
   isButtonElements,
   onClick,
@@ -206,7 +210,7 @@ export const NavigationBox = ({
   onToggleAdditionalResources = () => {},
 }: Props) => {
   const { t } = useTranslation();
-  const ListElementType = isButtonElements ? Button : SafeLinkButton;
+  const ListElementType = isButtonElements ? ButtonV2 : SafeLinkButton;
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
@@ -229,16 +233,11 @@ export const NavigationBox = ({
               lighter={colorMode === 'light'}
               selected={item.selected}>
               <ListElementType
+                css={listElementStyle}
                 to={item.url ?? ''}
-                lighter={!item.selected && colorMode === 'light'}
-                greyLighter={!item.selected && colorMode === 'greyLighter'}
-                greyLightest={!item.selected && colorMode === 'greyLightest'}
-                darker={item.selected}
-                buttonSize="medium"
+                colorTheme={item.selected ? undefined : colorMode}
                 size="medium"
-                borderShape="sharpened"
-                width="full"
-                textAlign="left"
+                shape="sharp"
                 onClick={(e: MouseEvent<HTMLElement>) => {
                   if (onClick) {
                     onClick(e, item.id);

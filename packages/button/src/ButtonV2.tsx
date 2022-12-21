@@ -185,7 +185,7 @@ export const buttonStyle = ({
   `;
 };
 
-interface Props {
+export interface ButtonStyleProps {
   size?: ButtonSize;
   colorTheme?: ButtonColor;
   variant?: ButtonVariant;
@@ -194,7 +194,7 @@ interface Props {
   fontWeight?: ButtonFontWeight;
 }
 
-export type ButtonProps = Props & ButtonHTMLAttributes<HTMLButtonElement>;
+export type ButtonProps = ButtonStyleProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * Knapp-komponent

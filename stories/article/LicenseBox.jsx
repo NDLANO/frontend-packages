@@ -20,7 +20,7 @@ import {
   MediaListItemImage,
   MediaListItemMeta,
 } from '@ndla/ui';
-import Button, { CopyButton } from '@ndla/button';
+import  { CopyButton, ButtonV2} from '@ndla/button';
 import { FileDocumentOutline, AudioDocument, Podcast } from '@ndla/icons/common';
 
 import { COPYRIGHTED, metaTypes } from '@ndla/licenses';
@@ -140,16 +140,16 @@ export const TextContent = ({ t }) => (
                     },
                   ]}
                 />
-                <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+                <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <Button
-                  outline
+                <ButtonV2
+                  variant="outline"
                   onClick={() => {
                     triggerDownloadText();
                   }}>
                   {t('license.download')}
-                </Button>
+                </ButtonV2>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
@@ -205,10 +205,10 @@ const AudioContent = ({ t }) => (
                     },
                   ]}
                 />
-                <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+                <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <Button outline>{t('license.download')}</Button>
+                <ButtonV2 variant="outline">{t('license.download')}</ButtonV2>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
@@ -264,10 +264,10 @@ const PodcastContent = ({ t }) => (
                     },
                   ]}
                 />
-                <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+                <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <Button outline>{t('license.download')}</Button>
+                <ButtonV2 variant="outline">{t('license.download')}</ButtonV2>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
@@ -332,10 +332,10 @@ export const ImageContent = ({ t }) => (
                     },
                   ]}
                 />
-                <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+                <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <Button outline>{t('license.download')}</Button>
+                <ButtonV2 variant="outline">{t('license.download')}</ButtonV2>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
@@ -373,10 +373,10 @@ export const ImageContent = ({ t }) => (
                   },
                 ]}
               />
-              <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+              <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                 {t('license.copyTitle')}
               </CopyButton>
-              <Button outline>{t('license.download')}</Button>
+              <ButtonV2 variant="outline">{t('license.download')}</ButtonV2>
             </div>
           </MediaListItemActions>
         </MediaListItemBody>
@@ -478,10 +478,10 @@ const Files = ({ t }) => (
                     },
                   ]}
                 />
-                <CopyButton outline copyNode={t('license.hasCopiedTitle')}>
+                <CopyButton variant="outline" copyNode={t('license.hasCopiedTitle')}>
                   {t('license.copyTitle')}
                 </CopyButton>
-                <Button outline>{t('license.download')}</Button>
+                <ButtonV2 variant="outline">{t('license.download')}</ButtonV2>
               </div>
             </MediaListItemActions>
           </MediaListItemBody>
@@ -501,7 +501,7 @@ export const LinkContent = ({ t }) => (
       <h2>{t('license.embedlink.heading')}</h2>
       <p>{t('license.embedlink.description')}</p>
     </div>
-    <CopyButton outline copyNode={t('license.embedlink.hasCopiedTitle')}>
+    <CopyButton variant="outline" copyNode={t('license.embedlink.hasCopiedTitle')}>
       {t('license.embedlink.copyTitle')}
     </CopyButton>
   </div>

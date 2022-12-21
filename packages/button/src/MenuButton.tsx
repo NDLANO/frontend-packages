@@ -135,11 +135,7 @@ export const MenuButton = ({
           {menuIcon || <StyledHorizontalMenu />}
         </MenuIconWrapper>
       </StyledMenuButton>
-      <DropdownMenu.Portal
-        onKeyDown={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        }}>
+      <DropdownMenu.Portal>
         <StyledMenuItems align={align}>
           {menuItems?.map(({ type, text, icon, onClick }) => (
             <StyledMenuItem
@@ -147,7 +143,6 @@ export const MenuButton = ({
               onClick={(e) => {
                 onClick(e);
                 e.stopPropagation();
-                e.preventDefault();
               }}
               type={type}
               aria-label={text}>

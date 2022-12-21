@@ -10,6 +10,7 @@ export type {
   Option,
   ControlPropsType,
   OptionPropsType,
+  MenuPropsType,
   IndicatorsContainerPropsType,
   SingleValue,
   MultiValue,

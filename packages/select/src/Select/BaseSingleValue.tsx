@@ -7,7 +7,7 @@
  */
 import styled from '@emotion/styled';
 import React from 'react';
-import { GroupBase, SingleValueProps } from 'react-select';
+import { components, GroupBase, SingleValueProps } from 'react-select';
 import { Option } from './types';
 
 // Wrapper grid-component is needed to show ellipsis at overflow without fixed width

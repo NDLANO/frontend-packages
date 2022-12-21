@@ -11,11 +11,20 @@ import {
   Option,
   ControlPropsType,
   OptionPropsType,
+  MenuPropsType,
   IndicatorsContainerPropsType,
   SingleValue,
   MultiValue,
 } from './types';
 
-export type { Option, ControlPropsType, OptionPropsType, IndicatorsContainerPropsType, SingleValue, MultiValue };
+export type {
+  Option,
+  ControlPropsType,
+  OptionPropsType,
+  IndicatorsContainerPropsType,
+  SingleValue,
+  MultiValue,
+  MenuPropsType,
+};
 
 export default Select;

@@ -1197,6 +1197,9 @@ const messages = {
     contact: 'Contact',
     help: 'Help',
   },
+  programme: {
+    grades: 'Grades',
+  },
 };
 
 export default messages;

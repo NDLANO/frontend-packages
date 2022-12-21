@@ -20,7 +20,7 @@ import {
   MediaListItemImage,
   MediaListItemMeta,
 } from '@ndla/ui';
-import  { CopyButton, ButtonV2} from '@ndla/button';
+import { CopyButton, ButtonV2 } from '@ndla/button';
 import { FileDocumentOutline, AudioDocument, Podcast } from '@ndla/icons/common';
 
 import { COPYRIGHTED, metaTypes } from '@ndla/licenses';

@@ -9,7 +9,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { Done } from '@ndla/icons/editor';
-import { OptionPropsType } from './types';
+import { OptionProps } from 'react-select';
+import { Option } from './types';
 
 const StyledBaseOption = styled.div<{ isFocused: boolean }>`
   ${fonts.sizes('16')};
@@ -39,7 +40,7 @@ const BaseOption = <T extends boolean>({
   isFocused,
   isSelected,
   children,
-}: OptionPropsType<T>) => {
+}: OptionProps<Option, T>) => {
   return (
     <StyledBaseOption ref={innerRef} {...innerProps} isFocused={isFocused}>
       <StyledCheck isVisible={isSelected} />

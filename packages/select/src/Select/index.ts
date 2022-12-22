@@ -7,24 +7,8 @@
  */
 
 import Select from './Select';
-import {
-  Option,
-  ControlPropsType,
-  OptionPropsType,
-  MenuPropsType,
-  IndicatorsContainerPropsType,
-  SingleValue,
-  MultiValue,
-} from './types';
+import { Option, SingleValue, MultiValue } from './types';
 
-export type {
-  Option,
-  ControlPropsType,
-  OptionPropsType,
-  IndicatorsContainerPropsType,
-  SingleValue,
-  MultiValue,
-  MenuPropsType,
-};
+export type { Option, SingleValue, MultiValue };
 
 export default Select;

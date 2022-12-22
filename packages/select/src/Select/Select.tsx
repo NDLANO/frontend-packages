@@ -10,7 +10,7 @@ import ReactSelect from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, SingleValue, MultiValue, OptionComponentType, ControlComponentType, MenuComponentType } from './types';
+import { Option, SingleValue, MultiValue, Color } from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -19,35 +19,38 @@ import BaseSingleValue from './BaseSingleValue';
 interface Props<T extends boolean> {
   options: Option[];
   label?: string;
-  defaultValue?: T extends true ? MultiValue : SingleValue;
   onChange?: (value: T extends true ? MultiValue : SingleValue) => void;
   value?: Option | null;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;
   isLoading?: boolean;
-  hideSelectedOptions?: boolean;
-  OptionComponent?: OptionComponentType<T>;
-  ControlComponent?: ControlComponentType<T>;
-  MenuComponent?: MenuComponentType<T>;
+  // New
+  small?: boolean;
+  prefix?: string;
+  postfix?: string;
+  outline?: boolean;
+  colorTheme?: Color;
 }
 
 const Select = <T extends boolean>({
   options,
   label,
-  defaultValue,
   onChange,
   value,
   placeholder,
   menuPlacement = 'bottom',
   isMultiSelect,
   isLoading,
-  hideSelectedOptions = false,
-  OptionComponent = BaseOption,
-  ControlComponent = BaseControl,
-  MenuComponent = BaseMenu,
+  small,
+  outline,
+  colorTheme = 'blue',
+  prefix,
+  postfix,
 }: Props<T>) => {
   const portalTarget = typeof document !== 'undefined' ? document?.querySelector('body') : null;
+
+  const styleProps = { small, outline, colorTheme };
 
   return (
     <ReactSelect<Option, T>
@@ -55,23 +58,23 @@ const Select = <T extends boolean>({
       options={options}
       onChange={onChange}
       value={value}
-      defaultValue={defaultValue}
       isSearchable={false}
       placeholder={placeholder}
       menuPlacement={menuPlacement}
       isMulti={isMultiSelect}
+      closeMenuOnSelect={!isMultiSelect}
       isClearable={false}
-      hideSelectedOptions={hideSelectedOptions}
+      hideSelectedOptions={false}
       isLoading={isLoading}
       menuPortalTarget={portalTarget}
-      styles={{ menuPortal: (base) => ({ ...base, zIndex: 999999 }) }}
+      styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         IndicatorSeparator: () => null,
-        Option: OptionComponent,
-        Control: ControlComponent,
+        Option: BaseOption,
+        Control: (props) => <BaseControl {...props} {...styleProps} />,
         SingleValue: BaseSingleValue,
         DropdownIndicator: BaseDropdownIndicator,
-        Menu: MenuComponent,
+        Menu: BaseMenu,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,
       }}

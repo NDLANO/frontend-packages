@@ -29,7 +29,7 @@ export default {
 
 export const SelectStory: ComponentStory<typeof Select> = (args) => {
   return (
-    <div style={{ width: 150 }}>
+    <div style={{ display: 'flex' }}>
       <Select
         {...args}
         options={[

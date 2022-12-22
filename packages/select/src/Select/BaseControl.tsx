@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
-import { ControlPropsType } from './types';
+import { ControlProps } from 'react-select';
+import { Option, StyledProps } from './types';
 
-const StyledBaseControl = styled.div`
+const StyledBaseControl = styled.div<StyledProps>`
   border-radius: 4px;
-  background-color: ${colors.brand.lighter};
   padding: 0px ${spacing.xsmall};
-  ${fonts.sizes('16')};
   min-height: 40px;
   display: flex;
   align-items: center;
@@ -17,14 +16,21 @@ const StyledBaseControl = styled.div`
   &:focus-within {
     outline: 2px solid ${colors.brand.primary};
   }
+  ${fonts.sizes('24px', '16px')};
+
+  ${({ small }) => small && `${fonts.sizes('16px', '16px')};`}
+
+  border-style: solid;
+  border-width: ${({ outline }) => (outline ? '1px' : '0px')};
+  border-color: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.primary : colors.brand.lighter)};
+
+  background: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.lighter : colors.white)};
 `;
 
-const BaseControl = <T extends boolean>({ children, innerRef, innerProps }: ControlPropsType<T>) => {
-  return (
-    <StyledBaseControl ref={innerRef} {...innerProps}>
-      {children}
-    </StyledBaseControl>
-  );
-};
+const BaseControl = <T extends boolean>({ children, innerRef, ...rest }: ControlProps<Option, T> & StyledProps) => (
+  <StyledBaseControl ref={innerRef} {...rest}>
+    {children}
+  </StyledBaseControl>
+);
 
 export default BaseControl;

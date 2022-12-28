@@ -13,7 +13,7 @@ import ImageSearch from '@ndla/image-search';
 const fetchImages = (query, page) => {
   const queryString = query ? `query=${query}&page=${page}&page-size=15` : `page=${page}&page-size=15`;
   return new Promise((resolve, reject) => {
-    fetch(`https://api.test.ndla.no/image-api/v2/images/?${queryString}`, {
+    fetch(`https://api.test.ndla.no/image-api/v3/images/?${queryString}`, {
       method: 'GET',
     }).then((res) => {
       if (res.ok) {
@@ -26,7 +26,7 @@ const fetchImages = (query, page) => {
 
 const fetchImage = (id) =>
   new Promise((resolve, reject) => {
-    fetch(`https://api.test.ndla.no/image-api/v2/images/${id}`, {
+    fetch(`https://api.test.ndla.no/image-api/v3/images/${id}`, {
       method: 'GET',
     }).then((res) => {
       if (res.ok) {

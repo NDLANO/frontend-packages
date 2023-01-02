@@ -12,7 +12,9 @@ import { ValueContainerProps } from 'react-select';
 import { Option } from './types';
 
 const StyledMultiValue = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 0;
   align-items: center;
 `;
 

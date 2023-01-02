@@ -19,7 +19,7 @@ export default {
   },
   args: {
     options: [
-      { value: 'Gul', label: 'Gul' },
+      { value: 'Gul', label: 'Gulggggaggggaggg' },
       { value: 'Blå', label: 'Blå' },
       { value: 'Grønn', label: 'Grønn' },
     ],
@@ -29,7 +29,7 @@ export default {
 
 export const SelectStory: ComponentStory<typeof Select> = (args) => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', maxWidth: '110px' }}>
       <Select {...args} placeholder="Velg en farge" />
     </div>
   );

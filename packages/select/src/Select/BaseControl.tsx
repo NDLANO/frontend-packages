@@ -32,7 +32,7 @@ const StyledBaseControl = styled.div<Props>`
       padding: ${spacing.xxsmall} ${spacing.xsmall};
       min-height: unset;
       font-weight: ${fonts.weight.normal};
-      ${fonts.sizes('16px', '16px')};
+      ${fonts.sizes('16px', '18px')};
     `}
 
   &:focus-within {

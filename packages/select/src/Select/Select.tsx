@@ -16,6 +16,7 @@ import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
 import BaseSingleValue from './BaseSingleValue';
+import BasePlaceholder from './BasePlaceholder';
 
 interface Props<T extends boolean> {
   options: Option[];
@@ -77,6 +78,7 @@ const Select = <T extends boolean>({
         DropdownIndicator: (props) => (hideArrow ? null : <BaseDropdownIndicator {...props} small={small} />),
         Menu: (props) => <BaseMenu small={small} {...props} />,
         MultiValue: (props) => <BaseMultiValue {...props} postfix={postfix} />,
+        Placeholder: (props) => <BasePlaceholder {...props} />,
         ValueContainer: ValueContainer,
       }}
     />

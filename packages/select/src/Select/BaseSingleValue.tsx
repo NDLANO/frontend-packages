@@ -12,12 +12,6 @@ import { fonts } from '@ndla/core/src';
 import { components, GroupBase, SingleValueProps } from 'react-select';
 import { Option } from './types';
 
-// Wrapper grid-component is needed to show ellipsis at overflow without fixed width
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr;
-`;
-
 const StyledSingleValue = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
@@ -40,13 +34,11 @@ const BaseSingleValue = <T extends boolean>({
   children,
 }: Props & SingleValueProps<Option, T, GroupBase<Option>>) => {
   return (
-    <Wrapper {...innerProps}>
-      <StyledSingleValue>
-        <StyledPostfix>{prefix}</StyledPostfix>
-        {children}
-        <span>{postfix}</span>
-      </StyledSingleValue>
-    </Wrapper>
+    <StyledSingleValue {...innerProps}>
+      <StyledPostfix>{prefix}</StyledPostfix>
+      {children}
+      <span>{postfix}</span>
+    </StyledSingleValue>
   );
 };
 

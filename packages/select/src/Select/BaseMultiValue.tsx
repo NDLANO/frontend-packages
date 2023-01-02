@@ -10,6 +10,7 @@ import isArray from 'lodash/isArray';
 import { useTranslation } from 'react-i18next';
 import { MultiValueProps } from 'react-select';
 import { Option } from './types';
+import { TextEllipsis } from './BasePlaceholder';
 
 interface Props {
   postfix?: string;
@@ -26,12 +27,12 @@ const BaseMultiValue = <T extends boolean>({
   const count = isArray(value) ? value.length : 0;
   const isLastItem = isArray(value) && data === value[count - 1];
 
-  if (count === 1) return <span>{children}</span>;
+  if (count === 1) return <TextEllipsis>{children}</TextEllipsis>;
   if (isLastItem)
     return (
-      <span>
+      <TextEllipsis>
         {t('dropdown.selected', { count })} <span>{postfix}</span>
-      </span>
+      </TextEllipsis>
     );
   return null;
 };

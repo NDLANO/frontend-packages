@@ -2,7 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css, SerializedStyles } from '@emotion/react';
 import { colors } from '@ndla/core';
-import { MenuPropsType } from './types';
+import { MenuProps } from 'react-select';
+import { Option } from './types';
 
 const StyledBaseMenu = styled.div`
   position: absolute;
@@ -16,7 +17,7 @@ const StyledBaseMenu = styled.div`
   margin-top: 4px;
 `;
 
-const BaseMenu = <T extends boolean>({ innerRef, innerProps, children }: MenuPropsType<T>) => {
+const BaseMenu = <T extends boolean>({ innerRef, innerProps, children }: MenuProps<Option, T>) => {
   return (
     <StyledBaseMenu ref={innerRef} {...innerProps}>
       {children}

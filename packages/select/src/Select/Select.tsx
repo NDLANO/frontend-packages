@@ -66,6 +66,7 @@ const Select = <T extends boolean>({
       isClearable={false}
       hideSelectedOptions={false}
       isLoading={isLoading}
+      unstyled
       menuPortalTarget={portalTarget}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{

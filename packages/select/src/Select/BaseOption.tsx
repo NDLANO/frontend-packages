@@ -14,17 +14,16 @@ import { Done } from '@ndla/icons/editor';
 import { OptionProps } from 'react-select';
 import { Option } from './types';
 
-interface StyledCheckProps {
-  isVisible: boolean;
+interface CheckProps {
+  isSelected: boolean;
 }
 
-const shouldForwardProp = (name: string) => name !== 'isVisible';
+const shouldForwardProp = (prop: string) => prop !== 'isVisible';
 
-const StyledCheck = styled(Done, {
-  shouldForwardProp,
-})<StyledCheckProps>(({ isVisible }) => ({
-  visibility: isVisible ? 'visible' : 'hidden',
-}));
+const StyledCheck = styled(Done, { shouldForwardProp })<CheckProps>`
+  visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
+`;
+
 interface Props {
   small?: boolean;
   isFocused: boolean;
@@ -35,6 +34,7 @@ const StyledBaseOption = styled.div<Props>`
   padding: ${spacing.small};
   display: flex;
   align-items: center;
+  gap: ${spacing.xxsmall};
   cursor: pointer;
   background-color: ${({ isFocused }) => (isFocused ? colors.brand.lighter : colors.white)};
   padding-right: 20px;
@@ -59,7 +59,7 @@ const BaseOption = <T extends boolean>({
 }: OptionProps<Option, T> & Props) => {
   return (
     <StyledBaseOption small={small} ref={innerRef} {...innerProps} isFocused={isFocused}>
-      <StyledCheck isVisible={isSelected} />
+      <StyledCheck isSelected={isSelected} />
       {children}
     </StyledBaseOption>
   );

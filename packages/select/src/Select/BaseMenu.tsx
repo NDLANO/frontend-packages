@@ -7,10 +7,16 @@
  */
 
 import React from 'react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
 import { MenuProps, components, GroupBase } from 'react-select';
 import { Option } from './types';
+
+const menuStyle = css`
+  min-width: 100%;
+  width: unset;
+`;
 
 const StyledBaseMenu = styled.div<Props>`
   overflow: hidden;
@@ -25,7 +31,7 @@ interface Props {
 }
 
 const BaseMenu = <T extends boolean>({ small, children, ...props }: Props & MenuProps<Option, T>) => (
-  <components.Menu<Option, T, GroupBase<Option>> {...props}>
+  <components.Menu<Option, T, GroupBase<Option>> {...props} css={menuStyle}>
     <StyledBaseMenu small={small}>{children}</StyledBaseMenu>
   </components.Menu>
 );

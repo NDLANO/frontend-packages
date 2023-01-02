@@ -6,12 +6,6 @@
  *
  */
 
-<<<<<<< HEAD
-=======
-import { ComponentType } from 'react';
-import { ControlProps, OptionProps, MenuProps, IndicatorsContainerProps, DropdownIndicatorProps } from 'react-select';
-
->>>>>>> 217305426c45f1512242e45f0c460ef2baea515e
 export type SingleValue = Option | null;
 export type MultiValue = readonly Option[];
 
@@ -20,17 +14,4 @@ export type Option = {
   label: string;
 };
 
-<<<<<<< HEAD
 export type Color = 'blue' | 'white';
-=======
-export type ControlPropsType<T extends boolean> = ControlProps<Option, T>;
-export type OptionPropsType<T extends boolean> = OptionProps<Option, T>;
-export type MenuPropsType<T extends boolean> = MenuProps<Option, T>;
-export type IndicatorsContainerPropsType<T extends boolean> = IndicatorsContainerProps<Option, T>;
-export type DropdownIndicatorPropsType<T extends boolean> = DropdownIndicatorProps<Option, T>;
-
-export type ControlComponentType<T extends boolean> = ComponentType<ControlPropsType<T>>;
-export type OptionComponentType<T extends boolean> = ComponentType<OptionPropsType<T>>;
-export type MenuComponentType<T extends boolean> = ComponentType<MenuPropsType<T>>;
-export type DropdownComponentType<T extends boolean> = ComponentType<DropdownIndicatorPropsType<T>>;
->>>>>>> 217305426c45f1512242e45f0c460ef2baea515e

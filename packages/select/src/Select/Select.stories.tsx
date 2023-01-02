@@ -19,7 +19,7 @@ export default {
   },
   args: {
     options: [
-      { value: 'Gul', label: 'Gulggggaggggaggg' },
+      { value: 'Gul', label: 'Gul' },
       { value: 'Blå', label: 'Blå' },
       { value: 'Grønn', label: 'Grønn' },
     ],

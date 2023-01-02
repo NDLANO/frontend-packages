@@ -15,12 +15,9 @@ interface Props {
   small?: boolean;
 }
 
-const BaseMenu = <T extends boolean>({ small, children, ...props }: MenuProps<Option, T> & Props) => {
-  return (
-    <components.Menu<Option, T, GroupBase<Option>> {...props}>
-      <StyledBaseMenu small={small}>{children}</StyledBaseMenu>
-    </components.Menu>
-  );
-};
-
+const BaseMenu = <T extends boolean>({ small, children, ...props }: Props & MenuProps<Option, T>) => (
+  <components.Menu<Option, T, GroupBase<Option>> {...props}>
+    <StyledBaseMenu small={small}>{children}</StyledBaseMenu>
+  </components.Menu>
+);
 export default BaseMenu;

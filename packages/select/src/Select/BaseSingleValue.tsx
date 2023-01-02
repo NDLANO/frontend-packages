@@ -5,9 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
+import React from 'react';
 import styled from '@emotion/styled';
 import { fonts } from '@ndla/core/src';
-import React from 'react';
 import { components, GroupBase, SingleValueProps } from 'react-select';
 import { Option } from './types';
 
@@ -37,7 +38,7 @@ const BaseSingleValue = <T extends boolean>({
   prefix,
   postfix,
   children,
-}: SingleValueProps<Option, T, GroupBase<Option>> & Props) => {
+}: Props & SingleValueProps<Option, T, GroupBase<Option>>) => {
   return (
     <Wrapper {...innerProps}>
       <StyledSingleValue>

@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import isArray from 'lodash/isArray';
 import React from 'react';
+import isArray from 'lodash/isArray';
 import { useTranslation } from 'react-i18next';
 import { MultiValueProps } from 'react-select';
 import { Option } from './types';
@@ -20,7 +20,7 @@ const BaseMultiValue = <T extends boolean>({
   data,
   children,
   postfix,
-}: MultiValueProps<Option, T> & Props) => {
+}: Props & MultiValueProps<Option, T>) => {
   const { t } = useTranslation();
 
   const count = isArray(value) ? value.length : 0;

@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { ValueContainerProps } from 'react-select';
@@ -15,8 +16,7 @@ const StyledMultiValue = styled.div`
   align-items: center;
 `;
 
-const ValueContainer = <T extends boolean>({ innerProps, children }: ValueContainerProps<Option, T>) => {
-  return <StyledMultiValue {...innerProps}>{children}</StyledMultiValue>;
-};
-
+const ValueContainer = <T extends boolean>({ innerProps, children }: ValueContainerProps<Option, T>) => (
+  <StyledMultiValue {...innerProps}>{children}</StyledMultiValue>
+);
 export default ValueContainer;

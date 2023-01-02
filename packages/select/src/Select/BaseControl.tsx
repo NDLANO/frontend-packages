@@ -1,19 +1,20 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { ControlProps } from 'react-select';
 import { Color, Option } from './types';
-import { StyledChevron } from './BaseDropdownIndicator';
+import { StyledDropdown } from './BaseDropdownIndicator';
 
-interface MenuProps {
-  menuIsOpen: boolean;
-  small?: boolean;
-  colorTheme: Color;
-  outline?: boolean;
-}
-
-const StyledBaseControl = styled.div<MenuProps>`
+const StyledBaseControl = styled.div<Props>`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -44,7 +45,7 @@ const StyledBaseControl = styled.div<MenuProps>`
   border-color: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.dark : colors.brand.light)};
   background: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.lighter : colors.white)};
 
-  & ${StyledChevron} {
+  & ${StyledDropdown} {
     ${({ menuIsOpen }) =>
       menuIsOpen &&
       css`
@@ -53,12 +54,19 @@ const StyledBaseControl = styled.div<MenuProps>`
   }
 `;
 
+interface Props {
+  menuIsOpen: boolean;
+  small?: boolean;
+  colorTheme: Color;
+  outline?: boolean;
+}
+
 const BaseControl = <T extends boolean>({
-  children,
   innerRef,
   innerProps,
+  children,
   ...rest
-}: ControlProps<Option, T> & MenuProps) => (
+}: Props & ControlProps<Option, T>) => (
   <StyledBaseControl ref={innerRef} {...innerProps} {...rest}>
     {children}
   </StyledBaseControl>

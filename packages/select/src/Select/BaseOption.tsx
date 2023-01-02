@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
@@ -13,9 +14,9 @@ import { Done } from '@ndla/icons/editor';
 import { OptionProps } from 'react-select';
 import { Option } from './types';
 
-type StyledCheckProps = {
+interface StyledCheckProps {
   isVisible: boolean;
-};
+}
 
 const shouldForwardProp = (name: string) => name !== 'isVisible';
 

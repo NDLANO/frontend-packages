@@ -22,6 +22,7 @@ const shouldForwardProp = (prop: string) => prop !== 'isVisible';
 
 const StyledCheck = styled(Done, { shouldForwardProp })<CheckProps>`
   visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
+  flex-shrink: 0;
 `;
 
 interface Props {

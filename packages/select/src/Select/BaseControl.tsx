@@ -16,6 +16,7 @@ import { StyledDropdown } from './BaseDropdownIndicator';
 
 const StyledBaseControl = styled.div<Props>`
   display: flex;
+  width: 100%;
   align-items: center;
   cursor: pointer;
   justify-content: space-between;

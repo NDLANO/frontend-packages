@@ -17,6 +17,7 @@ import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
 import BaseSingleValue from './BaseSingleValue';
 import BasePlaceholder from './BasePlaceholder';
+import BaseContainer from './BaseContainer';
 
 interface Props<T extends boolean> {
   options: Option[];
@@ -71,6 +72,7 @@ const Select = <T extends boolean>({
       menuPortalTarget={portalTarget}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
+        SelectContainer: BaseContainer,
         IndicatorSeparator: () => null,
         Option: (props) => <BaseOption {...props} small={small} />,
         Control: (props) => <BaseControl {...props} small={small} outline={outline} colorTheme={colorTheme} />,

@@ -12,7 +12,6 @@ import styled from '@emotion/styled';
 import { Option } from './types';
 
 export const TextEllipsis = styled.span`
-  grid-area: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

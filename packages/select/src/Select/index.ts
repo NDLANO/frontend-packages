@@ -13,6 +13,7 @@ import {
   OptionPropsType,
   MenuPropsType,
   IndicatorsContainerPropsType,
+  DropdownIndicatorPropsType,
   SingleValue,
   MultiValue,
 } from './types';
@@ -22,6 +23,7 @@ export type {
   ControlPropsType,
   OptionPropsType,
   IndicatorsContainerPropsType,
+  DropdownIndicatorPropsType,
   SingleValue,
   MultiValue,
   MenuPropsType,

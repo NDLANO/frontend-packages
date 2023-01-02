@@ -59,10 +59,10 @@ const FrontpageToolbox = ({ urlStudents, urlTeachers, headingLevel }: Props) => 
       <ToolboxWrapper>
         <StyledText>{t('frontPageToolbox.text')}</StyledText>
       </ToolboxWrapper>
-      <StyledStudentsButton to={urlStudents} buttonSize="medium" borderShape="rounded">
+      <StyledStudentsButton to={urlStudents} size="medium" shape="pill">
         {t('frontPageToolbox.linkTextStudents')}
       </StyledStudentsButton>
-      <SafeLinkButton to={urlTeachers} buttonSize="medium" borderShape="rounded">
+      <SafeLinkButton to={urlTeachers} size="medium" shape="pill">
         {t('frontPageToolbox.linkTextTeachers')}
       </SafeLinkButton>
       <Illustration />

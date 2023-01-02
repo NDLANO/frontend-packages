@@ -99,8 +99,7 @@ export const ResourceBox = ({ image, title, caption, url, buttonText }: Props) =
       <ContentWrapper>
         <Title>{title}</Title>
         <Caption>{caption}</Caption>
-
-        <StyledButton to={url} target="_blank" outline borderShape="rounded">
+        <StyledButton to={url} target="_blank" variant="outline" shape="pill">
           {buttonText}
           <Launch aria-hidden />
         </StyledButton>

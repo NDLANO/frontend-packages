@@ -1,26 +1,25 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@ndla/core';
-import { MenuProps } from 'react-select';
+import { MenuProps, components, GroupBase } from 'react-select';
 import { Option } from './types';
 
-const StyledBaseMenu = styled.div`
-  position: absolute;
-  top: 100%;
-  width: auto;
-  min-width: 100%;
-  overflow: hidden;
+const StyledBaseMenu = styled.div<Props>`
   background-color: ${colors.white};
-  border: 1px solid ${colors.brand.greyLighter};
-  border-radius: 4px;
-  margin-top: 4px;
+  border: 1px solid ${colors.brand.light};
+  border-radius: ${({ small }) => (small ? '4px' : '8px')};
+  margin: 4px 0;
 `;
 
-const BaseMenu = <T extends boolean>({ innerRef, innerProps, children }: MenuProps<Option, T>) => {
+interface Props {
+  small?: boolean;
+}
+
+const BaseMenu = <T extends boolean>({ small, children, ...props }: MenuProps<Option, T> & Props) => {
   return (
-    <StyledBaseMenu ref={innerRef} {...innerProps}>
-      {children}
-    </StyledBaseMenu>
+    <components.Menu<Option, T, GroupBase<Option>> {...props}>
+      <StyledBaseMenu small={small}>{children}</StyledBaseMenu>
+    </components.Menu>
   );
 };
 

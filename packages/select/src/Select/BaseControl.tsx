@@ -3,14 +3,17 @@ import styled from '@emotion/styled';
 import { colors, fonts, spacing } from '@ndla/core';
 import { css } from '@emotion/react';
 import { ControlProps } from 'react-select';
-import { Option, StyledProps } from './types';
+import { Color, Option } from './types';
 import { StyledChevron } from './BaseDropdownIndicator';
 
 interface MenuProps {
   menuIsOpen: boolean;
+  small?: boolean;
+  colorTheme: Color;
+  outline?: boolean;
 }
 
-const StyledBaseControl = styled.div<StyledProps & MenuProps>`
+const StyledBaseControl = styled.div<MenuProps>`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -55,7 +58,7 @@ const BaseControl = <T extends boolean>({
   innerRef,
   innerProps,
   ...rest
-}: ControlProps<Option, T> & StyledProps) => (
+}: ControlProps<Option, T> & MenuProps) => (
   <StyledBaseControl ref={innerRef} {...innerProps} {...rest}>
     {children}
   </StyledBaseControl>

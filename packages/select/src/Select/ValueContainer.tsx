@@ -11,7 +11,6 @@ import { ValueContainerProps } from 'react-select';
 import { Option } from './types';
 
 const StyledMultiValue = styled.div`
-  overflow: hidden;
   display: flex;
   align-items: center;
 `;

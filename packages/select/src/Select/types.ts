@@ -15,9 +15,3 @@ export type Option = {
 };
 
 export type Color = 'blue' | 'white';
-
-export interface StyledProps {
-  small?: boolean;
-  outline?: boolean;
-  colorTheme: Color;
-}

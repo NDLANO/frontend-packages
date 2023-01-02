@@ -24,8 +24,8 @@ interface Props<T extends boolean> {
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
   isMultiSelect?: T;
+  hideArrow?: boolean;
   isLoading?: boolean;
-  // New
   small?: boolean;
   prefix?: string;
   postfix?: string;
@@ -41,6 +41,7 @@ const Select = <T extends boolean>({
   placeholder,
   menuPlacement = 'bottom',
   isMultiSelect,
+  hideArrow,
   isLoading,
   small,
   outline,
@@ -72,8 +73,8 @@ const Select = <T extends boolean>({
         Option: (props) => <BaseOption {...props} small={small} />,
         Control: (props) => <BaseControl {...props} small={small} outline={outline} colorTheme={colorTheme} />,
         SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} />,
-        DropdownIndicator: (props) => <BaseDropdownIndicator {...props} small={small} />,
-        Menu: BaseMenu,
+        DropdownIndicator: (props) => (hideArrow ? null : <BaseDropdownIndicator {...props} small={small} />),
+        Menu: (props) => <BaseMenu small={small} {...props} />,
         MultiValue: (props) => <BaseMultiValue {...props} postfix={postfix} />,
         ValueContainer: ValueContainer,
       }}

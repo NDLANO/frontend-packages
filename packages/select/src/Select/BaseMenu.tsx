@@ -13,6 +13,7 @@ import { MenuProps, components, GroupBase } from 'react-select';
 import { Option } from './types';
 
 const StyledBaseMenu = styled.div<Props>`
+  overflow: hidden;
   background-color: ${colors.white};
   border: 1px solid ${colors.brand.light};
   border-radius: ${({ small }) => (small ? '4px' : '8px')};

@@ -10,7 +10,15 @@ import ReactSelect from 'react-select';
 import BaseControl from './BaseControl';
 import BaseOption from './BaseOption';
 import BaseDropdownIndicator from './BaseDropdownIndicator';
-import { Option, SingleValue, MultiValue, OptionComponentType, ControlComponentType, MenuComponentType } from './types';
+import {
+  Option,
+  SingleValue,
+  MultiValue,
+  OptionComponentType,
+  ControlComponentType,
+  MenuComponentType,
+  DropdownComponentType,
+} from './types';
 import BaseMenu from './BaseMenu';
 import BaseMultiValue from './BaseMultiValue';
 import ValueContainer from './ValueContainer';
@@ -30,6 +38,7 @@ interface Props<T extends boolean> {
   OptionComponent?: OptionComponentType<T>;
   ControlComponent?: ControlComponentType<T>;
   MenuComponent?: MenuComponentType<T>;
+  DropdownIndicatorComponent?: DropdownComponentType<T>;
 }
 
 const Select = <T extends boolean>({
@@ -46,6 +55,7 @@ const Select = <T extends boolean>({
   OptionComponent = BaseOption,
   ControlComponent = BaseControl,
   MenuComponent = BaseMenu,
+  DropdownIndicatorComponent = BaseDropdownIndicator,
 }: Props<T>) => {
   const portalTarget = typeof document !== 'undefined' ? document?.querySelector('body') : null;
 
@@ -64,13 +74,15 @@ const Select = <T extends boolean>({
       hideSelectedOptions={hideSelectedOptions}
       isLoading={isLoading}
       menuPortalTarget={portalTarget}
-      styles={{ menuPortal: (base) => ({ ...base, zIndex: 999999 }) }}
+      styles={{
+        menuPortal: (base) => ({ ...base, zIndex: 999999 }),
+      }}
       components={{
         IndicatorSeparator: () => null,
         Option: OptionComponent,
         Control: ControlComponent,
         SingleValue: BaseSingleValue,
-        DropdownIndicator: BaseDropdownIndicator,
+        DropdownIndicator: DropdownIndicatorComponent,
         Menu: MenuComponent,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,

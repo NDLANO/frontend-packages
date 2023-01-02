@@ -11,14 +11,28 @@ import { useTranslation } from 'react-i18next';
 import { MultiValueProps } from 'react-select';
 import { Option } from './types';
 
-const BaseMultiValue = <T extends boolean>({ selectProps: { value }, data, children }: MultiValueProps<Option, T>) => {
+interface Props {
+  postfix?: string;
+}
+
+const BaseMultiValue = <T extends boolean>({
+  selectProps: { value },
+  data,
+  children,
+  postfix,
+}: MultiValueProps<Option, T> & Props) => {
   const { t } = useTranslation();
 
   const count = isArray(value) ? value.length : 0;
   const isLastItem = isArray(value) && data === value[count - 1];
 
   if (count === 1) return <span>{children}</span>;
-  if (isLastItem) return <span>{t('dropdown.selected', { count })}</span>;
+  if (isLastItem)
+    return (
+      <span>
+        {t('dropdown.selected', { count })} <span>{postfix}</span>
+      </span>
+    );
   return null;
 };
 

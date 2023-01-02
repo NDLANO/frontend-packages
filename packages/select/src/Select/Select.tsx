@@ -73,10 +73,10 @@ const Select = <T extends boolean>({
         IndicatorSeparator: () => null,
         Option: BaseOption,
         Control: (props) => <BaseControl {...props} {...styleProps} />,
-        SingleValue: BaseSingleValue,
+        SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} />,
         DropdownIndicator: (props) => <BaseDropdownIndicator {...props} small={small} />,
         Menu: BaseMenu,
-        MultiValue: BaseMultiValue,
+        MultiValue: (props) => <BaseMultiValue {...props} postfix={postfix} />,
         ValueContainer: ValueContainer,
       }}
     />

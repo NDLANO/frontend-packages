@@ -22,13 +22,24 @@ const StyledSingleValue = styled.div`
   white-space: nowrap;
 `;
 
+interface Props {
+  prefix?: string;
+  postfix?: string;
+}
+
 const BaseSingleValue = <T extends boolean>({
-  children,
   innerProps,
-}: SingleValueProps<Option, T, GroupBase<Option>>) => {
+  prefix,
+  postfix,
+  children,
+}: SingleValueProps<Option, T, GroupBase<Option>> & Props) => {
   return (
     <Wrapper {...innerProps}>
-      <StyledSingleValue>{children}</StyledSingleValue>
+      <StyledSingleValue>
+        <span>{prefix}</span>
+        {children}
+        <span>{postfix}</span>
+      </StyledSingleValue>
     </Wrapper>
   );
 };

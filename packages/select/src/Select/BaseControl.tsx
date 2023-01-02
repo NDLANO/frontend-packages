@@ -38,7 +38,7 @@ const StyledBaseControl = styled.div<StyledProps & MenuProps>`
   color: ${colors.brand.dark};
   border-style: solid;
   border-width: ${({ outline }) => (outline ? '1px' : '0px')};
-  border-color: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.dark : colors.brand.lighter)};
+  border-color: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.dark : colors.brand.light)};
   background: ${({ colorTheme }) => (colorTheme === 'blue' ? colors.brand.lighter : colors.white)};
 
   & ${StyledChevron} {

@@ -260,6 +260,7 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjerna frå favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Orsak, ein feil oppstod under lasting av emneskildringa.',
@@ -851,6 +852,7 @@ const messages = {
     searching: 'Søkjer...',
     create: 'Opprett ny',
     isSelectedItem: 'Lagt til',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {

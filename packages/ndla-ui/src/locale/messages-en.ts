@@ -261,6 +261,7 @@ const messages = {
     removeFavorite: 'Remove favorite subject',
     removeConfirmed: '{{subject}} is removed from your favorite subjects',
     addConfirmed: '{{subject}} is added to your favorite subjects',
+    shows: 'Shows',
   },
   topicPage: {
     articleErrorDescription: 'Sorry, an error occurred while loading the topic description.',
@@ -851,6 +852,7 @@ const messages = {
     searching: 'Searching...',
     create: 'Create new',
     isSelectedItem: 'Added',
+    selected: '{{count}} selected',
   },
   blogPosts: {
     blog1: {

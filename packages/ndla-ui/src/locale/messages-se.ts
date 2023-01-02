@@ -260,6 +260,7 @@ const messages = {
     removeFavorite: 'Fjern favorittfag',
     removeConfirmed: '{{subject}} er fjernet fra favorittfag',
     addConfirmed: '{{subject}} er lagt til som favorittfag',
+    shows: 'Viser',
   },
   topicPage: {
     articleErrorDescription: 'Šállošat, boasttuvuohta čuožžilii fáddáčilgehusa viežžamis.',
@@ -851,6 +852,7 @@ const messages = {
     searching: 'Ohcá...',
     create: 'Ráhkat ođđa',
     isSelectedItem: 'Lasihuvvon',
+    selected: '{{count}} valgte',
   },
   blogPosts: {
     blog1: {

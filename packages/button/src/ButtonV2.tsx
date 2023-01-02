@@ -6,7 +6,7 @@
  *
  */
 
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import { colors, fonts, misc, spacing } from '@ndla/core';
 import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 import { themes } from './themes';
@@ -20,6 +20,45 @@ export interface ButtonStyleProps {
   inverted?: boolean;
   fontWeight?: ButtonFontWeight;
 }
+
+const shapeStyles: Partial<Record<ButtonShape, SerializedStyles>> = {
+  pill: css`
+    border-radius: ${spacing.normal};
+  `,
+  sharp: css`
+    border-radius: 0;
+  `,
+};
+
+const sizeStyles: Record<ButtonSize, SerializedStyles> = {
+  xsmall: css`
+    padding: ${spacing.xxsmall} ${spacing.xsmall};
+    ${fonts.sizes('12px', '14px')};
+    min-height: 24px;
+    border-width: 1px;
+  `,
+  small: css`
+    padding: ${spacing.xxsmall} ${spacing.xsmall};
+    ${fonts.sizes('14px', '18px')};
+    min-height: 32px;
+    border-width: 1px;
+  `,
+  normal: css`
+    padding: ${spacing.xxsmall} ${spacing.small};
+    ${fonts.sizes('16px')};
+    min-height: 40px;
+  `,
+  medium: css`
+    padding: ${spacing.xxsmall} ${spacing.nsmall};
+    ${fonts.sizes('16px', '18px')};
+    min-height: 48px;
+  `,
+  large: css`
+    padding: ${spacing.xxsmall} ${spacing.normal};
+    ${fonts.sizes('18px', '20px')};
+    min-height: 52px;
+  `,
+};
 
 export const buttonStyle = ({
   size = 'normal',
@@ -65,48 +104,10 @@ export const buttonStyle = ({
     }
 
     // Sizes
-    ${size === 'xsmall' &&
-    css`
-      padding: ${spacing.xxsmall} ${spacing.xsmall};
-      ${fonts.sizes('12px', '14px')};
-      min-height: 24px;
-      border-width: 1px;
-    `}
-    ${size === 'small' &&
-    css`
-      padding: ${spacing.xxsmall} ${spacing.xsmall};
-      ${fonts.sizes('14px', '18px')};
-      min-height: 32px;
-      border-width: 1px;
-    `}
-  ${size === 'normal' &&
-    css`
-      padding: ${spacing.xxsmall} ${spacing.small};
-      ${fonts.sizes('16px')};
-      min-height: 40px;
-    `}
-  ${size === 'medium' &&
-    css`
-      padding: ${spacing.xxsmall} ${spacing.nsmall};
-      ${fonts.sizes('16px', '18px')};
-      min-height: 48px;
-    `}
-  ${size === 'large' &&
-    css`
-      padding: ${spacing.xxsmall} ${spacing.normal};
-      ${fonts.sizes('18px', '20px')};
-      min-height: 52px;
-    `}
+    ${sizeStyles[size]}
 
-  // Borders
-  ${shape === 'pill' &&
-    css`
-      border-radius: ${spacing.normal};
-    `}
-  ${shape === 'sharp' &&
-    css`
-      border-radius: 0;
-    `}
+    // Borders
+    ${shapeStyles[shape]}
   
   // Variants
   ${variant === 'outline' &&
@@ -129,7 +130,7 @@ export const buttonStyle = ({
   ${variant === 'ghost' &&
     css`
       outline-width: 2px;
-      color: ${theme.foreground};
+      color: ${theme.foreground === colors.white ? theme.background : theme.foreground};
       background: transparent;
       border-color: transparent;
       :hover,

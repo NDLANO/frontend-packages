@@ -1198,6 +1198,9 @@ const messages = {
     contact: 'Kontakt',
     help: 'Hjelp',
   },
+  programme: {
+    grades: 'Trinn',
+  },
 };
 
 export default messages;

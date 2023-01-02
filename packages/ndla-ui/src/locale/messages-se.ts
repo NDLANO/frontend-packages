@@ -1198,6 +1198,9 @@ const messages = {
     contact: 'Váldde oktavuođa',
     help: 'Veahket',
   },
+  programme: {
+    grades: 'Trinn',
+  },
 };
 
 export default messages;

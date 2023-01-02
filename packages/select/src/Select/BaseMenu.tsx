@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { css, SerializedStyles } from '@emotion/react';
 import { colors } from '@ndla/core';
 import { MenuProps } from 'react-select';
 import { Option } from './types';

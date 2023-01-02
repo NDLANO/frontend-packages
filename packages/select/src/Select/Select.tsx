@@ -50,8 +50,6 @@ const Select = <T extends boolean>({
 }: Props<T>) => {
   const portalTarget = typeof document !== 'undefined' ? document?.querySelector('body') : null;
 
-  const styleProps = { small, outline, colorTheme };
-
   return (
     <ReactSelect<Option, T>
       aria-label={label}
@@ -71,8 +69,8 @@ const Select = <T extends boolean>({
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}
       components={{
         IndicatorSeparator: () => null,
-        Option: BaseOption,
-        Control: (props) => <BaseControl {...props} {...styleProps} />,
+        Option: (props) => <BaseOption {...props} small={small} />,
+        Control: (props) => <BaseControl {...props} small={small} outline={outline} colorTheme={colorTheme} />,
         SingleValue: (props) => <BaseSingleValue {...props} postfix={postfix} prefix={prefix} />,
         DropdownIndicator: (props) => <BaseDropdownIndicator {...props} small={small} />,
         Menu: BaseMenu,

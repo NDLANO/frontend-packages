@@ -6,6 +6,7 @@
  *
  */
 import styled from '@emotion/styled';
+import { fonts } from '@ndla/core/src';
 import React from 'react';
 import { components, GroupBase, SingleValueProps } from 'react-select';
 import { Option } from './types';
@@ -22,6 +23,10 @@ const StyledSingleValue = styled.div`
   white-space: nowrap;
 `;
 
+const StyledPostfix = styled.span`
+  font-weight: ${fonts.weight.semibold};
+`;
+
 interface Props {
   prefix?: string;
   postfix?: string;
@@ -36,7 +41,7 @@ const BaseSingleValue = <T extends boolean>({
   return (
     <Wrapper {...innerProps}>
       <StyledSingleValue>
-        <span>{prefix}</span>
+        <StyledPostfix>{prefix}</StyledPostfix>
         {children}
         <span>{postfix}</span>
       </StyledSingleValue>

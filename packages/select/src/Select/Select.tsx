@@ -74,7 +74,7 @@ const Select = <T extends boolean>({
         Option: BaseOption,
         Control: (props) => <BaseControl {...props} {...styleProps} />,
         SingleValue: BaseSingleValue,
-        DropdownIndicator: BaseDropdownIndicator,
+        DropdownIndicator: (props) => <BaseDropdownIndicator {...props} small={small} />,
         Menu: BaseMenu,
         MultiValue: BaseMultiValue,
         ValueContainer: ValueContainer,

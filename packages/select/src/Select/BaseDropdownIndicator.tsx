@@ -6,14 +6,31 @@
  *
  */
 import React from 'react';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { ChevronDown } from '@ndla/icons/common';
 import { DropdownIndicatorProps } from 'react-select';
 import { Option } from './types';
 
-const BaseDropdownIndicator = <T extends boolean>({ innerProps }: DropdownIndicatorProps<Option, T>) => {
+export const StyledChevron = styled(ChevronDown)<Props>`
+  height: 22px;
+  width: 22px;
+  ${({ small }) =>
+    small &&
+    css`
+      height: 16px;
+      width: 16px;
+    `}
+`;
+
+interface Props {
+  small?: boolean;
+}
+
+const BaseDropdownIndicator = <T extends boolean>({ innerProps, small }: Props & DropdownIndicatorProps<Option, T>) => {
   return (
     <div {...innerProps}>
-      <ChevronDown />
+      <StyledChevron small={small} />
     </div>
   );
 };

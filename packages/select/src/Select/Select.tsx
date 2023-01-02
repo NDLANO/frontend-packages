@@ -74,7 +74,9 @@ const Select = <T extends boolean>({
       hideSelectedOptions={hideSelectedOptions}
       isLoading={isLoading}
       menuPortalTarget={portalTarget}
-      styles={{ menuPortal: (base) => ({ ...base, zIndex: 999999 }) }}
+      styles={{
+        menuPortal: (base) => ({ ...base, zIndex: 999999 }),
+      }}
       components={{
         IndicatorSeparator: () => null,
         Option: OptionComponent,

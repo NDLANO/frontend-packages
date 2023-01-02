@@ -1,24 +1,31 @@
+/**
+ * Copyright (c) 2022-present, NDLA.
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import React from 'react';
 import styled from '@emotion/styled';
-import { css, SerializedStyles } from '@emotion/react';
 import { colors } from '@ndla/core';
+import { CSSObjectWithLabel } from 'react-select';
 import { MenuPropsType } from './types';
 
-const StyledBaseMenu = styled.div`
-  position: absolute;
-  top: 100%;
+const StyledBaseMenu = styled.div<{ baseStyling: CSSObjectWithLabel }>`
+  ${(props) => props.baseStyling};
   width: auto;
   min-width: 100%;
   overflow: hidden;
-  background-color: ${colors.white};
   border: 1px solid ${colors.brand.greyLighter};
-  border-radius: 4px;
-  margin-top: 4px;
 `;
 
-const BaseMenu = <T extends boolean>({ innerRef, innerProps, children }: MenuPropsType<T>) => {
+const BaseMenu = <T extends boolean>(props: MenuPropsType<T>) => {
+  const { innerRef, innerProps, children } = props;
+  const baseMenuStyles = props.getStyles('menu', props);
+
   return (
-    <StyledBaseMenu ref={innerRef} {...innerProps}>
+    <StyledBaseMenu baseStyling={baseMenuStyles} ref={innerRef} {...innerProps}>
       {children}
     </StyledBaseMenu>
   );

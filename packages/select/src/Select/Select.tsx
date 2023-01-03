@@ -26,7 +26,7 @@ interface Props<T extends boolean> {
   value?: PropsValue<Option>;
   placeholder?: string;
   menuPlacement?: 'bottom' | 'top' | 'auto';
-  isMultiSelect?: T;
+  isMulti?: T;
   hideArrow?: boolean;
   isLoading?: boolean;
   small?: boolean;
@@ -38,44 +38,24 @@ interface Props<T extends boolean> {
 }
 
 const Select = <T extends boolean>({
-  options,
-  label,
-  onChange,
-  value,
-  placeholder,
-  menuPlacement = 'bottom',
-  isMultiSelect,
   hideArrow,
-  isLoading,
-  small,
-  bold,
-  outline,
+  label,
+  menuPlacement = 'bottom',
   colorTheme = 'blue',
-  prefix,
-  postfix,
+  ...rest
 }: Props<T>) => {
   const portalTarget = useMemo(() => (typeof document !== 'undefined' ? document?.querySelector('body') : null), []);
 
   return (
     <ReactSelect<Option, T>
-      small={small}
-      bold={bold}
-      outline={outline}
+      {...rest}
       colorTheme={colorTheme}
-      postfix={postfix}
-      prefix={prefix}
       aria-label={label}
-      options={options}
-      onChange={onChange}
-      value={value}
       isSearchable={false}
-      placeholder={placeholder}
       menuPlacement={menuPlacement}
-      isMulti={isMultiSelect}
       closeMenuOnSelect={false}
       isClearable={false}
       hideSelectedOptions={false}
-      isLoading={isLoading}
       unstyled
       menuPortalTarget={portalTarget}
       styles={{ menuPortal: (base) => ({ ...base, zIndex: 99999 }) }}

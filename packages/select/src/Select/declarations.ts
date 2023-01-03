@@ -7,15 +7,9 @@
  */
 
 import { GroupBase } from 'react-select';
-import { Color } from './types';
 
 declare module 'react-select/dist/declarations/src/Select' {
   export interface Props<Option, IsMulti extends boolean, Group extends GroupBase<Option>> {
-    small?: boolean;
-    colorTheme: Color;
-    outline?: boolean;
-    prefix?: string;
-    postfix?: string;
-    bold?: boolean;
+    [key: string]: any;
   }
 }

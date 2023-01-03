@@ -180,8 +180,11 @@ export type ItemProps = {
   isAdditionalResource?: boolean;
   isRestrictedResource?: boolean;
 };
+
+type HeadingType = 'h1' | 'h2' | 'h3';
 type Props = {
   heading?: string;
+  headingType?: HeadingType;
   colorMode?: 'dark' | 'light' | 'greyLightest' | 'greyLighter';
   isButtonElements?: boolean;
   items: ItemProps[];
@@ -204,13 +207,15 @@ export const NavigationBox = ({
   listDirection = 'horizontal',
   invertedStyle,
   onToggleAdditionalResources = () => {},
+  headingType = 'h2',
 }: Props) => {
+  const Heading = StyledHeading.withComponent(headingType);
   const { t } = useTranslation();
   const ListElementType = isButtonElements ? Button : SafeLinkButton;
   return (
     <StyledWrapper>
       <StyledHeadingWrapper>
-        {heading && <StyledHeading invertedStyle={invertedStyle}>{heading}</StyledHeading>}
+        {heading && <Heading invertedStyle={invertedStyle}>{heading}</Heading>}
         {hasAdditionalResources && (
           <Switch
             id={uuid()}

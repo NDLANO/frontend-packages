@@ -143,10 +143,7 @@ const ResourceLink = styled(SafeLink)`
   }
 `;
 
-type ActiveProps = {
-  active?: boolean;
-};
-const Heading = styled.h2<ActiveProps>`
+const headingStyle = css`
   font-weight: ${fonts.weight.semibold};
   transform: translateY(-1px);
   text-transform: none;
@@ -161,28 +158,21 @@ const Heading = styled.h2<ActiveProps>`
     ${fonts.sizes('20px', '26px')};
   }
 
-  span {
-    box-shadow: ${colors.link};
-  }
+  box-shadow: ${colors.link};
 
   ${ResourceLink}:hover &,
   ${ResourceLink}:focus & {
-    span {
-      box-shadow: ${colors.linkHover};
-    }
+    box-shadow: ${colors.linkHover};
   }
-  ${(props) =>
-    props.active &&
-    css`
-      color: ${colors.brand.greyDark};
-      span {
-        box-shadow: none;
-      }
-      small {
-        padding-left: ${spacing.small};
-        font-weight: ${fonts.weight.normal};
-      }
-    `}
+`;
+
+const activeHeadingStyle = css`
+  color: ${colors.brand.greyDark};
+  box-shadow: none;
+  small {
+    padding-left: ${spacing.small};
+    font-weight: ${fonts.weight.normal};
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -247,6 +237,7 @@ const ResourceItem = ({
   const hidden = additional ? !showAdditionalResources : false;
   return (
     <ListElement
+      aria-current={active ? 'page' : undefined}
       contentType={contentType}
       hidden={hidden && !active}
       active={active}
@@ -257,21 +248,17 @@ const ResourceItem = ({
           <IconWrapper>
             <ContentTypeBadge type={contentType ?? ''} background border={false} />
           </IconWrapper>
-          <Heading active>
-            <span>
-              {name}
-              <small>{t('resource.youAreHere')}</small>
-            </span>
-          </Heading>
+          <span css={[headingStyle, activeHeadingStyle]}>
+            {name}
+            <small>{t('resource.youAreHere')}</small>
+          </span>
         </ActiveWrapper>
       ) : (
         <ResourceLink to={path}>
           <IconWrapper>
             <ContentTypeBadge type={contentType ?? ''} background border={false} />
           </IconWrapper>
-          <Heading>
-            <span>{name}</span>
-          </Heading>
+          <span css={headingStyle}>{name}</span>
         </ResourceLink>
       )}
       <TypeWrapper>

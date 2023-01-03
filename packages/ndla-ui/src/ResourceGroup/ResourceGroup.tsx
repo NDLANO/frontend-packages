@@ -8,10 +8,10 @@
 
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { colors, fonts, spacing } from '@ndla/core';
 
 import ResourceList, { ResourceListProps } from './ResourceList';
-import { css } from '@emotion/react';
 import { HeadingLevel } from '../types';
 
 const Wrapper = styled.section`
